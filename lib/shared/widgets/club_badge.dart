@@ -22,24 +22,47 @@ class ClubBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logoUrl = team.logoUrl;
-    if (logoUrl != null && logoUrl.isNotEmpty) {
-      return SizedBox(
-        width: size,
-        height: size,
-        child: Image.network(
-          logoUrl,
-          width: size,
-          height: size,
-          fit: BoxFit.contain,
-          loadingBuilder: (context, child, progress) {
-            if (progress == null) return child;
-            return _LoadingBadge(size: size);
-          },
-          errorBuilder: (context, error, stackTrace) => _fallback(context),
-        ),
-      );
+    if (logoUrl == null || logoUrl.isEmpty) {
+      return _fallback(context);
     }
-    return _fallback(context);
+    return SizedBox(
+      width: size,
+      height: size,
+      child: _isSvg(logoUrl) ? _svgBadge(context, logoUrl) : _rasterBadge(context, logoUrl),
+    );
+  }
+
+  /// Escudos da campeonato-brasileiro-api vêm como SVG; do TheSportsDB, como
+  /// PNG. `Image.network` não decodifica SVG — sem essa checagem, todo
+  /// escudo em SVG cai silenciosamente no fallback de sigla.
+  bool _isSvg(String url) {
+    final path = Uri.tryParse(url)?.path ?? url;
+    return path.toLowerCase().endsWith('.svg');
+  }
+
+  Widget _svgBadge(BuildContext context, String url) {
+    return SvgPicture.network(
+      url,
+      width: size,
+      height: size,
+      fit: BoxFit.contain,
+      placeholderBuilder: (context) => _LoadingBadge(size: size),
+      errorBuilder: (context, error, stackTrace) => _fallback(context),
+    );
+  }
+
+  Widget _rasterBadge(BuildContext context, String url) {
+    return Image.network(
+      url,
+      width: size,
+      height: size,
+      fit: BoxFit.contain,
+      loadingBuilder: (context, child, progress) {
+        if (progress == null) return child;
+        return _LoadingBadge(size: size);
+      },
+      errorBuilder: (context, error, stackTrace) => _fallback(context),
+    );
   }
 
   Widget _fallback(BuildContext context) {
