@@ -4,7 +4,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from Scweet.scweet import Scweet
+from Scweet import Scweet
 
 HANDLE = "goiasoficial"
 LIMIT = 20
