@@ -21,7 +21,7 @@ export async function handleGoiasTeam(request: Request, env: Env): Promise<Respo
     const config = loadConfig(env);
     const teamId = requireGoiasTheSportsDbId(config);
 
-    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.team.goias', async () => {
+    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.team.goias', config.cacheVersion, async () => {
       const [nextEvents, lastEvents] = await Promise.all([
         fetchTeamNextEvents(teamId),
         fetchTeamLastEvents(teamId),

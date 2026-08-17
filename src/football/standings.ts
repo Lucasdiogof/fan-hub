@@ -13,7 +13,7 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
   return withErrorHandling(async () => {
     const config = loadConfig(env);
 
-    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.standings', async () => {
+    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.standings', config.cacheVersion, async () => {
       const { competition, table } = await fetchBrasileiraoStandings(config.serieCode);
 
       return {

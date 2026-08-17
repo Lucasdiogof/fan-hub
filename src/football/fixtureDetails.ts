@@ -15,22 +15,26 @@ const CACHE_TTL_SECONDS = 30 * 60;
  */
 export async function handleFixtureDetails(request: Request, env: Env, rawId: string): Promise<Response> {
   return withErrorHandling(async () => {
+    const config = loadConfig(env);
+
     if (rawId.startsWith('cbapi-')) {
-      return handleBrasileiraoFixture(request, env, rawId.slice('cbapi-'.length));
+      return handleBrasileiraoFixture(request, config, rawId.slice('cbapi-'.length));
     }
 
     if (rawId.startsWith('tsdb-')) {
-      return handleTheSportsDbFixture(request, rawId.slice('tsdb-'.length));
+      return handleTheSportsDbFixture(request, config.cacheVersion, rawId.slice('tsdb-'.length));
     }
 
     throw new ProviderError('Id de partida inválido.', 400, 'internal');
   });
 }
 
-async function handleBrasileiraoFixture(request: Request, env: Env, fixtureId: string): Promise<Response> {
-  const config = loadConfig(env);
-
-  return cacheFirst(request, CACHE_TTL_SECONDS, 'football.fixtures.details.brasileirao', async () => {
+async function handleBrasileiraoFixture(
+  request: Request,
+  config: ReturnType<typeof loadConfig>,
+  fixtureId: string,
+): Promise<Response> {
+  return cacheFirst(request, CACHE_TTL_SECONDS, 'football.fixtures.details.brasileirao', config.cacheVersion, async () => {
     // Fonte não tem lookup por id — a rodada atual (já cacheada por si só)
     // é o único lugar de onde emitimos ids `cbapi-`, então procurar nela é
     // suficiente e evita mais uma chamada externa.
@@ -46,8 +50,8 @@ async function handleBrasileiraoFixture(request: Request, env: Env, fixtureId: s
   });
 }
 
-async function handleTheSportsDbFixture(request: Request, eventId: string): Promise<Response> {
-  return cacheFirst(request, CACHE_TTL_SECONDS, 'football.fixtures.details.thesportsdb', async () => {
+async function handleTheSportsDbFixture(request: Request, cacheVersion: string, eventId: string): Promise<Response> {
+  return cacheFirst(request, CACHE_TTL_SECONDS, 'football.fixtures.details.thesportsdb', cacheVersion, async () => {
     const event = await fetchEventById(eventId);
     if (!event) {
       throw new ProviderError('Partida não encontrada.', 404, 'thesportsdb');

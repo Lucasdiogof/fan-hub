@@ -2,6 +2,8 @@ export interface Env {
   SERIE_CODE: string;
   GOIAS_BRASILEIRAO_ID: string;
   GOIAS_THESPORTSDB_ID: string;
+  /** Salt da chave de cache — ver comentário no wrangler.toml. */
+  CACHE_VERSION: string;
   /** Binding de assets estáticos (build/web do Flutter) — ver `[assets]` no wrangler.toml. */
   ASSETS: Fetcher;
 }
@@ -14,6 +16,7 @@ export interface AppConfig {
     /** id do time do Goiás no TheSportsDB. */
     thesportsdbId: string | null;
   };
+  cacheVersion: string;
 }
 
 /** Erro de configuração ausente/incompleta. */
@@ -30,6 +33,7 @@ export function loadConfig(env: Env): AppConfig {
       brasileiraoId: brasileiraoIdRaw ? Number(brasileiraoIdRaw) : null,
       thesportsdbId: thesportsdbIdRaw || null,
     },
+    cacheVersion: env.CACHE_VERSION || '1',
   };
 }
 

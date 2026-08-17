@@ -13,7 +13,7 @@ export async function handleCurrentRound(request: Request, env: Env): Promise<Re
   return withErrorHandling(async () => {
     const config = loadConfig(env);
 
-    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.current_round', async () => {
+    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.current_round', config.cacheVersion, async () => {
       const { competition, round } = await fetchBrasileiraoCurrentRound(config.serieCode);
 
       return {

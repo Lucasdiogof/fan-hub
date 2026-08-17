@@ -20,7 +20,14 @@ not_found_handling = "single-page-application"
 # vivo do ge.globo.com (sempre a temporada corrente, sem parâmetro de
 # temporada pra passar) — a temporada exibida vem do próprio dado
 # (`competition.season`), não é algo que a gente controla ou espalha.
+#
+# CACHE_VERSION entra na chave de cache de cada endpoint — bump manual
+# sempre que uma mudança de formato/normalização puder tornar o JSON
+# cacheado antigo incompatível com o que o Flutter espera agora. Sem isso,
+# uma correção de bug no Worker só valeria depois do TTL do cache antigo
+# expirar (até 45min), mesmo já deployada.
 [vars]
 SERIE_CODE = "b"
 GOIAS_BRASILEIRAO_ID = "290"
 GOIAS_THESPORTSDB_ID = "134295"
+CACHE_VERSION = "2"
