@@ -22,5 +22,6 @@ export function normalizeStandingEntry(entry: RawStandingEntry, goiasBrasileirao
     losses: entry.losses,
     goalsFor: entry.goalsFor,
     goalsAgainst: entry.goalsAgainst,
+    form: entry.recentForm.length > 0 ? entry.recentForm.join('') : null,
   };
 }

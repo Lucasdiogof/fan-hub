@@ -18,6 +18,7 @@ declare module 'campeonato-brasileiro-api' {
     goalsFor: number | null;
     goalsAgainst: number | null;
     goalDifference: number | null;
+    recentForm: string[];
   }
 
   export interface RawTable {

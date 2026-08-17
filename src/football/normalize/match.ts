@@ -18,8 +18,8 @@ import type { TheSportsDbEvent } from '../providers/thesportsdb_provider';
 export interface InternalMatch {
   id: string;
   round: string | null;
-  homeTeam: { id: number | string; name: string | null; shortName: string | null; logo: string | null };
-  awayTeam: { id: number | string; name: string | null; shortName: string | null; logo: string | null };
+  homeTeam: { id: number; name: string | null; shortName: string | null; logo: string | null };
+  awayTeam: { id: number; name: string | null; shortName: string | null; logo: string | null };
   kickoff: string | null;
   venue: string | null;
   status: string;
@@ -58,13 +58,13 @@ export function normalizeTheSportsDbEvent(raw: TheSportsDbEvent): InternalMatch 
     id: `tsdb-${raw.idEvent}`,
     round: raw.intRound ?? null,
     homeTeam: {
-      id: raw.idHomeTeam,
+      id: Number(raw.idHomeTeam),
       name: raw.strHomeTeam,
       shortName: null,
       logo: raw.strHomeTeamBadge,
     },
     awayTeam: {
-      id: raw.idAwayTeam,
+      id: Number(raw.idAwayTeam),
       name: raw.strAwayTeam,
       shortName: null,
       logo: raw.strAwayTeamBadge,
