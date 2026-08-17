@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/match/domain/repositories/match_repository.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
@@ -47,6 +48,7 @@ class HomeCubit extends Cubit<HomeState> {
           Success(:final data) => data.name.split(' ').first,
           Error() => null,
         },
+        ticketsOpenMatchIds: MockData.ticketsOpenMatchIds,
       ),
     );
   }

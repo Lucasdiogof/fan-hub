@@ -10,6 +10,7 @@ class HomeState extends Equatable {
     this.lastResult,
     this.featuredNews,
     this.upcomingMatches = const [],
+    this.ticketsOpenMatchIds = const {},
   });
 
   final bool loading;
@@ -19,6 +20,10 @@ class HomeState extends Equatable {
   final NewsArticle? featuredNews;
   final List<Match> upcomingMatches;
 
+  /// Mock local — ingresso/check-in não vem da API-Football, só dados
+  /// esportivos (Match, Standing) vêm.
+  final Set<String> ticketsOpenMatchIds;
+
   HomeState copyWith({
     bool? loading,
     String? userName,
@@ -26,6 +31,7 @@ class HomeState extends Equatable {
     Match? lastResult,
     NewsArticle? featuredNews,
     List<Match>? upcomingMatches,
+    Set<String>? ticketsOpenMatchIds,
   }) {
     return HomeState(
       loading: loading ?? this.loading,
@@ -34,6 +40,7 @@ class HomeState extends Equatable {
       lastResult: lastResult ?? this.lastResult,
       featuredNews: featuredNews ?? this.featuredNews,
       upcomingMatches: upcomingMatches ?? this.upcomingMatches,
+      ticketsOpenMatchIds: ticketsOpenMatchIds ?? this.ticketsOpenMatchIds,
     );
   }
 
@@ -45,5 +52,6 @@ class HomeState extends Equatable {
     lastResult,
     featuredNews,
     upcomingMatches,
+    ticketsOpenMatchIds,
   ];
 }
