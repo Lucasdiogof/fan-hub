@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 
 /// Bottom nav própria — sem o indicator-pill padrão do `NavigationBar` do
-/// Material. Item ativo muda de cor e ganha um pontinho discreto embaixo do
-/// rótulo; nenhum outro tratamento além disso.
+/// Material. Item ativo só muda de cor (ícone + rótulo); nenhum outro
+/// tratamento além disso.
 class MainBottomNavigation extends StatelessWidget {
   const MainBottomNavigation({required this.selectedIndex, required this.onSelected, super.key});
 
@@ -89,13 +89,6 @@ class _NavItem extends StatelessWidget {
               fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
               color: color,
             ),
-          ),
-          const SizedBox(height: 3),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 180),
-            width: selected ? 4 : 0,
-            height: 4,
-            decoration: BoxDecoration(color: colors.primary, shape: BoxShape.circle),
           ),
         ],
       ),

@@ -15,37 +15,29 @@ class HomeHeader extends StatelessWidget {
       children: [
         const ClubBadge(team: MockData.goias, size: 34),
         const SizedBox(width: AppSpacing.sm),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'GOIÁS',
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 0.6,
-                height: 1.05,
-                color: colors.textPrimary,
-              ),
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(width: 10, height: 2, color: colors.primary),
-                const SizedBox(width: 5),
-                Text(
-                  'ESPORTE CLUBE',
-                  style: TextStyle(
-                    fontSize: 9,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.4,
-                    color: colors.textSecondary,
-                  ),
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: 'GOIÁS ',
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.6,
+                  color: colors.textPrimary,
                 ),
-              ],
-            ),
-          ],
+              ),
+              TextSpan(
+                text: 'ESPORTE CLUBE',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1,
+                  color: colors.textSecondary,
+                ),
+              ),
+            ],
+          ),
         ),
         const Spacer(),
         _CircleIconButton(icon: Icons.notifications_outlined, onTap: () {}),

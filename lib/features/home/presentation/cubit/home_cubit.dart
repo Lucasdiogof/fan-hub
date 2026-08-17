@@ -20,13 +20,11 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(loading: true));
 
     final nextMatchFuture = _matchRepository.getNextMatch();
-    final resultsFuture = _matchRepository.getResults();
     final newsFuture = _newsRepository.getHighlights();
     final upcomingFuture = _matchRepository.getUpcomingMatches();
     final userFuture = _userRepository.getCurrentUser();
 
     final nextMatchResult = await nextMatchFuture;
-    final resultsResult = await resultsFuture;
     final newsResult = await newsFuture;
     final upcomingResult = await upcomingFuture;
     final userResult = await userFuture;
@@ -35,10 +33,6 @@ class HomeCubit extends Cubit<HomeState> {
       state.copyWith(
         loading: false,
         nextMatch: switch (nextMatchResult) { Success(:final data) => data, Error() => null },
-        lastResult: switch (resultsResult) {
-          Success(:final data) => data.isNotEmpty ? data.first : null,
-          Error() => null,
-        },
         featuredNews: switch (newsResult) {
           Success(:final data) => data.isNotEmpty ? data.first : null,
           Error() => null,

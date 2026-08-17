@@ -7,7 +7,6 @@ class HomeState extends Equatable {
     this.loading = true,
     this.userName,
     this.nextMatch,
-    this.lastResult,
     this.featuredNews,
     this.upcomingMatches = const [],
     this.ticketsOpenMatchIds = const {},
@@ -16,7 +15,6 @@ class HomeState extends Equatable {
   final bool loading;
   final String? userName;
   final Match? nextMatch;
-  final Match? lastResult;
   final NewsArticle? featuredNews;
   final List<Match> upcomingMatches;
 
@@ -28,7 +26,6 @@ class HomeState extends Equatable {
     bool? loading,
     String? userName,
     Match? nextMatch,
-    Match? lastResult,
     NewsArticle? featuredNews,
     List<Match>? upcomingMatches,
     Set<String>? ticketsOpenMatchIds,
@@ -37,7 +34,6 @@ class HomeState extends Equatable {
       loading: loading ?? this.loading,
       userName: userName ?? this.userName,
       nextMatch: nextMatch ?? this.nextMatch,
-      lastResult: lastResult ?? this.lastResult,
       featuredNews: featuredNews ?? this.featuredNews,
       upcomingMatches: upcomingMatches ?? this.upcomingMatches,
       ticketsOpenMatchIds: ticketsOpenMatchIds ?? this.ticketsOpenMatchIds,
@@ -49,7 +45,6 @@ class HomeState extends Equatable {
     loading,
     userName,
     nextMatch,
-    lastResult,
     featuredNews,
     upcomingMatches,
     ticketsOpenMatchIds,
