@@ -33,7 +33,9 @@ export async function handleDiscover(request: Request, env: Env): Promise<Respon
   try {
     const [leaguesRes, teamsRes] = await Promise.all([
       fetch(`${baseUrl}/leagues?country=Brazil&season=${season}&search=${encodeURIComponent(search)}`, { headers }),
-      fetch(`${baseUrl}/teams?season=${season}&search=${encodeURIComponent(search)}`, { headers }),
+      // A API-Football rejeita `season` combinado com `search` em /teams —
+      // busca de time por nome não precisa de temporada de qualquer forma.
+      fetch(`${baseUrl}/teams?search=${encodeURIComponent(search)}`, { headers }),
     ]);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
