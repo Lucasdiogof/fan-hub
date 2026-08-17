@@ -166,7 +166,7 @@ class _MatchDetailsContent extends StatelessWidget {
               _InfoRow(label: 'Data', value: shortDateLabel(match.kickoff)),
               _InfoRow(label: 'Horário', value: timeLabel(match.kickoff)),
               _InfoRow(label: 'Estádio', value: match.stadium.isEmpty ? '—' : match.stadium),
-              _InfoRow(label: 'Cidade', value: match.city ?? '—'),
+              if (match.city != null) _InfoRow(label: 'Cidade', value: match.city!),
               _InfoRow(label: 'Competição', value: match.competition),
               _InfoRow(label: 'Rodada', value: match.round.isEmpty ? '—' : match.round),
               _InfoRow(label: 'Status', value: matchStatusLabel(match.status), isLast: true),
