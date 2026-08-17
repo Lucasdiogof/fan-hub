@@ -1,0 +1,179 @@
+import 'package:flutter/material.dart';
+import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/domain/entities/team.dart';
+import 'package:goias_app/shared/utils/date_labels.dart';
+import 'package:goias_app/shared/widgets/club_badge.dart';
+
+/// Versão funcional do "próximo jogo" para a aba Jogos — informação e
+/// escaneabilidade em primeiro lugar, sem a fotografia/emoção do Hero da
+/// Home (ver `NextMatchHero`). Mesmo componente conceitual, propósito
+/// diferente: aqui o usuário está procurando dado, não se emocionando.
+class NextMatchCard extends StatelessWidget {
+  const NextMatchCard({required this.match, this.onBuyTicket, this.onViewDetails, super.key});
+
+  final Match match;
+  final VoidCallback? onBuyTicket;
+  final VoidCallback? onViewDetails;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.xl),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.card),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Text(
+                'PRÓXIMO JOGO',
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 1.4,
+                  color: colors.primary,
+                ),
+              ),
+              const Spacer(),
+              if (match.round.isNotEmpty)
+                Text(
+                  match.round.toUpperCase(),
+                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: colors.textHint),
+                ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          Row(
+            children: [
+              Expanded(child: _TeamColumn(team: match.homeTeam)),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                child: Text(
+                  'X',
+                  style: TextStyle(color: colors.textHint, fontWeight: FontWeight.w800, fontSize: 13),
+                ),
+              ),
+              Expanded(child: _TeamColumn(team: match.awayTeam)),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          Container(height: 1, color: colors.border),
+          const SizedBox(height: AppSpacing.lg),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _InfoItem(
+                icon: Icons.calendar_today_outlined,
+                label: '${shortDateLabel(match.kickoff)} • ${weekdayShortLabel(match.kickoff)}',
+              ),
+              _Dot(color: colors.textHint),
+              _InfoItem(icon: Icons.access_time_rounded, label: timeLabel(match.kickoff)),
+              if (match.stadium.isNotEmpty) ...[
+                _Dot(color: colors.textHint),
+                _InfoItem(icon: Icons.location_on_outlined, label: match.stadium),
+              ],
+            ],
+          ),
+          const SizedBox(height: AppSpacing.xl),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton.icon(
+                  onPressed: onBuyTicket,
+                  icon: const Icon(Icons.confirmation_number_outlined, size: 16),
+                  label: const Text('COMPRAR INGRESSO'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: colors.ctaGreen,
+                    foregroundColor: Colors.white,
+                    disabledBackgroundColor: colors.ctaGreen.withValues(alpha: 0.5),
+                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                    textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.2),
+                  ),
+                ),
+              ),
+              const SizedBox(width: AppSpacing.md),
+              Expanded(
+                child: OutlinedButton(
+                  onPressed: onViewDetails,
+                  style: OutlinedButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.2),
+                  ),
+                  child: const Text('DETALHES'),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TeamColumn extends StatelessWidget {
+  const _TeamColumn({required this.team});
+
+  final Team team;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ClubBadge(team: team, size: 52),
+        const SizedBox(height: AppSpacing.sm),
+        Text(
+          team.name.toUpperCase(),
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12.5, color: colors.textPrimary),
+        ),
+      ],
+    );
+  }
+}
+
+class _InfoItem extends StatelessWidget {
+  const _InfoItem({required this.icon, required this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 13, color: colors.textSecondary),
+        const SizedBox(width: 5),
+        Text(
+          label,
+          style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w600, color: colors.textSecondary),
+        ),
+      ],
+    );
+  }
+}
+
+class _Dot extends StatelessWidget {
+  const _Dot({required this.color});
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+      child: Container(width: 3, height: 3, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+    );
+  }
+}

@@ -1,7 +1,16 @@
 import 'package:equatable/equatable.dart';
-import 'package:goias_app/features/match/domain/entities/team_info.dart';
+import 'package:goias_app/features/match/domain/entities/team.dart';
 
-enum MatchStatus { scheduled, live, finished }
+enum MatchStatus {
+  scheduled,
+  live,
+  halftime,
+  finished,
+  postponed,
+  cancelled,
+  suspended,
+  unknown,
+}
 
 class Match extends Equatable {
   const Match({
@@ -13,7 +22,7 @@ class Match extends Equatable {
     required this.stadium,
     required this.kickoff,
     required this.status,
-    this.salesOpen = false,
+    this.city,
     this.homeScore,
     this.awayScore,
   });
@@ -21,20 +30,16 @@ class Match extends Equatable {
   final String id;
   final String competition;
   final String round;
-  final TeamInfo homeTeam;
-  final TeamInfo awayTeam;
+  final Team homeTeam;
+  final Team awayTeam;
   final String stadium;
+  final String? city;
   final DateTime kickoff;
   final MatchStatus status;
-  final bool salesOpen;
   final int? homeScore;
   final int? awayScore;
 
-  bool get isGoiasHome => homeTeam.shortName == 'GO';
-
-  TeamInfo get opponent => isGoiasHome ? awayTeam : homeTeam;
-
-  String get resultLabel => '${homeTeam.shortName} $homeScore x $awayScore ${awayTeam.shortName}';
+  bool isHomeTeam(int teamId) => homeTeam.id == teamId;
 
   @override
   List<Object?> get props => [
@@ -44,9 +49,9 @@ class Match extends Equatable {
     homeTeam,
     awayTeam,
     stadium,
+    city,
     kickoff,
     status,
-    salesOpen,
     homeScore,
     awayScore,
   ];
