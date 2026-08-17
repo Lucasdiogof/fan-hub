@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
+import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
 
 final GoRouter appRouter = GoRouter(
   initialLocation: '/',
@@ -15,6 +16,10 @@ final GoRouter appRouter = GoRouter(
         final fixtureId = state.pathParameters['fixtureId']!;
         return MatchDetailsPage(fixtureId: fixtureId);
       },
+    ),
+    GoRoute(
+      path: '/profile',
+      builder: (context, state) => const ProfilePage(),
     ),
   ],
 );

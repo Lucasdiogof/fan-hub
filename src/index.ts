@@ -1,20 +1,15 @@
-import type { Env } from './football/_lib/config';
+import type { SocialEnv } from './social/config';
 import { handleStandings } from './football/standings';
 import { handleCurrentRound } from './football/currentRound';
 import { handleGoiasTeam } from './football/team';
 import { handleFixtureDetails } from './football/fixtureDetails';
 import { handleDiscover } from './football/discover';
+import { handleSocialFeed } from './social/feed';
 
 const FIXTURE_DETAILS_PATTERN = /^\/api\/football\/fixtures\/([^/]+)\/?$/;
 
-/**
- * Entry point único do Worker: roteia `/api/football/*` pros handlers e
- * delega tudo mais (o app Flutter Web) pro binding de assets estáticos. O
- * Flutter só conhece essas rotas — nunca fala com campeonato-brasileiro-api
- * ou TheSportsDB diretamente.
- */
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: SocialEnv): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
 
@@ -37,6 +32,10 @@ export default {
 
     if (pathname === '/api/football/discover') {
       return handleDiscover(request, env);
+    }
+
+    if (pathname === '/api/social/feed') {
+      return handleSocialFeed(request, env);
     }
 
     return env.ASSETS.fetch(request);

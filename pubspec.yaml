@@ -19,6 +19,7 @@ dependencies:
   flutter_svg: ^2.2.1
   dio: ^5.9.0
   timezone: ^0.10.1
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:

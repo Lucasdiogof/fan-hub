@@ -6,7 +6,7 @@ import 'package:goias_app/features/home/presentation/pages/home_page.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_bottom_navigation.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_home_page.dart';
 import 'package:goias_app/features/match/presentation/pages/games_page.dart';
-import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
+import 'package:goias_app/features/social/presentation/pages/social_feed_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/tickets_page.dart';
 
 class HomeShellPage extends StatefulWidget {
@@ -36,7 +36,7 @@ class _HomeShellPageState extends State<HomeShellPage> {
             GamesPage(),
             TicketsPage(),
             MembershipHomePage(),
-            ProfilePage(),
+            SocialFeedPage(),
           ];
           return Scaffold(
             body: IndexedStack(index: shellState.index, children: pages),

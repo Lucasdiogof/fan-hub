@@ -23,7 +23,11 @@ class MainBottomNavigation extends StatelessWidget {
       label: 'Ingressos',
     ),
     _NavItemData(icon: Icons.badge_outlined, selectedIcon: Icons.badge_rounded, label: 'Sócio'),
-    _NavItemData(icon: Icons.person_outline, selectedIcon: Icons.person_rounded, label: 'Perfil'),
+    _NavItemData(
+      icon: Icons.ondemand_video_outlined,
+      selectedIcon: Icons.ondemand_video_rounded,
+      label: 'Mídia',
+    ),
   ];
 
   @override

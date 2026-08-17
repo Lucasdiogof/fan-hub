@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -27,7 +28,7 @@ class HomeHeader extends StatelessWidget {
         const Spacer(),
         _CircleIconButton(icon: Icons.notifications_outlined, onTap: () {}),
         const SizedBox(width: AppSpacing.sm),
-        _CircleIconButton(icon: Icons.person_outline, onTap: () {}),
+        _CircleIconButton(icon: Icons.person_outline, onTap: () => context.push('/profile')),
       ],
     );
   }
