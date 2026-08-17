@@ -1,15 +1,42 @@
 import type { SocialPost, SocialProvider } from '../types';
+import rawPosts from '../data/x_posts.json';
+
+interface RawXPost {
+  tweet_id: string;
+  text: string;
+  timestamp: string;
+  tweet_url: string;
+  image_links: string[];
+  user_screen_name: string;
+  user_name: string;
+  likes: number;
+  retweets: number;
+  comments: number;
+}
 
 export class XProvider implements SocialProvider {
   name = 'x';
 
-  constructor(private bearerToken: string | null) {}
-
   async fetch(): Promise<SocialPost[]> {
-    if (!this.bearerToken) return [];
-    // Real X API integration — placeholder until credentials are configured.
-    // Will use the user timeline endpoint for @goiasoficial.
-    console.log('x.fetch: X_BEARER_TOKEN configured but integration not yet implemented');
-    return [];
+    const posts = rawPosts as RawXPost[];
+    return posts
+      .filter(post => post.tweet_id && post.timestamp)
+      .map((post): SocialPost => {
+        const image = post.image_links?.[0];
+        return {
+          id: `x-${post.tweet_id}`,
+          platform: 'x',
+          authorName: post.user_name || 'Goiás Esporte Clube',
+          authorHandle: post.user_screen_name || 'goiasoficial',
+          text: post.text || undefined,
+          mediaType: image ? 'image' : 'text',
+          imageUrl: image,
+          publishedAt: post.timestamp,
+          permalink: post.tweet_url,
+          likes: post.likes,
+          comments: post.comments,
+          reposts: post.retweets,
+        };
+      });
   }
 }

@@ -48,3 +48,10 @@ app.*.map.json
 /node_modules/
 .dev.vars
 .wrangler/
+
+# Python / Scweet
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+cookies.json

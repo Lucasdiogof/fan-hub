@@ -1,0 +1,43 @@
+name: Sync X posts
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-x-posts
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Scweet
+        run: pip install "Scweet>=5.3,<6"
+
+      - name: Fetch latest posts
+        env:
+          X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
+        run: python scripts/social/sync_x_posts.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- src/social/data/x_posts.json; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git add src/social/data/x_posts.json
+          git commit -m "Update X posts feed"
+          git push
