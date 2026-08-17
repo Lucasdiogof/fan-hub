@@ -58,17 +58,4 @@ void main() {
       expect(result.map((m) => m.id), ['soonest', 'middle', 'later']);
     });
   });
-
-  group('MatchOrdering.results', () {
-    test('sorts descending (most recent first) and only includes finished', () {
-      final matches = [
-        _match(id: 'oldest', kickoff: now.subtract(const Duration(days: 20)), status: MatchStatus.finished),
-        _match(id: 'newest', kickoff: now.subtract(const Duration(days: 1)), status: MatchStatus.finished),
-        _match(id: 'scheduled', kickoff: now.add(const Duration(days: 1)), status: MatchStatus.scheduled),
-      ];
-
-      final result = MatchOrdering.results(matches);
-      expect(result.map((m) => m.id), ['newest', 'oldest']);
-    });
-  });
 }

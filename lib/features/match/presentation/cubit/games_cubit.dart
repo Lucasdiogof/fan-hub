@@ -41,13 +41,11 @@ class GamesCubit extends Cubit<GamesState> {
     switch (result) {
       case Success(:final data):
         final nextMatch = data.nextMatch != null && MatchOrdering.isOpen(data.nextMatch!) ? data.nextMatch : null;
-        final recentResults = MatchOrdering.results(data.recentResults);
         emit(
           state.copyWith(
-            snapshotStatus: nextMatch == null && recentResults.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            snapshotStatus: nextMatch == null ? LoadStatus.empty : LoadStatus.success,
             nextMatch: nextMatch,
             clearNextMatch: nextMatch == null,
-            recentResults: recentResults,
           ),
         );
       case Error(:final failure):

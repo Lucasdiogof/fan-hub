@@ -19,11 +19,4 @@ class MatchOrdering {
     final sorted = [...matches]..sort((a, b) => a.kickoff.compareTo(b.kickoff));
     return sorted;
   }
-
-  /// Partidas encerradas, da mais recente para a mais antiga.
-  static List<Match> results(List<Match> matches) {
-    final valid = matches.where((m) => m.status == MatchStatus.finished).toList()
-      ..sort((a, b) => b.kickoff.compareTo(a.kickoff));
-    return valid;
-  }
 }

@@ -12,7 +12,6 @@ import 'package:goias_app/features/match/presentation/widgets/games_section.dart
 import 'package:goias_app/features/match/presentation/widgets/games_section_selector.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_list_item.dart';
 import 'package:goias_app/features/match/presentation/widgets/next_match_card.dart';
-import 'package:goias_app/features/match/presentation/widgets/result_list_item.dart';
 import 'package:goias_app/features/match/presentation/widgets/standings_view.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/section_header.dart';
@@ -104,11 +103,7 @@ class _MatchesTab extends StatelessWidget {
   static bool _allEmpty(GamesState state) {
     final currentRoundEmpty = state.currentRoundStatus == LoadStatus.empty || state.currentRoundStatus == LoadStatus.error;
     final snapshotEmpty = state.snapshotStatus == LoadStatus.empty || state.snapshotStatus == LoadStatus.error;
-    return currentRoundEmpty &&
-        snapshotEmpty &&
-        state.currentRoundMatches.isEmpty &&
-        state.nextMatch == null &&
-        state.recentResults.isEmpty;
+    return currentRoundEmpty && snapshotEmpty && state.currentRoundMatches.isEmpty && state.nextMatch == null;
   }
 
   @override
@@ -157,7 +152,6 @@ class _MatchesContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final nextMatch = state.nextMatch;
     final roundMatches = state.currentRoundMatches;
-    final results = state.recentResults;
 
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(),
@@ -176,15 +170,6 @@ class _MatchesContent extends StatelessWidget {
           const SizedBox(height: AppSpacing.md),
           for (final match in roundMatches) ...[
             MatchListItem(match: match, onTap: () => onMatchTap(match)),
-            const SizedBox(height: AppSpacing.sm),
-          ],
-          const SizedBox(height: AppSpacing.xxl),
-        ],
-        if (results.isNotEmpty) ...[
-          const SectionHeader(title: 'RESULTADOS RECENTES'),
-          const SizedBox(height: AppSpacing.md),
-          for (final match in results) ...[
-            ResultListItem(match: match, onTap: () => onMatchTap(match)),
             const SizedBox(height: AppSpacing.sm),
           ],
         ],

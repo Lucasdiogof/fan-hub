@@ -10,7 +10,6 @@ class GamesState extends Equatable {
     this.standingsStatus = LoadStatus.initial,
     this.currentRoundMatches = const [],
     this.nextMatch,
-    this.recentResults = const [],
     this.standings = const [],
     this.currentRoundErrorMessage,
     this.snapshotErrorMessage,
@@ -22,7 +21,6 @@ class GamesState extends Equatable {
   final LoadStatus standingsStatus;
   final List<Match> currentRoundMatches;
   final Match? nextMatch;
-  final List<Match> recentResults;
   final List<Standing> standings;
   final String? currentRoundErrorMessage;
   final String? snapshotErrorMessage;
@@ -35,7 +33,6 @@ class GamesState extends Equatable {
     List<Match>? currentRoundMatches,
     Match? nextMatch,
     bool clearNextMatch = false,
-    List<Match>? recentResults,
     List<Standing>? standings,
     String? currentRoundErrorMessage,
     String? snapshotErrorMessage,
@@ -47,7 +44,6 @@ class GamesState extends Equatable {
       standingsStatus: standingsStatus ?? this.standingsStatus,
       currentRoundMatches: currentRoundMatches ?? this.currentRoundMatches,
       nextMatch: clearNextMatch ? null : (nextMatch ?? this.nextMatch),
-      recentResults: recentResults ?? this.recentResults,
       standings: standings ?? this.standings,
       currentRoundErrorMessage: currentRoundErrorMessage ?? this.currentRoundErrorMessage,
       snapshotErrorMessage: snapshotErrorMessage ?? this.snapshotErrorMessage,
@@ -62,7 +58,6 @@ class GamesState extends Equatable {
     standingsStatus,
     currentRoundMatches,
     nextMatch,
-    recentResults,
     standings,
     currentRoundErrorMessage,
     snapshotErrorMessage,
