@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/app_router.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 
 void main() {
+  initializeBrazilTimeZone();
   setupDependencies();
   runApp(const GoiasApp());
 }
