@@ -8,6 +8,7 @@ import { fetchEventById } from './providers/thesportsdb_provider';
 import { normalizeBrasileiraoMatch, normalizeTheSportsDbEvent } from './normalize/match';
 
 const CACHE_TTL_SECONDS = 30 * 60;
+const COMPETITION_NAME = 'Campeonato Brasileiro Série B';
 
 /**
  * `id` vem prefixado por provider (`cbapi-<id>` / `tsdb-<id>`) — o próprio
@@ -57,7 +58,7 @@ async function handleTheSportsDbFixture(request: Request, cacheVersion: string, 
       throw new ProviderError('Partida não encontrada.', 404, 'thesportsdb');
     }
     return {
-      competition: { name: event.strLeague, season: event.strSeason ? Number(event.strSeason) : null },
+      competition: { name: COMPETITION_NAME, season: event.strSeason ? Number(event.strSeason) : null },
       match: normalizeTheSportsDbEvent(event),
     };
   });

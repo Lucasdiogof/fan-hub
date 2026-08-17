@@ -3,10 +3,8 @@ import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
-import 'package:goias_app/features/match/data/mock_match_repository.dart';
 import 'package:goias_app/features/match/data/repositories/football_repository_impl.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
-import 'package:goias_app/features/match/domain/repositories/match_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/membership/data/mock_membership_repository.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
@@ -24,7 +22,6 @@ import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.
 final GetIt sl = GetIt.instance;
 
 void setupDependencies() {
-  sl.registerLazySingleton<MatchRepository>(MockMatchRepository.new);
   sl.registerLazySingleton<NewsRepository>(MockNewsRepository.new);
   sl.registerLazySingleton<TicketRepository>(MockTicketRepository.new);
   sl.registerLazySingleton<MembershipRepository>(MockMembershipRepository.new);
@@ -37,7 +34,7 @@ void setupDependencies() {
   sl.registerLazySingleton<SocialRemoteDataSource>(() => SocialRemoteDataSource(sl()));
   sl.registerLazySingleton<SocialFeedRepository>(() => SocialFeedRepositoryImpl(sl()));
 
-  sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl(), sl()));
+  sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
 }

@@ -7,9 +7,6 @@ import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/home/presentation/widgets/featured_news_card.dart';
 import 'package:goias_app/features/home/presentation/widgets/home_header.dart';
-import 'package:goias_app/features/home/presentation/widgets/membership_banner.dart';
-import 'package:goias_app/features/home/presentation/widgets/next_match_hero.dart';
-import 'package:goias_app/features/home/presentation/widgets/upcoming_matches_section.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -34,7 +31,7 @@ class _HomeView extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
-            if (state.loading && state.nextMatch == null) {
+            if (state.loading && state.featuredNews == null) {
               return Center(child: CircularProgressIndicator(color: colors.primary));
             }
             return Center(
@@ -51,24 +48,10 @@ class _HomeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const HomeHeader(),
-                      const SizedBox(height: AppSpacing.xxl),
-                      if (state.nextMatch != null)
-                        NextMatchHero(
-                          match: state.nextMatch!,
-                          onBuyTicket: () {},
-                          onViewDetails: () {},
-                        ),
                       if (state.featuredNews != null) ...[
-                        const SizedBox(height: AppSpacing.lg),
+                        const SizedBox(height: AppSpacing.xxl),
                         FeaturedNewsCard(article: state.featuredNews!),
                       ],
-                      const SizedBox(height: AppSpacing.lg),
-                      MembershipBanner(onViewPlans: () {}),
-                      const SizedBox(height: AppSpacing.xxxl),
-                      UpcomingMatchesSection(
-                        matches: state.upcomingMatches,
-                        ticketsOpenMatchIds: state.ticketsOpenMatchIds,
-                      ),
                     ],
                   ),
                 ),
