@@ -1,0 +1,41 @@
+name: Sync Instagram posts
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-instagram-posts
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Instaloader
+        run: pip install "instaloader>=4.13,<5"
+
+      - name: Fetch latest posts
+        run: python scripts/social/sync_instagram_posts.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- src/social/data/instagram_posts.json; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git add src/social/data/instagram_posts.json
+          git commit -m "Update Instagram posts feed"
+          git push
