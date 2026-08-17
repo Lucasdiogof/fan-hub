@@ -49,12 +49,8 @@ app.*.map.json
 .dev.vars
 .wrangler/
 
-# Python / Scweet / Instaloader
+# Python / Scweet
 __pycache__/
 *.py[cod]
 .venv/
 venv/
-cookies.json
-*.session
-session-*
-.instaloader*
