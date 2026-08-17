@@ -12,7 +12,7 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/match/:fixtureId',
       builder: (context, state) {
-        final fixtureId = int.parse(state.pathParameters['fixtureId']!);
+        final fixtureId = state.pathParameters['fixtureId']!;
         return MatchDetailsPage(fixtureId: fixtureId);
       },
     ),

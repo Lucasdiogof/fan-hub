@@ -1,33 +1,57 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/features/match/domain/match_ordering.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
-/// Centraliza o fetch de dados esportivos da aba Jogos: uma chamada pra
-/// partidas (próximo jogo/próximos/resultados são derivados client-side) e
-/// uma pra classificação — nenhum widget filho faz sua própria requisição.
+/// Centraliza o fetch de dados esportivos da aba Jogos: rodada atual,
+/// snapshot do Goiás (próximo jogo + últimos resultados) e classificação
+/// vêm de três endpoints independentes — cada um com seu próprio estado,
+/// pra uma falha em um não esconder os outros dois.
 class GamesCubit extends Cubit<GamesState> {
   GamesCubit(this._footballRepository) : super(const GamesState()) {
-    loadMatches();
+    loadCurrentRound();
+    loadSnapshot();
     loadStandings();
   }
 
   final FootballRepository _footballRepository;
 
-  Future<void> loadMatches() async {
-    emit(state.copyWith(matchesStatus: LoadStatus.loading));
-    final result = await _footballRepository.getMatches();
+  Future<void> loadCurrentRound() async {
+    emit(state.copyWith(currentRoundStatus: LoadStatus.loading));
+    final result = await _footballRepository.getCurrentRound();
     switch (result) {
       case Success(:final data):
+        final matches = MatchOrdering.chronological(data);
         emit(
           state.copyWith(
-            matchesStatus: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
-            matches: data,
+            currentRoundStatus: matches.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            currentRoundMatches: matches,
           ),
         );
       case Error(:final failure):
-        emit(state.copyWith(matchesStatus: LoadStatus.error, matchesErrorMessage: failure.message));
+        emit(state.copyWith(currentRoundStatus: LoadStatus.error, currentRoundErrorMessage: failure.message));
+    }
+  }
+
+  Future<void> loadSnapshot() async {
+    emit(state.copyWith(snapshotStatus: LoadStatus.loading));
+    final result = await _footballRepository.getGoiasSnapshot();
+    switch (result) {
+      case Success(:final data):
+        final nextMatch = data.nextMatch != null && MatchOrdering.isOpen(data.nextMatch!) ? data.nextMatch : null;
+        final recentResults = MatchOrdering.results(data.recentResults);
+        emit(
+          state.copyWith(
+            snapshotStatus: nextMatch == null && recentResults.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            nextMatch: nextMatch,
+            clearNextMatch: nextMatch == null,
+            recentResults: recentResults,
+          ),
+        );
+      case Error(:final failure):
+        emit(state.copyWith(snapshotStatus: LoadStatus.error, snapshotErrorMessage: failure.message));
     }
   }
 
@@ -47,10 +71,10 @@ class GamesCubit extends Cubit<GamesState> {
     }
   }
 
-  /// Pull-to-refresh: refaz as duas buscas. O Cloudflare continua no
+  /// Pull-to-refresh: refaz as três buscas. O Cloudflare continua no
   /// caminho — isso não ignora o cache server-side, só força uma nova
   /// leitura no lado do Flutter.
   Future<void> refresh() async {
-    await Future.wait([loadMatches(), loadStandings()]);
+    await Future.wait([loadCurrentRound(), loadSnapshot(), loadStandings()]);
   }
 }

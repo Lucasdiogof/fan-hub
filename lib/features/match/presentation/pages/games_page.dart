@@ -10,12 +10,13 @@ import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_header.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section_selector.dart';
-import 'package:goias_app/features/match/presentation/widgets/matches_by_month_section.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_list_item.dart';
 import 'package:goias_app/features/match/presentation/widgets/next_match_card.dart';
 import 'package:goias_app/features/match/presentation/widgets/result_list_item.dart';
 import 'package:goias_app/features/match/presentation/widgets/standings_view.dart';
-import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
+import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/section_header.dart';
+import 'package:goias_app/shared/widgets/state_message.dart';
 
 class GamesPage extends StatelessWidget {
   const GamesPage({super.key});
@@ -89,49 +90,105 @@ class _MatchesTab extends StatelessWidget {
 
   final ValueChanged<Match> onMatchTap;
 
+  static bool _isLoading(GamesState state) {
+    return state.currentRoundStatus == LoadStatus.initial ||
+        state.currentRoundStatus == LoadStatus.loading ||
+        state.snapshotStatus == LoadStatus.initial ||
+        state.snapshotStatus == LoadStatus.loading;
+  }
+
+  static bool _allFailed(GamesState state) {
+    return state.currentRoundStatus == LoadStatus.error && state.snapshotStatus == LoadStatus.error;
+  }
+
+  static bool _allEmpty(GamesState state) {
+    final currentRoundEmpty = state.currentRoundStatus == LoadStatus.empty || state.currentRoundStatus == LoadStatus.error;
+    final snapshotEmpty = state.snapshotStatus == LoadStatus.empty || state.snapshotStatus == LoadStatus.error;
+    return currentRoundEmpty &&
+        snapshotEmpty &&
+        state.currentRoundMatches.isEmpty &&
+        state.nextMatch == null &&
+        state.recentResults.isEmpty;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
     return BlocBuilder<GamesCubit, GamesState>(
       builder: (context, state) {
-        return RefreshableStateView(
-          status: state.matchesStatus,
-          onRefresh: () => context.read<GamesCubit>().loadMatches(),
-          errorMessage: state.matchesErrorMessage,
-          emptyIcon: Icons.event_busy_rounded,
-          emptyTitle: 'Nenhuma partida encontrada.',
-          successBuilder: (context) {
-            final upcomingAfterNext = state.nextMatch == null
-                ? state.upcomingMatches
-                : state.upcomingMatches.where((m) => m.id != state.nextMatch!.id).toList();
-            final results = state.results;
-
-            return ListView(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xxxl),
-              children: [
-                if (state.nextMatch != null) ...[
-                  NextMatchCard(
-                    match: state.nextMatch!,
-                    onBuyTicket: () {},
-                    onViewDetails: () => onMatchTap(state.nextMatch!),
+        return RefreshIndicator(
+          onRefresh: () => context.read<GamesCubit>().refresh(),
+          color: colors.primary,
+          child: _isLoading(state)
+              ? _centered(CircularProgressIndicator(color: colors.primary))
+              : _allFailed(state)
+              ? _centered(
+                  StateMessage(
+                    icon: Icons.wifi_off_rounded,
+                    title: 'Não foi possível carregar os jogos',
+                    message: state.currentRoundErrorMessage ?? state.snapshotErrorMessage,
                   ),
-                  const SizedBox(height: AppSpacing.xxl),
-                ],
-                if (upcomingAfterNext.isNotEmpty) ...[
-                  MatchesByMonthSection(matches: upcomingAfterNext, onMatchTap: onMatchTap),
-                ],
-                if (results.isNotEmpty) ...[
-                  const SectionHeader(title: 'RESULTADOS'),
-                  const SizedBox(height: AppSpacing.md),
-                  for (final match in results) ...[
-                    ResultListItem(match: match, onTap: () => onMatchTap(match)),
-                    const SizedBox(height: AppSpacing.sm),
-                  ],
-                ],
-              ],
-            );
-          },
+                )
+              : _allEmpty(state)
+              ? _centered(const StateMessage(icon: Icons.event_busy_rounded, title: 'Nenhuma partida encontrada.'))
+              : _MatchesContent(state: state, onMatchTap: onMatchTap),
         );
       },
+    );
+  }
+}
+
+Widget _centered(Widget child) {
+  return ListView(
+    physics: const AlwaysScrollableScrollPhysics(),
+    children: [
+      Padding(padding: const EdgeInsets.only(top: 100), child: Center(child: child)),
+    ],
+  );
+}
+
+class _MatchesContent extends StatelessWidget {
+  const _MatchesContent({required this.state, required this.onMatchTap});
+
+  final GamesState state;
+  final ValueChanged<Match> onMatchTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final nextMatch = state.nextMatch;
+    final roundMatches = state.currentRoundMatches;
+    final results = state.recentResults;
+
+    return ListView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xxxl),
+      children: [
+        if (nextMatch != null) ...[
+          NextMatchCard(
+            match: nextMatch,
+            onBuyTicket: () {},
+            onViewDetails: () => onMatchTap(nextMatch),
+          ),
+          const SizedBox(height: AppSpacing.xxl),
+        ],
+        if (roundMatches.isNotEmpty) ...[
+          const SectionHeader(title: 'RODADA ATUAL'),
+          const SizedBox(height: AppSpacing.md),
+          for (final match in roundMatches) ...[
+            MatchListItem(match: match, onTap: () => onMatchTap(match)),
+            const SizedBox(height: AppSpacing.sm),
+          ],
+          const SizedBox(height: AppSpacing.xxl),
+        ],
+        if (results.isNotEmpty) ...[
+          const SectionHeader(title: 'RESULTADOS RECENTES'),
+          const SizedBox(height: AppSpacing.md),
+          for (final match in results) ...[
+            ResultListItem(match: match, onTap: () => onMatchTap(match)),
+            const SizedBox(height: AppSpacing.sm),
+          ],
+        ],
+      ],
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
@@ -26,7 +25,7 @@ class StandingsView extends StatelessWidget {
             children: [
               const StandingsHeader(),
               for (final standing in state.standings)
-                StandingsRow(standing: standing, isGoias: standing.team.id == MockData.goias.id),
+                StandingsRow(standing: standing, isGoias: standing.isGoias),
             ],
           ),
         );

@@ -12,29 +12,6 @@ class FootballRepositoryImpl implements FootballRepository {
   final FootballRemoteDataSource _remote;
 
   @override
-  Future<Result<List<Match>>> getMatches() => _fetchMatches('all');
-
-  @override
-  Future<Result<List<Match>>> getUpcomingMatches() => _fetchMatches('upcoming');
-
-  @override
-  Future<Result<List<Match>>> getResults() => _fetchMatches('results');
-
-  Future<Result<List<Match>>> _fetchMatches(String scope) async {
-    try {
-      final result = await _remote.getFixtures(scope: scope);
-      final matches = result.matches
-          .map((dto) => dto.toEntity(competitionName: result.competition.name))
-          .toList();
-      return Success(matches);
-    } on DioException catch (e) {
-      return Error(_mapDioError(e));
-    } catch (_) {
-      return const Error(UnexpectedFailure());
-    }
-  }
-
-  @override
   Future<Result<List<Standing>>> getStandings() async {
     try {
       final result = await _remote.getStandings();
@@ -47,7 +24,40 @@ class FootballRepositoryImpl implements FootballRepository {
   }
 
   @override
-  Future<Result<Match>> getMatchDetails(int fixtureId) async {
+  Future<Result<List<Match>>> getCurrentRound() async {
+    try {
+      final result = await _remote.getCurrentRound();
+      final matches = result.matches
+          .map((dto) => dto.toEntity(competitionName: result.competition.name))
+          .toList();
+      return Success(matches);
+    } on DioException catch (e) {
+      return Error(_mapDioError(e));
+    } catch (_) {
+      return const Error(UnexpectedFailure());
+    }
+  }
+
+  @override
+  Future<Result<({Match? nextMatch, List<Match> recentResults})>> getGoiasSnapshot() async {
+    try {
+      final result = await _remote.getGoiasSnapshot();
+      final competitionName = result.competition.name;
+      return Success((
+        nextMatch: result.nextMatch?.toEntity(competitionName: competitionName),
+        recentResults: result.recentResults
+            .map((dto) => dto.toEntity(competitionName: competitionName))
+            .toList(),
+      ));
+    } on DioException catch (e) {
+      return Error(_mapDioError(e));
+    } catch (_) {
+      return const Error(UnexpectedFailure());
+    }
+  }
+
+  @override
+  Future<Result<Match>> getMatchDetails(String fixtureId) async {
     try {
       final result = await _remote.getFixtureDetails(fixtureId);
       return Success(result.match.toEntity(competitionName: result.competition.name));

@@ -24,14 +24,6 @@ class MockMatchRepository implements MatchRepository {
   }
 
   @override
-  Future<Result<List<Match>>> getResults() async {
-    await Future<void>.delayed(_latency);
-    final results = MockData.matches.where((m) => m.status == MatchStatus.finished).toList()
-      ..sort((a, b) => b.kickoff.compareTo(a.kickoff));
-    return Success(results);
-  }
-
-  @override
   Future<Result<Match>> getMatchById(String id) async {
     await Future<void>.delayed(_latency);
     for (final match in MockData.matches) {

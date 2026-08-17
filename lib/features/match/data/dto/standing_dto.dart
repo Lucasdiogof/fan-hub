@@ -5,6 +5,7 @@ class StandingDto {
   const StandingDto({
     required this.position,
     required this.team,
+    required this.isGoias,
     required this.points,
     required this.played,
     required this.wins,
@@ -17,6 +18,7 @@ class StandingDto {
 
   final int position;
   final TeamDto team;
+  final bool isGoias;
   final int points;
   final int played;
   final int wins;
@@ -29,6 +31,7 @@ class StandingDto {
   factory StandingDto.fromJson(Map<String, dynamic> json) => StandingDto(
     position: json['position'] as int,
     team: TeamDto.fromJson(json['team'] as Map<String, dynamic>),
+    isGoias: json['isGoias'] as bool? ?? false,
     points: json['points'] as int,
     played: json['played'] as int,
     wins: json['wins'] as int,
@@ -42,6 +45,7 @@ class StandingDto {
   Standing toEntity() => Standing(
     position: position,
     team: team.toEntity(),
+    isGoias: isGoias,
     points: points,
     played: played,
     wins: wins,

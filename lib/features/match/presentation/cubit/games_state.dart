@@ -1,59 +1,71 @@
 import 'package:equatable/equatable.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
-import 'package:goias_app/features/match/domain/match_ordering.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 class GamesState extends Equatable {
   const GamesState({
-    this.matchesStatus = LoadStatus.initial,
+    this.currentRoundStatus = LoadStatus.initial,
+    this.snapshotStatus = LoadStatus.initial,
     this.standingsStatus = LoadStatus.initial,
-    this.matches = const [],
+    this.currentRoundMatches = const [],
+    this.nextMatch,
+    this.recentResults = const [],
     this.standings = const [],
-    this.matchesErrorMessage,
+    this.currentRoundErrorMessage,
+    this.snapshotErrorMessage,
     this.standingsErrorMessage,
   });
 
-  final LoadStatus matchesStatus;
+  final LoadStatus currentRoundStatus;
+  final LoadStatus snapshotStatus;
   final LoadStatus standingsStatus;
-  final List<Match> matches;
+  final List<Match> currentRoundMatches;
+  final Match? nextMatch;
+  final List<Match> recentResults;
   final List<Standing> standings;
-  final String? matchesErrorMessage;
+  final String? currentRoundErrorMessage;
+  final String? snapshotErrorMessage;
   final String? standingsErrorMessage;
 
-  /// Todas as partidas foram buscadas de uma vez — próximo jogo, próximos
-  /// jogos e resultados são derivados aqui, sem chamadas extras.
-  Match? get nextMatch => MatchOrdering.nextMatch(matches);
-
-  List<Match> get upcomingMatches => MatchOrdering.upcoming(matches);
-
-  List<Match> get results => MatchOrdering.results(matches);
-
   GamesState copyWith({
-    LoadStatus? matchesStatus,
+    LoadStatus? currentRoundStatus,
+    LoadStatus? snapshotStatus,
     LoadStatus? standingsStatus,
-    List<Match>? matches,
+    List<Match>? currentRoundMatches,
+    Match? nextMatch,
+    bool clearNextMatch = false,
+    List<Match>? recentResults,
     List<Standing>? standings,
-    String? matchesErrorMessage,
+    String? currentRoundErrorMessage,
+    String? snapshotErrorMessage,
     String? standingsErrorMessage,
   }) {
     return GamesState(
-      matchesStatus: matchesStatus ?? this.matchesStatus,
+      currentRoundStatus: currentRoundStatus ?? this.currentRoundStatus,
+      snapshotStatus: snapshotStatus ?? this.snapshotStatus,
       standingsStatus: standingsStatus ?? this.standingsStatus,
-      matches: matches ?? this.matches,
+      currentRoundMatches: currentRoundMatches ?? this.currentRoundMatches,
+      nextMatch: clearNextMatch ? null : (nextMatch ?? this.nextMatch),
+      recentResults: recentResults ?? this.recentResults,
       standings: standings ?? this.standings,
-      matchesErrorMessage: matchesErrorMessage ?? this.matchesErrorMessage,
+      currentRoundErrorMessage: currentRoundErrorMessage ?? this.currentRoundErrorMessage,
+      snapshotErrorMessage: snapshotErrorMessage ?? this.snapshotErrorMessage,
       standingsErrorMessage: standingsErrorMessage ?? this.standingsErrorMessage,
     );
   }
 
   @override
   List<Object?> get props => [
-    matchesStatus,
+    currentRoundStatus,
+    snapshotStatus,
     standingsStatus,
-    matches,
+    currentRoundMatches,
+    nextMatch,
+    recentResults,
     standings,
-    matchesErrorMessage,
+    currentRoundErrorMessage,
+    snapshotErrorMessage,
     standingsErrorMessage,
   ];
 }

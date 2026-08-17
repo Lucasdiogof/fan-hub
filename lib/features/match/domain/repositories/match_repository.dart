@@ -6,7 +6,5 @@ abstract class MatchRepository {
 
   Future<Result<List<Match>>> getUpcomingMatches();
 
-  Future<Result<List<Match>>> getResults();
-
   Future<Result<Match>> getMatchById(String id);
 }

@@ -1,44 +1,41 @@
 import 'package:goias_app/features/match/data/dto/team_dto.dart';
-import 'package:goias_app/features/match/data/mappers/api_football_match_status_mapper.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
-import 'package:goias_app/shared/utils/brazil_time.dart';
 
 class MatchDto {
   const MatchDto({
-    required this.fixtureId,
+    required this.id,
     required this.round,
     required this.homeTeam,
     required this.awayTeam,
-    required this.kickoffIso,
-    required this.statusCode,
-    this.venueName,
-    this.venueCity,
+    required this.kickoffRaw,
+    required this.statusName,
+    this.venue,
     this.homeScore,
     this.awayScore,
   });
 
-  final int fixtureId;
+  final String id;
   final String round;
   final TeamDto homeTeam;
   final TeamDto awayTeam;
-  final String kickoffIso;
-  final String statusCode;
-  final String? venueName;
-  final String? venueCity;
+
+  /// Horário já em hora local do Brasil, sem offset (a fonte não fornece
+  /// UTC) — parseado direto, nunca convertido por fuso.
+  final String kickoffRaw;
+  final String statusName;
+  final String? venue;
   final int? homeScore;
   final int? awayScore;
 
   factory MatchDto.fromJson(Map<String, dynamic> json) {
-    final venue = json['venue'] as Map<String, dynamic>?;
     return MatchDto(
-      fixtureId: json['fixtureId'] as int,
+      id: json['id'] as String,
       round: json['round'] as String? ?? '',
       homeTeam: TeamDto.fromJson(json['homeTeam'] as Map<String, dynamic>),
       awayTeam: TeamDto.fromJson(json['awayTeam'] as Map<String, dynamic>),
-      kickoffIso: json['kickoff'] as String,
-      statusCode: json['status'] as String? ?? 'TBD',
-      venueName: venue?['name'] as String?,
-      venueCity: venue?['city'] as String?,
+      kickoffRaw: json['kickoff'] as String,
+      statusName: json['status'] as String? ?? 'unknown',
+      venue: json['venue'] as String?,
       homeScore: json['homeScore'] as int?,
       awayScore: json['awayScore'] as int?,
     );
@@ -46,15 +43,14 @@ class MatchDto {
 
   Match toEntity({required String competitionName}) {
     return Match(
-      id: fixtureId.toString(),
+      id: id,
       competition: competitionName,
       round: round,
       homeTeam: homeTeam.toEntity(),
       awayTeam: awayTeam.toEntity(),
-      stadium: venueName ?? '',
-      city: venueCity,
-      kickoff: toBrazilTime(DateTime.parse(kickoffIso)),
-      status: ApiFootballMatchStatusMapper.map(statusCode),
+      stadium: venue ?? '',
+      kickoff: DateTime.parse(kickoffRaw),
+      status: MatchStatus.values.asNameMap()[statusName] ?? MatchStatus.unknown,
       homeScore: homeScore,
       awayScore: awayScore,
     );

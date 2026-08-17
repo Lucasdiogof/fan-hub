@@ -9,13 +9,6 @@ const _weekdays = [
 
 const _weekdaysShort = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM'];
 
-const _fullMonths = [
-  'JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO',
-  'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO',
-];
-
-String monthLabel(DateTime date) => _fullMonths[date.month - 1];
-
 String _pad(int value) => value.toString().padLeft(2, '0');
 
 String shortDateLabel(DateTime date) => '${_pad(date.day)} ${_months[date.month - 1]}';

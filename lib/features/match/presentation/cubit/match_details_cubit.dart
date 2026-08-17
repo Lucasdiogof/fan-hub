@@ -12,7 +12,7 @@ class MatchDetailsCubit extends Cubit<MatchDetailsState> {
   }
 
   final FootballRepository _repository;
-  final int fixtureId;
+  final String fixtureId;
 
   Future<void> load() async {
     emit(state.copyWith(status: LoadStatus.loading));

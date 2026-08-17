@@ -31,46 +31,31 @@ Match _match({
 void main() {
   final now = DateTime(2026, 8, 17, 12);
 
-  group('MatchOrdering.nextMatch', () {
-    test('picks the earliest valid future/live match, not just the first item', () {
-      final matches = [
-        _match(id: 'far', kickoff: now.add(const Duration(days: 30)), status: MatchStatus.scheduled),
-        _match(id: 'cancelled-soon', kickoff: now.add(const Duration(days: 1)), status: MatchStatus.cancelled),
-        _match(id: 'closest', kickoff: now.add(const Duration(days: 3)), status: MatchStatus.scheduled),
-      ];
-
-      expect(MatchOrdering.nextMatch(matches)?.id, 'closest');
+  group('MatchOrdering.isOpen', () {
+    test('scheduled, live and halftime count as open', () {
+      expect(MatchOrdering.isOpen(_match(id: 'a', kickoff: now, status: MatchStatus.scheduled)), isTrue);
+      expect(MatchOrdering.isOpen(_match(id: 'b', kickoff: now, status: MatchStatus.live)), isTrue);
+      expect(MatchOrdering.isOpen(_match(id: 'c', kickoff: now, status: MatchStatus.halftime)), isTrue);
     });
 
-    test('a live match in progress still counts as next even though kickoff is in the past', () {
-      final matches = [
-        _match(id: 'live-now', kickoff: now.subtract(const Duration(minutes: 30)), status: MatchStatus.live),
-        _match(id: 'future', kickoff: now.add(const Duration(days: 2)), status: MatchStatus.scheduled),
-      ];
-
-      expect(MatchOrdering.nextMatch(matches)?.id, 'live-now');
-    });
-
-    test('returns null when there is no valid upcoming match', () {
-      final matches = [
-        _match(id: 'past', kickoff: now.subtract(const Duration(days: 1)), status: MatchStatus.finished),
-        _match(id: 'postponed', kickoff: now.add(const Duration(days: 1)), status: MatchStatus.postponed),
-      ];
-
-      expect(MatchOrdering.nextMatch(matches), isNull);
+    test('finished, postponed, cancelled and suspended are not open', () {
+      expect(MatchOrdering.isOpen(_match(id: 'a', kickoff: now, status: MatchStatus.finished)), isFalse);
+      expect(MatchOrdering.isOpen(_match(id: 'b', kickoff: now, status: MatchStatus.postponed)), isFalse);
+      expect(MatchOrdering.isOpen(_match(id: 'c', kickoff: now, status: MatchStatus.cancelled)), isFalse);
+      expect(MatchOrdering.isOpen(_match(id: 'd', kickoff: now, status: MatchStatus.suspended)), isFalse);
     });
   });
 
-  group('MatchOrdering.upcoming', () {
-    test('sorts ascending (soonest first) and excludes finished/cancelled', () {
+  group('MatchOrdering.chronological', () {
+    test('sorts ascending regardless of input order, never trusting provider order', () {
       final matches = [
         _match(id: 'later', kickoff: now.add(const Duration(days: 10)), status: MatchStatus.scheduled),
         _match(id: 'soonest', kickoff: now.add(const Duration(days: 1)), status: MatchStatus.scheduled),
-        _match(id: 'done', kickoff: now.subtract(const Duration(days: 1)), status: MatchStatus.finished),
+        _match(id: 'middle', kickoff: now.add(const Duration(days: 5)), status: MatchStatus.live),
       ];
 
-      final result = MatchOrdering.upcoming(matches);
-      expect(result.map((m) => m.id), ['soonest', 'later']);
+      final result = MatchOrdering.chronological(matches);
+      expect(result.map((m) => m.id), ['soonest', 'middle', 'later']);
     });
   });
 
@@ -84,21 +69,6 @@ void main() {
 
       final result = MatchOrdering.results(matches);
       expect(result.map((m) => m.id), ['newest', 'oldest']);
-    });
-  });
-
-  group('MatchOrdering.groupByMonth', () {
-    test('groups by month derived from kickoff, preserving chronological order', () {
-      final matches = [
-        _match(id: 'aug-1', kickoff: DateTime(2026, 8, 5), status: MatchStatus.scheduled),
-        _match(id: 'aug-2', kickoff: DateTime(2026, 8, 20), status: MatchStatus.scheduled),
-        _match(id: 'sep-1', kickoff: DateTime(2026, 9, 3), status: MatchStatus.scheduled),
-      ];
-
-      final groups = MatchOrdering.groupByMonth(matches);
-      expect(groups.keys.toList(), ['AGOSTO', 'SETEMBRO']);
-      expect(groups['AGOSTO']!.map((m) => m.id), ['aug-1', 'aug-2']);
-      expect(groups['SETEMBRO']!.map((m) => m.id), ['sep-1']);
     });
   });
 }

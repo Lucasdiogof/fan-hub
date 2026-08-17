@@ -17,7 +17,7 @@ import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
 class MatchDetailsPage extends StatelessWidget {
   const MatchDetailsPage({required this.fixtureId, super.key});
 
-  final int fixtureId;
+  final String fixtureId;
 
   @override
   Widget build(BuildContext context) {
