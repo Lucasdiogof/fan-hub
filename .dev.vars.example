@@ -1,0 +1,3 @@
+# Copie este arquivo para `.dev.vars` (não versionado) e preencha com sua key
+# real da API-Football (api-sports.io, assinatura direta — não RapidAPI).
+API_FOOTBALL_KEY=

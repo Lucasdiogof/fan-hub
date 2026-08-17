@@ -1,0 +1,14 @@
+{
+  "name": "goias-app-worker",
+  "private": true,
+  "description": "Cloudflare Worker — serve o Flutter Web e faz proxy server-side pra API-Football (a key nunca chega ao Flutter).",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20250101.0",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.0.0"
+  },
+  "scripts": {
+    "dev:worker": "wrangler dev",
+    "deploy": "wrangler deploy"
+  }
+}
