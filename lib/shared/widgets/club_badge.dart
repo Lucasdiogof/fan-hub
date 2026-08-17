@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
+import 'package:goias_app/shared/utils/inline_svg_css.dart';
 
 /// Badge esportivo de um time. Prioridade de fonte: `logoUrl` (escudo oficial
 /// vindo da API-Football, com loading/erro) → `crestAsset` (vetor local, hoje
@@ -41,14 +43,7 @@ class ClubBadge extends StatelessWidget {
   }
 
   Widget _svgBadge(BuildContext context, String url) {
-    return SvgPicture.network(
-      url,
-      width: size,
-      height: size,
-      fit: BoxFit.contain,
-      placeholderBuilder: (context) => _LoadingBadge(size: size),
-      errorBuilder: (context, error, stackTrace) => _fallback(context),
-    );
+    return _NetworkSvgBadge(url: url, size: size, fallbackBuilder: _fallback);
   }
 
   Widget _rasterBadge(BuildContext context, String url) {
@@ -78,6 +73,79 @@ class ClubBadge extends StatelessWidget {
       );
     }
     return _ShieldBadge(team: team, size: size, onDark: onDark);
+  }
+}
+
+/// `SvgPicture.network` não resolve classe CSS via `<style>` (ver
+/// `inlineSvgCssClasses`) — então busca o texto do SVG a mão, corrige e
+/// renderiza com `SvgPicture.string`. Cacheado em memória por URL pra não
+/// rebaixar/reprocessar o mesmo escudo a cada rebuild/scroll.
+class _NetworkSvgBadge extends StatefulWidget {
+  const _NetworkSvgBadge({required this.url, required this.size, required this.fallbackBuilder});
+
+  final String url;
+  final double size;
+  final WidgetBuilder fallbackBuilder;
+
+  @override
+  State<_NetworkSvgBadge> createState() => _NetworkSvgBadgeState();
+}
+
+class _NetworkSvgBadgeState extends State<_NetworkSvgBadge> {
+  static final _cache = <String, String>{};
+  static final _dio = Dio();
+
+  late Future<String> _future;
+
+  @override
+  void initState() {
+    super.initState();
+    _future = _load(widget.url);
+  }
+
+  @override
+  void didUpdateWidget(covariant _NetworkSvgBadge oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.url != widget.url) {
+      _future = _load(widget.url);
+    }
+  }
+
+  static Future<String> _load(String url) async {
+    final cached = _cache[url];
+    if (cached != null) return cached;
+
+    final response = await _dio.get<String>(url, options: Options(responseType: ResponseType.plain));
+    final raw = response.data;
+    if (raw == null || raw.isEmpty) {
+      throw StateError('SVG vazio: $url');
+    }
+    final normalized = inlineSvgCssClasses(raw);
+    _cache[url] = normalized;
+    return normalized;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<String>(
+      future: _future,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return _LoadingBadge(size: widget.size);
+        }
+        final svg = snapshot.data;
+        if (snapshot.hasError || svg == null) {
+          return widget.fallbackBuilder(context);
+        }
+        return SvgPicture.string(
+          svg,
+          width: widget.size,
+          height: widget.size,
+          fit: BoxFit.contain,
+          errorBuilder: (context, error, stackTrace) => widget.fallbackBuilder(context),
+        );
+      },
+    );
   }
 }
 
