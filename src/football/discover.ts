@@ -7,6 +7,10 @@ import { jsonResponse, errorResponse } from './_lib/respond';
  * `SERIE_B_LEAGUE_ID` / `GOIAS_TEAM_ID` no `wrangler.toml`. Sem cache —
  * roda só algumas vezes durante a configuração inicial.
  *
+ * Devolve `debug.leagues`/`debug.teams` (status HTTP, `results`, `errors`
+ * crus da API-Football) pra diagnosticar problema de plano/quota/parâmetro
+ * sem precisar adivinhar — nunca inclui a key.
+ *
  * GET /api/football/discover?search=Serie B
  * GET /api/football/discover?search=Goias
  */
@@ -55,6 +59,23 @@ export async function handleDiscover(request: Request, env: Env): Promise<Respon
           country: item.team.country,
         }),
       ),
+      debug: {
+        season,
+        leagues: {
+          httpStatus: leaguesRes.status,
+          results: leagues.results,
+          errors: leagues.errors,
+          get: leagues.get,
+          parameters: leagues.parameters,
+        },
+        teams: {
+          httpStatus: teamsRes.status,
+          results: teams.results,
+          errors: teams.errors,
+          get: teams.get,
+          parameters: teams.parameters,
+        },
+      },
     });
   } catch (err) {
     console.error('football.discover.error', err instanceof Error ? err.message : String(err));
