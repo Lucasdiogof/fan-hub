@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/core/theme/app_spacing.dart';
 
 class AppTheme {
   const AppTheme._();
@@ -28,7 +29,7 @@ class AppTheme {
         elevation: 0,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(AppRadius.card),
           side: BorderSide(color: colors.border),
         ),
       ),
@@ -41,7 +42,7 @@ class AppTheme {
           minimumSize: const Size.fromHeight(52),
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(AppRadius.button),
           ),
           textStyle: base.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w600,
@@ -54,7 +55,7 @@ class AppTheme {
           side: BorderSide(color: colors.border),
           minimumSize: const Size.fromHeight(52),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
+            borderRadius: BorderRadius.circular(AppRadius.button),
           ),
           textStyle: base.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w600,
@@ -75,19 +76,6 @@ class AppTheme {
           color: colors.textPrimary,
           fontWeight: FontWeight.w700,
         ),
-      ),
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: colors.surface,
-        elevation: 0,
-        height: 68,
-        indicatorColor: colors.secondary,
-        labelTextStyle: WidgetStateProperty.resolveWith((states) {
-          final selected = states.contains(WidgetState.selected);
-          return base.textTheme.labelSmall?.copyWith(
-            fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
-            color: selected ? colors.primary : colors.textSecondary,
-          );
-        }),
       ),
       chipTheme: base.chipTheme.copyWith(
         backgroundColor: colors.secondary,

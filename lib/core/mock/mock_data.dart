@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
-import 'package:goias_app/features/match/domain/entities/team_info.dart';
+import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
@@ -13,47 +14,64 @@ import 'package:goias_app/features/ticket/domain/entities/stadium_sector.dart';
 class MockData {
   const MockData._();
 
-  static const goias = TeamInfo(
+  // TODO(api-football): `id: 1` é placeholder, não confirmado — a Home ainda
+  // usa só mocks. Depois que o ID real do Goiás for confirmado via
+  // GET /api/football/discover?search=Goias, atualize aqui: esse mesmo `id`
+  // é usado pra destacar a linha do Goiás na classificação real
+  // (StandingsView compara `standing.team.id == MockData.goias.id`).
+  static const goias = Team(
+    id: 1,
     name: 'Goiás',
     shortName: 'GO',
-    color: Color(0xFF0C7C42),
+    color: Color(0xFF004C1B),
+    crestAsset: AppAssets.goiasCrest,
   );
 
-  static const athleticoPr = TeamInfo(
+  static const athleticoPr = Team(
+    id: 2,
     name: 'Athletico-PR',
     shortName: 'CAP',
     color: Color(0xFFC0392B),
   );
 
-  static const coritiba = TeamInfo(
+  static const coritiba = Team(
+    id: 3,
     name: 'Coritiba',
     shortName: 'CFC',
     color: Color(0xFF1F6F4A),
   );
 
-  static const vilaNova = TeamInfo(
+  static const vilaNova = Team(
+    id: 4,
     name: 'Vila Nova',
     shortName: 'VNO',
     color: Color(0xFFB01128),
   );
 
-  static const avai = TeamInfo(
+  static const avai = Team(
+    id: 5,
     name: 'Avaí',
     shortName: 'AVA',
     color: Color(0xFF1C4B9C),
   );
 
-  static const botafogoSp = TeamInfo(
+  static const botafogoSp = Team(
+    id: 6,
     name: 'Botafogo-SP',
     shortName: 'BSP',
     color: Color(0xFF6E6E6E),
   );
 
-  static const novorizontino = TeamInfo(
+  static const novorizontino = Team(
+    id: 7,
     name: 'Novorizontino',
     shortName: 'NOV',
     color: Color(0xFFD32F2F),
   );
+
+  /// IDs mockados de partidas com "venda aberta" — usado só pela Home
+  /// (ticket ainda não tem integração real; ver [[project_goias_app_architecture]]).
+  static const ticketsOpenMatchIds = {'m-next-1', 'm-next-3'};
 
   static final DateTime _now = DateTime.now();
 
@@ -67,6 +85,7 @@ class MockData {
         homeTeam: vilaNova,
         awayTeam: goias,
         stadium: 'Estádio Onésio Brasil Alvarenga',
+        city: 'Goiânia',
         kickoff: today.subtract(const Duration(days: 4, hours: 3)),
         status: MatchStatus.finished,
         homeScore: 1,
@@ -79,9 +98,9 @@ class MockData {
         homeTeam: goias,
         awayTeam: athleticoPr,
         stadium: 'Serrinha',
+        city: 'Goiânia',
         kickoff: today.add(const Duration(days: 2, hours: 21, minutes: 30)),
         status: MatchStatus.scheduled,
-        salesOpen: true,
       ),
       Match(
         id: 'm-next-2',
@@ -90,6 +109,7 @@ class MockData {
         homeTeam: coritiba,
         awayTeam: goias,
         stadium: 'Couto Pereira',
+        city: 'Curitiba',
         kickoff: today.add(const Duration(days: 9, hours: 20)),
         status: MatchStatus.scheduled,
       ),
@@ -100,9 +120,9 @@ class MockData {
         homeTeam: goias,
         awayTeam: avai,
         stadium: 'Serrinha',
+        city: 'Goiânia',
         kickoff: today.add(const Duration(days: 16, hours: 21, minutes: 30)),
         status: MatchStatus.scheduled,
-        salesOpen: true,
       ),
       Match(
         id: 'm-next-4',
@@ -111,6 +131,7 @@ class MockData {
         homeTeam: botafogoSp,
         awayTeam: goias,
         stadium: 'Santa Cruz',
+        city: 'Ribeirão Preto',
         kickoff: today.add(const Duration(days: 23, hours: 20)),
         status: MatchStatus.scheduled,
       ),
@@ -121,6 +142,7 @@ class MockData {
         homeTeam: goias,
         awayTeam: novorizontino,
         stadium: 'Serrinha',
+        city: 'Goiânia',
         kickoff: today.add(const Duration(days: 30, hours: 21, minutes: 30)),
         status: MatchStatus.scheduled,
       ),
@@ -131,6 +153,7 @@ class MockData {
         homeTeam: goias,
         awayTeam: novorizontino,
         stadium: 'Serrinha',
+        city: 'Goiânia',
         kickoff: today.subtract(const Duration(days: 11, hours: 3)),
         status: MatchStatus.finished,
         homeScore: 2,
@@ -143,6 +166,7 @@ class MockData {
         homeTeam: avai,
         awayTeam: goias,
         stadium: 'Ressacada',
+        city: 'Florianópolis',
         kickoff: today.subtract(const Duration(days: 18, hours: 3)),
         status: MatchStatus.finished,
         homeScore: 1,
