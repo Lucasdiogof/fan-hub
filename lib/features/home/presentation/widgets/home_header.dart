@@ -15,28 +15,13 @@ class HomeHeader extends StatelessWidget {
       children: [
         const ClubBadge(team: MockData.goias, size: 34),
         const SizedBox(width: AppSpacing.sm),
-        Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: 'GOIÁS ',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 0.6,
-                  color: colors.textPrimary,
-                ),
-              ),
-              TextSpan(
-                text: 'ESPORTE CLUBE',
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 1,
-                  color: colors.textSecondary,
-                ),
-              ),
-            ],
+        Text(
+          'GOIÁS ESPORTE CLUBE',
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.6,
+            color: colors.textPrimary,
           ),
         ),
         const Spacer(),
