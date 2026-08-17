@@ -12,6 +12,10 @@ not_found_handling = "single-page-application"
 # funciona sozinho. Preencha depois de confirmar os IDs reais via
 # GET /api/football/discover?search=...
 #
+# SEASON: o plano Free da API-Football não cobre a temporada atual (2026) —
+# só 2022 a 2024. Usando 2024 temporariamente pra validar a integração
+# ponta a ponta com dados reais; trocar para 2026 depois do upgrade de plano.
+#
 # A API key (API_FOOTBALL_KEY) NUNCA vai aqui — é secret, configurado via
 # `wrangler secret put API_FOOTBALL_KEY` ou pelo dashboard da Cloudflare
 # (Settings do Worker → Variables, marcado como "Encrypt"). Em
@@ -20,4 +24,4 @@ not_found_handling = "single-page-application"
 [vars]
 SERIE_B_LEAGUE_ID = ""
 GOIAS_TEAM_ID = ""
-SEASON = "2026"
+SEASON = "2024"
