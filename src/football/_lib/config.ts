@@ -1,44 +1,57 @@
 export interface Env {
-  API_FOOTBALL_KEY: string;
-  SERIE_B_LEAGUE_ID: string;
-  GOIAS_TEAM_ID: string;
-  SEASON: string;
+  SERIE_CODE: string;
+  GOIAS_BRASILEIRAO_ID: string;
+  GOIAS_THESPORTSDB_ID: string;
   /** Binding de assets estáticos (build/web do Flutter) — ver `[assets]` no wrangler.toml. */
   ASSETS: Fetcher;
 }
 
-export interface FootballApiConfig {
-  apiKey: string;
-  baseUrl: string;
-  leagueId: number;
-  teamId: number;
-  season: number;
+export interface AppConfig {
+  serieCode: string;
+  goias: {
+    /** id numérico do Goiás na campeonato-brasileiro-api (`equipe_id` do ge.globo). */
+    brasileiraoId: number | null;
+    /** id do time do Goiás no TheSportsDB. */
+    thesportsdbId: string | null;
+  };
 }
 
-/** Erro de configuração ausente/incompleta — nunca por falha da API-Football em si. */
+/** Erro de configuração ausente/incompleta. */
 export class ConfigError extends Error {}
 
+export function loadConfig(env: Env): AppConfig {
+  const serieCode = (env.SERIE_CODE || 'b').toLowerCase();
+  const brasileiraoIdRaw = env.GOIAS_BRASILEIRAO_ID;
+  const thesportsdbIdRaw = env.GOIAS_THESPORTSDB_ID;
+
+  return {
+    serieCode,
+    goias: {
+      brasileiraoId: brasileiraoIdRaw ? Number(brasileiraoIdRaw) : null,
+      thesportsdbId: thesportsdbIdRaw || null,
+    },
+  };
+}
+
 /**
- * Centraliza a config server-side (liga, time, temporada). Os IDs não têm
- * valor padrão "chutado" de propósito — até serem confirmados via
- * `/api/football/discover`, a Function falha de forma clara em vez de
- * assumir um ID errado.
+ * Usa em endpoints que realmente precisam saber quem é o Goiás (rodada
+ * atual, time). Falha com uma mensagem clara em vez de assumir errado —
+ * até isso ser confirmado via `/api/football/discover`.
  */
-export function loadConfig(env: Env): FootballApiConfig {
-  const apiKey = env.API_FOOTBALL_KEY;
-  if (!apiKey) {
-    throw new ConfigError('API_FOOTBALL_KEY não configurada. Configure o secret no Cloudflare.');
-  }
-
-  const leagueId = Number(env.SERIE_B_LEAGUE_ID);
-  const teamId = Number(env.GOIAS_TEAM_ID);
-  const season = Number(env.SEASON || '2026');
-
-  if (!leagueId || !teamId) {
+export function requireGoiasBrasileiraoId(config: AppConfig): number {
+  if (!config.goias.brasileiraoId) {
     throw new ConfigError(
-      'SERIE_B_LEAGUE_ID / GOIAS_TEAM_ID não configurados. Use GET /api/football/discover?search=... para descobrir os IDs reais e preencha o wrangler.toml.',
+      'GOIAS_BRASILEIRAO_ID não configurado. Use GET /api/football/discover pra descobrir o id real e preencha o wrangler.toml.',
     );
   }
+  return config.goias.brasileiraoId;
+}
 
-  return { apiKey, baseUrl: 'https://v3.football.api-sports.io', leagueId, teamId, season };
+export function requireGoiasTheSportsDbId(config: AppConfig): string {
+  if (!config.goias.thesportsdbId) {
+    throw new ConfigError(
+      'GOIAS_THESPORTSDB_ID não configurado. Use GET /api/football/discover pra descobrir o id real e preencha o wrangler.toml.',
+    );
+  }
+  return config.goias.thesportsdbId;
 }

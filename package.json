@@ -10,5 +10,8 @@
   "scripts": {
     "dev:worker": "wrangler dev",
     "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "campeonato-brasileiro-api": "^2.0.1"
   }
 }

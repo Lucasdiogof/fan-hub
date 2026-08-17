@@ -1,39 +1,60 @@
 import type { Env } from './_lib/config';
 import { loadConfig } from './_lib/config';
-import { apiFootballGet, ApiFootballError } from './_lib/client';
 import { cacheFirst } from './_lib/cache';
-import { normalizeFixture } from './_lib/normalize';
 import { withErrorHandling } from './_lib/handleErrors';
+import { ProviderError } from './_lib/providerError';
+import { fetchBrasileiraoCurrentRound } from './providers/brasileirao_provider';
+import { fetchEventById } from './providers/thesportsdb_provider';
+import { normalizeBrasileiraoMatch, normalizeTheSportsDbEvent } from './normalize/match';
 
 const CACHE_TTL_SECONDS = 30 * 60;
 
-export async function handleFixtureDetails(
-  request: Request,
-  env: Env,
-  fixtureId: string,
-): Promise<Response> {
+/**
+ * `id` vem prefixado por provider (`cbapi-<id>` / `tsdb-<id>`) — o próprio
+ * Flutter nunca precisa entender o prefixo, só devolve o que recebeu.
+ */
+export async function handleFixtureDetails(request: Request, env: Env, rawId: string): Promise<Response> {
   return withErrorHandling(async () => {
-    const config = loadConfig(env);
+    if (rawId.startsWith('cbapi-')) {
+      return handleBrasileiraoFixture(request, env, rawId.slice('cbapi-'.length));
+    }
 
-    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.fixtures.details', async () => {
-      const raw = await apiFootballGet(config, '/fixtures', {
-        id: fixtureId,
-        timezone: 'America/Sao_Paulo',
-      });
+    if (rawId.startsWith('tsdb-')) {
+      return handleTheSportsDbFixture(request, rawId.slice('tsdb-'.length));
+    }
 
-      const item = raw.response?.[0];
-      if (!item) {
-        throw new ApiFootballError('Partida não encontrada.', 404);
-      }
+    throw new ProviderError('Id de partida inválido.', 400, 'internal');
+  });
+}
 
-      return {
-        competition: {
-          id: config.leagueId,
-          name: item.league?.name ?? 'Brasileirão Série B',
-          season: config.season,
-        },
-        match: normalizeFixture(item),
-      };
-    });
+async function handleBrasileiraoFixture(request: Request, env: Env, fixtureId: string): Promise<Response> {
+  const config = loadConfig(env);
+
+  return cacheFirst(request, CACHE_TTL_SECONDS, 'football.fixtures.details.brasileirao', async () => {
+    // Fonte não tem lookup por id — a rodada atual (já cacheada por si só)
+    // é o único lugar de onde emitimos ids `cbapi-`, então procurar nela é
+    // suficiente e evita mais uma chamada externa.
+    const { competition, round } = await fetchBrasileiraoCurrentRound(config.serieCode);
+    const match = round.matches.find((m) => String(m.id) === fixtureId);
+    if (!match) {
+      throw new ProviderError('Partida não encontrada na rodada atual.', 404, 'brasileirao');
+    }
+    return {
+      competition: { name: competition.name, season: competition.season },
+      match: normalizeBrasileiraoMatch(match, round.label),
+    };
+  });
+}
+
+async function handleTheSportsDbFixture(request: Request, eventId: string): Promise<Response> {
+  return cacheFirst(request, CACHE_TTL_SECONDS, 'football.fixtures.details.thesportsdb', async () => {
+    const event = await fetchEventById(eventId);
+    if (!event) {
+      throw new ProviderError('Partida não encontrada.', 404, 'thesportsdb');
+    }
+    return {
+      competition: { name: event.strLeague, season: event.strSeason ? Number(event.strSeason) : null },
+      match: normalizeTheSportsDbEvent(event),
+    };
   });
 }

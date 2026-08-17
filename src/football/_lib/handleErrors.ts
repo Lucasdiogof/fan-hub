@@ -1,5 +1,5 @@
 import { ConfigError } from './config';
-import { ApiFootballError } from './client';
+import { ProviderError } from './providerError';
 import { errorResponse } from './respond';
 
 /** Traduz erros internos em respostas HTTP controladas — nunca deixa uma
@@ -9,7 +9,10 @@ export async function withErrorHandling(handler: () => Promise<Response>): Promi
     return await handler();
   } catch (err) {
     if (err instanceof ConfigError) return errorResponse(err.message, 503);
-    if (err instanceof ApiFootballError) return errorResponse(err.message, err.status);
+    if (err instanceof ProviderError) {
+      console.error('football.provider.error', err.provider, err.status);
+      return errorResponse(err.message, err.status);
+    }
     console.error('football.api.error', err instanceof Error ? err.message : String(err));
     return errorResponse('Erro inesperado ao consultar dados esportivos.', 500);
   }
