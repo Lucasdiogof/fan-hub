@@ -15,7 +15,11 @@ class GamesSectionSelector extends StatelessWidget {
     final colors = context.colors;
     return Container(
       padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(AppRadius.button)),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.button),
+        border: Border.all(color: colors.border),
+      ),
       child: Row(
         children: [
           Expanded(
@@ -56,14 +60,14 @@ class _SegmentButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: selected ? colors.surface : Colors.transparent,
+          color: selected ? colors.primary : Colors.transparent,
           borderRadius: BorderRadius.circular(AppRadius.button - 4),
           boxShadow: selected
               ? [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.06),
-                    blurRadius: 6,
-                    offset: const Offset(0, 2),
+                    color: colors.primary.withValues(alpha: 0.35),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
                   ),
                 ]
               : null,
@@ -72,9 +76,9 @@ class _SegmentButton extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 12,
-            fontWeight: FontWeight.w800,
+            fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
             letterSpacing: 0.4,
-            color: selected ? colors.primary : colors.textSecondary,
+            color: selected ? colors.onPrimary : colors.textSecondary,
           ),
         ),
       ),
