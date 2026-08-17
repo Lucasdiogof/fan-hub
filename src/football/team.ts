@@ -7,7 +7,15 @@ import type { TheSportsDbEvent } from './providers/thesportsdb_provider';
 import { normalizeTheSportsDbEvent } from './normalize/match';
 
 const CACHE_TTL_SECONDS = 30 * 60;
-const FALLBACK_COMPETITION_NAME = 'Brasileirão Série B';
+
+/**
+ * Nome canônico em português — nunca o `strLeague` cru do TheSportsDB
+ * ("Brazilian Serie B", em inglês). Os outros endpoints (standings,
+ * current-round) já mostram esse mesmo nome via campeonato-brasileiro-api;
+ * usar a fonte errada aqui faria o app exibir dois nomes diferentes pro
+ * mesmo campeonato dependendo de qual partida o usuário abrisse.
+ */
+const COMPETITION_NAME = 'Campeonato Brasileiro Série B';
 
 /**
  * Só existe `/team/goias` por enquanto — o app tem um único time de
@@ -28,11 +36,12 @@ export async function handleGoiasTeam(request: Request, env: Env): Promise<Respo
       ]);
 
       const anyEvent = nextEvents[0] ?? lastEvents[0];
+      const season = competitionSeason(anyEvent);
 
       return {
         competition: {
-          name: anyEvent?.strLeague ?? FALLBACK_COMPETITION_NAME,
-          season: competitionSeason(anyEvent),
+          name: season ? `${COMPETITION_NAME} ${season}` : COMPETITION_NAME,
+          season,
         },
         nextMatch: nextEvents.length > 0 ? normalizeTheSportsDbEvent(nextEvents[0]) : null,
         recentResults: lastEvents.map(normalizeTheSportsDbEvent),
