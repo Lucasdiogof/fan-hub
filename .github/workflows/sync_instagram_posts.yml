@@ -26,6 +26,8 @@ jobs:
         run: pip install "instaloader>=4.13,<5"
 
       - name: Fetch latest posts
+        env:
+          INSTAGRAM_SESSIONID: ${{ secrets.INSTAGRAM_SESSIONID }}
         run: python scripts/social/sync_instagram_posts.py
 
       - name: Commit and push if changed

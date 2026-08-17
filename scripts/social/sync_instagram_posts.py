@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -54,7 +55,7 @@ def classify_failure(error):
     return "rate_limited" if any(hint in text for hint in RATE_LIMIT_HINTS) else "failed"
 
 
-def fetch_items():
+def build_loader():
     loader = instaloader.Instaloader(
         download_pictures=False,
         download_videos=False,
@@ -64,7 +65,23 @@ def fetch_items():
         save_metadata=False,
         compress_json=False,
         quiet=True,
+        max_connection_attempts=1,
     )
+    sessionid = os.environ.get("INSTAGRAM_SESSIONID", "").strip()
+    if sessionid:
+        loader.context._session.cookies.set("sessionid", sessionid, domain=".instagram.com")
+        username = loader.context.test_login()
+        if not username:
+            raise RuntimeError("INSTAGRAM_SESSIONID invalid or expired")
+        loader.context.username = username
+        log("authenticated")
+    else:
+        log("anonymous")
+    return loader
+
+
+def fetch_items():
+    loader = build_loader()
     profile = instaloader.Profile.from_username(loader.context, HANDLE)
 
     items = []
