@@ -28,6 +28,7 @@ jobs:
       - name: Fetch latest posts
         env:
           INSTAGRAM_SESSIONID: ${{ secrets.INSTAGRAM_SESSIONID }}
+          INSTAGRAM_SESSION: ${{ secrets.INSTAGRAM_SESSION }}
         run: python scripts/social/sync_instagram_posts.py
 
       - name: Commit and push if changed

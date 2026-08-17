@@ -67,7 +67,7 @@ def build_loader():
         quiet=True,
         max_connection_attempts=1,
     )
-    sessionid = os.environ.get("INSTAGRAM_SESSIONID", "").strip()
+    sessionid = (os.environ.get("INSTAGRAM_SESSIONID") or os.environ.get("INSTAGRAM_SESSION") or "").strip()
     if sessionid:
         loader.context._session.cookies.set("sessionid", sessionid, domain=".instagram.com")
         username = loader.context.test_login()
