@@ -11,8 +11,8 @@ import 'package:goias_app/features/social/presentation/widgets/social_platform_f
 import 'package:goias_app/features/social/presentation/widgets/social_post_card.dart';
 import 'package:goias_app/features/social/presentation/widgets/social_skeleton_card.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SocialFeedPage extends StatelessWidget {
   const SocialFeedPage({super.key});
@@ -161,10 +161,6 @@ class _PostsList extends StatelessWidget {
 
   final List<SocialPost> posts;
 
-  void _openPost(SocialPost post) {
-    launchUrl(Uri.parse(post.permalink), mode: LaunchMode.externalApplication);
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -174,7 +170,7 @@ class _PostsList extends StatelessWidget {
       separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
       itemBuilder: (context, index) {
         final post = posts[index];
-        return SocialPostCard(post: post, onTap: () => _openPost(post));
+        return SocialPostCard(post: post, onTap: () => openExternalUrl(context, post.permalink));
       },
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:goias_app/shared/utils/external_link_launcher.dart';
 
 class SocialEmptyState extends StatelessWidget {
   const SocialEmptyState({super.key});
@@ -39,7 +39,7 @@ class SocialEmptyState extends StatelessWidget {
                   _ProfileLink(
                     icon: profile.icon,
                     label: profile.label,
-                    onTap: () => launchUrl(Uri.parse(profile.url)),
+                    onTap: () => openExternalUrl(context, profile.url),
                   ),
                   if (profile != _profiles.last) const SizedBox(width: AppSpacing.xl),
                 ],
