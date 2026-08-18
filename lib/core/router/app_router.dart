@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/auth/presentation/pages/check_your_email_page.dart';
-import 'package:goias_app/features/auth/presentation/pages/forgot_password_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
@@ -13,7 +12,7 @@ import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart'
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
 
-const _authArea = {'/login', '/register', '/forgot-password', '/check-email'};
+const _authArea = {'/login', '/register', '/check-email'};
 
 GoRouter createAppRouter(AuthCubit authCubit) {
   return GoRouter(
@@ -47,7 +46,6 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         path: '/check-email',
         builder: (context, state) => CheckYourEmailPage(email: state.extra as String? ?? ''),
       ),
-      GoRoute(path: '/forgot-password', builder: (context, state) => const ForgotPasswordPage()),
       GoRoute(path: '/reset-password', builder: (context, state) => const ResetPasswordPage()),
     ],
   );

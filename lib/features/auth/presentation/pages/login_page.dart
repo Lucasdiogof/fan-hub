@@ -9,6 +9,7 @@ import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
+import 'package:goias_app/features/auth/presentation/widgets/forgot_password_sheet.dart';
 import 'package:goias_app/features/auth/presentation/widgets/login_hero.dart';
 
 class LoginPage extends StatefulWidget {
@@ -152,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
         Align(
           alignment: Alignment.centerRight,
           child: TextButton(
-            onPressed: () => context.push('/forgot-password'),
+            onPressed: () => ForgotPasswordSheet.show(context),
             style: TextButton.styleFrom(
               foregroundColor: colors.primary,
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
