@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/stadium_backdrop.dart';
 
 class AuthScaffold extends StatelessWidget {
   const AuthScaffold({
@@ -57,41 +58,42 @@ class _Hero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     return ClipPath(
       clipper: _BottomCurveClipper(),
-      child: Container(
+      child: SizedBox(
+        height: 340,
         width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [colors.darkGreen, colors.deepGreen],
-          ),
-        ),
-        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxxl + AppSpacing.lg),
-        child: SafeArea(
-          bottom: false,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _BackButton(onTap: () => context.canPop() ? context.pop() : context.go('/login')),
-              const SizedBox(height: AppSpacing.xl),
-              if (showCrest) ...[
-                _CrestSeal(),
-                const SizedBox(height: AppSpacing.lg),
-              ],
-              Text(
-                title,
-                style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Colors.white, height: 1.1),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            const StadiumBackdrop(imageAsset: AppAssets.stadium),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxxl),
+              child: SafeArea(
+                bottom: false,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _BackButton(onTap: () => context.canPop() ? context.pop() : context.go('/login')),
+                    const SizedBox(height: AppSpacing.xl),
+                    if (showCrest) ...[
+                      _CrestSeal(),
+                      const SizedBox(height: AppSpacing.lg),
+                    ],
+                    Text(
+                      title,
+                      style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Colors.white, height: 1.1),
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                    Text(
+                      subtitle,
+                      style: TextStyle(fontSize: 14, height: 1.35, color: Colors.white.withValues(alpha: 0.9)),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: AppSpacing.sm),
-              Text(
-                subtitle,
-                style: TextStyle(fontSize: 14, height: 1.35, color: Colors.white.withValues(alpha: 0.82)),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

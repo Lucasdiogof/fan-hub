@@ -33,3 +33,4 @@ flutter:
 
   assets:
     - lib/assets/logo.svg
+    - lib/assets/banner.png
