@@ -26,7 +26,7 @@ class LoginHero extends StatelessWidget {
                 SvgPicture.asset(AppAssets.goiasCrest, height: compact ? 52 : 66),
                 SizedBox(height: compact ? AppSpacing.md : AppSpacing.lg),
                 const Text(
-                  'O Goiás com você.\nOnde estiver.',
+                  'O Verdão mais perto de você.',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 26,
