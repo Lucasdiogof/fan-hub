@@ -16,3 +16,11 @@ class ServerFailure extends Failure {
 class UnexpectedFailure extends Failure {
   const UnexpectedFailure([super.message = 'Erro inesperado. Tente novamente.']);
 }
+
+class NetworkFailure extends Failure {
+  const NetworkFailure([super.message = 'Verifique sua conexão com a internet.']);
+}
+
+class AuthFailure extends Failure {
+  const AuthFailure(super.message);
+}

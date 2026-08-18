@@ -1,0 +1,28 @@
+import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/features/auth/domain/entities/auth_user.dart';
+
+enum AuthSessionEvent { signedIn, signedOut, passwordRecovery, userUpdated }
+
+abstract interface class AuthRepository {
+  bool get isAuthenticated;
+
+  AuthUser? get currentUser;
+
+  Stream<AuthSessionEvent> get sessionEvents;
+
+  Future<Result<void>> signIn({required String email, required String password});
+
+  Future<Result<bool>> signUp({
+    required String fullName,
+    required String email,
+    required String password,
+  });
+
+  Future<Result<void>> signOut();
+
+  Future<Result<void>> sendPasswordReset(String email);
+
+  Future<Result<void>> resendConfirmationEmail(String email);
+
+  Future<Result<void>> updatePassword(String newPassword);
+}

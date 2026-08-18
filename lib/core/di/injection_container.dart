@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
+import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
+import 'package:goias_app/features/auth/data/auth_repository_impl.dart';
+import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
 import 'package:goias_app/features/match/data/repositories/football_repository_impl.dart';
@@ -18,6 +22,7 @@ import 'package:goias_app/features/social/domain/repositories/social_feed_reposi
 import 'package:goias_app/features/social/presentation/cubit/social_feed_cubit.dart';
 import 'package:goias_app/features/ticket/data/mock_ticket_repository.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -33,6 +38,12 @@ void setupDependencies() {
 
   sl.registerLazySingleton<SocialRemoteDataSource>(() => SocialRemoteDataSource(sl()));
   sl.registerLazySingleton<SocialFeedRepository>(() => SocialFeedRepositoryImpl(sl()));
+
+  sl.registerLazySingleton<AuthRemoteDataSource>(
+    () => AuthRemoteDataSource(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
+  sl.registerLazySingleton<AuthCubit>(() => AuthCubit(sl()));
 
   sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
