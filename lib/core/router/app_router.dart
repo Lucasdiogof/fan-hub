@@ -10,6 +10,7 @@ import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
+import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
 
 const _authArea = {'/login', '/register', '/check-email'};
@@ -40,6 +41,7 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         builder: (context, state) => MatchDetailsPage(fixtureId: state.pathParameters['fixtureId']!),
       ),
       GoRoute(path: '/profile', builder: (context, state) => const ProfilePage()),
+      GoRoute(path: '/partners', builder: (context, state) => const PartnersPage()),
       GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
       GoRoute(path: '/register', builder: (context, state) => const RegisterPage()),
       GoRoute(

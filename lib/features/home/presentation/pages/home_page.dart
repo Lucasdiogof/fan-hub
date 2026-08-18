@@ -7,6 +7,7 @@ import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/home/presentation/widgets/featured_news_card.dart';
 import 'package:goias_app/features/home/presentation/widgets/home_header.dart';
+import 'package:goias_app/features/partners/presentation/widgets/partners_home_section.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -52,6 +53,8 @@ class _HomeView extends StatelessWidget {
                         const SizedBox(height: AppSpacing.xxl),
                         FeaturedNewsCard(article: state.featuredNews!),
                       ],
+                      const SizedBox(height: AppSpacing.xxxl),
+                      const PartnersHomeSection(),
                     ],
                   ),
                 ),
