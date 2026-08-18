@@ -36,7 +36,11 @@ class AuthScaffold extends StatelessWidget {
                   _BackButton(onTap: () => context.canPop() ? context.pop() : context.go('/login')),
                   const SizedBox(height: AppSpacing.xl),
                   if (showCrest) ...[
-                    SvgPicture.asset(AppAssets.goiasCrest, height: 40),
+                    SvgPicture.asset(
+                      AppAssets.goiasCrest,
+                      height: 40,
+                      colorFilter: ColorFilter.mode(colors.primary, BlendMode.srcIn),
+                    ),
                     const SizedBox(height: AppSpacing.lg),
                   ],
                   Text(
