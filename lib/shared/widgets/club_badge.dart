@@ -93,7 +93,9 @@ class _NetworkSvgBadge extends StatefulWidget {
 
 class _NetworkSvgBadgeState extends State<_NetworkSvgBadge> {
   static final _cache = <String, String>{};
-  static final _dio = Dio();
+  static final _dio = Dio(
+    BaseOptions(connectTimeout: const Duration(seconds: 8), receiveTimeout: const Duration(seconds: 8)),
+  );
 
   late Future<String> _future;
 
