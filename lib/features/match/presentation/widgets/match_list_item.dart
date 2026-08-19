@@ -11,6 +11,9 @@ class MatchListItem extends StatelessWidget {
   final Match match;
   final VoidCallback? onTap;
 
+  bool get _isFinished =>
+      match.status == MatchStatus.finished && match.homeScore != null && match.awayScore != null;
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -52,10 +55,15 @@ class MatchListItem extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                  child: Text(
-                    timeLabel(match.kickoff),
-                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: colors.textPrimary),
-                  ),
+                  child: _isFinished
+                      ? Text(
+                          '${match.homeScore} x ${match.awayScore}',
+                          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 15, color: colors.textPrimary),
+                        )
+                      : Text(
+                          timeLabel(match.kickoff),
+                          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: colors.textPrimary),
+                        ),
                 ),
                 Expanded(
                   child: Row(
