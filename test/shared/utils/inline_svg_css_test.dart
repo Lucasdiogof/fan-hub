@@ -34,5 +34,28 @@ void main() {
 
       expect(inlineSvgCssClasses(svg), svg);
     });
+
+    test('handles comma-separated selectors and merges multiple rules per class', () {
+      // Padrão real do escudo do Fortaleza: seletores agrupados por
+      // vírgula, e uma classe recebendo fill de uma regra e fill-rule de
+      // outra.
+      const svg = '''
+<svg viewBox="0 0 500 500">
+<style>.cls-1,.cls-4{fill:#fefefe;}.cls-1,.cls-2,.cls-3{fill-rule:evenodd;}.cls-2{fill:#2861a6;}.cls-3{fill:#e1251b;}</style>
+<path class="cls-1" d="M0,0" />
+<path class="cls-2" d="M1,1" />
+<path class="cls-3" d="M2,2" />
+<path class="cls-4" d="M3,3" />
+</svg>
+''';
+
+      final result = inlineSvgCssClasses(svg);
+
+      expect(result, contains('style="fill:#fefefe;;fill-rule:evenodd;"'));
+      expect(result, contains('style="fill-rule:evenodd;;fill:#2861a6;"'));
+      expect(result, contains('style="fill-rule:evenodd;;fill:#e1251b;"'));
+      expect(result, contains('style="fill:#fefefe;"'));
+      expect(result, isNot(contains('class="cls-')));
+    });
   });
 }

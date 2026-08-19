@@ -23,10 +23,17 @@ class ClubBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final logoUrl = team.logoUrl;
-    if (logoUrl == null || logoUrl.isEmpty) {
+    final rawUrl = team.logoUrl;
+    if (rawUrl == null || rawUrl.isEmpty) {
       return _fallback(context);
     }
+    // Alguns nomes de time viram acento cru na URL (ex.: ".../avaí.svg"),
+    // que o servidor rejeita sem o percent-encoding correto (404). Só
+    // codifica quando há byte não-ASCII de verdade — Uri.encodeFull não é
+    // idempotente pra URLs que já vêm com %XX válido (ex.: "%20" viraria
+    // "%2520"), então não tocamos em URLs já limpas.
+    final hasRawNonAscii = rawUrl.codeUnits.any((c) => c > 127);
+    final logoUrl = hasRawNonAscii ? Uri.encodeFull(rawUrl) : rawUrl;
     return SizedBox(
       width: size,
       height: size,

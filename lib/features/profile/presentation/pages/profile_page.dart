@@ -23,6 +23,8 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  _BackButton(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                  const SizedBox(height: AppSpacing.lg),
                   const PageTitle('PERFIL'),
                   const SizedBox(height: AppSpacing.xxxl),
                   Center(
@@ -56,6 +58,28 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _BackButton extends StatelessWidget {
+  const _BackButton({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(999),
+      child: Container(
+        width: 38,
+        height: 38,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
+        child: Icon(Icons.arrow_back_rounded, size: 18, color: colors.textPrimary),
       ),
     );
   }
