@@ -1,0 +1,382 @@
+{
+  "categories": [
+    {
+      "id": "duvidas-gerais",
+      "title": "Dúvidas Gerais",
+      "items": [
+        {
+          "id": "duvidas-gerais-1",
+          "question": "Como funciona o Esmeralda Sócio-Torcedor?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Esmeralda Sócio-Torcedor é o projeto de sócio-torcedor do Goiás Esporte Clube. É um programa de relacionamento entre o clube e seus torcedores."}]},
+            {"type": "paragraph", "spans": [{"text": "O torcedor que se associa está adquirindo o direito de assistir aos jogos do clube, como mandante, no estádio Hailé Pinheiro, de acordo com os locais e restrições do plano contratado, durante a sua vigência. Além disso, o sócio-torcedor terá direito a outros benefícios, como descontos na Loja Oficial do Goiás EC e descontos em uma rede de parceiros."}]},
+            {"type": "paragraph", "spans": [{"text": "Verifique a página de planos para conhecer melhor as opções, valores e vigências dos planos oferecidos."}]},
+            {"type": "paragraph", "spans": [{"text": "É necessário estar em dia com os pagamentos das parcelas para usufruir de todos os benefícios e vantagens oferecidos."}]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-2",
+          "question": "Qualquer pessoa pode se tornar sócio torcedor?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Sim. Qualquer pessoa que possua um CPF válido pode se tornar sócio torcedor, basta confirmar o processo escolhendo um plano e forma de pagamento disponível."}]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-3",
+          "question": "O que é um plano inativo? Como posso ativá-lo?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "É uma associação que foi iniciada mas não obteve confirmação de pagamento. Todos os planos são ativados automaticamente após a confirmação do pagamento da primeira parcela."}]},
+            {"type": "paragraph", "spans": [{"text": "No caso do cartão de crédito certamente ocorreu algum problema com o pagamento, como erro, dados inválidos ou transação não autorizada pela operadora do cartão."}]},
+            {"type": "paragraph", "spans": [{"text": "Entre em contato com o atendimento para saber o que ocorreu. Você poderá tentar efetuar o pagamento novamente, fornecer outro cartão ou mudar o formato da cobrança."}]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-4",
+          "question": "Quantos dependentes posso incluir no meu plano?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Dependentes familiares no plano Nossa Família;"}]},
+            {"type": "list", "items": [
+              [{"text": "R$99,90: Casal"}],
+              [{"text": "R$119,90: Casal + 1 filho"}]
+            ]},
+            {"type": "paragraph", "spans": [{"text": "*Em caso de mais dependentes diretos, será adicionado R$20,00 por cada inclusão (menores de 18 anos)"}]},
+            {"type": "paragraph", "spans": [{"text": "Nos demais planos, será permitida apenas a inclusão de dependentes menores de 18 anos com 50% de desconto referente ao plano titular."}]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-5",
+          "question": "Tem jogo hoje, se eu me associar agora já entro neste jogo?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Sim, desde que ainda haja disponibilidade de setores."}]},
+            {"type": "paragraph", "spans": [{"text": "Após a abertura das vendas para o público geral, caso os setores atinjam a capacidade máxima, não será possível realizar o check-in."}]},
+            {"type": "paragraph", "spans": [{"text": "Em alguns jogos, o Goiás Esporte Clube pode estabelecer um período de bloqueio para novas associações no dia da partida. Nesses casos, o bloqueio das adesões pelo site poderá variar conforme a partida."}]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-6",
+          "question": "Sou sócio ativo, consigo realizar o check-in para o jogo em qualquer momento?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Os sócios ativos têm prioridade para confirmar o check-in em todos os jogos, antes da abertura de vendas para o público geral."}]},
+            {"type": "paragraph", "spans": [{"text": "Após a abertura das vendas para o público geral, caso os setores atinjam a capacidade máxima, o check-in só será possível se houver liberação de vagas por desistência."}]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-7",
+          "question": "Estou com uma parcela em atraso, vou poder assistir os jogos?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Quando é reconhecido pelo sistema a parcela em atraso, o plano automaticamente será bloqueado por inadimplência, bloqueando também a realização do check-in e liberação do ingresso."}]},
+            {"type": "paragraph", "spans": [
+              {"text": "Para o desbloqueio, acesse: "},
+              {"text": "https://socioesmeralda.com.br/Login", "link": "https://socioesmeralda.com.br/Login"}
+            ]},
+            {"type": "paragraph", "spans": [{"text": "Você poderá conferir na aba \"Financeiro\""}]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-8",
+          "question": "Como faço para cadastrar dependentes em meu plano?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "A inclusão dependente Nossa Família deverá ser realizada pelo nosso atendimento online."}]},
+            {"type": "paragraph", "spans": [{"text": "Em caso de um novo plano ou renovação, pode ser realizada diretamente no ato de associação."}]},
+            {"type": "paragraph", "spans": [
+              {"text": "Em caso de dúvidas, basta nos acionar pelo número: "},
+              {"text": "(62) 99472-2541", "link": "https://wa.me/5562994722541"},
+              {"text": " para a conclusão do processo."}
+            ]}
+          ]
+        },
+        {
+          "id": "duvidas-gerais-9",
+          "question": "Me tornei sócio. Preciso comprar ingresso?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Somente em caso de cancelamento do ingresso ou esgotamento do mesmo por falta de confirmação de presença dentro do prazo de disponibilidade."}]},
+            {"type": "paragraph", "spans": [{"text": "Com o plano ativo, acessando o seu cadastro, terá a opção de confirmar check-in, para ter acesso ao seu ingresso (Nossa Glória, Nossa Garra, Nossa Família)"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pagamento",
+      "title": "Pagamento",
+      "items": [
+        {
+          "id": "pagamento-1",
+          "question": "Quais as formas de pagamento aceitas?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Serão aceitas as seguintes formas de pagamento:"}]},
+            {"type": "list", "items": [
+              [{"text": "Cartão de crédito (Com parcelamento em até 12x)"}],
+              [{"text": "Pix (Somente à vista)"}]
+            ]},
+            {"type": "paragraph", "spans": [{"text": "Os valores poderão sofrer reajustes, conforme definição prévia da ADMINISTRAÇÃO DO PROGRAMA, com comunicação antecipada aos sócios."}]}
+          ]
+        },
+        {
+          "id": "pagamento-2",
+          "question": "Como o pagamento é realizado?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O pagamento é realizado somente de forma online, devendo ser realizado através do site oficial do Programa ESMERALDA SÓCIO- TORCEDOR, com o devido acesso do SÓCIO com login e senha."}]}
+          ]
+        },
+        {
+          "id": "pagamento-3",
+          "question": "Como funciona o pagamento Anual?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O valor é cobrado de forma integral, porém pode ser parcelado em até 12x no cartão. Ou seja, trata-se de uma única compra, apenas dividida em parcelas."}]},
+            {"type": "paragraph", "spans": [{"text": "Para pagamentos via Pix, o valor deve ser quitado à vista."}]}
+          ]
+        },
+        {
+          "id": "pagamento-4",
+          "question": "Estou com uma parcela em atraso, vou poder assistir os jogos?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Não.", "bold": true}]},
+            {"type": "paragraph", "spans": [
+              {"text": "Em caso de atraso nos pagamentos você "},
+              {"text": "não ", "bold": true},
+              {"text": "poderá acessar o estádio."}
+            ]},
+            {"type": "paragraph", "spans": [{"text": "*A partir de 3 dias de uma parcela em atraso, o plano fica bloqueado."}]},
+            {"type": "paragraph", "spans": [{"text": "Após o pagamento o desbloqueio é automático."}]},
+            {"type": "paragraph", "spans": [
+              {"text": "Na dúvida você pode consultar sua situação acessando: "},
+              {"text": "https://socioesmeralda.com.br/Login", "link": "https://socioesmeralda.com.br/Login"}
+            ]},
+            {"type": "paragraph", "spans": [{"text": "O SÓCIO será considerado inadimplente quando:", "bold": true}]},
+            {"type": "paragraph", "spans": [{"text": "A cobrança não for autorizada, por qualquer motivo, pela operadora do Cartão de Crédito cadastrado pelo SÓCIO;"}]}
+          ]
+        },
+        {
+          "id": "pagamento-5",
+          "question": "Meu cartão de crédito foi clonado, perdido ou alterado devido a sua data de vencimento. O que eu devo fazer?",
+          "answer": [
+            {"type": "paragraph", "spans": [
+              {"text": "Caso o seu plano seja "},
+              {"text": "recorrente", "bold": true},
+              {"text": ", acessando seu cadastro, terá essa opção de alteração do cartão de crédito vigente na aba \"Meus Cartões\". Você também poderá solicitar essa mudança falando com nosso time de atendimento exclusivo pelo número: "},
+              {"text": "62 99472-2541", "bold": true}
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "atendimento",
+      "title": "Atendimento",
+      "items": [
+        {
+          "id": "atendimento-1",
+          "question": "O atendimento é somente online ou também presencial ?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Exclusivamente online."}]},
+            {"type": "paragraph", "spans": [{"text": "Confira todos os canais de atendimento para suporte aos sócios torcedores:"}]},
+            {"type": "paragraph", "spans": [
+              {"text": "Contato, dúvidas e informações: "},
+              {"text": "https://socioesmeralda.com.br/Home/Contact", "link": "https://socioesmeralda.com.br/Home/Contact"}
+            ]},
+            {"type": "paragraph", "spans": [{"text": "WhatsApp: (62) 99472-2541"}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acoes",
+      "title": "Ações",
+      "items": [
+        {
+          "id": "acoes-1",
+          "question": "Desejo participar das ações promocionais, o que devo fazer?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Acompanhar as redes sociais do clube. Em todas as nossas promoções nós enviaremos os detalhes (explicações, e como participar) via e-mail. Por este motivo, é importante que você cadastre um e-mail válido e ativo no ato da associação."}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "setores-do-estadio",
+      "title": "Setores do estádio",
+      "items": [
+        {
+          "id": "setores-do-estadio-1",
+          "question": "Como ficou o setor Espaço Família?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O setor está destinado exclusivamente a sócios torcedores dos planos Nossa Família. Os sócios torcedores para garantir o seu assento no local, devem efetuar sua confirmação no check in."}]}
+          ]
+        },
+        {
+          "id": "setores-do-estadio-2",
+          "question": "Meu plano é Nossa Glória, posso acessar o setor Tobogã?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Não, cada um dos planos possui um setor único definido de acesso."}]},
+            {"type": "paragraph", "spans": [{"text": "O plano Nossa Glória possui acesso apenas no setor Cadeiras."}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beneficios",
+      "title": "Benefícios",
+      "items": [
+        {
+          "id": "beneficios-1",
+          "question": "Realizei a minha associação hoje. Já poderei utilizar o cupom Zé Delivery?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Após ativação do seu plano no programa, o cupom é liberado no aplicativo do Zé Delivery no prazo de 24 horas."}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "planos-e-cancelamento",
+      "title": "Planos e Cancelamento",
+      "items": [
+        {
+          "id": "planos-e-cancelamento-1",
+          "question": "Quais são os planos disponíveis para eu me associar?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Essa informação está sempre disponível e atualizada em nossa Página de Planos, acesse-a através do menu principal aqui do site."}]},
+            {"type": "paragraph", "spans": [{"text": "O aceite aos termos do presente Regulamento será feito no momento da adesão, de forma online."}]},
+            {"type": "paragraph", "spans": [{"text": "Acompanhe nossas redes sociais e verifique sempre seu e-mail, pois promoções e condições especiais estão sempre sendo comunicadas através destes canais."}]}
+          ]
+        },
+        {
+          "id": "planos-e-cancelamento-2",
+          "question": "O plano Nossa Gente possui direito ao ingresso?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O plano Nossa Gente não contempla o direito do ingresso, sendo assim não oferece prioridade na compra do ingresso."}]}
+          ]
+        },
+        {
+          "id": "planos-e-cancelamento-3",
+          "question": "Consigo migrar para planos menores? Como funciona?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "É necessário que o seu atual plano seja cancelado. Basta acionar o nosso time de atendimento pelo WhatsApp: 62 9472-2541 para um maior suporte."}]}
+          ]
+        },
+        {
+          "id": "planos-e-cancelamento-4",
+          "question": "O plano Nosso Amor ainda está disponível?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O plano atingiu sua capacidade máxima, não temos espaço para novas associações, entretanto os sócios atuais podem fazer seu check in para ir aos jogos."}]}
+          ]
+        },
+        {
+          "id": "planos-e-cancelamento-5",
+          "question": "Se eu parar de pagar, o meu plano será cancelado automaticamente?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "De acordo com o regulamento: O sócio-torcedor que permanecer mais de 3 (três) meses na condição de sócio inativo ou inadimplente, ou seja, sem cumprir as suas obrigações e sem o direito de utilizar as vantagens disponibilizadas pelo plano, será automaticamente desligado do programa, sem necessidade de aviso formal prévio, e deixará de ser um sócio-torcedor do GOIÁS"}]}
+          ]
+        },
+        {
+          "id": "planos-e-cancelamento-6",
+          "question": "Posso realizar a inclusão de dependente em qualquer plano?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Sim, é possível realizar a inclusão de dependentes menores de 18 anos."}]},
+            {"type": "paragraph", "spans": [{"text": "Apenas o plano Nossa Família pode ser incluso cônjuge como dependente do plano."}]}
+          ]
+        },
+        {
+          "id": "planos-e-cancelamento-7",
+          "question": "Como realizar associação no plano Nossa História?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O plano é exclusivo para adultos com mais de 65 anos, ou PCD (portador de deficiência) e PNE (portador de necessidades especiais)"}]},
+            {"type": "paragraph", "spans": [
+              {"text": "A adesão é mediante comprovante e "},
+              {"text": "somente pelo atendimento digital.", "bold": true}
+            ]},
+            {"type": "paragraph", "spans": [
+              {"text": "Setor de acesso: "},
+              {"text": "Somente às cadeiras", "bold": true}
+            ]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reconhecimento-facial",
+      "title": "Reconhecimento Facial",
+      "items": [
+        {
+          "id": "reconhecimento-facial-1",
+          "question": "Como realizar o reconhecimento facial?",
+          "answer": [
+            {"type": "paragraph", "spans": [
+              {"text": "A foto de reconhecimento é realizada no site de ingressos "},
+              {"text": "https://ingresso.goiasec.com.br/", "link": "https://ingresso.goiasec.com.br/"}
+            ]},
+            {"type": "paragraph", "spans": [{"text": "Aos sócio que já possuem cadastro no site, basta realizar o login, subir uma foto nítida e aguardar aprovação."}]},
+            {"type": "paragraph", "spans": [{"text": "Aos sócios que ainda não possuem cadastro, é necessário criarem por lá."}]}
+          ]
+        },
+        {
+          "id": "reconhecimento-facial-2",
+          "question": "Não vou para o jogo, posso ceder o acesso para outra pessoa?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O acesso é individual mediante reconhecimento facial, sendo assim, apenas o titular e os dependentes cadastrados, se houver, poderão usufruir do plano."}]}
+          ]
+        },
+        {
+          "id": "reconhecimento-facial-3",
+          "question": "Como funciona o reconhecimento das crianças menores de 18 anos?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Devido a lei LGPD, menores de 18 anos não é necessário o cadastramento facial."}]},
+            {"type": "paragraph", "spans": [{"text": "O acesso é realizado mediante a confirmação de check-in diretamente no portal do titular do plano, no dia da partida, o acesso será apresentando o documento pessoal, o comprovante de check-in e responsável legal."}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rating",
+      "title": "Rating",
+      "items": [
+        {
+          "id": "rating-1",
+          "question": "Como funciona o Rating?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "O Rating do Sócio Esmeralda, é representado pelo número de estrelas que o socio titular possui, definirá a prioridade de check-in na partida seguinte do Goiás, desde que seja o mandante do jogo."}]},
+            {"type": "list", "items": [
+              [{"text": "A cada partida o rating será atualizado de acordo com a frequência do titular da conta;"}],
+              [{"text": "O rating será obtido com base em um sistema de pontos."}],
+              [{"text": "Calculados e acumulados a cada partida realizada do Goiás como mandante. Cada sócio torcedor começara o rating com 0 estrelas, iniciando a contagem de pontos a partir da partida em casa, contra o crb (25/07)."}]
+            ]},
+            {"type": "paragraph", "spans": [{"text": "A adoção do sistema de rating tem o objetivo de oferecer mais um benefício que privilegia os sócios torcedores frequentes. Além disso ele visa reduzir o \"no-show\", que é quando o fã reserva o ingresso e não comparece ao estádio, impedindo que outros torcedores possam estar presentes."}]},
+            {"type": "paragraph", "spans": [{"text": "Atribuição de 1 ponto quando o sócio fizer check-in e comparecer para uma determinada partida com mando de campo do Goiás."}]},
+            {"type": "paragraph", "spans": [{"text": "Se o sócio que fez check-in, não compareceu na partida e não cancelou sua presença dentro dos prazos oferecidos pelo Goiás, será retirado 1 ponto."}]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "no-show",
+      "title": "No-Show",
+      "items": [
+        {
+          "id": "no-show-1",
+          "question": "O que é o No-Show?",
+          "answer": [
+            {"type": "paragraph", "spans": [
+              {"text": "No-Show", "bold": true},
+              {"text": " é quando você realiza check-in (confirma presença), mas não comparece ao jogo e não cancela seu check-in com antecedência."}
+            ]}
+          ]
+        },
+        {
+          "id": "no-show-2",
+          "question": "Quais são as punições por No-Show?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "No primeiro \"No-Show\" no prazo de 12 meses, o sócio terá o check-in bloqueado para o jogo seguinte."}]},
+            {"type": "paragraph", "spans": [{"text": "No segundo \"No-Show\" no prazo de 12 meses, o sócio terá o check-in bloqueado para o jogo seguinte, e será cobrado o valor correspondente a uma mensalidade do programa, conforme plano contratado. Para os sócios que realizaram o pagamento no cartão de crédito, o valor será cobrado na próxima fatura. Para os sócios que realizaram o pagamento de outra forma, a cobrança será efetuada por meio de link disponível na área do sócio. Sendo certo que os Check-ins estarão bloqueados até o pagamento do referido valor."}]},
+            {"type": "paragraph", "spans": [{"text": "A partir do terceiro \"No Show\" no prazo de 12 meses, o sócio terá o check-in bloqueado para o jogo seguinte, e será cobrado o valor correspondente a um ingresso inteiro para a partida em questão, correspondente ao setor do estádio descrito no Check-in. Para os sócios que realizaram o pagamento no cartão de crédito, o valor será cobrado na próxima fatura. Para os sócios que realizaram o pagamento de outra forma, a cobrança será efetuada por meio de link disponível na área do sócio. Sendo certo que os Check-ins estarão bloqueados até o pagamento do referido valor;"}]}
+          ]
+        },
+        {
+          "id": "no-show-3",
+          "question": "Se o meu titular estiver com No-Show, eu consigo confirmar meu check-in sendo dependente?",
+          "answer": [
+            {"type": "paragraph", "spans": [{"text": "Não. Se o titular estiver com No-show, o dependente não conseguirá confirmar o check-in para a partida."}]}
+          ]
+        }
+      ]
+    }
+  ]
+}
