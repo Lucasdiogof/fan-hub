@@ -1,29 +1,19 @@
 import 'package:equatable/equatable.dart';
-import 'package:goias_app/features/news/domain/entities/news_article.dart';
+import 'package:goias_app/features/match/domain/entities/match.dart';
 
 class HomeState extends Equatable {
-  const HomeState({
-    this.loading = true,
-    this.userName,
-    this.featuredNews,
-  });
+  const HomeState({this.loading = true, this.nextMatch});
 
   final bool loading;
-  final String? userName;
-  final NewsArticle? featuredNews;
+  final Match? nextMatch;
 
-  HomeState copyWith({
-    bool? loading,
-    String? userName,
-    NewsArticle? featuredNews,
-  }) {
+  HomeState copyWith({bool? loading, Match? nextMatch, bool clearNextMatch = false}) {
     return HomeState(
       loading: loading ?? this.loading,
-      userName: userName ?? this.userName,
-      featuredNews: featuredNews ?? this.featuredNews,
+      nextMatch: clearNextMatch ? null : (nextMatch ?? this.nextMatch),
     );
   }
 
   @override
-  List<Object?> get props => [loading, userName, featuredNews];
+  List<Object?> get props => [loading, nextMatch];
 }

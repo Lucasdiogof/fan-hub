@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/home/presentation/widgets/match_countdown.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
@@ -10,14 +12,16 @@ import 'package:goias_app/shared/widgets/stadium_backdrop.dart';
 class NextMatchHero extends StatelessWidget {
   const NextMatchHero({
     required this.match,
-    this.onBuyTicket,
+    this.onTickets,
     this.onViewDetails,
+    this.onMatchStarted,
     super.key,
   });
 
   final Match match;
-  final VoidCallback? onBuyTicket;
+  final VoidCallback? onTickets;
   final VoidCallback? onViewDetails;
+  final VoidCallback? onMatchStarted;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +30,9 @@ class NextMatchHero extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppRadius.hero),
       child: Stack(
         children: [
-          const Positioned.fill(child: StadiumBackdrop()),
+          const Positioned.fill(child: StadiumBackdrop(imageAsset: AppAssets.matchHero)),
           Padding(
-            padding: const EdgeInsets.fromLTRB(
-              AppSpacing.xxl,
-              AppSpacing.xxl,
-              AppSpacing.xxl,
-              AppSpacing.xxl,
-            ),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.xl, AppSpacing.xxl, AppSpacing.xxl),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -57,7 +56,19 @@ class NextMatchHero extends StatelessWidget {
                     letterSpacing: 0.2,
                   ),
                 ),
-                const SizedBox(height: AppSpacing.xxxl),
+                const SizedBox(height: 6),
+                Text(
+                  '${shortDateLabel(match.kickoff)} | ${timeLabel(match.kickoff)} | ${match.stadium.toUpperCase()}',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.82),
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.3,
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.xxl),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -66,36 +77,36 @@ class NextMatchHero extends StatelessWidget {
                     Expanded(child: _TeamColumn(team: match.awayTeam)),
                   ],
                 ),
-                const SizedBox(height: AppSpacing.xxxl),
-                Row(
-                  children: [
-                    Expanded(
-                      child: _MetaItem(
-                        icon: Icons.calendar_today_outlined,
-                        label: '${shortDateLabel(match.kickoff)} • ${weekdayShortLabel(match.kickoff)}',
-                      ),
-                    ),
-                    const _MetaDivider(),
-                    Expanded(
-                      child: _MetaItem(icon: Icons.access_time_rounded, label: timeLabel(match.kickoff)),
-                    ),
-                    const _MetaDivider(),
-                    Expanded(
-                      child: _MetaItem(
-                        icon: Icons.location_on_outlined,
-                        label: match.stadium.toUpperCase(),
-                      ),
-                    ),
-                  ],
-                ),
+                const SizedBox(height: AppSpacing.xxl),
+                MatchCountdown(kickoff: match.kickoff, onFinished: onMatchStarted),
                 const SizedBox(height: AppSpacing.xxl),
                 Row(
                   children: [
                     Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: onBuyTicket,
-                        icon: const Icon(Icons.confirmation_number_outlined, size: 17),
-                        label: const Text('COMPRAR INGRESSO'),
+                      child: OutlinedButton(
+                        onPressed: onViewDetails,
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          disabledForegroundColor: Colors.white.withValues(alpha: 0.7),
+                          side: BorderSide(color: Colors.white.withValues(alpha: 0.6)),
+                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                          minimumSize: const Size.fromHeight(52),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(AppRadius.button),
+                          ),
+                          textStyle: const TextStyle(
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                        child: const Text('DETALHES DO JOGO'),
+                      ),
+                    ),
+                    const SizedBox(width: AppSpacing.md),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: onTickets,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: colors.ctaGreen,
                           foregroundColor: Colors.white,
@@ -112,29 +123,7 @@ class NextMatchHero extends StatelessWidget {
                             letterSpacing: 0.3,
                           ),
                         ),
-                      ),
-                    ),
-                    const SizedBox(width: AppSpacing.md),
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: onViewDetails,
-                        icon: const Icon(Icons.arrow_forward_rounded, size: 16),
-                        label: const Text('VER DETALHES'),
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          disabledForegroundColor: Colors.white.withValues(alpha: 0.7),
-                          side: BorderSide(color: Colors.white.withValues(alpha: 0.6)),
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                          minimumSize: const Size.fromHeight(52),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppRadius.button),
-                          ),
-                          textStyle: const TextStyle(
-                            fontSize: 12.5,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.3,
-                          ),
-                        ),
+                        child: const Text('INGRESSOS'),
                       ),
                     ),
                   ],
@@ -201,50 +190,6 @@ class _VersusBadge extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _MetaItem extends StatelessWidget {
-  const _MetaItem({required this.icon, required this.label});
-
-  final IconData icon;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 15, color: Colors.white.withValues(alpha: 0.8)),
-        const SizedBox(height: 6),
-        Text(
-          label,
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.88),
-            fontSize: 11,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.2,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _MetaDivider extends StatelessWidget {
-  const _MetaDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 1,
-      height: 28,
-      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-      color: Colors.white.withValues(alpha: 0.18),
     );
   }
 }
