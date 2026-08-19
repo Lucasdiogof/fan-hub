@@ -111,6 +111,18 @@ def main():
     posts = [p for p in posts if p["tweet_id"] and p["timestamp"]]
     posts.sort(key=lambda p: p["timestamp"], reverse=True)
 
+    if not posts and OUTPUT.exists():
+        try:
+            existing = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            existing = None
+        if existing:
+            print(
+                f"sync_x_posts: scrape returned 0 posts, keeping the {len(existing)} already saved",
+                file=sys.stderr,
+            )
+            return 1
+
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(posts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"sync_x_posts: wrote {len(posts)} posts to {OUTPUT}")
