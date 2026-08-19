@@ -11,7 +11,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final user = MockData.currentUser;
+    const user = MockData.currentUser;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(

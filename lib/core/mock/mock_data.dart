@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
-import 'package:goias_app/features/membership/domain/entities/membership.dart';
-import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/profile/domain/entities/app_user.dart';
 import 'package:goias_app/features/ticket/domain/entities/stadium_sector.dart';
@@ -280,55 +278,10 @@ class MockData {
     ),
   ];
 
-  static const plans = [
-    MembershipPlan(
-      id: 'p-esmeralda',
-      name: 'Esmeralda',
-      monthlyPrice: 39.9,
-      benefits: [
-        'Desconto em ingressos',
-        'Prioridade na compra de ingressos',
-        'Conteúdo exclusivo no app',
-      ],
-    ),
-    MembershipPlan(
-      id: 'p-cadeiras',
-      name: 'Cadeiras',
-      monthlyPrice: 79.9,
-      benefits: [
-        'Check-in direto no setor Cadeiras',
-        'Desconto em ingressos avulsos',
-        'Prioridade na compra de ingressos',
-        'Loja oficial com desconto',
-      ],
-      highlight: true,
-    ),
-    MembershipPlan(
-      id: 'p-familia',
-      name: 'Família',
-      monthlyPrice: 129.9,
-      benefits: [
-        'Até 4 check-ins por partida',
-        'Espaço Família garantido',
-        'Loja oficial com desconto',
-        'Eventos exclusivos para sócios',
-      ],
-    ),
-  ];
-
-  static Membership get myMembership => Membership(
-    plan: plans[1],
-    status: MembershipStatus.active,
-    memberNumber: '084213',
-    holderName: 'Lucas Diogo',
-    nextPaymentDate: DateTime(_now.year, _now.month, _now.day).add(const Duration(days: 12)),
-  );
-
-  static AppUser get currentUser => AppUser(
+  static const currentUser = AppUser(
     name: 'Lucas Diogo',
     email: 'lucas.diogo@email.com',
     cpf: '000.000.000-00',
     phone: '(62) 90000-0000',
-    membership: myMembership,
   );
 }

@@ -35,6 +35,8 @@ flutter:
 
   assets:
     - lib/assets/
+    - lib/assets/legal/
+    - lib/assets/content/
 
 flutter_launcher_icons:
   android: true

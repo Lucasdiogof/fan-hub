@@ -9,6 +9,6 @@ class MockUserRepository implements UserRepository {
   @override
   Future<Result<AppUser>> getCurrentUser() async {
     await Future<void>.delayed(_latency);
-    return Success(MockData.currentUser);
+    return const Success(MockData.currentUser);
   }
 }
