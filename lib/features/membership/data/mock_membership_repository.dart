@@ -66,37 +66,24 @@ class MockMembershipRepository implements MembershipRepository {
     return Success(membership);
   }
 
-  /// Só para depuração local (chamado a partir de um botão visível apenas em
-  /// `kDebugMode`) — nunca deve existir caminho de produção que crie uma
-  /// associação real sem passar por [submitRegistration].
-  void debugToggleStatus() {
-    final current = _membership;
-    if (current == null) {
-      final plan = MembershipPlansCatalog.plans.firstWhere((p) => p.id == 'nossa-garra');
-      _membership = Membership(
-        id: 'mock-debug',
-        userId: 'mock-user',
-        plan: plan,
-        planPrice: plan.defaultPrice,
-        status: MembershipStatus.active,
-        memberNumber: '084213',
-        startedAt: DateTime.now().subtract(const Duration(days: 200)),
-        expiresAt: DateTime.now().add(const Duration(days: 165)),
-      );
+  /// Alternado a partir do Perfil, enquanto não existe integração real com
+  /// o Sócio Esmeralda — nunca deve existir caminho de produção que crie
+  /// uma associação real sem passar por [submitRegistration].
+  void debugSetActive(bool isActive) {
+    if (!isActive) {
+      _membership = null;
       return;
     }
-    if (current.status == MembershipStatus.active) {
-      _membership = Membership(
-        id: current.id,
-        userId: current.userId,
-        plan: current.plan,
-        planPrice: current.planPrice,
-        status: MembershipStatus.pending,
-        memberNumber: current.memberNumber,
-        startedAt: current.startedAt,
-      );
-      return;
-    }
-    _membership = null;
+    final plan = MembershipPlansCatalog.plans.firstWhere((p) => p.id == 'nossa-garra');
+    _membership = Membership(
+      id: 'mock-debug',
+      userId: 'mock-user',
+      plan: plan,
+      planPrice: plan.defaultPrice,
+      status: MembershipStatus.active,
+      memberNumber: '084213',
+      startedAt: DateTime.now().subtract(const Duration(days: 200)),
+      expiresAt: DateTime.now().add(const Duration(days: 165)),
+    );
   }
 }

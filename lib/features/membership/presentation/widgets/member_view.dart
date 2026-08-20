@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_state.dart';
-import 'package:goias_app/features/membership/presentation/widgets/current_plan_card.dart';
 import 'package:goias_app/features/membership/presentation/widgets/digital_membership_card.dart';
 import 'package:goias_app/features/membership/presentation/widgets/help_and_info_section.dart';
 import 'package:goias_app/features/membership/presentation/widgets/member_next_match_card.dart';
@@ -23,17 +22,15 @@ class MemberView extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.only(bottom: AppSpacing.xxxl),
       children: [
-        DigitalMembershipCard(
-          holderName: state.user?.name ?? '',
-          planName: membership.plan.name,
-          status: membership.status,
-          memberNumber: membership.memberNumber,
-        ),
-        const SizedBox(height: AppSpacing.xl),
-        CurrentPlanCard(
-          plan: membership.plan,
-          price: membership.planPrice,
-          onSeeAllBenefits: () => context.push('/membership/benefits', extra: membership.plan),
+        InkWell(
+          onTap: () => context.push('/membership/my', extra: membership),
+          borderRadius: BorderRadius.circular(AppRadius.card),
+          child: DigitalMembershipCard(
+            holderName: state.user?.name ?? '',
+            planName: membership.plan.name,
+            status: membership.status,
+            memberNumber: membership.memberNumber,
+          ),
         ),
         if (state.nextMatch != null) ...[
           const SizedBox(height: AppSpacing.xl),

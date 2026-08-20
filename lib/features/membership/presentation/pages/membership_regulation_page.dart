@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -31,7 +32,7 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
   void _goToSection(int index) {
     final ctx = _sectionKeys[index]?.currentContext;
     if (ctx == null) return;
-    Scrollable.ensureVisible(ctx, duration: const Duration(milliseconds: 350), curve: Curves.easeInOut, alignment: 0.02);
+    Scrollable.ensureVisible(ctx, duration: const Duration(milliseconds: 350), curve: Curves.easeInOut, alignment: 0.08);
   }
 
   @override
@@ -82,6 +83,12 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                           _sectionKeys.putIfAbsent(section.index, () => GlobalKey());
                         }
                         return ListView(
+                          // `Scrollable.ensureVisible` só funciona pra seções já montadas —
+                          // sem isso, `GlobalKey.currentContext` vem nulo pra qualquer item
+                          // fora da viewport inicial e o índice não navega além da primeira
+                          // seção. O conteúdo é só texto, então cachear tudo de uma vez é
+                          // barato.
+                          scrollCacheExtent: const ScrollCacheExtent.pixels(100000),
                           children: [
                             _RegulationIndex(sections: sections, onTapSection: _goToSection),
                             const SizedBox(height: AppSpacing.xxxl),

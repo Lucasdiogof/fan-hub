@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/membership/data/membership_contact_config.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/shared/utils/currency.dart';
+import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 
@@ -40,8 +42,44 @@ class MyMembershipPage extends StatelessWidget {
                             _InfoRow('Situação', _statusLabel(membership.status)),
                             if (membership.memberNumber != null) _InfoRow('Número do sócio', membership.memberNumber!),
                             _InfoRow('Mensalidade', '${formatBrl(membership.planPrice.monthlyPrice)}/mês'),
+                            _InfoRow('Anuidade', formatBrl(membership.planPrice.annualPrice)),
                             if (membership.startedAt != null) _InfoRow('Sócio desde', _formatDate(membership.startedAt!)),
                           ],
+                        ),
+                        const SizedBox(height: AppSpacing.xl),
+                        Text(
+                          'BENEFÍCIOS',
+                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+                        ),
+                        const SizedBox(height: AppSpacing.md),
+                        Container(
+                          padding: const EdgeInsets.all(AppSpacing.lg),
+                          decoration: BoxDecoration(
+                            color: colors.surface,
+                            borderRadius: BorderRadius.circular(AppRadius.card),
+                            border: Border.all(color: colors.border),
+                          ),
+                          child: Column(
+                            children: [
+                              for (final benefit in membership.plan.benefits)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Icon(Icons.check_circle_rounded, size: 17, color: colors.primary),
+                                      const SizedBox(width: AppSpacing.sm),
+                                      Expanded(
+                                        child: Text(
+                                          benefit,
+                                          style: TextStyle(fontSize: 13, height: 1.4, color: colors.textPrimary),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: AppSpacing.xl),
                         _OptionRow(
@@ -49,6 +87,33 @@ class MyMembershipPage extends StatelessWidget {
                           label: 'Regulamento do Sócio Esmeralda',
                           onTap: () => context.push('/membership/regulation'),
                         ),
+                        const SizedBox(height: AppSpacing.xxxl),
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () => openExternalUrl(
+                              context,
+                              MembershipContactConfig.whatsappUrlWithMessage(
+                                'Olá, gostaria de cancelar minha associação Sócio Esmeralda (${membership.plan.name}).',
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: colors.error,
+                              side: BorderSide(color: colors.error),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              textStyle: const TextStyle(fontWeight: FontWeight.w800, fontSize: 12.5, letterSpacing: 0.3),
+                            ),
+                            child: const Text('CANCELAR ASSOCIAÇÃO'),
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.sm),
+                        Text(
+                          'O cancelamento é feito com o atendimento pelo WhatsApp, sem cobrança de multa fora dos prazos previstos no Regulamento.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 11, color: colors.textHint, height: 1.3),
+                        ),
+                        const SizedBox(height: AppSpacing.xl),
                       ],
                     ),
                   ),

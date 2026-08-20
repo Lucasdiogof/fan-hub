@@ -5,4 +5,7 @@ class MembershipContactConfig {
 
   static const whatsappNumber = '(62) 99472-2541';
   static const whatsappUrl = 'https://wa.me/5562994722541';
+
+  static String whatsappUrlWithMessage(String message) =>
+      '$whatsappUrl?text=${Uri.encodeComponent(message)}';
 }
