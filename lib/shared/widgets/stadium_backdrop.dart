@@ -14,10 +14,24 @@ import 'package:goias_app/core/theme/app_colors.dart';
 /// são o verde do clube (ex.: capa de notícia), preservando o "clima" de
 /// fotografia editorial em vez de um gradiente genérico.
 class StadiumBackdrop extends StatelessWidget {
-  const StadiumBackdrop({this.tint, this.imageAsset, super.key});
+  const StadiumBackdrop({
+    this.tint,
+    this.imageAsset,
+    this.showFloodlights = true,
+    this.overlayOpacity = 0.55,
+    super.key,
+  });
 
   final Color? tint;
   final String? imageAsset;
+
+  /// Os feixes de holofote (formas triangulares) — desliga pra um clima só
+  /// de foto + escurecimento, sem elementos geométricos por cima.
+  final bool showFloodlights;
+
+  /// Intensidade do escurecimento aplicado sobre a fotografia (0–1). Só
+  /// entra quando [imageAsset] está presente.
+  final double overlayOpacity;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +54,7 @@ class StadiumBackdrop extends StatelessWidget {
               ),
             ),
           ),
-        Positioned.fill(child: CustomPaint(painter: _FloodlightPainter())),
+        if (showFloodlights) Positioned.fill(child: CustomPaint(painter: _FloodlightPainter())),
         const Positioned.fill(child: CustomPaint(painter: _GrainPainter())),
         DecoratedBox(
           decoration: BoxDecoration(
@@ -61,7 +75,7 @@ class StadiumBackdrop extends StatelessWidget {
             ),
           ),
         ),
-        if (imageAsset != null) DecoratedBox(decoration: BoxDecoration(color: base.withValues(alpha: 0.55))),
+        if (imageAsset != null) DecoratedBox(decoration: BoxDecoration(color: base.withValues(alpha: overlayOpacity))),
       ],
     );
   }

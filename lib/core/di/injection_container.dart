@@ -48,7 +48,7 @@ void setupDependencies() {
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
   sl.registerLazySingleton<AuthCubit>(() => AuthCubit(sl()));
 
-  sl.registerFactory<HomeCubit>(() => HomeCubit(sl()));
+  sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));

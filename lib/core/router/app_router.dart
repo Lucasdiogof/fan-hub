@@ -11,8 +11,6 @@ import 'package:goias_app/features/auth/presentation/pages/reset_password_page.d
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
-import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
-import 'package:goias_app/features/membership/presentation/pages/membership_benefits_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_faq_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_plan_details_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_plans_catalog_page.dart';
@@ -21,6 +19,7 @@ import 'package:goias_app/features/membership/presentation/pages/membership_regi
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
+import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/shared/widgets/coming_soon_page.dart';
 
 const _authArea = {'/login', '/register', '/check-email'};
@@ -28,6 +27,7 @@ const _authArea = {'/login', '/register', '/check-email'};
 GoRouter createAppRouter(AuthCubit authCubit) {
   return GoRouter(
     initialLocation: '/',
+    observers: [appRouteObserver],
     refreshListenable: _AuthRefresh(authCubit.stream),
     redirect: (context, state) {
       final authState = authCubit.state;
@@ -71,10 +71,6 @@ GoRouter createAppRouter(AuthCubit authCubit) {
           final args = state.extra as ({String? initialCategoryId, String? initialQuery})?;
           return MembershipFaqPage(initialCategoryId: args?.initialCategoryId, initialQuery: args?.initialQuery);
         },
-      ),
-      GoRoute(
-        path: '/membership/benefits',
-        builder: (context, state) => MembershipBenefitsPage(plan: state.extra! as MembershipPlan),
       ),
       GoRoute(
         path: '/membership/my',

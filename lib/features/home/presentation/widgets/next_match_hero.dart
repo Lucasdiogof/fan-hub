@@ -9,6 +9,8 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 import 'package:goias_app/shared/widgets/stadium_backdrop.dart';
 
+/// Único grande bloco escuro da primeira dobra — o header acima dele é
+/// claro de propósito, pra não competir visualmente.
 class NextMatchHero extends StatelessWidget {
   const NextMatchHero({
     required this.match,
@@ -30,9 +32,11 @@ class NextMatchHero extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppRadius.hero),
       child: Stack(
         children: [
-          const Positioned.fill(child: StadiumBackdrop(imageAsset: AppAssets.matchHero)),
+          const Positioned.fill(
+            child: StadiumBackdrop(imageAsset: AppAssets.matchHero, showFloodlights: false, overlayOpacity: 0.85),
+          ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.xl, AppSpacing.xxl, AppSpacing.xxl),
+            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.lg),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -48,27 +52,27 @@ class NextMatchHero extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
-                  match.competition.toUpperCase(),
+                  _shortCompetitionLabel(match.competition),
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.2,
                   ),
                 ),
-                const SizedBox(height: 6),
+                const SizedBox(height: 4),
                 Text(
-                  '${shortDateLabel(match.kickoff)} | ${timeLabel(match.kickoff)} | ${match.stadium.toUpperCase()}',
+                  '${shortDateLabel(match.kickoff)} • ${timeLabel(match.kickoff)} • ${match.stadium.toUpperCase()}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.82),
-                    fontSize: 12.5,
-                    fontWeight: FontWeight.w700,
+                    color: Colors.white.withValues(alpha: 0.8),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                     letterSpacing: 0.3,
                   ),
                 ),
-                const SizedBox(height: AppSpacing.xxl),
+                const SizedBox(height: AppSpacing.lg),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -77,9 +81,9 @@ class NextMatchHero extends StatelessWidget {
                     Expanded(child: _TeamColumn(team: match.awayTeam)),
                   ],
                 ),
-                const SizedBox(height: AppSpacing.xxl),
+                const SizedBox(height: AppSpacing.lg),
                 MatchCountdown(kickoff: match.kickoff, onFinished: onMatchStarted),
-                const SizedBox(height: AppSpacing.xxl),
+                const SizedBox(height: AppSpacing.lg),
                 Row(
                   children: [
                     Expanded(
@@ -88,14 +92,14 @@ class NextMatchHero extends StatelessWidget {
                         style: OutlinedButton.styleFrom(
                           foregroundColor: Colors.white,
                           disabledForegroundColor: Colors.white.withValues(alpha: 0.7),
-                          side: BorderSide(color: Colors.white.withValues(alpha: 0.6)),
+                          side: BorderSide(color: Colors.white.withValues(alpha: 0.5)),
                           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                          minimumSize: const Size.fromHeight(52),
+                          minimumSize: const Size.fromHeight(46),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(AppRadius.button),
                           ),
                           textStyle: const TextStyle(
-                            fontSize: 12.5,
+                            fontSize: 12,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.3,
                           ),
@@ -113,12 +117,12 @@ class NextMatchHero extends StatelessWidget {
                           disabledBackgroundColor: colors.ctaGreen.withValues(alpha: 0.5),
                           disabledForegroundColor: Colors.white.withValues(alpha: 0.7),
                           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                          minimumSize: const Size.fromHeight(52),
+                          minimumSize: const Size.fromHeight(46),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(AppRadius.button),
                           ),
                           textStyle: const TextStyle(
-                            fontSize: 12.5,
+                            fontSize: 12,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.3,
                           ),
@@ -137,6 +141,21 @@ class NextMatchHero extends StatelessWidget {
   }
 }
 
+final _competitionShortNames = {
+  RegExp(r'campeonato brasileiro s[ée]rie a', caseSensitive: false): 'Brasileirão Série A',
+  RegExp(r'campeonato brasileiro s[ée]rie b', caseSensitive: false): 'Brasileirão Série B',
+  RegExp(r'campeonato brasileiro s[ée]rie c', caseSensitive: false): 'Brasileirão Série C',
+};
+
+/// A fonte real devolve algo como "Campeonato Brasileiro Série B 2026" —
+/// grande demais pro Hero. Isso é só apresentação, não mexe no dado.
+String _shortCompetitionLabel(String competition) {
+  for (final entry in _competitionShortNames.entries) {
+    if (entry.key.hasMatch(competition)) return entry.value;
+  }
+  return competition;
+}
+
 class _TeamColumn extends StatelessWidget {
   const _TeamColumn({required this.team});
 
@@ -147,8 +166,8 @@ class _TeamColumn extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ClubBadge(team: team, size: 60, onDark: true),
-        const SizedBox(height: AppSpacing.md),
+        ClubBadge(team: team, size: 64, onDark: true),
+        const SizedBox(height: AppSpacing.sm),
         Text(
           team.name.toUpperCase(),
           textAlign: TextAlign.center,
@@ -173,21 +192,12 @@ class _VersusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-      child: Container(
-        width: 28,
-        height: 28,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
-        ),
-        child: Text(
-          'X',
-          style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.75),
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-          ),
+      child: Text(
+        'X',
+        style: TextStyle(
+          color: Colors.white.withValues(alpha: 0.55),
+          fontSize: 15,
+          fontWeight: FontWeight.w800,
         ),
       ),
     );

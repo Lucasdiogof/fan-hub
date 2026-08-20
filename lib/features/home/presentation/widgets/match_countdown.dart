@@ -68,13 +68,13 @@ class _MatchCountdownState extends State<MatchCountdown> {
         Text(
           'O JOGO COMEÇA EM',
           style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.7),
-            fontSize: 10.5,
+            color: Colors.white.withValues(alpha: 0.65),
+            fontSize: 10,
             fontWeight: FontWeight.w700,
             letterSpacing: 1.4,
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -104,25 +104,25 @@ class _CountdownBlock extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: 46,
-          height: 46,
+          width: 40,
+          height: 40,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.14),
+            color: Colors.white.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
           ),
           child: Text(
             value.toString().padLeft(2, '0'),
-            style: const TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.w800),
+            style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w800),
           ),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: 4),
         Text(
           label,
           style: TextStyle(
-            color: Colors.white.withValues(alpha: 0.65),
-            fontSize: 9,
+            color: Colors.white.withValues(alpha: 0.6),
+            fontSize: 8.5,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.4,
           ),
@@ -137,6 +137,6 @@ class _Separator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(width: 10);
+    return const SizedBox(width: 8);
   }
 }
