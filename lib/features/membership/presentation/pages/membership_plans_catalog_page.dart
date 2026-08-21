@@ -39,8 +39,8 @@ class MembershipPlansCatalogPage extends StatelessWidget {
                           name: plan.name,
                           sector: plan.stadiumSector,
                           onTap: () async {
-                            final result = await context.push<bool>('/membership/plans/${plan.id}');
-                            if (result == true && context.mounted) context.pop(true);
+                            final result = await context.push<String>('/membership/plans/${plan.id}');
+                            if (result != null && context.mounted) context.pop(result);
                           },
                         );
                       },

@@ -1,25 +1,25 @@
 import 'package:equatable/equatable.dart';
 
-enum DocumentType { cpf, passport }
-
 enum Gender { masculino, feminino }
 
+/// CPF é sempre obrigatório (regra do programa); passaporte é sempre
+/// opcional (dado adicional, não um substituto do CPF) — não existe mais
+/// um toggle "ou/ou" entre os dois.
 class MembershipRegistrationData extends Equatable {
   const MembershipRegistrationData({
-    this.documentType = DocumentType.cpf,
     this.cpf = '',
+    this.nationality = 'BR',
     this.passport = '',
-    this.nationality = 'Brasileira',
-    this.country = 'Brasil',
     this.contactEmail = '',
     this.fullName = '',
     this.nickname = '',
-    this.birthDate,
+    this.birthDate = '',
     this.gender,
+    this.phoneCountryCode = 'BR',
     this.phone = '',
     this.landline = '',
     this.wantsNewsletter = false,
-    this.addressCountry = 'Brasil',
+    this.addressCountry = 'BR',
     this.zipCode = '',
     this.street = '',
     this.number = '',
@@ -29,21 +29,30 @@ class MembershipRegistrationData extends Equatable {
     this.city = '',
   });
 
-  final DocumentType documentType;
   final String cpf;
-  final String passport;
+
+  /// Código ISO do país (ex.: "BR") — nacionalidade do titular.
   final String nationality;
-  final String country;
+  final String passport;
 
   final String contactEmail;
   final String fullName;
   final String nickname;
-  final DateTime? birthDate;
+
+  /// Texto mascarado "DD/MM/AAAA", não um `DateTime` — evita duas fontes de
+  /// verdade pro mesmo campo (o que o usuário digitou vs. o que foi
+  /// interpretado). Parseie com `parseDdMmYyyy` quando precisar da data real.
+  final String birthDate;
   final Gender? gender;
+
+  /// Código ISO do país do celular (ex.: "BR") — decide o DDI (+55) e se a
+  /// máscara/validação brasileira de celular se aplica.
+  final String phoneCountryCode;
   final String phone;
   final String landline;
   final bool wantsNewsletter;
 
+  /// Código ISO do país do endereço — pode divergir da nacionalidade.
   final String addressCountry;
   final String zipCode;
   final String street;
@@ -54,16 +63,15 @@ class MembershipRegistrationData extends Equatable {
   final String city;
 
   MembershipRegistrationData copyWith({
-    DocumentType? documentType,
     String? cpf,
-    String? passport,
     String? nationality,
-    String? country,
+    String? passport,
     String? contactEmail,
     String? fullName,
     String? nickname,
-    DateTime? birthDate,
+    String? birthDate,
     Gender? gender,
+    String? phoneCountryCode,
     String? phone,
     String? landline,
     bool? wantsNewsletter,
@@ -77,16 +85,15 @@ class MembershipRegistrationData extends Equatable {
     String? city,
   }) {
     return MembershipRegistrationData(
-      documentType: documentType ?? this.documentType,
       cpf: cpf ?? this.cpf,
-      passport: passport ?? this.passport,
       nationality: nationality ?? this.nationality,
-      country: country ?? this.country,
+      passport: passport ?? this.passport,
       contactEmail: contactEmail ?? this.contactEmail,
       fullName: fullName ?? this.fullName,
       nickname: nickname ?? this.nickname,
       birthDate: birthDate ?? this.birthDate,
       gender: gender ?? this.gender,
+      phoneCountryCode: phoneCountryCode ?? this.phoneCountryCode,
       phone: phone ?? this.phone,
       landline: landline ?? this.landline,
       wantsNewsletter: wantsNewsletter ?? this.wantsNewsletter,
@@ -103,16 +110,15 @@ class MembershipRegistrationData extends Equatable {
 
   @override
   List<Object?> get props => [
-    documentType,
     cpf,
-    passport,
     nationality,
-    country,
+    passport,
     contactEmail,
     fullName,
     nickname,
     birthDate,
     gender,
+    phoneCountryCode,
     phone,
     landline,
     wantsNewsletter,

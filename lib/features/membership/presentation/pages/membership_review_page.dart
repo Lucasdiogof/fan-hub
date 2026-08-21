@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/domain/entities/membership_registration_data.dart';
+import 'package:goias_app/features/membership/domain/membership_registration_validators.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/masks.dart';
@@ -19,6 +19,7 @@ class MembershipReviewPage extends StatelessWidget {
     final state = context.watch<MembershipRegistrationCubit>().state;
     final data = state.data;
     final colors = context.colors;
+    final birthDate = parseDdMmYyyy(data.birthDate);
 
     return ListView(
       children: [
@@ -39,11 +40,9 @@ class MembershipReviewPage extends StatelessWidget {
           title: 'DADOS DO TITULAR',
           rows: [
             _ReviewRow('Nome', data.fullName),
-            _ReviewRow(
-              data.documentType == DocumentType.cpf ? 'CPF' : 'Passaporte',
-              data.documentType == DocumentType.cpf ? maskCpf(data.cpf) : data.passport,
-            ),
-            _ReviewRow('Nascimento', data.birthDate == null ? '-' : _formatDate(data.birthDate!)),
+            _ReviewRow('CPF', maskCpf(data.cpf)),
+            if (data.passport.trim().isNotEmpty) _ReviewRow('Passaporte', data.passport),
+            _ReviewRow('Nascimento', birthDate == null ? '-' : data.birthDate),
           ],
         ),
         _ReviewSection(
@@ -78,11 +77,6 @@ class MembershipReviewPage extends StatelessWidget {
       ],
     );
   }
-}
-
-String _formatDate(DateTime date) {
-  String two(int n) => n.toString().padLeft(2, '0');
-  return '${two(date.day)}/${two(date.month)}/${date.year}';
 }
 
 class _ReviewSection extends StatelessWidget {

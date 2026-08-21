@@ -21,8 +21,8 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
   late MembershipPlanPrice selectedPrice = plan.defaultPrice;
 
   Future<void> _startRegistration() async {
-    final result = await context.push<bool>('/membership/register', extra: (plan: plan, price: selectedPrice));
-    if (result == true && mounted) context.pop(true);
+    final result = await context.push<String>('/membership/register', extra: (plan: plan, price: selectedPrice));
+    if (result != null && mounted) context.pop(result);
   }
 
   @override

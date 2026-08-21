@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
@@ -53,11 +55,12 @@ class MockMembershipRepository implements MembershipRepository {
   }) async {
     await Future<void>.delayed(_latency);
     final membership = Membership(
-      id: 'mock-${DateTime.now().millisecondsSinceEpoch}',
+      id: 'reg-${DateTime.now().millisecondsSinceEpoch}',
       userId: 'mock-user',
       plan: plan,
       planPrice: price,
-      status: MembershipStatus.pending,
+      status: MembershipStatus.active,
+      memberNumber: _generateMemberNumber(),
       startedAt: DateTime.now(),
       regulationVersion: regulationVersion,
       regulationAcceptedAt: regulationAcceptedAt,
@@ -65,6 +68,8 @@ class MockMembershipRepository implements MembershipRepository {
     _membership = membership;
     return Success(membership);
   }
+
+  String _generateMemberNumber() => (100000 + Random().nextInt(900000)).toString();
 
   /// Alternado a partir do Perfil, enquanto não existe integração real com
   /// o Sócio Esmeralda — nunca deve existir caminho de produção que crie

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/membership/domain/country_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_registration_data.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/features/membership/presentation/widgets/registration_field.dart';
@@ -9,22 +10,6 @@ import 'package:goias_app/shared/utils/masks.dart';
 
 class PersonalDataStep extends StatelessWidget {
   const PersonalDataStep({super.key});
-
-  Future<void> _pickBirthDate(BuildContext context, MembershipRegistrationCubit cubit, DateTime? current) async {
-    final now = DateTime.now();
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: current ?? DateTime(now.year - 25),
-      firstDate: DateTime(now.year - 110),
-      lastDate: now,
-      helpText: 'DATA DE NASCIMENTO',
-      cancelText: 'CANCELAR',
-      confirmText: 'CONFIRMAR',
-    );
-    if (picked != null) {
-      cubit.updateData((data) => data.copyWith(birthDate: picked));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,53 +26,69 @@ class PersonalDataStep extends StatelessWidget {
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
           label: 'E-mail de contato',
+          isRequired: true,
           value: data.contactEmail,
           errorText: errors['contactEmail'],
           keyboardType: TextInputType.emailAddress,
-          onChanged: (value) => cubit.updateData((current) => current.copyWith(contactEmail: value)),
+          onChanged: cubit.updateContactEmail,
+          onBlur: () => cubit.markFieldBlurred('contactEmail'),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
           label: 'Nome completo',
+          isRequired: true,
           value: data.fullName,
           errorText: errors['fullName'],
-          onChanged: (value) => cubit.updateData((current) => current.copyWith(fullName: value)),
+          textCapitalization: TextCapitalization.words,
+          onChanged: cubit.updateFullName,
+          onBlur: () => cubit.markFieldBlurred('fullName'),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
           label: 'Apelido (opcional)',
           value: data.nickname,
-          onChanged: (value) => cubit.updateData((current) => current.copyWith(nickname: value)),
+          textCapitalization: TextCapitalization.words,
+          onChanged: cubit.updateNickname,
         ),
         const SizedBox(height: AppSpacing.lg),
-        RegistrationPickerField(
+        RegistrationTextField(
           label: 'Data de nascimento',
-          value: data.birthDate == null ? '' : _formatDate(data.birthDate!),
-          placeholder: 'Selecionar data',
+          isRequired: true,
+          value: data.birthDate,
           errorText: errors['birthDate'],
-          onTap: () => _pickBirthDate(context, cubit, data.birthDate),
+          keyboardType: TextInputType.number,
+          hintText: 'DD/MM/AAAA',
+          inputFormatters: [birthDateInputFormatter()],
+          onChanged: cubit.updateBirthDate,
+          onBlur: () => cubit.markFieldBlurred('birthDate'),
         ),
         const SizedBox(height: AppSpacing.lg),
-        Text('Sexo', style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.textSecondary)),
+        const FieldLabel('Sexo', isRequired: true),
         const SizedBox(height: 6),
         SegmentedToggle<Gender>(
           value: data.gender,
           options: const [(Gender.masculino, 'Masculino'), (Gender.feminino, 'Feminino')],
-          onChanged: (gender) => cubit.updateData((current) => current.copyWith(gender: gender)),
+          onChanged: cubit.updateGender,
         ),
         if (errors['gender'] != null) ...[
           const SizedBox(height: 4),
-          Text(errors['gender']!, style: TextStyle(fontSize: 12, color: colors.error)),
+          Text(errors['gender']!, style: TextStyle(fontSize: 12, color: colors.primary)),
         ],
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
           label: 'Celular',
+          isRequired: true,
           value: data.phone,
           errorText: errors['phone'],
           keyboardType: TextInputType.phone,
-          prefixText: '🇧🇷 +55  ',
-          inputFormatters: [phoneInputFormatter()],
-          onChanged: (value) => cubit.updateData((current) => current.copyWith(phone: value)),
+          hintText: data.phoneCountryCode == 'BR' ? '(00) 00000-0000' : null,
+          prefix: _PhoneCountryPrefix(
+            isoCode: data.phoneCountryCode,
+            onChanged: cubit.updatePhoneCountryCode,
+          ),
+          inputFormatters: data.phoneCountryCode == 'BR' ? [phoneInputFormatter()] : null,
+          onChanged: cubit.updatePhone,
+          onBlur: () => cubit.markFieldBlurred('phone'),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
@@ -95,21 +96,86 @@ class PersonalDataStep extends StatelessWidget {
           value: data.landline,
           keyboardType: TextInputType.phone,
           inputFormatters: [landlineInputFormatter()],
-          onChanged: (value) => cubit.updateData((current) => current.copyWith(landline: value)),
+          onChanged: cubit.updateLandline,
         ),
         const SizedBox(height: AppSpacing.lg),
-        _NewsletterCheckbox(
-          value: data.wantsNewsletter,
-          onChanged: (value) => cubit.updateData((current) => current.copyWith(wantsNewsletter: value)),
-        ),
+        _NewsletterCheckbox(value: data.wantsNewsletter, onChanged: cubit.updateWantsNewsletter),
       ],
     );
   }
 }
 
-String _formatDate(DateTime date) {
-  String two(int n) => n.toString().padLeft(2, '0');
-  return '${two(date.day)}/${two(date.month)}/${date.year}';
+/// Prefixo tocável do campo Celular — abre um seletor de país/DDI em vez de
+/// fixar o Brasil, já que o titular pode ter um número de outro país.
+class _PhoneCountryPrefix extends StatelessWidget {
+  const _PhoneCountryPrefix({required this.isoCode, required this.onChanged});
+
+  final String isoCode;
+  final ValueChanged<String> onChanged;
+
+  Future<void> _open(BuildContext context) async {
+    final colors = context.colors;
+    await showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      isScrollControlled: true,
+      backgroundColor: colors.surface,
+      builder: (sheetContext) {
+        return SafeArea(
+          child: SizedBox(
+            height: MediaQuery.of(sheetContext).size.height * 0.7,
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+              itemCount: CountryCatalog.countries.length,
+              separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+              itemBuilder: (itemContext, index) {
+                final country = CountryCatalog.countries[index];
+                return ListTile(
+                  leading: Text(CountryCatalog.flagFor(country.code), style: const TextStyle(fontSize: 20)),
+                  title: Text(
+                    country.name,
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary),
+                  ),
+                  trailing: Text(
+                    country.dialCode,
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.textSecondary),
+                  ),
+                  onTap: () {
+                    onChanged(country.code);
+                    Navigator.of(itemContext).pop();
+                  },
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return GestureDetector(
+      onTap: () => _open(context),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 8),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(CountryCatalog.flagFor(isoCode), style: const TextStyle(fontSize: 18)),
+            const SizedBox(width: 6),
+            Text(
+              CountryCatalog.dialCodeFor(isoCode),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary),
+            ),
+            const SizedBox(width: 4),
+            Icon(Icons.expand_more_rounded, size: 16, color: colors.textHint),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class _NewsletterCheckbox extends StatelessWidget {
