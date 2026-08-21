@@ -31,6 +31,12 @@ TextInputFormatter phoneInputFormatter() => _PatternInputFormatter('(##) #####-#
 
 TextInputFormatter landlineInputFormatter() => _PatternInputFormatter('(##) ####-####');
 
+TextInputFormatter birthDateInputFormatter() => _PatternInputFormatter('##/##/####');
+
+TextInputFormatter passportInputFormatter() => TextInputFormatter.withFunction((oldValue, newValue) {
+  return newValue.copyWith(text: newValue.text.toUpperCase());
+});
+
 String onlyDigits(String value) => value.replaceAll(RegExp(r'\D'), '');
 
 String maskCpf(String cpf) {

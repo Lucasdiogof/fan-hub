@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/pages/home_page.dart';
@@ -17,13 +18,7 @@ class HomeShellPage extends StatefulWidget {
 }
 
 class _HomeShellPageState extends State<HomeShellPage> {
-  final _shellCubit = HomeShellCubit();
-
-  @override
-  void dispose() {
-    _shellCubit.close();
-    super.dispose();
-  }
+  final _shellCubit = sl<HomeShellCubit>();
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,6 @@ import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/profile/domain/entities/app_user.dart';
-import 'package:goias_app/features/ticket/domain/entities/stadium_sector.dart';
 
 /// Fonte central de dados mockados do app. Os repositórios mock leem daqui
 /// em vez de espalhar dados fictícios pela UI — quando integrarmos com a API
@@ -246,37 +245,6 @@ class MockData {
       ),
     ];
   }
-
-  static const sectors = [
-    StadiumSector(
-      id: 's-toboga',
-      name: 'Tobogã',
-      description: 'Arquibancada tradicional, a energia da torcida em pé.',
-      price: 40,
-      availability: 0.62,
-    ),
-    StadiumSector(
-      id: 's-cadeiras',
-      name: 'Cadeiras',
-      description: 'Assento numerado com ótima visão do gramado.',
-      price: 90,
-      availability: 0.35,
-    ),
-    StadiumSector(
-      id: 's-familia',
-      name: 'Espaço Família',
-      description: 'Setor tranquilo, pensado para ir com a família.',
-      price: 70,
-      availability: 0.48,
-    ),
-    StadiumSector(
-      id: 's-vip',
-      name: 'Espaço VIP',
-      description: 'Conforto premium com acesso a área exclusiva.',
-      price: 220,
-      availability: 0.08,
-    ),
-  ];
 
   static const currentUser = AppUser(
     name: 'Lucas Diogo',

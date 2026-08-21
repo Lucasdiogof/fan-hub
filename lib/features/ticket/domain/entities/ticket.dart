@@ -1,35 +1,34 @@
 import 'package:equatable/equatable.dart';
 
-enum TicketType { inteira, meia }
+enum TicketStatus { valid, used, cancelled }
 
-extension TicketTypeLabel on TicketType {
+extension TicketStatusLabel on TicketStatus {
   String get label => switch (this) {
-    TicketType.inteira => 'Inteira',
-    TicketType.meia => 'Meia-entrada',
+    TicketStatus.valid => 'Válido',
+    TicketStatus.used => 'Utilizado',
+    TicketStatus.cancelled => 'Cancelado',
   };
 }
-
-enum TicketStatus { confirmed, used }
 
 class Ticket extends Equatable {
   const Ticket({
     required this.id,
-    required this.matchId,
-    required this.sectorName,
-    required this.type,
-    required this.price,
-    required this.qrData,
+    required this.eventId,
+    required this.eventName,
+    required this.eventDate,
     required this.status,
+    this.sector,
+    this.seat,
   });
 
   final String id;
-  final String matchId;
-  final String sectorName;
-  final TicketType type;
-  final double price;
-  final String qrData;
+  final String eventId;
+  final String eventName;
+  final DateTime eventDate;
   final TicketStatus status;
+  final String? sector;
+  final String? seat;
 
   @override
-  List<Object?> get props => [id, matchId, sectorName, type, price, qrData, status];
+  List<Object?> get props => [id, eventId, eventName, eventDate, status, sector, seat];
 }

@@ -11,6 +11,7 @@ import 'package:goias_app/features/auth/presentation/pages/reset_password_page.d
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
+import 'package:goias_app/features/membership/presentation/pages/find_zip_code_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_faq_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_plan_details_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_plans_catalog_page.dart';
@@ -18,7 +19,12 @@ import 'package:goias_app/features/membership/presentation/pages/membership_regu
 import 'package:goias_app/features/membership/presentation/pages/membership_registration_page.dart';
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
+import 'package:goias_app/features/profile/presentation/pages/address_page.dart';
+import 'package:goias_app/features/profile/presentation/pages/personal_data_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
+import 'package:goias_app/features/profile/presentation/pages/security_page.dart';
+import 'package:goias_app/features/ticket/presentation/pages/my_orders_page.dart';
+import 'package:goias_app/features/ticket/presentation/pages/my_tickets_page.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/shared/widgets/coming_soon_page.dart';
 
@@ -51,6 +57,18 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         builder: (context, state) => MatchDetailsPage(fixtureId: state.pathParameters['fixtureId']!),
       ),
       GoRoute(path: '/profile', builder: (context, state) => const ProfilePage()),
+      GoRoute(path: '/tickets/my', builder: (context, state) => const MyTicketsPage()),
+      GoRoute(path: '/tickets/orders', builder: (context, state) => const MyOrdersPage()),
+      GoRoute(path: '/profile/personal', builder: (context, state) => const PersonalDataPage()),
+      GoRoute(path: '/profile/address', builder: (context, state) => const AddressPage()),
+      GoRoute(path: '/profile/security', builder: (context, state) => const SecurityPage()),
+      GoRoute(
+        path: '/coming-soon',
+        builder: (context, state) {
+          final args = state.extra as ({String title, String? message})?;
+          return ComingSoonPage(title: args?.title ?? 'EM BREVE', message: args?.message);
+        },
+      ),
       GoRoute(path: '/partners', builder: (context, state) => const PartnersPage()),
       GoRoute(path: '/membership/plans', builder: (context, state) => const MembershipPlansCatalogPage()),
       GoRoute(
@@ -65,6 +83,7 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         },
       ),
       GoRoute(path: '/membership/regulation', builder: (context, state) => const MembershipRegulationPage()),
+      GoRoute(path: '/membership/find-zip-code', builder: (context, state) => const FindZipCodePage()),
       GoRoute(
         path: '/membership/faq',
         builder: (context, state) {
