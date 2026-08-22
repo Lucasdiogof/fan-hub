@@ -8,7 +8,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_primary_button.dart';
+import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_scaffold.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 
@@ -164,7 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
           }),
         ),
         const SizedBox(height: AppSpacing.xl),
-        AuthPrimaryButton(
+        AppPrimaryButton(
           label: 'CRIAR CONTA',
           loading: _loading,
           loadingLabel: 'Criando...',

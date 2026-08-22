@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -67,7 +68,8 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
             if (state.loading && state.nextMatch == null) {
               return Center(child: CircularProgressIndicator(color: colors.primary));
             }
-            return Center(
+            return Align(
+              alignment: Alignment.topCenter,
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 1200),
                 child: SingleChildScrollView(
@@ -85,13 +87,13 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                         const SizedBox(height: AppSpacing.md),
                         NextMatchSection(
                           match: state.nextMatch!,
-                          onTickets: () => context.read<HomeShellCubit>().navigateToTab(2),
+                          onTickets: () => context.push('/tickets'),
                         ),
                       ],
                       if (!state.isMember) ...[
                         const SizedBox(height: AppSpacing.xl),
                         MembershipBanner(
-                          onViewPlans: () => context.read<HomeShellCubit>().navigateToTab(3),
+                          onViewPlans: () => context.read<HomeShellCubit>().navigateToTab(2),
                         ),
                       ],
                       const SizedBox(height: AppSpacing.xl),

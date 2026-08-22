@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_primary_button.dart';
+import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/membership/presentation/widgets/registration_field.dart';
 import 'package:goias_app/features/profile/domain/entities/user_address.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
@@ -225,7 +225,7 @@ class _AddressFormState extends State<_AddressForm> {
         BlocBuilder<AddressCubit, AddressState>(
           buildWhen: (previous, current) => previous.saving != current.saving,
           builder: (context, state) {
-            return AuthPrimaryButton(
+            return AppPrimaryButton(
               label: 'SALVAR ENDEREÇO',
               loading: state.saving,
               loadingLabel: 'Salvando...',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/features/arena/presentation/pages/arena_page.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/pages/home_page.dart';
@@ -8,7 +9,6 @@ import 'package:goias_app/features/home/presentation/widgets/main_bottom_navigat
 import 'package:goias_app/features/membership/presentation/pages/membership_home_page.dart';
 import 'package:goias_app/features/match/presentation/pages/games_page.dart';
 import 'package:goias_app/features/social/presentation/pages/social_feed_page.dart';
-import 'package:goias_app/features/ticket/presentation/pages/tickets_page.dart';
 
 class HomeShellPage extends StatefulWidget {
   const HomeShellPage({super.key});
@@ -29,9 +29,9 @@ class _HomeShellPageState extends State<HomeShellPage> {
           const pages = [
             HomePage(),
             GamesPage(),
-            TicketsPage(),
             MembershipHomePage(),
             SocialFeedPage(),
+            ArenaPage(),
           ];
           return Scaffold(
             body: IndexedStack(index: shellState.index, children: pages),

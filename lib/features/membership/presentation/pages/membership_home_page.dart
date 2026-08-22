@@ -16,7 +16,7 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
-const _sociTabIndex = 3;
+const _sociTabIndex = 2;
 
 class MembershipHomePage extends StatelessWidget {
   const MembershipHomePage({super.key});

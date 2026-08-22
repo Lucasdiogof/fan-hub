@@ -2,6 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/features/arena/data/arena_catalog.dart';
+import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
+import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
+import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
+import 'package:goias_app/features/arena/presentation/pages/arena_game_placeholder_page.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/auth/presentation/pages/check_your_email_page.dart';
@@ -25,6 +30,7 @@ import 'package:goias_app/features/profile/presentation/pages/profile_page.dart'
 import 'package:goias_app/features/profile/presentation/pages/security_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/my_orders_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/my_tickets_page.dart';
+import 'package:goias_app/features/ticket/presentation/pages/tickets_page.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/shared/widgets/coming_soon_page.dart';
 
@@ -57,6 +63,7 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         builder: (context, state) => MatchDetailsPage(fixtureId: state.pathParameters['fixtureId']!),
       ),
       GoRoute(path: '/profile', builder: (context, state) => const ProfilePage()),
+      GoRoute(path: '/tickets', builder: (context, state) => const TicketsPage()),
       GoRoute(path: '/tickets/my', builder: (context, state) => const MyTicketsPage()),
       GoRoute(path: '/tickets/orders', builder: (context, state) => const MyOrdersPage()),
       GoRoute(path: '/profile/personal', builder: (context, state) => const PersonalDataPage()),
@@ -68,6 +75,27 @@ GoRouter createAppRouter(AuthCubit authCubit) {
           final args = state.extra as ({String title, String? message})?;
           return ComingSoonPage(title: args?.title ?? 'EM BREVE', message: args?.message);
         },
+      ),
+      GoRoute(path: '/arena/penalty', builder: (context, state) => const PenaltyGamePage()),
+      GoRoute(
+        path: '/arena/penalty/result',
+        builder: (context, state) => PenaltyResultPage(data: state.extra! as PenaltyEndData),
+      ),
+      GoRoute(
+        path: '/arena/free-kick',
+        builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/free-kick')),
+      ),
+      GoRoute(
+        path: '/arena/goalkeeper',
+        builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/goalkeeper')),
+      ),
+      GoRoute(
+        path: '/arena/keepy-uppy',
+        builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/keepy-uppy')),
+      ),
+      GoRoute(
+        path: '/arena/quiz',
+        builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/quiz')),
       ),
       GoRoute(path: '/partners', builder: (context, state) => const PartnersPage()),
       GoRoute(path: '/membership/plans', builder: (context, state) => const MembershipPlansCatalogPage()),

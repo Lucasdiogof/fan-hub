@@ -23,6 +23,26 @@ void main() {
       expect(result, isNot(contains('class="st1"')));
     });
 
+    test('strips the <style> block itself once its rules are inlined', () {
+      // Sem isso o flutter_svg ainda encontra o elemento <style> ao
+      // percorrer o XML e loga "unhandled element <style/>", mesmo com as
+      // cores já corretas via style="..." inline.
+      const svg = '''
+<svg viewBox="0 0 590 590">
+<style type="text/css">
+	.st0{fill:#26603C;}
+</style>
+<path class="st0" d="M0,0" />
+</svg>
+''';
+
+      final result = inlineSvgCssClasses(svg);
+
+      expect(result, isNot(contains('<style')));
+      expect(result, isNot(contains('</style>')));
+      expect(result, contains('style="fill:#26603C;"'));
+    });
+
     test('returns the SVG unchanged when there is no <style> block', () {
       const svg = '<svg><path fill="#0093D8" d="M0,0" /></svg>';
 

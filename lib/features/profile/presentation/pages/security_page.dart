@@ -7,7 +7,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_primary_button.dart';
+import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -69,55 +69,69 @@ class _SecurityPageState extends State<SecurityPage> {
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 560),
-            child: ListView(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.xxxl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BackButtonCircle(onTap: () => context.pop()),
-                const SizedBox(height: AppSpacing.lg),
-                const PageTitle('SEGURANÇA'),
-                const SizedBox(height: AppSpacing.lg),
-                Text(
-                  'Altere a senha da sua conta Goiás EC.',
-                  style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BackButtonCircle(onTap: () => context.pop()),
+                      const SizedBox(height: AppSpacing.lg),
+                      const PageTitle('SEGURANÇA'),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: AppSpacing.xl),
-                AuthErrorBanner(message: _formError),
-                AuthTextField(
-                  controller: _passwordController,
-                  label: 'Nova senha',
-                  icon: Icons.lock_outline_rounded,
-                  hintText: 'Mínimo ${AuthValidators.minPasswordLength} caracteres',
-                  obscurable: true,
-                  textInputAction: TextInputAction.next,
-                  autofillHints: const [AutofillHints.newPassword],
-                  errorText: _passwordError,
-                  onChanged: (_) {
-                    if (_passwordError != null) setState(() => _passwordError = null);
-                  },
-                  onSubmitted: (_) => _confirmFocus.requestFocus(),
-                ),
-                const SizedBox(height: AppSpacing.lg),
-                AuthTextField(
-                  controller: _confirmController,
-                  focusNode: _confirmFocus,
-                  label: 'Confirmar nova senha',
-                  icon: Icons.lock_outline_rounded,
-                  hintText: 'Repita a nova senha',
-                  obscurable: true,
-                  textInputAction: TextInputAction.done,
-                  autofillHints: const [AutofillHints.newPassword],
-                  errorText: _confirmError,
-                  onChanged: (_) {
-                    if (_confirmError != null) setState(() => _confirmError = null);
-                  },
-                  onSubmitted: (_) => _submit(),
-                ),
-                const SizedBox(height: AppSpacing.xxl),
-                AuthPrimaryButton(
-                  label: 'SALVAR NOVA SENHA',
-                  loading: _loading,
-                  loadingLabel: 'Salvando...',
-                  onPressed: _submit,
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.xxxl),
+                    children: [
+                      Text(
+                        'Altere a senha da sua conta Goiás EC.',
+                        style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                      AuthErrorBanner(message: _formError),
+                      AuthTextField(
+                        controller: _passwordController,
+                        label: 'Nova senha',
+                        icon: Icons.lock_outline_rounded,
+                        hintText: 'Mínimo ${AuthValidators.minPasswordLength} caracteres',
+                        obscurable: true,
+                        textInputAction: TextInputAction.next,
+                        autofillHints: const [AutofillHints.newPassword],
+                        errorText: _passwordError,
+                        onChanged: (_) {
+                          if (_passwordError != null) setState(() => _passwordError = null);
+                        },
+                        onSubmitted: (_) => _confirmFocus.requestFocus(),
+                      ),
+                      const SizedBox(height: AppSpacing.lg),
+                      AuthTextField(
+                        controller: _confirmController,
+                        focusNode: _confirmFocus,
+                        label: 'Confirmar nova senha',
+                        icon: Icons.lock_outline_rounded,
+                        hintText: 'Repita a nova senha',
+                        obscurable: true,
+                        textInputAction: TextInputAction.done,
+                        autofillHints: const [AutofillHints.newPassword],
+                        errorText: _confirmError,
+                        onChanged: (_) {
+                          if (_confirmError != null) setState(() => _confirmError = null);
+                        },
+                        onSubmitted: (_) => _submit(),
+                      ),
+                      const SizedBox(height: AppSpacing.xxl),
+                      AppPrimaryButton(
+                        label: 'SALVAR NOVA SENHA',
+                        loading: _loading,
+                        loadingLabel: 'Salvando...',
+                        onPressed: _submit,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

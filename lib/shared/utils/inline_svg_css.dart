@@ -36,5 +36,8 @@ String inlineSvgCssClasses(String svg) {
   for (final entry in rules.entries) {
     result = result.replaceAll('class="${entry.key}"', 'style="${entry.value}"');
   }
-  return result;
+  // As regras já foram aplicadas inline acima — sem remover o bloco em si,
+  // o `flutter_svg` ainda o encontra ao percorrer o XML e loga
+  // "unhandled element <style/>", mesmo com as cores já corretas.
+  return result.replaceFirst(_styleBlock, '');
 }

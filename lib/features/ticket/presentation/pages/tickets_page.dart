@@ -7,6 +7,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/tickets_cubit.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/tickets_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -36,6 +37,8 @@ class _TicketsView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  BackButtonCircle(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                  const SizedBox(height: AppSpacing.lg),
                   const PageTitle('INGRESSOS'),
                   const SizedBox(height: AppSpacing.xxxl),
                   Expanded(

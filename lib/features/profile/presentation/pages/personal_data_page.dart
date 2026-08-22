@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_primary_button.dart';
+import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/membership/presentation/widgets/registration_field.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
@@ -21,7 +21,7 @@ class PersonalDataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) => sl<ProfileCubit>(), child: const _PersonalDataView());
+    return BlocProvider.value(value: sl<ProfileCubit>(), child: const _PersonalDataView());
   }
 }
 
@@ -204,7 +204,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
         BlocBuilder<ProfileCubit, ProfileState>(
           buildWhen: (previous, current) => previous.saving != current.saving,
           builder: (context, state) {
-            return AuthPrimaryButton(
+            return AppPrimaryButton(
               label: 'SALVAR',
               loading: state.saving,
               loadingLabel: 'Salvando...',

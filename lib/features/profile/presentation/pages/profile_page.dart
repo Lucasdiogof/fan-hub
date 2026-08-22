@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
-import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -18,42 +17,18 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) => sl<ProfileCubit>(), child: const _ProfileView());
+    // ProfileCubit é singleton (sl) — o mesmo estado é reaproveitado entre
+    // Perfil e Dados pessoais, então editar nome/foto já reflete aqui sem
+    // precisar recarregar do zero a cada navegação.
+    return BlocProvider.value(value: sl<ProfileCubit>(), child: const _ProfileView());
   }
 }
 
-class _ProfileView extends StatefulWidget {
+class _ProfileView extends StatelessWidget {
   const _ProfileView();
 
-  @override
-  State<_ProfileView> createState() => _ProfileViewState();
-}
-
-class _ProfileViewState extends State<_ProfileView> with RouteAware {
-  ModalRoute<void>? _route;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final route = ModalRoute.of(context);
-    if (route != _route) {
-      if (_route != null) appRouteObserver.unsubscribe(this);
-      _route = route;
-      if (route != null) appRouteObserver.subscribe(this, route);
-    }
-  }
-
-  @override
-  void dispose() {
-    appRouteObserver.unsubscribe(this);
-    super.dispose();
-  }
-
-  @override
-  void didPopNext() => context.read<ProfileCubit>().load();
-
-  void _openSocio() {
-    sl<HomeShellCubit>().navigateToTab(3);
+  void _openSocio(BuildContext context) {
+    sl<HomeShellCubit>().navigateToTab(2);
     context.go('/');
   }
 
@@ -66,63 +41,81 @@ class _ProfileViewState extends State<_ProfileView> with RouteAware {
         child: Center(
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 720),
-            child: ListView(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.xxxl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BackButtonCircle(onTap: () => context.canPop() ? context.pop() : context.go('/')),
-                const SizedBox(height: AppSpacing.lg),
-                const PageTitle('PERFIL'),
-                const SizedBox(height: AppSpacing.xxl),
-                const ProfileAvatarHeader(),
-                const SizedBox(height: AppSpacing.xxl),
-                _MenuSection(
-                  title: 'MINHA CONTA',
-                  rows: [
-                    _MenuRow(icon: Icons.person_outline_rounded, label: 'Dados pessoais', onTap: () => context.push('/profile/personal')),
-                    _MenuRow(icon: Icons.location_on_outlined, label: 'Meu endereço', onTap: () => context.push('/profile/address')),
-                    _MenuRow(icon: Icons.lock_outline_rounded, label: 'Segurança', onTap: () => context.push('/profile/security')),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BackButtonCircle(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                      const SizedBox(height: AppSpacing.lg),
+                      const PageTitle('PERFIL'),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: AppSpacing.xl),
-                _MenuSection(
-                  title: 'MINHA EXPERIÊNCIA',
-                  rows: [
-                    _MenuRow(icon: Icons.confirmation_number_outlined, label: 'Meus ingressos', onTap: () => context.push('/tickets/my')),
-                    _MenuRow(icon: Icons.workspace_premium_outlined, label: 'Sócio Esmeralda', onTap: _openSocio),
-                  ],
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxxl),
+                    children: [
+                      const ProfileAvatarHeader(),
+                      const SizedBox(height: AppSpacing.xxl),
+                      _MenuSection(
+                        title: 'MINHA CONTA',
+                        rows: [
+                          _MenuRow(icon: Icons.person_outline_rounded, label: 'Dados pessoais', onTap: () => context.push('/profile/personal')),
+                          _MenuRow(icon: Icons.location_on_outlined, label: 'Meu endereço', onTap: () => context.push('/profile/address')),
+                          _MenuRow(icon: Icons.lock_outline_rounded, label: 'Segurança', onTap: () => context.push('/profile/security')),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                      _MenuSection(
+                        title: 'MINHA EXPERIÊNCIA',
+                        rows: [
+                          _MenuRow(icon: Icons.confirmation_number_outlined, label: 'Meus ingressos', onTap: () => context.push('/tickets/my')),
+                          _MenuRow(
+                            icon: Icons.workspace_premium_outlined,
+                            label: 'Sócio Esmeralda',
+                            onTap: () => _openSocio(context),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                      _MenuSection(
+                        title: 'GOIÁS',
+                        rows: [
+                          _MenuRow(
+                            icon: Icons.shield_outlined,
+                            label: 'O Clube',
+                            onTap: () => context.push('/coming-soon', extra: (title: 'O CLUBE', message: null)),
+                          ),
+                          _MenuRow(icon: Icons.handshake_outlined, label: 'Parceiros do Goiás', onTap: () => context.push('/partners')),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                      _MenuSection(
+                        title: 'LEGAL',
+                        rows: [
+                          _MenuRow(
+                            icon: Icons.description_outlined,
+                            label: 'Termos de Uso',
+                            onTap: () => context.push('/coming-soon', extra: (title: 'TERMOS DE USO', message: null)),
+                          ),
+                          _MenuRow(
+                            icon: Icons.privacy_tip_outlined,
+                            label: 'Política de Privacidade',
+                            onTap: () => context.push('/coming-soon', extra: (title: 'POLÍTICA DE PRIVACIDADE', message: null)),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.xxl),
+                      const _SignOutButton(),
+                      const SizedBox(height: AppSpacing.xxl),
+                      const MockMembershipToggle(),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: AppSpacing.xl),
-                _MenuSection(
-                  title: 'GOIÁS',
-                  rows: [
-                    _MenuRow(
-                      icon: Icons.shield_outlined,
-                      label: 'O Clube',
-                      onTap: () => context.push('/coming-soon', extra: (title: 'O CLUBE', message: null)),
-                    ),
-                    _MenuRow(icon: Icons.handshake_outlined, label: 'Parceiros do Goiás', onTap: () => context.push('/partners')),
-                  ],
-                ),
-                const SizedBox(height: AppSpacing.xl),
-                _MenuSection(
-                  title: 'LEGAL',
-                  rows: [
-                    _MenuRow(
-                      icon: Icons.description_outlined,
-                      label: 'Termos de Uso',
-                      onTap: () => context.push('/coming-soon', extra: (title: 'TERMOS DE USO', message: null)),
-                    ),
-                    _MenuRow(
-                      icon: Icons.privacy_tip_outlined,
-                      label: 'Política de Privacidade',
-                      onTap: () => context.push('/coming-soon', extra: (title: 'POLÍTICA DE PRIVACIDADE', message: null)),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: AppSpacing.xxl),
-                const _SignOutButton(),
-                const SizedBox(height: AppSpacing.xxl),
-                const MockMembershipToggle(),
               ],
             ),
           ),

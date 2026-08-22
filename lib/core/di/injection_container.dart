@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
+import 'package:goias_app/features/arena/data/arena_scores.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/auth/data/auth_repository_impl.dart';
 import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart';
@@ -65,6 +66,7 @@ void setupDependencies() {
 
   sl.registerLazySingleton<ProfileRepository>(() => SupabaseProfileRepository(Supabase.instance.client));
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
+  sl.registerLazySingleton<ArenaScores>(ArenaScores.new);
 
   sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
@@ -73,6 +75,6 @@ void setupDependencies() {
   sl.registerFactory<TicketsCubit>(() => TicketsCubit(sl()));
   sl.registerFactory<MyTicketsCubit>(() => MyTicketsCubit(sl()));
   sl.registerFactory<MyOrdersCubit>(() => MyOrdersCubit(sl()));
-  sl.registerFactory<ProfileCubit>(() => ProfileCubit(sl()));
+  sl.registerLazySingleton<ProfileCubit>(() => ProfileCubit(sl()));
   sl.registerFactory<AddressCubit>(() => AddressCubit(sl()));
 }

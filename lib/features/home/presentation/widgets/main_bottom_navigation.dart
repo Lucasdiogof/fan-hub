@@ -17,16 +17,16 @@ class MainBottomNavigation extends StatelessWidget {
       selectedIcon: Icons.calendar_month_rounded,
       label: 'Jogos',
     ),
-    _NavItemData(
-      icon: Icons.confirmation_number_outlined,
-      selectedIcon: Icons.confirmation_number_rounded,
-      label: 'Ingressos',
-    ),
     _NavItemData(icon: Icons.badge_outlined, selectedIcon: Icons.badge_rounded, label: 'Sócio'),
     _NavItemData(
       icon: Icons.ondemand_video_outlined,
       selectedIcon: Icons.ondemand_video_rounded,
       label: 'Mídia',
+    ),
+    _NavItemData(
+      icon: Icons.sports_esports_outlined,
+      selectedIcon: Icons.sports_esports_rounded,
+      label: 'Arena',
     ),
   ];
 
@@ -86,12 +86,18 @@ class _NavItem extends StatelessWidget {
         children: [
           Icon(selected ? data.selectedIcon : data.icon, size: 22, color: color),
           const SizedBox(height: 4),
-          Text(
-            data.label,
-            style: TextStyle(
-              fontSize: 10.5,
-              fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
-              color: color,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            child: Text(
+              data.label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              softWrap: false,
+              style: TextStyle(
+                fontSize: 10.5,
+                fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
+                color: color,
+              ),
             ),
           ),
         ],

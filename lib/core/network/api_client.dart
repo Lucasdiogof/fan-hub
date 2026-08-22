@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-/// Base URL do nosso backend interno (`/api/football/*`), nunca de um
-/// provedor esportivo diretamente. Vazio em produção (o Flutter é servido
-/// pelo próprio Cloudflare Worker, mesma origem das rotas de API); em
-/// desenvolvimento local, aponte pra produção via
-/// `--dart-define=API_BASE_URL=https://goias-app.lucasdiogo1234.workers.dev`
-/// (ou pro `wrangler dev` local, se estiver rodando um). Isso não é segredo —
-/// é só uma URL — por isso pode ir em dart-define.
-const _apiBaseUrl = String.fromEnvironment('API_BASE_URL');
+const _definedBaseUrl = String.fromEnvironment('API_BASE_URL');
+const _productionBaseUrl = 'https://goias-app.lucasdiogo1234.workers.dev';
+
+String _resolveBaseUrl() {
+  if (_definedBaseUrl.isNotEmpty) return _definedBaseUrl;
+  return kIsWeb ? '' : _productionBaseUrl;
+}
 
 class ApiClient {
   const ApiClient._();
@@ -16,7 +15,7 @@ class ApiClient {
   static Dio create() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: _apiBaseUrl,
+        baseUrl: _resolveBaseUrl(),
         connectTimeout: const Duration(seconds: 10),
         receiveTimeout: const Duration(seconds: 10),
       ),

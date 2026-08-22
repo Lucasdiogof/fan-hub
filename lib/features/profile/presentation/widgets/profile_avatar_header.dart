@@ -11,9 +11,12 @@ class ProfileAvatarHeader extends StatelessWidget {
   const ProfileAvatarHeader({super.key});
 
   Future<void> _pickAndUpload(BuildContext context) async {
+    final source = await _pickSource(context);
+    if (source == null || !context.mounted) return;
+
     final cubit = context.read<ProfileCubit>();
     final messenger = ScaffoldMessenger.of(context);
-    final picked = await ImagePicker().pickImage(source: ImageSource.gallery, maxWidth: 800, imageQuality: 85);
+    final picked = await ImagePicker().pickImage(source: source, maxWidth: 800, imageQuality: 85);
     if (picked == null) return;
     final bytes = await picked.readAsBytes();
     final ext = picked.name.contains('.') ? picked.name.split('.').last : 'jpg';
@@ -21,6 +24,35 @@ class ProfileAvatarHeader extends StatelessWidget {
     if (failure != null) {
       messenger.showSnackBar(SnackBar(content: Text(failure.message)));
     }
+  }
+
+  Future<ImageSource?> _pickSource(BuildContext context) {
+    final colors = context.colors;
+    return showModalBottomSheet<ImageSource>(
+      context: context,
+      showDragHandle: true,
+      backgroundColor: colors.surface,
+      builder: (sheetContext) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(Icons.photo_camera_outlined, color: colors.primary),
+                title: const Text('Tirar foto'),
+                onTap: () => Navigator.of(sheetContext).pop(ImageSource.camera),
+              ),
+              ListTile(
+                leading: Icon(Icons.photo_library_outlined, color: colors.primary),
+                title: const Text('Escolher da galeria'),
+                onTap: () => Navigator.of(sheetContext).pop(ImageSource.gallery),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override

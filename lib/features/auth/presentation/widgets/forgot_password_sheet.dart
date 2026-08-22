@@ -6,7 +6,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_primary_button.dart';
+import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 
 class ForgotPasswordSheet extends StatefulWidget {
@@ -94,7 +94,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
                   style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
                 ),
                 const SizedBox(height: AppSpacing.xl),
-                AuthPrimaryButton(label: 'FECHAR', onPressed: () => Navigator.of(context).pop()),
+                AppPrimaryButton(label: 'FECHAR', onPressed: () => Navigator.of(context).pop()),
               ]
             : [
                 Text(
@@ -123,7 +123,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
                   onSubmitted: (_) => _submit(),
                 ),
                 const SizedBox(height: AppSpacing.xl),
-                AuthPrimaryButton(
+                AppPrimaryButton(
                   label: 'ENVIAR INSTRUÇÕES',
                   loading: _loading,
                   loadingLabel: 'Enviando...',

@@ -160,7 +160,7 @@ class _MatchesContent extends StatelessWidget {
         if (nextMatch != null) ...[
           NextMatchCard(
             match: nextMatch,
-            onBuyTicket: () {},
+            onBuyTicket: () => context.push('/tickets'),
             onViewDetails: () => onMatchTap(nextMatch),
           ),
           const SizedBox(height: AppSpacing.xxl),

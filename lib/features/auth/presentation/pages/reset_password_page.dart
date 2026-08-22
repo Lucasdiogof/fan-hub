@@ -7,7 +7,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_primary_button.dart';
+import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 
 class ResetPasswordPage extends StatefulWidget {
@@ -127,7 +127,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           onSubmitted: (_) => _submit(),
         ),
         const SizedBox(height: AppSpacing.xl),
-        AuthPrimaryButton(
+        AppPrimaryButton(
           label: 'SALVAR NOVA SENHA',
           loading: _loading,
           loadingLabel: 'Salvando...',
@@ -161,7 +161,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           style: TextStyle(fontSize: 14, height: 1.4, color: colors.textSecondary),
         ),
         const SizedBox(height: AppSpacing.xxl),
-        AuthPrimaryButton(label: 'ENTRAR', showArrow: true, onPressed: _goToLogin),
+        AppPrimaryButton(label: 'ENTRAR', showArrow: true, onPressed: _goToLogin),
       ],
     );
   }
