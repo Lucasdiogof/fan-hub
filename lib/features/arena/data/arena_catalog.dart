@@ -14,20 +14,6 @@ class ArenaCatalog {
       featured: true,
     ),
     ArenaGame(
-      id: 'free_kick',
-      title: 'Desafio de Faltas',
-      tagline: 'Contorne a barreira e mande pro ângulo.',
-      icon: Icons.sports_soccer_rounded,
-      route: '/arena/free-kick',
-    ),
-    ArenaGame(
-      id: 'goalkeeper',
-      title: 'Defenda o Pênalti',
-      tagline: 'Vista a amarela e defenda as cobranças.',
-      icon: Icons.sports_handball_rounded,
-      route: '/arena/goalkeeper',
-    ),
-    ArenaGame(
       id: 'keepy_uppy',
       title: 'Embaixadinhas',
       tagline: 'Mantenha a bola no ar o máximo que puder.',

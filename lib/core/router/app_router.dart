@@ -6,6 +6,9 @@ import 'package:goias_app/features/arena/data/arena_catalog.dart';
 import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
+import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
+import 'package:goias_app/features/arena/games/quiz/pages/quiz_result_page.dart';
+import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 import 'package:goias_app/features/arena/presentation/pages/arena_game_placeholder_page.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
@@ -82,20 +85,13 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         builder: (context, state) => PenaltyResultPage(data: state.extra! as PenaltyEndData),
       ),
       GoRoute(
-        path: '/arena/free-kick',
-        builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/free-kick')),
-      ),
-      GoRoute(
-        path: '/arena/goalkeeper',
-        builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/goalkeeper')),
-      ),
-      GoRoute(
         path: '/arena/keepy-uppy',
         builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/keepy-uppy')),
       ),
+      GoRoute(path: '/arena/quiz', builder: (context, state) => const QuizPage()),
       GoRoute(
-        path: '/arena/quiz',
-        builder: (context, state) => ArenaGamePlaceholderPage(game: ArenaCatalog.byRoute('/arena/quiz')),
+        path: '/arena/quiz/result',
+        builder: (context, state) => QuizResultPage(data: state.extra! as QuizEndData),
       ),
       GoRoute(path: '/partners', builder: (context, state) => const PartnersPage()),
       GoRoute(path: '/membership/plans', builder: (context, state) => const MembershipPlansCatalogPage()),
