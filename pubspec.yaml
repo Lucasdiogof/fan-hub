@@ -39,7 +39,9 @@ flutter:
     - lib/assets/
     - lib/assets/legal/
     - lib/assets/content/
-    - lib/assets/arena/
+    - lib/assets/sponsors/
+    - lib/assets/branding/
+    - lib/assets/games/penalty/
 
 flutter_launcher_icons:
   android: true

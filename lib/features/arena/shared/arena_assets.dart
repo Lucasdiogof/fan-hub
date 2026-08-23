@@ -9,7 +9,7 @@
 class ArenaAssets {
   const ArenaAssets._();
 
-  static const String _base = 'lib/assets/arena';
+  static const String _base = 'lib/assets/games/penalty';
 
   static const crowdBanner = '$_base/crowd_banner.jpg';
 

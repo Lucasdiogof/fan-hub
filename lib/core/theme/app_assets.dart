@@ -5,10 +5,10 @@
 class AppAssets {
   const AppAssets._();
 
-  static const String goiasCrest = 'lib/assets/logo.svg';
+  static const String goiasCrest = 'lib/assets/branding/logo.svg';
 
-  static const String stadium = 'lib/assets/banner.png';
-  static const String matchHero = 'lib/assets/banner_match.png';
+  static const String stadium = 'lib/assets/branding/banner.png';
+  static const String matchHero = 'lib/assets/branding/banner_match.png';
   static const String? fans = null;
   static const String? featuredNewsCover = null;
   static const String? membershipBackground = null;
