@@ -11,21 +11,30 @@ enum KeeperPose { idle, diveLeft, diveRight, center }
 
 /// Goleiro adversário visto de frente.
 ///
+/// **Pose e movimento são coisas separadas.** O sprite (ou o desenho
+/// procedural) só decide COMO o goleiro está posado num instante — parado,
+/// impulso, mergulhando, caído. ONDE ele está na tela é sempre calculado
+/// aqui a partir da geometria real do gol ([updateGoalBounds]) e do
+/// progresso do mergulho ([_diveT]), nunca a partir de espaço transparente
+/// dentro do PNG nem de números arbitrários de tela. Isso resolve os dois
+/// problemas que apareceram nas tentativas anteriores: (1) usar padding do
+/// sprite pra simular deslocamento fazia o personagem "flutuar" — agora o
+/// PNG de cada pose é recortado rente ao conteúdo; (2) escalar cada frame
+/// individualmente por uma medida do rosto quebrava com pose/rotação — a
+/// escala agora é uma só, igual pra todos os frames, aplicada uma vez na
+/// hora de montar o sheet (ver `_rebuild_keeper_v3.py`, não versionado).
+///
 /// Duas formas de desenhar, escolhidas automaticamente em [onLoad]:
 /// - **Sprite** (`_renderSprite`), se [ArenaAssets.goalkeeperSheet] existir
-///   — 5 frames horizontais (idle, impulso, início do mergulho, mergulho
-///   estendido, queda), desenhados sempre pro lado esquerdo; `diveRight`
-///   reusa os MESMOS frames espelhados horizontalmente (`canvas.scale(-1,
-///   1)`), não existe um segundo sheet pro lado direito. A escolha do
-///   frame usa o mesmo [_diveT] que já controlava a animação procedural.
-/// - **Procedural** (`_renderProcedural`), como fallback enquanto o sprite
-///   sheet não estiver disponível: postura de pronto-defesa (pernas
-///   afastadas, joelhos flexionados, tronco levemente inclinado à frente,
-///   braços abertos), com o mergulho animado via deslocamento horizontal +
-///   impulso vertical + rotação do corpo, tudo aplicado só no `render` (o
-///   `position` do componente nunca muda, fica sempre no plano do gol).
+///   — 5 frames de tamanho PRÓPRIO cada um (recorte justo ao conteúdo, sem
+///   preencher um box comum — parado é naturalmente estreito e alto,
+///   mergulhando é largo e baixo). `diveRight` espelha os mesmos frames
+///   (`canvas.scale(-1,1)`), não existe sheet separado pro lado direito.
+/// - **Procedural** (`_renderProcedural`), fallback enquanto o sprite não
+///   estiver disponível — mantém o comportamento antigo (tamanho fixo,
+///   `Anchor.bottomCenter`, mergulho animado via transform no `render`).
 class GoalkeeperComponent extends PositionComponent {
-  GoalkeeperComponent({required this.jersey}) : super(size: Vector2(70, 120), anchor: Anchor.bottomCenter);
+  GoalkeeperComponent({required this.jersey}) : super(size: Vector2(85, 120), anchor: Anchor.bottomCenter);
 
   final Color jersey;
   KeeperPose pose = KeeperPose.idle;
@@ -34,18 +43,87 @@ class GoalkeeperComponent extends PositionComponent {
   double _diveT = 0;
   static const double _diveDuration = 0.34;
 
+  /// Duração só do "pulinho" central — mais curta e seca que o mergulho de
+  /// verdade, pra ler como um salto rápido no lugar, não uma inclinação
+  /// lenta (era isso que ficava estranho antes).
+  static const double _centerHopDuration = 0.26;
+
+  /// Retângulo real do gol (posição+tamanho), fornecido pelo jogo sempre
+  /// que o layout muda — é a ÚNICA fonte de verdade pra onde o goleiro
+  /// pode ir. Nunca usamos frações arbitrárias da tela.
+  Rect _goalBounds = const Rect.fromLTWH(0, 0, 1, 1);
+
+  void updateGoalBounds(Rect bounds) {
+    _goalBounds = bounds;
+    if (_diving) return;
+    // Defensivo: fora de um mergulho o goleiro tem que estar sempre no
+    // frame/tamanho base — reafirma isso toda vez que o layout muda, não
+    // só em `resetToIdle`, pra nenhum caminho conseguir deixar `size`
+    // "vazar" de um mergulho anterior pro estado parado.
+    _currentFrame = _idleFrame;
+    if (_hasSprite) size.setFrom(_effectiveSize(_idleFrame));
+    _applyPosition(_goalBounds.center.dx, _goalBounds.bottom);
+  }
+
   // --- Sprite sheet (opcional) -------------------------------------------
-  static const int _spriteFrameCount = 5;
   static const int _idleFrame = 0;
   static const int _pushFrame = 1;
   static const int _diveStartFrame = 2;
   static const int _diveExtendedFrame = 3;
   static const int _landFrame = 4;
 
+  /// Rects exatos de cada frame dentro do sheet — não são divisões iguais
+  /// (os frames têm tamanhos diferentes de propósito), então ficam
+  /// hardcoded a partir da montagem determinística do sheet.
+  static const List<Rect> _frameRects = [
+    Rect.fromLTWH(0, 0, 85, 124),
+    Rect.fromLTWH(85, 0, 92, 114),
+    Rect.fromLTWH(177, 0, 92, 84),
+    Rect.fromLTWH(269, 0, 92, 71),
+    Rect.fromLTWH(361, 0, 92, 61),
+  ];
+
+  /// Fração (x,y) dentro do próprio recorte de cada frame onde fica o
+  /// ponto físico de referência — pés encostando no chão quando em pé,
+  /// centro de massa quando no ar/caído (não há "pé no chão" pra ancorar
+  /// depois que ele salta). Medido direto no PNG final (bounding box do
+  /// alpha, não estimado) — é isso que substitui `Anchor.bottomCenter`
+  /// fixo: o pivô muda com a pose, mas a POSIÇÃO física (resultado da
+  /// trajetória) continua sendo a mesma referência em todo frame, então a
+  /// troca de pose não pula nem flutua.
+  static const List<Offset> _pivotFraction = [
+    Offset(0.5, 0.952), // idle — pés (medido: bbox alpha vai até 95,2% da altura)
+    Offset(0.5, 0.939), // impulso — pés, levemente agachado (medido: 93,9%)
+    Offset(0.5, 0.50), // início do mergulho — centro de massa (conteúdo já sai centralizado no recorte)
+    Offset(0.5, 0.50), // mergulho estendido — centro de massa
+    Offset(0.5, 0.50), // queda — centro de massa
+  ];
+
+  /// Multiplicador de tamanho por pose, aplicado só no desenho (o pivô de
+  /// todos os frames de mergulho é (0.5,0.5) — ver `_pivotFraction` — então
+  /// aumentar esse valor faz o corpo crescer em volta do MESMO ponto
+  /// físico, sem mexer em posição/trajetória). Medido direto no sheet
+  /// (largura do maior blob de tom de pele = o rosto, isolado por
+  /// componente conectado): idle/push saem com ~13px de rosto, os três
+  /// frames de mergulho saem consistentemente em ~10px — uma razão de
+  /// ~1,30 nos três, não valores diferentes por frame como antes. idle/push
+  /// levaram um leve recuo extra (0.88) depois, por pedido explícito — o
+  /// parado estava grande demais na tela, e isso também aproxima a
+  /// diferença de tamanho aparente para o mergulho deitado no canto.
+  static const List<double> _poseDrawScale = [0.88, 0.88, 1.30, 1.30, 1.30];
+
   Image? _sheet;
-  double _sheetFrameW = 0;
-  double _sheetFrameH = 0;
+  int _currentFrame = _idleFrame;
   bool get _hasSprite => _sheet != null;
+
+  /// Tamanho de desenho/hitbox do frame atual — rect original × correção
+  /// de pose (ver `_poseDrawScale`). Único ponto que os dois (`update` e
+  /// `_applyPosition`) leem, pra nunca ficarem dessincronizados.
+  Vector2 _effectiveSize(int frameIndex) {
+    final rect = _frameRects[frameIndex];
+    final scale = _poseDrawScale[frameIndex];
+    return Vector2(rect.width * scale, rect.height * scale);
+  }
 
   @override
   Future<void> onLoad() async {
@@ -54,8 +132,9 @@ class GoalkeeperComponent extends PositionComponent {
       final codec = await instantiateImageCodec(data.buffer.asUint8List());
       final frame = await codec.getNextFrame();
       _sheet = frame.image;
-      _sheetFrameW = _sheet!.width / _spriteFrameCount;
-      _sheetFrameH = _sheet!.height.toDouble();
+      anchor = Anchor.center;
+      size.setFrom(_effectiveSize(_idleFrame));
+      _applyPosition(_goalBounds.center.dx, _goalBounds.bottom);
     } catch (_) {
       // Sheet ainda não fornecido (ou inválido) — fica no fallback
       // procedural, sem erro nenhum pro resto do jogo.
@@ -63,8 +142,10 @@ class GoalkeeperComponent extends PositionComponent {
     }
   }
 
-  /// Início do mergulho (ou só reação central) — chamado uma vez por
-  /// cobrança, no instante de contato do pé com a bola.
+  /// Início do mergulho (ou do pulinho central) — chamado uma vez por
+  /// cobrança, no instante de contato do pé com a bola. `KeeperPose.center`
+  /// não se desloca pro lado nem troca de pose (continua na `_idleFrame`
+  /// o tempo todo) — só um salto vertical rápido, sem sair do centro.
   void dive(KeeperPose target) {
     pose = target;
     _diving = target != KeeperPose.idle;
@@ -75,13 +156,85 @@ class GoalkeeperComponent extends PositionComponent {
     pose = KeeperPose.idle;
     _diving = false;
     _diveT = 0;
+    _currentFrame = _idleFrame;
+    // Bug real encontrado aqui: só `position` era recalculada — `size`
+    // ficava travada no valor do último frame do mergulho (ex.: o frame de
+    // queda, escalado por `_poseDrawScale[4]`), porque `update()` só toca
+    // `size` dentro do `if (!_diving) return;` — ou seja, nunca de novo
+    // depois que a queda termina. `position` batia com o idle inicial,
+    // mas `topLeftPosition` (o que realmente aparece na tela) não, porque
+    // o cálculo do anchor usa `size`. Por isso "idle" parecia num
+    // tamanho/posição diferente do inicial.
+    if (_hasSprite) size.setFrom(_effectiveSize(_idleFrame));
+    _applyPosition(_goalBounds.center.dx, _goalBounds.bottom);
   }
 
   @override
   void update(double dt) {
     super.update(dt);
     if (!_diving) return;
-    _diveT = min(1, _diveT + dt / _diveDuration);
+    final isCenterHop = pose == KeeperPose.center;
+    final duration = isCenterHop ? _centerHopDuration : _diveDuration;
+    _diveT = min(1, _diveT + dt / duration);
+    // Pulinho central não troca de pose — só sobe e desce na mesma frame
+    // parada, sem o "impulso" que antes causava a gingada.
+    _currentFrame = isCenterHop ? _idleFrame : _frameForDiveT(_diveT);
+    if (_hasSprite) size.setFrom(_effectiveSize(_currentFrame));
+    final trajectory = _diveTrajectory();
+    _applyPosition(trajectory.$1, trajectory.$2);
+  }
+
+  /// Só chamado com `pose` igual a `diveLeft`/`diveRight` — `center` não
+  /// troca de frame (ver [update]), então não precisa de um branch aqui.
+  int _frameForDiveT(double t) {
+    if (t < 0.2) return _pushFrame;
+    if (t < 0.45) return _diveStartFrame;
+    if (t < 0.85) return _diveExtendedFrame;
+    return _landFrame;
+  }
+
+  /// Posição física real (x,y) do mergulho nesse instante, derivada só da
+  /// geometria do gol e do progresso — não de espaço vazio em nenhum PNG.
+  /// `lerp` do centro até perto da trave (não a trave inteira: o corpo
+  /// fica dentro da estrutura do gol, é a luva/braço do próprio sprite que
+  /// completa a leitura de "quase alcançou o canto"), com um arco raso no
+  /// Y que sobe um pouco na saída e volta pro chão perto do fim — sem
+  /// exagero de altura.
+  (double, double) _diveTrajectory() {
+    final eased = Curves.easeOut.transform(_diveT);
+    final direction = switch (pose) {
+      KeeperPose.diveLeft => -1.0,
+      KeeperPose.diveRight => 1.0,
+      KeeperPose.idle || KeeperPose.center => 0.0,
+    };
+    final centerX = _goalBounds.center.dx;
+    final groundY = _goalBounds.bottom;
+    final targetX = centerX + direction * _goalBounds.width * 0.30;
+    final x = centerX + (targetX - centerX) * eased;
+
+    final liftPhase = (min(_diveT, 0.8) / 0.8).clamp(0.0, 1.0);
+    // Pulinho central visível mas claramente menor que um mergulho de
+    // verdade — 0.07 lê como "deu um salto", não como "quase caiu".
+    final maxLift = _goalBounds.height * (direction == 0 ? 0.07 : 0.10);
+    final lift = sin(pi * liftPhase) * maxLift;
+    final y = groundY - lift;
+    return (x, y);
+  }
+
+  /// Converte o ponto físico (x,y) pro `position` que o `Anchor.center`
+  /// realmente usa, compensando o pivô específico do frame atual — sem
+  /// isso, trocar de um frame estreito-e-alto pra um largo-e-baixo com
+  /// `Anchor.center` ingênuo faria o corpo pular verticalmente.
+  void _applyPosition(double physicalX, double physicalY) {
+    if (!_hasSprite) {
+      position.setValues(physicalX, physicalY);
+      return;
+    }
+    final effective = _effectiveSize(_currentFrame);
+    final pivot = _pivotFraction[_currentFrame];
+    final centerX = physicalX + (0.5 - pivot.dx) * effective.x;
+    final centerY = physicalY + (0.5 - pivot.dy) * effective.y;
+    position.setValues(centerX, centerY);
   }
 
   late final Paint _body = Paint()..color = jersey;
@@ -114,40 +267,22 @@ class GoalkeeperComponent extends PositionComponent {
     }
   }
 
-  /// Escolhe o frame certo pro estado atual e desenha só ele, mais a sombra
-  /// no gramado. Nenhuma translação/rotação é aplicada aqui: cada frame do
-  /// sheet já vem desenhado com o deslocamento do corpo "embutido" na
-  /// própria arte (padding extra em volta do goleiro nos frames de
-  /// mergulho) — é assim que combinamos com quem for desenhar os sprites.
-  /// `diveRight` é `diveLeft` espelhado, não um sheet separado.
+  /// Só desenha o frame — toda a posição/deslocamento já foi resolvido em
+  /// [update]/[_applyPosition]. Nenhuma translação extra acontece aqui.
   void _renderSprite(Canvas canvas) {
-    final w = size.x;
-    final h = size.y;
-
-    canvas.drawOval(Rect.fromCenter(center: Offset(w / 2, h - 2), width: w * 0.7, height: h * 0.05), _shadow);
-
-    final int frame;
-    if (!_diving) {
-      frame = _idleFrame;
-    } else if (pose == KeeperPose.center) {
-      frame = _pushFrame;
-    } else if (_diveT < 0.2) {
-      frame = _pushFrame;
-    } else if (_diveT < 0.45) {
-      frame = _diveStartFrame;
-    } else if (_diveT < 0.85) {
-      frame = _diveExtendedFrame;
-    } else {
-      frame = _landFrame;
-    }
-
-    final src = Rect.fromLTWH(frame * _sheetFrameW, 0, _sheetFrameW, _sheetFrameH);
-    final dst = Rect.fromLTWH(0, 0, w, h);
+    final rect = _frameRects[_currentFrame];
+    final src = rect;
+    final dst = Rect.fromLTWH(0, 0, size.x, size.y);
     final paint = Paint()..filterQuality = FilterQuality.medium;
+
+    canvas.drawOval(
+      Rect.fromCenter(center: Offset(size.x / 2, size.y - 2), width: size.x * 0.7, height: size.y * 0.12),
+      _shadow,
+    );
 
     if (pose == KeeperPose.diveRight) {
       canvas.save();
-      canvas.translate(w, 0);
+      canvas.translate(size.x, 0);
       canvas.scale(-1, 1);
       canvas.drawImageRect(_sheet!, src, dst, paint);
       canvas.restore();
@@ -161,8 +296,6 @@ class GoalkeeperComponent extends PositionComponent {
     final h = size.y;
     final cx = w / 2;
 
-    canvas.drawOval(Rect.fromCenter(center: Offset(cx, h - 2), width: w * 0.7, height: h * 0.05), _shadow);
-
     final eased = Curves.easeOut.transform(_diveT);
     final direction = switch (pose) {
       KeeperPose.diveLeft => -1.0,
@@ -174,6 +307,11 @@ class GoalkeeperComponent extends PositionComponent {
     final dx = direction * w * 0.92 * eased;
     final dy = -sin(min(_diveT, 0.9) * pi / 0.9) * h * (direction == 0 ? 0.10 : 0.30) * (_diving ? 1 : 0);
     final rotation = 0.10 + direction * eased * 0.85;
+
+    // A sombra acompanha o deslocamento horizontal (fica no "chão", por
+    // isso ignora o `dy` do impulso) — sem isso ela ficava presa no meio
+    // do gol enquanto o goleiro já tinha saído de cima dela.
+    canvas.drawOval(Rect.fromCenter(center: Offset(cx + dx, h - 2), width: w * 0.7, height: h * 0.05), _shadow);
 
     final headY = h * 0.10;
     final headR = w * 0.145;
@@ -261,9 +399,10 @@ class GoalkeeperComponent extends PositionComponent {
     late final Offset leftHand;
     late final Offset rightHand;
     if (direction == 0) {
-      // Idle: mãos prontas à frente do corpo. Reação central (pose
-      // `center`, disparada por `dive`): sobem juntas, sem deslocar o
-      // corpo — o "salto" pequeno vem só do `dy` calculado em `render`.
+      // Idle e `center` (que não anima mais — ver `dive`): mãos prontas à
+      // frente do corpo, paradas. `eased` fica em 0 pro `center` já que
+      // `_diveT` nunca avança, então isso vira um no-op sem precisar de
+      // um branch a mais.
       final lift = eased * h * 0.30;
       leftHand = Offset(left.dx - w * 0.05, shoulderY + h * 0.24 - lift);
       rightHand = Offset(right.dx + w * 0.05, shoulderY + h * 0.24 - lift);

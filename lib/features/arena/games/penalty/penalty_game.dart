@@ -126,7 +126,10 @@ class PenaltyGame extends FlameGame {
     final goalH = h * 0.16;
     _goal.position = Vector2(w * 0.19, h * 0.10);
     _goal.size = Vector2(goalW, goalH);
-    _keeper.position = Vector2(w / 2, _goal.position.y + goalH);
+    // Única fonte de verdade pra onde o goleiro pode ir — o componente
+    // deriva toda a trajetória do mergulho a partir desse retângulo, nunca
+    // de números soltos daqui.
+    _keeper.updateGoalBounds(Rect.fromLTWH(_goal.position.x, _goal.position.y, goalW, goalH));
     // Só força a posição de "parado, prestes a começar" fora de uma
     // cobrança em andamento — senão um resize no meio da corrida/chute
     // teleportaria o jogador de volta pro início, cortando a animação.
@@ -195,9 +198,9 @@ class PenaltyGame extends FlameGame {
     _animateKeeper();
   }
 
-  /// O goleiro nunca muda de `position` (fica sempre no plano do gol) —
-  /// [GoalkeeperComponent.dive] anima deslocamento, impulso e rotação só
-  /// no próprio `render`, então aqui é só escolher a pose.
+  /// Só escolhe a pose — [GoalkeeperComponent] deriva sozinho o
+  /// deslocamento real (posição/trajetória) a partir do retângulo do gol
+  /// já entregue em [_layout] via `updateGoalBounds`.
   void _animateKeeper() {
     final target = switch (_keeperZone) {
       ShotZone.left => KeeperPose.diveLeft,
