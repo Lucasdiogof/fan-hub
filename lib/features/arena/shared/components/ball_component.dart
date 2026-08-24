@@ -26,6 +26,11 @@ class BallComponent extends PositionComponent {
   /// bola, nunca à sombra.
   double spin = 0;
 
+  /// Sombra própria no chão logo abaixo da bola. Desligada em jogos que
+  /// gerenciam a sombra separadamente (ex.: embaixadinhas, onde a sombra
+  /// fica fixa no gramado e encolhe conforme a bola sobe).
+  bool groundShadow = true;
+
   Image? _sprite;
   final Paint _spritePaint = Paint()
     ..isAntiAlias = true
@@ -123,10 +128,12 @@ class BallComponent extends PositionComponent {
 
     // Sombra no chão — por código, desenhada fora da rotação: fica assentada
     // no gramado enquanto a bola gira por cima.
-    canvas.drawOval(
-      Rect.fromCenter(center: Offset(radius, d * 0.96), width: d * 0.72, height: d * 0.2),
-      _shadow,
-    );
+    if (groundShadow) {
+      canvas.drawOval(
+        Rect.fromCenter(center: Offset(radius, d * 0.96), width: d * 0.72, height: d * 0.2),
+        _shadow,
+      );
+    }
 
     canvas.save();
     if (spin != 0) {

@@ -16,9 +16,10 @@ class ArenaCatalog {
     ArenaGame(
       id: 'keepy_uppy',
       title: 'Embaixadinhas',
-      tagline: 'Mantenha a bola no ar o máximo que puder.',
+      tagline: 'Toque na hora certa e mantenha a bola no ar.',
       icon: Icons.sports_soccer_rounded,
       route: '/arena/keepy-uppy',
+      usesFlame: true,
     ),
     ArenaGame(
       id: 'quiz',

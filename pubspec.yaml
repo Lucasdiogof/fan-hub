@@ -43,6 +43,7 @@ flutter:
     - lib/assets/sponsors/
     - lib/assets/branding/
     - lib/assets/games/penalty/
+    - lib/assets/games/keepy_uppy/
 
 flutter_launcher_icons:
   android: true

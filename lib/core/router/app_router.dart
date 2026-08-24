@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:goias_app/features/arena/data/arena_catalog.dart';
+import 'package:goias_app/features/arena/games/keepy_uppy/pages/keepy_uppy_game_page.dart';
 import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
@@ -12,7 +12,6 @@ import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_result_page.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
-import 'package:goias_app/features/arena/presentation/pages/arena_game_placeholder_page.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/auth/presentation/pages/check_your_email_page.dart';
@@ -118,9 +117,7 @@ GoRouter createAppRouter(AuthCubit authCubit) {
       ),
       GoRoute(
         path: '/arena/keepy-uppy',
-        builder: (context, state) => ArenaGamePlaceholderPage(
-          game: ArenaCatalog.byRoute('/arena/keepy-uppy'),
-        ),
+        builder: (context, state) => const KeepyUppyGamePage(),
       ),
       GoRoute(
         path: '/arena/quiz',

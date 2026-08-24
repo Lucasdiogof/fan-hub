@@ -28,4 +28,14 @@ class ArenaAssets {
   /// transparente: idle, impulso, início do mergulho, mergulho estendido,
   /// queda — sempre pro lado esquerdo (o direito é espelhado em runtime).
   static const goalkeeperSheet = '$_base/goalkeeper_sheet.png';
+
+  static const String _keepy = 'lib/assets/games/keepy_uppy';
+
+  /// Poses do jogador nas embaixadinhas (de costas, uniforme verde nº 10),
+  /// todas 1024x1536 no mesmo canvas — desenhadas no mesmo rect pra o corpo
+  /// nunca mudar de escala/âncora entre as poses.
+  static const keepyPlayerIdle = '$_keepy/player_idle.png';
+  static const keepyPlayerJuggleLeft = '$_keepy/player_juggle_left.png';
+  static const keepyPlayerJuggleRight = '$_keepy/player_juggle_right.png';
+  static const keepyPlayerJuggleKnee = '$_keepy/player_juggle_knee.png';
 }
