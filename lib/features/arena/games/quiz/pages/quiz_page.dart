@@ -11,17 +11,22 @@ import 'package:goias_app/features/arena/games/quiz/quiz_logic.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 
-const _quizGameId = 'quiz';
+class QuizPlayPage extends StatelessWidget {
+  const QuizPlayPage({required this.difficulty, this.avoid = const {}, super.key});
 
-class QuizPage extends StatelessWidget {
-  const QuizPage({super.key});
+  final QuizDifficulty difficulty;
+  final Set<String> avoid;
+
+  String get _gameId => 'quiz_${difficulty.name}';
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => QuizCubit(
-        loadBest: () => sl<ArenaScores>().bestScore(_quizGameId),
-        saveBest: (score) => sl<ArenaScores>().saveIfBest(_quizGameId, score),
+        difficulty: difficulty,
+        avoid: avoid,
+        loadBest: () => sl<ArenaScores>().bestScore(_gameId),
+        saveBest: (score) => sl<ArenaScores>().saveIfBest(_gameId, score),
       ),
       child: const _QuizView(),
     );
@@ -37,9 +42,12 @@ class _QuizView extends StatelessWidget {
     return BlocListener<QuizCubit, QuizState>(
       listenWhen: (previous, current) => !previous.finished && current.finished,
       listener: (context, state) {
+        final cubit = context.read<QuizCubit>();
         context.pushReplacement(
           '/arena/quiz/result',
           extra: QuizEndData(
+            difficulty: cubit.difficulty,
+            answeredQuestions: state.questions.map((question) => question.question).toSet(),
             correct: state.correctCount,
             total: state.questions.length,
             score: quizScore(state.correctCount),
@@ -63,9 +71,20 @@ class _QuizView extends StatelessWidget {
                       onTap: () => context.canPop() ? context.pop() : context.go('/'),
                     ),
                     const SizedBox(width: AppSpacing.md),
-                    Text(
-                      'QUIZ DO VERDÃO',
-                      style: TextStyle(color: colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w900, letterSpacing: 0.3),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'QUIZ DO VERDÃO',
+                            style: TextStyle(color: colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w900, letterSpacing: 0.3),
+                          ),
+                          Text(
+                            'Nível ${context.read<QuizCubit>().difficulty.label}',
+                            style: TextStyle(color: colors.textHint, fontSize: 12, fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

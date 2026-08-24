@@ -28,7 +28,24 @@ class ArenaCatalog {
       route: '/arena/quiz',
       usesFlame: false,
     ),
+    ArenaGame(
+      id: 'lineup',
+      title: 'Adivinhe a Escalação',
+      tagline: 'Descubra os 11 titulares de uma partida histórica do Goiás.',
+      icon: Icons.groups_2_rounded,
+      route: '/arena/lineup',
+      usesFlame: false,
+    ),
+    ArenaGame(
+      id: 'career_path',
+      title: 'Adivinhe o Jogador',
+      tagline: 'Descubra o jogador pela trajetória na carreira.',
+      icon: Icons.timeline_rounded,
+      route: '/arena/career-path',
+      usesFlame: false,
+    ),
   ];
 
-  static ArenaGame byRoute(String route) => games.firstWhere((game) => game.route == route);
+  static ArenaGame byRoute(String route) =>
+      games.firstWhere((game) => game.route == route);
 }

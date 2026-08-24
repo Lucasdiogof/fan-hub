@@ -4,6 +4,14 @@
 /// acertos/erros por usuário).
 enum QuizDifficulty { torcedor, esmeraldino, fanatico }
 
+extension QuizDifficultyLabel on QuizDifficulty {
+  String get label => switch (this) {
+    QuizDifficulty.torcedor => 'Torcedor',
+    QuizDifficulty.esmeraldino => 'Esmeraldino',
+    QuizDifficulty.fanatico => 'Fanático',
+  };
+}
+
 class QuizQuestion {
   const QuizQuestion({
     required this.question,
@@ -20,6 +28,8 @@ class QuizQuestion {
 
 class QuizEndData {
   const QuizEndData({
+    required this.difficulty,
+    required this.answeredQuestions,
     required this.correct,
     required this.total,
     required this.score,
@@ -27,6 +37,11 @@ class QuizEndData {
     required this.isNewRecord,
   });
 
+  final QuizDifficulty difficulty;
+
+  /// Texto das perguntas respondidas nesta rodada — usado por "Mais
+  /// perguntas" pra evitar repetir as mesmas na rodada seguinte.
+  final Set<String> answeredQuestions;
   final int correct;
   final int total;
   final int score;

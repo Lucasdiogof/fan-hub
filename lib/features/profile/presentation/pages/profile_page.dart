@@ -9,6 +9,7 @@ import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/mock_membership_toggle.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
+import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 
@@ -196,6 +197,22 @@ class _MenuRow extends StatelessWidget {
 class _SignOutButton extends StatelessWidget {
   const _SignOutButton();
 
+  Future<void> _confirmSignOut(BuildContext context) async {
+    final authCubit = context.read<AuthCubit>();
+    final confirmed = await AppBottomSheet.show(
+      context,
+      icon: Icons.logout_rounded,
+      title: 'Sair da conta?',
+      description: 'Você precisará entrar novamente para acessar sua conta.',
+      confirmLabel: 'SAIR',
+      cancelLabel: 'Cancelar',
+      destructive: true,
+    );
+    if (confirmed == true) {
+      await authCubit.signOut();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -203,7 +220,7 @@ class _SignOutButton extends StatelessWidget {
       color: colors.surface,
       borderRadius: BorderRadius.circular(AppRadius.button),
       child: InkWell(
-        onTap: () => context.read<AuthCubit>().signOut(),
+        onTap: () => _confirmSignOut(context),
         borderRadius: BorderRadius.circular(AppRadius.button),
         child: Container(
           height: 52,

@@ -49,7 +49,8 @@ class QuizResultPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'RESULTADO FINAL',
+                          'RESULTADO FINAL · NÍVEL ${data.difficulty.label.toUpperCase()}',
+                          textAlign: TextAlign.center,
                           style: TextStyle(color: colors.primary, fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1.2),
                         ),
                         const SizedBox(height: AppSpacing.sm),
@@ -93,8 +94,11 @@ class QuizResultPage extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: AppPrimaryButton(
-                            label: 'JOGAR NOVAMENTE',
-                            onPressed: () => context.pushReplacement('/arena/quiz'),
+                            label: 'MAIS PERGUNTAS',
+                            onPressed: () => context.pushReplacement(
+                              '/arena/quiz/play',
+                              extra: (difficulty: data.difficulty, avoid: data.answeredQuestions),
+                            ),
                           ),
                         ),
                         const SizedBox(height: AppSpacing.md),

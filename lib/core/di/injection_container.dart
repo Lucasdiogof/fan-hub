@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/games/career_path/career_path_storage.dart';
+import 'package:goias_app/features/arena/games/lineup/lineup_storage.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/auth/data/auth_repository_impl.dart';
 import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart';
@@ -45,18 +47,32 @@ void setupDependencies() {
   sl.registerLazySingleton<NewsRepository>(MockNewsRepository.new);
   sl.registerLazySingleton<TicketRepository>(EmptyTicketRepository.new);
   sl.registerLazySingleton<MembershipRepository>(MockMembershipRepository.new);
-  sl.registerLazySingleton<MembershipFaqDataSource>(MembershipFaqDataSource.new);
+  sl.registerLazySingleton<MembershipFaqDataSource>(
+    MembershipFaqDataSource.new,
+  );
   sl.registerLazySingleton<ViaCepDataSource>(() => ViaCepDataSource(sl()));
-  sl.registerLazySingleton<IbgeLocationDataSource>(() => IbgeLocationDataSource(sl()));
-  sl.registerLazySingleton<AddressRepository>(() => ViaCepAddressRepository(sl(), sl()));
+  sl.registerLazySingleton<IbgeLocationDataSource>(
+    () => IbgeLocationDataSource(sl()),
+  );
+  sl.registerLazySingleton<AddressRepository>(
+    () => ViaCepAddressRepository(sl(), sl()),
+  );
   sl.registerLazySingleton<UserRepository>(MockUserRepository.new);
 
   sl.registerLazySingleton<Dio>(ApiClient.create);
-  sl.registerLazySingleton<FootballRemoteDataSource>(() => FootballRemoteDataSource(sl()));
-  sl.registerLazySingleton<FootballRepository>(() => FootballRepositoryImpl(sl()));
+  sl.registerLazySingleton<FootballRemoteDataSource>(
+    () => FootballRemoteDataSource(sl()),
+  );
+  sl.registerLazySingleton<FootballRepository>(
+    () => FootballRepositoryImpl(sl()),
+  );
 
-  sl.registerLazySingleton<SocialRemoteDataSource>(() => SocialRemoteDataSource(sl()));
-  sl.registerLazySingleton<SocialFeedRepository>(() => SocialFeedRepositoryImpl(sl()));
+  sl.registerLazySingleton<SocialRemoteDataSource>(
+    () => SocialRemoteDataSource(sl()),
+  );
+  sl.registerLazySingleton<SocialFeedRepository>(
+    () => SocialFeedRepositoryImpl(sl()),
+  );
 
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSource(Supabase.instance.client),
@@ -64,9 +80,13 @@ void setupDependencies() {
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
   sl.registerLazySingleton<AuthCubit>(() => AuthCubit(sl()));
 
-  sl.registerLazySingleton<ProfileRepository>(() => SupabaseProfileRepository(Supabase.instance.client));
+  sl.registerLazySingleton<ProfileRepository>(
+    () => SupabaseProfileRepository(Supabase.instance.client),
+  );
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
   sl.registerLazySingleton<ArenaScores>(ArenaScores.new);
+  sl.registerLazySingleton<LineupStorage>(LineupStorage.new);
+  sl.registerLazySingleton<CareerPathStorage>(CareerPathStorage.new);
 
   sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));

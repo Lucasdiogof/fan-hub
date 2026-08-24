@@ -1,12 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_state.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_logic.dart';
+import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 
 class QuizCubit extends Cubit<QuizState> {
-  QuizCubit({required this.loadBest, required this.saveBest}) : super(QuizState(questions: pickQuizQuestions())) {
+  QuizCubit({required this.difficulty, this.avoid = const {}, required this.loadBest, required this.saveBest})
+    : super(QuizState(questions: pickQuizQuestions(difficulty, avoid: avoid))) {
     _init();
   }
 
+  final QuizDifficulty difficulty;
+  final Set<String> avoid;
   final Future<int> Function() loadBest;
   final Future<void> Function(int score) saveBest;
 
