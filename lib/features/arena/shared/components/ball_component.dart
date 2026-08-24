@@ -3,19 +3,18 @@ import 'dart:ui';
 
 import 'package:flame/components.dart';
 import 'package:flutter/painting.dart' show Alignment, RadialGradient;
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:goias_app/features/arena/shared/arena_assets.dart';
 
-/// Bola clássica branca e preta, desenhada 100% em Canvas — pequena e
-/// proporcional ao jogador. O raio é fixo por instância, então toda a
-/// geometria (gradiente, painéis, sombra) é pré-computada uma única vez no
-/// construtor — `render` só desenha, sem alocar Path/Paint por frame.
+/// Bola de futebol clássica. Usa o asset [ArenaAssets.ball] (PNG quadrado,
+/// fundo transparente, bola de borda a borda) quando disponível; enquanto
+/// o arquivo não existir cai no desenho procedural em Canvas, sem erro.
 ///
-/// Segunda passada de acabamento sobre a versão anterior: gradiente com
-/// mais paradas (realce na luz, sombra própria do lado oposto — não só um
-/// clareado uniforme), painéis com tamanho/distribuição mais parecidos com
-/// os de uma bola de verdade (não quatro pentágonos soltos do mesmo
-/// tamanho), aro externo mais definido e sombra no chão com blur (mais
-/// suave, "assentada", igual à do jogador/goleiro) em vez de uma elipse de
-/// borda dura.
+/// A sombra no chão é sempre feita por código e desenhada ANTES de aplicar
+/// a rotação — ela não gira nem se deforma junto com a bola. O giro do
+/// chute ([spin]) é aplicado só na imagem, em torno do centro, então a bola
+/// gira sem distorção. A escala de perspectiva (`scale`, definida pelo jogo
+/// conforme a bola se afasta) continua encolhendo bola e sombra juntas.
 class BallComponent extends PositionComponent {
   BallComponent({double radius = 11}) : super(size: Vector2.all(radius * 2), anchor: Anchor.center) {
     _build();
@@ -23,7 +22,31 @@ class BallComponent extends PositionComponent {
 
   double get radius => size.x / 2;
 
+  /// Giro atual da bola, em radianos — aplicado só ao sprite/desenho da
+  /// bola, nunca à sombra.
+  double spin = 0;
+
+  Image? _sprite;
+  final Paint _spritePaint = Paint()
+    ..isAntiAlias = true
+    ..filterQuality = FilterQuality.high;
+
+  @override
+  Future<void> onLoad() async {
+    try {
+      final data = await rootBundle.load(ArenaAssets.ball);
+      final codec = await instantiateImageCodec(data.buffer.asUint8List());
+      final frame = await codec.getNextFrame();
+      _sprite = frame.image;
+    } catch (_) {
+      _sprite = null;
+    }
+  }
+
+  // --- Sombra (sempre por código) ----------------------------------------
   late final Paint _shadow;
+
+  // --- Fallback procedural -----------------------------------------------
   late final Paint _base;
   late final Paint _rimPaint;
   late final Paint _innerShadePaint;
@@ -35,8 +58,6 @@ class BallComponent extends PositionComponent {
     final r = radius;
     final c = Offset(r, r);
 
-    // Esfera: realce na luz (canto superior-esquerdo), meio-tom, e uma
-    // sombra própria mais escura do lado oposto — não um clareado plano.
     _base = Paint()
       ..shader = const RadialGradient(
         center: Alignment(-0.38, -0.44),
@@ -50,9 +71,6 @@ class BallComponent extends PositionComponent {
         stops: [0.0, 0.42, 0.78, 1.0],
       ).createShader(Rect.fromCircle(center: c, radius: r));
 
-    // Sombreamento extra concentrado no quadrante oposto à luz, por cima
-    // do gradiente base — reforça a curvatura sem precisar de mais paradas
-    // no shader principal (que já fica sutil demais se for muito longo).
     _innerShadePaint = Paint()
       ..shader = const RadialGradient(
         center: Alignment(0.5, 0.55),
@@ -67,10 +85,6 @@ class BallComponent extends PositionComponent {
       ..style = PaintingStyle.stroke
       ..strokeWidth = _rimWidth;
 
-    // Cinco painéis centrais bem distribuídos (padrão clássico de bola,
-    // não quatro formas soltas de tamanho arbitrário) + dois parciais nas
-    // bordas pra sugerir a curvatura continuando além do que se vê de
-    // frente.
     _panels
       ..clear()
       ..addAll([
@@ -88,9 +102,6 @@ class BallComponent extends PositionComponent {
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, max(0.6, r * 0.14));
   }
 
-  /// Um pentágono simples por "painel" — não tenta replicar a tesselação
-  /// real da bola, só sugerir a textura clássica preto-e-branco à
-  /// distância de um celular.
   Path _pentagon(Offset center, double size, {double rotation = 0}) {
     final path = Path();
     for (var i = 0; i < 5; i++) {
@@ -109,10 +120,33 @@ class BallComponent extends PositionComponent {
   @override
   void render(Canvas canvas) {
     final d = radius * 2;
+
+    // Sombra no chão — por código, desenhada fora da rotação: fica assentada
+    // no gramado enquanto a bola gira por cima.
     canvas.drawOval(
       Rect.fromCenter(center: Offset(radius, d * 0.96), width: d * 0.72, height: d * 0.2),
       _shadow,
     );
+
+    canvas.save();
+    if (spin != 0) {
+      canvas
+        ..translate(radius, radius)
+        ..rotate(spin)
+        ..translate(-radius, -radius);
+    }
+
+    final sprite = _sprite;
+    if (sprite != null) {
+      canvas.drawImageRect(
+        sprite,
+        Rect.fromLTWH(0, 0, sprite.width.toDouble(), sprite.height.toDouble()),
+        Rect.fromLTWH(0, 0, d, d),
+        _spritePaint,
+      );
+      canvas.restore();
+      return;
+    }
 
     final c = Offset(radius, radius);
     final circle = Rect.fromCircle(center: c, radius: radius);
@@ -125,5 +159,7 @@ class BallComponent extends PositionComponent {
     canvas.drawRect(circle, _innerShadePaint);
     canvas.restore();
     canvas.drawCircle(c, radius - _rimWidth / 2, _rimPaint);
+
+    canvas.restore();
   }
 }

@@ -137,6 +137,7 @@ class PenaltyGame extends FlameGame {
       _player.position.setValues(w / 2, _playerStartY);
       _ball.position.setValues(_ballHomeX, _ballHomeY);
       _ball.scale.setValues(1, 1);
+      _ball.spin = 0;
     }
   }
 
@@ -240,6 +241,8 @@ class PenaltyGame extends FlameGame {
     _ball.position.setValues(bx, by);
     final s = 1 - 0.52 * _t;
     _ball.scale.setValues(s, s);
+    final direction = (_targetX - _startX) >= 0 ? 1 : -1;
+    _ball.spin = direction * _t * pi * 6;
   }
 
   void _resolveShot() {
@@ -257,6 +260,7 @@ class PenaltyGame extends FlameGame {
     _keeper.resetToIdle();
     _ball.position.setValues(_ballHomeX, _ballHomeY);
     _ball.scale.setValues(1, 1);
+    _ball.spin = 0;
     _player.stopRunning();
     _player.position.setValues(size.x / 2, _playerStartY);
     _phase = PenaltyPhase.ready;

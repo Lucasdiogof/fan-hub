@@ -13,6 +13,12 @@ class ArenaAssets {
 
   static const crowdBanner = '$_base/crowd_banner.jpg';
 
+  /// Bola de futebol clássica, PNG quadrado com fundo transparente — a bola
+  /// preenche o quadro de borda a borda. `BallComponent` desenha o sprite
+  /// dentro do próprio tamanho; a sombra no chão continua sendo feita por
+  /// código, separada da imagem.
+  static const ball = '$_base/ball.png';
+
   /// 6 frames horizontais de 384x768px cada (2304x768 total), fundo
   /// transparente: idle, passo esquerdo, passo direito, prepara chute,
   /// contato, follow-through.
