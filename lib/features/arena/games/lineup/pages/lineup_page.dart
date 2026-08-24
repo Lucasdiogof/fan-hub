@@ -80,7 +80,7 @@ class _LineupViewState extends State<_LineupView> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(
                     AppSpacing.lg,
-                    AppSpacing.md,
+                    AppSpacing.sm,
                     AppSpacing.lg,
                     0,
                   ),
@@ -123,7 +123,7 @@ class _LineupViewState extends State<_LineupView> {
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 _MatchHeader(match: match),
-                const SizedBox(height: AppSpacing.sm),
+                const SizedBox(height: AppSpacing.xs),
                 if (state.isComplete)
                   TextButton.icon(
                     onPressed: () => showLineupResultDialog(
@@ -155,15 +155,15 @@ class _LineupViewState extends State<_LineupView> {
                       ),
                     ],
                   ),
-                const SizedBox(height: AppSpacing.md),
+                const SizedBox(height: AppSpacing.sm),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.lg,
+                      horizontal: AppSpacing.md,
                     ),
                     child: Center(
                       child: AspectRatio(
-                        aspectRatio: 0.68,
+                        aspectRatio: 0.66,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(AppRadius.card),
                           child: Stack(
@@ -194,27 +194,21 @@ class _LineupViewState extends State<_LineupView> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    0,
-                    AppSpacing.lg,
-                    AppSpacing.lg,
-                  ),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: OutlinedButton(
-                      onPressed: state.isComplete
-                          ? null
-                          : () => _confirmGiveUp(context),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: colors.error,
-                        side: BorderSide(color: colors.error),
+                if (!state.isComplete)
+                  Padding(
+                    padding: const EdgeInsets.only(top: AppSpacing.xs, bottom: AppSpacing.xs),
+                    child: TextButton.icon(
+                      onPressed: () => _confirmGiveUp(context),
+                      style: TextButton.styleFrom(foregroundColor: colors.textHint),
+                      icon: const Icon(Icons.flag_outlined, size: 16),
+                      label: const Text(
+                        'Desistir da partida',
+                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                       ),
-                      child: const Text('DESISTIR'),
                     ),
-                  ),
-                ),
+                  )
+                else
+                  const SizedBox(height: AppSpacing.sm),
               ],
             ),
           ),
@@ -255,7 +249,6 @@ class _LineupViewState extends State<_LineupView> {
       description: 'Os jogadores restantes serão revelados e a partida será encerrada.',
       confirmLabel: 'DESISTIR',
       cancelLabel: 'Continuar jogando',
-      destructive: true,
     );
     if (confirmed == true) {
       await cubit.giveUp();

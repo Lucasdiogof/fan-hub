@@ -25,7 +25,12 @@ class LineupKeyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const perKeyMargin = 4.0;
+        final keyWidth =
+            ((constraints.maxWidth - perKeyMargin * 10) / 10).clamp(22.0, 40.0);
+        return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         for (final row in _rows) ...[
@@ -39,6 +44,7 @@ class LineupKeyboard extends StatelessWidget {
                     label: letter,
                     status: keyboardState[letter],
                     onTap: () => onLetter(letter),
+                    width: keyWidth,
                   ),
               ],
             ),
@@ -50,7 +56,7 @@ class LineupKeyboard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _Key(
-                      label: 'APAGAR',
+                      label: 'Apagar',
                       wide: true,
                       onTap: onDelete,
                       icon: Icons.backspace_outlined,
@@ -58,11 +64,12 @@ class LineupKeyboard extends StatelessWidget {
                   ),
                   const SizedBox(width: 6),
                   Expanded(
+                    flex: 2,
                     child: _Key(
-                      label: 'ENTER',
+                      label: 'Confirmar',
                       wide: true,
                       onTap: canSubmit ? onEnter : null,
-                      icon: Icons.keyboard_return_rounded,
+                      icon: Icons.check_rounded,
                       emphasize: canSubmit,
                     ),
                   ),
@@ -71,6 +78,8 @@ class LineupKeyboard extends StatelessWidget {
             ),
         ],
       ],
+        );
+      },
     );
   }
 }
@@ -83,6 +92,7 @@ class _Key extends StatelessWidget {
     this.wide = false,
     this.icon,
     this.emphasize = false,
+    this.width,
   });
 
   final String label;
@@ -91,6 +101,7 @@ class _Key extends StatelessWidget {
   final bool wide;
   final IconData? icon;
   final bool emphasize;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -116,8 +127,8 @@ class _Key extends StatelessWidget {
           onTap: onTap,
           borderRadius: BorderRadius.circular(6),
           child: Container(
-            width: wide ? double.infinity : 30,
-            height: 42,
+            width: wide ? double.infinity : (width ?? 32),
+            height: 48,
             alignment: Alignment.center,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(6)),
             child: icon != null && wide
@@ -125,25 +136,29 @@ class _Key extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(icon, size: 15, color: textColor),
+                      Icon(icon, size: 16, color: textColor),
                       const SizedBox(width: 6),
-                      Text(
-                        label,
-                        style: TextStyle(
-                          color: textColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w800,
+                      Flexible(
+                        child: Text(
+                          label,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: textColor,
+                            fontSize: 13.5,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ),
                     ],
                   )
                 : icon != null
-                ? Icon(icon, size: 18, color: textColor)
+                ? Icon(icon, size: 20, color: textColor)
                 : Text(
                     label,
                     style: TextStyle(
                       color: textColor,
-                      fontSize: 13,
+                      fontSize: 15,
                       fontWeight: FontWeight.w800,
                     ),
                   ),

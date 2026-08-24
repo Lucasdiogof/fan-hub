@@ -37,7 +37,7 @@ void main() {
         await tester.tap(find.text(letter));
         await tester.pump();
       }
-      await tester.tap(find.text('ENTER'));
+      await tester.tap(find.text('Confirmar'));
       await tester.pumpAndSettle();
 
       // Resolvido: nome revelado na tela de adivinhação.

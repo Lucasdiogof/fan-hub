@@ -74,7 +74,7 @@ class LineupGuessPage extends StatelessWidget {
                                     : 'JOGADOR',
                                 style: TextStyle(
                                   color: context.colors.textPrimary,
-                                  fontSize: 16,
+                                  fontSize: 19,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: 0.3,
                                 ),
@@ -83,7 +83,7 @@ class LineupGuessPage extends StatelessWidget {
                                 player.position,
                                 style: TextStyle(
                                   color: context.colors.textHint,
-                                  fontSize: 11.5,
+                                  fontSize: 12.5,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -101,18 +101,17 @@ class LineupGuessPage extends StatelessWidget {
                     if (!playerState.isDone) ...[
                       const SizedBox(height: AppSpacing.md),
                       Text(
-                        'Digite o nome e pressione ENTER',
+                        'Digite o nome do jogador',
                         style: TextStyle(
                           color: context.colors.textSecondary,
-                          fontSize: 13,
+                          fontSize: 13.5,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: AppSpacing.sm),
-                      const _ColorLegend(),
                     ],
                     Expanded(
-                      child: Center(
+                      child: Align(
+                        alignment: Alignment.topCenter,
                         child: SingleChildScrollView(
                           padding: const EdgeInsets.symmetric(
                             horizontal: AppSpacing.lg,
@@ -251,81 +250,6 @@ class _WordCountBadge extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _ColorLegend extends StatelessWidget {
-  const _ColorLegend();
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.md,
-          vertical: AppSpacing.sm,
-        ),
-        decoration: BoxDecoration(
-          color: colors.secondary,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Wrap(
-          alignment: WrapAlignment.center,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          spacing: 4,
-          children: [
-            Text(
-              'Verde',
-              style: TextStyle(
-                color: colors.success,
-                fontSize: 11.5,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            _LegendText(' = posição certa  •  ', colors.textSecondary),
-            const Text(
-              'Amarelo',
-              style: TextStyle(
-                color: Color(0xFFC79A3D),
-                fontSize: 11.5,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            _LegendText(' = letra existe  •  ', colors.textSecondary),
-            Text(
-              'Cinza',
-              style: TextStyle(
-                color: colors.textHint,
-                fontSize: 11.5,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-            _LegendText(' = não existe', colors.textSecondary),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _LegendText extends StatelessWidget {
-  const _LegendText(this.text, this.color);
-
-  final String text;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: color,
-        fontSize: 11.5,
-        fontWeight: FontWeight.w600,
       ),
     );
   }

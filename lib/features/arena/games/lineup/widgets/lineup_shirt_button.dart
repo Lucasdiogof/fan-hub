@@ -41,14 +41,14 @@ class LineupShirtButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              width: 40,
-              height: 40,
+              width: 52,
+              height: 52,
               child: Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.center,
                 children: [
                   CustomPaint(
-                    size: const Size(40, 40),
+                    size: const Size(52, 52),
                     painter: _JerseyPainter(
                       color: failed
                           ? ArenaColors.opponentKeeper.withValues(alpha: 0.55)
@@ -58,11 +58,11 @@ class LineupShirtButton extends StatelessWidget {
                   ),
                   if (solved || failed)
                     Positioned(
-                      top: -4,
-                      right: -4,
+                      top: -5,
+                      right: -5,
                       child: Container(
-                        width: 16,
-                        height: 16,
+                        width: 20,
+                        height: 20,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: solved
@@ -72,7 +72,7 @@ class LineupShirtButton extends StatelessWidget {
                         ),
                         child: Icon(
                           solved ? Icons.check_rounded : Icons.close_rounded,
-                          size: 10,
+                          size: 12,
                           color: Colors.white,
                         ),
                       ),
@@ -80,7 +80,7 @@ class LineupShirtButton extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 3),
+            const SizedBox(height: 4),
             _AnswerStructure(player: player, revealed: solved || failed),
           ],
         ),
@@ -105,7 +105,7 @@ class _AnswerStructure extends StatelessWidget {
         textAlign: TextAlign.center,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 8.5,
+          fontSize: 11,
           fontWeight: FontWeight.w800,
         ),
       );
@@ -113,16 +113,16 @@ class _AnswerStructure extends StatelessWidget {
     final words = player.puzzleAnswer.split(' ');
     return Wrap(
       alignment: WrapAlignment.center,
-      spacing: 3,
+      spacing: 4,
       children: [
         for (final word in words)
           Text(
             '·' * word.length,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 9,
+              fontSize: 12,
               fontWeight: FontWeight.w900,
-              letterSpacing: 1,
+              letterSpacing: 1.5,
             ),
           ),
       ],
@@ -177,7 +177,7 @@ class _JerseyPainter extends CustomPainter {
         text: '$number',
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 13,
+          fontSize: 17,
           fontWeight: FontWeight.w900,
         ),
       ),

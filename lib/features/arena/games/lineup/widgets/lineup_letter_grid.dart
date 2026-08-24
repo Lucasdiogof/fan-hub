@@ -26,9 +26,9 @@ class LineupLetterGrid extends StatelessWidget {
   // simples e sem risco de math de layout entrar em conflito com o
   // `RenderFlex` (foi exatamente isso que causava um overflow gigante e
   // sem sentido antes).
-  static const double _naturalCellSize = 40.0;
-  static const double _gap = 6.0;
-  static const double _cellSpacing = 4.0;
+  static const double _naturalCellSize = 50.0;
+  static const double _gap = 8.0;
+  static const double _cellSpacing = 5.0;
 
   @override
   Widget build(BuildContext context) {
