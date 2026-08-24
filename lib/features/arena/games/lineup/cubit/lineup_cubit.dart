@@ -43,12 +43,7 @@ class LineupCubit extends Cubit<LineupState> {
   Future<void> loadSelectedMatch() async {
     final savedId = await loadSelectedMatchId();
     final matches = state.matches;
-    final match =
-        (savedId != null ? _findMatch(savedId) : null) ??
-        matches.firstWhere(
-          (candidate) => candidate.formationConfidence == FormationConfidence.confirmed,
-          orElse: () => matches.first,
-        );
+    final match = (savedId != null ? _findMatch(savedId) : null) ?? matches.first;
     await _loadMatch(match);
   }
 

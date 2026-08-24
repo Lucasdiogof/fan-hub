@@ -143,8 +143,8 @@ class _LetterCell extends StatelessWidget {
         'letra não existe',
       ),
       null => (
-        Colors.transparent,
-        letter != null ? colors.textHint : colors.border,
+        letter != null ? colors.surface : colors.surfaceRaised,
+        letter != null ? colors.primary : colors.textHint.withValues(alpha: 0.45),
         colors.textPrimary,
         null,
         null,

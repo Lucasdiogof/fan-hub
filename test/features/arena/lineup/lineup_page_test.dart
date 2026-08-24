@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
@@ -24,24 +25,35 @@ void main() {
       // Progresso inicial: nenhum jogador resolvido ainda.
       expect(find.text('0/11'), findsOneWidget);
 
-      // Abre a camisa 1 (goleiro da partida padrão — Sul-Americana 2010,
-      // Harlei, resposta "HARLEI").
+      // Abre o goleiro da partida padrão (a primeira do banco — Copa do
+      // Brasil 1990 x Flamengo). p0 é o Eduardo Heuser, resposta "EDUARDO"
+      // (camisa sem número confirmado → "JOGADOR"). Digita pelo teclado
+      // físico pra não esbarrar na letra repetida ao procurar as teclas.
       await tester.tap(
-        find.byKey(const ValueKey('2010_palmeiras_sulamericana_semi_volta-p0')),
+        find.byKey(const ValueKey('1990_flamengo_cdb_final_volta-p0')),
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('CAMISA 1'), findsOneWidget);
+      expect(find.text('JOGADOR'), findsOneWidget);
 
-      for (final letter in 'HARLEI'.split('')) {
-        await tester.tap(find.text(letter));
+      const keys = [
+        LogicalKeyboardKey.keyE,
+        LogicalKeyboardKey.keyD,
+        LogicalKeyboardKey.keyU,
+        LogicalKeyboardKey.keyA,
+        LogicalKeyboardKey.keyR,
+        LogicalKeyboardKey.keyD,
+        LogicalKeyboardKey.keyO,
+      ];
+      for (final key in keys) {
+        await tester.sendKeyEvent(key);
         await tester.pump();
       }
-      await tester.tap(find.text('Confirmar'));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
       await tester.pumpAndSettle();
 
       // Resolvido: nome revelado na tela de adivinhação.
-      expect(find.text('Harlei'), findsOneWidget);
+      expect(find.text('Eduardo Heuser'), findsOneWidget);
 
       // Volta pro campo sem perder o progresso.
       await tester.tap(find.byIcon(Icons.arrow_back_rounded));
@@ -51,10 +63,10 @@ void main() {
 
       // Reabrir o mesmo jogador continua mostrando o resultado (não reseta).
       await tester.tap(
-        find.byKey(const ValueKey('2010_palmeiras_sulamericana_semi_volta-p0')),
+        find.byKey(const ValueKey('1990_flamengo_cdb_final_volta-p0')),
       );
       await tester.pumpAndSettle();
-      expect(find.text('Harlei'), findsOneWidget);
+      expect(find.text('Eduardo Heuser'), findsOneWidget);
     },
   );
 }
