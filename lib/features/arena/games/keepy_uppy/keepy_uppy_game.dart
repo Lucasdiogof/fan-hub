@@ -84,7 +84,7 @@ class KeepyUppyGame extends FlameGame {
   // Física da bola (unidades relativas ao tamanho da tela, por segundo).
   double _velocityY = 0;
   double _spinSpeed = 0;
-  bool _rightFoot = true;
+  bool _highPose = false;
 
   // Countdown.
   static const _countdownSteps = ['3', '2', '1', 'VAI!'];
@@ -94,10 +94,14 @@ class KeepyUppyGame extends FlameGame {
   double _poseResetTimer = 0;
 
   // --- Geometria derivada do tamanho (responsivo) ------------------------
-  double get _centerX => size.x / 2;
+  // Jogador de perfil à esquerda, bola descendo na coluna à frente dele
+  // (direita) — assim a bola nunca fica "colada" no corpo e o contato com o
+  // pé da frente fica explícito.
+  double get _playerCenterX => size.x * 0.40;
+  double get _ballColumnX => size.x * 0.55;
   double get _playerFeetY => size.y * 0.80;
-  double get _contactY => size.y * 0.55;
-  double get _ballRadius => size.x * 0.052;
+  double get _contactY => size.y * 0.56;
+  double get _ballRadius => size.x * 0.055;
   double get _groundY => size.y * 1.04;
 
   double get _difficulty => (min(_keepUps, 60) / 60).clamp(0.0, 1.0);
@@ -134,21 +138,21 @@ class KeepyUppyGame extends FlameGame {
   }
 
   void _layout() {
-    final playerH = size.y * 0.60;
+    final playerH = size.y * 0.62;
     _player
       ..size = Vector2(playerH * KeepyUppyPlayer.aspectRatio, playerH)
-      ..position = Vector2(_centerX, _playerFeetY);
+      ..position = Vector2(_playerCenterX, _playerFeetY);
     _target
-      ..position = Vector2(_centerX, _playerFeetY)
-      ..radius = size.x * 0.17;
+      ..position = Vector2(_ballColumnX, _playerFeetY)
+      ..radius = size.x * 0.16;
     _shadow
-      ..position = Vector2(_centerX, _playerFeetY)
+      ..position = Vector2(_ballColumnX, _playerFeetY)
       ..baseWidth = _ballRadius * 3;
     _ball
       ..size = Vector2.all(_ballRadius * 2)
       ..anchor = Anchor.center;
     if (_phase == KeepyUppyPhase.countdown) {
-      _ball.position = Vector2(_centerX, _contactY);
+      _ball.position = Vector2(_ballColumnX, _contactY);
     }
   }
 
@@ -161,12 +165,12 @@ class KeepyUppyGame extends FlameGame {
     _score = 0;
     _velocityY = 0;
     _spinSpeed = 0;
-    _rightFoot = true;
+    _highPose = false;
     _countdownIndex = 0;
     _countdownTimer = 0;
     _player.pose = KeepyUppyPose.idle;
     _ball
-      ..position = Vector2(_centerX, _contactY)
+      ..position = Vector2(_ballColumnX, _contactY)
       ..spin = 0;
     _shadow.heightFraction = 0;
     _target.active = false;
@@ -281,13 +285,13 @@ class KeepyUppyGame extends FlameGame {
     }
 
     // Novo impulso pra cima, com a dificuldade já atualizada pelo novo
-    // placar; alterna o pé e o lado do giro/deslocamento da bola.
+    // placar; alterna a pose (contato baixo/alto) pra dar ritmo natural.
     _velocityY = -sqrt(2 * _gravity * _apexHeight);
-    _rightFoot = !_rightFoot;
-    _spinSpeed = (_rightFoot ? 1 : -1) * (2.2 + _difficulty * 2.4);
-    _ball.position.x = _centerX + (_rightFoot ? 1 : -1) * size.x * 0.02;
-    _player.pose = _rightFoot ? KeepyUppyPose.juggleRight : KeepyUppyPose.juggleLeft;
-    _poseResetTimer = 0.22;
+    _highPose = !_highPose;
+    _spinSpeed = 2.2 + _difficulty * 2.4;
+    _ball.position.x = _ballColumnX;
+    _player.pose = _highPose ? KeepyUppyPose.juggleHigh : KeepyUppyPose.juggleLow;
+    _poseResetTimer = 0.24;
 
     _spawnFeedback(perfect: perfect);
     _emitHud();

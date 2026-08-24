@@ -13,11 +13,11 @@ import 'package:goias_app/features/arena/shared/arena_assets.dart';
 class KeepyUppyPlayer extends PositionComponent {
   KeepyUppyPlayer() : super(anchor: Anchor.bottomCenter);
 
-  static const double aspectRatio = 1024 / 1536;
+  static const double aspectRatio = 1086 / 1448;
 
   Image? _idle;
-  Image? _left;
-  Image? _right;
+  Image? _low;
+  Image? _high;
 
   KeepyUppyPose pose = KeepyUppyPose.idle;
 
@@ -31,8 +31,8 @@ class KeepyUppyPlayer extends PositionComponent {
   @override
   Future<void> onLoad() async {
     _idle = await _load(ArenaAssets.keepyPlayerIdle);
-    _left = await _load(ArenaAssets.keepyPlayerJuggleLeft);
-    _right = await _load(ArenaAssets.keepyPlayerJuggleRight);
+    _low = await _load(ArenaAssets.keepyPlayerJuggleLow);
+    _high = await _load(ArenaAssets.keepyPlayerJuggleHigh);
   }
 
   Future<Image> _load(String path) async {
@@ -44,8 +44,8 @@ class KeepyUppyPlayer extends PositionComponent {
 
   Image? get _current => switch (pose) {
     KeepyUppyPose.idle => _idle,
-    KeepyUppyPose.juggleLeft => _left,
-    KeepyUppyPose.juggleRight => _right,
+    KeepyUppyPose.juggleLow => _low,
+    KeepyUppyPose.juggleHigh => _high,
   };
 
   @override

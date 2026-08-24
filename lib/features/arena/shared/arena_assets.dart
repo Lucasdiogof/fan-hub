@@ -31,11 +31,10 @@ class ArenaAssets {
 
   static const String _keepy = 'lib/assets/games/keepy_uppy';
 
-  /// Poses do jogador nas embaixadinhas (de costas, uniforme verde nº 10),
-  /// todas 1024x1536 no mesmo canvas — desenhadas no mesmo rect pra o corpo
-  /// nunca mudar de escala/âncora entre as poses.
+  /// Poses do jogador nas embaixadinhas — de perfil (virado à direita),
+  /// uniforme verde nº 10, todas 1086x1448 no mesmo canvas. Desenhadas no
+  /// mesmo rect pra o corpo nunca mudar de escala/âncora entre as poses.
   static const keepyPlayerIdle = '$_keepy/player_idle.png';
-  static const keepyPlayerJuggleLeft = '$_keepy/player_juggle_left.png';
-  static const keepyPlayerJuggleRight = '$_keepy/player_juggle_right.png';
-  static const keepyPlayerJuggleKnee = '$_keepy/player_juggle_knee.png';
+  static const keepyPlayerJuggleLow = '$_keepy/player_juggle_low.png';
+  static const keepyPlayerJuggleHigh = '$_keepy/player_juggle_high.png';
 }
