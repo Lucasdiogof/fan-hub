@@ -20,7 +20,7 @@ class Match extends Equatable {
     required this.homeTeam,
     required this.awayTeam,
     required this.stadium,
-    required this.kickoff,
+    this.kickoff,
     required this.status,
     this.city,
     this.homeScore,
@@ -34,7 +34,11 @@ class Match extends Equatable {
   final Team awayTeam;
   final String stadium;
   final String? city;
-  final DateTime kickoff;
+
+  /// Algumas partidas ainda não têm horário confirmado pela fonte (fica
+  /// `null` até a fonte publicar). A UI trata isso mostrando "a confirmar"
+  /// em vez de esconder a partida.
+  final DateTime? kickoff;
   final MatchStatus status;
   final int? homeScore;
   final int? awayScore;

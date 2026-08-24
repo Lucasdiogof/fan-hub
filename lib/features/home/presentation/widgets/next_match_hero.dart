@@ -62,7 +62,9 @@ class NextMatchHero extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${shortDateLabel(match.kickoff)} • ${timeLabel(match.kickoff)} • ${match.stadium.toUpperCase()}',
+                  match.kickoff != null
+                      ? '${shortDateLabel(match.kickoff!)} • ${timeLabel(match.kickoff!)} • ${match.stadium.toUpperCase()}'
+                      : 'DATA A CONFIRMAR • ${match.stadium.toUpperCase()}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -81,8 +83,10 @@ class NextMatchHero extends StatelessWidget {
                     Expanded(child: _TeamColumn(team: match.awayTeam)),
                   ],
                 ),
-                const SizedBox(height: AppSpacing.lg),
-                MatchCountdown(kickoff: match.kickoff, onFinished: onMatchStarted),
+                if (match.kickoff != null) ...[
+                  const SizedBox(height: AppSpacing.lg),
+                  MatchCountdown(kickoff: match.kickoff!, onFinished: onMatchStarted),
+                ],
                 const SizedBox(height: AppSpacing.lg),
                 Row(
                   children: [

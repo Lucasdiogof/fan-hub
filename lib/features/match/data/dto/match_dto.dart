@@ -20,8 +20,10 @@ class MatchDto {
   final TeamDto awayTeam;
 
   /// Horário já em hora local do Brasil, sem offset (a fonte não fornece
-  /// UTC) — parseado direto, nunca convertido por fuso.
-  final String kickoffRaw;
+  /// UTC) — parseado direto, nunca convertido por fuso. `null` quando a
+  /// fonte ainda não confirmou o horário (visto em jogos futuros do
+  /// TheSportsDB antes da data ser fechada).
+  final String? kickoffRaw;
   final String statusName;
   final String? venue;
   final int? homeScore;
@@ -33,7 +35,7 @@ class MatchDto {
       round: json['round'] as String? ?? '',
       homeTeam: TeamDto.fromJson(json['homeTeam'] as Map<String, dynamic>),
       awayTeam: TeamDto.fromJson(json['awayTeam'] as Map<String, dynamic>),
-      kickoffRaw: json['kickoff'] as String,
+      kickoffRaw: json['kickoff'] as String?,
       statusName: json['status'] as String? ?? 'unknown',
       venue: json['venue'] as String?,
       homeScore: json['homeScore'] as int?,
@@ -49,7 +51,7 @@ class MatchDto {
       homeTeam: homeTeam.toEntity(),
       awayTeam: awayTeam.toEntity(),
       stadium: venue ?? '',
-      kickoff: DateTime.parse(kickoffRaw),
+      kickoff: kickoffRaw != null ? DateTime.parse(kickoffRaw!) : null,
       status: MatchStatus.values.asNameMap()[statusName] ?? MatchStatus.unknown,
       homeScore: homeScore,
       awayScore: awayScore,

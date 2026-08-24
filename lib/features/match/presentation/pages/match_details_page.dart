@@ -124,16 +124,18 @@ class _MatchDetailsContent extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.xxl),
         Text(
-          shortDateLabel(match.kickoff),
+          match.kickoff != null ? shortDateLabel(match.kickoff!) : 'Data a confirmar',
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: colors.textPrimary),
         ),
-        const SizedBox(height: 2),
-        Text(
-          timeLabel(match.kickoff),
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textSecondary),
-        ),
+        if (match.kickoff != null) ...[
+          const SizedBox(height: 2),
+          Text(
+            timeLabel(match.kickoff!),
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textSecondary),
+          ),
+        ],
         if (match.stadium.isNotEmpty) ...[
           const SizedBox(height: AppSpacing.sm),
           Text(
@@ -163,8 +165,8 @@ class _MatchDetailsContent extends StatelessWidget {
           ),
           child: Column(
             children: [
-              _InfoRow(label: 'Data', value: shortDateLabel(match.kickoff)),
-              _InfoRow(label: 'Horário', value: timeLabel(match.kickoff)),
+              _InfoRow(label: 'Data', value: match.kickoff != null ? shortDateLabel(match.kickoff!) : 'A confirmar'),
+              _InfoRow(label: 'Horário', value: match.kickoff != null ? timeLabel(match.kickoff!) : '—'),
               _InfoRow(label: 'Estádio', value: match.stadium.isEmpty ? '—' : match.stadium),
               if (match.city != null) _InfoRow(label: 'Cidade', value: match.city!),
               _InfoRow(label: 'Competição', value: match.competition),

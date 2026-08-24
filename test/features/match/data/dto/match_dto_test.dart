@@ -35,10 +35,17 @@ void main() {
       // O kickoff da fonte já é hora local do Brasil sem offset — a entidade
       // deve preservar exatamente esses valores de parede, sem reconverter
       // pelo fuso do dispositivo rodando o teste.
-      expect(entity.kickoff.hour, 21);
-      expect(entity.kickoff.minute, 30);
-      expect(entity.kickoff.day, 21);
-      expect(entity.kickoff.month, 8);
+      expect(entity.kickoff!.hour, 21);
+      expect(entity.kickoff!.minute, 30);
+      expect(entity.kickoff!.day, 21);
+      expect(entity.kickoff!.month, 8);
+    });
+
+    test('kickoff missing from the source maps to a null kickoff, not a crash', () {
+      final dto = MatchDto.fromJson({...json, 'kickoff': null});
+      expect(dto.kickoffRaw, isNull);
+      final entity = dto.toEntity(competitionName: 'Brasileirão Série B');
+      expect(entity.kickoff, isNull);
     });
 
     test('defaults missing venue/round/status gracefully', () {

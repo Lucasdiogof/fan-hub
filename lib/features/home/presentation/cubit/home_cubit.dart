@@ -30,7 +30,9 @@ class HomeCubit extends Cubit<HomeState> {
     switch (snapshotResult) {
       case Success(:final data):
         final match = data.nextMatch;
-        final stillUpcoming = match != null && DateTime.now().isBefore(match.kickoff);
+        // Sem horário confirmado (kickoff == null) conta como "ainda por
+        // vir" — não tem como já ter passado sem sabermos quando é.
+        final stillUpcoming = match != null && (match.kickoff == null || DateTime.now().isBefore(match.kickoff!));
         emit(
           state.copyWith(
             loading: false,

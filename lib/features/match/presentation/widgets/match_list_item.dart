@@ -31,7 +31,9 @@ class MatchListItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${shortDateLabel(match.kickoff)} • ${weekdayShortLabel(match.kickoff)}',
+              match.kickoff != null
+                  ? '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}'
+                  : 'Data a confirmar',
               style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700, color: colors.textSecondary),
             ),
             const SizedBox(height: AppSpacing.md),
@@ -61,7 +63,7 @@ class MatchListItem extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.w900, fontSize: 15, color: colors.textPrimary),
                         )
                       : Text(
-                          timeLabel(match.kickoff),
+                          match.kickoff != null ? timeLabel(match.kickoff!) : '--:--',
                           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: colors.textPrimary),
                         ),
                 ),

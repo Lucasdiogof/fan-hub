@@ -29,7 +29,10 @@ class _NextMatchSectionState extends State<NextMatchSection> {
 
   @override
   Widget build(BuildContext context) {
-    final alreadyStarted = !DateTime.now().isBefore(widget.match.kickoff);
+    // Sem horário confirmado (kickoff == null), não tem como já ter
+    // começado — trata como ainda por vir.
+    final kickoff = widget.match.kickoff;
+    final alreadyStarted = kickoff != null && !DateTime.now().isBefore(kickoff);
     final show = !_hidden && !alreadyStarted;
 
     return AnimatedSize(

@@ -69,12 +69,15 @@ class NextMatchCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _InfoItem(
-                icon: Icons.calendar_today_outlined,
-                label: '${shortDateLabel(match.kickoff)} • ${weekdayShortLabel(match.kickoff)}',
-              ),
-              _Dot(color: colors.textHint),
-              _InfoItem(icon: Icons.access_time_rounded, label: timeLabel(match.kickoff)),
+              if (match.kickoff != null) ...[
+                _InfoItem(
+                  icon: Icons.calendar_today_outlined,
+                  label: '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}',
+                ),
+                _Dot(color: colors.textHint),
+                _InfoItem(icon: Icons.access_time_rounded, label: timeLabel(match.kickoff!)),
+              ] else
+                const _InfoItem(icon: Icons.calendar_today_outlined, label: 'Data a confirmar'),
               if (match.stadium.isNotEmpty) ...[
                 _Dot(color: colors.textHint),
                 _InfoItem(icon: Icons.location_on_outlined, label: match.stadium),

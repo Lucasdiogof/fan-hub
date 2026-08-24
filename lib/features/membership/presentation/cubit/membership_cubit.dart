@@ -50,8 +50,11 @@ class MembershipCubit extends Cubit<MembershipState> {
     final membership = (membershipResult as Success<Membership?>).data;
     final plans = (plansResult as Success<List<MembershipPlan>>).data;
     final user = (userResult as Success<AppUser>).data;
+    // Sem horário confirmado (kickoff == null) conta como "ainda por vir".
     final nextMatch = switch (snapshotResult) {
-      Success(:final data) when data.nextMatch != null && DateTime.now().isBefore(data.nextMatch!.kickoff) =>
+      Success(:final data)
+          when data.nextMatch != null &&
+              (data.nextMatch!.kickoff == null || DateTime.now().isBefore(data.nextMatch!.kickoff!)) =>
         data.nextMatch,
       _ => null,
     };

@@ -14,9 +14,17 @@ class MatchOrdering {
   static bool isOpen(Match match) => _openStatuses.contains(match.status);
 
   /// Ordem cronológica ascendente — nunca confia na ordem que o provedor
-  /// devolveu.
+  /// devolveu. Partidas sem horário confirmado (`kickoff == null`) vão pro
+  /// final, não pro início.
   static List<Match> chronological(List<Match> matches) {
-    final sorted = [...matches]..sort((a, b) => a.kickoff.compareTo(b.kickoff));
+    final sorted = [...matches]..sort((a, b) {
+      final kickoffA = a.kickoff;
+      final kickoffB = b.kickoff;
+      if (kickoffA == null && kickoffB == null) return 0;
+      if (kickoffA == null) return 1;
+      if (kickoffB == null) return -1;
+      return kickoffA.compareTo(kickoffB);
+    });
     return sorted;
   }
 }

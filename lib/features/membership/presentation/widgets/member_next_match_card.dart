@@ -51,7 +51,9 @@ class MemberNextMatchCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            '${shortDateLabel(match.kickoff)} • ${timeLabel(match.kickoff)}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}',
+            match.kickoff != null
+                ? '${shortDateLabel(match.kickoff!)} • ${timeLabel(match.kickoff!)}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}'
+                : 'Data a confirmar${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}',
             style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
           ),
           const SizedBox(height: AppSpacing.sm),
