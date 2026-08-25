@@ -2,17 +2,22 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:goias_app/features/arena/games/keepy_uppy/pages/keepy_uppy_game_page.dart';
 import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
+import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/pages/career_path_page.dart';
 import 'package:goias_app/features/arena/games/guess_player/pages/guess_player_page.dart';
+import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_page.dart';
+import 'package:goias_app/features/arena/games/quiz/cubit/quiz_cubit.dart';
+import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_result_page.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
+import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/presentation/pages/arena_ranking_page.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/auth/presentation/pages/check_your_email_page.dart';
@@ -20,8 +25,10 @@ import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/presentation/pages/find_zip_code_page.dart';
@@ -30,14 +37,19 @@ import 'package:goias_app/features/membership/presentation/pages/membership_plan
 import 'package:goias_app/features/membership/presentation/pages/membership_plans_catalog_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_regulation_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_registration_page.dart';
+import 'package:goias_app/features/news/domain/entities/news_article.dart';
+import 'package:goias_app/features/news/presentation/pages/news_article_page.dart';
+import 'package:goias_app/features/news/presentation/pages/news_list_page.dart';
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
+import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/pages/address_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/personal_data_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/security_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/theme_settings_page.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
+import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/squad/presentation/pages/squad_list_page.dart';
 import 'package:goias_app/features/squad/presentation/pages/squad_member_detail_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/my_orders_page.dart';
@@ -99,13 +111,17 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       GoRoute(path: '/', builder: (context, state) => const HomeShellPage()),
       GoRoute(
         path: '/match/:fixtureId',
-        builder: (context, state) =>
-            MatchDetailsPage(fixtureId: state.pathParameters['fixtureId']!),
+        builder: (context, state) => MatchDetailsPage(
+          fixtureId: state.pathParameters['fixtureId']!,
+          cubit: state.extra as MatchDetailsCubit?,
+        ),
       ),
       GoRoute(
         path: '/crowd-lineup',
-        builder: (context, state) =>
-            CrowdLineupPage(match: state.extra! as Match),
+        builder: (context, state) {
+          final args = state.extra! as ({Match match, CrowdLineupCubit cubit});
+          return CrowdLineupPage(match: args.match, cubit: args.cubit);
+        },
       ),
       GoRoute(
         path: '/profile',
@@ -113,7 +129,8 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       ),
       GoRoute(
         path: '/squad',
-        builder: (context, state) => const SquadListPage(),
+        builder: (context, state) =>
+            SquadListPage(cubit: state.extra as SquadCubit?),
       ),
       GoRoute(
         path: '/squad/:memberId',
@@ -138,7 +155,8 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       ),
       GoRoute(
         path: '/profile/address',
-        builder: (context, state) => const AddressPage(),
+        builder: (context, state) =>
+            AddressPage(cubit: state.extra as AddressCubit?),
       ),
       GoRoute(
         path: '/profile/security',
@@ -168,21 +186,32 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
             PenaltyResultPage(data: state.extra! as PenaltyEndData),
       ),
       GoRoute(
-        path: '/arena/keepy-uppy',
-        builder: (context, state) => const KeepyUppyGamePage(),
+        path: '/arena/ranking',
+        builder: (context, state) => ArenaRankingPage(
+          initialEntries: state.extra as List<ArenaLeaderboardEntry>?,
+        ),
       ),
       GoRoute(
         path: '/arena/quiz',
-        builder: (context, state) => const QuizLevelPage(),
+        builder: (context, state) => QuizLevelPage(
+          initialSummaries:
+              state.extra as Map<QuizDifficulty, QuizLevelSummary>?,
+        ),
       ),
       GoRoute(
         path: '/arena/quiz/play',
         builder: (context, state) {
           final args =
-              state.extra! as ({QuizDifficulty difficulty, bool isReview});
+              state.extra!
+                  as ({
+                    QuizDifficulty difficulty,
+                    bool isReview,
+                    QuizCubit? cubit,
+                  });
           return QuizPlayPage(
             difficulty: args.difficulty,
             isReview: args.isReview,
+            cubit: args.cubit,
           );
         },
       ),
@@ -193,11 +222,13 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       ),
       GoRoute(
         path: '/arena/lineup',
-        builder: (context, state) => const LineupPage(),
+        builder: (context, state) =>
+            LineupPage(cubit: state.extra as LineupCubit?),
       ),
       GoRoute(
         path: '/arena/career-path',
-        builder: (context, state) => const CareerPathPage(),
+        builder: (context, state) =>
+            CareerPathPage(cubit: state.extra as CareerPathCubit?),
       ),
       GoRoute(
         path: '/arena/guess-player',
@@ -206,6 +237,12 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       GoRoute(
         path: '/partners',
         builder: (context, state) => const PartnersPage(),
+      ),
+      GoRoute(path: '/news', builder: (context, state) => const NewsListPage()),
+      GoRoute(
+        path: '/news/article',
+        builder: (context, state) =>
+            NewsArticlePage(article: state.extra! as NewsArticle),
       ),
       GoRoute(
         path: '/membership/plans',

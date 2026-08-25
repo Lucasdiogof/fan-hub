@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
+import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
-import 'package:goias_app/features/arena/games/career_path/career_path_storage.dart';
+import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_storage.dart';
-import 'package:goias_app/features/arena/games/lineup/lineup_storage.dart';
+import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
+import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
@@ -32,8 +34,10 @@ import 'package:goias_app/features/membership/data/viacep_data_source.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_cubit.dart';
-import 'package:goias_app/features/news/data/mock_news_repository.dart';
+import 'package:goias_app/features/news/data/datasources/news_remote_data_source.dart';
+import 'package:goias_app/features/news/data/repositories/news_repository_impl.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
+import 'package:goias_app/features/news/presentation/cubit/news_cubit.dart';
 import 'package:goias_app/features/profile/data/mock_user_repository.dart';
 import 'package:goias_app/features/profile/domain/repositories/user_repository.dart';
 import 'package:goias_app/features/social/data/datasources/social_remote_data_source.dart';
@@ -53,7 +57,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final GetIt sl = GetIt.instance;
 
 void setupDependencies() {
-  sl.registerLazySingleton<NewsRepository>(MockNewsRepository.new);
   sl.registerLazySingleton<TicketRepository>(EmptyTicketRepository.new);
   sl.registerLazySingleton<MembershipRepository>(MockMembershipRepository.new);
   sl.registerLazySingleton<MembershipFaqDataSource>(
@@ -83,6 +86,11 @@ void setupDependencies() {
     () => SocialFeedRepositoryImpl(sl()),
   );
 
+  sl.registerLazySingleton<NewsRemoteDataSource>(
+    () => NewsRemoteDataSource(sl()),
+  );
+  sl.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(sl()));
+
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSource(Supabase.instance.client),
   );
@@ -94,9 +102,15 @@ void setupDependencies() {
   );
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
   sl.registerLazySingleton<SplashGate>(SplashGate.new);
-  sl.registerLazySingleton<ArenaScores>(ArenaScores.new);
-  sl.registerLazySingleton<LineupStorage>(LineupStorage.new);
-  sl.registerLazySingleton<CareerPathStorage>(CareerPathStorage.new);
+  sl.registerLazySingleton<ArenaScores>(
+    () => ArenaScores(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<SupabaseLineupStorage>(
+    () => SupabaseLineupStorage(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<SupabaseCareerPathStorage>(
+    () => SupabaseCareerPathStorage(Supabase.instance.client),
+  );
   sl.registerLazySingleton<GuessPlayerStorage>(GuessPlayerStorage.new);
   sl.registerLazySingleton<CrowdLineupRepository>(
     () => SupabaseCrowdLineupRepository(Supabase.instance.client),
@@ -105,11 +119,30 @@ void setupDependencies() {
   sl.registerLazySingleton<SquadRepository>(
     () => SupabaseSquadRepository(Supabase.instance.client),
   );
+  sl.registerLazySingleton<QuizQuestionRepository>(
+    () => QuizQuestionRepository(Supabase.instance.client),
+  );
   sl.registerLazySingleton<QuizProgressRepository>(
     () => QuizProgressRepository(Supabase.instance.client),
   );
+  sl.registerLazySingleton<ArenaProgressRepository>(
+    () => ArenaProgressRepository(
+      client: Supabase.instance.client,
+      quizQuestionRepository: sl(),
+      quizProgressRepository: sl(),
+      lineupStorage: sl(),
+      careerPathStorage: sl(),
+      guessPlayerStorage: sl(),
+    ),
+  );
 
-  sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl()));
+  // Singleton (não factory) — a Splash resolve/pré-carrega esse mesmo
+  // Cubit por trás do vídeo antes de navegar (ver `splash_video_page.dart`),
+  // então a Home precisa reaproveitar a MESMA instância, já carregada.
+  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl(), sl(), sl()));
+  // Singleton — o preview da Home e a tela completa de Notícias
+  // compartilham a mesma lista já carregada (ver `NewsCubit`).
+  sl.registerLazySingleton<NewsCubit>(() => NewsCubit(sl()));
   sl.registerFactory<SquadCubit>(() => SquadCubit(sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));

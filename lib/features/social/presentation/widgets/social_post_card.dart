@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/social/domain/entities/social_post.dart';
-import 'package:goias_app/features/social/presentation/widgets/social_time_label.dart';
+import 'package:goias_app/shared/widgets/relative_time_label.dart';
 
 class SocialPostCard extends StatelessWidget {
   const SocialPostCard({required this.post, required this.onTap, super.key});
@@ -59,7 +59,11 @@ class _YouTubeCard extends StatelessWidget {
                           color: Colors.black.withValues(alpha: 0.6),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 30),
+                        child: const Icon(
+                          Icons.play_arrow_rounded,
+                          color: Colors.white,
+                          size: 30,
+                        ),
                       ),
                     ),
                   ],
@@ -93,8 +97,12 @@ class _YouTubeCard extends StatelessWidget {
   }
 
   static String _formatViews(int views) {
-    if (views >= 1000000) return '${(views / 1000000).toStringAsFixed(1)}M visualizações';
-    if (views >= 1000) return '${(views / 1000).toStringAsFixed(0)}K visualizações';
+    if (views >= 1000000) {
+      return '${(views / 1000000).toStringAsFixed(1)}M visualizações';
+    }
+    if (views >= 1000) {
+      return '${(views / 1000).toStringAsFixed(0)}K visualizações';
+    }
     return '$views visualizações';
   }
 }
@@ -126,7 +134,11 @@ class _InstagramCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppRadius.cardSmall),
               child: Stack(
                 children: [
-                  Image.network(post.imageUrl!, fit: BoxFit.cover, width: double.infinity),
+                  Image.network(
+                    post.imageUrl!,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
                   if (post.mediaType == SocialMediaType.video)
                     const Positioned(
                       top: AppSpacing.sm,
@@ -149,7 +161,11 @@ class _InstagramCard extends StatelessWidget {
               post.text!,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 13, color: colors.textPrimary, height: 1.4),
+              style: TextStyle(
+                fontSize: 13,
+                color: colors.textPrimary,
+                height: 1.4,
+              ),
             ),
           ],
         ],
@@ -183,14 +199,22 @@ class _XCard extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             Text(
               post.text!,
-              style: TextStyle(fontSize: 14, color: colors.textPrimary, height: 1.45),
+              style: TextStyle(
+                fontSize: 14,
+                color: colors.textPrimary,
+                height: 1.45,
+              ),
             ),
           ],
           if (post.imageUrl != null) ...[
             const SizedBox(height: AppSpacing.md),
             ClipRRect(
               borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-              child: Image.network(post.imageUrl!, fit: BoxFit.cover, width: double.infinity),
+              child: Image.network(
+                post.imageUrl!,
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
             ),
           ],
         ],
@@ -266,7 +290,7 @@ class _PlatformHeader extends StatelessWidget {
             style: TextStyle(fontSize: 11, color: colors.textSecondary),
           ),
         ),
-        SocialTimeLabel(publishedAt: publishedAt),
+        RelativeTimeLabel(dateTime: publishedAt),
       ],
     );
   }

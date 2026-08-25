@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 
-class SocialTimeLabel extends StatelessWidget {
-  const SocialTimeLabel({required this.publishedAt, super.key});
+class RelativeTimeLabel extends StatelessWidget {
+  const RelativeTimeLabel({required this.dateTime, this.style, super.key});
 
-  final DateTime publishedAt;
+  final DateTime dateTime;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Text(
-      _relativeTime(publishedAt),
-      style: TextStyle(fontSize: 11, color: colors.textHint),
+      _relativeTime(dateTime),
+      style: style ?? TextStyle(fontSize: 11, color: colors.textHint),
     );
   }
 

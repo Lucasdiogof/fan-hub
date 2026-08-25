@@ -5,8 +5,11 @@ import { handleGoiasTeam } from './football/team';
 import { handleFixtureDetails } from './football/fixtureDetails';
 import { handleDiscover } from './football/discover';
 import { handleSocialFeed } from './social/feed';
+import { handleNewsList } from './news/list';
+import { handleNewsArticle } from './news/article';
 
 const FIXTURE_DETAILS_PATTERN = /^\/api\/football\/fixtures\/([^/]+)\/?$/;
+const NEWS_ARTICLE_PATTERN = /^\/api\/news\/([^/]+)\/?$/;
 
 export default {
   async fetch(request: Request, env: SocialEnv): Promise<Response> {
@@ -36,6 +39,15 @@ export default {
 
     if (pathname === '/api/social/feed') {
       return handleSocialFeed(request, env);
+    }
+
+    if (pathname === '/api/news') {
+      return handleNewsList(request, env);
+    }
+
+    const newsArticleMatch = pathname.match(NEWS_ARTICLE_PATTERN);
+    if (newsArticleMatch) {
+      return handleNewsArticle(request, env, decodeURIComponent(newsArticleMatch[1]));
     }
 
     return env.ASSETS.fetch(request);

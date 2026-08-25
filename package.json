@@ -3,13 +3,16 @@
   "private": true,
   "description": "Cloudflare Worker — serve o Flutter Web e faz proxy server-side pra dados esportivos (campeonato-brasileiro-api + TheSportsDB).",
   "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "^0.22.0",
     "@cloudflare/workers-types": "^5.20250101.0",
     "typescript": "^7.0.2",
+    "vitest": "^4.1.11",
     "wrangler": "^4.0.0"
   },
   "scripts": {
     "dev:worker": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "test:worker": "vitest run"
   },
   "dependencies": {
     "campeonato-brasileiro-api": "^2.0.1"

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
-import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/profile/domain/entities/app_user.dart';
 
 /// Fonte central de dados mockados do app. Os repositórios mock leem daqui
@@ -168,80 +167,6 @@ class MockData {
         status: MatchStatus.finished,
         homeScore: 1,
         awayScore: 1,
-      ),
-    ];
-  }
-
-  static List<NewsArticle> get news {
-    final now = _now;
-    return [
-      NewsArticle(
-        id: 'n-1',
-        title: 'Goiás se prepara para enfrentar o Athletico-PR na Serrinha',
-        category: NewsCategory.futebol,
-        summary: 'Equipe esmeraldina treina forte durante a semana visando os três pontos em casa.',
-        body:
-            'O Goiás realizou mais uma atividade na Serrinha nesta semana, de olho no confronto direto '
-            'contra o Athletico-PR pela Série B. O técnico esmeraldino testou variações táticas e deve '
-            'definir a escalação apenas na véspera da partida.',
-        publishedAt: now.subtract(const Duration(hours: 3)),
-        coverColor: const Color(0xFF0C7C42),
-      ),
-      NewsArticle(
-        id: 'n-2',
-        title: 'Sócio Esmeralda ultrapassa marca de 30 mil associados',
-        category: NewsCategory.clube,
-        summary: 'Programa de sócio-torcedor segue em crescimento e amplia benefícios para 2026.',
-        body:
-            'O programa Sócio Esmeralda atingiu um novo recorde de associados nesta temporada. A diretoria '
-            'destacou os investimentos em novos benefícios, incluindo prioridade na compra de ingressos e '
-            'descontos exclusivos em parceiros do clube.',
-        publishedAt: now.subtract(const Duration(hours: 9)),
-        coverColor: const Color(0xFFC79A3D),
-      ),
-      NewsArticle(
-        id: 'n-3',
-        title: 'Sub-20 do Goiás avança de fase no Campeonato Brasileiro',
-        category: NewsCategory.base,
-        summary: 'Categoria de base vence nos pênaltis e segue viva na competição nacional.',
-        body:
-            'A equipe sub-20 do Goiás garantiu classificação após vitória nos pênaltis. A base esmeraldina '
-            'segue como uma das principais referências de formação de jogadores do Centro-Oeste.',
-        publishedAt: now.subtract(const Duration(days: 1, hours: 2)),
-        coverColor: const Color(0xFF1F6F4A),
-      ),
-      NewsArticle(
-        id: 'n-4',
-        title: 'Goiás feminino estreia com vitória no Brasileirão',
-        category: NewsCategory.feminino,
-        summary: 'Equipe feminina venceu por 3 a 1 na estreia da competição nacional.',
-        body:
-            'O time feminino do Goiás fez uma boa estreia no Brasileirão, com atuação de gala e três gols '
-            'marcados no segundo tempo. A comissão técnica avalia o início de temporada como positivo.',
-        publishedAt: now.subtract(const Duration(days: 2, hours: 5)),
-        coverColor: const Color(0xFF0C7C42),
-      ),
-      NewsArticle(
-        id: 'n-5',
-        title: 'Reforço esmeraldino é apresentado à torcida',
-        category: NewsCategory.futebol,
-        summary: 'Novo contratado falou sobre expectativas para a sequência da temporada.',
-        body:
-            'O mais novo reforço do Goiás foi apresentado oficialmente e já treina com o restante do elenco. '
-            'Em entrevista, o atleta comentou sobre a expectativa de estrear diante da torcida na Serrinha.',
-        publishedAt: now.subtract(const Duration(days: 3, hours: 4)),
-        coverColor: const Color(0xFF12161A),
-      ),
-      NewsArticle(
-        id: 'n-6',
-        title: 'Clube divulga calendário de jogos em casa para o próximo mês',
-        category: NewsCategory.clube,
-        summary: 'Confira as datas confirmadas dos próximos confrontos na Serrinha.',
-        body:
-            'O Goiás divulgou o calendário atualizado com os próximos jogos em casa. A expectativa é de boa '
-            'presença de público, especialmente entre os sócios do programa Esmeralda.',
-        publishedAt: now.subtract(const Duration(days: 4, hours: 1)),
-        coverColor: const Color(0xFF5B6470),
       ),
     ];
   }

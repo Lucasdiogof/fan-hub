@@ -12,6 +12,7 @@ import 'package:goias_app/features/social/presentation/widgets/social_post_card.
 import 'package:goias_app/features/social/presentation/widgets/social_skeleton_card.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
+import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 class SocialFeedPage extends StatelessWidget {
@@ -42,18 +43,26 @@ class _SocialFeedView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _Header(),
                       const SizedBox(height: AppSpacing.lg),
                       BlocBuilder<SocialFeedCubit, SocialFeedState>(
-                        buildWhen: (p, c) => p.selectedPlatform != c.selectedPlatform,
+                        buildWhen: (p, c) =>
+                            p.selectedPlatform != c.selectedPlatform,
                         builder: (context, state) {
                           return SocialPlatformFilter(
                             selected: state.selectedPlatform,
-                            onChanged: context.read<SocialFeedCubit>().selectPlatform,
+                            onChanged: context
+                                .read<SocialFeedCubit>()
+                                .selectPlatform,
                           );
                         },
                       ),
@@ -78,23 +87,11 @@ class _Header extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'MÍDIA',
-          style: TextStyle(
-            fontSize: 11,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1,
-            color: colors.textHint,
-          ),
-        ),
-        const SizedBox(height: 2),
+        const PageTitle('MÍDIA'),
+        const SizedBox(height: 4),
         Text(
           'Goiás na Rede',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w800,
-            color: colors.textPrimary,
-          ),
+          style: TextStyle(fontSize: 14, color: colors.textSecondary),
         ),
       ],
     );
@@ -134,7 +131,10 @@ Widget _centered(Widget child) {
   return ListView(
     physics: const AlwaysScrollableScrollPhysics(),
     children: [
-      Padding(padding: const EdgeInsets.only(top: 80), child: Center(child: child)),
+      Padding(
+        padding: const EdgeInsets.only(top: 80),
+        child: Center(child: child),
+      ),
     ],
   );
 }
@@ -144,7 +144,12 @@ class _SkeletonList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(),
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xxxl),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        0,
+        AppSpacing.lg,
+        AppSpacing.xxxl,
+      ),
       children: const [
         SocialSkeletonCard(),
         SizedBox(height: AppSpacing.md),
@@ -165,12 +170,20 @@ class _PostsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       physics: const AlwaysScrollableScrollPhysics(),
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xxxl),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        0,
+        AppSpacing.lg,
+        AppSpacing.xxxl,
+      ),
       itemCount: posts.length,
       separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
       itemBuilder: (context, index) {
         final post = posts[index];
-        return SocialPostCard(post: post, onTap: () => openExternalUrl(context, post.permalink));
+        return SocialPostCard(
+          post: post,
+          onTap: () => openExternalUrl(context, post.permalink),
+        );
       },
     );
   }
