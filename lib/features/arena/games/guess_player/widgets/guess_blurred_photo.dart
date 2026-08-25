@@ -39,6 +39,14 @@ class _GuessBlurredPhotoState extends State<GuessBlurredPhoto>
   @override
   void didUpdateWidget(GuessBlurredPhoto oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.imageUrl != widget.imageUrl) {
+      // Foto de outro jogador — pula direto pro sigma novo (sem tween a
+      // partir do valor baixo/revelado do jogador anterior, senão dá pra
+      // ver o rosto do próximo por um instante antes do blur "alcançar").
+      _controller.stop();
+      _sigmaAnimation = AlwaysStoppedAnimation(widget.sigma);
+      return;
+    }
     if (oldWidget.sigma != widget.sigma) {
       _sigmaAnimation =
           Tween<double>(
