@@ -59,7 +59,9 @@ class AppColors extends ThemeExtension<AppColors> {
     textSecondary: Color(0xFF5E6963),
     textHint: Color(0xFF98A19C),
     border: Color(0xFFE0E6E3),
-    error: Color(0xFFD64545),
+    // Nunca vermelho em nenhum componente do app — âmbar/dourado (mesmo
+    // tom do token `gold`) representa erro/falha em toda a UI.
+    error: Color(0xFFC79A3D),
     success: Color(0xFF278A52),
   );
 
@@ -78,7 +80,7 @@ class AppColors extends ThemeExtension<AppColors> {
     textSecondary: Color(0xFFAAB5AF),
     textHint: Color(0xFF707B75),
     border: Color(0xFF26342B),
-    error: Color(0xFFFF6B6B),
+    error: Color(0xFFD9B25C),
     success: Color(0xFF4CC37A),
   );
 
