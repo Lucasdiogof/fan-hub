@@ -5,6 +5,7 @@ import { withErrorHandling } from './_lib/handleErrors';
 import { ProviderError } from './_lib/providerError';
 import { fetchMatchDetail } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchScore } from './normalize/match';
+import { normalizeOneFootballMatchEvent } from './normalize/match_event';
 
 const CACHE_TTL_SECONDS = 30 * 60;
 const COMPETITION_NAME = 'Brasileirão Série B';
@@ -32,6 +33,7 @@ async function handleOneFootballFixture(request: Request, cacheVersion: string, 
     return {
       competition: { name: COMPETITION_NAME, season: null },
       match: normalizeOneFootballMatchScore(matchId, detail.score, detail.stadium),
+      events: detail.events.map(normalizeOneFootballMatchEvent),
     };
   });
 }

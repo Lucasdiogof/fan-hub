@@ -21,7 +21,13 @@ class MatchDetailsCubit extends Cubit<MatchDetailsState> {
     final result = await _repository.getMatchDetails(fixtureId);
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(status: LoadStatus.success, match: data));
+        emit(
+          state.copyWith(
+            status: LoadStatus.success,
+            match: data.match,
+            events: data.events,
+          ),
+        );
       case Error(:final failure):
         emit(
           state.copyWith(

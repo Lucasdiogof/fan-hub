@@ -5,10 +5,12 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_state.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_events_timeline.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -73,8 +75,10 @@ class _MatchDetailsView extends StatelessWidget {
                     errorMessage: state.errorMessage,
                     emptyIcon: Icons.sports_soccer_outlined,
                     emptyTitle: 'Não foi possível carregar a partida.',
-                    successBuilder: (context) =>
-                        _MatchDetailsContent(match: state.match!),
+                    successBuilder: (context) => _MatchDetailsContent(
+                      match: state.match!,
+                      events: state.events,
+                    ),
                   );
                 },
               ),
@@ -116,9 +120,10 @@ class _BackButton extends StatelessWidget {
 }
 
 class _MatchDetailsContent extends StatelessWidget {
-  const _MatchDetailsContent({required this.match});
+  const _MatchDetailsContent({required this.match, required this.events});
 
   final Match match;
+  final List<MatchEvent> events;
 
   @override
   Widget build(BuildContext context) {
@@ -159,13 +164,7 @@ class _MatchDetailsContent extends StatelessWidget {
             Expanded(child: _TeamBlock(team: match.homeTeam)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-              child: Text(
-                'X',
-                style: TextStyle(
-                  color: colors.textHint,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
+              child: _ScoreOrVs(match: match),
             ),
             Expanded(child: _TeamBlock(team: match.awayTeam)),
           ],
@@ -264,7 +263,35 @@ class _MatchDetailsContent extends StatelessWidget {
             ],
           ),
         ),
+        MatchEventsTimeline(match: match, events: events),
       ],
+    );
+  }
+}
+
+class _ScoreOrVs extends StatelessWidget {
+  const _ScoreOrVs({required this.match});
+
+  final Match match;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final homeScore = match.homeScore;
+    final awayScore = match.awayScore;
+    if (homeScore == null || awayScore == null) {
+      return Text(
+        'X',
+        style: TextStyle(color: colors.textHint, fontWeight: FontWeight.w800),
+      );
+    }
+    return Text(
+      '$homeScore x $awayScore',
+      style: TextStyle(
+        color: colors.textPrimary,
+        fontWeight: FontWeight.w900,
+        fontSize: 22,
+      ),
     );
   }
 }

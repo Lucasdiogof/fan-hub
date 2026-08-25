@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:goias_app/features/match/data/dto/competition_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_dto.dart';
+import 'package:goias_app/features/match/data/dto/match_event_dto.dart';
 import 'package:goias_app/features/match/data/dto/standing_dto.dart';
 
 /// Só sabe conversar com o nosso backend interno (`/api/football/*`) —
@@ -68,9 +69,10 @@ class FootballRemoteDataSource {
     );
   }
 
-  Future<({CompetitionDto competition, MatchDto match})> getFixtureDetails(
-    String fixtureId,
-  ) async {
+  Future<
+    ({CompetitionDto competition, MatchDto match, List<MatchEventDto> events})
+  >
+  getFixtureDetails(String fixtureId) async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/football/fixtures/$fixtureId',
     );
@@ -80,6 +82,9 @@ class FootballRemoteDataSource {
         data['competition'] as Map<String, dynamic>,
       ),
       match: MatchDto.fromJson(data['match'] as Map<String, dynamic>),
+      events: ((data['events'] as List?) ?? [])
+          .map((e) => MatchEventDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 }

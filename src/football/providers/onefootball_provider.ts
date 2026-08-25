@@ -36,9 +36,19 @@ interface OneFootballMatchInfoEntry {
   subtitle?: string;
 }
 
+export interface OneFootballMatchEvent {
+  teamSide?: string;
+  name: string;
+  timeline: string;
+  goal?: { type?: string; scorer?: { name: string } };
+  card?: { player?: { name: string } };
+  substitution?: { playerIn?: { name: string }; playerOut?: { name: string } };
+}
+
 export interface OneFootballMatchDetail {
   score: OneFootballMatchScore;
   stadium: string | null;
+  events: OneFootballMatchEvent[];
 }
 
 export interface OneFootballStandingRow {
@@ -158,7 +168,11 @@ export async function fetchCompetitionStandings(competitionSlug: string): Promis
   }
 }
 
-/** `matchInfo.entries` traz um item com `title: "Estádio"` quando o dado existe — nem toda partida tem. */
+/**
+ * `matchInfo.entries` traz um item com `title: "Estádio"` quando o dado
+ * existe (nem toda partida tem) — e o mesmo payload já traz
+ * `matchEvents.events` (gols/cartões/substituições), sem requisição extra.
+ */
 export async function fetchMatchDetail(matchId: string): Promise<OneFootballMatchDetail | null> {
   try {
     const containers = await getContainers(`match/${matchId}`);
@@ -166,7 +180,8 @@ export async function fetchMatchDetail(matchId: string): Promise<OneFootballMatc
     if (!score) return null;
     const matchInfo = findNode<{ entries: OneFootballMatchInfoEntry[] }>(containers, 'matchInfo');
     const stadiumEntry = matchInfo?.entries.find((entry) => entry.title === 'Estádio');
-    return { score, stadium: stadiumEntry?.subtitle ?? null };
+    const matchEvents = findNode<{ events: OneFootballMatchEvent[] }>(containers, 'matchEvents');
+    return { score, stadium: stadiumEntry?.subtitle ?? null, events: matchEvents?.events ?? [] };
   } catch (err) {
     if (err instanceof ProviderError) throw err;
     throw new ProviderError(
