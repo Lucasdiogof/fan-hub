@@ -34,4 +34,12 @@ describe('normalizeStandingEntry', () => {
   it('always sets form to null (OneFootball\'s table has no recent-results string)', () => {
     expect(normalizeStandingEntry(goiasRow, 1863).form).toBeNull();
   });
+
+  it('defaults any missing numeric field to 0 instead of leaking undefined — seen in production for one team', () => {
+    const rowMissingGoalsDiff = { ...goiasRow };
+    // @ts-expect-error simulating a field OneFootball actually omitted in production
+    delete rowMissingGoalsDiff.goalsDiff;
+    const entry = normalizeStandingEntry(rowMissingGoalsDiff, 1863);
+    expect(entry.goalDifference).toBe(0);
+  });
 });

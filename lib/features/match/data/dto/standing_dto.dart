@@ -26,16 +26,20 @@ class StandingDto {
   final int goalDifference;
   final String? form;
 
+  /// Números vêm com `?? 0` — o backend já defende contra isso, mas a fonte
+  /// (OneFootball) já mostrou na prática que pode faltar um campo numérico
+  /// pontualmente numa linha; melhor mostrar 0 do que derrubar a lista
+  /// inteira por causa de um time.
   factory StandingDto.fromJson(Map<String, dynamic> json) => StandingDto(
-    position: json['position'] as int,
+    position: json['position'] as int? ?? 0,
     team: TeamDto.fromJson(json['team'] as Map<String, dynamic>),
     isGoias: json['isGoias'] as bool? ?? false,
-    points: json['points'] as int,
-    played: json['played'] as int,
-    wins: json['wins'] as int,
-    draws: json['draws'] as int,
-    losses: json['losses'] as int,
-    goalDifference: json['goalDifference'] as int,
+    points: json['points'] as int? ?? 0,
+    played: json['played'] as int? ?? 0,
+    wins: json['wins'] as int? ?? 0,
+    draws: json['draws'] as int? ?? 0,
+    losses: json['losses'] as int? ?? 0,
+    goalDifference: json['goalDifference'] as int? ?? 0,
     form: json['form'] as String?,
   );
 
