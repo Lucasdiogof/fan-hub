@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/match/domain/entities/match.dart';
-import 'package:goias_app/features/match/domain/entities/team.dart';
-import 'package:goias_app/shared/utils/date_labels.dart';
 
 /// Card da Home que leva pra "Escalação da Torcida" — só aparece quando há
 /// próximo jogo (ver `HomePage`, que já só renderiza isto dentro de um
 /// `if (state.nextMatch != null)`). Fica logo abaixo do hero do próximo
 /// jogo, propositalmente "claro" (fundo `colors.surface`) pra não competir
-/// com aquele card escuro — parecido em estrutura com o `MembershipBanner`
-/// logo abaixo dele na Home.
+/// com aquele card escuro.
+///
+/// Não repete adversário/data/horário/campeonato — isso já está no card de
+/// Próximo Jogo logo acima. O foco aqui é só a funcionalidade em si, com
+/// dois estados conforme [hasVoted] (resolvido pelo `HomeCubit` por
+/// `matchId`, nunca um booleano global — ver `home_cubit.dart`).
 class CrowdLineupHomeCard extends StatelessWidget {
   const CrowdLineupHomeCard({
-    required this.match,
+    required this.hasVoted,
     required this.onTap,
     super.key,
   });
 
-  final Match match;
+  final bool hasVoted;
   final VoidCallback onTap;
-
-  Team get _opponent {
-    final home = match.homeTeam.name.toLowerCase();
-    return home.contains('goi') ? match.awayTeam : match.homeTeam;
-  }
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final kickoff = match.kickoff;
-    final whenLabel = kickoff != null
-        ? '${shortDateLabel(kickoff)} · ${weekdayShortLabel(kickoff)} · ${timeLabel(kickoff)}'
-        : 'Data a confirmar';
+    final title = hasVoted
+        ? 'Escalação da Torcida'
+        : 'Monte a escalação da torcida';
+    final description = hasVoted
+        ? 'Veja como a torcida está escalando o Goiás para o próximo jogo.'
+        : 'Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.';
+    final ctaLabel = hasVoted ? 'VER ESCALAÇÃO DA TORCIDA' : 'ESCALAR AGORA';
 
     return Material(
       color: Colors.transparent,
@@ -51,39 +51,18 @@ class CrowdLineupHomeCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: colors.secondary,
-                      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-                    ),
-                    child: Icon(
-                      Icons.groups_2_rounded,
-                      color: colors.primary,
-                      size: 22,
-                    ),
-                  ),
-                  const SizedBox(width: AppSpacing.md),
-                  Expanded(
-                    child: Text(
-                      'Monte a escalação da torcida',
-                      style: TextStyle(
-                        color: colors.textPrimary,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w800,
-                        height: 1.2,
-                      ),
-                    ),
-                  ),
-                ],
+              Text(
+                title,
+                style: TextStyle(
+                  color: colors.textPrimary,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w800,
+                  height: 1.2,
+                ),
               ),
               const SizedBox(height: AppSpacing.sm),
               Text(
-                'Escale o Goiás para o próximo jogo e veja o time mais votado pela torcida.',
+                description,
                 style: TextStyle(
                   color: colors.textSecondary,
                   fontSize: 13,
@@ -91,47 +70,7 @@ class CrowdLineupHomeCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.md,
-                  vertical: AppSpacing.sm,
-                ),
-                decoration: BoxDecoration(
-                  color: colors.secondary,
-                  borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.sports_soccer_rounded,
-                      size: 15,
-                      color: colors.primary,
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        'vs ${_opponent.name} · $whenLabel',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: colors.primary,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              Text(
-                match.competition,
-                style: TextStyle(
-                  color: colors.textHint,
-                  fontSize: 11.5,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              const _TacticsBoardIllustration(),
               const SizedBox(height: AppSpacing.lg),
               SizedBox(
                 width: double.infinity,
@@ -146,11 +85,30 @@ class CrowdLineupHomeCard extends StatelessWidget {
                       letterSpacing: 0.3,
                     ),
                   ),
-                  child: const Text('ESCALAR AGORA'),
+                  child: Text(ctaLabel),
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _TacticsBoardIllustration extends StatelessWidget {
+  const _TacticsBoardIllustration();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 108,
+      width: double.infinity,
+      child: Center(
+        child: Image.asset(
+          AppAssets.tacticsBoardIllustration,
+          height: 108,
+          fit: BoxFit.contain,
         ),
       ),
     );

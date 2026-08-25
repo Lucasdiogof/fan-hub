@@ -14,10 +14,19 @@ import 'package:goias_app/features/crowd_lineup/presentation/widgets/player_pick
 import 'package:goias_app/shared/widgets/jersey_shirt.dart';
 
 class EscaleTab extends StatelessWidget {
-  const EscaleTab({required this.isHome, required this.onConfirm, super.key});
+  const EscaleTab({
+    required this.isHome,
+    required this.onConfirm,
+    required this.fieldKey,
+    super.key,
+  });
 
   final bool isHome;
   final Future<void> Function() onConfirm;
+
+  /// Dono é a página (`CrowdLineupPage`) — o botão de compartilhar mora no
+  /// cabeçalho, fora desta aba, e precisa alcançar o mesmo `RepaintBoundary`.
+  final GlobalKey fieldKey;
 
   @override
   Widget build(BuildContext context) {
@@ -40,15 +49,23 @@ class EscaleTab extends StatelessWidget {
                   AppSpacing.lg,
                   AppSpacing.md,
                 ),
-                child: LineupField(
-                  formation: state.formation,
-                  slotBuilder: (slotIndex, slot, avatarSize) => _Slot(
-                    state: state,
-                    slotIndex: slotIndex,
-                    slot: slot,
-                    avatarSize: avatarSize,
-                    isHome: isHome,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    RepaintBoundary(
+                      key: fieldKey,
+                      child: LineupField(
+                        formation: state.formation,
+                        slotBuilder: (slotIndex, slot, avatarSize) => _Slot(
+                          state: state,
+                          slotIndex: slotIndex,
+                          slot: slot,
+                          avatarSize: avatarSize,
+                          isHome: isHome,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -257,28 +274,18 @@ class _ActionBar extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Row(
-                  children: [
-                    Text(
-                      '${state.filledCount}/11 escalados',
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w700,
-                        color: colors.textSecondary,
+                if (state.filledCount > 0)
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton.icon(
+                      onPressed: cubit.clear,
+                      style: TextButton.styleFrom(
+                        foregroundColor: colors.textSecondary,
                       ),
+                      icon: const Icon(Icons.delete_sweep_outlined, size: 18),
+                      label: const Text('Limpar'),
                     ),
-                    const Spacer(),
-                    if (state.filledCount > 0)
-                      TextButton.icon(
-                        onPressed: cubit.clear,
-                        style: TextButton.styleFrom(
-                          foregroundColor: colors.textSecondary,
-                        ),
-                        icon: const Icon(Icons.delete_sweep_outlined, size: 18),
-                        label: const Text('Limpar'),
-                      ),
-                  ],
-                ),
+                  ),
                 const SizedBox(height: AppSpacing.xs),
                 SizedBox(
                   height: 52,

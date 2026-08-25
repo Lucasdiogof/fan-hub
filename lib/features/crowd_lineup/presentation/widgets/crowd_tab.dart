@@ -11,9 +11,13 @@ import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_fiel
 import 'package:goias_app/shared/widgets/jersey_shirt.dart';
 
 class CrowdTab extends StatelessWidget {
-  const CrowdTab({required this.isHome, super.key});
+  const CrowdTab({required this.isHome, required this.fieldKey, super.key});
 
   final bool isHome;
+
+  /// Dono é a página (`CrowdLineupPage`) — o botão de compartilhar mora no
+  /// cabeçalho, fora desta aba, e precisa alcançar o mesmo `RepaintBoundary`.
+  final GlobalKey fieldKey;
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +38,23 @@ class CrowdTab extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _Summary(crowd: crowd),
-              const SizedBox(height: AppSpacing.md),
-              LineupField(
-                formation: crowd.topFormation!,
-                slotBuilder: (slotIndex, slot, avatarSize) {
-                  final result = slotIndex < crowd.slots.length
-                      ? crowd.slots[slotIndex]
-                      : null;
-                  return _CrowdSlot(
-                    result: result,
-                    position: slot.position.short,
-                    avatarSize: avatarSize,
-                    isHome: isHome,
-                  );
-                },
+              const SizedBox(height: AppSpacing.sm),
+              RepaintBoundary(
+                key: fieldKey,
+                child: LineupField(
+                  formation: crowd.topFormation!,
+                  slotBuilder: (slotIndex, slot, avatarSize) {
+                    final result = slotIndex < crowd.slots.length
+                        ? crowd.slots[slotIndex]
+                        : null;
+                    return _CrowdSlot(
+                      result: result,
+                      position: slot.position.short,
+                      avatarSize: avatarSize,
+                      isHome: isHome,
+                    );
+                  },
+                ),
               ),
             ],
           ),

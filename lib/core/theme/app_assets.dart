@@ -12,4 +12,8 @@ class AppAssets {
   static const String? fans = null;
   static const String? featuredNewsCover = null;
   static const String? membershipBackground = null;
+
+  /// Ilustração de prancheta tática pro card "Escalação da Torcida" da Home.
+  static const String tacticsBoardIllustration =
+      'lib/assets/branding/tactics_board.png';
 }
