@@ -58,10 +58,12 @@ class KeepyUppyGame extends FlameGame {
   final Future<int> Function() loadBest;
   final Future<void> Function(KeepyUppyEndData data) saveBest;
 
-  final ValueNotifier<KeepyUppyHudData> hud =
-      ValueNotifier<KeepyUppyHudData>(const KeepyUppyHudData());
+  final ValueNotifier<KeepyUppyHudData> hud = ValueNotifier<KeepyUppyHudData>(
+    const KeepyUppyHudData(),
+  );
   final ValueNotifier<String?> countdown = ValueNotifier<String?>(null);
-  final ValueNotifier<KeepyUppyEndData?> ended = ValueNotifier<KeepyUppyEndData?>(null);
+  final ValueNotifier<KeepyUppyEndData?> ended =
+      ValueNotifier<KeepyUppyEndData?>(null);
 
   final Random _rng = Random();
 
@@ -97,17 +99,27 @@ class KeepyUppyGame extends FlameGame {
   // Jogador de perfil à esquerda, bola descendo na coluna à frente dele
   // (direita) — assim a bola nunca fica "colada" no corpo e o contato com o
   // pé da frente fica explícito.
-  double get _playerCenterX => size.x * 0.40;
-  double get _ballColumnX => size.x * 0.55;
+  double get _playerHeight => size.y * 0.62;
+  double get _playerWidth => _playerHeight * KeepyUppyPlayer.aspectRatio;
+  double get _playerCenterX => size.x * 0.42;
+  // A bola fica logo à frente do pé do jogador — o deslocamento é uma fração
+  // da LARGURA do jogador (derivada da altura), então bola e pé continuam
+  // juntos em qualquer proporção de tela, sem gap.
+  double get _ballColumnX => _playerCenterX + _playerWidth * 0.16;
   double get _playerFeetY => size.y * 0.80;
   double get _contactY => size.y * 0.56;
-  double get _ballRadius => size.x * 0.055;
+  // Amarrado à ALTURA (jogo é vertical) pra a bola ficar consistente em
+  // qualquer proporção de tela — antes usava a largura e ficava gigante no
+  // web e pequena no celular.
+  double get _ballRadius => size.y * 0.042;
   double get _groundY => size.y * 1.04;
 
   double get _difficulty => (min(_keepUps, 60) / 60).clamp(0.0, 1.0);
   double get _gravity => size.y * _lerp(2.0, 4.6, _difficulty);
   double get _apexHeight =>
-      size.y * _lerp(0.36, 0.32, _difficulty) * (0.97 + _rng.nextDouble() * 0.06);
+      size.y *
+      _lerp(0.36, 0.32, _difficulty) *
+      (0.97 + _rng.nextDouble() * 0.06);
   double get _band => size.y * _lerp(0.12, 0.055, _difficulty);
   double get _perfectBand => _band * _lerp(0.4, 0.26, _difficulty);
   double get _validTop => _contactY - _band * 0.5;
@@ -138,13 +150,12 @@ class KeepyUppyGame extends FlameGame {
   }
 
   void _layout() {
-    final playerH = size.y * 0.62;
     _player
-      ..size = Vector2(playerH * KeepyUppyPlayer.aspectRatio, playerH)
+      ..size = Vector2(_playerWidth, _playerHeight)
       ..position = Vector2(_playerCenterX, _playerFeetY);
     _target
       ..position = Vector2(_ballColumnX, _playerFeetY)
-      ..radius = size.x * 0.16;
+      ..radius = _ballRadius * 3.0;
     _shadow
       ..position = Vector2(_ballColumnX, _playerFeetY)
       ..baseWidth = _ballRadius * 3;
@@ -236,7 +247,8 @@ class KeepyUppyGame extends FlameGame {
   }
 
   void _updateReactiveTarget() {
-    _target.active = _velocityY > 0 &&
+    _target.active =
+        _velocityY > 0 &&
         _ball.position.y >= _validTop &&
         _ball.position.y <= _validBottom;
   }
@@ -290,7 +302,9 @@ class KeepyUppyGame extends FlameGame {
     _highPose = !_highPose;
     _spinSpeed = 2.2 + _difficulty * 2.4;
     _ball.position.x = _ballColumnX;
-    _player.pose = _highPose ? KeepyUppyPose.juggleHigh : KeepyUppyPose.juggleLow;
+    _player.pose = _highPose
+        ? KeepyUppyPose.juggleHigh
+        : KeepyUppyPose.juggleLow;
     _poseResetTimer = 0.24;
 
     _spawnFeedback(perfect: perfect);
@@ -299,13 +313,15 @@ class KeepyUppyGame extends FlameGame {
 
   void _spawnFeedback({required bool perfect}) {
     final pos = Vector2(_ball.position.x + size.x * 0.12, _ball.position.y);
-    add(KeepyUppyFeedback(
-      position: pos,
-      title: perfect ? 'PERFEITO' : 'BOA',
-      subtitle: perfect ? '+2' : null,
-      color: perfect ? const Color(0xFF3DDC84) : Colors.white,
-      big: perfect,
-    ));
+    add(
+      KeepyUppyFeedback(
+        position: pos,
+        title: perfect ? 'PERFEITO' : 'BOA',
+        subtitle: perfect ? '+2' : null,
+        color: perfect ? const Color(0xFF3DDC84) : Colors.white,
+        big: perfect,
+      ),
+    );
   }
 
   void _emitHud() {

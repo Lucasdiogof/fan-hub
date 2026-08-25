@@ -13,7 +13,7 @@ import 'package:goias_app/features/arena/shared/arena_assets.dart';
 class KeepyUppyPlayer extends PositionComponent {
   KeepyUppyPlayer() : super(anchor: Anchor.bottomCenter);
 
-  static const double aspectRatio = 1086 / 1448;
+  static const double aspectRatio = 1024 / 1536;
 
   Image? _idle;
   Image? _low;

@@ -89,7 +89,9 @@ class _KeepyUppyGamePageState extends State<KeepyUppyGamePage>
 
     await AppBottomSheet.show(
       context,
-      icon: data.isNewRecord ? Icons.emoji_events_rounded : Icons.sports_soccer_rounded,
+      icon: data.isNewRecord
+          ? Icons.emoji_events_rounded
+          : Icons.sports_soccer_rounded,
       title: data.isNewRecord ? 'NOVO RECORDE!' : 'Fim de jogo',
       description: data.isNewRecord
           ? 'Sua melhor marca de embaixadinhas.'
@@ -122,19 +124,33 @@ class _KeepyUppyGamePageState extends State<KeepyUppyGamePage>
           children: [
             _Header(bestListenable: _best),
             Expanded(
-              child: ClipRect(
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTapDown: (_) => _game.onTap(),
-                        child: GameWidget<KeepyUppyGame>(game: _game),
+              // Enquadra o jogo numa proporção vertical (de celular) e
+              // centraliza — em telas largas (web/tablet) sobra margem em
+              // vez de esticar a cena e agigantar a bola/jogador. No celular
+              // ocupa praticamente tudo.
+              child: ColoredBox(
+                color: const Color(0xFF0B3320),
+                child: Center(
+                  child: AspectRatio(
+                    aspectRatio: 0.5,
+                    child: ClipRect(
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTapDown: (_) => _game.onTap(),
+                              child: GameWidget<KeepyUppyGame>(game: _game),
+                            ),
+                          ),
+                          Positioned.fill(child: KeepyUppyHud(game: _game)),
+                          Positioned.fill(
+                            child: _CountdownOverlay(game: _game),
+                          ),
+                        ],
                       ),
                     ),
-                    Positioned.fill(child: KeepyUppyHud(game: _game)),
-                    Positioned.fill(child: _CountdownOverlay(game: _game)),
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -155,7 +171,12 @@ class _Header extends StatelessWidget {
     final colors = context.colors;
     return Container(
       color: colors.surface,
-      padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.sm, AppSpacing.md, AppSpacing.md),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.sm,
+        AppSpacing.md,
+        AppSpacing.md,
+      ),
       child: Row(
         children: [
           InkWell(
@@ -169,7 +190,11 @@ class _Header extends StatelessWidget {
                 color: colors.background,
                 borderRadius: BorderRadius.circular(14),
               ),
-              child: Icon(Icons.arrow_back_rounded, size: 22, color: colors.primary),
+              child: Icon(
+                Icons.arrow_back_rounded,
+                size: 22,
+                color: colors.primary,
+              ),
             ),
           ),
           Expanded(
@@ -177,12 +202,20 @@ class _Header extends StatelessWidget {
               children: [
                 Text(
                   'Embaixadinhas',
-                  style: TextStyle(color: colors.primary, fontSize: 20, fontWeight: FontWeight.w900),
+                  style: TextStyle(
+                    color: colors.primary,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
                 Text(
                   'Toque na hora certa para manter a bola no ar',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: colors.textSecondary, fontSize: 11.5, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    color: colors.textSecondary,
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ],
             ),
@@ -197,13 +230,23 @@ class _Header extends StatelessWidget {
               children: [
                 Text(
                   'RECORDE',
-                  style: TextStyle(color: colors.textSecondary, fontSize: 9, fontWeight: FontWeight.w800, letterSpacing: 1),
+                  style: TextStyle(
+                    color: colors.textSecondary,
+                    fontSize: 9,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1,
+                  ),
                 ),
                 ValueListenableBuilder<int>(
                   valueListenable: bestListenable,
                   builder: (context, best, _) => Text(
                     '$best',
-                    style: TextStyle(color: colors.primary, fontSize: 20, fontWeight: FontWeight.w900, height: 1),
+                    style: TextStyle(
+                      color: colors.primary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                      height: 1,
+                    ),
                   ),
                 ),
               ],
@@ -230,8 +273,10 @@ class _CountdownOverlay extends StatelessWidget {
           return Center(
             child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 220),
-              transitionBuilder: (child, animation) =>
-                  ScaleTransition(scale: animation, child: FadeTransition(opacity: animation, child: child)),
+              transitionBuilder: (child, animation) => ScaleTransition(
+                scale: animation,
+                child: FadeTransition(opacity: animation, child: child),
+              ),
               child: Text(
                 value,
                 key: ValueKey(value),
@@ -262,11 +307,21 @@ class _ResultStats extends StatelessWidget {
       children: [
         Text(
           '${data.keepUps}',
-          style: TextStyle(color: colors.primary, fontSize: 52, fontWeight: FontWeight.w900, height: 1),
+          style: TextStyle(
+            color: colors.primary,
+            fontSize: 52,
+            fontWeight: FontWeight.w900,
+            height: 1,
+          ),
         ),
         Text(
           'EMBAIXADINHAS',
-          style: TextStyle(color: colors.textSecondary, fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1.5),
+          style: TextStyle(
+            color: colors.textSecondary,
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1.5,
+          ),
         ),
         const SizedBox(height: AppSpacing.lg),
         Row(
@@ -293,12 +348,23 @@ class _Cell extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Text(value, style: TextStyle(color: colors.textPrimary, fontSize: 22, fontWeight: FontWeight.w900)),
+          Text(
+            value,
+            style: TextStyle(
+              color: colors.textPrimary,
+              fontSize: 22,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
           const SizedBox(height: 2),
           Text(
             label,
             textAlign: TextAlign.center,
-            style: TextStyle(color: colors.textSecondary, fontSize: 10.5, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              color: colors.textSecondary,
+              fontSize: 10.5,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ],
       ),

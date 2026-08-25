@@ -6,28 +6,52 @@ const quizPointsPerCorrect = 100;
 
 int quizScore(int correct) => correct * quizPointsPerCorrect;
 
-/// Um sorteio novo (sem repetir pergunta na mesma rodada) a cada partida,
-/// restrito ao nível escolhido. [avoid] traz o texto das perguntas da
-/// rodada anterior (vindo de "Mais perguntas" em [QuizEndData]) — elas só
-/// entram se não sobrarem [quizQuestionsPerRound] perguntas novas no nível
-/// (cada nível tem só 20 perguntas, então em níveis já bastante jogados uma
-/// repetição pode ser inevitável). As alternativas de cada pergunta também
-/// são embaralhadas aqui: no banco original (fiel ao documento fonte) a
-/// resposta certa nunca é a "A" e é "D" em quase 60% dos casos — sem isso
-/// dava pra chutar D e acertar bem mais do que por conhecimento de verdade.
-/// O banco em si (`quizQuestions`) não é alterado, só a cópia usada nesta
-/// rodada.
-List<QuizQuestion> pickQuizQuestions(QuizDifficulty difficulty, {Set<String> avoid = const {}}) {
-  final levelPool = quizQuestions.where((question) => question.difficulty == difficulty).toList();
-  final fresh = levelPool.where((question) => !avoid.contains(question.question)).toList()..shuffle();
-  final seen = levelPool.where((question) => avoid.contains(question.question)).toList()..shuffle();
-  return [...fresh, ...seen].take(quizQuestionsPerRound).map(_withShuffledOptions).toList();
+List<QuizQuestion> questionsForLevel(QuizDifficulty difficulty) => quizQuestions
+    .where((question) => question.difficulty == difficulty)
+    .toList();
+
+/// Sessão normal (descoberta de conteúdo): inéditas primeiro, embaralhadas,
+/// até [quizQuestionsPerRound]. Se sobrar menos inédita que isso, a sessão
+/// sai menor — nunca completa com pergunta repetida só pra fechar o número.
+/// Se não sobrar nenhuma inédita (nível já 100%), essa chamada vira replay:
+/// embaralha o banco inteiro do nível (não altera progresso permanente).
+List<QuizQuestion> pickSessionQuestions(
+  QuizDifficulty difficulty, {
+  required Set<String> answeredIds,
+}) {
+  final pool = questionsForLevel(difficulty);
+  final fresh =
+      pool.where((question) => !answeredIds.contains(question.id)).toList()
+        ..shuffle();
+  if (fresh.isNotEmpty) {
+    return fresh.take(quizQuestionsPerRound).map(shuffleOptions).toList();
+  }
+  final replay = [...pool]..shuffle();
+  return replay.take(quizQuestionsPerRound).map(shuffleOptions).toList();
 }
 
-QuizQuestion _withShuffledOptions(QuizQuestion question) {
+/// Sessão de revisão: só as perguntas ainda pendentes (erradas e não
+/// corrigidas) daquele nível, todas de uma vez.
+List<QuizQuestion> pickReviewQuestions(
+  QuizDifficulty difficulty, {
+  required Set<String> pendingReviewIds,
+}) {
+  final pool = questionsForLevel(difficulty);
+  final review =
+      pool.where((question) => pendingReviewIds.contains(question.id)).toList()
+        ..shuffle();
+  return review.map(shuffleOptions).toList();
+}
+
+/// No banco original (fiel ao documento fonte) a resposta certa nunca é a
+/// "A" e é "D" em quase 60% dos casos — sem embaralhar dava pra chutar D e
+/// acertar bem mais do que por conhecimento de verdade. O banco em si
+/// (`quizQuestions`) não é alterado, só a cópia usada na sessão/resumo.
+QuizQuestion shuffleOptions(QuizQuestion question) {
   final correctText = question.options[question.correctIndex];
   final shuffled = List.of(question.options)..shuffle();
   return QuizQuestion(
+    id: question.id,
     question: question.question,
     options: shuffled,
     correctIndex: shuffled.indexOf(correctText),
