@@ -1,0 +1,192 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/router/splash_gate.dart';
+import 'package:goias_app/features/splash/presentation/widgets/circle_reveal_clipper.dart';
+import 'package:goias_app/features/splash/presentation/widgets/reveal_glow_painter.dart';
+import 'package:video_player/video_player.dart';
+
+const _videoAsset = 'lib/assets/videos/goias_splash.mp4';
+
+/// Mesma cor do `flutter_native_splash` (pubspec.yaml) — não é branco puro
+/// de propósito, é a continuação exata da splash nativa, que não tem uma
+/// variante dark configurada.
+const _splashBackground = Color(0xFFF6F8F7);
+
+const _startRadius = 14.0;
+const _revealDuration = Duration(milliseconds: 550);
+const _videoEndTolerance = Duration(milliseconds: 60);
+
+class SplashVideoPage extends StatefulWidget {
+  const SplashVideoPage({super.key});
+
+  @override
+  State<SplashVideoPage> createState() => _SplashVideoPageState();
+}
+
+class _SplashVideoPageState extends State<SplashVideoPage>
+    with TickerProviderStateMixin, WidgetsBindingObserver {
+  VideoPlayerController? _controller;
+  late final AnimationController _revealController;
+  late final Animation<double> _revealAnimation;
+  bool _finished = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _revealController = AnimationController(
+      vsync: this,
+      duration: _revealDuration,
+    );
+    _revealAnimation = CurvedAnimation(
+      parent: _revealController,
+      curve: Curves.easeOutCubic,
+    );
+    _initVideo();
+  }
+
+  Future<void> _initVideo() async {
+    final controller = VideoPlayerController.asset(_videoAsset);
+    try {
+      await controller.initialize();
+      await controller.setLooping(false);
+      await controller.setVolume(0);
+      await controller.play();
+    } catch (_) {
+      // Falha ao carregar o vídeo (arquivo corrompido, codec não suportado
+      // etc.): não trava o app numa tela branca pra sempre.
+      if (mounted) sl<SplashGate>().complete();
+      return;
+    }
+    if (!mounted) {
+      await controller.dispose();
+      return;
+    }
+    controller.addListener(_onVideoTick);
+    setState(() => _controller = controller);
+    // Um frame depois de `play()`, garantindo que a textura já tem o
+    // primeiro frame decodificado antes do círculo começar a crescer.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _revealController.forward();
+    });
+  }
+
+  void _onVideoTick() {
+    final value = _controller?.value;
+    if (_finished || value == null || !value.isInitialized) return;
+    if (value.duration > Duration.zero &&
+        value.position >= value.duration - _videoEndTolerance) {
+      _finishSplash();
+    }
+  }
+
+  void _finishSplash() {
+    if (_finished) return;
+    _finished = true;
+    _controller?.removeListener(_onVideoTick);
+    // Sem fade interno aqui: o vídeo fica congelado no último frame e a
+    // transição de saída (fade de verdade) é a da própria rota '/splash'
+    // no router — evita mostrar a cor de fundo "pelada" entre o vídeo e
+    // a Home/Login.
+    sl<SplashGate>().complete();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    final controller = _controller;
+    if (controller == null || !controller.value.isInitialized) return;
+    if (state == AppLifecycleState.paused) {
+      controller.pause();
+    } else if (state == AppLifecycleState.resumed && !_finished) {
+      controller.play();
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _controller?.removeListener(_onVideoTick);
+    _controller?.dispose();
+    _revealController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = _controller;
+    final size = MediaQuery.sizeOf(context);
+    final reducedMotion = MediaQuery.of(context).disableAnimations;
+
+    return Scaffold(
+      backgroundColor: _splashBackground,
+      body: controller == null || !controller.value.isInitialized
+          ? const SizedBox.expand()
+          : AnimatedBuilder(
+              animation: _revealAnimation,
+              child: RepaintBoundary(
+                child: _FullscreenVideo(controller: controller),
+              ),
+              builder: (context, child) {
+                if (reducedMotion) {
+                  return Opacity(opacity: _revealAnimation.value, child: child);
+                }
+
+                final t = _revealAnimation.value;
+                if (t >= 1) return child!;
+
+                final center = Offset(size.width / 2, size.height / 2);
+                final maxRadius = sqrt(
+                  pow(size.width / 2, 2) + pow(size.height / 2, 2),
+                );
+                final radius = Tween<double>(
+                  begin: _startRadius,
+                  end: maxRadius,
+                ).transform(t);
+
+                return Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ClipPath(
+                      clipper: CircleRevealClipper(
+                        center: center,
+                        radius: radius,
+                      ),
+                      child: child,
+                    ),
+                    CustomPaint(
+                      painter: RevealGlowPainter(
+                        center: center,
+                        radius: radius,
+                        opacity: 1 - t,
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+    );
+  }
+}
+
+class _FullscreenVideo extends StatelessWidget {
+  const _FullscreenVideo({required this.controller});
+
+  final VideoPlayerController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final videoSize = controller.value.size;
+    return SizedBox.expand(
+      child: FittedBox(
+        fit: BoxFit.cover,
+        child: SizedBox(
+          width: videoSize.width,
+          height: videoSize.height,
+          child: VideoPlayer(controller),
+        ),
+      ),
+    );
+  }
+}
