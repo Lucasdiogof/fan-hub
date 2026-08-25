@@ -46,6 +46,7 @@ import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart
 import 'package:goias_app/features/profile/presentation/pages/address_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/personal_data_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
+import 'package:goias_app/features/profile/presentation/pages/delete_account_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/security_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/theme_settings_page.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
@@ -161,6 +162,10 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       GoRoute(
         path: '/profile/security',
         builder: (context, state) => const SecurityPage(),
+      ),
+      GoRoute(
+        path: '/profile/delete-account',
+        builder: (context, state) => const DeleteAccountPage(),
       ),
       GoRoute(
         path: '/profile/theme',

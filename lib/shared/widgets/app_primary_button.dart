@@ -15,6 +15,7 @@ class AppPrimaryButton extends StatelessWidget {
     this.loading = false,
     this.loadingLabel,
     this.showArrow = false,
+    this.color,
     super.key,
   });
 
@@ -23,6 +24,7 @@ class AppPrimaryButton extends StatelessWidget {
   final bool loading;
   final String? loadingLabel;
   final bool showArrow;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class AppPrimaryButton extends StatelessWidget {
     return Opacity(
       opacity: enabled || loading ? 1 : 0.55,
       child: Material(
-        color: colors.primary,
+        color: color ?? colors.primary,
         borderRadius: BorderRadius.circular(AppRadius.button),
         child: InkWell(
           onTap: enabled ? onPressed : null,
@@ -49,7 +51,10 @@ class AppPrimaryButton extends StatelessWidget {
                           SizedBox(
                             width: 18,
                             height: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2, color: colors.onPrimary),
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: colors.onPrimary,
+                            ),
                           ),
                           if (loadingLabel != null) ...[
                             const SizedBox(width: AppSpacing.md),
@@ -58,7 +63,11 @@ class AppPrimaryButton extends StatelessWidget {
                                 loadingLabel!,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: colors.onPrimary),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                  color: colors.onPrimary,
+                                ),
                               ),
                             ),
                           ],
@@ -83,7 +92,11 @@ class AppPrimaryButton extends StatelessWidget {
                           ),
                           if (showArrow) ...[
                             const SizedBox(width: AppSpacing.sm),
-                            Icon(Icons.arrow_forward_rounded, size: 19, color: colors.onPrimary),
+                            Icon(
+                              Icons.arrow_forward_rounded,
+                              size: 19,
+                              color: colors.onPrimary,
+                            ),
                           ],
                         ],
                       ),

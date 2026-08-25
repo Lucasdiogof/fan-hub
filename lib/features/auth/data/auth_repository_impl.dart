@@ -125,6 +125,31 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
+  @override
+  Future<Result<void>> deleteAccount({required String password}) async {
+    try {
+      await _dataSource.deleteAccount(password);
+      return const Success(null);
+    } catch (error) {
+      if (error is AuthException &&
+          error.message.toLowerCase().contains('invalid login credentials')) {
+        return const Error(AuthFailure('Senha incorreta.'));
+      }
+      if (error is FunctionException) {
+        return Error(AuthFailure(_messageForFunctionsError(error)));
+      }
+      return Error(mapAuthError(error));
+    }
+  }
+
+  String _messageForFunctionsError(FunctionException error) {
+    final details = error.details;
+    if (details is Map && details['error'] is String) {
+      return details['error'] as String;
+    }
+    return 'Não foi possível excluir sua conta. Tente novamente em alguns instantes.';
+  }
+
   AuthUser _mapUser(User user) {
     final metadata = user.userMetadata;
     return AuthUser(

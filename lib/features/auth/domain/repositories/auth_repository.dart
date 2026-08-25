@@ -33,4 +33,11 @@ abstract interface class AuthRepository {
     required String currentPassword,
     required String newPassword,
   });
+
+  /// Reautentica com a senha atual (mesmo motivo de [changePassword]: uma
+  /// operação irreversível merece confirmar identidade de novo) e então
+  /// chama a Edge Function que exclui a conta no backend. Ao final, encerra
+  /// a sessão local — nunca deixa o app "logado" numa conta que não existe
+  /// mais no Supabase.
+  Future<Result<void>> deleteAccount({required String password});
 }

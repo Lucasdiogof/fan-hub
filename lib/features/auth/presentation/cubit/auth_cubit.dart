@@ -68,6 +68,9 @@ class AuthCubit extends Cubit<AuthState> {
     newPassword: newPassword,
   );
 
+  Future<Result<void>> deleteAccount({required String password}) =>
+      _repository.deleteAccount(password: password);
+
   Future<void> signOut() => _repository.signOut();
 
   @override

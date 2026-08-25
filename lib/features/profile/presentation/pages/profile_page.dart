@@ -152,6 +152,18 @@ class _ProfileView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: AppSpacing.xl),
+                      _MenuSection(
+                        title: 'CONTA',
+                        rows: [
+                          _MenuRow(
+                            icon: Icons.person_remove_outlined,
+                            label: 'Excluir conta',
+                            danger: true,
+                            onTap: () => _confirmDeleteAccount(context),
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: AppSpacing.xxl),
                       const _SignOutButton(),
                       const SizedBox(height: AppSpacing.xxl),
@@ -183,6 +195,25 @@ Future<void> _openAddress(BuildContext context) async {
   await GlobalLoading.run(context, cubit.load);
   if (!context.mounted) return;
   unawaited(context.push('/profile/address', extra: cubit));
+}
+
+/// Primeira confirmação, calma e sem tom ameaçador — a segunda confirmação
+/// (senha + digitar EXCLUIR) fica na própria [DeleteAccountPage].
+Future<void> _confirmDeleteAccount(BuildContext context) async {
+  final confirmed = await AppBottomSheet.show(
+    context,
+    icon: Icons.person_remove_outlined,
+    title: 'Excluir conta?',
+    description:
+        'Ao excluir sua conta, seus dados e seu progresso serão removidos '
+        'permanentemente. Essa ação não pode ser desfeita.',
+    confirmLabel: 'CONTINUAR',
+    cancelLabel: 'Cancelar',
+    destructive: true,
+  );
+  if (confirmed == true && context.mounted) {
+    unawaited(context.push('/profile/delete-account'));
+  }
 }
 
 class _MenuSection extends StatelessWidget {
@@ -241,16 +272,19 @@ class _MenuRow extends StatelessWidget {
     required this.label,
     required this.onTap,
     this.value,
+    this.danger = false,
   });
 
   final IconData icon;
   final String label;
   final String? value;
   final VoidCallback onTap;
+  final bool danger;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final accent = danger ? colors.error : colors.primary;
     return InkWell(
       onTap: onTap,
       child: Padding(
@@ -260,7 +294,7 @@ class _MenuRow extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, size: 20, color: colors.primary),
+            Icon(icon, size: 20, color: accent),
             const SizedBox(width: AppSpacing.md),
             Expanded(
               child: Text(
@@ -268,7 +302,7 @@ class _MenuRow extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14.5,
                   fontWeight: FontWeight.w600,
-                  color: colors.textPrimary,
+                  color: danger ? accent : colors.textPrimary,
                 ),
               ),
             ),
