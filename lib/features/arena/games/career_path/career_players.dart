@@ -1,10 +1,28 @@
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
 
 CareerEntry _goias(String period, int apps, int goals, {bool loan = false}) =>
-    CareerEntry(period: period, team: 'Goiás', appearances: apps, goals: goals, loan: loan, isGoias: true);
+    CareerEntry(
+      period: period,
+      team: 'Goiás',
+      appearances: apps,
+      goals: goals,
+      loan: loan,
+      isGoias: true,
+    );
 
-CareerEntry _club(String period, String team, int? apps, int? goals, {bool loan = false}) =>
-    CareerEntry(period: period, team: team, appearances: apps, goals: goals, loan: loan);
+CareerEntry _club(
+  String period,
+  String team,
+  int? apps,
+  int? goals, {
+  bool loan = false,
+}) => CareerEntry(
+  period: period,
+  team: team,
+  appearances: apps,
+  goals: goals,
+  loan: loan,
+);
 
 CareerEntry _nat(String period, String team, int? apps, int? goals) =>
     CareerEntry(period: period, team: team, appearances: apps, goals: goals);
@@ -80,7 +98,11 @@ final List<CareerPlayer> careerPlayers = [
   CareerPlayer(
     id: 'dudu_cearense',
     answer: 'Dudu Cearense',
-    acceptedAnswers: const ['Dudu Cearense', 'Dudu', 'Alessandro Silva de Sousa'],
+    acceptedAnswers: const [
+      'Dudu Cearense',
+      'Dudu',
+      'Alessandro Silva de Sousa',
+    ],
     position: 'Volante / meia',
     clubCareer: [
       _club('2000–2003', 'Vitória', 49, 6),
@@ -219,7 +241,11 @@ final List<CareerPlayer> careerPlayers = [
   CareerPlayer(
     id: 'rafael_moura',
     answer: 'Rafael Moura',
-    acceptedAnswers: const ['Rafael Moura', 'He-Man', 'Rafael Martiniano de Miranda Moura'],
+    acceptedAnswers: const [
+      'Rafael Moura',
+      'He-Man',
+      'Rafael Martiniano de Miranda Moura',
+    ],
     position: 'Centroavante',
     clubCareer: [
       _club('2004', 'Atlético Mineiro', 2, 0),
@@ -304,7 +330,11 @@ final List<CareerPlayer> careerPlayers = [
   CareerPlayer(
     id: 'jadilson',
     answer: 'Jadílson',
-    acceptedAnswers: const ['Jadílson', 'Jadilson', 'José Jadílson dos Santos Silva'],
+    acceptedAnswers: const [
+      'Jadílson',
+      'Jadilson',
+      'José Jadílson dos Santos Silva',
+    ],
     position: 'Lateral-esquerdo',
     clubCareer: [
       _club('1999', 'Portuguesa', 4, 0),
@@ -446,7 +476,11 @@ final List<CareerPlayer> careerPlayers = [
   CareerPlayer(
     id: 'rodrigo_tabata',
     answer: 'Rodrigo Tabata',
-    acceptedAnswers: const ['Rodrigo Tabata', 'Tabata', 'Rodrigo Barbosa Tabata'],
+    acceptedAnswers: const [
+      'Rodrigo Tabata',
+      'Tabata',
+      'Rodrigo Barbosa Tabata',
+    ],
     position: 'Meia-atacante',
     clubCareer: [
       _club('1999', 'Paulista', 5, 2),
@@ -477,7 +511,11 @@ final List<CareerPlayer> careerPlayers = [
   CareerPlayer(
     id: 'egidio',
     answer: 'Egídio',
-    acceptedAnswers: const ['Egídio', 'Egidio', 'Egídio de Araújo Pereira Júnior'],
+    acceptedAnswers: const [
+      'Egídio',
+      'Egidio',
+      'Egídio de Araújo Pereira Júnior',
+    ],
     position: 'Lateral-esquerdo',
     clubCareer: [
       _club('2003–2011', 'Flamengo', 11, 1),

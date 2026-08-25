@@ -31,7 +31,11 @@ class PenaltyHud extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             for (var i = 0; i < 5; i++)
-                              _Dot(result: i < data.attempts.length ? data.attempts[i] : null),
+                              _Dot(
+                                result: i < data.attempts.length
+                                    ? data.attempts[i]
+                                    : null,
+                              ),
                           ],
                         ),
                       ),
@@ -43,14 +47,17 @@ class PenaltyHud extends StatelessWidget {
                           fontSize: 15,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 1,
-                          shadows: [Shadow(color: Colors.black54, blurRadius: 8)],
+                          shadows: [
+                            Shadow(color: Colors.black54, blurRadius: 8),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
               ),
-              if (data.lastResult != null) _ResultFlash(result: data.lastResult!),
+              if (data.lastResult != null)
+                _ResultFlash(result: data.lastResult!),
             ],
           ),
         );
@@ -82,7 +89,10 @@ class _Dot extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: r == null ? Colors.transparent : color,
-        border: Border.all(color: r == null ? color : Colors.transparent, width: 1.5),
+        border: Border.all(
+          color: r == null ? color : Colors.transparent,
+          width: 1.5,
+        ),
       ),
     );
   }

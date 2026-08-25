@@ -61,7 +61,10 @@ class _FakeStorage {
 
   Future<String?> loadSelectedMatchId() async => _selectedMatchId;
 
-  Future<void> saveSelectedMatchId(String matchId) async => _selectedMatchId = matchId;
+  Future<void> saveSelectedMatchId(String matchId) async =>
+      _selectedMatchId = matchId;
+
+  Future<Set<String>> completedIds() async => const {};
 }
 
 LineupCubit _buildCubit(_FakeStorage storage) {
@@ -71,7 +74,8 @@ LineupCubit _buildCubit(_FakeStorage storage) {
     saveState: storage.save,
     loadSelectedMatchId: storage.loadSelectedMatchId,
     saveSelectedMatchId: storage.saveSelectedMatchId,
-  );
+    loadCompletedIds: storage.completedIds,
+  )..loadSelectedMatch();
 }
 
 Future<void> _typeAndSubmit(LineupCubit cubit, String letters) async {

@@ -5,21 +5,37 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
-import 'package:goias_app/features/arena/games/career_path/career_path_storage.dart';
+import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
 import 'package:goias_app/features/arena/games/career_path/career_players.dart';
 import 'package:goias_app/features/arena/games/career_path/goias_players.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_state.dart';
 import 'package:goias_app/features/arena/games/career_path/widgets/career_table.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
+/// [cubit], quando fornecido, já veio construído e com o último jogador
+/// visto carregado por quem navegou pra cá (ver `GlobalLoading.run` em
+/// `arena_page.dart`) — a tela só reaproveita via `BlocProvider.value`.
+/// Fica `null` (e a tela cria/carrega o próprio Cubit) só em navegação
+/// direta por URL.
 class CareerPathPage extends StatelessWidget {
-  const CareerPathPage({super.key});
+  const CareerPathPage({this.cubit, super.key});
+
+  final CareerPathCubit? cubit;
 
   @override
   Widget build(BuildContext context) {
-    final storage = sl<CareerPathStorage>();
+    final preloaded = cubit;
+    if (preloaded != null) {
+      return BlocProvider.value(
+        value: preloaded,
+        child: const _CareerPathView(),
+      );
+    }
+    final storage = sl<SupabaseCareerPathStorage>();
     return BlocProvider(
       create: (_) => CareerPathCubit(
         players: careerPlayers,
@@ -27,7 +43,8 @@ class CareerPathPage extends StatelessWidget {
         saveRound: storage.save,
         loadSelectedId: storage.loadSelectedPlayerId,
         saveSelectedId: storage.saveSelectedPlayerId,
-      ),
+        loadCompletedIds: storage.completedIds,
+      )..loadSelected(),
       child: const _CareerPathView(),
     );
   }
@@ -69,6 +86,7 @@ class _CareerPathViewState extends State<_CareerPathView> {
     void addName(String display) {
       if (seen.add(normalizeName(display))) names.add(display);
     }
+
     for (final player in careerPlayers) {
       addName(player.answer);
     }
@@ -116,7 +134,8 @@ class _CareerPathViewState extends State<_CareerPathView> {
       context,
       icon: Icons.visibility_outlined,
       title: 'Revelar jogador?',
-      description: 'Ao revelar a resposta, esta rodada será considerada encerrada.',
+      description:
+          'Ao revelar a resposta, esta rodada será considerada encerrada.',
       confirmLabel: 'REVELAR',
       cancelLabel: 'Cancelar',
     );
@@ -132,21 +151,23 @@ class _CareerPathViewState extends State<_CareerPathView> {
 
     final (title, description) = switch (status) {
       CareerRoundStatus.won => (
-          'Você acertou!',
-          attempts == 1
-              ? 'Acertou de primeira!'
-              : 'Você acertou em $attempts tentativas.',
-        ),
+        'Você acertou!',
+        attempts == 1
+            ? 'Acertou de primeira!'
+            : 'Você acertou em $attempts tentativas.',
+      ),
       CareerRoundStatus.lost => (
-          'Não foi dessa vez',
-          'Você usou as ${CareerPathCubit.maxAttempts} tentativas.',
-        ),
+        'Não foi dessa vez',
+        'Você usou as ${CareerPathCubit.maxAttempts} tentativas.',
+      ),
       _ => ('Jogador revelado', 'Rodada encerrada.'),
     };
 
     await AppBottomSheet.show(
       context,
-      icon: status == CareerRoundStatus.won ? Icons.emoji_events_rounded : Icons.person_rounded,
+      icon: status == CareerRoundStatus.won
+          ? Icons.emoji_events_rounded
+          : Icons.person_rounded,
       title: title,
       description: description,
       content: _PlayerReveal(player: player),
@@ -160,17 +181,20 @@ class _CareerPathViewState extends State<_CareerPathView> {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return BlocConsumer<CareerPathCubit, CareerPathState>(
-      listenWhen: (previous, current) => current.justFinished && !previous.justFinished,
+      listenWhen: (previous, current) =>
+          current.justFinished && !previous.justFinished,
       listener: (context, state) async {
         final cubit = context.read<CareerPathCubit>();
         await _showResult(context, state);
         if (context.mounted) cubit.acknowledgeResultShown();
       },
       builder: (context, state) {
-        if (state.status == LoadStatus.loading || state.player == null || state.round == null) {
+        if (state.status == LoadStatus.loading ||
+            state.player == null ||
+            state.round == null) {
           return Scaffold(
             backgroundColor: colors.background,
-            body: const Center(child: CircularProgressIndicator()),
+            body: const Center(child: GoiasLoadingIndicator()),
           );
         }
 
@@ -183,7 +207,12 @@ class _CareerPathViewState extends State<_CareerPathView> {
                 _Header(index: state.currentIndex ?? 0, total: state.total),
                 Expanded(
                   child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.md),
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      AppSpacing.sm,
+                      AppSpacing.lg,
+                      AppSpacing.md,
+                    ),
                     child: CareerTable(player: player),
                   ),
                 ),
@@ -192,12 +221,16 @@ class _CareerPathViewState extends State<_CareerPathView> {
                       ? _ResolvedBlock(
                           player: player,
                           status: state.roundStatus,
-                          onNext: () => context.read<CareerPathCubit>().goToNextOrFirst(),
+                          onNext: () =>
+                              context.read<CareerPathCubit>().goToNextOrFirst(),
                         )
                       : Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            _AttemptsBar(used: state.attemptsUsed, max: CareerPathCubit.maxAttempts),
+                            _AttemptsBar(
+                              used: state.attemptsUsed,
+                              max: CareerPathCubit.maxAttempts,
+                            ),
                             const SizedBox(height: AppSpacing.md),
                             _GuessBlock(
                               controller: _controller,
@@ -227,39 +260,18 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     return Padding(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.sm),
-      child: Row(
-        children: [
-          InkWell(
-            onTap: () => context.canPop() ? context.pop() : context.go('/'),
-            borderRadius: BorderRadius.circular(999),
-            child: Container(
-              width: 38,
-              height: 38,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-              child: Icon(Icons.arrow_back_rounded, size: 18, color: colors.textPrimary),
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Text(
-                  'ADIVINHE O JOGADOR',
-                  style: TextStyle(color: colors.primary, fontSize: 13.5, fontWeight: FontWeight.w900, letterSpacing: 0.6),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  'Descubra pela carreira',
-                  style: TextStyle(color: colors.textHint, fontSize: 11.5, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-          ),
-          _CountPill(index: index, total: total),
-        ],
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        AppSpacing.md,
+        AppSpacing.lg,
+        AppSpacing.sm,
+      ),
+      child: ArenaGameHeader(
+        title: 'ADIVINHE O JOGADOR',
+        subtitle: 'Descubra pela carreira',
+        onBack: () => context.canPop() ? context.pop() : context.go('/'),
+        trailing: _CountPill(index: index, total: total),
       ),
     );
   }
@@ -276,10 +288,17 @@ class _CountPill extends StatelessWidget {
     final colors = context.colors;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(999)),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(999),
+      ),
       child: Text(
         '${index + 1}/$total',
-        style: TextStyle(color: colors.primary, fontSize: 13, fontWeight: FontWeight.w900),
+        style: TextStyle(
+          color: colors.primary,
+          fontSize: 13,
+          fontWeight: FontWeight.w900,
+        ),
       ),
     );
   }
@@ -298,7 +317,12 @@ class _BottomBar extends StatelessWidget {
         color: colors.background,
         border: Border(top: BorderSide(color: colors.border)),
       ),
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.md),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        AppSpacing.md,
+        AppSpacing.lg,
+        AppSpacing.md,
+      ),
       child: child,
     );
   }
@@ -320,7 +344,10 @@ class _AttemptsBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.button),
         border: Border.all(color: colors.border),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.sm),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.sm,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -329,7 +356,11 @@ class _AttemptsBar extends StatelessWidget {
               'Tentativas · Restam $remaining',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.textSecondary),
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: colors.textSecondary,
+              ),
             ),
           ),
           Row(
@@ -362,7 +393,9 @@ class _AttemptDot extends StatelessWidget {
         shape: BoxShape.circle,
         color: spent ? Colors.transparent : colors.primary,
         border: Border.all(
-          color: spent ? colors.primary.withValues(alpha: 0.25) : colors.primary,
+          color: spent
+              ? colors.primary.withValues(alpha: 0.25)
+              : colors.primary,
           width: 1.5,
         ),
       ),
@@ -393,7 +426,12 @@ class _GuessBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        _NameField(controller: controller, focusNode: focusNode, suggestions: suggestions, onSubmit: onSubmit),
+        _NameField(
+          controller: controller,
+          focusNode: focusNode,
+          suggestions: suggestions,
+          onSubmit: onSubmit,
+        ),
         const SizedBox(height: AppSpacing.md),
         SizedBox(
           height: 54,
@@ -404,16 +442,27 @@ class _GuessBlock extends StatelessWidget {
               foregroundColor: colors.onPrimary,
               disabledBackgroundColor: colors.primary.withValues(alpha: 0.3),
               disabledForegroundColor: colors.onPrimary.withValues(alpha: 0.75),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppRadius.button),
+              ),
             ),
-            child: const Text('CHUTAR', style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800)),
+            child: const Text(
+              'CHUTAR',
+              style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+            ),
           ),
         ),
         const SizedBox(height: AppSpacing.xs),
         TextButton(
           onPressed: onReveal,
-          style: TextButton.styleFrom(foregroundColor: colors.textSecondary, minimumSize: const Size.fromHeight(46)),
-          child: const Text('Revelar jogador', style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w700)),
+          style: TextButton.styleFrom(
+            foregroundColor: colors.textSecondary,
+            minimumSize: const Size.fromHeight(46),
+          ),
+          child: const Text(
+            'Revelar jogador',
+            style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w700),
+          ),
         ),
       ],
     );
@@ -443,77 +492,86 @@ class _NameField extends StatelessWidget {
       builder: (context, constraints) {
         final fieldWidth = constraints.maxWidth;
         return RawAutocomplete<String>(
-      textEditingController: controller,
-      focusNode: focusNode,
-      optionsViewOpenDirection: OptionsViewOpenDirection.up,
-      optionsBuilder: (value) {
-        final query = normalizeName(value.text);
-        if (query.length < _minChars) return const Iterable<String>.empty();
-        return suggestions
-            .where((name) => normalizeName(name).contains(query))
-            .take(_maxResults);
-      },
-      onSelected: (selection) => controller.text = selection,
-      fieldViewBuilder: (context, textController, node, onFieldSubmitted) {
-        return TextField(
-          controller: textController,
-          focusNode: node,
-          textInputAction: TextInputAction.done,
-          onSubmitted: (_) => onSubmit(),
-          decoration: InputDecoration(
-            hintText: 'Digite o nome do jogador',
-            prefixIcon: Icon(Icons.search_rounded, color: colors.textHint),
-            filled: true,
-            fillColor: colors.surface,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppRadius.button),
-              borderSide: BorderSide(color: colors.border),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppRadius.button),
-              borderSide: BorderSide(color: colors.border),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(AppRadius.button),
-              borderSide: BorderSide(color: colors.primary, width: 1.6),
-            ),
-          ),
-        );
-      },
-      optionsViewBuilder: (context, onSelected, options) {
-        return Align(
-          alignment: Alignment.bottomLeft,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: AppSpacing.xs),
-            child: Material(
-              elevation: 6,
-              borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-              color: colors.surface,
-              child: SizedBox(
-                width: fieldWidth,
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 240),
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    itemCount: options.length,
-                    itemBuilder: (context, index) {
-                      final option = options.elementAt(index);
-                      return InkWell(
-                        onTap: () => onSelected(option),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
-                          child: Text(option, style: TextStyle(fontSize: 14.5, color: colors.textPrimary)),
-                        ),
-                      );
-                    },
+          textEditingController: controller,
+          focusNode: focusNode,
+          optionsViewOpenDirection: OptionsViewOpenDirection.up,
+          optionsBuilder: (value) {
+            final query = normalizeName(value.text);
+            if (query.length < _minChars) return const Iterable<String>.empty();
+            return suggestions
+                .where((name) => normalizeName(name).contains(query))
+                .take(_maxResults);
+          },
+          onSelected: (selection) => controller.text = selection,
+          fieldViewBuilder: (context, textController, node, onFieldSubmitted) {
+            return TextField(
+              controller: textController,
+              focusNode: node,
+              textInputAction: TextInputAction.done,
+              onSubmitted: (_) => onSubmit(),
+              decoration: InputDecoration(
+                hintText: 'Digite o nome do jogador',
+                prefixIcon: Icon(Icons.search_rounded, color: colors.textHint),
+                filled: true,
+                fillColor: colors.surface,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.button),
+                  borderSide: BorderSide(color: colors.border),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.button),
+                  borderSide: BorderSide(color: colors.border),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.button),
+                  borderSide: BorderSide(color: colors.primary, width: 1.6),
+                ),
+              ),
+            );
+          },
+          optionsViewBuilder: (context, onSelected, options) {
+            return Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+                child: Material(
+                  elevation: 6,
+                  borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+                  color: colors.surface,
+                  child: SizedBox(
+                    width: fieldWidth,
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxHeight: 240),
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        itemCount: options.length,
+                        itemBuilder: (context, index) {
+                          final option = options.elementAt(index);
+                          return InkWell(
+                            onTap: () => onSelected(option),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.lg,
+                                vertical: AppSpacing.md,
+                              ),
+                              child: Text(
+                                option,
+                                style: TextStyle(
+                                  fontSize: 14.5,
+                                  color: colors.textPrimary,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-        );
-      },
+            );
+          },
         );
       },
     );
@@ -521,7 +579,11 @@ class _NameField extends StatelessWidget {
 }
 
 class _ResolvedBlock extends StatelessWidget {
-  const _ResolvedBlock({required this.player, required this.status, required this.onNext});
+  const _ResolvedBlock({
+    required this.player,
+    required this.status,
+    required this.onNext,
+  });
 
   final CareerPlayer player;
   final CareerRoundStatus status;
@@ -548,13 +610,22 @@ class _ResolvedBlock extends StatelessWidget {
             children: [
               Text(
                 label.toUpperCase(),
-                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, letterSpacing: 0.8, color: colors.primary),
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.8,
+                  color: colors.primary,
+                ),
               ),
               const SizedBox(height: 4),
               Text(
                 player.answer,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: colors.primary),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900,
+                  color: colors.primary,
+                ),
               ),
               if (player.position != null) ...[
                 const SizedBox(height: 2),
@@ -574,9 +645,14 @@ class _ResolvedBlock extends StatelessWidget {
             style: FilledButton.styleFrom(
               backgroundColor: colors.primary,
               foregroundColor: colors.onPrimary,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppRadius.button),
+              ),
             ),
-            child: const Text('PRÓXIMO JOGADOR', style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800)),
+            child: const Text(
+              'PRÓXIMO JOGADOR',
+              style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+            ),
           ),
         ),
       ],
@@ -591,8 +667,11 @@ class _PlayerReveal extends StatelessWidget {
 
   String get _initials {
     final parts = player.answer.trim().split(RegExp(r'\s+'));
-    if (parts.length == 1) return parts.first.characters.take(2).toString().toUpperCase();
-    return (parts.first.characters.first + parts.last.characters.first).toUpperCase();
+    if (parts.length == 1) {
+      return parts.first.characters.take(2).toString().toUpperCase();
+    }
+    return (parts.first.characters.first + parts.last.characters.first)
+        .toUpperCase();
   }
 
   @override
@@ -604,17 +683,28 @@ class _PlayerReveal extends StatelessWidget {
           width: 72,
           height: 72,
           alignment: Alignment.center,
-          decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
+          decoration: BoxDecoration(
+            color: colors.secondary,
+            shape: BoxShape.circle,
+          ),
           child: Text(
             _initials,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: colors.primary),
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w900,
+              color: colors.primary,
+            ),
           ),
         ),
         const SizedBox(height: AppSpacing.md),
         Text(
           player.answer,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: colors.textPrimary),
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
         ),
         if (player.position != null) ...[
           const SizedBox(height: 2),

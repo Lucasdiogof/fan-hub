@@ -7,23 +7,35 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
+import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_matches.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
-import 'package:goias_app/features/arena/games/lineup/lineup_storage.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_guess_page.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_field_background.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_result_dialog.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_shirt_button.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
+/// [cubit], quando fornecido, já veio construído e com a última partida
+/// vista carregada por quem navegou pra cá (ver `GlobalLoading.run` em
+/// `arena_page.dart`) — a tela só reaproveita via `BlocProvider.value`.
+/// Fica `null` (e a tela cria/carrega o próprio Cubit) só em navegação
+/// direta por URL.
 class LineupPage extends StatelessWidget {
-  const LineupPage({super.key});
+  const LineupPage({this.cubit, super.key});
+
+  final LineupCubit? cubit;
 
   @override
   Widget build(BuildContext context) {
-    final storage = sl<LineupStorage>();
-
+    final preloaded = cubit;
+    if (preloaded != null) {
+      return BlocProvider.value(value: preloaded, child: const _LineupView());
+    }
+    final storage = sl<SupabaseLineupStorage>();
     return BlocProvider(
       create: (_) => LineupCubit(
         matches: orderedLineupMatches,
@@ -31,7 +43,8 @@ class LineupPage extends StatelessWidget {
         saveState: storage.save,
         loadSelectedMatchId: storage.loadSelectedMatchId,
         saveSelectedMatchId: storage.saveSelectedMatchId,
-      ),
+        loadCompletedIds: storage.completedIds,
+      )..loadSelectedMatch(),
       child: const _LineupView(),
     );
   }
@@ -71,7 +84,7 @@ class _LineupViewState extends State<_LineupView> {
             state.game == null) {
           return Scaffold(
             backgroundColor: colors.background,
-            body: const Center(child: CircularProgressIndicator()),
+            body: const Center(child: GoiasLoadingIndicator()),
           );
         }
 
@@ -88,33 +101,14 @@ class _LineupViewState extends State<_LineupView> {
                     AppSpacing.lg,
                     0,
                   ),
-                  child: Row(
-                    children: [
-                      InkWell(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                        borderRadius: BorderRadius.circular(999),
-                        child: Container(
-                          width: 38,
-                          height: 38,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: colors.secondary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.arrow_back_rounded,
-                            size: 18,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                      ),
-                      const Spacer(),
-                      _ProgressPill(
-                        solved: state.solvedCount,
-                        total: state.totalPlayers,
-                      ),
-                    ],
+                  child: ArenaGameHeader(
+                    title: 'ADIVINHE A ESCALAÇÃO',
+                    onBack: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                    trailing: _ProgressPill(
+                      solved: state.solvedCount,
+                      total: state.totalPlayers,
+                    ),
                   ),
                 ),
                 _MatchNav(
@@ -125,9 +119,9 @@ class _LineupViewState extends State<_LineupView> {
                   onPrevious: () => context.read<LineupCubit>().previousMatch(),
                   onNext: () => context.read<LineupCubit>().nextMatch(),
                 ),
-                const SizedBox(height: AppSpacing.sm),
+                const SizedBox(height: AppSpacing.lg),
                 _MatchHeader(match: match),
-                const SizedBox(height: AppSpacing.xs),
+                const SizedBox(height: 2),
                 if (state.isComplete)
                   TextButton.icon(
                     onPressed: () => showLineupResultDialog(
@@ -148,28 +142,8 @@ class _LineupViewState extends State<_LineupView> {
                     ),
                     icon: const Icon(Icons.emoji_events_outlined, size: 16),
                     label: const Text('VER RESULTADO'),
-                  )
-                else
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.touch_app_rounded,
-                        size: 14,
-                        color: colors.primary,
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        'Toque em uma camisa para adivinhar',
-                        style: TextStyle(
-                          color: colors.primary,
-                          fontSize: 12.5,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
                   ),
-                const SizedBox(height: AppSpacing.sm),
+                const SizedBox(height: AppSpacing.xs),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -208,20 +182,32 @@ class _LineupViewState extends State<_LineupView> {
                 if (!state.isComplete)
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: AppSpacing.xs,
+                      top: 2,
                       bottom: AppSpacing.xs,
                     ),
-                    child: TextButton.icon(
+                    child: OutlinedButton.icon(
                       onPressed: () => _confirmGiveUp(context),
-                      style: TextButton.styleFrom(
-                        foregroundColor: colors.textHint,
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: colors.gold,
+                        backgroundColor: colors.gold.withValues(alpha: 0.1),
+                        side: BorderSide(color: colors.gold, width: 1.2),
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.lg,
+                          vertical: AppSpacing.sm,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(AppRadius.button),
+                        ),
                       ),
-                      icon: const Icon(Icons.flag_outlined, size: 16),
+                      icon: const Icon(Icons.flag_rounded, size: 15),
                       label: const Text(
-                        'Desistir da partida',
+                        'DESISTIR DA PARTIDA',
                         style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 12.5,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.3,
                         ),
                       ),
                     ),
@@ -440,49 +426,90 @@ class _MatchHeader extends StatelessWidget {
     final colors = context.colors;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-      child: Column(
-        children: [
-          Text(
-            '${match.competition.toUpperCase()} ${match.season}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: colors.primary,
-              fontSize: 12,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.8,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.md,
+          vertical: AppSpacing.sm,
+        ),
+        decoration: BoxDecoration(
+          color: colors.surface,
+          borderRadius: BorderRadius.circular(AppRadius.card),
+          border: Border.all(color: colors.border),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.emoji_events_rounded,
+                  size: 15,
+                  color: colors.primary,
+                ),
+                const SizedBox(width: 6),
+                Flexible(
+                  child: Text(
+                    '${match.competition.toUpperCase()} ${match.season}',
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: colors.primary,
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.4,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            match.phase.toUpperCase(),
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: colors.textHint,
-              fontSize: 11,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.6,
+            const SizedBox(height: 2),
+            Text(
+              match.phase,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: colors.textSecondary,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            '${match.homeTeam.toUpperCase()} ${match.homeScore} x ${match.awayScore} ${match.awayTeam.toUpperCase()}',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: colors.textPrimary,
-              fontSize: 15,
-              fontWeight: FontWeight.w900,
+            const SizedBox(height: 6),
+            Text(
+              '${match.homeTeam.toUpperCase()} ${match.homeScore} x ${match.awayScore} ${match.awayTeam.toUpperCase()}',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: colors.textPrimary,
+                fontSize: 16,
+                fontWeight: FontWeight.w900,
+              ),
             ),
-          ),
-          const SizedBox(height: 2),
-          Text(
-            fullDateLabel(match.date),
-            style: TextStyle(
-              color: colors.textHint,
-              fontSize: 11.5,
-              fontWeight: FontWeight.w600,
+            const SizedBox(height: 6),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.event_available_rounded,
+                  size: 13,
+                  color: colors.textHint,
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  fullDateLabel(match.date),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: colors.textHint,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

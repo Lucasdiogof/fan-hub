@@ -3,6 +3,7 @@ import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/word_evaluation_service.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/utils/shuffle_keeping_done.dart';
 
 /// Um único Cubit cobre campo + tela de adivinhação (ver `LineupPage` e
 /// `LineupGuessPage`, que compartilham a mesma instância via
@@ -18,16 +19,22 @@ import 'package:goias_app/shared/state/load_status.dart';
 /// por `matchId` no storage (ver `LineupStorage`), então navegar nunca
 /// apaga o progresso de nenhuma outra.
 class LineupCubit extends Cubit<LineupState> {
+  /// `loadSelectedMatch()` é chamado explicitamente por quem cria o Cubit
+  /// (nunca aqui no construtor) — pra nunca disparar duas buscas
+  /// concorrentes quando o carregamento já acontece antes da navegação
+  /// (ver `GlobalLoading.run` no ponto de entrada, `arena_page.dart`).
   LineupCubit({
     required List<LineupMatch> matches,
     required this.loadState,
     required this.saveState,
     required this.loadSelectedMatchId,
     required this.saveSelectedMatchId,
-  }) : assert(matches.isNotEmpty, 'LineupCubit precisa de pelo menos uma partida'),
-       super(LineupState(matches: matches)) {
-    loadSelectedMatch();
-  }
+    required this.loadCompletedIds,
+  }) : assert(
+         matches.isNotEmpty,
+         'LineupCubit precisa de pelo menos uma partida',
+       ),
+       super(LineupState(matches: matches));
 
   static const maxAttempts = 6;
 
@@ -35,16 +42,34 @@ class LineupCubit extends Cubit<LineupState> {
   final Future<void> Function(LineupGameState state) saveState;
   final Future<String?> Function() loadSelectedMatchId;
   final Future<void> Function(String matchId) saveSelectedMatchId;
+  final Future<Set<String>> Function() loadCompletedIds;
 
-  /// Restaura a última partida vista (ver `LineupStorage.
-  /// loadSelectedMatchId`) — se nunca houve uma, ou se o id salvo não
-  /// existe mais no banco atual, cai numa entrada PRONTO (números
-  /// confirmados) como ponto de partida seguro.
+  /// Sempre começa pela primeira partida ainda não concluída (na ordem já
+  /// reembaralhada — as concluídas ficam paradas no lugar, só o resto troca
+  /// de posição), A NÃO SER que exista uma partida salva (ver
+  /// [saveSelectedMatchId]) em que o usuário realmente tenha jogado algo —
+  /// só navegar/olhar (`nextMatch`/`previousMatch`) não conta como "retomar
+  /// daqui", só um palpite enviado ou uma desistência contam (ver
+  /// [submitGuess]/[giveUp]). Sem essa distinção, só passar o olho pelas 31
+  /// partidas e sair deixava o jogo "preso" na última olhada, mesmo com
+  /// nada de fato jogado ali.
   Future<void> loadSelectedMatch() async {
+    final completedIds = await loadCompletedIds();
+    final ordered = shuffleKeepingDone(
+      state.matches,
+      (match) => completedIds.contains(match.id),
+    );
+    emit(state.copyWith(matches: ordered));
+
     final savedId = await loadSelectedMatchId();
-    final matches = state.matches;
-    final match = (savedId != null ? _findMatch(savedId) : null) ?? matches.first;
-    await _loadMatch(match);
+    final resumeMatch = savedId != null && !completedIds.contains(savedId)
+        ? _findMatch(savedId)
+        : null;
+    final firstIncomplete = ordered.firstWhere(
+      (match) => !completedIds.contains(match.id),
+      orElse: () => ordered.first,
+    );
+    await _loadMatch(resumeMatch ?? firstIncomplete);
   }
 
   Future<void> nextMatch() async {
@@ -75,8 +100,10 @@ class LineupCubit extends Cubit<LineupState> {
   /// Ponto único de troca de partida — usado tanto na carga inicial quanto
   /// em [nextMatch]/[previousMatch]/[selectMatch]. Sempre limpa o jogador
   /// selecionado e o palpite em edição (são da partida anterior, não fazem
-  /// sentido na nova) e sempre persiste a nova seleção, pra reabrir o app
-  /// direto nela da próxima vez.
+  /// sentido na nova). NÃO persiste a seleção aqui — só navegar por
+  /// [nextMatch]/[previousMatch] não é "retomar daqui" (ver
+  /// [loadSelectedMatch]); quem persiste é [submitGuess]/[giveUp], quando o
+  /// usuário realmente joga alguma coisa nessa partida.
   Future<void> _loadMatch(LineupMatch match) async {
     emit(
       state.copyWith(
@@ -88,7 +115,8 @@ class LineupCubit extends Cubit<LineupState> {
       ),
     );
     final saved = await loadState(match.id);
-    final game = saved ?? LineupGameState(matchId: match.id, startedAt: DateTime.now());
+    final game =
+        saved ?? LineupGameState(matchId: match.id, startedAt: DateTime.now());
     emit(state.copyWith(status: LoadStatus.success, game: game));
     if (saved == null) {
       // Persiste já na criação — sem isso, `startedAt` (e o cronômetro do
@@ -96,7 +124,6 @@ class LineupCubit extends Cubit<LineupState> {
       // palpite.
       await saveState(game);
     }
-    await saveSelectedMatchId(match.id);
   }
 
   /// Chamado pela UI depois de mostrar o diálogo de resultado — zera
@@ -201,6 +228,7 @@ class LineupCubit extends Cubit<LineupState> {
       ),
     );
     await saveState(updatedGame);
+    await saveSelectedMatchId(match.id);
   }
 
   Future<void> giveUp() async {
@@ -230,6 +258,7 @@ class LineupCubit extends Cubit<LineupState> {
       ),
     );
     await saveState(updatedGame);
+    await saveSelectedMatchId(match.id);
   }
 
   bool _allPlayersDone(LineupMatch match, LineupGameState game) {

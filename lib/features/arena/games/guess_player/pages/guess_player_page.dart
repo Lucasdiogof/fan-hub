@@ -13,9 +13,10 @@ import 'package:goias_app/features/arena/games/guess_player/widgets/guess_autoco
 import 'package:goias_app/features/arena/games/guess_player/widgets/guess_blurred_photo.dart';
 import 'package:goias_app/features/arena/games/guess_player/widgets/guess_comparison_table.dart';
 import 'package:goias_app/features/arena/games/guess_player/widgets/guess_confetti.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
 class GuessPlayerPage extends StatelessWidget {
   const GuessPlayerPage({super.key});
@@ -29,6 +30,7 @@ class GuessPlayerPage extends StatelessWidget {
         loadRound: storage.loadActiveRound,
         saveRound: storage.saveActiveRound,
         clearRound: storage.clearActiveRound,
+        recordRoundResult: storage.recordRoundResult,
       ),
       child: const _GuessPlayerView(),
     );
@@ -77,23 +79,10 @@ class _GuessPlayerView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Row(
-                    children: [
-                      BackButtonCircle(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                      ),
-                      const SizedBox(width: AppSpacing.md),
-                      Text(
-                        'QUEM É O ESMERALDINO?',
-                        style: TextStyle(
-                          color: colors.textPrimary,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 0.3,
-                        ),
-                      ),
-                    ],
+                  ArenaGameHeader(
+                    title: 'QUEM VESTIU O MANTO?',
+                    onBack: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
                   ),
                   const SizedBox(height: AppSpacing.xl),
                   Expanded(child: _Body(state: state)),
@@ -129,7 +118,7 @@ class _Body extends StatelessWidget {
     if (state.status != LoadStatus.success ||
         state.secretPlayer == null ||
         state.round == null) {
-      return Center(child: CircularProgressIndicator(color: colors.primary));
+      return const Center(child: GoiasLoadingIndicator());
     }
 
     final round = state.round!;

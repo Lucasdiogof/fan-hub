@@ -144,7 +144,9 @@ class _LetterCell extends StatelessWidget {
       ),
       null => (
         letter != null ? colors.surface : colors.surfaceRaised,
-        letter != null ? colors.primary : colors.textHint.withValues(alpha: 0.45),
+        letter != null
+            ? colors.primary
+            : colors.textHint.withValues(alpha: 0.45),
         colors.textPrimary,
         null,
         null,

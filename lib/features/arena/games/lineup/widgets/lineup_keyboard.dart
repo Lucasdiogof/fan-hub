@@ -28,56 +28,59 @@ class LineupKeyboard extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         const perKeyMargin = 4.0;
-        final keyWidth =
-            ((constraints.maxWidth - perKeyMargin * 10) / 10).clamp(22.0, 40.0);
+        final keyWidth = ((constraints.maxWidth - perKeyMargin * 10) / 10)
+            .clamp(22.0, 40.0);
         return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (final row in _rows) ...[
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 3),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                for (final letter in row.split(''))
-                  _Key(
-                    label: letter,
-                    status: keyboardState[letter],
-                    onTap: () => onLetter(letter),
-                    width: keyWidth,
-                  ),
-              ],
-            ),
-          ),
-          if (row == 'ZXCVBNM')
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 6),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: _Key(
-                      label: 'Apagar',
-                      wide: true,
-                      onTap: onDelete,
-                      icon: Icons.backspace_outlined,
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    flex: 2,
-                    child: _Key(
-                      label: 'Confirmar',
-                      wide: true,
-                      onTap: canSubmit ? onEnter : null,
-                      icon: Icons.check_rounded,
-                      emphasize: canSubmit,
-                    ),
-                  ),
-                ],
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final row in _rows) ...[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (final letter in row.split(''))
+                      _Key(
+                        label: letter,
+                        status: keyboardState[letter],
+                        onTap: () => onLetter(letter),
+                        width: keyWidth,
+                      ),
+                  ],
+                ),
               ),
-            ),
-        ],
-      ],
+              if (row == 'ZXCVBNM')
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 3,
+                    horizontal: 6,
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: _Key(
+                          label: 'Apagar',
+                          wide: true,
+                          onTap: onDelete,
+                          icon: Icons.backspace_outlined,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Expanded(
+                        flex: 2,
+                        child: _Key(
+                          label: 'Confirmar',
+                          wide: true,
+                          onTap: canSubmit ? onEnter : null,
+                          icon: Icons.check_rounded,
+                          emphasize: canSubmit,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ],
         );
       },
     );

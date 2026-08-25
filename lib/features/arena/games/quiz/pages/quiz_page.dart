@@ -8,33 +8,47 @@ import 'package:goias_app/features/arena/data/arena_scores.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_cubit.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_state.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
+import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_logic.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
+/// [cubit], quando fornecido, já veio construído e carregado por quem
+/// navegou pra cá (ver `GlobalLoading.run` em `quiz_level_page.dart`) — a
+/// tela só reaproveita via `BlocProvider.value`. Fica `null` (e a tela
+/// cria/carrega o próprio Cubit) só em navegação direta por URL.
 class QuizPlayPage extends StatelessWidget {
   const QuizPlayPage({
     required this.difficulty,
     this.isReview = false,
+    this.cubit,
     super.key,
   });
 
   final QuizDifficulty difficulty;
   final bool isReview;
+  final QuizCubit? cubit;
 
   String get _gameId => 'quiz_${difficulty.name}';
 
   @override
   Widget build(BuildContext context) {
+    final preloaded = cubit;
+    if (preloaded != null) {
+      return BlocProvider.value(value: preloaded, child: const _QuizView());
+    }
     return BlocProvider(
       create: (_) => QuizCubit(
         difficulty: difficulty,
         isReview: isReview,
         repository: sl<QuizProgressRepository>(),
+        questionsRepository: sl<QuizQuestionRepository>(),
         loadBest: () => sl<ArenaScores>().bestScore(_gameId),
         saveBest: (score) => sl<ArenaScores>().saveIfBest(_gameId, score),
-      ),
+      )..init(),
       child: const _QuizView(),
     );
   }
@@ -78,39 +92,12 @@ class _QuizView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Row(
-                  children: [
-                    _CircleButton(
-                      icon: Icons.arrow_back_rounded,
-                      onTap: () =>
-                          context.canPop() ? context.pop() : context.go('/'),
-                    ),
-                    const SizedBox(width: AppSpacing.md),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'QUIZ DO VERDÃO',
-                            style: TextStyle(
-                              color: colors.textPrimary,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 0.3,
-                            ),
-                          ),
-                          Text(
-                            'Nível ${context.read<QuizCubit>().difficulty.label}',
-                            style: TextStyle(
-                              color: colors.textHint,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                ArenaGameHeader(
+                  title: 'QUIZ DO VERDÃO',
+                  subtitle:
+                      'Nível ${context.read<QuizCubit>().difficulty.label}',
+                  onBack: () =>
+                      context.canPop() ? context.pop() : context.go('/'),
                 ),
                 const SizedBox(height: AppSpacing.xl),
                 Expanded(
@@ -119,11 +106,7 @@ class _QuizView extends StatelessWidget {
                         previous.status != current.status,
                     builder: (context, statusState) {
                       if (statusState.status != LoadStatus.success) {
-                        return Center(
-                          child: CircularProgressIndicator(
-                            color: colors.primary,
-                          ),
-                        );
+                        return const Center(child: GoiasLoadingIndicator());
                       }
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -304,30 +287,6 @@ class _OptionTile extends StatelessWidget {
                 Icon(trailingIcon, color: foreground, size: 20),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _CircleButton extends StatelessWidget {
-  const _CircleButton({required this.icon, required this.onTap});
-
-  final IconData icon;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Material(
-      color: colors.surface,
-      shape: const CircleBorder(),
-      child: InkWell(
-        onTap: onTap,
-        customBorder: const CircleBorder(),
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.sm),
-          child: Icon(icon, size: 20, color: colors.textPrimary),
         ),
       ),
     );

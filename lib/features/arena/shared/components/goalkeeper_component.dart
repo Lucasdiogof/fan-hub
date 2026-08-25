@@ -34,7 +34,8 @@ enum KeeperPose { idle, diveLeft, diveRight, center }
 ///   estiver disponível — mantém o comportamento antigo (tamanho fixo,
 ///   `Anchor.bottomCenter`, mergulho animado via transform no `render`).
 class GoalkeeperComponent extends PositionComponent {
-  GoalkeeperComponent({required this.jersey}) : super(size: Vector2(85, 120), anchor: Anchor.bottomCenter);
+  GoalkeeperComponent({required this.jersey})
+    : super(size: Vector2(85, 120), anchor: Anchor.bottomCenter);
 
   final Color jersey;
   KeeperPose pose = KeeperPose.idle;
@@ -92,9 +93,15 @@ class GoalkeeperComponent extends PositionComponent {
   /// trajetória) continua sendo a mesma referência em todo frame, então a
   /// troca de pose não pula nem flutua.
   static const List<Offset> _pivotFraction = [
-    Offset(0.5, 0.952), // idle — pés (medido: bbox alpha vai até 95,2% da altura)
+    Offset(
+      0.5,
+      0.952,
+    ), // idle — pés (medido: bbox alpha vai até 95,2% da altura)
     Offset(0.5, 0.939), // impulso — pés, levemente agachado (medido: 93,9%)
-    Offset(0.5, 0.50), // início do mergulho — centro de massa (conteúdo já sai centralizado no recorte)
+    Offset(
+      0.5,
+      0.50,
+    ), // início do mergulho — centro de massa (conteúdo já sai centralizado no recorte)
     Offset(0.5, 0.50), // mergulho estendido — centro de massa
     Offset(0.5, 0.50), // queda — centro de massa
   ];
@@ -238,7 +245,8 @@ class GoalkeeperComponent extends PositionComponent {
   }
 
   late final Paint _body = Paint()..color = jersey;
-  late final Paint _bodyShade = Paint()..color = Color.lerp(jersey, const Color(0xFF000000), 0.3)!;
+  late final Paint _bodyShade = Paint()
+    ..color = Color.lerp(jersey, const Color(0xFF000000), 0.3)!;
   final Paint _skin = Paint()..color = ArenaColors.skin;
   final Paint _short = Paint()..color = const Color(0xFF0d0f11);
   final Paint _sock = Paint()..color = const Color(0xFF0d0f11);
@@ -276,7 +284,11 @@ class GoalkeeperComponent extends PositionComponent {
     final paint = Paint()..filterQuality = FilterQuality.medium;
 
     canvas.drawOval(
-      Rect.fromCenter(center: Offset(size.x / 2, size.y - 2), width: size.x * 0.7, height: size.y * 0.12),
+      Rect.fromCenter(
+        center: Offset(size.x / 2, size.y - 2),
+        width: size.x * 0.7,
+        height: size.y * 0.12,
+      ),
       _shadow,
     );
 
@@ -305,13 +317,24 @@ class GoalkeeperComponent extends PositionComponent {
     // Leve inclinação de pronto-defesa mesmo parado; no mergulho o corpo
     // some pro lado (translação), sobe num arco curto (impulso) e gira.
     final dx = direction * w * 0.92 * eased;
-    final dy = -sin(min(_diveT, 0.9) * pi / 0.9) * h * (direction == 0 ? 0.10 : 0.30) * (_diving ? 1 : 0);
+    final dy =
+        -sin(min(_diveT, 0.9) * pi / 0.9) *
+        h *
+        (direction == 0 ? 0.10 : 0.30) *
+        (_diving ? 1 : 0);
     final rotation = 0.10 + direction * eased * 0.85;
 
     // A sombra acompanha o deslocamento horizontal (fica no "chão", por
     // isso ignora o `dy` do impulso) — sem isso ela ficava presa no meio
     // do gol enquanto o goleiro já tinha saído de cima dela.
-    canvas.drawOval(Rect.fromCenter(center: Offset(cx + dx, h - 2), width: w * 0.7, height: h * 0.05), _shadow);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(cx + dx, h - 2),
+        width: w * 0.7,
+        height: h * 0.05,
+      ),
+      _shadow,
+    );
 
     final headY = h * 0.10;
     final headR = w * 0.145;
@@ -334,11 +357,19 @@ class GoalkeeperComponent extends PositionComponent {
       bottomRight: const Radius.circular(4),
     );
     canvas.drawRRect(torso, _body);
-    canvas.drawRect(Rect.fromLTWH(cx - w * 0.26, torsoTop, w * 0.16, torsoBottom - torsoTop), _bodyShade);
+    canvas.drawRect(
+      Rect.fromLTWH(cx - w * 0.26, torsoTop, w * 0.16, torsoBottom - torsoTop),
+      _bodyShade,
+    );
 
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromLTWH(cx - w * 0.24, torsoBottom - 4, w * 0.48, shortsBottom - torsoBottom + 4),
+        Rect.fromLTWH(
+          cx - w * 0.24,
+          torsoBottom - 4,
+          w * 0.48,
+          shortsBottom - torsoBottom + 4,
+        ),
         const Radius.circular(6),
       ),
       _short,
@@ -346,21 +377,36 @@ class GoalkeeperComponent extends PositionComponent {
 
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromLTWH(cx - stance - w * 0.16, shortsBottom - 4, w * 0.16, kneeY - shortsBottom + 4),
+        Rect.fromLTWH(
+          cx - stance - w * 0.16,
+          shortsBottom - 4,
+          w * 0.16,
+          kneeY - shortsBottom + 4,
+        ),
         const Radius.circular(5),
       ),
       _sock,
     );
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromLTWH(cx + stance, shortsBottom - 4, w * 0.16, kneeY - shortsBottom + 4),
+        Rect.fromLTWH(
+          cx + stance,
+          shortsBottom - 4,
+          w * 0.16,
+          kneeY - shortsBottom + 4,
+        ),
         const Radius.circular(5),
       ),
       _sock,
     );
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromLTWH(cx - stance * 1.6 - w * 0.17, kneeY - 3, w * 0.2, h - kneeY + 3),
+        Rect.fromLTWH(
+          cx - stance * 1.6 - w * 0.17,
+          kneeY - 3,
+          w * 0.2,
+          h - kneeY + 3,
+        ),
         const Radius.circular(5),
       ),
       _boot,
@@ -379,10 +425,30 @@ class GoalkeeperComponent extends PositionComponent {
     canvas.drawPath(
       Path()
         ..moveTo(cx - headR * 1.05, headY + headR * 0.6)
-        ..quadraticBezierTo(cx - headR * 1.15, headY - headR * 0.8, cx, headY - headR * 1.25)
-        ..quadraticBezierTo(cx + headR * 1.15, headY - headR * 0.8, cx + headR * 1.05, headY + headR * 0.6)
-        ..quadraticBezierTo(cx + headR * 0.9, headY - headR * 0.05, cx, headY - headR * 0.3)
-        ..quadraticBezierTo(cx - headR * 0.9, headY - headR * 0.05, cx - headR * 1.05, headY + headR * 0.6)
+        ..quadraticBezierTo(
+          cx - headR * 1.15,
+          headY - headR * 0.8,
+          cx,
+          headY - headR * 1.25,
+        )
+        ..quadraticBezierTo(
+          cx + headR * 1.15,
+          headY - headR * 0.8,
+          cx + headR * 1.05,
+          headY + headR * 0.6,
+        )
+        ..quadraticBezierTo(
+          cx + headR * 0.9,
+          headY - headR * 0.05,
+          cx,
+          headY - headR * 0.3,
+        )
+        ..quadraticBezierTo(
+          cx - headR * 0.9,
+          headY - headR * 0.05,
+          cx - headR * 1.05,
+          headY + headR * 0.6,
+        )
         ..close(),
       _hair,
     );
@@ -390,7 +456,14 @@ class GoalkeeperComponent extends PositionComponent {
     canvas.restore();
   }
 
-  void _renderArms(Canvas canvas, double w, double h, double torsoTop, double direction, double eased) {
+  void _renderArms(
+    Canvas canvas,
+    double w,
+    double h,
+    double torsoTop,
+    double direction,
+    double eased,
+  ) {
     final armPaint = _arm;
     final shoulderY = torsoTop + h * 0.06;
     final left = Offset(w * 0.24, shoulderY);
@@ -412,8 +485,14 @@ class GoalkeeperComponent extends PositionComponent {
       // isso é o que faz parecer salto e não arrasto lateral.
       final reach = w * (0.30 + 0.45 * eased);
       final lift = h * 0.10 * eased;
-      leftHand = Offset(left.dx + direction * reach * 0.85, shoulderY - lift - h * 0.06 * eased);
-      rightHand = Offset(right.dx + direction * reach, shoulderY - lift - h * 0.10 * eased);
+      leftHand = Offset(
+        left.dx + direction * reach * 0.85,
+        shoulderY - lift - h * 0.06 * eased,
+      );
+      rightHand = Offset(
+        right.dx + direction * reach,
+        shoulderY - lift - h * 0.10 * eased,
+      );
     }
 
     canvas.drawLine(left, leftHand, armPaint);

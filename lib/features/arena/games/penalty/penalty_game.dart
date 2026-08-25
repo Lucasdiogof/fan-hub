@@ -14,7 +14,11 @@ import 'package:goias_app/features/arena/shared/components/goalkeeper_component.
 import 'package:goias_app/features/arena/shared/components/player_component.dart';
 
 class PenaltyHudData {
-  const PenaltyHudData({required this.attempts, required this.goals, this.lastResult});
+  const PenaltyHudData({
+    required this.attempts,
+    required this.goals,
+    this.lastResult,
+  });
 
   final List<PenaltyResult> attempts;
   final int goals;
@@ -45,9 +49,12 @@ class PenaltyGame extends FlameGame {
   final Future<int> Function() loadBest;
   final Future<void> Function(int score) saveBest;
 
-  final ValueNotifier<PenaltyHudData> hud =
-      ValueNotifier<PenaltyHudData>(const PenaltyHudData(attempts: [], goals: 0));
-  final ValueNotifier<PenaltyEndData?> ended = ValueNotifier<PenaltyEndData?>(null);
+  final ValueNotifier<PenaltyHudData> hud = ValueNotifier<PenaltyHudData>(
+    const PenaltyHudData(attempts: [], goals: 0),
+  );
+  final ValueNotifier<PenaltyEndData?> ended = ValueNotifier<PenaltyEndData?>(
+    null,
+  );
 
   final Random _rng = Random();
   final List<PenaltyResult> _attempts = [];
@@ -99,7 +106,8 @@ class PenaltyGame extends FlameGame {
     _field = FieldComponent();
     _goal = GoalComponent();
     _keeper = GoalkeeperComponent(jersey: ArenaColors.opponentKeeper);
-    _player = PlayerComponent(jersey: ArenaColors.goiasOutfield)..onContactFrame = _strikeBall;
+    _player = PlayerComponent(jersey: ArenaColors.goiasOutfield)
+      ..onContactFrame = _strikeBall;
     // ~11% da altura do sprite do jogador (192px) — bola pequena e
     // proporcional, não um "botão" de UI grande no meio da cena.
     _ball = BallComponent(radius: 11);
@@ -129,7 +137,9 @@ class PenaltyGame extends FlameGame {
     // Única fonte de verdade pra onde o goleiro pode ir — o componente
     // deriva toda a trajetória do mergulho a partir desse retângulo, nunca
     // de números soltos daqui.
-    _keeper.updateGoalBounds(Rect.fromLTWH(_goal.position.x, _goal.position.y, goalW, goalH));
+    _keeper.updateGoalBounds(
+      Rect.fromLTWH(_goal.position.x, _goal.position.y, goalW, goalH),
+    );
     // Só força a posição de "parado, prestes a começar" fora de uma
     // cobrança em andamento — senão um resize no meio da corrida/chute
     // teleportaria o jogador de volta pro início, cortando a animação.
@@ -248,8 +258,14 @@ class PenaltyGame extends FlameGame {
   void _resolveShot() {
     _phase = PenaltyPhase.resolving;
     _attempts.add(_pendingResult);
-    hud.value = PenaltyHudData(attempts: List.of(_attempts), goals: _goals, lastResult: _pendingResult);
-    add(TimerComponent(period: 1.05, removeOnFinish: true, onTick: _afterResult));
+    hud.value = PenaltyHudData(
+      attempts: List.of(_attempts),
+      goals: _goals,
+      lastResult: _pendingResult,
+    );
+    add(
+      TimerComponent(period: 1.05, removeOnFinish: true, onTick: _afterResult),
+    );
   }
 
   void _afterResult() {

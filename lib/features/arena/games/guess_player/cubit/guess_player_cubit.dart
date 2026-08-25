@@ -13,6 +13,7 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
     required this._loadRound,
     required this._saveRound,
     required this._clearRound,
+    required this._recordRoundResult,
   }) : super(const GuessPlayerState()) {
     _init();
   }
@@ -21,6 +22,7 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
   final Future<GuessPlayerRoundState?> Function() _loadRound;
   final Future<void> Function(GuessPlayerRoundState state) _saveRound;
   final Future<void> Function() _clearRound;
+  final Future<void> Function({required bool won}) _recordRoundResult;
   final _random = Random();
   String? _lastSecretId;
 
@@ -101,6 +103,7 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
 
     if (updated.isOver) {
       await _clearRound();
+      await _recordRoundResult(won: updated.won);
     } else {
       await _saveRound(updated);
     }

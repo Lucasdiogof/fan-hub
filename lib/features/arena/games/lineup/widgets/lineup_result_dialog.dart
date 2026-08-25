@@ -17,12 +17,20 @@ Future<void> showLineupResultDialog(
 }) {
   return showDialog<void>(
     context: context,
-    builder: (context) => _LineupResultDialog(state: state, onPrevious: onPrevious, onNext: onNext),
+    builder: (context) => _LineupResultDialog(
+      state: state,
+      onPrevious: onPrevious,
+      onNext: onNext,
+    ),
   );
 }
 
 class _LineupResultDialog extends StatelessWidget {
-  const _LineupResultDialog({required this.state, this.onPrevious, this.onNext});
+  const _LineupResultDialog({
+    required this.state,
+    this.onPrevious,
+    this.onNext,
+  });
 
   final LineupState state;
   final VoidCallback? onPrevious;
@@ -37,7 +45,9 @@ class _LineupResultDialog extends StatelessWidget {
 
     return Dialog(
       backgroundColor: colors.surface,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.card)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.card),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(AppSpacing.xl),
         child: Column(
@@ -45,16 +55,30 @@ class _LineupResultDialog extends StatelessWidget {
           children: [
             Text(
               'ESCALAÇÃO COMPLETA',
-              style: TextStyle(color: colors.primary, fontSize: 13, fontWeight: FontWeight.w800, letterSpacing: 1),
+              style: TextStyle(
+                color: colors.primary,
+                fontSize: 13,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 1,
+              ),
             ),
             const SizedBox(height: AppSpacing.lg),
             Text(
               '${state.solvedCount}/${state.totalPlayers}',
-              style: TextStyle(color: colors.textPrimary, fontSize: 40, fontWeight: FontWeight.w900),
+              style: TextStyle(
+                color: colors.textPrimary,
+                fontSize: 40,
+                fontWeight: FontWeight.w900,
+              ),
             ),
             Text(
               'DESCOBERTOS',
-              style: TextStyle(color: colors.textHint, fontSize: 11, fontWeight: FontWeight.w800, letterSpacing: 1),
+              style: TextStyle(
+                color: colors.textHint,
+                fontSize: 11,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 1,
+              ),
             ),
             const SizedBox(height: AppSpacing.lg),
             Row(
@@ -70,9 +94,13 @@ class _LineupResultDialog extends StatelessWidget {
                 Expanded(
                   child: IconButton.filledTonal(
                     onPressed: () async {
-                      await Clipboard.setData(ClipboardData(text: buildLineupShareText(state)));
+                      await Clipboard.setData(
+                        ClipboardData(text: buildLineupShareText(state)),
+                      );
                       if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Resultado copiado.')));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Resultado copiado.')),
+                        );
                       }
                     },
                     icon: const Icon(Icons.copy_rounded, size: 18),
@@ -82,7 +110,9 @@ class _LineupResultDialog extends StatelessWidget {
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(
                   child: IconButton.filledTonal(
-                    onPressed: () => SharePlus.instance.share(ShareParams(text: buildLineupShareText(state))),
+                    onPressed: () => SharePlus.instance.share(
+                      ShareParams(text: buildLineupShareText(state)),
+                    ),
                     icon: const Icon(Icons.share_rounded, size: 18),
                     tooltip: 'Compartilhar resultado',
                   ),
@@ -105,7 +135,8 @@ class _LineupResultDialog extends StatelessWidget {
                     label: const Text('PRÓXIMO JOGO'),
                   ),
                 ),
-              if (onNext != null && onPrevious != null) const SizedBox(height: AppSpacing.sm),
+              if (onNext != null && onPrevious != null)
+                const SizedBox(height: AppSpacing.sm),
               if (onPrevious != null)
                 SizedBox(
                   width: double.infinity,
@@ -142,10 +173,22 @@ class _Stat extends StatelessWidget {
     final colors = context.colors;
     return Column(
       children: [
-        Text(value, style: TextStyle(color: colors.textPrimary, fontSize: 18, fontWeight: FontWeight.w800)),
+        Text(
+          value,
+          style: TextStyle(
+            color: colors.textPrimary,
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
         Text(
           label,
-          style: TextStyle(color: colors.textHint, fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 0.6),
+          style: TextStyle(
+            color: colors.textHint,
+            fontSize: 10,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.6,
+          ),
         ),
       ],
     );

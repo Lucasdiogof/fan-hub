@@ -1,32 +1,37 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_state.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
+import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_logic.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
-import 'package:goias_app/features/arena/games/quiz/quiz_questions.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 class QuizCubit extends Cubit<QuizState> {
+  /// `init()` é chamado explicitamente por quem cria o Cubit (nunca aqui
+  /// no construtor) — pra nunca disparar duas buscas concorrentes quando
+  /// o carregamento já acontece antes da navegação (ver `GlobalLoading.run`
+  /// no ponto de entrada, `quiz_level_page.dart`).
   QuizCubit({
     required this.difficulty,
     required this.isReview,
     required this.repository,
+    required this.questionsRepository,
     required this.loadBest,
     required this.saveBest,
-  }) : super(const QuizState()) {
-    _init();
-  }
+  }) : super(const QuizState());
 
   final QuizDifficulty difficulty;
   final bool isReview;
   final QuizProgressRepository repository;
+  final QuizQuestionRepository questionsRepository;
   final Future<int> Function() loadBest;
   final Future<void> Function(int score) saveBest;
 
-  Future<void> _init() async {
+  Future<void> init() async {
     emit(state.copyWith(status: LoadStatus.loading));
+    final bank = await questionsRepository.load();
     final best = await loadBest();
-    final levelTotal = questionsForLevel(difficulty).length;
+    final levelTotal = questionsForLevel(bank, difficulty).length;
 
     final answeredBefore = (await repository.getAnsweredIds(difficulty)).length;
 
@@ -35,9 +40,7 @@ class QuizCubit extends Cubit<QuizState> {
         session.isReview == isReview &&
         session.questionIds.isNotEmpty) {
       final questions = session.questionIds
-          .map(
-            (id) => quizQuestions.firstWhere((question) => question.id == id),
-          )
+          .map((id) => bank.firstWhere((question) => question.id == id))
           .map(shuffleOptions)
           .toList();
       emit(
@@ -58,10 +61,14 @@ class QuizCubit extends Cubit<QuizState> {
     final List<QuizQuestion> questions;
     if (isReview) {
       final pending = await repository.getPendingReviewIds(difficulty);
-      questions = pickReviewQuestions(difficulty, pendingReviewIds: pending);
+      questions = pickReviewQuestions(
+        bank,
+        difficulty,
+        pendingReviewIds: pending,
+      );
     } else {
       final answered = await repository.getAnsweredIds(difficulty);
-      questions = pickSessionQuestions(difficulty, answeredIds: answered);
+      questions = pickSessionQuestions(bank, difficulty, answeredIds: answered);
     }
 
     if (questions.isEmpty) {

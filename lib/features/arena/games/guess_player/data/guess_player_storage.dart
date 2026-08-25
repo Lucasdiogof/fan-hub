@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// guardam progresso por partida/jogador navegável) — chave fixa, sem id.
 class GuessPlayerStorage {
   static const _key = 'guess_player_active_round';
+  static const _playedKey = 'guess_player_stats_played';
+  static const _correctKey = 'guess_player_stats_correct';
 
   Future<GuessPlayerRoundState?> loadActiveRound() async {
     final prefs = await SharedPreferences.getInstance();
@@ -29,5 +31,25 @@ class GuessPlayerStorage {
   Future<void> clearActiveRound() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_key);
+  }
+
+  /// Estatística real (não estimada) pro card da Arena: quantas rodadas
+  /// terminaram (ganhas ou perdidas) e quantas foram acertadas.
+  Future<({int played, int correct})> loadStats() async {
+    final prefs = await SharedPreferences.getInstance();
+    return (
+      played: prefs.getInt(_playedKey) ?? 0,
+      correct: prefs.getInt(_correctKey) ?? 0,
+    );
+  }
+
+  /// Chamado uma vez por rodada, no momento em que ela termina (ver
+  /// `GuessPlayerCubit.submitGuess`) — nunca no meio da rodada.
+  Future<void> recordRoundResult({required bool won}) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_playedKey, (prefs.getInt(_playedKey) ?? 0) + 1);
+    if (won) {
+      await prefs.setInt(_correctKey, (prefs.getInt(_correctKey) ?? 0) + 1);
+    }
   }
 }

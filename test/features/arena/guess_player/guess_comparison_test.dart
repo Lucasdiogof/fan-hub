@@ -59,20 +59,6 @@ void main() {
     });
   });
 
-  group('compareNationality', () {
-    test('mesmo código -> match', () {
-      expect(compareNationality('BR', 'BR'), MatchResult.match);
-    });
-
-    test('código diferente -> mismatch', () {
-      expect(compareNationality('BR', 'VE'), MatchResult.mismatch);
-    });
-
-    test('dado ausente -> unknown', () {
-      expect(compareNationality(null, 'BR'), MatchResult.unknown);
-    });
-  });
-
   group('compareDebutYear', () {
     test('mesmo ano -> match', () {
       expect(compareDebutYear(2019, 2019), DirectionalResult.match);

@@ -2,7 +2,8 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart' show TextPainter, TextSpan, TextStyle, TextDirection, FontWeight, Curves;
+import 'package:flutter/material.dart'
+    show TextPainter, TextSpan, TextStyle, TextDirection, FontWeight, Curves;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:goias_app/features/arena/shared/arena_assets.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
@@ -28,8 +29,11 @@ import 'package:goias_app/features/arena/shared/arena_colors.dart';
 /// `PenaltyGame` usa pra iniciar a trajetória da bola, nunca um
 /// `Future.delayed`/`Timer` arbitrário desacoplado da animação.
 class PlayerComponent extends PositionComponent {
-  PlayerComponent({required this.jersey, this.shorts = ArenaColors.goiasShorts, this.number = '10'})
-    : super(size: Vector2(96, 192), anchor: Anchor.bottomCenter) {
+  PlayerComponent({
+    required this.jersey,
+    this.shorts = ArenaColors.goiasShorts,
+    this.number = '10',
+  }) : super(size: Vector2(96, 192), anchor: Anchor.bottomCenter) {
     _buildTexture();
   }
 
@@ -70,14 +74,17 @@ class PlayerComponent extends PositionComponent {
     }
   }
 
-  late final Paint _jerseyDark = Paint()..color = Color.lerp(jersey, const Color(0xFF000000), 0.35)!;
-  late final Paint _jerseyLight = Paint()..color = Color.lerp(jersey, const Color(0xFFFFFFFF), 0.08)!;
+  late final Paint _jerseyDark = Paint()
+    ..color = Color.lerp(jersey, const Color(0xFF000000), 0.35)!;
+  late final Paint _jerseyLight = Paint()
+    ..color = Color.lerp(jersey, const Color(0xFFFFFFFF), 0.08)!;
   final Paint _white = Paint()..color = const Color(0xFFF4F8F5);
   final Paint _shortsPaint = Paint()..color = ArenaColors.goiasShorts;
   final Paint _sock = Paint()..color = const Color(0xFF063014);
   final Paint _boot = Paint()..color = const Color(0xFF14100c);
   final Paint _skin = Paint()..color = ArenaColors.skin;
-  final Paint _skinShade = Paint()..color = Color.lerp(ArenaColors.skin, const Color(0xFF000000), 0.15)!;
+  final Paint _skinShade = Paint()
+    ..color = Color.lerp(ArenaColors.skin, const Color(0xFF000000), 0.15)!;
   final Paint _hair = Paint()..color = const Color(0xFF20140c);
   final Paint _hairShine = Paint()..color = const Color(0x1AFFFFFF);
   final Paint _texture = Paint()
@@ -199,9 +206,19 @@ class PlayerComponent extends PositionComponent {
     _collarPath = Path()
       ..moveTo(cx - w * 0.17, torsoTop - 1)
       ..quadraticBezierTo(cx - w * 0.11, torsoTop - 15, cx, torsoTop - 17)
-      ..quadraticBezierTo(cx + w * 0.11, torsoTop - 15, cx + w * 0.17, torsoTop - 1)
+      ..quadraticBezierTo(
+        cx + w * 0.11,
+        torsoTop - 15,
+        cx + w * 0.17,
+        torsoTop - 1,
+      )
       ..quadraticBezierTo(cx + w * 0.12, torsoTop + 7, cx, torsoTop + 5)
-      ..quadraticBezierTo(cx - w * 0.12, torsoTop + 7, cx - w * 0.17, torsoTop - 1)
+      ..quadraticBezierTo(
+        cx - w * 0.12,
+        torsoTop + 7,
+        cx - w * 0.17,
+        torsoTop - 1,
+      )
       ..close();
 
     // Frisos brancos descendo dos ombros até a lateral do tronco, um de
@@ -216,7 +233,12 @@ class PlayerComponent extends PositionComponent {
     _numberPainter = TextPainter(
       text: TextSpan(
         text: number,
-        style: const TextStyle(color: Color(0xFFF4F8F5), fontSize: 32, fontWeight: FontWeight.w800, height: 1),
+        style: const TextStyle(
+          color: Color(0xFFF4F8F5),
+          fontSize: 32,
+          fontWeight: FontWeight.w800,
+          height: 1,
+        ),
       ),
       textDirection: TextDirection.ltr,
     )..layout();
@@ -240,20 +262,39 @@ class PlayerComponent extends PositionComponent {
     final w = size.x;
     final h = size.y;
 
-    canvas.drawOval(Rect.fromCenter(center: Offset(w / 2, h - 3), width: w * 0.62, height: h * 0.05), _shadow);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(w / 2, h - 3),
+        width: w * 0.62,
+        height: h * 0.05,
+      ),
+      _shadow,
+    );
 
     final int frame;
     if (_kicking) {
-      frame = _kickT < _contactAt ? _prepareFrame : (_kickT < 0.7 ? _contactFrame : _followFrame);
+      frame = _kickT < _contactAt
+          ? _prepareFrame
+          : (_kickT < 0.7 ? _contactFrame : _followFrame);
     } else if (_running) {
       frame = sin(_runT * 11) >= 0 ? _stepLeftFrame : _stepRightFrame;
     } else {
       frame = _idleFrame;
     }
 
-    final src = Rect.fromLTWH(frame * _sheetFrameW, 0, _sheetFrameW, _sheetFrameH);
+    final src = Rect.fromLTWH(
+      frame * _sheetFrameW,
+      0,
+      _sheetFrameW,
+      _sheetFrameH,
+    );
     final dst = Rect.fromLTWH(0, 0, w, h);
-    canvas.drawImageRect(_sheet!, src, dst, Paint()..filterQuality = FilterQuality.medium);
+    canvas.drawImageRect(
+      _sheet!,
+      src,
+      dst,
+      Paint()..filterQuality = FilterQuality.medium,
+    );
   }
 
   void _renderProcedural(Canvas canvas) {
@@ -274,7 +315,14 @@ class PlayerComponent extends PositionComponent {
 
     // Sombra no gramado — fora do lean do corpo, sempre "no chão" sob os
     // pés, pra não parecer que o jogador flutua.
-    canvas.drawOval(Rect.fromCenter(center: Offset(cx, h - 3), width: w * 0.62, height: h * 0.05), _shadow);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(cx, h - 3),
+        width: w * 0.62,
+        height: h * 0.05,
+      ),
+      _shadow,
+    );
 
     canvas.save();
     canvas.translate(cx, torsoBottom);
@@ -282,13 +330,26 @@ class PlayerComponent extends PositionComponent {
     canvas.translate(-cx, -torsoBottom);
 
     // Pescoço, entre a cabeça e a gola.
-    canvas.drawRect(Rect.fromLTWH(cx - w * 0.075, neckTop, w * 0.15, torsoTop - neckTop + 6), _skin);
+    canvas.drawRect(
+      Rect.fromLTWH(cx - w * 0.075, neckTop, w * 0.15, torsoTop - neckTop + 6),
+      _skin,
+    );
 
     final torso = Path()
       ..moveTo(cx - w * 0.30, torsoTop + 6)
-      ..quadraticBezierTo(cx - w * 0.34, (torsoTop + torsoBottom) / 2, cx - w * 0.24, torsoBottom)
+      ..quadraticBezierTo(
+        cx - w * 0.34,
+        (torsoTop + torsoBottom) / 2,
+        cx - w * 0.24,
+        torsoBottom,
+      )
       ..lineTo(cx + w * 0.24, torsoBottom)
-      ..quadraticBezierTo(cx + w * 0.34, (torsoTop + torsoBottom) / 2, cx + w * 0.30, torsoTop + 6)
+      ..quadraticBezierTo(
+        cx + w * 0.34,
+        (torsoTop + torsoBottom) / 2,
+        cx + w * 0.30,
+        torsoTop + 6,
+      )
       ..lineTo(cx + w * 0.15, torsoTop - 4)
       ..lineTo(cx, torsoTop + 8)
       ..lineTo(cx - w * 0.15, torsoTop - 4)
@@ -297,25 +358,55 @@ class PlayerComponent extends PositionComponent {
     canvas.save();
     canvas.clipPath(torso);
     canvas.drawRect(Rect.fromLTWH(0, 0, w, h), _jerseyDark);
-    canvas.drawRect(Rect.fromLTWH(cx - w * 0.34, torsoTop, w * 0.3, torsoBottom - torsoTop), _jerseyLight);
+    canvas.drawRect(
+      Rect.fromLTWH(cx - w * 0.34, torsoTop, w * 0.3, torsoBottom - torsoTop),
+      _jerseyLight,
+    );
     canvas.drawPath(_diamondPath, _texture);
     canvas.restore();
 
     // Ombros arredondados — cobrem a costura reta entre torso e braço.
-    canvas.drawCircle(Offset(cx - w * 0.30, torsoTop + 10), w * 0.075, _jerseyDark);
-    canvas.drawCircle(Offset(cx + w * 0.30, torsoTop + 10), w * 0.075, _jerseyDark);
+    canvas.drawCircle(
+      Offset(cx - w * 0.30, torsoTop + 10),
+      w * 0.075,
+      _jerseyDark,
+    );
+    canvas.drawCircle(
+      Offset(cx + w * 0.30, torsoTop + 10),
+      w * 0.075,
+      _jerseyDark,
+    );
 
     canvas.drawPath(_collarPath, _white);
     canvas.drawPath(_leftPipingPath, _piping);
     canvas.drawPath(_rightPipingPath, _piping);
     canvas.drawCircle(Offset(cx, torsoTop + 16), 6, _badgeRing);
 
-    _drawArm(canvas, side: -1, shoulderX: cx - w * 0.335, shoulderY: torsoTop + 8, armLen: (torsoBottom - torsoTop) * 0.82, w: w);
-    _drawArm(canvas, side: 1, shoulderX: cx + w * 0.335, shoulderY: torsoTop + 8, armLen: (torsoBottom - torsoTop) * 0.82, w: w);
+    _drawArm(
+      canvas,
+      side: -1,
+      shoulderX: cx - w * 0.335,
+      shoulderY: torsoTop + 8,
+      armLen: (torsoBottom - torsoTop) * 0.82,
+      w: w,
+    );
+    _drawArm(
+      canvas,
+      side: 1,
+      shoulderX: cx + w * 0.335,
+      shoulderY: torsoTop + 8,
+      armLen: (torsoBottom - torsoTop) * 0.82,
+      w: w,
+    );
 
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromLTWH(cx - w * 0.25, torsoBottom - 4, w * 0.5, shortsBottom - torsoBottom + 4),
+        Rect.fromLTWH(
+          cx - w * 0.25,
+          torsoBottom - 4,
+          w * 0.5,
+          shortsBottom - torsoBottom + 4,
+        ),
         const Radius.circular(6),
       ),
       _shortsPaint,
@@ -357,10 +448,20 @@ class PlayerComponent extends PositionComponent {
 
     _numberPainter.paint(
       canvas,
-      Offset(cx - _numberPainter.width / 2, torsoTop + (torsoBottom - torsoTop) * 0.32),
+      Offset(
+        cx - _numberPainter.width / 2,
+        torsoTop + (torsoBottom - torsoTop) * 0.32,
+      ),
     );
 
-    canvas.drawOval(Rect.fromCenter(center: Offset(cx, h * 0.075), width: w * 0.28, height: h * 0.15), _skin);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: Offset(cx, h * 0.075),
+        width: w * 0.28,
+        height: h * 0.15,
+      ),
+      _skin,
+    );
     _drawHair(canvas, cx, w, h);
 
     canvas.restore();
@@ -385,20 +486,44 @@ class PlayerComponent extends PositionComponent {
     final innerTop = Offset(shoulderX - side * w * 0.045, shoulderY);
     final outerElbow = Offset(shoulderX + bend + side * w * 0.05, elbowY);
     final innerElbow = Offset(shoulderX + bend - side * w * 0.025, elbowY);
-    final outerWrist = Offset(shoulderX + bend * 1.6 + side * w * 0.032, wristY);
+    final outerWrist = Offset(
+      shoulderX + bend * 1.6 + side * w * 0.032,
+      wristY,
+    );
     final innerWrist = Offset(shoulderX + bend * 1.6 - side * w * 0.02, wristY);
 
     final arm = Path()
       ..moveTo(outerTop.dx, outerTop.dy)
-      ..quadraticBezierTo(outerElbow.dx, outerElbow.dy, outerWrist.dx, outerWrist.dy)
+      ..quadraticBezierTo(
+        outerElbow.dx,
+        outerElbow.dy,
+        outerWrist.dx,
+        outerWrist.dy,
+      )
       ..lineTo(innerWrist.dx, innerWrist.dy)
-      ..quadraticBezierTo(innerElbow.dx, innerElbow.dy, innerTop.dx, innerTop.dy)
+      ..quadraticBezierTo(
+        innerElbow.dx,
+        innerElbow.dy,
+        innerTop.dx,
+        innerTop.dy,
+      )
       ..close();
     canvas.drawPath(arm, _jerseyDark);
 
     final cuffMid = Offset((outerWrist.dx + innerWrist.dx) / 2, wristY - 5);
-    canvas.drawOval(Rect.fromCenter(center: cuffMid, width: (outerWrist.dx - innerWrist.dx).abs() + 6, height: 11), _white);
-    canvas.drawCircle(Offset(cuffMid.dx, wristY + 6), (outerWrist.dx - innerWrist.dx).abs() * 0.65, _skin);
+    canvas.drawOval(
+      Rect.fromCenter(
+        center: cuffMid,
+        width: (outerWrist.dx - innerWrist.dx).abs() + 6,
+        height: 11,
+      ),
+      _white,
+    );
+    canvas.drawCircle(
+      Offset(cuffMid.dx, wristY + 6),
+      (outerWrist.dx - innerWrist.dx).abs() * 0.65,
+      _skin,
+    );
   }
 
   void _drawLeg(
@@ -431,14 +556,24 @@ class PlayerComponent extends PositionComponent {
 
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromLTWH(hipX + inset, thighBottom, kneeW, sockBottom - thighBottom),
+        Rect.fromLTWH(
+          hipX + inset,
+          thighBottom,
+          kneeW,
+          sockBottom - thighBottom,
+        ),
         const Radius.circular(4),
       ),
       _sock,
     );
     canvas.drawRRect(
       RRect.fromRectAndRadius(
-        Rect.fromLTWH(hipX + inset - 1, sockBottom - 2, kneeW + 2, h - sockBottom + 2),
+        Rect.fromLTWH(
+          hipX + inset - 1,
+          sockBottom - 2,
+          kneeW + 2,
+          h - sockBottom + 2,
+        ),
         const Radius.circular(4),
       ),
       _boot,
@@ -467,7 +602,12 @@ class PlayerComponent extends PositionComponent {
           headCenter.dx + headRx * 1.05,
           headCenter.dy + headRy * 0.55,
         )
-        ..quadraticBezierTo(headCenter.dx + headRx * 0.9, headCenter.dy - headRy * 0.05, cx, headCenter.dy - headRy * 0.3)
+        ..quadraticBezierTo(
+          headCenter.dx + headRx * 0.9,
+          headCenter.dy - headRy * 0.05,
+          cx,
+          headCenter.dy - headRy * 0.3,
+        )
         ..quadraticBezierTo(
           headCenter.dx - headRx * 0.9,
           headCenter.dy - headRy * 0.05,
@@ -480,7 +620,12 @@ class PlayerComponent extends PositionComponent {
     canvas.drawPath(
       Path()
         ..moveTo(headCenter.dx - headRx * 0.5, headCenter.dy - headRy * 0.9)
-        ..quadraticBezierTo(cx, headCenter.dy - headRy * 1.25, headCenter.dx + headRx * 0.2, headCenter.dy - headRy * 0.85)
+        ..quadraticBezierTo(
+          cx,
+          headCenter.dy - headRy * 1.25,
+          headCenter.dx + headRx * 0.2,
+          headCenter.dy - headRy * 0.85,
+        )
         ..lineTo(headCenter.dx - headRx * 0.2, headCenter.dy - headRy * 0.75)
         ..close(),
       _hairShine,

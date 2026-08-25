@@ -2,7 +2,7 @@ import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.
 import 'package:goias_app/features/squad/domain/squad_photos.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
 
-/// Catálogo de "Quem é o Esmeraldino?" — GERADO de
+/// Catálogo de "Quem Vestiu o Manto?" — GERADO de
 /// `goias_quem_e_o_esmeraldino_173_jogadores.json` (fonte de verdade do
 /// usuário). Nada de BASE/NAC/ESTREIA é inventado: o que não veio no JSON
 /// fica `null` e o jogador só não some do autocomplete se tiver as 5 dicas.
@@ -2031,5 +2031,6 @@ final guessPlayerCatalog = <GuessPlayer>[
 /// Só os jogadores com as 5 dicas preenchidas (POS/CAMISA/BASE/NAC/ESTREIA)
 /// — é o que o autocomplete oferece como palpite, pra nenhuma comparação
 /// aparecer com coluna "—".
-final guessablePlayers =
-    guessPlayerCatalog.where((player) => player.hasFullHints).toList(growable: false);
+final guessablePlayers = guessPlayerCatalog
+    .where((player) => player.hasFullHints)
+    .toList(growable: false);

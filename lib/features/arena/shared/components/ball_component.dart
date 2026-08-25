@@ -16,7 +16,8 @@ import 'package:goias_app/features/arena/shared/arena_assets.dart';
 /// gira sem distorção. A escala de perspectiva (`scale`, definida pelo jogo
 /// conforme a bola se afasta) continua encolhendo bola e sombra juntas.
 class BallComponent extends PositionComponent {
-  BallComponent({double radius = 11}) : super(size: Vector2.all(radius * 2), anchor: Anchor.center) {
+  BallComponent({double radius = 11})
+    : super(size: Vector2.all(radius * 2), anchor: Anchor.center) {
     _build();
   }
 
@@ -96,7 +97,10 @@ class BallComponent extends PositionComponent {
         _pentagon(Offset(r * 1.0, r * 0.86), r * 0.30),
         for (var i = 0; i < 5; i++)
           _pentagon(
-            Offset(r * 1.0 + cos(i * pi * 2 / 5 - pi / 2) * r * 0.62, r * 0.86 + sin(i * pi * 2 / 5 - pi / 2) * r * 0.62),
+            Offset(
+              r * 1.0 + cos(i * pi * 2 / 5 - pi / 2) * r * 0.62,
+              r * 0.86 + sin(i * pi * 2 / 5 - pi / 2) * r * 0.62,
+            ),
             r * 0.20,
             rotation: pi + i * pi * 2 / 5,
           ),
@@ -130,7 +134,11 @@ class BallComponent extends PositionComponent {
     // no gramado enquanto a bola gira por cima.
     if (groundShadow) {
       canvas.drawOval(
-        Rect.fromCenter(center: Offset(radius, d * 0.96), width: d * 0.72, height: d * 0.2),
+        Rect.fromCenter(
+          center: Offset(radius, d * 0.96),
+          width: d * 0.72,
+          height: d * 0.2,
+        ),
         _shadow,
       );
     }

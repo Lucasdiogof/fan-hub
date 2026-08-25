@@ -23,7 +23,8 @@ PenaltyResult resolvePenalty({
   if (targetX < goalLeft - postTol || targetX > goalRight + postTol) {
     return PenaltyResult.out;
   }
-  if ((targetX - goalLeft).abs() < postTol || (targetX - goalRight).abs() < postTol) {
+  if ((targetX - goalLeft).abs() < postTol ||
+      (targetX - goalRight).abs() < postTol) {
     return PenaltyResult.post;
   }
   final ballZone = ballZoneForTarget(targetX, goalLeft, goalWidth);

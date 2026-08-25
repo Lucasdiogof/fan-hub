@@ -47,7 +47,15 @@ class CareerPlayer extends Equatable {
   final String? imageAsset;
 
   @override
-  List<Object?> get props => [id, answer, acceptedAnswers, clubCareer, nationalTeams, position, imageAsset];
+  List<Object?> get props => [
+    id,
+    answer,
+    acceptedAnswers,
+    clubCareer,
+    nationalTeams,
+    position,
+    imageAsset,
+  ];
 }
 
 class CareerRoundState extends Equatable {
@@ -100,10 +108,18 @@ class CareerRoundState extends Equatable {
         (value) => value.name == json['status'],
         orElse: () => CareerRoundStatus.playing,
       ),
-      completedAt: json['completedAt'] == null ? null : DateTime.parse(json['completedAt'] as String),
+      completedAt: json['completedAt'] == null
+          ? null
+          : DateTime.parse(json['completedAt'] as String),
     );
   }
 
   @override
-  List<Object?> get props => [playerId, startedAt, wrongGuesses, status, completedAt];
+  List<Object?> get props => [
+    playerId,
+    startedAt,
+    wrongGuesses,
+    status,
+    completedAt,
+  ];
 }

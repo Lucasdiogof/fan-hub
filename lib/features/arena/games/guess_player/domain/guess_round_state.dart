@@ -1,10 +1,10 @@
 const maxGuessAttempts = 7;
 
 /// Nível de blur (sigma) por tentativa já usada — índice 0 = antes de
-/// qualquer palpite (mais embaçado), índice 6 = depois do 7º palpite
-/// errado (quase nítido). Ao acertar, o sigma vira 0 independente do
-/// índice.
-const blurLevelsByAttempt = [36.0, 30.0, 24.0, 18.0, 12.0, 6.0, 1.0];
+/// qualquer palpite (mais embaçado, mas ainda dá pra reconhecer algum
+/// padrão), índice 6 = depois do 7º palpite errado (quase nítido). Ao
+/// acertar, o sigma vira 0 independente do índice.
+const blurLevelsByAttempt = [22.0, 18.0, 14.0, 11.0, 7.0, 4.0, 1.0];
 
 class GuessPlayerRoundState {
   const GuessPlayerRoundState({

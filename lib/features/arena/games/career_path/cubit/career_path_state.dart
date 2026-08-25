@@ -31,7 +31,8 @@ class CareerPathState extends Equatable {
     return index != null && index < players.length - 1;
   }
 
-  CareerRoundStatus get roundStatus => round?.status ?? CareerRoundStatus.playing;
+  CareerRoundStatus get roundStatus =>
+      round?.status ?? CareerRoundStatus.playing;
   int get attemptsUsed => round?.attemptsUsed ?? 0;
   bool get isDone => round?.isDone ?? false;
 

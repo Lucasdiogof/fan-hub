@@ -25,7 +25,6 @@ class GuessComparisonTable extends StatelessWidget {
             _HeaderCell('POS', flex: 2),
             _HeaderCell('CAMISA', flex: 2),
             _HeaderCell('BASE', flex: 2),
-            _HeaderCell('NAC', flex: 2),
             _HeaderCell('ESTREIA', flex: 2),
           ],
         ),
@@ -81,6 +80,7 @@ class _ResultRow extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: Text(
                 result.guessedPlayer.displayName,
+                textAlign: TextAlign.center,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
@@ -114,13 +114,6 @@ class _ResultRow extends StatelessWidget {
           ),
           Expanded(
             flex: 2,
-            child: _MatchCell(
-              match: result.nationality,
-              label: result.guessedPlayer.nationalityCode ?? '—',
-            ),
-          ),
-          Expanded(
-            flex: 2,
             child: _DirectionalCell(
               result: result.debutYear,
               label: result.guessedPlayer.goiasDebutYear?.toString() ?? '—',
@@ -146,10 +139,7 @@ class _MatchCell extends StatelessWidget {
         colors.success.withValues(alpha: 0.16),
         colors.success,
       ),
-      MatchResult.mismatch => (
-        colors.border.withValues(alpha: 0.5),
-        colors.textHint,
-      ),
+      MatchResult.mismatch => (colors.border, colors.textSecondary),
       MatchResult.unknown => (Colors.transparent, colors.textHint),
     };
     return _CellChip(
@@ -176,13 +166,13 @@ class _DirectionalCell extends StatelessWidget {
         null,
       ),
       DirectionalResult.higher => (
-        colors.border.withValues(alpha: 0.5),
-        colors.textHint,
+        colors.border,
+        colors.textSecondary,
         Icons.arrow_upward_rounded,
       ),
       DirectionalResult.lower => (
-        colors.border.withValues(alpha: 0.5),
-        colors.textHint,
+        colors.border,
+        colors.textSecondary,
         Icons.arrow_downward_rounded,
       ),
       DirectionalResult.unknown => (Colors.transparent, colors.textHint, null),

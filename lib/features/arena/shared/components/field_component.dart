@@ -1,7 +1,8 @@
 import 'dart:ui';
 
 import 'package:flame/components.dart';
-import 'package:flutter/painting.dart' show LinearGradient, RadialGradient, Alignment;
+import 'package:flutter/painting.dart'
+    show LinearGradient, RadialGradient, Alignment;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:goias_app/features/arena/shared/arena_assets.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
@@ -21,10 +22,12 @@ class FieldComponent extends PositionComponent {
   /// do pênalti — 11m dos 16,5m de profundidade da grande área real, ~0.60.
   static const double _penaltySpotFraction = 0.60;
 
-  static double _grassHeight(double screenHeight) => screenHeight * (1 - _backdropFraction);
+  static double _grassHeight(double screenHeight) =>
+      screenHeight * (1 - _backdropFraction);
 
   static double penaltySpotY(double screenHeight) =>
-      screenHeight * _backdropFraction + _grassHeight(screenHeight) * _penaltySpotFraction;
+      screenHeight * _backdropFraction +
+      _grassHeight(screenHeight) * _penaltySpotFraction;
 
   Image? _backdrop;
   final Paint _wall = Paint()..color = const Color(0xFF0a1c10);
@@ -62,11 +65,14 @@ class FieldComponent extends PositionComponent {
     super.onGameResize(size);
     this.size = size;
     final backdropBottom = size.y * _backdropFraction;
-    _grass.shader = const LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [ArenaColors.pitch, ArenaColors.pitchDark],
-    ).createShader(Rect.fromLTWH(0, 0, size.x, size.y * (1 - _backdropFraction)));
+    _grass.shader =
+        const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [ArenaColors.pitch, ArenaColors.pitchDark],
+        ).createShader(
+          Rect.fromLTWH(0, 0, size.x, size.y * (1 - _backdropFraction)),
+        );
 
     // Esmaece a base da foto da arquibancada num verde bem escuro, pra não
     // parecer um recorte colado — a transição pro campo fica gradual.
@@ -104,12 +110,20 @@ class FieldComponent extends PositionComponent {
       final dstH = dstW / srcAspect;
       canvas.drawImageRect(
         backdrop,
-        Rect.fromLTWH(0, 0, backdrop.width.toDouble(), backdrop.height.toDouble()),
+        Rect.fromLTWH(
+          0,
+          0,
+          backdrop.width.toDouble(),
+          backdrop.height.toDouble(),
+        ),
         Rect.fromLTWH(0, 0, dstW, dstH),
         Paint()..filterQuality = FilterQuality.medium,
       );
       if (dstH < backdropBottom) {
-        canvas.drawRect(Rect.fromLTWH(0, dstH, w, backdropBottom - dstH), _wall);
+        canvas.drawRect(
+          Rect.fromLTWH(0, dstH, w, backdropBottom - dstH),
+          _wall,
+        );
       }
       if (_backdropFade case final fade?) {
         canvas.drawRect(Rect.fromLTWH(0, 0, w, backdropBottom), fade);
@@ -150,8 +164,16 @@ class FieldComponent extends PositionComponent {
     // Linhas laterais do campo convergindo pro horizonte — sem isso não
     // existia nenhuma referência de que o gramado é um campo de verdade,
     // só as faixas de corte.
-    canvas.drawLine(Offset(0, grassH), Offset(w / 2 - pitchHalfWidth, 0), _touchlines);
-    canvas.drawLine(Offset(w, grassH), Offset(w / 2 + pitchHalfWidth, 0), _touchlines);
+    canvas.drawLine(
+      Offset(0, grassH),
+      Offset(w / 2 - pitchHalfWidth, 0),
+      _touchlines,
+    );
+    canvas.drawLine(
+      Offset(w, grassH),
+      Offset(w / 2 + pitchHalfWidth, 0),
+      _touchlines,
+    );
 
     _renderPitchMarkings(canvas, w, grassH, goalHalfWidth);
     canvas.restore();
@@ -164,9 +186,26 @@ class FieldComponent extends PositionComponent {
   /// Pequena área, grande área, arco e marca do pênalti — proporções
   /// aproximadas das reais (5,5 m / 16,5 m / 11 m a partir da linha do
   /// gol), adaptadas à perspectiva simplificada da cena.
-  void _renderPitchMarkings(Canvas canvas, double w, double grassH, double goalHalfWidth) {
-    _box(canvas, w, grassH, halfWidthAtGoal: goalHalfWidth * 1.35, depthFraction: 0.24);
-    _box(canvas, w, grassH, halfWidthAtGoal: goalHalfWidth * 1.9, depthFraction: 0.68);
+  void _renderPitchMarkings(
+    Canvas canvas,
+    double w,
+    double grassH,
+    double goalHalfWidth,
+  ) {
+    _box(
+      canvas,
+      w,
+      grassH,
+      halfWidthAtGoal: goalHalfWidth * 1.35,
+      depthFraction: 0.24,
+    );
+    _box(
+      canvas,
+      w,
+      grassH,
+      halfWidthAtGoal: goalHalfWidth * 1.9,
+      depthFraction: 0.68,
+    );
 
     final spotY = grassH * _penaltySpotFraction;
 
@@ -182,7 +221,10 @@ class FieldComponent extends PositionComponent {
       _spotRing,
     );
 
-    canvas.drawOval(Rect.fromCenter(center: Offset(w / 2, spotY + 1.5), width: 15, height: 5), _spotShadow);
+    canvas.drawOval(
+      Rect.fromCenter(center: Offset(w / 2, spotY + 1.5), width: 15, height: 5),
+      _spotShadow,
+    );
     canvas.drawCircle(Offset(w / 2, spotY), 4.2, _spot);
   }
 
@@ -193,7 +235,8 @@ class FieldComponent extends PositionComponent {
     required double halfWidthAtGoal,
     required double depthFraction,
   }) {
-    final bottomHalf = halfWidthAtGoal * (1 - depthFraction) + (w / 2) * depthFraction;
+    final bottomHalf =
+        halfWidthAtGoal * (1 - depthFraction) + (w / 2) * depthFraction;
     final bottomY = grassH * depthFraction;
     canvas.drawPath(
       Path()

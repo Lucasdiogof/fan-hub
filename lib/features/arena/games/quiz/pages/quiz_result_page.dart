@@ -53,12 +53,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
         if (wrongCount > 0) {
           context.pushReplacement(
             '/arena/quiz/play',
-            extra: (difficulty: data.difficulty, isReview: true),
+            extra: (difficulty: data.difficulty, isReview: true, cubit: null),
           );
         } else {
           context.pushReplacement(
             '/arena/quiz/play',
-            extra: (difficulty: data.difficulty, isReview: false),
+            extra: (difficulty: data.difficulty, isReview: false, cubit: null),
           );
         }
       },

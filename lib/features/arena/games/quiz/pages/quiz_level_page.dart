@@ -1,28 +1,56 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/games/quiz/cubit/quiz_cubit.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
+import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_logic.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
+import 'package:goias_app/shared/widgets/global_loading.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
+/// Resumo de progresso dos 3 níveis — usado tanto pelo carregamento próprio
+/// desta tela (fallback de deep-link, e refresh ao voltar de uma partida)
+/// quanto pelo pré-carregamento feito na Arena ANTES de navegar pra cá (ver
+/// `GlobalLoading.run` em `arena_page.dart`), pra nunca abrir a tela
+/// mostrando título/descrição primeiro e um spinner sozinho depois.
+Future<Map<QuizDifficulty, QuizLevelSummary>> loadQuizLevelSummaries() async {
+  final bank = await sl<QuizQuestionRepository>().load();
+  final totals = {
+    for (final level in QuizDifficulty.values)
+      level: questionsForLevel(bank, level).length,
+  };
+  return sl<QuizProgressRepository>().getAllLevelSummaries(totals);
+}
+
+/// [initialSummaries], quando fornecido, já veio carregado por quem
+/// navegou pra cá — a tela só exibe, sem passar por um estado intermediário
+/// de "título já visível, lista ainda carregando". Fica `null` (e a tela
+/// carrega sozinha) só em navegação direta por URL.
 class QuizLevelPage extends StatefulWidget {
-  const QuizLevelPage({super.key});
+  const QuizLevelPage({this.initialSummaries, super.key});
+
+  final Map<QuizDifficulty, QuizLevelSummary>? initialSummaries;
 
   @override
   State<QuizLevelPage> createState() => _QuizLevelPageState();
 }
 
 class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
-  Map<QuizDifficulty, QuizLevelSummary>? _summaries;
+  late Map<QuizDifficulty, QuizLevelSummary>? _summaries =
+      widget.initialSummaries;
 
   @override
   void initState() {
     super.initState();
-    _load();
+    if (_summaries == null) _load();
   }
 
   @override
@@ -42,14 +70,34 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
   void didPopNext() => _load();
 
   Future<void> _load() async {
-    final totals = {
-      for (final level in QuizDifficulty.values)
-        level: questionsForLevel(level).length,
-    };
-    final summaries = await sl<QuizProgressRepository>().getAllLevelSummaries(
-      totals,
-    );
+    final summaries = await loadQuizLevelSummaries();
     if (mounted) setState(() => _summaries = summaries);
+  }
+
+  /// Constrói e carrega o Cubit do nível ANTES de navegar (ver
+  /// `GlobalLoading.run`) — a tela de jogo já abre com as perguntas e a
+  /// sessão restauradas, nunca com um spinner.
+  Future<void> _openQuiz(
+    QuizDifficulty difficulty, {
+    required bool isReview,
+  }) async {
+    String gameId() => 'quiz_${difficulty.name}';
+    final cubit = QuizCubit(
+      difficulty: difficulty,
+      isReview: isReview,
+      repository: sl<QuizProgressRepository>(),
+      questionsRepository: sl<QuizQuestionRepository>(),
+      loadBest: () => sl<ArenaScores>().bestScore(gameId()),
+      saveBest: (score) => sl<ArenaScores>().saveIfBest(gameId(), score),
+    );
+    await GlobalLoading.run(context, cubit.init);
+    if (!mounted) return;
+    unawaited(
+      context.push(
+        '/arena/quiz/play',
+        extra: (difficulty: difficulty, isReview: isReview, cubit: cubit),
+      ),
+    );
   }
 
   @override
@@ -63,23 +111,10 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                children: [
-                  BackButtonCircle(
-                    onTap: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
-                  ),
-                  const SizedBox(width: AppSpacing.md),
-                  Text(
-                    'QUIZ DO VERDÃO',
-                    style: TextStyle(
-                      color: colors.textPrimary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.3,
-                    ),
-                  ),
-                ],
+              ArenaGameHeader(
+                title: 'QUIZ DO VERDÃO',
+                onBack: () =>
+                    context.canPop() ? context.pop() : context.go('/'),
               ),
               const SizedBox(height: AppSpacing.xl),
               Text(
@@ -103,9 +138,7 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
               const SizedBox(height: AppSpacing.xxl),
               Expanded(
                 child: _summaries == null
-                    ? Center(
-                        child: CircularProgressIndicator(color: colors.primary),
-                      )
+                    ? const Center(child: GoiasLoadingIndicator())
                     : ListView.separated(
                         itemCount: _levels.length,
                         separatorBuilder: (_, _) =>
@@ -115,20 +148,10 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
                           return _LevelBanner(
                             level: level,
                             summary: _summaries![level.difficulty],
-                            onTap: () => context.push(
-                              '/arena/quiz/play',
-                              extra: (
-                                difficulty: level.difficulty,
-                                isReview: false,
-                              ),
-                            ),
-                            onReview: () => context.push(
-                              '/arena/quiz/play',
-                              extra: (
-                                difficulty: level.difficulty,
-                                isReview: true,
-                              ),
-                            ),
+                            onTap: () =>
+                                _openQuiz(level.difficulty, isReview: false),
+                            onReview: () =>
+                                _openQuiz(level.difficulty, isReview: true),
                           );
                         },
                       ),

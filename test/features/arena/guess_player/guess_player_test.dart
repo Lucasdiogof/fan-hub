@@ -23,8 +23,23 @@ GuessPlayer _fullPlayer({
 
 void main() {
   group('GuessPlayer.eligibleAsSecret', () {
-    test('true quando os 5 atributos + foto existem e status é verified', () {
+    test('true quando os 4 atributos + foto existem e status é verified', () {
       expect(_fullPlayer().eligibleAsSecret, isTrue);
+    });
+
+    test('true mesmo sem nacionalidade (não faz mais parte das pistas)', () {
+      const player = GuessPlayer(
+        id: 'x',
+        name: 'X',
+        displayName: 'X',
+        position: PlayerPosition.ata,
+        shirtNumber: 9,
+        academyClub: 'Goiás',
+        goiasDebutYear: 2020,
+        imageUrl: 'lib/assets/squad/x.jpg',
+        dataStatus: GuessPlayerDataStatus.verified,
+      );
+      expect(player.eligibleAsSecret, isTrue);
     });
 
     test('false quando status não é verified, mesmo com todos os dados', () {
@@ -54,7 +69,7 @@ void main() {
       expect(player.eligibleAsSecret, isFalse);
     });
 
-    test('false quando falta qualquer um dos 5 atributos', () {
+    test('false quando falta qualquer um dos 4 atributos', () {
       final base = _fullPlayer();
       expect(
         GuessPlayer(

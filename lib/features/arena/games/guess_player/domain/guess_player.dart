@@ -1,7 +1,7 @@
 import 'package:goias_app/shared/domain/player_position.dart';
 
-/// Nível de confiança dos 5 atributos usados nesta arena (POS/CAMISA/BASE/
-/// NAC/ESTREIA) — nunca inferido a partir do nome, só do que foi realmente
+/// Nível de confiança dos 4 atributos usados nesta arena (POS/CAMISA/BASE/
+/// ESTREIA) — nunca inferido a partir do nome, só do que foi realmente
 /// pesquisado/confirmado.
 enum GuessPlayerDataStatus {
   /// Os 5 atributos estão suficientemente validados.
@@ -56,7 +56,10 @@ class GuessPlayer {
   final List<String> academyHistory;
 
   /// Nacionalidade esportiva/canônica (a da seleção representada, quando
-  /// aplicável — ex. Rafael Tolói é Itália, não Brasil).
+  /// aplicável — ex. Rafael Tolói é Itália, não Brasil). Não faz mais parte
+  /// da comparação/pistas do jogo (dado incompleto pra boa parte do
+  /// catálogo histórico) — mantido aqui só como metadado, sem uso na arena
+  /// por enquanto.
   final String? nationalityCode;
   final String? nationalityName;
 
@@ -68,19 +71,20 @@ class GuessPlayer {
 
   final GuessPlayerDataStatus dataStatus;
 
-  /// Tem os 5 atributos preenchidos (POS/CAMISA/BASE/NAC/ESTREIA) — ou
-  /// seja, todo palpite com esse jogador mostra TODAS as dicas, nenhuma
-  /// coluna "—". Não exige foto nem status `verified` (a foto/status só
-  /// importam pra ser sorteado como secreto).
+  /// Tem os 4 atributos preenchidos (POS/CAMISA/BASE/ESTREIA) — ou seja,
+  /// todo palpite com esse jogador mostra TODAS as dicas, nenhuma coluna
+  /// "—". Não exige foto nem status `verified` (a foto/status só importam
+  /// pra ser sorteado como secreto).
   bool get hasFullHints =>
       position != null &&
       shirtNumber != null &&
       academyClub != null &&
-      nationalityCode != null &&
       goiasDebutYear != null;
 
   /// Derivado, não guardado: evita uma segunda fonte de verdade que possa
   /// dessincronizar dos 5 campos + status.
   bool get eligibleAsSecret =>
-      dataStatus == GuessPlayerDataStatus.verified && hasFullHints && imageUrl != null;
+      dataStatus == GuessPlayerDataStatus.verified &&
+      hasFullHints &&
+      imageUrl != null;
 }

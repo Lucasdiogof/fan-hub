@@ -190,7 +190,7 @@ class _GuessAutocompleteFieldState extends State<GuessAutocompleteField> {
             );
           },
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpacing.lg),
         SizedBox(
           width: double.infinity,
           child: FilledButton(

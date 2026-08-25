@@ -16,7 +16,8 @@ class PenaltyGamePage extends StatefulWidget {
   State<PenaltyGamePage> createState() => _PenaltyGamePageState();
 }
 
-class _PenaltyGamePageState extends State<PenaltyGamePage> with WidgetsBindingObserver, RouteAware {
+class _PenaltyGamePageState extends State<PenaltyGamePage>
+    with WidgetsBindingObserver, RouteAware {
   static const _gameId = 'penalty';
 
   late final PenaltyGame _game = PenaltyGame(
@@ -90,7 +91,9 @@ class _PenaltyGamePageState extends State<PenaltyGamePage> with WidgetsBindingOb
   void _onPanEnd(DragEndDetails details) {
     final delta = _panLast - _panStart;
     final velocity = details.velocity.pixelsPerSecond;
-    _game.shoot(Offset(delta.dx + velocity.dx * 0.05, delta.dy + velocity.dy * 0.05));
+    _game.shoot(
+      Offset(delta.dx + velocity.dx * 0.05, delta.dy + velocity.dy * 0.05),
+    );
   }
 
   @override
@@ -101,12 +104,15 @@ class _PenaltyGamePageState extends State<PenaltyGamePage> with WidgetsBindingOb
         children: [
           Positioned.fill(
             child: GestureDetector(
-              onPanStart: (details) => _panStart = _panLast = details.localPosition,
+              onPanStart: (details) =>
+                  _panStart = _panLast = details.localPosition,
               onPanUpdate: (details) => _panLast = details.localPosition,
               onPanEnd: _onPanEnd,
               child: GameWidget<PenaltyGame>(
                 game: _game,
-                overlayBuilderMap: {'hud': (context, game) => PenaltyHud(game: game)},
+                overlayBuilderMap: {
+                  'hud': (context, game) => PenaltyHud(game: game),
+                },
               ),
             ),
           ),

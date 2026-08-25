@@ -1,9 +1,9 @@
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
 
-/// Resultado de uma comparação sem direção (POS/BASE/NAC): ou é o mesmo
-/// valor, ou não é. `unknown` quando falta dado pra comparar (não conta
-/// como erro nem acerto, só não dá pra saber).
+/// Resultado de uma comparação sem direção (POS/BASE): ou é o mesmo valor,
+/// ou não é. `unknown` quando falta dado pra comparar (não conta como erro
+/// nem acerto, só não dá pra saber).
 enum MatchResult { match, mismatch, unknown }
 
 /// Resultado de uma comparação com direção (CAMISA/ESTREIA): além de
@@ -36,25 +36,19 @@ MatchResult compareAcademy(String? secret, String? guess) {
   return secret == guess ? MatchResult.match : MatchResult.mismatch;
 }
 
-MatchResult compareNationality(String? secretCode, String? guessCode) {
-  if (secretCode == null || guessCode == null) return MatchResult.unknown;
-  return secretCode == guessCode ? MatchResult.match : MatchResult.mismatch;
-}
-
 DirectionalResult compareDebutYear(int? secret, int? guess) {
   if (secret == null || guess == null) return DirectionalResult.unknown;
   if (secret == guess) return DirectionalResult.match;
   return guess < secret ? DirectionalResult.higher : DirectionalResult.lower;
 }
 
-/// As 5 pistas de um palpite, já comparadas contra o jogador secreto.
+/// As 4 pistas de um palpite, já comparadas contra o jogador secreto.
 class GuessComparisonResult {
   const GuessComparisonResult({
     required this.guessedPlayer,
     required this.position,
     required this.shirtNumber,
     required this.academy,
-    required this.nationality,
     required this.debutYear,
   });
 
@@ -62,7 +56,6 @@ class GuessComparisonResult {
   final MatchResult position;
   final DirectionalResult shirtNumber;
   final MatchResult academy;
-  final MatchResult nationality;
   final DirectionalResult debutYear;
 }
 
@@ -75,10 +68,6 @@ GuessComparisonResult compareGuess({
     position: comparePosition(secret.position, guess.position),
     shirtNumber: compareShirtNumber(secret.shirtNumber, guess.shirtNumber),
     academy: compareAcademy(secret.academyClub, guess.academyClub),
-    nationality: compareNationality(
-      secret.nationalityCode,
-      guess.nationalityCode,
-    ),
     debutYear: compareDebutYear(secret.goiasDebutYear, guess.goiasDebutYear),
   );
 }

@@ -1,14 +1,14 @@
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
-import 'package:goias_app/features/arena/games/quiz/quiz_questions.dart';
 
 const quizQuestionsPerRound = 8;
 const quizPointsPerCorrect = 100;
 
 int quizScore(int correct) => correct * quizPointsPerCorrect;
 
-List<QuizQuestion> questionsForLevel(QuizDifficulty difficulty) => quizQuestions
-    .where((question) => question.difficulty == difficulty)
-    .toList();
+List<QuizQuestion> questionsForLevel(
+  List<QuizQuestion> bank,
+  QuizDifficulty difficulty,
+) => bank.where((question) => question.difficulty == difficulty).toList();
 
 /// Sessão normal (descoberta de conteúdo): inéditas primeiro, embaralhadas,
 /// até [quizQuestionsPerRound]. Se sobrar menos inédita que isso, a sessão
@@ -16,10 +16,11 @@ List<QuizQuestion> questionsForLevel(QuizDifficulty difficulty) => quizQuestions
 /// Se não sobrar nenhuma inédita (nível já 100%), essa chamada vira replay:
 /// embaralha o banco inteiro do nível (não altera progresso permanente).
 List<QuizQuestion> pickSessionQuestions(
+  List<QuizQuestion> bank,
   QuizDifficulty difficulty, {
   required Set<String> answeredIds,
 }) {
-  final pool = questionsForLevel(difficulty);
+  final pool = questionsForLevel(bank, difficulty);
   final fresh =
       pool.where((question) => !answeredIds.contains(question.id)).toList()
         ..shuffle();
@@ -33,10 +34,11 @@ List<QuizQuestion> pickSessionQuestions(
 /// Sessão de revisão: só as perguntas ainda pendentes (erradas e não
 /// corrigidas) daquele nível, todas de uma vez.
 List<QuizQuestion> pickReviewQuestions(
+  List<QuizQuestion> bank,
   QuizDifficulty difficulty, {
   required Set<String> pendingReviewIds,
 }) {
-  final pool = questionsForLevel(difficulty);
+  final pool = questionsForLevel(bank, difficulty);
   final review =
       pool.where((question) => pendingReviewIds.contains(question.id)).toList()
         ..shuffle();
