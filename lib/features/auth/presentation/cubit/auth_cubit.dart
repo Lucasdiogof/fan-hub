@@ -32,7 +32,10 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<Result<void>> signIn({required String email, required String password}) {
+  Future<Result<void>> signIn({
+    required String email,
+    required String password,
+  }) {
     return _repository.signIn(email: email, password: password);
   }
 
@@ -41,14 +44,29 @@ class AuthCubit extends Cubit<AuthState> {
     required String email,
     required String password,
   }) {
-    return _repository.signUp(fullName: fullName, email: email, password: password);
+    return _repository.signUp(
+      fullName: fullName,
+      email: email,
+      password: password,
+    );
   }
 
-  Future<Result<void>> sendPasswordReset(String email) => _repository.sendPasswordReset(email);
+  Future<Result<void>> sendPasswordReset(String email) =>
+      _repository.sendPasswordReset(email);
 
-  Future<Result<void>> resendConfirmation(String email) => _repository.resendConfirmationEmail(email);
+  Future<Result<void>> resendConfirmation(String email) =>
+      _repository.resendConfirmationEmail(email);
 
-  Future<Result<void>> updatePassword(String newPassword) => _repository.updatePassword(newPassword);
+  Future<Result<void>> updatePassword(String newPassword) =>
+      _repository.updatePassword(newPassword);
+
+  Future<Result<void>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) => _repository.changePassword(
+    currentPassword: currentPassword,
+    newPassword: newPassword,
+  );
 
   Future<void> signOut() => _repository.signOut();
 

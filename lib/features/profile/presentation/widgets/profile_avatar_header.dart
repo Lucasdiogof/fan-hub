@@ -16,7 +16,11 @@ class ProfileAvatarHeader extends StatelessWidget {
 
     final cubit = context.read<ProfileCubit>();
     final messenger = ScaffoldMessenger.of(context);
-    final picked = await ImagePicker().pickImage(source: source, maxWidth: 800, imageQuality: 85);
+    final picked = await ImagePicker().pickImage(
+      source: source,
+      maxWidth: 800,
+      imageQuality: 85,
+    );
     if (picked == null) return;
     final bytes = await picked.readAsBytes();
     final ext = picked.name.contains('.') ? picked.name.split('.').last : 'jpg';
@@ -38,14 +42,21 @@ class ProfileAvatarHeader extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                leading: Icon(Icons.photo_camera_outlined, color: colors.primary),
+                leading: Icon(
+                  Icons.photo_camera_outlined,
+                  color: colors.primary,
+                ),
                 title: const Text('Tirar foto'),
                 onTap: () => Navigator.of(sheetContext).pop(ImageSource.camera),
               ),
               ListTile(
-                leading: Icon(Icons.photo_library_outlined, color: colors.primary),
+                leading: Icon(
+                  Icons.photo_library_outlined,
+                  color: colors.primary,
+                ),
                 title: const Text('Escolher da galeria'),
-                onTap: () => Navigator.of(sheetContext).pop(ImageSource.gallery),
+                onTap: () =>
+                    Navigator.of(sheetContext).pop(ImageSource.gallery),
               ),
               const SizedBox(height: AppSpacing.sm),
             ],
@@ -63,15 +74,26 @@ class ProfileAvatarHeader extends StatelessWidget {
         final profile = state.profile;
         return Column(
           children: [
-            _Avatar(profile: profile, uploading: state.uploadingAvatar, onTap: () => _pickAndUpload(context)),
+            _Avatar(
+              profile: profile,
+              uploading: state.uploadingAvatar,
+              onTap: () => _pickAndUpload(context),
+            ),
             const SizedBox(height: AppSpacing.md),
             Text(
               profile?.displayName ?? '—',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: colors.textPrimary),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w800,
+                color: colors.textPrimary,
+              ),
             ),
             if (profile != null) ...[
               const SizedBox(height: 2),
-              Text(profile.email, style: TextStyle(fontSize: 13, color: colors.textSecondary)),
+              Text(
+                profile.email,
+                style: TextStyle(fontSize: 13, color: colors.textSecondary),
+              ),
             ],
           ],
         );
@@ -81,7 +103,11 @@ class ProfileAvatarHeader extends StatelessWidget {
 }
 
 class _Avatar extends StatelessWidget {
-  const _Avatar({required this.profile, required this.uploading, required this.onTap});
+  const _Avatar({
+    required this.profile,
+    required this.uploading,
+    required this.onTap,
+  });
 
   final Profile? profile;
   final bool uploading;
@@ -104,21 +130,40 @@ class _Avatar extends StatelessWidget {
             decoration: BoxDecoration(
               color: colors.primary,
               shape: BoxShape.circle,
-              image: hasAvatar ? DecorationImage(image: NetworkImage(avatarUrl), fit: BoxFit.cover) : null,
+              image: hasAvatar
+                  ? DecorationImage(
+                      image: NetworkImage(avatarUrl),
+                      fit: BoxFit.cover,
+                    )
+                  : null,
             ),
             child: hasAvatar
                 ? null
                 : Text(
                     _initials(profile?.displayName ?? ''),
-                    style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w800, color: Colors.white),
+                    style: const TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white,
+                    ),
                   ),
           ),
           if (uploading)
             Positioned.fill(
               child: DecoratedBox(
-                decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.35), shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                  color: Colors.black.withValues(alpha: 0.35),
+                  shape: BoxShape.circle,
+                ),
                 child: const Center(
-                  child: SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white)),
+                  child: SizedBox(
+                    width: 22,
+                    height: 22,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -133,7 +178,11 @@ class _Avatar extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(color: colors.background, width: 2),
               ),
-              child: const Icon(Icons.camera_alt_rounded, size: 13, color: Colors.white),
+              child: const Icon(
+                Icons.camera_alt_rounded,
+                size: 13,
+                color: Colors.white,
+              ),
             ),
           ),
         ],
@@ -143,7 +192,11 @@ class _Avatar extends StatelessWidget {
 }
 
 String _initials(String name) {
-  final words = name.trim().split(RegExp(r'\s+')).where((word) => word.isNotEmpty).toList();
+  final words = name
+      .trim()
+      .split(RegExp(r'\s+'))
+      .where((word) => word.isNotEmpty)
+      .toList();
   if (words.isEmpty) return '';
   if (words.length == 1) return words.first.substring(0, 1).toUpperCase();
   return (words.first[0] + words.last[0]).toUpperCase();

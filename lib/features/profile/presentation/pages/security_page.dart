@@ -20,10 +20,13 @@ class SecurityPage extends StatefulWidget {
 }
 
 class _SecurityPageState extends State<SecurityPage> {
+  final _currentPasswordController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmController = TextEditingController();
+  final _newPasswordFocus = FocusNode();
   final _confirmFocus = FocusNode();
 
+  String? _currentPasswordError;
   String? _passwordError;
   String? _confirmError;
   String? _formError;
@@ -31,31 +34,49 @@ class _SecurityPageState extends State<SecurityPage> {
 
   @override
   void dispose() {
+    _currentPasswordController.dispose();
     _passwordController.dispose();
     _confirmController.dispose();
+    _newPasswordFocus.dispose();
     _confirmFocus.dispose();
     super.dispose();
   }
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
+    final currentPasswordError = AuthValidators.password(
+      _currentPasswordController.text,
+    );
     final passwordError = AuthValidators.newPassword(_passwordController.text);
-    final confirmError = AuthValidators.confirmPassword(_confirmController.text, _passwordController.text);
+    final confirmError = AuthValidators.confirmPassword(
+      _confirmController.text,
+      _passwordController.text,
+    );
     setState(() {
+      _currentPasswordError = currentPasswordError;
       _passwordError = passwordError;
       _confirmError = confirmError;
       _formError = null;
     });
-    if (passwordError != null || confirmError != null) return;
+    if (currentPasswordError != null ||
+        passwordError != null ||
+        confirmError != null) {
+      return;
+    }
 
     setState(() => _loading = true);
-    final result = await context.read<AuthCubit>().updatePassword(_passwordController.text);
+    final result = await context.read<AuthCubit>().changePassword(
+      currentPassword: _currentPasswordController.text,
+      newPassword: _passwordController.text,
+    );
     if (!mounted) return;
     setState(() => _loading = false);
     if (result is Error<void>) {
       setState(() => _formError = result.failure.message);
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Senha alterada com sucesso.')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Senha alterada com sucesso.')),
+      );
       context.pop();
     }
   }
@@ -73,7 +94,12 @@ class _SecurityPageState extends State<SecurityPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -85,25 +111,55 @@ class _SecurityPageState extends State<SecurityPage> {
                 ),
                 Expanded(
                   child: ListView(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.xxxl),
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      AppSpacing.lg,
+                      AppSpacing.lg,
+                      AppSpacing.xxxl,
+                    ),
                     children: [
                       Text(
                         'Altere a senha da sua conta Goiás EC.',
-                        style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
+                        style: TextStyle(
+                          fontSize: 14,
+                          height: 1.35,
+                          color: colors.textSecondary,
+                        ),
                       ),
                       const SizedBox(height: AppSpacing.xl),
                       AuthErrorBanner(message: _formError),
                       AuthTextField(
+                        controller: _currentPasswordController,
+                        label: 'Senha atual',
+                        icon: Icons.lock_person_outlined,
+                        hintText: 'Confirme sua senha atual',
+                        obscurable: true,
+                        textInputAction: TextInputAction.next,
+                        autofillHints: const [AutofillHints.password],
+                        errorText: _currentPasswordError,
+                        onChanged: (_) {
+                          if (_currentPasswordError != null) {
+                            setState(() => _currentPasswordError = null);
+                          }
+                        },
+                        onSubmitted: (_) => _newPasswordFocus.requestFocus(),
+                      ),
+                      const SizedBox(height: AppSpacing.lg),
+                      AuthTextField(
                         controller: _passwordController,
+                        focusNode: _newPasswordFocus,
                         label: 'Nova senha',
                         icon: Icons.lock_outline_rounded,
-                        hintText: 'Mínimo ${AuthValidators.minPasswordLength} caracteres',
+                        hintText:
+                            'Mínimo ${AuthValidators.minPasswordLength} caracteres',
                         obscurable: true,
                         textInputAction: TextInputAction.next,
                         autofillHints: const [AutofillHints.newPassword],
                         errorText: _passwordError,
                         onChanged: (_) {
-                          if (_passwordError != null) setState(() => _passwordError = null);
+                          if (_passwordError != null) {
+                            setState(() => _passwordError = null);
+                          }
                         },
                         onSubmitted: (_) => _confirmFocus.requestFocus(),
                       ),
@@ -119,7 +175,9 @@ class _SecurityPageState extends State<SecurityPage> {
                         autofillHints: const [AutofillHints.newPassword],
                         errorText: _confirmError,
                         onChanged: (_) {
-                          if (_confirmError != null) setState(() => _confirmError = null);
+                          if (_confirmError != null) {
+                            setState(() => _confirmError = null);
+                          }
                         },
                         onSubmitted: (_) => _submit(),
                       ),

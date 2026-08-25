@@ -21,9 +21,24 @@ class UserAddress extends Equatable {
   final String? state;
   final String? country;
 
-  bool get isEmpty =>
-      [zipCode, street, number, neighborhood, city, state].every((value) => value == null || value.isEmpty);
+  bool get isEmpty => [
+    zipCode,
+    street,
+    number,
+    neighborhood,
+    city,
+    state,
+  ].every((value) => value == null || value.isEmpty);
 
   @override
-  List<Object?> get props => [zipCode, street, number, complement, neighborhood, city, state, country];
+  List<Object?> get props => [
+    zipCode,
+    street,
+    number,
+    complement,
+    neighborhood,
+    city,
+    state,
+    country,
+  ];
 }

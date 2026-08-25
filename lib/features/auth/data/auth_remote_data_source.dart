@@ -11,7 +11,10 @@ class AuthRemoteDataSource {
 
   Stream<AuthState> get onAuthStateChange => _client.auth.onAuthStateChange;
 
-  Future<AuthResponse> signIn({required String email, required String password}) {
+  Future<AuthResponse> signIn({
+    required String email,
+    required String password,
+  }) {
     return _client.auth.signInWithPassword(email: email, password: password);
   }
 
@@ -36,10 +39,29 @@ class AuthRemoteDataSource {
   }
 
   Future<void> resendConfirmation(String email, {String? emailRedirectTo}) {
-    return _client.auth.resend(type: OtpType.signup, email: email, emailRedirectTo: emailRedirectTo);
+    return _client.auth.resend(
+      type: OtpType.signup,
+      email: email,
+      emailRedirectTo: emailRedirectTo,
+    );
   }
 
   Future<UserResponse> updatePassword(String newPassword) {
+    return _client.auth.updateUser(UserAttributes(password: newPassword));
+  }
+
+  /// Reautentica com a senha atual antes de trocar — diferente de
+  /// [updatePassword] (usado só no fluxo de recuperação por e-mail, onde o
+  /// usuário não tem como informar a senha antiga).
+  Future<UserResponse> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    final email = _client.auth.currentUser!.email!;
+    await _client.auth.signInWithPassword(
+      email: email,
+      password: currentPassword,
+    );
     return _client.auth.updateUser(UserAttributes(password: newPassword));
   }
 }

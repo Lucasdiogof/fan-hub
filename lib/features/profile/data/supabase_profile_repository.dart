@@ -17,7 +17,11 @@ class SupabaseProfileRepository implements ProfileRepository {
   @override
   Future<Result<Profile>> getProfile() async {
     try {
-      final row = await _client.from('profiles').select().eq('id', _uid).maybeSingle();
+      final row = await _client
+          .from('profiles')
+          .select()
+          .eq('id', _uid)
+          .maybeSingle();
       return Success(_mapProfile(row));
     } catch (error) {
       return Error(mapProfileError(error));
@@ -25,7 +29,12 @@ class SupabaseProfileRepository implements ProfileRepository {
   }
 
   @override
-  Future<Result<Profile>> updateProfile({String? fullName, String? cpf, DateTime? birthDate, String? phone}) async {
+  Future<Result<Profile>> updateProfile({
+    String? fullName,
+    String? cpf,
+    DateTime? birthDate,
+    String? phone,
+  }) async {
     try {
       final row = await _client
           .from('profiles')
@@ -48,7 +57,11 @@ class SupabaseProfileRepository implements ProfileRepository {
   @override
   Future<Result<UserAddress?>> getAddress() async {
     try {
-      final row = await _client.from('user_addresses').select().eq('user_id', _uid).maybeSingle();
+      final row = await _client
+          .from('user_addresses')
+          .select()
+          .eq('user_id', _uid)
+          .maybeSingle();
       if (row == null) return const Success(null);
       return Success(
         UserAddress(
@@ -89,20 +102,30 @@ class SupabaseProfileRepository implements ProfileRepository {
   }
 
   @override
-  Future<Result<Profile>> uploadAvatar(Uint8List bytes, String fileExtension) async {
+  Future<Result<Profile>> uploadAvatar(
+    Uint8List bytes,
+    String fileExtension,
+  ) async {
     try {
-      final ext = fileExtension.toLowerCase() == 'jpg' ? 'jpeg' : fileExtension.toLowerCase();
+      final ext = fileExtension.toLowerCase() == 'jpg'
+          ? 'jpeg'
+          : fileExtension.toLowerCase();
       final path = '$_uid/avatar.$ext';
-      await _client.storage.from('avatars').uploadBinary(
-        path,
-        bytes,
-        fileOptions: FileOptions(upsert: true, contentType: 'image/$ext'),
-      );
+      await _client.storage
+          .from('avatars')
+          .uploadBinary(
+            path,
+            bytes,
+            fileOptions: FileOptions(upsert: true, contentType: 'image/$ext'),
+          );
       final publicUrl = _client.storage.from('avatars').getPublicUrl(path);
       final bustedUrl = '$publicUrl?v=${DateTime.now().millisecondsSinceEpoch}';
       final row = await _client
           .from('profiles')
-          .update({'avatar_url': bustedUrl, 'updated_at': DateTime.now().toUtc().toIso8601String()})
+          .update({
+            'avatar_url': bustedUrl,
+            'updated_at': DateTime.now().toUtc().toIso8601String(),
+          })
           .eq('id', _uid)
           .select()
           .maybeSingle();

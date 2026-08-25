@@ -7,7 +7,12 @@ import 'package:goias_app/features/profile/domain/entities/user_address.dart';
 abstract class ProfileRepository {
   Future<Result<Profile>> getProfile();
 
-  Future<Result<Profile>> updateProfile({String? fullName, String? cpf, DateTime? birthDate, String? phone});
+  Future<Result<Profile>> updateProfile({
+    String? fullName,
+    String? cpf,
+    DateTime? birthDate,
+    String? phone,
+  });
 
   Future<Result<UserAddress?>> getAddress();
 

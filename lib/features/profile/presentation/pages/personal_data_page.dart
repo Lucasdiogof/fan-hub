@@ -13,6 +13,7 @@ import 'package:goias_app/features/profile/presentation/cubit/profile_state.dart
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/masks.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -21,7 +22,10 @@ class PersonalDataPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(value: sl<ProfileCubit>(), child: const _PersonalDataView());
+    return BlocProvider.value(
+      value: sl<ProfileCubit>(),
+      child: const _PersonalDataView(),
+    );
   }
 }
 
@@ -41,7 +45,12 @@ class _PersonalDataView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -55,7 +64,8 @@ class _PersonalDataView extends StatelessWidget {
                 Expanded(
                   child: BlocBuilder<ProfileCubit, ProfileState>(
                     buildWhen: (previous, current) =>
-                        previous.status != current.status || previous.profile != current.profile,
+                        previous.status != current.status ||
+                        previous.profile != current.profile,
                     builder: (context, state) {
                       if (state.status == LoadStatus.error) {
                         return Center(
@@ -68,7 +78,7 @@ class _PersonalDataView extends StatelessWidget {
                       }
                       final profile = state.profile;
                       if (profile == null) {
-                        return Center(child: CircularProgressIndicator(color: colors.primary));
+                        return const Center(child: GoiasLoadingIndicator());
                       }
                       return _PersonalDataForm(profile: profile);
                     },
@@ -95,7 +105,10 @@ class _PersonalDataForm extends StatefulWidget {
 class _PersonalDataFormState extends State<_PersonalDataForm> {
   late String _name = widget.profile.fullName ?? '';
   late String _cpf = _applyMask(cpfInputFormatter(), widget.profile.cpf ?? '');
-  late String _phone = _applyMask(phoneInputFormatter(), widget.profile.phone ?? '');
+  late String _phone = _applyMask(
+    phoneInputFormatter(),
+    widget.profile.phone ?? '',
+  );
   late DateTime? _birthDate = widget.profile.birthDate;
 
   String? _nameError;
@@ -115,9 +128,13 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
 
   Future<void> _save() async {
     FocusScope.of(context).unfocus();
-    final nameError = _name.trim().isEmpty ? 'Informe seu nome completo.' : null;
+    final nameError = _name.trim().isEmpty
+        ? 'Informe seu nome completo.'
+        : null;
     final cpfDigits = onlyDigits(_cpf);
-    final cpfError = _cpf.isNotEmpty && cpfDigits.length != 11 ? 'CPF inválido.' : null;
+    final cpfError = _cpf.isNotEmpty && cpfDigits.length != 11
+        ? 'CPF inválido.'
+        : null;
     setState(() {
       _nameError = nameError;
       _cpfError = cpfError;
@@ -136,7 +153,9 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
     if (failure != null) {
       messenger.showSnackBar(SnackBar(content: Text(failure.message)));
     } else {
-      messenger.showSnackBar(const SnackBar(content: Text('Dados atualizados com sucesso.')));
+      messenger.showSnackBar(
+        const SnackBar(content: Text('Dados atualizados com sucesso.')),
+      );
       context.pop();
     }
   }
@@ -149,7 +168,12 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
         : '${_birthDate!.day.toString().padLeft(2, '0')}/${_birthDate!.month.toString().padLeft(2, '0')}/${_birthDate!.year}';
 
     return ListView(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.xxxl),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        AppSpacing.sm,
+        AppSpacing.lg,
+        AppSpacing.xxxl,
+      ),
       children: [
         RegistrationTextField(
           label: 'Nome completo',
@@ -219,5 +243,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
 
 String _applyMask(TextInputFormatter formatter, String raw) {
   if (raw.isEmpty) return '';
-  return formatter.formatEditUpdate(TextEditingValue.empty, TextEditingValue(text: raw)).text;
+  return formatter
+      .formatEditUpdate(TextEditingValue.empty, TextEditingValue(text: raw))
+      .text;
 }

@@ -1,4 +1,5 @@
 import 'package:goias_app/core/config/supabase_config.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/auth/data/auth_error_mapper.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
@@ -27,7 +28,10 @@ class AuthRepositoryImpl implements AuthRepository {
       .cast<AuthSessionEvent>();
 
   @override
-  Future<Result<void>> signIn({required String email, required String password}) async {
+  Future<Result<void>> signIn({
+    required String email,
+    required String password,
+  }) async {
     try {
       await _dataSource.signIn(email: email, password: password);
       return const Success(null);
@@ -68,7 +72,10 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<void>> sendPasswordReset(String email) async {
     try {
-      await _dataSource.sendPasswordReset(email, redirectTo: SupabaseConfig.redirectUrl);
+      await _dataSource.sendPasswordReset(
+        email,
+        redirectTo: SupabaseConfig.redirectUrl,
+      );
       return const Success(null);
     } catch (error) {
       return Error(mapAuthError(error));
@@ -78,7 +85,10 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<void>> resendConfirmationEmail(String email) async {
     try {
-      await _dataSource.resendConfirmation(email, emailRedirectTo: SupabaseConfig.redirectUrl);
+      await _dataSource.resendConfirmation(
+        email,
+        emailRedirectTo: SupabaseConfig.redirectUrl,
+      );
       return const Success(null);
     } catch (error) {
       return Error(mapAuthError(error));
@@ -91,6 +101,26 @@ class AuthRepositoryImpl implements AuthRepository {
       await _dataSource.updatePassword(newPassword);
       return const Success(null);
     } catch (error) {
+      return Error(mapAuthError(error));
+    }
+  }
+
+  @override
+  Future<Result<void>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    try {
+      await _dataSource.changePassword(
+        currentPassword: currentPassword,
+        newPassword: newPassword,
+      );
+      return const Success(null);
+    } catch (error) {
+      if (error is AuthException &&
+          error.message.toLowerCase().contains('invalid login credentials')) {
+        return const Error(AuthFailure('Senha atual incorreta.'));
+      }
       return Error(mapAuthError(error));
     }
   }
@@ -112,7 +142,9 @@ class AuthRepositoryImpl implements AuthRepository {
       AuthChangeEvent.signedOut => AuthSessionEvent.signedOut,
       AuthChangeEvent.passwordRecovery => AuthSessionEvent.passwordRecovery,
       AuthChangeEvent.initialSession =>
-        state.session != null ? AuthSessionEvent.signedIn : AuthSessionEvent.signedOut,
+        state.session != null
+            ? AuthSessionEvent.signedIn
+            : AuthSessionEvent.signedOut,
       _ => null,
     };
   }

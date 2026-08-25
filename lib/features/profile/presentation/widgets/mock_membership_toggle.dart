@@ -63,18 +63,30 @@ class _MockMembershipToggleState extends State<MockMembershipToggle> {
               children: [
                 Text(
                   'Sócio ativo (mock)',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: colors.textPrimary),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: colors.textPrimary,
+                  ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   'Simula um sócio esmeraldino ativo enquanto não há integração real com o programa.',
-                  style: TextStyle(fontSize: 12, color: colors.textSecondary, height: 1.3),
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: colors.textSecondary,
+                    height: 1.3,
+                  ),
                 ),
               ],
             ),
           ),
           const SizedBox(width: AppSpacing.md),
-          Switch(value: _isActive, onChanged: _loaded ? _toggle : null, activeThumbColor: colors.primary),
+          Switch(
+            value: _isActive,
+            onChanged: _loaded ? _toggle : null,
+            activeThumbColor: colors.primary,
+          ),
         ],
       ),
     );

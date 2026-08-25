@@ -21,16 +21,37 @@ class ProfileCubit extends Cubit<ProfileState> {
       case Success(:final data):
         emit(state.copyWith(status: LoadStatus.success, profile: data));
       case Error(:final failure):
-        emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
     }
   }
 
-  Future<Failure?> updatePersonalData({String? fullName, String? cpf, DateTime? birthDate, String? phone}) async {
+  Future<Failure?> updatePersonalData({
+    String? fullName,
+    String? cpf,
+    DateTime? birthDate,
+    String? phone,
+  }) async {
     emit(state.copyWith(saving: true));
-    final result = await _repository.updateProfile(fullName: fullName, cpf: cpf, birthDate: birthDate, phone: phone);
+    final result = await _repository.updateProfile(
+      fullName: fullName,
+      cpf: cpf,
+      birthDate: birthDate,
+      phone: phone,
+    );
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(saving: false, status: LoadStatus.success, profile: data));
+        emit(
+          state.copyWith(
+            saving: false,
+            status: LoadStatus.success,
+            profile: data,
+          ),
+        );
         return null;
       case Error(:final failure):
         emit(state.copyWith(saving: false));

@@ -10,7 +10,10 @@ abstract interface class AuthRepository {
 
   Stream<AuthSessionEvent> get sessionEvents;
 
-  Future<Result<void>> signIn({required String email, required String password});
+  Future<Result<void>> signIn({
+    required String email,
+    required String password,
+  });
 
   Future<Result<bool>> signUp({
     required String fullName,
@@ -25,4 +28,9 @@ abstract interface class AuthRepository {
   Future<Result<void>> resendConfirmationEmail(String email);
 
   Future<Result<void>> updatePassword(String newPassword);
+
+  Future<Result<void>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  });
 }

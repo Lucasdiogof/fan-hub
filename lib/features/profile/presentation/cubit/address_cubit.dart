@@ -6,10 +6,12 @@ import 'package:goias_app/features/profile/domain/repositories/profile_repositor
 import 'package:goias_app/features/profile/presentation/cubit/address_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
+/// `load()` é chamado explicitamente por quem cria o Cubit (nunca no
+/// construtor) — pra nunca disparar duas buscas concorrentes quando o
+/// carregamento já acontece antes da navegação (ver `GlobalLoading.run`
+/// em `profile_page.dart`).
 class AddressCubit extends Cubit<AddressState> {
-  AddressCubit(this._repository) : super(const AddressState()) {
-    load();
-  }
+  AddressCubit(this._repository) : super(const AddressState());
 
   final ProfileRepository _repository;
 
@@ -20,7 +22,12 @@ class AddressCubit extends Cubit<AddressState> {
       case Success(:final data):
         emit(state.copyWith(status: LoadStatus.success, address: data));
       case Error(:final failure):
-        emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
     }
   }
 
@@ -29,7 +36,13 @@ class AddressCubit extends Cubit<AddressState> {
     final result = await _repository.saveAddress(address);
     switch (result) {
       case Success():
-        emit(state.copyWith(saving: false, status: LoadStatus.success, address: address));
+        emit(
+          state.copyWith(
+            saving: false,
+            status: LoadStatus.success,
+            address: address,
+          ),
+        );
         return null;
       case Error(:final failure):
         emit(state.copyWith(saving: false));
