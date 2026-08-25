@@ -6,7 +6,10 @@ class _PatternInputFormatter extends TextInputFormatter {
   final String mask;
 
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     final digits = newValue.text.replaceAll(RegExp(r'\D'), '');
     final buffer = StringBuffer();
     var digitIndex = 0;
@@ -19,23 +22,31 @@ class _PatternInputFormatter extends TextInputFormatter {
       }
     }
     final formatted = buffer.toString();
-    return TextEditingValue(text: formatted, selection: TextSelection.collapsed(offset: formatted.length));
+    return TextEditingValue(
+      text: formatted,
+      selection: TextSelection.collapsed(offset: formatted.length),
+    );
   }
 }
 
-TextInputFormatter cpfInputFormatter() => _PatternInputFormatter('###.###.###-##');
+TextInputFormatter cpfInputFormatter() =>
+    _PatternInputFormatter('###.###.###-##');
 
 TextInputFormatter cepInputFormatter() => _PatternInputFormatter('#####-###');
 
-TextInputFormatter phoneInputFormatter() => _PatternInputFormatter('(##) #####-####');
+TextInputFormatter phoneInputFormatter() =>
+    _PatternInputFormatter('(##) #####-####');
 
-TextInputFormatter landlineInputFormatter() => _PatternInputFormatter('(##) ####-####');
+TextInputFormatter landlineInputFormatter() =>
+    _PatternInputFormatter('(##) ####-####');
 
-TextInputFormatter birthDateInputFormatter() => _PatternInputFormatter('##/##/####');
+TextInputFormatter birthDateInputFormatter() =>
+    _PatternInputFormatter('##/##/####');
 
-TextInputFormatter passportInputFormatter() => TextInputFormatter.withFunction((oldValue, newValue) {
-  return newValue.copyWith(text: newValue.text.toUpperCase());
-});
+TextInputFormatter passportInputFormatter() =>
+    TextInputFormatter.withFunction((oldValue, newValue) {
+      return newValue.copyWith(text: newValue.text.toUpperCase());
+    });
 
 String onlyDigits(String value) => value.replaceAll(RegExp(r'\D'), '');
 

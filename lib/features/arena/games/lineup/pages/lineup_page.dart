@@ -26,7 +26,7 @@ class LineupPage extends StatelessWidget {
 
     return BlocProvider(
       create: (_) => LineupCubit(
-        matches: lineupMatches,
+        matches: orderedLineupMatches,
         loadState: storage.load,
         saveState: storage.save,
         loadSelectedMatchId: storage.loadSelectedMatchId,
@@ -56,8 +56,12 @@ class _LineupViewState extends State<_LineupView> {
         await showLineupResultDialog(
           context,
           state,
-          onPrevious: state.hasPrevious ? () => _goToAdjacentMatch(context, cubit.previousMatch) : null,
-          onNext: state.hasNext ? () => _goToAdjacentMatch(context, cubit.nextMatch) : null,
+          onPrevious: state.hasPrevious
+              ? () => _goToAdjacentMatch(context, cubit.previousMatch)
+              : null,
+          onNext: state.hasNext
+              ? () => _goToAdjacentMatch(context, cubit.nextMatch)
+              : null,
         );
         if (context.mounted) cubit.acknowledgeResultShown();
       },
@@ -129,8 +133,18 @@ class _LineupViewState extends State<_LineupView> {
                     onPressed: () => showLineupResultDialog(
                       context,
                       state,
-                      onPrevious: state.hasPrevious ? () => _goToAdjacentMatch(context, context.read<LineupCubit>().previousMatch) : null,
-                      onNext: state.hasNext ? () => _goToAdjacentMatch(context, context.read<LineupCubit>().nextMatch) : null,
+                      onPrevious: state.hasPrevious
+                          ? () => _goToAdjacentMatch(
+                              context,
+                              context.read<LineupCubit>().previousMatch,
+                            )
+                          : null,
+                      onNext: state.hasNext
+                          ? () => _goToAdjacentMatch(
+                              context,
+                              context.read<LineupCubit>().nextMatch,
+                            )
+                          : null,
                     ),
                     icon: const Icon(Icons.emoji_events_outlined, size: 16),
                     label: const Text('VER RESULTADO'),
@@ -171,22 +185,19 @@ class _LineupViewState extends State<_LineupView> {
                               const Positioned.fill(
                                 child: LineupFieldBackground(),
                               ),
-                              for (final player in match.players)
-                                Align(
-                                  alignment: Alignment(
-                                    player.x * 2 - 1,
-                                    player.y * 2 - 1,
+                              Positioned.fill(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: AppSpacing.sm,
                                   ),
-                                  child: LineupShirtButton(
-                                    key: ValueKey(player.id),
-                                    player: player,
-                                    playerState:
-                                        state.game!.playerStates[player.id] ??
-                                        const LineupPlayerState(),
-                                    onTap: () =>
-                                        _openPlayer(context, player.id),
+                                  child: _FormationRows(
+                                    players: match.players,
+                                    game: state.game!,
+                                    onTapPlayer: (playerId) =>
+                                        _openPlayer(context, playerId),
                                   ),
                                 ),
+                              ),
                             ],
                           ),
                         ),
@@ -196,14 +207,22 @@ class _LineupViewState extends State<_LineupView> {
                 ),
                 if (!state.isComplete)
                   Padding(
-                    padding: const EdgeInsets.only(top: AppSpacing.xs, bottom: AppSpacing.xs),
+                    padding: const EdgeInsets.only(
+                      top: AppSpacing.xs,
+                      bottom: AppSpacing.xs,
+                    ),
                     child: TextButton.icon(
                       onPressed: () => _confirmGiveUp(context),
-                      style: TextButton.styleFrom(foregroundColor: colors.textHint),
+                      style: TextButton.styleFrom(
+                        foregroundColor: colors.textHint,
+                      ),
                       icon: const Icon(Icons.flag_outlined, size: 16),
                       label: const Text(
                         'Desistir da partida',
-                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   )
@@ -224,7 +243,10 @@ class _LineupViewState extends State<_LineupView> {
   /// adivinhação ficaria por cima mostrando os jogadores da partida
   /// errada. É um no-op seguro quando já estamos no campo (nada pra
   /// popar).
-  void _goToAdjacentMatch(BuildContext context, Future<void> Function() action) {
+  void _goToAdjacentMatch(
+    BuildContext context,
+    Future<void> Function() action,
+  ) {
     Navigator.of(context).popUntil((route) => route.isFirst);
     action();
   }
@@ -246,7 +268,8 @@ class _LineupViewState extends State<_LineupView> {
       context,
       icon: Icons.flag_outlined,
       title: 'Desistir da partida?',
-      description: 'Os jogadores restantes serão revelados e a partida será encerrada.',
+      description:
+          'Os jogadores restantes serão revelados e a partida será encerrada.',
       confirmLabel: 'DESISTIR',
       cancelLabel: 'Continuar jogando',
     );
@@ -254,6 +277,74 @@ class _LineupViewState extends State<_LineupView> {
       await cubit.giveUp();
     }
   }
+}
+
+/// Distribui os 11 titulares em linhas de slots iguais (goleiro, zaga,
+/// meio, ataque — uma `Row` por linha tática da formação), em vez de
+/// posicionar cada camisa livremente por `Align`. Cada jogador recebe um
+/// `Expanded` só seu: como a largura do slot nunca depende do conteúdo
+/// (nome comprido vira ellipsis, nunca invade o vizinho), duas camisas
+/// jamais se sobrepõem — mesmo na linha mais cheia de uma formação (até 5
+/// titulares lado a lado). Os titulares de uma mesma linha tática sempre
+/// compartilham o mesmo `y` (ver `FormationLayoutService`), por isso
+/// agrupar por `y` reconstrói a formação original com segurança, sem
+/// precisar de nenhum dado novo no dataset.
+class _FormationRows extends StatelessWidget {
+  const _FormationRows({
+    required this.players,
+    required this.game,
+    required this.onTapPlayer,
+  });
+
+  final List<LineupPlayer> players;
+  final LineupGameState game;
+  final ValueChanged<String> onTapPlayer;
+
+  @override
+  Widget build(BuildContext context) {
+    final rowsByY = <double, List<LineupPlayer>>{};
+    for (final player in players) {
+      rowsByY.putIfAbsent(player.y, () => []).add(player);
+    }
+    final sortedYs = rowsByY.keys.toList()..sort();
+    for (final y in sortedYs) {
+      rowsByY[y]!.sort((a, b) => a.x.compareTo(b.x));
+    }
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        for (final y in sortedYs)
+          Row(
+            children: [
+              for (final player in rowsByY[y]!)
+                Expanded(
+                  child: Center(
+                    child: LineupShirtButton(
+                      key: ValueKey(player.id),
+                      player: player,
+                      playerState:
+                          game.playerStates[player.id] ??
+                          const LineupPlayerState(),
+                      shirtSize: _shirtSizeFor(rowsByY[y]!.length),
+                      onTap: () => onTapPlayer(player.id),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+      ],
+    );
+  }
+
+  /// Linhas mais cheias precisam de camisas menores pra caber com folga —
+  /// reduz moderadamente em vez de deixar o texto/selo colidir.
+  double _shirtSizeFor(int playersInRow) => switch (playersInRow) {
+    <= 2 => 52,
+    3 => 48,
+    4 => 44,
+    _ => 40,
+  };
 }
 
 /// Navegação entre as partidas do banco — setas + "PARTIDA N DE M",
@@ -282,14 +373,25 @@ class _MatchNav extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _NavArrow(icon: Icons.chevron_left_rounded, onTap: hasPrevious ? onPrevious : null),
+        _NavArrow(
+          icon: Icons.chevron_left_rounded,
+          onTap: hasPrevious ? onPrevious : null,
+        ),
         const SizedBox(width: AppSpacing.sm),
         Text(
           'PARTIDA ${index + 1} DE $total',
-          style: TextStyle(color: colors.textHint, fontSize: 10.5, fontWeight: FontWeight.w800, letterSpacing: 0.8),
+          style: TextStyle(
+            color: colors.textHint,
+            fontSize: 10.5,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.8,
+          ),
         ),
         const SizedBox(width: AppSpacing.sm),
-        _NavArrow(icon: Icons.chevron_right_rounded, onTap: hasNext ? onNext : null),
+        _NavArrow(
+          icon: Icons.chevron_right_rounded,
+          onTap: hasNext ? onNext : null,
+        ),
       ],
     );
   }
@@ -312,8 +414,17 @@ class _NavArrow extends StatelessWidget {
         width: 26,
         height: 26,
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-        child: Icon(icon, size: 16, color: enabled ? colors.primary : colors.textHint.withValues(alpha: 0.4)),
+        decoration: BoxDecoration(
+          color: colors.secondary,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          icon,
+          size: 16,
+          color: enabled
+              ? colors.primary
+              : colors.textHint.withValues(alpha: 0.4),
+        ),
       ),
     );
   }

@@ -12,7 +12,13 @@ List<RegulationSection> parseRegulationSections(String markdown) {
 
   void flush() {
     if (currentTitle.isEmpty) return;
-    sections.add(RegulationSection(index: currentIndex, title: currentTitle, body: buffer.toString().trim()));
+    sections.add(
+      RegulationSection(
+        index: currentIndex,
+        title: currentTitle,
+        body: buffer.toString().trim(),
+      ),
+    );
     buffer.clear();
   }
 

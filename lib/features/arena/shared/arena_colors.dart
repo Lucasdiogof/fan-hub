@@ -6,7 +6,9 @@ class ArenaColors {
   static const goiasOutfield = Color(0xFF00521E);
   static const goiasShorts = Color(0xFFFFFFFF);
   static const goiasKeeper = Color(0xFFF3C218);
-  static const opponentOutfield = Color(0xFFD0342C);
+  // Nunca vermelho em nenhum componente do app — mesmo não usado hoje,
+  // esse token fica âmbar/dourado pra não virar uma armadilha depois.
+  static const opponentOutfield = Color(0xFFC79A3D);
   static const opponentKeeper = Color(0xFF15181B);
   static const skin = Color(0xFFE7B48B);
 

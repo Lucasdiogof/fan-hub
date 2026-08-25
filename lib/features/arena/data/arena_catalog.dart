@@ -45,6 +45,14 @@ class ArenaCatalog {
       route: '/arena/career-path',
       usesFlame: false,
     ),
+    ArenaGame(
+      id: 'guess_player',
+      title: 'Quem é o Esmeraldino?',
+      tagline: 'Descubra o jogador secreto pela foto embaçada e pelas pistas.',
+      icon: Icons.face_retouching_natural_rounded,
+      route: '/arena/guess-player',
+      usesFlame: false,
+    ),
   ];
 
   static ArenaGame byRoute(String route) =>

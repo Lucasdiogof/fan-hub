@@ -2,23 +2,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/utils/normalize_name.dart';
 
-const _accentMap = {
-  'á': 'a', 'à': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a',
-  'é': 'e', 'ê': 'e', 'è': 'e', 'ë': 'e',
-  'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
-  'ó': 'o', 'ô': 'o', 'õ': 'o', 'ò': 'o', 'ö': 'o',
-  'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
-  'ç': 'c', 'ñ': 'n',
-};
-
-String normalizeName(String value) {
-  final buffer = StringBuffer();
-  for (final char in value.toLowerCase().trim().split('')) {
-    buffer.write(_accentMap[char] ?? char);
-  }
-  return buffer.toString().replaceAll(RegExp(r'\s+'), ' ');
-}
+export 'package:goias_app/shared/utils/normalize_name.dart' show normalizeName;
 
 class CareerPathCubit extends Cubit<CareerPathState> {
   CareerPathCubit({
@@ -27,7 +13,10 @@ class CareerPathCubit extends Cubit<CareerPathState> {
     required this.saveRound,
     required this.loadSelectedId,
     required this.saveSelectedId,
-  }) : assert(players.isNotEmpty, 'CareerPathCubit precisa de pelo menos um jogador'),
+  }) : assert(
+         players.isNotEmpty,
+         'CareerPathCubit precisa de pelo menos um jogador',
+       ),
        super(CareerPathState(players: players)) {
     loadSelected();
   }
@@ -72,9 +61,17 @@ class CareerPathCubit extends Cubit<CareerPathState> {
   }
 
   Future<void> _loadPlayer(CareerPlayer player) async {
-    emit(state.copyWith(status: LoadStatus.loading, player: player, justFinished: false));
+    emit(
+      state.copyWith(
+        status: LoadStatus.loading,
+        player: player,
+        justFinished: false,
+      ),
+    );
     final saved = await loadRound(player.id);
-    final round = saved ?? CareerRoundState(playerId: player.id, startedAt: DateTime.now());
+    final round =
+        saved ??
+        CareerRoundState(playerId: player.id, startedAt: DateTime.now());
     emit(state.copyWith(status: LoadStatus.success, round: round));
     if (saved == null) await saveRound(round);
     await saveSelectedId(player.id);
@@ -82,7 +79,9 @@ class CareerPathCubit extends Cubit<CareerPathState> {
 
   bool isCorrect(CareerPlayer player, String guess) {
     final normalized = normalizeName(guess);
-    return player.acceptedAnswers.any((answer) => normalizeName(answer) == normalized);
+    return player.acceptedAnswers.any(
+      (answer) => normalizeName(answer) == normalized,
+    );
   }
 
   Future<void> guess(String name) async {
@@ -91,7 +90,10 @@ class CareerPathCubit extends Cubit<CareerPathState> {
     if (player == null || round == null || round.isDone) return;
 
     if (isCorrect(player, name)) {
-      final updated = round.copyWith(status: CareerRoundStatus.won, completedAt: DateTime.now());
+      final updated = round.copyWith(
+        status: CareerRoundStatus.won,
+        completedAt: DateTime.now(),
+      );
       emit(state.copyWith(round: updated, justFinished: true));
       await saveRound(updated);
       return;
@@ -111,7 +113,10 @@ class CareerPathCubit extends Cubit<CareerPathState> {
   Future<void> reveal() async {
     final round = state.round;
     if (round == null || round.isDone) return;
-    final updated = round.copyWith(status: CareerRoundStatus.revealed, completedAt: DateTime.now());
+    final updated = round.copyWith(
+      status: CareerRoundStatus.revealed,
+      completedAt: DateTime.now(),
+    );
     emit(state.copyWith(round: updated, justFinished: true));
     await saveRound(updated);
   }

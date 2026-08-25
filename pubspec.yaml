@@ -25,6 +25,7 @@ dependencies:
   shared_preferences: ^2.5.5
   flame: ^1.38.0
   share_plus: ^13.3.0
+  video_player: ^2.14.0
 
 dev_dependencies:
   flutter_test:
@@ -44,6 +45,8 @@ flutter:
     - lib/assets/branding/
     - lib/assets/games/penalty/
     - lib/assets/games/keepy_uppy/
+    - lib/assets/squad/
+    - lib/assets/videos/
 
 flutter_launcher_icons:
   android: true
@@ -59,8 +62,6 @@ flutter_launcher_icons:
 
 flutter_native_splash:
   color: "#F6F8F7"
-  image: assets_gen/splash_logo.png
   android_12:
-    image: assets_gen/splash_logo.png
     color: "#F6F8F7"
   web: false

@@ -5,6 +5,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/widgets/crowd_lineup_home_card.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
@@ -66,7 +67,9 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
             if (state.loading && state.nextMatch == null) {
-              return Center(child: CircularProgressIndicator(color: colors.primary));
+              return Center(
+                child: CircularProgressIndicator(color: colors.primary),
+              );
             }
             return Align(
               alignment: Alignment.topCenter,
@@ -89,11 +92,20 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                           match: state.nextMatch!,
                           onTickets: () => context.push('/tickets'),
                         ),
+                        const SizedBox(height: AppSpacing.lg),
+                        CrowdLineupHomeCard(
+                          match: state.nextMatch!,
+                          onTap: () => context.push(
+                            '/crowd-lineup',
+                            extra: state.nextMatch,
+                          ),
+                        ),
                       ],
                       if (!state.isMember) ...[
                         const SizedBox(height: AppSpacing.xl),
                         MembershipBanner(
-                          onViewPlans: () => context.read<HomeShellCubit>().navigateToTab(2),
+                          onViewPlans: () =>
+                              context.read<HomeShellCubit>().navigateToTab(2),
                         ),
                       ],
                       const SizedBox(height: AppSpacing.xl),

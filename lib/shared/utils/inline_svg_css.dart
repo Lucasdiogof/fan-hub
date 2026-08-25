@@ -1,4 +1,7 @@
-final _styleBlock = RegExp(r'<style[^>]*>([\s\S]*?)</style>', caseSensitive: false);
+final _styleBlock = RegExp(
+  r'<style[^>]*>([\s\S]*?)</style>',
+  caseSensitive: false,
+);
 final _cssRule = RegExp(r'([^{}]+)\{([^}]*)\}');
 
 /// Alguns escudos (ex.: exportados do Illustrator) definem cor via
@@ -34,7 +37,10 @@ String inlineSvgCssClasses(String svg) {
 
   var result = svg;
   for (final entry in rules.entries) {
-    result = result.replaceAll('class="${entry.key}"', 'style="${entry.value}"');
+    result = result.replaceAll(
+      'class="${entry.key}"',
+      'style="${entry.value}"',
+    );
   }
   // As regras já foram aplicadas inline acima — sem remover o bloco em si,
   // o `flutter_svg` ainda o encontra ao percorrer o XML e loga

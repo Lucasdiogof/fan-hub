@@ -36,7 +36,11 @@ class DigitalMembershipCard extends StatelessWidget {
           colors: [colors.primary, colors.darkGreen],
         ),
         boxShadow: [
-          BoxShadow(color: Colors.black.withValues(alpha: 0.28), blurRadius: 28, offset: const Offset(0, 16)),
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.28),
+            blurRadius: 28,
+            offset: const Offset(0, 16),
+          ),
         ],
       ),
       child: Stack(
@@ -46,7 +50,11 @@ class DigitalMembershipCard extends StatelessWidget {
             right: -60,
             child: Transform.rotate(
               angle: -0.5,
-              child: Container(width: 140, height: 320, color: Colors.white.withValues(alpha: 0.05)),
+              child: Container(
+                width: 140,
+                height: 320,
+                color: Colors.white.withValues(alpha: 0.05),
+              ),
             ),
           ),
           Column(
@@ -59,7 +67,12 @@ class DigitalMembershipCard extends StatelessWidget {
                   const SizedBox(width: AppSpacing.sm),
                   const Text(
                     'SÓCIO ESMERALDA',
-                    style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.w800, letterSpacing: 0.8),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.8,
+                    ),
                   ),
                   const Spacer(),
                   _StatusPill(status: status),
@@ -68,18 +81,30 @@ class DigitalMembershipCard extends StatelessWidget {
               const SizedBox(height: AppSpacing.xxxl),
               Text(
                 holderName.toUpperCase(),
-                style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
               const SizedBox(height: 2),
               Text(
                 planName,
-                style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 13, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.8),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               if (memberNumber != null) ...[
                 const SizedBox(height: AppSpacing.lg),
                 Text(
                   'Nº $memberNumber',
-                  style: TextStyle(color: Colors.white.withValues(alpha: 0.65), fontSize: 12, letterSpacing: 0.6),
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.65),
+                    fontSize: 12,
+                    letterSpacing: 0.6,
+                  ),
                 ),
               ],
             ],
@@ -100,19 +125,28 @@ class _StatusPill extends StatelessWidget {
     final (label, color) = switch (status) {
       MembershipStatus.active => ('ATIVO', const Color(0xFF4CC37A)),
       MembershipStatus.pending => ('PENDENTE', const Color(0xFFD9B25C)),
-      MembershipStatus.suspended => ('SUSPENSO', const Color(0xFFFF6B6B)),
-      MembershipStatus.cancelled => ('CANCELADO', const Color(0xFFFF6B6B)),
+      MembershipStatus.suspended => ('SUSPENSO', const Color(0xFFD9B25C)),
+      MembershipStatus.cancelled => ('CANCELADO', const Color(0xFFD9B25C)),
       MembershipStatus.none => ('', Colors.transparent),
     };
     if (label.isEmpty) return const SizedBox.shrink();
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(width: 7, height: 7, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+        Container(
+          width: 7,
+          height: 7,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
         const SizedBox(width: 5),
         Text(
           label,
-          style: TextStyle(color: Colors.white.withValues(alpha: 0.85), fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 0.6),
+          style: TextStyle(
+            color: Colors.white.withValues(alpha: 0.85),
+            fontSize: 10,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.6,
+          ),
         ),
       ],
     );

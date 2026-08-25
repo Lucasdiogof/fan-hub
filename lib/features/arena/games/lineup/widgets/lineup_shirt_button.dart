@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
+import 'package:goias_app/shared/widgets/jersey_shirt.dart';
 
 /// Uma camisa no campo — número, estrutura da resposta ("...... ....."),
 /// e o nome revelado depois de resolvida. O estado (resolvido/falhou/em
@@ -11,12 +12,18 @@ class LineupShirtButton extends StatelessWidget {
     required this.player,
     required this.playerState,
     required this.onTap,
+    this.shirtSize = 46,
     super.key,
   });
 
   final LineupPlayer player;
   final LineupPlayerState playerState;
   final VoidCallback onTap;
+
+  /// Lado da camisa em pixels — ajustável porque a linha mais cheia de
+  /// uma formação (até 5 titulares lado a lado) precisa de camisas
+  /// menores que uma linha de 1 (goleiro) pra nunca encostar na vizinha.
+  final double shirtSize;
 
   @override
   Widget build(BuildContext context) {
@@ -41,38 +48,45 @@ class LineupShirtButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              width: 52,
-              height: 52,
+              width: shirtSize,
+              height: shirtSize,
               child: Stack(
                 clipBehavior: Clip.none,
                 alignment: Alignment.center,
                 children: [
-                  CustomPaint(
-                    size: const Size(52, 52),
-                    painter: _JerseyPainter(
-                      color: failed
-                          ? ArenaColors.opponentKeeper.withValues(alpha: 0.55)
-                          : ArenaColors.goiasOutfield,
-                      number: player.shirtNumber,
-                    ),
+                  JerseyShirt(
+                    size: shirtSize,
+                    number: player.shirtNumber,
+                    fillColor: failed
+                        ? ArenaColors.opponentKeeper.withValues(alpha: 0.55)
+                        : ArenaColors.goiasOutfield,
                   ),
                   if (solved || failed)
                     Positioned(
-                      top: -5,
-                      right: -5,
+                      top: -shirtSize * 0.09,
+                      right: -shirtSize * 0.09,
                       child: Container(
-                        width: 20,
-                        height: 20,
+                        width: shirtSize * 0.37,
+                        height: shirtSize * 0.37,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
+                          // Nunca vermelho — identidade do app não usa essa
+                          // cor em nenhum componente. Erro usa âmbar/dourado.
                           color: solved
                               ? const Color(0xFF278A52)
-                              : const Color(0xFFD64545),
+                              : const Color(0xFFC99A36),
                           border: Border.all(color: Colors.white, width: 1.5),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 2,
+                              offset: Offset(0, 1),
+                            ),
+                          ],
                         ),
                         child: Icon(
                           solved ? Icons.check_rounded : Icons.close_rounded,
-                          size: 12,
+                          size: shirtSize * 0.22,
                           color: Colors.white,
                         ),
                       ),
@@ -98,98 +112,59 @@ class _AnswerStructure extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (revealed) {
-      return Text(
-        player.displayName.toUpperCase(),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 11,
-          fontWeight: FontWeight.w800,
+      return Container(
+        constraints: const BoxConstraints(maxWidth: 72),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.34),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Text(
+          player.displayName.toUpperCase(),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 9.5,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.1,
+            height: 1.1,
+          ),
         ),
       );
     }
     final words = player.puzzleAnswer.split(' ');
     return Wrap(
       alignment: WrapAlignment.center,
-      spacing: 4,
+      spacing: 5,
+      runSpacing: 3,
       children: [
         for (final word in words)
-          Text(
-            '·' * word.length,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1.5,
-            ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var i = 0; i < word.length; i++) ...[
+                if (i > 0) const SizedBox(width: 2),
+                Container(
+                  width: 4.5,
+                  height: 4.5,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.9),
+                    shape: BoxShape.circle,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 1,
+                        offset: Offset(0, 0.5),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ],
           ),
       ],
     );
   }
-}
-
-/// Silhueta simples de camisa — corpo trapezoidal com decote e mangas
-/// curtas, só o suficiente pra ler como "camisa de futebol" no tamanho
-/// pequeno em que aparece (11 delas juntas no campo).
-class _JerseyPainter extends CustomPainter {
-  const _JerseyPainter({required this.color, required this.number});
-
-  final Color color;
-  final int? number;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final w = size.width;
-    final h = size.height;
-    final body = Path()
-      ..moveTo(w * 0.32, 0)
-      ..lineTo(w * 0.68, 0)
-      ..lineTo(w * 0.68, h * 0.12)
-      ..lineTo(w * 0.86, h * 0.22)
-      ..lineTo(w * 0.78, h * 0.42)
-      ..lineTo(w * 0.68, h * 0.34)
-      ..lineTo(w * 0.68, h)
-      ..lineTo(w * 0.32, h)
-      ..lineTo(w * 0.32, h * 0.34)
-      ..lineTo(w * 0.22, h * 0.42)
-      ..lineTo(w * 0.14, h * 0.22)
-      ..lineTo(w * 0.32, h * 0.12)
-      ..close();
-
-    canvas.drawShadow(body, Colors.black, 1.5, false);
-    canvas.drawPath(body, Paint()..color = color);
-    canvas.drawPath(
-      body,
-      Paint()
-        ..color = Colors.white.withValues(alpha: 0.25)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1,
-    );
-
-    // Sem número confirmado pela fonte: a camisa fica lisa, nunca com um
-    // "?" no lugar do número (pedido explícito — não inventar o dado).
-    if (number == null) return;
-
-    final textPainter = TextPainter(
-      text: TextSpan(
-        text: '$number',
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 17,
-          fontWeight: FontWeight.w900,
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-    textPainter.paint(
-      canvas,
-      Offset((w - textPainter.width) / 2, h * 0.42 - textPainter.height / 2),
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant _JerseyPainter oldDelegate) =>
-      oldDelegate.color != color || oldDelegate.number != number;
 }

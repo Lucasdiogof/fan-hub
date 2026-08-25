@@ -1,12 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/features/arena/games/keepy_uppy/pages/keepy_uppy_game_page.dart';
 import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
 import 'package:goias_app/features/arena/games/career_path/pages/career_path_page.dart';
+import 'package:goias_app/features/arena/games/guess_player/pages/guess_player_page.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
@@ -19,6 +20,8 @@ import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart';
+import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/presentation/pages/find_zip_code_page.dart';
@@ -33,19 +36,28 @@ import 'package:goias_app/features/profile/presentation/pages/address_page.dart'
 import 'package:goias_app/features/profile/presentation/pages/personal_data_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/security_page.dart';
+import 'package:goias_app/features/profile/presentation/pages/theme_settings_page.dart';
+import 'package:goias_app/features/squad/domain/squad_member.dart';
+import 'package:goias_app/features/squad/presentation/pages/squad_list_page.dart';
+import 'package:goias_app/features/squad/presentation/pages/squad_member_detail_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/my_orders_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/my_tickets_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/tickets_page.dart';
 import 'package:goias_app/core/router/route_observer.dart';
+import 'package:goias_app/core/router/splash_gate.dart';
+import 'package:goias_app/features/splash/presentation/pages/splash_video_page.dart';
 import 'package:goias_app/shared/widgets/coming_soon_page.dart';
 
 const _authArea = {'/login', '/register', '/check-email'};
 
-GoRouter createAppRouter(AuthCubit authCubit) {
+GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
   return GoRouter(
     initialLocation: '/',
     observers: [appRouteObserver],
-    refreshListenable: _AuthRefresh(authCubit.stream),
+    refreshListenable: Listenable.merge([
+      _AuthRefresh(authCubit.stream),
+      splashGate,
+    ]),
     redirect: (context, state) {
       final authState = authCubit.state;
       final location = state.matchedLocation;
@@ -54,14 +66,36 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         return location == '/reset-password' ? null : '/reset-password';
       }
 
+      if (!splashGate.done) {
+        return location == '/splash' ? null : '/splash';
+      }
+
       final loggedIn = authState is AuthAuthenticated;
       final onAuthArea = _authArea.contains(location);
 
+      if (location == '/splash') return loggedIn ? '/' : '/login';
       if (!loggedIn && !onAuthArea) return '/login';
       if (loggedIn && (onAuthArea || location == '/reset-password')) return '/';
       return null;
     },
     routes: [
+      GoRoute(
+        path: '/splash',
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const SplashVideoPage(),
+          transitionDuration: const Duration(milliseconds: 200),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: Tween<double>(
+                begin: 1,
+                end: 0,
+              ).animate(secondaryAnimation),
+              child: child,
+            );
+          },
+        ),
+      ),
       GoRoute(path: '/', builder: (context, state) => const HomeShellPage()),
       GoRoute(
         path: '/match/:fixtureId',
@@ -69,8 +103,22 @@ GoRouter createAppRouter(AuthCubit authCubit) {
             MatchDetailsPage(fixtureId: state.pathParameters['fixtureId']!),
       ),
       GoRoute(
+        path: '/crowd-lineup',
+        builder: (context, state) =>
+            CrowdLineupPage(match: state.extra! as Match),
+      ),
+      GoRoute(
         path: '/profile',
         builder: (context, state) => const ProfilePage(),
+      ),
+      GoRoute(
+        path: '/squad',
+        builder: (context, state) => const SquadListPage(),
+      ),
+      GoRoute(
+        path: '/squad/:memberId',
+        builder: (context, state) =>
+            SquadMemberDetailPage(member: state.extra! as SquadMember),
       ),
       GoRoute(
         path: '/tickets',
@@ -95,6 +143,10 @@ GoRouter createAppRouter(AuthCubit authCubit) {
       GoRoute(
         path: '/profile/security',
         builder: (context, state) => const SecurityPage(),
+      ),
+      GoRoute(
+        path: '/profile/theme',
+        builder: (context, state) => const ThemeSettingsPage(),
       ),
       GoRoute(
         path: '/coming-soon',
@@ -127,8 +179,11 @@ GoRouter createAppRouter(AuthCubit authCubit) {
         path: '/arena/quiz/play',
         builder: (context, state) {
           final args =
-              state.extra! as ({QuizDifficulty difficulty, Set<String> avoid});
-          return QuizPlayPage(difficulty: args.difficulty, avoid: args.avoid);
+              state.extra! as ({QuizDifficulty difficulty, bool isReview});
+          return QuizPlayPage(
+            difficulty: args.difficulty,
+            isReview: args.isReview,
+          );
         },
       ),
       GoRoute(
@@ -143,6 +198,10 @@ GoRouter createAppRouter(AuthCubit authCubit) {
       GoRoute(
         path: '/arena/career-path',
         builder: (context, state) => const CareerPathPage(),
+      ),
+      GoRoute(
+        path: '/arena/guess-player',
+        builder: (context, state) => const GuessPlayerPage(),
       ),
       GoRoute(
         path: '/partners',

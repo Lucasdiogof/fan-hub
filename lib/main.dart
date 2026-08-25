@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/app_router.dart';
+import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
+import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -29,19 +31,28 @@ class GoiasApp extends StatefulWidget {
 
 class _GoiasAppState extends State<GoiasApp> {
   final AuthCubit _authCubit = sl<AuthCubit>();
-  late final GoRouter _router = createAppRouter(_authCubit);
+  final ThemeCubit _themeCubit = sl<ThemeCubit>();
+  late final GoRouter _router = createAppRouter(_authCubit, sl<SplashGate>());
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: _authCubit,
-      child: MaterialApp.router(
-        title: 'Goiás EC',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.light,
-        darkTheme: AppTheme.dark,
-        themeMode: ThemeMode.system,
-        routerConfig: _router,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: _authCubit),
+        BlocProvider.value(value: _themeCubit),
+      ],
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        bloc: _themeCubit,
+        builder: (context, themeMode) {
+          return MaterialApp.router(
+            title: 'Goiás EC',
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.light,
+            darkTheme: AppTheme.dark,
+            themeMode: themeMode,
+            routerConfig: _router,
+          );
+        },
       ),
     );
   }

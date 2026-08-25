@@ -3,8 +3,14 @@ import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
 import 'package:goias_app/features/arena/games/career_path/career_path_storage.dart';
+import 'package:goias_app/features/arena/games/guess_player/data/guess_player_storage.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_storage.dart';
+import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
+import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
+import 'package:goias_app/core/theme/theme_cubit.dart';
+import 'package:goias_app/features/crowd_lineup/data/supabase_crowd_lineup_repository.dart';
+import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/auth/data/auth_repository_impl.dart';
 import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -34,6 +40,9 @@ import 'package:goias_app/features/social/data/datasources/social_remote_data_so
 import 'package:goias_app/features/social/data/repositories/social_feed_repository_impl.dart';
 import 'package:goias_app/features/social/domain/repositories/social_feed_repository.dart';
 import 'package:goias_app/features/social/presentation/cubit/social_feed_cubit.dart';
+import 'package:goias_app/features/squad/data/supabase_squad_repository.dart';
+import 'package:goias_app/features/squad/domain/repositories/squad_repository.dart';
+import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/ticket/data/empty_ticket_repository.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/my_orders_cubit.dart';
@@ -84,11 +93,24 @@ void setupDependencies() {
     () => SupabaseProfileRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
+  sl.registerLazySingleton<SplashGate>(SplashGate.new);
   sl.registerLazySingleton<ArenaScores>(ArenaScores.new);
   sl.registerLazySingleton<LineupStorage>(LineupStorage.new);
   sl.registerLazySingleton<CareerPathStorage>(CareerPathStorage.new);
+  sl.registerLazySingleton<GuessPlayerStorage>(GuessPlayerStorage.new);
+  sl.registerLazySingleton<CrowdLineupRepository>(
+    () => SupabaseCrowdLineupRepository(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<ThemeCubit>(ThemeCubit.new);
+  sl.registerLazySingleton<SquadRepository>(
+    () => SupabaseSquadRepository(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<QuizProgressRepository>(
+    () => QuizProgressRepository(Supabase.instance.client),
+  );
 
   sl.registerFactory<HomeCubit>(() => HomeCubit(sl(), sl()));
+  sl.registerFactory<SquadCubit>(() => SquadCubit(sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));

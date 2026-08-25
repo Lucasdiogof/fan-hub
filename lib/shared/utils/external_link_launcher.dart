@@ -6,7 +6,10 @@ import 'package:url_launcher/url_launcher.dart';
 /// URL quebrada virar exception visível: cai num SnackBar amigável.
 Future<void> openExternalUrl(BuildContext context, String url) async {
   try {
-    final launched = await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    final launched = await launchUrl(
+      Uri.parse(url),
+      mode: LaunchMode.externalApplication,
+    );
     if (!launched) throw Exception('launchUrl returned false for $url');
   } catch (_) {
     if (!context.mounted) return;
