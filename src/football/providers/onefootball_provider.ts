@@ -45,10 +45,31 @@ export interface OneFootballMatchEvent {
   substitution?: { playerIn?: { name: string }; playerOut?: { name: string } };
 }
 
+export interface OneFootballLineupPlayer {
+  name: string;
+  jerseyNumber: number;
+  image: { path: string };
+}
+
+export interface OneFootballLineupRow {
+  players: OneFootballLineupPlayer[];
+}
+
+export interface OneFootballTeamLineup {
+  teamName: string;
+  formation: { rows: OneFootballLineupRow[] };
+}
+
+export interface OneFootballMatchLineup {
+  homeTeam: OneFootballTeamLineup;
+  awayTeam: OneFootballTeamLineup;
+}
+
 export interface OneFootballMatchDetail {
   score: OneFootballMatchScore;
   stadium: string | null;
   events: OneFootballMatchEvent[];
+  lineup: OneFootballMatchLineup | null;
 }
 
 export interface OneFootballStandingRow {
@@ -171,7 +192,9 @@ export async function fetchCompetitionStandings(competitionSlug: string): Promis
 /**
  * `matchInfo.entries` traz um item com `title: "Estádio"` quando o dado
  * existe (nem toda partida tem) — e o mesmo payload já traz
- * `matchEvents.events` (gols/cartões/substituições), sem requisição extra.
+ * `matchEvents.events` (gols/cartões/substituições) e `matchLineup.lineup`
+ * (só titulares — banco/técnico não aparecem em lugar nenhum do payload),
+ * sem requisição extra.
  */
 export async function fetchMatchDetail(matchId: string): Promise<OneFootballMatchDetail | null> {
   try {
@@ -181,7 +204,13 @@ export async function fetchMatchDetail(matchId: string): Promise<OneFootballMatc
     const matchInfo = findNode<{ entries: OneFootballMatchInfoEntry[] }>(containers, 'matchInfo');
     const stadiumEntry = matchInfo?.entries.find((entry) => entry.title === 'Estádio');
     const matchEvents = findNode<{ events: OneFootballMatchEvent[] }>(containers, 'matchEvents');
-    return { score, stadium: stadiumEntry?.subtitle ?? null, events: matchEvents?.events ?? [] };
+    const matchLineup = findNode<{ lineup: OneFootballMatchLineup }>(containers, 'matchLineup');
+    return {
+      score,
+      stadium: stadiumEntry?.subtitle ?? null,
+      events: matchEvents?.events ?? [],
+      lineup: matchLineup?.lineup ?? null,
+    };
   } catch (err) {
     if (err instanceof ProviderError) throw err;
     throw new ProviderError(

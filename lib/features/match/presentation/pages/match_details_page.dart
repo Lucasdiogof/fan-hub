@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
@@ -11,6 +12,7 @@ import 'package:goias_app/features/match/domain/repositories/football_repository
 import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_state.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_events_timeline.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_lineups_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -78,6 +80,7 @@ class _MatchDetailsView extends StatelessWidget {
                     successBuilder: (context) => _MatchDetailsContent(
                       match: state.match!,
                       events: state.events,
+                      lineups: state.lineups,
                     ),
                   );
                 },
@@ -120,10 +123,15 @@ class _BackButton extends StatelessWidget {
 }
 
 class _MatchDetailsContent extends StatelessWidget {
-  const _MatchDetailsContent({required this.match, required this.events});
+  const _MatchDetailsContent({
+    required this.match,
+    required this.events,
+    required this.lineups,
+  });
 
   final Match match;
   final List<MatchEvent> events;
+  final MatchLineups? lineups;
 
   @override
   Widget build(BuildContext context) {
@@ -264,6 +272,7 @@ class _MatchDetailsContent extends StatelessWidget {
           ),
         ),
         MatchEventsTimeline(match: match, events: events),
+        MatchLineupsSection(lineups: lineups),
       ],
     );
   }

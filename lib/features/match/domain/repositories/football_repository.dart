@@ -1,4 +1,5 @@
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
@@ -22,7 +23,8 @@ abstract interface class FootballRepository {
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
   getGoiasSnapshot();
 
-  Future<Result<({Match match, List<MatchEvent> events})>> getMatchDetails(
-    String fixtureId,
-  );
+  Future<
+    Result<({Match match, List<MatchEvent> events, MatchLineups? lineups})>
+  >
+  getMatchDetails(String fixtureId);
 }

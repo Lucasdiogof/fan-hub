@@ -26,6 +26,7 @@ class MatchDetailsCubit extends Cubit<MatchDetailsState> {
             status: LoadStatus.success,
             match: data.match,
             events: data.events,
+            lineups: data.lineups,
           ),
         );
       case Error(:final failure):

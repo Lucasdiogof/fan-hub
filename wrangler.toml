@@ -31,4 +31,4 @@ GOIAS_ONEFOOTBALL_SLUG = "goias-1863"
 # pararem de bater, confira se o slug ainda é válido navegando
 # https://onefootball.com/pt-br/competicao/.
 ONEFOOTBALL_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
-CACHE_VERSION = "7"
+CACHE_VERSION = "8"

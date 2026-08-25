@@ -6,6 +6,7 @@ import { ProviderError } from './_lib/providerError';
 import { fetchMatchDetail } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchScore } from './normalize/match';
 import { normalizeOneFootballMatchEvent } from './normalize/match_event';
+import { normalizeOneFootballMatchLineups } from './normalize/match_lineup';
 
 const CACHE_TTL_SECONDS = 30 * 60;
 const COMPETITION_NAME = 'Brasileirão Série B';
@@ -34,6 +35,7 @@ async function handleOneFootballFixture(request: Request, cacheVersion: string, 
       competition: { name: COMPETITION_NAME, season: null },
       match: normalizeOneFootballMatchScore(matchId, detail.score, detail.stadium),
       events: detail.events.map(normalizeOneFootballMatchEvent),
+      lineups: detail.lineup ? normalizeOneFootballMatchLineups(detail.lineup) : null,
     };
   });
 }
