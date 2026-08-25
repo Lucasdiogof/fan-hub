@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,11 +9,15 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/core/theme/theme_mode_label.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/mock_membership_toggle.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
+import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
+import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -85,7 +91,7 @@ class _ProfileView extends StatelessWidget {
                           _MenuRow(
                             icon: Icons.location_on_outlined,
                             label: 'Meu endereço',
-                            onTap: () => context.push('/profile/address'),
+                            onTap: () => _openAddress(context),
                           ),
                           _MenuRow(
                             icon: Icons.lock_outline_rounded,
@@ -110,7 +116,7 @@ class _ProfileView extends StatelessWidget {
                           _MenuRow(
                             icon: Icons.shield_outlined,
                             label: 'Elenco',
-                            onTap: () => context.push('/squad'),
+                            onTap: () => _openSquad(context),
                           ),
                           _MenuRow(
                             icon: Icons.handshake_outlined,
@@ -119,6 +125,8 @@ class _ProfileView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: AppSpacing.xl),
+                      const SocialLinksSection(),
                       const SizedBox(height: AppSpacing.xl),
                       _MenuSection(
                         title: 'LEGAL',
@@ -158,6 +166,23 @@ class _ProfileView extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Carrega o Elenco ANTES de navegar (ver `GlobalLoading.run`) — a tela
+/// já abre com os 31 jogadores prontos, nunca vazia esperando a busca.
+Future<void> _openSquad(BuildContext context) async {
+  final cubit = sl<SquadCubit>();
+  await GlobalLoading.run(context, cubit.load);
+  if (!context.mounted) return;
+  unawaited(context.push('/squad', extra: cubit));
+}
+
+/// Mesma lógica pro endereço salvo.
+Future<void> _openAddress(BuildContext context) async {
+  final cubit = sl<AddressCubit>();
+  await GlobalLoading.run(context, cubit.load);
+  if (!context.mounted) return;
+  unawaited(context.push('/profile/address', extra: cubit));
 }
 
 class _MenuSection extends StatelessWidget {
