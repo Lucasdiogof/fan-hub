@@ -117,21 +117,12 @@ class _ProfileView extends StatelessWidget {
                           _MenuRow(
                             icon: Icons.description_outlined,
                             label: 'Termos de Uso',
-                            onTap: () => context.push(
-                              '/coming-soon',
-                              extra: (title: 'TERMOS DE USO', message: null),
-                            ),
+                            onTap: () => context.push('/profile/terms'),
                           ),
                           _MenuRow(
                             icon: Icons.privacy_tip_outlined,
                             label: 'Política de Privacidade',
-                            onTap: () => context.push(
-                              '/coming-soon',
-                              extra: (
-                                title: 'POLÍTICA DE PRIVACIDADE',
-                                message: null,
-                              ),
-                            ),
+                            onTap: () => context.push('/profile/privacy'),
                           ),
                         ],
                       ),

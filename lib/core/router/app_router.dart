@@ -49,6 +49,8 @@ import 'package:goias_app/features/partners/presentation/pages/partners_page.dar
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/pages/address_page.dart';
+import 'package:goias_app/features/profile/data/legal_documents_data.dart';
+import 'package:goias_app/features/profile/presentation/pages/legal_document_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/personal_data_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:goias_app/features/profile/presentation/pages/delete_account_page.dart';
@@ -158,6 +160,16 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       GoRoute(
         path: '/profile/personal',
         builder: (context, state) => const PersonalDataPage(),
+      ),
+      GoRoute(
+        path: '/profile/terms',
+        builder: (context, state) =>
+            const LegalDocumentPage(document: LegalDocumentsData.termsOfUse),
+      ),
+      GoRoute(
+        path: '/profile/privacy',
+        builder: (context, state) =>
+            const LegalDocumentPage(document: LegalDocumentsData.privacyPolicy),
       ),
       GoRoute(
         path: '/profile/address',
