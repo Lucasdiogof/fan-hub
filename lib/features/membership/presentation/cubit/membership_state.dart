@@ -22,7 +22,8 @@ class MembershipState extends Equatable {
   final Match? nextMatch;
   final String? errorMessage;
 
-  bool get isMember => membership != null && membership!.status == MembershipStatus.active;
+  bool get isMember =>
+      membership != null && membership!.status == MembershipStatus.active;
 
   MembershipState copyWith({
     LoadStatus? status,
@@ -45,5 +46,12 @@ class MembershipState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, membership, plans, user, nextMatch, errorMessage];
+  List<Object?> get props => [
+    status,
+    membership,
+    plans,
+    user,
+    nextMatch,
+    errorMessage,
+  ];
 }

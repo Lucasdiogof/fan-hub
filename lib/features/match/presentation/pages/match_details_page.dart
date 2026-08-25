@@ -14,15 +14,26 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
 
+/// [cubit], quando fornecido, já veio construído e carregado por quem
+/// navegou pra cá (ver `GlobalLoading.run` nos pontos de entrada) — a tela
+/// só reaproveita via `BlocProvider.value`. Fica `null` (e a tela cria/
+/// carrega o próprio Cubit, como antes) só em navegação direta por URL
+/// (deep link, voltar/avançar do navegador) — o app é PWA, então isso
+/// precisa continuar funcionando sem quebrar.
 class MatchDetailsPage extends StatelessWidget {
-  const MatchDetailsPage({required this.fixtureId, super.key});
+  const MatchDetailsPage({required this.fixtureId, this.cubit, super.key});
 
   final String fixtureId;
+  final MatchDetailsCubit? cubit;
 
   @override
   Widget build(BuildContext context) {
+    final preloaded = cubit;
+    if (preloaded != null) {
+      return BlocProvider.value(value: preloaded, child: const _MatchDetailsView());
+    }
     return BlocProvider(
-      create: (_) => MatchDetailsCubit(sl<FootballRepository>(), fixtureId),
+      create: (_) => MatchDetailsCubit(sl<FootballRepository>(), fixtureId)..load(),
       child: const _MatchDetailsView(),
     );
   }

@@ -17,8 +17,19 @@ class FieldLabel extends StatelessWidget {
     return Text.rich(
       TextSpan(
         text: label,
-        style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.textSecondary),
-        children: isRequired ? [TextSpan(text: ' *', style: TextStyle(color: colors.primary))] : null,
+        style: TextStyle(
+          fontSize: 12.5,
+          fontWeight: FontWeight.w700,
+          color: colors.textSecondary,
+        ),
+        children: isRequired
+            ? [
+                TextSpan(
+                  text: ' *',
+                  style: TextStyle(color: colors.primary),
+                ),
+              ]
+            : null,
       ),
     );
   }
@@ -70,7 +81,9 @@ class RegistrationTextField extends StatefulWidget {
 /// `initialValue`, o texto na tela ficaria preso no valor de quando o
 /// widget foi montado, mesmo com o Cubit já atualizado.
 class _RegistrationTextFieldState extends State<RegistrationTextField> {
-  late final TextEditingController _controller = TextEditingController(text: widget.value);
+  late final TextEditingController _controller = TextEditingController(
+    text: widget.value,
+  );
 
   @override
   void didUpdateWidget(covariant RegistrationTextField oldWidget) {
@@ -110,15 +123,26 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
             keyboardType: widget.keyboardType,
             inputFormatters: widget.inputFormatters,
             textCapitalization: widget.textCapitalization,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: colors.textPrimary,
+            ),
             decoration: InputDecoration(
               isDense: true,
               prefixText: widget.prefixText,
               prefix: widget.prefix,
               suffixIcon: widget.suffixIcon,
               hintText: widget.hintText,
-              hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: colors.textHint),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+              hintStyle: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: colors.textHint,
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 14,
+                vertical: 14,
+              ),
               filled: true,
               fillColor: colors.surface,
               errorText: widget.errorText,
@@ -190,7 +214,9 @@ class RegistrationPickerField extends StatelessWidget {
             decoration: BoxDecoration(
               color: colors.surface,
               borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: errorText != null ? colors.primary : colors.border),
+              border: Border.all(
+                color: errorText != null ? colors.primary : colors.border,
+              ),
             ),
             child: Row(
               children: [
@@ -204,14 +230,21 @@ class RegistrationPickerField extends StatelessWidget {
                     ),
                   ),
                 ),
-                Icon(Icons.expand_more_rounded, size: 18, color: colors.textHint),
+                Icon(
+                  Icons.expand_more_rounded,
+                  size: 18,
+                  color: colors.textHint,
+                ),
               ],
             ),
           ),
         ),
         if (errorText != null) ...[
           const SizedBox(height: 4),
-          Text(errorText!, style: TextStyle(fontSize: 12, color: colors.primary)),
+          Text(
+            errorText!,
+            style: TextStyle(fontSize: 12, color: colors.primary),
+          ),
         ],
       ],
     );
@@ -268,15 +301,22 @@ class RegistrationDropdownField<T> extends StatelessWidget {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               itemCount: options.length,
-              separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+              separatorBuilder: (_, _) =>
+                  Divider(height: 1, color: colors.border),
               itemBuilder: (itemContext, index) {
                 final option = options[index];
                 return ListTile(
                   title: Text(
                     option.label,
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: colors.textPrimary,
+                    ),
                   ),
-                  trailing: option.value == value ? Icon(Icons.check_rounded, color: colors.primary) : null,
+                  trailing: option.value == value
+                      ? Icon(Icons.check_rounded, color: colors.primary)
+                      : null,
                   onTap: () {
                     onChanged(option.value);
                     Navigator.of(itemContext).pop();
@@ -304,7 +344,12 @@ class RegistrationDropdownField<T> extends StatelessWidget {
 }
 
 class SegmentedToggle<T> extends StatelessWidget {
-  const SegmentedToggle({required this.options, required this.value, required this.onChanged, super.key});
+  const SegmentedToggle({
+    required this.options,
+    required this.value,
+    required this.onChanged,
+    super.key,
+  });
 
   final List<(T value, String label)> options;
   final T? value;
@@ -315,7 +360,10 @@ class SegmentedToggle<T> extends StatelessWidget {
     final colors = context.colors;
     return Container(
       padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(15)),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: Row(
         children: [
           for (final option in options)
@@ -326,7 +374,9 @@ class SegmentedToggle<T> extends StatelessWidget {
                   duration: const Duration(milliseconds: 140),
                   padding: const EdgeInsets.symmetric(vertical: 11),
                   decoration: BoxDecoration(
-                    color: value == option.$1 ? colors.primary : Colors.transparent,
+                    color: value == option.$1
+                        ? colors.primary
+                        : Colors.transparent,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   alignment: Alignment.center,
@@ -335,7 +385,9 @@ class SegmentedToggle<T> extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w800,
-                      color: value == option.$1 ? colors.onPrimary : colors.textSecondary,
+                      color: value == option.$1
+                          ? colors.onPrimary
+                          : colors.textSecondary,
                     ),
                   ),
                 ),

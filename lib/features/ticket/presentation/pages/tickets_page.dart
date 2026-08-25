@@ -8,6 +8,7 @@ import 'package:goias_app/features/ticket/presentation/cubit/tickets_cubit.dart'
 import 'package:goias_app/features/ticket/presentation/cubit/tickets_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -16,7 +17,10 @@ class TicketsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) => sl<TicketsCubit>(), child: const _TicketsView());
+    return BlocProvider(
+      create: (_) => sl<TicketsCubit>(),
+      child: const _TicketsView(),
+    );
   }
 }
 
@@ -33,11 +37,19 @@ class _TicketsView extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 900),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BackButtonCircle(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                  BackButtonCircle(
+                    onTap: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                  ),
                   const SizedBox(height: AppSpacing.lg),
                   const PageTitle('INGRESSOS'),
                   const SizedBox(height: AppSpacing.xxxl),
@@ -45,9 +57,8 @@ class _TicketsView extends StatelessWidget {
                     child: BlocBuilder<TicketsCubit, TicketsState>(
                       builder: (context, state) {
                         return switch (state.status) {
-                          LoadStatus.initial || LoadStatus.loading => Center(
-                            child: CircularProgressIndicator(color: colors.primary),
-                          ),
+                          LoadStatus.initial || LoadStatus.loading =>
+                            const Center(child: GoiasLoadingIndicator()),
                           LoadStatus.error => Center(
                             child: StateMessage(
                               icon: Icons.error_outline_rounded,
@@ -56,11 +67,14 @@ class _TicketsView extends StatelessWidget {
                             ),
                           ),
                           _ => RefreshIndicator(
-                            onRefresh: () => context.read<TicketsCubit>().load(),
+                            onRefresh: () =>
+                                context.read<TicketsCubit>().load(),
                             color: colors.primary,
                             child: ListView(
                               physics: const AlwaysScrollableScrollPhysics(),
-                              padding: const EdgeInsets.only(bottom: AppSpacing.xxxl),
+                              padding: const EdgeInsets.only(
+                                bottom: AppSpacing.xxxl,
+                              ),
                               children: [
                                 const _SectionLabel('PRÓXIMO EVENTO'),
                                 const SizedBox(height: AppSpacing.md),
@@ -125,7 +139,10 @@ class _EmptyEventCard extends StatelessWidget {
     final colors = context.colors;
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl, vertical: AppSpacing.xxxl),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.xl,
+        vertical: AppSpacing.xxxl,
+      ),
       decoration: BoxDecoration(
         color: colors.surface,
         borderRadius: BorderRadius.circular(AppRadius.card),
@@ -136,20 +153,35 @@ class _EmptyEventCard extends StatelessWidget {
           Container(
             width: 64,
             height: 64,
-            decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-            child: Icon(Icons.stadium_outlined, size: 30, color: colors.primary),
+            decoration: BoxDecoration(
+              color: colors.secondary,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.stadium_outlined,
+              size: 30,
+              color: colors.primary,
+            ),
           ),
           const SizedBox(height: AppSpacing.lg),
           Text(
             'Nenhum evento disponível no momento',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: colors.textPrimary),
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
             'Quando uma nova partida estiver disponível para venda ou check-in, ela aparecerá aqui.',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 13, height: 1.4, color: colors.textSecondary),
+            style: TextStyle(
+              fontSize: 13,
+              height: 1.4,
+              color: colors.textSecondary,
+            ),
           ),
         ],
       ),
@@ -158,7 +190,12 @@ class _EmptyEventCard extends StatelessWidget {
 }
 
 class _ShortcutCard extends StatelessWidget {
-  const _ShortcutCard({required this.icon, required this.title, required this.subtitle, required this.onTap});
+  const _ShortcutCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+  });
 
   final IconData icon;
   final String title;
@@ -185,7 +222,10 @@ class _ShortcutCard extends StatelessWidget {
               Container(
                 width: 44,
                 height: 44,
-                decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(AppRadius.cardSmall)),
+                decoration: BoxDecoration(
+                  color: colors.secondary,
+                  borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+                ),
                 child: Icon(icon, size: 22, color: colors.primary),
               ),
               const SizedBox(width: AppSpacing.md),
@@ -193,9 +233,22 @@ class _ShortcutCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: colors.textPrimary,
+                      ),
+                    ),
                     const SizedBox(height: 2),
-                    Text(subtitle, style: TextStyle(fontSize: 12.5, color: colors.textSecondary)),
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        color: colors.textSecondary,
+                      ),
+                    ),
                   ],
                 ),
               ),

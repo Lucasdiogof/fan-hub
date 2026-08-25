@@ -24,7 +24,12 @@ class MyMembershipPage extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 900),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -38,18 +43,41 @@ class MyMembershipPage extends StatelessWidget {
                         _InfoCard(
                           rows: [
                             _InfoRow('Plano', membership.plan.name),
-                            if (membership.plan.stadiumSector != null) _InfoRow('Setor', membership.plan.stadiumSector!),
-                            _InfoRow('Situação', _statusLabel(membership.status)),
-                            if (membership.memberNumber != null) _InfoRow('Número do sócio', membership.memberNumber!),
-                            _InfoRow('Mensalidade', '${formatBrl(membership.planPrice.monthlyPrice)}/mês'),
-                            _InfoRow('Anuidade', formatBrl(membership.planPrice.annualPrice)),
-                            if (membership.startedAt != null) _InfoRow('Sócio desde', _formatDate(membership.startedAt!)),
+                            if (membership.plan.stadiumSector != null)
+                              _InfoRow('Setor', membership.plan.stadiumSector!),
+                            _InfoRow(
+                              'Situação',
+                              _statusLabel(membership.status),
+                            ),
+                            if (membership.memberNumber != null)
+                              _InfoRow(
+                                'Número do sócio',
+                                membership.memberNumber!,
+                              ),
+                            _InfoRow(
+                              'Mensalidade',
+                              '${formatBrl(membership.planPrice.monthlyPrice)}/mês',
+                            ),
+                            _InfoRow(
+                              'Anuidade',
+                              formatBrl(membership.planPrice.annualPrice),
+                            ),
+                            if (membership.startedAt != null)
+                              _InfoRow(
+                                'Sócio desde',
+                                _formatDate(membership.startedAt!),
+                              ),
                           ],
                         ),
                         const SizedBox(height: AppSpacing.xl),
                         Text(
                           'BENEFÍCIOS',
-                          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                            color: colors.textHint,
+                            letterSpacing: 0.6,
+                          ),
                         ),
                         const SizedBox(height: AppSpacing.md),
                         Container(
@@ -63,16 +91,27 @@ class MyMembershipPage extends StatelessWidget {
                             children: [
                               for (final benefit in membership.plan.benefits)
                                 Padding(
-                                  padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                                  padding: const EdgeInsets.only(
+                                    bottom: AppSpacing.md,
+                                  ),
                                   child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Icon(Icons.check_circle_rounded, size: 17, color: colors.primary),
+                                      Icon(
+                                        Icons.check_circle_rounded,
+                                        size: 17,
+                                        color: colors.primary,
+                                      ),
                                       const SizedBox(width: AppSpacing.sm),
                                       Expanded(
                                         child: Text(
                                           benefit,
-                                          style: TextStyle(fontSize: 13, height: 1.4, color: colors.textPrimary),
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            height: 1.4,
+                                            color: colors.textPrimary,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -100,9 +139,17 @@ class MyMembershipPage extends StatelessWidget {
                             style: OutlinedButton.styleFrom(
                               foregroundColor: colors.error,
                               side: BorderSide(color: colors.error),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  AppRadius.button,
+                                ),
+                              ),
                               padding: const EdgeInsets.symmetric(vertical: 14),
-                              textStyle: const TextStyle(fontWeight: FontWeight.w800, fontSize: 12.5, letterSpacing: 0.3),
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 12.5,
+                                letterSpacing: 0.3,
+                              ),
                             ),
                             child: const Text('CANCELAR ASSOCIAÇÃO'),
                           ),
@@ -111,7 +158,11 @@ class MyMembershipPage extends StatelessWidget {
                         Text(
                           'O cancelamento é feito com o atendimento pelo WhatsApp, sem cobrança de multa fora dos prazos previstos no Regulamento.',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 11, color: colors.textHint, height: 1.3),
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: colors.textHint,
+                            height: 1.3,
+                          ),
                         ),
                         const SizedBox(height: AppSpacing.xl),
                       ],
@@ -173,8 +224,20 @@ class _InfoRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
         children: [
-          Expanded(child: Text(label, style: TextStyle(fontSize: 13, color: colors.textSecondary))),
-          Text(value, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+          Expanded(
+            child: Text(
+              label,
+              style: TextStyle(fontSize: 13, color: colors.textSecondary),
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
+          ),
         ],
       ),
     );
@@ -182,7 +245,11 @@ class _InfoRow extends StatelessWidget {
 }
 
 class _OptionRow extends StatelessWidget {
-  const _OptionRow({required this.icon, required this.label, required this.onTap});
+  const _OptionRow({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   final IconData icon;
   final String label;
@@ -201,15 +268,29 @@ class _OptionRow extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppRadius.card),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.md,
+          ),
           child: Row(
             children: [
               Icon(icon, size: 20, color: colors.textSecondary),
               const SizedBox(width: AppSpacing.md),
               Expanded(
-                child: Text(label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary)),
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: colors.textPrimary,
+                  ),
+                ),
               ),
-              Icon(Icons.chevron_right_rounded, size: 20, color: colors.textHint),
+              Icon(
+                Icons.chevron_right_rounded,
+                size: 20,
+                color: colors.textHint,
+              ),
             ],
           ),
         ),

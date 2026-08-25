@@ -19,7 +19,12 @@ class HelpAndInfoSection extends StatelessWidget {
       children: [
         Text(
           'AJUDA E INFORMAÇÕES',
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w800,
+            color: colors.textHint,
+            letterSpacing: 0.6,
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         MembershipOptionsCard(
@@ -37,7 +42,8 @@ class HelpAndInfoSection extends StatelessWidget {
             MembershipOption(
               icon: Icons.support_agent_rounded,
               label: 'Falar com o atendimento',
-              onTap: () => openExternalUrl(context, MembershipContactConfig.whatsappUrl),
+              onTap: () =>
+                  openExternalUrl(context, MembershipContactConfig.whatsappUrl),
             ),
           ],
         ),

@@ -8,6 +8,7 @@ import 'package:goias_app/features/membership/data/regulation_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_section.dart';
 import 'package:goias_app/shared/utils/regulation_markdown_parser.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
 /// Leitura só-consulta do Regulamento do Sócio Esmeralda — não depende do
 /// `MembershipRegistrationCubit`. Quem precisa saber se o usuário aceitou é
@@ -17,7 +18,8 @@ class MembershipRegulationPage extends StatefulWidget {
   const MembershipRegulationPage({super.key});
 
   @override
-  State<MembershipRegulationPage> createState() => _MembershipRegulationPageState();
+  State<MembershipRegulationPage> createState() =>
+      _MembershipRegulationPageState();
 }
 
 class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
@@ -25,14 +27,21 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
   final _sectionKeys = <int, GlobalKey>{};
 
   Future<List<RegulationSection>> _load() async {
-    final raw = await rootBundle.loadString(RegulationCatalog.current.assetPath);
+    final raw = await rootBundle.loadString(
+      RegulationCatalog.current.assetPath,
+    );
     return parseRegulationSections(raw);
   }
 
   void _goToSection(int index) {
     final ctx = _sectionKeys[index]?.currentContext;
     if (ctx == null) return;
-    Scrollable.ensureVisible(ctx, duration: const Duration(milliseconds: 350), curve: Curves.easeInOut, alignment: 0.08);
+    Scrollable.ensureVisible(
+      ctx,
+      duration: const Duration(milliseconds: 350),
+      curve: Curves.easeInOut,
+      alignment: 0.08,
+    );
   }
 
   @override
@@ -45,28 +54,53 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 720),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BackButtonCircle(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                  BackButtonCircle(
+                    onTap: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                  ),
                   const SizedBox(height: AppSpacing.lg),
                   Text(
                     'REGULAMENTO',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: colors.textPrimary, letterSpacing: 0.2),
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w900,
+                      color: colors.textPrimary,
+                      letterSpacing: 0.2,
+                    ),
                   ),
                   Text(
                     'Sócio Esmeralda',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: colors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: colors.textSecondary,
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   Row(
                     children: [
-                      Icon(Icons.event_available_rounded, size: 14, color: colors.textHint),
+                      Icon(
+                        Icons.event_available_rounded,
+                        size: 14,
+                        color: colors.textHint,
+                      ),
                       const SizedBox(width: 6),
                       Text(
                         'Em vigor desde ${_formatDate(RegulationCatalog.current.effectiveAt)}',
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: colors.textHint),
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: colors.textHint,
+                        ),
                       ),
                     ],
                   ),
@@ -76,11 +110,14 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                       future: _future,
                       builder: (context, snapshot) {
                         if (snapshot.connectionState != ConnectionState.done) {
-                          return Center(child: CircularProgressIndicator(color: colors.primary));
+                          return const Center(child: GoiasLoadingIndicator());
                         }
                         final sections = snapshot.data ?? const [];
                         for (final section in sections) {
-                          _sectionKeys.putIfAbsent(section.index, () => GlobalKey());
+                          _sectionKeys.putIfAbsent(
+                            section.index,
+                            () => GlobalKey(),
+                          );
                         }
                         return ListView(
                           // `Scrollable.ensureVisible` só funciona pra seções já montadas —
@@ -88,12 +125,20 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                           // fora da viewport inicial e o índice não navega além da primeira
                           // seção. O conteúdo é só texto, então cachear tudo de uma vez é
                           // barato.
-                          scrollCacheExtent: const ScrollCacheExtent.pixels(100000),
+                          scrollCacheExtent: const ScrollCacheExtent.pixels(
+                            100000,
+                          ),
                           children: [
-                            _RegulationIndex(sections: sections, onTapSection: _goToSection),
+                            _RegulationIndex(
+                              sections: sections,
+                              onTapSection: _goToSection,
+                            ),
                             const SizedBox(height: AppSpacing.xxxl),
                             for (final section in sections) ...[
-                              _RegulationSectionView(key: _sectionKeys[section.index], section: section),
+                              _RegulationSectionView(
+                                key: _sectionKeys[section.index],
+                                section: section,
+                              ),
                               const SizedBox(height: AppSpacing.xl),
                               if (section.index != sections.last.index) ...[
                                 Divider(color: colors.border),
@@ -139,12 +184,22 @@ class _RegulationIndex extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.sm),
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg,
+              AppSpacing.lg,
+              AppSpacing.lg,
+              AppSpacing.sm,
+            ),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'CONTEÚDO',
-                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textSecondary, letterSpacing: 0.6),
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+                  color: colors.textSecondary,
+                  letterSpacing: 0.6,
+                ),
               ),
             ),
           ),
@@ -153,16 +208,27 @@ class _RegulationIndex extends StatelessWidget {
             InkWell(
               onTap: () => onTapSection(sections[i].index),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.lg,
+                  vertical: 12,
+                ),
                 child: Row(
                   children: [
                     Expanded(
                       child: Text(
                         '${sections[i].index}. ${sections[i].title}',
-                        style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textPrimary),
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: colors.textPrimary,
+                        ),
                       ),
                     ),
-                    Icon(Icons.chevron_right_rounded, size: 18, color: colors.textHint),
+                    Icon(
+                      Icons.chevron_right_rounded,
+                      size: 18,
+                      color: colors.textHint,
+                    ),
                   ],
                 ),
               ),
@@ -188,12 +254,23 @@ class _RegulationSectionView extends StatelessWidget {
       children: [
         Text(
           '${section.index}. ${section.title.toUpperCase()}',
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900, color: colors.textPrimary, letterSpacing: 0.2),
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+            letterSpacing: 0.2,
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         Text(
-          section.body.isEmpty ? 'Conteúdo oficial pendente de envio.' : section.body,
-          style: TextStyle(fontSize: 13.5, height: 1.55, color: colors.textSecondary),
+          section.body.isEmpty
+              ? 'Conteúdo oficial pendente de envio.'
+              : section.body,
+          style: TextStyle(
+            fontSize: 13.5,
+            height: 1.55,
+            color: colors.textSecondary,
+          ),
         ),
       ],
     );

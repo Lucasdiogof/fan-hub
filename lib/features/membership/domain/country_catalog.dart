@@ -1,5 +1,9 @@
 class Country {
-  const Country({required this.code, required this.name, required this.dialCode});
+  const Country({
+    required this.code,
+    required this.name,
+    required this.dialCode,
+  });
 
   final String code;
   final String name;

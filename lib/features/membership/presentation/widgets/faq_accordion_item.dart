@@ -6,7 +6,12 @@ import 'package:goias_app/features/membership/domain/entities/faq_item.dart';
 import 'package:goias_app/features/membership/presentation/widgets/faq_rich_text.dart';
 
 class FaqAccordionItem extends StatelessWidget {
-  const FaqAccordionItem({required this.item, required this.expanded, required this.onTap, super.key});
+  const FaqAccordionItem({
+    required this.item,
+    required this.expanded,
+    required this.onTap,
+    super.key,
+  });
 
   final FaqItem item;
   final bool expanded;
@@ -35,7 +40,12 @@ class FaqAccordionItem extends StatelessWidget {
                   Expanded(
                     child: Text(
                       item.question,
-                      style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: colors.textPrimary, height: 1.35),
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w700,
+                        color: colors.textPrimary,
+                        height: 1.35,
+                      ),
                     ),
                   ),
                   const SizedBox(width: AppSpacing.sm),
@@ -58,7 +68,12 @@ class FaqAccordionItem extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: expanded
                 ? Padding(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      0,
+                      AppSpacing.lg,
+                      AppSpacing.lg,
+                    ),
                     child: _FaqAnswerView(blocks: item.answer),
                   )
                 : const SizedBox(width: double.infinity, height: 0),
@@ -77,7 +92,11 @@ class _FaqAnswerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final style = TextStyle(fontSize: 13, height: 1.5, color: colors.textSecondary);
+    final style = TextStyle(
+      fontSize: 13,
+      height: 1.5,
+      color: colors.textSecondary,
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -85,7 +104,10 @@ class _FaqAnswerView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: AppSpacing.sm),
             child: switch (block) {
-              FaqParagraphBlock(:final spans) => FaqRichText(spans: spans, style: style),
+              FaqParagraphBlock(:final spans) => FaqRichText(
+                spans: spans,
+                style: style,
+              ),
               FaqListBlock(:final items) => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -95,8 +117,16 @@ class _FaqAnswerView extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('•  ', style: style.copyWith(fontWeight: FontWeight.w800, color: colors.primary)),
-                          Expanded(child: FaqRichText(spans: spans, style: style)),
+                          Text(
+                            '•  ',
+                            style: style.copyWith(
+                              fontWeight: FontWeight.w800,
+                              color: colors.primary,
+                            ),
+                          ),
+                          Expanded(
+                            child: FaqRichText(spans: spans, style: style),
+                          ),
                         ],
                       ),
                     ),

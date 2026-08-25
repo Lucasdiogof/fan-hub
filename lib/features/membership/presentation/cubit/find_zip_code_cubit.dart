@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/features/membership/domain/brazilian_states.dart';
+import 'package:goias_app/shared/domain/brazilian_states.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/find_zip_code_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
@@ -11,7 +11,14 @@ class FindZipCodeCubit extends Cubit<FindZipCodeState> {
   final AddressRepository _repository;
 
   void selectState(String value) {
-    emit(state.copyWith(state: value, city: '', availableCities: const [], citiesLoadStatus: LoadStatus.loading));
+    emit(
+      state.copyWith(
+        state: value,
+        city: '',
+        availableCities: const [],
+        citiesLoadStatus: LoadStatus.loading,
+      ),
+    );
     _loadCities(value);
   }
 
@@ -22,9 +29,19 @@ class FindZipCodeCubit extends Cubit<FindZipCodeState> {
     if (state.state != stateName) return;
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(availableCities: data, citiesLoadStatus: LoadStatus.success));
+        emit(
+          state.copyWith(
+            availableCities: data,
+            citiesLoadStatus: LoadStatus.success,
+          ),
+        );
       case Error():
-        emit(state.copyWith(availableCities: const [], citiesLoadStatus: LoadStatus.error));
+        emit(
+          state.copyWith(
+            availableCities: const [],
+            citiesLoadStatus: LoadStatus.error,
+          ),
+        );
     }
   }
 
@@ -44,9 +61,19 @@ class FindZipCodeCubit extends Cubit<FindZipCodeState> {
     );
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(status: data.isEmpty ? LoadStatus.empty : LoadStatus.success, results: data));
+        emit(
+          state.copyWith(
+            status: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            results: data,
+          ),
+        );
       case Error(:final failure):
-        emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
     }
   }
 }

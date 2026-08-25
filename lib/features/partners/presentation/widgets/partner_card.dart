@@ -22,11 +22,20 @@ class PartnerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    // A maioria das artes de patrocinador já foi desenhada assumindo um
+    // fundo branco (fundo opaco embutido no PNG, não transparente —
+    // conferido byte a byte: 18 dos 26 logos têm alfa 255 nos cantos).
+    // Recolorir por tema apaga esses 18 por completo no escuro, já que todo
+    // pixel opaco vira branco sólido. A solução é o card inteiro ser branco
+    // — não só uma placa por trás do logo, senão sobra uma margem escura
+    // ao redor dela no tema dark — os poucos logos realmente transparentes
+    // também ficam legíveis em cima de branco, então não precisa
+    // diferenciar caso a caso.
     return Semantics(
       button: true,
       label: _accessibilityLabel(partner),
       child: Material(
-        color: colors.surface,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(AppRadius.card),
         child: InkWell(
           onTap: () => openExternalUrl(context, partner.url),
@@ -41,38 +50,11 @@ class PartnerCard extends StatelessWidget {
             child: SizedBox(
               height: logoHeight,
               width: double.infinity,
-              child: _PartnerLogo(assetPath: partner.assetPath),
+              child: Image.asset(partner.assetPath, fit: BoxFit.contain),
             ),
           ),
         ),
       ),
-    );
-  }
-}
-
-/// A maioria das artes de patrocinador já foi desenhada assumindo um fundo
-/// branco (fundo opaco embutido no PNG, não transparente — conferido byte a
-/// byte: 18 dos 26 logos têm alfa 255 nos cantos). Recolorir por tema
-/// (como se fazia antes) apaga esses 18 por completo no escuro, já que todo
-/// pixel opaco vira branco sólido. A solução correta é dar uma placa branca
-/// fixa pra trás de QUALQUER logo, independente do tema — os poucos
-/// realmente transparentes (traço escuro sobre nada) também ficam legíveis
-/// em cima de branco, então não precisa diferenciar caso a caso.
-class _PartnerLogo extends StatelessWidget {
-  const _PartnerLogo({required this.assetPath});
-
-  final String assetPath;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-      ),
-      child: Image.asset(assetPath, fit: BoxFit.contain),
     );
   }
 }

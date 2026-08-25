@@ -18,9 +18,13 @@ class HomeBrandHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final authState = context.watch<AuthCubit>().state;
-    final firstName = _firstName(authState is AuthAuthenticated ? authState.user.fullName : null);
+    final firstName = _firstName(
+      authState is AuthAuthenticated ? authState.user.fullName : null,
+    );
 
-    final title = firstName != null ? '${_greeting()}, $firstName' : 'GOIÁS ESPORTE CLUBE';
+    final title = firstName != null
+        ? '${_greeting()}, $firstName'
+        : 'GOIÁS ESPORTE CLUBE';
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
@@ -30,8 +34,20 @@ class HomeBrandHeader extends StatelessWidget {
             width: 48,
             height: 48,
             alignment: Alignment.center,
-            decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-            child: const ClubBadge(team: MockData.goias, size: 30),
+            decoration: BoxDecoration(
+              color: colors.secondary,
+              shape: BoxShape.circle,
+            ),
+            // `colors.secondary` vira um chip escuro no tema dark — sem
+            // `onDark`, o brasão tingido de verde some quase por completo
+            // ali dentro. Diferente do Hero/card de sócio (onDark fixo,
+            // sempre sobre fundo escuro de verdade), aqui o fundo muda de
+            // cor com o tema, então o brasão precisa acompanhar.
+            child: ClubBadge(
+              team: MockData.goias,
+              size: 30,
+              onDark: Theme.of(context).brightness == Brightness.dark,
+            ),
           ),
           const SizedBox(width: AppSpacing.md),
           Expanded(
@@ -39,11 +55,18 @@ class HomeBrandHeader extends StatelessWidget {
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: colors.textPrimary, fontSize: 16, fontWeight: FontWeight.w800),
+              style: TextStyle(
+                color: colors.textPrimary,
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
           const SizedBox(width: AppSpacing.sm),
-          _HeaderIconButton(icon: Icons.person_outline, onTap: () => context.push('/profile')),
+          _HeaderIconButton(
+            icon: Icons.person_outline,
+            onTap: () => context.push('/profile'),
+          ),
         ],
       ),
     );

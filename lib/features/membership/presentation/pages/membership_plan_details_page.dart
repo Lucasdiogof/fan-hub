@@ -13,15 +13,21 @@ class MembershipPlanDetailsPage extends StatefulWidget {
   final String planId;
 
   @override
-  State<MembershipPlanDetailsPage> createState() => _MembershipPlanDetailsPageState();
+  State<MembershipPlanDetailsPage> createState() =>
+      _MembershipPlanDetailsPageState();
 }
 
 class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
-  late final MembershipPlan plan = MembershipPlansCatalog.plans.firstWhere((p) => p.id == widget.planId);
+  late final MembershipPlan plan = MembershipPlansCatalog.plans.firstWhere(
+    (p) => p.id == widget.planId,
+  );
   late MembershipPlanPrice selectedPrice = plan.defaultPrice;
 
   Future<void> _startRegistration() async {
-    final result = await context.push<String>('/membership/register', extra: (plan: plan, price: selectedPrice));
+    final result = await context.push<String>(
+      '/membership/register',
+      extra: (plan: plan, price: selectedPrice),
+    );
     if (result != null && mounted) context.pop(result);
   }
 
@@ -35,7 +41,12 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 700),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.lg),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                AppSpacing.lg,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -46,26 +57,65 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                       children: [
                         if (plan.highlight) ...[
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                            decoration: BoxDecoration(color: colors.gold, borderRadius: BorderRadius.circular(AppRadius.pill)),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: colors.gold,
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.pill,
+                              ),
+                            ),
                             child: const Text(
                               'MAIS ESCOLHIDO',
-                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Colors.white, letterSpacing: 0.5),
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white,
+                                letterSpacing: 0.5,
+                              ),
                             ),
                           ),
                           const SizedBox(height: AppSpacing.md),
                         ],
-                        Text(plan.name, style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900, color: colors.textPrimary)),
+                        Text(
+                          plan.name,
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.w900,
+                            color: colors.textPrimary,
+                          ),
+                        ),
                         const SizedBox(height: 6),
-                        Text(plan.tagline, style: TextStyle(fontSize: 14, color: colors.textSecondary, height: 1.4)),
+                        Text(
+                          plan.tagline,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: colors.textSecondary,
+                            height: 1.4,
+                          ),
+                        ),
                         if (plan.stadiumSector != null) ...[
                           const SizedBox(height: AppSpacing.md),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                            decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(AppRadius.pill)),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: colors.secondary,
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.pill,
+                              ),
+                            ),
                             child: Text(
                               'Setor ${plan.stadiumSector}',
-                              style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800, color: colors.primary),
+                              style: TextStyle(
+                                fontSize: 11.5,
+                                fontWeight: FontWeight.w800,
+                                color: colors.primary,
+                              ),
                             ),
                           ),
                         ],
@@ -75,18 +125,27 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                             children: [
                               for (final price in plan.prices)
                                 Padding(
-                                  padding: const EdgeInsets.only(right: AppSpacing.sm),
+                                  padding: const EdgeInsets.only(
+                                    right: AppSpacing.sm,
+                                  ),
                                   child: ChoiceChip(
                                     label: Text(price.label),
                                     selected: selectedPrice == price,
-                                    onSelected: (_) => setState(() => selectedPrice = price),
+                                    onSelected: (_) =>
+                                        setState(() => selectedPrice = price),
                                     selectedColor: colors.secondary,
                                     labelStyle: TextStyle(
                                       fontSize: 12.5,
                                       fontWeight: FontWeight.w700,
-                                      color: selectedPrice == price ? colors.primary : colors.textSecondary,
+                                      color: selectedPrice == price
+                                          ? colors.primary
+                                          : colors.textSecondary,
                                     ),
-                                    side: BorderSide(color: selectedPrice == price ? colors.primary : colors.border),
+                                    side: BorderSide(
+                                      color: selectedPrice == price
+                                          ? colors.primary
+                                          : colors.border,
+                                    ),
                                   ),
                                 ),
                             ],
@@ -98,11 +157,19 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                             children: [
                               TextSpan(
                                 text: formatBrl(selectedPrice.monthlyPrice),
-                                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: colors.textPrimary),
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w900,
+                                  color: colors.textPrimary,
+                                ),
                               ),
                               TextSpan(
                                 text: '/mês',
-                                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textSecondary),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: colors.textSecondary,
+                                ),
                               ),
                             ],
                           ),
@@ -110,24 +177,45 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                         const SizedBox(height: 4),
                         Text(
                           'ou ${formatBrl(selectedPrice.annualPrice)} no plano anual',
-                          style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
+                          style: TextStyle(
+                            fontSize: 12.5,
+                            color: colors.textSecondary,
+                          ),
                         ),
                         const SizedBox(height: AppSpacing.xxl),
                         Text(
                           'BENEFÍCIOS',
-                          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w900, color: colors.textPrimary, letterSpacing: 0.6),
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w900,
+                            color: colors.textPrimary,
+                            letterSpacing: 0.6,
+                          ),
                         ),
                         const SizedBox(height: AppSpacing.md),
                         for (final benefit in plan.benefits)
                           Padding(
-                            padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                            padding: const EdgeInsets.only(
+                              bottom: AppSpacing.md,
+                            ),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.check_circle_rounded, size: 18, color: colors.primary),
+                                Icon(
+                                  Icons.check_circle_rounded,
+                                  size: 18,
+                                  color: colors.primary,
+                                ),
                                 const SizedBox(width: AppSpacing.md),
                                 Expanded(
-                                  child: Text(benefit, style: TextStyle(fontSize: 13.5, height: 1.4, color: colors.textPrimary)),
+                                  child: Text(
+                                    benefit,
+                                    style: TextStyle(
+                                      fontSize: 13.5,
+                                      height: 1.4,
+                                      color: colors.textPrimary,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -137,7 +225,11 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                           onTap: () => context.push('/membership/regulation'),
                           child: Text(
                             'Consulte o regulamento completo →',
-                            style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.primary),
+                            style: TextStyle(
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w700,
+                              color: colors.primary,
+                            ),
                           ),
                         ),
                         const SizedBox(height: AppSpacing.xxl),
@@ -145,14 +237,20 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                           padding: const EdgeInsets.all(AppSpacing.lg),
                           decoration: BoxDecoration(
                             color: colors.secondary,
-                            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+                            borderRadius: BorderRadius.circular(
+                              AppRadius.cardSmall,
+                            ),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Ainda tem dúvidas sobre este plano?',
-                                style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: colors.textPrimary),
+                                style: TextStyle(
+                                  fontSize: 13.5,
+                                  fontWeight: FontWeight.w700,
+                                  color: colors.textPrimary,
+                                ),
                               ),
                               const SizedBox(height: AppSpacing.md),
                               SizedBox(
@@ -160,13 +258,25 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                                 child: OutlinedButton(
                                   onPressed: () => context.push(
                                     '/membership/faq',
-                                    extra: (initialCategoryId: 'planos-e-cancelamento', initialQuery: null),
+                                    extra: (
+                                      initialCategoryId:
+                                          'planos-e-cancelamento',
+                                      initialQuery: null,
+                                    ),
                                   ),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: colors.primary,
                                     side: BorderSide(color: colors.primary),
-                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
-                                    textStyle: const TextStyle(fontWeight: FontWeight.w800, fontSize: 12.5, letterSpacing: 0.3),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                        AppRadius.button,
+                                      ),
+                                    ),
+                                    textStyle: const TextStyle(
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 12.5,
+                                      letterSpacing: 0.3,
+                                    ),
                                   ),
                                   child: const Text('VER DÚVIDAS FREQUENTES'),
                                 ),
@@ -183,9 +293,14 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                     child: ElevatedButton(
                       onPressed: _startRegistration,
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(AppRadius.button),
+                        ),
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        textStyle: const TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.3,
+                        ),
                       ),
                       child: const Text('QUERO SER SÓCIO'),
                     ),

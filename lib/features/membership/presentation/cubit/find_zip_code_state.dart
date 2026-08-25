@@ -23,7 +23,8 @@ class FindZipCodeState extends Equatable {
   final List<AddressLookupResult> results;
   final String? errorMessage;
 
-  bool get canSearch => state.isNotEmpty && city.trim().isNotEmpty && street.trim().length >= 3;
+  bool get canSearch =>
+      state.isNotEmpty && city.trim().isNotEmpty && street.trim().length >= 3;
 
   FindZipCodeState copyWith({
     String? state,

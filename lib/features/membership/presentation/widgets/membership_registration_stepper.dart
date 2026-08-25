@@ -29,10 +29,17 @@ class MembershipRegistrationStepper extends StatelessWidget {
             for (var i = 0; i < 3; i++) ...[
               _StepDot(
                 number: i + 1,
-                state: i < _index ? _DotState.done : (i == _index ? _DotState.current : _DotState.upcoming),
+                state: i < _index
+                    ? _DotState.done
+                    : (i == _index ? _DotState.current : _DotState.upcoming),
               ),
               if (i < 2)
-                Expanded(child: Container(height: 2, color: i < _index ? colors.primary : colors.border)),
+                Expanded(
+                  child: Container(
+                    height: 2,
+                    color: i < _index ? colors.primary : colors.border,
+                  ),
+                ),
             ],
           ],
         ),
@@ -77,7 +84,10 @@ class _StepDot extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: filled ? colors.primary : colors.surface,
-        border: Border.all(color: filled ? colors.primary : colors.border, width: 1.5),
+        border: Border.all(
+          color: filled ? colors.primary : colors.border,
+          width: 1.5,
+        ),
       ),
       child: state == _DotState.done
           ? const Icon(Icons.check_rounded, size: 14, color: Colors.white)

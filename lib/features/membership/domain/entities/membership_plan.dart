@@ -1,7 +1,11 @@
 import 'package:equatable/equatable.dart';
 
 class MembershipPlanPrice extends Equatable {
-  const MembershipPlanPrice({required this.label, required this.monthlyPrice, required this.annualPrice});
+  const MembershipPlanPrice({
+    required this.label,
+    required this.monthlyPrice,
+    required this.annualPrice,
+  });
 
   final String label;
   final double monthlyPrice;

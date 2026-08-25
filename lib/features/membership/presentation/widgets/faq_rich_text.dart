@@ -48,13 +48,20 @@ class _FaqRichTextState extends State<FaqRichText> {
               fontWeight: FontWeight.w700,
               decoration: TextDecoration.underline,
             ),
-            recognizer: _recognizers
-                .addAndReturn(TapGestureRecognizer()..onTap = () => openExternalUrl(context, span.link!)),
+            recognizer: _recognizers.addAndReturn(
+              TapGestureRecognizer()
+                ..onTap = () => openExternalUrl(context, span.link!),
+            ),
           )
         else
           TextSpan(
             text: span.text,
-            style: span.bold ? widget.style.copyWith(fontWeight: FontWeight.w800, color: colors.textPrimary) : widget.style,
+            style: span.bold
+                ? widget.style.copyWith(
+                    fontWeight: FontWeight.w800,
+                    color: colors.textPrimary,
+                  )
+                : widget.style,
           ),
     ];
 

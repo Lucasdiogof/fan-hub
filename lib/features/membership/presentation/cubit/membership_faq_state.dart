@@ -34,13 +34,24 @@ class MembershipFaqState extends Equatable {
     return MembershipFaqState(
       status: status ?? this.status,
       categories: categories ?? this.categories,
-      selectedCategoryId: clearSelectedCategoryId ? null : (selectedCategoryId ?? this.selectedCategoryId),
+      selectedCategoryId: clearSelectedCategoryId
+          ? null
+          : (selectedCategoryId ?? this.selectedCategoryId),
       query: query ?? this.query,
-      expandedItemId: clearExpandedItemId ? null : (expandedItemId ?? this.expandedItemId),
+      expandedItemId: clearExpandedItemId
+          ? null
+          : (expandedItemId ?? this.expandedItemId),
       errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 
   @override
-  List<Object?> get props => [status, categories, selectedCategoryId, query, expandedItemId, errorMessage];
+  List<Object?> get props => [
+    status,
+    categories,
+    selectedCategoryId,
+    query,
+    expandedItemId,
+    errorMessage,
+  ];
 }

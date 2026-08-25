@@ -13,6 +13,7 @@ import 'package:goias_app/features/membership/presentation/cubit/membership_stat
 import 'package:goias_app/features/membership/presentation/widgets/member_view.dart';
 import 'package:goias_app/features/membership/presentation/widgets/non_member_view.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -40,7 +41,8 @@ class _MembershipHomeView extends StatelessWidget {
       // Só recarrega ao reabrir a aba Sócio (ex.: depois de mudar o mock no
       // Perfil) — não a cada rota empurrada/fechada por cima (Regulamento,
       // Dúvidas Frequentes), que são só leitura e não mudam esse estado.
-      listenWhen: (previous, current) => previous.index != _sociTabIndex && current.index == _sociTabIndex,
+      listenWhen: (previous, current) =>
+          previous.index != _sociTabIndex && current.index == _sociTabIndex,
       listener: (context, state) => context.read<MembershipCubit>().load(),
       child: Scaffold(
         backgroundColor: colors.background,
@@ -49,7 +51,12 @@ class _MembershipHomeView extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 900),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg,
+                  AppSpacing.md,
+                  AppSpacing.lg,
+                  0,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -59,33 +66,43 @@ class _MembershipHomeView extends StatelessWidget {
                       child: BlocBuilder<MembershipCubit, MembershipState>(
                         builder: (context, state) {
                           return switch (state.status) {
-                            LoadStatus.initial || LoadStatus.loading => Center(
-                              child: CircularProgressIndicator(color: colors.primary),
-                            ),
+                            LoadStatus.initial || LoadStatus.loading =>
+                              const Center(child: GoiasLoadingIndicator()),
                             LoadStatus.error => Center(
                               child: StateMessage(
                                 icon: Icons.error_outline_rounded,
-                                title: 'Não foi possível carregar o Sócio Esmeralda.',
+                                title:
+                                    'Não foi possível carregar o Sócio Esmeralda.',
                                 message: state.errorMessage,
                               ),
                             ),
-                            _ => state.isMember
-                                ? MemberView(state: state)
-                                : NonMemberView(
-                                    plans: state.plans,
-                                    onSelectPlan: (plan) async {
-                                      final result = await context.push<String>('/membership/plans/${plan.id}');
-                                      if (!context.mounted) return;
-                                      switch (result) {
-                                        case 'memberArea':
-                                          // Já estamos na aba Sócio — só recarrega pra trocar a
-                                          // vitrine de planos pela experiência de sócio ativo.
-                                          unawaited(context.read<MembershipCubit>().load());
-                                        case 'home':
-                                          context.read<HomeShellCubit>().navigateToTab(0);
-                                      }
-                                    },
-                                  ),
+                            _ =>
+                              state.isMember
+                                  ? MemberView(state: state)
+                                  : NonMemberView(
+                                      plans: state.plans,
+                                      onSelectPlan: (plan) async {
+                                        final result = await context
+                                            .push<String>(
+                                              '/membership/plans/${plan.id}',
+                                            );
+                                        if (!context.mounted) return;
+                                        switch (result) {
+                                          case 'memberArea':
+                                            // Já estamos na aba Sócio — só recarrega pra trocar a
+                                            // vitrine de planos pela experiência de sócio ativo.
+                                            unawaited(
+                                              context
+                                                  .read<MembershipCubit>()
+                                                  .load(),
+                                            );
+                                          case 'home':
+                                            context
+                                                .read<HomeShellCubit>()
+                                                .navigateToTab(0);
+                                        }
+                                      },
+                                    ),
                           };
                         },
                       ),

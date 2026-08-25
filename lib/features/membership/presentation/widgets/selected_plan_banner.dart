@@ -7,7 +7,12 @@ import 'package:goias_app/shared/utils/currency.dart';
 /// Mostrado no topo do fluxo de associação — o usuário nunca perde de vista
 /// o que está contratando enquanto preenche os dados.
 class SelectedPlanBanner extends StatelessWidget {
-  const SelectedPlanBanner({required this.plan, required this.price, this.onChangePlan, super.key});
+  const SelectedPlanBanner({
+    required this.plan,
+    required this.price,
+    this.onChangePlan,
+    super.key,
+  });
 
   final MembershipPlan plan;
   final MembershipPlanPrice price;
@@ -24,7 +29,10 @@ class SelectedPlanBanner extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
-      decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(AppRadius.cardSmall)),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      ),
       child: Row(
         children: [
           Expanded(
@@ -34,11 +42,26 @@ class SelectedPlanBanner extends StatelessWidget {
               children: [
                 Text(
                   'PLANO ESCOLHIDO',
-                  style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: colors.primary, letterSpacing: 0.6),
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                    color: colors.primary,
+                    letterSpacing: 0.6,
+                  ),
                 ),
                 const SizedBox(height: 4),
-                Text(subtitle, style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w800, color: colors.textPrimary)),
-                Text('${formatBrl(price.monthlyPrice)}/mês', style: TextStyle(fontSize: 12, color: colors.textSecondary)),
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w800,
+                    color: colors.textPrimary,
+                  ),
+                ),
+                Text(
+                  '${formatBrl(price.monthlyPrice)}/mês',
+                  style: TextStyle(fontSize: 12, color: colors.textSecondary),
+                ),
               ],
             ),
           ),
@@ -46,7 +69,10 @@ class SelectedPlanBanner extends StatelessWidget {
             TextButton(
               onPressed: onChangePlan,
               style: TextButton.styleFrom(foregroundColor: colors.primary),
-              child: const Text('ALTERAR PLANO', style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800)),
+              child: const Text(
+                'ALTERAR PLANO',
+                style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
+              ),
             ),
         ],
       ),

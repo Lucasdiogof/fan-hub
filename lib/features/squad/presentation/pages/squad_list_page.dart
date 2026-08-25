@@ -11,16 +11,30 @@ import 'package:goias_app/features/squad/presentation/cubit/squad_state.dart';
 import 'package:goias_app/features/squad/presentation/widgets/squad_avatar.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
+/// [cubit], quando fornecido, já veio construído e carregado por quem
+/// navegou pra cá (ver `GlobalLoading.run` em `profile_page.dart`) — a tela
+/// só reaproveita via `BlocProvider.value`. Fica `null` (e a tela cria/
+/// carrega o próprio Cubit) só em navegação direta por URL.
 class SquadListPage extends StatelessWidget {
-  const SquadListPage({super.key});
+  const SquadListPage({this.cubit, super.key});
+
+  final SquadCubit? cubit;
 
   @override
   Widget build(BuildContext context) {
+    final preloaded = cubit;
+    if (preloaded != null) {
+      return BlocProvider.value(
+        value: preloaded,
+        child: const _SquadListView(),
+      );
+    }
     return BlocProvider(
-      create: (_) => sl<SquadCubit>(),
+      create: (_) => sl<SquadCubit>()..load(),
       child: const _SquadListView(),
     );
   }
@@ -62,10 +76,8 @@ class _SquadListView extends StatelessWidget {
                           onRefresh: () => context.read<SquadCubit>().refresh(),
                           color: colors.primary,
                           child: switch (state.status) {
-                            LoadStatus.initial ||
-                            LoadStatus.loading => _centered(
-                              CircularProgressIndicator(color: colors.primary),
-                            ),
+                            LoadStatus.initial || LoadStatus.loading =>
+                              _centered(const GoiasLoadingIndicator()),
                             LoadStatus.error => _centered(
                               StateMessage(
                                 icon: Icons.wifi_off_rounded,

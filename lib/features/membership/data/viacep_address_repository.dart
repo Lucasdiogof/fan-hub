@@ -19,9 +19,17 @@ class ViaCepAddressRepository implements AddressRepository {
       final cities = await _ibgeDataSource.getCitiesByState(stateCode);
       return Success(cities);
     } on DioException {
-      return const Error(NetworkFailure('Não foi possível carregar as cidades. Tente novamente.'));
+      return const Error(
+        NetworkFailure(
+          'Não foi possível carregar as cidades. Tente novamente.',
+        ),
+      );
     } catch (_) {
-      return const Error(UnexpectedFailure('Não foi possível carregar as cidades. Tente novamente.'));
+      return const Error(
+        UnexpectedFailure(
+          'Não foi possível carregar as cidades. Tente novamente.',
+        ),
+      );
     }
   }
 
@@ -34,9 +42,13 @@ class ViaCepAddressRepository implements AddressRepository {
       if (json == null) return const Success(null);
       return Success(_map(json));
     } on DioException {
-      return const Error(NetworkFailure('Não foi possível consultar o CEP. Tente novamente.'));
+      return const Error(
+        NetworkFailure('Não foi possível consultar o CEP. Tente novamente.'),
+      );
     } catch (_) {
-      return const Error(UnexpectedFailure('Não foi possível consultar o CEP. Tente novamente.'));
+      return const Error(
+        UnexpectedFailure('Não foi possível consultar o CEP. Tente novamente.'),
+      );
     }
   }
 
@@ -47,12 +59,22 @@ class ViaCepAddressRepository implements AddressRepository {
     required String street,
   }) async {
     try {
-      final results = await _dataSource.searchByAddress(state: state, city: city, street: street);
+      final results = await _dataSource.searchByAddress(
+        state: state,
+        city: city,
+        street: street,
+      );
       return Success(results.map(_map).toList());
     } on DioException {
-      return const Error(NetworkFailure('Não foi possível buscar o endereço. Tente novamente.'));
+      return const Error(
+        NetworkFailure('Não foi possível buscar o endereço. Tente novamente.'),
+      );
     } catch (_) {
-      return const Error(UnexpectedFailure('Não foi possível buscar o endereço. Tente novamente.'));
+      return const Error(
+        UnexpectedFailure(
+          'Não foi possível buscar o endereço. Tente novamente.',
+        ),
+      );
     }
   }
 

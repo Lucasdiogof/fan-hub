@@ -38,14 +38,23 @@ class MemberView extends StatelessWidget {
             match: state.nextMatch!,
             onCheckIn: () => context.push(
               '/membership/coming-soon',
-              extra: (title: 'CHECK-IN', message: 'O check-in do Sócio Esmeralda ainda não está disponível no app.'),
+              extra: (
+                title: 'CHECK-IN',
+                message:
+                    'O check-in do Sócio Esmeralda ainda não está disponível no app.',
+              ),
             ),
           ),
         ],
         const SizedBox(height: AppSpacing.xl),
         Text(
           'OUTRAS OPÇÕES',
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w800,
+            color: colors.textHint,
+            letterSpacing: 0.6,
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         MembershipOptionsCard(
@@ -60,7 +69,11 @@ class MemberView extends StatelessWidget {
               label: 'Dependentes',
               onTap: () => context.push(
                 '/membership/coming-soon',
-                extra: (title: 'DEPENDENTES', message: 'A gestão de dependentes ainda está sendo preparada.'),
+                extra: (
+                  title: 'DEPENDENTES',
+                  message:
+                      'A gestão de dependentes ainda está sendo preparada.',
+                ),
               ),
             ),
             MembershipOption(
@@ -68,7 +81,11 @@ class MemberView extends StatelessWidget {
               label: 'Pagamentos',
               onTap: () => context.push(
                 '/membership/coming-soon',
-                extra: (title: 'PAGAMENTOS', message: 'O histórico de pagamentos ainda está sendo preparado.'),
+                extra: (
+                  title: 'PAGAMENTOS',
+                  message:
+                      'O histórico de pagamentos ainda está sendo preparado.',
+                ),
               ),
             ),
             MembershipOption(
@@ -76,7 +93,10 @@ class MemberView extends StatelessWidget {
               label: 'Histórico de check-ins',
               onTap: () => context.push(
                 '/membership/coming-soon',
-                extra: (title: 'HISTÓRICO DE CHECK-INS', message: 'Essa área ainda está sendo preparada.'),
+                extra: (
+                  title: 'HISTÓRICO DE CHECK-INS',
+                  message: 'Essa área ainda está sendo preparada.',
+                ),
               ),
             ),
           ],
@@ -88,7 +108,10 @@ class MemberView extends StatelessWidget {
           child: TextButton(
             onPressed: () => context.push('/membership/plans'),
             style: TextButton.styleFrom(foregroundColor: colors.textSecondary),
-            child: const Text('Conhecer outros planos', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
+            child: const Text(
+              'Conhecer outros planos',
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+            ),
           ),
         ),
       ],

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/domain/brazilian_states.dart';
+import 'package:goias_app/shared/domain/brazilian_states.dart';
 import 'package:goias_app/features/membership/domain/country_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/address_lookup_result.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
@@ -14,7 +14,10 @@ import 'package:goias_app/shared/utils/masks.dart';
 class AddressStep extends StatelessWidget {
   const AddressStep({super.key});
 
-  Future<void> _pickState(BuildContext context, MembershipRegistrationCubit cubit) {
+  Future<void> _pickState(
+    BuildContext context,
+    MembershipRegistrationCubit cubit,
+  ) {
     final colors = context.colors;
     return showModalBottomSheet<void>(
       context: context,
@@ -28,11 +31,19 @@ class AddressStep extends StatelessWidget {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               itemCount: BrazilianStates.states.length,
-              separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+              separatorBuilder: (_, _) =>
+                  Divider(height: 1, color: colors.border),
               itemBuilder: (itemContext, index) {
                 final state = BrazilianStates.states[index];
                 return ListTile(
-                  title: Text(state.name, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary)),
+                  title: Text(
+                    state.name,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: colors.textPrimary,
+                    ),
+                  ),
                   onTap: () {
                     cubit.selectState(state.name);
                     Navigator.of(itemContext).pop();
@@ -46,7 +57,11 @@ class AddressStep extends StatelessWidget {
     );
   }
 
-  Future<void> _pickCity(BuildContext context, MembershipRegistrationCubit cubit, List<String> cities) {
+  Future<void> _pickCity(
+    BuildContext context,
+    MembershipRegistrationCubit cubit,
+    List<String> cities,
+  ) {
     final colors = context.colors;
     return showModalBottomSheet<void>(
       context: context,
@@ -60,11 +75,19 @@ class AddressStep extends StatelessWidget {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               itemCount: cities.length,
-              separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+              separatorBuilder: (_, _) =>
+                  Divider(height: 1, color: colors.border),
               itemBuilder: (itemContext, index) {
                 final city = cities[index];
                 return ListTile(
-                  title: Text(city, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary)),
+                  title: Text(
+                    city,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: colors.textPrimary,
+                    ),
+                  ),
                   onTap: () {
                     cubit.updateCity(city);
                     Navigator.of(itemContext).pop();
@@ -78,8 +101,13 @@ class AddressStep extends StatelessWidget {
     );
   }
 
-  Future<void> _findZipCode(BuildContext context, MembershipRegistrationCubit cubit) async {
-    final result = await context.push<AddressLookupResult>('/membership/find-zip-code');
+  Future<void> _findZipCode(
+    BuildContext context,
+    MembershipRegistrationCubit cubit,
+  ) async {
+    final result = await context.push<AddressLookupResult>(
+      '/membership/find-zip-code',
+    );
     if (result != null) cubit.applyAddressLookupResult(result);
   }
 
@@ -96,14 +124,24 @@ class AddressStep extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('3 de 3 · Endereço', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: colors.primary)),
+        Text(
+          '3 de 3 · Endereço',
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w800,
+            color: colors.primary,
+          ),
+        ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationDropdownField<String>(
           label: 'País',
           isRequired: true,
           value: data.addressCountry.isEmpty ? null : data.addressCountry,
           errorText: errors['addressCountry'],
-          options: [for (final country in CountryCatalog.countries) RegistrationOption(value: country.code, label: country.name)],
+          options: [
+            for (final country in CountryCatalog.countries)
+              RegistrationOption(value: country.code, label: country.name),
+          ],
           onChanged: cubit.updateAddressCountry,
         ),
         const SizedBox(height: AppSpacing.lg),
@@ -121,11 +159,18 @@ class AddressStep extends StatelessWidget {
                   child: SizedBox(
                     width: 16,
                     height: 16,
-                    child: CircularProgressIndicator(strokeWidth: 2, color: colors.primary),
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: colors.primary,
+                    ),
                   ),
                 )
               : (state.cepLookupStatus == LoadStatus.success
-                    ? Icon(Icons.check_circle_rounded, color: colors.primary, size: 20)
+                    ? Icon(
+                        Icons.check_circle_rounded,
+                        color: colors.primary,
+                        size: 20,
+                      )
                     : null),
           onChanged: cubit.updateZipCode,
         ),
@@ -135,7 +180,11 @@ class AddressStep extends StatelessWidget {
             onTap: () => _findZipCode(context, cubit),
             child: Text(
               'Não sei meu CEP',
-              style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.primary),
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w700,
+                color: colors.primary,
+              ),
             ),
           ),
         ],
@@ -208,7 +257,9 @@ class AddressStep extends StatelessWidget {
             value: data.city,
             placeholder: citiesLoading
                 ? 'Carregando cidades...'
-                : (data.state.isEmpty ? 'Selecione o estado primeiro' : 'Selecionar cidade'),
+                : (data.state.isEmpty
+                      ? 'Selecione o estado primeiro'
+                      : 'Selecionar cidade'),
             errorText: errors['city'],
             onTap: data.state.isEmpty || citiesLoading
                 ? () {}

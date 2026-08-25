@@ -8,6 +8,7 @@ import 'package:goias_app/features/home/presentation/pages/home_page.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_bottom_navigation.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_home_page.dart';
 import 'package:goias_app/features/match/presentation/pages/games_page.dart';
+import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/social/presentation/pages/social_feed_page.dart';
 
 class HomeShellPage extends StatefulWidget {
@@ -19,6 +20,12 @@ class HomeShellPage extends StatefulWidget {
 
 class _HomeShellPageState extends State<HomeShellPage> {
   final _shellCubit = sl<HomeShellCubit>();
+
+  // Só resolver o singleton já dispara o carregamento (ver `ProfileCubit`)
+  // — aquece em segundo plano assim que a Home monta, pra não deixar
+  // nome/foto do usuário em branco na primeira vez que ele abre o Perfil.
+  // ignore: unused_field
+  final _profileCubit = sl<ProfileCubit>();
 
   @override
   Widget build(BuildContext context) {

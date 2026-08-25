@@ -17,7 +17,9 @@ class MembershipPlansCatalog {
         '5% de desconto na Goiás Store',
         'Benefícios na Rede de Parceiros e promoções',
       ],
-      prices: [MembershipPlanPrice(label: '', monthlyPrice: 9.99, annualPrice: 119.88)],
+      prices: [
+        MembershipPlanPrice(label: '', monthlyPrice: 9.99, annualPrice: 119.88),
+      ],
     ),
     MembershipPlan(
       id: 'nossa-historia',
@@ -33,7 +35,13 @@ class MembershipPlansCatalog {
         'Plano destinado às condições especiais descritas atualmente pelo programa',
         '50% de desconto na inclusão de dependentes',
       ],
-      prices: [MembershipPlanPrice(label: '', monthlyPrice: 39.99, annualPrice: 479.88)],
+      prices: [
+        MembershipPlanPrice(
+          label: '',
+          monthlyPrice: 39.99,
+          annualPrice: 479.88,
+        ),
+      ],
     ),
     MembershipPlan(
       id: 'nossa-garra',
@@ -49,7 +57,13 @@ class MembershipPlansCatalog {
         'Benefícios na rede de parceiros, promoções e experiências exclusivas',
         '50% de desconto na inclusão de dependentes',
       ],
-      prices: [MembershipPlanPrice(label: '', monthlyPrice: 59.90, annualPrice: 718.80)],
+      prices: [
+        MembershipPlanPrice(
+          label: '',
+          monthlyPrice: 59.90,
+          annualPrice: 718.80,
+        ),
+      ],
     ),
     MembershipPlan(
       id: 'nossa-gloria',
@@ -64,7 +78,13 @@ class MembershipPlansCatalog {
         'Benefícios na rede de parceiros, promoções e experiências exclusivas',
         '50% de desconto na inclusão de dependentes',
       ],
-      prices: [MembershipPlanPrice(label: '', monthlyPrice: 119.90, annualPrice: 1438.80)],
+      prices: [
+        MembershipPlanPrice(
+          label: '',
+          monthlyPrice: 119.90,
+          annualPrice: 1438.80,
+        ),
+      ],
     ),
     MembershipPlan(
       id: 'nossa-familia',
@@ -81,8 +101,16 @@ class MembershipPlansCatalog {
         'Adição de R\$ 20,00 por filho adicional de até 17 anos',
       ],
       prices: [
-        MembershipPlanPrice(label: 'Casal', monthlyPrice: 99.90, annualPrice: 1198.80),
-        MembershipPlanPrice(label: 'Casal + 1 Filho', monthlyPrice: 119.90, annualPrice: 1438.80),
+        MembershipPlanPrice(
+          label: 'Casal',
+          monthlyPrice: 99.90,
+          annualPrice: 1198.80,
+        ),
+        MembershipPlanPrice(
+          label: 'Casal + 1 Filho',
+          monthlyPrice: 119.90,
+          annualPrice: 1438.80,
+        ),
       ],
     ),
     MembershipPlan(
@@ -99,7 +127,13 @@ class MembershipPlansCatalog {
         'Prioridade 1 no check-in',
         'Limitado a 100 pessoas',
       ],
-      prices: [MembershipPlanPrice(label: '', monthlyPrice: 199.90, annualPrice: 2398.80)],
+      prices: [
+        MembershipPlanPrice(
+          label: '',
+          monthlyPrice: 199.90,
+          annualPrice: 2398.80,
+        ),
+      ],
     ),
   ];
 }

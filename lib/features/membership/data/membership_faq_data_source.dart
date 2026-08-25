@@ -32,7 +32,9 @@ class MembershipFaqDataSource {
     return FaqCategory(
       id: json['id'] as String,
       title: json['title'] as String,
-      items: (json['items'] as List<dynamic>).map((i) => _parseItem(i as Map<String, dynamic>)).toList(growable: false),
+      items: (json['items'] as List<dynamic>)
+          .map((i) => _parseItem(i as Map<String, dynamic>))
+          .toList(growable: false),
     );
   }
 
@@ -40,7 +42,9 @@ class MembershipFaqDataSource {
     return FaqItem(
       id: json['id'] as String,
       question: json['question'] as String,
-      answer: (json['answer'] as List<dynamic>).map((b) => _parseBlock(b as Map<String, dynamic>)).toList(growable: false),
+      answer: (json['answer'] as List<dynamic>)
+          .map((b) => _parseBlock(b as Map<String, dynamic>))
+          .toList(growable: false),
     );
   }
 
@@ -48,11 +52,17 @@ class MembershipFaqDataSource {
     return switch (json['type'] as String) {
       'list' => FaqListBlock(
         (json['items'] as List<dynamic>)
-            .map((item) => (item as List<dynamic>).map((s) => _parseSpan(s as Map<String, dynamic>)).toList(growable: false))
+            .map(
+              (item) => (item as List<dynamic>)
+                  .map((s) => _parseSpan(s as Map<String, dynamic>))
+                  .toList(growable: false),
+            )
             .toList(growable: false),
       ),
       _ => FaqParagraphBlock(
-        (json['spans'] as List<dynamic>).map((s) => _parseSpan(s as Map<String, dynamic>)).toList(growable: false),
+        (json['spans'] as List<dynamic>)
+            .map((s) => _parseSpan(s as Map<String, dynamic>))
+            .toList(growable: false),
       ),
     };
   }

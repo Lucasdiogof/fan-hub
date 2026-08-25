@@ -6,7 +6,11 @@ import 'package:goias_app/features/membership/presentation/widgets/membership_pl
 /// Horizontal com o próximo card parcialmente visível — mobile-first (~85%
 /// da largura); em telas largas (tablet/PWA) mostra 2-3 cards por vez.
 class MembershipPlansCarousel extends StatelessWidget {
-  const MembershipPlansCarousel({required this.plans, required this.onSelectPlan, super.key});
+  const MembershipPlansCarousel({
+    required this.plans,
+    required this.onSelectPlan,
+    super.key,
+  });
 
   final List<MembershipPlan> plans;
   final ValueChanged<MembershipPlan> onSelectPlan;
@@ -15,7 +19,9 @@ class MembershipPlansCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final cardWidth = constraints.maxWidth >= 700 ? constraints.maxWidth / 2.6 : constraints.maxWidth * 0.85;
+        final cardWidth = constraints.maxWidth >= 700
+            ? constraints.maxWidth / 2.6
+            : constraints.maxWidth * 0.85;
         return SizedBox(
           height: 380,
           child: ListView.separated(
@@ -24,7 +30,13 @@ class MembershipPlansCarousel extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: AppSpacing.md),
             itemBuilder: (context, index) {
               final plan = plans[index];
-              return SizedBox(width: cardWidth, child: MembershipPlanCard(plan: plan, onTap: () => onSelectPlan(plan)));
+              return SizedBox(
+                width: cardWidth,
+                child: MembershipPlanCard(
+                  plan: plan,
+                  onTap: () => onSelectPlan(plan),
+                ),
+              );
             },
           ),
         );

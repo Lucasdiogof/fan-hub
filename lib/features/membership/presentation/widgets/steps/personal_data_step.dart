@@ -22,7 +22,14 @@ class PersonalDataStep extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('2 de 3 · Dados cadastrais', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: colors.primary)),
+        Text(
+          '2 de 3 · Dados cadastrais',
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w800,
+            color: colors.primary,
+          ),
+        ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
           label: 'E-mail de contato',
@@ -67,12 +74,18 @@ class PersonalDataStep extends StatelessWidget {
         const SizedBox(height: 6),
         SegmentedToggle<Gender>(
           value: data.gender,
-          options: const [(Gender.masculino, 'Masculino'), (Gender.feminino, 'Feminino')],
+          options: const [
+            (Gender.masculino, 'Masculino'),
+            (Gender.feminino, 'Feminino'),
+          ],
           onChanged: cubit.updateGender,
         ),
         if (errors['gender'] != null) ...[
           const SizedBox(height: 4),
-          Text(errors['gender']!, style: TextStyle(fontSize: 12, color: colors.primary)),
+          Text(
+            errors['gender']!,
+            style: TextStyle(fontSize: 12, color: colors.primary),
+          ),
         ],
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
@@ -86,7 +99,9 @@ class PersonalDataStep extends StatelessWidget {
             isoCode: data.phoneCountryCode,
             onChanged: cubit.updatePhoneCountryCode,
           ),
-          inputFormatters: data.phoneCountryCode == 'BR' ? [phoneInputFormatter()] : null,
+          inputFormatters: data.phoneCountryCode == 'BR'
+              ? [phoneInputFormatter()]
+              : null,
           onChanged: cubit.updatePhone,
           onBlur: () => cubit.markFieldBlurred('phone'),
         ),
@@ -99,7 +114,10 @@ class PersonalDataStep extends StatelessWidget {
           onChanged: cubit.updateLandline,
         ),
         const SizedBox(height: AppSpacing.lg),
-        _NewsletterCheckbox(value: data.wantsNewsletter, onChanged: cubit.updateWantsNewsletter),
+        _NewsletterCheckbox(
+          value: data.wantsNewsletter,
+          onChanged: cubit.updateWantsNewsletter,
+        ),
       ],
     );
   }
@@ -127,18 +145,30 @@ class _PhoneCountryPrefix extends StatelessWidget {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               itemCount: CountryCatalog.countries.length,
-              separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+              separatorBuilder: (_, _) =>
+                  Divider(height: 1, color: colors.border),
               itemBuilder: (itemContext, index) {
                 final country = CountryCatalog.countries[index];
                 return ListTile(
-                  leading: Text(CountryCatalog.flagFor(country.code), style: const TextStyle(fontSize: 20)),
+                  leading: Text(
+                    CountryCatalog.flagFor(country.code),
+                    style: const TextStyle(fontSize: 20),
+                  ),
                   title: Text(
                     country.name,
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary),
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: colors.textPrimary,
+                    ),
                   ),
                   trailing: Text(
                     country.dialCode,
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: colors.textSecondary,
+                    ),
                   ),
                   onTap: () {
                     onChanged(country.code);
@@ -163,11 +193,18 @@ class _PhoneCountryPrefix extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(CountryCatalog.flagFor(isoCode), style: const TextStyle(fontSize: 18)),
+            Text(
+              CountryCatalog.flagFor(isoCode),
+              style: const TextStyle(fontSize: 18),
+            ),
             const SizedBox(width: 6),
             Text(
               CountryCatalog.dialCodeFor(isoCode),
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary),
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: colors.textPrimary,
+              ),
             ),
             const SizedBox(width: 4),
             Icon(Icons.expand_more_rounded, size: 16, color: colors.textHint),
@@ -200,15 +237,24 @@ class _NewsletterCheckbox extends StatelessWidget {
             decoration: BoxDecoration(
               color: value ? colors.primary : colors.surface,
               borderRadius: BorderRadius.circular(6),
-              border: Border.all(color: value ? colors.primary : colors.border, width: 1.5),
+              border: Border.all(
+                color: value ? colors.primary : colors.border,
+                width: 1.5,
+              ),
             ),
-            child: value ? Icon(Icons.check_rounded, size: 15, color: colors.onPrimary) : null,
+            child: value
+                ? Icon(Icons.check_rounded, size: 15, color: colors.onPrimary)
+                : null,
           ),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(
               'Desejo receber notícias do clube e do Sócio Esmeralda por e-mail.',
-              style: TextStyle(fontSize: 13, height: 1.4, color: colors.textSecondary),
+              style: TextStyle(
+                fontSize: 13,
+                height: 1.4,
+                color: colors.textSecondary,
+              ),
             ),
           ),
         ],

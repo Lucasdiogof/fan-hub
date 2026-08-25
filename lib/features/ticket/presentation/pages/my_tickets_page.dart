@@ -9,6 +9,7 @@ import 'package:goias_app/features/ticket/presentation/cubit/my_tickets_cubit.da
 import 'package:goias_app/features/ticket/presentation/cubit/my_tickets_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -17,7 +18,10 @@ class MyTicketsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) => sl<MyTicketsCubit>(), child: const _MyTicketsView());
+    return BlocProvider(
+      create: (_) => sl<MyTicketsCubit>(),
+      child: const _MyTicketsView(),
+    );
   }
 }
 
@@ -34,11 +38,19 @@ class _MyTicketsView extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 900),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BackButtonCircle(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                  BackButtonCircle(
+                    onTap: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                  ),
                   const SizedBox(height: AppSpacing.lg),
                   const PageTitle('MEUS INGRESSOS'),
                   const SizedBox(height: AppSpacing.xxxl),
@@ -46,16 +58,17 @@ class _MyTicketsView extends StatelessWidget {
                     child: BlocBuilder<MyTicketsCubit, MyTicketsState>(
                       builder: (context, state) {
                         return RefreshIndicator(
-                          onRefresh: () => context.read<MyTicketsCubit>().load(),
+                          onRefresh: () =>
+                              context.read<MyTicketsCubit>().load(),
                           color: colors.primary,
                           child: switch (state.status) {
-                            LoadStatus.initial || LoadStatus.loading => _centered(
-                              CircularProgressIndicator(color: colors.primary),
-                            ),
+                            LoadStatus.initial || LoadStatus.loading =>
+                              _centered(const GoiasLoadingIndicator()),
                             LoadStatus.error => _centered(
                               StateMessage(
                                 icon: Icons.wifi_off_rounded,
-                                title: 'Não foi possível carregar seus ingressos',
+                                title:
+                                    'Não foi possível carregar seus ingressos',
                                 message: state.errorMessage,
                               ),
                             ),
@@ -63,15 +76,20 @@ class _MyTicketsView extends StatelessWidget {
                               const StateMessage(
                                 icon: Icons.confirmation_number_outlined,
                                 title: 'Você ainda não possui ingressos',
-                                message: 'Seus ingressos para partidas do Goiás aparecerão aqui.',
+                                message:
+                                    'Seus ingressos para partidas do Goiás aparecerão aqui.',
                               ),
                             ),
                             LoadStatus.success => ListView.separated(
                               physics: const AlwaysScrollableScrollPhysics(),
-                              padding: const EdgeInsets.only(bottom: AppSpacing.xxxl),
+                              padding: const EdgeInsets.only(
+                                bottom: AppSpacing.xxxl,
+                              ),
                               itemCount: state.tickets.length,
-                              separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
-                              itemBuilder: (context, index) => _TicketCard(ticket: state.tickets[index]),
+                              separatorBuilder: (_, _) =>
+                                  const SizedBox(height: AppSpacing.md),
+                              itemBuilder: (context, index) =>
+                                  _TicketCard(ticket: state.tickets[index]),
                             ),
                           },
                         );
@@ -91,7 +109,12 @@ class _MyTicketsView extends StatelessWidget {
 Widget _centered(Widget child) {
   return ListView(
     physics: const AlwaysScrollableScrollPhysics(),
-    children: [Padding(padding: const EdgeInsets.only(top: 100), child: Center(child: child))],
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 100),
+        child: Center(child: child),
+      ),
+    ],
   );
 }
 
@@ -104,8 +127,12 @@ class _TicketCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final date = ticket.eventDate;
-    final dateLabel = '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
-    final place = [ticket.sector, ticket.seat].where((value) => value != null && value.isNotEmpty).join(' · ');
+    final dateLabel =
+        '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
+    final place = [
+      ticket.sector,
+      ticket.seat,
+    ].where((value) => value != null && value.isNotEmpty).join(' · ');
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
@@ -117,7 +144,14 @@ class _TicketCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(ticket.eventName, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+          Text(
+            ticket.eventName,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
+          ),
           const SizedBox(height: AppSpacing.sm),
           _MetaRow(icon: Icons.calendar_today_rounded, text: dateLabel),
           if (place.isNotEmpty) ...[

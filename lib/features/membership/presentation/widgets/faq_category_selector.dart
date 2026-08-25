@@ -37,7 +37,11 @@ class FaqCategorySelector extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          _CategoryChip(label: 'Todas', selected: selectedCategoryId == null, onTap: () => onSelected(null)),
+          _CategoryChip(
+            label: 'Todas',
+            selected: selectedCategoryId == null,
+            onTap: () => onSelected(null),
+          ),
           for (final category in categories) ...[
             const SizedBox(width: AppSpacing.sm),
             _CategoryChip(
@@ -53,7 +57,11 @@ class FaqCategorySelector extends StatelessWidget {
 }
 
 class _CategoryChip extends StatelessWidget {
-  const _CategoryChip({required this.label, required this.selected, required this.onTap});
+  const _CategoryChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
 
   final String label;
   final bool selected;
@@ -75,7 +83,11 @@ class _CategoryChip extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: selected ? colors.onPrimary : colors.textSecondary),
+          style: TextStyle(
+            fontSize: 12.5,
+            fontWeight: FontWeight.w700,
+            color: selected ? colors.onPrimary : colors.textSecondary,
+          ),
         ),
       ),
     );

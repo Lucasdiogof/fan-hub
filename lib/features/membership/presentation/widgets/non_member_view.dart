@@ -7,7 +7,11 @@ import 'package:goias_app/features/membership/presentation/widgets/membership_he
 import 'package:goias_app/features/membership/presentation/widgets/membership_plans_carousel.dart';
 
 class NonMemberView extends StatelessWidget {
-  const NonMemberView({required this.plans, required this.onSelectPlan, super.key});
+  const NonMemberView({
+    required this.plans,
+    required this.onSelectPlan,
+    super.key,
+  });
 
   final List<MembershipPlan> plans;
   final ValueChanged<MembershipPlan> onSelectPlan;
@@ -22,7 +26,12 @@ class NonMemberView extends StatelessWidget {
         const SizedBox(height: AppSpacing.xxxl),
         Text(
           'ESCOLHA SEU PLANO',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: colors.textPrimary, letterSpacing: 0.6),
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+            letterSpacing: 0.6,
+          ),
         ),
         const SizedBox(height: AppSpacing.lg),
         MembershipPlansCarousel(plans: plans, onSelectPlan: onSelectPlan),

@@ -21,7 +21,12 @@ class MembershipPlansCatalogPage extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 900),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -32,15 +37,20 @@ class MembershipPlansCatalogPage extends StatelessWidget {
                   Expanded(
                     child: ListView.separated(
                       itemCount: MembershipPlansCatalog.plans.length,
-                      separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
+                      separatorBuilder: (_, _) =>
+                          const SizedBox(height: AppSpacing.md),
                       itemBuilder: (context, index) {
                         final plan = MembershipPlansCatalog.plans[index];
                         return _PlanRow(
                           name: plan.name,
                           sector: plan.stadiumSector,
                           onTap: () async {
-                            final result = await context.push<String>('/membership/plans/${plan.id}');
-                            if (result != null && context.mounted) context.pop(result);
+                            final result = await context.push<String>(
+                              '/membership/plans/${plan.id}',
+                            );
+                            if (result != null && context.mounted) {
+                              context.pop(result);
+                            }
                           },
                         );
                       },
@@ -57,7 +67,11 @@ class MembershipPlansCatalogPage extends StatelessWidget {
 }
 
 class _PlanRow extends StatelessWidget {
-  const _PlanRow({required this.name, required this.sector, required this.onTap});
+  const _PlanRow({
+    required this.name,
+    required this.sector,
+    required this.onTap,
+  });
 
   final String name;
   final String? sector;
@@ -82,9 +96,22 @@ class _PlanRow extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(name, style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w800, color: colors.textPrimary)),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 14.5,
+                      fontWeight: FontWeight.w800,
+                      color: colors.textPrimary,
+                    ),
+                  ),
                   if (sector != null)
-                    Text('Setor $sector', style: TextStyle(fontSize: 12, color: colors.textSecondary)),
+                    Text(
+                      'Setor $sector',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: colors.textSecondary,
+                      ),
+                    ),
                 ],
               ),
             ),

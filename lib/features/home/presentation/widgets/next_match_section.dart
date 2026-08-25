@@ -1,7 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/features/home/presentation/widgets/next_match_hero.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
+import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
+import 'package:goias_app/shared/widgets/global_loading.dart';
 
 /// Decide se o Hero do próximo jogo aparece — e some suavemente (sem
 /// recompilar a Home inteira) assim que `match.kickoff` chega. Não inventa
@@ -43,12 +49,19 @@ class _NextMatchSectionState extends State<NextMatchSection> {
           ? NextMatchHero(
               match: widget.match,
               onTickets: widget.onTickets,
-              onViewDetails: () => context.push('/match/${widget.match.id}'),
+              onViewDetails: () => _openMatchDetails(context, widget.match),
               onMatchStarted: () {
                 if (mounted) setState(() => _hidden = true);
               },
             )
           : const SizedBox(width: double.infinity),
     );
+  }
+
+  Future<void> _openMatchDetails(BuildContext context, Match match) async {
+    final cubit = MatchDetailsCubit(sl<FootballRepository>(), match.id);
+    await GlobalLoading.run(context, cubit.load);
+    if (!context.mounted) return;
+    unawaited(context.push('/match/${match.id}', extra: cubit));
   }
 }

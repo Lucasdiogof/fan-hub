@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -5,8 +7,10 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
+import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_header.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section_selector.dart';
@@ -14,6 +18,8 @@ import 'package:goias_app/features/match/presentation/widgets/match_list_item.da
 import 'package:goias_app/features/match/presentation/widgets/next_match_card.dart';
 import 'package:goias_app/features/match/presentation/widgets/standings_view.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/widgets/global_loading.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/section_header.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -39,8 +45,11 @@ class _GamesView extends StatefulWidget {
 class _GamesViewState extends State<_GamesView> {
   GamesSection _section = GamesSection.matches;
 
-  void _openMatchDetails(Match match) {
-    context.push('/match/${match.id}');
+  Future<void> _openMatchDetails(Match match) async {
+    final cubit = MatchDetailsCubit(sl<FootballRepository>(), match.id);
+    await GlobalLoading.run(context, cubit.load);
+    if (!mounted) return;
+    unawaited(context.push('/match/${match.id}', extra: cubit));
   }
 
   @override
@@ -56,7 +65,12 @@ class _GamesViewState extends State<_GamesView> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -64,7 +78,8 @@ class _GamesViewState extends State<_GamesView> {
                       const SizedBox(height: AppSpacing.lg),
                       GamesSectionSelector(
                         section: _section,
-                        onChanged: (section) => setState(() => _section = section),
+                        onChanged: (section) =>
+                            setState(() => _section = section),
                       ),
                     ],
                   ),
@@ -97,13 +112,21 @@ class _MatchesTab extends StatelessWidget {
   }
 
   static bool _allFailed(GamesState state) {
-    return state.currentRoundStatus == LoadStatus.error && state.snapshotStatus == LoadStatus.error;
+    return state.currentRoundStatus == LoadStatus.error &&
+        state.snapshotStatus == LoadStatus.error;
   }
 
   static bool _allEmpty(GamesState state) {
-    final currentRoundEmpty = state.currentRoundStatus == LoadStatus.empty || state.currentRoundStatus == LoadStatus.error;
-    final snapshotEmpty = state.snapshotStatus == LoadStatus.empty || state.snapshotStatus == LoadStatus.error;
-    return currentRoundEmpty && snapshotEmpty && state.currentRoundMatches.isEmpty && state.nextMatch == null;
+    final currentRoundEmpty =
+        state.currentRoundStatus == LoadStatus.empty ||
+        state.currentRoundStatus == LoadStatus.error;
+    final snapshotEmpty =
+        state.snapshotStatus == LoadStatus.empty ||
+        state.snapshotStatus == LoadStatus.error;
+    return currentRoundEmpty &&
+        snapshotEmpty &&
+        state.currentRoundMatches.isEmpty &&
+        state.nextMatch == null;
   }
 
   @override
@@ -115,17 +138,24 @@ class _MatchesTab extends StatelessWidget {
           onRefresh: () => context.read<GamesCubit>().refresh(),
           color: colors.primary,
           child: _isLoading(state)
-              ? _centered(CircularProgressIndicator(color: colors.primary))
+              ? _centered(const GoiasLoadingIndicator())
               : _allFailed(state)
               ? _centered(
                   StateMessage(
                     icon: Icons.wifi_off_rounded,
                     title: 'Não foi possível carregar os jogos',
-                    message: state.currentRoundErrorMessage ?? state.snapshotErrorMessage,
+                    message:
+                        state.currentRoundErrorMessage ??
+                        state.snapshotErrorMessage,
                   ),
                 )
               : _allEmpty(state)
-              ? _centered(const StateMessage(icon: Icons.event_busy_rounded, title: 'Nenhuma partida encontrada.'))
+              ? _centered(
+                  const StateMessage(
+                    icon: Icons.event_busy_rounded,
+                    title: 'Nenhuma partida encontrada.',
+                  ),
+                )
               : _MatchesContent(state: state, onMatchTap: onMatchTap),
         );
       },
@@ -137,7 +167,10 @@ Widget _centered(Widget child) {
   return ListView(
     physics: const AlwaysScrollableScrollPhysics(),
     children: [
-      Padding(padding: const EdgeInsets.only(top: 100), child: Center(child: child)),
+      Padding(
+        padding: const EdgeInsets.only(top: 100),
+        child: Center(child: child),
+      ),
     ],
   );
 }
@@ -155,7 +188,12 @@ class _MatchesContent extends StatelessWidget {
 
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(),
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xxxl),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        0,
+        AppSpacing.lg,
+        AppSpacing.xxxl,
+      ),
       children: [
         if (nextMatch != null) ...[
           NextMatchCard(

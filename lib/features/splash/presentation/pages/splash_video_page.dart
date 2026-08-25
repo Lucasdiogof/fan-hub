@@ -1,8 +1,12 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
+import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
+import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/splash/presentation/widgets/circle_reveal_clipper.dart';
 import 'package:goias_app/features/splash/presentation/widgets/reveal_glow_painter.dart';
 import 'package:video_player/video_player.dart';
@@ -30,6 +34,7 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   VideoPlayerController? _controller;
   late final AnimationController _revealController;
   late final Animation<double> _revealAnimation;
+  late final Future<void> _homePreload;
   bool _finished = false;
 
   @override
@@ -44,7 +49,22 @@ class _SplashVideoPageState extends State<SplashVideoPage>
       parent: _revealController,
       curve: Curves.easeOutCubic,
     );
+    _homePreload = _preloadDestination();
     _initVideo();
+  }
+
+  /// Se o usuário vai cair na Home (autenticado), pré-carrega o `HomeCubit`
+  /// (singleton — ver `injection_container.dart`) por trás do próprio
+  /// vídeo, em paralelo com ele tocando. Quando o vídeo termina, a Home já
+  /// está pronta e a transição não passa por um segundo loading do outro
+  /// lado. Indo pro Login não tem nada assíncrono pra esperar.
+  Future<void> _preloadDestination() async {
+    final authState = sl<AuthCubit>().state;
+    if (authState is! AuthAuthenticated) return;
+    final homeCubit = sl<HomeCubit>();
+    if (homeCubit.state.loading) {
+      await homeCubit.stream.firstWhere((state) => !state.loading);
+    }
   }
 
   Future<void> _initVideo() async {
@@ -90,6 +110,15 @@ class _SplashVideoPageState extends State<SplashVideoPage>
     // transição de saída (fade de verdade) é a da própria rota '/splash'
     // no router — evita mostrar a cor de fundo "pelada" entre o vídeo e
     // a Home/Login.
+    unawaited(_completeGateAfterPreload());
+  }
+
+  /// Só libera o gate (e portanto a navegação) depois que o pré-carregamento
+  /// da Home também tiver terminado — na prática quase sempre já terminou
+  /// nesse ponto (rodou em paralelo com os ~3s do vídeo), então isso raras
+  /// vezes segura a splash por mais tempo do que o vídeo já levaria sozinho.
+  Future<void> _completeGateAfterPreload() async {
+    await _homePreload;
     sl<SplashGate>().complete();
   }
 
@@ -170,6 +199,10 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   }
 }
 
+/// A versão atual do vídeo já foi reeditada com uma margem de segurança
+/// generosa ao redor do texto/brasão (vinheta escura nas bordas) — cover
+/// puro preenche a tela de ponta a ponta sem tarja, e a margem do próprio
+/// vídeo evita cortar o conteúdo importante nos aspectos de tela comuns.
 class _FullscreenVideo extends StatelessWidget {
   const _FullscreenVideo({required this.controller});
 
@@ -178,13 +211,15 @@ class _FullscreenVideo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final videoSize = controller.value.size;
-    return SizedBox.expand(
-      child: FittedBox(
-        fit: BoxFit.cover,
-        child: SizedBox(
-          width: videoSize.width,
-          height: videoSize.height,
-          child: VideoPlayer(controller),
+    return ClipRect(
+      child: SizedBox.expand(
+        child: FittedBox(
+          fit: BoxFit.cover,
+          child: SizedBox(
+            width: videoSize.width,
+            height: videoSize.height,
+            child: VideoPlayer(controller),
+          ),
         ),
       ),
     );

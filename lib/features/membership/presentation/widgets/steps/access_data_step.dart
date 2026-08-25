@@ -23,7 +23,11 @@ class AccessDataStep extends StatelessWidget {
       children: [
         Text(
           '1 de 3 · Dados de acesso',
-          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: context.colors.primary),
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w800,
+            color: context.colors.primary,
+          ),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
@@ -43,7 +47,10 @@ class AccessDataStep extends StatelessWidget {
           isRequired: true,
           value: data.nationality.isEmpty ? null : data.nationality,
           errorText: errors['nationality'],
-          options: [for (final country in CountryCatalog.countries) RegistrationOption(value: country.code, label: country.name)],
+          options: [
+            for (final country in CountryCatalog.countries)
+              RegistrationOption(value: country.code, label: country.name),
+          ],
           onChanged: cubit.updateNationality,
         ),
         const SizedBox(height: AppSpacing.lg),

@@ -25,15 +25,22 @@ class MembershipReviewPage extends StatelessWidget {
       children: [
         Text(
           'REVISE SUA ASSOCIAÇÃO',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: colors.textPrimary, letterSpacing: 0.2),
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+            letterSpacing: 0.2,
+          ),
         ),
         const SizedBox(height: AppSpacing.xl),
         _ReviewSection(
           title: 'PLANO',
           rows: [
             _ReviewRow('Plano', state.plan.name),
-            if (state.plan.stadiumSector != null) _ReviewRow('Setor', state.plan.stadiumSector!),
-            if (state.price.label.isNotEmpty) _ReviewRow('Opção', state.price.label),
+            if (state.plan.stadiumSector != null)
+              _ReviewRow('Setor', state.plan.stadiumSector!),
+            if (state.price.label.isNotEmpty)
+              _ReviewRow('Opção', state.price.label),
           ],
         ),
         _ReviewSection(
@@ -41,7 +48,8 @@ class MembershipReviewPage extends StatelessWidget {
           rows: [
             _ReviewRow('Nome', data.fullName),
             _ReviewRow('CPF', maskCpf(data.cpf)),
-            if (data.passport.trim().isNotEmpty) _ReviewRow('Passaporte', data.passport),
+            if (data.passport.trim().isNotEmpty)
+              _ReviewRow('Passaporte', data.passport),
             _ReviewRow('Nascimento', birthDate == null ? '-' : data.birthDate),
           ],
         ),
@@ -69,10 +77,18 @@ class MembershipReviewPage extends StatelessWidget {
         ),
         Text(
           'TERMOS DA ASSOCIAÇÃO',
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w800,
+            color: colors.textHint,
+            letterSpacing: 0.6,
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
-        _RegulationAcceptance(value: state.regulationAccepted, onChanged: cubit.setRegulationAccepted),
+        _RegulationAcceptance(
+          value: state.regulationAccepted,
+          onChanged: cubit.setRegulationAccepted,
+        ),
         const SizedBox(height: AppSpacing.xxxl),
       ],
     );
@@ -102,7 +118,12 @@ class _ReviewSection extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w800,
+                color: colors.textHint,
+                letterSpacing: 0.6,
+              ),
             ),
             const SizedBox(height: AppSpacing.sm),
             for (final row in rows) row,
@@ -126,8 +147,20 @@ class _ReviewRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          Expanded(child: Text(label, style: TextStyle(fontSize: 12.5, color: colors.textSecondary))),
-          Text(value, style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+          Expanded(
+            child: Text(
+              label,
+              style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 12.5,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
+          ),
         ],
       ),
     );
@@ -165,9 +198,18 @@ class _RegulationAcceptance extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: value ? colors.primary : colors.surface,
                   borderRadius: BorderRadius.circular(6),
-                  border: Border.all(color: value ? colors.primary : colors.border, width: 1.5),
+                  border: Border.all(
+                    color: value ? colors.primary : colors.border,
+                    width: 1.5,
+                  ),
                 ),
-                child: value ? Icon(Icons.check_rounded, size: 15, color: colors.onPrimary) : null,
+                child: value
+                    ? Icon(
+                        Icons.check_rounded,
+                        size: 15,
+                        color: colors.onPrimary,
+                      )
+                    : null,
               ),
             ),
           ),
@@ -180,7 +222,12 @@ class _RegulationAcceptance extends StatelessWidget {
                   onTap: () => onChanged(!value),
                   child: Text(
                     'Li e aceito o Regulamento do Sócio Esmeralda',
-                    style: TextStyle(fontSize: 13, height: 1.4, fontWeight: FontWeight.w600, color: colors.textPrimary),
+                    style: TextStyle(
+                      fontSize: 13,
+                      height: 1.4,
+                      fontWeight: FontWeight.w600,
+                      color: colors.textPrimary,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -188,7 +235,11 @@ class _RegulationAcceptance extends StatelessWidget {
                   onTap: () => context.push('/membership/regulation'),
                   child: Text(
                     'Ler regulamento completo →',
-                    style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.primary),
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w700,
+                      color: colors.primary,
+                    ),
                   ),
                 ),
               ],

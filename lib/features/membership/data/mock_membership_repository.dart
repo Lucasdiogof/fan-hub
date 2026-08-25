@@ -69,7 +69,8 @@ class MockMembershipRepository implements MembershipRepository {
     return Success(membership);
   }
 
-  String _generateMemberNumber() => (100000 + Random().nextInt(900000)).toString();
+  String _generateMemberNumber() =>
+      (100000 + Random().nextInt(900000)).toString();
 
   /// Alternado a partir do Perfil, enquanto não existe integração real com
   /// o Sócio Esmeralda — nunca deve existir caminho de produção que crie
@@ -79,7 +80,9 @@ class MockMembershipRepository implements MembershipRepository {
       _membership = null;
       return;
     }
-    final plan = MembershipPlansCatalog.plans.firstWhere((p) => p.id == 'nossa-garra');
+    final plan = MembershipPlansCatalog.plans.firstWhere(
+      (p) => p.id == 'nossa-garra',
+    );
     _membership = Membership(
       id: 'mock-debug',
       userId: 'mock-user',

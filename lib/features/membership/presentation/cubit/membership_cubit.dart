@@ -12,8 +12,11 @@ import 'package:goias_app/shared/state/load_status.dart';
 /// Decide, a partir do estado da associação, qual das duas experiências da
 /// aba Sócio mostrar — a página não decide isso sozinha.
 class MembershipCubit extends Cubit<MembershipState> {
-  MembershipCubit(this._membershipRepository, this._userRepository, this._footballRepository)
-    : super(const MembershipState()) {
+  MembershipCubit(
+    this._membershipRepository,
+    this._userRepository,
+    this._footballRepository,
+  ) : super(const MembershipState()) {
     load();
   }
 
@@ -35,15 +38,21 @@ class MembershipCubit extends Cubit<MembershipState> {
     final snapshotResult = await snapshotFuture;
 
     if (membershipResult case Error(:final failure)) {
-      emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+      emit(
+        state.copyWith(status: LoadStatus.error, errorMessage: failure.message),
+      );
       return;
     }
     if (plansResult case Error(:final failure)) {
-      emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+      emit(
+        state.copyWith(status: LoadStatus.error, errorMessage: failure.message),
+      );
       return;
     }
     if (userResult case Error(:final failure)) {
-      emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+      emit(
+        state.copyWith(status: LoadStatus.error, errorMessage: failure.message),
+      );
       return;
     }
 
@@ -54,7 +63,8 @@ class MembershipCubit extends Cubit<MembershipState> {
     final nextMatch = switch (snapshotResult) {
       Success(:final data)
           when data.nextMatch != null &&
-              (data.nextMatch!.kickoff == null || DateTime.now().isBefore(data.nextMatch!.kickoff!)) =>
+              (data.nextMatch!.kickoff == null ||
+                  DateTime.now().isBefore(data.nextMatch!.kickoff!)) =>
         data.nextMatch,
       _ => null,
     };

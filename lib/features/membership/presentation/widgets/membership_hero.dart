@@ -27,22 +27,42 @@ class MembershipHero extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(AppRadius.pill)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
+                    decoration: BoxDecoration(
+                      color: colors.secondary,
+                      borderRadius: BorderRadius.circular(AppRadius.pill),
+                    ),
                     child: Text(
                       'SÓCIO ESMERALDA',
-                      style: TextStyle(color: colors.primary, fontSize: 10.5, fontWeight: FontWeight.w800, letterSpacing: 1.2),
+                      style: TextStyle(
+                        color: colors.primary,
+                        fontSize: 10.5,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.2,
+                      ),
                     ),
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
                     'Esteja ainda mais próximo\ndo Goiás.',
-                    style: TextStyle(color: colors.textPrimary, fontSize: 20, fontWeight: FontWeight.w800, height: 1.2),
+                    style: TextStyle(
+                      color: colors.textPrimary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                      height: 1.2,
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   Text(
                     'Faça parte dessa história com prioridade de acesso ao estádio, economia em ingressos, descontos e experiências exclusivas.',
-                    style: TextStyle(color: colors.textSecondary, fontSize: 12.5, height: 1.4),
+                    style: TextStyle(
+                      color: colors.textSecondary,
+                      fontSize: 12.5,
+                      height: 1.4,
+                    ),
                   ),
                 ],
               ),
@@ -51,7 +71,10 @@ class MembershipHero extends StatelessWidget {
             Container(
               width: 64,
               height: 64,
-              decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
+              decoration: BoxDecoration(
+                color: colors.secondary,
+                shape: BoxShape.circle,
+              ),
               child: Icon(Icons.badge_rounded, color: colors.primary, size: 30),
             ),
           ],

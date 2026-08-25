@@ -70,7 +70,8 @@ class MembershipRegistrationState extends Equatable {
   /// associação de verdade criada pelo repositório, não um placeholder.
   final Membership? membership;
 
-  bool _revealed(String field, bool stepAttempted) => touchedFields.contains(field) || stepAttempted;
+  bool _revealed(String field, bool stepAttempted) =>
+      touchedFields.contains(field) || stepAttempted;
 
   // ── ETAPA 1 — ACESSO ─────────────────────────────────────────────────
   Map<String, String> get accessErrors {
@@ -79,7 +80,9 @@ class MembershipRegistrationState extends Equatable {
     if (cpfDigits.isEmpty) {
       if (_revealed('cpf', accessAttempted)) errors['cpf'] = 'Informe seu CPF.';
     } else if (!isValidCpf(data.cpf) &&
-        (cpfDigits.length == 11 || blurredFields.contains('cpf') || accessAttempted)) {
+        (cpfDigits.length == 11 ||
+            blurredFields.contains('cpf') ||
+            accessAttempted)) {
       errors['cpf'] = 'CPF inválido.';
     }
 
@@ -106,22 +109,32 @@ class MembershipRegistrationState extends Equatable {
     final errors = <String, String>{};
 
     if (data.contactEmail.trim().isEmpty) {
-      if (_revealed('contactEmail', personalAttempted)) errors['contactEmail'] = 'Informe seu e-mail de contato.';
+      if (_revealed('contactEmail', personalAttempted)) {
+        errors['contactEmail'] = 'Informe seu e-mail de contato.';
+      }
     } else if (!isValidEmailShape(data.contactEmail) &&
         (blurredFields.contains('contactEmail') || personalAttempted)) {
       errors['contactEmail'] = 'Informe um e-mail válido.';
     }
 
     if (data.fullName.trim().isEmpty) {
-      if (_revealed('fullName', personalAttempted)) errors['fullName'] = 'Informe seu nome completo.';
-    } else if (!isValidFullName(data.fullName) && (blurredFields.contains('fullName') || personalAttempted)) {
+      if (_revealed('fullName', personalAttempted)) {
+        errors['fullName'] = 'Informe seu nome completo.';
+      }
+    } else if (!isValidFullName(data.fullName) &&
+        (blurredFields.contains('fullName') || personalAttempted)) {
       errors['fullName'] = 'Informe um nome válido.';
     }
 
     final birthDigits = onlyDigits(data.birthDate);
-    final birthRevealed = blurredFields.contains('birthDate') || personalAttempted || birthDigits.length == 8;
+    final birthRevealed =
+        blurredFields.contains('birthDate') ||
+        personalAttempted ||
+        birthDigits.length == 8;
     if (birthDigits.isEmpty) {
-      if (_revealed('birthDate', personalAttempted)) errors['birthDate'] = 'Informe sua data de nascimento.';
+      if (_revealed('birthDate', personalAttempted)) {
+        errors['birthDate'] = 'Informe sua data de nascimento.';
+      }
     } else if (birthDigits.length < 8) {
       if (birthRevealed) errors['birthDate'] = 'Informe uma data válida.';
     } else {
@@ -139,11 +152,20 @@ class MembershipRegistrationState extends Equatable {
 
     final phoneDigits = onlyDigits(data.phone);
     final isBrazilPhone = data.phoneCountryCode == 'BR';
-    final phoneValid = isBrazilPhone ? isValidMobilePhone(data.phone) : isValidInternationalPhone(data.phone);
-    final phoneComplete = isBrazilPhone ? phoneDigits.length >= 11 : phoneDigits.length >= 6;
+    final phoneValid = isBrazilPhone
+        ? isValidMobilePhone(data.phone)
+        : isValidInternationalPhone(data.phone);
+    final phoneComplete = isBrazilPhone
+        ? phoneDigits.length >= 11
+        : phoneDigits.length >= 6;
     if (phoneDigits.isEmpty) {
-      if (_revealed('phone', personalAttempted)) errors['phone'] = 'Informe seu celular.';
-    } else if (!phoneValid && (phoneComplete || blurredFields.contains('phone') || personalAttempted)) {
+      if (_revealed('phone', personalAttempted)) {
+        errors['phone'] = 'Informe seu celular.';
+      }
+    } else if (!phoneValid &&
+        (phoneComplete ||
+            blurredFields.contains('phone') ||
+            personalAttempted)) {
       errors['phone'] = 'Informe um celular válido.';
     }
 
@@ -154,7 +176,9 @@ class MembershipRegistrationState extends Equatable {
     if (!isValidEmailShape(data.contactEmail)) return false;
     if (!isValidFullName(data.fullName)) return false;
     final birth = parseDdMmYyyy(data.birthDate);
-    if (birth == null || birth.isAfter(DateTime.now()) || !isAtLeast18(birth)) return false;
+    if (birth == null || birth.isAfter(DateTime.now()) || !isAtLeast18(birth)) {
+      return false;
+    }
     if (data.gender == null) return false;
     final phoneValid = data.phoneCountryCode == 'BR'
         ? isValidMobilePhone(data.phone)
@@ -167,7 +191,8 @@ class MembershipRegistrationState extends Equatable {
   Map<String, String> get addressErrors {
     final errors = <String, String>{};
 
-    if (data.addressCountry.isEmpty && _revealed('addressCountry', addressAttempted)) {
+    if (data.addressCountry.isEmpty &&
+        _revealed('addressCountry', addressAttempted)) {
       errors['addressCountry'] = 'Selecione o país.';
     }
 
@@ -176,7 +201,8 @@ class MembershipRegistrationState extends Equatable {
       if (cepDigits.length < 8 && _revealed('zipCode', addressAttempted)) {
         errors['zipCode'] = 'Informe um CEP com 8 dígitos.';
       } else if (cepLookupStatus == LoadStatus.error) {
-        errors['zipCode'] = cepLookupErrorMessage ?? 'Não foi possível consultar o CEP.';
+        errors['zipCode'] =
+            cepLookupErrorMessage ?? 'Não foi possível consultar o CEP.';
       }
     }
 
@@ -186,7 +212,8 @@ class MembershipRegistrationState extends Equatable {
     if (data.number.trim().isEmpty && _revealed('number', addressAttempted)) {
       errors['number'] = 'Informe o número.';
     }
-    if (data.neighborhood.trim().isEmpty && _revealed('neighborhood', addressAttempted)) {
+    if (data.neighborhood.trim().isEmpty &&
+        _revealed('neighborhood', addressAttempted)) {
       errors['neighborhood'] = 'Informe o bairro.';
     }
     if (data.state.trim().isEmpty && _revealed('state', addressAttempted)) {
@@ -202,7 +229,9 @@ class MembershipRegistrationState extends Equatable {
   bool get isAddressStepValid {
     if (cepLookupStatus == LoadStatus.loading) return false;
     if (data.addressCountry.isEmpty) return false;
-    if (data.addressCountry == 'BR' && onlyDigits(data.zipCode).length != 8) return false;
+    if (data.addressCountry == 'BR' && onlyDigits(data.zipCode).length != 8) {
+      return false;
+    }
     if (data.street.trim().isEmpty) return false;
     if (data.number.trim().isEmpty) return false;
     if (data.neighborhood.trim().isEmpty) return false;
@@ -244,7 +273,9 @@ class MembershipRegistrationState extends Equatable {
       personalAttempted: personalAttempted ?? this.personalAttempted,
       addressAttempted: addressAttempted ?? this.addressAttempted,
       cepLookupStatus: cepLookupStatus ?? this.cepLookupStatus,
-      cepLookupErrorMessage: clearCepLookupError ? null : (cepLookupErrorMessage ?? this.cepLookupErrorMessage),
+      cepLookupErrorMessage: clearCepLookupError
+          ? null
+          : (cepLookupErrorMessage ?? this.cepLookupErrorMessage),
       availableCities: availableCities ?? this.availableCities,
       citiesLoadStatus: citiesLoadStatus ?? this.citiesLoadStatus,
       regulationAccepted: regulationAccepted ?? this.regulationAccepted,

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/domain/brazilian_states.dart';
+import 'package:goias_app/shared/domain/brazilian_states.dart';
 import 'package:goias_app/features/membership/domain/entities/address_lookup_result.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/find_zip_code_cubit.dart';
@@ -46,11 +46,19 @@ class _FindZipCodeView extends StatelessWidget {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               itemCount: BrazilianStates.states.length,
-              separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+              separatorBuilder: (_, _) =>
+                  Divider(height: 1, color: colors.border),
               itemBuilder: (itemContext, index) {
                 final state = BrazilianStates.states[index];
                 return ListTile(
-                  title: Text(state.name, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary)),
+                  title: Text(
+                    state.name,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: colors.textPrimary,
+                    ),
+                  ),
                   onTap: () {
                     cubit.selectState(state.name);
                     Navigator.of(itemContext).pop();
@@ -64,7 +72,11 @@ class _FindZipCodeView extends StatelessWidget {
     );
   }
 
-  Future<void> _pickCity(BuildContext context, FindZipCodeCubit cubit, List<String> cities) {
+  Future<void> _pickCity(
+    BuildContext context,
+    FindZipCodeCubit cubit,
+    List<String> cities,
+  ) {
     final colors = context.colors;
     return showModalBottomSheet<void>(
       context: context,
@@ -78,11 +90,19 @@ class _FindZipCodeView extends StatelessWidget {
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               itemCount: cities.length,
-              separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+              separatorBuilder: (_, _) =>
+                  Divider(height: 1, color: colors.border),
               itemBuilder: (itemContext, index) {
                 final city = cities[index];
                 return ListTile(
-                  title: Text(city, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: colors.textPrimary)),
+                  title: Text(
+                    city,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: colors.textPrimary,
+                    ),
+                  ),
                   onTap: () {
                     cubit.selectCity(city);
                     Navigator.of(itemContext).pop();
@@ -107,7 +127,12 @@ class _FindZipCodeView extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 700),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.lg),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                AppSpacing.lg,
+              ),
               child: BlocBuilder<FindZipCodeCubit, FindZipCodeState>(
                 builder: (context, state) {
                   return Column(
@@ -117,12 +142,20 @@ class _FindZipCodeView extends StatelessWidget {
                       const SizedBox(height: AppSpacing.lg),
                       Text(
                         'ENCONTRAR MEU CEP',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: colors.textPrimary),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                          color: colors.textPrimary,
+                        ),
                       ),
                       const SizedBox(height: 6),
                       Text(
                         'Informe seu endereço para encontrarmos o CEP correspondente.',
-                        style: TextStyle(fontSize: 13, color: colors.textSecondary, height: 1.4),
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: colors.textSecondary,
+                          height: 1.4,
+                        ),
                       ),
                       const SizedBox(height: AppSpacing.xl),
                       Expanded(
@@ -140,12 +173,22 @@ class _FindZipCodeView extends StatelessWidget {
                               label: 'Cidade',
                               isRequired: true,
                               value: state.city,
-                              placeholder: state.citiesLoadStatus == LoadStatus.loading
+                              placeholder:
+                                  state.citiesLoadStatus == LoadStatus.loading
                                   ? 'Carregando cidades...'
-                                  : (state.state.isEmpty ? 'Selecione o estado primeiro' : 'Selecionar cidade'),
-                              onTap: state.state.isEmpty || state.citiesLoadStatus == LoadStatus.loading
+                                  : (state.state.isEmpty
+                                        ? 'Selecione o estado primeiro'
+                                        : 'Selecionar cidade'),
+                              onTap:
+                                  state.state.isEmpty ||
+                                      state.citiesLoadStatus ==
+                                          LoadStatus.loading
                                   ? () {}
-                                  : () => _pickCity(context, cubit, state.availableCities),
+                                  : () => _pickCity(
+                                      context,
+                                      cubit,
+                                      state.availableCities,
+                                    ),
                             ),
                             const SizedBox(height: AppSpacing.lg),
                             RegistrationTextField(
@@ -159,19 +202,33 @@ class _FindZipCodeView extends StatelessWidget {
                             SizedBox(
                               width: double.infinity,
                               child: ElevatedButton(
-                                onPressed: state.canSearch && state.status != LoadStatus.loading
+                                onPressed:
+                                    state.canSearch &&
+                                        state.status != LoadStatus.loading
                                     ? cubit.search
                                     : null,
                                 style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
-                                  padding: const EdgeInsets.symmetric(vertical: 15),
-                                  textStyle: const TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                      AppRadius.button,
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 15,
+                                  ),
+                                  textStyle: const TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: 0.3,
+                                  ),
                                 ),
                                 child: state.status == LoadStatus.loading
                                     ? SizedBox(
                                         width: 18,
                                         height: 18,
-                                        child: CircularProgressIndicator(strokeWidth: 2, color: colors.onPrimary),
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: colors.onPrimary,
+                                        ),
                                       )
                                     : const Text('BUSCAR CEP'),
                               ),
@@ -208,7 +265,12 @@ class _ResultsSection extends StatelessWidget {
           children: [
             Text(
               'ENCONTRAMOS ESTES ENDEREÇOS',
-              style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: FontWeight.w800,
+                color: colors.textHint,
+                letterSpacing: 0.6,
+              ),
             ),
             const SizedBox(height: AppSpacing.md),
             for (final result in state.results) ...[
@@ -264,17 +326,37 @@ class _ResultRow extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(result.street, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+                  Text(
+                    result.street,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: colors.textPrimary,
+                    ),
+                  ),
                   if (result.neighborhood.isNotEmpty)
-                    Text(result.neighborhood, style: TextStyle(fontSize: 12.5, color: colors.textSecondary)),
+                    Text(
+                      result.neighborhood,
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        color: colors.textSecondary,
+                      ),
+                    ),
                   Text(
                     '${result.city} - ${result.state}',
-                    style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 12.5,
+                      color: colors.textSecondary,
+                    ),
                   ),
                   if (result.zipCode.isNotEmpty)
                     Text(
                       '${result.zipCode.substring(0, 5)}-${result.zipCode.substring(5)}',
-                      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: colors.primary),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: colors.primary,
+                      ),
                     ),
                 ],
               ),

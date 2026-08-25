@@ -4,10 +4,12 @@ import 'package:goias_app/features/squad/domain/repositories/squad_repository.da
 import 'package:goias_app/features/squad/presentation/cubit/squad_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
+/// `load()` é chamado explicitamente por quem cria o Cubit (nunca no
+/// construtor) — pra nunca disparar duas buscas concorrentes quando o
+/// carregamento já acontece antes da navegação (ver `GlobalLoading.run`
+/// no ponto de entrada em `profile_page.dart`).
 class SquadCubit extends Cubit<SquadState> {
-  SquadCubit(this._repository) : super(const SquadState()) {
-    load();
-  }
+  SquadCubit(this._repository) : super(const SquadState());
 
   final SquadRepository _repository;
 

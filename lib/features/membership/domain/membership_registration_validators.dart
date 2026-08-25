@@ -51,7 +51,9 @@ DateTime? parseDdMmYyyy(String text) {
   if (year < 1900 || year > 2100) return null;
   try {
     final date = DateTime(year, month, day);
-    if (date.year != year || date.month != month || date.day != day) return null;
+    if (date.year != year || date.month != month || date.day != day) {
+      return null;
+    }
     return date;
   } catch (_) {
     return null;
@@ -61,7 +63,8 @@ DateTime? parseDdMmYyyy(String text) {
 bool isAtLeast18(DateTime birthDate) {
   final now = DateTime.now();
   var age = now.year - birthDate.year;
-  if (now.month < birthDate.month || (now.month == birthDate.month && now.day < birthDate.day)) {
+  if (now.month < birthDate.month ||
+      (now.month == birthDate.month && now.day < birthDate.day)) {
     age--;
   }
   return age >= 18;

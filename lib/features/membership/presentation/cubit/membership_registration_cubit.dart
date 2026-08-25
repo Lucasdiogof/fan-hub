@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/membership/data/regulation_catalog.dart';
-import 'package:goias_app/features/membership/domain/brazilian_states.dart';
+import 'package:goias_app/shared/domain/brazilian_states.dart';
 import 'package:goias_app/features/membership/domain/entities/address_lookup_result.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
@@ -29,8 +29,16 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
   final AddressRepository _addressRepository;
   Timer? _cepDebounce;
 
-  void _updateField(String fieldKey, MembershipRegistrationData Function(MembershipRegistrationData) update) {
-    emit(state.copyWith(data: update(state.data), touchedFields: {...state.touchedFields, fieldKey}));
+  void _updateField(
+    String fieldKey,
+    MembershipRegistrationData Function(MembershipRegistrationData) update,
+  ) {
+    emit(
+      state.copyWith(
+        data: update(state.data),
+        touchedFields: {...state.touchedFields, fieldKey},
+      ),
+    );
   }
 
   void markFieldBlurred(String fieldKey) {
@@ -38,30 +46,45 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
     emit(state.copyWith(blurredFields: {...state.blurredFields, fieldKey}));
   }
 
-  void updateCpf(String value) => _updateField('cpf', (d) => d.copyWith(cpf: value));
+  void updateCpf(String value) =>
+      _updateField('cpf', (d) => d.copyWith(cpf: value));
 
-  void updateNationality(String isoCode) => _updateField('nationality', (d) => d.copyWith(nationality: isoCode));
+  void updateNationality(String isoCode) =>
+      _updateField('nationality', (d) => d.copyWith(nationality: isoCode));
 
-  void updatePassport(String value) => _updateField('passport', (d) => d.copyWith(passport: value));
+  void updatePassport(String value) =>
+      _updateField('passport', (d) => d.copyWith(passport: value));
 
-  void updateContactEmail(String value) => _updateField('contactEmail', (d) => d.copyWith(contactEmail: value));
+  void updateContactEmail(String value) =>
+      _updateField('contactEmail', (d) => d.copyWith(contactEmail: value));
 
-  void updateFullName(String value) => _updateField('fullName', (d) => d.copyWith(fullName: value));
+  void updateFullName(String value) =>
+      _updateField('fullName', (d) => d.copyWith(fullName: value));
 
-  void updateNickname(String value) => _updateField('nickname', (d) => d.copyWith(nickname: value));
+  void updateNickname(String value) =>
+      _updateField('nickname', (d) => d.copyWith(nickname: value));
 
-  void updateBirthDate(String value) => _updateField('birthDate', (d) => d.copyWith(birthDate: value));
+  void updateBirthDate(String value) =>
+      _updateField('birthDate', (d) => d.copyWith(birthDate: value));
 
-  void updateGender(Gender gender) => _updateField('gender', (d) => d.copyWith(gender: gender));
+  void updateGender(Gender gender) =>
+      _updateField('gender', (d) => d.copyWith(gender: gender));
 
-  void updatePhoneCountryCode(String isoCode) =>
-      _updateField('phoneCountryCode', (d) => d.copyWith(phoneCountryCode: isoCode));
+  void updatePhoneCountryCode(String isoCode) => _updateField(
+    'phoneCountryCode',
+    (d) => d.copyWith(phoneCountryCode: isoCode),
+  );
 
-  void updatePhone(String value) => _updateField('phone', (d) => d.copyWith(phone: value));
+  void updatePhone(String value) =>
+      _updateField('phone', (d) => d.copyWith(phone: value));
 
-  void updateLandline(String value) => _updateField('landline', (d) => d.copyWith(landline: value));
+  void updateLandline(String value) =>
+      _updateField('landline', (d) => d.copyWith(landline: value));
 
-  void updateWantsNewsletter(bool value) => _updateField('wantsNewsletter', (d) => d.copyWith(wantsNewsletter: value));
+  void updateWantsNewsletter(bool value) => _updateField(
+    'wantsNewsletter',
+    (d) => d.copyWith(wantsNewsletter: value),
+  );
 
   void updateAddressCountry(String isoCode) {
     _cepDebounce?.cancel();
@@ -81,12 +104,25 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
 
     final digits = onlyDigits(value);
     if (digits.length != 8 || state.data.addressCountry != 'BR') {
-      emit(state.copyWith(cepLookupStatus: LoadStatus.initial, clearCepLookupError: true));
+      emit(
+        state.copyWith(
+          cepLookupStatus: LoadStatus.initial,
+          clearCepLookupError: true,
+        ),
+      );
       return;
     }
 
-    emit(state.copyWith(cepLookupStatus: LoadStatus.loading, clearCepLookupError: true));
-    _cepDebounce = Timer(const Duration(milliseconds: 500), () => _lookupZipCode(digits));
+    emit(
+      state.copyWith(
+        cepLookupStatus: LoadStatus.loading,
+        clearCepLookupError: true,
+      ),
+    );
+    _cepDebounce = Timer(
+      const Duration(milliseconds: 500),
+      () => _lookupZipCode(digits),
+    );
   }
 
   Future<void> _lookupZipCode(String digits) async {
@@ -98,20 +134,36 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
     switch (result) {
       case Success(:final data):
         if (data == null) {
-          emit(state.copyWith(cepLookupStatus: LoadStatus.error, cepLookupErrorMessage: 'CEP não encontrado.'));
+          emit(
+            state.copyWith(
+              cepLookupStatus: LoadStatus.error,
+              cepLookupErrorMessage: 'CEP não encontrado.',
+            ),
+          );
           return;
         }
         _applyAddress(data, alsoZipCode: false);
-        emit(state.copyWith(cepLookupStatus: LoadStatus.success, clearCepLookupError: true));
+        emit(
+          state.copyWith(
+            cepLookupStatus: LoadStatus.success,
+            clearCepLookupError: true,
+          ),
+        );
       case Error(:final failure):
-        emit(state.copyWith(cepLookupStatus: LoadStatus.error, cepLookupErrorMessage: failure.message));
+        emit(
+          state.copyWith(
+            cepLookupStatus: LoadStatus.error,
+            cepLookupErrorMessage: failure.message,
+          ),
+        );
     }
   }
 
   /// Usado tanto pela consulta automática quanto pela tela "Não sei meu
   /// CEP" — os dois caminhos precisam atualizar o mesmo estado único, sem
   /// deixar o Cubit acreditar que os campos continuam vazios.
-  void applyAddressLookupResult(AddressLookupResult result) => _applyAddress(result, alsoZipCode: true);
+  void applyAddressLookupResult(AddressLookupResult result) =>
+      _applyAddress(result, alsoZipCode: true);
 
   void _applyAddress(AddressLookupResult result, {required bool alsoZipCode}) {
     final stateName = BrazilianStates.nameForCode(result.state);
@@ -120,11 +172,20 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
         data: state.data.copyWith(
           zipCode: alsoZipCode ? result.zipCode : state.data.zipCode,
           street: result.street.isNotEmpty ? result.street : state.data.street,
-          neighborhood: result.neighborhood.isNotEmpty ? result.neighborhood : state.data.neighborhood,
+          neighborhood: result.neighborhood.isNotEmpty
+              ? result.neighborhood
+              : state.data.neighborhood,
           city: result.city.isNotEmpty ? result.city : state.data.city,
           state: result.state.isNotEmpty ? stateName : state.data.state,
         ),
-        touchedFields: {...state.touchedFields, 'zipCode', 'street', 'neighborhood', 'state', 'city'},
+        touchedFields: {
+          ...state.touchedFields,
+          'zipCode',
+          'street',
+          'neighborhood',
+          'state',
+          'city',
+        },
         cepLookupStatus: LoadStatus.success,
         clearCepLookupError: true,
       ),
@@ -157,23 +218,39 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
     if (state.data.state != stateName) return;
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(availableCities: data, citiesLoadStatus: LoadStatus.success));
+        emit(
+          state.copyWith(
+            availableCities: data,
+            citiesLoadStatus: LoadStatus.success,
+          ),
+        );
       case Error():
-        emit(state.copyWith(availableCities: const [], citiesLoadStatus: LoadStatus.error));
+        emit(
+          state.copyWith(
+            availableCities: const [],
+            citiesLoadStatus: LoadStatus.error,
+          ),
+        );
     }
   }
 
-  void updateStreet(String value) => _updateField('street', (d) => d.copyWith(street: value));
+  void updateStreet(String value) =>
+      _updateField('street', (d) => d.copyWith(street: value));
 
-  void updateNumber(String value) => _updateField('number', (d) => d.copyWith(number: value));
+  void updateNumber(String value) =>
+      _updateField('number', (d) => d.copyWith(number: value));
 
-  void updateComplement(String value) => _updateField('complement', (d) => d.copyWith(complement: value));
+  void updateComplement(String value) =>
+      _updateField('complement', (d) => d.copyWith(complement: value));
 
-  void updateNeighborhood(String value) => _updateField('neighborhood', (d) => d.copyWith(neighborhood: value));
+  void updateNeighborhood(String value) =>
+      _updateField('neighborhood', (d) => d.copyWith(neighborhood: value));
 
-  void updateState(String value) => _updateField('state', (d) => d.copyWith(state: value));
+  void updateState(String value) =>
+      _updateField('state', (d) => d.copyWith(state: value));
 
-  void updateCity(String value) => _updateField('city', (d) => d.copyWith(city: value));
+  void updateCity(String value) =>
+      _updateField('city', (d) => d.copyWith(city: value));
 
   void continueFromAccess() {
     emit(state.copyWith(accessAttempted: true));
@@ -193,7 +270,8 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
     emit(state.copyWith(showReview: true));
   }
 
-  void setRegulationAccepted(bool value) => emit(state.copyWith(regulationAccepted: value));
+  void setRegulationAccepted(bool value) =>
+      emit(state.copyWith(regulationAccepted: value));
 
   /// Da revisão volta só pra Etapa 3; das etapas 2/3 volta uma etapa; nunca
   /// perde o que já foi preenchido, porque tudo continua no mesmo `data`.
@@ -224,9 +302,16 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
     );
     switch (result) {
       case Success<Membership>(:final data):
-        emit(state.copyWith(submitStatus: LoadStatus.success, membership: data));
+        emit(
+          state.copyWith(submitStatus: LoadStatus.success, membership: data),
+        );
       case Error<Membership>(:final failure):
-        emit(state.copyWith(submitStatus: LoadStatus.error, submitErrorMessage: failure.message));
+        emit(
+          state.copyWith(
+            submitStatus: LoadStatus.error,
+            submitErrorMessage: failure.message,
+          ),
+        );
     }
   }
 

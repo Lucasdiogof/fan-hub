@@ -19,7 +19,10 @@ import 'package:goias_app/features/membership/presentation/widgets/steps/persona
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 
-typedef MembershipRegistrationArgs = ({MembershipPlan plan, MembershipPlanPrice price});
+typedef MembershipRegistrationArgs = ({
+  MembershipPlan plan,
+  MembershipPlanPrice price,
+});
 
 /// Hospeda o cubit único do fluxo (3 etapas + revisão) — voltar uma etapa
 /// não recria o cubit, então nada digitado se perde. Depois que a
@@ -28,7 +31,11 @@ typedef MembershipRegistrationArgs = ({MembershipPlan plan, MembershipPlanPrice 
 /// secundário/voltar do sistema), pra saber que precisa recarregar o
 /// estado de sócio ou só voltar ao Início.
 class MembershipRegistrationPage extends StatelessWidget {
-  const MembershipRegistrationPage({required this.plan, required this.price, super.key});
+  const MembershipRegistrationPage({
+    required this.plan,
+    required this.price,
+    super.key,
+  });
 
   final MembershipPlan plan;
   final MembershipPlanPrice price;
@@ -58,7 +65,8 @@ class _MembershipRegistrationView extends StatelessWidget {
     final cubit = context.read<MembershipRegistrationCubit>();
     final state = context.watch<MembershipRegistrationCubit>().state;
     final isDone = state.submitStatus == LoadStatus.success;
-    final canPop = !isDone && state.step == RegistrationStep.access && !state.showReview;
+    final canPop =
+        !isDone && state.step == RegistrationStep.access && !state.showReview;
 
     return PopScope(
       canPop: canPop,
@@ -88,13 +96,22 @@ class _MembershipRegistrationView extends StatelessWidget {
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 700),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, AppSpacing.lg),
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        AppSpacing.md,
+                        AppSpacing.lg,
+                        AppSpacing.lg,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           BackButtonCircle(onTap: () => context.pop()),
                           const SizedBox(height: AppSpacing.lg),
-                          SelectedPlanBanner(plan: state.plan, price: state.price, onChangePlan: () => context.pop()),
+                          SelectedPlanBanner(
+                            plan: state.plan,
+                            price: state.price,
+                            onChangePlan: () => context.pop(),
+                          ),
                           const SizedBox(height: AppSpacing.xl),
                           if (!state.showReview) ...[
                             MembershipRegistrationStepper(step: state.step),
@@ -106,9 +123,12 @@ class _MembershipRegistrationView extends StatelessWidget {
                                 : ListView(
                                     children: [
                                       switch (state.step) {
-                                        RegistrationStep.access => const AccessDataStep(),
-                                        RegistrationStep.personal => const PersonalDataStep(),
-                                        RegistrationStep.address => const AddressStep(),
+                                        RegistrationStep.access =>
+                                          const AccessDataStep(),
+                                        RegistrationStep.personal =>
+                                          const PersonalDataStep(),
+                                        RegistrationStep.address =>
+                                          const AddressStep(),
                                       },
                                     ],
                                   ),
@@ -141,22 +161,36 @@ class _NavButtons extends StatelessWidget {
       final canConfirm = state.regulationAccepted && !loading;
       return Row(
         children: [
-          Expanded(child: _outlinedButton(colors, 'VOLTAR', loading ? null : cubit.back)),
+          Expanded(
+            child: _outlinedButton(
+              colors,
+              'VOLTAR',
+              loading ? null : cubit.back,
+            ),
+          ),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             flex: 2,
             child: ElevatedButton(
               onPressed: canConfirm ? cubit.submit : null,
               style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.button),
+                ),
                 padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+                textStyle: const TextStyle(
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.3,
+                ),
               ),
               child: loading
                   ? SizedBox(
                       width: 18,
                       height: 18,
-                      child: CircularProgressIndicator(strokeWidth: 2, color: colors.onPrimary),
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        color: colors.onPrimary,
+                      ),
                     )
                   : const Text('CONFIRMAR ASSOCIAÇÃO'),
             ),
@@ -182,9 +216,14 @@ class _NavButtons extends StatelessWidget {
           child: ElevatedButton(
             onPressed: continueAction,
             style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppRadius.button),
+              ),
               padding: const EdgeInsets.symmetric(vertical: 15),
-              textStyle: const TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+              textStyle: const TextStyle(
+                fontWeight: FontWeight.w800,
+                letterSpacing: 0.3,
+              ),
             ),
             child: const Text('CONTINUAR'),
           ),
@@ -193,15 +232,24 @@ class _NavButtons extends StatelessWidget {
     );
   }
 
-  Widget _outlinedButton(AppColors colors, String label, VoidCallback? onPressed) {
+  Widget _outlinedButton(
+    AppColors colors,
+    String label,
+    VoidCallback? onPressed,
+  ) {
     return OutlinedButton(
       onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         foregroundColor: colors.textPrimary,
         side: BorderSide(color: colors.border),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.button),
+        ),
         padding: const EdgeInsets.symmetric(vertical: 15),
-        textStyle: const TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+        textStyle: const TextStyle(
+          fontWeight: FontWeight.w800,
+          letterSpacing: 0.3,
+        ),
       ),
       child: Text(label),
     );

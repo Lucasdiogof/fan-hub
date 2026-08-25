@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// Padroniza loading/erro/vazio/sucesso com pull-to-refresh — usado tanto
@@ -31,9 +32,8 @@ class RefreshableStateView extends StatelessWidget {
       onRefresh: onRefresh,
       color: colors.primary,
       child: switch (status) {
-        LoadStatus.initial || LoadStatus.loading => _centered(
-          CircularProgressIndicator(color: colors.primary),
-        ),
+        LoadStatus.initial ||
+        LoadStatus.loading => _centered(const GoiasLoadingIndicator()),
         LoadStatus.error => _centered(
           StateMessage(
             icon: Icons.wifi_off_rounded,
@@ -41,7 +41,9 @@ class RefreshableStateView extends StatelessWidget {
             message: errorMessage,
           ),
         ),
-        LoadStatus.empty => _centered(StateMessage(icon: emptyIcon, title: emptyTitle)),
+        LoadStatus.empty => _centered(
+          StateMessage(icon: emptyIcon, title: emptyTitle),
+        ),
         LoadStatus.success => successBuilder(context),
       },
     );
@@ -51,7 +53,10 @@ class RefreshableStateView extends StatelessWidget {
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(),
       children: [
-        Padding(padding: const EdgeInsets.only(top: 100), child: Center(child: child)),
+        Padding(
+          padding: const EdgeInsets.only(top: 100),
+          child: Center(child: child),
+        ),
       ],
     );
   }

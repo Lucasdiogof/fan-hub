@@ -9,6 +9,7 @@ import 'package:goias_app/features/ticket/presentation/cubit/my_orders_cubit.dar
 import 'package:goias_app/features/ticket/presentation/cubit/my_orders_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -17,7 +18,10 @@ class MyOrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_) => sl<MyOrdersCubit>(), child: const _MyOrdersView());
+    return BlocProvider(
+      create: (_) => sl<MyOrdersCubit>(),
+      child: const _MyOrdersView(),
+    );
   }
 }
 
@@ -34,11 +38,19 @@ class _MyOrdersView extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 900),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BackButtonCircle(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                  BackButtonCircle(
+                    onTap: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                  ),
                   const SizedBox(height: AppSpacing.lg),
                   const PageTitle('MEUS PEDIDOS'),
                   const SizedBox(height: AppSpacing.xxxl),
@@ -49,9 +61,8 @@ class _MyOrdersView extends StatelessWidget {
                           onRefresh: () => context.read<MyOrdersCubit>().load(),
                           color: colors.primary,
                           child: switch (state.status) {
-                            LoadStatus.initial || LoadStatus.loading => _centered(
-                              CircularProgressIndicator(color: colors.primary),
-                            ),
+                            LoadStatus.initial || LoadStatus.loading =>
+                              _centered(const GoiasLoadingIndicator()),
                             LoadStatus.error => _centered(
                               StateMessage(
                                 icon: Icons.wifi_off_rounded,
@@ -63,15 +74,20 @@ class _MyOrdersView extends StatelessWidget {
                               const StateMessage(
                                 icon: Icons.receipt_long_outlined,
                                 title: 'Nenhum pedido encontrado',
-                                message: 'Suas compras de ingressos aparecerão aqui.',
+                                message:
+                                    'Suas compras de ingressos aparecerão aqui.',
                               ),
                             ),
                             LoadStatus.success => ListView.separated(
                               physics: const AlwaysScrollableScrollPhysics(),
-                              padding: const EdgeInsets.only(bottom: AppSpacing.xxxl),
+                              padding: const EdgeInsets.only(
+                                bottom: AppSpacing.xxxl,
+                              ),
                               itemCount: state.orders.length,
-                              separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
-                              itemBuilder: (context, index) => _OrderCard(order: state.orders[index]),
+                              separatorBuilder: (_, _) =>
+                                  const SizedBox(height: AppSpacing.md),
+                              itemBuilder: (context, index) =>
+                                  _OrderCard(order: state.orders[index]),
                             ),
                           },
                         );
@@ -91,7 +107,12 @@ class _MyOrdersView extends StatelessWidget {
 Widget _centered(Widget child) {
   return ListView(
     physics: const AlwaysScrollableScrollPhysics(),
-    children: [Padding(padding: const EdgeInsets.only(top: 100), child: Center(child: child))],
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 100),
+        child: Center(child: child),
+      ),
+    ],
   );
 }
 
@@ -104,7 +125,8 @@ class _OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final date = order.date;
-    final dateLabel = '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
+    final dateLabel =
+        '${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}';
 
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
@@ -121,19 +143,37 @@ class _OrderCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   'Pedido ${order.number}',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.textSecondary),
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: colors.textSecondary,
+                  ),
                 ),
               ),
               Text(
                 'R\$ ${order.amount.toStringAsFixed(2).replaceAll('.', ',')}',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: colors.textPrimary),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w800,
+                  color: colors.textPrimary,
+                ),
               ),
             ],
           ),
           const SizedBox(height: AppSpacing.sm),
-          Text(order.eventName, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+          Text(
+            order.eventName,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
+          ),
           const SizedBox(height: 4),
-          Text('$dateLabel · ${order.status.label}', style: TextStyle(fontSize: 13, color: colors.textSecondary)),
+          Text(
+            '$dateLabel · ${order.status.label}',
+            style: TextStyle(fontSize: 13, color: colors.textSecondary),
+          ),
         ],
       ),
     );

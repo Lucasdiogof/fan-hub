@@ -12,6 +12,8 @@ class IbgeLocationDataSource {
       'https://servicodados.ibge.gov.br/api/v1/localidades/estados/$ufCode/municipios',
     );
     final data = response.data ?? [];
-    return data.map((e) => (e as Map<String, dynamic>)['nome'] as String).toList();
+    return data
+        .map((e) => (e as Map<String, dynamic>)['nome'] as String)
+        .toList();
   }
 }

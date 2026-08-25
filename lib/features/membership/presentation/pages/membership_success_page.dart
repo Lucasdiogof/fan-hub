@@ -42,11 +42,20 @@ class MembershipSuccessPage extends StatelessWidget {
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 700),
                   child: ListView(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.xl, AppSpacing.lg, AppSpacing.lg),
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      AppSpacing.xl,
+                      AppSpacing.lg,
+                      AppSpacing.lg,
+                    ),
                     children: [
                       const _SectionHeader('SUA ASSOCIAÇÃO'),
                       const SizedBox(height: AppSpacing.md),
-                      _SummaryCard(membership: membership, holderName: holderName, holderCpf: holderCpf),
+                      _SummaryCard(
+                        membership: membership,
+                        holderName: holderName,
+                        holderCpf: holderCpf,
+                      ),
                       const SizedBox(height: AppSpacing.xl),
                       const _SectionHeader('SEUS BENEFÍCIOS'),
                       const SizedBox(height: AppSpacing.md),
@@ -59,9 +68,16 @@ class MembershipSuccessPage extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: onGoToMemberArea,
                           style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.button)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.button,
+                              ),
+                            ),
                             padding: const EdgeInsets.symmetric(vertical: 15),
-                            textStyle: const TextStyle(fontWeight: FontWeight.w800, letterSpacing: 0.3),
+                            textStyle: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.3,
+                            ),
                           ),
                           child: const Text('IR PARA MINHA ÁREA DE SÓCIO'),
                         ),
@@ -70,8 +86,16 @@ class MembershipSuccessPage extends StatelessWidget {
                       Center(
                         child: TextButton(
                           onPressed: onGoHome,
-                          style: TextButton.styleFrom(foregroundColor: colors.textSecondary),
-                          child: const Text('Voltar para o início', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700)),
+                          style: TextButton.styleFrom(
+                            foregroundColor: colors.textSecondary,
+                          ),
+                          child: const Text(
+                            'Voltar para o início',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -96,7 +120,12 @@ class _SectionHeader extends StatelessWidget {
     final colors = context.colors;
     return Text(
       label,
-      style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.textHint, letterSpacing: 0.6),
+      style: TextStyle(
+        fontSize: 11,
+        fontWeight: FontWeight.w800,
+        color: colors.textHint,
+        letterSpacing: 0.6,
+      ),
     );
   }
 }
@@ -109,7 +138,12 @@ class _SuccessHero extends StatelessWidget {
     final colors = context.colors;
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.lg, AppSpacing.xxl, AppSpacing.xxxl),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.xxl,
+        AppSpacing.lg,
+        AppSpacing.xxl,
+        AppSpacing.xxxl,
+      ),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -146,7 +180,12 @@ class _SuccessHero extends StatelessWidget {
           const Text(
             'BEM-VINDO AO\nSÓCIO ESMERALDA',
             textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: 23, fontWeight: FontWeight.w900, height: 1.2),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 23,
+              fontWeight: FontWeight.w900,
+              height: 1.2,
+            ),
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
@@ -174,12 +213,16 @@ class _AnimatedSuccessCheck extends StatefulWidget {
   State<_AnimatedSuccessCheck> createState() => _AnimatedSuccessCheckState();
 }
 
-class _AnimatedSuccessCheckState extends State<_AnimatedSuccessCheck> with SingleTickerProviderStateMixin {
+class _AnimatedSuccessCheckState extends State<_AnimatedSuccessCheck>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 480),
   )..forward();
-  late final Animation<double> _scale = CurvedAnimation(parent: _controller, curve: Curves.easeOutBack);
+  late final Animation<double> _scale = CurvedAnimation(
+    parent: _controller,
+    curve: Curves.easeOutBack,
+  );
   late final Animation<double> _fade = CurvedAnimation(
     parent: _controller,
     curve: const Interval(0, 0.6, curve: Curves.easeOut),
@@ -203,7 +246,10 @@ class _AnimatedSuccessCheckState extends State<_AnimatedSuccessCheck> with Singl
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white.withValues(alpha: 0.14),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.4), width: 1.5),
+            border: Border.all(
+              color: Colors.white.withValues(alpha: 0.4),
+              width: 1.5,
+            ),
           ),
           child: const Icon(Icons.check_rounded, color: Colors.white, size: 32),
         ),
@@ -213,7 +259,11 @@ class _AnimatedSuccessCheckState extends State<_AnimatedSuccessCheck> with Singl
 }
 
 class _SummaryCard extends StatelessWidget {
-  const _SummaryCard({required this.membership, required this.holderName, this.holderCpf});
+  const _SummaryCard({
+    required this.membership,
+    required this.holderName,
+    this.holderCpf,
+  });
 
   final Membership membership;
   final String holderName;
@@ -243,7 +293,12 @@ class _SummaryCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   plan.name,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900, color: colors.textPrimary, letterSpacing: 0.2),
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w900,
+                    color: colors.textPrimary,
+                    letterSpacing: 0.2,
+                  ),
                 ),
               ),
               const _ActivePill(),
@@ -251,16 +306,30 @@ class _SummaryCard extends StatelessWidget {
           ),
           if (price.label.isNotEmpty) ...[
             const SizedBox(height: 2),
-            Text(price.label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: colors.textSecondary)),
+            Text(
+              price.label,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: colors.textSecondary,
+              ),
+            ),
           ],
           if (plan.stadiumSector != null) ...[
             const SizedBox(height: AppSpacing.sm),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(AppRadius.pill)),
+              decoration: BoxDecoration(
+                color: colors.secondary,
+                borderRadius: BorderRadius.circular(AppRadius.pill),
+              ),
               child: Text(
                 'Setor ${plan.stadiumSector}',
-                style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800, color: colors.primary),
+                style: TextStyle(
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w800,
+                  color: colors.primary,
+                ),
               ),
             ),
           ],
@@ -270,11 +339,19 @@ class _SummaryCard extends StatelessWidget {
               children: [
                 TextSpan(
                   text: formatBrl(price.monthlyPrice),
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: colors.textPrimary),
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w900,
+                    color: colors.textPrimary,
+                  ),
                 ),
                 TextSpan(
                   text: '/mês',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textSecondary),
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                    color: colors.textSecondary,
+                  ),
                 ),
               ],
             ),
@@ -290,11 +367,17 @@ class _SummaryCard extends StatelessWidget {
           _LabelValue(label: 'Titular', value: holderName),
           if (maskedCpf != null && maskedCpf.isNotEmpty) ...[
             const SizedBox(height: 2),
-            Text('CPF $maskedCpf', style: TextStyle(fontSize: 12, color: colors.textSecondary)),
+            Text(
+              'CPF $maskedCpf',
+              style: TextStyle(fontSize: 12, color: colors.textSecondary),
+            ),
           ],
           if (membership.startedAt != null) ...[
             const SizedBox(height: AppSpacing.md),
-            _LabelValue(label: 'Associado desde', value: _formatDate(membership.startedAt!)),
+            _LabelValue(
+              label: 'Associado desde',
+              value: _formatDate(membership.startedAt!),
+            ),
           ],
         ],
       ),
@@ -314,9 +397,24 @@ class _LabelValue extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: colors.textHint, letterSpacing: 0.4)),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+            color: colors.textHint,
+            letterSpacing: 0.4,
+          ),
+        ),
         const SizedBox(height: 2),
-        Text(value, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+            color: colors.textPrimary,
+          ),
+        ),
       ],
     );
   }
@@ -331,11 +429,23 @@ class _ActivePill extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(width: 7, height: 7, decoration: BoxDecoration(color: colors.success, shape: BoxShape.circle)),
+        Container(
+          width: 7,
+          height: 7,
+          decoration: BoxDecoration(
+            color: colors.success,
+            shape: BoxShape.circle,
+          ),
+        ),
         const SizedBox(width: 5),
         Text(
           'ATIVO',
-          style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.success, letterSpacing: 0.6),
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w800,
+            color: colors.success,
+            letterSpacing: 0.6,
+          ),
         ),
       ],
     );
@@ -369,10 +479,21 @@ class _BenefitsSummary extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.check_circle_rounded, size: 18, color: colors.primary),
+                  Icon(
+                    Icons.check_circle_rounded,
+                    size: 18,
+                    color: colors.primary,
+                  ),
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
-                    child: Text(benefit, style: TextStyle(fontSize: 13.5, height: 1.4, color: colors.textPrimary)),
+                    child: Text(
+                      benefit,
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        height: 1.4,
+                        color: colors.textPrimary,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -382,7 +503,11 @@ class _BenefitsSummary extends StatelessWidget {
               onTap: () => context.push('/membership/plans/${plan.id}'),
               child: Text(
                 'Ver todos os benefícios →',
-                style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.primary),
+                style: TextStyle(
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w700,
+                  color: colors.primary,
+                ),
               ),
             ),
         ],
@@ -400,7 +525,10 @@ class _NextSteps extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.lg),
-      decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(AppRadius.cardSmall)),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -412,13 +540,22 @@ class _NextSteps extends StatelessWidget {
               children: [
                 Text(
                   'E AGORA?',
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, color: colors.primary, letterSpacing: 0.6),
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w800,
+                    color: colors.primary,
+                    letterSpacing: 0.6,
+                  ),
                 ),
                 const SizedBox(height: 6),
                 Text(
                   'Sua área de sócio já está disponível. Acompanhe seu plano e seus '
                   'benefícios e, quando disponível, faça o check-in nos jogos.',
-                  style: TextStyle(fontSize: 13, height: 1.45, color: colors.textPrimary),
+                  style: TextStyle(
+                    fontSize: 13,
+                    height: 1.45,
+                    color: colors.textPrimary,
+                  ),
                 ),
               ],
             ),
