@@ -25,7 +25,9 @@ const MONTHS: Record<string, number> = {
   dezembro: 12,
 };
 
-const DATE_PATTERN = /(\d{1,2})\s*(?:de)?\s*([a-zç]+)\.?\s*(?:de)?\s*(\d{4})/i;
+// (?:de\s+)? exige espaço depois do "de" — sem isso, "de" casava de forma
+// gulosa com o início de "dez"/"dezembro" e quebrava dezembro especificamente.
+const DATE_PATTERN = /(\d{1,2})\s*(?:de\s+)?([a-zç]+)\.?\s*(?:de)?\s*(\d{4})/i;
 
 /**
  * Converte os dois formatos de data em português usados pelo site oficial
