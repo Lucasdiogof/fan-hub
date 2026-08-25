@@ -40,7 +40,13 @@ interface ResultsResponse {
 async function get<T>(path: string): Promise<T> {
   const response = await fetch(`${BASE_URL}/${FREE_TEST_KEY}/${path}`);
   if (!response.ok) {
-    throw new ProviderError(`TheSportsDB retornou status ${response.status}.`, 502, PROVIDER);
+    // Propaga o status real do upstream (em especial 429 — a key de teste
+    // pública é compartilhada entre todo mundo que a usa, ~30 req/min, e
+    // esbarra nisso com frequência) em vez de sempre mandar 502 pro
+    // cliente. O Flutter só mostra a mensagem amigável de "muitas
+    // requisições" quando o status que chega é 429 de verdade.
+    const status = response.status === 429 ? 429 : 502;
+    throw new ProviderError(`TheSportsDB retornou status ${response.status}.`, status, PROVIDER);
   }
   return response.json() as Promise<T>;
 }

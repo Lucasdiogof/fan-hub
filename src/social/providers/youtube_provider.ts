@@ -16,30 +16,24 @@ export class YouTubeProvider implements SocialProvider {
   }
 
   async fetch(): Promise<SocialPost[]> {
-    const channelId = await this.resolveChannelId();
-    if (!channelId) return [];
-
-    const uploadsPlaylistId = await this.getUploadsPlaylistId(channelId);
+    const uploadsPlaylistId = await this.resolveUploadsPlaylistId();
     if (!uploadsPlaylistId) return [];
 
     return this.getRecentVideos(uploadsPlaylistId);
   }
 
-  private async resolveChannelId(): Promise<string | null> {
-    const url = `${YOUTUBE_API_BASE}/channels?forHandle=${encodeURIComponent(TV_GOIAS_HANDLE)}&part=id,snippet,contentDetails&key=${this.apiKey}`;
+  // A resposta de /channels?forHandle já inclui contentDetails com a
+  // playlist de uploads — não precisa de uma segunda chamada por
+  // channels?id= só pra buscar a mesma coisa de novo (isso dobrava a
+  // cadeia sequencial de requests e, na hora do cache expirar, às vezes
+  // estourava o timeout do app).
+  private async resolveUploadsPlaylistId(): Promise<string | null> {
+    const url = `${YOUTUBE_API_BASE}/channels?forHandle=${encodeURIComponent(TV_GOIAS_HANDLE)}&part=contentDetails&key=${this.apiKey}`;
     const response = await globalThis.fetch(url);
     if (!response.ok) {
-      console.log(`youtube.resolveChannelId.error: ${response.status}`);
+      console.log(`youtube.resolveUploadsPlaylistId.error: ${response.status}`);
       return null;
     }
-    const data = await response.json() as any;
-    return data.items?.[0]?.id ?? null;
-  }
-
-  private async getUploadsPlaylistId(channelId: string): Promise<string | null> {
-    const url = `${YOUTUBE_API_BASE}/channels?id=${channelId}&part=contentDetails&key=${this.apiKey}`;
-    const response = await globalThis.fetch(url);
-    if (!response.ok) return null;
     const data = await response.json() as any;
     return data.items?.[0]?.contentDetails?.relatedPlaylists?.uploads ?? null;
   }
