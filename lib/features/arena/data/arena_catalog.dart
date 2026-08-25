@@ -5,22 +5,15 @@ class ArenaCatalog {
   const ArenaCatalog._();
 
   static const games = <ArenaGame>[
-    ArenaGame(
-      id: 'penalty',
-      title: 'Desafio dos Pênaltis',
-      tagline: 'Faça 5 cobranças e tente superar seu recorde.',
-      icon: Icons.sports_soccer_rounded,
-      route: '/arena/penalty',
-      featured: true,
-    ),
-    ArenaGame(
-      id: 'keepy_uppy',
-      title: 'Embaixadinhas',
-      tagline: 'Toque na hora certa e mantenha a bola no ar.',
-      icon: Icons.sports_soccer_rounded,
-      route: '/arena/keepy-uppy',
-      usesFlame: true,
-    ),
+    // Oculto por enquanto — reativar removendo o comentário quando voltar.
+    // ArenaGame(
+    //   id: 'penalty',
+    //   title: 'Desafio dos Pênaltis',
+    //   tagline: 'Faça 5 cobranças e tente superar seu recorde.',
+    //   icon: Icons.sports_soccer_rounded,
+    //   route: '/arena/penalty',
+    //   featured: true,
+    // ),
     ArenaGame(
       id: 'quiz',
       title: 'Quiz do Verdão',
@@ -47,7 +40,7 @@ class ArenaCatalog {
     ),
     ArenaGame(
       id: 'guess_player',
-      title: 'Quem é o Esmeraldino?',
+      title: 'Quem Vestiu o Manto?',
       tagline: 'Descubra o jogador secreto pela foto embaçada e pelas pistas.',
       icon: Icons.face_retouching_natural_rounded,
       route: '/arena/guess-player',
