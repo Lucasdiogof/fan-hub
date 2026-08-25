@@ -14,7 +14,6 @@ import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart
 import 'package:goias_app/features/profile/presentation/widgets/mock_membership_toggle.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
-import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
@@ -110,22 +109,6 @@ class _ProfileView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: AppSpacing.xl),
-                      _MenuSection(
-                        title: 'GOIÁS',
-                        rows: [
-                          _MenuRow(
-                            icon: Icons.shield_outlined,
-                            label: 'Elenco',
-                            onTap: () => _openSquad(context),
-                          ),
-                          _MenuRow(
-                            icon: Icons.handshake_outlined,
-                            label: 'Parceiros do Goiás',
-                            onTap: () => context.push('/partners'),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
                       const SocialLinksSection(),
                       const SizedBox(height: AppSpacing.xl),
                       _MenuSection(
@@ -180,16 +163,8 @@ class _ProfileView extends StatelessWidget {
   }
 }
 
-/// Carrega o Elenco ANTES de navegar (ver `GlobalLoading.run`) — a tela
-/// já abre com os 31 jogadores prontos, nunca vazia esperando a busca.
-Future<void> _openSquad(BuildContext context) async {
-  final cubit = sl<SquadCubit>();
-  await GlobalLoading.run(context, cubit.load);
-  if (!context.mounted) return;
-  unawaited(context.push('/squad', extra: cubit));
-}
-
-/// Mesma lógica pro endereço salvo.
+/// Mesma lógica de carregar antes de navegar que o Elenco usa em O Clube
+/// (ver `ClubPage._openSquad`), agora pro endereço salvo.
 Future<void> _openAddress(BuildContext context) async {
   final cubit = sl<AddressCubit>();
   await GlobalLoading.run(context, cubit.load);

@@ -9,6 +9,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
+import 'package:goias_app/features/club/presentation/widgets/club_entry_card.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/crowd_lineup_home_card.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
@@ -134,6 +135,8 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                       ],
                       const SizedBox(height: AppSpacing.xl),
                       const NewsHomeSection(),
+                      const SizedBox(height: AppSpacing.xl),
+                      ClubEntryCard(onTap: () => context.push('/clube')),
                       const SizedBox(height: AppSpacing.xl),
                       const PartnersHomeSection(),
                     ],

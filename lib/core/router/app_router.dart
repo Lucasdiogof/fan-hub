@@ -24,6 +24,11 @@ import 'package:goias_app/features/auth/presentation/pages/check_your_email_page
 import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_history_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_songs_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_timeline_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_titles_page.dart';
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart';
@@ -242,6 +247,23 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       GoRoute(
         path: '/partners',
         builder: (context, state) => const PartnersPage(),
+      ),
+      GoRoute(path: '/clube', builder: (context, state) => const ClubPage()),
+      GoRoute(
+        path: '/clube/historia',
+        builder: (context, state) => const ClubHistoryPage(),
+      ),
+      GoRoute(
+        path: '/clube/linha-do-tempo',
+        builder: (context, state) => const ClubTimelinePage(),
+      ),
+      GoRoute(
+        path: '/clube/titulos',
+        builder: (context, state) => const ClubTitlesPage(),
+      ),
+      GoRoute(
+        path: '/clube/hino',
+        builder: (context, state) => const ClubSongsPage(),
       ),
       GoRoute(path: '/news', builder: (context, state) => const NewsListPage()),
       GoRoute(
