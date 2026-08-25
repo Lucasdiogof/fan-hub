@@ -5,15 +5,18 @@ void main() {
   group('StandingDto', () {
     final json = {
       'position': 2,
-      'team': {'id': 1, 'name': 'Goiás', 'logo': 'https://example.com/goias.png'},
+      'team': {
+        'id': 1,
+        'name': 'Goiás',
+        'logo': 'https://example.com/goias.png',
+      },
       'isGoias': true,
       'points': 40,
       'played': 21,
       'wins': 11,
       'draws': 7,
       'losses': 3,
-      'goalsFor': 30,
-      'goalsAgainst': 18,
+      'goalDifference': 12,
       'form': 'WWDLW',
     };
 
@@ -39,9 +42,12 @@ void main() {
       expect(dto.form, isNull);
     });
 
-    test('isGoias defaults to false when absent — decided server-side, never guessed by name', () {
-      final dto = StandingDto.fromJson({...json}..remove('isGoias'));
-      expect(dto.isGoias, isFalse);
-    });
+    test(
+      'isGoias defaults to false when absent — decided server-side, never guessed by name',
+      () {
+        final dto = StandingDto.fromJson({...json}..remove('isGoias'));
+        expect(dto.isGoias, isFalse);
+      },
+    );
   });
 }

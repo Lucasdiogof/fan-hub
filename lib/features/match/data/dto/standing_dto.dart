@@ -11,8 +11,7 @@ class StandingDto {
     required this.wins,
     required this.draws,
     required this.losses,
-    required this.goalsFor,
-    required this.goalsAgainst,
+    required this.goalDifference,
     this.form,
   });
 
@@ -24,8 +23,7 @@ class StandingDto {
   final int wins;
   final int draws;
   final int losses;
-  final int goalsFor;
-  final int goalsAgainst;
+  final int goalDifference;
   final String? form;
 
   factory StandingDto.fromJson(Map<String, dynamic> json) => StandingDto(
@@ -37,8 +35,7 @@ class StandingDto {
     wins: json['wins'] as int,
     draws: json['draws'] as int,
     losses: json['losses'] as int,
-    goalsFor: json['goalsFor'] as int,
-    goalsAgainst: json['goalsAgainst'] as int,
+    goalDifference: json['goalDifference'] as int,
     form: json['form'] as String?,
   );
 
@@ -51,8 +48,7 @@ class StandingDto {
     wins: wins,
     draws: draws,
     losses: losses,
-    goalsFor: goalsFor,
-    goalsAgainst: goalsAgainst,
+    goalDifference: goalDifference,
     form: form,
   );
 }

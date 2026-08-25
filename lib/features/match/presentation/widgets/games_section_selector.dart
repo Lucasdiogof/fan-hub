@@ -5,7 +5,11 @@ import 'package:goias_app/features/match/presentation/widgets/games_section.dart
 
 /// Segmented control próprio — não é um `TabBar` do Material.
 class GamesSectionSelector extends StatelessWidget {
-  const GamesSectionSelector({required this.section, required this.onChanged, super.key});
+  const GamesSectionSelector({
+    required this.section,
+    required this.onChanged,
+    super.key,
+  });
 
   final GamesSection section;
   final ValueChanged<GamesSection> onChanged;
@@ -43,7 +47,11 @@ class GamesSectionSelector extends StatelessWidget {
 }
 
 class _SegmentButton extends StatelessWidget {
-  const _SegmentButton({required this.label, required this.selected, required this.onTap});
+  const _SegmentButton({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
 
   final String label;
   final bool selected;

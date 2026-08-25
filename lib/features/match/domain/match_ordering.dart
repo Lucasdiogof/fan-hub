@@ -1,6 +1,10 @@
 import 'package:goias_app/features/match/domain/entities/match.dart';
 
-const _openStatuses = {MatchStatus.scheduled, MatchStatus.live, MatchStatus.halftime};
+const _openStatuses = {
+  MatchStatus.scheduled,
+  MatchStatus.live,
+  MatchStatus.halftime,
+};
 
 /// Regras de seleção/ordenação de partidas — isoladas da UI e do repositório
 /// pra serem testáveis sem mock de rede. Não há mais "calendário completo"
@@ -17,14 +21,15 @@ class MatchOrdering {
   /// devolveu. Partidas sem horário confirmado (`kickoff == null`) vão pro
   /// final, não pro início.
   static List<Match> chronological(List<Match> matches) {
-    final sorted = [...matches]..sort((a, b) {
-      final kickoffA = a.kickoff;
-      final kickoffB = b.kickoff;
-      if (kickoffA == null && kickoffB == null) return 0;
-      if (kickoffA == null) return 1;
-      if (kickoffB == null) return -1;
-      return kickoffA.compareTo(kickoffB);
-    });
+    final sorted = [...matches]
+      ..sort((a, b) {
+        final kickoffA = a.kickoff;
+        final kickoffB = b.kickoff;
+        if (kickoffA == null && kickoffB == null) return 0;
+        if (kickoffA == null) return 1;
+        if (kickoffB == null) return -1;
+        return kickoffA.compareTo(kickoffB);
+      });
     return sorted;
   }
 }

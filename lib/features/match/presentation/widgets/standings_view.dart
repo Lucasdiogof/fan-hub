@@ -21,7 +21,12 @@ class StandingsView extends StatelessWidget {
           emptyIcon: Icons.leaderboard_outlined,
           emptyTitle: 'Classificação indisponível no momento.',
           successBuilder: (context) => ListView(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xxxl),
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg,
+              0,
+              AppSpacing.lg,
+              AppSpacing.xxxl,
+            ),
             children: [
               const StandingsHeader(),
               for (final standing in state.standings)

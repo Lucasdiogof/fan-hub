@@ -3,7 +3,6 @@ import { handleStandings } from './football/standings';
 import { handleCurrentRound } from './football/currentRound';
 import { handleGoiasTeam } from './football/team';
 import { handleFixtureDetails } from './football/fixtureDetails';
-import { handleDiscover } from './football/discover';
 import { handleSocialFeed } from './social/feed';
 import { handleNewsList } from './news/list';
 import { handleNewsArticle } from './news/article';
@@ -31,10 +30,6 @@ export default {
     const fixtureMatch = pathname.match(FIXTURE_DETAILS_PATTERN);
     if (fixtureMatch) {
       return handleFixtureDetails(request, env, decodeURIComponent(fixtureMatch[1]));
-    }
-
-    if (pathname === '/api/football/discover') {
-      return handleDiscover(request, env);
     }
 
     if (pathname === '/api/social/feed') {

@@ -18,7 +18,8 @@ abstract interface class FootballRepository {
   Future<Result<List<Match>>> getCurrentRound();
 
   /// Próximo jogo do Goiás (se houver dado confiável) + últimos resultados.
-  Future<Result<({Match? nextMatch, List<Match> recentResults})>> getGoiasSnapshot();
+  Future<Result<({Match? nextMatch, List<Match> recentResults})>>
+  getGoiasSnapshot();
 
   Future<Result<Match>> getMatchDetails(String fixtureId);
 }

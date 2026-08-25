@@ -1,7 +1,7 @@
 {
   "name": "goias-app-worker",
   "private": true,
-  "description": "Cloudflare Worker — serve o Flutter Web e faz proxy server-side pra dados esportivos (campeonato-brasileiro-api + TheSportsDB).",
+  "description": "Cloudflare Worker — serve o Flutter Web e faz proxy server-side pra dados esportivos (OneFootball).",
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.22.0",
     "@cloudflare/workers-types": "^5.20250101.0",
@@ -13,8 +13,5 @@
     "dev:worker": "wrangler dev",
     "deploy": "wrangler deploy",
     "test:worker": "vitest run"
-  },
-  "dependencies": {
-    "campeonato-brasileiro-api": "^2.0.1"
   }
 }

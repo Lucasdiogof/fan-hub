@@ -45,9 +45,11 @@ class GamesState extends Equatable {
       currentRoundMatches: currentRoundMatches ?? this.currentRoundMatches,
       nextMatch: clearNextMatch ? null : (nextMatch ?? this.nextMatch),
       standings: standings ?? this.standings,
-      currentRoundErrorMessage: currentRoundErrorMessage ?? this.currentRoundErrorMessage,
+      currentRoundErrorMessage:
+          currentRoundErrorMessage ?? this.currentRoundErrorMessage,
       snapshotErrorMessage: snapshotErrorMessage ?? this.snapshotErrorMessage,
-      standingsErrorMessage: standingsErrorMessage ?? this.standingsErrorMessage,
+      standingsErrorMessage:
+          standingsErrorMessage ?? this.standingsErrorMessage,
     );
   }
 

@@ -1,21 +1,12 @@
 import type { Env } from './_lib/config';
-import { loadConfig, requireGoiasTheSportsDbId } from './_lib/config';
+import { loadConfig, requireGoiasOneFootballSlug } from './_lib/config';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
-import { fetchTeamNextEvents, fetchTeamLastEvents } from './providers/thesportsdb_provider';
-import type { TheSportsDbEvent } from './providers/thesportsdb_provider';
-import { normalizeTheSportsDbEvent } from './normalize/match';
+import { fetchTeamMatchLists, fetchMatchDetail } from './providers/onefootball_provider';
+import { normalizeOneFootballMatchCard } from './normalize/match';
 
 const CACHE_TTL_SECONDS = 30 * 60;
-
-/**
- * Nome canônico em português — nunca o `strLeague` cru do TheSportsDB
- * ("Brazilian Serie B", em inglês). Os outros endpoints (standings,
- * current-round) já mostram esse mesmo nome via campeonato-brasileiro-api;
- * usar a fonte errada aqui faria o app exibir dois nomes diferentes pro
- * mesmo campeonato dependendo de qual partida o usuário abrisse.
- */
-const COMPETITION_NAME = 'Campeonato Brasileiro Série B';
+const COMPETITION_NAME = 'Brasileirão Série B';
 
 /**
  * Só existe `/team/goias` por enquanto — o app tem um único time de
@@ -27,31 +18,27 @@ export const onRequestGet = handleGoiasTeam;
 export async function handleGoiasTeam(request: Request, env: Env): Promise<Response> {
   return withErrorHandling(async () => {
     const config = loadConfig(env);
-    const teamId = requireGoiasTheSportsDbId(config);
+    const teamSlug = requireGoiasOneFootballSlug(config);
 
     return cacheFirst(request, CACHE_TTL_SECONDS, 'football.team.goias', config.cacheVersion, async () => {
-      const [nextEvents, lastEvents] = await Promise.all([
-        fetchTeamNextEvents(teamId),
-        fetchTeamLastEvents(teamId),
+      const [upcomingLists, resultLists] = await Promise.all([
+        fetchTeamMatchLists(teamSlug, 'jogos'),
+        fetchTeamMatchLists(teamSlug, 'resultados'),
       ]);
 
-      const anyEvent = nextEvents[0] ?? lastEvents[0];
-      const season = competitionSeason(anyEvent);
+      const upcoming = upcomingLists.flatMap((list) => list.matchCards);
+      const recent = resultLists.flatMap((list) => list.matchCards);
+
+      const nextCard = upcoming[0];
+      // Só busca o estádio da próxima partida (a mais visível na UI) — não
+      // vale a pena um fetch extra por item pros resultados recentes.
+      const nextStadium = nextCard ? (await fetchMatchDetail(nextCard.matchId))?.stadium ?? null : null;
 
       return {
-        competition: {
-          name: season ? `${COMPETITION_NAME} ${season}` : COMPETITION_NAME,
-          season,
-        },
-        nextMatch: nextEvents.length > 0 ? normalizeTheSportsDbEvent(nextEvents[0]) : null,
-        recentResults: lastEvents.map(normalizeTheSportsDbEvent),
+        competition: { name: COMPETITION_NAME, season: null },
+        nextMatch: nextCard ? normalizeOneFootballMatchCard(nextCard, nextStadium) : null,
+        recentResults: recent.map((card) => normalizeOneFootballMatchCard(card)),
       };
     });
   });
-}
-
-function competitionSeason(event: TheSportsDbEvent | undefined): number | null {
-  if (!event?.strSeason) return null;
-  const parsed = Number(event.strSeason);
-  return Number.isNaN(parsed) ? null : parsed;
 }

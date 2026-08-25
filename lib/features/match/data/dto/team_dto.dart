@@ -39,7 +39,10 @@ class TeamDto {
 
 String _shortNameFrom(String name) {
   final trimmed = name.trim();
-  final words = trimmed.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).toList();
+  final words = trimmed
+      .split(RegExp(r'\s+'))
+      .where((w) => w.isNotEmpty)
+      .toList();
   if (words.length == 1) {
     return trimmed.substring(0, trimmed.length.clamp(0, 3)).toUpperCase();
   }

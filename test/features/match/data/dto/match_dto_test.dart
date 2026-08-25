@@ -7,8 +7,16 @@ void main() {
     final json = {
       'id': 'cbapi-12345',
       'round': '23a rodada',
-      'homeTeam': {'id': 1, 'name': 'Goiás', 'logo': 'https://example.com/goias.png'},
-      'awayTeam': {'id': 2, 'name': 'Coritiba', 'logo': 'https://example.com/coritiba.png'},
+      'homeTeam': {
+        'id': 1,
+        'name': 'Goiás',
+        'logo': 'https://example.com/goias.png',
+      },
+      'awayTeam': {
+        'id': 2,
+        'name': 'Coritiba',
+        'logo': 'https://example.com/coritiba.png',
+      },
       'kickoff': '2026-08-21T21:30:00',
       'status': 'scheduled',
       'venue': 'Serrinha',
@@ -27,7 +35,9 @@ void main() {
     });
 
     test('maps to domain entity preserving the raw wall-clock kickoff', () {
-      final entity = MatchDto.fromJson(json).toEntity(competitionName: 'Brasileirão Série B');
+      final entity = MatchDto.fromJson(
+        json,
+      ).toEntity(competitionName: 'Brasileirão Série B');
       expect(entity.id, 'cbapi-12345');
       expect(entity.status, MatchStatus.scheduled);
       expect(entity.homeTeam.id, 1);
@@ -41,12 +51,15 @@ void main() {
       expect(entity.kickoff!.month, 8);
     });
 
-    test('kickoff missing from the source maps to a null kickoff, not a crash', () {
-      final dto = MatchDto.fromJson({...json, 'kickoff': null});
-      expect(dto.kickoffRaw, isNull);
-      final entity = dto.toEntity(competitionName: 'Brasileirão Série B');
-      expect(entity.kickoff, isNull);
-    });
+    test(
+      'kickoff missing from the source maps to a null kickoff, not a crash',
+      () {
+        final dto = MatchDto.fromJson({...json, 'kickoff': null});
+        expect(dto.kickoffRaw, isNull);
+        final entity = dto.toEntity(competitionName: 'Brasileirão Série B');
+        expect(entity.kickoff, isNull);
+      },
+    );
 
     test('defaults missing venue/round/status gracefully', () {
       final dto = MatchDto.fromJson({

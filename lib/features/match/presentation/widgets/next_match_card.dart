@@ -11,7 +11,12 @@ import 'package:goias_app/shared/widgets/club_badge.dart';
 /// Home (ver `NextMatchHero`). Mesmo componente conceitual, propósito
 /// diferente: aqui o usuário está procurando dado, não se emocionando.
 class NextMatchCard extends StatelessWidget {
-  const NextMatchCard({required this.match, this.onBuyTicket, this.onViewDetails, super.key});
+  const NextMatchCard({
+    required this.match,
+    this.onBuyTicket,
+    this.onViewDetails,
+    super.key,
+  });
 
   final Match match;
   final VoidCallback? onBuyTicket;
@@ -45,7 +50,11 @@ class NextMatchCard extends StatelessWidget {
               if (match.round.isNotEmpty)
                 Text(
                   match.round.toUpperCase(),
-                  style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: colors.textHint),
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: colors.textHint,
+                  ),
                 ),
             ],
           ),
@@ -57,7 +66,11 @@ class NextMatchCard extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
                 child: Text(
                   'X',
-                  style: TextStyle(color: colors.textHint, fontWeight: FontWeight.w800, fontSize: 13),
+                  style: TextStyle(
+                    color: colors.textHint,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 13,
+                  ),
                 ),
               ),
               Expanded(child: _TeamColumn(team: match.awayTeam)),
@@ -72,15 +85,25 @@ class NextMatchCard extends StatelessWidget {
               if (match.kickoff != null) ...[
                 _InfoItem(
                   icon: Icons.calendar_today_outlined,
-                  label: '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}',
+                  label:
+                      '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}',
                 ),
                 _Dot(color: colors.textHint),
-                _InfoItem(icon: Icons.access_time_rounded, label: timeLabel(match.kickoff!)),
+                _InfoItem(
+                  icon: Icons.access_time_rounded,
+                  label: timeLabel(match.kickoff!),
+                ),
               ] else
-                const _InfoItem(icon: Icons.calendar_today_outlined, label: 'Data a confirmar'),
+                const _InfoItem(
+                  icon: Icons.calendar_today_outlined,
+                  label: 'Data a confirmar',
+                ),
               if (match.stadium.isNotEmpty) ...[
                 _Dot(color: colors.textHint),
-                _InfoItem(icon: Icons.location_on_outlined, label: match.stadium),
+                _InfoItem(
+                  icon: Icons.location_on_outlined,
+                  label: match.stadium,
+                ),
               ],
             ],
           ),
@@ -90,14 +113,25 @@ class NextMatchCard extends StatelessWidget {
               Expanded(
                 child: ElevatedButton.icon(
                   onPressed: onBuyTicket,
-                  icon: const Icon(Icons.confirmation_number_outlined, size: 16),
+                  icon: const Icon(
+                    Icons.confirmation_number_outlined,
+                    size: 16,
+                  ),
                   label: const Text('COMPRAR INGRESSO'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colors.ctaGreen,
                     foregroundColor: Colors.white,
-                    disabledBackgroundColor: colors.ctaGreen.withValues(alpha: 0.5),
-                    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                    textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.2),
+                    disabledBackgroundColor: colors.ctaGreen.withValues(
+                      alpha: 0.5,
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.sm,
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.2,
+                    ),
                   ),
                 ),
               ),
@@ -106,7 +140,11 @@ class NextMatchCard extends StatelessWidget {
                 child: OutlinedButton(
                   onPressed: onViewDetails,
                   style: OutlinedButton.styleFrom(
-                    textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.2),
+                    textStyle: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.2,
+                    ),
                   ),
                   child: const Text('DETALHES'),
                 ),
@@ -137,7 +175,11 @@ class _TeamColumn extends StatelessWidget {
           textAlign: TextAlign.center,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12.5, color: colors.textPrimary),
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 12.5,
+            color: colors.textPrimary,
+          ),
         ),
       ],
     );
@@ -160,7 +202,11 @@ class _InfoItem extends StatelessWidget {
         const SizedBox(width: 5),
         Text(
           label,
-          style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w600, color: colors.textSecondary),
+          style: TextStyle(
+            fontSize: 11.5,
+            fontWeight: FontWeight.w600,
+            color: colors.textSecondary,
+          ),
         ),
       ],
     );
@@ -176,7 +222,11 @@ class _Dot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-      child: Container(width: 3, height: 3, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+      child: Container(
+        width: 3,
+        height: 3,
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      ),
     );
   }
 }

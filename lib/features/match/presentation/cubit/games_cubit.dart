@@ -26,12 +26,19 @@ class GamesCubit extends Cubit<GamesState> {
         final matches = MatchOrdering.chronological(data);
         emit(
           state.copyWith(
-            currentRoundStatus: matches.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            currentRoundStatus: matches.isEmpty
+                ? LoadStatus.empty
+                : LoadStatus.success,
             currentRoundMatches: matches,
           ),
         );
       case Error(:final failure):
-        emit(state.copyWith(currentRoundStatus: LoadStatus.error, currentRoundErrorMessage: failure.message));
+        emit(
+          state.copyWith(
+            currentRoundStatus: LoadStatus.error,
+            currentRoundErrorMessage: failure.message,
+          ),
+        );
     }
   }
 
@@ -40,16 +47,26 @@ class GamesCubit extends Cubit<GamesState> {
     final result = await _footballRepository.getGoiasSnapshot();
     switch (result) {
       case Success(:final data):
-        final nextMatch = data.nextMatch != null && MatchOrdering.isOpen(data.nextMatch!) ? data.nextMatch : null;
+        final nextMatch =
+            data.nextMatch != null && MatchOrdering.isOpen(data.nextMatch!)
+            ? data.nextMatch
+            : null;
         emit(
           state.copyWith(
-            snapshotStatus: nextMatch == null ? LoadStatus.empty : LoadStatus.success,
+            snapshotStatus: nextMatch == null
+                ? LoadStatus.empty
+                : LoadStatus.success,
             nextMatch: nextMatch,
             clearNextMatch: nextMatch == null,
           ),
         );
       case Error(:final failure):
-        emit(state.copyWith(snapshotStatus: LoadStatus.error, snapshotErrorMessage: failure.message));
+        emit(
+          state.copyWith(
+            snapshotStatus: LoadStatus.error,
+            snapshotErrorMessage: failure.message,
+          ),
+        );
     }
   }
 
@@ -60,12 +77,19 @@ class GamesCubit extends Cubit<GamesState> {
       case Success(:final data):
         emit(
           state.copyWith(
-            standingsStatus: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            standingsStatus: data.isEmpty
+                ? LoadStatus.empty
+                : LoadStatus.success,
             standings: data,
           ),
         );
       case Error(:final failure):
-        emit(state.copyWith(standingsStatus: LoadStatus.error, standingsErrorMessage: failure.message));
+        emit(
+          state.copyWith(
+            standingsStatus: LoadStatus.error,
+            standingsErrorMessage: failure.message,
+          ),
+        );
     }
   }
 

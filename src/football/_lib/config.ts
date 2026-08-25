@@ -1,7 +1,6 @@
 export interface Env {
-  SERIE_CODE: string;
-  GOIAS_BRASILEIRAO_ID: string;
-  GOIAS_THESPORTSDB_ID: string;
+  GOIAS_ONEFOOTBALL_SLUG: string;
+  ONEFOOTBALL_COMPETITION_SLUG: string;
   /** Salt da chave de cache — ver comentário no wrangler.toml. */
   CACHE_VERSION: string;
   /** Binding de assets estáticos (build/web do Flutter) — ver `[assets]` no wrangler.toml. */
@@ -9,13 +8,12 @@ export interface Env {
 }
 
 export interface AppConfig {
-  serieCode: string;
   goias: {
-    /** id numérico do Goiás na campeonato-brasileiro-api (`equipe_id` do ge.globo). */
-    brasileiraoId: number | null;
-    /** id do time do Goiás no TheSportsDB. */
-    thesportsdbId: string | null;
+    /** slug do Goiás no OneFootball (`goias-1863`, do path `/pt-br/time/<slug>`). */
+    onefootballSlug: string | null;
   };
+  /** slug da competição no OneFootball (`brasileirao-serie-b-superbet-119`) — muda de temporada pra temporada. */
+  onefootballCompetitionSlug: string | null;
   cacheVersion: string;
 }
 
@@ -23,39 +21,25 @@ export interface AppConfig {
 export class ConfigError extends Error {}
 
 export function loadConfig(env: Env): AppConfig {
-  const serieCode = (env.SERIE_CODE || 'b').toLowerCase();
-  const brasileiraoIdRaw = env.GOIAS_BRASILEIRAO_ID;
-  const thesportsdbIdRaw = env.GOIAS_THESPORTSDB_ID;
-
   return {
-    serieCode,
     goias: {
-      brasileiraoId: brasileiraoIdRaw ? Number(brasileiraoIdRaw) : null,
-      thesportsdbId: thesportsdbIdRaw || null,
+      onefootballSlug: env.GOIAS_ONEFOOTBALL_SLUG || null,
     },
+    onefootballCompetitionSlug: env.ONEFOOTBALL_COMPETITION_SLUG || null,
     cacheVersion: env.CACHE_VERSION || '1',
   };
 }
 
-/**
- * Usa em endpoints que realmente precisam saber quem é o Goiás (rodada
- * atual, time). Falha com uma mensagem clara em vez de assumir errado —
- * até isso ser confirmado via `/api/football/discover`.
- */
-export function requireGoiasBrasileiraoId(config: AppConfig): number {
-  if (!config.goias.brasileiraoId) {
-    throw new ConfigError(
-      'GOIAS_BRASILEIRAO_ID não configurado. Use GET /api/football/discover pra descobrir o id real e preencha o wrangler.toml.',
-    );
+export function requireGoiasOneFootballSlug(config: AppConfig): string {
+  if (!config.goias.onefootballSlug) {
+    throw new ConfigError('GOIAS_ONEFOOTBALL_SLUG não configurado no wrangler.toml.');
   }
-  return config.goias.brasileiraoId;
+  return config.goias.onefootballSlug;
 }
 
-export function requireGoiasTheSportsDbId(config: AppConfig): string {
-  if (!config.goias.thesportsdbId) {
-    throw new ConfigError(
-      'GOIAS_THESPORTSDB_ID não configurado. Use GET /api/football/discover pra descobrir o id real e preencha o wrangler.toml.',
-    );
+export function requireOneFootballCompetitionSlug(config: AppConfig): string {
+  if (!config.onefootballCompetitionSlug) {
+    throw new ConfigError('ONEFOOTBALL_COMPETITION_SLUG não configurado no wrangler.toml.');
   }
-  return config.goias.thesportsdbId;
+  return config.onefootballCompetitionSlug;
 }

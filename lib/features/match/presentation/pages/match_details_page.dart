@@ -30,10 +30,14 @@ class MatchDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final preloaded = cubit;
     if (preloaded != null) {
-      return BlocProvider.value(value: preloaded, child: const _MatchDetailsView());
+      return BlocProvider.value(
+        value: preloaded,
+        child: const _MatchDetailsView(),
+      );
     }
     return BlocProvider(
-      create: (_) => MatchDetailsCubit(sl<FootballRepository>(), fixtureId)..load(),
+      create: (_) =>
+          MatchDetailsCubit(sl<FootballRepository>(), fixtureId)..load(),
       child: const _MatchDetailsView(),
     );
   }
@@ -52,7 +56,12 @@ class _MatchDetailsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                0,
+              ),
               child: _BackButton(onTap: () => context.pop()),
             ),
             Expanded(
@@ -64,7 +73,8 @@ class _MatchDetailsView extends StatelessWidget {
                     errorMessage: state.errorMessage,
                     emptyIcon: Icons.sports_soccer_outlined,
                     emptyTitle: 'Não foi possível carregar a partida.',
-                    successBuilder: (context) => _MatchDetailsContent(match: state.match!),
+                    successBuilder: (context) =>
+                        _MatchDetailsContent(match: state.match!),
                   );
                 },
               ),
@@ -91,8 +101,15 @@ class _BackButton extends StatelessWidget {
         width: 38,
         height: 38,
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-        child: Icon(Icons.arrow_back_rounded, size: 18, color: colors.textPrimary),
+        decoration: BoxDecoration(
+          color: colors.secondary,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          Icons.arrow_back_rounded,
+          size: 18,
+          color: colors.textPrimary,
+        ),
       ),
     );
   }
@@ -107,19 +124,33 @@ class _MatchDetailsContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return ListView(
-      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.xxxl),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.lg,
+        AppSpacing.lg,
+        AppSpacing.lg,
+        AppSpacing.xxxl,
+      ),
       children: [
         Text(
           match.competition.toUpperCase(),
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1.2, color: colors.primary),
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1.2,
+            color: colors.primary,
+          ),
         ),
         if (match.round.isNotEmpty) ...[
           const SizedBox(height: 4),
           Text(
             match.round.toUpperCase(),
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: colors.textHint),
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              color: colors.textHint,
+            ),
           ),
         ],
         const SizedBox(height: AppSpacing.xxl),
@@ -128,23 +159,39 @@ class _MatchDetailsContent extends StatelessWidget {
             Expanded(child: _TeamBlock(team: match.homeTeam)),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-              child: Text('X', style: TextStyle(color: colors.textHint, fontWeight: FontWeight.w800)),
+              child: Text(
+                'X',
+                style: TextStyle(
+                  color: colors.textHint,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
             ),
             Expanded(child: _TeamBlock(team: match.awayTeam)),
           ],
         ),
         const SizedBox(height: AppSpacing.xxl),
         Text(
-          match.kickoff != null ? shortDateLabel(match.kickoff!) : 'Data a confirmar',
+          match.kickoff != null
+              ? shortDateLabel(match.kickoff!)
+              : 'Data a confirmar',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: colors.textPrimary),
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+            color: colors.textPrimary,
+          ),
         ),
         if (match.kickoff != null) ...[
           const SizedBox(height: 2),
           Text(
             timeLabel(match.kickoff!),
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textSecondary),
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: colors.textSecondary,
+            ),
           ),
         ],
         if (match.stadium.isNotEmpty) ...[
@@ -152,7 +199,11 @@ class _MatchDetailsContent extends StatelessWidget {
           Text(
             match.stadium.toUpperCase(),
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: colors.textPrimary),
+            style: TextStyle(
+              fontSize: 12.5,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
           ),
           if (match.city != null)
             Text(
@@ -164,11 +215,19 @@ class _MatchDetailsContent extends StatelessWidget {
         const SizedBox(height: AppSpacing.xxxl),
         Text(
           'INFORMAÇÕES',
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, letterSpacing: 1.2, color: colors.textSecondary),
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 1.2,
+            color: colors.textSecondary,
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.sm,
+          ),
           decoration: BoxDecoration(
             color: colors.surface,
             borderRadius: BorderRadius.circular(AppRadius.card),
@@ -176,13 +235,32 @@ class _MatchDetailsContent extends StatelessWidget {
           ),
           child: Column(
             children: [
-              _InfoRow(label: 'Data', value: match.kickoff != null ? shortDateLabel(match.kickoff!) : 'A confirmar'),
-              _InfoRow(label: 'Horário', value: match.kickoff != null ? timeLabel(match.kickoff!) : '—'),
-              _InfoRow(label: 'Estádio', value: match.stadium.isEmpty ? '—' : match.stadium),
-              if (match.city != null) _InfoRow(label: 'Cidade', value: match.city!),
+              _InfoRow(
+                label: 'Data',
+                value: match.kickoff != null
+                    ? shortDateLabel(match.kickoff!)
+                    : 'A confirmar',
+              ),
+              _InfoRow(
+                label: 'Horário',
+                value: match.kickoff != null ? timeLabel(match.kickoff!) : '—',
+              ),
+              _InfoRow(
+                label: 'Estádio',
+                value: match.stadium.isEmpty ? '—' : match.stadium,
+              ),
+              if (match.city != null)
+                _InfoRow(label: 'Cidade', value: match.city!),
               _InfoRow(label: 'Competição', value: match.competition),
-              _InfoRow(label: 'Rodada', value: match.round.isEmpty ? '—' : match.round),
-              _InfoRow(label: 'Status', value: matchStatusLabel(match.status), isLast: true),
+              _InfoRow(
+                label: 'Rodada',
+                value: match.round.isEmpty ? '—' : match.round,
+              ),
+              _InfoRow(
+                label: 'Status',
+                value: matchStatusLabel(match.status),
+                isLast: true,
+              ),
             ],
           ),
         ),
@@ -209,7 +287,11 @@ class _TeamBlock extends StatelessWidget {
           textAlign: TextAlign.center,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: colors.textPrimary),
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 13,
+            color: colors.textPrimary,
+          ),
         ),
       ],
     );
@@ -217,7 +299,11 @@ class _TeamBlock extends StatelessWidget {
 }
 
 class _InfoRow extends StatelessWidget {
-  const _InfoRow({required this.label, required this.value, this.isLast = false});
+  const _InfoRow({
+    required this.label,
+    required this.value,
+    this.isLast = false,
+  });
 
   final String label;
   final String value;
@@ -229,13 +315,25 @@ class _InfoRow extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
       decoration: BoxDecoration(
-        border: isLast ? null : Border(bottom: BorderSide(color: colors.border)),
+        border: isLast
+            ? null
+            : Border(bottom: BorderSide(color: colors.border)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: TextStyle(fontSize: 13, color: colors.textSecondary)),
-          Text(value, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.textPrimary)),
+          Text(
+            label,
+            style: TextStyle(fontSize: 13, color: colors.textSecondary),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
+          ),
         ],
       ),
     );

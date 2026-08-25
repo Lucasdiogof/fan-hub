@@ -1,19 +1,15 @@
-import type { RawMatch } from 'campeonato-brasileiro-api';
-import { mapBrasileiraoStatus } from './brasileirao_status_mapper';
-import { mapTheSportsDbStatus } from './thesportsdb_status_mapper';
-import type { TheSportsDbEvent } from '../providers/thesportsdb_provider';
+import { mapOneFootballStatus } from './onefootball_status_mapper';
+import type { OneFootballMatchCard, OneFootballMatchScore } from '../providers/onefootball_provider';
 
 /**
- * Formato interno de partida — o mesmo pros dois providers, então o Flutter
- * nunca precisa saber de onde veio. `id` é prefixado por provider
- * (`cbapi-...`/`tsdb-...`) só pra `/fixtures/:id` saber pra onde rotear;
- * fora isso é opaco pro app.
+ * Formato interno de partida — o Flutter nunca sabe de onde veio. `id`
+ * carrega o prefixo `onef-` só pra `/fixtures/:id` saber que é do
+ * OneFootball; fora isso é opaco pro app.
  *
- * `kickoff` continua como veio da fonte (string local do Brasil, sem
- * offset) — NUNCA passar por conversão de fuso aqui: a página de origem já
- * mostra horário de Brasília "cru", sem indicar UTC. Tentar converter via
- * instante absoluto (ex.: pacote `timezone`) sem um offset real na entrada
- * pode deslocar o horário errado dependendo de onde o parsing acontecer.
+ * `kickoff` é sempre string local do Brasil sem offset (ver
+ * `utcToNaiveBrazilLocal` abaixo) — o resto do pipeline (Dart faz
+ * `DateTime.parse` direto, sem `.toLocal()`) espera exatamente esse
+ * formato.
  */
 export interface InternalMatch {
   id: string;
@@ -27,52 +23,75 @@ export interface InternalMatch {
   awayScore: number | null;
 }
 
-export function normalizeBrasileiraoMatch(raw: RawMatch, roundLabel: string | null): InternalMatch {
+/** OneFootball manda o horário em UTC de verdade (com `Z`) — converte pro
+ * formato "local nu" (sem offset) que o resto do pipeline sempre esperou. */
+function utcToNaiveBrazilLocal(utcIso: string): string {
+  const utcMs = new Date(utcIso).getTime();
+  const brazilMs = utcMs - 3 * 60 * 60 * 1000;
+  return new Date(brazilMs).toISOString().replace('Z', '');
+}
+
+/** `1863` embutido em `.../icons/teams/164/1863.png` — o card de partida do
+ * OneFootball não traz id de time em nenhum outro campo. */
+function extractTeamIdFromCrest(path: string): number {
+  const match = path.match(/\/teams\/\d+\/(\d+)\.\w+$/i);
+  return match ? Number(match[1]) : 0;
+}
+
+function parseOneFootballScore(score: string | undefined): number | null {
+  if (!score || score === '-') return null;
+  const parsed = Number(score);
+  return Number.isNaN(parsed) ? null : parsed;
+}
+
+export function normalizeOneFootballMatchCard(card: OneFootballMatchCard, venue: string | null = null): InternalMatch {
   return {
-    id: `cbapi-${raw.id}`,
-    round: roundLabel,
+    id: `onef-${card.matchId}`,
+    round: null,
     homeTeam: {
-      id: raw.homeTeam.id ?? 0,
-      name: raw.homeTeam.name,
-      shortName: raw.homeTeam.shortName,
-      logo: raw.homeTeam.badge,
+      id: extractTeamIdFromCrest(card.homeTeam.imageObject.path),
+      name: card.homeTeam.name,
+      shortName: null,
+      logo: card.homeTeam.imageObject.path,
     },
     awayTeam: {
-      id: raw.awayTeam.id ?? 0,
-      name: raw.awayTeam.name,
-      shortName: raw.awayTeam.shortName,
-      logo: raw.awayTeam.badge,
+      id: extractTeamIdFromCrest(card.awayTeam.imageObject.path),
+      name: card.awayTeam.name,
+      shortName: null,
+      logo: card.awayTeam.imageObject.path,
     },
-    kickoff: raw.dateTime,
-    venue: raw.venue,
-    status: mapBrasileiraoStatus(raw.status),
-    homeScore: raw.score?.home ?? null,
-    awayScore: raw.score?.away ?? null,
+    kickoff: utcToNaiveBrazilLocal(card.kickoff),
+    venue,
+    status: mapOneFootballStatus(card.period),
+    homeScore: parseOneFootballScore(card.homeTeam.score),
+    awayScore: parseOneFootballScore(card.awayTeam.score),
   };
 }
 
-export function normalizeTheSportsDbEvent(raw: TheSportsDbEvent): InternalMatch {
-  const kickoff = raw.dateEventLocal && raw.strTimeLocal ? `${raw.dateEventLocal}T${raw.strTimeLocal}` : null;
-
+export function normalizeOneFootballMatchScore(
+  matchId: string,
+  score: OneFootballMatchScore,
+  venue: string | null,
+): InternalMatch {
   return {
-    id: `tsdb-${raw.idEvent}`,
-    round: raw.intRound ?? null,
+    id: `onef-${matchId}`,
+    round: null,
     homeTeam: {
-      id: Number(raw.idHomeTeam),
-      name: raw.strHomeTeam,
+      id: extractTeamIdFromCrest(score.homeTeam.imageObject.path),
+      name: score.homeTeam.name,
       shortName: null,
-      logo: raw.strHomeTeamBadge,
+      logo: score.homeTeam.imageObject.path,
     },
     awayTeam: {
-      id: Number(raw.idAwayTeam),
-      name: raw.strAwayTeam,
+      id: extractTeamIdFromCrest(score.awayTeam.imageObject.path),
+      name: score.awayTeam.name,
       shortName: null,
-      logo: raw.strAwayTeamBadge,
+      logo: score.awayTeam.imageObject.path,
     },
-    kickoff,
-    venue: raw.strVenue,
-    status: mapTheSportsDbStatus(raw.strStatus),
-    homeScore: raw.intHomeScore != null ? Number(raw.intHomeScore) : null,
-    awayScore: raw.intAwayScore != null ? Number(raw.intAwayScore) : null,
+    kickoff: utcToNaiveBrazilLocal(score.kickoff.utcTimestamp),
+    venue,
+    status: mapOneFootballStatus(score.period),
+    homeScore: parseOneFootballScore(score.homeTeam.score),
+    awayScore: parseOneFootballScore(score.awayTeam.score),
   };
 }

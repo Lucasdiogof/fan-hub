@@ -10,7 +10,8 @@ import 'package:goias_app/shared/state/load_status.dart';
 /// concorrentes quando o carregamento já acontece antes da navegação (ver
 /// `GlobalLoading.run` nos pontos de entrada).
 class MatchDetailsCubit extends Cubit<MatchDetailsState> {
-  MatchDetailsCubit(this._repository, this.fixtureId) : super(const MatchDetailsState());
+  MatchDetailsCubit(this._repository, this.fixtureId)
+    : super(const MatchDetailsState());
 
   final FootballRepository _repository;
   final String fixtureId;
@@ -22,7 +23,12 @@ class MatchDetailsCubit extends Cubit<MatchDetailsState> {
       case Success(:final data):
         emit(state.copyWith(status: LoadStatus.success, match: data));
       case Error(:final failure):
-        emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
     }
   }
 }

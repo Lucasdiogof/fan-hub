@@ -12,7 +12,9 @@ class MatchListItem extends StatelessWidget {
   final VoidCallback? onTap;
 
   bool get _isFinished =>
-      match.status == MatchStatus.finished && match.homeScore != null && match.awayScore != null;
+      match.status == MatchStatus.finished &&
+      match.homeScore != null &&
+      match.awayScore != null;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,11 @@ class MatchListItem extends StatelessWidget {
               match.kickoff != null
                   ? '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}'
                   : 'Data a confirmar',
-              style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w700, color: colors.textSecondary),
+              style: TextStyle(
+                fontSize: 11.5,
+                fontWeight: FontWeight.w700,
+                color: colors.textSecondary,
+              ),
             ),
             const SizedBox(height: AppSpacing.md),
             Row(
@@ -49,22 +55,38 @@ class MatchListItem extends StatelessWidget {
                           match.homeTeam.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: colors.textPrimary),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13,
+                            color: colors.textPrimary,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.sm,
+                  ),
                   child: _isFinished
                       ? Text(
                           '${match.homeScore} x ${match.awayScore}',
-                          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 15, color: colors.textPrimary),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 15,
+                            color: colors.textPrimary,
+                          ),
                         )
                       : Text(
-                          match.kickoff != null ? timeLabel(match.kickoff!) : '--:--',
-                          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 13, color: colors.textPrimary),
+                          match.kickoff != null
+                              ? timeLabel(match.kickoff!)
+                              : '--:--',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 13,
+                            color: colors.textPrimary,
+                          ),
                         ),
                 ),
                 Expanded(
@@ -77,7 +99,11 @@ class MatchListItem extends StatelessWidget {
                           maxLines: 1,
                           textAlign: TextAlign.right,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 13, color: colors.textPrimary),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13,
+                            color: colors.textPrimary,
+                          ),
                         ),
                       ),
                       const SizedBox(width: AppSpacing.sm),
@@ -91,7 +117,11 @@ class MatchListItem extends StatelessWidget {
               const SizedBox(height: AppSpacing.md),
               Row(
                 children: [
-                  Icon(Icons.location_on_outlined, size: 13, color: colors.textHint),
+                  Icon(
+                    Icons.location_on_outlined,
+                    size: 13,
+                    color: colors.textHint,
+                  ),
                   const SizedBox(width: 4),
                   Text(
                     match.stadium,

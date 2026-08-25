@@ -10,9 +10,16 @@ class StandingsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final style = TextStyle(fontSize: 10.5, fontWeight: FontWeight.w800, color: colors.textHint);
+    final style = TextStyle(
+      fontSize: 10.5,
+      fontWeight: FontWeight.w800,
+      color: colors.textHint,
+    );
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.sm,
+      ),
       child: Row(
         children: [
           SizedBox(width: 22, child: Text('#', style: style)),
@@ -37,6 +44,9 @@ class _ColumnLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(width: width, child: Text(label, textAlign: TextAlign.center, style: style));
+    return SizedBox(
+      width: width,
+      child: Text(label, textAlign: TextAlign.center, style: style),
+    );
   }
 }

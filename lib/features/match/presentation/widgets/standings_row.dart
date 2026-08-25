@@ -5,7 +5,11 @@ import 'package:goias_app/features/match/domain/entities/standing.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 
 class StandingsRow extends StatelessWidget {
-  const StandingsRow({required this.standing, required this.isGoias, super.key});
+  const StandingsRow({
+    required this.standing,
+    required this.isGoias,
+    super.key,
+  });
 
   final Standing standing;
 
@@ -17,10 +21,17 @@ class StandingsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final foreground = isGoias ? colors.primary : colors.textPrimary;
-    final numberStyle = TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: foreground);
+    final numberStyle = TextStyle(
+      fontSize: 12.5,
+      fontWeight: FontWeight.w700,
+      color: foreground,
+    );
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.lg,
+        vertical: AppSpacing.md,
+      ),
       decoration: BoxDecoration(
         color: isGoias ? colors.secondary : Colors.transparent,
         borderRadius: BorderRadius.circular(AppRadius.cardSmall),
@@ -31,7 +42,11 @@ class StandingsRow extends StatelessWidget {
             width: 22,
             child: Text(
               '${standing.position}',
-              style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w800, color: foreground),
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w800,
+                color: foreground,
+              ),
             ),
           ),
           const SizedBox(width: AppSpacing.md),
@@ -49,13 +64,36 @@ class StandingsRow extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 24, child: Text('${standing.points}', textAlign: TextAlign.center, style: numberStyle)),
-          SizedBox(width: 24, child: Text('${standing.played}', textAlign: TextAlign.center, style: numberStyle)),
-          SizedBox(width: 24, child: Text('${standing.wins}', textAlign: TextAlign.center, style: numberStyle)),
+          SizedBox(
+            width: 24,
+            child: Text(
+              '${standing.points}',
+              textAlign: TextAlign.center,
+              style: numberStyle,
+            ),
+          ),
+          SizedBox(
+            width: 24,
+            child: Text(
+              '${standing.played}',
+              textAlign: TextAlign.center,
+              style: numberStyle,
+            ),
+          ),
+          SizedBox(
+            width: 24,
+            child: Text(
+              '${standing.wins}',
+              textAlign: TextAlign.center,
+              style: numberStyle,
+            ),
+          ),
           SizedBox(
             width: 32,
             child: Text(
-              standing.goalDifference > 0 ? '+${standing.goalDifference}' : '${standing.goalDifference}',
+              standing.goalDifference > 0
+                  ? '+${standing.goalDifference}'
+                  : '${standing.goalDifference}',
               textAlign: TextAlign.center,
               style: numberStyle,
             ),

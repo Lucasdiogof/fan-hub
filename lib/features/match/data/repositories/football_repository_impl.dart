@@ -39,7 +39,8 @@ class FootballRepositoryImpl implements FootballRepository {
   }
 
   @override
-  Future<Result<({Match? nextMatch, List<Match> recentResults})>> getGoiasSnapshot() async {
+  Future<Result<({Match? nextMatch, List<Match> recentResults})>>
+  getGoiasSnapshot() async {
     try {
       final result = await _remote.getGoiasSnapshot();
       final competitionName = result.competition.name;
@@ -60,7 +61,9 @@ class FootballRepositoryImpl implements FootballRepository {
   Future<Result<Match>> getMatchDetails(String fixtureId) async {
     try {
       final result = await _remote.getFixtureDetails(fixtureId);
-      return Success(result.match.toEntity(competitionName: result.competition.name));
+      return Success(
+        result.match.toEntity(competitionName: result.competition.name),
+      );
     } on DioException catch (e) {
       return Error(_mapDioError(e));
     } catch (_) {
@@ -71,12 +74,15 @@ class FootballRepositoryImpl implements FootballRepository {
   Failure _mapDioError(DioException e) {
     final status = e.response?.statusCode;
     if (status == 429) {
-      return const ServerFailure('Muitas requisições no momento. Tente novamente em instantes.');
+      return const ServerFailure(
+        'Muitas requisições no momento. Tente novamente em instantes.',
+      );
     }
     if (status == 404) {
       return const ServerFailure('Partida não encontrada.');
     }
-    if (e.type == DioExceptionType.connectionError || e.type == DioExceptionType.connectionTimeout) {
+    if (e.type == DioExceptionType.connectionError ||
+        e.type == DioExceptionType.connectionTimeout) {
       return const ServerFailure('Sem conexão com a internet.');
     }
     return const ServerFailure();

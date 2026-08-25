@@ -7,19 +7,14 @@ directory = "build/web"
 binding = "ASSETS"
 not_found_handling = "single-page-application"
 
-# Fontes esportivas gratuitas: campeonato-brasileiro-api (principal —
-# classificação/rodada da Série B) + TheSportsDB (complementar — próximo
-# jogo/últimos resultados do Goiás). Nenhuma das duas exige secret — só a
-# key pública de teste do TheSportsDB, que não é sensível o bastante pra
-# precisar ficar fora do repositório.
-#
-# GOIAS_BRASILEIRAO_ID / GOIAS_THESPORTSDB_ID começam vazios de propósito —
-# preencha depois de confirmar os ids reais via GET /api/football/discover.
-#
-# Sem SEASON aqui de propósito: a campeonato-brasileiro-api lê a página ao
-# vivo do ge.globo.com (sempre a temporada corrente, sem parâmetro de
-# temporada pra passar) — a temporada exibida vem do próprio dado
-# (`competition.season`), não é algo que a gente controla ou espalha.
+# Fonte esportiva única: OneFootball (endpoint interno da própria página,
+# api.onefootball.com/web-experience/... — sem key, sem secret). Cobre
+# próximo jogo, rodada atual (com todos os times), detalhe de partida e
+# classificação (essa última só com saldo de gols, não gols pró/contra
+# separados — é tudo que o OneFootball expõe, e é tudo que a UI mostra).
+# campeonato-brasileiro-api e TheSportsDB foram removidos — cobriam a mesma
+# coisa com mais fricção (scraping do ge.globo, key pública compartilhada
+# do TheSportsDB com rate limit de ~30 req/min).
 #
 # CACHE_VERSION entra na chave de cache de cada endpoint — bump manual
 # sempre que uma mudança de formato/normalização puder tornar o JSON
@@ -27,7 +22,13 @@ not_found_handling = "single-page-application"
 # uma correção de bug no Worker só valeria depois do TTL do cache antigo
 # expirar (até 45min), mesmo já deployada.
 [vars]
-SERIE_CODE = "b"
-GOIAS_BRASILEIRAO_ID = "290"
-GOIAS_THESPORTSDB_ID = "134295"
-CACHE_VERSION = "4"
+# Slug do Goiás no OneFootball (path /pt-br/time/<slug>) — usado pro card de
+# Próximo Jogo e pela tela de Jogos. Confirmado navegando o site, não muda
+# entre temporadas (é o id do clube, não do campeonato).
+GOIAS_ONEFOOTBALL_SLUG = "goias-1863"
+# Slug da competição no OneFootball (path /pt-br/competicao/<slug>) — ESSE
+# muda a cada temporada/edição. Se a rodada atual ou a classificação
+# pararem de bater, confira se o slug ainda é válido navegando
+# https://onefootball.com/pt-br/competicao/.
+ONEFOOTBALL_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
+CACHE_VERSION = "6"

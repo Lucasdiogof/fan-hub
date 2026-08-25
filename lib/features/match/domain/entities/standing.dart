@@ -11,8 +11,7 @@ class Standing extends Equatable {
     required this.wins,
     required this.draws,
     required this.losses,
-    required this.goalsFor,
-    required this.goalsAgainst,
+    required this.goalDifference,
     this.form,
   });
 
@@ -27,13 +26,13 @@ class Standing extends Equatable {
   final int wins;
   final int draws;
   final int losses;
-  final int goalsFor;
-  final int goalsAgainst;
+
+  /// Saldo de gols — a fonte (OneFootball) só dá o saldo, não gols
+  /// pró/contra separados, o que também é tudo que a UI já mostrava.
+  final int goalDifference;
 
   /// Últimos resultados, ex.: "WWDLW". `null` quando a API não informa.
   final String? form;
-
-  int get goalDifference => goalsFor - goalsAgainst;
 
   @override
   List<Object?> get props => [
@@ -45,8 +44,7 @@ class Standing extends Equatable {
     wins,
     draws,
     losses,
-    goalsFor,
-    goalsAgainst,
+    goalDifference,
     form,
   ];
 }
