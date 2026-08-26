@@ -35,7 +35,13 @@ class QuizCubit extends Cubit<QuizState> {
 
     final answeredBefore = (await repository.getAnsweredIds(difficulty)).length;
 
-    final session = await repository.loadSession(difficulty);
+    // Revisão nunca retoma uma sessão congelada — o que falta revisar é
+    // sempre recalculado do zero a partir do que está pendente agora. Uma
+    // sessão de revisão abandonada no meio (voltou antes de terminar) já
+    // gravou os acertos/erros individuais no progresso; retomar a lista
+    // antiga faria a contagem "restante" divergir do "X para revisar" que
+    // aparece no resto do app (que é sempre ao vivo).
+    final session = isReview ? null : await repository.loadSession(difficulty);
     if (session != null &&
         session.isReview == isReview &&
         session.questionIds.isNotEmpty) {
@@ -85,13 +91,15 @@ class QuizCubit extends Cubit<QuizState> {
       return;
     }
 
-    await repository.saveSession(
-      difficulty: difficulty,
-      questionIds: questions.map((question) => question.id).toList(),
-      currentIndex: 0,
-      answers: const [],
-      isReview: isReview,
-    );
+    if (!isReview) {
+      await repository.saveSession(
+        difficulty: difficulty,
+        questionIds: questions.map((question) => question.id).toList(),
+        currentIndex: 0,
+        answers: const [],
+        isReview: isReview,
+      );
+    }
 
     emit(
       state.copyWith(
@@ -165,13 +173,15 @@ class QuizCubit extends Cubit<QuizState> {
     }
 
     final newIndex = state.index + 1;
-    await repository.saveSession(
-      difficulty: difficulty,
-      questionIds: state.questions.map((q) => q.id).toList(),
-      currentIndex: newIndex,
-      answers: answersSoFar,
-      isReview: isReview,
-    );
+    if (!isReview) {
+      await repository.saveSession(
+        difficulty: difficulty,
+        questionIds: state.questions.map((q) => q.id).toList(),
+        currentIndex: newIndex,
+        answers: answersSoFar,
+        isReview: isReview,
+      );
+    }
     emit(
       state.copyWith(
         index: newIndex,
