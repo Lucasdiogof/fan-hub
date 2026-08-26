@@ -243,6 +243,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                                 extra: (
                                   difficulty: data.difficulty,
                                   isReview: data.isReview,
+                                  cubit: null,
                                 ),
                               );
                             },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 
@@ -11,10 +12,14 @@ class MatchListItem extends StatelessWidget {
   final Match match;
   final VoidCallback? onTap;
 
-  bool get _isFinished =>
-      match.status == MatchStatus.finished &&
-      match.homeScore != null &&
-      match.awayScore != null;
+  /// Mostra o placar sempre que ele existir — mesmo com o jogo ainda em
+  /// andamento (placar parcial). Antes só mostrava quando `finished`, então
+  /// a lista ficava mostrando o horário durante o jogo todo, só trocando
+  /// pro placar quando o jogo já tinha acabado.
+  bool get _hasScore => match.homeScore != null && match.awayScore != null;
+
+  bool get _isInProgress =>
+      match.status == MatchStatus.live || match.status == MatchStatus.halftime;
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +37,22 @@ class MatchListItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              match.kickoff != null
-                  ? '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}'
-                  : 'Data a confirmar',
-              style: TextStyle(
-                fontSize: 11.5,
-                fontWeight: FontWeight.w700,
-                color: colors.textSecondary,
-              ),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    match.kickoff != null
+                        ? '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}'
+                        : 'Data a confirmar',
+                    style: TextStyle(
+                      fontSize: 11.5,
+                      fontWeight: FontWeight.w700,
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                ),
+                if (_isInProgress) _LiveBadge(status: match.status),
+              ],
             ),
             const SizedBox(height: AppSpacing.md),
             Row(
@@ -69,7 +81,7 @@ class MatchListItem extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                     horizontal: AppSpacing.sm,
                   ),
-                  child: _isFinished
+                  child: _hasScore
                       ? Text(
                           '${match.homeScore} x ${match.awayScore}',
                           style: TextStyle(
@@ -134,6 +146,47 @@ class MatchListItem extends StatelessWidget {
             ],
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _LiveBadge extends StatelessWidget {
+  const _LiveBadge({required this.status});
+
+  final MatchStatus status;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 6,
+            height: 6,
+            decoration: BoxDecoration(
+              color: colors.primary,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const SizedBox(width: 4),
+          Text(
+            matchStatusLabel(status).toUpperCase(),
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.4,
+              color: colors.primary,
+            ),
+          ),
+        ],
       ),
     );
   }
