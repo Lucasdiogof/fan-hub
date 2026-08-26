@@ -414,5 +414,31 @@
   "forgotSending": "Sending...",
 
   "authShowPassword": "Show password",
-  "authHidePassword": "Hide password"
+  "authHidePassword": "Hide password",
+
+  "ticketsLoadError": "Couldn't load the tickets.",
+  "ticketsNextEvent": "NEXT EVENT",
+  "ticketsQuickAccess": "QUICK ACCESS",
+  "ticketsMyTickets": "My tickets",
+  "ticketsMyTicketsSubtitle": "Tickets for Goiás matches",
+  "ticketsMyOrders": "My orders",
+  "ticketsMyOrdersSubtitle": "Your purchase history",
+  "ticketsNoEvents": "No events available right now",
+  "ticketsNoEventsMessage": "When a new match becomes available for sale or check-in, it'll show up here.",
+  "ticketsMyTicketsTitle": "MY TICKETS",
+  "ticketsMyTicketsLoadError": "Couldn't load your tickets",
+  "ticketsMyTicketsEmpty": "You don't have any tickets yet",
+  "ticketsMyTicketsEmptyMessage": "Your tickets for Goiás matches will show up here.",
+  "ticketsMyOrdersTitle": "MY ORDERS",
+  "ticketsMyOrdersLoadError": "Couldn't load your orders",
+  "ticketsMyOrdersEmpty": "No orders found",
+  "ticketsMyOrdersEmptyMessage": "Your ticket purchases will show up here.",
+  "ticketsOrderNumber": "Order {number}",
+  "ticketStatusValid": "Valid",
+  "ticketStatusUsed": "Used",
+  "ticketStatusCancelled": "Cancelled",
+  "orderStatusConfirmed": "Confirmed",
+  "orderStatusPending": "Pending",
+  "orderStatusCancelled": "Cancelled",
+  "orderStatusRefunded": "Refunded"
 }

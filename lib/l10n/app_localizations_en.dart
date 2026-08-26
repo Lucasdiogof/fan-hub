@@ -1241,4 +1241,84 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authHidePassword => 'Hide password';
+
+  @override
+  String get ticketsLoadError => 'Couldn\'t load the tickets.';
+
+  @override
+  String get ticketsNextEvent => 'NEXT EVENT';
+
+  @override
+  String get ticketsQuickAccess => 'QUICK ACCESS';
+
+  @override
+  String get ticketsMyTickets => 'My tickets';
+
+  @override
+  String get ticketsMyTicketsSubtitle => 'Tickets for Goiás matches';
+
+  @override
+  String get ticketsMyOrders => 'My orders';
+
+  @override
+  String get ticketsMyOrdersSubtitle => 'Your purchase history';
+
+  @override
+  String get ticketsNoEvents => 'No events available right now';
+
+  @override
+  String get ticketsNoEventsMessage =>
+      'When a new match becomes available for sale or check-in, it\'ll show up here.';
+
+  @override
+  String get ticketsMyTicketsTitle => 'MY TICKETS';
+
+  @override
+  String get ticketsMyTicketsLoadError => 'Couldn\'t load your tickets';
+
+  @override
+  String get ticketsMyTicketsEmpty => 'You don\'t have any tickets yet';
+
+  @override
+  String get ticketsMyTicketsEmptyMessage =>
+      'Your tickets for Goiás matches will show up here.';
+
+  @override
+  String get ticketsMyOrdersTitle => 'MY ORDERS';
+
+  @override
+  String get ticketsMyOrdersLoadError => 'Couldn\'t load your orders';
+
+  @override
+  String get ticketsMyOrdersEmpty => 'No orders found';
+
+  @override
+  String get ticketsMyOrdersEmptyMessage =>
+      'Your ticket purchases will show up here.';
+
+  @override
+  String ticketsOrderNumber(String number) {
+    return 'Order $number';
+  }
+
+  @override
+  String get ticketStatusValid => 'Valid';
+
+  @override
+  String get ticketStatusUsed => 'Used';
+
+  @override
+  String get ticketStatusCancelled => 'Cancelled';
+
+  @override
+  String get orderStatusConfirmed => 'Confirmed';
+
+  @override
+  String get orderStatusPending => 'Pending';
+
+  @override
+  String get orderStatusCancelled => 'Cancelled';
+
+  @override
+  String get orderStatusRefunded => 'Refunded';
 }

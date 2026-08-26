@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/tickets_cubit.dart';
@@ -51,7 +52,7 @@ class _TicketsView extends StatelessWidget {
                         context.canPop() ? context.pop() : context.go('/'),
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('INGRESSOS'),
+                  PageTitle(context.l10n.homeTickets),
                   const SizedBox(height: AppSpacing.xxxl),
                   Expanded(
                     child: BlocBuilder<TicketsCubit, TicketsState>(
@@ -62,7 +63,7 @@ class _TicketsView extends StatelessWidget {
                           LoadStatus.error => Center(
                             child: StateMessage(
                               icon: Icons.error_outline_rounded,
-                              title: 'Não foi possível carregar os ingressos.',
+                              title: context.l10n.ticketsLoadError,
                               message: state.errorMessage,
                             ),
                           ),
@@ -76,23 +77,23 @@ class _TicketsView extends StatelessWidget {
                                 bottom: AppSpacing.xxxl,
                               ),
                               children: [
-                                const _SectionLabel('PRÓXIMO EVENTO'),
+                                _SectionLabel(context.l10n.ticketsNextEvent),
                                 const SizedBox(height: AppSpacing.md),
                                 const _EmptyEventCard(),
                                 const SizedBox(height: AppSpacing.xxl),
-                                const _SectionLabel('ACESSO RÁPIDO'),
+                                _SectionLabel(context.l10n.ticketsQuickAccess),
                                 const SizedBox(height: AppSpacing.md),
                                 _ShortcutCard(
                                   icon: Icons.confirmation_number_outlined,
-                                  title: 'Meus ingressos',
-                                  subtitle: 'Ingressos para partidas do Goiás',
+                                  title: context.l10n.ticketsMyTickets,
+                                  subtitle: context.l10n.ticketsMyTicketsSubtitle,
                                   onTap: () => context.push('/tickets/my'),
                                 ),
                                 const SizedBox(height: AppSpacing.md),
                                 _ShortcutCard(
                                   icon: Icons.receipt_long_outlined,
-                                  title: 'Meus pedidos',
-                                  subtitle: 'Histórico das suas compras',
+                                  title: context.l10n.ticketsMyOrders,
+                                  subtitle: context.l10n.ticketsMyOrdersSubtitle,
                                   onTap: () => context.push('/tickets/orders'),
                                 ),
                               ],
@@ -165,7 +166,7 @@ class _EmptyEventCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.lg),
           Text(
-            'Nenhum evento disponível no momento',
+            context.l10n.ticketsNoEvents,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 15,
@@ -175,7 +176,7 @@ class _EmptyEventCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
-            'Quando uma nova partida estiver disponível para venda ou check-in, ela aparecerá aqui.',
+            context.l10n.ticketsNoEventsMessage,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 13,

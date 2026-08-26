@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
@@ -52,7 +53,7 @@ class _MyTicketsView extends StatelessWidget {
                         context.canPop() ? context.pop() : context.go('/'),
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('MEUS INGRESSOS'),
+                  PageTitle(context.l10n.ticketsMyTicketsTitle),
                   const SizedBox(height: AppSpacing.xxxl),
                   Expanded(
                     child: BlocBuilder<MyTicketsCubit, MyTicketsState>(
@@ -68,16 +69,16 @@ class _MyTicketsView extends StatelessWidget {
                               StateMessage(
                                 icon: Icons.wifi_off_rounded,
                                 title:
-                                    'Não foi possível carregar seus ingressos',
+                                    context.l10n.ticketsMyTicketsLoadError,
                                 message: state.errorMessage,
                               ),
                             ),
                             LoadStatus.empty => _centered(
-                              const StateMessage(
+                              StateMessage(
                                 icon: Icons.confirmation_number_outlined,
-                                title: 'Você ainda não possui ingressos',
+                                title: context.l10n.ticketsMyTicketsEmpty,
                                 message:
-                                    'Seus ingressos para partidas do Goiás aparecerão aqui.',
+                                    context.l10n.ticketsMyTicketsEmptyMessage,
                               ),
                             ),
                             LoadStatus.success => ListView.separated(

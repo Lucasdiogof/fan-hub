@@ -414,5 +414,31 @@
   "forgotSending": "Enviando...",
 
   "authShowPassword": "Mostrar contraseña",
-  "authHidePassword": "Ocultar contraseña"
+  "authHidePassword": "Ocultar contraseña",
+
+  "ticketsLoadError": "No se pudieron cargar las entradas.",
+  "ticketsNextEvent": "PRÓXIMO EVENTO",
+  "ticketsQuickAccess": "ACCESO RÁPIDO",
+  "ticketsMyTickets": "Mis entradas",
+  "ticketsMyTicketsSubtitle": "Entradas para partidos del Goiás",
+  "ticketsMyOrders": "Mis pedidos",
+  "ticketsMyOrdersSubtitle": "Historial de tus compras",
+  "ticketsNoEvents": "No hay eventos disponibles en este momento",
+  "ticketsNoEventsMessage": "Cuando un nuevo partido esté disponible para venta o check-in, aparecerá aquí.",
+  "ticketsMyTicketsTitle": "MIS ENTRADAS",
+  "ticketsMyTicketsLoadError": "No se pudieron cargar tus entradas",
+  "ticketsMyTicketsEmpty": "Aún no tienes entradas",
+  "ticketsMyTicketsEmptyMessage": "Tus entradas para partidos del Goiás aparecerán aquí.",
+  "ticketsMyOrdersTitle": "MIS PEDIDOS",
+  "ticketsMyOrdersLoadError": "No se pudieron cargar tus pedidos",
+  "ticketsMyOrdersEmpty": "No se encontraron pedidos",
+  "ticketsMyOrdersEmptyMessage": "Tus compras de entradas aparecerán aquí.",
+  "ticketsOrderNumber": "Pedido {number}",
+  "ticketStatusValid": "Válido",
+  "ticketStatusUsed": "Utilizado",
+  "ticketStatusCancelled": "Cancelado",
+  "orderStatusConfirmed": "Confirmado",
+  "orderStatusPending": "Pendiente",
+  "orderStatusCancelled": "Cancelado",
+  "orderStatusRefunded": "Reembolsado"
 }

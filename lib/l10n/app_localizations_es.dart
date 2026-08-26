@@ -1246,4 +1246,84 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get authHidePassword => 'Ocultar contraseña';
+
+  @override
+  String get ticketsLoadError => 'No se pudieron cargar las entradas.';
+
+  @override
+  String get ticketsNextEvent => 'PRÓXIMO EVENTO';
+
+  @override
+  String get ticketsQuickAccess => 'ACCESO RÁPIDO';
+
+  @override
+  String get ticketsMyTickets => 'Mis entradas';
+
+  @override
+  String get ticketsMyTicketsSubtitle => 'Entradas para partidos del Goiás';
+
+  @override
+  String get ticketsMyOrders => 'Mis pedidos';
+
+  @override
+  String get ticketsMyOrdersSubtitle => 'Historial de tus compras';
+
+  @override
+  String get ticketsNoEvents => 'No hay eventos disponibles en este momento';
+
+  @override
+  String get ticketsNoEventsMessage =>
+      'Cuando un nuevo partido esté disponible para venta o check-in, aparecerá aquí.';
+
+  @override
+  String get ticketsMyTicketsTitle => 'MIS ENTRADAS';
+
+  @override
+  String get ticketsMyTicketsLoadError => 'No se pudieron cargar tus entradas';
+
+  @override
+  String get ticketsMyTicketsEmpty => 'Aún no tienes entradas';
+
+  @override
+  String get ticketsMyTicketsEmptyMessage =>
+      'Tus entradas para partidos del Goiás aparecerán aquí.';
+
+  @override
+  String get ticketsMyOrdersTitle => 'MIS PEDIDOS';
+
+  @override
+  String get ticketsMyOrdersLoadError => 'No se pudieron cargar tus pedidos';
+
+  @override
+  String get ticketsMyOrdersEmpty => 'No se encontraron pedidos';
+
+  @override
+  String get ticketsMyOrdersEmptyMessage =>
+      'Tus compras de entradas aparecerán aquí.';
+
+  @override
+  String ticketsOrderNumber(String number) {
+    return 'Pedido $number';
+  }
+
+  @override
+  String get ticketStatusValid => 'Válido';
+
+  @override
+  String get ticketStatusUsed => 'Utilizado';
+
+  @override
+  String get ticketStatusCancelled => 'Cancelado';
+
+  @override
+  String get orderStatusConfirmed => 'Confirmado';
+
+  @override
+  String get orderStatusPending => 'Pendiente';
+
+  @override
+  String get orderStatusCancelled => 'Cancelado';
+
+  @override
+  String get orderStatusRefunded => 'Reembolsado';
 }

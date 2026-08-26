@@ -2295,6 +2295,156 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Ocultar senha'**
   String get authHidePassword;
+
+  /// No description provided for @ticketsLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar os ingressos.'**
+  String get ticketsLoadError;
+
+  /// No description provided for @ticketsNextEvent.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRÓXIMO EVENTO'**
+  String get ticketsNextEvent;
+
+  /// No description provided for @ticketsQuickAccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'ACESSO RÁPIDO'**
+  String get ticketsQuickAccess;
+
+  /// No description provided for @ticketsMyTickets.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus ingressos'**
+  String get ticketsMyTickets;
+
+  /// No description provided for @ticketsMyTicketsSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingressos para partidas do Goiás'**
+  String get ticketsMyTicketsSubtitle;
+
+  /// No description provided for @ticketsMyOrders.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus pedidos'**
+  String get ticketsMyOrders;
+
+  /// No description provided for @ticketsMyOrdersSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Histórico das suas compras'**
+  String get ticketsMyOrdersSubtitle;
+
+  /// No description provided for @ticketsNoEvents.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum evento disponível no momento'**
+  String get ticketsNoEvents;
+
+  /// No description provided for @ticketsNoEventsMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quando uma nova partida estiver disponível para venda ou check-in, ela aparecerá aqui.'**
+  String get ticketsNoEventsMessage;
+
+  /// No description provided for @ticketsMyTicketsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEUS INGRESSOS'**
+  String get ticketsMyTicketsTitle;
+
+  /// No description provided for @ticketsMyTicketsLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar seus ingressos'**
+  String get ticketsMyTicketsLoadError;
+
+  /// No description provided for @ticketsMyTicketsEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você ainda não possui ingressos'**
+  String get ticketsMyTicketsEmpty;
+
+  /// No description provided for @ticketsMyTicketsEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seus ingressos para partidas do Goiás aparecerão aqui.'**
+  String get ticketsMyTicketsEmptyMessage;
+
+  /// No description provided for @ticketsMyOrdersTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEUS PEDIDOS'**
+  String get ticketsMyOrdersTitle;
+
+  /// No description provided for @ticketsMyOrdersLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar seus pedidos'**
+  String get ticketsMyOrdersLoadError;
+
+  /// No description provided for @ticketsMyOrdersEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum pedido encontrado'**
+  String get ticketsMyOrdersEmpty;
+
+  /// No description provided for @ticketsMyOrdersEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Suas compras de ingressos aparecerão aqui.'**
+  String get ticketsMyOrdersEmptyMessage;
+
+  /// No description provided for @ticketsOrderNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pedido {number}'**
+  String ticketsOrderNumber(String number);
+
+  /// No description provided for @ticketStatusValid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Válido'**
+  String get ticketStatusValid;
+
+  /// No description provided for @ticketStatusUsed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Utilizado'**
+  String get ticketStatusUsed;
+
+  /// No description provided for @ticketStatusCancelled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelado'**
+  String get ticketStatusCancelled;
+
+  /// No description provided for @orderStatusConfirmed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirmado'**
+  String get orderStatusConfirmed;
+
+  /// No description provided for @orderStatusPending.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pendente'**
+  String get orderStatusPending;
+
+  /// No description provided for @orderStatusCancelled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelado'**
+  String get orderStatusCancelled;
+
+  /// No description provided for @orderStatusRefunded.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reembolsado'**
+  String get orderStatusRefunded;
 }
 
 class _AppLocalizationsDelegate

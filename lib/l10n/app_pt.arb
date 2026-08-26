@@ -474,5 +474,32 @@
   "forgotSending": "Enviando...",
 
   "authShowPassword": "Mostrar senha",
-  "authHidePassword": "Ocultar senha"
+  "authHidePassword": "Ocultar senha",
+
+  "ticketsLoadError": "Não foi possível carregar os ingressos.",
+  "ticketsNextEvent": "PRÓXIMO EVENTO",
+  "ticketsQuickAccess": "ACESSO RÁPIDO",
+  "ticketsMyTickets": "Meus ingressos",
+  "ticketsMyTicketsSubtitle": "Ingressos para partidas do Goiás",
+  "ticketsMyOrders": "Meus pedidos",
+  "ticketsMyOrdersSubtitle": "Histórico das suas compras",
+  "ticketsNoEvents": "Nenhum evento disponível no momento",
+  "ticketsNoEventsMessage": "Quando uma nova partida estiver disponível para venda ou check-in, ela aparecerá aqui.",
+  "ticketsMyTicketsTitle": "MEUS INGRESSOS",
+  "ticketsMyTicketsLoadError": "Não foi possível carregar seus ingressos",
+  "ticketsMyTicketsEmpty": "Você ainda não possui ingressos",
+  "ticketsMyTicketsEmptyMessage": "Seus ingressos para partidas do Goiás aparecerão aqui.",
+  "ticketsMyOrdersTitle": "MEUS PEDIDOS",
+  "ticketsMyOrdersLoadError": "Não foi possível carregar seus pedidos",
+  "ticketsMyOrdersEmpty": "Nenhum pedido encontrado",
+  "ticketsMyOrdersEmptyMessage": "Suas compras de ingressos aparecerão aqui.",
+  "ticketsOrderNumber": "Pedido {number}",
+  "@ticketsOrderNumber": { "placeholders": { "number": { "type": "String" } } },
+  "ticketStatusValid": "Válido",
+  "ticketStatusUsed": "Utilizado",
+  "ticketStatusCancelled": "Cancelado",
+  "orderStatusConfirmed": "Confirmado",
+  "orderStatusPending": "Pendente",
+  "orderStatusCancelled": "Cancelado",
+  "orderStatusRefunded": "Reembolsado"
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/features/ticket/presentation/ticket_l10n.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
@@ -52,7 +54,7 @@ class _MyOrdersView extends StatelessWidget {
                         context.canPop() ? context.pop() : context.go('/'),
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('MEUS PEDIDOS'),
+                  PageTitle(context.l10n.ticketsMyOrdersTitle),
                   const SizedBox(height: AppSpacing.xxxl),
                   Expanded(
                     child: BlocBuilder<MyOrdersCubit, MyOrdersState>(
@@ -66,16 +68,16 @@ class _MyOrdersView extends StatelessWidget {
                             LoadStatus.error => _centered(
                               StateMessage(
                                 icon: Icons.wifi_off_rounded,
-                                title: 'Não foi possível carregar seus pedidos',
+                                title: context.l10n.ticketsMyOrdersLoadError,
                                 message: state.errorMessage,
                               ),
                             ),
                             LoadStatus.empty => _centered(
-                              const StateMessage(
+                              StateMessage(
                                 icon: Icons.receipt_long_outlined,
-                                title: 'Nenhum pedido encontrado',
+                                title: context.l10n.ticketsMyOrdersEmpty,
                                 message:
-                                    'Suas compras de ingressos aparecerão aqui.',
+                                    context.l10n.ticketsMyOrdersEmptyMessage,
                               ),
                             ),
                             LoadStatus.success => ListView.separated(
@@ -142,7 +144,7 @@ class _OrderCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'Pedido ${order.number}',
+                  context.l10n.ticketsOrderNumber(order.number),
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
@@ -171,7 +173,7 @@ class _OrderCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            '$dateLabel · ${order.status.label}',
+            '$dateLabel · ${ticketOrderStatusLabel(context.l10n, order.status)}',
             style: TextStyle(fontSize: 13, color: colors.textSecondary),
           ),
         ],
