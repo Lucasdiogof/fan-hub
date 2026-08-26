@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
@@ -72,7 +73,7 @@ class _MembershipHomeView extends StatelessWidget {
                               child: StateMessage(
                                 icon: Icons.error_outline_rounded,
                                 title:
-                                    'Não foi possível carregar o Sócio Esmeralda.',
+                                    context.l10n.membershipLoadError,
                                 message: state.errorMessage,
                               ),
                             ),

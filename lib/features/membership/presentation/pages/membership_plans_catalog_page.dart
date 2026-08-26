@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
@@ -32,7 +33,7 @@ class MembershipPlansCatalogPage extends StatelessWidget {
                 children: [
                   BackButtonCircle(onTap: () => context.pop()),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('PLANOS'),
+                  PageTitle(context.l10n.membershipPlansTitle),
                   const SizedBox(height: AppSpacing.xl),
                   Expanded(
                     child: ListView.separated(

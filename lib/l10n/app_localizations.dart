@@ -2757,6 +2757,180 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'O MAIOR DO CENTRO-OESTE'**
   String get clubHeaderTagline;
+
+  /// No description provided for @membershipLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar o Sócio Esmeralda.'**
+  String get membershipLoadError;
+
+  /// No description provided for @membershipPlansTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'PLANOS'**
+  String get membershipPlansTitle;
+
+  /// No description provided for @membershipSector.
+  ///
+  /// In pt, this message translates to:
+  /// **'Setor {sector}'**
+  String membershipSector(String sector);
+
+  /// No description provided for @membershipMostChosen.
+  ///
+  /// In pt, this message translates to:
+  /// **'MAIS ESCOLHIDO'**
+  String get membershipMostChosen;
+
+  /// No description provided for @membershipPerMonth.
+  ///
+  /// In pt, this message translates to:
+  /// **'/mês'**
+  String get membershipPerMonth;
+
+  /// No description provided for @membershipOrAnnual.
+  ///
+  /// In pt, this message translates to:
+  /// **'ou {price} no plano anual'**
+  String membershipOrAnnual(String price);
+
+  /// No description provided for @membershipBenefits.
+  ///
+  /// In pt, this message translates to:
+  /// **'BENEFÍCIOS'**
+  String get membershipBenefits;
+
+  /// No description provided for @membershipSeeFullRegulation.
+  ///
+  /// In pt, this message translates to:
+  /// **'Consulte o regulamento completo →'**
+  String get membershipSeeFullRegulation;
+
+  /// No description provided for @membershipStillHaveDoubts.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ainda tem dúvidas sobre este plano?'**
+  String get membershipStillHaveDoubts;
+
+  /// No description provided for @membershipSeeFaq.
+  ///
+  /// In pt, this message translates to:
+  /// **'VER DÚVIDAS FREQUENTES'**
+  String get membershipSeeFaq;
+
+  /// No description provided for @membershipWantToJoin.
+  ///
+  /// In pt, this message translates to:
+  /// **'QUERO SER SÓCIO'**
+  String get membershipWantToJoin;
+
+  /// No description provided for @membershipStadiumAccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acesso ao estádio'**
+  String get membershipStadiumAccess;
+
+  /// No description provided for @membershipNoStadiumAccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sem acesso ao estádio'**
+  String get membershipNoStadiumAccess;
+
+  /// No description provided for @membershipViewPlan.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONHECER PLANO'**
+  String get membershipViewPlan;
+
+  /// No description provided for @membershipCheckinUnavailable.
+  ///
+  /// In pt, this message translates to:
+  /// **'O check-in do Sócio Esmeralda ainda não está disponível no app.'**
+  String get membershipCheckinUnavailable;
+
+  /// No description provided for @membershipOtherOptions.
+  ///
+  /// In pt, this message translates to:
+  /// **'OUTRAS OPÇÕES'**
+  String get membershipOtherOptions;
+
+  /// No description provided for @membershipMyMembership.
+  ///
+  /// In pt, this message translates to:
+  /// **'Minha associação'**
+  String get membershipMyMembership;
+
+  /// No description provided for @membershipDependents.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dependentes'**
+  String get membershipDependents;
+
+  /// No description provided for @membershipDependentsPrep.
+  ///
+  /// In pt, this message translates to:
+  /// **'A gestão de dependentes ainda está sendo preparada.'**
+  String get membershipDependentsPrep;
+
+  /// No description provided for @membershipPayments.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pagamentos'**
+  String get membershipPayments;
+
+  /// No description provided for @membershipPaymentsPrep.
+  ///
+  /// In pt, this message translates to:
+  /// **'O histórico de pagamentos ainda está sendo preparado.'**
+  String get membershipPaymentsPrep;
+
+  /// No description provided for @membershipCheckinHistory.
+  ///
+  /// In pt, this message translates to:
+  /// **'Histórico de check-ins'**
+  String get membershipCheckinHistory;
+
+  /// No description provided for @membershipAreaPrep.
+  ///
+  /// In pt, this message translates to:
+  /// **'Essa área ainda está sendo preparada.'**
+  String get membershipAreaPrep;
+
+  /// No description provided for @membershipSeeOtherPlans.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conhecer outros planos'**
+  String get membershipSeeOtherPlans;
+
+  /// No description provided for @membershipHeroTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esteja ainda mais próximo\ndo Goiás.'**
+  String get membershipHeroTitle;
+
+  /// No description provided for @membershipHeroSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Faça parte dessa história com prioridade de acesso ao estádio, economia em ingressos, descontos e experiências exclusivas.'**
+  String get membershipHeroSubtitle;
+
+  /// No description provided for @membershipChoosePlan.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCOLHA SEU PLANO'**
+  String get membershipChoosePlan;
+
+  /// No description provided for @membershipChosenPlan.
+  ///
+  /// In pt, this message translates to:
+  /// **'PLANO ESCOLHIDO'**
+  String get membershipChosenPlan;
+
+  /// No description provided for @membershipChangePlan.
+  ///
+  /// In pt, this message translates to:
+  /// **'ALTERAR PLANO'**
+  String get membershipChangePlan;
 }
 
 class _AppLocalizationsDelegate

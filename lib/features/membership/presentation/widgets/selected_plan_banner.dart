@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
@@ -41,7 +42,7 @@ class SelectedPlanBanner extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'PLANO ESCOLHIDO',
+                  context.l10n.membershipChosenPlan,
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w800,
@@ -59,7 +60,7 @@ class SelectedPlanBanner extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${formatBrl(price.monthlyPrice)}/mês',
+                  '${formatBrl(price.monthlyPrice)}${context.l10n.membershipPerMonth}',
                   style: TextStyle(fontSize: 12, color: colors.textSecondary),
                 ),
               ],
@@ -69,9 +70,8 @@ class SelectedPlanBanner extends StatelessWidget {
             TextButton(
               onPressed: onChangePlan,
               style: TextButton.styleFrom(foregroundColor: colors.primary),
-              child: const Text(
-                'ALTERAR PLANO',
-                style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
+              child: Text(context.l10n.membershipChangePlan,
+                style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
               ),
             ),
         ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_state.dart';
@@ -41,14 +42,14 @@ class MemberView extends StatelessWidget {
               extra: (
                 title: 'CHECK-IN',
                 message:
-                    'O check-in do Sócio Esmeralda ainda não está disponível no app.',
+                    context.l10n.membershipCheckinUnavailable,
               ),
             ),
           ),
         ],
         const SizedBox(height: AppSpacing.xl),
         Text(
-          'OUTRAS OPÇÕES',
+          context.l10n.membershipOtherOptions,
           style: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w800,
@@ -61,41 +62,41 @@ class MemberView extends StatelessWidget {
           options: [
             MembershipOption(
               icon: Icons.badge_outlined,
-              label: 'Minha associação',
+              label: context.l10n.membershipMyMembership,
               onTap: () => context.push('/membership/my', extra: membership),
             ),
             MembershipOption(
               icon: Icons.family_restroom_rounded,
-              label: 'Dependentes',
+              label: context.l10n.membershipDependents,
               onTap: () => context.push(
                 '/membership/coming-soon',
                 extra: (
-                  title: 'DEPENDENTES',
+                  title: context.l10n.membershipDependents.toUpperCase(),
                   message:
-                      'A gestão de dependentes ainda está sendo preparada.',
+                      context.l10n.membershipDependentsPrep,
                 ),
               ),
             ),
             MembershipOption(
               icon: Icons.receipt_long_rounded,
-              label: 'Pagamentos',
+              label: context.l10n.membershipPayments,
               onTap: () => context.push(
                 '/membership/coming-soon',
                 extra: (
-                  title: 'PAGAMENTOS',
+                  title: context.l10n.membershipPayments.toUpperCase(),
                   message:
-                      'O histórico de pagamentos ainda está sendo preparado.',
+                      context.l10n.membershipPaymentsPrep,
                 ),
               ),
             ),
             MembershipOption(
               icon: Icons.history_rounded,
-              label: 'Histórico de check-ins',
+              label: context.l10n.membershipCheckinHistory,
               onTap: () => context.push(
                 '/membership/coming-soon',
                 extra: (
-                  title: 'HISTÓRICO DE CHECK-INS',
-                  message: 'Essa área ainda está sendo preparada.',
+                  title: context.l10n.membershipCheckinHistory.toUpperCase(),
+                  message: context.l10n.membershipAreaPrep,
                 ),
               ),
             ),
@@ -108,9 +109,8 @@ class MemberView extends StatelessWidget {
           child: TextButton(
             onPressed: () => context.push('/membership/plans'),
             style: TextButton.styleFrom(foregroundColor: colors.textSecondary),
-            child: const Text(
-              'Conhecer outros planos',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
+            child: Text(context.l10n.membershipSeeOtherPlans,
+              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
             ),
           ),
         ),

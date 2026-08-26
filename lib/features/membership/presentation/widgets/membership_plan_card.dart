@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
@@ -54,9 +55,8 @@ class MembershipPlanCard extends StatelessWidget {
                           color: colors.gold,
                           borderRadius: BorderRadius.circular(AppRadius.pill),
                         ),
-                        child: const Text(
-                          'MAIS ESCOLHIDO',
-                          style: TextStyle(
+                        child: Text(context.l10n.membershipMostChosen,
+                          style: const TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.w800,
                             color: Colors.white,
@@ -76,8 +76,8 @@ class MembershipPlanCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       plan.includesStadiumAccess
-                          ? 'Acesso ao estádio${plan.stadiumSector != null ? " • ${plan.stadiumSector}" : ""}'
-                          : 'Sem acesso ao estádio',
+                          ? ''
+                          : context.l10n.membershipNoStadiumAccess,
                       style: TextStyle(
                         fontSize: 12.5,
                         fontWeight: FontWeight.w600,
@@ -123,7 +123,7 @@ class MembershipPlanCard extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: '/mês',
+                            text: context.l10n.membershipPerMonth,
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
@@ -155,7 +155,7 @@ class MembershipPlanCard extends StatelessWidget {
                     letterSpacing: 0.3,
                   ),
                 ),
-                child: const Text('CONHECER PLANO'),
+                child: Text(context.l10n.membershipViewPlan),
               ),
             ),
           ],

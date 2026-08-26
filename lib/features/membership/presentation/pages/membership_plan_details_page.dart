@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
@@ -67,9 +68,8 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                                 AppRadius.pill,
                               ),
                             ),
-                            child: const Text(
-                              'MAIS ESCOLHIDO',
-                              style: TextStyle(
+                            child: Text(context.l10n.membershipMostChosen,
+                              style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w800,
                                 color: Colors.white,
@@ -110,7 +110,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                               ),
                             ),
                             child: Text(
-                              'Setor ${plan.stadiumSector}',
+                              context.l10n.membershipSector(plan.stadiumSector.toString()),
                               style: TextStyle(
                                 fontSize: 11.5,
                                 fontWeight: FontWeight.w800,
@@ -164,7 +164,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                                 ),
                               ),
                               TextSpan(
-                                text: '/mês',
+                                text: context.l10n.membershipPerMonth,
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
@@ -176,7 +176,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'ou ${formatBrl(selectedPrice.annualPrice)} no plano anual',
+                          context.l10n.membershipOrAnnual(formatBrl(selectedPrice.annualPrice)),
                           style: TextStyle(
                             fontSize: 12.5,
                             color: colors.textSecondary,
@@ -184,7 +184,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                         ),
                         const SizedBox(height: AppSpacing.xxl),
                         Text(
-                          'BENEFÍCIOS',
+                          context.l10n.membershipBenefits,
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w900,
@@ -224,7 +224,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                         GestureDetector(
                           onTap: () => context.push('/membership/regulation'),
                           child: Text(
-                            'Consulte o regulamento completo →',
+                            context.l10n.membershipSeeFullRegulation,
                             style: TextStyle(
                               fontSize: 12.5,
                               fontWeight: FontWeight.w700,
@@ -245,7 +245,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Ainda tem dúvidas sobre este plano?',
+                                context.l10n.membershipStillHaveDoubts,
                                 style: TextStyle(
                                   fontSize: 13.5,
                                   fontWeight: FontWeight.w700,
@@ -278,7 +278,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                                       letterSpacing: 0.3,
                                     ),
                                   ),
-                                  child: const Text('VER DÚVIDAS FREQUENTES'),
+                                  child: Text(context.l10n.membershipSeeFaq),
                                 ),
                               ),
                             ],
@@ -302,7 +302,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                           letterSpacing: 0.3,
                         ),
                       ),
-                      child: const Text('QUERO SER SÓCIO'),
+                      child: Text(context.l10n.membershipWantToJoin),
                     ),
                   ),
                 ],

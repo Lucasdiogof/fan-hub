@@ -1519,4 +1519,100 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get clubHeaderTagline => 'O MAIOR DO CENTRO-OESTE';
+
+  @override
+  String get membershipLoadError =>
+      'Não foi possível carregar o Sócio Esmeralda.';
+
+  @override
+  String get membershipPlansTitle => 'PLANOS';
+
+  @override
+  String membershipSector(String sector) {
+    return 'Setor $sector';
+  }
+
+  @override
+  String get membershipMostChosen => 'MAIS ESCOLHIDO';
+
+  @override
+  String get membershipPerMonth => '/mês';
+
+  @override
+  String membershipOrAnnual(String price) {
+    return 'ou $price no plano anual';
+  }
+
+  @override
+  String get membershipBenefits => 'BENEFÍCIOS';
+
+  @override
+  String get membershipSeeFullRegulation => 'Consulte o regulamento completo →';
+
+  @override
+  String get membershipStillHaveDoubts => 'Ainda tem dúvidas sobre este plano?';
+
+  @override
+  String get membershipSeeFaq => 'VER DÚVIDAS FREQUENTES';
+
+  @override
+  String get membershipWantToJoin => 'QUERO SER SÓCIO';
+
+  @override
+  String get membershipStadiumAccess => 'Acesso ao estádio';
+
+  @override
+  String get membershipNoStadiumAccess => 'Sem acesso ao estádio';
+
+  @override
+  String get membershipViewPlan => 'CONHECER PLANO';
+
+  @override
+  String get membershipCheckinUnavailable =>
+      'O check-in do Sócio Esmeralda ainda não está disponível no app.';
+
+  @override
+  String get membershipOtherOptions => 'OUTRAS OPÇÕES';
+
+  @override
+  String get membershipMyMembership => 'Minha associação';
+
+  @override
+  String get membershipDependents => 'Dependentes';
+
+  @override
+  String get membershipDependentsPrep =>
+      'A gestão de dependentes ainda está sendo preparada.';
+
+  @override
+  String get membershipPayments => 'Pagamentos';
+
+  @override
+  String get membershipPaymentsPrep =>
+      'O histórico de pagamentos ainda está sendo preparado.';
+
+  @override
+  String get membershipCheckinHistory => 'Histórico de check-ins';
+
+  @override
+  String get membershipAreaPrep => 'Essa área ainda está sendo preparada.';
+
+  @override
+  String get membershipSeeOtherPlans => 'Conhecer outros planos';
+
+  @override
+  String get membershipHeroTitle => 'Esteja ainda mais próximo\ndo Goiás.';
+
+  @override
+  String get membershipHeroSubtitle =>
+      'Faça parte dessa história com prioridade de acesso ao estádio, economia em ingressos, descontos e experiências exclusivas.';
+
+  @override
+  String get membershipChoosePlan => 'ESCOLHA SEU PLANO';
+
+  @override
+  String get membershipChosenPlan => 'PLANO ESCOLHIDO';
+
+  @override
+  String get membershipChangePlan => 'ALTERAR PLANO';
 }

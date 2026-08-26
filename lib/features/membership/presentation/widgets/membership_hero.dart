@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
@@ -47,7 +48,7 @@ class MembershipHero extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
-                    'Esteja ainda mais próximo\ndo Goiás.',
+                    context.l10n.membershipHeroTitle,
                     style: TextStyle(
                       color: colors.textPrimary,
                       fontSize: 20,
@@ -57,7 +58,7 @@ class MembershipHero extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   Text(
-                    'Faça parte dessa história com prioridade de acesso ao estádio, economia em ingressos, descontos e experiências exclusivas.',
+                    context.l10n.membershipHeroSubtitle,
                     style: TextStyle(
                       color: colors.textSecondary,
                       fontSize: 12.5,
