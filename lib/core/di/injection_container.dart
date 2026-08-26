@@ -13,6 +13,7 @@ import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repositor
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
+import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/data/supabase_crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
@@ -132,6 +133,7 @@ void setupDependencies() {
     () => SupabaseCrowdLineupRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<ThemeCubit>(ThemeCubit.new);
+  sl.registerLazySingleton<LocaleCubit>(LocaleCubit.new);
   sl.registerLazySingleton<SquadRepository>(
     () => SupabaseSquadRepository(Supabase.instance.client),
   );

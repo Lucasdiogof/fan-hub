@@ -1,0 +1,43 @@
+{
+  "@@locale": "pt",
+  "languageName": "Português",
+  "@languageName": {
+    "description": "Nome deste idioma, exibido no seletor de idioma."
+  },
+  "settingsLanguageTitle": "IDIOMA",
+  "settingsLanguageMenu": "Idioma",
+  "settingsLanguageSubtitle": "Escolha o idioma do aplicativo",
+  "languageSystemLabel": "Padrão do sistema",
+  "languageSystemDescription": "Segue o idioma do seu aparelho",
+
+  "commonEmailLabel": "E-mail",
+  "commonEmailHint": "seuemail@email.com",
+  "commonPasswordLabel": "Senha",
+
+  "authTagline": "Acompanhe tudo sobre o maior do Centro-Oeste",
+  "authRegisterSubtitle": "Acompanhe tudo sobre o maior do Centro-Oeste.",
+  "authForgotPassword": "Esqueci a senha",
+  "authSignInButton": "ENTRAR",
+  "authSigningIn": "Entrando...",
+  "authNoAccountQuestion": "Ainda não possui uma conta? ",
+  "authCreateAccount": "Criar conta",
+
+  "authRegisterTitle": "Criar conta",
+  "authFullNameLabel": "Nome completo",
+  "authFullNameHint": "Seu nome",
+  "authPasswordMinHint": "Mínimo {count} caracteres",
+  "@authPasswordMinHint": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "authConfirmPasswordLabel": "Confirmar senha",
+  "authConfirmPasswordHint": "Repita a senha",
+  "authRegisterButton": "CRIAR CONTA",
+  "authCreatingAccount": "Criando...",
+  "authTermsPrefix": "Li e aceito os ",
+  "authTermsLink": "Termos de Uso",
+  "authTermsConnector": " e a ",
+  "authPrivacyLink": "Política de Privacidade",
+  "authTermsSuffix": "."
+}

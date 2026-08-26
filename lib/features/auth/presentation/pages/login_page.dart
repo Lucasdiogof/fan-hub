@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -133,6 +134,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildForm(BuildContext context) {
     final colors = context.colors;
+    final l10n = context.l10n;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -140,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
           fit: BoxFit.scaleDown,
           alignment: Alignment.centerLeft,
           child: Text(
-            'Acompanhe tudo sobre o maior do Centro-Oeste',
+            l10n.authTagline,
             maxLines: 1,
             softWrap: false,
             style: TextStyle(
@@ -154,9 +156,9 @@ class _LoginPageState extends State<LoginPage> {
         AuthErrorBanner(message: _formError),
         AuthTextField(
           controller: _emailController,
-          label: 'E-mail',
+          label: l10n.commonEmailLabel,
           icon: Icons.mail_outline_rounded,
-          hintText: 'seuemail@email.com',
+          hintText: l10n.commonEmailHint,
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.email],
@@ -170,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
         AuthTextField(
           controller: _passwordController,
           focusNode: _passwordFocus,
-          label: 'Senha',
+          label: l10n.commonPasswordLabel,
           icon: Icons.lock_outline_rounded,
           hintText: '••••••••',
           obscurable: true,
@@ -193,14 +195,14 @@ class _LoginPageState extends State<LoginPage> {
               minimumSize: Size.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            child: const Text('Esqueci a senha', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+            child: Text(l10n.authForgotPassword, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
           ),
         ),
         const SizedBox(height: AppSpacing.lg),
         AppPrimaryButton(
-          label: 'ENTRAR',
+          label: l10n.authSignInButton,
           loading: _loading,
-          loadingLabel: 'Entrando...',
+          loadingLabel: l10n.authSigningIn,
           onPressed: _submit,
         ),
         const SizedBox(height: AppSpacing.xl),
@@ -208,11 +210,11 @@ class _LoginPageState extends State<LoginPage> {
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Text('Ainda não possui uma conta? ', style: TextStyle(fontSize: 13, color: colors.textSecondary)),
+              Text(l10n.authNoAccountQuestion, style: TextStyle(fontSize: 13, color: colors.textSecondary)),
               GestureDetector(
                 onTap: () => context.push('/register'),
                 child: Text(
-                  'Criar conta',
+                  l10n.authCreateAccount,
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.primary),
                 ),
               ),

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/l10n/locale_cubit.dart';
+import 'package:goias_app/core/l10n/supported_locales.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
@@ -104,6 +107,17 @@ class _ProfileView extends StatelessWidget {
                               label: 'Tema',
                               value: themeModeLabel(mode),
                               onTap: () => context.push('/profile/theme'),
+                            ),
+                          ),
+                          BlocBuilder<LocaleCubit, Locale?>(
+                            bloc: sl<LocaleCubit>(),
+                            builder: (context, locale) => _MenuRow(
+                              icon: Icons.language_rounded,
+                              label: context.l10n.settingsLanguageMenu,
+                              value: locale == null
+                                  ? context.l10n.languageSystemLabel
+                                  : languageEndonym(locale.languageCode),
+                              onTap: () => context.push('/profile/language'),
                             ),
                           ),
                         ],

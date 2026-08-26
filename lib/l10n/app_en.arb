@@ -1,0 +1,35 @@
+{
+  "@@locale": "en",
+  "languageName": "English",
+  "settingsLanguageTitle": "LANGUAGE",
+  "settingsLanguageMenu": "Language",
+  "settingsLanguageSubtitle": "Choose the app language",
+  "languageSystemLabel": "System default",
+  "languageSystemDescription": "Follows your device language",
+
+  "commonEmailLabel": "Email",
+  "commonEmailHint": "youremail@email.com",
+  "commonPasswordLabel": "Password",
+
+  "authTagline": "Follow everything about the biggest club in the Central-West",
+  "authRegisterSubtitle": "Follow everything about the biggest club in the Central-West.",
+  "authForgotPassword": "Forgot password",
+  "authSignInButton": "SIGN IN",
+  "authSigningIn": "Signing in...",
+  "authNoAccountQuestion": "Don't have an account yet? ",
+  "authCreateAccount": "Create account",
+
+  "authRegisterTitle": "Create account",
+  "authFullNameLabel": "Full name",
+  "authFullNameHint": "Your name",
+  "authPasswordMinHint": "At least {count} characters",
+  "authConfirmPasswordLabel": "Confirm password",
+  "authConfirmPasswordHint": "Repeat the password",
+  "authRegisterButton": "CREATE ACCOUNT",
+  "authCreatingAccount": "Creating...",
+  "authTermsPrefix": "I have read and accept the ",
+  "authTermsLink": "Terms of Use",
+  "authTermsConnector": " and the ",
+  "authPrivacyLink": "Privacy Policy",
+  "authTermsSuffix": "."
+}

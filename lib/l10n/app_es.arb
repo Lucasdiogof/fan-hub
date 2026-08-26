@@ -1,0 +1,35 @@
+{
+  "@@locale": "es",
+  "languageName": "Español",
+  "settingsLanguageTitle": "IDIOMA",
+  "settingsLanguageMenu": "Idioma",
+  "settingsLanguageSubtitle": "Elige el idioma de la aplicación",
+  "languageSystemLabel": "Predeterminado del sistema",
+  "languageSystemDescription": "Sigue el idioma de tu dispositivo",
+
+  "commonEmailLabel": "Correo electrónico",
+  "commonEmailHint": "tucorreo@email.com",
+  "commonPasswordLabel": "Contraseña",
+
+  "authTagline": "Sigue todo sobre el mayor del Centro-Oeste",
+  "authRegisterSubtitle": "Sigue todo sobre el mayor del Centro-Oeste.",
+  "authForgotPassword": "Olvidé mi contraseña",
+  "authSignInButton": "ENTRAR",
+  "authSigningIn": "Entrando...",
+  "authNoAccountQuestion": "¿Aún no tienes una cuenta? ",
+  "authCreateAccount": "Crear cuenta",
+
+  "authRegisterTitle": "Crear cuenta",
+  "authFullNameLabel": "Nombre completo",
+  "authFullNameHint": "Tu nombre",
+  "authPasswordMinHint": "Mínimo {count} caracteres",
+  "authConfirmPasswordLabel": "Confirmar contraseña",
+  "authConfirmPasswordHint": "Repite la contraseña",
+  "authRegisterButton": "CREAR CUENTA",
+  "authCreatingAccount": "Creando...",
+  "authTermsPrefix": "He leído y acepto los ",
+  "authTermsLink": "Términos de Uso",
+  "authTermsConnector": " y la ",
+  "authPrivacyLink": "Política de Privacidad",
+  "authTermsSuffix": "."
+}

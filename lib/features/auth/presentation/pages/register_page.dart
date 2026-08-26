@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -87,16 +88,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return AuthScaffold(
-      title: 'Criar conta',
-      subtitle: 'Acompanhe tudo sobre o maior do Centro-Oeste.',
+      title: l10n.authRegisterTitle,
+      subtitle: l10n.authRegisterSubtitle,
       children: [
         AuthErrorBanner(message: _formError),
         AuthTextField(
           controller: _nameController,
-          label: 'Nome completo',
+          label: l10n.authFullNameLabel,
           icon: Icons.person_outline_rounded,
-          hintText: 'Seu nome',
+          hintText: l10n.authFullNameHint,
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.name],
@@ -110,9 +112,9 @@ class _RegisterPageState extends State<RegisterPage> {
         AuthTextField(
           controller: _emailController,
           focusNode: _emailFocus,
-          label: 'E-mail',
+          label: l10n.commonEmailLabel,
           icon: Icons.mail_outline_rounded,
-          hintText: 'seuemail@email.com',
+          hintText: l10n.commonEmailHint,
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.email],
@@ -126,9 +128,9 @@ class _RegisterPageState extends State<RegisterPage> {
         AuthTextField(
           controller: _passwordController,
           focusNode: _passwordFocus,
-          label: 'Senha',
+          label: l10n.commonPasswordLabel,
           icon: Icons.lock_outline_rounded,
-          hintText: 'Mínimo ${AuthValidators.minPasswordLength} caracteres',
+          hintText: l10n.authPasswordMinHint(AuthValidators.minPasswordLength),
           obscurable: true,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.newPassword],
@@ -142,9 +144,9 @@ class _RegisterPageState extends State<RegisterPage> {
         AuthTextField(
           controller: _confirmController,
           focusNode: _confirmFocus,
-          label: 'Confirmar senha',
+          label: l10n.authConfirmPasswordLabel,
           icon: Icons.lock_outline_rounded,
-          hintText: 'Repita a senha',
+          hintText: l10n.authConfirmPasswordHint,
           obscurable: true,
           textInputAction: TextInputAction.done,
           autofillHints: const [AutofillHints.newPassword],
@@ -165,9 +167,9 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         const SizedBox(height: AppSpacing.xl),
         AppPrimaryButton(
-          label: 'CRIAR CONTA',
+          label: l10n.authRegisterButton,
           loading: _loading,
-          loadingLabel: 'Criando...',
+          loadingLabel: l10n.authCreatingAccount,
           onPressed: _submit,
         ),
       ],
@@ -185,6 +187,7 @@ class _TermsCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final l10n = context.l10n;
     final linkStyle = TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.primary);
     final baseStyle = TextStyle(fontSize: 13, height: 1.4, color: colors.textSecondary);
 
@@ -215,19 +218,19 @@ class _TermsCheckbox extends StatelessWidget {
             TextSpan(
               style: baseStyle,
               children: [
-                const TextSpan(text: 'Li e aceito os '),
+                TextSpan(text: l10n.authTermsPrefix),
                 TextSpan(
-                  text: 'Termos de Uso',
+                  text: l10n.authTermsLink,
                   style: linkStyle,
                   recognizer: TapGestureRecognizer()..onTap = () => context.push('/profile/terms'),
                 ),
-                const TextSpan(text: ' e a '),
+                TextSpan(text: l10n.authTermsConnector),
                 TextSpan(
-                  text: 'Política de Privacidade',
+                  text: l10n.authPrivacyLink,
                   style: linkStyle,
                   recognizer: TapGestureRecognizer()..onTap = () => context.push('/profile/privacy'),
                 ),
-                const TextSpan(text: '.'),
+                TextSpan(text: l10n.authTermsSuffix),
               ],
             ),
           ),
