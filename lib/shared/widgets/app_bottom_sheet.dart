@@ -8,7 +8,7 @@ class AppBottomSheet {
   static Future<bool?> show(
     BuildContext context, {
     required String title,
-    required String description,
+    String? description,
     required String confirmLabel,
     IconData? icon,
     Widget? content,
@@ -26,7 +26,9 @@ class AppBottomSheet {
       showDragHandle: true,
       backgroundColor: colors.surface,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.hero)),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppRadius.hero),
+        ),
       ),
       builder: (sheetContext) => _AppBottomSheetContent(
         title: title,
@@ -57,7 +59,7 @@ class _AppBottomSheetContent extends StatelessWidget {
   });
 
   final String title;
-  final String description;
+  final String? description;
   final String confirmLabel;
   final IconData? icon;
   final Widget? content;
@@ -74,7 +76,12 @@ class _AppBottomSheetContent extends StatelessWidget {
     return SafeArea(
       top: false,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xl),
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.xxl,
+          AppSpacing.sm,
+          AppSpacing.xxl,
+          AppSpacing.xl,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -84,7 +91,10 @@ class _AppBottomSheetContent extends StatelessWidget {
                 child: Container(
                   width: 76,
                   height: 76,
-                  decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
+                  decoration: BoxDecoration(
+                    color: colors.secondary,
+                    shape: BoxShape.circle,
+                  ),
                   child: Icon(icon, size: 36, color: colors.primary),
                 ),
               ),
@@ -93,14 +103,24 @@ class _AppBottomSheetContent extends StatelessWidget {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 23, fontWeight: FontWeight.w800, color: colors.primary),
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.w800,
+                color: colors.primary,
+              ),
             ),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              description,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14.5, height: 1.4, color: colors.textSecondary),
-            ),
+            if (description != null) ...[
+              const SizedBox(height: AppSpacing.sm),
+              Text(
+                description!,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14.5,
+                  height: 1.4,
+                  color: colors.textSecondary,
+                ),
+              ),
+            ],
             if (content != null) ...[
               const SizedBox(height: AppSpacing.xl),
               content!,
@@ -125,7 +145,13 @@ class _AppBottomSheetContent extends StatelessWidget {
                   foregroundColor: colors.primary,
                   minimumSize: const Size.fromHeight(48),
                 ),
-                child: Text(cancel, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                child: Text(
+                  cancel,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
             ],
           ],
@@ -136,7 +162,11 @@ class _AppBottomSheetContent extends StatelessWidget {
 }
 
 class _PrimaryButton extends StatelessWidget {
-  const _PrimaryButton({required this.label, required this.onTap, required this.color});
+  const _PrimaryButton({
+    required this.label,
+    required this.onTap,
+    required this.color,
+  });
 
   final String label;
   final VoidCallback onTap;
@@ -156,7 +186,11 @@ class _PrimaryButton extends StatelessWidget {
           child: Center(
             child: Text(
               label,
-              style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800, color: colors.onPrimary),
+              style: TextStyle(
+                fontSize: 15.5,
+                fontWeight: FontWeight.w800,
+                color: colors.onPrimary,
+              ),
             ),
           ),
         ),

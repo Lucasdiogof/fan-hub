@@ -35,6 +35,11 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
       .where((player) => player.eligibleAsSecret)
       .toList(growable: false);
 
+  /// Se vazio, `nextPlayer()` só levaria pro estado vazio de novo — a tela
+  /// usa isso pra decidir entre oferecer "Próximo Jogador" ou "Voltar" no
+  /// fim da rodada.
+  bool get hasEligibleSecret => _eligibleSecrets.isNotEmpty;
+
   GuessPlayer? _byId(String id) {
     for (final player in _catalog) {
       if (player.id == id) return player;

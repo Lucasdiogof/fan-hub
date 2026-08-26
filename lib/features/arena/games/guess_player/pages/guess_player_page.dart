@@ -60,19 +60,27 @@ class _GuessPlayerView extends StatelessWidget {
   ) async {
     final round = state.round!;
     final secret = state.secretPlayer!;
+    final cubit = context.read<GuessPlayerCubit>();
+    final hasNextPlayer = cubit.hasEligibleSecret;
     await AppBottomSheet.show(
       context,
       icon: round.won
           ? Icons.emoji_events_rounded
           : Icons.sports_soccer_rounded,
-      title: round.won ? 'ACERTOU!' : 'ERA ${secret.displayName.toUpperCase()}',
+      title: round.won ? 'ACERTOU!' : 'Fim das tentativas',
       description: round.won
           ? '${secret.displayName}\n\nVocê acertou em ${round.attemptsUsed} de $maxGuessAttempts tentativas.'
-          : 'Não foi dessa vez.',
-      confirmLabel: 'PRÓXIMO JOGADOR',
+          : null,
+      content: round.won ? null : _SecretPlayerReveal(name: secret.displayName),
+      confirmLabel: hasNextPlayer ? 'PRÓXIMO JOGADOR' : 'VOLTAR',
       isDismissible: false,
       onConfirm: () {
-        if (context.mounted) context.read<GuessPlayerCubit>().nextPlayer();
+        if (!context.mounted) return;
+        if (hasNextPlayer) {
+          cubit.nextPlayer();
+        } else {
+          context.canPop() ? context.pop() : context.go('/');
+        }
       },
     );
   }
@@ -189,6 +197,39 @@ class _Body extends StatelessWidget {
           const SizedBox(height: AppSpacing.xl),
         ],
       ),
+    );
+  }
+}
+
+/// Conteúdo da bottom sheet de derrota — só o nome do jogador secreto em
+/// destaque (verde/negrito), sem repetir o ícone/título já mostrados acima.
+class _SecretPlayerReveal extends StatelessWidget {
+  const _SecretPlayerReveal({required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Text.rich(
+      TextSpan(
+        style: TextStyle(
+          fontSize: 14.5,
+          height: 1.4,
+          color: colors.textSecondary,
+        ),
+        children: [
+          const TextSpan(text: 'O jogador era: '),
+          TextSpan(
+            text: name,
+            style: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: colors.primary,
+            ),
+          ),
+        ],
+      ),
+      textAlign: TextAlign.center,
     );
   }
 }
