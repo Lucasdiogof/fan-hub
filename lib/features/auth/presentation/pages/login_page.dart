@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_validators.dart';
@@ -10,7 +12,6 @@ import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.d
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:goias_app/features/auth/presentation/widgets/forgot_password_sheet.dart';
-import 'package:goias_app/features/auth/presentation/widgets/login_hero.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -64,44 +65,68 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Scaffold(
-      backgroundColor: colors.background,
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth >= 820) {
-            return Row(
-              children: [
-                const Expanded(child: LoginHero()),
-                Expanded(
-                  child: Center(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.all(AppSpacing.xxl),
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 460),
-                        child: _buildForm(context),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(AppAssets.loginBackground, fit: BoxFit.cover),
+          ),
+          SafeArea(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.xxl,
+                        vertical: AppSpacing.xxl,
+                      ),
+                      child: Align(
+                        alignment: const Alignment(0, -0.28),
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 440),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              Center(
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: colors.primary.withValues(alpha: 0.38),
+                                        blurRadius: 40,
+                                        spreadRadius: 2,
+                                      ),
+                                      BoxShadow(
+                                        color: colors.primary.withValues(alpha: 0.18),
+                                        blurRadius: 84,
+                                        spreadRadius: 16,
+                                      ),
+                                    ],
+                                  ),
+                                  child: SvgPicture.asset(
+                                    AppAssets.goiasCrest,
+                                    height: 124,
+                                    colorFilter: ColorFilter.mode(colors.primary, BlendMode.srcIn),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: AppSpacing.xxxl),
+                              _buildForm(context),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            );
-          }
-
-          final heroHeight = (constraints.maxHeight * 0.42).clamp(280.0, 420.0);
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: Column(
-                children: [
-                  SizedBox(height: heroHeight, child: const LoginHero()),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.xxl, AppSpacing.xxl, AppSpacing.xl),
-                    child: _buildForm(context),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
@@ -111,11 +136,19 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Entrar', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: colors.textPrimary)),
-        const SizedBox(height: AppSpacing.sm),
-        Text(
-          'Acesse sua conta e viva a experiência esmeraldina.',
-          style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Acompanhe tudo sobre o maior do Centro-Oeste',
+            maxLines: 1,
+            softWrap: false,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: colors.primary,
+            ),
+          ),
         ),
         const SizedBox(height: AppSpacing.xl),
         AuthErrorBanner(message: _formError),
@@ -168,7 +201,6 @@ class _LoginPageState extends State<LoginPage> {
           label: 'ENTRAR',
           loading: _loading,
           loadingLabel: 'Entrando...',
-          showArrow: true,
           onPressed: _submit,
         ),
         const SizedBox(height: AppSpacing.xl),

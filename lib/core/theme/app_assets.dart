@@ -7,6 +7,8 @@ class AppAssets {
 
   static const String goiasCrest = 'lib/assets/branding/logo.svg';
 
+  static const String loginBackground = 'lib/assets/branding/background_login.png';
+
   static const String stadium = 'lib/assets/branding/banner.png';
   static const String matchHero = 'lib/assets/branding/banner_match.png';
   static const String? fans = null;

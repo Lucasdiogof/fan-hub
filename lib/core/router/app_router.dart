@@ -71,6 +71,10 @@ import 'package:goias_app/shared/widgets/coming_soon_page.dart';
 
 const _authArea = {'/login', '/register', '/check-email'};
 
+/// Acessíveis logado OU deslogado — os links de Termos/Privacidade da tela
+/// de cadastro precisam abrir sem o usuário estar autenticado.
+const _publicRoutes = {'/profile/terms', '/profile/privacy'};
+
 GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
   return GoRouter(
     initialLocation: '/',
@@ -90,6 +94,8 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       if (!splashGate.done) {
         return location == '/splash' ? null : '/splash';
       }
+
+      if (_publicRoutes.contains(location)) return null;
 
       final loggedIn = authState is AuthAuthenticated;
       final onAuthArea = _authArea.contains(location);

@@ -89,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return AuthScaffold(
       title: 'Criar conta',
-      subtitle: 'Faça parte da experiência esmeraldina.',
+      subtitle: 'Acompanhe tudo sobre o maior do Centro-Oeste.',
       children: [
         AuthErrorBanner(message: _formError),
         AuthTextField(
@@ -170,22 +170,6 @@ class _RegisterPageState extends State<RegisterPage> {
           loadingLabel: 'Criando...',
           onPressed: _submit,
         ),
-        const SizedBox(height: AppSpacing.xl),
-        Center(
-          child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Text('Já possui uma conta? ', style: TextStyle(fontSize: 13, color: context.colors.textSecondary)),
-              GestureDetector(
-                onTap: () => context.canPop() ? context.pop() : context.go('/login'),
-                child: Text(
-                  'Entrar',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: context.colors.primary),
-                ),
-              ),
-            ],
-          ),
-        ),
       ],
     );
   }
@@ -197,29 +181,6 @@ class _TermsCheckbox extends StatelessWidget {
   final bool value;
   final bool hasError;
   final ValueChanged<bool> onChanged;
-
-  void _openLegal(BuildContext context, String title) {
-    showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      backgroundColor: context.colors.surface,
-      builder: (context) => Padding(
-        padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, 0, AppSpacing.xxl, AppSpacing.xxxl),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800, color: context.colors.textPrimary)),
-            const SizedBox(height: AppSpacing.md),
-            Text(
-              'O conteúdo completo estará disponível em breve.',
-              style: TextStyle(fontSize: 14, height: 1.4, color: context.colors.textSecondary),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -258,13 +219,13 @@ class _TermsCheckbox extends StatelessWidget {
                 TextSpan(
                   text: 'Termos de Uso',
                   style: linkStyle,
-                  recognizer: TapGestureRecognizer()..onTap = () => _openLegal(context, 'Termos de Uso'),
+                  recognizer: TapGestureRecognizer()..onTap = () => context.push('/profile/terms'),
                 ),
                 const TextSpan(text: ' e a '),
                 TextSpan(
                   text: 'Política de Privacidade',
                   style: linkStyle,
-                  recognizer: TapGestureRecognizer()..onTap = () => _openLegal(context, 'Política de Privacidade'),
+                  recognizer: TapGestureRecognizer()..onTap = () => context.push('/profile/privacy'),
                 ),
                 const TextSpan(text: '.'),
               ],
