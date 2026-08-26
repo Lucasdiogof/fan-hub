@@ -31,4 +31,18 @@ GOIAS_ONEFOOTBALL_SLUG = "goias-1863"
 # pararem de bater, confira se o slug ainda é válido navegando
 # https://onefootball.com/pt-br/competicao/.
 ONEFOOTBALL_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
-CACHE_VERSION = "10"
+CACHE_VERSION = "12"
+# Task do Apify (Instagram Post Scraper) — só um id, não é secret. O token
+# (APIFY_TOKEN) fica como SECRET do Worker: `npx wrangler secret put APIFY_TOKEN`.
+APIFY_INSTAGRAM_TASK_ID = "81AnzgCcTifiDW6VH"
+
+# Instagram: atualizado 3x/dia pelo Cron (00h/08h/16h UTC), que roda o Apify e
+# salva no KV. O feed lido pelo app só lê o KV — nenhum acesso dispara o Apify.
+[triggers]
+crons = ["0 */8 * * *"]
+
+# KV persistente do feed social (Instagram). O `id` sai de
+# `npx wrangler kv namespace create SOCIAL_FEED_KV` (ver instruções no fim).
+[[kv_namespaces]]
+binding = "SOCIAL_FEED_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
