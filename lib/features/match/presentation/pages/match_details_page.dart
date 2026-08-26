@@ -180,7 +180,7 @@ class _MatchDetailsContent extends StatelessWidget {
         const SizedBox(height: AppSpacing.xxl),
         Text(
           match.kickoff != null
-              ? shortDateLabel(match.kickoff!)
+              ? longDateLabel(match.kickoff!)
               : 'Data a confirmar',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -245,7 +245,7 @@ class _MatchDetailsContent extends StatelessWidget {
               _InfoRow(
                 label: 'Data',
                 value: match.kickoff != null
-                    ? shortDateLabel(match.kickoff!)
+                    ? longDateLabel(match.kickoff!)
                     : 'A confirmar',
               ),
               _InfoRow(
@@ -259,10 +259,8 @@ class _MatchDetailsContent extends StatelessWidget {
               if (match.city != null)
                 _InfoRow(label: 'Cidade', value: match.city!),
               _InfoRow(label: 'Competição', value: match.competition),
-              _InfoRow(
-                label: 'Rodada',
-                value: match.round.isEmpty ? '—' : match.round,
-              ),
+              if (match.round.isNotEmpty)
+                _InfoRow(label: 'Rodada', value: match.round),
               _InfoRow(
                 label: 'Status',
                 value: matchStatusLabel(match.status),

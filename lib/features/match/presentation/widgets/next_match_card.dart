@@ -111,13 +111,8 @@ class NextMatchCard extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: ElevatedButton.icon(
+                child: ElevatedButton(
                   onPressed: onBuyTicket,
-                  icon: const Icon(
-                    Icons.confirmation_number_outlined,
-                    size: 16,
-                  ),
-                  label: const Text('COMPRAR INGRESSO'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colors.ctaGreen,
                     foregroundColor: Colors.white,
@@ -133,6 +128,7 @@ class NextMatchCard extends StatelessWidget {
                       letterSpacing: 0.2,
                     ),
                   ),
+                  child: const Text('COMPRAR INGRESSO'),
                 ),
               ),
               const SizedBox(width: AppSpacing.md),

@@ -13,6 +13,21 @@ const _months = [
   'DEZ',
 ];
 
+const _monthsFull = [
+  'janeiro',
+  'fevereiro',
+  'março',
+  'abril',
+  'maio',
+  'junho',
+  'julho',
+  'agosto',
+  'setembro',
+  'outubro',
+  'novembro',
+  'dezembro',
+];
+
 const _weekdays = [
   'SEGUNDA',
   'TERÇA',
@@ -29,6 +44,9 @@ String _pad(int value) => value.toString().padLeft(2, '0');
 
 String shortDateLabel(DateTime date) =>
     '${_pad(date.day)} ${_months[date.month - 1]}';
+
+String longDateLabel(DateTime date) =>
+    '${date.day} de ${_monthsFull[date.month - 1]}';
 
 String weekdayLabel(DateTime date) => _weekdays[date.weekday - 1];
 
