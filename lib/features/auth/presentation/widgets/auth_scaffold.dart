@@ -103,19 +103,10 @@ class _Hero extends StatelessWidget {
 class _CrestSeal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 72,
-      height: 72,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withValues(alpha: 0.55), width: 1.4),
-      ),
-      child: SvgPicture.asset(
-        AppAssets.goiasCrest,
-        height: 34,
-        colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-      ),
+    return SvgPicture.asset(
+      AppAssets.goiasCrest,
+      height: 56,
+      colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
     );
   }
 }
