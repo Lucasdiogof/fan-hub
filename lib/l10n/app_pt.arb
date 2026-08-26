@@ -501,5 +501,23 @@
   "orderStatusConfirmed": "Confirmado",
   "orderStatusPending": "Pendente",
   "orderStatusCancelled": "Cancelado",
-  "orderStatusRefunded": "Reembolsado"
+  "orderStatusRefunded": "Reembolsado",
+
+  "penaltyFinalResult": "RESULTADO FINAL",
+  "penaltyConverted": "Você converteu {goals} de {total} cobranças",
+  "@penaltyConverted": { "placeholders": { "goals": { "type": "int" }, "total": { "type": "int" } } },
+  "penaltyScoreLabel": "PÊNALTIS",
+  "penaltyDragToShoot": "Arraste a bola para chutar",
+  "penaltyGoalsCount": "{goals, plural, =1{1 Gol} other{{goals} Gols}}",
+  "@penaltyGoalsCount": { "placeholders": { "goals": { "type": "int" } } },
+  "penaltyGoalsCountUpper": "{goals, plural, =1{1 GOL} other{{goals} GOLS}}",
+  "@penaltyGoalsCountUpper": { "placeholders": { "goals": { "type": "int" } } },
+  "penaltyResultGoal": "GOL!",
+  "penaltyResultSave": "DEFESA!",
+  "penaltyResultOut": "PRA FORA!",
+  "penaltyResultPost": "NA TRAVE!",
+  "penaltyResultGoalShort": "Gol",
+  "penaltyResultSaveShort": "Defesa",
+  "penaltyResultOutShort": "Fora",
+  "penaltyResultPostShort": "Trave"
 }

@@ -2445,6 +2445,90 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Reembolsado'**
   String get orderStatusRefunded;
+
+  /// No description provided for @penaltyFinalResult.
+  ///
+  /// In pt, this message translates to:
+  /// **'RESULTADO FINAL'**
+  String get penaltyFinalResult;
+
+  /// No description provided for @penaltyConverted.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você converteu {goals} de {total} cobranças'**
+  String penaltyConverted(int goals, int total);
+
+  /// No description provided for @penaltyScoreLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'PÊNALTIS'**
+  String get penaltyScoreLabel;
+
+  /// No description provided for @penaltyDragToShoot.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arraste a bola para chutar'**
+  String get penaltyDragToShoot;
+
+  /// No description provided for @penaltyGoalsCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{goals, plural, =1{1 Gol} other{{goals} Gols}}'**
+  String penaltyGoalsCount(int goals);
+
+  /// No description provided for @penaltyGoalsCountUpper.
+  ///
+  /// In pt, this message translates to:
+  /// **'{goals, plural, =1{1 GOL} other{{goals} GOLS}}'**
+  String penaltyGoalsCountUpper(int goals);
+
+  /// No description provided for @penaltyResultGoal.
+  ///
+  /// In pt, this message translates to:
+  /// **'GOL!'**
+  String get penaltyResultGoal;
+
+  /// No description provided for @penaltyResultSave.
+  ///
+  /// In pt, this message translates to:
+  /// **'DEFESA!'**
+  String get penaltyResultSave;
+
+  /// No description provided for @penaltyResultOut.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRA FORA!'**
+  String get penaltyResultOut;
+
+  /// No description provided for @penaltyResultPost.
+  ///
+  /// In pt, this message translates to:
+  /// **'NA TRAVE!'**
+  String get penaltyResultPost;
+
+  /// No description provided for @penaltyResultGoalShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gol'**
+  String get penaltyResultGoalShort;
+
+  /// No description provided for @penaltyResultSaveShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'Defesa'**
+  String get penaltyResultSaveShort;
+
+  /// No description provided for @penaltyResultOutShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fora'**
+  String get penaltyResultOutShort;
+
+  /// No description provided for @penaltyResultPostShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'Trave'**
+  String get penaltyResultPostShort;
 }
 
 class _AppLocalizationsDelegate

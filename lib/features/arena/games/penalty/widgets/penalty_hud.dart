@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
+import 'package:goias_app/features/arena/games/penalty/penalty_l10n.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_models.dart';
 
 const _goalDot = Color(0xFF3DDC84);
@@ -41,7 +43,7 @@ class PenaltyHud extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '${data.goals} ${data.goals == 1 ? 'GOL' : 'GOLS'}',
+                        context.l10n.penaltyGoalsCountUpper(data.goals),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
@@ -114,7 +116,7 @@ class _ResultFlash extends StatelessWidget {
           borderRadius: BorderRadius.circular(999),
         ),
         child: Text(
-          result.label,
+          penaltyResultLabel(context.l10n, result),
           style: TextStyle(
             color: result.isGoal ? _goalDot : Colors.white,
             fontSize: 30,

@@ -440,5 +440,20 @@
   "orderStatusConfirmed": "Confirmed",
   "orderStatusPending": "Pending",
   "orderStatusCancelled": "Cancelled",
-  "orderStatusRefunded": "Refunded"
+  "orderStatusRefunded": "Refunded",
+
+  "penaltyFinalResult": "FINAL RESULT",
+  "penaltyConverted": "You scored {goals} of {total} kicks",
+  "penaltyScoreLabel": "PENALTIES",
+  "penaltyDragToShoot": "Drag the ball to shoot",
+  "penaltyGoalsCount": "{goals, plural, =1{1 Goal} other{{goals} Goals}}",
+  "penaltyGoalsCountUpper": "{goals, plural, =1{1 GOAL} other{{goals} GOALS}}",
+  "penaltyResultGoal": "GOAL!",
+  "penaltyResultSave": "SAVE!",
+  "penaltyResultOut": "MISS!",
+  "penaltyResultPost": "POST!",
+  "penaltyResultGoalShort": "Goal",
+  "penaltyResultSaveShort": "Save",
+  "penaltyResultOutShort": "Miss",
+  "penaltyResultPostShort": "Post"
 }

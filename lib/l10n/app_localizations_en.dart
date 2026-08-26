@@ -1321,4 +1321,64 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get orderStatusRefunded => 'Refunded';
+
+  @override
+  String get penaltyFinalResult => 'FINAL RESULT';
+
+  @override
+  String penaltyConverted(int goals, int total) {
+    return 'You scored $goals of $total kicks';
+  }
+
+  @override
+  String get penaltyScoreLabel => 'PENALTIES';
+
+  @override
+  String get penaltyDragToShoot => 'Drag the ball to shoot';
+
+  @override
+  String penaltyGoalsCount(int goals) {
+    String _temp0 = intl.Intl.pluralLogic(
+      goals,
+      locale: localeName,
+      other: '$goals Goals',
+      one: '1 Goal',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String penaltyGoalsCountUpper(int goals) {
+    String _temp0 = intl.Intl.pluralLogic(
+      goals,
+      locale: localeName,
+      other: '$goals GOALS',
+      one: '1 GOAL',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get penaltyResultGoal => 'GOAL!';
+
+  @override
+  String get penaltyResultSave => 'SAVE!';
+
+  @override
+  String get penaltyResultOut => 'MISS!';
+
+  @override
+  String get penaltyResultPost => 'POST!';
+
+  @override
+  String get penaltyResultGoalShort => 'Goal';
+
+  @override
+  String get penaltyResultSaveShort => 'Save';
+
+  @override
+  String get penaltyResultOutShort => 'Miss';
+
+  @override
+  String get penaltyResultPostShort => 'Post';
 }

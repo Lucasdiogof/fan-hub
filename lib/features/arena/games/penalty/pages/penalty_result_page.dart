@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
@@ -65,7 +66,7 @@ class PenaltyResultPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'RESULTADO FINAL',
+                          context.l10n.penaltyFinalResult,
                           style: TextStyle(
                             color: colors.primary,
                             fontSize: 12,
@@ -75,7 +76,7 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.sm),
                         Text(
-                          'Você converteu ${data.goals} de ${data.shotResults.length} cobranças',
+                          context.l10n.penaltyConverted(data.goals, data.shotResults.length),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: colors.textSecondary,
@@ -95,7 +96,7 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'PÊNALTIS',
+                          context.l10n.penaltyScoreLabel,
                           style: TextStyle(
                             color: colors.textHint,
                             fontSize: 11.5,
@@ -105,7 +106,7 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         if (isPerfect) ...[
                           const SizedBox(height: AppSpacing.sm),
-                          _Badge(label: 'Perfeito!', color: colors.success),
+                          _Badge(label: context.l10n.quizPerfect, color: colors.success),
                         ],
                         const SizedBox(height: AppSpacing.xl),
                         Row(
@@ -121,7 +122,7 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.lg),
                         Text(
-                          data.goals == 1 ? '1 Gol' : '${data.goals} Gols',
+                          context.l10n.penaltyGoalsCount(data.goals),
                           style: TextStyle(
                             color: colors.textPrimary,
                             fontSize: 14,
@@ -132,7 +133,7 @@ class PenaltyResultPage extends StatelessWidget {
                         Divider(height: 1, color: colors.border),
                         const SizedBox(height: AppSpacing.lg),
                         Text(
-                          'PONTUAÇÃO',
+                          context.l10n.quizScore,
                           style: TextStyle(
                             color: colors.textHint,
                             fontSize: 11,
@@ -151,10 +152,10 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.xs),
                         if (data.isNewRecord)
-                          _Badge(label: 'Novo recorde', color: colors.gold)
+                          _Badge(label: context.l10n.quizNewRecord, color: colors.gold)
                         else
                           Text(
-                            'Recorde: ${data.bestScore} pts',
+                            context.l10n.quizBestRecord(data.bestScore),
                             style: TextStyle(
                               color: colors.textHint,
                               fontSize: 12.5,
@@ -167,7 +168,7 @@ class PenaltyResultPage extends StatelessWidget {
                           // tentar "reviver" a mesma instância de PenaltyGame depois
                           // de ela já ter sido fechada.
                           child: AppPrimaryButton(
-                            label: 'JOGAR NOVAMENTE',
+                            label: context.l10n.quizPlayAgain,
                             onPressed: () =>
                                 context.pushReplacement('/arena/penalty'),
                           ),
@@ -193,7 +194,7 @@ class PenaltyResultPage extends StatelessWidget {
                                 letterSpacing: 0.3,
                               ),
                             ),
-                            child: const Text('VOLTAR À ARENA'),
+                            child: Text(context.l10n.quizBackToArena),
                           ),
                         ),
                       ],

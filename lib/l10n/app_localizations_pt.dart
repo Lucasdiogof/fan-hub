@@ -1327,4 +1327,64 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get orderStatusRefunded => 'Reembolsado';
+
+  @override
+  String get penaltyFinalResult => 'RESULTADO FINAL';
+
+  @override
+  String penaltyConverted(int goals, int total) {
+    return 'Você converteu $goals de $total cobranças';
+  }
+
+  @override
+  String get penaltyScoreLabel => 'PÊNALTIS';
+
+  @override
+  String get penaltyDragToShoot => 'Arraste a bola para chutar';
+
+  @override
+  String penaltyGoalsCount(int goals) {
+    String _temp0 = intl.Intl.pluralLogic(
+      goals,
+      locale: localeName,
+      other: '$goals Gols',
+      one: '1 Gol',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String penaltyGoalsCountUpper(int goals) {
+    String _temp0 = intl.Intl.pluralLogic(
+      goals,
+      locale: localeName,
+      other: '$goals GOLS',
+      one: '1 GOL',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get penaltyResultGoal => 'GOL!';
+
+  @override
+  String get penaltyResultSave => 'DEFESA!';
+
+  @override
+  String get penaltyResultOut => 'PRA FORA!';
+
+  @override
+  String get penaltyResultPost => 'NA TRAVE!';
+
+  @override
+  String get penaltyResultGoalShort => 'Gol';
+
+  @override
+  String get penaltyResultSaveShort => 'Defesa';
+
+  @override
+  String get penaltyResultOutShort => 'Fora';
+
+  @override
+  String get penaltyResultPostShort => 'Trave';
 }

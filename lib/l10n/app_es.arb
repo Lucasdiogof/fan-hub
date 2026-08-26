@@ -440,5 +440,20 @@
   "orderStatusConfirmed": "Confirmado",
   "orderStatusPending": "Pendiente",
   "orderStatusCancelled": "Cancelado",
-  "orderStatusRefunded": "Reembolsado"
+  "orderStatusRefunded": "Reembolsado",
+
+  "penaltyFinalResult": "RESULTADO FINAL",
+  "penaltyConverted": "Convertiste {goals} de {total} tiros",
+  "penaltyScoreLabel": "PENALES",
+  "penaltyDragToShoot": "Arrastra el balón para disparar",
+  "penaltyGoalsCount": "{goals, plural, =1{1 Gol} other{{goals} Goles}}",
+  "penaltyGoalsCountUpper": "{goals, plural, =1{1 GOL} other{{goals} GOLES}}",
+  "penaltyResultGoal": "¡GOL!",
+  "penaltyResultSave": "¡ATAJADA!",
+  "penaltyResultOut": "¡FUERA!",
+  "penaltyResultPost": "¡AL PALO!",
+  "penaltyResultGoalShort": "Gol",
+  "penaltyResultSaveShort": "Atajada",
+  "penaltyResultOutShort": "Fuera",
+  "penaltyResultPostShort": "Palo"
 }
