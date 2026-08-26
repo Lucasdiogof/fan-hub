@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/partners/domain/entities/partner.dart';
@@ -33,7 +34,7 @@ class PartnerCard extends StatelessWidget {
     // diferenciar caso a caso.
     return Semantics(
       button: true,
-      label: _accessibilityLabel(partner),
+      label: _accessibilityLabel(context, partner),
       child: Material(
         color: Colors.white,
         borderRadius: BorderRadius.circular(AppRadius.card),
@@ -59,9 +60,10 @@ class PartnerCard extends StatelessWidget {
   }
 }
 
-String _accessibilityLabel(Partner partner) {
+String _accessibilityLabel(BuildContext context, Partner partner) {
+  final l10n = context.l10n;
   final isInstagram = partner.url.contains('instagram.com');
   return isInstagram
-      ? 'Abrir Instagram de ${partner.name}'
-      : 'Abrir site de ${partner.name}';
+      ? l10n.partnersOpenInstagram(partner.name)
+      : l10n.partnersOpenWebsite(partner.name);
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/partners/data/partners_data.dart';
@@ -28,12 +29,12 @@ class PartnersPage extends StatelessWidget {
                       _BackButton(onTap: () => context.canPop() ? context.pop() : context.go('/')),
                       const SizedBox(height: AppSpacing.lg),
                       Text(
-                        'Parceiros do Goiás',
+                        context.l10n.partnersTitle,
                         style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: colors.textPrimary),
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Marcas que caminham junto com o Verdão.',
+                        context.l10n.partnersSubtitle,
                         style: TextStyle(fontSize: 14, color: colors.textSecondary),
                       ),
                     ],

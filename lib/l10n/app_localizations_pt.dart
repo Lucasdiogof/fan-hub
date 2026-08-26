@@ -1057,4 +1057,26 @@ class AppLocalizationsPt extends AppLocalizations {
   String relTimeMonths(int n) {
     return '${n}m';
   }
+
+  @override
+  String get partnersTitle => 'Parceiros do Goiás';
+
+  @override
+  String get partnersSubtitle => 'Marcas que caminham junto com o Verdão.';
+
+  @override
+  String get partnersSectionTitle => 'PARCEIROS DO GOIÁS';
+
+  @override
+  String get partnersSeeAll => 'Ver todos';
+
+  @override
+  String partnersOpenInstagram(String name) {
+    return 'Abrir Instagram de $name';
+  }
+
+  @override
+  String partnersOpenWebsite(String name) {
+    return 'Abrir site de $name';
+  }
 }

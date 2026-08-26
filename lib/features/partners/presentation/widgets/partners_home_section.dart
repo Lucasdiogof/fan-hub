@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/partners/data/partners_data.dart';
 import 'package:goias_app/features/partners/presentation/widgets/partner_card.dart';
@@ -17,8 +18,8 @@ class PartnersHomeSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SectionHeader(
-          title: 'PARCEIROS DO GOIÁS',
-          actionLabel: 'Ver todos',
+          title: context.l10n.partnersSectionTitle,
+          actionLabel: context.l10n.partnersSeeAll,
           onAction: () => context.push('/partners'),
         ),
         const SizedBox(height: AppSpacing.md),

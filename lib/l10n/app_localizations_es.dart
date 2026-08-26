@@ -1058,4 +1058,26 @@ class AppLocalizationsEs extends AppLocalizations {
   String relTimeMonths(int n) {
     return '${n}m';
   }
+
+  @override
+  String get partnersTitle => 'Socios del Goiás';
+
+  @override
+  String get partnersSubtitle => 'Marcas que caminan junto al Goiás.';
+
+  @override
+  String get partnersSectionTitle => 'SOCIOS DEL GOIÁS';
+
+  @override
+  String get partnersSeeAll => 'Ver todos';
+
+  @override
+  String partnersOpenInstagram(String name) {
+    return 'Abrir Instagram de $name';
+  }
+
+  @override
+  String partnersOpenWebsite(String name) {
+    return 'Abrir sitio de $name';
+  }
 }

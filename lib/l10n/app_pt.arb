@@ -404,5 +404,14 @@
   "relTimeWeeks": "{n}sem",
   "@relTimeWeeks": { "placeholders": { "n": { "type": "int" } } },
   "relTimeMonths": "{n}m",
-  "@relTimeMonths": { "placeholders": { "n": { "type": "int" } } }
+  "@relTimeMonths": { "placeholders": { "n": { "type": "int" } } },
+
+  "partnersTitle": "Parceiros do Goiás",
+  "partnersSubtitle": "Marcas que caminham junto com o Verdão.",
+  "partnersSectionTitle": "PARCEIROS DO GOIÁS",
+  "partnersSeeAll": "Ver todos",
+  "partnersOpenInstagram": "Abrir Instagram de {name}",
+  "@partnersOpenInstagram": { "placeholders": { "name": { "type": "String" } } },
+  "partnersOpenWebsite": "Abrir site de {name}",
+  "@partnersOpenWebsite": { "placeholders": { "name": { "type": "String" } } }
 }

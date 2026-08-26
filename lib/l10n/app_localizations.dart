@@ -1953,6 +1953,42 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'{n}m'**
   String relTimeMonths(int n);
+
+  /// No description provided for @partnersTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Parceiros do Goiás'**
+  String get partnersTitle;
+
+  /// No description provided for @partnersSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Marcas que caminham junto com o Verdão.'**
+  String get partnersSubtitle;
+
+  /// No description provided for @partnersSectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'PARCEIROS DO GOIÁS'**
+  String get partnersSectionTitle;
+
+  /// No description provided for @partnersSeeAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver todos'**
+  String get partnersSeeAll;
+
+  /// No description provided for @partnersOpenInstagram.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir Instagram de {name}'**
+  String partnersOpenInstagram(String name);
+
+  /// No description provided for @partnersOpenWebsite.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir site de {name}'**
+  String partnersOpenWebsite(String name);
 }
 
 class _AppLocalizationsDelegate

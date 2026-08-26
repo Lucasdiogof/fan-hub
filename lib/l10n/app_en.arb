@@ -350,5 +350,12 @@
   "relTimeHours": "{n}h",
   "relTimeDays": "{n}d",
   "relTimeWeeks": "{n}wk",
-  "relTimeMonths": "{n}mo"
+  "relTimeMonths": "{n}mo",
+
+  "partnersTitle": "Goiás Partners",
+  "partnersSubtitle": "Brands that walk alongside Goiás.",
+  "partnersSectionTitle": "GOIÁS PARTNERS",
+  "partnersSeeAll": "See all",
+  "partnersOpenInstagram": "Open {name} on Instagram",
+  "partnersOpenWebsite": "Open {name} website"
 }

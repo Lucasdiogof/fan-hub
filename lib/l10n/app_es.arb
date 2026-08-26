@@ -350,5 +350,12 @@
   "relTimeHours": "{n}h",
   "relTimeDays": "{n}d",
   "relTimeWeeks": "{n}sem",
-  "relTimeMonths": "{n}m"
+  "relTimeMonths": "{n}m",
+
+  "partnersTitle": "Socios del Goiás",
+  "partnersSubtitle": "Marcas que caminan junto al Goiás.",
+  "partnersSectionTitle": "SOCIOS DEL GOIÁS",
+  "partnersSeeAll": "Ver todos",
+  "partnersOpenInstagram": "Abrir Instagram de {name}",
+  "partnersOpenWebsite": "Abrir sitio de {name}"
 }
