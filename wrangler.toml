@@ -41,8 +41,10 @@ APIFY_INSTAGRAM_TASK_ID = "81AnzgCcTifiDW6VH"
 [triggers]
 crons = ["0 */8 * * *"]
 
-# KV persistente do feed social (Instagram). O `id` sai de
-# `npx wrangler kv namespace create SOCIAL_FEED_KV` (ver instruções no fim).
-[[kv_namespaces]]
-binding = "SOCIAL_FEED_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+# KV persistente do feed social (Instagram). DESCOMENTE e ponha o `id` real
+# (de `npx wrangler kv namespace create SOCIAL_FEED_KV`) pra ATIVAR o
+# Instagram. Enquanto comentado, o deploy passa e o Instagram fica inativo
+# (o provider/sync tratam KV e APIFY_TOKEN ausentes sem quebrar).
+# [[kv_namespaces]]
+# binding = "SOCIAL_FEED_KV"
+# id = "REPLACE_WITH_KV_NAMESPACE_ID"
