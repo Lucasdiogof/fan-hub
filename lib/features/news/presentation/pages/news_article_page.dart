@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
@@ -233,7 +234,7 @@ class _SourceFooter extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'FONTE: GOIÁS ESPORTE CLUBE',
+            context.l10n.newsSourceLabel,
             style: TextStyle(
               fontSize: 10.5,
               fontWeight: FontWeight.w800,
@@ -248,7 +249,7 @@ class _SourceFooter extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Abrir matéria original',
+                  context.l10n.newsOpenOriginal,
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w700,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/social/domain/entities/social_post.dart';
@@ -87,7 +88,7 @@ class _YouTubeCard extends StatelessWidget {
           if (post.metrics?.views != null) ...[
             const SizedBox(height: AppSpacing.sm),
             Text(
-              _formatViews(post.metrics!.views!),
+              _formatViews(context, post.metrics!.views!),
               style: TextStyle(fontSize: 12, color: colors.textSecondary),
             ),
           ],
@@ -96,14 +97,15 @@ class _YouTubeCard extends StatelessWidget {
     );
   }
 
-  static String _formatViews(int views) {
+  static String _formatViews(BuildContext context, int views) {
+    final l10n = context.l10n;
     if (views >= 1000000) {
-      return '${(views / 1000000).toStringAsFixed(1)}M visualizações';
+      return l10n.socialViewsM((views / 1000000).toStringAsFixed(1));
     }
     if (views >= 1000) {
-      return '${(views / 1000).toStringAsFixed(0)}K visualizações';
+      return l10n.socialViewsK((views / 1000).toStringAsFixed(0));
     }
-    return '$views visualizações';
+    return l10n.socialViewsCount(views);
   }
 }
 

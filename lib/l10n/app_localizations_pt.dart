@@ -907,4 +907,154 @@ class AppLocalizationsPt extends AppLocalizations {
   String careerOnLoan(String team) {
     return '$team (emp.)';
   }
+
+  @override
+  String get commonBack => 'VOLTAR';
+
+  @override
+  String get guessCorrectTitle => 'ACERTOU!';
+
+  @override
+  String get guessOutOfAttempts => 'Fim das tentativas';
+
+  @override
+  String guessCorrectDetail(int used, int max) {
+    return 'Você acertou em $used de $max tentativas.';
+  }
+
+  @override
+  String get guessNoPlayers =>
+      'Nenhum jogador disponível pra essa arena ainda.';
+
+  @override
+  String get guessRoundEnded => 'Rodada encerrada';
+
+  @override
+  String guessAttemptsRemaining(int remaining) {
+    return '$remaining tentativas restantes';
+  }
+
+  @override
+  String get guessThePlayerWas => 'O jogador era: ';
+
+  @override
+  String get guessTypePlayer => 'Digite um jogador...';
+
+  @override
+  String get guessColPos => 'POS';
+
+  @override
+  String get guessColShirt => 'CAMISA';
+
+  @override
+  String get guessColBase => 'BASE';
+
+  @override
+  String get guessColDebut => 'ESTREIA';
+
+  @override
+  String dateMinutesAgo(int minutes) {
+    return '${minutes}min atrás';
+  }
+
+  @override
+  String dateHoursAgo(int hours) {
+    return '${hours}h atrás';
+  }
+
+  @override
+  String dateDaysAgo(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days dias atrás',
+      one: '1 dia atrás',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String datePrepositionFull(int day, String month) {
+    return '$day de $month';
+  }
+
+  @override
+  String get socialMediaTitle => 'MÍDIA';
+
+  @override
+  String get socialMediaSubtitle => 'Goiás na Rede';
+
+  @override
+  String get socialFeedLoadError => 'Não foi possível carregar o feed';
+
+  @override
+  String get socialEmptyState => 'Acompanhe o Goiás nas redes';
+
+  @override
+  String socialViewsM(String value) {
+    return '${value}M visualizações';
+  }
+
+  @override
+  String socialViewsK(String value) {
+    return '${value}K visualizações';
+  }
+
+  @override
+  String socialViewsCount(int count) {
+    return '$count visualizações';
+  }
+
+  @override
+  String get newsTitle => 'NOTÍCIAS';
+
+  @override
+  String get newsLoadError => 'Não foi possível carregar as notícias';
+
+  @override
+  String get newsEmptyTitle => 'Nenhuma notícia por aqui ainda';
+
+  @override
+  String get newsEmptyMessage =>
+      'Volte mais tarde para conferir as novidades do Goiás.';
+
+  @override
+  String get newsSourceLabel => 'FONTE: GOIÁS ESPORTE CLUBE';
+
+  @override
+  String get newsOpenOriginal => 'Abrir matéria original';
+
+  @override
+  String get newsSeeMore => 'Ver mais';
+
+  @override
+  String get commonNoConnection => 'Sem conexão com a internet.';
+
+  @override
+  String get relTimeNow => 'agora';
+
+  @override
+  String relTimeMinutes(int n) {
+    return '${n}min';
+  }
+
+  @override
+  String relTimeHours(int n) {
+    return '${n}h';
+  }
+
+  @override
+  String relTimeDays(int n) {
+    return '${n}d';
+  }
+
+  @override
+  String relTimeWeeks(int n) {
+    return '${n}sem';
+  }
+
+  @override
+  String relTimeMonths(int n) {
+    return '${n}m';
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/social/domain/entities/social_post.dart';
@@ -87,10 +88,10 @@ class _Header extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const PageTitle('MÍDIA'),
+        PageTitle(context.l10n.socialMediaTitle),
         const SizedBox(height: 4),
         Text(
-          'Goiás na Rede',
+          context.l10n.socialMediaSubtitle,
           style: TextStyle(fontSize: 14, color: colors.textSecondary),
         ),
       ],
@@ -114,7 +115,7 @@ class _FeedBody extends StatelessWidget {
             LoadStatus.error => _centered(
               StateMessage(
                 icon: Icons.wifi_off_rounded,
-                title: 'Não foi possível carregar o feed',
+                title: context.l10n.socialFeedLoadError,
                 message: state.errorMessage,
               ),
             ),

@@ -905,4 +905,153 @@ class AppLocalizationsEn extends AppLocalizations {
   String careerOnLoan(String team) {
     return '$team (loan)';
   }
+
+  @override
+  String get commonBack => 'BACK';
+
+  @override
+  String get guessCorrectTitle => 'YOU GOT IT!';
+
+  @override
+  String get guessOutOfAttempts => 'Out of attempts';
+
+  @override
+  String guessCorrectDetail(int used, int max) {
+    return 'You got it in $used of $max attempts.';
+  }
+
+  @override
+  String get guessNoPlayers => 'No players available for this arena yet.';
+
+  @override
+  String get guessRoundEnded => 'Round ended';
+
+  @override
+  String guessAttemptsRemaining(int remaining) {
+    return '$remaining attempts left';
+  }
+
+  @override
+  String get guessThePlayerWas => 'The player was: ';
+
+  @override
+  String get guessTypePlayer => 'Type a player...';
+
+  @override
+  String get guessColPos => 'POS';
+
+  @override
+  String get guessColShirt => 'SHIRT';
+
+  @override
+  String get guessColBase => 'YOUTH';
+
+  @override
+  String get guessColDebut => 'DEBUT';
+
+  @override
+  String dateMinutesAgo(int minutes) {
+    return '${minutes}min ago';
+  }
+
+  @override
+  String dateHoursAgo(int hours) {
+    return '${hours}h ago';
+  }
+
+  @override
+  String dateDaysAgo(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days days ago',
+      one: '1 day ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String datePrepositionFull(int day, String month) {
+    return '$month $day';
+  }
+
+  @override
+  String get socialMediaTitle => 'MEDIA';
+
+  @override
+  String get socialMediaSubtitle => 'Goiás Online';
+
+  @override
+  String get socialFeedLoadError => 'Couldn\'t load the feed';
+
+  @override
+  String get socialEmptyState => 'Follow Goiás on social media';
+
+  @override
+  String socialViewsM(String value) {
+    return '${value}M views';
+  }
+
+  @override
+  String socialViewsK(String value) {
+    return '${value}K views';
+  }
+
+  @override
+  String socialViewsCount(int count) {
+    return '$count views';
+  }
+
+  @override
+  String get newsTitle => 'NEWS';
+
+  @override
+  String get newsLoadError => 'Couldn\'t load the news';
+
+  @override
+  String get newsEmptyTitle => 'No news here yet';
+
+  @override
+  String get newsEmptyMessage =>
+      'Check back later for the latest Goiás updates.';
+
+  @override
+  String get newsSourceLabel => 'SOURCE: GOIÁS ESPORTE CLUBE';
+
+  @override
+  String get newsOpenOriginal => 'Open original article';
+
+  @override
+  String get newsSeeMore => 'See more';
+
+  @override
+  String get commonNoConnection => 'No internet connection.';
+
+  @override
+  String get relTimeNow => 'now';
+
+  @override
+  String relTimeMinutes(int n) {
+    return '${n}min';
+  }
+
+  @override
+  String relTimeHours(int n) {
+    return '${n}h';
+  }
+
+  @override
+  String relTimeDays(int n) {
+    return '${n}d';
+  }
+
+  @override
+  String relTimeWeeks(int n) {
+    return '${n}wk';
+  }
+
+  @override
+  String relTimeMonths(int n) {
+    return '${n}mo';
+  }
 }

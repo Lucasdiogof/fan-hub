@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/guess_player/cubit/guess_player_cubit.dart';
@@ -67,12 +68,12 @@ class _GuessPlayerView extends StatelessWidget {
       icon: round.won
           ? Icons.emoji_events_rounded
           : Icons.sports_soccer_rounded,
-      title: round.won ? 'ACERTOU!' : 'Fim das tentativas',
+      title: round.won ? context.l10n.guessCorrectTitle : context.l10n.guessOutOfAttempts,
       description: round.won
-          ? '${secret.displayName}\n\nVocê acertou em ${round.attemptsUsed} de $maxGuessAttempts tentativas.'
+          ? '${secret.displayName}\n\n${context.l10n.guessCorrectDetail(round.attemptsUsed, maxGuessAttempts)}'
           : null,
       content: round.won ? null : _SecretPlayerReveal(name: secret.displayName),
-      confirmLabel: hasNextPlayer ? 'PRÓXIMO JOGADOR' : 'VOLTAR',
+      confirmLabel: hasNextPlayer ? context.l10n.careerNextPlayer : context.l10n.commonBack,
       isDismissible: false,
       onConfirm: () {
         if (!context.mounted) return;
@@ -102,7 +103,7 @@ class _GuessPlayerView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ArenaGameHeader(
-                    title: 'QUEM VESTIU O MANTO?',
+                    title: context.l10n.arenaGuessPlayerTitle.toUpperCase(),
                     onBack: () =>
                         context.canPop() ? context.pop() : context.go('/'),
                   ),
@@ -130,7 +131,7 @@ class _Body extends StatelessWidget {
     if (state.status == LoadStatus.empty) {
       return Center(
         child: Text(
-          'Nenhum jogador disponível pra essa arena ainda.',
+          context.l10n.guessNoPlayers,
           textAlign: TextAlign.center,
           style: TextStyle(color: colors.textHint, fontSize: 14),
         ),
@@ -169,8 +170,8 @@ class _Body extends StatelessWidget {
           Center(
             child: Text(
               round.isOver
-                  ? 'Rodada encerrada'
-                  : '${round.attemptsRemaining} tentativas restantes',
+                  ? context.l10n.guessRoundEnded
+                  : context.l10n.guessAttemptsRemaining(round.attemptsRemaining),
               style: TextStyle(
                 color: colors.textSecondary,
                 fontSize: 13,
@@ -219,7 +220,7 @@ class _SecretPlayerReveal extends StatelessWidget {
           color: colors.textSecondary,
         ),
         children: [
-          const TextSpan(text: 'O jogador era: '),
+          TextSpan(text: context.l10n.guessThePlayerWas),
           TextSpan(
             text: name,
             style: TextStyle(

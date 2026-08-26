@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_comparison.dart';
@@ -19,13 +20,13 @@ class GuessComparisonTable extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Row(
+        Row(
           children: [
-            _HeaderCell('JOGADOR', flex: 3),
-            _HeaderCell('POS', flex: 2),
-            _HeaderCell('CAMISA', flex: 2),
-            _HeaderCell('BASE', flex: 2),
-            _HeaderCell('ESTREIA', flex: 2),
+            _HeaderCell(context.l10n.lineupPlayerHeading, flex: 3),
+            _HeaderCell(context.l10n.guessColPos, flex: 2),
+            _HeaderCell(context.l10n.guessColShirt, flex: 2),
+            _HeaderCell(context.l10n.guessColBase, flex: 2),
+            _HeaderCell(context.l10n.guessColDebut, flex: 2),
           ],
         ),
         const SizedBox(height: AppSpacing.xs),

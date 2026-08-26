@@ -64,7 +64,7 @@ class NextMatchHero extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   match.kickoff != null
-                      ? '${shortDateLabel(match.kickoff!)} • ${timeLabel(match.kickoff!)} • ${match.stadium.toUpperCase()}'
+                      ? '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString())} • ${timeLabel(match.kickoff!)} • ${match.stadium.toUpperCase()}'
                       : '${context.l10n.homeDateToBeConfirmed} • ${match.stadium.toUpperCase()}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

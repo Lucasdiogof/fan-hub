@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/news/domain/entities/news_item.dart';
@@ -57,7 +58,7 @@ class _NewsListView extends StatelessWidget {
                             context.canPop() ? context.pop() : context.go('/'),
                       ),
                       const SizedBox(height: AppSpacing.lg),
-                      const PageTitle('NOTÍCIAS'),
+                      PageTitle(context.l10n.newsTitle),
                     ],
                   ),
                 ),
@@ -88,16 +89,15 @@ class _NewsListBody extends StatelessWidget {
             LoadStatus.error => _centered(
               StateMessage(
                 icon: Icons.wifi_off_rounded,
-                title: 'Não foi possível carregar as notícias',
+                title: context.l10n.newsLoadError,
                 message: state.errorMessage,
               ),
             ),
             LoadStatus.empty => _centered(
-              const StateMessage(
+              StateMessage(
                 icon: Icons.article_outlined,
-                title: 'Nenhuma notícia por aqui ainda',
-                message:
-                    'Volte mais tarde para conferir as novidades do Goiás.',
+                title: context.l10n.newsEmptyTitle,
+                message: context.l10n.newsEmptyMessage,
               ),
             ),
             LoadStatus.success => _NewsList(items: state.items),

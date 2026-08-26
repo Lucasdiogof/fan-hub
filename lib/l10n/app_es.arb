@@ -306,5 +306,49 @@
   "careerClubs": "Clubes",
   "careerGames": "Partidos",
   "careerGoals": "Goles",
-  "careerOnLoan": "{team} (cedido)"
+  "careerOnLoan": "{team} (cedido)",
+
+  "commonBack": "VOLVER",
+  "guessCorrectTitle": "¡ACERTASTE!",
+  "guessOutOfAttempts": "Se acabaron los intentos",
+  "guessCorrectDetail": "Acertaste en {used} de {max} intentos.",
+  "guessNoPlayers": "Aún no hay jugadores disponibles para esta arena.",
+  "guessRoundEnded": "Ronda terminada",
+  "guessAttemptsRemaining": "{remaining} intentos restantes",
+  "guessThePlayerWas": "El jugador era: ",
+  "guessTypePlayer": "Escribe un jugador...",
+  "guessColPos": "POS",
+  "guessColShirt": "CAMISETA",
+  "guessColBase": "CANTERA",
+  "guessColDebut": "DEBUT",
+
+  "dateMinutesAgo": "hace {minutes}min",
+  "dateHoursAgo": "hace {hours}h",
+  "dateDaysAgo": "{days, plural, =1{hace 1 día} other{hace {days} días}}",
+  "datePrepositionFull": "{day} de {month}",
+
+  "socialMediaTitle": "MEDIOS",
+  "socialMediaSubtitle": "Goiás en la Red",
+  "socialFeedLoadError": "No se pudo cargar el feed",
+  "socialEmptyState": "Sigue al Goiás en las redes",
+  "socialViewsM": "{value}M visualizaciones",
+  "socialViewsK": "{value}K visualizaciones",
+  "socialViewsCount": "{count} visualizaciones",
+
+  "newsTitle": "NOTICIAS",
+  "newsLoadError": "No se pudieron cargar las noticias",
+  "newsEmptyTitle": "Aún no hay noticias",
+  "newsEmptyMessage": "Vuelve más tarde para las novedades del Goiás.",
+  "newsSourceLabel": "FUENTE: GOIÁS ESPORTE CLUBE",
+  "newsOpenOriginal": "Abrir artículo original",
+  "newsSeeMore": "Ver más",
+
+  "commonNoConnection": "Sin conexión a internet.",
+
+  "relTimeNow": "ahora",
+  "relTimeMinutes": "{n}min",
+  "relTimeHours": "{n}h",
+  "relTimeDays": "{n}d",
+  "relTimeWeeks": "{n}sem",
+  "relTimeMonths": "{n}m"
 }

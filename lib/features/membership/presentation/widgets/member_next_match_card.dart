@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -72,8 +73,8 @@ class MemberNextMatchCard extends StatelessWidget {
           const SizedBox(height: AppSpacing.md),
           Text(
             match.kickoff != null
-                ? '${shortDateLabel(match.kickoff!)} • ${timeLabel(match.kickoff!)}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}'
-                : 'Data a confirmar${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}',
+                ? '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString())} • ${timeLabel(match.kickoff!)}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}'
+                : '${context.l10n.matchDateToBeConfirmed}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}',
             style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
           ),
           const SizedBox(height: AppSpacing.sm),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.dart';
@@ -78,7 +79,7 @@ class _GuessAutocompleteFieldState extends State<GuessAutocompleteField> {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(
-          const SnackBar(content: Text('Selecione um jogador da lista.')),
+          SnackBar(content: Text(context.l10n.careerSelectFromList)),
         );
       return;
     }
@@ -119,7 +120,7 @@ class _GuessAutocompleteFieldState extends State<GuessAutocompleteField> {
                       textInputAction: TextInputAction.done,
                       onSubmitted: (_) => _submit(),
                       decoration: InputDecoration(
-                        hintText: 'Digite um jogador...',
+                        hintText: context.l10n.guessTypePlayer,
                         prefixIcon: Icon(
                           Icons.search_rounded,
                           color: colors.textHint,
@@ -205,9 +206,9 @@ class _GuessAutocompleteFieldState extends State<GuessAutocompleteField> {
               ),
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
-            child: const Text(
-              'CHUTAR',
-              style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+            child: Text(
+              context.l10n.careerGuess,
+              style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
             ),
           ),
         ),

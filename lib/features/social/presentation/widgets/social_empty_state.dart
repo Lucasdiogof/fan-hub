@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
@@ -24,7 +25,7 @@ class SocialEmptyState extends StatelessWidget {
             Icon(Icons.podcasts_rounded, size: 48, color: colors.textHint),
             const SizedBox(height: AppSpacing.lg),
             Text(
-              'Acompanhe o Goiás nas redes',
+              context.l10n.socialEmptyState,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,

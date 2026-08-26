@@ -43,7 +43,7 @@ class MatchListItem extends StatelessWidget {
                 Expanded(
                   child: Text(
                     match.kickoff != null
-                        ? '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}'
+                        ? '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString())} • ${weekdayShortLabel(match.kickoff!, Localizations.localeOf(context).toString())}'
                         : context.l10n.matchDateToBeConfirmed,
                     style: TextStyle(
                       fontSize: 11.5,

@@ -1725,6 +1725,234 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'{team} (emp.)'**
   String careerOnLoan(String team);
+
+  /// No description provided for @commonBack.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOLTAR'**
+  String get commonBack;
+
+  /// No description provided for @guessCorrectTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ACERTOU!'**
+  String get guessCorrectTitle;
+
+  /// No description provided for @guessOutOfAttempts.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fim das tentativas'**
+  String get guessOutOfAttempts;
+
+  /// No description provided for @guessCorrectDetail.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você acertou em {used} de {max} tentativas.'**
+  String guessCorrectDetail(int used, int max);
+
+  /// No description provided for @guessNoPlayers.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum jogador disponível pra essa arena ainda.'**
+  String get guessNoPlayers;
+
+  /// No description provided for @guessRoundEnded.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rodada encerrada'**
+  String get guessRoundEnded;
+
+  /// No description provided for @guessAttemptsRemaining.
+  ///
+  /// In pt, this message translates to:
+  /// **'{remaining} tentativas restantes'**
+  String guessAttemptsRemaining(int remaining);
+
+  /// No description provided for @guessThePlayerWas.
+  ///
+  /// In pt, this message translates to:
+  /// **'O jogador era: '**
+  String get guessThePlayerWas;
+
+  /// No description provided for @guessTypePlayer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Digite um jogador...'**
+  String get guessTypePlayer;
+
+  /// No description provided for @guessColPos.
+  ///
+  /// In pt, this message translates to:
+  /// **'POS'**
+  String get guessColPos;
+
+  /// No description provided for @guessColShirt.
+  ///
+  /// In pt, this message translates to:
+  /// **'CAMISA'**
+  String get guessColShirt;
+
+  /// No description provided for @guessColBase.
+  ///
+  /// In pt, this message translates to:
+  /// **'BASE'**
+  String get guessColBase;
+
+  /// No description provided for @guessColDebut.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESTREIA'**
+  String get guessColDebut;
+
+  /// No description provided for @dateMinutesAgo.
+  ///
+  /// In pt, this message translates to:
+  /// **'{minutes}min atrás'**
+  String dateMinutesAgo(int minutes);
+
+  /// No description provided for @dateHoursAgo.
+  ///
+  /// In pt, this message translates to:
+  /// **'{hours}h atrás'**
+  String dateHoursAgo(int hours);
+
+  /// No description provided for @dateDaysAgo.
+  ///
+  /// In pt, this message translates to:
+  /// **'{days, plural, =1{1 dia atrás} other{{days} dias atrás}}'**
+  String dateDaysAgo(int days);
+
+  /// No description provided for @datePrepositionFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'{day} de {month}'**
+  String datePrepositionFull(int day, String month);
+
+  /// No description provided for @socialMediaTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'MÍDIA'**
+  String get socialMediaTitle;
+
+  /// No description provided for @socialMediaSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Goiás na Rede'**
+  String get socialMediaSubtitle;
+
+  /// No description provided for @socialFeedLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar o feed'**
+  String get socialFeedLoadError;
+
+  /// No description provided for @socialEmptyState.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acompanhe o Goiás nas redes'**
+  String get socialEmptyState;
+
+  /// No description provided for @socialViewsM.
+  ///
+  /// In pt, this message translates to:
+  /// **'{value}M visualizações'**
+  String socialViewsM(String value);
+
+  /// No description provided for @socialViewsK.
+  ///
+  /// In pt, this message translates to:
+  /// **'{value}K visualizações'**
+  String socialViewsK(String value);
+
+  /// No description provided for @socialViewsCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} visualizações'**
+  String socialViewsCount(int count);
+
+  /// No description provided for @newsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'NOTÍCIAS'**
+  String get newsTitle;
+
+  /// No description provided for @newsLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar as notícias'**
+  String get newsLoadError;
+
+  /// No description provided for @newsEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma notícia por aqui ainda'**
+  String get newsEmptyTitle;
+
+  /// No description provided for @newsEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volte mais tarde para conferir as novidades do Goiás.'**
+  String get newsEmptyMessage;
+
+  /// No description provided for @newsSourceLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'FONTE: GOIÁS ESPORTE CLUBE'**
+  String get newsSourceLabel;
+
+  /// No description provided for @newsOpenOriginal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir matéria original'**
+  String get newsOpenOriginal;
+
+  /// No description provided for @newsSeeMore.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver mais'**
+  String get newsSeeMore;
+
+  /// No description provided for @commonNoConnection.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sem conexão com a internet.'**
+  String get commonNoConnection;
+
+  /// No description provided for @relTimeNow.
+  ///
+  /// In pt, this message translates to:
+  /// **'agora'**
+  String get relTimeNow;
+
+  /// No description provided for @relTimeMinutes.
+  ///
+  /// In pt, this message translates to:
+  /// **'{n}min'**
+  String relTimeMinutes(int n);
+
+  /// No description provided for @relTimeHours.
+  ///
+  /// In pt, this message translates to:
+  /// **'{n}h'**
+  String relTimeHours(int n);
+
+  /// No description provided for @relTimeDays.
+  ///
+  /// In pt, this message translates to:
+  /// **'{n}d'**
+  String relTimeDays(int n);
+
+  /// No description provided for @relTimeWeeks.
+  ///
+  /// In pt, this message translates to:
+  /// **'{n}sem'**
+  String relTimeWeeks(int n);
+
+  /// No description provided for @relTimeMonths.
+  ///
+  /// In pt, this message translates to:
+  /// **'{n}m'**
+  String relTimeMonths(int n);
 }
 
 class _AppLocalizationsDelegate

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/news/presentation/cubit/news_cubit.dart';
 import 'package:goias_app/features/news/presentation/cubit/news_state.dart';
@@ -31,8 +32,8 @@ class NewsHomeSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SectionHeader(
-                title: 'NOTÍCIAS',
-                actionLabel: 'Ver mais',
+                title: context.l10n.newsTitle,
+                actionLabel: context.l10n.newsSeeMore,
                 onAction: () => context.push('/news'),
               ),
               const SizedBox(height: AppSpacing.sm),

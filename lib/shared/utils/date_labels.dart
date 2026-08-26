@@ -1,66 +1,32 @@
-const _months = [
-  'JAN',
-  'FEV',
-  'MAR',
-  'ABR',
-  'MAI',
-  'JUN',
-  'JUL',
-  'AGO',
-  'SET',
-  'OUT',
-  'NOV',
-  'DEZ',
-];
-
-const _monthsFull = [
-  'janeiro',
-  'fevereiro',
-  'março',
-  'abril',
-  'maio',
-  'junho',
-  'julho',
-  'agosto',
-  'setembro',
-  'outubro',
-  'novembro',
-  'dezembro',
-];
-
-const _weekdays = [
-  'SEGUNDA',
-  'TERÇA',
-  'QUARTA',
-  'QUINTA',
-  'SEXTA',
-  'SÁBADO',
-  'DOMINGO',
-];
-
-const _weekdaysShort = ['SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB', 'DOM'];
+import 'package:intl/intl.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 
 String _pad(int value) => value.toString().padLeft(2, '0');
 
-String shortDateLabel(DateTime date) =>
-    '${_pad(date.day)} ${_months[date.month - 1]}';
+String shortDateLabel(DateTime date, String locale) {
+  final month = DateFormat('MMM', locale).format(date).toUpperCase();
+  return '${_pad(date.day)} $month';
+}
 
-String longDateLabel(DateTime date) =>
-    '${date.day} de ${_monthsFull[date.month - 1]}';
+String longDateLabel(DateTime date, AppLocalizations l10n, String locale) {
+  final month = DateFormat('MMMM', locale).format(date);
+  return l10n.datePrepositionFull(date.day, month);
+}
 
-String weekdayLabel(DateTime date) => _weekdays[date.weekday - 1];
+String weekdayLabel(DateTime date, String locale) =>
+    DateFormat('EEEE', locale).format(date).toUpperCase();
 
-String weekdayShortLabel(DateTime date) => _weekdaysShort[date.weekday - 1];
+String weekdayShortLabel(DateTime date, String locale) =>
+    DateFormat('EEE', locale).format(date).toUpperCase();
 
 String timeLabel(DateTime date) => '${_pad(date.hour)}:${_pad(date.minute)}';
 
 String fullDateLabel(DateTime date) =>
     '${_pad(date.day)}/${_pad(date.month)}/${date.year}';
 
-String timeAgoLabel(DateTime date) {
+String timeAgoLabel(DateTime date, AppLocalizations l10n) {
   final diff = DateTime.now().difference(date);
-  if (diff.inMinutes < 60) return '${diff.inMinutes}min atrás';
-  if (diff.inHours < 24) return '${diff.inHours}h atrás';
-  final days = diff.inDays;
-  return '$days ${days == 1 ? 'dia' : 'dias'} atrás';
+  if (diff.inMinutes < 60) return l10n.dateMinutesAgo(diff.inMinutes);
+  if (diff.inHours < 24) return l10n.dateHoursAgo(diff.inHours);
+  return l10n.dateDaysAgo(diff.inDays);
 }

@@ -87,7 +87,7 @@ class NextMatchCard extends StatelessWidget {
                 _InfoItem(
                   icon: Icons.calendar_today_outlined,
                   label:
-                      '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}',
+                      '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString())} • ${weekdayShortLabel(match.kickoff!, Localizations.localeOf(context).toString())}',
                 ),
                 _Dot(color: colors.textHint),
                 _InfoItem(
