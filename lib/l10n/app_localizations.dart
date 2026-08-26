@@ -2529,6 +2529,108 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Trave'**
   String get penaltyResultPostShort;
+
+  /// No description provided for @crowdTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCALAÇÃO DA TORCIDA'**
+  String get crowdTitle;
+
+  /// No description provided for @crowdTabEscale.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCALE'**
+  String get crowdTabEscale;
+
+  /// No description provided for @crowdSubmissionsLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{escalação enviada} other{escalações enviadas}}'**
+  String crowdSubmissionsLabel(int count);
+
+  /// No description provided for @crowdMostVotedFormation.
+  ///
+  /// In pt, this message translates to:
+  /// **'formação mais votada'**
+  String get crowdMostVotedFormation;
+
+  /// No description provided for @crowdNoVotes.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ainda não há votos'**
+  String get crowdNoVotes;
+
+  /// No description provided for @crowdNoVotesMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.'**
+  String get crowdNoVotesMessage;
+
+  /// No description provided for @crowdVotingClosed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Votação encerrada — esta é a escalação que você enviou.'**
+  String get crowdVotingClosed;
+
+  /// No description provided for @crowdUpdateLineup.
+  ///
+  /// In pt, this message translates to:
+  /// **'ATUALIZAR ESCALAÇÃO'**
+  String get crowdUpdateLineup;
+
+  /// No description provided for @crowdConfirmLineup.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONFIRMAR ESCALAÇÃO'**
+  String get crowdConfirmLineup;
+
+  /// No description provided for @crowdPickPlayer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha o jogador para esta posição'**
+  String get crowdPickPlayer;
+
+  /// No description provided for @crowdSelectedPlayer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escalado'**
+  String get crowdSelectedPlayer;
+
+  /// No description provided for @crowdCardTitleVoted.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escalação da Torcida'**
+  String get crowdCardTitleVoted;
+
+  /// No description provided for @crowdCardTitleNew.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monte a escalação da torcida'**
+  String get crowdCardTitleNew;
+
+  /// No description provided for @crowdCardDescVoted.
+  ///
+  /// In pt, this message translates to:
+  /// **'Veja como a torcida está escalando o Goiás para o próximo jogo.'**
+  String get crowdCardDescVoted;
+
+  /// No description provided for @crowdCardDescNew.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.'**
+  String get crowdCardDescNew;
+
+  /// No description provided for @crowdCardCtaView.
+  ///
+  /// In pt, this message translates to:
+  /// **'VER ESCALAÇÃO DA TORCIDA'**
+  String get crowdCardCtaView;
+
+  /// No description provided for @crowdCardCtaEscale.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCALAR AGORA'**
+  String get crowdCardCtaEscale;
 }
 
 class _AppLocalizationsDelegate

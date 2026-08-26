@@ -455,5 +455,23 @@
   "penaltyResultGoalShort": "Gol",
   "penaltyResultSaveShort": "Atajada",
   "penaltyResultOutShort": "Fuera",
-  "penaltyResultPostShort": "Palo"
+  "penaltyResultPostShort": "Palo",
+
+  "crowdTitle": "ALINEACIÓN DE LA AFICIÓN",
+  "crowdTabEscale": "ALINEAR",
+  "crowdSubmissionsLabel": "{count, plural, =1{alineación enviada} other{alineaciones enviadas}}",
+  "crowdMostVotedFormation": "formación más votada",
+  "crowdNoVotes": "Aún no hay votos",
+  "crowdNoVotesMessage": "Sé el primero en alinear al Goiás y ayuda a formar el equipo de la afición.",
+  "crowdVotingClosed": "Votación cerrada — esta es la alineación que enviaste.",
+  "crowdUpdateLineup": "ACTUALIZAR ALINEACIÓN",
+  "crowdConfirmLineup": "CONFIRMAR ALINEACIÓN",
+  "crowdPickPlayer": "Elige el jugador para esta posición",
+  "crowdSelectedPlayer": "Seleccionado",
+  "crowdCardTitleVoted": "Alineación de la Afición",
+  "crowdCardTitleNew": "Arma la alineación de la afición",
+  "crowdCardDescVoted": "Mira cómo la afición está alineando al Goiás para el próximo partido.",
+  "crowdCardDescNew": "Alinea al Goiás para el próximo partido y mira el equipo más elegido por la afición.",
+  "crowdCardCtaView": "VER ALINEACIÓN DE LA AFICIÓN",
+  "crowdCardCtaEscale": "ALINEAR AHORA"
 }

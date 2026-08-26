@@ -1381,4 +1381,67 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get penaltyResultPostShort => 'Post';
+
+  @override
+  String get crowdTitle => 'FANS\' LINEUP';
+
+  @override
+  String get crowdTabEscale => 'PICK';
+
+  @override
+  String crowdSubmissionsLabel(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'lineups submitted',
+      one: 'lineup submitted',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get crowdMostVotedFormation => 'most voted formation';
+
+  @override
+  String get crowdNoVotes => 'No votes yet';
+
+  @override
+  String get crowdNoVotesMessage =>
+      'Be the first to line up Goiás and help build the fans\' team.';
+
+  @override
+  String get crowdVotingClosed =>
+      'Voting closed — this is the lineup you submitted.';
+
+  @override
+  String get crowdUpdateLineup => 'UPDATE LINEUP';
+
+  @override
+  String get crowdConfirmLineup => 'CONFIRM LINEUP';
+
+  @override
+  String get crowdPickPlayer => 'Choose the player for this position';
+
+  @override
+  String get crowdSelectedPlayer => 'Selected';
+
+  @override
+  String get crowdCardTitleVoted => 'Fans\' Lineup';
+
+  @override
+  String get crowdCardTitleNew => 'Build the fans\' lineup';
+
+  @override
+  String get crowdCardDescVoted =>
+      'See how the fans are lining up Goiás for the next match.';
+
+  @override
+  String get crowdCardDescNew =>
+      'Line up Goiás for the next match and see the fans\' most-picked team.';
+
+  @override
+  String get crowdCardCtaView => 'VIEW FANS\' LINEUP';
+
+  @override
+  String get crowdCardCtaEscale => 'LINE UP NOW';
 }

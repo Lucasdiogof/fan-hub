@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
@@ -247,7 +248,7 @@ class _ActionBar extends StatelessWidget {
               border: Border(top: BorderSide(color: colors.border)),
             ),
             child: Text(
-              'Votação encerrada — esta é a escalação que você enviou.',
+              context.l10n.crowdVotingClosed,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13,
@@ -303,8 +304,8 @@ class _ActionBar extends StatelessWidget {
                           )
                         : Text(
                             state.hasVoted
-                                ? 'ATUALIZAR ESCALAÇÃO'
-                                : 'CONFIRMAR ESCALAÇÃO',
+                                ? context.l10n.crowdUpdateLineup
+                                : context.l10n.crowdConfirmLineup,
                             style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w800,

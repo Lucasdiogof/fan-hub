@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/crowd_lineup/domain/goias_squad.dart';
@@ -48,7 +49,7 @@ Future<String?> showPlayerPicker(
                 ),
               ),
               Text(
-                'Escolha o jogador para esta posição',
+                context.l10n.crowdPickPlayer,
                 style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
               ),
               const SizedBox(height: AppSpacing.md),
@@ -142,7 +143,7 @@ class _PlayerRow extends StatelessWidget {
                 )
               else if (disabled)
                 Text(
-                  'Escalado',
+                  context.l10n.crowdSelectedPlayer,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,

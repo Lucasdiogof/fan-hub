@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
@@ -84,16 +85,14 @@ class _Summary extends StatelessWidget {
           Expanded(
             child: _Metric(
               value: '${crowd.totalVotes}',
-              label: crowd.totalVotes == 1
-                  ? 'escalação enviada'
-                  : 'escalações enviadas',
+              label: context.l10n.crowdSubmissionsLabel(crowd.totalVotes),
             ),
           ),
           Container(width: 1, height: 36, color: colors.border),
           Expanded(
             child: _Metric(
               value: crowd.topFormation!.label,
-              label: 'formação mais votada',
+              label: context.l10n.crowdMostVotedFormation,
             ),
           ),
         ],
@@ -258,7 +257,7 @@ class _EmptyCrowd extends StatelessWidget {
             Icon(Icons.groups_2_rounded, size: 48, color: colors.textHint),
             const SizedBox(height: AppSpacing.md),
             Text(
-              'Ainda não há votos',
+              context.l10n.crowdNoVotes,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w800,
@@ -267,7 +266,7 @@ class _EmptyCrowd extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.xs),
             Text(
-              'Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.',
+              context.l10n.crowdNoVotesMessage,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13.5,

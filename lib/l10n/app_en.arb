@@ -455,5 +455,23 @@
   "penaltyResultGoalShort": "Goal",
   "penaltyResultSaveShort": "Save",
   "penaltyResultOutShort": "Miss",
-  "penaltyResultPostShort": "Post"
+  "penaltyResultPostShort": "Post",
+
+  "crowdTitle": "FANS' LINEUP",
+  "crowdTabEscale": "PICK",
+  "crowdSubmissionsLabel": "{count, plural, =1{lineup submitted} other{lineups submitted}}",
+  "crowdMostVotedFormation": "most voted formation",
+  "crowdNoVotes": "No votes yet",
+  "crowdNoVotesMessage": "Be the first to line up Goiás and help build the fans' team.",
+  "crowdVotingClosed": "Voting closed — this is the lineup you submitted.",
+  "crowdUpdateLineup": "UPDATE LINEUP",
+  "crowdConfirmLineup": "CONFIRM LINEUP",
+  "crowdPickPlayer": "Choose the player for this position",
+  "crowdSelectedPlayer": "Selected",
+  "crowdCardTitleVoted": "Fans' Lineup",
+  "crowdCardTitleNew": "Build the fans' lineup",
+  "crowdCardDescVoted": "See how the fans are lining up Goiás for the next match.",
+  "crowdCardDescNew": "Line up Goiás for the next match and see the fans' most-picked team.",
+  "crowdCardCtaView": "VIEW FANS' LINEUP",
+  "crowdCardCtaEscale": "LINE UP NOW"
 }

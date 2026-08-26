@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_state.dart';
@@ -124,7 +125,7 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'ESCALAÇÃO DA TORCIDA',
+                          context.l10n.crowdTitle,
                           style: TextStyle(
                             color: colors.textPrimary,
                             fontSize: 15,
@@ -161,9 +162,9 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
                 fontSize: 13.5,
                 fontWeight: FontWeight.w800,
               ),
-              tabs: const [
-                Tab(text: 'ESCALAÇÃO DA TORCIDA'),
-                Tab(text: 'ESCALE'),
+              tabs: [
+                Tab(text: context.l10n.crowdTitle),
+                Tab(text: context.l10n.crowdTabEscale),
               ],
             ),
             Expanded(

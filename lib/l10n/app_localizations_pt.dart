@@ -1387,4 +1387,67 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get penaltyResultPostShort => 'Trave';
+
+  @override
+  String get crowdTitle => 'ESCALAÇÃO DA TORCIDA';
+
+  @override
+  String get crowdTabEscale => 'ESCALE';
+
+  @override
+  String crowdSubmissionsLabel(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'escalações enviadas',
+      one: 'escalação enviada',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get crowdMostVotedFormation => 'formação mais votada';
+
+  @override
+  String get crowdNoVotes => 'Ainda não há votos';
+
+  @override
+  String get crowdNoVotesMessage =>
+      'Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.';
+
+  @override
+  String get crowdVotingClosed =>
+      'Votação encerrada — esta é a escalação que você enviou.';
+
+  @override
+  String get crowdUpdateLineup => 'ATUALIZAR ESCALAÇÃO';
+
+  @override
+  String get crowdConfirmLineup => 'CONFIRMAR ESCALAÇÃO';
+
+  @override
+  String get crowdPickPlayer => 'Escolha o jogador para esta posição';
+
+  @override
+  String get crowdSelectedPlayer => 'Escalado';
+
+  @override
+  String get crowdCardTitleVoted => 'Escalação da Torcida';
+
+  @override
+  String get crowdCardTitleNew => 'Monte a escalação da torcida';
+
+  @override
+  String get crowdCardDescVoted =>
+      'Veja como a torcida está escalando o Goiás para o próximo jogo.';
+
+  @override
+  String get crowdCardDescNew =>
+      'Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.';
+
+  @override
+  String get crowdCardCtaView => 'VER ESCALAÇÃO DA TORCIDA';
+
+  @override
+  String get crowdCardCtaEscale => 'ESCALAR AGORA';
 }

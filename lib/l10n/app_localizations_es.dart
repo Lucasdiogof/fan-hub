@@ -1386,4 +1386,67 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get penaltyResultPostShort => 'Palo';
+
+  @override
+  String get crowdTitle => 'ALINEACIÓN DE LA AFICIÓN';
+
+  @override
+  String get crowdTabEscale => 'ALINEAR';
+
+  @override
+  String crowdSubmissionsLabel(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'alineaciones enviadas',
+      one: 'alineación enviada',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get crowdMostVotedFormation => 'formación más votada';
+
+  @override
+  String get crowdNoVotes => 'Aún no hay votos';
+
+  @override
+  String get crowdNoVotesMessage =>
+      'Sé el primero en alinear al Goiás y ayuda a formar el equipo de la afición.';
+
+  @override
+  String get crowdVotingClosed =>
+      'Votación cerrada — esta es la alineación que enviaste.';
+
+  @override
+  String get crowdUpdateLineup => 'ACTUALIZAR ALINEACIÓN';
+
+  @override
+  String get crowdConfirmLineup => 'CONFIRMAR ALINEACIÓN';
+
+  @override
+  String get crowdPickPlayer => 'Elige el jugador para esta posición';
+
+  @override
+  String get crowdSelectedPlayer => 'Seleccionado';
+
+  @override
+  String get crowdCardTitleVoted => 'Alineación de la Afición';
+
+  @override
+  String get crowdCardTitleNew => 'Arma la alineación de la afición';
+
+  @override
+  String get crowdCardDescVoted =>
+      'Mira cómo la afición está alineando al Goiás para el próximo partido.';
+
+  @override
+  String get crowdCardDescNew =>
+      'Alinea al Goiás para el próximo partido y mira el equipo más elegido por la afición.';
+
+  @override
+  String get crowdCardCtaView => 'VER ALINEACIÓN DE LA AFICIÓN';
+
+  @override
+  String get crowdCardCtaEscale => 'ALINEAR AHORA';
 }

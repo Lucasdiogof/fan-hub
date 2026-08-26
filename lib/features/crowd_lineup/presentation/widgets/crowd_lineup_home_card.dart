@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
@@ -26,13 +27,12 @@ class CrowdLineupHomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final title = hasVoted
-        ? 'Escalação da Torcida'
-        : 'Monte a escalação da torcida';
+    final l10n = context.l10n;
+    final title = hasVoted ? l10n.crowdCardTitleVoted : l10n.crowdCardTitleNew;
     final description = hasVoted
-        ? 'Veja como a torcida está escalando o Goiás para o próximo jogo.'
-        : 'Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.';
-    final ctaLabel = hasVoted ? 'VER ESCALAÇÃO DA TORCIDA' : 'ESCALAR AGORA';
+        ? l10n.crowdCardDescVoted
+        : l10n.crowdCardDescNew;
+    final ctaLabel = hasVoted ? l10n.crowdCardCtaView : l10n.crowdCardCtaEscale;
 
     return Material(
       color: Colors.transparent,

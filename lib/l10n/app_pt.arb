@@ -519,5 +519,24 @@
   "penaltyResultGoalShort": "Gol",
   "penaltyResultSaveShort": "Defesa",
   "penaltyResultOutShort": "Fora",
-  "penaltyResultPostShort": "Trave"
+  "penaltyResultPostShort": "Trave",
+
+  "crowdTitle": "ESCALAÇÃO DA TORCIDA",
+  "crowdTabEscale": "ESCALE",
+  "crowdSubmissionsLabel": "{count, plural, =1{escalação enviada} other{escalações enviadas}}",
+  "@crowdSubmissionsLabel": { "placeholders": { "count": { "type": "int" } } },
+  "crowdMostVotedFormation": "formação mais votada",
+  "crowdNoVotes": "Ainda não há votos",
+  "crowdNoVotesMessage": "Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.",
+  "crowdVotingClosed": "Votação encerrada — esta é a escalação que você enviou.",
+  "crowdUpdateLineup": "ATUALIZAR ESCALAÇÃO",
+  "crowdConfirmLineup": "CONFIRMAR ESCALAÇÃO",
+  "crowdPickPlayer": "Escolha o jogador para esta posição",
+  "crowdSelectedPlayer": "Escalado",
+  "crowdCardTitleVoted": "Escalação da Torcida",
+  "crowdCardTitleNew": "Monte a escalação da torcida",
+  "crowdCardDescVoted": "Veja como a torcida está escalando o Goiás para o próximo jogo.",
+  "crowdCardDescNew": "Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.",
+  "crowdCardCtaView": "VER ESCALAÇÃO DA TORCIDA",
+  "crowdCardCtaEscale": "ESCALAR AGORA"
 }
