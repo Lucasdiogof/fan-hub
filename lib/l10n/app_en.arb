@@ -473,5 +473,27 @@
   "crowdCardDescVoted": "See how the fans are lining up Goiás for the next match.",
   "crowdCardDescNew": "Line up Goiás for the next match and see the fans' most-picked team.",
   "crowdCardCtaView": "VIEW FANS' LINEUP",
-  "crowdCardCtaEscale": "LINE UP NOW"
+  "crowdCardCtaEscale": "LINE UP NOW",
+
+  "clubSectionHistory": "History",
+  "clubSectionSquad": "Squad",
+  "clubSectionTitles": "Titles",
+  "clubSectionPartners": "Partners",
+  "clubSectionTimeline": "Timeline",
+  "clubSectionSongs": "Anthem & Songs",
+  "clubHistorySubtitle": "From 1943 to today.",
+  "clubSquadSubtitle": "The players who wear the shirt.",
+  "clubTitlesSubtitle": "{count} trophies throughout history.",
+  "clubPartnersSubtitle": "Who stands with Goiás.",
+  "clubAnthemSection": "ANTHEM",
+  "clubSongsSection": "ESMERALDINA SONGS",
+  "clubViewLyrics": "VIEW LYRICS",
+  "clubMainTitles": "MAIN TITLES",
+  "clubHistoricCampaigns": "HISTORIC RUNS",
+  "clubCampaignsSubtitle": "Great Goiás runs that didn't end in a title.",
+  "clubTimesChampion": "{count}× CHAMPION",
+  "clubEntryTitle": "THE CLUB",
+  "clubEntrySubtitle": "History, titles, squad and identity of Goiás.",
+  "clubEntryCta": "GET TO KNOW GOIÁS",
+  "clubHeaderTagline": "THE BIGGEST IN THE CENTRAL-WEST"
 }

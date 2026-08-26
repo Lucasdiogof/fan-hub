@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/data/club_timeline_data.dart';
@@ -32,7 +33,7 @@ class ClubTimelinePage extends StatelessWidget {
                 children: [
                   BackButtonCircle(onTap: () => context.pop()),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('LINHA DO TEMPO'),
+                  PageTitle(context.l10n.clubSectionTimeline.toUpperCase()),
                 ],
               ),
             ),

@@ -473,5 +473,27 @@
   "crowdCardDescVoted": "Mira cómo la afición está alineando al Goiás para el próximo partido.",
   "crowdCardDescNew": "Alinea al Goiás para el próximo partido y mira el equipo más elegido por la afición.",
   "crowdCardCtaView": "VER ALINEACIÓN DE LA AFICIÓN",
-  "crowdCardCtaEscale": "ALINEAR AHORA"
+  "crowdCardCtaEscale": "ALINEAR AHORA",
+
+  "clubSectionHistory": "Historia",
+  "clubSectionSquad": "Plantel",
+  "clubSectionTitles": "Títulos",
+  "clubSectionPartners": "Aliados",
+  "clubSectionTimeline": "Cronología",
+  "clubSectionSongs": "Himno y Canciones",
+  "clubHistorySubtitle": "Desde 1943 hasta hoy.",
+  "clubSquadSubtitle": "Los jugadores que visten la camiseta.",
+  "clubTitlesSubtitle": "{count} conquistas a lo largo de la historia.",
+  "clubPartnersSubtitle": "Quienes caminan junto al Goiás.",
+  "clubAnthemSection": "HIMNO",
+  "clubSongsSection": "CANCIONES ESMERALDINAS",
+  "clubViewLyrics": "VER LETRA",
+  "clubMainTitles": "TÍTULOS PRINCIPALES",
+  "clubHistoricCampaigns": "CAMPAÑAS HISTÓRICAS",
+  "clubCampaignsSubtitle": "Grandes campañas del Goiás que no terminaron en título.",
+  "clubTimesChampion": "{count}× CAMPEÓN",
+  "clubEntryTitle": "EL CLUB",
+  "clubEntrySubtitle": "Historia, títulos, plantel e identidad del Goiás.",
+  "clubEntryCta": "CONOCER AL GOIÁS",
+  "clubHeaderTagline": "EL MAYOR DEL CENTRO-OESTE"
 }

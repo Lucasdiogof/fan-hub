@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/mock/mock_data.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/data/club_songs_data.dart';
@@ -39,7 +40,7 @@ class ClubSongsPage extends StatelessWidget {
                 children: [
                   BackButtonCircle(onTap: () => context.pop()),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('HINO & MÚSICAS'),
+                  PageTitle(context.l10n.clubSectionSongs.toUpperCase()),
                 ],
               ),
             ),
@@ -52,14 +53,14 @@ class ClubSongsPage extends StatelessWidget {
                   AppSpacing.xxxl,
                 ),
                 children: [
-                  _SectionLabel('HINO', colors: colors),
+                  _SectionLabel(context.l10n.clubAnthemSection, colors: colors),
                   const SizedBox(height: AppSpacing.md),
                   for (var i = 0; i < anthems.length; i++) ...[
                     if (i > 0) const SizedBox(height: AppSpacing.sm),
                     _SongCard(song: anthems[i]),
                   ],
                   const SizedBox(height: AppSpacing.xl),
-                  _SectionLabel('MÚSICAS ESMERALDINAS', colors: colors),
+                  _SectionLabel(context.l10n.clubSongsSection, colors: colors),
                   const SizedBox(height: AppSpacing.md),
                   for (var i = 0; i < songs.length; i++) ...[
                     if (i > 0) const SizedBox(height: AppSpacing.sm),
@@ -147,7 +148,7 @@ class _SongCard extends StatelessWidget {
           if (song.lyrics != null)
             TextButton(
               onPressed: () => _showLyrics(context, song),
-              child: const Text('VER LETRA'),
+              child: Text(context.l10n.clubViewLyrics),
             ),
           Icon(
             hasAudio

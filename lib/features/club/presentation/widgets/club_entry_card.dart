@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/mock/mock_data.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -49,7 +50,7 @@ class ClubEntryCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'O CLUBE',
+                      context.l10n.clubEntryTitle,
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
@@ -59,7 +60,7 @@ class ClubEntryCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'História, títulos, elenco e identidade do Verdão.',
+                      context.l10n.clubEntrySubtitle,
                       style: TextStyle(
                         fontSize: 12.5,
                         color: colors.textSecondary,
@@ -70,7 +71,7 @@ class ClubEntryCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'CONHECER O GOIÁS',
+                          context.l10n.clubEntryCta,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w800,

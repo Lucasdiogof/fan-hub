@@ -1444,4 +1444,73 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get crowdCardCtaEscale => 'LINE UP NOW';
+
+  @override
+  String get clubSectionHistory => 'History';
+
+  @override
+  String get clubSectionSquad => 'Squad';
+
+  @override
+  String get clubSectionTitles => 'Titles';
+
+  @override
+  String get clubSectionPartners => 'Partners';
+
+  @override
+  String get clubSectionTimeline => 'Timeline';
+
+  @override
+  String get clubSectionSongs => 'Anthem & Songs';
+
+  @override
+  String get clubHistorySubtitle => 'From 1943 to today.';
+
+  @override
+  String get clubSquadSubtitle => 'The players who wear the shirt.';
+
+  @override
+  String clubTitlesSubtitle(int count) {
+    return '$count trophies throughout history.';
+  }
+
+  @override
+  String get clubPartnersSubtitle => 'Who stands with Goiás.';
+
+  @override
+  String get clubAnthemSection => 'ANTHEM';
+
+  @override
+  String get clubSongsSection => 'ESMERALDINA SONGS';
+
+  @override
+  String get clubViewLyrics => 'VIEW LYRICS';
+
+  @override
+  String get clubMainTitles => 'MAIN TITLES';
+
+  @override
+  String get clubHistoricCampaigns => 'HISTORIC RUNS';
+
+  @override
+  String get clubCampaignsSubtitle =>
+      'Great Goiás runs that didn\'t end in a title.';
+
+  @override
+  String clubTimesChampion(int count) {
+    return '$count× CHAMPION';
+  }
+
+  @override
+  String get clubEntryTitle => 'THE CLUB';
+
+  @override
+  String get clubEntrySubtitle =>
+      'History, titles, squad and identity of Goiás.';
+
+  @override
+  String get clubEntryCta => 'GET TO KNOW GOIÁS';
+
+  @override
+  String get clubHeaderTagline => 'THE BIGGEST IN THE CENTRAL-WEST';
 }

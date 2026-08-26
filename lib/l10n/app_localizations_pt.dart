@@ -1450,4 +1450,73 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get crowdCardCtaEscale => 'ESCALAR AGORA';
+
+  @override
+  String get clubSectionHistory => 'História';
+
+  @override
+  String get clubSectionSquad => 'Elenco';
+
+  @override
+  String get clubSectionTitles => 'Títulos';
+
+  @override
+  String get clubSectionPartners => 'Parceiros';
+
+  @override
+  String get clubSectionTimeline => 'Linha do Tempo';
+
+  @override
+  String get clubSectionSongs => 'Hino & Músicas';
+
+  @override
+  String get clubHistorySubtitle => 'De 1943 até os dias de hoje.';
+
+  @override
+  String get clubSquadSubtitle => 'Os jogadores que vestem o manto.';
+
+  @override
+  String clubTitlesSubtitle(int count) {
+    return '$count conquistas ao longo da história.';
+  }
+
+  @override
+  String get clubPartnersSubtitle => 'Quem caminha junto com o Verdão.';
+
+  @override
+  String get clubAnthemSection => 'HINO';
+
+  @override
+  String get clubSongsSection => 'MÚSICAS ESMERALDINAS';
+
+  @override
+  String get clubViewLyrics => 'VER LETRA';
+
+  @override
+  String get clubMainTitles => 'TÍTULOS PRINCIPAIS';
+
+  @override
+  String get clubHistoricCampaigns => 'CAMPANHAS HISTÓRICAS';
+
+  @override
+  String get clubCampaignsSubtitle =>
+      'Grandes campanhas do Goiás que não resultaram em título.';
+
+  @override
+  String clubTimesChampion(int count) {
+    return '$count× CAMPEÃO';
+  }
+
+  @override
+  String get clubEntryTitle => 'O CLUBE';
+
+  @override
+  String get clubEntrySubtitle =>
+      'História, títulos, elenco e identidade do Verdão.';
+
+  @override
+  String get clubEntryCta => 'CONHECER O GOIÁS';
+
+  @override
+  String get clubHeaderTagline => 'O MAIOR DO CENTRO-OESTE';
 }

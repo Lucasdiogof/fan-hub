@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/club/data/club_titles_data.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_header.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
@@ -56,29 +58,29 @@ class ClubPage extends StatelessWidget {
                       const SizedBox(height: AppSpacing.xxl),
                       _ClubBigCard(
                         icon: Icons.auto_stories_outlined,
-                        title: 'História',
-                        subtitle: 'De 1943 até os dias de hoje.',
+                        title: context.l10n.clubSectionHistory,
+                        subtitle: context.l10n.clubHistorySubtitle,
                         onTap: () => context.push('/clube/historia'),
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
                         icon: Icons.shield_outlined,
-                        title: 'Elenco',
-                        subtitle: 'Os jogadores que vestem o manto.',
+                        title: context.l10n.clubSectionSquad,
+                        subtitle: context.l10n.clubSquadSubtitle,
                         onTap: () => _openSquad(context),
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
                         icon: Icons.emoji_events_outlined,
-                        title: 'Títulos',
-                        subtitle: '34 conquistas ao longo da história.',
+                        title: context.l10n.clubSectionTitles,
+                        subtitle: context.l10n.clubTitlesSubtitle(ClubTitlesData.totalTitles),
                         onTap: () => context.push('/clube/titulos'),
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
                         icon: Icons.handshake_outlined,
-                        title: 'Parceiros',
-                        subtitle: 'Quem caminha junto com o Verdão.',
+                        title: context.l10n.clubSectionPartners,
+                        subtitle: context.l10n.clubPartnersSubtitle,
                         onTap: () => context.push('/partners'),
                       ),
                       const SizedBox(height: AppSpacing.xl),
@@ -92,12 +94,12 @@ class ClubPage extends StatelessWidget {
                         children: [
                           _ClubTile(
                             icon: Icons.timeline_outlined,
-                            label: 'Linha do Tempo',
+                            label: context.l10n.clubSectionTimeline,
                             onTap: () => context.push('/clube/linha-do-tempo'),
                           ),
                           _ClubTile(
                             icon: Icons.music_note_outlined,
-                            label: 'Hino & Músicas',
+                            label: context.l10n.clubSectionSongs,
                             onTap: () => context.push('/clube/hino'),
                           ),
                         ],

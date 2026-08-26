@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/data/club_titles_data.dart';
@@ -31,7 +32,7 @@ class ClubTitlesPage extends StatelessWidget {
                 children: [
                   BackButtonCircle(onTap: () => context.pop()),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('TÍTULOS'),
+                  PageTitle(context.l10n.clubSectionTitles.toUpperCase()),
                 ],
               ),
             ),
@@ -58,7 +59,7 @@ class ClubTitlesPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'TÍTULOS PRINCIPAIS',
+                          context.l10n.clubMainTitles,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w800,
@@ -76,7 +77,7 @@ class ClubTitlesPage extends StatelessWidget {
                   ],
                   const SizedBox(height: AppSpacing.lg),
                   Text(
-                    'CAMPANHAS HISTÓRICAS',
+                    context.l10n.clubHistoricCampaigns,
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w800,
@@ -86,7 +87,7 @@ class ClubTitlesPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Grandes campanhas do Goiás que não resultaram em título.',
+                    context.l10n.clubCampaignsSubtitle,
                     style: TextStyle(fontSize: 12.5, color: colors.textHint),
                   ),
                   const SizedBox(height: AppSpacing.md),
@@ -154,7 +155,7 @@ class _TitleGroupCard extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            '${group.count}× CAMPEÃO',
+            context.l10n.clubTimesChampion(group.count),
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w900,

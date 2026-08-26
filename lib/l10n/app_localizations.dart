@@ -2631,6 +2631,132 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'ESCALAR AGORA'**
   String get crowdCardCtaEscale;
+
+  /// No description provided for @clubSectionHistory.
+  ///
+  /// In pt, this message translates to:
+  /// **'História'**
+  String get clubSectionHistory;
+
+  /// No description provided for @clubSectionSquad.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elenco'**
+  String get clubSectionSquad;
+
+  /// No description provided for @clubSectionTitles.
+  ///
+  /// In pt, this message translates to:
+  /// **'Títulos'**
+  String get clubSectionTitles;
+
+  /// No description provided for @clubSectionPartners.
+  ///
+  /// In pt, this message translates to:
+  /// **'Parceiros'**
+  String get clubSectionPartners;
+
+  /// No description provided for @clubSectionTimeline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Linha do Tempo'**
+  String get clubSectionTimeline;
+
+  /// No description provided for @clubSectionSongs.
+  ///
+  /// In pt, this message translates to:
+  /// **'Hino & Músicas'**
+  String get clubSectionSongs;
+
+  /// No description provided for @clubHistorySubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'De 1943 até os dias de hoje.'**
+  String get clubHistorySubtitle;
+
+  /// No description provided for @clubSquadSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Os jogadores que vestem o manto.'**
+  String get clubSquadSubtitle;
+
+  /// No description provided for @clubTitlesSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} conquistas ao longo da história.'**
+  String clubTitlesSubtitle(int count);
+
+  /// No description provided for @clubPartnersSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quem caminha junto com o Verdão.'**
+  String get clubPartnersSubtitle;
+
+  /// No description provided for @clubAnthemSection.
+  ///
+  /// In pt, this message translates to:
+  /// **'HINO'**
+  String get clubAnthemSection;
+
+  /// No description provided for @clubSongsSection.
+  ///
+  /// In pt, this message translates to:
+  /// **'MÚSICAS ESMERALDINAS'**
+  String get clubSongsSection;
+
+  /// No description provided for @clubViewLyrics.
+  ///
+  /// In pt, this message translates to:
+  /// **'VER LETRA'**
+  String get clubViewLyrics;
+
+  /// No description provided for @clubMainTitles.
+  ///
+  /// In pt, this message translates to:
+  /// **'TÍTULOS PRINCIPAIS'**
+  String get clubMainTitles;
+
+  /// No description provided for @clubHistoricCampaigns.
+  ///
+  /// In pt, this message translates to:
+  /// **'CAMPANHAS HISTÓRICAS'**
+  String get clubHistoricCampaigns;
+
+  /// No description provided for @clubCampaignsSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Grandes campanhas do Goiás que não resultaram em título.'**
+  String get clubCampaignsSubtitle;
+
+  /// No description provided for @clubTimesChampion.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count}× CAMPEÃO'**
+  String clubTimesChampion(int count);
+
+  /// No description provided for @clubEntryTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'O CLUBE'**
+  String get clubEntryTitle;
+
+  /// No description provided for @clubEntrySubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'História, títulos, elenco e identidade do Verdão.'**
+  String get clubEntrySubtitle;
+
+  /// No description provided for @clubEntryCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONHECER O GOIÁS'**
+  String get clubEntryCta;
+
+  /// No description provided for @clubHeaderTagline.
+  ///
+  /// In pt, this message translates to:
+  /// **'O MAIOR DO CENTRO-OESTE'**
+  String get clubHeaderTagline;
 }
 
 class _AppLocalizationsDelegate

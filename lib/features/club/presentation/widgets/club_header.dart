@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/mock/mock_data.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -38,7 +39,7 @@ class ClubHeader extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          'O MAIOR DO CENTRO-OESTE',
+          context.l10n.clubHeaderTagline,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 12,
