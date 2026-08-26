@@ -708,5 +708,15 @@
   "membershipValNumber": "Informe o número.",
   "membershipValNeighborhood": "Informe o bairro.",
   "membershipValState": "Informe o estado.",
-  "membershipValCity": "Informe a cidade."
+  "membershipValCity": "Informe a cidade.",
+
+  "arenaYouMarker": "{name} (você)",
+  "@arenaYouMarker": { "placeholders": { "name": { "type": "String" } } },
+  "arenaYourPosition": "#{rank} sua posição",
+  "@arenaYourPosition": { "placeholders": { "rank": { "type": "int" } } },
+  "lineupShareStats": "{solved}/{total} descobertos · {attempts} tentativas · {time}",
+  "@lineupShareStats": { "placeholders": { "solved": { "type": "int" }, "total": { "type": "int" }, "attempts": { "type": "int" }, "time": { "type": "String" } } },
+  "crowdShareCrowd": "Confira a escalação da torcida pro Goiás! 💚",
+  "crowdShareMine": "Essa é a minha escalação pro Goiás! 💚",
+  "crowdSubmitted": "Escalação enviada!"
 }

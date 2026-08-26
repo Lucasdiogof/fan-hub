@@ -636,5 +636,12 @@
   "membershipValNumber": "Enter the number.",
   "membershipValNeighborhood": "Enter the neighborhood.",
   "membershipValState": "Enter the state.",
-  "membershipValCity": "Enter the city."
+  "membershipValCity": "Enter the city.",
+
+  "arenaYouMarker": "{name} (you)",
+  "arenaYourPosition": "#{rank} your position",
+  "lineupShareStats": "{solved}/{total} found · {attempts} attempts · {time}",
+  "crowdShareCrowd": "Check out the fans' lineup for Goiás! 💚",
+  "crowdShareMine": "This is my lineup for Goiás! 💚",
+  "crowdSubmitted": "Lineup submitted!"
 }

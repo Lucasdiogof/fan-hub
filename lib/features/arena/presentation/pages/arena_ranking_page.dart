@@ -238,7 +238,7 @@ class _RankRow extends StatelessWidget {
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(
-              entry.isMe ? '${entry.name} (você)' : entry.name,
+              entry.isMe ? context.l10n.arenaYouMarker(entry.name) : entry.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(

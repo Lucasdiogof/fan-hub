@@ -435,7 +435,7 @@ class _RankingBanner extends StatelessWidget {
               ),
               if (myRank != null) ...[
                 Text(
-                  '#$myRank sua posição',
+                  context.l10n.arenaYourPosition(myRank!),
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,

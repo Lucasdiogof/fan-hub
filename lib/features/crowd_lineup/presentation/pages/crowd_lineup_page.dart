@@ -199,8 +199,8 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
       onTap: () => shareFieldImage(
         onCrowdTab ? _crowdFieldKey : _escaleFieldKey,
         text: onCrowdTab
-            ? 'Confira a escalação da torcida pro Goiás! 💚'
-            : 'Essa é a minha escalação pro Goiás! 💚',
+            ? context.l10n.crowdShareCrowd
+            : context.l10n.crowdShareMine,
         fileName: onCrowdTab
             ? 'escalacao_da_torcida.png'
             : 'minha_escalacao.png',
@@ -214,7 +214,7 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
     if (!ok || !context.mounted) return;
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(const SnackBar(content: Text('Escalação enviada!')));
+    ).showSnackBar(SnackBar(content: Text(context.l10n.crowdSubmitted)));
     // "Escalação da torcida" é a aba 0 agora.
     _tabController.animateTo(0);
   }

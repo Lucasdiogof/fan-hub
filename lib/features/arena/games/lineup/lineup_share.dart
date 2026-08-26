@@ -1,10 +1,11 @@
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 
 /// Texto de resultado pra copiar/compartilhar — resumo em texto e uma
 /// linha de quadradinhos por jogador (última tentativa enviada, ou ❌ se
 /// não foi descoberto). Formato próprio, não uma cópia do Missing XI.
-String buildLineupShareText(LineupState state) {
+String buildLineupShareText(AppLocalizations l10n, LineupState state) {
   final match = state.match;
   final game = state.game;
   if (match == null || game == null) return '';
@@ -14,10 +15,15 @@ String buildLineupShareText(LineupState state) {
   final seconds = (elapsed.inSeconds % 60).toString().padLeft(2, '0');
 
   final buffer = StringBuffer()
-    ..writeln('ADIVINHE A ESCALAÇÃO — ${match.teamToGuess.toUpperCase()}')
+    ..writeln('${l10n.arenaGameLineupTitle.toUpperCase()} — ${match.teamToGuess.toUpperCase()}')
     ..writeln('${match.competition} · ${match.phase}')
     ..writeln(
-      '${state.solvedCount}/${state.totalPlayers} descobertos · ${state.totalAttempts} tentativas · $minutes:$seconds',
+      l10n.lineupShareStats(
+        state.solvedCount,
+        state.totalPlayers,
+        state.totalAttempts,
+        '$minutes:$seconds',
+      ),
     )
     ..writeln();
 

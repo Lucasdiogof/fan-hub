@@ -636,5 +636,12 @@
   "membershipValNumber": "Ingresa el número.",
   "membershipValNeighborhood": "Ingresa el barrio.",
   "membershipValState": "Ingresa el estado.",
-  "membershipValCity": "Ingresa la ciudad."
+  "membershipValCity": "Ingresa la ciudad.",
+
+  "arenaYouMarker": "{name} (tú)",
+  "arenaYourPosition": "#{rank} tu posición",
+  "lineupShareStats": "{solved}/{total} descubiertos · {attempts} intentos · {time}",
+  "crowdShareCrowd": "¡Mira la alineación de la afición para el Goiás! 💚",
+  "crowdShareMine": "¡Esta es mi alineación para el Goiás! 💚",
+  "crowdSubmitted": "¡Alineación enviada!"
 }

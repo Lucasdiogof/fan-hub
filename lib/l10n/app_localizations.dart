@@ -3561,6 +3561,42 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Informe a cidade.'**
   String get membershipValCity;
+
+  /// No description provided for @arenaYouMarker.
+  ///
+  /// In pt, this message translates to:
+  /// **'{name} (você)'**
+  String arenaYouMarker(String name);
+
+  /// No description provided for @arenaYourPosition.
+  ///
+  /// In pt, this message translates to:
+  /// **'#{rank} sua posição'**
+  String arenaYourPosition(int rank);
+
+  /// No description provided for @lineupShareStats.
+  ///
+  /// In pt, this message translates to:
+  /// **'{solved}/{total} descobertos · {attempts} tentativas · {time}'**
+  String lineupShareStats(int solved, int total, int attempts, String time);
+
+  /// No description provided for @crowdShareCrowd.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confira a escalação da torcida pro Goiás! 💚'**
+  String get crowdShareCrowd;
+
+  /// No description provided for @crowdShareMine.
+  ///
+  /// In pt, this message translates to:
+  /// **'Essa é a minha escalação pro Goiás! 💚'**
+  String get crowdShareMine;
+
+  /// No description provided for @crowdSubmitted.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escalação enviada!'**
+  String get crowdSubmitted;
 }
 
 class _AppLocalizationsDelegate

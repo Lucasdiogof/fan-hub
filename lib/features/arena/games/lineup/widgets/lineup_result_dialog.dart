@@ -96,7 +96,7 @@ class _LineupResultDialog extends StatelessWidget {
                   child: IconButton.filledTonal(
                     onPressed: () async {
                       await Clipboard.setData(
-                        ClipboardData(text: buildLineupShareText(state)),
+                        ClipboardData(text: buildLineupShareText(context.l10n, state)),
                       );
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -112,7 +112,7 @@ class _LineupResultDialog extends StatelessWidget {
                 Expanded(
                   child: IconButton.filledTonal(
                     onPressed: () => SharePlus.instance.share(
-                      ShareParams(text: buildLineupShareText(state)),
+                      ShareParams(text: buildLineupShareText(context.l10n, state)),
                     ),
                     icon: const Icon(Icons.share_rounded, size: 18),
                     tooltip: context.l10n.lineupShareResult,

@@ -1941,4 +1941,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get membershipValCity => 'Enter the city.';
+
+  @override
+  String arenaYouMarker(String name) {
+    return '$name (you)';
+  }
+
+  @override
+  String arenaYourPosition(int rank) {
+    return '#$rank your position';
+  }
+
+  @override
+  String lineupShareStats(int solved, int total, int attempts, String time) {
+    return '$solved/$total found · $attempts attempts · $time';
+  }
+
+  @override
+  String get crowdShareCrowd => 'Check out the fans\' lineup for Goiás! 💚';
+
+  @override
+  String get crowdShareMine => 'This is my lineup for Goiás! 💚';
+
+  @override
+  String get crowdSubmitted => 'Lineup submitted!';
 }
