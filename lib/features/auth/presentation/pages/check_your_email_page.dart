@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -54,7 +55,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
       messenger.showSnackBar(SnackBar(content: Text(result.failure.message)));
     } else {
       _startCooldown();
-      messenger.showSnackBar(const SnackBar(content: Text('E-mail reenviado. Confira sua caixa de entrada.')));
+      messenger.showSnackBar(SnackBar(content: Text(context.l10n.checkEmailResent)));
     }
   }
 
@@ -80,13 +81,13 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   ),
                   const SizedBox(height: AppSpacing.xxl),
                   Text(
-                    'Confirme seu e-mail',
+                    context.l10n.checkEmailTitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: colors.textPrimary),
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
-                    'Enviamos um link de confirmação para:',
+                    context.l10n.checkEmailSentTo,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 14, height: 1.4, color: colors.textSecondary),
                   ),
@@ -98,7 +99,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
-                    'Abra sua caixa de entrada e confirme seu e-mail para ativar a conta.',
+                    context.l10n.checkEmailInstruction,
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 14, height: 1.4, color: colors.textSecondary),
                   ),
@@ -112,7 +113,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   TextButton(
                     onPressed: () => context.go('/login'),
                     style: TextButton.styleFrom(foregroundColor: colors.textSecondary),
-                    child: const Text('Voltar para o login', style: TextStyle(fontWeight: FontWeight.w600)),
+                    child: Text(context.l10n.checkEmailBackToLogin, style: const TextStyle(fontWeight: FontWeight.w600)),
                   ),
                 ],
               ),
@@ -136,10 +137,10 @@ class _ResendButton extends StatelessWidget {
     final colors = context.colors;
     final disabled = cooldown > 0 || sending;
     final label = sending
-        ? 'Reenviando...'
+        ? context.l10n.checkEmailResending
         : cooldown > 0
-        ? 'Reenviar em ${cooldown}s'
-        : 'Reenviar e-mail';
+        ? context.l10n.checkEmailResendIn(cooldown)
+        : context.l10n.checkEmailResend;
 
     return Opacity(
       opacity: disabled ? 0.6 : 1,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
@@ -158,7 +159,7 @@ class _EyeButton extends StatelessWidget {
       onPressed: onTap,
       icon: Icon(obscured ? Icons.visibility_outlined : Icons.visibility_off_outlined, size: 19, color: color),
       splashRadius: 20,
-      tooltip: obscured ? 'Mostrar senha' : 'Ocultar senha',
+      tooltip: obscured ? context.l10n.authShowPassword : context.l10n.authHidePassword,
     );
   }
 }

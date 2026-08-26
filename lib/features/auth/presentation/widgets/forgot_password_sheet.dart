@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -46,7 +47,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
-    final emailError = AuthValidators.email(_emailController.text);
+    final emailError = AuthValidators.email(context.l10n, _emailController.text);
     setState(() {
       _emailError = emailError;
       _formError = null;
@@ -85,34 +86,34 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
         children: _sent
             ? [
                 Text(
-                  'Verifique seu e-mail',
+                  context.l10n.forgotVerifyEmailTitle,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: colors.textPrimary),
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
-                  'Enviamos as instruções de redefinição para $_sentEmail.',
+                  context.l10n.forgotSentInstructions(_sentEmail),
                   style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
                 ),
                 const SizedBox(height: AppSpacing.xl),
-                AppPrimaryButton(label: 'FECHAR', onPressed: () => Navigator.of(context).pop()),
+                AppPrimaryButton(label: context.l10n.commonClose, onPressed: () => Navigator.of(context).pop()),
               ]
             : [
                 Text(
-                  'Recuperar senha',
+                  context.l10n.forgotTitle,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: colors.textPrimary),
                 ),
                 const SizedBox(height: AppSpacing.sm),
                 Text(
-                  'Informe seu e-mail e enviaremos as instruções para redefinir sua senha.',
+                  context.l10n.forgotSubtitle,
                   style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
                 ),
                 const SizedBox(height: AppSpacing.xl),
                 AuthErrorBanner(message: _formError),
                 AuthTextField(
                   controller: _emailController,
-                  label: 'E-mail',
+                  label: context.l10n.commonEmailLabel,
                   icon: Icons.mail_outline_rounded,
-                  hintText: 'seuemail@email.com',
+                  hintText: context.l10n.commonEmailHint,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.done,
                   autofillHints: const [AutofillHints.email],
@@ -124,9 +125,9 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
                 ),
                 const SizedBox(height: AppSpacing.xl),
                 AppPrimaryButton(
-                  label: 'ENVIAR INSTRUÇÕES',
+                  label: context.l10n.forgotSendButton,
                   loading: _loading,
-                  loadingLabel: 'Enviando...',
+                  loadingLabel: context.l10n.forgotSending,
                   onPressed: _submit,
                 ),
               ],

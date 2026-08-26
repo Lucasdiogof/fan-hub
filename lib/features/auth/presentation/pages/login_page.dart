@@ -41,8 +41,11 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
-    final emailError = AuthValidators.email(_emailController.text);
-    final passwordError = AuthValidators.password(_passwordController.text);
+    final emailError = AuthValidators.email(context.l10n, _emailController.text);
+    final passwordError = AuthValidators.password(
+      context.l10n,
+      _passwordController.text,
+    );
     setState(() {
       _emailError = emailError;
       _passwordError = passwordError;

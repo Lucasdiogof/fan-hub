@@ -381,5 +381,38 @@
   "squadGroupLeftBacks": "Laterales izquierdos",
   "squadGroupDefensiveMids": "Volantes",
   "squadGroupMidfielders": "Mediocampistas",
-  "squadGroupForwards": "Delanteros"
+  "squadGroupForwards": "Delanteros",
+
+  "validatorNameRequired": "Ingresa tu nombre completo.",
+  "validatorEmailRequired": "Ingresa tu correo.",
+  "validatorEmailInvalid": "Ingresa un correo válido.",
+  "validatorPasswordRequired": "Ingresa tu contraseña.",
+  "validatorPasswordCreate": "Crea una contraseña.",
+  "validatorPasswordMinLength": "La contraseña debe tener al menos {min} caracteres.",
+  "validatorConfirmRequired": "Confirma tu contraseña.",
+  "validatorPasswordsDoNotMatch": "Las contraseñas no coinciden.",
+
+  "checkEmailResent": "Correo reenviado. Revisa tu bandeja de entrada.",
+  "checkEmailTitle": "Confirma tu correo",
+  "checkEmailSentTo": "Enviamos un enlace de confirmación a:",
+  "checkEmailInstruction": "Abre tu bandeja de entrada y confirma tu correo para activar la cuenta.",
+  "checkEmailBackToLogin": "Volver al inicio de sesión",
+  "checkEmailResending": "Reenviando...",
+  "checkEmailResendIn": "Reenviar en {seconds}s",
+  "checkEmailResend": "Reenviar correo",
+
+  "resetPasswordTitle": "Crear nueva contraseña",
+  "resetPasswordSubtitle": "Elige una nueva contraseña para acceder a tu cuenta.",
+  "resetPasswordSuccessTitle": "Contraseña cambiada con éxito",
+  "resetPasswordSuccessMessage": "Tu contraseña se ha actualizado. Inicia sesión de nuevo para continuar.",
+
+  "forgotVerifyEmailTitle": "Revisa tu correo",
+  "forgotSentInstructions": "Enviamos las instrucciones de restablecimiento a {email}.",
+  "forgotTitle": "Recuperar contraseña",
+  "forgotSubtitle": "Ingresa tu correo y te enviaremos las instrucciones para restablecer tu contraseña.",
+  "forgotSendButton": "ENVIAR INSTRUCCIONES",
+  "forgotSending": "Enviando...",
+
+  "authShowPassword": "Mostrar contraseña",
+  "authHidePassword": "Ocultar contraseña"
 }

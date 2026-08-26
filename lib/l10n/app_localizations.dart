@@ -2127,6 +2127,174 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Atacantes'**
   String get squadGroupForwards;
+
+  /// No description provided for @validatorNameRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu nome completo.'**
+  String get validatorNameRequired;
+
+  /// No description provided for @validatorEmailRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu e-mail.'**
+  String get validatorEmailRequired;
+
+  /// No description provided for @validatorEmailInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe um e-mail válido.'**
+  String get validatorEmailInvalid;
+
+  /// No description provided for @validatorPasswordRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe sua senha.'**
+  String get validatorPasswordRequired;
+
+  /// No description provided for @validatorPasswordCreate.
+  ///
+  /// In pt, this message translates to:
+  /// **'Crie uma senha.'**
+  String get validatorPasswordCreate;
+
+  /// No description provided for @validatorPasswordMinLength.
+  ///
+  /// In pt, this message translates to:
+  /// **'A senha deve ter ao menos {min} caracteres.'**
+  String validatorPasswordMinLength(int min);
+
+  /// No description provided for @validatorConfirmRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirme sua senha.'**
+  String get validatorConfirmRequired;
+
+  /// No description provided for @validatorPasswordsDoNotMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'As senhas não coincidem.'**
+  String get validatorPasswordsDoNotMatch;
+
+  /// No description provided for @checkEmailResent.
+  ///
+  /// In pt, this message translates to:
+  /// **'E-mail reenviado. Confira sua caixa de entrada.'**
+  String get checkEmailResent;
+
+  /// No description provided for @checkEmailTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirme seu e-mail'**
+  String get checkEmailTitle;
+
+  /// No description provided for @checkEmailSentTo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Enviamos um link de confirmação para:'**
+  String get checkEmailSentTo;
+
+  /// No description provided for @checkEmailInstruction.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abra sua caixa de entrada e confirme seu e-mail para ativar a conta.'**
+  String get checkEmailInstruction;
+
+  /// No description provided for @checkEmailBackToLogin.
+  ///
+  /// In pt, this message translates to:
+  /// **'Voltar para o login'**
+  String get checkEmailBackToLogin;
+
+  /// No description provided for @checkEmailResending.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reenviando...'**
+  String get checkEmailResending;
+
+  /// No description provided for @checkEmailResendIn.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reenviar em {seconds}s'**
+  String checkEmailResendIn(int seconds);
+
+  /// No description provided for @checkEmailResend.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reenviar e-mail'**
+  String get checkEmailResend;
+
+  /// No description provided for @resetPasswordTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Criar nova senha'**
+  String get resetPasswordTitle;
+
+  /// No description provided for @resetPasswordSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha uma nova senha para acessar sua conta.'**
+  String get resetPasswordSubtitle;
+
+  /// No description provided for @resetPasswordSuccessTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Senha alterada com sucesso'**
+  String get resetPasswordSuccessTitle;
+
+  /// No description provided for @resetPasswordSuccessMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua senha foi atualizada. Entre novamente para continuar.'**
+  String get resetPasswordSuccessMessage;
+
+  /// No description provided for @forgotVerifyEmailTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Verifique seu e-mail'**
+  String get forgotVerifyEmailTitle;
+
+  /// No description provided for @forgotSentInstructions.
+  ///
+  /// In pt, this message translates to:
+  /// **'Enviamos as instruções de redefinição para {email}.'**
+  String forgotSentInstructions(String email);
+
+  /// No description provided for @forgotTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recuperar senha'**
+  String get forgotTitle;
+
+  /// No description provided for @forgotSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu e-mail e enviaremos as instruções para redefinir sua senha.'**
+  String get forgotSubtitle;
+
+  /// No description provided for @forgotSendButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'ENVIAR INSTRUÇÕES'**
+  String get forgotSendButton;
+
+  /// No description provided for @forgotSending.
+  ///
+  /// In pt, this message translates to:
+  /// **'Enviando...'**
+  String get forgotSending;
+
+  /// No description provided for @authShowPassword.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mostrar senha'**
+  String get authShowPassword;
+
+  /// No description provided for @authHidePassword.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ocultar senha'**
+  String get authHidePassword;
 }
 
 class _AppLocalizationsDelegate

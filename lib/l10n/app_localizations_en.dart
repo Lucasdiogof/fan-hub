@@ -1147,4 +1147,98 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get squadGroupForwards => 'Forwards';
+
+  @override
+  String get validatorNameRequired => 'Enter your full name.';
+
+  @override
+  String get validatorEmailRequired => 'Enter your email.';
+
+  @override
+  String get validatorEmailInvalid => 'Enter a valid email.';
+
+  @override
+  String get validatorPasswordRequired => 'Enter your password.';
+
+  @override
+  String get validatorPasswordCreate => 'Create a password.';
+
+  @override
+  String validatorPasswordMinLength(int min) {
+    return 'The password must be at least $min characters.';
+  }
+
+  @override
+  String get validatorConfirmRequired => 'Confirm your password.';
+
+  @override
+  String get validatorPasswordsDoNotMatch => 'The passwords don\'t match.';
+
+  @override
+  String get checkEmailResent => 'Email resent. Check your inbox.';
+
+  @override
+  String get checkEmailTitle => 'Confirm your email';
+
+  @override
+  String get checkEmailSentTo => 'We sent a confirmation link to:';
+
+  @override
+  String get checkEmailInstruction =>
+      'Open your inbox and confirm your email to activate the account.';
+
+  @override
+  String get checkEmailBackToLogin => 'Back to login';
+
+  @override
+  String get checkEmailResending => 'Resending...';
+
+  @override
+  String checkEmailResendIn(int seconds) {
+    return 'Resend in ${seconds}s';
+  }
+
+  @override
+  String get checkEmailResend => 'Resend email';
+
+  @override
+  String get resetPasswordTitle => 'Create new password';
+
+  @override
+  String get resetPasswordSubtitle =>
+      'Choose a new password to access your account.';
+
+  @override
+  String get resetPasswordSuccessTitle => 'Password changed successfully';
+
+  @override
+  String get resetPasswordSuccessMessage =>
+      'Your password has been updated. Sign in again to continue.';
+
+  @override
+  String get forgotVerifyEmailTitle => 'Check your email';
+
+  @override
+  String forgotSentInstructions(String email) {
+    return 'We sent the reset instructions to $email.';
+  }
+
+  @override
+  String get forgotTitle => 'Recover password';
+
+  @override
+  String get forgotSubtitle =>
+      'Enter your email and we\'ll send instructions to reset your password.';
+
+  @override
+  String get forgotSendButton => 'SEND INSTRUCTIONS';
+
+  @override
+  String get forgotSending => 'Sending...';
+
+  @override
+  String get authShowPassword => 'Show password';
+
+  @override
+  String get authHidePassword => 'Hide password';
 }

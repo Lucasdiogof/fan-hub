@@ -438,5 +438,41 @@
   "squadGroupLeftBacks": "Laterais-esquerdos",
   "squadGroupDefensiveMids": "Volantes",
   "squadGroupMidfielders": "Meios-campistas",
-  "squadGroupForwards": "Atacantes"
+  "squadGroupForwards": "Atacantes",
+
+  "validatorNameRequired": "Informe seu nome completo.",
+  "validatorEmailRequired": "Informe seu e-mail.",
+  "validatorEmailInvalid": "Informe um e-mail válido.",
+  "validatorPasswordRequired": "Informe sua senha.",
+  "validatorPasswordCreate": "Crie uma senha.",
+  "validatorPasswordMinLength": "A senha deve ter ao menos {min} caracteres.",
+  "@validatorPasswordMinLength": { "placeholders": { "min": { "type": "int" } } },
+  "validatorConfirmRequired": "Confirme sua senha.",
+  "validatorPasswordsDoNotMatch": "As senhas não coincidem.",
+
+  "checkEmailResent": "E-mail reenviado. Confira sua caixa de entrada.",
+  "checkEmailTitle": "Confirme seu e-mail",
+  "checkEmailSentTo": "Enviamos um link de confirmação para:",
+  "checkEmailInstruction": "Abra sua caixa de entrada e confirme seu e-mail para ativar a conta.",
+  "checkEmailBackToLogin": "Voltar para o login",
+  "checkEmailResending": "Reenviando...",
+  "checkEmailResendIn": "Reenviar em {seconds}s",
+  "@checkEmailResendIn": { "placeholders": { "seconds": { "type": "int" } } },
+  "checkEmailResend": "Reenviar e-mail",
+
+  "resetPasswordTitle": "Criar nova senha",
+  "resetPasswordSubtitle": "Escolha uma nova senha para acessar sua conta.",
+  "resetPasswordSuccessTitle": "Senha alterada com sucesso",
+  "resetPasswordSuccessMessage": "Sua senha foi atualizada. Entre novamente para continuar.",
+
+  "forgotVerifyEmailTitle": "Verifique seu e-mail",
+  "forgotSentInstructions": "Enviamos as instruções de redefinição para {email}.",
+  "@forgotSentInstructions": { "placeholders": { "email": { "type": "String" } } },
+  "forgotTitle": "Recuperar senha",
+  "forgotSubtitle": "Informe seu e-mail e enviaremos as instruções para redefinir sua senha.",
+  "forgotSendButton": "ENVIAR INSTRUÇÕES",
+  "forgotSending": "Enviando...",
+
+  "authShowPassword": "Mostrar senha",
+  "authHidePassword": "Ocultar senha"
 }

@@ -45,11 +45,14 @@ class _SecurityPageState extends State<SecurityPage> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
+    final l10n = context.l10n;
     final currentPasswordError = AuthValidators.password(
+      l10n,
       _currentPasswordController.text,
     );
-    final passwordError = AuthValidators.newPassword(_passwordController.text);
+    final passwordError = AuthValidators.newPassword(l10n, _passwordController.text);
     final confirmError = AuthValidators.confirmPassword(
+      l10n,
       _confirmController.text,
       _passwordController.text,
     );

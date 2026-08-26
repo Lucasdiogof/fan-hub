@@ -52,10 +52,11 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
-    final nameError = AuthValidators.fullName(_nameController.text);
-    final emailError = AuthValidators.email(_emailController.text);
-    final passwordError = AuthValidators.newPassword(_passwordController.text);
-    final confirmError = AuthValidators.confirmPassword(_confirmController.text, _passwordController.text);
+    final l10n = context.l10n;
+    final nameError = AuthValidators.fullName(l10n, _nameController.text);
+    final emailError = AuthValidators.email(l10n, _emailController.text);
+    final passwordError = AuthValidators.newPassword(l10n, _passwordController.text);
+    final confirmError = AuthValidators.confirmPassword(l10n, _confirmController.text, _passwordController.text);
     setState(() {
       _nameError = nameError;
       _emailError = emailError;

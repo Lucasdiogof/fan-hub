@@ -1150,4 +1150,99 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get squadGroupForwards => 'Atacantes';
+
+  @override
+  String get validatorNameRequired => 'Informe seu nome completo.';
+
+  @override
+  String get validatorEmailRequired => 'Informe seu e-mail.';
+
+  @override
+  String get validatorEmailInvalid => 'Informe um e-mail válido.';
+
+  @override
+  String get validatorPasswordRequired => 'Informe sua senha.';
+
+  @override
+  String get validatorPasswordCreate => 'Crie uma senha.';
+
+  @override
+  String validatorPasswordMinLength(int min) {
+    return 'A senha deve ter ao menos $min caracteres.';
+  }
+
+  @override
+  String get validatorConfirmRequired => 'Confirme sua senha.';
+
+  @override
+  String get validatorPasswordsDoNotMatch => 'As senhas não coincidem.';
+
+  @override
+  String get checkEmailResent =>
+      'E-mail reenviado. Confira sua caixa de entrada.';
+
+  @override
+  String get checkEmailTitle => 'Confirme seu e-mail';
+
+  @override
+  String get checkEmailSentTo => 'Enviamos um link de confirmação para:';
+
+  @override
+  String get checkEmailInstruction =>
+      'Abra sua caixa de entrada e confirme seu e-mail para ativar a conta.';
+
+  @override
+  String get checkEmailBackToLogin => 'Voltar para o login';
+
+  @override
+  String get checkEmailResending => 'Reenviando...';
+
+  @override
+  String checkEmailResendIn(int seconds) {
+    return 'Reenviar em ${seconds}s';
+  }
+
+  @override
+  String get checkEmailResend => 'Reenviar e-mail';
+
+  @override
+  String get resetPasswordTitle => 'Criar nova senha';
+
+  @override
+  String get resetPasswordSubtitle =>
+      'Escolha uma nova senha para acessar sua conta.';
+
+  @override
+  String get resetPasswordSuccessTitle => 'Senha alterada com sucesso';
+
+  @override
+  String get resetPasswordSuccessMessage =>
+      'Sua senha foi atualizada. Entre novamente para continuar.';
+
+  @override
+  String get forgotVerifyEmailTitle => 'Verifique seu e-mail';
+
+  @override
+  String forgotSentInstructions(String email) {
+    return 'Enviamos as instruções de redefinição para $email.';
+  }
+
+  @override
+  String get forgotTitle => 'Recuperar senha';
+
+  @override
+  String get forgotSubtitle =>
+      'Informe seu e-mail e enviaremos as instruções para redefinir sua senha.';
+
+  @override
+  String get forgotSendButton => 'ENVIAR INSTRUÇÕES';
+
+  @override
+  String get forgotSending => 'Enviando...';
+
+  @override
+  String get authShowPassword => 'Mostrar senha';
+
+  @override
+  String get authHidePassword => 'Ocultar senha';
 }

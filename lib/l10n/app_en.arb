@@ -381,5 +381,38 @@
   "squadGroupLeftBacks": "Left-backs",
   "squadGroupDefensiveMids": "Defensive midfielders",
   "squadGroupMidfielders": "Midfielders",
-  "squadGroupForwards": "Forwards"
+  "squadGroupForwards": "Forwards",
+
+  "validatorNameRequired": "Enter your full name.",
+  "validatorEmailRequired": "Enter your email.",
+  "validatorEmailInvalid": "Enter a valid email.",
+  "validatorPasswordRequired": "Enter your password.",
+  "validatorPasswordCreate": "Create a password.",
+  "validatorPasswordMinLength": "The password must be at least {min} characters.",
+  "validatorConfirmRequired": "Confirm your password.",
+  "validatorPasswordsDoNotMatch": "The passwords don't match.",
+
+  "checkEmailResent": "Email resent. Check your inbox.",
+  "checkEmailTitle": "Confirm your email",
+  "checkEmailSentTo": "We sent a confirmation link to:",
+  "checkEmailInstruction": "Open your inbox and confirm your email to activate the account.",
+  "checkEmailBackToLogin": "Back to login",
+  "checkEmailResending": "Resending...",
+  "checkEmailResendIn": "Resend in {seconds}s",
+  "checkEmailResend": "Resend email",
+
+  "resetPasswordTitle": "Create new password",
+  "resetPasswordSubtitle": "Choose a new password to access your account.",
+  "resetPasswordSuccessTitle": "Password changed successfully",
+  "resetPasswordSuccessMessage": "Your password has been updated. Sign in again to continue.",
+
+  "forgotVerifyEmailTitle": "Check your email",
+  "forgotSentInstructions": "We sent the reset instructions to {email}.",
+  "forgotTitle": "Recover password",
+  "forgotSubtitle": "Enter your email and we'll send instructions to reset your password.",
+  "forgotSendButton": "SEND INSTRUCTIONS",
+  "forgotSending": "Sending...",
+
+  "authShowPassword": "Show password",
+  "authHidePassword": "Hide password"
 }

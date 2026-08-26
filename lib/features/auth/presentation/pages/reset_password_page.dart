@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -38,8 +39,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
-    final passwordError = AuthValidators.newPassword(_passwordController.text);
-    final confirmError = AuthValidators.confirmPassword(_confirmController.text, _passwordController.text);
+    final l10n = context.l10n;
+    final passwordError = AuthValidators.newPassword(l10n, _passwordController.text);
+    final confirmError = AuthValidators.confirmPassword(l10n, _confirmController.text, _passwordController.text);
     setState(() {
       _passwordError = passwordError;
       _confirmError = confirmError;
@@ -88,19 +90,19 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Criar nova senha', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: colors.textPrimary)),
+        Text(context.l10n.resetPasswordTitle, style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: colors.textPrimary)),
         const SizedBox(height: AppSpacing.sm),
         Text(
-          'Escolha uma nova senha para acessar sua conta.',
+          context.l10n.resetPasswordSubtitle,
           style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
         ),
         const SizedBox(height: AppSpacing.xl),
         AuthErrorBanner(message: _formError),
         AuthTextField(
           controller: _passwordController,
-          label: 'Nova senha',
+          label: context.l10n.securityNewPassword,
           icon: Icons.lock_outline_rounded,
-          hintText: 'Mínimo ${AuthValidators.minPasswordLength} caracteres',
+          hintText: context.l10n.authPasswordMinHint(AuthValidators.minPasswordLength),
           obscurable: true,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.newPassword],
@@ -114,9 +116,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         AuthTextField(
           controller: _confirmController,
           focusNode: _confirmFocus,
-          label: 'Confirmar nova senha',
+          label: context.l10n.securityConfirmNewPassword,
           icon: Icons.lock_outline_rounded,
-          hintText: 'Repita a nova senha',
+          hintText: context.l10n.securityConfirmNewPasswordHint,
           obscurable: true,
           textInputAction: TextInputAction.done,
           autofillHints: const [AutofillHints.newPassword],
@@ -128,9 +130,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         ),
         const SizedBox(height: AppSpacing.xl),
         AppPrimaryButton(
-          label: 'SALVAR NOVA SENHA',
+          label: context.l10n.securitySaveButton,
           loading: _loading,
-          loadingLabel: 'Salvando...',
+          loadingLabel: context.l10n.commonSaving,
           onPressed: _submit,
         ),
       ],
@@ -150,18 +152,18 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         ),
         const SizedBox(height: AppSpacing.xxl),
         Text(
-          'Senha alterada com sucesso',
+          context.l10n.resetPasswordSuccessTitle,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: colors.textPrimary),
         ),
         const SizedBox(height: AppSpacing.md),
         Text(
-          'Sua senha foi atualizada. Entre novamente para continuar.',
+          context.l10n.resetPasswordSuccessMessage,
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 14, height: 1.4, color: colors.textSecondary),
         ),
         const SizedBox(height: AppSpacing.xxl),
-        AppPrimaryButton(label: 'ENTRAR', showArrow: true, onPressed: _goToLogin),
+        AppPrimaryButton(label: context.l10n.authSignInButton, showArrow: true, onPressed: _goToLogin),
       ],
     );
   }

@@ -50,7 +50,10 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
   Future<void> _submit() async {
     if (!_canSubmit || _loading) return;
     FocusScope.of(context).unfocus();
-    final passwordError = AuthValidators.password(_passwordController.text);
+    final passwordError = AuthValidators.password(
+      context.l10n,
+      _passwordController.text,
+    );
     setState(() {
       _passwordError = passwordError;
       _formError = null;

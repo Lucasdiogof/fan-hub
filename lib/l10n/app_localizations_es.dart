@@ -1151,4 +1151,99 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get squadGroupForwards => 'Delanteros';
+
+  @override
+  String get validatorNameRequired => 'Ingresa tu nombre completo.';
+
+  @override
+  String get validatorEmailRequired => 'Ingresa tu correo.';
+
+  @override
+  String get validatorEmailInvalid => 'Ingresa un correo válido.';
+
+  @override
+  String get validatorPasswordRequired => 'Ingresa tu contraseña.';
+
+  @override
+  String get validatorPasswordCreate => 'Crea una contraseña.';
+
+  @override
+  String validatorPasswordMinLength(int min) {
+    return 'La contraseña debe tener al menos $min caracteres.';
+  }
+
+  @override
+  String get validatorConfirmRequired => 'Confirma tu contraseña.';
+
+  @override
+  String get validatorPasswordsDoNotMatch => 'Las contraseñas no coinciden.';
+
+  @override
+  String get checkEmailResent =>
+      'Correo reenviado. Revisa tu bandeja de entrada.';
+
+  @override
+  String get checkEmailTitle => 'Confirma tu correo';
+
+  @override
+  String get checkEmailSentTo => 'Enviamos un enlace de confirmación a:';
+
+  @override
+  String get checkEmailInstruction =>
+      'Abre tu bandeja de entrada y confirma tu correo para activar la cuenta.';
+
+  @override
+  String get checkEmailBackToLogin => 'Volver al inicio de sesión';
+
+  @override
+  String get checkEmailResending => 'Reenviando...';
+
+  @override
+  String checkEmailResendIn(int seconds) {
+    return 'Reenviar en ${seconds}s';
+  }
+
+  @override
+  String get checkEmailResend => 'Reenviar correo';
+
+  @override
+  String get resetPasswordTitle => 'Crear nueva contraseña';
+
+  @override
+  String get resetPasswordSubtitle =>
+      'Elige una nueva contraseña para acceder a tu cuenta.';
+
+  @override
+  String get resetPasswordSuccessTitle => 'Contraseña cambiada con éxito';
+
+  @override
+  String get resetPasswordSuccessMessage =>
+      'Tu contraseña se ha actualizado. Inicia sesión de nuevo para continuar.';
+
+  @override
+  String get forgotVerifyEmailTitle => 'Revisa tu correo';
+
+  @override
+  String forgotSentInstructions(String email) {
+    return 'Enviamos las instrucciones de restablecimiento a $email.';
+  }
+
+  @override
+  String get forgotTitle => 'Recuperar contraseña';
+
+  @override
+  String get forgotSubtitle =>
+      'Ingresa tu correo y te enviaremos las instrucciones para restablecer tu contraseña.';
+
+  @override
+  String get forgotSendButton => 'ENVIAR INSTRUCCIONES';
+
+  @override
+  String get forgotSending => 'Enviando...';
+
+  @override
+  String get authShowPassword => 'Mostrar contraseña';
+
+  @override
+  String get authHidePassword => 'Ocultar contraseña';
 }
