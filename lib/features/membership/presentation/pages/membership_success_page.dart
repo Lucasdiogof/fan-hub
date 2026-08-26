@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/mock/mock_data.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
@@ -49,7 +50,7 @@ class MembershipSuccessPage extends StatelessWidget {
                       AppSpacing.lg,
                     ),
                     children: [
-                      const _SectionHeader('SUA ASSOCIAÇÃO'),
+                      _SectionHeader(context.l10n.membershipYourMembership),
                       const SizedBox(height: AppSpacing.md),
                       _SummaryCard(
                         membership: membership,
@@ -57,7 +58,7 @@ class MembershipSuccessPage extends StatelessWidget {
                         holderCpf: holderCpf,
                       ),
                       const SizedBox(height: AppSpacing.xl),
-                      const _SectionHeader('SEUS BENEFÍCIOS'),
+                      _SectionHeader(context.l10n.membershipYourBenefits),
                       const SizedBox(height: AppSpacing.md),
                       _BenefitsSummary(plan: membership.plan),
                       const SizedBox(height: AppSpacing.xl),
@@ -79,7 +80,7 @@ class MembershipSuccessPage extends StatelessWidget {
                               letterSpacing: 0.3,
                             ),
                           ),
-                          child: const Text('IR PARA MINHA ÁREA DE SÓCIO'),
+                          child: Text(context.l10n.membershipGoToMemberArea),
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -89,9 +90,9 @@ class MembershipSuccessPage extends StatelessWidget {
                           style: TextButton.styleFrom(
                             foregroundColor: colors.textSecondary,
                           ),
-                          child: const Text(
-                            'Voltar para o início',
-                            style: TextStyle(
+                          child: Text(
+                            context.l10n.membershipBackToHome,
+                            style: const TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w700,
                             ),
@@ -177,10 +178,10 @@ class _SuccessHero extends StatelessWidget {
           const SizedBox(height: AppSpacing.xl),
           const _AnimatedSuccessCheck(),
           const SizedBox(height: AppSpacing.lg),
-          const Text(
-            'BEM-VINDO AO\nSÓCIO ESMERALDA',
+          Text(
+            context.l10n.membershipWelcome,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 23,
               fontWeight: FontWeight.w900,
@@ -189,7 +190,7 @@ class _SuccessHero extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do Verdão.',
+            context.l10n.membershipSuccessMessage,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.82),
@@ -324,7 +325,7 @@ class _SummaryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.pill),
               ),
               child: Text(
-                'Setor ${plan.stadiumSector}',
+                context.l10n.membershipSector(plan.stadiumSector.toString()),
                 style: TextStyle(
                   fontSize: 11.5,
                   fontWeight: FontWeight.w800,
@@ -346,7 +347,7 @@ class _SummaryCard extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: '/mês',
+                  text: context.l10n.membershipPerMonth,
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
@@ -358,13 +359,13 @@ class _SummaryCard extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            'Plano anual • ${formatBrl(price.annualPrice)}',
+            context.l10n.membershipAnnualPlan(formatBrl(price.annualPrice)),
             style: TextStyle(fontSize: 12, color: colors.textSecondary),
           ),
           const SizedBox(height: AppSpacing.lg),
           Divider(color: colors.border, height: 1),
           const SizedBox(height: AppSpacing.lg),
-          _LabelValue(label: 'Titular', value: holderName),
+          _LabelValue(label: context.l10n.membershipHolder, value: holderName),
           if (maskedCpf != null && maskedCpf.isNotEmpty) ...[
             const SizedBox(height: 2),
             Text(
@@ -375,7 +376,7 @@ class _SummaryCard extends StatelessWidget {
           if (membership.startedAt != null) ...[
             const SizedBox(height: AppSpacing.md),
             _LabelValue(
-              label: 'Associado desde',
+              label: context.l10n.membershipAssociatedSince,
               value: _formatDate(membership.startedAt!),
             ),
           ],
@@ -439,7 +440,7 @@ class _ActivePill extends StatelessWidget {
         ),
         const SizedBox(width: 5),
         Text(
-          'ATIVO',
+          context.l10n.membershipStatusActive.toUpperCase(),
           style: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w800,
@@ -502,7 +503,7 @@ class _BenefitsSummary extends StatelessWidget {
             GestureDetector(
               onTap: () => context.push('/membership/plans/${plan.id}'),
               child: Text(
-                'Ver todos os benefícios →',
+                context.l10n.membershipSeeAllBenefits,
                 style: TextStyle(
                   fontSize: 12.5,
                   fontWeight: FontWeight.w700,
@@ -539,7 +540,7 @@ class _NextSteps extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'E AGORA?',
+                  context.l10n.membershipWhatNow,
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w800,
@@ -549,8 +550,7 @@ class _NextSteps extends StatelessWidget {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'Sua área de sócio já está disponível. Acompanhe seu plano e seus '
-                  'benefícios e, quando disponível, faça o check-in nos jogos.',
+                  context.l10n.membershipWhatNowMessage,
                   style: TextStyle(
                     fontSize: 13,
                     height: 1.45,

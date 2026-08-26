@@ -1680,4 +1680,101 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get membershipConfirmAssociation => 'CONFIRMAR AFILIACIÓN';
+
+  @override
+  String get membershipReviewTitle => 'REVISA TU AFILIACIÓN';
+
+  @override
+  String get membershipPlanLabel => 'Plan';
+
+  @override
+  String get membershipSectorLabel => 'Sector';
+
+  @override
+  String get membershipOptionLabel => 'Opción';
+
+  @override
+  String get membershipHolderData => 'DATOS DEL TITULAR';
+
+  @override
+  String get membershipName => 'Nombre';
+
+  @override
+  String get membershipBirthLabel => 'Nacimiento';
+
+  @override
+  String get membershipContact => 'CONTACTO';
+
+  @override
+  String get membershipAddressLabel => 'Dirección';
+
+  @override
+  String get membershipCityUf => 'Ciudad/Estado';
+
+  @override
+  String get membershipValue => 'IMPORTE';
+
+  @override
+  String get membershipMonthly => 'Mensual';
+
+  @override
+  String get membershipAnnual => 'Anual';
+
+  @override
+  String get membershipTerms => 'TÉRMINOS DE LA AFILIACIÓN';
+
+  @override
+  String get membershipAcceptRegulation =>
+      'He leído y acepto el Reglamento de Sócio Esmeralda';
+
+  @override
+  String get membershipReadFullRegulation => 'Leer el reglamento completo →';
+
+  @override
+  String get membershipYourMembership => 'TU AFILIACIÓN';
+
+  @override
+  String get membershipYourBenefits => 'TUS BENEFICIOS';
+
+  @override
+  String get membershipGoToMemberArea => 'IR A MI ÁREA DE SOCIO';
+
+  @override
+  String get membershipBackToHome => 'Volver al inicio';
+
+  @override
+  String get membershipWelcome => 'BIENVENIDO A\nSÓCIO ESMERALDA';
+
+  @override
+  String get membershipSuccessMessage =>
+      'Tu afiliación se completó con éxito.\nAhora estás aún más cerca del Goiás.';
+
+  @override
+  String membershipAnnualPlan(String price) {
+    return 'Plan anual • $price';
+  }
+
+  @override
+  String get membershipHolder => 'Titular';
+
+  @override
+  String membershipCpfMasked(String cpf) {
+    return 'CPF $cpf';
+  }
+
+  @override
+  String get membershipAssociatedSince => 'Socio desde';
+
+  @override
+  String get membershipStatusActive => 'Activo';
+
+  @override
+  String get membershipSeeAllBenefits => 'Ver todos los beneficios →';
+
+  @override
+  String get membershipWhatNow => '¿Y AHORA?';
+
+  @override
+  String get membershipWhatNowMessage =>
+      'Tu área de socio ya está disponible. Sigue tu plan y tus beneficios y, cuando esté disponible, haz el check-in en los partidos.';
 }

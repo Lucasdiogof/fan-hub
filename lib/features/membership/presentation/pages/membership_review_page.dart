@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/membership_registration_validators.dart';
@@ -24,7 +25,7 @@ class MembershipReviewPage extends StatelessWidget {
     return ListView(
       children: [
         Text(
-          'REVISE SUA ASSOCIAÇÃO',
+          context.l10n.membershipReviewTitle,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w900,
@@ -34,49 +35,49 @@ class MembershipReviewPage extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.xl),
         _ReviewSection(
-          title: 'PLANO',
+          title: context.l10n.membershipPlanLabel.toUpperCase(),
           rows: [
-            _ReviewRow('Plano', state.plan.name),
+            _ReviewRow(context.l10n.membershipPlanLabel, state.plan.name),
             if (state.plan.stadiumSector != null)
-              _ReviewRow('Setor', state.plan.stadiumSector!),
+              _ReviewRow(context.l10n.membershipSectorLabel, state.plan.stadiumSector!),
             if (state.price.label.isNotEmpty)
-              _ReviewRow('Opção', state.price.label),
+              _ReviewRow(context.l10n.membershipOptionLabel, state.price.label),
           ],
         ),
         _ReviewSection(
-          title: 'DADOS DO TITULAR',
+          title: context.l10n.membershipHolderData,
           rows: [
-            _ReviewRow('Nome', data.fullName),
-            _ReviewRow('CPF', maskCpf(data.cpf)),
+            _ReviewRow(context.l10n.membershipName, data.fullName),
+            _ReviewRow(context.l10n.membershipCpf, maskCpf(data.cpf)),
             if (data.passport.trim().isNotEmpty)
-              _ReviewRow('Passaporte', data.passport),
-            _ReviewRow('Nascimento', birthDate == null ? '-' : data.birthDate),
+              _ReviewRow(context.l10n.membershipPassport, data.passport),
+            _ReviewRow(context.l10n.membershipBirthLabel, birthDate == null ? '-' : data.birthDate),
           ],
         ),
         _ReviewSection(
-          title: 'CONTATO',
+          title: context.l10n.membershipContact,
           rows: [
-            _ReviewRow('E-mail', maskEmail(data.contactEmail)),
-            _ReviewRow('Celular', maskPhone(data.phone)),
+            _ReviewRow(context.l10n.commonEmailLabel, maskEmail(data.contactEmail)),
+            _ReviewRow(context.l10n.personalFieldPhone, maskPhone(data.phone)),
           ],
         ),
         _ReviewSection(
-          title: 'ENDEREÇO',
+          title: context.l10n.membershipAddressLabel.toUpperCase(),
           rows: [
-            _ReviewRow('Endereço', '${data.street}, ${data.number}'),
-            _ReviewRow('Bairro', data.neighborhood),
-            _ReviewRow('Cidade/UF', '${data.city} - ${data.state}'),
+            _ReviewRow(context.l10n.membershipAddressLabel, '${data.street}, ${data.number}'),
+            _ReviewRow(context.l10n.addressFieldNeighborhood, data.neighborhood),
+            _ReviewRow(context.l10n.membershipCityUf, '${data.city} - ${data.state}'),
           ],
         ),
         _ReviewSection(
-          title: 'VALOR',
+          title: context.l10n.membershipValue,
           rows: [
-            _ReviewRow('Mensal', formatBrl(state.price.monthlyPrice)),
-            _ReviewRow('Anual', formatBrl(state.price.annualPrice)),
+            _ReviewRow(context.l10n.membershipMonthly, formatBrl(state.price.monthlyPrice)),
+            _ReviewRow(context.l10n.membershipAnnual, formatBrl(state.price.annualPrice)),
           ],
         ),
         Text(
-          'TERMOS DA ASSOCIAÇÃO',
+          context.l10n.membershipTerms,
           style: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w800,
@@ -188,7 +189,7 @@ class _RegulationAcceptance extends StatelessWidget {
         children: [
           Semantics(
             checked: value,
-            label: 'Li e aceito o Regulamento do Sócio Esmeralda',
+            label: context.l10n.membershipAcceptRegulation,
             child: GestureDetector(
               onTap: () => onChanged(!value),
               child: Container(
@@ -221,7 +222,7 @@ class _RegulationAcceptance extends StatelessWidget {
                 GestureDetector(
                   onTap: () => onChanged(!value),
                   child: Text(
-                    'Li e aceito o Regulamento do Sócio Esmeralda',
+                    context.l10n.membershipAcceptRegulation,
                     style: TextStyle(
                       fontSize: 13,
                       height: 1.4,
@@ -234,7 +235,7 @@ class _RegulationAcceptance extends StatelessWidget {
                 GestureDetector(
                   onTap: () => context.push('/membership/regulation'),
                   child: Text(
-                    'Ler regulamento completo →',
+                    context.l10n.membershipReadFullRegulation,
                     style: TextStyle(
                       fontSize: 12.5,
                       fontWeight: FontWeight.w700,

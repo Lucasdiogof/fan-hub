@@ -1676,4 +1676,101 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get membershipConfirmAssociation => 'CONFIRM MEMBERSHIP';
+
+  @override
+  String get membershipReviewTitle => 'REVIEW YOUR MEMBERSHIP';
+
+  @override
+  String get membershipPlanLabel => 'Plan';
+
+  @override
+  String get membershipSectorLabel => 'Sector';
+
+  @override
+  String get membershipOptionLabel => 'Option';
+
+  @override
+  String get membershipHolderData => 'HOLDER DATA';
+
+  @override
+  String get membershipName => 'Name';
+
+  @override
+  String get membershipBirthLabel => 'Birth';
+
+  @override
+  String get membershipContact => 'CONTACT';
+
+  @override
+  String get membershipAddressLabel => 'Address';
+
+  @override
+  String get membershipCityUf => 'City/State';
+
+  @override
+  String get membershipValue => 'AMOUNT';
+
+  @override
+  String get membershipMonthly => 'Monthly';
+
+  @override
+  String get membershipAnnual => 'Annual';
+
+  @override
+  String get membershipTerms => 'MEMBERSHIP TERMS';
+
+  @override
+  String get membershipAcceptRegulation =>
+      'I have read and accept the Sócio Esmeralda Regulation';
+
+  @override
+  String get membershipReadFullRegulation => 'Read the full regulation →';
+
+  @override
+  String get membershipYourMembership => 'YOUR MEMBERSHIP';
+
+  @override
+  String get membershipYourBenefits => 'YOUR BENEFITS';
+
+  @override
+  String get membershipGoToMemberArea => 'GO TO MY MEMBER AREA';
+
+  @override
+  String get membershipBackToHome => 'Back to home';
+
+  @override
+  String get membershipWelcome => 'WELCOME TO\nSÓCIO ESMERALDA';
+
+  @override
+  String get membershipSuccessMessage =>
+      'Your membership was completed successfully.\nNow you\'re even closer to Goiás.';
+
+  @override
+  String membershipAnnualPlan(String price) {
+    return 'Annual plan • $price';
+  }
+
+  @override
+  String get membershipHolder => 'Holder';
+
+  @override
+  String membershipCpfMasked(String cpf) {
+    return 'CPF $cpf';
+  }
+
+  @override
+  String get membershipAssociatedSince => 'Member since';
+
+  @override
+  String get membershipStatusActive => 'Active';
+
+  @override
+  String get membershipSeeAllBenefits => 'See all benefits →';
+
+  @override
+  String get membershipWhatNow => 'WHAT NOW?';
+
+  @override
+  String get membershipWhatNowMessage =>
+      'Your member area is now available. Follow your plan and benefits and, when available, check in at matches.';
 }

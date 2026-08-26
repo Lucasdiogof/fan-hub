@@ -3063,6 +3063,186 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'CONFIRMAR ASSOCIAÇÃO'**
   String get membershipConfirmAssociation;
+
+  /// No description provided for @membershipReviewTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'REVISE SUA ASSOCIAÇÃO'**
+  String get membershipReviewTitle;
+
+  /// No description provided for @membershipPlanLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Plano'**
+  String get membershipPlanLabel;
+
+  /// No description provided for @membershipSectorLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Setor'**
+  String get membershipSectorLabel;
+
+  /// No description provided for @membershipOptionLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Opção'**
+  String get membershipOptionLabel;
+
+  /// No description provided for @membershipHolderData.
+  ///
+  /// In pt, this message translates to:
+  /// **'DADOS DO TITULAR'**
+  String get membershipHolderData;
+
+  /// No description provided for @membershipName.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome'**
+  String get membershipName;
+
+  /// No description provided for @membershipBirthLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nascimento'**
+  String get membershipBirthLabel;
+
+  /// No description provided for @membershipContact.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONTATO'**
+  String get membershipContact;
+
+  /// No description provided for @membershipAddressLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Endereço'**
+  String get membershipAddressLabel;
+
+  /// No description provided for @membershipCityUf.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cidade/UF'**
+  String get membershipCityUf;
+
+  /// No description provided for @membershipValue.
+  ///
+  /// In pt, this message translates to:
+  /// **'VALOR'**
+  String get membershipValue;
+
+  /// No description provided for @membershipMonthly.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mensal'**
+  String get membershipMonthly;
+
+  /// No description provided for @membershipAnnual.
+  ///
+  /// In pt, this message translates to:
+  /// **'Anual'**
+  String get membershipAnnual;
+
+  /// No description provided for @membershipTerms.
+  ///
+  /// In pt, this message translates to:
+  /// **'TERMOS DA ASSOCIAÇÃO'**
+  String get membershipTerms;
+
+  /// No description provided for @membershipAcceptRegulation.
+  ///
+  /// In pt, this message translates to:
+  /// **'Li e aceito o Regulamento do Sócio Esmeralda'**
+  String get membershipAcceptRegulation;
+
+  /// No description provided for @membershipReadFullRegulation.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ler regulamento completo →'**
+  String get membershipReadFullRegulation;
+
+  /// No description provided for @membershipYourMembership.
+  ///
+  /// In pt, this message translates to:
+  /// **'SUA ASSOCIAÇÃO'**
+  String get membershipYourMembership;
+
+  /// No description provided for @membershipYourBenefits.
+  ///
+  /// In pt, this message translates to:
+  /// **'SEUS BENEFÍCIOS'**
+  String get membershipYourBenefits;
+
+  /// No description provided for @membershipGoToMemberArea.
+  ///
+  /// In pt, this message translates to:
+  /// **'IR PARA MINHA ÁREA DE SÓCIO'**
+  String get membershipGoToMemberArea;
+
+  /// No description provided for @membershipBackToHome.
+  ///
+  /// In pt, this message translates to:
+  /// **'Voltar para o início'**
+  String get membershipBackToHome;
+
+  /// No description provided for @membershipWelcome.
+  ///
+  /// In pt, this message translates to:
+  /// **'BEM-VINDO AO\nSÓCIO ESMERALDA'**
+  String get membershipWelcome;
+
+  /// No description provided for @membershipSuccessMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do Verdão.'**
+  String get membershipSuccessMessage;
+
+  /// No description provided for @membershipAnnualPlan.
+  ///
+  /// In pt, this message translates to:
+  /// **'Plano anual • {price}'**
+  String membershipAnnualPlan(String price);
+
+  /// No description provided for @membershipHolder.
+  ///
+  /// In pt, this message translates to:
+  /// **'Titular'**
+  String get membershipHolder;
+
+  /// No description provided for @membershipCpfMasked.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF {cpf}'**
+  String membershipCpfMasked(String cpf);
+
+  /// No description provided for @membershipAssociatedSince.
+  ///
+  /// In pt, this message translates to:
+  /// **'Associado desde'**
+  String get membershipAssociatedSince;
+
+  /// No description provided for @membershipStatusActive.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ativo'**
+  String get membershipStatusActive;
+
+  /// No description provided for @membershipSeeAllBenefits.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver todos os benefícios →'**
+  String get membershipSeeAllBenefits;
+
+  /// No description provided for @membershipWhatNow.
+  ///
+  /// In pt, this message translates to:
+  /// **'E AGORA?'**
+  String get membershipWhatNow;
+
+  /// No description provided for @membershipWhatNowMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua área de sócio já está disponível. Acompanhe seu plano e seus benefícios e, quando disponível, faça o check-in nos jogos.'**
+  String get membershipWhatNowMessage;
 }
 
 class _AppLocalizationsDelegate
