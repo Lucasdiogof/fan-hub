@@ -97,8 +97,6 @@ class CrowdLineupCubit extends Cubit<CrowdLineupState> {
     emit(state.copyWith(slots: slots, clearError: true));
   }
 
-  void clear() => emit(state.copyWith(slots: const {}, clearError: true));
-
   Future<bool> submit() async {
     if (!state.isComplete || !state.votingOpen || state.submitting) {
       return false;

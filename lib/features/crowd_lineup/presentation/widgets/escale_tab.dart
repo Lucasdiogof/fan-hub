@@ -238,7 +238,6 @@ class _ActionBar extends StatelessWidget {
     final colors = context.colors;
     return BlocBuilder<CrowdLineupCubit, CrowdLineupState>(
       builder: (context, state) {
-        final cubit = context.read<CrowdLineupCubit>();
         if (!state.canEdit) {
           return Container(
             width: double.infinity,
@@ -274,19 +273,6 @@ class _ActionBar extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (state.filledCount > 0)
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton.icon(
-                      onPressed: cubit.clear,
-                      style: TextButton.styleFrom(
-                        foregroundColor: colors.textSecondary,
-                      ),
-                      icon: const Icon(Icons.delete_sweep_outlined, size: 18),
-                      label: const Text('Limpar'),
-                    ),
-                  ),
-                const SizedBox(height: AppSpacing.xs),
                 SizedBox(
                   height: 52,
                   child: FilledButton(
