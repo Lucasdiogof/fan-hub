@@ -31,6 +31,7 @@ import 'package:goias_app/features/match/domain/repositories/football_repository
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/membership/data/ibge_location_data_source.dart';
 import 'package:goias_app/features/membership/data/membership_faq_data_source.dart';
+import 'package:goias_app/features/membership/data/membership_regulation_repository.dart';
 import 'package:goias_app/features/membership/data/mock_membership_repository.dart';
 import 'package:goias_app/features/membership/data/viacep_address_repository.dart';
 import 'package:goias_app/features/membership/data/viacep_data_source.dart';
@@ -63,7 +64,10 @@ void setupDependencies() {
   sl.registerLazySingleton<TicketRepository>(EmptyTicketRepository.new);
   sl.registerLazySingleton<MembershipRepository>(MockMembershipRepository.new);
   sl.registerLazySingleton<MembershipFaqDataSource>(
-    MembershipFaqDataSource.new,
+    () => MembershipFaqDataSource(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<MembershipRegulationRepository>(
+    () => MembershipRegulationRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<ViaCepDataSource>(() => ViaCepDataSource(sl()));
   sl.registerLazySingleton<IbgeLocationDataSource>(

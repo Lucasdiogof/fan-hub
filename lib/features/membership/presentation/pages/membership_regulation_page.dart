@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/membership/data/membership_regulation_repository.dart';
 import 'package:goias_app/features/membership/data/regulation_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_section.dart';
 import 'package:goias_app/shared/utils/regulation_markdown_parser.dart';
@@ -27,9 +28,8 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
   final _sectionKeys = <int, GlobalKey>{};
 
   Future<List<RegulationSection>> _load() async {
-    final raw = await rootBundle.loadString(
-      RegulationCatalog.current.assetPath,
-    );
+    final raw = await sl<MembershipRegulationRepository>()
+        .loadCurrentMarkdown();
     return parseRegulationSections(raw);
   }
 
