@@ -75,7 +75,8 @@ class _CareerPathViewState extends State<_CareerPathView> {
         resolve[normalizeName(alias)] = entry.name;
       }
     }
-    for (final player in careerPlayers) {
+    final players = context.read<CareerPathCubit>().state.players;
+    for (final player in players) {
       for (final answer in player.acceptedAnswers) {
         resolve[normalizeName(answer)] = player.answer;
       }
@@ -87,7 +88,7 @@ class _CareerPathViewState extends State<_CareerPathView> {
       if (seen.add(normalizeName(display))) names.add(display);
     }
 
-    for (final player in careerPlayers) {
+    for (final player in players) {
       addName(player.answer);
     }
     for (final entry in goiasPlayers) {

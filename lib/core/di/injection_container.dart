@@ -3,8 +3,10 @@ import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_storage.dart';
+import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
@@ -108,8 +110,14 @@ void setupDependencies() {
   sl.registerLazySingleton<SupabaseLineupStorage>(
     () => SupabaseLineupStorage(Supabase.instance.client),
   );
+  sl.registerLazySingleton<LineupMatchRepository>(
+    () => LineupMatchRepository(Supabase.instance.client),
+  );
   sl.registerLazySingleton<SupabaseCareerPathStorage>(
     () => SupabaseCareerPathStorage(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<CareerPlayerRepository>(
+    () => CareerPlayerRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<GuessPlayerStorage>(GuessPlayerStorage.new);
   sl.registerLazySingleton<CrowdLineupRepository>(

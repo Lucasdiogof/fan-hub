@@ -10,6 +10,12 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
+import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
+import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
+import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
+import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
+import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/presentation/pages/arena_ranking_page.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_card.dart';
@@ -125,6 +131,48 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     unawaited(context.push('/arena/quiz', extra: summaries));
   }
 
+  /// Carrega os jogadores (Supabase, com fallback local) e retoma a rodada
+  /// salva ANTES de navegar — mesma lógica de "nunca aparecer vazio" das
+  /// outras entradas da Arena.
+  Future<void> _openCareerPath(BuildContext context) async {
+    final cubit = await GlobalLoading.run(context, () async {
+      final players = await sl<CareerPlayerRepository>().load();
+      final storage = sl<SupabaseCareerPathStorage>();
+      final cubit = CareerPathCubit(
+        players: players,
+        loadRound: storage.load,
+        saveRound: storage.save,
+        loadSelectedId: storage.loadSelectedPlayerId,
+        saveSelectedId: storage.saveSelectedPlayerId,
+        loadCompletedIds: storage.completedIds,
+      );
+      await cubit.loadSelected();
+      return cubit;
+    });
+    if (!context.mounted) return;
+    unawaited(context.push('/arena/career-path', extra: cubit));
+  }
+
+  /// Mesma lógica do Adivinhe o Jogador, agora pra Adivinhe a Escalação.
+  Future<void> _openLineup(BuildContext context) async {
+    final cubit = await GlobalLoading.run(context, () async {
+      final matches = await sl<LineupMatchRepository>().load();
+      final storage = sl<SupabaseLineupStorage>();
+      final cubit = LineupCubit(
+        matches: matches,
+        loadState: storage.load,
+        saveState: storage.save,
+        loadSelectedMatchId: storage.loadSelectedMatchId,
+        saveSelectedMatchId: storage.saveSelectedMatchId,
+        loadCompletedIds: storage.completedIds,
+      );
+      await cubit.loadSelectedMatch();
+      return cubit;
+    });
+    if (!context.mounted) return;
+    unawaited(context.push('/arena/lineup', extra: cubit));
+  }
+
   String? _subtitleFor(String gameId) {
     return switch (gameId) {
       'quiz' => '60 perguntas',
@@ -206,7 +254,12 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                         // jogo voltar a ser destaque.
                         ArenaFeaturedCard(
                           game: featured,
-                          onTap: () => context.push(featured.route),
+                          onTap: () => switch (featured.id) {
+                            'quiz' => _openQuizLevels(context),
+                            'career_path' => _openCareerPath(context),
+                            'lineup' => _openLineup(context),
+                            _ => context.push(featured.route),
+                          },
                         ),
                         const SizedBox(height: AppSpacing.xl),
                         const _SectionLabel('MAIS DESAFIOS'),
@@ -228,9 +281,12 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                               decorativeBackground: game.id == 'guess_player'
                                   ? const ArenaCardFaceDecoration()
                                   : null,
-                              onTap: () => game.id == 'quiz'
-                                  ? _openQuizLevels(context)
-                                  : context.push(game.route),
+                              onTap: () => switch (game.id) {
+                                'quiz' => _openQuizLevels(context),
+                                'career_path' => _openCareerPath(context),
+                                'lineup' => _openLineup(context),
+                                _ => context.push(game.route),
+                              },
                             ),
                         ],
                       ),
