@@ -496,4 +496,87 @@ class AppLocalizationsPt extends AppLocalizations {
   String socialOpenLink(String name) {
     return 'Abrir $name';
   }
+
+  @override
+  String get arenaSubtitle => 'Minigames rápidos para o torcedor.';
+
+  @override
+  String get arenaSectionPlayNow => 'JOGUE AGORA';
+
+  @override
+  String get arenaSectionMoreChallenges => 'MAIS DESAFIOS';
+
+  @override
+  String get arenaPlay => 'JOGAR';
+
+  @override
+  String get arenaRankingTitle => 'Ranking da Torcida';
+
+  @override
+  String get arenaRankingBannerSubtitle =>
+      'Veja os melhores da torcida nos minigames.';
+
+  @override
+  String get arenaRankingEmpty => 'Ranking ainda vazio';
+
+  @override
+  String get arenaRankingEmptyMessage =>
+      'Jogue e seja o primeiro a aparecer no ranking da torcida.';
+
+  @override
+  String get arenaAchievementTitle => 'LENDA ESMERALDINA';
+
+  @override
+  String get arenaAchievementMessage =>
+      'Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.';
+
+  @override
+  String get arenaAchievementConfirm => 'SHOW DE BOLA!';
+
+  @override
+  String get arenaPlayFirstTime => 'Jogue pela primeira vez';
+
+  @override
+  String arenaStatMatchesCorrect(int played, int correct) {
+    return '$played partidas · $correct acertos';
+  }
+
+  @override
+  String get arenaGameQuizTitle => 'Quiz do Verdão';
+
+  @override
+  String get arenaGameQuizTagline => 'Teste o quanto você conhece o Goiás.';
+
+  @override
+  String get arenaGameLineupTitle => 'Adivinhe a Escalação';
+
+  @override
+  String get arenaGameLineupTagline =>
+      'Descubra os 11 titulares de uma partida histórica do Goiás.';
+
+  @override
+  String get arenaGameCareerTitle => 'Adivinhe o Jogador';
+
+  @override
+  String get arenaGameCareerTagline =>
+      'Descubra o jogador pela trajetória na carreira.';
+
+  @override
+  String get arenaGuessPlayerTitle => 'Quem Vestiu o Manto?';
+
+  @override
+  String get arenaGuessPlayerTagline =>
+      'Descubra o jogador secreto pela foto embaçada e pelas pistas.';
+
+  @override
+  String get arenaSubtitleQuiz => '60 perguntas';
+
+  @override
+  String get arenaSubtitleLineup => '31 escalações';
+
+  @override
+  String get arenaSubtitleCareer => '23 jogadores';
+
+  @override
+  String get arenaSubtitleGuessPlayer => 'Descubra o jogador pelas pistas';
 }

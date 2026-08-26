@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -84,10 +85,9 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     await AppBottomSheet.show(
       context,
       icon: Icons.military_tech_rounded,
-      title: 'LENDA ESMERALDINA',
-      description:
-          'Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.',
-      confirmLabel: 'SHOW DE BOLA!',
+      title: context.l10n.arenaAchievementTitle,
+      description: context.l10n.arenaAchievementMessage,
+      confirmLabel: context.l10n.arenaAchievementConfirm,
     );
   }
 
@@ -115,8 +115,11 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
       ),
       'guess_player' => ArenaCardStatFooter(
         text: snapshot.guessPlayerPlayed == 0
-            ? 'Jogue pela primeira vez'
-            : '${snapshot.guessPlayerPlayed} partidas · ${snapshot.guessPlayerCorrect} acertos',
+            ? context.l10n.arenaPlayFirstTime
+            : context.l10n.arenaStatMatchesCorrect(
+                snapshot.guessPlayerPlayed,
+                snapshot.guessPlayerCorrect,
+              ),
       ),
       _ => null,
     };
@@ -219,10 +222,10 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
 
   String? _subtitleFor(String gameId) {
     return switch (gameId) {
-      'quiz' => '60 perguntas',
-      'lineup' => '31 escalações',
-      'career_path' => '23 jogadores',
-      'guess_player' => 'Descubra o jogador pelas pistas',
+      'quiz' => context.l10n.arenaSubtitleQuiz,
+      'lineup' => context.l10n.arenaSubtitleLineup,
+      'career_path' => context.l10n.arenaSubtitleCareer,
+      'guess_player' => context.l10n.arenaSubtitleGuessPlayer,
       _ => null,
     };
   }
@@ -273,7 +276,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Minigames rápidos para o torcedor.',
+                        context.l10n.arenaSubtitle,
                         style: TextStyle(
                           fontSize: 14,
                           color: colors.textSecondary,
@@ -314,7 +317,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                       ),
                       const SizedBox(height: AppSpacing.xl),
                       if (featured != null) ...[
-                        const _SectionLabel('JOGUE AGORA'),
+                        _SectionLabel(context.l10n.arenaSectionPlayNow),
                         const SizedBox(height: AppSpacing.md),
                         // Nenhum jogo é `featured` hoje (Pênaltis está
                         // oculto) — este bloco fica pronto pra quando algum
@@ -330,7 +333,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                           },
                         ),
                         const SizedBox(height: AppSpacing.xl),
-                        const _SectionLabel('MAIS DESAFIOS'),
+                        _SectionLabel(context.l10n.arenaSectionMoreChallenges),
                         const SizedBox(height: AppSpacing.md),
                       ],
                       GridView.count(
@@ -412,7 +415,7 @@ class _RankingBanner extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Ranking da Torcida',
+                      context.l10n.arenaRankingTitle,
                       style: TextStyle(
                         fontSize: 15.5,
                         fontWeight: FontWeight.w900,
@@ -421,7 +424,7 @@ class _RankingBanner extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'Veja os melhores da torcida nos minigames.',
+                      context.l10n.arenaRankingBannerSubtitle,
                       style: TextStyle(
                         fontSize: 12.5,
                         color: colors.textSecondary,

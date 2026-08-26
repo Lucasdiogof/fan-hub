@@ -496,4 +496,86 @@ class AppLocalizationsEn extends AppLocalizations {
   String socialOpenLink(String name) {
     return 'Open $name';
   }
+
+  @override
+  String get arenaSubtitle => 'Quick minigames for the fans.';
+
+  @override
+  String get arenaSectionPlayNow => 'PLAY NOW';
+
+  @override
+  String get arenaSectionMoreChallenges => 'MORE CHALLENGES';
+
+  @override
+  String get arenaPlay => 'PLAY';
+
+  @override
+  String get arenaRankingTitle => 'Fans\' Ranking';
+
+  @override
+  String get arenaRankingBannerSubtitle => 'See the top fans in the minigames.';
+
+  @override
+  String get arenaRankingEmpty => 'Ranking is still empty';
+
+  @override
+  String get arenaRankingEmptyMessage =>
+      'Play and be the first to appear in the fans\' ranking.';
+
+  @override
+  String get arenaAchievementTitle => 'ESMERALDINA LEGEND';
+
+  @override
+  String get arenaAchievementMessage =>
+      'You completed 100% of the Arena Esmeraldina — Goiás Quiz, Guess the Lineup and Guess the Player. This achievement is permanent.';
+
+  @override
+  String get arenaAchievementConfirm => 'AWESOME!';
+
+  @override
+  String get arenaPlayFirstTime => 'Play for the first time';
+
+  @override
+  String arenaStatMatchesCorrect(int played, int correct) {
+    return '$played matches · $correct correct';
+  }
+
+  @override
+  String get arenaGameQuizTitle => 'Goiás Quiz';
+
+  @override
+  String get arenaGameQuizTagline => 'Test how well you know Goiás.';
+
+  @override
+  String get arenaGameLineupTitle => 'Guess the Lineup';
+
+  @override
+  String get arenaGameLineupTagline =>
+      'Figure out the starting 11 from a historic Goiás match.';
+
+  @override
+  String get arenaGameCareerTitle => 'Guess the Player';
+
+  @override
+  String get arenaGameCareerTagline =>
+      'Figure out the player from their career path.';
+
+  @override
+  String get arenaGuessPlayerTitle => 'Who Wore the Shirt?';
+
+  @override
+  String get arenaGuessPlayerTagline =>
+      'Uncover the secret player from a blurred photo and clues.';
+
+  @override
+  String get arenaSubtitleQuiz => '60 questions';
+
+  @override
+  String get arenaSubtitleLineup => '31 lineups';
+
+  @override
+  String get arenaSubtitleCareer => '23 players';
+
+  @override
+  String get arenaSubtitleGuessPlayer => 'Uncover the player from the clues';
 }

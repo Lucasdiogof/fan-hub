@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/domain/arena_game.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
+import 'package:goias_app/features/arena/shared/arena_game_l10n.dart';
 
 /// `progress` é opcional de propósito — só os jogos com progressão
 /// persistente (Quiz, Adivinhe a Escalação, Adivinhe o Jogador) passam um
@@ -58,7 +60,7 @@ class ArenaFeaturedCard extends StatelessWidget {
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: Text(
-                      game.title.toUpperCase(),
+                      arenaGameTitle(context.l10n, game.id).toUpperCase(),
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
@@ -71,7 +73,7 @@ class ArenaFeaturedCard extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.md),
               Text(
-                game.tagline,
+                arenaGameTagline(context.l10n, game.id),
                 style: TextStyle(
                   fontSize: 13.5,
                   height: 1.35,
@@ -98,19 +100,19 @@ class ArenaFeaturedCard extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(AppRadius.pill),
                   ),
-                  child: const Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'JOGAR',
-                        style: TextStyle(
+                        context.l10n.arenaPlay,
+                        style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w900,
                           color: ArenaColors.goiasOutfield,
                         ),
                       ),
-                      SizedBox(width: 6),
-                      Icon(
+                      const SizedBox(width: 6),
+                      const Icon(
                         Icons.arrow_forward_rounded,
                         size: 16,
                         color: ArenaColors.goiasOutfield,
@@ -191,7 +193,7 @@ class ArenaCompactCard extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
-                      game.title,
+                      arenaGameTitle(context.l10n, game.id),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

@@ -1047,6 +1047,156 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Abrir {name}'**
   String socialOpenLink(String name);
+
+  /// No description provided for @arenaSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Minigames rápidos para o torcedor.'**
+  String get arenaSubtitle;
+
+  /// No description provided for @arenaSectionPlayNow.
+  ///
+  /// In pt, this message translates to:
+  /// **'JOGUE AGORA'**
+  String get arenaSectionPlayNow;
+
+  /// No description provided for @arenaSectionMoreChallenges.
+  ///
+  /// In pt, this message translates to:
+  /// **'MAIS DESAFIOS'**
+  String get arenaSectionMoreChallenges;
+
+  /// No description provided for @arenaPlay.
+  ///
+  /// In pt, this message translates to:
+  /// **'JOGAR'**
+  String get arenaPlay;
+
+  /// No description provided for @arenaRankingTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ranking da Torcida'**
+  String get arenaRankingTitle;
+
+  /// No description provided for @arenaRankingBannerSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Veja os melhores da torcida nos minigames.'**
+  String get arenaRankingBannerSubtitle;
+
+  /// No description provided for @arenaRankingEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ranking ainda vazio'**
+  String get arenaRankingEmpty;
+
+  /// No description provided for @arenaRankingEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogue e seja o primeiro a aparecer no ranking da torcida.'**
+  String get arenaRankingEmptyMessage;
+
+  /// No description provided for @arenaAchievementTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'LENDA ESMERALDINA'**
+  String get arenaAchievementTitle;
+
+  /// No description provided for @arenaAchievementMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.'**
+  String get arenaAchievementMessage;
+
+  /// No description provided for @arenaAchievementConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'SHOW DE BOLA!'**
+  String get arenaAchievementConfirm;
+
+  /// No description provided for @arenaPlayFirstTime.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogue pela primeira vez'**
+  String get arenaPlayFirstTime;
+
+  /// No description provided for @arenaStatMatchesCorrect.
+  ///
+  /// In pt, this message translates to:
+  /// **'{played} partidas · {correct} acertos'**
+  String arenaStatMatchesCorrect(int played, int correct);
+
+  /// No description provided for @arenaGameQuizTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quiz do Verdão'**
+  String get arenaGameQuizTitle;
+
+  /// No description provided for @arenaGameQuizTagline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Teste o quanto você conhece o Goiás.'**
+  String get arenaGameQuizTagline;
+
+  /// No description provided for @arenaGameLineupTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adivinhe a Escalação'**
+  String get arenaGameLineupTitle;
+
+  /// No description provided for @arenaGameLineupTagline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descubra os 11 titulares de uma partida histórica do Goiás.'**
+  String get arenaGameLineupTagline;
+
+  /// No description provided for @arenaGameCareerTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adivinhe o Jogador'**
+  String get arenaGameCareerTitle;
+
+  /// No description provided for @arenaGameCareerTagline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descubra o jogador pela trajetória na carreira.'**
+  String get arenaGameCareerTagline;
+
+  /// No description provided for @arenaGuessPlayerTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quem Vestiu o Manto?'**
+  String get arenaGuessPlayerTitle;
+
+  /// No description provided for @arenaGuessPlayerTagline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descubra o jogador secreto pela foto embaçada e pelas pistas.'**
+  String get arenaGuessPlayerTagline;
+
+  /// No description provided for @arenaSubtitleQuiz.
+  ///
+  /// In pt, this message translates to:
+  /// **'60 perguntas'**
+  String get arenaSubtitleQuiz;
+
+  /// No description provided for @arenaSubtitleLineup.
+  ///
+  /// In pt, this message translates to:
+  /// **'31 escalações'**
+  String get arenaSubtitleLineup;
+
+  /// No description provided for @arenaSubtitleCareer.
+  ///
+  /// In pt, this message translates to:
+  /// **'23 jogadores'**
+  String get arenaSubtitleCareer;
+
+  /// No description provided for @arenaSubtitleGuessPlayer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descubra o jogador pelas pistas'**
+  String get arenaSubtitleGuessPlayer;
 }
 
 class _AppLocalizationsDelegate

@@ -202,5 +202,35 @@
   "socialOpenLink": "Abrir {name}",
   "@socialOpenLink": {
     "placeholders": { "name": { "type": "String" } }
-  }
+  },
+
+  "arenaSubtitle": "Minigames rápidos para o torcedor.",
+  "arenaSectionPlayNow": "JOGUE AGORA",
+  "arenaSectionMoreChallenges": "MAIS DESAFIOS",
+  "arenaPlay": "JOGAR",
+  "arenaRankingTitle": "Ranking da Torcida",
+  "arenaRankingBannerSubtitle": "Veja os melhores da torcida nos minigames.",
+  "arenaRankingEmpty": "Ranking ainda vazio",
+  "arenaRankingEmptyMessage": "Jogue e seja o primeiro a aparecer no ranking da torcida.",
+  "arenaAchievementTitle": "LENDA ESMERALDINA",
+  "arenaAchievementMessage": "Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.",
+  "arenaAchievementConfirm": "SHOW DE BOLA!",
+  "arenaPlayFirstTime": "Jogue pela primeira vez",
+  "arenaStatMatchesCorrect": "{played} partidas · {correct} acertos",
+  "@arenaStatMatchesCorrect": {
+    "placeholders": { "played": { "type": "int" }, "correct": { "type": "int" } }
+  },
+
+  "arenaGameQuizTitle": "Quiz do Verdão",
+  "arenaGameQuizTagline": "Teste o quanto você conhece o Goiás.",
+  "arenaGameLineupTitle": "Adivinhe a Escalação",
+  "arenaGameLineupTagline": "Descubra os 11 titulares de uma partida histórica do Goiás.",
+  "arenaGameCareerTitle": "Adivinhe o Jogador",
+  "arenaGameCareerTagline": "Descubra o jogador pela trajetória na carreira.",
+  "arenaGuessPlayerTitle": "Quem Vestiu o Manto?",
+  "arenaGuessPlayerTagline": "Descubra o jogador secreto pela foto embaçada e pelas pistas.",
+  "arenaSubtitleQuiz": "60 perguntas",
+  "arenaSubtitleLineup": "31 escalações",
+  "arenaSubtitleCareer": "23 jogadores",
+  "arenaSubtitleGuessPlayer": "Descubra o jogador pelas pistas"
 }

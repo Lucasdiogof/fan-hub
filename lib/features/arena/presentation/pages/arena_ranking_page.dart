@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
@@ -89,7 +90,7 @@ class _ArenaRankingPageState extends State<ArenaRankingPage> {
                   ),
                   const SizedBox(width: AppSpacing.sm),
                   Text(
-                    'Ranking da Torcida',
+                    context.l10n.arenaRankingTitle,
                     style: TextStyle(
                       fontSize: 19,
                       fontWeight: FontWeight.w900,
@@ -285,7 +286,7 @@ class _EmptyRanking extends StatelessWidget {
             Icon(Icons.leaderboard_rounded, size: 48, color: colors.textHint),
             const SizedBox(height: AppSpacing.md),
             Text(
-              'Ranking ainda vazio',
+              context.l10n.arenaRankingEmpty,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w800,
@@ -294,7 +295,7 @@ class _EmptyRanking extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.xs),
             Text(
-              'Jogue e seja o primeiro a aparecer no ranking da torcida.',
+              context.l10n.arenaRankingEmptyMessage,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13.5,
