@@ -16,9 +16,13 @@ Aplicativo oficial (não-oficial, em desenvolvimento) do ecossistema digital do 
 
 ### Jogos
 - Classificação da Série B, com o Goiás destacado.
-- Rodada atual (todos os jogos, com placar para as partidas já encerradas).
+- Rodada atual (todos os jogos, com placar parcial e indicador "ao vivo" enquanto a partida está em andamento, e placar final quando encerrada).
 - Próximo jogo e últimos resultados do Goiás.
-- Detalhes de cada partida.
+- Detalhes de cada partida: placar, timeline de eventos e escalações titulares.
+- **Escalação da Torcida**: torcedores votam na escalação provável do próximo jogo do Goiás.
+
+### Notícias
+- Leitor nativo de matérias do clube, com backend próprio de scraping.
 
 ### Ingressos
 - Setores do estádio disponíveis para compra.
@@ -29,17 +33,28 @@ Aplicativo oficial (não-oficial, em desenvolvimento) do ecossistema digital do 
 - **Sócio ativo**: carteirinha digital, plano atual com benefícios, próximo jogo com check-in (preparado, sem integração real ainda), e opções de gestão (Minha Associação, Dependentes, Pagamentos, Histórico).
 - **Regulamento do Sócio Esmeralda**: leitura completa dentro do app, organizada por seção com índice navegável.
 - **Dúvidas Frequentes**: 33 perguntas oficiais do programa, com busca e filtro por categoria.
-- Toda a feature roda sobre um repositório mock local — pronta para trocar por uma integração real com o Sócio Esmeralda sem reescrever telas.
+- FAQ e Regulamento são servidos pelo Supabase (editáveis pelo dashboard sem novo build), com fallback local se a tabela estiver vazia ou sem rede. A associação em si (planos, cadastro, carteirinha) ainda roda sobre um repositório mock local — pronta pra trocar por uma integração real sem reescrever telas.
+
+### Arena Esmeraldina
+- Hub de minigames sobre a história e o elenco do Goiás: **Quiz do Verdão**, **Adivinhe a Escalação** (escalações de partidas históricas), **Adivinhe o Jogador** (pela trajetória na carreira) e **Quem Vestiu o Manto?** (jogador secreto por foto embaçada e pistas).
+- Progresso e ranking persistentes entre os jogos, com conteúdo (perguntas, partidas, jogadores) servido pelo Supabase.
+
+### O Clube
+- Hub institucional com identidade do clube: **História**, **Linha do Tempo**, **Títulos** (34 títulos oficiais) e **Hino & Músicas**.
+- Reaproveita as telas de **Elenco** e **Parceiros**.
 
 ### Mídia (Goiás na Rede)
 - Feed unificado de X (Twitter) e YouTube, com filtro por plataforma.
 
 ### Perfil e Parceiros
-- Dados do usuário autenticado.
+- Dados do usuário autenticado, com edição de dados pessoais, troca de senha e upload de avatar.
+- Tema claro/escuro.
 - Rede de parceiros do clube, com benefícios.
 
 ### Conta
 - Login, cadastro, recuperação de senha e confirmação de e-mail via Supabase Auth.
+- Termos de Uso e Política de Privacidade.
+- Exclusão de conta (remove a conta e todos os dados vinculados, com dupla confirmação).
 
 ## Arquitetura
 
