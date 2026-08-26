@@ -1,7 +1,44 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+
+/// No-op ranking repo — os testes do cubit não exercitam o placar cross-game.
+class _FakeRanking implements ArenaRankingRepository {
+  @override
+  Future<Result<ScoreResult>> recordScore({
+    required String gameId,
+    required String itemId,
+    required String eventType,
+    int? attemptNumber,
+    String? difficulty,
+    int? wrongCount,
+    int? foundCount,
+    int? totalCount,
+    bool wasRevealed = false,
+    bool wasAbandoned = false,
+  }) async => const Success(
+    ScoreResult(pointsEarned: 0, itemScore: 0, totalScore: 0, gameScore: 0),
+  );
+
+  @override
+  Future<Result<List<RankingEntry>>> getRanking(
+    RankingPeriod period, {
+    int limit = 50,
+  }) async => const Success([]);
+
+  @override
+  Future<Result<({int rank, int totalScore})?>> getMyRank(
+    RankingPeriod period,
+  ) async => const Success(null);
+
+  @override
+  Future<Result<RankingUserDetail>> getUserDetail(RankingEntry context) =>
+      throw UnimplementedError();
+}
 
 const _playerA = LineupPlayer(
   id: 'a',
@@ -75,6 +112,7 @@ LineupCubit _buildCubit(_FakeStorage storage) {
     loadSelectedMatchId: storage.loadSelectedMatchId,
     saveSelectedMatchId: storage.saveSelectedMatchId,
     loadCompletedIds: storage.completedIds,
+    ranking: _FakeRanking(),
   )..loadSelectedMatch();
 }
 

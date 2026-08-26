@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/features/news/domain/entities/news_item.dart';
 import 'package:goias_app/features/news/presentation/widgets/news_item_row.dart';
 
@@ -17,6 +18,10 @@ void main() {
   testWidgets('shows the title and the uppercased category', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
         theme: AppTheme.light,
         home: Scaffold(
           body: NewsItemRow(item: _item, onTap: () {}),
@@ -33,6 +38,10 @@ void main() {
   ) async {
     await tester.pumpWidget(
       MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
         theme: AppTheme.light,
         home: Scaffold(
           body: NewsItemRow(item: _item, onTap: () {}),
@@ -47,6 +56,10 @@ void main() {
     var tapped = false;
     await tester.pumpWidget(
       MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
         theme: AppTheme.light,
         home: Scaffold(
           body: NewsItemRow(item: _item, onTap: () => tapped = true),

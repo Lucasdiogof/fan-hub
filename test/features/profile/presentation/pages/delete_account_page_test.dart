@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/error/failures.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/auth/domain/entities/auth_user.dart';
@@ -70,6 +71,10 @@ class _FakeAuthRepository implements AuthRepository {
 
 Widget _wrap(AuthCubit cubit) {
   return MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
     theme: AppTheme.light,
     home: BlocProvider.value(value: cubit, child: const DeleteAccountPage()),
   );

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
 
 void main() {
   testWidgets('shows the section title and description', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
         theme: AppTheme.light,
         home: const Scaffold(body: SocialLinksSection()),
       ),
@@ -24,6 +29,10 @@ void main() {
     (tester) async {
       await tester.pumpWidget(
         MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
           theme: AppTheme.light,
           home: const Scaffold(body: SocialLinksSection()),
         ),
@@ -47,6 +56,10 @@ void main() {
     (tester) async {
       await tester.pumpWidget(
         MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
           theme: AppTheme.light,
           home: const Scaffold(body: SocialLinksSection()),
         ),
@@ -62,6 +75,10 @@ void main() {
     (tester) async {
       await tester.pumpWidget(
         MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
           theme: AppTheme.light,
           home: const Scaffold(body: SocialLinksSection()),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
@@ -70,6 +71,10 @@ Future<CrowdLineupCubit> _pump(
   await cubit.load();
   await tester.pumpWidget(
     MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
       theme: AppTheme.light,
       home: CrowdLineupPage(match: _match, cubit: cubit),
     ),

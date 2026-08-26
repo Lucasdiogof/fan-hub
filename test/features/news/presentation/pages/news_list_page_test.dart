@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
@@ -41,6 +42,10 @@ class _FakeNewsRepository implements NewsRepository {
 
 Widget _wrap() {
   return MaterialApp.router(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
     theme: AppTheme.light,
     routerConfig: GoRouter(
       initialLocation: '/news',

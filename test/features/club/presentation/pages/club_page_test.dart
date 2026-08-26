@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/club/presentation/pages/club_page.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 
 void main() {
   Widget wrap() {
@@ -36,7 +37,13 @@ void main() {
         ),
       ],
     );
-    return MaterialApp.router(theme: AppTheme.light, routerConfig: router);
+    return MaterialApp.router(
+      theme: AppTheme.light,
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      routerConfig: router,
+    );
   }
 
   // A página tem 4 cards grandes + uma grade de tiles — não cabe todo no

@@ -2,11 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_page.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+class _FakeRanking implements ArenaRankingRepository {
+  @override
+  Future<Result<ScoreResult>> recordScore({
+    required String gameId,
+    required String itemId,
+    required String eventType,
+    int? attemptNumber,
+    String? difficulty,
+    int? wrongCount,
+    int? foundCount,
+    int? totalCount,
+    bool wasRevealed = false,
+    bool wasAbandoned = false,
+  }) async => const Success(
+    ScoreResult(pointsEarned: 0, itemScore: 0, totalScore: 0, gameScore: 0),
+  );
+
+  @override
+  Future<Result<List<RankingEntry>>> getRanking(
+    RankingPeriod period, {
+    int limit = 50,
+  }) async => const Success([]);
+
+  @override
+  Future<Result<({int rank, int totalScore})?>> getMyRank(
+    RankingPeriod period,
+  ) async => const Success(null);
+
+  @override
+  Future<Result<RankingUserDetail>> getUserDetail(RankingEntry context) =>
+      throw UnimplementedError();
+}
 
 /// `LineupPage` resolve `SupabaseLineupStorage` via DI — como o construtor
 /// pede um `SupabaseClient` real, fazemos um dublê em memória que estende a
@@ -57,13 +94,20 @@ void main() {
         initialSelectedId: '1990_flamengo_cdb_final_volta',
       ),
     );
+    sl.registerLazySingleton<ArenaRankingRepository>(_FakeRanking.new);
   });
 
   testWidgets(
     'selecionar camisa, digitar, enviar, voltar e ver o progresso atualizado',
     (tester) async {
       await tester.pumpWidget(
-        MaterialApp(theme: AppTheme.light, home: const LineupPage()),
+        MaterialApp(
+          theme: AppTheme.light,
+          locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: const LineupPage(),
+        ),
       );
       await tester.pumpAndSettle();
 

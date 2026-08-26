@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/features/profile/data/legal_documents_data.dart';
 import 'package:goias_app/features/profile/domain/entities/legal_document.dart';
 import 'package:goias_app/features/profile/presentation/pages/legal_document_page.dart';
@@ -8,6 +9,10 @@ import 'package:goias_app/features/profile/presentation/pages/legal_document_pag
 void main() {
   Widget wrap(LegalDocument document) {
     return MaterialApp(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
       theme: AppTheme.light,
       home: LegalDocumentPage(document: document),
     );

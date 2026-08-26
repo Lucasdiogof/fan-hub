@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/news/domain/entities/news_content_block.dart';
 import 'package:goias_app/features/news/presentation/pages/news_article_page.dart';
@@ -21,6 +22,10 @@ const _article = NewsArticle(
 
 Widget _wrap(NewsArticle article) {
   return MaterialApp.router(
+      locale: const Locale('pt'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+
     theme: AppTheme.light,
     routerConfig: GoRouter(
       initialLocation: '/news/article',
