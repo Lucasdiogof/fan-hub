@@ -273,6 +273,360 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'.'**
   String get authTermsSuffix;
+
+  /// No description provided for @navHome.
+  ///
+  /// In pt, this message translates to:
+  /// **'Início'**
+  String get navHome;
+
+  /// No description provided for @navMatches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogos'**
+  String get navMatches;
+
+  /// No description provided for @navMembership.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sócio'**
+  String get navMembership;
+
+  /// No description provided for @navMedia.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mídia'**
+  String get navMedia;
+
+  /// No description provided for @navArena.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arena'**
+  String get navArena;
+
+  /// No description provided for @homeGreetingMorning.
+  ///
+  /// In pt, this message translates to:
+  /// **'Bom dia'**
+  String get homeGreetingMorning;
+
+  /// No description provided for @homeGreetingAfternoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Boa tarde'**
+  String get homeGreetingAfternoon;
+
+  /// No description provided for @homeGreetingEvening.
+  ///
+  /// In pt, this message translates to:
+  /// **'Boa noite'**
+  String get homeGreetingEvening;
+
+  /// No description provided for @homeNextMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRÓXIMO JOGO'**
+  String get homeNextMatch;
+
+  /// No description provided for @homeDateToBeConfirmed.
+  ///
+  /// In pt, this message translates to:
+  /// **'DATA A CONFIRMAR'**
+  String get homeDateToBeConfirmed;
+
+  /// No description provided for @homeMatchDetails.
+  ///
+  /// In pt, this message translates to:
+  /// **'DETALHES DO JOGO'**
+  String get homeMatchDetails;
+
+  /// No description provided for @homeTickets.
+  ///
+  /// In pt, this message translates to:
+  /// **'INGRESSOS'**
+  String get homeTickets;
+
+  /// No description provided for @homeCountdownTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'O JOGO COMEÇA EM'**
+  String get homeCountdownTitle;
+
+  /// No description provided for @homeCountdownDays.
+  ///
+  /// In pt, this message translates to:
+  /// **'DIAS'**
+  String get homeCountdownDays;
+
+  /// No description provided for @homeCountdownHours.
+  ///
+  /// In pt, this message translates to:
+  /// **'HORAS'**
+  String get homeCountdownHours;
+
+  /// No description provided for @homeCountdownMinutes.
+  ///
+  /// In pt, this message translates to:
+  /// **'MIN'**
+  String get homeCountdownMinutes;
+
+  /// No description provided for @homeCountdownSeconds.
+  ///
+  /// In pt, this message translates to:
+  /// **'SEG'**
+  String get homeCountdownSeconds;
+
+  /// No description provided for @homeMembershipPitch.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esteja ainda mais perto do Goiás\ne faça parte dessa história!'**
+  String get homeMembershipPitch;
+
+  /// No description provided for @homeMembershipBenefit1.
+  ///
+  /// In pt, this message translates to:
+  /// **'Prioridade de acesso ao estádio'**
+  String get homeMembershipBenefit1;
+
+  /// No description provided for @homeMembershipBenefit2.
+  ///
+  /// In pt, this message translates to:
+  /// **'Economia no valor do ingresso'**
+  String get homeMembershipBenefit2;
+
+  /// No description provided for @homeMembershipBenefit3.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descontos exclusivos e muito mais'**
+  String get homeMembershipBenefit3;
+
+  /// No description provided for @homeMembershipCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'SEJA SÓCIO ESMERALDINO'**
+  String get homeMembershipCta;
+
+  /// No description provided for @matchGamesTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'JOGOS'**
+  String get matchGamesTitle;
+
+  /// No description provided for @matchTabMatches.
+  ///
+  /// In pt, this message translates to:
+  /// **'PARTIDAS'**
+  String get matchTabMatches;
+
+  /// No description provided for @matchTabStandings.
+  ///
+  /// In pt, this message translates to:
+  /// **'CLASSIFICAÇÃO'**
+  String get matchTabStandings;
+
+  /// No description provided for @matchLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar os jogos'**
+  String get matchLoadError;
+
+  /// No description provided for @matchNoMatches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma partida encontrada.'**
+  String get matchNoMatches;
+
+  /// No description provided for @matchDetailsLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar a partida.'**
+  String get matchDetailsLoadError;
+
+  /// No description provided for @matchBuyTicket.
+  ///
+  /// In pt, this message translates to:
+  /// **'COMPRAR INGRESSO'**
+  String get matchBuyTicket;
+
+  /// No description provided for @matchDetailsShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'DETALHES'**
+  String get matchDetailsShort;
+
+  /// No description provided for @matchDateToBeConfirmed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Data a confirmar'**
+  String get matchDateToBeConfirmed;
+
+  /// No description provided for @matchToBeConfirmed.
+  ///
+  /// In pt, this message translates to:
+  /// **'A confirmar'**
+  String get matchToBeConfirmed;
+
+  /// No description provided for @matchInfoTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'INFORMAÇÕES'**
+  String get matchInfoTitle;
+
+  /// No description provided for @matchFieldDate.
+  ///
+  /// In pt, this message translates to:
+  /// **'Data'**
+  String get matchFieldDate;
+
+  /// No description provided for @matchFieldTime.
+  ///
+  /// In pt, this message translates to:
+  /// **'Horário'**
+  String get matchFieldTime;
+
+  /// No description provided for @matchFieldStadium.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estádio'**
+  String get matchFieldStadium;
+
+  /// No description provided for @matchFieldCity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cidade'**
+  String get matchFieldCity;
+
+  /// No description provided for @matchFieldCompetition.
+  ///
+  /// In pt, this message translates to:
+  /// **'Competição'**
+  String get matchFieldCompetition;
+
+  /// No description provided for @matchFieldRound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rodada'**
+  String get matchFieldRound;
+
+  /// No description provided for @matchFieldStatus.
+  ///
+  /// In pt, this message translates to:
+  /// **'Status'**
+  String get matchFieldStatus;
+
+  /// No description provided for @matchEventsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'EVENTOS DA PARTIDA'**
+  String get matchEventsTitle;
+
+  /// No description provided for @matchEventGoal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gol'**
+  String get matchEventGoal;
+
+  /// No description provided for @matchEventCard.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão'**
+  String get matchEventCard;
+
+  /// No description provided for @matchEventSubstitution.
+  ///
+  /// In pt, this message translates to:
+  /// **'{playerIn} entra no lugar de {playerOut}'**
+  String matchEventSubstitution(String playerIn, String playerOut);
+
+  /// No description provided for @matchLineupsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCALAÇÕES'**
+  String get matchLineupsTitle;
+
+  /// No description provided for @standingsClub.
+  ///
+  /// In pt, this message translates to:
+  /// **'CLUBE'**
+  String get standingsClub;
+
+  /// No description provided for @standingsColPoints.
+  ///
+  /// In pt, this message translates to:
+  /// **'P'**
+  String get standingsColPoints;
+
+  /// No description provided for @standingsColPlayed.
+  ///
+  /// In pt, this message translates to:
+  /// **'J'**
+  String get standingsColPlayed;
+
+  /// No description provided for @standingsColWins.
+  ///
+  /// In pt, this message translates to:
+  /// **'V'**
+  String get standingsColWins;
+
+  /// No description provided for @standingsColGoalDiff.
+  ///
+  /// In pt, this message translates to:
+  /// **'SG'**
+  String get standingsColGoalDiff;
+
+  /// No description provided for @standingsUnavailable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Classificação indisponível no momento.'**
+  String get standingsUnavailable;
+
+  /// No description provided for @matchStatusScheduled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Agendada'**
+  String get matchStatusScheduled;
+
+  /// No description provided for @matchStatusLive.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ao vivo'**
+  String get matchStatusLive;
+
+  /// No description provided for @matchStatusHalfTime.
+  ///
+  /// In pt, this message translates to:
+  /// **'Intervalo'**
+  String get matchStatusHalfTime;
+
+  /// No description provided for @matchStatusFinished.
+  ///
+  /// In pt, this message translates to:
+  /// **'Encerrada'**
+  String get matchStatusFinished;
+
+  /// No description provided for @matchStatusPostponed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adiada'**
+  String get matchStatusPostponed;
+
+  /// No description provided for @matchStatusCancelled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelada'**
+  String get matchStatusCancelled;
+
+  /// No description provided for @matchStatusSuspended.
+  ///
+  /// In pt, this message translates to:
+  /// **'Suspensa'**
+  String get matchStatusSuspended;
+
+  /// No description provided for @matchStatusUnknown.
+  ///
+  /// In pt, this message translates to:
+  /// **'Indefinido'**
+  String get matchStatusUnknown;
 }
 
 class _AppLocalizationsDelegate

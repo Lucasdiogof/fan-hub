@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
@@ -40,7 +41,7 @@ class MembershipBanner extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.lg),
             Text(
-              'Esteja ainda mais perto do Goiás\ne faça parte dessa história!',
+              context.l10n.homeMembershipPitch,
               style: TextStyle(
                 color: colors.textPrimary,
                 fontSize: 21,
@@ -50,11 +51,11 @@ class MembershipBanner extends StatelessWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.md),
-            const _Benefit(label: 'Prioridade de acesso ao estádio'),
+            _Benefit(label: context.l10n.homeMembershipBenefit1),
             const SizedBox(height: AppSpacing.sm),
-            const _Benefit(label: 'Economia no valor do ingresso'),
+            _Benefit(label: context.l10n.homeMembershipBenefit2),
             const SizedBox(height: AppSpacing.sm),
-            const _Benefit(label: 'Descontos exclusivos e muito mais'),
+            _Benefit(label: context.l10n.homeMembershipBenefit3),
             const SizedBox(height: AppSpacing.xl),
             SizedBox(
               width: double.infinity,
@@ -66,7 +67,7 @@ class MembershipBanner extends StatelessWidget {
                   ),
                   textStyle: const TextStyle(fontWeight: FontWeight.w700, letterSpacing: 0.3),
                 ),
-                child: const Text('SEJA SÓCIO ESMERALDINO'),
+                child: Text(context.l10n.homeMembershipCta),
               ),
             ),
           ],

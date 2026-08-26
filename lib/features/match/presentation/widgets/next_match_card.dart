@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -38,7 +39,7 @@ class NextMatchCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                'PRÓXIMO JOGO',
+                context.l10n.homeNextMatch,
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w800,
@@ -94,9 +95,9 @@ class NextMatchCard extends StatelessWidget {
                   label: timeLabel(match.kickoff!),
                 ),
               ] else
-                const _InfoItem(
+                _InfoItem(
                   icon: Icons.calendar_today_outlined,
-                  label: 'Data a confirmar',
+                  label: context.l10n.matchDateToBeConfirmed,
                 ),
               if (match.stadium.isNotEmpty) ...[
                 _Dot(color: colors.textHint),
@@ -128,7 +129,7 @@ class NextMatchCard extends StatelessWidget {
                       letterSpacing: 0.2,
                     ),
                   ),
-                  child: const Text('COMPRAR INGRESSO'),
+                  child: Text(context.l10n.matchBuyTicket),
                 ),
               ),
               const SizedBox(width: AppSpacing.md),
@@ -142,7 +143,7 @@ class NextMatchCard extends StatelessWidget {
                       letterSpacing: 0.2,
                     ),
                   ),
-                  child: const Text('DETALHES'),
+                  child: Text(context.l10n.matchDetailsShort),
                 ),
               ),
             ],

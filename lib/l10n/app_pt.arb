@@ -39,5 +39,80 @@
   "authTermsLink": "Termos de Uso",
   "authTermsConnector": " e a ",
   "authPrivacyLink": "Política de Privacidade",
-  "authTermsSuffix": "."
+  "authTermsSuffix": ".",
+
+  "navHome": "Início",
+  "navMatches": "Jogos",
+  "navMembership": "Sócio",
+  "navMedia": "Mídia",
+  "navArena": "Arena",
+
+  "homeGreetingMorning": "Bom dia",
+  "homeGreetingAfternoon": "Boa tarde",
+  "homeGreetingEvening": "Boa noite",
+
+  "homeNextMatch": "PRÓXIMO JOGO",
+  "homeDateToBeConfirmed": "DATA A CONFIRMAR",
+  "homeMatchDetails": "DETALHES DO JOGO",
+  "homeTickets": "INGRESSOS",
+
+  "homeCountdownTitle": "O JOGO COMEÇA EM",
+  "homeCountdownDays": "DIAS",
+  "homeCountdownHours": "HORAS",
+  "homeCountdownMinutes": "MIN",
+  "homeCountdownSeconds": "SEG",
+
+  "homeMembershipPitch": "Esteja ainda mais perto do Goiás\ne faça parte dessa história!",
+  "homeMembershipBenefit1": "Prioridade de acesso ao estádio",
+  "homeMembershipBenefit2": "Economia no valor do ingresso",
+  "homeMembershipBenefit3": "Descontos exclusivos e muito mais",
+  "homeMembershipCta": "SEJA SÓCIO ESMERALDINO",
+
+  "matchGamesTitle": "JOGOS",
+  "matchTabMatches": "PARTIDAS",
+  "matchTabStandings": "CLASSIFICAÇÃO",
+  "matchLoadError": "Não foi possível carregar os jogos",
+  "matchNoMatches": "Nenhuma partida encontrada.",
+  "matchDetailsLoadError": "Não foi possível carregar a partida.",
+  "matchBuyTicket": "COMPRAR INGRESSO",
+  "matchDetailsShort": "DETALHES",
+  "matchDateToBeConfirmed": "Data a confirmar",
+  "matchToBeConfirmed": "A confirmar",
+
+  "matchInfoTitle": "INFORMAÇÕES",
+  "matchFieldDate": "Data",
+  "matchFieldTime": "Horário",
+  "matchFieldStadium": "Estádio",
+  "matchFieldCity": "Cidade",
+  "matchFieldCompetition": "Competição",
+  "matchFieldRound": "Rodada",
+  "matchFieldStatus": "Status",
+
+  "matchEventsTitle": "EVENTOS DA PARTIDA",
+  "matchEventGoal": "Gol",
+  "matchEventCard": "Cartão",
+  "matchEventSubstitution": "{playerIn} entra no lugar de {playerOut}",
+  "@matchEventSubstitution": {
+    "placeholders": {
+      "playerIn": { "type": "String" },
+      "playerOut": { "type": "String" }
+    }
+  },
+  "matchLineupsTitle": "ESCALAÇÕES",
+
+  "standingsClub": "CLUBE",
+  "standingsColPoints": "P",
+  "standingsColPlayed": "J",
+  "standingsColWins": "V",
+  "standingsColGoalDiff": "SG",
+  "standingsUnavailable": "Classificação indisponível no momento.",
+
+  "matchStatusScheduled": "Agendada",
+  "matchStatusLive": "Ao vivo",
+  "matchStatusHalfTime": "Intervalo",
+  "matchStatusFinished": "Encerrada",
+  "matchStatusPostponed": "Adiada",
+  "matchStatusCancelled": "Cancelada",
+  "matchStatusSuspended": "Suspensa",
+  "matchStatusUnknown": "Indefinido"
 }

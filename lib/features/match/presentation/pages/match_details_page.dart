@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
@@ -76,7 +77,7 @@ class _MatchDetailsView extends StatelessWidget {
                     onRefresh: () => context.read<MatchDetailsCubit>().load(),
                     errorMessage: state.errorMessage,
                     emptyIcon: Icons.sports_soccer_outlined,
-                    emptyTitle: 'Não foi possível carregar a partida.',
+                    emptyTitle: context.l10n.matchDetailsLoadError,
                     successBuilder: (context) => _MatchDetailsContent(
                       match: state.match!,
                       events: state.events,
@@ -181,7 +182,7 @@ class _MatchDetailsContent extends StatelessWidget {
         Text(
           match.kickoff != null
               ? longDateLabel(match.kickoff!)
-              : 'Data a confirmar',
+              : context.l10n.matchDateToBeConfirmed,
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 18,
@@ -221,7 +222,7 @@ class _MatchDetailsContent extends StatelessWidget {
         ],
         const SizedBox(height: AppSpacing.xxxl),
         Text(
-          'INFORMAÇÕES',
+          context.l10n.matchInfoTitle,
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w800,
@@ -243,27 +244,27 @@ class _MatchDetailsContent extends StatelessWidget {
           child: Column(
             children: [
               _InfoRow(
-                label: 'Data',
+                label: context.l10n.matchFieldDate,
                 value: match.kickoff != null
                     ? longDateLabel(match.kickoff!)
-                    : 'A confirmar',
+                    : context.l10n.matchToBeConfirmed,
               ),
               _InfoRow(
-                label: 'Horário',
+                label: context.l10n.matchFieldTime,
                 value: match.kickoff != null ? timeLabel(match.kickoff!) : '—',
               ),
               _InfoRow(
-                label: 'Estádio',
+                label: context.l10n.matchFieldStadium,
                 value: match.stadium.isEmpty ? '—' : match.stadium,
               ),
               if (match.city != null)
-                _InfoRow(label: 'Cidade', value: match.city!),
-              _InfoRow(label: 'Competição', value: match.competition),
+                _InfoRow(label: context.l10n.matchFieldCity, value: match.city!),
+              _InfoRow(label: context.l10n.matchFieldCompetition, value: match.competition),
               if (match.round.isNotEmpty)
-                _InfoRow(label: 'Rodada', value: match.round),
+                _InfoRow(label: context.l10n.matchFieldRound, value: match.round),
               _InfoRow(
-                label: 'Status',
-                value: matchStatusLabel(match.status),
+                label: context.l10n.matchFieldStatus,
+                value: matchStatusLabel(context.l10n, match.status),
                 isLast: true,
               ),
             ],

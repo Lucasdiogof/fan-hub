@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/widgets/match_countdown.dart';
@@ -42,7 +43,7 @@ class NextMatchHero extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'PRÓXIMO JOGO',
+                  context.l10n.homeNextMatch,
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.72),
                     fontSize: 11,
@@ -64,7 +65,7 @@ class NextMatchHero extends StatelessWidget {
                 Text(
                   match.kickoff != null
                       ? '${shortDateLabel(match.kickoff!)} • ${timeLabel(match.kickoff!)} • ${match.stadium.toUpperCase()}'
-                      : 'DATA A CONFIRMAR • ${match.stadium.toUpperCase()}',
+                      : '${context.l10n.homeDateToBeConfirmed} • ${match.stadium.toUpperCase()}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -108,7 +109,7 @@ class NextMatchHero extends StatelessWidget {
                             letterSpacing: 0.3,
                           ),
                         ),
-                        child: const Text('DETALHES DO JOGO'),
+                        child: Text(context.l10n.homeMatchDetails),
                       ),
                     ),
                     const SizedBox(width: AppSpacing.md),
@@ -131,7 +132,7 @@ class NextMatchHero extends StatelessWidget {
                             letterSpacing: 0.3,
                           ),
                         ),
-                        child: const Text('INGRESSOS'),
+                        child: Text(context.l10n.homeTickets),
                       ),
                     ),
                   ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -43,7 +44,7 @@ class MatchListItem extends StatelessWidget {
                   child: Text(
                     match.kickoff != null
                         ? '${shortDateLabel(match.kickoff!)} • ${weekdayShortLabel(match.kickoff!)}'
-                        : 'Data a confirmar',
+                        : context.l10n.matchDateToBeConfirmed,
                     style: TextStyle(
                       fontSize: 11.5,
                       fontWeight: FontWeight.w700,
@@ -178,7 +179,7 @@ class _LiveBadge extends StatelessWidget {
           ),
           const SizedBox(width: 4),
           Text(
-            matchStatusLabel(status).toUpperCase(),
+            matchStatusLabel(context.l10n, status).toUpperCase(),
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w800,

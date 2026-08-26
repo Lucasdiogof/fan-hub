@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section.dart';
@@ -28,14 +29,14 @@ class GamesSectionSelector extends StatelessWidget {
         children: [
           Expanded(
             child: _SegmentButton(
-              label: 'PARTIDAS',
+              label: context.l10n.matchTabMatches,
               selected: section == GamesSection.matches,
               onTap: () => onChanged(GamesSection.matches),
             ),
           ),
           Expanded(
             child: _SegmentButton(
-              label: 'CLASSIFICAÇÃO',
+              label: context.l10n.matchTabStandings,
               selected: section == GamesSection.standings,
               onTap: () => onChanged(GamesSection.standings),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
@@ -24,11 +25,11 @@ class StandingsHeader extends StatelessWidget {
         children: [
           SizedBox(width: 22, child: Text('#', style: style)),
           const SizedBox(width: AppSpacing.md),
-          Expanded(child: Text('CLUBE', style: style)),
-          _ColumnLabel('P', style),
-          _ColumnLabel('J', style),
-          _ColumnLabel('V', style),
-          _ColumnLabel('SG', style, width: 32),
+          Expanded(child: Text(context.l10n.standingsClub, style: style)),
+          _ColumnLabel(context.l10n.standingsColPoints, style),
+          _ColumnLabel(context.l10n.standingsColPlayed, style),
+          _ColumnLabel(context.l10n.standingsColWins, style),
+          _ColumnLabel(context.l10n.standingsColGoalDiff, style, width: 32),
         ],
       ),
     );

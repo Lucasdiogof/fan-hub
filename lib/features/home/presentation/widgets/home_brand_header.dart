@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -23,7 +24,7 @@ class HomeBrandHeader extends StatelessWidget {
     );
 
     final title = firstName != null
-        ? '${_greeting()}, $firstName'
+        ? '${_greeting(context)}, $firstName'
         : 'GOIÁS ESPORTE CLUBE';
 
     return Padding(
@@ -78,11 +79,12 @@ String? _firstName(String? fullName) {
   return fullName.trim().split(RegExp(r'\s+')).first;
 }
 
-String _greeting() {
+String _greeting(BuildContext context) {
+  final l10n = context.l10n;
   final hour = DateTime.now().hour;
-  if (hour < 12) return 'Bom dia';
-  if (hour < 18) return 'Boa tarde';
-  return 'Boa noite';
+  if (hour < 12) return l10n.homeGreetingMorning;
+  if (hour < 18) return l10n.homeGreetingAfternoon;
+  return l10n.homeGreetingEvening;
 }
 
 class _HeaderIconButton extends StatelessWidget {

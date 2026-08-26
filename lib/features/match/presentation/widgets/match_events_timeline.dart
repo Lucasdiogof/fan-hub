@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -25,7 +26,7 @@ class MatchEventsTimeline extends StatelessWidget {
       children: [
         const SizedBox(height: AppSpacing.xxxl),
         Text(
-          'EVENTOS DA PARTIDA',
+          context.l10n.matchEventsTitle,
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w800,
@@ -95,7 +96,7 @@ class _EventRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  _primaryLabel(event),
+                  _primaryLabel(context, event),
                   style: TextStyle(
                     fontSize: 13.5,
                     fontWeight: FontWeight.w700,
@@ -115,16 +116,20 @@ class _EventRow extends StatelessWidget {
     );
   }
 
-  String _primaryLabel(MatchEvent event) {
+  String _primaryLabel(BuildContext context, MatchEvent event) {
+    final l10n = context.l10n;
     switch (event.type) {
       case MatchEventType.goal:
-        final who = event.player ?? 'Gol';
+        final who = event.player ?? l10n.matchEventGoal;
         return event.detail != null ? '$who (${event.detail})' : who;
       case MatchEventType.yellowCard:
       case MatchEventType.redCard:
-        return event.player ?? 'Cartão';
+        return event.player ?? l10n.matchEventCard;
       case MatchEventType.substitution:
-        return '${event.player ?? '—'} entra no lugar de ${event.detail ?? '—'}';
+        return l10n.matchEventSubstitution(
+          event.player ?? '—',
+          event.detail ?? '—',
+        );
       case MatchEventType.other:
         return event.detail ?? '—';
     }

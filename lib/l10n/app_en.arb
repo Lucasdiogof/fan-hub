@@ -31,5 +31,80 @@
   "authTermsLink": "Terms of Use",
   "authTermsConnector": " and the ",
   "authPrivacyLink": "Privacy Policy",
-  "authTermsSuffix": "."
+  "authTermsSuffix": ".",
+
+  "navHome": "Home",
+  "navMatches": "Matches",
+  "navMembership": "Member",
+  "navMedia": "Media",
+  "navArena": "Arena",
+
+  "homeGreetingMorning": "Good morning",
+  "homeGreetingAfternoon": "Good afternoon",
+  "homeGreetingEvening": "Good evening",
+
+  "homeNextMatch": "NEXT MATCH",
+  "homeDateToBeConfirmed": "DATE TO BE CONFIRMED",
+  "homeMatchDetails": "MATCH DETAILS",
+  "homeTickets": "TICKETS",
+
+  "homeCountdownTitle": "THE MATCH STARTS IN",
+  "homeCountdownDays": "DAYS",
+  "homeCountdownHours": "HOURS",
+  "homeCountdownMinutes": "MIN",
+  "homeCountdownSeconds": "SEC",
+
+  "homeMembershipPitch": "Get even closer to Goiás\nand be part of this story!",
+  "homeMembershipBenefit1": "Priority access to the stadium",
+  "homeMembershipBenefit2": "Savings on ticket prices",
+  "homeMembershipBenefit3": "Exclusive discounts and much more",
+  "homeMembershipCta": "BECOME A MEMBER",
+
+  "matchGamesTitle": "MATCHES",
+  "matchTabMatches": "MATCHES",
+  "matchTabStandings": "STANDINGS",
+  "matchLoadError": "Couldn't load the matches",
+  "matchNoMatches": "No matches found.",
+  "matchDetailsLoadError": "Couldn't load the match.",
+  "matchBuyTicket": "BUY TICKET",
+  "matchDetailsShort": "DETAILS",
+  "matchDateToBeConfirmed": "Date to be confirmed",
+  "matchToBeConfirmed": "To be confirmed",
+
+  "matchInfoTitle": "INFORMATION",
+  "matchFieldDate": "Date",
+  "matchFieldTime": "Time",
+  "matchFieldStadium": "Stadium",
+  "matchFieldCity": "City",
+  "matchFieldCompetition": "Competition",
+  "matchFieldRound": "Round",
+  "matchFieldStatus": "Status",
+
+  "matchEventsTitle": "MATCH EVENTS",
+  "matchEventGoal": "Goal",
+  "matchEventCard": "Card",
+  "matchEventSubstitution": "{playerIn} comes on for {playerOut}",
+  "@matchEventSubstitution": {
+    "placeholders": {
+      "playerIn": { "type": "String" },
+      "playerOut": { "type": "String" }
+    }
+  },
+  "matchLineupsTitle": "LINEUPS",
+
+  "standingsClub": "CLUB",
+  "standingsColPoints": "Pts",
+  "standingsColPlayed": "P",
+  "standingsColWins": "W",
+  "standingsColGoalDiff": "GD",
+  "standingsUnavailable": "Standings unavailable right now.",
+
+  "matchStatusScheduled": "Scheduled",
+  "matchStatusLive": "Live",
+  "matchStatusHalfTime": "Half-time",
+  "matchStatusFinished": "Finished",
+  "matchStatusPostponed": "Postponed",
+  "matchStatusCancelled": "Cancelled",
+  "matchStatusSuspended": "Suspended",
+  "matchStatusUnknown": "Undefined"
 }

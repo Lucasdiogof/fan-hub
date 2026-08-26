@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -142,7 +143,7 @@ class _MatchesTab extends StatelessWidget {
               ? _centered(
                   StateMessage(
                     icon: Icons.wifi_off_rounded,
-                    title: 'Não foi possível carregar os jogos',
+                    title: context.l10n.matchLoadError,
                     message:
                         state.currentRoundErrorMessage ??
                         state.snapshotErrorMessage,
@@ -150,9 +151,9 @@ class _MatchesTab extends StatelessWidget {
                 )
               : _allEmpty(state)
               ? _centered(
-                  const StateMessage(
+                  StateMessage(
                     icon: Icons.event_busy_rounded,
-                    title: 'Nenhuma partida encontrada.',
+                    title: context.l10n.matchNoMatches,
                   ),
                 )
               : _MatchesContent(state: state, onMatchTap: onMatchTap),

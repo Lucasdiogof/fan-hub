@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 
 /// Contagem regressiva até `kickoff`. Cuida do próprio `Timer` e só chama
 /// `setState` em si mesmo a cada segundo — a Home (e o resto do Hero) não
@@ -66,7 +67,7 @@ class _MatchCountdownState extends State<MatchCountdown> {
     return Column(
       children: [
         Text(
-          'O JOGO COMEÇA EM',
+          context.l10n.homeCountdownTitle,
           style: TextStyle(
             color: Colors.white.withValues(alpha: 0.65),
             fontSize: 10,
@@ -78,13 +79,13 @@ class _MatchCountdownState extends State<MatchCountdown> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _CountdownBlock(value: days, label: 'DIAS'),
+            _CountdownBlock(value: days, label: context.l10n.homeCountdownDays),
             const _Separator(),
-            _CountdownBlock(value: hours, label: 'HORAS'),
+            _CountdownBlock(value: hours, label: context.l10n.homeCountdownHours),
             const _Separator(),
-            _CountdownBlock(value: minutes, label: 'MIN'),
+            _CountdownBlock(value: minutes, label: context.l10n.homeCountdownMinutes),
             const _Separator(),
-            _CountdownBlock(value: seconds, label: 'SEG'),
+            _CountdownBlock(value: seconds, label: context.l10n.homeCountdownSeconds),
           ],
         ),
       ],
