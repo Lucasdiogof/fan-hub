@@ -17,7 +17,7 @@ class PersonalDataStep extends StatelessWidget {
     final cubit = context.read<MembershipRegistrationCubit>();
     final state = context.watch<MembershipRegistrationCubit>().state;
     final data = state.data;
-    final errors = state.personalErrors;
+    final errors = state.personalErrors(context.l10n);
     final colors = context.colors;
 
     return Column(

@@ -16,7 +16,7 @@ class AccessDataStep extends StatelessWidget {
     final cubit = context.read<MembershipRegistrationCubit>();
     final state = context.watch<MembershipRegistrationCubit>().state;
     final data = state.data;
-    final errors = state.accessErrors;
+    final errors = state.accessErrors(context.l10n);
     final isForeign = data.nationality != 'BR';
 
     return Column(

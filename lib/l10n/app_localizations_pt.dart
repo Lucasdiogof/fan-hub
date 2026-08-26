@@ -1892,4 +1892,61 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get membershipAddressSearchError =>
       'Não foi possível buscar o endereço.';
+
+  @override
+  String get membershipValCpfRequired => 'Informe seu CPF.';
+
+  @override
+  String get membershipValNationality => 'Selecione sua nacionalidade.';
+
+  @override
+  String get membershipValPassport => 'Informe um passaporte válido.';
+
+  @override
+  String get membershipValContactEmail => 'Informe seu e-mail de contato.';
+
+  @override
+  String get membershipValNameInvalid => 'Informe um nome válido.';
+
+  @override
+  String get membershipValBirthRequired => 'Informe sua data de nascimento.';
+
+  @override
+  String get membershipValBirthInvalid => 'Informe uma data válida.';
+
+  @override
+  String get membershipValMinAge => 'O titular precisa ter 18 anos ou mais.';
+
+  @override
+  String get membershipValSelectOption => 'Selecione uma opção.';
+
+  @override
+  String get membershipValPhoneRequired => 'Informe seu celular.';
+
+  @override
+  String get membershipValPhoneInvalid => 'Informe um celular válido.';
+
+  @override
+  String get membershipValCountry => 'Selecione o país.';
+
+  @override
+  String get membershipValCep8 => 'Informe um CEP com 8 dígitos.';
+
+  @override
+  String get membershipCepLookupError => 'Não foi possível consultar o CEP.';
+
+  @override
+  String get membershipValStreet => 'Informe o logradouro.';
+
+  @override
+  String get membershipValNumber => 'Informe o número.';
+
+  @override
+  String get membershipValNeighborhood => 'Informe o bairro.';
+
+  @override
+  String get membershipValState => 'Informe o estado.';
+
+  @override
+  String get membershipValCity => 'Informe a cidade.';
 }

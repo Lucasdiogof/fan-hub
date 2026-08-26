@@ -616,5 +616,25 @@
   "membershipFoundAddresses": "ENCONTRAMOS ESTAS DIRECCIONES",
   "membershipNoAddressFound": "No se encontró ninguna dirección.",
   "membershipNoAddressHint": "Revisa el estado, la ciudad y la calle que ingresaste.",
-  "membershipAddressSearchError": "No se pudo buscar la dirección."
+  "membershipAddressSearchError": "No se pudo buscar la dirección.",
+
+  "membershipValCpfRequired": "Ingresa tu CPF.",
+  "membershipValNationality": "Selecciona tu nacionalidad.",
+  "membershipValPassport": "Ingresa un pasaporte válido.",
+  "membershipValContactEmail": "Ingresa tu correo de contacto.",
+  "membershipValNameInvalid": "Ingresa un nombre válido.",
+  "membershipValBirthRequired": "Ingresa tu fecha de nacimiento.",
+  "membershipValBirthInvalid": "Ingresa una fecha válida.",
+  "membershipValMinAge": "El titular debe tener 18 años o más.",
+  "membershipValSelectOption": "Selecciona una opción.",
+  "membershipValPhoneRequired": "Ingresa tu celular.",
+  "membershipValPhoneInvalid": "Ingresa un celular válido.",
+  "membershipValCountry": "Selecciona el país.",
+  "membershipValCep8": "Ingresa un código postal de 8 dígitos.",
+  "membershipCepLookupError": "No se pudo consultar el código postal.",
+  "membershipValStreet": "Ingresa la calle.",
+  "membershipValNumber": "Ingresa el número.",
+  "membershipValNeighborhood": "Ingresa el barrio.",
+  "membershipValState": "Ingresa el estado.",
+  "membershipValCity": "Ingresa la ciudad."
 }

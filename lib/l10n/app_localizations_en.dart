@@ -1884,4 +1884,61 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get membershipAddressSearchError => 'Couldn\'t search the address.';
+
+  @override
+  String get membershipValCpfRequired => 'Enter your CPF.';
+
+  @override
+  String get membershipValNationality => 'Select your nationality.';
+
+  @override
+  String get membershipValPassport => 'Enter a valid passport.';
+
+  @override
+  String get membershipValContactEmail => 'Enter your contact email.';
+
+  @override
+  String get membershipValNameInvalid => 'Enter a valid name.';
+
+  @override
+  String get membershipValBirthRequired => 'Enter your date of birth.';
+
+  @override
+  String get membershipValBirthInvalid => 'Enter a valid date.';
+
+  @override
+  String get membershipValMinAge => 'The holder must be 18 or older.';
+
+  @override
+  String get membershipValSelectOption => 'Select an option.';
+
+  @override
+  String get membershipValPhoneRequired => 'Enter your phone.';
+
+  @override
+  String get membershipValPhoneInvalid => 'Enter a valid phone.';
+
+  @override
+  String get membershipValCountry => 'Select the country.';
+
+  @override
+  String get membershipValCep8 => 'Enter an 8-digit postal code.';
+
+  @override
+  String get membershipCepLookupError => 'Couldn\'t look up the postal code.';
+
+  @override
+  String get membershipValStreet => 'Enter the street.';
+
+  @override
+  String get membershipValNumber => 'Enter the number.';
+
+  @override
+  String get membershipValNeighborhood => 'Enter the neighborhood.';
+
+  @override
+  String get membershipValState => 'Enter the state.';
+
+  @override
+  String get membershipValCity => 'Enter the city.';
 }

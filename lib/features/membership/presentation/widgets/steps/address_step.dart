@@ -117,7 +117,7 @@ class AddressStep extends StatelessWidget {
     final cubit = context.read<MembershipRegistrationCubit>();
     final state = context.watch<MembershipRegistrationCubit>().state;
     final data = state.data;
-    final errors = state.addressErrors;
+    final errors = state.addressErrors(context.l10n);
     final colors = context.colors;
     final isBrazil = data.addressCountry == 'BR';
     final citiesLoading = state.citiesLoadStatus == LoadStatus.loading;

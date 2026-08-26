@@ -3447,6 +3447,120 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Não foi possível buscar o endereço.'**
   String get membershipAddressSearchError;
+
+  /// No description provided for @membershipValCpfRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu CPF.'**
+  String get membershipValCpfRequired;
+
+  /// No description provided for @membershipValNationality.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione sua nacionalidade.'**
+  String get membershipValNationality;
+
+  /// No description provided for @membershipValPassport.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe um passaporte válido.'**
+  String get membershipValPassport;
+
+  /// No description provided for @membershipValContactEmail.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu e-mail de contato.'**
+  String get membershipValContactEmail;
+
+  /// No description provided for @membershipValNameInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe um nome válido.'**
+  String get membershipValNameInvalid;
+
+  /// No description provided for @membershipValBirthRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe sua data de nascimento.'**
+  String get membershipValBirthRequired;
+
+  /// No description provided for @membershipValBirthInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe uma data válida.'**
+  String get membershipValBirthInvalid;
+
+  /// No description provided for @membershipValMinAge.
+  ///
+  /// In pt, this message translates to:
+  /// **'O titular precisa ter 18 anos ou mais.'**
+  String get membershipValMinAge;
+
+  /// No description provided for @membershipValSelectOption.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione uma opção.'**
+  String get membershipValSelectOption;
+
+  /// No description provided for @membershipValPhoneRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu celular.'**
+  String get membershipValPhoneRequired;
+
+  /// No description provided for @membershipValPhoneInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe um celular válido.'**
+  String get membershipValPhoneInvalid;
+
+  /// No description provided for @membershipValCountry.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione o país.'**
+  String get membershipValCountry;
+
+  /// No description provided for @membershipValCep8.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe um CEP com 8 dígitos.'**
+  String get membershipValCep8;
+
+  /// No description provided for @membershipCepLookupError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível consultar o CEP.'**
+  String get membershipCepLookupError;
+
+  /// No description provided for @membershipValStreet.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe o logradouro.'**
+  String get membershipValStreet;
+
+  /// No description provided for @membershipValNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe o número.'**
+  String get membershipValNumber;
+
+  /// No description provided for @membershipValNeighborhood.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe o bairro.'**
+  String get membershipValNeighborhood;
+
+  /// No description provided for @membershipValState.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe o estado.'**
+  String get membershipValState;
+
+  /// No description provided for @membershipValCity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe a cidade.'**
+  String get membershipValCity;
 }
 
 class _AppLocalizationsDelegate

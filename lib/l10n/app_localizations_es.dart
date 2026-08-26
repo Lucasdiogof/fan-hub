@@ -1889,4 +1889,62 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get membershipAddressSearchError => 'No se pudo buscar la dirección.';
+
+  @override
+  String get membershipValCpfRequired => 'Ingresa tu CPF.';
+
+  @override
+  String get membershipValNationality => 'Selecciona tu nacionalidad.';
+
+  @override
+  String get membershipValPassport => 'Ingresa un pasaporte válido.';
+
+  @override
+  String get membershipValContactEmail => 'Ingresa tu correo de contacto.';
+
+  @override
+  String get membershipValNameInvalid => 'Ingresa un nombre válido.';
+
+  @override
+  String get membershipValBirthRequired => 'Ingresa tu fecha de nacimiento.';
+
+  @override
+  String get membershipValBirthInvalid => 'Ingresa una fecha válida.';
+
+  @override
+  String get membershipValMinAge => 'El titular debe tener 18 años o más.';
+
+  @override
+  String get membershipValSelectOption => 'Selecciona una opción.';
+
+  @override
+  String get membershipValPhoneRequired => 'Ingresa tu celular.';
+
+  @override
+  String get membershipValPhoneInvalid => 'Ingresa un celular válido.';
+
+  @override
+  String get membershipValCountry => 'Selecciona el país.';
+
+  @override
+  String get membershipValCep8 => 'Ingresa un código postal de 8 dígitos.';
+
+  @override
+  String get membershipCepLookupError =>
+      'No se pudo consultar el código postal.';
+
+  @override
+  String get membershipValStreet => 'Ingresa la calle.';
+
+  @override
+  String get membershipValNumber => 'Ingresa el número.';
+
+  @override
+  String get membershipValNeighborhood => 'Ingresa el barrio.';
+
+  @override
+  String get membershipValState => 'Ingresa el estado.';
+
+  @override
+  String get membershipValCity => 'Ingresa la ciudad.';
 }

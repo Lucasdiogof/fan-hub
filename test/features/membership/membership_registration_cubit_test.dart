@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/membership/domain/entities/address_lookup_result.dart';
@@ -8,6 +9,7 @@ import 'package:goias_app/features/membership/domain/repositories/address_reposi
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_state.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 
 class _FakeMembershipRepository implements MembershipRepository {
   @override
@@ -74,6 +76,11 @@ const _plan = MembershipPlan(
 
 void main() {
   late MembershipRegistrationCubit cubit;
+  late AppLocalizations l10n;
+
+  setUpAll(() async {
+    l10n = await AppLocalizations.delegate.load(const Locale('pt'));
+  });
 
   setUp(() {
     cubit = MembershipRegistrationCubit(
@@ -87,36 +94,36 @@ void main() {
   tearDown(() => cubit.close());
 
   test('empty required fields only show "obrigatório" errors after Continuar is pressed', () {
-    expect(cubit.state.accessErrors['cpf'], isNull);
+    expect(cubit.state.accessErrors(l10n)['cpf'], isNull);
     cubit.continueFromAccess();
-    expect(cubit.state.accessErrors['cpf'], isNotNull);
+    expect(cubit.state.accessErrors(l10n)['cpf'], isNotNull);
     expect(cubit.state.isAccessStepValid, isFalse);
   });
 
   test('an invalid-but-complete CPF is flagged immediately, without needing Continuar', () {
     cubit.updateCpf('123.456.789-00'); // 11 digits, wrong check digit
-    expect(cubit.state.accessErrors['cpf'], 'CPF inválido.');
+    expect(cubit.state.accessErrors(l10n)['cpf'], 'CPF inválido.');
     expect(cubit.state.isAccessStepValid, isFalse);
   });
 
   test('fixing the CPF clears the error immediately and the step becomes valid', () {
     cubit.continueFromAccess();
     cubit.updateCpf('123.456.789-00');
-    expect(cubit.state.accessErrors['cpf'], isNotNull);
+    expect(cubit.state.accessErrors(l10n)['cpf'], isNotNull);
 
     cubit.updateNationality('BR');
     cubit.updateCpf('123.456.789-09'); // valid check digits
-    expect(cubit.state.accessErrors['cpf'], isNull);
+    expect(cubit.state.accessErrors(l10n)['cpf'], isNull);
     expect(cubit.state.isAccessStepValid, isTrue);
   });
 
   test('passport format error only shows after the field loses focus or Continuar is pressed', () {
     cubit.updateNationality('AR');
     cubit.updatePassport('A1');
-    expect(cubit.state.accessErrors['passport'], isNull);
+    expect(cubit.state.accessErrors(l10n)['passport'], isNull);
 
     cubit.markFieldBlurred('passport');
-    expect(cubit.state.accessErrors['passport'], isNotNull);
+    expect(cubit.state.accessErrors(l10n)['passport'], isNotNull);
   });
 
   test('back() from the review screen returns to the address step without losing data', () async {

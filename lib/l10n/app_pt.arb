@@ -688,5 +688,25 @@
   "membershipFoundAddresses": "ENCONTRAMOS ESTES ENDEREÇOS",
   "membershipNoAddressFound": "Nenhum endereço encontrado.",
   "membershipNoAddressHint": "Confira o estado, a cidade e o logradouro informados.",
-  "membershipAddressSearchError": "Não foi possível buscar o endereço."
+  "membershipAddressSearchError": "Não foi possível buscar o endereço.",
+
+  "membershipValCpfRequired": "Informe seu CPF.",
+  "membershipValNationality": "Selecione sua nacionalidade.",
+  "membershipValPassport": "Informe um passaporte válido.",
+  "membershipValContactEmail": "Informe seu e-mail de contato.",
+  "membershipValNameInvalid": "Informe um nome válido.",
+  "membershipValBirthRequired": "Informe sua data de nascimento.",
+  "membershipValBirthInvalid": "Informe uma data válida.",
+  "membershipValMinAge": "O titular precisa ter 18 anos ou mais.",
+  "membershipValSelectOption": "Selecione uma opção.",
+  "membershipValPhoneRequired": "Informe seu celular.",
+  "membershipValPhoneInvalid": "Informe um celular válido.",
+  "membershipValCountry": "Selecione o país.",
+  "membershipValCep8": "Informe um CEP com 8 dígitos.",
+  "membershipCepLookupError": "Não foi possível consultar o CEP.",
+  "membershipValStreet": "Informe o logradouro.",
+  "membershipValNumber": "Informe o número.",
+  "membershipValNeighborhood": "Informe o bairro.",
+  "membershipValState": "Informe o estado.",
+  "membershipValCity": "Informe a cidade."
 }

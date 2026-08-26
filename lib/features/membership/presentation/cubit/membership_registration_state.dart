@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_registration_data.dart';
@@ -74,26 +75,26 @@ class MembershipRegistrationState extends Equatable {
       touchedFields.contains(field) || stepAttempted;
 
   // ── ETAPA 1 — ACESSO ─────────────────────────────────────────────────
-  Map<String, String> get accessErrors {
+  Map<String, String> accessErrors(AppLocalizations l10n) {
     final errors = <String, String>{};
     final cpfDigits = onlyDigits(data.cpf);
     if (cpfDigits.isEmpty) {
-      if (_revealed('cpf', accessAttempted)) errors['cpf'] = 'Informe seu CPF.';
+      if (_revealed('cpf', accessAttempted)) errors['cpf'] = l10n.membershipValCpfRequired;
     } else if (!isValidCpf(data.cpf) &&
         (cpfDigits.length == 11 ||
             blurredFields.contains('cpf') ||
             accessAttempted)) {
-      errors['cpf'] = 'CPF inválido.';
+      errors['cpf'] = l10n.personalCpfInvalid;
     }
 
     if (data.nationality.isEmpty && _revealed('nationality', accessAttempted)) {
-      errors['nationality'] = 'Selecione sua nacionalidade.';
+      errors['nationality'] = l10n.membershipValNationality;
     }
 
     if (data.passport.trim().isNotEmpty &&
         !isValidPassportShape(data.passport) &&
         (blurredFields.contains('passport') || accessAttempted)) {
-      errors['passport'] = 'Informe um passaporte válido.';
+      errors['passport'] = l10n.membershipValPassport;
     }
 
     return errors;
@@ -105,25 +106,25 @@ class MembershipRegistrationState extends Equatable {
       (data.passport.trim().isEmpty || isValidPassportShape(data.passport));
 
   // ── ETAPA 2 — DADOS CADASTRAIS ───────────────────────────────────────
-  Map<String, String> get personalErrors {
+  Map<String, String> personalErrors(AppLocalizations l10n) {
     final errors = <String, String>{};
 
     if (data.contactEmail.trim().isEmpty) {
       if (_revealed('contactEmail', personalAttempted)) {
-        errors['contactEmail'] = 'Informe seu e-mail de contato.';
+        errors['contactEmail'] = l10n.membershipValContactEmail;
       }
     } else if (!isValidEmailShape(data.contactEmail) &&
         (blurredFields.contains('contactEmail') || personalAttempted)) {
-      errors['contactEmail'] = 'Informe um e-mail válido.';
+      errors['contactEmail'] = l10n.validatorEmailInvalid;
     }
 
     if (data.fullName.trim().isEmpty) {
       if (_revealed('fullName', personalAttempted)) {
-        errors['fullName'] = 'Informe seu nome completo.';
+        errors['fullName'] = l10n.validatorNameRequired;
       }
     } else if (!isValidFullName(data.fullName) &&
         (blurredFields.contains('fullName') || personalAttempted)) {
-      errors['fullName'] = 'Informe um nome válido.';
+      errors['fullName'] = l10n.membershipValNameInvalid;
     }
 
     final birthDigits = onlyDigits(data.birthDate);
@@ -133,21 +134,21 @@ class MembershipRegistrationState extends Equatable {
         birthDigits.length == 8;
     if (birthDigits.isEmpty) {
       if (_revealed('birthDate', personalAttempted)) {
-        errors['birthDate'] = 'Informe sua data de nascimento.';
+        errors['birthDate'] = l10n.membershipValBirthRequired;
       }
     } else if (birthDigits.length < 8) {
-      if (birthRevealed) errors['birthDate'] = 'Informe uma data válida.';
+      if (birthRevealed) errors['birthDate'] = l10n.membershipValBirthInvalid;
     } else {
       final parsed = parseDdMmYyyy(data.birthDate);
       if (parsed == null || parsed.isAfter(DateTime.now())) {
-        errors['birthDate'] = 'Informe uma data válida.';
+        errors['birthDate'] = l10n.membershipValBirthInvalid;
       } else if (!isAtLeast18(parsed)) {
-        errors['birthDate'] = 'O titular precisa ter 18 anos ou mais.';
+        errors['birthDate'] = l10n.membershipValMinAge;
       }
     }
 
     if (data.gender == null && _revealed('gender', personalAttempted)) {
-      errors['gender'] = 'Selecione uma opção.';
+      errors['gender'] = l10n.membershipValSelectOption;
     }
 
     final phoneDigits = onlyDigits(data.phone);
@@ -160,13 +161,13 @@ class MembershipRegistrationState extends Equatable {
         : phoneDigits.length >= 6;
     if (phoneDigits.isEmpty) {
       if (_revealed('phone', personalAttempted)) {
-        errors['phone'] = 'Informe seu celular.';
+        errors['phone'] = l10n.membershipValPhoneRequired;
       }
     } else if (!phoneValid &&
         (phoneComplete ||
             blurredFields.contains('phone') ||
             personalAttempted)) {
-      errors['phone'] = 'Informe um celular válido.';
+      errors['phone'] = l10n.membershipValPhoneInvalid;
     }
 
     return errors;
@@ -188,39 +189,39 @@ class MembershipRegistrationState extends Equatable {
   }
 
   // ── ETAPA 3 — ENDEREÇO ───────────────────────────────────────────────
-  Map<String, String> get addressErrors {
+  Map<String, String> addressErrors(AppLocalizations l10n) {
     final errors = <String, String>{};
 
     if (data.addressCountry.isEmpty &&
         _revealed('addressCountry', addressAttempted)) {
-      errors['addressCountry'] = 'Selecione o país.';
+      errors['addressCountry'] = l10n.membershipValCountry;
     }
 
     if (data.addressCountry == 'BR') {
       final cepDigits = onlyDigits(data.zipCode);
       if (cepDigits.length < 8 && _revealed('zipCode', addressAttempted)) {
-        errors['zipCode'] = 'Informe um CEP com 8 dígitos.';
+        errors['zipCode'] = l10n.membershipValCep8;
       } else if (cepLookupStatus == LoadStatus.error) {
         errors['zipCode'] =
-            cepLookupErrorMessage ?? 'Não foi possível consultar o CEP.';
+            l10n.membershipCepLookupError;
       }
     }
 
     if (data.street.trim().isEmpty && _revealed('street', addressAttempted)) {
-      errors['street'] = 'Informe o logradouro.';
+      errors['street'] = l10n.membershipValStreet;
     }
     if (data.number.trim().isEmpty && _revealed('number', addressAttempted)) {
-      errors['number'] = 'Informe o número.';
+      errors['number'] = l10n.membershipValNumber;
     }
     if (data.neighborhood.trim().isEmpty &&
         _revealed('neighborhood', addressAttempted)) {
-      errors['neighborhood'] = 'Informe o bairro.';
+      errors['neighborhood'] = l10n.membershipValNeighborhood;
     }
     if (data.state.trim().isEmpty && _revealed('state', addressAttempted)) {
-      errors['state'] = 'Informe o estado.';
+      errors['state'] = l10n.membershipValState;
     }
     if (data.city.trim().isEmpty && _revealed('city', addressAttempted)) {
-      errors['city'] = 'Informe a cidade.';
+      errors['city'] = l10n.membershipValCity;
     }
 
     return errors;
