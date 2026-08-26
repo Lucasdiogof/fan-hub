@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
@@ -46,7 +47,7 @@ class ProfileAvatarHeader extends StatelessWidget {
                   Icons.photo_camera_outlined,
                   color: colors.primary,
                 ),
-                title: const Text('Tirar foto'),
+                title: Text(context.l10n.avatarTakePhoto),
                 onTap: () => Navigator.of(sheetContext).pop(ImageSource.camera),
               ),
               ListTile(
@@ -54,7 +55,7 @@ class ProfileAvatarHeader extends StatelessWidget {
                   Icons.photo_library_outlined,
                   color: colors.primary,
                 ),
-                title: const Text('Escolher da galeria'),
+                title: Text(context.l10n.avatarChooseFromGallery),
                 onTap: () =>
                     Navigator.of(sheetContext).pop(ImageSource.gallery),
               ),

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 
-String themeModeLabel(ThemeMode mode) => switch (mode) {
-  ThemeMode.system => 'Automático',
-  ThemeMode.light => 'Claro',
-  ThemeMode.dark => 'Escuro',
+String themeModeLabel(AppLocalizations l10n, ThemeMode mode) => switch (mode) {
+  ThemeMode.system => l10n.themeModeAuto,
+  ThemeMode.light => l10n.themeModeLight,
+  ThemeMode.dark => l10n.themeModeDark,
 };
 
-String themeModeDescription(ThemeMode mode) => switch (mode) {
-  ThemeMode.system => 'Segue o tema do seu celular',
-  ThemeMode.light => 'Sempre com fundo claro',
-  ThemeMode.dark => 'Sempre com fundo escuro',
-};
+String themeModeDescription(AppLocalizations l10n, ThemeMode mode) =>
+    switch (mode) {
+      ThemeMode.system => l10n.themeModeAutoDesc,
+      ThemeMode.light => l10n.themeModeLightDesc,
+      ThemeMode.dark => l10n.themeModeDarkDesc,
+    };
 
 IconData themeModeIcon(ThemeMode mode) => switch (mode) {
   ThemeMode.system => Icons.brightness_auto_outlined,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/session/local_game_cache.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -12,8 +13,6 @@ import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dar
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
-
-const _confirmationWord = 'EXCLUIR';
 
 class DeleteAccountPage extends StatefulWidget {
   const DeleteAccountPage({super.key});
@@ -43,7 +42,8 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
   void _reevaluate() {
     final canSubmit =
         _passwordController.text.isNotEmpty &&
-        _confirmWordController.text.trim().toUpperCase() == _confirmationWord;
+        _confirmWordController.text.trim().toUpperCase() ==
+            context.l10n.deleteAccountConfirmWord.toUpperCase();
     if (canSubmit != _canSubmit) setState(() => _canSubmit = canSubmit);
   }
 
@@ -104,7 +104,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                         onTap: _loading ? () {} : () => context.pop(),
                       ),
                       const SizedBox(height: AppSpacing.lg),
-                      const PageTitle('EXCLUIR CONTA'),
+                      PageTitle(context.l10n.deleteAccountTitle),
                     ],
                   ),
                 ),
@@ -118,9 +118,9 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                     ),
                     children: [
                       Text(
-                        'Essa ação é permanente. Confirme sua senha e digite '
-                        '$_confirmationWord para excluir sua conta e todo o '
-                        'seu progresso.',
+                        context.l10n.deleteAccountInstruction(
+                          context.l10n.deleteAccountConfirmWord,
+                        ),
                         style: TextStyle(
                           fontSize: 14,
                           height: 1.35,
@@ -131,9 +131,9 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                       AuthErrorBanner(message: _formError),
                       AuthTextField(
                         controller: _passwordController,
-                        label: 'Senha atual',
+                        label: context.l10n.securityCurrentPassword,
                         icon: Icons.lock_person_outlined,
-                        hintText: 'Confirme sua senha',
+                        hintText: context.l10n.deleteAccountPasswordHint,
                         obscurable: true,
                         textInputAction: TextInputAction.next,
                         autofillHints: const [AutofillHints.password],
@@ -150,19 +150,21 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                       AuthTextField(
                         controller: _confirmWordController,
                         focusNode: _confirmWordFocus,
-                        label: 'Digite $_confirmationWord para confirmar',
+                        label: context.l10n.deleteAccountTypeWordLabel(
+                          context.l10n.deleteAccountConfirmWord,
+                        ),
                         icon: Icons.edit_outlined,
-                        hintText: _confirmationWord,
+                        hintText: context.l10n.deleteAccountConfirmWord,
                         textInputAction: TextInputAction.done,
                         onChanged: (_) => _reevaluate(),
                         onSubmitted: (_) => _submit(),
                       ),
                       const SizedBox(height: AppSpacing.xxl),
                       AppPrimaryButton(
-                        label: 'EXCLUIR MINHA CONTA',
+                        label: context.l10n.deleteAccountConfirmButton,
                         color: colors.error,
                         loading: _loading,
-                        loadingLabel: 'EXCLUINDO CONTA...',
+                        loadingLabel: context.l10n.deleteAccountDeleting,
                         onPressed: _canSubmit ? _submit : null,
                       ),
                     ],

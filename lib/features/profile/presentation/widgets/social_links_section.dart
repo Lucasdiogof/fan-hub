@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/data/social_links_data.dart';
@@ -19,7 +20,7 @@ class SocialLinksSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 2, bottom: 2),
           child: Text(
-            'SIGA O GOIÁS',
+            context.l10n.socialFollowTitle,
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w800,
@@ -31,7 +32,7 @@ class SocialLinksSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 2, bottom: AppSpacing.md),
           child: Text(
-            'Acompanhe o Verdão também nas redes sociais.',
+            context.l10n.socialFollowSubtitle,
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w500,
@@ -63,7 +64,7 @@ class _SocialLinkTile extends StatelessWidget {
     final colors = context.colors;
     return Semantics(
       button: true,
-      label: 'Abrir ${link.name}',
+      label: context.l10n.socialOpenLink(link.name),
       child: Material(
         color: colors.secondary,
         borderRadius: BorderRadius.circular(AppRadius.cardSmall),

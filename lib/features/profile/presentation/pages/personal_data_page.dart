@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
@@ -56,7 +57,7 @@ class _PersonalDataView extends StatelessWidget {
                     children: [
                       BackButtonCircle(onTap: () => context.pop()),
                       const SizedBox(height: AppSpacing.lg),
-                      const PageTitle('DADOS PESSOAIS'),
+                      PageTitle(context.l10n.personalDataTitle),
                       const SizedBox(height: AppSpacing.lg),
                     ],
                   ),
@@ -71,7 +72,7 @@ class _PersonalDataView extends StatelessWidget {
                         return Center(
                           child: StateMessage(
                             icon: Icons.error_outline_rounded,
-                            title: 'Não foi possível carregar seus dados.',
+                            title: context.l10n.personalDataLoadError,
                             message: state.errorMessage,
                           ),
                         );
@@ -121,7 +122,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
       initialDate: _birthDate ?? DateTime(now.year - 25),
       firstDate: DateTime(1900),
       lastDate: now,
-      helpText: 'Data de nascimento',
+      helpText: context.l10n.personalFieldBirthDate,
     );
     if (picked != null) setState(() => _birthDate = picked);
   }
@@ -129,11 +130,11 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
   Future<void> _save() async {
     FocusScope.of(context).unfocus();
     final nameError = _name.trim().isEmpty
-        ? 'Informe seu nome completo.'
+        ? context.l10n.personalNameRequired
         : null;
     final cpfDigits = onlyDigits(_cpf);
     final cpfError = _cpf.isNotEmpty && cpfDigits.length != 11
-        ? 'CPF inválido.'
+        ? context.l10n.personalCpfInvalid
         : null;
     setState(() {
       _nameError = nameError;
@@ -154,7 +155,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
       messenger.showSnackBar(SnackBar(content: Text(failure.message)));
     } else {
       messenger.showSnackBar(
-        const SnackBar(content: Text('Dados atualizados com sucesso.')),
+        SnackBar(content: Text(context.l10n.personalUpdateSuccess)),
       );
       context.pop();
     }
@@ -176,7 +177,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
       ),
       children: [
         RegistrationTextField(
-          label: 'Nome completo',
+          label: context.l10n.authFullNameLabel,
           value: _name,
           errorText: _nameError,
           keyboardType: TextInputType.name,
@@ -187,7 +188,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'CPF (opcional)',
+          label: context.l10n.personalFieldCpf,
           value: _cpf,
           errorText: _cpfError,
           keyboardType: TextInputType.number,
@@ -199,14 +200,14 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationPickerField(
-          label: 'Data de nascimento',
+          label: context.l10n.personalFieldBirthDate,
           value: birthLabel,
-          placeholder: 'Selecionar data',
+          placeholder: context.l10n.personalSelectDate,
           onTap: _pickDate,
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Celular',
+          label: context.l10n.personalFieldPhone,
           value: _phone,
           keyboardType: TextInputType.phone,
           inputFormatters: [phoneInputFormatter()],
@@ -214,14 +215,14 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'E-mail',
+          label: context.l10n.commonEmailLabel,
           value: widget.profile.email,
           readOnly: true,
           onChanged: (_) {},
         ),
         const SizedBox(height: 6),
         Text(
-          'O e-mail é vinculado à sua conta.',
+          context.l10n.personalEmailLocked,
           style: TextStyle(fontSize: 12, color: colors.textHint),
         ),
         const SizedBox(height: AppSpacing.xxl),
@@ -229,9 +230,9 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
           buildWhen: (previous, current) => previous.saving != current.saving,
           builder: (context, state) {
             return AppPrimaryButton(
-              label: 'SALVAR',
+              label: context.l10n.commonSave,
               loading: state.saving,
-              loadingLabel: 'Salvando...',
+              loadingLabel: context.l10n.commonSaving,
               onPressed: _save,
             );
           },

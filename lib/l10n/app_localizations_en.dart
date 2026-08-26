@@ -278,4 +278,222 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get matchStatusUnknown => 'Undefined';
+
+  @override
+  String get commonSave => 'SAVE';
+
+  @override
+  String get commonSaving => 'Saving...';
+
+  @override
+  String get commonCancel => 'Cancel';
+
+  @override
+  String get commonContinue => 'CONTINUE';
+
+  @override
+  String get profileTitle => 'PROFILE';
+
+  @override
+  String get profileMyAccount => 'MY ACCOUNT';
+
+  @override
+  String get profilePersonalData => 'Personal data';
+
+  @override
+  String get profileMyAddress => 'My address';
+
+  @override
+  String get profileSecurity => 'Security';
+
+  @override
+  String get profileTheme => 'Theme';
+
+  @override
+  String get profileLegal => 'LEGAL';
+
+  @override
+  String get profileAccount => 'ACCOUNT';
+
+  @override
+  String get profileDeleteAccount => 'Delete account';
+
+  @override
+  String get profileDeleteConfirmTitle => 'Delete account?';
+
+  @override
+  String get profileDeleteConfirmMessage =>
+      'Deleting your account permanently removes your data and progress. This action can\'t be undone.';
+
+  @override
+  String get profileSignOutTitle => 'Sign out?';
+
+  @override
+  String get profileSignOutMessage =>
+      'You\'ll need to sign in again to access your account.';
+
+  @override
+  String get profileSignOutConfirm => 'SIGN OUT';
+
+  @override
+  String get profileSignOut => 'Sign out';
+
+  @override
+  String get personalDataTitle => 'PERSONAL DATA';
+
+  @override
+  String get personalDataLoadError => 'Couldn\'t load your data.';
+
+  @override
+  String get personalFieldCpf => 'CPF (optional)';
+
+  @override
+  String get personalFieldBirthDate => 'Date of birth';
+
+  @override
+  String get personalSelectDate => 'Select date';
+
+  @override
+  String get personalFieldPhone => 'Mobile';
+
+  @override
+  String get personalEmailLocked => 'The email is linked to your account.';
+
+  @override
+  String get personalNameRequired => 'Enter your full name.';
+
+  @override
+  String get personalCpfInvalid => 'Invalid CPF.';
+
+  @override
+  String get personalUpdateSuccess => 'Data updated successfully.';
+
+  @override
+  String get securityTitle => 'SECURITY';
+
+  @override
+  String get securitySubtitle => 'Change your Goiás EC account password.';
+
+  @override
+  String get securityCurrentPassword => 'Current password';
+
+  @override
+  String get securityCurrentPasswordHint => 'Confirm your current password';
+
+  @override
+  String get securityNewPassword => 'New password';
+
+  @override
+  String get securityConfirmNewPassword => 'Confirm new password';
+
+  @override
+  String get securityConfirmNewPasswordHint => 'Repeat the new password';
+
+  @override
+  String get securitySaveButton => 'SAVE NEW PASSWORD';
+
+  @override
+  String get securityChangeSuccess => 'Password changed successfully.';
+
+  @override
+  String get addressTitle => 'MY ADDRESS';
+
+  @override
+  String get addressLoadError => 'Couldn\'t load your address.';
+
+  @override
+  String get addressCepNotFound => 'Postal code not found.';
+
+  @override
+  String get addressSaveSuccess => 'Address saved successfully.';
+
+  @override
+  String get addressFieldCep => 'Postal code';
+
+  @override
+  String get addressFieldStreet => 'Street';
+
+  @override
+  String get addressFieldNumber => 'Number';
+
+  @override
+  String get addressFieldComplement => 'Complement (optional)';
+
+  @override
+  String get addressFieldNeighborhood => 'Neighborhood';
+
+  @override
+  String get addressFieldState => 'State';
+
+  @override
+  String get addressSelectState => 'Select state';
+
+  @override
+  String get addressFieldCity => 'City';
+
+  @override
+  String get addressSaveButton => 'SAVE ADDRESS';
+
+  @override
+  String get deleteAccountTitle => 'DELETE ACCOUNT';
+
+  @override
+  String get deleteAccountConfirmWord => 'DELETE';
+
+  @override
+  String deleteAccountInstruction(String word) {
+    return 'This action is permanent. Confirm your password and type $word to delete your account and all your progress.';
+  }
+
+  @override
+  String get deleteAccountPasswordHint => 'Confirm your password';
+
+  @override
+  String deleteAccountTypeWordLabel(String word) {
+    return 'Type $word to confirm';
+  }
+
+  @override
+  String get deleteAccountConfirmButton => 'DELETE MY ACCOUNT';
+
+  @override
+  String get deleteAccountDeleting => 'DELETING ACCOUNT...';
+
+  @override
+  String get settingsThemeTitle => 'THEME';
+
+  @override
+  String get themeModeAuto => 'Automatic';
+
+  @override
+  String get themeModeLight => 'Light';
+
+  @override
+  String get themeModeDark => 'Dark';
+
+  @override
+  String get themeModeAutoDesc => 'Follows your phone\'s theme';
+
+  @override
+  String get themeModeLightDesc => 'Always a light background';
+
+  @override
+  String get themeModeDarkDesc => 'Always a dark background';
+
+  @override
+  String get avatarTakePhoto => 'Take a photo';
+
+  @override
+  String get avatarChooseFromGallery => 'Choose from gallery';
+
+  @override
+  String get socialFollowTitle => 'FOLLOW GOIÁS';
+
+  @override
+  String get socialFollowSubtitle => 'Follow Goiás on social media too.';
+
+  @override
+  String socialOpenLink(String name) {
+    return 'Open $name';
+  }
 }

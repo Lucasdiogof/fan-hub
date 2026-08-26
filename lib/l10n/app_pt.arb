@@ -114,5 +114,93 @@
   "matchStatusPostponed": "Adiada",
   "matchStatusCancelled": "Cancelada",
   "matchStatusSuspended": "Suspensa",
-  "matchStatusUnknown": "Indefinido"
+  "matchStatusUnknown": "Indefinido",
+
+  "commonSave": "SALVAR",
+  "commonSaving": "Salvando...",
+  "commonCancel": "Cancelar",
+  "commonContinue": "CONTINUAR",
+
+  "profileTitle": "PERFIL",
+  "profileMyAccount": "MINHA CONTA",
+  "profilePersonalData": "Dados pessoais",
+  "profileMyAddress": "Meu endereço",
+  "profileSecurity": "Segurança",
+  "profileTheme": "Tema",
+  "profileLegal": "LEGAL",
+  "profileAccount": "CONTA",
+  "profileDeleteAccount": "Excluir conta",
+  "profileDeleteConfirmTitle": "Excluir conta?",
+  "profileDeleteConfirmMessage": "Ao excluir sua conta, seus dados e seu progresso serão removidos permanentemente. Essa ação não pode ser desfeita.",
+  "profileSignOutTitle": "Sair da conta?",
+  "profileSignOutMessage": "Você precisará entrar novamente para acessar sua conta.",
+  "profileSignOutConfirm": "SAIR",
+  "profileSignOut": "Sair",
+
+  "personalDataTitle": "DADOS PESSOAIS",
+  "personalDataLoadError": "Não foi possível carregar seus dados.",
+  "personalFieldCpf": "CPF (opcional)",
+  "personalFieldBirthDate": "Data de nascimento",
+  "personalSelectDate": "Selecionar data",
+  "personalFieldPhone": "Celular",
+  "personalEmailLocked": "O e-mail é vinculado à sua conta.",
+  "personalNameRequired": "Informe seu nome completo.",
+  "personalCpfInvalid": "CPF inválido.",
+  "personalUpdateSuccess": "Dados atualizados com sucesso.",
+
+  "securityTitle": "SEGURANÇA",
+  "securitySubtitle": "Altere a senha da sua conta Goiás EC.",
+  "securityCurrentPassword": "Senha atual",
+  "securityCurrentPasswordHint": "Confirme sua senha atual",
+  "securityNewPassword": "Nova senha",
+  "securityConfirmNewPassword": "Confirmar nova senha",
+  "securityConfirmNewPasswordHint": "Repita a nova senha",
+  "securitySaveButton": "SALVAR NOVA SENHA",
+  "securityChangeSuccess": "Senha alterada com sucesso.",
+
+  "addressTitle": "MEU ENDEREÇO",
+  "addressLoadError": "Não foi possível carregar seu endereço.",
+  "addressCepNotFound": "CEP não encontrado.",
+  "addressSaveSuccess": "Endereço salvo com sucesso.",
+  "addressFieldCep": "CEP",
+  "addressFieldStreet": "Logradouro",
+  "addressFieldNumber": "Número",
+  "addressFieldComplement": "Complemento (opcional)",
+  "addressFieldNeighborhood": "Bairro",
+  "addressFieldState": "Estado",
+  "addressSelectState": "Selecionar estado",
+  "addressFieldCity": "Cidade",
+  "addressSaveButton": "SALVAR ENDEREÇO",
+
+  "deleteAccountTitle": "EXCLUIR CONTA",
+  "deleteAccountConfirmWord": "EXCLUIR",
+  "deleteAccountInstruction": "Essa ação é permanente. Confirme sua senha e digite {word} para excluir sua conta e todo o seu progresso.",
+  "@deleteAccountInstruction": {
+    "placeholders": { "word": { "type": "String" } }
+  },
+  "deleteAccountPasswordHint": "Confirme sua senha",
+  "deleteAccountTypeWordLabel": "Digite {word} para confirmar",
+  "@deleteAccountTypeWordLabel": {
+    "placeholders": { "word": { "type": "String" } }
+  },
+  "deleteAccountConfirmButton": "EXCLUIR MINHA CONTA",
+  "deleteAccountDeleting": "EXCLUINDO CONTA...",
+
+  "settingsThemeTitle": "TEMA",
+  "themeModeAuto": "Automático",
+  "themeModeLight": "Claro",
+  "themeModeDark": "Escuro",
+  "themeModeAutoDesc": "Segue o tema do seu celular",
+  "themeModeLightDesc": "Sempre com fundo claro",
+  "themeModeDarkDesc": "Sempre com fundo escuro",
+
+  "avatarTakePhoto": "Tirar foto",
+  "avatarChooseFromGallery": "Escolher da galeria",
+
+  "socialFollowTitle": "SIGA O GOIÁS",
+  "socialFollowSubtitle": "Acompanhe o Verdão também nas redes sociais.",
+  "socialOpenLink": "Abrir {name}",
+  "@socialOpenLink": {
+    "placeholders": { "name": { "type": "String" } }
+  }
 }

@@ -627,6 +627,426 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Indefinido'**
   String get matchStatusUnknown;
+
+  /// No description provided for @commonSave.
+  ///
+  /// In pt, this message translates to:
+  /// **'SALVAR'**
+  String get commonSave;
+
+  /// No description provided for @commonSaving.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvando...'**
+  String get commonSaving;
+
+  /// No description provided for @commonCancel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelar'**
+  String get commonCancel;
+
+  /// No description provided for @commonContinue.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONTINUAR'**
+  String get commonContinue;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'PERFIL'**
+  String get profileTitle;
+
+  /// No description provided for @profileMyAccount.
+  ///
+  /// In pt, this message translates to:
+  /// **'MINHA CONTA'**
+  String get profileMyAccount;
+
+  /// No description provided for @profilePersonalData.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dados pessoais'**
+  String get profilePersonalData;
+
+  /// No description provided for @profileMyAddress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meu endereço'**
+  String get profileMyAddress;
+
+  /// No description provided for @profileSecurity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Segurança'**
+  String get profileSecurity;
+
+  /// No description provided for @profileTheme.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tema'**
+  String get profileTheme;
+
+  /// No description provided for @profileLegal.
+  ///
+  /// In pt, this message translates to:
+  /// **'LEGAL'**
+  String get profileLegal;
+
+  /// No description provided for @profileAccount.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONTA'**
+  String get profileAccount;
+
+  /// No description provided for @profileDeleteAccount.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir conta'**
+  String get profileDeleteAccount;
+
+  /// No description provided for @profileDeleteConfirmTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir conta?'**
+  String get profileDeleteConfirmTitle;
+
+  /// No description provided for @profileDeleteConfirmMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ao excluir sua conta, seus dados e seu progresso serão removidos permanentemente. Essa ação não pode ser desfeita.'**
+  String get profileDeleteConfirmMessage;
+
+  /// No description provided for @profileSignOutTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sair da conta?'**
+  String get profileSignOutTitle;
+
+  /// No description provided for @profileSignOutMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você precisará entrar novamente para acessar sua conta.'**
+  String get profileSignOutMessage;
+
+  /// No description provided for @profileSignOutConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'SAIR'**
+  String get profileSignOutConfirm;
+
+  /// No description provided for @profileSignOut.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sair'**
+  String get profileSignOut;
+
+  /// No description provided for @personalDataTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'DADOS PESSOAIS'**
+  String get personalDataTitle;
+
+  /// No description provided for @personalDataLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar seus dados.'**
+  String get personalDataLoadError;
+
+  /// No description provided for @personalFieldCpf.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF (opcional)'**
+  String get personalFieldCpf;
+
+  /// No description provided for @personalFieldBirthDate.
+  ///
+  /// In pt, this message translates to:
+  /// **'Data de nascimento'**
+  String get personalFieldBirthDate;
+
+  /// No description provided for @personalSelectDate.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecionar data'**
+  String get personalSelectDate;
+
+  /// No description provided for @personalFieldPhone.
+  ///
+  /// In pt, this message translates to:
+  /// **'Celular'**
+  String get personalFieldPhone;
+
+  /// No description provided for @personalEmailLocked.
+  ///
+  /// In pt, this message translates to:
+  /// **'O e-mail é vinculado à sua conta.'**
+  String get personalEmailLocked;
+
+  /// No description provided for @personalNameRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu nome completo.'**
+  String get personalNameRequired;
+
+  /// No description provided for @personalCpfInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF inválido.'**
+  String get personalCpfInvalid;
+
+  /// No description provided for @personalUpdateSuccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dados atualizados com sucesso.'**
+  String get personalUpdateSuccess;
+
+  /// No description provided for @securityTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'SEGURANÇA'**
+  String get securityTitle;
+
+  /// No description provided for @securitySubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Altere a senha da sua conta Goiás EC.'**
+  String get securitySubtitle;
+
+  /// No description provided for @securityCurrentPassword.
+  ///
+  /// In pt, this message translates to:
+  /// **'Senha atual'**
+  String get securityCurrentPassword;
+
+  /// No description provided for @securityCurrentPasswordHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirme sua senha atual'**
+  String get securityCurrentPasswordHint;
+
+  /// No description provided for @securityNewPassword.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nova senha'**
+  String get securityNewPassword;
+
+  /// No description provided for @securityConfirmNewPassword.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirmar nova senha'**
+  String get securityConfirmNewPassword;
+
+  /// No description provided for @securityConfirmNewPasswordHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Repita a nova senha'**
+  String get securityConfirmNewPasswordHint;
+
+  /// No description provided for @securitySaveButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'SALVAR NOVA SENHA'**
+  String get securitySaveButton;
+
+  /// No description provided for @securityChangeSuccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'Senha alterada com sucesso.'**
+  String get securityChangeSuccess;
+
+  /// No description provided for @addressTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEU ENDEREÇO'**
+  String get addressTitle;
+
+  /// No description provided for @addressLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar seu endereço.'**
+  String get addressLoadError;
+
+  /// No description provided for @addressCepNotFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'CEP não encontrado.'**
+  String get addressCepNotFound;
+
+  /// No description provided for @addressSaveSuccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'Endereço salvo com sucesso.'**
+  String get addressSaveSuccess;
+
+  /// No description provided for @addressFieldCep.
+  ///
+  /// In pt, this message translates to:
+  /// **'CEP'**
+  String get addressFieldCep;
+
+  /// No description provided for @addressFieldStreet.
+  ///
+  /// In pt, this message translates to:
+  /// **'Logradouro'**
+  String get addressFieldStreet;
+
+  /// No description provided for @addressFieldNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'Número'**
+  String get addressFieldNumber;
+
+  /// No description provided for @addressFieldComplement.
+  ///
+  /// In pt, this message translates to:
+  /// **'Complemento (opcional)'**
+  String get addressFieldComplement;
+
+  /// No description provided for @addressFieldNeighborhood.
+  ///
+  /// In pt, this message translates to:
+  /// **'Bairro'**
+  String get addressFieldNeighborhood;
+
+  /// No description provided for @addressFieldState.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estado'**
+  String get addressFieldState;
+
+  /// No description provided for @addressSelectState.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecionar estado'**
+  String get addressSelectState;
+
+  /// No description provided for @addressFieldCity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cidade'**
+  String get addressFieldCity;
+
+  /// No description provided for @addressSaveButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'SALVAR ENDEREÇO'**
+  String get addressSaveButton;
+
+  /// No description provided for @deleteAccountTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'EXCLUIR CONTA'**
+  String get deleteAccountTitle;
+
+  /// No description provided for @deleteAccountConfirmWord.
+  ///
+  /// In pt, this message translates to:
+  /// **'EXCLUIR'**
+  String get deleteAccountConfirmWord;
+
+  /// No description provided for @deleteAccountInstruction.
+  ///
+  /// In pt, this message translates to:
+  /// **'Essa ação é permanente. Confirme sua senha e digite {word} para excluir sua conta e todo o seu progresso.'**
+  String deleteAccountInstruction(String word);
+
+  /// No description provided for @deleteAccountPasswordHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirme sua senha'**
+  String get deleteAccountPasswordHint;
+
+  /// No description provided for @deleteAccountTypeWordLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Digite {word} para confirmar'**
+  String deleteAccountTypeWordLabel(String word);
+
+  /// No description provided for @deleteAccountConfirmButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'EXCLUIR MINHA CONTA'**
+  String get deleteAccountConfirmButton;
+
+  /// No description provided for @deleteAccountDeleting.
+  ///
+  /// In pt, this message translates to:
+  /// **'EXCLUINDO CONTA...'**
+  String get deleteAccountDeleting;
+
+  /// No description provided for @settingsThemeTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'TEMA'**
+  String get settingsThemeTitle;
+
+  /// No description provided for @themeModeAuto.
+  ///
+  /// In pt, this message translates to:
+  /// **'Automático'**
+  String get themeModeAuto;
+
+  /// No description provided for @themeModeLight.
+  ///
+  /// In pt, this message translates to:
+  /// **'Claro'**
+  String get themeModeLight;
+
+  /// No description provided for @themeModeDark.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escuro'**
+  String get themeModeDark;
+
+  /// No description provided for @themeModeAutoDesc.
+  ///
+  /// In pt, this message translates to:
+  /// **'Segue o tema do seu celular'**
+  String get themeModeAutoDesc;
+
+  /// No description provided for @themeModeLightDesc.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sempre com fundo claro'**
+  String get themeModeLightDesc;
+
+  /// No description provided for @themeModeDarkDesc.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sempre com fundo escuro'**
+  String get themeModeDarkDesc;
+
+  /// No description provided for @avatarTakePhoto.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tirar foto'**
+  String get avatarTakePhoto;
+
+  /// No description provided for @avatarChooseFromGallery.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolher da galeria'**
+  String get avatarChooseFromGallery;
+
+  /// No description provided for @socialFollowTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'SIGA O GOIÁS'**
+  String get socialFollowTitle;
+
+  /// No description provided for @socialFollowSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acompanhe o Verdão também nas redes sociais.'**
+  String get socialFollowSubtitle;
+
+  /// No description provided for @socialOpenLink.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir {name}'**
+  String socialOpenLink(String name);
 }
 
 class _AppLocalizationsDelegate

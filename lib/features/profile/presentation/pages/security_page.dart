@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_validators.dart';
@@ -75,7 +76,7 @@ class _SecurityPageState extends State<SecurityPage> {
       setState(() => _formError = result.failure.message);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Senha alterada com sucesso.')),
+        SnackBar(content: Text(context.l10n.securityChangeSuccess)),
       );
       context.pop();
     }
@@ -105,7 +106,7 @@ class _SecurityPageState extends State<SecurityPage> {
                     children: [
                       BackButtonCircle(onTap: () => context.pop()),
                       const SizedBox(height: AppSpacing.lg),
-                      const PageTitle('SEGURANÇA'),
+                      PageTitle(context.l10n.securityTitle),
                     ],
                   ),
                 ),
@@ -119,7 +120,7 @@ class _SecurityPageState extends State<SecurityPage> {
                     ),
                     children: [
                       Text(
-                        'Altere a senha da sua conta Goiás EC.',
+                        context.l10n.securitySubtitle,
                         style: TextStyle(
                           fontSize: 14,
                           height: 1.35,
@@ -130,9 +131,9 @@ class _SecurityPageState extends State<SecurityPage> {
                       AuthErrorBanner(message: _formError),
                       AuthTextField(
                         controller: _currentPasswordController,
-                        label: 'Senha atual',
+                        label: context.l10n.securityCurrentPassword,
                         icon: Icons.lock_person_outlined,
-                        hintText: 'Confirme sua senha atual',
+                        hintText: context.l10n.securityCurrentPasswordHint,
                         obscurable: true,
                         textInputAction: TextInputAction.next,
                         autofillHints: const [AutofillHints.password],
@@ -148,10 +149,11 @@ class _SecurityPageState extends State<SecurityPage> {
                       AuthTextField(
                         controller: _passwordController,
                         focusNode: _newPasswordFocus,
-                        label: 'Nova senha',
+                        label: context.l10n.securityNewPassword,
                         icon: Icons.lock_outline_rounded,
-                        hintText:
-                            'Mínimo ${AuthValidators.minPasswordLength} caracteres',
+                        hintText: context.l10n.authPasswordMinHint(
+                          AuthValidators.minPasswordLength,
+                        ),
                         obscurable: true,
                         textInputAction: TextInputAction.next,
                         autofillHints: const [AutofillHints.newPassword],
@@ -167,9 +169,9 @@ class _SecurityPageState extends State<SecurityPage> {
                       AuthTextField(
                         controller: _confirmController,
                         focusNode: _confirmFocus,
-                        label: 'Confirmar nova senha',
+                        label: context.l10n.securityConfirmNewPassword,
                         icon: Icons.lock_outline_rounded,
-                        hintText: 'Repita a nova senha',
+                        hintText: context.l10n.securityConfirmNewPasswordHint,
                         obscurable: true,
                         textInputAction: TextInputAction.done,
                         autofillHints: const [AutofillHints.newPassword],
@@ -183,9 +185,9 @@ class _SecurityPageState extends State<SecurityPage> {
                       ),
                       const SizedBox(height: AppSpacing.xxl),
                       AppPrimaryButton(
-                        label: 'SALVAR NOVA SENHA',
+                        label: context.l10n.securitySaveButton,
                         loading: _loading,
-                        loadingLabel: 'Salvando...',
+                        loadingLabel: context.l10n.commonSaving,
                         onPressed: _submit,
                       ),
                     ],

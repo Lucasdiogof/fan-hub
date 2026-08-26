@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
@@ -38,7 +39,7 @@ class ThemeSettingsPage extends StatelessWidget {
                             context.canPop() ? context.pop() : context.go('/'),
                       ),
                       const SizedBox(height: AppSpacing.lg),
-                      const PageTitle('TEMA'),
+                      PageTitle(context.l10n.settingsThemeTitle),
                     ],
                   ),
                 ),
@@ -127,7 +128,7 @@ class _ThemeOptionTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      themeModeLabel(mode),
+                      themeModeLabel(context.l10n, mode),
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 14.5,
@@ -136,7 +137,7 @@ class _ThemeOptionTile extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      themeModeDescription(mode),
+                      themeModeDescription(context.l10n, mode),
                       style: TextStyle(
                         fontSize: 12,
                         color: colors.textSecondary,

@@ -67,7 +67,7 @@ class _ProfileView extends StatelessWidget {
                             context.canPop() ? context.pop() : context.go('/'),
                       ),
                       const SizedBox(height: AppSpacing.lg),
-                      const PageTitle('PERFIL'),
+                      PageTitle(context.l10n.profileTitle),
                     ],
                   ),
                 ),
@@ -83,29 +83,29 @@ class _ProfileView extends StatelessWidget {
                       const ProfileAvatarHeader(),
                       const SizedBox(height: AppSpacing.xxl),
                       _MenuSection(
-                        title: 'MINHA CONTA',
+                        title: context.l10n.profileMyAccount,
                         rows: [
                           _MenuRow(
                             icon: Icons.person_outline_rounded,
-                            label: 'Dados pessoais',
+                            label: context.l10n.profilePersonalData,
                             onTap: () => context.push('/profile/personal'),
                           ),
                           _MenuRow(
                             icon: Icons.location_on_outlined,
-                            label: 'Meu endereço',
+                            label: context.l10n.profileMyAddress,
                             onTap: () => _openAddress(context),
                           ),
                           _MenuRow(
                             icon: Icons.lock_outline_rounded,
-                            label: 'Segurança',
+                            label: context.l10n.profileSecurity,
                             onTap: () => context.push('/profile/security'),
                           ),
                           BlocBuilder<ThemeCubit, ThemeMode>(
                             bloc: sl<ThemeCubit>(),
                             builder: (context, mode) => _MenuRow(
                               icon: Icons.palette_outlined,
-                              label: 'Tema',
-                              value: themeModeLabel(mode),
+                              label: context.l10n.profileTheme,
+                              value: themeModeLabel(context.l10n, mode),
                               onTap: () => context.push('/profile/theme'),
                             ),
                           ),
@@ -126,27 +126,27 @@ class _ProfileView extends StatelessWidget {
                       const SocialLinksSection(),
                       const SizedBox(height: AppSpacing.xl),
                       _MenuSection(
-                        title: 'LEGAL',
+                        title: context.l10n.profileLegal,
                         rows: [
                           _MenuRow(
                             icon: Icons.description_outlined,
-                            label: 'Termos de Uso',
+                            label: context.l10n.authTermsLink,
                             onTap: () => context.push('/profile/terms'),
                           ),
                           _MenuRow(
                             icon: Icons.privacy_tip_outlined,
-                            label: 'Política de Privacidade',
+                            label: context.l10n.authPrivacyLink,
                             onTap: () => context.push('/profile/privacy'),
                           ),
                         ],
                       ),
                       const SizedBox(height: AppSpacing.xl),
                       _MenuSection(
-                        title: 'CONTA',
+                        title: context.l10n.profileAccount,
                         rows: [
                           _MenuRow(
                             icon: Icons.person_remove_outlined,
-                            label: 'Excluir conta',
+                            label: context.l10n.profileDeleteAccount,
                             danger: true,
                             onTap: () => _confirmDeleteAccount(context),
                           ),
@@ -183,12 +183,10 @@ Future<void> _confirmDeleteAccount(BuildContext context) async {
   final confirmed = await AppBottomSheet.show(
     context,
     icon: Icons.person_remove_outlined,
-    title: 'Excluir conta?',
-    description:
-        'Ao excluir sua conta, seus dados e seu progresso serão removidos '
-        'permanentemente. Essa ação não pode ser desfeita.',
-    confirmLabel: 'CONTINUAR',
-    cancelLabel: 'Cancelar',
+    title: context.l10n.profileDeleteConfirmTitle,
+    description: context.l10n.profileDeleteConfirmMessage,
+    confirmLabel: context.l10n.commonContinue,
+    cancelLabel: context.l10n.commonCancel,
     destructive: true,
   );
   if (confirmed == true && context.mounted) {
@@ -313,10 +311,10 @@ class _SignOutButton extends StatelessWidget {
     final confirmed = await AppBottomSheet.show(
       context,
       icon: Icons.logout_rounded,
-      title: 'Sair da conta?',
-      description: 'Você precisará entrar novamente para acessar sua conta.',
-      confirmLabel: 'SAIR',
-      cancelLabel: 'Cancelar',
+      title: context.l10n.profileSignOutTitle,
+      description: context.l10n.profileSignOutMessage,
+      confirmLabel: context.l10n.profileSignOutConfirm,
+      cancelLabel: context.l10n.commonCancel,
       destructive: true,
     );
     if (confirmed == true) {
@@ -346,7 +344,7 @@ class _SignOutButton extends StatelessWidget {
               Icon(Icons.logout_rounded, size: 18, color: colors.error),
               const SizedBox(width: AppSpacing.sm),
               Text(
-                'Sair',
+                context.l10n.profileSignOut,
                 style: TextStyle(
                   fontSize: 14.5,
                   fontWeight: FontWeight.w700,

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
@@ -101,7 +102,7 @@ class _AddressView extends StatelessWidget {
                     children: [
                       BackButtonCircle(onTap: () => context.pop()),
                       const SizedBox(height: AppSpacing.lg),
-                      const PageTitle('MEU ENDEREÇO'),
+                      PageTitle(context.l10n.addressTitle),
                       const SizedBox(height: AppSpacing.lg),
                     ],
                   ),
@@ -117,7 +118,7 @@ class _AddressView extends StatelessWidget {
                         LoadStatus.error => Center(
                           child: StateMessage(
                             icon: Icons.error_outline_rounded,
-                            title: 'Não foi possível carregar seu endereço.',
+                            title: context.l10n.addressLoadError,
                             message: state.errorMessage,
                           ),
                         ),
@@ -193,7 +194,9 @@ class _AddressFormState extends State<_AddressForm> {
         if (data == null) {
           ScaffoldMessenger.of(
             context,
-          ).showSnackBar(const SnackBar(content: Text('CEP não encontrado.')));
+          ).showSnackBar(
+            SnackBar(content: Text(context.l10n.addressCepNotFound)),
+          );
           return;
         }
         setState(() {
@@ -269,7 +272,7 @@ class _AddressFormState extends State<_AddressForm> {
       messenger.showSnackBar(SnackBar(content: Text(failure.message)));
     } else {
       messenger.showSnackBar(
-        const SnackBar(content: Text('Endereço salvo com sucesso.')),
+        SnackBar(content: Text(context.l10n.addressSaveSuccess)),
       );
       context.pop();
     }
@@ -286,7 +289,7 @@ class _AddressFormState extends State<_AddressForm> {
       ),
       children: [
         RegistrationTextField(
-          label: 'CEP',
+          label: context.l10n.addressFieldCep,
           value: _zip,
           keyboardType: TextInputType.number,
           inputFormatters: [cepInputFormatter()],
@@ -304,7 +307,7 @@ class _AddressFormState extends State<_AddressForm> {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Logradouro',
+          label: context.l10n.addressFieldStreet,
           value: _street,
           onChanged: (value) => _street = value,
         ),
@@ -314,7 +317,7 @@ class _AddressFormState extends State<_AddressForm> {
           children: [
             Expanded(
               child: RegistrationTextField(
-                label: 'Número',
+                label: context.l10n.addressFieldNumber,
                 value: _number,
                 keyboardType: TextInputType.number,
                 onChanged: (value) => _number = value,
@@ -324,7 +327,7 @@ class _AddressFormState extends State<_AddressForm> {
             Expanded(
               flex: 2,
               child: RegistrationTextField(
-                label: 'Complemento (opcional)',
+                label: context.l10n.addressFieldComplement,
                 value: _complement,
                 onChanged: (value) => _complement = value,
               ),
@@ -333,20 +336,20 @@ class _AddressFormState extends State<_AddressForm> {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Bairro',
+          label: context.l10n.addressFieldNeighborhood,
           value: _neighborhood,
           onChanged: (value) => _neighborhood = value,
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationPickerField(
-          label: 'Estado',
+          label: context.l10n.addressFieldState,
           value: _state,
-          placeholder: 'Selecionar estado',
+          placeholder: context.l10n.addressSelectState,
           onTap: _pickState,
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Cidade',
+          label: context.l10n.addressFieldCity,
           value: _city,
           onChanged: (value) => _city = value,
         ),
@@ -355,9 +358,9 @@ class _AddressFormState extends State<_AddressForm> {
           buildWhen: (previous, current) => previous.saving != current.saving,
           builder: (context, state) {
             return AppPrimaryButton(
-              label: 'SALVAR ENDEREÇO',
+              label: context.l10n.addressSaveButton,
               loading: state.saving,
-              loadingLabel: 'Salvando...',
+              loadingLabel: context.l10n.commonSaving,
               onPressed: _save,
             );
           },
