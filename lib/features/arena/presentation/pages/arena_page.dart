@@ -22,8 +22,14 @@ import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_stora
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/presentation/pages/arena_ranking_page.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_card.dart';
+import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/widgets/crowd_lineup_home_card.dart';
+import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
+import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
+import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 
@@ -195,6 +201,22 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     unawaited(context.push('/arena/guess-player', extra: cubit));
   }
 
+  /// Carrega a escalação salva do usuário ANTES de navegar, pra "Escalação
+  /// da Torcida" já abrir com jogadores/formação restaurados — mesma lógica
+  /// que já existia na Home antes deste card se mudar pra cá.
+  Future<void> _openCrowdLineup(BuildContext context, Match match) async {
+    final cubit = CrowdLineupCubit(
+      repository: sl<CrowdLineupRepository>(),
+      matchId: match.id,
+      votingOpen: true,
+    );
+    await GlobalLoading.run(context, cubit.load);
+    if (!context.mounted) return;
+    unawaited(
+      context.push('/crowd-lineup', extra: (match: match, cubit: cubit)),
+    );
+  }
+
   String? _subtitleFor(String gameId) {
     return switch (gameId) {
       'quiz' => '60 perguntas',
@@ -258,6 +280,29 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                         ),
                       ),
                       const SizedBox(height: AppSpacing.lg),
+                      // Destaque no topo (mesmo card que já existia na Home,
+                      // só movido pra cá) — só aparece quando há próximo
+                      // jogo. `HomeCubit` é singleton (pré-carregado desde a
+                      // Splash), então basta ler o estado atual, sem
+                      // recarregar nada aqui.
+                      BlocBuilder<HomeCubit, HomeState>(
+                        bloc: sl<HomeCubit>(),
+                        builder: (context, homeState) {
+                          final nextMatch = homeState.nextMatch;
+                          if (nextMatch == null) return const SizedBox.shrink();
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              CrowdLineupHomeCard(
+                                hasVoted: homeState.hasVotedForNextMatch,
+                                onTap: () =>
+                                    _openCrowdLineup(context, nextMatch),
+                              ),
+                              const SizedBox(height: AppSpacing.xl),
+                            ],
+                          );
+                        },
+                      ),
                       // `myRank` fica null por enquanto: não existe ainda uma
                       // consulta de "minha posição" sem limite/por categoria
                       // única no backend (o leaderboard atual só traz um

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -7,20 +5,15 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
-import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_entry_card.dart';
-import 'package:goias_app/features/crowd_lineup/presentation/widgets/crowd_lineup_home_card.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/home/presentation/widgets/home_brand_header.dart';
 import 'package:goias_app/features/home/presentation/widgets/membership_banner.dart';
 import 'package:goias_app/features/home/presentation/widgets/next_match_section.dart';
-import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/news/presentation/widgets/news_home_section.dart';
 import 'package:goias_app/features/partners/presentation/widgets/partners_home_section.dart';
-import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
 /// [HomeCubit] agora é singleton (ver `injection_container.dart`) — pra
@@ -71,22 +64,6 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
   @override
   void didPopNext() => context.read<HomeCubit>().load();
 
-  /// Carrega a escalação salva do usuário ANTES de navegar, pra
-  /// "Escalação da Torcida" já abrir com jogadores/formação restaurados —
-  /// nunca vazia esperando o carregamento aparecer.
-  Future<void> _openCrowdLineup(BuildContext context, Match match) async {
-    final cubit = CrowdLineupCubit(
-      repository: sl<CrowdLineupRepository>(),
-      matchId: match.id,
-      votingOpen: true,
-    );
-    await GlobalLoading.run(context, cubit.load);
-    if (!context.mounted) return;
-    unawaited(
-      context.push('/crowd-lineup', extra: (match: match, cubit: cubit)),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -118,12 +95,6 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                         NextMatchSection(
                           match: state.nextMatch!,
                           onTickets: () => context.push('/tickets'),
-                        ),
-                        const SizedBox(height: AppSpacing.lg),
-                        CrowdLineupHomeCard(
-                          hasVoted: state.hasVotedForNextMatch,
-                          onTap: () =>
-                              _openCrowdLineup(context, state.nextMatch!),
                         ),
                       ],
                       if (!state.isMember) ...[
