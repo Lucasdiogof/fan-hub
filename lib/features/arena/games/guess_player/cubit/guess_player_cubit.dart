@@ -19,6 +19,11 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
   }
 
   final List<GuessPlayer> _catalog;
+
+  /// Exposto pra tela poder montar o autocomplete a partir do catálogo
+  /// REAL desse Cubit (que pode ter vindo do Supabase, não do const local),
+  /// em vez de ler a constante global `guessPlayerCatalog` diretamente.
+  List<GuessPlayer> get catalog => _catalog;
   final Future<GuessPlayerRoundState?> Function() _loadRound;
   final Future<void> Function(GuessPlayerRoundState state) _saveRound;
   final Future<void> Function() _clearRound;

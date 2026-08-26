@@ -13,6 +13,9 @@ import 'package:goias_app/features/arena/data/arena_scores.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
+import 'package:goias_app/features/arena/games/guess_player/cubit/guess_player_cubit.dart';
+import 'package:goias_app/features/arena/games/guess_player/data/guess_player_repository.dart';
+import 'package:goias_app/features/arena/games/guess_player/data/guess_player_storage.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
@@ -173,6 +176,25 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     unawaited(context.push('/arena/lineup', extra: cubit));
   }
 
+  /// Mesma lógica dos outros dois jogos — carrega o catálogo (Supabase com
+  /// fallback local) antes de navegar. O Cubit já cuida sozinho de
+  /// retomar/sortear a rodada assim que é construído (ver `GuessPlayerCubit`).
+  Future<void> _openGuessPlayer(BuildContext context) async {
+    final cubit = await GlobalLoading.run(context, () async {
+      final catalog = await sl<GuessPlayerRepository>().load();
+      final storage = sl<GuessPlayerStorage>();
+      return GuessPlayerCubit(
+        catalog: catalog,
+        loadRound: storage.loadActiveRound,
+        saveRound: storage.saveActiveRound,
+        clearRound: storage.clearActiveRound,
+        recordRoundResult: storage.recordRoundResult,
+      );
+    });
+    if (!context.mounted) return;
+    unawaited(context.push('/arena/guess-player', extra: cubit));
+  }
+
   String? _subtitleFor(String gameId) {
     return switch (gameId) {
       'quiz' => '60 perguntas',
@@ -258,6 +280,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                             'quiz' => _openQuizLevels(context),
                             'career_path' => _openCareerPath(context),
                             'lineup' => _openLineup(context),
+                            'guess_player' => _openGuessPlayer(context),
                             _ => context.push(featured.route),
                           },
                         ),
@@ -285,6 +308,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                                 'quiz' => _openQuizLevels(context),
                                 'career_path' => _openCareerPath(context),
                                 'lineup' => _openLineup(context),
+                                'guess_player' => _openGuessPlayer(context),
                                 _ => context.push(game.route),
                               },
                             ),

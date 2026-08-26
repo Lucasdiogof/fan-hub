@@ -7,6 +7,7 @@ import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/pages/career_path_page.dart';
+import 'package:goias_app/features/arena/games/guess_player/cubit/guess_player_cubit.dart';
 import 'package:goias_app/features/arena/games/guess_player/pages/guess_player_page.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_page.dart';
@@ -254,7 +255,8 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       ),
       GoRoute(
         path: '/arena/guess-player',
-        builder: (context, state) => const GuessPlayerPage(),
+        builder: (context, state) =>
+            GuessPlayerPage(cubit: state.extra as GuessPlayerCubit?),
       ),
       GoRoute(
         path: '/partners',

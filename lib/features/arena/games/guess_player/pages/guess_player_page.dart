@@ -18,11 +18,25 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
+/// [cubit], quando fornecido, já veio construído com o catálogo carregado
+/// por quem navegou pra cá (ver `GlobalLoading.run` em `arena_page.dart`)
+/// — a tela só reaproveita via `BlocProvider.value`. Fica `null` (e a tela
+/// cria/carrega o próprio Cubit com o catálogo local) só em navegação
+/// direta por URL.
 class GuessPlayerPage extends StatelessWidget {
-  const GuessPlayerPage({super.key});
+  const GuessPlayerPage({this.cubit, super.key});
+
+  final GuessPlayerCubit? cubit;
 
   @override
   Widget build(BuildContext context) {
+    final preloaded = cubit;
+    if (preloaded != null) {
+      return BlocProvider.value(
+        value: preloaded,
+        child: const _GuessPlayerView(),
+      );
+    }
     final storage = sl<GuessPlayerStorage>();
     return BlocProvider(
       create: (_) => GuessPlayerCubit(
@@ -159,7 +173,11 @@ class _Body extends StatelessWidget {
           const SizedBox(height: AppSpacing.lg),
           if (!round.isOver)
             GuessAutocompleteField(
-              catalog: guessablePlayers,
+              catalog: context
+                  .read<GuessPlayerCubit>()
+                  .catalog
+                  .where((player) => player.hasFullHints)
+                  .toList(growable: false),
               excludedIds: round.guessedPlayerIds.toSet(),
               onSubmit: (guess) =>
                   context.read<GuessPlayerCubit>().submitGuess(guess),

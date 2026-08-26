@@ -2027,10 +2027,3 @@ final guessPlayerCatalog = <GuessPlayer>[
     dataStatus: GuessPlayerDataStatus.verified,
   ),
 ];
-
-/// Só os jogadores com as 5 dicas preenchidas (POS/CAMISA/BASE/NAC/ESTREIA)
-/// — é o que o autocomplete oferece como palpite, pra nenhuma comparação
-/// aparecer com coluna "—".
-final guessablePlayers = guessPlayerCatalog
-    .where((player) => player.hasFullHints)
-    .toList(growable: false);
