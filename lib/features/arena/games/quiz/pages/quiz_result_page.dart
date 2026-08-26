@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
@@ -37,17 +38,24 @@ class _QuizResultPageState extends State<QuizResultPage> {
     final data = widget.data;
     final wrongCount = data.pendingReviewAfter;
     final rightCount = data.levelAnsweredAfter - wrongCount;
+    final l10n = context.l10n;
+    final description = StringBuffer()
+      ..write(l10n.quizAllAnswered(data.levelTotal))
+      ..write('\n\n')
+      ..write(l10n.quizCorrectCount(rightCount));
+    if (wrongCount > 0) {
+      description
+        ..write('\n')
+        ..write(l10n.quizPendingReview(wrongCount));
+    }
     await AppBottomSheet.show(
       // ignore: use_build_context_synchronously
       context,
       icon: Icons.emoji_events_rounded,
-      title: 'NÍVEL ${data.difficulty.label.toUpperCase()} CONCLUÍDO',
-      description:
-          'Você respondeu todas as ${data.levelTotal} perguntas deste nível.\n\n'
-          '$rightCount acertadas'
-          '${wrongCount > 0 ? '\n$wrongCount para revisar' : ''}',
-      confirmLabel: wrongCount > 0 ? 'REVISAR ERROS' : 'JOGAR NOVAMENTE',
-      cancelLabel: 'FECHAR',
+      title: l10n.quizLevelCompleted(data.difficulty.label.toUpperCase()),
+      description: description.toString(),
+      confirmLabel: wrongCount > 0 ? l10n.quizReviewErrors : l10n.quizPlayAgain,
+      cancelLabel: l10n.commonClose,
       onConfirm: () {
         if (!mounted) return;
         if (wrongCount > 0) {
@@ -117,8 +125,12 @@ class _QuizResultPageState extends State<QuizResultPage> {
                       children: [
                         Text(
                           (data.isReview
-                                  ? 'REVISÃO · NÍVEL ${data.difficulty.label}'
-                                  : 'RESULTADO FINAL · NÍVEL ${data.difficulty.label}')
+                                  ? context.l10n.quizReviewLevel(
+                                      data.difficulty.label,
+                                    )
+                                  : context.l10n.quizFinalResultLevel(
+                                      data.difficulty.label,
+                                    ))
                               .toUpperCase(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -130,7 +142,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         ),
                         const SizedBox(height: AppSpacing.sm),
                         Text(
-                          'Você acertou ${data.correct} de ${data.total} perguntas',
+                          context.l10n.quizScoreLine(data.correct, data.total),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: colors.textSecondary,
@@ -150,7 +162,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'ACERTOS',
+                          context.l10n.quizHits,
                           style: TextStyle(
                             color: colors.textHint,
                             fontSize: 11.5,
@@ -160,14 +172,17 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         ),
                         if (isPerfect) ...[
                           const SizedBox(height: AppSpacing.sm),
-                          _Badge(label: 'Perfeito!', color: colors.success),
+                          _Badge(label: context.l10n.quizPerfect, color: colors.success),
                         ],
                         if (!data.isReview) ...[
                           const SizedBox(height: AppSpacing.lg),
                           Text(
                             levelComplete
-                                ? '${data.levelAnsweredAfter}/${data.levelTotal} perguntas do nível · 100%'
-                                : '${data.levelAnsweredAfter}/${data.levelTotal} perguntas do nível',
+                                ? '${context.l10n.quizLevelQuestions(data.levelAnsweredAfter, data.levelTotal)} · 100%'
+                                : context.l10n.quizLevelQuestions(
+                                    data.levelAnsweredAfter,
+                                    data.levelTotal,
+                                  ),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: colors.textSecondary,
@@ -178,7 +193,9 @@ class _QuizResultPageState extends State<QuizResultPage> {
                           if (data.pendingReviewAfter > 0) ...[
                             const SizedBox(height: 2),
                             Text(
-                              '${data.pendingReviewAfter} para revisar',
+                              context.l10n.quizPendingReview(
+                                data.pendingReviewAfter,
+                              ),
                               style: TextStyle(
                                 color: colors.error,
                                 fontSize: 12,
@@ -191,7 +208,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         Divider(height: 1, color: colors.border),
                         const SizedBox(height: AppSpacing.lg),
                         Text(
-                          'PONTUAÇÃO',
+                          context.l10n.quizScore,
                           style: TextStyle(
                             color: colors.textHint,
                             fontSize: 11,
@@ -210,10 +227,10 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         ),
                         const SizedBox(height: AppSpacing.xs),
                         if (data.isNewRecord)
-                          _Badge(label: 'Novo recorde', color: colors.gold)
+                          _Badge(label: context.l10n.quizNewRecord, color: colors.gold)
                         else
                           Text(
-                            'Recorde: ${data.bestScore} pts',
+                            context.l10n.quizBestRecord(data.bestScore),
                             style: TextStyle(
                               color: colors.textHint,
                               fontSize: 12.5,
@@ -225,11 +242,11 @@ class _QuizResultPageState extends State<QuizResultPage> {
                           child: AppPrimaryButton(
                             label: data.isReview
                                 ? (data.pendingReviewAfter > 0
-                                      ? 'REVISAR MAIS'
-                                      : 'VOLTAR AOS NÍVEIS')
+                                      ? context.l10n.quizReviewMore
+                                      : context.l10n.quizBackToLevels)
                                 : (levelComplete
-                                      ? 'JOGAR NOVAMENTE'
-                                      : 'MAIS PERGUNTAS'),
+                                      ? context.l10n.quizPlayAgain
+                                      : context.l10n.quizMoreQuestions),
                             onPressed: () {
                               if (data.isReview &&
                                   data.pendingReviewAfter == 0) {
@@ -270,7 +287,7 @@ class _QuizResultPageState extends State<QuizResultPage> {
                                 letterSpacing: 0.3,
                               ),
                             ),
-                            child: const Text('VOLTAR À ARENA'),
+                            child: Text(context.l10n.quizBackToArena),
                           ),
                         ),
                       ],

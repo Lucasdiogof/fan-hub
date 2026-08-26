@@ -579,4 +579,125 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get arenaSubtitleGuessPlayer => 'Descubra o jogador pelas pistas';
+
+  @override
+  String get commonClose => 'FECHAR';
+
+  @override
+  String get quizChooseLevel => 'Escolha o nível';
+
+  @override
+  String get quizChooseLevelHint =>
+      'Cada nível tem seu próprio banco de perguntas — quanto mais alto, mais difícil.';
+
+  @override
+  String get quizDone => 'Concluído';
+
+  @override
+  String get quizSeeResult => 'VER RESULTADO';
+
+  @override
+  String get quizNext => 'PRÓXIMA';
+
+  @override
+  String get quizHits => 'ACERTOS';
+
+  @override
+  String get quizPerfect => 'Perfeito!';
+
+  @override
+  String get quizScore => 'PONTUAÇÃO';
+
+  @override
+  String get quizNewRecord => 'Novo recorde';
+
+  @override
+  String get quizReviewErrors => 'REVISAR ERROS';
+
+  @override
+  String get quizPlayAgain => 'JOGAR NOVAMENTE';
+
+  @override
+  String get quizReviewMore => 'REVISAR MAIS';
+
+  @override
+  String get quizBackToLevels => 'VOLTAR AOS NÍVEIS';
+
+  @override
+  String get quizMoreQuestions => 'MAIS PERGUNTAS';
+
+  @override
+  String get quizBackToArena => 'VOLTAR À ARENA';
+
+  @override
+  String get quizLevelDescTorcedor =>
+      'Fatos básicos, títulos e campanhas que todo torcedor conhece.';
+
+  @override
+  String get quizLevelDescEsmeraldino =>
+      'História, ídolos e jogos marcantes pra quem manja do clube.';
+
+  @override
+  String get quizLevelDescFanatico =>
+      'Recordes e números pra quem não erra nenhuma.';
+
+  @override
+  String quizLevelName(String level) {
+    return 'Nível $level';
+  }
+
+  @override
+  String quizQuestionProgress(int current, int total) {
+    return 'Pergunta $current de $total';
+  }
+
+  @override
+  String quizAnsweredCount(int answered, int total) {
+    return '$answered/$total perguntas';
+  }
+
+  @override
+  String quizPendingReview(int count) {
+    return '$count para revisar';
+  }
+
+  @override
+  String quizLevelCompleted(String level) {
+    return 'NÍVEL $level CONCLUÍDO';
+  }
+
+  @override
+  String quizAllAnswered(int total) {
+    return 'Você respondeu todas as $total perguntas deste nível.';
+  }
+
+  @override
+  String quizCorrectCount(int count) {
+    return '$count acertadas';
+  }
+
+  @override
+  String quizReviewLevel(String level) {
+    return 'Revisão · Nível $level';
+  }
+
+  @override
+  String quizFinalResultLevel(String level) {
+    return 'Resultado final · Nível $level';
+  }
+
+  @override
+  String quizScoreLine(int correct, int total) {
+    return 'Você acertou $correct de $total perguntas';
+  }
+
+  @override
+  String quizLevelQuestions(int answered, int total) {
+    return '$answered/$total perguntas do nível';
+  }
+
+  @override
+  String quizBestRecord(int best) {
+    return 'Recorde: $best pts';
+  }
 }

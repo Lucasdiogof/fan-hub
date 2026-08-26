@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/route_observer.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/arena/games/quiz/quiz_l10n.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_cubit.dart';
@@ -112,13 +114,13 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               ArenaGameHeader(
-                title: 'QUIZ DO VERDÃO',
+                title: context.l10n.arenaGameQuizTitle.toUpperCase(),
                 onBack: () =>
                     context.canPop() ? context.pop() : context.go('/'),
               ),
               const SizedBox(height: AppSpacing.xl),
               Text(
-                'Escolha o nível',
+                context.l10n.quizChooseLevel,
                 style: TextStyle(
                   color: colors.textPrimary,
                   fontSize: 22,
@@ -128,7 +130,7 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
               ),
               const SizedBox(height: AppSpacing.xs),
               Text(
-                'Cada nível tem seu próprio banco de perguntas — quanto mais alto, mais difícil.',
+                context.l10n.quizChooseLevelHint,
                 style: TextStyle(
                   color: colors.textHint,
                   fontSize: 13,
@@ -167,13 +169,11 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
 class _LevelContent {
   const _LevelContent({
     required this.difficulty,
-    required this.tagline,
     required this.icon,
     required this.gradient,
   });
 
   final QuizDifficulty difficulty;
-  final String tagline;
   final IconData icon;
   final List<Color> gradient;
 }
@@ -181,19 +181,16 @@ class _LevelContent {
 const _levels = [
   _LevelContent(
     difficulty: QuizDifficulty.torcedor,
-    tagline: 'Fatos básicos, títulos e campanhas que todo torcedor conhece.',
     icon: Icons.groups_rounded,
     gradient: [Color(0xFF1E7A45), Color(0xFF07230F)],
   ),
   _LevelContent(
     difficulty: QuizDifficulty.esmeraldino,
-    tagline: 'História, ídolos e jogos marcantes pra quem manja do clube.',
     icon: Icons.shield_rounded,
     gradient: [Color(0xFF0F5C3D), Color(0xFF01140A)],
   ),
   _LevelContent(
     difficulty: QuizDifficulty.fanatico,
-    tagline: 'Recordes e números pra quem não erra nenhuma.',
     icon: Icons.local_fire_department_rounded,
     gradient: [Color(0xFFC79A3D), Color(0xFF2A1B02)],
   ),
@@ -262,7 +259,7 @@ class _LevelBanner extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          level.tagline,
+                          quizLevelTagline(context.l10n, level.difficulty),
                           style: TextStyle(
                             fontSize: 12.5,
                             height: 1.3,
@@ -285,7 +282,10 @@ class _LevelBanner extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '${progress.answered}/${progress.total} perguntas',
+                      context.l10n.quizAnsweredCount(
+                        progress.answered,
+                        progress.total,
+                      ),
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
@@ -304,7 +304,7 @@ class _LevelBanner extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            'Concluído',
+                            context.l10n.quizDone,
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w800,
@@ -360,7 +360,9 @@ class _LevelBanner extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            '${progress.pendingReview} para revisar',
+                            context.l10n.quizPendingReview(
+                              progress.pendingReview,
+                            ),
                             style: const TextStyle(
                               fontSize: 11.5,
                               fontWeight: FontWeight.w800,

@@ -1197,6 +1197,192 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Descubra o jogador pelas pistas'**
   String get arenaSubtitleGuessPlayer;
+
+  /// No description provided for @commonClose.
+  ///
+  /// In pt, this message translates to:
+  /// **'FECHAR'**
+  String get commonClose;
+
+  /// No description provided for @quizChooseLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha o nível'**
+  String get quizChooseLevel;
+
+  /// No description provided for @quizChooseLevelHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cada nível tem seu próprio banco de perguntas — quanto mais alto, mais difícil.'**
+  String get quizChooseLevelHint;
+
+  /// No description provided for @quizDone.
+  ///
+  /// In pt, this message translates to:
+  /// **'Concluído'**
+  String get quizDone;
+
+  /// No description provided for @quizSeeResult.
+  ///
+  /// In pt, this message translates to:
+  /// **'VER RESULTADO'**
+  String get quizSeeResult;
+
+  /// No description provided for @quizNext.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRÓXIMA'**
+  String get quizNext;
+
+  /// No description provided for @quizHits.
+  ///
+  /// In pt, this message translates to:
+  /// **'ACERTOS'**
+  String get quizHits;
+
+  /// No description provided for @quizPerfect.
+  ///
+  /// In pt, this message translates to:
+  /// **'Perfeito!'**
+  String get quizPerfect;
+
+  /// No description provided for @quizScore.
+  ///
+  /// In pt, this message translates to:
+  /// **'PONTUAÇÃO'**
+  String get quizScore;
+
+  /// No description provided for @quizNewRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Novo recorde'**
+  String get quizNewRecord;
+
+  /// No description provided for @quizReviewErrors.
+  ///
+  /// In pt, this message translates to:
+  /// **'REVISAR ERROS'**
+  String get quizReviewErrors;
+
+  /// No description provided for @quizPlayAgain.
+  ///
+  /// In pt, this message translates to:
+  /// **'JOGAR NOVAMENTE'**
+  String get quizPlayAgain;
+
+  /// No description provided for @quizReviewMore.
+  ///
+  /// In pt, this message translates to:
+  /// **'REVISAR MAIS'**
+  String get quizReviewMore;
+
+  /// No description provided for @quizBackToLevels.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOLTAR AOS NÍVEIS'**
+  String get quizBackToLevels;
+
+  /// No description provided for @quizMoreQuestions.
+  ///
+  /// In pt, this message translates to:
+  /// **'MAIS PERGUNTAS'**
+  String get quizMoreQuestions;
+
+  /// No description provided for @quizBackToArena.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOLTAR À ARENA'**
+  String get quizBackToArena;
+
+  /// No description provided for @quizLevelDescTorcedor.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fatos básicos, títulos e campanhas que todo torcedor conhece.'**
+  String get quizLevelDescTorcedor;
+
+  /// No description provided for @quizLevelDescEsmeraldino.
+  ///
+  /// In pt, this message translates to:
+  /// **'História, ídolos e jogos marcantes pra quem manja do clube.'**
+  String get quizLevelDescEsmeraldino;
+
+  /// No description provided for @quizLevelDescFanatico.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recordes e números pra quem não erra nenhuma.'**
+  String get quizLevelDescFanatico;
+
+  /// No description provided for @quizLevelName.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nível {level}'**
+  String quizLevelName(String level);
+
+  /// No description provided for @quizQuestionProgress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pergunta {current} de {total}'**
+  String quizQuestionProgress(int current, int total);
+
+  /// No description provided for @quizAnsweredCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{answered}/{total} perguntas'**
+  String quizAnsweredCount(int answered, int total);
+
+  /// No description provided for @quizPendingReview.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} para revisar'**
+  String quizPendingReview(int count);
+
+  /// No description provided for @quizLevelCompleted.
+  ///
+  /// In pt, this message translates to:
+  /// **'NÍVEL {level} CONCLUÍDO'**
+  String quizLevelCompleted(String level);
+
+  /// No description provided for @quizAllAnswered.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você respondeu todas as {total} perguntas deste nível.'**
+  String quizAllAnswered(int total);
+
+  /// No description provided for @quizCorrectCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count} acertadas'**
+  String quizCorrectCount(int count);
+
+  /// No description provided for @quizReviewLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Revisão · Nível {level}'**
+  String quizReviewLevel(String level);
+
+  /// No description provided for @quizFinalResultLevel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Resultado final · Nível {level}'**
+  String quizFinalResultLevel(String level);
+
+  /// No description provided for @quizScoreLine.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você acertou {correct} de {total} perguntas'**
+  String quizScoreLine(int correct, int total);
+
+  /// No description provided for @quizLevelQuestions.
+  ///
+  /// In pt, this message translates to:
+  /// **'{answered}/{total} perguntas do nível'**
+  String quizLevelQuestions(int answered, int total);
+
+  /// No description provided for @quizBestRecord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Recorde: {best} pts'**
+  String quizBestRecord(int best);
 }
 
 class _AppLocalizationsDelegate

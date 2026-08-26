@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_scores.dart';
@@ -93,9 +94,10 @@ class _QuizView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ArenaGameHeader(
-                  title: 'QUIZ DO VERDÃO',
-                  subtitle:
-                      'Nível ${context.read<QuizCubit>().difficulty.label}',
+                  title: context.l10n.arenaGameQuizTitle.toUpperCase(),
+                  subtitle: context.l10n.quizLevelName(
+                    context.read<QuizCubit>().difficulty.label,
+                  ),
                   onBack: () =>
                       context.canPop() ? context.pop() : context.go('/'),
                 ),
@@ -117,7 +119,10 @@ class _QuizView extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   Text(
-                                    'Pergunta ${state.index + 1} de ${state.questions.length}',
+                                    context.l10n.quizQuestionProgress(
+                                      state.index + 1,
+                                      state.questions.length,
+                                    ),
                                     style: TextStyle(
                                       color: colors.textHint,
                                       fontSize: 12.5,
@@ -198,8 +203,8 @@ class _QuizView extends StatelessWidget {
                             builder: (context, state) {
                               return AppPrimaryButton(
                                 label: state.isLastQuestion
-                                    ? 'VER RESULTADO'
-                                    : 'PRÓXIMA',
+                                    ? context.l10n.quizSeeResult
+                                    : context.l10n.quizNext,
                                 onPressed: state.answered
                                     ? () => context.read<QuizCubit>().next()
                                     : null,
