@@ -31,6 +31,23 @@ class _LoginPageState extends State<LoginPage> {
   String? _formError;
   bool _loading = false;
 
+  /// Mock só pra comparar backgrounds lado a lado — cada toque no olho da
+  /// senha cicla pro próximo (original -> login1 -> login2 -> login3 ->
+  /// login4 -> original...). Nada disso mexe em mostrar/ocultar senha de
+  /// verdade, que continua funcionando normalmente.
+  int _backgroundIndex = 0;
+
+  String get _backgroundAsset => _backgroundIndex == 0
+      ? AppAssets.loginBackground
+      : AppAssets.loginBackgroundMocks[_backgroundIndex - 1];
+
+  void _cycleBackgroundMock() {
+    setState(() {
+      _backgroundIndex =
+          (_backgroundIndex + 1) % (AppAssets.loginBackgroundMocks.length + 1);
+    });
+  }
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -72,7 +89,19 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(AppAssets.loginBackground, fit: BoxFit.cover),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 220),
+              // `AnimatedSwitcher` empilha os filhos numa Stack interna que
+              // dá constraints soltas (não força tamanho) — sem o
+              // `SizedBox.expand` aqui, a imagem ficava do tamanho
+              // intrínseco dela, sobrando cinza em cima/embaixo mesmo com
+              // `BoxFit.cover`, porque nunca existia uma "caixa" cheia pra
+              // cobrir.
+              child: SizedBox.expand(
+                key: ValueKey(_backgroundAsset),
+                child: Image.asset(_backgroundAsset, fit: BoxFit.cover),
+              ),
+            ),
           ),
           SafeArea(
             child: LayoutBuilder(
@@ -93,31 +122,6 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Center(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: colors.primary.withValues(alpha: 0.38),
-                                        blurRadius: 40,
-                                        spreadRadius: 2,
-                                      ),
-                                      BoxShadow(
-                                        color: colors.primary.withValues(alpha: 0.18),
-                                        blurRadius: 84,
-                                        spreadRadius: 16,
-                                      ),
-                                    ],
-                                  ),
-                                  child: SvgPicture.asset(
-                                    AppAssets.goiasCrest,
-                                    height: 124,
-                                    colorFilter: ColorFilter.mode(colors.primary, BlendMode.srcIn),
-                                  ),
-                                ),
-                              ),
                               const SizedBox(height: AppSpacing.xxxl),
                               _buildForm(context),
                             ],
@@ -186,6 +190,7 @@ class _LoginPageState extends State<LoginPage> {
             if (_passwordError != null) setState(() => _passwordError = null);
           },
           onSubmitted: (_) => _submit(),
+          onVisibilityToggle: _cycleBackgroundMock,
         ),
         const SizedBox(height: AppSpacing.sm),
         Align(

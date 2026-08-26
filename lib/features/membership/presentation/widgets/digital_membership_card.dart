@@ -13,6 +13,7 @@ class DigitalMembershipCard extends StatelessWidget {
     required this.planName,
     required this.status,
     this.memberNumber,
+    this.avatarUrl,
     super.key,
   });
 
@@ -20,6 +21,11 @@ class DigitalMembershipCard extends StatelessWidget {
   final String planName;
   final MembershipStatus status;
   final String? memberNumber;
+
+  /// Opcional — usado na tela de confirmação de check-in, onde o mesmo
+  /// visual da carteirinha ganha a foto do sócio. `null` mantém o card
+  /// igual ao de sempre (sem foto).
+  final String? avatarUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -79,22 +85,45 @@ class DigitalMembershipCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: AppSpacing.xxxl),
-              Text(
-                holderName.toUpperCase(),
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                planName,
-                style: TextStyle(
-                  color: Colors.white.withValues(alpha: 0.8),
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (avatarUrl != null && avatarUrl!.isNotEmpty) ...[
+                    CircleAvatar(
+                      radius: 22,
+                      backgroundColor: Colors.white.withValues(alpha: 0.15),
+                      backgroundImage: NetworkImage(avatarUrl!),
+                    ),
+                    const SizedBox(width: AppSpacing.md),
+                  ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          holderName.toUpperCase(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          planName,
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 0.8),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
               if (memberNumber != null) ...[
                 const SizedBox(height: AppSpacing.lg),

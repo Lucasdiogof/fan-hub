@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
-import 'package:goias_app/features/profile/domain/entities/app_user.dart';
+import 'package:goias_app/features/profile/domain/entities/profile.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 class MembershipState extends Equatable {
@@ -18,7 +18,7 @@ class MembershipState extends Equatable {
   final LoadStatus status;
   final Membership? membership;
   final List<MembershipPlan> plans;
-  final AppUser? user;
+  final Profile? user;
   final Match? nextMatch;
   final String? errorMessage;
 
@@ -30,7 +30,7 @@ class MembershipState extends Equatable {
     Membership? membership,
     bool clearMembership = false,
     List<MembershipPlan>? plans,
-    AppUser? user,
+    Profile? user,
     Match? nextMatch,
     bool clearNextMatch = false,
     String? errorMessage,

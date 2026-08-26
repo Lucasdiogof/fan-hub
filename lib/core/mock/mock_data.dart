@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
-import 'package:goias_app/features/profile/domain/entities/app_user.dart';
 
 /// Fonte central de dados mockados do app. Os repositórios mock leem daqui
 /// em vez de espalhar dados fictícios pela UI — quando integrarmos com a API
@@ -170,11 +169,4 @@ class MockData {
       ),
     ];
   }
-
-  static const currentUser = AppUser(
-    name: 'Lucas Diogo',
-    email: 'lucas.diogo@email.com',
-    cpf: '000.000.000-00',
-    phone: '(62) 90000-0000',
-  );
 }

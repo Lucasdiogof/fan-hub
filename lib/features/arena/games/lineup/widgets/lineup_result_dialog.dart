@@ -85,8 +85,14 @@ class _LineupResultDialog extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _Stat(label: context.l10n.lineupAttempts, value: '${state.totalAttempts}'),
-                _Stat(label: context.l10n.lineupTime, value: '$minutes:$seconds'),
+                _Stat(
+                  label: context.l10n.lineupAttempts,
+                  value: '${state.totalAttempts}',
+                ),
+                _Stat(
+                  label: context.l10n.lineupTime,
+                  value: '$minutes:$seconds',
+                ),
               ],
             ),
             const SizedBox(height: AppSpacing.xl),
@@ -96,11 +102,15 @@ class _LineupResultDialog extends StatelessWidget {
                   child: IconButton.filledTonal(
                     onPressed: () async {
                       await Clipboard.setData(
-                        ClipboardData(text: buildLineupShareText(context.l10n, state)),
+                        ClipboardData(
+                          text: buildLineupShareText(context.l10n, state),
+                        ),
                       );
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text(context.l10n.lineupResultCopied)),
+                          SnackBar(
+                            content: Text(context.l10n.lineupResultCopied),
+                          ),
                         );
                       }
                     },
@@ -112,7 +122,9 @@ class _LineupResultDialog extends StatelessWidget {
                 Expanded(
                   child: IconButton.filledTonal(
                     onPressed: () => SharePlus.instance.share(
-                      ShareParams(text: buildLineupShareText(context.l10n, state)),
+                      ShareParams(
+                        text: buildLineupShareText(context.l10n, state),
+                      ),
                     ),
                     icon: const Icon(Icons.share_rounded, size: 18),
                     tooltip: context.l10n.lineupShareResult,

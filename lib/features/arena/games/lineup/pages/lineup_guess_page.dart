@@ -71,7 +71,9 @@ class LineupGuessPage extends StatelessWidget {
                             children: [
                               Text(
                                 player.shirtNumber != null
-                                    ? context.l10n.lineupShirt(player.shirtNumber!)
+                                    ? context.l10n.lineupShirt(
+                                        player.shirtNumber!,
+                                      )
                                     : context.l10n.lineupPlayerHeading,
                                 style: TextStyle(
                                   color: context.colors.textPrimary,

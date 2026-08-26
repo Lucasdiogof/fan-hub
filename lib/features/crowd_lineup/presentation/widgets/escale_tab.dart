@@ -258,11 +258,7 @@ class _ActionBar extends StatelessWidget {
             ),
           );
         }
-        return Container(
-          decoration: BoxDecoration(
-            color: colors.surface,
-            border: Border(top: BorderSide(color: colors.border)),
-          ),
+        return Padding(
           padding: const EdgeInsets.fromLTRB(
             AppSpacing.lg,
             AppSpacing.md,

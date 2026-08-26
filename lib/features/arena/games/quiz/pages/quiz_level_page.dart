@@ -8,7 +8,8 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_l10n.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/shared/local_best_score_store.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_cubit.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
@@ -89,8 +90,10 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
       isReview: isReview,
       repository: sl<QuizProgressRepository>(),
       questionsRepository: sl<QuizQuestionRepository>(),
-      loadBest: () => sl<ArenaScores>().bestScore(gameId()),
-      saveBest: (score) => sl<ArenaScores>().saveIfBest(gameId(), score),
+      loadBest: () => sl<LocalBestScoreStore>().bestScore(gameId()),
+      saveBest: (score) =>
+          sl<LocalBestScoreStore>().saveIfBest(gameId(), score),
+      ranking: sl<ArenaRankingRepository>(),
     );
     await GlobalLoading.run(context, cubit.init);
     if (!mounted) return;

@@ -3,7 +3,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
 
-class FormationSelector extends StatelessWidget {
+class FormationSelector extends StatefulWidget {
   const FormationSelector({
     required this.selectedId,
     required this.onSelect,
@@ -16,6 +16,42 @@ class FormationSelector extends StatelessWidget {
   final bool enabled;
 
   @override
+  State<FormationSelector> createState() => _FormationSelectorState();
+}
+
+class _FormationSelectorState extends State<FormationSelector> {
+  final _keys = {for (final formation in formations) formation.id: GlobalKey()};
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _focusSelected());
+  }
+
+  @override
+  void didUpdateWidget(covariant FormationSelector oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectedId != widget.selectedId) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _focusSelected());
+    }
+  }
+
+  /// Formação selecionada some da tela se ela estiver longe no scroll
+  /// horizontal (lista de formações cresce, a escolhida antes pode acabar
+  /// ficando fora da área visível) — sempre traz ela pro centro ao abrir a
+  /// tela ou quando a seleção muda.
+  void _focusSelected() {
+    final context = _keys[widget.selectedId]?.currentContext;
+    if (context == null) return;
+    Scrollable.ensureVisible(
+      context,
+      alignment: 0.5,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -23,10 +59,15 @@ class FormationSelector extends StatelessWidget {
       child: Row(
         children: [
           for (final formation in formations) ...[
-            _Chip(
-              label: formation.label,
-              selected: formation.id == selectedId,
-              onTap: enabled ? () => onSelect(formation.id) : null,
+            KeyedSubtree(
+              key: _keys[formation.id],
+              child: _Chip(
+                label: formation.label,
+                selected: formation.id == widget.selectedId,
+                onTap: widget.enabled
+                    ? () => widget.onSelect(formation.id)
+                    : null,
+              ),
             ),
             const SizedBox(width: AppSpacing.sm),
           ],

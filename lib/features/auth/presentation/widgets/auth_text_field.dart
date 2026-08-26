@@ -18,6 +18,7 @@ class AuthTextField extends StatefulWidget {
     this.focusNode,
     this.onChanged,
     this.onSubmitted,
+    this.onVisibilityToggle,
     super.key,
   });
 
@@ -33,6 +34,11 @@ class AuthTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onSubmitted;
+
+  /// Opcional — disparado toda vez que o olho é tocado, além do
+  /// mostrar/ocultar senha normal (que continua acontecendo sempre). Hoje
+  /// só a `LoginPage` usa isso, pra ciclar os backgrounds de mock.
+  final VoidCallback? onVisibilityToggle;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -121,7 +127,10 @@ class _AuthTextFieldState extends State<AuthTextField> {
                 _EyeButton(
                   obscured: _obscured,
                   color: colors.textHint,
-                  onTap: () => setState(() => _obscured = !_obscured),
+                  onTap: () {
+                    setState(() => _obscured = !_obscured);
+                    widget.onVisibilityToggle?.call();
+                  },
                 )
               else
                 const SizedBox(width: AppSpacing.md),

@@ -50,7 +50,12 @@ class LineupField extends StatelessWidget {
                       vertical: AppSpacing.sm,
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      // `spaceBetween` (não `spaceEvenly`) empurra a
+                      // primeira linha (goleiro) pra colar na linha de fundo
+                      // de cima e a última (atacantes) na de baixo — com
+                      // `spaceEvenly` sobrava um respiro antes da primeira
+                      // linha e o goleiro ficava visualmente longe do gol.
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         for (final line in lines)
                           Row(

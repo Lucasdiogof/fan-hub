@@ -76,7 +76,10 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.sm),
                         Text(
-                          context.l10n.penaltyConverted(data.goals, data.shotResults.length),
+                          context.l10n.penaltyConverted(
+                            data.goals,
+                            data.shotResults.length,
+                          ),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: colors.textSecondary,
@@ -106,7 +109,10 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         if (isPerfect) ...[
                           const SizedBox(height: AppSpacing.sm),
-                          _Badge(label: context.l10n.quizPerfect, color: colors.success),
+                          _Badge(
+                            label: context.l10n.quizPerfect,
+                            color: colors.success,
+                          ),
                         ],
                         const SizedBox(height: AppSpacing.xl),
                         Row(
@@ -152,7 +158,10 @@ class PenaltyResultPage extends StatelessWidget {
                         ),
                         const SizedBox(height: AppSpacing.xs),
                         if (data.isNewRecord)
-                          _Badge(label: context.l10n.quizNewRecord, color: colors.gold)
+                          _Badge(
+                            label: context.l10n.quizNewRecord,
+                            color: colors.gold,
+                          )
                         else
                           Text(
                             context.l10n.quizBestRecord(data.bestScore),

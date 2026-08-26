@@ -5,8 +5,8 @@ import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_state.dart';
-import 'package:goias_app/features/profile/domain/entities/app_user.dart';
-import 'package:goias_app/features/profile/domain/repositories/user_repository.dart';
+import 'package:goias_app/features/profile/domain/entities/profile.dart';
+import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 /// Decide, a partir do estado da associação, qual das duas experiências da
@@ -14,14 +14,14 @@ import 'package:goias_app/shared/state/load_status.dart';
 class MembershipCubit extends Cubit<MembershipState> {
   MembershipCubit(
     this._membershipRepository,
-    this._userRepository,
+    this._profileRepository,
     this._footballRepository,
   ) : super(const MembershipState()) {
     load();
   }
 
   final MembershipRepository _membershipRepository;
-  final UserRepository _userRepository;
+  final ProfileRepository _profileRepository;
   final FootballRepository _footballRepository;
 
   Future<void> load() async {
@@ -29,7 +29,7 @@ class MembershipCubit extends Cubit<MembershipState> {
 
     final membershipFuture = _membershipRepository.getMyMembership();
     final plansFuture = _membershipRepository.getPlans();
-    final userFuture = _userRepository.getCurrentUser();
+    final userFuture = _profileRepository.getProfile();
     final snapshotFuture = _footballRepository.getGoiasSnapshot();
 
     final membershipResult = await membershipFuture;
@@ -58,7 +58,7 @@ class MembershipCubit extends Cubit<MembershipState> {
 
     final membership = (membershipResult as Success<Membership?>).data;
     final plans = (plansResult as Success<List<MembershipPlan>>).data;
-    final user = (userResult as Success<AppUser>).data;
+    final user = (userResult as Success<Profile>).data;
     // Sem horário confirmado (kickoff == null) conta como "ainda por vir".
     final nextMatch = switch (snapshotResult) {
       Success(:final data)

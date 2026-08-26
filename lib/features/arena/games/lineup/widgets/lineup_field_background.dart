@@ -71,6 +71,45 @@ class _FieldPainter extends CustomPainter {
       ),
       line,
     );
+
+    // Pequena área, dentro da grande área, mais perto do gol.
+    final goalAreaWidth = size.width * 0.24;
+    final goalAreaHeight = size.height * 0.05;
+    canvas.drawRect(
+      Rect.fromLTWH(
+        (size.width - goalAreaWidth) / 2,
+        0,
+        goalAreaWidth,
+        goalAreaHeight,
+      ),
+      line,
+    );
+    canvas.drawRect(
+      Rect.fromLTWH(
+        (size.width - goalAreaWidth) / 2,
+        size.height - goalAreaHeight,
+        goalAreaWidth,
+        goalAreaHeight,
+      ),
+      line,
+    );
+
+    // O gol em si — um traço mais grosso bem em cima da linha de fundo,
+    // mais estreito que a pequena área. Fica só por dentro do campo (não
+    // sai do retângulo) porque o `LineupField` recorta tudo com
+    // `ClipRRect` — desenhar fora das bordas some.
+    final goal = Paint()
+      ..color = ArenaColors.pitchLine.withValues(alpha: 0.9)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 4;
+    final goalWidth = size.width * 0.12;
+    final goalX = (size.width - goalWidth) / 2;
+    canvas.drawLine(Offset(goalX, 2), Offset(goalX + goalWidth, 2), goal);
+    canvas.drawLine(
+      Offset(goalX, size.height - 2),
+      Offset(goalX + goalWidth, size.height - 2),
+      goal,
+    );
   }
 
   @override

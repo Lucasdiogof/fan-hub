@@ -5,6 +5,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
+import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 
 /// Versão funcional do "próximo jogo" para a aba Jogos — informação e
@@ -168,7 +169,7 @@ class _TeamColumn extends StatelessWidget {
         ClubBadge(team: team, size: 52),
         const SizedBox(height: AppSpacing.sm),
         Text(
-          team.name.toUpperCase(),
+          shortTeamName(team.name).toUpperCase(),
           textAlign: TextAlign.center,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,

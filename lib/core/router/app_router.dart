@@ -17,8 +17,8 @@ import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_result_page.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
-import 'package:goias_app/features/arena/data/arena_scores.dart';
-import 'package:goias_app/features/arena/presentation/pages/arena_ranking_page.dart';
+import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
+import 'package:goias_app/features/arena/ranking/presentation/pages/ranking_page.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/auth/presentation/pages/check_your_email_page.dart';
@@ -62,9 +62,18 @@ import 'package:goias_app/features/squad/domain/squad_member.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/squad/presentation/pages/squad_list_page.dart';
 import 'package:goias_app/features/squad/presentation/pages/squad_member_detail_page.dart';
+import 'package:goias_app/features/ticket/domain/entities/match_sales_info.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
+import 'package:goias_app/features/ticket/presentation/cubit/purchase_cubit.dart';
+import 'package:goias_app/features/ticket/presentation/pages/check_in_confirmation_page.dart';
+import 'package:goias_app/features/ticket/presentation/pages/match_info_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/my_orders_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/my_tickets_page.dart';
+import 'package:goias_app/features/ticket/presentation/pages/purchase_match_page.dart';
+import 'package:goias_app/features/ticket/presentation/pages/purchase_summary_page.dart';
+import 'package:goias_app/features/ticket/presentation/pages/ticket_view_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/tickets_page.dart';
+import 'package:goias_app/features/profile/domain/entities/profile.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/splash/presentation/pages/splash_video_page.dart';
@@ -166,6 +175,33 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
         builder: (context, state) => const MyOrdersPage(),
       ),
       GoRoute(
+        path: '/tickets/checkin',
+        builder: (context, state) =>
+            CheckInConfirmationPage(args: state.extra! as CheckInArgs),
+      ),
+      GoRoute(
+        path: '/tickets/view',
+        builder: (context, state) =>
+            TicketViewPage(ticket: state.extra! as Ticket),
+      ),
+      GoRoute(
+        path: '/tickets/purchase',
+        builder: (context, state) {
+          final args = state.extra! as ({PurchaseCubit cubit, Profile profile});
+          return PurchaseMatchPage(cubit: args.cubit, profile: args.profile);
+        },
+      ),
+      GoRoute(
+        path: '/tickets/purchase/summary',
+        builder: (context, state) =>
+            PurchaseSummaryPage(args: state.extra! as PurchaseSummaryArgs),
+      ),
+      GoRoute(
+        path: '/tickets/purchase/info',
+        builder: (context, state) =>
+            MatchInfoPage(info: state.extra! as MatchSalesInfo),
+      ),
+      GoRoute(
         path: '/profile/personal',
         builder: (context, state) => const PersonalDataPage(),
       ),
@@ -221,9 +257,8 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       ),
       GoRoute(
         path: '/arena/ranking',
-        builder: (context, state) => ArenaRankingPage(
-          initialEntries: state.extra as List<ArenaLeaderboardEntry>?,
-        ),
+        builder: (context, state) =>
+            RankingPage(cubit: state.extra as RankingCubit?),
       ),
       GoRoute(
         path: '/arena/quiz',

@@ -5,6 +5,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
+import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 
 class MatchListItem extends StatelessWidget {
@@ -65,7 +66,7 @@ class MatchListItem extends StatelessWidget {
                       const SizedBox(width: AppSpacing.sm),
                       Flexible(
                         child: Text(
-                          match.homeTeam.name,
+                          shortTeamName(match.homeTeam.name),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -108,7 +109,7 @@ class MatchListItem extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          match.awayTeam.name,
+                          shortTeamName(match.awayTeam.name),
                           maxLines: 1,
                           textAlign: TextAlign.right,
                           overflow: TextOverflow.ellipsis,

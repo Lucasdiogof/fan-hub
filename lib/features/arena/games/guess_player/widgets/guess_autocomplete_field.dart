@@ -208,7 +208,10 @@ class _GuessAutocompleteFieldState extends State<GuessAutocompleteField> {
             ),
             child: Text(
               context.l10n.careerGuess,
-              style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+              style: const TextStyle(
+                fontSize: 15.5,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
         ),

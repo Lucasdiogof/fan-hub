@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,8 @@ import 'package:goias_app/features/arena/games/guess_player/cubit/guess_player_s
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_comparison.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_round_state.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 class GuessPlayerCubit extends Cubit<GuessPlayerState> {
@@ -14,6 +17,7 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
     required this._saveRound,
     required this._clearRound,
     required this._recordRoundResult,
+    required this._ranking,
   }) : super(const GuessPlayerState()) {
     _init();
   }
@@ -28,6 +32,7 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
   final Future<void> Function(GuessPlayerRoundState state) _saveRound;
   final Future<void> Function() _clearRound;
   final Future<void> Function({required bool won}) _recordRoundResult;
+  final ArenaRankingRepository _ranking;
   final _random = Random();
   String? _lastSecretId;
 
@@ -114,6 +119,19 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
     if (updated.isOver) {
       await _clearRound();
       await _recordRoundResult(won: updated.won);
+      unawaited(
+        _ranking.recordScore(
+          gameId: ArenaGameIds.guessPlayer,
+          itemId: secret.id,
+          eventType: won
+              ? (updated.attemptsUsed == 1
+                    ? 'first_try_correct'
+                    : 'correct_after_errors')
+              : 'attempts_exhausted',
+          attemptNumber: won ? updated.attemptsUsed : null,
+          wasRevealed: !won,
+        ),
+      );
     } else {
       await _saveRound(updated);
     }

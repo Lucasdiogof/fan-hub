@@ -29,6 +29,8 @@ dependencies:
   flame: ^1.38.0
   share_plus: ^13.3.0
   video_player: ^2.14.0
+  pdf: ^3.11.3
+  printing: ^5.14.2
 
 dev_dependencies:
   flutter_test:
@@ -47,6 +49,7 @@ flutter:
     - lib/assets/content/
     - lib/assets/sponsors/
     - lib/assets/branding/
+    - lib/assets/mock/
     - lib/assets/games/penalty/
     - lib/assets/squad/
     - lib/assets/videos/

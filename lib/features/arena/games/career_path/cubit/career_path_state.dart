@@ -9,6 +9,7 @@ class CareerPathState extends Equatable {
     this.player,
     this.round,
     this.justFinished = false,
+    this.roundNumber = 0,
   });
 
   final LoadStatus status;
@@ -17,19 +18,12 @@ class CareerPathState extends Equatable {
   final CareerRoundState? round;
   final bool justFinished;
 
-  int? get currentIndex {
-    final id = player?.id;
-    if (id == null) return null;
-    final index = players.indexWhere((candidate) => candidate.id == id);
-    return index == -1 ? null : index;
-  }
+  /// Contador da rodada dentro da sessão (1-based) — não é mais a posição
+  /// do jogador no array, já que a ordem de exibição agora é sorteada a
+  /// cada "Próximo jogador", não sequencial.
+  final int roundNumber;
 
   int get total => players.length;
-  bool get hasPrevious => (currentIndex ?? 0) > 0;
-  bool get hasNext {
-    final index = currentIndex;
-    return index != null && index < players.length - 1;
-  }
 
   CareerRoundStatus get roundStatus =>
       round?.status ?? CareerRoundStatus.playing;
@@ -42,6 +36,7 @@ class CareerPathState extends Equatable {
     CareerPlayer? player,
     CareerRoundState? round,
     bool? justFinished,
+    int? roundNumber,
   }) {
     return CareerPathState(
       status: status ?? this.status,
@@ -49,9 +44,17 @@ class CareerPathState extends Equatable {
       player: player ?? this.player,
       round: round ?? this.round,
       justFinished: justFinished ?? this.justFinished,
+      roundNumber: roundNumber ?? this.roundNumber,
     );
   }
 
   @override
-  List<Object?> get props => [status, players, player, round, justFinished];
+  List<Object?> get props => [
+    status,
+    players,
+    player,
+    round,
+    justFinished,
+    roundNumber,
+  ];
 }

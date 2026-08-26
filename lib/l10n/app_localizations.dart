@@ -1189,7 +1189,7 @@ abstract class AppLocalizations {
   /// No description provided for @arenaSubtitleCareer.
   ///
   /// In pt, this message translates to:
-  /// **'23 jogadores'**
+  /// **'30 jogadores'**
   String get arenaSubtitleCareer;
 
   /// No description provided for @arenaSubtitleGuessPlayer.
@@ -1198,11 +1198,77 @@ abstract class AppLocalizations {
   /// **'Descubra o jogador pelas pistas'**
   String get arenaSubtitleGuessPlayer;
 
+  /// No description provided for @arenaRankingWeekly.
+  ///
+  /// In pt, this message translates to:
+  /// **'Semanal'**
+  String get arenaRankingWeekly;
+
+  /// No description provided for @arenaRankingMonthly.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mensal'**
+  String get arenaRankingMonthly;
+
+  /// No description provided for @arenaRankingAllTime.
+  ///
+  /// In pt, this message translates to:
+  /// **'Geral'**
+  String get arenaRankingAllTime;
+
+  /// No description provided for @arenaRankingPoints.
+  ///
+  /// In pt, this message translates to:
+  /// **'pts'**
+  String get arenaRankingPoints;
+
+  /// No description provided for @arenaRankingYourPosition.
+  ///
+  /// In pt, this message translates to:
+  /// **'SUA POSIÇÃO'**
+  String get arenaRankingYourPosition;
+
+  /// No description provided for @arenaRankingMemberBadge.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sócio'**
+  String get arenaRankingMemberBadge;
+
+  /// No description provided for @arenaRankingDetailFirstTry.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acertos de primeira'**
+  String get arenaRankingDetailFirstTry;
+
+  /// No description provided for @arenaRankingDetailReview.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acertos na revisão'**
+  String get arenaRankingDetailReview;
+
+  /// No description provided for @arenaRankingDetailAbandoned.
+  ///
+  /// In pt, this message translates to:
+  /// **'Revelados/desistências'**
+  String get arenaRankingDetailAbandoned;
+
+  /// No description provided for @arenaRankingDetailTotal.
+  ///
+  /// In pt, this message translates to:
+  /// **'TOTAL'**
+  String get arenaRankingDetailTotal;
+
   /// No description provided for @commonClose.
   ///
   /// In pt, this message translates to:
   /// **'FECHAR'**
   String get commonClose;
+
+  /// No description provided for @commonRetry.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tentar novamente'**
+  String get commonRetry;
 
   /// No description provided for @quizChooseLevel.
   ///
@@ -2422,6 +2488,12 @@ abstract class AppLocalizations {
   /// **'Cancelado'**
   String get ticketStatusCancelled;
 
+  /// No description provided for @ticketStatusExpired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Expirado'**
+  String get ticketStatusExpired;
+
   /// No description provided for @orderStatusConfirmed.
   ///
   /// In pt, this message translates to:
@@ -2445,6 +2517,366 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Reembolsado'**
   String get orderStatusRefunded;
+
+  /// No description provided for @ticketsCheckinUnavailableLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CHECK-IN AINDA NÃO DISPONÍVEL'**
+  String get ticketsCheckinUnavailableLabel;
+
+  /// No description provided for @ticketsCheckinUnavailableButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Check-in em breve'**
+  String get ticketsCheckinUnavailableButton;
+
+  /// No description provided for @ticketsCheckinAvailableFrom.
+  ///
+  /// In pt, this message translates to:
+  /// **'Disponível a partir de {date} às {time}'**
+  String ticketsCheckinAvailableFrom(String date, String time);
+
+  /// No description provided for @ticketsCheckinAvailableLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'SEU PLANO PERMITE ACESSO A ESTA PARTIDA'**
+  String get ticketsCheckinAvailableLabel;
+
+  /// No description provided for @ticketsCheckInButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fazer check-in'**
+  String get ticketsCheckInButton;
+
+  /// No description provided for @ticketsDeclinedLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOCÊ MARCOU QUE NÃO VAI DESTA VEZ'**
+  String get ticketsDeclinedLabel;
+
+  /// No description provided for @ticketsChangedMindButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mudei de ideia'**
+  String get ticketsChangedMindButton;
+
+  /// No description provided for @ticketsCheckinClosedLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CHECK-IN ENCERRADO PARA ESTA PARTIDA'**
+  String get ticketsCheckinClosedLabel;
+
+  /// No description provided for @ticketsCheckinClosedButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Check-in encerrado'**
+  String get ticketsCheckinClosedButton;
+
+  /// No description provided for @ticketsHasOwnTicketLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOCÊ JÁ TEM INGRESSO PARA ESTA PARTIDA'**
+  String get ticketsHasOwnTicketLabel;
+
+  /// No description provided for @ticketsViewTicketButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Visualizar ingresso'**
+  String get ticketsViewTicketButton;
+
+  /// No description provided for @ticketsSaleUpcomingLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'VENDA AINDA NÃO ABERTA'**
+  String get ticketsSaleUpcomingLabel;
+
+  /// No description provided for @ticketsSaleUpcomingButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Venda em breve'**
+  String get ticketsSaleUpcomingButton;
+
+  /// No description provided for @ticketsSaleStartsAt.
+  ///
+  /// In pt, this message translates to:
+  /// **'Início da venda: {date} às {time}'**
+  String ticketsSaleStartsAt(String date, String time);
+
+  /// No description provided for @ticketsSaleOpenLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'INGRESSOS DISPONÍVEIS'**
+  String get ticketsSaleOpenLabel;
+
+  /// No description provided for @ticketsBuyTicketButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Comprar ingresso'**
+  String get ticketsBuyTicketButton;
+
+  /// No description provided for @ticketsSoldOutLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'INGRESSOS ESGOTADOS'**
+  String get ticketsSoldOutLabel;
+
+  /// No description provided for @ticketsSoldOutButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esgotado'**
+  String get ticketsSoldOutButton;
+
+  /// No description provided for @ticketsSaleClosedLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'VENDA ENCERRADA PARA ESTA PARTIDA'**
+  String get ticketsSaleClosedLabel;
+
+  /// No description provided for @ticketsSaleClosedButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Venda encerrada'**
+  String get ticketsSaleClosedButton;
+
+  /// No description provided for @ticketsCheckinConfirmedLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CHECK-IN CONFIRMADO'**
+  String get ticketsCheckinConfirmedLabel;
+
+  /// No description provided for @ticketsUndoCheckInButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desfazer check-in'**
+  String get ticketsUndoCheckInButton;
+
+  /// No description provided for @ticketsConfirmPresenceTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONFIRMAR PRESENÇA'**
+  String get ticketsConfirmPresenceTitle;
+
+  /// No description provided for @ticketsGoToMatchButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Vou ao jogo'**
+  String get ticketsGoToMatchButton;
+
+  /// No description provided for @ticketsNotThisTimeButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não dessa vez'**
+  String get ticketsNotThisTimeButton;
+
+  /// No description provided for @ticketsDeclineConfirmTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tem certeza que não vai?'**
+  String get ticketsDeclineConfirmTitle;
+
+  /// No description provided for @ticketsDeclineConfirmMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.'**
+  String get ticketsDeclineConfirmMessage;
+
+  /// No description provided for @ticketsWantToGoButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quero ir ao jogo'**
+  String get ticketsWantToGoButton;
+
+  /// No description provided for @ticketsConfirmDeclineButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirmar que não vou'**
+  String get ticketsConfirmDeclineButton;
+
+  /// No description provided for @ticketsCheckinSuccessTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Check-in realizado!'**
+  String get ticketsCheckinSuccessTitle;
+
+  /// No description provided for @ticketsCheckinSuccessMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'O ingresso também está disponível no menu Meus Ingressos.'**
+  String get ticketsCheckinSuccessMessage;
+
+  /// No description provided for @ticketsCloseButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fechar'**
+  String get ticketsCloseButton;
+
+  /// No description provided for @ticketsSaveTicketButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvar ingresso'**
+  String get ticketsSaveTicketButton;
+
+  /// No description provided for @ticketsSectorPickerTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Onde você quer apoiar o Verdão?'**
+  String get ticketsSectorPickerTitle;
+
+  /// No description provided for @ticketsSectorPickerSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha o setor para esta partida.'**
+  String get ticketsSectorPickerSubtitle;
+
+  /// No description provided for @ticketsConfirmCheckInButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirmar check-in'**
+  String get ticketsConfirmCheckInButton;
+
+  /// No description provided for @ticketsViewTicketTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEU INGRESSO'**
+  String get ticketsViewTicketTitle;
+
+  /// No description provided for @ticketsMatchInfoTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'INFORMAÇÕES DA PARTIDA'**
+  String get ticketsMatchInfoTitle;
+
+  /// No description provided for @ticketsHomeCrowdLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'TORCIDA DO GOIÁS'**
+  String get ticketsHomeCrowdLabel;
+
+  /// No description provided for @ticketsAwayCrowdLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'TORCIDA VISITANTE'**
+  String get ticketsAwayCrowdLabel;
+
+  /// No description provided for @ticketsContinueButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continuar'**
+  String get ticketsContinueButton;
+
+  /// No description provided for @ticketsTicketCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 ingresso} other{{count} ingressos}}'**
+  String ticketsTicketCount(num count);
+
+  /// No description provided for @ticketsSummaryTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'RESUMO DA COMPRA'**
+  String get ticketsSummaryTitle;
+
+  /// No description provided for @ticketsTotalLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Total'**
+  String get ticketsTotalLabel;
+
+  /// No description provided for @ticketsHolderDataTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'DADOS DO TITULAR'**
+  String get ticketsHolderDataTitle;
+
+  /// No description provided for @ticketsHolderIsSelfCheckbox.
+  ///
+  /// In pt, this message translates to:
+  /// **'Este ingresso é para mim'**
+  String get ticketsHolderIsSelfCheckbox;
+
+  /// No description provided for @ticketsDocumentLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF ou passaporte'**
+  String get ticketsDocumentLabel;
+
+  /// No description provided for @ticketsNominalWarning.
+  ///
+  /// In pt, this message translates to:
+  /// **'O ingresso é nominal e intransferível. Confira os dados antes de continuar.'**
+  String get ticketsNominalWarning;
+
+  /// No description provided for @ticketsFinalizePurchaseButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Finalizar compra'**
+  String get ticketsFinalizePurchaseButton;
+
+  /// No description provided for @ticketsPurchaseSuccessTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingresso comprado!'**
+  String get ticketsPurchaseSuccessTitle;
+
+  /// No description provided for @ticketsPurchaseSuccessMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'O ingresso também está disponível no menu Meus Ingressos.'**
+  String get ticketsPurchaseSuccessMessage;
+
+  /// No description provided for @ticketsTabUpcoming.
+  ///
+  /// In pt, this message translates to:
+  /// **'Próximos'**
+  String get ticketsTabUpcoming;
+
+  /// No description provided for @ticketsTabHistory.
+  ///
+  /// In pt, this message translates to:
+  /// **'Histórico'**
+  String get ticketsTabHistory;
+
+  /// No description provided for @ticketsUndoCheckInConfirmTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desfazer check-in?'**
+  String get ticketsUndoCheckInConfirmTitle;
+
+  /// No description provided for @ticketsUndoCheckInConfirmMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu acesso para esta partida será cancelado e sua vaga poderá ser disponibilizada novamente.\n\nVocê poderá realizar um novo check-in enquanto o período permanecer aberto.'**
+  String get ticketsUndoCheckInConfirmMessage;
+
+  /// No description provided for @ticketsKeepCheckInButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Manter check-in'**
+  String get ticketsKeepCheckInButton;
+
+  /// No description provided for @ticketsOriginCheckIn.
+  ///
+  /// In pt, this message translates to:
+  /// **'Check-in Sócio'**
+  String get ticketsOriginCheckIn;
+
+  /// No description provided for @ticketsOriginPurchase.
+  ///
+  /// In pt, this message translates to:
+  /// **'Compra'**
+  String get ticketsOriginPurchase;
+
+  /// No description provided for @ticketsViewRelatedTicket.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver ingresso'**
+  String get ticketsViewRelatedTicket;
+
+  /// No description provided for @ticketsLoadUserDataError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar seus dados. Tente novamente.'**
+  String get ticketsLoadUserDataError;
 
   /// No description provided for @penaltyFinalResult.
   ///

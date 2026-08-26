@@ -2,13 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
+import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
+import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
+import 'package:goias_app/features/ticket/presentation/cubit/purchase_cubit.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/tickets_cubit.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/tickets_state.dart';
+import 'package:goias_app/features/ticket/presentation/pages/check_in_confirmation_page.dart';
+import 'package:goias_app/features/ticket/presentation/widgets/featured_event_card.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
@@ -27,6 +38,84 @@ class TicketsPage extends StatelessWidget {
 
 class _TicketsView extends StatelessWidget {
   const _TicketsView();
+
+  Future<void> _openCheckIn(BuildContext context, TicketEvent event) async {
+    final loaded = await GlobalLoading.run(context, () async {
+      final profileResult = await sl<ProfileRepository>().getProfile();
+      final membershipResult = await sl<MembershipRepository>().getMyMembership();
+      return (profile: profileResult, membership: membershipResult);
+    });
+    if (!context.mounted) return;
+    final profile = switch (loaded.profile) {
+      Success(:final data) => data,
+      Error() => null,
+    };
+    final membership = switch (loaded.membership) {
+      Success(:final data) => data,
+      Error() => null,
+    };
+    if (profile == null || membership == null) {
+      _showLoadError(context);
+      return;
+    }
+    await context.push(
+      '/tickets/checkin',
+      extra: CheckInArgs(event: event, profile: profile, membership: membership),
+    );
+    if (context.mounted) await context.read<TicketsCubit>().load();
+  }
+
+  Future<void> _openPurchase(BuildContext context, TicketEvent event) async {
+    final profileResult = await GlobalLoading.run(
+      context,
+      () => sl<ProfileRepository>().getProfile(),
+    );
+    if (!context.mounted) return;
+    final profile = switch (profileResult) {
+      Success(:final data) => data,
+      Error() => null,
+    };
+    if (profile == null) {
+      _showLoadError(context);
+      return;
+    }
+    final cubit = PurchaseCubit(sl<TicketRepository>(), event);
+    await context.push(
+      '/tickets/purchase',
+      extra: (cubit: cubit, profile: profile),
+    );
+    if (context.mounted) await context.read<TicketsCubit>().load();
+  }
+
+  void _showLoadError(BuildContext context) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(content: Text(context.l10n.ticketsLoadUserDataError)),
+      );
+  }
+
+  void _viewTicket(BuildContext context, Ticket ticket) {
+    context.push('/tickets/view', extra: ticket);
+  }
+
+  Future<void> _undoCheckIn(BuildContext context, TicketEvent event) async {
+    final l10n = context.l10n;
+    final confirmed = await AppBottomSheet.show(
+      context,
+      icon: Icons.event_busy_outlined,
+      title: l10n.ticketsUndoCheckInConfirmTitle,
+      description: l10n.ticketsUndoCheckInConfirmMessage,
+      confirmLabel: l10n.ticketsKeepCheckInButton,
+      cancelLabel: l10n.ticketsUndoCheckInButton,
+    );
+    if (confirmed != false || !context.mounted) return;
+    await GlobalLoading.run(
+      context,
+      () => sl<TicketRepository>().undoCheckIn(event.match.id.toString()),
+    );
+    if (context.mounted) await context.read<TicketsCubit>().load();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +168,20 @@ class _TicketsView extends StatelessWidget {
                               children: [
                                 _SectionLabel(context.l10n.ticketsNextEvent),
                                 const SizedBox(height: AppSpacing.md),
-                                const _EmptyEventCard(),
+                                state.event == null
+                                    ? const _EmptyEventCard()
+                                    : FeaturedEventCard(
+                                        event: state.event!,
+                                        isMember: state.isMember,
+                                        onCheckIn: () =>
+                                            _openCheckIn(context, state.event!),
+                                        onBuyTicket: () =>
+                                            _openPurchase(context, state.event!),
+                                        onViewTicket: (ticket) =>
+                                            _viewTicket(context, ticket),
+                                        onUndoCheckIn: () =>
+                                            _undoCheckIn(context, state.event!),
+                                      ),
                                 const SizedBox(height: AppSpacing.xxl),
                                 _SectionLabel(context.l10n.ticketsQuickAccess),
                                 const SizedBox(height: AppSpacing.md),

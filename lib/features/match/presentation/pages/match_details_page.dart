@@ -16,6 +16,7 @@ import 'package:goias_app/features/match/presentation/widgets/match_events_timel
 import 'package:goias_app/features/match/presentation/widgets/match_lineups_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
+import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
 
@@ -318,7 +319,7 @@ class _TeamBlock extends StatelessWidget {
         ClubBadge(team: team, size: 60),
         const SizedBox(height: AppSpacing.sm),
         Text(
-          team.name.toUpperCase(),
+          shortTeamName(team.name).toUpperCase(),
           textAlign: TextAlign.center,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,

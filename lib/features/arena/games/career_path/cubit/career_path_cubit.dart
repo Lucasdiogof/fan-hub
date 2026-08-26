@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_state.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/normalize_name.dart';
 import 'package:goias_app/shared/utils/shuffle_keeping_done.dart';
@@ -19,6 +23,7 @@ class CareerPathCubit extends Cubit<CareerPathState> {
     required this.loadSelectedId,
     required this.saveSelectedId,
     required this.loadCompletedIds,
+    required this.ranking,
   }) : assert(
          players.isNotEmpty,
          'CareerPathCubit precisa de pelo menos um jogador',
@@ -32,15 +37,21 @@ class CareerPathCubit extends Cubit<CareerPathState> {
   final Future<String?> Function() loadSelectedId;
   final Future<void> Function(String playerId) saveSelectedId;
   final Future<Set<String>> Function() loadCompletedIds;
+  final ArenaRankingRepository ranking;
+
+  /// Jogadores já mostrados nesta sessão (não persiste, só existe enquanto
+  /// o Cubit vive) — usado por [goToNextOrFirst] pra nunca repetir um até
+  /// ter dado a volta em todos os outros.
+  final _shownThisSession = <String>{};
 
   /// Reembaralha a ordem a cada abertura do jogo (os já concluídos ficam
   /// parados no mesmo lugar — só o restante troca de posição). Sempre
   /// começa pelo primeiro ainda não concluído nessa ordem, A NÃO SER que
   /// exista um jogador salvo (ver [saveSelectedId]) em que o usuário
-  /// realmente tenha chutado algo — só navegar (`nextPlayer`/
-  /// `previousPlayer`) não conta como "retomar daqui", só um chute conta
-  /// (ver [guess]). Sem essa distinção, só passar o olho pelos 23
-  /// jogadores e sair deixava o jogo "preso" no último olhado.
+  /// realmente tenha chutado algo — só navegar não conta como "retomar
+  /// daqui", só um chute conta (ver [guess]). Sem essa distinção, só passar
+  /// o olho pelos 23 jogadores e sair deixava o jogo "preso" no último
+  /// olhado.
   Future<void> loadSelected() async {
     final completedIds = await loadCompletedIds();
     final ordered = shuffleKeepingDone(
@@ -57,25 +68,32 @@ class CareerPathCubit extends Cubit<CareerPathState> {
       (player) => !completedIds.contains(player.id),
       orElse: () => ordered.first,
     );
-    await _loadPlayer(resumePlayer ?? firstIncomplete);
+    _shownThisSession.clear();
+    await _loadPlayer(resumePlayer ?? firstIncomplete, roundNumber: 1);
   }
 
-  Future<void> nextPlayer() async {
-    final index = state.currentIndex;
-    if (index == null || !state.hasNext) return;
-    await _loadPlayer(state.players[index + 1]);
-  }
-
+  /// Sorteia o próximo jogador entre os que ainda não apareceram nesta
+  /// sessão — cada "Próximo jogador" é um sorteio novo, não um passo fixo
+  /// numa ordem definida só na entrada. Ao esgotar todos, começa outra
+  /// volta (também sorteada) sem repetir o jogador atual na virada.
   Future<void> goToNextOrFirst() async {
-    final index = state.currentIndex ?? -1;
-    final next = (index + 1) % state.players.length;
-    await _loadPlayer(state.players[next]);
-  }
-
-  Future<void> previousPlayer() async {
-    final index = state.currentIndex;
-    if (index == null || !state.hasPrevious) return;
-    await _loadPlayer(state.players[index - 1]);
+    final current = state.player;
+    var pool = state.players
+        .where(
+          (player) =>
+              player.id != current?.id &&
+              !_shownThisSession.contains(player.id),
+        )
+        .toList();
+    var roundNumber = state.roundNumber + 1;
+    if (pool.isEmpty) {
+      _shownThisSession.clear();
+      pool = state.players.where((player) => player.id != current?.id).toList();
+      roundNumber = 1;
+    }
+    pool.shuffle();
+    final next = pool.isNotEmpty ? pool.first : state.players.first;
+    await _loadPlayer(next, roundNumber: roundNumber);
   }
 
   CareerPlayer? _find(String id) {
@@ -85,15 +103,20 @@ class CareerPathCubit extends Cubit<CareerPathState> {
     return null;
   }
 
-  /// NÃO persiste a seleção aqui — só navegar por [nextPlayer]/
-  /// [previousPlayer] não é "retomar daqui" (ver [loadSelected]); quem
-  /// persiste é [guess], quando o usuário realmente chuta um nome.
-  Future<void> _loadPlayer(CareerPlayer player) async {
+  /// NÃO persiste a seleção aqui — só navegar não é "retomar daqui" (ver
+  /// [loadSelected]); quem persiste é [guess], quando o usuário realmente
+  /// chuta um nome.
+  Future<void> _loadPlayer(
+    CareerPlayer player, {
+    required int roundNumber,
+  }) async {
+    _shownThisSession.add(player.id);
     emit(
       state.copyWith(
         status: LoadStatus.loading,
         player: player,
         justFinished: false,
+        roundNumber: roundNumber,
       ),
     );
     final saved = await loadRound(player.id);
@@ -124,6 +147,16 @@ class CareerPathCubit extends Cubit<CareerPathState> {
       emit(state.copyWith(round: updated, justFinished: true));
       await saveRound(updated);
       await saveSelectedId(player.id);
+      unawaited(
+        ranking.recordScore(
+          gameId: ArenaGameIds.careerPath,
+          itemId: player.id,
+          eventType: round.attemptsToWin == 1
+              ? 'first_try_correct'
+              : 'correct_after_errors',
+          attemptNumber: round.attemptsToWin,
+        ),
+      );
       return;
     }
 
@@ -137,6 +170,16 @@ class CareerPathCubit extends Cubit<CareerPathState> {
     emit(state.copyWith(round: updated, justFinished: lost));
     await saveRound(updated);
     await saveSelectedId(player.id);
+    if (lost) {
+      unawaited(
+        ranking.recordScore(
+          gameId: ArenaGameIds.careerPath,
+          itemId: player.id,
+          eventType: 'attempts_exhausted',
+          wasRevealed: true,
+        ),
+      );
+    }
   }
 
   Future<void> reveal() async {
@@ -150,6 +193,14 @@ class CareerPathCubit extends Cubit<CareerPathState> {
     emit(state.copyWith(round: updated, justFinished: true));
     await saveRound(updated);
     await saveSelectedId(player.id);
+    unawaited(
+      ranking.recordScore(
+        gameId: ArenaGameIds.careerPath,
+        itemId: player.id,
+        eventType: 'revealed',
+        wasRevealed: true,
+      ),
+    );
   }
 
   void acknowledgeResultShown() {

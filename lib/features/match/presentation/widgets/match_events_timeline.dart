@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
+import 'package:goias_app/shared/utils/team_name.dart';
 
 /// Timeline de gols/cartões/substituições — só aparece quando a fonte tem
 /// eventos pra essa partida (não toda partida tem, ex.: futuras).
@@ -48,9 +49,11 @@ class MatchEventsTimeline extends StatelessWidget {
                 if (i > 0) Divider(height: 1, color: colors.border),
                 _EventRow(
                   event: events[i],
-                  teamName: events[i].side == MatchEventSide.home
-                      ? match.homeTeam.name
-                      : match.awayTeam.name,
+                  teamName: shortTeamName(
+                    events[i].side == MatchEventSide.home
+                        ? match.homeTeam.name
+                        : match.awayTeam.name,
+                  ),
                 ),
               ],
             ],

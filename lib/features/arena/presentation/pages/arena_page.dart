@@ -6,11 +6,11 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
-import 'package:goias_app/features/arena/data/arena_scores.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
@@ -21,7 +21,9 @@ import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
-import 'package:goias_app/features/arena/presentation/pages/arena_ranking_page.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
+import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_card.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
@@ -31,6 +33,7 @@ import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 
@@ -55,11 +58,22 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   //   caso mais comum, já que é assim que se joga.
   late Future<ArenaProgressSnapshot> _progressFuture =
       sl<ArenaProgressRepository>().loadSnapshot();
+  late Future<({int rank, int totalScore})?> _myRankFuture = _loadMyRank();
   bool _celebrationShown = false;
+
+  Future<({int rank, int totalScore})?> _loadMyRank() async {
+    final result = await sl<ArenaRankingRepository>().getMyRank(
+      RankingPeriod.allTime,
+    );
+    return result is Success<({int rank, int totalScore})?>
+        ? result.data
+        : null;
+  }
 
   void _reloadProgress() {
     setState(() {
       _progressFuture = sl<ArenaProgressRepository>().loadSnapshot();
+      _myRankFuture = _loadMyRank();
     });
   }
 
@@ -126,12 +140,16 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   }
 
   Future<void> _openRanking(BuildContext context) async {
-    final entries = await GlobalLoading.run(
-      context,
-      () => sl<ArenaScores>().leaderboard(defaultLeaderboardCategoryId),
-    );
+    final cubit = await GlobalLoading.run(context, () async {
+      final cubit = RankingCubit(
+        sl<ArenaRankingRepository>(),
+        sl<MembershipRepository>(),
+      );
+      await cubit.load();
+      return cubit;
+    });
     if (!context.mounted) return;
-    unawaited(context.push('/arena/ranking', extra: entries));
+    unawaited(context.push('/arena/ranking', extra: cubit));
   }
 
   /// Carrega o resumo dos 3 níveis ANTES de navegar — a tela de níveis do
@@ -157,6 +175,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
         loadSelectedId: storage.loadSelectedPlayerId,
         saveSelectedId: storage.saveSelectedPlayerId,
         loadCompletedIds: storage.completedIds,
+        ranking: sl<ArenaRankingRepository>(),
       );
       await cubit.loadSelected();
       return cubit;
@@ -177,6 +196,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
         loadSelectedMatchId: storage.loadSelectedMatchId,
         saveSelectedMatchId: storage.saveSelectedMatchId,
         loadCompletedIds: storage.completedIds,
+        ranking: sl<ArenaRankingRepository>(),
       );
       await cubit.loadSelectedMatch();
       return cubit;
@@ -198,6 +218,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
         saveRound: storage.saveActiveRound,
         clearRound: storage.clearActiveRound,
         recordRoundResult: storage.recordRoundResult,
+        ranking: sl<ArenaRankingRepository>(),
       );
     });
     if (!context.mounted) return;
@@ -306,14 +327,14 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                           );
                         },
                       ),
-                      // `myRank` fica null por enquanto: não existe ainda uma
-                      // consulta de "minha posição" sem limite/por categoria
-                      // única no backend (o leaderboard atual só traz um
-                      // recorte top-N por jogo) — o espaço já está pronto na
-                      // UI, só falta a fonte de dado real.
-                      _RankingBanner(
-                        onTap: () => _openRanking(context),
-                        myRank: null,
+                      FutureBuilder<({int rank, int totalScore})?>(
+                        future: _myRankFuture,
+                        builder: (context, snapshot) {
+                          return _RankingBanner(
+                            onTap: () => _openRanking(context),
+                            myRank: snapshot.data?.rank,
+                          );
+                        },
                       ),
                       const SizedBox(height: AppSpacing.xl),
                       if (featured != null) ...[

@@ -27,7 +27,7 @@ class MemberView extends StatelessWidget {
           onTap: () => context.push('/membership/my', extra: membership),
           borderRadius: BorderRadius.circular(AppRadius.card),
           child: DigitalMembershipCard(
-            holderName: state.user?.name ?? '',
+            holderName: state.user?.displayName ?? '',
             planName: membership.plan.name,
             status: membership.status,
             memberNumber: membership.memberNumber,
@@ -37,14 +37,7 @@ class MemberView extends StatelessWidget {
           const SizedBox(height: AppSpacing.xl),
           MemberNextMatchCard(
             match: state.nextMatch!,
-            onCheckIn: () => context.push(
-              '/membership/coming-soon',
-              extra: (
-                title: 'CHECK-IN',
-                message:
-                    context.l10n.membershipCheckinUnavailable,
-              ),
-            ),
+            onCheckIn: () => context.push('/tickets'),
           ),
         ],
         const SizedBox(height: AppSpacing.xl),

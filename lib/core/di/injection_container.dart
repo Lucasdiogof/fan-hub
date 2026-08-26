@@ -2,7 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:goias_app/core/network/api_client.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
-import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/ranking/data/supabase_arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/shared/local_best_score_store.dart';
 import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_repository.dart';
@@ -43,8 +45,6 @@ import 'package:goias_app/features/news/data/datasources/news_remote_data_source
 import 'package:goias_app/features/news/data/repositories/news_repository_impl.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
 import 'package:goias_app/features/news/presentation/cubit/news_cubit.dart';
-import 'package:goias_app/features/profile/data/mock_user_repository.dart';
-import 'package:goias_app/features/profile/domain/repositories/user_repository.dart';
 import 'package:goias_app/features/social/data/datasources/social_remote_data_source.dart';
 import 'package:goias_app/features/social/data/repositories/social_feed_repository_impl.dart';
 import 'package:goias_app/features/social/domain/repositories/social_feed_repository.dart';
@@ -52,7 +52,7 @@ import 'package:goias_app/features/social/presentation/cubit/social_feed_cubit.d
 import 'package:goias_app/features/squad/data/supabase_squad_repository.dart';
 import 'package:goias_app/features/squad/domain/repositories/squad_repository.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
-import 'package:goias_app/features/ticket/data/empty_ticket_repository.dart';
+import 'package:goias_app/features/ticket/data/mock_ticket_repository.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/my_orders_cubit.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/my_tickets_cubit.dart';
@@ -62,7 +62,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final GetIt sl = GetIt.instance;
 
 void setupDependencies() {
-  sl.registerLazySingleton<TicketRepository>(EmptyTicketRepository.new);
+  sl.registerLazySingleton<TicketRepository>(
+    () => MockTicketRepository(Supabase.instance.client, sl(), sl()),
+  );
   sl.registerLazySingleton<MembershipRepository>(MockMembershipRepository.new);
   sl.registerLazySingleton<MembershipFaqDataSource>(
     () => MembershipFaqDataSource(Supabase.instance.client),
@@ -77,7 +79,6 @@ void setupDependencies() {
   sl.registerLazySingleton<AddressRepository>(
     () => ViaCepAddressRepository(sl(), sl()),
   );
-  sl.registerLazySingleton<UserRepository>(MockUserRepository.new);
 
   sl.registerLazySingleton<Dio>(ApiClient.create);
   sl.registerLazySingleton<FootballRemoteDataSource>(
@@ -110,9 +111,10 @@ void setupDependencies() {
   );
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
   sl.registerLazySingleton<SplashGate>(SplashGate.new);
-  sl.registerLazySingleton<ArenaScores>(
-    () => ArenaScores(Supabase.instance.client),
+  sl.registerLazySingleton<ArenaRankingRepository>(
+    () => SupabaseArenaRankingRepository(Supabase.instance.client),
   );
+  sl.registerLazySingleton<LocalBestScoreStore>(LocalBestScoreStore.new);
   sl.registerLazySingleton<SupabaseLineupStorage>(
     () => SupabaseLineupStorage(Supabase.instance.client),
   );
@@ -165,7 +167,7 @@ void setupDependencies() {
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));
-  sl.registerFactory<TicketsCubit>(() => TicketsCubit(sl()));
+  sl.registerFactory<TicketsCubit>(() => TicketsCubit(sl(), sl()));
   sl.registerFactory<MyTicketsCubit>(() => MyTicketsCubit(sl()));
   sl.registerFactory<MyOrdersCubit>(() => MyOrdersCubit(sl()));
   sl.registerLazySingleton<ProfileCubit>(() => ProfileCubit(sl()));

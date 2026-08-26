@@ -5,7 +5,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/arena/data/arena_scores.dart';
+import 'package:goias_app/features/arena/shared/local_best_score_store.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/widgets/penalty_hud.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
@@ -22,9 +22,9 @@ class _PenaltyGamePageState extends State<PenaltyGamePage>
   static const _gameId = 'penalty';
 
   late final PenaltyGame _game = PenaltyGame(
-    loadBest: () => sl<ArenaScores>().bestScore(_gameId),
+    loadBest: () => sl<LocalBestScoreStore>().bestScore(_gameId),
     saveBest: (score) async {
-      await sl<ArenaScores>().saveIfBest(_gameId, score);
+      await sl<LocalBestScoreStore>().saveIfBest(_gameId, score);
     },
   );
 

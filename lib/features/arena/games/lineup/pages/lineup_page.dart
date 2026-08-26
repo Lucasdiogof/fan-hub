@@ -16,6 +16,7 @@ import 'package:goias_app/features/arena/games/lineup/widgets/lineup_field_backg
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_result_dialog.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_shirt_button.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -45,6 +46,7 @@ class LineupPage extends StatelessWidget {
         loadSelectedMatchId: storage.loadSelectedMatchId,
         saveSelectedMatchId: storage.saveSelectedMatchId,
         loadCompletedIds: storage.completedIds,
+        ranking: sl<ArenaRankingRepository>(),
       )..loadSelectedMatch(),
       child: const _LineupView(),
     );

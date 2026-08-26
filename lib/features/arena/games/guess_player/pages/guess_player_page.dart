@@ -15,6 +15,7 @@ import 'package:goias_app/features/arena/games/guess_player/widgets/guess_blurre
 import 'package:goias_app/features/arena/games/guess_player/widgets/guess_comparison_table.dart';
 import 'package:goias_app/features/arena/games/guess_player/widgets/guess_confetti.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -46,6 +47,7 @@ class GuessPlayerPage extends StatelessWidget {
         saveRound: storage.saveActiveRound,
         clearRound: storage.clearActiveRound,
         recordRoundResult: storage.recordRoundResult,
+        ranking: sl<ArenaRankingRepository>(),
       ),
       child: const _GuessPlayerView(),
     );
@@ -68,12 +70,16 @@ class _GuessPlayerView extends StatelessWidget {
       icon: round.won
           ? Icons.emoji_events_rounded
           : Icons.sports_soccer_rounded,
-      title: round.won ? context.l10n.guessCorrectTitle : context.l10n.guessOutOfAttempts,
+      title: round.won
+          ? context.l10n.guessCorrectTitle
+          : context.l10n.guessOutOfAttempts,
       description: round.won
           ? '${secret.displayName}\n\n${context.l10n.guessCorrectDetail(round.attemptsUsed, maxGuessAttempts)}'
           : null,
       content: round.won ? null : _SecretPlayerReveal(name: secret.displayName),
-      confirmLabel: hasNextPlayer ? context.l10n.careerNextPlayer : context.l10n.commonBack,
+      confirmLabel: hasNextPlayer
+          ? context.l10n.careerNextPlayer
+          : context.l10n.commonBack,
       isDismissible: false,
       onConfirm: () {
         if (!context.mounted) return;
@@ -171,7 +177,9 @@ class _Body extends StatelessWidget {
             child: Text(
               round.isOver
                   ? context.l10n.guessRoundEnded
-                  : context.l10n.guessAttemptsRemaining(round.attemptsRemaining),
+                  : context.l10n.guessAttemptsRemaining(
+                      round.attemptsRemaining,
+                    ),
               style: TextStyle(
                 color: colors.textSecondary,
                 fontSize: 13,

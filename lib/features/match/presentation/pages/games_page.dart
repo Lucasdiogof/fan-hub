@@ -104,9 +104,18 @@ class _MatchesTab extends StatelessWidget {
 
   final ValueChanged<Match> onMatchTap;
 
+  /// Só bloqueia a tela inteira quando ainda não existe NADA pra mostrar
+  /// (primeira carga). Navegar entre rodadas também deixa
+  /// `currentRoundStatus` em `loading`, mas já existe `currentRoundMatches`
+  /// de antes — nesse caso `_MatchesContent` mantém o card do próximo jogo
+  /// e o cabeçalho de rodada fixos e só troca a lista de jogos por um
+  /// carregamento local (ver `_isRoundNavigating`).
   static bool _isLoading(GamesState state) {
-    return state.currentRoundStatus == LoadStatus.initial ||
-        state.currentRoundStatus == LoadStatus.loading ||
+    final noRoundDataYet =
+        state.currentRoundStatus == LoadStatus.initial ||
+        (state.currentRoundStatus == LoadStatus.loading &&
+            state.currentRoundMatches.isEmpty);
+    return noRoundDataYet ||
         state.snapshotStatus == LoadStatus.initial ||
         state.snapshotStatus == LoadStatus.loading;
   }
@@ -206,10 +215,16 @@ class _MatchesContent extends StatelessWidget {
         if (roundMatches.isNotEmpty) ...[
           _RoundNavigationHeader(state: state),
           const SizedBox(height: AppSpacing.md),
-          for (final match in roundMatches) ...[
-            MatchListItem(match: match, onTap: () => onMatchTap(match)),
-            const SizedBox(height: AppSpacing.sm),
-          ],
+          if (state.currentRoundStatus == LoadStatus.loading)
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: AppSpacing.xxl),
+              child: Center(child: GoiasLoadingIndicator()),
+            )
+          else
+            for (final match in roundMatches) ...[
+              MatchListItem(match: match, onTap: () => onMatchTap(match)),
+              const SizedBox(height: AppSpacing.sm),
+            ],
         ],
       ],
     );
@@ -229,11 +244,14 @@ class _RoundNavigationHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final cubit = context.read<GamesCubit>();
+    final navigating = state.currentRoundStatus == LoadStatus.loading;
     return Row(
       children: [
         _RoundArrowButton(
           icon: Icons.chevron_left_rounded,
-          onTap: state.hasPreviousRound ? cubit.previousRound : null,
+          onTap: (state.hasPreviousRound && !navigating)
+              ? cubit.previousRound
+              : null,
         ),
         Expanded(
           child: Text(
@@ -243,13 +261,13 @@ class _RoundNavigationHeader extends StatelessWidget {
               fontSize: 15,
               fontWeight: FontWeight.w800,
               letterSpacing: 0.2,
-              color: colors.textPrimary,
+              color: navigating ? colors.textHint : colors.textPrimary,
             ),
           ),
         ),
         _RoundArrowButton(
           icon: Icons.chevron_right_rounded,
-          onTap: state.hasNextRound ? cubit.nextRound : null,
+          onTap: (state.hasNextRound && !navigating) ? cubit.nextRound : null,
         ),
       ],
     );

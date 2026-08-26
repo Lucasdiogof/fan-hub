@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_state.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_logic.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 class QuizCubit extends Cubit<QuizState> {
@@ -18,6 +22,7 @@ class QuizCubit extends Cubit<QuizState> {
     required this.questionsRepository,
     required this.loadBest,
     required this.saveBest,
+    required this.ranking,
   }) : super(const QuizState());
 
   final QuizDifficulty difficulty;
@@ -26,6 +31,7 @@ class QuizCubit extends Cubit<QuizState> {
   final QuizQuestionRepository questionsRepository;
   final Future<int> Function() loadBest;
   final Future<void> Function(int score) saveBest;
+  final ArenaRankingRepository ranking;
 
   Future<void> init() async {
     emit(state.copyWith(status: LoadStatus.loading));
@@ -136,6 +142,16 @@ class QuizCubit extends Cubit<QuizState> {
       questionId: question.id,
       difficulty: difficulty,
       wasCorrect: wasCorrect,
+    );
+    unawaited(
+      ranking.recordScore(
+        gameId: ArenaGameIds.quiz,
+        itemId: question.id,
+        eventType: wasCorrect
+            ? (isReview ? 'review_correct' : 'first_try_correct')
+            : 'wrong_answer',
+        difficulty: difficulty.name,
+      ),
     );
     final answersSoFar = [
       ...state.answersSoFar,

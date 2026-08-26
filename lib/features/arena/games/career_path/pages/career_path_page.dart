@@ -13,6 +13,7 @@ import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cub
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_state.dart';
 import 'package:goias_app/features/arena/games/career_path/widgets/career_table.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -45,6 +46,7 @@ class CareerPathPage extends StatelessWidget {
         loadSelectedId: storage.loadSelectedPlayerId,
         saveSelectedId: storage.saveSelectedPlayerId,
         loadCompletedIds: storage.completedIds,
+        ranking: sl<ArenaRankingRepository>(),
       )..loadSelected(),
       child: const _CareerPathView(),
     );
@@ -206,7 +208,10 @@ class _CareerPathViewState extends State<_CareerPathView> {
           body: SafeArea(
             child: Column(
               children: [
-                _Header(index: state.currentIndex ?? 0, total: state.total),
+                _Header(
+                  index: state.roundNumber == 0 ? 0 : state.roundNumber - 1,
+                  total: state.total,
+                ),
                 Expanded(
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(
@@ -450,7 +455,10 @@ class _GuessBlock extends StatelessWidget {
             ),
             child: Text(
               context.l10n.careerGuess,
-              style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+              style: const TextStyle(
+                fontSize: 15.5,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
         ),
@@ -653,7 +661,10 @@ class _ResolvedBlock extends StatelessWidget {
             ),
             child: Text(
               context.l10n.careerNextPlayer,
-              style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+              style: const TextStyle(
+                fontSize: 15.5,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
         ),

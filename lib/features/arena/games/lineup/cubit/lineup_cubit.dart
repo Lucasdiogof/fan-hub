@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/word_evaluation_service.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/shuffle_keeping_done.dart';
 
@@ -30,6 +34,7 @@ class LineupCubit extends Cubit<LineupState> {
     required this.loadSelectedMatchId,
     required this.saveSelectedMatchId,
     required this.loadCompletedIds,
+    required this.ranking,
   }) : assert(
          matches.isNotEmpty,
          'LineupCubit precisa de pelo menos uma partida',
@@ -43,6 +48,7 @@ class LineupCubit extends Cubit<LineupState> {
   final Future<String?> Function() loadSelectedMatchId;
   final Future<void> Function(String matchId) saveSelectedMatchId;
   final Future<Set<String>> Function() loadCompletedIds;
+  final ArenaRankingRepository ranking;
 
   /// Sempre começa pela primeira partida ainda não concluída (na ordem já
   /// reembaralhada — as concluídas ficam paradas no lugar, só o resto troca
@@ -220,21 +226,46 @@ class LineupCubit extends Cubit<LineupState> {
       updatedGame = updatedGame.copyWith(completedAt: DateTime.now());
     }
 
+    final justCompletedNow = !wasComplete && isCompleteNow;
     emit(
       state.copyWith(
         game: updatedGame,
         currentGuessLetters: const [],
-        justCompleted: !wasComplete && isCompleteNow,
+        justCompleted: justCompletedNow,
       ),
     );
     await saveState(updatedGame);
     await saveSelectedMatchId(match.id);
+
+    if (justCompletedNow) {
+      final states = updatedGame.playerStates.values;
+      final failedCount = states.where((p) => p.failed).length;
+      final wrongCount = states.fold<int>(
+        0,
+        (sum, p) => sum + p.attemptsUsed - (p.solved ? 1 : 0),
+      );
+      unawaited(
+        ranking.recordScore(
+          gameId: ArenaGameIds.lineup,
+          itemId: match.id,
+          eventType: failedCount > 0
+              ? 'attempts_exhausted'
+              : (wrongCount == 0
+                    ? 'first_try_correct'
+                    : 'correct_after_errors'),
+          wrongCount: wrongCount,
+        ),
+      );
+    }
   }
 
   Future<void> giveUp() async {
     final match = state.match;
     final game = state.game;
     if (match == null || game == null) return;
+
+    final foundCount = state.solvedCount;
+    final totalCount = state.totalPlayers;
 
     final updatedStates = {...game.playerStates};
     for (final player in match.players) {
@@ -259,6 +290,19 @@ class LineupCubit extends Cubit<LineupState> {
     );
     await saveState(updatedGame);
     await saveSelectedMatchId(match.id);
+
+    if (!wasComplete) {
+      unawaited(
+        ranking.recordScore(
+          gameId: ArenaGameIds.lineup,
+          itemId: match.id,
+          eventType: 'abandoned',
+          wasAbandoned: true,
+          foundCount: foundCount,
+          totalCount: totalCount,
+        ),
+      );
+    }
   }
 
   bool _allPlayersDone(LineupMatch match, LineupGameState game) {

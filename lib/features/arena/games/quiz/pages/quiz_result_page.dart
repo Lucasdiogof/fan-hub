@@ -172,7 +172,10 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         ),
                         if (isPerfect) ...[
                           const SizedBox(height: AppSpacing.sm),
-                          _Badge(label: context.l10n.quizPerfect, color: colors.success),
+                          _Badge(
+                            label: context.l10n.quizPerfect,
+                            color: colors.success,
+                          ),
                         ],
                         if (!data.isReview) ...[
                           const SizedBox(height: AppSpacing.lg),
@@ -227,7 +230,10 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         ),
                         const SizedBox(height: AppSpacing.xs),
                         if (data.isNewRecord)
-                          _Badge(label: context.l10n.quizNewRecord, color: colors.gold)
+                          _Badge(
+                            label: context.l10n.quizNewRecord,
+                            color: colors.gold,
+                          )
                         else
                           Text(
                             context.l10n.quizBestRecord(data.bestScore),

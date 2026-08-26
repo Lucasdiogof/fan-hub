@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
+import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 
 /// Não implementa check-in real — só leva pra uma tela preparada, sem
@@ -58,7 +59,7 @@ class MemberNextMatchCard extends StatelessWidget {
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Text(
-                  '${match.homeTeam.name} x ${match.awayTeam.name}',
+                  '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

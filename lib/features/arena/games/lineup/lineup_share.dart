@@ -15,7 +15,9 @@ String buildLineupShareText(AppLocalizations l10n, LineupState state) {
   final seconds = (elapsed.inSeconds % 60).toString().padLeft(2, '0');
 
   final buffer = StringBuffer()
-    ..writeln('${l10n.arenaGameLineupTitle.toUpperCase()} — ${match.teamToGuess.toUpperCase()}')
+    ..writeln(
+      '${l10n.arenaGameLineupTitle.toUpperCase()} — ${match.teamToGuess.toUpperCase()}',
+    )
     ..writeln('${match.competition} · ${match.phase}')
     ..writeln(
       l10n.lineupShareStats(

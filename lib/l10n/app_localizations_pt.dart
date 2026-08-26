@@ -575,13 +575,46 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaSubtitleLineup => '31 escalações';
 
   @override
-  String get arenaSubtitleCareer => '23 jogadores';
+  String get arenaSubtitleCareer => '30 jogadores';
 
   @override
   String get arenaSubtitleGuessPlayer => 'Descubra o jogador pelas pistas';
 
   @override
+  String get arenaRankingWeekly => 'Semanal';
+
+  @override
+  String get arenaRankingMonthly => 'Mensal';
+
+  @override
+  String get arenaRankingAllTime => 'Geral';
+
+  @override
+  String get arenaRankingPoints => 'pts';
+
+  @override
+  String get arenaRankingYourPosition => 'SUA POSIÇÃO';
+
+  @override
+  String get arenaRankingMemberBadge => 'Sócio';
+
+  @override
+  String get arenaRankingDetailFirstTry => 'Acertos de primeira';
+
+  @override
+  String get arenaRankingDetailReview => 'Acertos na revisão';
+
+  @override
+  String get arenaRankingDetailAbandoned => 'Revelados/desistências';
+
+  @override
+  String get arenaRankingDetailTotal => 'TOTAL';
+
+  @override
   String get commonClose => 'FECHAR';
+
+  @override
+  String get commonRetry => 'Tentar novamente';
 
   @override
   String get quizChooseLevel => 'Escolha o nível';
@@ -1317,6 +1350,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketStatusCancelled => 'Cancelado';
 
   @override
+  String get ticketStatusExpired => 'Expirado';
+
+  @override
   String get orderStatusConfirmed => 'Confirmado';
 
   @override
@@ -1327,6 +1363,208 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get orderStatusRefunded => 'Reembolsado';
+
+  @override
+  String get ticketsCheckinUnavailableLabel => 'CHECK-IN AINDA NÃO DISPONÍVEL';
+
+  @override
+  String get ticketsCheckinUnavailableButton => 'Check-in em breve';
+
+  @override
+  String ticketsCheckinAvailableFrom(String date, String time) {
+    return 'Disponível a partir de $date às $time';
+  }
+
+  @override
+  String get ticketsCheckinAvailableLabel =>
+      'SEU PLANO PERMITE ACESSO A ESTA PARTIDA';
+
+  @override
+  String get ticketsCheckInButton => 'Fazer check-in';
+
+  @override
+  String get ticketsDeclinedLabel => 'VOCÊ MARCOU QUE NÃO VAI DESTA VEZ';
+
+  @override
+  String get ticketsChangedMindButton => 'Mudei de ideia';
+
+  @override
+  String get ticketsCheckinClosedLabel =>
+      'CHECK-IN ENCERRADO PARA ESTA PARTIDA';
+
+  @override
+  String get ticketsCheckinClosedButton => 'Check-in encerrado';
+
+  @override
+  String get ticketsHasOwnTicketLabel =>
+      'VOCÊ JÁ TEM INGRESSO PARA ESTA PARTIDA';
+
+  @override
+  String get ticketsViewTicketButton => 'Visualizar ingresso';
+
+  @override
+  String get ticketsSaleUpcomingLabel => 'VENDA AINDA NÃO ABERTA';
+
+  @override
+  String get ticketsSaleUpcomingButton => 'Venda em breve';
+
+  @override
+  String ticketsSaleStartsAt(String date, String time) {
+    return 'Início da venda: $date às $time';
+  }
+
+  @override
+  String get ticketsSaleOpenLabel => 'INGRESSOS DISPONÍVEIS';
+
+  @override
+  String get ticketsBuyTicketButton => 'Comprar ingresso';
+
+  @override
+  String get ticketsSoldOutLabel => 'INGRESSOS ESGOTADOS';
+
+  @override
+  String get ticketsSoldOutButton => 'Esgotado';
+
+  @override
+  String get ticketsSaleClosedLabel => 'VENDA ENCERRADA PARA ESTA PARTIDA';
+
+  @override
+  String get ticketsSaleClosedButton => 'Venda encerrada';
+
+  @override
+  String get ticketsCheckinConfirmedLabel => 'CHECK-IN CONFIRMADO';
+
+  @override
+  String get ticketsUndoCheckInButton => 'Desfazer check-in';
+
+  @override
+  String get ticketsConfirmPresenceTitle => 'CONFIRMAR PRESENÇA';
+
+  @override
+  String get ticketsGoToMatchButton => 'Vou ao jogo';
+
+  @override
+  String get ticketsNotThisTimeButton => 'Não dessa vez';
+
+  @override
+  String get ticketsDeclineConfirmTitle => 'Tem certeza que não vai?';
+
+  @override
+  String get ticketsDeclineConfirmMessage =>
+      'A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.';
+
+  @override
+  String get ticketsWantToGoButton => 'Quero ir ao jogo';
+
+  @override
+  String get ticketsConfirmDeclineButton => 'Confirmar que não vou';
+
+  @override
+  String get ticketsCheckinSuccessTitle => 'Check-in realizado!';
+
+  @override
+  String get ticketsCheckinSuccessMessage =>
+      'O ingresso também está disponível no menu Meus Ingressos.';
+
+  @override
+  String get ticketsCloseButton => 'Fechar';
+
+  @override
+  String get ticketsSaveTicketButton => 'Salvar ingresso';
+
+  @override
+  String get ticketsSectorPickerTitle => 'Onde você quer apoiar o Verdão?';
+
+  @override
+  String get ticketsSectorPickerSubtitle =>
+      'Escolha o setor para esta partida.';
+
+  @override
+  String get ticketsConfirmCheckInButton => 'Confirmar check-in';
+
+  @override
+  String get ticketsViewTicketTitle => 'MEU INGRESSO';
+
+  @override
+  String get ticketsMatchInfoTitle => 'INFORMAÇÕES DA PARTIDA';
+
+  @override
+  String get ticketsHomeCrowdLabel => 'TORCIDA DO GOIÁS';
+
+  @override
+  String get ticketsAwayCrowdLabel => 'TORCIDA VISITANTE';
+
+  @override
+  String get ticketsContinueButton => 'Continuar';
+
+  @override
+  String ticketsTicketCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ingressos',
+      one: '1 ingresso',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get ticketsSummaryTitle => 'RESUMO DA COMPRA';
+
+  @override
+  String get ticketsTotalLabel => 'Total';
+
+  @override
+  String get ticketsHolderDataTitle => 'DADOS DO TITULAR';
+
+  @override
+  String get ticketsHolderIsSelfCheckbox => 'Este ingresso é para mim';
+
+  @override
+  String get ticketsDocumentLabel => 'CPF ou passaporte';
+
+  @override
+  String get ticketsNominalWarning =>
+      'O ingresso é nominal e intransferível. Confira os dados antes de continuar.';
+
+  @override
+  String get ticketsFinalizePurchaseButton => 'Finalizar compra';
+
+  @override
+  String get ticketsPurchaseSuccessTitle => 'Ingresso comprado!';
+
+  @override
+  String get ticketsPurchaseSuccessMessage =>
+      'O ingresso também está disponível no menu Meus Ingressos.';
+
+  @override
+  String get ticketsTabUpcoming => 'Próximos';
+
+  @override
+  String get ticketsTabHistory => 'Histórico';
+
+  @override
+  String get ticketsUndoCheckInConfirmTitle => 'Desfazer check-in?';
+
+  @override
+  String get ticketsUndoCheckInConfirmMessage =>
+      'Seu acesso para esta partida será cancelado e sua vaga poderá ser disponibilizada novamente.\n\nVocê poderá realizar um novo check-in enquanto o período permanecer aberto.';
+
+  @override
+  String get ticketsKeepCheckInButton => 'Manter check-in';
+
+  @override
+  String get ticketsOriginCheckIn => 'Check-in Sócio';
+
+  @override
+  String get ticketsOriginPurchase => 'Compra';
+
+  @override
+  String get ticketsViewRelatedTicket => 'Ver ingresso';
+
+  @override
+  String get ticketsLoadUserDataError =>
+      'Não foi possível carregar seus dados. Tente novamente.';
 
   @override
   String get penaltyFinalResult => 'RESULTADO FINAL';

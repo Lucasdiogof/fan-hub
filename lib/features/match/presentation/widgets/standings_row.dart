@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
+import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 
 class StandingsRow extends StatelessWidget {
@@ -54,7 +55,7 @@ class StandingsRow extends StatelessWidget {
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(
-              standing.team.name,
+              shortTeamName(standing.team.name),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
