@@ -154,23 +154,89 @@ export async function fetchTeamMatchLists(
   }
 }
 
+/** Extrai o número da rodada de um subtitle tipo "Rodada 25" — `null`
+ * quando não há dígito (a lista é mantida, só fica de fora da ordenação). */
+export function roundNumberFromSubtitle(subtitle?: string): number | null {
+  if (!subtitle) return null;
+  const match = subtitle.match(/(\d+)/);
+  return match ? Number.parseInt(match[1], 10) : null;
+}
+
+async function fetchCompetitionTab(
+  competitionSlug: string,
+  tab: 'jogos' | 'resultados',
+): Promise<OneFootballMatchList[]> {
+  const containers = await getContainers(`competicao/${competitionSlug}/${tab}`);
+  const appender = findNode<{ lists: OneFootballMatchList[] }>(containers, 'matchCardsListsAppender');
+  return appender?.lists ?? [];
+}
+
+/** Junta rodadas de várias origens numa lista única, em ordem crescente de
+ * rodada. A rodada em andamento pode aparecer nas duas abas (parte já
+ * encerrada em `resultados`, parte a jogar em `jogos`), então rodadas de
+ * mesmo número viram uma só, com os jogos deduplicados por `matchId` e
+ * ordenados por horário. Listas sem número de rodada vão pro fim, na ordem
+ * em que chegaram. */
+function mergeRoundLists(groups: OneFootballMatchList[][]): OneFootballMatchList[] {
+  const byRound = new Map<
+    number,
+    { subtitle?: string; title?: string; cards: Map<string, OneFootballMatchCard> }
+  >();
+  const unnumbered: OneFootballMatchList[] = [];
+  for (const group of groups) {
+    for (const list of group) {
+      const number = roundNumberFromSubtitle(list.sectionHeader?.subtitle);
+      if (number == null) {
+        unnumbered.push(list);
+        continue;
+      }
+      let entry = byRound.get(number);
+      if (!entry) {
+        entry = {
+          subtitle: list.sectionHeader?.subtitle,
+          title: list.sectionHeader?.title,
+          cards: new Map(),
+        };
+        byRound.set(number, entry);
+      }
+      for (const card of list.matchCards) entry.cards.set(card.matchId, card);
+    }
+  }
+  const merged = [...byRound.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .map(([, entry]) => ({
+      sectionHeader: { title: entry.title, subtitle: entry.subtitle },
+      matchCards: [...entry.cards.values()].sort((a, b) => a.kickoff.localeCompare(b.kickoff)),
+    }));
+  return [...merged, ...unnumbered];
+}
+
 /**
- * Jogos de TODOS os times da competição, agrupados por rodada —
- * `sectionHeader.subtitle` de cada lista vem como "Rodada N".
+ * Jogos de TODOS os times da competição, agrupados por rodada e em ordem
+ * crescente. O OneFootball separa em duas abas — `resultados` (rodadas já
+ * encerradas, da mais recente pra mais antiga) e `jogos` (as próximas) — então
+ * busca as duas e mescla; sem isso não dá pra ir pra rodadas passadas, que nem
+ * aparecem em `jogos`. Se uma aba falhar (ex.: começo de temporada sem
+ * resultados), usa a outra; só estoura se as duas falharem.
  */
 export async function fetchCompetitionMatchLists(competitionSlug: string): Promise<OneFootballMatchList[]> {
-  try {
-    const containers = await getContainers(`competicao/${competitionSlug}/jogos`);
-    const appender = findNode<{ lists: OneFootballMatchList[] }>(containers, 'matchCardsListsAppender');
-    return appender?.lists ?? [];
-  } catch (err) {
-    if (err instanceof ProviderError) throw err;
+  const [resultados, jogos] = await Promise.allSettled([
+    fetchCompetitionTab(competitionSlug, 'resultados'),
+    fetchCompetitionTab(competitionSlug, 'jogos'),
+  ]);
+  if (resultados.status === 'rejected' && jogos.status === 'rejected') {
+    const reason = resultados.reason;
+    if (reason instanceof ProviderError) throw reason;
     throw new ProviderError(
-      `Não foi possível consultar a rodada atual (${err instanceof Error ? err.message : String(err)}).`,
+      `Não foi possível consultar a rodada atual (${reason instanceof Error ? reason.message : String(reason)}).`,
       502,
       PROVIDER,
     );
   }
+  return mergeRoundLists([
+    resultados.status === 'fulfilled' ? resultados.value : [],
+    jogos.status === 'fulfilled' ? jogos.value : [],
+  ]);
 }
 
 /** A tabela só traz saldo de gols, não gols pró/contra separados. */
