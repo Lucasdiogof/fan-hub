@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_contact_config.dart';
@@ -18,7 +19,7 @@ class HelpAndInfoSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'AJUDA E INFORMAÇÕES',
+          context.l10n.membershipHelpTitle,
           style: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w800,
@@ -31,17 +32,17 @@ class HelpAndInfoSection extends StatelessWidget {
           options: [
             MembershipOption(
               icon: Icons.help_outline_rounded,
-              label: 'Dúvidas frequentes',
+              label: context.l10n.membershipFaqMenuItem,
               onTap: () => context.push('/membership/faq'),
             ),
             MembershipOption(
               icon: Icons.gavel_rounded,
-              label: 'Regulamento do Sócio Esmeralda',
+              label: context.l10n.membershipRegulationName,
               onTap: () => context.push('/membership/regulation'),
             ),
             MembershipOption(
               icon: Icons.support_agent_rounded,
-              label: 'Falar com o atendimento',
+              label: context.l10n.membershipTalkToSupportMenu,
               onTap: () =>
                   openExternalUrl(context, MembershipContactConfig.whatsappUrl),
             ),

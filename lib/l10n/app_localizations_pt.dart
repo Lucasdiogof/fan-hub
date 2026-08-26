@@ -1779,4 +1779,117 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get membershipWhatNowMessage =>
       'Sua área de sócio já está disponível. Acompanhe seu plano e seus benefícios e, quando disponível, faça o check-in nos jogos.';
+
+  @override
+  String get membershipSituation => 'Situação';
+
+  @override
+  String get membershipMemberNumber => 'Número do sócio';
+
+  @override
+  String get membershipMonthlyFee => 'Mensalidade';
+
+  @override
+  String get membershipAnnualFee => 'Anuidade';
+
+  @override
+  String get membershipMemberSince => 'Sócio desde';
+
+  @override
+  String get membershipRegulationName => 'Regulamento do Sócio Esmeralda';
+
+  @override
+  String membershipCancelWhatsapp(String plan) {
+    return 'Olá, gostaria de cancelar minha associação Sócio Esmeralda ($plan).';
+  }
+
+  @override
+  String get membershipCancel => 'CANCELAR ASSOCIAÇÃO';
+
+  @override
+  String get membershipCancelInfo =>
+      'O cancelamento é feito com o atendimento pelo WhatsApp, sem cobrança de multa fora dos prazos previstos no Regulamento.';
+
+  @override
+  String get membershipStatusPending => 'Pendente';
+
+  @override
+  String get membershipStatusSuspended => 'Suspenso';
+
+  @override
+  String get membershipStatusCancelled => 'Cancelado';
+
+  @override
+  String get membershipFaqTitle => 'DÚVIDAS FREQUENTES';
+
+  @override
+  String get membershipFaqSubtitle =>
+      'Encontre respostas sobre planos, pagamentos, check-in e benefícios.';
+
+  @override
+  String get membershipFaqLoadError =>
+      'Não foi possível carregar as dúvidas frequentes.';
+
+  @override
+  String get membershipFaqNoResults => 'Nenhuma dúvida encontrada';
+
+  @override
+  String get membershipFaqNoResultsMessage =>
+      'Tente outro termo ou fale com o atendimento do Sócio Esmeralda.';
+
+  @override
+  String get membershipTalkToSupport => 'FALAR COM O ATENDIMENTO';
+
+  @override
+  String get membershipTalkToSupportMenu => 'Falar com o atendimento';
+
+  @override
+  String get membershipDontStayInDoubt => 'NÃO FIQUE NA DÚVIDA';
+
+  @override
+  String get membershipDidntFindAnswer =>
+      'Não encontrou a resposta que procurava?';
+
+  @override
+  String get membershipFaqScopeNote =>
+      'Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do Sócio Esmeralda não são respondidas por este canal.';
+
+  @override
+  String get membershipFaqAll => 'Todas';
+
+  @override
+  String get membershipFaqSearchHint => 'Buscar uma dúvida...';
+
+  @override
+  String get membershipHelpTitle => 'AJUDA E INFORMAÇÕES';
+
+  @override
+  String get membershipFaqMenuItem => 'Dúvidas frequentes';
+
+  @override
+  String get membershipFindCepTitle => 'ENCONTRAR MEU CEP';
+
+  @override
+  String get membershipFindCepSubtitle =>
+      'Informe seu endereço para encontrarmos o CEP correspondente.';
+
+  @override
+  String get membershipStreetLabel => 'Rua / Logradouro';
+
+  @override
+  String get membershipSearchCep => 'BUSCAR CEP';
+
+  @override
+  String get membershipFoundAddresses => 'ENCONTRAMOS ESTES ENDEREÇOS';
+
+  @override
+  String get membershipNoAddressFound => 'Nenhum endereço encontrado.';
+
+  @override
+  String get membershipNoAddressHint =>
+      'Confira o estado, a cidade e o logradouro informados.';
+
+  @override
+  String get membershipAddressSearchError =>
+      'Não foi possível buscar o endereço.';
 }

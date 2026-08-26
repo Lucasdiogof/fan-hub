@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
@@ -20,7 +21,7 @@ class FaqSearchField extends StatelessWidget {
       onChanged: onChanged,
       style: TextStyle(fontSize: 14, color: colors.textPrimary),
       decoration: InputDecoration(
-        hintText: 'Buscar uma dúvida...',
+        hintText: context.l10n.membershipFaqSearchHint,
         hintStyle: TextStyle(color: colors.textHint, fontSize: 14),
         prefixIcon: Icon(
           Icons.search_rounded,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_contact_config.dart';
@@ -69,7 +70,7 @@ class _MembershipFaqView extends StatelessWidget {
                   BackButtonCircle(onTap: () => context.pop()),
                   const SizedBox(height: AppSpacing.lg),
                   Text(
-                    'DÚVIDAS FREQUENTES',
+                    context.l10n.membershipFaqTitle,
                     style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.w900,
@@ -79,7 +80,7 @@ class _MembershipFaqView extends StatelessWidget {
                   ),
                   const SizedBox(height: 6),
                   Text(
-                    'Encontre respostas sobre planos, pagamentos, check-in e benefícios.',
+                    context.l10n.membershipFaqSubtitle,
                     style: TextStyle(
                       fontSize: 13,
                       color: colors.textSecondary,
@@ -118,7 +119,7 @@ class _MembershipFaqView extends StatelessWidget {
                             child: StateMessage(
                               icon: Icons.error_outline_rounded,
                               title:
-                                  'Não foi possível carregar as dúvidas frequentes.',
+                                  context.l10n.membershipFaqLoadError,
                               message: state.errorMessage,
                             ),
                           );
@@ -190,7 +191,7 @@ class _FaqEmptyResult extends StatelessWidget {
             Icon(Icons.search_off_rounded, size: 38, color: colors.textHint),
             const SizedBox(height: AppSpacing.lg),
             Text(
-              'Nenhuma dúvida encontrada',
+              context.l10n.membershipFaqNoResults,
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
@@ -199,7 +200,7 @@ class _FaqEmptyResult extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.sm),
             Text(
-              'Tente outro termo ou fale com o atendimento do Sócio Esmeralda.',
+              context.l10n.membershipFaqNoResultsMessage,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13,
@@ -223,7 +224,7 @@ class _FaqEmptyResult extends StatelessWidget {
                   letterSpacing: 0.3,
                 ),
               ),
-              child: const Text('FALAR COM O ATENDIMENTO'),
+              child: Text(context.l10n.membershipTalkToSupport),
             ),
           ],
         ),
@@ -248,7 +249,7 @@ class _FaqHelpFooter extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'NÃO FIQUE NA DÚVIDA',
+            context.l10n.membershipDontStayInDoubt,
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w800,
@@ -258,7 +259,7 @@ class _FaqHelpFooter extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
-            'Não encontrou a resposta que procurava?',
+            context.l10n.membershipDidntFindAnswer,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w700,
@@ -284,12 +285,12 @@ class _FaqHelpFooter extends StatelessWidget {
                   letterSpacing: 0.3,
                 ),
               ),
-              child: const Text('FALAR COM O ATENDIMENTO'),
+              child: Text(context.l10n.membershipTalkToSupport),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            'Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do Sócio Esmeralda não são respondidas por este canal.',
+            context.l10n.membershipFaqScopeNote,
             style: TextStyle(fontSize: 11, color: colors.textHint, height: 1.4),
           ),
         ],

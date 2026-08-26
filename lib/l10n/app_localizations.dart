@@ -3243,6 +3243,210 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Sua área de sócio já está disponível. Acompanhe seu plano e seus benefícios e, quando disponível, faça o check-in nos jogos.'**
   String get membershipWhatNowMessage;
+
+  /// No description provided for @membershipSituation.
+  ///
+  /// In pt, this message translates to:
+  /// **'Situação'**
+  String get membershipSituation;
+
+  /// No description provided for @membershipMemberNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'Número do sócio'**
+  String get membershipMemberNumber;
+
+  /// No description provided for @membershipMonthlyFee.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mensalidade'**
+  String get membershipMonthlyFee;
+
+  /// No description provided for @membershipAnnualFee.
+  ///
+  /// In pt, this message translates to:
+  /// **'Anuidade'**
+  String get membershipAnnualFee;
+
+  /// No description provided for @membershipMemberSince.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sócio desde'**
+  String get membershipMemberSince;
+
+  /// No description provided for @membershipRegulationName.
+  ///
+  /// In pt, this message translates to:
+  /// **'Regulamento do Sócio Esmeralda'**
+  String get membershipRegulationName;
+
+  /// No description provided for @membershipCancelWhatsapp.
+  ///
+  /// In pt, this message translates to:
+  /// **'Olá, gostaria de cancelar minha associação Sócio Esmeralda ({plan}).'**
+  String membershipCancelWhatsapp(String plan);
+
+  /// No description provided for @membershipCancel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CANCELAR ASSOCIAÇÃO'**
+  String get membershipCancel;
+
+  /// No description provided for @membershipCancelInfo.
+  ///
+  /// In pt, this message translates to:
+  /// **'O cancelamento é feito com o atendimento pelo WhatsApp, sem cobrança de multa fora dos prazos previstos no Regulamento.'**
+  String get membershipCancelInfo;
+
+  /// No description provided for @membershipStatusPending.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pendente'**
+  String get membershipStatusPending;
+
+  /// No description provided for @membershipStatusSuspended.
+  ///
+  /// In pt, this message translates to:
+  /// **'Suspenso'**
+  String get membershipStatusSuspended;
+
+  /// No description provided for @membershipStatusCancelled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelado'**
+  String get membershipStatusCancelled;
+
+  /// No description provided for @membershipFaqTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'DÚVIDAS FREQUENTES'**
+  String get membershipFaqTitle;
+
+  /// No description provided for @membershipFaqSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Encontre respostas sobre planos, pagamentos, check-in e benefícios.'**
+  String get membershipFaqSubtitle;
+
+  /// No description provided for @membershipFaqLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar as dúvidas frequentes.'**
+  String get membershipFaqLoadError;
+
+  /// No description provided for @membershipFaqNoResults.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma dúvida encontrada'**
+  String get membershipFaqNoResults;
+
+  /// No description provided for @membershipFaqNoResultsMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tente outro termo ou fale com o atendimento do Sócio Esmeralda.'**
+  String get membershipFaqNoResultsMessage;
+
+  /// No description provided for @membershipTalkToSupport.
+  ///
+  /// In pt, this message translates to:
+  /// **'FALAR COM O ATENDIMENTO'**
+  String get membershipTalkToSupport;
+
+  /// No description provided for @membershipTalkToSupportMenu.
+  ///
+  /// In pt, this message translates to:
+  /// **'Falar com o atendimento'**
+  String get membershipTalkToSupportMenu;
+
+  /// No description provided for @membershipDontStayInDoubt.
+  ///
+  /// In pt, this message translates to:
+  /// **'NÃO FIQUE NA DÚVIDA'**
+  String get membershipDontStayInDoubt;
+
+  /// No description provided for @membershipDidntFindAnswer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não encontrou a resposta que procurava?'**
+  String get membershipDidntFindAnswer;
+
+  /// No description provided for @membershipFaqScopeNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do Sócio Esmeralda não são respondidas por este canal.'**
+  String get membershipFaqScopeNote;
+
+  /// No description provided for @membershipFaqAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todas'**
+  String get membershipFaqAll;
+
+  /// No description provided for @membershipFaqSearchHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar uma dúvida...'**
+  String get membershipFaqSearchHint;
+
+  /// No description provided for @membershipHelpTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'AJUDA E INFORMAÇÕES'**
+  String get membershipHelpTitle;
+
+  /// No description provided for @membershipFaqMenuItem.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dúvidas frequentes'**
+  String get membershipFaqMenuItem;
+
+  /// No description provided for @membershipFindCepTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ENCONTRAR MEU CEP'**
+  String get membershipFindCepTitle;
+
+  /// No description provided for @membershipFindCepSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu endereço para encontrarmos o CEP correspondente.'**
+  String get membershipFindCepSubtitle;
+
+  /// No description provided for @membershipStreetLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rua / Logradouro'**
+  String get membershipStreetLabel;
+
+  /// No description provided for @membershipSearchCep.
+  ///
+  /// In pt, this message translates to:
+  /// **'BUSCAR CEP'**
+  String get membershipSearchCep;
+
+  /// No description provided for @membershipFoundAddresses.
+  ///
+  /// In pt, this message translates to:
+  /// **'ENCONTRAMOS ESTES ENDEREÇOS'**
+  String get membershipFoundAddresses;
+
+  /// No description provided for @membershipNoAddressFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum endereço encontrado.'**
+  String get membershipNoAddressFound;
+
+  /// No description provided for @membershipNoAddressHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confira o estado, a cidade e o logradouro informados.'**
+  String get membershipNoAddressHint;
+
+  /// No description provided for @membershipAddressSearchError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível buscar o endereço.'**
+  String get membershipAddressSearchError;
 }
 
 class _AppLocalizationsDelegate

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_contact_config.dart';
@@ -35,43 +37,43 @@ class MyMembershipPage extends StatelessWidget {
                 children: [
                   BackButtonCircle(onTap: () => context.pop()),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('MINHA ASSOCIAÇÃO'),
+                  PageTitle(context.l10n.membershipMyMembership.toUpperCase()),
                   const SizedBox(height: AppSpacing.xxxl),
                   Expanded(
                     child: ListView(
                       children: [
                         _InfoCard(
                           rows: [
-                            _InfoRow('Plano', membership.plan.name),
+                            _InfoRow(context.l10n.membershipPlanLabel, membership.plan.name),
                             if (membership.plan.stadiumSector != null)
-                              _InfoRow('Setor', membership.plan.stadiumSector!),
+                              _InfoRow(context.l10n.membershipSectorLabel, membership.plan.stadiumSector!),
                             _InfoRow(
-                              'Situação',
-                              _statusLabel(membership.status),
+                              context.l10n.membershipSituation,
+                              _statusLabel(context.l10n, membership.status),
                             ),
                             if (membership.memberNumber != null)
                               _InfoRow(
-                                'Número do sócio',
+                                context.l10n.membershipMemberNumber,
                                 membership.memberNumber!,
                               ),
                             _InfoRow(
-                              'Mensalidade',
-                              '${formatBrl(membership.planPrice.monthlyPrice)}/mês',
+                              context.l10n.membershipMonthlyFee,
+                              '${formatBrl(membership.planPrice.monthlyPrice)}${context.l10n.membershipPerMonth}',
                             ),
                             _InfoRow(
-                              'Anuidade',
+                              context.l10n.membershipAnnualFee,
                               formatBrl(membership.planPrice.annualPrice),
                             ),
                             if (membership.startedAt != null)
                               _InfoRow(
-                                'Sócio desde',
+                                context.l10n.membershipMemberSince,
                                 _formatDate(membership.startedAt!),
                               ),
                           ],
                         ),
                         const SizedBox(height: AppSpacing.xl),
                         Text(
-                          'BENEFÍCIOS',
+                          context.l10n.membershipBenefits,
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w800,
@@ -123,7 +125,7 @@ class MyMembershipPage extends StatelessWidget {
                         const SizedBox(height: AppSpacing.xl),
                         _OptionRow(
                           icon: Icons.gavel_rounded,
-                          label: 'Regulamento do Sócio Esmeralda',
+                          label: context.l10n.membershipRegulationName,
                           onTap: () => context.push('/membership/regulation'),
                         ),
                         const SizedBox(height: AppSpacing.xxxl),
@@ -133,7 +135,7 @@ class MyMembershipPage extends StatelessWidget {
                             onPressed: () => openExternalUrl(
                               context,
                               MembershipContactConfig.whatsappUrlWithMessage(
-                                'Olá, gostaria de cancelar minha associação Sócio Esmeralda (${membership.plan.name}).',
+                                context.l10n.membershipCancelWhatsapp(membership.plan.name),
                               ),
                             ),
                             style: OutlinedButton.styleFrom(
@@ -151,12 +153,12 @@ class MyMembershipPage extends StatelessWidget {
                                 letterSpacing: 0.3,
                               ),
                             ),
-                            child: const Text('CANCELAR ASSOCIAÇÃO'),
+                            child: Text(context.l10n.membershipCancel),
                           ),
                         ),
                         const SizedBox(height: AppSpacing.sm),
                         Text(
-                          'O cancelamento é feito com o atendimento pelo WhatsApp, sem cobrança de multa fora dos prazos previstos no Regulamento.',
+                          context.l10n.membershipCancelInfo,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 11,
@@ -178,13 +180,14 @@ class MyMembershipPage extends StatelessWidget {
   }
 }
 
-String _statusLabel(MembershipStatus status) => switch (status) {
-  MembershipStatus.active => 'Ativo',
-  MembershipStatus.pending => 'Pendente',
-  MembershipStatus.suspended => 'Suspenso',
-  MembershipStatus.cancelled => 'Cancelado',
-  MembershipStatus.none => '-',
-};
+String _statusLabel(AppLocalizations l10n, MembershipStatus status) =>
+    switch (status) {
+      MembershipStatus.active => l10n.membershipStatusActive,
+      MembershipStatus.pending => l10n.membershipStatusPending,
+      MembershipStatus.suspended => l10n.membershipStatusSuspended,
+      MembershipStatus.cancelled => l10n.membershipStatusCancelled,
+      MembershipStatus.none => '-',
+    };
 
 String _formatDate(DateTime date) {
   String two(int n) => n.toString().padLeft(2, '0');

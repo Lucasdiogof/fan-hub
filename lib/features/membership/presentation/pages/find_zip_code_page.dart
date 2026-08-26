@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/domain/brazilian_states.dart';
@@ -141,7 +142,7 @@ class _FindZipCodeView extends StatelessWidget {
                       BackButtonCircle(onTap: () => context.pop()),
                       const SizedBox(height: AppSpacing.lg),
                       Text(
-                        'ENCONTRAR MEU CEP',
+                        context.l10n.membershipFindCepTitle,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
@@ -150,7 +151,7 @@ class _FindZipCodeView extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
                       Text(
-                        'Informe seu endereço para encontrarmos o CEP correspondente.',
+                        context.l10n.membershipFindCepSubtitle,
                         style: TextStyle(
                           fontSize: 13,
                           color: colors.textSecondary,
@@ -162,23 +163,23 @@ class _FindZipCodeView extends StatelessWidget {
                         child: ListView(
                           children: [
                             RegistrationPickerField(
-                              label: 'Estado',
+                              label: context.l10n.addressFieldState,
                               isRequired: true,
                               value: state.state,
-                              placeholder: 'Selecionar estado',
+                              placeholder: context.l10n.addressSelectState,
                               onTap: () => _pickState(context, cubit),
                             ),
                             const SizedBox(height: AppSpacing.lg),
                             RegistrationPickerField(
-                              label: 'Cidade',
+                              label: context.l10n.addressFieldCity,
                               isRequired: true,
                               value: state.city,
                               placeholder:
                                   state.citiesLoadStatus == LoadStatus.loading
-                                  ? 'Carregando cidades...'
+                                  ? context.l10n.membershipLoadingCities
                                   : (state.state.isEmpty
-                                        ? 'Selecione o estado primeiro'
-                                        : 'Selecionar cidade'),
+                                        ? context.l10n.membershipSelectStateFirst
+                                        : context.l10n.membershipSelectCity),
                               onTap:
                                   state.state.isEmpty ||
                                       state.citiesLoadStatus ==
@@ -192,7 +193,7 @@ class _FindZipCodeView extends StatelessWidget {
                             ),
                             const SizedBox(height: AppSpacing.lg),
                             RegistrationTextField(
-                              label: 'Rua / Logradouro',
+                              label: context.l10n.membershipStreetLabel,
                               isRequired: true,
                               value: state.street,
                               textCapitalization: TextCapitalization.words,
@@ -230,7 +231,7 @@ class _FindZipCodeView extends StatelessWidget {
                                           color: colors.onPrimary,
                                         ),
                                       )
-                                    : const Text('BUSCAR CEP'),
+                                    : Text(context.l10n.membershipSearchCep),
                               ),
                             ),
                             const SizedBox(height: AppSpacing.xxl),
@@ -264,7 +265,7 @@ class _ResultsSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'ENCONTRAMOS ESTES ENDEREÇOS',
+              context.l10n.membershipFoundAddresses,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w800,
@@ -280,18 +281,18 @@ class _ResultsSection extends StatelessWidget {
           ],
         );
       case LoadStatus.empty:
-        return const Center(
+        return Center(
           child: StateMessage(
             icon: Icons.search_off_rounded,
-            title: 'Nenhum endereço encontrado.',
-            message: 'Confira o estado, a cidade e o logradouro informados.',
+            title: context.l10n.membershipNoAddressFound,
+            message: context.l10n.membershipNoAddressHint,
           ),
         );
       case LoadStatus.error:
         return Center(
           child: StateMessage(
             icon: Icons.error_outline_rounded,
-            title: 'Não foi possível buscar o endereço.',
+            title: context.l10n.membershipAddressSearchError,
             message: state.errorMessage,
           ),
         );

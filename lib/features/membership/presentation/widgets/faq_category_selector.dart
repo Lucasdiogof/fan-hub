@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_category.dart';
@@ -38,7 +39,7 @@ class FaqCategorySelector extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           _CategoryChip(
-            label: 'Todas',
+            label: context.l10n.membershipFaqAll,
             selected: selectedCategoryId == null,
             onTap: () => onSelected(null),
           ),
