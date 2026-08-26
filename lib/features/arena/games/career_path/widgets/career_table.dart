@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
@@ -36,7 +37,7 @@ class CareerTable extends StatelessWidget {
             ),
           if (player.nationalTeams.isNotEmpty) ...[
             const SizedBox(height: AppSpacing.sm),
-            const _SectionRow(label: 'Seleção nacional'),
+            _SectionRow(label: context.l10n.careerNationalTeam),
             for (var i = 0; i < player.nationalTeams.length; i++)
               _EntryRow(
                 entry: player.nationalTeams[i],
@@ -70,16 +71,16 @@ class _HeaderRow extends StatelessWidget {
         children: [
           SizedBox(
             width: _yearsWidth,
-            child: Text('Anos', style: style),
+            child: Text(context.l10n.careerYears, style: style),
           ),
-          Expanded(child: Text('Clubes', style: style)),
+          Expanded(child: Text(context.l10n.careerClubs, style: style)),
           SizedBox(
             width: _numberWidth,
-            child: Text('Jogos', style: style, textAlign: TextAlign.right),
+            child: Text(context.l10n.careerGames, style: style, textAlign: TextAlign.right),
           ),
           SizedBox(
             width: _numberWidth,
-            child: Text('Gols', style: style, textAlign: TextAlign.right),
+            child: Text(context.l10n.careerGoals, style: style, textAlign: TextAlign.right),
           ),
         ],
       ),
@@ -131,7 +132,7 @@ class _EntryRow extends StatelessWidget {
     final colors = context.colors;
     final highlight = entry.isGoias;
     final textColor = highlight ? colors.primary : colors.textPrimary;
-    final teamName = entry.loan ? '${entry.team} (emp.)' : entry.team;
+    final teamName = entry.loan ? context.l10n.careerOnLoan(entry.team) : entry.team;
 
     final row = Padding(
       padding: const EdgeInsets.symmetric(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
@@ -120,7 +121,7 @@ class _CareerPathViewState extends State<_CareerPathView> {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(
-          const SnackBar(content: Text('Selecione um jogador da lista.')),
+          SnackBar(content: Text(context.l10n.careerSelectFromList)),
         );
       return;
     }
@@ -134,11 +135,10 @@ class _CareerPathViewState extends State<_CareerPathView> {
     final confirmed = await AppBottomSheet.show(
       context,
       icon: Icons.visibility_outlined,
-      title: 'Revelar jogador?',
-      description:
-          'Ao revelar a resposta, esta rodada será considerada encerrada.',
-      confirmLabel: 'REVELAR',
-      cancelLabel: 'Cancelar',
+      title: context.l10n.careerRevealTitle,
+      description: context.l10n.careerRevealMessage,
+      confirmLabel: context.l10n.careerReveal,
+      cancelLabel: context.l10n.commonCancel,
     );
     if (confirmed == true) await cubit.reveal();
   }
@@ -150,18 +150,19 @@ class _CareerPathViewState extends State<_CareerPathView> {
     final status = state.roundStatus;
     final attempts = state.round?.attemptsToWin ?? state.attemptsUsed;
 
+    final l10n = context.l10n;
     final (title, description) = switch (status) {
       CareerRoundStatus.won => (
-        'Você acertou!',
+        l10n.careerCorrectTitle,
         attempts == 1
-            ? 'Acertou de primeira!'
-            : 'Você acertou em $attempts tentativas.',
+            ? l10n.careerCorrectFirstTry
+            : l10n.careerCorrectInAttempts(attempts),
       ),
       CareerRoundStatus.lost => (
-        'Não foi dessa vez',
-        'Você usou as ${CareerPathCubit.maxAttempts} tentativas.',
+        l10n.careerWrongTitle,
+        l10n.careerUsedAllAttempts(CareerPathCubit.maxAttempts),
       ),
-      _ => ('Jogador revelado', 'Rodada encerrada.'),
+      _ => (l10n.careerPlayerRevealed, l10n.careerRoundEnded),
     };
 
     await AppBottomSheet.show(
@@ -172,8 +173,8 @@ class _CareerPathViewState extends State<_CareerPathView> {
       title: title,
       description: description,
       content: _PlayerReveal(player: player),
-      confirmLabel: 'PRÓXIMO JOGADOR',
-      cancelLabel: 'Fechar',
+      confirmLabel: l10n.careerNextPlayer,
+      cancelLabel: l10n.commonCloseLabel,
       onConfirm: cubit.goToNextOrFirst,
     );
   }
@@ -269,8 +270,8 @@ class _Header extends StatelessWidget {
         AppSpacing.sm,
       ),
       child: ArenaGameHeader(
-        title: 'ADIVINHE O JOGADOR',
-        subtitle: 'Descubra pela carreira',
+        title: context.l10n.arenaGameCareerTitle.toUpperCase(),
+        subtitle: context.l10n.careerSubtitle,
         onBack: () => context.canPop() ? context.pop() : context.go('/'),
         trailing: _CountPill(index: index, total: total),
       ),
@@ -354,7 +355,7 @@ class _AttemptsBar extends StatelessWidget {
         children: [
           Flexible(
             child: Text(
-              'Tentativas · Restam $remaining',
+              context.l10n.careerAttemptsRemaining(remaining),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -447,9 +448,9 @@ class _GuessBlock extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.button),
               ),
             ),
-            child: const Text(
-              'CHUTAR',
-              style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+            child: Text(
+              context.l10n.careerGuess,
+              style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
             ),
           ),
         ),
@@ -460,9 +461,9 @@ class _GuessBlock extends StatelessWidget {
             foregroundColor: colors.textSecondary,
             minimumSize: const Size.fromHeight(46),
           ),
-          child: const Text(
-            'Revelar jogador',
-            style: TextStyle(fontSize: 14.5, fontWeight: FontWeight.w700),
+          child: Text(
+            context.l10n.careerRevealPlayer,
+            style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w700),
           ),
         ),
       ],
@@ -511,7 +512,7 @@ class _NameField extends StatelessWidget {
               textInputAction: TextInputAction.done,
               onSubmitted: (_) => onSubmit(),
               decoration: InputDecoration(
-                hintText: 'Digite o nome do jogador',
+                hintText: context.l10n.lineupTypePlayerName,
                 prefixIcon: Icon(Icons.search_rounded, color: colors.textHint),
                 filled: true,
                 fillColor: colors.surface,
@@ -594,9 +595,9 @@ class _ResolvedBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final label = switch (status) {
-      CareerRoundStatus.won => 'Você acertou',
-      CareerRoundStatus.lost => 'Era',
-      _ => 'Resposta',
+      CareerRoundStatus.won => context.l10n.careerYouGotIt,
+      CareerRoundStatus.lost => context.l10n.careerWas,
+      _ => context.l10n.careerAnswer,
     };
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -650,9 +651,9 @@ class _ResolvedBlock extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.button),
               ),
             ),
-            child: const Text(
-              'PRÓXIMO JOGADOR',
-              style: TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
+            child: Text(
+              context.l10n.careerNextPlayer,
+              style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800),
             ),
           ),
         ),

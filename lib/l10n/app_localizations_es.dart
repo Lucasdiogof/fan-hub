@@ -821,4 +821,91 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get keyboardConfirm => 'Confirmar';
+
+  @override
+  String get commonCloseLabel => 'Cerrar';
+
+  @override
+  String get careerSubtitle => 'Descubre por la carrera';
+
+  @override
+  String get careerSelectFromList => 'Selecciona un jugador de la lista.';
+
+  @override
+  String get careerRevealTitle => '¿Revelar jugador?';
+
+  @override
+  String get careerRevealMessage =>
+      'Al revelar la respuesta, esta ronda se dará por terminada.';
+
+  @override
+  String get careerReveal => 'REVELAR';
+
+  @override
+  String get careerRevealPlayer => 'Revelar jugador';
+
+  @override
+  String get careerGuess => 'ADIVINAR';
+
+  @override
+  String get careerNextPlayer => 'PRÓXIMO JUGADOR';
+
+  @override
+  String careerAttemptsRemaining(int remaining) {
+    return 'Intentos · Quedan $remaining';
+  }
+
+  @override
+  String get careerCorrectTitle => '¡Acertaste!';
+
+  @override
+  String get careerCorrectFirstTry => '¡Acertaste a la primera!';
+
+  @override
+  String careerCorrectInAttempts(int attempts) {
+    return 'Acertaste en $attempts intentos.';
+  }
+
+  @override
+  String get careerWrongTitle => 'Esta vez no';
+
+  @override
+  String careerUsedAllAttempts(int max) {
+    return 'Usaste los $max intentos.';
+  }
+
+  @override
+  String get careerPlayerRevealed => 'Jugador revelado';
+
+  @override
+  String get careerRoundEnded => 'Ronda terminada.';
+
+  @override
+  String get careerYouGotIt => 'Acertaste';
+
+  @override
+  String get careerWas => 'Era';
+
+  @override
+  String get careerAnswer => 'Respuesta';
+
+  @override
+  String get careerNationalTeam => 'Selección nacional';
+
+  @override
+  String get careerYears => 'Años';
+
+  @override
+  String get careerClubs => 'Clubes';
+
+  @override
+  String get careerGames => 'Partidos';
+
+  @override
+  String get careerGoals => 'Goles';
+
+  @override
+  String careerOnLoan(String team) {
+    return '$team (cedido)';
+  }
 }

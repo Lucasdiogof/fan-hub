@@ -819,4 +819,90 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get keyboardConfirm => 'Confirm';
+
+  @override
+  String get commonCloseLabel => 'Close';
+
+  @override
+  String get careerSubtitle => 'Guess from the career';
+
+  @override
+  String get careerSelectFromList => 'Select a player from the list.';
+
+  @override
+  String get careerRevealTitle => 'Reveal player?';
+
+  @override
+  String get careerRevealMessage => 'Revealing the answer will end this round.';
+
+  @override
+  String get careerReveal => 'REVEAL';
+
+  @override
+  String get careerRevealPlayer => 'Reveal player';
+
+  @override
+  String get careerGuess => 'GUESS';
+
+  @override
+  String get careerNextPlayer => 'NEXT PLAYER';
+
+  @override
+  String careerAttemptsRemaining(int remaining) {
+    return 'Attempts · $remaining left';
+  }
+
+  @override
+  String get careerCorrectTitle => 'You got it!';
+
+  @override
+  String get careerCorrectFirstTry => 'Got it on the first try!';
+
+  @override
+  String careerCorrectInAttempts(int attempts) {
+    return 'You got it in $attempts attempts.';
+  }
+
+  @override
+  String get careerWrongTitle => 'Not this time';
+
+  @override
+  String careerUsedAllAttempts(int max) {
+    return 'You used all $max attempts.';
+  }
+
+  @override
+  String get careerPlayerRevealed => 'Player revealed';
+
+  @override
+  String get careerRoundEnded => 'Round ended.';
+
+  @override
+  String get careerYouGotIt => 'You got it';
+
+  @override
+  String get careerWas => 'It was';
+
+  @override
+  String get careerAnswer => 'Answer';
+
+  @override
+  String get careerNationalTeam => 'National team';
+
+  @override
+  String get careerYears => 'Years';
+
+  @override
+  String get careerClubs => 'Clubs';
+
+  @override
+  String get careerGames => 'Games';
+
+  @override
+  String get careerGoals => 'Goals';
+
+  @override
+  String careerOnLoan(String team) {
+    return '$team (loan)';
+  }
 }

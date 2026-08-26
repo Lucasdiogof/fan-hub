@@ -1569,6 +1569,162 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Confirmar'**
   String get keyboardConfirm;
+
+  /// No description provided for @commonCloseLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fechar'**
+  String get commonCloseLabel;
+
+  /// No description provided for @careerSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descubra pela carreira'**
+  String get careerSubtitle;
+
+  /// No description provided for @careerSelectFromList.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione um jogador da lista.'**
+  String get careerSelectFromList;
+
+  /// No description provided for @careerRevealTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Revelar jogador?'**
+  String get careerRevealTitle;
+
+  /// No description provided for @careerRevealMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ao revelar a resposta, esta rodada será considerada encerrada.'**
+  String get careerRevealMessage;
+
+  /// No description provided for @careerReveal.
+  ///
+  /// In pt, this message translates to:
+  /// **'REVELAR'**
+  String get careerReveal;
+
+  /// No description provided for @careerRevealPlayer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Revelar jogador'**
+  String get careerRevealPlayer;
+
+  /// No description provided for @careerGuess.
+  ///
+  /// In pt, this message translates to:
+  /// **'CHUTAR'**
+  String get careerGuess;
+
+  /// No description provided for @careerNextPlayer.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRÓXIMO JOGADOR'**
+  String get careerNextPlayer;
+
+  /// No description provided for @careerAttemptsRemaining.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tentativas · Restam {remaining}'**
+  String careerAttemptsRemaining(int remaining);
+
+  /// No description provided for @careerCorrectTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você acertou!'**
+  String get careerCorrectTitle;
+
+  /// No description provided for @careerCorrectFirstTry.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acertou de primeira!'**
+  String get careerCorrectFirstTry;
+
+  /// No description provided for @careerCorrectInAttempts.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você acertou em {attempts} tentativas.'**
+  String careerCorrectInAttempts(int attempts);
+
+  /// No description provided for @careerWrongTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi dessa vez'**
+  String get careerWrongTitle;
+
+  /// No description provided for @careerUsedAllAttempts.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você usou as {max} tentativas.'**
+  String careerUsedAllAttempts(int max);
+
+  /// No description provided for @careerPlayerRevealed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogador revelado'**
+  String get careerPlayerRevealed;
+
+  /// No description provided for @careerRoundEnded.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rodada encerrada.'**
+  String get careerRoundEnded;
+
+  /// No description provided for @careerYouGotIt.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você acertou'**
+  String get careerYouGotIt;
+
+  /// No description provided for @careerWas.
+  ///
+  /// In pt, this message translates to:
+  /// **'Era'**
+  String get careerWas;
+
+  /// No description provided for @careerAnswer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Resposta'**
+  String get careerAnswer;
+
+  /// No description provided for @careerNationalTeam.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seleção nacional'**
+  String get careerNationalTeam;
+
+  /// No description provided for @careerYears.
+  ///
+  /// In pt, this message translates to:
+  /// **'Anos'**
+  String get careerYears;
+
+  /// No description provided for @careerClubs.
+  ///
+  /// In pt, this message translates to:
+  /// **'Clubes'**
+  String get careerClubs;
+
+  /// No description provided for @careerGames.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogos'**
+  String get careerGames;
+
+  /// No description provided for @careerGoals.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols'**
+  String get careerGoals;
+
+  /// No description provided for @careerOnLoan.
+  ///
+  /// In pt, this message translates to:
+  /// **'{team} (emp.)'**
+  String careerOnLoan(String team);
 }
 
 class _AppLocalizationsDelegate
