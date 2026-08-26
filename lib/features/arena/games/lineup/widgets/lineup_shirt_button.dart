@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/shared/widgets/jersey_shirt.dart';
@@ -31,16 +32,16 @@ class LineupShirtButton extends StatelessWidget {
     final failed = playerState.failed;
 
     final shirtLabel = player.shirtNumber != null
-        ? 'Camisa ${player.shirtNumber}'
-        : 'Jogador sem número confirmado';
+        ? context.l10n.lineupShirtLabel(player.shirtNumber!)
+        : context.l10n.lineupNoNumber;
 
     return Semantics(
       button: true,
       label: solved
-          ? '$shirtLabel, ${player.displayName}, descoberto'
+          ? context.l10n.lineupA11yRevealed(shirtLabel, player.displayName)
           : failed
-          ? '$shirtLabel, não descoberto'
-          : '$shirtLabel, ${player.position}, ainda não descoberto',
+          ? context.l10n.lineupNotDiscovered(shirtLabel)
+          : context.l10n.lineupA11yPending(shirtLabel, player.position),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),

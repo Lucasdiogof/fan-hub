@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
@@ -70,8 +71,8 @@ class LineupGuessPage extends StatelessWidget {
                             children: [
                               Text(
                                 player.shirtNumber != null
-                                    ? 'CAMISA ${player.shirtNumber}'
-                                    : 'JOGADOR',
+                                    ? context.l10n.lineupShirt(player.shirtNumber!)
+                                    : context.l10n.lineupPlayerHeading,
                                 style: TextStyle(
                                   color: context.colors.textPrimary,
                                   fontSize: 19,
@@ -101,7 +102,7 @@ class LineupGuessPage extends StatelessWidget {
                     if (!playerState.isDone) ...[
                       const SizedBox(height: AppSpacing.md),
                       Text(
-                        'Digite o nome do jogador',
+                        context.l10n.lineupTypePlayerName,
                         style: TextStyle(
                           color: context.colors.textSecondary,
                           fontSize: 13.5,
@@ -171,7 +172,7 @@ class LineupGuessPage extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: AppSpacing.xl),
                         child: TextButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          child: const Text('VOLTAR AO CAMPO'),
+                          child: Text(context.l10n.lineupBackToField),
                         ),
                       ),
                   ],
@@ -229,7 +230,6 @@ class _WordCountBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final totalLetters = answerParts.fold<int>(0, (sum, part) => sum + part);
-    final wordLabel = answerParts.length == 1 ? 'palavra' : 'palavras';
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       decoration: BoxDecoration(
@@ -242,7 +242,7 @@ class _WordCountBadge extends StatelessWidget {
           Icon(Icons.checkroom_rounded, size: 13, color: colors.primary),
           const SizedBox(width: 5),
           Text(
-            '${answerParts.length} $wordLabel • $totalLetters letras',
+            context.l10n.lineupWordCount(answerParts.length, totalLetters),
             style: TextStyle(
               color: colors.primary,
               fontSize: 11.5,

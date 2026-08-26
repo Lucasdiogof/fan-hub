@@ -3,6 +3,7 @@ import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
@@ -102,7 +103,7 @@ class _LineupViewState extends State<_LineupView> {
                     0,
                   ),
                   child: ArenaGameHeader(
-                    title: 'ADIVINHE A ESCALAÇÃO',
+                    title: context.l10n.arenaGameLineupTitle.toUpperCase(),
                     onBack: () =>
                         context.canPop() ? context.pop() : context.go('/'),
                     trailing: _ProgressPill(
@@ -141,7 +142,7 @@ class _LineupViewState extends State<_LineupView> {
                           : null,
                     ),
                     icon: const Icon(Icons.emoji_events_outlined, size: 16),
-                    label: const Text('VER RESULTADO'),
+                    label: Text(context.l10n.quizSeeResult),
                   ),
                 const SizedBox(height: AppSpacing.xs),
                 Expanded(
@@ -202,9 +203,9 @@ class _LineupViewState extends State<_LineupView> {
                         ),
                       ),
                       icon: const Icon(Icons.flag_rounded, size: 15),
-                      label: const Text(
-                        'DESISTIR DA PARTIDA',
-                        style: TextStyle(
+                      label: Text(
+                        context.l10n.lineupGiveUp,
+                        style: const TextStyle(
                           fontSize: 12.5,
                           fontWeight: FontWeight.w800,
                           letterSpacing: 0.3,
@@ -253,11 +254,10 @@ class _LineupViewState extends State<_LineupView> {
     final confirmed = await AppBottomSheet.show(
       context,
       icon: Icons.flag_outlined,
-      title: 'Desistir da partida?',
-      description:
-          'Os jogadores restantes serão revelados e a partida será encerrada.',
-      confirmLabel: 'DESISTIR',
-      cancelLabel: 'Continuar jogando',
+      title: context.l10n.lineupGiveUpTitle,
+      description: context.l10n.lineupGiveUpMessage,
+      confirmLabel: context.l10n.lineupGiveUpConfirm,
+      cancelLabel: context.l10n.lineupKeepPlaying,
     );
     if (confirmed == true) {
       await cubit.giveUp();
@@ -365,7 +365,7 @@ class _MatchNav extends StatelessWidget {
         ),
         const SizedBox(width: AppSpacing.sm),
         Text(
-          'PARTIDA ${index + 1} DE $total',
+          context.l10n.lineupMatchProgress(index + 1, total),
           style: TextStyle(
             color: colors.textHint,
             fontSize: 10.5,

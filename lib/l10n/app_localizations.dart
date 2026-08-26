@@ -1383,6 +1383,192 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Recorde: {best} pts'**
   String quizBestRecord(int best);
+
+  /// No description provided for @lineupPlayerHeading.
+  ///
+  /// In pt, this message translates to:
+  /// **'JOGADOR'**
+  String get lineupPlayerHeading;
+
+  /// No description provided for @lineupShirt.
+  ///
+  /// In pt, this message translates to:
+  /// **'CAMISA {number}'**
+  String lineupShirt(int number);
+
+  /// No description provided for @lineupTypePlayerName.
+  ///
+  /// In pt, this message translates to:
+  /// **'Digite o nome do jogador'**
+  String get lineupTypePlayerName;
+
+  /// No description provided for @lineupBackToField.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOLTAR AO CAMPO'**
+  String get lineupBackToField;
+
+  /// No description provided for @lineupGiveUp.
+  ///
+  /// In pt, this message translates to:
+  /// **'DESISTIR DA PARTIDA'**
+  String get lineupGiveUp;
+
+  /// No description provided for @lineupGiveUpTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desistir da partida?'**
+  String get lineupGiveUpTitle;
+
+  /// No description provided for @lineupGiveUpMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Os jogadores restantes serão revelados e a partida será encerrada.'**
+  String get lineupGiveUpMessage;
+
+  /// No description provided for @lineupGiveUpConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'DESISTIR'**
+  String get lineupGiveUpConfirm;
+
+  /// No description provided for @lineupKeepPlaying.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continuar jogando'**
+  String get lineupKeepPlaying;
+
+  /// No description provided for @lineupMatchProgress.
+  ///
+  /// In pt, this message translates to:
+  /// **'PARTIDA {current} DE {total}'**
+  String lineupMatchProgress(int current, int total);
+
+  /// No description provided for @lineupWordCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{words, plural, =1{1 palavra} other{{words} palavras}} • {letters, plural, =1{1 letra} other{{letters} letras}}'**
+  String lineupWordCount(int words, int letters);
+
+  /// No description provided for @lineupComplete.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCALAÇÃO COMPLETA'**
+  String get lineupComplete;
+
+  /// No description provided for @lineupDiscovered.
+  ///
+  /// In pt, this message translates to:
+  /// **'DESCOBERTOS'**
+  String get lineupDiscovered;
+
+  /// No description provided for @lineupAttempts.
+  ///
+  /// In pt, this message translates to:
+  /// **'TENTATIVAS'**
+  String get lineupAttempts;
+
+  /// No description provided for @lineupTime.
+  ///
+  /// In pt, this message translates to:
+  /// **'TEMPO'**
+  String get lineupTime;
+
+  /// No description provided for @lineupResultCopied.
+  ///
+  /// In pt, this message translates to:
+  /// **'Resultado copiado.'**
+  String get lineupResultCopied;
+
+  /// No description provided for @lineupCopyResult.
+  ///
+  /// In pt, this message translates to:
+  /// **'Copiar resultado'**
+  String get lineupCopyResult;
+
+  /// No description provided for @lineupShareResult.
+  ///
+  /// In pt, this message translates to:
+  /// **'Compartilhar resultado'**
+  String get lineupShareResult;
+
+  /// No description provided for @lineupNextMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRÓXIMO JOGO'**
+  String get lineupNextMatch;
+
+  /// No description provided for @lineupPreviousMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'ANTERIOR'**
+  String get lineupPreviousMatch;
+
+  /// No description provided for @lineupNoNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogador sem número confirmado'**
+  String get lineupNoNumber;
+
+  /// No description provided for @lineupNotDiscovered.
+  ///
+  /// In pt, this message translates to:
+  /// **'{shirt}, não descoberto'**
+  String lineupNotDiscovered(String shirt);
+
+  /// No description provided for @lineupShirtLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Camisa {number}'**
+  String lineupShirtLabel(int number);
+
+  /// No description provided for @lineupA11yRevealed.
+  ///
+  /// In pt, this message translates to:
+  /// **'{shirt}, {name}, descoberto'**
+  String lineupA11yRevealed(String shirt, String name);
+
+  /// No description provided for @lineupA11yPending.
+  ///
+  /// In pt, this message translates to:
+  /// **'{shirt}, {position}, ainda não descoberto'**
+  String lineupA11yPending(String shirt, String position);
+
+  /// No description provided for @lineupTileCorrect.
+  ///
+  /// In pt, this message translates to:
+  /// **'posição correta'**
+  String get lineupTileCorrect;
+
+  /// No description provided for @lineupTilePresent.
+  ///
+  /// In pt, this message translates to:
+  /// **'letra existe, posição errada'**
+  String get lineupTilePresent;
+
+  /// No description provided for @lineupTileAbsent.
+  ///
+  /// In pt, this message translates to:
+  /// **'letra não existe'**
+  String get lineupTileAbsent;
+
+  /// No description provided for @lineupTileEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'vazio'**
+  String get lineupTileEmpty;
+
+  /// No description provided for @keyboardDelete.
+  ///
+  /// In pt, this message translates to:
+  /// **'Apagar'**
+  String get keyboardDelete;
+
+  /// No description provided for @keyboardConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirmar'**
+  String get keyboardConfirm;
 }
 
 class _AppLocalizationsDelegate

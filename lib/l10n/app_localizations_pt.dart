@@ -700,4 +700,124 @@ class AppLocalizationsPt extends AppLocalizations {
   String quizBestRecord(int best) {
     return 'Recorde: $best pts';
   }
+
+  @override
+  String get lineupPlayerHeading => 'JOGADOR';
+
+  @override
+  String lineupShirt(int number) {
+    return 'CAMISA $number';
+  }
+
+  @override
+  String get lineupTypePlayerName => 'Digite o nome do jogador';
+
+  @override
+  String get lineupBackToField => 'VOLTAR AO CAMPO';
+
+  @override
+  String get lineupGiveUp => 'DESISTIR DA PARTIDA';
+
+  @override
+  String get lineupGiveUpTitle => 'Desistir da partida?';
+
+  @override
+  String get lineupGiveUpMessage =>
+      'Os jogadores restantes serão revelados e a partida será encerrada.';
+
+  @override
+  String get lineupGiveUpConfirm => 'DESISTIR';
+
+  @override
+  String get lineupKeepPlaying => 'Continuar jogando';
+
+  @override
+  String lineupMatchProgress(int current, int total) {
+    return 'PARTIDA $current DE $total';
+  }
+
+  @override
+  String lineupWordCount(int words, int letters) {
+    String _temp0 = intl.Intl.pluralLogic(
+      words,
+      locale: localeName,
+      other: '$words palavras',
+      one: '1 palavra',
+    );
+    String _temp1 = intl.Intl.pluralLogic(
+      letters,
+      locale: localeName,
+      other: '$letters letras',
+      one: '1 letra',
+    );
+    return '$_temp0 • $_temp1';
+  }
+
+  @override
+  String get lineupComplete => 'ESCALAÇÃO COMPLETA';
+
+  @override
+  String get lineupDiscovered => 'DESCOBERTOS';
+
+  @override
+  String get lineupAttempts => 'TENTATIVAS';
+
+  @override
+  String get lineupTime => 'TEMPO';
+
+  @override
+  String get lineupResultCopied => 'Resultado copiado.';
+
+  @override
+  String get lineupCopyResult => 'Copiar resultado';
+
+  @override
+  String get lineupShareResult => 'Compartilhar resultado';
+
+  @override
+  String get lineupNextMatch => 'PRÓXIMO JOGO';
+
+  @override
+  String get lineupPreviousMatch => 'ANTERIOR';
+
+  @override
+  String get lineupNoNumber => 'Jogador sem número confirmado';
+
+  @override
+  String lineupNotDiscovered(String shirt) {
+    return '$shirt, não descoberto';
+  }
+
+  @override
+  String lineupShirtLabel(int number) {
+    return 'Camisa $number';
+  }
+
+  @override
+  String lineupA11yRevealed(String shirt, String name) {
+    return '$shirt, $name, descoberto';
+  }
+
+  @override
+  String lineupA11yPending(String shirt, String position) {
+    return '$shirt, $position, ainda não descoberto';
+  }
+
+  @override
+  String get lineupTileCorrect => 'posição correta';
+
+  @override
+  String get lineupTilePresent => 'letra existe, posição errada';
+
+  @override
+  String get lineupTileAbsent => 'letra não existe';
+
+  @override
+  String get lineupTileEmpty => 'vazio';
+
+  @override
+  String get keyboardDelete => 'Apagar';
+
+  @override
+  String get keyboardConfirm => 'Confirmar';
 }

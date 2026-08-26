@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 
@@ -59,7 +60,7 @@ class LineupKeyboard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: _Key(
-                          label: 'Apagar',
+                          label: context.l10n.keyboardDelete,
                           wide: true,
                           onTap: onDelete,
                           icon: Icons.backspace_outlined,
@@ -69,7 +70,7 @@ class LineupKeyboard extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: _Key(
-                          label: 'Confirmar',
+                          label: context.l10n.keyboardConfirm,
                           wide: true,
                           onTap: canSubmit ? onEnter : null,
                           icon: Icons.check_rounded,

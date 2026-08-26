@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
@@ -126,21 +127,21 @@ class _LetterCell extends StatelessWidget {
         const Color(0xFF278A52),
         Colors.white,
         Icons.check_rounded,
-        'posição correta',
+        context.l10n.lineupTileCorrect,
       ),
       LetterStatus.present => (
         const Color(0xFFC79A3D),
         const Color(0xFFC79A3D),
         Colors.white,
         Icons.sync_alt_rounded,
-        'letra existe, posição errada',
+        context.l10n.lineupTilePresent,
       ),
       LetterStatus.absent => (
         colors.surfaceRaised,
         colors.border,
         colors.textHint,
         null,
-        'letra não existe',
+        context.l10n.lineupTileAbsent,
       ),
       null => (
         letter != null ? colors.surface : colors.surfaceRaised,
@@ -155,7 +156,7 @@ class _LetterCell extends StatelessWidget {
 
     return Semantics(
       label: letter == null
-          ? 'vazio'
+          ? context.l10n.lineupTileEmpty
           : '$letter${semanticLabel != null ? ', $semanticLabel' : ''}',
       child: Container(
         width: size,

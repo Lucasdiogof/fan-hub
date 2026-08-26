@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
@@ -54,7 +55,7 @@ class _LineupResultDialog extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'ESCALAÇÃO COMPLETA',
+              context.l10n.lineupComplete,
               style: TextStyle(
                 color: colors.primary,
                 fontSize: 13,
@@ -72,7 +73,7 @@ class _LineupResultDialog extends StatelessWidget {
               ),
             ),
             Text(
-              'DESCOBERTOS',
+              context.l10n.lineupDiscovered,
               style: TextStyle(
                 color: colors.textHint,
                 fontSize: 11,
@@ -84,8 +85,8 @@ class _LineupResultDialog extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _Stat(label: 'TENTATIVAS', value: '${state.totalAttempts}'),
-                _Stat(label: 'TEMPO', value: '$minutes:$seconds'),
+                _Stat(label: context.l10n.lineupAttempts, value: '${state.totalAttempts}'),
+                _Stat(label: context.l10n.lineupTime, value: '$minutes:$seconds'),
               ],
             ),
             const SizedBox(height: AppSpacing.xl),
@@ -99,12 +100,12 @@ class _LineupResultDialog extends StatelessWidget {
                       );
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Resultado copiado.')),
+                          SnackBar(content: Text(context.l10n.lineupResultCopied)),
                         );
                       }
                     },
                     icon: const Icon(Icons.copy_rounded, size: 18),
-                    tooltip: 'Copiar resultado',
+                    tooltip: context.l10n.lineupCopyResult,
                   ),
                 ),
                 const SizedBox(width: AppSpacing.sm),
@@ -114,7 +115,7 @@ class _LineupResultDialog extends StatelessWidget {
                       ShareParams(text: buildLineupShareText(state)),
                     ),
                     icon: const Icon(Icons.share_rounded, size: 18),
-                    tooltip: 'Compartilhar resultado',
+                    tooltip: context.l10n.lineupShareResult,
                   ),
                 ),
               ],
@@ -132,7 +133,7 @@ class _LineupResultDialog extends StatelessWidget {
                       onNext!();
                     },
                     icon: const Icon(Icons.arrow_forward_rounded, size: 18),
-                    label: const Text('PRÓXIMO JOGO'),
+                    label: Text(context.l10n.lineupNextMatch),
                   ),
                 ),
               if (onNext != null && onPrevious != null)
@@ -146,14 +147,14 @@ class _LineupResultDialog extends StatelessWidget {
                       onPrevious!();
                     },
                     icon: const Icon(Icons.arrow_back_rounded, size: 18),
-                    label: const Text('ANTERIOR'),
+                    label: Text(context.l10n.lineupPreviousMatch),
                   ),
                 ),
             ],
             const SizedBox(height: AppSpacing.md),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('FECHAR'),
+              child: Text(context.l10n.commonClose),
             ),
           ],
         ),
