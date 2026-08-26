@@ -1079,4 +1079,75 @@ class AppLocalizationsPt extends AppLocalizations {
   String partnersOpenWebsite(String name) {
     return 'Abrir site de $name';
   }
+
+  @override
+  String get squadTitle => 'ELENCO';
+
+  @override
+  String get squadLoadError => 'Não foi possível carregar o elenco';
+
+  @override
+  String get squadEmpty => 'Elenco indisponível no momento';
+
+  @override
+  String get squadClubHistory => 'HISTÓRICO DE CLUBES';
+
+  @override
+  String get squadNumber => 'Número';
+
+  @override
+  String get squadAge => 'Idade';
+
+  @override
+  String squadAgeValue(int age) {
+    return '$age anos';
+  }
+
+  @override
+  String get squadNationality => 'Nacionalidade';
+
+  @override
+  String get squadHeight => 'Altura';
+
+  @override
+  String get squadFoot => 'Pé';
+
+  @override
+  String get squadHistoryYears => 'Anos';
+
+  @override
+  String get squadHistoryClubs => 'Clubes';
+
+  @override
+  String get squadHistoryMatches => 'Jogos';
+
+  @override
+  String get squadHistoryGoals => 'Gols';
+
+  @override
+  String get squadLoanTag => '(emp.)';
+
+  @override
+  String get squadDataUnconfirmed => 'Dado não confirmado na fonte.';
+
+  @override
+  String get squadGroupGoalkeepers => 'Goleiros';
+
+  @override
+  String get squadGroupDefenders => 'Zagueiros';
+
+  @override
+  String get squadGroupRightBacks => 'Laterais-direitos';
+
+  @override
+  String get squadGroupLeftBacks => 'Laterais-esquerdos';
+
+  @override
+  String get squadGroupDefensiveMids => 'Volantes';
+
+  @override
+  String get squadGroupMidfielders => 'Meios-campistas';
+
+  @override
+  String get squadGroupForwards => 'Atacantes';
 }

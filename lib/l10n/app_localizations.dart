@@ -1989,6 +1989,144 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Abrir site de {name}'**
   String partnersOpenWebsite(String name);
+
+  /// No description provided for @squadTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ELENCO'**
+  String get squadTitle;
+
+  /// No description provided for @squadLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar o elenco'**
+  String get squadLoadError;
+
+  /// No description provided for @squadEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Elenco indisponível no momento'**
+  String get squadEmpty;
+
+  /// No description provided for @squadClubHistory.
+  ///
+  /// In pt, this message translates to:
+  /// **'HISTÓRICO DE CLUBES'**
+  String get squadClubHistory;
+
+  /// No description provided for @squadNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'Número'**
+  String get squadNumber;
+
+  /// No description provided for @squadAge.
+  ///
+  /// In pt, this message translates to:
+  /// **'Idade'**
+  String get squadAge;
+
+  /// No description provided for @squadAgeValue.
+  ///
+  /// In pt, this message translates to:
+  /// **'{age} anos'**
+  String squadAgeValue(int age);
+
+  /// No description provided for @squadNationality.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nacionalidade'**
+  String get squadNationality;
+
+  /// No description provided for @squadHeight.
+  ///
+  /// In pt, this message translates to:
+  /// **'Altura'**
+  String get squadHeight;
+
+  /// No description provided for @squadFoot.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pé'**
+  String get squadFoot;
+
+  /// No description provided for @squadHistoryYears.
+  ///
+  /// In pt, this message translates to:
+  /// **'Anos'**
+  String get squadHistoryYears;
+
+  /// No description provided for @squadHistoryClubs.
+  ///
+  /// In pt, this message translates to:
+  /// **'Clubes'**
+  String get squadHistoryClubs;
+
+  /// No description provided for @squadHistoryMatches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogos'**
+  String get squadHistoryMatches;
+
+  /// No description provided for @squadHistoryGoals.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols'**
+  String get squadHistoryGoals;
+
+  /// No description provided for @squadLoanTag.
+  ///
+  /// In pt, this message translates to:
+  /// **'(emp.)'**
+  String get squadLoanTag;
+
+  /// No description provided for @squadDataUnconfirmed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dado não confirmado na fonte.'**
+  String get squadDataUnconfirmed;
+
+  /// No description provided for @squadGroupGoalkeepers.
+  ///
+  /// In pt, this message translates to:
+  /// **'Goleiros'**
+  String get squadGroupGoalkeepers;
+
+  /// No description provided for @squadGroupDefenders.
+  ///
+  /// In pt, this message translates to:
+  /// **'Zagueiros'**
+  String get squadGroupDefenders;
+
+  /// No description provided for @squadGroupRightBacks.
+  ///
+  /// In pt, this message translates to:
+  /// **'Laterais-direitos'**
+  String get squadGroupRightBacks;
+
+  /// No description provided for @squadGroupLeftBacks.
+  ///
+  /// In pt, this message translates to:
+  /// **'Laterais-esquerdos'**
+  String get squadGroupLeftBacks;
+
+  /// No description provided for @squadGroupDefensiveMids.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volantes'**
+  String get squadGroupDefensiveMids;
+
+  /// No description provided for @squadGroupMidfielders.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meios-campistas'**
+  String get squadGroupMidfielders;
+
+  /// No description provided for @squadGroupForwards.
+  ///
+  /// In pt, this message translates to:
+  /// **'Atacantes'**
+  String get squadGroupForwards;
 }
 
 class _AppLocalizationsDelegate

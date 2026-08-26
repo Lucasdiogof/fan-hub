@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/squad/domain/club_history_entry.dart';
@@ -42,6 +43,7 @@ class _HeaderRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     final style = TextStyle(
       fontSize: 12.5,
       fontWeight: FontWeight.w800,
@@ -58,16 +60,16 @@ class _HeaderRow extends StatelessWidget {
         children: [
           SizedBox(
             width: _yearsWidth,
-            child: Text('Anos', style: style),
+            child: Text(l10n.squadHistoryYears, style: style),
           ),
-          Expanded(child: Text('Clubes', style: style)),
+          Expanded(child: Text(l10n.squadHistoryClubs, style: style)),
           SizedBox(
             width: _numberWidth,
-            child: Text('Jogos', style: style, textAlign: TextAlign.right),
+            child: Text(l10n.squadHistoryMatches, style: style, textAlign: TextAlign.right),
           ),
           SizedBox(
             width: _numberWidth,
-            child: Text('Gols', style: style, textAlign: TextAlign.right),
+            child: Text(l10n.squadHistoryGoals, style: style, textAlign: TextAlign.right),
           ),
         ],
       ),
@@ -94,7 +96,8 @@ class _EntryRow extends StatelessWidget {
     final colors = context.colors;
     final highlight = entry.isGoias;
     final textColor = highlight ? colors.primary : colors.textPrimary;
-    final teamName = entry.loan ? '${entry.team} (emp.)' : entry.team;
+    final l10n = context.l10n;
+    final teamName = entry.loan ? '${entry.team} ${l10n.squadLoanTag}' : entry.team;
     final uncertain = entry.dataQuality != 'verified';
 
     final row = Padding(
@@ -134,7 +137,7 @@ class _EntryRow extends StatelessWidget {
                 if (uncertain) ...[
                   const SizedBox(width: 4),
                   Tooltip(
-                    message: entry.notes ?? 'Dado não confirmado na fonte.',
+                    message: entry.notes ?? l10n.squadDataUnconfirmed,
                     child: Icon(
                       entry.dataQuality == 'review'
                           ? Icons.error_outline_rounded

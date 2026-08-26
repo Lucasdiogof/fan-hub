@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
@@ -96,7 +97,7 @@ class SquadMemberDetailPage extends StatelessWidget {
                       if (member.clubHistory.isNotEmpty) ...[
                         const SizedBox(height: AppSpacing.xl),
                         Text(
-                          'HISTÓRICO DE CLUBES',
+                          context.l10n.squadClubHistory,
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w800,
@@ -127,17 +128,18 @@ class _InfoGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final l10n = context.l10n;
     final items = <(IconData, String, String)>[
       if (member.shirtNumber != null)
-        (Icons.tag_rounded, 'Número', '${member.shirtNumber}'),
+        (Icons.tag_rounded, l10n.squadNumber, '${member.shirtNumber}'),
       if (member.age != null)
-        (Icons.cake_outlined, 'Idade', '${member.age} anos'),
+        (Icons.cake_outlined, l10n.squadAge, l10n.squadAgeValue(member.age!)),
       if (member.nationality != null)
-        (Icons.flag_outlined, 'Nacionalidade', member.nationality!),
+        (Icons.flag_outlined, l10n.squadNationality, member.nationality!),
       if (member.heightCm != null)
-        (Icons.height_rounded, 'Altura', '${member.heightCm} cm'),
+        (Icons.height_rounded, l10n.squadHeight, '${member.heightCm} cm'),
       if (member.foot != null)
-        (Icons.sports_soccer_rounded, 'Pé', member.foot!),
+        (Icons.sports_soccer_rounded, l10n.squadFoot, member.foot!),
     ];
 
     if (items.isEmpty) return const SizedBox.shrink();

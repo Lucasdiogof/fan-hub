@@ -1076,4 +1076,75 @@ class AppLocalizationsEn extends AppLocalizations {
   String partnersOpenWebsite(String name) {
     return 'Open $name website';
   }
+
+  @override
+  String get squadTitle => 'SQUAD';
+
+  @override
+  String get squadLoadError => 'Could not load the squad';
+
+  @override
+  String get squadEmpty => 'Squad unavailable at the moment';
+
+  @override
+  String get squadClubHistory => 'CLUB HISTORY';
+
+  @override
+  String get squadNumber => 'Number';
+
+  @override
+  String get squadAge => 'Age';
+
+  @override
+  String squadAgeValue(int age) {
+    return '$age years old';
+  }
+
+  @override
+  String get squadNationality => 'Nationality';
+
+  @override
+  String get squadHeight => 'Height';
+
+  @override
+  String get squadFoot => 'Foot';
+
+  @override
+  String get squadHistoryYears => 'Years';
+
+  @override
+  String get squadHistoryClubs => 'Clubs';
+
+  @override
+  String get squadHistoryMatches => 'Apps';
+
+  @override
+  String get squadHistoryGoals => 'Goals';
+
+  @override
+  String get squadLoanTag => '(loan)';
+
+  @override
+  String get squadDataUnconfirmed => 'Data not confirmed by source.';
+
+  @override
+  String get squadGroupGoalkeepers => 'Goalkeepers';
+
+  @override
+  String get squadGroupDefenders => 'Centre-backs';
+
+  @override
+  String get squadGroupRightBacks => 'Right-backs';
+
+  @override
+  String get squadGroupLeftBacks => 'Left-backs';
+
+  @override
+  String get squadGroupDefensiveMids => 'Defensive midfielders';
+
+  @override
+  String get squadGroupMidfielders => 'Midfielders';
+
+  @override
+  String get squadGroupForwards => 'Forwards';
 }

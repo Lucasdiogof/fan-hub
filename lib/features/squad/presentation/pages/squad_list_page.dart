@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/squad/domain/position_groups.dart';
@@ -67,7 +68,7 @@ class _SquadListView extends StatelessWidget {
                         context.canPop() ? context.pop() : context.go('/'),
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  const PageTitle('ELENCO'),
+                  PageTitle(context.l10n.squadTitle),
                   const SizedBox(height: AppSpacing.xxxl),
                   Expanded(
                     child: BlocBuilder<SquadCubit, SquadState>(
@@ -81,14 +82,14 @@ class _SquadListView extends StatelessWidget {
                             LoadStatus.error => _centered(
                               StateMessage(
                                 icon: Icons.wifi_off_rounded,
-                                title: 'Não foi possível carregar o elenco',
+                                title: context.l10n.squadLoadError,
                                 message: state.errorMessage,
                               ),
                             ),
                             LoadStatus.empty => _centered(
-                              const StateMessage(
+                              StateMessage(
                                 icon: Icons.groups_outlined,
-                                title: 'Elenco indisponível no momento',
+                                title: context.l10n.squadEmpty,
                               ),
                             ),
                             LoadStatus.success => ListView(
@@ -99,7 +100,7 @@ class _SquadListView extends StatelessWidget {
                               children: [
                                 for (final group in positionGroupOrder)
                                   _PositionGroupSection(
-                                    title: group,
+                                    title: positionGroupLabel(group, context.l10n),
                                     members: state.members
                                         .where(
                                           (member) =>

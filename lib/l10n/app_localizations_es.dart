@@ -1080,4 +1080,75 @@ class AppLocalizationsEs extends AppLocalizations {
   String partnersOpenWebsite(String name) {
     return 'Abrir sitio de $name';
   }
+
+  @override
+  String get squadTitle => 'PLANTILLA';
+
+  @override
+  String get squadLoadError => 'No se pudo cargar la plantilla';
+
+  @override
+  String get squadEmpty => 'Plantilla no disponible en este momento';
+
+  @override
+  String get squadClubHistory => 'HISTORIAL DE CLUBES';
+
+  @override
+  String get squadNumber => 'Número';
+
+  @override
+  String get squadAge => 'Edad';
+
+  @override
+  String squadAgeValue(int age) {
+    return '$age años';
+  }
+
+  @override
+  String get squadNationality => 'Nacionalidad';
+
+  @override
+  String get squadHeight => 'Altura';
+
+  @override
+  String get squadFoot => 'Pie';
+
+  @override
+  String get squadHistoryYears => 'Años';
+
+  @override
+  String get squadHistoryClubs => 'Clubes';
+
+  @override
+  String get squadHistoryMatches => 'Partidos';
+
+  @override
+  String get squadHistoryGoals => 'Goles';
+
+  @override
+  String get squadLoanTag => '(prest.)';
+
+  @override
+  String get squadDataUnconfirmed => 'Dato no confirmado en la fuente.';
+
+  @override
+  String get squadGroupGoalkeepers => 'Porteros';
+
+  @override
+  String get squadGroupDefenders => 'Centrales';
+
+  @override
+  String get squadGroupRightBacks => 'Laterales derechos';
+
+  @override
+  String get squadGroupLeftBacks => 'Laterales izquierdos';
+
+  @override
+  String get squadGroupDefensiveMids => 'Volantes';
+
+  @override
+  String get squadGroupMidfielders => 'Mediocampistas';
+
+  @override
+  String get squadGroupForwards => 'Delanteros';
 }
