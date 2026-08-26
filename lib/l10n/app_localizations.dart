@@ -2931,6 +2931,138 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'ALTERAR PLANO'**
   String get membershipChangePlan;
+
+  /// No description provided for @membershipStep1Access.
+  ///
+  /// In pt, this message translates to:
+  /// **'1 de 3 · Dados de acesso'**
+  String get membershipStep1Access;
+
+  /// No description provided for @membershipStep2Personal.
+  ///
+  /// In pt, this message translates to:
+  /// **'2 de 3 · Dados cadastrais'**
+  String get membershipStep2Personal;
+
+  /// No description provided for @membershipStep3Address.
+  ///
+  /// In pt, this message translates to:
+  /// **'3 de 3 · Endereço'**
+  String get membershipStep3Address;
+
+  /// No description provided for @membershipCpf.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF'**
+  String get membershipCpf;
+
+  /// No description provided for @membershipNationality.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nacionalidade'**
+  String get membershipNationality;
+
+  /// No description provided for @membershipPassport.
+  ///
+  /// In pt, this message translates to:
+  /// **'Passaporte'**
+  String get membershipPassport;
+
+  /// No description provided for @membershipPassportOptional.
+  ///
+  /// In pt, this message translates to:
+  /// **'Passaporte (opcional)'**
+  String get membershipPassportOptional;
+
+  /// No description provided for @membershipContactEmail.
+  ///
+  /// In pt, this message translates to:
+  /// **'E-mail de contato'**
+  String get membershipContactEmail;
+
+  /// No description provided for @membershipNickname.
+  ///
+  /// In pt, this message translates to:
+  /// **'Apelido (opcional)'**
+  String get membershipNickname;
+
+  /// No description provided for @membershipBirthdateHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'DD/MM/AAAA'**
+  String get membershipBirthdateHint;
+
+  /// No description provided for @membershipGender.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sexo'**
+  String get membershipGender;
+
+  /// No description provided for @membershipGenderMale.
+  ///
+  /// In pt, this message translates to:
+  /// **'Masculino'**
+  String get membershipGenderMale;
+
+  /// No description provided for @membershipGenderFemale.
+  ///
+  /// In pt, this message translates to:
+  /// **'Feminino'**
+  String get membershipGenderFemale;
+
+  /// No description provided for @membershipHomePhone.
+  ///
+  /// In pt, this message translates to:
+  /// **'Telefone residencial (opcional)'**
+  String get membershipHomePhone;
+
+  /// No description provided for @membershipNewsletter.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desejo receber notícias do clube e do Sócio Esmeralda por e-mail.'**
+  String get membershipNewsletter;
+
+  /// No description provided for @membershipCountry.
+  ///
+  /// In pt, this message translates to:
+  /// **'País'**
+  String get membershipCountry;
+
+  /// No description provided for @membershipPostalCode.
+  ///
+  /// In pt, this message translates to:
+  /// **'Código postal'**
+  String get membershipPostalCode;
+
+  /// No description provided for @membershipDontKnowCep.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não sei meu CEP'**
+  String get membershipDontKnowCep;
+
+  /// No description provided for @membershipLoadingCities.
+  ///
+  /// In pt, this message translates to:
+  /// **'Carregando cidades...'**
+  String get membershipLoadingCities;
+
+  /// No description provided for @membershipSelectStateFirst.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione o estado primeiro'**
+  String get membershipSelectStateFirst;
+
+  /// No description provided for @membershipSelectCity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecionar cidade'**
+  String get membershipSelectCity;
+
+  /// No description provided for @membershipConfirmAssociation.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONFIRMAR ASSOCIAÇÃO'**
+  String get membershipConfirmAssociation;
 }
 
 class _AppLocalizationsDelegate

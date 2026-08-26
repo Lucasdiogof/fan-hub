@@ -1609,4 +1609,71 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get membershipChangePlan => 'CHANGE PLAN';
+
+  @override
+  String get membershipStep1Access => '1 of 3 · Access data';
+
+  @override
+  String get membershipStep2Personal => '2 of 3 · Registration data';
+
+  @override
+  String get membershipStep3Address => '3 of 3 · Address';
+
+  @override
+  String get membershipCpf => 'CPF';
+
+  @override
+  String get membershipNationality => 'Nationality';
+
+  @override
+  String get membershipPassport => 'Passport';
+
+  @override
+  String get membershipPassportOptional => 'Passport (optional)';
+
+  @override
+  String get membershipContactEmail => 'Contact email';
+
+  @override
+  String get membershipNickname => 'Nickname (optional)';
+
+  @override
+  String get membershipBirthdateHint => 'DD/MM/YYYY';
+
+  @override
+  String get membershipGender => 'Gender';
+
+  @override
+  String get membershipGenderMale => 'Male';
+
+  @override
+  String get membershipGenderFemale => 'Female';
+
+  @override
+  String get membershipHomePhone => 'Home phone (optional)';
+
+  @override
+  String get membershipNewsletter =>
+      'I want to receive news from the club and Sócio Esmeralda by email.';
+
+  @override
+  String get membershipCountry => 'Country';
+
+  @override
+  String get membershipPostalCode => 'Postal code';
+
+  @override
+  String get membershipDontKnowCep => 'I don\'t know my postal code';
+
+  @override
+  String get membershipLoadingCities => 'Loading cities...';
+
+  @override
+  String get membershipSelectStateFirst => 'Select the state first';
+
+  @override
+  String get membershipSelectCity => 'Select city';
+
+  @override
+  String get membershipConfirmAssociation => 'CONFIRM MEMBERSHIP';
 }

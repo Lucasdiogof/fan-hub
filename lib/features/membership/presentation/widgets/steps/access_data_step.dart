@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/country_catalog.dart';
@@ -22,7 +23,7 @@ class AccessDataStep extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '1 de 3 · Dados de acesso',
+          context.l10n.membershipStep1Access,
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w800,
@@ -31,7 +32,7 @@ class AccessDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'CPF',
+          label: context.l10n.membershipCpf,
           isRequired: true,
           value: data.cpf,
           errorText: errors['cpf'],
@@ -43,7 +44,7 @@ class AccessDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationDropdownField<String>(
-          label: 'Nacionalidade',
+          label: context.l10n.membershipNationality,
           isRequired: true,
           value: data.nationality.isEmpty ? null : data.nationality,
           errorText: errors['nationality'],
@@ -55,7 +56,7 @@ class AccessDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: isForeign ? 'Passaporte' : 'Passaporte (opcional)',
+          label: isForeign ? context.l10n.membershipPassport : context.l10n.membershipPassportOptional,
           value: data.passport,
           errorText: errors['passport'],
           hintText: 'AB123456',

@@ -1613,4 +1613,71 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get membershipChangePlan => 'CAMBIAR PLAN';
+
+  @override
+  String get membershipStep1Access => '1 de 3 · Datos de acceso';
+
+  @override
+  String get membershipStep2Personal => '2 de 3 · Datos de registro';
+
+  @override
+  String get membershipStep3Address => '3 de 3 · Dirección';
+
+  @override
+  String get membershipCpf => 'CPF';
+
+  @override
+  String get membershipNationality => 'Nacionalidad';
+
+  @override
+  String get membershipPassport => 'Pasaporte';
+
+  @override
+  String get membershipPassportOptional => 'Pasaporte (opcional)';
+
+  @override
+  String get membershipContactEmail => 'Correo de contacto';
+
+  @override
+  String get membershipNickname => 'Apodo (opcional)';
+
+  @override
+  String get membershipBirthdateHint => 'DD/MM/AAAA';
+
+  @override
+  String get membershipGender => 'Sexo';
+
+  @override
+  String get membershipGenderMale => 'Masculino';
+
+  @override
+  String get membershipGenderFemale => 'Femenino';
+
+  @override
+  String get membershipHomePhone => 'Teléfono fijo (opcional)';
+
+  @override
+  String get membershipNewsletter =>
+      'Deseo recibir noticias del club y de Sócio Esmeralda por correo.';
+
+  @override
+  String get membershipCountry => 'País';
+
+  @override
+  String get membershipPostalCode => 'Código postal';
+
+  @override
+  String get membershipDontKnowCep => 'No sé mi código postal';
+
+  @override
+  String get membershipLoadingCities => 'Cargando ciudades...';
+
+  @override
+  String get membershipSelectStateFirst => 'Selecciona primero el estado';
+
+  @override
+  String get membershipSelectCity => 'Seleccionar ciudad';
+
+  @override
+  String get membershipConfirmAssociation => 'CONFIRMAR AFILIACIÓN';
 }

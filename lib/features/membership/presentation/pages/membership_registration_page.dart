@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
@@ -164,7 +165,7 @@ class _NavButtons extends StatelessWidget {
           Expanded(
             child: _outlinedButton(
               colors,
-              'VOLTAR',
+              context.l10n.commonBack,
               loading ? null : cubit.back,
             ),
           ),
@@ -192,7 +193,7 @@ class _NavButtons extends StatelessWidget {
                         color: colors.onPrimary,
                       ),
                     )
-                  : const Text('CONFIRMAR ASSOCIAÇÃO'),
+                  : Text(context.l10n.membershipConfirmAssociation),
             ),
           ),
         ],
@@ -209,7 +210,7 @@ class _NavButtons extends StatelessWidget {
     return Row(
       children: [
         if (!isFirst) ...[
-          Expanded(child: _outlinedButton(colors, 'VOLTAR', cubit.back)),
+          Expanded(child: _outlinedButton(colors, context.l10n.commonBack, cubit.back)),
           const SizedBox(width: AppSpacing.md),
         ],
         Expanded(
@@ -225,7 +226,7 @@ class _NavButtons extends StatelessWidget {
                 letterSpacing: 0.3,
               ),
             ),
-            child: const Text('CONTINUAR'),
+            child: Text(context.l10n.commonContinue),
           ),
         ),
       ],

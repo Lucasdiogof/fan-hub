@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/domain/brazilian_states.dart';
@@ -125,7 +126,7 @@ class AddressStep extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '3 de 3 · Endereço',
+          context.l10n.membershipStep3Address,
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w800,
@@ -134,7 +135,7 @@ class AddressStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationDropdownField<String>(
-          label: 'País',
+          label: context.l10n.membershipCountry,
           isRequired: true,
           value: data.addressCountry.isEmpty ? null : data.addressCountry,
           errorText: errors['addressCountry'],
@@ -146,7 +147,7 @@ class AddressStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: isBrazil ? 'CEP' : 'Código postal',
+          label: isBrazil ? context.l10n.addressFieldCep : context.l10n.membershipPostalCode,
           isRequired: isBrazil,
           value: data.zipCode,
           errorText: errors['zipCode'],
@@ -179,7 +180,7 @@ class AddressStep extends StatelessWidget {
           GestureDetector(
             onTap: () => _findZipCode(context, cubit),
             child: Text(
-              'Não sei meu CEP',
+              context.l10n.membershipDontKnowCep,
               style: TextStyle(
                 fontSize: 12.5,
                 fontWeight: FontWeight.w700,
@@ -190,7 +191,7 @@ class AddressStep extends StatelessWidget {
         ],
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Logradouro',
+          label: context.l10n.addressFieldStreet,
           isRequired: true,
           value: data.street,
           errorText: errors['street'],
@@ -203,7 +204,7 @@ class AddressStep extends StatelessWidget {
           children: [
             Expanded(
               child: RegistrationTextField(
-                label: 'Número',
+                label: context.l10n.addressFieldNumber,
                 isRequired: true,
                 value: data.number,
                 errorText: errors['number'],
@@ -215,7 +216,7 @@ class AddressStep extends StatelessWidget {
             Expanded(
               flex: 2,
               child: RegistrationTextField(
-                label: 'Complemento (opcional)',
+                label: context.l10n.addressFieldComplement,
                 value: data.complement,
                 onChanged: cubit.updateComplement,
               ),
@@ -224,7 +225,7 @@ class AddressStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Bairro',
+          label: context.l10n.addressFieldNeighborhood,
           isRequired: true,
           value: data.neighborhood,
           errorText: errors['neighborhood'],
@@ -234,16 +235,16 @@ class AddressStep extends StatelessWidget {
         const SizedBox(height: AppSpacing.lg),
         if (isBrazil)
           RegistrationPickerField(
-            label: 'Estado',
+            label: context.l10n.addressFieldState,
             isRequired: true,
             value: data.state,
-            placeholder: 'Selecionar estado',
+            placeholder: context.l10n.addressSelectState,
             errorText: errors['state'],
             onTap: () => _pickState(context, cubit),
           )
         else
           RegistrationTextField(
-            label: 'Estado',
+            label: context.l10n.addressFieldState,
             isRequired: true,
             value: data.state,
             errorText: errors['state'],
@@ -252,14 +253,14 @@ class AddressStep extends StatelessWidget {
         const SizedBox(height: AppSpacing.lg),
         if (isBrazil)
           RegistrationPickerField(
-            label: 'Cidade',
+            label: context.l10n.addressFieldCity,
             isRequired: true,
             value: data.city,
             placeholder: citiesLoading
-                ? 'Carregando cidades...'
+                ? context.l10n.membershipLoadingCities
                 : (data.state.isEmpty
-                      ? 'Selecione o estado primeiro'
-                      : 'Selecionar cidade'),
+                      ? context.l10n.membershipSelectStateFirst
+                      : context.l10n.membershipSelectCity),
             errorText: errors['city'],
             onTap: data.state.isEmpty || citiesLoading
                 ? () {}
@@ -267,7 +268,7 @@ class AddressStep extends StatelessWidget {
           )
         else
           RegistrationTextField(
-            label: 'Cidade',
+            label: context.l10n.addressFieldCity,
             isRequired: true,
             value: data.city,
             errorText: errors['city'],

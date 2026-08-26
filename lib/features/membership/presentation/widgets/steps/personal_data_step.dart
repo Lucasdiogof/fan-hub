@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/country_catalog.dart';
@@ -23,7 +24,7 @@ class PersonalDataStep extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '2 de 3 · Dados cadastrais',
+          context.l10n.membershipStep2Personal,
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w800,
@@ -32,7 +33,7 @@ class PersonalDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'E-mail de contato',
+          label: context.l10n.membershipContactEmail,
           isRequired: true,
           value: data.contactEmail,
           errorText: errors['contactEmail'],
@@ -42,7 +43,7 @@ class PersonalDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Nome completo',
+          label: context.l10n.authFullNameLabel,
           isRequired: true,
           value: data.fullName,
           errorText: errors['fullName'],
@@ -52,31 +53,31 @@ class PersonalDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Apelido (opcional)',
+          label: context.l10n.membershipNickname,
           value: data.nickname,
           textCapitalization: TextCapitalization.words,
           onChanged: cubit.updateNickname,
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Data de nascimento',
+          label: context.l10n.personalFieldBirthDate,
           isRequired: true,
           value: data.birthDate,
           errorText: errors['birthDate'],
           keyboardType: TextInputType.number,
-          hintText: 'DD/MM/AAAA',
+          hintText: context.l10n.membershipBirthdateHint,
           inputFormatters: [birthDateInputFormatter()],
           onChanged: cubit.updateBirthDate,
           onBlur: () => cubit.markFieldBlurred('birthDate'),
         ),
         const SizedBox(height: AppSpacing.lg),
-        const FieldLabel('Sexo', isRequired: true),
+        FieldLabel(context.l10n.membershipGender, isRequired: true),
         const SizedBox(height: 6),
         SegmentedToggle<Gender>(
           value: data.gender,
-          options: const [
-            (Gender.masculino, 'Masculino'),
-            (Gender.feminino, 'Feminino'),
+          options: [
+            (Gender.masculino, context.l10n.membershipGenderMale),
+            (Gender.feminino, context.l10n.membershipGenderFemale),
           ],
           onChanged: cubit.updateGender,
         ),
@@ -89,7 +90,7 @@ class PersonalDataStep extends StatelessWidget {
         ],
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Celular',
+          label: context.l10n.personalFieldPhone,
           isRequired: true,
           value: data.phone,
           errorText: errors['phone'],
@@ -107,7 +108,7 @@ class PersonalDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: 'Telefone residencial (opcional)',
+          label: context.l10n.membershipHomePhone,
           value: data.landline,
           keyboardType: TextInputType.phone,
           inputFormatters: [landlineInputFormatter()],
@@ -249,7 +250,7 @@ class _NewsletterCheckbox extends StatelessWidget {
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(
-              'Desejo receber notícias do clube e do Sócio Esmeralda por e-mail.',
+              context.l10n.membershipNewsletter,
               style: TextStyle(
                 fontSize: 13,
                 height: 1.4,
