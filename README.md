@@ -16,10 +16,9 @@ Aplicativo oficial (não-oficial, em desenvolvimento) do ecossistema digital do 
 
 ### Jogos
 - Classificação da Série B, com o Goiás destacado.
-- Rodada atual (todos os jogos, com placar parcial e indicador "ao vivo" enquanto a partida está em andamento, e placar final quando encerrada).
+- Rodada atual (todos os jogos, com placar parcial e indicador "ao vivo" enquanto a partida está em andamento, e placar final quando encerrada), com navegação pras rodadas anteriores/seguintes.
 - Próximo jogo e últimos resultados do Goiás.
 - Detalhes de cada partida: placar, timeline de eventos e escalações titulares.
-- **Escalação da Torcida**: torcedores votam na escalação provável do próximo jogo do Goiás.
 
 ### Notícias
 - Leitor nativo de matérias do clube, com backend próprio de scraping.
@@ -36,6 +35,7 @@ Aplicativo oficial (não-oficial, em desenvolvimento) do ecossistema digital do 
 - FAQ e Regulamento são servidos pelo Supabase (editáveis pelo dashboard sem novo build), com fallback local se a tabela estiver vazia ou sem rede. A associação em si (planos, cadastro, carteirinha) ainda roda sobre um repositório mock local — pronta pra trocar por uma integração real sem reescrever telas.
 
 ### Arena Esmeraldina
+- **Escalação da Torcida**: em destaque no topo quando há próximo jogo — torcedores votam na escalação provável do Goiás e veem o time mais escalado pela torcida.
 - Hub de minigames sobre a história e o elenco do Goiás: **Quiz do Verdão**, **Adivinhe a Escalação** (escalações de partidas históricas), **Adivinhe o Jogador** (pela trajetória na carreira) e **Quem Vestiu o Manto?** (jogador secreto por foto embaçada e pistas).
 - Progresso e ranking persistentes entre os jogos, com conteúdo (perguntas, partidas, jogadores) servido pelo Supabase.
 

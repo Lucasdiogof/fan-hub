@@ -20,7 +20,6 @@ import 'package:goias_app/features/match/presentation/widgets/standings_view.dar
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/section_header.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 class GamesPage extends StatelessWidget {
@@ -204,7 +203,7 @@ class _MatchesContent extends StatelessWidget {
           const SizedBox(height: AppSpacing.xxl),
         ],
         if (roundMatches.isNotEmpty) ...[
-          const SectionHeader(title: 'RODADA ATUAL'),
+          _RoundNavigationHeader(state: state),
           const SizedBox(height: AppSpacing.md),
           for (final match in roundMatches) ...[
             MatchListItem(match: match, onTap: () => onMatchTap(match)),
@@ -212,6 +211,68 @@ class _MatchesContent extends StatelessWidget {
           ],
         ],
       ],
+    );
+  }
+}
+
+/// Substitui o antigo título fixo "RODADA ATUAL" — agora mostra o rótulo
+/// real da rodada (ex.: "Rodada 25") e deixa navegar pras rodadas
+/// anteriores/seguintes, sempre relativo à rodada atual (ver
+/// `GamesCubit.previousRound`/`nextRound`).
+class _RoundNavigationHeader extends StatelessWidget {
+  const _RoundNavigationHeader({required this.state});
+
+  final GamesState state;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final cubit = context.read<GamesCubit>();
+    return Row(
+      children: [
+        _RoundArrowButton(
+          icon: Icons.chevron_left_rounded,
+          onTap: state.hasPreviousRound ? cubit.previousRound : null,
+        ),
+        Expanded(
+          child: Text(
+            (state.roundLabel ?? 'Rodada atual').toUpperCase(),
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.2,
+              color: colors.textPrimary,
+            ),
+          ),
+        ),
+        _RoundArrowButton(
+          icon: Icons.chevron_right_rounded,
+          onTap: state.hasNextRound ? cubit.nextRound : null,
+        ),
+      ],
+    );
+  }
+}
+
+class _RoundArrowButton extends StatelessWidget {
+  const _RoundArrowButton({required this.icon, required this.onTap});
+
+  final IconData icon;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return IconButton(
+      onPressed: onTap,
+      icon: Icon(icon),
+      color: colors.textPrimary,
+      disabledColor: colors.textHint.withValues(alpha: 0.3),
+      style: IconButton.styleFrom(
+        minimumSize: const Size(32, 32),
+        padding: EdgeInsets.zero,
+      ),
     );
   }
 }

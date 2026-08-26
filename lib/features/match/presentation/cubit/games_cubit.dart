@@ -18,18 +18,27 @@ class GamesCubit extends Cubit<GamesState> {
 
   final FootballRepository _footballRepository;
 
-  Future<void> loadCurrentRound() async {
+  /// [offset] relativo à rodada atual (0) — negativo pra rodadas
+  /// anteriores. Sempre reseta pra 0 quando chamado sem argumento (recarga
+  /// normal/pull-to-refresh); só `previousRound()`/`nextRound()` passam um
+  /// offset explícito, preservando o que já estava sendo mostrado.
+  Future<void> loadCurrentRound({int offset = 0}) async {
     emit(state.copyWith(currentRoundStatus: LoadStatus.loading));
-    final result = await _footballRepository.getCurrentRound();
+    final result = await _footballRepository.getCurrentRound(offset: offset);
     switch (result) {
       case Success(:final data):
-        final matches = MatchOrdering.chronological(data);
+        final matches = MatchOrdering.chronological(data.matches);
         emit(
           state.copyWith(
             currentRoundStatus: matches.isEmpty
                 ? LoadStatus.empty
                 : LoadStatus.success,
             currentRoundMatches: matches,
+            roundOffset: offset,
+            roundLabel: data.roundLabel,
+            clearRoundLabel: data.roundLabel == null,
+            hasPreviousRound: data.hasPrevious,
+            hasNextRound: data.hasNext,
           ),
         );
       case Error(:final failure):
@@ -40,6 +49,16 @@ class GamesCubit extends Cubit<GamesState> {
           ),
         );
     }
+  }
+
+  Future<void> previousRound() async {
+    if (!state.hasPreviousRound) return;
+    await loadCurrentRound(offset: state.roundOffset - 1);
+  }
+
+  Future<void> nextRound() async {
+    if (!state.hasNextRound) return;
+    await loadCurrentRound(offset: state.roundOffset + 1);
   }
 
   Future<void> loadSnapshot() async {

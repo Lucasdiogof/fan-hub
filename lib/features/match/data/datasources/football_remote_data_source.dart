@@ -28,12 +28,22 @@ class FootballRemoteDataSource {
     );
   }
 
-  Future<({CompetitionDto competition, List<MatchDto> matches})>
-  getCurrentRound() async {
+  Future<
+    ({
+      CompetitionDto competition,
+      List<MatchDto> matches,
+      String? roundLabel,
+      bool hasPrevious,
+      bool hasNext,
+    })
+  >
+  getCurrentRound({int offset = 0}) async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/football/current-round',
+      queryParameters: offset == 0 ? null : {'offset': offset},
     );
     final data = response.data!;
+    final round = data['round'] as Map<String, dynamic>?;
     return (
       competition: CompetitionDto.fromJson(
         data['competition'] as Map<String, dynamic>,
@@ -41,6 +51,9 @@ class FootballRemoteDataSource {
       matches: (data['matches'] as List)
           .map((m) => MatchDto.fromJson(m as Map<String, dynamic>))
           .toList(),
+      roundLabel: round?['label'] as String?,
+      hasPrevious: data['hasPrevious'] as bool? ?? false,
+      hasNext: data['hasNext'] as bool? ?? false,
     );
   }
 

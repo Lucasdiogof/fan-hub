@@ -16,8 +16,21 @@ import 'package:goias_app/features/match/domain/entities/standing.dart';
 abstract interface class FootballRepository {
   Future<Result<List<Standing>>> getStandings();
 
-  /// Todos os jogos da rodada atual do campeonato (não só do Goiás).
-  Future<Result<List<Match>>> getCurrentRound();
+  /// Todos os jogos de uma rodada do campeonato (não só do Goiás).
+  /// [offset] é relativo à rodada atual (0) — negativo pra rodadas
+  /// anteriores, positivo pras seguintes (deve ser raro/inexistente, já
+  /// que o campeonato só define os confrontos rodada a rodada).
+  Future<
+    Result<
+      ({
+        List<Match> matches,
+        String? roundLabel,
+        bool hasPrevious,
+        bool hasNext,
+      })
+    >
+  >
+  getCurrentRound({int offset = 0});
 
   /// Próximo jogo do Goiás (se houver dado confiável) + últimos resultados.
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>

@@ -26,13 +26,28 @@ class FootballRepositoryImpl implements FootballRepository {
   }
 
   @override
-  Future<Result<List<Match>>> getCurrentRound() async {
+  Future<
+    Result<
+      ({
+        List<Match> matches,
+        String? roundLabel,
+        bool hasPrevious,
+        bool hasNext,
+      })
+    >
+  >
+  getCurrentRound({int offset = 0}) async {
     try {
-      final result = await _remote.getCurrentRound();
+      final result = await _remote.getCurrentRound(offset: offset);
       final matches = result.matches
           .map((dto) => dto.toEntity(competitionName: result.competition.name))
           .toList();
-      return Success(matches);
+      return Success((
+        matches: matches,
+        roundLabel: result.roundLabel,
+        hasPrevious: result.hasPrevious,
+        hasNext: result.hasNext,
+      ));
     } on DioException catch (e) {
       return Error(_mapDioError(e));
     } catch (_) {
