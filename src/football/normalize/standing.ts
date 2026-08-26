@@ -1,4 +1,5 @@
 import type { OneFootballStandingRow } from '../providers/onefootball_provider';
+import { normalizeTeamName } from './team_name';
 
 /** `1863` embutido em `.../pt-br/time/goias-1863` — mesma ideia do id de
  * time extraído do escudo nas partidas, só que aqui vem do path do time. */
@@ -26,7 +27,7 @@ export function normalizeStandingEntry(entry: OneFootballStandingRow, goiasId: n
     position: entry.position,
     team: {
       id: teamId,
-      name: entry.teamName,
+      name: normalizeTeamName(entry.teamName),
       shortName: null,
       logo: entry.imageObject.path,
     },

@@ -1,4 +1,5 @@
 import { mapOneFootballStatus } from './onefootball_status_mapper';
+import { normalizeTeamName } from './team_name';
 import type { OneFootballMatchCard, OneFootballMatchScore } from '../providers/onefootball_provider';
 
 /**
@@ -50,13 +51,13 @@ export function normalizeOneFootballMatchCard(card: OneFootballMatchCard, venue:
     round: null,
     homeTeam: {
       id: extractTeamIdFromCrest(card.homeTeam.imageObject.path),
-      name: card.homeTeam.name,
+      name: normalizeTeamName(card.homeTeam.name),
       shortName: null,
       logo: card.homeTeam.imageObject.path,
     },
     awayTeam: {
       id: extractTeamIdFromCrest(card.awayTeam.imageObject.path),
-      name: card.awayTeam.name,
+      name: normalizeTeamName(card.awayTeam.name),
       shortName: null,
       logo: card.awayTeam.imageObject.path,
     },
@@ -78,13 +79,13 @@ export function normalizeOneFootballMatchScore(
     round: null,
     homeTeam: {
       id: extractTeamIdFromCrest(score.homeTeam.imageObject.path),
-      name: score.homeTeam.name,
+      name: normalizeTeamName(score.homeTeam.name),
       shortName: null,
       logo: score.homeTeam.imageObject.path,
     },
     awayTeam: {
       id: extractTeamIdFromCrest(score.awayTeam.imageObject.path),
-      name: score.awayTeam.name,
+      name: normalizeTeamName(score.awayTeam.name),
       shortName: null,
       logo: score.awayTeam.imageObject.path,
     },
