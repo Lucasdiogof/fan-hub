@@ -33,7 +33,7 @@ class MemberNextMatchCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'PRÓXIMO JOGO',
+            context.l10n.homeNextMatch,
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w800,
@@ -80,7 +80,7 @@ class MemberNextMatchCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.sm),
           Text(
-            'Seu plano permite acesso a esta partida.',
+            context.l10n.membershipMatchAccessNotice,
             style: TextStyle(
               fontSize: 12.5,
               fontWeight: FontWeight.w600,

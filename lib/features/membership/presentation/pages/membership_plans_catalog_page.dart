@@ -107,7 +107,7 @@ class _PlanRow extends StatelessWidget {
                   ),
                   if (sector != null)
                     Text(
-                      'Setor $sector',
+                      context.l10n.membershipSector(sector!),
                       style: TextStyle(
                         fontSize: 12,
                         color: colors.textSecondary,

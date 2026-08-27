@@ -3058,6 +3058,66 @@ abstract class AppLocalizations {
   /// **'Não foi possível carregar seus dados. Tente novamente.'**
   String get ticketsLoadUserDataError;
 
+  /// No description provided for @ticketPdfFieldVenue.
+  ///
+  /// In pt, this message translates to:
+  /// **'Local'**
+  String get ticketPdfFieldVenue;
+
+  /// No description provided for @ticketPdfFieldGate.
+  ///
+  /// In pt, this message translates to:
+  /// **'Portão'**
+  String get ticketPdfFieldGate;
+
+  /// No description provided for @ticketPdfFieldCategory.
+  ///
+  /// In pt, this message translates to:
+  /// **'Categoria'**
+  String get ticketPdfFieldCategory;
+
+  /// No description provided for @ticketPdfFieldDocument.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF/Passaporte'**
+  String get ticketPdfFieldDocument;
+
+  /// No description provided for @ticketPdfFieldOrigin.
+  ///
+  /// In pt, this message translates to:
+  /// **'Origem'**
+  String get ticketPdfFieldOrigin;
+
+  /// No description provided for @ticketPdfFieldAmount.
+  ///
+  /// In pt, this message translates to:
+  /// **'Valor'**
+  String get ticketPdfFieldAmount;
+
+  /// No description provided for @ticketPdfFieldCode.
+  ///
+  /// In pt, this message translates to:
+  /// **'Código'**
+  String get ticketPdfFieldCode;
+
+  /// No description provided for @ticketPdfAntiScalpingTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'NÃO COMPRE\nDE CAMBISTAS!'**
+  String get ticketPdfAntiScalpingTitle;
+
+  /// No description provided for @ticketPdfAntiScalpingSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'O ingresso pode ser falso.'**
+  String get ticketPdfAntiScalpingSubtitle;
+
+  /// No description provided for @ticketPdfFooterNotice.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.'**
+  String get ticketPdfFooterNotice;
+
   /// No description provided for @penaltyFinalResult.
   ///
   /// In pt, this message translates to:
@@ -3945,6 +4005,42 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Regulamento do Sócio Esmeralda'**
   String get membershipRegulationName;
+
+  /// No description provided for @membershipMatchAccessNotice.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu plano permite acesso a esta partida.'**
+  String get membershipMatchAccessNotice;
+
+  /// No description provided for @membershipCardNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nº {number}'**
+  String membershipCardNumber(String number);
+
+  /// No description provided for @membershipRegulationPageTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'REGULAMENTO'**
+  String get membershipRegulationPageTitle;
+
+  /// No description provided for @membershipProgramName.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sócio Esmeralda'**
+  String get membershipProgramName;
+
+  /// No description provided for @membershipRegulationEffectiveSince.
+  ///
+  /// In pt, this message translates to:
+  /// **'Em vigor desde {date}'**
+  String membershipRegulationEffectiveSince(String date);
+
+  /// No description provided for @membershipRegulationTableOfContents.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONTEÚDO'**
+  String get membershipRegulationTableOfContents;
 
   /// No description provided for @membershipCancelWhatsapp.
   ///

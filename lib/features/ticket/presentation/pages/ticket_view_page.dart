@@ -51,7 +51,7 @@ class TicketViewPage extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             Expanded(
               child: PdfPreview(
-                build: (format) => buildTicketPdf(ticket),
+                build: (format) => buildTicketPdf(ticket, context.l10n),
                 useActions: false,
                 canChangePageFormat: false,
                 canChangeOrientation: false,
@@ -65,7 +65,7 @@ class TicketViewPage extends StatelessWidget {
                 width: double.infinity,
                 height: 54,
                 child: FilledButton.icon(
-                  onPressed: () => shareTicketPdf(ticket),
+                  onPressed: () => shareTicketPdf(ticket, context.l10n),
                   icon: const Icon(Icons.ios_share_rounded, size: 19),
                   label: Text(
                     context.l10n.ticketsSaveTicketButton,

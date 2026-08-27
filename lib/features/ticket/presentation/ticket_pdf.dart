@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/masks.dart';
@@ -15,8 +16,8 @@ import 'package:printing/printing.dart';
 /// nativo, mesmo padrão já usado pra imagem da escalação
 /// (`shareFieldImage`), só que aqui via `printing` (que já embute o próprio
 /// fluxo de compartilhar/salvar bytes de PDF).
-Future<void> shareTicketPdf(Ticket ticket) async {
-  final bytes = await buildTicketPdf(ticket);
+Future<void> shareTicketPdf(Ticket ticket, AppLocalizations l10n) async {
+  final bytes = await buildTicketPdf(ticket, l10n);
   await Printing.sharePdf(bytes: bytes, filename: 'ingresso-${ticket.id}.pdf');
 }
 
@@ -31,7 +32,7 @@ const _cardBg = PdfColor.fromInt(0xFFF2F3F5);
 /// real do Goiás (cabeçalho com escudo, faixa da competição, card de
 /// dados, aviso antifraude ao lado do QR) — a integração futura com a API
 /// de ingressos preenche os mesmos campos com dados reais.
-Future<Uint8List> buildTicketPdf(Ticket ticket) async {
+Future<Uint8List> buildTicketPdf(Ticket ticket, AppLocalizations l10n) async {
   final doc = pw.Document();
   final crestSvg = await rootBundle.loadString('lib/assets/branding/logo.svg');
   final maskedDocument = ticket.holderDocument.contains(RegExp(r'^\d{11}$'))
@@ -127,35 +128,46 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
                   child: pw.Column(
                     crossAxisAlignment: pw.CrossAxisAlignment.start,
                     children: [
-                      _field('Local', ticket.stadium),
+                      _field(l10n.ticketPdfFieldVenue, ticket.stadium),
                       _field(
-                        'Data',
+                        l10n.matchFieldDate,
                         kickoff != null
                             ? '${fullDateLabel(kickoff)} ${timeLabel(kickoff)}'
-                            : 'A confirmar',
+                            : l10n.matchToBeConfirmed,
                       ),
                       pw.Row(
                         children: [
                           pw.Expanded(
-                            child: _field('Setor', ticket.sectorName),
+                            child: _field(
+                              l10n.membershipSectorLabel,
+                              ticket.sectorName,
+                            ),
                           ),
-                          pw.Expanded(child: _field('Portão', ticket.gate)),
+                          pw.Expanded(
+                            child: _field(l10n.ticketPdfFieldGate, ticket.gate),
+                          ),
                         ],
                       ),
                       if (ticket.categoryLabel != null)
-                        _field('Categoria', ticket.categoryLabel!),
-                      _field('Titular', ticket.holderName),
+                        _field(
+                          l10n.ticketPdfFieldCategory,
+                          ticket.categoryLabel!,
+                        ),
+                      _field(l10n.membershipHolder, ticket.holderName),
                       pw.Row(
                         children: [
                           pw.Expanded(
-                            child: _field('CPF/Passaporte', maskedDocument),
+                            child: _field(
+                              l10n.ticketPdfFieldDocument,
+                              maskedDocument,
+                            ),
                           ),
                           pw.Expanded(
                             child: _field(
-                              'Origem',
+                              l10n.ticketPdfFieldOrigin,
                               ticket.origin == TicketOrigin.membershipCheckIn
-                                  ? 'Check-in Sócio'
-                                  : 'Compra',
+                                  ? l10n.ticketsOriginCheckIn
+                                  : l10n.ticketsOriginPurchase,
                             ),
                           ),
                         ],
@@ -164,13 +176,13 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
                         children: [
                           pw.Expanded(
                             child: _field(
-                              'Valor',
-                              ticket.price != null
-                                  ? formatBrl(ticket.price!)
-                                  : 'R\$ 0,00',
+                              l10n.ticketPdfFieldAmount,
+                              formatBrl(ticket.price ?? 0),
                             ),
                           ),
-                          pw.Expanded(child: _field('Código', ticket.id)),
+                          pw.Expanded(
+                            child: _field(l10n.ticketPdfFieldCode, ticket.id),
+                          ),
                         ],
                       ),
                     ],
@@ -192,7 +204,7 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
                           mainAxisAlignment: pw.MainAxisAlignment.center,
                           children: [
                             pw.Text(
-                              'NÃO COMPRE\nDE CAMBISTAS!',
+                              l10n.ticketPdfAntiScalpingTitle,
                               style: const pw.TextStyle(
                                 color: PdfColors.white,
                                 fontSize: 11,
@@ -202,7 +214,7 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
                             ),
                             pw.SizedBox(height: 4),
                             pw.Text(
-                              'O ingresso pode ser falso.',
+                              l10n.ticketPdfAntiScalpingSubtitle,
                               style: const pw.TextStyle(
                                 color: PdfColor(1, 1, 1, 0.85),
                                 fontSize: 8,
@@ -234,7 +246,7 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
                 ),
                 pw.SizedBox(height: 16),
                 pw.Text(
-                  'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.',
+                  l10n.ticketPdfFooterNotice,
                   style: const pw.TextStyle(
                     fontSize: 7.5,
                     color: _grey,

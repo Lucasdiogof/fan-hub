@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -128,7 +129,7 @@ class DigitalMembershipCard extends StatelessWidget {
               if (memberNumber != null) ...[
                 const SizedBox(height: AppSpacing.lg),
                 Text(
-                  'Nº $memberNumber',
+                  context.l10n.membershipCardNumber(memberNumber!),
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 0.65),
                     fontSize: 12,

@@ -1667,6 +1667,37 @@ class AppLocalizationsPt extends AppLocalizations {
       'Não foi possível carregar seus dados. Tente novamente.';
 
   @override
+  String get ticketPdfFieldVenue => 'Local';
+
+  @override
+  String get ticketPdfFieldGate => 'Portão';
+
+  @override
+  String get ticketPdfFieldCategory => 'Categoria';
+
+  @override
+  String get ticketPdfFieldDocument => 'CPF/Passaporte';
+
+  @override
+  String get ticketPdfFieldOrigin => 'Origem';
+
+  @override
+  String get ticketPdfFieldAmount => 'Valor';
+
+  @override
+  String get ticketPdfFieldCode => 'Código';
+
+  @override
+  String get ticketPdfAntiScalpingTitle => 'NÃO COMPRE\nDE CAMBISTAS!';
+
+  @override
+  String get ticketPdfAntiScalpingSubtitle => 'O ingresso pode ser falso.';
+
+  @override
+  String get ticketPdfFooterNotice =>
+      'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.';
+
+  @override
   String get penaltyFinalResult => 'RESULTADO FINAL';
 
   @override
@@ -2166,6 +2197,29 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get membershipRegulationName => 'Regulamento do Sócio Esmeralda';
+
+  @override
+  String get membershipMatchAccessNotice =>
+      'Seu plano permite acesso a esta partida.';
+
+  @override
+  String membershipCardNumber(String number) {
+    return 'Nº $number';
+  }
+
+  @override
+  String get membershipRegulationPageTitle => 'REGULAMENTO';
+
+  @override
+  String get membershipProgramName => 'Sócio Esmeralda';
+
+  @override
+  String membershipRegulationEffectiveSince(String date) {
+    return 'Em vigor desde $date';
+  }
+
+  @override
+  String get membershipRegulationTableOfContents => 'CONTEÚDO';
 
   @override
   String membershipCancelWhatsapp(String plan) {

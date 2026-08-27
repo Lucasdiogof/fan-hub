@@ -1660,6 +1660,37 @@ class AppLocalizationsEn extends AppLocalizations {
       'Couldn\'t load your data. Please try again.';
 
   @override
+  String get ticketPdfFieldVenue => 'Venue';
+
+  @override
+  String get ticketPdfFieldGate => 'Gate';
+
+  @override
+  String get ticketPdfFieldCategory => 'Category';
+
+  @override
+  String get ticketPdfFieldDocument => 'ID/Passport';
+
+  @override
+  String get ticketPdfFieldOrigin => 'Origin';
+
+  @override
+  String get ticketPdfFieldAmount => 'Amount';
+
+  @override
+  String get ticketPdfFieldCode => 'Code';
+
+  @override
+  String get ticketPdfAntiScalpingTitle => 'DON\'T BUY\nFROM SCALPERS!';
+
+  @override
+  String get ticketPdfAntiScalpingSubtitle => 'This ticket may be fake.';
+
+  @override
+  String get ticketPdfFooterNotice =>
+      'This ticket is personal and non-transferable. Photo ID is required for entry. Only Goiás or Brazilian national team jerseys are allowed.';
+
+  @override
   String get penaltyFinalResult => 'FINAL RESULT';
 
   @override
@@ -2159,6 +2190,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get membershipRegulationName => 'Sócio Esmeralda Regulation';
+
+  @override
+  String get membershipMatchAccessNotice =>
+      'Your plan gives you access to this match.';
+
+  @override
+  String membershipCardNumber(String number) {
+    return 'No. $number';
+  }
+
+  @override
+  String get membershipRegulationPageTitle => 'REGULATIONS';
+
+  @override
+  String get membershipProgramName => 'Sócio Esmeralda';
+
+  @override
+  String membershipRegulationEffectiveSince(String date) {
+    return 'In effect since $date';
+  }
+
+  @override
+  String get membershipRegulationTableOfContents => 'CONTENTS';
 
   @override
   String membershipCancelWhatsapp(String plan) {

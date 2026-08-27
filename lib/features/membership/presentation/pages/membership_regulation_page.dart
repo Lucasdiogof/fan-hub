@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_regulation_repository.dart';
@@ -69,7 +70,7 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   Text(
-                    'REGULAMENTO',
+                    context.l10n.membershipRegulationPageTitle,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w900,
@@ -78,7 +79,7 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                     ),
                   ),
                   Text(
-                    'Sócio Esmeralda',
+                    context.l10n.membershipProgramName,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -95,7 +96,9 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                       ),
                       const SizedBox(width: 6),
                       Text(
-                        'Em vigor desde ${_formatDate(RegulationCatalog.current.effectiveAt)}',
+                        context.l10n.membershipRegulationEffectiveSince(
+                          _formatDate(RegulationCatalog.current.effectiveAt),
+                        ),
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
@@ -193,7 +196,7 @@ class _RegulationIndex extends StatelessWidget {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'CONTEÚDO',
+                context.l10n.membershipRegulationTableOfContents,
                 style: TextStyle(
                   fontSize: 11,
                   fontWeight: FontWeight.w800,
