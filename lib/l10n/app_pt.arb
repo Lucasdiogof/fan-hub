@@ -263,7 +263,7 @@
   "arenaRankingHowScoredSelf": "Como você pontuou",
   "arenaRankingHowScoredOther": "Como {name} pontuou",
   "@arenaRankingHowScoredOther": { "placeholders": { "name": { "type": "String" } } },
-  "arenaRankingGamePointsShare": "{score} pts • {percent}%",
+  "arenaRankingGamePointsShare": "{score} pts • {percent}% do total",
   "@arenaRankingGamePointsShare": { "placeholders": { "score": { "type": "int" }, "percent": { "type": "int" } } },
   "arenaRankingNoPointsTitle": "Nenhum ponto neste período",
   "arenaRankingNoPointsOther": "Este torcedor ainda não pontuou nos jogos durante o período selecionado.",

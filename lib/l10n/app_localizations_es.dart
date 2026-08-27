@@ -670,7 +670,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String arenaRankingGamePointsShare(int score, int percent) {
-    return '$score pts • $percent%';
+    return '$score pts • $percent% del total';
   }
 
   @override

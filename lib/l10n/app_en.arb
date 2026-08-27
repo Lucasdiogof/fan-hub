@@ -244,7 +244,7 @@
   "arenaRankingByGame": "Points by game",
   "arenaRankingHowScoredSelf": "How you scored",
   "arenaRankingHowScoredOther": "How {name} scored",
-  "arenaRankingGamePointsShare": "{score} pts • {percent}%",
+  "arenaRankingGamePointsShare": "{score} pts • {percent}% of total",
   "arenaRankingNoPointsTitle": "No points this period",
   "arenaRankingNoPointsOther": "This supporter hasn't scored in the games during the selected period yet.",
   "arenaRankingNoPointsSelf": "You haven't scored in the games during the selected period yet.",

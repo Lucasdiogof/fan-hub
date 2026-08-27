@@ -1363,7 +1363,7 @@ abstract class AppLocalizations {
   /// No description provided for @arenaRankingGamePointsShare.
   ///
   /// In pt, this message translates to:
-  /// **'{score} pts • {percent}%'**
+  /// **'{score} pts • {percent}% do total'**
   String arenaRankingGamePointsShare(int score, int percent);
 
   /// No description provided for @arenaRankingNoPointsTitle.

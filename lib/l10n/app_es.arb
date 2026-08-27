@@ -244,7 +244,7 @@
   "arenaRankingByGame": "Puntos por juego",
   "arenaRankingHowScoredSelf": "Cómo puntuaste",
   "arenaRankingHowScoredOther": "Cómo puntuó {name}",
-  "arenaRankingGamePointsShare": "{score} pts • {percent}%",
+  "arenaRankingGamePointsShare": "{score} pts • {percent}% del total",
   "arenaRankingNoPointsTitle": "Sin puntos en este período",
   "arenaRankingNoPointsOther": "Este hincha aún no ha puntuado en los juegos durante el período seleccionado.",
   "arenaRankingNoPointsSelf": "Aún no has puntuado en los juegos durante el período seleccionado.",
