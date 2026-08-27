@@ -5,6 +5,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/data/club_songs_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
+import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 
@@ -54,14 +55,14 @@ class ClubSongsPage extends StatelessWidget {
                   AppSpacing.xxxl,
                 ),
                 children: [
-                  _SectionLabel(context.l10n.clubAnthemSection),
+                  ClubSectionLabel(context.l10n.clubAnthemSection),
                   const SizedBox(height: AppSpacing.sm),
                   for (var i = 0; i < anthems.length; i++) ...[
                     if (i > 0) const SizedBox(height: AppSpacing.sm),
                     _SongCard(song: anthems[i]),
                   ],
                   const SizedBox(height: AppSpacing.xl),
-                  _SectionLabel(context.l10n.clubSongsSection),
+                  ClubSectionLabel(context.l10n.clubSongsSection),
                   const SizedBox(height: AppSpacing.sm),
                   for (var i = 0; i < songs.length; i++) ...[
                     if (i > 0) const SizedBox(height: AppSpacing.sm),
@@ -72,25 +73,6 @@ class ClubSongsPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _SectionLabel extends StatelessWidget {
-  const _SectionLabel(this.text);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 1.2,
-        color: context.colors.textSecondary,
       ),
     );
   }

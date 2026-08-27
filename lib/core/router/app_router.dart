@@ -31,7 +31,6 @@ import 'package:goias_app/features/club/presentation/pages/club_history_page.dar
 import 'package:goias_app/features/club/presentation/pages/club_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_song_details_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_songs_page.dart';
-import 'package:goias_app/features/club/presentation/pages/club_timeline_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_titles_page.dart';
 import 'package:goias_app/features/home/presentation/pages/home_shell_page.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
@@ -315,10 +314,6 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       GoRoute(
         path: '/clube/historia',
         builder: (context, state) => const ClubHistoryPage(),
-      ),
-      GoRoute(
-        path: '/clube/linha-do-tempo',
-        builder: (context, state) => const ClubTimelinePage(),
       ),
       GoRoute(
         path: '/clube/titulos',

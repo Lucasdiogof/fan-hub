@@ -24,10 +24,6 @@ void main() {
           builder: (context, state) => const Scaffold(body: Text('História')),
         ),
         GoRoute(
-          path: '/clube/linha-do-tempo',
-          builder: (context, state) => const Scaffold(body: Text('Linha')),
-        ),
-        GoRoute(
           path: '/clube/titulos',
           builder: (context, state) => const Scaffold(body: Text('Títulos')),
         ),
@@ -46,9 +42,9 @@ void main() {
     );
   }
 
-  // A página tem 4 cards grandes + uma grade de tiles — não cabe todo no
-  // viewport padrão de teste, e o ListView só materializa o que está visível.
-  // Aumenta a "tela" pra tudo renderizar de uma vez, sem precisar rolar.
+  // A página tem 5 cards grandes — não cabe todo no viewport padrão de
+  // teste, e o ListView só materializa o que está visível. Aumenta a
+  // "tela" pra tudo renderizar de uma vez, sem precisar rolar.
   void useTallSurface(WidgetTester tester) {
     addTearDown(tester.view.reset);
     tester.view.physicalSize = const Size(800, 1600);
@@ -66,8 +62,8 @@ void main() {
     expect(find.text('Elenco'), findsOneWidget);
     expect(find.text('Títulos'), findsOneWidget);
     expect(find.text('Parceiros'), findsOneWidget);
-    expect(find.text('Linha do Tempo'), findsOneWidget);
     expect(find.text('Hino & Músicas'), findsOneWidget);
+    expect(find.text('Linha do Tempo'), findsNothing);
     // Sem conteúdo real ainda — não devem ter entrada nenhuma na tela.
     expect(find.text('Ídolos'), findsNothing);
     expect(find.text('Símbolos'), findsNothing);

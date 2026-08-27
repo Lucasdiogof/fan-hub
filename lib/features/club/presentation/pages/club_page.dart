@@ -85,26 +85,12 @@ class ClubPage extends StatelessWidget {
                         subtitle: context.l10n.clubPartnersSubtitle,
                         onTap: () => context.push('/partners'),
                       ),
-                      const SizedBox(height: AppSpacing.xl),
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: AppSpacing.md,
-                        crossAxisSpacing: AppSpacing.md,
-                        childAspectRatio: 1.5,
-                        children: [
-                          _ClubTile(
-                            icon: Icons.timeline_outlined,
-                            label: context.l10n.clubSectionTimeline,
-                            onTap: () => context.push('/clube/linha-do-tempo'),
-                          ),
-                          _ClubTile(
-                            icon: Icons.music_note_outlined,
-                            label: context.l10n.clubSectionSongs,
-                            onTap: () => context.push('/clube/hino'),
-                          ),
-                        ],
+                      const SizedBox(height: AppSpacing.md),
+                      _ClubBigCard(
+                        icon: Icons.music_note_outlined,
+                        title: context.l10n.clubSectionSongs,
+                        subtitle: context.l10n.clubSongsSubtitle,
+                        onTap: () => context.push('/clube/hino'),
                       ),
                     ],
                   ),
@@ -186,54 +172,6 @@ class _ClubBigCard extends StatelessWidget {
                 Icons.chevron_right_rounded,
                 size: 22,
                 color: colors.textHint,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _ClubTile extends StatelessWidget {
-  const _ClubTile({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Material(
-      color: colors.surface,
-      borderRadius: BorderRadius.circular(AppRadius.card),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppRadius.card),
-        child: Container(
-          padding: const EdgeInsets.all(AppSpacing.md),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppRadius.card),
-            border: Border.all(color: colors.border),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(icon, size: 26, color: colors.primary),
-              const SizedBox(height: AppSpacing.sm),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w700,
-                  color: colors.textPrimary,
-                ),
               ),
             ],
           ),
