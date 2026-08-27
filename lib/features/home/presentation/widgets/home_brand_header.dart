@@ -31,25 +31,10 @@ class HomeBrandHeader extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
       child: Row(
         children: [
-          Container(
-            width: 48,
-            height: 48,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: colors.secondary,
-              shape: BoxShape.circle,
-            ),
-            // `colors.secondary` vira um chip escuro no tema dark — sem
-            // `onDark`, o brasão tingido de verde some quase por completo
-            // ali dentro. Diferente do Hero/card de sócio (onDark fixo,
-            // sempre sobre fundo escuro de verdade), aqui o fundo muda de
-            // cor com o tema, então o brasão precisa acompanhar.
-            child: ClubBadge(
-              team: MockData.goias,
-              size: 30,
-              onDark: Theme.of(context).brightness == Brightness.dark,
-            ),
-          ),
+          // O brasão oficial já é auto-contido (aro branco próprio,
+          // contraste em qualquer fundo) — não precisa mais do chip
+          // circular por trás que a versão tingida antiga precisava.
+          const ClubBadge(team: MockData.goias, size: 44),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(

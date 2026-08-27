@@ -13,19 +13,9 @@ class ClubHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
-        Container(
-          width: 84,
-          height: 84,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: colors.secondary,
-            shape: BoxShape.circle,
-          ),
-          child: ClubBadge(team: MockData.goias, size: 52, onDark: isDark),
-        ),
+        const ClubBadge(team: MockData.goias, size: 76),
         const SizedBox(height: AppSpacing.lg),
         Text(
           'GOIÁS ESPORTE CLUBE',

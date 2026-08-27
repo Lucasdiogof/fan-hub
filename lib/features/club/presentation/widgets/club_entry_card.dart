@@ -15,7 +15,6 @@ class ClubEntryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Material(
       color: colors.surface,
       borderRadius: BorderRadius.circular(AppRadius.banner),
@@ -30,20 +29,7 @@ class ClubEntryCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Container(
-                width: 52,
-                height: 52,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: colors.secondary,
-                  shape: BoxShape.circle,
-                ),
-                child: ClubBadge(
-                  team: MockData.goias,
-                  size: 32,
-                  onDark: isDark,
-                ),
-              ),
+              const ClubBadge(team: MockData.goias, size: 48),
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Column(
