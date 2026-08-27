@@ -22,29 +22,35 @@ not_found_handling = "single-page-application"
 # uma correção de bug no Worker só valeria depois do TTL do cache antigo
 # expirar (até 45min), mesmo já deployada.
 [vars]
+
 # Slug do Goiás no OneFootball (path /pt-br/time/<slug>) — usado pro card de
 # Próximo Jogo e pela tela de Jogos. Confirmado navegando o site, não muda
 # entre temporadas (é o id do clube, não do campeonato).
 GOIAS_ONEFOOTBALL_SLUG = "goias-1863"
+
 # Slug da competição no OneFootball (path /pt-br/competicao/<slug>) — ESSE
 # muda a cada temporada/edição. Se a rodada atual ou a classificação
 # pararem de bater, confira se o slug ainda é válido navegando
 # https://onefootball.com/pt-br/competicao/.
 ONEFOOTBALL_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
+
 CACHE_VERSION = "12"
-# Task do Apify (Instagram Post Scraper) — só um id, não é secret. O token
-# (APIFY_TOKEN) fica como SECRET do Worker: `npx wrangler secret put APIFY_TOKEN`.
+
+# Task do Apify (Instagram Post Scraper).
+# O ID da Task não é secret.
+# O APIFY_TOKEN fica como secret do Worker.
 APIFY_INSTAGRAM_TASK_ID = "81AnzgCcTifiDW6VH"
 
-# Instagram: atualizado 3x/dia pelo Cron (00h/08h/16h UTC), que roda o Apify e
-# salva no KV. O feed lido pelo app só lê o KV — nenhum acesso dispara o Apify.
+# Instagram atualizado 3x/dia pelo Cron:
+# 00h / 08h / 16h UTC.
+#
+# O Cron executa o Apify e salva os últimos posts no KV.
+# O Flutter apenas lê os dados já armazenados.
+# Nenhuma abertura do aplicativo dispara o Apify.
 [triggers]
 crons = ["0 */8 * * *"]
 
-# KV persistente do feed social (Instagram). DESCOMENTE e ponha o `id` real
-# (de `npx wrangler kv namespace create SOCIAL_FEED_KV`) pra ATIVAR o
-# Instagram. Enquanto comentado, o deploy passa e o Instagram fica inativo
-# (o provider/sync tratam KV e APIFY_TOKEN ausentes sem quebrar).
-# [[kv_namespaces]]
-# binding = "SOCIAL_FEED_KV"
-# id = "REPLACE_WITH_KV_NAMESPACE_ID"
+# KV persistente do feed social / Instagram.
+[[kv_namespaces]]
+binding = "SOCIAL_FEED_KV"
+id = "ef4444f9b6eb46df882659dcb9b41703"
