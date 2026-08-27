@@ -23,6 +23,14 @@ const _startRadius = 14.0;
 const _revealDuration = Duration(milliseconds: 550);
 const _videoEndTolerance = Duration(milliseconds: 60);
 
+/// O vídeo dura ~5.3s — isto é só a rede de segurança. Cobre autoplay
+/// bloqueado (Safari/iOS), vídeo que inicializa mas nunca avança, erro de
+/// rede/decodificação e qualquer outro jeito do vídeo não terminar sozinho.
+/// Começa a contar no `initState()`, antes de qualquer tentativa de tocar o
+/// vídeo — se `initialize()`/`play()` travar, essa é a única coisa que
+/// garante que o usuário nunca fica preso na splash.
+const _fallbackTimeout = Duration(seconds: 7);
+
 class SplashVideoPage extends StatefulWidget {
   const SplashVideoPage({super.key});
 
@@ -37,6 +45,7 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   late final Animation<double> _revealAnimation;
   late final Future<void> _homePreload;
   bool _finished = false;
+  Timer? _fallbackTimer;
 
   @override
   void initState() {
@@ -51,6 +60,10 @@ class _SplashVideoPageState extends State<SplashVideoPage>
       curve: Curves.easeOutCubic,
     );
     _homePreload = _preloadDestination();
+    // Antes de tentar tocar o vídeo, de propósito — se `_initVideo()` nunca
+    // resolver (autoplay bloqueado, `initialize()` pendurado), a splash
+    // ainda sai sozinha.
+    _fallbackTimer = Timer(_fallbackTimeout, _finishSplash);
     _initVideo();
   }
 
@@ -72,16 +85,20 @@ class _SplashVideoPageState extends State<SplashVideoPage>
     final controller = VideoPlayerController.asset(_videoAsset);
     try {
       await controller.initialize();
+      // Mudo + sem loop ANTES de `play()` — Safari/iOS só libera autoplay
+      // pra vídeo que já nasce mudo, não pra um que silencia depois.
       await controller.setLooping(false);
       await controller.setVolume(0);
       await controller.play();
     } catch (_) {
-      // Falha ao carregar o vídeo (arquivo corrompido, codec não suportado
-      // etc.): não trava o app numa tela branca pra sempre.
-      if (mounted) sl<SplashGate>().complete();
+      // Falha ao carregar/tocar o vídeo (arquivo corrompido, codec não
+      // suportado, autoplay recusado com erro etc.): não trava o app
+      // esperando um vídeo que não vai tocar.
+      await controller.dispose();
+      _finishSplash();
       return;
     }
-    if (!mounted) {
+    if (!mounted || _finished) {
       await controller.dispose();
       return;
     }
@@ -103,14 +120,20 @@ class _SplashVideoPageState extends State<SplashVideoPage>
     }
   }
 
+  /// Ponto único de conclusão da splash — idempotente por causa do guard
+  /// `_finished`, então não importa se quem chamou foi o fim normal do
+  /// vídeo, um erro de inicialização/reprodução ou o timer de segurança
+  /// disparando perto de um desses: só a primeira chamada vale, e o usuário
+  /// nunca fica preso esperando o vídeo.
   void _finishSplash() {
-    if (_finished) return;
+    if (_finished || !mounted) return;
     _finished = true;
+    _fallbackTimer?.cancel();
     _controller?.removeListener(_onVideoTick);
-    // Sem fade interno aqui: o vídeo fica congelado no último frame e a
-    // transição de saída (fade de verdade) é a da própria rota '/splash'
-    // no router — evita mostrar a cor de fundo "pelada" entre o vídeo e
-    // a Home/Login.
+    // Sem fade interno aqui: o vídeo fica congelado no último frame (ou na
+    // cor de fundo, se nem chegou a inicializar) e a transição de saída
+    // (fade de verdade) é a da própria rota '/splash' no router — evita
+    // mostrar a cor de fundo "pelada" entre o vídeo e a Home/Login.
     unawaited(_completeGateAfterPreload());
   }
 
@@ -137,6 +160,7 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _fallbackTimer?.cancel();
     _controller?.removeListener(_onVideoTick);
     _controller?.dispose();
     _revealController.dispose();
