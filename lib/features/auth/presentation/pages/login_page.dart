@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -30,23 +29,6 @@ class _LoginPageState extends State<LoginPage> {
   String? _passwordError;
   String? _formError;
   bool _loading = false;
-
-  /// Mock só pra comparar backgrounds lado a lado — cada toque no olho da
-  /// senha cicla pro próximo (original -> login1 -> login2 -> login3 ->
-  /// login4 -> original...). Nada disso mexe em mostrar/ocultar senha de
-  /// verdade, que continua funcionando normalmente.
-  int _backgroundIndex = 0;
-
-  String get _backgroundAsset => _backgroundIndex == 0
-      ? AppAssets.loginBackground
-      : AppAssets.loginBackgroundMocks[_backgroundIndex - 1];
-
-  void _cycleBackgroundMock() {
-    setState(() {
-      _backgroundIndex =
-          (_backgroundIndex + 1) % (AppAssets.loginBackgroundMocks.length + 1);
-    });
-  }
 
   @override
   void dispose() {
@@ -84,24 +66,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     return Scaffold(
       body: Stack(
         children: [
           Positioned.fill(
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 220),
-              // `AnimatedSwitcher` empilha os filhos numa Stack interna que
-              // dá constraints soltas (não força tamanho) — sem o
-              // `SizedBox.expand` aqui, a imagem ficava do tamanho
-              // intrínseco dela, sobrando cinza em cima/embaixo mesmo com
-              // `BoxFit.cover`, porque nunca existia uma "caixa" cheia pra
-              // cobrir.
-              child: SizedBox.expand(
-                key: ValueKey(_backgroundAsset),
-                child: Image.asset(_backgroundAsset, fit: BoxFit.cover),
-              ),
-            ),
+            child: Image.asset(AppAssets.loginBackground, fit: BoxFit.cover),
           ),
           SafeArea(
             child: LayoutBuilder(
@@ -115,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                         vertical: AppSpacing.xxl,
                       ),
                       child: Align(
-                        alignment: const Alignment(0, -0.28),
+                        alignment: const Alignment(0, 0.7),
                         child: ConstrainedBox(
                           constraints: const BoxConstraints(maxWidth: 440),
                           child: Column(
@@ -142,28 +111,19 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildForm(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
+    const labelStyle = TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w800,
+      color: Colors.white,
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          alignment: Alignment.centerLeft,
-          child: Text(
-            l10n.authTagline,
-            maxLines: 1,
-            softWrap: false,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: colors.primary,
-            ),
-          ),
-        ),
-        const SizedBox(height: AppSpacing.xl),
         AuthErrorBanner(message: _formError),
         AuthTextField(
           controller: _emailController,
           label: l10n.commonEmailLabel,
+          labelStyle: labelStyle,
           icon: Icons.mail_outline_rounded,
           hintText: l10n.commonEmailHint,
           keyboardType: TextInputType.emailAddress,
@@ -180,6 +140,7 @@ class _LoginPageState extends State<LoginPage> {
           controller: _passwordController,
           focusNode: _passwordFocus,
           label: l10n.commonPasswordLabel,
+          labelStyle: labelStyle,
           icon: Icons.lock_outline_rounded,
           hintText: '••••••••',
           obscurable: true,
@@ -190,7 +151,6 @@ class _LoginPageState extends State<LoginPage> {
             if (_passwordError != null) setState(() => _passwordError = null);
           },
           onSubmitted: (_) => _submit(),
-          onVisibilityToggle: _cycleBackgroundMock,
         ),
         const SizedBox(height: AppSpacing.sm),
         Align(
@@ -198,12 +158,12 @@ class _LoginPageState extends State<LoginPage> {
           child: TextButton(
             onPressed: () => ForgotPasswordSheet.show(context),
             style: TextButton.styleFrom(
-              foregroundColor: colors.primary,
+              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
               minimumSize: Size.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            child: Text(l10n.authForgotPassword, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+            child: Text(l10n.authForgotPassword, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
           ),
         ),
         const SizedBox(height: AppSpacing.lg),
@@ -212,18 +172,34 @@ class _LoginPageState extends State<LoginPage> {
           loading: _loading,
           loadingLabel: l10n.authSigningIn,
           onPressed: _submit,
+          color: colors.darkGreen,
+          borderColor: Colors.white,
         ),
         const SizedBox(height: AppSpacing.xl),
         Center(
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              Text(l10n.authNoAccountQuestion, style: TextStyle(fontSize: 13, color: colors.textSecondary)),
+              Text(
+                l10n.authNoAccountQuestion,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(width: 4),
               GestureDetector(
                 onTap: () => context.push('/register'),
                 child: Text(
                   l10n.authCreateAccount,
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.primary),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Colors.white,
+                  ),
                 ),
               ),
             ],

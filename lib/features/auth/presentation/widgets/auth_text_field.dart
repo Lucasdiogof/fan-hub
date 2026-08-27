@@ -9,6 +9,8 @@ class AuthTextField extends StatefulWidget {
     required this.controller,
     required this.label,
     required this.icon,
+    this.labelStyle,
+    this.fillColor,
     this.hintText,
     this.obscurable = false,
     this.keyboardType,
@@ -18,13 +20,14 @@ class AuthTextField extends StatefulWidget {
     this.focusNode,
     this.onChanged,
     this.onSubmitted,
-    this.onVisibilityToggle,
     super.key,
   });
 
   final TextEditingController controller;
   final String label;
   final IconData icon;
+  final TextStyle? labelStyle;
+  final Color? fillColor;
   final String? hintText;
   final bool obscurable;
   final TextInputType? keyboardType;
@@ -34,11 +37,6 @@ class AuthTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onSubmitted;
-
-  /// Opcional — disparado toda vez que o olho é tocado, além do
-  /// mostrar/ocultar senha normal (que continua acontecendo sempre). Hoje
-  /// só a `LoginPage` usa isso, pra ciclar os backgrounds de mock.
-  final VoidCallback? onVisibilityToggle;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -83,13 +81,15 @@ class _AuthTextFieldState extends State<AuthTextField> {
       children: [
         Text(
           widget.label,
-          style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textSecondary),
+          style:
+              widget.labelStyle ??
+              TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textSecondary),
         ),
         const SizedBox(height: AppSpacing.sm),
         AnimatedContainer(
           duration: const Duration(milliseconds: 160),
           decoration: BoxDecoration(
-            color: colors.surface,
+            color: widget.fillColor ?? colors.surface,
             borderRadius: BorderRadius.circular(AppRadius.button),
             border: Border.all(color: borderColor, width: _focused || hasError ? 1.5 : 1),
           ),
@@ -127,10 +127,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                 _EyeButton(
                   obscured: _obscured,
                   color: colors.textHint,
-                  onTap: () {
-                    setState(() => _obscured = !_obscured);
-                    widget.onVisibilityToggle?.call();
-                  },
+                  onTap: () => setState(() => _obscured = !_obscured),
                 )
               else
                 const SizedBox(width: AppSpacing.md),

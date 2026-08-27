@@ -9,14 +9,6 @@ class AppAssets {
 
   static const String loginBackground = 'lib/assets/branding/background_login.png';
 
-  /// Backgrounds alternativos só pra comparar opções visuais da tela de
-  /// login lado a lado (ver `LoginPage` — ícone do olho no campo de senha
-  /// cicla por eles). Nada relacionado a mostrar/ocultar senha de verdade.
-  static const List<String> loginBackgroundMocks = [
-    'lib/assets/mock/login1.png',
-    'lib/assets/mock/login2.png',
-  ];
-
   static const String stadium = 'lib/assets/branding/banner.png';
   static const String matchHero = 'lib/assets/branding/banner_match.png';
   static const String? fans = null;

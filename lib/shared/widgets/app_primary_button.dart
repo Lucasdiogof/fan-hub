@@ -16,6 +16,7 @@ class AppPrimaryButton extends StatelessWidget {
     this.loadingLabel,
     this.showArrow = false,
     this.color,
+    this.borderColor,
     super.key,
   });
 
@@ -25,6 +26,7 @@ class AppPrimaryButton extends StatelessWidget {
   final String? loadingLabel;
   final bool showArrow;
   final Color? color;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,15 @@ class AppPrimaryButton extends StatelessWidget {
       opacity: enabled || loading ? 1 : 0.55,
       child: Material(
         color: color ?? colors.primary,
-        borderRadius: BorderRadius.circular(AppRadius.button),
+        borderRadius: borderColor == null
+            ? BorderRadius.circular(AppRadius.button)
+            : null,
+        shape: borderColor == null
+            ? null
+            : RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppRadius.button),
+                side: BorderSide(color: borderColor!, width: 1.5),
+              ),
         child: InkWell(
           onTap: enabled ? onPressed : null,
           borderRadius: BorderRadius.circular(AppRadius.button),
