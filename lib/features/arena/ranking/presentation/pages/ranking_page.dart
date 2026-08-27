@@ -199,9 +199,9 @@ class _PeriodSegmented extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final options = [
-      (RankingPeriod.weekly, context.l10n.arenaRankingWeekly),
-      (RankingPeriod.monthly, context.l10n.arenaRankingMonthly),
       (RankingPeriod.allTime, context.l10n.arenaRankingAllTime),
+      (RankingPeriod.monthly, context.l10n.arenaRankingMonthly),
+      (RankingPeriod.weekly, context.l10n.arenaRankingWeekly),
     ];
     return Container(
       padding: const EdgeInsets.all(4),
