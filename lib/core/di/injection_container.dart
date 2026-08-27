@@ -16,6 +16,7 @@ import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repositor
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/club/data/club_song_volume_store.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/data/supabase_crowd_lineup_repository.dart';
@@ -111,11 +112,14 @@ void setupDependencies() {
     () => SupabaseProfileRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
-  // O player de Hino & Músicas (`ClubSongPlayerCubit`) NÃO é singleton —
-  // é criado por `BlocProvider` a cada visita à página de detalhes, com
-  // seu próprio `AudioPlayer`, e fechado (parado + liberado) ao sair. Só
-  // o armazenamento do volume escolhido pelo usuário precisa sobreviver
-  // entre visitas, por isso só ele entra no DI.
+  // O `ClubSongPlayerCubit` (Hino & Músicas) NÃO é singleton — é criado por
+  // `BlocProvider` a cada visita à página de detalhes, e fechado (parado)
+  // ao sair, então nunca toca em segundo plano. Só o `AudioPlayer` nativo
+  // em si é singleton: criar/descartar um `AudioPlayer` por visita causava
+  // um bug real (áudio acelerado depois de algumas trocas de música — ver
+  // `ClubSongPlayerCubit`), então um único player de longa duração troca
+  // de fonte a cada música em vez de ser recriado.
+  sl.registerLazySingleton<AudioPlayer>(AudioPlayer.new);
   sl.registerLazySingleton<ClubSongVolumeStore>(ClubSongVolumeStore.new);
   sl.registerLazySingleton<SplashGate>(SplashGate.new);
   sl.registerLazySingleton<ArenaRankingRepository>(

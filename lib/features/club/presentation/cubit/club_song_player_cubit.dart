@@ -7,12 +7,21 @@ import 'package:goias_app/features/club/presentation/cubit/club_song_player_stat
 import 'package:just_audio/just_audio.dart';
 
 /// Player de UMA música — vive só enquanto a página de detalhes dela está
-/// aberta. Criado via `BlocProvider` (não DI singleton): o próprio
-/// `BlocProvider` chama `close()` quando a página é desempilhada, e é lá
-/// que o `AudioPlayer` para e libera os recursos (ver [close]) — nunca
-/// música tocando em segundo plano, nunca dois `AudioPlayer` simultâneos.
+/// aberta. Criado via `BlocProvider` (não DI singleton), então sempre para
+/// ao sair (ver [close]) — nunca música tocando em segundo plano.
+///
+/// O `AudioPlayer` em si, porém, É compartilhado (singleton via DI) — criar
+/// e descartar uma instância nativa por visita causava um bug real: depois
+/// de tocar/dar seek/sair de algumas músicas em sequência, a próxima
+/// começava a tocar acelerada (~2x). Suspeita é um problema de ciclo de
+/// vida nativo do `just_audio`/ExoPlayer ao recriar `AudioPlayer` repetidas
+/// vezes na mesma sessão — trocar a fonte de um único player de longa
+/// duração em vez de recriá-lo elimina essa classe de bug inteira. Ainda
+/// assim nunca toca sozinho: [init] sempre para o player antes de carregar
+/// a nova faixa, e [close] sempre para (nunca deixa o player "vivo" tocando
+/// depois que a página fecha).
 class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
-  ClubSongPlayerCubit(this.song, this._volumeStore)
+  ClubSongPlayerCubit(this.song, this._volumeStore, this._player)
     : super(const ClubSongPlayerState()) {
     _playerStateSubscription = _player.playerStateStream.listen(
       _onPlayerStateChanged,
@@ -21,7 +30,7 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
 
   final ClubSong song;
   final ClubSongVolumeStore _volumeStore;
-  final AudioPlayer _player = AudioPlayer();
+  final AudioPlayer _player;
   late final StreamSubscription<PlayerState> _playerStateSubscription;
 
   /// Fica de fora do estado de propósito — muda muitas vezes por segundo
@@ -32,12 +41,20 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
   Future<void> init() async {
     final savedVolume = await _volumeStore.loadVolume();
     emit(state.copyWith(userVolume: savedVolume));
-    await _applyVolume();
 
     final asset = song.audioAsset;
     if (asset == null) return;
     try {
+      // O player é compartilhado entre visitas (ver doc da classe) — para
+      // qualquer coisa que a música anterior deixou tocando/carregando
+      // antes de trocar de fonte, pra nunca herdar estado dela.
+      await _player.stop();
+      await _applyVolume();
       final duration = await _player.setAsset(asset);
+      // Reafirmado DEPOIS do `setAsset` de propósito — é o ponto mais
+      // próximo possível de quando a reprodução de fato começa.
+      await _player.setSpeed(1);
+      await _player.setPitch(1);
       emit(state.copyWith(duration: duration ?? Duration.zero));
     } catch (_) {
       emit(state.copyWith(status: ClubSongPlayerStatus.error));
@@ -110,8 +127,12 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
   @override
   Future<void> close() async {
     await _playerStateSubscription.cancel();
-    await _player.stop();
-    await _player.dispose();
+    // NUNCA `dispose()` — o `AudioPlayer` é compartilhado (singleton via
+    // DI), a próxima visita à página vai reaproveitá-lo. Só `stop()`,
+    // pra garantir que nada continue tocando depois que a página fechar.
+    try {
+      await _player.stop();
+    } catch (_) {}
     return super.close();
   }
 }

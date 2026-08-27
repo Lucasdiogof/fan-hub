@@ -11,13 +11,15 @@ import 'package:goias_app/features/club/data/club_song_volume_store.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/presentation/cubit/club_song_player_cubit.dart';
 import 'package:goias_app/features/club/presentation/cubit/club_song_player_state.dart';
+import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:just_audio/just_audio.dart';
 
 /// Letra + player de UMA música. O `ClubSongPlayerCubit` é criado aqui via
-/// `BlocProvider`, com seu próprio `AudioPlayer` — nunca reaproveitado de
-/// outra tela. Sair daqui (`BlocProvider` saindo da árvore) fecha o Cubit,
-/// que para e libera o player sozinho (ver `ClubSongPlayerCubit.close`) —
-/// nada de música em segundo plano, nunca dois players ao mesmo tempo.
+/// `BlocProvider` a cada visita — o `AudioPlayer` nativo é compartilhado
+/// (singleton via DI, ver `ClubSongPlayerCubit`), mas o Cubit sempre para
+/// ao sair (`BlocProvider` saindo da árvore fecha o Cubit — ver
+/// `ClubSongPlayerCubit.close`), então nunca música em segundo plano.
 class ClubSongDetailsPage extends StatelessWidget {
   const ClubSongDetailsPage({required this.song, super.key});
 
@@ -26,8 +28,11 @@ class ClubSongDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) =>
-          ClubSongPlayerCubit(song, sl<ClubSongVolumeStore>())..init(),
+      create: (_) => ClubSongPlayerCubit(
+        song,
+        sl<ClubSongVolumeStore>(),
+        sl<AudioPlayer>(),
+      )..init(),
       child: _ClubSongDetailsView(song: song),
     );
   }
@@ -75,15 +80,7 @@ class _ClubSongDetailsView extends StatelessWidget {
               const SizedBox(height: AppSpacing.xl),
               _SongPlayer(song: song),
               const SizedBox(height: AppSpacing.xxl),
-              Text(
-                context.l10n.clubLyricsLabel,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 1.2,
-                  color: colors.textSecondary,
-                ),
-              ),
+              ClubSectionLabel(context.l10n.clubLyricsLabel),
               const SizedBox(height: AppSpacing.md),
               Text(
                 song.lyrics ?? context.l10n.clubLyricsUnavailable,
