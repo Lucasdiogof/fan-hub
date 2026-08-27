@@ -178,7 +178,7 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
                 ),
                 pw.SizedBox(height: 16),
                 pw.Row(
-                  crossAxisAlignment: pw.CrossAxisAlignment.stretch,
+                  crossAxisAlignment: pw.CrossAxisAlignment.start,
                   children: [
                     pw.Expanded(
                       child: pw.Container(
