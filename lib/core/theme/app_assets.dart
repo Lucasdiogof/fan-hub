@@ -27,4 +27,11 @@ class AppAssets {
   /// Ilustração de prancheta tática pro card "Escalação da Torcida" da Home.
   static const String tacticsBoardIllustration =
       'lib/assets/branding/tactics_board.png';
+
+  /// As 3 cenas da splash animada (ver `AnimatedImageSplash`) — usada no
+  /// lugar do vídeo só em iOS Web/PWA, onde o Safari bloqueia autoplay de
+  /// vídeo silenciosamente. Mesma arte-final do vídeo, em 3 quadros fixos.
+  static const String splashScene1 = 'lib/assets/splash1.jpeg';
+  static const String splashScene2 = 'lib/assets/splash2.png';
+  static const String splashScene3 = 'lib/assets/splash3.png';
 }
