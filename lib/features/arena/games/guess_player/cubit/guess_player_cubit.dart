@@ -18,23 +18,26 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
     required this._clearRound,
     required this._recordRoundResult,
     required this._ranking,
+    required this._loadSeenIds,
+    required this._addSeenId,
+    required this._clearSeenIds,
   }) : super(const GuessPlayerState()) {
     _init();
   }
 
   final List<GuessPlayer> _catalog;
 
-  /// Exposto pra tela poder montar o autocomplete a partir do catálogo
-  /// REAL desse Cubit (que pode ter vindo do Supabase, não do const local),
-  /// em vez de ler a constante global `guessPlayerCatalog` diretamente.
   List<GuessPlayer> get catalog => _catalog;
   final Future<GuessPlayerRoundState?> Function() _loadRound;
   final Future<void> Function(GuessPlayerRoundState state) _saveRound;
   final Future<void> Function() _clearRound;
   final Future<void> Function({required bool won}) _recordRoundResult;
   final ArenaRankingRepository _ranking;
+  final Future<Set<String>> Function() _loadSeenIds;
+  final Future<void> Function(String id) _addSeenId;
+  final Future<void> Function() _clearSeenIds;
   final _random = Random();
-  String? _lastSecretId;
+  Set<String> _seenIds = {};
 
   List<GuessPlayer> get _eligibleSecrets => _catalog
       .where((player) => player.eligibleAsSecret)
@@ -54,6 +57,7 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
 
   Future<void> _init() async {
     emit(state.copyWith(status: LoadStatus.loading));
+    _seenIds = await _loadSeenIds();
     final savedRound = await _loadRound();
     final secret = savedRound == null ? null : _byId(savedRound.secretPlayerId);
 
@@ -71,15 +75,17 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
       emit(state.copyWith(status: LoadStatus.empty));
       return;
     }
-    GuessPlayer secret;
-    if (pool.length == 1) {
-      secret = pool.first;
-    } else {
-      do {
-        secret = pool[_random.nextInt(pool.length)];
-      } while (secret.id == _lastSecretId);
+
+    var unseen = pool.where((p) => !_seenIds.contains(p.id)).toList();
+    if (unseen.isEmpty) {
+      await _clearSeenIds();
+      _seenIds = {};
+      unseen = pool;
     }
-    _lastSecretId = secret.id;
+
+    final secret = unseen[_random.nextInt(unseen.length)];
+    _seenIds.add(secret.id);
+    await _addSeenId(secret.id);
 
     final round = GuessPlayerRoundState(secretPlayerId: secret.id);
     await _saveRound(round);

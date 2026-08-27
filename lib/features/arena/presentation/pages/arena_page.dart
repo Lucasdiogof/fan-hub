@@ -219,6 +219,9 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
         clearRound: storage.clearActiveRound,
         recordRoundResult: storage.recordRoundResult,
         ranking: sl<ArenaRankingRepository>(),
+        loadSeenIds: storage.loadSeenIds,
+        addSeenId: storage.addSeenId,
+        clearSeenIds: storage.clearSeenIds,
       );
     });
     if (!context.mounted) return;

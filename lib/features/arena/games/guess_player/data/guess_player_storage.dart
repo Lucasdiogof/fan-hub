@@ -9,6 +9,7 @@ class GuessPlayerStorage {
   static const _key = 'guess_player_active_round';
   static const _playedKey = 'guess_player_stats_played';
   static const _correctKey = 'guess_player_stats_correct';
+  static const _seenKey = 'guess_player_seen_ids';
 
   Future<GuessPlayerRoundState?> loadActiveRound() async {
     final prefs = await SharedPreferences.getInstance();
@@ -51,5 +52,22 @@ class GuessPlayerStorage {
     if (won) {
       await prefs.setInt(_correctKey, (prefs.getInt(_correctKey) ?? 0) + 1);
     }
+  }
+
+  Future<Set<String>> loadSeenIds() async {
+    final prefs = await SharedPreferences.getInstance();
+    final raw = prefs.getStringList(_seenKey);
+    return raw?.toSet() ?? {};
+  }
+
+  Future<void> addSeenId(String id) async {
+    final prefs = await SharedPreferences.getInstance();
+    final current = prefs.getStringList(_seenKey) ?? [];
+    await prefs.setStringList(_seenKey, [...current, id]);
+  }
+
+  Future<void> clearSeenIds() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_seenKey);
   }
 }

@@ -48,6 +48,9 @@ class GuessPlayerPage extends StatelessWidget {
         clearRound: storage.clearActiveRound,
         recordRoundResult: storage.recordRoundResult,
         ranking: sl<ArenaRankingRepository>(),
+        loadSeenIds: storage.loadSeenIds,
+        addSeenId: storage.addSeenId,
+        clearSeenIds: storage.clearSeenIds,
       ),
       child: const _GuessPlayerView(),
     );
