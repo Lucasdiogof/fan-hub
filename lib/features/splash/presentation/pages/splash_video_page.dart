@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
+import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
@@ -203,6 +204,12 @@ class _SplashVideoPageState extends State<SplashVideoPage>
 /// generosa ao redor do texto/brasão (vinheta escura nas bordas) — cover
 /// puro preenche a tela de ponta a ponta sem tarja, e a margem do próprio
 /// vídeo evita cortar o conteúdo importante nos aspectos de tela comuns.
+///
+/// Isso vale pra proporções de celular. Numa janela larga (tablet/web),
+/// `cover` estica um vídeo em pé até a largura da tela e cropa boa parte da
+/// altura pra compensar — o brasão/texto saem enormes e cortados. Ali em vez
+/// de tela cheia o vídeo aparece centralizado, do tamanho de um celular, sem
+/// cortar nada (ver [_CenteredVideo]).
 class _FullscreenVideo extends StatelessWidget {
   const _FullscreenVideo({required this.controller});
 
@@ -210,6 +217,13 @@ class _FullscreenVideo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (context.isAtLeastMedium) {
+      return ColoredBox(
+        color: _splashBackground,
+        child: _CenteredVideo(controller: controller),
+      );
+    }
+
     final videoSize = controller.value.size;
     return ClipRect(
       child: SizedBox.expand(
@@ -218,6 +232,33 @@ class _FullscreenVideo extends StatelessWidget {
           child: SizedBox(
             width: videoSize.width,
             height: videoSize.height,
+            child: VideoPlayer(controller),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CenteredVideo extends StatelessWidget {
+  const _CenteredVideo({required this.controller});
+
+  final VideoPlayerController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    final videoSize = controller.value.size;
+    final screenSize = MediaQuery.sizeOf(context);
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 420,
+          maxHeight: screenSize.height * 0.88,
+        ),
+        child: AspectRatio(
+          aspectRatio: videoSize.width / videoSize.height,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(28),
             child: VideoPlayer(controller),
           ),
         ),
