@@ -96,92 +96,97 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () => Navigator.of(context).pop(),
-                    borderRadius: BorderRadius.circular(999),
-                    child: Container(
-                      width: 38,
-                      height: 38,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: colors.secondary,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.arrow_back_rounded,
-                        size: 18,
-                        color: colors.textPrimary,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          context.l10n.crowdTitle,
-                          style: TextStyle(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () => Navigator.of(context).pop(),
+                        borderRadius: BorderRadius.circular(999),
+                        child: Container(
+                          width: 38,
+                          height: 38,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: colors.secondary,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            Icons.arrow_back_rounded,
+                            size: 18,
                             color: colors.textPrimary,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 0.3,
                           ),
                         ),
-                        Text(
-                          '${shortTeamName(widget.match.homeTeam.name)} x ${shortTeamName(widget.match.awayTeam.name)}',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: colors.textHint,
-                            fontSize: 11.5,
-                            fontWeight: FontWeight.w700,
-                          ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              context.l10n.crowdTitle,
+                              style: TextStyle(
+                                color: colors.textPrimary,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: 0.3,
+                              ),
+                            ),
+                            Text(
+                              '${shortTeamName(widget.match.homeTeam.name)} x ${shortTeamName(widget.match.awayTeam.name)}',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: colors.textHint,
+                                fontSize: 11.5,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                      BlocBuilder<CrowdLineupCubit, CrowdLineupState>(
+                        builder: (context, state) => _buildShareButton(state),
+                      ),
+                    ],
                   ),
-                  BlocBuilder<CrowdLineupCubit, CrowdLineupState>(
-                    builder: (context, state) => _buildShareButton(state),
+                ),
+                const SizedBox(height: 8),
+                TabBar(
+                  controller: _tabController,
+                  labelColor: colors.primary,
+                  unselectedLabelColor: colors.textHint,
+                  indicatorColor: colors.primary,
+                  labelStyle: const TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w800,
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 8),
-            TabBar(
-              controller: _tabController,
-              labelColor: colors.primary,
-              unselectedLabelColor: colors.textHint,
-              indicatorColor: colors.primary,
-              labelStyle: const TextStyle(
-                fontSize: 13.5,
-                fontWeight: FontWeight.w800,
-              ),
-              tabs: [
-                Tab(text: context.l10n.crowdTitle),
-                Tab(text: context.l10n.crowdTabEscale),
+                  tabs: [
+                    Tab(text: context.l10n.crowdTitle),
+                    Tab(text: context.l10n.crowdTabEscale),
+                  ],
+                ),
+                Expanded(
+                  child: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      CrowdTab(isHome: _isGoiasHome, fieldKey: _crowdFieldKey),
+                      EscaleTab(
+                        isHome: _isGoiasHome,
+                        fieldKey: _escaleFieldKey,
+                        onConfirm: () => _submit(context),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  CrowdTab(isHome: _isGoiasHome, fieldKey: _crowdFieldKey),
-                  EscaleTab(
-                    isHome: _isGoiasHome,
-                    fieldKey: _escaleFieldKey,
-                    onConfirm: () => _submit(context),
-                  ),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

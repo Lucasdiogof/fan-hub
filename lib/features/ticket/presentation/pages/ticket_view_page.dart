@@ -26,59 +26,64 @@ class TicketViewPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: Row(
-                children: [
-                  BackButtonCircle(
-                    onTap: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
                   ),
-                  const SizedBox(width: AppSpacing.md),
-                  Expanded(
-                    child: PageTitle(context.l10n.ticketsViewTicketTitle),
+                  child: Row(
+                    children: [
+                      BackButtonCircle(
+                        onTap: () =>
+                            context.canPop() ? context.pop() : context.go('/'),
+                      ),
+                      const SizedBox(width: AppSpacing.md),
+                      Expanded(
+                        child: PageTitle(context.l10n.ticketsViewTicketTitle),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            const SizedBox(height: AppSpacing.md),
-            Expanded(
-              child: PdfPreview(
-                build: (format) => buildTicketPdf(ticket, context.l10n),
-                useActions: false,
-                canChangePageFormat: false,
-                canChangeOrientation: false,
-                canDebug: false,
-                loadingWidget: const Center(child: GoiasLoadingIndicator()),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(AppSpacing.lg),
-              child: SizedBox(
-                width: double.infinity,
-                height: 54,
-                child: FilledButton.icon(
-                  onPressed: () => shareTicketPdf(ticket, context.l10n),
-                  icon: const Icon(Icons.ios_share_rounded, size: 19),
-                  label: Text(
-                    context.l10n.ticketsSaveTicketButton,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w800,
+                ),
+                const SizedBox(height: AppSpacing.md),
+                Expanded(
+                  child: PdfPreview(
+                    build: (format) => buildTicketPdf(ticket, context.l10n),
+                    useActions: false,
+                    canChangePageFormat: false,
+                    canChangeOrientation: false,
+                    canDebug: false,
+                    loadingWidget: const Center(child: GoiasLoadingIndicator()),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(AppSpacing.lg),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 54,
+                    child: FilledButton.icon(
+                      onPressed: () => shareTicketPdf(ticket, context.l10n),
+                      icon: const Icon(Icons.ios_share_rounded, size: 19),
+                      label: Text(
+                        context.l10n.ticketsSaveTicketButton,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      style: matchCtaFilledStyle(context),
                     ),
                   ),
-                  style: matchCtaFilledStyle(context),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
