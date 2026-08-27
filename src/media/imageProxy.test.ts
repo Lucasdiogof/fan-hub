@@ -61,4 +61,20 @@ describe('handleImageProxy', () => {
 
     expect(response.status).toBe(404);
   });
+
+  it('allows Instagram CDN subdomains via suffix match and sends browser-like headers', async () => {
+    const bytes = new Uint8Array([9, 9, 9]);
+    const fetchFn = stubFetch(() => new Response(bytes, { status: 200, headers: { 'content-type': 'image/jpeg' } }));
+
+    const response = await handleImageProxy(
+      proxyRequest('https://scontent-gru2-1.cdninstagram.com/v/t51.82787-15/abc.jpg'),
+      env,
+    );
+
+    expect(response.status).toBe(200);
+    const [, options] = fetchFn.mock.calls[0] as unknown as [string, RequestInit];
+    const headers = options.headers as Record<string, string>;
+    expect(headers['user-agent']).toContain('Mozilla');
+    expect(headers['referer']).toBe('https://www.instagram.com/');
+  });
 });

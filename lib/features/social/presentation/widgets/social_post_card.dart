@@ -3,6 +3,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/social/domain/entities/social_post.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/widgets/relative_time_label.dart';
 
 class SocialPostCard extends StatelessWidget {
@@ -51,7 +52,10 @@ class _YouTubeCard extends StatelessWidget {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.network(post.thumbnailUrl!, fit: BoxFit.cover),
+                    Image.network(
+                      proxiedImageUrl(post.thumbnailUrl!),
+                      fit: BoxFit.cover,
+                    ),
                     Center(
                       child: Container(
                         width: 48,
@@ -137,7 +141,7 @@ class _InstagramCard extends StatelessWidget {
               child: Stack(
                 children: [
                   Image.network(
-                    post.imageUrl!,
+                    proxiedImageUrl(post.imageUrl!),
                     fit: BoxFit.cover,
                     width: double.infinity,
                   ),
@@ -213,7 +217,7 @@ class _XCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(AppRadius.cardSmall),
               child: Image.network(
-                post.imageUrl!,
+                proxiedImageUrl(post.imageUrl!),
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),

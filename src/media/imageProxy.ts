@@ -3,11 +3,19 @@ import { errorResponse } from '../football/_lib/respond';
 
 /**
  * Só existem pra isso: hosts de imagem que o app usa e que não mandam
- * `Access-Control-Allow-Origin`, então o Flutter Web (CanvasKit/Skwasm) não
- * consegue ler os bytes pra decodificar. Lista fechada de propósito — isto
- * não é um proxy aberto, só busca esses hosts específicos.
+ * `Access-Control-Allow-Origin` (ou bloqueiam hotlink de outro jeito), então
+ * o Flutter Web (CanvasKit/Skwasm) não consegue ler os bytes pra decodificar.
+ * Lista fechada de propósito — isto não é um proxy aberto, só busca esses
+ * hosts específicos. Exatos (host precisa bater igual) e sufixos (pra
+ * subdomínios regionais tipo `scontent-gru2-1.cdninstagram.com`).
  */
 const ALLOWED_HOSTS = new Set(['images.onefootball.com', 'static.goiasec.com.br']);
+const ALLOWED_HOST_SUFFIXES = ['.cdninstagram.com', '.fbcdn.net'];
+
+function isAllowedHost(hostname: string): boolean {
+  if (ALLOWED_HOSTS.has(hostname)) return true;
+  return ALLOWED_HOST_SUFFIXES.some((suffix) => hostname.endsWith(suffix));
+}
 
 // Escudos/fotos de notícia publicadas não mudam depois — pode cachear bastante.
 const CACHE_TTL_SECONDS = 60 * 60 * 24 * 7;
@@ -26,7 +34,7 @@ export async function handleImageProxy(request: Request, _env: Env): Promise<Res
     return errorResponse('URL inválida.', 400);
   }
 
-  if (!ALLOWED_HOSTS.has(targetUrl.hostname)) {
+  if (!isAllowedHost(targetUrl.hostname)) {
     return errorResponse('Host de imagem não permitido.', 403);
   }
 
@@ -37,7 +45,18 @@ export async function handleImageProxy(request: Request, _env: Env): Promise<Res
 
   let upstream: Response;
   try {
-    upstream = await fetch(targetUrl.toString(), { headers: { accept: 'image/*' } });
+    // O CDN do Instagram (cdninstagram.com/fbcdn.net) rejeita com 403
+    // requisições sem cara de navegador — não é falta de CORS (ele já
+    // manda `Access-Control-Allow-Origin: *`), é proteção contra hotlink
+    // checando User-Agent/Referer. Sem esses dois headers, nem chega a CORS.
+    upstream = await fetch(targetUrl.toString(), {
+      headers: {
+        accept: 'image/*',
+        'user-agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        referer: 'https://www.instagram.com/',
+      },
+    });
   } catch (err) {
     console.error('media.image_proxy.fetch_error', err instanceof Error ? err.message : String(err));
     return errorResponse('Não foi possível buscar a imagem.', 502);
