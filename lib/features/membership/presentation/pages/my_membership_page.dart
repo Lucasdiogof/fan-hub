@@ -44,9 +44,15 @@ class MyMembershipPage extends StatelessWidget {
                       children: [
                         _InfoCard(
                           rows: [
-                            _InfoRow(context.l10n.membershipPlanLabel, membership.plan.name),
+                            _InfoRow(
+                              context.l10n.membershipPlanLabel,
+                              membership.plan.name,
+                            ),
                             if (membership.plan.stadiumSector != null)
-                              _InfoRow(context.l10n.membershipSectorLabel, membership.plan.stadiumSector!),
+                              _InfoRow(
+                                context.l10n.membershipSectorLabel,
+                                membership.plan.stadiumSector!,
+                              ),
                             _InfoRow(
                               context.l10n.membershipSituation,
                               _statusLabel(context.l10n, membership.status),
@@ -135,7 +141,9 @@ class MyMembershipPage extends StatelessWidget {
                             onPressed: () => openExternalUrl(
                               context,
                               MembershipContactConfig.whatsappUrlWithMessage(
-                                context.l10n.membershipCancelWhatsapp(membership.plan.name),
+                                context.l10n.membershipCancelWhatsapp(
+                                  membership.plan.name,
+                                ),
                               ),
                             ),
                             style: OutlinedButton.styleFrom(

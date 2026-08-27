@@ -68,7 +68,8 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                                 AppRadius.pill,
                               ),
                             ),
-                            child: Text(context.l10n.membershipMostChosen,
+                            child: Text(
+                              context.l10n.membershipMostChosen,
                               style: const TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w800,
@@ -110,7 +111,9 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                               ),
                             ),
                             child: Text(
-                              context.l10n.membershipSector(plan.stadiumSector.toString()),
+                              context.l10n.membershipSector(
+                                plan.stadiumSector.toString(),
+                              ),
                               style: TextStyle(
                                 fontSize: 11.5,
                                 fontWeight: FontWeight.w800,
@@ -176,7 +179,9 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          context.l10n.membershipOrAnnual(formatBrl(selectedPrice.annualPrice)),
+                          context.l10n.membershipOrAnnual(
+                            formatBrl(selectedPrice.annualPrice),
+                          ),
                           style: TextStyle(
                             fontSize: 12.5,
                             color: colors.textSecondary,

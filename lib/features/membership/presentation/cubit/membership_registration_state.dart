@@ -79,7 +79,9 @@ class MembershipRegistrationState extends Equatable {
     final errors = <String, String>{};
     final cpfDigits = onlyDigits(data.cpf);
     if (cpfDigits.isEmpty) {
-      if (_revealed('cpf', accessAttempted)) errors['cpf'] = l10n.membershipValCpfRequired;
+      if (_revealed('cpf', accessAttempted)) {
+        errors['cpf'] = l10n.membershipValCpfRequired;
+      }
     } else if (!isValidCpf(data.cpf) &&
         (cpfDigits.length == 11 ||
             blurredFields.contains('cpf') ||
@@ -202,8 +204,7 @@ class MembershipRegistrationState extends Equatable {
       if (cepDigits.length < 8 && _revealed('zipCode', addressAttempted)) {
         errors['zipCode'] = l10n.membershipValCep8;
       } else if (cepLookupStatus == LoadStatus.error) {
-        errors['zipCode'] =
-            l10n.membershipCepLookupError;
+        errors['zipCode'] = l10n.membershipCepLookupError;
       }
     }
 

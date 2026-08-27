@@ -46,7 +46,11 @@ class SectionHeader extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 2),
-                  Icon(Icons.arrow_forward_rounded, size: 13, color: colors.primary),
+                  Icon(
+                    Icons.arrow_forward_rounded,
+                    size: 13,
+                    color: colors.primary,
+                  ),
                 ],
               ),
             ),

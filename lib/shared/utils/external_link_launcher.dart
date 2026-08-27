@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Único ponto do app que chama `launchUrl` — sempre externo (abre o app
@@ -14,7 +15,7 @@ Future<void> openExternalUrl(BuildContext context, String url) async {
   } catch (_) {
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Não foi possível abrir este link.')),
+      SnackBar(content: Text(context.l10n.commonLinkOpenError)),
     );
   }
 }

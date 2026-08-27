@@ -339,6 +339,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get profileSignOut => 'Cerrar sesión';
 
   @override
+  String get debugMockMembershipTitle => 'Socio activo (mock)';
+
+  @override
+  String get debugMockMembershipDescription =>
+      'Simula un socio esmeraldino activo mientras no haya integración real con el programa.';
+
+  @override
   String get personalDataTitle => 'DATOS PERSONALES';
 
   @override
@@ -612,10 +619,74 @@ class AppLocalizationsEs extends AppLocalizations {
   String get arenaRankingDetailTotal => 'TOTAL';
 
   @override
+  String get arenaRankingYouTag => 'TÚ';
+
+  @override
+  String arenaRankingPlace(int rank) {
+    return '$rank.º lugar';
+  }
+
+  @override
+  String get arenaRankingPointsFull => 'puntos';
+
+  @override
+  String get arenaRankingPeriodOverall => 'Ranking general';
+
+  @override
+  String get arenaRankingPeriodWeek => 'Esta semana';
+
+  @override
+  String get arenaRankingByGame => 'Puntos por juego';
+
+  @override
+  String get arenaRankingHowScoredSelf => 'Cómo puntuaste';
+
+  @override
+  String arenaRankingHowScoredOther(String name) {
+    return 'Cómo puntuó $name';
+  }
+
+  @override
+  String arenaRankingGamePointsShare(int score, int percent) {
+    return '$score pts • $percent%';
+  }
+
+  @override
+  String get arenaRankingNoPointsTitle => 'Sin puntos en este período';
+
+  @override
+  String get arenaRankingNoPointsOther =>
+      'Este hincha aún no ha puntuado en los juegos durante el período seleccionado.';
+
+  @override
+  String get arenaRankingNoPointsSelf =>
+      'Aún no has puntuado en los juegos durante el período seleccionado.';
+
+  @override
+  String arenaRankingGapToNext(int points, int rank) {
+    return '$points pts para alcanzar el $rank.º';
+  }
+
+  @override
   String get commonClose => 'CERRAR';
 
   @override
   String get commonRetry => 'Intentar de nuevo';
+
+  @override
+  String get commonComingSoon => 'Próximamente';
+
+  @override
+  String get commonComingSoonMessage => 'Esta sección aún se está preparando.';
+
+  @override
+  String get commonLinkOpenError => 'No se pudo abrir este enlace.';
+
+  @override
+  String get commonLoadError => 'No se pudieron cargar los datos';
+
+  @override
+  String get membershipCheckInAction => 'HACER CHECK-IN';
 
   @override
   String get quizChooseLevel => 'Elige el nivel';

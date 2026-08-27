@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -154,8 +155,10 @@ class _ProfileView extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.xxl),
                       const _SignOutButton(),
-                      const SizedBox(height: AppSpacing.xxl),
-                      const MockMembershipToggle(),
+                      if (kDebugMode) ...[
+                        const SizedBox(height: AppSpacing.xxl),
+                        const MockMembershipToggle(),
+                      ],
                     ],
                   ),
                 ),

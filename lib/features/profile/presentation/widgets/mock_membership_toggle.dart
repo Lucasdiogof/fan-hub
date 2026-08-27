@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/mock_membership_repository.dart';
@@ -62,7 +63,7 @@ class _MockMembershipToggleState extends State<MockMembershipToggle> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Sócio ativo (mock)',
+                  context.l10n.debugMockMembershipTitle,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
@@ -71,7 +72,7 @@ class _MockMembershipToggleState extends State<MockMembershipToggle> {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  'Simula um sócio esmeraldino ativo enquanto não há integração real com o programa.',
+                  context.l10n.debugMockMembershipDescription,
                   style: TextStyle(
                     fontSize: 12,
                     color: colors.textSecondary,

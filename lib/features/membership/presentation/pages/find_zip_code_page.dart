@@ -178,7 +178,9 @@ class _FindZipCodeView extends StatelessWidget {
                                   state.citiesLoadStatus == LoadStatus.loading
                                   ? context.l10n.membershipLoadingCities
                                   : (state.state.isEmpty
-                                        ? context.l10n.membershipSelectStateFirst
+                                        ? context
+                                              .l10n
+                                              .membershipSelectStateFirst
                                         : context.l10n.membershipSelectCity),
                               onTap:
                                   state.state.isEmpty ||

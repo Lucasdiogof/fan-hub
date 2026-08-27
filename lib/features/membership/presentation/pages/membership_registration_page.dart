@@ -210,7 +210,9 @@ class _NavButtons extends StatelessWidget {
     return Row(
       children: [
         if (!isFirst) ...[
-          Expanded(child: _outlinedButton(colors, context.l10n.commonBack, cubit.back)),
+          Expanded(
+            child: _outlinedButton(colors, context.l10n.commonBack, cubit.back),
+          ),
           const SizedBox(width: AppSpacing.md),
         ],
         Expanded(

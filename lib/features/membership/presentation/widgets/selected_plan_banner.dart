@@ -70,8 +70,12 @@ class SelectedPlanBanner extends StatelessWidget {
             TextButton(
               onPressed: onChangePlan,
               style: TextButton.styleFrom(foregroundColor: colors.primary),
-              child: Text(context.l10n.membershipChangePlan,
-                style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.w800),
+              child: Text(
+                context.l10n.membershipChangePlan,
+                style: const TextStyle(
+                  fontSize: 11.5,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             ),
         ],

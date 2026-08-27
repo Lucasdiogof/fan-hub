@@ -10,15 +10,17 @@ abstract class Failure extends Equatable {
 }
 
 class ServerFailure extends Failure {
-  const ServerFailure([super.message = 'Erro ao carregar os dados. Tente novamente.']);
+  const ServerFailure([super.message = '']);
 }
 
 class UnexpectedFailure extends Failure {
-  const UnexpectedFailure([super.message = 'Erro inesperado. Tente novamente.']);
+  const UnexpectedFailure([super.message = '']);
 }
 
 class NetworkFailure extends Failure {
-  const NetworkFailure([super.message = 'Verifique sua conexão com a internet.']);
+  const NetworkFailure([
+    super.message = 'Verifique sua conexão com a internet.',
+  ]);
 }
 
 class AuthFailure extends Failure {

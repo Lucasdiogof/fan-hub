@@ -37,7 +37,9 @@ class StadiumBackdrop extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final base = tint ?? colors.deepGreen;
-    final mid = tint != null ? Color.lerp(tint, Colors.black, 0.4)! : colors.darkGreen;
+    final mid = tint != null
+        ? Color.lerp(tint, Colors.black, 0.4)!
+        : colors.darkGreen;
 
     return Stack(
       fit: StackFit.expand,
@@ -54,13 +56,17 @@ class StadiumBackdrop extends StatelessWidget {
               ),
             ),
           ),
-        if (showFloodlights) Positioned.fill(child: CustomPaint(painter: _FloodlightPainter())),
+        if (showFloodlights)
+          Positioned.fill(child: CustomPaint(painter: _FloodlightPainter())),
         const Positioned.fill(child: CustomPaint(painter: _GrainPainter())),
         DecoratedBox(
           decoration: BoxDecoration(
             gradient: RadialGradient(
               radius: 1.15,
-              colors: [Colors.transparent, Colors.black.withValues(alpha: 0.42)],
+              colors: [
+                Colors.transparent,
+                Colors.black.withValues(alpha: 0.42),
+              ],
               stops: const [0.55, 1],
             ),
           ),
@@ -75,7 +81,12 @@ class StadiumBackdrop extends StatelessWidget {
             ),
           ),
         ),
-        if (imageAsset != null) DecoratedBox(decoration: BoxDecoration(color: base.withValues(alpha: overlayOpacity))),
+        if (imageAsset != null)
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: base.withValues(alpha: overlayOpacity),
+            ),
+          ),
       ],
     );
   }
@@ -84,24 +95,54 @@ class StadiumBackdrop extends StatelessWidget {
 class _FloodlightPainter extends CustomPainter {
   _FloodlightPainter();
 
-  void _beam(Canvas canvas, Offset origin, double angle, double spread, double length, double opacity) {
+  void _beam(
+    Canvas canvas,
+    Offset origin,
+    double angle,
+    double spread,
+    double length,
+    double opacity,
+  ) {
     final path = Path()
       ..moveTo(origin.dx, origin.dy)
-      ..lineTo(origin.dx + length * cos(angle - spread), origin.dy + length * sin(angle - spread))
-      ..lineTo(origin.dx + length * cos(angle + spread), origin.dy + length * sin(angle + spread))
+      ..lineTo(
+        origin.dx + length * cos(angle - spread),
+        origin.dy + length * sin(angle - spread),
+      )
+      ..lineTo(
+        origin.dx + length * cos(angle + spread),
+        origin.dy + length * sin(angle + spread),
+      )
       ..close();
     final rect = Rect.fromCircle(center: origin, radius: length);
     final paint = Paint()
       ..shader = RadialGradient(
-        colors: [Colors.white.withValues(alpha: opacity), Colors.white.withValues(alpha: 0)],
+        colors: [
+          Colors.white.withValues(alpha: opacity),
+          Colors.white.withValues(alpha: 0),
+        ],
       ).createShader(rect);
     canvas.drawPath(path, paint);
   }
 
   @override
   void paint(Canvas canvas, Size size) {
-    _beam(canvas, Offset(size.width * 0.08, -size.height * 0.05), pi / 2.5, 0.3, size.height * 1.2, 0.11);
-    _beam(canvas, Offset(size.width * 0.92, -size.height * 0.05), pi - pi / 2.5, 0.3, size.height * 1.2, 0.08);
+    _beam(
+      canvas,
+      Offset(size.width * 0.08, -size.height * 0.05),
+      pi / 2.5,
+      0.3,
+      size.height * 1.2,
+      0.11,
+    );
+    _beam(
+      canvas,
+      Offset(size.width * 0.92, -size.height * 0.05),
+      pi - pi / 2.5,
+      0.3,
+      size.height * 1.2,
+      0.08,
+    );
   }
 
   @override

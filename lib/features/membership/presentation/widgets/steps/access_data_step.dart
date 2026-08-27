@@ -56,7 +56,9 @@ class AccessDataStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: isForeign ? context.l10n.membershipPassport : context.l10n.membershipPassportOptional,
+          label: isForeign
+              ? context.l10n.membershipPassport
+              : context.l10n.membershipPassportOptional,
           value: data.passport,
           errorText: errors['passport'],
           hintText: 'AB123456',

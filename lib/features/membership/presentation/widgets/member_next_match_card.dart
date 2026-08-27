@@ -104,7 +104,7 @@ class MemberNextMatchCard extends StatelessWidget {
                   letterSpacing: 0.3,
                 ),
               ),
-              child: const Text('FAZER CHECK-IN'),
+              child: Text(context.l10n.membershipCheckInAction),
             ),
           ),
         ],

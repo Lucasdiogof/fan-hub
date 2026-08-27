@@ -147,7 +147,9 @@ class AddressStep extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
-          label: isBrazil ? context.l10n.addressFieldCep : context.l10n.membershipPostalCode,
+          label: isBrazil
+              ? context.l10n.addressFieldCep
+              : context.l10n.membershipPostalCode,
           isRequired: isBrazil,
           value: data.zipCode,
           errorText: errors['zipCode'],

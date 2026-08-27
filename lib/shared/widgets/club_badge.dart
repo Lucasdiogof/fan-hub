@@ -11,7 +11,12 @@ import 'package:goias_app/shared/utils/inline_svg_css.dart';
 /// sigla nunca é a aparência "normal" — só aparece quando não há nenhum
 /// escudo disponível ou o carregamento da rede falha.
 class ClubBadge extends StatelessWidget {
-  const ClubBadge({required this.team, this.size = 44, this.onDark = false, super.key});
+  const ClubBadge({
+    required this.team,
+    this.size = 44,
+    this.onDark = false,
+    super.key,
+  });
 
   final Team team;
   final double size;
@@ -38,7 +43,9 @@ class ClubBadge extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: _isSvg(logoUrl) ? _svgBadge(context, logoUrl) : _rasterBadge(context, logoUrl),
+      child: _isSvg(logoUrl)
+          ? _svgBadge(context, logoUrl)
+          : _rasterBadge(context, logoUrl),
     );
   }
 
@@ -78,7 +85,9 @@ class ClubBadge extends StatelessWidget {
         height: size,
         child: SvgPicture.asset(
           asset,
-          colorFilter: onDark ? null : ColorFilter.mode(team.color, BlendMode.srcIn),
+          colorFilter: onDark
+              ? null
+              : ColorFilter.mode(team.color, BlendMode.srcIn),
         ),
       );
     }
@@ -91,7 +100,11 @@ class ClubBadge extends StatelessWidget {
 /// renderiza com `SvgPicture.string`. Cacheado em memória por URL pra não
 /// rebaixar/reprocessar o mesmo escudo a cada rebuild/scroll.
 class _NetworkSvgBadge extends StatefulWidget {
-  const _NetworkSvgBadge({required this.url, required this.size, required this.fallbackBuilder});
+  const _NetworkSvgBadge({
+    required this.url,
+    required this.size,
+    required this.fallbackBuilder,
+  });
 
   final String url;
   final double size;
@@ -104,7 +117,10 @@ class _NetworkSvgBadge extends StatefulWidget {
 class _NetworkSvgBadgeState extends State<_NetworkSvgBadge> {
   static final _cache = <String, String>{};
   static final _dio = Dio(
-    BaseOptions(connectTimeout: const Duration(seconds: 8), receiveTimeout: const Duration(seconds: 8)),
+    BaseOptions(
+      connectTimeout: const Duration(seconds: 8),
+      receiveTimeout: const Duration(seconds: 8),
+    ),
   );
 
   late Future<String> _future;
@@ -127,7 +143,10 @@ class _NetworkSvgBadgeState extends State<_NetworkSvgBadge> {
     final cached = _cache[url];
     if (cached != null) return cached;
 
-    final response = await _dio.get<String>(url, options: Options(responseType: ResponseType.plain));
+    final response = await _dio.get<String>(
+      url,
+      options: Options(responseType: ResponseType.plain),
+    );
     final raw = response.data;
     if (raw == null || raw.isEmpty) {
       throw StateError('SVG vazio: $url');
@@ -154,7 +173,8 @@ class _NetworkSvgBadgeState extends State<_NetworkSvgBadge> {
           width: widget.size,
           height: widget.size,
           fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) => widget.fallbackBuilder(context),
+          errorBuilder: (context, error, stackTrace) =>
+              widget.fallbackBuilder(context),
         );
       },
     );
@@ -171,13 +191,20 @@ class _LoadingBadge extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.black.withValues(alpha: 0.06)),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.black.withValues(alpha: 0.06),
+      ),
     );
   }
 }
 
 class _ShieldBadge extends StatelessWidget {
-  const _ShieldBadge({required this.team, required this.size, required this.onDark});
+  const _ShieldBadge({
+    required this.team,
+    required this.size,
+    required this.onDark,
+  });
 
   final Team team;
   final double size;

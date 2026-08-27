@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
@@ -241,7 +242,7 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
         builder: (context, state) {
           final args = state.extra as ({String title, String? message})?;
           return ComingSoonPage(
-            title: args?.title ?? 'EM BREVE',
+            title: args?.title ?? context.l10n.commonComingSoon.toUpperCase(),
             message: args?.message,
           );
         },
@@ -377,7 +378,7 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
         builder: (context, state) {
           final args = state.extra as ({String title, String message})?;
           return ComingSoonPage(
-            title: args?.title ?? 'EM BREVE',
+            title: args?.title ?? context.l10n.commonComingSoon.toUpperCase(),
             message: args?.message,
           );
         },

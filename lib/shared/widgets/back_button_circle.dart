@@ -18,8 +18,15 @@ class BackButtonCircle extends StatelessWidget {
         width: 38,
         height: 38,
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-        child: Icon(Icons.arrow_back_rounded, size: 18, color: colors.textPrimary),
+        decoration: BoxDecoration(
+          color: colors.secondary,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          Icons.arrow_back_rounded,
+          size: 18,
+          color: colors.textPrimary,
+        ),
       ),
     );
   }

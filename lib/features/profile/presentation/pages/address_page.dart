@@ -192,9 +192,7 @@ class _AddressFormState extends State<_AddressForm> {
     switch (result) {
       case Success(:final data):
         if (data == null) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(context.l10n.addressCepNotFound)),
           );
           return;

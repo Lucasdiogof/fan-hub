@@ -18,7 +18,10 @@ class PageTitle extends StatelessWidget {
         Container(
           width: 4,
           height: 22,
-          decoration: BoxDecoration(color: colors.primary, borderRadius: BorderRadius.circular(2)),
+          decoration: BoxDecoration(
+            color: colors.primary,
+            borderRadius: BorderRadius.circular(2),
+          ),
         ),
         const SizedBox(width: 10),
         Text(

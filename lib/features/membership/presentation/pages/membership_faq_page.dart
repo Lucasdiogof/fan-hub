@@ -118,8 +118,7 @@ class _MembershipFaqView extends StatelessWidget {
                           return Center(
                             child: StateMessage(
                               icon: Icons.error_outline_rounded,
-                              title:
-                                  context.l10n.membershipFaqLoadError,
+                              title: context.l10n.membershipFaqLoadError,
                               message: state.errorMessage,
                             ),
                           );

@@ -65,8 +65,7 @@ class MemberView extends StatelessWidget {
                 '/membership/coming-soon',
                 extra: (
                   title: context.l10n.membershipDependents.toUpperCase(),
-                  message:
-                      context.l10n.membershipDependentsPrep,
+                  message: context.l10n.membershipDependentsPrep,
                 ),
               ),
             ),
@@ -77,8 +76,7 @@ class MemberView extends StatelessWidget {
                 '/membership/coming-soon',
                 extra: (
                   title: context.l10n.membershipPayments.toUpperCase(),
-                  message:
-                      context.l10n.membershipPaymentsPrep,
+                  message: context.l10n.membershipPaymentsPrep,
                 ),
               ),
             ),
@@ -102,7 +100,8 @@ class MemberView extends StatelessWidget {
           child: TextButton(
             onPressed: () => context.push('/membership/plans'),
             style: TextButton.styleFrom(foregroundColor: colors.textSecondary),
-            child: Text(context.l10n.membershipSeeOtherPlans,
+            child: Text(
+              context.l10n.membershipSeeOtherPlans,
               style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700),
             ),
           ),

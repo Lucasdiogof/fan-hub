@@ -55,7 +55,8 @@ class MembershipPlanCard extends StatelessWidget {
                           color: colors.gold,
                           borderRadius: BorderRadius.circular(AppRadius.pill),
                         ),
-                        child: Text(context.l10n.membershipMostChosen,
+                        child: Text(
+                          context.l10n.membershipMostChosen,
                           style: const TextStyle(
                             fontSize: 9,
                             fontWeight: FontWeight.w800,

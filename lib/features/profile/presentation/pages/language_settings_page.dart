@@ -70,9 +70,8 @@ class LanguageSettingsPage extends StatelessWidget {
                               icon: Icons.language_rounded,
                               selected:
                                   locale?.languageCode == option.languageCode,
-                              onTap: () => context
-                                  .read<LocaleCubit>()
-                                  .setLocale(option),
+                              onTap: () =>
+                                  context.read<LocaleCubit>().setLocale(option),
                             ),
                             const SizedBox(height: AppSpacing.sm),
                           ],

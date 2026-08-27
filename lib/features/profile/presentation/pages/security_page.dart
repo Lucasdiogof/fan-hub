@@ -50,7 +50,10 @@ class _SecurityPageState extends State<SecurityPage> {
       l10n,
       _currentPasswordController.text,
     );
-    final passwordError = AuthValidators.newPassword(l10n, _passwordController.text);
+    final passwordError = AuthValidators.newPassword(
+      l10n,
+      _passwordController.text,
+    );
     final confirmError = AuthValidators.confirmPassword(
       l10n,
       _confirmController.text,

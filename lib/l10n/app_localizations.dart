@@ -742,6 +742,18 @@ abstract class AppLocalizations {
   /// **'Sair'**
   String get profileSignOut;
 
+  /// No description provided for @debugMockMembershipTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sócio ativo (mock)'**
+  String get debugMockMembershipTitle;
+
+  /// No description provided for @debugMockMembershipDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Simula um sócio esmeraldino ativo enquanto não há integração real com o programa.'**
+  String get debugMockMembershipDescription;
+
   /// No description provided for @personalDataTitle.
   ///
   /// In pt, this message translates to:
@@ -1258,6 +1270,84 @@ abstract class AppLocalizations {
   /// **'TOTAL'**
   String get arenaRankingDetailTotal;
 
+  /// No description provided for @arenaRankingYouTag.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOCÊ'**
+  String get arenaRankingYouTag;
+
+  /// No description provided for @arenaRankingPlace.
+  ///
+  /// In pt, this message translates to:
+  /// **'{rank}º lugar'**
+  String arenaRankingPlace(int rank);
+
+  /// No description provided for @arenaRankingPointsFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'pontos'**
+  String get arenaRankingPointsFull;
+
+  /// No description provided for @arenaRankingPeriodOverall.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ranking Geral'**
+  String get arenaRankingPeriodOverall;
+
+  /// No description provided for @arenaRankingPeriodWeek.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esta semana'**
+  String get arenaRankingPeriodWeek;
+
+  /// No description provided for @arenaRankingByGame.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pontuação por jogo'**
+  String get arenaRankingByGame;
+
+  /// No description provided for @arenaRankingHowScoredSelf.
+  ///
+  /// In pt, this message translates to:
+  /// **'Como você pontuou'**
+  String get arenaRankingHowScoredSelf;
+
+  /// No description provided for @arenaRankingHowScoredOther.
+  ///
+  /// In pt, this message translates to:
+  /// **'Como {name} pontuou'**
+  String arenaRankingHowScoredOther(String name);
+
+  /// No description provided for @arenaRankingGamePointsShare.
+  ///
+  /// In pt, this message translates to:
+  /// **'{score} pts • {percent}%'**
+  String arenaRankingGamePointsShare(int score, int percent);
+
+  /// No description provided for @arenaRankingNoPointsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum ponto neste período'**
+  String get arenaRankingNoPointsTitle;
+
+  /// No description provided for @arenaRankingNoPointsOther.
+  ///
+  /// In pt, this message translates to:
+  /// **'Este torcedor ainda não pontuou nos jogos durante o período selecionado.'**
+  String get arenaRankingNoPointsOther;
+
+  /// No description provided for @arenaRankingNoPointsSelf.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você ainda não pontuou nos jogos durante o período selecionado.'**
+  String get arenaRankingNoPointsSelf;
+
+  /// No description provided for @arenaRankingGapToNext.
+  ///
+  /// In pt, this message translates to:
+  /// **'{points} pts para alcançar o {rank}º'**
+  String arenaRankingGapToNext(int points, int rank);
+
   /// No description provided for @commonClose.
   ///
   /// In pt, this message translates to:
@@ -1269,6 +1359,36 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Tentar novamente'**
   String get commonRetry;
+
+  /// No description provided for @commonComingSoon.
+  ///
+  /// In pt, this message translates to:
+  /// **'Em breve'**
+  String get commonComingSoon;
+
+  /// No description provided for @commonComingSoonMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Essa área ainda está sendo preparada.'**
+  String get commonComingSoonMessage;
+
+  /// No description provided for @commonLinkOpenError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível abrir este link.'**
+  String get commonLinkOpenError;
+
+  /// No description provided for @commonLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar os dados'**
+  String get commonLoadError;
+
+  /// No description provided for @membershipCheckInAction.
+  ///
+  /// In pt, this message translates to:
+  /// **'FAZER CHECK-IN'**
+  String get membershipCheckInAction;
 
   /// No description provided for @quizChooseLevel.
   ///

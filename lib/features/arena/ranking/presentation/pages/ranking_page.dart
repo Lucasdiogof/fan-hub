@@ -42,7 +42,13 @@ class RankingPage extends StatelessWidget {
 class _RankingView extends StatelessWidget {
   const _RankingView();
 
-  void _showDetail(BuildContext context, RankingEntry entry) {
+  void _showDetail(
+    BuildContext context,
+    RankingEntry entry,
+    RankingPeriod period, {
+    int? pointsToNext,
+    int? nextRank,
+  }) {
     final colors = context.colors;
     showModalBottomSheet<void>(
       context: context,
@@ -54,7 +60,12 @@ class _RankingView extends StatelessWidget {
           top: Radius.circular(AppRadius.hero),
         ),
       ),
-      builder: (_) => RankingUserDetailSheet(entry: entry),
+      builder: (_) => RankingUserDetailSheet(
+        entry: entry,
+        period: period,
+        pointsToNext: pointsToNext,
+        nextRank: nextRank,
+      ),
     );
   }
 
@@ -149,9 +160,18 @@ class _RankingView extends StatelessWidget {
                         const SizedBox(height: AppSpacing.sm),
                     itemBuilder: (context, index) {
                       final entry = state.entries[index];
+                      final above = index > 0 ? state.entries[index - 1] : null;
                       return _RankRow(
                         entry: entry,
-                        onTap: () => _showDetail(context, entry),
+                        onTap: () => _showDetail(
+                          context,
+                          entry,
+                          state.period,
+                          pointsToNext: above == null
+                              ? null
+                              : above.totalScore - entry.totalScore,
+                          nextRank: above?.rank,
+                        ),
                       );
                     },
                   );
@@ -325,9 +345,7 @@ class _RankRow extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        entry.isMe
-                            ? context.l10n.arenaYouMarker(entry.name)
-                            : entry.name,
+                        entry.name,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -339,6 +357,10 @@ class _RankRow extends StatelessWidget {
                         ),
                       ),
                     ),
+                    if (entry.isMe) ...[
+                      const SizedBox(width: 6),
+                      const _YouTag(),
+                    ],
                     if (entry.isMember) ...[
                       const SizedBox(width: 6),
                       RankingMemberBadge(
@@ -367,6 +389,31 @@ class _RankRow extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _YouTag extends StatelessWidget {
+  const _YouTag();
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      decoration: BoxDecoration(
+        color: colors.primary,
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        context.l10n.arenaRankingYouTag,
+        style: TextStyle(
+          fontSize: 9.5,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 0.3,
+          color: colors.onPrimary,
         ),
       ),
     );

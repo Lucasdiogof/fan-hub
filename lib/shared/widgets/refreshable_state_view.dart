@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -37,7 +38,7 @@ class RefreshableStateView extends StatelessWidget {
         LoadStatus.error => _centered(
           StateMessage(
             icon: Icons.wifi_off_rounded,
-            title: 'Não foi possível carregar os dados',
+            title: context.l10n.commonLoadError,
             message: errorMessage,
           ),
         ),

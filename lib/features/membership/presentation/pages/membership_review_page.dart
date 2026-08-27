@@ -39,7 +39,10 @@ class MembershipReviewPage extends StatelessWidget {
           rows: [
             _ReviewRow(context.l10n.membershipPlanLabel, state.plan.name),
             if (state.plan.stadiumSector != null)
-              _ReviewRow(context.l10n.membershipSectorLabel, state.plan.stadiumSector!),
+              _ReviewRow(
+                context.l10n.membershipSectorLabel,
+                state.plan.stadiumSector!,
+              ),
             if (state.price.label.isNotEmpty)
               _ReviewRow(context.l10n.membershipOptionLabel, state.price.label),
           ],
@@ -51,29 +54,50 @@ class MembershipReviewPage extends StatelessWidget {
             _ReviewRow(context.l10n.membershipCpf, maskCpf(data.cpf)),
             if (data.passport.trim().isNotEmpty)
               _ReviewRow(context.l10n.membershipPassport, data.passport),
-            _ReviewRow(context.l10n.membershipBirthLabel, birthDate == null ? '-' : data.birthDate),
+            _ReviewRow(
+              context.l10n.membershipBirthLabel,
+              birthDate == null ? '-' : data.birthDate,
+            ),
           ],
         ),
         _ReviewSection(
           title: context.l10n.membershipContact,
           rows: [
-            _ReviewRow(context.l10n.commonEmailLabel, maskEmail(data.contactEmail)),
+            _ReviewRow(
+              context.l10n.commonEmailLabel,
+              maskEmail(data.contactEmail),
+            ),
             _ReviewRow(context.l10n.personalFieldPhone, maskPhone(data.phone)),
           ],
         ),
         _ReviewSection(
           title: context.l10n.membershipAddressLabel.toUpperCase(),
           rows: [
-            _ReviewRow(context.l10n.membershipAddressLabel, '${data.street}, ${data.number}'),
-            _ReviewRow(context.l10n.addressFieldNeighborhood, data.neighborhood),
-            _ReviewRow(context.l10n.membershipCityUf, '${data.city} - ${data.state}'),
+            _ReviewRow(
+              context.l10n.membershipAddressLabel,
+              '${data.street}, ${data.number}',
+            ),
+            _ReviewRow(
+              context.l10n.addressFieldNeighborhood,
+              data.neighborhood,
+            ),
+            _ReviewRow(
+              context.l10n.membershipCityUf,
+              '${data.city} - ${data.state}',
+            ),
           ],
         ),
         _ReviewSection(
           title: context.l10n.membershipValue,
           rows: [
-            _ReviewRow(context.l10n.membershipMonthly, formatBrl(state.price.monthlyPrice)),
-            _ReviewRow(context.l10n.membershipAnnual, formatBrl(state.price.annualPrice)),
+            _ReviewRow(
+              context.l10n.membershipMonthly,
+              formatBrl(state.price.monthlyPrice),
+            ),
+            _ReviewRow(
+              context.l10n.membershipAnnual,
+              formatBrl(state.price.annualPrice),
+            ),
           ],
         ),
         Text(

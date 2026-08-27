@@ -25,12 +25,7 @@ class MembershipFaqCubit extends Cubit<MembershipFaqState> {
       final categories = await _dataSource.getCategories();
       emit(state.copyWith(status: LoadStatus.success, categories: categories));
     } catch (_) {
-      emit(
-        state.copyWith(
-          status: LoadStatus.error,
-          errorMessage: 'Não foi possível carregar as dúvidas frequentes.',
-        ),
-      );
+      emit(state.copyWith(status: LoadStatus.error));
     }
   }
 

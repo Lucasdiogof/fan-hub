@@ -72,8 +72,7 @@ class _MembershipHomeView extends StatelessWidget {
                             LoadStatus.error => Center(
                               child: StateMessage(
                                 icon: Icons.error_outline_rounded,
-                                title:
-                                    context.l10n.membershipLoadError,
+                                title: context.l10n.membershipLoadError,
                                 message: state.errorMessage,
                               ),
                             ),
