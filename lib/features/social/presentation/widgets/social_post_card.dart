@@ -138,26 +138,35 @@ class _InstagramCard extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             ClipRRect(
               borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-              child: Stack(
-                children: [
-                  Image.network(
-                    proxiedImageUrl(post.imageUrl!),
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
-                  if (post.mediaType == SocialMediaType.video)
-                    const Positioned(
-                      top: AppSpacing.sm,
-                      right: AppSpacing.sm,
-                      child: _MediaBadge(icon: Icons.videocam_rounded),
+              // Sem isso, o `Stack` recebe altura solta (dentro da `Column`)
+              // e o `Image` não tem como saber sua altura antes de decodificar
+              // — o card nasce colapsado numa fresta e só o vídeo/carrossel
+              // (que tinha `Positioned` com tamanho próprio) evitava o pior
+              // disso. Proporção 4:5 é o formato de post vertical mais comum
+              // do Instagram hoje.
+              child: AspectRatio(
+                aspectRatio: 4 / 5,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.network(
+                      proxiedImageUrl(post.imageUrl!),
+                      fit: BoxFit.cover,
                     ),
-                  if (post.mediaType == SocialMediaType.carousel)
-                    const Positioned(
-                      top: AppSpacing.sm,
-                      right: AppSpacing.sm,
-                      child: _MediaBadge(icon: Icons.collections_rounded),
-                    ),
-                ],
+                    if (post.mediaType == SocialMediaType.video)
+                      const Positioned(
+                        top: AppSpacing.sm,
+                        right: AppSpacing.sm,
+                        child: _MediaBadge(icon: Icons.videocam_rounded),
+                      ),
+                    if (post.mediaType == SocialMediaType.carousel)
+                      const Positioned(
+                        top: AppSpacing.sm,
+                        right: AppSpacing.sm,
+                        child: _MediaBadge(icon: Icons.collections_rounded),
+                      ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -216,10 +225,14 @@ class _XCard extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             ClipRRect(
               borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-              child: Image.network(
-                proxiedImageUrl(post.imageUrl!),
-                fit: BoxFit.cover,
-                width: double.infinity,
+              // Ver comentário equivalente em `_InstagramCard` — sem altura
+              // fixa o `Image` não sabe seu tamanho antes de decodificar.
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: Image.network(
+                  proxiedImageUrl(post.imageUrl!),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ],
