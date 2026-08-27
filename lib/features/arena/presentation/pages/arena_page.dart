@@ -226,6 +226,8 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
         loadSeenIds: storage.loadSeenIds,
         addSeenId: storage.addSeenId,
         clearSeenIds: storage.clearSeenIds,
+        loadSeenSignature: storage.loadSeenSignature,
+        saveSeenSignature: storage.saveSeenSignature,
       );
     });
     if (!context.mounted) return;

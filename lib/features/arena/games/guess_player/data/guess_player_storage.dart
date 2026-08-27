@@ -10,6 +10,7 @@ class GuessPlayerStorage {
   static const _playedKey = 'guess_player_stats_played';
   static const _correctKey = 'guess_player_stats_correct';
   static const _seenKey = 'guess_player_seen_ids';
+  static const _seenSignatureKey = 'guess_player_seen_signature';
 
   Future<GuessPlayerRoundState?> loadActiveRound() async {
     final prefs = await SharedPreferences.getInstance();
@@ -69,5 +70,19 @@ class GuessPlayerStorage {
   Future<void> clearSeenIds() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_seenKey);
+  }
+
+  /// Fingerprint do catálogo elegível no momento em que os "vistos" foram
+  /// montados (ids ordenados e concatenados) — compara com o catálogo atual
+  /// pra saber se novos jogadores entraram desde então (ver
+  /// `GuessPlayerCubit._resetSeenIfCatalogChanged`).
+  Future<String?> loadSeenSignature() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_seenSignatureKey);
+  }
+
+  Future<void> saveSeenSignature(String signature) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_seenSignatureKey, signature);
   }
 }

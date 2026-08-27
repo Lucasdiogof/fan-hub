@@ -52,6 +52,8 @@ class GuessPlayerPage extends StatelessWidget {
         loadSeenIds: storage.loadSeenIds,
         addSeenId: storage.addSeenId,
         clearSeenIds: storage.clearSeenIds,
+        loadSeenSignature: storage.loadSeenSignature,
+        saveSeenSignature: storage.saveSeenSignature,
       ),
       child: const _GuessPlayerView(),
     );

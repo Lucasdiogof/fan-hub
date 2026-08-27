@@ -21,6 +21,8 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
     required this._loadSeenIds,
     required this._addSeenId,
     required this._clearSeenIds,
+    required this._loadSeenSignature,
+    required this._saveSeenSignature,
   }) : super(const GuessPlayerState()) {
     _init();
   }
@@ -36,6 +38,8 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
   final Future<Set<String>> Function() _loadSeenIds;
   final Future<void> Function(String id) _addSeenId;
   final Future<void> Function() _clearSeenIds;
+  final Future<String?> Function() _loadSeenSignature;
+  final Future<void> Function(String signature) _saveSeenSignature;
   final _random = Random();
   Set<String> _seenIds = {};
 
@@ -58,6 +62,7 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
   Future<void> _init() async {
     emit(state.copyWith(status: LoadStatus.loading));
     _seenIds = await _loadSeenIds();
+    await _resetSeenIfCatalogChanged();
     final savedRound = await _loadRound();
     final secret = savedRound == null ? null : _byId(savedRound.secretPlayerId);
 
@@ -67,6 +72,27 @@ class GuessPlayerCubit extends Cubit<GuessPlayerState> {
     }
 
     await _startNewRound();
+  }
+
+  /// "Visto" é por id, então jogadores novos no catálogo sempre nascem
+  /// como não-vistos — sem isso, logo depois de adicionar um lote de
+  /// jogadores o sorteio fica enviesado pros recém-adicionados até o
+  /// baralho inteiro ser visto de novo (o resto já estava marcado como
+  /// visto de antes). Comparando a assinatura do catálogo elegível com a
+  /// última vez que os "vistos" foram montados, detecta esse caso e
+  /// embaralha tudo de novo — reseta os vistos, não o catálogo em si.
+  Future<void> _resetSeenIfCatalogChanged() async {
+    final signature = (_eligibleSecrets.map((p) => p.id).toList()..sort()).join(
+      ',',
+    );
+    final lastSignature = await _loadSeenSignature();
+    if (lastSignature != null && lastSignature != signature) {
+      _seenIds = {};
+      await _clearSeenIds();
+    }
+    if (lastSignature != signature) {
+      await _saveSeenSignature(signature);
+    }
   }
 
   Future<void> _startNewRound() async {
