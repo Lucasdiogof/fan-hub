@@ -22,9 +22,9 @@ const _article = NewsArticle(
 
 Widget _wrap(NewsArticle article) {
   return MaterialApp.router(
-      locale: const Locale('pt'),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+    locale: const Locale('pt'),
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
 
     theme: AppTheme.light,
     routerConfig: GoRouter(

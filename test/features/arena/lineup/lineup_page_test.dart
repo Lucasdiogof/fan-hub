@@ -104,7 +104,7 @@ void main() {
         MaterialApp(
           theme: AppTheme.light,
           locale: const Locale('pt'),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           home: const LineupPage(),
         ),

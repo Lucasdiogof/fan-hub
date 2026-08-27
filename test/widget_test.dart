@@ -17,7 +17,10 @@ void main() {
     // storage needs a mocked shared_preferences channel to init in tests.
     SharedPreferences.setMockInitialValues({});
     initializeBrazilTimeZone();
-    await Supabase.initialize(url: SupabaseConfig.url, publishableKey: SupabaseConfig.publishableKey);
+    await Supabase.initialize(
+      url: SupabaseConfig.url,
+      publishableKey: SupabaseConfig.publishableKey,
+    );
   });
 
   setUp(setupDependencies);

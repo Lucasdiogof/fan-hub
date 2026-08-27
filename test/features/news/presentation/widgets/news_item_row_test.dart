@@ -18,9 +18,9 @@ void main() {
   testWidgets('shows the title and the uppercased category', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
-      locale: const Locale('pt'),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('pt'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
 
         theme: AppTheme.light,
         home: Scaffold(
@@ -38,9 +38,9 @@ void main() {
   ) async {
     await tester.pumpWidget(
       MaterialApp(
-      locale: const Locale('pt'),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('pt'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
 
         theme: AppTheme.light,
         home: Scaffold(
@@ -56,9 +56,9 @@ void main() {
     var tapped = false;
     await tester.pumpWidget(
       MaterialApp(
-      locale: const Locale('pt'),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+        locale: const Locale('pt'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
 
         theme: AppTheme.light,
         home: Scaffold(

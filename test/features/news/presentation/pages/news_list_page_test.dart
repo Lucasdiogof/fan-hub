@@ -42,9 +42,9 @@ class _FakeNewsRepository implements NewsRepository {
 
 Widget _wrap() {
   return MaterialApp.router(
-      locale: const Locale('pt'),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+    locale: const Locale('pt'),
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
 
     theme: AppTheme.light,
     routerConfig: GoRouter(

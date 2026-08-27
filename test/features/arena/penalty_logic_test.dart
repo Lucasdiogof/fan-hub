@@ -8,22 +8,42 @@ void main() {
 
   group('resolvePenalty', () {
     test('gol quando o goleiro escolhe a zona errada', () {
-      final result = resolvePenalty(targetX: 270, goalLeft: goalLeft, goalWidth: goalWidth, keeperZone: ShotZone.left);
+      final result = resolvePenalty(
+        targetX: 270,
+        goalLeft: goalLeft,
+        goalWidth: goalWidth,
+        keeperZone: ShotZone.left,
+      );
       expect(result, PenaltyResult.goal);
     });
 
     test('defesa quando o goleiro acerta a zona', () {
-      final result = resolvePenalty(targetX: 270, goalLeft: goalLeft, goalWidth: goalWidth, keeperZone: ShotZone.right);
+      final result = resolvePenalty(
+        targetX: 270,
+        goalLeft: goalLeft,
+        goalWidth: goalWidth,
+        keeperZone: ShotZone.right,
+      );
       expect(result, PenaltyResult.save);
     });
 
     test('fora quando passa dos postes', () {
-      final result = resolvePenalty(targetX: 340, goalLeft: goalLeft, goalWidth: goalWidth, keeperZone: ShotZone.center);
+      final result = resolvePenalty(
+        targetX: 340,
+        goalLeft: goalLeft,
+        goalWidth: goalWidth,
+        keeperZone: ShotZone.center,
+      );
       expect(result, PenaltyResult.out);
     });
 
     test('trave quando bate bem perto do poste', () {
-      final result = resolvePenalty(targetX: 296, goalLeft: goalLeft, goalWidth: goalWidth, keeperZone: ShotZone.left);
+      final result = resolvePenalty(
+        targetX: 296,
+        goalLeft: goalLeft,
+        goalWidth: goalWidth,
+        keeperZone: ShotZone.left,
+      );
       expect(result, PenaltyResult.post);
     });
   });

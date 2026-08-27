@@ -49,17 +49,23 @@ void main() {
       expect(inlineSvgCssClasses(svg), svg);
     });
 
-    test('returns the SVG unchanged when the <style> block has no class rules', () {
-      const svg = '<svg><style>svg { enable-background: new; }</style><path d="M0,0" /></svg>';
+    test(
+      'returns the SVG unchanged when the <style> block has no class rules',
+      () {
+        const svg =
+            '<svg><style>svg { enable-background: new; }</style><path d="M0,0" /></svg>';
 
-      expect(inlineSvgCssClasses(svg), svg);
-    });
+        expect(inlineSvgCssClasses(svg), svg);
+      },
+    );
 
-    test('handles comma-separated selectors and merges multiple rules per class', () {
-      // Padrão real do escudo do Fortaleza: seletores agrupados por
-      // vírgula, e uma classe recebendo fill de uma regra e fill-rule de
-      // outra.
-      const svg = '''
+    test(
+      'handles comma-separated selectors and merges multiple rules per class',
+      () {
+        // Padrão real do escudo do Fortaleza: seletores agrupados por
+        // vírgula, e uma classe recebendo fill de uma regra e fill-rule de
+        // outra.
+        const svg = '''
 <svg viewBox="0 0 500 500">
 <style>.cls-1,.cls-4{fill:#fefefe;}.cls-1,.cls-2,.cls-3{fill-rule:evenodd;}.cls-2{fill:#2861a6;}.cls-3{fill:#e1251b;}</style>
 <path class="cls-1" d="M0,0" />
@@ -69,13 +75,14 @@ void main() {
 </svg>
 ''';
 
-      final result = inlineSvgCssClasses(svg);
+        final result = inlineSvgCssClasses(svg);
 
-      expect(result, contains('style="fill:#fefefe;;fill-rule:evenodd;"'));
-      expect(result, contains('style="fill-rule:evenodd;;fill:#2861a6;"'));
-      expect(result, contains('style="fill-rule:evenodd;;fill:#e1251b;"'));
-      expect(result, contains('style="fill:#fefefe;"'));
-      expect(result, isNot(contains('class="cls-')));
-    });
+        expect(result, contains('style="fill:#fefefe;;fill-rule:evenodd;"'));
+        expect(result, contains('style="fill-rule:evenodd;;fill:#2861a6;"'));
+        expect(result, contains('style="fill-rule:evenodd;;fill:#e1251b;"'));
+        expect(result, contains('style="fill:#fefefe;"'));
+        expect(result, isNot(contains('class="cls-')));
+      },
+    );
   });
 }
