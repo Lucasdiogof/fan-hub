@@ -7,6 +7,7 @@ import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/news/domain/entities/news_content_block.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 
 class NewsArticlePage extends StatelessWidget {
   const NewsArticlePage({required this.article, super.key});
@@ -102,7 +103,7 @@ class _CoverImage extends StatelessWidget {
           child: imageUrl.isEmpty
               ? ColoredBox(color: colors.secondary)
               : Image.network(
-                  imageUrl,
+                  proxiedImageUrl(imageUrl),
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) =>
                       ColoredBox(color: colors.secondary),

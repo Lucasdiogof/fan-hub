@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/utils/inline_svg_css.dart';
 
 /// Badge esportivo de um time. Prioridade de fonte: `logoUrl` (escudo oficial
@@ -39,7 +40,8 @@ class ClubBadge extends StatelessWidget {
     // idempotente pra URLs que já vêm com %XX válido (ex.: "%20" viraria
     // "%2520"), então não tocamos em URLs já limpas.
     final hasRawNonAscii = rawUrl.codeUnits.any((c) => c > 127);
-    final logoUrl = hasRawNonAscii ? Uri.encodeFull(rawUrl) : rawUrl;
+    final encodedUrl = hasRawNonAscii ? Uri.encodeFull(rawUrl) : rawUrl;
+    final logoUrl = proxiedImageUrl(encodedUrl);
     return SizedBox(
       width: size,
       height: size,

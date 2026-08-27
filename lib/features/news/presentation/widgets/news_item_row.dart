@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/news/domain/entities/news_item.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/widgets/relative_time_label.dart';
 
 /// Item de notícia — imagem + título/categoria/data. Usado tanto no preview
@@ -33,7 +34,7 @@ class NewsItemRow extends StatelessWidget {
                   width: 76,
                   height: 76,
                   child: Image.network(
-                    item.imageUrl,
+                    proxiedImageUrl(item.imageUrl),
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) => ColoredBox(
                       color: colors.secondary,

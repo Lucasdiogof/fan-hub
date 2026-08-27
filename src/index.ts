@@ -7,6 +7,7 @@ import { handleSocialFeed } from './social/feed';
 import { handleNewsList } from './news/list';
 import { handleNewsArticle } from './news/article';
 import { syncInstagram } from './social/instagram_sync';
+import { handleImageProxy } from './media/imageProxy';
 
 const FIXTURE_DETAILS_PATTERN = /^\/api\/football\/fixtures\/([^/]+)\/?$/;
 const NEWS_ARTICLE_PATTERN = /^\/api\/news\/([^/]+)\/?$/;
@@ -50,6 +51,10 @@ export default {
     const newsArticleMatch = pathname.match(NEWS_ARTICLE_PATTERN);
     if (newsArticleMatch) {
       return handleNewsArticle(request, env, decodeURIComponent(newsArticleMatch[1]));
+    }
+
+    if (pathname === '/api/image-proxy') {
+      return handleImageProxy(request, env);
     }
 
     return env.ASSETS.fetch(request);
