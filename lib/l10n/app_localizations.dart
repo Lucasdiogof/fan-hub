@@ -2317,14 +2317,32 @@ abstract class AppLocalizations {
   /// No description provided for @forgotVerifyEmailTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Verifique seu e-mail'**
+  /// **'Confira seu e-mail'**
   String get forgotVerifyEmailTitle;
 
-  /// No description provided for @forgotSentInstructions.
+  /// No description provided for @forgotSentDescription.
   ///
   /// In pt, this message translates to:
-  /// **'Enviamos as instruções de redefinição para {email}.'**
-  String forgotSentInstructions(String email);
+  /// **'Enviamos um link de redefinição para'**
+  String get forgotSentDescription;
+
+  /// No description provided for @forgotNotReceived.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não recebeu?'**
+  String get forgotNotReceived;
+
+  /// No description provided for @forgotResendSuccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'E-mail reenviado.'**
+  String get forgotResendSuccess;
+
+  /// No description provided for @commonGotIt.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entendi'**
+  String get commonGotIt;
 
   /// No description provided for @forgotTitle.
   ///
@@ -2335,13 +2353,13 @@ abstract class AppLocalizations {
   /// No description provided for @forgotSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Informe seu e-mail e enviaremos as instruções para redefinir sua senha.'**
+  /// **'Digite seu e-mail para receber o link de redefinição.'**
   String get forgotSubtitle;
 
   /// No description provided for @forgotSendButton.
   ///
   /// In pt, this message translates to:
-  /// **'ENVIAR INSTRUÇÕES'**
+  /// **'Enviar link'**
   String get forgotSendButton;
 
   /// No description provided for @forgotSending.

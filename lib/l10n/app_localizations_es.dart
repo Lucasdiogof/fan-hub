@@ -1257,19 +1257,27 @@ class AppLocalizationsEs extends AppLocalizations {
   String get forgotVerifyEmailTitle => 'Revisa tu correo';
 
   @override
-  String forgotSentInstructions(String email) {
-    return 'Enviamos las instrucciones de restablecimiento a $email.';
-  }
+  String get forgotSentDescription =>
+      'Enviamos un enlace de restablecimiento a';
+
+  @override
+  String get forgotNotReceived => '¿No lo recibiste?';
+
+  @override
+  String get forgotResendSuccess => 'Correo reenviado.';
+
+  @override
+  String get commonGotIt => 'Entendido';
 
   @override
   String get forgotTitle => 'Recuperar contraseña';
 
   @override
   String get forgotSubtitle =>
-      'Ingresa tu correo y te enviaremos las instrucciones para restablecer tu contraseña.';
+      'Escribe tu correo para recibir el enlace de restablecimiento.';
 
   @override
-  String get forgotSendButton => 'ENVIAR INSTRUCCIONES';
+  String get forgotSendButton => 'Enviar enlace';
 
   @override
   String get forgotSending => 'Enviando...';

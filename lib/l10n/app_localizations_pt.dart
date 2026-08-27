@@ -1253,22 +1253,29 @@ class AppLocalizationsPt extends AppLocalizations {
       'Sua senha foi atualizada. Entre novamente para continuar.';
 
   @override
-  String get forgotVerifyEmailTitle => 'Verifique seu e-mail';
+  String get forgotVerifyEmailTitle => 'Confira seu e-mail';
 
   @override
-  String forgotSentInstructions(String email) {
-    return 'Enviamos as instruções de redefinição para $email.';
-  }
+  String get forgotSentDescription => 'Enviamos um link de redefinição para';
+
+  @override
+  String get forgotNotReceived => 'Não recebeu?';
+
+  @override
+  String get forgotResendSuccess => 'E-mail reenviado.';
+
+  @override
+  String get commonGotIt => 'Entendi';
 
   @override
   String get forgotTitle => 'Recuperar senha';
 
   @override
   String get forgotSubtitle =>
-      'Informe seu e-mail e enviaremos as instruções para redefinir sua senha.';
+      'Digite seu e-mail para receber o link de redefinição.';
 
   @override
-  String get forgotSendButton => 'ENVIAR INSTRUÇÕES';
+  String get forgotSendButton => 'Enviar link';
 
   @override
   String get forgotSending => 'Enviando...';

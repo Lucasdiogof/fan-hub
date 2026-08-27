@@ -419,10 +419,13 @@
   "resetPasswordSuccessMessage": "Your password has been updated. Sign in again to continue.",
 
   "forgotVerifyEmailTitle": "Check your email",
-  "forgotSentInstructions": "We sent the reset instructions to {email}.",
+  "forgotSentDescription": "We sent a reset link to",
+  "forgotNotReceived": "Didn't get it?",
+  "forgotResendSuccess": "Email resent.",
+  "commonGotIt": "Got it",
   "forgotTitle": "Recover password",
-  "forgotSubtitle": "Enter your email and we'll send instructions to reset your password.",
-  "forgotSendButton": "SEND INSTRUCTIONS",
+  "forgotSubtitle": "Enter your email to get the reset link.",
+  "forgotSendButton": "Send link",
   "forgotSending": "Sending...",
 
   "authShowPassword": "Show password",

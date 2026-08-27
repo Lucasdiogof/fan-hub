@@ -419,10 +419,13 @@
   "resetPasswordSuccessMessage": "Tu contraseña se ha actualizado. Inicia sesión de nuevo para continuar.",
 
   "forgotVerifyEmailTitle": "Revisa tu correo",
-  "forgotSentInstructions": "Enviamos las instrucciones de restablecimiento a {email}.",
+  "forgotSentDescription": "Enviamos un enlace de restablecimiento a",
+  "forgotNotReceived": "¿No lo recibiste?",
+  "forgotResendSuccess": "Correo reenviado.",
+  "commonGotIt": "Entendido",
   "forgotTitle": "Recuperar contraseña",
-  "forgotSubtitle": "Ingresa tu correo y te enviaremos las instrucciones para restablecer tu contraseña.",
-  "forgotSendButton": "ENVIAR INSTRUCCIONES",
+  "forgotSubtitle": "Escribe tu correo para recibir el enlace de restablecimiento.",
+  "forgotSendButton": "Enviar enlace",
   "forgotSending": "Enviando...",
 
   "authShowPassword": "Mostrar contraseña",
