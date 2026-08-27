@@ -9,13 +9,10 @@ import 'package:goias_app/features/match/domain/entities/team.dart';
 class MockData {
   const MockData._();
 
-  // TODO(api-football): `id: 1` é placeholder, não confirmado — a Home ainda
-  // usa só mocks. Depois que o ID real do Goiás for confirmado via
-  // GET /api/football/discover?search=Goias, atualize aqui: esse mesmo `id`
-  // é usado pra destacar a linha do Goiás na classificação real
-  // (StandingsView compara `standing.team.id == MockData.goias.id`).
+  // Id real do Goiás no OneFootball (ver `Team.goiasId`), não mais um
+  // placeholder — confirmado via `GOIAS_ONEFOOTBALL_SLUG` no Worker.
   static const goias = Team(
-    id: 1,
+    id: Team.goiasId,
     name: 'Goiás',
     shortName: 'GO',
     color: Color(0xFF004C1B),

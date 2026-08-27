@@ -27,10 +27,16 @@ class Team extends Equatable {
   /// de partidas (header/banner da Home), não relacionado a `logoUrl`.
   final String? crestAsset;
 
-  /// A API não expõe um id estável de time pra comparar (`goiasTeamId` não
-  /// existe) — mesma heurística por nome já usada em outros pontos do app
-  /// (ver `_isGoiasHome` em `crowd_lineup_page.dart`), centralizada aqui.
-  bool get isGoias => name.toLowerCase().contains('goi');
+  /// `1863` é o id do Goiás no OneFootball — o mesmo número do slug
+  /// `goias-1863` (`GOIAS_ONEFOOTBALL_SLUG` no `wrangler.toml`), extraído
+  /// pelo Worker direto da URL do escudo/path do time (ver
+  /// `extractTeamIdFromCrest`/`extractTeamIdFromPath` em
+  /// `src/football/normalize/*.ts`) — o mesmo padrão que as standings já
+  /// usam pra decidir `isGoias` no backend. Nome só entra como fallback
+  /// defensivo (cobre `MockData`/id ausente), nunca como regra principal.
+  static const int goiasId = 1863;
+
+  bool get isGoias => id == goiasId || name.toLowerCase().contains('goi');
 
   @override
   List<Object?> get props => [id, name, shortName, color, logoUrl, crestAsset];

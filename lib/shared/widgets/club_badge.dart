@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
@@ -7,11 +8,26 @@ import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/utils/inline_svg_css.dart';
 
-/// Badge esportivo de um time. Prioridade de fonte: `logoUrl` (escudo oficial
-/// vindo da API-Football, com loading/erro) → `crestAsset` (vetor local, hoje
-/// só o Goiás) → escudo desenhado como último recurso. O círculo genérico com
-/// sigla nunca é a aparência "normal" — só aparece quando não há nenhum
-/// escudo disponível ou o carregamento da rede falha.
+/// Safari/iOS no Web (inclusive PWA) tem um bug conhecido do CanvasKit onde
+/// imagens de rede viram retângulo preto sólido depois de um repaint em
+/// massa (ex.: `MaterialApp` inteiro reconstruindo ao trocar de tema) — a
+/// textura da GPU não sobrevive ao rebuild. Só nessa combinação específica,
+/// escudo de adversário sai do pipeline CanvasKit/WebGL e vira um elemento
+/// `<img>` HTML de verdade (imune a esse bug, já que não passa pela GPU do
+/// Flutter) via `webHtmlElementStrategy`. Em qualquer outro ambiente
+/// (Android, iOS nativo, Chrome/Edge desktop, Android Web) o caminho
+/// continua o de sempre — não vale o custo de um platform view ali.
+bool get _isIosWeb => kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
+
+/// Badge esportivo de um time — fonte única de verdade pra escudo de clube
+/// no app inteiro (nenhuma outra tela busca/renderiza escudo por conta
+/// própria). Prioridade: Goiás sempre usa o asset oficial local (nunca
+/// rede) → `logoUrl` (escudo vindo do Worker/OneFootball, via elemento HTML
+/// no Safari/iOS Web — ver `_isIosWeb` — ou pipeline normal do Flutter nos
+/// demais ambientes) → `crestAsset` (vetor local de fallback) → escudo
+/// desenhado como último recurso. O círculo genérico com sigla nunca é a
+/// aparência "normal" — só aparece quando não há nenhum escudo disponível
+/// ou o carregamento da rede falha.
 class ClubBadge extends StatelessWidget {
   const ClubBadge({
     required this.team,
@@ -33,8 +49,10 @@ class ClubBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     // O Goiás sempre usa o brasão oficial embutido no app, nunca o que a
     // fonte de dado ao vivo devolve — evita depender da rede pra mostrar o
-    // escudo do próprio clube, e garante que é sempre a arte oficial.
+    // escudo do próprio clube, e garante que é sempre a arte oficial. Nunca
+    // muda com o tema: é um `Image.asset` puro, sem filtro de cor nenhum.
     if (team.isGoias) {
+      _debugLog(source: 'asset:goias');
       return Image.asset(
         AppAssets.goiasCrestBadge,
         width: size,
@@ -45,6 +63,7 @@ class ClubBadge extends StatelessWidget {
 
     final rawUrl = team.logoUrl;
     if (rawUrl == null || rawUrl.isEmpty) {
+      _debugLog(source: 'fallback:no-logo-url');
       return _fallback(context);
     }
     // Alguns nomes de time viram acento cru na URL (ex.: ".../avaí.svg"),
@@ -54,13 +73,40 @@ class ClubBadge extends StatelessWidget {
     // "%2520"), então não tocamos em URLs já limpas.
     final hasRawNonAscii = rawUrl.codeUnits.any((c) => c > 127);
     final encodedUrl = hasRawNonAscii ? Uri.encodeFull(rawUrl) : rawUrl;
+    // Estável por design: só depende de `team.logoUrl` (dado), nunca de
+    // `Theme.of(context)`/tema — trocar tema não pode recriar essa URL nem
+    // invalidar o `ImageProvider` que já está decodificado.
     final logoUrl = proxiedImageUrl(encodedUrl);
+
+    if (_isIosWeb) {
+      _debugLog(source: 'network:html-element', url: rawUrl, proxied: logoUrl);
+      return SizedBox(
+        width: size,
+        height: size,
+        child: _iosWebBadge(context, logoUrl),
+      );
+    }
+
+    _debugLog(
+      source: _isSvg(logoUrl) ? 'network:svg' : 'network:raster',
+      url: rawUrl,
+      proxied: logoUrl,
+    );
     return SizedBox(
       width: size,
       height: size,
       child: _isSvg(logoUrl)
           ? _svgBadge(context, logoUrl)
           : _rasterBadge(context, logoUrl),
+    );
+  }
+
+  void _debugLog({required String source, String? url, String? proxied}) {
+    if (!kDebugMode) return;
+    debugPrint(
+      '[ClubBadge] team="${team.name}" id=${team.id} isGoias=${team.isGoias} '
+      'source=$source isWeb=$kIsWeb platform=$defaultTargetPlatform '
+      'url=$url proxied=$proxied',
     );
   }
 
@@ -89,6 +135,26 @@ class ClubBadge extends StatelessWidget {
       fadeInDuration: const Duration(milliseconds: 180),
       placeholder: (context, _) => _LoadingBadge(size: size),
       errorWidget: (context, _, _) => _fallback(context),
+    );
+  }
+
+  /// Só pro Safari/iOS Web (ver `_isIosWeb`) — pede pro Flutter renderizar
+  /// via elemento `<img>` HTML de verdade em vez do pipeline CanvasKit/WebGL
+  /// normal. `CachedNetworkImage` não aceita essa estratégia (é exclusiva do
+  /// `NetworkImage`/`Image.network` do próprio framework), então esse caminho
+  /// não passa pelo cache em disco — sem problema aqui, o navegador já
+  /// cacheia o `<img>` sozinho respeitando o `cache-control` de 7 dias que o
+  /// Worker já manda (ver `src/media/imageProxy.ts`).
+  Widget _iosWebBadge(BuildContext context, String url) {
+    return Image.network(
+      url,
+      width: size,
+      height: size,
+      fit: BoxFit.contain,
+      webHtmlElementStrategy: WebHtmlElementStrategy.prefer,
+      loadingBuilder: (context, child, progress) =>
+          progress == null ? child : _LoadingBadge(size: size),
+      errorBuilder: (context, error, stackTrace) => _fallback(context),
     );
   }
 
