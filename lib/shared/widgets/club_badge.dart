@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/utils/inline_svg_css.dart';
@@ -30,6 +31,18 @@ class ClubBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // O Goiás sempre usa o brasão oficial embutido no app, nunca o que a
+    // fonte de dado ao vivo devolve — evita depender da rede pra mostrar o
+    // escudo do próprio clube, e garante que é sempre a arte oficial.
+    if (team.isGoias) {
+      return Image.asset(
+        AppAssets.goiasCrestBadge,
+        width: size,
+        height: size,
+        fit: BoxFit.contain,
+      );
+    }
+
     final rawUrl = team.logoUrl;
     if (rawUrl == null || rawUrl.isEmpty) {
       return _fallback(context);

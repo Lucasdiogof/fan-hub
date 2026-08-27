@@ -11,8 +11,7 @@ class Team extends Equatable {
     this.crestAsset,
   });
 
-  /// ID oficial do time na API-Football. Usar sempre esse campo pra
-  /// identificar o Goiás (`team.id == goiasTeamId`) — nunca comparar nome.
+  /// ID do time na fonte de dado ao vivo (OneFootball).
   final int id;
   final String name;
   final String shortName;
@@ -27,6 +26,11 @@ class Team extends Equatable {
   /// Vetor local — usado só para a marca do próprio Goiás fora do contexto
   /// de partidas (header/banner da Home), não relacionado a `logoUrl`.
   final String? crestAsset;
+
+  /// A API não expõe um id estável de time pra comparar (`goiasTeamId` não
+  /// existe) — mesma heurística por nome já usada em outros pontos do app
+  /// (ver `_isGoiasHome` em `crowd_lineup_page.dart`), centralizada aqui.
+  bool get isGoias => name.toLowerCase().contains('goi');
 
   @override
   List<Object?> get props => [id, name, shortName, color, logoUrl, crestAsset];

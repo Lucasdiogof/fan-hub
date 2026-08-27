@@ -7,6 +7,14 @@ class AppAssets {
 
   static const String goiasCrest = 'lib/assets/branding/logo.svg';
 
+  /// Escudo oficial do Goiás em PNG, com as cores reais (não é um traço
+  /// monocromático pra tingir) — usado sempre que o app precisa MOSTRAR o
+  /// escudo do Goiás como identificação de time (confrontos, jogos,
+  /// loadings), nunca precisando da rede pra isso. Ver [goiasCrest] pro
+  /// traço vetorial tingível usado nos poucos lugares que ainda precisam de
+  /// uma cor sólida (selo do login, PDF do ingresso).
+  static const String goiasCrestBadge = 'lib/assets/branding/goias_crest.png';
+
   static const String loginBackground =
       'lib/assets/branding/background_login.png';
 
