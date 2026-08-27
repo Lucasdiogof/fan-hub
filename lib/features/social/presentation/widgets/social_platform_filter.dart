@@ -11,6 +11,7 @@ class SocialPlatformFilter extends StatelessWidget {
 
   static const _filters = [
     (label: 'YOUTUBE', platform: SocialPlatform.youtube),
+    (label: 'INSTAGRAM', platform: SocialPlatform.instagram),
     (label: 'X', platform: SocialPlatform.x),
   ];
 
