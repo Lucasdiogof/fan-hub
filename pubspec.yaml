@@ -50,6 +50,7 @@ flutter:
     - lib/assets/sponsors/
     - lib/assets/branding/
     - lib/assets/mock/
+    - lib/assets/games/guess_player/
     - lib/assets/games/penalty/
     - lib/assets/squad/
     - lib/assets/videos/
