@@ -14,12 +14,12 @@ class SocialFeedCubit extends Cubit<SocialFeedState> {
 
   Future<void> load() async {
     emit(state.copyWith(status: LoadStatus.loading));
-    final result = await _repository.getFeed(platform: state.selectedPlatform);
+    final result = await _repository.getFeed();
     switch (result) {
       case Success(:final data):
         emit(state.copyWith(
           status: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
-          posts: data,
+          allPosts: data,
           errorMessage: () => null,
         ));
       case Error(:final failure):
@@ -33,7 +33,6 @@ class SocialFeedCubit extends Cubit<SocialFeedState> {
   void selectPlatform(SocialPlatform? platform) {
     if (platform == state.selectedPlatform) return;
     emit(state.copyWith(selectedPlatform: () => platform));
-    load();
   }
 
   Future<void> refresh() => load();
