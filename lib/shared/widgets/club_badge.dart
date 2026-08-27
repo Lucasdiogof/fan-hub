@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,16 +55,18 @@ class ClubBadge extends StatelessWidget {
   }
 
   Widget _rasterBadge(BuildContext context, String url) {
-    return Image.network(
-      url,
+    // `CachedNetworkImage` guarda o escudo em disco, então depois da primeira
+    // vez ele aparece na hora em qualquer reabertura do app — sem o "flash"
+    // do círculo vazio enquanto rebuscava da rede. O `fadeIn` curto suaviza
+    // a primeira aparição (quando ainda não está em cache).
+    return CachedNetworkImage(
+      imageUrl: url,
       width: size,
       height: size,
       fit: BoxFit.contain,
-      loadingBuilder: (context, child, progress) {
-        if (progress == null) return child;
-        return _LoadingBadge(size: size);
-      },
-      errorBuilder: (context, error, stackTrace) => _fallback(context),
+      fadeInDuration: const Duration(milliseconds: 180),
+      placeholder: (context, _) => _LoadingBadge(size: size),
+      errorWidget: (context, _, _) => _fallback(context),
     );
   }
 
