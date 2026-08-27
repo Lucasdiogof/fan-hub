@@ -128,7 +128,10 @@ class NextMatchCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text(context.l10n.matchBuyTicket),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(context.l10n.matchBuyTicket, maxLines: 1),
+                  ),
                 ),
               ),
               const SizedBox(width: AppSpacing.md),
@@ -147,7 +150,10 @@ class NextMatchCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  child: Text(context.l10n.matchDetailsShort),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(context.l10n.matchDetailsShort, maxLines: 1),
+                  ),
                 ),
               ),
             ],

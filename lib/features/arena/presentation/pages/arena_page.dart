@@ -8,7 +8,6 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
-import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
@@ -419,11 +418,10 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                         builder: (context, constraints) => GridView.count(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          crossAxisCount: responsiveColumnCount(
-                            constraints.maxWidth,
-                            itemWidth: 260,
-                            maxColumns: 3,
-                          ),
+                          crossAxisCount: switch (constraints.maxWidth) {
+                            < 500 => 2,
+                            _ => 3,
+                          },
                           mainAxisSpacing: AppSpacing.md,
                           crossAxisSpacing: AppSpacing.md,
                           childAspectRatio: 1.08,

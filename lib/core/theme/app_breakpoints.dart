@@ -63,12 +63,16 @@ extension AppScreenSizeX on BuildContext {
 /// Quantas colunas um grid deveria ter dado o espaço DISPONÍVEL (não a tela
 /// inteira) — pensado pra ser chamado com `constraints.maxWidth` de dentro
 /// de um `LayoutBuilder`, não com a largura da janela. `itemWidth` é a
-/// largura confortável de um item; o resultado nunca passa de [maxColumns].
+/// largura confortável de um item; o resultado nunca passa de [maxColumns]
+/// nem fica abaixo de [minColumns] — sem um piso, uma tela de celular mais
+/// estreita que `itemWidth` cai pra 1 coluna e estica o card inteiro, que já
+/// foi um bug real aqui (ver Arena).
 int responsiveColumnCount(
   double availableWidth, {
   double itemWidth = 220,
+  int minColumns = 1,
   int maxColumns = 4,
 }) {
   final columns = (availableWidth / itemWidth).floor();
-  return columns.clamp(1, maxColumns);
+  return columns.clamp(minColumns, maxColumns);
 }
