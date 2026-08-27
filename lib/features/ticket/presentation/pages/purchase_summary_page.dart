@@ -122,182 +122,198 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
         return Scaffold(
           backgroundColor: colors.background,
           body: SafeArea(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Row(
-                    children: [
-                      BackButtonCircle(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        AppSpacing.md,
+                        AppSpacing.lg,
+                        0,
                       ),
-                      const SizedBox(width: AppSpacing.md),
-                      Expanded(
-                        child: PageTitle(context.l10n.ticketsSummaryTitle),
+                      child: Row(
+                        children: [
+                          BackButtonCircle(
+                            onTap: () => context.canPop()
+                                ? context.pop()
+                                : context.go('/'),
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: PageTitle(context.l10n.ticketsSummaryTitle),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
                     ),
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(AppSpacing.lg),
-                        decoration: BoxDecoration(
-                          color: colors.surface,
-                          borderRadius: BorderRadius.circular(AppRadius.card),
-                          border: Border.all(color: colors.border),
+                    Expanded(
+                      child: ListView(
+                        padding: const EdgeInsets.fromLTRB(
+                          AppSpacing.lg,
+                          AppSpacing.lg,
+                          AppSpacing.lg,
+                          AppSpacing.xxxl,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}',
-                              style: TextStyle(
-                                fontSize: 15.5,
-                                fontWeight: FontWeight.w800,
-                                color: colors.textPrimary,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(AppSpacing.lg),
+                            decoration: BoxDecoration(
+                              color: colors.surface,
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.card,
                               ),
+                              border: Border.all(color: colors.border),
                             ),
-                            const SizedBox(height: 2),
-                            if (match.kickoff != null)
-                              Text(
-                                '${fullDateLabel(match.kickoff!)} às ${timeLabel(match.kickoff!)}',
-                                style: TextStyle(
-                                  fontSize: 12.5,
-                                  color: colors.textSecondary,
-                                ),
-                              ),
-                            const SizedBox(height: AppSpacing.md),
-                            Container(height: 1, color: colors.border),
-                            const SizedBox(height: AppSpacing.md),
-                            for (final item in state.items) ...[
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${item.sectorName} · ${item.gate}',
-                                          style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w700,
-                                            color: colors.textPrimary,
-                                          ),
-                                        ),
-                                        Text(
-                                          '${item.categoryLabel} · ${item.quantity}x ${formatBrl(item.unitPrice)}',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: colors.textSecondary,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Text(
-                                    formatBrl(item.subtotal),
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w700,
-                                      color: colors.textPrimary,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: AppSpacing.sm),
-                            ],
-                            Container(height: 1, color: colors.border),
-                            const SizedBox(height: AppSpacing.sm),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  context.l10n.ticketsTotalLabel,
+                                  '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}',
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
+                                    fontSize: 15.5,
+                                    fontWeight: FontWeight.w800,
                                     color: colors.textPrimary,
                                   ),
                                 ),
-                                Text(
-                                  formatBrl(state.total),
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w900,
-                                    color: colors.primary,
+                                const SizedBox(height: 2),
+                                if (match.kickoff != null)
+                                  Text(
+                                    '${fullDateLabel(match.kickoff!)} às ${timeLabel(match.kickoff!)}',
+                                    style: TextStyle(
+                                      fontSize: 12.5,
+                                      color: colors.textSecondary,
+                                    ),
                                   ),
+                                const SizedBox(height: AppSpacing.md),
+                                Container(height: 1, color: colors.border),
+                                const SizedBox(height: AppSpacing.md),
+                                for (final item in state.items) ...[
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              '${item.sectorName} · ${item.gate}',
+                                              style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w700,
+                                                color: colors.textPrimary,
+                                              ),
+                                            ),
+                                            Text(
+                                              '${item.categoryLabel} · ${item.quantity}x ${formatBrl(item.unitPrice)}',
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: colors.textSecondary,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Text(
+                                        formatBrl(item.subtotal),
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w700,
+                                          color: colors.textPrimary,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: AppSpacing.sm),
+                                ],
+                                Container(height: 1, color: colors.border),
+                                const SizedBox(height: AppSpacing.sm),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      context.l10n.ticketsTotalLabel,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                        color: colors.textPrimary,
+                                      ),
+                                    ),
+                                    Text(
+                                      formatBrl(state.total),
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w900,
+                                        color: colors.primary,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: AppSpacing.xl),
+                          Text(
+                            context.l10n.ticketsHolderDataTitle,
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 1,
+                              color: colors.textHint,
+                            ),
+                          ),
+                          const SizedBox(height: AppSpacing.md),
+                          _SelfCheckbox(profile: widget.profile),
+                          const SizedBox(height: AppSpacing.md),
+                          TextField(
+                            controller: _nameController,
+                            enabled: !state.holderIsSelf,
+                            onChanged: context
+                                .read<PurchaseCubit>()
+                                .setHolderName,
+                            decoration: InputDecoration(
+                              labelText: context.l10n.authFullNameLabel,
+                            ),
+                          ),
+                          const SizedBox(height: AppSpacing.md),
+                          TextField(
+                            controller: _documentController,
+                            enabled: !state.holderIsSelf,
+                            onChanged: context
+                                .read<PurchaseCubit>()
+                                .setHolderDocument,
+                            decoration: InputDecoration(
+                              labelText: context.l10n.ticketsDocumentLabel,
+                            ),
+                          ),
+                          const SizedBox(height: AppSpacing.md),
+                          Text(
+                            context.l10n.ticketsNominalWarning,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: colors.textHint,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: AppSpacing.xl),
-                      Text(
-                        context.l10n.ticketsHolderDataTitle,
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 1,
-                          color: colors.textHint,
-                        ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(AppSpacing.lg),
+                      child: AppPrimaryButton(
+                        label: context.l10n.ticketsFinalizePurchaseButton,
+                        loading: state.saving,
+                        onPressed: state.canFinalize
+                            ? () => context
+                                  .read<PurchaseCubit>()
+                                  .finalizePurchase()
+                            : null,
                       ),
-                      const SizedBox(height: AppSpacing.md),
-                      _SelfCheckbox(profile: widget.profile),
-                      const SizedBox(height: AppSpacing.md),
-                      TextField(
-                        controller: _nameController,
-                        enabled: !state.holderIsSelf,
-                        onChanged: context.read<PurchaseCubit>().setHolderName,
-                        decoration: InputDecoration(
-                          labelText: context.l10n.authFullNameLabel,
-                        ),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      TextField(
-                        controller: _documentController,
-                        enabled: !state.holderIsSelf,
-                        onChanged: context
-                            .read<PurchaseCubit>()
-                            .setHolderDocument,
-                        decoration: InputDecoration(
-                          labelText: context.l10n.ticketsDocumentLabel,
-                        ),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      Text(
-                        context.l10n.ticketsNominalWarning,
-                        style: TextStyle(fontSize: 12, color: colors.textHint),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(AppSpacing.lg),
-                  child: AppPrimaryButton(
-                    label: context.l10n.ticketsFinalizePurchaseButton,
-                    loading: state.saving,
-                    onPressed: state.canFinalize
-                        ? () => context.read<PurchaseCubit>().finalizePurchase()
-                        : null,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         );

@@ -36,148 +36,158 @@ class LineupGuessPage extends StatelessWidget {
                 focusNode: FocusNode()..requestFocus(),
                 autofocus: true,
                 onKeyEvent: (event) => _handlePhysicalKey(context, event),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        AppSpacing.lg,
-                        AppSpacing.md,
-                        AppSpacing.lg,
-                        AppSpacing.md,
-                      ),
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () => Navigator.of(context).pop(),
-                            borderRadius: BorderRadius.circular(999),
-                            child: Container(
-                              width: 38,
-                              height: 38,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: context.colors.secondary,
-                                shape: BoxShape.circle,
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 720),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                            AppSpacing.lg,
+                            AppSpacing.md,
+                            AppSpacing.lg,
+                            AppSpacing.md,
+                          ),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () => Navigator.of(context).pop(),
+                                borderRadius: BorderRadius.circular(999),
+                                child: Container(
+                                  width: 38,
+                                  height: 38,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: context.colors.secondary,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Icon(
+                                    Icons.arrow_back_rounded,
+                                    size: 18,
+                                    color: context.colors.textPrimary,
+                                  ),
+                                ),
                               ),
-                              child: Icon(
-                                Icons.arrow_back_rounded,
-                                size: 18,
-                                color: context.colors.textPrimary,
+                              const SizedBox(width: AppSpacing.md),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    player.shirtNumber != null
+                                        ? context.l10n.lineupShirt(
+                                            player.shirtNumber!,
+                                          )
+                                        : context.l10n.lineupPlayerHeading,
+                                    style: TextStyle(
+                                      color: context.colors.textPrimary,
+                                      fontSize: 19,
+                                      fontWeight: FontWeight.w900,
+                                      letterSpacing: 0.3,
+                                    ),
+                                  ),
+                                  Text(
+                                    player.position,
+                                    style: TextStyle(
+                                      color: context.colors.textHint,
+                                      fontSize: 12.5,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              if (playerState.isDone)
+                                _StatusBadge(solved: playerState.solved)
+                              else
+                                _WordCountBadge(
+                                  answerParts: player.answerParts,
+                                ),
+                            ],
+                          ),
+                        ),
+                        Container(height: 1, color: context.colors.border),
+                        if (!playerState.isDone) ...[
+                          const SizedBox(height: AppSpacing.md),
+                          Text(
+                            context.l10n.lineupTypePlayerName,
+                            style: TextStyle(
+                              color: context.colors.textSecondary,
+                              fontSize: 13.5,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: SingleChildScrollView(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: AppSpacing.lg,
+                                vertical: AppSpacing.lg,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  if (playerState.isDone) ...[
+                                    Text(
+                                      player.displayName,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: playerState.solved
+                                            ? context.colors.success
+                                            : context.colors.error,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                    ),
+                                    const SizedBox(height: AppSpacing.lg),
+                                  ],
+                                  LineupLetterGrid(
+                                    answerParts: player.answerParts,
+                                    guesses: playerState.guesses,
+                                    currentGuessLetters:
+                                        state.currentGuessLetters,
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                          const SizedBox(width: AppSpacing.md),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                player.shirtNumber != null
-                                    ? context.l10n.lineupShirt(
-                                        player.shirtNumber!,
-                                      )
-                                    : context.l10n.lineupPlayerHeading,
-                                style: TextStyle(
-                                  color: context.colors.textPrimary,
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 0.3,
-                                ),
-                              ),
-                              Text(
-                                player.position,
-                                style: TextStyle(
-                                  color: context.colors.textHint,
-                                  fontSize: 12.5,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ],
+                        ),
+                        if (!playerState.isDone)
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(
+                              AppSpacing.sm,
+                              0,
+                              AppSpacing.sm,
+                              AppSpacing.md,
+                            ),
+                            child: LineupKeyboard(
+                              keyboardState: playerState.keyboardState,
+                              onLetter: (letter) {
+                                HapticFeedback.selectionClick();
+                                context.read<LineupCubit>().addLetter(letter);
+                              },
+                              onDelete: () {
+                                HapticFeedback.selectionClick();
+                                context.read<LineupCubit>().removeLetter();
+                              },
+                              onEnter: () => _submit(context),
+                              canSubmit: context.read<LineupCubit>().canSubmit,
+                            ),
+                          )
+                        else
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: AppSpacing.xl,
+                            ),
+                            child: TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Text(context.l10n.lineupBackToField),
+                            ),
                           ),
-                          const Spacer(),
-                          if (playerState.isDone)
-                            _StatusBadge(solved: playerState.solved)
-                          else
-                            _WordCountBadge(answerParts: player.answerParts),
-                        ],
-                      ),
+                      ],
                     ),
-                    Container(height: 1, color: context.colors.border),
-                    if (!playerState.isDone) ...[
-                      const SizedBox(height: AppSpacing.md),
-                      Text(
-                        context.l10n.lineupTypePlayerName,
-                        style: TextStyle(
-                          color: context.colors.textSecondary,
-                          fontSize: 13.5,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: SingleChildScrollView(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: AppSpacing.lg,
-                            vertical: AppSpacing.lg,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (playerState.isDone) ...[
-                                Text(
-                                  player.displayName,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: playerState.solved
-                                        ? context.colors.success
-                                        : context.colors.error,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                const SizedBox(height: AppSpacing.lg),
-                              ],
-                              LineupLetterGrid(
-                                answerParts: player.answerParts,
-                                guesses: playerState.guesses,
-                                currentGuessLetters: state.currentGuessLetters,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    if (!playerState.isDone)
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(
-                          AppSpacing.sm,
-                          0,
-                          AppSpacing.sm,
-                          AppSpacing.md,
-                        ),
-                        child: LineupKeyboard(
-                          keyboardState: playerState.keyboardState,
-                          onLetter: (letter) {
-                            HapticFeedback.selectionClick();
-                            context.read<LineupCubit>().addLetter(letter);
-                          },
-                          onDelete: () {
-                            HapticFeedback.selectionClick();
-                            context.read<LineupCubit>().removeLetter();
-                          },
-                          onEnter: () => _submit(context),
-                          canSubmit: context.read<LineupCubit>().canSubmit,
-                        ),
-                      )
-                    else
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: AppSpacing.xl),
-                        child: TextButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: Text(context.l10n.lineupBackToField),
-                        ),
-                      ),
-                  ],
+                  ),
                 ),
               );
             },

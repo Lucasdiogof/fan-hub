@@ -75,110 +75,119 @@ class _RankingView extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.md,
-                AppSpacing.sm,
-                AppSpacing.lg,
-                AppSpacing.sm,
-              ),
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
-                    borderRadius: BorderRadius.circular(999),
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: colors.secondary,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        Icons.arrow_back_rounded,
-                        size: 20,
-                        color: colors.textPrimary,
-                      ),
-                    ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.md,
+                    AppSpacing.sm,
+                    AppSpacing.lg,
+                    AppSpacing.sm,
                   ),
-                  const SizedBox(width: AppSpacing.sm),
-                  Text(
-                    context.l10n.arenaRankingTitle,
-                    style: TextStyle(
-                      fontSize: 19,
-                      fontWeight: FontWeight.w900,
-                      color: colors.textPrimary,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-              child: BlocBuilder<RankingCubit, RankingState>(
-                buildWhen: (previous, current) =>
-                    previous.period != current.period,
-                builder: (context, state) => _PeriodSegmented(
-                  period: state.period,
-                  onChanged: (period) =>
-                      context.read<RankingCubit>().selectPeriod(period),
-                ),
-              ),
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            Expanded(
-              child: BlocBuilder<RankingCubit, RankingState>(
-                builder: (context, state) {
-                  if (state.status == LoadStatus.loading ||
-                      state.status == LoadStatus.initial) {
-                    return const Center(child: GoiasLoadingIndicator());
-                  }
-                  if (state.status == LoadStatus.error) {
-                    return _ErrorRanking(
-                      onRetry: () => context.read<RankingCubit>().load(),
-                    );
-                  }
-                  if (state.entries.isEmpty) {
-                    return const _EmptyRanking();
-                  }
-                  return ListView.separated(
-                    padding: EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.sm,
-                      AppSpacing.lg,
-                      state.showPinnedPosition
-                          ? AppSpacing.xxxl + 80
-                          : AppSpacing.xxxl,
-                    ),
-                    itemCount: state.entries.length,
-                    separatorBuilder: (_, _) =>
-                        const SizedBox(height: AppSpacing.sm),
-                    itemBuilder: (context, index) {
-                      final entry = state.entries[index];
-                      final above = index > 0 ? state.entries[index - 1] : null;
-                      return _RankRow(
-                        entry: entry,
-                        onTap: () => _showDetail(
-                          context,
-                          entry,
-                          state.period,
-                          pointsToNext: above == null
-                              ? null
-                              : above.totalScore - entry.totalScore,
-                          nextRank: above?.rank,
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () =>
+                            context.canPop() ? context.pop() : context.go('/'),
+                        borderRadius: BorderRadius.circular(999),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: colors.secondary,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            Icons.arrow_back_rounded,
+                            size: 20,
+                            color: colors.textPrimary,
+                          ),
                         ),
+                      ),
+                      const SizedBox(width: AppSpacing.sm),
+                      Text(
+                        context.l10n.arenaRankingTitle,
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w900,
+                          color: colors.textPrimary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.lg,
+                  ),
+                  child: BlocBuilder<RankingCubit, RankingState>(
+                    buildWhen: (previous, current) =>
+                        previous.period != current.period,
+                    builder: (context, state) => _PeriodSegmented(
+                      period: state.period,
+                      onChanged: (period) =>
+                          context.read<RankingCubit>().selectPeriod(period),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                Expanded(
+                  child: BlocBuilder<RankingCubit, RankingState>(
+                    builder: (context, state) {
+                      if (state.status == LoadStatus.loading ||
+                          state.status == LoadStatus.initial) {
+                        return const Center(child: GoiasLoadingIndicator());
+                      }
+                      if (state.status == LoadStatus.error) {
+                        return _ErrorRanking(
+                          onRetry: () => context.read<RankingCubit>().load(),
+                        );
+                      }
+                      if (state.entries.isEmpty) {
+                        return const _EmptyRanking();
+                      }
+                      return ListView.separated(
+                        padding: EdgeInsets.fromLTRB(
+                          AppSpacing.lg,
+                          AppSpacing.sm,
+                          AppSpacing.lg,
+                          state.showPinnedPosition
+                              ? AppSpacing.xxxl + 80
+                              : AppSpacing.xxxl,
+                        ),
+                        itemCount: state.entries.length,
+                        separatorBuilder: (_, _) =>
+                            const SizedBox(height: AppSpacing.sm),
+                        itemBuilder: (context, index) {
+                          final entry = state.entries[index];
+                          final above = index > 0
+                              ? state.entries[index - 1]
+                              : null;
+                          return _RankRow(
+                            entry: entry,
+                            onTap: () => _showDetail(
+                              context,
+                              entry,
+                              state.period,
+                              pointsToNext: above == null
+                                  ? null
+                                  : above.totalScore - entry.totalScore,
+                              nextRank: above?.rank,
+                            ),
+                          );
+                        },
                       );
                     },
-                  );
-                },
-              ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
       bottomNavigationBar: BlocBuilder<RankingCubit, RankingState>(
@@ -190,16 +199,21 @@ class _RankingView extends StatelessWidget {
           final myRank = state.myRank!;
           return SafeArea(
             top: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                0,
-                AppSpacing.lg,
-                AppSpacing.md,
-              ),
-              child: _PinnedPositionCard(
-                rank: myRank.rank,
-                score: myRank.totalScore,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    0,
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                  ),
+                  child: _PinnedPositionCard(
+                    rank: myRank.rank,
+                    score: myRank.totalScore,
+                  ),
+                ),
               ),
             ),
           );

@@ -49,50 +49,58 @@ class _ClubSongDetailsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(
-            AppSpacing.lg,
-            AppSpacing.md,
-            AppSpacing.lg,
-            AppSpacing.xxxl,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(children: [BackButtonCircle(onTap: () => context.pop())]),
-              const SizedBox(height: AppSpacing.lg),
-              Text(
-                song.title,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
-                  color: colors.primary,
-                  height: 1.2,
-                ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.md,
+                AppSpacing.lg,
+                AppSpacing.xxxl,
               ),
-              if (song.artist != null) ...[
-                const SizedBox(height: 2),
-                Text(
-                  song.artist!,
-                  style: TextStyle(fontSize: 14, color: colors.textSecondary),
-                ),
-              ],
-              const SizedBox(height: AppSpacing.xl),
-              _SongPlayer(song: song),
-              const SizedBox(height: AppSpacing.xxl),
-              ClubSectionLabel(context.l10n.clubLyricsLabel),
-              const SizedBox(height: AppSpacing.md),
-              Text(
-                song.lyrics ?? context.l10n.clubLyricsUnavailable,
-                style: TextStyle(
-                  fontSize: 16,
-                  height: 1.6,
-                  color: song.lyrics != null
-                      ? colors.textPrimary
-                      : colors.textHint,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(children: [BackButtonCircle(onTap: () => context.pop())]),
+                  const SizedBox(height: AppSpacing.lg),
+                  Text(
+                    song.title,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                      color: colors.primary,
+                      height: 1.2,
+                    ),
+                  ),
+                  if (song.artist != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      song.artist!,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: colors.textSecondary,
+                      ),
+                    ),
+                  ],
+                  const SizedBox(height: AppSpacing.xl),
+                  _SongPlayer(song: song),
+                  const SizedBox(height: AppSpacing.xxl),
+                  ClubSectionLabel(context.l10n.clubLyricsLabel),
+                  const SizedBox(height: AppSpacing.md),
+                  Text(
+                    song.lyrics ?? context.l10n.clubLyricsUnavailable,
+                    style: TextStyle(
+                      fontSize: 16,
+                      height: 1.6,
+                      color: song.lyrics != null
+                          ? colors.textPrimary
+                          : colors.textHint,
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

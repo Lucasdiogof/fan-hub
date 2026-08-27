@@ -58,37 +58,43 @@ class _MatchDetailsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: _BackButton(onTap: () => context.pop()),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
+                  child: _BackButton(onTap: () => context.pop()),
+                ),
+                Expanded(
+                  child: BlocBuilder<MatchDetailsCubit, MatchDetailsState>(
+                    builder: (context, state) {
+                      return RefreshableStateView(
+                        status: state.status,
+                        onRefresh: () =>
+                            context.read<MatchDetailsCubit>().load(),
+                        errorMessage: state.errorMessage,
+                        emptyIcon: Icons.sports_soccer_outlined,
+                        emptyTitle: context.l10n.matchDetailsLoadError,
+                        successBuilder: (context) => _MatchDetailsContent(
+                          match: state.match!,
+                          events: state.events,
+                          lineups: state.lineups,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: BlocBuilder<MatchDetailsCubit, MatchDetailsState>(
-                builder: (context, state) {
-                  return RefreshableStateView(
-                    status: state.status,
-                    onRefresh: () => context.read<MatchDetailsCubit>().load(),
-                    errorMessage: state.errorMessage,
-                    emptyIcon: Icons.sports_soccer_outlined,
-                    emptyTitle: context.l10n.matchDetailsLoadError,
-                    successBuilder: (context) => _MatchDetailsContent(
-                      match: state.match!,
-                      events: state.events,
-                      lineups: state.lineups,
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

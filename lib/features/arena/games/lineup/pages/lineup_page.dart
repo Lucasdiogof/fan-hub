@@ -95,129 +95,139 @@ class _LineupViewState extends State<_LineupView> {
         return Scaffold(
           backgroundColor: colors.background,
           body: SafeArea(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.sm,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: ArenaGameHeader(
-                    title: context.l10n.arenaGameLineupTitle.toUpperCase(),
-                    onBack: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
-                    trailing: _ProgressPill(
-                      solved: state.solvedCount,
-                      total: state.totalPlayers,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        AppSpacing.sm,
+                        AppSpacing.lg,
+                        0,
+                      ),
+                      child: ArenaGameHeader(
+                        title: context.l10n.arenaGameLineupTitle.toUpperCase(),
+                        onBack: () =>
+                            context.canPop() ? context.pop() : context.go('/'),
+                        trailing: _ProgressPill(
+                          solved: state.solvedCount,
+                          total: state.totalPlayers,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                _MatchNav(
-                  index: state.currentIndex ?? 0,
-                  total: state.totalMatches,
-                  hasPrevious: state.hasPrevious,
-                  hasNext: state.hasNext,
-                  onPrevious: () => context.read<LineupCubit>().previousMatch(),
-                  onNext: () => context.read<LineupCubit>().nextMatch(),
-                ),
-                const SizedBox(height: AppSpacing.lg),
-                _MatchHeader(match: match),
-                const SizedBox(height: 2),
-                if (state.isComplete)
-                  TextButton.icon(
-                    onPressed: () => showLineupResultDialog(
-                      context,
-                      state,
-                      onPrevious: state.hasPrevious
-                          ? () => _goToAdjacentMatch(
-                              context,
-                              context.read<LineupCubit>().previousMatch,
-                            )
-                          : null,
-                      onNext: state.hasNext
-                          ? () => _goToAdjacentMatch(
-                              context,
-                              context.read<LineupCubit>().nextMatch,
-                            )
-                          : null,
+                    _MatchNav(
+                      index: state.currentIndex ?? 0,
+                      total: state.totalMatches,
+                      hasPrevious: state.hasPrevious,
+                      hasNext: state.hasNext,
+                      onPrevious: () =>
+                          context.read<LineupCubit>().previousMatch(),
+                      onNext: () => context.read<LineupCubit>().nextMatch(),
                     ),
-                    icon: const Icon(Icons.emoji_events_outlined, size: 16),
-                    label: Text(context.l10n.quizSeeResult),
-                  ),
-                const SizedBox(height: AppSpacing.xs),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.md,
-                    ),
-                    child: Center(
-                      child: AspectRatio(
-                        aspectRatio: 0.66,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(AppRadius.card),
-                          child: Stack(
-                            children: [
-                              const Positioned.fill(
-                                child: LineupFieldBackground(),
+                    const SizedBox(height: AppSpacing.lg),
+                    _MatchHeader(match: match),
+                    const SizedBox(height: 2),
+                    if (state.isComplete)
+                      TextButton.icon(
+                        onPressed: () => showLineupResultDialog(
+                          context,
+                          state,
+                          onPrevious: state.hasPrevious
+                              ? () => _goToAdjacentMatch(
+                                  context,
+                                  context.read<LineupCubit>().previousMatch,
+                                )
+                              : null,
+                          onNext: state.hasNext
+                              ? () => _goToAdjacentMatch(
+                                  context,
+                                  context.read<LineupCubit>().nextMatch,
+                                )
+                              : null,
+                        ),
+                        icon: const Icon(Icons.emoji_events_outlined, size: 16),
+                        label: Text(context.l10n.quizSeeResult),
+                      ),
+                    const SizedBox(height: AppSpacing.xs),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.md,
+                        ),
+                        child: Center(
+                          child: AspectRatio(
+                            aspectRatio: 0.66,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.card,
                               ),
-                              Positioned.fill(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: AppSpacing.sm,
+                              child: Stack(
+                                children: [
+                                  const Positioned.fill(
+                                    child: LineupFieldBackground(),
                                   ),
-                                  child: _FormationRows(
-                                    players: match.players,
-                                    game: state.game!,
-                                    onTapPlayer: (playerId) =>
-                                        _openPlayer(context, playerId),
+                                  Positioned.fill(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: AppSpacing.sm,
+                                      ),
+                                      child: _FormationRows(
+                                        players: match.players,
+                                        game: state.game!,
+                                        onTapPlayer: (playerId) =>
+                                            _openPlayer(context, playerId),
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
+                    if (!state.isComplete)
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 2,
+                          bottom: AppSpacing.xs,
+                        ),
+                        child: OutlinedButton.icon(
+                          onPressed: () => _confirmGiveUp(context),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: colors.gold,
+                            backgroundColor: colors.gold.withValues(alpha: 0.1),
+                            side: BorderSide(color: colors.gold, width: 1.2),
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: AppSpacing.lg,
+                              vertical: AppSpacing.sm,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.button,
+                              ),
+                            ),
+                          ),
+                          icon: const Icon(Icons.flag_rounded, size: 15),
+                          label: Text(
+                            context.l10n.lineupGiveUp,
+                            style: const TextStyle(
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.3,
+                            ),
+                          ),
+                        ),
+                      )
+                    else
+                      const SizedBox(height: AppSpacing.sm),
+                  ],
                 ),
-                if (!state.isComplete)
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 2,
-                      bottom: AppSpacing.xs,
-                    ),
-                    child: OutlinedButton.icon(
-                      onPressed: () => _confirmGiveUp(context),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: colors.gold,
-                        backgroundColor: colors.gold.withValues(alpha: 0.1),
-                        side: BorderSide(color: colors.gold, width: 1.2),
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpacing.lg,
-                          vertical: AppSpacing.sm,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppRadius.button),
-                        ),
-                      ),
-                      icon: const Icon(Icons.flag_rounded, size: 15),
-                      label: Text(
-                        context.l10n.lineupGiveUp,
-                        style: const TextStyle(
-                          fontSize: 12.5,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.3,
-                        ),
-                      ),
-                    ),
-                  )
-                else
-                  const SizedBox(height: AppSpacing.sm),
-              ],
+              ),
             ),
           ),
         );

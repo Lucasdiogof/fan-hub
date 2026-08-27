@@ -134,148 +134,156 @@ class _CheckInView extends StatelessWidget {
         return Scaffold(
           backgroundColor: colors.background,
           body: SafeArea(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Row(
-                    children: [
-                      BackButtonCircle(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        AppSpacing.md,
+                        AppSpacing.lg,
+                        0,
                       ),
-                      const SizedBox(width: AppSpacing.md),
-                      Expanded(
-                        child: PageTitle(
-                          context.l10n.ticketsConfirmPresenceTitle,
-                        ),
+                      child: Row(
+                        children: [
+                          BackButtonCircle(
+                            onTap: () => context.canPop()
+                                ? context.pop()
+                                : context.go('/'),
+                          ),
+                          const SizedBox(width: AppSpacing.md),
+                          Expanded(
+                            child: PageTitle(
+                              context.l10n.ticketsConfirmPresenceTitle,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.xl,
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(AppSpacing.lg),
-                          decoration: BoxDecoration(
-                            color: colors.surface,
-                            borderRadius: BorderRadius.circular(AppRadius.card),
-                            border: Border.all(color: colors.border),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                match.competition,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w700,
-                                  color: colors.textHint,
-                                ),
-                              ),
-                              const SizedBox(height: 6),
-                              Text(
-                                '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}',
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w800,
-                                  color: colors.textPrimary,
-                                ),
-                              ),
-                              const SizedBox(height: 6),
-                              if (match.kickoff != null)
-                                Text(
-                                  '${fullDateLabel(match.kickoff!)} às ${timeLabel(match.kickoff!)}',
-                                  style: TextStyle(
-                                    fontSize: 13,
-                                    color: colors.textSecondary,
-                                  ),
-                                ),
-                              const SizedBox(height: 2),
-                              Text(
-                                match.stadium,
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: colors.textSecondary,
-                                ),
-                              ),
-                              if (match.round.isNotEmpty) ...[
-                                const SizedBox(height: 2),
-                                Text(
-                                  match.round,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: colors.textHint,
-                                  ),
-                                ),
-                              ],
-                            ],
-                          ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.fromLTRB(
+                          AppSpacing.lg,
+                          AppSpacing.lg,
+                          AppSpacing.lg,
+                          AppSpacing.xl,
                         ),
-                        const SizedBox(height: AppSpacing.xl),
-                        DigitalMembershipCard(
-                          holderName: profile.displayName,
-                          planName: membership.plan.name,
-                          status: membership.status,
-                          memberNumber: membership.memberNumber,
-                          avatarUrl: profile.avatarUrl,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(AppSpacing.lg),
+                              decoration: BoxDecoration(
+                                color: colors.surface,
+                                borderRadius: BorderRadius.circular(
+                                  AppRadius.card,
+                                ),
+                                border: Border.all(color: colors.border),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    match.competition,
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w700,
+                                      color: colors.textHint,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  Text(
+                                    '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}',
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w800,
+                                      color: colors.textPrimary,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 6),
+                                  if (match.kickoff != null)
+                                    Text(
+                                      '${fullDateLabel(match.kickoff!)} às ${timeLabel(match.kickoff!)}',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color: colors.textSecondary,
+                                      ),
+                                    ),
+                                  const SizedBox(height: 2),
+                                  Text(
+                                    match.stadium,
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: colors.textSecondary,
+                                    ),
+                                  ),
+                                  if (match.round.isNotEmpty) ...[
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      match.round,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: colors.textHint,
+                                      ),
+                                    ),
+                                  ],
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: AppSpacing.xl),
+                            DigitalMembershipCard(
+                              holderName: profile.displayName,
+                              planName: membership.plan.name,
+                              status: membership.status,
+                              memberNumber: membership.memberNumber,
+                              avatarUrl: profile.avatarUrl,
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    0,
-                    AppSpacing.lg,
-                    AppSpacing.lg,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      AppPrimaryButton(
-                        label: context.l10n.ticketsGoToMatchButton,
-                        loading: state.saving,
-                        onPressed: state.saving
-                            ? null
-                            : () => _openSectorPicker(context),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        0,
+                        AppSpacing.lg,
+                        AppSpacing.lg,
                       ),
-                      const SizedBox(height: AppSpacing.xs),
-                      TextButton(
-                        onPressed: state.saving
-                            ? null
-                            : () => _confirmDecline(context),
-                        style: TextButton.styleFrom(
-                          foregroundColor: colors.textSecondary,
-                          minimumSize: const Size.fromHeight(46),
-                        ),
-                        child: Text(
-                          context.l10n.ticketsNotThisTimeButton,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          AppPrimaryButton(
+                            label: context.l10n.ticketsGoToMatchButton,
+                            loading: state.saving,
+                            onPressed: state.saving
+                                ? null
+                                : () => _openSectorPicker(context),
                           ),
-                        ),
+                          const SizedBox(height: AppSpacing.xs),
+                          TextButton(
+                            onPressed: state.saving
+                                ? null
+                                : () => _confirmDecline(context),
+                            style: TextButton.styleFrom(
+                              foregroundColor: colors.textSecondary,
+                              minimumSize: const Size.fromHeight(46),
+                            ),
+                            child: Text(
+                              context.l10n.ticketsNotThisTimeButton,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         );

@@ -111,57 +111,64 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.lg),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ArenaGameHeader(
-                title: context.l10n.arenaGameQuizTitle.toUpperCase(),
-                onBack: () =>
-                    context.canPop() ? context.pop() : context.go('/'),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Padding(
+              padding: const EdgeInsets.all(AppSpacing.lg),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ArenaGameHeader(
+                    title: context.l10n.arenaGameQuizTitle.toUpperCase(),
+                    onBack: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                  ),
+                  const SizedBox(height: AppSpacing.xl),
+                  Text(
+                    context.l10n.quizChooseLevel,
+                    style: TextStyle(
+                      color: colors.textPrimary,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w900,
+                      height: 1.15,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.xs),
+                  Text(
+                    context.l10n.quizChooseLevelHint,
+                    style: TextStyle(
+                      color: colors.textHint,
+                      fontSize: 13,
+                      height: 1.35,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.xxl),
+                  Expanded(
+                    child: _summaries == null
+                        ? const Center(child: GoiasLoadingIndicator())
+                        : ListView.separated(
+                            itemCount: _levels.length,
+                            separatorBuilder: (_, _) =>
+                                const SizedBox(height: AppSpacing.lg),
+                            itemBuilder: (context, index) {
+                              final level = _levels[index];
+                              return _LevelBanner(
+                                level: level,
+                                summary: _summaries![level.difficulty],
+                                onTap: () => _openQuiz(
+                                  level.difficulty,
+                                  isReview: false,
+                                ),
+                                onReview: () =>
+                                    _openQuiz(level.difficulty, isReview: true),
+                              );
+                            },
+                          ),
+                  ),
+                ],
               ),
-              const SizedBox(height: AppSpacing.xl),
-              Text(
-                context.l10n.quizChooseLevel,
-                style: TextStyle(
-                  color: colors.textPrimary,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w900,
-                  height: 1.15,
-                ),
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              Text(
-                context.l10n.quizChooseLevelHint,
-                style: TextStyle(
-                  color: colors.textHint,
-                  fontSize: 13,
-                  height: 1.35,
-                ),
-              ),
-              const SizedBox(height: AppSpacing.xxl),
-              Expanded(
-                child: _summaries == null
-                    ? const Center(child: GoiasLoadingIndicator())
-                    : ListView.separated(
-                        itemCount: _levels.length,
-                        separatorBuilder: (_, _) =>
-                            const SizedBox(height: AppSpacing.lg),
-                        itemBuilder: (context, index) {
-                          final level = _levels[index];
-                          return _LevelBanner(
-                            level: level,
-                            summary: _summaries![level.difficulty],
-                            onTap: () =>
-                                _openQuiz(level.difficulty, isReview: false),
-                            onReview: () =>
-                                _openQuiz(level.difficulty, isReview: true),
-                          );
-                        },
-                      ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

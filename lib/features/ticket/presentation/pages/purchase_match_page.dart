@@ -80,120 +80,126 @@ class _PurchaseMatchView extends StatelessWidget {
         return Scaffold(
           backgroundColor: colors.background,
           body: SafeArea(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Row(
-                    children: [
-                      BackButtonCircle(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        AppSpacing.md,
+                        AppSpacing.lg,
+                        0,
                       ),
-                      const Spacer(),
-                      IconButton(
-                        onPressed: () => unawaited(_openMatchInfo(context)),
-                        icon: Icon(
-                          Icons.info_outline_rounded,
-                          color: colors.primary,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.lg,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        match.competition.toUpperCase(),
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.6,
-                          color: colors.textHint,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        '${shortTeamName(match.homeTeam.name).toUpperCase()} x ${shortTeamName(match.awayTeam.name).toUpperCase()}',
-                        style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w900,
-                          color: colors.textPrimary,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      if (match.kickoff != null)
-                        Text(
-                          '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString()).toUpperCase()} · ${timeLabel(match.kickoff!)}',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w700,
-                            color: colors.textSecondary,
+                      child: Row(
+                        children: [
+                          BackButtonCircle(
+                            onTap: () => context.canPop()
+                                ? context.pop()
+                                : context.go('/'),
                           ),
-                        ),
-                      const SizedBox(height: 2),
-                      Text(
-                        match.stadium,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: colors.textSecondary,
-                        ),
+                          const Spacer(),
+                          IconButton(
+                            onPressed: () => unawaited(_openMatchInfo(context)),
+                            icon: Icon(
+                              Icons.info_outline_rounded,
+                              color: colors.primary,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: AppSpacing.lg),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      0,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
                     ),
-                    children: [
-                      if (goiasSectors.isNotEmpty) ...[
-                        _GroupLabel(context.l10n.ticketsHomeCrowdLabel),
-                        for (final sector in goiasSectors) ...[
-                          _SectorCard(sector: sector),
-                          const SizedBox(height: AppSpacing.md),
-                        ],
-                      ],
-                      if (visitorSectors.isNotEmpty) ...[
-                        const SizedBox(height: AppSpacing.sm),
-                        _GroupLabel(context.l10n.ticketsAwayCrowdLabel),
-                        for (final sector in visitorSectors) ...[
-                          _SectorCard(sector: sector),
-                          const SizedBox(height: AppSpacing.md),
-                        ],
-                      ],
-                    ],
-                  ),
-                ),
-                _BottomBar(
-                  total: state.total,
-                  quantity: state.totalQuantity,
-                  onContinue: state.canProceedToSummary
-                      ? () => context.push(
-                          '/tickets/purchase/summary',
-                          extra: PurchaseSummaryArgs(
-                            cubit: context.read<PurchaseCubit>(),
-                            profile: profile,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            match.competition.toUpperCase(),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.6,
+                              color: colors.textHint,
+                            ),
                           ),
-                        )
-                      : null,
+                          const SizedBox(height: 4),
+                          Text(
+                            '${shortTeamName(match.homeTeam.name).toUpperCase()} x ${shortTeamName(match.awayTeam.name).toUpperCase()}',
+                            style: TextStyle(
+                              fontSize: 19,
+                              fontWeight: FontWeight.w900,
+                              color: colors.textPrimary,
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          if (match.kickoff != null)
+                            Text(
+                              '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString()).toUpperCase()} · ${timeLabel(match.kickoff!)}',
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w700,
+                                color: colors.textSecondary,
+                              ),
+                            ),
+                          const SizedBox(height: 2),
+                          Text(
+                            match.stadium,
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: colors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.lg),
+                    Expanded(
+                      child: ListView(
+                        padding: const EdgeInsets.fromLTRB(
+                          AppSpacing.lg,
+                          0,
+                          AppSpacing.lg,
+                          AppSpacing.xxxl,
+                        ),
+                        children: [
+                          if (goiasSectors.isNotEmpty) ...[
+                            _GroupLabel(context.l10n.ticketsHomeCrowdLabel),
+                            for (final sector in goiasSectors) ...[
+                              _SectorCard(sector: sector),
+                              const SizedBox(height: AppSpacing.md),
+                            ],
+                          ],
+                          if (visitorSectors.isNotEmpty) ...[
+                            const SizedBox(height: AppSpacing.sm),
+                            _GroupLabel(context.l10n.ticketsAwayCrowdLabel),
+                            for (final sector in visitorSectors) ...[
+                              _SectorCard(sector: sector),
+                              const SizedBox(height: AppSpacing.md),
+                            ],
+                          ],
+                        ],
+                      ),
+                    ),
+                    _BottomBar(
+                      total: state.total,
+                      quantity: state.totalQuantity,
+                      onContinue: state.canProceedToSummary
+                          ? () => context.push(
+                              '/tickets/purchase/summary',
+                              extra: PurchaseSummaryArgs(
+                                cubit: context.read<PurchaseCubit>(),
+                                profile: profile,
+                              ),
+                            )
+                          : null,
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         );

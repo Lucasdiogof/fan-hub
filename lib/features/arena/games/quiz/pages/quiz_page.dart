@@ -91,135 +91,144 @@ class _QuizView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: colors.background,
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(AppSpacing.lg),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ArenaGameHeader(
-                  title: context.l10n.arenaGameQuizTitle.toUpperCase(),
-                  subtitle: context.l10n.quizLevelName(
-                    context.read<QuizCubit>().difficulty.label,
-                  ),
-                  onBack: () =>
-                      context.canPop() ? context.pop() : context.go('/'),
-                ),
-                const SizedBox(height: AppSpacing.xl),
-                Expanded(
-                  child: BlocBuilder<QuizCubit, QuizState>(
-                    buildWhen: (previous, current) =>
-                        previous.status != current.status,
-                    builder: (context, statusState) {
-                      if (statusState.status != LoadStatus.success) {
-                        return const Center(child: GoiasLoadingIndicator());
-                      }
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          BlocBuilder<QuizCubit, QuizState>(
-                            builder: (context, state) {
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Text(
-                                    context.l10n.quizQuestionProgress(
-                                      state.index + 1,
-                                      state.questions.length,
-                                    ),
-                                    style: TextStyle(
-                                      color: colors.textHint,
-                                      fontSize: 12.5,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  const SizedBox(height: AppSpacing.sm),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(999),
-                                    child: LinearProgressIndicator(
-                                      value:
-                                          (state.index + 1) /
-                                          state.questions.length,
-                                      minHeight: 6,
-                                      backgroundColor: colors.border,
-                                      valueColor: AlwaysStoppedAnimation(
-                                        colors.primary,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                          const SizedBox(height: AppSpacing.xl),
-                          Expanded(
-                            child: BlocBuilder<QuizCubit, QuizState>(
-                              builder: (context, state) {
-                                return SingleChildScrollView(
-                                  child: Column(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 720),
+              child: Padding(
+                padding: const EdgeInsets.all(AppSpacing.lg),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ArenaGameHeader(
+                      title: context.l10n.arenaGameQuizTitle.toUpperCase(),
+                      subtitle: context.l10n.quizLevelName(
+                        context.read<QuizCubit>().difficulty.label,
+                      ),
+                      onBack: () =>
+                          context.canPop() ? context.pop() : context.go('/'),
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+                    Expanded(
+                      child: BlocBuilder<QuizCubit, QuizState>(
+                        buildWhen: (previous, current) =>
+                            previous.status != current.status,
+                        builder: (context, statusState) {
+                          if (statusState.status != LoadStatus.success) {
+                            return const Center(child: GoiasLoadingIndicator());
+                          }
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              BlocBuilder<QuizCubit, QuizState>(
+                                builder: (context, state) {
+                                  return Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.stretch,
                                     children: [
-                                      Container(
-                                        padding: const EdgeInsets.all(
-                                          AppSpacing.lg,
+                                      Text(
+                                        context.l10n.quizQuestionProgress(
+                                          state.index + 1,
+                                          state.questions.length,
                                         ),
-                                        decoration: BoxDecoration(
-                                          color: colors.surface,
-                                          borderRadius: BorderRadius.circular(
-                                            16,
-                                          ),
-                                          border: Border.all(
-                                            color: colors.border,
-                                          ),
+                                        style: TextStyle(
+                                          color: colors.textHint,
+                                          fontSize: 12.5,
+                                          fontWeight: FontWeight.w700,
                                         ),
-                                        child: Text(
-                                          state.currentQuestion.question,
-                                          style: TextStyle(
-                                            color: colors.textPrimary,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w800,
-                                            height: 1.3,
+                                      ),
+                                      const SizedBox(height: AppSpacing.sm),
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(
+                                          999,
+                                        ),
+                                        child: LinearProgressIndicator(
+                                          value:
+                                              (state.index + 1) /
+                                              state.questions.length,
+                                          minHeight: 6,
+                                          backgroundColor: colors.border,
+                                          valueColor: AlwaysStoppedAnimation(
+                                            colors.primary,
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(height: AppSpacing.lg),
-                                      for (
-                                        var i = 0;
-                                        i <
-                                            state
-                                                .currentQuestion
-                                                .options
-                                                .length;
-                                        i++
-                                      ) ...[
-                                        _OptionTile(index: i, state: state),
-                                        const SizedBox(height: AppSpacing.sm),
-                                      ],
                                     ],
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.md),
-                          BlocBuilder<QuizCubit, QuizState>(
-                            builder: (context, state) {
-                              return AppPrimaryButton(
-                                label: state.isLastQuestion
-                                    ? context.l10n.quizSeeResult
-                                    : context.l10n.quizNext,
-                                onPressed: state.answered
-                                    ? () => context.read<QuizCubit>().next()
-                                    : null,
-                              );
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  ),
+                                  );
+                                },
+                              ),
+                              const SizedBox(height: AppSpacing.xl),
+                              Expanded(
+                                child: BlocBuilder<QuizCubit, QuizState>(
+                                  builder: (context, state) {
+                                    return SingleChildScrollView(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: [
+                                          Container(
+                                            padding: const EdgeInsets.all(
+                                              AppSpacing.lg,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: colors.surface,
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
+                                              border: Border.all(
+                                                color: colors.border,
+                                              ),
+                                            ),
+                                            child: Text(
+                                              state.currentQuestion.question,
+                                              style: TextStyle(
+                                                color: colors.textPrimary,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w800,
+                                                height: 1.3,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(height: AppSpacing.lg),
+                                          for (
+                                            var i = 0;
+                                            i <
+                                                state
+                                                    .currentQuestion
+                                                    .options
+                                                    .length;
+                                            i++
+                                          ) ...[
+                                            _OptionTile(index: i, state: state),
+                                            const SizedBox(
+                                              height: AppSpacing.sm,
+                                            ),
+                                          ],
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              const SizedBox(height: AppSpacing.md),
+                              BlocBuilder<QuizCubit, QuizState>(
+                                builder: (context, state) {
+                                  return AppPrimaryButton(
+                                    label: state.isLastQuestion
+                                        ? context.l10n.quizSeeResult
+                                        : context.l10n.quizNext,
+                                    onPressed: state.answered
+                                        ? () => context.read<QuizCubit>().next()
+                                        : null,
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

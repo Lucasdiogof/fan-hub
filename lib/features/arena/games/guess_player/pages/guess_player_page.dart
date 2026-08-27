@@ -106,19 +106,24 @@ class _GuessPlayerView extends StatelessWidget {
         return Scaffold(
           backgroundColor: colors.background,
           body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.lg),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ArenaGameHeader(
-                    title: context.l10n.arenaGuessPlayerTitle.toUpperCase(),
-                    onBack: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: Padding(
+                  padding: const EdgeInsets.all(AppSpacing.lg),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ArenaGameHeader(
+                        title: context.l10n.arenaGuessPlayerTitle.toUpperCase(),
+                        onBack: () =>
+                            context.canPop() ? context.pop() : context.go('/'),
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                      Expanded(child: _Body(state: state)),
+                    ],
                   ),
-                  const SizedBox(height: AppSpacing.xl),
-                  Expanded(child: _Body(state: state)),
-                ],
+                ),
               ),
             ),
           ),

@@ -17,42 +17,47 @@ class ClubHistoryPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(onTap: () => context.pop()),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.clubSectionHistory.toUpperCase()),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView.separated(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg,
-                  AppSpacing.xl,
-                  AppSpacing.lg,
-                  AppSpacing.xxxl,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BackButtonCircle(onTap: () => context.pop()),
+                      const SizedBox(height: AppSpacing.lg),
+                      PageTitle(context.l10n.clubSectionHistory.toUpperCase()),
+                    ],
+                  ),
                 ),
-                itemCount: ClubHistoryData.sections.length,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: AppSpacing.xl),
-                itemBuilder: (context, index) => _HistorySectionCard(
-                  section: ClubHistoryData.sections[index],
+                Expanded(
+                  child: ListView.separated(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      AppSpacing.xl,
+                      AppSpacing.lg,
+                      AppSpacing.xxxl,
+                    ),
+                    itemCount: ClubHistoryData.sections.length,
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: AppSpacing.xl),
+                    itemBuilder: (context, index) => _HistorySectionCard(
+                      section: ClubHistoryData.sections[index],
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

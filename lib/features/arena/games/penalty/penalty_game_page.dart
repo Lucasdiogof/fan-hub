@@ -101,33 +101,39 @@ class _PenaltyGamePageState extends State<PenaltyGamePage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ArenaColors.arenaBottom,
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: GestureDetector(
-              onPanStart: (details) =>
-                  _panStart = _panLast = details.localPosition,
-              onPanUpdate: (details) => _panLast = details.localPosition,
-              onPanEnd: _onPanEnd,
-              child: GameWidget<PenaltyGame>(
-                game: _game,
-                overlayBuilderMap: {
-                  'hud': (context, game) => PenaltyHud(game: game),
-                },
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 720),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: GestureDetector(
+                  onPanStart: (details) =>
+                      _panStart = _panLast = details.localPosition,
+                  onPanUpdate: (details) => _panLast = details.localPosition,
+                  onPanEnd: _onPanEnd,
+                  child: GameWidget<PenaltyGame>(
+                    game: _game,
+                    overlayBuilderMap: {
+                      'hud': (context, game) => PenaltyHud(game: game),
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.md),
-              child: _CircleButton(
-                icon: Icons.arrow_back_rounded,
-                onTap: () => context.canPop() ? context.pop() : context.go('/'),
+              SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(AppSpacing.md),
+                  child: _CircleButton(
+                    icon: Icons.arrow_back_rounded,
+                    onTap: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                  ),
+                ),
               ),
-            ),
+              _SwipeHint(game: _game),
+            ],
           ),
-          _SwipeHint(game: _game),
-        ],
+        ),
       ),
     );
   }

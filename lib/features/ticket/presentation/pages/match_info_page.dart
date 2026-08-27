@@ -22,42 +22,50 @@ class MatchInfoPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: BackButtonCircle(
-                onTap: () => context.canPop() ? context.pop() : context.go('/'),
-              ),
-            ),
-            const SizedBox(height: AppSpacing.lg),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-              child: PageTitle(context.l10n.ticketsMatchInfoTitle),
-            ),
-            const SizedBox(height: AppSpacing.lg),
-            Expanded(
-              child: ListView.separated(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg,
-                  0,
-                  AppSpacing.lg,
-                  AppSpacing.xxxl,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
+                  child: BackButtonCircle(
+                    onTap: () =>
+                        context.canPop() ? context.pop() : context.go('/'),
+                  ),
                 ),
-                itemCount: info.sections.length,
-                separatorBuilder: (_, _) =>
-                    const SizedBox(height: AppSpacing.lg),
-                itemBuilder: (context, index) =>
-                    _InfoSection(section: info.sections[index]),
-              ),
+                const SizedBox(height: AppSpacing.lg),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.lg,
+                  ),
+                  child: PageTitle(context.l10n.ticketsMatchInfoTitle),
+                ),
+                const SizedBox(height: AppSpacing.lg),
+                Expanded(
+                  child: ListView.separated(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      0,
+                      AppSpacing.lg,
+                      AppSpacing.xxxl,
+                    ),
+                    itemCount: info.sections.length,
+                    separatorBuilder: (_, _) =>
+                        const SizedBox(height: AppSpacing.lg),
+                    itemBuilder: (context, index) =>
+                        _InfoSection(section: info.sections[index]),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

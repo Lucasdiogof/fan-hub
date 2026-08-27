@@ -27,51 +27,56 @@ class ClubSongsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(onTap: () => context.pop()),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.clubSectionSongs.toUpperCase()),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg,
-                  AppSpacing.xl,
-                  AppSpacing.lg,
-                  AppSpacing.xxxl,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BackButtonCircle(onTap: () => context.pop()),
+                      const SizedBox(height: AppSpacing.lg),
+                      PageTitle(context.l10n.clubSectionSongs.toUpperCase()),
+                    ],
+                  ),
                 ),
-                children: [
-                  ClubSectionLabel(context.l10n.clubAnthemSection),
-                  const SizedBox(height: AppSpacing.sm),
-                  for (var i = 0; i < anthems.length; i++) ...[
-                    if (i > 0) const SizedBox(height: AppSpacing.sm),
-                    _SongCard(song: anthems[i]),
-                  ],
-                  const SizedBox(height: AppSpacing.xl),
-                  ClubSectionLabel(context.l10n.clubSongsSection),
-                  const SizedBox(height: AppSpacing.sm),
-                  for (var i = 0; i < songs.length; i++) ...[
-                    if (i > 0) const SizedBox(height: AppSpacing.sm),
-                    _SongCard(song: songs[i]),
-                  ],
-                ],
-              ),
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      AppSpacing.xl,
+                      AppSpacing.lg,
+                      AppSpacing.xxxl,
+                    ),
+                    children: [
+                      ClubSectionLabel(context.l10n.clubAnthemSection),
+                      const SizedBox(height: AppSpacing.sm),
+                      for (var i = 0; i < anthems.length; i++) ...[
+                        if (i > 0) const SizedBox(height: AppSpacing.sm),
+                        _SongCard(song: anthems[i]),
+                      ],
+                      const SizedBox(height: AppSpacing.xl),
+                      ClubSectionLabel(context.l10n.clubSongsSection),
+                      const SizedBox(height: AppSpacing.sm),
+                      for (var i = 0; i < songs.length; i++) ...[
+                        if (i > 0) const SizedBox(height: AppSpacing.sm),
+                        _SongCard(song: songs[i]),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
