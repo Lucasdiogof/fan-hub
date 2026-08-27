@@ -33,6 +33,16 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
   final AudioPlayer _player;
   late final StreamSubscription<PlayerState> _playerStateSubscription;
 
+  /// No web, carregar o áudio exige um gesto real do usuário (política de
+  /// autoplay do navegador) — a tentativa em [init] roda assim que a
+  /// página abre, sem gesto nenhum, e pode falhar silenciosamente aí
+  /// (some plataformas bloqueiam o carregamento, não só o autoplay). Sem
+  /// essa flag, [togglePlayback] confiaria cegamente que o áudio já tá
+  /// carregado, tocaria (o clique É um gesto válido, então funciona) mas
+  /// nunca teria pego a duração — daí a barra de progresso ficava travada
+  /// em 0:00 mesmo com a música tocando de verdade.
+  bool _loaded = false;
+
   /// Fica de fora do estado de propósito — muda muitas vezes por segundo
   /// enquanto toca, e um `emit` a cada tique geraria rebuild da tela
   /// inteira. A barra de progresso assina isso direto via `StreamBuilder`.
@@ -41,9 +51,15 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
   Future<void> init() async {
     final savedVolume = await _volumeStore.loadVolume();
     emit(state.copyWith(userVolume: savedVolume));
+    // Falha aqui é esperada no web sem gesto do usuário ainda — não é um
+    // erro pra mostrar já de cara; [togglePlayback] tenta de novo no play.
+    await _ensureLoaded();
+  }
 
+  Future<bool> _ensureLoaded() async {
+    if (_loaded) return true;
     final asset = song.audioAsset;
-    if (asset == null) return;
+    if (asset == null) return false;
     try {
       // O player é compartilhado entre visitas (ver doc da classe) — para
       // qualquer coisa que a música anterior deixou tocando/carregando
@@ -56,8 +72,10 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
       await _player.setSpeed(1);
       await _player.setPitch(1);
       emit(state.copyWith(duration: duration ?? Duration.zero));
+      _loaded = true;
+      return true;
     } catch (_) {
-      emit(state.copyWith(status: ClubSongPlayerStatus.error));
+      return false;
     }
   }
 
@@ -94,6 +112,15 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
     }
     if (state.status == ClubSongPlayerStatus.loading) return;
     try {
+      // Web-safe: se [init] não conseguiu carregar antes (sem gesto do
+      // usuário ainda), tenta de novo agora — este clique É um gesto
+      // válido, então tanto o carregamento quanto o play tendem a
+      // funcionar aqui mesmo quando falharam na abertura da página.
+      final loaded = await _ensureLoaded();
+      if (!loaded) {
+        emit(state.copyWith(status: ClubSongPlayerStatus.error));
+        return;
+      }
       await _player.play();
     } catch (_) {
       emit(state.copyWith(status: ClubSongPlayerStatus.error));
