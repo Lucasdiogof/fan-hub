@@ -4,7 +4,11 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/social/domain/entities/social_post.dart';
 
 class SocialPlatformFilter extends StatelessWidget {
-  const SocialPlatformFilter({required this.selected, required this.onChanged, super.key});
+  const SocialPlatformFilter({
+    required this.selected,
+    required this.onChanged,
+    super.key,
+  });
 
   final SocialPlatform? selected;
   final ValueChanged<SocialPlatform?> onChanged;
@@ -42,7 +46,11 @@ class SocialPlatformFilter extends StatelessWidget {
 }
 
 class _FilterChip extends StatelessWidget {
-  const _FilterChip({required this.label, required this.selected, required this.onTap});
+  const _FilterChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
 
   final String label;
   final bool selected;

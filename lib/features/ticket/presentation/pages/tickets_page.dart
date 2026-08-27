@@ -42,7 +42,8 @@ class _TicketsView extends StatelessWidget {
   Future<void> _openCheckIn(BuildContext context, TicketEvent event) async {
     final loaded = await GlobalLoading.run(context, () async {
       final profileResult = await sl<ProfileRepository>().getProfile();
-      final membershipResult = await sl<MembershipRepository>().getMyMembership();
+      final membershipResult = await sl<MembershipRepository>()
+          .getMyMembership();
       return (profile: profileResult, membership: membershipResult);
     });
     if (!context.mounted) return;
@@ -60,7 +61,11 @@ class _TicketsView extends StatelessWidget {
     }
     await context.push(
       '/tickets/checkin',
-      extra: CheckInArgs(event: event, profile: profile, membership: membership),
+      extra: CheckInArgs(
+        event: event,
+        profile: profile,
+        membership: membership,
+      ),
     );
     if (context.mounted) await context.read<TicketsCubit>().load();
   }
@@ -175,8 +180,10 @@ class _TicketsView extends StatelessWidget {
                                         isMember: state.isMember,
                                         onCheckIn: () =>
                                             _openCheckIn(context, state.event!),
-                                        onBuyTicket: () =>
-                                            _openPurchase(context, state.event!),
+                                        onBuyTicket: () => _openPurchase(
+                                          context,
+                                          state.event!,
+                                        ),
                                         onViewTicket: (ticket) =>
                                             _viewTicket(context, ticket),
                                         onUndoCheckIn: () =>
@@ -188,14 +195,16 @@ class _TicketsView extends StatelessWidget {
                                 _ShortcutCard(
                                   icon: Icons.confirmation_number_outlined,
                                   title: context.l10n.ticketsMyTickets,
-                                  subtitle: context.l10n.ticketsMyTicketsSubtitle,
+                                  subtitle:
+                                      context.l10n.ticketsMyTicketsSubtitle,
                                   onTap: () => context.push('/tickets/my'),
                                 ),
                                 const SizedBox(height: AppSpacing.md),
                                 _ShortcutCard(
                                   icon: Icons.receipt_long_outlined,
                                   title: context.l10n.ticketsMyOrders,
-                                  subtitle: context.l10n.ticketsMyOrdersSubtitle,
+                                  subtitle:
+                                      context.l10n.ticketsMyOrdersSubtitle,
                                   onTap: () => context.push('/tickets/orders'),
                                 ),
                               ],

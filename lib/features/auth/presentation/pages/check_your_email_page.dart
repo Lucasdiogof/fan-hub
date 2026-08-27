@@ -47,7 +47,9 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
   Future<void> _resend() async {
     if (_cooldown > 0 || _sending) return;
     setState(() => _sending = true);
-    final result = await context.read<AuthCubit>().resendConfirmation(widget.email);
+    final result = await context.read<AuthCubit>().resendConfirmation(
+      widget.email,
+    );
     if (!mounted) return;
     setState(() => _sending = false);
     final messenger = ScaffoldMessenger.of(context);
@@ -55,7 +57,9 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
       messenger.showSnackBar(SnackBar(content: Text(result.failure.message)));
     } else {
       _startCooldown();
-      messenger.showSnackBar(SnackBar(content: Text(context.l10n.checkEmailResent)));
+      messenger.showSnackBar(
+        SnackBar(content: Text(context.l10n.checkEmailResent)),
+      );
     }
   }
 
@@ -76,32 +80,55 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   Container(
                     width: 88,
                     height: 88,
-                    decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-                    child: Icon(Icons.mark_email_unread_outlined, size: 40, color: colors.primary),
+                    decoration: BoxDecoration(
+                      color: colors.secondary,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.mark_email_unread_outlined,
+                      size: 40,
+                      color: colors.primary,
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.xxl),
                   Text(
                     context.l10n.checkEmailTitle,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: colors.textPrimary),
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w800,
+                      color: colors.textPrimary,
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
                     context.l10n.checkEmailSentTo,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, height: 1.4, color: colors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 14,
+                      height: 1.4,
+                      color: colors.textSecondary,
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
                     widget.email,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: colors.textPrimary),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: colors.textPrimary,
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
                     context.l10n.checkEmailInstruction,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14, height: 1.4, color: colors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 14,
+                      height: 1.4,
+                      color: colors.textSecondary,
+                    ),
                   ),
                   const SizedBox(height: AppSpacing.xxl),
                   _ResendButton(
@@ -112,8 +139,13 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   const SizedBox(height: AppSpacing.lg),
                   TextButton(
                     onPressed: () => context.go('/login'),
-                    style: TextButton.styleFrom(foregroundColor: colors.textSecondary),
-                    child: Text(context.l10n.checkEmailBackToLogin, style: const TextStyle(fontWeight: FontWeight.w600)),
+                    style: TextButton.styleFrom(
+                      foregroundColor: colors.textSecondary,
+                    ),
+                    child: Text(
+                      context.l10n.checkEmailBackToLogin,
+                      style: const TextStyle(fontWeight: FontWeight.w600),
+                    ),
                   ),
                 ],
               ),
@@ -126,7 +158,11 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
 }
 
 class _ResendButton extends StatelessWidget {
-  const _ResendButton({required this.cooldown, required this.sending, required this.onTap});
+  const _ResendButton({
+    required this.cooldown,
+    required this.sending,
+    required this.onTap,
+  });
 
   final int cooldown;
   final bool sending;
@@ -156,7 +192,11 @@ class _ResendButton extends StatelessWidget {
             child: Center(
               child: Text(
                 label,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: colors.primary),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: colors.primary,
+                ),
               ),
             ),
           ),

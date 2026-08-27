@@ -111,8 +111,9 @@ class _MyTicketsViewState extends State<_MyTicketsView>
                     child: BlocBuilder<MyTicketsCubit, MyTicketsState>(
                       builder: (context, state) {
                         return switch (state.status) {
-                          LoadStatus.initial || LoadStatus.loading =>
-                            _centered(const GoiasLoadingIndicator()),
+                          LoadStatus.initial || LoadStatus.loading => _centered(
+                            const GoiasLoadingIndicator(),
+                          ),
                           LoadStatus.error => _centered(
                             StateMessage(
                               icon: Icons.wifi_off_rounded,
@@ -124,7 +125,8 @@ class _MyTicketsViewState extends State<_MyTicketsView>
                             StateMessage(
                               icon: Icons.confirmation_number_outlined,
                               title: context.l10n.ticketsMyTicketsEmpty,
-                              message: context.l10n.ticketsMyTicketsEmptyMessage,
+                              message:
+                                  context.l10n.ticketsMyTicketsEmptyMessage,
                             ),
                           ),
                           LoadStatus.success => TabBarView(
@@ -187,7 +189,10 @@ class _TicketList extends StatelessWidget {
     }
     return ListView.separated(
       physics: const AlwaysScrollableScrollPhysics(),
-      padding: const EdgeInsets.only(top: AppSpacing.md, bottom: AppSpacing.xxxl),
+      padding: const EdgeInsets.only(
+        top: AppSpacing.md,
+        bottom: AppSpacing.xxxl,
+      ),
       itemCount: tickets.length,
       separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.md),
       itemBuilder: (context, index) => _TicketCard(

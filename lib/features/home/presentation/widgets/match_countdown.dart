@@ -45,7 +45,9 @@ class _MatchCountdownState extends State<MatchCountdown> {
     setState(() => _remaining = remaining);
     if (remaining <= Duration.zero && !_finishedNotified) {
       _finishedNotified = true;
-      WidgetsBinding.instance.addPostFrameCallback((_) => widget.onFinished?.call());
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => widget.onFinished?.call(),
+      );
     }
   }
 
@@ -81,11 +83,20 @@ class _MatchCountdownState extends State<MatchCountdown> {
           children: [
             _CountdownBlock(value: days, label: context.l10n.homeCountdownDays),
             const _Separator(),
-            _CountdownBlock(value: hours, label: context.l10n.homeCountdownHours),
+            _CountdownBlock(
+              value: hours,
+              label: context.l10n.homeCountdownHours,
+            ),
             const _Separator(),
-            _CountdownBlock(value: minutes, label: context.l10n.homeCountdownMinutes),
+            _CountdownBlock(
+              value: minutes,
+              label: context.l10n.homeCountdownMinutes,
+            ),
             const _Separator(),
-            _CountdownBlock(value: seconds, label: context.l10n.homeCountdownSeconds),
+            _CountdownBlock(
+              value: seconds,
+              label: context.l10n.homeCountdownSeconds,
+            ),
           ],
         ),
       ],
@@ -115,7 +126,11 @@ class _CountdownBlock extends StatelessWidget {
           ),
           child: Text(
             value.toString().padLeft(2, '0'),
-            style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w800),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+            ),
           ),
         ),
         const SizedBox(height: 4),

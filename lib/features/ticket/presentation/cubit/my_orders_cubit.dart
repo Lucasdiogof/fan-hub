@@ -16,9 +16,19 @@ class MyOrdersCubit extends Cubit<MyOrdersState> {
     final result = await _repository.getMyOrders();
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(status: data.isEmpty ? LoadStatus.empty : LoadStatus.success, orders: data));
+        emit(
+          state.copyWith(
+            status: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            orders: data,
+          ),
+        );
       case Error(:final failure):
-        emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
     }
   }
 }

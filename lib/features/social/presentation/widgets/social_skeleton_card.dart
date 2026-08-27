@@ -32,7 +32,12 @@ class SocialSkeletonCard extends StatelessWidget {
           ),
           if (withImage) ...[
             const SizedBox(height: AppSpacing.md),
-            _Block(width: double.infinity, height: 170, color: shimmer, radius: AppRadius.cardSmall),
+            _Block(
+              width: double.infinity,
+              height: 170,
+              color: shimmer,
+              radius: AppRadius.cardSmall,
+            ),
           ],
           const SizedBox(height: AppSpacing.md),
           _Block(width: double.infinity, height: 14, color: shimmer),
@@ -45,7 +50,12 @@ class SocialSkeletonCard extends StatelessWidget {
 }
 
 class _Block extends StatelessWidget {
-  const _Block({required this.width, required this.height, required this.color, this.radius = 6});
+  const _Block({
+    required this.width,
+    required this.height,
+    required this.color,
+    this.radius = 6,
+  });
 
   final double width;
   final double height;

@@ -22,20 +22,35 @@ class PartnersPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.md,
+                    AppSpacing.lg,
+                    0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _BackButton(onTap: () => context.canPop() ? context.pop() : context.go('/')),
+                      _BackButton(
+                        onTap: () =>
+                            context.canPop() ? context.pop() : context.go('/'),
+                      ),
                       const SizedBox(height: AppSpacing.lg),
                       Text(
                         context.l10n.partnersTitle,
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: colors.textPrimary),
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w800,
+                          color: colors.textPrimary,
+                        ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         context.l10n.partnersSubtitle,
-                        style: TextStyle(fontSize: 14, color: colors.textSecondary),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: colors.textSecondary,
+                        ),
                       ),
                     ],
                   ),
@@ -43,15 +58,22 @@ class PartnersPage extends StatelessWidget {
                 const SizedBox(height: AppSpacing.lg),
                 Expanded(
                   child: GridView.builder(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.xxxl),
-                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 230,
-                      mainAxisSpacing: AppSpacing.md,
-                      crossAxisSpacing: AppSpacing.md,
-                      childAspectRatio: 1.3,
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      0,
+                      AppSpacing.lg,
+                      AppSpacing.xxxl,
                     ),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 230,
+                          mainAxisSpacing: AppSpacing.md,
+                          crossAxisSpacing: AppSpacing.md,
+                          childAspectRatio: 1.3,
+                        ),
                     itemCount: PartnersData.all.length,
-                    itemBuilder: (context, index) => PartnerCard(partner: PartnersData.all[index]),
+                    itemBuilder: (context, index) =>
+                        PartnerCard(partner: PartnersData.all[index]),
                   ),
                 ),
               ],
@@ -78,8 +100,15 @@ class _BackButton extends StatelessWidget {
         width: 38,
         height: 38,
         alignment: Alignment.center,
-        decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-        child: Icon(Icons.arrow_back_rounded, size: 18, color: colors.textPrimary),
+        decoration: BoxDecoration(
+          color: colors.secondary,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          Icons.arrow_back_rounded,
+          size: 18,
+          color: colors.textPrimary,
+        ),
       ),
     );
   }

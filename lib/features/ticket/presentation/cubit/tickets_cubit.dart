@@ -32,7 +32,12 @@ class TicketsCubit extends Cubit<TicketsState> {
       case Success(:final data):
         event = data;
       case Error(:final failure):
-        emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
         return;
     }
 

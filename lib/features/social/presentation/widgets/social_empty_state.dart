@@ -8,8 +8,16 @@ class SocialEmptyState extends StatelessWidget {
   const SocialEmptyState({super.key});
 
   static const _profiles = [
-    (label: 'Instagram', url: 'https://instagram.com/goiasoficial', icon: Icons.camera_alt_rounded),
-    (label: 'YouTube', url: 'https://youtube.com/@TVGoias', icon: Icons.play_circle_filled),
+    (
+      label: 'Instagram',
+      url: 'https://instagram.com/goiasoficial',
+      icon: Icons.camera_alt_rounded,
+    ),
+    (
+      label: 'YouTube',
+      url: 'https://youtube.com/@TVGoias',
+      icon: Icons.play_circle_filled,
+    ),
     (label: 'X', url: 'https://x.com/goiasoficial', icon: Icons.tag),
   ];
 
@@ -42,7 +50,8 @@ class SocialEmptyState extends StatelessWidget {
                     label: profile.label,
                     onTap: () => openExternalUrl(context, profile.url),
                   ),
-                  if (profile != _profiles.last) const SizedBox(width: AppSpacing.xl),
+                  if (profile != _profiles.last)
+                    const SizedBox(width: AppSpacing.xl),
                 ],
               ],
             ),
@@ -54,7 +63,11 @@ class SocialEmptyState extends StatelessWidget {
 }
 
 class _ProfileLink extends StatelessWidget {
-  const _ProfileLink({required this.icon, required this.label, required this.onTap});
+  const _ProfileLink({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
 
   final IconData icon;
   final String label;
@@ -80,7 +93,14 @@ class _ProfileLink extends StatelessWidget {
             child: Icon(icon, size: 22, color: colors.primary),
           ),
           const SizedBox(height: AppSpacing.sm),
-          Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: colors.textSecondary)),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: colors.textSecondary,
+            ),
+          ),
         ],
       ),
     );

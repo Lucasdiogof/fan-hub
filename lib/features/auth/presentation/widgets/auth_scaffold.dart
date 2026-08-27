@@ -34,7 +34,12 @@ class AuthScaffold extends StatelessWidget {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 460),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.xl, AppSpacing.xxl, AppSpacing.xxl),
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.xxl,
+                    AppSpacing.xl,
+                    AppSpacing.xxl,
+                    AppSpacing.xxl,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: children,
@@ -50,7 +55,11 @@ class AuthScaffold extends StatelessWidget {
 }
 
 class _Hero extends StatelessWidget {
-  const _Hero({required this.title, required this.subtitle, required this.showCrest});
+  const _Hero({
+    required this.title,
+    required this.subtitle,
+    required this.showCrest,
+  });
 
   final String title;
   final String subtitle;
@@ -68,13 +77,22 @@ class _Hero extends StatelessWidget {
           children: [
             const StadiumBackdrop(imageAsset: AppAssets.stadium),
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.xxl, AppSpacing.sm, AppSpacing.xxl, AppSpacing.xxxl),
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.xxl,
+                AppSpacing.sm,
+                AppSpacing.xxl,
+                AppSpacing.xxxl,
+              ),
               child: SafeArea(
                 bottom: false,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _BackButton(onTap: () => context.canPop() ? context.pop() : context.go('/login')),
+                    _BackButton(
+                      onTap: () => context.canPop()
+                          ? context.pop()
+                          : context.go('/login'),
+                    ),
                     const SizedBox(height: AppSpacing.xl),
                     if (showCrest) ...[
                       _CrestSeal(),
@@ -82,12 +100,21 @@ class _Hero extends StatelessWidget {
                     ],
                     Text(
                       title,
-                      style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Colors.white, height: 1.1),
+                      style: const TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                        height: 1.1,
+                      ),
                     ),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
                       subtitle,
-                      style: TextStyle(fontSize: 14, height: 1.35, color: Colors.white.withValues(alpha: 0.9)),
+                      style: TextStyle(
+                        fontSize: 14,
+                        height: 1.35,
+                        color: Colors.white.withValues(alpha: 0.9),
+                      ),
                     ),
                   ],
                 ),
@@ -120,7 +147,9 @@ class _BackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white.withValues(alpha: 0.14),
-      shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.3))),
+      shape: CircleBorder(
+        side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
+      ),
       child: InkWell(
         onTap: onTap,
         customBorder: const CircleBorder(),
@@ -141,7 +170,12 @@ class _BottomCurveClipper extends CustomClipper<Path> {
     const dip = 28.0;
     return Path()
       ..lineTo(0, size.height - dip)
-      ..quadraticBezierTo(size.width / 2, size.height + dip, size.width, size.height - dip)
+      ..quadraticBezierTo(
+        size.width / 2,
+        size.height + dip,
+        size.width,
+        size.height - dip,
+      )
       ..lineTo(size.width, 0)
       ..close();
   }

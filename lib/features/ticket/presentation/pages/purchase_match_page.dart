@@ -26,7 +26,11 @@ import 'package:goias_app/shared/widgets/global_loading.dart';
 /// o resumo (`PurchaseSummaryPage`), que reaproveita o MESMO Cubit em vez
 /// de recriar o estado.
 class PurchaseMatchPage extends StatelessWidget {
-  const PurchaseMatchPage({required this.cubit, required this.profile, super.key});
+  const PurchaseMatchPage({
+    required this.cubit,
+    required this.profile,
+    super.key,
+  });
 
   final PurchaseCubit cubit;
   final Profile profile;
@@ -46,7 +50,13 @@ class _PurchaseMatchView extends StatelessWidget {
   final Profile profile;
 
   Future<void> _openMatchInfo(BuildContext context) async {
-    final matchId = context.read<PurchaseCubit>().state.event.match.id.toString();
+    final matchId = context
+        .read<PurchaseCubit>()
+        .state
+        .event
+        .match
+        .id
+        .toString();
     final result = await GlobalLoading.run(
       context,
       () => sl<TicketRepository>().getMatchSalesInfo(matchId),
@@ -97,7 +107,9 @@ class _PurchaseMatchView extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.lg,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -132,7 +144,10 @@ class _PurchaseMatchView extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         match.stadium,
-                        style: TextStyle(fontSize: 13, color: colors.textSecondary),
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: colors.textSecondary,
+                        ),
                       ),
                     ],
                   ),
@@ -242,7 +257,10 @@ class _SectorCard extends StatelessWidget {
               ),
               if (soldOut)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 3,
+                  ),
                   decoration: BoxDecoration(
                     color: colors.error.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(999),
@@ -328,16 +346,21 @@ class _CategoryRow extends StatelessWidget {
                     ),
                     Text(
                       formatBrl(category.price),
-                      style: TextStyle(fontSize: 12, color: colors.textSecondary),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: colors.textSecondary,
+                      ),
                     ),
                   ],
                 ),
               ),
               _QuantityStepper(
                 quantity: quantity,
-                onChanged: (value) => context
-                    .read<PurchaseCubit>()
-                    .setQuantity(sectorId, category.id, value),
+                onChanged: (value) => context.read<PurchaseCubit>().setQuantity(
+                  sectorId,
+                  category.id,
+                  value,
+                ),
               ),
             ],
           ),
@@ -473,7 +496,10 @@ class _BottomBar extends StatelessWidget {
                 horizontal: AppSpacing.xl,
                 vertical: AppSpacing.md,
               ),
-              textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
+              textStyle: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w800,
+              ),
             ),
             child: Text(context.l10n.ticketsContinueButton),
           ),

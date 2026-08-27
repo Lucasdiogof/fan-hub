@@ -29,7 +29,9 @@ class SocialFeedState extends Equatable {
     return SocialFeedState(
       status: status ?? this.status,
       allPosts: allPosts ?? this.allPosts,
-      selectedPlatform: selectedPlatform != null ? selectedPlatform() : this.selectedPlatform,
+      selectedPlatform: selectedPlatform != null
+          ? selectedPlatform()
+          : this.selectedPlatform,
       errorMessage: errorMessage != null ? errorMessage() : this.errorMessage,
     );
   }

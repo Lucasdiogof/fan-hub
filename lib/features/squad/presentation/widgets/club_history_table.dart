@@ -65,11 +65,19 @@ class _HeaderRow extends StatelessWidget {
           Expanded(child: Text(l10n.squadHistoryClubs, style: style)),
           SizedBox(
             width: _numberWidth,
-            child: Text(l10n.squadHistoryMatches, style: style, textAlign: TextAlign.right),
+            child: Text(
+              l10n.squadHistoryMatches,
+              style: style,
+              textAlign: TextAlign.right,
+            ),
           ),
           SizedBox(
             width: _numberWidth,
-            child: Text(l10n.squadHistoryGoals, style: style, textAlign: TextAlign.right),
+            child: Text(
+              l10n.squadHistoryGoals,
+              style: style,
+              textAlign: TextAlign.right,
+            ),
           ),
         ],
       ),
@@ -97,7 +105,9 @@ class _EntryRow extends StatelessWidget {
     final highlight = entry.isGoias;
     final textColor = highlight ? colors.primary : colors.textPrimary;
     final l10n = context.l10n;
-    final teamName = entry.loan ? '${entry.team} ${l10n.squadLoanTag}' : entry.team;
+    final teamName = entry.loan
+        ? '${entry.team} ${l10n.squadLoanTag}'
+        : entry.team;
     final uncertain = entry.dataQuality != 'verified';
 
     final row = Padding(

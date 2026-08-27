@@ -17,16 +17,20 @@ class SocialFeedCubit extends Cubit<SocialFeedState> {
     final result = await _repository.getFeed();
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(
-          status: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
-          allPosts: data,
-          errorMessage: () => null,
-        ));
+        emit(
+          state.copyWith(
+            status: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            allPosts: data,
+            errorMessage: () => null,
+          ),
+        );
       case Error(:final failure):
-        emit(state.copyWith(
-          status: LoadStatus.error,
-          errorMessage: () => failure.message,
-        ));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: () => failure.message,
+          ),
+        );
     }
   }
 

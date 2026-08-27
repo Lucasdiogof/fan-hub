@@ -29,16 +29,21 @@ String _messageForAuthException(AuthException error) {
   if (raw.contains('email not confirmed')) {
     return 'Confirme seu e-mail antes de entrar.';
   }
-  if (raw.contains('user already registered') || raw.contains('already been registered')) {
+  if (raw.contains('user already registered') ||
+      raw.contains('already been registered')) {
     return 'Este e-mail já possui uma conta.';
   }
-  if (raw.contains('password should be at least') || raw.contains('weak password')) {
+  if (raw.contains('password should be at least') ||
+      raw.contains('weak password')) {
     return 'A senha não atende aos requisitos mínimos.';
   }
-  if (raw.contains('unable to validate email address') || raw.contains('invalid email')) {
+  if (raw.contains('unable to validate email address') ||
+      raw.contains('invalid email')) {
     return 'Informe um e-mail válido.';
   }
-  if (raw.contains('for security purposes') || raw.contains('rate limit') || raw.contains('too many')) {
+  if (raw.contains('for security purposes') ||
+      raw.contains('rate limit') ||
+      raw.contains('too many')) {
     return 'Muitas tentativas. Aguarde um instante e tente de novo.';
   }
   if (raw.contains('new password should be different')) {

@@ -63,8 +63,7 @@ class PurchaseState extends Equatable {
   int get totalQuantity =>
       quantities.values.fold(0, (sum, quantity) => sum + quantity);
 
-  double get total =>
-      items.fold(0, (sum, item) => sum + item.subtotal);
+  double get total => items.fold(0, (sum, item) => sum + item.subtotal);
 
   bool get canProceedToSummary => totalQuantity > 0;
 

@@ -120,9 +120,10 @@ class _FeedBody extends StatelessWidget {
               ),
             ),
             LoadStatus.empty => _centered(const SocialEmptyState()),
-            LoadStatus.success => state.posts.isEmpty
-                ? _centered(const SocialEmptyState())
-                : _PostsList(posts: state.posts),
+            LoadStatus.success =>
+              state.posts.isEmpty
+                  ? _centered(const SocialEmptyState())
+                  : _PostsList(posts: state.posts),
           },
         );
       },

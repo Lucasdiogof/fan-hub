@@ -26,7 +26,8 @@ class SocialFeedRepositoryImpl implements SocialFeedRepository {
   }
 
   Failure _mapDioError(DioException e) {
-    if (e.type == DioExceptionType.connectionError || e.type == DioExceptionType.connectionTimeout) {
+    if (e.type == DioExceptionType.connectionError ||
+        e.type == DioExceptionType.connectionTimeout) {
       return const ServerFailure('Sem conexão com a internet.');
     }
     return const ServerFailure();

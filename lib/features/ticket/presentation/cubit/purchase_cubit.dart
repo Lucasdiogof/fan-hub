@@ -25,7 +25,11 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     emit(state.copyWith(quantities: next));
   }
 
-  void setHolderIsSelf(bool value, {String? profileName, String? profileDocument}) {
+  void setHolderIsSelf(
+    bool value, {
+    String? profileName,
+    String? profileDocument,
+  }) {
     emit(
       state.copyWith(
         holderIsSelf: value,

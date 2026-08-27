@@ -198,7 +198,9 @@ class _OrderCard extends StatelessWidget {
       showDragHandle: true,
       backgroundColor: colors.surface,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.hero)),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppRadius.hero),
+        ),
       ),
       builder: (sheetContext) => SafeArea(
         top: false,
@@ -244,7 +246,10 @@ class _OrderCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           '${item.sectorName} · ${item.gate} · ${item.categoryLabel} (${item.quantity}x)',
-                          style: TextStyle(fontSize: 13, color: colors.textPrimary),
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: colors.textPrimary,
+                          ),
                         ),
                       ),
                       Text(

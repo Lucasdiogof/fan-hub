@@ -83,7 +83,11 @@ class _AuthTextFieldState extends State<AuthTextField> {
           widget.label,
           style:
               widget.labelStyle ??
-              TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: colors.textSecondary),
+              TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: colors.textSecondary,
+              ),
         ),
         const SizedBox(height: AppSpacing.sm),
         AnimatedContainer(
@@ -91,13 +95,23 @@ class _AuthTextFieldState extends State<AuthTextField> {
           decoration: BoxDecoration(
             color: widget.fillColor ?? colors.surface,
             borderRadius: BorderRadius.circular(AppRadius.button),
-            border: Border.all(color: borderColor, width: _focused || hasError ? 1.5 : 1),
+            border: Border.all(
+              color: borderColor,
+              width: _focused || hasError ? 1.5 : 1,
+            ),
           ),
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: AppSpacing.md, right: AppSpacing.sm),
-                child: Icon(widget.icon, size: 18, color: _focused ? colors.primary : colors.textHint),
+                padding: const EdgeInsets.only(
+                  left: AppSpacing.md,
+                  right: AppSpacing.sm,
+                ),
+                child: Icon(
+                  widget.icon,
+                  size: 18,
+                  color: _focused ? colors.primary : colors.textHint,
+                ),
               ),
               Expanded(
                 child: TextField(
@@ -109,7 +123,8 @@ class _AuthTextFieldState extends State<AuthTextField> {
                   autofillHints: widget.autofillHints,
                   onChanged: widget.onChanged,
                   onSubmitted: widget.onSubmitted,
-                  inputFormatters: widget.keyboardType == TextInputType.emailAddress
+                  inputFormatters:
+                      widget.keyboardType == TextInputType.emailAddress
                       ? [FilteringTextInputFormatter.deny(RegExp(r'\s'))]
                       : null,
                   style: TextStyle(fontSize: 15, color: colors.textPrimary),
@@ -153,7 +168,11 @@ class _AuthTextFieldState extends State<AuthTextField> {
 }
 
 class _EyeButton extends StatelessWidget {
-  const _EyeButton({required this.obscured, required this.color, required this.onTap});
+  const _EyeButton({
+    required this.obscured,
+    required this.color,
+    required this.onTap,
+  });
 
   final bool obscured;
   final Color color;
@@ -163,9 +182,15 @@ class _EyeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onTap,
-      icon: Icon(obscured ? Icons.visibility_outlined : Icons.visibility_off_outlined, size: 19, color: color),
+      icon: Icon(
+        obscured ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+        size: 19,
+        color: color,
+      ),
       splashRadius: 20,
-      tooltip: obscured ? context.l10n.authShowPassword : context.l10n.authHidePassword,
+      tooltip: obscured
+          ? context.l10n.authShowPassword
+          : context.l10n.authHidePassword,
     );
   }
 }

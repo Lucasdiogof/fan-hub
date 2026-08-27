@@ -6,7 +6,11 @@ import 'package:goias_app/core/theme/app_colors.dart';
 /// Material. Item ativo só muda de cor (ícone + rótulo); nenhum outro
 /// tratamento além disso.
 class MainBottomNavigation extends StatelessWidget {
-  const MainBottomNavigation({required this.selectedIndex, required this.onSelected, super.key});
+  const MainBottomNavigation({
+    required this.selectedIndex,
+    required this.onSelected,
+    super.key,
+  });
 
   final int selectedIndex;
   final ValueChanged<int> onSelected;
@@ -96,7 +100,11 @@ class _NavItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(selected ? data.selectedIcon : data.icon, size: 22, color: color),
+          Icon(
+            selected ? data.selectedIcon : data.icon,
+            size: 22,
+            color: color,
+          ),
           const SizedBox(height: 4),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2),

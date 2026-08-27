@@ -51,7 +51,8 @@ class MatchInfoPage extends StatelessWidget {
                   AppSpacing.xxxl,
                 ),
                 itemCount: info.sections.length,
-                separatorBuilder: (_, _) => const SizedBox(height: AppSpacing.lg),
+                separatorBuilder: (_, _) =>
+                    const SizedBox(height: AppSpacing.lg),
                 itemBuilder: (context, index) =>
                     _InfoSection(section: info.sections[index]),
               ),

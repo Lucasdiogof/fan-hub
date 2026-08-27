@@ -14,8 +14,8 @@ Future<void> openExternalUrl(BuildContext context, String url) async {
     if (!launched) throw Exception('launchUrl returned false for $url');
   } catch (_) {
     if (!context.mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(context.l10n.commonLinkOpenError)),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(context.l10n.commonLinkOpenError)));
   }
 }

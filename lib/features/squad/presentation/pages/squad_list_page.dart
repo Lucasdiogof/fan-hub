@@ -100,7 +100,10 @@ class _SquadListView extends StatelessWidget {
                               children: [
                                 for (final group in positionGroupOrder)
                                   _PositionGroupSection(
-                                    title: positionGroupLabel(group, context.l10n),
+                                    title: positionGroupLabel(
+                                      group,
+                                      context.l10n,
+                                    ),
                                     members: state.members
                                         .where(
                                           (member) =>

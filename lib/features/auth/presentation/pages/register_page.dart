@@ -55,8 +55,15 @@ class _RegisterPageState extends State<RegisterPage> {
     final l10n = context.l10n;
     final nameError = AuthValidators.fullName(l10n, _nameController.text);
     final emailError = AuthValidators.email(l10n, _emailController.text);
-    final passwordError = AuthValidators.newPassword(l10n, _passwordController.text);
-    final confirmError = AuthValidators.confirmPassword(l10n, _confirmController.text, _passwordController.text);
+    final passwordError = AuthValidators.newPassword(
+      l10n,
+      _passwordController.text,
+    );
+    final confirmError = AuthValidators.confirmPassword(
+      l10n,
+      _confirmController.text,
+      _passwordController.text,
+    );
     setState(() {
       _nameError = nameError;
       _emailError = emailError;
@@ -65,7 +72,11 @@ class _RegisterPageState extends State<RegisterPage> {
       _termsError = !_acceptedTerms;
       _formError = null;
     });
-    if (nameError != null || emailError != null || passwordError != null || confirmError != null || !_acceptedTerms) {
+    if (nameError != null ||
+        emailError != null ||
+        passwordError != null ||
+        confirmError != null ||
+        !_acceptedTerms) {
       return;
     }
 
@@ -80,7 +91,10 @@ class _RegisterPageState extends State<RegisterPage> {
     switch (result) {
       case Success<bool>(:final data):
         if (data) {
-          context.go('/check-email', extra: AuthValidators.normalizeEmail(_emailController.text));
+          context.go(
+            '/check-email',
+            extra: AuthValidators.normalizeEmail(_emailController.text),
+          );
         }
       case Error<bool>(:final failure):
         setState(() => _formError = failure.message);
@@ -179,7 +193,11 @@ class _RegisterPageState extends State<RegisterPage> {
 }
 
 class _TermsCheckbox extends StatelessWidget {
-  const _TermsCheckbox({required this.value, required this.hasError, required this.onChanged});
+  const _TermsCheckbox({
+    required this.value,
+    required this.hasError,
+    required this.onChanged,
+  });
 
   final bool value;
   final bool hasError;
@@ -189,8 +207,16 @@ class _TermsCheckbox extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
-    final linkStyle = TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: colors.primary);
-    final baseStyle = TextStyle(fontSize: 13, height: 1.4, color: colors.textSecondary);
+    final linkStyle = TextStyle(
+      fontSize: 13,
+      fontWeight: FontWeight.w700,
+      color: colors.primary,
+    );
+    final baseStyle = TextStyle(
+      fontSize: 13,
+      height: 1.4,
+      color: colors.textSecondary,
+    );
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -206,11 +232,15 @@ class _TermsCheckbox extends StatelessWidget {
               color: value ? colors.primary : colors.surface,
               borderRadius: BorderRadius.circular(6),
               border: Border.all(
-                color: hasError ? colors.error : (value ? colors.primary : colors.border),
+                color: hasError
+                    ? colors.error
+                    : (value ? colors.primary : colors.border),
                 width: 1.5,
               ),
             ),
-            child: value ? Icon(Icons.check_rounded, size: 15, color: colors.onPrimary) : null,
+            child: value
+                ? Icon(Icons.check_rounded, size: 15, color: colors.onPrimary)
+                : null,
           ),
         ),
         const SizedBox(width: AppSpacing.md),
@@ -223,13 +253,15 @@ class _TermsCheckbox extends StatelessWidget {
                 TextSpan(
                   text: l10n.authTermsLink,
                   style: linkStyle,
-                  recognizer: TapGestureRecognizer()..onTap = () => context.push('/profile/terms'),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () => context.push('/profile/terms'),
                 ),
                 TextSpan(text: l10n.authTermsConnector),
                 TextSpan(
                   text: l10n.authPrivacyLink,
                   style: linkStyle,
-                  recognizer: TapGestureRecognizer()..onTap = () => context.push('/profile/privacy'),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () => context.push('/profile/privacy'),
                 ),
                 TextSpan(text: l10n.authTermsSuffix),
               ],

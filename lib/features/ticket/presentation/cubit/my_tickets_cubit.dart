@@ -16,9 +16,19 @@ class MyTicketsCubit extends Cubit<MyTicketsState> {
     final result = await _repository.getMyTickets();
     switch (result) {
       case Success(:final data):
-        emit(state.copyWith(status: data.isEmpty ? LoadStatus.empty : LoadStatus.success, tickets: data));
+        emit(
+          state.copyWith(
+            status: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
+            tickets: data,
+          ),
+        );
       case Error(:final failure):
-        emit(state.copyWith(status: LoadStatus.error, errorMessage: failure.message));
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            errorMessage: failure.message,
+          ),
+        );
     }
   }
 }

@@ -40,8 +40,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
     final l10n = context.l10n;
-    final passwordError = AuthValidators.newPassword(l10n, _passwordController.text);
-    final confirmError = AuthValidators.confirmPassword(l10n, _confirmController.text, _passwordController.text);
+    final passwordError = AuthValidators.newPassword(
+      l10n,
+      _passwordController.text,
+    );
+    final confirmError = AuthValidators.confirmPassword(
+      l10n,
+      _confirmController.text,
+      _passwordController.text,
+    );
     setState(() {
       _passwordError = passwordError;
       _confirmError = confirmError;
@@ -50,7 +57,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     if (passwordError != null || confirmError != null) return;
 
     setState(() => _loading = true);
-    final result = await context.read<AuthCubit>().updatePassword(_passwordController.text);
+    final result = await context.read<AuthCubit>().updatePassword(
+      _passwordController.text,
+    );
     if (!mounted) return;
     setState(() => _loading = false);
     switch (result) {
@@ -90,11 +99,22 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(context.l10n.resetPasswordTitle, style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: colors.textPrimary)),
+        Text(
+          context.l10n.resetPasswordTitle,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w800,
+            color: colors.textPrimary,
+          ),
+        ),
         const SizedBox(height: AppSpacing.sm),
         Text(
           context.l10n.resetPasswordSubtitle,
-          style: TextStyle(fontSize: 14, height: 1.35, color: colors.textSecondary),
+          style: TextStyle(
+            fontSize: 14,
+            height: 1.35,
+            color: colors.textSecondary,
+          ),
         ),
         const SizedBox(height: AppSpacing.xl),
         AuthErrorBanner(message: _formError),
@@ -102,7 +122,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           controller: _passwordController,
           label: context.l10n.securityNewPassword,
           icon: Icons.lock_outline_rounded,
-          hintText: context.l10n.authPasswordMinHint(AuthValidators.minPasswordLength),
+          hintText: context.l10n.authPasswordMinHint(
+            AuthValidators.minPasswordLength,
+          ),
           obscurable: true,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.newPassword],
@@ -147,23 +169,42 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         Container(
           width: 88,
           height: 88,
-          decoration: BoxDecoration(color: colors.secondary, shape: BoxShape.circle),
-          child: Icon(Icons.check_circle_outline_rounded, size: 42, color: colors.primary),
+          decoration: BoxDecoration(
+            color: colors.secondary,
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            Icons.check_circle_outline_rounded,
+            size: 42,
+            color: colors.primary,
+          ),
         ),
         const SizedBox(height: AppSpacing.xxl),
         Text(
           context.l10n.resetPasswordSuccessTitle,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: colors.textPrimary),
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w800,
+            color: colors.textPrimary,
+          ),
         ),
         const SizedBox(height: AppSpacing.md),
         Text(
           context.l10n.resetPasswordSuccessMessage,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 14, height: 1.4, color: colors.textSecondary),
+          style: TextStyle(
+            fontSize: 14,
+            height: 1.4,
+            color: colors.textSecondary,
+          ),
         ),
         const SizedBox(height: AppSpacing.xxl),
-        AppPrimaryButton(label: context.l10n.authSignInButton, showArrow: true, onPressed: _goToLogin),
+        AppPrimaryButton(
+          label: context.l10n.authSignInButton,
+          showArrow: true,
+          onPressed: _goToLogin,
+        ),
       ],
     );
   }

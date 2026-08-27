@@ -188,7 +188,8 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
                                 children: [
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           '${item.sectorName} · ${item.gate}',
@@ -271,7 +272,9 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
                       TextField(
                         controller: _documentController,
                         enabled: !state.holderIsSelf,
-                        onChanged: context.read<PurchaseCubit>().setHolderDocument,
+                        onChanged: context
+                            .read<PurchaseCubit>()
+                            .setHolderDocument,
                         decoration: InputDecoration(
                           labelText: context.l10n.ticketsDocumentLabel,
                         ),
@@ -326,9 +329,8 @@ class _SelfCheckbox extends StatelessWidget {
             children: [
               Checkbox(
                 value: state.holderIsSelf,
-                onChanged: (value) => context
-                    .read<PurchaseCubit>()
-                    .setHolderIsSelf(
+                onChanged: (value) =>
+                    context.read<PurchaseCubit>().setHolderIsSelf(
                       value ?? false,
                       profileName: profile.displayName,
                       profileDocument: profile.cpf,
@@ -338,7 +340,10 @@ class _SelfCheckbox extends StatelessWidget {
               Expanded(
                 child: Text(
                   context.l10n.ticketsHolderIsSelfCheckbox,
-                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],

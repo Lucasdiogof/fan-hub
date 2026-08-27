@@ -182,7 +182,11 @@ class _MatchDetailsContent extends StatelessWidget {
         const SizedBox(height: AppSpacing.xxl),
         Text(
           match.kickoff != null
-              ? longDateLabel(match.kickoff!, context.l10n, Localizations.localeOf(context).toString())
+              ? longDateLabel(
+                  match.kickoff!,
+                  context.l10n,
+                  Localizations.localeOf(context).toString(),
+                )
               : context.l10n.matchDateToBeConfirmed,
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -247,7 +251,11 @@ class _MatchDetailsContent extends StatelessWidget {
               _InfoRow(
                 label: context.l10n.matchFieldDate,
                 value: match.kickoff != null
-                    ? longDateLabel(match.kickoff!, context.l10n, Localizations.localeOf(context).toString())
+                    ? longDateLabel(
+                        match.kickoff!,
+                        context.l10n,
+                        Localizations.localeOf(context).toString(),
+                      )
                     : context.l10n.matchToBeConfirmed,
               ),
               _InfoRow(
@@ -259,10 +267,19 @@ class _MatchDetailsContent extends StatelessWidget {
                 value: match.stadium.isEmpty ? '—' : match.stadium,
               ),
               if (match.city != null)
-                _InfoRow(label: context.l10n.matchFieldCity, value: match.city!),
-              _InfoRow(label: context.l10n.matchFieldCompetition, value: match.competition),
+                _InfoRow(
+                  label: context.l10n.matchFieldCity,
+                  value: match.city!,
+                ),
+              _InfoRow(
+                label: context.l10n.matchFieldCompetition,
+                value: match.competition,
+              ),
               if (match.round.isNotEmpty)
-                _InfoRow(label: context.l10n.matchFieldRound, value: match.round),
+                _InfoRow(
+                  label: context.l10n.matchFieldRound,
+                  value: match.round,
+                ),
               _InfoRow(
                 label: context.l10n.matchFieldStatus,
                 value: matchStatusLabel(context.l10n, match.status),

@@ -59,7 +59,8 @@ class SocialPostDto {
   final int? reposts;
 
   SocialPost toEntity() {
-    final hasMetrics = likes != null || comments != null || views != null || reposts != null;
+    final hasMetrics =
+        likes != null || comments != null || views != null || reposts != null;
     return SocialPost(
       id: id,
       platform: _parsePlatform(platform),
@@ -74,7 +75,12 @@ class SocialPostDto {
       publishedAt: DateTime.parse(publishedAt),
       permalink: permalink,
       metrics: hasMetrics
-          ? SocialMetrics(likes: likes, comments: comments, views: views, reposts: reposts)
+          ? SocialMetrics(
+              likes: likes,
+              comments: comments,
+              views: views,
+              reposts: reposts,
+            )
           : null,
     );
   }

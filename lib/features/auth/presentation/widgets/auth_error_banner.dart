@@ -18,7 +18,10 @@ class AuthErrorBanner extends StatelessWidget {
           : Container(
               width: double.infinity,
               margin: const EdgeInsets.only(bottom: AppSpacing.lg),
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: AppSpacing.md),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.md,
+              ),
               decoration: BoxDecoration(
                 color: colors.error.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(AppRadius.cardSmall),
@@ -26,12 +29,20 @@ class AuthErrorBanner extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.error_outline_rounded, size: 18, color: colors.error),
+                  Icon(
+                    Icons.error_outline_rounded,
+                    size: 18,
+                    color: colors.error,
+                  ),
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     child: Text(
                       message!,
-                      style: TextStyle(fontSize: 13, color: colors.error, height: 1.3),
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: colors.error,
+                        height: 1.3,
+                      ),
                     ),
                   ),
                 ],

@@ -16,6 +16,8 @@ class SocialRemoteDataSource {
     );
     final data = response.data!;
     final posts = data['posts'] as List;
-    return posts.map((p) => SocialPostDto.fromJson(p as Map<String, dynamic>)).toList();
+    return posts
+        .map((p) => SocialPostDto.fromJson(p as Map<String, dynamic>))
+        .toList();
   }
 }

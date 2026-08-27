@@ -63,7 +63,9 @@ class _CheckInView extends StatelessWidget {
       showDragHandle: true,
       backgroundColor: colors.surface,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.hero)),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppRadius.hero),
+        ),
       ),
       builder: (_) => _SectorPickerSheet(sectors: sectors),
     );
@@ -149,7 +151,9 @@ class _CheckInView extends StatelessWidget {
                       ),
                       const SizedBox(width: AppSpacing.md),
                       Expanded(
-                        child: PageTitle(context.l10n.ticketsConfirmPresenceTitle),
+                        child: PageTitle(
+                          context.l10n.ticketsConfirmPresenceTitle,
+                        ),
                       ),
                     ],
                   ),
@@ -398,7 +402,10 @@ class _SectorOption extends StatelessWidget {
                     ),
                     Text(
                       '${sector.venueLabel} · ${sector.gate}',
-                      style: TextStyle(fontSize: 12, color: colors.textSecondary),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: colors.textSecondary,
+                      ),
                     ),
                   ],
                 ),
