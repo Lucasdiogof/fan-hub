@@ -162,11 +162,20 @@ export function roundNumberFromSubtitle(subtitle?: string): number | null {
   return match ? Number.parseInt(match[1], 10) : null;
 }
 
+/** Cada aba do OneFootball é paginada e só devolve uma janela: `resultados`
+ * traz as últimas rodadas encerradas e `jogos` as próximas. O botão "Mostrar
+ * todos" do site chama a MESMA URL com `?loadmore=1`, que devolve o restante
+ * (resultados: rodadas mais antigas; jogos: rodadas mais distantes). As duas
+ * páginas são complementares, não cumulativas — então pra cobrir a temporada
+ * inteira buscamos as duas de cada aba. `loadMore` verdadeiro pega a página
+ * do resto. */
 async function fetchCompetitionTab(
   competitionSlug: string,
   tab: 'jogos' | 'resultados',
+  loadMore = false,
 ): Promise<OneFootballMatchList[]> {
-  const containers = await getContainers(`competicao/${competitionSlug}/${tab}`);
+  const suffix = loadMore ? '?loadmore=1' : '';
+  const containers = await getContainers(`competicao/${competitionSlug}/${tab}${suffix}`);
   const appender = findNode<{ lists: OneFootballMatchList[] }>(containers, 'matchCardsListsAppender');
   return appender?.lists ?? [];
 }
@@ -220,12 +229,18 @@ function mergeRoundLists(groups: OneFootballMatchList[][]): OneFootballMatchList
  * resultados), usa a outra; só estoura se as duas falharem.
  */
 export async function fetchCompetitionMatchLists(competitionSlug: string): Promise<OneFootballMatchList[]> {
-  const [resultados, jogos] = await Promise.allSettled([
+  // 4 páginas: janela recente + resto de cada aba (ver fetchCompetitionTab).
+  // Início de temporada pode não ter `resultados`/`?loadmore=1` — por isso
+  // `allSettled`: basta UMA página vir pra montar a lista; só estoura se
+  // todas falharem.
+  const settled = await Promise.allSettled([
     fetchCompetitionTab(competitionSlug, 'resultados'),
+    fetchCompetitionTab(competitionSlug, 'resultados', true),
     fetchCompetitionTab(competitionSlug, 'jogos'),
+    fetchCompetitionTab(competitionSlug, 'jogos', true),
   ]);
-  if (resultados.status === 'rejected' && jogos.status === 'rejected') {
-    const reason = resultados.reason;
+  if (settled.every((result) => result.status === 'rejected')) {
+    const reason = (settled[0] as PromiseRejectedResult).reason;
     if (reason instanceof ProviderError) throw reason;
     throw new ProviderError(
       `Não foi possível consultar a rodada atual (${reason instanceof Error ? reason.message : String(reason)}).`,
@@ -233,10 +248,9 @@ export async function fetchCompetitionMatchLists(competitionSlug: string): Promi
       PROVIDER,
     );
   }
-  return mergeRoundLists([
-    resultados.status === 'fulfilled' ? resultados.value : [],
-    jogos.status === 'fulfilled' ? jogos.value : [],
-  ]);
+  return mergeRoundLists(
+    settled.map((result) => (result.status === 'fulfilled' ? result.value : [])),
+  );
 }
 
 /** A tabela só traz saldo de gols, não gols pró/contra separados. */
