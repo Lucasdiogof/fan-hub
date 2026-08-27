@@ -334,12 +334,6 @@ abstract class AppLocalizations {
   /// **'DATA A CONFIRMAR'**
   String get homeDateToBeConfirmed;
 
-  /// No description provided for @homeMatchDetails.
-  ///
-  /// In pt, this message translates to:
-  /// **'DETALHES DO JOGO'**
-  String get homeMatchDetails;
-
   /// No description provided for @homeTickets.
   ///
   /// In pt, this message translates to:
@@ -451,7 +445,7 @@ abstract class AppLocalizations {
   /// No description provided for @matchDetailsShort.
   ///
   /// In pt, this message translates to:
-  /// **'DETALHES'**
+  /// **'DETALHES DO JOGO'**
   String get matchDetailsShort;
 
   /// No description provided for @matchDateToBeConfirmed.
@@ -3309,6 +3303,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Quem caminha junto com o Verdão.'**
   String get clubPartnersSubtitle;
+
+  /// No description provided for @clubSongsSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Hino e músicas que embalam a torcida.'**
+  String get clubSongsSubtitle;
 
   /// No description provided for @clubAnthemSection.
   ///

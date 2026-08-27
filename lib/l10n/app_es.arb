@@ -45,7 +45,6 @@
 
   "homeNextMatch": "PRÓXIMO PARTIDO",
   "homeDateToBeConfirmed": "FECHA POR CONFIRMAR",
-  "homeMatchDetails": "DETALLES DEL PARTIDO",
   "homeTickets": "ENTRADAS",
 
   "homeCountdownTitle": "EL PARTIDO COMIENZA EN",
@@ -67,7 +66,7 @@
   "matchNoMatches": "No se encontraron partidos.",
   "matchDetailsLoadError": "No se pudo cargar el partido.",
   "matchBuyTicket": "COMPRAR ENTRADA",
-  "matchDetailsShort": "DETALLES",
+  "matchDetailsShort": "DETALLES DEL PARTIDO",
   "matchDateToBeConfirmed": "Fecha por confirmar",
   "matchToBeConfirmed": "Por confirmar",
 
@@ -601,6 +600,7 @@
   "clubSquadSubtitle": "Los jugadores que visten la camiseta.",
   "clubTitlesSubtitle": "{count} conquistas a lo largo de la historia.",
   "clubPartnersSubtitle": "Quienes caminan junto al Goiás.",
+  "clubSongsSubtitle": "El himno y las canciones que animan a la afición.",
   "clubAnthemSection": "HIMNO",
   "clubSongsSection": "CANCIONES ESMERALDINAS",
   "clubLyricsLabel": "LETRA",

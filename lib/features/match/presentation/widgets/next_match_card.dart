@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -115,19 +116,16 @@ class NextMatchCard extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: onBuyTicket,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: colors.ctaGreen,
-                    foregroundColor: Colors.white,
-                    disabledBackgroundColor: colors.ctaGreen.withValues(
-                      alpha: 0.5,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppSpacing.sm,
-                    ),
-                    textStyle: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.2,
+                  style: matchCtaFilledStyle(context).merge(
+                    ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.sm,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.2,
+                      ),
                     ),
                   ),
                   child: Text(context.l10n.matchBuyTicket),
@@ -137,11 +135,16 @@ class NextMatchCard extends StatelessWidget {
               Expanded(
                 child: OutlinedButton(
                   onPressed: onViewDetails,
-                  style: OutlinedButton.styleFrom(
-                    textStyle: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.2,
+                  style: matchCtaOutlineStyle(context).merge(
+                    OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.sm,
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 0.2,
+                      ),
                     ),
                   ),
                   child: Text(context.l10n.matchDetailsShort),

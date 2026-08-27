@@ -8,6 +8,12 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 /// só caber em containers tão largos quanto o texto mais longo já usado
 /// nele (ex.: "JOGAR NOVAMENTE" cabia em telas de auth, mas estourava
 /// dentro do card mais estreito do resultado do pênalti).
+///
+/// [color]/[borderColor] são escape hatches — na ausência deles o botão
+/// decide sozinho pelo tema atual: preenchido com [AppColors.primary] no
+/// light, e com [AppColors.ctaGreen] (verde vívido, sem borda) no dark.
+/// Never `if (dark)` espalhado pelas telas — quem chama só passa
+/// `label`/`onPressed` e recebe o padrão certo.
 class AppPrimaryButton extends StatelessWidget {
   const AppPrimaryButton({
     required this.label,
@@ -32,19 +38,22 @@ class AppPrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final enabled = onPressed != null && !loading;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final resolvedColor = color ?? (isDark ? colors.ctaGreen : colors.primary);
+    final resolvedBorderColor = borderColor;
 
     return Opacity(
       opacity: enabled || loading ? 1 : 0.55,
       child: Material(
-        color: color ?? colors.primary,
-        borderRadius: borderColor == null
+        color: resolvedColor,
+        borderRadius: resolvedBorderColor == null
             ? BorderRadius.circular(AppRadius.button)
             : null,
-        shape: borderColor == null
+        shape: resolvedBorderColor == null
             ? null
             : RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppRadius.button),
-                side: BorderSide(color: borderColor!, width: 1.5),
+                side: BorderSide(color: resolvedBorderColor, width: 1.5),
               ),
         child: InkWell(
           onTap: enabled ? onPressed : null,

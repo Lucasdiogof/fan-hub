@@ -130,9 +130,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeDateToBeConfirmed => 'DATE TO BE CONFIRMED';
 
   @override
-  String get homeMatchDetails => 'MATCH DETAILS';
-
-  @override
   String get homeTickets => 'TICKETS';
 
   @override
@@ -188,7 +185,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get matchBuyTicket => 'BUY TICKET';
 
   @override
-  String get matchDetailsShort => 'DETAILS';
+  String get matchDetailsShort => 'MATCH DETAILS';
 
   @override
   String get matchDateToBeConfirmed => 'Date to be confirmed';
@@ -1816,6 +1813,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get clubPartnersSubtitle => 'Who stands with Goiás.';
+
+  @override
+  String get clubSongsSubtitle => 'The anthem and songs that carry the fans.';
 
   @override
   String get clubAnthemSection => 'ANTHEM';

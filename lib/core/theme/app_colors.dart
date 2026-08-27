@@ -32,9 +32,13 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color darkGreen;
   final Color deepGreen;
 
-  /// Verde vívido reservado para CTAs de destaque sobre fundos escuros
-  /// (ex.: "Comprar ingresso" no Hero) — mais aceso que [success], que fica
-  /// reservado para estados de confirmação.
+  /// Verde de CTA de destaque (ex.: "Comprar ingresso", botão de entrar) —
+  /// preenchimento sólido nos dois temas, sem borda. No dark theme é um
+  /// verde mais vívido que `primary`/`darkGreen` de propósito (escolhido
+  /// comparando variantes lado a lado) — é a cor de ação principal do app,
+  /// então precisa se destacar mais que o resto da paleta sóbria do dark
+  /// theme. Ver `matchCtaFilledStyle`/`ctaButtonStyle` em
+  /// `app_button_styles.dart` e `AppPrimaryButton`.
   final Color ctaGreen;
   final Color gold;
   final Color textPrimary;
@@ -54,34 +58,39 @@ class AppColors extends ThemeExtension<AppColors> {
     darkGreen: Color(0xFF003712),
     deepGreen: Color(0xFF00280D),
     ctaGreen: Color(0xFF169447),
-    gold: Color(0xFFC79A3D),
+    gold: Color(0xFFA9822E),
     textPrimary: Color(0xFF121815),
     textSecondary: Color(0xFF5E6963),
     textHint: Color(0xFF98A19C),
     border: Color(0xFFE0E6E3),
     // Nunca vermelho em nenhum componente do app — âmbar/dourado (mesmo
     // tom do token `gold`) representa erro/falha em toda a UI.
-    error: Color(0xFFC79A3D),
+    error: Color(0xFFA9822E),
     success: Color(0xFF278A52),
   );
 
+  // Verdes bem mais escuros/sóbrios que antes — o dark theme deve lembrar
+  // um verde-esmeralda quase preto, não um verde neon sobre fundo escuro.
+  // primary/ctaGreen/success eram #29A85C/#1EB157/#4CC37A (vívidos demais
+  // sobre um fundo já verde-escuro); darkGreen/deepGreen/gold/error não
+  // mudaram — já estavam sóbrios.
   static const dark = AppColors(
     background: Color(0xFF09110C),
     surface: Color(0xFF111A14),
     surfaceRaised: Color(0xFF17231C),
-    primary: Color(0xFF29A85C),
+    primary: Color(0xFF1F8A4D),
     onPrimary: Color(0xFFFFFFFF),
     secondary: Color(0xFF17271C),
     darkGreen: Color(0xFF003712),
     deepGreen: Color(0xFF00280D),
-    ctaGreen: Color(0xFF1EB157),
-    gold: Color(0xFFD9B25C),
+    ctaGreen: Color(0xFF2FA968),
+    gold: Color(0xFFB8904A),
     textPrimary: Color(0xFFF4F7F5),
     textSecondary: Color(0xFFAAB5AF),
     textHint: Color(0xFF707B75),
     border: Color(0xFF26342B),
-    error: Color(0xFFD9B25C),
-    success: Color(0xFF4CC37A),
+    error: Color(0xFFB8904A),
+    success: Color(0xFF2D8B57),
   );
 
   @override

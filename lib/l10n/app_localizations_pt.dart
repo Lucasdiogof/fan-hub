@@ -129,9 +129,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homeDateToBeConfirmed => 'DATA A CONFIRMAR';
 
   @override
-  String get homeMatchDetails => 'DETALHES DO JOGO';
-
-  @override
   String get homeTickets => 'INGRESSOS';
 
   @override
@@ -187,7 +184,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get matchBuyTicket => 'COMPRAR INGRESSO';
 
   @override
-  String get matchDetailsShort => 'DETALHES';
+  String get matchDetailsShort => 'DETALHES DO JOGO';
 
   @override
   String get matchDateToBeConfirmed => 'Data a confirmar';
@@ -1823,6 +1820,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get clubPartnersSubtitle => 'Quem caminha junto com o Verdão.';
+
+  @override
+  String get clubSongsSubtitle => 'Hino e músicas que embalam a torcida.';
 
   @override
   String get clubAnthemSection => 'HINO';

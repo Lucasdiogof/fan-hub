@@ -72,6 +72,7 @@ class _AppBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final cancel = cancelLabel;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SafeArea(
       top: false,
@@ -128,7 +129,14 @@ class _AppBottomSheetContent extends StatelessWidget {
             const SizedBox(height: AppSpacing.xxl),
             _PrimaryButton(
               label: confirmLabel,
-              color: destructive ? colors.error : colors.primary,
+              // Mesma regra do `AppPrimaryButton`: no dark theme, o CTA
+              // principal (não-destrutivo) vira verde escuro + borda
+              // branca em vez do verde vívido antigo. Destrutivo continua
+              // âmbar sólido nos dois temas.
+              color: destructive
+                  ? colors.error
+                  : (isDark ? colors.darkGreen : colors.primary),
+              borderColor: !destructive && isDark ? Colors.white : null,
               onTap: () {
                 Navigator.of(context).pop(true);
                 onConfirm?.call();
@@ -166,18 +174,29 @@ class _PrimaryButton extends StatelessWidget {
     required this.label,
     required this.onTap,
     required this.color,
+    this.borderColor,
   });
 
   final String label;
   final VoidCallback onTap;
   final Color color;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final border = borderColor;
     return Material(
       color: color,
-      borderRadius: BorderRadius.circular(AppRadius.button),
+      borderRadius: border == null
+          ? BorderRadius.circular(AppRadius.button)
+          : null,
+      shape: border == null
+          ? null
+          : RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppRadius.button),
+              side: BorderSide(color: border, width: 1.5),
+            ),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppRadius.button),

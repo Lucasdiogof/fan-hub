@@ -60,7 +60,10 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
   Future<void> _submit() async {
     if (_loading) return;
     FocusScope.of(context).unfocus();
-    final emailError = AuthValidators.email(context.l10n, _emailController.text);
+    final emailError = AuthValidators.email(
+      context.l10n,
+      _emailController.text,
+    );
     setState(() {
       _emailError = emailError;
       _formError = null;
@@ -90,7 +93,9 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
       _resendDone = false;
       _resendError = null;
     });
-    final result = await context.read<AuthCubit>().sendPasswordReset(_sentEmail);
+    final result = await context.read<AuthCubit>().sendPasswordReset(
+      _sentEmail,
+    );
     if (!mounted) return;
     setState(() {
       _resending = false;
@@ -156,7 +161,6 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
           label: l10n.forgotSendButton,
           loading: _loading,
           loadingLabel: l10n.forgotSending,
-          color: colors.primary,
           onPressed: _canSubmit ? _submit : null,
         ),
       ],
@@ -189,7 +193,6 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
         const SizedBox(height: AppSpacing.xxl),
         AppPrimaryButton(
           label: l10n.commonGotIt,
-          color: colors.primary,
           onPressed: () => Navigator.of(context).pop(),
         ),
         const SizedBox(height: AppSpacing.lg),

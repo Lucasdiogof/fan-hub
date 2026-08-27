@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
@@ -68,15 +69,12 @@ class TicketViewPage extends StatelessWidget {
                   icon: const Icon(Icons.ios_share_rounded, size: 19),
                   label: Text(
                     context.l10n.ticketsSaveTicketButton,
-                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
-                  ),
-                  style: FilledButton.styleFrom(
-                    backgroundColor: colors.primary,
-                    foregroundColor: colors.onPrimary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppRadius.button),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
+                  style: matchCtaFilledStyle(context),
                 ),
               ),
             ),

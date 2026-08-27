@@ -40,7 +40,10 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
-    final emailError = AuthValidators.email(context.l10n, _emailController.text);
+    final emailError = AuthValidators.email(
+      context.l10n,
+      _emailController.text,
+    );
     final passwordError = AuthValidators.password(
       context.l10n,
       _passwordController.text,
@@ -77,7 +80,9 @@ class _LoginPageState extends State<LoginPage> {
               builder: (context, constraints) {
                 return SingleChildScrollView(
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: AppSpacing.xxl,
@@ -109,7 +114,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildForm(BuildContext context) {
-    final colors = context.colors;
     final l10n = context.l10n;
     const labelStyle = TextStyle(
       fontSize: 15,
@@ -159,11 +163,17 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () => ForgotPasswordSheet.show(context),
             style: TextButton.styleFrom(
               foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.sm,
+                vertical: AppSpacing.xs,
+              ),
               minimumSize: Size.zero,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            child: Text(l10n.authForgotPassword, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700)),
+            child: Text(
+              l10n.authForgotPassword,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
+            ),
           ),
         ),
         const SizedBox(height: AppSpacing.lg),
@@ -172,8 +182,11 @@ class _LoginPageState extends State<LoginPage> {
           loading: _loading,
           loadingLabel: l10n.authSigningIn,
           onPressed: _submit,
-          color: colors.darkGreen,
-          borderColor: Colors.white,
+          // Explícito e independente do tema do app — o fundo desta tela é
+          // sempre uma foto escura, então o botão precisa do mesmo verde
+          // vívido tanto no light quanto no dark theme do app, ao contrário
+          // do padrão novo do `AppPrimaryButton` (que decide pelo tema).
+          color: AppColors.dark.ctaGreen,
         ),
         const SizedBox(height: AppSpacing.xl),
         Center(

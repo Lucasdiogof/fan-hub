@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
@@ -305,15 +306,15 @@ class _StatusBlock extends StatelessWidget {
           height: 50,
           child: FilledButton(
             onPressed: onTap,
-            style: FilledButton.styleFrom(
-              backgroundColor: colors.ctaGreen,
-              foregroundColor: Colors.white,
-              disabledBackgroundColor: colors.secondary,
-              disabledForegroundColor: colors.textHint,
-              textStyle: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 0.2,
+            style: matchCtaFilledStyle(context, minHeight: 50).merge(
+              FilledButton.styleFrom(
+                disabledBackgroundColor: colors.secondary,
+                disabledForegroundColor: colors.textHint,
+                textStyle: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.2,
+                ),
               ),
             ),
             child: Text(buttonLabel),
@@ -369,13 +370,13 @@ class _ConfirmedBlock extends StatelessWidget {
           height: 50,
           child: FilledButton(
             onPressed: onViewTicket,
-            style: FilledButton.styleFrom(
-              backgroundColor: colors.ctaGreen,
-              foregroundColor: Colors.white,
-              textStyle: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 0.2,
+            style: matchCtaFilledStyle(context, minHeight: 50).merge(
+              FilledButton.styleFrom(
+                textStyle: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.2,
+                ),
               ),
             ),
             child: Text(context.l10n.ticketsViewTicketButton),
@@ -388,7 +389,10 @@ class _ConfirmedBlock extends StatelessWidget {
             style: TextButton.styleFrom(foregroundColor: colors.textHint),
             child: Text(
               context.l10n.ticketsUndoCheckInButton,
-              style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600),
+              style: const TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ],

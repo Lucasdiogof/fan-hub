@@ -147,7 +147,7 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
               fillColor: colors.surface,
               errorText: widget.errorText,
               errorMaxLines: 2,
-              errorStyle: TextStyle(color: colors.primary),
+              errorStyle: TextStyle(color: colors.error),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
                 borderSide: BorderSide(color: colors.border),
@@ -162,11 +162,11 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: colors.primary),
+                borderSide: BorderSide(color: colors.error),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: colors.primary, width: 1.5),
+                borderSide: BorderSide(color: colors.error, width: 1.5),
               ),
             ),
           ),
@@ -215,7 +215,7 @@ class RegistrationPickerField extends StatelessWidget {
               color: colors.surface,
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
-                color: errorText != null ? colors.primary : colors.border,
+                color: errorText != null ? colors.error : colors.border,
               ),
             ),
             child: Row(
@@ -241,10 +241,7 @@ class RegistrationPickerField extends StatelessWidget {
         ),
         if (errorText != null) ...[
           const SizedBox(height: 4),
-          Text(
-            errorText!,
-            style: TextStyle(fontSize: 12, color: colors.primary),
-          ),
+          Text(errorText!, style: TextStyle(fontSize: 12, color: colors.error)),
         ],
       ],
     );

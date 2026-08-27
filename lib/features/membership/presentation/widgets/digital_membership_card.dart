@@ -151,11 +151,12 @@ class _StatusPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.colors;
     final (label, color) = switch (status) {
-      MembershipStatus.active => ('ATIVO', const Color(0xFF4CC37A)),
-      MembershipStatus.pending => ('PENDENTE', const Color(0xFFD9B25C)),
-      MembershipStatus.suspended => ('SUSPENSO', const Color(0xFFD9B25C)),
-      MembershipStatus.cancelled => ('CANCELADO', const Color(0xFFD9B25C)),
+      MembershipStatus.active => ('ATIVO', colors.success),
+      MembershipStatus.pending => ('PENDENTE', colors.gold),
+      MembershipStatus.suspended => ('SUSPENSO', colors.error),
+      MembershipStatus.cancelled => ('CANCELADO', colors.error),
       MembershipStatus.none => ('', Colors.transparent),
     };
     if (label.isEmpty) return const SizedBox.shrink();

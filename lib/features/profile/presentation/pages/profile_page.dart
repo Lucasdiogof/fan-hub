@@ -318,7 +318,6 @@ class _SignOutButton extends StatelessWidget {
       description: context.l10n.profileSignOutMessage,
       confirmLabel: context.l10n.profileSignOutConfirm,
       cancelLabel: context.l10n.commonCancel,
-      destructive: true,
     );
     if (confirmed == true) {
       await authCubit.signOut();
@@ -339,19 +338,19 @@ class _SignOutButton extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.button),
-            border: Border.all(color: colors.error.withValues(alpha: 0.4)),
+            border: Border.all(color: colors.primary.withValues(alpha: 0.35)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.logout_rounded, size: 18, color: colors.error),
+              Icon(Icons.logout_rounded, size: 18, color: colors.primary),
               const SizedBox(width: AppSpacing.sm),
               Text(
                 context.l10n.profileSignOut,
                 style: TextStyle(
                   fontSize: 14.5,
                   fontWeight: FontWeight.w700,
-                  color: colors.error,
+                  color: colors.primary,
                 ),
               ),
             ],

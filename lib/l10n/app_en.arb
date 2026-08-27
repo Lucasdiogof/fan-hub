@@ -45,7 +45,6 @@
 
   "homeNextMatch": "NEXT MATCH",
   "homeDateToBeConfirmed": "DATE TO BE CONFIRMED",
-  "homeMatchDetails": "MATCH DETAILS",
   "homeTickets": "TICKETS",
 
   "homeCountdownTitle": "THE MATCH STARTS IN",
@@ -67,7 +66,7 @@
   "matchNoMatches": "No matches found.",
   "matchDetailsLoadError": "Couldn't load the match.",
   "matchBuyTicket": "BUY TICKET",
-  "matchDetailsShort": "DETAILS",
+  "matchDetailsShort": "MATCH DETAILS",
   "matchDateToBeConfirmed": "Date to be confirmed",
   "matchToBeConfirmed": "To be confirmed",
 
@@ -601,6 +600,7 @@
   "clubSquadSubtitle": "The players who wear the shirt.",
   "clubTitlesSubtitle": "{count} trophies throughout history.",
   "clubPartnersSubtitle": "Who stands with Goiás.",
+  "clubSongsSubtitle": "The anthem and songs that carry the fans.",
   "clubAnthemSection": "ANTHEM",
   "clubSongsSection": "ESMERALDINA SONGS",
   "clubLyricsLabel": "LYRICS",

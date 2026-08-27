@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/widgets/match_countdown.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -17,28 +17,34 @@ class NextMatchHero extends StatelessWidget {
   const NextMatchHero({
     required this.match,
     this.onTickets,
-    this.onViewDetails,
     this.onMatchStarted,
     super.key,
   });
 
   final Match match;
   final VoidCallback? onTickets;
-  final VoidCallback? onViewDetails;
   final VoidCallback? onMatchStarted;
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     return ClipRRect(
       borderRadius: BorderRadius.circular(AppRadius.hero),
       child: Stack(
         children: [
           const Positioned.fill(
-            child: StadiumBackdrop(imageAsset: AppAssets.matchHero, showFloodlights: false, overlayOpacity: 0.85),
+            child: StadiumBackdrop(
+              imageAsset: AppAssets.matchHero,
+              showFloodlights: false,
+              overlayOpacity: 0.85,
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.lg, AppSpacing.xl, AppSpacing.lg),
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.xl,
+              AppSpacing.lg,
+              AppSpacing.xl,
+              AppSpacing.lg,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -87,56 +93,33 @@ class NextMatchHero extends StatelessWidget {
                 ),
                 if (match.kickoff != null) ...[
                   const SizedBox(height: AppSpacing.lg),
-                  MatchCountdown(kickoff: match.kickoff!, onFinished: onMatchStarted),
+                  MatchCountdown(
+                    kickoff: match.kickoff!,
+                    onFinished: onMatchStarted,
+                  ),
                 ],
                 const SizedBox(height: AppSpacing.lg),
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton(
-                        onPressed: onViewDetails,
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          disabledForegroundColor: Colors.white.withValues(alpha: 0.7),
-                          side: BorderSide(color: Colors.white.withValues(alpha: 0.5)),
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                          minimumSize: const Size.fromHeight(46),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppRadius.button),
+                Center(
+                  child: SizedBox(
+                    width: 200,
+                    child: ElevatedButton(
+                      onPressed: onTickets,
+                      // `forceDark`: este botão fica sobre o
+                      // `StadiumBackdrop`, que é sempre escuro
+                      // independente do tema do app.
+                      style: matchCtaFilledStyle(context, forceDark: true)
+                          .merge(
+                            ElevatedButton.styleFrom(
+                              textStyle: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.3,
+                              ),
+                            ),
                           ),
-                          textStyle: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.3,
-                          ),
-                        ),
-                        child: Text(context.l10n.homeMatchDetails),
-                      ),
+                      child: Text(context.l10n.homeTickets),
                     ),
-                    const SizedBox(width: AppSpacing.md),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: onTickets,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: colors.ctaGreen,
-                          foregroundColor: Colors.white,
-                          disabledBackgroundColor: colors.ctaGreen.withValues(alpha: 0.5),
-                          disabledForegroundColor: Colors.white.withValues(alpha: 0.7),
-                          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                          minimumSize: const Size.fromHeight(46),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(AppRadius.button),
-                          ),
-                          textStyle: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.3,
-                          ),
-                        ),
-                        child: Text(context.l10n.homeTickets),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -148,9 +131,12 @@ class NextMatchHero extends StatelessWidget {
 }
 
 final _competitionShortNames = {
-  RegExp(r'campeonato brasileiro s[ée]rie a', caseSensitive: false): 'Brasileirão Série A',
-  RegExp(r'campeonato brasileiro s[ée]rie b', caseSensitive: false): 'Brasileirão Série B',
-  RegExp(r'campeonato brasileiro s[ée]rie c', caseSensitive: false): 'Brasileirão Série C',
+  RegExp(r'campeonato brasileiro s[ée]rie a', caseSensitive: false):
+      'Brasileirão Série A',
+  RegExp(r'campeonato brasileiro s[ée]rie b', caseSensitive: false):
+      'Brasileirão Série B',
+  RegExp(r'campeonato brasileiro s[ée]rie c', caseSensitive: false):
+      'Brasileirão Série C',
 };
 
 /// A fonte real devolve algo como "Campeonato Brasileiro Série B 2026" —
