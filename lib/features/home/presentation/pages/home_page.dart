@@ -14,6 +14,7 @@ import 'package:goias_app/features/home/presentation/widgets/home_brand_header.d
 import 'package:goias_app/features/home/presentation/widgets/next_match_section.dart';
 import 'package:goias_app/features/news/presentation/widgets/news_home_section.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// [HomeCubit] agora é singleton (ver `injection_container.dart`) — pra
 /// dar tempo da Splash pré-carregar ele por trás do vídeo (ver
@@ -91,7 +92,9 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
               return Align(
                 alignment: Alignment.topCenter,
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 720),
+                  constraints: BoxConstraints(
+                    maxWidth: ContentWidth.dashboard.maxWidth,
+                  ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(
                       AppSpacing.lg,

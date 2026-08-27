@@ -17,6 +17,7 @@ import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` em `quiz_level_page.dart`) — a
@@ -93,7 +94,9 @@ class _QuizView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 720),
+              constraints: BoxConstraints(
+                maxWidth: ContentWidth.reading.maxWidth,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(AppSpacing.lg),
                 child: Column(

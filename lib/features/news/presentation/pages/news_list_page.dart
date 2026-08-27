@@ -15,6 +15,7 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class NewsListPage extends StatelessWidget {
   const NewsListPage({super.key});
@@ -39,7 +40,7 @@ class _NewsListView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

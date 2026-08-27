@@ -7,6 +7,7 @@ import 'package:goias_app/features/club/data/club_titles_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_title_group.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class ClubTitlesPage extends StatelessWidget {
   const ClubTitlesPage({super.key});
@@ -19,7 +20,7 @@ class ClubTitlesPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

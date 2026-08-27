@@ -8,6 +8,7 @@ import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_keyboard.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_letter_grid.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Tela dedicada (não bottom sheet) pro mini-Wordle de um jogador — no
 /// celular precisa acomodar voltar + info + 6 linhas + teclado
@@ -38,7 +39,9 @@ class LineupGuessPage extends StatelessWidget {
                 onKeyEvent: (event) => _handlePhysicalKey(context, event),
                 child: Center(
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 720),
+                    constraints: BoxConstraints(
+                      maxWidth: ContentWidth.reading.maxWidth,
+                    ),
                     child: Column(
                       children: [
                         Padding(

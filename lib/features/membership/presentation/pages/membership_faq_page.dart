@@ -18,6 +18,7 @@ import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Área de Sócio > Dúvidas Frequentes — conteúdo estruturado localmente
 /// (ver [MembershipFaqDataSource]), sem WebView e sem depender do site.
@@ -56,7 +57,7 @@ class _MembershipFaqView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

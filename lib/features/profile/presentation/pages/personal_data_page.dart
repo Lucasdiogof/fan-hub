@@ -17,6 +17,7 @@ import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class PersonalDataPage extends StatelessWidget {
   const PersonalDataPage({super.key});
@@ -41,7 +42,7 @@ class _PersonalDataView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -19,6 +19,7 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Tela de compra — recebe o `PurchaseCubit` já construído (mesmo padrão de
 /// "cubit pronto antes de navegar" já usado na Arena, ver
@@ -82,7 +83,9 @@ class _PurchaseMatchView extends StatelessWidget {
           body: SafeArea(
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 720),
+                constraints: BoxConstraints(
+                  maxWidth: ContentWidth.list.maxWidth,
+                ),
                 child: Column(
                   children: [
                     Padding(

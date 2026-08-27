@@ -7,6 +7,7 @@ import 'package:goias_app/features/membership/data/membership_plans_catalog.dart
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class MembershipPlanDetailsPage extends StatefulWidget {
   const MembershipPlanDetailsPage({required this.planId, super.key});
@@ -40,7 +41,9 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

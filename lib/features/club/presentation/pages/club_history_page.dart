@@ -7,6 +7,7 @@ import 'package:goias_app/features/club/data/club_history_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_history_section.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class ClubHistoryPage extends StatelessWidget {
   const ClubHistoryPage({super.key});
@@ -19,7 +20,9 @@ class ClubHistoryPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

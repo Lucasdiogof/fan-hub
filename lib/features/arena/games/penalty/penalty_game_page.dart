@@ -9,6 +9,7 @@ import 'package:goias_app/features/arena/shared/local_best_score_store.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/widgets/penalty_hud.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class PenaltyGamePage extends StatefulWidget {
   const PenaltyGamePage({super.key});
@@ -103,7 +104,7 @@ class _PenaltyGamePageState extends State<PenaltyGamePage>
       backgroundColor: ArenaColors.arenaBottom,
       body: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 720),
+          constraints: BoxConstraints(maxWidth: ContentWidth.reading.maxWidth),
           child: Stack(
             children: [
               Positioned.fill(

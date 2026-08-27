@@ -6,6 +6,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// "Conhecer outros planos" a partir da experiência de quem já é sócio —
 /// lista completa, sem competir com o plano atual.
@@ -20,7 +21,7 @@ class MembershipPlansCatalogPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

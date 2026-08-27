@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 
 class AppBottomSheet {
   const AppBottomSheet._();
 
+  /// Confirmação com título/descrição/botão(ões) — sobe do rodapé no
+  /// mobile/tablet, vira `Dialog` centralizado em telas expandidas/largas
+  /// (ver `AppModalSheet`, que decide isso; o conteúdo é o mesmo nos dois
+  /// casos).
   static Future<bool?> show(
     BuildContext context, {
     required String title,
@@ -18,18 +23,10 @@ class AppBottomSheet {
     bool destructive = false,
     bool isDismissible = true,
   }) {
-    final colors = context.colors;
-    return showModalBottomSheet<bool>(
-      context: context,
-      isScrollControlled: true,
+    return AppModalSheet.show<bool>(
+      context,
       isDismissible: isDismissible,
-      showDragHandle: true,
-      backgroundColor: colors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppRadius.hero),
-        ),
-      ),
+      dialogMaxWidth: 460,
       builder: (sheetContext) => _AppBottomSheetContent(
         title: title,
         description: description,
@@ -72,7 +69,6 @@ class _AppBottomSheetContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final cancel = cancelLabel;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SafeArea(
       top: false,
@@ -129,14 +125,9 @@ class _AppBottomSheetContent extends StatelessWidget {
             const SizedBox(height: AppSpacing.xxl),
             _PrimaryButton(
               label: confirmLabel,
-              // Mesma regra do `AppPrimaryButton`: no dark theme, o CTA
-              // principal (não-destrutivo) vira verde escuro + borda
-              // branca em vez do verde vívido antigo. Destrutivo continua
-              // âmbar sólido nos dois temas.
-              color: destructive
-                  ? colors.error
-                  : (isDark ? colors.darkGreen : colors.primary),
-              borderColor: !destructive && isDark ? Colors.white : null,
+              // Mesma regra do `AppPrimaryButton`: destrutivo é âmbar
+              // sólido nos dois temas; não-destrutivo é `colors.primary`.
+              color: destructive ? colors.error : colors.primary,
               onTap: () {
                 Navigator.of(context).pop(true);
                 onConfirm?.call();
@@ -174,29 +165,18 @@ class _PrimaryButton extends StatelessWidget {
     required this.label,
     required this.onTap,
     required this.color,
-    this.borderColor,
   });
 
   final String label;
   final VoidCallback onTap;
   final Color color;
-  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final border = borderColor;
     return Material(
       color: color,
-      borderRadius: border == null
-          ? BorderRadius.circular(AppRadius.button)
-          : null,
-      shape: border == null
-          ? null
-          : RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppRadius.button),
-              side: BorderSide(color: border, width: 1.5),
-            ),
+      borderRadius: BorderRadius.circular(AppRadius.button),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppRadius.button),

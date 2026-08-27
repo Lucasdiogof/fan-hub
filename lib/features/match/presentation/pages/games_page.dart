@@ -22,6 +22,7 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class GamesPage extends StatelessWidget {
   const GamesPage({super.key});
@@ -60,7 +61,7 @@ class _GamesViewState extends State<_GamesView> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

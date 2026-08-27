@@ -19,6 +19,7 @@ import 'package:goias_app/features/membership/presentation/widgets/steps/address
 import 'package:goias_app/features/membership/presentation/widgets/steps/personal_data_step.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 typedef MembershipRegistrationArgs = ({
   MembershipPlan plan,
@@ -95,7 +96,9 @@ class _MembershipRegistrationView extends StatelessWidget {
               body: SafeArea(
                 child: Center(
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 720),
+                    constraints: BoxConstraints(
+                      maxWidth: ContentWidth.form.maxWidth,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(
                         AppSpacing.lg,

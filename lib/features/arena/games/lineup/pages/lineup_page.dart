@@ -20,6 +20,7 @@ import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// [cubit], quando fornecido, já veio construído e com a última partida
 /// vista carregada por quem navegou pra cá (ver `GlobalLoading.run` em
@@ -97,7 +98,9 @@ class _LineupViewState extends State<_LineupView> {
           body: SafeArea(
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 720),
+                constraints: BoxConstraints(
+                  maxWidth: ContentWidth.reading.maxWidth,
+                ),
                 child: Column(
                   children: [
                     Padding(

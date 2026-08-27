@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 
 /// Bottom nav própria — sem o indicator-pill padrão do `NavigationBar` do
 /// Material. Item ativo só muda de cor (ícone + rótulo); nenhum outro
-/// tratamento além disso.
+/// tratamento além disso. Só aparece em telas compactas/médias — telas
+/// largas usam `MainNavigationRail` em vez disso (ver `HomeShellPage`).
 class MainBottomNavigation extends StatelessWidget {
   const MainBottomNavigation({
     required this.selectedIndex,
@@ -15,34 +16,10 @@ class MainBottomNavigation extends StatelessWidget {
   final int selectedIndex;
   final ValueChanged<int> onSelected;
 
-  static const _items = [
-    _NavItemData(icon: Icons.home_outlined, selectedIcon: Icons.home_rounded),
-    _NavItemData(
-      icon: Icons.calendar_month_outlined,
-      selectedIcon: Icons.calendar_month_rounded,
-    ),
-    _NavItemData(icon: Icons.badge_outlined, selectedIcon: Icons.badge_rounded),
-    _NavItemData(
-      icon: Icons.ondemand_video_outlined,
-      selectedIcon: Icons.ondemand_video_rounded,
-    ),
-    _NavItemData(
-      icon: Icons.sports_esports_outlined,
-      selectedIcon: Icons.sports_esports_rounded,
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final l10n = context.l10n;
-    final labels = [
-      l10n.navHome,
-      l10n.navMatches,
-      l10n.navMembership,
-      l10n.navMedia,
-      l10n.navArena,
-    ];
+    final items = mainNavItems(context);
     return DecoratedBox(
       decoration: BoxDecoration(
         color: colors.surface,
@@ -54,11 +31,10 @@ class MainBottomNavigation extends StatelessWidget {
           height: 62,
           child: Row(
             children: [
-              for (var i = 0; i < _items.length; i++)
+              for (var i = 0; i < items.length; i++)
                 Expanded(
                   child: _NavItem(
-                    data: _items[i],
-                    label: labels[i],
+                    data: items[i],
                     selected: i == selectedIndex,
                     onTap: () => onSelected(i),
                   ),
@@ -71,23 +47,14 @@ class MainBottomNavigation extends StatelessWidget {
   }
 }
 
-class _NavItemData {
-  const _NavItemData({required this.icon, required this.selectedIcon});
-
-  final IconData icon;
-  final IconData selectedIcon;
-}
-
 class _NavItem extends StatelessWidget {
   const _NavItem({
     required this.data,
-    required this.label,
     required this.selected,
     required this.onTap,
   });
 
-  final _NavItemData data;
-  final String label;
+  final MainNavItemData data;
   final bool selected;
   final VoidCallback onTap;
 
@@ -109,7 +76,7 @@ class _NavItem extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 2),
             child: Text(
-              label,
+              data.label,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               softWrap: false,

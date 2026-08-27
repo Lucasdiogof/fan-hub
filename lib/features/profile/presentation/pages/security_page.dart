@@ -12,6 +12,7 @@ import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class SecurityPage extends StatefulWidget {
   const SecurityPage({super.key});
@@ -96,7 +97,7 @@ class _SecurityPageState extends State<SecurityPage> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

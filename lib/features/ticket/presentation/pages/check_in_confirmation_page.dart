@@ -16,10 +16,12 @@ import 'package:goias_app/features/ticket/presentation/cubit/check_in_state.dart
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class CheckInArgs {
   const CheckInArgs({
@@ -56,17 +58,8 @@ class _CheckInView extends StatelessWidget {
   Future<void> _openSectorPicker(BuildContext context) async {
     final cubit = context.read<CheckInCubit>();
     final sectors = cubit.state.event.info.checkInSectors;
-    final colors = context.colors;
-    final sectorId = await showModalBottomSheet<String>(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      backgroundColor: colors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppRadius.hero),
-        ),
-      ),
+    final sectorId = await AppModalSheet.show<String>(
+      context,
       builder: (_) => _SectorPickerSheet(sectors: sectors),
     );
     if (sectorId == null || !context.mounted) return;
@@ -136,7 +129,9 @@ class _CheckInView extends StatelessWidget {
           body: SafeArea(
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 720),
+                constraints: BoxConstraints(
+                  maxWidth: ContentWidth.reading.maxWidth,
+                ),
                 child: Column(
                   children: [
                     Padding(

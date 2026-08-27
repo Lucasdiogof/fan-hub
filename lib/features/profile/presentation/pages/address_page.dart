@@ -9,6 +9,7 @@ import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/app_option_picker.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/membership/presentation/widgets/registration_field.dart';
@@ -22,6 +23,7 @@ import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 const _brazilianStates = [
   'Acre',
@@ -86,7 +88,7 @@ class _AddressView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -213,43 +215,15 @@ class _AddressFormState extends State<_AddressForm> {
   }
 
   Future<void> _pickState() async {
-    final colors = context.colors;
-    await showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      backgroundColor: colors.surface,
-      isScrollControlled: true,
-      builder: (sheetContext) {
-        return SafeArea(
-          child: SizedBox(
-            height: MediaQuery.of(sheetContext).size.height * 0.7,
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-              itemCount: _brazilianStates.length,
-              separatorBuilder: (_, _) =>
-                  Divider(height: 1, color: colors.border),
-              itemBuilder: (itemContext, index) {
-                final state = _brazilianStates[index];
-                return ListTile(
-                  title: Text(
-                    state,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: colors.textPrimary,
-                    ),
-                  ),
-                  onTap: () {
-                    setState(() => _state = state);
-                    Navigator.of(itemContext).pop();
-                  },
-                );
-              },
-            ),
-          ),
-        );
-      },
+    final picked = await AppOptionPicker.show<String>(
+      context,
+      selected: _state.isEmpty ? null : _state,
+      options: [
+        for (final state in _brazilianStates)
+          AppPickerOption(value: state, label: state),
+      ],
     );
+    if (picked != null) setState(() => _state = picked);
   }
 
   Future<void> _save() async {

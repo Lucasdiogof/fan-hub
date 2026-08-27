@@ -19,6 +19,7 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` nos pontos de entrada) — a tela
@@ -60,7 +61,9 @@ class _MatchDetailsView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

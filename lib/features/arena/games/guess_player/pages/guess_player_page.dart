@@ -19,6 +19,7 @@ import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// [cubit], quando fornecido, já veio construído com o catálogo carregado
 /// por quem navegou pra cá (ver `GlobalLoading.run` em `arena_page.dart`)
@@ -108,7 +109,9 @@ class _GuessPlayerView extends StatelessWidget {
           body: SafeArea(
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 720),
+                constraints: BoxConstraints(
+                  maxWidth: ContentWidth.reading.maxWidth,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(AppSpacing.lg),
                   child: Column(

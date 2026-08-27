@@ -6,6 +6,7 @@ import 'package:goias_app/features/crowd_lineup/domain/goias_squad.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:goias_app/features/crowd_lineup/domain/squad_player.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/player_avatar.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 
 /// Abre o seletor de jogadores pra um slot. Mostra só quem é compatível com
 /// a [position] (via `allowedPositions`); quem já está escalado em outro
@@ -16,17 +17,11 @@ Future<String?> showPlayerPicker(
   required Set<String> pickedIds,
   String? currentPlayerId,
 }) {
-  final colors = context.colors;
   final eligible = playersForPosition(position);
-  return showModalBottomSheet<String>(
-    context: context,
-    isScrollControlled: true,
-    showDragHandle: true,
-    backgroundColor: colors.surface,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.hero)),
-    ),
+  return AppModalSheet.show<String>(
+    context,
     builder: (sheetContext) {
+      final colors = sheetContext.colors;
       return SafeArea(
         top: false,
         child: Padding(

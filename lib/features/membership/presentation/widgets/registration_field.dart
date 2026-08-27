@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
-import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/app_option_picker.dart';
 
 /// Padrão visual único pro `*` de campo obrigatório — não escrito à mão em
 /// cada widget de formulário.
@@ -285,46 +285,15 @@ class RegistrationDropdownField<T> extends StatelessWidget {
   }
 
   Future<void> _open(BuildContext context) async {
-    final colors = context.colors;
-    await showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      isScrollControlled: true,
-      backgroundColor: colors.surface,
-      builder: (sheetContext) {
-        return SafeArea(
-          child: SizedBox(
-            height: MediaQuery.of(sheetContext).size.height * 0.7,
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-              itemCount: options.length,
-              separatorBuilder: (_, _) =>
-                  Divider(height: 1, color: colors.border),
-              itemBuilder: (itemContext, index) {
-                final option = options[index];
-                return ListTile(
-                  title: Text(
-                    option.label,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: colors.textPrimary,
-                    ),
-                  ),
-                  trailing: option.value == value
-                      ? Icon(Icons.check_rounded, color: colors.primary)
-                      : null,
-                  onTap: () {
-                    onChanged(option.value);
-                    Navigator.of(itemContext).pop();
-                  },
-                );
-              },
-            ),
-          ),
-        );
-      },
+    final picked = await AppOptionPicker.show<T>(
+      context,
+      selected: value,
+      options: [
+        for (final option in options)
+          AppPickerOption(value: option.value, label: option.label),
+      ],
     );
+    if (picked != null) onChanged(picked);
   }
 
   @override

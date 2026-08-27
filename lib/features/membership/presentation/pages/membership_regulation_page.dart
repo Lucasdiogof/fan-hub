@@ -11,6 +11,7 @@ import 'package:goias_app/features/membership/domain/entities/regulation_section
 import 'package:goias_app/shared/utils/regulation_markdown_parser.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Leitura só-consulta do Regulamento do Sócio Esmeralda — não depende do
 /// `MembershipRegistrationCubit`. Quem precisa saber se o usuário aceitou é
@@ -53,7 +54,9 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

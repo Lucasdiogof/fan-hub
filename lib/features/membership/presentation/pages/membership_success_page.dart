@@ -8,6 +8,7 @@ import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Boas-vindas oficiais ao novo sócio, exibida só depois de um resultado de
 /// sucesso de [MembershipRepository.submitRegistration] — nunca só porque o
@@ -41,7 +42,9 @@ class MembershipSuccessPage extends StatelessWidget {
             Expanded(
               child: Center(
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 720),
+                  constraints: BoxConstraints(
+                    maxWidth: ContentWidth.reading.maxWidth,
+                  ),
                   child: ListView(
                     padding: const EdgeInsets.fromLTRB(
                       AppSpacing.lg,

@@ -11,6 +11,7 @@ import 'package:goias_app/features/membership/presentation/cubit/membership_regi
 import 'package:goias_app/features/membership/presentation/widgets/registration_field.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:goias_app/shared/widgets/app_option_picker.dart';
 
 class AddressStep extends StatelessWidget {
   const AddressStep({super.key});
@@ -18,88 +19,29 @@ class AddressStep extends StatelessWidget {
   Future<void> _pickState(
     BuildContext context,
     MembershipRegistrationCubit cubit,
-  ) {
-    final colors = context.colors;
-    return showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      backgroundColor: colors.surface,
-      isScrollControlled: true,
-      builder: (sheetContext) {
-        return SafeArea(
-          child: SizedBox(
-            height: MediaQuery.of(sheetContext).size.height * 0.7,
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-              itemCount: BrazilianStates.states.length,
-              separatorBuilder: (_, _) =>
-                  Divider(height: 1, color: colors.border),
-              itemBuilder: (itemContext, index) {
-                final state = BrazilianStates.states[index];
-                return ListTile(
-                  title: Text(
-                    state.name,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: colors.textPrimary,
-                    ),
-                  ),
-                  onTap: () {
-                    cubit.selectState(state.name);
-                    Navigator.of(itemContext).pop();
-                  },
-                );
-              },
-            ),
-          ),
-        );
-      },
+  ) async {
+    final picked = await AppOptionPicker.show<String>(
+      context,
+      options: [
+        for (final state in BrazilianStates.states)
+          AppPickerOption(value: state.name, label: state.name),
+      ],
     );
+    if (picked != null) cubit.selectState(picked);
   }
 
   Future<void> _pickCity(
     BuildContext context,
     MembershipRegistrationCubit cubit,
     List<String> cities,
-  ) {
-    final colors = context.colors;
-    return showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      backgroundColor: colors.surface,
-      isScrollControlled: true,
-      builder: (sheetContext) {
-        return SafeArea(
-          child: SizedBox(
-            height: MediaQuery.of(sheetContext).size.height * 0.7,
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-              itemCount: cities.length,
-              separatorBuilder: (_, _) =>
-                  Divider(height: 1, color: colors.border),
-              itemBuilder: (itemContext, index) {
-                final city = cities[index];
-                return ListTile(
-                  title: Text(
-                    city,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: colors.textPrimary,
-                    ),
-                  ),
-                  onTap: () {
-                    cubit.updateCity(city);
-                    Navigator.of(itemContext).pop();
-                  },
-                );
-              },
-            ),
-          ),
-        );
-      },
+  ) async {
+    final picked = await AppOptionPicker.show<String>(
+      context,
+      options: [
+        for (final city in cities) AppPickerOption(value: city, label: city),
+      ],
     );
+    if (picked != null) cubit.updateCity(picked);
   }
 
   Future<void> _findZipCode(

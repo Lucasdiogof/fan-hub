@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:goias_app/features/arena/presentation/pages/arena_page.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/pages/home_page.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_bottom_navigation.dart';
+import 'package:goias_app/features/home/presentation/widgets/main_navigation_rail.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_home_page.dart';
 import 'package:goias_app/features/match/presentation/pages/games_page.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
@@ -40,8 +42,31 @@ class _HomeShellPageState extends State<HomeShellPage> {
             SocialFeedPage(),
             ArenaPage(),
           ];
+          final content = IndexedStack(
+            index: shellState.index,
+            children: pages,
+          );
+
+          // Rail lateral fixo em telas expandidas/largas (desktop/tablet
+          // grande) em vez da barra inferior — mesmas 5 abas, mesmo
+          // `HomeShellCubit`, só a apresentação muda. Abaixo do corte, o
+          // shell fica idêntico ao que já era (bottom nav, sem rail).
+          if (context.isAtLeastExpanded) {
+            return Scaffold(
+              body: Row(
+                children: [
+                  MainNavigationRail(
+                    selectedIndex: shellState.index,
+                    onSelected: _shellCubit.navigateToTab,
+                  ),
+                  Expanded(child: content),
+                ],
+              ),
+            );
+          }
+
           return Scaffold(
-            body: IndexedStack(index: shellState.index, children: pages),
+            body: content,
             bottomNavigationBar: MainBottomNavigation(
               selectedIndex: shellState.index,
               onSelected: _shellCubit.navigateToTab,

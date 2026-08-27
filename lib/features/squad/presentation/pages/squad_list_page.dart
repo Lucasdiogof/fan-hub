@@ -15,6 +15,7 @@ import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` em `profile_page.dart`) — a tela
@@ -52,7 +53,7 @@ class _SquadListView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,
@@ -174,17 +175,27 @@ class _PositionGroupSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppSpacing.sm),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: AppSpacing.md,
-              crossAxisSpacing: AppSpacing.md,
-              childAspectRatio: 0.92,
-            ),
-            itemCount: sorted.length,
-            itemBuilder: (context, index) => _SquadCard(member: sorted[index]),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final crossAxisCount = switch (constraints.maxWidth) {
+                < 500 => 3,
+                < 750 => 4,
+                _ => 5,
+              };
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  mainAxisSpacing: AppSpacing.md,
+                  crossAxisSpacing: AppSpacing.md,
+                  childAspectRatio: 0.92,
+                ),
+                itemCount: sorted.length,
+                itemBuilder: (context, index) =>
+                    _SquadCard(member: sorted[index]),
+              );
+            },
           ),
         ],
       ),

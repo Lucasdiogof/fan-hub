@@ -11,6 +11,7 @@ import 'package:goias_app/features/club/presentation/widgets/club_header.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class ClubPage extends StatelessWidget {
   const ClubPage({super.key});
@@ -32,7 +33,7 @@ class ClubPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

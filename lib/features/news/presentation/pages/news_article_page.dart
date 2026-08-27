@@ -8,6 +8,7 @@ import 'package:goias_app/features/news/domain/entities/news_content_block.dart'
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/utils/image_proxy.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class NewsArticlePage extends StatelessWidget {
   const NewsArticlePage({required this.article, super.key});
@@ -23,7 +24,9 @@ class NewsArticlePage extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: AppSpacing.xxxl),
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

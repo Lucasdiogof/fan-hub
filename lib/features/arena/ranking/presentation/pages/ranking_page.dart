@@ -13,7 +13,9 @@ import 'package:goias_app/features/arena/ranking/presentation/widgets/ranking_av
 import 'package:goias_app/features/arena/ranking/presentation/widgets/ranking_user_detail_sheet.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` em `arena_page.dart`) — a tela
@@ -49,17 +51,8 @@ class _RankingView extends StatelessWidget {
     int? pointsToNext,
     int? nextRank,
   }) {
-    final colors = context.colors;
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      backgroundColor: colors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppRadius.hero),
-        ),
-      ),
+    AppModalSheet.show<void>(
+      context,
       builder: (_) => RankingUserDetailSheet(
         entry: entry,
         period: period,
@@ -77,7 +70,7 @@ class _RankingView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -201,7 +194,9 @@ class _RankingView extends StatelessWidget {
             top: false,
             child: Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 720),
+                constraints: BoxConstraints(
+                  maxWidth: ContentWidth.list.maxWidth,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
                     AppSpacing.lg,

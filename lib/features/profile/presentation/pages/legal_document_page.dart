@@ -5,6 +5,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/domain/entities/legal_document.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class LegalDocumentPage extends StatelessWidget {
   const LegalDocumentPage({required this.document, super.key});
@@ -19,7 +20,9 @@ class LegalDocumentPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

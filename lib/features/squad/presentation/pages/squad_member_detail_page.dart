@@ -7,6 +7,7 @@ import 'package:goias_app/features/squad/domain/squad_member.dart';
 import 'package:goias_app/features/squad/presentation/widgets/club_history_table.dart';
 import 'package:goias_app/features/squad/presentation/widgets/squad_avatar.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class SquadMemberDetailPage extends StatelessWidget {
   const SquadMemberDetailPage({required this.member, super.key});
@@ -21,7 +22,9 @@ class SquadMemberDetailPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

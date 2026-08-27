@@ -6,6 +6,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_state.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileAvatarHeader extends StatelessWidget {
@@ -32,12 +33,10 @@ class ProfileAvatarHeader extends StatelessWidget {
   }
 
   Future<ImageSource?> _pickSource(BuildContext context) {
-    final colors = context.colors;
-    return showModalBottomSheet<ImageSource>(
-      context: context,
-      showDragHandle: true,
-      backgroundColor: colors.surface,
+    return AppModalSheet.show<ImageSource>(
+      context,
       builder: (sheetContext) {
+        final colors = sheetContext.colors;
         return SafeArea(
           child: Column(
             mainAxisSize: MainAxisSize.min,

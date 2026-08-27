@@ -14,6 +14,7 @@ import 'package:goias_app/features/club/presentation/cubit/club_song_player_stat
 import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Letra + player de UMA música. O `ClubSongPlayerCubit` é criado aqui via
 /// `BlocProvider` a cada visita — o `AudioPlayer` nativo é compartilhado
@@ -51,7 +52,9 @@ class _ClubSongDetailsView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

@@ -21,6 +21,7 @@ import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class MyTicketsPage extends StatelessWidget {
   const MyTicketsPage({super.key});
@@ -77,7 +78,7 @@ class _MyTicketsViewState extends State<_MyTicketsView>
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

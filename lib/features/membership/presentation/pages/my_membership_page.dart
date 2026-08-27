@@ -10,6 +10,7 @@ import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class MyMembershipPage extends StatelessWidget {
   const MyMembershipPage({required this.membership, super.key});
@@ -24,7 +25,7 @@ class MyMembershipPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

@@ -5,6 +5,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/partners/data/partners_data.dart';
 import 'package:goias_app/features/partners/presentation/widgets/partner_card.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class PartnersPage extends StatelessWidget {
   const PartnersPage({super.key});
@@ -17,7 +18,7 @@ class PartnersPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

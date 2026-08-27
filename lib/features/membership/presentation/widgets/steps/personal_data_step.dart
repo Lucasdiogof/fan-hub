@@ -8,6 +8,7 @@ import 'package:goias_app/features/membership/domain/entities/membership_registr
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/features/membership/presentation/widgets/registration_field.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 
 class PersonalDataStep extends StatelessWidget {
   const PersonalDataStep({super.key});
@@ -133,17 +134,16 @@ class _PhoneCountryPrefix extends StatelessWidget {
   final ValueChanged<String> onChanged;
 
   Future<void> _open(BuildContext context) async {
-    final colors = context.colors;
-    await showModalBottomSheet<void>(
-      context: context,
-      showDragHandle: true,
-      isScrollControlled: true,
-      backgroundColor: colors.surface,
+    await AppModalSheet.show<void>(
+      context,
       builder: (sheetContext) {
+        final colors = sheetContext.colors;
         return SafeArea(
-          child: SizedBox(
-            height: MediaQuery.of(sheetContext).size.height * 0.7,
+          top: false,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 420),
             child: ListView.separated(
+              shrinkWrap: true,
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               itemCount: CountryCatalog.countries.length,
               separatorBuilder: (_, _) =>

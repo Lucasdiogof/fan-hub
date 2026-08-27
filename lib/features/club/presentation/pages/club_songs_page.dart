@@ -8,6 +8,7 @@ import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Catálogo/listagem — sem áudio nenhum aqui. Tocar num card só navega
 /// pra `ClubSongDetailsPage`, que é quem toca a música (ver
@@ -29,7 +30,7 @@ class ClubSongsPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

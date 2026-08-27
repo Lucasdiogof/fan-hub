@@ -8,6 +8,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
@@ -38,6 +39,7 @@ import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 const _arenaTabIndex = 4;
 
@@ -282,7 +284,9 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
               }
               return Center(
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 720),
+                  constraints: BoxConstraints(
+                    maxWidth: ContentWidth.dashboard.maxWidth,
+                  ),
                   child: ListView(
                     padding: const EdgeInsets.fromLTRB(
                       AppSpacing.lg,
@@ -409,31 +413,37 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                         _SectionLabel(context.l10n.arenaSectionMoreChallenges),
                         const SizedBox(height: AppSpacing.md),
                       ],
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: AppSpacing.md,
-                        crossAxisSpacing: AppSpacing.md,
-                        childAspectRatio: 1.08,
-                        children: [
-                          for (final game in others)
-                            ArenaCompactCard(
-                              game: game,
-                              subtitle: _subtitleFor(game.id),
-                              footer: _footerFor(game.id, progress),
-                              decorativeBackground: game.id == 'guess_player'
-                                  ? const ArenaCardFaceDecoration()
-                                  : null,
-                              onTap: () => switch (game.id) {
-                                'quiz' => _openQuizLevels(context),
-                                'career_path' => _openCareerPath(context),
-                                'lineup' => _openLineup(context),
-                                'guess_player' => _openGuessPlayer(context),
-                                _ => context.push(game.route),
-                              },
-                            ),
-                        ],
+                      LayoutBuilder(
+                        builder: (context, constraints) => GridView.count(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          crossAxisCount: responsiveColumnCount(
+                            constraints.maxWidth,
+                            itemWidth: 260,
+                            maxColumns: 3,
+                          ),
+                          mainAxisSpacing: AppSpacing.md,
+                          crossAxisSpacing: AppSpacing.md,
+                          childAspectRatio: 1.08,
+                          children: [
+                            for (final game in others)
+                              ArenaCompactCard(
+                                game: game,
+                                subtitle: _subtitleFor(game.id),
+                                footer: _footerFor(game.id, progress),
+                                decorativeBackground: game.id == 'guess_player'
+                                    ? const ArenaCardFaceDecoration()
+                                    : null,
+                                onTap: () => switch (game.id) {
+                                  'quiz' => _openQuizLevels(context),
+                                  'career_path' => _openCareerPath(context),
+                                  'lineup' => _openLineup(context),
+                                  'guess_player' => _openGuessPlayer(context),
+                                  _ => context.push(game.route),
+                                },
+                              ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

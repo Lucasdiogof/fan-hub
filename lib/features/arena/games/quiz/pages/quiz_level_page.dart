@@ -18,6 +18,7 @@ import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Resumo de progresso dos 3 níveis — usado tanto pelo carregamento próprio
 /// desta tela (fallback de deep-link, e refresh ao voltar de uma partida)
@@ -113,7 +114,9 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(AppSpacing.lg),
               child: Column(

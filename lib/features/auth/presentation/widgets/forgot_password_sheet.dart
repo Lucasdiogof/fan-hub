@@ -7,6 +7,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 
@@ -14,14 +15,8 @@ class ForgotPasswordSheet extends StatefulWidget {
   const ForgotPasswordSheet({super.key});
 
   static Future<void> show(BuildContext context) {
-    return showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      showDragHandle: true,
-      backgroundColor: context.colors.surface,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-      ),
+    return AppModalSheet.show<void>(
+      context,
       builder: (_) => const ForgotPasswordSheet(),
     );
   }

@@ -9,6 +9,7 @@ import 'package:goias_app/features/crowd_lineup/presentation/widgets/escale_tab.
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/share_field_image.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Duas abas: "Escalação da torcida" (o consolidado — formação mais votada
 /// + jogador mais escalado em cada slot; primeira aba, é a que mais gente
@@ -98,7 +99,9 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Column(
               children: [
                 Padding(

@@ -10,6 +10,7 @@ import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:printing/printing.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Visualização real do PDF do ingresso (mock) — `PdfPreview` já renderiza
 /// o PDF de verdade na tela; a barra de ações nativa do pacote fica
@@ -28,7 +29,9 @@ class TicketViewPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 720),
+            constraints: BoxConstraints(
+              maxWidth: ContentWidth.reading.maxWidth,
+            ),
             child: Column(
               children: [
                 Padding(
