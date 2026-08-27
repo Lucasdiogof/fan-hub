@@ -15,6 +15,7 @@ import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repositor
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
+import 'package:goias_app/features/club/data/club_song_volume_store.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/data/supabase_crowd_lineup_repository.dart';
@@ -110,6 +111,12 @@ void setupDependencies() {
     () => SupabaseProfileRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
+  // O player de Hino & Músicas (`ClubSongPlayerCubit`) NÃO é singleton —
+  // é criado por `BlocProvider` a cada visita à página de detalhes, com
+  // seu próprio `AudioPlayer`, e fechado (parado + liberado) ao sair. Só
+  // o armazenamento do volume escolhido pelo usuário precisa sobreviver
+  // entre visitas, por isso só ele entra no DI.
+  sl.registerLazySingleton<ClubSongVolumeStore>(ClubSongVolumeStore.new);
   sl.registerLazySingleton<SplashGate>(SplashGate.new);
   sl.registerLazySingleton<ArenaRankingRepository>(
     () => SupabaseArenaRankingRepository(Supabase.instance.client),

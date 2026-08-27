@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 import 'package:goias_app/shared/utils/currency.dart';
@@ -20,16 +21,19 @@ Future<void> shareTicketPdf(Ticket ticket) async {
 }
 
 const _green = PdfColor.fromInt(0xFF004C1B);
+const _greenBanner = PdfColor.fromInt(0xFF0B7A3B);
 const _grey = PdfColor.fromInt(0xFF6B7280);
+const _cardBg = PdfColor.fromInt(0xFFF2F3F5);
 
-/// PDF mock do ingresso — usado tanto pro ingresso de check-in quanto pro
-/// de compra, só os dados mudam ([Ticket.origin]/[Ticket.price]/
-/// [Ticket.categoryLabel]). Deixa explícito em texto e no QR Code que é
-/// demonstração — nada aqui deve ser tratado como credencial real de
-/// acesso, é só o formato que a integração futura com a API de ingressos
-/// vai preencher de verdade.
+/// PDF do ingresso — usado tanto pro ingresso de check-in quanto pro de
+/// compra, só os dados mudam ([Ticket.origin]/[Ticket.price]/
+/// [Ticket.categoryLabel]). Layout espelha o formato de ingresso físico
+/// real do Goiás (cabeçalho com escudo, faixa da competição, card de
+/// dados, aviso antifraude ao lado do QR) — a integração futura com a API
+/// de ingressos preenche os mesmos campos com dados reais.
 Future<Uint8List> buildTicketPdf(Ticket ticket) async {
   final doc = pw.Document();
+  final crestSvg = await rootBundle.loadString('lib/assets/branding/logo.svg');
   final maskedDocument = ticket.holderDocument.contains(RegExp(r'^\d{11}$'))
       ? maskCpf(ticket.holderDocument)
       : ticket.holderDocument;
@@ -38,104 +42,205 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
   doc.addPage(
     pw.MultiPage(
       pageFormat: PdfPageFormat.a5,
-      margin: const pw.EdgeInsets.all(28),
+      margin: pw.EdgeInsets.zero,
       build: (context) {
         return [
-          pw.Text(
-            'GOIÁS ESPORTE CLUBE',
-            style: const pw.TextStyle(
-              color: _green,
-              fontSize: 11,
-              fontWeight: pw.FontWeight.bold,
-              letterSpacing: 1.2,
-            ),
-          ),
-          pw.SizedBox(height: 4),
           pw.Container(
-            padding: const pw.EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            decoration: pw.BoxDecoration(
-              color: const PdfColor.fromInt(0xFFFFF4CC),
-              borderRadius: pw.BorderRadius.circular(4),
-            ),
-            child: pw.Text(
-              'DEMONSTRAÇÃO — não é um ingresso válido de acesso',
-              style: const pw.TextStyle(fontSize: 8, color: PdfColors.black),
-            ),
-          ),
-          pw.SizedBox(height: 18),
-          pw.Text(
-            ticket.competition,
-            style: const pw.TextStyle(fontSize: 10, color: _grey),
-          ),
-          pw.SizedBox(height: 2),
-          pw.Text(
-            '${shortTeamName(ticket.homeTeam.name)} x ${shortTeamName(ticket.awayTeam.name)}',
-            style: const pw.TextStyle(
-              fontSize: 18,
-              fontWeight: pw.FontWeight.bold,
-            ),
-          ),
-          if (ticket.round.isNotEmpty) ...[
-            pw.SizedBox(height: 2),
-            pw.Text(
-              ticket.round,
-              style: const pw.TextStyle(fontSize: 9, color: _grey),
-            ),
-          ],
-          pw.SizedBox(height: 16),
-          pw.Row(
-            children: [
-              pw.Expanded(
-                child: _field(
-                  'Data',
-                  kickoff != null ? fullDateLabel(kickoff) : 'A confirmar',
-                ),
-              ),
-              pw.Expanded(
-                child: _field(
-                  'Horário',
-                  kickoff != null ? timeLabel(kickoff) : '—',
-                ),
-              ),
-            ],
-          ),
-          _field('Estádio', ticket.stadium),
-          pw.Row(
-            children: [
-              pw.Expanded(child: _field('Setor', ticket.sectorName)),
-              pw.Expanded(child: _field('Portão', ticket.gate)),
-            ],
-          ),
-          if (ticket.categoryLabel != null)
-            _field('Categoria', ticket.categoryLabel!),
-          pw.SizedBox(height: 8),
-          pw.Divider(color: PdfColors.grey300),
-          pw.SizedBox(height: 8),
-          _field('Titular', ticket.holderName),
-          _field('CPF/Passaporte', maskedDocument),
-          _field(
-            'Origem',
-            ticket.origin == TicketOrigin.membershipCheckIn
-                ? 'Check-in Sócio'
-                : 'Compra',
-          ),
-          if (ticket.price != null) _field('Valor', formatBrl(ticket.price!)),
-          _field('Identificador', ticket.id),
-          pw.SizedBox(height: 24),
-          pw.Center(
-            child: pw.Column(
+            width: double.infinity,
+            padding: const pw.EdgeInsets.fromLTRB(24, 28, 24, 20),
+            color: _green,
+            child: pw.Row(
+              crossAxisAlignment: pw.CrossAxisAlignment.center,
               children: [
-                pw.BarcodeWidget(
-                  barcode: pw.Barcode.qrCode(),
-                  data: 'DEMO-TICKET-${ticket.id}',
-                  width: 90,
-                  height: 90,
-                  color: PdfColors.black,
+                pw.SvgImage(svg: crestSvg, width: 44, height: 44),
+                pw.SizedBox(width: 14),
+                pw.Expanded(
+                  child: pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      pw.Text(
+                        ticket.sectorName.toUpperCase(),
+                        style: const pw.TextStyle(
+                          color: PdfColors.white,
+                          fontSize: 15,
+                          fontWeight: pw.FontWeight.bold,
+                        ),
+                      ),
+                      if (ticket.categoryLabel != null) ...[
+                        pw.SizedBox(height: 2),
+                        pw.Text(
+                          ticket.categoryLabel!.toUpperCase(),
+                          style: const pw.TextStyle(
+                            color: PdfColors.white,
+                            fontSize: 10.5,
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
                 ),
-                pw.SizedBox(height: 4),
+              ],
+            ),
+          ),
+          pw.Container(
+            width: double.infinity,
+            padding: const pw.EdgeInsets.symmetric(vertical: 8),
+            color: _greenBanner,
+            alignment: pw.Alignment.center,
+            child: pw.Text(
+              ticket.competition.toUpperCase(),
+              style: const pw.TextStyle(
+                color: PdfColors.white,
+                fontSize: 11,
+                fontWeight: pw.FontWeight.bold,
+                letterSpacing: 1,
+              ),
+            ),
+          ),
+          pw.Padding(
+            padding: const pw.EdgeInsets.fromLTRB(24, 20, 24, 24),
+            child: pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: [
                 pw.Text(
-                  'QR Code de demonstração',
-                  style: const pw.TextStyle(fontSize: 7, color: _grey),
+                  '${shortTeamName(ticket.homeTeam.name)} x ${shortTeamName(ticket.awayTeam.name)}',
+                  style: const pw.TextStyle(
+                    fontSize: 17,
+                    fontWeight: pw.FontWeight.bold,
+                  ),
+                ),
+                if (ticket.round.isNotEmpty) ...[
+                  pw.SizedBox(height: 2),
+                  pw.Text(
+                    ticket.round,
+                    style: const pw.TextStyle(fontSize: 9, color: _grey),
+                  ),
+                ],
+                pw.SizedBox(height: 16),
+                pw.Container(
+                  width: double.infinity,
+                  padding: const pw.EdgeInsets.all(16),
+                  decoration: pw.BoxDecoration(
+                    color: _cardBg,
+                    borderRadius: pw.BorderRadius.circular(10),
+                  ),
+                  child: pw.Column(
+                    crossAxisAlignment: pw.CrossAxisAlignment.start,
+                    children: [
+                      _field('Local', ticket.stadium),
+                      _field(
+                        'Data',
+                        kickoff != null
+                            ? '${fullDateLabel(kickoff)} ${timeLabel(kickoff)}'
+                            : 'A confirmar',
+                      ),
+                      pw.Row(
+                        children: [
+                          pw.Expanded(
+                            child: _field('Setor', ticket.sectorName),
+                          ),
+                          pw.Expanded(child: _field('Portão', ticket.gate)),
+                        ],
+                      ),
+                      if (ticket.categoryLabel != null)
+                        _field('Categoria', ticket.categoryLabel!),
+                      _field('Titular', ticket.holderName),
+                      pw.Row(
+                        children: [
+                          pw.Expanded(
+                            child: _field('CPF/Passaporte', maskedDocument),
+                          ),
+                          pw.Expanded(
+                            child: _field(
+                              'Origem',
+                              ticket.origin == TicketOrigin.membershipCheckIn
+                                  ? 'Check-in Sócio'
+                                  : 'Compra',
+                            ),
+                          ),
+                        ],
+                      ),
+                      pw.Row(
+                        children: [
+                          pw.Expanded(
+                            child: _field(
+                              'Valor',
+                              ticket.price != null
+                                  ? formatBrl(ticket.price!)
+                                  : 'R\$ 0,00',
+                            ),
+                          ),
+                          pw.Expanded(child: _field('Código', ticket.id)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                pw.SizedBox(height: 16),
+                pw.Row(
+                  crossAxisAlignment: pw.CrossAxisAlignment.stretch,
+                  children: [
+                    pw.Expanded(
+                      child: pw.Container(
+                        padding: const pw.EdgeInsets.all(14),
+                        decoration: pw.BoxDecoration(
+                          color: _green,
+                          borderRadius: pw.BorderRadius.circular(10),
+                        ),
+                        child: pw.Column(
+                          crossAxisAlignment: pw.CrossAxisAlignment.start,
+                          mainAxisAlignment: pw.MainAxisAlignment.center,
+                          children: [
+                            pw.Text(
+                              'NÃO COMPRE\nDE CAMBISTAS!',
+                              style: const pw.TextStyle(
+                                color: PdfColors.white,
+                                fontSize: 11,
+                                fontWeight: pw.FontWeight.bold,
+                                height: 1.3,
+                              ),
+                            ),
+                            pw.SizedBox(height: 4),
+                            pw.Text(
+                              'O ingresso pode ser falso.',
+                              style: const pw.TextStyle(
+                                color: PdfColor(1, 1, 1, 0.85),
+                                fontSize: 8,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    pw.SizedBox(width: 12),
+                    pw.Container(
+                      width: 110,
+                      padding: const pw.EdgeInsets.all(10),
+                      decoration: pw.BoxDecoration(
+                        border: pw.Border.all(color: _green, width: 1.5),
+                        borderRadius: pw.BorderRadius.circular(10),
+                      ),
+                      child: pw.Center(
+                        child: pw.BarcodeWidget(
+                          barcode: pw.Barcode.qrCode(),
+                          data: 'GOIAS-EC-${ticket.id}',
+                          width: 80,
+                          height: 80,
+                          color: PdfColors.black,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                pw.SizedBox(height: 16),
+                pw.Text(
+                  'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.',
+                  style: const pw.TextStyle(
+                    fontSize: 7.5,
+                    color: _grey,
+                    fontWeight: pw.FontWeight.bold,
+                    height: 1.4,
+                  ),
                 ),
               ],
             ),
@@ -149,7 +254,7 @@ Future<Uint8List> buildTicketPdf(Ticket ticket) async {
 }
 
 pw.Widget _field(String label, String value) => pw.Padding(
-  padding: const pw.EdgeInsets.only(bottom: 8),
+  padding: const pw.EdgeInsets.only(bottom: 10),
   child: pw.Column(
     crossAxisAlignment: pw.CrossAxisAlignment.start,
     children: [

@@ -1078,6 +1078,60 @@ abstract class AppLocalizations {
   /// **'MAIS DESAFIOS'**
   String get arenaSectionMoreChallenges;
 
+  /// No description provided for @arenaHighlightsSectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Destaques da Torcida'**
+  String get arenaHighlightsSectionTitle;
+
+  /// No description provided for @arenaGamesSectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogos da Arena'**
+  String get arenaGamesSectionTitle;
+
+  /// No description provided for @arenaGamesSectionSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Teste seus conhecimentos sobre o Verdão.'**
+  String get arenaGamesSectionSubtitle;
+
+  /// No description provided for @arenaNextMatchBadge.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRÓXIMO JOGO'**
+  String get arenaNextMatchBadge;
+
+  /// No description provided for @arenaHighlightViewLineup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver escalação'**
+  String get arenaHighlightViewLineup;
+
+  /// No description provided for @arenaHighlightEscaleLineup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escalar agora'**
+  String get arenaHighlightEscaleLineup;
+
+  /// No description provided for @arenaHighlightViewRanking.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver ranking'**
+  String get arenaHighlightViewRanking;
+
+  /// No description provided for @arenaRankingHighlightDesc.
+  ///
+  /// In pt, this message translates to:
+  /// **'Veja quem está dominando os minigames.'**
+  String get arenaRankingHighlightDesc;
+
+  /// No description provided for @arenaRankingPlayToRank.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogue para entrar no ranking'**
+  String get arenaRankingPlayToRank;
+
   /// No description provided for @arenaPlay.
   ///
   /// In pt, this message translates to:
@@ -1089,12 +1143,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Ranking da Torcida'**
   String get arenaRankingTitle;
-
-  /// No description provided for @arenaRankingBannerSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Veja os melhores da torcida nos minigames.'**
-  String get arenaRankingBannerSubtitle;
 
   /// No description provided for @arenaRankingEmpty.
   ///
@@ -3274,11 +3322,59 @@ abstract class AppLocalizations {
   /// **'MÚSICAS ESMERALDINAS'**
   String get clubSongsSection;
 
-  /// No description provided for @clubViewLyrics.
+  /// No description provided for @clubLyricsLabel.
   ///
   /// In pt, this message translates to:
-  /// **'VER LETRA'**
-  String get clubViewLyrics;
+  /// **'LETRA'**
+  String get clubLyricsLabel;
+
+  /// No description provided for @clubLyricsUnavailable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Letra ainda não disponível.'**
+  String get clubLyricsUnavailable;
+
+  /// No description provided for @clubAudioUnavailable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Áudio indisponível no momento.'**
+  String get clubAudioUnavailable;
+
+  /// No description provided for @clubPlaybackError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível reproduzir esta música.'**
+  String get clubPlaybackError;
+
+  /// No description provided for @clubMuteSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Silenciar'**
+  String get clubMuteSemantics;
+
+  /// No description provided for @clubUnmuteSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ativar som'**
+  String get clubUnmuteSemantics;
+
+  /// No description provided for @clubVolumeSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Controle de volume'**
+  String get clubVolumeSemantics;
+
+  /// No description provided for @clubPlaySongSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reproduzir {title}'**
+  String clubPlaySongSemantics(String title);
+
+  /// No description provided for @clubPauseSongSemantics.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pausar {title}'**
+  String clubPauseSongSemantics(String title);
 
   /// No description provided for @clubMainTitles.
   ///

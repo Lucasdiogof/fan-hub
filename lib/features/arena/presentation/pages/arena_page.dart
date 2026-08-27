@@ -7,6 +7,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
@@ -25,9 +26,10 @@ import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository
 import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_card.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_highlight_card.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_section_header.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
-import 'package:goias_app/features/crowd_lineup/presentation/widgets/crowd_lineup_home_card.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
@@ -292,54 +294,101 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                       Text(
                         'ARENA ESMERALDINA',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 24,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 0.3,
                           color: colors.textPrimary,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 3),
                       Text(
                         context.l10n.arenaSubtitle,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 13,
                           color: colors.textSecondary,
                         ),
                       ),
-                      const SizedBox(height: AppSpacing.lg),
-                      // Destaque no topo (mesmo card que já existia na Home,
-                      // só movido pra cá) — só aparece quando há próximo
-                      // jogo. `HomeCubit` é singleton (pré-carregado desde a
-                      // Splash), então basta ler o estado atual, sem
+                      const SizedBox(height: AppSpacing.xl),
+                      ArenaSectionHeader(
+                        context.l10n.arenaHighlightsSectionTitle,
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      // Destaque de escalação (mesmo card que já existia na
+                      // Home, só movido pra cá) — só aparece quando há
+                      // próximo jogo. `HomeCubit` é singleton (pré-carregado
+                      // desde a Splash), então basta ler o estado atual, sem
                       // recarregar nada aqui.
                       BlocBuilder<HomeCubit, HomeState>(
                         bloc: sl<HomeCubit>(),
                         builder: (context, homeState) {
                           final nextMatch = homeState.nextMatch;
                           if (nextMatch == null) return const SizedBox.shrink();
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              CrowdLineupHomeCard(
-                                hasVoted: homeState.hasVotedForNextMatch,
-                                onTap: () =>
-                                    _openCrowdLineup(context, nextMatch),
+                          final hasVoted = homeState.hasVotedForNextMatch;
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: AppSpacing.sm,
+                            ),
+                            child: ArenaHighlightCard(
+                              leading: ArenaHighlightLeading(
+                                child: Image.asset(
+                                  AppAssets.tacticsBoardIllustration,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
-                              const SizedBox(height: AppSpacing.xl),
-                            ],
+                              topBadge: context.l10n.arenaNextMatchBadge,
+                              title: hasVoted
+                                  ? context.l10n.crowdCardTitleVoted
+                                  : context.l10n.crowdCardTitleNew,
+                              description: hasVoted
+                                  ? context.l10n.crowdCardDescVoted
+                                  : context.l10n.crowdCardDescNew,
+                              ctaLabel: hasVoted
+                                  ? context.l10n.arenaHighlightViewLineup
+                                  : context.l10n.arenaHighlightEscaleLineup,
+                              onTap: () => _openCrowdLineup(context, nextMatch),
+                            ),
                           );
                         },
                       ),
                       FutureBuilder<({int rank, int totalScore})?>(
                         future: _myRankFuture,
                         builder: (context, snapshot) {
-                          return _RankingBanner(
+                          final myRank = snapshot.data?.rank;
+                          return ArenaHighlightCard(
+                            leading: ArenaHighlightLeading(
+                              child: Icon(
+                                Icons.emoji_events_rounded,
+                                color: colors.primary,
+                                size: 26,
+                              ),
+                            ),
+                            title: context.l10n.arenaRankingTitle,
+                            description: context.l10n.arenaRankingHighlightDesc,
+                            extra: myRank != null
+                                ? ArenaHighlightPositionPill(
+                                    label: context.l10n
+                                        .arenaYourPosition(myRank)
+                                        .toUpperCase(),
+                                  )
+                                : Text(
+                                    context.l10n.arenaRankingPlayToRank,
+                                    style: TextStyle(
+                                      fontSize: 11.5,
+                                      fontWeight: FontWeight.w600,
+                                      color: colors.textHint,
+                                    ),
+                                  ),
+                            ctaLabel: context.l10n.arenaHighlightViewRanking,
                             onTap: () => _openRanking(context),
-                            myRank: snapshot.data?.rank,
                           );
                         },
                       ),
-                      const SizedBox(height: AppSpacing.xl),
+                      const SizedBox(height: AppSpacing.xxl),
+                      ArenaSectionHeader(
+                        context.l10n.arenaGamesSectionTitle,
+                        subtitle: context.l10n.arenaGamesSectionSubtitle,
+                      ),
+                      const SizedBox(height: AppSpacing.md),
                       if (featured != null) ...[
                         _SectionLabel(context.l10n.arenaSectionPlayNow),
                         const SizedBox(height: AppSpacing.md),
@@ -366,7 +415,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                         crossAxisCount: 2,
                         mainAxisSpacing: AppSpacing.md,
                         crossAxisSpacing: AppSpacing.md,
-                        childAspectRatio: 0.98,
+                        childAspectRatio: 1.08,
                         children: [
                           for (final game in others)
                             ArenaCompactCard(
@@ -391,85 +440,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                 ),
               );
             },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _RankingBanner extends StatelessWidget {
-  const _RankingBanner({required this.onTap, required this.myRank});
-
-  final VoidCallback onTap;
-
-  /// Discreto, só aparece quando existir — nunca um placeholder tipo "#—".
-  final int? myRank;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Material(
-      color: colors.secondary,
-      borderRadius: BorderRadius.circular(AppRadius.card),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppRadius.card),
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.md),
-          child: Row(
-            children: [
-              Container(
-                width: 44,
-                height: 44,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: colors.primary,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.emoji_events_rounded,
-                  color: colors.onPrimary,
-                  size: 24,
-                ),
-              ),
-              const SizedBox(width: AppSpacing.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      context.l10n.arenaRankingTitle,
-                      style: TextStyle(
-                        fontSize: 15.5,
-                        fontWeight: FontWeight.w900,
-                        color: colors.primary,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      context.l10n.arenaRankingBannerSubtitle,
-                      style: TextStyle(
-                        fontSize: 12.5,
-                        color: colors.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              if (myRank != null) ...[
-                Text(
-                  context.l10n.arenaYourPosition(myRank!),
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: colors.primary,
-                  ),
-                ),
-                const SizedBox(width: 6),
-              ],
-              Icon(Icons.chevron_right_rounded, color: colors.primary),
-            ],
           ),
         ),
       ),

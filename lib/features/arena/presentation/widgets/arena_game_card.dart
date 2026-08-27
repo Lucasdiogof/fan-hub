@@ -176,20 +176,20 @@ class ArenaCompactCard extends StatelessWidget {
                   child: decorativeBackground!,
                 ),
               Padding(
-                padding: const EdgeInsets.all(AppSpacing.lg),
+                padding: const EdgeInsets.all(AppSpacing.md),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 42,
-                      height: 42,
+                      width: 38,
+                      height: 38,
                       decoration: BoxDecoration(
                         color: colors.secondary,
                         borderRadius: BorderRadius.circular(
                           AppRadius.cardSmall,
                         ),
                       ),
-                      child: Icon(game.icon, color: colors.primary, size: 22),
+                      child: Icon(game.icon, color: colors.primary, size: 20),
                     ),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
@@ -197,7 +197,7 @@ class ArenaCompactCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: FontWeight.w800,
                         color: colors.textPrimary,
                         height: 1.15,
@@ -207,10 +207,10 @@ class ArenaCompactCard extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         subtitle!,
-                        maxLines: 2,
+                        maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           fontWeight: FontWeight.w600,
                           color: colors.textSecondary,
                         ),

@@ -514,14 +514,39 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaSectionMoreChallenges => 'MAIS DESAFIOS';
 
   @override
+  String get arenaHighlightsSectionTitle => 'Destaques da Torcida';
+
+  @override
+  String get arenaGamesSectionTitle => 'Jogos da Arena';
+
+  @override
+  String get arenaGamesSectionSubtitle =>
+      'Teste seus conhecimentos sobre o Verdão.';
+
+  @override
+  String get arenaNextMatchBadge => 'PRÓXIMO JOGO';
+
+  @override
+  String get arenaHighlightViewLineup => 'Ver escalação';
+
+  @override
+  String get arenaHighlightEscaleLineup => 'Escalar agora';
+
+  @override
+  String get arenaHighlightViewRanking => 'Ver ranking';
+
+  @override
+  String get arenaRankingHighlightDesc =>
+      'Veja quem está dominando os minigames.';
+
+  @override
+  String get arenaRankingPlayToRank => 'Jogue para entrar no ranking';
+
+  @override
   String get arenaPlay => 'JOGAR';
 
   @override
   String get arenaRankingTitle => 'Ranking da Torcida';
-
-  @override
-  String get arenaRankingBannerSubtitle =>
-      'Veja os melhores da torcida nos minigames.';
 
   @override
   String get arenaRankingEmpty => 'Ranking ainda vazio';
@@ -1806,7 +1831,35 @@ class AppLocalizationsPt extends AppLocalizations {
   String get clubSongsSection => 'MÚSICAS ESMERALDINAS';
 
   @override
-  String get clubViewLyrics => 'VER LETRA';
+  String get clubLyricsLabel => 'LETRA';
+
+  @override
+  String get clubLyricsUnavailable => 'Letra ainda não disponível.';
+
+  @override
+  String get clubAudioUnavailable => 'Áudio indisponível no momento.';
+
+  @override
+  String get clubPlaybackError => 'Não foi possível reproduzir esta música.';
+
+  @override
+  String get clubMuteSemantics => 'Silenciar';
+
+  @override
+  String get clubUnmuteSemantics => 'Ativar som';
+
+  @override
+  String get clubVolumeSemantics => 'Controle de volume';
+
+  @override
+  String clubPlaySongSemantics(String title) {
+    return 'Reproduzir $title';
+  }
+
+  @override
+  String clubPauseSongSemantics(String title) {
+    return 'Pausar $title';
+  }
 
   @override
   String get clubMainTitles => 'TÍTULOS PRINCIPAIS';

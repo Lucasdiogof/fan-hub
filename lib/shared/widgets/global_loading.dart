@@ -67,7 +67,7 @@ class _GlobalLoadingScrim extends StatelessWidget {
           // nesse overlay, então branco é quem garante contraste; o verde
           // é pro caso comum, sobre fundo claro (ver `GoiasLoadingBadge`).
           child: const Center(
-            child: GoiasLoadingIndicator(size: 64, color: Colors.white),
+            child: GoiasLoadingIndicator(size: 48, color: Colors.white),
           ),
         ),
       ),

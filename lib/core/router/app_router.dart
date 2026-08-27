@@ -26,8 +26,10 @@ import 'package:goias_app/features/auth/presentation/pages/check_your_email_page
 import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
+import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/presentation/pages/club_history_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_song_details_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_songs_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_timeline_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_titles_page.dart';
@@ -325,6 +327,11 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       GoRoute(
         path: '/clube/hino',
         builder: (context, state) => const ClubSongsPage(),
+      ),
+      GoRoute(
+        path: '/clube/hino/letra',
+        builder: (context, state) =>
+            ClubSongDetailsPage(song: state.extra! as ClubSong),
       ),
       GoRoute(path: '/news', builder: (context, state) => const NewsListPage()),
       GoRoute(

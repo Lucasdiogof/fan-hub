@@ -515,14 +515,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get arenaSectionMoreChallenges => 'MÁS DESAFÍOS';
 
   @override
+  String get arenaHighlightsSectionTitle => 'Destacados de la Afición';
+
+  @override
+  String get arenaGamesSectionTitle => 'Juegos de la Arena';
+
+  @override
+  String get arenaGamesSectionSubtitle =>
+      'Pon a prueba tu conocimiento sobre el Goiás.';
+
+  @override
+  String get arenaNextMatchBadge => 'PRÓXIMO PARTIDO';
+
+  @override
+  String get arenaHighlightViewLineup => 'Ver alineación';
+
+  @override
+  String get arenaHighlightEscaleLineup => 'Alinear ahora';
+
+  @override
+  String get arenaHighlightViewRanking => 'Ver ranking';
+
+  @override
+  String get arenaRankingHighlightDesc =>
+      'Mira quién está dominando los minijuegos.';
+
+  @override
+  String get arenaRankingPlayToRank => 'Juega para entrar en el ranking';
+
+  @override
   String get arenaPlay => 'JUGAR';
 
   @override
   String get arenaRankingTitle => 'Ranking de la Afición';
-
-  @override
-  String get arenaRankingBannerSubtitle =>
-      'Mira a los mejores de la afición en los minijuegos.';
 
   @override
   String get arenaRankingEmpty => 'El ranking aún está vacío';
@@ -1805,7 +1830,35 @@ class AppLocalizationsEs extends AppLocalizations {
   String get clubSongsSection => 'CANCIONES ESMERALDINAS';
 
   @override
-  String get clubViewLyrics => 'VER LETRA';
+  String get clubLyricsLabel => 'LETRA';
+
+  @override
+  String get clubLyricsUnavailable => 'Letra aún no disponible.';
+
+  @override
+  String get clubAudioUnavailable => 'Audio no disponible por ahora.';
+
+  @override
+  String get clubPlaybackError => 'No fue posible reproducir esta canción.';
+
+  @override
+  String get clubMuteSemantics => 'Silenciar';
+
+  @override
+  String get clubUnmuteSemantics => 'Activar sonido';
+
+  @override
+  String get clubVolumeSemantics => 'Control de volumen';
+
+  @override
+  String clubPlaySongSemantics(String title) {
+    return 'Reproducir $title';
+  }
+
+  @override
+  String clubPauseSongSemantics(String title) {
+    return 'Pausar $title';
+  }
 
   @override
   String get clubMainTitles => 'TÍTULOS PRINCIPALES';

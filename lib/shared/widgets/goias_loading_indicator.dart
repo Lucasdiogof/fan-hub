@@ -5,9 +5,11 @@ import 'package:goias_app/core/theme/app_colors.dart';
 
 /// Brasão do Goiás tingido de uma cor sólida — o SVG em si é só um traço
 /// branco monocromático, então aplicamos a cor direto nele (sem nenhum
-/// fundo/selo ao redor) via `colorFilter`. [color] padrão é o verde da
-/// marca (funciona sobre fundo claro); quem usa sobre um fundo sempre
-/// escuro (ver `GlobalLoading`) passa branco pra manter contraste.
+/// fundo/selo ao redor) via `colorFilter`. [color] é opcional: por padrão o
+/// brasão segue o tema atual (branco no dark, verde da marca no light) —
+/// no dark o fundo já é um verde bem escuro, então o verde padrão da marca
+/// quase desaparece nele; só quem usa sobre um fundo sempre escuro
+/// independente do tema (ver `GlobalLoading`) passa branco explícito.
 class GoiasLoadingBadge extends StatelessWidget {
   const GoiasLoadingBadge({this.size = 64, this.color, super.key});
 
@@ -16,13 +18,14 @@ class GoiasLoadingBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
       width: size,
       height: size,
       child: SvgPicture.asset(
         AppAssets.goiasCrest,
         colorFilter: ColorFilter.mode(
-          color ?? context.colors.primary,
+          color ?? (isDark ? Colors.white : context.colors.primary),
           BlendMode.srcIn,
         ),
       ),

@@ -73,7 +73,9 @@ class ClubPage extends StatelessWidget {
                       _ClubBigCard(
                         icon: Icons.emoji_events_outlined,
                         title: context.l10n.clubSectionTitles,
-                        subtitle: context.l10n.clubTitlesSubtitle(ClubTitlesData.totalTitles),
+                        subtitle: context.l10n.clubTitlesSubtitle(
+                          ClubTitlesData.totalTitles,
+                        ),
                         onTap: () => context.push('/clube/titulos'),
                       ),
                       const SizedBox(height: AppSpacing.md),

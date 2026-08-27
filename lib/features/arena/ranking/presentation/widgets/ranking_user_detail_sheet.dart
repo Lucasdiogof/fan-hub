@@ -543,11 +543,7 @@ class _EmptyPerformance extends StatelessWidget {
     final colors = context.colors;
     return Column(
       children: [
-        Icon(
-          Icons.sports_soccer_rounded,
-          size: 40,
-          color: colors.textHint,
-        ),
+        Icon(Icons.sports_soccer_rounded, size: 40, color: colors.textHint),
         const SizedBox(height: AppSpacing.md),
         Text(
           context.l10n.arenaRankingNoPointsTitle,

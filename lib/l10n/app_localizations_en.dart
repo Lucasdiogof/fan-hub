@@ -514,13 +514,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaSectionMoreChallenges => 'MORE CHALLENGES';
 
   @override
+  String get arenaHighlightsSectionTitle => 'Fan Highlights';
+
+  @override
+  String get arenaGamesSectionTitle => 'Arena Games';
+
+  @override
+  String get arenaGamesSectionSubtitle => 'Test your Goiás knowledge.';
+
+  @override
+  String get arenaNextMatchBadge => 'NEXT MATCH';
+
+  @override
+  String get arenaHighlightViewLineup => 'View lineup';
+
+  @override
+  String get arenaHighlightEscaleLineup => 'Line up now';
+
+  @override
+  String get arenaHighlightViewRanking => 'View ranking';
+
+  @override
+  String get arenaRankingHighlightDesc =>
+      'See who\'s dominating the minigames.';
+
+  @override
+  String get arenaRankingPlayToRank => 'Play to enter the ranking';
+
+  @override
   String get arenaPlay => 'PLAY';
 
   @override
   String get arenaRankingTitle => 'Fans\' Ranking';
-
-  @override
-  String get arenaRankingBannerSubtitle => 'See the top fans in the minigames.';
 
   @override
   String get arenaRankingEmpty => 'Ranking is still empty';
@@ -1799,7 +1824,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clubSongsSection => 'ESMERALDINA SONGS';
 
   @override
-  String get clubViewLyrics => 'VIEW LYRICS';
+  String get clubLyricsLabel => 'LYRICS';
+
+  @override
+  String get clubLyricsUnavailable => 'Lyrics not available yet.';
+
+  @override
+  String get clubAudioUnavailable => 'Audio not available yet.';
+
+  @override
+  String get clubPlaybackError => 'Couldn\'t play this song.';
+
+  @override
+  String get clubMuteSemantics => 'Mute';
+
+  @override
+  String get clubUnmuteSemantics => 'Unmute';
+
+  @override
+  String get clubVolumeSemantics => 'Volume control';
+
+  @override
+  String clubPlaySongSemantics(String title) {
+    return 'Play $title';
+  }
+
+  @override
+  String clubPauseSongSemantics(String title) {
+    return 'Pause $title';
+  }
 
   @override
   String get clubMainTitles => 'MAIN TITLES';
