@@ -10,6 +10,7 @@ import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({super.key});
@@ -85,7 +86,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(AppSpacing.xxl),
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 460),
+              constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
               child: _done ? _buildSuccess(context) : _buildForm(context),
             ),
           ),

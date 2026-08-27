@@ -100,7 +100,7 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              maxWidth: ContentWidth.reading.maxWidth,
+              maxWidth: ContentWidth.interactive.maxWidth,
             ),
             child: Column(
               children: [

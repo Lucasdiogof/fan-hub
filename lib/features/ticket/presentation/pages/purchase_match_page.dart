@@ -84,7 +84,7 @@ class _PurchaseMatchView extends StatelessWidget {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: ContentWidth.list.maxWidth,
+                  maxWidth: ContentWidth.wide.maxWidth,
                 ),
                 child: Column(
                   children: [

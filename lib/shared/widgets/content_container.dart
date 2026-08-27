@@ -4,35 +4,30 @@ import 'package:flutter/material.dart';
 /// Nunca escolha um número direto numa tela: escolha a categoria que
 /// descreve o que a tela É, e a largura vem daqui.
 enum ContentWidth {
-  /// Login, cadastro, formulários — coluna estreita, confortável de ler e
-  /// preencher.
+  /// Quiz, autenticação, cadastro, formulários — coluna estreita,
+  /// confortável de ler e preencher.
   form,
 
-  /// Leitura/detalhe — texto corrido, letra de música, artigo, resumo de
-  /// pedido, detalhe de partida.
-  reading,
+  /// Leitura/detalhe comum — texto corrido, letra de música, artigo, resumo
+  /// de pedido, detalhe de partida.
+  detail,
 
-  /// Listas, ranking, histórico, catálogos — se beneficia de mais largura
-  /// pra mostrar mais itens por vez sem virar uma coluna estreita de
-  /// celular esticada.
-  list,
+  /// Jogos visuais, escalação, experiências interativas — mais espaço que
+  /// um detalhe comum, mas sem esticar até a largura de uma listagem.
+  interactive,
 
-  /// Dashboards com vários cards independentes (ex.: Home).
-  dashboard,
-
-  /// Telas que se beneficiam da largura total (ex.: o campo de um
-  /// mini-game) — ainda ganha um teto generoso pra nunca esticar sem fim
-  /// num monitor ultrawide.
-  full,
+  /// Home, Arena, rankings, listagens e páginas com grid — se beneficia de
+  /// mais largura pra mostrar mais itens por vez sem virar uma coluna
+  /// estreita de celular esticada.
+  wide,
 }
 
 extension ContentWidthX on ContentWidth {
   double get maxWidth => switch (this) {
-    ContentWidth.form => 640,
-    ContentWidth.reading => 840,
-    ContentWidth.list => 1080,
-    ContentWidth.dashboard => 1320,
-    ContentWidth.full => 1600,
+    ContentWidth.form => 680,
+    ContentWidth.detail => 880,
+    ContentWidth.interactive => 960,
+    ContentWidth.wide => 1240,
   };
 }
 
@@ -50,7 +45,7 @@ extension ContentWidthX on ContentWidth {
 class ContentContainer extends StatelessWidget {
   const ContentContainer({
     required this.child,
-    this.width = ContentWidth.reading,
+    this.width = ContentWidth.detail,
     this.alignment = Alignment.center,
     super.key,
   });

@@ -8,6 +8,7 @@ import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class CheckYourEmailPage extends StatefulWidget {
   const CheckYourEmailPage({required this.email, super.key});
@@ -73,7 +74,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(AppSpacing.xxl),
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 440),
+              constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

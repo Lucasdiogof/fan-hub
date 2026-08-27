@@ -43,7 +43,7 @@ class MembershipSuccessPage extends StatelessWidget {
               child: Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: ContentWidth.reading.maxWidth,
+                    maxWidth: ContentWidth.detail.maxWidth,
                   ),
                   child: ListView(
                     padding: const EdgeInsets.fromLTRB(

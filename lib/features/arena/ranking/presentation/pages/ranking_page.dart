@@ -70,7 +70,7 @@ class _RankingView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
+            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -195,7 +195,7 @@ class _RankingView extends StatelessWidget {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: ContentWidth.list.maxWidth,
+                  maxWidth: ContentWidth.wide.maxWidth,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(

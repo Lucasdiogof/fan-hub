@@ -6,8 +6,9 @@ import 'package:goias_app/features/home/presentation/widgets/main_navigation_ite
 /// Equivalente da `MainBottomNavigation` pra telas expandidas/largas —
 /// mesmas 5 abas, mesmos ícones/rótulos (ver `main_navigation_items.dart`),
 /// só a apresentação muda (rail lateral fixo em vez de barra inferior).
-/// Nunca aparece sozinha: `HomeShellPage` escolhe UMA das duas conforme
-/// `context.isAtLeastExpanded`, nunca as duas ao mesmo tempo.
+/// Nunca aparece junto com a bottom nav: `HomeShellPage` escolhe UMA das
+/// duas conforme `context.isAtLeastExpanded`. Também é reaproveitada por
+/// `DesktopShellFrame` pra manter o mesmo rail nas rotas internas.
 class MainNavigationRail extends StatelessWidget {
   const MainNavigationRail({
     required this.selectedIndex,

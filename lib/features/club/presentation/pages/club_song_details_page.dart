@@ -52,9 +52,7 @@ class _ClubSongDetailsView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: ContentWidth.reading.maxWidth,
-            ),
+            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
             child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

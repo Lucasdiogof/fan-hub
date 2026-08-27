@@ -110,7 +110,7 @@ class _GuessPlayerView extends StatelessWidget {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: ContentWidth.reading.maxWidth,
+                  maxWidth: ContentWidth.interactive.maxWidth,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(AppSpacing.lg),

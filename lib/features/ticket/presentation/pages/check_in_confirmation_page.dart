@@ -130,7 +130,7 @@ class _CheckInView extends StatelessWidget {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: ContentWidth.reading.maxWidth,
+                  maxWidth: ContentWidth.detail.maxWidth,
                 ),
                 child: Column(
                   children: [

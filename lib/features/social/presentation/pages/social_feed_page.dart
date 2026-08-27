@@ -40,7 +40,7 @@ class _SocialFeedView extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
+            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

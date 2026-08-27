@@ -22,9 +22,7 @@ class LanguageSettingsPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: ContentWidth.reading.maxWidth,
-            ),
+            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -126,7 +126,7 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: ContentWidth.reading.maxWidth,
+                  maxWidth: ContentWidth.detail.maxWidth,
                 ),
                 child: Column(
                   children: [

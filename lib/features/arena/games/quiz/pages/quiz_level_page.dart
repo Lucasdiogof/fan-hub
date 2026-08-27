@@ -114,9 +114,7 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: ContentWidth.reading.maxWidth,
-            ),
+            constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
             child: Padding(
               padding: const EdgeInsets.all(AppSpacing.lg),
               child: Column(

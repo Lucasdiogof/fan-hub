@@ -12,6 +12,7 @@ import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.d
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:goias_app/features/auth/presentation/widgets/forgot_password_sheet.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -91,7 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                       child: Align(
                         alignment: const Alignment(0, 0.7),
                         child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 440),
+                          constraints: BoxConstraints(
+                            maxWidth: ContentWidth.form.maxWidth,
+                          ),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.stretch,

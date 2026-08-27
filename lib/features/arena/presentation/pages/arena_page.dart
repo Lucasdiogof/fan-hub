@@ -285,7 +285,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
               return Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: ContentWidth.dashboard.maxWidth,
+                    maxWidth: ContentWidth.wide.maxWidth,
                   ),
                   child: ListView(
                     padding: const EdgeInsets.fromLTRB(

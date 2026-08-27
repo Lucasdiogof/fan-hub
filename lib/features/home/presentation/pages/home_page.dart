@@ -93,7 +93,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                 alignment: Alignment.topCenter,
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxWidth: ContentWidth.dashboard.maxWidth,
+                    maxWidth: ContentWidth.wide.maxWidth,
                   ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.fromLTRB(

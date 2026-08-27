@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/stadium_backdrop.dart';
 
 class AuthScaffold extends StatelessWidget {
@@ -32,7 +33,9 @@ class AuthScaffold extends StatelessWidget {
             _Hero(title: title, subtitle: subtitle, showCrest: showCrest),
             Center(
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 460),
+                constraints: BoxConstraints(
+                  maxWidth: ContentWidth.form.maxWidth,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
                     AppSpacing.xxl,

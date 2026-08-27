@@ -51,7 +51,7 @@ class _MembershipHomeView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
+              constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
                   AppSpacing.lg,

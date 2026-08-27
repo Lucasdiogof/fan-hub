@@ -24,9 +24,7 @@ class NewsArticlePage extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: AppSpacing.xxxl),
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: ContentWidth.reading.maxWidth,
-            ),
+            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

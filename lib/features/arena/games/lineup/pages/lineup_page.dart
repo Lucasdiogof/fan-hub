@@ -99,7 +99,7 @@ class _LineupViewState extends State<_LineupView> {
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  maxWidth: ContentWidth.reading.maxWidth,
+                  maxWidth: ContentWidth.interactive.maxWidth,
                 ),
                 child: Column(
                   children: [

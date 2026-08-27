@@ -33,7 +33,7 @@ class ClubPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
+            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

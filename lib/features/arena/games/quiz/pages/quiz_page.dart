@@ -94,9 +94,7 @@ class _QuizView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: ContentWidth.reading.maxWidth,
-              ),
+              constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
               child: Padding(
                 padding: const EdgeInsets.all(AppSpacing.lg),
                 child: Column(

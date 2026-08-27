@@ -54,9 +54,7 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: ContentWidth.reading.maxWidth,
-            ),
+            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg,

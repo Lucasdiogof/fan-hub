@@ -61,7 +61,7 @@ class _GamesViewState extends State<_GamesView> {
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.list.maxWidth),
+            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [

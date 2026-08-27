@@ -104,7 +104,9 @@ class _PenaltyGamePageState extends State<PenaltyGamePage>
       backgroundColor: ArenaColors.arenaBottom,
       body: Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: ContentWidth.reading.maxWidth),
+          constraints: BoxConstraints(
+            maxWidth: ContentWidth.interactive.maxWidth,
+          ),
           child: Stack(
             children: [
               Positioned.fill(
