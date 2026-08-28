@@ -7,12 +7,16 @@ class StateMessage extends StatelessWidget {
     required this.icon,
     required this.title,
     this.message,
+    this.actionLabel,
+    this.onAction,
     super.key,
   });
 
   final IconData icon;
   final String title;
   final String? message;
+  final String? actionLabel;
+  final VoidCallback? onAction;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +46,20 @@ class StateMessage extends StatelessWidget {
                 fontSize: 13,
                 color: colors.textSecondary,
                 height: 1.4,
+              ),
+            ),
+          ],
+          if (actionLabel != null && onAction != null) ...[
+            const SizedBox(height: AppSpacing.lg),
+            TextButton(
+              onPressed: onAction,
+              child: Text(
+                actionLabel!,
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w800,
+                  color: colors.primary,
+                ),
               ),
             ),
           ],

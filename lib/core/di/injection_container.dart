@@ -54,6 +54,13 @@ import 'package:goias_app/features/social/presentation/cubit/social_feed_cubit.d
 import 'package:goias_app/features/squad/data/supabase_squad_repository.dart';
 import 'package:goias_app/features/squad/domain/repositories/squad_repository.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
+import 'package:goias_app/features/store/data/mock_store_repository.dart';
+import 'package:goias_app/features/store/data/store_local_storage.dart';
+import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
+import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
+import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
+import 'package:goias_app/features/store/presentation/cubit/store_catalog_cubit.dart';
+import 'package:goias_app/features/store/presentation/cubit/store_orders_cubit.dart';
 import 'package:goias_app/features/ticket/data/mock_ticket_repository.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/my_orders_cubit.dart';
@@ -183,4 +190,17 @@ void setupDependencies() {
   sl.registerFactory<MyOrdersCubit>(() => MyOrdersCubit(sl()));
   sl.registerLazySingleton<ProfileCubit>(() => ProfileCubit(sl()));
   sl.registerFactory<AddressCubit>(() => AddressCubit(sl()));
+
+  sl.registerLazySingleton<StoreLocalStorage>(StoreLocalStorage.new);
+  sl.registerLazySingleton<StoreRepository>(() => MockStoreRepository(sl()));
+  // Carrinho e favoritos precisam sobreviver a navegação (loja → detalhe →
+  // checkout), mesma razão do `HomeShellCubit` — singletons, não factory.
+  sl.registerLazySingleton<CartCubit>(() => CartCubit(sl()));
+  sl.registerLazySingleton<FavoritesCubit>(() => FavoritesCubit(sl()));
+  sl.registerFactory<StoreCatalogCubit>(() => StoreCatalogCubit(sl()));
+  sl.registerFactory<StoreOrdersCubit>(() => StoreOrdersCubit(sl()));
+  // ProductDetailCubit/StoreListingCubit/CheckoutCubit precisam de
+  // argumentos por chamada (id do produto, categoria, carrinho) — construídos
+  // direto com `sl<StoreRepository>()` no ponto de uso, mesmo padrão de
+  // `RankingCubit`/`PurchaseCubit` em outras features.
 }

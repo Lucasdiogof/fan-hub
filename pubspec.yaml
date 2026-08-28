@@ -54,6 +54,10 @@ flutter:
     - lib/assets/games/guess_player/
     - lib/assets/games/penalty/
     - lib/assets/squad/
+    - lib/assets/store/products/uniform_01_female_fan/
+    - lib/assets/store/products/uniform_03_male/
+    - lib/assets/store/products/uniform_02_youth/
+    - lib/assets/store/promo/
     - lib/assets/videos/
     - lib/assets/audio/club/hinos/
     - lib/assets/audio/club/musicas/

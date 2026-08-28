@@ -12,6 +12,8 @@ import 'package:goias_app/features/membership/presentation/pages/membership_home
 import 'package:goias_app/features/match/presentation/pages/games_page.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/social/presentation/pages/social_feed_page.dart';
+import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
+import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 
 class HomeShellPage extends StatefulWidget {
   const HomeShellPage({super.key});
@@ -28,6 +30,15 @@ class _HomeShellPageState extends State<HomeShellPage> {
   // nome/foto do usuário em branco na primeira vez que ele abre o Perfil.
   // ignore: unused_field
   final _profileCubit = sl<ProfileCubit>();
+
+  // Mesma ideia pro carrinho/favoritos da loja — carrega cedo pra o badge
+  // de quantidade no ícone do carrinho já vir certo assim que a Home
+  // aparece, não só depois que o usuário abre a Goiás Store pela primeira
+  // vez.
+  // ignore: unused_field
+  final _cartCubit = sl<CartCubit>()..load();
+  // ignore: unused_field
+  final _favoritesCubit = sl<FavoritesCubit>()..load();
 
   @override
   Widget build(BuildContext context) {

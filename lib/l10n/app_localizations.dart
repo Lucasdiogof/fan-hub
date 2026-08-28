@@ -4359,6 +4359,1410 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Escalação enviada!'**
   String get crowdSubmitted;
+
+  /// No description provided for @storeEntryBadge.
+  ///
+  /// In pt, this message translates to:
+  /// **'LOJA OFICIAL'**
+  String get storeEntryBadge;
+
+  /// No description provided for @storeEntryTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Vista o Verdão'**
+  String get storeEntryTitle;
+
+  /// No description provided for @storeEntrySubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Uniformes e produtos oficiais do Goiás.'**
+  String get storeEntrySubtitle;
+
+  /// No description provided for @storeEntryCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conhecer a Goiás Store'**
+  String get storeEntryCta;
+
+  /// No description provided for @storeHomeEntryBadge.
+  ///
+  /// In pt, this message translates to:
+  /// **'GOIÁS STORE'**
+  String get storeHomeEntryBadge;
+
+  /// No description provided for @storeHomeEntryTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'O manto te espera'**
+  String get storeHomeEntryTitle;
+
+  /// No description provided for @storeHomeEntryDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Leve o Verdão com você dentro e fora de campo.'**
+  String get storeHomeEntryDescription;
+
+  /// No description provided for @storeHomeEntryCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conhecer a loja'**
+  String get storeHomeEntryCta;
+
+  /// No description provided for @storeProfileSectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'GOIÁS STORE'**
+  String get storeProfileSectionTitle;
+
+  /// No description provided for @storeProfileEntry.
+  ///
+  /// In pt, this message translates to:
+  /// **'Goiás Store'**
+  String get storeProfileEntry;
+
+  /// No description provided for @storeProfileMyOrders.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus pedidos'**
+  String get storeProfileMyOrders;
+
+  /// No description provided for @storeProfileAddresses.
+  ///
+  /// In pt, this message translates to:
+  /// **'Endereços da loja'**
+  String get storeProfileAddresses;
+
+  /// No description provided for @storeHomeTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Goiás Store'**
+  String get storeHomeTitle;
+
+  /// No description provided for @storeHomeLoadErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar a loja'**
+  String get storeHomeLoadErrorTitle;
+
+  /// No description provided for @storeHomeEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Loja em preparação'**
+  String get storeHomeEmptyTitle;
+
+  /// No description provided for @storeHomeEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volte em breve para conferir os produtos oficiais.'**
+  String get storeHomeEmptyMessage;
+
+  /// No description provided for @storeSectionCategories.
+  ///
+  /// In pt, this message translates to:
+  /// **'Categorias'**
+  String get storeSectionCategories;
+
+  /// No description provided for @storeSectionLaunches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Lançamentos'**
+  String get storeSectionLaunches;
+
+  /// No description provided for @storeSectionOfficialJerseys.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mantos oficiais'**
+  String get storeSectionOfficialJerseys;
+
+  /// No description provided for @storeSectionForEveryFan.
+  ///
+  /// In pt, this message translates to:
+  /// **'Para toda a torcida'**
+  String get storeSectionForEveryFan;
+
+  /// No description provided for @storeSectionTrainingTravel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Treino e viagem'**
+  String get storeSectionTrainingTravel;
+
+  /// No description provided for @storeSectionAccessories.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acessórios esmeraldinos'**
+  String get storeSectionAccessories;
+
+  /// No description provided for @storeSectionOffers.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ofertas'**
+  String get storeSectionOffers;
+
+  /// No description provided for @storeSectionPersonalize.
+  ///
+  /// In pt, this message translates to:
+  /// **'Personalize seu manto'**
+  String get storeSectionPersonalize;
+
+  /// No description provided for @storeSectionPickup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirada na Goiás Store'**
+  String get storeSectionPickup;
+
+  /// No description provided for @storeSectionRelated.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você também pode gostar'**
+  String get storeSectionRelated;
+
+  /// No description provided for @storeBenefitPickup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirada grátis na Goiás Store'**
+  String get storeBenefitPickup;
+
+  /// No description provided for @storeBenefitPersonalize.
+  ///
+  /// In pt, this message translates to:
+  /// **'Personalize seu manto'**
+  String get storeBenefitPersonalize;
+
+  /// No description provided for @storeBenefitInstallments.
+  ///
+  /// In pt, this message translates to:
+  /// **'Parcelamento demonstrativo'**
+  String get storeBenefitInstallments;
+
+  /// No description provided for @storeSearchHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar na Goiás Store'**
+  String get storeSearchHint;
+
+  /// No description provided for @storeListingDefaultTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Produtos'**
+  String get storeListingDefaultTitle;
+
+  /// No description provided for @storeSearchEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Busque por produtos'**
+  String get storeSearchEmptyTitle;
+
+  /// No description provided for @storeSearchEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome, categoria, coleção ou tipo de peça.'**
+  String get storeSearchEmptyMessage;
+
+  /// No description provided for @storeListingNoResultsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum produto encontrado'**
+  String get storeListingNoResultsTitle;
+
+  /// No description provided for @storeListingNoResultsMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tente ajustar sua busca ou remover alguns filtros.'**
+  String get storeListingNoResultsMessage;
+
+  /// No description provided for @storeListingProductCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 produto} other{{count} produtos}}'**
+  String storeListingProductCount(num count);
+
+  /// No description provided for @storeItemCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 item} other{{count} itens}}'**
+  String storeItemCount(num count);
+
+  /// No description provided for @storeSortLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ordenar'**
+  String get storeSortLabel;
+
+  /// No description provided for @storeFiltersLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Filtros'**
+  String get storeFiltersLabel;
+
+  /// No description provided for @storeFiltersLabelCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'Filtros ({count})'**
+  String storeFiltersLabelCount(Object count);
+
+  /// No description provided for @storeSortSheetTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ordenar por'**
+  String get storeSortSheetTitle;
+
+  /// No description provided for @storeFiltersSheetTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Filtros'**
+  String get storeFiltersSheetTitle;
+
+  /// No description provided for @storeClearFilters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Limpar filtros'**
+  String get storeClearFilters;
+
+  /// No description provided for @storeFilterAudienceLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Público'**
+  String get storeFilterAudienceLabel;
+
+  /// No description provided for @storeFilterTypeLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tipo'**
+  String get storeFilterTypeLabel;
+
+  /// No description provided for @storeFilterUniformLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Uniforme'**
+  String get storeFilterUniformLabel;
+
+  /// No description provided for @storeUniform01.
+  ///
+  /// In pt, this message translates to:
+  /// **'Uniforme 01'**
+  String get storeUniform01;
+
+  /// No description provided for @storeUniform02.
+  ///
+  /// In pt, this message translates to:
+  /// **'Uniforme 02'**
+  String get storeUniform02;
+
+  /// No description provided for @storeUniform03.
+  ///
+  /// In pt, this message translates to:
+  /// **'Uniforme 03'**
+  String get storeUniform03;
+
+  /// No description provided for @storeFilterSizeLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tamanho'**
+  String get storeFilterSizeLabel;
+
+  /// No description provided for @storeFilterOnlyAvailable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Somente disponíveis'**
+  String get storeFilterOnlyAvailable;
+
+  /// No description provided for @storeFilterOnlyOnSale.
+  ///
+  /// In pt, this message translates to:
+  /// **'Somente promoções'**
+  String get storeFilterOnlyOnSale;
+
+  /// No description provided for @storeApplyFilters.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aplicar filtros'**
+  String get storeApplyFilters;
+
+  /// No description provided for @storeSortRelevance.
+  ///
+  /// In pt, this message translates to:
+  /// **'Relevância'**
+  String get storeSortRelevance;
+
+  /// No description provided for @storeSortNewest.
+  ///
+  /// In pt, this message translates to:
+  /// **'Lançamentos'**
+  String get storeSortNewest;
+
+  /// No description provided for @storeSortPriceLowToHigh.
+  ///
+  /// In pt, this message translates to:
+  /// **'Menor preço'**
+  String get storeSortPriceLowToHigh;
+
+  /// No description provided for @storeSortPriceHighToLow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Maior preço'**
+  String get storeSortPriceHighToLow;
+
+  /// No description provided for @storeSortBiggestDiscount.
+  ///
+  /// In pt, this message translates to:
+  /// **'Maior desconto'**
+  String get storeSortBiggestDiscount;
+
+  /// No description provided for @storeAudienceMasculine.
+  ///
+  /// In pt, this message translates to:
+  /// **'Masculino'**
+  String get storeAudienceMasculine;
+
+  /// No description provided for @storeAudienceFeminine.
+  ///
+  /// In pt, this message translates to:
+  /// **'Feminino'**
+  String get storeAudienceFeminine;
+
+  /// No description provided for @storeAudienceKids.
+  ///
+  /// In pt, this message translates to:
+  /// **'Infantil'**
+  String get storeAudienceKids;
+
+  /// No description provided for @storeAudienceUnisex.
+  ///
+  /// In pt, this message translates to:
+  /// **'Unissex'**
+  String get storeAudienceUnisex;
+
+  /// No description provided for @storeTypeMatchJersey.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogo'**
+  String get storeTypeMatchJersey;
+
+  /// No description provided for @storeTypeGoalkeeper.
+  ///
+  /// In pt, this message translates to:
+  /// **'Goleiro'**
+  String get storeTypeGoalkeeper;
+
+  /// No description provided for @storeTypeTraining.
+  ///
+  /// In pt, this message translates to:
+  /// **'Treino'**
+  String get storeTypeTraining;
+
+  /// No description provided for @storeTypeCasual.
+  ///
+  /// In pt, this message translates to:
+  /// **'Casual'**
+  String get storeTypeCasual;
+
+  /// No description provided for @storeTypeAccessory.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acessório'**
+  String get storeTypeAccessory;
+
+  /// No description provided for @storeTypeSouvenir.
+  ///
+  /// In pt, this message translates to:
+  /// **'Souvenir'**
+  String get storeTypeSouvenir;
+
+  /// No description provided for @storeCategoryLaunches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Lançamentos'**
+  String get storeCategoryLaunches;
+
+  /// No description provided for @storeCategoryUniforms.
+  ///
+  /// In pt, this message translates to:
+  /// **'Uniformes'**
+  String get storeCategoryUniforms;
+
+  /// No description provided for @storeCategoryAccessories.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acessórios'**
+  String get storeCategoryAccessories;
+
+  /// No description provided for @storeCategorySouvenirs.
+  ///
+  /// In pt, this message translates to:
+  /// **'Souvenires'**
+  String get storeCategorySouvenirs;
+
+  /// No description provided for @storeCategoryPersonalizable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Personalizáveis'**
+  String get storeCategoryPersonalizable;
+
+  /// No description provided for @storeCollectionFan.
+  ///
+  /// In pt, this message translates to:
+  /// **'Torcedor'**
+  String get storeCollectionFan;
+
+  /// No description provided for @storeCollectionPlayer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogador'**
+  String get storeCollectionPlayer;
+
+  /// No description provided for @storeCollectionTrainingTravel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Treino, viagem e concentração'**
+  String get storeCollectionTrainingTravel;
+
+  /// No description provided for @storeCollectionSocksGloves.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meias e luvas'**
+  String get storeCollectionSocksGloves;
+
+  /// No description provided for @storeShippingEconomyLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Econômica'**
+  String get storeShippingEconomyLabel;
+
+  /// No description provided for @storeShippingStandardLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Padrão'**
+  String get storeShippingStandardLabel;
+
+  /// No description provided for @storeShippingExpressLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Expressa'**
+  String get storeShippingExpressLabel;
+
+  /// No description provided for @storeShippingEconomyEta.
+  ///
+  /// In pt, this message translates to:
+  /// **'7 a 10 dias úteis'**
+  String get storeShippingEconomyEta;
+
+  /// No description provided for @storeShippingStandardEta.
+  ///
+  /// In pt, this message translates to:
+  /// **'4 a 7 dias úteis'**
+  String get storeShippingStandardEta;
+
+  /// No description provided for @storeShippingExpressEta.
+  ///
+  /// In pt, this message translates to:
+  /// **'2 a 3 dias úteis'**
+  String get storeShippingExpressEta;
+
+  /// No description provided for @storeBadgeSoldOut.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esgotado'**
+  String get storeBadgeSoldOut;
+
+  /// No description provided for @storeBadgeOnSale.
+  ///
+  /// In pt, this message translates to:
+  /// **'Promoção'**
+  String get storeBadgeOnSale;
+
+  /// No description provided for @storeBadgeNew.
+  ///
+  /// In pt, this message translates to:
+  /// **'Lançamento'**
+  String get storeBadgeNew;
+
+  /// No description provided for @storeBadgePersonalizable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Personalizável'**
+  String get storeBadgePersonalizable;
+
+  /// No description provided for @storeAddFavorite.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicionar aos favoritos'**
+  String get storeAddFavorite;
+
+  /// No description provided for @storeRemoveFavorite.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover dos favoritos'**
+  String get storeRemoveFavorite;
+
+  /// No description provided for @storeInstallmentsLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'em até {count}x de {value}'**
+  String storeInstallmentsLabel(Object count, Object value);
+
+  /// No description provided for @storeProductLoadErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar este produto'**
+  String get storeProductLoadErrorTitle;
+
+  /// No description provided for @storeProductLoadErrorMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volte e tente novamente.'**
+  String get storeProductLoadErrorMessage;
+
+  /// No description provided for @storeBackToStoreButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Voltar para a loja'**
+  String get storeBackToStoreButton;
+
+  /// No description provided for @storeProductSoldOut.
+  ///
+  /// In pt, this message translates to:
+  /// **'Este produto está esgotado no momento.'**
+  String get storeProductSoldOut;
+
+  /// No description provided for @storeProductPhotoLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'{name}, foto {index} de {total}'**
+  String storeProductPhotoLabel(Object index, Object name, Object total);
+
+  /// No description provided for @storeZoomImageHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Toque para ampliar'**
+  String get storeZoomImageHint;
+
+  /// No description provided for @storeShareProduct.
+  ///
+  /// In pt, this message translates to:
+  /// **'Compartilhar produto'**
+  String get storeShareProduct;
+
+  /// No description provided for @storeReferenceLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ref.'**
+  String get storeReferenceLabel;
+
+  /// No description provided for @storeViewProductButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver produto'**
+  String get storeViewProductButton;
+
+  /// No description provided for @storeDeliveryOrPickupLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entrega ou retirada'**
+  String get storeDeliveryOrPickupLabel;
+
+  /// No description provided for @storePickupFreeNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirada grátis'**
+  String get storePickupFreeNote;
+
+  /// No description provided for @storeSizeLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tamanho'**
+  String get storeSizeLabel;
+
+  /// No description provided for @storeQuantityLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quantidade'**
+  String get storeQuantityLabel;
+
+  /// No description provided for @storeDetailsLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Detalhes'**
+  String get storeDetailsLabel;
+
+  /// No description provided for @storePersonalizationLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Personalização (opcional)'**
+  String get storePersonalizationLabel;
+
+  /// No description provided for @storePersonalizeCardTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Do seu jeito'**
+  String get storePersonalizeCardTitle;
+
+  /// No description provided for @storePersonalizeCardText.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicione nome e número ao seu manto.'**
+  String get storePersonalizeCardText;
+
+  /// No description provided for @storePersonalizeCardCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Personalizar'**
+  String get storePersonalizeCardCta;
+
+  /// No description provided for @storePickupCardCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver localização'**
+  String get storePickupCardCta;
+
+  /// No description provided for @storePersonalizationNameField.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome na camisa (+ {price})'**
+  String storePersonalizationNameField(Object price);
+
+  /// No description provided for @storePersonalizationNumberField.
+  ///
+  /// In pt, this message translates to:
+  /// **'Número na camisa (+ {price})'**
+  String storePersonalizationNumberField(Object price);
+
+  /// No description provided for @storePersonalizationSurchargeNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acréscimo de personalização: {price}'**
+  String storePersonalizationSurchargeNote(Object price);
+
+  /// No description provided for @storeAddedToCartSnackbar.
+  ///
+  /// In pt, this message translates to:
+  /// **'Produto adicionado à sacola.'**
+  String get storeAddedToCartSnackbar;
+
+  /// No description provided for @storeAddToCartButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicionar na sacola'**
+  String get storeAddToCartButton;
+
+  /// No description provided for @storeAddShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicionar'**
+  String get storeAddShort;
+
+  /// No description provided for @storeSeeCartAction.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver sacola'**
+  String get storeSeeCartAction;
+
+  /// No description provided for @storeChooseSizeTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha um tamanho'**
+  String get storeChooseSizeTitle;
+
+  /// No description provided for @storeChooseSizeMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione um tamanho antes de adicionar à sacola.'**
+  String get storeChooseSizeMessage;
+
+  /// No description provided for @storeBuyNowButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Comprar agora'**
+  String get storeBuyNowButton;
+
+  /// No description provided for @storeVariationSoldOut.
+  ///
+  /// In pt, this message translates to:
+  /// **'Essa variação está esgotada.'**
+  String get storeVariationSoldOut;
+
+  /// No description provided for @storeCartTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'SACOLA'**
+  String get storeCartTitle;
+
+  /// No description provided for @storeCartEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua sacola está vazia'**
+  String get storeCartEmptyTitle;
+
+  /// No description provided for @storeCartEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha seus produtos oficiais e carregue o Verdão com você.'**
+  String get storeCartEmptyMessage;
+
+  /// No description provided for @storeCartEmptyCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ir para a Goiás Store'**
+  String get storeCartEmptyCta;
+
+  /// No description provided for @storeCartItemSize.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tamanho {size}'**
+  String storeCartItemSize(Object size);
+
+  /// No description provided for @storeCartItemNumber.
+  ///
+  /// In pt, this message translates to:
+  /// **'nº {number}'**
+  String storeCartItemNumber(Object number);
+
+  /// No description provided for @storeRemoveItemTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover item'**
+  String get storeRemoveItemTitle;
+
+  /// No description provided for @storeRemoveItemMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover \"{productName}\" da sacola?'**
+  String storeRemoveItemMessage(Object productName);
+
+  /// No description provided for @storeRemoveItemAction.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover {productName} da sacola'**
+  String storeRemoveItemAction(Object productName);
+
+  /// No description provided for @storeRemove.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover'**
+  String get storeRemove;
+
+  /// No description provided for @storeCouponHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cupom de desconto'**
+  String get storeCouponHint;
+
+  /// No description provided for @storeCouponApply.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aplicar'**
+  String get storeCouponApply;
+
+  /// No description provided for @storeCouponInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cupom inválido ou expirado.'**
+  String get storeCouponInvalid;
+
+  /// No description provided for @storeCheckoutCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Finalizar compra'**
+  String get storeCheckoutCta;
+
+  /// No description provided for @storeSubtotal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Subtotal'**
+  String get storeSubtotal;
+
+  /// No description provided for @storeDiscountGeneric.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desconto'**
+  String get storeDiscountGeneric;
+
+  /// No description provided for @storeDiscountLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desconto ({code})'**
+  String storeDiscountLabel(Object code);
+
+  /// No description provided for @storeTotal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Total'**
+  String get storeTotal;
+
+  /// No description provided for @storeFreeShippingNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Frete grátis a partir de {amount}.'**
+  String storeFreeShippingNote(Object amount);
+
+  /// No description provided for @storeFree.
+  ///
+  /// In pt, this message translates to:
+  /// **'Grátis'**
+  String get storeFree;
+
+  /// No description provided for @storeShippingLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Frete'**
+  String get storeShippingLabel;
+
+  /// No description provided for @storePickupWord.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirada'**
+  String get storePickupWord;
+
+  /// No description provided for @storeStepIdentification.
+  ///
+  /// In pt, this message translates to:
+  /// **'Identificação'**
+  String get storeStepIdentification;
+
+  /// No description provided for @storeStepDelivery.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entrega'**
+  String get storeStepDelivery;
+
+  /// No description provided for @storeStepPayment.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pagamento'**
+  String get storeStepPayment;
+
+  /// No description provided for @storeStepReview.
+  ///
+  /// In pt, this message translates to:
+  /// **'Revisão'**
+  String get storeStepReview;
+
+  /// No description provided for @storeContinueButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continuar'**
+  String get storeContinueButton;
+
+  /// No description provided for @storeFullNameLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome completo'**
+  String get storeFullNameLabel;
+
+  /// No description provided for @storeCpfLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF'**
+  String get storeCpfLabel;
+
+  /// No description provided for @storePhoneLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Telefone / WhatsApp'**
+  String get storePhoneLabel;
+
+  /// No description provided for @storeDeliveryToHome.
+  ///
+  /// In pt, this message translates to:
+  /// **'Receber em casa'**
+  String get storeDeliveryToHome;
+
+  /// No description provided for @storePickupAtStore.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirar na loja'**
+  String get storePickupAtStore;
+
+  /// No description provided for @storeDeliveryAddressLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Endereço de entrega'**
+  String get storeDeliveryAddressLabel;
+
+  /// No description provided for @storeAddAddress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicionar endereço'**
+  String get storeAddAddress;
+
+  /// No description provided for @storeZipCodePrefix.
+  ///
+  /// In pt, this message translates to:
+  /// **'CEP {zip}'**
+  String storeZipCodePrefix(Object zip);
+
+  /// No description provided for @storePickupResponsibleLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quem vai retirar'**
+  String get storePickupResponsibleLabel;
+
+  /// No description provided for @storePickupSelf.
+  ///
+  /// In pt, this message translates to:
+  /// **'Eu mesmo'**
+  String get storePickupSelf;
+
+  /// No description provided for @storePickupOther.
+  ///
+  /// In pt, this message translates to:
+  /// **'Outra pessoa'**
+  String get storePickupOther;
+
+  /// No description provided for @storePickupResponsibleNameField.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome de quem vai retirar'**
+  String get storePickupResponsibleNameField;
+
+  /// No description provided for @storePickupResponsibleCpfField.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF de quem vai retirar'**
+  String get storePickupResponsibleCpfField;
+
+  /// No description provided for @storePickupSectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirada na loja'**
+  String get storePickupSectionTitle;
+
+  /// No description provided for @storePickupBySelf.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirada pelo próprio titular'**
+  String get storePickupBySelf;
+
+  /// No description provided for @storePickupByOther.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirada por {name}'**
+  String storePickupByOther(Object name);
+
+  /// No description provided for @storePickupAddressPrefix.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirar em: {address}'**
+  String storePickupAddressPrefix(Object address);
+
+  /// No description provided for @storePaymentPix.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pix'**
+  String get storePaymentPix;
+
+  /// No description provided for @storeCreditCard.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão de crédito'**
+  String get storeCreditCard;
+
+  /// No description provided for @storeDemoDisclaimer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ambiente demonstrativo. Nenhuma cobrança será realizada.'**
+  String get storeDemoDisclaimer;
+
+  /// No description provided for @storeQrCodeNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'QR Code simulado — escaneie no app do seu banco.'**
+  String get storeQrCodeNote;
+
+  /// No description provided for @storeSimulatePixButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Simular pagamento Pix'**
+  String get storeSimulatePixButton;
+
+  /// No description provided for @storePixApproved.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pix simulado com sucesso.'**
+  String get storePixApproved;
+
+  /// No description provided for @storeCardNumberLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Número do cartão'**
+  String get storeCardNumberLabel;
+
+  /// No description provided for @storeCardHolderLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nome impresso no cartão'**
+  String get storeCardHolderLabel;
+
+  /// No description provided for @storeCardExpiryLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Validade (MM/AA)'**
+  String get storeCardExpiryLabel;
+
+  /// No description provided for @storeCardCvvLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CVV'**
+  String get storeCardCvvLabel;
+
+  /// No description provided for @storeInstallmentsFieldLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Parcelas'**
+  String get storeInstallmentsFieldLabel;
+
+  /// No description provided for @storeInstallmentsCash.
+  ///
+  /// In pt, this message translates to:
+  /// **'À vista — {price}'**
+  String storeInstallmentsCash(Object price);
+
+  /// No description provided for @storeInstallmentsNoInterest.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count}x de {price} sem juros'**
+  String storeInstallmentsNoInterest(Object count, Object price);
+
+  /// No description provided for @storeSimulatePaymentButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Simular pagamento'**
+  String get storeSimulatePaymentButton;
+
+  /// No description provided for @storeCardApprovedGeneric.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão aprovado (simulado).'**
+  String get storeCardApprovedGeneric;
+
+  /// No description provided for @storeCardApprovedWithDigits.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão final {digits} aprovado (simulado).'**
+  String storeCardApprovedWithDigits(Object digits);
+
+  /// No description provided for @storeCardFinalDigits.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão de crédito final {digits}'**
+  String storeCardFinalDigits(Object digits);
+
+  /// No description provided for @storeCardSummaryLine.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cartão de crédito final {digits} · {installments}x'**
+  String storeCardSummaryLine(Object digits, Object installments);
+
+  /// No description provided for @storeConfirmOrderButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirmar pedido'**
+  String get storeConfirmOrderButton;
+
+  /// No description provided for @storeEdit.
+  ///
+  /// In pt, this message translates to:
+  /// **'Editar'**
+  String get storeEdit;
+
+  /// No description provided for @storeAcceptTerms.
+  ///
+  /// In pt, this message translates to:
+  /// **'Li e aceito os termos de compra da Goiás Store.'**
+  String get storeAcceptTerms;
+
+  /// No description provided for @storeOrderConfirmedTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pedido confirmado!'**
+  String get storeOrderConfirmedTitle;
+
+  /// No description provided for @storeItemsLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Itens'**
+  String get storeItemsLabel;
+
+  /// No description provided for @storeItemsCountLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Itens ({count})'**
+  String storeItemsCountLabel(Object count);
+
+  /// No description provided for @storeTrackOrderButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acompanhar pedido'**
+  String get storeTrackOrderButton;
+
+  /// No description provided for @storeContinueShoppingButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continuar comprando'**
+  String get storeContinueShoppingButton;
+
+  /// No description provided for @storeBackHomeButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Voltar ao início'**
+  String get storeBackHomeButton;
+
+  /// No description provided for @storeOrdersTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEUS PEDIDOS'**
+  String get storeOrdersTitle;
+
+  /// No description provided for @storeOrdersEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você ainda não fez nenhum pedido'**
+  String get storeOrdersEmptyTitle;
+
+  /// No description provided for @storeOrdersEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seus pedidos na Goiás Store aparecerão aqui.'**
+  String get storeOrdersEmptyMessage;
+
+  /// No description provided for @storeOrdersLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar seus pedidos'**
+  String get storeOrdersLoadError;
+
+  /// No description provided for @storeOrderCancelled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pedido cancelado'**
+  String get storeOrderCancelled;
+
+  /// No description provided for @storeCustomerLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cliente'**
+  String get storeCustomerLabel;
+
+  /// No description provided for @storeStatusStepDone.
+  ///
+  /// In pt, this message translates to:
+  /// **'concluído'**
+  String get storeStatusStepDone;
+
+  /// No description provided for @storeStatusStepPending.
+  ///
+  /// In pt, this message translates to:
+  /// **'pendente'**
+  String get storeStatusStepPending;
+
+  /// No description provided for @storeStatusCreated.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pedido realizado'**
+  String get storeStatusCreated;
+
+  /// No description provided for @storeStatusPaymentPending.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aguardando pagamento'**
+  String get storeStatusPaymentPending;
+
+  /// No description provided for @storeStatusPaid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pagamento aprovado'**
+  String get storeStatusPaid;
+
+  /// No description provided for @storeStatusPreparing.
+  ///
+  /// In pt, this message translates to:
+  /// **'Em preparação'**
+  String get storeStatusPreparing;
+
+  /// No description provided for @storeStatusReadyForPickup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pronto para retirada'**
+  String get storeStatusReadyForPickup;
+
+  /// No description provided for @storeStatusShipped.
+  ///
+  /// In pt, this message translates to:
+  /// **'Enviado'**
+  String get storeStatusShipped;
+
+  /// No description provided for @storeStatusDeliveredPickup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retirado'**
+  String get storeStatusDeliveredPickup;
+
+  /// No description provided for @storeStatusDeliveredShipping.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entregue'**
+  String get storeStatusDeliveredShipping;
+
+  /// No description provided for @storeStatusCancelled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelado'**
+  String get storeStatusCancelled;
+
+  /// No description provided for @storeAddressesTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEUS ENDEREÇOS'**
+  String get storeAddressesTitle;
+
+  /// No description provided for @storeAddressesEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum endereço salvo'**
+  String get storeAddressesEmptyTitle;
+
+  /// No description provided for @storeAddressesEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicione um endereço pra agilizar suas próximas compras.'**
+  String get storeAddressesEmptyMessage;
+
+  /// No description provided for @storeRemoveAddressTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover endereço'**
+  String get storeRemoveAddressTitle;
+
+  /// No description provided for @storeRemoveAddressMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Remover \"{address}\"?'**
+  String storeRemoveAddressMessage(Object address);
+
+  /// No description provided for @storeDefaultBadge.
+  ///
+  /// In pt, this message translates to:
+  /// **'PADRÃO'**
+  String get storeDefaultBadge;
+
+  /// No description provided for @storeMakeDefault.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tornar padrão'**
+  String get storeMakeDefault;
+
+  /// No description provided for @storeNewAddressTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'NOVO ENDEREÇO'**
+  String get storeNewAddressTitle;
+
+  /// No description provided for @storeEditAddressTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'EDITAR ENDEREÇO'**
+  String get storeEditAddressTitle;
+
+  /// No description provided for @storeZipCodeLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CEP'**
+  String get storeZipCodeLabel;
+
+  /// No description provided for @storeStreetLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rua / Avenida'**
+  String get storeStreetLabel;
+
+  /// No description provided for @storeNumberLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Número'**
+  String get storeNumberLabel;
+
+  /// No description provided for @storeComplementLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Complemento (opcional)'**
+  String get storeComplementLabel;
+
+  /// No description provided for @storeNeighborhoodLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Bairro'**
+  String get storeNeighborhoodLabel;
+
+  /// No description provided for @storeCityLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cidade'**
+  String get storeCityLabel;
+
+  /// No description provided for @storeStateLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'UF'**
+  String get storeStateLabel;
+
+  /// No description provided for @storeAddressFormError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Preencha todos os campos obrigatórios corretamente.'**
+  String get storeAddressFormError;
+
+  /// No description provided for @storeSaveAddressButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvar endereço'**
+  String get storeSaveAddressButton;
+
+  /// No description provided for @storeValFullNameRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe o nome completo.'**
+  String get storeValFullNameRequired;
+
+  /// No description provided for @storeValFullNameIncomplete.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe nome e sobrenome.'**
+  String get storeValFullNameIncomplete;
+
+  /// No description provided for @storeValEmailRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe um e-mail.'**
+  String get storeValEmailRequired;
+
+  /// No description provided for @storeValEmailInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'E-mail inválido.'**
+  String get storeValEmailInvalid;
+
+  /// No description provided for @storeValPhoneInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'Telefone inválido.'**
+  String get storeValPhoneInvalid;
+
+  /// No description provided for @storeValCpfRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe o CPF.'**
+  String get storeValCpfRequired;
+
+  /// No description provided for @storeValCpfInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF inválido.'**
+  String get storeValCpfInvalid;
+
+  /// No description provided for @storeValZipInvalid.
+  ///
+  /// In pt, this message translates to:
+  /// **'CEP inválido.'**
+  String get storeValZipInvalid;
 }
 
 class _AppLocalizationsDelegate

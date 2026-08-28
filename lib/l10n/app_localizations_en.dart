@@ -2387,4 +2387,778 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get crowdSubmitted => 'Lineup submitted!';
+
+  @override
+  String get storeEntryBadge => 'OFFICIAL STORE';
+
+  @override
+  String get storeEntryTitle => 'Wear the Green';
+
+  @override
+  String get storeEntrySubtitle => 'Official Goiás jerseys and gear.';
+
+  @override
+  String get storeEntryCta => 'Visit the Goiás Store';
+
+  @override
+  String get storeHomeEntryBadge => 'GOIÁS STORE';
+
+  @override
+  String get storeHomeEntryTitle => 'The kit awaits';
+
+  @override
+  String get storeHomeEntryDescription =>
+      'Wear the Green on and off the pitch.';
+
+  @override
+  String get storeHomeEntryCta => 'Visit the store';
+
+  @override
+  String get storeProfileSectionTitle => 'GOIÁS STORE';
+
+  @override
+  String get storeProfileEntry => 'Goiás Store';
+
+  @override
+  String get storeProfileMyOrders => 'My orders';
+
+  @override
+  String get storeProfileAddresses => 'Store addresses';
+
+  @override
+  String get storeHomeTitle => 'Goiás Store';
+
+  @override
+  String get storeHomeLoadErrorTitle => 'We couldn\'t load the store';
+
+  @override
+  String get storeHomeEmptyTitle => 'Store coming soon';
+
+  @override
+  String get storeHomeEmptyMessage => 'Check back soon for official products.';
+
+  @override
+  String get storeSectionCategories => 'Categories';
+
+  @override
+  String get storeSectionLaunches => 'New arrivals';
+
+  @override
+  String get storeSectionOfficialJerseys => 'Official jerseys';
+
+  @override
+  String get storeSectionForEveryFan => 'For every fan';
+
+  @override
+  String get storeSectionTrainingTravel => 'Training & travel';
+
+  @override
+  String get storeSectionAccessories => 'Emerald accessories';
+
+  @override
+  String get storeSectionOffers => 'Deals';
+
+  @override
+  String get storeSectionPersonalize => 'Personalize your jersey';
+
+  @override
+  String get storeSectionPickup => 'Pickup at Goiás Store';
+
+  @override
+  String get storeSectionRelated => 'You might also like';
+
+  @override
+  String get storeBenefitPickup => 'Free pickup at Goiás Store';
+
+  @override
+  String get storeBenefitPersonalize => 'Personalize your jersey';
+
+  @override
+  String get storeBenefitInstallments => 'Sample installment plan';
+
+  @override
+  String get storeSearchHint => 'Search the Goiás Store';
+
+  @override
+  String get storeListingDefaultTitle => 'Products';
+
+  @override
+  String get storeSearchEmptyTitle => 'Search for products';
+
+  @override
+  String get storeSearchEmptyMessage =>
+      'Name, category, collection, or product type.';
+
+  @override
+  String get storeListingNoResultsTitle => 'No products found';
+
+  @override
+  String get storeListingNoResultsMessage =>
+      'Try adjusting your search or removing some filters.';
+
+  @override
+  String storeListingProductCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count products',
+      one: '1 product',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String storeItemCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get storeSortLabel => 'Sort';
+
+  @override
+  String get storeFiltersLabel => 'Filters';
+
+  @override
+  String storeFiltersLabelCount(Object count) {
+    return 'Filters ($count)';
+  }
+
+  @override
+  String get storeSortSheetTitle => 'Sort by';
+
+  @override
+  String get storeFiltersSheetTitle => 'Filters';
+
+  @override
+  String get storeClearFilters => 'Clear filters';
+
+  @override
+  String get storeFilterAudienceLabel => 'Audience';
+
+  @override
+  String get storeFilterTypeLabel => 'Type';
+
+  @override
+  String get storeFilterUniformLabel => 'Kit';
+
+  @override
+  String get storeUniform01 => 'Kit 01';
+
+  @override
+  String get storeUniform02 => 'Kit 02';
+
+  @override
+  String get storeUniform03 => 'Kit 03';
+
+  @override
+  String get storeFilterSizeLabel => 'Size';
+
+  @override
+  String get storeFilterOnlyAvailable => 'In stock only';
+
+  @override
+  String get storeFilterOnlyOnSale => 'On sale only';
+
+  @override
+  String get storeApplyFilters => 'Apply filters';
+
+  @override
+  String get storeSortRelevance => 'Relevance';
+
+  @override
+  String get storeSortNewest => 'New arrivals';
+
+  @override
+  String get storeSortPriceLowToHigh => 'Lowest price';
+
+  @override
+  String get storeSortPriceHighToLow => 'Highest price';
+
+  @override
+  String get storeSortBiggestDiscount => 'Biggest discount';
+
+  @override
+  String get storeAudienceMasculine => 'Men';
+
+  @override
+  String get storeAudienceFeminine => 'Women';
+
+  @override
+  String get storeAudienceKids => 'Kids';
+
+  @override
+  String get storeAudienceUnisex => 'Unisex';
+
+  @override
+  String get storeTypeMatchJersey => 'Match';
+
+  @override
+  String get storeTypeGoalkeeper => 'Goalkeeper';
+
+  @override
+  String get storeTypeTraining => 'Training';
+
+  @override
+  String get storeTypeCasual => 'Casual';
+
+  @override
+  String get storeTypeAccessory => 'Accessory';
+
+  @override
+  String get storeTypeSouvenir => 'Souvenir';
+
+  @override
+  String get storeCategoryLaunches => 'New arrivals';
+
+  @override
+  String get storeCategoryUniforms => 'Jerseys';
+
+  @override
+  String get storeCategoryAccessories => 'Accessories';
+
+  @override
+  String get storeCategorySouvenirs => 'Souvenirs';
+
+  @override
+  String get storeCategoryPersonalizable => 'Customizable';
+
+  @override
+  String get storeCollectionFan => 'Fan';
+
+  @override
+  String get storeCollectionPlayer => 'Player';
+
+  @override
+  String get storeCollectionTrainingTravel => 'Training, travel & pre-match';
+
+  @override
+  String get storeCollectionSocksGloves => 'Socks & gloves';
+
+  @override
+  String get storeShippingEconomyLabel => 'Economy';
+
+  @override
+  String get storeShippingStandardLabel => 'Standard';
+
+  @override
+  String get storeShippingExpressLabel => 'Express';
+
+  @override
+  String get storeShippingEconomyEta => '7 to 10 business days';
+
+  @override
+  String get storeShippingStandardEta => '4 to 7 business days';
+
+  @override
+  String get storeShippingExpressEta => '2 to 3 business days';
+
+  @override
+  String get storeBadgeSoldOut => 'Sold out';
+
+  @override
+  String get storeBadgeOnSale => 'Sale';
+
+  @override
+  String get storeBadgeNew => 'New';
+
+  @override
+  String get storeBadgePersonalizable => 'Customizable';
+
+  @override
+  String get storeAddFavorite => 'Add to favorites';
+
+  @override
+  String get storeRemoveFavorite => 'Remove from favorites';
+
+  @override
+  String storeInstallmentsLabel(Object count, Object value) {
+    return 'up to ${count}x of $value';
+  }
+
+  @override
+  String get storeProductLoadErrorTitle => 'We couldn\'t load this product';
+
+  @override
+  String get storeProductLoadErrorMessage => 'Go back and try again.';
+
+  @override
+  String get storeBackToStoreButton => 'Back to the store';
+
+  @override
+  String get storeProductSoldOut => 'This product is currently sold out.';
+
+  @override
+  String storeProductPhotoLabel(Object index, Object name, Object total) {
+    return '$name, photo $index of $total';
+  }
+
+  @override
+  String get storeZoomImageHint => 'Tap to zoom';
+
+  @override
+  String get storeShareProduct => 'Share product';
+
+  @override
+  String get storeReferenceLabel => 'Ref.';
+
+  @override
+  String get storeViewProductButton => 'View product';
+
+  @override
+  String get storeDeliveryOrPickupLabel => 'Delivery or pickup';
+
+  @override
+  String get storePickupFreeNote => 'Free pickup';
+
+  @override
+  String get storeSizeLabel => 'Size';
+
+  @override
+  String get storeQuantityLabel => 'Quantity';
+
+  @override
+  String get storeDetailsLabel => 'Details';
+
+  @override
+  String get storePersonalizationLabel => 'Personalization (optional)';
+
+  @override
+  String get storePersonalizeCardTitle => 'Your way';
+
+  @override
+  String get storePersonalizeCardText =>
+      'Add a name and number to your jersey.';
+
+  @override
+  String get storePersonalizeCardCta => 'Personalize';
+
+  @override
+  String get storePickupCardCta => 'View location';
+
+  @override
+  String storePersonalizationNameField(Object price) {
+    return 'Name on jersey (+ $price)';
+  }
+
+  @override
+  String storePersonalizationNumberField(Object price) {
+    return 'Number on jersey (+ $price)';
+  }
+
+  @override
+  String storePersonalizationSurchargeNote(Object price) {
+    return 'Personalization surcharge: $price';
+  }
+
+  @override
+  String get storeAddedToCartSnackbar => 'Product added to your bag.';
+
+  @override
+  String get storeAddToCartButton => 'Add to bag';
+
+  @override
+  String get storeAddShort => 'Add';
+
+  @override
+  String get storeSeeCartAction => 'View bag';
+
+  @override
+  String get storeChooseSizeTitle => 'Choose a size';
+
+  @override
+  String get storeChooseSizeMessage =>
+      'Select a size before adding to your bag.';
+
+  @override
+  String get storeBuyNowButton => 'Buy now';
+
+  @override
+  String get storeVariationSoldOut => 'This variation is sold out.';
+
+  @override
+  String get storeCartTitle => 'BAG';
+
+  @override
+  String get storeCartEmptyTitle => 'Your bag is empty';
+
+  @override
+  String get storeCartEmptyMessage =>
+      'Pick your official gear and carry the Green with you.';
+
+  @override
+  String get storeCartEmptyCta => 'Go to the Goiás Store';
+
+  @override
+  String storeCartItemSize(Object size) {
+    return 'Size $size';
+  }
+
+  @override
+  String storeCartItemNumber(Object number) {
+    return '#$number';
+  }
+
+  @override
+  String get storeRemoveItemTitle => 'Remove item';
+
+  @override
+  String storeRemoveItemMessage(Object productName) {
+    return 'Remove \"$productName\" from your bag?';
+  }
+
+  @override
+  String storeRemoveItemAction(Object productName) {
+    return 'Remove $productName from bag';
+  }
+
+  @override
+  String get storeRemove => 'Remove';
+
+  @override
+  String get storeCouponHint => 'Discount code';
+
+  @override
+  String get storeCouponApply => 'Apply';
+
+  @override
+  String get storeCouponInvalid => 'Invalid or expired code.';
+
+  @override
+  String get storeCheckoutCta => 'Checkout';
+
+  @override
+  String get storeSubtotal => 'Subtotal';
+
+  @override
+  String get storeDiscountGeneric => 'Discount';
+
+  @override
+  String storeDiscountLabel(Object code) {
+    return 'Discount ($code)';
+  }
+
+  @override
+  String get storeTotal => 'Total';
+
+  @override
+  String storeFreeShippingNote(Object amount) {
+    return 'Free shipping over $amount.';
+  }
+
+  @override
+  String get storeFree => 'Free';
+
+  @override
+  String get storeShippingLabel => 'Shipping';
+
+  @override
+  String get storePickupWord => 'Pickup';
+
+  @override
+  String get storeStepIdentification => 'Identification';
+
+  @override
+  String get storeStepDelivery => 'Delivery';
+
+  @override
+  String get storeStepPayment => 'Payment';
+
+  @override
+  String get storeStepReview => 'Review';
+
+  @override
+  String get storeContinueButton => 'Continue';
+
+  @override
+  String get storeFullNameLabel => 'Full name';
+
+  @override
+  String get storeCpfLabel => 'CPF';
+
+  @override
+  String get storePhoneLabel => 'Phone / WhatsApp';
+
+  @override
+  String get storeDeliveryToHome => 'Deliver to my address';
+
+  @override
+  String get storePickupAtStore => 'Pick up in store';
+
+  @override
+  String get storeDeliveryAddressLabel => 'Delivery address';
+
+  @override
+  String get storeAddAddress => 'Add address';
+
+  @override
+  String storeZipCodePrefix(Object zip) {
+    return 'ZIP $zip';
+  }
+
+  @override
+  String get storePickupResponsibleLabel => 'Who will pick it up';
+
+  @override
+  String get storePickupSelf => 'Myself';
+
+  @override
+  String get storePickupOther => 'Someone else';
+
+  @override
+  String get storePickupResponsibleNameField =>
+      'Name of the person picking it up';
+
+  @override
+  String get storePickupResponsibleCpfField =>
+      'CPF of the person picking it up';
+
+  @override
+  String get storePickupSectionTitle => 'Store pickup';
+
+  @override
+  String get storePickupBySelf => 'Pickup by the account holder';
+
+  @override
+  String storePickupByOther(Object name) {
+    return 'Pickup by $name';
+  }
+
+  @override
+  String storePickupAddressPrefix(Object address) {
+    return 'Pick up at: $address';
+  }
+
+  @override
+  String get storePaymentPix => 'Pix';
+
+  @override
+  String get storeCreditCard => 'Credit card';
+
+  @override
+  String get storeDemoDisclaimer => 'Demo environment. No charge will be made.';
+
+  @override
+  String get storeQrCodeNote =>
+      'Simulated QR code — scan it in your bank\'s app.';
+
+  @override
+  String get storeSimulatePixButton => 'Simulate Pix payment';
+
+  @override
+  String get storePixApproved => 'Pix payment simulated successfully.';
+
+  @override
+  String get storeCardNumberLabel => 'Card number';
+
+  @override
+  String get storeCardHolderLabel => 'Name on card';
+
+  @override
+  String get storeCardExpiryLabel => 'Expiry (MM/YY)';
+
+  @override
+  String get storeCardCvvLabel => 'CVV';
+
+  @override
+  String get storeInstallmentsFieldLabel => 'Installments';
+
+  @override
+  String storeInstallmentsCash(Object price) {
+    return 'Full payment — $price';
+  }
+
+  @override
+  String storeInstallmentsNoInterest(Object count, Object price) {
+    return '${count}x of $price, no interest';
+  }
+
+  @override
+  String get storeSimulatePaymentButton => 'Simulate payment';
+
+  @override
+  String get storeCardApprovedGeneric => 'Card approved (simulated).';
+
+  @override
+  String storeCardApprovedWithDigits(Object digits) {
+    return 'Card ending in $digits approved (simulated).';
+  }
+
+  @override
+  String storeCardFinalDigits(Object digits) {
+    return 'Credit card ending in $digits';
+  }
+
+  @override
+  String storeCardSummaryLine(Object digits, Object installments) {
+    return 'Credit card ending in $digits · ${installments}x';
+  }
+
+  @override
+  String get storeConfirmOrderButton => 'Confirm order';
+
+  @override
+  String get storeEdit => 'Edit';
+
+  @override
+  String get storeAcceptTerms =>
+      'I\'ve read and accept the Goiás Store purchase terms.';
+
+  @override
+  String get storeOrderConfirmedTitle => 'Order confirmed!';
+
+  @override
+  String get storeItemsLabel => 'Items';
+
+  @override
+  String storeItemsCountLabel(Object count) {
+    return 'Items ($count)';
+  }
+
+  @override
+  String get storeTrackOrderButton => 'Track order';
+
+  @override
+  String get storeContinueShoppingButton => 'Continue shopping';
+
+  @override
+  String get storeBackHomeButton => 'Back to home';
+
+  @override
+  String get storeOrdersTitle => 'MY ORDERS';
+
+  @override
+  String get storeOrdersEmptyTitle => 'You haven\'t placed any orders yet';
+
+  @override
+  String get storeOrdersEmptyMessage =>
+      'Your Goiás Store orders will show up here.';
+
+  @override
+  String get storeOrdersLoadError => 'We couldn\'t load your orders';
+
+  @override
+  String get storeOrderCancelled => 'Order cancelled';
+
+  @override
+  String get storeCustomerLabel => 'Customer';
+
+  @override
+  String get storeStatusStepDone => 'done';
+
+  @override
+  String get storeStatusStepPending => 'pending';
+
+  @override
+  String get storeStatusCreated => 'Order placed';
+
+  @override
+  String get storeStatusPaymentPending => 'Awaiting payment';
+
+  @override
+  String get storeStatusPaid => 'Payment approved';
+
+  @override
+  String get storeStatusPreparing => 'Preparing';
+
+  @override
+  String get storeStatusReadyForPickup => 'Ready for pickup';
+
+  @override
+  String get storeStatusShipped => 'Shipped';
+
+  @override
+  String get storeStatusDeliveredPickup => 'Picked up';
+
+  @override
+  String get storeStatusDeliveredShipping => 'Delivered';
+
+  @override
+  String get storeStatusCancelled => 'Cancelled';
+
+  @override
+  String get storeAddressesTitle => 'MY ADDRESSES';
+
+  @override
+  String get storeAddressesEmptyTitle => 'No saved addresses';
+
+  @override
+  String get storeAddressesEmptyMessage =>
+      'Add an address to speed up your next purchases.';
+
+  @override
+  String get storeRemoveAddressTitle => 'Remove address';
+
+  @override
+  String storeRemoveAddressMessage(Object address) {
+    return 'Remove \"$address\"?';
+  }
+
+  @override
+  String get storeDefaultBadge => 'DEFAULT';
+
+  @override
+  String get storeMakeDefault => 'Make default';
+
+  @override
+  String get storeNewAddressTitle => 'NEW ADDRESS';
+
+  @override
+  String get storeEditAddressTitle => 'EDIT ADDRESS';
+
+  @override
+  String get storeZipCodeLabel => 'ZIP code';
+
+  @override
+  String get storeStreetLabel => 'Street';
+
+  @override
+  String get storeNumberLabel => 'Number';
+
+  @override
+  String get storeComplementLabel => 'Complement (optional)';
+
+  @override
+  String get storeNeighborhoodLabel => 'Neighborhood';
+
+  @override
+  String get storeCityLabel => 'City';
+
+  @override
+  String get storeStateLabel => 'State';
+
+  @override
+  String get storeAddressFormError => 'Fill in all required fields correctly.';
+
+  @override
+  String get storeSaveAddressButton => 'Save address';
+
+  @override
+  String get storeValFullNameRequired => 'Enter your full name.';
+
+  @override
+  String get storeValFullNameIncomplete => 'Enter your first and last name.';
+
+  @override
+  String get storeValEmailRequired => 'Enter an email address.';
+
+  @override
+  String get storeValEmailInvalid => 'Invalid email address.';
+
+  @override
+  String get storeValPhoneInvalid => 'Invalid phone number.';
+
+  @override
+  String get storeValCpfRequired => 'Enter your CPF.';
+
+  @override
+  String get storeValCpfInvalid => 'Invalid CPF.';
+
+  @override
+  String get storeValZipInvalid => 'Invalid ZIP code.';
 }

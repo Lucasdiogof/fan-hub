@@ -54,3 +54,6 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+
+# Scratchpad de docs/temporários gerados durante o desenvolvimento
+scratchpad/

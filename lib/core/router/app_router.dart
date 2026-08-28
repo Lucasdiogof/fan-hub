@@ -64,6 +64,15 @@ import 'package:goias_app/features/squad/domain/squad_member.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/squad/presentation/pages/squad_list_page.dart';
 import 'package:goias_app/features/squad/presentation/pages/squad_member_detail_page.dart';
+import 'package:goias_app/features/store/domain/entities/store_order.dart';
+import 'package:goias_app/features/store/presentation/pages/cart_page.dart';
+import 'package:goias_app/features/store/presentation/pages/checkout_page.dart';
+import 'package:goias_app/features/store/presentation/pages/product_detail_page.dart';
+import 'package:goias_app/features/store/presentation/pages/store_addresses_page.dart';
+import 'package:goias_app/features/store/presentation/pages/store_home_page.dart';
+import 'package:goias_app/features/store/presentation/pages/store_listing_page.dart';
+import 'package:goias_app/features/store/presentation/pages/store_order_detail_page.dart';
+import 'package:goias_app/features/store/presentation/pages/store_orders_page.dart';
 import 'package:goias_app/features/ticket/domain/entities/match_sales_info.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/purchase_cubit.dart';
@@ -404,6 +413,46 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
             path: '/membership/my',
             builder: (context, state) =>
                 MyMembershipPage(membership: state.extra! as Membership),
+          ),
+          GoRoute(
+            path: '/store',
+            builder: (context, state) => const StoreHomePage(),
+          ),
+          GoRoute(
+            path: '/store/search',
+            builder: (context, state) => const StoreListingPage(),
+          ),
+          GoRoute(
+            path: '/store/category/:categoryId',
+            builder: (context, state) => StoreListingPage(
+              categoryId: state.pathParameters['categoryId'],
+            ),
+          ),
+          GoRoute(
+            path: '/store/product/:id',
+            builder: (context, state) =>
+                ProductDetailPage(productId: state.pathParameters['id']!),
+          ),
+          GoRoute(
+            path: '/store/cart',
+            builder: (context, state) => const CartPage(),
+          ),
+          GoRoute(
+            path: '/store/checkout',
+            builder: (context, state) => const CheckoutPage(),
+          ),
+          GoRoute(
+            path: '/store/orders',
+            builder: (context, state) => const StoreOrdersPage(),
+          ),
+          GoRoute(
+            path: '/store/orders/:id',
+            builder: (context, state) =>
+                StoreOrderDetailPage(order: state.extra! as StoreOrder),
+          ),
+          GoRoute(
+            path: '/store/addresses',
+            builder: (context, state) => const StoreAddressesPage(),
           ),
           GoRoute(
             path: '/membership/coming-soon',

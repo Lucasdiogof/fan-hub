@@ -18,6 +18,8 @@ import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart
 import 'package:goias_app/features/profile/presentation/widgets/mock_membership_toggle.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
+import 'package:goias_app/features/store/domain/entities/store_order.dart';
+import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
@@ -125,6 +127,8 @@ class _ProfileView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: AppSpacing.xl),
+                      const _StoreMenuSection(),
+                      const SizedBox(height: AppSpacing.xl),
                       const SocialLinksSection(),
                       const SizedBox(height: AppSpacing.xl),
                       _MenuSection(
@@ -195,6 +199,56 @@ Future<void> _confirmDeleteAccount(BuildContext context) async {
   );
   if (confirmed == true && context.mounted) {
     unawaited(context.push('/profile/delete-account'));
+  }
+}
+
+/// "Meus pedidos"/"Endereços" só aparecem depois do primeiro pedido — antes
+/// disso a Store ainda não gerou nada pra gerenciar aqui, então mostrar as
+/// duas seria um beco sem saída. A entrada "Goiás Store" em si é sempre
+/// visível. Widget próprio (não [FutureBuilder] direto em [_ProfileView])
+/// pra guardar a `Future` uma única vez, sem refazer a leitura local a cada
+/// rebuild do resto da tela de Perfil.
+class _StoreMenuSection extends StatefulWidget {
+  const _StoreMenuSection();
+
+  @override
+  State<_StoreMenuSection> createState() => _StoreMenuSectionState();
+}
+
+class _StoreMenuSectionState extends State<_StoreMenuSection> {
+  late final Future<List<StoreOrder>> _ordersFuture = sl<StoreRepository>()
+      .getOrders();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<StoreOrder>>(
+      future: _ordersFuture,
+      builder: (context, snapshot) {
+        final hasOrders = snapshot.data?.isNotEmpty ?? false;
+        return _MenuSection(
+          title: context.l10n.storeProfileSectionTitle,
+          rows: [
+            _MenuRow(
+              icon: Icons.storefront_outlined,
+              label: context.l10n.storeProfileEntry,
+              onTap: () => context.push('/store'),
+            ),
+            if (hasOrders)
+              _MenuRow(
+                icon: Icons.receipt_long_outlined,
+                label: context.l10n.storeProfileMyOrders,
+                onTap: () => context.push('/store/orders'),
+              ),
+            if (hasOrders)
+              _MenuRow(
+                icon: Icons.location_on_outlined,
+                label: context.l10n.storeProfileAddresses,
+                onTap: () => context.push('/store/addresses'),
+              ),
+          ],
+        );
+      },
+    );
   }
 }
 

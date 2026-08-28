@@ -1,0 +1,38 @@
+{
+  "uniform_01_female_fan": {
+    "productPage": "https://www.storegoias.com.br/feminino/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-feminina-fan-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_feminina_torcedor_2025_33_1_85f6658a7e1ffda7f22707ef18bc43ea.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_feminina_torcedor_2025_33_2_3f43b0c43c50090150875c3579f626fc.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_feminina_torcedor_2025_33_3_6e7829ef63178f5419faf012a87727d6.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_feminina_torcedor_2025_33_4_38f30389912493ca3f519d5394973a3c.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Este item integra o catálogo demonstrativo (mock) da Goiás Store dentro do app. Fotos oficiais recuperadas do CDN da Tray (images.tcdn.com.br) referenciado pela loja oficial. No momento da coleta inicial, a maior parte do catálogo ao vivo em storegoias.com.br estava sem produtos publicados (categorias retornando \"Nenhum Produto Encontrado\") — este foi o único item encontrado com fotos oficiais confirmadas e acessíveis diretamente pela URL naquele momento. Dois outros produtos (uniform_03_male, uniform_02_youth) foram adicionados depois, com URLs de imagem fornecidas diretamente pelo usuário."
+  },
+  "uniform_03_male": {
+    "productPage": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-03/camisa-uniforme-03-goias-masculina",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_gois_masculina_1_20260106091215_e31a489aa1e9.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_masculina_335_1_59d09bc0086f56204f1314054ae5bc27.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_masculina_335_2_5aa654a404b09ffb5d17b98f75837ca7.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_masculina_335_3_4891a363f080281ad0297c194e9111f9.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "URLs fornecidas diretamente pelo usuário (não localizadas por busca própria). Baixadas uma única vez em tempo de build/preparo de conteúdo — nunca carregadas remotamente em runtime. Reencodadas de PNG pra JPEG (otimização de tamanho, mesmo conteúdo visual, sem perda perceptível)."
+  },
+  "uniform_02_youth": {
+    "productPage": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-juvenil-squadra-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_juvenil_jogador_2025_25_1_42b524a7b656f75cb4363013a9e8f836.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_juvenil_jogador_2025_25_2_72e46264f929cc48436d20444625a952.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_juvenil_jogador_2025_25_3_9990df306b4e5f57eb87625a5d0d63e9.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_juvenil_jogador_2025_25_4_7654b5a1e1b7bd080e7ae5893a43aa94.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "URLs fornecidas diretamente pelo usuário (não localizadas por busca própria). Baixadas uma única vez em tempo de build/preparo de conteúdo — nunca carregadas remotamente em runtime. Já vinham como JPEG bem otimizado, mantidas como estavam."
+  }
+}

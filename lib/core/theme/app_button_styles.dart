@@ -27,6 +27,48 @@ ButtonStyle matchCtaFilledStyle(
   );
 }
 
+/// Botão branco preenchido pra usar sobre fundos escuros/coloridos sólidos
+/// (ex.: banner promocional da Goiás Store) — inverso do
+/// [matchCtaFilledStyle]: fundo branco, texto verde institucional, mesmo
+/// nos dois temas do app (o fundo onde ele fica em cima já é escuro
+/// sempre, então o botão não muda com o tema). `ElevatedButton` já resolve
+/// hover/foco/toque sozinho a partir de `foregroundColor`.
+ButtonStyle whiteFilledOnDarkStyle({double minHeight = 44}) {
+  final text = AppColors.light.primary;
+  return ElevatedButton.styleFrom(
+    backgroundColor: Colors.white,
+    foregroundColor: text,
+    disabledBackgroundColor: Colors.white.withValues(alpha: 0.6),
+    disabledForegroundColor: text.withValues(alpha: 0.6),
+    minimumSize: Size(0, minHeight),
+    padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppRadius.button),
+    ),
+  );
+}
+
+/// CTA de conversão direta ("Comprar agora") — dourado do design system com
+/// texto verde muito escuro pra contraste acessível, reservado pra destacar a
+/// compra das outras ações verdes da tela. Usa os tokens `gold`/`deepGreen`
+/// do tema (nada hardcoded), então adapta claro/escuro sozinho.
+ButtonStyle goldFilledStyle(BuildContext context, {double minHeight = 52}) {
+  final colors = context.colors;
+  return ElevatedButton.styleFrom(
+    backgroundColor: colors.gold,
+    foregroundColor: colors.deepGreen,
+    disabledBackgroundColor: colors.gold.withValues(alpha: 0.45),
+    disabledForegroundColor: colors.deepGreen.withValues(alpha: 0.5),
+    minimumSize: Size.fromHeight(minHeight),
+    elevation: 0,
+    textStyle: const TextStyle(fontWeight: FontWeight.w800),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppRadius.button),
+    ),
+  );
+}
+
 /// Par do [matchCtaFilledStyle] pro botão secundário (ex.: "Detalhes do
 /// jogo") — contorno colorido + texto colorido, sem preenchimento, em vez
 /// do contorno branco/cinza fraco de antes.

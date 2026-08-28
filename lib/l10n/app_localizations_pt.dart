@@ -2396,4 +2396,779 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get crowdSubmitted => 'Escalação enviada!';
+
+  @override
+  String get storeEntryBadge => 'LOJA OFICIAL';
+
+  @override
+  String get storeEntryTitle => 'Vista o Verdão';
+
+  @override
+  String get storeEntrySubtitle => 'Uniformes e produtos oficiais do Goiás.';
+
+  @override
+  String get storeEntryCta => 'Conhecer a Goiás Store';
+
+  @override
+  String get storeHomeEntryBadge => 'GOIÁS STORE';
+
+  @override
+  String get storeHomeEntryTitle => 'O manto te espera';
+
+  @override
+  String get storeHomeEntryDescription =>
+      'Leve o Verdão com você dentro e fora de campo.';
+
+  @override
+  String get storeHomeEntryCta => 'Conhecer a loja';
+
+  @override
+  String get storeProfileSectionTitle => 'GOIÁS STORE';
+
+  @override
+  String get storeProfileEntry => 'Goiás Store';
+
+  @override
+  String get storeProfileMyOrders => 'Meus pedidos';
+
+  @override
+  String get storeProfileAddresses => 'Endereços da loja';
+
+  @override
+  String get storeHomeTitle => 'Goiás Store';
+
+  @override
+  String get storeHomeLoadErrorTitle => 'Não foi possível carregar a loja';
+
+  @override
+  String get storeHomeEmptyTitle => 'Loja em preparação';
+
+  @override
+  String get storeHomeEmptyMessage =>
+      'Volte em breve para conferir os produtos oficiais.';
+
+  @override
+  String get storeSectionCategories => 'Categorias';
+
+  @override
+  String get storeSectionLaunches => 'Lançamentos';
+
+  @override
+  String get storeSectionOfficialJerseys => 'Mantos oficiais';
+
+  @override
+  String get storeSectionForEveryFan => 'Para toda a torcida';
+
+  @override
+  String get storeSectionTrainingTravel => 'Treino e viagem';
+
+  @override
+  String get storeSectionAccessories => 'Acessórios esmeraldinos';
+
+  @override
+  String get storeSectionOffers => 'Ofertas';
+
+  @override
+  String get storeSectionPersonalize => 'Personalize seu manto';
+
+  @override
+  String get storeSectionPickup => 'Retirada na Goiás Store';
+
+  @override
+  String get storeSectionRelated => 'Você também pode gostar';
+
+  @override
+  String get storeBenefitPickup => 'Retirada grátis na Goiás Store';
+
+  @override
+  String get storeBenefitPersonalize => 'Personalize seu manto';
+
+  @override
+  String get storeBenefitInstallments => 'Parcelamento demonstrativo';
+
+  @override
+  String get storeSearchHint => 'Buscar na Goiás Store';
+
+  @override
+  String get storeListingDefaultTitle => 'Produtos';
+
+  @override
+  String get storeSearchEmptyTitle => 'Busque por produtos';
+
+  @override
+  String get storeSearchEmptyMessage =>
+      'Nome, categoria, coleção ou tipo de peça.';
+
+  @override
+  String get storeListingNoResultsTitle => 'Nenhum produto encontrado';
+
+  @override
+  String get storeListingNoResultsMessage =>
+      'Tente ajustar sua busca ou remover alguns filtros.';
+
+  @override
+  String storeListingProductCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count produtos',
+      one: '1 produto',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String storeItemCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count itens',
+      one: '1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get storeSortLabel => 'Ordenar';
+
+  @override
+  String get storeFiltersLabel => 'Filtros';
+
+  @override
+  String storeFiltersLabelCount(Object count) {
+    return 'Filtros ($count)';
+  }
+
+  @override
+  String get storeSortSheetTitle => 'Ordenar por';
+
+  @override
+  String get storeFiltersSheetTitle => 'Filtros';
+
+  @override
+  String get storeClearFilters => 'Limpar filtros';
+
+  @override
+  String get storeFilterAudienceLabel => 'Público';
+
+  @override
+  String get storeFilterTypeLabel => 'Tipo';
+
+  @override
+  String get storeFilterUniformLabel => 'Uniforme';
+
+  @override
+  String get storeUniform01 => 'Uniforme 01';
+
+  @override
+  String get storeUniform02 => 'Uniforme 02';
+
+  @override
+  String get storeUniform03 => 'Uniforme 03';
+
+  @override
+  String get storeFilterSizeLabel => 'Tamanho';
+
+  @override
+  String get storeFilterOnlyAvailable => 'Somente disponíveis';
+
+  @override
+  String get storeFilterOnlyOnSale => 'Somente promoções';
+
+  @override
+  String get storeApplyFilters => 'Aplicar filtros';
+
+  @override
+  String get storeSortRelevance => 'Relevância';
+
+  @override
+  String get storeSortNewest => 'Lançamentos';
+
+  @override
+  String get storeSortPriceLowToHigh => 'Menor preço';
+
+  @override
+  String get storeSortPriceHighToLow => 'Maior preço';
+
+  @override
+  String get storeSortBiggestDiscount => 'Maior desconto';
+
+  @override
+  String get storeAudienceMasculine => 'Masculino';
+
+  @override
+  String get storeAudienceFeminine => 'Feminino';
+
+  @override
+  String get storeAudienceKids => 'Infantil';
+
+  @override
+  String get storeAudienceUnisex => 'Unissex';
+
+  @override
+  String get storeTypeMatchJersey => 'Jogo';
+
+  @override
+  String get storeTypeGoalkeeper => 'Goleiro';
+
+  @override
+  String get storeTypeTraining => 'Treino';
+
+  @override
+  String get storeTypeCasual => 'Casual';
+
+  @override
+  String get storeTypeAccessory => 'Acessório';
+
+  @override
+  String get storeTypeSouvenir => 'Souvenir';
+
+  @override
+  String get storeCategoryLaunches => 'Lançamentos';
+
+  @override
+  String get storeCategoryUniforms => 'Uniformes';
+
+  @override
+  String get storeCategoryAccessories => 'Acessórios';
+
+  @override
+  String get storeCategorySouvenirs => 'Souvenires';
+
+  @override
+  String get storeCategoryPersonalizable => 'Personalizáveis';
+
+  @override
+  String get storeCollectionFan => 'Torcedor';
+
+  @override
+  String get storeCollectionPlayer => 'Jogador';
+
+  @override
+  String get storeCollectionTrainingTravel => 'Treino, viagem e concentração';
+
+  @override
+  String get storeCollectionSocksGloves => 'Meias e luvas';
+
+  @override
+  String get storeShippingEconomyLabel => 'Econômica';
+
+  @override
+  String get storeShippingStandardLabel => 'Padrão';
+
+  @override
+  String get storeShippingExpressLabel => 'Expressa';
+
+  @override
+  String get storeShippingEconomyEta => '7 a 10 dias úteis';
+
+  @override
+  String get storeShippingStandardEta => '4 a 7 dias úteis';
+
+  @override
+  String get storeShippingExpressEta => '2 a 3 dias úteis';
+
+  @override
+  String get storeBadgeSoldOut => 'Esgotado';
+
+  @override
+  String get storeBadgeOnSale => 'Promoção';
+
+  @override
+  String get storeBadgeNew => 'Lançamento';
+
+  @override
+  String get storeBadgePersonalizable => 'Personalizável';
+
+  @override
+  String get storeAddFavorite => 'Adicionar aos favoritos';
+
+  @override
+  String get storeRemoveFavorite => 'Remover dos favoritos';
+
+  @override
+  String storeInstallmentsLabel(Object count, Object value) {
+    return 'em até ${count}x de $value';
+  }
+
+  @override
+  String get storeProductLoadErrorTitle =>
+      'Não foi possível carregar este produto';
+
+  @override
+  String get storeProductLoadErrorMessage => 'Volte e tente novamente.';
+
+  @override
+  String get storeBackToStoreButton => 'Voltar para a loja';
+
+  @override
+  String get storeProductSoldOut => 'Este produto está esgotado no momento.';
+
+  @override
+  String storeProductPhotoLabel(Object index, Object name, Object total) {
+    return '$name, foto $index de $total';
+  }
+
+  @override
+  String get storeZoomImageHint => 'Toque para ampliar';
+
+  @override
+  String get storeShareProduct => 'Compartilhar produto';
+
+  @override
+  String get storeReferenceLabel => 'Ref.';
+
+  @override
+  String get storeViewProductButton => 'Ver produto';
+
+  @override
+  String get storeDeliveryOrPickupLabel => 'Entrega ou retirada';
+
+  @override
+  String get storePickupFreeNote => 'Retirada grátis';
+
+  @override
+  String get storeSizeLabel => 'Tamanho';
+
+  @override
+  String get storeQuantityLabel => 'Quantidade';
+
+  @override
+  String get storeDetailsLabel => 'Detalhes';
+
+  @override
+  String get storePersonalizationLabel => 'Personalização (opcional)';
+
+  @override
+  String get storePersonalizeCardTitle => 'Do seu jeito';
+
+  @override
+  String get storePersonalizeCardText => 'Adicione nome e número ao seu manto.';
+
+  @override
+  String get storePersonalizeCardCta => 'Personalizar';
+
+  @override
+  String get storePickupCardCta => 'Ver localização';
+
+  @override
+  String storePersonalizationNameField(Object price) {
+    return 'Nome na camisa (+ $price)';
+  }
+
+  @override
+  String storePersonalizationNumberField(Object price) {
+    return 'Número na camisa (+ $price)';
+  }
+
+  @override
+  String storePersonalizationSurchargeNote(Object price) {
+    return 'Acréscimo de personalização: $price';
+  }
+
+  @override
+  String get storeAddedToCartSnackbar => 'Produto adicionado à sacola.';
+
+  @override
+  String get storeAddToCartButton => 'Adicionar na sacola';
+
+  @override
+  String get storeAddShort => 'Adicionar';
+
+  @override
+  String get storeSeeCartAction => 'Ver sacola';
+
+  @override
+  String get storeChooseSizeTitle => 'Escolha um tamanho';
+
+  @override
+  String get storeChooseSizeMessage =>
+      'Selecione um tamanho antes de adicionar à sacola.';
+
+  @override
+  String get storeBuyNowButton => 'Comprar agora';
+
+  @override
+  String get storeVariationSoldOut => 'Essa variação está esgotada.';
+
+  @override
+  String get storeCartTitle => 'SACOLA';
+
+  @override
+  String get storeCartEmptyTitle => 'Sua sacola está vazia';
+
+  @override
+  String get storeCartEmptyMessage =>
+      'Escolha seus produtos oficiais e carregue o Verdão com você.';
+
+  @override
+  String get storeCartEmptyCta => 'Ir para a Goiás Store';
+
+  @override
+  String storeCartItemSize(Object size) {
+    return 'Tamanho $size';
+  }
+
+  @override
+  String storeCartItemNumber(Object number) {
+    return 'nº $number';
+  }
+
+  @override
+  String get storeRemoveItemTitle => 'Remover item';
+
+  @override
+  String storeRemoveItemMessage(Object productName) {
+    return 'Remover \"$productName\" da sacola?';
+  }
+
+  @override
+  String storeRemoveItemAction(Object productName) {
+    return 'Remover $productName da sacola';
+  }
+
+  @override
+  String get storeRemove => 'Remover';
+
+  @override
+  String get storeCouponHint => 'Cupom de desconto';
+
+  @override
+  String get storeCouponApply => 'Aplicar';
+
+  @override
+  String get storeCouponInvalid => 'Cupom inválido ou expirado.';
+
+  @override
+  String get storeCheckoutCta => 'Finalizar compra';
+
+  @override
+  String get storeSubtotal => 'Subtotal';
+
+  @override
+  String get storeDiscountGeneric => 'Desconto';
+
+  @override
+  String storeDiscountLabel(Object code) {
+    return 'Desconto ($code)';
+  }
+
+  @override
+  String get storeTotal => 'Total';
+
+  @override
+  String storeFreeShippingNote(Object amount) {
+    return 'Frete grátis a partir de $amount.';
+  }
+
+  @override
+  String get storeFree => 'Grátis';
+
+  @override
+  String get storeShippingLabel => 'Frete';
+
+  @override
+  String get storePickupWord => 'Retirada';
+
+  @override
+  String get storeStepIdentification => 'Identificação';
+
+  @override
+  String get storeStepDelivery => 'Entrega';
+
+  @override
+  String get storeStepPayment => 'Pagamento';
+
+  @override
+  String get storeStepReview => 'Revisão';
+
+  @override
+  String get storeContinueButton => 'Continuar';
+
+  @override
+  String get storeFullNameLabel => 'Nome completo';
+
+  @override
+  String get storeCpfLabel => 'CPF';
+
+  @override
+  String get storePhoneLabel => 'Telefone / WhatsApp';
+
+  @override
+  String get storeDeliveryToHome => 'Receber em casa';
+
+  @override
+  String get storePickupAtStore => 'Retirar na loja';
+
+  @override
+  String get storeDeliveryAddressLabel => 'Endereço de entrega';
+
+  @override
+  String get storeAddAddress => 'Adicionar endereço';
+
+  @override
+  String storeZipCodePrefix(Object zip) {
+    return 'CEP $zip';
+  }
+
+  @override
+  String get storePickupResponsibleLabel => 'Quem vai retirar';
+
+  @override
+  String get storePickupSelf => 'Eu mesmo';
+
+  @override
+  String get storePickupOther => 'Outra pessoa';
+
+  @override
+  String get storePickupResponsibleNameField => 'Nome de quem vai retirar';
+
+  @override
+  String get storePickupResponsibleCpfField => 'CPF de quem vai retirar';
+
+  @override
+  String get storePickupSectionTitle => 'Retirada na loja';
+
+  @override
+  String get storePickupBySelf => 'Retirada pelo próprio titular';
+
+  @override
+  String storePickupByOther(Object name) {
+    return 'Retirada por $name';
+  }
+
+  @override
+  String storePickupAddressPrefix(Object address) {
+    return 'Retirar em: $address';
+  }
+
+  @override
+  String get storePaymentPix => 'Pix';
+
+  @override
+  String get storeCreditCard => 'Cartão de crédito';
+
+  @override
+  String get storeDemoDisclaimer =>
+      'Ambiente demonstrativo. Nenhuma cobrança será realizada.';
+
+  @override
+  String get storeQrCodeNote =>
+      'QR Code simulado — escaneie no app do seu banco.';
+
+  @override
+  String get storeSimulatePixButton => 'Simular pagamento Pix';
+
+  @override
+  String get storePixApproved => 'Pix simulado com sucesso.';
+
+  @override
+  String get storeCardNumberLabel => 'Número do cartão';
+
+  @override
+  String get storeCardHolderLabel => 'Nome impresso no cartão';
+
+  @override
+  String get storeCardExpiryLabel => 'Validade (MM/AA)';
+
+  @override
+  String get storeCardCvvLabel => 'CVV';
+
+  @override
+  String get storeInstallmentsFieldLabel => 'Parcelas';
+
+  @override
+  String storeInstallmentsCash(Object price) {
+    return 'À vista — $price';
+  }
+
+  @override
+  String storeInstallmentsNoInterest(Object count, Object price) {
+    return '${count}x de $price sem juros';
+  }
+
+  @override
+  String get storeSimulatePaymentButton => 'Simular pagamento';
+
+  @override
+  String get storeCardApprovedGeneric => 'Cartão aprovado (simulado).';
+
+  @override
+  String storeCardApprovedWithDigits(Object digits) {
+    return 'Cartão final $digits aprovado (simulado).';
+  }
+
+  @override
+  String storeCardFinalDigits(Object digits) {
+    return 'Cartão de crédito final $digits';
+  }
+
+  @override
+  String storeCardSummaryLine(Object digits, Object installments) {
+    return 'Cartão de crédito final $digits · ${installments}x';
+  }
+
+  @override
+  String get storeConfirmOrderButton => 'Confirmar pedido';
+
+  @override
+  String get storeEdit => 'Editar';
+
+  @override
+  String get storeAcceptTerms =>
+      'Li e aceito os termos de compra da Goiás Store.';
+
+  @override
+  String get storeOrderConfirmedTitle => 'Pedido confirmado!';
+
+  @override
+  String get storeItemsLabel => 'Itens';
+
+  @override
+  String storeItemsCountLabel(Object count) {
+    return 'Itens ($count)';
+  }
+
+  @override
+  String get storeTrackOrderButton => 'Acompanhar pedido';
+
+  @override
+  String get storeContinueShoppingButton => 'Continuar comprando';
+
+  @override
+  String get storeBackHomeButton => 'Voltar ao início';
+
+  @override
+  String get storeOrdersTitle => 'MEUS PEDIDOS';
+
+  @override
+  String get storeOrdersEmptyTitle => 'Você ainda não fez nenhum pedido';
+
+  @override
+  String get storeOrdersEmptyMessage =>
+      'Seus pedidos na Goiás Store aparecerão aqui.';
+
+  @override
+  String get storeOrdersLoadError => 'Não foi possível carregar seus pedidos';
+
+  @override
+  String get storeOrderCancelled => 'Pedido cancelado';
+
+  @override
+  String get storeCustomerLabel => 'Cliente';
+
+  @override
+  String get storeStatusStepDone => 'concluído';
+
+  @override
+  String get storeStatusStepPending => 'pendente';
+
+  @override
+  String get storeStatusCreated => 'Pedido realizado';
+
+  @override
+  String get storeStatusPaymentPending => 'Aguardando pagamento';
+
+  @override
+  String get storeStatusPaid => 'Pagamento aprovado';
+
+  @override
+  String get storeStatusPreparing => 'Em preparação';
+
+  @override
+  String get storeStatusReadyForPickup => 'Pronto para retirada';
+
+  @override
+  String get storeStatusShipped => 'Enviado';
+
+  @override
+  String get storeStatusDeliveredPickup => 'Retirado';
+
+  @override
+  String get storeStatusDeliveredShipping => 'Entregue';
+
+  @override
+  String get storeStatusCancelled => 'Cancelado';
+
+  @override
+  String get storeAddressesTitle => 'MEUS ENDEREÇOS';
+
+  @override
+  String get storeAddressesEmptyTitle => 'Nenhum endereço salvo';
+
+  @override
+  String get storeAddressesEmptyMessage =>
+      'Adicione um endereço pra agilizar suas próximas compras.';
+
+  @override
+  String get storeRemoveAddressTitle => 'Remover endereço';
+
+  @override
+  String storeRemoveAddressMessage(Object address) {
+    return 'Remover \"$address\"?';
+  }
+
+  @override
+  String get storeDefaultBadge => 'PADRÃO';
+
+  @override
+  String get storeMakeDefault => 'Tornar padrão';
+
+  @override
+  String get storeNewAddressTitle => 'NOVO ENDEREÇO';
+
+  @override
+  String get storeEditAddressTitle => 'EDITAR ENDEREÇO';
+
+  @override
+  String get storeZipCodeLabel => 'CEP';
+
+  @override
+  String get storeStreetLabel => 'Rua / Avenida';
+
+  @override
+  String get storeNumberLabel => 'Número';
+
+  @override
+  String get storeComplementLabel => 'Complemento (opcional)';
+
+  @override
+  String get storeNeighborhoodLabel => 'Bairro';
+
+  @override
+  String get storeCityLabel => 'Cidade';
+
+  @override
+  String get storeStateLabel => 'UF';
+
+  @override
+  String get storeAddressFormError =>
+      'Preencha todos os campos obrigatórios corretamente.';
+
+  @override
+  String get storeSaveAddressButton => 'Salvar endereço';
+
+  @override
+  String get storeValFullNameRequired => 'Informe o nome completo.';
+
+  @override
+  String get storeValFullNameIncomplete => 'Informe nome e sobrenome.';
+
+  @override
+  String get storeValEmailRequired => 'Informe um e-mail.';
+
+  @override
+  String get storeValEmailInvalid => 'E-mail inválido.';
+
+  @override
+  String get storeValPhoneInvalid => 'Telefone inválido.';
+
+  @override
+  String get storeValCpfRequired => 'Informe o CPF.';
+
+  @override
+  String get storeValCpfInvalid => 'CPF inválido.';
+
+  @override
+  String get storeValZipInvalid => 'CEP inválido.';
 }
