@@ -8,9 +8,9 @@ import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
-import 'package:goias_app/features/splash/presentation/widgets/animated_image_splash.dart';
 import 'package:goias_app/features/splash/presentation/widgets/circle_reveal_clipper.dart';
 import 'package:goias_app/features/splash/presentation/widgets/reveal_glow_painter.dart';
+import 'package:goias_app/features/splash/presentation/widgets/static_logo_splash.dart';
 import 'package:goias_app/features/splash/presentation/widgets/video_splash_view.dart';
 
 /// Mesma cor do `flutter_native_splash` (pubspec.yaml) — não é branco puro
@@ -21,25 +21,28 @@ const _splashBackground = Color(0xFFF6F8F7);
 const _startRadius = 14.0;
 const _revealDuration = Duration(milliseconds: 550);
 
-/// O conteúdo (vídeo ou as 3 imagens) dura ~5.3s — isto é só a rede de
-/// segurança. Cobre autoplay bloqueado, imagem que falha ao carregar, erro
-/// de rede/decodificação e qualquer outro jeito da splash não terminar
-/// sozinha. Começa a contar no `initState()`, antes de qualquer tentativa
-/// de mostrar conteúdo — é a única coisa que garante que o usuário nunca
-/// fica preso na splash.
+/// O conteúdo (vídeo ou o brasão estático) dura poucos segundos — isto é só
+/// a rede de segurança. Cobre autoplay bloqueado, imagem que falha ao
+/// carregar, erro de rede/decodificação e qualquer outro jeito da splash
+/// não terminar sozinha. Começa a contar no `initState()`, antes de
+/// qualquer tentativa de mostrar conteúdo — é a única coisa que garante que
+/// o usuário nunca fica preso na splash.
 const _fallbackTimeout = Duration(seconds: 7);
 
 /// iOS no navegador (Safari, PWA instalado, WebView do WhatsApp — todos
 /// baseados em WebKit) bloqueia autoplay de vídeo silenciosamente, sem
 /// lançar nenhum erro: o vídeo fica parado no primeiro frame pra sempre.
-/// Só nessa combinação a splash usa 3 imagens estáticas com timeline
-/// própria (`AnimatedImageSplash`) em vez do vídeo — em qualquer outro
-/// ambiente (Android, iOS nativo, Web fora do iOS) o vídeo
-/// `goias_splash.mp4` continua normalmente. Mesmo `kIsWeb &&
-/// defaultTargetPlatform == TargetPlatform.iOS` usado em `ClubBadge` pro
-/// bug do CanvasKit — mesma raiz (Safari/WebKit se comportando diferente
+/// Uma sequência de imagens animadas já foi tentada aqui e tinha o mesmo
+/// problema de fundo (peso de imagem grande demais pra terminar de
+/// carregar antes do timer de segurança em rede móvel ruim) — pra essa
+/// plataforma restrita, o mais confiável é o mais simples: só o brasão
+/// oficial parado sobre o fundo da splash (`StaticLogoSplash`), sem vídeo
+/// nem timeline. Em qualquer outro ambiente (Android, iOS nativo, Web fora
+/// do iOS) o vídeo `goias_splash.mp4` continua normalmente, sem mudança.
+/// Mesmo `kIsWeb && defaultTargetPlatform == TargetPlatform.iOS` usado em
+/// `ClubBadge` pro bug do CanvasKit — mesma raiz (Safari/WebKit se comportando diferente
 /// do resto), sinalização de plataforma consistente no app inteiro.
-bool get _shouldUseImageSequence =>
+bool get _shouldUseStaticLogo =>
     kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
 
 class SplashVideoPage extends StatefulWidget {
@@ -181,8 +184,8 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   }
 
   Widget _buildSplashContent() {
-    if (_shouldUseImageSequence) {
-      return AnimatedImageSplash(onReady: _reveal, onCompleted: _finishSplash);
+    if (_shouldUseStaticLogo) {
+      return StaticLogoSplash(onReady: _reveal, onCompleted: _finishSplash);
     }
     return VideoSplashView(
       onReady: _reveal,
