@@ -502,6 +502,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get arenaTitle => 'Arena Esmeraldina';
+
+  @override
   String get arenaSubtitle => 'Quick minigames for the fans.';
 
   @override
@@ -625,6 +628,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arenaRankingMemberBadge => 'Member';
+
+  @override
+  String get arenaRankingUnknownFan => 'Fan';
 
   @override
   String get arenaRankingDetailFirstTry => 'First-try correct';
@@ -1826,6 +1832,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clubSectionPartners => 'Partners';
 
   @override
+  String get clubSectionBoard => 'Board';
+
+  @override
+  String get clubBoardSubtitle => 'Councils, presidency and the club\'s board.';
+
+  @override
+  String get clubBoardLoadErrorTitle => 'We couldn\'t load the board';
+
+  @override
+  String get clubBoardEmptyTitle => 'Board being updated';
+
+  @override
+  String get clubBoardEmptyMessage => 'Check back soon for the club\'s board.';
+
+  @override
+  String get clubSectionTransparency => 'Transparency';
+
+  @override
+  String get clubTransparencySubtitle =>
+      'Balance sheets, minutes and financial statements.';
+
+  @override
+  String get clubTransparencyLoadErrorTitle => 'We couldn\'t load transparency';
+
+  @override
+  String get clubTransparencyEmptyTitle => 'No documents available';
+
+  @override
+  String get clubTransparencyEmptyMessage =>
+      'Check back soon for the documents.';
+
+  @override
+  String clubTransparencyDocumentCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count documents',
+      one: '1 document',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get clubTransparencyDownloadButton => 'Download PDF';
+
+  @override
   String get clubSectionTimeline => 'Timeline';
 
   @override
@@ -2271,6 +2323,48 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get membershipFaqAll => 'All';
+
+  @override
+  String get membershipFaqChipGeneral => 'General';
+
+  @override
+  String get membershipFaqChipPayment => 'Payment';
+
+  @override
+  String get membershipFaqChipSupport => 'Support';
+
+  @override
+  String get membershipFaqChipActions => 'Actions';
+
+  @override
+  String get membershipFaqChipStadium => 'Stadium';
+
+  @override
+  String get membershipFaqChipBenefits => 'Benefits';
+
+  @override
+  String get membershipFaqChipPlans => 'Plans';
+
+  @override
+  String get membershipFaqChipFacial => 'Facial';
+
+  @override
+  String get membershipFaqChipRating => 'Rating';
+
+  @override
+  String get membershipFaqChipNoShow => 'No-Show';
+
+  @override
+  String get membershipStepAccess => 'Access';
+
+  @override
+  String get membershipStepPersonal => 'Sign-up';
+
+  @override
+  String get membershipStepAddress => 'Address';
+
+  @override
+  String get membershipRegulationContentPending => 'Official content pending.';
 
   @override
   String get membershipFaqSearchHint => 'Search a question...';

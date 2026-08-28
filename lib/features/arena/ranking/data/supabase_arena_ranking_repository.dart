@@ -72,7 +72,11 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
           return RankingEntry(
             rank: (map['rank'] as num).toInt(),
             userId: userId,
-            name: (map['name'] as String?) ?? 'Torcedor',
+            // Nome pode faltar num perfil incompleto — string vazia aqui, o
+            // fallback traduzido ("Torcedor" etc.) é resolvido na
+            // apresentação (ver `rankingDisplayName`), já que este
+            // repositório não tem acesso a l10n.
+            name: (map['name'] as String?) ?? '',
             avatarUrl: map['avatar_url'] as String?,
             isMember: map['is_member'] as bool? ?? false,
             totalScore: (map['total_score'] as num).toInt(),

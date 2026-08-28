@@ -154,14 +154,18 @@ class _SheetHeader extends StatelessWidget {
     final gap = pointsToNext;
     return Column(
       children: [
-        RankingAvatar(name: entry.name, avatarUrl: entry.avatarUrl, size: 72),
+        RankingAvatar(
+          name: rankingDisplayName(context, entry),
+          avatarUrl: entry.avatarUrl,
+          size: 72,
+        ),
         const SizedBox(height: AppSpacing.md),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Flexible(
               child: Text(
-                entry.name,
+                rankingDisplayName(context, entry),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 19,
@@ -319,7 +323,7 @@ class _DetailBody extends StatelessWidget {
           title: isMe
               ? context.l10n.arenaRankingHowScoredSelf
               : context.l10n.arenaRankingHowScoredOther(
-                  detail.entry.name.split(' ').first,
+                  rankingDisplayName(context, detail.entry).split(' ').first,
                 ),
         ),
         const SizedBox(height: AppSpacing.md),

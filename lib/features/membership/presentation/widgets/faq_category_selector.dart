@@ -6,18 +6,22 @@ import 'package:goias_app/features/membership/domain/entities/faq_category.dart'
 
 /// Labels curtos só pra caber no chip — o conteúdo/model continua com o
 /// título original completo (usado nos cabeçalhos de grupo da lista).
-const _chipLabels = {
-  'duvidas-gerais': 'Gerais',
-  'pagamento': 'Pagamento',
-  'atendimento': 'Atendimento',
-  'acoes': 'Ações',
-  'setores-do-estadio': 'Estádio',
-  'beneficios': 'Benefícios',
-  'planos-e-cancelamento': 'Planos',
-  'reconhecimento-facial': 'Facial',
-  'rating': 'Rating',
-  'no-show': 'No-Show',
-};
+String? _chipLabel(BuildContext context, String categoryId) {
+  final l10n = context.l10n;
+  return switch (categoryId) {
+    'duvidas-gerais' => l10n.membershipFaqChipGeneral,
+    'pagamento' => l10n.membershipFaqChipPayment,
+    'atendimento' => l10n.membershipFaqChipSupport,
+    'acoes' => l10n.membershipFaqChipActions,
+    'setores-do-estadio' => l10n.membershipFaqChipStadium,
+    'beneficios' => l10n.membershipFaqChipBenefits,
+    'planos-e-cancelamento' => l10n.membershipFaqChipPlans,
+    'reconhecimento-facial' => l10n.membershipFaqChipFacial,
+    'rating' => l10n.membershipFaqChipRating,
+    'no-show' => l10n.membershipFaqChipNoShow,
+    _ => null,
+  };
+}
 
 class FaqCategorySelector extends StatelessWidget {
   const FaqCategorySelector({
@@ -46,7 +50,7 @@ class FaqCategorySelector extends StatelessWidget {
           for (final category in categories) ...[
             const SizedBox(width: AppSpacing.sm),
             _CategoryChip(
-              label: _chipLabels[category.id] ?? category.title,
+              label: _chipLabel(context, category.id) ?? category.title,
               selected: selectedCategoryId == category.id,
               onTap: () => onSelected(category.id),
             ),

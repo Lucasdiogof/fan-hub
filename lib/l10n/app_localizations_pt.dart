@@ -502,6 +502,9 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get arenaTitle => 'Arena Esmeraldina';
+
+  @override
   String get arenaSubtitle => 'Minigames rápidos para o torcedor.';
 
   @override
@@ -626,6 +629,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get arenaRankingMemberBadge => 'Sócio';
+
+  @override
+  String get arenaRankingUnknownFan => 'Torcedor';
 
   @override
   String get arenaRankingDetailFirstTry => 'Acertos de primeira';
@@ -1833,6 +1839,55 @@ class AppLocalizationsPt extends AppLocalizations {
   String get clubSectionPartners => 'Parceiros';
 
   @override
+  String get clubSectionBoard => 'Diretoria';
+
+  @override
+  String get clubBoardSubtitle =>
+      'Conselhos, presidência e diretoria do clube.';
+
+  @override
+  String get clubBoardLoadErrorTitle => 'Não foi possível carregar a diretoria';
+
+  @override
+  String get clubBoardEmptyTitle => 'Diretoria em atualização';
+
+  @override
+  String get clubBoardEmptyMessage =>
+      'Volte em breve para conferir a diretoria do clube.';
+
+  @override
+  String get clubSectionTransparency => 'Transparência';
+
+  @override
+  String get clubTransparencySubtitle =>
+      'Balanços, atas e demonstrativos contábeis.';
+
+  @override
+  String get clubTransparencyLoadErrorTitle =>
+      'Não foi possível carregar a transparência';
+
+  @override
+  String get clubTransparencyEmptyTitle => 'Nenhum documento disponível';
+
+  @override
+  String get clubTransparencyEmptyMessage =>
+      'Volte em breve para conferir os documentos.';
+
+  @override
+  String clubTransparencyDocumentCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count documentos',
+      one: '1 documento',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get clubTransparencyDownloadButton => 'Baixar PDF';
+
+  @override
   String get clubSectionTimeline => 'Linha do Tempo';
 
   @override
@@ -2279,6 +2334,49 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get membershipFaqAll => 'Todas';
+
+  @override
+  String get membershipFaqChipGeneral => 'Gerais';
+
+  @override
+  String get membershipFaqChipPayment => 'Pagamento';
+
+  @override
+  String get membershipFaqChipSupport => 'Atendimento';
+
+  @override
+  String get membershipFaqChipActions => 'Ações';
+
+  @override
+  String get membershipFaqChipStadium => 'Estádio';
+
+  @override
+  String get membershipFaqChipBenefits => 'Benefícios';
+
+  @override
+  String get membershipFaqChipPlans => 'Planos';
+
+  @override
+  String get membershipFaqChipFacial => 'Facial';
+
+  @override
+  String get membershipFaqChipRating => 'Rating';
+
+  @override
+  String get membershipFaqChipNoShow => 'No-Show';
+
+  @override
+  String get membershipStepAccess => 'Acesso';
+
+  @override
+  String get membershipStepPersonal => 'Cadastro';
+
+  @override
+  String get membershipStepAddress => 'Endereço';
+
+  @override
+  String get membershipRegulationContentPending =>
+      'Conteúdo oficial pendente de envio.';
 
   @override
   String get membershipFaqSearchHint => 'Buscar uma dúvida...';

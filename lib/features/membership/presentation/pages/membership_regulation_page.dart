@@ -268,7 +268,7 @@ class _RegulationSectionView extends StatelessWidget {
         const SizedBox(height: AppSpacing.md),
         Text(
           section.body.isEmpty
-              ? 'Conteúdo oficial pendente de envio.'
+              ? context.l10n.membershipRegulationContentPending
               : section.body,
           style: TextStyle(
             fontSize: 13.5,

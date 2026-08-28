@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_state.dart';
@@ -21,7 +22,11 @@ class MembershipRegistrationStepper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    const labels = ['Acesso', 'Cadastro', 'Endereço'];
+    final labels = [
+      context.l10n.membershipStepAccess,
+      context.l10n.membershipStepPersonal,
+      context.l10n.membershipStepAddress,
+    ];
     return Column(
       children: [
         Row(

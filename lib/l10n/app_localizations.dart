@@ -1054,6 +1054,12 @@ abstract class AppLocalizations {
   /// **'Abrir {name}'**
   String socialOpenLink(String name);
 
+  /// No description provided for @arenaTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arena Esmeraldina'**
+  String get arenaTitle;
+
   /// No description provided for @arenaSubtitle.
   ///
   /// In pt, this message translates to:
@@ -1287,6 +1293,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Sócio'**
   String get arenaRankingMemberBadge;
+
+  /// No description provided for @arenaRankingUnknownFan.
+  ///
+  /// In pt, this message translates to:
+  /// **'Torcedor'**
+  String get arenaRankingUnknownFan;
 
   /// No description provided for @arenaRankingDetailFirstTry.
   ///
@@ -3328,6 +3340,78 @@ abstract class AppLocalizations {
   /// **'Parceiros'**
   String get clubSectionPartners;
 
+  /// No description provided for @clubSectionBoard.
+  ///
+  /// In pt, this message translates to:
+  /// **'Diretoria'**
+  String get clubSectionBoard;
+
+  /// No description provided for @clubBoardSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conselhos, presidência e diretoria do clube.'**
+  String get clubBoardSubtitle;
+
+  /// No description provided for @clubBoardLoadErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar a diretoria'**
+  String get clubBoardLoadErrorTitle;
+
+  /// No description provided for @clubBoardEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Diretoria em atualização'**
+  String get clubBoardEmptyTitle;
+
+  /// No description provided for @clubBoardEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volte em breve para conferir a diretoria do clube.'**
+  String get clubBoardEmptyMessage;
+
+  /// No description provided for @clubSectionTransparency.
+  ///
+  /// In pt, this message translates to:
+  /// **'Transparência'**
+  String get clubSectionTransparency;
+
+  /// No description provided for @clubTransparencySubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Balanços, atas e demonstrativos contábeis.'**
+  String get clubTransparencySubtitle;
+
+  /// No description provided for @clubTransparencyLoadErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar a transparência'**
+  String get clubTransparencyLoadErrorTitle;
+
+  /// No description provided for @clubTransparencyEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum documento disponível'**
+  String get clubTransparencyEmptyTitle;
+
+  /// No description provided for @clubTransparencyEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volte em breve para conferir os documentos.'**
+  String get clubTransparencyEmptyMessage;
+
+  /// No description provided for @clubTransparencyDocumentCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 documento} other{{count} documentos}}'**
+  String clubTransparencyDocumentCount(num count);
+
+  /// No description provided for @clubTransparencyDownloadButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Baixar PDF'**
+  String get clubTransparencyDownloadButton;
+
   /// No description provided for @clubSectionTimeline.
   ///
   /// In pt, this message translates to:
@@ -4143,6 +4227,90 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Todas'**
   String get membershipFaqAll;
+
+  /// No description provided for @membershipFaqChipGeneral.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gerais'**
+  String get membershipFaqChipGeneral;
+
+  /// No description provided for @membershipFaqChipPayment.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pagamento'**
+  String get membershipFaqChipPayment;
+
+  /// No description provided for @membershipFaqChipSupport.
+  ///
+  /// In pt, this message translates to:
+  /// **'Atendimento'**
+  String get membershipFaqChipSupport;
+
+  /// No description provided for @membershipFaqChipActions.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ações'**
+  String get membershipFaqChipActions;
+
+  /// No description provided for @membershipFaqChipStadium.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estádio'**
+  String get membershipFaqChipStadium;
+
+  /// No description provided for @membershipFaqChipBenefits.
+  ///
+  /// In pt, this message translates to:
+  /// **'Benefícios'**
+  String get membershipFaqChipBenefits;
+
+  /// No description provided for @membershipFaqChipPlans.
+  ///
+  /// In pt, this message translates to:
+  /// **'Planos'**
+  String get membershipFaqChipPlans;
+
+  /// No description provided for @membershipFaqChipFacial.
+  ///
+  /// In pt, this message translates to:
+  /// **'Facial'**
+  String get membershipFaqChipFacial;
+
+  /// No description provided for @membershipFaqChipRating.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rating'**
+  String get membershipFaqChipRating;
+
+  /// No description provided for @membershipFaqChipNoShow.
+  ///
+  /// In pt, this message translates to:
+  /// **'No-Show'**
+  String get membershipFaqChipNoShow;
+
+  /// No description provided for @membershipStepAccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acesso'**
+  String get membershipStepAccess;
+
+  /// No description provided for @membershipStepPersonal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cadastro'**
+  String get membershipStepPersonal;
+
+  /// No description provided for @membershipStepAddress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Endereço'**
+  String get membershipStepAddress;
+
+  /// No description provided for @membershipRegulationContentPending.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conteúdo oficial pendente de envio.'**
+  String get membershipRegulationContentPending;
 
   /// No description provided for @membershipFaqSearchHint.
   ///

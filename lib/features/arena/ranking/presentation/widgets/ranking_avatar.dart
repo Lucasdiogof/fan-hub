@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
+
+/// Nome de exibição de uma entrada do ranking — `RankingEntry.name` pode
+/// vir vazio (perfil sem nome, ver `SupabaseArenaRankingRepository`); o
+/// fallback traduzido é resolvido aqui, na apresentação, e não no
+/// repositório (que não tem acesso a l10n).
+String rankingDisplayName(BuildContext context, RankingEntry entry) =>
+    entry.name.isEmpty ? context.l10n.arenaRankingUnknownFan : entry.name;
 
 class RankingAvatar extends StatelessWidget {
   const RankingAvatar({

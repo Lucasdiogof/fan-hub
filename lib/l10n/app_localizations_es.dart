@@ -503,6 +503,9 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get arenaTitle => 'Arena Esmeraldina';
+
+  @override
   String get arenaSubtitle => 'Minijuegos rápidos para la afición.';
 
   @override
@@ -627,6 +630,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get arenaRankingMemberBadge => 'Socio';
+
+  @override
+  String get arenaRankingUnknownFan => 'Hincha';
 
   @override
   String get arenaRankingDetailFirstTry => 'Aciertos a la primera';
@@ -1832,6 +1838,53 @@ class AppLocalizationsEs extends AppLocalizations {
   String get clubSectionPartners => 'Aliados';
 
   @override
+  String get clubSectionBoard => 'Directiva';
+
+  @override
+  String get clubBoardSubtitle => 'Consejos, presidencia y directiva del club.';
+
+  @override
+  String get clubBoardLoadErrorTitle => 'No se pudo cargar la directiva';
+
+  @override
+  String get clubBoardEmptyTitle => 'Directiva en actualización';
+
+  @override
+  String get clubBoardEmptyMessage =>
+      'Vuelve pronto para ver la directiva del club.';
+
+  @override
+  String get clubSectionTransparency => 'Transparencia';
+
+  @override
+  String get clubTransparencySubtitle => 'Balances, actas y estados contables.';
+
+  @override
+  String get clubTransparencyLoadErrorTitle =>
+      'No se pudo cargar la transparencia';
+
+  @override
+  String get clubTransparencyEmptyTitle => 'Ningún documento disponible';
+
+  @override
+  String get clubTransparencyEmptyMessage =>
+      'Vuelve pronto para ver los documentos.';
+
+  @override
+  String clubTransparencyDocumentCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count documentos',
+      one: '1 documento',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get clubTransparencyDownloadButton => 'Descargar PDF';
+
+  @override
   String get clubSectionTimeline => 'Cronología';
 
   @override
@@ -2278,6 +2331,49 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get membershipFaqAll => 'Todas';
+
+  @override
+  String get membershipFaqChipGeneral => 'General';
+
+  @override
+  String get membershipFaqChipPayment => 'Pago';
+
+  @override
+  String get membershipFaqChipSupport => 'Atención';
+
+  @override
+  String get membershipFaqChipActions => 'Acciones';
+
+  @override
+  String get membershipFaqChipStadium => 'Estadio';
+
+  @override
+  String get membershipFaqChipBenefits => 'Beneficios';
+
+  @override
+  String get membershipFaqChipPlans => 'Planes';
+
+  @override
+  String get membershipFaqChipFacial => 'Facial';
+
+  @override
+  String get membershipFaqChipRating => 'Rating';
+
+  @override
+  String get membershipFaqChipNoShow => 'No-Show';
+
+  @override
+  String get membershipStepAccess => 'Acceso';
+
+  @override
+  String get membershipStepPersonal => 'Registro';
+
+  @override
+  String get membershipStepAddress => 'Dirección';
+
+  @override
+  String get membershipRegulationContentPending =>
+      'Contenido oficial pendiente de envío.';
 
   @override
   String get membershipFaqSearchHint => 'Buscar una pregunta...';

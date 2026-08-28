@@ -347,14 +347,17 @@ class _RankRow extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: AppSpacing.sm),
-              RankingAvatar(name: entry.name, avatarUrl: entry.avatarUrl),
+              RankingAvatar(
+                name: rankingDisplayName(context, entry),
+                avatarUrl: entry.avatarUrl,
+              ),
               const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Row(
                   children: [
                     Flexible(
                       child: Text(
-                        entry.name,
+                        rankingDisplayName(context, entry),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
