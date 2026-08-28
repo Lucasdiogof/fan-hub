@@ -37,7 +37,10 @@ class StoreOrderDetailPage extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      BackButtonCircle(onTap: () => context.pop()),
+                      BackButtonCircle(
+                        onTap: () =>
+                            context.canPop() ? context.pop() : context.go('/'),
+                      ),
                       const SizedBox(width: AppSpacing.md),
                       Expanded(
                         child: Text(
