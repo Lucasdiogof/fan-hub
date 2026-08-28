@@ -83,14 +83,14 @@ class _HeaderIconButton extends StatelessWidget {
     final colors = context.colors;
     return Material(
       color: colors.secondary,
-      shape: const CircleBorder(),
+      shape: CircleBorder(side: BorderSide(color: colors.primary, width: 1.6)),
       child: InkWell(
         onTap: onTap,
         customBorder: const CircleBorder(),
         child: SizedBox(
           width: 44,
           height: 44,
-          child: Icon(icon, size: 20, color: colors.textPrimary),
+          child: Icon(icon, size: 20, color: colors.primary),
         ),
       ),
     );
