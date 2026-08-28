@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
-import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/data/membership_regulation_repository.dart';
 import 'package:goias_app/features/membership/data/regulation_catalog.dart';
+import 'package:goias_app/features/membership/data/regulation_content.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_section.dart';
-import 'package:goias_app/shared/utils/regulation_markdown_parser.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Leitura só-consulta do Regulamento do Sócio Esmeralda — não depende do
 /// `MembershipRegistrationCubit`. Quem precisa saber se o usuário aceitou é
 /// a `MembershipReviewPage`, que tem seu próprio checkbox; esta tela só
 /// mostra o texto.
+///
+/// Conteúdo vem de `regulation_content.dart` (const Dart gerado a partir do
+/// asset local) — mesmo padrão de Termos de Uso/Política de Privacidade,
+/// sem depender de rede nem de uma tabela do Supabase. Antes dependia de
+/// `membership_regulation_versions`, e uma linha lá com conteúdo
+/// incompleto deixava a tela vazia mesmo com o fallback local certo —
+/// nunca mais essa classe de bug pra um texto que quase não muda.
 class MembershipRegulationPage extends StatefulWidget {
   const MembershipRegulationPage({super.key});
 
@@ -26,14 +29,10 @@ class MembershipRegulationPage extends StatefulWidget {
 }
 
 class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
-  late final Future<List<RegulationSection>> _future = _load();
-  final _sectionKeys = <int, GlobalKey>{};
-
-  Future<List<RegulationSection>> _load() async {
-    final raw = await sl<MembershipRegulationRepository>()
-        .loadCurrentMarkdown();
-    return parseRegulationSections(raw);
-  }
+  final _sectionKeys = {
+    for (final section in membershipRegulationSections)
+      section.index: GlobalKey(),
+  };
 
   void _goToSection(int index) {
     final ctx = _sectionKeys[index]?.currentContext;
@@ -110,49 +109,37 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                   ),
                   const SizedBox(height: AppSpacing.xl),
                   Expanded(
-                    child: FutureBuilder<List<RegulationSection>>(
-                      future: _future,
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState != ConnectionState.done) {
-                          return const Center(child: GoiasLoadingIndicator());
-                        }
-                        final sections = snapshot.data ?? const [];
-                        for (final section in sections) {
-                          _sectionKeys.putIfAbsent(
-                            section.index,
-                            () => GlobalKey(),
-                          );
-                        }
-                        return ListView(
-                          // `Scrollable.ensureVisible` só funciona pra seções já montadas —
-                          // sem isso, `GlobalKey.currentContext` vem nulo pra qualquer item
-                          // fora da viewport inicial e o índice não navega além da primeira
-                          // seção. O conteúdo é só texto, então cachear tudo de uma vez é
-                          // barato.
-                          scrollCacheExtent: const ScrollCacheExtent.pixels(
-                            100000,
+                    child: ListView(
+                      children: [
+                        _RegulationIndex(
+                          sections: membershipRegulationSections,
+                          onTapSection: _goToSection,
+                        ),
+                        const SizedBox(height: AppSpacing.xxxl),
+                        Text(
+                          membershipRegulationIntro,
+                          style: TextStyle(
+                            fontSize: 13.5,
+                            height: 1.55,
+                            color: colors.textSecondary,
                           ),
-                          children: [
-                            _RegulationIndex(
-                              sections: sections,
-                              onTapSection: _goToSection,
-                            ),
-                            const SizedBox(height: AppSpacing.xxxl),
-                            for (final section in sections) ...[
-                              _RegulationSectionView(
-                                key: _sectionKeys[section.index],
-                                section: section,
-                              ),
-                              const SizedBox(height: AppSpacing.xl),
-                              if (section.index != sections.last.index) ...[
-                                Divider(color: colors.border),
-                                const SizedBox(height: AppSpacing.xl),
-                              ],
-                            ],
-                            const SizedBox(height: AppSpacing.huge),
+                        ),
+                        const SizedBox(height: AppSpacing.xl),
+                        Divider(color: colors.border),
+                        const SizedBox(height: AppSpacing.xl),
+                        for (final section in membershipRegulationSections) ...[
+                          _RegulationSectionView(
+                            key: _sectionKeys[section.index],
+                            section: section,
+                          ),
+                          const SizedBox(height: AppSpacing.xl),
+                          if (section.index != membershipRegulationSections.last.index) ...[
+                            Divider(color: colors.border),
+                            const SizedBox(height: AppSpacing.xl),
                           ],
-                        );
-                      },
+                        ],
+                        const SizedBox(height: AppSpacing.huge),
+                      ],
                     ),
                   ),
                 ],
@@ -267,9 +254,7 @@ class _RegulationSectionView extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.md),
         Text(
-          section.body.isEmpty
-              ? context.l10n.membershipRegulationContentPending
-              : section.body,
+          section.body,
           style: TextStyle(
             fontSize: 13.5,
             height: 1.55,

@@ -759,5 +759,9 @@ Ao informar que "ACEITA" as disposições do presente Regulamento, o SÓCIO decl
 
 Goiânia/GO, 26 de março de 2026.
 ', true)
-on conflict (id) do nothing;
+on conflict (id) do update set
+  version = excluded.version,
+  effective_at = excluded.effective_at,
+  content_markdown = excluded.content_markdown,
+  is_current = excluded.is_current;
 
