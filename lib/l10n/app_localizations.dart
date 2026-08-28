@@ -2251,8 +2251,20 @@ abstract class AppLocalizations {
   /// No description provided for @squadClubHistory.
   ///
   /// In pt, this message translates to:
-  /// **'HISTÓRICO DE CLUBES'**
+  /// **'Carreira'**
   String get squadClubHistory;
+
+  /// No description provided for @squadAboutSection.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sobre'**
+  String get squadAboutSection;
+
+  /// No description provided for @squadCareerStatsLine.
+  ///
+  /// In pt, this message translates to:
+  /// **'{matches} jogos · {goals} gols'**
+  String squadCareerStatsLine(Object goals, Object matches);
 
   /// No description provided for @squadNumber.
   ///

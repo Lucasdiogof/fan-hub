@@ -1222,7 +1222,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get squadEmpty => 'Elenco indisponível no momento';
 
   @override
-  String get squadClubHistory => 'HISTÓRICO DE CLUBES';
+  String get squadClubHistory => 'Carreira';
+
+  @override
+  String get squadAboutSection => 'Sobre';
+
+  @override
+  String squadCareerStatsLine(Object goals, Object matches) {
+    return '$matches jogos · $goals gols';
+  }
 
   @override
   String get squadNumber => 'Número';

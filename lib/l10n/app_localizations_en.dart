@@ -1219,7 +1219,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get squadEmpty => 'Squad unavailable at the moment';
 
   @override
-  String get squadClubHistory => 'CLUB HISTORY';
+  String get squadClubHistory => 'Career';
+
+  @override
+  String get squadAboutSection => 'About';
+
+  @override
+  String squadCareerStatsLine(Object goals, Object matches) {
+    return '$matches matches · $goals goals';
+  }
 
   @override
   String get squadNumber => 'Number';

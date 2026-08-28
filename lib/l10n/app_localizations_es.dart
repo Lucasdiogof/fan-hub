@@ -1223,7 +1223,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get squadEmpty => 'Plantilla no disponible en este momento';
 
   @override
-  String get squadClubHistory => 'HISTORIAL DE CLUBES';
+  String get squadClubHistory => 'Carrera';
+
+  @override
+  String get squadAboutSection => 'Acerca de';
+
+  @override
+  String squadCareerStatsLine(Object goals, Object matches) {
+    return '$matches partidos · $goals goles';
+  }
 
   @override
   String get squadNumber => 'Número';
