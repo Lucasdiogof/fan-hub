@@ -7,9 +7,9 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/squad/domain/position_groups.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
+import 'package:goias_app/features/squad/domain/squad_photos.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_state.dart';
-import 'package:goias_app/features/squad/presentation/widgets/squad_avatar.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -189,7 +189,7 @@ class _PositionGroupSection extends StatelessWidget {
                   crossAxisCount: crossAxisCount,
                   mainAxisSpacing: AppSpacing.md,
                   crossAxisSpacing: AppSpacing.md,
-                  childAspectRatio: 0.88,
+                  childAspectRatio: 0.74,
                 ),
                 itemCount: sorted.length,
                 itemBuilder: (context, index) =>
@@ -203,6 +203,10 @@ class _PositionGroupSection extends StatelessWidget {
   }
 }
 
+/// Card com a foto ocupando quase todo o espaço (retangular, não o avatar
+/// circular do `SquadAvatar` — aquele é pra contextos compactos, tipo o
+/// cabeçalho do perfil do jogador). Número da camisa como badge por cima
+/// da foto em vez de reservar uma linha própria pra ele.
 class _SquadCard extends StatelessWidget {
   const _SquadCard({required this.member});
 
@@ -214,40 +218,133 @@ class _SquadCard extends StatelessWidget {
     return Material(
       color: colors.surface,
       borderRadius: BorderRadius.circular(AppRadius.card),
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
-        borderRadius: BorderRadius.circular(AppRadius.card),
         onTap: () => context.push('/squad/${member.id}', extra: member),
         child: Container(
-          padding: const EdgeInsets.symmetric(
-            vertical: AppSpacing.sm,
-            horizontal: AppSpacing.sm,
-          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.card),
             border: Border.all(color: colors.border),
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SquadAvatar(
-                memberId: member.id,
-                photoUrl: member.photoUrl,
-                shirtNumber: member.shirtNumber,
-                size: 86,
+              Expanded(
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    _SquadCardPhoto(member: member),
+                    if (member.shirtNumber != null)
+                      Positioned(
+                        top: 8,
+                        right: 8,
+                        child: _NumberBadge(number: member.shirtNumber!),
+                      ),
+                  ],
+                ),
               ),
-              const SizedBox(height: AppSpacing.sm),
-              Text(
-                member.name,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 13.5,
-                  fontWeight: FontWeight.w700,
-                  color: colors.textPrimary,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSpacing.sm,
+                  vertical: AppSpacing.sm,
+                ),
+                child: Text(
+                  member.name,
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: colors.textPrimary,
+                  ),
                 ),
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SquadCardPhoto extends StatelessWidget {
+  const _SquadCardPhoto({required this.member});
+
+  final SquadMember member;
+
+  @override
+  Widget build(BuildContext context) {
+    final asset = squadPhotoAssets[member.id];
+    if (asset != null) {
+      return Image.asset(
+        asset,
+        fit: BoxFit.cover,
+        alignment: Alignment.topCenter,
+        errorBuilder: (context, _, _) =>
+            _SquadCardPhotoFallback(number: member.shirtNumber),
+      );
+    }
+    final url = member.photoUrl;
+    if (url == null || url.isEmpty) {
+      return _SquadCardPhotoFallback(number: member.shirtNumber);
+    }
+    return Image.network(
+      url,
+      fit: BoxFit.cover,
+      alignment: Alignment.topCenter,
+      errorBuilder: (context, _, _) =>
+          _SquadCardPhotoFallback(number: member.shirtNumber),
+      loadingBuilder: (context, child, progress) => progress == null
+          ? child
+          : _SquadCardPhotoFallback(number: member.shirtNumber),
+    );
+  }
+}
+
+class _SquadCardPhotoFallback extends StatelessWidget {
+  const _SquadCardPhotoFallback({required this.number});
+
+  final int? number;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return ColoredBox(
+      color: colors.secondary,
+      child: Center(
+        child: Text(
+          number?.toString() ?? '–',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.w900,
+            color: colors.primary,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NumberBadge extends StatelessWidget {
+  const _NumberBadge({required this.number});
+
+  final int number;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      decoration: BoxDecoration(
+        color: Colors.black.withValues(alpha: 0.45),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        '$number',
+        style: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w900,
+          color: Colors.white,
         ),
       ),
     );
