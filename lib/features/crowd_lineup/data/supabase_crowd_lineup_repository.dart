@@ -5,6 +5,7 @@ import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
 import 'package:goias_app/features/crowd_lineup/domain/goias_squad.dart';
 import 'package:goias_app/features/crowd_lineup/domain/lineup_vote.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
+import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
@@ -80,54 +81,135 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
     }
   }
 
+  /// A escalação da torcida não segue mais "a formação mais votada, com o
+  /// jogador mais escolhido dentro dela" — isso deixava jogador com votos de
+  /// verdade de fora só porque a formação vencedora não tinha um slot pra
+  /// posição dele (ex.: ponta com votos ficando fora de uma 4-5-1 sem
+  /// pontas). Agora: soma os votos de cada jogador por POSIÇÃO em todas as
+  /// formações/votos recebidos (não só na formação vencedora), depois
+  /// escolhe, entre as formações conhecidas, a que melhor acomoda quem tem
+  /// mais voto — e o percentual de cada jogador é sobre o total de
+  /// escalações enviadas, nunca sobre o total da formação escolhida (que
+  /// pode ser bem menor e inflar o percentual artificialmente).
   CrowdLineup _parseCrowd(Map<String, dynamic> data) {
     final totalVotes = (data['total_votes'] as num?)?.toInt() ?? 0;
-    final formationCounts =
-        (data['formations'] as Map<String, dynamic>?) ?? const {};
-    if (totalVotes == 0 || formationCounts.isEmpty) {
+    final slotsByFormation = (data['slots'] as Map<String, dynamic>?) ?? const {};
+    if (totalVotes == 0 || slotsByFormation.isEmpty) {
       return const CrowdLineup.empty();
     }
 
-    // Formação mais votada.
-    final topFormationId = formationCounts.entries
-        .reduce((a, b) => (a.value as num) >= (b.value as num) ? a : b)
-        .key;
-    final formation = formationById(topFormationId);
-    final formationVotes = (formationCounts[topFormationId] as num).toInt();
-
-    final slotsData =
-        ((data['slots'] as Map<String, dynamic>?)?[topFormationId]
-            as Map<String, dynamic>?) ??
-        const {};
-
-    final results = <CrowdSlotResult>[];
-    for (var i = 0; i < formation.slots.length; i++) {
-      final counts = (slotsData['$i'] as Map<String, dynamic>?) ?? const {};
-      String? topPid;
-      var topCount = 0;
-      counts.forEach((pid, count) {
-        final c = (count as num).toInt();
-        if (c > topCount) {
-          topCount = c;
-          topPid = pid;
-        }
+    // votesByPlayerPosition[pid][position] = quantas escalações colocaram
+    // esse jogador nessa posição, somando TODAS as formações votadas.
+    final votesByPlayerPosition = <String, Map<PlayerPosition, int>>{};
+    slotsByFormation.forEach((formationId, slotsRaw) {
+      final formation = formationById(formationId);
+      final slotsForFormation = slotsRaw as Map<String, dynamic>;
+      slotsForFormation.forEach((slotKey, pidCountsRaw) {
+        final slotIndex = int.tryParse(slotKey);
+        if (slotIndex == null || slotIndex >= formation.slots.length) return;
+        final position = formation.slots[slotIndex].position;
+        final pidCounts = pidCountsRaw as Map<String, dynamic>;
+        pidCounts.forEach((pid, count) {
+          final c = (count as num).toInt();
+          final byPosition = votesByPlayerPosition.putIfAbsent(pid, () => {});
+          byPosition[position] = (byPosition[position] ?? 0) + c;
+        });
       });
-      results.add(
-        CrowdSlotResult(
-          slotIndex: i,
-          position: formation.slots[i].position,
-          player: topPid == null ? null : squadById[topPid],
-          percent: formationVotes == 0
-              ? 0
-              : ((topCount / formationVotes) * 100).round(),
-        ),
-      );
+    });
+
+    Formation? bestFormation;
+    List<_SlotAssignment>? bestAssignments;
+    var bestScore = -1;
+    for (final formation in formations) {
+      final assignments = _assignSlots(formation, votesByPlayerPosition);
+      final score = assignments.fold<int>(0, (sum, a) => sum + a.votes);
+      if (score > bestScore) {
+        bestScore = score;
+        bestFormation = formation;
+        bestAssignments = assignments;
+      }
     }
+    if (bestFormation == null || bestAssignments == null) {
+      return const CrowdLineup.empty();
+    }
+
+    final results = [
+      for (final assignment in bestAssignments)
+        CrowdSlotResult(
+          slotIndex: assignment.slotIndex,
+          position: bestFormation.slots[assignment.slotIndex].position,
+          player: assignment.playerId == null
+              ? null
+              : squadById[assignment.playerId],
+          percent: totalVotes == 0
+              ? 0
+              : ((assignment.votes / totalVotes) * 100).round(),
+        ),
+    ];
 
     return CrowdLineup(
       totalVotes: totalVotes,
-      topFormation: formation,
+      topFormation: bestFormation,
       slots: results,
     );
   }
+
+  /// Preenche os slots de [formation] com os jogadores mais votados pra cada
+  /// posição que ela exige, sem repetir jogador entre slots (quando uma
+  /// formação tem 2 zagueiros, por exemplo, pega os 2 zagueiros mais
+  /// votados, não o mesmo duas vezes). Slot sem nenhum jogador votado nessa
+  /// posição fica vazio — nunca inventa um jogador.
+  List<_SlotAssignment> _assignSlots(
+    Formation formation,
+    Map<String, Map<PlayerPosition, int>> votesByPlayerPosition,
+  ) {
+    final slotIndicesByPosition = <PlayerPosition, List<int>>{};
+    for (var i = 0; i < formation.slots.length; i++) {
+      slotIndicesByPosition
+          .putIfAbsent(formation.slots[i].position, () => [])
+          .add(i);
+    }
+
+    final usedPids = <String>{};
+    final assignments = List<_SlotAssignment>.generate(
+      formation.slots.length,
+      (i) => _SlotAssignment(slotIndex: i, playerId: null, votes: 0),
+    );
+
+    for (final entry in slotIndicesByPosition.entries) {
+      final position = entry.key;
+      final slotIndices = entry.value;
+      final candidates =
+          votesByPlayerPosition.entries
+              .where((e) => e.value.containsKey(position))
+              .where((e) => !usedPids.contains(e.key))
+              .map((e) => (pid: e.key, votes: e.value[position]!))
+              .toList()
+            ..sort((a, b) => b.votes.compareTo(a.votes));
+
+      for (var i = 0; i < slotIndices.length && i < candidates.length; i++) {
+        final candidate = candidates[i];
+        usedPids.add(candidate.pid);
+        assignments[slotIndices[i]] = _SlotAssignment(
+          slotIndex: slotIndices[i],
+          playerId: candidate.pid,
+          votes: candidate.votes,
+        );
+      }
+    }
+
+    return assignments;
+  }
+}
+
+class _SlotAssignment {
+  const _SlotAssignment({
+    required this.slotIndex,
+    required this.playerId,
+    required this.votes,
+  });
+
+  final int slotIndex;
+  final String? playerId;
+  final int votes;
 }
