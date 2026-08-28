@@ -17,6 +17,8 @@ class _LivePulseDotState extends State<LivePulseDot>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
+  bool _started = false;
+
   @override
   void initState() {
     super.initState();
@@ -24,7 +26,13 @@ class _LivePulseDotState extends State<LivePulseDot>
       vsync: this,
       duration: const Duration(milliseconds: 900),
     );
-    if (!MediaQuery.disableAnimationsOf(context)) {
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_started && !MediaQuery.disableAnimationsOf(context)) {
+      _started = true;
       _controller.repeat(reverse: true);
     }
   }
