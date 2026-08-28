@@ -16,6 +16,12 @@ import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repositor
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/club/data/club_song_volume_store.dart';
+import 'package:goias_app/features/club/data/supabase_club_board_repository.dart';
+import 'package:goias_app/features/club/data/supabase_club_transparency_repository.dart';
+import 'package:goias_app/features/club/domain/repositories/club_board_repository.dart';
+import 'package:goias_app/features/club/domain/repositories/club_transparency_repository.dart';
+import 'package:goias_app/features/club/presentation/cubit/club_board_cubit.dart';
+import 'package:goias_app/features/club/presentation/cubit/club_transparency_cubit.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
@@ -157,6 +163,12 @@ void setupDependencies() {
   sl.registerLazySingleton<SquadRepository>(
     () => SupabaseSquadRepository(Supabase.instance.client),
   );
+  sl.registerLazySingleton<ClubBoardRepository>(
+    () => SupabaseClubBoardRepository(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<ClubTransparencyRepository>(
+    () => SupabaseClubTransparencyRepository(Supabase.instance.client),
+  );
   sl.registerLazySingleton<QuizQuestionRepository>(
     () => QuizQuestionRepository(Supabase.instance.client),
   );
@@ -182,6 +194,10 @@ void setupDependencies() {
   // compartilham a mesma lista já carregada (ver `NewsCubit`).
   sl.registerLazySingleton<NewsCubit>(() => NewsCubit(sl()));
   sl.registerFactory<SquadCubit>(() => SquadCubit(sl()));
+  sl.registerFactory<ClubBoardCubit>(() => ClubBoardCubit(sl()));
+  sl.registerFactory<ClubTransparencyCubit>(
+    () => ClubTransparencyCubit(sl()),
+  );
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));

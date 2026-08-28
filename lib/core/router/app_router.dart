@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/router/app_page.dart';
 import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
@@ -27,8 +28,12 @@ import 'package:goias_app/features/auth/presentation/pages/login_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/register_page.dart';
 import 'package:goias_app/features/auth/presentation/pages/reset_password_page.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
+import 'package:goias_app/features/club/domain/entities/club_transparency_topic.dart';
+import 'package:goias_app/features/club/presentation/pages/club_diretoria_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_history_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_transparency_document_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_transparency_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_song_details_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_songs_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_titles_page.dart';
@@ -145,23 +150,31 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
           },
         ),
       ),
-      GoRoute(path: '/', builder: (context, state) => const HomeShellPage()),
+      GoRoute(
+        path: '/',
+        pageBuilder: (context, state) => appPage(state, const HomeShellPage()),
+      ),
       // Fora do shell de propósito: acessíveis sem estar logado (Termos e
       // Privacidade linkados no cadastro) ou imersivo por natureza (o
       // gameplay do Pênalti é um `GameWidget` em tela cheia).
       GoRoute(
         path: '/profile/terms',
-        builder: (context, state) =>
-            const LegalDocumentPage(document: LegalDocumentsData.termsOfUse),
+        pageBuilder: (context, state) => appPage(
+          state,
+          const LegalDocumentPage(document: LegalDocumentsData.termsOfUse),
+        ),
       ),
       GoRoute(
         path: '/profile/privacy',
-        builder: (context, state) =>
-            const LegalDocumentPage(document: LegalDocumentsData.privacyPolicy),
+        pageBuilder: (context, state) => appPage(
+          state,
+          const LegalDocumentPage(document: LegalDocumentsData.privacyPolicy),
+        ),
       ),
       GoRoute(
         path: '/arena/penalty',
-        builder: (context, state) => const PenaltyGamePage(),
+        pageBuilder: (context, state) =>
+            appPage(state, const PenaltyGamePage()),
       ),
       // Todas as demais rotas internas — no desktop, permanecem dentro do
       // mesmo rail lateral da Home (`DesktopShellFrame`) em vez de abrir
@@ -175,132 +188,170 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
         routes: [
           GoRoute(
             path: '/match/:fixtureId',
-            builder: (context, state) => MatchDetailsPage(
-              fixtureId: state.pathParameters['fixtureId']!,
-              cubit: state.extra as MatchDetailsCubit?,
+            pageBuilder: (context, state) => appPage(
+              state,
+              MatchDetailsPage(
+                fixtureId: state.pathParameters['fixtureId']!,
+                cubit: state.extra as MatchDetailsCubit?,
+              ),
             ),
           ),
           GoRoute(
             path: '/crowd-lineup',
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final args =
                   state.extra! as ({Match match, CrowdLineupCubit cubit});
-              return CrowdLineupPage(match: args.match, cubit: args.cubit);
+              return appPage(
+                state,
+                CrowdLineupPage(match: args.match, cubit: args.cubit),
+              );
             },
           ),
           GoRoute(
             path: '/profile',
-            builder: (context, state) => const ProfilePage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const ProfilePage()),
           ),
           GoRoute(
             path: '/squad',
-            builder: (context, state) =>
-                SquadListPage(cubit: state.extra as SquadCubit?),
+            pageBuilder: (context, state) => appPage(
+              state,
+              SquadListPage(cubit: state.extra as SquadCubit?),
+            ),
           ),
           GoRoute(
             path: '/squad/:memberId',
-            builder: (context, state) =>
-                SquadMemberDetailPage(member: state.extra! as SquadMember),
+            pageBuilder: (context, state) => appPage(
+              state,
+              SquadMemberDetailPage(member: state.extra! as SquadMember),
+            ),
           ),
           GoRoute(
             path: '/tickets',
-            builder: (context, state) => const TicketsPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const TicketsPage()),
           ),
           GoRoute(
             path: '/tickets/my',
-            builder: (context, state) => const MyTicketsPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const MyTicketsPage()),
           ),
           GoRoute(
             path: '/tickets/orders',
-            builder: (context, state) => const MyOrdersPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const MyOrdersPage()),
           ),
           GoRoute(
             path: '/tickets/checkin',
-            builder: (context, state) =>
-                CheckInConfirmationPage(args: state.extra! as CheckInArgs),
+            pageBuilder: (context, state) => appPage(
+              state,
+              CheckInConfirmationPage(args: state.extra! as CheckInArgs),
+            ),
           ),
           GoRoute(
             path: '/tickets/view',
-            builder: (context, state) =>
-                TicketViewPage(ticket: state.extra! as Ticket),
+            pageBuilder: (context, state) =>
+                appPage(state, TicketViewPage(ticket: state.extra! as Ticket)),
           ),
           GoRoute(
             path: '/tickets/purchase',
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final args =
                   state.extra! as ({PurchaseCubit cubit, Profile profile});
-              return PurchaseMatchPage(
-                cubit: args.cubit,
-                profile: args.profile,
+              return appPage(
+                state,
+                PurchaseMatchPage(cubit: args.cubit, profile: args.profile),
               );
             },
           ),
           GoRoute(
             path: '/tickets/purchase/summary',
-            builder: (context, state) =>
-                PurchaseSummaryPage(args: state.extra! as PurchaseSummaryArgs),
+            pageBuilder: (context, state) => appPage(
+              state,
+              PurchaseSummaryPage(args: state.extra! as PurchaseSummaryArgs),
+            ),
           ),
           GoRoute(
             path: '/tickets/purchase/info',
-            builder: (context, state) =>
-                MatchInfoPage(info: state.extra! as MatchSalesInfo),
+            pageBuilder: (context, state) => appPage(
+              state,
+              MatchInfoPage(info: state.extra! as MatchSalesInfo),
+            ),
           ),
           GoRoute(
             path: '/profile/personal',
-            builder: (context, state) => const PersonalDataPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const PersonalDataPage()),
           ),
           GoRoute(
             path: '/profile/address',
-            builder: (context, state) =>
-                AddressPage(cubit: state.extra as AddressCubit?),
+            pageBuilder: (context, state) => appPage(
+              state,
+              AddressPage(cubit: state.extra as AddressCubit?),
+            ),
           ),
           GoRoute(
             path: '/profile/security',
-            builder: (context, state) => const SecurityPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const SecurityPage()),
           ),
           GoRoute(
             path: '/profile/delete-account',
-            builder: (context, state) => const DeleteAccountPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const DeleteAccountPage()),
           ),
           GoRoute(
             path: '/profile/theme',
-            builder: (context, state) => const ThemeSettingsPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const ThemeSettingsPage()),
           ),
           GoRoute(
             path: '/profile/language',
-            builder: (context, state) => const LanguageSettingsPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const LanguageSettingsPage()),
           ),
           GoRoute(
             path: '/coming-soon',
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final args = state.extra as ({String title, String? message})?;
-              return ComingSoonPage(
-                title:
-                    args?.title ?? context.l10n.commonComingSoon.toUpperCase(),
-                message: args?.message,
+              return appPage(
+                state,
+                ComingSoonPage(
+                  title:
+                      args?.title ??
+                      context.l10n.commonComingSoon.toUpperCase(),
+                  message: args?.message,
+                ),
               );
             },
           ),
           GoRoute(
             path: '/arena/penalty/result',
-            builder: (context, state) =>
-                PenaltyResultPage(data: state.extra! as PenaltyEndData),
+            pageBuilder: (context, state) => appPage(
+              state,
+              PenaltyResultPage(data: state.extra! as PenaltyEndData),
+            ),
           ),
           GoRoute(
             path: '/arena/ranking',
-            builder: (context, state) =>
-                RankingPage(cubit: state.extra as RankingCubit?),
+            pageBuilder: (context, state) => appPage(
+              state,
+              RankingPage(cubit: state.extra as RankingCubit?),
+            ),
           ),
           GoRoute(
             path: '/arena/quiz',
-            builder: (context, state) => QuizLevelPage(
-              initialSummaries:
-                  state.extra as Map<QuizDifficulty, QuizLevelSummary>?,
+            pageBuilder: (context, state) => appPage(
+              state,
+              QuizLevelPage(
+                initialSummaries:
+                    state.extra as Map<QuizDifficulty, QuizLevelSummary>?,
+              ),
             ),
           ),
           GoRoute(
             path: '/arena/quiz/play',
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final args =
                   state.extra!
                       as ({
@@ -308,178 +359,246 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
                         bool isReview,
                         QuizCubit? cubit,
                       });
-              return QuizPlayPage(
-                difficulty: args.difficulty,
-                isReview: args.isReview,
-                cubit: args.cubit,
+              return appPage(
+                state,
+                QuizPlayPage(
+                  difficulty: args.difficulty,
+                  isReview: args.isReview,
+                  cubit: args.cubit,
+                ),
               );
             },
           ),
           GoRoute(
             path: '/arena/quiz/result',
-            builder: (context, state) =>
-                QuizResultPage(data: state.extra! as QuizEndData),
+            pageBuilder: (context, state) => appPage(
+              state,
+              QuizResultPage(data: state.extra! as QuizEndData),
+            ),
           ),
           GoRoute(
             path: '/arena/lineup',
-            builder: (context, state) =>
-                LineupPage(cubit: state.extra as LineupCubit?),
+            pageBuilder: (context, state) =>
+                appPage(state, LineupPage(cubit: state.extra as LineupCubit?)),
           ),
           GoRoute(
             path: '/arena/career-path',
-            builder: (context, state) =>
-                CareerPathPage(cubit: state.extra as CareerPathCubit?),
+            pageBuilder: (context, state) => appPage(
+              state,
+              CareerPathPage(cubit: state.extra as CareerPathCubit?),
+            ),
           ),
           GoRoute(
             path: '/arena/guess-player',
-            builder: (context, state) =>
-                GuessPlayerPage(cubit: state.extra as GuessPlayerCubit?),
+            pageBuilder: (context, state) => appPage(
+              state,
+              GuessPlayerPage(cubit: state.extra as GuessPlayerCubit?),
+            ),
           ),
           GoRoute(
             path: '/partners',
-            builder: (context, state) => const PartnersPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const PartnersPage()),
           ),
           GoRoute(
             path: '/clube',
-            builder: (context, state) => const ClubPage(),
+            pageBuilder: (context, state) => appPage(state, const ClubPage()),
           ),
           GoRoute(
             path: '/clube/historia',
-            builder: (context, state) => const ClubHistoryPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const ClubHistoryPage()),
           ),
           GoRoute(
             path: '/clube/titulos',
-            builder: (context, state) => const ClubTitlesPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const ClubTitlesPage()),
+          ),
+          GoRoute(
+            path: '/clube/diretoria',
+            pageBuilder: (context, state) =>
+                appPage(state, const ClubDiretoriaPage()),
+          ),
+          GoRoute(
+            path: '/clube/transparencia',
+            pageBuilder: (context, state) =>
+                appPage(state, const ClubTransparencyPage()),
+          ),
+          GoRoute(
+            path: '/clube/transparencia/documento',
+            pageBuilder: (context, state) => appPage(
+              state,
+              ClubTransparencyDocumentPage(
+                document: state.extra! as ClubTransparencyDocument,
+              ),
+            ),
           ),
           GoRoute(
             path: '/clube/hino',
-            builder: (context, state) => const ClubSongsPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const ClubSongsPage()),
           ),
           GoRoute(
             path: '/clube/hino/letra',
-            builder: (context, state) =>
-                ClubSongDetailsPage(song: state.extra! as ClubSong),
+            pageBuilder: (context, state) => appPage(
+              state,
+              ClubSongDetailsPage(song: state.extra! as ClubSong),
+            ),
           ),
           GoRoute(
             path: '/news',
-            builder: (context, state) => const NewsListPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const NewsListPage()),
           ),
           GoRoute(
             path: '/news/article',
-            builder: (context, state) =>
-                NewsArticlePage(article: state.extra! as NewsArticle),
+            pageBuilder: (context, state) => appPage(
+              state,
+              NewsArticlePage(article: state.extra! as NewsArticle),
+            ),
           ),
           GoRoute(
             path: '/membership/plans',
-            builder: (context, state) => const MembershipPlansCatalogPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const MembershipPlansCatalogPage()),
           ),
           GoRoute(
             path: '/membership/plans/:planId',
-            builder: (context, state) => MembershipPlanDetailsPage(
-              planId: state.pathParameters['planId']!,
+            pageBuilder: (context, state) => appPage(
+              state,
+              MembershipPlanDetailsPage(
+                planId: state.pathParameters['planId']!,
+              ),
             ),
           ),
           GoRoute(
             path: '/membership/register',
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final args = state.extra! as MembershipRegistrationArgs;
-              return MembershipRegistrationPage(
-                plan: args.plan,
-                price: args.price,
+              return appPage(
+                state,
+                MembershipRegistrationPage(plan: args.plan, price: args.price),
               );
             },
           ),
           GoRoute(
             path: '/membership/regulation',
-            builder: (context, state) => const MembershipRegulationPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const MembershipRegulationPage()),
           ),
           GoRoute(
             path: '/membership/find-zip-code',
-            builder: (context, state) => const FindZipCodePage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const FindZipCodePage()),
           ),
           GoRoute(
             path: '/membership/faq',
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final args =
                   state.extra
                       as ({String? initialCategoryId, String? initialQuery})?;
-              return MembershipFaqPage(
-                initialCategoryId: args?.initialCategoryId,
-                initialQuery: args?.initialQuery,
+              return appPage(
+                state,
+                MembershipFaqPage(
+                  initialCategoryId: args?.initialCategoryId,
+                  initialQuery: args?.initialQuery,
+                ),
               );
             },
           ),
           GoRoute(
             path: '/membership/my',
-            builder: (context, state) =>
-                MyMembershipPage(membership: state.extra! as Membership),
+            pageBuilder: (context, state) => appPage(
+              state,
+              MyMembershipPage(membership: state.extra! as Membership),
+            ),
           ),
           GoRoute(
             path: '/store',
-            builder: (context, state) => const StoreHomePage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const StoreHomePage()),
           ),
           GoRoute(
             path: '/store/search',
-            builder: (context, state) => const StoreListingPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const StoreListingPage()),
           ),
           GoRoute(
             path: '/store/category/:categoryId',
-            builder: (context, state) => StoreListingPage(
-              categoryId: state.pathParameters['categoryId'],
+            pageBuilder: (context, state) => appPage(
+              state,
+              StoreListingPage(categoryId: state.pathParameters['categoryId']),
             ),
           ),
           GoRoute(
             path: '/store/product/:id',
-            builder: (context, state) =>
-                ProductDetailPage(productId: state.pathParameters['id']!),
+            pageBuilder: (context, state) => appPage(
+              state,
+              ProductDetailPage(productId: state.pathParameters['id']!),
+            ),
           ),
           GoRoute(
             path: '/store/cart',
-            builder: (context, state) => const CartPage(),
+            pageBuilder: (context, state) => appPage(state, const CartPage()),
           ),
           GoRoute(
             path: '/store/checkout',
-            builder: (context, state) => const CheckoutPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const CheckoutPage()),
           ),
           GoRoute(
             path: '/store/orders',
-            builder: (context, state) => const StoreOrdersPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const StoreOrdersPage()),
           ),
           GoRoute(
             path: '/store/orders/:id',
-            builder: (context, state) =>
-                StoreOrderDetailPage(order: state.extra! as StoreOrder),
+            pageBuilder: (context, state) => appPage(
+              state,
+              StoreOrderDetailPage(order: state.extra! as StoreOrder),
+            ),
           ),
           GoRoute(
             path: '/store/addresses',
-            builder: (context, state) => const StoreAddressesPage(),
+            pageBuilder: (context, state) =>
+                appPage(state, const StoreAddressesPage()),
           ),
           GoRoute(
             path: '/membership/coming-soon',
-            builder: (context, state) {
+            pageBuilder: (context, state) {
               final args = state.extra as ({String title, String message})?;
-              return ComingSoonPage(
-                title:
-                    args?.title ?? context.l10n.commonComingSoon.toUpperCase(),
-                message: args?.message,
+              return appPage(
+                state,
+                ComingSoonPage(
+                  title:
+                      args?.title ??
+                      context.l10n.commonComingSoon.toUpperCase(),
+                  message: args?.message,
+                ),
               );
             },
           ),
         ],
       ),
-      GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
+      GoRoute(
+        path: '/login',
+        pageBuilder: (context, state) => appPage(state, const LoginPage()),
+      ),
       GoRoute(
         path: '/register',
-        builder: (context, state) => const RegisterPage(),
+        pageBuilder: (context, state) => appPage(state, const RegisterPage()),
       ),
       GoRoute(
         path: '/check-email',
-        builder: (context, state) =>
-            CheckYourEmailPage(email: state.extra as String? ?? ''),
+        pageBuilder: (context, state) => appPage(
+          state,
+          CheckYourEmailPage(email: state.extra as String? ?? ''),
+        ),
       ),
       GoRoute(
         path: '/reset-password',
-        builder: (context, state) => const ResetPasswordPage(),
+        pageBuilder: (context, state) =>
+            appPage(state, const ResetPasswordPage()),
       ),
     ],
   );

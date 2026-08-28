@@ -165,6 +165,78 @@ select '❌ lineup_matches: placar negativo', id || ' → ' || home_score::text 
 from public.lineup_matches where home_score < 0 or away_score < 0
 
 -- ═══════════════════════════════════════════════════════════════════════════
+-- CLUB_BOARD
+-- ═══════════════════════════════════════════════════════════════════════════
+
+union all
+
+select '❌ club_board_sections: id duplicado', id
+from public.club_board_sections group by id having count(*) > 1
+
+union all
+
+select '❌ club_board_members: id duplicado', id
+from public.club_board_members group by id having count(*) > 1
+
+union all
+
+select '❌ club_board_members: section_id órfão', id || ' → sec=' || section_id
+from public.club_board_members m
+where not exists (
+  select 1 from public.club_board_sections s where s.id = m.section_id
+)
+
+union all
+
+select '❌ club_board_members: name ou role vazio', id
+from public.club_board_members
+where trim(name) = '' or name is null or trim(role) = '' or role is null
+
+union all
+
+select '❌ club_board_sections: sem nenhum membro', s.id
+from public.club_board_sections s
+where not exists (
+  select 1 from public.club_board_members m where m.section_id = s.id
+)
+
+-- ═══════════════════════════════════════════════════════════════════════════
+-- CLUB_TRANSPARENCY
+-- ═══════════════════════════════════════════════════════════════════════════
+
+union all
+
+select '❌ club_transparency_topics: id duplicado', id
+from public.club_transparency_topics group by id having count(*) > 1
+
+union all
+
+select '❌ club_transparency_documents: id duplicado', id
+from public.club_transparency_documents group by id having count(*) > 1
+
+union all
+
+select '❌ club_transparency_documents: topic_id órfão', id || ' → top=' || topic_id
+from public.club_transparency_documents d
+where not exists (
+  select 1 from public.club_transparency_topics t where t.id = d.topic_id
+)
+
+union all
+
+select '❌ club_transparency_documents: title ou pdf_url vazio', id
+from public.club_transparency_documents
+where trim(title) = '' or title is null or trim(pdf_url) = '' or pdf_url is null
+
+union all
+
+select '❌ club_transparency_topics: sem nenhum documento', t.id
+from public.club_transparency_topics t
+where not exists (
+  select 1 from public.club_transparency_documents d where d.topic_id = t.id
+)
+
+-- ═══════════════════════════════════════════════════════════════════════════
 -- MEMBERSHIP FAQ
 -- ═══════════════════════════════════════════════════════════════════════════
 
@@ -303,6 +375,18 @@ select '📊 RESUMO', ''
 
 union all
 select '   squad_members', (select count(*) from public.squad_members)::text
+
+union all
+select '   club_board_sections', (select count(*) from public.club_board_sections)::text
+
+union all
+select '   club_board_members', (select count(*) from public.club_board_members)::text
+
+union all
+select '   club_transparency_topics', (select count(*) from public.club_transparency_topics)::text
+
+union all
+select '   club_transparency_documents', (select count(*) from public.club_transparency_documents)::text
 
 union all
 select '   quiz_questions', (select count(*) from public.quiz_questions)::text

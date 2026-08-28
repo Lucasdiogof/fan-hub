@@ -88,6 +88,20 @@ class ClubPage extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
+                        icon: Icons.groups_outlined,
+                        title: context.l10n.clubSectionBoard,
+                        subtitle: context.l10n.clubBoardSubtitle,
+                        onTap: () => context.push('/clube/diretoria'),
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      _ClubBigCard(
+                        icon: Icons.fact_check_outlined,
+                        title: context.l10n.clubSectionTransparency,
+                        subtitle: context.l10n.clubTransparencySubtitle,
+                        onTap: () => context.push('/clube/transparencia'),
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      _ClubBigCard(
                         icon: Icons.music_note_outlined,
                         title: context.l10n.clubSectionSongs,
                         subtitle: context.l10n.clubSongsSubtitle,
