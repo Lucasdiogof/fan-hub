@@ -61,6 +61,14 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   bool _revealed = false;
   Timer? _fallbackTimer;
 
+  /// O conteúdo (vídeo/brasão) troca de pai conforme a revelação avança
+  /// (`Opacity` → `ClipPath` dentro de `Stack` → filho direto). Sem uma
+  /// `GlobalKey` estável, essa troca de pai faz o Flutter remontar o
+  /// `VideoSplashView` — o controller reinicia e o vídeo volta ao primeiro
+  /// frame ("pisca" no começo da revelação). A key preserva o mesmo elemento
+  /// nas três posições, então o vídeo toca sem reiniciar.
+  final GlobalKey _contentKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
@@ -143,7 +151,7 @@ class _SplashVideoPageState extends State<SplashVideoPage>
       backgroundColor: _splashBackground,
       body: AnimatedBuilder(
         animation: _revealAnimation,
-        child: _buildSplashContent(),
+        child: KeyedSubtree(key: _contentKey, child: _buildSplashContent()),
         builder: (context, child) {
           // `child` PRECISA continuar na árvore mesmo antes de `_revealed`
           // virar true — é o próprio `child` (vídeo/logo) que chama
