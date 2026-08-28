@@ -18,7 +18,7 @@ class CareerPlayerRepository {
             'id, answer, accepted_answers, position, club_career, national_teams',
           )
           .eq('is_active', true)
-          .order('sort_order');
+          .order('sort_order', ascending: true);
       final parsed = <CareerPlayer>[];
       for (final row in rows) {
         final player = _map(row);

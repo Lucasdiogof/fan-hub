@@ -15,7 +15,7 @@ class SupabaseSquadRepository implements SquadRepository {
       final rows = await _client
           .from('squad_members')
           .select()
-          .order('sort_order');
+          .order('sort_order', ascending: true);
       final members = rows
           .map((row) => SquadMember.fromJson(row))
           .toList(growable: false);

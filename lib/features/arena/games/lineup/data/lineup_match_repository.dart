@@ -27,7 +27,7 @@ class LineupMatchRepository {
             'formation_confidence, lineup',
           )
           .eq('is_active', true)
-          .order('display_order');
+          .order('display_order', ascending: true);
       final parsed = <LineupMatch>[];
       for (final row in rows) {
         final match = _map(row);

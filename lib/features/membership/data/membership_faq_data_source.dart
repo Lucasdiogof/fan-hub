@@ -35,14 +35,14 @@ class MembershipFaqDataSource {
           .from('membership_faq_categories')
           .select('id, title')
           .eq('is_active', true)
-          .order('sort_order');
+          .order('sort_order', ascending: true);
       if (categoryRows.isEmpty) return null;
 
       final itemRows = await _client
           .from('membership_faq_items')
           .select('id, category_id, question, answer')
           .eq('is_active', true)
-          .order('sort_order');
+          .order('sort_order', ascending: true);
 
       final categories = <FaqCategory>[];
       for (final categoryRow in categoryRows) {

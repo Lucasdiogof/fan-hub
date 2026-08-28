@@ -17,7 +17,7 @@ class QuizQuestionRepository {
           .from('quiz_questions')
           .select('id, difficulty, question, options, correct_index')
           .eq('is_active', true)
-          .order('id');
+          .order('id', ascending: true);
       final parsed = <QuizQuestion>[];
       for (final row in rows) {
         final question = _map(row);
