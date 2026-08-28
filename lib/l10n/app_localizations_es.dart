@@ -187,6 +187,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get matchDetailsShort => 'DETALLES DEL PARTIDO';
 
   @override
+  String get matchFollowLive => 'SEGUIR PARTIDO';
+
+  @override
+  String get homeLiveMatch => 'EN VIVO AHORA';
+
+  @override
   String get matchDateToBeConfirmed => 'Fecha por confirmar';
 
   @override

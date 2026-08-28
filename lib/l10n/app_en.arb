@@ -67,6 +67,8 @@
   "matchDetailsLoadError": "Couldn't load the match.",
   "matchBuyTicket": "BUY TICKET",
   "matchDetailsShort": "MATCH DETAILS",
+  "matchFollowLive": "FOLLOW MATCH",
+  "homeLiveMatch": "LIVE NOW",
   "matchDateToBeConfirmed": "Date to be confirmed",
   "matchToBeConfirmed": "To be confirmed",
 

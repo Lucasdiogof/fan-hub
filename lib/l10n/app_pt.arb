@@ -75,6 +75,8 @@
   "matchDetailsLoadError": "Não foi possível carregar a partida.",
   "matchBuyTicket": "COMPRAR INGRESSO",
   "matchDetailsShort": "DETALHES DO JOGO",
+  "matchFollowLive": "ACOMPANHAR JOGO",
+  "homeLiveMatch": "AO VIVO AGORA",
   "matchDateToBeConfirmed": "Data a confirmar",
   "matchToBeConfirmed": "A confirmar",
 

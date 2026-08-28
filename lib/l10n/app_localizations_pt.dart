@@ -187,6 +187,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get matchDetailsShort => 'DETALHES DO JOGO';
 
   @override
+  String get matchFollowLive => 'ACOMPANHAR JOGO';
+
+  @override
+  String get homeLiveMatch => 'AO VIVO AGORA';
+
+  @override
   String get matchDateToBeConfirmed => 'Data a confirmar';
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
+import 'package:goias_app/features/match/domain/match_ordering.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
@@ -36,12 +37,13 @@ class HomeCubit extends Cubit<HomeState> {
     switch (snapshotResult) {
       case Success(:final data):
         final match = data.nextMatch;
-        // Sem horário confirmado (kickoff == null) conta como "ainda por
-        // vir" — não tem como já ter passado sem sabermos quando é.
-        final stillUpcoming =
-            match != null &&
-            (match.kickoff == null || DateTime.now().isBefore(match.kickoff!));
-        final resolvedMatch = stillUpcoming ? match : null;
+        // Não é só "kickoff ainda não chegou" — o card continua de pé
+        // enquanto o jogo está rolando (`live`/`halftime`), só sai quando
+        // termina de verdade. Mesma regra que já decide o "próximo jogo" da
+        // aba Jogos (`GamesCubit.loadSnapshot`), pra Home e Jogos nunca
+        // discordarem sobre se o jogo do Goiás ainda está "aberto".
+        final stillOpen = match != null && MatchOrdering.isOpen(match);
+        final resolvedMatch = stillOpen ? match : null;
         // Resolvido por matchId (nunca um booleano global) — se o próximo
         // jogo mudar, essa consulta muda junto, e o card "Escalação da
         // Torcida" volta pra "Escalar agora" pro jogo novo.
@@ -52,7 +54,7 @@ class HomeCubit extends Cubit<HomeState> {
           state.copyWith(
             loading: false,
             nextMatch: resolvedMatch,
-            clearNextMatch: !stillUpcoming,
+            clearNextMatch: !stillOpen,
             isMember: isMember,
             hasVotedForNextMatch: hasVoted,
           ),

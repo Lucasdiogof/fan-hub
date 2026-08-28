@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,10 +6,9 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
-import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
-import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
+import 'package:goias_app/features/match/presentation/match_navigation.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_header.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section_selector.dart';
@@ -19,7 +16,6 @@ import 'package:goias_app/features/match/presentation/widgets/match_list_item.da
 import 'package:goias_app/features/match/presentation/widgets/next_match_card.dart';
 import 'package:goias_app/features/match/presentation/widgets/standings_view.dart';
 import 'package:goias_app/shared/state/load_status.dart';
-import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -46,12 +42,7 @@ class _GamesView extends StatefulWidget {
 class _GamesViewState extends State<_GamesView> {
   GamesSection _section = GamesSection.matches;
 
-  Future<void> _openMatchDetails(Match match) async {
-    final cubit = MatchDetailsCubit(sl<FootballRepository>(), match.id);
-    await GlobalLoading.run(context, cubit.load);
-    if (!mounted) return;
-    unawaited(context.push('/match/${match.id}', extra: cubit));
-  }
+  Future<void> _openMatchDetails(Match match) => openMatchDetails(context, match);
 
   @override
   Widget build(BuildContext context) {
@@ -194,7 +185,14 @@ class _MatchesContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final nextMatch = state.nextMatch;
-    final roundMatches = state.currentRoundMatches;
+    // O jogo do Goiás já aparece em destaque no card do topo (com placar
+    // ao vivo quando for o caso) — repeti-lo na lista da rodada logo
+    // abaixo seria redundante.
+    final roundMatches = nextMatch == null
+        ? state.currentRoundMatches
+        : state.currentRoundMatches
+              .where((match) => match.id != nextMatch.id)
+              .toList(growable: false);
 
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(),

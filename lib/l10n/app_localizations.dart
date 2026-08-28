@@ -448,6 +448,18 @@ abstract class AppLocalizations {
   /// **'DETALHES DO JOGO'**
   String get matchDetailsShort;
 
+  /// No description provided for @matchFollowLive.
+  ///
+  /// In pt, this message translates to:
+  /// **'ACOMPANHAR JOGO'**
+  String get matchFollowLive;
+
+  /// No description provided for @homeLiveMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'AO VIVO AGORA'**
+  String get homeLiveMatch;
+
   /// No description provided for @matchDateToBeConfirmed.
   ///
   /// In pt, this message translates to:
