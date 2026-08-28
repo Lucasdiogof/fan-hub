@@ -69,39 +69,39 @@ class _ClubTransparencyView extends StatelessWidget {
                 Expanded(
                   child:
                       BlocBuilder<ClubTransparencyCubit, ClubTransparencyState>(
-                    builder: (context, state) {
-                      return RefreshIndicator(
-                        onRefresh: () =>
-                            context.read<ClubTransparencyCubit>().refresh(),
-                        color: colors.primary,
-                        child: switch (state.status) {
-                          LoadStatus.initial ||
-                          LoadStatus.loading => _centered(
-                            const GoiasLoadingIndicator(),
-                          ),
-                          LoadStatus.error => _centered(
-                            StateMessage(
-                              icon: Icons.wifi_off_rounded,
-                              title:
-                                  context.l10n.clubTransparencyLoadErrorTitle,
-                              message: state.errorMessage,
-                            ),
-                          ),
-                          LoadStatus.empty => _centered(
-                            StateMessage(
-                              icon: Icons.description_outlined,
-                              title: context.l10n.clubTransparencyEmptyTitle,
-                              message:
-                                  context.l10n.clubTransparencyEmptyMessage,
-                            ),
-                          ),
-                          LoadStatus.success => _TopicList(
-                            topics: state.topics,
-                          ),
+                        builder: (context, state) {
+                          return RefreshIndicator(
+                            onRefresh: () =>
+                                context.read<ClubTransparencyCubit>().refresh(),
+                            color: colors.primary,
+                            child: switch (state.status) {
+                              LoadStatus.initial || LoadStatus.loading =>
+                                _centered(const GoiasLoadingIndicator()),
+                              LoadStatus.error => _centered(
+                                StateMessage(
+                                  icon: Icons.wifi_off_rounded,
+                                  title: context
+                                      .l10n
+                                      .clubTransparencyLoadErrorTitle,
+                                  message: state.errorMessage,
+                                ),
+                              ),
+                              LoadStatus.empty => _centered(
+                                StateMessage(
+                                  icon: Icons.description_outlined,
+                                  title:
+                                      context.l10n.clubTransparencyEmptyTitle,
+                                  message:
+                                      context.l10n.clubTransparencyEmptyMessage,
+                                ),
+                              ),
+                              LoadStatus.success => _TopicList(
+                                topics: state.topics,
+                              ),
+                            },
+                          );
                         },
-                      );
-                    },
-                  ),
+                      ),
                 ),
               ],
             ),
@@ -155,43 +155,49 @@ class _TopicTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
-    return Container(
-      decoration: BoxDecoration(
-        color: colors.surface,
-        borderRadius: BorderRadius.circular(AppRadius.card),
-        border: Border.all(color: colors.border),
-      ),
+    return Material(
+      // `ExpansionTile` é baseado em `ListTile` e pinta o próprio fundo/
+      // splash no `Material` ancestor mais próximo — precisa ser este
+      // widget, não o `Container` colorido abaixo (senão o toque fica
+      // sem feedback visual, ver assertion "ListTile background color
+      // or ink splashes may be invisible").
+      color: colors.surface,
+      borderRadius: BorderRadius.circular(AppRadius.card),
       clipBehavior: Clip.antiAlias,
-      child: Theme(
-        data: Theme.of(
-          context,
-        ).copyWith(dividerColor: Colors.transparent),
-        child: ExpansionTile(
-          tilePadding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: 4,
-          ),
-          childrenPadding: EdgeInsets.zero,
-          iconColor: colors.primary,
-          collapsedIconColor: colors.textHint,
-          title: Text(
-            topic.title,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w800,
-              color: colors.textPrimary,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppRadius.card),
+          border: Border.all(color: colors.border),
+        ),
+        child: Theme(
+          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+          child: ExpansionTile(
+            tilePadding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+              vertical: 4,
             ),
-          ),
-          subtitle: Text(
-            l10n.clubTransparencyDocumentCount(topic.documents.length),
-            style: TextStyle(fontSize: 11.5, color: colors.textHint),
-          ),
-          children: [
-            for (var i = 0; i < topic.documents.length; i++) ...[
-              Divider(height: 1, color: colors.border),
-              _DocumentRow(document: topic.documents[i]),
+            childrenPadding: EdgeInsets.zero,
+            iconColor: colors.primary,
+            collapsedIconColor: colors.textHint,
+            title: Text(
+              topic.title,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w800,
+                color: colors.textPrimary,
+              ),
+            ),
+            subtitle: Text(
+              l10n.clubTransparencyDocumentCount(topic.documents.length),
+              style: TextStyle(fontSize: 11.5, color: colors.textHint),
+            ),
+            children: [
+              for (var i = 0; i < topic.documents.length; i++) ...[
+                Divider(height: 1, color: colors.border),
+                _DocumentRow(document: topic.documents[i]),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
@@ -244,11 +250,7 @@ class _DocumentRow extends StatelessWidget {
               ),
             ),
             const SizedBox(width: AppSpacing.sm),
-            Icon(
-              Icons.open_in_new_rounded,
-              size: 15,
-              color: colors.textHint,
-            ),
+            Icon(Icons.open_in_new_rounded, size: 15, color: colors.textHint),
           ],
         ),
       ),
