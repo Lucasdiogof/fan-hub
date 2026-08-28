@@ -185,7 +185,7 @@ class _RegisterPageState extends State<RegisterPage> {
           label: l10n.authRegisterButton,
           loading: _loading,
           loadingLabel: l10n.authCreatingAccount,
-          onPressed: _submit,
+          onPressed: _acceptedTerms ? _submit : null,
         ),
       ],
     );
