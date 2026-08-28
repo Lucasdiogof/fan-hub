@@ -10,7 +10,6 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/domain/entities/club_transparency_topic.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:printing/printing.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
@@ -61,7 +60,18 @@ class ClubTransparencyDocumentPage extends StatelessWidget {
                     children: [
                       BackButtonCircle(onTap: () => context.pop()),
                       const SizedBox(width: AppSpacing.md),
-                      Expanded(child: PageTitle(document.title)),
+                      Expanded(
+                        child: Text(
+                          document.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800,
+                            color: colors.textPrimary,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
