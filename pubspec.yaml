@@ -63,6 +63,22 @@ flutter:
     - lib/assets/store/products/uniform_03_kids/
     - lib/assets/store/products/goalkeeper_01_male_fan/
     - lib/assets/store/products/shin_guard_kids_black/
+    - lib/assets/store/products/uniform_01_male_fan/
+    - lib/assets/store/products/uniform_02_male_fan/
+    - lib/assets/store/products/uniform_01_female_player/
+    - lib/assets/store/products/uniform_02_female_player/
+    - lib/assets/store/products/uniform_01_kids_fan/
+    - lib/assets/store/products/uniform_01_kids_player/
+    - lib/assets/store/products/uniform_01_youth_fan/
+    - lib/assets/store/products/uniform_01_youth_player/
+    - lib/assets/store/products/uniform_02_kids_player/
+    - lib/assets/store/products/goalkeeper_01_male_player/
+    - lib/assets/store/products/goalkeeper_02_male_player/
+    - lib/assets/store/products/goalkeeper_01_female_fan/
+    - lib/assets/store/products/goalkeeper_02_female_player/
+    - lib/assets/store/products/goalkeeper_01_kids_player/
+    - lib/assets/store/products/goalkeeper_01_youth_fan/
+    - lib/assets/store/products/goalkeeper_02_youth_player/
     - lib/assets/store/promo/
     - lib/assets/videos/
     - lib/assets/audio/club/hinos/

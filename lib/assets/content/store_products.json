@@ -7,12 +7,18 @@
     "description": "A camisa oficial do Goiás Esporte Clube para a temporada 2025, uniforme titular (01), em modelagem torcedor feminina. Tecido tecnológico leve com padronagem esmeraldina sutil em todo o corpo, gola em recorte com detalhe branco e escudo bordado do clube.",
     "brand": "Diadora",
     "reference": "6521002",
-    "categories": ["uniforms", "feminine"],
-    "collections": ["kit_01", "fan"],
+    "categories": [
+      "uniforms",
+      "feminine"
+    ],
+    "collections": [
+      "kit_01",
+      "fan"
+    ],
     "audience": "feminine",
     "productType": "matchJersey",
     "uniformNumber": "01",
-    "price": 349.90,
+    "price": 349.9,
     "originalPrice": null,
     "installments": 3,
     "images": [
@@ -23,21 +29,55 @@
     ],
     "thumbnail": "lib/assets/store/products/uniform_01_female_fan/thumbnail.jpg",
     "variations": [
-      {"sku": "6521002-P", "size": "P", "stock": 8},
-      {"sku": "6521002-M", "size": "M", "stock": 12},
-      {"sku": "6521002-G", "size": "G", "stock": 6},
-      {"sku": "6521002-GG", "size": "GG", "stock": 7},
-      {"sku": "6521002-3G", "size": "3G", "stock": 4}
+      {
+        "sku": "6521002-P",
+        "size": "P",
+        "stock": 8
+      },
+      {
+        "sku": "6521002-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "6521002-G",
+        "size": "G",
+        "stock": 6
+      },
+      {
+        "sku": "6521002-GG",
+        "size": "GG",
+        "stock": 7
+      },
+      {
+        "sku": "6521002-3G",
+        "size": "3G",
+        "stock": 4
+      }
     ],
     "isFeatured": true,
     "isNew": false,
     "personalizationOptions": null,
-    "relatedProductIds": ["uniform_03_male"],
+    "relatedProductIds": [
+      "uniform_03_male"
+    ],
     "specifications": [
-      {"label": "Marca", "value": "Diadora"},
-      {"label": "Material", "value": "Poliéster tecnológico"},
-      {"label": "Modelagem", "value": "Torcedor (regular)"},
-      {"label": "Estampa", "value": "Padronagem oficial Goiás 2025"}
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      },
+      {
+        "label": "Material",
+        "value": "Poliéster tecnológico"
+      },
+      {
+        "label": "Modelagem",
+        "value": "Torcedor (regular)"
+      },
+      {
+        "label": "Estampa",
+        "value": "Padronagem oficial Goiás 2025"
+      }
     ],
     "sourceUrl": "https://www.storegoias.com.br/feminino/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-feminina-fan-2025"
   },
@@ -49,12 +89,18 @@
     "description": "A Camisa Uniforme 03 Goiás Masculina representa inovação e identidade esmeraldina em um visual moderno e marcante. Leve, confortável e com excelente respirabilidade, é ideal para jogos, treinos e para o torcedor vestir o Verdão dentro e fora de campo.",
     "brand": "Diadora",
     "reference": "6511041",
-    "categories": ["uniforms", "masculine"],
-    "collections": ["kit_03", "fan"],
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "kit_03",
+      "fan"
+    ],
     "audience": "masculine",
     "productType": "matchJersey",
     "uniformNumber": "03",
-    "price": 449.90,
+    "price": 449.9,
     "originalPrice": null,
     "installments": 4,
     "images": [
@@ -65,21 +111,56 @@
     ],
     "thumbnail": "lib/assets/store/products/uniform_03_male/thumbnail.jpg",
     "variations": [
-      {"sku": "6511041-P", "size": "P", "stock": 5},
-      {"sku": "6511041-M", "size": "M", "stock": 10},
-      {"sku": "6511041-G", "size": "G", "stock": 12},
-      {"sku": "6511041-GG", "size": "GG", "stock": 6},
-      {"sku": "6511041-3G", "size": "3G", "stock": 3}
+      {
+        "sku": "6511041-P",
+        "size": "P",
+        "stock": 5
+      },
+      {
+        "sku": "6511041-M",
+        "size": "M",
+        "stock": 10
+      },
+      {
+        "sku": "6511041-G",
+        "size": "G",
+        "stock": 12
+      },
+      {
+        "sku": "6511041-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "6511041-3G",
+        "size": "3G",
+        "stock": 3
+      }
     ],
     "isFeatured": true,
     "isNew": true,
     "personalizationOptions": null,
-    "relatedProductIds": ["uniform_01_female_fan", "uniform_02_youth"],
+    "relatedProductIds": [
+      "uniform_01_female_fan",
+      "uniform_02_youth"
+    ],
     "specifications": [
-      {"label": "Marca", "value": "Diadora"},
-      {"label": "Material", "value": "Poliéster com tecnologia de respirabilidade"},
-      {"label": "Modelagem", "value": "Torcedor (regular)"},
-      {"label": "Estampa", "value": "Uniforme 03 oficial 2026"}
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      },
+      {
+        "label": "Material",
+        "value": "Poliéster com tecnologia de respirabilidade"
+      },
+      {
+        "label": "Modelagem",
+        "value": "Torcedor (regular)"
+      },
+      {
+        "label": "Estampa",
+        "value": "Uniforme 03 oficial 2026"
+      }
     ],
     "sourceUrl": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-03/camisa-uniforme-03-goias-masculina"
   },
@@ -91,12 +172,19 @@
     "description": "Camisa reserva (uniforme 02) do Goiás na modelagem jogador, pensada pro torcedor mais novo. Tecido leve, gola careca com detalhe em verde e escudo bordado — o mesmo manto usado em campo, em tamanhos pra criança e adolescente.",
     "brand": "Diadora",
     "reference": "6531002",
-    "categories": ["uniforms", "kids", "personalizable"],
-    "collections": ["kit_02", "player"],
+    "categories": [
+      "uniforms",
+      "kids",
+      "personalizable"
+    ],
+    "collections": [
+      "kit_02",
+      "player"
+    ],
     "audience": "kids",
     "productType": "matchJersey",
     "uniformNumber": "02",
-    "price": 439.90,
+    "price": 439.9,
     "originalPrice": null,
     "installments": 4,
     "images": [
@@ -107,9 +195,21 @@
     ],
     "thumbnail": "lib/assets/store/products/uniform_02_youth/thumbnail.jpg",
     "variations": [
-      {"sku": "6531002-10", "size": "10", "stock": 6},
-      {"sku": "6531002-12", "size": "12", "stock": 8},
-      {"sku": "6531002-14", "size": "14", "stock": 4}
+      {
+        "sku": "6531002-10",
+        "size": "10",
+        "stock": 6
+      },
+      {
+        "sku": "6531002-12",
+        "size": "12",
+        "stock": 8
+      },
+      {
+        "sku": "6531002-14",
+        "size": "14",
+        "stock": 4
+      }
     ],
     "isFeatured": false,
     "isNew": false,
@@ -122,12 +222,26 @@
       "minNumber": 0,
       "maxNumber": 99
     },
-    "relatedProductIds": ["uniform_03_male"],
+    "relatedProductIds": [
+      "uniform_03_male"
+    ],
     "specifications": [
-      {"label": "Marca", "value": "Diadora"},
-      {"label": "Material", "value": "Poliéster leve"},
-      {"label": "Modelagem", "value": "Jogador (corte infanto-juvenil)"},
-      {"label": "Estampa", "value": "Uniforme 02 oficial 2025"}
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      },
+      {
+        "label": "Material",
+        "value": "Poliéster leve"
+      },
+      {
+        "label": "Modelagem",
+        "value": "Jogador (corte infanto-juvenil)"
+      },
+      {
+        "label": "Estampa",
+        "value": "Uniforme 02 oficial 2025"
+      }
     ],
     "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-juvenil-squadra-2025"
   },
@@ -139,12 +253,18 @@
     "description": "Camisa oficial do Goiás Esporte Clube, uniforme titular (01) da temporada 2025, na modelagem jogador (a mesma usada em campo). Produto oficial licenciado, marca Diadora.",
     "brand": "Diadora",
     "reference": "",
-    "categories": ["uniforms", "masculine"],
-    "collections": ["kit_01", "player"],
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "kit_01",
+      "player"
+    ],
     "audience": "masculine",
     "productType": "matchJersey",
     "uniformNumber": "01",
-    "price": 449.90,
+    "price": 449.9,
     "originalPrice": null,
     "installments": 4,
     "images": [
@@ -157,17 +277,45 @@
     ],
     "thumbnail": "lib/assets/store/products/uniform_01_male_player/front.jpg",
     "variations": [
-      {"sku": "u01-masc-jog-P", "size": "P", "stock": 9},
-      {"sku": "u01-masc-jog-M", "size": "M", "stock": 12},
-      {"sku": "u01-masc-jog-G", "size": "G", "stock": 10},
-      {"sku": "u01-masc-jog-GG", "size": "GG", "stock": 6},
-      {"sku": "u01-masc-jog-3G", "size": "3G", "stock": 4}
+      {
+        "sku": "u01-masc-jog-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "u01-masc-jog-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "u01-masc-jog-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "u01-masc-jog-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "u01-masc-jog-3G",
+        "size": "3G",
+        "stock": 4
+      }
     ],
     "isFeatured": false,
     "isNew": false,
     "personalizationOptions": null,
-    "relatedProductIds": ["uniform_02_male_player", "uniform_03_male"],
-    "specifications": [{"label": "Marca", "value": "Diadora"}],
+    "relatedProductIds": [
+      "uniform_02_male_player",
+      "uniform_03_male"
+    ],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
     "sourceUrl": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-masculina-squadra-2025"
   },
   {
@@ -178,12 +326,18 @@
     "description": "Camisa oficial do Goiás Esporte Clube, uniforme reserva (02) da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
     "brand": "Diadora",
     "reference": "",
-    "categories": ["uniforms", "masculine"],
-    "collections": ["kit_02", "player"],
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "kit_02",
+      "player"
+    ],
     "audience": "masculine",
     "productType": "matchJersey",
     "uniformNumber": "02",
-    "price": 449.90,
+    "price": 449.9,
     "originalPrice": null,
     "installments": 4,
     "images": [
@@ -195,17 +349,45 @@
     ],
     "thumbnail": "lib/assets/store/products/uniform_02_male_player/front.jpg",
     "variations": [
-      {"sku": "u02-masc-jog-P", "size": "P", "stock": 7},
-      {"sku": "u02-masc-jog-M", "size": "M", "stock": 11},
-      {"sku": "u02-masc-jog-G", "size": "G", "stock": 9},
-      {"sku": "u02-masc-jog-GG", "size": "GG", "stock": 5},
-      {"sku": "u02-masc-jog-3G", "size": "3G", "stock": 3}
+      {
+        "sku": "u02-masc-jog-P",
+        "size": "P",
+        "stock": 7
+      },
+      {
+        "sku": "u02-masc-jog-M",
+        "size": "M",
+        "stock": 11
+      },
+      {
+        "sku": "u02-masc-jog-G",
+        "size": "G",
+        "stock": 9
+      },
+      {
+        "sku": "u02-masc-jog-GG",
+        "size": "GG",
+        "stock": 5
+      },
+      {
+        "sku": "u02-masc-jog-3G",
+        "size": "3G",
+        "stock": 3
+      }
     ],
     "isFeatured": false,
     "isNew": false,
     "personalizationOptions": null,
-    "relatedProductIds": ["uniform_01_male_player", "uniform_03_male"],
-    "specifications": [{"label": "Marca", "value": "Diadora"}],
+    "relatedProductIds": [
+      "uniform_01_male_player",
+      "uniform_03_male"
+    ],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
     "sourceUrl": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-masculina-squadra-2025"
   },
   {
@@ -216,12 +398,18 @@
     "description": "Camisa oficial do Goiás Esporte Clube, uniforme reserva (02) da temporada 2025, na modelagem torcedor feminina. Produto oficial licenciado, marca Diadora.",
     "brand": "Diadora",
     "reference": "",
-    "categories": ["uniforms", "feminine"],
-    "collections": ["kit_02", "fan"],
+    "categories": [
+      "uniforms",
+      "feminine"
+    ],
+    "collections": [
+      "kit_02",
+      "fan"
+    ],
     "audience": "feminine",
     "productType": "matchJersey",
     "uniformNumber": "02",
-    "price": 349.90,
+    "price": 349.9,
     "originalPrice": null,
     "installments": 3,
     "images": [
@@ -233,17 +421,45 @@
     ],
     "thumbnail": "lib/assets/store/products/uniform_02_female_fan/front.jpg",
     "variations": [
-      {"sku": "u02-fem-tor-P", "size": "P", "stock": 8},
-      {"sku": "u02-fem-tor-M", "size": "M", "stock": 10},
-      {"sku": "u02-fem-tor-G", "size": "G", "stock": 6},
-      {"sku": "u02-fem-tor-GG", "size": "GG", "stock": 5},
-      {"sku": "u02-fem-tor-3G", "size": "3G", "stock": 3}
+      {
+        "sku": "u02-fem-tor-P",
+        "size": "P",
+        "stock": 8
+      },
+      {
+        "sku": "u02-fem-tor-M",
+        "size": "M",
+        "stock": 10
+      },
+      {
+        "sku": "u02-fem-tor-G",
+        "size": "G",
+        "stock": 6
+      },
+      {
+        "sku": "u02-fem-tor-GG",
+        "size": "GG",
+        "stock": 5
+      },
+      {
+        "sku": "u02-fem-tor-3G",
+        "size": "3G",
+        "stock": 3
+      }
     ],
     "isFeatured": false,
     "isNew": false,
     "personalizationOptions": null,
-    "relatedProductIds": ["uniform_01_female_fan", "uniform_02_male_player"],
-    "specifications": [{"label": "Marca", "value": "Diadora"}],
+    "relatedProductIds": [
+      "uniform_01_female_fan",
+      "uniform_02_male_player"
+    ],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
     "sourceUrl": "https://www.storegoias.com.br/feminino/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-feminina-fan-2025"
   },
   {
@@ -254,12 +470,17 @@
     "description": "Camisa oficial do Goiás Esporte Clube, terceiro uniforme (03), na versão infantil. Produto oficial licenciado, marca Diadora.",
     "brand": "Diadora",
     "reference": "",
-    "categories": ["uniforms", "kids"],
-    "collections": ["kit_03"],
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "kit_03"
+    ],
     "audience": "kids",
     "productType": "matchJersey",
     "uniformNumber": "03",
-    "price": 379.90,
+    "price": 379.9,
     "originalPrice": null,
     "installments": 3,
     "images": [
@@ -271,16 +492,39 @@
     ],
     "thumbnail": "lib/assets/store/products/uniform_03_kids/front.png",
     "variations": [
-      {"sku": "u03-inf-2", "size": "2", "stock": 6},
-      {"sku": "u03-inf-4", "size": "4", "stock": 7},
-      {"sku": "u03-inf-6", "size": "6", "stock": 5},
-      {"sku": "u03-inf-8", "size": "8", "stock": 4}
+      {
+        "sku": "u03-inf-2",
+        "size": "2",
+        "stock": 6
+      },
+      {
+        "sku": "u03-inf-4",
+        "size": "4",
+        "stock": 7
+      },
+      {
+        "sku": "u03-inf-6",
+        "size": "6",
+        "stock": 5
+      },
+      {
+        "sku": "u03-inf-8",
+        "size": "8",
+        "stock": 4
+      }
     ],
     "isFeatured": false,
     "isNew": false,
     "personalizationOptions": null,
-    "relatedProductIds": ["uniform_03_male"],
-    "specifications": [{"label": "Marca", "value": "Diadora"}],
+    "relatedProductIds": [
+      "uniform_03_male"
+    ],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
     "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-03/camisa-uniforme-03-goias-infantil"
   },
   {
@@ -291,12 +535,19 @@
     "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem torcedor masculina. Produto oficial licenciado, marca Diadora.",
     "brand": "Diadora",
     "reference": "",
-    "categories": ["uniforms", "masculine"],
-    "collections": ["goalkeeper", "kit_01", "fan"],
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_01",
+      "fan"
+    ],
     "audience": "masculine",
     "productType": "matchJersey",
     "uniformNumber": "01",
-    "price": 359.90,
+    "price": 359.9,
     "originalPrice": null,
     "installments": 3,
     "images": [
@@ -306,17 +557,44 @@
     ],
     "thumbnail": "lib/assets/store/products/goalkeeper_01_male_fan/front.jpg",
     "variations": [
-      {"sku": "gk01-masc-tor-P", "size": "P", "stock": 6},
-      {"sku": "gk01-masc-tor-M", "size": "M", "stock": 8},
-      {"sku": "gk01-masc-tor-G", "size": "G", "stock": 7},
-      {"sku": "gk01-masc-tor-GG", "size": "GG", "stock": 4},
-      {"sku": "gk01-masc-tor-3G", "size": "3G", "stock": 2}
+      {
+        "sku": "gk01-masc-tor-P",
+        "size": "P",
+        "stock": 6
+      },
+      {
+        "sku": "gk01-masc-tor-M",
+        "size": "M",
+        "stock": 8
+      },
+      {
+        "sku": "gk01-masc-tor-G",
+        "size": "G",
+        "stock": 7
+      },
+      {
+        "sku": "gk01-masc-tor-GG",
+        "size": "GG",
+        "stock": 4
+      },
+      {
+        "sku": "gk01-masc-tor-3G",
+        "size": "3G",
+        "stock": 2
+      }
     ],
     "isFeatured": false,
     "isNew": false,
     "personalizationOptions": null,
-    "relatedProductIds": ["uniform_01_male_player"],
-    "specifications": [{"label": "Marca", "value": "Diadora"}],
+    "relatedProductIds": [
+      "uniform_01_male_player"
+    ],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
     "sourceUrl": "https://www.storegoias.com.br/masculino/goleiro/uniforme-01/camisa-goias-uniforme-01-goleiro-torcedor-masculina-2025"
   },
   {
@@ -327,12 +605,15 @@
     "description": "Caneleira infantil oficial do Goiás Esporte Clube, na cor preta, com o escudo do clube.",
     "brand": "Goiás",
     "reference": "",
-    "categories": ["accessories", "kids"],
+    "categories": [
+      "accessories",
+      "kids"
+    ],
     "collections": [],
     "audience": "kids",
     "productType": "accessory",
     "uniformNumber": null,
-    "price": 49.90,
+    "price": 49.9,
     "originalPrice": null,
     "installments": 1,
     "images": [
@@ -340,7 +621,11 @@
     ],
     "thumbnail": "lib/assets/store/products/shin_guard_kids_black/front.jpg",
     "variations": [
-      {"sku": "caneleira-inf-unico", "size": "ÚNICO", "stock": 15}
+      {
+        "sku": "caneleira-inf-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
     ],
     "isFeatured": false,
     "isNew": false,
@@ -348,5 +633,1068 @@
     "relatedProductIds": [],
     "specifications": [],
     "sourceUrl": "https://www.storegoias.com.br/acessorios/caneleira-goias-infantil-preta"
+  },
+  {
+    "id": "uniform_01_male_fan",
+    "slug": "camisa-goias-uniforme-01-masculina-fan-2025",
+    "name": "Camisa Gois Uniforme 01 Masculina Torcedor 2025",
+    "shortDescription": "Uniforme 01 2025, modelagem torcedor masculina, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem torcedor. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "kit_01",
+      "fan"
+    ],
+    "audience": "masculine",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 359.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/uniform_01_male_fan/front.jpg",
+      "lib/assets/store/products/uniform_01_male_fan/back.jpg",
+      "lib/assets/store/products/uniform_01_male_fan/detail_01.jpg",
+      "lib/assets/store/products/uniform_01_male_fan/detail_02.jpg",
+      "lib/assets/store/products/uniform_01_male_fan/detail_03.jpg",
+      "lib/assets/store/products/uniform_01_male_fan/detail_04.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_01_male_fan/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_01_male_fan-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_01_male_fan-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_01_male_fan-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "uniform_01_male_fan-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "uniform_01_male_fan-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-masculina-fan-2025"
+  },
+  {
+    "id": "uniform_02_male_fan",
+    "slug": "camisa-goias-uniforme-02-masculina-fan-2025",
+    "name": "Camisa Branca Masculina Gois Torcedor 2025",
+    "shortDescription": "Uniforme 02 2025, modelagem torcedor masculina, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 02 da temporada 2025, na modelagem torcedor. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "kit_02",
+      "fan"
+    ],
+    "audience": "masculine",
+    "productType": "matchJersey",
+    "uniformNumber": "02",
+    "price": 359.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/uniform_02_male_fan/front.jpg",
+      "lib/assets/store/products/uniform_02_male_fan/back.jpg",
+      "lib/assets/store/products/uniform_02_male_fan/detail_01.jpg",
+      "lib/assets/store/products/uniform_02_male_fan/detail_02.jpg",
+      "lib/assets/store/products/uniform_02_male_fan/detail_03.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_02_male_fan/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_02_male_fan-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_02_male_fan-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_02_male_fan-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "uniform_02_male_fan-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "uniform_02_male_fan-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-masculina-fan-2025"
+  },
+  {
+    "id": "uniform_01_female_player",
+    "slug": "camisa-goias-uniforme-01-feminina-squadra-2025",
+    "name": "Camisa Gois Uniforme 01 Feminina Jogador 2025",
+    "shortDescription": "Uniforme 01 2025, modelagem jogador feminina, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "feminine"
+    ],
+    "collections": [
+      "kit_01",
+      "player"
+    ],
+    "audience": "feminine",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 439.9,
+    "originalPrice": null,
+    "installments": 4,
+    "images": [
+      "lib/assets/store/products/uniform_01_female_player/front.jpg",
+      "lib/assets/store/products/uniform_01_female_player/back.jpg",
+      "lib/assets/store/products/uniform_01_female_player/detail_01.jpg",
+      "lib/assets/store/products/uniform_01_female_player/detail_02.jpg",
+      "lib/assets/store/products/uniform_01_female_player/detail_03.jpg",
+      "lib/assets/store/products/uniform_01_female_player/detail_04.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_01_female_player/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_01_female_player-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_01_female_player-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_01_female_player-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "uniform_01_female_player-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "uniform_01_female_player-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/feminino/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-feminina-squadra-2025"
+  },
+  {
+    "id": "uniform_02_female_player",
+    "slug": "camisa-goias-uniforme-02-feminina-squadra-2025",
+    "name": "Camisa Gois Uniforme 02 Feminina Jogador 2025",
+    "shortDescription": "Uniforme 02 2025, modelagem jogador feminina, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 02 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "feminine"
+    ],
+    "collections": [
+      "kit_02",
+      "player"
+    ],
+    "audience": "feminine",
+    "productType": "matchJersey",
+    "uniformNumber": "02",
+    "price": 439.9,
+    "originalPrice": null,
+    "installments": 4,
+    "images": [
+      "lib/assets/store/products/uniform_02_female_player/front.jpg",
+      "lib/assets/store/products/uniform_02_female_player/back.jpg",
+      "lib/assets/store/products/uniform_02_female_player/detail_01.jpg",
+      "lib/assets/store/products/uniform_02_female_player/detail_02.jpg",
+      "lib/assets/store/products/uniform_02_female_player/detail_03.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_02_female_player/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_02_female_player-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_02_female_player-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_02_female_player-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "uniform_02_female_player-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "uniform_02_female_player-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/feminino/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-feminina-squadra-2025"
+  },
+  {
+    "id": "uniform_01_kids_fan",
+    "slug": "camisa-goias-uniforme-01-infantil-fan-2025",
+    "name": "Camisa Gois Uniforme 01 Infantil Torcedor 2025",
+    "shortDescription": "Uniforme 01 2025, modelagem torcedor infanto-juvenil, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem torcedor. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "kit_01",
+      "fan"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 289.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/uniform_01_kids_fan/front.jpg",
+      "lib/assets/store/products/uniform_01_kids_fan/back.jpg",
+      "lib/assets/store/products/uniform_01_kids_fan/detail_01.jpg",
+      "lib/assets/store/products/uniform_01_kids_fan/detail_02.jpg",
+      "lib/assets/store/products/uniform_01_kids_fan/detail_03.jpg",
+      "lib/assets/store/products/uniform_01_kids_fan/detail_04.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_01_kids_fan/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_01_kids_fan-2",
+        "size": "2",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_01_kids_fan-4",
+        "size": "4",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_01_kids_fan-6",
+        "size": "6",
+        "stock": 10
+      },
+      {
+        "sku": "uniform_01_kids_fan-10",
+        "size": "10",
+        "stock": 6
+      },
+      {
+        "sku": "uniform_01_kids_fan-12",
+        "size": "12",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-infantil-fan-2025"
+  },
+  {
+    "id": "uniform_01_kids_player",
+    "slug": "camisa-goias-uniforme-01-infantil-squadra-2025",
+    "name": "Camisa Gois Uniforme 01 Infantil Jogador 2025",
+    "shortDescription": "Uniforme 01 2025, modelagem jogador infanto-juvenil, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "kit_01",
+      "player"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 379.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/uniform_01_kids_player/front.jpg",
+      "lib/assets/store/products/uniform_01_kids_player/back.jpg",
+      "lib/assets/store/products/uniform_01_kids_player/detail_01.jpg",
+      "lib/assets/store/products/uniform_01_kids_player/detail_02.jpg",
+      "lib/assets/store/products/uniform_01_kids_player/detail_03.jpg",
+      "lib/assets/store/products/uniform_01_kids_player/detail_04.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_01_kids_player/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_01_kids_player-2",
+        "size": "2",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_01_kids_player-4",
+        "size": "4",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_01_kids_player-6",
+        "size": "6",
+        "stock": 10
+      },
+      {
+        "sku": "uniform_01_kids_player-12",
+        "size": "12",
+        "stock": 6
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-infantil-squadra-2025"
+  },
+  {
+    "id": "uniform_01_youth_fan",
+    "slug": "camisa-goias-uniforme-01-juvenil-fan-2025",
+    "name": "Camisa Gois Uniforme 01 Juvenil Torcedor 2025",
+    "shortDescription": "Uniforme 01 2025, modelagem torcedor infanto-juvenil, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem torcedor. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "kit_01",
+      "fan"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 349.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/uniform_01_youth_fan/front.jpg",
+      "lib/assets/store/products/uniform_01_youth_fan/back.jpg",
+      "lib/assets/store/products/uniform_01_youth_fan/detail_01.jpg",
+      "lib/assets/store/products/uniform_01_youth_fan/detail_02.jpg",
+      "lib/assets/store/products/uniform_01_youth_fan/detail_03.jpg",
+      "lib/assets/store/products/uniform_01_youth_fan/detail_04.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_01_youth_fan/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_01_youth_fan-10",
+        "size": "10",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_01_youth_fan-12",
+        "size": "12",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_01_youth_fan-14",
+        "size": "14",
+        "stock": 10
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-juvenil-fan-2025"
+  },
+  {
+    "id": "uniform_01_youth_player",
+    "slug": "camisa-goias-uniforme-01-juvenil-squadra-2025",
+    "name": "Camisa Gois Uniforme 01 Juvenil Jogador 2025",
+    "shortDescription": "Uniforme 01 2025, modelagem jogador infanto-juvenil, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "kit_01",
+      "player"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 439.9,
+    "originalPrice": null,
+    "installments": 4,
+    "images": [
+      "lib/assets/store/products/uniform_01_youth_player/front.jpg",
+      "lib/assets/store/products/uniform_01_youth_player/back.jpg",
+      "lib/assets/store/products/uniform_01_youth_player/detail_01.jpg",
+      "lib/assets/store/products/uniform_01_youth_player/detail_02.jpg",
+      "lib/assets/store/products/uniform_01_youth_player/detail_03.jpg",
+      "lib/assets/store/products/uniform_01_youth_player/detail_04.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_01_youth_player/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_01_youth_player-10",
+        "size": "10",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_01_youth_player-12",
+        "size": "12",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_01_youth_player-14",
+        "size": "14",
+        "stock": 10
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-juvenil-squadra-2025"
+  },
+  {
+    "id": "uniform_02_kids_player",
+    "slug": "camisa-goias-uniforme-02-infantil-squadra-2025",
+    "name": "Camisa Gois Uniforme 02 Infantil Jogador 2025",
+    "shortDescription": "Uniforme 02 2025, modelagem jogador infanto-juvenil, Diadora.",
+    "description": "Camisa oficial do Goiás Esporte Clube, uniforme 02 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "kit_02",
+      "player"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "02",
+    "price": 379.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/uniform_02_kids_player/front.jpg",
+      "lib/assets/store/products/uniform_02_kids_player/back.jpg",
+      "lib/assets/store/products/uniform_02_kids_player/detail_01.jpg",
+      "lib/assets/store/products/uniform_02_kids_player/detail_02.jpg",
+      "lib/assets/store/products/uniform_02_kids_player/detail_03.jpg",
+      "lib/assets/store/products/uniform_02_kids_player/detail_04.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/uniform_02_kids_player/front.jpg",
+    "variations": [
+      {
+        "sku": "uniform_02_kids_player-2",
+        "size": "2",
+        "stock": 9
+      },
+      {
+        "sku": "uniform_02_kids_player-4",
+        "size": "4",
+        "stock": 12
+      },
+      {
+        "sku": "uniform_02_kids_player-6",
+        "size": "6",
+        "stock": 10
+      },
+      {
+        "sku": "uniform_02_kids_player-12",
+        "size": "12",
+        "stock": 6
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-infantil-squadra-2025"
+  },
+  {
+    "id": "goalkeeper_01_male_player",
+    "slug": "camisa-goias-uniforme-01-goleiro-jogador-masculina-2025",
+    "name": "Camisa Gois Uniforme 01 Goleiro Treino Torcedor Masculina 2025",
+    "shortDescription": "Uniforme 01 de goleiro 2025, modelagem jogador masculina, Diadora.",
+    "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_01",
+      "player"
+    ],
+    "audience": "masculine",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 309.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/goalkeeper_01_male_player/front.jpg",
+      "lib/assets/store/products/goalkeeper_01_male_player/back.jpg",
+      "lib/assets/store/products/goalkeeper_01_male_player/detail_01.jpg",
+      "lib/assets/store/products/goalkeeper_01_male_player/detail_02.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/goalkeeper_01_male_player/front.jpg",
+    "variations": [
+      {
+        "sku": "goalkeeper_01_male_player-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "goalkeeper_01_male_player-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "goalkeeper_01_male_player-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "goalkeeper_01_male_player-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "goalkeeper_01_male_player-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/masculino/goleiro/uniforme-01/camisa-goias-uniforme-01-goleiro-jogador-masculina-2025"
+  },
+  {
+    "id": "goalkeeper_02_male_player",
+    "slug": "camisa-goias-uniforme-02-goleiro-jogador-masculina-2025",
+    "name": "Camisa Gois Uniforme 02 Goleiro Jogador Masculina 2025",
+    "shortDescription": "Uniforme 02 de goleiro 2025, modelagem jogador masculina, Diadora.",
+    "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 02 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "masculine"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_02",
+      "player"
+    ],
+    "audience": "masculine",
+    "productType": "matchJersey",
+    "uniformNumber": "02",
+    "price": 449.9,
+    "originalPrice": null,
+    "installments": 4,
+    "images": [
+      "lib/assets/store/products/goalkeeper_02_male_player/front.png",
+      "lib/assets/store/products/goalkeeper_02_male_player/back.png",
+      "lib/assets/store/products/goalkeeper_02_male_player/detail_01.png",
+      "lib/assets/store/products/goalkeeper_02_male_player/detail_02.png"
+    ],
+    "thumbnail": "lib/assets/store/products/goalkeeper_02_male_player/front.png",
+    "variations": [
+      {
+        "sku": "goalkeeper_02_male_player-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "goalkeeper_02_male_player-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "goalkeeper_02_male_player-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "goalkeeper_02_male_player-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "goalkeeper_02_male_player-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/masculino/goleiro/uniforme-02/camisa-goias-uniforme-02-goleiro-jogador-masculina-2025"
+  },
+  {
+    "id": "goalkeeper_01_female_fan",
+    "slug": "camisa-goias-uniforme-01-goleiro-torcedor-feminina-2025",
+    "name": "Camisa Gois Uniforme 01 Goleiro Torcedor Feminina 2025",
+    "shortDescription": "Uniforme 01 de goleiro 2025, modelagem torcedor feminina, Diadora.",
+    "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem torcedor. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "feminine"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_01",
+      "fan"
+    ],
+    "audience": "feminine",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 349.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/goalkeeper_01_female_fan/front.jpg",
+      "lib/assets/store/products/goalkeeper_01_female_fan/back.jpg",
+      "lib/assets/store/products/goalkeeper_01_female_fan/detail_01.jpg",
+      "lib/assets/store/products/goalkeeper_01_female_fan/detail_02.jpg",
+      "lib/assets/store/products/goalkeeper_01_female_fan/detail_03.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/goalkeeper_01_female_fan/front.jpg",
+    "variations": [
+      {
+        "sku": "goalkeeper_01_female_fan-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "goalkeeper_01_female_fan-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "goalkeeper_01_female_fan-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "goalkeeper_01_female_fan-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "goalkeeper_01_female_fan-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/feminino/goleiro/uniforme-01/camisa-goias-uniforme-01-goleiro-torcedor-feminina-2025"
+  },
+  {
+    "id": "goalkeeper_02_female_player",
+    "slug": "camisa-goias-uniforme-02-goleiro-jogador-feminina-2025",
+    "name": "Camisa Azul Goleiro Feminina Gois 2025 Sem Patrocnio",
+    "shortDescription": "Uniforme 02 de goleiro 2025, modelagem jogador feminina, Diadora.",
+    "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 02 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "feminine"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_02",
+      "player"
+    ],
+    "audience": "feminine",
+    "productType": "matchJersey",
+    "uniformNumber": "02",
+    "price": 439.9,
+    "originalPrice": null,
+    "installments": 4,
+    "images": [
+      "lib/assets/store/products/goalkeeper_02_female_player/front.png",
+      "lib/assets/store/products/goalkeeper_02_female_player/back.png",
+      "lib/assets/store/products/goalkeeper_02_female_player/detail_01.png",
+      "lib/assets/store/products/goalkeeper_02_female_player/detail_02.png",
+      "lib/assets/store/products/goalkeeper_02_female_player/detail_03.png"
+    ],
+    "thumbnail": "lib/assets/store/products/goalkeeper_02_female_player/front.png",
+    "variations": [
+      {
+        "sku": "goalkeeper_02_female_player-P",
+        "size": "P",
+        "stock": 9
+      },
+      {
+        "sku": "goalkeeper_02_female_player-M",
+        "size": "M",
+        "stock": 12
+      },
+      {
+        "sku": "goalkeeper_02_female_player-G",
+        "size": "G",
+        "stock": 10
+      },
+      {
+        "sku": "goalkeeper_02_female_player-GG",
+        "size": "GG",
+        "stock": 6
+      },
+      {
+        "sku": "goalkeeper_02_female_player-3G",
+        "size": "3G",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/feminino/goleiro/uniforme-02/camisa-goias-uniforme-02-goleiro-jogador-feminina-2025"
+  },
+  {
+    "id": "goalkeeper_01_kids_player",
+    "slug": "camisa-goias-uniforme-01-goleiro-infantil-jogador-2025",
+    "name": "Camisa Gois Uniforme 01 Goleiro Infantil Jogador2025",
+    "shortDescription": "Uniforme 01 de goleiro 2025, modelagem jogador infanto-juvenil, Diadora.",
+    "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_01",
+      "player"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 379.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/goalkeeper_01_kids_player/front.jpg",
+      "lib/assets/store/products/goalkeeper_01_kids_player/back.jpg",
+      "lib/assets/store/products/goalkeeper_01_kids_player/detail_01.jpg",
+      "lib/assets/store/products/goalkeeper_01_kids_player/detail_02.jpg",
+      "lib/assets/store/products/goalkeeper_01_kids_player/detail_03.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/goalkeeper_01_kids_player/front.jpg",
+    "variations": [
+      {
+        "sku": "goalkeeper_01_kids_player-2",
+        "size": "2",
+        "stock": 9
+      },
+      {
+        "sku": "goalkeeper_01_kids_player-4",
+        "size": "4",
+        "stock": 12
+      },
+      {
+        "sku": "goalkeeper_01_kids_player-6",
+        "size": "6",
+        "stock": 10
+      },
+      {
+        "sku": "goalkeeper_01_kids_player-8",
+        "size": "8",
+        "stock": 6
+      },
+      {
+        "sku": "goalkeeper_01_kids_player-12",
+        "size": "12",
+        "stock": 4
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/goleiro/uniforme-01/camisa-goias-uniforme-01-goleiro-infantil-jogador-2025"
+  },
+  {
+    "id": "goalkeeper_01_youth_fan",
+    "slug": "camisa-uniforme-01-goleiro-torcedor-juvenil-2025",
+    "name": "Camisa Uniforme 01 Goleiro Torcedor Juvenil 2025",
+    "shortDescription": "Uniforme 01 de goleiro 2025, modelagem torcedor infanto-juvenil, Diadora.",
+    "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 01 da temporada 2025, na modelagem torcedor. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_01",
+      "fan"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "01",
+    "price": 349.9,
+    "originalPrice": null,
+    "installments": 3,
+    "images": [
+      "lib/assets/store/products/goalkeeper_01_youth_fan/front.jpg",
+      "lib/assets/store/products/goalkeeper_01_youth_fan/back.jpg",
+      "lib/assets/store/products/goalkeeper_01_youth_fan/detail_01.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/goalkeeper_01_youth_fan/front.jpg",
+    "variations": [
+      {
+        "sku": "goalkeeper_01_youth_fan-10",
+        "size": "10",
+        "stock": 9
+      },
+      {
+        "sku": "goalkeeper_01_youth_fan-12",
+        "size": "12",
+        "stock": 12
+      },
+      {
+        "sku": "goalkeeper_01_youth_fan-14",
+        "size": "14",
+        "stock": 10
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/goleiro/uniforme-01/camisa-uniforme-01-goleiro-torcedor-juvenil-2025"
+  },
+  {
+    "id": "goalkeeper_02_youth_player",
+    "slug": "camisa-goias-uniforme-02-goleiro-jogador-juvenil-2025",
+    "name": "Camisa Gois Uniforme 02 Goleiro Jogador Juvenil 2025",
+    "shortDescription": "Uniforme 02 de goleiro 2025, modelagem jogador infanto-juvenil, Diadora.",
+    "description": "Camisa oficial de goleiro do Goiás Esporte Clube, uniforme 02 da temporada 2025, na modelagem jogador. Produto oficial licenciado, marca Diadora.",
+    "brand": "Diadora",
+    "reference": "",
+    "categories": [
+      "uniforms",
+      "kids"
+    ],
+    "collections": [
+      "goalkeeper",
+      "kit_02",
+      "player"
+    ],
+    "audience": "kids",
+    "productType": "matchJersey",
+    "uniformNumber": "02",
+    "price": 439.9,
+    "originalPrice": null,
+    "installments": 4,
+    "images": [
+      "lib/assets/store/products/goalkeeper_02_youth_player/front.jpg",
+      "lib/assets/store/products/goalkeeper_02_youth_player/back.jpg",
+      "lib/assets/store/products/goalkeeper_02_youth_player/detail_01.jpg",
+      "lib/assets/store/products/goalkeeper_02_youth_player/detail_02.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/goalkeeper_02_youth_player/front.jpg",
+    "variations": [
+      {
+        "sku": "goalkeeper_02_youth_player-10",
+        "size": "10",
+        "stock": 9
+      },
+      {
+        "sku": "goalkeeper_02_youth_player-12",
+        "size": "12",
+        "stock": 12
+      },
+      {
+        "sku": "goalkeeper_02_youth_player-14",
+        "size": "14",
+        "stock": 10
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [
+      {
+        "label": "Marca",
+        "value": "Diadora"
+      }
+    ],
+    "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/goleiro/uniforme-02/camisa-goias-uniforme-02-goleiro-jogador-juvenil-2025"
   }
 ]
