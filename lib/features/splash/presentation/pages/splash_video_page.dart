@@ -145,7 +145,13 @@ class _SplashVideoPageState extends State<SplashVideoPage>
         animation: _revealAnimation,
         child: _buildSplashContent(),
         builder: (context, child) {
-          if (!_revealed) return const SizedBox.expand();
+          // `child` PRECISA continuar na árvore mesmo antes de `_revealed`
+          // virar true — é o próprio `child` (vídeo/logo) que chama
+          // `_reveal()` quando fica pronto; se ele nunca for montado (ex.:
+          // um branch anterior aqui devolvia um `SizedBox.expand()` solto,
+          // sem `child` dentro), nada nunca dispara `onReady()` e a splash
+          // fica presa até o timer de segurança — tela branca até o fim.
+          if (!_revealed) return Opacity(opacity: 0, child: child);
           if (reducedMotion) {
             return Opacity(opacity: _revealAnimation.value, child: child);
           }
