@@ -317,5 +317,565 @@
     "retrievedAt": "2026-08-28",
     "catalogMode": "mock",
     "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bag_lateral_goias": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bag-lateral-goias",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bag_lateral_goias_127_1_d1dede3f64412f712cdfe113f8f91bd2.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bag_lateral_goias_alviverde_preta": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bag-lateral-goias-alviverde-preta",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bag_lateral_goias_alviverde_preta_231_1_d081c28a2846fe81a70d82035046175a.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bag_lateral_goias_cafe": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bag-lateral-goias-cafe",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bag_lateral_goias_cafe_229_1_e08482689a61f5b9b875121e150bc0da.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bola_de_futebol_goias_padrao": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bola-de-futebol-goias-padrao",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bola_de_futebol_goias_padrao_247_1_977176517f62dc5e68d555a12c05659d.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/bola_de_futebol_goias_padrao_247_2_3dee43ee0aeeeae59019f5d27ee0c54c.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/bola_de_futebol_goias_padrao_247_3_1c16bb445de08623cc073ccaf2763c17.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bola_de_futebol_n_05_goias_e_c": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bola-de-futebol-n-05-goias-e-c",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bola_de_futebol_n_05_gois_ec_1_20251029120726_801de2b73bae.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bola_de_futebol_protech_goias_e_c": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bola-de-futebol-protech-goias-e-c",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bola_de_futebol_protech_goias_e_c_113_1_3237e7028a375a6a7c94c331c5b725ba.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bola_de_futevolei_protech_goias_e_c": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bola-de-futevolei-protech-goias-e-c",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bola_de_futevolei_protech_goias_e_c_111_1_90fbb5d960873d5ee8980b0b29de7332.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "bolsa_esportiva_goias_verde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/bolsa-esportiva-goias-verde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/bolsa_esportiva_goias_verde_277_1_5a87e6278e0904938ce7679b830c0eb4.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/bolsa_esportiva_goias_verde_277_2_d01cd441a8f1fb4f3cf046816f950417.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/bolsa_esportiva_goias_verde_277_3_e145c8e649bf8f0746a547365fdb23f9.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "boneco_colecionavel_mascote_goias_periquito": {
+    "productPage": "https://www.storegoias.com.br/acessorios/boneco-colecionavel-mascote-goias-periquito",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/boneco_colecionavel_mascote_goias_periquito_345_3_fbab40bac3b60b7af358c77a34845d48.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/boneco_colecionavel_mascote_goias_periquito_345_4_ec8e3f14eca20b70d398c51b9cf2064b.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/boneco_colecionavel_mascote_goias_periquito_345_5_e7b3fea84242b5324d71bb181c5d6ab2.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "caneca_estadio_goias_e_c": {
+    "productPage": "https://www.storegoias.com.br/acessorios/caneca-estadio-goias-e-c",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/caneca_estadio_goias_e_c_117_1_dd3d697a887e5def9f3838ef9390e77c.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "caneca_goias_gel_peca_verde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/caneca-goias-gel-peca-verde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/caneca_goias_gel_peca_verde_193_1_fa5abd991398274a8a2a26f4d7fbd5be.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/caneca_goias_gel_peca_verde_193_2_caa71d83e45c202ad8fc87bf11ac8d5b.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "caneca_termica_goias_inox_verde_700ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/caneca-termica-goias-inox-verde-700ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/caneca_termica_goias_inox_verde_700ml_89_1_d747d8873bcb3be237f9265c36039dbc.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "carteira_goias_de_luxo_verde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/carteira-goias-de-luxo-verde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/carteira_goias_de_luxo_verde_125_1_8368cf82c2298f2486674afc66f2dc88.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "carteira_goias_de_luxo_vertical_alviverde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/carteira-goias-de-luxo-vertical-alviverde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/carteira_goias_de_luxo_vertical_alviverde_135_1_4b1aad6a5781442a25fb50fbf9cac80d.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "carteira_goias_de_luxo_vertical_alviverde_preta": {
+    "productPage": "https://www.storegoias.com.br/acessorios/carteira-goias-de-luxo-vertical-alviverde-preta",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/carteira_goias_de_luxo_vertical_alviverde_preta_137_1_fc08c4acf1349071ce229e7093296054.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "carteira_goias_tradicional_preta": {
+    "productPage": "https://www.storegoias.com.br/acessorios/carteira-goias-tradicional-preta",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/carteira_goias_tradicional_preta_131_1_522bd45feb46023649800dff0d52817a.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chaveiro_abridor_goias_retangular": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chaveiro-abridor-goias-retangular",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_abridor_goias_retangular_233_1_01f8040d0e124aa7fa8047b0d7caf6b7.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chaveiro_goias_camisa": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chaveiro-goias-camisa",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_camisa_239_1_a9f8f1480850bc9c08b7e999f7b526b8.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chaveiro_goias_chuteira": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chaveiro-goias-chuteira",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_chuteira_237_1_09e3264c94f53d6ad5aea0e94aa2550e.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chaveiro_goias_mosquetao_resinado": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chaveiro-goias-mosquetao-resinado",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_mosquetao_resinado_203_1_77db9965aff2c2507e645e4eb17e7b97.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_mosquetao_resinado_203_2_d5d844e442b619a8e1cf261a08c3c72a.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_mosquetao_resinado_203_3_d682af2ae6205725f4f5ef83850e7730.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chaveiro_goias_redondo_e_giratorio": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chaveiro-goias-redondo-e-giratorio",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_redondo_e_giratorio_201_1_2a7b711f3fabb4f69471d2d6b739e976.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_redondo_e_giratorio_201_2_be8e0cd80de3f8aa36b700ba5ec1b44e.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chaveiro_goias_redondo_e_giratorio_201_3_8cb276c0ad213b786cfda347add49ed5.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chinelo_slide_goias_branca": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chinelo-slide-goias-branca",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_branca_267_1_f8c414dc8e6d90e38d3eb317e09609ff.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_branca_267_2_14c948ef245a8db51721ce2fb260ecbb.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_branca_267_3_8ade5db7ea657813083e051dc7150a7f.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chinelo_slide_goias_preta": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chinelo-slide-goias-preta",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_preta_265_1_3250de7f18d716ad644794e6d5c357cb.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_preta_265_2_bd2b4696ec04963d84203eb2fd998aea.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_preta_265_3_704cbffb6f6e50f6618b5405469fa9cf.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "chinelo_slide_goias_verde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/chinelo-slide-goias-verde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_verde_263_1_0f41cc818f2a76c6c69d487236b31ffe.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_verde_263_2_241afa89452e606bcee7ec85db880632.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/chinelo_slide_goias_verde_263_3_efa33046ece194351ce3cd63e27b457b.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "cooler_goias_10_latas": {
+    "productPage": "https://www.storegoias.com.br/acessorios/cooler-goias-10-latas",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/cooler_goias_10_latas_199_1_2efcc0fa78701991e35927000737cf6e.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/cooler_goias_10_latas_199_2_f12783121c0f95ce55b0e64d7688fc0e.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/cooler_goias_10_latas_199_3_e15b54fde5999c721d23665b1c386bf2.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/cooler_goias_10_latas_199_4_a1b3bb4d7678780dd21a099afef469dc.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "copo_termico_goias_sleek_473ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/copo-termico-goias-sleek-473ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/copo_termico_goias_sleek_green_473ml_141_1_a607885b84949b1b4a4fc821c03eef1f.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "copo_termico_goias_sleek_off_white_473ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/copo-termico-goias-sleek-off-white-473ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/copo_termico_goias_sleek_off_white_473ml_143_1_43d4978bdfc6d443a0829b59ceb9fee0.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "copo_termico_goias_tulipinha_354ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/copo-termico-goias-tulipinha-354ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/copo_termico_goias_tulipinha_354ml_145_1_fda28ac9aa107d2b0a29c7392390aa79.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "garrafa_termica_oasis_goias_black_750ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/garrafa-termica-oasis-goias-black-750ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/garrafa_termica_oasis_goias_black_750ml_149_1_796d8644493319d1bb9f18735beb233b.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "garrafa_termica_oasis_goias_off_white_750ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/garrafa-termica-oasis-goias-off-white-750ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/garrafa_termica_oasis_goias_off_white_750ml_147_1_15e505d4323754d396a49309c28446c6.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "kit_cartao_goias_caixa_havanna": {
+    "productPage": "https://www.storegoias.com.br/acessorios/kit-cartao-goias-caixa-havanna",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/kit_cartao_goias_caixa_havanna_129_1_3474f400c2725029caa4a4c3dbcaa953.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "kit_cartao_goias_caixa_verde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/kit-cartao-goias-caixa-verde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/kit_cartao_goias_caixa_verde_133_1_a12a9494b10ea447b3061657c1a1e4d1.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "kit_porta_cartao_preto": {
+    "productPage": "https://www.storegoias.com.br/acessorios/kit-porta-cartao-preto",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/kit_porta_cartao_preto_123_1_3380d41603702f66ee85e0798e133a93.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "luvas_de_goleiro_infantil_goias": {
+    "productPage": "https://www.storegoias.com.br/acessorios/luvas-de-goleiro-infantil-goias",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/luvas_de_goleiro_infantil_goias_255_1_d69c9e90ef0fe0a92f11f755b7591cbb.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/luvas_de_goleiro_infantil_goias_255_2_3633ba46752031e76b6793fe9300f7e3.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "meiao_goias_branco_adulto": {
+    "productPage": "https://www.storegoias.com.br/acessorios/meiao-goias-branco-adulto",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/meiao_goias_branco_adulto_101_1_e30416d539f5a9c9e081764c9eedd5e0.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "meiao_goias_branco_infantil": {
+    "productPage": "https://www.storegoias.com.br/acessorios/meiao-goias-branco-infantil",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/meiao_goias_branco_infantil_83_1_501306f31da2e0e24e85a7b902bbec90.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "meiao_goias_branco_juvenil": {
+    "productPage": "https://www.storegoias.com.br/acessorios/meiao-goias-branco-juvenil",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/meiao_goias_branco_juvenil_99_1_e30416d539f5a9c9e081764c9eedd5e0.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "meiao_goias_branco_verde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/meiao-goias-branco-verde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/meiao_goias_verde_adulto_103_1_775409b3f9ca9ac537298d1ba8e96c3b.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "meiao_goias_verde_juvenil": {
+    "productPage": "https://www.storegoias.com.br/acessorios/meiao-goias-verde-juvenil",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/meiao_goias_verde_juvenil_81_1_c90593a156757320edfea686aa74bb37.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "mini_bola_de_futebol_goias_e_c": {
+    "productPage": "https://www.storegoias.com.br/acessorios/mini-bola-de-futebol-goias-e-c",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/mini_bola_de_futebol_goias_e_c_115_1_ef490c15e96fb2ebef67875f47fd3ea5.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "mochila_goias_verde": {
+    "productPage": "https://www.storegoias.com.br/acessorios/mochila-goias-verde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/mochila_goias_verde_275_1_95b4c2165cfe785f70130b7ed9d6d62b.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/mochila_goias_verde_275_2_ed339a0610a77290e50c36e113b301ae.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "mochila_pequena_preta_goias": {
+    "productPage": "https://www.storegoias.com.br/acessorios/mochila-pequena-preta-goias",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/mochila_pequena_preta_goias_75_1_c170b69bbaba6220b228aa61f7c6e4ac.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "pelucia_goias_periquito_mod_p": {
+    "productPage": "https://www.storegoias.com.br/acessorios/pelucia-goias-periquito-mod-p",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/pelucia_goias_periquito_mod_pistola_187_2_70a174e6eec0518423a09f38d3ab08f7.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/pelucia_goias_periquito_mod_pistola_187_3_80fed79d38e3fcf3dbecd02f674b2a65.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "squeeze_garrafa_goias_aluminio_verde_700ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/squeeze-garrafa-goias-aluminio-verde-700ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/squeeze_garrafa_goias_aluminio_verde_700ml_93_1_d0d73f540840249df083b64ce4bc859d.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "squeeze_garrafa_goias_plastica_500ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/squeeze-garrafa-goias-plastica-500ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/squeeze_garrafa_goias_plastica_500ml_105_1_0926afbc7cd657078f9a9c45b8e7a4ad.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "squeeze_goias_aluminio_verde_500ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/squeeze-goias-aluminio-verde-500ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/squeeze_garrafa_goias_aluminio_verde_500ml_85_1_d3972946b2424396f50a62eab038608e.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "squeeze_plastica_garrafa_goias_verde_500ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/squeeze-plastica-garrafa-goias-verde-500ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/squeeze_plastica_garrafa_goias_verde_500ml_95_1_1c6b6f2ae7acc3d83f5d9e82d6f6f184.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "squeeze_plastica_garrafa_goias_verde_com_alca_500ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/squeeze-plastica-garrafa-goias-verde-com-alca-500ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/squeeze_plastica_garrafa_goias_verde_com_alca_500ml_97_1_605a871dc64ab7946a6e539386494c2b.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml": {
+    "productPage": "https://www.storegoias.com.br/acessorios/squeeze-plastica-garrafa-goias-verde-rosqueavel-500ml",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml_91_1_99783d2964369fc62e4c93d8c665b473.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camisa_reserva_goias_alviverde_branca": {
+    "productPage": "https://www.storegoias.com.br/feminino/casual/camisa/camisa-reserva-goias-alviverde-branca",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_reserva_goias_alviverde_branca_349_1_8fc2b7518c0f664985e23d0afe878c13.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_reserva_goias_alviverde_branca_349_2_9bc93660997052ec23a5ddf44f8f962b.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camisa_reserva_goias_alviverde": {
+    "productPage": "https://www.storegoias.com.br/masculino/casual/camisa/camisa-reserva-goias-alviverde",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_reserva_gois_alviverde_1_20260305140423_31c23d0cca9f.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camisa_reserva_goias_escudo": {
+    "productPage": "https://www.storegoias.com.br/masculino/casual/camisa/camisa-reserva-goias-escudo",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_reserva_goias_escudo_353_1_9ae7bd01ffbc00cd5e2d9611fc392073.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_reserva_goias_escudo_353_2_51e8163fb57c58c740aa43e791281c61.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camiseta_reserva_goias_coracao_esmeraldino_preta": {
+    "productPage": "https://www.storegoias.com.br/masculino/casual/camisa/camiseta-reserva-goias-coracao-esmeraldino-preta",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_coracao_esmeraldino_preta_259_2_0b634f40a3d6f1bdc409f26ccdfc85bf.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_coracao_esmeraldino_preta_259_3_50a01530a7f1569ba23ac7b6ff1bc264.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_coracao_esmeraldino_preta_259_4_986e2a30aaa33ed5767225b360dd74ea.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camiseta_reserva_goias_forca_esmeraldino_cinza": {
+    "productPage": "https://www.storegoias.com.br/masculino/casual/camisa/camiseta-reserva-goias-forca-esmeraldino-cinza",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_forca_esmeraldino_cinza_261_1_2a189ba031de2531b063267e3e5589e5.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_forca_esmeraldino_cinza_261_2_6b5f15e89f80b0eeddcb202c2f37cca3.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_forca_esmeraldino_cinza_261_3_e6531c810035e8c1c5754b68ea2d4c3e.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_forca_esmeraldino_cinza_261_4_e98eeb2fcf51c964e6528444d433cbb1.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camiseta_reserva_goias_pica_pau_esmeraldino_branca": {
+    "productPage": "https://www.storegoias.com.br/masculino/casual/camisa/camiseta-reserva-goias-pica-pau-esmeraldino-branca",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_pica_pau_esmeraldino_branca_257_1_e0255ad637d95768c51a68093c22699e.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_pica_pau_esmeraldino_branca_257_2_b163af61e9799a2a76d1fc24f18c6e43.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_pica_pau_esmeraldino_branca_257_3_d332b6b1b583c1110cab339b7933dfa2.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_pica_pau_esmeraldino_branca_257_4_fe68096960eb0948aef7168b6e8e094c.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camiseta_reserva_goias_pica_pau_esmeraldino_branca_257_5_659efed8b7e4d025ba1e550af4871587.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camisa_uniforme_03_goias_feminino": {
+    "productPage": "https://www.storegoias.com.br/feminino/uniforme-de-jogo/uniforme-03/camisa-uniforme-03-goias-feminino",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_feminino_337_3_59d09bc0086f56204f1314054ae5bc27.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_feminino_337_4_5aa654a404b09ffb5d17b98f75837ca7.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_feminino_337_5_d731eb0f31d81624a65eae5184e342b2.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_feminino_337_6_4891a363f080281ad0297c194e9111f9.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_feminino_337_7_7f4b484827c55ea7cec04d22e280eeae.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camisa_goias_uniforme_03_goleiro_jogador_masculina": {
+    "productPage": "https://www.storegoias.com.br/masculino/goleiro/uniforme-03/camisa-goias-uniforme-03-goleiro-jogador-masculina-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_gois_uniforme_03_goleiro_jogador_masculina_1_20251110135749_a9b7efcb5b88.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "camisa_goias_uniforme_01_goleiro_juvenil_jogador": {
+    "productPage": "https://www.storegoias.com.br/infanto-juvenil/goleiro/uniforme-01/camisa-goias-uniforme-01-goleiro-juvenil-jogador-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_gois_uniforme_01_goleiro_juvenil_jogador202_1_20250825181032_8b03d145e8ca.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
   }
 }

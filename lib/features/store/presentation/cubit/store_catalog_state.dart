@@ -24,6 +24,20 @@ class StoreCatalogState extends Equatable {
   List<StoreProduct> get officialJerseys =>
       products.where((p) => p.type == ProductType.matchJersey).toList();
 
+  // Seções da Home agrupadas por público (roupas) + acessórios — só as que
+  // têm produto aparecem (a UI já esconde seção vazia). "Uniformes" não vira
+  // seção: quase todo o vestuário é uniforme, então separar por público
+  // (masculino/feminino/infantil) informa mais que repetir "uniformes".
+  List<StoreProduct> _audience(StoreAudience a) => products
+      .where((p) => p.audience == a && p.type != ProductType.accessory)
+      .toList();
+
+  List<StoreProduct> get masculineProducts => _audience(StoreAudience.masculine);
+  List<StoreProduct> get feminineProducts => _audience(StoreAudience.feminine);
+  List<StoreProduct> get kidsProducts => _audience(StoreAudience.kids);
+  List<StoreProduct> get accessoryProducts =>
+      products.where((p) => p.type == ProductType.accessory).toList();
+
   /// Único produto personalizável do catálogo (hoje, o juvenil) — alimenta
   /// o card editorial "Personalize seu manto" da Home da loja.
   StoreProduct? get personalizableProduct {

@@ -79,6 +79,64 @@ flutter:
     - lib/assets/store/products/goalkeeper_01_kids_player/
     - lib/assets/store/products/goalkeeper_01_youth_fan/
     - lib/assets/store/products/goalkeeper_02_youth_player/
+    - lib/assets/store/products/bag_lateral_goias/
+    - lib/assets/store/products/bag_lateral_goias_alviverde_preta/
+    - lib/assets/store/products/bag_lateral_goias_cafe/
+    - lib/assets/store/products/bola_de_futebol_goias_padrao/
+    - lib/assets/store/products/bola_de_futebol_n_05_goias_e_c/
+    - lib/assets/store/products/bola_de_futebol_protech_goias_e_c/
+    - lib/assets/store/products/bola_de_futevolei_protech_goias_e_c/
+    - lib/assets/store/products/bolsa_esportiva_goias_verde/
+    - lib/assets/store/products/boneco_colecionavel_mascote_goias_periquito/
+    - lib/assets/store/products/caneca_estadio_goias_e_c/
+    - lib/assets/store/products/caneca_goias_gel_peca_verde/
+    - lib/assets/store/products/caneca_termica_goias_inox_verde_700ml/
+    - lib/assets/store/products/carteira_goias_de_luxo_verde/
+    - lib/assets/store/products/carteira_goias_de_luxo_vertical_alviverde/
+    - lib/assets/store/products/carteira_goias_de_luxo_vertical_alviverde_preta/
+    - lib/assets/store/products/carteira_goias_tradicional_preta/
+    - lib/assets/store/products/chaveiro_abridor_goias_retangular/
+    - lib/assets/store/products/chaveiro_goias_camisa/
+    - lib/assets/store/products/chaveiro_goias_chuteira/
+    - lib/assets/store/products/chaveiro_goias_mosquetao_resinado/
+    - lib/assets/store/products/chaveiro_goias_redondo_e_giratorio/
+    - lib/assets/store/products/chinelo_slide_goias_branca/
+    - lib/assets/store/products/chinelo_slide_goias_preta/
+    - lib/assets/store/products/chinelo_slide_goias_verde/
+    - lib/assets/store/products/cooler_goias_10_latas/
+    - lib/assets/store/products/copo_termico_goias_sleek_473ml/
+    - lib/assets/store/products/copo_termico_goias_sleek_off_white_473ml/
+    - lib/assets/store/products/copo_termico_goias_tulipinha_354ml/
+    - lib/assets/store/products/garrafa_termica_oasis_goias_black_750ml/
+    - lib/assets/store/products/garrafa_termica_oasis_goias_off_white_750ml/
+    - lib/assets/store/products/kit_cartao_goias_caixa_havanna/
+    - lib/assets/store/products/kit_cartao_goias_caixa_verde/
+    - lib/assets/store/products/kit_porta_cartao_preto/
+    - lib/assets/store/products/luvas_de_goleiro_infantil_goias/
+    - lib/assets/store/products/meiao_goias_branco_adulto/
+    - lib/assets/store/products/meiao_goias_branco_infantil/
+    - lib/assets/store/products/meiao_goias_branco_juvenil/
+    - lib/assets/store/products/meiao_goias_branco_verde/
+    - lib/assets/store/products/meiao_goias_verde_juvenil/
+    - lib/assets/store/products/mini_bola_de_futebol_goias_e_c/
+    - lib/assets/store/products/mochila_goias_verde/
+    - lib/assets/store/products/mochila_pequena_preta_goias/
+    - lib/assets/store/products/pelucia_goias_periquito_mod_p/
+    - lib/assets/store/products/squeeze_garrafa_goias_aluminio_verde_700ml/
+    - lib/assets/store/products/squeeze_garrafa_goias_plastica_500ml/
+    - lib/assets/store/products/squeeze_goias_aluminio_verde_500ml/
+    - lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_500ml/
+    - lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_com_alca_500ml/
+    - lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml/
+    - lib/assets/store/products/camisa_reserva_goias_alviverde_branca/
+    - lib/assets/store/products/camisa_reserva_goias_alviverde/
+    - lib/assets/store/products/camisa_reserva_goias_escudo/
+    - lib/assets/store/products/camiseta_reserva_goias_coracao_esmeraldino_preta/
+    - lib/assets/store/products/camiseta_reserva_goias_forca_esmeraldino_cinza/
+    - lib/assets/store/products/camiseta_reserva_goias_pica_pau_esmeraldino_branca/
+    - lib/assets/store/products/camisa_uniforme_03_goias_feminino/
+    - lib/assets/store/products/camisa_goias_uniforme_03_goleiro_jogador_masculina/
+    - lib/assets/store/products/camisa_goias_uniforme_01_goleiro_juvenil_jogador/
     - lib/assets/store/promo/
     - lib/assets/videos/
     - lib/assets/audio/club/hinos/

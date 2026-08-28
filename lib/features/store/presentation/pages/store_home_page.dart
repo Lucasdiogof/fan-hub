@@ -175,8 +175,20 @@ class _StoreHomeContent extends StatelessWidget {
         const _CategoryRow(),
         const SizedBox(height: AppSpacing.xl),
         _ProductSection(
-          title: l10n.storeSectionOfficialJerseys,
-          products: state.officialJerseys,
+          title: categoryDisplayName(l10n, 'masculine'),
+          products: state.masculineProducts,
+        ),
+        _ProductSection(
+          title: categoryDisplayName(l10n, 'feminine'),
+          products: state.feminineProducts,
+        ),
+        _ProductSection(
+          title: categoryDisplayName(l10n, 'kids'),
+          products: state.kidsProducts,
+        ),
+        _ProductSection(
+          title: categoryDisplayName(l10n, 'accessories'),
+          products: state.accessoryProducts,
         ),
       ],
     );
