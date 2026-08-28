@@ -56,21 +56,33 @@ class _AnimatedImageSplashState extends State<AnimatedImageSplash>
     WidgetsBinding.instance.addPostFrameCallback((_) => _precacheAndStart());
   }
 
+  /// Só espera a CENA 1 (a que aparece primeiro) pra liberar a splash —
+  /// cenas 2 e 3 pré-carregam em paralelo, em segundo plano, sem bloquear
+  /// nada. Esperar as 3 por completo antes de mostrar qualquer coisa foi o
+  /// bug real desta splash: mesmo já comprimidas (ver `AppAssets`), numa
+  /// rede móvel ruim isso ainda podia demorar o suficiente pra bater no
+  /// timer de segurança de 7s antes da 1ª cena sequer aparecer — tela
+  /// branca até o fallback mandar direto pro login/home. A cena 1 sozinha
+  /// (~160KB) sobe rápido em qualquer rede, e as outras duas têm o tempo
+  /// de exibição da cena 1 inteiro (~1,5s) de folga pra terminar.
   Future<void> _precacheAndStart() async {
-    try {
-      await Future.wait([
-        precacheImage(const AssetImage(AppAssets.splashScene1), context),
-        precacheImage(const AssetImage(AppAssets.splashScene2), context),
-        precacheImage(const AssetImage(AppAssets.splashScene3), context),
-      ]);
-    } catch (_) {
-      // Asset local, praticamente nunca falha — mas se falhar, segue com o
-      // que já carregou em vez de travar a splash esperando pra sempre.
-    }
+    unawaited(_precacheQuietly(AppAssets.splashScene2));
+    unawaited(_precacheQuietly(AppAssets.splashScene3));
+    await _precacheQuietly(AppAssets.splashScene1);
+
     if (!mounted) return;
     setState(() => _precached = true);
     widget.onReady();
     unawaited(_controller.forward());
+  }
+
+  Future<void> _precacheQuietly(String asset) async {
+    try {
+      await precacheImage(AssetImage(asset), context);
+    } catch (_) {
+      // Asset local, praticamente nunca falha — mas se falhar, segue com o
+      // que já carregou em vez de travar a splash esperando pra sempre.
+    }
   }
 
   void _report(VoidCallback callback) {

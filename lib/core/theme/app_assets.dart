@@ -31,7 +31,12 @@ class AppAssets {
   /// As 3 cenas da splash animada (ver `AnimatedImageSplash`) — usada no
   /// lugar do vídeo só em iOS Web/PWA, onde o Safari bloqueia autoplay de
   /// vídeo silenciosamente. Mesma arte-final do vídeo, em 3 quadros fixos.
+  /// splash2/3 chegaram como PNG de ~1.3-1.7MB cada (conteúdo fotográfico,
+  /// formato errado pra isso) — recodificados pra JPEG qualidade 85 sem
+  /// perda visível (mesmo pixel, só entrega mais rápida): ~96KB/222KB. Em
+  /// rede móvel, 3.2MB de PNG podia sozinho estourar os 7s do timer de
+  /// segurança da splash antes da 1ª cena sequer aparecer.
   static const String splashScene1 = 'lib/assets/splash1.jpeg';
-  static const String splashScene2 = 'lib/assets/splash2.png';
-  static const String splashScene3 = 'lib/assets/splash3.png';
+  static const String splashScene2 = 'lib/assets/splash2.jpg';
+  static const String splashScene3 = 'lib/assets/splash3.jpg';
 }
