@@ -46,8 +46,18 @@ class LineupField extends StatelessWidget {
                 const Positioned.fill(child: LineupFieldBackground()),
                 Positioned.fill(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: AppSpacing.sm,
+                    // Assimétrico de propósito: a linha de cima (ataque) é
+                    // a mais alta — camisa + selo de número — e com
+                    // `spaceBetween` fica colada na borda de cima, sem
+                    // nenhuma folga própria. Sem essa margem extra, ela
+                    // estourava o `ClipRRect` do campo (jogador "saindo de
+                    // campo"). A de baixo (goleiro) não tem esse problema,
+                    // por isso a folga ali continua pequena.
+                    padding: const EdgeInsets.fromLTRB(
+                      0,
+                      AppSpacing.xxl,
+                      0,
+                      AppSpacing.sm,
                     ),
                     child: Column(
                       // `spaceBetween` (não `spaceEvenly`) empurra a
