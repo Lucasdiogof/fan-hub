@@ -57,6 +57,12 @@ flutter:
     - lib/assets/store/products/uniform_01_female_fan/
     - lib/assets/store/products/uniform_03_male/
     - lib/assets/store/products/uniform_02_youth/
+    - lib/assets/store/products/uniform_01_male_player/
+    - lib/assets/store/products/uniform_02_male_player/
+    - lib/assets/store/products/uniform_02_female_fan/
+    - lib/assets/store/products/uniform_03_kids/
+    - lib/assets/store/products/goalkeeper_01_male_fan/
+    - lib/assets/store/products/shin_guard_kids_black/
     - lib/assets/store/promo/
     - lib/assets/videos/
     - lib/assets/audio/club/hinos/

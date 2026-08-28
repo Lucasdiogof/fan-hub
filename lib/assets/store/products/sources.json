@@ -34,5 +34,78 @@
     "retrievedAt": "2026-08-28",
     "catalogMode": "mock",
     "note": "URLs fornecidas diretamente pelo usuário (não localizadas por busca própria). Baixadas uma única vez em tempo de build/preparo de conteúdo — nunca carregadas remotamente em runtime. Já vinham como JPEG bem otimizado, mantidas como estavam."
+  },
+  "uniform_01_male_player": {
+    "productPage": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-01/camisa-goias-uniforme-01-masculina-squadra-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_masculina_jogador_2025_9_1_b23010599f8329d663485ce836d6347f.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_masculina_jogador_2025_9_2_71f32e6a6b883da25d0d6f1c88b3c6bf.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_masculina_jogador_2025_9_3_95c08a18a20282f5ec7559156dc56aea.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_masculina_jogador_2025_9_4_5ed04a8123616aa3241b65827d93fcaa.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_masculina_jogador_2025_9_5_36fc9d85518a29a96ddaed170577d792.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_masculina_jogador_2025_9_6_61ee26991a24de7aa68bd44d85f6fec8.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "uniform_02_male_player": {
+    "productPage": "https://www.storegoias.com.br/masculino/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-masculina-squadra-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_masculina_jogador_2025_19_1_15a3e4768fdc69728169390b83242841.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_masculina_jogador_2025_19_2_f8fda74a5c5b413139bc00b59da33d8d.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_masculina_jogador_2025_19_3_becbb436d7b482eafd2e6f56ede4e50b.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_masculina_jogador_2025_19_4_a2e286e3892e821f1378a4f3b28bab27.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_masculina_jogador_2025_19_5_d7ca0294236e3154b990892d24ff3568.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "uniform_02_female_fan": {
+    "productPage": "https://www.storegoias.com.br/feminino/uniforme-de-jogo/uniforme-02/camisa-goias-uniforme-02-feminina-fan-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_feminina_torcedor_2025_43_1_43a6368ba83f6eefd1a604fab37ef80b.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_feminina_torcedor_2025_43_2_32767d66243f319bf822204ddfc384a6.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_feminina_torcedor_2025_43_3_d1f93e8fc3686be56e4de1a38aa5e96f.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_feminina_torcedor_2025_43_4_28372fc09b7613fe499d246dbfbf8ed9.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_02_feminina_torcedor_2025_43_5_0750e2d987970999bd455428b7603b29.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "uniform_03_kids": {
+    "productPage": "https://www.storegoias.com.br/infanto-juvenil/uniforme-de-jogo/uniforme-03/camisa-uniforme-03-goias-infantil",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_infantil_343_1_33beff1b3e0a02e7a8b72325680fedf6.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_infantil_343_2_fec305196bc934c86aec89bec1cf4626.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_infantil_343_3_5bb9f0ba689b475b402428a9c5dd0f2f.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_infantil_343_4_69842f5b1f31ff2da41f6d08c3cc956e.png",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_uniforme_03_goias_infantil_343_5_89cab5ec2fc794429803b78f5599f00d.png"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "goalkeeper_01_male_fan": {
+    "productPage": "https://www.storegoias.com.br/masculino/goleiro/uniforme-01/camisa-goias-uniforme-01-goleiro-torcedor-masculina-2025",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_goleiro_torcedor_masculina_2025_215_1_3c9d806591af3fb3339d20d5f81b1fb3.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_goleiro_torcedor_masculina_2025_215_2_5ccdffc5ac66ea332427f9e0ae54cd79.jpg",
+      "https://images.tcdn.com.br/img/img_prod/1398192/camisa_goias_uniforme_01_goleiro_torcedor_masculina_2025_215_3_044b4a3132bb146ab9166858642cfc1a.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
+  },
+  "shin_guard_kids_black": {
+    "productPage": "https://www.storegoias.com.br/acessorios/caneleira-goias-infantil-preta",
+    "originalImages": [
+      "https://images.tcdn.com.br/img/img_prod/1398192/caneleira_goias_infantil_preta_77_1_42c090817b6035633292d97f0867dfe1.jpg"
+    ],
+    "retrievedAt": "2026-08-28",
+    "catalogMode": "mock",
+    "note": "Fotos oficiais recuperadas de snapshot arquivado (web.archive.org) da página do produto — a loja ao vivo passou a redirecionar pra \"Nenhum produto encontrado\". URLs originais do CDN da Tray (images.tcdn.com.br) baixadas uma vez em tempo de preparo de conteúdo; nunca carregadas remotamente em runtime. Preço confirmado no snapshot."
   }
 }

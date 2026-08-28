@@ -495,7 +495,9 @@ class _ProductInfo extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          '${metaParts.join(' · ')} · ${l10n.storeReferenceLabel} ${product.reference}',
+          product.reference.isEmpty
+              ? metaParts.join(' · ')
+              : '${metaParts.join(' · ')} · ${l10n.storeReferenceLabel} ${product.reference}',
           style: TextStyle(fontSize: 12, color: colors.textSecondary),
         ),
         const SizedBox(height: AppSpacing.md),

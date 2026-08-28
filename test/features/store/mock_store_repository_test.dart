@@ -38,10 +38,11 @@ void main() {
 
       expect(
         categories.map((c) => c.id),
-        containsAll(['uniforms', 'feminine']),
+        containsAll(['uniforms', 'feminine', 'kids', 'accessories']),
       );
-      // "kids" não tem nenhum produto no catálogo mock — não deveria aparecer.
-      expect(categories.map((c) => c.id), isNot(contains('kids')));
+      // "souvenirs" existe no menu mas não tem nenhum produto no catálogo
+      // mock — categorias sem produto não devem aparecer.
+      expect(categories.map((c) => c.id), isNot(contains('souvenirs')));
     },
   );
 
