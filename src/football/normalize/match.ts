@@ -22,6 +22,10 @@ export interface InternalMatch {
   status: string;
   homeScore: number | null;
   awayScore: number | null;
+  /** Minuto ao vivo pronto pra exibir (ex.: "37'"), vindo direto de
+   * `timePeriod` — nunca calculado a partir do kickoff. `null` fora de
+   * partida ao vivo/intervalo (a fonte só manda esse campo nesses casos). */
+  minute: string | null;
 }
 
 /** OneFootball manda o horário em UTC de verdade (com `Z`) — converte pro
@@ -66,6 +70,7 @@ export function normalizeOneFootballMatchCard(card: OneFootballMatchCard, venue:
     status: mapOneFootballStatus(card.period),
     homeScore: parseOneFootballScore(card.homeTeam.score),
     awayScore: parseOneFootballScore(card.awayTeam.score),
+    minute: card.timePeriod ?? null,
   };
 }
 
@@ -94,5 +99,6 @@ export function normalizeOneFootballMatchScore(
     status: mapOneFootballStatus(score.period),
     homeScore: parseOneFootballScore(score.homeTeam.score),
     awayScore: parseOneFootballScore(score.awayTeam.score),
+    minute: score.timePeriod ?? null,
   };
 }

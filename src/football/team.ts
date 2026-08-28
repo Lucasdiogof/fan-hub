@@ -5,7 +5,13 @@ import { withErrorHandling } from './_lib/handleErrors';
 import { fetchTeamMatchLists, fetchMatchDetail } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchCard } from './normalize/match';
 
-const CACHE_TTL_SECONDS = 30 * 60;
+// Era 30 min — baixado pra caber o card "ao vivo" da Home/Jogos, que faz
+// polling desta MESMA rota a cada ~45s enquanto o jogo do Goiás está
+// rolando (ver `LiveMatchPoller` no Flutter). O cache do Worker ainda
+// protege o OneFootball de qualquer coisa: com N usuários acompanhando ao
+// mesmo tempo, o upstream só é chamado uma vez a cada 60s (cache
+// compartilhado na borda), nunca uma vez por usuário/poll.
+const CACHE_TTL_SECONDS = 60;
 const COMPETITION_NAME = 'Brasileirão Série B';
 
 /**

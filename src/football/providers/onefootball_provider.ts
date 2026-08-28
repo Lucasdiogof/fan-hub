@@ -15,6 +15,9 @@ export interface OneFootballMatchCard {
   competitionName?: string;
   kickoff: string;
   period: string;
+  /** Minuto em andamento pronto pra exibir (ex.: "37'", "45+2'") — só
+   * presente enquanto a partida está ao vivo/intervalo. */
+  timePeriod?: string;
   homeTeam: OneFootballTeamRef;
   awayTeam: OneFootballTeamRef;
 }
@@ -27,6 +30,8 @@ export interface OneFootballMatchList {
 export interface OneFootballMatchScore {
   kickoff: { utcTimestamp: string };
   period: string;
+  /** Mesmo campo de `OneFootballMatchCard.timePeriod` — ver ali. */
+  timePeriod?: string;
   homeTeam: { name: string; score: string; imageObject: { path: string } };
   awayTeam: { name: string; score: string; imageObject: { path: string } };
 }

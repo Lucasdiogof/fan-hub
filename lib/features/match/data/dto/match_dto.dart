@@ -12,6 +12,7 @@ class MatchDto {
     this.venue,
     this.homeScore,
     this.awayScore,
+    this.minute,
   });
 
   final String id;
@@ -28,6 +29,7 @@ class MatchDto {
   final String? venue;
   final int? homeScore;
   final int? awayScore;
+  final String? minute;
 
   factory MatchDto.fromJson(Map<String, dynamic> json) {
     return MatchDto(
@@ -40,6 +42,7 @@ class MatchDto {
       venue: json['venue'] as String?,
       homeScore: json['homeScore'] as int?,
       awayScore: json['awayScore'] as int?,
+      minute: json['minute'] as String?,
     );
   }
 
@@ -55,6 +58,7 @@ class MatchDto {
       status: MatchStatus.values.asNameMap()[statusName] ?? MatchStatus.unknown,
       homeScore: homeScore,
       awayScore: awayScore,
+      minute: minute,
     );
   }
 }

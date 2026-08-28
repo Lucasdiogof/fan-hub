@@ -78,5 +78,15 @@ void main() {
       final entity = dto.toEntity(competitionName: 'Brasileirão Série B');
       expect(entity.status, MatchStatus.unknown);
     });
+
+    test('minute defaults to null when absent, carries through as-is when present', () {
+      expect(MatchDto.fromJson(json).minute, isNull);
+      final live = MatchDto.fromJson({...json, 'minute': "37'"});
+      expect(live.minute, "37'");
+      expect(
+        live.toEntity(competitionName: 'Brasileirão Série B').minute,
+        "37'",
+      );
+    });
   });
 }

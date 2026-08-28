@@ -54,7 +54,10 @@ class NextMatchCard extends StatelessWidget {
               ],
               Text(
                 isLive
-                    ? matchStatusLabel(context.l10n, match.status).toUpperCase()
+                    ? [
+                        matchStatusLabel(context.l10n, match.status).toUpperCase(),
+                        if (match.minute != null) match.minute!,
+                      ].join(' · ')
                     : context.l10n.homeNextMatch,
                 style: TextStyle(
                   fontSize: 11,

@@ -12,6 +12,7 @@ import 'package:goias_app/features/match/presentation/match_navigation.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_header.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section_selector.dart';
+import 'package:goias_app/features/match/presentation/widgets/live_match_poller.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_list_item.dart';
 import 'package:goias_app/features/match/presentation/widgets/next_match_card.dart';
 import 'package:goias_app/features/match/presentation/widgets/standings_view.dart';
@@ -176,6 +177,9 @@ Widget _centered(Widget child) {
   );
 }
 
+bool _isLive(Match match) =>
+    match.status == MatchStatus.live || match.status == MatchStatus.halftime;
+
 class _MatchesContent extends StatelessWidget {
   const _MatchesContent({required this.state, required this.onMatchTap});
 
@@ -204,11 +208,21 @@ class _MatchesContent extends StatelessWidget {
       ),
       children: [
         if (nextMatch != null) ...[
-          NextMatchCard(
-            match: nextMatch,
-            onBuyTicket: () => context.push('/tickets'),
-            onViewDetails: () => onMatchTap(nextMatch),
-          ),
+          _isLive(nextMatch)
+              ? LiveMatchPoller(
+                  match: nextMatch,
+                  onMatchEnded: () => context.read<GamesCubit>().refresh(),
+                  builder: (context, liveMatch) => NextMatchCard(
+                    match: liveMatch,
+                    onBuyTicket: () => context.push('/tickets'),
+                    onViewDetails: () => onMatchTap(liveMatch),
+                  ),
+                )
+              : NextMatchCard(
+                  match: nextMatch,
+                  onBuyTicket: () => context.push('/tickets'),
+                  onViewDetails: () => onMatchTap(nextMatch),
+                ),
           const SizedBox(height: AppSpacing.xxl),
         ],
         if (roundMatches.isNotEmpty) ...[

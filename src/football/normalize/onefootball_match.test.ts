@@ -70,6 +70,16 @@ describe('normalizeOneFootballMatchCard', () => {
       'Estádio de Hailé Pinheiro',
     );
   });
+
+  it('defaults minute to null when the source has no timePeriod (pre-match/finished)', () => {
+    expect(normalizeOneFootballMatchCard(scheduledCard).minute).toBeNull();
+    expect(normalizeOneFootballMatchCard(finishedCard).minute).toBeNull();
+  });
+
+  it('carries the live minute through as-is, never recomputed from kickoff', () => {
+    const liveCard: OneFootballMatchCard = { ...scheduledCard, period: 'FIRST_HALF', timePeriod: "37'" };
+    expect(normalizeOneFootballMatchCard(liveCard).minute).toBe("37'");
+  });
 });
 
 describe('normalizeOneFootballMatchScore', () => {
@@ -90,5 +100,11 @@ describe('normalizeOneFootballMatchScore', () => {
     expect(match.awayScore).toBeNull();
     expect(match.id).toBe('onef-2669472');
     expect(match.venue).toBe('Estádio de Hailé Pinheiro');
+  });
+
+  it('carries timePeriod through as minute, null when absent', () => {
+    expect(normalizeOneFootballMatchScore('2669472', score, null).minute).toBeNull();
+    const live = { ...score, period: 'FIRST_HALF', timePeriod: "2'" };
+    expect(normalizeOneFootballMatchScore('2669472', live, null).minute).toBe("2'");
   });
 });

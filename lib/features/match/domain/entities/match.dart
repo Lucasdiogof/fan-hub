@@ -25,6 +25,7 @@ class Match extends Equatable {
     this.city,
     this.homeScore,
     this.awayScore,
+    this.minute,
   });
 
   final String id;
@@ -43,6 +44,11 @@ class Match extends Equatable {
   final int? homeScore;
   final int? awayScore;
 
+  /// Minuto ao vivo pronto pra exibir (ex.: "37'", "45+2'") — vem direto da
+  /// fonte, nunca calculado localmente a partir do kickoff. `null` fora de
+  /// partida ao vivo/intervalo.
+  final String? minute;
+
   bool isHomeTeam(int teamId) => homeTeam.id == teamId;
 
   @override
@@ -58,5 +64,6 @@ class Match extends Equatable {
     status,
     homeScore,
     awayScore,
+    minute,
   ];
 }

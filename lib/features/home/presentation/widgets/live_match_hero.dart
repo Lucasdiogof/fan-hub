@@ -53,7 +53,10 @@ class LiveMatchHero extends StatelessWidget {
                     const LivePulseDot(color: Colors.white, size: 8),
                     const SizedBox(width: 8),
                     Text(
-                      matchStatusLabel(l10n, match.status).toUpperCase(),
+                      [
+                        matchStatusLabel(l10n, match.status).toUpperCase(),
+                        if (match.minute != null) match.minute!,
+                      ].join(' · '),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 11,

@@ -5,6 +5,7 @@ import 'package:goias_app/features/home/presentation/widgets/live_match_hero.dar
 import 'package:goias_app/features/home/presentation/widgets/next_match_hero.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/match_navigation.dart';
+import 'package:goias_app/features/match/presentation/widgets/live_match_poller.dart';
 
 /// Escolhe entre a contagem regressiva (pré-jogo) e o placar ao vivo — quem
 /// decide é `match.status`, nunca o relógio local do widget: `HomeCubit`
@@ -33,10 +34,14 @@ class NextMatchSection extends StatelessWidget {
         switchInCurve: Curves.easeOut,
         switchOutCurve: Curves.easeIn,
         child: _isLive
-            ? LiveMatchHero(
+            ? LiveMatchPoller(
                 key: const ValueKey('live'),
                 match: match,
-                onFollow: () => openMatchDetails(context, match),
+                onMatchEnded: () => context.read<HomeCubit>().load(),
+                builder: (context, liveMatch) => LiveMatchHero(
+                  match: liveMatch,
+                  onFollow: () => openMatchDetails(context, liveMatch),
+                ),
               )
             : NextMatchHero(
                 key: const ValueKey('upcoming'),
