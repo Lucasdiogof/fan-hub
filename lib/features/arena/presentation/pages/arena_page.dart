@@ -38,6 +38,7 @@ import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
+import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
 const _arenaTabIndex = 4;
@@ -296,16 +297,8 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                       AppSpacing.xxxl,
                     ),
                     children: [
-                      Text(
-                        'ARENA ESMERALDINA',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 0.3,
-                          color: colors.textPrimary,
-                        ),
-                      ),
-                      const SizedBox(height: 3),
+                      PageTitle(context.l10n.arenaTitle.toUpperCase()),
+                      const SizedBox(height: 6),
                       Text(
                         context.l10n.arenaSubtitle,
                         style: TextStyle(
