@@ -178,9 +178,9 @@ class _PositionGroupSection extends StatelessWidget {
           LayoutBuilder(
             builder: (context, constraints) {
               final crossAxisCount = switch (constraints.maxWidth) {
-                < 500 => 3,
-                < 750 => 4,
-                _ => 5,
+                < 500 => 2,
+                < 750 => 3,
+                _ => 4,
               };
               return GridView.builder(
                 shrinkWrap: true,
@@ -189,7 +189,7 @@ class _PositionGroupSection extends StatelessWidget {
                   crossAxisCount: crossAxisCount,
                   mainAxisSpacing: AppSpacing.md,
                   crossAxisSpacing: AppSpacing.md,
-                  childAspectRatio: 0.92,
+                  childAspectRatio: 0.88,
                 ),
                 itemCount: sorted.length,
                 itemBuilder: (context, index) =>
@@ -232,7 +232,7 @@ class _SquadCard extends StatelessWidget {
                 memberId: member.id,
                 photoUrl: member.photoUrl,
                 shirtNumber: member.shirtNumber,
-                size: 60,
+                size: 86,
               ),
               const SizedBox(height: AppSpacing.sm),
               Text(
@@ -241,7 +241,7 @@ class _SquadCard extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 13.5,
                   fontWeight: FontWeight.w700,
                   color: colors.textPrimary,
                 ),

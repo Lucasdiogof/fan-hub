@@ -13,6 +13,7 @@ class SquadMember {
     this.heightCm,
     this.foot,
     this.photoUrl,
+    this.instagramUrl,
     this.clubHistory = const [],
   });
 
@@ -27,6 +28,7 @@ class SquadMember {
   final int? heightCm;
   final String? foot;
   final String? photoUrl;
+  final String? instagramUrl;
   final List<ClubHistoryEntry> clubHistory;
 
   int? get age {
@@ -57,6 +59,7 @@ class SquadMember {
       heightCm: json['height_cm'] as int?,
       foot: json['foot'] as String?,
       photoUrl: json['photo_url'] as String?,
+      instagramUrl: json['instagram_url'] as String?,
       clubHistory: history
           .map((e) => ClubHistoryEntry.fromJson(e as Map<String, dynamic>))
           .toList(growable: false),

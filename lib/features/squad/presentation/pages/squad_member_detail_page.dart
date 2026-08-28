@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/profile/data/social_links_data.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
 import 'package:goias_app/features/squad/presentation/widgets/club_history_table.dart';
 import 'package:goias_app/features/squad/presentation/widgets/squad_avatar.dart';
+import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
@@ -93,6 +96,10 @@ class SquadMemberDetailPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      if (member.instagramUrl != null) ...[
+                        const SizedBox(height: AppSpacing.sm),
+                        Center(child: _InstagramButton(member: member)),
+                      ],
                       const SizedBox(height: AppSpacing.xl),
                       _InfoGrid(member: member),
                       if (member.clubHistory.isNotEmpty) ...[
@@ -113,6 +120,49 @@ class SquadMemberDetailPage extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Ícone reaproveitado de `SocialLinksData` (glifo oficial já usado no
+/// Perfil) — evita duplicar o SVG do Instagram numa segunda constante.
+final _instagramSvgPath = SocialLinksData.all
+    .firstWhere((link) => link.name == 'Instagram')
+    .svgPathData!;
+
+class _InstagramButton extends StatelessWidget {
+  const _InstagramButton({required this.member});
+
+  final SquadMember member;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Semantics(
+      button: true,
+      label: context.l10n.socialOpenLink('Instagram'),
+      child: InkWell(
+        onTap: () => openExternalUrl(context, member.instagramUrl!),
+        borderRadius: BorderRadius.circular(999),
+        child: Container(
+          width: 38,
+          height: 38,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: colors.secondary,
+            shape: BoxShape.circle,
+          ),
+          child: SizedBox(
+            width: 18,
+            height: 18,
+            child: SvgPicture.string(
+              '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
+              '<path d="$_instagramSvgPath"/></svg>',
+              colorFilter: ColorFilter.mode(colors.primary, BlendMode.srcIn),
             ),
           ),
         ),

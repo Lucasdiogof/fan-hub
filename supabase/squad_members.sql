@@ -10,13 +10,20 @@ create table if not exists public.squad_members (
   height_cm int,
   foot text,
   photo_url text,
+  instagram_url text,
   club_history jsonb not null default '[]'::jsonb,
   sort_order int not null default 0,
   updated_at timestamptz not null default now()
 );
 
+-- Coluna adicionada depois — `if not exists` pra rodar em cima de uma
+-- tabela já existente sem quebrar.
+alter table public.squad_members
+  add column if not exists instagram_url text;
+
 alter table public.squad_members enable row level security;
 
+drop policy if exists "squad_members_read_all" on public.squad_members;
 create policy "squad_members_read_all"
   on public.squad_members
   for select
