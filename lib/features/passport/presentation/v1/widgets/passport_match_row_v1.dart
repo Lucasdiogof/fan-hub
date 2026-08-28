@@ -10,8 +10,8 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 /// horário ou estádio: só oculta a linha. Partida agendada nunca tem
 /// controle de marcação (regra vem do servidor via `canMarkAttendance`,
 /// aqui só reflete visualmente).
-class PassportMatchRow extends StatelessWidget {
-  const PassportMatchRow({
+class PassportMatchRowV1 extends StatelessWidget {
+  const PassportMatchRowV1({
     required this.match,
     required this.attended,
     required this.onToggle,

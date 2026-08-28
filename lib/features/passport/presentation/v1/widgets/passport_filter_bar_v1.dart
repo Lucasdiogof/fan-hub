@@ -7,8 +7,8 @@ import 'package:goias_app/features/passport/presentation/cubit/passport_state.da
 /// Dois eixos de filtro independentes e combináveis: status/lado (chips
 /// principais) e competição (linha secundária, só aparece quando a
 /// temporada atual tem mais de uma competição).
-class PassportFilterBar extends StatelessWidget {
-  const PassportFilterBar({
+class PassportFilterBarV1 extends StatelessWidget {
+  const PassportFilterBarV1({
     required this.state,
     required this.onFilterSelected,
     required this.onCompetitionSelected,

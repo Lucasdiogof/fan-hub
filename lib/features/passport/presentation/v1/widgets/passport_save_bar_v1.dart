@@ -9,8 +9,8 @@ import 'package:goias_app/shared/widgets/app_primary_button.dart';
 /// Barra fixa embaixo — só aparece quando há alteração pendente. Nunca uma
 /// requisição por checkbox: o botão dispara `cubit.save()` uma vez só, com
 /// todo o delta acumulado.
-class PassportSaveBar extends StatelessWidget {
-  const PassportSaveBar({
+class PassportSaveBarV1 extends StatelessWidget {
+  const PassportSaveBarV1({
     required this.state,
     required this.onSave,
     super.key,

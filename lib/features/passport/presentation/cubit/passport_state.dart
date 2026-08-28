@@ -3,7 +3,7 @@ import 'package:goias_app/features/passport/domain/entities/passport_match.dart'
 import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
-enum PassportFilter { all, attended, notAttended, home, away }
+enum PassportFilter { all, attended, notAttended, home, away, neutral }
 
 class PassportState extends Equatable {
   const PassportState({
@@ -19,6 +19,7 @@ class PassportState extends Equatable {
     this.summary = PassportSummary.empty,
     this.saveStatus = LoadStatus.initial,
     this.saveErrorMessage,
+    this.markedCountsByYear = const {},
   });
 
   final LoadStatus seasonsStatus;
@@ -41,6 +42,13 @@ class PassportState extends Equatable {
   final PassportSummary summary;
   final LoadStatus saveStatus;
   final String? saveErrorMessage;
+
+  /// Cache local (só desta sessão) de quantas partidas marcadas cada ano já
+  /// teve, preenchido conforme o usuário visita os anos — `passport_seasons`
+  /// não devolve esse número por ano (só o total de partidas), então pra
+  /// anos ainda não visitados o seletor mostra só o total, nunca inventa um
+  /// "0 marcados".
+  final Map<int, int> markedCountsByYear;
 
   bool get hasUnsavedChanges => pendingChanges.isNotEmpty;
   int get pendingChangeCount => pendingChanges.length;
@@ -69,6 +77,8 @@ class PassportState extends Equatable {
           return match.goiasIsHome == true;
         case PassportFilter.away:
           return match.goiasIsHome == false;
+        case PassportFilter.neutral:
+          return match.neutralSite == true;
       }
     }).toList(growable: false);
   }
@@ -92,6 +102,7 @@ class PassportState extends Equatable {
     PassportSummary? summary,
     LoadStatus? saveStatus,
     String? Function()? saveErrorMessage,
+    Map<int, int>? markedCountsByYear,
   }) {
     return PassportState(
       seasonsStatus: seasonsStatus ?? this.seasonsStatus,
@@ -112,6 +123,7 @@ class PassportState extends Equatable {
       saveErrorMessage: saveErrorMessage != null
           ? saveErrorMessage()
           : this.saveErrorMessage,
+      markedCountsByYear: markedCountsByYear ?? this.markedCountsByYear,
     );
   }
 
@@ -129,5 +141,6 @@ class PassportState extends Equatable {
     summary,
     saveStatus,
     saveErrorMessage,
+    markedCountsByYear,
   ];
 }

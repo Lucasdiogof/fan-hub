@@ -772,6 +772,90 @@ class AppLocalizationsEs extends AppLocalizations {
       'Marca tus partidos en el Pasaporte para aparecer aquí.';
 
   @override
+  String get passportCoverEyebrow => 'MI PASAPORTE';
+
+  @override
+  String passportCoverMatchesLived(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count partidos vividos con el Verdão',
+      one: '1 partido vivido con el Verdão',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String passportCoverSince(Object year) {
+    return 'Desde $year';
+  }
+
+  @override
+  String passportCoverSeasonProgress(Object marked, Object total, Object year) {
+    return '$year · $marked de $total partidos';
+  }
+
+  @override
+  String get passportIndicatorMatches => 'Partidos vividos';
+
+  @override
+  String get passportIndicatorYears => 'Años acompañando';
+
+  @override
+  String get passportIndicatorFirstMatch => 'Primera presencia';
+
+  @override
+  String get passportEmptyHeadline => 'Todo hincha tiene una historia.';
+
+  @override
+  String get passportEmptyBody =>
+      'Marca los partidos que viviste con el Verdão y construye tu Passaporte Esmeraldino.';
+
+  @override
+  String get passportEmptyCta => 'Empezar mi pasaporte';
+
+  @override
+  String get passportChangeSeasonCta => 'Cambiar temporada';
+
+  @override
+  String passportSeasonProgressLine(Object marked, Object total) {
+    return '$marked de $total partidos registrados';
+  }
+
+  @override
+  String passportSeasonTotalOnly(Object total) {
+    return '$total partidos';
+  }
+
+  @override
+  String get passportFilterImWasThere => 'Yo fui';
+
+  @override
+  String get passportFilterNeutral => 'Campo neutral';
+
+  @override
+  String get passportFiltersCta => 'Filtros';
+
+  @override
+  String passportFiltersActiveSummary(Object label) {
+    return 'Filtro: $label';
+  }
+
+  @override
+  String get passportFiltersClear => 'Limpiar';
+
+  @override
+  String passportMonthProgressLine(Object marked, Object total) {
+    return '$marked de $total partidos vividos';
+  }
+
+  @override
+  String get passportSealLabel => 'YO FUI';
+
+  @override
+  String get passportSealActionLabel => 'Yo fui';
+
+  @override
   String get arenaRankingDetailFirstTry => 'Aciertos a la primera';
 
   @override
@@ -1252,7 +1336,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get socialMediaTitle => 'MEDIOS';
 
   @override
-  String get socialMediaSubtitle => 'Goiás en la Red';
+  String get socialTabSocial => 'Redes Sociales';
 
   @override
   String get socialFeedLoadError => 'No se pudo cargar el feed';
@@ -1925,7 +2009,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get crowdMostVotedFormation => 'formación más votada';
+  String get crowdMostVotedFormation => 'formación elegida';
 
   @override
   String get crowdNoVotes => 'Aún no hay votos';

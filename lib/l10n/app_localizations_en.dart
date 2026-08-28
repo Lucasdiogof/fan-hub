@@ -768,6 +768,90 @@ class AppLocalizationsEn extends AppLocalizations {
       'Mark your matches in the Passport to show up here.';
 
   @override
+  String get passportCoverEyebrow => 'MY PASSPORT';
+
+  @override
+  String passportCoverMatchesLived(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count matches lived with Verdão',
+      one: '1 match lived with Verdão',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String passportCoverSince(Object year) {
+    return 'Since $year';
+  }
+
+  @override
+  String passportCoverSeasonProgress(Object marked, Object total, Object year) {
+    return '$year · $marked of $total matches';
+  }
+
+  @override
+  String get passportIndicatorMatches => 'Matches lived';
+
+  @override
+  String get passportIndicatorYears => 'Years following';
+
+  @override
+  String get passportIndicatorFirstMatch => 'First match';
+
+  @override
+  String get passportEmptyHeadline => 'Every fan has a story.';
+
+  @override
+  String get passportEmptyBody =>
+      'Mark the matches you lived with Verdão and build your Passaporte Esmeraldino.';
+
+  @override
+  String get passportEmptyCta => 'Start my passport';
+
+  @override
+  String get passportChangeSeasonCta => 'Change season';
+
+  @override
+  String passportSeasonProgressLine(Object marked, Object total) {
+    return '$marked of $total matches logged';
+  }
+
+  @override
+  String passportSeasonTotalOnly(Object total) {
+    return '$total matches';
+  }
+
+  @override
+  String get passportFilterImWasThere => 'I was there';
+
+  @override
+  String get passportFilterNeutral => 'Neutral venue';
+
+  @override
+  String get passportFiltersCta => 'Filters';
+
+  @override
+  String passportFiltersActiveSummary(Object label) {
+    return 'Filter: $label';
+  }
+
+  @override
+  String get passportFiltersClear => 'Clear';
+
+  @override
+  String passportMonthProgressLine(Object marked, Object total) {
+    return '$marked of $total matches lived';
+  }
+
+  @override
+  String get passportSealLabel => 'I WAS THERE';
+
+  @override
+  String get passportSealActionLabel => 'I was there';
+
+  @override
   String get arenaRankingDetailFirstTry => 'First-try correct';
 
   @override
@@ -1246,7 +1330,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get socialMediaTitle => 'MEDIA';
 
   @override
-  String get socialMediaSubtitle => 'Goiás Online';
+  String get socialTabSocial => 'Social Media';
 
   @override
   String get socialFeedLoadError => 'Couldn\'t load the feed';
@@ -1917,7 +2001,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get crowdMostVotedFormation => 'most voted formation';
+  String get crowdMostVotedFormation => 'chosen formation';
 
   @override
   String get crowdNoVotes => 'No votes yet';

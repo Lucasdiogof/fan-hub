@@ -56,11 +56,13 @@ class PassportCubit extends Cubit<PassportState> {
     final result = await _repository.getMatchesForYear(year);
     switch (result) {
       case Success(:final data):
+        final marked = data.where((m) => m.isFinished && m.attended).length;
         emit(
           state.copyWith(
             matchesStatus: data.isEmpty ? LoadStatus.empty : LoadStatus.success,
             matches: data,
             matchesErrorMessage: () => null,
+            markedCountsByYear: {...state.markedCountsByYear, year: marked},
           ),
         );
       case Error(:final failure):
@@ -134,6 +136,15 @@ class PassportCubit extends Cubit<PassportState> {
         ];
         final remainingPending = Map<String, bool>.from(state.pendingChanges)
           ..removeWhere((id, _) => appliedIds.contains(id));
+        final year = state.selectedYear;
+        final updatedCounts = year == null
+            ? state.markedCountsByYear
+            : {
+                ...state.markedCountsByYear,
+                year: updatedMatches
+                    .where((m) => m.season == year && m.isFinished && m.attended)
+                    .length,
+              };
         emit(
           state.copyWith(
             matches: updatedMatches,
@@ -142,6 +153,7 @@ class PassportCubit extends Cubit<PassportState> {
             saveErrorMessage: () => rejected.isEmpty
                 ? null
                 : 'Algumas partidas não puderam ser salvas.',
+            markedCountsByYear: updatedCounts,
           ),
         );
         unawaited(loadSummary());

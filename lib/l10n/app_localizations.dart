@@ -1516,6 +1516,132 @@ abstract class AppLocalizations {
   /// **'Marque suas partidas no Passaporte pra aparecer aqui.'**
   String get passportRankingEmptyMessage;
 
+  /// No description provided for @passportCoverEyebrow.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEU PASSAPORTE'**
+  String get passportCoverEyebrow;
+
+  /// No description provided for @passportCoverMatchesLived.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 jogo vivido com o Verdão} other{{count} jogos vividos com o Verdão}}'**
+  String passportCoverMatchesLived(num count);
+
+  /// No description provided for @passportCoverSince.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desde {year}'**
+  String passportCoverSince(Object year);
+
+  /// No description provided for @passportCoverSeasonProgress.
+  ///
+  /// In pt, this message translates to:
+  /// **'{year} · {marked} de {total} partidas'**
+  String passportCoverSeasonProgress(Object marked, Object total, Object year);
+
+  /// No description provided for @passportIndicatorMatches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogos vividos'**
+  String get passportIndicatorMatches;
+
+  /// No description provided for @passportIndicatorYears.
+  ///
+  /// In pt, this message translates to:
+  /// **'Anos acompanhando'**
+  String get passportIndicatorYears;
+
+  /// No description provided for @passportIndicatorFirstMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'Primeira presença'**
+  String get passportIndicatorFirstMatch;
+
+  /// No description provided for @passportEmptyHeadline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todo torcedor tem uma história.'**
+  String get passportEmptyHeadline;
+
+  /// No description provided for @passportEmptyBody.
+  ///
+  /// In pt, this message translates to:
+  /// **'Marque os jogos que você viveu com o Verdão e construa seu Passaporte Esmeraldino.'**
+  String get passportEmptyBody;
+
+  /// No description provided for @passportEmptyCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Começar meu passaporte'**
+  String get passportEmptyCta;
+
+  /// No description provided for @passportChangeSeasonCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Trocar temporada'**
+  String get passportChangeSeasonCta;
+
+  /// No description provided for @passportSeasonProgressLine.
+  ///
+  /// In pt, this message translates to:
+  /// **'{marked} de {total} jogos registrados'**
+  String passportSeasonProgressLine(Object marked, Object total);
+
+  /// No description provided for @passportSeasonTotalOnly.
+  ///
+  /// In pt, this message translates to:
+  /// **'{total} jogos'**
+  String passportSeasonTotalOnly(Object total);
+
+  /// No description provided for @passportFilterImWasThere.
+  ///
+  /// In pt, this message translates to:
+  /// **'Eu fui'**
+  String get passportFilterImWasThere;
+
+  /// No description provided for @passportFilterNeutral.
+  ///
+  /// In pt, this message translates to:
+  /// **'Campo neutro'**
+  String get passportFilterNeutral;
+
+  /// No description provided for @passportFiltersCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Filtros'**
+  String get passportFiltersCta;
+
+  /// No description provided for @passportFiltersActiveSummary.
+  ///
+  /// In pt, this message translates to:
+  /// **'Filtro: {label}'**
+  String passportFiltersActiveSummary(Object label);
+
+  /// No description provided for @passportFiltersClear.
+  ///
+  /// In pt, this message translates to:
+  /// **'Limpar'**
+  String get passportFiltersClear;
+
+  /// No description provided for @passportMonthProgressLine.
+  ///
+  /// In pt, this message translates to:
+  /// **'{marked} de {total} jogos vividos'**
+  String passportMonthProgressLine(Object marked, Object total);
+
+  /// No description provided for @passportSealLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'EU FUI'**
+  String get passportSealLabel;
+
+  /// No description provided for @passportSealActionLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Eu fui'**
+  String get passportSealActionLabel;
+
   /// No description provided for @arenaRankingDetailFirstTry.
   ///
   /// In pt, this message translates to:
@@ -2290,11 +2416,11 @@ abstract class AppLocalizations {
   /// **'MÍDIA'**
   String get socialMediaTitle;
 
-  /// No description provided for @socialMediaSubtitle.
+  /// No description provided for @socialTabSocial.
   ///
   /// In pt, this message translates to:
-  /// **'Goiás na Rede'**
-  String get socialMediaSubtitle;
+  /// **'Redes Sociais'**
+  String get socialTabSocial;
 
   /// No description provided for @socialFeedLoadError.
   ///
@@ -3463,7 +3589,7 @@ abstract class AppLocalizations {
   /// No description provided for @crowdMostVotedFormation.
   ///
   /// In pt, this message translates to:
-  /// **'formação mais votada'**
+  /// **'formação escolhida'**
   String get crowdMostVotedFormation;
 
   /// No description provided for @crowdNoVotes.

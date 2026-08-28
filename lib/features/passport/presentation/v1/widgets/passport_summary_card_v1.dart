@@ -8,8 +8,8 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 /// Resumo do usuário — nunca mostra contador de estádios (os dados
 /// históricos não têm `venue_id` preenchido ainda; mostrar "0 estádios"
 /// seria informação errada, não só incompleta).
-class PassportSummaryCard extends StatelessWidget {
-  const PassportSummaryCard({required this.summary, super.key});
+class PassportSummaryCardV1 extends StatelessWidget {
+  const PassportSummaryCardV1({required this.summary, super.key});
 
   final PassportSummary summary;
 

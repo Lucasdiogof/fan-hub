@@ -6,8 +6,8 @@ import 'package:goias_app/features/passport/domain/entities/passport_match.dart'
 /// Seletor horizontal de ano — só a contagem por temporada (nunca as
 /// partidas) já vem carregada de `passport_seasons`, então trocar de ano
 /// aqui é sempre leve.
-class PassportYearSelector extends StatelessWidget {
-  const PassportYearSelector({
+class PassportYearSelectorV1 extends StatelessWidget {
+  const PassportYearSelectorV1({
     required this.seasons,
     required this.selectedYear,
     required this.markedByYear,
