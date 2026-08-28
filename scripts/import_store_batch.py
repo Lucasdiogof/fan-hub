@@ -33,7 +33,9 @@ def curl(url, out=None):
     if out:
         subprocess.run(args + ['-o', out], check=False)
         return None
-    return subprocess.run(args, capture_output=True).stdout.decode('utf-8', 'ignore')
+    # Páginas da loja são ISO-8859-1 — decodifica em latin-1 pra preservar
+    # acentos nos nomes. URLs (ASCII) não são afetadas.
+    return subprocess.run(args, capture_output=True).stdout.decode('latin-1', 'replace')
 
 
 def derive(path):
@@ -71,7 +73,7 @@ def derive(path):
 
 
 def find_gallery(html, slug):
-    imgs = re.findall(r'https://images\.tcdn\.com\.br/img/img_prod/1398192/[a-z0-9_]+_[0-9]+_[a-f0-9]{8,}\.(?:jpg|png|webp)', html)
+    imgs = re.findall(r'https://images\.tcdn\.com\.br/img/img_prod/1398192/[a-z0-9_]+_[0-9]+_[a-f0-9]{8,}\.(?:jpe?g|png|webp)', html)
     imgs = [u for u in imgs if not re.search(r'/(?:90|180|250|400|600)_', u)]
     stoks = set(norm(slug))
     groups = {}
@@ -84,10 +86,16 @@ def find_gallery(html, slug):
         score = len(stoks & set(norm(base)))
         if score > best_score or (score == best_score and best and len(us) > len(groups[best])):
             best, best_score = base, score
-    if best is None or best_score < 2:
-        return []
-    return sorted(set(groups[best]),
-                  key=lambda u: int(re.search(r'_([0-9]+)_[a-f0-9]{8,}\.[a-z]+$', u).group(1)))
+    if best is not None and best_score >= 1:
+        return sorted(set(groups[best]),
+                      key=lambda u: int(re.search(r'_([0-9]+)_[a-f0-9]{8,}\.[a-z]+$', u).group(1)))
+    # Fallback: a og:image é a foto canônica daquela página/produto — garante
+    # pelo menos uma foto oficial correta mesmo quando a galeria tem nome fora
+    # do padrão do slug.
+    m = re.search(r'og:image" content="(https://images\.tcdn\.com\.br/[^"]+\.(?:jpe?g|png|webp))', html)
+    if m:
+        return [re.sub(r'/(?:90|180|250|400|600)_', '/', m.group(1))]
+    return []
 
 
 def sizes_for(path, html, ptype):
@@ -132,14 +140,16 @@ def main():
         path = url.split('storegoias.com.br/')[1]
         html = curl('https://web.archive.org/web/2025id_/' + url)
         mt = re.search(r'og:title" content="([^"]+)', html)
-        mp = re.search(r'"price":"([0-9.]+)"', html)
-        if not (mt and mp):
-            skipped.append((path, 'sem nome/preço')); continue
+        if not mt:
+            skipped.append((path, 'sem nome')); continue
         gallery = find_gallery(html, path.split('/')[-1])
         if not gallery:
-            skipped.append((path, 'galeria não confirmada')); continue
+            skipped.append((path, 'sem foto')); continue
+        mp = re.search(r'"price":"([0-9.]+)"', html)
+        # Preço opcional nesta leva: quando não confirmado, entra como 0 pro
+        # usuário definir depois (nome + foto continuam obrigatórios).
+        price = float(mp.group(1)) if mp else 0.0
         name = re.split(r' - Goi| \? |\|', mt.group(1))[0].strip()
-        price = float(mp.group(1))
         audience, aud_cat, uni, ptype, cats, colls, slug = derive(path)
         pid = slug_to_id(slug, existing_ids)
         existing_ids.add(pid)
@@ -185,7 +195,8 @@ def main():
 
     print(f'ADICIONADOS: {len(added)}')
     for pid, name, price, n, tp in added:
-        print(f'  + {pid} | {name[:42]} | R$ {price} | {n}f | {tp}')
+        tag = '  <<< PREÇO A DEFINIR' if price == 0 else ''
+        print(f'  + {pid} | {name[:42]} | R$ {price} | {n}f | {tp}{tag}')
     print(f'PULADOS: {len(skipped)}')
     for path, why in skipped:
         print(f'  - {path[:60]}: {why}')

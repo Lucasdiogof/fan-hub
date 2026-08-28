@@ -137,6 +137,27 @@ flutter:
     - lib/assets/store/products/camisa_uniforme_03_goias_feminino/
     - lib/assets/store/products/camisa_goias_uniforme_03_goleiro_jogador_masculina/
     - lib/assets/store/products/camisa_goias_uniforme_01_goleiro_juvenil_jogador/
+    - lib/assets/store/products/chaveiro_goias_cortador_de_unha/
+    - lib/assets/store/products/chaveiro_goias_garrafa_abridor/
+    - lib/assets/store/products/chaveiro_goias_luva/
+    - lib/assets/store/products/meiao_goias_verde_infantil/
+    - lib/assets/store/products/bone_03_goias/
+    - lib/assets/store/products/bone_goias/
+    - lib/assets/store/products/colar_goias_coracao_foleado_dourado/
+    - lib/assets/store/products/colar_goias_escudo_foleado_prata/
+    - lib/assets/store/products/colar_goias_g_cravejado/
+    - lib/assets/store/products/colar_goias_g_cravejado_dourado/
+    - lib/assets/store/products/colar_goias_g_foleado_prata/
+    - lib/assets/store/products/colar_goias_quadro_coracao_foleado_prata/
+    - lib/assets/store/products/copo_termico_goias_sleek_salmao_473ml/
+    - lib/assets/store/products/cordao_goias_de_chavei_nada_pode_abalar/
+    - lib/assets/store/products/flamula_goias_triangular/
+    - lib/assets/store/products/relogio_goias_classic_k_branco/
+    - lib/assets/store/products/relogio_goias_classic_k_verde/
+    - lib/assets/store/products/relogio_goias_esmeraldino_k_branco/
+    - lib/assets/store/products/relogio_goias_esmeraldino_k_verde/
+    - lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_branco/
+    - lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_verde/
     - lib/assets/store/promo/
     - lib/assets/videos/
     - lib/assets/audio/club/hinos/

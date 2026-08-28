@@ -4016,5 +4016,768 @@
     "relatedProductIds": [],
     "specifications": [],
     "sourceUrl": "https://www.storegoias.com.br/infanto-juvenil/goleiro/uniforme-01/camisa-goias-uniforme-01-goleiro-juvenil-jogador-2025"
+  },
+  {
+    "id": "chaveiro_goias_cortador_de_unha",
+    "slug": "chaveiro-goias-cortador-de-unha",
+    "name": "Chaveiro Goiás Cortador de Unha",
+    "shortDescription": "Chaveiro Goiás Cortador de Unha",
+    "description": "Chaveiro Goiás Cortador de Unha. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 31.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/chaveiro_goias_cortador_de_unha/front.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/chaveiro_goias_cortador_de_unha/front.jpg",
+    "variations": [
+      {
+        "sku": "chaveiro_goias_cortador_de_unha-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/chaveiro-goias-cortador-de-unha"
+  },
+  {
+    "id": "chaveiro_goias_garrafa_abridor",
+    "slug": "chaveiro-goias-garrafa-abridor",
+    "name": "Chaveiro Goiás Garrafa Abridor",
+    "shortDescription": "Chaveiro Goiás Garrafa Abridor",
+    "description": "Chaveiro Goiás Garrafa Abridor. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 31.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/chaveiro_goias_garrafa_abridor/front.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/chaveiro_goias_garrafa_abridor/front.jpg",
+    "variations": [
+      {
+        "sku": "chaveiro_goias_garrafa_abridor-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/chaveiro-goias-garrafa-abridor"
+  },
+  {
+    "id": "chaveiro_goias_luva",
+    "slug": "chaveiro-goias-luva",
+    "name": "Chaveiro Goiás Luva",
+    "shortDescription": "Chaveiro Goiás Luva",
+    "description": "Chaveiro Goiás Luva. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 31.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/chaveiro_goias_luva/front.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/chaveiro_goias_luva/front.jpg",
+    "variations": [
+      {
+        "sku": "chaveiro_goias_luva-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/chaveiro-goias-luva"
+  },
+  {
+    "id": "meiao_goias_verde_infantil",
+    "slug": "meiao-goias-verde-infantil",
+    "name": "Meião Goiás Verde Infantil",
+    "shortDescription": "Meião Goiás Verde Infantil",
+    "description": "Meião Goiás Verde Infantil. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [
+      "fan"
+    ],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 47.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/meiao_goias_verde_infantil/front.jpg"
+    ],
+    "thumbnail": "lib/assets/store/products/meiao_goias_verde_infantil/front.jpg",
+    "variations": [
+      {
+        "sku": "meiao_goias_verde_infantil-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/meiao-goias-verde-infantil"
+  },
+  {
+    "id": "bone_03_goias",
+    "slug": "bone-03-goias",
+    "name": "Boné 03 Goiás",
+    "shortDescription": "Boné 03 Goiás",
+    "description": "Boné 03 Goiás. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 149.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/bone_03_goias/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/bone_03_goias/front.jpeg",
+    "variations": [
+      {
+        "sku": "bone_03_goias-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/bone-03-goias"
+  },
+  {
+    "id": "bone_goias",
+    "slug": "bone-goias",
+    "name": "Boné 02 Goiás",
+    "shortDescription": "Boné 02 Goiás",
+    "description": "Boné 02 Goiás. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 149.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/bone_goias/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/bone_goias/front.jpeg",
+    "variations": [
+      {
+        "sku": "bone_goias-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/bone-goias"
+  },
+  {
+    "id": "colar_goias_coracao_foleado_dourado",
+    "slug": "colar-goias-coracao-foleado-dourado",
+    "name": "Colar Goiás Coração Foleado Dourado",
+    "shortDescription": "Colar Goiás Coração Foleado Dourado",
+    "description": "Colar Goiás Coração Foleado Dourado. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 69.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/colar_goias_coracao_foleado_dourado/front.jpeg",
+      "lib/assets/store/products/colar_goias_coracao_foleado_dourado/back.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/colar_goias_coracao_foleado_dourado/front.jpeg",
+    "variations": [
+      {
+        "sku": "colar_goias_coracao_foleado_dourado-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/colar-goias-coracao-foleado-dourado"
+  },
+  {
+    "id": "colar_goias_escudo_foleado_prata",
+    "slug": "colar-goias-escudo-foleado-prata",
+    "name": "Colar Goiás Escudo Foleado Prata",
+    "shortDescription": "Colar Goiás Escudo Foleado Prata",
+    "description": "Colar Goiás Escudo Foleado Prata. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 69.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/colar_goias_escudo_foleado_prata/front.jpeg",
+      "lib/assets/store/products/colar_goias_escudo_foleado_prata/back.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/colar_goias_escudo_foleado_prata/front.jpeg",
+    "variations": [
+      {
+        "sku": "colar_goias_escudo_foleado_prata-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/colar-goias-escudo-foleado-prata"
+  },
+  {
+    "id": "colar_goias_g_cravejado",
+    "slug": "colar-goias-g-cravejado",
+    "name": "Colar Goiás",
+    "shortDescription": "Colar Goiás",
+    "description": "Colar Goiás. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 69.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/colar_goias_g_cravejado/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/colar_goias_g_cravejado/front.jpeg",
+    "variations": [
+      {
+        "sku": "colar_goias_g_cravejado-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/colar-goias-g-cravejado"
+  },
+  {
+    "id": "colar_goias_g_cravejado_dourado",
+    "slug": "colar-goias-g-cravejado-dourado",
+    "name": "Colar Goiás",
+    "shortDescription": "Colar Goiás",
+    "description": "Colar Goiás. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 72.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/colar_goias_g_cravejado_dourado/front.jpeg",
+      "lib/assets/store/products/colar_goias_g_cravejado_dourado/back.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/colar_goias_g_cravejado_dourado/front.jpeg",
+    "variations": [
+      {
+        "sku": "colar_goias_g_cravejado_dourado-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/colar-goias-g-cravejado-dourado"
+  },
+  {
+    "id": "colar_goias_g_foleado_prata",
+    "slug": "colar-goias-g-foleado-prata",
+    "name": "Colar Goiás",
+    "shortDescription": "Colar Goiás",
+    "description": "Colar Goiás. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 69.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/colar_goias_g_foleado_prata/front.jpeg",
+      "lib/assets/store/products/colar_goias_g_foleado_prata/back.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/colar_goias_g_foleado_prata/front.jpeg",
+    "variations": [
+      {
+        "sku": "colar_goias_g_foleado_prata-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/colar-goias-g-foleado-prata"
+  },
+  {
+    "id": "colar_goias_quadro_coracao_foleado_prata",
+    "slug": "colar-goias-quadro-coracao-foleado-prata",
+    "name": "Colar Goiás Quadro Coração Foleado Prata",
+    "shortDescription": "Colar Goiás Quadro Coração Foleado Prata",
+    "description": "Colar Goiás Quadro Coração Foleado Prata. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 69.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/colar_goias_quadro_coracao_foleado_prata/front.jpeg",
+      "lib/assets/store/products/colar_goias_quadro_coracao_foleado_prata/back.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/colar_goias_quadro_coracao_foleado_prata/front.jpeg",
+    "variations": [
+      {
+        "sku": "colar_goias_quadro_coracao_foleado_prata-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/colar-goias-quadro-coracao-foleado-prata"
+  },
+  {
+    "id": "copo_termico_goias_sleek_salmao_473ml",
+    "slug": "copo-termico-goias-sleek-salmao-473ml",
+    "name": "Copo Térmico Goiás Sleek Salmão 473ml",
+    "shortDescription": "Copo Térmico Goiás Sleek Salmão 473ml",
+    "description": "Copo Térmico Goiás Sleek Salmão 473ml. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 224.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/copo_termico_goias_sleek_salmao_473ml/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/copo_termico_goias_sleek_salmao_473ml/front.jpeg",
+    "variations": [
+      {
+        "sku": "copo_termico_goias_sleek_salmao_473ml-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/copo-termico-goias-sleek-salmao-473ml"
+  },
+  {
+    "id": "cordao_goias_de_chavei_nada_pode_abalar",
+    "slug": "cordao-goias-de-chavei-nada-pode-abalar",
+    "name": "Cordão Goiás de Chavei Nada Pode Abalar",
+    "shortDescription": "Cordão Goiás de Chavei Nada Pode Abalar",
+    "description": "Cordão Goiás de Chavei Nada Pode Abalar. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 30.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/cordao_goias_de_chavei_nada_pode_abalar/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/cordao_goias_de_chavei_nada_pode_abalar/front.jpeg",
+    "variations": [
+      {
+        "sku": "cordao_goias_de_chavei_nada_pode_abalar-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/cordao-goias-de-chavei-nada-pode-abalar"
+  },
+  {
+    "id": "flamula_goias_triangular",
+    "slug": "flamula-goias-triangular",
+    "name": "Flâmula Goiás Triangular",
+    "shortDescription": "Flâmula Goiás Triangular",
+    "description": "Flâmula Goiás Triangular. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 107.9,
+    "originalPrice": null,
+    "installments": 1,
+    "images": [
+      "lib/assets/store/products/flamula_goias_triangular/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/flamula_goias_triangular/front.jpeg",
+    "variations": [
+      {
+        "sku": "flamula_goias_triangular-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/flamula-goias-triangular"
+  },
+  {
+    "id": "relogio_goias_classic_k_branco",
+    "slug": "relogio-goias-classic-k-branco",
+    "name": "Relógio Goiás Classic K - Branco",
+    "shortDescription": "Relógio Goiás Classic K - Branco",
+    "description": "Relógio Goiás Classic K - Branco. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 189.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/relogio_goias_classic_k_branco/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/relogio_goias_classic_k_branco/front.jpeg",
+    "variations": [
+      {
+        "sku": "relogio_goias_classic_k_branco-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/relogio-goias-classic-k-branco"
+  },
+  {
+    "id": "relogio_goias_classic_k_verde",
+    "slug": "relogio-goias-classic-k-verde",
+    "name": "Relógio Goiás Classic K - Verde",
+    "shortDescription": "Relógio Goiás Classic K - Verde",
+    "description": "Relógio Goiás Classic K - Verde. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 189.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/relogio_goias_classic_k_verde/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/relogio_goias_classic_k_verde/front.jpeg",
+    "variations": [
+      {
+        "sku": "relogio_goias_classic_k_verde-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/relogio-goias-classic-k-verde"
+  },
+  {
+    "id": "relogio_goias_esmeraldino_k_branco",
+    "slug": "relogio-goias-esmeraldino-k-branco",
+    "name": "Relógio Goiás Esmeraldino K - Branco",
+    "shortDescription": "Relógio Goiás Esmeraldino K - Branco",
+    "description": "Relógio Goiás Esmeraldino K - Branco. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 189.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/relogio_goias_esmeraldino_k_branco/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/relogio_goias_esmeraldino_k_branco/front.jpeg",
+    "variations": [
+      {
+        "sku": "relogio_goias_esmeraldino_k_branco-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/relogio-goias-esmeraldino-k-branco"
+  },
+  {
+    "id": "relogio_goias_esmeraldino_k_verde",
+    "slug": "relogio-goias-esmeraldino-k-verde",
+    "name": "Relógio Goiás Esmeraldino K - Verde",
+    "shortDescription": "Relógio Goiás Esmeraldino K - Verde",
+    "description": "Relógio Goiás Esmeraldino K - Verde. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 189.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/relogio_goias_esmeraldino_k_verde/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/relogio_goias_esmeraldino_k_verde/front.jpeg",
+    "variations": [
+      {
+        "sku": "relogio_goias_esmeraldino_k_verde-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/relogio-goias-esmeraldino-k-verde"
+  },
+  {
+    "id": "relogio_goias_tempo_de_jogo_green_k_branco",
+    "slug": "relogio-goias-tempo-de-jogo-green-k-branco",
+    "name": "Relógio Goiás Tempo de Jogo Green K - Branco",
+    "shortDescription": "Relógio Goiás Tempo de Jogo Green K - Branco",
+    "description": "Relógio Goiás Tempo de Jogo Green K - Branco. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 189.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_branco/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_branco/front.jpeg",
+    "variations": [
+      {
+        "sku": "relogio_goias_tempo_de_jogo_green_k_branco-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/relogio-goias-tempo-de-jogo-green-k-branco"
+  },
+  {
+    "id": "relogio_goias_tempo_de_jogo_green_k_verde",
+    "slug": "relogio-goias-tempo-de-jogo-green-k-verde",
+    "name": "Relógio Goiás Tempo de Jogo Green K - Verde",
+    "shortDescription": "Relógio Goiás Tempo de Jogo Green K - Verde",
+    "description": "Relógio Goiás Tempo de Jogo Green K - Verde. Produto oficial licenciado do Goiás Esporte Clube.",
+    "brand": "Goiás",
+    "reference": "",
+    "categories": [
+      "accessories"
+    ],
+    "collections": [],
+    "audience": "unisex",
+    "productType": "accessory",
+    "uniformNumber": null,
+    "price": 189.9,
+    "originalPrice": null,
+    "installments": 2,
+    "images": [
+      "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_verde/front.jpeg"
+    ],
+    "thumbnail": "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_verde/front.jpeg",
+    "variations": [
+      {
+        "sku": "relogio_goias_tempo_de_jogo_green_k_verde-unico",
+        "size": "ÚNICO",
+        "stock": 15
+      }
+    ],
+    "isFeatured": false,
+    "isNew": false,
+    "personalizationOptions": null,
+    "relatedProductIds": [],
+    "specifications": [],
+    "sourceUrl": "https://www.storegoias.com.br/acessorios/relogio-goias-tempo-de-jogo-green-k-verde"
   }
 ]
