@@ -36,6 +36,8 @@ import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
+import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
+import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -63,7 +65,13 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   late Future<ArenaProgressSnapshot> _progressFuture =
       sl<ArenaProgressRepository>().loadSnapshot();
   late Future<({int rank, int totalScore})?> _myRankFuture = _loadMyRank();
+  late Future<int> _passportCountFuture = _loadPassportCount();
   bool _celebrationShown = false;
+
+  Future<int> _loadPassportCount() async {
+    final result = await sl<PassportRepository>().getSummary();
+    return result is Success<PassportSummary> ? result.data.totalMatches : 0;
+  }
 
   Future<({int rank, int totalScore})?> _loadMyRank() async {
     final result = await sl<ArenaRankingRepository>().getMyRank(
@@ -78,6 +86,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     setState(() {
       _progressFuture = sl<ArenaProgressRepository>().loadSnapshot();
       _myRankFuture = _loadMyRank();
+      _passportCountFuture = _loadPassportCount();
     });
   }
 
@@ -378,6 +387,39 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                                   ),
                             ctaLabel: context.l10n.arenaHighlightViewRanking,
                             onTap: () => _openRanking(context),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: AppSpacing.sm),
+                      FutureBuilder<int>(
+                        future: _passportCountFuture,
+                        builder: (context, snapshot) {
+                          final count = snapshot.data;
+                          return ArenaHighlightCard(
+                            leading: ArenaHighlightLeading(
+                              child: Icon(
+                                Icons.confirmation_number_outlined,
+                                color: colors.primary,
+                                size: 24,
+                              ),
+                            ),
+                            topBadge: context.l10n.passportEyebrow.toUpperCase(),
+                            title: context.l10n.passportTitle,
+                            description: context.l10n.passportCardDescription,
+                            extra: count != null && count > 0
+                                ? Text(
+                                    context.l10n.passportCardRegisteredCount(
+                                      count,
+                                    ),
+                                    style: TextStyle(
+                                      fontSize: 11.5,
+                                      fontWeight: FontWeight.w700,
+                                      color: colors.primary,
+                                    ),
+                                  )
+                                : null,
+                            ctaLabel: context.l10n.passportCardCta,
+                            onTap: () => context.push('/arena/passport'),
                           );
                         },
                       ),

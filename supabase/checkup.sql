@@ -165,6 +165,52 @@ select '❌ lineup_matches: placar negativo', id || ' → ' || home_score::text 
 from public.lineup_matches where home_score < 0 or away_score < 0
 
 -- ═══════════════════════════════════════════════════════════════════════════
+-- PASSPORT_MATCHES / PASSPORT_ATTENDANCES
+-- ═══════════════════════════════════════════════════════════════════════════
+
+union all
+
+select '❌ passport_matches: contagem != 1697 (esperado após import inicial)',
+  (select count(*) from public.passport_matches)::text
+where (select count(*) from public.passport_matches) != 1697
+
+union all
+
+select '❌ passport_matches: id duplicado', id
+from public.passport_matches group by id having count(*) > 1
+
+union all
+
+select '❌ passport_matches: FINISHED sem placar', id
+from public.passport_matches
+where status = 'FINISHED' and (goias_score is null or opponent_score is null)
+
+union all
+
+select '❌ passport_matches: SCHEDULED com data no passado', id || ' → ' || match_date::text
+from public.passport_matches
+where status = 'SCHEDULED' and match_date < current_date
+
+union all
+
+select '❌ passport_matches: venue_id órfão', id || ' → ' || venue_id
+from public.passport_matches m
+where venue_id is not null
+  and not exists (select 1 from public.venues v where v.id = m.venue_id)
+
+union all
+
+select '❌ passport_attendances: presença em partida não FINISHED', pa.id::text
+from public.passport_attendances pa
+join public.passport_matches m on m.id = pa.match_id
+where pa.attended = true and m.status != 'FINISHED'
+
+union all
+
+select '❌ passport_attendances: user_id+match_id duplicado', user_id::text || ' / ' || match_id
+from public.passport_attendances group by user_id, match_id having count(*) > 1
+
+-- ═══════════════════════════════════════════════════════════════════════════
 -- CLUB_BOARD
 -- ═══════════════════════════════════════════════════════════════════════════
 
@@ -372,6 +418,15 @@ where decision not in ('confirmed','declined')
 union all
 
 select '📊 RESUMO', ''
+
+union all
+select '   passport_matches', (select count(*) from public.passport_matches)::text
+
+union all
+select '   passport_attendances', (select count(*) from public.passport_attendances)::text
+
+union all
+select '   venues', (select count(*) from public.venues)::text
 
 union all
 select '   squad_members', (select count(*) from public.squad_members)::text

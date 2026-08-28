@@ -1300,6 +1300,222 @@ abstract class AppLocalizations {
   /// **'Torcedor'**
   String get arenaRankingUnknownFan;
 
+  /// No description provided for @passportEyebrow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Memórias esmeraldinas'**
+  String get passportEyebrow;
+
+  /// No description provided for @passportTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Passaporte Esmeraldino'**
+  String get passportTitle;
+
+  /// No description provided for @passportCardDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Marque os jogos que você viveu com o Verdão.'**
+  String get passportCardDescription;
+
+  /// No description provided for @passportCardRegisteredCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{Você já registrou 1 partida} other{Você já registrou {count} partidas}}'**
+  String passportCardRegisteredCount(num count);
+
+  /// No description provided for @passportCardCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir passaporte'**
+  String get passportCardCta;
+
+  /// No description provided for @passportRankingCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ranking do Passaporte'**
+  String get passportRankingCta;
+
+  /// No description provided for @passportLoadErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar o passaporte'**
+  String get passportLoadErrorTitle;
+
+  /// No description provided for @passportEmptyCatalogTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma temporada disponível ainda'**
+  String get passportEmptyCatalogTitle;
+
+  /// No description provided for @passportNoMatchesForFilter.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhuma partida encontrada com esse filtro'**
+  String get passportNoMatchesForFilter;
+
+  /// No description provided for @passportSummaryTotalMatches.
+  ///
+  /// In pt, this message translates to:
+  /// **'Partidas registradas'**
+  String get passportSummaryTotalMatches;
+
+  /// No description provided for @passportSummaryYearsCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'Anos com presença'**
+  String get passportSummaryYearsCount;
+
+  /// No description provided for @passportSummaryFirstMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'Primeira partida'**
+  String get passportSummaryFirstMatch;
+
+  /// No description provided for @passportSummaryLastMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'Última partida'**
+  String get passportSummaryLastMatch;
+
+  /// No description provided for @passportFilterAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todos'**
+  String get passportFilterAll;
+
+  /// No description provided for @passportFilterAttended.
+  ///
+  /// In pt, this message translates to:
+  /// **'Marcados'**
+  String get passportFilterAttended;
+
+  /// No description provided for @passportFilterNotAttended.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não marcados'**
+  String get passportFilterNotAttended;
+
+  /// No description provided for @passportFilterHome.
+  ///
+  /// In pt, this message translates to:
+  /// **'Casa'**
+  String get passportFilterHome;
+
+  /// No description provided for @passportFilterAway.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fora'**
+  String get passportFilterAway;
+
+  /// No description provided for @passportFilterAllCompetitions.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todas as competições'**
+  String get passportFilterAllCompetitions;
+
+  /// No description provided for @passportStatusScheduled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Agendado'**
+  String get passportStatusScheduled;
+
+  /// No description provided for @passportStatusPostponed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adiado'**
+  String get passportStatusPostponed;
+
+  /// No description provided for @passportStatusCancelled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cancelado'**
+  String get passportStatusCancelled;
+
+  /// No description provided for @passportOutcomeWin.
+  ///
+  /// In pt, this message translates to:
+  /// **'Vitória'**
+  String get passportOutcomeWin;
+
+  /// No description provided for @passportOutcomeDraw.
+  ///
+  /// In pt, this message translates to:
+  /// **'Empate'**
+  String get passportOutcomeDraw;
+
+  /// No description provided for @passportOutcomeLoss.
+  ///
+  /// In pt, this message translates to:
+  /// **'Derrota'**
+  String get passportOutcomeLoss;
+
+  /// No description provided for @passportSaveGenericLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvar alterações'**
+  String get passportSaveGenericLabel;
+
+  /// No description provided for @passportSaveCountLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{Salvar 1 partida} other{Salvar {count} partidas}}'**
+  String passportSaveCountLabel(num count);
+
+  /// No description provided for @passportSaveSuccess.
+  ///
+  /// In pt, this message translates to:
+  /// **'Passaporte atualizado.'**
+  String get passportSaveSuccess;
+
+  /// No description provided for @passportDiscardChangesTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descartar alterações?'**
+  String get passportDiscardChangesTitle;
+
+  /// No description provided for @passportDiscardChangesMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você marcou partidas que ainda não foram salvas. Se sair agora, essas marcações são perdidas.'**
+  String get passportDiscardChangesMessage;
+
+  /// No description provided for @passportDiscardChangesConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descartar'**
+  String get passportDiscardChangesConfirm;
+
+  /// No description provided for @passportRankingTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ranking do Passaporte'**
+  String get passportRankingTitle;
+
+  /// No description provided for @passportRankingPeriodOverall.
+  ///
+  /// In pt, this message translates to:
+  /// **'Geral'**
+  String get passportRankingPeriodOverall;
+
+  /// No description provided for @passportRankingMatchCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 partida} other{{count} partidas}}'**
+  String passportRankingMatchCount(num count);
+
+  /// No description provided for @passportRankingEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ninguém no ranking ainda'**
+  String get passportRankingEmptyTitle;
+
+  /// No description provided for @passportRankingEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Marque suas partidas no Passaporte pra aparecer aqui.'**
+  String get passportRankingEmptyMessage;
+
   /// No description provided for @arenaRankingDetailFirstTry.
   ///
   /// In pt, this message translates to:

@@ -55,6 +55,8 @@ import 'package:goias_app/features/news/presentation/pages/news_article_page.dar
 import 'package:goias_app/features/news/presentation/pages/news_list_page.dart';
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
+import 'package:goias_app/features/passport/presentation/pages/passport_page.dart';
+import 'package:goias_app/features/passport/presentation/pages/passport_ranking_page.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/pages/address_page.dart';
 import 'package:goias_app/features/profile/data/legal_documents_data.dart';
@@ -394,6 +396,16 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
               state,
               GuessPlayerPage(cubit: state.extra as GuessPlayerCubit?),
             ),
+          ),
+          GoRoute(
+            path: '/arena/passport',
+            pageBuilder: (context, state) =>
+                appPage(state, const PassportPage()),
+          ),
+          GoRoute(
+            path: '/arena/passport/ranking',
+            pageBuilder: (context, state) =>
+                appPage(state, const PassportRankingPage()),
           ),
           GoRoute(
             path: '/partners',

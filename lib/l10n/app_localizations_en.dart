@@ -633,6 +633,141 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaRankingUnknownFan => 'Fan';
 
   @override
+  String get passportEyebrow => 'Emerald memories';
+
+  @override
+  String get passportTitle => 'Passaporte Esmeraldino';
+
+  @override
+  String get passportCardDescription =>
+      'Mark the matches you lived with Goiás.';
+
+  @override
+  String passportCardRegisteredCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You\'ve registered $count matches',
+      one: 'You\'ve registered 1 match',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get passportCardCta => 'Open passport';
+
+  @override
+  String get passportRankingCta => 'Passport ranking';
+
+  @override
+  String get passportLoadErrorTitle => 'We couldn\'t load the passport';
+
+  @override
+  String get passportEmptyCatalogTitle => 'No season available yet';
+
+  @override
+  String get passportNoMatchesForFilter => 'No match found with this filter';
+
+  @override
+  String get passportSummaryTotalMatches => 'Matches registered';
+
+  @override
+  String get passportSummaryYearsCount => 'Years attended';
+
+  @override
+  String get passportSummaryFirstMatch => 'First match';
+
+  @override
+  String get passportSummaryLastMatch => 'Last match';
+
+  @override
+  String get passportFilterAll => 'All';
+
+  @override
+  String get passportFilterAttended => 'Attended';
+
+  @override
+  String get passportFilterNotAttended => 'Not attended';
+
+  @override
+  String get passportFilterHome => 'Home';
+
+  @override
+  String get passportFilterAway => 'Away';
+
+  @override
+  String get passportFilterAllCompetitions => 'All competitions';
+
+  @override
+  String get passportStatusScheduled => 'Scheduled';
+
+  @override
+  String get passportStatusPostponed => 'Postponed';
+
+  @override
+  String get passportStatusCancelled => 'Cancelled';
+
+  @override
+  String get passportOutcomeWin => 'Win';
+
+  @override
+  String get passportOutcomeDraw => 'Draw';
+
+  @override
+  String get passportOutcomeLoss => 'Loss';
+
+  @override
+  String get passportSaveGenericLabel => 'Save changes';
+
+  @override
+  String passportSaveCountLabel(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Save $count matches',
+      one: 'Save 1 match',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get passportSaveSuccess => 'Passport updated.';
+
+  @override
+  String get passportDiscardChangesTitle => 'Discard changes?';
+
+  @override
+  String get passportDiscardChangesMessage =>
+      'You\'ve marked matches that haven\'t been saved yet. If you leave now, those marks are lost.';
+
+  @override
+  String get passportDiscardChangesConfirm => 'Discard';
+
+  @override
+  String get passportRankingTitle => 'Passport ranking';
+
+  @override
+  String get passportRankingPeriodOverall => 'Overall';
+
+  @override
+  String passportRankingMatchCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count matches',
+      one: '1 match',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get passportRankingEmptyTitle => 'No one on the ranking yet';
+
+  @override
+  String get passportRankingEmptyMessage =>
+      'Mark your matches in the Passport to show up here.';
+
+  @override
   String get arenaRankingDetailFirstTry => 'First-try correct';
 
   @override

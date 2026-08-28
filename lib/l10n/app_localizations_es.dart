@@ -635,6 +635,143 @@ class AppLocalizationsEs extends AppLocalizations {
   String get arenaRankingUnknownFan => 'Hincha';
 
   @override
+  String get passportEyebrow => 'Memorias esmeraldinas';
+
+  @override
+  String get passportTitle => 'Passaporte Esmeraldino';
+
+  @override
+  String get passportCardDescription =>
+      'Marca los partidos que viviste con el Goiás.';
+
+  @override
+  String passportCardRegisteredCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Ya registraste $count partidos',
+      one: 'Ya registraste 1 partido',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get passportCardCta => 'Abrir pasaporte';
+
+  @override
+  String get passportRankingCta => 'Ranking del Pasaporte';
+
+  @override
+  String get passportLoadErrorTitle => 'No se pudo cargar el pasaporte';
+
+  @override
+  String get passportEmptyCatalogTitle =>
+      'Ninguna temporada disponible todavía';
+
+  @override
+  String get passportNoMatchesForFilter =>
+      'Ningún partido encontrado con ese filtro';
+
+  @override
+  String get passportSummaryTotalMatches => 'Partidos registrados';
+
+  @override
+  String get passportSummaryYearsCount => 'Años con presencia';
+
+  @override
+  String get passportSummaryFirstMatch => 'Primer partido';
+
+  @override
+  String get passportSummaryLastMatch => 'Último partido';
+
+  @override
+  String get passportFilterAll => 'Todos';
+
+  @override
+  String get passportFilterAttended => 'Marcados';
+
+  @override
+  String get passportFilterNotAttended => 'No marcados';
+
+  @override
+  String get passportFilterHome => 'Local';
+
+  @override
+  String get passportFilterAway => 'Visitante';
+
+  @override
+  String get passportFilterAllCompetitions => 'Todas las competiciones';
+
+  @override
+  String get passportStatusScheduled => 'Programado';
+
+  @override
+  String get passportStatusPostponed => 'Aplazado';
+
+  @override
+  String get passportStatusCancelled => 'Cancelado';
+
+  @override
+  String get passportOutcomeWin => 'Victoria';
+
+  @override
+  String get passportOutcomeDraw => 'Empate';
+
+  @override
+  String get passportOutcomeLoss => 'Derrota';
+
+  @override
+  String get passportSaveGenericLabel => 'Guardar cambios';
+
+  @override
+  String passportSaveCountLabel(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Guardar $count partidos',
+      one: 'Guardar 1 partido',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get passportSaveSuccess => 'Pasaporte actualizado.';
+
+  @override
+  String get passportDiscardChangesTitle => '¿Descartar cambios?';
+
+  @override
+  String get passportDiscardChangesMessage =>
+      'Marcaste partidos que aún no se guardaron. Si sales ahora, esas marcas se pierden.';
+
+  @override
+  String get passportDiscardChangesConfirm => 'Descartar';
+
+  @override
+  String get passportRankingTitle => 'Ranking del Pasaporte';
+
+  @override
+  String get passportRankingPeriodOverall => 'General';
+
+  @override
+  String passportRankingMatchCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count partidos',
+      one: '1 partido',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get passportRankingEmptyTitle => 'Todavía nadie en el ranking';
+
+  @override
+  String get passportRankingEmptyMessage =>
+      'Marca tus partidos en el Pasaporte para aparecer aquí.';
+
+  @override
   String get arenaRankingDetailFirstTry => 'Aciertos a la primera';
 
   @override

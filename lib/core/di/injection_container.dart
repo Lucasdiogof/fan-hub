@@ -49,6 +49,10 @@ import 'package:goias_app/features/membership/data/viacep_data_source.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_cubit.dart';
+import 'package:goias_app/features/passport/data/supabase_passport_repository.dart';
+import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
+import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
+import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_cubit.dart';
 import 'package:goias_app/features/news/data/datasources/news_remote_data_source.dart';
 import 'package:goias_app/features/news/data/repositories/news_repository_impl.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
@@ -169,6 +173,9 @@ void setupDependencies() {
   sl.registerLazySingleton<ClubTransparencyRepository>(
     () => SupabaseClubTransparencyRepository(Supabase.instance.client),
   );
+  sl.registerLazySingleton<PassportRepository>(
+    () => SupabasePassportRepository(Supabase.instance.client),
+  );
   sl.registerLazySingleton<QuizQuestionRepository>(
     () => QuizQuestionRepository(Supabase.instance.client),
   );
@@ -198,6 +205,8 @@ void setupDependencies() {
   sl.registerFactory<ClubTransparencyCubit>(
     () => ClubTransparencyCubit(sl()),
   );
+  sl.registerFactory<PassportCubit>(() => PassportCubit(sl()));
+  sl.registerFactory<PassportRankingCubit>(() => PassportRankingCubit(sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));
