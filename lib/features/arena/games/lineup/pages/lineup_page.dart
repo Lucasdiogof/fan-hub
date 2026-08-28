@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/router/app_page.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
@@ -257,9 +258,8 @@ class _LineupViewState extends State<_LineupView> {
     final cubit = context.read<LineupCubit>();
     cubit.selectPlayer(playerId);
     Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) =>
-            BlocProvider.value(value: cubit, child: const LineupGuessPage()),
+      appRoute<void>(
+        BlocProvider.value(value: cubit, child: const LineupGuessPage()),
       ),
     );
   }
