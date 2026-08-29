@@ -5,6 +5,7 @@ import 'package:goias_app/features/club/data/club_song_volume_store.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/presentation/cubit/club_song_player_state.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// Player de UMA música — vive só enquanto a página de detalhes dela está
 /// aberta. Criado via `BlocProvider` (não DI singleton), então sempre para
@@ -63,18 +64,35 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
     try {
       // O player é compartilhado entre visitas (ver doc da classe) — para
       // qualquer coisa que a música anterior deixou tocando/carregando
-      // antes de trocar de fonte, pra nunca herdar estado dela.
+      // antes de trocar de fonte, pra nunca herdar estado dela. Nada de
+      // `setSpeed`/`setPitch` aqui — o app não tem controle nenhum pra
+      // isso, o player nunca sai de 1.0 sozinho, então só seriam mais dois
+      // `await` sem função real no caminho entre o toque do usuário e o
+      // `play()` — no Safari/iOS, cada `await` a mais nessa cadeia é uma
+      // chance a mais de perder a permissão de tocar áudio ligada ao gesto
+      // do toque (ver `togglePlayback`).
       await _player.stop();
       await _applyVolume();
       final duration = await _player.setAsset(asset);
-      // Reafirmado DEPOIS do `setAsset` de propósito — é o ponto mais
-      // próximo possível de quando a reprodução de fato começa.
-      await _player.setSpeed(1);
-      await _player.setPitch(1);
       emit(state.copyWith(duration: duration ?? Duration.zero));
       _loaded = true;
       return true;
-    } catch (_) {
+    } catch (error, stackTrace) {
+      // Sem isso, uma falha de carregamento nunca aparecia em lugar
+      // nenhum — só um Play que silenciosamente não fazia nada. Contexto
+      // extra (plataforma/asset) ajuda a distinguir "sem gesto ainda"
+      // (comum, não é bug) de uma falha real do player numa plataforma
+      // específica.
+      unawaited(
+        Sentry.captureException(
+          error,
+          stackTrace: stackTrace,
+          withScope: (scope) {
+            scope.setTag('club_song_id', song.id);
+            scope.setTag('stage', 'load');
+          },
+        ),
+      );
       return false;
     }
   }
@@ -122,7 +140,17 @@ class ClubSongPlayerCubit extends Cubit<ClubSongPlayerState> {
         return;
       }
       await _player.play();
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(
+        Sentry.captureException(
+          error,
+          stackTrace: stackTrace,
+          withScope: (scope) {
+            scope.setTag('club_song_id', song.id);
+            scope.setTag('stage', 'play');
+          },
+        ),
+      );
       emit(state.copyWith(status: ClubSongPlayerStatus.error));
     }
   }
