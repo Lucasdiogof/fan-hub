@@ -15,8 +15,8 @@ class NewsSkeletonRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _Block(
-            width: 104,
-            height: 76,
+            width: 84,
+            height: 84,
             color: shimmer,
             radius: AppRadius.cardSmall,
           ),

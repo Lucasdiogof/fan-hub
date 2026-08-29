@@ -100,17 +100,20 @@ class _CoverImage extends StatelessWidget {
     return Stack(
       children: [
         AspectRatio(
-          // `contain`, nunca `cover` — mesmo motivo do card da lista
-          // (`NewsItemRow`): essas artes de notícia têm texto colado na
-          // borda, então qualquer corte já corta parte do texto.
-          aspectRatio: 16 / 10,
+          // As artes do site vêm quase quadradas (~425×480, conferido nas
+          // imagens reais) — um box bem mais largo (16:10) como antes
+          // deixava uma faixa enorme de cor dos lados com `contain`. Um
+          // box mais próximo do quadrado real + `cover` corta bem pouco
+          // (a diferença entre 425:480 e 1:1 é pequena) e preenche o
+          // banner de verdade.
+          aspectRatio: 1,
           child: ColoredBox(
             color: colors.secondary,
             child: imageUrl.isEmpty
                 ? null
                 : Image.network(
                     proxiedImageUrl(imageUrl),
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) =>
                         const SizedBox.shrink(),
                   ),

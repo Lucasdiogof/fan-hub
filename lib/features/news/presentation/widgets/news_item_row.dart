@@ -31,18 +31,21 @@ class NewsItemRow extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(AppRadius.cardSmall),
                 child: SizedBox(
-                  width: 104,
-                  height: 76,
+                  // As artes do site (ex.: "Guia da Partida") sempre vêm
+                  // quase quadradas (~425×480, conferido nas imagens reais)
+                  // — um box bem mais largo que alto como antes forçava
+                  // `contain` a sobrar uma faixa de cor grande dos lados, ou
+                  // um `cover` a cortar bastante do topo/rodapé. Quase
+                  // quadrado + `cover` casa com o formato real: cobre o
+                  // box inteiro com um corte mínimo (a diferença entre
+                  // 425:480 e 1:1 é pequena).
+                  width: 84,
+                  height: 84,
                   child: ColoredBox(
-                    // `contain`, nunca `cover`: essas artes de notícia
-                    // (ex.: "Guia da Partida", "Nota Oficial") têm texto e
-                    // escudo colados na borda — qualquer corte já corta
-                    // parte do texto, então a imagem inteira precisa caber,
-                    // com a cor de fundo preenchendo a sobra.
                     color: colors.secondary,
                     child: Image.network(
                       proxiedImageUrl(item.imageUrl),
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) => Icon(
                         Icons.image_not_supported_outlined,
                         color: colors.textHint,
