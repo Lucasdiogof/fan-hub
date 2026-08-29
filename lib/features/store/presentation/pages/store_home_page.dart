@@ -138,13 +138,7 @@ class _StoreHomeView extends StatelessWidget {
   }
 }
 
-const _fixedCategoryIds = [
-  'masculine',
-  'feminine',
-  'kids',
-  'uniforms',
-  'accessories',
-];
+const _fixedCategoryIds = ['masculine', 'feminine', 'kids', 'accessories'];
 
 class _StoreHomeContent extends StatelessWidget {
   const _StoreHomeContent({required this.state});
