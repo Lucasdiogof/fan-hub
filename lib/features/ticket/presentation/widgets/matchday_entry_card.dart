@@ -155,6 +155,12 @@ class _MatchdayCard extends StatelessWidget {
                 onPressed: () => context.push('/tickets'),
                 style: matchCtaFilledStyle(context, minHeight: 40).merge(
                   FilledButton.styleFrom(
+                    // `matchCtaFilledStyle` usa `Size.fromHeight`, que força
+                    // largura infinita — certo pros outros usos (sempre
+                    // dentro de um `SizedBox(width: double.infinity)`), mas
+                    // aqui o botão é filho direto de um `Row` ao lado do
+                    // texto, sem `Expanded`: precisa de largura própria.
+                    minimumSize: const Size(0, 40),
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.md,
                     ),
