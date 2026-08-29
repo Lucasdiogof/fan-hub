@@ -364,7 +364,13 @@ final lineupMatches = <LineupMatch>[
     homeScore: 3,
     away: 'Estudiantes',
     awayScore: 1,
-    formation: '3-4-3',
+    // Estava '3-4-3', mas a escalação real tem 4 marcados como defesa
+    // (Fabiano/Júlio Santos/Jadílson/Rogério Corrêa) e só 3 no meio
+    // (Vítor/Danilo Portugal/Romerito) — bate exatamente com 4-3-3, não
+    // 3-4-3. Com '3-4-3' o `FormationLayoutService` (que corta a lista por
+    // ÍNDICE, não por posição) empurrava Rogério Corrêa, um zagueiro de
+    // verdade, pra dentro da linha de meio-campo.
+    formation: '4-3-3',
     confidence: FormationConfidence.estimated,
     lineup: const [
       _Row('GOL', null, 'Harlei', 'HARLEI'),
