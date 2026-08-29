@@ -19,13 +19,13 @@ import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
-/// Tela inicial da Goiás Store — banner, categorias fixas, tira de
-/// benefícios e as seções de produto, todas derivadas do catálogo
-/// carregado uma vez (ver `StoreCatalogState`). Categorias de "Personalize
-/// seu manto"/"Infantil" foram unificadas num único card editorial: com só
-/// um produto juvenil no catálogo hoje, duas seções falando dele em
-/// sequência repetiriam o mesmo item — exatamente o problema que motivou
-/// este redesenho.
+/// Tela inicial da Loja — duas abas: "Ingressos" (matchday/check-in) e
+/// "Roupas" (banner, categorias fixas e as seções de produto, todas
+/// derivadas do catálogo carregado uma vez, ver `StoreCatalogState`).
+/// Categorias de "Personalize seu manto"/"Infantil" foram unificadas num
+/// único card editorial: com só um produto juvenil no catálogo hoje, duas
+/// seções falando dele em sequência repetiriam o mesmo item — exatamente o
+/// problema que motivou este redesenho.
 class StoreHomePage extends StatelessWidget {
   const StoreHomePage({this.showBackButton = true, super.key});
 
@@ -44,14 +44,29 @@ class StoreHomePage extends StatelessWidget {
   }
 }
 
-class _StoreHomeView extends StatelessWidget {
+class _StoreHomeView extends StatefulWidget {
   const _StoreHomeView({required this.showBackButton});
 
   final bool showBackButton;
 
   @override
+  State<_StoreHomeView> createState() => _StoreHomeViewState();
+}
+
+class _StoreHomeViewState extends State<_StoreHomeView>
+    with SingleTickerProviderStateMixin {
+  late final _tabController = TabController(length: 2, vsync: this);
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final showBackButton = widget.showBackButton;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -116,29 +131,49 @@ class _StoreHomeView extends StatelessWidget {
                     ],
                   ),
                 ),
+                TabBar(
+                  controller: _tabController,
+                  labelColor: colors.primary,
+                  unselectedLabelColor: colors.textSecondary,
+                  indicatorColor: colors.primary,
+                  tabs: [
+                    Tab(text: context.l10n.storeTabTickets),
+                    Tab(text: context.l10n.storeTabClothing),
+                  ],
+                ),
                 Expanded(
-                  child: BlocBuilder<StoreCatalogCubit, StoreCatalogState>(
-                    builder: (context, state) {
-                      return switch (state.status) {
-                        LoadStatus.initial || LoadStatus.loading =>
-                          const Center(child: GoiasLoadingIndicator()),
-                        LoadStatus.error => Center(
-                          child: StateMessage(
-                            icon: Icons.error_outline_rounded,
-                            title: context.l10n.storeHomeLoadErrorTitle,
-                            message: context.l10n.commonLoadError,
-                          ),
-                        ),
-                        LoadStatus.empty => Center(
-                          child: StateMessage(
-                            icon: Icons.storefront_outlined,
-                            title: context.l10n.storeHomeEmptyTitle,
-                            message: context.l10n.storeHomeEmptyMessage,
-                          ),
-                        ),
-                        LoadStatus.success => _StoreHomeContent(state: state),
-                      };
-                    },
+                  child: TabBarView(
+                    controller: _tabController,
+                    // Ingressos não depende do catálogo de produtos — nunca
+                    // deve ficar bloqueado por um erro/loading da Roupas.
+                    children: [
+                      const _TicketsTabContent(),
+                      BlocBuilder<StoreCatalogCubit, StoreCatalogState>(
+                        builder: (context, state) {
+                          return switch (state.status) {
+                            LoadStatus.initial || LoadStatus.loading =>
+                              const Center(child: GoiasLoadingIndicator()),
+                            LoadStatus.error => Center(
+                              child: StateMessage(
+                                icon: Icons.error_outline_rounded,
+                                title: context.l10n.storeHomeLoadErrorTitle,
+                                message: context.l10n.commonLoadError,
+                              ),
+                            ),
+                            LoadStatus.empty => Center(
+                              child: StateMessage(
+                                icon: Icons.storefront_outlined,
+                                title: context.l10n.storeHomeEmptyTitle,
+                                message: context.l10n.storeHomeEmptyMessage,
+                              ),
+                            ),
+                            LoadStatus.success => _ClothingTabContent(
+                              state: state,
+                            ),
+                          };
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -152,8 +187,36 @@ class _StoreHomeView extends StatelessWidget {
 
 const _fixedCategoryIds = ['masculine', 'feminine', 'kids', 'accessories'];
 
-class _StoreHomeContent extends StatelessWidget {
-  const _StoreHomeContent({required this.state});
+/// Aba "Ingressos" — card de matchday (já cobre os 6 estados de venda/
+/// check-in) + atalhos pro que o usuário já comprou. Nunca depende do
+/// catálogo de produtos, então funciona mesmo se a Roupas falhar ao
+/// carregar.
+class _TicketsTabContent extends StatelessWidget {
+  const _TicketsTabContent();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(0, AppSpacing.lg, 0, AppSpacing.xxxl),
+      children: [
+        const MatchdayEntryCard(),
+        const SizedBox(height: AppSpacing.xl),
+        _SectionLabel(l10n.storeMyPurchasesSectionTitle),
+        const SizedBox(height: AppSpacing.sm),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+          child: _MyPurchasesRow(),
+        ),
+      ],
+    );
+  }
+}
+
+/// Aba "Roupas" — vitrine da Goiás Store (banner, categorias, seções de
+/// produto), tudo derivado do catálogo carregado uma vez.
+class _ClothingTabContent extends StatelessWidget {
+  const _ClothingTabContent({required this.state});
 
   final StoreCatalogState state;
 
@@ -165,18 +228,6 @@ class _StoreHomeContent extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(0, AppSpacing.lg, 0, AppSpacing.xxxl),
       children: [
-        // Contexto de matchday (serviço/ação contextual) — visualmente
-        // separado da vitrine de produtos abaixo, nunca uma "categoria de
-        // ingresso" misturada com Masculino/Feminino/etc.
-        const MatchdayEntryCard(),
-        const SizedBox(height: AppSpacing.lg),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-          child: _MyPurchasesRow(),
-        ),
-        const SizedBox(height: AppSpacing.xl),
-        _SectionLabel(l10n.storeHomeTitle),
-        const SizedBox(height: AppSpacing.sm),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
           child: _StoreBanner(
