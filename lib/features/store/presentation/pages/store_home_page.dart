@@ -12,16 +12,18 @@ import 'package:goias_app/features/store/presentation/cubit/store_catalog_state.
 import 'package:goias_app/features/store/presentation/store_display_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/cart_icon_button.dart';
 import 'package:goias_app/features/store/presentation/widgets/product_card.dart';
-import 'package:goias_app/features/ticket/presentation/widgets/matchday_entry_card.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
-/// Tela inicial da Loja — duas abas: "Ingressos" (matchday/check-in) e
-/// "Roupas" (banner, categorias fixas e as seções de produto, todas
-/// derivadas do catálogo carregado uma vez, ver `StoreCatalogState`).
+/// Tela inicial da Goiás Store — banner, categorias fixas e as seções de
+/// produto, todas derivadas do catálogo carregado uma vez (ver
+/// `StoreCatalogState`). Ingressos não vive mais aqui — a compra de
+/// ingresso acontece a partir do próprio jogo, na aba Jogos
+/// (`games_page.dart`), não da Loja.
 /// Categorias de "Personalize seu manto"/"Infantil" foram unificadas num
 /// único card editorial: com só um produto juvenil no catálogo hoje, duas
 /// seções falando dele em sequência repetiriam o mesmo item — exatamente o
@@ -44,29 +46,14 @@ class StoreHomePage extends StatelessWidget {
   }
 }
 
-class _StoreHomeView extends StatefulWidget {
+class _StoreHomeView extends StatelessWidget {
   const _StoreHomeView({required this.showBackButton});
 
   final bool showBackButton;
 
   @override
-  State<_StoreHomeView> createState() => _StoreHomeViewState();
-}
-
-class _StoreHomeViewState extends State<_StoreHomeView>
-    with SingleTickerProviderStateMixin {
-  late final _tabController = TabController(length: 2, vsync: this);
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final showBackButton = widget.showBackButton;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -95,13 +82,8 @@ class _StoreHomeViewState extends State<_StoreHomeView>
                         const SizedBox(width: AppSpacing.md),
                       ],
                       Expanded(
-                        child: Text(
-                          context.l10n.storeHomeTitle,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: colors.textPrimary,
-                          ),
+                        child: PageTitle(
+                          context.l10n.storeHomeTitle.toUpperCase(),
                         ),
                       ),
                       Semantics(
@@ -131,49 +113,29 @@ class _StoreHomeViewState extends State<_StoreHomeView>
                     ],
                   ),
                 ),
-                TabBar(
-                  controller: _tabController,
-                  labelColor: colors.primary,
-                  unselectedLabelColor: colors.textSecondary,
-                  indicatorColor: colors.primary,
-                  tabs: [
-                    Tab(text: context.l10n.storeTabTickets),
-                    Tab(text: context.l10n.storeTabClothing),
-                  ],
-                ),
                 Expanded(
-                  child: TabBarView(
-                    controller: _tabController,
-                    // Ingressos não depende do catálogo de produtos — nunca
-                    // deve ficar bloqueado por um erro/loading da Roupas.
-                    children: [
-                      const _TicketsTabContent(),
-                      BlocBuilder<StoreCatalogCubit, StoreCatalogState>(
-                        builder: (context, state) {
-                          return switch (state.status) {
-                            LoadStatus.initial || LoadStatus.loading =>
-                              const Center(child: GoiasLoadingIndicator()),
-                            LoadStatus.error => Center(
-                              child: StateMessage(
-                                icon: Icons.error_outline_rounded,
-                                title: context.l10n.storeHomeLoadErrorTitle,
-                                message: context.l10n.commonLoadError,
-                              ),
-                            ),
-                            LoadStatus.empty => Center(
-                              child: StateMessage(
-                                icon: Icons.storefront_outlined,
-                                title: context.l10n.storeHomeEmptyTitle,
-                                message: context.l10n.storeHomeEmptyMessage,
-                              ),
-                            ),
-                            LoadStatus.success => _ClothingTabContent(
-                              state: state,
-                            ),
-                          };
-                        },
-                      ),
-                    ],
+                  child: BlocBuilder<StoreCatalogCubit, StoreCatalogState>(
+                    builder: (context, state) {
+                      return switch (state.status) {
+                        LoadStatus.initial || LoadStatus.loading =>
+                          const Center(child: GoiasLoadingIndicator()),
+                        LoadStatus.error => Center(
+                          child: StateMessage(
+                            icon: Icons.error_outline_rounded,
+                            title: context.l10n.storeHomeLoadErrorTitle,
+                            message: context.l10n.commonLoadError,
+                          ),
+                        ),
+                        LoadStatus.empty => Center(
+                          child: StateMessage(
+                            icon: Icons.storefront_outlined,
+                            title: context.l10n.storeHomeEmptyTitle,
+                            message: context.l10n.storeHomeEmptyMessage,
+                          ),
+                        ),
+                        LoadStatus.success => _StoreHomeContent(state: state),
+                      };
+                    },
                   ),
                 ),
               ],
@@ -187,36 +149,10 @@ class _StoreHomeViewState extends State<_StoreHomeView>
 
 const _fixedCategoryIds = ['masculine', 'feminine', 'kids', 'accessories'];
 
-/// Aba "Ingressos" — card de matchday (já cobre os 6 estados de venda/
-/// check-in) + atalhos pro que o usuário já comprou. Nunca depende do
-/// catálogo de produtos, então funciona mesmo se a Roupas falhar ao
-/// carregar.
-class _TicketsTabContent extends StatelessWidget {
-  const _TicketsTabContent();
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(0, AppSpacing.lg, 0, AppSpacing.xxxl),
-      children: [
-        const MatchdayEntryCard(),
-        const SizedBox(height: AppSpacing.xl),
-        _SectionLabel(l10n.storeMyPurchasesSectionTitle),
-        const SizedBox(height: AppSpacing.sm),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-          child: _MyPurchasesRow(),
-        ),
-      ],
-    );
-  }
-}
-
-/// Aba "Roupas" — vitrine da Goiás Store (banner, categorias, seções de
-/// produto), tudo derivado do catálogo carregado uma vez.
-class _ClothingTabContent extends StatelessWidget {
-  const _ClothingTabContent({required this.state});
+/// Vitrine da Goiás Store (banner, categorias, seções de produto), tudo
+/// derivado do catálogo carregado uma vez.
+class _StoreHomeContent extends StatelessWidget {
+  const _StoreHomeContent({required this.state});
 
   final StoreCatalogState state;
 
@@ -286,90 +222,6 @@ class _StoreBanner extends StatelessWidget {
           'lib/assets/banner.png',
           width: double.infinity,
           fit: BoxFit.fitWidth,
-        ),
-      ),
-    );
-  }
-}
-
-/// Atalhos compactos pro que o usuário já comprou/já tem — não replica a
-/// tela de Ingressos nem a de Pedidos aqui, só leva pra elas.
-class _MyPurchasesRow extends StatelessWidget {
-  const _MyPurchasesRow();
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return Row(
-      children: [
-        Expanded(
-          child: _PurchaseShortcut(
-            icon: Icons.confirmation_number_outlined,
-            label: l10n.storeMyTicketsShortcut,
-            onTap: () => context.push('/tickets/my'),
-          ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: _PurchaseShortcut(
-            icon: Icons.receipt_long_outlined,
-            label: l10n.storeMyOrdersShortcut,
-            onTap: () => context.push('/store/orders'),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _PurchaseShortcut extends StatelessWidget {
-  const _PurchaseShortcut({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Material(
-      color: colors.surface,
-      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: AppSpacing.sm,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-            border: Border.all(color: colors.border),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 16, color: colors.textSecondary),
-              const SizedBox(width: 6),
-              Flexible(
-                child: Text(
-                  label,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: colors.textPrimary,
-                  ),
-                ),
-              ),
-            ],
-          ),
         ),
       ),
     );
