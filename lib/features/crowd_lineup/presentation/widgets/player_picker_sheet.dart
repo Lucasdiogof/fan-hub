@@ -36,7 +36,7 @@ Future<String?> showPlayerPicker(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                position.full,
+                position.full(sheetContext),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w900,
@@ -119,7 +119,9 @@ class _PlayerRow extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      player.allowedPositions.map((p) => p.short).join(' · '),
+                      player.allowedPositions
+                          .map((p) => p.short(context))
+                          .join(' · '),
                       style: TextStyle(
                         fontSize: 11.5,
                         fontWeight: FontWeight.w600,

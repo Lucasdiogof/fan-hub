@@ -33,7 +33,7 @@ class PassportMatchTicketV2 extends StatelessWidget {
     final home = match.homeTeam;
     final away = match.awayTeam;
     final hasScore = match.homeScore != null && match.awayScore != null;
-    final round = humanizeRound(match.round);
+    final round = humanizeRound(l10n, match.round);
     final time = shortMatchTime(match.matchTime);
 
     final subtitleParts = [match.competition, ?round, ?match.venueName];

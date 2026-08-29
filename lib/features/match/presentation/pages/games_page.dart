@@ -43,7 +43,8 @@ class _GamesView extends StatefulWidget {
 class _GamesViewState extends State<_GamesView> {
   GamesSection _section = GamesSection.matches;
 
-  Future<void> _openMatchDetails(Match match) => openMatchDetails(context, match);
+  Future<void> _openMatchDetails(Match match) =>
+      openMatchDetails(context, match);
 
   @override
   Widget build(BuildContext context) {
@@ -268,7 +269,7 @@ class _RoundNavigationHeader extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            (state.roundLabel ?? 'Rodada atual').toUpperCase(),
+            (state.roundLabel ?? context.l10n.matchCurrentRound).toUpperCase(),
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 15,

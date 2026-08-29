@@ -115,10 +115,10 @@ class _MediaFilterBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final options = [
-      (_MediaFilter.instagram, 'INSTAGRAM'),
+      (_MediaFilter.instagram, l10n.socialPlatformInstagram),
       (_MediaFilter.news, l10n.newsTitle),
-      (_MediaFilter.youtube, 'YOUTUBE'),
-      (_MediaFilter.x, 'X'),
+      (_MediaFilter.youtube, l10n.socialPlatformYoutube),
+      (_MediaFilter.x, l10n.socialPlatformX),
     ];
     final colors = context.colors;
     return Container(

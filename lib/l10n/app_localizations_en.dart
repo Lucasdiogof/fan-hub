@@ -286,6 +286,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get matchStatusUnknown => 'Undefined';
 
   @override
+  String get matchCurrentRound => 'Current round';
+
+  @override
   String get commonSave => 'SAVE';
 
   @override
@@ -861,6 +864,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passportSealActionLabel => 'I was there';
 
   @override
+  String get passportRoundSemifinal => 'Semifinal';
+
+  @override
+  String get passportRoundQuarterfinal => 'Quarterfinals';
+
+  @override
+  String get passportRoundFinal => 'Final';
+
+  @override
+  String get passportRoundPlayoff => 'Playoff';
+
+  @override
+  String get passportRoundOf16 => 'Round of 16';
+
+  @override
+  String passportRoundPhase(int n) {
+    return 'Phase $n';
+  }
+
+  @override
+  String passportRoundMatchday(int n) {
+    return 'Round $n';
+  }
+
+  @override
+  String passportRoundGroup(String letter) {
+    return 'Group $letter';
+  }
+
+  @override
   String get arenaRankingDetailFirstTry => 'First-try correct';
 
   @override
@@ -938,6 +971,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonLoadError => 'Couldn\'t load the data';
+
+  @override
+  String get commonSelectPlaceholder => 'Select';
+
+  @override
+  String get commonNoDataFound => 'No data found.';
 
   @override
   String get membershipCheckInAction => 'CHECK IN';
@@ -1360,6 +1399,15 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get socialPlatformInstagram => 'INSTAGRAM';
+
+  @override
+  String get socialPlatformYoutube => 'YOUTUBE';
+
+  @override
+  String get socialPlatformX => 'X';
+
+  @override
   String get newsTitle => 'NEWS';
 
   @override
@@ -1512,6 +1560,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get squadGroupForwards => 'Forwards';
+
+  @override
+  String get squadInstagramLabel => 'Instagram';
 
   @override
   String get validatorNameRequired => 'Enter your full name.';
@@ -1988,6 +2039,84 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get penaltyResultPostShort => 'Post';
+
+  @override
+  String get playerPositionGolFull => 'Goalkeeper';
+
+  @override
+  String get playerPositionGolShort => 'GK';
+
+  @override
+  String get playerPositionZagFull => 'Centre-back';
+
+  @override
+  String get playerPositionZagShort => 'CB';
+
+  @override
+  String get playerPositionLdFull => 'Right-back';
+
+  @override
+  String get playerPositionLdShort => 'RB';
+
+  @override
+  String get playerPositionLeFull => 'Left-back';
+
+  @override
+  String get playerPositionLeShort => 'LB';
+
+  @override
+  String get playerPositionAldFull => 'Right wing-back';
+
+  @override
+  String get playerPositionAldShort => 'RWB';
+
+  @override
+  String get playerPositionAleFull => 'Left wing-back';
+
+  @override
+  String get playerPositionAleShort => 'LWB';
+
+  @override
+  String get playerPositionVolFull => 'Defensive midfielder';
+
+  @override
+  String get playerPositionVolShort => 'DM';
+
+  @override
+  String get playerPositionMcFull => 'Midfielder';
+
+  @override
+  String get playerPositionMcShort => 'MF';
+
+  @override
+  String get playerPositionMeiFull => 'Attacking midfielder';
+
+  @override
+  String get playerPositionMeiShort => 'AM';
+
+  @override
+  String get playerPositionPdFull => 'Right winger';
+
+  @override
+  String get playerPositionPdShort => 'RW';
+
+  @override
+  String get playerPositionPeFull => 'Left winger';
+
+  @override
+  String get playerPositionPeShort => 'LW';
+
+  @override
+  String get playerPositionSaFull => 'Second striker';
+
+  @override
+  String get playerPositionSaShort => 'SS';
+
+  @override
+  String get playerPositionAtaFull => 'Striker';
+
+  @override
+  String get playerPositionAtaShort => 'ST';
 
   @override
   String get crowdTitle => 'FANS\' LINEUP';

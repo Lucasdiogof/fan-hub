@@ -1,3 +1,5 @@
+import 'package:goias_app/l10n/app_localizations.dart';
+
 // Formatação de exibição pro Passaporte — pura apresentação, nunca dado
 // novo: só traduz códigos que já vêm do catálogo histórico (`round`) ou
 // corta o que o Postgres manda a mais (`match_time` como "16:00:00") pra
@@ -16,17 +18,17 @@ String? shortMatchTime(String? rawTime) {
 /// traduz o que dá pra ter certeza (abreviação padrão de futebol ou o
 /// mesmo padrão já escrito por extenso em outro registro do próprio
 /// dataset); qualquer código fora dessa lista volta cru, nunca chuta.
-final _knownRounds = <String, String>{
-  'SF': 'Semifinal',
-  'QF': 'Quartas de final',
-  'F': 'Final',
-  'RQ': 'Repescagem',
-  '1F': '1ª fase',
-  '2F': '2ª fase',
-  '3F': '3ª fase',
-  '4F': '4ª fase',
-  '5F': '5ª fase',
-  '1/8': 'Oitavas de final',
+Map<String, String> _knownRounds(AppLocalizations l10n) => {
+  'SF': l10n.passportRoundSemifinal,
+  'QF': l10n.passportRoundQuarterfinal,
+  'F': l10n.passportRoundFinal,
+  'RQ': l10n.passportRoundPlayoff,
+  '1F': l10n.passportRoundPhase(1),
+  '2F': l10n.passportRoundPhase(2),
+  '3F': l10n.passportRoundPhase(3),
+  '4F': l10n.passportRoundPhase(4),
+  '5F': l10n.passportRoundPhase(5),
+  '1/8': l10n.passportRoundOf16,
 };
 
 final _bareRoundNumber = RegExp(r'^R(\d+)$');
@@ -36,21 +38,27 @@ final _singleGroupLetter = RegExp(r'^[A-Z]$');
 /// R3", "Quartas") — nesse caso só normaliza o separador. O resto é
 /// abreviação de fonte oficial de resultados (R12, SF, QF, F, 1F, letra de
 /// grupo) — mapeada aqui.
-String? humanizeRound(String? raw) {
+String? humanizeRound(AppLocalizations l10n, String? raw) {
   if (raw == null || raw.trim().isEmpty) return null;
   final value = raw.trim();
 
-  if (value.contains('·') || value.contains(' fase') || value.contains('Fase')) {
+  if (value.contains('·') ||
+      value.contains(' fase') ||
+      value.contains('Fase')) {
     return value.replaceAll('·', '—');
   }
 
-  final known = _knownRounds[value];
+  final known = _knownRounds(l10n)[value];
   if (known != null) return known;
 
   final bareRound = _bareRoundNumber.firstMatch(value);
-  if (bareRound != null) return 'Rodada ${bareRound.group(1)}';
+  if (bareRound != null) {
+    return l10n.passportRoundMatchday(int.parse(bareRound.group(1)!));
+  }
 
-  if (_singleGroupLetter.hasMatch(value)) return 'Grupo $value';
+  if (_singleGroupLetter.hasMatch(value)) {
+    return l10n.passportRoundGroup(value);
+  }
 
   return value;
 }

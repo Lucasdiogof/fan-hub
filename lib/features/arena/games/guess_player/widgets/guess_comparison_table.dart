@@ -98,7 +98,7 @@ class _ResultRow extends StatelessWidget {
             flex: 2,
             child: _MatchCell(
               match: result.position,
-              label: result.guessedPlayer.position?.short ?? '—',
+              label: result.guessedPlayer.position?.short(context) ?? '—',
             ),
           ),
           Expanded(

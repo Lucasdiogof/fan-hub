@@ -50,7 +50,7 @@ class CrowdTab extends StatelessWidget {
                         : null;
                     return _CrowdSlot(
                       result: result,
-                      position: slot.position.short,
+                      position: slot.position.short(context),
                       avatarSize: avatarSize,
                       isHome: isHome,
                     );

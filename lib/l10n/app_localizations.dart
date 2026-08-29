@@ -640,6 +640,12 @@ abstract class AppLocalizations {
   /// **'Indefinido'**
   String get matchStatusUnknown;
 
+  /// No description provided for @matchCurrentRound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rodada atual'**
+  String get matchCurrentRound;
+
   /// No description provided for @commonSave.
   ///
   /// In pt, this message translates to:
@@ -1660,6 +1666,54 @@ abstract class AppLocalizations {
   /// **'Eu fui'**
   String get passportSealActionLabel;
 
+  /// No description provided for @passportRoundSemifinal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Semifinal'**
+  String get passportRoundSemifinal;
+
+  /// No description provided for @passportRoundQuarterfinal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quartas de final'**
+  String get passportRoundQuarterfinal;
+
+  /// No description provided for @passportRoundFinal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Final'**
+  String get passportRoundFinal;
+
+  /// No description provided for @passportRoundPlayoff.
+  ///
+  /// In pt, this message translates to:
+  /// **'Repescagem'**
+  String get passportRoundPlayoff;
+
+  /// No description provided for @passportRoundOf16.
+  ///
+  /// In pt, this message translates to:
+  /// **'Oitavas de final'**
+  String get passportRoundOf16;
+
+  /// No description provided for @passportRoundPhase.
+  ///
+  /// In pt, this message translates to:
+  /// **'{n}ª fase'**
+  String passportRoundPhase(int n);
+
+  /// No description provided for @passportRoundMatchday.
+  ///
+  /// In pt, this message translates to:
+  /// **'Rodada {n}'**
+  String passportRoundMatchday(int n);
+
+  /// No description provided for @passportRoundGroup.
+  ///
+  /// In pt, this message translates to:
+  /// **'Grupo {letter}'**
+  String passportRoundGroup(String letter);
+
   /// No description provided for @arenaRankingDetailFirstTry.
   ///
   /// In pt, this message translates to:
@@ -1797,6 +1851,18 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Não foi possível carregar os dados'**
   String get commonLoadError;
+
+  /// No description provided for @commonSelectPlaceholder.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecionar'**
+  String get commonSelectPlaceholder;
+
+  /// No description provided for @commonNoDataFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum dado encontrado.'**
+  String get commonNoDataFound;
 
   /// No description provided for @membershipCheckInAction.
   ///
@@ -2464,6 +2530,24 @@ abstract class AppLocalizations {
   /// **'{count} visualizações'**
   String socialViewsCount(int count);
 
+  /// No description provided for @socialPlatformInstagram.
+  ///
+  /// In pt, this message translates to:
+  /// **'INSTAGRAM'**
+  String get socialPlatformInstagram;
+
+  /// No description provided for @socialPlatformYoutube.
+  ///
+  /// In pt, this message translates to:
+  /// **'YOUTUBE'**
+  String get socialPlatformYoutube;
+
+  /// No description provided for @socialPlatformX.
+  ///
+  /// In pt, this message translates to:
+  /// **'X'**
+  String get socialPlatformX;
+
   /// No description provided for @newsTitle.
   ///
   /// In pt, this message translates to:
@@ -2733,6 +2817,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Atacantes'**
   String get squadGroupForwards;
+
+  /// No description provided for @squadInstagramLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Instagram'**
+  String get squadInstagramLabel;
 
   /// No description provided for @validatorNameRequired.
   ///
@@ -3579,6 +3669,162 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Trave'**
   String get penaltyResultPostShort;
+
+  /// No description provided for @playerPositionGolFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Goleiro'**
+  String get playerPositionGolFull;
+
+  /// No description provided for @playerPositionGolShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'GOL'**
+  String get playerPositionGolShort;
+
+  /// No description provided for @playerPositionZagFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Zagueiro'**
+  String get playerPositionZagFull;
+
+  /// No description provided for @playerPositionZagShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'ZAG'**
+  String get playerPositionZagShort;
+
+  /// No description provided for @playerPositionLdFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Lateral-direito'**
+  String get playerPositionLdFull;
+
+  /// No description provided for @playerPositionLdShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'LD'**
+  String get playerPositionLdShort;
+
+  /// No description provided for @playerPositionLeFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Lateral-esquerdo'**
+  String get playerPositionLeFull;
+
+  /// No description provided for @playerPositionLeShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'LE'**
+  String get playerPositionLeShort;
+
+  /// No description provided for @playerPositionAldFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ala-direito'**
+  String get playerPositionAldFull;
+
+  /// No description provided for @playerPositionAldShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'ALD'**
+  String get playerPositionAldShort;
+
+  /// No description provided for @playerPositionAleFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ala-esquerdo'**
+  String get playerPositionAleFull;
+
+  /// No description provided for @playerPositionAleShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'ALE'**
+  String get playerPositionAleShort;
+
+  /// No description provided for @playerPositionVolFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volante'**
+  String get playerPositionVolFull;
+
+  /// No description provided for @playerPositionVolShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'VOL'**
+  String get playerPositionVolShort;
+
+  /// No description provided for @playerPositionMcFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meio-campista'**
+  String get playerPositionMcFull;
+
+  /// No description provided for @playerPositionMcShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'MC'**
+  String get playerPositionMcShort;
+
+  /// No description provided for @playerPositionMeiFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meia'**
+  String get playerPositionMeiFull;
+
+  /// No description provided for @playerPositionMeiShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'MEI'**
+  String get playerPositionMeiShort;
+
+  /// No description provided for @playerPositionPdFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ponta-direita'**
+  String get playerPositionPdFull;
+
+  /// No description provided for @playerPositionPdShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'PD'**
+  String get playerPositionPdShort;
+
+  /// No description provided for @playerPositionPeFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ponta-esquerda'**
+  String get playerPositionPeFull;
+
+  /// No description provided for @playerPositionPeShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'PE'**
+  String get playerPositionPeShort;
+
+  /// No description provided for @playerPositionSaFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Segundo atacante'**
+  String get playerPositionSaFull;
+
+  /// No description provided for @playerPositionSaShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'SA'**
+  String get playerPositionSaShort;
+
+  /// No description provided for @playerPositionAtaFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Atacante'**
+  String get playerPositionAtaFull;
+
+  /// No description provided for @playerPositionAtaShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'ATA'**
+  String get playerPositionAtaShort;
 
   /// No description provided for @crowdTitle.
   ///

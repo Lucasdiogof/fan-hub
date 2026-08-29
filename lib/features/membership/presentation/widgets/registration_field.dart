@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/shared/widgets/app_option_picker.dart';
 
@@ -185,7 +186,7 @@ class RegistrationPickerField extends StatelessWidget {
     required this.onTap,
     this.isRequired = false,
     this.errorText,
-    this.placeholder = 'Selecionar',
+    this.placeholder,
     super.key,
   });
 
@@ -194,12 +195,14 @@ class RegistrationPickerField extends StatelessWidget {
   final VoidCallback onTap;
   final bool isRequired;
   final String? errorText;
-  final String placeholder;
+  final String? placeholder;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     final hasValue = value.isNotEmpty;
+    final resolvedPlaceholder =
+        placeholder ?? context.l10n.commonSelectPlaceholder;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -222,7 +225,7 @@ class RegistrationPickerField extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    hasValue ? value : placeholder,
+                    hasValue ? value : resolvedPlaceholder,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -265,7 +268,7 @@ class RegistrationDropdownField<T> extends StatelessWidget {
     required this.onChanged,
     this.isRequired = false,
     this.errorText,
-    this.placeholder = 'Selecionar',
+    this.placeholder,
     super.key,
   });
 
@@ -275,7 +278,7 @@ class RegistrationDropdownField<T> extends StatelessWidget {
   final ValueChanged<T> onChanged;
   final bool isRequired;
   final String? errorText;
-  final String placeholder;
+  final String? placeholder;
 
   String get _selectedLabel {
     for (final option in options) {

@@ -15,7 +15,7 @@ class RefreshableStateView extends StatelessWidget {
     required this.successBuilder,
     this.errorMessage,
     this.emptyIcon = Icons.inbox_outlined,
-    this.emptyTitle = 'Nenhum dado encontrado.',
+    this.emptyTitle,
     super.key,
   });
 
@@ -24,7 +24,7 @@ class RefreshableStateView extends StatelessWidget {
   final WidgetBuilder successBuilder;
   final String? errorMessage;
   final IconData emptyIcon;
-  final String emptyTitle;
+  final String? emptyTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,10 @@ class RefreshableStateView extends StatelessWidget {
           ),
         ),
         LoadStatus.empty => _centered(
-          StateMessage(icon: emptyIcon, title: emptyTitle),
+          StateMessage(
+            icon: emptyIcon,
+            title: emptyTitle ?? context.l10n.commonNoDataFound,
+          ),
         ),
         LoadStatus.success => successBuilder(context),
       },

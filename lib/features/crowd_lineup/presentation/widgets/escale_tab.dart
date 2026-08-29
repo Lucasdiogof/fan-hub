@@ -163,7 +163,7 @@ class _Slot extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          _Label(player: player, position: slot.position.short),
+          _Label(player: player, position: slot.position.short(context)),
         ],
       ),
     );

@@ -211,7 +211,7 @@ class _InstagramButton extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                'Instagram',
+                context.l10n.squadInstagramLabel,
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w700,
