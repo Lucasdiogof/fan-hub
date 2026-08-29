@@ -5,6 +5,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_spotlight_card.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_entry_card.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
@@ -12,7 +13,9 @@ import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/home/presentation/widgets/home_brand_header.dart';
+import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 import 'package:goias_app/features/home/presentation/widgets/next_match_section.dart';
+import 'package:goias_app/features/home/presentation/widgets/quick_access_section.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_entry_card.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -69,9 +72,41 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
   /// baixo dos panos toda vez que QUALQUER tela do app era fechada.
   @override
   void didPopNext() {
-    if (sl<HomeShellCubit>().state.index == 0) {
+    if (sl<HomeShellCubit>().state.index == homeTabIndex) {
       context.read<HomeCubit>().load();
     }
+  }
+
+  /// Só o que ainda não tem card próprio na Home — Clube, Arena e Loja já
+  /// têm o deles logo abaixo, então não entram aqui de novo. Com próximo
+  /// jogo confirmado, Ingressos vem primeiro; sem jogo marcado, ele vai
+  /// pro fim.
+  List<QuickAccessItem> _quickAccessItems(
+    BuildContext context,
+    HomeState state,
+  ) {
+    final l10n = context.l10n;
+    final nextMatch = state.nextMatch;
+
+    final tickets = QuickAccessItem(
+      icon: Icons.confirmation_number_outlined,
+      label: l10n.homeQuickAccessTickets,
+      onTap: () => context.push('/tickets'),
+    );
+    final membership = QuickAccessItem(
+      icon: Icons.badge_outlined,
+      label: l10n.navMembership,
+      onTap: () => sl<HomeShellCubit>().navigateToTab(socioTabIndex),
+    );
+    final news = QuickAccessItem(
+      icon: Icons.article_outlined,
+      label: l10n.homeQuickAccessNews,
+      onTap: () => context.push('/news'),
+    );
+
+    return nextMatch != null
+        ? [tickets, membership, news]
+        : [membership, news, tickets];
   }
 
   @override
@@ -80,7 +115,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
     return BlocListener<HomeShellCubit, HomeShellState>(
       bloc: sl<HomeShellCubit>(),
       listenWhen: (previous, current) =>
-          previous.index != 0 && current.index == 0,
+          previous.index != homeTabIndex && current.index == homeTabIndex,
       listener: (context, state) => context.read<HomeCubit>().load(),
       child: Scaffold(
         backgroundColor: colors.background,
@@ -115,12 +150,18 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                           ),
                         ],
                         const SizedBox(height: AppSpacing.xl),
-                        const ArenaSpotlightCard(),
+                        QuickAccessSection(
+                          title: context.l10n.homeQuickAccessTitle,
+                          items: _quickAccessItems(context, state),
+                        ),
                         const SizedBox(height: AppSpacing.xl),
                         ClubEntryCard(onTap: () => context.push('/clube')),
                         const SizedBox(height: AppSpacing.md),
+                        const ArenaSpotlightCard(),
+                        const SizedBox(height: AppSpacing.md),
                         StoreEntryCard(
-                          onTap: () => sl<HomeShellCubit>().navigateToTab(4),
+                          onTap: () =>
+                              sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
                         ),
                       ],
                     ),
