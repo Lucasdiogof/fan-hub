@@ -10,7 +10,6 @@ import 'package:goias_app/features/social/domain/entities/social_post.dart';
 import 'package:goias_app/features/social/presentation/cubit/social_feed_cubit.dart';
 import 'package:goias_app/features/social/presentation/cubit/social_feed_state.dart';
 import 'package:goias_app/features/social/presentation/widgets/social_empty_state.dart';
-import 'package:goias_app/features/social/presentation/widgets/social_platform_filter.dart';
 import 'package:goias_app/features/social/presentation/widgets/social_post_card.dart';
 import 'package:goias_app/features/social/presentation/widgets/social_skeleton_card.dart';
 import 'package:goias_app/shared/state/load_status.dart';
@@ -19,12 +18,12 @@ import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
-enum _MediaSection { social, news }
+/// Instagram, Notícias, YouTube e X num filtro só, lado a lado — Notícias
+/// entra aqui porque também é conteúdo do site oficial, não uma aba à
+/// parte. `NewsCubit` é singleton, então trocar pra "Notícias" nunca busca
+/// a lista de novo se a Home já tinha carregado antes.
+enum _MediaFilter { instagram, news, youtube, x }
 
-/// "Mídia" — feed de redes sociais e, na mesma tela, todas as notícias
-/// (a Home não tem mais sua própria seção de notícias; ver mais / tudo
-/// mora aqui agora). `NewsCubit` é singleton, então entrar nesta aba nunca
-/// busca a lista de novo se a Home já tinha carregado antes.
 class SocialFeedPage extends StatelessWidget {
   const SocialFeedPage({super.key});
 
@@ -48,7 +47,20 @@ class _SocialFeedView extends StatefulWidget {
 }
 
 class _SocialFeedViewState extends State<_SocialFeedView> {
-  var _section = _MediaSection.social;
+  var _filter = _MediaFilter.instagram;
+
+  void _select(_MediaFilter filter) {
+    setState(() => _filter = filter);
+    final platform = switch (filter) {
+      _MediaFilter.instagram => SocialPlatform.instagram,
+      _MediaFilter.youtube => SocialPlatform.youtube,
+      _MediaFilter.x => SocialPlatform.x,
+      _MediaFilter.news => null,
+    };
+    if (platform != null) {
+      context.read<SocialFeedCubit>().selectPlatform(platform);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,34 +86,15 @@ class _SocialFeedViewState extends State<_SocialFeedView> {
                     children: [
                       PageTitle(context.l10n.socialMediaTitle),
                       const SizedBox(height: AppSpacing.lg),
-                      _SectionSelector(
-                        selected: _section,
-                        onSelected: (section) =>
-                            setState(() => _section = section),
-                      ),
-                      if (_section == _MediaSection.social) ...[
-                        const SizedBox(height: AppSpacing.sm),
-                        BlocBuilder<SocialFeedCubit, SocialFeedState>(
-                          buildWhen: (p, c) =>
-                              p.selectedPlatform != c.selectedPlatform,
-                          builder: (context, state) {
-                            return SocialPlatformFilter(
-                              selected: state.selectedPlatform,
-                              onChanged: context
-                                  .read<SocialFeedCubit>()
-                                  .selectPlatform,
-                            );
-                          },
-                        ),
-                      ],
+                      _MediaFilterBar(selected: _filter, onSelected: _select),
                     ],
                   ),
                 ),
                 const SizedBox(height: AppSpacing.lg),
                 Expanded(
-                  child: _section == _MediaSection.social
-                      ? const _FeedBody()
-                      : const NewsListBody(),
+                  child: _filter == _MediaFilter.news
+                      ? const NewsListBody()
+                      : const _FeedBody(),
                 ),
               ],
             ),
@@ -112,47 +105,47 @@ class _SocialFeedViewState extends State<_SocialFeedView> {
   }
 }
 
-class _SectionSelector extends StatelessWidget {
-  const _SectionSelector({required this.selected, required this.onSelected});
+class _MediaFilterBar extends StatelessWidget {
+  const _MediaFilterBar({required this.selected, required this.onSelected});
 
-  final _MediaSection selected;
-  final ValueChanged<_MediaSection> onSelected;
+  final _MediaFilter selected;
+  final ValueChanged<_MediaFilter> onSelected;
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     final l10n = context.l10n;
+    final options = [
+      (_MediaFilter.instagram, 'INSTAGRAM'),
+      (_MediaFilter.news, l10n.newsTitle),
+      (_MediaFilter.youtube, 'YOUTUBE'),
+      (_MediaFilter.x, 'X'),
+    ];
+    final colors = context.colors;
     return Container(
-      height: 38,
-      padding: const EdgeInsets.all(3),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: colors.secondary,
-        borderRadius: BorderRadius.circular(999),
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.button),
+        border: Border.all(color: colors.border),
       ),
       child: Row(
         children: [
-          Expanded(
-            child: _SegmentButton(
-              label: l10n.socialTabSocial,
-              selected: selected == _MediaSection.social,
-              onTap: () => onSelected(_MediaSection.social),
+          for (final (filter, label) in options)
+            Expanded(
+              child: _FilterChip(
+                label: label,
+                selected: selected == filter,
+                onTap: () => onSelected(filter),
+              ),
             ),
-          ),
-          Expanded(
-            child: _SegmentButton(
-              label: l10n.newsTitle,
-              selected: selected == _MediaSection.news,
-              onTap: () => onSelected(_MediaSection.news),
-            ),
-          ),
         ],
       ),
     );
   }
 }
 
-class _SegmentButton extends StatelessWidget {
-  const _SegmentButton({
+class _FilterChip extends StatelessWidget {
+  const _FilterChip({
     required this.label,
     required this.selected,
     required this.onTap,
@@ -167,28 +160,34 @@ class _SegmentButton extends StatelessWidget {
     final colors = context.colors;
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(999),
+      borderRadius: BorderRadius.circular(AppRadius.button - 4),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: selected ? colors.surface : Colors.transparent,
-          borderRadius: BorderRadius.circular(999),
+          color: selected ? colors.primary : Colors.transparent,
+          borderRadius: BorderRadius.circular(AppRadius.button - 4),
           boxShadow: selected
               ? [
                   BoxShadow(
-                    color: colors.textPrimary.withValues(alpha: 0.08),
-                    blurRadius: 4,
+                    color: colors.primary.withValues(alpha: 0.35),
+                    blurRadius: 10,
+                    offset: const Offset(0, 3),
                   ),
                 ]
               : null,
         ),
         child: Text(
           label,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 12.5,
-            fontWeight: FontWeight.w800,
-            color: selected ? colors.textPrimary : colors.textSecondary,
+            fontSize: 10.5,
+            fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
+            letterSpacing: 0.3,
+            color: selected ? colors.onPrimary : colors.textSecondary,
           ),
         ),
       ),

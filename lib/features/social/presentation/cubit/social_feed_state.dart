@@ -6,7 +6,7 @@ class SocialFeedState extends Equatable {
   const SocialFeedState({
     this.status = LoadStatus.initial,
     this.allPosts = const [],
-    this.selectedPlatform = SocialPlatform.youtube,
+    this.selectedPlatform = SocialPlatform.instagram,
     this.errorMessage,
   });
 
