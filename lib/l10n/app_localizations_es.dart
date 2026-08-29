@@ -518,9 +518,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get arenaTitle => 'Arena Esmeraldina';
 
   @override
-  String get arenaSubtitle => 'Minijuegos rápidos para la afición.';
-
-  @override
   String get arenaSectionPlayNow => 'JUEGA AHORA';
 
   @override

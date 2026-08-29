@@ -307,14 +307,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                     ),
                     children: [
                       PageTitle(context.l10n.arenaTitle.toUpperCase()),
-                      const SizedBox(height: 6),
-                      Text(
-                        context.l10n.arenaSubtitle,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: colors.textSecondary,
-                        ),
-                      ),
                       const SizedBox(height: AppSpacing.xl),
                       ArenaSectionHeader(
                         context.l10n.arenaHighlightsSectionTitle,

@@ -1084,12 +1084,6 @@ abstract class AppLocalizations {
   /// **'Arena Esmeraldina'**
   String get arenaTitle;
 
-  /// No description provided for @arenaSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Minigames rápidos para o torcedor.'**
-  String get arenaSubtitle;
-
   /// No description provided for @arenaSectionPlayNow.
   ///
   /// In pt, this message translates to:

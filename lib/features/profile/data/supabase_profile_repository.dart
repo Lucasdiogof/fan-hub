@@ -24,7 +24,7 @@ class SupabaseProfileRepository implements ProfileRepository {
           .maybeSingle();
       return Success(_mapProfile(row));
     } catch (error) {
-      return Error(mapProfileError(error));
+      return Error(mapProfileError(error, isWrite: false));
     }
   }
 
@@ -76,7 +76,7 @@ class SupabaseProfileRepository implements ProfileRepository {
         ),
       );
     } catch (error) {
-      return Error(mapProfileError(error));
+      return Error(mapProfileError(error, isWrite: false));
     }
   }
 
