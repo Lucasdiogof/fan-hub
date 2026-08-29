@@ -69,6 +69,30 @@ class _PassportRankingViewV2 extends StatelessWidget {
                 Expanded(
                   child: BlocBuilder<PassportRankingCubit, PassportRankingState>(
                     builder: (context, state) {
+                      // Carregando: fora do ListView — um `Center` dentro de
+                      // um item de lista só centraliza no espaço daquele
+                      // item (o escudo ficava colado embaixo do seletor de
+                      // período, não no meio da tela).
+                      if (state.status == LoadStatus.initial ||
+                          state.status == LoadStatus.loading) {
+                        return Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                            AppSpacing.lg,
+                            AppSpacing.sm,
+                            AppSpacing.lg,
+                            0,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _PeriodSelectorV2(state: state),
+                              const Expanded(
+                                child: Center(child: GoiasLoadingIndicator()),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
                       return RefreshIndicator(
                         onRefresh: () =>
                             context.read<PassportRankingCubit>().refresh(),
@@ -85,11 +109,10 @@ class _PassportRankingViewV2 extends StatelessWidget {
                             _PeriodSelectorV2(state: state),
                             const SizedBox(height: AppSpacing.lg),
                             switch (state.status) {
+                              // Inatingível aqui — tratado no `if` acima,
+                              // antes do ListView existir.
                               LoadStatus.initial ||
-                              LoadStatus.loading => const Padding(
-                                padding: EdgeInsets.only(top: 60),
-                                child: Center(child: GoiasLoadingIndicator()),
-                              ),
+                              LoadStatus.loading => const SizedBox.shrink(),
                               LoadStatus.error => Padding(
                                 padding: const EdgeInsets.only(top: 60),
                                 child: Center(
@@ -172,7 +195,10 @@ class _PeriodSelectorV2 extends StatelessWidget {
                   context.read<PassportRankingCubit>().selectYear(year),
               borderRadius: BorderRadius.circular(999),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: selected ? colors.primary : colors.secondary,
@@ -214,7 +240,9 @@ class _RankingRowV2 extends StatelessWidget {
         color: entry.isMe ? colors.secondary : colors.surface,
         borderRadius: BorderRadius.circular(AppRadius.card),
         border: Border.all(
-          color: entry.isMe ? colors.primary.withValues(alpha: 0.35) : colors.border,
+          color: entry.isMe
+              ? colors.primary.withValues(alpha: 0.35)
+              : colors.border,
         ),
       ),
       child: Row(
