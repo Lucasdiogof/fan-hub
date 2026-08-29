@@ -21,6 +21,7 @@ class AppPrimaryButton extends StatelessWidget {
     this.loading = false,
     this.loadingLabel,
     this.showArrow = false,
+    this.icon,
     this.color,
     this.borderColor,
     super.key,
@@ -31,6 +32,11 @@ class AppPrimaryButton extends StatelessWidget {
   final bool loading;
   final String? loadingLabel;
   final bool showArrow;
+
+  /// Ícone opcional ANTES do texto — ex.: um check de sucesso depois de
+  /// uma ação assíncrona concluir (ver `PassportSaveBarV2`). Não confundir
+  /// com [showArrow] (depois do texto, indicando avanço/navegação).
+  final IconData? icon;
   final Color? color;
   final Color? borderColor;
 
@@ -43,7 +49,10 @@ class AppPrimaryButton extends StatelessWidget {
     final resolvedBorderColor = borderColor;
 
     return Opacity(
-      opacity: enabled || loading ? 1 : 0.55,
+      // Com `icon` (ex.: check de sucesso), o botão fica desabilitado de
+      // propósito (nada a fazer de novo por um instante) mas não deve
+      // parecer "apagado" — é um anúncio de estado, não uma ação indisponível.
+      opacity: enabled || loading || icon != null ? 1 : 0.55,
       child: Material(
         color: resolvedColor,
         borderRadius: resolvedBorderColor == null
@@ -95,6 +104,10 @@ class AppPrimaryButton extends StatelessWidget {
                     : Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          if (icon != null) ...[
+                            Icon(icon, size: 19, color: colors.onPrimary),
+                            const SizedBox(width: AppSpacing.sm),
+                          ],
                           Flexible(
                             child: Text(
                               label,

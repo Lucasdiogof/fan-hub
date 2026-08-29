@@ -59,6 +59,12 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
   final _crowdFieldKey = GlobalKey();
   final _escaleFieldKey = GlobalKey();
 
+  /// Feedback de sucesso mora no próprio botão (ver `_ActionBar` em
+  /// `escale_tab.dart`) em vez de um SnackBar — fica visível por um
+  /// instante antes de trocar de aba, pra o torcedor realmente ver a
+  /// confirmação em vez de só ela piscar embaixo da tela.
+  bool _justSubmitted = false;
+
   /// Mesma heurística usada no card da Home (não existe um id de time
   /// oficial "Goiás" cadastrado no app) — se o Goiás está listado como
   /// mandante, uniforme principal; senão, reserva.
@@ -183,6 +189,7 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
                         isHome: _isGoiasHome,
                         fieldKey: _escaleFieldKey,
                         onConfirm: () => _submit(context),
+                        justSubmitted: _justSubmitted,
                       ),
                     ],
                   ),
@@ -221,9 +228,10 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
     final cubit = context.read<CrowdLineupCubit>();
     final ok = await cubit.submit();
     if (!ok || !context.mounted) return;
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(context.l10n.crowdSubmitted)));
+    setState(() => _justSubmitted = true);
+    await Future<void>.delayed(const Duration(milliseconds: 900));
+    if (!context.mounted) return;
+    setState(() => _justSubmitted = false);
     // "Escalação da torcida" é a aba 0 agora.
     _tabController.animateTo(0);
   }

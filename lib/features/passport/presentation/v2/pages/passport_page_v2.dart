@@ -96,13 +96,10 @@ class _PassportViewV2State extends State<_PassportViewV2> {
                       listenWhen: (previous, current) =>
                           previous.saveStatus != current.saveStatus,
                       listener: (context, state) {
-                        if (state.saveStatus == LoadStatus.success) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(context.l10n.passportSaveSuccess),
-                            ),
-                          );
-                        } else if (state.saveStatus == LoadStatus.error &&
+                        // Sucesso mora no próprio botão (ver
+                        // `PassportSaveBarV2`) — só erro de verdade ainda
+                        // precisa de um aviso à parte.
+                        if (state.saveStatus == LoadStatus.error &&
                             state.saveErrorMessage != null) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(state.saveErrorMessage!)),

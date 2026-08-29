@@ -19,11 +19,16 @@ class EscaleTab extends StatelessWidget {
     required this.isHome,
     required this.onConfirm,
     required this.fieldKey,
+    this.justSubmitted = false,
     super.key,
   });
 
   final bool isHome;
   final Future<void> Function() onConfirm;
+
+  /// Mostra o estado de sucesso no botão por um instante antes da página
+  /// trocar de aba (ver `CrowdLineupPage._submit`).
+  final bool justSubmitted;
 
   /// Dono é a página (`CrowdLineupPage`) — o botão de compartilhar mora no
   /// cabeçalho, fora desta aba, e precisa alcançar o mesmo `RepaintBoundary`.
@@ -72,7 +77,7 @@ class EscaleTab extends StatelessWidget {
                 ),
               ),
             ),
-            _ActionBar(onConfirm: onConfirm),
+            _ActionBar(onConfirm: onConfirm, justSubmitted: justSubmitted),
           ],
         );
       },
@@ -243,9 +248,10 @@ class _Label extends StatelessWidget {
 }
 
 class _ActionBar extends StatelessWidget {
-  const _ActionBar({required this.onConfirm});
+  const _ActionBar({required this.onConfirm, required this.justSubmitted});
 
   final Future<void> Function() onConfirm;
+  final bool justSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -286,40 +292,67 @@ class _ActionBar extends StatelessWidget {
                 SizedBox(
                   height: 52,
                   child: FilledButton(
-                    onPressed: (state.isComplete && !state.submitting)
+                    onPressed:
+                        (state.isComplete &&
+                            !state.submitting &&
+                            !justSubmitted)
                         ? () => onConfirm()
                         : null,
                     style: FilledButton.styleFrom(
                       backgroundColor: colors.primary,
                       foregroundColor: colors.onPrimary,
-                      disabledBackgroundColor: colors.primary.withValues(
-                        alpha: 0.3,
-                      ),
-                      disabledForegroundColor: colors.onPrimary.withValues(
-                        alpha: 0.75,
-                      ),
+                      disabledBackgroundColor: justSubmitted
+                          ? colors.primary
+                          : colors.primary.withValues(alpha: 0.3),
+                      disabledForegroundColor: justSubmitted
+                          ? colors.onPrimary
+                          : colors.onPrimary.withValues(alpha: 0.75),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(AppRadius.button),
                       ),
                     ),
-                    child: state.submitting
-                        ? const SizedBox(
-                            width: 22,
-                            height: 22,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2.5,
-                              color: Colors.white,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      child: justSubmitted
+                          ? Row(
+                              key: const ValueKey('success'),
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.check_circle_rounded,
+                                  size: 20,
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  context.l10n.crowdSubmitted,
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ],
+                            )
+                          : state.submitting
+                          ? const SizedBox(
+                              key: ValueKey('loading'),
+                              width: 22,
+                              height: 22,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.5,
+                                color: Colors.white,
+                              ),
+                            )
+                          : Text(
+                              state.hasVoted
+                                  ? context.l10n.crowdUpdateLineup
+                                  : context.l10n.crowdConfirmLineup,
+                              key: const ValueKey('label'),
+                              style: const TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w800,
+                              ),
                             ),
-                          )
-                        : Text(
-                            state.hasVoted
-                                ? context.l10n.crowdUpdateLineup
-                                : context.l10n.crowdConfirmLineup,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
+                    ),
                   ),
                 ),
               ],
