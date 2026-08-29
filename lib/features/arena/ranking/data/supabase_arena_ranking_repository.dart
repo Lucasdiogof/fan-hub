@@ -49,8 +49,8 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
           gameScore: (row['game_score'] as num).toInt(),
         ),
       );
-    } catch (error) {
-      return Error(mapArenaRankingError(error));
+    } catch (error, stackTrace) {
+      return Error(mapArenaRankingError(error, stackTrace));
     }
   }
 
@@ -84,8 +84,8 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
           );
         }).toList(),
       );
-    } catch (error) {
-      return Error(mapArenaRankingError(error));
+    } catch (error, stackTrace) {
+      return Error(mapArenaRankingError(error, stackTrace));
     }
   }
 
@@ -104,8 +104,8 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
         rank: (map['rank'] as num).toInt(),
         totalScore: (map['total_score'] as num).toInt(),
       ));
-    } catch (error) {
-      return Error(mapArenaRankingError(error));
+    } catch (error, stackTrace) {
+      return Error(mapArenaRankingError(error, stackTrace));
     }
   }
 
@@ -128,8 +128,8 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
         );
       }).toList();
       return Success(RankingUserDetail(entry: context, breakdown: breakdown));
-    } catch (error) {
-      return Error(mapArenaRankingError(error));
+    } catch (error, stackTrace) {
+      return Error(mapArenaRankingError(error, stackTrace));
     }
   }
 }

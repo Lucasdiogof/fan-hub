@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -6,6 +8,7 @@ import 'package:goias_app/features/membership/data/viacep_data_source.dart';
 import 'package:goias_app/features/membership/domain/entities/address_lookup_result.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ViaCepAddressRepository implements AddressRepository {
   ViaCepAddressRepository(this._dataSource, this._ibgeDataSource);
@@ -18,13 +21,15 @@ class ViaCepAddressRepository implements AddressRepository {
     try {
       final cities = await _ibgeDataSource.getCitiesByState(stateCode);
       return Success(cities);
-    } on DioException {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         NetworkFailure(
           'Não foi possível carregar as cidades. Tente novamente.',
         ),
       );
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         UnexpectedFailure(
           'Não foi possível carregar as cidades. Tente novamente.',
@@ -41,11 +46,13 @@ class ViaCepAddressRepository implements AddressRepository {
       final json = await _dataSource.findByZipCode(digits);
       if (json == null) return const Success(null);
       return Success(_map(json));
-    } on DioException {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         NetworkFailure('Não foi possível consultar o CEP. Tente novamente.'),
       );
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         UnexpectedFailure('Não foi possível consultar o CEP. Tente novamente.'),
       );
@@ -65,11 +72,13 @@ class ViaCepAddressRepository implements AddressRepository {
         street: street,
       );
       return Success(results.map(_map).toList());
-    } on DioException {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         NetworkFailure('Não foi possível buscar o endereço. Tente novamente.'),
       );
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         UnexpectedFailure(
           'Não foi possível buscar o endereço. Tente novamente.',

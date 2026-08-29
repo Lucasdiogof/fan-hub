@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
@@ -6,6 +8,7 @@ import 'package:goias_app/features/crowd_lineup/domain/goias_squad.dart';
 import 'package:goias_app/features/crowd_lineup/domain/lineup_vote.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
@@ -37,7 +40,8 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
           playerIdBySlot: slots,
         ),
       );
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         ServerFailure('Não foi possível carregar sua escalação.'),
       );
@@ -59,7 +63,8 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
         'updated_at': DateTime.now().toUtc().toIso8601String(),
       }, onConflict: 'match_id,user_id');
       return const Success(null);
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         ServerFailure('Não foi possível enviar sua escalação.'),
       );
@@ -74,7 +79,8 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
         params: {'p_match_id': matchId},
       );
       return Success(_parseCrowd(data));
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         ServerFailure('Não foi possível carregar a escalação da torcida.'),
       );

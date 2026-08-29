@@ -125,8 +125,8 @@ class MockTicketRepository implements TicketRepository {
           myTicketForSelf: myTicketForSelf,
         ),
       );
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 
@@ -189,8 +189,8 @@ class MockTicketRepository implements TicketRepository {
           .single();
 
       return Success(_mapTicket(row));
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 
@@ -205,8 +205,8 @@ class MockTicketRepository implements TicketRepository {
         'updated_at': DateTime.now().toUtc().toIso8601String(),
       }, onConflict: 'user_id,match_id');
       return const Success(null);
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 
@@ -219,8 +219,8 @@ class MockTicketRepository implements TicketRepository {
           .eq('user_id', _uid)
           .eq('match_id', matchId);
       return const Success(null);
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 
@@ -240,8 +240,8 @@ class MockTicketRepository implements TicketRepository {
           .eq('user_id', _uid)
           .eq('match_id', matchId);
       return const Success(null);
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 
@@ -333,8 +333,8 @@ class MockTicketRepository implements TicketRepository {
           createdAt: DateTime.parse(orderRow['created_at'] as String).toLocal(),
         ),
       );
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 
@@ -347,8 +347,8 @@ class MockTicketRepository implements TicketRepository {
           .eq('user_id', _uid)
           .order('created_at', ascending: false);
       return Success(rows.map(_mapTicket).toList());
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 
@@ -361,8 +361,8 @@ class MockTicketRepository implements TicketRepository {
           .eq('user_id', _uid)
           .order('created_at', ascending: false);
       return Success(rows.map(_mapOrder).toList());
-    } catch (error) {
-      return Error(mapTicketError(error));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
     }
   }
 

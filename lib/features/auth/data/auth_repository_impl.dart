@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -5,6 +7,7 @@ import 'package:goias_app/features/auth/data/auth_error_mapper.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/auth/domain/entities/auth_user.dart';
 import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide AuthUser;
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -35,8 +38,8 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _dataSource.signIn(email: email, password: password);
       return const Success(null);
-    } catch (error) {
-      return Error(mapAuthError(error));
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 
@@ -54,8 +57,8 @@ class AuthRepositoryImpl implements AuthRepository {
         emailRedirectTo: SupabaseConfig.redirectUrl,
       );
       return Success(response.session == null);
-    } catch (error) {
-      return Error(mapAuthError(error));
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 
@@ -64,8 +67,8 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _dataSource.signOut();
       return const Success(null);
-    } catch (error) {
-      return Error(mapAuthError(error));
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 
@@ -77,8 +80,8 @@ class AuthRepositoryImpl implements AuthRepository {
         redirectTo: SupabaseConfig.redirectUrl,
       );
       return const Success(null);
-    } catch (error) {
-      return Error(mapAuthError(error));
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 
@@ -90,8 +93,8 @@ class AuthRepositoryImpl implements AuthRepository {
         emailRedirectTo: SupabaseConfig.redirectUrl,
       );
       return const Success(null);
-    } catch (error) {
-      return Error(mapAuthError(error));
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 
@@ -100,8 +103,8 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _dataSource.updatePassword(newPassword);
       return const Success(null);
-    } catch (error) {
-      return Error(mapAuthError(error));
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 
@@ -116,12 +119,13 @@ class AuthRepositoryImpl implements AuthRepository {
         newPassword: newPassword,
       );
       return const Success(null);
-    } catch (error) {
+    } catch (error, stackTrace) {
       if (error is AuthException &&
           error.message.toLowerCase().contains('invalid login credentials')) {
+        unawaited(Sentry.captureException(error, stackTrace: stackTrace));
         return const Error(AuthFailure('Senha atual incorreta.'));
       }
-      return Error(mapAuthError(error));
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 
@@ -130,15 +134,17 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       await _dataSource.deleteAccount(password);
       return const Success(null);
-    } catch (error) {
+    } catch (error, stackTrace) {
       if (error is AuthException &&
           error.message.toLowerCase().contains('invalid login credentials')) {
+        unawaited(Sentry.captureException(error, stackTrace: stackTrace));
         return const Error(AuthFailure('Senha incorreta.'));
       }
       if (error is FunctionException) {
+        unawaited(Sentry.captureException(error, stackTrace: stackTrace));
         return Error(AuthFailure(_messageForFunctionsError(error)));
       }
-      return Error(mapAuthError(error));
+      return Error(mapAuthError(error, stackTrace));
     }
   }
 

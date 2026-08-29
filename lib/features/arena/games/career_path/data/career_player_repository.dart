@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
 import 'package:goias_app/features/arena/games/career_path/career_players.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Banco de jogadores do Adivinhe o Jogador. Fonte da verdade é o Supabase
@@ -25,7 +28,8 @@ class CareerPlayerRepository {
         if (player != null) parsed.add(player);
       }
       return parsed.isEmpty ? careerPlayers : parsed;
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return careerPlayers;
     }
   }

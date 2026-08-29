@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/club/domain/entities/club_transparency_topic.dart';
 import 'package:goias_app/features/club/domain/repositories/club_transparency_repository.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseClubTransparencyRepository implements ClubTransparencyRepository {
@@ -42,7 +45,8 @@ class SupabaseClubTransparencyRepository implements ClubTransparencyRepository {
           .toList(growable: false);
 
       return Success(topics);
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(
         ServerFailure('Não foi possível carregar a transparência.'),
       );

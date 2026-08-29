@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -5,6 +7,7 @@ import 'package:goias_app/features/news/data/datasources/news_remote_data_source
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/news/domain/entities/news_item.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class NewsRepositoryImpl implements NewsRepository {
   NewsRepositoryImpl(this._remote);
@@ -16,9 +19,11 @@ class NewsRepositoryImpl implements NewsRepository {
     try {
       final dtos = await _remote.getList();
       return Success(dtos.map((dto) => dto.toEntity()).toList());
-    } on DioException catch (e) {
-      return Error(_mapDioError(e));
-    } catch (_) {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(UnexpectedFailure());
     }
   }
@@ -28,9 +33,11 @@ class NewsRepositoryImpl implements NewsRepository {
     try {
       final dto = await _remote.getArticle(id);
       return Success(dto?.toEntity());
-    } on DioException catch (e) {
-      return Error(_mapDioError(e));
-    } catch (_) {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(UnexpectedFailure());
     }
   }

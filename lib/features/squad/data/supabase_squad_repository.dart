@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/squad/domain/repositories/squad_repository.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseSquadRepository implements SquadRepository {
@@ -20,7 +23,8 @@ class SupabaseSquadRepository implements SquadRepository {
           .map((row) => SquadMember.fromJson(row))
           .toList(growable: false);
       return Success(members);
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(ServerFailure('Não foi possível carregar o elenco.'));
     }
   }

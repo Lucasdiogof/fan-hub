@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:goias_app/features/arena/games/lineup/formation_layout_service.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_matches.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/word_evaluation_service.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Banco de partidas do Adivinhe a Escalação. Fonte da verdade é o
@@ -34,7 +36,8 @@ class LineupMatchRepository {
         if (match != null) parsed.add(match);
       }
       return parsed.isEmpty ? orderedLineupMatches : parsed;
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return orderedLineupMatches;
     }
   }

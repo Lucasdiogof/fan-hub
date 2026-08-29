@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_block.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_category.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_item.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 const _faqAssetPath = 'lib/assets/content/membership_faq.json';
@@ -63,7 +65,8 @@ class MembershipFaqDataSource {
         );
       }
       return categories.isEmpty ? null : categories;
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return null;
     }
   }

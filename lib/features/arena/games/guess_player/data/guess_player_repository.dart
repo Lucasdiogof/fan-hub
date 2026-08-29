@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_catalog.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.dart';
 import 'package:goias_app/features/squad/domain/squad_photos.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Catálogo do Quem Vestiu o Manto. Fonte da verdade é o Supabase
@@ -31,7 +34,8 @@ class GuessPlayerRepository {
         if (player != null) parsed.add(player);
       }
       return parsed.isEmpty ? guessPlayerCatalog : parsed;
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return guessPlayerCatalog;
     }
   }

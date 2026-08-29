@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -8,6 +10,7 @@ import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FootballRepositoryImpl implements FootballRepository {
   FootballRepositoryImpl(this._remote);
@@ -19,9 +22,11 @@ class FootballRepositoryImpl implements FootballRepository {
     try {
       final result = await _remote.getStandings();
       return Success(result.standings.map((dto) => dto.toEntity()).toList());
-    } on DioException catch (e) {
-      return Error(_mapDioError(e));
-    } catch (_) {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(UnexpectedFailure());
     }
   }
@@ -49,9 +54,11 @@ class FootballRepositoryImpl implements FootballRepository {
         hasPrevious: result.hasPrevious,
         hasNext: result.hasNext,
       ));
-    } on DioException catch (e) {
-      return Error(_mapDioError(e));
-    } catch (_) {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(UnexpectedFailure());
     }
   }
@@ -68,9 +75,11 @@ class FootballRepositoryImpl implements FootballRepository {
             .map((dto) => dto.toEntity(competitionName: competitionName))
             .toList(),
       ));
-    } on DioException catch (e) {
-      return Error(_mapDioError(e));
-    } catch (_) {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(UnexpectedFailure());
     }
   }
@@ -95,9 +104,11 @@ class FootballRepositoryImpl implements FootballRepository {
         lineups: result.lineups?.toEntity(),
         stats: result.stats.map((dto) => dto.toEntity()).toList(),
       ));
-    } on DioException catch (e) {
-      return Error(_mapDioError(e));
-    } catch (_) {
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(UnexpectedFailure());
     }
   }

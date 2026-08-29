@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_questions.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Banco de perguntas do Quiz. Fonte da verdade é o Supabase (editável sem
@@ -24,7 +27,8 @@ class QuizQuestionRepository {
         if (question != null) parsed.add(question);
       }
       return parsed.isEmpty ? quizQuestions : parsed;
-    } catch (_) {
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return quizQuestions;
     }
   }

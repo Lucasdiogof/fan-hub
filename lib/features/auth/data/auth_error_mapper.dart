@@ -1,7 +1,11 @@
+import 'dart:async';
+
 import 'package:goias_app/core/error/failures.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Failure mapAuthError(Object error) {
+Failure mapAuthError(Object error, StackTrace stackTrace) {
+  unawaited(Sentry.captureException(error, stackTrace: stackTrace));
   if (error is AuthRetryableFetchException || _looksLikeNetwork(error)) {
     return const NetworkFailure();
   }
