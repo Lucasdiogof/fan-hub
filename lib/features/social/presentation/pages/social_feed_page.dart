@@ -18,11 +18,11 @@ import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
-/// Instagram, Notícias, YouTube e X num filtro só, lado a lado — Notícias
+/// Notícias, Instagram, YouTube e X num filtro só, lado a lado — Notícias
 /// entra aqui porque também é conteúdo do site oficial, não uma aba à
 /// parte. `NewsCubit` é singleton, então trocar pra "Notícias" nunca busca
 /// a lista de novo se a Home já tinha carregado antes.
-enum _MediaFilter { instagram, news, youtube, x }
+enum _MediaFilter { news, instagram, youtube, x }
 
 class SocialFeedPage extends StatelessWidget {
   const SocialFeedPage({super.key});
@@ -47,7 +47,7 @@ class _SocialFeedView extends StatefulWidget {
 }
 
 class _SocialFeedViewState extends State<_SocialFeedView> {
-  var _filter = _MediaFilter.instagram;
+  var _filter = _MediaFilter.news;
 
   void _select(_MediaFilter filter) {
     setState(() => _filter = filter);
@@ -115,8 +115,8 @@ class _MediaFilterBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final options = [
-      (_MediaFilter.instagram, l10n.socialPlatformInstagram),
       (_MediaFilter.news, l10n.newsTitle),
+      (_MediaFilter.instagram, l10n.socialPlatformInstagram),
       (_MediaFilter.youtube, l10n.socialPlatformYoutube),
       (_MediaFilter.x, l10n.socialPlatformX),
     ];

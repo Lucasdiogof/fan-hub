@@ -46,6 +46,7 @@ class NewsItemRow extends StatelessWidget {
                     child: Image.network(
                       proxiedImageUrl(item.imageUrl),
                       fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
                       errorBuilder: (context, error, stackTrace) => Icon(
                         Icons.image_not_supported_outlined,
                         color: colors.textHint,

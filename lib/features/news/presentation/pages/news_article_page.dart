@@ -114,6 +114,7 @@ class _CoverImage extends StatelessWidget {
                 : Image.network(
                     proxiedImageUrl(imageUrl),
                     fit: BoxFit.cover,
+                    alignment: Alignment.topCenter,
                     errorBuilder: (context, error, stackTrace) =>
                         const SizedBox.shrink(),
                   ),

@@ -27,7 +27,7 @@ class PageTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Image.asset(AppAssets.goiasCrestBadge, width: 28, height: 28),
+        Image.asset(AppAssets.goiasCrestBadge, width: 22, height: 22),
         const SizedBox(width: 8),
         Flexible(
           child: Text(
