@@ -22,7 +22,6 @@ import 'package:goias_app/features/arena/games/lineup/data/lineup_match_reposito
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
-import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_challenge_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_header_bar.dart';
@@ -58,18 +57,8 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   //   caso mais comum, já que é assim que se joga.
   late Future<ArenaProgressSnapshot> _progressFuture =
       sl<ArenaProgressRepository>().loadSnapshot();
-  late Future<({int rank, int totalScore})?> _myRankFuture = _loadMyRank();
   late Future<int?> _crowdParticipantsFuture = _loadCrowdParticipants();
   bool _celebrationShown = false;
-
-  Future<({int rank, int totalScore})?> _loadMyRank() async {
-    final result = await sl<ArenaRankingRepository>().getMyRank(
-      RankingPeriod.allTime,
-    );
-    return result is Success<({int rank, int totalScore})?>
-        ? result.data
-        : null;
-  }
 
   /// Só usado pro "X torcedores já escalaram" do hero — opcional por
   /// natureza (ver spec), então qualquer falha/ausência de próximo jogo
@@ -84,7 +73,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   void _reloadProgress() {
     setState(() {
       _progressFuture = sl<ArenaProgressRepository>().loadSnapshot();
-      _myRankFuture = _loadMyRank();
       _crowdParticipantsFuture = _loadCrowdParticipants();
     });
   }
@@ -286,14 +274,10 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                     AppSpacing.xxxl,
                   ),
                   children: [
-                    FutureBuilder<({int rank, int totalScore})?>(
-                      future: _myRankFuture,
-                      builder: (context, rankSnapshot) => ArenaHeaderBar(
-                        rank: rankSnapshot.data?.rank,
-                        onRankingTap: () => _openRanking(context),
-                        onBack: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                      ),
+                    ArenaHeaderBar(
+                      onRankingTap: () => _openRanking(context),
+                      onBack: () =>
+                          context.canPop() ? context.pop() : context.go('/'),
                     ),
                     const SizedBox(height: AppSpacing.xl),
                     // Hero da Escalação da Torcida — o elemento principal

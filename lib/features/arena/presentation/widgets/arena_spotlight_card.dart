@@ -6,20 +6,16 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
-import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
-import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
-import 'package:goias_app/features/crowd_lineup/presentation/open_crowd_lineup.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
-import 'package:goias_app/core/error/result.dart';
 
 /// Destaque contextual da Arena na Home — a Arena saiu da bottom nav, então
-/// este card é o convite principal pra entrar nela. Dados 100% reaproveitados
-/// de `HomeCubit`/`ArenaRankingRepository`/`ArenaProgressRepository` (as
-/// mesmas fontes que a própria `ArenaPage` já usa) — nenhuma tabela nova.
-/// A chamada principal muda por prioridade: votação da Escalação da Torcida
-/// aberta > Quiz incompleto > resumo de ranking (fallback sempre disponível).
+/// este card é o convite principal pra entrar nela. A mensagem varia por
+/// prioridade (votação da Escalação da Torcida aberta > Quiz incompleto >
+/// convite genérico), mas o toque SEMPRE leva pro hub da Arena
+/// (`/arena`), nunca direto pra um jogo/voto específico — quem decide o
+/// que jogar é a própria tela da Arena.
 class ArenaSpotlightCard extends StatefulWidget {
   const ArenaSpotlightCard({super.key});
 
@@ -29,7 +25,6 @@ class ArenaSpotlightCard extends StatefulWidget {
 
 class _ArenaSpotlightCardState extends State<ArenaSpotlightCard> {
   late final Future<ArenaProgressSnapshot?> _progressFuture = _loadProgress();
-  late final Future<({int rank, int totalScore})?> _rankFuture = _loadRank();
 
   Future<ArenaProgressSnapshot?> _loadProgress() async {
     try {
@@ -37,15 +32,6 @@ class _ArenaSpotlightCardState extends State<ArenaSpotlightCard> {
     } catch (_) {
       return null;
     }
-  }
-
-  Future<({int rank, int totalScore})?> _loadRank() async {
-    final result = await sl<ArenaRankingRepository>().getMyRank(
-      RankingPeriod.allTime,
-    );
-    return result is Success<({int rank, int totalScore})?>
-        ? result.data
-        : null;
   }
 
   @override
@@ -57,26 +43,17 @@ class _ArenaSpotlightCardState extends State<ArenaSpotlightCard> {
         return FutureBuilder<ArenaProgressSnapshot?>(
           future: _progressFuture,
           builder: (context, progressSnapshot) {
-            return FutureBuilder<({int rank, int totalScore})?>(
-              future: _rankFuture,
-              builder: (context, rankSnapshot) {
-                final progress = progressSnapshot.data;
-                final rank = rankSnapshot.data;
-                final content = _contentFor(
-                  context,
-                  homeState: homeState,
-                  progress: progress,
-                );
-                return _SpotlightSurface(
-                  eyebrow: l10n.arenaSpotlightEyebrow,
-                  headline: content.headline,
-                  subtitle: content.subtitle,
-                  ctaLabel: content.ctaLabel,
-                  onTap: content.onTap,
-                  rank: rank?.rank,
-                  totalScore: rank?.totalScore,
-                );
-              },
+            final content = _contentFor(
+              context,
+              homeState: homeState,
+              progress: progressSnapshot.data,
+            );
+            return _SpotlightSurface(
+              eyebrow: l10n.arenaSpotlightEyebrow,
+              headline: content.headline,
+              subtitle: content.subtitle,
+              ctaLabel: content.ctaLabel,
+              onTap: () => context.push('/arena'),
             );
           },
         );
@@ -84,8 +61,7 @@ class _ArenaSpotlightCardState extends State<ArenaSpotlightCard> {
     );
   }
 
-  ({String headline, String subtitle, String ctaLabel, VoidCallback onTap})
-  _contentFor(
+  ({String headline, String subtitle, String ctaLabel}) _contentFor(
     BuildContext context, {
     required HomeState homeState,
     required ArenaProgressSnapshot? progress,
@@ -100,7 +76,6 @@ class _ArenaSpotlightCardState extends State<ArenaSpotlightCard> {
         headline: l10n.arenaSpotlightLineupHeadline,
         subtitle: l10n.arenaSpotlightLineupSubtitle(nextMatch.awayTeam.name),
         ctaLabel: l10n.arenaSpotlightLineupCta,
-        onTap: () => openCrowdLineup(context, nextMatch),
       );
     }
 
@@ -110,7 +85,6 @@ class _ArenaSpotlightCardState extends State<ArenaSpotlightCard> {
         headline: l10n.arenaSpotlightQuizHeadline,
         subtitle: l10n.arenaSpotlightQuizSubtitle,
         ctaLabel: l10n.arenaSpotlightQuizCta,
-        onTap: () => context.push('/arena/quiz'),
       );
     }
 
@@ -119,7 +93,6 @@ class _ArenaSpotlightCardState extends State<ArenaSpotlightCard> {
       headline: l10n.arenaSpotlightFallbackHeadline,
       subtitle: l10n.arenaSpotlightFallbackSubtitle,
       ctaLabel: l10n.arenaSpotlightFallbackCta,
-      onTap: () => context.push('/arena'),
     );
   }
 }
@@ -131,8 +104,6 @@ class _SpotlightSurface extends StatelessWidget {
     required this.subtitle,
     required this.ctaLabel,
     required this.onTap,
-    this.rank,
-    this.totalScore,
   });
 
   final String eyebrow;
@@ -140,13 +111,10 @@ class _SpotlightSurface extends StatelessWidget {
   final String subtitle;
   final String ctaLabel;
   final VoidCallback onTap;
-  final int? rank;
-  final int? totalScore;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final l10n = context.l10n;
     return Material(
       color: Colors.transparent,
       borderRadius: BorderRadius.circular(AppRadius.card),
@@ -205,40 +173,26 @@ class _SpotlightSurface extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
-              Row(
-                children: [
-                  SizedBox(
-                    height: 42,
-                    child: FilledButton(
-                      onPressed: onTap,
-                      style: FilledButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: ArenaColors.arenaTop,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpacing.lg,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppRadius.button),
-                        ),
-                        textStyle: const TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      child: Text(ctaLabel),
+              SizedBox(
+                height: 42,
+                child: FilledButton(
+                  onPressed: onTap,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: ArenaColors.arenaTop,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.button),
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
-                  const Spacer(),
-                  if (rank != null)
-                    Text(
-                      l10n.arenaSpotlightRankSummary(rank!, totalScore ?? 0),
-                      style: TextStyle(
-                        fontSize: 11.5,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white.withValues(alpha: 0.68),
-                      ),
-                    ),
-                ],
+                  child: Text(ctaLabel),
+                ),
               ),
             ],
           ),

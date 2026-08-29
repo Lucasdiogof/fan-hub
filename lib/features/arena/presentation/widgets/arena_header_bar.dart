@@ -6,20 +6,19 @@ import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 
 /// Cabeçalho da Arena — botão de voltar (a Arena agora é uma rota
-/// empurrada, não mais uma aba fixa da bottom nav) + título/subtítulo de um
-/// lado, botão de Ranking (troféu, com a posição do usuário quando
-/// disponível) do outro.
+/// empurrada, não mais uma aba fixa da bottom nav) e botão de Ranking
+/// (troféu) na mesma linha, título/subtítulo embaixo — mesmo padrão de
+/// `SecurityPage` (seta em cima, título abaixo, nunca dividindo espaço na
+/// mesma linha).
 class ArenaHeaderBar extends StatelessWidget {
   const ArenaHeaderBar({
     required this.onRankingTap,
     required this.onBack,
-    this.rank,
     super.key,
   });
 
   final VoidCallback onRankingTap;
   final VoidCallback onBack;
-  final int? rank;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +28,14 @@ class ArenaHeaderBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BackButtonCircle(size: 34, iconSize: 16, onTap: onBack),
-            const SizedBox(width: AppSpacing.md),
-            Expanded(child: PageTitle(l10n.arenaTitle.toUpperCase())),
-            const SizedBox(width: AppSpacing.sm),
-            _RankingButton(rank: rank, onTap: onRankingTap),
+            const Spacer(),
+            _RankingButton(onTap: onRankingTap),
           ],
         ),
+        const SizedBox(height: AppSpacing.lg),
+        PageTitle(l10n.arenaTitle.toUpperCase()),
         const SizedBox(height: 6),
         Text(
           l10n.arenaHeaderSubtitle,
@@ -53,9 +51,8 @@ class ArenaHeaderBar extends StatelessWidget {
 }
 
 class _RankingButton extends StatelessWidget {
-  const _RankingButton({required this.rank, required this.onTap});
+  const _RankingButton({required this.onTap});
 
-  final int? rank;
   final VoidCallback onTap;
 
   @override
@@ -68,45 +65,17 @@ class _RankingButton extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(999),
         child: Container(
-          width: 42,
-          height: 42,
+          width: 34,
+          height: 34,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: colors.secondary,
             shape: BoxShape.circle,
           ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Icon(Icons.emoji_events_rounded, size: 20, color: colors.primary),
-              if (rank != null)
-                Positioned(
-                  right: -8,
-                  top: -6,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 5,
-                      vertical: 1,
-                    ),
-                    constraints: const BoxConstraints(minWidth: 18),
-                    decoration: BoxDecoration(
-                      color: colors.primary,
-                      borderRadius: BorderRadius.circular(999),
-                      border: Border.all(color: colors.background, width: 1.5),
-                    ),
-                    child: Text(
-                      '#$rank',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 9.5,
-                        fontWeight: FontWeight.w800,
-                        color: colors.onPrimary,
-                        height: 1.3,
-                      ),
-                    ),
-                  ),
-                ),
-            ],
+          child: Icon(
+            Icons.emoji_events_rounded,
+            size: 17,
+            color: colors.primary,
           ),
         ),
       ),
