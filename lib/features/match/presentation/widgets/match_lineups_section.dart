@@ -3,6 +3,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 
 /// Escalações titulares — só aparece quando o OneFootball já confirmou a
 /// lista pra essa partida (nem toda partida tem, ex.: futuras/muito
@@ -104,7 +105,7 @@ class _LineupPlayerTile extends StatelessWidget {
             else
               ClipOval(
                 child: Image.network(
-                  player.photo,
+                  proxiedImageUrl(player.photo),
                   width: 44,
                   height: 44,
                   fit: BoxFit.cover,

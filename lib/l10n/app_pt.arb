@@ -100,6 +100,7 @@
     }
   },
   "matchLineupsTitle": "ESCALAÇÕES",
+  "matchStatsTitle": "ESTATÍSTICAS",
 
   "standingsClub": "CLUBE",
   "standingsColPoints": "P",
@@ -479,7 +480,6 @@
   "@datePrepositionFull": { "placeholders": { "day": { "type": "int" }, "month": { "type": "String" } } },
 
   "socialMediaTitle": "MÍDIA",
-  "socialTabSocial": "Redes Sociais",
   "socialFeedLoadError": "Não foi possível carregar o feed",
   "socialEmptyState": "Acompanhe o Goiás nas redes",
   "socialViewsM": "{value}M visualizações",

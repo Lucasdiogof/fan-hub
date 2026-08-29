@@ -5,6 +5,7 @@ import 'package:goias_app/features/match/data/datasources/football_remote_data_s
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
+import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 
@@ -76,7 +77,14 @@ class FootballRepositoryImpl implements FootballRepository {
 
   @override
   Future<
-    Result<({Match match, List<MatchEvent> events, MatchLineups? lineups})>
+    Result<
+      ({
+        Match match,
+        List<MatchEvent> events,
+        MatchLineups? lineups,
+        List<MatchStat> stats,
+      })
+    >
   >
   getMatchDetails(String fixtureId) async {
     try {
@@ -85,6 +93,7 @@ class FootballRepositoryImpl implements FootballRepository {
         match: result.match.toEntity(competitionName: result.competition.name),
         events: result.events.map((dto) => dto.toEntity()).toList(),
         lineups: result.lineups?.toEntity(),
+        stats: result.stats.map((dto) => dto.toEntity()).toList(),
       ));
     } on DioException catch (e) {
       return Error(_mapDioError(e));

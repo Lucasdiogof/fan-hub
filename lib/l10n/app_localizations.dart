@@ -550,6 +550,12 @@ abstract class AppLocalizations {
   /// **'ESCALAÇÕES'**
   String get matchLineupsTitle;
 
+  /// No description provided for @matchStatsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESTATÍSTICAS'**
+  String get matchStatsTitle;
+
   /// No description provided for @standingsClub.
   ///
   /// In pt, this message translates to:
@@ -2427,12 +2433,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'MÍDIA'**
   String get socialMediaTitle;
-
-  /// No description provided for @socialTabSocial.
-  ///
-  /// In pt, this message translates to:
-  /// **'Redes Sociais'**
-  String get socialTabSocial;
 
   /// No description provided for @socialFeedLoadError.
   ///

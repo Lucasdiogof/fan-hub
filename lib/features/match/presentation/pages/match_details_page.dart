@@ -8,12 +8,14 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
+import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_state.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_events_timeline.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_lineups_section.dart';
+import 'package:goias_app/features/match/presentation/widgets/match_stats_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
@@ -50,8 +52,36 @@ class MatchDetailsPage extends StatelessWidget {
   }
 }
 
-class _MatchDetailsView extends StatelessWidget {
+class _MatchDetailsView extends StatefulWidget {
   const _MatchDetailsView();
+
+  @override
+  State<_MatchDetailsView> createState() => _MatchDetailsViewState();
+}
+
+class _MatchDetailsViewState extends State<_MatchDetailsView>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    final cubit = context.read<MatchDetailsCubit>();
+    if (state == AppLifecycleState.resumed) {
+      cubit.resumePolling();
+    } else {
+      cubit.pausePolling();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +118,7 @@ class _MatchDetailsView extends StatelessWidget {
                           match: state.match!,
                           events: state.events,
                           lineups: state.lineups,
+                          stats: state.stats,
                         ),
                       );
                     },
@@ -136,11 +167,13 @@ class _MatchDetailsContent extends StatelessWidget {
     required this.match,
     required this.events,
     required this.lineups,
+    required this.stats,
   });
 
   final Match match;
   final List<MatchEvent> events;
   final MatchLineups? lineups;
+  final List<MatchStat> stats;
 
   @override
   Widget build(BuildContext context) {
@@ -296,6 +329,7 @@ class _MatchDetailsContent extends StatelessWidget {
           ),
         ),
         MatchEventsTimeline(match: match, events: events),
+        MatchStatsSection(stats: stats),
         MatchLineupsSection(lineups: lineups),
       ],
     );

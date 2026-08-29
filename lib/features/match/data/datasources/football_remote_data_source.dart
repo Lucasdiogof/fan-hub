@@ -3,6 +3,7 @@ import 'package:goias_app/features/match/data/dto/competition_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_dto.dart';
 import 'package:goias_app/features/match/data/dto/lineup_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_event_dto.dart';
+import 'package:goias_app/features/match/data/dto/match_stat_dto.dart';
 import 'package:goias_app/features/match/data/dto/standing_dto.dart';
 
 /// Só sabe conversar com o nosso backend interno (`/api/football/*`) —
@@ -89,6 +90,7 @@ class FootballRemoteDataSource {
       MatchDto match,
       List<MatchEventDto> events,
       MatchLineupsDto? lineups,
+      List<MatchStatDto> stats,
     })
   >
   getFixtureDetails(String fixtureId) async {
@@ -108,6 +110,9 @@ class FootballRemoteDataSource {
       lineups: lineupsJson != null
           ? MatchLineupsDto.fromJson(lineupsJson)
           : null,
+      stats: ((data['stats'] as List?) ?? [])
+          .map((s) => MatchStatDto.fromJson(s as Map<String, dynamic>))
+          .toList(),
     );
   }
 }

@@ -241,6 +241,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get matchLineupsTitle => 'LINEUPS';
 
   @override
+  String get matchStatsTitle => 'STATISTICS';
+
+  @override
   String get standingsClub => 'CLUB';
 
   @override
@@ -1334,9 +1337,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get socialMediaTitle => 'MEDIA';
-
-  @override
-  String get socialTabSocial => 'Social Media';
 
   @override
   String get socialFeedLoadError => 'Couldn\'t load the feed';

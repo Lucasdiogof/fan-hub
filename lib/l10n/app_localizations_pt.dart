@@ -240,6 +240,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get matchLineupsTitle => 'ESCALAÇÕES';
 
   @override
+  String get matchStatsTitle => 'ESTATÍSTICAS';
+
+  @override
   String get standingsClub => 'CLUBE';
 
   @override
@@ -1338,9 +1341,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get socialMediaTitle => 'MÍDIA';
-
-  @override
-  String get socialTabSocial => 'Redes Sociais';
 
   @override
   String get socialFeedLoadError => 'Não foi possível carregar o feed';

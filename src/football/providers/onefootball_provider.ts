@@ -70,11 +70,22 @@ export interface OneFootballMatchLineup {
   awayTeam: OneFootballTeamLineup;
 }
 
+/** Uma linha de `matchStats` — `home`/`away` ficam ausentes quando a fonte
+ * ainda não tem dado pra essa estatística (ex.: "chutes" no início do
+ * jogo), nunca um 0 inventado. */
+export interface OneFootballMatchStat {
+  title: string;
+  unit?: string;
+  home?: number;
+  away?: number;
+}
+
 export interface OneFootballMatchDetail {
   score: OneFootballMatchScore;
   stadium: string | null;
   events: OneFootballMatchEvent[];
   lineup: OneFootballMatchLineup | null;
+  stats: OneFootballMatchStat[];
 }
 
 export interface OneFootballStandingRow {
@@ -290,11 +301,13 @@ export async function fetchMatchDetail(matchId: string): Promise<OneFootballMatc
     const stadiumEntry = matchInfo?.entries.find((entry) => entry.title === 'Estádio');
     const matchEvents = findNode<{ events: OneFootballMatchEvent[] }>(containers, 'matchEvents');
     const matchLineup = findNode<{ lineup: OneFootballMatchLineup }>(containers, 'matchLineup');
+    const matchStats = findNode<{ stats: OneFootballMatchStat[] }>(containers, 'matchStats');
     return {
       score,
       stadium: stadiumEntry?.subtitle ?? null,
       events: matchEvents?.events ?? [],
       lineup: matchLineup?.lineup ?? null,
+      stats: matchStats?.stats ?? [],
     };
   } catch (err) {
     if (err instanceof ProviderError) throw err;

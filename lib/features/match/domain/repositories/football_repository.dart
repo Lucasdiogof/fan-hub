@@ -2,6 +2,7 @@ import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
+import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
 
 /// Dados esportivos reais (fontes gratuitas via nosso backend) — Brasileirão
@@ -37,7 +38,14 @@ abstract interface class FootballRepository {
   getGoiasSnapshot();
 
   Future<
-    Result<({Match match, List<MatchEvent> events, MatchLineups? lineups})>
+    Result<
+      ({
+        Match match,
+        List<MatchEvent> events,
+        MatchLineups? lineups,
+        List<MatchStat> stats,
+      })
+    >
   >
   getMatchDetails(String fixtureId);
 }

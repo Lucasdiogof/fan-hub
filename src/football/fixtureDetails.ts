@@ -7,8 +7,13 @@ import { fetchMatchDetail } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchScore } from './normalize/match';
 import { normalizeOneFootballMatchEvent } from './normalize/match_event';
 import { normalizeOneFootballMatchLineups } from './normalize/match_lineup';
+import { normalizeOneFootballMatchStat } from './normalize/match_stat';
 
-const CACHE_TTL_SECONDS = 30 * 60;
+// Era 30 min — baixado por causa do mesmo motivo do team.ts: a Central da
+// partida agora faz polling nesta rota enquanto o jogo do Goiás está ao
+// vivo (ver `MatchDetailsCubit`), então 30 min deixaria o placar/minuto/
+// estatísticas presos na primeira leitura por boa parte do jogo.
+const CACHE_TTL_SECONDS = 60;
 const COMPETITION_NAME = 'Brasileirão Série B';
 
 /** `id` vem prefixado (`onef-<id>`) — o próprio Flutter nunca precisa
@@ -36,6 +41,7 @@ async function handleOneFootballFixture(request: Request, cacheVersion: string, 
       match: normalizeOneFootballMatchScore(matchId, detail.score, detail.stadium),
       events: detail.events.map(normalizeOneFootballMatchEvent),
       lineups: detail.lineup ? normalizeOneFootballMatchLineups(detail.lineup) : null,
+      stats: detail.stats.map(normalizeOneFootballMatchStat),
     };
   });
 }

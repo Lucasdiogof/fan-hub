@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
+import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 class MatchDetailsState extends Equatable {
@@ -10,6 +11,7 @@ class MatchDetailsState extends Equatable {
     this.match,
     this.events = const [],
     this.lineups,
+    this.stats = const [],
     this.errorMessage,
   });
 
@@ -17,6 +19,7 @@ class MatchDetailsState extends Equatable {
   final Match? match;
   final List<MatchEvent> events;
   final MatchLineups? lineups;
+  final List<MatchStat> stats;
   final String? errorMessage;
 
   MatchDetailsState copyWith({
@@ -24,6 +27,7 @@ class MatchDetailsState extends Equatable {
     Match? match,
     List<MatchEvent>? events,
     MatchLineups? lineups,
+    List<MatchStat>? stats,
     String? errorMessage,
   }) {
     return MatchDetailsState(
@@ -31,10 +35,18 @@ class MatchDetailsState extends Equatable {
       match: match ?? this.match,
       events: events ?? this.events,
       lineups: lineups ?? this.lineups,
+      stats: stats ?? this.stats,
       errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 
   @override
-  List<Object?> get props => [status, match, events, lineups, errorMessage];
+  List<Object?> get props => [
+    status,
+    match,
+    events,
+    lineups,
+    stats,
+    errorMessage,
+  ];
 }

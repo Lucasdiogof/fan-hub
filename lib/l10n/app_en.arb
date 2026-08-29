@@ -92,6 +92,7 @@
     }
   },
   "matchLineupsTitle": "LINEUPS",
+  "matchStatsTitle": "STATISTICS",
 
   "standingsClub": "CLUB",
   "standingsColPoints": "Pts",
@@ -429,7 +430,6 @@
   "datePrepositionFull": "{month} {day}",
 
   "socialMediaTitle": "MEDIA",
-  "socialTabSocial": "Social Media",
   "socialFeedLoadError": "Couldn't load the feed",
   "socialEmptyState": "Follow Goiás on social media",
   "socialViewsM": "{value}M views",
