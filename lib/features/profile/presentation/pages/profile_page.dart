@@ -17,6 +17,9 @@ import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
+import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
+import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
@@ -28,6 +31,7 @@ import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -88,7 +92,10 @@ class _ProfileView extends StatelessWidget {
                     ),
                     children: [
                       const ProfileAvatarHeader(),
+                      const Center(child: _MembershipBadge()),
                       const SizedBox(height: AppSpacing.xxl),
+                      // Só dados da pessoa/conta — Tema e Idioma saíram
+                      // daqui pra Preferências (não são dados da conta).
                       _MenuSection(
                         title: context.l10n.profileMyAccount,
                         rows: [
@@ -107,11 +114,19 @@ class _ProfileView extends StatelessWidget {
                             label: context.l10n.profileSecurity,
                             onTap: () => context.push('/profile/security'),
                           ),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                      const _JourneySection(),
+                      const SizedBox(height: AppSpacing.xl),
+                      _MenuSection(
+                        title: context.l10n.profilePreferences,
+                        rows: [
                           BlocBuilder<ThemeCubit, ThemeMode>(
                             bloc: sl<ThemeCubit>(),
                             builder: (context, mode) => _MenuRow(
                               icon: Icons.palette_outlined,
-                              label: context.l10n.profileTheme,
+                              label: context.l10n.profileAppearance,
                               value: themeModeLabel(context.l10n, mode),
                               onTap: () => context.push('/profile/theme'),
                             ),
@@ -130,9 +145,7 @@ class _ProfileView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: AppSpacing.xl),
-                      const _ArenaMenuSection(),
-                      const SizedBox(height: AppSpacing.xl),
-                      const _StoreMenuSection(),
+                      const _PurchasesSection(),
                       const SizedBox(height: AppSpacing.xl),
                       const SocialLinksSection(),
                       const SizedBox(height: AppSpacing.xl),
@@ -165,6 +178,8 @@ class _ProfileView extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.xxl),
                       const _SignOutButton(),
+                      const SizedBox(height: AppSpacing.sm),
+                      const _AppVersion(),
                     ],
                   ),
                 ),
@@ -203,19 +218,61 @@ Future<void> _confirmDeleteAccount(BuildContext context) async {
   }
 }
 
-/// Atalho secundário pra Arena (saiu da bottom nav) — foco em
-/// progresso/identidade, não em "jogar agora" (isso já é o card da Home).
-/// Widget próprio pelo mesmo motivo do `_StoreMenuSection`: guardar a
-/// `Future` uma vez só, sem recarregar a cada rebuild do Perfil.
-class _ArenaMenuSection extends StatefulWidget {
-  const _ArenaMenuSection();
+/// Badge discreto "SÓCIO ESMERALDA" sob o cabeçalho — só aparece se
+/// `MembershipStatusCubit` (já singleton, já carregado pro resto do app)
+/// disser que o usuário é sócio. Nenhuma chamada nova: mesmo cubit que
+/// `MembershipHomePage`/`matchday`-equivalentes já usam.
+class _MembershipBadge extends StatelessWidget {
+  const _MembershipBadge();
 
   @override
-  State<_ArenaMenuSection> createState() => _ArenaMenuSectionState();
+  Widget build(BuildContext context) {
+    return BlocBuilder<MembershipStatusCubit, MembershipStatusState>(
+      bloc: sl<MembershipStatusCubit>(),
+      builder: (context, state) {
+        if (!state.isMember) return const SizedBox.shrink();
+        final colors = context.colors;
+        return Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.sm),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md,
+              vertical: 4,
+            ),
+            decoration: BoxDecoration(
+              color: colors.secondary,
+              borderRadius: BorderRadius.circular(AppRadius.pill),
+            ),
+            child: Text(
+              context.l10n.membershipProgramName.toUpperCase(),
+              style: TextStyle(
+                fontSize: 10.5,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 0.6,
+                color: colors.primary,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
 
-class _ArenaMenuSectionState extends State<_ArenaMenuSection> {
+/// "Minha Jornada" — o que o torcedor já viveu/fez dentro do app, não uma
+/// segunda cópia dos cards de destaque da Home. Arena e Passaporte
+/// reaproveitam exatamente os dados que seus próprios cards da Home/Perfil
+/// já buscavam (rank e total de jogos vividos) — nenhuma chamada nova.
+class _JourneySection extends StatefulWidget {
+  const _JourneySection();
+
+  @override
+  State<_JourneySection> createState() => _JourneySectionState();
+}
+
+class _JourneySectionState extends State<_JourneySection> {
   late final Future<({int rank, int totalScore})?> _rankFuture = _loadRank();
+  late final Future<PassportSummary?> _passportFuture = _loadPassportSummary();
 
   Future<({int rank, int totalScore})?> _loadRank() async {
     final result = await sl<ArenaRankingRepository>().getMyRank(
@@ -226,47 +283,64 @@ class _ArenaMenuSectionState extends State<_ArenaMenuSection> {
         : null;
   }
 
+  Future<PassportSummary?> _loadPassportSummary() async {
+    final result = await sl<PassportRepository>().getSummary();
+    return result is Success<PassportSummary> ? result.data : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<({int rank, int totalScore})?>(
       future: _rankFuture,
-      builder: (context, snapshot) {
-        final rank = snapshot.data;
-        return _MenuSection(
-          title: context.l10n.arenaSpotlightEyebrow,
-          rows: [
-            _MenuRow(
-              icon: Icons.emoji_events_outlined,
-              label: context.l10n.arenaTitle,
-              value: rank == null
-                  ? null
-                  : context.l10n.arenaSpotlightRankSummary(
-                      rank.rank,
-                      rank.totalScore,
-                    ),
-              onTap: () => context.push('/arena'),
-            ),
-          ],
+      builder: (context, rankSnapshot) {
+        return FutureBuilder<PassportSummary?>(
+          future: _passportFuture,
+          builder: (context, passportSnapshot) {
+            final rank = rankSnapshot.data;
+            final matchesLived = passportSnapshot.data?.totalMatches;
+            return _MenuSection(
+              title: context.l10n.profileMyJourney,
+              rows: [
+                _MenuRow(
+                  icon: Icons.emoji_events_outlined,
+                  label: context.l10n.arenaTitle,
+                  value: rank == null
+                      ? null
+                      : context.l10n.arenaSpotlightRankSummary(
+                          rank.rank,
+                          rank.totalScore,
+                        ),
+                  onTap: () => context.push('/arena'),
+                ),
+                _MenuRow(
+                  icon: Icons.menu_book_outlined,
+                  label: context.l10n.passportTitle,
+                  value: matchesLived == null
+                      ? null
+                      : context.l10n.profileJourneyMatchesLived(matchesLived),
+                  onTap: () => context.push('/arena/passport'),
+                ),
+              ],
+            );
+          },
         );
       },
     );
   }
 }
 
-/// "Meus pedidos"/"Endereços" só aparecem depois do primeiro pedido — antes
-/// disso a Store ainda não gerou nada pra gerenciar aqui, então mostrar as
-/// duas seria um beco sem saída. A entrada "Goiás Store" em si é sempre
-/// visível. Widget próprio (não [FutureBuilder] direto em [_ProfileView])
-/// pra guardar a `Future` uma única vez, sem refazer a leitura local a cada
-/// rebuild do resto da tela de Perfil.
-class _StoreMenuSection extends StatefulWidget {
-  const _StoreMenuSection();
+/// "Compras e Serviços" — o que é MEU (ingressos, pedidos), não a vitrine
+/// de descoberta (essa é a Loja). "Meus pedidos" e "Endereços da loja" só
+/// aparecem depois do primeiro pedido — antes disso a Store ainda não
+/// gerou nada pra gerenciar aqui.
+class _PurchasesSection extends StatefulWidget {
+  const _PurchasesSection();
 
   @override
-  State<_StoreMenuSection> createState() => _StoreMenuSectionState();
+  State<_PurchasesSection> createState() => _PurchasesSectionState();
 }
 
-class _StoreMenuSectionState extends State<_StoreMenuSection> {
+class _PurchasesSectionState extends State<_PurchasesSection> {
   late final Future<List<StoreOrder>> _ordersFuture = sl<StoreRepository>()
       .getOrders();
 
@@ -277,10 +351,21 @@ class _StoreMenuSectionState extends State<_StoreMenuSection> {
       builder: (context, snapshot) {
         final hasOrders = snapshot.data?.isNotEmpty ?? false;
         return _MenuSection(
-          title: context.l10n.storeProfileSectionTitle,
+          title: context.l10n.profilePurchasesAndServices,
           rows: [
             _MenuRow(
-              icon: Icons.storefront_outlined,
+              icon: Icons.confirmation_number_outlined,
+              label: context.l10n.profileMyTickets,
+              onTap: () => context.push('/tickets/my'),
+            ),
+            if (hasOrders)
+              _MenuRow(
+                icon: Icons.receipt_long_outlined,
+                label: context.l10n.storeProfileMyOrders,
+                onTap: () => context.push('/store/orders'),
+              ),
+            _MenuRow(
+              icon: Icons.shopping_bag_outlined,
               label: context.l10n.storeProfileEntry,
               // A Loja agora é a própria aba da bottom nav — nunca mais uma
               // segunda instância empurrada por cima. `go('/')` garante
@@ -291,12 +376,6 @@ class _StoreMenuSectionState extends State<_StoreMenuSection> {
                 context.go('/');
               },
             ),
-            if (hasOrders)
-              _MenuRow(
-                icon: Icons.receipt_long_outlined,
-                label: context.l10n.storeProfileMyOrders,
-                onTap: () => context.push('/store/orders'),
-              ),
             if (hasOrders)
               _MenuRow(
                 icon: Icons.location_on_outlined,
@@ -470,6 +549,30 @@ class _SignOutButton extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// "Versão x.x.x" discreta abaixo do logout — `PackageInfo.fromPlatform()`
+/// lê direto do build instalado, então nunca fica dessincronizada do
+/// `pubspec.yaml` (o jeito errado seria hardcodar a versão aqui).
+class _AppVersion extends StatelessWidget {
+  const _AppVersion();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<PackageInfo>(
+      future: PackageInfo.fromPlatform(),
+      builder: (context, snapshot) {
+        final version = snapshot.data?.version;
+        if (version == null) return const SizedBox.shrink();
+        return Center(
+          child: Text(
+            context.l10n.profileVersion(version),
+            style: TextStyle(fontSize: 11.5, color: context.colors.textHint),
+          ),
+        );
+      },
     );
   }
 }
