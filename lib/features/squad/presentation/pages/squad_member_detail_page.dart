@@ -218,8 +218,6 @@ class _InstagramButton extends StatelessWidget {
                   color: colors.primary,
                 ),
               ),
-              const SizedBox(width: 3),
-              Icon(Icons.north_east_rounded, size: 13, color: colors.primary),
             ],
           ),
         ),
