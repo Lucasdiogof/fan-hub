@@ -99,26 +99,24 @@ class NextMatchHero extends StatelessWidget {
                   ),
                 ],
                 const SizedBox(height: AppSpacing.lg),
-                Center(
-                  child: SizedBox(
-                    width: 200,
-                    child: ElevatedButton(
-                      onPressed: onTickets,
-                      // `forceDark`: este botão fica sobre o
-                      // `StadiumBackdrop`, que é sempre escuro
-                      // independente do tema do app.
-                      style: matchCtaFilledStyle(context, forceDark: true)
-                          .merge(
-                            ElevatedButton.styleFrom(
-                              textStyle: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.3,
-                              ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: onTickets,
+                    // `forceDark`: este botão fica sobre o
+                    // `StadiumBackdrop`, que é sempre escuro
+                    // independente do tema do app.
+                    style: matchCtaFilledStyle(context, forceDark: true)
+                        .merge(
+                          ElevatedButton.styleFrom(
+                            textStyle: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.3,
                             ),
                           ),
-                      child: Text(context.l10n.homeTickets),
-                    ),
+                        ),
+                    child: Text(context.l10n.homeTickets),
                   ),
                 ),
               ],
