@@ -30,78 +30,86 @@ class PassportMonthGroupV2 extends StatelessWidget {
     final colors = context.colors;
     final l10n = context.l10n;
     final finished = matches.where((m) => m.isFinished).length;
-    final marked = matches.where((m) => m.isFinished && effectiveAttended(m)).length;
+    final marked = matches
+        .where((m) => m.isFinished && effectiveAttended(m))
+        .length;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 16,
-          child: Column(
-            children: [
-              const SizedBox(height: 4),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  color: marked > 0 ? colors.primary : colors.border,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              if (!isLast)
-                Expanded(
-                  child: Container(width: 1.5, color: colors.border),
-                ),
-            ],
-          ),
-        ),
-        const SizedBox(width: AppSpacing.sm),
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(bottom: isLast ? 0 : AppSpacing.lg),
+    // `IntrinsicHeight` é necessário aqui: a coluna da esquerda tem um
+    // `Expanded` (o traço vertical que liga os meses) e precisa de uma
+    // altura definida pra calcular esse espaço — sem isso, herda altura
+    // livre (infinita) de quem chama isto dentro de uma `ListView`/`Column`
+    // sem altura própria, e o layout quebra com "RenderBox was not laid
+    // out" (reproduzido em produção).
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 16,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: AppSpacing.sm),
-                  child: Row(
-                    children: [
-                      Text(
-                        label,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.5,
-                          color: colors.textPrimary,
-                        ),
-                      ),
-                      if (finished > 0) ...[
-                        const SizedBox(width: 8),
-                        Text(
-                          l10n.passportMonthProgressLine(marked, finished),
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            color: colors.textSecondary,
-                          ),
-                        ),
-                      ],
-                    ],
+                const SizedBox(height: 4),
+                Container(
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: marked > 0 ? colors.primary : colors.border,
+                    shape: BoxShape.circle,
                   ),
                 ),
-                for (var i = 0; i < matches.length; i++) ...[
-                  if (i > 0) const SizedBox(height: AppSpacing.sm),
-                  PassportMatchTicketV2(
-                    match: matches[i],
-                    attended: effectiveAttended(matches[i]),
-                    onToggle: () => onToggle(matches[i]),
-                  ),
-                ],
+                if (!isLast)
+                  Expanded(child: Container(width: 1.5, color: colors.border)),
               ],
             ),
           ),
-        ),
-      ],
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: isLast ? 0 : AppSpacing.lg),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                    child: Row(
+                      children: [
+                        Text(
+                          label,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 0.5,
+                            color: colors.textPrimary,
+                          ),
+                        ),
+                        if (finished > 0) ...[
+                          const SizedBox(width: 8),
+                          Text(
+                            l10n.passportMonthProgressLine(marked, finished),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: colors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                  for (var i = 0; i < matches.length; i++) ...[
+                    if (i > 0) const SizedBox(height: AppSpacing.sm),
+                    PassportMatchTicketV2(
+                      match: matches[i],
+                      attended: effectiveAttended(matches[i]),
+                      onToggle: () => onToggle(matches[i]),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
