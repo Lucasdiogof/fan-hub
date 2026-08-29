@@ -9,6 +9,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
+import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_state.dart';
 import 'package:goias_app/features/membership/presentation/widgets/member_view.dart';
@@ -18,8 +19,6 @@ import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
-
-const _sociTabIndex = 2;
 
 class MembershipHomePage extends StatelessWidget {
   const MembershipHomePage({super.key});
@@ -44,7 +43,7 @@ class _MembershipHomeView extends StatelessWidget {
       // Perfil) — não a cada rota empurrada/fechada por cima (Regulamento,
       // Dúvidas Frequentes), que são só leitura e não mudam esse estado.
       listenWhen: (previous, current) =>
-          previous.index != _sociTabIndex && current.index == _sociTabIndex,
+          previous.index != socioTabIndex && current.index == socioTabIndex,
       listener: (context, state) => context.read<MembershipCubit>().load(),
       child: Scaffold(
         backgroundColor: colors.background,
@@ -105,7 +104,7 @@ class _MembershipHomeView extends StatelessWidget {
                                           case 'home':
                                             context
                                                 .read<HomeShellCubit>()
-                                                .navigateToTab(0);
+                                                .navigateToTab(homeTabIndex);
                                         }
                                       },
                                     ),

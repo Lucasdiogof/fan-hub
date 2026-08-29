@@ -16,6 +16,7 @@ import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository
 import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
+import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
@@ -286,7 +287,7 @@ class _StoreMenuSectionState extends State<_StoreMenuSection> {
               // voltar pra raiz do shell não importa a profundidade da
               // pilha (Perfil pode ter sido aberto de vários lugares).
               onTap: () {
-                sl<HomeShellCubit>().navigateToTab(4);
+                sl<HomeShellCubit>().navigateToTab(lojaTabIndex);
                 context.go('/');
               },
             ),

@@ -5,7 +5,7 @@ import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/pages/home_page.dart';
-import 'package:goias_app/features/home/presentation/widgets/main_bottom_navigation.dart';
+import 'package:goias_app/features/home/presentation/widgets/goias_bottom_navigation_bar.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_rail.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_home_page.dart';
 import 'package:goias_app/features/match/presentation/pages/games_page.dart';
@@ -46,12 +46,14 @@ class _HomeShellPageState extends State<HomeShellPage> {
       value: _shellCubit,
       child: BlocBuilder<HomeShellCubit, HomeShellState>(
         builder: (context, shellState) {
+          // Ordem: Jogos, Sócio, Home (centro), Loja, Mídia — ver
+          // `HomeShellState`/`main_navigation_items.dart`.
           const pages = [
-            HomePage(),
             GamesPage(),
             MembershipHomePage(),
-            SocialFeedPage(),
+            HomePage(),
             StoreHomePage(showBackButton: false),
+            SocialFeedPage(),
           ];
           final content = IndexedStack(
             index: shellState.index,
@@ -78,7 +80,7 @@ class _HomeShellPageState extends State<HomeShellPage> {
 
           return Scaffold(
             body: content,
-            bottomNavigationBar: MainBottomNavigation(
+            bottomNavigationBar: GoiasBottomNavigationBar(
               selectedIndex: shellState.index,
               onSelected: _shellCubit.navigateToTab,
             ),

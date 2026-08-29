@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
+import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_rail.dart';
 
 /// Envolve toda rota "interna" (fora do shell de `/`) com o mesmo rail
@@ -42,11 +43,11 @@ class DesktopShellFrame extends StatelessWidget {
 /// destacado no rail (ainda navegável, só sem realce).
 int? tabIndexForLocation(String location) {
   const mapping = <String, int>{
-    '/match': 1,
-    '/crowd-lineup': 1,
-    '/tickets': 1,
-    '/membership': 2,
-    '/store': 4,
+    '/match': jogosTabIndex,
+    '/crowd-lineup': jogosTabIndex,
+    '/tickets': jogosTabIndex,
+    '/membership': socioTabIndex,
+    '/store': lojaTabIndex,
     // Arena não pertence mais a nenhuma aba fixa (saiu da bottom nav) — as
     // rotas `/arena/*` abrem sem nenhum item destacado no rail.
   };

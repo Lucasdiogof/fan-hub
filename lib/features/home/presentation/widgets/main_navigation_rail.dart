@@ -3,7 +3,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 
-/// Equivalente da `MainBottomNavigation` pra telas expandidas/largas —
+/// Equivalente da `GoiasBottomNavigationBar` pra telas expandidas/largas —
 /// mesmas 5 abas, mesmos ícones/rótulos (ver `main_navigation_items.dart`),
 /// só a apresentação muda (rail lateral fixo em vez de barra inferior).
 /// Nunca aparece junto com a bottom nav: `HomeShellPage` escolhe UMA das
