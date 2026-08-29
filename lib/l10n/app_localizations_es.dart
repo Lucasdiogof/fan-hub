@@ -114,6 +114,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get navArena => 'Arena';
 
   @override
+  String get navStore => 'Tienda';
+
+  @override
   String get homeGreetingMorning => 'Buenos días';
 
   @override
@@ -595,6 +598,46 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get arenaHeaderSubtitle => 'Juega, participa y vive el Goiás.';
+
+  @override
+  String get arenaSpotlightEyebrow => 'Arena Esmeraldina';
+
+  @override
+  String get arenaSpotlightLineupHeadline =>
+      'Arma el Goiás para el próximo partido';
+
+  @override
+  String arenaSpotlightLineupSubtitle(String opponent) {
+    return 'Elige el equipo contra $opponent y sube en el ranking de la hinchada.';
+  }
+
+  @override
+  String get arenaSpotlightLineupCta => 'Armar mi equipo';
+
+  @override
+  String get arenaSpotlightQuizHeadline => 'Quiz do Verdão';
+
+  @override
+  String get arenaSpotlightQuizSubtitle =>
+      '¿Puedes acertar todas las preguntas?';
+
+  @override
+  String get arenaSpotlightQuizCta => 'Jugar ahora';
+
+  @override
+  String get arenaSpotlightFallbackHeadline => 'Tu Arena Esmeraldina';
+
+  @override
+  String get arenaSpotlightFallbackSubtitle =>
+      'Quiz, alineación de la hinchada, pasaporte y más te esperan.';
+
+  @override
+  String get arenaSpotlightFallbackCta => 'Entrar a la Arena';
+
+  @override
+  String arenaSpotlightRankSummary(int rank, int points) {
+    return '#$rank · $points pts';
+  }
 
   @override
   String get arenaLineupHeroEyebrow => 'ALINEACIÓN DE LA HINCHADA';
@@ -2185,6 +2228,18 @@ class AppLocalizationsEs extends AppLocalizations {
   String get playerPositionMeiShort => 'MP';
 
   @override
+  String get playerPositionMdFull => 'Volante por derecha';
+
+  @override
+  String get playerPositionMdShort => 'MD';
+
+  @override
+  String get playerPositionMeFull => 'Volante por izquierda';
+
+  @override
+  String get playerPositionMeShort => 'MI';
+
+  @override
   String get playerPositionPdFull => 'Extremo derecho';
 
   @override
@@ -2250,6 +2305,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get crowdSelectedPlayer => 'Seleccionado';
+
+  @override
+  String get crowdAlsoCanPlaySection => 'TAMBIÉN PUEDE JUGAR AQUÍ';
+
+  @override
+  String get crowdCanAlsoPlayBadge => 'Puede jugar';
 
   @override
   String get crowdCardTitleVoted => 'Alineación de la Afición';
@@ -2978,6 +3039,18 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get storeHomeTitle => 'Goiás Store';
+
+  @override
+  String get storeMatchdaySectionTitle => 'Próximo partido';
+
+  @override
+  String get storeMyPurchasesSectionTitle => 'Mis compras';
+
+  @override
+  String get storeMyTicketsShortcut => 'Mis entradas';
+
+  @override
+  String get storeMyOrdersShortcut => 'Mis pedidos';
 
   @override
   String get storeHomeLoadErrorTitle => 'No se pudo cargar la tienda';

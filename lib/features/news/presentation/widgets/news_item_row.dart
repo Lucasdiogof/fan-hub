@@ -32,21 +32,28 @@ class NewsItemRow extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.cardSmall),
                 child: SizedBox(
                   // As artes do site (ex.: "Guia da Partida") sempre vêm
-                  // quase quadradas (~425×480, conferido nas imagens reais)
-                  // — um box bem mais largo que alto como antes forçava
-                  // `contain` a sobrar uma faixa de cor grande dos lados, ou
-                  // um `cover` a cortar bastante do topo/rodapé. Quase
-                  // quadrado + `cover` casa com o formato real: cobre o
-                  // box inteiro com um corte mínimo (a diferença entre
-                  // 425:480 e 1:1 é pequena).
-                  width: 84,
-                  height: 84,
+                  // quase quadradas, ligeiramente mais altas que largas
+                  // (~425×480 nas imagens reais), com o texto e os dois
+                  // escudos perto do rodapé e uma faixa de topo vazia que
+                  // não importa. Uma caixa exatamente na proporção da
+                  // imagem (ou mais alta que ela) não corta nada de
+                  // cima/baixo, mas aí aquela faixa vazia do topo ocupa
+                  // espaço à toa. Uma caixa um pouco mais LARGA que a
+                  // proporção real força o `cover` a cortar uma fatia do
+                  // topo (nunca do rodapé, com `Alignment.bottomCenter`) —
+                  // dosado pra sobrar folga antes de chegar nos escudos.
+                  width: 100,
+                  height: 93,
                   child: ColoredBox(
                     color: colors.secondary,
                     child: Image.network(
                       proxiedImageUrl(item.imageUrl),
                       fit: BoxFit.cover,
-                      alignment: Alignment.topCenter,
+                      // As artes "Guia da Partida" põem o texto e os dois
+                      // escudos perto do rodapé, com uma faixa de topo que
+                      // não importa — `bottomCenter` corta a sobra de cima
+                      // em vez de esconder justo a parte com informação.
+                      alignment: Alignment.bottomCenter,
                       errorBuilder: (context, error, stackTrace) => Icon(
                         Icons.image_not_supported_outlined,
                         color: colors.textHint,

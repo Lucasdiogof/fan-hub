@@ -31,18 +31,13 @@ import 'package:goias_app/features/arena/presentation/widgets/arena_section_head
 import 'package:goias_app/features/arena/presentation/widgets/crowd_lineup_hero_card.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
-import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/open_crowd_lineup.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
-import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
-import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
-import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
-
-const _arenaTabIndex = 4;
 
 class ArenaPage extends StatefulWidget {
   const ArenaPage({super.key});
@@ -251,22 +246,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     unawaited(context.push('/arena/guess-player', extra: cubit));
   }
 
-  /// Carrega a escalação salva do usuário ANTES de navegar, pra "Escalação
-  /// da Torcida" já abrir com jogadores/formação restaurados — mesma lógica
-  /// que já existia na Home antes deste card se mudar pra cá.
-  Future<void> _openCrowdLineup(BuildContext context, Match match) async {
-    final cubit = CrowdLineupCubit(
-      repository: sl<CrowdLineupRepository>(),
-      matchId: match.id,
-      votingOpen: true,
-    );
-    await GlobalLoading.run(context, cubit.load);
-    if (!context.mounted) return;
-    unawaited(
-      context.push('/crowd-lineup', extra: (match: match, cubit: cubit)),
-    );
-  }
-
   VoidCallback _openGame(BuildContext context, String gameId) {
     return () => switch (gameId) {
       'quiz' => _openQuizLevels(context),
@@ -282,128 +261,124 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     final colors = context.colors;
     const games = ArenaCatalog.games;
 
-    return BlocListener<HomeShellCubit, HomeShellState>(
-      listenWhen: (previous, current) =>
-          previous.index != _arenaTabIndex && current.index == _arenaTabIndex,
-      listener: (context, state) => _reloadProgress(),
-      child: Scaffold(
-        backgroundColor: colors.background,
-        body: SafeArea(
-          child: FutureBuilder<ArenaProgressSnapshot>(
-            future: _progressFuture,
-            builder: (context, snapshot) {
-              final progress = snapshot.data;
-              if (progress != null) {
-                WidgetsBinding.instance.addPostFrameCallback(
-                  (_) => _maybeCelebrate(progress),
-                );
-              }
-              return Center(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: ContentWidth.wide.maxWidth,
-                  ),
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    children: [
-                      FutureBuilder<({int rank, int totalScore})?>(
-                        future: _myRankFuture,
-                        builder: (context, rankSnapshot) => ArenaHeaderBar(
-                          rank: rankSnapshot.data?.rank,
-                          onRankingTap: () => _openRanking(context),
-                        ),
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
-                      // Hero da Escalação da Torcida — o elemento principal
-                      // da página quando há próximo jogo (ver spec de
-                      // reformulação). `HomeCubit` é singleton (pré-carregado
-                      // desde a Splash), então basta ler o estado atual, sem
-                      // recarregar nada aqui.
-                      BlocBuilder<HomeCubit, HomeState>(
-                        bloc: sl<HomeCubit>(),
-                        builder: (context, homeState) {
-                          final nextMatch = homeState.nextMatch;
-                          if (nextMatch == null) {
-                            return const CrowdLineupHeroEmptyCard();
-                          }
-                          return FutureBuilder<int?>(
-                            future: _crowdParticipantsFuture,
-                            builder: (context, participantsSnapshot) {
-                              return CrowdLineupHeroCard(
-                                match: nextMatch,
-                                hasVoted: homeState.hasVotedForNextMatch,
-                                participants: participantsSnapshot.data,
-                                onTap: () =>
-                                    _openCrowdLineup(context, nextMatch),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
-                      // Passaporte — memória/coleção do torcedor, com
-                      // identidade própria (fundo claro), nunca misturado
-                      // com os desafios/minigames abaixo.
-                      ArenaHighlightCard(
-                        leading: ArenaHighlightLeading(
-                          child: Icon(
-                            Icons.confirmation_number_outlined,
-                            color: colors.primary,
-                            size: 24,
-                          ),
-                        ),
-                        title: context.l10n.passportTitle,
-                        description: context.l10n.passportCardDescription,
-                        ctaLabel: context.l10n.passportCardCta,
-                        onTap: () => context.push('/arena/passport'),
-                      ),
-                      const SizedBox(height: AppSpacing.xxl),
-                      ArenaSectionHeader(
-                        context.l10n.arenaChallengesSectionTitle,
-                        subtitle: context.l10n.arenaGamesSectionSubtitle,
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      LayoutBuilder(
-                        builder: (context, constraints) => GridView.count(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          crossAxisCount: switch (constraints.maxWidth) {
-                            < 500 => 2,
-                            _ => 3,
-                          },
-                          mainAxisSpacing: AppSpacing.md,
-                          crossAxisSpacing: AppSpacing.md,
-                          childAspectRatio: 1.05,
-                          children: [
-                            for (final game in games)
-                              ArenaChallengeCard(
-                                game: game,
-                                progress: _progressFor(game.id, progress),
-                                statLabel: _statLabelFor(
-                                  context,
-                                  game.id,
-                                  progress,
-                                ),
-                                everStarted:
-                                    game.id == 'guess_player' &&
-                                    progress != null &&
-                                    progress.guessPlayerPlayed > 0,
-                                onTap: _openGame(context, game.id),
-                              ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+    return Scaffold(
+      backgroundColor: colors.background,
+      body: SafeArea(
+        child: FutureBuilder<ArenaProgressSnapshot>(
+          future: _progressFuture,
+          builder: (context, snapshot) {
+            final progress = snapshot.data;
+            if (progress != null) {
+              WidgetsBinding.instance.addPostFrameCallback(
+                (_) => _maybeCelebrate(progress),
               );
-            },
-          ),
+            }
+            return Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: ContentWidth.wide.maxWidth,
+                ),
+                child: ListView(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.lg,
+                    AppSpacing.lg,
+                    AppSpacing.xxxl,
+                  ),
+                  children: [
+                    FutureBuilder<({int rank, int totalScore})?>(
+                      future: _myRankFuture,
+                      builder: (context, rankSnapshot) => ArenaHeaderBar(
+                        rank: rankSnapshot.data?.rank,
+                        onRankingTap: () => _openRanking(context),
+                        onBack: () =>
+                            context.canPop() ? context.pop() : context.go('/'),
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+                    // Hero da Escalação da Torcida — o elemento principal
+                    // da página quando há próximo jogo (ver spec de
+                    // reformulação). `HomeCubit` é singleton (pré-carregado
+                    // desde a Splash), então basta ler o estado atual, sem
+                    // recarregar nada aqui.
+                    BlocBuilder<HomeCubit, HomeState>(
+                      bloc: sl<HomeCubit>(),
+                      builder: (context, homeState) {
+                        final nextMatch = homeState.nextMatch;
+                        if (nextMatch == null) {
+                          return const CrowdLineupHeroEmptyCard();
+                        }
+                        return FutureBuilder<int?>(
+                          future: _crowdParticipantsFuture,
+                          builder: (context, participantsSnapshot) {
+                            return CrowdLineupHeroCard(
+                              match: nextMatch,
+                              hasVoted: homeState.hasVotedForNextMatch,
+                              participants: participantsSnapshot.data,
+                              onTap: () => openCrowdLineup(context, nextMatch),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+                    // Passaporte — memória/coleção do torcedor, com
+                    // identidade própria (fundo claro), nunca misturado
+                    // com os desafios/minigames abaixo.
+                    ArenaHighlightCard(
+                      leading: ArenaHighlightLeading(
+                        child: Icon(
+                          Icons.confirmation_number_outlined,
+                          color: colors.primary,
+                          size: 24,
+                        ),
+                      ),
+                      title: context.l10n.passportTitle,
+                      description: context.l10n.passportCardDescription,
+                      ctaLabel: context.l10n.passportCardCta,
+                      onTap: () => context.push('/arena/passport'),
+                    ),
+                    const SizedBox(height: AppSpacing.xxl),
+                    ArenaSectionHeader(
+                      context.l10n.arenaChallengesSectionTitle,
+                      subtitle: context.l10n.arenaGamesSectionSubtitle,
+                    ),
+                    const SizedBox(height: AppSpacing.md),
+                    LayoutBuilder(
+                      builder: (context, constraints) => GridView.count(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        crossAxisCount: switch (constraints.maxWidth) {
+                          < 500 => 2,
+                          _ => 3,
+                        },
+                        mainAxisSpacing: AppSpacing.md,
+                        crossAxisSpacing: AppSpacing.md,
+                        childAspectRatio: 1.05,
+                        children: [
+                          for (final game in games)
+                            ArenaChallengeCard(
+                              game: game,
+                              progress: _progressFor(game.id, progress),
+                              statLabel: _statLabelFor(
+                                context,
+                                game.id,
+                                progress,
+                              ),
+                              everStarted:
+                                  game.id == 'guess_player' &&
+                                  progress != null &&
+                                  progress.guessPlayerPlayed > 0,
+                              onTap: _openGame(context, game.id),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

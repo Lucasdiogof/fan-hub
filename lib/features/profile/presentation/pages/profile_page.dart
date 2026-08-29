@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/l10n/supported_locales.dart';
@@ -11,7 +12,10 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/core/theme/theme_mode_label.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
@@ -125,6 +129,8 @@ class _ProfileView extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: AppSpacing.xl),
+                      const _ArenaMenuSection(),
+                      const SizedBox(height: AppSpacing.xl),
                       const _StoreMenuSection(),
                       const SizedBox(height: AppSpacing.xl),
                       const SocialLinksSection(),
@@ -196,6 +202,56 @@ Future<void> _confirmDeleteAccount(BuildContext context) async {
   }
 }
 
+/// Atalho secundário pra Arena (saiu da bottom nav) — foco em
+/// progresso/identidade, não em "jogar agora" (isso já é o card da Home).
+/// Widget próprio pelo mesmo motivo do `_StoreMenuSection`: guardar a
+/// `Future` uma vez só, sem recarregar a cada rebuild do Perfil.
+class _ArenaMenuSection extends StatefulWidget {
+  const _ArenaMenuSection();
+
+  @override
+  State<_ArenaMenuSection> createState() => _ArenaMenuSectionState();
+}
+
+class _ArenaMenuSectionState extends State<_ArenaMenuSection> {
+  late final Future<({int rank, int totalScore})?> _rankFuture = _loadRank();
+
+  Future<({int rank, int totalScore})?> _loadRank() async {
+    final result = await sl<ArenaRankingRepository>().getMyRank(
+      RankingPeriod.allTime,
+    );
+    return result is Success<({int rank, int totalScore})?>
+        ? result.data
+        : null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<({int rank, int totalScore})?>(
+      future: _rankFuture,
+      builder: (context, snapshot) {
+        final rank = snapshot.data;
+        return _MenuSection(
+          title: context.l10n.arenaSpotlightEyebrow,
+          rows: [
+            _MenuRow(
+              icon: Icons.emoji_events_outlined,
+              label: context.l10n.arenaTitle,
+              value: rank == null
+                  ? null
+                  : context.l10n.arenaSpotlightRankSummary(
+                      rank.rank,
+                      rank.totalScore,
+                    ),
+              onTap: () => context.push('/arena'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
 /// "Meus pedidos"/"Endereços" só aparecem depois do primeiro pedido — antes
 /// disso a Store ainda não gerou nada pra gerenciar aqui, então mostrar as
 /// duas seria um beco sem saída. A entrada "Goiás Store" em si é sempre
@@ -225,7 +281,14 @@ class _StoreMenuSectionState extends State<_StoreMenuSection> {
             _MenuRow(
               icon: Icons.storefront_outlined,
               label: context.l10n.storeProfileEntry,
-              onTap: () => context.push('/store'),
+              // A Loja agora é a própria aba da bottom nav — nunca mais uma
+              // segunda instância empurrada por cima. `go('/')` garante
+              // voltar pra raiz do shell não importa a profundidade da
+              // pilha (Perfil pode ter sido aberto de vários lugares).
+              onTap: () {
+                sl<HomeShellCubit>().navigateToTab(4);
+                context.go('/');
+              },
             ),
             if (hasOrders)
               _MenuRow(

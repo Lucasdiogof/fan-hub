@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 
-/// Cabeçalho da Arena — título + subtítulo discreto de um lado, botão de
-/// Ranking (troféu, com a posição do usuário quando disponível) do outro.
-/// O Ranking deixou de ser um card no corpo da página pra virar uma ação
-/// global daqui (ver spec de reformulação visual da Arena).
+/// Cabeçalho da Arena — botão de voltar (a Arena agora é uma rota
+/// empurrada, não mais uma aba fixa da bottom nav) + título/subtítulo de um
+/// lado, botão de Ranking (troféu, com a posição do usuário quando
+/// disponível) do outro.
 class ArenaHeaderBar extends StatelessWidget {
-  const ArenaHeaderBar({required this.onRankingTap, this.rank, super.key});
+  const ArenaHeaderBar({
+    required this.onRankingTap,
+    required this.onBack,
+    this.rank,
+    super.key,
+  });
 
   final VoidCallback onRankingTap;
+  final VoidCallback onBack;
   final int? rank;
 
   @override
@@ -24,6 +31,8 @@ class ArenaHeaderBar extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            BackButtonCircle(size: 34, iconSize: 16, onTap: onBack),
+            const SizedBox(width: AppSpacing.md),
             Expanded(child: PageTitle(l10n.arenaTitle.toUpperCase())),
             const SizedBox(width: AppSpacing.sm),
             _RankingButton(rank: rank, onTap: onRankingTap),

@@ -46,7 +46,9 @@ int? tabIndexForLocation(String location) {
     '/crowd-lineup': 1,
     '/tickets': 1,
     '/membership': 2,
-    '/arena': 4,
+    '/store': 4,
+    // Arena não pertence mais a nenhuma aba fixa (saiu da bottom nav) — as
+    // rotas `/arena/*` abrem sem nenhum item destacado no rail.
   };
   for (final entry in mapping.entries) {
     if (location == entry.key || location.startsWith('${entry.key}/')) {

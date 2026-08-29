@@ -1,4 +1,5 @@
 import 'package:goias_app/shared/domain/player_position.dart';
+import 'package:goias_app/features/crowd_lineup/domain/position_compatibility.dart';
 import 'package:goias_app/features/crowd_lineup/domain/squad_player.dart';
 
 List<PlayerPosition> _pos(List<String> codes) =>
@@ -202,6 +203,17 @@ final Map<String, SquadPlayer> squadById = {
   for (final player in goiasSquad) player.id: player,
 };
 
-List<SquadPlayer> playersForPosition(PlayerPosition position) => goiasSquad
-    .where((player) => player.canPlay(position))
-    .toList(growable: false);
+const _compatibility = PositionCompatibilityService();
+
+/// Candidatos a um slot, do melhor encaixe pro pior (posição primária exata
+/// > secundária exata > adaptação natural) — nunca em ordem de cadastro.
+/// Quem é incompatível nem aparece.
+List<SquadPlayer> playersForPosition(PlayerPosition position) {
+  final scored = <(SquadPlayer, int)>[
+    for (final player in goiasSquad)
+      if (_compatibility.scoreFor(player, position) case final score?)
+        (player, score),
+  ];
+  scored.sort((a, b) => b.$2.compareTo(a.$2));
+  return [for (final entry in scored) entry.$1];
+}

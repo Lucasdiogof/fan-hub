@@ -100,13 +100,12 @@ class _CoverImage extends StatelessWidget {
     return Stack(
       children: [
         AspectRatio(
-          // As artes do site vêm quase quadradas (~425×480, conferido nas
-          // imagens reais) — um box bem mais largo (16:10) como antes
-          // deixava uma faixa enorme de cor dos lados com `contain`. Um
-          // box mais próximo do quadrado real + `cover` corta bem pouco
-          // (a diferença entre 425:480 e 1:1 é pequena) e preenche o
-          // banner de verdade.
-          aspectRatio: 1,
+          // Mesmo raciocínio do card da lista (`news_item_row.dart`): um
+          // pouco mais largo que a proporção real da imagem (~425×480) pra
+          // cortar uma fatia da faixa vazia do topo, sem chegar nos
+          // escudos perto do rodapé (`Alignment.bottomCenter` garante que o
+          // corte nunca vem de baixo).
+          aspectRatio: 1.08,
           child: ColoredBox(
             color: colors.secondary,
             child: imageUrl.isEmpty
@@ -114,7 +113,9 @@ class _CoverImage extends StatelessWidget {
                 : Image.network(
                     proxiedImageUrl(imageUrl),
                     fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
+                    // Mesmo motivo do card da lista: texto e escudos ficam
+                    // perto do rodapé da arte, não do topo.
+                    alignment: Alignment.bottomCenter,
                     errorBuilder: (context, error, stackTrace) =>
                         const SizedBox.shrink(),
                   ),

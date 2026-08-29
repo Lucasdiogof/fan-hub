@@ -20,6 +20,7 @@ import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_result_page.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
+import 'package:goias_app/features/arena/presentation/pages/arena_page.dart';
 import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/arena/ranking/presentation/pages/ranking_page.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -339,6 +340,10 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
               state,
               PenaltyResultPage(data: state.extra! as PenaltyEndData),
             ),
+          ),
+          GoRoute(
+            path: '/arena',
+            pageBuilder: (context, state) => appPage(state, const ArenaPage()),
           ),
           GoRoute(
             path: '/arena/ranking',

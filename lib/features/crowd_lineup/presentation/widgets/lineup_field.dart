@@ -7,15 +7,15 @@ import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
 /// conteúdo de cada slot (camisa/nome/%/etc.) vem do [slotBuilder], então o
 /// mesmo campo serve pra montar a escalação e pra mostrar a da torcida.
 ///
-/// Em vez de posicionar cada slot livremente pelas coordenadas x/y curadas
-/// (que geravam sobreposição em linhas de 4-5 jogadores), agrupamos os
-/// slots por linha tática — mesmo `y` (com uma tolerância pequena, já que
-/// o dataset varia o y de cada jogador levemente pra um visual mais
-/// natural) — e distribuímos cada linha num `Row` de `Expanded`s. Cada
-/// jogador ganha um slot só seu: a largura nunca depende do conteúdo, então
-/// duas camisas/nomes jamais se sobrepõem, mesmo na linha mais cheia (até 5
-/// titulares lado a lado). O índice original de cada slot (usado pelo
-/// cubit/estado) é preservado — só a ORDEM DE DESENHO muda, não os dados.
+/// Cada slot é desenhado exatamente na coordenada x/y curada da formação
+/// (fração 0..1 do campo) — nunca por "linha do meio pra baixo" genérico.
+/// Isso é o que faz um half-space (ex.: os MEI do 4-2-2-2, x=0.35/0.65)
+/// ficar visivelmente mais estreito que uma ponta aberta (PE/PD, x~0.18/0.82)
+/// em vez de as duas renderizarem no mesmo lugar só porque "são a mesma
+/// linha". O tamanho da célula (camisa + rótulo) é fixo em dp, não em
+/// fração, pra nunca esticar/cortar o conteúdo — só sua POSIÇÃO central é
+/// normalizada. Cada célula é presa dentro da área do campo (nunca deixa a
+/// camisa sair pela borda) via clamp na coordenada central.
 class LineupField extends StatelessWidget {
   const LineupField({
     required this.formation,
@@ -24,7 +24,12 @@ class LineupField extends StatelessWidget {
   });
 
   final Formation formation;
-  final Widget Function(int slotIndex, FormationSlot slot, double avatarSize)
+  final Widget Function(
+    int slotIndex,
+    FormationSlot slot,
+    double avatarSize,
+    double cellWidth,
+  )
   slotBuilder;
 
   @override
@@ -33,59 +38,39 @@ class LineupField extends StatelessWidget {
       aspectRatio: 0.64,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final lines = _clusterLines(formation.slots);
-          final widestLine = lines.fold(
-            0,
-            (max, line) => line.length > max ? line.length : max,
-          );
+          final widestLine = _widestLineCount(formation.slots);
           final avatarSize = _avatarSizeFor(widestLine);
+          final cellWidth = _cellWidthFor(widestLine);
+          final cellHeight = avatarSize + 26;
+          // Assimétrico de propósito: a linha de cima (ataque) é a mais
+          // alta — camisa + selo/percentual — e sem essa margem extra ela
+          // estourava o `ClipRRect` do campo (jogador "saindo de campo"). A
+          // de baixo (goleiro) não tem esse problema, por isso a folga ali
+          // é bem menor.
+          const topInset = AppSpacing.xxl + 8;
+          const bottomInset = AppSpacing.sm + 4;
+          final innerHeight = constraints.maxHeight - topInset - bottomInset;
+
           return ClipRRect(
             borderRadius: BorderRadius.circular(AppRadius.card),
             child: Stack(
               children: [
                 const Positioned.fill(child: LineupFieldBackground()),
-                Positioned.fill(
-                  child: Padding(
-                    // Assimétrico de propósito: a linha de cima (ataque) é
-                    // a mais alta — camisa + selo de número — e com
-                    // `spaceBetween` fica colada na borda de cima, sem
-                    // nenhuma folga própria. Sem essa margem extra, ela
-                    // estourava o `ClipRRect` do campo (jogador "saindo de
-                    // campo"). A de baixo (goleiro) não tem esse problema,
-                    // por isso a folga ali continua pequena.
-                    padding: const EdgeInsets.fromLTRB(
-                      0,
-                      AppSpacing.xxl,
-                      0,
-                      AppSpacing.sm,
-                    ),
-                    child: Column(
-                      // `spaceBetween` (não `spaceEvenly`) empurra a
-                      // primeira linha (goleiro) pra colar na linha de fundo
-                      // de cima e a última (atacantes) na de baixo — com
-                      // `spaceEvenly` sobrava um respiro antes da primeira
-                      // linha e o goleiro ficava visualmente longe do gol.
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        for (final line in lines)
-                          Row(
-                            children: [
-                              for (final entry in line)
-                                Expanded(
-                                  child: Center(
-                                    child: slotBuilder(
-                                      entry.$1,
-                                      entry.$2,
-                                      avatarSize,
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                      ],
+                for (var i = 0; i < formation.slots.length; i++)
+                  _positionedSlot(
+                    slot: formation.slots[i],
+                    fieldWidth: constraints.maxWidth,
+                    topInset: topInset,
+                    innerHeight: innerHeight,
+                    cellWidth: cellWidth,
+                    cellHeight: cellHeight,
+                    child: slotBuilder(
+                      i,
+                      formation.slots[i],
+                      avatarSize,
+                      cellWidth,
                     ),
                   ),
-                ),
               ],
             ),
           );
@@ -94,7 +79,33 @@ class LineupField extends StatelessWidget {
     );
   }
 
-  /// Linhas mais cheias precisam de camisas menores pra caber com folga.
+  Widget _positionedSlot({
+    required FormationSlot slot,
+    required double fieldWidth,
+    required double topInset,
+    required double innerHeight,
+    required double cellWidth,
+    required double cellHeight,
+    required Widget child,
+  }) {
+    final halfW = cellWidth / 2;
+    final halfH = cellHeight / 2;
+    final centerX = (slot.x * fieldWidth).clamp(halfW, fieldWidth - halfW);
+    final centerY = (topInset + slot.y * innerHeight).clamp(
+      topInset + halfH,
+      topInset + innerHeight - halfH,
+    );
+    return Positioned(
+      left: centerX - halfW,
+      top: centerY - halfH,
+      width: cellWidth,
+      height: cellHeight,
+      child: Center(child: child),
+    );
+  }
+
+  /// Linhas mais cheias precisam de camisas (e rótulos) menores pra caber
+  /// com folga — usado só pra dimensionar, nunca pra posicionar.
   double _avatarSizeFor(int playersInLine) => switch (playersInLine) {
     <= 2 => 54,
     3 => 50,
@@ -102,27 +113,32 @@ class LineupField extends StatelessWidget {
     _ => 42,
   };
 
-  /// Agrupa slots (guardando o índice original) por linha tática: ordena
-  /// por `y` e encadeia num mesmo grupo enquanto o salto pro próximo `y`
-  /// for pequeno — funciona tanto pra linhas com o mesmo `y` exato quanto
-  /// pras levemente escalonadas (ex.: zagueiros centrais um pouco mais
-  /// baixos que os laterais na mesma linha defensiva).
-  List<List<(int, FormationSlot)>> _clusterLines(List<FormationSlot> slots) {
-    const threshold = 0.07;
-    final indexed = [for (var i = 0; i < slots.length; i++) (i, slots[i])]
-      ..sort((a, b) => a.$2.y.compareTo(b.$2.y));
+  /// Largura da célula (camisa + rótulo do nome) — precisa encolher junto
+  /// com a camisa nas linhas mais cheias (ex.: a linha de 5 zagueiros do
+  /// 5-3-2/5-4-1), senão os rótulos de slots vizinhos se tocam.
+  double _cellWidthFor(int playersInLine) => switch (playersInLine) {
+    <= 2 => 84,
+    3 => 78,
+    4 => 70,
+    _ => 60,
+  };
 
-    final lines = <List<(int, FormationSlot)>>[];
-    for (final entry in indexed) {
-      if (lines.isEmpty || entry.$2.y - lines.last.last.$2.y > threshold) {
-        lines.add([entry]);
+  /// Só pra dimensionar (ver acima), não pra posicionar: agrupa slots por
+  /// `y` próximo (mesma linha tática, com tolerância pra variações leves de
+  /// y dentro da mesma linha) e devolve o tamanho da linha mais cheia.
+  int _widestLineCount(List<FormationSlot> slots) {
+    const threshold = 0.07;
+    final ys = [for (final slot in slots) slot.y]..sort();
+    var widest = 1;
+    var current = 1;
+    for (var i = 1; i < ys.length; i++) {
+      if (ys[i] - ys[i - 1] <= threshold) {
+        current++;
       } else {
-        lines.last.add(entry);
+        current = 1;
       }
+      if (current > widest) widest = current;
     }
-    for (final line in lines) {
-      line.sort((a, b) => a.$2.x.compareTo(b.$2.x));
-    }
-    return lines;
+    return widest;
   }
 }

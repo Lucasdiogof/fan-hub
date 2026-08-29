@@ -115,6 +115,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navArena => 'Arena';
 
   @override
+  String get navStore => 'Store';
+
+  @override
   String get homeGreetingMorning => 'Good morning';
 
   @override
@@ -593,6 +596,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arenaHeaderSubtitle => 'Play, take part and live Goiás.';
+
+  @override
+  String get arenaSpotlightEyebrow => 'Arena Esmeraldina';
+
+  @override
+  String get arenaSpotlightLineupHeadline => 'Line up Goiás for the next match';
+
+  @override
+  String arenaSpotlightLineupSubtitle(String opponent) {
+    return 'Pick the squad against $opponent and climb the fan ranking.';
+  }
+
+  @override
+  String get arenaSpotlightLineupCta => 'Build my lineup';
+
+  @override
+  String get arenaSpotlightQuizHeadline => 'Quiz do Verdão';
+
+  @override
+  String get arenaSpotlightQuizSubtitle => 'Can you get every question right?';
+
+  @override
+  String get arenaSpotlightQuizCta => 'Play now';
+
+  @override
+  String get arenaSpotlightFallbackHeadline => 'Your Arena Esmeraldina';
+
+  @override
+  String get arenaSpotlightFallbackSubtitle =>
+      'Quiz, crowd lineup, passport and more waiting for you.';
+
+  @override
+  String get arenaSpotlightFallbackCta => 'Enter the Arena';
+
+  @override
+  String arenaSpotlightRankSummary(int rank, int points) {
+    return '#$rank · $points pts';
+  }
 
   @override
   String get arenaLineupHeroEyebrow => 'FANS\' LINEUP';
@@ -2177,6 +2218,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get playerPositionMeiShort => 'AM';
 
   @override
+  String get playerPositionMdFull => 'Right midfielder';
+
+  @override
+  String get playerPositionMdShort => 'RM';
+
+  @override
+  String get playerPositionMeFull => 'Left midfielder';
+
+  @override
+  String get playerPositionMeShort => 'LM';
+
+  @override
   String get playerPositionPdFull => 'Right winger';
 
   @override
@@ -2242,6 +2295,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get crowdSelectedPlayer => 'Selected';
+
+  @override
+  String get crowdAlsoCanPlaySection => 'CAN ALSO PLAY HERE';
+
+  @override
+  String get crowdCanAlsoPlayBadge => 'Can play';
 
   @override
   String get crowdCardTitleVoted => 'Fans\' Lineup';
@@ -2965,6 +3024,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeHomeTitle => 'Goiás Store';
+
+  @override
+  String get storeMatchdaySectionTitle => 'Next match';
+
+  @override
+  String get storeMyPurchasesSectionTitle => 'My purchases';
+
+  @override
+  String get storeMyTicketsShortcut => 'My tickets';
+
+  @override
+  String get storeMyOrdersShortcut => 'My orders';
 
   @override
   String get storeHomeLoadErrorTitle => 'We couldn\'t load the store';

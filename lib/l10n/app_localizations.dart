@@ -304,6 +304,12 @@ abstract class AppLocalizations {
   /// **'Arena'**
   String get navArena;
 
+  /// No description provided for @navStore.
+  ///
+  /// In pt, this message translates to:
+  /// **'Loja'**
+  String get navStore;
+
   /// No description provided for @homeGreetingMorning.
   ///
   /// In pt, this message translates to:
@@ -1227,6 +1233,72 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Jogue, participe e viva o Goiás.'**
   String get arenaHeaderSubtitle;
+
+  /// No description provided for @arenaSpotlightEyebrow.
+  ///
+  /// In pt, this message translates to:
+  /// **'Arena Esmeraldina'**
+  String get arenaSpotlightEyebrow;
+
+  /// No description provided for @arenaSpotlightLineupHeadline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Monte o Goiás para a próxima partida'**
+  String get arenaSpotlightLineupHeadline;
+
+  /// No description provided for @arenaSpotlightLineupSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escale o time contra o {opponent} e concorra no ranking da torcida.'**
+  String arenaSpotlightLineupSubtitle(String opponent);
+
+  /// No description provided for @arenaSpotlightLineupCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escalar meu time'**
+  String get arenaSpotlightLineupCta;
+
+  /// No description provided for @arenaSpotlightQuizHeadline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quiz do Verdão'**
+  String get arenaSpotlightQuizHeadline;
+
+  /// No description provided for @arenaSpotlightQuizSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você consegue acertar todas as perguntas?'**
+  String get arenaSpotlightQuizSubtitle;
+
+  /// No description provided for @arenaSpotlightQuizCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogar agora'**
+  String get arenaSpotlightQuizCta;
+
+  /// No description provided for @arenaSpotlightFallbackHeadline.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua Arena Esmeraldina'**
+  String get arenaSpotlightFallbackHeadline;
+
+  /// No description provided for @arenaSpotlightFallbackSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quiz, Escalação da Torcida, Passaporte e muito mais te esperando.'**
+  String get arenaSpotlightFallbackSubtitle;
+
+  /// No description provided for @arenaSpotlightFallbackCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entrar na Arena'**
+  String get arenaSpotlightFallbackCta;
+
+  /// No description provided for @arenaSpotlightRankSummary.
+  ///
+  /// In pt, this message translates to:
+  /// **'{rank}º lugar · {points} pts'**
+  String arenaSpotlightRankSummary(int rank, int points);
 
   /// No description provided for @arenaLineupHeroEyebrow.
   ///
@@ -3874,6 +3946,30 @@ abstract class AppLocalizations {
   /// **'MEI'**
   String get playerPositionMeiShort;
 
+  /// No description provided for @playerPositionMdFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meia-direita'**
+  String get playerPositionMdFull;
+
+  /// No description provided for @playerPositionMdShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'MD'**
+  String get playerPositionMdShort;
+
+  /// No description provided for @playerPositionMeFull.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meia-esquerda'**
+  String get playerPositionMeFull;
+
+  /// No description provided for @playerPositionMeShort.
+  ///
+  /// In pt, this message translates to:
+  /// **'ME'**
+  String get playerPositionMeShort;
+
   /// No description provided for @playerPositionPdFull.
   ///
   /// In pt, this message translates to:
@@ -3987,6 +4083,18 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Escalado'**
   String get crowdSelectedPlayer;
+
+  /// No description provided for @crowdAlsoCanPlaySection.
+  ///
+  /// In pt, this message translates to:
+  /// **'TAMBÉM PODE ATUAR'**
+  String get crowdAlsoCanPlaySection;
+
+  /// No description provided for @crowdCanAlsoPlayBadge.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pode atuar'**
+  String get crowdCanAlsoPlayBadge;
 
   /// No description provided for @crowdCardTitleVoted.
   ///
@@ -5313,6 +5421,30 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Goiás Store'**
   String get storeHomeTitle;
+
+  /// No description provided for @storeMatchdaySectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Próximo jogo'**
+  String get storeMatchdaySectionTitle;
+
+  /// No description provided for @storeMyPurchasesSectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Minhas compras'**
+  String get storeMyPurchasesSectionTitle;
+
+  /// No description provided for @storeMyTicketsShortcut.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus ingressos'**
+  String get storeMyTicketsShortcut;
+
+  /// No description provided for @storeMyOrdersShortcut.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus pedidos'**
+  String get storeMyOrdersShortcut;
 
   /// No description provided for @storeHomeLoadErrorTitle.
   ///

@@ -4,9 +4,12 @@ import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
 import 'package:goias_app/features/crowd_lineup/domain/goias_squad.dart';
 import 'package:goias_app/features/crowd_lineup/domain/lineup_vote.dart';
+import 'package:goias_app/features/crowd_lineup/domain/position_compatibility.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+
+const _compatibility = PositionCompatibilityService();
 
 class CrowdLineupCubit extends Cubit<CrowdLineupState> {
   CrowdLineupCubit({
@@ -52,30 +55,39 @@ class CrowdLineupCubit extends Cubit<CrowdLineupState> {
     final available = oldSlots.values.toSet();
     final result = <int, String>{};
 
-    // Preserva o jogador que estava no MESMO índice, se continuar compatível.
+    // Preserva o jogador que estava no MESMO índice, se continuar compatível
+    // (qualquer nível de encaixe, não só posição exata).
     for (var i = 0; i < newFormation.slots.length; i++) {
       final pid = oldSlots[i];
       if (pid == null || !available.contains(pid)) continue;
-      if (squadById[pid]!.canPlay(newFormation.slots[i].position)) {
+      final fit = _compatibility.fitFor(
+        squadById[pid]!,
+        newFormation.slots[i].position,
+      );
+      if (fit != PositionFit.incompatible) {
         result[i] = pid;
         available.remove(pid);
       }
     }
-    // Preenche os slots restantes com jogadores compatíveis que sobraram
-    // (sem nunca colocar em posição não permitida); o resto é descartado.
+    // Preenche os slots restantes com o jogador que sobrou de MELHOR
+    // encaixe pra cada posição (nunca o primeiro compatível por acaso na
+    // ordem do Set) — o que não achar ninguém compatível fica vazio, o
+    // usuário escolhe de novo.
     for (var i = 0; i < newFormation.slots.length; i++) {
       if (result.containsKey(i)) continue;
       final position = newFormation.slots[i].position;
-      String? pick;
+      String? bestPid;
+      var bestScore = -1;
       for (final pid in available) {
-        if (squadById[pid]!.canPlay(position)) {
-          pick = pid;
-          break;
+        final score = _compatibility.scoreFor(squadById[pid]!, position);
+        if (score != null && score > bestScore) {
+          bestScore = score;
+          bestPid = pid;
         }
       }
-      if (pick != null) {
-        result[i] = pick;
-        available.remove(pick);
+      if (bestPid != null) {
+        result[i] = bestPid;
+        available.remove(bestPid);
       }
     }
 

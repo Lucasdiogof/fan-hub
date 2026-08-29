@@ -41,9 +41,9 @@ List<MainNavItemData> mainNavItems(BuildContext context) {
       label: l10n.navMedia,
     ),
     MainNavItemData(
-      icon: Icons.sports_esports_outlined,
-      selectedIcon: Icons.sports_esports_rounded,
-      label: l10n.navArena,
+      icon: Icons.storefront_outlined,
+      selectedIcon: Icons.storefront_rounded,
+      label: l10n.navStore,
     ),
   ];
 }

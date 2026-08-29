@@ -12,6 +12,7 @@ import 'package:goias_app/features/store/presentation/cubit/store_catalog_state.
 import 'package:goias_app/features/store/presentation/store_display_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/cart_icon_button.dart';
 import 'package:goias_app/features/store/presentation/widgets/product_card.dart';
+import 'package:goias_app/features/ticket/presentation/widgets/matchday_entry_card.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -26,19 +27,27 @@ import 'package:goias_app/shared/widgets/state_message.dart';
 /// sequência repetiriam o mesmo item — exatamente o problema que motivou
 /// este redesenho.
 class StoreHomePage extends StatelessWidget {
-  const StoreHomePage({super.key});
+  const StoreHomePage({this.showBackButton = true, super.key});
+
+  /// A Loja hoje vive em dois lugares: aba fixa da bottom nav (sem botão de
+  /// voltar, como qualquer outra aba) e — se algum dia sobrar um link
+  /// direto pra `/store` — uma rota empurrada normal (com botão de voltar).
+  /// Nunca os dois ao mesmo tempo.
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<StoreCatalogCubit>()..load(),
-      child: const _StoreHomeView(),
+      child: _StoreHomeView(showBackButton: showBackButton),
     );
   }
 }
 
 class _StoreHomeView extends StatelessWidget {
-  const _StoreHomeView();
+  const _StoreHomeView({required this.showBackButton});
+
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -60,13 +69,16 @@ class _StoreHomeView extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      BackButtonCircle(
-                        size: 34,
-                        iconSize: 16,
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                      ),
-                      const SizedBox(width: AppSpacing.md),
+                      if (showBackButton) ...[
+                        BackButtonCircle(
+                          size: 34,
+                          iconSize: 16,
+                          onTap: () => context.canPop()
+                              ? context.pop()
+                              : context.go('/'),
+                        ),
+                        const SizedBox(width: AppSpacing.md),
+                      ],
                       Expanded(
                         child: Text(
                           context.l10n.storeHomeTitle,
@@ -153,6 +165,18 @@ class _StoreHomeContent extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(0, AppSpacing.lg, 0, AppSpacing.xxxl),
       children: [
+        // Contexto de matchday (serviço/ação contextual) — visualmente
+        // separado da vitrine de produtos abaixo, nunca uma "categoria de
+        // ingresso" misturada com Masculino/Feminino/etc.
+        const MatchdayEntryCard(),
+        const SizedBox(height: AppSpacing.lg),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+          child: _MyPurchasesRow(),
+        ),
+        const SizedBox(height: AppSpacing.xl),
+        _SectionLabel(l10n.storeHomeTitle),
+        const SizedBox(height: AppSpacing.sm),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
           child: _StoreBanner(
@@ -211,6 +235,90 @@ class _StoreBanner extends StatelessWidget {
           'lib/assets/banner.png',
           width: double.infinity,
           fit: BoxFit.fitWidth,
+        ),
+      ),
+    );
+  }
+}
+
+/// Atalhos compactos pro que o usuário já comprou/já tem — não replica a
+/// tela de Ingressos nem a de Pedidos aqui, só leva pra elas.
+class _MyPurchasesRow extends StatelessWidget {
+  const _MyPurchasesRow();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    return Row(
+      children: [
+        Expanded(
+          child: _PurchaseShortcut(
+            icon: Icons.confirmation_number_outlined,
+            label: l10n.storeMyTicketsShortcut,
+            onTap: () => context.push('/tickets/my'),
+          ),
+        ),
+        const SizedBox(width: AppSpacing.sm),
+        Expanded(
+          child: _PurchaseShortcut(
+            icon: Icons.receipt_long_outlined,
+            label: l10n.storeMyOrdersShortcut,
+            onTap: () => context.push('/store/orders'),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _PurchaseShortcut extends StatelessWidget {
+  const _PurchaseShortcut({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Material(
+      color: colors.surface,
+      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.sm,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+            border: Border.all(color: colors.border),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 16, color: colors.textSecondary),
+              const SizedBox(width: 6),
+              Flexible(
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: colors.textPrimary,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -344,4 +452,3 @@ class _ProductSection extends StatelessWidget {
     );
   }
 }
-

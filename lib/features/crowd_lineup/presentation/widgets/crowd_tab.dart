@@ -44,7 +44,7 @@ class CrowdTab extends StatelessWidget {
                 key: fieldKey,
                 child: LineupField(
                   formation: crowd.topFormation!,
-                  slotBuilder: (slotIndex, slot, avatarSize) {
+                  slotBuilder: (slotIndex, slot, avatarSize, cellWidth) {
                     final result = slotIndex < crowd.slots.length
                         ? crowd.slots[slotIndex]
                         : null;
@@ -52,6 +52,7 @@ class CrowdTab extends StatelessWidget {
                       result: result,
                       position: slot.position.short(context),
                       avatarSize: avatarSize,
+                      labelMaxWidth: cellWidth,
                       isHome: isHome,
                     );
                   },
@@ -140,12 +141,14 @@ class _CrowdSlot extends StatelessWidget {
     required this.result,
     required this.position,
     required this.avatarSize,
+    required this.labelMaxWidth,
     required this.isHome,
   });
 
   final CrowdSlotResult? result;
   final String position;
   final double avatarSize;
+  final double labelMaxWidth;
   final bool isHome;
 
   @override
@@ -200,7 +203,7 @@ class _CrowdSlot extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Container(
-          constraints: const BoxConstraints(maxWidth: 76),
+          constraints: BoxConstraints(maxWidth: labelMaxWidth),
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
           decoration: BoxDecoration(
             color: Colors.black.withValues(alpha: 0.45),

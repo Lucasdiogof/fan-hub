@@ -57,13 +57,15 @@ class EscaleTab extends StatelessWidget {
                       key: fieldKey,
                       child: LineupField(
                         formation: state.formation,
-                        slotBuilder: (slotIndex, slot, avatarSize) => _Slot(
-                          state: state,
-                          slotIndex: slotIndex,
-                          slot: slot,
-                          avatarSize: avatarSize,
-                          isHome: isHome,
-                        ),
+                        slotBuilder: (slotIndex, slot, avatarSize, cellWidth) =>
+                            _Slot(
+                              state: state,
+                              slotIndex: slotIndex,
+                              slot: slot,
+                              avatarSize: avatarSize,
+                              labelMaxWidth: cellWidth,
+                              isHome: isHome,
+                            ),
                       ),
                     ),
                   ],
@@ -84,6 +86,7 @@ class _Slot extends StatelessWidget {
     required this.slotIndex,
     required this.slot,
     required this.avatarSize,
+    required this.labelMaxWidth,
     required this.isHome,
   });
 
@@ -91,6 +94,7 @@ class _Slot extends StatelessWidget {
   final int slotIndex;
   final FormationSlot slot;
   final double avatarSize;
+  final double labelMaxWidth;
   final bool isHome;
 
   @override
@@ -163,7 +167,11 @@ class _Slot extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          _Label(player: player, position: slot.position.short(context)),
+          _Label(
+            player: player,
+            position: slot.position.short(context),
+            maxWidth: labelMaxWidth,
+          ),
         ],
       ),
     );
@@ -199,15 +207,20 @@ class _EmptyJersey extends StatelessWidget {
 }
 
 class _Label extends StatelessWidget {
-  const _Label({required this.player, required this.position});
+  const _Label({
+    required this.player,
+    required this.position,
+    required this.maxWidth,
+  });
 
   final SquadPlayer? player;
   final String position;
+  final double maxWidth;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(maxWidth: 76),
+      constraints: BoxConstraints(maxWidth: maxWidth),
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       decoration: BoxDecoration(
         color: Colors.black.withValues(alpha: 0.45),
