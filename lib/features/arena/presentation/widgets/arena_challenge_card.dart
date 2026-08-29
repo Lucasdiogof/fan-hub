@@ -39,10 +39,7 @@ class ArenaChallengeCard extends StatelessWidget {
     final resolvedProgress = progress;
     final fraction = resolvedProgress == null || resolvedProgress.total == 0
         ? null
-        : (resolvedProgress.completed / resolvedProgress.total).clamp(
-            0.0,
-            1.0,
-          );
+        : (resolvedProgress.completed / resolvedProgress.total).clamp(0.0, 1.0);
     final isCompleted = fraction != null && fraction >= 1.0;
     final ctaLabel = isCompleted
         ? l10n.arenaChallengeCtaCompleted
@@ -89,7 +86,7 @@ class ArenaChallengeCard extends StatelessWidget {
                   height: 1.15,
                 ),
               ),
-              const Spacer(),
+              const SizedBox(height: AppSpacing.md),
               SizedBox(
                 height: 30,
                 child: fraction != null
@@ -127,7 +124,7 @@ class ArenaChallengeCard extends StatelessWidget {
                         ),
                       ),
               ),
-              const SizedBox(height: AppSpacing.xs),
+              const SizedBox(height: AppSpacing.sm),
               Row(
                 children: [
                   Text(
@@ -148,6 +145,7 @@ class ArenaChallengeCard extends StatelessWidget {
                   ),
                 ],
               ),
+              const Spacer(),
             ],
           ),
         ),

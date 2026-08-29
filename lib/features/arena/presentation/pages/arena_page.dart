@@ -11,7 +11,6 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
-import 'package:goias_app/features/arena/domain/arena_game.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
@@ -29,7 +28,6 @@ import 'package:goias_app/features/arena/presentation/widgets/arena_challenge_ca
 import 'package:goias_app/features/arena/presentation/widgets/arena_header_bar.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_highlight_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_section_header.dart';
-import 'package:goias_app/features/arena/presentation/widgets/continue_playing_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/crowd_lineup_hero_card.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
@@ -40,8 +38,6 @@ import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
-import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
-import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -54,17 +50,6 @@ class ArenaPage extends StatefulWidget {
   @override
   State<ArenaPage> createState() => _ArenaPageState();
 }
-
-/// Candidato do "Continue Jogando" — o desafio de coleção finita com maior
-/// fração concluída dentre os começados e ainda não terminados. Só os 3
-/// jogos com progresso persistente entram na disputa (ver
-/// `ArenaProgressSnapshot`); Quem Vestiu o Manto não tem "total", então
-/// nunca aparece aqui.
-typedef _ContinueCandidate = ({
-  ArenaGame game,
-  ({int completed, int total}) progress,
-  String remainingLabel,
-});
 
 class _ArenaPageState extends State<ArenaPage> with RouteAware {
   // `ArenaPage` é uma aba dentro do `IndexedStack` da Home — nunca é
@@ -79,14 +64,8 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   late Future<ArenaProgressSnapshot> _progressFuture =
       sl<ArenaProgressRepository>().loadSnapshot();
   late Future<({int rank, int totalScore})?> _myRankFuture = _loadMyRank();
-  late Future<int> _passportCountFuture = _loadPassportCount();
   late Future<int?> _crowdParticipantsFuture = _loadCrowdParticipants();
   bool _celebrationShown = false;
-
-  Future<int> _loadPassportCount() async {
-    final result = await sl<PassportRepository>().getSummary();
-    return result is Success<PassportSummary> ? result.data.totalMatches : 0;
-  }
 
   Future<({int rank, int totalScore})?> _loadMyRank() async {
     final result = await sl<ArenaRankingRepository>().getMyRank(
@@ -111,7 +90,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     setState(() {
       _progressFuture = sl<ArenaProgressRepository>().loadSnapshot();
       _myRankFuture = _loadMyRank();
-      _passportCountFuture = _loadPassportCount();
       _crowdParticipantsFuture = _loadCrowdParticipants();
     });
   }
@@ -180,67 +158,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
             snapshot.guessPlayerPlayed,
             snapshot.guessPlayerCorrect,
           );
-  }
-
-  /// O desafio mais relevante pro "Continue Jogando": dentre os 3 jogos de
-  /// coleção finita já começados e ainda não concluídos, o de maior fração
-  /// concluída (mais perto do fim = mais provável de ser retomado agora).
-  /// Nunca duplica lógica de progresso — só reordena o que
-  /// `ArenaProgressSnapshot` já calcula.
-  _ContinueCandidate? _continuePlayingCandidate(
-    BuildContext context,
-    ArenaProgressSnapshot? snapshot,
-  ) {
-    if (snapshot == null) return null;
-    final l10n = context.l10n;
-    final options = [
-      (
-        game: ArenaCatalog.byRoute('/arena/quiz'),
-        progress: (
-          completed: snapshot.quizAnswered,
-          total: snapshot.quizTotal,
-        ),
-        remainingLabel: l10n.arenaContinueQuizRemaining,
-      ),
-      (
-        game: ArenaCatalog.byRoute('/arena/lineup'),
-        progress: (
-          completed: snapshot.lineupCompleted,
-          total: snapshot.lineupTotal,
-        ),
-        remainingLabel: l10n.arenaContinueLineupRemaining,
-      ),
-      (
-        game: ArenaCatalog.byRoute('/arena/career-path'),
-        progress: (
-          completed: snapshot.careerCompleted,
-          total: snapshot.careerTotal,
-        ),
-        remainingLabel: l10n.arenaContinueCareerRemaining,
-      ),
-    ];
-
-    final inProgress = options.where(
-      (o) =>
-          o.progress.total > 0 &&
-          o.progress.completed > 0 &&
-          o.progress.completed < o.progress.total,
-    );
-    if (inProgress.isEmpty) return null;
-
-    final best = inProgress.reduce(
-      (a, b) =>
-          (a.progress.completed / a.progress.total) >=
-              (b.progress.completed / b.progress.total)
-          ? a
-          : b,
-    );
-    final remaining = best.progress.total - best.progress.completed;
-    return (
-      game: best.game,
-      progress: best.progress,
-      remainingLabel: best.remainingLabel(remaining),
-    );
   }
 
   Future<void> _openRanking(BuildContext context) async {
@@ -381,11 +298,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                   (_) => _maybeCelebrate(progress),
                 );
               }
-              final continueCandidate = _continuePlayingCandidate(
-                context,
-                progress,
-              );
-
               return Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
@@ -437,50 +349,19 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                       // Passaporte — memória/coleção do torcedor, com
                       // identidade própria (fundo claro), nunca misturado
                       // com os desafios/minigames abaixo.
-                      FutureBuilder<int>(
-                        future: _passportCountFuture,
-                        builder: (context, passportSnapshot) {
-                          final count = passportSnapshot.data;
-                          return ArenaHighlightCard(
-                            leading: ArenaHighlightLeading(
-                              child: Icon(
-                                Icons.confirmation_number_outlined,
-                                color: colors.primary,
-                                size: 24,
-                              ),
-                            ),
-                            topBadge: context.l10n.passportEyebrow
-                                .toUpperCase(),
-                            title: context.l10n.passportTitle,
-                            description: context.l10n.passportCardDescription,
-                            extra: count != null && count > 0
-                                ? Text(
-                                    context.l10n.passportCardRegisteredCount(
-                                      count,
-                                    ),
-                                    style: TextStyle(
-                                      fontSize: 11.5,
-                                      fontWeight: FontWeight.w700,
-                                      color: colors.primary,
-                                    ),
-                                  )
-                                : null,
-                            ctaLabel: context.l10n.passportCardCta,
-                            onTap: () => context.push('/arena/passport'),
-                          );
-                        },
-                      ),
-                      if (continueCandidate != null) ...[
-                        const SizedBox(height: AppSpacing.xxl),
-                        _SectionLabel(context.l10n.arenaContinuePlayingTitle),
-                        const SizedBox(height: AppSpacing.md),
-                        ContinuePlayingCard(
-                          game: continueCandidate.game,
-                          progress: continueCandidate.progress,
-                          remainingLabel: continueCandidate.remainingLabel,
-                          onTap: _openGame(context, continueCandidate.game.id),
+                      ArenaHighlightCard(
+                        leading: ArenaHighlightLeading(
+                          child: Icon(
+                            Icons.confirmation_number_outlined,
+                            color: colors.primary,
+                            size: 24,
+                          ),
                         ),
-                      ],
+                        title: context.l10n.passportTitle,
+                        description: context.l10n.passportCardDescription,
+                        ctaLabel: context.l10n.passportCardCta,
+                        onTap: () => context.push('/arena/passport'),
+                      ),
                       const SizedBox(height: AppSpacing.xxl),
                       ArenaSectionHeader(
                         context.l10n.arenaChallengesSectionTitle,
@@ -497,7 +378,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                           },
                           mainAxisSpacing: AppSpacing.md,
                           crossAxisSpacing: AppSpacing.md,
-                          childAspectRatio: 0.95,
+                          childAspectRatio: 1.05,
                           children: [
                             for (final game in games)
                               ArenaChallengeCard(
@@ -524,25 +405,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
             },
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _SectionLabel extends StatelessWidget {
-  const _SectionLabel(this.text);
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 11,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 1,
-        color: context.colors.textHint,
       ),
     );
   }
