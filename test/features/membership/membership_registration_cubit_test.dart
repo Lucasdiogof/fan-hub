@@ -1,6 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/features/auth/domain/entities/auth_user.dart';
+import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/membership/domain/entities/address_lookup_result.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
@@ -9,6 +12,7 @@ import 'package:goias_app/features/membership/domain/repositories/address_reposi
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_state.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 
 class _FakeMembershipRepository implements MembershipRepository {
@@ -49,6 +53,55 @@ class _FakeMembershipRepository implements MembershipRepository {
   }
 }
 
+class _FakeAuthRepository implements AuthRepository {
+  @override
+  bool get isAuthenticated => false;
+
+  @override
+  AuthUser? get currentUser => null;
+
+  @override
+  Stream<AuthSessionEvent> get sessionEvents => const Stream.empty();
+
+  @override
+  Future<Result<void>> signIn({
+    required String email,
+    required String password,
+  }) async => const Success(null);
+
+  @override
+  Future<Result<bool>> signUp({
+    required String fullName,
+    required String email,
+    required String password,
+  }) async => const Success(true);
+
+  @override
+  Future<Result<void>> signOut() async => const Success(null);
+
+  @override
+  Future<Result<void>> sendPasswordReset(String email) async =>
+      const Success(null);
+
+  @override
+  Future<Result<void>> resendConfirmationEmail(String email) async =>
+      const Success(null);
+
+  @override
+  Future<Result<void>> updatePassword(String newPassword) async =>
+      const Success(null);
+
+  @override
+  Future<Result<void>> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async => const Success(null);
+
+  @override
+  Future<Result<void>> deleteAccount({required String password}) async =>
+      const Success(null);
+}
+
 class _FakeAddressRepository implements AddressRepository {
   @override
   Future<Result<AddressLookupResult?>> findByZipCode(String zipCode) async =>
@@ -79,6 +132,8 @@ const _plan = MembershipPlan(
 );
 
 void main() {
+  late AuthCubit authCubit;
+  late MembershipStatusCubit membershipStatusCubit;
   late MembershipRegistrationCubit cubit;
   late AppLocalizations l10n;
 
@@ -87,15 +142,24 @@ void main() {
   });
 
   setUp(() {
-    cubit = MembershipRegistrationCubit(
+    authCubit = AuthCubit(_FakeAuthRepository());
+    membershipStatusCubit = MembershipStatusCubit(
       _FakeMembershipRepository(),
+      authCubit,
+    );
+    cubit = MembershipRegistrationCubit(
+      membershipStatusCubit,
       _FakeAddressRepository(),
       plan: _plan,
       price: _plan.defaultPrice,
     );
   });
 
-  tearDown(() => cubit.close());
+  tearDown(() async {
+    await cubit.close();
+    await membershipStatusCubit.close();
+    await authCubit.close();
+  });
 
   test(
     'empty required fields only show "obrigatório" errors after Continuar is pressed',

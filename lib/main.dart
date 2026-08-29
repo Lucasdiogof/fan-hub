@@ -12,6 +12,7 @@ import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
@@ -74,6 +75,7 @@ class _GoiasAppState extends State<GoiasApp> {
         // GetIt pra árvore inteira.
         BlocProvider.value(value: sl<CartCubit>()),
         BlocProvider.value(value: sl<FavoritesCubit>()),
+        BlocProvider.value(value: sl<MembershipStatusCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         bloc: _themeCubit,

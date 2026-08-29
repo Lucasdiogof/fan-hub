@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +14,6 @@ import 'package:goias_app/core/theme/theme_mode_label.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
-import 'package:goias_app/features/profile/presentation/widgets/mock_membership_toggle.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
@@ -160,10 +158,6 @@ class _ProfileView extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.xxl),
                       const _SignOutButton(),
-                      if (kDebugMode) ...[
-                        const SizedBox(height: AppSpacing.xxl),
-                        const MockMembershipToggle(),
-                      ],
                     ],
                   ),
                 ),

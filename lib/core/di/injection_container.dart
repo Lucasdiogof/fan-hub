@@ -42,12 +42,13 @@ import 'package:goias_app/features/match/domain/repositories/football_repository
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/membership/data/ibge_location_data_source.dart';
 import 'package:goias_app/features/membership/data/membership_faq_data_source.dart';
-import 'package:goias_app/features/membership/data/mock_membership_repository.dart';
+import 'package:goias_app/features/membership/data/supabase_membership_repository.dart';
 import 'package:goias_app/features/membership/data/viacep_address_repository.dart';
 import 'package:goias_app/features/membership/data/viacep_data_source.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_cubit.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/features/passport/data/supabase_passport_repository.dart';
 import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
@@ -83,7 +84,9 @@ void setupDependencies() {
   sl.registerLazySingleton<TicketRepository>(
     () => MockTicketRepository(Supabase.instance.client, sl(), sl()),
   );
-  sl.registerLazySingleton<MembershipRepository>(MockMembershipRepository.new);
+  sl.registerLazySingleton<MembershipRepository>(
+    () => SupabaseMembershipRepository(Supabase.instance.client),
+  );
   sl.registerLazySingleton<MembershipFaqDataSource>(
     () => MembershipFaqDataSource(Supabase.instance.client),
   );
@@ -120,6 +123,13 @@ void setupDependencies() {
   );
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
   sl.registerLazySingleton<AuthCubit>(() => AuthCubit(sl()));
+  // Fonte única de "é sócio?" pro app inteiro (Home, Ingresso, Ranking,
+  // Perfil) — nunca cada tela consultando `MembershipRepository` sozinha.
+  // Depende de `AuthCubit` pra nunca vazar sócio de uma conta pra outra
+  // (limpa no logout, recarrega no login — ver `MembershipStatusCubit`).
+  sl.registerLazySingleton<MembershipStatusCubit>(
+    () => MembershipStatusCubit(sl(), sl()),
+  );
 
   sl.registerLazySingleton<ProfileRepository>(
     () => SupabaseProfileRepository(Supabase.instance.client),
@@ -192,15 +202,13 @@ void setupDependencies() {
   // Singleton (não factory) — a Splash resolve/pré-carrega esse mesmo
   // Cubit por trás do vídeo antes de navegar (ver `splash_video_page.dart`),
   // então a Home precisa reaproveitar a MESMA instância, já carregada.
-  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl(), sl(), sl()));
+  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl(), sl()));
   // Singleton — o preview da Home e a tela completa de Notícias
   // compartilham a mesma lista já carregada (ver `NewsCubit`).
   sl.registerLazySingleton<NewsCubit>(() => NewsCubit(sl()));
   sl.registerFactory<SquadCubit>(() => SquadCubit(sl()));
   sl.registerFactory<ClubBoardCubit>(() => ClubBoardCubit(sl()));
-  sl.registerFactory<ClubTransparencyCubit>(
-    () => ClubTransparencyCubit(sl()),
-  );
+  sl.registerFactory<ClubTransparencyCubit>(() => ClubTransparencyCubit(sl()));
   sl.registerFactory<PassportCubit>(() => PassportCubit(sl()));
   sl.registerFactory<PassportRankingCubit>(() => PassportRankingCubit(sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));

@@ -7,9 +7,9 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
-import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_state.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_review_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/membership_success_page.dart';
 import 'package:goias_app/features/membership/presentation/widgets/membership_registration_stepper.dart';
@@ -48,7 +48,7 @@ class MembershipRegistrationPage extends StatelessWidget {
     // do zero, mesmo os que existem no cadastro do app (nome, e-mail).
     return BlocProvider(
       create: (_) => MembershipRegistrationCubit(
-        sl<MembershipRepository>(),
+        sl<MembershipStatusCubit>(),
         sl<AddressRepository>(),
         plan: plan,
         price: price,

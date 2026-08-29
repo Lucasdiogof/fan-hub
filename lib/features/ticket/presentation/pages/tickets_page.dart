@@ -6,7 +6,7 @@ import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
@@ -41,21 +41,18 @@ class _TicketsView extends StatelessWidget {
   const _TicketsView();
 
   Future<void> _openCheckIn(BuildContext context, TicketEvent event) async {
-    final loaded = await GlobalLoading.run(context, () async {
-      final profileResult = await sl<ProfileRepository>().getProfile();
-      final membershipResult = await sl<MembershipRepository>()
-          .getMyMembership();
-      return (profile: profileResult, membership: membershipResult);
-    });
+    final profileResult = await GlobalLoading.run(
+      context,
+      () => sl<ProfileRepository>().getProfile(),
+    );
     if (!context.mounted) return;
-    final profile = switch (loaded.profile) {
+    final profile = switch (profileResult) {
       Success(:final data) => data,
       Error() => null,
     };
-    final membership = switch (loaded.membership) {
-      Success(:final data) => data,
-      Error() => null,
-    };
+    // Já carregada pela `MembershipStatusCubit` (fonte única de "é sócio?")
+    // — nunca uma nova consulta a `MembershipRepository` só pra esta tela.
+    final membership = sl<MembershipStatusCubit>().state.membership;
     if (profile == null || membership == null) {
       _showLoadError(context);
       return;

@@ -9,8 +9,8 @@ import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_registration_data.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
-import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_state.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/masks.dart';
 
@@ -19,13 +19,13 @@ import 'package:goias_app/shared/utils/masks.dart';
 /// o cubit, então nada digitado se perde.
 class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
   MembershipRegistrationCubit(
-    this._repository,
+    this._membershipStatusCubit,
     this._addressRepository, {
     required MembershipPlan plan,
     required MembershipPlanPrice price,
   }) : super(MembershipRegistrationState(plan: plan, price: price));
 
-  final MembershipRepository _repository;
+  final MembershipStatusCubit _membershipStatusCubit;
   final AddressRepository _addressRepository;
   Timer? _cepDebounce;
 
@@ -293,7 +293,7 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
   Future<void> submit() async {
     if (!state.regulationAccepted) return;
     emit(state.copyWith(submitStatus: LoadStatus.loading));
-    final result = await _repository.submitRegistration(
+    final result = await _membershipStatusCubit.subscribeToPlan(
       plan: state.plan,
       price: state.price,
       data: state.data,

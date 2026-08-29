@@ -8,10 +8,12 @@ import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/features/splash/presentation/widgets/circle_reveal_clipper.dart';
 import 'package:goias_app/features/splash/presentation/widgets/reveal_glow_painter.dart';
 import 'package:goias_app/features/splash/presentation/widgets/static_logo_splash.dart';
 import 'package:goias_app/features/splash/presentation/widgets/video_splash_view.dart';
+import 'package:goias_app/shared/state/load_status.dart';
 
 /// Mesma cor do `flutter_native_splash` (pubspec.yaml) — não é branco puro
 /// de propósito, é a continuação exata da splash nativa, que não tem uma
@@ -98,6 +100,12 @@ class _SplashVideoPageState extends State<SplashVideoPage>
     final homeCubit = sl<HomeCubit>();
     if (homeCubit.state.loading) {
       await homeCubit.stream.firstWhere((state) => !state.loading);
+    }
+    final membershipCubit = sl<MembershipStatusCubit>();
+    if (membershipCubit.state.status != LoadStatus.success) {
+      await membershipCubit.stream.firstWhere(
+        (state) => state.status == LoadStatus.success,
+      );
     }
   }
 

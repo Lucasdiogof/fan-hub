@@ -37,7 +37,7 @@ import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
-import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -164,7 +164,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     final cubit = await GlobalLoading.run(context, () async {
       final cubit = RankingCubit(
         sl<ArenaRankingRepository>(),
-        sl<MembershipRepository>(),
+        sl<MembershipStatusCubit>(),
       );
       await cubit.load();
       return cubit;

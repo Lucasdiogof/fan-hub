@@ -13,10 +13,9 @@ abstract class MembershipRepository {
   Future<Result<CheckIn>> checkIn(String matchId);
 
   /// Só existe [MembershipSuccessPage] depois de um resultado de sucesso
-  /// daqui — nunca porque o usuário "chegou ao fim do formulário". Enquanto
-  /// não existe integração oficial, [MockMembershipRepository] decide esse
-  /// sucesso; quando existir, será `GoiasMembershipRepository` quem decide,
-  /// sem exigir mudança nas telas.
+  /// daqui — nunca porque o usuário "chegou ao fim do formulário".
+  /// Quem decide esse sucesso é `SupabaseMembershipRepository`, gravando a
+  /// assinatura em `supporter_memberships`.
   Future<Result<Membership>> submitRegistration({
     required MembershipPlan plan,
     required MembershipPlanPrice price,

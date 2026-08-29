@@ -11,7 +11,7 @@ import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubi
 import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_state.dart';
 import 'package:goias_app/features/arena/ranking/presentation/widgets/ranking_avatar.dart';
 import 'package:goias_app/features/arena/ranking/presentation/widgets/ranking_user_detail_sheet.dart';
-import 'package:goias_app/features/membership/domain/repositories/membership_repository.dart';
+import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -33,9 +33,10 @@ class RankingPage extends StatelessWidget {
       return BlocProvider.value(value: preloaded, child: const _RankingView());
     }
     return BlocProvider(
-      create: (_) =>
-          RankingCubit(sl<ArenaRankingRepository>(), sl<MembershipRepository>())
-            ..load(),
+      create: (_) => RankingCubit(
+        sl<ArenaRankingRepository>(),
+        sl<MembershipStatusCubit>(),
+      )..load(),
       child: const _RankingView(),
     );
   }
