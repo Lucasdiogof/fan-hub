@@ -131,6 +131,11 @@
   "profileSignOutMessage": "You'll need to sign in again to access your account.",
   "profileSignOutConfirm": "SIGN OUT",
   "profileSignOut": "Sign out",
+
+  "authSessionExpiredTitle": "Your session has expired",
+  "authSessionExpiredMessage": "For your security, we need to confirm your access again. Sign in to keep using every feature of Goiás.",
+  "authSessionExpiredCta": "Sign in again",
+
   "debugMockMembershipTitle": "Active member (mock)",
   "debugMockMembershipDescription": "Simulates an active Sócio Esmeralda member while there's no real integration with the program.",
 
@@ -216,6 +221,33 @@
   "@arenaStatMatchesCorrect": {
     "placeholders": { "played": { "type": "int" }, "correct": { "type": "int" } }
   },
+
+  "arenaHeaderSubtitle": "Play, take part and live Goiás.",
+  "arenaLineupHeroEyebrow": "FANS' LINEUP",
+  "arenaLineupHeroCta": "Build my lineup",
+  "arenaLineupHeroParticipants": "{count, plural, =1{1 fan has already lined up} other{{count} fans have already lined up}}",
+  "@arenaLineupHeroParticipants": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaLineupHeroEmptyTitle": "No match for now",
+  "arenaLineupHeroEmptyMessage": "As soon as the next match is confirmed, you'll be able to build your lineup here.",
+  "arenaContinuePlayingTitle": "CONTINUE PLAYING",
+  "arenaContinueQuizRemaining": "{count, plural, =1{Just 1 question left.} other{Just {count} questions left.}}",
+  "@arenaContinueQuizRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaContinueLineupRemaining": "{count, plural, =1{Just 1 lineup left.} other{Just {count} lineups left.}}",
+  "@arenaContinueLineupRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaContinueCareerRemaining": "{count, plural, =1{Just 1 player left.} other{Just {count} players left.}}",
+  "@arenaContinueCareerRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaChallengesSectionTitle": "Challenges",
+  "arenaChallengeCtaContinue": "Continue",
+  "arenaChallengeCtaStart": "Start",
+  "arenaChallengeCtaCompleted": "Completed",
 
   "arenaGameQuizTitle": "Goiás Quiz",
   "arenaGameQuizTagline": "Test how well you know Goiás.",

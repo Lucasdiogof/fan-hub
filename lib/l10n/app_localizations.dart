@@ -760,6 +760,24 @@ abstract class AppLocalizations {
   /// **'Sair'**
   String get profileSignOut;
 
+  /// No description provided for @authSessionExpiredTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua sessão expirou'**
+  String get authSessionExpiredTitle;
+
+  /// No description provided for @authSessionExpiredMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do Goiás.'**
+  String get authSessionExpiredMessage;
+
+  /// No description provided for @authSessionExpiredCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Entrar novamente'**
+  String get authSessionExpiredCta;
+
   /// No description provided for @debugMockMembershipTitle.
   ///
   /// In pt, this message translates to:
@@ -1203,6 +1221,90 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'{played} partidas · {correct} acertos'**
   String arenaStatMatchesCorrect(int played, int correct);
+
+  /// No description provided for @arenaHeaderSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogue, participe e viva o Goiás.'**
+  String get arenaHeaderSubtitle;
+
+  /// No description provided for @arenaLineupHeroEyebrow.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCALAÇÃO DA TORCIDA'**
+  String get arenaLineupHeroEyebrow;
+
+  /// No description provided for @arenaLineupHeroCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Montar minha escalação'**
+  String get arenaLineupHeroCta;
+
+  /// No description provided for @arenaLineupHeroParticipants.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 torcedor já escalou} other{{count} torcedores já escalaram}}'**
+  String arenaLineupHeroParticipants(int count);
+
+  /// No description provided for @arenaLineupHeroEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sem jogo por enquanto'**
+  String get arenaLineupHeroEmptyTitle;
+
+  /// No description provided for @arenaLineupHeroEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Assim que a próxima partida for confirmada, você já pode montar sua escalação aqui.'**
+  String get arenaLineupHeroEmptyMessage;
+
+  /// No description provided for @arenaContinuePlayingTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONTINUE JOGANDO'**
+  String get arenaContinuePlayingTitle;
+
+  /// No description provided for @arenaContinueQuizRemaining.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{Falta apenas 1 pergunta.} other{Faltam apenas {count} perguntas.}}'**
+  String arenaContinueQuizRemaining(int count);
+
+  /// No description provided for @arenaContinueLineupRemaining.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{Falta apenas 1 escalação.} other{Faltam apenas {count} escalações.}}'**
+  String arenaContinueLineupRemaining(int count);
+
+  /// No description provided for @arenaContinueCareerRemaining.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{Falta apenas 1 jogador.} other{Faltam apenas {count} jogadores.}}'**
+  String arenaContinueCareerRemaining(int count);
+
+  /// No description provided for @arenaChallengesSectionTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Desafios'**
+  String get arenaChallengesSectionTitle;
+
+  /// No description provided for @arenaChallengeCtaContinue.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continuar'**
+  String get arenaChallengeCtaContinue;
+
+  /// No description provided for @arenaChallengeCtaStart.
+  ///
+  /// In pt, this message translates to:
+  /// **'Começar'**
+  String get arenaChallengeCtaStart;
+
+  /// No description provided for @arenaChallengeCtaCompleted.
+  ///
+  /// In pt, this message translates to:
+  /// **'Concluído'**
+  String get arenaChallengeCtaCompleted;
 
   /// No description provided for @arenaGameQuizTitle.
   ///

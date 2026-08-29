@@ -131,6 +131,11 @@
   "profileSignOutMessage": "Tendrás que iniciar sesión de nuevo para acceder a tu cuenta.",
   "profileSignOutConfirm": "CERRAR SESIÓN",
   "profileSignOut": "Cerrar sesión",
+
+  "authSessionExpiredTitle": "Tu sesión expiró",
+  "authSessionExpiredMessage": "Por seguridad, necesitamos confirmar tu acceso de nuevo. Inicia sesión para seguir usando todos los recursos del Goiás.",
+  "authSessionExpiredCta": "Iniciar sesión de nuevo",
+
   "debugMockMembershipTitle": "Socio activo (mock)",
   "debugMockMembershipDescription": "Simula un socio esmeraldino activo mientras no haya integración real con el programa.",
 
@@ -216,6 +221,33 @@
   "@arenaStatMatchesCorrect": {
     "placeholders": { "played": { "type": "int" }, "correct": { "type": "int" } }
   },
+
+  "arenaHeaderSubtitle": "Juega, participa y vive el Goiás.",
+  "arenaLineupHeroEyebrow": "ALINEACIÓN DE LA HINCHADA",
+  "arenaLineupHeroCta": "Armar mi alineación",
+  "arenaLineupHeroParticipants": "{count, plural, =1{1 hincha ya armó su alineación} other{{count} hinchas ya armaron su alineación}}",
+  "@arenaLineupHeroParticipants": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaLineupHeroEmptyTitle": "Sin partido por ahora",
+  "arenaLineupHeroEmptyMessage": "En cuanto se confirme el próximo partido, podrás armar tu alineación aquí.",
+  "arenaContinuePlayingTitle": "SIGUE JUGANDO",
+  "arenaContinueQuizRemaining": "{count, plural, =1{Falta solo 1 pregunta.} other{Faltan solo {count} preguntas.}}",
+  "@arenaContinueQuizRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaContinueLineupRemaining": "{count, plural, =1{Falta solo 1 alineación.} other{Faltan solo {count} alineaciones.}}",
+  "@arenaContinueLineupRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaContinueCareerRemaining": "{count, plural, =1{Falta solo 1 jugador.} other{Faltan solo {count} jugadores.}}",
+  "@arenaContinueCareerRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaChallengesSectionTitle": "Desafíos",
+  "arenaChallengeCtaContinue": "Continuar",
+  "arenaChallengeCtaStart": "Empezar",
+  "arenaChallengeCtaCompleted": "Completado",
 
   "arenaGameQuizTitle": "Quiz del Goiás",
   "arenaGameQuizTagline": "Pon a prueba cuánto conoces al Goiás.",

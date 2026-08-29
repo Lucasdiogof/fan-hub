@@ -7,11 +7,11 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
+import 'package:goias_app/features/arena/domain/arena_game.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
@@ -25,9 +25,13 @@ import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
-import 'package:goias_app/features/arena/presentation/widgets/arena_game_card.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_challenge_card.dart';
+import 'package:goias_app/features/arena/presentation/widgets/arena_header_bar.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_highlight_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_section_header.dart';
+import 'package:goias_app/features/arena/presentation/widgets/continue_playing_card.dart';
+import 'package:goias_app/features/arena/presentation/widgets/crowd_lineup_hero_card.dart';
+import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
@@ -40,7 +44,6 @@ import 'package:goias_app/features/passport/domain/entities/passport_summary.dar
 import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
 const _arenaTabIndex = 4;
@@ -51,6 +54,17 @@ class ArenaPage extends StatefulWidget {
   @override
   State<ArenaPage> createState() => _ArenaPageState();
 }
+
+/// Candidato do "Continue Jogando" — o desafio de coleção finita com maior
+/// fração concluída dentre os começados e ainda não terminados. Só os 3
+/// jogos com progresso persistente entram na disputa (ver
+/// `ArenaProgressSnapshot`); Quem Vestiu o Manto não tem "total", então
+/// nunca aparece aqui.
+typedef _ContinueCandidate = ({
+  ArenaGame game,
+  ({int completed, int total}) progress,
+  String remainingLabel,
+});
 
 class _ArenaPageState extends State<ArenaPage> with RouteAware {
   // `ArenaPage` é uma aba dentro do `IndexedStack` da Home — nunca é
@@ -66,6 +80,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
       sl<ArenaProgressRepository>().loadSnapshot();
   late Future<({int rank, int totalScore})?> _myRankFuture = _loadMyRank();
   late Future<int> _passportCountFuture = _loadPassportCount();
+  late Future<int?> _crowdParticipantsFuture = _loadCrowdParticipants();
   bool _celebrationShown = false;
 
   Future<int> _loadPassportCount() async {
@@ -82,11 +97,22 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
         : null;
   }
 
+  /// Só usado pro "X torcedores já escalaram" do hero — opcional por
+  /// natureza (ver spec), então qualquer falha/ausência de próximo jogo
+  /// simplesmente esconde essa linha, nunca quebra o hero.
+  Future<int?> _loadCrowdParticipants() async {
+    final matchId = sl<HomeCubit>().state.nextMatch?.id;
+    if (matchId == null) return null;
+    final result = await sl<CrowdLineupRepository>().getCrowdLineup(matchId);
+    return result is Success<CrowdLineup> ? result.data.totalVotes : null;
+  }
+
   void _reloadProgress() {
     setState(() {
       _progressFuture = sl<ArenaProgressRepository>().loadSnapshot();
       _myRankFuture = _loadMyRank();
       _passportCountFuture = _loadPassportCount();
+      _crowdParticipantsFuture = _loadCrowdParticipants();
     });
   }
 
@@ -118,38 +144,103 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     );
   }
 
-  /// Rodapé de cada card — os 3 jogos de coleção finita mostram barra de
-  /// progresso; Quem Vestiu o Manto mostra desempenho (partidas/acertos),
-  /// nunca uma fração de coleção (o mesmo jogador pode voltar a ser
-  /// secreto, então "X/total" não faz sentido pra ele).
-  Widget? _footerFor(String gameId, ArenaProgressSnapshot? snapshot) {
+  /// Progresso de coleção finita por jogo — só os 3 com progressão
+  /// persistente têm um valor; Quem Vestiu o Manto (`guess_player`) sempre
+  /// `null` (ver `ArenaProgressSnapshot`).
+  ({int completed, int total})? _progressFor(
+    String gameId,
+    ArenaProgressSnapshot? snapshot,
+  ) {
     if (snapshot == null) return null;
     return switch (gameId) {
-      'quiz' => ArenaCardProgressFooter(
-        progress: (completed: snapshot.quizAnswered, total: snapshot.quizTotal),
+      'quiz' => (completed: snapshot.quizAnswered, total: snapshot.quizTotal),
+      'lineup' => (
+        completed: snapshot.lineupCompleted,
+        total: snapshot.lineupTotal,
       ),
-      'lineup' => ArenaCardProgressFooter(
+      'career_path' => (
+        completed: snapshot.careerCompleted,
+        total: snapshot.careerTotal,
+      ),
+      _ => null,
+    };
+  }
+
+  /// Métrica alternativa pro único jogo sem coleção finita — mesmo texto
+  /// que já existia no rodapé antigo, só realocado pro novo card unificado.
+  String? _statLabelFor(
+    BuildContext context,
+    String gameId,
+    ArenaProgressSnapshot? snapshot,
+  ) {
+    if (gameId != 'guess_player' || snapshot == null) return null;
+    return snapshot.guessPlayerPlayed == 0
+        ? context.l10n.arenaPlayFirstTime
+        : context.l10n.arenaStatMatchesCorrect(
+            snapshot.guessPlayerPlayed,
+            snapshot.guessPlayerCorrect,
+          );
+  }
+
+  /// O desafio mais relevante pro "Continue Jogando": dentre os 3 jogos de
+  /// coleção finita já começados e ainda não concluídos, o de maior fração
+  /// concluída (mais perto do fim = mais provável de ser retomado agora).
+  /// Nunca duplica lógica de progresso — só reordena o que
+  /// `ArenaProgressSnapshot` já calcula.
+  _ContinueCandidate? _continuePlayingCandidate(
+    BuildContext context,
+    ArenaProgressSnapshot? snapshot,
+  ) {
+    if (snapshot == null) return null;
+    final l10n = context.l10n;
+    final options = [
+      (
+        game: ArenaCatalog.byRoute('/arena/quiz'),
+        progress: (
+          completed: snapshot.quizAnswered,
+          total: snapshot.quizTotal,
+        ),
+        remainingLabel: l10n.arenaContinueQuizRemaining,
+      ),
+      (
+        game: ArenaCatalog.byRoute('/arena/lineup'),
         progress: (
           completed: snapshot.lineupCompleted,
           total: snapshot.lineupTotal,
         ),
+        remainingLabel: l10n.arenaContinueLineupRemaining,
       ),
-      'career_path' => ArenaCardProgressFooter(
+      (
+        game: ArenaCatalog.byRoute('/arena/career-path'),
         progress: (
           completed: snapshot.careerCompleted,
           total: snapshot.careerTotal,
         ),
+        remainingLabel: l10n.arenaContinueCareerRemaining,
       ),
-      'guess_player' => ArenaCardStatFooter(
-        text: snapshot.guessPlayerPlayed == 0
-            ? context.l10n.arenaPlayFirstTime
-            : context.l10n.arenaStatMatchesCorrect(
-                snapshot.guessPlayerPlayed,
-                snapshot.guessPlayerCorrect,
-              ),
-      ),
-      _ => null,
-    };
+    ];
+
+    final inProgress = options.where(
+      (o) =>
+          o.progress.total > 0 &&
+          o.progress.completed > 0 &&
+          o.progress.completed < o.progress.total,
+    );
+    if (inProgress.isEmpty) return null;
+
+    final best = inProgress.reduce(
+      (a, b) =>
+          (a.progress.completed / a.progress.total) >=
+              (b.progress.completed / b.progress.total)
+          ? a
+          : b,
+    );
+    final remaining = best.progress.total - best.progress.completed;
+    return (
+      game: best.game,
+      progress: best.progress,
+      remainingLabel: best.remainingLabel(remaining),
+    );
   }
 
   Future<void> _openRanking(BuildContext context) async {
@@ -259,12 +350,12 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     );
   }
 
-  String? _subtitleFor(String gameId) {
-    return switch (gameId) {
-      'quiz' => context.l10n.arenaSubtitleQuiz,
-      'lineup' => context.l10n.arenaSubtitleLineup,
-      'career_path' => context.l10n.arenaSubtitleCareer,
-      'guess_player' => context.l10n.arenaSubtitleGuessPlayer,
+  VoidCallback _openGame(BuildContext context, String gameId) {
+    return () => switch (gameId) {
+      'quiz' => _openQuizLevels(context),
+      'career_path' => _openCareerPath(context),
+      'lineup' => _openLineup(context),
+      'guess_player' => _openGuessPlayer(context),
       _ => null,
     };
   }
@@ -273,9 +364,6 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   Widget build(BuildContext context) {
     final colors = context.colors;
     const games = ArenaCatalog.games;
-    final featuredList = games.where((game) => game.featured).toList();
-    final featured = featuredList.isEmpty ? null : featuredList.first;
-    final others = games.where((game) => !game.featured).toList();
 
     return BlocListener<HomeShellCubit, HomeShellState>(
       listenWhen: (previous, current) =>
@@ -293,6 +381,11 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                   (_) => _maybeCelebrate(progress),
                 );
               }
+              final continueCandidate = _continuePlayingCandidate(
+                context,
+                progress,
+              );
+
               return Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
@@ -306,87 +399,48 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                       AppSpacing.xxxl,
                     ),
                     children: [
-                      PageTitle(context.l10n.arenaTitle.toUpperCase()),
-                      const SizedBox(height: AppSpacing.xl),
-                      ArenaSectionHeader(
-                        context.l10n.arenaHighlightsSectionTitle,
+                      FutureBuilder<({int rank, int totalScore})?>(
+                        future: _myRankFuture,
+                        builder: (context, rankSnapshot) => ArenaHeaderBar(
+                          rank: rankSnapshot.data?.rank,
+                          onRankingTap: () => _openRanking(context),
+                        ),
                       ),
-                      const SizedBox(height: AppSpacing.md),
-                      // Destaque de escalação (mesmo card que já existia na
-                      // Home, só movido pra cá) — só aparece quando há
-                      // próximo jogo. `HomeCubit` é singleton (pré-carregado
+                      const SizedBox(height: AppSpacing.xl),
+                      // Hero da Escalação da Torcida — o elemento principal
+                      // da página quando há próximo jogo (ver spec de
+                      // reformulação). `HomeCubit` é singleton (pré-carregado
                       // desde a Splash), então basta ler o estado atual, sem
                       // recarregar nada aqui.
                       BlocBuilder<HomeCubit, HomeState>(
                         bloc: sl<HomeCubit>(),
                         builder: (context, homeState) {
                           final nextMatch = homeState.nextMatch;
-                          if (nextMatch == null) return const SizedBox.shrink();
-                          final hasVoted = homeState.hasVotedForNextMatch;
-                          return Padding(
-                            padding: const EdgeInsets.only(
-                              bottom: AppSpacing.sm,
-                            ),
-                            child: ArenaHighlightCard(
-                              leading: ArenaHighlightLeading(
-                                child: Image.asset(
-                                  AppAssets.tacticsBoardIllustration,
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              topBadge: context.l10n.arenaNextMatchBadge,
-                              title: hasVoted
-                                  ? context.l10n.crowdCardTitleVoted
-                                  : context.l10n.crowdCardTitleNew,
-                              description: hasVoted
-                                  ? context.l10n.crowdCardDescVoted
-                                  : context.l10n.crowdCardDescNew,
-                              ctaLabel: hasVoted
-                                  ? context.l10n.arenaHighlightViewLineup
-                                  : context.l10n.arenaHighlightEscaleLineup,
-                              onTap: () => _openCrowdLineup(context, nextMatch),
-                            ),
+                          if (nextMatch == null) {
+                            return const CrowdLineupHeroEmptyCard();
+                          }
+                          return FutureBuilder<int?>(
+                            future: _crowdParticipantsFuture,
+                            builder: (context, participantsSnapshot) {
+                              return CrowdLineupHeroCard(
+                                match: nextMatch,
+                                hasVoted: homeState.hasVotedForNextMatch,
+                                participants: participantsSnapshot.data,
+                                onTap: () =>
+                                    _openCrowdLineup(context, nextMatch),
+                              );
+                            },
                           );
                         },
                       ),
-                      FutureBuilder<({int rank, int totalScore})?>(
-                        future: _myRankFuture,
-                        builder: (context, snapshot) {
-                          final myRank = snapshot.data?.rank;
-                          return ArenaHighlightCard(
-                            leading: ArenaHighlightLeading(
-                              child: Icon(
-                                Icons.emoji_events_rounded,
-                                color: colors.primary,
-                                size: 26,
-                              ),
-                            ),
-                            title: context.l10n.arenaRankingTitle,
-                            description: context.l10n.arenaRankingHighlightDesc,
-                            extra: myRank != null
-                                ? ArenaHighlightPositionPill(
-                                    label: context.l10n
-                                        .arenaYourPosition(myRank)
-                                        .toUpperCase(),
-                                  )
-                                : Text(
-                                    context.l10n.arenaRankingPlayToRank,
-                                    style: TextStyle(
-                                      fontSize: 11.5,
-                                      fontWeight: FontWeight.w600,
-                                      color: colors.textHint,
-                                    ),
-                                  ),
-                            ctaLabel: context.l10n.arenaHighlightViewRanking,
-                            onTap: () => _openRanking(context),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: AppSpacing.sm),
+                      const SizedBox(height: AppSpacing.xl),
+                      // Passaporte — memória/coleção do torcedor, com
+                      // identidade própria (fundo claro), nunca misturado
+                      // com os desafios/minigames abaixo.
                       FutureBuilder<int>(
                         future: _passportCountFuture,
-                        builder: (context, snapshot) {
-                          final count = snapshot.data;
+                        builder: (context, passportSnapshot) {
+                          final count = passportSnapshot.data;
                           return ArenaHighlightCard(
                             leading: ArenaHighlightLeading(
                               child: Icon(
@@ -395,7 +449,8 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                                 size: 24,
                               ),
                             ),
-                            topBadge: context.l10n.passportEyebrow.toUpperCase(),
+                            topBadge: context.l10n.passportEyebrow
+                                .toUpperCase(),
                             title: context.l10n.passportTitle,
                             description: context.l10n.passportCardDescription,
                             extra: count != null && count > 0
@@ -415,32 +470,23 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                           );
                         },
                       ),
+                      if (continueCandidate != null) ...[
+                        const SizedBox(height: AppSpacing.xxl),
+                        _SectionLabel(context.l10n.arenaContinuePlayingTitle),
+                        const SizedBox(height: AppSpacing.md),
+                        ContinuePlayingCard(
+                          game: continueCandidate.game,
+                          progress: continueCandidate.progress,
+                          remainingLabel: continueCandidate.remainingLabel,
+                          onTap: _openGame(context, continueCandidate.game.id),
+                        ),
+                      ],
                       const SizedBox(height: AppSpacing.xxl),
                       ArenaSectionHeader(
-                        context.l10n.arenaGamesSectionTitle,
+                        context.l10n.arenaChallengesSectionTitle,
                         subtitle: context.l10n.arenaGamesSectionSubtitle,
                       ),
                       const SizedBox(height: AppSpacing.md),
-                      if (featured != null) ...[
-                        _SectionLabel(context.l10n.arenaSectionPlayNow),
-                        const SizedBox(height: AppSpacing.md),
-                        // Nenhum jogo é `featured` hoje (Pênaltis está
-                        // oculto) — este bloco fica pronto pra quando algum
-                        // jogo voltar a ser destaque.
-                        ArenaFeaturedCard(
-                          game: featured,
-                          onTap: () => switch (featured.id) {
-                            'quiz' => _openQuizLevels(context),
-                            'career_path' => _openCareerPath(context),
-                            'lineup' => _openLineup(context),
-                            'guess_player' => _openGuessPlayer(context),
-                            _ => context.push(featured.route),
-                          },
-                        ),
-                        const SizedBox(height: AppSpacing.xl),
-                        _SectionLabel(context.l10n.arenaSectionMoreChallenges),
-                        const SizedBox(height: AppSpacing.md),
-                      ],
                       LayoutBuilder(
                         builder: (context, constraints) => GridView.count(
                           shrinkWrap: true,
@@ -451,23 +497,22 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                           },
                           mainAxisSpacing: AppSpacing.md,
                           crossAxisSpacing: AppSpacing.md,
-                          childAspectRatio: 1.08,
+                          childAspectRatio: 0.95,
                           children: [
-                            for (final game in others)
-                              ArenaCompactCard(
+                            for (final game in games)
+                              ArenaChallengeCard(
                                 game: game,
-                                subtitle: _subtitleFor(game.id),
-                                footer: _footerFor(game.id, progress),
-                                decorativeBackground: game.id == 'guess_player'
-                                    ? const ArenaCardFaceDecoration()
-                                    : null,
-                                onTap: () => switch (game.id) {
-                                  'quiz' => _openQuizLevels(context),
-                                  'career_path' => _openCareerPath(context),
-                                  'lineup' => _openLineup(context),
-                                  'guess_player' => _openGuessPlayer(context),
-                                  _ => context.push(game.route),
-                                },
+                                progress: _progressFor(game.id, progress),
+                                statLabel: _statLabelFor(
+                                  context,
+                                  game.id,
+                                  progress,
+                                ),
+                                everStarted:
+                                    game.id == 'guess_player' &&
+                                    progress != null &&
+                                    progress.guessPlayerPlayed > 0,
+                                onTap: _openGame(context, game.id),
                               ),
                           ],
                         ),

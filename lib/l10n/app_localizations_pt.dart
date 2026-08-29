@@ -347,6 +347,16 @@ class AppLocalizationsPt extends AppLocalizations {
   String get profileSignOut => 'Sair';
 
   @override
+  String get authSessionExpiredTitle => 'Sua sessão expirou';
+
+  @override
+  String get authSessionExpiredMessage =>
+      'Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do Goiás.';
+
+  @override
+  String get authSessionExpiredCta => 'Entrar novamente';
+
+  @override
   String get debugMockMembershipTitle => 'Sócio ativo (mock)';
 
   @override
@@ -581,6 +591,81 @@ class AppLocalizationsPt extends AppLocalizations {
   String arenaStatMatchesCorrect(int played, int correct) {
     return '$played partidas · $correct acertos';
   }
+
+  @override
+  String get arenaHeaderSubtitle => 'Jogue, participe e viva o Goiás.';
+
+  @override
+  String get arenaLineupHeroEyebrow => 'ESCALAÇÃO DA TORCIDA';
+
+  @override
+  String get arenaLineupHeroCta => 'Montar minha escalação';
+
+  @override
+  String arenaLineupHeroParticipants(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count torcedores já escalaram',
+      one: '1 torcedor já escalou',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get arenaLineupHeroEmptyTitle => 'Sem jogo por enquanto';
+
+  @override
+  String get arenaLineupHeroEmptyMessage =>
+      'Assim que a próxima partida for confirmada, você já pode montar sua escalação aqui.';
+
+  @override
+  String get arenaContinuePlayingTitle => 'CONTINUE JOGANDO';
+
+  @override
+  String arenaContinueQuizRemaining(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Faltam apenas $count perguntas.',
+      one: 'Falta apenas 1 pergunta.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String arenaContinueLineupRemaining(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Faltam apenas $count escalações.',
+      one: 'Falta apenas 1 escalação.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String arenaContinueCareerRemaining(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Faltam apenas $count jogadores.',
+      one: 'Falta apenas 1 jogador.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get arenaChallengesSectionTitle => 'Desafios';
+
+  @override
+  String get arenaChallengeCtaContinue => 'Continuar';
+
+  @override
+  String get arenaChallengeCtaStart => 'Começar';
+
+  @override
+  String get arenaChallengeCtaCompleted => 'Concluído';
 
   @override
   String get arenaGameQuizTitle => 'Quiz do Verdão';

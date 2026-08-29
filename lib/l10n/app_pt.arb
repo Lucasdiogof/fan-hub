@@ -139,6 +139,11 @@
   "profileSignOutMessage": "Você precisará entrar novamente para acessar sua conta.",
   "profileSignOutConfirm": "SAIR",
   "profileSignOut": "Sair",
+
+  "authSessionExpiredTitle": "Sua sessão expirou",
+  "authSessionExpiredMessage": "Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do Goiás.",
+  "authSessionExpiredCta": "Entrar novamente",
+
   "debugMockMembershipTitle": "Sócio ativo (mock)",
   "debugMockMembershipDescription": "Simula um sócio esmeraldino ativo enquanto não há integração real com o programa.",
 
@@ -233,6 +238,33 @@
   "@arenaStatMatchesCorrect": {
     "placeholders": { "played": { "type": "int" }, "correct": { "type": "int" } }
   },
+
+  "arenaHeaderSubtitle": "Jogue, participe e viva o Goiás.",
+  "arenaLineupHeroEyebrow": "ESCALAÇÃO DA TORCIDA",
+  "arenaLineupHeroCta": "Montar minha escalação",
+  "arenaLineupHeroParticipants": "{count, plural, =1{1 torcedor já escalou} other{{count} torcedores já escalaram}}",
+  "@arenaLineupHeroParticipants": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaLineupHeroEmptyTitle": "Sem jogo por enquanto",
+  "arenaLineupHeroEmptyMessage": "Assim que a próxima partida for confirmada, você já pode montar sua escalação aqui.",
+  "arenaContinuePlayingTitle": "CONTINUE JOGANDO",
+  "arenaContinueQuizRemaining": "{count, plural, =1{Falta apenas 1 pergunta.} other{Faltam apenas {count} perguntas.}}",
+  "@arenaContinueQuizRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaContinueLineupRemaining": "{count, plural, =1{Falta apenas 1 escalação.} other{Faltam apenas {count} escalações.}}",
+  "@arenaContinueLineupRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaContinueCareerRemaining": "{count, plural, =1{Falta apenas 1 jogador.} other{Faltam apenas {count} jogadores.}}",
+  "@arenaContinueCareerRemaining": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "arenaChallengesSectionTitle": "Desafios",
+  "arenaChallengeCtaContinue": "Continuar",
+  "arenaChallengeCtaStart": "Começar",
+  "arenaChallengeCtaCompleted": "Concluído",
 
   "arenaGameQuizTitle": "Quiz do Verdão",
   "arenaGameQuizTagline": "Teste o quanto você conhece o Goiás.",
