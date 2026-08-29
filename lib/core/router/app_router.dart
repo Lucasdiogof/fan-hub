@@ -55,6 +55,7 @@ import 'package:goias_app/features/membership/presentation/pages/membership_regi
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/news/presentation/pages/news_article_page.dart';
 import 'package:goias_app/features/news/presentation/pages/news_list_page.dart';
+import 'package:goias_app/features/news/presentation/pages/pdf_viewer_page.dart';
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_page.dart';
@@ -479,6 +480,16 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
               state,
               NewsArticlePage(article: state.extra! as NewsArticle),
             ),
+          ),
+          GoRoute(
+            path: '/news/pdf',
+            pageBuilder: (context, state) {
+              final args = state.extra! as ({String url, String title});
+              return appPage(
+                state,
+                PdfViewerPage(url: args.url, title: args.title),
+              );
+            },
           ),
           GoRoute(
             path: '/membership/plans',

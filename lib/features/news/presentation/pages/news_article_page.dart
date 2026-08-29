@@ -5,6 +5,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/news/domain/entities/news_content_block.dart';
+import 'package:goias_app/features/news/presentation/pages/pdf_viewer_page.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/utils/image_proxy.dart';
@@ -201,11 +202,22 @@ class _ContentBlockView extends StatelessWidget {
           ),
         ),
         NewsLinkBlock(:final text, :final url) => InkWell(
-          onTap: () => openExternalUrl(context, url),
+          // Um press kit em PDF abre dentro do próprio app (com opção de
+          // compartilhar) em vez de sair pro navegador — qualquer outro
+          // link continua abrindo externamente, como sempre.
+          onTap: () => isPdfUrl(url)
+              ? context.push('/news/pdf', extra: (url: url, title: text))
+              : openExternalUrl(context, url),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.link_rounded, size: 16, color: colors.primary),
+              Icon(
+                isPdfUrl(url)
+                    ? Icons.picture_as_pdf_outlined
+                    : Icons.link_rounded,
+                size: 16,
+                color: colors.primary,
+              ),
               const SizedBox(width: 6),
               Flexible(
                 child: Text(
