@@ -24,11 +24,70 @@ class AuthRepositoryImpl implements AuthRepository {
     return user == null ? null : _mapUser(user);
   }
 
+  /// Único listener do `onAuthStateChange` do app inteiro (o `AuthCubit`
+  /// assina isto uma vez só, na criação) — nenhuma outra tela/repositório
+  /// deve assinar `_client.auth.onAuthStateChange` diretamente, senão
+  /// passamos a ter vários listeners concorrentes reagindo à mesma coisa.
+  ///
+  /// `.handleError` é essencial aqui: o GoTrue reporta uma falha de rede
+  /// durante a renovação automática do token como um ERRO no stream (não
+  /// um evento normal) — sem isso, vira uma exceção não tratada toda vez
+  /// que o refresh tenta renovar sem internet. Falha de rede nunca deve
+  /// virar sign-out (a sessão local continua válida), então só logamos e
+  /// ignoramos.
   @override
   Stream<AuthSessionEvent> get sessionEvents => _dataSource.onAuthStateChange
+      .map(_withBreadcrumb)
+      .handleError((Object error, StackTrace stackTrace) {
+        unawaited(
+          Sentry.addBreadcrumb(
+            Breadcrumb(
+              message: 'auth_state_stream_error',
+              category: 'auth',
+              level: SentryLevel.warning,
+              data: {'error': error.runtimeType.toString()},
+            ),
+          ),
+        );
+      })
       .map(_mapEvent)
       .where((event) => event != null)
       .cast<AuthSessionEvent>();
+
+  /// Breadcrumbs de observabilidade — nunca token/header, só o evento e (no
+  /// caso de sign-out) o motivo. Um refresh bem-sucedido não deve virar uma
+  /// issue de erro no Sentry (é o caminho feliz), só um rastro; só a perda
+  /// definitiva de sessão vira um evento de verdade.
+  AuthState _withBreadcrumb(AuthState state) {
+    switch (state.event) {
+      case AuthChangeEvent.tokenRefreshed:
+        unawaited(
+          Sentry.addBreadcrumb(
+            Breadcrumb(
+              message: 'auth_session_refreshed',
+              category: 'auth',
+              level: SentryLevel.info,
+            ),
+          ),
+        );
+      case AuthChangeEvent.signedOut:
+        final reason = state.signOutReason;
+        if (reason == SignOutReason.sessionExpired ||
+            reason == SignOutReason.sessionMissing) {
+          unawaited(
+            Sentry.captureMessage(
+              'auth_session_recovery_failed',
+              level: SentryLevel.warning,
+              withScope: (scope) =>
+                  scope.setTag('reason', reason!.name),
+            ),
+          );
+        }
+      default:
+        break;
+    }
+    return state;
+  }
 
   @override
   Future<Result<void>> signIn({
@@ -170,7 +229,15 @@ class AuthRepositoryImpl implements AuthRepository {
     return switch (state.event) {
       AuthChangeEvent.signedIn => AuthSessionEvent.signedIn,
       AuthChangeEvent.userUpdated => AuthSessionEvent.userUpdated,
-      AuthChangeEvent.signedOut => AuthSessionEvent.signedOut,
+      // `signOutReason` só vem preenchido pro GoTrue quando ELE MESMO
+      // encerrou a sessão (refresh token inválido/revogado ou sessão local
+      // incompleta) — um `signOut()` chamado pelo usuário chega aqui com
+      // `reason == null` (ver doc de `AuthState.signOutReason`).
+      AuthChangeEvent.signedOut => switch (state.signOutReason) {
+        SignOutReason.sessionExpired ||
+        SignOutReason.sessionMissing => AuthSessionEvent.sessionExpired,
+        _ => AuthSessionEvent.signedOut,
+      },
       AuthChangeEvent.passwordRecovery => AuthSessionEvent.passwordRecovery,
       AuthChangeEvent.initialSession =>
         state.session != null

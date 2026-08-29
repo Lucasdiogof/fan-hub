@@ -25,6 +25,15 @@ class AuthUnauthenticated extends AuthState {
   const AuthUnauthenticated();
 }
 
+/// Sign-out involuntário — a sessão não pôde ser renovada (refresh token
+/// inválido/revogado). Trata como não-autenticado pra tudo que já checa
+/// `is AuthAuthenticated` (o redirect do router não precisa saber a
+/// diferença), mas é um estado distinto pra UI decidir mostrar o aviso
+/// "sua sessão expirou" só nesse caso, nunca depois de um logout comum.
+class AuthSessionExpired extends AuthState {
+  const AuthSessionExpired();
+}
+
 class AuthPasswordRecovery extends AuthState {
   const AuthPasswordRecovery();
 }

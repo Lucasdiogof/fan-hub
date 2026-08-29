@@ -93,6 +93,7 @@ import 'package:goias_app/features/ticket/presentation/pages/purchase_summary_pa
 import 'package:goias_app/features/ticket/presentation/pages/ticket_view_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/tickets_page.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
+import 'package:goias_app/core/router/root_navigator_key.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/home/presentation/widgets/desktop_shell_frame.dart';
@@ -107,6 +108,7 @@ const _publicRoutes = {'/profile/terms', '/profile/privacy'};
 
 GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
   return GoRouter(
+    navigatorKey: rootNavigatorKey,
     initialLocation: '/',
     // `SentryNavigatorObserver` deixa cada troca de tela como breadcrumb no
     // Sentry — sem isso, um erro só mostra a exceção, nunca em QUAL tela o

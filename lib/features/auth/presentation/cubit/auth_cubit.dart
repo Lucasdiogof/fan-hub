@@ -27,6 +27,8 @@ class AuthCubit extends Cubit<AuthState> {
         if (user != null) emit(AuthAuthenticated(user));
       case AuthSessionEvent.signedOut:
         emit(const AuthUnauthenticated());
+      case AuthSessionEvent.sessionExpired:
+        emit(const AuthSessionExpired());
       case AuthSessionEvent.passwordRecovery:
         emit(const AuthPasswordRecovery());
     }

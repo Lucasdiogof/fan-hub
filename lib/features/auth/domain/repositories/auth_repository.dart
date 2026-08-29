@@ -1,7 +1,20 @@
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/auth/domain/entities/auth_user.dart';
 
-enum AuthSessionEvent { signedIn, signedOut, passwordRecovery, userUpdated }
+enum AuthSessionEvent {
+  signedIn,
+  signedOut,
+
+  /// Sign-out involuntário — refresh token inválido/revogado ou sessão
+  /// local incompleta (ver `SignOutReason.sessionExpired`/`sessionMissing`
+  /// do GoTrue), nunca um `signOut()` que o próprio usuário pediu. Existe
+  /// separado de [signedOut] só pra UI decidir se mostra o aviso "sua
+  /// sessão expirou" (nunca faz sentido mostrar isso depois de um logout
+  /// deliberado).
+  sessionExpired,
+  passwordRecovery,
+  userUpdated,
+}
 
 abstract interface class AuthRepository {
   bool get isAuthenticated;
