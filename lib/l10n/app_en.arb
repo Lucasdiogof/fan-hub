@@ -324,6 +324,9 @@
   "passportCoverMatchesLived": "{count, plural, =1{1 match lived with Verdão} other{{count} matches lived with Verdão}}",
   "passportCoverSince": "Since {year}",
   "passportCoverSeasonProgress": "{year} · {marked} of {total} matches",
+  "@passportCoverSeasonProgress": {
+    "placeholders": { "year": { "type": "int" }, "marked": { "type": "int" }, "total": { "type": "int" } }
+  },
   "passportIndicatorMatches": "Matches lived",
   "passportIndicatorYears": "Years following",
   "passportIndicatorFirstMatch": "First match",
@@ -501,6 +504,8 @@
   "newsEmptyMessage": "Check back later for the latest Goiás updates.",
   "newsSourceLabel": "SOURCE: GOIÁS ESPORTE CLUBE",
   "newsOpenOriginal": "Open original article",
+  "newsPdfLoadErrorTitle": "Couldn't load the PDF",
+  "newsPdfShareButton": "Share PDF",
   "newsSeeMore": "See more",
 
   "commonNoConnection": "No internet connection.",
@@ -525,6 +530,9 @@
   "squadClubHistory": "Career",
   "squadAboutSection": "About",
   "squadCareerStatsLine": "{matches} matches · {goals} goals",
+  "@squadCareerStatsLine": {
+    "placeholders": { "matches": { "type": "String" }, "goals": { "type": "String" } }
+  },
   "squadNumber": "Number",
   "squadAge": "Age",
   "squadAgeValue": "{age} years old",
@@ -988,6 +996,8 @@
   "storeHomeTitle": "Goiás Store",
   "storeMatchdaySectionTitle": "Next match",
   "storeMyPurchasesSectionTitle": "My purchases",
+  "storeTabTickets": "Tickets",
+  "storeTabClothing": "Clothing",
   "storeMyTicketsShortcut": "My tickets",
   "storeMyOrdersShortcut": "My orders",
   "storeHomeLoadErrorTitle": "We couldn't load the store",
@@ -1078,6 +1088,9 @@
   "storeBackToStoreButton": "Back to the store",
   "storeProductSoldOut": "This product is currently sold out.",
   "storeProductPhotoLabel": "{name}, photo {index} of {total}",
+  "@storeProductPhotoLabel": {
+    "placeholders": { "name": { "type": "String" }, "index": { "type": "int" }, "total": { "type": "int" } }
+  },
   "storeZoomImageHint": "Tap to zoom",
   "storeShareProduct": "Share product",
   "storeReferenceLabel": "Ref.",

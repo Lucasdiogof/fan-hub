@@ -324,6 +324,9 @@
   "passportCoverMatchesLived": "{count, plural, =1{1 partido vivido con el Verdão} other{{count} partidos vividos con el Verdão}}",
   "passportCoverSince": "Desde {year}",
   "passportCoverSeasonProgress": "{year} · {marked} de {total} partidos",
+  "@passportCoverSeasonProgress": {
+    "placeholders": { "year": { "type": "int" }, "marked": { "type": "int" }, "total": { "type": "int" } }
+  },
   "passportIndicatorMatches": "Partidos vividos",
   "passportIndicatorYears": "Años acompañando",
   "passportIndicatorFirstMatch": "Primera presencia",
@@ -501,6 +504,8 @@
   "newsEmptyMessage": "Vuelve más tarde para las novedades del Goiás.",
   "newsSourceLabel": "FUENTE: GOIÁS ESPORTE CLUBE",
   "newsOpenOriginal": "Abrir artículo original",
+  "newsPdfLoadErrorTitle": "No se pudo cargar el PDF",
+  "newsPdfShareButton": "Compartir PDF",
   "newsSeeMore": "Ver más",
 
   "commonNoConnection": "Sin conexión a internet.",
@@ -525,6 +530,9 @@
   "squadClubHistory": "Carrera",
   "squadAboutSection": "Acerca de",
   "squadCareerStatsLine": "{matches} partidos · {goals} goles",
+  "@squadCareerStatsLine": {
+    "placeholders": { "matches": { "type": "String" }, "goals": { "type": "String" } }
+  },
   "squadNumber": "Número",
   "squadAge": "Edad",
   "squadAgeValue": "{age} años",
@@ -988,6 +996,8 @@
   "storeHomeTitle": "Goiás Store",
   "storeMatchdaySectionTitle": "Próximo partido",
   "storeMyPurchasesSectionTitle": "Mis compras",
+  "storeTabTickets": "Entradas",
+  "storeTabClothing": "Ropa",
   "storeMyTicketsShortcut": "Mis entradas",
   "storeMyOrdersShortcut": "Mis pedidos",
   "storeHomeLoadErrorTitle": "No se pudo cargar la tienda",
@@ -1078,6 +1088,9 @@
   "storeBackToStoreButton": "Volver a la tienda",
   "storeProductSoldOut": "Este producto está agotado por el momento.",
   "storeProductPhotoLabel": "{name}, foto {index} de {total}",
+  "@storeProductPhotoLabel": {
+    "placeholders": { "name": { "type": "String" }, "index": { "type": "int" }, "total": { "type": "int" } }
+  },
   "storeZoomImageHint": "Toca para ampliar",
   "storeShareProduct": "Compartir producto",
   "storeReferenceLabel": "Ref.",

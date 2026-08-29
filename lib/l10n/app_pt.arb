@@ -341,6 +341,9 @@
   "passportCoverMatchesLived": "{count, plural, =1{1 jogo vivido com o Verdão} other{{count} jogos vividos com o Verdão}}",
   "passportCoverSince": "Desde {year}",
   "passportCoverSeasonProgress": "{year} · {marked} de {total} partidas",
+  "@passportCoverSeasonProgress": {
+    "placeholders": { "year": { "type": "int" }, "marked": { "type": "int" }, "total": { "type": "int" } }
+  },
   "passportIndicatorMatches": "Jogos vividos",
   "passportIndicatorYears": "Anos acompanhando",
   "passportIndicatorFirstMatch": "Primeira presença",
@@ -557,6 +560,8 @@
   "newsEmptyMessage": "Volte mais tarde para conferir as novidades do Goiás.",
   "newsSourceLabel": "FONTE: GOIÁS ESPORTE CLUBE",
   "newsOpenOriginal": "Abrir matéria original",
+  "newsPdfLoadErrorTitle": "Não foi possível carregar o PDF",
+  "newsPdfShareButton": "Compartilhar PDF",
   "newsSeeMore": "Ver mais",
 
   "commonNoConnection": "Sem conexão com a internet.",
@@ -588,6 +593,9 @@
   "squadClubHistory": "Carreira",
   "squadAboutSection": "Sobre",
   "squadCareerStatsLine": "{matches} jogos · {goals} gols",
+  "@squadCareerStatsLine": {
+    "placeholders": { "matches": { "type": "String" }, "goals": { "type": "String" } }
+  },
   "squadNumber": "Número",
   "squadAge": "Idade",
   "squadAgeValue": "{age} anos",
@@ -1069,6 +1077,8 @@
   "storeHomeTitle": "Goiás Store",
   "storeMatchdaySectionTitle": "Próximo jogo",
   "storeMyPurchasesSectionTitle": "Minhas compras",
+  "storeTabTickets": "Ingressos",
+  "storeTabClothing": "Roupas",
   "storeMyTicketsShortcut": "Meus ingressos",
   "storeMyOrdersShortcut": "Meus pedidos",
   "storeHomeLoadErrorTitle": "Não foi possível carregar a loja",
@@ -1159,6 +1169,9 @@
   "storeBackToStoreButton": "Voltar para a loja",
   "storeProductSoldOut": "Este produto está esgotado no momento.",
   "storeProductPhotoLabel": "{name}, foto {index} de {total}",
+  "@storeProductPhotoLabel": {
+    "placeholders": { "name": { "type": "String" }, "index": { "type": "int" }, "total": { "type": "int" } }
+  },
   "storeZoomImageHint": "Toque para ampliar",
   "storeShareProduct": "Compartilhar produto",
   "storeReferenceLabel": "Ref.",

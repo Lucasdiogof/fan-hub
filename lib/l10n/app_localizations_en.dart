@@ -922,7 +922,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String passportCoverSeasonProgress(Object marked, Object total, Object year) {
+  String passportCoverSeasonProgress(int year, int marked, int total) {
     return '$year · $marked of $total matches';
   }
 
@@ -1550,6 +1550,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newsOpenOriginal => 'Open original article';
 
   @override
+  String get newsPdfLoadErrorTitle => 'Couldn\'t load the PDF';
+
+  @override
+  String get newsPdfShareButton => 'Share PDF';
+
+  @override
   String get newsSeeMore => 'See more';
 
   @override
@@ -1621,7 +1627,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get squadAboutSection => 'About';
 
   @override
-  String squadCareerStatsLine(Object goals, Object matches) {
+  String squadCareerStatsLine(String matches, String goals) {
     return '$matches matches · $goals goals';
   }
 
@@ -3032,6 +3038,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeMyPurchasesSectionTitle => 'My purchases';
 
   @override
+  String get storeTabTickets => 'Tickets';
+
+  @override
+  String get storeTabClothing => 'Clothing';
+
+  @override
   String get storeMyTicketsShortcut => 'My tickets';
 
   @override
@@ -3303,7 +3315,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeProductSoldOut => 'This product is currently sold out.';
 
   @override
-  String storeProductPhotoLabel(Object index, Object name, Object total) {
+  String storeProductPhotoLabel(String name, int index, int total) {
     return '$name, photo $index of $total';
   }
 

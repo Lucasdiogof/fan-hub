@@ -1730,7 +1730,7 @@ abstract class AppLocalizations {
   ///
   /// In pt, this message translates to:
   /// **'{year} · {marked} de {total} partidas'**
-  String passportCoverSeasonProgress(Object marked, Object total, Object year);
+  String passportCoverSeasonProgress(int year, int marked, int total);
 
   /// No description provided for @passportIndicatorMatches.
   ///
@@ -2752,6 +2752,18 @@ abstract class AppLocalizations {
   /// **'Abrir matéria original'**
   String get newsOpenOriginal;
 
+  /// No description provided for @newsPdfLoadErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar o PDF'**
+  String get newsPdfLoadErrorTitle;
+
+  /// No description provided for @newsPdfShareButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Compartilhar PDF'**
+  String get newsPdfShareButton;
+
   /// No description provided for @newsSeeMore.
   ///
   /// In pt, this message translates to:
@@ -2870,7 +2882,7 @@ abstract class AppLocalizations {
   ///
   /// In pt, this message translates to:
   /// **'{matches} jogos · {goals} gols'**
-  String squadCareerStatsLine(Object goals, Object matches);
+  String squadCareerStatsLine(String matches, String goals);
 
   /// No description provided for @squadNumber.
   ///
@@ -5434,6 +5446,18 @@ abstract class AppLocalizations {
   /// **'Minhas compras'**
   String get storeMyPurchasesSectionTitle;
 
+  /// No description provided for @storeTabTickets.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingressos'**
+  String get storeTabTickets;
+
+  /// No description provided for @storeTabClothing.
+  ///
+  /// In pt, this message translates to:
+  /// **'Roupas'**
+  String get storeTabClothing;
+
   /// No description provided for @storeMyTicketsShortcut.
   ///
   /// In pt, this message translates to:
@@ -5936,7 +5960,7 @@ abstract class AppLocalizations {
   ///
   /// In pt, this message translates to:
   /// **'{name}, foto {index} de {total}'**
-  String storeProductPhotoLabel(Object index, Object name, Object total);
+  String storeProductPhotoLabel(String name, int index, int total);
 
   /// No description provided for @storeZoomImageHint.
   ///

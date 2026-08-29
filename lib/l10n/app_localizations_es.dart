@@ -928,7 +928,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String passportCoverSeasonProgress(Object marked, Object total, Object year) {
+  String passportCoverSeasonProgress(int year, int marked, int total) {
     return '$year · $marked de $total partidos';
   }
 
@@ -1558,6 +1558,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get newsOpenOriginal => 'Abrir artículo original';
 
   @override
+  String get newsPdfLoadErrorTitle => 'No se pudo cargar el PDF';
+
+  @override
+  String get newsPdfShareButton => 'Compartir PDF';
+
+  @override
   String get newsSeeMore => 'Ver más';
 
   @override
@@ -1629,7 +1635,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get squadAboutSection => 'Acerca de';
 
   @override
-  String squadCareerStatsLine(Object goals, Object matches) {
+  String squadCareerStatsLine(String matches, String goals) {
     return '$matches partidos · $goals goles';
   }
 
@@ -3047,6 +3053,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get storeMyPurchasesSectionTitle => 'Mis compras';
 
   @override
+  String get storeTabTickets => 'Entradas';
+
+  @override
+  String get storeTabClothing => 'Ropa';
+
+  @override
   String get storeMyTicketsShortcut => 'Mis entradas';
 
   @override
@@ -3321,7 +3333,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Este producto está agotado por el momento.';
 
   @override
-  String storeProductPhotoLabel(Object index, Object name, Object total) {
+  String storeProductPhotoLabel(String name, int index, int total) {
     return '$name, foto $index de $total';
   }
 
