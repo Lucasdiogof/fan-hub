@@ -4,135 +4,147 @@ import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
+import 'package:goias_app/features/passport/domain/passport_level.dart';
+import 'package:goias_app/features/passport/presentation/v2/widgets/passport_level_style.dart';
 
-/// Capa do passaporte — inspirada num passaporte esportivo, não num
-/// dashboard. `deepGreen` é fixo (não muda entre light/dark, ver
+/// Capa do passaporte — inspirada num cartão de identidade do torcedor, não
+/// num dashboard. `deepGreen` é fixo (não muda entre light/dark, ver
 /// `AppColors`), então a capa fica idêntica nos dois temas de propósito —
 /// é a mesma identidade visual sóbria já usada em hero/banner no resto do
-/// app. Nunca mostra "Desde {ano}" sem uma partida marcada de verdade.
+/// app. De propósito bem enxuta (só eyebrow + selo de nível + headline) —
+/// "Desde {ano}" e o progresso da temporada saíram daqui por pedido
+/// explícito, pra não repetir o que a tela já mostra logo abaixo.
+///
+/// A moldura (borda) e o selo de nível vêm de [passportLevelStyleFor] —
+/// única fonte da progressão visual por nível, pra este widget nunca
+/// precisar de `if`s de nível no meio do layout.
 class PassportCoverV2 extends StatelessWidget {
-  const PassportCoverV2({
-    required this.summary,
-    required this.selectedYear,
-    required this.yearFinishedCount,
-    required this.yearMarkedCount,
-    super.key,
-  });
+  const PassportCoverV2({required this.summary, super.key});
 
   final PassportSummary summary;
-  final int? selectedYear;
-  final int yearFinishedCount;
-  final int yearMarkedCount;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final since = summary.firstMarkedMatchDate?.year;
+    final level = passportLevelForMatches(summary.totalMatches);
+    final levelStyle = passportLevelStyleFor(level);
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(AppRadius.hero),
-      child: ColoredBox(
-        color: AppColors.light.deepGreen,
-        child: Stack(
-          children: [
-            Positioned(
-              right: -30,
-              top: -22,
-              child: Opacity(
-                opacity: 0.07,
-                child: ColorFiltered(
-                  colorFilter: const ColorFilter.mode(
-                    Colors.white,
-                    BlendMode.srcIn,
-                  ),
-                  child: Image.asset(
-                    AppAssets.goiasCrestBadge,
-                    width: 190,
-                    height: 190,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppRadius.hero),
+        border: Border.all(
+          color: levelStyle.borderColor,
+          width: levelStyle.borderWidth,
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppRadius.hero),
+        child: ColoredBox(
+          color: AppColors.light.deepGreen,
+          child: Stack(
+            children: [
+              // Textura de fundo — pequena, quase toda cortada pelo canto,
+              // opacidade muito baixa: sugere identidade/segurança de
+              // documento oficial sem virar "o círculo grande no fundo".
+              Positioned(
+                right: -46,
+                bottom: -46,
+                child: Opacity(
+                  opacity: 0.05,
+                  child: ColorFiltered(
+                    colorFilter: const ColorFilter.mode(
+                      Colors.white,
+                      BlendMode.srcIn,
+                    ),
+                    child: Image.asset(
+                      AppAssets.goiasCrestBadge,
+                      width: 150,
+                      height: 150,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.lg,
-                AppSpacing.lg,
-                AppSpacing.lg,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.confirmation_number_outlined,
-                        size: 14,
-                        color: Colors.white.withValues(alpha: 0.72),
-                      ),
-                      const SizedBox(width: 6),
-                      Text(
-                        l10n.passportCoverEyebrow,
-                        style: TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 1.1,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg,
+                  AppSpacing.lg,
+                  AppSpacing.lg,
+                  AppSpacing.lg,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.confirmation_number_outlined,
+                          size: 14,
                           color: Colors.white.withValues(alpha: 0.72),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: AppSpacing.md),
-                  Text(
-                    l10n.passportCoverMatchesLived(summary.totalMatches),
-                    style: const TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                      height: 1.18,
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            l10n.passportCoverEyebrow,
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 1.1,
+                              color: Colors.white.withValues(alpha: 0.72),
+                            ),
+                          ),
+                        ),
+                        _LevelBadge(
+                          label: passportLevelLabel(l10n, level),
+                          style: levelStyle,
+                        ),
+                      ],
                     ),
-                  ),
-                  if (since != null) ...[
-                    const SizedBox(height: 4),
+                    const SizedBox(height: AppSpacing.md),
                     Text(
-                      l10n.passportCoverSince(since),
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white.withValues(alpha: 0.72),
+                      l10n.passportCoverMatchesLived(summary.totalMatches),
+                      style: const TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                        height: 1.18,
                       ),
                     ),
                   ],
-                  if (selectedYear != null) ...[
-                    const SizedBox(height: AppSpacing.lg),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 11,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(999),
-                      ),
-                      child: Text(
-                        l10n.passportCoverSeasonProgress(
-                          selectedYear!,
-                          yearMarkedCount,
-                          yearFinishedCount,
-                        ),
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _LevelBadge extends StatelessWidget {
+  const _LevelBadge({required this.label, required this.style});
+
+  final String label;
+  final PassportLevelStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
+      decoration: BoxDecoration(
+        color: style.badgeBackground,
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: style.borderColor),
+      ),
+      child: Text(
+        label,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+          fontSize: 9.5,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 0.2,
+          color: style.badgeForeground,
         ),
       ),
     );

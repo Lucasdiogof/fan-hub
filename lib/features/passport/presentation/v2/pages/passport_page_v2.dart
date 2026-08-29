@@ -14,7 +14,6 @@ import 'package:goias_app/features/passport/presentation/passport_discard_dialog
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_cover_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_empty_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_filter_control_v2.dart';
-import 'package:goias_app/features/passport/presentation/v2/widgets/passport_indicators_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_month_group_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_save_bar_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_season_selector_v2.dart';
@@ -122,7 +121,8 @@ class _PassportViewV2State extends State<_PassportViewV2> {
                             ),
                             PassportSaveBarV2(
                               state: state,
-                              onSave: () => context.read<PassportCubit>().save(),
+                              onSave: () =>
+                                  context.read<PassportCubit>().save(),
                             ),
                           ],
                         );
@@ -235,15 +235,14 @@ class _BodyV2 extends StatelessWidget {
       );
     }
 
-    final cover = PassportCoverV2(
-      summary: state.summary,
-      selectedYear: state.selectedYear,
-      yearFinishedCount: state.yearFinishedCount,
-      yearMarkedCount: state.yearMarkedCount,
-    );
+    final cover = PassportCoverV2(summary: state.summary);
+    // Só o onboarding (zero jogos) ocupa esse espaço — com jogos marcados,
+    // o card já mostra o essencial (jogos carimbados + nível) e a lista
+    // abaixo mostra os jogos em si, então repetir números aqui (jogos
+    // vividos / progresso da temporada) só duplicava informação.
     final personalSection = state.summary.totalMatches == 0
         ? PassportEmptyV2(onStart: onStartEmptyState)
-        : PassportIndicatorsV2(summary: state.summary);
+        : null;
 
     final seasonAndList = _MainColumnV2(
       state: state,
@@ -267,8 +266,10 @@ class _BodyV2 extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   cover,
-                  const SizedBox(height: AppSpacing.lg),
-                  personalSection,
+                  if (personalSection != null) ...[
+                    const SizedBox(height: AppSpacing.lg),
+                    personalSection,
+                  ],
                 ],
               ),
             ),
@@ -288,8 +289,10 @@ class _BodyV2 extends StatelessWidget {
       ),
       children: [
         cover,
-        const SizedBox(height: AppSpacing.lg),
-        personalSection,
+        if (personalSection != null) ...[
+          const SizedBox(height: AppSpacing.lg),
+          personalSection,
+        ],
         const SizedBox(height: AppSpacing.xl),
         Container(key: seasonSelectorKey),
         _SeasonAndFiltersV2(state: state),
@@ -407,7 +410,8 @@ class _MatchTimelineV2 extends StatelessWidget {
       children: [
         for (var i = 0; i < entries.length; i++)
           PassportMonthGroupV2(
-            label: entries[i].key[0].toUpperCase() + entries[i].key.substring(1),
+            label:
+                entries[i].key[0].toUpperCase() + entries[i].key.substring(1),
             matches: entries[i].value,
             effectiveAttended: state.effectiveAttended,
             onToggle: cubit.toggleAttendance,
