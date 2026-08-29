@@ -134,7 +134,8 @@ class PassportFilterControlV2 extends StatelessWidget {
                       if (state.competitionFilter != null)
                         state.matches
                             .firstWhere(
-                              (m) => m.competitionCode == state.competitionFilter,
+                              (m) =>
+                                  m.competitionCode == state.competitionFilter,
                             )
                             .competition,
                     ].join(' · '),
@@ -230,8 +231,15 @@ class _SegmentButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(999),
+      // Sem splash/highlight de propósito: o próprio `AnimatedContainer`
+      // já anima a cor de fundo pra indicar o estado selecionado — a
+      // sobreposição do ripple padrão em cima dessa animação é o que
+      // fazia os dois segmentos parecerem "piscar" ao tocar.
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOut,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: selected ? colors.surface : Colors.transparent,
@@ -243,7 +251,7 @@ class _SegmentButton extends StatelessWidget {
                     blurRadius: 4,
                   ),
                 ]
-              : null,
+              : const [],
         ),
         child: Text(
           label,
