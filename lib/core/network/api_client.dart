@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sentry_dio/sentry_dio.dart';
 
 const _definedBaseUrl = String.fromEnvironment('API_BASE_URL');
 const _productionBaseUrl = 'https://goias-app.lucasdiogo1234.workers.dev';
@@ -29,6 +30,11 @@ class ApiClient {
         LogInterceptor(requestBody: false, responseBody: true, error: true),
       );
     }
+    // Toda requisição (URL, método, status, duração) vira breadcrumb no
+    // Sentry automaticamente — sem isso, um erro de "API fora do ar" só
+    // aparece como uma DioException genérica, sem dar pra saber qual
+    // endpoint ou se foi timeout de conexão vs. resposta.
+    dio.addSentry();
     return dio;
   }
 }

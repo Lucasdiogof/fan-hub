@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/app_page.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:goias_app/features/arena/games/penalty/pages/penalty_result_page.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game.dart';
 import 'package:goias_app/features/arena/games/penalty/penalty_game_page.dart';
@@ -107,7 +108,10 @@ const _publicRoutes = {'/profile/terms', '/profile/privacy'};
 GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
   return GoRouter(
     initialLocation: '/',
-    observers: [appRouteObserver],
+    // `SentryNavigatorObserver` deixa cada troca de tela como breadcrumb no
+    // Sentry — sem isso, um erro só mostra a exceção, nunca em QUAL tela o
+    // usuário estava quando ela aconteceu.
+    observers: [appRouteObserver, SentryNavigatorObserver()],
     refreshListenable: Listenable.merge([
       _AuthRefresh(authCubit.stream),
       splashGate,
