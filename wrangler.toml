@@ -34,7 +34,7 @@ GOIAS_ONEFOOTBALL_SLUG = "goias-1863"
 # https://onefootball.com/pt-br/competicao/.
 ONEFOOTBALL_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
 
-CACHE_VERSION = "14"
+CACHE_VERSION = "15"
 
 # Task do Apify (Instagram Post Scraper).
 # O ID da Task não é secret.
