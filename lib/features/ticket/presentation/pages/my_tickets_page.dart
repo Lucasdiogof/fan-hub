@@ -22,6 +22,7 @@ import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 class MyTicketsPage extends StatelessWidget {
   const MyTicketsPage({super.key});
@@ -159,17 +160,7 @@ class _MyTicketsViewState extends State<_MyTicketsView>
   }
 }
 
-Widget _centered(Widget child) {
-  return ListView(
-    physics: const AlwaysScrollableScrollPhysics(),
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 100),
-        child: Center(child: child),
-      ),
-    ],
-  );
-}
+Widget _centered(Widget child) => viewportCentered(child);
 
 class _TicketList extends StatelessWidget {
   const _TicketList({required this.tickets, required this.onUndoCheckIn});

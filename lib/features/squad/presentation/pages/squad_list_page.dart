@@ -16,6 +16,7 @@ import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` em `profile_page.dart`) — a tela
@@ -129,17 +130,7 @@ class _SquadListView extends StatelessWidget {
   }
 }
 
-Widget _centered(Widget child) {
-  return ListView(
-    physics: const AlwaysScrollableScrollPhysics(),
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 100),
-        child: Center(child: child),
-      ),
-    ],
-  );
-}
+Widget _centered(Widget child) => viewportCentered(child);
 
 class _PositionGroupSection extends StatelessWidget {
   const _PositionGroupSection({required this.title, required this.members});

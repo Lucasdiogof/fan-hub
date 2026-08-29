@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 /// Padroniza loading/erro/vazio/sucesso com pull-to-refresh — usado tanto
 /// pela lista de partidas quanto pela classificação, em vez de cada tela
@@ -34,15 +35,15 @@ class RefreshableStateView extends StatelessWidget {
       color: colors.primary,
       child: switch (status) {
         LoadStatus.initial ||
-        LoadStatus.loading => _centered(const GoiasLoadingIndicator()),
-        LoadStatus.error => _centered(
+        LoadStatus.loading => viewportCentered(const GoiasLoadingIndicator()),
+        LoadStatus.error => viewportCentered(
           StateMessage(
             icon: Icons.wifi_off_rounded,
             title: context.l10n.commonLoadError,
             message: errorMessage,
           ),
         ),
-        LoadStatus.empty => _centered(
+        LoadStatus.empty => viewportCentered(
           StateMessage(
             icon: emptyIcon,
             title: emptyTitle ?? context.l10n.commonNoDataFound,
@@ -50,18 +51,6 @@ class RefreshableStateView extends StatelessWidget {
         ),
         LoadStatus.success => successBuilder(context),
       },
-    );
-  }
-
-  Widget _centered(Widget child) {
-    return ListView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 100),
-          child: Center(child: child),
-        ),
-      ],
     );
   }
 }

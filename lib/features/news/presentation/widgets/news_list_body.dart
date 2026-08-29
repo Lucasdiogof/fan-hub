@@ -11,6 +11,7 @@ import 'package:goias_app/features/news/presentation/widgets/news_item_row.dart'
 import 'package:goias_app/features/news/presentation/widgets/news_skeleton_row.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 /// Corpo da lista de notícias — todos os estados (loading/erro/vazio/lista),
 /// sem cabeçalho nem `Scaffold` próprio. Usado tanto pela tela cheia de
@@ -52,17 +53,7 @@ class NewsListBody extends StatelessWidget {
   }
 }
 
-Widget _centered(Widget child) {
-  return ListView(
-    physics: const AlwaysScrollableScrollPhysics(),
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 80),
-        child: Center(child: child),
-      ),
-    ],
-  );
-}
+Widget _centered(Widget child) => viewportCentered(child);
 
 class _SkeletonList extends StatelessWidget {
   const _SkeletonList();

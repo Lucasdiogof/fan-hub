@@ -14,6 +14,7 @@ import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 /// Diretoria do clube — Supabase é a fonte da verdade (ver `club_board.sql`
 /// e `SupabaseClubBoardRepository`), então nome/cargo/seção atualizados lá
@@ -104,17 +105,7 @@ class _ClubDiretoriaView extends StatelessWidget {
   }
 }
 
-Widget _centered(Widget child) {
-  return ListView(
-    physics: const AlwaysScrollableScrollPhysics(),
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 80),
-        child: Center(child: child),
-      ),
-    ],
-  );
-}
+Widget _centered(Widget child) => viewportCentered(child);
 
 class _BoardList extends StatelessWidget {
   const _BoardList({required this.sections});

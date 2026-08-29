@@ -20,6 +20,7 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 class GamesPage extends StatelessWidget {
   const GamesPage({super.key});
@@ -166,17 +167,7 @@ class _MatchesTab extends StatelessWidget {
   }
 }
 
-Widget _centered(Widget child) {
-  return ListView(
-    physics: const AlwaysScrollableScrollPhysics(),
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: 100),
-        child: Center(child: child),
-      ),
-    ],
-  );
-}
+Widget _centered(Widget child) => viewportCentered(child);
 
 bool _isLive(Match match) =>
     match.status == MatchStatus.live || match.status == MatchStatus.halftime;

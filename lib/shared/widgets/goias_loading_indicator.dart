@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/theme/app_colors.dart';
 
 /// Brasão oficial do Goiás pulsando — mostra a arte real (não um traço
 /// tingido), já que o próprio brasão tem contraste suficiente pra qualquer
@@ -56,9 +57,35 @@ class _GoiasLoadingIndicatorState extends State<GoiasLoadingIndicator>
 
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: _pulse,
-      child: GoiasLoadingBadge(size: widget.size, color: widget.color),
+    // Anel indeterminado ao redor do brasão — reforça a leitura de
+    // "carregando" além do pulso sozinho (feedback: parecia parado
+    // demais). Gira sozinho (`CircularProgressIndicator` sem `value`),
+    // sem precisar de um segundo `AnimationController`.
+    final ringColor = widget.color ?? context.colors.primary;
+    final ringSize = widget.size * 1.7;
+    return SizedBox(
+      width: ringSize,
+      height: ringSize,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SizedBox(
+            width: ringSize,
+            height: ringSize,
+            child: CircularProgressIndicator(
+              strokeWidth: 2.5,
+              backgroundColor: ringColor.withValues(alpha: 0.14),
+              valueColor: AlwaysStoppedAnimation(
+                ringColor.withValues(alpha: 0.6),
+              ),
+            ),
+          ),
+          ScaleTransition(
+            scale: _pulse,
+            child: GoiasLoadingBadge(size: widget.size, color: widget.color),
+          ),
+        ],
+      ),
     );
   }
 }
