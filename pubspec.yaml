@@ -33,6 +33,7 @@ dependencies:
   pdf: ^3.11.3
   printing: ^5.14.2
   just_audio: ^0.10.6
+  sentry_flutter: ^8.14.2
 
 dev_dependencies:
   flutter_test:

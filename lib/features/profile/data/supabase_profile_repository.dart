@@ -23,8 +23,8 @@ class SupabaseProfileRepository implements ProfileRepository {
           .eq('id', _uid)
           .maybeSingle();
       return Success(_mapProfile(row));
-    } catch (error) {
-      return Error(mapProfileError(error, isWrite: false));
+    } catch (error, stackTrace) {
+      return Error(mapProfileError(error, stackTrace, isWrite: false));
     }
   }
 
@@ -49,8 +49,8 @@ class SupabaseProfileRepository implements ProfileRepository {
           .select()
           .maybeSingle();
       return Success(_mapProfile(row));
-    } catch (error) {
-      return Error(mapProfileError(error));
+    } catch (error, stackTrace) {
+      return Error(mapProfileError(error, stackTrace));
     }
   }
 
@@ -75,8 +75,8 @@ class SupabaseProfileRepository implements ProfileRepository {
           country: row['country'] as String? ?? 'BR',
         ),
       );
-    } catch (error) {
-      return Error(mapProfileError(error, isWrite: false));
+    } catch (error, stackTrace) {
+      return Error(mapProfileError(error, stackTrace, isWrite: false));
     }
   }
 
@@ -96,8 +96,8 @@ class SupabaseProfileRepository implements ProfileRepository {
         'updated_at': DateTime.now().toUtc().toIso8601String(),
       }, onConflict: 'user_id');
       return const Success(null);
-    } catch (error) {
-      return Error(mapProfileError(error));
+    } catch (error, stackTrace) {
+      return Error(mapProfileError(error, stackTrace));
     }
   }
 
@@ -130,8 +130,8 @@ class SupabaseProfileRepository implements ProfileRepository {
           .select()
           .maybeSingle();
       return Success(_mapProfile(row));
-    } catch (error) {
-      return Error(mapProfileError(error));
+    } catch (error, stackTrace) {
+      return Error(mapProfileError(error, stackTrace));
     }
   }
 

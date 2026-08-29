@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/config/sentry_config.dart';
 import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
@@ -13,6 +14,7 @@ import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
@@ -23,7 +25,15 @@ Future<void> main() async {
     publishableKey: SupabaseConfig.publishableKey,
   );
   setupDependencies();
-  runApp(const GoiasApp());
+  // Nunca manda PII automático (o app lida com CPF/telefone/e-mail real) —
+  // o que queremos ver no Sentry é o erro, não dado pessoal do usuário.
+  // `tracesSampleRate: 1.0` é seguro pro volume desse app (fã-clube, não
+  // um app de milhões de usuários); baixar se algum dia isso mudar.
+  await SentryFlutter.init((options) {
+    options.dsn = SentryConfig.dsn;
+    options.sendDefaultPii = false;
+    options.tracesSampleRate = 1.0;
+  }, appRunner: () => runApp(const GoiasApp()));
 }
 
 class GoiasApp extends StatefulWidget {
