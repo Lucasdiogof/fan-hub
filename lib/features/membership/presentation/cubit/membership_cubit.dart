@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
@@ -25,7 +26,7 @@ class MembershipCubit extends Cubit<MembershipState> {
   final FootballRepository _footballRepository;
 
   Future<void> load() async {
-    emit(state.copyWith(status: LoadStatus.loading));
+    emit(state.copyWith(status: LoadStatus.loading, isNetworkError: false));
 
     final membershipFuture = _membershipRepository.getMyMembership();
     final plansFuture = _membershipRepository.getPlans();
@@ -39,19 +40,31 @@ class MembershipCubit extends Cubit<MembershipState> {
 
     if (membershipResult case Error(:final failure)) {
       emit(
-        state.copyWith(status: LoadStatus.error, errorMessage: failure.message),
+        state.copyWith(
+          status: LoadStatus.error,
+          errorMessage: failure.message,
+          isNetworkError: failure is NetworkFailure,
+        ),
       );
       return;
     }
     if (plansResult case Error(:final failure)) {
       emit(
-        state.copyWith(status: LoadStatus.error, errorMessage: failure.message),
+        state.copyWith(
+          status: LoadStatus.error,
+          errorMessage: failure.message,
+          isNetworkError: failure is NetworkFailure,
+        ),
       );
       return;
     }
     if (userResult case Error(:final failure)) {
       emit(
-        state.copyWith(status: LoadStatus.error, errorMessage: failure.message),
+        state.copyWith(
+          status: LoadStatus.error,
+          errorMessage: failure.message,
+          isNetworkError: failure is NetworkFailure,
+        ),
       );
       return;
     }

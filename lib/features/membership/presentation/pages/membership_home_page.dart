@@ -72,9 +72,14 @@ class _MembershipHomeView extends StatelessWidget {
                               const Center(child: GoiasLoadingIndicator()),
                             LoadStatus.error => Center(
                               child: StateMessage(
-                                icon: Icons.error_outline_rounded,
+                                icon: state.isNetworkError
+                                    ? Icons.wifi_off_rounded
+                                    : Icons.error_outline_rounded,
                                 title: context.l10n.membershipLoadError,
                                 message: state.errorMessage,
+                                actionLabel: context.l10n.commonRetry,
+                                onAction: () =>
+                                    context.read<MembershipCubit>().load(),
                               ),
                             ),
                             _ =>

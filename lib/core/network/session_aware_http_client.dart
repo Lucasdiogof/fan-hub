@@ -86,14 +86,19 @@ class SessionAwareHttpClient extends http.BaseClient {
           request.url,
         );
       }
-      // Qualquer outra `AuthException` aqui é definitiva (refresh token
-      // inválido/revogado, sessão local incompleta) — o GoTrue já limpou
-      // a sessão e emitiu `signedOut` com o motivo certo sozinho (ver
-      // `AuthRepositoryImpl._mapEvent`, que já transforma isso num
-      // `AuthSessionExpired` consumido pela UI). Aqui só deixamos a
-      // resposta 401 original seguir pro Postgrest, que lança a exceção
-      // de sempre — o mapper de cada repositório já sabe tratar, e a
-      // navegação/aviso pro usuário já está a caminho por outro canal.
+      // Qualquer outra `AuthException` aqui já foi tratada como definitiva
+      // PELO PRÓPRIO GoTrue antes de chegar até nós — não é esta classe
+      // quem decide isso. `_doRefresh` (pacote `gotrue`) só deixa passar
+      // pra cá um erro que não seja `AuthRetryableFetchException` DEPOIS
+      // de já ter limpado a sessão local e emitido `signedOut` com
+      // `signOutReason: sessionExpired/sessionMissing` sozinho — a fonte
+      // de verdade pra "sessão perdida de vez" é sempre esse evento (ver
+      // `AuthRepositoryImpl._mapEvent`, que o transforma num
+      // `AuthSessionExpired` consumido pela UI), nunca este `catch`. Aqui
+      // só deixamos a resposta 401 original seguir pro Postgrest, que
+      // lança a exceção de sempre — o mapper de cada repositório já sabe
+      // tratar, e a navegação/aviso pro usuário já está a caminho por
+      // outro canal, independente do que essa função decidir aqui.
       return _toStreamedResponse(firstAttempt, request);
     }
 

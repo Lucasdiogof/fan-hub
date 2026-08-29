@@ -13,6 +13,7 @@ class MembershipState extends Equatable {
     this.user,
     this.nextMatch,
     this.errorMessage,
+    this.isNetworkError = false,
   });
 
   final LoadStatus status;
@@ -21,6 +22,11 @@ class MembershipState extends Equatable {
   final Profile? user;
   final Match? nextMatch;
   final String? errorMessage;
+
+  /// Distingue "sem conexão" de qualquer outra falha — a tela usa isso pra
+  /// trocar o ícone/mensagem genéricos por algo específico de conectividade
+  /// e oferecer "Tentar novamente" (ver `MembershipCubit.load`).
+  final bool isNetworkError;
 
   bool get isMember =>
       membership != null && membership!.status == MembershipStatus.active;
@@ -34,6 +40,7 @@ class MembershipState extends Equatable {
     Match? nextMatch,
     bool clearNextMatch = false,
     String? errorMessage,
+    bool? isNetworkError,
   }) {
     return MembershipState(
       status: status ?? this.status,
@@ -42,6 +49,7 @@ class MembershipState extends Equatable {
       user: user ?? this.user,
       nextMatch: clearNextMatch ? null : (nextMatch ?? this.nextMatch),
       errorMessage: errorMessage ?? this.errorMessage,
+      isNetworkError: isNetworkError ?? this.isNetworkError,
     );
   }
 
@@ -53,5 +61,6 @@ class MembershipState extends Equatable {
     user,
     nextMatch,
     errorMessage,
+    isNetworkError,
   ];
 }

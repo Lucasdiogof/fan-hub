@@ -114,7 +114,17 @@ void main() {
   });
 
   test(
-    'token expirado: renova e repete a chamada original uma vez, com o token novo',
+    // Regressão específica do bug real (Sentry: 6 issues simultâneas de
+    // PostgrestException JWT expired, com "clock drift" de ~2h reportado
+    // pelo SDK): a sessão LOCAL continua válida por `isExpired` (o token
+    // aqui vence daqui a 1h, de propósito — nunca usamos um JWT já
+    // vencido) — então o `getSession()` proativo do GoTrue não renova
+    // nada sozinho, e a requisição sai com o token "válido" do ponto de
+    // vista do aparelho. O SERVIDOR (meu mock, fazendo o papel de um
+    // relógio correto) é quem rejeita com 401/PGRST303. Sem o
+    // `SessionAwareHttpClient`, essa combinação é exatamente o que
+    // produzia o erro cru chegando no repositório.
+    'servidor rejeita um token que o cliente ainda acha válido (clock drift): renova e repete com o token novo',
     () async {
       var restCalls = 0;
       final env = buildClient(
@@ -133,15 +143,43 @@ void main() {
         password: 'x',
       );
 
+      final sessionBefore = env.client.auth.currentSession!;
+      final tokenA = sessionBefore.accessToken;
+      expect(
+        sessionBefore.isExpired,
+        isFalse,
+        reason:
+            'precondição do cenário: o cliente precisa achar a sessão '
+            'válida — é isso que faz o GoTrue não renovar sozinho antes '
+            'de mandar a requisição, deixando só o SessionAwareHttpClient '
+            'pra reagir à rejeição do servidor.',
+      );
+
       final result = await env.client.from('games').select();
 
+      final tokenB = env.client.auth.currentSession!.accessToken;
       expect(result, [
         {'id': 42},
       ]);
       expect(restCalls, 2);
       expect(env.refreshCallCount(), 1);
-      expect(env.restAuthHeaders()[0], endsWith('-v1'));
-      expect(env.restAuthHeaders()[1], endsWith('-v2'));
+      expect(
+        tokenB,
+        isNot(tokenA),
+        reason: 'o refresh precisa ter trocado o token de verdade',
+      );
+      expect(
+        env.restAuthHeaders()[0],
+        'Bearer $tokenA',
+        reason: 'primeira tentativa usa o token antigo (A)',
+      );
+      expect(
+        env.restAuthHeaders()[1],
+        'Bearer $tokenB',
+        reason:
+            'o retry precisa usar o token NOVO (B) — nunca reenviar a '
+            'requisição original com o header antigo',
+      );
     },
   );
 
