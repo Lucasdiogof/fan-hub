@@ -730,6 +730,48 @@ abstract class AppLocalizations {
   /// **'Tema'**
   String get profileTheme;
 
+  /// No description provided for @profileAppearance.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aparência'**
+  String get profileAppearance;
+
+  /// No description provided for @profileMyJourney.
+  ///
+  /// In pt, this message translates to:
+  /// **'MINHA JORNADA'**
+  String get profileMyJourney;
+
+  /// No description provided for @profilePreferences.
+  ///
+  /// In pt, this message translates to:
+  /// **'PREFERÊNCIAS'**
+  String get profilePreferences;
+
+  /// No description provided for @profilePurchasesAndServices.
+  ///
+  /// In pt, this message translates to:
+  /// **'COMPRAS E SERVIÇOS'**
+  String get profilePurchasesAndServices;
+
+  /// No description provided for @profileMyTickets.
+  ///
+  /// In pt, this message translates to:
+  /// **'Meus ingressos'**
+  String get profileMyTickets;
+
+  /// No description provided for @profileJourneyMatchesLived.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 jogo vivido} other{{count} jogos vividos}}'**
+  String profileJourneyMatchesLived(num count);
+
+  /// No description provided for @profileVersion.
+  ///
+  /// In pt, this message translates to:
+  /// **'Versão {version}'**
+  String profileVersion(Object version);
+
   /// No description provided for @profileLegal.
   ///
   /// In pt, this message translates to:
@@ -1699,38 +1741,38 @@ abstract class AppLocalizations {
   /// No description provided for @passportCoverMatchesLived.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{1 jogo vivido com o Verdão} other{{count} jogos vividos com o Verdão}}'**
+  /// **'{count, plural, =1{1 jogo carimbado com o Verdão} other{{count} jogos carimbados com o Verdão}}'**
   String passportCoverMatchesLived(num count);
 
-  /// No description provided for @passportCoverSince.
+  /// No description provided for @passportLevelStarter.
   ///
   /// In pt, this message translates to:
-  /// **'Desde {year}'**
-  String passportCoverSince(Object year);
+  /// **'Primeiros Passos'**
+  String get passportLevelStarter;
 
-  /// No description provided for @passportCoverSeasonProgress.
+  /// No description provided for @passportLevelPresent.
   ///
   /// In pt, this message translates to:
-  /// **'{year} · {marked} de {total} partidas'**
-  String passportCoverSeasonProgress(int year, int marked, int total);
+  /// **'Torcedor Presente'**
+  String get passportLevelPresent;
 
-  /// No description provided for @passportIndicatorMatches.
+  /// No description provided for @passportLevelBleacher.
   ///
   /// In pt, this message translates to:
-  /// **'Jogos vividos'**
-  String get passportIndicatorMatches;
+  /// **'Esmeraldino de Arquibancada'**
+  String get passportLevelBleacher;
 
-  /// No description provided for @passportIndicatorYears.
+  /// No description provided for @passportLevelRoots.
   ///
   /// In pt, this message translates to:
-  /// **'Anos acompanhando'**
-  String get passportIndicatorYears;
+  /// **'Verdão Raiz'**
+  String get passportLevelRoots;
 
-  /// No description provided for @passportIndicatorFirstMatch.
+  /// No description provided for @passportLevelLegend.
   ///
   /// In pt, this message translates to:
-  /// **'Primeira presença'**
-  String get passportIndicatorFirstMatch;
+  /// **'Lenda Esmeraldina'**
+  String get passportLevelLegend;
 
   /// No description provided for @passportEmptyHeadline.
   ///
@@ -5385,12 +5427,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Conhecer a loja'**
   String get storeHomeEntryCta;
-
-  /// No description provided for @storeProfileSectionTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'GOIÁS STORE'**
-  String get storeProfileSectionTitle;
 
   /// No description provided for @storeProfileEntry.
   ///

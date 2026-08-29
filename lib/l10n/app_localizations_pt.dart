@@ -330,6 +330,37 @@ class AppLocalizationsPt extends AppLocalizations {
   String get profileTheme => 'Tema';
 
   @override
+  String get profileAppearance => 'Aparência';
+
+  @override
+  String get profileMyJourney => 'MINHA JORNADA';
+
+  @override
+  String get profilePreferences => 'PREFERÊNCIAS';
+
+  @override
+  String get profilePurchasesAndServices => 'COMPRAS E SERVIÇOS';
+
+  @override
+  String get profileMyTickets => 'Meus ingressos';
+
+  @override
+  String profileJourneyMatchesLived(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count jogos vividos',
+      one: '1 jogo vivido',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String profileVersion(Object version) {
+    return 'Versão $version';
+  }
+
+  @override
   String get profileLegal => 'LEGAL';
 
   @override
@@ -901,30 +932,26 @@ class AppLocalizationsPt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count jogos vividos com o Verdão',
-      one: '1 jogo vivido com o Verdão',
+      other: '$count jogos carimbados com o Verdão',
+      one: '1 jogo carimbado com o Verdão',
     );
     return '$_temp0';
   }
 
   @override
-  String passportCoverSince(Object year) {
-    return 'Desde $year';
-  }
+  String get passportLevelStarter => 'Primeiros Passos';
 
   @override
-  String passportCoverSeasonProgress(int year, int marked, int total) {
-    return '$year · $marked de $total partidas';
-  }
+  String get passportLevelPresent => 'Torcedor Presente';
 
   @override
-  String get passportIndicatorMatches => 'Jogos vividos';
+  String get passportLevelBleacher => 'Esmeraldino de Arquibancada';
 
   @override
-  String get passportIndicatorYears => 'Anos acompanhando';
+  String get passportLevelRoots => 'Verdão Raiz';
 
   @override
-  String get passportIndicatorFirstMatch => 'Primeira presença';
+  String get passportLevelLegend => 'Lenda Esmeraldina';
 
   @override
   String get passportEmptyHeadline => 'Todo torcedor tem uma história.';
@@ -3018,9 +3045,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get storeHomeEntryCta => 'Conhecer a loja';
-
-  @override
-  String get storeProfileSectionTitle => 'GOIÁS STORE';
 
   @override
   String get storeProfileEntry => 'Goiás Store';

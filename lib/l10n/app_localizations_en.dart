@@ -331,6 +331,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileTheme => 'Theme';
 
   @override
+  String get profileAppearance => 'Appearance';
+
+  @override
+  String get profileMyJourney => 'MY JOURNEY';
+
+  @override
+  String get profilePreferences => 'PREFERENCES';
+
+  @override
+  String get profilePurchasesAndServices => 'PURCHASES & SERVICES';
+
+  @override
+  String get profileMyTickets => 'My tickets';
+
+  @override
+  String profileJourneyMatchesLived(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count matches lived',
+      one: '1 match lived',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String profileVersion(Object version) {
+    return 'Version $version';
+  }
+
+  @override
   String get profileLegal => 'LEGAL';
 
   @override
@@ -899,30 +930,26 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count matches lived with Verdão',
-      one: '1 match lived with Verdão',
+      other: '$count matches stamped with Verdão',
+      one: '1 match stamped with Verdão',
     );
     return '$_temp0';
   }
 
   @override
-  String passportCoverSince(Object year) {
-    return 'Since $year';
-  }
+  String get passportLevelStarter => 'First Steps';
 
   @override
-  String passportCoverSeasonProgress(int year, int marked, int total) {
-    return '$year · $marked of $total matches';
-  }
+  String get passportLevelPresent => 'Regular Supporter';
 
   @override
-  String get passportIndicatorMatches => 'Matches lived';
+  String get passportLevelBleacher => 'Bleacher Esmeraldino';
 
   @override
-  String get passportIndicatorYears => 'Years following';
+  String get passportLevelRoots => 'Verdão Roots';
 
   @override
-  String get passportIndicatorFirstMatch => 'First match';
+  String get passportLevelLegend => 'Esmeraldino Legend';
 
   @override
   String get passportEmptyHeadline => 'Every fan has a story.';
@@ -3004,9 +3031,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeHomeEntryCta => 'Visit the store';
-
-  @override
-  String get storeProfileSectionTitle => 'GOIÁS STORE';
 
   @override
   String get storeProfileEntry => 'Goiás Store';
