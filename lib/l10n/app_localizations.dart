@@ -346,6 +346,24 @@ abstract class AppLocalizations {
   /// **'INGRESSOS'**
   String get homeTickets;
 
+  /// No description provided for @homeQuickAccessTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acesso rápido'**
+  String get homeQuickAccessTitle;
+
+  /// No description provided for @homeQuickAccessTickets.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingressos'**
+  String get homeQuickAccessTickets;
+
+  /// No description provided for @homeQuickAccessNews.
+  ///
+  /// In pt, this message translates to:
+  /// **'Notícias'**
+  String get homeQuickAccessNews;
+
   /// No description provided for @homeCountdownTitle.
   ///
   /// In pt, this message translates to:
@@ -1240,59 +1258,23 @@ abstract class AppLocalizations {
   /// **'Arena Esmeraldina'**
   String get arenaSpotlightEyebrow;
 
-  /// No description provided for @arenaSpotlightLineupHeadline.
+  /// No description provided for @arenaSpotlightHeadline.
   ///
   /// In pt, this message translates to:
-  /// **'Monte o Goiás para a próxima partida'**
-  String get arenaSpotlightLineupHeadline;
+  /// **'A sua paixão entra em campo'**
+  String get arenaSpotlightHeadline;
 
-  /// No description provided for @arenaSpotlightLineupSubtitle.
+  /// No description provided for @arenaSpotlightSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Escale o time contra o {opponent} e concorra no ranking da torcida.'**
-  String arenaSpotlightLineupSubtitle(String opponent);
+  /// **'Jogue, participe e dispute seu lugar entre os Esmeraldinos.'**
+  String get arenaSpotlightSubtitle;
 
-  /// No description provided for @arenaSpotlightLineupCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'Escalar meu time'**
-  String get arenaSpotlightLineupCta;
-
-  /// No description provided for @arenaSpotlightQuizHeadline.
-  ///
-  /// In pt, this message translates to:
-  /// **'Quiz do Verdão'**
-  String get arenaSpotlightQuizHeadline;
-
-  /// No description provided for @arenaSpotlightQuizSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Você consegue acertar todas as perguntas?'**
-  String get arenaSpotlightQuizSubtitle;
-
-  /// No description provided for @arenaSpotlightQuizCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'Jogar agora'**
-  String get arenaSpotlightQuizCta;
-
-  /// No description provided for @arenaSpotlightFallbackHeadline.
-  ///
-  /// In pt, this message translates to:
-  /// **'Sua Arena Esmeraldina'**
-  String get arenaSpotlightFallbackHeadline;
-
-  /// No description provided for @arenaSpotlightFallbackSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Quiz, Escalação da Torcida, Passaporte e muito mais te esperando.'**
-  String get arenaSpotlightFallbackSubtitle;
-
-  /// No description provided for @arenaSpotlightFallbackCta.
+  /// No description provided for @arenaSpotlightCta.
   ///
   /// In pt, this message translates to:
   /// **'Entrar na Arena'**
-  String get arenaSpotlightFallbackCta;
+  String get arenaSpotlightCta;
 
   /// No description provided for @arenaSpotlightRankSummary.
   ///
@@ -5433,42 +5415,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Goiás Store'**
   String get storeHomeTitle;
-
-  /// No description provided for @storeMatchdaySectionTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Próximo jogo'**
-  String get storeMatchdaySectionTitle;
-
-  /// No description provided for @storeMyPurchasesSectionTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Minhas compras'**
-  String get storeMyPurchasesSectionTitle;
-
-  /// No description provided for @storeTabTickets.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ingressos'**
-  String get storeTabTickets;
-
-  /// No description provided for @storeTabClothing.
-  ///
-  /// In pt, this message translates to:
-  /// **'Roupas'**
-  String get storeTabClothing;
-
-  /// No description provided for @storeMyTicketsShortcut.
-  ///
-  /// In pt, this message translates to:
-  /// **'Meus ingressos'**
-  String get storeMyTicketsShortcut;
-
-  /// No description provided for @storeMyOrdersShortcut.
-  ///
-  /// In pt, this message translates to:
-  /// **'Meus pedidos'**
-  String get storeMyOrdersShortcut;
 
   /// No description provided for @storeHomeLoadErrorTitle.
   ///

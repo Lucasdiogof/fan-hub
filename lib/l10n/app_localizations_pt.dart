@@ -135,6 +135,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homeTickets => 'INGRESSOS';
 
   @override
+  String get homeQuickAccessTitle => 'Acesso rápido';
+
+  @override
+  String get homeQuickAccessTickets => 'Ingressos';
+
+  @override
+  String get homeQuickAccessNews => 'Notícias';
+
+  @override
   String get homeCountdownTitle => 'O JOGO COMEÇA EM';
 
   @override
@@ -602,36 +611,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaSpotlightEyebrow => 'Arena Esmeraldina';
 
   @override
-  String get arenaSpotlightLineupHeadline =>
-      'Monte o Goiás para a próxima partida';
+  String get arenaSpotlightHeadline => 'A sua paixão entra em campo';
 
   @override
-  String arenaSpotlightLineupSubtitle(String opponent) {
-    return 'Escale o time contra o $opponent e concorra no ranking da torcida.';
-  }
+  String get arenaSpotlightSubtitle =>
+      'Jogue, participe e dispute seu lugar entre os Esmeraldinos.';
 
   @override
-  String get arenaSpotlightLineupCta => 'Escalar meu time';
-
-  @override
-  String get arenaSpotlightQuizHeadline => 'Quiz do Verdão';
-
-  @override
-  String get arenaSpotlightQuizSubtitle =>
-      'Você consegue acertar todas as perguntas?';
-
-  @override
-  String get arenaSpotlightQuizCta => 'Jogar agora';
-
-  @override
-  String get arenaSpotlightFallbackHeadline => 'Sua Arena Esmeraldina';
-
-  @override
-  String get arenaSpotlightFallbackSubtitle =>
-      'Quiz, Escalação da Torcida, Passaporte e muito mais te esperando.';
-
-  @override
-  String get arenaSpotlightFallbackCta => 'Entrar na Arena';
+  String get arenaSpotlightCta => 'Entrar na Arena';
 
   @override
   String arenaSpotlightRankSummary(int rank, int points) {
@@ -3046,24 +3033,6 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get storeHomeTitle => 'Goiás Store';
-
-  @override
-  String get storeMatchdaySectionTitle => 'Próximo jogo';
-
-  @override
-  String get storeMyPurchasesSectionTitle => 'Minhas compras';
-
-  @override
-  String get storeTabTickets => 'Ingressos';
-
-  @override
-  String get storeTabClothing => 'Roupas';
-
-  @override
-  String get storeMyTicketsShortcut => 'Meus ingressos';
-
-  @override
-  String get storeMyOrdersShortcut => 'Meus pedidos';
 
   @override
   String get storeHomeLoadErrorTitle => 'Não foi possível carregar a loja';
