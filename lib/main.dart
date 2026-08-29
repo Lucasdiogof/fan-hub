@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -14,15 +12,14 @@ import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
-import 'package:goias_app/shared/widgets/session_expired_sheet.dart';
+import 'package:goias_app/shared/widgets/session_expiry_listener.dart';
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' hide AuthState;
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,32 +57,6 @@ class _GoiasAppState extends State<GoiasApp> {
   final ThemeCubit _themeCubit = sl<ThemeCubit>();
   final LocaleCubit _localeCubit = sl<LocaleCubit>();
   late final GoRouter _router = createAppRouter(_authCubit, sl<SplashGate>());
-  StreamSubscription<AuthState>? _sessionExpirySubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    // Ouve fora da árvore de widgets (não um `BlocListener`) porque
-    // precisa funcionar mesmo se a tela atual não tiver um
-    // `BuildContext` com `Navigator` por perto no momento exato da perda
-    // de sessão — usa `rootNavigatorKey` em vez disso. `AuthCubit` só
-    // emite `AuthSessionExpired` de novo depois de um novo login, então
-    // mesmo várias chamadas detectando a perda de sessão ao mesmo tempo
-    // resultam numa única emissão (Cubit não repete o mesmo estado) e,
-    // portanto, numa única bottom sheet.
-    _sessionExpirySubscription = _authCubit.stream.listen((state) {
-      if (state is! AuthSessionExpired) return;
-      final context = rootNavigatorKey.currentContext;
-      // ignore: use_build_context_synchronously
-      if (context != null) unawaited(showSessionExpiredSheet(context));
-    });
-  }
-
-  @override
-  void dispose() {
-    _sessionExpirySubscription?.cancel();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,16 +81,21 @@ class _GoiasAppState extends State<GoiasApp> {
           return BlocBuilder<LocaleCubit, Locale?>(
             bloc: _localeCubit,
             builder: (context, locale) {
-              return MaterialApp.router(
-                title: 'Goiás EC',
-                debugShowCheckedModeBanner: false,
-                theme: AppTheme.light,
-                darkTheme: AppTheme.dark,
-                themeMode: themeMode,
-                locale: locale,
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
-                supportedLocales: AppLocalizations.supportedLocales,
-                routerConfig: _router,
+              return SessionExpiryListener(
+                authCubit: _authCubit,
+                navigatorKey: rootNavigatorKey,
+                child: MaterialApp.router(
+                  title: 'Goiás EC',
+                  debugShowCheckedModeBanner: false,
+                  theme: AppTheme.light,
+                  darkTheme: AppTheme.dark,
+                  themeMode: themeMode,
+                  locale: locale,
+                  localizationsDelegates:
+                      AppLocalizations.localizationsDelegates,
+                  supportedLocales: AppLocalizations.supportedLocales,
+                  routerConfig: _router,
+                ),
               );
             },
           );
