@@ -65,26 +65,12 @@ class ClubPage extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
-                        icon: Icons.shield_outlined,
-                        title: context.l10n.clubSectionSquad,
-                        subtitle: context.l10n.clubSquadSubtitle,
-                        onTap: () => _openSquad(context),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
                         icon: Icons.emoji_events_outlined,
                         title: context.l10n.clubSectionTitles,
                         subtitle: context.l10n.clubTitlesSubtitle(
                           ClubTitlesData.totalTitles,
                         ),
                         onTap: () => context.push('/clube/titulos'),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
-                        icon: Icons.handshake_outlined,
-                        title: context.l10n.clubSectionPartners,
-                        subtitle: context.l10n.clubPartnersSubtitle,
-                        onTap: () => context.push('/partners'),
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
@@ -95,10 +81,10 @@ class ClubPage extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
-                        icon: Icons.fact_check_outlined,
-                        title: context.l10n.clubSectionTransparency,
-                        subtitle: context.l10n.clubTransparencySubtitle,
-                        onTap: () => context.push('/clube/transparencia'),
+                        icon: Icons.shield_outlined,
+                        title: context.l10n.clubSectionSquad,
+                        subtitle: context.l10n.clubSquadSubtitle,
+                        onTap: () => _openSquad(context),
                       ),
                       const SizedBox(height: AppSpacing.md),
                       _ClubBigCard(
@@ -106,6 +92,20 @@ class ClubPage extends StatelessWidget {
                         title: context.l10n.clubSectionSongs,
                         subtitle: context.l10n.clubSongsSubtitle,
                         onTap: () => context.push('/clube/hino'),
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      _ClubBigCard(
+                        icon: Icons.fact_check_outlined,
+                        title: context.l10n.clubSectionTransparency,
+                        subtitle: context.l10n.clubTransparencySubtitle,
+                        onTap: () => context.push('/clube/transparencia'),
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      _ClubBigCard(
+                        icon: Icons.handshake_outlined,
+                        title: context.l10n.clubSectionPartners,
+                        subtitle: context.l10n.clubPartnersSubtitle,
+                        onTap: () => context.push('/partners'),
                       ),
                     ],
                   ),
