@@ -1,5 +1,4 @@
 import 'package:goias_app/features/store/domain/entities/cart.dart';
-import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_category.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
@@ -25,15 +24,13 @@ abstract interface class StoreRepository {
   /// `null` se o cupom não existir — nunca lança pra um caso esperado.
   Future<double?> resolveCouponDiscountPercent(String code);
 
-  // Persistência local — carrinho, endereços e favoritos vivem no
-  // dispositivo (ver `StoreLocalStorage`), não no backend/mock de catálogo,
-  // mas passam pelo repository pra widgets/cubits nunca falarem com
-  // `SharedPreferences` direto.
+  // Persistência local — carrinho e favoritos vivem no dispositivo (ver
+  // `StoreLocalStorage`), não no backend/mock de catálogo, mas passam pelo
+  // repository pra widgets/cubits nunca falarem com `SharedPreferences`
+  // direto. Endereços de entrega NÃO ficam aqui — ver
+  // `DeliveryAddressRepository` (por conta, no Supabase).
   Future<Cart> loadCart();
   Future<void> saveCart(Cart cart);
-
-  Future<List<CustomerAddress>> loadAddresses();
-  Future<void> saveAddresses(List<CustomerAddress> addresses);
 
   Future<Set<String>> loadFavoriteProductIds();
   Future<void> saveFavoriteProductIds(Set<String> ids);

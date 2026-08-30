@@ -24,8 +24,6 @@ import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
-import 'package:goias_app/features/store/domain/entities/store_order.dart';
-import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
@@ -105,9 +103,14 @@ class _ProfileView extends StatelessWidget {
                             onTap: () => context.push('/profile/personal'),
                           ),
                           _MenuRow(
-                            icon: Icons.location_on_outlined,
+                            icon: Icons.home_outlined,
                             label: context.l10n.profileMyAddress,
                             onTap: () => _openAddress(context),
+                          ),
+                          _MenuRow(
+                            icon: Icons.location_on_outlined,
+                            label: context.l10n.profileDeliveryAddresses,
+                            onTap: () => context.push('/store/addresses'),
                           ),
                           _MenuRow(
                             icon: Icons.lock_outline_rounded,
@@ -332,59 +335,40 @@ class _JourneySectionState extends State<_JourneySection> {
 /// "Compras e Serviços" — o que é MEU (ingressos, pedidos), não a vitrine
 /// de descoberta (essa é a Loja). "Meus pedidos" sempre aparece — mesmo sem
 /// nenhum pedido ainda, pra quem nunca comprou conseguir achar o empty
-/// state. "Endereços da loja" continua condicionado a já ter pelo menos um
-/// pedido (é onde os endereços aparecem hoje).
-class _PurchasesSection extends StatefulWidget {
+/// state. Endereços de entrega saíram daqui — moraram em "Minha Conta",
+/// junto do endereço residencial (são o mesmo tipo de dado cadastral, não
+/// uma compra/serviço).
+class _PurchasesSection extends StatelessWidget {
   const _PurchasesSection();
 
   @override
-  State<_PurchasesSection> createState() => _PurchasesSectionState();
-}
-
-class _PurchasesSectionState extends State<_PurchasesSection> {
-  late final Future<List<StoreOrder>> _ordersFuture = sl<StoreOrdersRepository>()
-      .getOrders();
-
-  @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<StoreOrder>>(
-      future: _ordersFuture,
-      builder: (context, snapshot) {
-        final hasOrders = snapshot.data?.isNotEmpty ?? false;
-        return _MenuSection(
-          title: context.l10n.profilePurchasesAndServices,
-          rows: [
-            _MenuRow(
-              icon: Icons.confirmation_number_outlined,
-              label: context.l10n.profileMyTickets,
-              onTap: () => context.push('/tickets/my'),
-            ),
-            _MenuRow(
-              icon: Icons.receipt_long_outlined,
-              label: context.l10n.storeProfileMyOrders,
-              onTap: () => context.push('/store/orders'),
-            ),
-            _MenuRow(
-              icon: Icons.shopping_bag_outlined,
-              label: context.l10n.storeProfileEntry,
-              // A Loja agora é a própria aba da bottom nav — nunca mais uma
-              // segunda instância empurrada por cima. `go('/')` garante
-              // voltar pra raiz do shell não importa a profundidade da
-              // pilha (Perfil pode ter sido aberto de vários lugares).
-              onTap: () {
-                sl<HomeShellCubit>().navigateToTab(lojaTabIndex);
-                context.go('/');
-              },
-            ),
-            if (hasOrders)
-              _MenuRow(
-                icon: Icons.location_on_outlined,
-                label: context.l10n.storeProfileAddresses,
-                onTap: () => context.push('/store/addresses'),
-              ),
-          ],
-        );
-      },
+    return _MenuSection(
+      title: context.l10n.profilePurchasesAndServices,
+      rows: [
+        _MenuRow(
+          icon: Icons.confirmation_number_outlined,
+          label: context.l10n.profileMyTickets,
+          onTap: () => context.push('/tickets/my'),
+        ),
+        _MenuRow(
+          icon: Icons.receipt_long_outlined,
+          label: context.l10n.storeProfileMyOrders,
+          onTap: () => context.push('/store/orders'),
+        ),
+        _MenuRow(
+          icon: Icons.shopping_bag_outlined,
+          label: context.l10n.storeProfileEntry,
+          // A Loja agora é a própria aba da bottom nav — nunca mais uma
+          // segunda instância empurrada por cima. `go('/')` garante voltar
+          // pra raiz do shell não importa a profundidade da pilha (Perfil
+          // pode ter sido aberto de vários lugares).
+          onTap: () {
+            sl<HomeShellCubit>().navigateToTab(lojaTabIndex);
+            context.go('/');
+          },
+        ),
+      ],
     );
   }
 }

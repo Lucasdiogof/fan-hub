@@ -1,5 +1,4 @@
 import 'package:goias_app/features/store/domain/entities/cart.dart';
-import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_category.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
@@ -84,7 +83,6 @@ class FakeStoreRepository implements StoreRepository {
 
   final List<StoreProduct> products;
   Cart cart = const Cart();
-  final List<CustomerAddress> addresses = [];
   final Set<String> favoriteIds = {};
 
   static const freeShippingThreshold = 399.90;
@@ -142,16 +140,6 @@ class FakeStoreRepository implements StoreRepository {
 
   @override
   Future<void> saveCart(Cart value) async => cart = value;
-
-  @override
-  Future<List<CustomerAddress>> loadAddresses() async => addresses;
-
-  @override
-  Future<void> saveAddresses(List<CustomerAddress> value) async {
-    addresses
-      ..clear()
-      ..addAll(value);
-  }
 
   @override
   Future<Set<String>> loadFavoriteProductIds() async => favoriteIds;

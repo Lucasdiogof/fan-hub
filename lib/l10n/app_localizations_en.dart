@@ -331,7 +331,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilePersonalData => 'Personal data';
 
   @override
-  String get profileMyAddress => 'My address';
+  String get profileMyAddress => 'Home address';
+
+  @override
+  String get profileDeliveryAddresses => 'Delivery addresses';
 
   @override
   String get profileSecurity => 'Security';
@@ -474,7 +477,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get securityChangeSuccess => 'Password changed successfully.';
 
   @override
-  String get addressTitle => 'MY ADDRESS';
+  String get addressTitle => 'HOME ADDRESS';
+
+  @override
+  String get addressResidentialSubtitle =>
+      'Your main address registered on the account.';
 
   @override
   String get addressLoadError => 'Couldn\'t load your address.';
@@ -1743,6 +1750,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get validatorPasswordsDoNotMatch => 'The passwords don\'t match.';
+
+  @override
+  String get validatorPhoneRequired => 'Enter your phone number.';
+
+  @override
+  String get validatorZipRequired => 'Enter your zip code.';
 
   @override
   String get checkEmailResent => 'Email resent. Check your inbox.';
@@ -3048,7 +3061,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeProfileMyOrders => 'My orders';
 
   @override
-  String get storeProfileAddresses => 'Store addresses';
+  String get storeProfileAddresses => 'Delivery addresses';
 
   @override
   String get storeHomeTitle => 'Goiás Store';
@@ -3725,7 +3738,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeStatusCancelled => 'Cancelled';
 
   @override
-  String get storeAddressesTitle => 'MY ADDRESSES';
+  String get storeAddressesTitle => 'DELIVERY ADDRESSES';
+
+  @override
+  String get storeAddressesSubtitle =>
+      'Choose where you\'d like to receive your orders.';
 
   @override
   String get storeAddressesEmptyTitle => 'No saved addresses';
@@ -3780,6 +3797,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeSaveAddressButton => 'Save address';
+
+  @override
+  String get storeAddressLabelField => 'Label (optional)';
+
+  @override
+  String get storeAddressLabelHint => 'E.g.: Home, Work';
+
+  @override
+  String get storeUseResidentialAddress => 'Use my home address';
+
+  @override
+  String get storeDeliveryAddressSummaryTitle => 'DELIVERY ADDRESS';
+
+  @override
+  String get storeChangeAddressButton => 'Change';
+
+  @override
+  String get storeChooseDeliveryAddressTitle => 'CHOOSE WHERE TO RECEIVE';
+
+  @override
+  String get storeNoDeliveryAddressTitle =>
+      'You don\'t have a delivery address yet.';
+
+  @override
+  String get storeAddAnotherAddress => 'Add another address';
 
   @override
   String get storeValFullNameRequired => 'Enter your full name.';

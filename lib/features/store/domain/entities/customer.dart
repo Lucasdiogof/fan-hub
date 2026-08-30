@@ -47,6 +47,7 @@ class CustomerAddress extends Equatable {
     required this.state,
     this.reference,
     this.isDefault = false,
+    this.label,
   });
 
   final String id;
@@ -60,22 +61,46 @@ class CustomerAddress extends Equatable {
   final String? reference;
   final bool isDefault;
 
+  /// Apelido do endereço de entrega ("Casa", "Trabalho"...) — nunca existe
+  /// no endereço residencial, só faz sentido quando há mais de um endereço
+  /// pra escolher.
+  final String? label;
+
   String get oneLine =>
       '$street, $number${complement != null ? ' - $complement' : ''} · '
       '$neighborhood, $city - $state';
 
-  CustomerAddress copyWith({bool? isDefault}) => CustomerAddress(
-    id: id,
-    zipCode: zipCode,
-    street: street,
-    number: number,
-    complement: complement,
-    neighborhood: neighborhood,
-    city: city,
-    state: state,
-    reference: reference,
-    isDefault: isDefault ?? this.isDefault,
-  );
+  CustomerAddress copyWith({bool? isDefault, String? Function()? label}) =>
+      CustomerAddress(
+        id: id,
+        zipCode: zipCode,
+        street: street,
+        number: number,
+        complement: complement,
+        neighborhood: neighborhood,
+        city: city,
+        state: state,
+        reference: reference,
+        isDefault: isDefault ?? this.isDefault,
+        label: label != null ? label() : this.label,
+      );
+
+  /// Cópia INDEPENDENTE com um novo id — usada por "usar meu endereço
+  /// residencial": os valores são copiados uma vez, nunca uma referência
+  /// viva ao residencial (editar um depois nunca afeta o outro).
+  CustomerAddress copyAsNew({required String id, String? label}) =>
+      CustomerAddress(
+        id: id,
+        zipCode: zipCode,
+        street: street,
+        number: number,
+        complement: complement,
+        neighborhood: neighborhood,
+        city: city,
+        state: state,
+        reference: reference,
+        label: label,
+      );
 
   Map<String, dynamic> toJson() => {
     'id': id,
@@ -88,6 +113,7 @@ class CustomerAddress extends Equatable {
     'state': state,
     'reference': reference,
     'isDefault': isDefault,
+    'label': label,
   };
 
   factory CustomerAddress.fromJson(Map<String, dynamic> json) =>
@@ -102,6 +128,7 @@ class CustomerAddress extends Equatable {
         state: json['state'] as String,
         reference: json['reference'] as String?,
         isDefault: json['isDefault'] as bool? ?? false,
+        label: json['label'] as String?,
       );
 
   @override
@@ -116,6 +143,7 @@ class CustomerAddress extends Equatable {
     state,
     reference,
     isDefault,
+    label,
   ];
 }
 

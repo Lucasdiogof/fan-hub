@@ -4,8 +4,7 @@ import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
-import 'package:goias_app/features/store/presentation/store_validators.dart';
-import 'package:goias_app/l10n/app_localizations.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
 
 enum CheckoutStep { identification, delivery, payment, review, confirmation }
 
@@ -17,7 +16,6 @@ class CheckoutState extends Equatable {
     this.cpf = '',
     this.email = '',
     this.phone = '',
-    this.invalidIdentificationFields = const {},
     this.fulfillmentMethod = FulfillmentMethod.delivery,
     this.addresses = const [],
     this.selectedAddressId,
@@ -45,11 +43,6 @@ class CheckoutState extends Equatable {
   final String cpf;
   final String email;
   final String phone;
-
-  /// Nomes dos campos (`fullName`/`cpf`/`email`/`phone`) que falharam na
-  /// última validação — nunca a mensagem pronta (ver
-  /// `identificationErrors(l10n)` abaixo, que traduz sob demanda).
-  final Set<String> invalidIdentificationFields;
 
   // Etapa 2 — entrega ou retirada.
   final FulfillmentMethod fulfillmentMethod;
@@ -99,39 +92,18 @@ class CheckoutState extends Equatable {
   double get total => cart.totalAfterDiscount + shippingCost;
 
   bool get canProceedFromIdentification =>
-      StoreValidators.isValidFullName(fullName) &&
-      StoreValidators.isValidCpf(cpf.replaceAll(RegExp(r'\D'), '')) &&
-      StoreValidators.isValidEmailShape(email) &&
-      StoreValidators.isValidPhone(phone);
-
-  /// Traduzida sob demanda (ver `StoreValidators`) — nunca guardada pronta
-  /// em [invalidIdentificationFields], só os nomes dos campos com problema.
-  Map<String, String> identificationErrors(AppLocalizations l10n) {
-    final errors = <String, String>{};
-    if (invalidIdentificationFields.contains('fullName')) {
-      final message = StoreValidators.fullName(l10n, fullName);
-      if (message != null) errors['fullName'] = message;
-    }
-    if (invalidIdentificationFields.contains('cpf')) {
-      final message = StoreValidators.cpf(l10n, cpf);
-      if (message != null) errors['cpf'] = message;
-    }
-    if (invalidIdentificationFields.contains('email')) {
-      final message = StoreValidators.email(l10n, email);
-      if (message != null) errors['email'] = message;
-    }
-    if (invalidIdentificationFields.contains('phone')) {
-      final message = StoreValidators.phone(l10n, phone);
-      if (message != null) errors['phone'] = message;
-    }
-    return errors;
-  }
+      AppValidators.isValidFullName(fullName) &&
+      AppValidators.isValidCpf(cpf.replaceAll(RegExp(r'\D'), '')) &&
+      AppValidators.isValidEmailShape(email) &&
+      AppValidators.isValidMobilePhone(phone);
 
   bool get canProceedFromDelivery {
     if (fulfillmentMethod == FulfillmentMethod.pickup) {
       if (selfPickup) return true;
-      return (pickupResponsibleName?.isNotEmpty ?? false) &&
-          (pickupResponsibleCpf?.isNotEmpty ?? false);
+      return AppValidators.isValidFullName(pickupResponsibleName ?? '') &&
+          AppValidators.isValidCpf(
+            (pickupResponsibleCpf ?? '').replaceAll(RegExp(r'\D'), ''),
+          );
     }
     return selectedAddressId != null && selectedShippingSpeed != null;
   }
@@ -147,7 +119,6 @@ class CheckoutState extends Equatable {
     String? cpf,
     String? email,
     String? phone,
-    Set<String>? invalidIdentificationFields,
     FulfillmentMethod? fulfillmentMethod,
     List<CustomerAddress>? addresses,
     String? Function()? selectedAddressId,
@@ -172,8 +143,6 @@ class CheckoutState extends Equatable {
     cpf: cpf ?? this.cpf,
     email: email ?? this.email,
     phone: phone ?? this.phone,
-    invalidIdentificationFields:
-        invalidIdentificationFields ?? this.invalidIdentificationFields,
     fulfillmentMethod: fulfillmentMethod ?? this.fulfillmentMethod,
     addresses: addresses ?? this.addresses,
     selectedAddressId: selectedAddressId != null
@@ -209,7 +178,6 @@ class CheckoutState extends Equatable {
     cpf,
     email,
     phone,
-    invalidIdentificationFields,
     fulfillmentMethod,
     addresses,
     selectedAddressId,

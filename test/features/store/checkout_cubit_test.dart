@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
@@ -6,8 +5,8 @@ import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/presentation/cubit/checkout_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/checkout_state.dart';
-import 'package:goias_app/l10n/app_localizations.dart';
 
+import 'fakes/fake_delivery_address_repository.dart';
 import 'fakes/fake_store_orders_repository.dart';
 import 'fakes/fake_store_repository.dart';
 
@@ -33,35 +32,30 @@ const _address = CustomerAddress(
 void main() {
   late FakeStoreRepository repository;
   late FakeStoreOrdersRepository ordersRepository;
-  late AppLocalizations l10n;
-
-  setUpAll(() async {
-    l10n = await AppLocalizations.delegate.load(const Locale('pt'));
-  });
+  late FakeDeliveryAddressRepository addressRepository;
 
   setUp(() {
     repository = FakeStoreRepository();
     ordersRepository = FakeStoreOrdersRepository();
+    addressRepository = FakeDeliveryAddressRepository();
   });
 
   CheckoutCubit build(Cart cart) {
-    final cubit = CheckoutCubit(repository, ordersRepository, cart);
+    final cubit = CheckoutCubit(
+      repository,
+      ordersRepository,
+      addressRepository,
+      cart,
+    );
     addTearDown(cubit.close);
     return cubit;
   }
 
   group('identification step', () {
-    test(
-      'validateIdentification fills errors for empty fields and blocks proceeding',
-      () async {
-        final cubit = build(Cart(items: [_cheapItem()]));
-        final valid = cubit.validateIdentification();
-
-        expect(valid, isFalse);
-        expect(cubit.state.invalidIdentificationFields, contains('cpf'));
-        expect(cubit.state.canProceedFromIdentification, isFalse);
-      },
-    );
+    test('empty fields block proceeding', () async {
+      final cubit = build(Cart(items: [_cheapItem()]));
+      expect(cubit.state.canProceedFromIdentification, isFalse);
+    });
 
     test(
       'an invalid CPF blocks proceeding even with the other fields filled',
@@ -73,11 +67,8 @@ void main() {
           email: 'lucas@example.com',
           phone: '(62) 99999-8888',
         );
-        final valid = cubit.validateIdentification();
 
-        expect(valid, isFalse);
-        expect(cubit.state.invalidIdentificationFields, contains('cpf'));
-        expect(cubit.state.identificationErrors(l10n)['cpf'], 'CPF inválido.');
+        expect(cubit.state.canProceedFromIdentification, isFalse);
       },
     );
 
@@ -89,9 +80,7 @@ void main() {
         email: 'lucas@example.com',
         phone: '(62) 99999-8888',
       );
-      final valid = cubit.validateIdentification();
 
-      expect(valid, isTrue);
       expect(cubit.state.canProceedFromIdentification, isTrue);
     });
   });
@@ -104,6 +93,32 @@ void main() {
       expect(cubit.state.shippingOptions, isNotEmpty);
       expect(cubit.state.selectedShippingSpeed, isNotNull);
     });
+
+    test(
+      'the first delivery address created becomes the selected default',
+      () async {
+        final cubit = build(Cart(items: [_cheapItem()]));
+        await cubit.addAddress(_address);
+
+        expect(addressRepository.addresses, hasLength(1));
+        expect(addressRepository.addresses.single.isDefault, isTrue);
+        expect(cubit.state.selectedAddressId, _address.id);
+      },
+    );
+
+    test(
+      'marking a second address as default unmarks the first one',
+      () async {
+        final cubit = build(Cart(items: [_cheapItem()]));
+        await cubit.addAddress(_address);
+        await cubit.addAddress(_address.copyAsNew(id: 'addr-2'));
+        await cubit.setAddressAsDefault('addr-2');
+
+        final byId = {for (final a in addressRepository.addresses) a.id: a};
+        expect(byId['addr-2']!.isDefault, isTrue);
+        expect(byId[_address.id]!.isDefault, isFalse);
+      },
+    );
 
     test(
       'delivery cannot proceed without both an address and a shipping speed',
@@ -171,6 +186,21 @@ void main() {
         expect(cubit.state.canProceedFromDelivery, isTrue);
       },
     );
+
+    test(
+      'a name and any digits are not enough — CPF must actually be valid',
+      () async {
+        final cubit = build(Cart(items: [_cheapItem()]));
+        await cubit.setFulfillmentMethod(FulfillmentMethod.pickup);
+        cubit.setSelfPickup(false);
+
+        cubit.updatePickupResponsible(name: 'Outra Pessoa', cpf: '1');
+        expect(cubit.state.canProceedFromDelivery, isFalse);
+
+        cubit.updatePickupResponsible(cpf: '111.444.777-36');
+        expect(cubit.state.canProceedFromDelivery, isFalse);
+      },
+    );
   });
 
   group('payment step', () {
@@ -236,7 +266,6 @@ void main() {
         email: 'lucas@example.com',
         phone: '(62) 99999-8888',
       );
-      cubit.validateIdentification();
       await cubit.setFulfillmentMethod(FulfillmentMethod.pickup);
       cubit.simulatePayment();
       cubit.setAcceptedTerms(true);

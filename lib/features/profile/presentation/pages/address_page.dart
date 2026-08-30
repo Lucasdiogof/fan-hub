@@ -19,6 +19,8 @@ import 'package:goias_app/features/profile/presentation/cubit/address_state.dart
 import 'package:goias_app/shared/domain/brazilian_states.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -105,6 +107,14 @@ class _AddressView extends StatelessWidget {
                       BackButtonCircle(onTap: () => context.pop()),
                       const SizedBox(height: AppSpacing.lg),
                       PageTitle(context.l10n.addressTitle),
+                      const SizedBox(height: 6),
+                      Text(
+                        context.l10n.addressResidentialSubtitle,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: colors.textSecondary,
+                        ),
+                      ),
                       const SizedBox(height: AppSpacing.lg),
                     ],
                   ),
@@ -164,6 +174,13 @@ class _AddressFormState extends State<_AddressForm> {
   Timer? _cepDebounce;
   bool _cepLoading = false;
 
+  final _zipTouch = FieldTouch();
+  final _streetTouch = FieldTouch();
+  final _numberTouch = FieldTouch();
+  final _neighborhoodTouch = FieldTouch();
+  final _cityTouch = FieldTouch();
+  bool _submitted = false;
+
   @override
   void dispose() {
     _cepDebounce?.cancel();
@@ -171,7 +188,8 @@ class _AddressFormState extends State<_AddressForm> {
   }
 
   void _onZipChanged(String value) {
-    _zip = value;
+    _zipTouch.touched = true;
+    setState(() => _zip = value);
     _cepDebounce?.cancel();
 
     final digits = onlyDigits(value);
@@ -226,7 +244,17 @@ class _AddressFormState extends State<_AddressForm> {
     if (picked != null) setState(() => _state = picked);
   }
 
+  bool get _isValid =>
+      onlyDigits(_zip).length == 8 &&
+      _street.trim().isNotEmpty &&
+      _number.trim().isNotEmpty &&
+      _neighborhood.trim().isNotEmpty &&
+      _city.trim().isNotEmpty &&
+      _state.isNotEmpty;
+
   Future<void> _save() async {
+    setState(() => _submitted = true);
+    if (!_isValid) return;
     FocusScope.of(context).unfocus();
     final address = UserAddress(
       zipCode: onlyDigits(_zip).isEmpty ? null : onlyDigits(_zip),
@@ -263,6 +291,14 @@ class _AddressFormState extends State<_AddressForm> {
         RegistrationTextField(
           label: context.l10n.addressFieldCep,
           value: _zip,
+          errorText: _zipTouch.errorFor(
+            _zip,
+            submitted: _submitted,
+            format: (v) => AppValidators.isValidZipCode(v)
+                ? null
+                : context.l10n.storeValZipInvalid,
+            requiredMessage: context.l10n.validatorZipRequired,
+          ),
           keyboardType: TextInputType.number,
           inputFormatters: [cepInputFormatter()],
           onChanged: _onZipChanged,
@@ -281,7 +317,15 @@ class _AddressFormState extends State<_AddressForm> {
         RegistrationTextField(
           label: context.l10n.addressFieldStreet,
           value: _street,
-          onChanged: (value) => _street = value,
+          errorText: _streetTouch.errorFor(
+            _street,
+            submitted: _submitted,
+            requiredMessage: context.l10n.membershipValStreet,
+          ),
+          onChanged: (value) {
+            _streetTouch.touched = true;
+            setState(() => _street = value);
+          },
         ),
         const SizedBox(height: AppSpacing.lg),
         Row(
@@ -291,8 +335,16 @@ class _AddressFormState extends State<_AddressForm> {
               child: RegistrationTextField(
                 label: context.l10n.addressFieldNumber,
                 value: _number,
+                errorText: _numberTouch.errorFor(
+                  _number,
+                  submitted: _submitted,
+                  requiredMessage: context.l10n.membershipValNumber,
+                ),
                 keyboardType: TextInputType.number,
-                onChanged: (value) => _number = value,
+                onChanged: (value) {
+                  _numberTouch.touched = true;
+                  setState(() => _number = value);
+                },
               ),
             ),
             const SizedBox(width: AppSpacing.md),
@@ -310,20 +362,39 @@ class _AddressFormState extends State<_AddressForm> {
         RegistrationTextField(
           label: context.l10n.addressFieldNeighborhood,
           value: _neighborhood,
-          onChanged: (value) => _neighborhood = value,
+          errorText: _neighborhoodTouch.errorFor(
+            _neighborhood,
+            submitted: _submitted,
+            requiredMessage: context.l10n.membershipValNeighborhood,
+          ),
+          onChanged: (value) {
+            _neighborhoodTouch.touched = true;
+            setState(() => _neighborhood = value);
+          },
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationPickerField(
           label: context.l10n.addressFieldState,
           value: _state,
           placeholder: context.l10n.addressSelectState,
+          errorText: _submitted && _state.isEmpty
+              ? context.l10n.membershipValState
+              : null,
           onTap: _pickState,
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
           label: context.l10n.addressFieldCity,
           value: _city,
-          onChanged: (value) => _city = value,
+          errorText: _cityTouch.errorFor(
+            _city,
+            submitted: _submitted,
+            requiredMessage: context.l10n.membershipValCity,
+          ),
+          onChanged: (value) {
+            _cityTouch.touched = true;
+            setState(() => _city = value);
+          },
         ),
         const SizedBox(height: AppSpacing.xxl),
         BlocBuilder<AddressCubit, AddressState>(

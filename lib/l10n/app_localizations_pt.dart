@@ -330,7 +330,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get profilePersonalData => 'Dados pessoais';
 
   @override
-  String get profileMyAddress => 'Meu endereço';
+  String get profileMyAddress => 'Endereço residencial';
+
+  @override
+  String get profileDeliveryAddresses => 'Endereços de entrega';
 
   @override
   String get profileSecurity => 'Segurança';
@@ -473,7 +476,11 @@ class AppLocalizationsPt extends AppLocalizations {
   String get securityChangeSuccess => 'Senha alterada com sucesso.';
 
   @override
-  String get addressTitle => 'MEU ENDEREÇO';
+  String get addressTitle => 'ENDEREÇO RESIDENCIAL';
+
+  @override
+  String get addressResidentialSubtitle =>
+      'Seu endereço principal cadastrado na conta.';
 
   @override
   String get addressLoadError => 'Não foi possível carregar seu endereço.';
@@ -1747,6 +1754,12 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get validatorPasswordsDoNotMatch => 'As senhas não coincidem.';
+
+  @override
+  String get validatorPhoneRequired => 'Informe seu telefone.';
+
+  @override
+  String get validatorZipRequired => 'Informe o CEP.';
 
   @override
   String get checkEmailResent =>
@@ -3062,7 +3075,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storeProfileMyOrders => 'Meus pedidos';
 
   @override
-  String get storeProfileAddresses => 'Endereços da loja';
+  String get storeProfileAddresses => 'Endereços de entrega';
 
   @override
   String get storeHomeTitle => 'Goiás Store';
@@ -3740,7 +3753,11 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storeStatusCancelled => 'Cancelado';
 
   @override
-  String get storeAddressesTitle => 'MEUS ENDEREÇOS';
+  String get storeAddressesTitle => 'ENDEREÇOS DE ENTREGA';
+
+  @override
+  String get storeAddressesSubtitle =>
+      'Escolha onde deseja receber seus pedidos.';
 
   @override
   String get storeAddressesEmptyTitle => 'Nenhum endereço salvo';
@@ -3796,6 +3813,31 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get storeSaveAddressButton => 'Salvar endereço';
+
+  @override
+  String get storeAddressLabelField => 'Apelido (opcional)';
+
+  @override
+  String get storeAddressLabelHint => 'Ex.: Casa, Trabalho';
+
+  @override
+  String get storeUseResidentialAddress => 'Usar meu endereço residencial';
+
+  @override
+  String get storeDeliveryAddressSummaryTitle => 'ENDEREÇO DE ENTREGA';
+
+  @override
+  String get storeChangeAddressButton => 'Alterar';
+
+  @override
+  String get storeChooseDeliveryAddressTitle => 'ESCOLHA ONDE RECEBER';
+
+  @override
+  String get storeNoDeliveryAddressTitle =>
+      'Você ainda não possui endereço de entrega.';
+
+  @override
+  String get storeAddAnotherAddress => 'Adicionar outro endereço';
 
   @override
   String get storeValFullNameRequired => 'Informe o nome completo.';

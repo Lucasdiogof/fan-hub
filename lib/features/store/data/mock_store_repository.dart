@@ -4,7 +4,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:goias_app/features/store/data/store_category_catalog.dart';
 import 'package:goias_app/features/store/data/store_local_storage.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
-import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_category.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
@@ -128,13 +127,6 @@ class MockStoreRepository implements StoreRepository {
 
   @override
   Future<void> saveCart(Cart cart) => _storage.saveCart(cart);
-
-  @override
-  Future<List<CustomerAddress>> loadAddresses() => _storage.loadAddresses();
-
-  @override
-  Future<void> saveAddresses(List<CustomerAddress> addresses) =>
-      _storage.saveAddresses(addresses);
 
   @override
   Future<Set<String>> loadFavoriteProductIds() =>

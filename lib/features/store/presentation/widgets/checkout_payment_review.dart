@@ -691,7 +691,7 @@ class _ConfirmationStep extends StatelessWidget {
             onPressed: () =>
                 context.go('/store/orders/${order.id}', extra: order),
           ),
-          const SizedBox(height: AppSpacing.sm),
+          const SizedBox(height: AppSpacing.md),
           OutlinedButton(
             onPressed: () => context.go('/store'),
             style: OutlinedButton.styleFrom(

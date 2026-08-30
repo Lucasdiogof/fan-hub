@@ -3,11 +3,11 @@ import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
+import 'package:goias_app/features/store/domain/repositories/delivery_address_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/store/presentation/cubit/checkout_state.dart';
-import 'package:goias_app/features/store/presentation/store_validators.dart';
 
 /// Uma instância por passagem pelo checkout (`registerFactory`, ver DI) —
 /// opera sobre uma FOTOGRAFIA do carrinho tirada na criação (`initialCart`),
@@ -18,6 +18,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   CheckoutCubit(
     this._repository,
     this._ordersRepository,
+    this._addressRepository,
     Cart initialCart, {
     String? prefillName,
     String? prefillEmail,
@@ -33,9 +34,10 @@ class CheckoutCubit extends Cubit<CheckoutState> {
 
   final StoreRepository _repository;
   final StoreOrdersRepository _ordersRepository;
+  final DeliveryAddressRepository _addressRepository;
 
   Future<void> _loadAddresses() async {
-    final addresses = await _repository.loadAddresses();
+    final addresses = await _addressRepository.list();
     final defaultAddress =
         addresses.where((a) => a.isDefault).firstOrNull ??
         (addresses.isNotEmpty ? addresses.first : null);
@@ -49,6 +51,10 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       await _quoteShipping(defaultAddress.zipCode);
     }
   }
+
+  /// Recarrega do backend — usado depois que o usuário cria/edita/remove um
+  /// endereço de entrega em outra tela (Perfil) e volta pro checkout.
+  Future<void> refreshAddresses() => _loadAddresses();
 
   // ---------------------------------------------------------------------
   // Etapa 1 — identificação
@@ -66,21 +72,8 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         cpf: cpf ?? state.cpf,
         email: email ?? state.email,
         phone: phone ?? state.phone,
-        invalidIdentificationFields: const {},
       ),
     );
-  }
-
-  bool validateIdentification() {
-    final invalid = <String>{
-      if (!StoreValidators.isValidFullName(state.fullName)) 'fullName',
-      if (!StoreValidators.isValidCpf(state.cpf.replaceAll(RegExp(r'\D'), '')))
-        'cpf',
-      if (!StoreValidators.isValidEmailShape(state.email)) 'email',
-      if (!StoreValidators.isValidPhone(state.phone)) 'phone',
-    };
-    emit(state.copyWith(invalidIdentificationFields: invalid));
-    return invalid.isEmpty;
   }
 
   // ---------------------------------------------------------------------
@@ -98,17 +91,18 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   }
 
   Future<void> addAddress(CustomerAddress address) async {
-    final updated = [...state.addresses, address];
-    await _repository.saveAddresses(updated);
-    emit(
-      state.copyWith(addresses: updated, selectedAddressId: () => address.id),
-    );
-    await _quoteShipping(address.zipCode);
+    final created = await _addressRepository.create(address);
+    // Um novo endereço pode ter nascido padrão (regra do backend: o
+    // primeiro endereço de uma conta sempre nasce padrão) — recarrega do
+    // zero em vez de só anexar, pra refletir isso corretamente.
+    await _loadAddresses();
+    emit(state.copyWith(selectedAddressId: () => created.id));
+    await _quoteShipping(created.zipCode);
   }
 
   Future<void> removeAddress(String addressId) async {
+    await _addressRepository.delete(addressId);
     final updated = state.addresses.where((a) => a.id != addressId).toList();
-    await _repository.saveAddresses(updated);
     emit(
       state.copyWith(
         addresses: updated,
@@ -120,10 +114,10 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   }
 
   Future<void> setAddressAsDefault(String addressId) async {
+    await _addressRepository.setDefault(addressId);
     final updated = state.addresses
         .map((a) => a.copyWith(isDefault: a.id == addressId))
         .toList();
-    await _repository.saveAddresses(updated);
     emit(state.copyWith(addresses: updated));
   }
 

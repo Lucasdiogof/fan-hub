@@ -66,7 +66,9 @@ import 'package:goias_app/features/squad/domain/repositories/squad_repository.da
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/store/data/mock_store_repository.dart';
 import 'package:goias_app/features/store/data/store_local_storage.dart';
+import 'package:goias_app/features/store/data/supabase_delivery_address_repository.dart';
 import 'package:goias_app/features/store/data/supabase_store_orders_repository.dart';
+import 'package:goias_app/features/store/domain/repositories/delivery_address_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
@@ -226,6 +228,9 @@ void setupDependencies() {
   sl.registerLazySingleton<StoreRepository>(() => MockStoreRepository(sl()));
   sl.registerLazySingleton<StoreOrdersRepository>(
     () => SupabaseStoreOrdersRepository(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<DeliveryAddressRepository>(
+    () => SupabaseDeliveryAddressRepository(Supabase.instance.client),
   );
   // Carrinho e favoritos precisam sobreviver a navegação (loja → detalhe →
   // checkout), mesma razão do `HomeShellCubit` — singletons, não factory.

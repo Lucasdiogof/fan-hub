@@ -733,8 +733,14 @@ abstract class AppLocalizations {
   /// No description provided for @profileMyAddress.
   ///
   /// In pt, this message translates to:
-  /// **'Meu endereço'**
+  /// **'Endereço residencial'**
   String get profileMyAddress;
+
+  /// No description provided for @profileDeliveryAddresses.
+  ///
+  /// In pt, this message translates to:
+  /// **'Endereços de entrega'**
+  String get profileDeliveryAddresses;
 
   /// No description provided for @profileSecurity.
   ///
@@ -991,8 +997,14 @@ abstract class AppLocalizations {
   /// No description provided for @addressTitle.
   ///
   /// In pt, this message translates to:
-  /// **'MEU ENDEREÇO'**
+  /// **'ENDEREÇO RESIDENCIAL'**
   String get addressTitle;
+
+  /// No description provided for @addressResidentialSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu endereço principal cadastrado na conta.'**
+  String get addressResidentialSubtitle;
 
   /// No description provided for @addressLoadError.
   ///
@@ -3093,6 +3105,18 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'As senhas não coincidem.'**
   String get validatorPasswordsDoNotMatch;
+
+  /// No description provided for @validatorPhoneRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu telefone.'**
+  String get validatorPhoneRequired;
+
+  /// No description provided for @validatorZipRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe o CEP.'**
+  String get validatorZipRequired;
 
   /// No description provided for @checkEmailResent.
   ///
@@ -5461,7 +5485,7 @@ abstract class AppLocalizations {
   /// No description provided for @storeProfileAddresses.
   ///
   /// In pt, this message translates to:
-  /// **'Endereços da loja'**
+  /// **'Endereços de entrega'**
   String get storeProfileAddresses;
 
   /// No description provided for @storeHomeTitle.
@@ -6661,8 +6685,14 @@ abstract class AppLocalizations {
   /// No description provided for @storeAddressesTitle.
   ///
   /// In pt, this message translates to:
-  /// **'MEUS ENDEREÇOS'**
+  /// **'ENDEREÇOS DE ENTREGA'**
   String get storeAddressesTitle;
+
+  /// No description provided for @storeAddressesSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha onde deseja receber seus pedidos.'**
+  String get storeAddressesSubtitle;
 
   /// No description provided for @storeAddressesEmptyTitle.
   ///
@@ -6765,6 +6795,54 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Salvar endereço'**
   String get storeSaveAddressButton;
+
+  /// No description provided for @storeAddressLabelField.
+  ///
+  /// In pt, this message translates to:
+  /// **'Apelido (opcional)'**
+  String get storeAddressLabelField;
+
+  /// No description provided for @storeAddressLabelHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ex.: Casa, Trabalho'**
+  String get storeAddressLabelHint;
+
+  /// No description provided for @storeUseResidentialAddress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Usar meu endereço residencial'**
+  String get storeUseResidentialAddress;
+
+  /// No description provided for @storeDeliveryAddressSummaryTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ENDEREÇO DE ENTREGA'**
+  String get storeDeliveryAddressSummaryTitle;
+
+  /// No description provided for @storeChangeAddressButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Alterar'**
+  String get storeChangeAddressButton;
+
+  /// No description provided for @storeChooseDeliveryAddressTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'ESCOLHA ONDE RECEBER'**
+  String get storeChooseDeliveryAddressTitle;
+
+  /// No description provided for @storeNoDeliveryAddressTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você ainda não possui endereço de entrega.'**
+  String get storeNoDeliveryAddressTitle;
+
+  /// No description provided for @storeAddAnotherAddress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adicionar outro endereço'**
+  String get storeAddAnotherAddress;
 
   /// No description provided for @storeValFullNameRequired.
   ///

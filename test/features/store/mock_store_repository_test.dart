@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/features/store/data/mock_store_repository.dart';
 import 'package:goias_app/features/store/data/store_local_storage.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
-import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -118,25 +117,6 @@ void main() {
       final loaded = await reloaded.loadCart();
       expect(loaded.items, hasLength(1));
       expect(loaded.items.single.productId, 'uniform_01_female_fan');
-    });
-
-    test('addresses round-trip through persistence', () async {
-      const address = CustomerAddress(
-        id: 'a1',
-        zipCode: '74000-000',
-        street: 'Rua Teste',
-        number: '10',
-        neighborhood: 'Setor Teste',
-        city: 'Goiânia',
-        state: 'GO',
-      );
-      await repository.saveAddresses([address]);
-
-      final reloaded = await MockStoreRepository(
-        StoreLocalStorage(),
-      ).loadAddresses();
-      expect(reloaded, hasLength(1));
-      expect(reloaded.single.zipCode, '74000-000');
     });
 
   });

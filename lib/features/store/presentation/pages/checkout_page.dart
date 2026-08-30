@@ -5,9 +5,13 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/features/profile/domain/entities/user_address.dart';
+import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
+import 'package:goias_app/features/store/domain/repositories/delivery_address_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
@@ -18,7 +22,10 @@ import 'package:goias_app/features/store/presentation/widgets/store_address_form
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -44,6 +51,7 @@ class CheckoutPage extends StatelessWidget {
       create: (_) => CheckoutCubit(
         sl<StoreRepository>(),
         sl<StoreOrdersRepository>(),
+        sl<DeliveryAddressRepository>(),
         cart,
         prefillName: profile?.fullName,
         prefillEmail: profile?.email,
@@ -356,22 +364,33 @@ class _SidebarRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 2),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: bold ? 14 : 12.5,
-              fontWeight: bold ? FontWeight.w800 : FontWeight.w500,
-              color: bold ? colors.textPrimary : colors.textSecondary,
+          Flexible(
+            child: Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: bold ? 14 : 12.5,
+                fontWeight: bold ? FontWeight.w800 : FontWeight.w500,
+                color: bold ? colors.textPrimary : colors.textSecondary,
+              ),
             ),
           ),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: bold ? 15 : 12.5,
-              fontWeight: bold ? FontWeight.w900 : FontWeight.w700,
-              color:
-                  color ?? (bold ? colors.textPrimary : colors.textSecondary),
+          const SizedBox(width: AppSpacing.sm),
+          Flexible(
+            child: Text(
+              value,
+              textAlign: TextAlign.end,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: bold ? 15 : 12.5,
+                fontWeight: bold ? FontWeight.w900 : FontWeight.w700,
+                color:
+                    color ?? (bold ? colors.textPrimary : colors.textSecondary),
+              ),
             ),
           ),
         ],
@@ -449,6 +468,12 @@ class _IdentificationStepState extends State<_IdentificationStep> {
   late final _emailController = TextEditingController(text: widget.state.email);
   late final _phoneController = TextEditingController(text: widget.state.phone);
 
+  final _nameTouch = FieldTouch();
+  final _cpfTouch = FieldTouch();
+  final _emailTouch = FieldTouch();
+  final _phoneTouch = FieldTouch();
+  bool _submitted = false;
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -458,29 +483,46 @@ class _IdentificationStepState extends State<_IdentificationStep> {
     super.dispose();
   }
 
+  void _submit() {
+    setState(() => _submitted = true);
+    final l10n = context.l10n;
+    final valid =
+        AppValidators.fullName(l10n, _nameController.text) == null &&
+        AppValidators.cpf(l10n, _cpfController.text) == null &&
+        AppValidators.email(l10n, _emailController.text) == null &&
+        AppValidators.mobilePhone(l10n, _phoneController.text) == null;
+    if (valid) context.read<CheckoutCubit>().nextStep();
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final cubit = context.read<CheckoutCubit>();
-    final errors = widget.state.identificationErrors(l10n);
 
     return _StepScaffold(
       state: widget.state,
       primaryLabel: l10n.storeContinueButton,
-      onPrimaryPressed: () {
-        if (cubit.validateIdentification()) cubit.nextStep();
-      },
+      onPrimaryPressed: _submit,
       form: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextField(
             controller: _nameController,
             textCapitalization: TextCapitalization.words,
-            onChanged: (v) => cubit.updateIdentification(fullName: v),
+            onChanged: (v) {
+              _nameTouch.touched = true;
+              cubit.updateIdentification(fullName: v);
+              setState(() {});
+            },
             decoration: _fieldDecoration(
               context,
               l10n.storeFullNameLabel,
-              errorText: errors['fullName'],
+              errorText: _nameTouch.errorFor(
+                _nameController.text,
+                submitted: _submitted,
+                format: (v) => AppValidators.fullName(l10n, v),
+                requiredMessage: l10n.storeValFullNameRequired,
+              ),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -488,22 +530,40 @@ class _IdentificationStepState extends State<_IdentificationStep> {
             controller: _cpfController,
             keyboardType: TextInputType.number,
             inputFormatters: [cpfInputFormatter()],
-            onChanged: (v) => cubit.updateIdentification(cpf: v),
+            onChanged: (v) {
+              _cpfTouch.touched = true;
+              cubit.updateIdentification(cpf: v);
+              setState(() {});
+            },
             decoration: _fieldDecoration(
               context,
               l10n.storeCpfLabel,
-              errorText: errors['cpf'],
+              errorText: _cpfTouch.errorFor(
+                _cpfController.text,
+                submitted: _submitted,
+                format: (v) => AppValidators.cpf(l10n, v),
+                requiredMessage: l10n.storeValCpfRequired,
+              ),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
           TextField(
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
-            onChanged: (v) => cubit.updateIdentification(email: v),
+            onChanged: (v) {
+              _emailTouch.touched = true;
+              cubit.updateIdentification(email: v);
+              setState(() {});
+            },
             decoration: _fieldDecoration(
               context,
               l10n.commonEmailLabel,
-              errorText: errors['email'],
+              errorText: _emailTouch.errorFor(
+                _emailController.text,
+                submitted: _submitted,
+                format: (v) => AppValidators.email(l10n, v),
+                requiredMessage: l10n.validatorEmailRequired,
+              ),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -511,11 +571,20 @@ class _IdentificationStepState extends State<_IdentificationStep> {
             controller: _phoneController,
             keyboardType: TextInputType.phone,
             inputFormatters: [phoneInputFormatter()],
-            onChanged: (v) => cubit.updateIdentification(phone: v),
+            onChanged: (v) {
+              _phoneTouch.touched = true;
+              cubit.updateIdentification(phone: v);
+              setState(() {});
+            },
             decoration: _fieldDecoration(
               context,
               l10n.storePhoneLabel,
-              errorText: errors['phone'],
+              errorText: _phoneTouch.errorFor(
+                _phoneController.text,
+                submitted: _submitted,
+                format: (v) => AppValidators.mobilePhone(l10n, v),
+                requiredMessage: l10n.validatorPhoneRequired,
+              ),
             ),
           ),
         ],
@@ -645,56 +714,326 @@ class _ToggleTile extends StatelessWidget {
   }
 }
 
-class _DeliveryAddressSection extends StatelessWidget {
+class _DeliveryAddressSection extends StatefulWidget {
   const _DeliveryAddressSection({required this.state});
 
   final CheckoutState state;
 
   @override
+  State<_DeliveryAddressSection> createState() =>
+      _DeliveryAddressSectionState();
+}
+
+class _DeliveryAddressSectionState extends State<_DeliveryAddressSection> {
+  late final Future<UserAddress?> _residentialFuture = _loadResidential();
+
+  Future<UserAddress?> _loadResidential() async {
+    final result = await sl<ProfileRepository>().getAddress();
+    return result is Success<UserAddress?> ? result.data : null;
+  }
+
+  Future<void> _useResidential(
+    CheckoutCubit cubit,
+    UserAddress residential,
+  ) {
+    return cubit.addAddress(
+      CustomerAddress(
+        id: 'addr_${DateTime.now().microsecondsSinceEpoch}',
+        zipCode: residential.zipCode ?? '',
+        street: residential.street ?? '',
+        number: residential.number ?? '',
+        complement: residential.complement,
+        neighborhood: residential.neighborhood ?? '',
+        city: residential.city ?? '',
+        state: residential.state ?? '',
+      ),
+    );
+  }
+
+  Future<void> _openChooser(UserAddress? residential) async {
+    final cubit = context.read<CheckoutCubit>();
+    await AppModalSheet.show<void>(
+      context,
+      builder: (sheetContext) => _AddressChooserSheet(
+        addresses: widget.state.addresses,
+        selectedId: widget.state.selectedAddressId,
+        hasResidential: residential != null && !residential.isEmpty,
+        onSelect: (id) {
+          cubit.selectAddress(id);
+          Navigator.of(sheetContext).pop();
+        },
+        onAddNew: () {
+          Navigator.of(sheetContext).pop();
+          showStoreAddressFormSheet(context, onSave: cubit.addAddress);
+        },
+        onUseResidential: residential == null
+            ? null
+            : () {
+                Navigator.of(sheetContext).pop();
+                _useResidential(cubit, residential);
+              },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final cubit = context.read<CheckoutCubit>();
+    final state = widget.state;
+
+    return FutureBuilder<UserAddress?>(
+      future: _residentialFuture,
+      builder: (context, snapshot) {
+        final residential = snapshot.data;
+        final hasResidential = residential != null && !residential.isEmpty;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _FieldLabel(l10n.storeDeliveryAddressSummaryTitle),
+            if (state.selectedAddress != null)
+              _SelectedAddressSummary(
+                address: state.selectedAddress!,
+                onChange: () => _openChooser(residential),
+              )
+            else
+              _NoDeliveryAddressState(
+                hasResidential: hasResidential,
+                onUseResidential: hasResidential
+                    ? () => _useResidential(cubit, residential)
+                    : null,
+                onAddNew: () =>
+                    showStoreAddressFormSheet(context, onSave: cubit.addAddress),
+              ),
+            if (state.selectedAddress != null) ...[
+              _FieldLabel(l10n.storeShippingLabel),
+              if (state.loadingShipping)
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
+                  child: Center(child: GoiasLoadingIndicator()),
+                )
+              else
+                for (final option in state.shippingOptions)
+                  _ShippingOptionTile(
+                    option: option,
+                    selected: state.selectedShippingSpeed == option.speed,
+                    onTap: () => cubit.selectShippingSpeed(option.speed),
+                  ),
+            ],
+          ],
+        );
+      },
+    );
+  }
+}
+
+/// Resumo do endereço já selecionado (padrão, na maioria das vezes) — só um
+/// CTA discreto pra abrir o seletor completo, em vez da lista sempre
+/// expandida de antes.
+class _SelectedAddressSummary extends StatelessWidget {
+  const _SelectedAddressSummary({required this.address, required this.onChange});
+
+  final CustomerAddress address;
+  final VoidCallback onChange;
+
+  @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
-    final cubit = context.read<CheckoutCubit>();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _FieldLabel(l10n.storeDeliveryAddressLabel),
-        for (final address in state.addresses)
-          _AddressCard(
-            address: address,
-            selected: state.selectedAddressId == address.id,
-            onTap: () => cubit.selectAddress(address.id),
-          ),
-        OutlinedButton.icon(
-          onPressed: () =>
-              showStoreAddressFormSheet(context, onSave: cubit.addAddress),
-          icon: const Icon(Icons.add_rounded, size: 18),
-          label: Text(l10n.storeAddAddress),
-          style: OutlinedButton.styleFrom(
-            minimumSize: const Size.fromHeight(48),
-            foregroundColor: colors.primary,
-            side: BorderSide(color: colors.border),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppRadius.button),
+    return Container(
+      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+        border: Border.all(color: colors.border),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.location_on_outlined, color: colors.primary, size: 20),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (address.label?.isNotEmpty == true)
+                  Text(
+                    address.label!,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w800,
+                      color: colors.textPrimary,
+                    ),
+                  ),
+                Text(
+                  address.oneLine,
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    color: colors.textSecondary,
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-        if (state.selectedAddress != null) ...[
-          _FieldLabel(l10n.storeShippingLabel),
-          if (state.loadingShipping)
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
-              child: Center(child: GoiasLoadingIndicator()),
-            )
-          else
-            for (final option in state.shippingOptions)
-              _ShippingOptionTile(
-                option: option,
-                selected: state.selectedShippingSpeed == option.speed,
-                onTap: () => cubit.selectShippingSpeed(option.speed),
-              ),
+          TextButton(
+            onPressed: onChange,
+            style: TextButton.styleFrom(padding: EdgeInsets.zero),
+            child: Text(l10n.storeChangeAddressButton),
+          ),
         ],
-      ],
+      ),
+    );
+  }
+}
+
+/// Nenhum endereço de entrega ainda — nunca abre o formulário sozinho; só
+/// oferece os dois caminhos possíveis, condicionados a existir (ou não) um
+/// endereço residencial pra copiar.
+class _NoDeliveryAddressState extends StatelessWidget {
+  const _NoDeliveryAddressState({
+    required this.hasResidential,
+    required this.onUseResidential,
+    required this.onAddNew,
+  });
+
+  final bool hasResidential;
+  final VoidCallback? onUseResidential;
+  final VoidCallback onAddNew;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final l10n = context.l10n;
+    return Container(
+      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.storeNoDeliveryAddressTitle,
+            style: TextStyle(fontSize: 13, color: colors.textSecondary),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          if (hasResidential)
+            OutlinedButton(
+              onPressed: onUseResidential,
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size.fromHeight(44),
+                foregroundColor: colors.primary,
+                side: BorderSide(color: colors.primary),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.button),
+                ),
+              ),
+              child: Text(l10n.storeUseResidentialAddress),
+            ),
+          if (hasResidential) const SizedBox(height: AppSpacing.sm),
+          OutlinedButton.icon(
+            onPressed: onAddNew,
+            icon: const Icon(Icons.add_rounded, size: 18),
+            label: Text(
+              hasResidential ? l10n.storeAddAnotherAddress : l10n.storeAddAddress,
+            ),
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size.fromHeight(44),
+              foregroundColor: colors.textSecondary,
+              side: BorderSide(color: colors.border),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppRadius.button),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Bottom sheet "Escolha onde receber" — lista todos os endereços já
+/// salvos como radio-tiles (reaproveita `_AddressCard`) + os dois atalhos de
+/// criação. Abrir/fechar é decisão de quem chama (`_openChooser`), não do
+/// sheet em si.
+class _AddressChooserSheet extends StatelessWidget {
+  const _AddressChooserSheet({
+    required this.addresses,
+    required this.selectedId,
+    required this.hasResidential,
+    required this.onSelect,
+    required this.onAddNew,
+    required this.onUseResidential,
+  });
+
+  final List<CustomerAddress> addresses;
+  final String? selectedId;
+  final bool hasResidential;
+  final ValueChanged<String> onSelect;
+  final VoidCallback onAddNew;
+  final VoidCallback? onUseResidential;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final l10n = context.l10n;
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+          AppSpacing.lg,
+          AppSpacing.md,
+          AppSpacing.lg,
+          AppSpacing.lg,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Semantics(
+              header: true,
+              child: Text(
+                l10n.storeChooseDeliveryAddressTitle,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
+                ),
+              ),
+            ),
+            const SizedBox(height: AppSpacing.md),
+            for (final address in addresses)
+              _AddressCard(
+                address: address,
+                selected: selectedId == address.id,
+                onTap: () => onSelect(address.id),
+              ),
+            OutlinedButton.icon(
+              onPressed: onAddNew,
+              icon: const Icon(Icons.add_rounded, size: 18),
+              label: Text(l10n.storeAddAddress),
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size.fromHeight(48),
+                foregroundColor: colors.primary,
+                side: BorderSide(color: colors.border),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppRadius.button),
+                ),
+              ),
+            ),
+            if (onUseResidential != null) ...[
+              const SizedBox(height: AppSpacing.sm),
+              TextButton(
+                onPressed: onUseResidential,
+                child: Text(l10n.storeUseResidentialAddress),
+              ),
+            ],
+          ],
+        ),
+      ),
     );
   }
 }
@@ -847,13 +1186,22 @@ class _ShippingOptionTile extends StatelessWidget {
   }
 }
 
-class _PickupSection extends StatelessWidget {
+class _PickupSection extends StatefulWidget {
   const _PickupSection({required this.state});
 
   final CheckoutState state;
 
   @override
+  State<_PickupSection> createState() => _PickupSectionState();
+}
+
+class _PickupSectionState extends State<_PickupSection> {
+  final _nameTouch = FieldTouch();
+  final _cpfTouch = FieldTouch();
+
+  @override
   Widget build(BuildContext context) {
+    final state = widget.state;
     final colors = context.colors;
     final l10n = context.l10n;
     final cubit = context.read<CheckoutCubit>();
@@ -907,20 +1255,38 @@ class _PickupSection extends StatelessWidget {
         if (!state.selfPickup) ...[
           const SizedBox(height: AppSpacing.md),
           TextField(
-            onChanged: (v) => cubit.updatePickupResponsible(name: v),
+            onChanged: (v) {
+              _nameTouch.touched = true;
+              cubit.updatePickupResponsible(name: v);
+              setState(() {});
+            },
             decoration: _fieldDecoration(
               context,
               l10n.storePickupResponsibleNameField,
+              errorText: _nameTouch.errorFor(
+                state.pickupResponsibleName ?? '',
+                submitted: false,
+                format: (v) => AppValidators.fullName(l10n, v),
+              ),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
           TextField(
             keyboardType: TextInputType.number,
             inputFormatters: [cpfInputFormatter()],
-            onChanged: (v) => cubit.updatePickupResponsible(cpf: v),
+            onChanged: (v) {
+              _cpfTouch.touched = true;
+              cubit.updatePickupResponsible(cpf: v);
+              setState(() {});
+            },
             decoration: _fieldDecoration(
               context,
               l10n.storePickupResponsibleCpfField,
+              errorText: _cpfTouch.errorFor(
+                state.pickupResponsibleCpf ?? '',
+                submitted: false,
+                format: (v) => AppValidators.cpf(l10n, v),
+              ),
             ),
           ),
         ],
