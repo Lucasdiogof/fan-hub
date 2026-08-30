@@ -8,7 +8,10 @@ import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_state.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/layout/lineup_layout_engine.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_field.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_name_label.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_percent_badge.dart';
 import 'package:goias_app/shared/widgets/jersey_shirt.dart';
 
 class CrowdTab extends StatelessWidget {
@@ -44,15 +47,15 @@ class CrowdTab extends StatelessWidget {
                 key: fieldKey,
                 child: LineupField(
                   formation: crowd.topFormation!,
-                  slotBuilder: (slotIndex, slot, avatarSize, cellWidth) {
+                  mode: LineupRenderMode.crowd,
+                  slotBuilder: (slotIndex, slot, footprint) {
                     final result = slotIndex < crowd.slots.length
                         ? crowd.slots[slotIndex]
                         : null;
                     return _CrowdSlot(
                       result: result,
                       position: slot.position.short(context),
-                      avatarSize: avatarSize,
-                      labelMaxWidth: cellWidth,
+                      footprint: footprint,
                       isHome: isHome,
                     );
                   },
@@ -140,87 +143,43 @@ class _CrowdSlot extends StatelessWidget {
   const _CrowdSlot({
     required this.result,
     required this.position,
-    required this.avatarSize,
-    required this.labelMaxWidth,
+    required this.footprint,
     required this.isHome,
   });
 
   final CrowdSlotResult? result;
   final String position;
-  final double avatarSize;
-  final double labelMaxWidth;
+  final PlayerVisualFootprint footprint;
   final bool isHome;
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.colors;
     final player = result?.player;
+    final avatarSize = footprint.jerseySize;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.center,
-          children: [
-            if (player == null)
-              _EmptyJersey(size: avatarSize)
-            else
-              JerseyShirt(
-                size: avatarSize,
-                number: player.shirtNumber,
-                fillColor: isHome ? ArenaColors.goiasOutfield : Colors.white,
-                numberColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
-                trimColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
-              ),
-            if (result != null && player != null)
-              Positioned(
-                bottom: -avatarSize * 0.14,
-                left: 0,
-                right: 0,
-                child: Center(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 6,
-                      vertical: 1,
-                    ),
-                    decoration: BoxDecoration(
-                      color: colors.gold,
-                      borderRadius: BorderRadius.circular(999),
-                      border: Border.all(color: Colors.white, width: 1),
-                    ),
-                    child: Text(
-                      '${result!.percent}%',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Container(
-          constraints: BoxConstraints(maxWidth: labelMaxWidth),
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-          decoration: BoxDecoration(
-            color: Colors.black.withValues(alpha: 0.45),
-            borderRadius: BorderRadius.circular(6),
+        if (player == null)
+          _EmptyJersey(size: avatarSize)
+        else
+          JerseyShirt(
+            size: avatarSize,
+            number: player.shirtNumber,
+            fillColor: isHome ? ArenaColors.goiasOutfield : Colors.white,
+            numberColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
+            trimColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
           ),
-          child: Text(
-            (player?.name ?? position).toUpperCase(),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 9.5,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.1,
-            ),
-          ),
+        const SizedBox(height: 3),
+        if (result != null && player != null)
+          LineupPercentBadge(percent: result!.percent)
+        else
+          const SizedBox(height: 15),
+        const SizedBox(height: 4),
+        LineupNameLabel(
+          text: player?.name ?? position,
+          maxWidth: footprint.width,
+          maxLines: footprint.nameMaxLines,
+          allowSplit: player != null,
         ),
       ],
     );

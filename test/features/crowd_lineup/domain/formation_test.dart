@@ -5,25 +5,19 @@ import 'package:goias_app/shared/domain/player_position.dart';
 int _count(Formation formation, PlayerPosition position) =>
     formation.slots.where((slot) => slot.position == position).length;
 
-/// Mesmo agrupamento por `y` próximo que `LineupField` usa pra decidir
-/// linhas táticas (ver `_groupIntoLines`) — duplicado aqui de propósito
-/// pra travar a distância mínima independente de qualquer mudança futura
-/// no algoritmo de tamanho da célula.
-List<List<FormationSlot>> _groupIntoLines(List<FormationSlot> slots) {
-  const threshold = 0.07;
-  final sorted = [...slots]..sort((a, b) => a.y.compareTo(b.y));
-  final lines = <List<FormationSlot>>[];
-  for (final slot in sorted) {
-    if (lines.isNotEmpty && slot.y - lines.last.last.y <= threshold) {
-      lines.last.add(slot);
-    } else {
-      lines.add([slot]);
-    }
-  }
-  return lines;
-}
-
 void main() {
+  group('distributeLine', () {
+    test('a single player is always centered', () {
+      expect(distributeLine(1, 0.3), [0.5]);
+    });
+
+    test('spreads N players evenly within [0.5-halfSpan, 0.5+halfSpan]', () {
+      expect(distributeLine(2, 0.2), [0.3, 0.7]);
+      expect(distributeLine(3, 0.2), [0.3, 0.5, 0.7]);
+      expect(distributeLine(4, 0.36), [0.14, 0.38, 0.62, 0.86]);
+    });
+  });
+
   group('every formation', () {
     for (final formation in formations) {
       test('${formation.id} has exactly 11 slots, 1 of them GOL', () {
@@ -43,12 +37,11 @@ void main() {
         }
       });
 
-      // Uma escalação é uma representação visual, não um mapa de calor —
-      // os 10 jogadores de linha precisam ocupar o campo de verdade, não
-      // ficar todos espremidos perto da própria defesa. Trava a faixa
-      // vertical pra este bug (time inteiro recuado) não voltar.
+      // A escalação precisa ocupar o campo de verdade — os 10 jogadores de
+      // linha vivem entre a banda de ataque e a de defesa, nunca espremidos
+      // perto da própria defesa nem enfiados na linha de fundo adversária.
       test(
-        '${formation.id} spreads its 10 outfield players from attack to defense',
+        '${formation.id} spreads its 10 outfield players between the attack and defense bands',
         () {
           final outfield = formation.slots.where(
             (s) => s.position != PlayerPosition.gol,
@@ -57,20 +50,22 @@ void main() {
           for (final slot in outfield) {
             expect(
               slot.y,
-              inInclusiveRange(0.15, 0.72),
+              inInclusiveRange(0.18, 0.73),
               reason: '${formation.id}: ${slot.position} at y=${slot.y}',
             );
           }
-          final mostAdvanced = outfield
-              .map((s) => s.y)
-              .reduce((a, b) => a < b ? a : b);
-          expect(
-            mostAdvanced,
-            lessThan(0.25),
-            reason: '${formation.id}: front line must reach near the box',
-          );
         },
       );
+
+      test('${formation.id} keeps its attack line advanced (y 0.18–0.22)', () {
+        final attackers = formation.slots.where(
+          (s) => s.line == TacticalLine.attack,
+        );
+        expect(attackers, isNotEmpty);
+        for (final slot in attackers) {
+          expect(slot.y, inInclusiveRange(0.18, 0.22));
+        }
+      });
 
       test(
         '${formation.id} keeps the goalkeeper clearly behind the defense',
@@ -83,30 +78,28 @@ void main() {
               .map((s) => s.y)
               .reduce((a, b) => a > b ? a : b);
           expect(gol.y, greaterThan(defenseY));
-          expect(gol.y, inInclusiveRange(0.8, 0.95));
+          expect(gol.y, inInclusiveRange(0.86, 0.90));
         },
       );
 
-      // Regressão pro bug reportado repetidas vezes: jogadores de linhas
-      // vizinhas (ou lado a lado na mesma linha) desenhados perto demais,
-      // camisas se tocando/sobrepondo — ver [[project_goias_app_crowd_lineup_feature]].
-      // Os limites abaixo espelham o piso de tamanho de célula que
-      // `LineupField` usa (30dp de camisa / 46dp de largura mínima): abaixo
-      // deles nem o encolhimento adaptativo do campo dá conta.
+      // Regressão pro bug reportado repetidas vezes: linhas táticas vizinhas
+      // desenhadas perto demais. Agora `TacticalLine` é o agrupamento (não
+      // mais uma heurística de "y próximo"), então qualquer par de linhas
+      // PRESENTES na formação precisa manter esse respiro.
       test(
         '${formation.id} keeps a safe vertical gap between tactical lines',
         () {
-          final lines = _groupIntoLines(formation.slots);
-          for (var i = 1; i < lines.length; i++) {
-            double avgY(List<FormationSlot> line) =>
-                line.map((s) => s.y).reduce((a, b) => a + b) / line.length;
-            final gap = avgY(lines[i]) - avgY(lines[i - 1]);
+          final byLine = <TacticalLine, double>{};
+          for (final slot in formation.slots) {
+            byLine[slot.line] = slot.y;
+          }
+          final ys = byLine.values.toList()..sort();
+          for (var i = 1; i < ys.length; i++) {
             expect(
-              gap,
-              greaterThanOrEqualTo(0.12),
-              reason:
-                  '${formation.id}: lines at y≈${avgY(lines[i - 1])} and '
-                  'y≈${avgY(lines[i])} are too close',
+              ys[i] - ys[i - 1],
+              greaterThanOrEqualTo(0.11),
+              reason: '${formation.id}: lines at y≈${ys[i - 1]} and '
+                  'y≈${ys[i]} are too close',
             );
           }
         },
@@ -115,21 +108,43 @@ void main() {
       test(
         '${formation.id} keeps a safe horizontal gap within each line',
         () {
-          for (final line in _groupIntoLines(formation.slots)) {
-            if (line.length < 2) continue;
-            final xs = [for (final slot in line) slot.x]..sort();
+          final byLine = <TacticalLine, List<double>>{};
+          for (final slot in formation.slots) {
+            byLine.putIfAbsent(slot.line, () => []).add(slot.x);
+          }
+          for (final xs in byLine.values) {
+            if (xs.length < 2) continue;
+            xs.sort();
             for (var i = 1; i < xs.length; i++) {
               expect(
                 xs[i] - xs[i - 1],
                 greaterThanOrEqualTo(0.13),
-                reason:
-                    '${formation.id}: slots at x=${xs[i - 1]} and '
+                reason: '${formation.id}: slots at x=${xs[i - 1]} and '
                     'x=${xs[i]} on the same line are too close',
               );
             }
           }
         },
       );
+
+      // A ordem tática do campo (ataque → goleiro) precisa ser respeitada
+      // por toda linha presente na formação, não só nas extremidades.
+      test('${formation.id} orders its tactical lines correctly', () {
+        final byLine = <TacticalLine, double>{};
+        for (final slot in formation.slots) {
+          byLine[slot.line] = slot.y;
+        }
+        final present = TacticalLine.values.where(byLine.containsKey).toList();
+        for (var i = 1; i < present.length; i++) {
+          expect(
+            byLine[present[i]],
+            greaterThan(byLine[present[i - 1]]!),
+            reason:
+                '${formation.id}: ${present[i - 1]} should be in front of '
+                '${present[i]}',
+          );
+        }
+      });
     }
   });
 

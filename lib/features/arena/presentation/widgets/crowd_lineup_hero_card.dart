@@ -45,7 +45,7 @@ class CrowdLineupHeroCard extends StatelessWidget {
           const Positioned.fill(child: StadiumBackdrop(showFloodlights: false)),
           Positioned(
             right: -30,
-            bottom: -30,
+            bottom: -8,
             child: Opacity(
               opacity: 0.1,
               child: Image.asset(
@@ -133,17 +133,6 @@ class CrowdLineupHeroCard extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    if (participants != null && participants! > 0) ...[
-                      const SizedBox(height: 6),
-                      Text(
-                        l10n.arenaLineupHeroParticipants(participants!),
-                        style: TextStyle(
-                          color: Colors.white.withValues(alpha: 0.62),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
                     const SizedBox(height: AppSpacing.lg),
                     SizedBox(
                       width: double.infinity,
@@ -155,27 +144,16 @@ class CrowdLineupHeroCard extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(AppRadius.pill),
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              hasVoted
-                                  ? l10n.arenaHighlightViewLineup
-                                  : l10n.arenaLineupHeroCta,
-                              style: const TextStyle(
-                                fontSize: 13.5,
-                                fontWeight: FontWeight.w800,
-                                color: ArenaColors.goiasOutfield,
-                              ),
-                            ),
-                            const SizedBox(width: 6),
-                            const Icon(
-                              Icons.arrow_forward_rounded,
-                              size: 16,
-                              color: ArenaColors.goiasOutfield,
-                            ),
-                          ],
+                        child: Text(
+                          hasVoted
+                              ? l10n.arenaHighlightViewLineup
+                              : l10n.arenaLineupHeroCta,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 13.5,
+                            fontWeight: FontWeight.w800,
+                            color: ArenaColors.goiasOutfield,
+                          ),
                         ),
                       ),
                     ),

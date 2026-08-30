@@ -6,11 +6,12 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
-import 'package:goias_app/features/crowd_lineup/domain/squad_player.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_state.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/layout/lineup_layout_engine.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/formation_selector.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_field.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_name_label.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/player_picker_sheet.dart';
 import 'package:goias_app/shared/widgets/jersey_shirt.dart';
 
@@ -62,15 +63,14 @@ class EscaleTab extends StatelessWidget {
                       key: fieldKey,
                       child: LineupField(
                         formation: state.formation,
-                        slotBuilder: (slotIndex, slot, avatarSize, cellWidth) =>
-                            _Slot(
-                              state: state,
-                              slotIndex: slotIndex,
-                              slot: slot,
-                              avatarSize: avatarSize,
-                              labelMaxWidth: cellWidth,
-                              isHome: isHome,
-                            ),
+                        mode: LineupRenderMode.editable,
+                        slotBuilder: (slotIndex, slot, footprint) => _Slot(
+                          state: state,
+                          slotIndex: slotIndex,
+                          slot: slot,
+                          footprint: footprint,
+                          isHome: isHome,
+                        ),
                       ),
                     ),
                   ],
@@ -90,16 +90,14 @@ class _Slot extends StatelessWidget {
     required this.state,
     required this.slotIndex,
     required this.slot,
-    required this.avatarSize,
-    required this.labelMaxWidth,
+    required this.footprint,
     required this.isHome,
   });
 
   final CrowdLineupState state;
   final int slotIndex;
   final FormationSlot slot;
-  final double avatarSize;
-  final double labelMaxWidth;
+  final PlayerVisualFootprint footprint;
   final bool isHome;
 
   @override
@@ -108,6 +106,7 @@ class _Slot extends StatelessWidget {
     final cubit = context.read<CrowdLineupCubit>();
     final player = state.playerAt(slotIndex);
     final canEdit = state.canEdit;
+    final avatarSize = footprint.jerseySize;
 
     return GestureDetector(
       onTap: canEdit
@@ -172,10 +171,11 @@ class _Slot extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          _Label(
-            player: player,
-            position: slot.position.short(context),
-            maxWidth: labelMaxWidth,
+          LineupNameLabel(
+            text: player?.name ?? slot.position.short(context),
+            maxWidth: footprint.width,
+            maxLines: footprint.nameMaxLines,
+            allowSplit: player != null,
           ),
         ],
       ),
@@ -207,42 +207,6 @@ class _EmptyJersey extends StatelessWidget {
           color: colors.primary.withValues(alpha: 0.6),
         ),
       ],
-    );
-  }
-}
-
-class _Label extends StatelessWidget {
-  const _Label({
-    required this.player,
-    required this.position,
-    required this.maxWidth,
-  });
-
-  final SquadPlayer? player;
-  final String position;
-  final double maxWidth;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints(maxWidth: maxWidth),
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-      decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.45),
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Text(
-        (player?.name ?? position).toUpperCase(),
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 9.5,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 0.1,
-        ),
-      ),
     );
   }
 }
