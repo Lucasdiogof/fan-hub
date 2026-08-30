@@ -20,11 +20,38 @@
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
 
-  <!-- iOS meta tags & icons -->
+  <!--
+    `viewport-fit=cover` é o que permite o conteúdo (não só o fundo) ir por
+    trás da status bar/notch no iOS standalone — sem isso a área segura vira
+    uma faixa "morta" que nem o app nem o iOS pintam de propósito, e some com
+    o Flutter injetando um viewport próprio sem essa flag. Flutter Web já lê
+    `env(safe-area-inset-*)` sozinho pra alimentar `MediaQuery.padding`, então
+    `SafeArea` nas telas continua funcionando normalmente por cima disso.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- iOS PWA standalone: sem `apple-mobile-web-app-capable`, o iOS ignora
+    completamente o `status-bar-style` abaixo e abre como um web clip comum
+    (por isso a faixa branca — não é o app pintando branco, é o iOS nem
+    aplicando a customização). `black-translucent` é o único valor que faz a
+    status bar virar uma sobreposição transparente em vez de uma barra sólida
+    separada — é isso que deixa o fundo do Flutter (claro OU escuro,
+    dependendo do tema ativo no app) aparecer por trás dela. -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="goias_app">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Cor da UI do navegador (aba do Safari/Chrome, barra de tarefas do
+    Android) — não é o mecanismo que controla a status bar da PWA instalada
+    no iOS (isso é só o `apple-mobile-web-app-status-bar-style` acima), mas
+    ajuda a barra do Safari normal (fora do modo standalone) e o Chrome/PWA
+    no Android a já abrirem na cor certa antes do Flutter pintar. Segue
+    `prefers-color-scheme` do SISTEMA — não tem como refletir o tema
+    escolhido manualmente dentro do app aqui fora do Flutter. -->
+  <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#09110C" media="(prefers-color-scheme: dark)">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
@@ -40,6 +67,14 @@
     rolar mais. `overscroll-behavior: none` trava esse comportamento;
     `position: fixed` + `height: 100%` no html/body garante que não
     exista nenhum espaço "extra" pra arrastar em primeiro lugar.
+
+    O background aqui só é visível no instante entre o iOS abrir a PWA e o
+    Flutter terminar de inicializar e pintar sua própria tela (splash) —
+    depois disso é sempre o canvas do Flutter (que já cobre a tela inteira,
+    inclusive atrás da status bar, e reage ao tema ESCOLHIDO NO APP, não ao
+    do sistema) quem manda no que aparece. Por isso aqui só dá pra seguir o
+    tema do SISTEMA (`prefers-color-scheme`) como melhor palpite pra esse
+    instante inicial — sem acesso ao estado do Flutter antes dele carregar.
   -->
   <style>
     html, body {
@@ -50,6 +85,13 @@
       height: 100%;
       margin: 0;
       padding: 0;
+      background: #F6F8F7;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html, body {
+        background: #09110C;
+      }
     }
   </style>
 </head>

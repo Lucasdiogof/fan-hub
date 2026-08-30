@@ -5,6 +5,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
@@ -31,7 +32,7 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
   late Future<Uint8List> _bytesFuture = _download();
 
   Future<Uint8List> _download() async {
-    final response = await http.get(Uri.parse(widget.url));
+    final response = await http.get(Uri.parse(proxiedImageUrl(widget.url)));
     if (response.statusCode != 200) {
       throw Exception('HTTP ${response.statusCode} ao baixar ${widget.url}');
     }
@@ -56,6 +57,7 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
                 0,
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   BackButtonCircle(
                     size: 34,
@@ -64,14 +66,17 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
                   ),
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
-                    child: Text(
-                      widget.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w800,
-                        color: colors.textPrimary,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: AppSpacing.xs),
+                      child: Text(
+                        widget.title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800,
+                          color: colors.textPrimary,
+                        ),
                       ),
                     ),
                   ),

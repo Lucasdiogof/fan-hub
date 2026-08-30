@@ -8,6 +8,7 @@ import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/domain/entities/club_transparency_topic.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:printing/printing.dart';
@@ -22,7 +23,7 @@ final _dio = Dio(
 
 Future<Uint8List> _fetchPdfBytes(String url) async {
   final response = await _dio.get<List<int>>(
-    url,
+    proxiedImageUrl(url),
     options: Options(responseType: ResponseType.bytes),
   );
   return Uint8List.fromList(response.data!);
@@ -57,18 +58,22 @@ class ClubTransparencyDocumentPage extends StatelessWidget {
                     0,
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BackButtonCircle(onTap: () => context.pop()),
                       const SizedBox(width: AppSpacing.md),
                       Expanded(
-                        child: Text(
-                          document.title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: colors.textPrimary,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: AppSpacing.xs),
+                          child: Text(
+                            document.title,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w800,
+                              color: colors.textPrimary,
+                            ),
                           ),
                         ),
                       ),
