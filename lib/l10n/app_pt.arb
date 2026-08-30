@@ -54,6 +54,8 @@
 
   "homeNextMatch": "PRÓXIMO JOGO",
   "homeDateToBeConfirmed": "DATA A CONFIRMAR",
+  "homeCompactMatchToday": "HOJE",
+  "homeCompactMatchFinished": "Fim de jogo",
   "homeTickets": "INGRESSOS",
 
   "homeQuickAccessTitle": "Acesso rápido",
@@ -81,6 +83,7 @@
   "matchBuyTicket": "COMPRAR INGRESSO",
   "matchDetailsShort": "DETALHES DO JOGO",
   "matchFollowLive": "ACOMPANHAR JOGO",
+  "matchViewDetails": "VER DETALHES",
   "homeLiveMatch": "AO VIVO AGORA",
   "matchDateToBeConfirmed": "Data a confirmar",
   "matchToBeConfirmed": "A confirmar",
@@ -1100,6 +1103,7 @@
   "storeListingNoResultsMessage": "Tente ajustar sua busca ou remover alguns filtros.",
   "storeListingProductCount": "{count, plural, =1{1 produto} other{{count} produtos}}",
   "storeItemCount": "{count, plural, =1{1 item} other{{count} itens}}",
+  "storeOrdersMoreItems": "{count, plural, =1{+ 1 item} other{+ {count} itens}}",
   "storeSortLabel": "Ordenar",
   "storeFiltersLabel": "Filtros",
   "storeFiltersLabelCount": "Filtros ({count})",
@@ -1160,6 +1164,8 @@
 
   "storeProductLoadErrorTitle": "Não foi possível carregar este produto",
   "storeProductLoadErrorMessage": "Volte e tente novamente.",
+  "storeOrderCreateErrorTitle": "Não foi possível confirmar seu pedido",
+  "storeOrderCreateErrorMessage": "Verifique sua conexão e tente novamente. Sua sacola continua salva.",
   "storeBackToStoreButton": "Voltar para a loja",
   "storeProductSoldOut": "Este produto está esgotado no momento.",
   "storeProductPhotoLabel": "{name}, foto {index} de {total}",

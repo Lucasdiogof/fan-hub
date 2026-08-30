@@ -44,31 +44,6 @@ class OrderItem extends Equatable {
 
   double get lineTotal => (unitPrice + personalizationSurcharge) * quantity;
 
-  Map<String, dynamic> toJson() => {
-    'productId': productId,
-    'productName': productName,
-    'thumbnail': thumbnail,
-    'size': size,
-    'unitPrice': unitPrice,
-    'quantity': quantity,
-    'personalizedName': personalizedName,
-    'personalizedNumber': personalizedNumber,
-    'personalizationSurcharge': personalizationSurcharge,
-  };
-
-  factory OrderItem.fromJson(Map<String, dynamic> json) => OrderItem(
-    productId: json['productId'] as String,
-    productName: json['productName'] as String,
-    thumbnail: json['thumbnail'] as String,
-    size: json['size'] as String,
-    unitPrice: (json['unitPrice'] as num).toDouble(),
-    quantity: json['quantity'] as int,
-    personalizedName: json['personalizedName'] as String?,
-    personalizedNumber: json['personalizedNumber'] as int?,
-    personalizationSurcharge:
-        (json['personalizationSurcharge'] as num?)?.toDouble() ?? 0,
-  );
-
   @override
   List<Object?> get props => [
     productId,
@@ -148,61 +123,6 @@ class StoreOrder extends Equatable {
     shippingCost: shippingCost,
     couponCode: couponCode,
     status: status ?? this.status,
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'createdAt': createdAt.toIso8601String(),
-    'items': items.map((e) => e.toJson()).toList(),
-    'identification': identification.toJson(),
-    'fulfillmentMethod': fulfillmentMethod.name,
-    'address': address?.toJson(),
-    'shippingOption': shippingOption?.toJson(),
-    'pickupResponsible': pickupResponsible?.toJson(),
-    'payment': payment.toJson(),
-    'subtotal': subtotal,
-    'discountAmount': discountAmount,
-    'shippingCost': shippingCost,
-    'couponCode': couponCode,
-    'status': status.name,
-  };
-
-  factory StoreOrder.fromJson(Map<String, dynamic> json) => StoreOrder(
-    id: json['id'] as String,
-    createdAt: DateTime.parse(json['createdAt'] as String),
-    items: (json['items'] as List)
-        .map((e) => OrderItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    identification: CustomerIdentification.fromJson(
-      json['identification'] as Map<String, dynamic>,
-    ),
-    fulfillmentMethod: FulfillmentMethod.values.byName(
-      json['fulfillmentMethod'] as String,
-    ),
-    address: json['address'] != null
-        ? CustomerAddress.fromJson(json['address'] as Map<String, dynamic>)
-        : null,
-    shippingOption: json['shippingOption'] != null
-        ? ShippingOption.fromJson(
-            json['shippingOption'] as Map<String, dynamic>,
-          )
-        : null,
-    pickupInfo: json['fulfillmentMethod'] == 'pickup'
-        ? const PickupInformation()
-        : null,
-    pickupResponsible: json['pickupResponsible'] != null
-        ? PickupResponsible.fromJson(
-            json['pickupResponsible'] as Map<String, dynamic>,
-          )
-        : null,
-    payment: PaymentSimulation.fromJson(
-      json['payment'] as Map<String, dynamic>,
-    ),
-    subtotal: (json['subtotal'] as num).toDouble(),
-    discountAmount: (json['discountAmount'] as num).toDouble(),
-    shippingCost: (json['shippingCost'] as num).toDouble(),
-    couponCode: json['couponCode'] as String?,
-    status: OrderStatus.values.byName(json['status'] as String),
   );
 
   @override

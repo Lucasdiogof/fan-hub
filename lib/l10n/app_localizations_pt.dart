@@ -132,6 +132,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homeDateToBeConfirmed => 'DATA A CONFIRMAR';
 
   @override
+  String get homeCompactMatchToday => 'HOJE';
+
+  @override
+  String get homeCompactMatchFinished => 'Fim de jogo';
+
+  @override
   String get homeTickets => 'INGRESSOS';
 
   @override
@@ -200,6 +206,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get matchFollowLive => 'ACOMPANHAR JOGO';
+
+  @override
+  String get matchViewDetails => 'VER DETALHES';
 
   @override
   String get homeLiveMatch => 'AO VIVO AGORA';
@@ -3150,6 +3159,17 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String storeOrdersMoreItems(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '+ $count itens',
+      one: '+ 1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get storeSortLabel => 'Ordenar';
 
   @override
@@ -3318,6 +3338,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get storeProductLoadErrorMessage => 'Volte e tente novamente.';
+
+  @override
+  String get storeOrderCreateErrorTitle =>
+      'Não foi possível confirmar seu pedido';
+
+  @override
+  String get storeOrderCreateErrorMessage =>
+      'Verifique sua conexão e tente novamente. Sua sacola continua salva.';
 
   @override
   String get storeBackToStoreButton => 'Voltar para a loja';

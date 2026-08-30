@@ -25,7 +25,7 @@ import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
-import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
+import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
@@ -330,9 +330,10 @@ class _JourneySectionState extends State<_JourneySection> {
 }
 
 /// "Compras e Serviços" — o que é MEU (ingressos, pedidos), não a vitrine
-/// de descoberta (essa é a Loja). "Meus pedidos" e "Endereços da loja" só
-/// aparecem depois do primeiro pedido — antes disso a Store ainda não
-/// gerou nada pra gerenciar aqui.
+/// de descoberta (essa é a Loja). "Meus pedidos" sempre aparece — mesmo sem
+/// nenhum pedido ainda, pra quem nunca comprou conseguir achar o empty
+/// state. "Endereços da loja" continua condicionado a já ter pelo menos um
+/// pedido (é onde os endereços aparecem hoje).
 class _PurchasesSection extends StatefulWidget {
   const _PurchasesSection();
 
@@ -341,7 +342,7 @@ class _PurchasesSection extends StatefulWidget {
 }
 
 class _PurchasesSectionState extends State<_PurchasesSection> {
-  late final Future<List<StoreOrder>> _ordersFuture = sl<StoreRepository>()
+  late final Future<List<StoreOrder>> _ordersFuture = sl<StoreOrdersRepository>()
       .getOrders();
 
   @override
@@ -358,12 +359,11 @@ class _PurchasesSectionState extends State<_PurchasesSection> {
               label: context.l10n.profileMyTickets,
               onTap: () => context.push('/tickets/my'),
             ),
-            if (hasOrders)
-              _MenuRow(
-                icon: Icons.receipt_long_outlined,
-                label: context.l10n.storeProfileMyOrders,
-                onTap: () => context.push('/store/orders'),
-              ),
+            _MenuRow(
+              icon: Icons.receipt_long_outlined,
+              label: context.l10n.storeProfileMyOrders,
+              onTap: () => context.push('/store/orders'),
+            ),
             _MenuRow(
               icon: Icons.shopping_bag_outlined,
               label: context.l10n.storeProfileEntry,

@@ -8,6 +8,7 @@ import 'package:goias_app/features/store/presentation/cubit/checkout_cubit.dart'
 import 'package:goias_app/features/store/presentation/cubit/checkout_state.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 
+import 'fakes/fake_store_orders_repository.dart';
 import 'fakes/fake_store_repository.dart';
 
 CartItem _cheapItem() => const CartItem(
@@ -31,16 +32,20 @@ const _address = CustomerAddress(
 
 void main() {
   late FakeStoreRepository repository;
+  late FakeStoreOrdersRepository ordersRepository;
   late AppLocalizations l10n;
 
   setUpAll(() async {
     l10n = await AppLocalizations.delegate.load(const Locale('pt'));
   });
 
-  setUp(() => repository = FakeStoreRepository());
+  setUp(() {
+    repository = FakeStoreRepository();
+    ordersRepository = FakeStoreOrdersRepository();
+  });
 
   CheckoutCubit build(Cart cart) {
-    final cubit = CheckoutCubit(repository, cart);
+    final cubit = CheckoutCubit(repository, ordersRepository, cart);
     addTearDown(cubit.close);
     return cubit;
   }
@@ -249,7 +254,7 @@ void main() {
 
       expect(cubit.state.order, isNotNull);
       expect(cubit.state.step, CheckoutStep.confirmation);
-      expect(repository.createOrderCallCount, 1);
+      expect(ordersRepository.createOrderCallCount, 1);
     });
 
     test(
@@ -259,8 +264,36 @@ void main() {
         await cubit.confirmOrder();
         await cubit.confirmOrder();
 
-        expect(repository.createOrderCallCount, 1);
+        expect(ordersRepository.createOrderCallCount, 1);
       },
     );
+
+    test(
+      'a failed creation surfaces an error, keeps the cart, and never advances the step',
+      () async {
+        ordersRepository.failWith = Exception('network down');
+        final cubit = await readyToConfirm();
+        await cubit.confirmOrder();
+
+        expect(cubit.state.order, isNull);
+        expect(cubit.state.errorMessage, isNotNull);
+        expect(cubit.state.step, isNot(CheckoutStep.confirmation));
+        expect(cubit.state.submitting, isFalse);
+        expect(cubit.state.cart.items, isNotEmpty);
+      },
+    );
+
+    test('retrying after a failure can still succeed', () async {
+      ordersRepository.failWith = Exception('network down');
+      final cubit = await readyToConfirm();
+      await cubit.confirmOrder();
+      expect(cubit.state.order, isNull);
+
+      ordersRepository.failWith = null;
+      await cubit.confirmOrder();
+
+      expect(cubit.state.order, isNotNull);
+      expect(cubit.state.step, CheckoutStep.confirmation);
+    });
   });
 }

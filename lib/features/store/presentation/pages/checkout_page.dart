@@ -8,6 +8,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
+import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/checkout_cubit.dart';
@@ -17,6 +18,7 @@ import 'package:goias_app/features/store/presentation/widgets/store_address_form
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -41,6 +43,7 @@ class CheckoutPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => CheckoutCubit(
         sl<StoreRepository>(),
+        sl<StoreOrdersRepository>(),
         cart,
         prefillName: profile?.fullName,
         prefillEmail: profile?.email,
@@ -58,9 +61,22 @@ class _CheckoutView extends StatelessWidget {
     final colors = context.colors;
     return BlocConsumer<CheckoutCubit, CheckoutState>(
       listenWhen: (previous, current) =>
-          previous.order == null && current.order != null,
+          (previous.order == null && current.order != null) ||
+          (previous.errorMessage == null && current.errorMessage != null),
       listener: (context, state) {
-        context.read<CartCubit>().clear();
+        if (state.order != null) {
+          context.read<CartCubit>().clear();
+          return;
+        }
+        final l10n = context.l10n;
+        AppBottomSheet.show(
+          context,
+          title: l10n.storeOrderCreateErrorTitle,
+          description: l10n.storeOrderCreateErrorMessage,
+          icon: Icons.error_outline_rounded,
+          confirmLabel: l10n.commonRetry,
+          onConfirm: () => context.read<CheckoutCubit>().confirmOrder(),
+        );
       },
       builder: (context, state) {
         final isConfirmation = state.step == CheckoutStep.confirmation;

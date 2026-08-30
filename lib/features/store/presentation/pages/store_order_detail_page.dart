@@ -5,6 +5,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
+import 'package:goias_app/features/store/domain/order_status_simulator.dart';
 import 'package:goias_app/features/store/presentation/order_status_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 import 'package:goias_app/shared/utils/masks.dart';
@@ -316,7 +317,7 @@ class _StatusTimeline extends StatelessWidget {
     final colors = context.colors;
     final l10n = context.l10n;
     final steps = orderStatusTimeline(isPickup: order.isPickup);
-    final currentIndex = steps.indexOf(order.status);
+    final currentIndex = steps.indexOf(OrderStatusSimulator.resolve(order));
 
     return Column(
       children: [

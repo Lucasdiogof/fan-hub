@@ -4,15 +4,7 @@ import 'package:goias_app/features/store/data/store_local_storage.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
-import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-const identification = CustomerIdentification(
-  fullName: 'Lucas Diogo',
-  cpf: '11144477735',
-  email: 'lucas@example.com',
-  phone: '62999998888',
-);
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -106,71 +98,6 @@ void main() {
     });
   });
 
-  group('createOrder', () {
-    test('generates a GOI-<year>-###### order code', () async {
-      final order = await repository.createOrder(
-        items: const [],
-        identification: identification,
-        fulfillmentMethod: FulfillmentMethod.pickup,
-        payment: const PaymentSimulationInput(method: PaymentMethod.pix),
-        subtotal: 79.90,
-        discountAmount: 0,
-      );
-
-      expect(order.id, matches(RegExp(r'^GOI-\d{4}-\d{6}$')));
-    });
-
-    test('an approved order is persisted and shows up in getOrders', () async {
-      await repository.createOrder(
-        items: const [],
-        identification: identification,
-        fulfillmentMethod: FulfillmentMethod.pickup,
-        payment: const PaymentSimulationInput(method: PaymentMethod.pix),
-        subtotal: 79.90,
-        discountAmount: 0,
-      );
-
-      final orders = await repository.getOrders();
-      expect(orders, hasLength(1));
-    });
-
-    test('a rejected (forceRejected) order is never persisted', () async {
-      await repository.createOrder(
-        items: const [],
-        identification: identification,
-        fulfillmentMethod: FulfillmentMethod.pickup,
-        payment: const PaymentSimulationInput(
-          method: PaymentMethod.pix,
-          forceRejected: true,
-        ),
-        subtotal: 79.90,
-        discountAmount: 0,
-      );
-
-      final orders = await repository.getOrders();
-      expect(orders, isEmpty);
-    });
-
-    test('pickup orders never carry a shipping cost', () async {
-      final order = await repository.createOrder(
-        items: const [],
-        identification: identification,
-        fulfillmentMethod: FulfillmentMethod.pickup,
-        shippingOption: const ShippingOption(
-          speed: ShippingSpeed.express,
-          label: 'Expressa',
-          etaLabel: '2 a 3 dias úteis',
-          price: 34.90,
-        ),
-        payment: const PaymentSimulationInput(method: PaymentMethod.pix),
-        subtotal: 79.90,
-        discountAmount: 0,
-      );
-
-      expect(order.shippingCost, 0);
-    });
-  });
-
   group('local persistence', () {
     test('cart is saved and reloaded across repository instances', () async {
       const cart = Cart(
@@ -212,35 +139,5 @@ void main() {
       expect(reloaded.single.zipCode, '74000-000');
     });
 
-    test(
-      'the order payload only ever carries the last 4 card digits — the type has no room for more',
-      () async {
-        final order = await repository.createOrder(
-          items: const [],
-          identification: identification,
-          fulfillmentMethod: FulfillmentMethod.pickup,
-          payment: const PaymentSimulationInput(
-            method: PaymentMethod.creditCard,
-            cardHolderName: 'LUCAS DIOGO',
-            cardLastFourDigits: '4242',
-          ),
-          subtotal: 79.90,
-          discountAmount: 0,
-        );
-
-        final cardJson = order.payment.cardSummary!.toJson();
-        expect(
-          cardJson.keys,
-          containsAll(['holderName', 'lastFourDigits', 'installments']),
-        );
-        expect(
-          cardJson.keys,
-          isNot(
-            anyOf(contains('cvv'), contains('cardNumber'), contains('expiry')),
-          ),
-        );
-        expect((cardJson['lastFourDigits'] as String).length, 4);
-      },
-    );
   });
 }

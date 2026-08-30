@@ -6,11 +6,13 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
+import 'package:goias_app/features/store/domain/order_status_simulator.dart';
 import 'package:goias_app/features/store/presentation/cubit/store_orders_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/store_orders_state.dart';
 import 'package:goias_app/features/store/presentation/order_status_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -118,6 +120,7 @@ class _OrderTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
+    final extraItems = order.items.length - 1;
     return InkWell(
       onTap: () => context.push('/store/orders/${order.id}', extra: order),
       borderRadius: BorderRadius.circular(AppRadius.cardSmall),
@@ -155,9 +158,14 @@ class _OrderTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
+                    fullDateLabel(order.createdAt),
+                    style: TextStyle(fontSize: 11.5, color: colors.textHint),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(
                     orderStatusLabel(
                       l10n,
-                      order.status,
+                      OrderStatusSimulator.resolve(order),
                       isPickup: order.isPickup,
                     ),
                     style: TextStyle(
@@ -168,7 +176,12 @@ class _OrderTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 3),
                   Text(
-                    l10n.storeItemCount(order.itemCount),
+                    order.items.first.productName +
+                        (extraItems > 0
+                            ? ' · ${l10n.storeOrdersMoreItems(extraItems)}'
+                            : ''),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 11.5, color: colors.textHint),
                   ),
                 ],

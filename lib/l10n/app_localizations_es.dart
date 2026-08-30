@@ -132,6 +132,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get homeDateToBeConfirmed => 'FECHA POR CONFIRMAR';
 
   @override
+  String get homeCompactMatchToday => 'HOY';
+
+  @override
+  String get homeCompactMatchFinished => 'Fin del partido';
+
+  @override
   String get homeTickets => 'ENTRADAS';
 
   @override
@@ -200,6 +206,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get matchFollowLive => 'SEGUIR PARTIDO';
+
+  @override
+  String get matchViewDetails => 'VER DETALLES';
 
   @override
   String get homeLiveMatch => 'EN VIVO AHORA';
@@ -3149,6 +3158,17 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String storeOrdersMoreItems(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '+ $count artículos',
+      one: '+ 1 artículo',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get storeSortLabel => 'Ordenar';
 
   @override
@@ -3317,6 +3337,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get storeProductLoadErrorMessage => 'Vuelve e inténtalo de nuevo.';
+
+  @override
+  String get storeOrderCreateErrorTitle => 'No se pudo confirmar tu pedido';
+
+  @override
+  String get storeOrderCreateErrorMessage =>
+      'Verifica tu conexión e inténtalo de nuevo. Tu bolsa sigue guardada.';
 
   @override
   String get storeBackToStoreButton => 'Volver a la tienda';

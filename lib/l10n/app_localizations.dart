@@ -340,6 +340,18 @@ abstract class AppLocalizations {
   /// **'DATA A CONFIRMAR'**
   String get homeDateToBeConfirmed;
 
+  /// No description provided for @homeCompactMatchToday.
+  ///
+  /// In pt, this message translates to:
+  /// **'HOJE'**
+  String get homeCompactMatchToday;
+
+  /// No description provided for @homeCompactMatchFinished.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fim de jogo'**
+  String get homeCompactMatchFinished;
+
   /// No description provided for @homeTickets.
   ///
   /// In pt, this message translates to:
@@ -477,6 +489,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'ACOMPANHAR JOGO'**
   String get matchFollowLive;
+
+  /// No description provided for @matchViewDetails.
+  ///
+  /// In pt, this message translates to:
+  /// **'VER DETALHES'**
+  String get matchViewDetails;
 
   /// No description provided for @homeLiveMatch.
   ///
@@ -5596,6 +5614,12 @@ abstract class AppLocalizations {
   /// **'{count, plural, =1{1 item} other{{count} itens}}'**
   String storeItemCount(num count);
 
+  /// No description provided for @storeOrdersMoreItems.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{+ 1 item} other{+ {count} itens}}'**
+  String storeOrdersMoreItems(num count);
+
   /// No description provided for @storeSortLabel.
   ///
   /// In pt, this message translates to:
@@ -5925,6 +5949,18 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Volte e tente novamente.'**
   String get storeProductLoadErrorMessage;
+
+  /// No description provided for @storeOrderCreateErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível confirmar seu pedido'**
+  String get storeOrderCreateErrorTitle;
+
+  /// No description provided for @storeOrderCreateErrorMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Verifique sua conexão e tente novamente. Sua sacola continua salva.'**
+  String get storeOrderCreateErrorMessage;
 
   /// No description provided for @storeBackToStoreButton.
   ///

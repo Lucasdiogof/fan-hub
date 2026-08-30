@@ -3,6 +3,7 @@ import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
+import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/features/store/presentation/cubit/checkout_state.dart';
@@ -16,6 +17,7 @@ import 'package:goias_app/features/store/presentation/store_validators.dart';
 class CheckoutCubit extends Cubit<CheckoutState> {
   CheckoutCubit(
     this._repository,
+    this._ordersRepository,
     Cart initialCart, {
     String? prefillName,
     String? prefillEmail,
@@ -30,6 +32,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   }
 
   final StoreRepository _repository;
+  final StoreOrdersRepository _ordersRepository;
 
   Future<void> _loadAddresses() async {
     final addresses = await _repository.loadAddresses();
@@ -250,43 +253,56 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         )
         .toList();
 
-    final order = await _repository.createOrder(
-      items: items,
-      identification: CustomerIdentification(
-        fullName: state.fullName,
-        cpf: state.cpf,
-        email: state.email,
-        phone: state.phone,
-      ),
-      fulfillmentMethod: state.fulfillmentMethod,
-      address: state.selectedAddress,
-      shippingOption: state.selectedShippingOption,
-      pickupResponsible:
-          state.fulfillmentMethod == FulfillmentMethod.pickup &&
-              !state.selfPickup
-          ? PickupResponsible(
-              fullName: state.pickupResponsibleName ?? '',
-              cpf: state.pickupResponsibleCpf ?? '',
-            )
-          : null,
-      payment: PaymentSimulationInput(
-        method: state.paymentMethod,
-        cardHolderName: state.cardSummary?.holderName,
-        cardLastFourDigits: state.cardSummary?.lastFourDigits,
-        installments: state.cardSummary?.installments ?? 1,
-      ),
-      subtotal: state.cart.subtotal,
-      discountAmount: state.cart.discountAmount,
-      couponCode: state.cart.coupon?.code,
-    );
+    try {
+      final order = await _ordersRepository.createOrder(
+        items: items,
+        identification: CustomerIdentification(
+          fullName: state.fullName,
+          cpf: state.cpf,
+          email: state.email,
+          phone: state.phone,
+        ),
+        fulfillmentMethod: state.fulfillmentMethod,
+        address: state.selectedAddress,
+        shippingOption: state.selectedShippingOption,
+        pickupResponsible:
+            state.fulfillmentMethod == FulfillmentMethod.pickup &&
+                !state.selfPickup
+            ? PickupResponsible(
+                fullName: state.pickupResponsibleName ?? '',
+                cpf: state.pickupResponsibleCpf ?? '',
+              )
+            : null,
+        payment: PaymentSimulationInput(
+          method: state.paymentMethod,
+          cardHolderName: state.cardSummary?.holderName,
+          cardLastFourDigits: state.cardSummary?.lastFourDigits,
+          installments: state.cardSummary?.installments ?? 1,
+        ),
+        subtotal: state.cart.subtotal,
+        discountAmount: state.cart.discountAmount,
+        couponCode: state.cart.coupon?.code,
+      );
 
-    emit(
-      state.copyWith(
-        submitting: false,
-        order: () => order,
-        step: CheckoutStep.confirmation,
-      ),
-    );
+      emit(
+        state.copyWith(
+          submitting: false,
+          order: () => order,
+          step: CheckoutStep.confirmation,
+        ),
+      );
+    } catch (error) {
+      // Sacola (`state.cart`) permanece intacta — o listener que a limpa só
+      // dispara quando `state.order` deixa de ser nulo (ver `checkout_page`).
+      // A mensagem aqui é só pra log/depuração — a UI sempre mostra um
+      // texto fixo traduzido (`storeOrderCreateErrorTitle`), nunca isto.
+      emit(
+        state.copyWith(
+          submitting: false,
+          errorMessage: () => error.toString(),
+        ),
+      );
+    }
   }
 }
 

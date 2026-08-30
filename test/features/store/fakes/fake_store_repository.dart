@@ -1,9 +1,7 @@
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
-import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_category.dart';
-import 'package:goias_app/features/store/domain/entities/store_order.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 
@@ -88,11 +86,6 @@ class FakeStoreRepository implements StoreRepository {
   Cart cart = const Cart();
   final List<CustomerAddress> addresses = [];
   final Set<String> favoriteIds = {};
-  final List<StoreOrder> orders = [];
-
-  /// Espião — quantas vezes [createOrder] foi de fato chamado, pra testar
-  /// que um duplo clique/toque não cria dois pedidos.
-  int createOrderCallCount = 0;
 
   static const freeShippingThreshold = 399.90;
   static const coupons = {'VERDAO10': 10.0, 'SOCIO15': 15.0};
@@ -145,58 +138,6 @@ class FakeStoreRepository implements StoreRepository {
       coupons[code.trim().toUpperCase()];
 
   @override
-  Future<StoreOrder> createOrder({
-    required List<OrderItem> items,
-    required CustomerIdentification identification,
-    required FulfillmentMethod fulfillmentMethod,
-    CustomerAddress? address,
-    ShippingOption? shippingOption,
-    PickupResponsible? pickupResponsible,
-    required PaymentSimulationInput payment,
-    required double subtotal,
-    required double discountAmount,
-    String? couponCode,
-  }) async {
-    createOrderCallCount++;
-    final order = StoreOrder(
-      id: 'GOI-2026-${100000 + createOrderCallCount}',
-      createdAt: DateTime(2026, 1, 1),
-      items: items,
-      identification: identification,
-      fulfillmentMethod: fulfillmentMethod,
-      address: address,
-      shippingOption: shippingOption,
-      pickupInfo: fulfillmentMethod == FulfillmentMethod.pickup
-          ? const PickupInformation()
-          : null,
-      pickupResponsible: pickupResponsible,
-      payment: PaymentSimulation(
-        method: payment.method,
-        status: payment.forceRejected
-            ? PaymentStatus.rejected
-            : PaymentStatus.approved,
-        simulatedAt: DateTime(2026, 1, 1),
-      ),
-      subtotal: subtotal,
-      discountAmount: discountAmount,
-      shippingCost: fulfillmentMethod == FulfillmentMethod.pickup
-          ? 0
-          : (shippingOption?.price ?? 0),
-      couponCode: couponCode,
-      status: OrderStatus.paid,
-    );
-    orders.add(order);
-    return order;
-  }
-
-  @override
-  Future<List<StoreOrder>> getOrders() async => orders;
-
-  @override
-  Future<StoreOrder?> getOrderById(String id) async =>
-      orders.where((o) => o.id == id).firstOrNull;
-
-  @override
   Future<Cart> loadCart() async => cart;
 
   @override
@@ -221,8 +162,4 @@ class FakeStoreRepository implements StoreRepository {
       ..clear()
       ..addAll(ids);
   }
-}
-
-extension _FirstOrNull<T> on Iterable<T> {
-  T? get firstOrNull => isEmpty ? null : first;
 }

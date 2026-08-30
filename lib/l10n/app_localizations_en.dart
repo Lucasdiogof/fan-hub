@@ -133,6 +133,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeDateToBeConfirmed => 'DATE TO BE CONFIRMED';
 
   @override
+  String get homeCompactMatchToday => 'TODAY';
+
+  @override
+  String get homeCompactMatchFinished => 'Full time';
+
+  @override
   String get homeTickets => 'TICKETS';
 
   @override
@@ -201,6 +207,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get matchFollowLive => 'FOLLOW MATCH';
+
+  @override
+  String get matchViewDetails => 'VIEW DETAILS';
 
   @override
   String get homeLiveMatch => 'LIVE NOW';
@@ -3135,6 +3144,17 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String storeOrdersMoreItems(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '+ $count items',
+      one: '+ 1 item',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get storeSortLabel => 'Sort';
 
   @override
@@ -3302,6 +3322,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeProductLoadErrorMessage => 'Go back and try again.';
+
+  @override
+  String get storeOrderCreateErrorTitle => 'We couldn\'t confirm your order';
+
+  @override
+  String get storeOrderCreateErrorMessage =>
+      'Check your connection and try again. Your bag is still saved.';
 
   @override
   String get storeBackToStoreButton => 'Back to the store';
