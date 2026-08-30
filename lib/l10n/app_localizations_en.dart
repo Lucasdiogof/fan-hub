@@ -212,6 +212,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get matchViewDetails => 'VIEW DETAILS';
 
   @override
+  String get matchFinishedLabel => 'Finished';
+
+  @override
   String get homeLiveMatch => 'LIVE NOW';
 
   @override
@@ -946,8 +949,8 @@ class AppLocalizationsEn extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count matches stamped with Verdão',
-      one: '1 match stamped with Verdão',
+      other: '$count matches singing and roaring with Verdão',
+      one: '1 match singing and roaring with Verdão',
     );
     return '$_temp0';
   }
@@ -3074,6 +3077,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeHomeEmptyMessage => 'Check back soon for official products.';
+
+  @override
+  String get storeMyPurchasesTitle => 'My Purchases';
 
   @override
   String get storeSectionCategories => 'Categories';

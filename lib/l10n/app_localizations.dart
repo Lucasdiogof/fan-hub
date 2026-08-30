@@ -496,6 +496,12 @@ abstract class AppLocalizations {
   /// **'VER DETALHES'**
   String get matchViewDetails;
 
+  /// No description provided for @matchFinishedLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Finalizado'**
+  String get matchFinishedLabel;
+
   /// No description provided for @homeLiveMatch.
   ///
   /// In pt, this message translates to:
@@ -1771,7 +1777,7 @@ abstract class AppLocalizations {
   /// No description provided for @passportCoverMatchesLived.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{1 jogo carimbado com o Verdão} other{{count} jogos carimbados com o Verdão}}'**
+  /// **'{count, plural, =1{1 jogo cantando e vibrando com o Verdão} other{{count} jogos cantando e vibrando com o Verdão}}'**
   String passportCoverMatchesLived(num count);
 
   /// No description provided for @passportLevelStarter.
@@ -5511,6 +5517,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Volte em breve para conferir os produtos oficiais.'**
   String get storeHomeEmptyMessage;
+
+  /// No description provided for @storeMyPurchasesTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Minhas Compras'**
+  String get storeMyPurchasesTitle;
 
   /// No description provided for @storeSectionCategories.
   ///

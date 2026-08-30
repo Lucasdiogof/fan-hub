@@ -211,6 +211,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get matchViewDetails => 'VER DETALHES';
 
   @override
+  String get matchFinishedLabel => 'Finalizado';
+
+  @override
   String get homeLiveMatch => 'AO VIVO AGORA';
 
   @override
@@ -948,8 +951,8 @@ class AppLocalizationsPt extends AppLocalizations {
     String _temp0 = intl.Intl.pluralLogic(
       count,
       locale: localeName,
-      other: '$count jogos carimbados com o Verdão',
-      one: '1 jogo carimbado com o Verdão',
+      other: '$count jogos cantando e vibrando com o Verdão',
+      one: '1 jogo cantando e vibrando com o Verdão',
     );
     return '$_temp0';
   }
@@ -3089,6 +3092,9 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get storeHomeEmptyMessage =>
       'Volte em breve para conferir os produtos oficiais.';
+
+  @override
+  String get storeMyPurchasesTitle => 'Minhas Compras';
 
   @override
   String get storeSectionCategories => 'Categorias';
