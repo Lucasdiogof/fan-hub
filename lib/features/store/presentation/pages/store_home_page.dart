@@ -175,6 +175,31 @@ class _StoreHomeContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: AppSpacing.xl),
+        _SectionLabel(l10n.storeMyPurchasesTitle),
+        const SizedBox(height: AppSpacing.sm),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+          child: Row(
+            children: [
+              Expanded(
+                child: _PurchaseShortcut(
+                  icon: Icons.confirmation_number_outlined,
+                  label: l10n.profileMyTickets,
+                  onTap: () => context.push('/tickets/my'),
+                ),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: _PurchaseShortcut(
+                  icon: Icons.receipt_long_outlined,
+                  label: l10n.storeProfileMyOrders,
+                  onTap: () => context.push('/store/orders'),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: AppSpacing.xl),
         _SectionLabel(l10n.storeSectionCategories),
         const SizedBox(height: AppSpacing.sm),
         const _CategoryRow(),
@@ -222,6 +247,68 @@ class _StoreBanner extends StatelessWidget {
           'lib/assets/banner.png',
           width: double.infinity,
           fit: BoxFit.fitWidth,
+        ),
+      ),
+    );
+  }
+}
+
+/// Acesso compacto pra "o que já é meu" (ingressos/pedidos) sem sair da
+/// Loja — não substitui "Compras e Serviços" no Perfil (essa é a central
+/// pessoal do usuário; esta é só um atalho contextual durante a compra),
+/// reaproveita exatamente as mesmas rotas/telas.
+class _PurchaseShortcut extends StatelessWidget {
+  const _PurchaseShortcut({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Material(
+      color: colors.surfaceRaised,
+      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.md,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+            border: Border.all(color: colors.border),
+          ),
+          child: Row(
+            children: [
+              Icon(icon, size: 18, color: colors.primary),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w700,
+                    color: colors.textPrimary,
+                  ),
+                ),
+              ),
+              Icon(
+                Icons.chevron_right_rounded,
+                size: 16,
+                color: colors.textHint,
+              ),
+            ],
+          ),
         ),
       ),
     );
