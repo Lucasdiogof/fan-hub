@@ -15,6 +15,15 @@ Failure mapMembershipError(Object error, StackTrace stackTrace) {
     return const NetworkFailure();
   }
   if (error is PostgrestException) {
+    final message = error.message;
+    if (message.contains('membership already active')) {
+      return const ServerFailure('Você já é sócio torcedor.');
+    }
+    if (message.contains('invalid plan_id')) {
+      return const ServerFailure(
+        'Plano inválido. Atualize a página e tente novamente.',
+      );
+    }
     return const ServerFailure(
       'Não foi possível concluir a contratação agora. Tente novamente.',
     );

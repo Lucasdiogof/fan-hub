@@ -16,10 +16,19 @@ class MembershipStatusState extends Equatable {
   const MembershipStatusState({
     this.status = LoadStatus.initial,
     this.membership,
+    this.subscribing = false,
   });
 
   final LoadStatus status;
   final Membership? membership;
+
+  /// Separado de [status] de propósito — [status] já é mutado por [load]
+  /// (chamado no login/logout); reaproveitar o mesmo campo faria uma
+  /// chamada de `subscribeToPlan` em andamento colidir com um `load()`
+  /// concorrente (ou vice-versa). Guarda contra duplo toque/chamada
+  /// concorrente em `subscribeToPlan` (ver spec de hardening: "defesa em
+  /// profundidade", a UI já desabilita o botão, isto é o backstop no Cubit).
+  final bool subscribing;
 
   bool get isMember => membership != null;
   DateTime? get expiresAt => membership?.expiresAt;
@@ -38,15 +47,17 @@ class MembershipStatusState extends Equatable {
     LoadStatus? status,
     Membership? membership,
     bool clearMembership = false,
+    bool? subscribing,
   }) {
     return MembershipStatusState(
       status: status ?? this.status,
       membership: clearMembership ? null : (membership ?? this.membership),
+      subscribing: subscribing ?? this.subscribing,
     );
   }
 
   @override
-  List<Object?> get props => [status, membership];
+  List<Object?> get props => [status, membership, subscribing];
 }
 
 /// Fonte única de verdade de "este usuário é Sócio Torcedor?" — singleton
@@ -115,9 +126,13 @@ class MembershipStatusCubit extends Cubit<MembershipStatusState> {
     required String regulationVersion,
     required DateTime regulationAcceptedAt,
   }) async {
+    if (state.subscribing) {
+      return const Error(UnexpectedFailure('Operação em andamento.'));
+    }
     if (state.isMember) {
       return const Error(ServerFailure('Você já é sócio torcedor.'));
     }
+    emit(state.copyWith(subscribing: true));
     final result = await _repository.submitRegistration(
       plan: plan,
       price: price,
@@ -125,10 +140,19 @@ class MembershipStatusCubit extends Cubit<MembershipStatusState> {
       regulationVersion: regulationVersion,
       regulationAcceptedAt: regulationAcceptedAt,
     );
-    if (result case Success(:final data)) {
-      // Atualiza o estado global na hora, sem esperar um novo round-trip —
-      // já temos a assinatura recém-criada em mãos.
-      emit(state.copyWith(status: LoadStatus.success, membership: data));
+    switch (result) {
+      case Success(:final data):
+        // Atualiza o estado global na hora, sem esperar um novo round-trip —
+        // já temos a assinatura recém-criada em mãos.
+        emit(
+          state.copyWith(
+            status: LoadStatus.success,
+            membership: data,
+            subscribing: false,
+          ),
+        );
+      case Error():
+        emit(state.copyWith(subscribing: false));
     }
     return result;
   }

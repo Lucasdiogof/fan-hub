@@ -17,13 +17,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// `is_active` nunca é decidido aqui nem em nenhuma camada do app — vem
 /// pronto de `get_my_membership()`, que compara `expires_at` com o `now()`
 /// do próprio Postgres. Assim o relógio do aparelho nunca decide se alguém é
-/// sócio.
+/// sócio. A validade da contratação em si (`started_at`/`expires_at`) também
+/// nunca é calculada aqui — vem pronta de `subscribe_to_plan()`, pelo mesmo
+/// motivo (ver `submitRegistration`).
 class SupabaseMembershipRepository implements MembershipRepository {
   SupabaseMembershipRepository(this._client);
 
   final SupabaseClient _client;
-
-  static const _membershipDuration = Duration(days: 30);
 
   String get _uid => _client.auth.currentUser!.id;
 
@@ -66,19 +66,15 @@ class SupabaseMembershipRepository implements MembershipRepository {
     required DateTime regulationAcceptedAt,
   }) async {
     try {
-      final startedAt = DateTime.now().toUtc();
-      final expiresAt = startedAt.add(_membershipDuration);
-      final row = await _client
-          .from('supporter_memberships')
-          .insert({
-            'user_id': _uid,
-            'plan_id': plan.id,
-            'plan_name': plan.name,
-            'started_at': startedAt.toIso8601String(),
-            'expires_at': expiresAt.toIso8601String(),
-          })
-          .select()
-          .single();
+      // started_at/expires_at nunca são calculados aqui — a RPC decide os
+      // dois com o horário do próprio Postgres e rejeita se já existe
+      // assinatura ativa ou se `plan.id` não corresponde a um plano real
+      // (ver supabase/migrations/20260830220002_subscribe_to_plan_rpc.sql).
+      final rows = await _client.rpc<List<dynamic>>(
+        'subscribe_to_plan',
+        params: {'p_plan_id': plan.id},
+      );
+      final row = rows.first as Map<String, dynamic>;
       return Success(
         Membership(
           id: row['id'] as String,
