@@ -54,19 +54,25 @@ class LiveMatchHero extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Row(
+                  // "Finalizado" fica do lado direito, isolado — sinaliza o
+                  // fim do jogo sem competir com o resto do cabeçalho, que
+                  // aqui nem existe mais (nada de pulso "ao vivo").
+                  mainAxisAlignment: _isFinished
+                      ? MainAxisAlignment.end
+                      : MainAxisAlignment.start,
                   children: [
-                    // Sem pulso pra jogo já encerrado — nada "ao vivo" pra
-                    // indicar nesse estado.
                     if (_isReallyLive) ...[
                       const LivePulseDot(color: Colors.white, size: 8),
                       const SizedBox(width: 8),
                     ],
                     Text(
-                      [
-                        matchStatusLabel(l10n, match.status).toUpperCase(),
-                        if (_isReallyLive && match.minute != null)
-                          match.minute!,
-                      ].join(' · '),
+                      _isFinished
+                          ? l10n.matchFinishedLabel.toUpperCase()
+                          : [
+                              matchStatusLabel(l10n, match.status).toUpperCase(),
+                              if (_isReallyLive && match.minute != null)
+                                match.minute!,
+                            ].join(' · '),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 11,
