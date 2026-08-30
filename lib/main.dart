@@ -9,6 +9,7 @@ import 'package:goias_app/core/network/session_aware_http_client.dart';
 import 'package:goias_app/core/router/app_router.dart';
 import 'package:goias_app/core/router/root_navigator_key.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
+import 'package:goias_app/core/session/account_session_cache_guard.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -19,6 +20,7 @@ import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/widgets/session_expiry_listener.dart';
 import 'package:http/http.dart' as http;
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -35,12 +37,20 @@ Future<void> main() async {
     httpClient: SessionAwareHttpClient(http.Client()),
   );
   setupDependencies();
+  // Lido do build instalado (funciona igual em Web/PWA — mesma fonte já
+  // usada em `profile_page.dart` pra mostrar a versão no Perfil), nunca
+  // hardcoded — assim o release no Sentry nunca desalinha do
+  // `pubspec.yaml`.
+  final packageInfo = await PackageInfo.fromPlatform();
+  final release = 'goias_app@${packageInfo.version}+${packageInfo.buildNumber}';
   // Nunca manda PII automático (o app lida com CPF/telefone/e-mail real) —
   // o que queremos ver no Sentry é o erro, não dado pessoal do usuário.
   // `tracesSampleRate: 1.0` é seguro pro volume desse app (fã-clube, não
   // um app de milhões de usuários); baixar se algum dia isso mudar.
   await SentryFlutter.init((options) {
     options.dsn = SentryConfig.dsn;
+    options.environment = SentryConfig.environment;
+    options.release = release;
     options.sendDefaultPii = false;
     options.tracesSampleRate = 1.0;
   }, appRunner: () => runApp(const GoiasApp()));
@@ -57,6 +67,11 @@ class _GoiasAppState extends State<GoiasApp> {
   final AuthCubit _authCubit = sl<AuthCubit>();
   final ThemeCubit _themeCubit = sl<ThemeCubit>();
   final LocaleCubit _localeCubit = sl<LocaleCubit>();
+  // Nunca lido depois — só precisa existir cedo pro listener de
+  // logout/sessão expirada já estar de pé (ver `AccountSessionCacheGuard`).
+  // ignore: unused_field
+  final AccountSessionCacheGuard _accountSessionCacheGuard =
+      sl<AccountSessionCacheGuard>();
   late final GoRouter _router = createAppRouter(_authCubit, sl<SplashGate>());
 
   @override

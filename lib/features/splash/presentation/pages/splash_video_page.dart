@@ -98,8 +98,10 @@ class _SplashVideoPageState extends State<SplashVideoPage>
     final authState = sl<AuthCubit>().state;
     if (authState is! AuthAuthenticated) return;
     final homeCubit = sl<HomeCubit>();
-    if (homeCubit.state.loading) {
-      await homeCubit.stream.firstWhere((state) => !state.loading);
+    if (homeCubit.state.status == LoadStatus.loading) {
+      await homeCubit.stream.firstWhere(
+        (state) => state.status != LoadStatus.loading,
+      );
     }
     final membershipCubit = sl<MembershipStatusCubit>();
     if (membershipCubit.state.status != LoadStatus.success) {

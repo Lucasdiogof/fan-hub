@@ -14,6 +14,7 @@ import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_stora
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
+import 'package:goias_app/core/session/account_session_cache_guard.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/club/data/club_song_volume_store.dart';
 import 'package:goias_app/features/club/data/supabase_club_board_repository.dart';
@@ -134,6 +135,12 @@ void setupDependencies() {
   sl.registerLazySingleton<MembershipStatusCubit>(
     () => MembershipStatusCubit(sl(), sl()),
   );
+  // Limpa carrinho/favoritos/progresso local de jogos no logout/sessão
+  // expirada — precisa ser resolvido cedo no startup (ver `main.dart`) pra
+  // o listener existir antes de qualquer logout acontecer.
+  sl.registerLazySingleton<AccountSessionCacheGuard>(
+    () => AccountSessionCacheGuard(sl(), sl(), sl()),
+  );
 
   sl.registerLazySingleton<ProfileRepository>(
     () => SupabaseProfileRepository(Supabase.instance.client),
@@ -221,7 +228,7 @@ void setupDependencies() {
   sl.registerFactory<TicketsCubit>(() => TicketsCubit(sl(), sl()));
   sl.registerFactory<MyTicketsCubit>(() => MyTicketsCubit(sl()));
   sl.registerFactory<MyOrdersCubit>(() => MyOrdersCubit(sl()));
-  sl.registerLazySingleton<ProfileCubit>(() => ProfileCubit(sl()));
+  sl.registerLazySingleton<ProfileCubit>(() => ProfileCubit(sl(), sl()));
   sl.registerFactory<AddressCubit>(() => AddressCubit(sl()));
 
   sl.registerLazySingleton<StoreLocalStorage>(StoreLocalStorage.new);
