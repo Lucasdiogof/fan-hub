@@ -20,10 +20,16 @@ class FormationLayoutService {
     '4-5-1': [1, 4, 5, 1],
   };
 
-  /// Uma posição por linha (goleiro primeiro), da esquerda pra direita —
-  /// mesma ordem em que o dataset costuma listar os titulares. Formações
-  /// não catalogadas caem no fallback: separa os números depois de cada
-  /// "-" e distribui em linhas igualmente espaçadas.
+  /// Uma posição por linha (goleiro primeiro). Dentro de cada linha, o
+  /// dataset (`lineup_matches.dart`) segue a convenção clássica de
+  /// escalação brasileira: SEMPRE da direita pra esquerda (ex.: 'LD' listado
+  /// antes de 'ZAG'/'ZAG', que vêm antes de 'LE' — confirmado em toda a
+  /// base, nunca o contrário). Por isso o primeiro jogador de cada linha
+  /// recebe o `x` mais alto (direita da tela) e o último o `x` mais baixo
+  /// (esquerda) — inverter isso fazia o lateral direito aparecer desenhado
+  /// à esquerda do campo e vice-versa. Formações não catalogadas caem no
+  /// fallback: separa os números depois de cada "-" e distribui em linhas
+  /// igualmente espaçadas.
   static List<Offset> positionsFor(String formation) {
     final lines = _known[formation] ?? _parseFallback(formation);
     final positions = <Offset>[];
@@ -36,9 +42,10 @@ class FormationLayoutService {
           ? 0.92
           : 0.92 - (lineIndex / (lines.length - 1)) * 0.80;
       for (var slot = 0; slot < count; slot++) {
-        // slot+1 sobre count+1 deixa uma margem nas duas bordas — uma
-        // linha de 2 não fica grudada nos cantos do campo.
-        final x = (slot + 1) / (count + 1);
+        // (count - slot) sobre count+1 deixa uma margem nas duas bordas —
+        // uma linha de 2 não fica grudada nos cantos do campo — e inverte a
+        // ordem do slot pra direita-pra-esquerda (ver doc acima).
+        final x = (count - slot) / (count + 1);
         positions.add(Offset(x, y));
       }
     }
