@@ -5,6 +5,7 @@ import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/match_ordering.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
+import 'package:goias_app/shared/state/load_status.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._footballRepository, this._crowdLineupRepository)
@@ -26,7 +27,7 @@ class HomeCubit extends Cubit<HomeState> {
   static const _finishedGracePeriod = Duration(days: 1, hours: 3);
 
   Future<void> load() async {
-    emit(state.copyWith(loading: true));
+    emit(state.copyWith(status: LoadStatus.loading));
 
     final snapshotResult = await _footballRepository.getGoiasSnapshot();
 
@@ -41,14 +42,27 @@ class HomeCubit extends Cubit<HomeState> {
             : await _hasVotedFor(resolvedMatch.id);
         emit(
           state.copyWith(
-            loading: false,
+            status: LoadStatus.success,
             nextMatch: resolvedMatch,
             clearNextMatch: resolvedMatch == null,
+            errorMessage: () => null,
             hasVotedForNextMatch: hasVoted,
           ),
         );
-      case Error():
-        emit(state.copyWith(loading: false, clearNextMatch: true));
+      case Error(:final failure):
+        // Nunca confundido com "não existe próximo jogo" (que é
+        // `success`/`nextMatch: null`, sem mensagem) — a Home mostra um
+        // estado de erro com retry nesse caso, não a experiência de "sem
+        // jogo". `nextMatch` continua limpo (mesmo comportamento de antes,
+        // só a categoria do estado muda) — não inventamos stale-while-
+        // revalidate aqui.
+        emit(
+          state.copyWith(
+            status: LoadStatus.error,
+            clearNextMatch: true,
+            errorMessage: () => failure.message,
+          ),
+        );
     }
   }
 

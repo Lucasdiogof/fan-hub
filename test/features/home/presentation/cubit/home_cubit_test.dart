@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/lineup_vote.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
+import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
@@ -12,6 +14,7 @@ import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
+import 'package:goias_app/shared/state/load_status.dart';
 
 const _goias = Team(
   id: 1863,
@@ -49,10 +52,17 @@ class _FakeFootballRepository implements FootballRepository {
   Match? nextMatch;
   List<Match> recentResults = const [];
 
+  /// Quando setado, `getGoiasSnapshot` retorna `Error` com isto em vez de
+  /// funcionar normalmente — pra testar o estado de erro do `HomeCubit`.
+  Failure? failure;
+
   @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
-  getGoiasSnapshot() async =>
-      Success((nextMatch: nextMatch, recentResults: recentResults));
+  getGoiasSnapshot() async {
+    final currentFailure = failure;
+    if (currentFailure != null) return Error(currentFailure);
+    return Success((nextMatch: nextMatch, recentResults: recentResults));
+  }
 
   @override
   Future<Result<List<Standing>>> getStandings() async =>
@@ -125,6 +135,7 @@ void main() {
     final cubit = build();
     await cubit.load();
 
+    expect(cubit.state.status, LoadStatus.success);
     expect(cubit.state.nextMatch?.id, 'next');
   });
 
@@ -197,14 +208,19 @@ void main() {
     },
   );
 
-  test('no next match and no recent result clears the match entirely', () async {
-    football.nextMatch = null;
-    football.recentResults = const [];
-    final cubit = build();
-    await cubit.load();
+  test(
+    'no next match and no recent result clears the match, but is still SUCCESS (not error)',
+    () async {
+      football.nextMatch = null;
+      football.recentResults = const [];
+      final cubit = build();
+      await cubit.load();
 
-    expect(cubit.state.nextMatch, isNull);
-  });
+      expect(cubit.state.status, LoadStatus.success);
+      expect(cubit.state.nextMatch, isNull);
+      expect(cubit.state.errorMessage, isNull);
+    },
+  );
 
   test('a live match is shown regardless of any recent result', () async {
     football.nextMatch = _match(id: 'live', status: MatchStatus.live);
@@ -219,5 +235,73 @@ void main() {
     await cubit.load();
 
     expect(cubit.state.nextMatch?.id, 'live');
+  });
+
+  test('load() transitions through LOADING before settling', () async {
+    football.nextMatch = _match(
+      id: 'next',
+      status: MatchStatus.scheduled,
+      kickoff: DateTime.now().add(const Duration(days: 1)),
+    );
+    final cubit = HomeCubit(football, _FakeCrowdLineupRepository());
+    addTearDown(cubit.close);
+
+    final future = expectLater(
+      cubit.stream,
+      emitsThrough(
+        predicate<HomeState>(
+          (state) =>
+              state.status == LoadStatus.success &&
+              state.nextMatch?.id == 'next',
+        ),
+      ),
+    );
+    expect(cubit.state.status, LoadStatus.loading);
+    await future;
+  });
+
+  group('error state (never confused with "no next match")', () {
+    test('a failed load is represented as ERROR, not as an empty match', () async {
+      football.failure = const NetworkFailure('sem conexão');
+      final cubit = build();
+      await cubit.load();
+
+      expect(cubit.state.status, LoadStatus.error);
+      expect(cubit.state.nextMatch, isNull);
+      expect(cubit.state.errorMessage, 'sem conexão');
+    });
+
+    test('retry after an error recovers to SUCCESS once the call works', () async {
+      football.failure = const NetworkFailure('sem conexão');
+      final cubit = build();
+      await cubit.load();
+      expect(cubit.state.status, LoadStatus.error);
+
+      football.failure = null;
+      football.nextMatch = _match(
+        id: 'recovered',
+        status: MatchStatus.scheduled,
+        kickoff: DateTime.now().add(const Duration(days: 1)),
+      );
+      await cubit.load();
+
+      expect(cubit.state.status, LoadStatus.success);
+      expect(cubit.state.nextMatch?.id, 'recovered');
+      expect(cubit.state.errorMessage, isNull);
+    });
+
+    test('retry after an error that fails again stays in ERROR', () async {
+      football.failure = const NetworkFailure('sem conexão');
+      final cubit = build();
+      await cubit.load();
+      expect(cubit.state.status, LoadStatus.error);
+
+      football.failure = const ServerFailure('servidor indisponível');
+      await cubit.load();
+
+      expect(cubit.state.status, LoadStatus.error);
+      expect(cubit.state.nextMatch, isNull);
+      expect(cubit.state.errorMessage, 'servidor indisponível');
+    });
   });
 }

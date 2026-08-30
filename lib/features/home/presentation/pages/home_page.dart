@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -19,8 +20,10 @@ import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/match_navigation.dart';
 import 'package:goias_app/features/match/presentation/widgets/live_match_poller.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_entry_card.dart';
+import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// [HomeCubit] agora é singleton (ver `injection_container.dart`) — pra
 /// dar tempo da Splash pré-carregar ele por trás do vídeo (ver
@@ -127,15 +130,16 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
         body: SafeArea(
           child: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
-              if (state.loading && state.nextMatch == null) {
+              if (state.status == LoadStatus.loading && state.nextMatch == null) {
                 return const Center(child: GoiasLoadingIndicator());
               }
 
               final match = state.nextMatch;
               if (match == null) {
-                // Sem próximo jogo: nada de hero, nada de header compacto —
-                // nunca deixa `_showCompactHeader` "preso" em true de uma
-                // partida anterior.
+                // Sem próximo jogo (ou erro ao buscar — as duas categorias
+                // nunca mostram hero/header compacto) — nunca deixa
+                // `_showCompactHeader` "preso" em true de uma partida
+                // anterior.
                 if (_showCompactHeader) {
                   WidgetsBinding.instance.addPostFrameCallback((_) {
                     if (mounted) setState(() => _showCompactHeader = false);
@@ -145,6 +149,8 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                   scrollController: _scrollController,
                   match: null,
                   heroKey: _heroKey,
+                  isError: state.status == LoadStatus.error,
+                  errorMessage: state.errorMessage,
                 );
               }
 
@@ -220,11 +226,19 @@ class _ScrollContent extends StatelessWidget {
     required this.scrollController,
     required this.match,
     required this.heroKey,
+    this.isError = false,
+    this.errorMessage,
   });
 
   final ScrollController scrollController;
   final Match? match;
   final Key heroKey;
+
+  /// Falha ao buscar o próximo jogo — nunca mostrado como se simplesmente
+  /// não houvesse jogo (ver `HomeCubit.load`, branch `Error`). Só faz
+  /// sentido quando [match] é `null`.
+  final bool isError;
+  final String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -251,6 +265,15 @@ class _ScrollContent extends StatelessWidget {
                   match: match!,
                   onTickets: () => context.push('/tickets'),
                   onMatchStarted: () => context.read<HomeCubit>().load(),
+                ),
+              ] else if (isError) ...[
+                const SizedBox(height: AppSpacing.xl),
+                StateMessage(
+                  icon: Icons.wifi_off_rounded,
+                  title: context.l10n.commonLoadError,
+                  message: errorMessage,
+                  actionLabel: context.l10n.commonRetry,
+                  onAction: () => context.read<HomeCubit>().load(),
                 ),
               ],
               const SizedBox(height: AppSpacing.xl),
