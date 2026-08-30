@@ -5,9 +5,10 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -24,8 +25,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   final _confirmController = TextEditingController();
   final _confirmFocus = FocusNode();
 
-  String? _passwordError;
-  String? _confirmError;
+  final _passwordTouch = FieldTouch();
+  final _confirmTouch = FieldTouch();
+  bool _submitted = false;
   String? _formError;
   bool _loading = false;
   bool _done = false;
@@ -41,20 +43,19 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
     final l10n = context.l10n;
-    final passwordError = AuthValidators.newPassword(
+    setState(() {
+      _submitted = true;
+      _formError = null;
+    });
+    final passwordError = AppValidators.newPassword(
       l10n,
       _passwordController.text,
     );
-    final confirmError = AuthValidators.confirmPassword(
+    final confirmError = AppValidators.confirmPassword(
       l10n,
       _confirmController.text,
       _passwordController.text,
     );
-    setState(() {
-      _passwordError = passwordError;
-      _confirmError = confirmError;
-      _formError = null;
-    });
     if (passwordError != null || confirmError != null) return;
 
     setState(() => _loading = true);
@@ -124,14 +125,20 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           label: context.l10n.securityNewPassword,
           icon: Icons.lock_outline_rounded,
           hintText: context.l10n.authPasswordMinHint(
-            AuthValidators.minPasswordLength,
+            AppValidators.minPasswordLength,
           ),
           obscurable: true,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.newPassword],
-          errorText: _passwordError,
+          errorText: _passwordTouch.errorFor(
+            _passwordController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.newPassword(context.l10n, v),
+            requiredMessage: context.l10n.validatorPasswordCreate,
+          ),
           onChanged: (_) {
-            if (_passwordError != null) setState(() => _passwordError = null);
+            _passwordTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _confirmFocus.requestFocus(),
         ),
@@ -145,9 +152,19 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           obscurable: true,
           textInputAction: TextInputAction.done,
           autofillHints: const [AutofillHints.newPassword],
-          errorText: _confirmError,
+          errorText: _confirmTouch.errorFor(
+            _confirmController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.confirmPassword(
+              context.l10n,
+              v,
+              _passwordController.text,
+            ),
+            requiredMessage: context.l10n.validatorConfirmRequired,
+          ),
           onChanged: (_) {
-            if (_confirmError != null) setState(() => _confirmError = null);
+            _confirmTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _submit(),
         ),

@@ -6,9 +6,10 @@ import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:goias_app/features/auth/presentation/widgets/forgot_password_sheet.dart';
@@ -26,8 +27,9 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
   final _passwordFocus = FocusNode();
 
-  String? _emailError;
-  String? _passwordError;
+  final _emailTouch = FieldTouch();
+  final _passwordTouch = FieldTouch();
+  bool _submitted = false;
   String? _formError;
   bool _loading = false;
 
@@ -41,24 +43,23 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
-    final emailError = AuthValidators.email(
+    setState(() {
+      _submitted = true;
+      _formError = null;
+    });
+    final emailError = AppValidators.email(
       context.l10n,
       _emailController.text,
     );
-    final passwordError = AuthValidators.password(
+    final passwordError = AppValidators.password(
       context.l10n,
       _passwordController.text,
     );
-    setState(() {
-      _emailError = emailError;
-      _passwordError = passwordError;
-      _formError = null;
-    });
     if (emailError != null || passwordError != null) return;
 
     setState(() => _loading = true);
     final result = await context.read<AuthCubit>().signIn(
-      email: AuthValidators.normalizeEmail(_emailController.text),
+      email: AppValidators.normalizeEmail(_emailController.text),
       password: _passwordController.text,
     );
     if (!mounted) return;
@@ -136,9 +137,15 @@ class _LoginPageState extends State<LoginPage> {
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.email],
-          errorText: _emailError,
+          errorText: _emailTouch.errorFor(
+            _emailController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.email(l10n, v),
+            requiredMessage: l10n.validatorEmailRequired,
+          ),
           onChanged: (_) {
-            if (_emailError != null) setState(() => _emailError = null);
+            _emailTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _passwordFocus.requestFocus(),
         ),
@@ -153,9 +160,15 @@ class _LoginPageState extends State<LoginPage> {
           obscurable: true,
           textInputAction: TextInputAction.done,
           autofillHints: const [AutofillHints.password],
-          errorText: _passwordError,
+          errorText: _passwordTouch.errorFor(
+            _passwordController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.password(l10n, v),
+            requiredMessage: l10n.validatorPasswordRequired,
+          ),
           onChanged: (_) {
-            if (_passwordError != null) setState(() => _passwordError = null);
+            _passwordTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _submit(),
         ),

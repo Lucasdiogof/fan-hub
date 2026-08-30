@@ -23,7 +23,6 @@ class MembershipRegistrationState extends Equatable {
     this.showReview = false,
     this.data = const MembershipRegistrationData(),
     this.touchedFields = const {},
-    this.blurredFields = const {},
     this.accessAttempted = false,
     this.personalAttempted = false,
     this.addressAttempted = false,
@@ -46,11 +45,6 @@ class MembershipRegistrationState extends Equatable {
   /// Campos em que o usuário já interagiu — junto com as flags abaixo,
   /// decide se um erro de "campo obrigatório" já deve aparecer.
   final Set<String> touchedFields;
-
-  /// Campos que já perderam o foco pelo menos uma vez — usado só pros
-  /// campos de texto livre (e-mail, nome, passaporte): não faz sentido
-  /// validar o "formato" enquanto a pessoa ainda está no meio de digitar.
-  final Set<String> blurredFields;
   final bool accessAttempted;
   final bool personalAttempted;
   final bool addressAttempted;
@@ -82,10 +76,7 @@ class MembershipRegistrationState extends Equatable {
       if (_revealed('cpf', accessAttempted)) {
         errors['cpf'] = l10n.membershipValCpfRequired;
       }
-    } else if (!isValidCpf(data.cpf) &&
-        (cpfDigits.length == 11 ||
-            blurredFields.contains('cpf') ||
-            accessAttempted)) {
+    } else if (!isValidCpf(data.cpf)) {
       errors['cpf'] = l10n.personalCpfInvalid;
     }
 
@@ -94,8 +85,7 @@ class MembershipRegistrationState extends Equatable {
     }
 
     if (data.passport.trim().isNotEmpty &&
-        !isValidPassportShape(data.passport) &&
-        (blurredFields.contains('passport') || accessAttempted)) {
+        !isValidPassportShape(data.passport)) {
       errors['passport'] = l10n.membershipValPassport;
     }
 
@@ -115,8 +105,7 @@ class MembershipRegistrationState extends Equatable {
       if (_revealed('contactEmail', personalAttempted)) {
         errors['contactEmail'] = l10n.membershipValContactEmail;
       }
-    } else if (!isValidEmailShape(data.contactEmail) &&
-        (blurredFields.contains('contactEmail') || personalAttempted)) {
+    } else if (!isValidEmailShape(data.contactEmail)) {
       errors['contactEmail'] = l10n.validatorEmailInvalid;
     }
 
@@ -124,22 +113,17 @@ class MembershipRegistrationState extends Equatable {
       if (_revealed('fullName', personalAttempted)) {
         errors['fullName'] = l10n.validatorNameRequired;
       }
-    } else if (!isValidFullName(data.fullName) &&
-        (blurredFields.contains('fullName') || personalAttempted)) {
+    } else if (!isValidFullName(data.fullName)) {
       errors['fullName'] = l10n.membershipValNameInvalid;
     }
 
     final birthDigits = onlyDigits(data.birthDate);
-    final birthRevealed =
-        blurredFields.contains('birthDate') ||
-        personalAttempted ||
-        birthDigits.length == 8;
     if (birthDigits.isEmpty) {
       if (_revealed('birthDate', personalAttempted)) {
         errors['birthDate'] = l10n.membershipValBirthRequired;
       }
     } else if (birthDigits.length < 8) {
-      if (birthRevealed) errors['birthDate'] = l10n.membershipValBirthInvalid;
+      errors['birthDate'] = l10n.membershipValBirthInvalid;
     } else {
       final parsed = parseDdMmYyyy(data.birthDate);
       if (parsed == null || parsed.isAfter(DateTime.now())) {
@@ -158,17 +142,11 @@ class MembershipRegistrationState extends Equatable {
     final phoneValid = isBrazilPhone
         ? isValidMobilePhone(data.phone)
         : isValidInternationalPhone(data.phone);
-    final phoneComplete = isBrazilPhone
-        ? phoneDigits.length >= 11
-        : phoneDigits.length >= 6;
     if (phoneDigits.isEmpty) {
       if (_revealed('phone', personalAttempted)) {
         errors['phone'] = l10n.membershipValPhoneRequired;
       }
-    } else if (!phoneValid &&
-        (phoneComplete ||
-            blurredFields.contains('phone') ||
-            personalAttempted)) {
+    } else if (!phoneValid) {
       errors['phone'] = l10n.membershipValPhoneInvalid;
     }
 
@@ -249,7 +227,6 @@ class MembershipRegistrationState extends Equatable {
     bool? showReview,
     MembershipRegistrationData? data,
     Set<String>? touchedFields,
-    Set<String>? blurredFields,
     bool? accessAttempted,
     bool? personalAttempted,
     bool? addressAttempted,
@@ -270,7 +247,6 @@ class MembershipRegistrationState extends Equatable {
       showReview: showReview ?? this.showReview,
       data: data ?? this.data,
       touchedFields: touchedFields ?? this.touchedFields,
-      blurredFields: blurredFields ?? this.blurredFields,
       accessAttempted: accessAttempted ?? this.accessAttempted,
       personalAttempted: personalAttempted ?? this.personalAttempted,
       addressAttempted: addressAttempted ?? this.addressAttempted,
@@ -295,7 +271,6 @@ class MembershipRegistrationState extends Equatable {
     showReview,
     data,
     touchedFields,
-    blurredFields,
     accessAttempted,
     personalAttempted,
     addressAttempted,

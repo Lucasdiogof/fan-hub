@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
 
 class PurchaseState extends Equatable {
   const PurchaseState({
@@ -70,7 +71,7 @@ class PurchaseState extends Equatable {
   bool get canFinalize =>
       totalQuantity > 0 &&
       holderName.trim().isNotEmpty &&
-      holderDocument.trim().length >= 5;
+      AppValidators.isValidDocument(holderDocument);
 
   PurchaseState copyWith({
     Map<(String, String), int>? quantities,

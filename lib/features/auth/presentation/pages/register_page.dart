@@ -6,9 +6,10 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_scaffold.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
@@ -29,10 +30,11 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordFocus = FocusNode();
   final _confirmFocus = FocusNode();
 
-  String? _nameError;
-  String? _emailError;
-  String? _passwordError;
-  String? _confirmError;
+  final _nameTouch = FieldTouch();
+  final _emailTouch = FieldTouch();
+  final _passwordTouch = FieldTouch();
+  final _confirmTouch = FieldTouch();
+  bool _submitted = false;
   String? _formError;
   bool _acceptedTerms = false;
   bool _termsError = false;
@@ -53,25 +55,22 @@ class _RegisterPageState extends State<RegisterPage> {
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
     final l10n = context.l10n;
-    final nameError = AuthValidators.fullName(l10n, _nameController.text);
-    final emailError = AuthValidators.email(l10n, _emailController.text);
-    final passwordError = AuthValidators.newPassword(
+    setState(() {
+      _submitted = true;
+      _termsError = !_acceptedTerms;
+      _formError = null;
+    });
+    final nameError = AppValidators.fullName(l10n, _nameController.text);
+    final emailError = AppValidators.email(l10n, _emailController.text);
+    final passwordError = AppValidators.newPassword(
       l10n,
       _passwordController.text,
     );
-    final confirmError = AuthValidators.confirmPassword(
+    final confirmError = AppValidators.confirmPassword(
       l10n,
       _confirmController.text,
       _passwordController.text,
     );
-    setState(() {
-      _nameError = nameError;
-      _emailError = emailError;
-      _passwordError = passwordError;
-      _confirmError = confirmError;
-      _termsError = !_acceptedTerms;
-      _formError = null;
-    });
     if (nameError != null ||
         emailError != null ||
         passwordError != null ||
@@ -83,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
     setState(() => _loading = true);
     final result = await context.read<AuthCubit>().signUp(
       fullName: _nameController.text.trim(),
-      email: AuthValidators.normalizeEmail(_emailController.text),
+      email: AppValidators.normalizeEmail(_emailController.text),
       password: _passwordController.text,
     );
     if (!mounted) return;
@@ -93,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
         if (data) {
           context.go(
             '/check-email',
-            extra: AuthValidators.normalizeEmail(_emailController.text),
+            extra: AppValidators.normalizeEmail(_emailController.text),
           );
         }
       case Error<bool>(:final failure):
@@ -117,9 +116,15 @@ class _RegisterPageState extends State<RegisterPage> {
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.name],
-          errorText: _nameError,
+          errorText: _nameTouch.errorFor(
+            _nameController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.fullName(l10n, v),
+            requiredMessage: l10n.validatorNameRequired,
+          ),
           onChanged: (_) {
-            if (_nameError != null) setState(() => _nameError = null);
+            _nameTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _emailFocus.requestFocus(),
         ),
@@ -133,9 +138,15 @@ class _RegisterPageState extends State<RegisterPage> {
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.email],
-          errorText: _emailError,
+          errorText: _emailTouch.errorFor(
+            _emailController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.email(l10n, v),
+            requiredMessage: l10n.validatorEmailRequired,
+          ),
           onChanged: (_) {
-            if (_emailError != null) setState(() => _emailError = null);
+            _emailTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _passwordFocus.requestFocus(),
         ),
@@ -145,13 +156,19 @@ class _RegisterPageState extends State<RegisterPage> {
           focusNode: _passwordFocus,
           label: l10n.commonPasswordLabel,
           icon: Icons.lock_outline_rounded,
-          hintText: l10n.authPasswordMinHint(AuthValidators.minPasswordLength),
+          hintText: l10n.authPasswordMinHint(AppValidators.minPasswordLength),
           obscurable: true,
           textInputAction: TextInputAction.next,
           autofillHints: const [AutofillHints.newPassword],
-          errorText: _passwordError,
+          errorText: _passwordTouch.errorFor(
+            _passwordController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.newPassword(l10n, v),
+            requiredMessage: l10n.validatorPasswordCreate,
+          ),
           onChanged: (_) {
-            if (_passwordError != null) setState(() => _passwordError = null);
+            _passwordTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _confirmFocus.requestFocus(),
         ),
@@ -165,9 +182,19 @@ class _RegisterPageState extends State<RegisterPage> {
           obscurable: true,
           textInputAction: TextInputAction.done,
           autofillHints: const [AutofillHints.newPassword],
-          errorText: _confirmError,
+          errorText: _confirmTouch.errorFor(
+            _confirmController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.confirmPassword(
+              l10n,
+              v,
+              _passwordController.text,
+            ),
+            requiredMessage: l10n.validatorConfirmRequired,
+          ),
           onChanged: (_) {
-            if (_confirmError != null) setState(() => _confirmError = null);
+            _confirmTouch.touched = true;
+            setState(() {});
           },
           onSubmitted: (_) => _submit(),
         ),

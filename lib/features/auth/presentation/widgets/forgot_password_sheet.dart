@@ -4,9 +4,10 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/auth/presentation/auth_validators.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
@@ -27,9 +28,10 @@ class ForgotPasswordSheet extends StatefulWidget {
 
 class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
   final _emailController = TextEditingController();
+  final _emailTouch = FieldTouch();
 
-  String? _emailError;
   String? _formError;
+  bool _submitted = false;
   bool _loading = false;
   bool _canSubmit = false;
 
@@ -47,25 +49,25 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
   }
 
   void _onEmailChanged(String value) {
-    final valid = AuthValidators.email(context.l10n, value) == null;
-    if (valid != _canSubmit) setState(() => _canSubmit = valid);
-    if (_emailError != null) setState(() => _emailError = null);
+    _emailTouch.touched = true;
+    final valid = AppValidators.email(context.l10n, value) == null;
+    setState(() => _canSubmit = valid);
   }
 
   Future<void> _submit() async {
     if (_loading) return;
     FocusScope.of(context).unfocus();
-    final emailError = AuthValidators.email(
+    setState(() {
+      _submitted = true;
+      _formError = null;
+    });
+    final emailError = AppValidators.email(
       context.l10n,
       _emailController.text,
     );
-    setState(() {
-      _emailError = emailError;
-      _formError = null;
-    });
     if (emailError != null) return;
 
-    final email = AuthValidators.normalizeEmail(_emailController.text);
+    final email = AppValidators.normalizeEmail(_emailController.text);
     setState(() => _loading = true);
     final result = await context.read<AuthCubit>().sendPasswordReset(email);
     if (!mounted) return;
@@ -147,7 +149,12 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.done,
           autofillHints: const [AutofillHints.email],
-          errorText: _emailError,
+          errorText: _emailTouch.errorFor(
+            _emailController.text,
+            submitted: _submitted,
+            format: (v) => AppValidators.email(l10n, v),
+            requiredMessage: l10n.validatorEmailRequired,
+          ),
           onChanged: _onEmailChanged,
           onSubmitted: (_) => _submit(),
         ),

@@ -194,17 +194,14 @@ void main() {
     },
   );
 
-  test(
-    'passport format error only shows after the field loses focus or Continuar is pressed',
-    () {
-      cubit.updateNationality('AR');
-      cubit.updatePassport('A1');
-      expect(cubit.state.accessErrors(l10n)['passport'], isNull);
+  test('passport format error shows live, as soon as it is typed', () {
+    cubit.updateNationality('AR');
+    cubit.updatePassport('A1');
+    expect(cubit.state.accessErrors(l10n)['passport'], isNotNull);
 
-      cubit.markFieldBlurred('passport');
-      expect(cubit.state.accessErrors(l10n)['passport'], isNotNull);
-    },
-  );
+    cubit.updatePassport('AB123456');
+    expect(cubit.state.accessErrors(l10n)['passport'], isNull);
+  });
 
   test(
     'back() from the review screen returns to the address step without losing data',

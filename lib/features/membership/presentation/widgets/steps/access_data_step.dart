@@ -40,7 +40,6 @@ class AccessDataStep extends StatelessWidget {
           hintText: '000.000.000-00',
           inputFormatters: [cpfInputFormatter()],
           onChanged: cubit.updateCpf,
-          onBlur: () => cubit.markFieldBlurred('cpf'),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationDropdownField<String>(
@@ -65,7 +64,6 @@ class AccessDataStep extends StatelessWidget {
           textCapitalization: TextCapitalization.characters,
           inputFormatters: [passportInputFormatter()],
           onChanged: cubit.updatePassport,
-          onBlur: () => cubit.markFieldBlurred('passport'),
         ),
       ],
     );

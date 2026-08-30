@@ -41,11 +41,6 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
     );
   }
 
-  void markFieldBlurred(String fieldKey) {
-    if (state.blurredFields.contains(fieldKey)) return;
-    emit(state.copyWith(blurredFields: {...state.blurredFields, fieldKey}));
-  }
-
   void updateCpf(String value) =>
       _updateField('cpf', (d) => d.copyWith(cpf: value));
 

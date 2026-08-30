@@ -40,7 +40,6 @@ class PersonalDataStep extends StatelessWidget {
           errorText: errors['contactEmail'],
           keyboardType: TextInputType.emailAddress,
           onChanged: cubit.updateContactEmail,
-          onBlur: () => cubit.markFieldBlurred('contactEmail'),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
@@ -50,7 +49,6 @@ class PersonalDataStep extends StatelessWidget {
           errorText: errors['fullName'],
           textCapitalization: TextCapitalization.words,
           onChanged: cubit.updateFullName,
-          onBlur: () => cubit.markFieldBlurred('fullName'),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
@@ -69,7 +67,6 @@ class PersonalDataStep extends StatelessWidget {
           hintText: context.l10n.membershipBirthdateHint,
           inputFormatters: [birthDateInputFormatter()],
           onChanged: cubit.updateBirthDate,
-          onBlur: () => cubit.markFieldBlurred('birthDate'),
         ),
         const SizedBox(height: AppSpacing.lg),
         FieldLabel(context.l10n.membershipGender, isRequired: true),
@@ -105,7 +102,6 @@ class PersonalDataStep extends StatelessWidget {
               ? [phoneInputFormatter()]
               : null,
           onChanged: cubit.updatePhone,
-          onBlur: () => cubit.markFieldBlurred('phone'),
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(

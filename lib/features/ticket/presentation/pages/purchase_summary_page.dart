@@ -10,6 +10,8 @@ import 'package:goias_app/features/ticket/presentation/cubit/purchase_state.dart
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
@@ -49,6 +51,8 @@ class _PurchaseSummaryView extends StatefulWidget {
 class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
   final _nameController = TextEditingController();
   final _documentController = TextEditingController();
+  final _nameTouch = FieldTouch();
+  final _documentTouch = FieldTouch();
 
   @override
   void initState() {
@@ -273,22 +277,38 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
                           TextField(
                             controller: _nameController,
                             enabled: !state.holderIsSelf,
-                            onChanged: context
-                                .read<PurchaseCubit>()
-                                .setHolderName,
+                            onChanged: (v) {
+                              _nameTouch.touched = true;
+                              context.read<PurchaseCubit>().setHolderName(v);
+                              setState(() {});
+                            },
                             decoration: InputDecoration(
                               labelText: context.l10n.authFullNameLabel,
+                              errorText: _nameTouch.errorFor(
+                                _nameController.text,
+                                submitted: false,
+                                requiredMessage: context.l10n.validatorNameRequired,
+                              ),
                             ),
                           ),
                           const SizedBox(height: AppSpacing.md),
                           TextField(
                             controller: _documentController,
                             enabled: !state.holderIsSelf,
-                            onChanged: context
-                                .read<PurchaseCubit>()
-                                .setHolderDocument,
+                            onChanged: (v) {
+                              _documentTouch.touched = true;
+                              context.read<PurchaseCubit>().setHolderDocument(v);
+                              setState(() {});
+                            },
                             decoration: InputDecoration(
                               labelText: context.l10n.ticketsDocumentLabel,
+                              errorText: _documentTouch.errorFor(
+                                _documentController.text,
+                                submitted: false,
+                                format: (v) => AppValidators.isValidDocument(v)
+                                    ? null
+                                    : context.l10n.storeValCpfInvalid,
+                              ),
                             ),
                           ),
                           const SizedBox(height: AppSpacing.md),

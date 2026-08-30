@@ -13,6 +13,8 @@ import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart
 import 'package:goias_app/features/profile/presentation/cubit/profile_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:goias_app/shared/validation/app_validators.dart';
+import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -113,8 +115,10 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
   );
   late DateTime? _birthDate = widget.profile.birthDate;
 
-  String? _nameError;
-  String? _cpfError;
+  final _nameTouch = FieldTouch();
+  final _cpfTouch = FieldTouch();
+  final _phoneTouch = FieldTouch();
+  bool _submitted = false;
 
   Future<void> _pickDate() async {
     final now = DateTime.now();
@@ -130,19 +134,14 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
 
   Future<void> _save() async {
     FocusScope.of(context).unfocus();
-    final nameError = _name.trim().isEmpty
-        ? context.l10n.personalNameRequired
-        : null;
-    final cpfDigits = onlyDigits(_cpf);
-    final cpfError = _cpf.isNotEmpty && cpfDigits.length != 11
-        ? context.l10n.personalCpfInvalid
-        : null;
-    setState(() {
-      _nameError = nameError;
-      _cpfError = cpfError;
-    });
-    if (nameError != null || cpfError != null) return;
+    setState(() => _submitted = true);
+    final nameValid = _name.trim().isNotEmpty;
+    final cpfValid = _cpf.isEmpty || AppValidators.isValidCpf(onlyDigits(_cpf));
+    final phoneValid =
+        _phone.isEmpty || AppValidators.isValidMobilePhone(_phone);
+    if (!nameValid || !cpfValid || !phoneValid) return;
 
+    final cpfDigits = onlyDigits(_cpf);
     final phoneDigits = onlyDigits(_phone);
     final failure = await context.read<ProfileCubit>().updatePersonalData(
       fullName: _name.trim(),
@@ -180,23 +179,33 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
         RegistrationTextField(
           label: context.l10n.authFullNameLabel,
           value: _name,
-          errorText: _nameError,
+          errorText: _nameTouch.errorFor(
+            _name,
+            submitted: _submitted,
+            requiredMessage: context.l10n.personalNameRequired,
+          ),
           keyboardType: TextInputType.name,
           onChanged: (value) {
-            _name = value;
-            if (_nameError != null) setState(() => _nameError = null);
+            _nameTouch.touched = true;
+            setState(() => _name = value);
           },
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
           label: context.l10n.personalFieldCpf,
           value: _cpf,
-          errorText: _cpfError,
+          errorText: _cpfTouch.errorFor(
+            _cpf,
+            submitted: _submitted,
+            format: (v) => AppValidators.isValidCpf(onlyDigits(v))
+                ? null
+                : context.l10n.personalCpfInvalid,
+          ),
           keyboardType: TextInputType.number,
           inputFormatters: [cpfInputFormatter()],
           onChanged: (value) {
-            _cpf = value;
-            if (_cpfError != null) setState(() => _cpfError = null);
+            _cpfTouch.touched = true;
+            setState(() => _cpf = value);
           },
         ),
         const SizedBox(height: AppSpacing.lg),
@@ -210,9 +219,19 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
         RegistrationTextField(
           label: context.l10n.personalFieldPhone,
           value: _phone,
+          errorText: _phoneTouch.errorFor(
+            _phone,
+            submitted: _submitted,
+            format: (v) => AppValidators.isValidMobilePhone(v)
+                ? null
+                : context.l10n.storeValPhoneInvalid,
+          ),
           keyboardType: TextInputType.phone,
           inputFormatters: [phoneInputFormatter()],
-          onChanged: (value) => _phone = value,
+          onChanged: (value) {
+            _phoneTouch.touched = true;
+            setState(() => _phone = value);
+          },
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
