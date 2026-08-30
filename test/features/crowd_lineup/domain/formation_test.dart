@@ -5,6 +5,24 @@ import 'package:goias_app/shared/domain/player_position.dart';
 int _count(Formation formation, PlayerPosition position) =>
     formation.slots.where((slot) => slot.position == position).length;
 
+/// Mesmo agrupamento por `y` próximo que `LineupField` usa pra decidir
+/// linhas táticas (ver `_groupIntoLines`) — duplicado aqui de propósito
+/// pra travar a distância mínima independente de qualquer mudança futura
+/// no algoritmo de tamanho da célula.
+List<List<FormationSlot>> _groupIntoLines(List<FormationSlot> slots) {
+  const threshold = 0.07;
+  final sorted = [...slots]..sort((a, b) => a.y.compareTo(b.y));
+  final lines = <List<FormationSlot>>[];
+  for (final slot in sorted) {
+    if (lines.isNotEmpty && slot.y - lines.last.last.y <= threshold) {
+      lines.last.add(slot);
+    } else {
+      lines.add([slot]);
+    }
+  }
+  return lines;
+}
+
 void main() {
   group('every formation', () {
     for (final formation in formations) {
@@ -66,6 +84,50 @@ void main() {
               .reduce((a, b) => a > b ? a : b);
           expect(gol.y, greaterThan(defenseY));
           expect(gol.y, inInclusiveRange(0.8, 0.95));
+        },
+      );
+
+      // Regressão pro bug reportado repetidas vezes: jogadores de linhas
+      // vizinhas (ou lado a lado na mesma linha) desenhados perto demais,
+      // camisas se tocando/sobrepondo — ver [[project_goias_app_crowd_lineup_feature]].
+      // Os limites abaixo espelham o piso de tamanho de célula que
+      // `LineupField` usa (30dp de camisa / 46dp de largura mínima): abaixo
+      // deles nem o encolhimento adaptativo do campo dá conta.
+      test(
+        '${formation.id} keeps a safe vertical gap between tactical lines',
+        () {
+          final lines = _groupIntoLines(formation.slots);
+          for (var i = 1; i < lines.length; i++) {
+            double avgY(List<FormationSlot> line) =>
+                line.map((s) => s.y).reduce((a, b) => a + b) / line.length;
+            final gap = avgY(lines[i]) - avgY(lines[i - 1]);
+            expect(
+              gap,
+              greaterThanOrEqualTo(0.12),
+              reason:
+                  '${formation.id}: lines at y≈${avgY(lines[i - 1])} and '
+                  'y≈${avgY(lines[i])} are too close',
+            );
+          }
+        },
+      );
+
+      test(
+        '${formation.id} keeps a safe horizontal gap within each line',
+        () {
+          for (final line in _groupIntoLines(formation.slots)) {
+            if (line.length < 2) continue;
+            final xs = [for (final slot in line) slot.x]..sort();
+            for (var i = 1; i < xs.length; i++) {
+              expect(
+                xs[i] - xs[i - 1],
+                greaterThanOrEqualTo(0.13),
+                reason:
+                    '${formation.id}: slots at x=${xs[i - 1]} and '
+                    'x=${xs[i]} on the same line are too close',
+              );
+            }
+          }
         },
       );
     }

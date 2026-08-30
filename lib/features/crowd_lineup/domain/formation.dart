@@ -83,9 +83,10 @@ final List<Formation> formations = [
       _s(PlayerPosition.vol, 0.38, 0.52),
       _s(PlayerPosition.vol, 0.62, 0.52),
       // Half-space, nunca aberto feito ponta — é isto que diferencia este
-      // 4-2-2-2 de um 4-2-4 visualmente.
-      _s(PlayerPosition.mei, 0.35, 0.32),
-      _s(PlayerPosition.mei, 0.65, 0.32),
+      // 4-2-2-2 de um 4-2-4 visualmente. Y a meio caminho entre o VOL e o
+      // ATA (não colado no ataque) — senão as duas linhas se tocam.
+      _s(PlayerPosition.mei, 0.35, 0.36),
+      _s(PlayerPosition.mei, 0.65, 0.36),
       _s(PlayerPosition.ata, 0.37, 0.20),
       _s(PlayerPosition.ata, 0.63, 0.20),
     ],
@@ -113,18 +114,24 @@ final List<Formation> formations = [
     id: '4-1-2-1-2',
     label: '4-1-2-1-2',
     slots: [
+      // Losango tem 6 linhas (gol, defesa, vol, dupla de MC, meia, dupla de
+      // ataque) — uma a mais que a maioria das outras formações — no MESMO
+      // espaço vertical. Sem redistribuir a defesa um pouco pra trás e
+      // espaçar as 4 linhas de baixo em passos iguais, MC/meia/ataque
+      // ficavam tão próximos que as camisas se tocavam — ver
+      // [[project_goias_app_crowd_lineup_feature]].
       _s(PlayerPosition.gol, 0.50, 0.91),
-      _s(PlayerPosition.le, 0.14, 0.70),
-      _s(PlayerPosition.zag, 0.38, 0.70),
-      _s(PlayerPosition.zag, 0.62, 0.70),
-      _s(PlayerPosition.ld, 0.86, 0.70),
-      _s(PlayerPosition.vol, 0.50, 0.56),
+      _s(PlayerPosition.le, 0.14, 0.72),
+      _s(PlayerPosition.zag, 0.38, 0.72),
+      _s(PlayerPosition.zag, 0.62, 0.72),
+      _s(PlayerPosition.ld, 0.86, 0.72),
+      _s(PlayerPosition.vol, 0.50, 0.585),
       // Mais abertos que o VOL, mas ainda no corredor central.
-      _s(PlayerPosition.mc, 0.30, 0.42),
-      _s(PlayerPosition.mc, 0.70, 0.42),
-      _s(PlayerPosition.mei, 0.50, 0.30),
-      _s(PlayerPosition.ata, 0.37, 0.20),
-      _s(PlayerPosition.ata, 0.63, 0.20),
+      _s(PlayerPosition.mc, 0.30, 0.45),
+      _s(PlayerPosition.mc, 0.70, 0.45),
+      _s(PlayerPosition.mei, 0.50, 0.315),
+      _s(PlayerPosition.ata, 0.37, 0.18),
+      _s(PlayerPosition.ata, 0.63, 0.18),
     ],
   ),
   Formation(
@@ -175,9 +182,11 @@ final List<Formation> formations = [
       _s(PlayerPosition.zag, 0.50, 0.70),
       _s(PlayerPosition.zag, 0.72, 0.70),
       _s(PlayerPosition.ale, 0.12, 0.44),
-      _s(PlayerPosition.mc, 0.36, 0.47),
+      // MC/VOL/MC mais espaçados que os alas — junto com eles (0.36/0.64)
+      // ficavam próximos demais um do outro.
+      _s(PlayerPosition.mc, 0.30, 0.47),
       _s(PlayerPosition.vol, 0.50, 0.50),
-      _s(PlayerPosition.mc, 0.64, 0.47),
+      _s(PlayerPosition.mc, 0.70, 0.47),
       _s(PlayerPosition.ald, 0.88, 0.44),
       _s(PlayerPosition.ata, 0.37, 0.20),
       _s(PlayerPosition.ata, 0.63, 0.20),
@@ -212,9 +221,10 @@ final List<Formation> formations = [
       _s(PlayerPosition.mc, 0.38, 0.44),
       _s(PlayerPosition.mc, 0.62, 0.44),
       _s(PlayerPosition.ald, 0.88, 0.44),
-      // Half-space de novo, não PE/PD.
-      _s(PlayerPosition.mei, 0.35, 0.32),
-      _s(PlayerPosition.mei, 0.65, 0.32),
+      // Half-space de novo, não PE/PD. Y a meio caminho entre o meio-campo
+      // e o ataque — senão as duas linhas se tocam.
+      _s(PlayerPosition.mei, 0.35, 0.31),
+      _s(PlayerPosition.mei, 0.65, 0.31),
       _s(PlayerPosition.ata, 0.50, 0.18),
     ],
   ),
@@ -230,9 +240,9 @@ final List<Formation> formations = [
       _s(PlayerPosition.zag, 0.50, 0.70),
       _s(PlayerPosition.zag, 0.68, 0.70),
       _s(PlayerPosition.ald, 0.90, 0.70),
-      _s(PlayerPosition.mc, 0.36, 0.47),
+      _s(PlayerPosition.mc, 0.30, 0.47),
       _s(PlayerPosition.vol, 0.50, 0.50),
-      _s(PlayerPosition.mc, 0.64, 0.47),
+      _s(PlayerPosition.mc, 0.70, 0.47),
       _s(PlayerPosition.ata, 0.37, 0.20),
       _s(PlayerPosition.ata, 0.63, 0.20),
     ],

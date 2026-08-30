@@ -32,16 +32,26 @@ class LineupField extends StatelessWidget {
   )
   slotBuilder;
 
+  static const _minAvatarSize = 30.0;
+  static const _minCellWidth = 46.0;
+  static const _labelAllowance = 26.0;
+
+  // Fração do espaço real disponível que a célula pode ocupar — sobra
+  // sempre uma folga visível entre linhas/jogadores vizinhos, nunca
+  // encostando exatamente na distância mínima calculada.
+  static const _verticalSafety = 0.85;
+  static const _horizontalSafety = 0.82;
+
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 0.64,
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final widestLine = _widestLineCount(formation.slots);
-          final avatarSize = _avatarSizeFor(widestLine);
-          final cellWidth = _cellWidthFor(widestLine);
-          final cellHeight = avatarSize + 26;
+          final lines = _groupIntoLines(formation.slots);
+          final widestLine = lines
+              .map((line) => line.length)
+              .reduce((a, b) => a > b ? a : b);
           // Assimétrico de propósito: a linha de cima (ataque) é a mais
           // alta — camisa + selo/percentual — e sem essa margem extra ela
           // estourava o `ClipRRect` do campo (jogador "saindo de campo"). A
@@ -50,6 +60,31 @@ class LineupField extends StatelessWidget {
           const topInset = AppSpacing.xxl + 8;
           const bottomInset = AppSpacing.sm + 4;
           final innerHeight = constraints.maxHeight - topInset - bottomInset;
+
+          // O tamanho "ideal" (baseado só na linha mais cheia) presumia que
+          // toda formação tem a mesma quantidade de linhas — não tem (o
+          // 4-1-2-1-2, por ex., empilha 6 contra as 4-5 de formações mais
+          // simples). Aqui a célula nunca passa do que o menor espaço
+          // vertical/horizontal *real* entre linhas/jogadores comporta,
+          // senão camisas de linhas vizinhas se tocam ou se sobrepõem —
+          // ver [[project_goias_app_crowd_lineup_feature]].
+          final idealAvatarSize = _avatarSizeFor(widestLine);
+          final minLineGapFraction = _minLineGap(lines);
+          final maxAvatarSizeByHeight =
+              minLineGapFraction * innerHeight * _verticalSafety -
+              _labelAllowance;
+          final avatarSize = idealAvatarSize <= maxAvatarSizeByHeight
+              ? idealAvatarSize
+              : _clampD(maxAvatarSizeByHeight, _minAvatarSize, idealAvatarSize);
+          final cellHeight = avatarSize + _labelAllowance;
+
+          final idealCellWidth = _cellWidthFor(widestLine);
+          final minSlotGapFraction = _minSlotGap(lines);
+          final maxCellWidthByWidth =
+              minSlotGapFraction * constraints.maxWidth * _horizontalSafety;
+          final cellWidth = idealCellWidth <= maxCellWidthByWidth
+              ? idealCellWidth
+              : _clampD(maxCellWidthByWidth, _minCellWidth, idealCellWidth);
 
           return ClipRRect(
             borderRadius: BorderRadius.circular(AppRadius.card),
@@ -123,22 +158,54 @@ class LineupField extends StatelessWidget {
     _ => 60,
   };
 
-  /// Só pra dimensionar (ver acima), não pra posicionar: agrupa slots por
-  /// `y` próximo (mesma linha tática, com tolerância pra variações leves de
-  /// y dentro da mesma linha) e devolve o tamanho da linha mais cheia.
-  int _widestLineCount(List<FormationSlot> slots) {
+  /// Agrupa slots por `y` próximo (mesma linha tática, com tolerância pra
+  /// variações leves de y dentro da mesma linha) — mesmo critério usado
+  /// tanto pra dimensionar quanto pra saber o espaço real entre linhas.
+  List<List<FormationSlot>> _groupIntoLines(List<FormationSlot> slots) {
     const threshold = 0.07;
-    final ys = [for (final slot in slots) slot.y]..sort();
-    var widest = 1;
-    var current = 1;
-    for (var i = 1; i < ys.length; i++) {
-      if (ys[i] - ys[i - 1] <= threshold) {
-        current++;
+    final sorted = [...slots]..sort((a, b) => a.y.compareTo(b.y));
+    final lines = <List<FormationSlot>>[];
+    for (final slot in sorted) {
+      if (lines.isNotEmpty && slot.y - lines.last.last.y <= threshold) {
+        lines.last.add(slot);
       } else {
-        current = 1;
+        lines.add([slot]);
       }
-      if (current > widest) widest = current;
     }
-    return widest;
+    return lines;
   }
+
+  /// Menor distância vertical entre duas linhas táticas vizinhas (usa a
+  /// média de `y` de cada linha como sua posição representativa).
+  double _minLineGap(List<List<FormationSlot>> lines) {
+    if (lines.length < 2) return 1;
+    final ys = [
+      for (final line in lines)
+        line.map((s) => s.y).reduce((a, b) => a + b) / line.length,
+    ];
+    var minGap = double.infinity;
+    for (var i = 1; i < ys.length; i++) {
+      final gap = ys[i] - ys[i - 1];
+      if (gap < minGap) minGap = gap;
+    }
+    return minGap;
+  }
+
+  /// Menor distância horizontal entre dois jogadores vizinhos dentro da
+  /// MESMA linha (linhas diferentes não competem por espaço horizontal).
+  double _minSlotGap(List<List<FormationSlot>> lines) {
+    var minGap = double.infinity;
+    for (final line in lines) {
+      if (line.length < 2) continue;
+      final xs = [for (final slot in line) slot.x]..sort();
+      for (var i = 1; i < xs.length; i++) {
+        final gap = xs[i] - xs[i - 1];
+        if (gap < minGap) minGap = gap;
+      }
+    }
+    return minGap.isFinite ? minGap : 1;
+  }
+
+  double _clampD(double value, double min, double max) =>
+      value < min ? min : (value > max ? max : value);
 }
