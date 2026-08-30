@@ -117,7 +117,9 @@ class PassportCubit extends Cubit<PassportState> {
   /// seleções locais continuam intactas pra o usuário tentar de novo sem
   /// perder nada.
   Future<void> save() async {
-    if (state.pendingChanges.isEmpty) return;
+    if (state.saveStatus == LoadStatus.loading || state.pendingChanges.isEmpty) {
+      return;
+    }
     emit(state.copyWith(saveStatus: LoadStatus.loading));
     final changes = state.pendingChanges.entries
         .map((e) => PassportAttendanceChange(matchId: e.key, attended: e.value))

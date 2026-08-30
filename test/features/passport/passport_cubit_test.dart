@@ -19,6 +19,10 @@ class _FakePassportRepository implements PassportRepository {
   bool failMatches = false;
   List<PassportAttendanceChange>? lastSavedChanges;
 
+  /// Quantas vezes `saveAttendances` foi de fato chamado — pra testar que
+  /// um duplo toque/chamada concorrente não dispara dois salvamentos.
+  int saveCallCount = 0;
+
   @override
   Future<Result<List<PassportSeason>>> getSeasons() async => Success(seasons);
 
@@ -37,7 +41,11 @@ class _FakePassportRepository implements PassportRepository {
   Future<Result<List<PassportAttendanceChangeResult>>> saveAttendances(
     List<PassportAttendanceChange> changes,
   ) async {
+    saveCallCount++;
     lastSavedChanges = changes;
+    // Delay real (não só microtask) — é essa janela assíncrona que um
+    // duplo toque/chamada concorrente exploraria sem a guarda no Cubit.
+    await Future<void>.delayed(const Duration(milliseconds: 20));
     if (failSave) {
       return const Error(ServerFailure('não salvou'));
     }
@@ -172,6 +180,21 @@ void main() {
     expect(cubit.state.matches.firstWhere((m) => m.id == 'm1').attended, isTrue);
     expect(cubit.state.matches.firstWhere((m) => m.id == 'm2').attended, isFalse);
   });
+
+  test(
+    'duas chamadas concorrentes de save() só disparam um salvamento real',
+    () async {
+      final m1 = _finishedMatch('m1');
+      cubit.emit(cubit.state.copyWith(matches: [m1]));
+      cubit.toggleAttendance(m1);
+
+      final first = cubit.save();
+      final second = cubit.save(); // "segundo toque" durante o 1º save.
+      await Future.wait([first, second]);
+
+      expect(repository.saveCallCount, 1);
+    },
+  );
 
   test('em erro no save, as seleções locais continuam intactas', () async {
     repository.failSave = true;

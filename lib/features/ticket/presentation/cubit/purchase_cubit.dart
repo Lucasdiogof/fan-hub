@@ -45,7 +45,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
       emit(state.copyWith(holderDocument: value));
 
   Future<void> finalizePurchase() async {
-    if (!state.canFinalize) return;
+    if (state.saving || !state.canFinalize) return;
     emit(state.copyWith(saving: true, clearError: true));
     final result = await _repository.purchase(
       matchId: state.event.match.id.toString(),
