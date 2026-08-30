@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_state.dart';
@@ -15,8 +16,13 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> load() async {
     emit(state.copyWith(status: LoadStatus.loading));
-    final cart = await _repository.loadCart();
-    emit(state.copyWith(status: LoadStatus.success, cart: cart));
+    final result = await _repository.loadCart();
+    switch (result) {
+      case Success(:final data):
+        emit(state.copyWith(status: LoadStatus.success, cart: data));
+      case Error():
+        emit(state.copyWith(status: LoadStatus.error));
+    }
   }
 
   Future<void> _persist(Cart cart) async {
@@ -69,7 +75,11 @@ class CartCubit extends Cubit<CartState> {
       emit(state.copyWith(applyingCoupon: false));
       return;
     }
-    final percent = await _repository.resolveCouponDiscountPercent(trimmed);
+    final result = await _repository.resolveCouponDiscountPercent(trimmed);
+    final percent = switch (result) {
+      Success(:final data) => data,
+      Error() => null,
+    };
     if (percent == null) {
       emit(state.copyWith(applyingCoupon: false, invalidCoupon: true));
       return;

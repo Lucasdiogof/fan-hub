@@ -75,7 +75,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
       return;
     }
 
-    await clearLocalGameCaches();
+    await clearAccountScopedLocalCache();
     if (!mounted) return;
     // Não navega manualmente: assim que a sessão local é encerrada (dentro
     // de `deleteAccount`), o redirect do GoRouter já leva pro /login

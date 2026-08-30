@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 
 /// Singleton do app (mesma razão do `CartCubit`) — favoritos precisam
@@ -11,7 +12,8 @@ class FavoritesCubit extends Cubit<Set<String>> {
   final StoreRepository _repository;
 
   Future<void> load() async {
-    emit(await _repository.loadFavoriteProductIds());
+    final result = await _repository.loadFavoriteProductIds();
+    if (result case Success(:final data)) emit(data);
   }
 
   Future<void> toggle(String productId) async {
@@ -22,4 +24,12 @@ class FavoritesCubit extends Cubit<Set<String>> {
   }
 
   bool isFavorite(String productId) => state.contains(productId);
+
+  /// Chamado no logout/sessão expirada (ver `AccountSessionCacheGuard`) —
+  /// favoritos são locais ao aparelho, nunca podem sobreviver pra outra
+  /// conta que faça login em seguida.
+  Future<void> clear() async {
+    emit(const {});
+    await _repository.saveFavoriteProductIds(const {});
+  }
 }
