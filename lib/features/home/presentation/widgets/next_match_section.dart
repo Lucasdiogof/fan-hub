@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/widgets/live_match_hero.dart';
 import 'package:goias_app/features/home/presentation/widgets/next_match_hero.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/match_navigation.dart';
-import 'package:goias_app/features/match/presentation/widgets/live_match_poller.dart';
 
-/// Escolhe entre a contagem regressiva (pré-jogo) e o placar ao vivo — quem
-/// decide é `match.status`, nunca o relógio local do widget: `HomeCubit`
-/// só mantém o jogo aqui enquanto ele está "aberto"
-/// (`MatchOrdering.isOpen`), então quando o jogo termina de verdade a
-/// própria Home para de mostrar este card (ver `home_page.dart`). A
-/// contagem chegar a zero só dispara um recarregamento (`HomeCubit.load`)
-/// pra buscar o status real — nunca assume "começou" só pelo relógio.
+/// Escolhe entre a contagem regressiva (pré-jogo), o placar ao vivo e o
+/// placar final (jogo recém-encerrado, dentro da folga que `HomeCubit`
+/// decide) — quem decide é `match.status`, nunca o relógio local do widget.
+/// Puramente apresentacional: [match] já vem resolvido (e, se ao vivo, já
+/// mantido atualizado por um `LiveMatchPoller`) por quem monta esta seção
+/// (`home_page.dart`) — a mesma partida que alimenta o `CompactMatchHeader`,
+/// nunca uma segunda busca/poller independente aqui.
 class NextMatchSection extends StatelessWidget {
-  const NextMatchSection({required this.match, this.onTickets, super.key});
+  const NextMatchSection({
+    required this.match,
+    this.onTickets,
+    this.onMatchStarted,
+    super.key,
+  });
 
   final Match match;
   final VoidCallback? onTickets;
+  final VoidCallback? onMatchStarted;
 
-  bool get _isLive =>
-      match.status == MatchStatus.live || match.status == MatchStatus.halftime;
+  bool get _showsScoreCard =>
+      match.status == MatchStatus.live ||
+      match.status == MatchStatus.halftime ||
+      match.status == MatchStatus.finished;
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +38,17 @@ class NextMatchSection extends StatelessWidget {
         duration: const Duration(milliseconds: 320),
         switchInCurve: Curves.easeOut,
         switchOutCurve: Curves.easeIn,
-        child: _isLive
-            ? LiveMatchPoller(
+        child: _showsScoreCard
+            ? LiveMatchHero(
                 key: const ValueKey('live'),
                 match: match,
-                onMatchEnded: () => context.read<HomeCubit>().load(),
-                builder: (context, liveMatch) => LiveMatchHero(
-                  match: liveMatch,
-                  onFollow: () => openMatchDetails(context, liveMatch),
-                ),
+                onFollow: () => openMatchDetails(context, match),
               )
             : NextMatchHero(
                 key: const ValueKey('upcoming'),
                 match: match,
                 onTickets: onTickets,
-                onMatchStarted: () => context.read<HomeCubit>().load(),
+                onMatchStarted: onMatchStarted,
               ),
       ),
     );

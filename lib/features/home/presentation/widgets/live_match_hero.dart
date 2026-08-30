@@ -12,15 +12,20 @@ import 'package:goias_app/shared/widgets/live_pulse_dot.dart';
 import 'package:goias_app/shared/widgets/stadium_backdrop.dart';
 
 /// Mesma moldura do `NextMatchHero` (silhueta/fundo do estádio já
-/// estabelecida na Home), mas o conteúdo vira placar ao vivo em vez de
-/// contagem regressiva — não faz sentido continuar vendendo ingresso pra
-/// um jogo que já começou. `match.status` deve ser `live`/`halftime` (quem
-/// decide isso é `NextMatchSection`, este widget só exibe).
+/// estabelecida na Home), mas o conteúdo vira placar em vez de contagem
+/// regressiva — usado pra `live`/`halftime` (placar ao vivo) e também pra
+/// `finished` (placar final, dentro da folga que `HomeCubit._resolveMatch`
+/// decide — não faz sentido continuar vendendo ingresso pra um jogo que já
+/// aconteceu). Quem decide qual status chega aqui é `NextMatchSection`,
+/// este widget só exibe.
 class LiveMatchHero extends StatelessWidget {
   const LiveMatchHero({required this.match, this.onFollow, super.key});
 
   final Match match;
   final VoidCallback? onFollow;
+
+  bool get _isReallyLive => match.status == MatchStatus.live;
+  bool get _isFinished => match.status == MatchStatus.finished;
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +55,17 @@ class LiveMatchHero extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const LivePulseDot(color: Colors.white, size: 8),
-                    const SizedBox(width: 8),
+                    // Sem pulso pra jogo já encerrado — nada "ao vivo" pra
+                    // indicar nesse estado.
+                    if (_isReallyLive) ...[
+                      const LivePulseDot(color: Colors.white, size: 8),
+                      const SizedBox(width: 8),
+                    ],
                     Text(
                       [
                         matchStatusLabel(l10n, match.status).toUpperCase(),
-                        if (match.minute != null) match.minute!,
+                        if (_isReallyLive && match.minute != null)
+                          match.minute!,
                       ].join(' · '),
                       style: const TextStyle(
                         color: Colors.white,
@@ -105,7 +115,9 @@ class LiveMatchHero extends StatelessWidget {
                               ),
                             ),
                           ),
-                      child: Text(l10n.matchFollowLive),
+                      child: Text(
+                        _isFinished ? l10n.matchViewDetails : l10n.matchFollowLive,
+                      ),
                     ),
                   ),
                 ),

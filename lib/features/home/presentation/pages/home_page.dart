@@ -11,9 +11,13 @@ import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
+import 'package:goias_app/features/home/presentation/widgets/compact_match_header.dart';
 import 'package:goias_app/features/home/presentation/widgets/home_brand_header.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 import 'package:goias_app/features/home/presentation/widgets/next_match_section.dart';
+import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/presentation/match_navigation.dart';
+import 'package:goias_app/features/match/presentation/widgets/live_match_poller.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_entry_card.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -44,6 +48,22 @@ class _HomeView extends StatefulWidget {
 class _HomeViewState extends State<_HomeView> with RouteAware {
   ModalRoute<void>? _route;
 
+  /// Marca a posição/altura real do hero grande na árvore — é assim que o
+  /// header compacto sabe quando aparecer: nunca um número mágico de
+  /// scroll, sempre a posição de verdade do hero na tela (ver
+  /// `_updateCompactHeaderVisibility`).
+  final _heroKey = GlobalKey();
+  final _scrollController = ScrollController();
+  bool _showCompactHeader = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _updateCompactHeaderVisibility(),
+    );
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -58,6 +78,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
   @override
   void dispose() {
     appRouteObserver.unsubscribe(this);
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -72,6 +93,24 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
   void didPopNext() {
     if (sl<HomeShellCubit>().state.index == homeTabIndex) {
       context.read<HomeCubit>().load();
+    }
+  }
+
+  /// O header compacto aparece quando a borda de baixo do hero grande sobe
+  /// além do topo da área segura — a posição REAL na tela, não um offset de
+  /// scroll arbitrário. `findRenderObject()` é seguro aqui: só é chamado
+  /// depois do layout (notificação de scroll ou pós-frame), nunca durante.
+  void _updateCompactHeaderVisibility() {
+    if (!mounted) return;
+    final renderObject = _heroKey.currentContext?.findRenderObject();
+    if (renderObject is! RenderBox || !renderObject.attached) return;
+    final topInset = MediaQuery.paddingOf(context).top;
+    final heroBottom = renderObject
+        .localToGlobal(Offset(0, renderObject.size.height))
+        .dy;
+    final shouldShow = heroBottom <= topInset;
+    if (shouldShow != _showCompactHeader) {
+      setState(() => _showCompactHeader = shouldShow);
     }
   }
 
@@ -91,45 +130,139 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
               if (state.loading && state.nextMatch == null) {
                 return const Center(child: GoiasLoadingIndicator());
               }
-              return Align(
-                alignment: Alignment.topCenter,
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: ContentWidth.wide.maxWidth,
-                  ),
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.sm,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        const HomeBrandHeader(),
-                        if (state.nextMatch != null) ...[
-                          const SizedBox(height: AppSpacing.md),
-                          NextMatchSection(
-                            match: state.nextMatch!,
-                            onTickets: () => context.push('/tickets'),
-                          ),
-                        ],
-                        const SizedBox(height: AppSpacing.xl),
-                        ClubEntryCard(onTap: () => context.push('/clube')),
-                        const SizedBox(height: AppSpacing.md),
-                        const ArenaSpotlightCard(),
-                        const SizedBox(height: AppSpacing.md),
-                        StoreEntryCard(
-                          onTap: () =>
-                              sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+
+              final match = state.nextMatch;
+              if (match == null) {
+                // Sem próximo jogo: nada de hero, nada de header compacto —
+                // nunca deixa `_showCompactHeader` "preso" em true de uma
+                // partida anterior.
+                if (_showCompactHeader) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (mounted) setState(() => _showCompactHeader = false);
+                  });
+                }
+                return _ScrollContent(
+                  scrollController: _scrollController,
+                  match: null,
+                  heroKey: _heroKey,
+                );
+              }
+
+              // Mesma regra de antes (`NextMatchSection`): só entra em
+              // polling quando o jogo já está de fato rolando — enquanto
+              // está só agendado, `match` já é tudo que existe pra mostrar.
+              final isLive =
+                  match.status == MatchStatus.live ||
+                  match.status == MatchStatus.halftime;
+
+              if (!isLive) {
+                return _buildStack(context, match);
+              }
+              return LiveMatchPoller(
+                match: match,
+                onMatchEnded: () => context.read<HomeCubit>().load(),
+                builder: (context, liveMatch) =>
+                    _buildStack(context, liveMatch),
               );
             },
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// [displayMatch] é a MESMA partida (já ao vivo ou não) usada tanto pelo
+  /// hero grande quanto pelo header compacto — única fonte de verdade,
+  /// nenhum dos dois busca/atualiza nada por conta própria.
+  Widget _buildStack(BuildContext context, Match displayMatch) {
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        _updateCompactHeaderVisibility();
+        return false;
+      },
+      child: Stack(
+        children: [
+          _ScrollContent(
+            scrollController: _scrollController,
+            match: displayMatch,
+            heroKey: _heroKey,
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: IgnorePointer(
+              ignoring: !_showCompactHeader,
+              child: AnimatedSlide(
+                duration: const Duration(milliseconds: 220),
+                curve: Curves.easeOut,
+                offset: _showCompactHeader ? Offset.zero : const Offset(0, -0.3),
+                child: AnimatedOpacity(
+                  duration: const Duration(milliseconds: 220),
+                  curve: Curves.easeOut,
+                  opacity: _showCompactHeader ? 1 : 0,
+                  child: CompactMatchHeader(
+                    match: displayMatch,
+                    onTap: () => openMatchDetails(context, displayMatch),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ScrollContent extends StatelessWidget {
+  const _ScrollContent({
+    required this.scrollController,
+    required this.match,
+    required this.heroKey,
+  });
+
+  final ScrollController scrollController;
+  final Match? match;
+  final Key heroKey;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
+        child: SingleChildScrollView(
+          controller: scrollController,
+          padding: const EdgeInsets.fromLTRB(
+            AppSpacing.lg,
+            AppSpacing.sm,
+            AppSpacing.lg,
+            AppSpacing.xxxl,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const HomeBrandHeader(),
+              if (match != null) ...[
+                const SizedBox(height: AppSpacing.md),
+                NextMatchSection(
+                  key: heroKey,
+                  match: match!,
+                  onTickets: () => context.push('/tickets'),
+                  onMatchStarted: () => context.read<HomeCubit>().load(),
+                ),
+              ],
+              const SizedBox(height: AppSpacing.xl),
+              ClubEntryCard(onTap: () => context.push('/clube')),
+              const SizedBox(height: AppSpacing.lg),
+              const ArenaSpotlightCard(),
+              const SizedBox(height: AppSpacing.lg),
+              StoreEntryCard(
+                onTap: () =>
+                    sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
+              ),
+            ],
           ),
         ),
       ),

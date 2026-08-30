@@ -98,27 +98,31 @@ class NextMatchHero extends StatelessWidget {
                     onFinished: onMatchStarted,
                   ),
                 ],
-                const SizedBox(height: AppSpacing.lg),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: onTickets,
-                    // `forceDark`: este botão fica sobre o
-                    // `StadiumBackdrop`, que é sempre escuro
-                    // independente do tema do app.
-                    style: matchCtaFilledStyle(context, forceDark: true)
-                        .merge(
-                          ElevatedButton.styleFrom(
-                            textStyle: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.3,
+                // Fora de casa não tem ingresso pra vender — só o mandante
+                // do jogo controla a bilheteria do próprio estádio.
+                if (match.homeTeam.isGoias) ...[
+                  const SizedBox(height: AppSpacing.lg),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: onTickets,
+                      // `forceDark`: este botão fica sobre o
+                      // `StadiumBackdrop`, que é sempre escuro
+                      // independente do tema do app.
+                      style: matchCtaFilledStyle(context, forceDark: true)
+                          .merge(
+                            ElevatedButton.styleFrom(
+                              textStyle: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.3,
+                              ),
                             ),
                           ),
-                        ),
-                    child: Text(context.l10n.homeTickets),
+                      child: Text(context.l10n.homeTickets),
+                    ),
                   ),
-                ),
+                ],
               ],
             ),
           ),
