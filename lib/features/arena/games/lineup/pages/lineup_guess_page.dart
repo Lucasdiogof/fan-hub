@@ -6,8 +6,10 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
+import 'package:goias_app/features/arena/games/lineup/lineup_input_mode.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_keyboard.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_letter_grid.dart';
+import 'package:goias_app/features/arena/games/lineup/widgets/native_lineup_input.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Tela dedicada (não bottom sheet) pro mini-Wordle de um jogador — no
@@ -15,11 +17,38 @@ import 'package:goias_app/shared/widgets/content_container.dart';
 /// confortavelmente, então full-screen é o que sobra espaço de verdade.
 /// Sempre a MESMA instância de [LineupCubit] do campo (ver
 /// `LineupPage`), então sair e voltar nunca perde tentativas.
-class LineupGuessPage extends StatelessWidget {
-  const LineupGuessPage({super.key});
+class LineupGuessPage extends StatefulWidget {
+  const LineupGuessPage({super.key, this.inputModeOverride});
+
+  /// Só pra teste (ver `lineup_guess_page_test.dart`) — em produção nenhum
+  /// call site passa isto, então o app sempre usa o único ponto de troca de
+  /// verdade, [lineupGuessInputMode].
+  final LineupGuessInputMode? inputModeOverride;
+
+  @override
+  State<LineupGuessPage> createState() => _LineupGuessPageState();
+}
+
+class _LineupGuessPageState extends State<LineupGuessPage> {
+  /// Só usada no modo `nativeKeyboard` — permite pedir foco (reabrir o
+  /// teclado do sistema) a partir de um toque em qualquer lugar da grade.
+  final _nativeInputKey = GlobalKey<NativeLineupInputState>();
+
+  /// Precisa ser estável entre rebuilds — recriar um `FocusNode` a cada
+  /// build do `BlocBuilder` (uma por letra digitada) rouba o foco do
+  /// `TextField` escondido do `NativeLineupInput` e fecha o teclado do
+  /// sistema a cada tecla.
+  final _physicalKeyFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _physicalKeyFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final inputMode = widget.inputModeOverride ?? lineupGuessInputMode;
     return PopScope(
       onPopInvokedWithResult: (didPop, _) {
         if (didPop) context.read<LineupCubit>().closePlayer();
@@ -34,7 +63,7 @@ class LineupGuessPage extends StatelessWidget {
               final playerState = state.selectedPlayerState;
 
               return KeyboardListener(
-                focusNode: FocusNode()..requestFocus(),
+                focusNode: _physicalKeyFocusNode,
                 autofocus: true,
                 onKeyEvent: (event) => _handlePhysicalKey(context, event),
                 child: Center(
@@ -121,37 +150,47 @@ class LineupGuessPage extends StatelessWidget {
                           ),
                         ],
                         Expanded(
-                          child: Align(
-                            alignment: Alignment.topCenter,
-                            child: SingleChildScrollView(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: AppSpacing.lg,
-                                vertical: AppSpacing.lg,
-                              ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  if (playerState.isDone) ...[
-                                    Text(
-                                      player.displayName,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: playerState.solved
-                                            ? context.colors.success
-                                            : context.colors.error,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900,
+                          child: GestureDetector(
+                            // Só relevante no modo `nativeKeyboard` — tocar
+                            // na grade reabre o teclado do sistema se o
+                            // usuário já tiver fechado. Sem efeito nenhum
+                            // no modo `customKeyboard` (a key nunca é
+                            // anexada a um `NativeLineupInput` nesse caso).
+                            onTap: () =>
+                                _nativeInputKey.currentState?.requestFocus(),
+                            behavior: HitTestBehavior.translucent,
+                            child: Align(
+                              alignment: Alignment.topCenter,
+                              child: SingleChildScrollView(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: AppSpacing.lg,
+                                  vertical: AppSpacing.lg,
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    if (playerState.isDone) ...[
+                                      Text(
+                                        player.displayName,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: playerState.solved
+                                              ? context.colors.success
+                                              : context.colors.error,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w900,
+                                        ),
                                       ),
+                                      const SizedBox(height: AppSpacing.lg),
+                                    ],
+                                    LineupLetterGrid(
+                                      answerParts: player.answerParts,
+                                      guesses: playerState.guesses,
+                                      currentGuessLetters:
+                                          state.currentGuessLetters,
                                     ),
-                                    const SizedBox(height: AppSpacing.lg),
                                   ],
-                                  LineupLetterGrid(
-                                    answerParts: player.answerParts,
-                                    guesses: playerState.guesses,
-                                    currentGuessLetters:
-                                        state.currentGuessLetters,
-                                  ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
@@ -164,19 +203,45 @@ class LineupGuessPage extends StatelessWidget {
                               AppSpacing.sm,
                               AppSpacing.md,
                             ),
-                            child: LineupKeyboard(
-                              keyboardState: playerState.keyboardState,
-                              onLetter: (letter) {
-                                HapticFeedback.selectionClick();
-                                context.read<LineupCubit>().addLetter(letter);
-                              },
-                              onDelete: () {
-                                HapticFeedback.selectionClick();
-                                context.read<LineupCubit>().removeLetter();
-                              },
-                              onEnter: () => _submit(context),
-                              canSubmit: context.read<LineupCubit>().canSubmit,
-                            ),
+                            child: inputMode ==
+                                    LineupGuessInputMode.nativeKeyboard
+                                ? NativeLineupInput(
+                                    key: _nativeInputKey,
+                                    maxLength: player.normalizedAnswer.length,
+                                    currentLength:
+                                        state.currentGuessLetters.length,
+                                    onLetter: (letter) {
+                                      context.read<LineupCubit>().addLetter(
+                                        letter,
+                                      );
+                                    },
+                                    onDelete: () {
+                                      context
+                                          .read<LineupCubit>()
+                                          .removeLetter();
+                                    },
+                                    onEnter: () => _submit(context),
+                                    canSubmit:
+                                        context.read<LineupCubit>().canSubmit,
+                                  )
+                                : LineupKeyboard(
+                                    keyboardState: playerState.keyboardState,
+                                    onLetter: (letter) {
+                                      HapticFeedback.selectionClick();
+                                      context.read<LineupCubit>().addLetter(
+                                        letter,
+                                      );
+                                    },
+                                    onDelete: () {
+                                      HapticFeedback.selectionClick();
+                                      context
+                                          .read<LineupCubit>()
+                                          .removeLetter();
+                                    },
+                                    onEnter: () => _submit(context),
+                                    canSubmit:
+                                        context.read<LineupCubit>().canSubmit,
+                                  ),
                           )
                         else
                           Padding(
