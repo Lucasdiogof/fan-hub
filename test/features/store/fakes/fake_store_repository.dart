@@ -1,3 +1,4 @@
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_category.dart';
@@ -89,27 +90,31 @@ class FakeStoreRepository implements StoreRepository {
   static const coupons = {'VERDAO10': 10.0, 'SOCIO15': 15.0};
 
   @override
-  Future<List<StoreProduct>> getProducts() async => products;
+  Future<Result<List<StoreProduct>>> getProducts() async => Success(products);
 
   @override
-  Future<StoreProduct> getProductById(String id) async =>
-      products.firstWhere((p) => p.id == id);
+  Future<Result<StoreProduct>> getProductById(String id) async =>
+      Success(products.firstWhere((p) => p.id == id));
 
   @override
-  Future<List<StoreCategory>> getCategories() async => const [];
+  Future<Result<List<StoreCategory>>> getCategories() async =>
+      const Success([]);
 
   @override
-  Future<List<StoreProduct>> searchProducts(String query) async => products
-      .where((p) => p.name.toLowerCase().contains(query.toLowerCase()))
-      .toList();
+  Future<Result<List<StoreProduct>>> searchProducts(String query) async =>
+      Success(
+        products
+            .where((p) => p.name.toLowerCase().contains(query.toLowerCase()))
+            .toList(),
+      );
 
   @override
-  Future<List<ShippingOption>> calculateShipping({
+  Future<Result<List<ShippingOption>>> calculateShipping({
     required String zipCode,
     required double cartSubtotal,
   }) async {
     final freeEligible = cartSubtotal >= freeShippingThreshold;
-    return [
+    return Success([
       ShippingOption(
         speed: ShippingSpeed.economy,
         label: 'Econômica',
@@ -128,26 +133,31 @@ class FakeStoreRepository implements StoreRepository {
         etaLabel: '2 a 3 dias úteis',
         price: 34.90,
       ),
-    ];
+    ]);
   }
 
   @override
-  Future<double?> resolveCouponDiscountPercent(String code) async =>
-      coupons[code.trim().toUpperCase()];
+  Future<Result<double?>> resolveCouponDiscountPercent(String code) async =>
+      Success(coupons[code.trim().toUpperCase()]);
 
   @override
-  Future<Cart> loadCart() async => cart;
+  Future<Result<Cart>> loadCart() async => Success(cart);
 
   @override
-  Future<void> saveCart(Cart value) async => cart = value;
+  Future<Result<void>> saveCart(Cart value) async {
+    cart = value;
+    return const Success(null);
+  }
 
   @override
-  Future<Set<String>> loadFavoriteProductIds() async => favoriteIds;
+  Future<Result<Set<String>>> loadFavoriteProductIds() async =>
+      Success(favoriteIds);
 
   @override
-  Future<void> saveFavoriteProductIds(Set<String> ids) async {
+  Future<Result<void>> saveFavoriteProductIds(Set<String> ids) async {
     favoriteIds
       ..clear()
       ..addAll(ids);
+    return const Success(null);
   }
 }

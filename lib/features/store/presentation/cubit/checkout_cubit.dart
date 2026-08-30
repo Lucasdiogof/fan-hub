@@ -1,3 +1,4 @@
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/payment.dart';
@@ -123,18 +124,28 @@ class CheckoutCubit extends Cubit<CheckoutState> {
 
   Future<void> _quoteShipping(String zipCode) async {
     emit(state.copyWith(loadingShipping: true));
-    final options = await _repository.calculateShipping(
+    final result = await _repository.calculateShipping(
       zipCode: zipCode,
       cartSubtotal: state.cart.totalAfterDiscount,
     );
-    emit(
-      state.copyWith(
-        shippingOptions: options,
-        loadingShipping: false,
-        selectedShippingSpeed: () =>
-            state.selectedShippingSpeed ?? options.first.speed,
-      ),
-    );
+    switch (result) {
+      case Success(:final data):
+        emit(
+          state.copyWith(
+            shippingOptions: data,
+            loadingShipping: false,
+            selectedShippingSpeed: () =>
+                state.selectedShippingSpeed ?? data.first.speed,
+          ),
+        );
+      case Error(:final failure):
+        emit(
+          state.copyWith(
+            loadingShipping: false,
+            errorMessage: () => failure.message,
+          ),
+        );
+    }
   }
 
   void selectShippingSpeed(ShippingSpeed speed) =>
@@ -247,55 +258,57 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         )
         .toList();
 
-    try {
-      final order = await _ordersRepository.createOrder(
-        items: items,
-        identification: CustomerIdentification(
-          fullName: state.fullName,
-          cpf: state.cpf,
-          email: state.email,
-          phone: state.phone,
-        ),
-        fulfillmentMethod: state.fulfillmentMethod,
-        address: state.selectedAddress,
-        shippingOption: state.selectedShippingOption,
-        pickupResponsible:
-            state.fulfillmentMethod == FulfillmentMethod.pickup &&
-                !state.selfPickup
-            ? PickupResponsible(
-                fullName: state.pickupResponsibleName ?? '',
-                cpf: state.pickupResponsibleCpf ?? '',
-              )
-            : null,
-        payment: PaymentSimulationInput(
-          method: state.paymentMethod,
-          cardHolderName: state.cardSummary?.holderName,
-          cardLastFourDigits: state.cardSummary?.lastFourDigits,
-          installments: state.cardSummary?.installments ?? 1,
-        ),
-        subtotal: state.cart.subtotal,
-        discountAmount: state.cart.discountAmount,
-        couponCode: state.cart.coupon?.code,
-      );
+    final result = await _ordersRepository.createOrder(
+      items: items,
+      identification: CustomerIdentification(
+        fullName: state.fullName,
+        cpf: state.cpf,
+        email: state.email,
+        phone: state.phone,
+      ),
+      fulfillmentMethod: state.fulfillmentMethod,
+      address: state.selectedAddress,
+      shippingOption: state.selectedShippingOption,
+      pickupResponsible:
+          state.fulfillmentMethod == FulfillmentMethod.pickup &&
+              !state.selfPickup
+          ? PickupResponsible(
+              fullName: state.pickupResponsibleName ?? '',
+              cpf: state.pickupResponsibleCpf ?? '',
+            )
+          : null,
+      payment: PaymentSimulationInput(
+        method: state.paymentMethod,
+        cardHolderName: state.cardSummary?.holderName,
+        cardLastFourDigits: state.cardSummary?.lastFourDigits,
+        installments: state.cardSummary?.installments ?? 1,
+      ),
+      subtotal: state.cart.subtotal,
+      discountAmount: state.cart.discountAmount,
+      couponCode: state.cart.coupon?.code,
+    );
 
-      emit(
-        state.copyWith(
-          submitting: false,
-          order: () => order,
-          step: CheckoutStep.confirmation,
-        ),
-      );
-    } catch (error) {
-      // Sacola (`state.cart`) permanece intacta — o listener que a limpa só
-      // dispara quando `state.order` deixa de ser nulo (ver `checkout_page`).
-      // A mensagem aqui é só pra log/depuração — a UI sempre mostra um
-      // texto fixo traduzido (`storeOrderCreateErrorTitle`), nunca isto.
-      emit(
-        state.copyWith(
-          submitting: false,
-          errorMessage: () => error.toString(),
-        ),
-      );
+    switch (result) {
+      case Success(:final data):
+        emit(
+          state.copyWith(
+            submitting: false,
+            order: () => data,
+            step: CheckoutStep.confirmation,
+          ),
+        );
+      case Error(:final failure):
+        // Sacola (`state.cart`) permanece intacta — o listener que a limpa
+        // só dispara quando `state.order` deixa de ser nulo (ver
+        // `checkout_page`). A mensagem aqui é só pra log/depuração — a UI
+        // sempre mostra um texto fixo traduzido
+        // (`storeOrderCreateErrorTitle`), nunca isto.
+        emit(
+          state.copyWith(
+            submitting: false,
+            errorMessage: () => failure.message,
+          ),
+        );
     }
   }
 }

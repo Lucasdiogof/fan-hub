@@ -1,3 +1,4 @@
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
@@ -12,8 +13,11 @@ export 'package:goias_app/features/store/domain/entities/payment.dart'
 /// tem seu próprio backend (Supabase) enquanto catálogo/carrinho/endereços
 /// seguem locais — mesma separação que Ingressos/Sócio Torcedor já têm em
 /// relação ao resto do app.
+///
+/// Todo método retorna `Result<T>` (mesmo padrão de Membership/Perfil) —
+/// nunca lança pra quem chama, sempre passa pelo `store_error_mapper` antes.
 abstract interface class StoreOrdersRepository {
-  Future<StoreOrder> createOrder({
+  Future<Result<StoreOrder>> createOrder({
     required List<OrderItem> items,
     required CustomerIdentification identification,
     required FulfillmentMethod fulfillmentMethod,
@@ -26,8 +30,8 @@ abstract interface class StoreOrdersRepository {
     String? couponCode,
   });
 
-  Future<List<StoreOrder>> getOrders();
-  Future<StoreOrder?> getOrderById(String id);
+  Future<Result<List<StoreOrder>>> getOrders();
+  Future<Result<StoreOrder?>> getOrderById(String id);
 }
 
 /// Entrada crua de pagamento — a página de checkout monta isto a partir do

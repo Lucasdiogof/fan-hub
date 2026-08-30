@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/data/store_category_catalog.dart';
+import 'package:goias_app/features/store/data/store_error_mapper.dart';
 import 'package:goias_app/features/store/data/store_local_storage.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
@@ -37,102 +39,158 @@ class MockStoreRepository implements StoreRepository {
   }
 
   @override
-  Future<List<StoreProduct>> getProducts() => _catalog();
-
-  @override
-  Future<StoreProduct> getProductById(String id) async {
-    final products = await _catalog();
-    return products.firstWhere(
-      (p) => p.id == id,
-      orElse: () => throw StateError('Produto "$id" não encontrado.'),
-    );
-  }
-
-  @override
-  Future<List<StoreCategory>> getCategories() async {
-    final products = await _catalog();
-    final activeIds = <String>{};
-    for (final product in products) {
-      activeIds
-        ..addAll(product.categoryIds)
-        ..addAll(product.collectionIds);
+  Future<Result<List<StoreProduct>>> getProducts() async {
+    try {
+      return Success(await _catalog());
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
     }
-    return StoreCategoryCatalog.all
-        .where((c) => activeIds.contains(c.id))
-        .toList(growable: false);
   }
 
   @override
-  Future<List<StoreProduct>> searchProducts(String query) async {
-    final needle = normalizeName(query);
-    if (needle.isEmpty) return [];
-    final products = await _catalog();
-    return products
-        .where((product) {
-          final haystack = normalizeName(
-            [
-              product.name,
-              product.brand,
-              product.audience.name,
-              product.type.name,
-              product.uniformEdition ?? '',
-              ...product.categoryIds.map(
-                (id) => StoreCategoryCatalog.byId(id)?.name ?? '',
-              ),
-              ...product.collectionIds.map(
-                (id) => StoreCategoryCatalog.byId(id)?.name ?? '',
-              ),
-            ].join(' '),
-          );
-          return haystack.contains(needle);
-        })
-        .toList(growable: false);
+  Future<Result<StoreProduct>> getProductById(String id) async {
+    try {
+      final products = await _catalog();
+      return Success(
+        products.firstWhere(
+          (p) => p.id == id,
+          orElse: () => throw StateError('Produto "$id" não encontrado.'),
+        ),
+      );
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
   }
 
   @override
-  Future<List<ShippingOption>> calculateShipping({
+  Future<Result<List<StoreCategory>>> getCategories() async {
+    try {
+      final products = await _catalog();
+      final activeIds = <String>{};
+      for (final product in products) {
+        activeIds
+          ..addAll(product.categoryIds)
+          ..addAll(product.collectionIds);
+      }
+      return Success(
+        StoreCategoryCatalog.all
+            .where((c) => activeIds.contains(c.id))
+            .toList(growable: false),
+      );
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
+  }
+
+  @override
+  Future<Result<List<StoreProduct>>> searchProducts(String query) async {
+    try {
+      final needle = normalizeName(query);
+      if (needle.isEmpty) return const Success([]);
+      final products = await _catalog();
+      return Success(
+        products
+            .where((product) {
+              final haystack = normalizeName(
+                [
+                  product.name,
+                  product.brand,
+                  product.audience.name,
+                  product.type.name,
+                  product.uniformEdition ?? '',
+                  ...product.categoryIds.map(
+                    (id) => StoreCategoryCatalog.byId(id)?.name ?? '',
+                  ),
+                  ...product.collectionIds.map(
+                    (id) => StoreCategoryCatalog.byId(id)?.name ?? '',
+                  ),
+                ].join(' '),
+              );
+              return haystack.contains(needle);
+            })
+            .toList(growable: false),
+      );
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
+  }
+
+  @override
+  Future<Result<List<ShippingOption>>> calculateShipping({
     required String zipCode,
     required double cartSubtotal,
   }) async {
-    final freeEligible = cartSubtotal >= _freeShippingThreshold;
-    return [
-      ShippingOption(
-        speed: ShippingSpeed.economy,
-        label: 'Econômica',
-        etaLabel: '7 a 10 dias úteis',
-        price: freeEligible ? 0 : 14.90,
-      ),
-      const ShippingOption(
-        speed: ShippingSpeed.standard,
-        label: 'Padrão',
-        etaLabel: '4 a 7 dias úteis',
-        price: 22.90,
-      ),
-      const ShippingOption(
-        speed: ShippingSpeed.express,
-        label: 'Expressa',
-        etaLabel: '2 a 3 dias úteis',
-        price: 34.90,
-      ),
-    ];
+    try {
+      final freeEligible = cartSubtotal >= _freeShippingThreshold;
+      return Success([
+        ShippingOption(
+          speed: ShippingSpeed.economy,
+          label: 'Econômica',
+          etaLabel: '7 a 10 dias úteis',
+          price: freeEligible ? 0 : 14.90,
+        ),
+        const ShippingOption(
+          speed: ShippingSpeed.standard,
+          label: 'Padrão',
+          etaLabel: '4 a 7 dias úteis',
+          price: 22.90,
+        ),
+        const ShippingOption(
+          speed: ShippingSpeed.express,
+          label: 'Expressa',
+          etaLabel: '2 a 3 dias úteis',
+          price: 34.90,
+        ),
+      ]);
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
   }
 
   @override
-  Future<double?> resolveCouponDiscountPercent(String code) async {
-    return _coupons[code.trim().toUpperCase()];
+  Future<Result<double?>> resolveCouponDiscountPercent(String code) async {
+    try {
+      return Success(_coupons[code.trim().toUpperCase()]);
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
   }
 
   @override
-  Future<Cart> loadCart() async => await _storage.loadCart() ?? const Cart();
+  Future<Result<Cart>> loadCart() async {
+    try {
+      return Success(await _storage.loadCart() ?? const Cart());
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
+  }
 
   @override
-  Future<void> saveCart(Cart cart) => _storage.saveCart(cart);
+  Future<Result<void>> saveCart(Cart cart) async {
+    try {
+      await _storage.saveCart(cart);
+      return const Success(null);
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
+  }
 
   @override
-  Future<Set<String>> loadFavoriteProductIds() =>
-      _storage.loadFavoriteProductIds();
+  Future<Result<Set<String>>> loadFavoriteProductIds() async {
+    try {
+      return Success(await _storage.loadFavoriteProductIds());
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
+  }
 
   @override
-  Future<void> saveFavoriteProductIds(Set<String> ids) =>
-      _storage.saveFavoriteProductIds(ids);
+  Future<Result<void>> saveFavoriteProductIds(Set<String> ids) async {
+    try {
+      await _storage.saveFavoriteProductIds(ids);
+      return const Success(null);
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
+  }
 }

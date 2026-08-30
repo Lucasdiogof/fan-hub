@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/store_listing_filters.dart';
 import 'package:goias_app/features/store/presentation/cubit/store_listing_state.dart';
@@ -17,8 +18,13 @@ class StoreListingCubit extends Cubit<StoreListingState> {
 
   Future<void> load() async {
     emit(state.copyWith(status: LoadStatus.loading));
-    final products = await _repository.getProducts();
-    emit(state.copyWith(status: LoadStatus.success, allProducts: products));
+    final result = await _repository.getProducts();
+    switch (result) {
+      case Success(:final data):
+        emit(state.copyWith(status: LoadStatus.success, allProducts: data));
+      case Error():
+        emit(state.copyWith(status: LoadStatus.error));
+    }
   }
 
   void setQuery(String query) => emit(state.copyWith(query: query));

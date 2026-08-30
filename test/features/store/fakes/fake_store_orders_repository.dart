@@ -1,3 +1,5 @@
+import 'package:goias_app/core/error/failures.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
@@ -14,12 +16,13 @@ class FakeStoreOrdersRepository implements StoreOrdersRepository {
   /// que um duplo clique/toque não cria dois pedidos.
   int createOrderCallCount = 0;
 
-  /// Quando setado, [createOrder]/[getOrders] lançam isto em vez de
-  /// funcionar normalmente — pra testar o tratamento de erro do checkout.
+  /// Quando setado, [createOrder]/[getOrders] retornam `Error` com isto em
+  /// vez de funcionar normalmente — pra testar o tratamento de erro do
+  /// checkout.
   Object? failWith;
 
   @override
-  Future<StoreOrder> createOrder({
+  Future<Result<StoreOrder>> createOrder({
     required List<OrderItem> items,
     required CustomerIdentification identification,
     required FulfillmentMethod fulfillmentMethod,
@@ -33,7 +36,7 @@ class FakeStoreOrdersRepository implements StoreOrdersRepository {
   }) async {
     createOrderCallCount++;
     final failure = failWith;
-    if (failure != null) throw failure;
+    if (failure != null) return Error(UnexpectedFailure(failure.toString()));
 
     final order = StoreOrder(
       id: 'GOI-2026-${100000 + createOrderCallCount}',
@@ -63,19 +66,19 @@ class FakeStoreOrdersRepository implements StoreOrdersRepository {
       status: OrderStatus.paid,
     );
     orders.add(order);
-    return order;
+    return Success(order);
   }
 
   @override
-  Future<List<StoreOrder>> getOrders() async {
+  Future<Result<List<StoreOrder>>> getOrders() async {
     final failure = failWith;
-    if (failure != null) throw failure;
-    return orders;
+    if (failure != null) return Error(UnexpectedFailure(failure.toString()));
+    return Success(orders);
   }
 
   @override
-  Future<StoreOrder?> getOrderById(String id) async =>
-      orders.where((o) => o.id == id).firstOrNull;
+  Future<Result<StoreOrder?>> getOrderById(String id) async =>
+      Success(orders.where((o) => o.id == id).firstOrNull);
 }
 
 extension _FirstOrNull<T> on Iterable<T> {

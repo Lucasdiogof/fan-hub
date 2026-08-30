@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/product_detail_state.dart';
@@ -11,33 +12,36 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
 
   Future<void> load(String productId) async {
     emit(state.copyWith(status: LoadStatus.loading));
-    try {
-      final product = await _repository.getProductById(productId);
-      final allProducts = await _repository.getProducts();
-      final related = product.relatedProductIds
-          .map((id) {
-            for (final p in allProducts) {
-              if (p.id == id) return p;
-            }
-            return null;
-          })
-          .whereType<StoreProduct>()
-          .toList(growable: false);
-      // Único tamanho → já vem selecionado, nunca obriga escolher o óbvio.
-      final onlySize = product.variations.length == 1
-          ? product.variations.first.size
-          : null;
-      emit(
-        state.copyWith(
-          status: LoadStatus.success,
-          product: product,
-          relatedProducts: related,
-          selectedSize: () => onlySize,
-        ),
-      );
-    } catch (_) {
-      emit(state.copyWith(status: LoadStatus.error));
+    final productResult = await _repository.getProductById(productId);
+    final allProductsResult = await _repository.getProducts();
+    if (productResult case Success(:final data)) {
+      final product = data;
+      if (allProductsResult case Success(:final data)) {
+        final related = product.relatedProductIds
+            .map((id) {
+              for (final p in data) {
+                if (p.id == id) return p;
+              }
+              return null;
+            })
+            .whereType<StoreProduct>()
+            .toList(growable: false);
+        // Único tamanho → já vem selecionado, nunca obriga escolher o óbvio.
+        final onlySize = product.variations.length == 1
+            ? product.variations.first.size
+            : null;
+        emit(
+          state.copyWith(
+            status: LoadStatus.success,
+            product: product,
+            relatedProducts: related,
+            selectedSize: () => onlySize,
+          ),
+        );
+        return;
+      }
     }
+    emit(state.copyWith(status: LoadStatus.error));
   }
 
   void selectSize(String size) => emit(

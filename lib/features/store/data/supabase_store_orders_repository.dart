@@ -1,3 +1,5 @@
+import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/features/store/data/store_error_mapper.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/payment.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
@@ -28,7 +30,39 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
   String get _uid => _client.auth.currentUser!.id;
 
   @override
-  Future<StoreOrder> createOrder({
+  Future<Result<StoreOrder>> createOrder({
+    required List<OrderItem> items,
+    required CustomerIdentification identification,
+    required FulfillmentMethod fulfillmentMethod,
+    CustomerAddress? address,
+    ShippingOption? shippingOption,
+    PickupResponsible? pickupResponsible,
+    required PaymentSimulationInput payment,
+    required double subtotal,
+    required double discountAmount,
+    String? couponCode,
+  }) async {
+    try {
+      return Success(
+        await _createOrder(
+          items: items,
+          identification: identification,
+          fulfillmentMethod: fulfillmentMethod,
+          address: address,
+          shippingOption: shippingOption,
+          pickupResponsible: pickupResponsible,
+          payment: payment,
+          subtotal: subtotal,
+          discountAmount: discountAmount,
+          couponCode: couponCode,
+        ),
+      );
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
+  }
+
+  Future<StoreOrder> _createOrder({
     required List<OrderItem> items,
     required CustomerIdentification identification,
     required FulfillmentMethod fulfillmentMethod,
@@ -149,24 +183,32 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
   }
 
   @override
-  Future<List<StoreOrder>> getOrders() async {
-    final rows = await _client
-        .from('store_orders')
-        .select('*, store_order_items(*)')
-        .eq('user_id', _uid)
-        .order('created_at', ascending: false);
-    return rows.map(_mapOrder).toList();
+  Future<Result<List<StoreOrder>>> getOrders() async {
+    try {
+      final rows = await _client
+          .from('store_orders')
+          .select('*, store_order_items(*)')
+          .eq('user_id', _uid)
+          .order('created_at', ascending: false);
+      return Success(rows.map(_mapOrder).toList());
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
   }
 
   @override
-  Future<StoreOrder?> getOrderById(String id) async {
-    final row = await _client
-        .from('store_orders')
-        .select('*, store_order_items(*)')
-        .eq('user_id', _uid)
-        .eq('order_number', id)
-        .maybeSingle();
-    return row == null ? null : _mapOrder(row);
+  Future<Result<StoreOrder?>> getOrderById(String id) async {
+    try {
+      final row = await _client
+          .from('store_orders')
+          .select('*, store_order_items(*)')
+          .eq('user_id', _uid)
+          .eq('order_number', id)
+          .maybeSingle();
+      return Success(row == null ? null : _mapOrder(row));
+    } catch (error, stackTrace) {
+      return Error(mapStoreError(error, stackTrace));
+    }
   }
 
   StoreOrder _mapOrder(Map<String, dynamic> row) {
