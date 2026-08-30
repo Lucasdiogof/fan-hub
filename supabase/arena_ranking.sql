@@ -136,9 +136,31 @@ declare
   v_cap int;
   v_new_score int;
   v_delta int;
+  v_item_exists boolean;
 begin
   if v_uid is null then
     raise exception 'not authenticated';
+  end if;
+
+  -- item_id nunca é confiado só porque o cliente mandou — precisa existir de
+  -- verdade na tabela de conteúdo do jogo correspondente. Sem isso, qualquer
+  -- id fabricado (chamando a RPC direto, fora do app) pontuava como se fosse
+  -- conteúdo real, porque o anti-replay só limita a REPETIÇÃO do mesmo id,
+  -- nunca barra um id novo.
+  v_item_exists := case p_game_id
+    when 'quiz' then
+      exists (select 1 from public.quiz_questions where id = p_item_id)
+    when 'career_path' then
+      exists (select 1 from public.career_players where id = p_item_id)
+    when 'guess_player' then
+      exists (select 1 from public.guess_players where id = p_item_id)
+    when 'lineup' then
+      exists (select 1 from public.lineup_matches where id = p_item_id)
+    else false
+  end;
+
+  if not v_item_exists then
+    raise exception 'invalid item_id % for game_id %', p_item_id, p_game_id;
   end if;
 
   select * into v_prev
