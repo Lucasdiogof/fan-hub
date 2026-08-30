@@ -134,7 +134,8 @@ class QuizCubit extends Cubit<QuizState> {
   }
 
   Future<void> next() async {
-    if (!state.answered) return;
+    if (!state.answered || state.submittingNext) return;
+    emit(state.copyWith(submittingNext: true));
     final question = state.currentQuestion;
     final wasCorrect = state.selected == question.correctIndex;
 
@@ -183,6 +184,7 @@ class QuizCubit extends Cubit<QuizState> {
           isNewRecord: isNewRecord,
           justCompletedLevel: justCompletedLevel,
           levelAnsweredAfter: answeredAfter,
+          submittingNext: false,
         ),
       );
       return;
@@ -203,6 +205,7 @@ class QuizCubit extends Cubit<QuizState> {
         index: newIndex,
         clearSelected: true,
         answersSoFar: answersSoFar,
+        submittingNext: false,
       ),
     );
   }

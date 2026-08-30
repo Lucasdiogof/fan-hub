@@ -18,6 +18,7 @@ class QuizState extends Equatable {
     this.isNewRecord = false,
     this.justCompletedLevel = false,
     this.levelAnsweredAfter = 0,
+    this.submittingNext = false,
   });
 
   final LoadStatus status;
@@ -48,6 +49,11 @@ class QuizState extends Equatable {
   final bool justCompletedLevel;
   final int levelAnsweredAfter;
 
+  /// Verdadeiro só durante a execução assíncrona de `next()` — bloqueia um
+  /// segundo toque no botão "Próxima" enquanto o primeiro ainda está
+  /// gravando resposta/pontuação (ver `QuizCubit.next`).
+  final bool submittingNext;
+
   QuizQuestion get currentQuestion => questions[index];
   bool get isLastQuestion => index == questions.length - 1;
   bool get answered => selected != null;
@@ -68,6 +74,7 @@ class QuizState extends Equatable {
     bool? isNewRecord,
     bool? justCompletedLevel,
     int? levelAnsweredAfter,
+    bool? submittingNext,
   }) {
     return QuizState(
       status: status ?? this.status,
@@ -84,6 +91,7 @@ class QuizState extends Equatable {
       isNewRecord: isNewRecord ?? this.isNewRecord,
       justCompletedLevel: justCompletedLevel ?? this.justCompletedLevel,
       levelAnsweredAfter: levelAnsweredAfter ?? this.levelAnsweredAfter,
+      submittingNext: submittingNext ?? this.submittingNext,
     );
   }
 
@@ -103,5 +111,6 @@ class QuizState extends Equatable {
     isNewRecord,
     justCompletedLevel,
     levelAnsweredAfter,
+    submittingNext,
   ];
 }

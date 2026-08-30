@@ -216,7 +216,9 @@ class _QuizView extends StatelessWidget {
                                     label: state.isLastQuestion
                                         ? context.l10n.quizSeeResult
                                         : context.l10n.quizNext,
-                                    onPressed: state.answered
+                                    loading: state.submittingNext,
+                                    onPressed:
+                                        state.answered && !state.submittingNext
                                         ? () => context.read<QuizCubit>().next()
                                         : null,
                                   );
