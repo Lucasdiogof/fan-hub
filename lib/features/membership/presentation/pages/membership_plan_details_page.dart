@@ -6,8 +6,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/shared/utils/currency.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class MembershipPlanDetailsPage extends StatefulWidget {
   const MembershipPlanDetailsPage({required this.planId, super.key});
@@ -38,285 +37,285 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
     final colors = context.colors;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                AppSpacing.lg,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(onTap: () => context.pop()),
-                  const SizedBox(height: AppSpacing.lg),
-                  Expanded(
-                    child: ListView(
-                      children: [
-                        if (plan.highlight) ...[
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 5,
-                            ),
-                            decoration: BoxDecoration(
-                              color: colors.gold,
-                              borderRadius: BorderRadius.circular(
-                                AppRadius.pill,
-                              ),
-                            ),
-                            child: Text(
-                              context.l10n.membershipMostChosen,
-                              style: const TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.white,
-                                letterSpacing: 0.5,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: AppSpacing.md),
-                        ],
-                        Text(
-                          plan.name,
-                          style: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.w900,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        Text(
-                          plan.tagline,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: colors.textSecondary,
-                            height: 1.4,
-                          ),
-                        ),
-                        if (plan.stadiumSector != null) ...[
-                          const SizedBox(height: AppSpacing.md),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 5,
-                            ),
-                            decoration: BoxDecoration(
-                              color: colors.secondary,
-                              borderRadius: BorderRadius.circular(
-                                AppRadius.pill,
-                              ),
-                            ),
-                            child: Text(
-                              context.l10n.membershipSector(
-                                plan.stadiumSector.toString(),
-                              ),
-                              style: TextStyle(
-                                fontSize: 11.5,
-                                fontWeight: FontWeight.w800,
-                                color: colors.primary,
-                              ),
-                            ),
-                          ),
-                        ],
-                        const SizedBox(height: AppSpacing.xxl),
-                        if (plan.prices.length > 1) ...[
-                          Row(
-                            children: [
-                              for (final price in plan.prices)
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: AppSpacing.sm,
-                                  ),
-                                  child: ChoiceChip(
-                                    label: Text(price.label),
-                                    selected: selectedPrice == price,
-                                    onSelected: (_) =>
-                                        setState(() => selectedPrice = price),
-                                    selectedColor: colors.secondary,
-                                    labelStyle: TextStyle(
-                                      fontSize: 12.5,
-                                      fontWeight: FontWeight.w700,
-                                      color: selectedPrice == price
-                                          ? colors.primary
-                                          : colors.textSecondary,
-                                    ),
-                                    side: BorderSide(
-                                      color: selectedPrice == price
-                                          ? colors.primary
-                                          : colors.border,
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                          const SizedBox(height: AppSpacing.lg),
-                        ],
-                        Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: formatBrl(selectedPrice.monthlyPrice),
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.w900,
-                                  color: colors.textPrimary,
-                                ),
-                              ),
-                              TextSpan(
-                                text: context.l10n.membershipPerMonth,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: colors.textSecondary,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          context.l10n.membershipOrAnnual(
-                            formatBrl(selectedPrice.annualPrice),
-                          ),
-                          style: TextStyle(
-                            fontSize: 12.5,
-                            color: colors.textSecondary,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.xxl),
-                        Text(
-                          context.l10n.membershipBenefits,
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w900,
-                            color: colors.textPrimary,
-                            letterSpacing: 0.6,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.md),
-                        for (final benefit in plan.benefits)
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              bottom: AppSpacing.md,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.check_circle_rounded,
-                                  size: 18,
-                                  color: colors.primary,
-                                ),
-                                const SizedBox(width: AppSpacing.md),
-                                Expanded(
-                                  child: Text(
-                                    benefit,
-                                    style: TextStyle(
-                                      fontSize: 13.5,
-                                      height: 1.4,
-                                      color: colors.textPrimary,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        const SizedBox(height: AppSpacing.lg),
-                        GestureDetector(
-                          onTap: () => context.push('/membership/regulation'),
-                          child: Text(
-                            context.l10n.membershipSeeFullRegulation,
-                            style: TextStyle(
-                              fontSize: 12.5,
-                              fontWeight: FontWeight.w700,
-                              color: colors.primary,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.xxl),
-                        Container(
-                          padding: const EdgeInsets.all(AppSpacing.lg),
-                          decoration: BoxDecoration(
-                            color: colors.secondary,
-                            borderRadius: BorderRadius.circular(
-                              AppRadius.cardSmall,
-                            ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                context.l10n.membershipStillHaveDoubts,
-                                style: TextStyle(
-                                  fontSize: 13.5,
-                                  fontWeight: FontWeight.w700,
-                                  color: colors.textPrimary,
-                                ),
-                              ),
-                              const SizedBox(height: AppSpacing.md),
-                              SizedBox(
-                                width: double.infinity,
-                                child: OutlinedButton(
-                                  onPressed: () => context.push(
-                                    '/membership/faq',
-                                    extra: (
-                                      initialCategoryId:
-                                          'planos-e-cancelamento',
-                                      initialQuery: null,
-                                    ),
-                                  ),
-                                  style: OutlinedButton.styleFrom(
-                                    foregroundColor: colors.primary,
-                                    side: BorderSide(color: colors.primary),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                        AppRadius.button,
-                                      ),
-                                    ),
-                                    textStyle: const TextStyle(
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 12.5,
-                                      letterSpacing: 0.3,
-                                    ),
-                                  ),
-                                  child: Text(context.l10n.membershipSeeFaq),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.huge),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: _startRegistration,
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppRadius.button),
-                        ),
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        textStyle: const TextStyle(
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.3,
-                        ),
-                      ),
-                      child: Text(context.l10n.membershipWantToJoin),
-                    ),
-                  ),
-                ],
+      body: Column(
+        children: [
+          Expanded(
+            child: DetailPageHeader(
+              title: plan.name,
+              heroTitle: _PlanHeroTitle(plan: plan),
+              body: _PlanBody(
+                plan: plan,
+                selectedPrice: selectedPrice,
+                onSelectPrice: (price) => setState(() => selectedPrice = price),
               ),
             ),
           ),
-        ),
+          SafeArea(
+            top: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.sm,
+                AppSpacing.lg,
+                AppSpacing.sm,
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _startRegistration,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.button),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                  child: Text(context.l10n.membershipWantToJoin),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
+    );
+  }
+}
+
+class _PlanHeroTitle extends StatelessWidget {
+  const _PlanHeroTitle({required this.plan});
+
+  final MembershipPlan plan;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (plan.highlight) ...[
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: colors.gold,
+              borderRadius: BorderRadius.circular(AppRadius.pill),
+            ),
+            child: Text(
+              context.l10n.membershipMostChosen,
+              style: const TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w800,
+                color: Colors.white,
+                letterSpacing: 0.5,
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
+        ],
+        Text(
+          plan.name,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        const SizedBox(height: 6),
+        Text(
+          plan.tagline,
+          style: TextStyle(fontSize: 14, color: colors.textSecondary, height: 1.4),
+        ),
+        if (plan.stadiumSector != null) ...[
+          const SizedBox(height: AppSpacing.md),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: colors.secondary,
+              borderRadius: BorderRadius.circular(AppRadius.pill),
+            ),
+            child: Text(
+              context.l10n.membershipSector(plan.stadiumSector.toString()),
+              style: TextStyle(
+                fontSize: 11.5,
+                fontWeight: FontWeight.w800,
+                color: colors.primary,
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class _PlanBody extends StatelessWidget {
+  const _PlanBody({
+    required this.plan,
+    required this.selectedPrice,
+    required this.onSelectPrice,
+  });
+
+  final MembershipPlan plan;
+  final MembershipPlanPrice selectedPrice;
+  final ValueChanged<MembershipPlanPrice> onSelectPrice;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: AppSpacing.xxl),
+        if (plan.prices.length > 1) ...[
+          Row(
+            children: [
+              for (final price in plan.prices)
+                Padding(
+                  padding: const EdgeInsets.only(right: AppSpacing.sm),
+                  child: ChoiceChip(
+                    label: Text(price.label),
+                    selected: selectedPrice == price,
+                    onSelected: (_) => onSelectPrice(price),
+                    selectedColor: colors.secondary,
+                    labelStyle: TextStyle(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w700,
+                      color: selectedPrice == price
+                          ? colors.primary
+                          : colors.textSecondary,
+                    ),
+                    side: BorderSide(
+                      color: selectedPrice == price
+                          ? colors.primary
+                          : colors.border,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+          const SizedBox(height: AppSpacing.lg),
+        ],
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: formatBrl(selectedPrice.monthlyPrice),
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
+                ),
+              ),
+              TextSpan(
+                text: context.l10n.membershipPerMonth,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: colors.textSecondary,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          context.l10n.membershipOrAnnual(formatBrl(selectedPrice.annualPrice)),
+          style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
+        ),
+        const SizedBox(height: AppSpacing.xxl),
+        Text(
+          context.l10n.membershipBenefits,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+            letterSpacing: 0.6,
+          ),
+        ),
+        const SizedBox(height: AppSpacing.md),
+        for (final benefit in plan.benefits)
+          Padding(
+            padding: const EdgeInsets.only(bottom: AppSpacing.md),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.check_circle_rounded, size: 18, color: colors.primary),
+                const SizedBox(width: AppSpacing.md),
+                Expanded(
+                  child: Text(
+                    benefit,
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      height: 1.4,
+                      color: colors.textPrimary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        const SizedBox(height: AppSpacing.lg),
+        GestureDetector(
+          onTap: () => context.push('/membership/regulation'),
+          child: Text(
+            context.l10n.membershipSeeFullRegulation,
+            style: TextStyle(
+              fontSize: 12.5,
+              fontWeight: FontWeight.w700,
+              color: colors.primary,
+            ),
+          ),
+        ),
+        const SizedBox(height: AppSpacing.xxl),
+        Container(
+          padding: const EdgeInsets.all(AppSpacing.lg),
+          decoration: BoxDecoration(
+            color: colors.secondary,
+            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                context.l10n.membershipStillHaveDoubts,
+                style: TextStyle(
+                  fontSize: 13.5,
+                  fontWeight: FontWeight.w700,
+                  color: colors.textPrimary,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () => context.push(
+                    '/membership/faq',
+                    extra: (
+                      initialCategoryId: 'planos-e-cancelamento',
+                      initialQuery: null,
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: colors.primary,
+                    side: BorderSide(color: colors.primary),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.button),
+                    ),
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 12.5,
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                  child: Text(context.l10n.membershipSeeFaq),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
