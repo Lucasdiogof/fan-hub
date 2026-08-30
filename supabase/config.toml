@@ -1,0 +1,6 @@
+# Config minima do Supabase CLI, so pra versionar migrations contra o
+# projeto remoto (yonozsdgyrhgqrvydbnr, o mesmo de SupabaseConfig.url).
+# Nao usamos `supabase start` (dev local via Docker) neste projeto -- as
+# secoes [api]/[db]/[studio]/[auth] que `supabase init` normalmente gera pra
+# ambiente local foram propositalmente omitidas.
+project_id = "yonozsdgyrhgqrvydbnr"
