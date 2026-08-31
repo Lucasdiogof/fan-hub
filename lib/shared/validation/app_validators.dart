@@ -103,6 +103,9 @@ class AppValidators {
 
   static String? password(AppLocalizations l10n, String value) {
     if (value.isEmpty) return l10n.validatorPasswordRequired;
+    if (value.length < minPasswordLength) {
+      return l10n.validatorPasswordMinLength(minPasswordLength);
+    }
     return null;
   }
 

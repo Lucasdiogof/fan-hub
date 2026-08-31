@@ -7,9 +7,9 @@ import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
 import 'package:goias_app/shared/validation/field_touch.dart';
+import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
 import 'package:goias_app/features/auth/presentation/widgets/forgot_password_sheet.dart';
@@ -29,9 +29,11 @@ class _LoginPageState extends State<LoginPage> {
 
   final _emailTouch = FieldTouch();
   final _passwordTouch = FieldTouch();
-  bool _submitted = false;
-  String? _formError;
   bool _loading = false;
+
+  bool get _canSubmit =>
+      AppValidators.email(context.l10n, _emailController.text) == null &&
+      AppValidators.password(context.l10n, _passwordController.text) == null;
 
   @override
   void dispose() {
@@ -43,20 +45,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _submit() async {
     FocusScope.of(context).unfocus();
-    setState(() {
-      _submitted = true;
-      _formError = null;
-    });
-    final emailError = AppValidators.email(
-      context.l10n,
-      _emailController.text,
-    );
-    final passwordError = AppValidators.password(
-      context.l10n,
-      _passwordController.text,
-    );
-    if (emailError != null || passwordError != null) return;
-
     setState(() => _loading = true);
     final result = await context.read<AuthCubit>().signIn(
       email: AppValidators.normalizeEmail(_emailController.text),
@@ -65,7 +53,14 @@ class _LoginPageState extends State<LoginPage> {
     if (!mounted) return;
     setState(() => _loading = false);
     if (result is Error<void>) {
-      setState(() => _formError = result.failure.message);
+      final l10n = context.l10n;
+      await AppBottomSheet.show(
+        context,
+        icon: Icons.error_outline_rounded,
+        title: l10n.authSignInErrorTitle,
+        description: result.failure.message,
+        confirmLabel: l10n.commonClose,
+      );
     }
   }
 
@@ -127,7 +122,6 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AuthErrorBanner(message: _formError),
         AuthTextField(
           controller: _emailController,
           label: l10n.commonEmailLabel,
@@ -139,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
           autofillHints: const [AutofillHints.email],
           errorText: _emailTouch.errorFor(
             _emailController.text,
-            submitted: _submitted,
+            submitted: false,
             format: (v) => AppValidators.email(l10n, v),
             requiredMessage: l10n.validatorEmailRequired,
           ),
@@ -162,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
           autofillHints: const [AutofillHints.password],
           errorText: _passwordTouch.errorFor(
             _passwordController.text,
-            submitted: _submitted,
+            submitted: false,
             format: (v) => AppValidators.password(l10n, v),
             requiredMessage: l10n.validatorPasswordRequired,
           ),
@@ -197,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
           label: l10n.authSignInButton,
           loading: _loading,
           loadingLabel: l10n.authSigningIn,
-          onPressed: _submit,
+          onPressed: _canSubmit ? _submit : null,
           // Explícito e independente do tema do app — o fundo desta tela é
           // sempre uma foto escura, então o botão precisa do mesmo verde
           // vívido tanto no light quanto no dark theme do app, ao contrário
