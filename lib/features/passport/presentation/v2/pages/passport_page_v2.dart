@@ -12,6 +12,7 @@ import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.da
 import 'package:goias_app/features/passport/presentation/cubit/passport_state.dart';
 import 'package:goias_app/features/passport/presentation/passport_discard_dialog.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_cover_v2.dart';
+import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_empty_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_filter_control_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_month_group_v2.dart';
@@ -28,8 +29,14 @@ class PassportPageV2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<PassportCubit>()..loadInitial(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => sl<PassportCubit>()..loadInitial()),
+        // Só pro nome no card (ver `PassportCoverV2.holderName`) — o
+        // singleton já vem aquecido desde a Home (`HomeShellPage`), aqui só
+        // reaproveitamos e escutamos.
+        BlocProvider.value(value: sl<ProfileCubit>()),
+      ],
       child: const _PassportViewV2(),
     );
   }
@@ -232,7 +239,15 @@ class _BodyV2 extends StatelessWidget {
       );
     }
 
-    final cover = PassportCoverV2(summary: state.summary);
+    // `fullName` só (nunca `displayName`, que cai pro e-mail quando o
+    // usuário não preencheu o nome) — sem nome cadastrado, o card volta pro
+    // rótulo genérico, nunca mostra e-mail.
+    final holderName = context.watch<ProfileCubit>().state.profile?.fullName;
+    final cover = PassportCoverV2(
+      summary: state.summary,
+      holderName: holderName,
+      onTap: () => context.push('/arena/passport/stats'),
+    );
     // Só o onboarding (zero jogos) ocupa esse espaço — com jogos marcados,
     // o card já mostra o essencial (jogos carimbados + nível) e a lista
     // abaixo mostra os jogos em si, então repetir números aqui (jogos
@@ -336,7 +351,6 @@ class _SeasonAndFiltersV2 extends StatelessWidget {
         PassportSeasonSelectorV2(
           seasons: state.seasons,
           selectedYear: state.selectedYear,
-          selectedYearMarked: state.yearMarkedCount,
           markedCountsByYear: state.markedCountsByYear,
           onSelected: cubit.selectYear,
         ),

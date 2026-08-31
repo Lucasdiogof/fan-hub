@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_match.dart';
@@ -28,8 +27,6 @@ class PassportMonthGroupV2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final l10n = context.l10n;
-    final finished = matches.where((m) => m.isFinished).length;
     final marked = matches
         .where((m) => m.isFinished && effectiveAttended(m))
         .length;
@@ -71,29 +68,14 @@ class PassportMonthGroupV2 extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: AppSpacing.sm),
-                    child: Row(
-                      children: [
-                        Text(
-                          label,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: 0.5,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                        if (finished > 0) ...[
-                          const SizedBox(width: 8),
-                          Text(
-                            l10n.passportMonthProgressLine(marked, finished),
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w600,
-                              color: colors.textSecondary,
-                            ),
-                          ),
-                        ],
-                      ],
+                    child: Text(
+                      label,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.5,
+                        color: colors.textPrimary,
+                      ),
                     ),
                   ),
                   for (var i = 0; i < matches.length; i++) ...[

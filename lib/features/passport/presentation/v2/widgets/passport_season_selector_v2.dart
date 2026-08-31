@@ -15,7 +15,6 @@ class PassportSeasonSelectorV2 extends StatelessWidget {
   const PassportSeasonSelectorV2({
     required this.seasons,
     required this.selectedYear,
-    required this.selectedYearMarked,
     required this.markedCountsByYear,
     required this.onSelected,
     super.key,
@@ -23,7 +22,6 @@ class PassportSeasonSelectorV2 extends StatelessWidget {
 
   final List<PassportSeason> seasons;
   final int? selectedYear;
-  final int selectedYearMarked;
   final Map<int, int> markedCountsByYear;
   final ValueChanged<int> onSelected;
 
@@ -65,31 +63,14 @@ class PassportSeasonSelectorV2 extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppRadius.cardSmall),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Column(
-                children: [
-                  Text(
-                    current != null ? '${current.season}' : '—',
-                    style: TextStyle(
-                      fontSize: 19,
-                      fontWeight: FontWeight.w900,
-                      color: colors.textPrimary,
-                    ),
-                  ),
-                  const SizedBox(height: 1),
-                  Text(
-                    current == null
-                        ? ''
-                        : l10n.passportSeasonProgressLine(
-                            selectedYearMarked,
-                            current.finishedCount,
-                          ),
-                    style: TextStyle(
-                      fontSize: 11.5,
-                      fontWeight: FontWeight.w600,
-                      color: colors.textSecondary,
-                    ),
-                  ),
-                ],
+              child: Text(
+                current != null ? '${current.season}' : '—',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
+                ),
               ),
             ),
           ),

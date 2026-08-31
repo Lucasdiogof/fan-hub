@@ -66,6 +66,26 @@ class SupabasePassportRepository implements PassportRepository {
   }
 
   @override
+  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown() async {
+    try {
+      final rows = await _client.rpc<List<dynamic>>(
+        'passport_attendance_breakdown',
+      );
+      if (rows.isEmpty) {
+        return const Success(PassportAttendanceBreakdown.empty);
+      }
+      return Success(
+        PassportAttendanceBreakdown.fromMap(
+          rows.first as Map<String, dynamic>,
+        ),
+      );
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return const Error(ServerFailure(_genericErrorMessage));
+    }
+  }
+
+  @override
   Future<Result<List<PassportAttendanceChangeResult>>> saveAttendances(
     List<PassportAttendanceChange> changes,
   ) async {

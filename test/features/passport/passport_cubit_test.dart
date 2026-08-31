@@ -38,6 +38,10 @@ class _FakePassportRepository implements PassportRepository {
   Future<Result<PassportSummary>> getSummary() async => Success(summary);
 
   @override
+  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown() async =>
+      const Success(PassportAttendanceBreakdown.empty);
+
+  @override
   Future<Result<List<PassportAttendanceChangeResult>>> saveAttendances(
     List<PassportAttendanceChange> changes,
   ) async {

@@ -54,6 +54,7 @@ import 'package:goias_app/features/passport/data/supabase_passport_repository.da
 import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_cubit.dart';
+import 'package:goias_app/features/passport/presentation/cubit/passport_stats_cubit.dart';
 import 'package:goias_app/features/news/data/datasources/news_remote_data_source.dart';
 import 'package:goias_app/features/news/data/repositories/news_repository_impl.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
@@ -221,6 +222,7 @@ void setupDependencies() {
   sl.registerFactory<ClubTransparencyCubit>(() => ClubTransparencyCubit(sl()));
   sl.registerFactory<PassportCubit>(() => PassportCubit(sl()));
   sl.registerFactory<PassportRankingCubit>(() => PassportRankingCubit(sl()));
+  sl.registerFactory<PassportStatsCubit>(() => PassportStatsCubit(sl()));
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));

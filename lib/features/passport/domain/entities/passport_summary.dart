@@ -46,6 +46,69 @@ class PassportSummary extends Equatable {
   ];
 }
 
+/// Números da trajetória do usuário — só sobre partidas FINISHED marcadas
+/// como "Eu fui" (agregado no servidor via `passport_attendance_breakdown`,
+/// cobre todas as temporadas de uma vez, nunca só o ano selecionado na
+/// tela). [totalMatches] aqui pode ser menor que
+/// [PassportSummary.totalMatches] se o usuário tiver marcado alguma
+/// partida ainda não finalizada (agendada/adiada).
+class PassportAttendanceBreakdown extends Equatable {
+  const PassportAttendanceBreakdown({
+    required this.totalMatches,
+    required this.wins,
+    required this.draws,
+    required this.losses,
+    required this.homeGames,
+    required this.awayGames,
+    required this.goalsFor,
+    required this.goalsAgainst,
+  });
+
+  final int totalMatches;
+  final int wins;
+  final int draws;
+  final int losses;
+  final int homeGames;
+  final int awayGames;
+  final int goalsFor;
+  final int goalsAgainst;
+
+  static const empty = PassportAttendanceBreakdown(
+    totalMatches: 0,
+    wins: 0,
+    draws: 0,
+    losses: 0,
+    homeGames: 0,
+    awayGames: 0,
+    goalsFor: 0,
+    goalsAgainst: 0,
+  );
+
+  factory PassportAttendanceBreakdown.fromMap(Map<String, dynamic> map) =>
+      PassportAttendanceBreakdown(
+        totalMatches: map['total_attended'] as int? ?? 0,
+        wins: map['wins'] as int? ?? 0,
+        draws: map['draws'] as int? ?? 0,
+        losses: map['losses'] as int? ?? 0,
+        homeGames: map['home_games'] as int? ?? 0,
+        awayGames: map['away_games'] as int? ?? 0,
+        goalsFor: map['goals_for'] as int? ?? 0,
+        goalsAgainst: map['goals_against'] as int? ?? 0,
+      );
+
+  @override
+  List<Object?> get props => [
+    totalMatches,
+    wins,
+    draws,
+    losses,
+    homeGames,
+    awayGames,
+    goalsFor,
+    goalsAgainst,
+  ];
+}
+
 /// Uma linha do ranking do Passaporte — totalmente separado do ranking da
 /// Arena (`RankingEntry`), pontuação própria (1 partida marcada = 1 ponto).
 class PassportRankingEntry extends Equatable {

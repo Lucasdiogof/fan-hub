@@ -25,13 +25,34 @@ import 'package:goias_app/features/passport/presentation/v2/widgets/passport_lev
 /// todo nível — só a decoração muda, de propósito (evita o card
 /// crescer/pular ao subir de nível).
 class PassportCoverV2 extends StatelessWidget {
-  const PassportCoverV2({required this.summary, super.key});
+  const PassportCoverV2({
+    required this.summary,
+    this.holderName,
+    this.onTap,
+    super.key,
+  });
 
   final PassportSummary summary;
+
+  /// Nome completo do torcedor — substitui o rótulo genérico "MEU
+  /// PASSAPORTE" (mesmo espírito de um documento de identidade real, com o
+  /// nome do titular estampado). `null`/vazio (perfil ainda não carregou
+  /// ou sem nome cadastrado) cai de volta pro rótulo genérico, nunca mostra
+  /// e-mail nem fica em branco.
+  final String? holderName;
+
+  /// Abre a trajetória (vitórias/empates/derrotas, casa/fora, gols) — `null`
+  /// deixa o card só decorativo, pro caso de ser reaproveitado em algum
+  /// lugar sem essa navegação.
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final trimmedName = holderName?.trim();
+    final eyebrowText = (trimmedName != null && trimmedName.isNotEmpty)
+        ? trimmedName.toUpperCase()
+        : l10n.passportCoverEyebrow;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final level = passportLevelForMatches(summary.totalMatches);
     final levelStyle = passportLevelStyleFor(level);
@@ -53,132 +74,137 @@ class PassportCoverV2 extends StatelessWidget {
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(AppRadius.hero),
-        child: ColoredBox(
+        child: Material(
           color: AppColors.light.deepGreen,
-          child: Stack(
-            children: [
-              if (levelStyle.textureOpacity > 0)
-                Positioned.fill(
-                  child: CustomPaint(
-                    painter: _BleacherTexturePainter(
-                      opacity: levelStyle.textureOpacity,
-                    ),
-                  ),
-                ),
-              // Textura de fundo — pequena, quase toda cortada pelo canto,
-              // opacidade muito baixa: sugere identidade/segurança de
-              // documento oficial sem virar "o círculo grande no fundo".
-              // Refina (sobe um pouco de opacidade) por nível, nunca muda
-              // de posição/tamanho.
-              Positioned(
-                right: -46,
-                bottom: -46,
-                child: Opacity(
-                  opacity: levelStyle.watermarkOpacity,
-                  child: ColorFiltered(
-                    colorFilter: const ColorFilter.mode(
-                      Colors.white,
-                      BlendMode.srcIn,
-                    ),
-                    child: Image.asset(
-                      AppAssets.goiasCrestBadge,
-                      width: 150,
-                      height: 150,
-                    ),
-                  ),
-                ),
-              ),
-              // Moldura dupla — a partir do nível 3, uma segunda linha bem
-              // sutil por dentro da borda externa. Puramente decorativo,
-              // não afeta o padding do conteúdo.
-              if (levelStyle.innerBorderColor != null)
-                Positioned.fill(
-                  child: Padding(
-                    padding: const EdgeInsets.all(4),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          AppRadius.hero - 4,
-                        ),
-                        border: Border.all(
-                          color: levelStyle.innerBorderColor!,
-                          width: 1,
-                        ),
+          child: InkWell(
+            onTap: onTap,
+            child: Stack(
+              children: [
+                if (levelStyle.textureOpacity > 0)
+                  Positioned.fill(
+                    child: CustomPaint(
+                      painter: _BleacherTexturePainter(
+                        opacity: levelStyle.textureOpacity,
                       ),
                     ),
                   ),
-                ),
-              // Acento dourado — só a partir do nível 4, uma linha fina no
-              // topo (nunca a moldura inteira, pra continuar sendo acento
-              // e não virar cor de fundo).
-              if (levelStyle.accentLineColor != null)
+                // Textura de fundo — pequena, quase toda cortada pelo canto,
+                // opacidade muito baixa: sugere identidade/segurança de
+                // documento oficial sem virar "o círculo grande no fundo".
+                // Refina (sobe um pouco de opacidade) por nível, nunca muda
+                // de posição/tamanho.
                 Positioned(
-                  top: 0,
-                  left: AppSpacing.xl,
-                  right: AppSpacing.xl,
-                  child: Container(
-                    height: 2,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          levelStyle.accentLineColor!.withValues(alpha: 0),
-                          levelStyle.accentLineColor!,
-                          levelStyle.accentLineColor!.withValues(alpha: 0),
-                        ],
+                  right: -46,
+                  bottom: -46,
+                  child: Opacity(
+                    opacity: levelStyle.watermarkOpacity,
+                    child: ColorFiltered(
+                      colorFilter: const ColorFilter.mode(
+                        Colors.white,
+                        BlendMode.srcIn,
+                      ),
+                      child: Image.asset(
+                        AppAssets.goiasCrestBadge,
+                        width: 150,
+                        height: 150,
                       ),
                     ),
                   ),
                 ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg,
-                  AppSpacing.lg,
-                  AppSpacing.lg,
-                  AppSpacing.lg,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.confirmation_number_outlined,
-                          size: 14,
-                          color: Colors.white.withValues(alpha: 0.72),
-                        ),
-                        const SizedBox(width: 6),
-                        Expanded(
-                          child: Text(
-                            l10n.passportCoverEyebrow,
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 1.1,
-                              color: Colors.white.withValues(alpha: 0.72),
-                            ),
+                // Moldura dupla — a partir do nível 3, uma segunda linha bem
+                // sutil por dentro da borda externa. Puramente decorativo,
+                // não afeta o padding do conteúdo.
+                if (levelStyle.innerBorderColor != null)
+                  Positioned.fill(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            AppRadius.hero - 4,
+                          ),
+                          border: Border.all(
+                            color: levelStyle.innerBorderColor!,
+                            width: 1,
                           ),
                         ),
-                        _LevelBadge(
-                          label: passportLevelLabel(l10n, level),
-                          style: levelStyle,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: AppSpacing.md),
-                    Text(
-                      l10n.passportCoverMatchesLived(summary.totalMatches),
-                      style: const TextStyle(
-                        fontSize: 23,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                        height: 1.18,
                       ),
                     ),
-                  ],
+                  ),
+                // Acento dourado — só a partir do nível 4, uma linha fina no
+                // topo (nunca a moldura inteira, pra continuar sendo acento
+                // e não virar cor de fundo).
+                if (levelStyle.accentLineColor != null)
+                  Positioned(
+                    top: 0,
+                    left: AppSpacing.xl,
+                    right: AppSpacing.xl,
+                    child: Container(
+                      height: 2,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            levelStyle.accentLineColor!.withValues(alpha: 0),
+                            levelStyle.accentLineColor!,
+                            levelStyle.accentLineColor!.withValues(alpha: 0),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.lg,
+                    AppSpacing.lg,
+                    AppSpacing.lg,
+                    AppSpacing.lg,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.confirmation_number_outlined,
+                            size: 14,
+                            color: Colors.white.withValues(alpha: 0.72),
+                          ),
+                          const SizedBox(width: 6),
+                          Expanded(
+                            child: Text(
+                              eyebrowText,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 1.1,
+                                color: Colors.white.withValues(alpha: 0.72),
+                              ),
+                            ),
+                          ),
+                          _LevelBadge(
+                            label: passportLevelLabel(l10n, level),
+                            style: levelStyle,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      Text(
+                        l10n.passportCoverMatchesLived(summary.totalMatches),
+                        style: const TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          height: 1.18,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -241,7 +267,11 @@ class _BleacherTexturePainter extends CustomPainter {
       ..strokeWidth = 1;
     const gap = 15.0;
     for (var x = -size.height; x < size.width; x += gap) {
-      canvas.drawLine(Offset(x, size.height), Offset(x + size.height, 0), paint);
+      canvas.drawLine(
+        Offset(x, size.height),
+        Offset(x + size.height, 0),
+        paint,
+      );
     }
   }
 

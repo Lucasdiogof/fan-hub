@@ -115,14 +115,16 @@ class PassportMatchTicketV2 extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
                               child: Text(
                                 subtitleParts.join(' · '),
-                                maxLines: 1,
+                                maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: 11.5,
+                                  height: 1.3,
                                   color: colors.textSecondary,
                                 ),
                               ),
