@@ -1508,6 +1508,19 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get careerAggregateTitle => 'Totais agregados';
+
+  @override
+  String careerAggregateLine(
+    String club,
+    String spells,
+    String apps,
+    String goals,
+  ) {
+    return '$club ($spells): $apps jogos · $goals gols';
+  }
+
+  @override
   String get commonBack => 'VOLTAR';
 
   @override

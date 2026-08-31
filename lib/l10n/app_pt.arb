@@ -534,6 +534,9 @@
   "careerGames": "Jogos",
   "careerGoals": "Gols",
   "careerOnLoan": "{team} (emp.)",
+  "careerAggregateTitle": "Totais agregados",
+  "careerAggregateLine": "{club} ({spells}): {apps} jogos · {goals} gols",
+  "@careerAggregateLine": { "placeholders": { "club": { "type": "String" }, "spells": { "type": "String" }, "apps": { "type": "String" }, "goals": { "type": "String" } } },
   "@careerOnLoan": { "placeholders": { "team": { "type": "String" } } },
 
   "commonBack": "VOLTAR",

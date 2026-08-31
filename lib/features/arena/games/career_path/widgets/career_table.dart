@@ -44,6 +44,75 @@ class CareerTable extends StatelessWidget {
                 showDivider: i < player.nationalTeams.length - 1,
               ),
           ],
+          if (player.aggregateStats.isNotEmpty) ...[
+            const SizedBox(height: AppSpacing.sm),
+            _AggregateSection(stats: player.aggregateStats),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+/// Quando o jogador teve mais de uma passagem pelo mesmo clube e a fonte só
+/// fecha o total somado (nunca por passagem individual), as linhas daquele
+/// clube na tabela acima mostram "—" em jogos/gols — o número real mora só
+/// aqui, explicitamente marcado como combinado, nunca atribuído a uma
+/// passagem específica.
+class _AggregateSection extends StatelessWidget {
+  const _AggregateSection({required this.stats});
+
+  final List<CareerAggregateStat> stats;
+
+  String _n(int? value) => value?.toString() ?? '—';
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final l10n = context.l10n;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.careerAggregateTitle.toUpperCase(),
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.6,
+              color: colors.textHint,
+            ),
+          ),
+          for (final stat in stats) ...[
+            const SizedBox(height: 6),
+            Text(
+              l10n.careerAggregateLine(
+                stat.club,
+                stat.spells.join('; '),
+                _n(stat.appearances),
+                _n(stat.goals),
+              ),
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: colors.textPrimary,
+              ),
+            ),
+            if (stat.note != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Text(
+                  stat.note!,
+                  style: TextStyle(fontSize: 11.5, color: colors.textSecondary),
+                ),
+              ),
+          ],
         ],
       ),
     );

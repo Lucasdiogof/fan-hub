@@ -27,6 +27,35 @@ class CareerEntry extends Equatable {
   List<Object?> get props => [period, team, appearances, goals, loan, isGoias];
 }
 
+/// Total combinado de um clube quando o jogador teve mais de uma passagem
+/// por ele e a fonte só fecha o número somado, nunca por passagem
+/// individual — nesse caso as `CareerEntry` daquele clube em [spells]
+/// ficam com `appearances`/`goals` nulos (nunca um número adivinhado), e
+/// este total mora aqui, separado, pra UI nunca fingir que pertence a uma
+/// única passagem.
+class CareerAggregateStat extends Equatable {
+  const CareerAggregateStat({
+    required this.club,
+    required this.spells,
+    this.appearances,
+    this.goals,
+    this.note,
+  });
+
+  final String club;
+
+  /// Os `period` das passagens que este total cobre — só pra referência
+  /// visual, não usado pra casar com `CareerEntry` (isso é feito pela
+  /// ordem/clube na lista, nunca por comparação de texto).
+  final List<String> spells;
+  final int? appearances;
+  final int? goals;
+  final String? note;
+
+  @override
+  List<Object?> get props => [club, spells, appearances, goals, note];
+}
+
 class CareerPlayer extends Equatable {
   const CareerPlayer({
     required this.id,
@@ -34,6 +63,7 @@ class CareerPlayer extends Equatable {
     required this.acceptedAnswers,
     required this.clubCareer,
     this.nationalTeams = const [],
+    this.aggregateStats = const [],
     this.position,
     this.imageAsset,
   });
@@ -43,6 +73,7 @@ class CareerPlayer extends Equatable {
   final List<String> acceptedAnswers;
   final List<CareerEntry> clubCareer;
   final List<CareerEntry> nationalTeams;
+  final List<CareerAggregateStat> aggregateStats;
   final String? position;
   final String? imageAsset;
 
@@ -53,6 +84,7 @@ class CareerPlayer extends Equatable {
     acceptedAnswers,
     clubCareer,
     nationalTeams,
+    aggregateStats,
     position,
     imageAsset,
   ];

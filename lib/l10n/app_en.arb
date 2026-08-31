@@ -488,6 +488,9 @@
   "careerGames": "Games",
   "careerGoals": "Goals",
   "careerOnLoan": "{team} (loan)",
+  "careerAggregateTitle": "Combined totals",
+  "careerAggregateLine": "{club} ({spells}): {apps} apps · {goals} goals",
+  "@careerAggregateLine": { "placeholders": { "club": { "type": "String" }, "spells": { "type": "String" }, "apps": { "type": "String" }, "goals": { "type": "String" } } },
 
   "commonBack": "BACK",
   "guessCorrectTitle": "YOU GOT IT!",

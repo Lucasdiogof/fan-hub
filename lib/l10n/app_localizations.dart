@@ -2698,6 +2698,23 @@ abstract class AppLocalizations {
   /// **'{team} (emp.)'**
   String careerOnLoan(String team);
 
+  /// No description provided for @careerAggregateTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Totais agregados'**
+  String get careerAggregateTitle;
+
+  /// No description provided for @careerAggregateLine.
+  ///
+  /// In pt, this message translates to:
+  /// **'{club} ({spells}): {apps} jogos · {goals} gols'**
+  String careerAggregateLine(
+    String club,
+    String spells,
+    String apps,
+    String goals,
+  );
+
   /// No description provided for @commonBack.
   ///
   /// In pt, this message translates to:

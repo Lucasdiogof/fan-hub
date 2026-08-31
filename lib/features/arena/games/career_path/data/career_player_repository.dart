@@ -18,7 +18,7 @@ class CareerPlayerRepository {
       final rows = await _client
           .from('career_players')
           .select(
-            'id, answer, accepted_answers, position, club_career, national_teams',
+            'id, answer, accepted_answers, position, club_career, national_teams, aggregate_stats',
           )
           .eq('is_active', true)
           .order('sort_order', ascending: true);
@@ -55,6 +55,11 @@ class CareerPlayerRepository {
         .map((e) => e.toString())
         .toList();
 
+    final aggregateStats = ((row['aggregate_stats'] as List?) ?? [])
+        .map((e) => _mapAggregate(e as Map<String, dynamic>))
+        .whereType<CareerAggregateStat>()
+        .toList();
+
     return CareerPlayer(
       id: id,
       answer: answer,
@@ -62,6 +67,7 @@ class CareerPlayerRepository {
       position: row['position'] as String?,
       clubCareer: clubCareer,
       nationalTeams: nationalTeams,
+      aggregateStats: aggregateStats,
     );
   }
 
@@ -76,6 +82,20 @@ class CareerPlayerRepository {
       goals: (json['goals'] as num?)?.toInt(),
       loan: json['loan'] as bool? ?? false,
       isGoias: json['is_goias'] as bool? ?? false,
+    );
+  }
+
+  CareerAggregateStat? _mapAggregate(Map<String, dynamic> json) {
+    final club = json['club'] as String?;
+    if (club == null) return null;
+    return CareerAggregateStat(
+      club: club,
+      spells: ((json['spells'] as List?) ?? [])
+          .map((e) => e.toString())
+          .toList(),
+      appearances: (json['appearances'] as num?)?.toInt(),
+      goals: (json['goals'] as num?)?.toInt(),
+      note: json['note'] as String?,
     );
   }
 }

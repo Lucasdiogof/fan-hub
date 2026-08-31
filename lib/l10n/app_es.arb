@@ -488,6 +488,9 @@
   "careerGames": "Partidos",
   "careerGoals": "Goles",
   "careerOnLoan": "{team} (cedido)",
+  "careerAggregateTitle": "Totales combinados",
+  "careerAggregateLine": "{club} ({spells}): {apps} partidos · {goals} goles",
+  "@careerAggregateLine": { "placeholders": { "club": { "type": "String" }, "spells": { "type": "String" }, "apps": { "type": "String" }, "goals": { "type": "String" } } },
 
   "commonBack": "VOLVER",
   "guessCorrectTitle": "¡ACERTASTE!",

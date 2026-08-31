@@ -1505,6 +1505,19 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get careerAggregateTitle => 'Combined totals';
+
+  @override
+  String careerAggregateLine(
+    String club,
+    String spells,
+    String apps,
+    String goals,
+  ) {
+    return '$club ($spells): $apps apps · $goals goals';
+  }
+
+  @override
   String get commonBack => 'BACK';
 
   @override
