@@ -39,7 +39,6 @@ class _YouTubeCard extends StatelessWidget {
           _PlatformHeader(
             icon: Icons.play_circle_filled,
             iconColor: const Color(0xFFFF0000),
-            label: context.l10n.socialPlatformYoutube,
             attribution: post.authorName,
             publishedAt: post.publishedAt,
           ),
@@ -130,7 +129,6 @@ class _InstagramCard extends StatelessWidget {
           _PlatformHeader(
             icon: Icons.camera_alt_rounded,
             iconColor: const Color(0xFFE1306C),
-            label: context.l10n.socialPlatformInstagram,
             attribution: '@${post.authorHandle}',
             publishedAt: post.publishedAt,
           ),
@@ -206,7 +204,6 @@ class _XCard extends StatelessWidget {
           _PlatformHeader(
             icon: Icons.tag,
             iconColor: colors.textSecondary,
-            label: context.l10n.socialPlatformX,
             attribution: '@${post.authorHandle}',
             publishedAt: post.publishedAt,
           ),
@@ -271,14 +268,12 @@ class _PlatformHeader extends StatelessWidget {
   const _PlatformHeader({
     required this.icon,
     required this.iconColor,
-    required this.label,
     required this.attribution,
     required this.publishedAt,
   });
 
   final IconData icon;
   final Color iconColor;
-  final String label;
   final String attribution;
   final DateTime publishedAt;
 
@@ -289,24 +284,16 @@ class _PlatformHeader extends StatelessWidget {
       children: [
         Icon(icon, size: 14, color: iconColor),
         const SizedBox(width: 6),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 10.5,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 0.5,
-            color: colors.textSecondary,
-          ),
-        ),
-        const SizedBox(width: 6),
-        Text('•', style: TextStyle(fontSize: 10, color: colors.textHint)),
-        const SizedBox(width: 6),
         Expanded(
           child: Text(
             attribution,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 11, color: colors.textSecondary),
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              color: colors.textSecondary,
+            ),
           ),
         ),
         RelativeTimeLabel(dateTime: publishedAt),
