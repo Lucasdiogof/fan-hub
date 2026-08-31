@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
-import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/l10n/supported_locales.dart';
@@ -12,14 +11,10 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/core/theme/theme_mode_label.dart';
-import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
-import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
-import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
-import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
@@ -262,72 +257,27 @@ class _MembershipBadge extends StatelessWidget {
   }
 }
 
-/// "Minha Jornada" — o que o torcedor já viveu/fez dentro do app, não uma
-/// segunda cópia dos cards de destaque da Home. Arena e Passaporte
-/// reaproveitam exatamente os dados que seus próprios cards da Home/Perfil
-/// já buscavam (rank e total de jogos vividos) — nenhuma chamada nova.
-class _JourneySection extends StatefulWidget {
+/// "Minha Jornada" — atalhos pro que o torcedor já viveu/fez dentro do
+/// app, não uma segunda cópia dos cards de destaque da Home.
+class _JourneySection extends StatelessWidget {
   const _JourneySection();
 
   @override
-  State<_JourneySection> createState() => _JourneySectionState();
-}
-
-class _JourneySectionState extends State<_JourneySection> {
-  late final Future<({int rank, int totalScore})?> _rankFuture = _loadRank();
-  late final Future<PassportSummary?> _passportFuture = _loadPassportSummary();
-
-  Future<({int rank, int totalScore})?> _loadRank() async {
-    final result = await sl<ArenaRankingRepository>().getMyRank(
-      RankingPeriod.allTime,
-    );
-    return result is Success<({int rank, int totalScore})?>
-        ? result.data
-        : null;
-  }
-
-  Future<PassportSummary?> _loadPassportSummary() async {
-    final result = await sl<PassportRepository>().getSummary();
-    return result is Success<PassportSummary> ? result.data : null;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return FutureBuilder<({int rank, int totalScore})?>(
-      future: _rankFuture,
-      builder: (context, rankSnapshot) {
-        return FutureBuilder<PassportSummary?>(
-          future: _passportFuture,
-          builder: (context, passportSnapshot) {
-            final rank = rankSnapshot.data;
-            final matchesLived = passportSnapshot.data?.totalMatches;
-            return _MenuSection(
-              title: context.l10n.profileMyJourney,
-              rows: [
-                _MenuRow(
-                  icon: Icons.emoji_events_outlined,
-                  label: context.l10n.arenaTitle,
-                  value: rank == null
-                      ? null
-                      : context.l10n.arenaSpotlightRankSummary(
-                          rank.rank,
-                          rank.totalScore,
-                        ),
-                  onTap: () => context.push('/arena'),
-                ),
-                _MenuRow(
-                  icon: Icons.menu_book_outlined,
-                  label: context.l10n.passportTitle,
-                  value: matchesLived == null
-                      ? null
-                      : context.l10n.profileJourneyMatchesLived(matchesLived),
-                  onTap: () => context.push('/arena/passport'),
-                ),
-              ],
-            );
-          },
-        );
-      },
+    return _MenuSection(
+      title: context.l10n.profileMyJourney,
+      rows: [
+        _MenuRow(
+          icon: Icons.emoji_events_outlined,
+          label: context.l10n.arenaTitle,
+          onTap: () => context.push('/arena'),
+        ),
+        _MenuRow(
+          icon: Icons.menu_book_outlined,
+          label: context.l10n.passportTitle,
+          onTap: () => context.push('/arena/passport'),
+        ),
+      ],
     );
   }
 }
