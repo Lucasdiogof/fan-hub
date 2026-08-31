@@ -12,7 +12,6 @@ import 'package:goias_app/features/match/presentation/pages/games_page.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/social/presentation/pages/social_feed_page.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
-import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/features/store/presentation/pages/store_home_page.dart';
 
 class HomeShellPage extends StatefulWidget {
@@ -31,14 +30,11 @@ class _HomeShellPageState extends State<HomeShellPage> {
   // ignore: unused_field
   final _profileCubit = sl<ProfileCubit>();
 
-  // Mesma ideia pro carrinho/favoritos da loja — carrega cedo pra o badge
-  // de quantidade no ícone do carrinho já vir certo assim que a Home
-  // aparece, não só depois que o usuário abre a Goiás Store pela primeira
-  // vez.
+  // Mesma ideia pro carrinho da loja — carrega cedo pra o badge de
+  // quantidade no ícone do carrinho já vir certo assim que a Home aparece,
+  // não só depois que o usuário abre a Goiás Store pela primeira vez.
   // ignore: unused_field
   final _cartCubit = sl<CartCubit>()..load();
-  // ignore: unused_field
-  final _favoritesCubit = sl<FavoritesCubit>()..load();
 
   @override
   Widget build(BuildContext context) {

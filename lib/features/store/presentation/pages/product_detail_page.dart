@@ -13,7 +13,6 @@ import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
-import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/product_detail_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/product_detail_state.dart';
 import 'package:goias_app/features/store/presentation/store_display_labels.dart';
@@ -261,24 +260,18 @@ class _GalleryState extends State<_Gallery> {
                   right: AppSpacing.sm,
                   top: AppSpacing.sm,
                   child: ExcludeSemantics(
-                    child: Column(
-                      children: [
-                        _GalleryIconButton(
-                          icon: Icons.ios_share_rounded,
-                          semanticLabel: l10n.storeShareProduct,
-                          onTap: () => unawaited(
-                            SharePlus.instance.share(
-                              ShareParams(
-                                text: widget.product.sourceUrl != null
-                                    ? '${widget.product.name} — Goiás Store\n${widget.product.sourceUrl}'
-                                    : '${widget.product.name} — Goiás Store',
-                              ),
-                            ),
+                    child: _GalleryIconButton(
+                      icon: Icons.ios_share_rounded,
+                      semanticLabel: l10n.storeShareProduct,
+                      onTap: () => unawaited(
+                        SharePlus.instance.share(
+                          ShareParams(
+                            text: widget.product.sourceUrl != null
+                                ? '${widget.product.name} — Goiás Store\n${widget.product.sourceUrl}'
+                                : '${widget.product.name} — Goiás Store',
                           ),
                         ),
-                        const SizedBox(height: AppSpacing.sm),
-                        _FavoriteToggle(productId: widget.product.id),
-                      ],
+                      ),
                     ),
                   ),
                 ),
@@ -340,44 +333,6 @@ class _GalleryIconButton extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: Icon(icon, size: 16, color: colors.textSecondary),
-        ),
-      ),
-    );
-  }
-}
-
-class _FavoriteToggle extends StatelessWidget {
-  const _FavoriteToggle({required this.productId});
-
-  final String productId;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final isFavorite = context.select(
-      (FavoritesCubit c) => c.state.contains(productId),
-    );
-    final colors = context.colors;
-    return Semantics(
-      button: true,
-      toggled: isFavorite,
-      label: isFavorite ? l10n.storeRemoveFavorite : l10n.storeAddFavorite,
-      child: InkWell(
-        onTap: () => context.read<FavoritesCubit>().toggle(productId),
-        borderRadius: BorderRadius.circular(999),
-        child: Container(
-          width: 34,
-          height: 34,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: colors.surface.withValues(alpha: 0.92),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-            size: 16,
-            color: isFavorite ? colors.primary : colors.textSecondary,
-          ),
         ),
       ),
     );

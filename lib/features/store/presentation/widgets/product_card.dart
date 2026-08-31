@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
-import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 
 class ProductCard extends StatelessWidget {
@@ -55,11 +53,6 @@ class ProductCard extends StatelessWidget {
                       left: AppSpacing.sm,
                       top: AppSpacing.sm,
                       child: _Badge(product: product),
-                    ),
-                    Positioned(
-                      right: AppSpacing.xs,
-                      top: AppSpacing.xs,
-                      child: _FavoriteButton(productId: product.id),
                     ),
                   ],
                 ),
@@ -125,45 +118,6 @@ class _Badge extends StatelessWidget {
       child: Text(
         label,
         style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: fg),
-      ),
-    );
-  }
-}
-
-class _FavoriteButton extends StatelessWidget {
-  const _FavoriteButton({required this.productId});
-
-  final String productId;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final isFavorite = context.select(
-      (FavoritesCubit cubit) => cubit.state.contains(productId),
-    );
-    return Semantics(
-      button: true,
-      toggled: isFavorite,
-      label: isFavorite
-          ? context.l10n.storeRemoveFavorite
-          : context.l10n.storeAddFavorite,
-      child: InkWell(
-        onTap: () => context.read<FavoritesCubit>().toggle(productId),
-        borderRadius: BorderRadius.circular(999),
-        child: Container(
-          width: 30,
-          height: 30,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: colors.surface.withValues(alpha: 0.92),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-            size: 16,
-            color: isFavorite ? colors.primary : colors.textSecondary,
-          ),
-        ),
       ),
     );
   }

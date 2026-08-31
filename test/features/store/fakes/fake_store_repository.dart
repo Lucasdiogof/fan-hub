@@ -84,7 +84,6 @@ class FakeStoreRepository implements StoreRepository {
 
   final List<StoreProduct> products;
   Cart cart = const Cart();
-  final Set<String> favoriteIds = {};
 
   static const freeShippingThreshold = 399.90;
   static const coupons = {'VERDAO10': 10.0, 'SOCIO15': 15.0};
@@ -146,18 +145,6 @@ class FakeStoreRepository implements StoreRepository {
   @override
   Future<Result<void>> saveCart(Cart value) async {
     cart = value;
-    return const Success(null);
-  }
-
-  @override
-  Future<Result<Set<String>>> loadFavoriteProductIds() async =>
-      Success(favoriteIds);
-
-  @override
-  Future<Result<void>> saveFavoriteProductIds(Set<String> ids) async {
-    favoriteIds
-      ..clear()
-      ..addAll(ids);
     return const Success(null);
   }
 }

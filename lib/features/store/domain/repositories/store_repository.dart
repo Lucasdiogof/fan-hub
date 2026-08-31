@@ -29,14 +29,11 @@ abstract interface class StoreRepository {
   /// caso esperado, só falhas reais (leitura/rede) viram `Error`.
   Future<Result<double?>> resolveCouponDiscountPercent(String code);
 
-  // Persistência local — carrinho e favoritos vivem no dispositivo (ver
-  // `StoreLocalStorage`), não no backend/mock de catálogo, mas passam pelo
+  // Persistência local — o carrinho vive no dispositivo (ver
+  // `StoreLocalStorage`), não no backend/mock de catálogo, mas passa pelo
   // repository pra widgets/cubits nunca falarem com `SharedPreferences`
   // direto. Endereços de entrega NÃO ficam aqui — ver
   // `DeliveryAddressRepository` (por conta, no Supabase).
   Future<Result<Cart>> loadCart();
   Future<Result<void>> saveCart(Cart cart);
-
-  Future<Result<Set<String>>> loadFavoriteProductIds();
-  Future<Result<void>> saveFavoriteProductIds(Set<String> ids);
 }

@@ -15,7 +15,6 @@ import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
-import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/widgets/session_expiry_listener.dart';
@@ -81,15 +80,14 @@ class _GoiasAppState extends State<GoiasApp> {
         BlocProvider.value(value: _authCubit),
         BlocProvider.value(value: _themeCubit),
         BlocProvider.value(value: _localeCubit),
-        // Singletons acessados via `context.read`/`context.select` de
-        // qualquer rota da Store (carrinho/favoritos) — sem isto, toda tela
-        // fora da IndexedStack da Home (empurrada via `context.push`, ex.
+        // Singleton acessado via `context.read`/`context.select` de
+        // qualquer rota da Store (carrinho) — sem isto, toda tela fora da
+        // IndexedStack da Home (empurrada via `context.push`, ex.
         // `/store/product/:id`) não encontra o Provider e quebra em tempo
         // de execução. `HomeShellPage` continua responsável por chamar
         // `.load()` cedo; aqui só disponibilizamos o mesmo singleton do
         // GetIt pra árvore inteira.
         BlocProvider.value(value: sl<CartCubit>()),
-        BlocProvider.value(value: sl<FavoritesCubit>()),
         BlocProvider.value(value: sl<MembershipStatusCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(

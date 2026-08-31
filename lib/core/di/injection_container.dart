@@ -73,7 +73,6 @@ import 'package:goias_app/features/store/domain/repositories/delivery_address_re
 import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/repositories/store_repository.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
-import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/store_catalog_cubit.dart';
 import 'package:goias_app/features/store/presentation/cubit/store_orders_cubit.dart';
 import 'package:goias_app/features/ticket/data/mock_ticket_repository.dart';
@@ -87,7 +86,7 @@ final GetIt sl = GetIt.instance;
 
 void setupDependencies() {
   sl.registerLazySingleton<TicketRepository>(
-    () => MockTicketRepository(Supabase.instance.client, sl(), sl()),
+    () => MockTicketRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<MembershipRepository>(
     () => SupabaseMembershipRepository(Supabase.instance.client),
@@ -139,7 +138,7 @@ void setupDependencies() {
   // expirada — precisa ser resolvido cedo no startup (ver `main.dart`) pra
   // o listener existir antes de qualquer logout acontecer.
   sl.registerLazySingleton<AccountSessionCacheGuard>(
-    () => AccountSessionCacheGuard(sl(), sl(), sl()),
+    () => AccountSessionCacheGuard(sl(), sl()),
   );
 
   sl.registerLazySingleton<ProfileRepository>(
@@ -242,7 +241,6 @@ void setupDependencies() {
   // Carrinho e favoritos precisam sobreviver a navegação (loja → detalhe →
   // checkout), mesma razão do `HomeShellCubit` — singletons, não factory.
   sl.registerLazySingleton<CartCubit>(() => CartCubit(sl()));
-  sl.registerLazySingleton<FavoritesCubit>(() => FavoritesCubit(sl()));
   sl.registerFactory<StoreCatalogCubit>(() => StoreCatalogCubit(sl()));
   sl.registerFactory<StoreOrdersCubit>(() => StoreOrdersCubit(sl()));
   // ProductDetailCubit/StoreListingCubit/CheckoutCubit precisam de

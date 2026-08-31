@@ -8,7 +8,6 @@ import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
-import 'package:goias_app/features/store/presentation/cubit/favorites_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/store/fakes/fake_store_repository.dart';
@@ -94,7 +93,6 @@ void main() {
   late AuthCubit authCubit;
   late FakeStoreRepository storeRepo;
   late CartCubit cartCubit;
-  late FavoritesCubit favoritesCubit;
 
   setUp(() async {
     SharedPreferences.setMockInitialValues({
@@ -105,10 +103,9 @@ void main() {
     authCubit = AuthCubit(authRepo);
     storeRepo = FakeStoreRepository();
     cartCubit = CartCubit(storeRepo);
-    favoritesCubit = FavoritesCubit(storeRepo);
 
-    // Simula a "Conta A" com dados reais no carrinho/favoritos antes do
-    // guard existir — mesma ordem que aconteceria de verdade (usuário usa o
+    // Simula a "Conta A" com dados reais no carrinho antes do guard
+    // existir — mesma ordem que aconteceria de verdade (usuário usa o
     // app, depois desloga).
     await cartCubit.addItem(
       const CartItem(
@@ -120,53 +117,47 @@ void main() {
         unitPrice: 299.90,
       ),
     );
-    await favoritesCubit.toggle('p1');
   });
 
   tearDown(() async {
     await authCubit.close();
     await cartCubit.close();
-    await favoritesCubit.close();
     await authRepo.dispose();
   });
 
   test('conta A tem dados antes do logout (sanity check do setUp)', () {
     expect(cartCubit.state.cart.items, isNotEmpty);
-    expect(favoritesCubit.state, contains('p1'));
   });
 
-  test('logout (signedOut) limpa carrinho, favoritos e cache local de jogos', () async {
-    AccountSessionCacheGuard(authCubit, cartCubit, favoritesCubit);
+  test('logout (signedOut) limpa carrinho e cache local de jogos', () async {
+    AccountSessionCacheGuard(authCubit, cartCubit);
 
     authRepo.emitSignedOut();
     await pumpEventQueue();
 
     expect(cartCubit.state.cart.items, isEmpty);
-    expect(favoritesCubit.state, isEmpty);
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.getKeys(), isEmpty);
   });
 
   test('sessão expirada (sessionExpired) limpa os mesmos dados que o logout', () async {
-    AccountSessionCacheGuard(authCubit, cartCubit, favoritesCubit);
+    AccountSessionCacheGuard(authCubit, cartCubit);
 
     authRepo.emitSessionExpired();
     await pumpEventQueue();
 
     expect(cartCubit.state.cart.items, isEmpty);
-    expect(favoritesCubit.state, isEmpty);
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.getKeys(), isEmpty);
   });
 
   test('login (signedIn) nunca limpa nada por engano', () async {
-    AccountSessionCacheGuard(authCubit, cartCubit, favoritesCubit);
+    AccountSessionCacheGuard(authCubit, cartCubit);
 
     authRepo.emitSignedIn('outra-conta');
     await pumpEventQueue();
 
     expect(cartCubit.state.cart.items, isNotEmpty);
-    expect(favoritesCubit.state, contains('p1'));
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.getKeys(), isNotEmpty);
   });
@@ -174,19 +165,17 @@ void main() {
   test(
     'troca de conta completa: logout da conta A não deixa nada pra conta B',
     () async {
-      AccountSessionCacheGuard(authCubit, cartCubit, favoritesCubit);
+      AccountSessionCacheGuard(authCubit, cartCubit);
 
       // Conta A desloga.
       authRepo.emitSignedOut();
       await pumpEventQueue();
 
-      // Conta B loga no mesmo aparelho e abre carrinho/favoritos/Arena.
+      // Conta B loga no mesmo aparelho e abre o carrinho/Arena.
       authRepo.emitSignedIn('conta-b');
       await cartCubit.load();
-      await favoritesCubit.load();
 
       expect(cartCubit.state.cart.items, isEmpty);
-      expect(favoritesCubit.state, isEmpty);
       final prefs = await SharedPreferences.getInstance();
       expect(prefs.getKeys(), isEmpty);
     },

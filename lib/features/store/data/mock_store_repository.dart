@@ -174,23 +174,4 @@ class MockStoreRepository implements StoreRepository {
       return Error(mapStoreError(error, stackTrace));
     }
   }
-
-  @override
-  Future<Result<Set<String>>> loadFavoriteProductIds() async {
-    try {
-      return Success(await _storage.loadFavoriteProductIds());
-    } catch (error, stackTrace) {
-      return Error(mapStoreError(error, stackTrace));
-    }
-  }
-
-  @override
-  Future<Result<void>> saveFavoriteProductIds(Set<String> ids) async {
-    try {
-      await _storage.saveFavoriteProductIds(ids);
-      return const Success(null);
-    } catch (error, stackTrace) {
-      return Error(mapStoreError(error, stackTrace));
-    }
-  }
 }
