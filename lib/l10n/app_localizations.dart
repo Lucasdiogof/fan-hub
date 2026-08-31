@@ -3394,6 +3394,12 @@ abstract class AppLocalizations {
   /// **'Expirado'**
   String get ticketStatusExpired;
 
+  /// No description provided for @ticketStatusRefunded.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reembolsado'**
+  String get ticketStatusRefunded;
+
   /// No description provided for @orderStatusConfirmed.
   ///
   /// In pt, this message translates to:
@@ -3778,6 +3784,84 @@ abstract class AppLocalizations {
   /// **'Não foi possível carregar seus dados. Tente novamente.'**
   String get ticketsLoadUserDataError;
 
+  /// No description provided for @ticketsRequestRefundButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Solicitar reembolso'**
+  String get ticketsRequestRefundButton;
+
+  /// No description provided for @ticketsRefundConfirmTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Solicitar reembolso'**
+  String get ticketsRefundConfirmTitle;
+
+  /// No description provided for @ticketsRefundConfirmMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tem certeza de que deseja solicitar o reembolso deste ingresso?\n\nApós a confirmação, este ingresso deixará de ser válido.'**
+  String get ticketsRefundConfirmMessage;
+
+  /// No description provided for @ticketsRefundConfirmButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirmar reembolso'**
+  String get ticketsRefundConfirmButton;
+
+  /// No description provided for @ticketsRefundCancelButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Voltar'**
+  String get ticketsRefundCancelButton;
+
+  /// No description provided for @ticketsRefundErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível reembolsar'**
+  String get ticketsRefundErrorTitle;
+
+  /// No description provided for @ticketsRefundErrorMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível concluir o reembolso deste ingresso. Tente novamente.'**
+  String get ticketsRefundErrorMessage;
+
+  /// No description provided for @ticketsViewDetailsButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver detalhes'**
+  String get ticketsViewDetailsButton;
+
+  /// No description provided for @ticketsRefundDetailsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingresso reembolsado'**
+  String get ticketsRefundDetailsTitle;
+
+  /// No description provided for @ticketsRefundDetailsStatusLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Status'**
+  String get ticketsRefundDetailsStatusLabel;
+
+  /// No description provided for @ticketsRefundDetailsMatchLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogo'**
+  String get ticketsRefundDetailsMatchLabel;
+
+  /// No description provided for @ticketsRefundDetailsTicketLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingresso'**
+  String get ticketsRefundDetailsTicketLabel;
+
+  /// No description provided for @ticketsRefundDetailsRequestedAtLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Data da solicitação'**
+  String get ticketsRefundDetailsRequestedAtLabel;
+
   /// No description provided for @ticketPdfFieldVenue.
   ///
   /// In pt, this message translates to:
@@ -3837,6 +3921,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.'**
   String get ticketPdfFooterNotice;
+
+  /// No description provided for @ticketPdfInvalidTicket.
+  ///
+  /// In pt, this message translates to:
+  /// **'INGRESSO\nINVÁLIDO'**
+  String get ticketPdfInvalidTicket;
 
   /// No description provided for @penaltyFinalResult.
   ///

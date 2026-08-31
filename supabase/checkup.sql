@@ -370,7 +370,7 @@ union all
 
 select '❌ tickets: status inválido', id::text || ' → ' || status
 from public.tickets
-where status not in ('active','cancelled','used','expired')
+where status not in ('active','cancelled','used','expired','refunded')
 
 union all
 
@@ -389,6 +389,21 @@ select '❌ tickets: check-in duplicado (user+match)', user_id::text || ' / ' ||
 from public.tickets
 where origin = 'membership_check_in'
 group by user_id, match_id having count(*) > 1
+
+union all
+
+select '❌ tickets: refunded sem refunded_at', id::text
+from public.tickets where status = 'refunded' and refunded_at is null
+
+union all
+
+select '❌ tickets: refunded_at preenchido mas status != refunded', id::text || ' → ' || status
+from public.tickets where refunded_at is not null and status != 'refunded'
+
+union all
+
+select '❌ tickets: reembolso em ingresso de check-in (só compra pode reembolsar)', id::text
+from public.tickets where status = 'refunded' and origin != 'purchase'
 
 union all
 

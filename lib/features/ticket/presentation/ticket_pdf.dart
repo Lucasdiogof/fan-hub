@@ -233,13 +233,26 @@ Future<Uint8List> buildTicketPdf(Ticket ticket, AppLocalizations l10n) async {
                         borderRadius: pw.BorderRadius.circular(10),
                       ),
                       child: pw.Center(
-                        child: pw.BarcodeWidget(
-                          barcode: pw.Barcode.qrCode(),
-                          data: 'GOIAS-EC-${ticket.id}',
-                          width: 80,
-                          height: 80,
-                          color: PdfColors.black,
-                        ),
+                        // Um QR Code só é gerado pra ingresso ATIVO — um
+                        // reembolsado/cancelado/usado/expirado nunca pode
+                        // ser escaneado como entrada válida.
+                        child: ticket.status == TicketStatus.active
+                            ? pw.BarcodeWidget(
+                                barcode: pw.Barcode.qrCode(),
+                                data: 'GOIAS-EC-${ticket.id}',
+                                width: 80,
+                                height: 80,
+                                color: PdfColors.black,
+                              )
+                            : pw.Text(
+                                l10n.ticketPdfInvalidTicket,
+                                textAlign: pw.TextAlign.center,
+                                style: const pw.TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: pw.FontWeight.bold,
+                                  color: _grey,
+                                ),
+                              ),
                       ),
                     ),
                   ],

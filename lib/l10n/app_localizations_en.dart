@@ -1906,6 +1906,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketStatusExpired => 'Expired';
 
   @override
+  String get ticketStatusRefunded => 'Refunded';
+
+  @override
   String get orderStatusConfirmed => 'Confirmed';
 
   @override
@@ -2120,6 +2123,47 @@ class AppLocalizationsEn extends AppLocalizations {
       'Couldn\'t load your data. Please try again.';
 
   @override
+  String get ticketsRequestRefundButton => 'Request refund';
+
+  @override
+  String get ticketsRefundConfirmTitle => 'Request refund';
+
+  @override
+  String get ticketsRefundConfirmMessage =>
+      'Are you sure you want to request a refund for this ticket?\n\nOnce confirmed, this ticket will no longer be valid.';
+
+  @override
+  String get ticketsRefundConfirmButton => 'Confirm refund';
+
+  @override
+  String get ticketsRefundCancelButton => 'Back';
+
+  @override
+  String get ticketsRefundErrorTitle => 'Couldn\'t process the refund';
+
+  @override
+  String get ticketsRefundErrorMessage =>
+      'We couldn\'t complete the refund for this ticket. Please try again.';
+
+  @override
+  String get ticketsViewDetailsButton => 'View details';
+
+  @override
+  String get ticketsRefundDetailsTitle => 'Refunded ticket';
+
+  @override
+  String get ticketsRefundDetailsStatusLabel => 'Status';
+
+  @override
+  String get ticketsRefundDetailsMatchLabel => 'Match';
+
+  @override
+  String get ticketsRefundDetailsTicketLabel => 'Ticket';
+
+  @override
+  String get ticketsRefundDetailsRequestedAtLabel => 'Requested on';
+
+  @override
   String get ticketPdfFieldVenue => 'Venue';
 
   @override
@@ -2149,6 +2193,9 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get ticketPdfFooterNotice =>
       'This ticket is personal and non-transferable. Photo ID is required for entry. Only Goiás or Brazilian national team jerseys are allowed.';
+
+  @override
+  String get ticketPdfInvalidTicket => 'INVALID\nTICKET';
 
   @override
   String get penaltyFinalResult => 'FINAL RESULT';

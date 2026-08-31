@@ -31,4 +31,27 @@ class MyTicketsCubit extends Cubit<MyTicketsState> {
         );
     }
   }
+
+  Future<void> requestRefund(String ticketId) async {
+    if (state.refunding) return;
+    emit(state.copyWith(refunding: true, refundErrorMessage: () => null));
+    final result = await _repository.requestRefund(ticketId);
+    switch (result) {
+      case Success():
+        // Recarrega a lista inteira em vez de só trocar o item local — o
+        // ingresso reembolsado precisa sair de "Próximos" e entrar em
+        // "Histórico", que são recalculados a partir de `tickets` (ver
+        // `MyTicketsState.upcoming`/`history`). `load()` não mexe em
+        // `refunding`, então ele só volta a `false` aqui no final.
+        await load();
+        emit(state.copyWith(refunding: false));
+      case Error(:final failure):
+        emit(
+          state.copyWith(
+            refunding: false,
+            refundErrorMessage: () => failure.message,
+          ),
+        );
+    }
+  }
 }

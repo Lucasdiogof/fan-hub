@@ -132,6 +132,10 @@ class _FakeTicketRepository implements TicketRepository {
   @override
   Future<Result<List<TicketOrder>>> getMyOrders() async =>
       throw UnimplementedError();
+
+  @override
+  Future<Result<Ticket>> requestRefund(String ticketId) async =>
+      throw UnimplementedError();
 }
 
 void main() {

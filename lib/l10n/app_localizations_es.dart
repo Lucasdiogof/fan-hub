@@ -49,7 +49,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get authSignInButton => 'ENTRAR';
 
   @override
-  String get authSigningIn => 'Entrando...';
+  String get authSigningIn => 'Iniciando sesión...';
 
   @override
   String get authNoAccountQuestion => '¿Aún no tienes una cuenta? ';
@@ -1915,6 +1915,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ticketStatusExpired => 'Expirado';
 
   @override
+  String get ticketStatusRefunded => 'Reembolsado';
+
+  @override
   String get orderStatusConfirmed => 'Confirmado';
 
   @override
@@ -2128,6 +2131,47 @@ class AppLocalizationsEs extends AppLocalizations {
       'No fue posible cargar tus datos. Inténtalo de nuevo.';
 
   @override
+  String get ticketsRequestRefundButton => 'Solicitar reembolso';
+
+  @override
+  String get ticketsRefundConfirmTitle => 'Solicitar reembolso';
+
+  @override
+  String get ticketsRefundConfirmMessage =>
+      '¿Seguro que deseas solicitar el reembolso de esta entrada?\n\nDespués de confirmar, esta entrada dejará de ser válida.';
+
+  @override
+  String get ticketsRefundConfirmButton => 'Confirmar reembolso';
+
+  @override
+  String get ticketsRefundCancelButton => 'Volver';
+
+  @override
+  String get ticketsRefundErrorTitle => 'No fue posible reembolsar';
+
+  @override
+  String get ticketsRefundErrorMessage =>
+      'No fue posible completar el reembolso de esta entrada. Inténtalo de nuevo.';
+
+  @override
+  String get ticketsViewDetailsButton => 'Ver detalles';
+
+  @override
+  String get ticketsRefundDetailsTitle => 'Entrada reembolsada';
+
+  @override
+  String get ticketsRefundDetailsStatusLabel => 'Estado';
+
+  @override
+  String get ticketsRefundDetailsMatchLabel => 'Partido';
+
+  @override
+  String get ticketsRefundDetailsTicketLabel => 'Entrada';
+
+  @override
+  String get ticketsRefundDetailsRequestedAtLabel => 'Fecha de la solicitud';
+
+  @override
   String get ticketPdfFieldVenue => 'Lugar';
 
   @override
@@ -2157,6 +2201,9 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get ticketPdfFooterNotice =>
       'Esta entrada es personal e intransferible. Es obligatoria la presentación de un documento con foto en el ingreso. Solo se permite camiseta del Goiás o de la Selección Brasileña.';
+
+  @override
+  String get ticketPdfInvalidTicket => 'ENTRADA\nINVÁLIDA';
 
   @override
   String get penaltyFinalResult => 'RESULTADO FINAL';

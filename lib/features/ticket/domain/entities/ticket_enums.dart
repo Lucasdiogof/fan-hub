@@ -13,6 +13,6 @@ enum CheckInStatus {
   closed,
 }
 
-enum TicketStatus { active, cancelled, used, expired }
+enum TicketStatus { active, cancelled, used, expired, refunded }
 
 enum TicketOrigin { purchase, membershipCheckIn }

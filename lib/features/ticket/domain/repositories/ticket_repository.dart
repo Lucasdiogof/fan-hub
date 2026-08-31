@@ -40,4 +40,10 @@ abstract class TicketRepository {
   Future<Result<List<Ticket>>> getMyTickets();
 
   Future<Result<List<TicketOrder>>> getMyOrders();
+
+  /// Reembolso simulado (sem gateway real) de um ingresso de COMPRA — nunca
+  /// de check-in de sócio (ver `undoCheckIn` pra esse caso). Rejeita se o
+  /// ingresso não existir, não pertencer ao usuário, não for de compra, ou
+  /// já não estiver `active` (idempotente contra pedido duplicado).
+  Future<Result<Ticket>> requestRefund(String ticketId);
 }

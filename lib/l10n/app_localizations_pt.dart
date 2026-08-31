@@ -1914,6 +1914,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketStatusExpired => 'Expirado';
 
   @override
+  String get ticketStatusRefunded => 'Reembolsado';
+
+  @override
   String get orderStatusConfirmed => 'Confirmado';
 
   @override
@@ -2128,6 +2131,47 @@ class AppLocalizationsPt extends AppLocalizations {
       'Não foi possível carregar seus dados. Tente novamente.';
 
   @override
+  String get ticketsRequestRefundButton => 'Solicitar reembolso';
+
+  @override
+  String get ticketsRefundConfirmTitle => 'Solicitar reembolso';
+
+  @override
+  String get ticketsRefundConfirmMessage =>
+      'Tem certeza de que deseja solicitar o reembolso deste ingresso?\n\nApós a confirmação, este ingresso deixará de ser válido.';
+
+  @override
+  String get ticketsRefundConfirmButton => 'Confirmar reembolso';
+
+  @override
+  String get ticketsRefundCancelButton => 'Voltar';
+
+  @override
+  String get ticketsRefundErrorTitle => 'Não foi possível reembolsar';
+
+  @override
+  String get ticketsRefundErrorMessage =>
+      'Não foi possível concluir o reembolso deste ingresso. Tente novamente.';
+
+  @override
+  String get ticketsViewDetailsButton => 'Ver detalhes';
+
+  @override
+  String get ticketsRefundDetailsTitle => 'Ingresso reembolsado';
+
+  @override
+  String get ticketsRefundDetailsStatusLabel => 'Status';
+
+  @override
+  String get ticketsRefundDetailsMatchLabel => 'Jogo';
+
+  @override
+  String get ticketsRefundDetailsTicketLabel => 'Ingresso';
+
+  @override
+  String get ticketsRefundDetailsRequestedAtLabel => 'Data da solicitação';
+
+  @override
   String get ticketPdfFieldVenue => 'Local';
 
   @override
@@ -2157,6 +2201,9 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get ticketPdfFooterNotice =>
       'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.';
+
+  @override
+  String get ticketPdfInvalidTicket => 'INGRESSO\nINVÁLIDO';
 
   @override
   String get penaltyFinalResult => 'RESULTADO FINAL';

@@ -27,6 +27,7 @@ class Ticket extends Equatable {
     this.categoryLabel,
     this.orderId,
     this.price,
+    this.refundedAt,
   });
 
   final String id;
@@ -49,6 +50,10 @@ class Ticket extends Equatable {
   final String? orderId;
   final double? price;
 
+  /// Preenchido só quando [status] é [TicketStatus.refunded] — "data da
+  /// solicitação" mostrada no detalhe do reembolso.
+  final DateTime? refundedAt;
+
   @override
   List<Object?> get props => [
     id,
@@ -70,5 +75,22 @@ class Ticket extends Equatable {
     categoryLabel,
     orderId,
     price,
+    refundedAt,
   ];
+}
+
+/// Regra central de elegibilidade pra "Solicitar reembolso" — a UI só
+/// consome isto, nunca decide de novo. Mock atual (sem pagamento real):
+/// ingresso de COMPRA, ainda ATIVO (cobre "não usado" e "não reembolsado"
+/// de uma vez, já que são estados mutuamente exclusivos de [TicketStatus])
+/// e a partida ainda não começou (mesma convenção de "kickoff null == ainda
+/// por vir" usada no resto do módulo, ver `computeSaleStatus`). Não existe
+/// hoje uma janela oficial tipo "até 24h antes" — se essa regra comercial
+/// nascer, entra aqui, num único lugar.
+bool canRequestRefund(Ticket ticket, {DateTime? now}) {
+  final effectiveNow = now ?? DateTime.now();
+  final kickoff = ticket.kickoff;
+  return ticket.origin == TicketOrigin.purchase &&
+      ticket.status == TicketStatus.active &&
+      (kickoff == null || effectiveNow.isBefore(kickoff));
 }

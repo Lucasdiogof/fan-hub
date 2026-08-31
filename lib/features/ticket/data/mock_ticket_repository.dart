@@ -4,7 +4,6 @@ import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
-import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:goias_app/features/ticket/data/mock_ticket_fixture.dart';
 import 'package:goias_app/features/ticket/data/ticket_error_mapper.dart';
 import 'package:goias_app/features/ticket/domain/entities/match_sales_info.dart';
@@ -25,15 +24,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// troca futura por uma implementação com API real de ingressos não deve
 /// exigir mudança nas telas, só nesta classe.
 class MockTicketRepository implements TicketRepository {
-  MockTicketRepository(
-    this._client,
-    this._footballRepository,
-    this._profileRepository,
-  );
+  MockTicketRepository(this._client, this._footballRepository);
 
   final SupabaseClient _client;
   final FootballRepository _footballRepository;
-  final ProfileRepository _profileRepository;
 
   String get _uid => _client.auth.currentUser!.id;
 
@@ -96,23 +90,15 @@ class MockTicketRepository implements TicketRepository {
         if (ticketRow != null) checkInTicket = _mapTicket(ticketRow);
       }
 
-      final profileResult = await _profileRepository.getProfile();
-      Ticket? myTicketForSelf;
-      if (profileResult case Success(:final data)) {
-        final cpf = data.cpf;
-        if (cpf != null && cpf.isNotEmpty) {
-          final ticketRow = await _client
-              .from('tickets')
-              .select()
-              .eq('user_id', _uid)
-              .eq('match_id', matchId)
-              .eq('origin', 'purchase')
-              .eq('status', 'active')
-              .eq('holder_document', cpf)
-              .maybeSingle();
-          if (ticketRow != null) myTicketForSelf = _mapTicket(ticketRow);
-        }
-      }
+      final purchasedRows = await _client
+          .from('tickets')
+          .select('id')
+          .eq('user_id', _uid)
+          .eq('match_id', matchId)
+          .eq('origin', 'purchase')
+          .eq('status', 'active')
+          .limit(1);
+      final hasTicketForMatch = (purchasedRows as List).isNotEmpty;
 
       return Success(
         TicketEvent(
@@ -122,7 +108,7 @@ class MockTicketRepository implements TicketRepository {
           checkInStatus: checkInStatus,
           confirmedSectorName: confirmedSectorName,
           checkInTicket: checkInTicket,
-          myTicketForSelf: myTicketForSelf,
+          hasTicketForMatch: hasTicketForMatch,
         ),
       );
     } catch (error, stackTrace) {
@@ -366,6 +352,38 @@ class MockTicketRepository implements TicketRepository {
     }
   }
 
+  @override
+  Future<Result<Ticket>> requestRefund(String ticketId) async {
+    try {
+      // O `eq('status', 'active')` faz a checagem de "já reembolsado" e a
+      // proteção contra pedido duplicado/concorrente na própria query — um
+      // segundo pedido (ou dois quase simultâneos) sempre acha 0 linhas
+      // pra atualizar na segunda vez, nunca reembolsa duas vezes. RLS
+      // (`update own tickets`, ver supabase/tickets.sql) já garante que só
+      // o dono (auth.uid() = user_id) consegue atualizar a linha, mesmo que
+      // o app mande um ticketId de outra conta.
+      final rows = await _client
+          .from('tickets')
+          .update({
+            'status': 'refunded',
+            'refunded_at': DateTime.now().toUtc().toIso8601String(),
+          })
+          .eq('id', ticketId)
+          .eq('user_id', _uid)
+          .eq('origin', 'purchase')
+          .eq('status', 'active')
+          .select();
+      if (rows.isEmpty) {
+        return const Error(
+          ServerFailure('Este ingresso não pode ser reembolsado.'),
+        );
+      }
+      return Success(_mapTicket(rows.first));
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
+    }
+  }
+
   /// O mock só conhece a partida que `FootballRepository` devolve como
   /// próxima do Goiás agora — não há "buscar partida por id" na API real
   /// disponível hoje. Se o [matchId] guardado não bater mais com o próximo
@@ -417,6 +435,9 @@ class MockTicketRepository implements TicketRepository {
     categoryLabel: row['category_label'] as String?,
     orderId: row['order_id'] as String?,
     price: (row['price'] as num?)?.toDouble(),
+    refundedAt: row['refunded_at'] == null
+        ? null
+        : DateTime.parse(row['refunded_at'] as String).toLocal(),
   );
 
   TicketOrder _mapOrder(Map<String, dynamic> row) {
@@ -456,6 +477,7 @@ class MockTicketRepository implements TicketRepository {
     'cancelled' => TicketStatus.cancelled,
     'used' => TicketStatus.used,
     'expired' => TicketStatus.expired,
+    'refunded' => TicketStatus.refunded,
     _ => TicketStatus.active,
   };
 

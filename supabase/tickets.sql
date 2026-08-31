@@ -93,10 +93,11 @@ create table if not exists public.tickets (
   category_label text,
   holder_name text not null,
   holder_document text not null,
-  status text not null default 'active' check (status in ('active', 'cancelled', 'used', 'expired')),
+  status text not null default 'active' check (status in ('active', 'cancelled', 'used', 'expired', 'refunded')),
   origin text not null check (origin in ('purchase', 'membership_check_in')),
   order_id uuid references public.ticket_orders (id) on delete set null,
   price numeric,
+  refunded_at timestamptz,
   created_at timestamptz not null default now()
 );
 

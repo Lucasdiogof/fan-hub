@@ -8,6 +8,7 @@ String ticketStatusLabel(AppLocalizations l10n, TicketStatus status) =>
       TicketStatus.used => l10n.ticketStatusUsed,
       TicketStatus.cancelled => l10n.ticketStatusCancelled,
       TicketStatus.expired => l10n.ticketStatusExpired,
+      TicketStatus.refunded => l10n.ticketStatusRefunded,
     };
 
 String ticketOrderStatusLabel(

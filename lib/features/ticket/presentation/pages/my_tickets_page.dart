@@ -71,6 +71,57 @@ class _MyTicketsViewState extends State<_MyTicketsView>
     if (context.mounted) await context.read<MyTicketsCubit>().load();
   }
 
+  Future<void> _requestRefund(BuildContext context, Ticket ticket) async {
+    final l10n = context.l10n;
+    final cubit = context.read<MyTicketsCubit>();
+    final confirmed = await AppBottomSheet.show(
+      context,
+      icon: Icons.assignment_return_outlined,
+      title: l10n.ticketsRefundConfirmTitle,
+      description: l10n.ticketsRefundConfirmMessage,
+      content: _MatchSummaryBlock(ticket: ticket),
+      confirmLabel: l10n.ticketsRefundConfirmButton,
+      cancelLabel: l10n.ticketsRefundCancelButton,
+      destructive: true,
+    );
+    if (confirmed != true || !context.mounted) return;
+    await GlobalLoading.run(context, () => cubit.requestRefund(ticket.id));
+  }
+
+  Future<void> _showRefundDetails(BuildContext context, Ticket ticket) {
+    final l10n = context.l10n;
+    final requestedAt = ticket.refundedAt;
+    return AppBottomSheet.show(
+      context,
+      icon: Icons.assignment_return_outlined,
+      title: l10n.ticketsRefundDetailsTitle,
+      confirmLabel: l10n.commonClose,
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _DetailRow(
+            label: l10n.ticketsRefundDetailsStatusLabel,
+            value: ticketStatusLabel(l10n, ticket.status),
+          ),
+          _DetailRow(
+            label: l10n.ticketsRefundDetailsMatchLabel,
+            value:
+                '${shortTeamName(ticket.homeTeam.name)} x ${shortTeamName(ticket.awayTeam.name)}',
+          ),
+          _DetailRow(
+            label: l10n.ticketsRefundDetailsTicketLabel,
+            value: '${ticket.sectorName} · ${ticket.gate}',
+          ),
+          if (requestedAt != null)
+            _DetailRow(
+              label: l10n.ticketsRefundDetailsRequestedAtLabel,
+              value: '${fullDateLabel(requestedAt)} · ${timeLabel(requestedAt)}',
+            ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -110,7 +161,20 @@ class _MyTicketsViewState extends State<_MyTicketsView>
                     ],
                   ),
                   Expanded(
-                    child: BlocBuilder<MyTicketsCubit, MyTicketsState>(
+                    child: BlocConsumer<MyTicketsCubit, MyTicketsState>(
+                      listenWhen: (previous, current) =>
+                          previous.refundErrorMessage == null &&
+                          current.refundErrorMessage != null,
+                      listener: (context, state) {
+                        final l10n = context.l10n;
+                        AppBottomSheet.show(
+                          context,
+                          icon: Icons.error_outline_rounded,
+                          title: l10n.ticketsRefundErrorTitle,
+                          description: l10n.ticketsRefundErrorMessage,
+                          confirmLabel: l10n.commonClose,
+                        );
+                      },
                       builder: (context, state) {
                         return switch (state.status) {
                           LoadStatus.initial || LoadStatus.loading => _centered(
@@ -138,11 +202,19 @@ class _MyTicketsViewState extends State<_MyTicketsView>
                                 tickets: state.upcoming,
                                 onUndoCheckIn: (ticket) =>
                                     _undoCheckIn(context, ticket),
+                                onRequestRefund: (ticket) =>
+                                    _requestRefund(context, ticket),
+                                onViewDetails: (ticket) =>
+                                    _showRefundDetails(context, ticket),
                               ),
                               _TicketList(
                                 tickets: state.history,
                                 onUndoCheckIn: (ticket) =>
                                     _undoCheckIn(context, ticket),
+                                onRequestRefund: (ticket) =>
+                                    _requestRefund(context, ticket),
+                                onViewDetails: (ticket) =>
+                                    _showRefundDetails(context, ticket),
                               ),
                             ],
                           ),
@@ -163,10 +235,17 @@ class _MyTicketsViewState extends State<_MyTicketsView>
 Widget _centered(Widget child) => viewportCentered(child);
 
 class _TicketList extends StatelessWidget {
-  const _TicketList({required this.tickets, required this.onUndoCheckIn});
+  const _TicketList({
+    required this.tickets,
+    required this.onUndoCheckIn,
+    required this.onRequestRefund,
+    required this.onViewDetails,
+  });
 
   final List<Ticket> tickets;
   final void Function(Ticket ticket) onUndoCheckIn;
+  final void Function(Ticket ticket) onRequestRefund;
+  final void Function(Ticket ticket) onViewDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -190,26 +269,38 @@ class _TicketList extends StatelessWidget {
       itemBuilder: (context, index) => _TicketCard(
         ticket: tickets[index],
         onUndoCheckIn: () => onUndoCheckIn(tickets[index]),
+        onRequestRefund: () => onRequestRefund(tickets[index]),
+        onViewDetails: () => onViewDetails(tickets[index]),
       ),
     );
   }
 }
 
 class _TicketCard extends StatelessWidget {
-  const _TicketCard({required this.ticket, required this.onUndoCheckIn});
+  const _TicketCard({
+    required this.ticket,
+    required this.onUndoCheckIn,
+    required this.onRequestRefund,
+    required this.onViewDetails,
+  });
 
   final Ticket ticket;
   final VoidCallback onUndoCheckIn;
+  final VoidCallback onRequestRefund;
+  final VoidCallback onViewDetails;
 
   bool get _canUndo =>
       ticket.origin == TicketOrigin.membershipCheckIn &&
       ticket.status == TicketStatus.active &&
       TicketFixture.infoFor(ticket.matchId).canCancelCheckIn;
 
+  bool get _isRefunded => ticket.status == TicketStatus.refunded;
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     final kickoff = ticket.kickoff;
+    final canRefund = canRequestRefund(ticket);
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
@@ -257,8 +348,14 @@ class _TicketCard extends StatelessWidget {
             children: [
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () => context.push('/tickets/view', extra: ticket),
-                  child: Text(context.l10n.ticketsViewTicketButton),
+                  onPressed: () => _isRefunded
+                      ? onViewDetails()
+                      : context.push('/tickets/view', extra: ticket),
+                  child: Text(
+                    _isRefunded
+                        ? context.l10n.ticketsViewDetailsButton
+                        : context.l10n.ticketsViewTicketButton,
+                  ),
                 ),
               ),
               if (_canUndo) ...[
@@ -271,6 +368,17 @@ class _TicketCard extends StatelessWidget {
               ],
             ],
           ),
+          if (canRefund) ...[
+            const SizedBox(height: AppSpacing.xs),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: onRequestRefund,
+                style: TextButton.styleFrom(foregroundColor: colors.textHint),
+                child: Text(context.l10n.ticketsRequestRefundButton),
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -322,6 +430,93 @@ class _MetaRow extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(fontSize: 13, color: colors.textSecondary),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Resumo compacto da partida — mostrado dentro da bottom sheet de
+/// confirmação de reembolso, mesmos dados já visíveis no card, só num
+/// formato mais enxuto (sem título/status/titular).
+class _MatchSummaryBlock extends StatelessWidget {
+  const _MatchSummaryBlock({required this.ticket});
+
+  final Ticket ticket;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final kickoff = ticket.kickoff;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      ),
+      child: Column(
+        children: [
+          Text(
+            '${shortTeamName(ticket.homeTeam.name)} x ${shortTeamName(ticket.awayTeam.name)}',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14.5,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
+          ),
+          const SizedBox(height: 2),
+          if (kickoff != null)
+            Text(
+              '${fullDateLabel(kickoff)} · ${timeLabel(kickoff)}',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
+            ),
+          Text(
+            '${ticket.sectorName} · ${ticket.gate}',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Linha label/valor — usada no detalhe do reembolso.
+class _DetailRow extends StatelessWidget {
+  const _DetailRow({required this.label, required this.value});
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppSpacing.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.4,
+              color: colors.textHint,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 14.5,
+              fontWeight: FontWeight.w600,
+              color: colors.textPrimary,
             ),
           ),
         ],
