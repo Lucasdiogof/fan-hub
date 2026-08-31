@@ -31,9 +31,11 @@ Future<Uint8List> _fetchPdfBytes(String url) async {
 
 /// Visualização real do PDF de um documento de transparência — mesmo
 /// padrão do ingresso (`TicketViewPage`): `PdfPreview` renderiza o PDF de
-/// verdade na tela, com um botão próprio de baixar/compartilhar embaixo em
-/// vez da barra de ações padrão do `printing`. A diferença é que aqui o
-/// PDF vem de uma URL remota (site oficial do clube), não gerado no app.
+/// verdade na tela, com um botão próprio de compartilhar embaixo em vez da
+/// barra de ações padrão do `printing` — o share nativo já deixa o usuário
+/// salvar no aparelho, sem precisar de um botão de "baixar" separado. A
+/// diferença é que aqui o PDF vem de uma URL remota (site oficial do
+/// clube), não gerado no app.
 class ClubTransparencyDocumentPage extends StatelessWidget {
   const ClubTransparencyDocumentPage({required this.document, super.key});
 
@@ -106,7 +108,7 @@ class ClubTransparencyDocumentPage extends StatelessWidget {
                       },
                       icon: const Icon(Icons.ios_share_rounded, size: 19),
                       label: Text(
-                        context.l10n.clubTransparencyDownloadButton,
+                        context.l10n.clubTransparencyShareButton,
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w800,
