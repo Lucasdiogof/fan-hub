@@ -50,6 +50,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authSignInButton => 'SIGN IN';
 
   @override
+  String get authSignInErrorTitle => 'Couldn\'t sign in';
+
+  @override
   String get authSigningIn => 'Signing in...';
 
   @override
@@ -940,6 +943,44 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get passportRankingEmptyMessage =>
       'Mark your matches in the Passport to show up here.';
+
+  @override
+  String get passportStatsTitle => 'My journey';
+
+  @override
+  String get passportStatsSubtitle =>
+      'Based on the matches you marked as \"I was there\", across all seasons.';
+
+  @override
+  String get passportStatsWins => 'Wins';
+
+  @override
+  String get passportStatsDraws => 'Draws';
+
+  @override
+  String get passportStatsLosses => 'Losses';
+
+  @override
+  String get passportStatsHomeGames => 'Home games';
+
+  @override
+  String get passportStatsAwayGames => 'Away games';
+
+  @override
+  String get passportStatsGoalsFor => 'Goals scored';
+
+  @override
+  String get passportStatsGoalsAgainst => 'Goals conceded';
+
+  @override
+  String get passportStatsGoalDifference => 'Goal difference';
+
+  @override
+  String get passportStatsEmptyTitle => 'Your journey starts here';
+
+  @override
+  String get passportStatsEmptyMessage =>
+      'Mark matches as \"I was there\" to see your stats.';
 
   @override
   String get passportCoverEyebrow => 'MY PASSPORT';
@@ -2071,7 +2112,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketsTotalLabel => 'Total';
 
   @override
-  String get ticketsHolderDataTitle => 'TICKET HOLDER DETAILS';
+  String ticketsHolderDataTitle(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'TICKET HOLDERS\' DETAILS',
+      one: 'TICKET HOLDER DETAILS',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ticketsHolderSlotLabel(int index, String sector, String category) {
+    return 'Ticket $index · $sector · $category';
+  }
 
   @override
   String get ticketsHolderIsSelfCheckbox => 'This ticket is for me';
@@ -2472,7 +2526,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get clubTransparencyDownloadButton => 'Download PDF';
+  String get clubTransparencyShareButton => 'Share PDF';
 
   @override
   String get clubSectionTimeline => 'Timeline';

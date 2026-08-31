@@ -49,6 +49,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get authSignInButton => 'ENTRAR';
 
   @override
+  String get authSignInErrorTitle => 'No fue posible iniciar sesión';
+
+  @override
   String get authSigningIn => 'Iniciando sesión...';
 
   @override
@@ -944,6 +947,44 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get passportRankingEmptyMessage =>
       'Marca tus partidos en el Pasaporte para aparecer aquí.';
+
+  @override
+  String get passportStatsTitle => 'Mi trayectoria';
+
+  @override
+  String get passportStatsSubtitle =>
+      'Basado en los partidos que marcaste como \"Yo estuve\", en todas las temporadas.';
+
+  @override
+  String get passportStatsWins => 'Victorias';
+
+  @override
+  String get passportStatsDraws => 'Empates';
+
+  @override
+  String get passportStatsLosses => 'Derrotas';
+
+  @override
+  String get passportStatsHomeGames => 'En casa';
+
+  @override
+  String get passportStatsAwayGames => 'Fuera de casa';
+
+  @override
+  String get passportStatsGoalsFor => 'Goles marcados';
+
+  @override
+  String get passportStatsGoalsAgainst => 'Goles recibidos';
+
+  @override
+  String get passportStatsGoalDifference => 'Diferencia de goles';
+
+  @override
+  String get passportStatsEmptyTitle => 'Tu trayectoria empieza aquí';
+
+  @override
+  String get passportStatsEmptyMessage =>
+      'Marca partidos como \"Yo estuve\" para ver tus estadísticas.';
 
   @override
   String get passportCoverEyebrow => 'MI PASAPORTE';
@@ -2079,7 +2120,20 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ticketsTotalLabel => 'Total';
 
   @override
-  String get ticketsHolderDataTitle => 'DATOS DEL TITULAR';
+  String ticketsHolderDataTitle(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'DATOS DE LOS TITULARES',
+      one: 'DATOS DEL TITULAR',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String ticketsHolderSlotLabel(int index, String sector, String category) {
+    return 'Entrada $index · $sector · $category';
+  }
 
   @override
   String get ticketsHolderIsSelfCheckbox => 'Esta entrada es para mí';
@@ -2481,7 +2535,7 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get clubTransparencyDownloadButton => 'Descargar PDF';
+  String get clubTransparencyShareButton => 'Compartir PDF';
 
   @override
   String get clubSectionTimeline => 'Cronología';

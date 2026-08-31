@@ -178,6 +178,12 @@ abstract class AppLocalizations {
   /// **'ENTRAR'**
   String get authSignInButton;
 
+  /// No description provided for @authSignInErrorTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível entrar'**
+  String get authSignInErrorTitle;
+
   /// No description provided for @authSigningIn.
   ///
   /// In pt, this message translates to:
@@ -1767,6 +1773,78 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Marque suas partidas no Passaporte pra aparecer aqui.'**
   String get passportRankingEmptyMessage;
+
+  /// No description provided for @passportStatsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Minha trajetória'**
+  String get passportStatsTitle;
+
+  /// No description provided for @passportStatsSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Baseado nas partidas que você marcou como \"Eu fui\", em todas as temporadas.'**
+  String get passportStatsSubtitle;
+
+  /// No description provided for @passportStatsWins.
+  ///
+  /// In pt, this message translates to:
+  /// **'Vitórias'**
+  String get passportStatsWins;
+
+  /// No description provided for @passportStatsDraws.
+  ///
+  /// In pt, this message translates to:
+  /// **'Empates'**
+  String get passportStatsDraws;
+
+  /// No description provided for @passportStatsLosses.
+  ///
+  /// In pt, this message translates to:
+  /// **'Derrotas'**
+  String get passportStatsLosses;
+
+  /// No description provided for @passportStatsHomeGames.
+  ///
+  /// In pt, this message translates to:
+  /// **'Em casa'**
+  String get passportStatsHomeGames;
+
+  /// No description provided for @passportStatsAwayGames.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fora de casa'**
+  String get passportStatsAwayGames;
+
+  /// No description provided for @passportStatsGoalsFor.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols marcados'**
+  String get passportStatsGoalsFor;
+
+  /// No description provided for @passportStatsGoalsAgainst.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols sofridos'**
+  String get passportStatsGoalsAgainst;
+
+  /// No description provided for @passportStatsGoalDifference.
+  ///
+  /// In pt, this message translates to:
+  /// **'Saldo'**
+  String get passportStatsGoalDifference;
+
+  /// No description provided for @passportStatsEmptyTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua trajetória começa aqui'**
+  String get passportStatsEmptyTitle;
+
+  /// No description provided for @passportStatsEmptyMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Marque partidas como \"Eu fui\" pra ver suas estatísticas.'**
+  String get passportStatsEmptyMessage;
 
   /// No description provided for @passportCoverEyebrow.
   ///
@@ -3691,8 +3769,14 @@ abstract class AppLocalizations {
   /// No description provided for @ticketsHolderDataTitle.
   ///
   /// In pt, this message translates to:
-  /// **'DADOS DO TITULAR'**
-  String get ticketsHolderDataTitle;
+  /// **'{count, plural, =1{DADOS DO TITULAR} other{DADOS DOS TITULARES}}'**
+  String ticketsHolderDataTitle(int count);
+
+  /// No description provided for @ticketsHolderSlotLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingresso {index} · {sector} · {category}'**
+  String ticketsHolderSlotLabel(int index, String sector, String category);
 
   /// No description provided for @ticketsHolderIsSelfCheckbox.
   ///
@@ -4396,11 +4480,11 @@ abstract class AppLocalizations {
   /// **'{count, plural, =1{1 documento} other{{count} documentos}}'**
   String clubTransparencyDocumentCount(num count);
 
-  /// No description provided for @clubTransparencyDownloadButton.
+  /// No description provided for @clubTransparencyShareButton.
   ///
   /// In pt, this message translates to:
-  /// **'Baixar PDF'**
-  String get clubTransparencyDownloadButton;
+  /// **'Compartilhar PDF'**
+  String get clubTransparencyShareButton;
 
   /// No description provided for @clubSectionTimeline.
   ///
