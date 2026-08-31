@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "62243013413",
+    "project_id": "goias-app-4ef7e",
+    "storage_bucket": "goias-app-4ef7e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62243013413:android:d0d057fb177999edbfd0cc",
+        "android_client_info": {
+          "package_name": "br.com.goiasec.goias_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWSFD-6W_E60DKAIrvCeJYFY1E_oUedIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

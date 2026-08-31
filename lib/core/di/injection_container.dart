@@ -59,6 +59,10 @@ import 'package:goias_app/features/news/data/datasources/news_remote_data_source
 import 'package:goias_app/features/news/data/repositories/news_repository_impl.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
 import 'package:goias_app/features/news/presentation/cubit/news_cubit.dart';
+import 'package:goias_app/features/notifications/data/supabase_notification_repository.dart';
+import 'package:goias_app/features/notifications/domain/repositories/notification_repository.dart';
+import 'package:goias_app/features/notifications/presentation/cubit/notification_preferences_cubit.dart';
+import 'package:goias_app/features/notifications/presentation/push_notification_service.dart';
 import 'package:goias_app/features/social/data/datasources/social_remote_data_source.dart';
 import 'package:goias_app/features/social/data/repositories/social_feed_repository_impl.dart';
 import 'package:goias_app/features/social/domain/repositories/social_feed_repository.dart';
@@ -144,6 +148,18 @@ void setupDependencies() {
 
   sl.registerLazySingleton<ProfileRepository>(
     () => SupabaseProfileRepository(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<NotificationRepository>(
+    () => SupabaseNotificationRepository(Supabase.instance.client),
+  );
+  sl.registerFactory<NotificationPreferencesCubit>(
+    () => NotificationPreferencesCubit(sl()),
+  );
+  // Precisa ser resolvido cedo no startup (ver `main.dart`), mesmo padrão
+  // de `AccountSessionCacheGuard` — liga o ciclo de vida do FCM ao
+  // login/logout desde o início, não só quando alguma tela pedir.
+  sl.registerLazySingleton<PushNotificationService>(
+    () => PushNotificationService(sl(), sl()),
   );
   sl.registerLazySingleton<HomeShellCubit>(HomeShellCubit.new);
   // O `ClubSongPlayerCubit` (Hino & Músicas) NÃO é singleton — é criado por

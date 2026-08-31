@@ -28,6 +28,10 @@
 		<true/>
 		<key>NSCameraUsageDescription</key>
 		<string>Usamos a câmera para você tirar uma foto de perfil na hora.</string>
+		<key>UIBackgroundModes</key>
+		<array>
+			<string>remote-notification</string>
+		</array>
 		<key>UIApplicationSceneManifest</key>
 		<dict>
 			<key>UIApplicationSupportsMultipleScenes</key>

@@ -83,13 +83,24 @@ class TicketFixture {
 
   static const sectors = [_cadeiras, _espacoFamilia, _toboganForca, _visitante];
 
-  static MatchTicketInfo infoFor(String matchId) => MatchTicketInfo(
-    matchId: matchId,
-    saleOpensAt: DateTime(2026, 8, 25, 9),
-    checkInOpensAt: DateTime(2026, 8, 25, 9),
-    canCancelCheckIn: true,
-    sectors: sectors,
-  );
+  /// `opensAt` é sempre `kickoff - 48h` — a mesma regra que o backend de
+  /// notificações usa pra disparar "check-in aberto"/"ingressos disponíveis"
+  /// (ver `supabase/functions/notifications-sync-and-check-access`). Nunca
+  /// mais uma data fixa independente: se um dia a regra de negócio mudar
+  /// (ex.: 72h), muda só aqui e no Edge Function, nunca dessincronizados.
+  /// `kickoff` desconhecido nunca bloqueia o usuário — trata como já aberto.
+  static MatchTicketInfo infoFor(String matchId, DateTime? kickoff) {
+    final opensAt = kickoff == null
+        ? DateTime.fromMillisecondsSinceEpoch(0)
+        : kickoff.subtract(const Duration(hours: 48));
+    return MatchTicketInfo(
+      matchId: matchId,
+      saleOpensAt: opensAt,
+      checkInOpensAt: opensAt,
+      canCancelCheckIn: true,
+      sectors: sectors,
+    );
+  }
 
   static MatchSalesInfo salesInfoFor(String matchId) => MatchSalesInfo(
     matchId: matchId,

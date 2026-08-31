@@ -45,7 +45,7 @@ class MockTicketRepository implements TicketRepository {
       if (match == null) return const Success(null);
 
       final matchId = match.id.toString();
-      final info = TicketFixture.infoFor(matchId);
+      final info = TicketFixture.infoFor(matchId, match.kickoff);
       final now = DateTime.now();
       final saleStatus = computeSaleStatus(
         info: info,
@@ -133,7 +133,10 @@ class MockTicketRepository implements TicketRepository {
       if (match == null) {
         return const Error(ServerFailure('Partida não encontrada.'));
       }
-      final sector = _findSector(TicketFixture.infoFor(matchId), sectorId);
+      final sector = _findSector(
+        TicketFixture.infoFor(matchId, match.kickoff),
+        sectorId,
+      );
       if (sector == null) {
         return const Error(ServerFailure('Setor não encontrado.'));
       }

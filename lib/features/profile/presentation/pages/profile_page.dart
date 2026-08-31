@@ -140,6 +140,11 @@ class _ProfileView extends StatelessWidget {
                               onTap: () => context.push('/profile/language'),
                             ),
                           ),
+                          _MenuRow(
+                            icon: Icons.notifications_outlined,
+                            label: context.l10n.profileNotifications,
+                            onTap: () => context.push('/profile/notifications'),
+                          ),
                         ],
                       ),
                       const SizedBox(height: AppSpacing.xl),

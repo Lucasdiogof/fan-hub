@@ -115,7 +115,8 @@ class _MyTicketsViewState extends State<_MyTicketsView>
           if (requestedAt != null)
             _DetailRow(
               label: l10n.ticketsRefundDetailsRequestedAtLabel,
-              value: '${fullDateLabel(requestedAt)} · ${timeLabel(requestedAt)}',
+              value:
+                  '${fullDateLabel(requestedAt)} · ${timeLabel(requestedAt)}',
             ),
         ],
       ),
@@ -292,7 +293,7 @@ class _TicketCard extends StatelessWidget {
   bool get _canUndo =>
       ticket.origin == TicketOrigin.membershipCheckIn &&
       ticket.status == TicketStatus.active &&
-      TicketFixture.infoFor(ticket.matchId).canCancelCheckIn;
+      TicketFixture.infoFor(ticket.matchId, null).canCancelCheckIn;
 
   bool get _isRefunded => ticket.status == TicketStatus.refunded;
 

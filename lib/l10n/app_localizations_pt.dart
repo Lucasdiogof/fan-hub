@@ -351,6 +351,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get profileAppearance => 'Aparência';
 
   @override
+  String get profileNotifications => 'Notificações';
+
+  @override
   String get profileMyJourney => 'MINHA JORNADA';
 
   @override
@@ -548,6 +551,33 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get deleteAccountDeleting => 'EXCLUINDO CONTA...';
+
+  @override
+  String get settingsNotificationsTitle => 'NOTIFICAÇÕES';
+
+  @override
+  String get notificationsMatchesTitle => 'Partidas do Goiás';
+
+  @override
+  String get notificationsMatchesDescription =>
+      'Gols e resultado final em tempo real.';
+
+  @override
+  String get notificationsTicketsTitle => 'Ingressos e check-in';
+
+  @override
+  String get notificationsTicketsDescription =>
+      'Avisos quando a venda ou o check-in abrirem.';
+
+  @override
+  String get notificationsOsBlockedMessage =>
+      'As notificações estão desativadas nas configurações do sistema — você não vai receber nada até reativar.';
+
+  @override
+  String get notificationsOpenSettings => 'Abrir configurações';
+
+  @override
+  String get notificationsForegroundCta => 'Ver';
 
   @override
   String get settingsThemeTitle => 'TEMA';

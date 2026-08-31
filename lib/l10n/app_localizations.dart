@@ -772,6 +772,12 @@ abstract class AppLocalizations {
   /// **'Aparência'**
   String get profileAppearance;
 
+  /// No description provided for @profileNotifications.
+  ///
+  /// In pt, this message translates to:
+  /// **'Notificações'**
+  String get profileNotifications;
+
   /// No description provided for @profileMyJourney.
   ///
   /// In pt, this message translates to:
@@ -1131,6 +1137,54 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'EXCLUINDO CONTA...'**
   String get deleteAccountDeleting;
+
+  /// No description provided for @settingsNotificationsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'NOTIFICAÇÕES'**
+  String get settingsNotificationsTitle;
+
+  /// No description provided for @notificationsMatchesTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Partidas do Goiás'**
+  String get notificationsMatchesTitle;
+
+  /// No description provided for @notificationsMatchesDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols e resultado final em tempo real.'**
+  String get notificationsMatchesDescription;
+
+  /// No description provided for @notificationsTicketsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingressos e check-in'**
+  String get notificationsTicketsTitle;
+
+  /// No description provided for @notificationsTicketsDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Avisos quando a venda ou o check-in abrirem.'**
+  String get notificationsTicketsDescription;
+
+  /// No description provided for @notificationsOsBlockedMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'As notificações estão desativadas nas configurações do sistema — você não vai receber nada até reativar.'**
+  String get notificationsOsBlockedMessage;
+
+  /// No description provided for @notificationsOpenSettings.
+  ///
+  /// In pt, this message translates to:
+  /// **'Abrir configurações'**
+  String get notificationsOpenSettings;
+
+  /// No description provided for @notificationsForegroundCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver'**
+  String get notificationsForegroundCta;
 
   /// No description provided for @settingsThemeTitle.
   ///

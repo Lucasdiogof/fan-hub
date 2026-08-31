@@ -352,6 +352,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileAppearance => 'Appearance';
 
   @override
+  String get profileNotifications => 'Notifications';
+
+  @override
   String get profileMyJourney => 'MY JOURNEY';
 
   @override
@@ -549,6 +552,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteAccountDeleting => 'DELETING ACCOUNT...';
+
+  @override
+  String get settingsNotificationsTitle => 'NOTIFICATIONS';
+
+  @override
+  String get notificationsMatchesTitle => 'Goiás matches';
+
+  @override
+  String get notificationsMatchesDescription =>
+      'Goals and final result in real time.';
+
+  @override
+  String get notificationsTicketsTitle => 'Tickets and check-in';
+
+  @override
+  String get notificationsTicketsDescription =>
+      'Alerts when sales or check-in open.';
+
+  @override
+  String get notificationsOsBlockedMessage =>
+      'Notifications are turned off in your system settings — you won\'t receive anything until you turn them back on.';
+
+  @override
+  String get notificationsOpenSettings => 'Open settings';
+
+  @override
+  String get notificationsForegroundCta => 'View';
 
   @override
   String get settingsThemeTitle => 'THEME';

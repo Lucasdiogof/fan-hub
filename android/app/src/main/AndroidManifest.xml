@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Android 13+ exige essa permissão em runtime pra notificação
+         aparecer — pedida no momento certo do fluxo, não na instalação
+         (ver `PushNotificationService.requestPermission`). -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
         android:label="goias_app"
         android:name="${applicationName}"
@@ -31,6 +35,13 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- Canal padrão pras notificações de partida — importância normal
+             de propósito (a Central de Notificações do Android não deixa
+             mudar depois de criado, então nunca "default_importance"
+             máxima aqui). -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="goias_matches" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

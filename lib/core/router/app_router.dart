@@ -56,6 +56,7 @@ import 'package:goias_app/features/news/domain/entities/news_article.dart';
 import 'package:goias_app/features/news/presentation/pages/news_article_page.dart';
 import 'package:goias_app/features/news/presentation/pages/news_list_page.dart';
 import 'package:goias_app/features/news/presentation/pages/pdf_viewer_page.dart';
+import 'package:goias_app/features/notifications/presentation/pages/notification_preferences_page.dart';
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_page.dart';
@@ -320,6 +321,11 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
             path: '/profile/language',
             pageBuilder: (context, state) =>
                 appPage(state, const LanguageSettingsPage()),
+          ),
+          GoRoute(
+            path: '/profile/notifications',
+            pageBuilder: (context, state) =>
+                appPage(state, const NotificationPreferencesPage()),
           ),
           GoRoute(
             path: '/coming-soon',

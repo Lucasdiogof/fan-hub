@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -14,6 +16,7 @@ import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
+import 'package:goias_app/features/notifications/presentation/push_notification_service.dart';
 import 'package:goias_app/features/store/presentation/cubit/cart_cubit.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
@@ -26,6 +29,16 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initializeBrazilTimeZone();
+  // Nunca derruba o app se a config nativa do Firebase (google-services.json/
+  // GoogleService-Info.plist) ainda não tiver sido adicionada — só fica sem
+  // push até isso existir (ver `PushNotificationService`, que também é
+  // defensivo pelo mesmo motivo).
+  try {
+    await Firebase.initializeApp();
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  } catch (error, stackTrace) {
+    debugPrint('Firebase.initializeApp falhou: $error\n$stackTrace');
+  }
   await Supabase.initialize(
     url: SupabaseConfig.url,
     publishableKey: SupabaseConfig.publishableKey,
@@ -71,6 +84,11 @@ class _GoiasAppState extends State<GoiasApp> {
   // ignore: unused_field
   final AccountSessionCacheGuard _accountSessionCacheGuard =
       sl<AccountSessionCacheGuard>();
+  // Mesma razão — liga o ciclo de vida do FCM ao login/logout desde o
+  // início (ver `PushNotificationService`).
+  // ignore: unused_field
+  final PushNotificationService _pushNotificationService =
+      sl<PushNotificationService>();
   late final GoRouter _router = createAppRouter(_authCubit, sl<SplashGate>());
 
   @override
