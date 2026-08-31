@@ -16,6 +16,7 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 class StoreOrdersPage extends StatelessWidget {
@@ -50,24 +51,18 @@ class _StoreOrdersView extends StatelessWidget {
                     AppSpacing.lg,
                     AppSpacing.md,
                     AppSpacing.lg,
-                    AppSpacing.sm,
+                    0,
                   ),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(width: AppSpacing.md),
-                      Text(
-                        l10n.storeOrdersTitle,
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 0.4,
-                          color: colors.textPrimary,
-                        ),
-                      ),
+                      const SizedBox(height: AppSpacing.lg),
+                      PageTitle(l10n.storeOrdersTitle),
                     ],
                   ),
                 ),
+                const SizedBox(height: AppSpacing.xxxl),
                 Expanded(
                   child: BlocBuilder<StoreOrdersCubit, StoreOrdersState>(
                     builder: (context, state) {

@@ -244,7 +244,7 @@ class _StoreBanner extends StatelessWidget {
             ? null
             : () => context.push('/store/product/${launch!.id}'),
         child: Image.asset(
-          'lib/assets/banner.png',
+          'lib/assets/goias_store.png',
           width: double.infinity,
           fit: BoxFit.fitWidth,
         ),
