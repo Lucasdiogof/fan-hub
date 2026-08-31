@@ -13,11 +13,14 @@ import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_stora
 import 'package:goias_app/features/arena/games/lineup/lineup_matches.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_guess_page.dart';
-import 'package:goias_app/features/arena/games/lineup/widgets/lineup_field_background.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_result_dialog.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_shirt_button.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/layout/lineup_layout_engine.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_field.dart';
+import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -161,42 +164,35 @@ class _LineupViewState extends State<_LineupView> {
                           horizontal: AppSpacing.md,
                         ),
                         child: Center(
-                          child: AspectRatio(
-                            aspectRatio: 0.66,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(
-                                AppRadius.card,
-                              ),
-                              child: Stack(
-                                children: [
-                                  const Positioned.fill(
-                                    child: LineupFieldBackground(),
-                                  ),
-                                  Positioned.fill(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: AppSpacing.sm,
-                                      ),
-                                      child: _FormationRows(
-                                        players: match.players,
-                                        game: state.game!,
-                                        onTapPlayer: (playerId) =>
-                                            _openPlayer(context, playerId),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          child: LineupField(
+                            formation: _formationFor(match.players),
+                            mode: LineupRenderMode.editable,
+                            slotBuilder: (slotIndex, slot, footprint) {
+                              final player = match.players[slotIndex];
+                              return LineupShirtButton(
+                                key: ValueKey(player.id),
+                                player: player,
+                                playerState:
+                                    state.game!.playerStates[player.id] ??
+                                    const LineupPlayerState(),
+                                shirtSize: footprint.jerseySize,
+                                onTap: () => _openPlayer(context, player.id),
+                              );
+                            },
                           ),
                         ),
                       ),
                     ),
                     if (!state.isComplete)
                       Padding(
+                        // `bottom` bem maior que o normal de propósito: só a
+                        // margem mínima do `SafeArea` (inset do home
+                        // indicator) não é suficiente no iOS — o gesto de
+                        // arrastar pra fechar o app ainda captura o toque
+                        // perto demais da borda, mesmo dentro da área seguro.
                         padding: const EdgeInsets.only(
                           top: 2,
-                          bottom: AppSpacing.xs,
+                          bottom: AppSpacing.xl,
                         ),
                         child: OutlinedButton.icon(
                           onPressed: () => _confirmGiveUp(context),
@@ -288,72 +284,45 @@ class _LineupViewState extends State<_LineupView> {
   }
 }
 
-/// Distribui os 11 titulares em linhas de slots iguais (goleiro, zaga,
-/// meio, ataque — uma `Row` por linha tática da formação), em vez de
-/// posicionar cada camisa livremente por `Align`. Cada jogador recebe um
-/// `Expanded` só seu: como a largura do slot nunca depende do conteúdo
-/// (nome comprido vira ellipsis, nunca invade o vizinho), duas camisas
-/// jamais se sobrepõem — mesmo na linha mais cheia de uma formação (até 5
-/// titulares lado a lado). Os titulares de uma mesma linha tática sempre
-/// compartilham o mesmo `y` (ver `FormationLayoutService`), por isso
-/// agrupar por `y` reconstrói a formação original com segurança, sem
-/// precisar de nenhum dado novo no dataset.
-class _FormationRows extends StatelessWidget {
-  const _FormationRows({
-    required this.players,
-    required this.game,
-    required this.onTapPlayer,
-  });
+/// Adapta os 11 titulares reais (com `x`/`y` curados por partida) pro
+/// mesmo `Formation`/`LineupLayoutEngine` que "Escale seu Time" usa — nunca
+/// reinventa o posicionamento aqui: tamanho de camisa fixo por breakpoint,
+/// anti-colisão entre linhas/dentro da linha, tudo herdado de lá. A `y` de
+/// cada jogador já agrupa quem está na mesma linha tática (curado no
+/// dataset, ver `LineupPlayer.y`); ordenar essas linhas por `y` ascendente
+/// e mapear pra `TacticalLine.values` na mesma ordem funciona porque o
+/// enum já é declarado ataque→goleiro, exatamente a mesma convenção de "y
+/// menor = mais perto do ataque" usada no dataset. `PlayerPosition.mc` é só
+/// um valor de preenchimento em `FormationSlot` — nunca lido de volta: o
+/// `slotBuilder` sempre resolve o jogador de verdade por `slotIndex`,
+/// mapeado 1:1 com [players] na mesma ordem.
+Formation _formationFor(List<LineupPlayer> players) {
+  final indicesByY = <double, List<int>>{};
+  for (var i = 0; i < players.length; i++) {
+    indicesByY.putIfAbsent(players[i].y, () => []).add(i);
+  }
+  final sortedYs = indicesByY.keys.toList()..sort();
 
-  final List<LineupPlayer> players;
-  final LineupGameState game;
-  final ValueChanged<String> onTapPlayer;
-
-  @override
-  Widget build(BuildContext context) {
-    final rowsByY = <double, List<LineupPlayer>>{};
-    for (final player in players) {
-      rowsByY.putIfAbsent(player.y, () => []).add(player);
+  final slots = List<FormationSlot?>.filled(players.length, null);
+  for (var lineIndex = 0; lineIndex < sortedYs.length; lineIndex++) {
+    final line =
+        TacticalLine.values[lineIndex.clamp(0, TacticalLine.values.length - 1)];
+    for (final playerIndex in indicesByY[sortedYs[lineIndex]]!) {
+      final player = players[playerIndex];
+      slots[playerIndex] = FormationSlot(
+        PlayerPosition.mc,
+        player.x,
+        player.y,
+        line,
+      );
     }
-    final sortedYs = rowsByY.keys.toList()..sort();
-    for (final y in sortedYs) {
-      rowsByY[y]!.sort((a, b) => a.x.compareTo(b.x));
-    }
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        for (final y in sortedYs)
-          Row(
-            children: [
-              for (final player in rowsByY[y]!)
-                Expanded(
-                  child: Center(
-                    child: LineupShirtButton(
-                      key: ValueKey(player.id),
-                      player: player,
-                      playerState:
-                          game.playerStates[player.id] ??
-                          const LineupPlayerState(),
-                      shirtSize: _shirtSizeFor(rowsByY[y]!.length),
-                      onTap: () => onTapPlayer(player.id),
-                    ),
-                  ),
-                ),
-            ],
-          ),
-      ],
-    );
   }
 
-  /// Linhas mais cheias precisam de camisas menores pra caber com folga —
-  /// reduz moderadamente em vez de deixar o texto/selo colidir.
-  double _shirtSizeFor(int playersInRow) => switch (playersInRow) {
-    <= 2 => 52,
-    3 => 48,
-    4 => 44,
-    _ => 40,
-  };
+  return Formation(
+    id: 'lineup-guess',
+    label: 'lineup-guess',
+    slots: [for (final slot in slots) slot!],
+  );
 }
 
 /// Navegação entre as partidas do banco — setas + "PARTIDA N DE M",
@@ -488,16 +457,6 @@ class _MatchHeader extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-            const SizedBox(height: 2),
-            Text(
-              match.phase,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: colors.textSecondary,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-              ),
             ),
             const SizedBox(height: 6),
             Text(
