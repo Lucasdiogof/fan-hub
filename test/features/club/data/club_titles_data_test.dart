@@ -6,7 +6,7 @@ void main() {
     test(
       'totalTitles sums every group and never counts historical campaigns',
       () {
-        expect(ClubTitlesData.totalTitles, 34);
+        expect(ClubTitlesData.totalTitles, 35);
       },
     );
 

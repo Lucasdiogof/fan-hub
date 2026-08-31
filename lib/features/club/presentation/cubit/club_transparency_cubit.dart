@@ -5,7 +5,8 @@ import 'package:goias_app/features/club/presentation/cubit/club_transparency_sta
 import 'package:goias_app/shared/state/load_status.dart';
 
 class ClubTransparencyCubit extends Cubit<ClubTransparencyState> {
-  ClubTransparencyCubit(this._repository) : super(const ClubTransparencyState());
+  ClubTransparencyCubit(this._repository)
+    : super(const ClubTransparencyState());
 
   final ClubTransparencyRepository _repository;
 

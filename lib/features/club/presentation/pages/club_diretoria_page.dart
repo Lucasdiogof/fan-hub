@@ -70,8 +70,7 @@ class _ClubDiretoriaView extends StatelessWidget {
                             context.read<ClubBoardCubit>().refresh(),
                         color: colors.primary,
                         child: switch (state.status) {
-                          LoadStatus.initial ||
-                          LoadStatus.loading => _centered(
+                          LoadStatus.initial || LoadStatus.loading => _centered(
                             const GoiasLoadingIndicator(),
                           ),
                           LoadStatus.error => _centered(
