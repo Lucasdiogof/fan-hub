@@ -181,10 +181,22 @@ export function roundNumberFromSubtitle(subtitle?: string): number | null {
 /** Cada aba do OneFootball é paginada e só devolve uma janela: `resultados`
  * traz as últimas rodadas encerradas e `jogos` as próximas. O botão "Mostrar
  * todos" do site chama a MESMA URL com `?loadmore=1`, que devolve o restante
- * (resultados: rodadas mais antigas; jogos: rodadas mais distantes). As duas
- * páginas são complementares, não cumulativas — então pra cobrir a temporada
- * inteira buscamos as duas de cada aba. `loadMore` verdadeiro pega a página
- * do resto. */
+ * (resultados: rodadas mais antigas; jogos: rodadas mais distantes, incluindo
+ * fases como "Repescagem"). As duas páginas são complementares, não
+ * cumulativas — então pra cobrir a temporada inteira buscamos as duas de
+ * cada aba. `loadMore` verdadeiro pega a página do resto.
+ *
+ * As duas páginas têm formatos DIFERENTES (confirmado contra a API real, não
+ * só suposição): a base vem dentro da árvore de `containers` de sempre
+ * (`containers[].../matchCardsListsAppender.lists`), mas `?loadmore=1`
+ * devolve um payload achatado, só `{ lists: [...] }` no nível raiz, sem
+ * `containers` nem `matchCardsListsAppender` nenhum. Sem tratar essa forma
+ * separadamente, `findNode` nunca encontrava nada ali e a página do resto
+ * sempre virava `[]` silenciosamente — não porque a API não tivesse dado (ela
+ * tem, confirmado: ~21 rodadas passadas e ~12 futuras/repescagem numa consulta
+ * real do Brasileirão Série B), mas porque o parser só sabia ler o formato da
+ * primeira página. Era essa a causa real de só aparecerem poucas rodadas perto
+ * da atual, não a suposição antiga de que a API só devolvia uma janela curta. */
 async function fetchCompetitionTab(
   competitionSlug: string,
   tab: 'jogos' | 'resultados',
@@ -192,6 +204,8 @@ async function fetchCompetitionTab(
 ): Promise<OneFootballMatchList[]> {
   const suffix = loadMore ? '?loadmore=1' : '';
   const containers = await getContainers(`competicao/${competitionSlug}/${tab}${suffix}`);
+  const flatLists = (containers as { lists?: unknown } | null)?.lists;
+  if (Array.isArray(flatLists)) return flatLists as OneFootballMatchList[];
   const appender = findNode<{ lists: OneFootballMatchList[] }>(containers, 'matchCardsListsAppender');
   return appender?.lists ?? [];
 }
