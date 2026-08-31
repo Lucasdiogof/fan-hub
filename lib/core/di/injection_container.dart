@@ -40,6 +40,7 @@ import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart
 import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
 import 'package:goias_app/features/match/data/repositories/football_repository_impl.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
+import 'package:goias_app/features/match/presentation/cubit/game_calendar_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/membership/data/ibge_location_data_source.dart';
 import 'package:goias_app/features/membership/data/membership_faq_data_source.dart';
@@ -54,7 +55,7 @@ import 'package:goias_app/features/passport/data/supabase_passport_repository.da
 import 'package:goias_app/features/passport/domain/repositories/passport_repository.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_cubit.dart';
-import 'package:goias_app/features/passport/presentation/cubit/passport_stats_cubit.dart';
+import 'package:goias_app/features/passport/presentation/cubit/passport_trajectory_cubit.dart';
 import 'package:goias_app/features/news/data/datasources/news_remote_data_source.dart';
 import 'package:goias_app/features/news/data/repositories/news_repository_impl.dart';
 import 'package:goias_app/features/news/domain/repositories/news_repository.dart';
@@ -238,8 +239,11 @@ void setupDependencies() {
   sl.registerFactory<ClubTransparencyCubit>(() => ClubTransparencyCubit(sl()));
   sl.registerFactory<PassportCubit>(() => PassportCubit(sl()));
   sl.registerFactory<PassportRankingCubit>(() => PassportRankingCubit(sl()));
-  sl.registerFactory<PassportStatsCubit>(() => PassportStatsCubit(sl()));
+  sl.registerFactory<PassportTrajectoryCubit>(
+    () => PassportTrajectoryCubit(sl()),
+  );
   sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
+  sl.registerFactory<GameCalendarCubit>(() => GameCalendarCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));
   sl.registerFactory<TicketsCubit>(() => TicketsCubit(sl(), sl()));

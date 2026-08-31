@@ -190,7 +190,31 @@ class AppLocalizationsEs extends AppLocalizations {
   String get matchTabMatches => 'PARTIDOS';
 
   @override
+  String get matchTabCalendar => 'CALENDARIO';
+
+  @override
   String get matchTabStandings => 'CLASIFICACIÓN';
+
+  @override
+  String get matchCalendarHome => 'CASA';
+
+  @override
+  String get matchCalendarAway => 'FUERA';
+
+  @override
+  String get matchCalendarFilterAll => 'Todos';
+
+  @override
+  String get matchCalendarFilterBrasileirao => 'Brasileirão';
+
+  @override
+  String get matchCalendarFilterCopaDoBrasil => 'Copa do Brasil';
+
+  @override
+  String get matchCalendarFilterGoiano => 'Goiano';
+
+  @override
+  String get matchCalendarFilterOutros => 'Otros';
 
   @override
   String get matchLoadError => 'No se pudieron cargar los partidos';
@@ -982,10 +1006,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get passportStatsTitle => 'Mi trayectoria';
 
   @override
-  String get passportStatsSubtitle =>
-      'Basado en los partidos que marcaste como \"Yo estuve\", en todas las temporadas.';
-
-  @override
   String get passportStatsWins => 'Victorias';
 
   @override
@@ -1015,6 +1035,43 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get passportStatsEmptyMessage =>
       'Marca partidos como \"Yo estuve\" para ver tus estadísticas.';
+
+  @override
+  String get passportTrajectoryGames => 'Partidos';
+
+  @override
+  String get passportTrajectoryStadiums => 'Estadios';
+
+  @override
+  String get passportTrajectorySeasons => 'Temporadas';
+
+  @override
+  String get passportTrajectoryMemorableMatch => 'Partido más memorable';
+
+  @override
+  String get passportTrajectoryMemorableEmpty =>
+      'Elige tu partido más memorable';
+
+  @override
+  String get passportTrajectoryPickMatch => 'Elige tu partido más memorable';
+
+  @override
+  String get passportTrajectoryMostVisitedStadium => 'Estadio más visitado';
+
+  @override
+  String get passportTrajectoryStadiumUnavailable =>
+      'Todavía no tenemos esta información';
+
+  @override
+  String passportTrajectoryGamesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count partidos',
+      one: '1 partido',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get passportCoverEyebrow => 'MI PASAPORTE';
@@ -2643,6 +2700,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get clubMainTitles => 'TÍTULOS PRINCIPALES';
+
+  @override
+  String get clubTitleMoments => 'MOMENTOS HISTÓRICOS';
 
   @override
   String get clubHistoricCampaigns => 'CAMPAÑAS HISTÓRICAS';

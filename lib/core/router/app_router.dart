@@ -61,7 +61,7 @@ import 'package:goias_app/features/partners/presentation/pages/partners_page.dar
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_ranking_page.dart';
-import 'package:goias_app/features/passport/presentation/v2/pages/passport_stats_page_v2.dart';
+import 'package:goias_app/features/passport/presentation/pages/passport_trajectory_page.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/pages/address_page.dart';
 import 'package:goias_app/features/profile/data/legal_documents_data.dart';
@@ -427,9 +427,9 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
                 appPage(state, const PassportRankingPage()),
           ),
           GoRoute(
-            path: '/arena/passport/stats',
+            path: '/arena/passport/trajectory',
             pageBuilder: (context, state) =>
-                appPage(state, const PassportStatsPageV2()),
+                appPage(state, const PassportTrajectoryPage()),
           ),
           GoRoute(
             path: '/partners',

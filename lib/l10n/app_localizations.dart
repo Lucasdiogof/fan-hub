@@ -454,11 +454,59 @@ abstract class AppLocalizations {
   /// **'PARTIDAS'**
   String get matchTabMatches;
 
+  /// No description provided for @matchTabCalendar.
+  ///
+  /// In pt, this message translates to:
+  /// **'CALENDÁRIO'**
+  String get matchTabCalendar;
+
   /// No description provided for @matchTabStandings.
   ///
   /// In pt, this message translates to:
   /// **'CLASSIFICAÇÃO'**
   String get matchTabStandings;
+
+  /// No description provided for @matchCalendarHome.
+  ///
+  /// In pt, this message translates to:
+  /// **'CASA'**
+  String get matchCalendarHome;
+
+  /// No description provided for @matchCalendarAway.
+  ///
+  /// In pt, this message translates to:
+  /// **'FORA'**
+  String get matchCalendarAway;
+
+  /// No description provided for @matchCalendarFilterAll.
+  ///
+  /// In pt, this message translates to:
+  /// **'Todos'**
+  String get matchCalendarFilterAll;
+
+  /// No description provided for @matchCalendarFilterBrasileirao.
+  ///
+  /// In pt, this message translates to:
+  /// **'Brasileirão'**
+  String get matchCalendarFilterBrasileirao;
+
+  /// No description provided for @matchCalendarFilterCopaDoBrasil.
+  ///
+  /// In pt, this message translates to:
+  /// **'Copa do Brasil'**
+  String get matchCalendarFilterCopaDoBrasil;
+
+  /// No description provided for @matchCalendarFilterGoiano.
+  ///
+  /// In pt, this message translates to:
+  /// **'Goiano'**
+  String get matchCalendarFilterGoiano;
+
+  /// No description provided for @matchCalendarFilterOutros.
+  ///
+  /// In pt, this message translates to:
+  /// **'Outros'**
+  String get matchCalendarFilterOutros;
 
   /// No description provided for @matchLoadError.
   ///
@@ -1834,12 +1882,6 @@ abstract class AppLocalizations {
   /// **'Minha trajetória'**
   String get passportStatsTitle;
 
-  /// No description provided for @passportStatsSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Baseado nas partidas que você marcou como \"Eu fui\", em todas as temporadas.'**
-  String get passportStatsSubtitle;
-
   /// No description provided for @passportStatsWins.
   ///
   /// In pt, this message translates to:
@@ -1899,6 +1941,60 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Marque partidas como \"Eu fui\" pra ver suas estatísticas.'**
   String get passportStatsEmptyMessage;
+
+  /// No description provided for @passportTrajectoryGames.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogos'**
+  String get passportTrajectoryGames;
+
+  /// No description provided for @passportTrajectoryStadiums.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estádios'**
+  String get passportTrajectoryStadiums;
+
+  /// No description provided for @passportTrajectorySeasons.
+  ///
+  /// In pt, this message translates to:
+  /// **'Temporadas'**
+  String get passportTrajectorySeasons;
+
+  /// No description provided for @passportTrajectoryMemorableMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'Jogo mais memorável'**
+  String get passportTrajectoryMemorableMatch;
+
+  /// No description provided for @passportTrajectoryMemorableEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha seu jogo mais memorável'**
+  String get passportTrajectoryMemorableEmpty;
+
+  /// No description provided for @passportTrajectoryPickMatch.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha seu jogo mais memorável'**
+  String get passportTrajectoryPickMatch;
+
+  /// No description provided for @passportTrajectoryMostVisitedStadium.
+  ///
+  /// In pt, this message translates to:
+  /// **'Estádio mais visitado'**
+  String get passportTrajectoryMostVisitedStadium;
+
+  /// No description provided for @passportTrajectoryStadiumUnavailable.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ainda não temos essa informação'**
+  String get passportTrajectoryStadiumUnavailable;
+
+  /// No description provided for @passportTrajectoryGamesCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 jogo} other{{count} jogos}}'**
+  String passportTrajectoryGamesCount(int count);
 
   /// No description provided for @passportCoverEyebrow.
   ///
@@ -4670,6 +4766,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'TÍTULOS PRINCIPAIS'**
   String get clubMainTitles;
+
+  /// No description provided for @clubTitleMoments.
+  ///
+  /// In pt, this message translates to:
+  /// **'MOMENTOS HISTÓRICOS'**
+  String get clubTitleMoments;
 
   /// No description provided for @clubHistoricCampaigns.
   ///

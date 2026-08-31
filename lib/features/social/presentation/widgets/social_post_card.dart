@@ -38,7 +38,7 @@ class _YouTubeCard extends StatelessWidget {
         children: [
           _PlatformHeader(
             icon: Icons.play_circle_filled,
-            iconColor: const Color(0xFFFF0000),
+            iconColor: colors.primary,
             attribution: post.authorName,
             publishedAt: post.publishedAt,
           ),
@@ -128,7 +128,7 @@ class _InstagramCard extends StatelessWidget {
         children: [
           _PlatformHeader(
             icon: Icons.camera_alt_rounded,
-            iconColor: const Color(0xFFE1306C),
+            iconColor: colors.primary,
             attribution: '@${post.authorHandle}',
             publishedAt: post.publishedAt,
           ),
@@ -203,7 +203,7 @@ class _XCard extends StatelessWidget {
         children: [
           _PlatformHeader(
             icon: Icons.tag,
-            iconColor: colors.textSecondary,
+            iconColor: colors.primary,
             attribution: '@${post.authorHandle}',
             publishedAt: post.publishedAt,
           ),

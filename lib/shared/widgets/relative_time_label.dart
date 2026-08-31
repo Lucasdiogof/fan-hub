@@ -19,7 +19,13 @@ class RelativeTimeLabel extends StatelessWidget {
 
   static String _relativeTime(BuildContext context, DateTime dt) {
     final l10n = context.l10n;
-    final diff = DateTime.now().difference(dt);
+    var diff = DateTime.now().difference(dt);
+    // Nunca deixa isso virar negativo (relógio do aparelho atrasado/
+    // desconfigurado, ou o post chegando com timestamp levemente à frente
+    // por clock skew do provedor) — sem isso, `inMinutes < 1` também é
+    // verdadeiro pra qualquer diferença negativa, então TODO post cai em
+    // "agora" independente da idade real.
+    if (diff.isNegative) diff = Duration.zero;
     if (diff.inMinutes < 1) return l10n.relTimeNow;
     if (diff.inMinutes < 60) return l10n.relTimeMinutes(diff.inMinutes);
     if (diff.inHours < 24) return l10n.relTimeHours(diff.inHours);

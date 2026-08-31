@@ -62,7 +62,7 @@ class _StoreOrdersView extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: AppSpacing.xxxl),
+                const SizedBox(height: AppSpacing.lg),
                 Expanded(
                   child: BlocBuilder<StoreOrdersCubit, StoreOrdersState>(
                     builder: (context, state) {
