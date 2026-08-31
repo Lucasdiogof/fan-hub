@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/purchase_state.dart';
 
 /// Carrinho de compra de uma partida — vive por toda a jornada (seleção de
-/// setor/categoria → resumo → titular → finalizar), um Cubit só, não um por
-/// tela, já que o estado (quantidades, titular) precisa sobreviver entre
+/// setor/categoria → resumo → titulares → finalizar), um Cubit só, não um por
+/// tela, já que o estado (quantidades, titulares) precisa sobreviver entre
 /// elas.
 class PurchaseCubit extends Cubit<PurchaseState> {
   PurchaseCubit(this._repository, TicketEvent event)
@@ -25,24 +25,49 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     emit(state.copyWith(quantities: next));
   }
 
+  /// Garante um `TicketHolder` por ingresso físico (`totalQuantity`) —
+  /// chamado ao entrar na tela de titulares. Preserva o que já foi
+  /// preenchido em slots existentes; novos slots nascem vazios, exceto o
+  /// primeiro, que a própria tela pré-marca como "é pra mim" (caso mais
+  /// comum: comprar pelo menos 1 ingresso pro próprio usuário).
+  void ensureHolderSlots() {
+    final target = state.totalQuantity;
+    if (state.holders.length == target) return;
+    final holders = List<TicketHolder>.generate(
+      target,
+      (i) => i < state.holders.length
+          ? state.holders[i]
+          : const TicketHolder(name: '', document: ''),
+    );
+    emit(state.copyWith(holders: holders));
+  }
+
   void setHolderIsSelf(
-    bool value, {
+    int index, {
+    required bool value,
     String? profileName,
     String? profileDocument,
   }) {
-    emit(
-      state.copyWith(
-        holderIsSelf: value,
-        holderName: value ? (profileName ?? '') : '',
-        holderDocument: value ? (profileDocument ?? '') : '',
-      ),
+    final holders = List<TicketHolder>.of(state.holders);
+    holders[index] = TicketHolder(
+      name: value ? (profileName ?? '') : '',
+      document: value ? (profileDocument ?? '') : '',
+      isSelf: value,
     );
+    emit(state.copyWith(holders: holders));
   }
 
-  void setHolderName(String value) => emit(state.copyWith(holderName: value));
+  void setHolderName(int index, String value) {
+    final holders = List<TicketHolder>.of(state.holders);
+    holders[index] = holders[index].copyWith(name: value);
+    emit(state.copyWith(holders: holders));
+  }
 
-  void setHolderDocument(String value) =>
-      emit(state.copyWith(holderDocument: value));
+  void setHolderDocument(int index, String value) {
+    final holders = List<TicketHolder>.of(state.holders);
+    holders[index] = holders[index].copyWith(document: value);
+    emit(state.copyWith(holders: holders));
+  }
 
   Future<void> finalizePurchase() async {
     if (state.saving || !state.canFinalize) return;
@@ -50,24 +75,18 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     final result = await _repository.purchase(
       matchId: state.event.match.id.toString(),
       items: state.items,
-      holderName: state.holderName.trim(),
-      holderDocument: state.holderDocument.trim(),
+      holders: [
+        for (final holder in state.holders)
+          TicketHolder(
+            name: holder.name.trim(),
+            document: holder.document.trim(),
+            isSelf: holder.isSelf,
+          ),
+      ],
     );
     switch (result) {
       case Success(:final data):
-        final ticketsResult = await _repository.getMyTickets();
-        final purchasedTickets = switch (ticketsResult) {
-          Success(data: final allTickets) =>
-            allTickets.where((ticket) => ticket.orderId == data.id).toList(),
-          Error() => const <Ticket>[],
-        };
-        emit(
-          state.copyWith(
-            saving: false,
-            order: data,
-            purchasedTickets: purchasedTickets,
-          ),
-        );
+        emit(state.copyWith(saving: false, order: data));
       case Error(:final failure):
         emit(state.copyWith(saving: false, errorMessage: failure.message));
     }

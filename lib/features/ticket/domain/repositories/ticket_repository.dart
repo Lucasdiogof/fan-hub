@@ -30,11 +30,13 @@ abstract class TicketRepository {
   /// repositório/dado, não é decidida na UI.
   Future<Result<void>> undoCheckIn(String matchId);
 
+  /// [holders] tem exatamente um titular por ingresso físico (soma das
+  /// quantidades de [items], nessa mesma ordem "achatada") — nunca um
+  /// titular só cobrindo vários ingressos.
   Future<Result<TicketOrder>> purchase({
     required String matchId,
     required List<TicketOrderItem> items,
-    required String holderName,
-    required String holderDocument,
+    required List<TicketHolder> holders,
   });
 
   Future<Result<List<Ticket>>> getMyTickets();

@@ -12,6 +12,32 @@ extension TicketOrderStatusLabel on TicketOrderStatus {
   };
 }
 
+/// Titular de UM ingresso físico — cada unidade comprada (mesmo dentro do
+/// mesmo item/quantidade) tem o seu próprio, nunca um titular só cobrindo
+/// vários ingressos de uma vez (ver regra #23 do módulo: ingresso é
+/// nominal e intransferível, então "comprar 2" precisa de 2 titulares).
+class TicketHolder extends Equatable {
+  const TicketHolder({
+    required this.name,
+    required this.document,
+    this.isSelf = false,
+  });
+
+  final String name;
+  final String document;
+  final bool isSelf;
+
+  TicketHolder copyWith({String? name, String? document, bool? isSelf}) =>
+      TicketHolder(
+        name: name ?? this.name,
+        document: document ?? this.document,
+        isSelf: isSelf ?? this.isSelf,
+      );
+
+  @override
+  List<Object?> get props => [name, document, isSelf];
+}
+
 /// Uma linha do pedido — um setor+categoria+quantidade. Um pedido pode ter
 /// mais de um item (ex.: 2 Inteiras + 1 Meia no mesmo setor, ou setores
 /// diferentes), cada um vira um `Ticket` próprio na confirmação da compra.

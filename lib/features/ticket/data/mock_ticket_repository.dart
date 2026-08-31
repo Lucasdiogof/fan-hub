@@ -235,8 +235,7 @@ class MockTicketRepository implements TicketRepository {
   Future<Result<TicketOrder>> purchase({
     required String matchId,
     required List<TicketOrderItem> items,
-    required String holderName,
-    required String holderDocument,
+    required List<TicketHolder> holders,
   }) async {
     try {
       final match = await _requireMatch(matchId);
@@ -245,6 +244,10 @@ class MockTicketRepository implements TicketRepository {
       }
       final total = items.fold<double>(0, (sum, item) => sum + item.subtotal);
       final number = _generateOrderNumber();
+      // O pedido guarda o titular do primeiro ingresso como referência —
+      // quem de fato usa cada ingresso é o `holder_name`/`holder_document`
+      // da própria linha em `tickets`, não este aqui.
+      final primaryHolder = holders.first;
 
       final orderRow = await _client
           .from('ticket_orders')
@@ -261,8 +264,8 @@ class MockTicketRepository implements TicketRepository {
             'kickoff': match.kickoff?.toUtc().toIso8601String(),
             'stadium': match.stadium,
             'items': items.map((item) => item.toJson()).toList(),
-            'holder_name': holderName,
-            'holder_document': holderDocument,
+            'holder_name': primaryHolder.name,
+            'holder_document': primaryHolder.document,
             'total': total,
             'status': 'confirmed',
           })
@@ -270,33 +273,37 @@ class MockTicketRepository implements TicketRepository {
           .single();
 
       final orderId = orderRow['id'] as String;
-      final ticketRows = <Map<String, dynamic>>[
-        for (final item in items)
-          for (var i = 0; i < item.quantity; i++)
-            {
-              'user_id': _uid,
-              'match_id': matchId,
-              'competition': match.competition,
-              'round': match.round,
-              'home_team_id': match.homeTeam.id,
-              'home_team_name': match.homeTeam.name,
-              'away_team_id': match.awayTeam.id,
-              'away_team_name': match.awayTeam.name,
-              'kickoff': match.kickoff?.toUtc().toIso8601String(),
-              'stadium': match.stadium,
-              'sector_id': item.sectorId,
-              'sector_name': item.sectorName,
-              'venue_label': item.venueLabel,
-              'gate': item.gate,
-              'category_label': item.categoryLabel,
-              'holder_name': holderName,
-              'holder_document': holderDocument,
-              'status': 'active',
-              'origin': 'purchase',
-              'order_id': orderId,
-              'price': item.unitPrice,
-            },
-      ];
+      final ticketRows = <Map<String, dynamic>>[];
+      var holderIndex = 0;
+      for (final item in items) {
+        for (var i = 0; i < item.quantity; i++) {
+          final holder = holders[holderIndex];
+          holderIndex++;
+          ticketRows.add({
+            'user_id': _uid,
+            'match_id': matchId,
+            'competition': match.competition,
+            'round': match.round,
+            'home_team_id': match.homeTeam.id,
+            'home_team_name': match.homeTeam.name,
+            'away_team_id': match.awayTeam.id,
+            'away_team_name': match.awayTeam.name,
+            'kickoff': match.kickoff?.toUtc().toIso8601String(),
+            'stadium': match.stadium,
+            'sector_id': item.sectorId,
+            'sector_name': item.sectorName,
+            'venue_label': item.venueLabel,
+            'gate': item.gate,
+            'category_label': item.categoryLabel,
+            'holder_name': holder.name,
+            'holder_document': holder.document,
+            'status': 'active',
+            'origin': 'purchase',
+            'order_id': orderId,
+            'price': item.unitPrice,
+          });
+        }
+      }
       if (ticketRows.isNotEmpty) {
         await _client.from('tickets').insert(ticketRows);
       }
@@ -313,8 +320,8 @@ class MockTicketRepository implements TicketRepository {
           kickoff: match.kickoff,
           stadium: match.stadium,
           items: items,
-          holderName: holderName,
-          holderDocument: holderDocument,
+          holderName: primaryHolder.name,
+          holderDocument: primaryHolder.document,
           status: TicketOrderStatus.confirmed,
           createdAt: DateTime.parse(orderRow['created_at'] as String).toLocal(),
         ),

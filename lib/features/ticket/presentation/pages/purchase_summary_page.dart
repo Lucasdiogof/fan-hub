@@ -5,6 +5,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/purchase_cubit.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/purchase_state.dart';
 import 'package:goias_app/shared/utils/currency.dart';
@@ -39,49 +40,60 @@ class PurchaseSummaryPage extends StatelessWidget {
   }
 }
 
-class _PurchaseSummaryView extends StatefulWidget {
-  const _PurchaseSummaryView({required this.profile});
-
-  final Profile profile;
-
-  @override
-  State<_PurchaseSummaryView> createState() => _PurchaseSummaryViewState();
-}
-
 class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
-  final _nameController = TextEditingController();
-  final _documentController = TextEditingController();
-  final _nameTouch = FieldTouch();
-  final _documentTouch = FieldTouch();
+  late final List<TextEditingController> _nameControllers;
+  late final List<TextEditingController> _documentControllers;
+  late final List<FieldTouch> _nameTouches;
+  late final List<FieldTouch> _documentTouches;
 
   @override
   void initState() {
     super.initState();
     final cubit = context.read<PurchaseCubit>();
-    if (cubit.state.holderIsSelf && cubit.state.holderName.isEmpty) {
+    cubit.ensureHolderSlots();
+    // Primeiro ingresso nasce pré-marcado "é pra mim" — caso mais comum é
+    // comprar pelo menos 1 ingresso pro próprio usuário. Os demais ficam
+    // em branco, aguardando os dados de quem realmente vai usá-los.
+    final holders = cubit.state.holders;
+    if (holders.isNotEmpty && holders.first.name.isEmpty && !holders.first.isSelf) {
       cubit.setHolderIsSelf(
-        true,
+        0,
+        value: true,
         profileName: widget.profile.displayName,
         profileDocument: widget.profile.cpf,
       );
     }
-    _nameController.text = cubit.state.holderName;
-    _documentController.text = cubit.state.holderDocument;
+    final current = cubit.state.holders;
+    _nameControllers = [
+      for (final holder in current) TextEditingController(text: holder.name),
+    ];
+    _documentControllers = [
+      for (final holder in current) TextEditingController(text: holder.document),
+    ];
+    _nameTouches = [for (final _ in current) FieldTouch()];
+    _documentTouches = [for (final _ in current) FieldTouch()];
   }
 
   @override
   void dispose() {
-    _nameController.dispose();
-    _documentController.dispose();
+    for (final controller in _nameControllers) {
+      controller.dispose();
+    }
+    for (final controller in _documentControllers) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
   void _syncControllers(PurchaseState state) {
-    if (_nameController.text != state.holderName) {
-      _nameController.text = state.holderName;
-    }
-    if (_documentController.text != state.holderDocument) {
-      _documentController.text = state.holderDocument;
+    for (var i = 0; i < state.holders.length && i < _nameControllers.length; i++) {
+      final holder = state.holders[i];
+      if (_nameControllers[i].text != holder.name) {
+        _nameControllers[i].text = holder.name;
+      }
+      if (_documentControllers[i].text != holder.document) {
+        _documentControllers[i].text = holder.document;
+      }
     }
   }
 
@@ -89,23 +101,15 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
     final cubit = context.read<PurchaseCubit>();
     final order = cubit.state.order;
     if (order == null) return;
-    final tickets = cubit.state.purchasedTickets;
-    final firstTicket = tickets.isEmpty ? null : tickets.first;
     final l10n = context.l10n;
     await AppBottomSheet.show(
       context,
       icon: Icons.celebration_outlined,
       title: l10n.ticketsPurchaseSuccessTitle,
       description: l10n.ticketsPurchaseSuccessMessage,
-      confirmLabel: l10n.ticketsViewTicketButton,
+      confirmLabel: l10n.ticketsMyTickets,
       cancelLabel: l10n.ticketsCloseButton,
-      onConfirm: () {
-        if (firstTicket != null) {
-          context.push('/tickets/view', extra: firstTicket);
-        } else {
-          context.push('/tickets/my');
-        }
-      },
+      onConfirm: () => context.push('/tickets/my'),
     );
     if (context.mounted) {
       context
@@ -124,6 +128,7 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
       builder: (context, state) {
         _syncControllers(state);
         final match = state.event.match;
+        final units = state.ticketUnits;
         return Scaffold(
           backgroundColor: colors.background,
           body: SafeArea(
@@ -263,7 +268,9 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
                           ),
                           const SizedBox(height: AppSpacing.xl),
                           Text(
-                            context.l10n.ticketsHolderDataTitle,
+                            context.l10n.ticketsHolderDataTitle(
+                              state.holders.length,
+                            ),
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w800,
@@ -272,45 +279,21 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
                             ),
                           ),
                           const SizedBox(height: AppSpacing.md),
-                          _SelfCheckbox(profile: widget.profile),
-                          const SizedBox(height: AppSpacing.md),
-                          TextField(
-                            controller: _nameController,
-                            enabled: !state.holderIsSelf,
-                            onChanged: (v) {
-                              _nameTouch.touched = true;
-                              context.read<PurchaseCubit>().setHolderName(v);
-                              setState(() {});
-                            },
-                            decoration: InputDecoration(
-                              labelText: context.l10n.authFullNameLabel,
-                              errorText: _nameTouch.errorFor(
-                                _nameController.text,
-                                submitted: false,
-                                requiredMessage: context.l10n.validatorNameRequired,
-                              ),
+                          for (var i = 0; i < units.length; i++) ...[
+                            if (i > 0) const SizedBox(height: AppSpacing.lg),
+                            _HolderSection(
+                              index: i,
+                              unit: units[i],
+                              holder: i < state.holders.length
+                                  ? state.holders[i]
+                                  : const TicketHolder(name: '', document: ''),
+                              nameController: _nameControllers[i],
+                              documentController: _documentControllers[i],
+                              nameTouch: _nameTouches[i],
+                              documentTouch: _documentTouches[i],
+                              profile: widget.profile,
                             ),
-                          ),
-                          const SizedBox(height: AppSpacing.md),
-                          TextField(
-                            controller: _documentController,
-                            enabled: !state.holderIsSelf,
-                            onChanged: (v) {
-                              _documentTouch.touched = true;
-                              context.read<PurchaseCubit>().setHolderDocument(v);
-                              setState(() {});
-                            },
-                            decoration: InputDecoration(
-                              labelText: context.l10n.ticketsDocumentLabel,
-                              errorText: _documentTouch.errorFor(
-                                _documentController.text,
-                                submitted: false,
-                                format: (v) => AppValidators.isValidDocument(v)
-                                    ? null
-                                    : context.l10n.storeValCpfInvalid,
-                              ),
-                            ),
-                          ),
+                          ],
                           const SizedBox(height: AppSpacing.md),
                           Text(
                             context.l10n.ticketsNominalWarning,
@@ -345,50 +328,135 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
   }
 }
 
-class _SelfCheckbox extends StatelessWidget {
-  const _SelfCheckbox({required this.profile});
+class _PurchaseSummaryView extends StatefulWidget {
+  const _PurchaseSummaryView({required this.profile});
 
+  final Profile profile;
+
+  @override
+  State<_PurchaseSummaryView> createState() => _PurchaseSummaryViewState();
+}
+
+class _HolderSection extends StatelessWidget {
+  const _HolderSection({
+    required this.index,
+    required this.unit,
+    required this.holder,
+    required this.nameController,
+    required this.documentController,
+    required this.nameTouch,
+    required this.documentTouch,
+    required this.profile,
+  });
+
+  final int index;
+  final TicketOrderItem unit;
+  final TicketHolder holder;
+  final TextEditingController nameController;
+  final TextEditingController documentController;
+  final FieldTouch nameTouch;
+  final FieldTouch documentTouch;
   final Profile profile;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return BlocBuilder<PurchaseCubit, PurchaseState>(
-      buildWhen: (previous, current) =>
-          previous.holderIsSelf != current.holderIsSelf,
-      builder: (context, state) {
-        return InkWell(
-          onTap: () => context.read<PurchaseCubit>().setHolderIsSelf(
-            !state.holderIsSelf,
-            profileName: profile.displayName,
-            profileDocument: profile.cpf,
+    final l10n = context.l10n;
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.lg),
+      decoration: BoxDecoration(
+        color: colors.surface,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+        border: Border.all(color: colors.border),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.ticketsHolderSlotLabel(
+              index + 1,
+              unit.sectorName,
+              unit.categoryLabel,
+            ),
+            style: TextStyle(
+              fontSize: 11.5,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.3,
+              color: colors.textHint,
+            ),
           ),
-          borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-          child: Row(
-            children: [
-              Checkbox(
-                value: state.holderIsSelf,
-                onChanged: (value) =>
-                    context.read<PurchaseCubit>().setHolderIsSelf(
-                      value ?? false,
-                      profileName: profile.displayName,
-                      profileDocument: profile.cpf,
+          const SizedBox(height: AppSpacing.sm),
+          InkWell(
+            onTap: () => context.read<PurchaseCubit>().setHolderIsSelf(
+              index,
+              value: !holder.isSelf,
+              profileName: profile.displayName,
+              profileDocument: profile.cpf,
+            ),
+            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+            child: Row(
+              children: [
+                Checkbox(
+                  value: holder.isSelf,
+                  onChanged: (value) =>
+                      context.read<PurchaseCubit>().setHolderIsSelf(
+                        index,
+                        value: value ?? false,
+                        profileName: profile.displayName,
+                        profileDocument: profile.cpf,
+                      ),
+                  activeColor: colors.primary,
+                ),
+                Expanded(
+                  child: Text(
+                    l10n.ticketsHolderIsSelfCheckbox,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
-                activeColor: colors.primary,
-              ),
-              Expanded(
-                child: Text(
-                  context.l10n.ticketsHolderIsSelfCheckbox,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        );
-      },
+          const SizedBox(height: AppSpacing.sm),
+          TextField(
+            controller: nameController,
+            enabled: !holder.isSelf,
+            onChanged: (v) {
+              nameTouch.touched = true;
+              context.read<PurchaseCubit>().setHolderName(index, v);
+            },
+            decoration: InputDecoration(
+              labelText: l10n.authFullNameLabel,
+              errorText: nameTouch.errorFor(
+                nameController.text,
+                submitted: false,
+                requiredMessage: l10n.validatorNameRequired,
+              ),
+            ),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          TextField(
+            controller: documentController,
+            enabled: !holder.isSelf,
+            onChanged: (v) {
+              documentTouch.touched = true;
+              context.read<PurchaseCubit>().setHolderDocument(index, v);
+            },
+            decoration: InputDecoration(
+              labelText: l10n.ticketsDocumentLabel,
+              errorText: documentTouch.errorFor(
+                documentController.text,
+                submitted: false,
+                format: (v) => AppValidators.isValidDocument(v)
+                    ? null
+                    : l10n.storeValCpfInvalid,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

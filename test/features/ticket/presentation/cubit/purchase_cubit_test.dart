@@ -64,20 +64,22 @@ TicketEvent _event() => TicketEvent(
 class _FakeTicketRepository implements TicketRepository {
   int purchaseCallCount = 0;
   Failure? purchaseFailure;
+  List<TicketHolder>? lastHolders;
 
   @override
   Future<Result<TicketOrder>> purchase({
     required String matchId,
     required List<TicketOrderItem> items,
-    required String holderName,
-    required String holderDocument,
+    required List<TicketHolder> holders,
   }) async {
+    lastHolders = holders;
     purchaseCallCount++;
     // Delay real (não só microtask) — é essa janela assíncrona que um
     // duplo toque exploraria sem a guarda no Cubit.
     await Future<void>.delayed(const Duration(milliseconds: 20));
     final failure = purchaseFailure;
     if (failure != null) return Error(failure);
+    final primaryHolder = holders.first;
     return Success(
       TicketOrder(
         id: 'order-$purchaseCallCount',
@@ -90,8 +92,8 @@ class _FakeTicketRepository implements TicketRepository {
         kickoff: _match.kickoff,
         stadium: _match.stadium,
         items: items,
-        holderName: holderName,
-        holderDocument: holderDocument,
+        holderName: primaryHolder.name,
+        holderDocument: primaryHolder.document,
         status: TicketOrderStatus.confirmed,
         createdAt: DateTime.now(),
       ),
@@ -145,10 +147,11 @@ void main() {
   setUp(() {
     repository = _FakeTicketRepository();
     cubit = PurchaseCubit(repository, _event());
+    cubit.setQuantity('cadeiras', 'inteira', 1);
+    cubit.ensureHolderSlots();
     cubit
-      ..setQuantity('cadeiras', 'inteira', 1)
-      ..setHolderName('Lucas Diogo')
-      ..setHolderDocument('11144477735');
+      ..setHolderName(0, 'Lucas Diogo')
+      ..setHolderDocument(0, '11144477735');
   });
 
   test('setUp chegou num estado pronto pra finalizar', () {
@@ -182,5 +185,68 @@ void main() {
 
     await future;
     expect(cubit.state.saving, isFalse);
+  });
+
+  group('titular por ingresso (compra de mais de um)', () {
+    late PurchaseCubit multiCubit;
+
+    setUp(() {
+      multiCubit = PurchaseCubit(repository, _event())
+        ..setQuantity('cadeiras', 'inteira', 2);
+      multiCubit.ensureHolderSlots();
+    });
+
+    tearDown(() => multiCubit.close());
+
+    test('ensureHolderSlots cria um titular vazio por ingresso', () {
+      expect(multiCubit.state.holders.length, 2);
+    });
+
+    test(
+      'não pode finalizar até TODOS os titulares terem nome e documento válidos',
+      () {
+        multiCubit
+          ..setHolderName(0, 'Lucas Diogo')
+          ..setHolderDocument(0, '11144477735');
+        // Só o primeiro preenchido — o segundo ainda está vazio.
+        expect(multiCubit.state.canFinalize, isFalse);
+
+        multiCubit
+          ..setHolderName(1, 'Amigo Torcedor')
+          ..setHolderDocument(1, 'AB123456');
+        expect(multiCubit.state.canFinalize, isTrue);
+      },
+    );
+
+    test('cada ingresso vai pro repositório com o titular próprio dele', () async {
+      multiCubit
+        ..setHolderName(0, 'Lucas Diogo')
+        ..setHolderDocument(0, '11144477735')
+        ..setHolderName(1, 'Amigo Torcedor')
+        ..setHolderDocument(1, '52998224725');
+      await multiCubit.finalizePurchase();
+
+      expect(multiCubit.state.order, isNotNull);
+      expect(multiCubit.state.order!.holderName, 'Lucas Diogo');
+      expect(repository.lastHolders?.map((h) => h.name).toList(), [
+        'Lucas Diogo',
+        'Amigo Torcedor',
+      ]);
+    });
+
+    test('marcar "é pra mim" preenche e desabilita edição daquele titular', () {
+      multiCubit.setHolderIsSelf(
+        0,
+        value: true,
+        profileName: 'Lucas Diogo',
+        profileDocument: '11144477735',
+      );
+      expect(multiCubit.state.holders[0].isSelf, isTrue);
+      expect(multiCubit.state.holders[0].name, 'Lucas Diogo');
+      // O segundo ingresso continua independente, sem herdar nada do
+      // primeiro.
+      expect(multiCubit.state.holders[1].isSelf, isFalse);
+      expect(multiCubit.state.holders[1].name, isEmpty);
+    });
   });
 }

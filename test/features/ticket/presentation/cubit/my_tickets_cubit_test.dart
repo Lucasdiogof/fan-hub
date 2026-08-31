@@ -119,8 +119,7 @@ class _FakeTicketRepository implements TicketRepository {
   Future<Result<TicketOrder>> purchase({
     required String matchId,
     required List<TicketOrderItem> items,
-    required String holderName,
-    required String holderDocument,
+    required List<TicketHolder> holders,
   }) async => throw UnimplementedError();
 
   @override
