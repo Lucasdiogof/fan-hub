@@ -241,16 +241,24 @@ class _LineupViewState extends State<_LineupView> {
 
   /// "Próximo jogo"/"Anterior" no diálogo de resultado podem acontecer
   /// enquanto a tela de adivinhação (empilhada por [_openPlayer]) ainda
-  /// está por cima do campo — `popUntil((route) => route.isFirst)` garante
-  /// que voltamos pro campo antes de trocar de partida, sem isso a tela de
-  /// adivinhação ficaria por cima mostrando os jogadores da partida
-  /// errada. É um no-op seguro quando já estamos no campo (nada pra
-  /// popar).
+  /// está por cima do campo — sem popar de volta antes, ela ficaria por
+  /// cima mostrando os jogadores da partida errada. `LineupPage` mora
+  /// dentro do `ShellRoute` do go_router (mesmo Navigator compartilhado com
+  /// Home/Arena/etc.), então `popUntil((route) => route.isFirst)` (versão
+  /// antiga daqui) popava até a primeira rota de TODO o Navigator — voltava
+  /// pra Arena/Home em vez de só fechar a tela de adivinhação. Capturar a
+  /// própria rota da `LineupPage` via `ModalRoute.of(context)` e popar só
+  /// até ela resolve isso: sobe exatamente uma tela (a de adivinhação,
+  /// quando existe) e nunca mais que isso. Continua um no-op seguro quando
+  /// já estamos no campo (`isCurrent` já `true`, nada pra popar).
   void _goToAdjacentMatch(
     BuildContext context,
     Future<void> Function() action,
   ) {
-    Navigator.of(context).popUntil((route) => route.isFirst);
+    final lineupRoute = ModalRoute.of(context);
+    if (lineupRoute != null && !lineupRoute.isCurrent) {
+      Navigator.of(context).popUntil((route) => route == lineupRoute);
+    }
     action();
   }
 

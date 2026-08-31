@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
+import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_page.dart';
@@ -13,6 +16,8 @@ import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class _FakeRanking implements ArenaRankingRepository {
+  int recordScoreCallCount = 0;
+
   @override
   Future<Result<ScoreResult>> recordScore({
     required String gameId,
@@ -25,9 +30,12 @@ class _FakeRanking implements ArenaRankingRepository {
     int? totalCount,
     bool wasRevealed = false,
     bool wasAbandoned = false,
-  }) async => const Success(
-    ScoreResult(pointsEarned: 0, itemScore: 0, totalScore: 0, gameScore: 0),
-  );
+  }) async {
+    recordScoreCallCount++;
+    return const Success(
+      ScoreResult(pointsEarned: 0, itemScore: 0, totalScore: 0, gameScore: 0),
+    );
+  }
 
   @override
   Future<Result<List<RankingEntry>>> getRanking(
@@ -159,4 +167,176 @@ void main() {
       expect(find.text('Eduardo Heuser'), findsOneWidget);
     },
   );
+
+  group('"Próximo jogo" no diálogo de resultado', () {
+    // Banco mínimo de 2 partidas, 1 jogador cada — só pro teste de
+    // navegação entre partidas, não precisa do dataset real de 31 partidas
+    // nem de digitar respostas certas (usamos `giveUp()` pra completar).
+    const player1 = LineupPlayer(
+      id: 'p1',
+      position: 'GK',
+      x: 0.5,
+      y: 0.9,
+      shirtNumber: 1,
+      fullName: 'Jogador Um',
+      displayName: 'Um',
+      puzzleAnswer: 'UM',
+      answerParts: [2],
+      normalizedAnswer: 'UM',
+    );
+    const player2 = LineupPlayer(
+      id: 'p2',
+      position: 'ST',
+      x: 0.5,
+      y: 0.1,
+      shirtNumber: 9,
+      fullName: 'Jogador Dois',
+      displayName: 'Dois',
+      puzzleAnswer: 'DOIS',
+      answerParts: [4],
+      normalizedAnswer: 'DOIS',
+    );
+    final match1 = LineupMatch(
+      id: 'match-1',
+      competition: 'Teste',
+      season: '2024',
+      phase: 'Final',
+      date: DateTime(2024, 1, 1),
+      homeTeam: 'Goiás',
+      awayTeam: 'Adversário A',
+      homeScore: 1,
+      awayScore: 0,
+      teamToGuess: 'Goiás',
+      formation: '4-4-2',
+      formationConfidence: FormationConfidence.confirmed,
+      players: const [player1],
+    );
+    final match2 = LineupMatch(
+      id: 'match-2',
+      competition: 'Teste',
+      season: '2024',
+      phase: 'Semifinal',
+      date: DateTime(2024, 1, 8),
+      homeTeam: 'Goiás',
+      awayTeam: 'Adversário B',
+      homeScore: 2,
+      awayScore: 1,
+      teamToGuess: 'Goiás',
+      formation: '4-4-2',
+      formationConfidence: FormationConfidence.confirmed,
+      players: const [player2],
+    );
+
+    late _FakeRanking ranking;
+    late LineupCubit cubit;
+    late GlobalKey<NavigatorState> navigatorKey;
+
+    Future<void> pumpWithArenaBelow(WidgetTester tester) async {
+      navigatorKey = GlobalKey<NavigatorState>();
+      await tester.pumpWidget(
+        MaterialApp(
+          navigatorKey: navigatorKey,
+          theme: AppTheme.light,
+          locale: const Locale('pt'),
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          // Simula a Arena por baixo — é essencial pro teste provar o bug
+          // (`LineupPage` empilhada sobre outra tela, não como raiz do
+          // Navigator), já que é exatamente isso que expõe o problema do
+          // antigo `popUntil((route) => route.isFirst)`.
+          home: const Scaffold(body: Center(child: Text('ARENA'))),
+        ),
+      );
+      await tester.pumpAndSettle();
+      // Nunca resolve até a rota ser fechada de novo (é assim que o push
+      // funciona) — não é pra esperar, só disparar a navegação.
+      unawaited(
+        navigatorKey.currentState!.push(
+          MaterialPageRoute<void>(builder: (_) => LineupPage(cubit: cubit)),
+        ),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    setUp(() async {
+      ranking = _FakeRanking();
+      cubit = LineupCubit(
+        matches: [match1, match2],
+        loadState: (_) async => null,
+        saveState: (_) async {},
+        loadSelectedMatchId: () async => null,
+        saveSelectedMatchId: (_) async {},
+        loadCompletedIds: () async => const {},
+        ranking: ranking,
+      );
+      // `loadSelectedMatch()` reembaralha o banco quando nada está
+      // concluído ainda (ver `shuffleKeepingDone`) — cada teste seleciona
+      // depois a partida que precisa pela posição REAL pós-embaralhamento
+      // (`state.matches.first`/`.last`), nunca assumindo que "match1" ficou
+      // na posição 0.
+      await cubit.loadSelectedMatch();
+    });
+
+    tearDown(() => cubit.close());
+
+    testWidgets(
+      'avança pra próxima partida e continua dentro da tela, sem voltar pra Arena',
+      (tester) async {
+        final first = cubit.state.matches.first;
+        await cubit.selectMatch(first.id);
+        await pumpWithArenaBelow(tester);
+        expect(cubit.state.match!.id, first.id);
+        expect(cubit.state.hasNext, isTrue);
+
+        await cubit.giveUp(); // completa a partida sem precisar acertar.
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.byIcon(Icons.arrow_forward_rounded));
+        await tester.pumpAndSettle();
+
+        // Continua dentro de Adivinhe a Escalação, agora na partida
+        // seguinte — a tela "ARENA" de baixo nunca volta a aparecer.
+        expect(find.text('ARENA'), findsNothing);
+        expect(cubit.state.match!.id, cubit.state.matches[1].id);
+      },
+    );
+
+    testWidgets(
+      'na última partida, o diálogo não oferece "próximo jogo" e o usuário fica no campo',
+      (tester) async {
+        final last = cubit.state.matches.last;
+        await cubit.selectMatch(last.id);
+        await pumpWithArenaBelow(tester);
+        expect(cubit.state.match!.id, last.id);
+        expect(cubit.state.hasNext, isFalse);
+
+        await cubit.giveUp();
+        await tester.pumpAndSettle();
+
+        expect(find.byIcon(Icons.arrow_forward_rounded), findsNothing);
+        expect(find.text('ARENA'), findsNothing);
+        expect(cubit.state.match!.id, last.id);
+      },
+    );
+
+    testWidgets(
+      'desistir e avançar pra próxima partida não dispara pontuação de novo',
+      (tester) async {
+        await cubit.selectMatch(cubit.state.matches.first.id);
+        await pumpWithArenaBelow(tester);
+
+        await cubit.giveUp();
+        await tester.pumpAndSettle();
+        expect(ranking.recordScoreCallCount, 1);
+
+        await tester.tap(find.byIcon(Icons.arrow_forward_rounded));
+        await tester.pumpAndSettle();
+
+        // Trocar de partida nunca chama `recordScore` de novo — só
+        // `submitGuess`/`giveUp` chamam, e nenhum dos dois rodou na
+        // partida 2 ainda.
+        expect(ranking.recordScoreCallCount, 1);
+      },
+    );
+  });
 }
