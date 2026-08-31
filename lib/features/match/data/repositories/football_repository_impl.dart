@@ -85,6 +85,22 @@ class FootballRepositoryImpl implements FootballRepository {
   }
 
   @override
+  Future<Result<List<Match>>> getSeasonFixtures() async {
+    try {
+      final dtos = await _remote.getSeasonFixtures();
+      return Success(
+        dtos.map((dto) => dto.toEntity(competitionName: '')).toList(),
+      );
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return const Error(UnexpectedFailure());
+    }
+  }
+
+  @override
   Future<
     Result<
       ({

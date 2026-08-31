@@ -9,11 +9,12 @@ import 'package:goias_app/features/match/domain/entities/standing.dart';
 /// Série B / Goiás. Ingresso e Sócio continuam mockados em outras features;
 /// esse repositório não sabe nada sobre venda de ingresso ou check-in.
 ///
-/// Não existe "calendário completo" nas fontes gratuitas disponíveis — só
-/// classificação completa, a rodada atual (todos os times) e um snapshot
-/// do Goiás (próximo jogo + últimos resultados). Por isso não há
-/// `getUpcomingMatches()`/`getResults()` genéricos: a UI trabalha com o que
-/// realmente existe.
+/// Não existe "calendário completo do campeonato" nas fontes gratuitas
+/// disponíveis — só classificação completa e a rodada atual (todos os
+/// times). Por isso não há `getUpcomingMatches()`/`getResults()` genéricos
+/// pra qualquer time. `getSeasonFixtures()` é a exceção: dá pra montar a
+/// temporada inteira APENAS do Goiás (todas as competições que ele disputa
+/// juntas), porque a fonte pagina por time, não por campeonato.
 abstract interface class FootballRepository {
   Future<Result<List<Standing>>> getStandings();
 
@@ -36,6 +37,13 @@ abstract interface class FootballRepository {
   /// Próximo jogo do Goiás (se houver dado confiável) + últimos resultados.
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
   getGoiasSnapshot();
+
+  /// Todos os jogos do Goiás na temporada atual, de qualquer competição
+  /// (Goianão, Brasileirão Série B, Copa do Brasil...), ordenados por
+  /// kickoff — fonte do Calendário de Jogos. Nunca traz estádio (custaria
+  /// uma chamada extra por partida pra ~50 partidas de uma vez); quem
+  /// precisar do estádio de uma partida específica usa `getMatchDetails`.
+  Future<Result<List<Match>>> getSeasonFixtures();
 
   Future<
     Result<

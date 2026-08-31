@@ -6,9 +6,11 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/features/match/presentation/cubit/game_calendar_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
 import 'package:goias_app/features/match/presentation/match_navigation.dart';
+import 'package:goias_app/features/match/presentation/widgets/game_calendar_view.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_header.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/games_section_selector.dart';
@@ -27,8 +29,15 @@ class GamesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<GamesCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => sl<GamesCubit>()),
+        // `lazy` (padrão do BlocProvider): só cria/carrega quando a aba
+        // Calendário é aberta pela primeira vez — mas vive aqui, acima da
+        // troca de aba, pra não recarregar a temporada toda vez que o
+        // usuário volta pra essa aba dentro da mesma visita a Jogos.
+        BlocProvider(create: (_) => sl<GameCalendarCubit>()..load()),
+      ],
       child: const _GamesView(),
     );
   }
@@ -81,9 +90,15 @@ class _GamesViewState extends State<_GamesView> {
                 ),
                 const SizedBox(height: AppSpacing.lg),
                 Expanded(
-                  child: _section == GamesSection.matches
-                      ? _MatchesTab(onMatchTap: _openMatchDetails)
-                      : const StandingsView(),
+                  child: switch (_section) {
+                    GamesSection.matches => _MatchesTab(
+                      onMatchTap: _openMatchDetails,
+                    ),
+                    GamesSection.calendar => GameCalendarView(
+                      onMatchTap: _openMatchDetails,
+                    ),
+                    GamesSection.standings => const StandingsView(),
+                  },
                 ),
               ],
             ),

@@ -151,13 +151,21 @@ async function getContainers(path: string): Promise<unknown> {
   return data.containers ?? data;
 }
 
-/** `tab` é `jogos` (agenda futura) ou `resultados` (jogos já encerrados). */
+/** `tab` é `jogos` (agenda futura) ou `resultados` (jogos já encerrados).
+ * `loadMore` pega a página do resto (mesma paginação `?loadmore=1` que
+ * `fetchCompetitionTab` já usa pra competição — confirmado funcionando
+ * igual pro endpoint de time: `time/<slug>/<tab>?loadmore=1` devolve o
+ * payload achatado `{ lists: [...] }`, sem `containers`). */
 export async function fetchTeamMatchLists(
   teamSlug: string,
   tab: 'jogos' | 'resultados',
+  loadMore = false,
 ): Promise<OneFootballMatchList[]> {
   try {
-    const containers = await getContainers(`time/${teamSlug}/${tab}`);
+    const suffix = loadMore ? '?loadmore=1' : '';
+    const containers = await getContainers(`time/${teamSlug}/${tab}${suffix}`);
+    const flatLists = (containers as { lists?: unknown } | null)?.lists;
+    if (Array.isArray(flatLists)) return flatLists as OneFootballMatchList[];
     const appender = findNode<{ lists: OneFootballMatchList[] }>(containers, 'matchCardsListsAppender');
     return appender?.lists ?? [];
   } catch (err) {
@@ -168,6 +176,41 @@ export async function fetchTeamMatchLists(
       PROVIDER,
     );
   }
+}
+
+/** Temporada inteira do time (todas as competições juntas, já que é "os
+ * jogos desse time") — mesmas 4 páginas de `fetchCompetitionMatchLists`,
+ * mas aqui cada lista já vem agrupada por MÊS pela própria OneFootball
+ * (não por rodada), então não faz sentido reaproveitar `mergeRoundLists`
+ * (tentaria extrair "rodada" de um subtitle tipo "outubro 2026" e erraria).
+ * Só achata tudo e dedupe por `matchId` — quem agrupa por dia pro
+ * calendário é o Flutter. Confirmado contra a API real (2026): as 4
+ * páginas juntas cobrem de janeiro a novembro sem sobreposição nem buraco
+ * perceptível. */
+export async function fetchTeamSeasonMatchCards(teamSlug: string): Promise<OneFootballMatchCard[]> {
+  const settled = await Promise.allSettled([
+    fetchTeamMatchLists(teamSlug, 'resultados'),
+    fetchTeamMatchLists(teamSlug, 'resultados', true),
+    fetchTeamMatchLists(teamSlug, 'jogos'),
+    fetchTeamMatchLists(teamSlug, 'jogos', true),
+  ]);
+  if (settled.every((result) => result.status === 'rejected')) {
+    const reason = (settled[0] as PromiseRejectedResult).reason;
+    if (reason instanceof ProviderError) throw reason;
+    throw new ProviderError(
+      `Não foi possível consultar a temporada do time (${reason instanceof Error ? reason.message : String(reason)}).`,
+      502,
+      PROVIDER,
+    );
+  }
+  const byId = new Map<string, OneFootballMatchCard>();
+  for (const result of settled) {
+    if (result.status !== 'fulfilled') continue;
+    for (const list of result.value) {
+      for (const card of list.matchCards) byId.set(card.matchId, card);
+    }
+  }
+  return [...byId.values()];
 }
 
 /** Extrai o número da rodada de um subtitle tipo "Rodada 25" — `null`

@@ -65,8 +65,7 @@ class _FakeFootballRepository implements FootballRepository {
   }
 
   @override
-  Future<Result<List<Standing>>> getStandings() async =>
-      const Success([]);
+  Future<Result<List<Standing>>> getStandings() async => const Success([]);
 
   @override
   Future<
@@ -97,7 +96,10 @@ class _FakeFootballRepository implements FootballRepository {
       })
     >
   >
-  getMatchDetails(String fixtureId) async =>
+  getMatchDetails(String fixtureId) async => throw UnimplementedError();
+
+  @override
+  Future<Result<List<Match>>> getSeasonFixtures() async =>
       throw UnimplementedError();
 }
 
@@ -261,34 +263,40 @@ void main() {
   });
 
   group('error state (never confused with "no next match")', () {
-    test('a failed load is represented as ERROR, not as an empty match', () async {
-      football.failure = const NetworkFailure('sem conexão');
-      final cubit = build();
-      await cubit.load();
+    test(
+      'a failed load is represented as ERROR, not as an empty match',
+      () async {
+        football.failure = const NetworkFailure('sem conexão');
+        final cubit = build();
+        await cubit.load();
 
-      expect(cubit.state.status, LoadStatus.error);
-      expect(cubit.state.nextMatch, isNull);
-      expect(cubit.state.errorMessage, 'sem conexão');
-    });
+        expect(cubit.state.status, LoadStatus.error);
+        expect(cubit.state.nextMatch, isNull);
+        expect(cubit.state.errorMessage, 'sem conexão');
+      },
+    );
 
-    test('retry after an error recovers to SUCCESS once the call works', () async {
-      football.failure = const NetworkFailure('sem conexão');
-      final cubit = build();
-      await cubit.load();
-      expect(cubit.state.status, LoadStatus.error);
+    test(
+      'retry after an error recovers to SUCCESS once the call works',
+      () async {
+        football.failure = const NetworkFailure('sem conexão');
+        final cubit = build();
+        await cubit.load();
+        expect(cubit.state.status, LoadStatus.error);
 
-      football.failure = null;
-      football.nextMatch = _match(
-        id: 'recovered',
-        status: MatchStatus.scheduled,
-        kickoff: DateTime.now().add(const Duration(days: 1)),
-      );
-      await cubit.load();
+        football.failure = null;
+        football.nextMatch = _match(
+          id: 'recovered',
+          status: MatchStatus.scheduled,
+          kickoff: DateTime.now().add(const Duration(days: 1)),
+        );
+        await cubit.load();
 
-      expect(cubit.state.status, LoadStatus.success);
-      expect(cubit.state.nextMatch?.id, 'recovered');
-      expect(cubit.state.errorMessage, isNull);
-    });
+        expect(cubit.state.status, LoadStatus.success);
+        expect(cubit.state.nextMatch?.id, 'recovered');
+        expect(cubit.state.errorMessage, isNull);
+      },
+    );
 
     test('retry after an error that fails again stays in ERROR', () async {
       football.failure = const NetworkFailure('sem conexão');

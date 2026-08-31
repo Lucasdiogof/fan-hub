@@ -1,1 +1,1 @@
-enum GamesSection { matches, standings }
+enum GamesSection { matches, calendar, standings }

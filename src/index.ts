@@ -2,6 +2,7 @@ import type { SocialEnv } from './social/config';
 import { handleStandings } from './football/standings';
 import { handleCurrentRound } from './football/currentRound';
 import { handleGoiasTeam } from './football/team';
+import { handleGoiasTeamSeason } from './football/teamSeason';
 import { handleFixtureDetails } from './football/fixtureDetails';
 import { handleSocialFeed } from './social/feed';
 import { handleNewsList } from './news/list';
@@ -27,6 +28,10 @@ export default {
 
     if (pathname === '/api/football/team/goias') {
       return handleGoiasTeam(request, env);
+    }
+
+    if (pathname === '/api/football/team/goias/season') {
+      return handleGoiasTeamSeason(request, env);
     }
 
     const fixtureMatch = pathname.match(FIXTURE_DETAILS_PATTERN);

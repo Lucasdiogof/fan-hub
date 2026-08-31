@@ -84,6 +84,20 @@ class FootballRemoteDataSource {
     );
   }
 
+  /// Diferente dos outros: sem `competition` no nível da resposta — cada
+  /// partida já carrega a própria (Goianão/Brasileirão/Copa do Brasil
+  /// misturados), porque é "temporada inteira do time", não de uma
+  /// competição só (ver `MatchDto.competition`).
+  Future<List<MatchDto>> getSeasonFixtures() async {
+    final response = await _dio.get<Map<String, dynamic>>(
+      '/api/football/team/goias/season',
+    );
+    final data = response.data!;
+    return (data['matches'] as List)
+        .map((m) => MatchDto.fromJson(m as Map<String, dynamic>))
+        .toList();
+  }
+
   Future<
     ({
       CompetitionDto competition,

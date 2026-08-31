@@ -36,6 +36,13 @@ class GamesSectionSelector extends StatelessWidget {
           ),
           Expanded(
             child: _SegmentButton(
+              label: context.l10n.matchTabCalendar,
+              selected: section == GamesSection.calendar,
+              onTap: () => onChanged(GamesSection.calendar),
+            ),
+          ),
+          Expanded(
+            child: _SegmentButton(
               label: context.l10n.matchTabStandings,
               selected: section == GamesSection.standings,
               onTap: () => onChanged(GamesSection.standings),

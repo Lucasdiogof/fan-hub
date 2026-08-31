@@ -55,7 +55,10 @@ class NextMatchCard extends StatelessWidget {
               Text(
                 isLive
                     ? [
-                        matchStatusLabel(context.l10n, match.status).toUpperCase(),
+                        matchStatusLabel(
+                          context.l10n,
+                          match.status,
+                        ).toUpperCase(),
                         if (match.minute != null) match.minute!,
                       ].join(' · ')
                     : context.l10n.homeNextMatch,
@@ -84,7 +87,8 @@ class NextMatchCard extends StatelessWidget {
               Expanded(child: _TeamColumn(team: match.homeTeam)),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                child: isLive && match.homeScore != null && match.awayScore != null
+                child:
+                    isLive && match.homeScore != null && match.awayScore != null
                     ? Text(
                         '${match.homeScore} x ${match.awayScore}',
                         style: TextStyle(

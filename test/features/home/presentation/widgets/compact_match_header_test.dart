@@ -50,9 +50,7 @@ Future<void> _pump(WidgetTester tester, Match match) => tester.pumpWidget(
 );
 
 void main() {
-  testWidgets('scheduled match shows date and time, no score', (
-    tester,
-  ) async {
+  testWidgets('scheduled match shows date and time, no score', (tester) async {
     await _pump(
       tester,
       _match(status: MatchStatus.scheduled, kickoff: DateTime(2026, 9, 5, 16)),
