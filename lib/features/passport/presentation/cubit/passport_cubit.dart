@@ -117,7 +117,8 @@ class PassportCubit extends Cubit<PassportState> {
   /// seleções locais continuam intactas pra o usuário tentar de novo sem
   /// perder nada.
   Future<void> save() async {
-    if (state.saveStatus == LoadStatus.loading || state.pendingChanges.isEmpty) {
+    if (state.saveStatus == LoadStatus.loading ||
+        state.pendingChanges.isEmpty) {
       return;
     }
     emit(state.copyWith(saveStatus: LoadStatus.loading));
@@ -128,7 +129,10 @@ class PassportCubit extends Cubit<PassportState> {
     switch (result) {
       case Success(:final data):
         final rejected = data.where((r) => !r.applied).toList();
-        final appliedIds = data.where((r) => r.applied).map((r) => r.matchId).toSet();
+        final appliedIds = data
+            .where((r) => r.applied)
+            .map((r) => r.matchId)
+            .toSet();
         final updatedMatches = [
           for (final m in state.matches)
             if (appliedIds.contains(m.id))
@@ -144,14 +148,18 @@ class PassportCubit extends Cubit<PassportState> {
             : {
                 ...state.markedCountsByYear,
                 year: updatedMatches
-                    .where((m) => m.season == year && m.isFinished && m.attended)
+                    .where(
+                      (m) => m.season == year && m.isFinished && m.attended,
+                    )
                     .length,
               };
         emit(
           state.copyWith(
             matches: updatedMatches,
             pendingChanges: remainingPending,
-            saveStatus: rejected.isEmpty ? LoadStatus.success : LoadStatus.error,
+            saveStatus: rejected.isEmpty
+                ? LoadStatus.success
+                : LoadStatus.error,
             saveErrorMessage: () => rejected.isEmpty
                 ? null
                 : 'Algumas partidas não puderam ser salvas.',

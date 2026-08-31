@@ -72,9 +72,28 @@ class _FakePassportRepository implements PassportRepository {
   @override
   Future<Result<({int rank, int matchCount})?>> getMyRank({int? year}) async =>
       const Success(null);
+
+  @override
+  Future<Result<PassportStadiumSummary>> getStadiumSummary() async =>
+      const Success(PassportStadiumSummary.empty);
+
+  @override
+  Future<Result<List<PassportMatch>>> getAttendedMatches() async =>
+      const Success([]);
+
+  @override
+  Future<Result<String?>> getMemorableMatchId() async => const Success(null);
+
+  @override
+  Future<Result<void>> setMemorableMatch(String matchId) async =>
+      const Success(null);
 }
 
-PassportMatch _finishedMatch(String id, {int season = 2026, bool attended = false}) {
+PassportMatch _finishedMatch(
+  String id, {
+  int season = 2026,
+  bool attended = false,
+}) {
   return PassportMatch(
     id: id,
     season: season,
@@ -109,26 +128,29 @@ void main() {
     cubit = PassportCubit(repository);
   });
 
-  test('loadInitial carrega temporadas, seleciona o ano mais recente e carrega as partidas dele', () async {
-    repository.seasons = const [
-      PassportSeason(season: 2026, matchCount: 2, finishedCount: 1),
-      PassportSeason(season: 2025, matchCount: 3, finishedCount: 3),
-    ];
-    repository.matchesByYear = {
-      2026: [_finishedMatch('m1')],
-    };
+  test(
+    'loadInitial carrega temporadas, seleciona o ano mais recente e carrega as partidas dele',
+    () async {
+      repository.seasons = const [
+        PassportSeason(season: 2026, matchCount: 2, finishedCount: 1),
+        PassportSeason(season: 2025, matchCount: 3, finishedCount: 3),
+      ];
+      repository.matchesByYear = {
+        2026: [_finishedMatch('m1')],
+      };
 
-    await cubit.loadInitial();
-    // loadInitial dispara o carregamento das partidas do ano sem esperar
-    // (não trava o seletor de ano na resposta das partidas) — drena a
-    // fila de microtasks pra esse fire-and-forget terminar antes de checar.
-    await pumpEventQueue();
+      await cubit.loadInitial();
+      // loadInitial dispara o carregamento das partidas do ano sem esperar
+      // (não trava o seletor de ano na resposta das partidas) — drena a
+      // fila de microtasks pra esse fire-and-forget terminar antes de checar.
+      await pumpEventQueue();
 
-    expect(cubit.state.seasonsStatus, LoadStatus.success);
-    expect(cubit.state.selectedYear, 2026);
-    expect(cubit.state.matchesStatus, LoadStatus.success);
-    expect(cubit.state.matches, hasLength(1));
-  });
+      expect(cubit.state.seasonsStatus, LoadStatus.success);
+      expect(cubit.state.selectedYear, 2026);
+      expect(cubit.state.matchesStatus, LoadStatus.success);
+      expect(cubit.state.matches, hasLength(1));
+    },
+  );
 
   test('selectYear troca de temporada e recarrega as partidas', () async {
     repository.seasons = const [
@@ -156,34 +178,46 @@ void main() {
     expect(cubit.state.pendingChanges, isEmpty);
   });
 
-  test('toggleAttendance marca e desmarcar de novo cancela a mudança pendente', () {
-    final match = _finishedMatch('m1');
-    cubit.emit(cubit.state.copyWith(matches: [match]));
+  test(
+    'toggleAttendance marca e desmarcar de novo cancela a mudança pendente',
+    () {
+      final match = _finishedMatch('m1');
+      cubit.emit(cubit.state.copyWith(matches: [match]));
 
-    cubit.toggleAttendance(match);
-    expect(cubit.state.pendingChanges, {'m1': true});
-    expect(cubit.state.hasUnsavedChanges, isTrue);
+      cubit.toggleAttendance(match);
+      expect(cubit.state.pendingChanges, {'m1': true});
+      expect(cubit.state.hasUnsavedChanges, isTrue);
 
-    cubit.toggleAttendance(match);
-    expect(cubit.state.pendingChanges, isEmpty);
-    expect(cubit.state.hasUnsavedChanges, isFalse);
-  });
+      cubit.toggleAttendance(match);
+      expect(cubit.state.pendingChanges, isEmpty);
+      expect(cubit.state.hasUnsavedChanges, isFalse);
+    },
+  );
 
-  test('save envia só o delta (nunca a lista inteira) e limpa as mudanças aplicadas', () async {
-    final m1 = _finishedMatch('m1');
-    final m2 = _finishedMatch('m2', attended: true);
-    cubit.emit(cubit.state.copyWith(matches: [m1, m2]));
-    cubit.toggleAttendance(m1); // false -> true
-    cubit.toggleAttendance(m2); // true -> false
+  test(
+    'save envia só o delta (nunca a lista inteira) e limpa as mudanças aplicadas',
+    () async {
+      final m1 = _finishedMatch('m1');
+      final m2 = _finishedMatch('m2', attended: true);
+      cubit.emit(cubit.state.copyWith(matches: [m1, m2]));
+      cubit.toggleAttendance(m1); // false -> true
+      cubit.toggleAttendance(m2); // true -> false
 
-    await cubit.save();
+      await cubit.save();
 
-    expect(repository.lastSavedChanges, hasLength(2));
-    expect(cubit.state.pendingChanges, isEmpty);
-    expect(cubit.state.saveStatus, LoadStatus.success);
-    expect(cubit.state.matches.firstWhere((m) => m.id == 'm1').attended, isTrue);
-    expect(cubit.state.matches.firstWhere((m) => m.id == 'm2').attended, isFalse);
-  });
+      expect(repository.lastSavedChanges, hasLength(2));
+      expect(cubit.state.pendingChanges, isEmpty);
+      expect(cubit.state.saveStatus, LoadStatus.success);
+      expect(
+        cubit.state.matches.firstWhere((m) => m.id == 'm1').attended,
+        isTrue,
+      );
+      expect(
+        cubit.state.matches.firstWhere((m) => m.id == 'm2').attended,
+        isFalse,
+      );
+    },
+  );
 
   test(
     'duas chamadas concorrentes de save() só disparam um salvamento real',
@@ -213,33 +247,36 @@ void main() {
     expect(cubit.state.hasUnsavedChanges, isTrue);
   });
 
-  test('filteredMatches aplica o filtro selecionado sem perder as mudanças pendentes', () {
-    final homeMatch = PassportMatch(
-      id: 'home',
-      season: 2026,
-      matchDate: DateTime(2026, 1, 1),
-      status: PassportMatchStatus.finished,
-      competition: 'Goiano',
-      competitionCode: 'GOIANO',
-      opponent: 'Vila Nova',
-      goiasIsHome: true,
-      attended: false,
-    );
-    final awayMatch = PassportMatch(
-      id: 'away',
-      season: 2026,
-      matchDate: DateTime(2026, 1, 2),
-      status: PassportMatchStatus.finished,
-      competition: 'Goiano',
-      competitionCode: 'GOIANO',
-      opponent: 'Vila Nova',
-      goiasIsHome: false,
-      attended: false,
-    );
-    cubit.emit(cubit.state.copyWith(matches: [homeMatch, awayMatch]));
+  test(
+    'filteredMatches aplica o filtro selecionado sem perder as mudanças pendentes',
+    () {
+      final homeMatch = PassportMatch(
+        id: 'home',
+        season: 2026,
+        matchDate: DateTime(2026, 1, 1),
+        status: PassportMatchStatus.finished,
+        competition: 'Goiano',
+        competitionCode: 'GOIANO',
+        opponent: 'Vila Nova',
+        goiasIsHome: true,
+        attended: false,
+      );
+      final awayMatch = PassportMatch(
+        id: 'away',
+        season: 2026,
+        matchDate: DateTime(2026, 1, 2),
+        status: PassportMatchStatus.finished,
+        competition: 'Goiano',
+        competitionCode: 'GOIANO',
+        opponent: 'Vila Nova',
+        goiasIsHome: false,
+        attended: false,
+      );
+      cubit.emit(cubit.state.copyWith(matches: [homeMatch, awayMatch]));
 
-    cubit.setFilter(PassportFilter.home);
+      cubit.setFilter(PassportFilter.home);
 
-    expect(cubit.state.filteredMatches.map((m) => m.id), ['home']);
-  });
+      expect(cubit.state.filteredMatches.map((m) => m.id), ['home']);
+    },
+  );
 }

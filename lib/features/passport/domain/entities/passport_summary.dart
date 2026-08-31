@@ -109,6 +109,40 @@ class PassportAttendanceBreakdown extends Equatable {
   ];
 }
 
+/// Estádios visitados pelo usuário — só entre partidas FINISHED marcadas
+/// como "Eu fui" (agregado via `passport_stadium_summary`). Hoje sempre vem
+/// vazio pra qualquer usuário porque `venue_id` está null em 100% do
+/// catálogo histórico (a fonte não trouxe estádio nenhum) — fica pronto pra
+/// funcionar sozinho assim que os dados forem enriquecidos, sem precisar
+/// mexer na tela de novo.
+class PassportStadiumSummary extends Equatable {
+  const PassportStadiumSummary({
+    required this.uniqueStadiums,
+    this.mostVisitedName,
+    this.mostVisitedCount,
+  });
+
+  final int uniqueStadiums;
+  final String? mostVisitedName;
+  final int? mostVisitedCount;
+
+  static const empty = PassportStadiumSummary(uniqueStadiums: 0);
+
+  factory PassportStadiumSummary.fromMap(Map<String, dynamic> map) =>
+      PassportStadiumSummary(
+        uniqueStadiums: map['unique_stadiums'] as int? ?? 0,
+        mostVisitedName: map['most_visited_stadium_name'] as String?,
+        mostVisitedCount: map['most_visited_stadium_count'] as int?,
+      );
+
+  @override
+  List<Object?> get props => [
+    uniqueStadiums,
+    mostVisitedName,
+    mostVisitedCount,
+  ];
+}
+
 /// Uma linha do ranking do Passaporte — totalmente separado do ranking da
 /// Arena (`RankingEntry`), pontuação própria (1 partida marcada = 1 ponto).
 class PassportRankingEntry extends Equatable {

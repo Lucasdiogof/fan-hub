@@ -62,68 +62,73 @@ class _PassportRankingView extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: BlocBuilder<PassportRankingCubit, PassportRankingState>(
-                    builder: (context, state) {
-                      return RefreshIndicator(
-                        onRefresh: () =>
-                            context.read<PassportRankingCubit>().refresh(),
-                        color: colors.primary,
-                        child: ListView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(
-                            AppSpacing.lg,
-                            AppSpacing.md,
-                            AppSpacing.lg,
-                            AppSpacing.xxxl,
-                          ),
-                          children: [
-                            _PeriodSelector(state: state),
-                            const SizedBox(height: AppSpacing.lg),
-                            switch (state.status) {
-                              LoadStatus.initial ||
-                              LoadStatus.loading => const Padding(
-                                padding: EdgeInsets.only(top: 60),
-                                child: Center(child: GoiasLoadingIndicator()),
+                  child:
+                      BlocBuilder<PassportRankingCubit, PassportRankingState>(
+                        builder: (context, state) {
+                          return RefreshIndicator(
+                            onRefresh: () =>
+                                context.read<PassportRankingCubit>().refresh(),
+                            color: colors.primary,
+                            child: ListView(
+                              physics: const AlwaysScrollableScrollPhysics(),
+                              padding: const EdgeInsets.fromLTRB(
+                                AppSpacing.lg,
+                                AppSpacing.md,
+                                AppSpacing.lg,
+                                AppSpacing.xxxl,
                               ),
-                              LoadStatus.error => Padding(
-                                padding: const EdgeInsets.only(top: 60),
-                                child: Center(
-                                  child: StateMessage(
-                                    icon: Icons.wifi_off_rounded,
-                                    title: context.l10n.passportLoadErrorTitle,
-                                    message: state.errorMessage,
-                                    actionLabel: context.l10n.commonRetry,
-                                    onAction: () => context
-                                        .read<PassportRankingCubit>()
-                                        .refresh(),
+                              children: [
+                                _PeriodSelector(state: state),
+                                const SizedBox(height: AppSpacing.lg),
+                                switch (state.status) {
+                                  LoadStatus.initial ||
+                                  LoadStatus.loading => const Padding(
+                                    padding: EdgeInsets.only(top: 60),
+                                    child: Center(
+                                      child: GoiasLoadingIndicator(),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              LoadStatus.empty => Padding(
-                                padding: const EdgeInsets.only(top: 60),
-                                child: Center(
-                                  child: StateMessage(
-                                    icon: Icons.leaderboard_outlined,
-                                    title:
-                                        context.l10n.passportRankingEmptyTitle,
-                                    message: context
-                                        .l10n
-                                        .passportRankingEmptyMessage,
+                                  LoadStatus.error => Padding(
+                                    padding: const EdgeInsets.only(top: 60),
+                                    child: Center(
+                                      child: StateMessage(
+                                        icon: Icons.wifi_off_rounded,
+                                        title:
+                                            context.l10n.passportLoadErrorTitle,
+                                        message: state.errorMessage,
+                                        actionLabel: context.l10n.commonRetry,
+                                        onAction: () => context
+                                            .read<PassportRankingCubit>()
+                                            .refresh(),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              LoadStatus.success => Column(
-                                children: [
-                                  for (final entry in state.entries)
-                                    _RankingRow(entry: entry),
-                                ],
-                              ),
-                            },
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                                  LoadStatus.empty => Padding(
+                                    padding: const EdgeInsets.only(top: 60),
+                                    child: Center(
+                                      child: StateMessage(
+                                        icon: Icons.leaderboard_outlined,
+                                        title: context
+                                            .l10n
+                                            .passportRankingEmptyTitle,
+                                        message: context
+                                            .l10n
+                                            .passportRankingEmptyMessage,
+                                      ),
+                                    ),
+                                  ),
+                                  LoadStatus.success => Column(
+                                    children: [
+                                      for (final entry in state.entries)
+                                        _RankingRow(entry: entry),
+                                    ],
+                                  ),
+                                },
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                 ),
               ],
             ),
@@ -143,9 +148,7 @@ class _PeriodSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final currentYear = DateTime.now().year;
-    final years = [
-      for (var y = currentYear; y >= currentYear - 4; y--) y,
-    ];
+    final years = [for (var y = currentYear; y >= currentYear - 4; y--) y];
     final options = <(int?, String)>[
       (null, l10n.passportRankingPeriodOverall),
       for (final y in years) (y, '$y'),
@@ -169,7 +172,10 @@ class _PeriodSelector extends StatelessWidget {
                   context.read<PassportRankingCubit>().selectYear(year),
               borderRadius: BorderRadius.circular(999),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: selected ? colors.primary : colors.secondary,
@@ -211,7 +217,9 @@ class _RankingRow extends StatelessWidget {
         color: entry.isMe ? colors.secondary : colors.surface,
         borderRadius: BorderRadius.circular(AppRadius.card),
         border: Border.all(
-          color: entry.isMe ? colors.primary.withValues(alpha: 0.35) : colors.border,
+          color: entry.isMe
+              ? colors.primary.withValues(alpha: 0.35)
+              : colors.border,
         ),
       ),
       child: Row(

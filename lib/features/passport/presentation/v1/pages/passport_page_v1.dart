@@ -89,7 +89,8 @@ class _PassportView extends StatelessWidget {
                           button: true,
                           label: context.l10n.passportRankingCta,
                           child: InkWell(
-                            onTap: () => context.push('/arena/passport/ranking'),
+                            onTap: () =>
+                                context.push('/arena/passport/ranking'),
                             borderRadius: BorderRadius.circular(999),
                             child: Container(
                               width: 38,
@@ -146,7 +147,8 @@ class _PassportView extends StatelessWidget {
                             Expanded(child: _Body(state: state)),
                             PassportSaveBarV1(
                               state: state,
-                              onSave: () => context.read<PassportCubit>().save(),
+                              onSave: () =>
+                                  context.read<PassportCubit>().save(),
                             ),
                           ],
                         );

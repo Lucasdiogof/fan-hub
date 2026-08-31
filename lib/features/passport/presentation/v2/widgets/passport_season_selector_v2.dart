@@ -184,7 +184,8 @@ class _SeasonSheet extends StatelessWidget {
                   vertical: AppSpacing.sm,
                 ),
                 itemCount: seasons.length,
-                separatorBuilder: (_, _) => Divider(height: 1, color: colors.border),
+                separatorBuilder: (_, _) =>
+                    Divider(height: 1, color: colors.border),
                 itemBuilder: (context, index) {
                   final season = seasons[index];
                   final selected = season.season == selectedYear;

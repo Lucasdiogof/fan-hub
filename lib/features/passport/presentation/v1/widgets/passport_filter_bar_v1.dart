@@ -110,7 +110,10 @@ class _FilterChip extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(999),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: small ? 10 : 12, vertical: 6),
+          padding: EdgeInsets.symmetric(
+            horizontal: small ? 10 : 12,
+            vertical: 6,
+          ),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: selected ? colors.primary : colors.secondary,

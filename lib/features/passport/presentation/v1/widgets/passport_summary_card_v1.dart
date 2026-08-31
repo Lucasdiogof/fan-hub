@@ -18,7 +18,8 @@ class PassportSummaryCardV1 extends StatelessWidget {
     final colors = context.colors;
     final l10n = context.l10n;
     final hasDates =
-        summary.firstMarkedMatchDate != null && summary.lastMarkedMatchDate != null;
+        summary.firstMarkedMatchDate != null &&
+        summary.lastMarkedMatchDate != null;
 
     return Container(
       decoration: BoxDecoration(

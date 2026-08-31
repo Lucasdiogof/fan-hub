@@ -202,7 +202,11 @@ class _DateStub extends StatelessWidget {
 }
 
 class _Matchup extends StatelessWidget {
-  const _Matchup({required this.home, required this.away, required this.opponent});
+  const _Matchup({
+    required this.home,
+    required this.away,
+    required this.opponent,
+  });
 
   final String? home;
   final String? away;
@@ -214,30 +218,37 @@ class _Matchup extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     if (home == null || away == null) {
-      return _MatchupText(spans: [
+      return _MatchupText(
+        spans: [
+          TextSpan(
+            text: 'Goiás',
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              color: colors.primary,
+            ),
+          ),
+          const TextSpan(text: ' x '),
+          TextSpan(text: opponent),
+        ],
+      );
+    }
+    return _MatchupText(
+      spans: [
         TextSpan(
-          text: 'Goiás',
-          style: TextStyle(fontWeight: FontWeight.w900, color: colors.primary),
+          text: home,
+          style: _isGoias(home!)
+              ? TextStyle(fontWeight: FontWeight.w900, color: colors.primary)
+              : null,
         ),
         const TextSpan(text: ' x '),
-        TextSpan(text: opponent),
-      ]);
-    }
-    return _MatchupText(spans: [
-      TextSpan(
-        text: home,
-        style: _isGoias(home!)
-            ? TextStyle(fontWeight: FontWeight.w900, color: colors.primary)
-            : null,
-      ),
-      const TextSpan(text: ' x '),
-      TextSpan(
-        text: away,
-        style: _isGoias(away!)
-            ? TextStyle(fontWeight: FontWeight.w900, color: colors.primary)
-            : null,
-      ),
-    ]);
+        TextSpan(
+          text: away,
+          style: _isGoias(away!)
+              ? TextStyle(fontWeight: FontWeight.w900, color: colors.primary)
+              : null,
+        ),
+      ],
+    );
   }
 }
 

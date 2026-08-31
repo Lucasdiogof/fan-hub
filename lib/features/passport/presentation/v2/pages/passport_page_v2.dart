@@ -246,7 +246,7 @@ class _BodyV2 extends StatelessWidget {
     final cover = PassportCoverV2(
       summary: state.summary,
       holderName: holderName,
-      onTap: () => context.push('/arena/passport/stats'),
+      onTap: () => context.push('/arena/passport/trajectory'),
     );
     // Só o onboarding (zero jogos) ocupa esse espaço — com jogos marcados,
     // o card já mostra o essencial (jogos carimbados + nível) e a lista

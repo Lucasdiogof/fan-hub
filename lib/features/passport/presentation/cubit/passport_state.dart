@@ -61,30 +61,31 @@ class PassportState extends Equatable {
         ..sort();
 
   List<PassportMatch> get filteredMatches {
-    return matches.where((match) {
-      if (competitionFilter != null &&
-          match.competitionCode != competitionFilter) {
-        return false;
-      }
-      switch (filter) {
-        case PassportFilter.all:
-          return true;
-        case PassportFilter.attended:
-          return effectiveAttended(match);
-        case PassportFilter.notAttended:
-          return !effectiveAttended(match);
-        case PassportFilter.home:
-          return match.goiasIsHome == true;
-        case PassportFilter.away:
-          return match.goiasIsHome == false;
-        case PassportFilter.neutral:
-          return match.neutralSite == true;
-      }
-    }).toList(growable: false);
+    return matches
+        .where((match) {
+          if (competitionFilter != null &&
+              match.competitionCode != competitionFilter) {
+            return false;
+          }
+          switch (filter) {
+            case PassportFilter.all:
+              return true;
+            case PassportFilter.attended:
+              return effectiveAttended(match);
+            case PassportFilter.notAttended:
+              return !effectiveAttended(match);
+            case PassportFilter.home:
+              return match.goiasIsHome == true;
+            case PassportFilter.away:
+              return match.goiasIsHome == false;
+            case PassportFilter.neutral:
+              return match.neutralSite == true;
+          }
+        })
+        .toList(growable: false);
   }
 
-  int get yearFinishedCount =>
-      matches.where((m) => m.isFinished).length;
+  int get yearFinishedCount => matches.where((m) => m.isFinished).length;
 
   int get yearMarkedCount =>
       matches.where((m) => m.isFinished && effectiveAttended(m)).length;

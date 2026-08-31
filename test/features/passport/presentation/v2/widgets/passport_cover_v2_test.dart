@@ -14,7 +14,10 @@ Future<void> _pump(WidgetTester tester, int totalMatches, {ThemeData? theme}) =>
         theme: theme ?? AppTheme.light,
         home: Scaffold(
           body: PassportCoverV2(
-            summary: PassportSummary(totalMatches: totalMatches, yearsWithAttendance: 1),
+            summary: PassportSummary(
+              totalMatches: totalMatches,
+              yearsWithAttendance: 1,
+            ),
           ),
         ),
       ),
@@ -25,7 +28,10 @@ void main() {
     tester,
   ) async {
     await _pump(tester, 1);
-    expect(find.text('1 jogo cantando e vibrando com o Verdão'), findsOneWidget);
+    expect(
+      find.text('1 jogo cantando e vibrando com o Verdão'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('plural: 43 jogos cantando e vibrando com o Verdão', (
