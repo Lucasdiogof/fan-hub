@@ -18,7 +18,7 @@ class TicketEvent extends Equatable {
     required this.checkInStatus,
     this.confirmedSectorName,
     this.checkInTicket,
-    this.myTicketForSelf,
+    this.hasTicketForMatch = false,
   });
 
   final Match match;
@@ -30,9 +30,10 @@ class TicketEvent extends Equatable {
   final String? confirmedSectorName;
   final Ticket? checkInTicket;
 
-  /// Ingresso comprado pro CPF/passaporte do próprio usuário nesta partida,
-  /// se existir (ver regra #23 — comprar pra outra pessoa não conta).
-  final Ticket? myTicketForSelf;
+  /// Se o usuário já comprou algum ingresso pra esta partida, pra ele
+  /// mesmo ou pra outra pessoa — nesse caso a UI manda pra "Meus
+  /// ingressos" em vez de repetir a compra.
+  final bool hasTicketForMatch;
 
   @override
   List<Object?> get props => [
@@ -42,6 +43,6 @@ class TicketEvent extends Equatable {
     checkInStatus,
     confirmedSectorName,
     checkInTicket,
-    myTicketForSelf,
+    hasTicketForMatch,
   ];
 }

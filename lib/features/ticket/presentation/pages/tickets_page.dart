@@ -184,6 +184,8 @@ class _TicketsView extends StatelessWidget {
                                         ),
                                         onViewTicket: (ticket) =>
                                             _viewTicket(context, ticket),
+                                        onViewMyTickets: () =>
+                                            context.push('/tickets/my'),
                                         onUndoCheckIn: () =>
                                             _undoCheckIn(context, state.event!),
                                       ),

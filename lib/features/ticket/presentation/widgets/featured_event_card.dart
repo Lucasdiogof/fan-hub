@@ -22,6 +22,7 @@ class FeaturedEventCard extends StatelessWidget {
     required this.onCheckIn,
     required this.onBuyTicket,
     required this.onViewTicket,
+    required this.onViewMyTickets,
     required this.onUndoCheckIn,
     super.key,
   });
@@ -31,6 +32,7 @@ class FeaturedEventCard extends StatelessWidget {
   final VoidCallback onCheckIn;
   final VoidCallback onBuyTicket;
   final void Function(Ticket ticket) onViewTicket;
+  final VoidCallback onViewMyTickets;
   final VoidCallback onUndoCheckIn;
 
   @override
@@ -169,12 +171,11 @@ class FeaturedEventCard extends StatelessWidget {
 
   Widget _nonMemberSection(BuildContext context) {
     final l10n = context.l10n;
-    final myTicket = event.myTicketForSelf;
-    if (myTicket != null) {
+    if (event.hasTicketForMatch) {
       return _StatusBlock(
-        label: l10n.ticketsHasOwnTicketLabel,
-        buttonLabel: l10n.ticketsViewTicketButton,
-        onTap: () => onViewTicket(myTicket),
+        label: null,
+        buttonLabel: l10n.ticketsMyTickets,
+        onTap: onViewMyTickets,
       );
     }
     return switch (event.saleStatus) {
@@ -272,7 +273,7 @@ class _StatusBlock extends StatelessWidget {
     this.labelColor,
   });
 
-  final String label;
+  final String? label;
   final String buttonLabel;
   final VoidCallback? onTap;
   final String? subtitle;
@@ -284,15 +285,17 @@ class _StatusBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          label,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-            color: labelColor ?? colors.textSecondary,
+        if (label != null) ...[
+          Text(
+            label!,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: labelColor ?? colors.textSecondary,
+            ),
           ),
-        ),
+        ],
         if (subtitle != null) ...[
           const SizedBox(height: 4),
           Text(
