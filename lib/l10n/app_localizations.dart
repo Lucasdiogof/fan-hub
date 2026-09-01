@@ -2684,7 +2684,7 @@ abstract class AppLocalizations {
   ///
   /// In pt, this message translates to:
   /// **'{percent}% de afinidade tática'**
-  String tacticalIdentityAffinityLabel(int percent);
+  String tacticalIdentityAffinityLabel(String percent);
 
   /// No description provided for @tacticalResultShare.
   ///

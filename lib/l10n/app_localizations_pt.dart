@@ -1495,7 +1495,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get tacticalResultOtherReferences => 'OUTRAS REFERÊNCIAS';
 
   @override
-  String tacticalIdentityAffinityLabel(int percent) {
+  String tacticalIdentityAffinityLabel(String percent) {
     return '$percent% de afinidade tática';
   }
 

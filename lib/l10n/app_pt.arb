@@ -533,7 +533,7 @@
   "tacticalResultMainReference": "SUA PRINCIPAL REFERÊNCIA ESMERALDINA",
   "tacticalResultOtherReferences": "OUTRAS REFERÊNCIAS",
   "tacticalIdentityAffinityLabel": "{percent}% de afinidade tática",
-  "@tacticalIdentityAffinityLabel": { "placeholders": { "percent": { "type": "int" } } },
+  "@tacticalIdentityAffinityLabel": { "placeholders": { "percent": { "type": "String" } } },
   "tacticalResultShare": "Compartilhar resultado",
   "tacticalAxisPossession": "POSSE",
   "tacticalAxisVertical": "VERTICAL",

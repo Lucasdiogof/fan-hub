@@ -220,7 +220,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get matchTabStandings => 'CLASIFICACIÓN';
 
   @override
-  String get matchCalendarHome => 'CASA';
+  String get matchCalendarHome => 'LOCAL';
 
   @override
   String get matchCalendarAway => 'FUERA';
@@ -1489,7 +1489,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get tacticalResultOtherReferences => 'OTRAS REFERENCIAS';
 
   @override
-  String tacticalIdentityAffinityLabel(int percent) {
+  String tacticalIdentityAffinityLabel(String percent) {
     return '$percent% de afinidad táctica';
   }
 
