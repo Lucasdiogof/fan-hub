@@ -61,9 +61,9 @@ class _StoreAddressesPageState extends State<StoreAddressesPage> {
     final residential = result is Success<UserAddress?> ? result.data : null;
     if (residential == null || residential.isEmpty) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(context.l10n.addressLoadError)),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(context.l10n.addressLoadError)));
       return;
     }
     final prefill = CustomerAddress(
@@ -193,10 +193,8 @@ class _StoreAddressesPageState extends State<StoreAddressesPage> {
                   child: Column(
                     children: [
                       OutlinedButton.icon(
-                        onPressed: () => showStoreAddressFormSheet(
-                          context,
-                          onSave: _create,
-                        ),
+                        onPressed: () =>
+                            showStoreAddressFormSheet(context, onSave: _create),
                         icon: const Icon(Icons.add_rounded, size: 18),
                         label: Text(l10n.storeAddAddress),
                         style: OutlinedButton.styleFrom(

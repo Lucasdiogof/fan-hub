@@ -44,9 +44,8 @@ class ProductDetailCubit extends Cubit<ProductDetailState> {
     emit(state.copyWith(status: LoadStatus.error));
   }
 
-  void selectSize(String size) => emit(
-    state.copyWith(selectedSize: () => size, showSizeRequired: false),
-  );
+  void selectSize(String size) =>
+      emit(state.copyWith(selectedSize: () => size, showSizeRequired: false));
 
   /// Chamado quando o usuário toca em comprar/adicionar sem escolher tamanho —
   /// a tela usa isso pra rolar até e destacar a seção Tamanho.

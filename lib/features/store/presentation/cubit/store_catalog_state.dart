@@ -32,7 +32,8 @@ class StoreCatalogState extends Equatable {
       .where((p) => p.audience == a && p.type != ProductType.accessory)
       .toList();
 
-  List<StoreProduct> get masculineProducts => _audience(StoreAudience.masculine);
+  List<StoreProduct> get masculineProducts =>
+      _audience(StoreAudience.masculine);
   List<StoreProduct> get feminineProducts => _audience(StoreAudience.feminine);
   List<StoreProduct> get kidsProducts => _audience(StoreAudience.kids);
   List<StoreProduct> get accessoryProducts =>

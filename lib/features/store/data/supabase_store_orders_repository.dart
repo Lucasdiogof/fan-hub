@@ -95,7 +95,9 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
     final resolvedShippingOption =
         fulfillmentMethod == FulfillmentMethod.delivery ? shippingOption : null;
     final resolvedPickupResponsible =
-        fulfillmentMethod == FulfillmentMethod.pickup ? pickupResponsible : null;
+        fulfillmentMethod == FulfillmentMethod.pickup
+        ? pickupResponsible
+        : null;
     final shippingCost = fulfillmentMethod == FulfillmentMethod.pickup
         ? 0.0
         : (shippingOption?.price ?? 0);
@@ -217,9 +219,7 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
     return StoreOrder(
       id: row['order_number'] as String,
       createdAt: DateTime.parse(row['created_at'] as String).toLocal(),
-      items: itemRows
-          .map((e) => _mapItem(e as Map<String, dynamic>))
-          .toList(),
+      items: itemRows.map((e) => _mapItem(e as Map<String, dynamic>)).toList(),
       identification: CustomerIdentification.fromJson(
         row['customer'] as Map<String, dynamic>,
       ),

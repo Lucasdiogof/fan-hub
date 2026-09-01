@@ -732,10 +732,7 @@ class _DeliveryAddressSectionState extends State<_DeliveryAddressSection> {
     return result is Success<UserAddress?> ? result.data : null;
   }
 
-  Future<void> _useResidential(
-    CheckoutCubit cubit,
-    UserAddress residential,
-  ) {
+  Future<void> _useResidential(CheckoutCubit cubit, UserAddress residential) {
     return cubit.addAddress(
       CustomerAddress(
         id: 'addr_${DateTime.now().microsecondsSinceEpoch}',
@@ -802,8 +799,10 @@ class _DeliveryAddressSectionState extends State<_DeliveryAddressSection> {
                 onUseResidential: hasResidential
                     ? () => _useResidential(cubit, residential)
                     : null,
-                onAddNew: () =>
-                    showStoreAddressFormSheet(context, onSave: cubit.addAddress),
+                onAddNew: () => showStoreAddressFormSheet(
+                  context,
+                  onSave: cubit.addAddress,
+                ),
               ),
             if (state.selectedAddress != null) ...[
               _FieldLabel(l10n.storeShippingLabel),
@@ -831,7 +830,10 @@ class _DeliveryAddressSectionState extends State<_DeliveryAddressSection> {
 /// CTA discreto pra abrir o seletor completo, em vez da lista sempre
 /// expandida de antes.
 class _SelectedAddressSummary extends StatelessWidget {
-  const _SelectedAddressSummary({required this.address, required this.onChange});
+  const _SelectedAddressSummary({
+    required this.address,
+    required this.onChange,
+  });
 
   final CustomerAddress address;
   final VoidCallback onChange;
@@ -868,10 +870,7 @@ class _SelectedAddressSummary extends StatelessWidget {
                   ),
                 Text(
                   address.oneLine,
-                  style: TextStyle(
-                    fontSize: 12.5,
-                    color: colors.textSecondary,
-                  ),
+                  style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
                 ),
               ],
             ),
@@ -938,7 +937,9 @@ class _NoDeliveryAddressState extends StatelessWidget {
             onPressed: onAddNew,
             icon: const Icon(Icons.add_rounded, size: 18),
             label: Text(
-              hasResidential ? l10n.storeAddAnotherAddress : l10n.storeAddAddress,
+              hasResidential
+                  ? l10n.storeAddAnotherAddress
+                  : l10n.storeAddAddress,
             ),
             style: OutlinedButton.styleFrom(
               minimumSize: const Size.fromHeight(44),

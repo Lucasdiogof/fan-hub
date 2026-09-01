@@ -462,10 +462,7 @@ class _ProductInfo extends StatelessWidget {
           _InlineNotice(text: l10n.storeProductSoldOut)
         else ...[
           if (product.availableSizes.isNotEmpty) ...[
-            KeyedSubtree(
-              key: sizeKey,
-              child: _FieldLabel(l10n.storeSizeLabel),
-            ),
+            KeyedSubtree(key: sizeKey, child: _FieldLabel(l10n.storeSizeLabel)),
             const SizedBox(height: AppSpacing.sm),
             Wrap(
               spacing: 8,
@@ -543,7 +540,11 @@ class _ProductInfo extends StatelessWidget {
         const SizedBox(height: AppSpacing.sm),
         Text(
           product.description,
-          style: TextStyle(fontSize: 13, color: colors.textSecondary, height: 1.5),
+          style: TextStyle(
+            fontSize: 13,
+            color: colors.textSecondary,
+            height: 1.5,
+          ),
         ),
         if (product.specifications.isNotEmpty) ...[
           const SizedBox(height: AppSpacing.md),

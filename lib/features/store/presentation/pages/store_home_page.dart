@@ -69,47 +69,52 @@ class _StoreHomeView extends StatelessWidget {
                     AppSpacing.lg,
                     0,
                   ),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (showBackButton) ...[
-                        BackButtonCircle(
-                          size: 34,
-                          iconSize: 16,
-                          onTap: () => context.canPop()
-                              ? context.pop()
-                              : context.go('/'),
-                        ),
-                        const SizedBox(width: AppSpacing.md),
-                      ],
-                      Expanded(
-                        child: PageTitle(
-                          context.l10n.storeHomeTitle.toUpperCase(),
-                        ),
-                      ),
-                      Semantics(
-                        button: true,
-                        label: context.l10n.storeSearchHint,
-                        child: InkWell(
-                          onTap: () => context.push('/store/search'),
-                          borderRadius: BorderRadius.circular(999),
-                          child: Container(
-                            width: 34,
-                            height: 34,
-                            margin: const EdgeInsets.only(right: AppSpacing.sm),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: colors.secondary,
-                              shape: BoxShape.circle,
+                      Row(
+                        children: [
+                          if (showBackButton) ...[
+                            BackButtonCircle(
+                              size: 34,
+                              iconSize: 16,
+                              onTap: () => context.canPop()
+                                  ? context.pop()
+                                  : context.go('/'),
                             ),
-                            child: Icon(
-                              Icons.search_rounded,
-                              size: 17,
-                              color: colors.textPrimary,
+                            const Spacer(),
+                          ] else
+                            const Spacer(),
+                          Semantics(
+                            button: true,
+                            label: context.l10n.storeSearchHint,
+                            child: InkWell(
+                              onTap: () => context.push('/store/search'),
+                              borderRadius: BorderRadius.circular(999),
+                              child: Container(
+                                width: 34,
+                                height: 34,
+                                margin: const EdgeInsets.only(
+                                  right: AppSpacing.sm,
+                                ),
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: colors.secondary,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  Icons.search_rounded,
+                                  size: 17,
+                                  color: colors.textPrimary,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          const CartIconButton(size: 34, iconSize: 16),
+                        ],
                       ),
-                      const CartIconButton(size: 34, iconSize: 16),
+                      const SizedBox(height: AppSpacing.lg),
+                      PageTitle(context.l10n.storeHomeTitle.toUpperCase()),
                     ],
                   ),
                 ),

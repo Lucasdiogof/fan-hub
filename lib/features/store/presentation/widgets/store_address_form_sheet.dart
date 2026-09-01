@@ -61,9 +61,7 @@ class _StoreAddressFormState extends State<_StoreAddressForm> {
     text: _seed?.neighborhood ?? '',
   );
   late final _cityController = TextEditingController(text: _seed?.city ?? '');
-  late final _stateController = TextEditingController(
-    text: _seed?.state ?? '',
-  );
+  late final _stateController = TextEditingController(text: _seed?.state ?? '');
 
   bool _saving = false;
   bool _submitted = false;

@@ -78,7 +78,10 @@ class SupabaseDeliveryAddressRepository implements DeliveryAddressRepository {
   Future<void> setDefault(String id) async {
     await _client
         .from('delivery_addresses')
-        .update({'is_default': true, 'updated_at': DateTime.now().toIso8601String()})
+        .update({
+          'is_default': true,
+          'updated_at': DateTime.now().toIso8601String(),
+        })
         .eq('id', id)
         .eq('user_id', _uid);
   }
