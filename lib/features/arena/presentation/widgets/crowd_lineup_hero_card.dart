@@ -45,13 +45,13 @@ class CrowdLineupHeroCard extends StatelessWidget {
           const Positioned.fill(child: StadiumBackdrop(showFloodlights: false)),
           Positioned(
             right: -30,
-            bottom: -8,
+            bottom: 92,
             child: Opacity(
               opacity: 0.1,
               child: Image.asset(
                 AppAssets.tacticsBoardIllustration,
-                width: 190,
-                height: 190,
+                width: 160,
+                height: 160,
                 fit: BoxFit.contain,
               ),
             ),

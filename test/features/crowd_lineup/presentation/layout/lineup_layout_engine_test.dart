@@ -187,29 +187,28 @@ void main() {
     }
   });
 
-  test('name is always 2 lines in every formation — only formations stacking '
-      'many tactical lines at once drop the percent badge instead, never '
-      'because of player count within a line', () {
+  test('the percent badge never disappears in any formation — only '
+      'formations stacking many tactical lines at once abbreviate the name '
+      'to 1 line instead, never because of player count within a line', () {
     // 4-1-2-1-2 (losango) empilha 6 linhas ao mesmo tempo — é o único
-    // caso que precisa ceder a badge de porcentagem pra não violar o
-    // safety gap sem encolher a camisa nem abreviar o nome.
+    // caso que precisa ceder o nome (abrevia pra 1 linha) pra não violar
+    // o safety gap sem encolher a camisa nem esconder o resultado da
+    // votação.
     final losango = engine.resolve(
       formation: formationById('4-1-2-1-2'),
       fieldSize: const Size(360, 562),
       mode: LineupRenderMode.crowd,
     );
-    expect(losango.first.footprint.nameMaxLines, 2);
-    expect(losango.first.footprint.showPercentBadge, isFalse);
+    expect(losango.first.footprint.nameMaxLines, 1);
 
     // 5-3-2 e 5-4-1 têm uma linha de 5 jogadores (a mais cheia que
-    // existe) mas só 4-5 linhas no total — nome em 2 linhas E badge
-    // continuam cabendo.
+    // existe) mas só 4-5 linhas no total — nome em 2 linhas continua
+    // cabendo.
     final fiveAtBack = engine.resolve(
       formation: formationById('5-3-2'),
       fieldSize: const Size(360, 562),
       mode: LineupRenderMode.crowd,
     );
     expect(fiveAtBack.first.footprint.nameMaxLines, 2);
-    expect(fiveAtBack.first.footprint.showPercentBadge, isTrue);
   });
 }

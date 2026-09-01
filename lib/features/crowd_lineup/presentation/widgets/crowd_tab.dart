@@ -169,13 +169,11 @@ class _CrowdSlot extends StatelessWidget {
             numberColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
             trimColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
           ),
-        if (footprint.showPercentBadge) ...[
-          const SizedBox(height: 3),
-          if (result != null && player != null)
-            LineupPercentBadge(percent: result!.percent)
-          else
-            const SizedBox(height: 15),
-        ],
+        const SizedBox(height: 3),
+        if (result != null && player != null)
+          LineupPercentBadge(percent: result!.percent)
+        else
+          const SizedBox(height: 15),
         const SizedBox(height: 4),
         LineupNameLabel(
           text: player?.name ?? position,

@@ -59,6 +59,36 @@ class LineupNameLabel extends StatelessWidget {
         : maxLines == 1
         ? [abbreviateNameForDisplay(text)]
         : splitNameForDisplay(text);
+    // Um nome de uma palavra só (ex.: "Tadeu") não precisa da segunda
+    // linha — mas a ALTURA reservada precisa continuar igual à de
+    // `maxLines` linhas (senão a camisa do vizinho, cujo nome usa as 2
+    // linhas de verdade, "pula" de posição). Por isso o dimensionador
+    // invisível abaixo sempre usa `maxLines`, e só a pílula visível encolhe
+    // pro conteúdo real, alinhada no topo desse mesmo espaço.
+    return SizedBox(
+      width: maxWidth,
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Opacity(
+            opacity: 0,
+            child: _NamePill(lines: List.filled(maxLines, ''), maxWidth: maxWidth),
+          ),
+          _NamePill(lines: lines, maxWidth: maxWidth),
+        ],
+      ),
+    );
+  }
+}
+
+class _NamePill extends StatelessWidget {
+  const _NamePill({required this.lines, required this.maxWidth});
+
+  final List<String> lines;
+  final double maxWidth;
+
+  @override
+  Widget build(BuildContext context) {
     const style = TextStyle(
       color: Colors.white,
       fontSize: 9.5,
@@ -76,9 +106,9 @@ class LineupNameLabel extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          for (var i = 0; i < maxLines; i++)
+          for (final line in lines)
             Text(
-              i < lines.length ? lines[i].toUpperCase() : '',
+              line.toUpperCase(),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

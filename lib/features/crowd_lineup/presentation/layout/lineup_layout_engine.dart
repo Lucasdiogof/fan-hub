@@ -18,23 +18,20 @@ class PlayerVisualFootprint {
     required this.width,
     required this.height,
     required this.nameMaxLines,
-    required this.showPercentBadge,
   });
 
   final double jerseySize;
   final double width;
   final double height;
 
-  /// Sempre 2 — nome e sobrenome do jogador, em qualquer formação (pedido
-  /// explícito: nunca abreviar por causa do formato tático).
+  /// 2 nome+sobrenome normalmente; cai pra 1 (nome abreviado, ver
+  /// `abbreviateNameForDisplay`) só quando a formação empilha tantas linhas
+  /// táticas ao mesmo tempo (ex.: o losango 4-1-2-1-2, com 6) que não sobra
+  /// altura pra isso mais a camisa fixa e a badge de porcentagem SEM violar
+  /// `minSafetyGap`. A badge (resultado da votação) NUNCA cede espaço —
+  /// é a informação mais importante da tela; a camisa também nunca encolhe;
+  /// então é sempre o nome que abrevia quando algo precisa ceder.
   final int nameMaxLines;
-
-  /// `false` só quando a formação empilha tantas linhas táticas ao mesmo
-  /// tempo (ex.: o losango 4-1-2-1-2, com 6) que não sobra altura pra nome
-  /// em 2 linhas + camisa fixa + badge de porcentagem SEM violar
-  /// `minSafetyGap` — e a camisa nunca encolhe, o nome nunca abrevia. A
-  /// badge (só informativa) é o que cede espaço aqui, nunca o nome.
-  final bool showPercentBadge;
 }
 
 /// Resultado final e completo de UM slot: onde a camisa fica (`anchor`,
@@ -86,8 +83,9 @@ class LineupLayoutEngine {
   /// com nome em 2 linhas + badge de porcentagem sem violar `minSafetyGap`.
   /// Hoje só o losango do 4-1-2-1-2 (6 linhas: ataque/meia/meio/volante/
   /// defesa/gol) bate nisso — as demais (até 5 linhas) sobram espaço de
-  /// sobra. Nessas formações a badge para de ser reservada/desenhada (ver
-  /// `PlayerVisualFootprint.showPercentBadge`) — nome e camisa nunca cedem.
+  /// sobra. Nessas formações é o NOME que cai pra 1 linha (ver
+  /// `PlayerVisualFootprint.nameMaxLines`) — a badge de porcentagem nunca
+  /// cede, é a informação mais importante da tela (o resultado da votação).
   static const _manyLinesThreshold = 6;
 
   // Medido com folga em cima do que o `LineupNameLabel`/`LineupPercentBadge`
@@ -116,14 +114,12 @@ class LineupLayoutEngine {
     final widestLine = lines.values
         .map((slots) => slots.length)
         .reduce((a, b) => a > b ? a : b);
-    // Nome do jogador é sempre nome + sobrenome em 2 linhas, em qualquer
-    // formação — pedido explícito. Quando a formação empilha muitas linhas
-    // (o losango 4-1-2-1-2), não sobra altura pra isso MAIS a badge de
-    // porcentagem sem violar `minSafetyGap` ou encolher a camisa — então é
-    // a badge que para de ser reservada, nunca o nome.
+    // A badge de porcentagem é o resultado da votação — a informação mais
+    // importante da tela — então NUNCA some, em nenhuma formação. Quando a
+    // formação empilha muitas linhas (o losango 4-1-2-1-2), quem cede
+    // espaço é o nome, caindo pra 1 linha abreviada.
     final manyLines = lines.length >= _manyLinesThreshold;
-    const nameMaxLines = 2;
-    final showPercentBadge = !manyLines;
+    final nameMaxLines = manyLines ? 1 : 2;
 
     // O ANCHOR nunca pode depender do modo — se dimensionássemos a altura
     // com a allowance de cada modo separadamente, os dois modos
@@ -132,11 +128,10 @@ class LineupLayoutEngine {
     // altura "de segurança" sempre usa a MAIOR allowance entre os dois
     // modos — o modo com menos conteúdo (`editable`) só usa uma fatia menor
     // dessa mesma célula reservada, nunca uma célula própria.
-    final percentAllowance = showPercentBadge ? _percentAllowance : 0.0;
-    final sharedAllowance = percentAllowance > _removeAllowance
-        ? percentAllowance
+    const sharedAllowance = _percentAllowance > _removeAllowance
+        ? _percentAllowance
         : _removeAllowance;
-    const nameAllowance = _nameTopGap + _nameLineHeight * nameMaxLines;
+    final nameAllowance = _nameTopGap + _nameLineHeight * nameMaxLines;
     final sharedCellHeight = jerseySize + nameAllowance + sharedAllowance;
 
     // Largura da célula (reserva pro nome/spacing, NUNCA pra camisa em si)
@@ -149,7 +144,6 @@ class LineupLayoutEngine {
       width: cellWidth,
       height: sharedCellHeight,
       nameMaxLines: nameMaxLines,
-      showPercentBadge: showPercentBadge,
     );
 
     final anchors = <int, Offset>{};
@@ -186,12 +180,8 @@ class LineupLayoutEngine {
     final renderFootprint = PlayerVisualFootprint(
       jerseySize: jerseySize,
       width: cellWidth,
-      height:
-          jerseySize +
-          nameAllowance +
-          _modeAllowance(mode, showPercentBadge: showPercentBadge),
+      height: jerseySize + nameAllowance + _modeAllowance(mode),
       nameMaxLines: nameMaxLines,
-      showPercentBadge: showPercentBadge,
     );
     return [
       for (final layout in corrected)
@@ -204,11 +194,8 @@ class LineupLayoutEngine {
     ];
   }
 
-  double _modeAllowance(
-    LineupRenderMode mode, {
-    required bool showPercentBadge,
-  }) => switch (mode) {
-    LineupRenderMode.crowd => showPercentBadge ? _percentAllowance : 0.0,
+  double _modeAllowance(LineupRenderMode mode) => switch (mode) {
+    LineupRenderMode.crowd => _percentAllowance,
     LineupRenderMode.editable => _removeAllowance,
   };
 
