@@ -1,12 +1,10 @@
-import 'dart:ui' show ImageFilter;
-
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-
-const _jerseyImage = 'lib/assets/store/promo/jersey_cutout_transparent.webp';
+import 'package:goias_app/features/arena/shared/arena_colors.dart';
 
 /// Entrada da Goiás Store na Home — um único banner (nunca dois blocos
 /// separados: fundo, textura, camisa e conteúdo dividem o mesmo
@@ -72,8 +70,8 @@ class StoreEntryCard extends StatelessWidget {
                       top: 8,
                       bottom: 0,
                       width: jerseyWidth,
-                      child: ExcludeSemantics(
-                        child: _JerseyWithShadow(width: jerseyWidth),
+                      child: const ExcludeSemantics(
+                        child: _StoreBannerWatermark(),
                       ),
                     ),
                     Padding(
@@ -188,43 +186,37 @@ class _StoreBadge extends StatelessWidget {
   }
 }
 
-/// Sombra suave atrás da camisa — uma cópia da mesma silhueta (recolorida
-/// pra preto via `ColorFilter.mode(..., BlendMode.srcIn)`, que preserva o
-/// alfa e só troca a cor), desfocada e com opacidade baixa, deslocada um
-/// pouco pra trás/baixo. Nunca um brilho ou bloco de cor — só o contorno
-/// real do produto suavizado, pra descolar ele do fundo sem parecer
-/// efeito artificial.
-class _JerseyWithShadow extends StatelessWidget {
-  const _JerseyWithShadow({required this.width});
-
-  final double width;
+/// Marca d'água do banner — mesma linguagem visual do card da Arena
+/// Esmeraldina na Home (ver `ArenaSpotlightCard`/`AppAssets.arenaStadiumPhoto`):
+/// tingida de verde, translúcida, sem disputar leitura com o texto. A foto
+/// de origem (`AppAssets.storeBanner`) não vem duotone/sem fundo como a da
+/// Arena, então os dois efeitos são feitos aqui: `BlendMode.color` reduz a
+/// imagem a um único matiz verde (preserva só a luminosidade dos pixels) e
+/// o `ShaderMask` esmaece a borda esquerda pro fundo escuro do banner, pra
+/// nunca aparecer como "uma foto colada em cima" com aresta reta.
+class _StoreBannerWatermark extends StatelessWidget {
+  const _StoreBannerWatermark();
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Positioned(
-          left: 6,
-          top: 10,
-          right: -6,
-          bottom: -6,
-          child: Opacity(
-            opacity: 0.32,
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-              child: ColorFiltered(
-                colorFilter: const ColorFilter.mode(
-                  Colors.black,
-                  BlendMode.srcIn,
-                ),
-                child: Image.asset(_jerseyImage, fit: BoxFit.contain),
-              ),
-            ),
+    return ShaderMask(
+      shaderCallback: (bounds) => const LinearGradient(
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [Colors.transparent, Colors.white],
+        stops: [0.0, 0.55],
+      ).createShader(bounds),
+      blendMode: BlendMode.dstIn,
+      child: Opacity(
+        opacity: 0.55,
+        child: ColorFiltered(
+          colorFilter: const ColorFilter.mode(
+            ArenaColors.pitch,
+            BlendMode.color,
           ),
+          child: Image.asset(AppAssets.storeBanner, fit: BoxFit.cover),
         ),
-        Image.asset(_jerseyImage, fit: BoxFit.contain),
-      ],
+      ),
     );
   }
 }

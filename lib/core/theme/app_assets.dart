@@ -44,4 +44,10 @@ class AppAssets {
   /// Esmeraldina na Home (ver [ArenaSpotlightCard]).
   static const String arenaStadiumPhoto =
       'lib/assets/branding/arena_stadium.png';
+
+  /// Foto colorida da caixa/uniformes da Goiás Store — usada só como marca
+  /// d'água do banner de entrada da loja na Home (ver [StoreEntryCard]),
+  /// tingida de verde e com opacidade baixa em tempo real (o arquivo em si
+  /// não é duotone, ao contrário de [arenaStadiumPhoto]).
+  static const String storeBanner = 'lib/assets/store_banner.png';
 }
