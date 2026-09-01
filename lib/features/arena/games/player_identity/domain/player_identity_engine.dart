@@ -21,18 +21,56 @@ class PlayerIdentityEngine {
   static const _attributeFloor = 25;
   static const _attributeCeiling = 100;
 
-  /// Distância RMS teórica máxima entre dois vetores de 6 dimensões nessa
-  /// escala — cada dimensão pode diferir no máximo por
-  /// `_attributeCeiling - _attributeFloor`; a fórmula da afinidade usa isso
-  /// como o "pior caso" pra normalizar.
-  static const _maxTheoreticalDistance =
-      (_attributeCeiling - _attributeFloor) * 1.0;
-
-  /// Piso/teto da % de afinidade — também alargado a pedido (era 55–98):
-  /// jogadores de estilo bem diferente agora podem cair perto de 40%, não
-  /// só nunca abaixo de 55%.
+  /// Piso/teto da % de afinidade — jogadores de estilo bem diferente podem
+  /// cair perto de 40%, os realmente parecidos perto de 98%.
   static const _affinityFloor = 40.0;
   static const _affinityCeiling = 98.0;
+
+  /// Constante da curva de afinidade (`similarity = exp(-_affinityK *
+  /// distance)`) — calibrada em `tool/player_identity_calibration.dart`
+  /// contra as metas do pedido: empate visual raro, sem concentrar tudo em
+  /// 85–95% nem em 55–65%, gap médio Top1→Top2 relevante. Nunca a fórmula
+  /// linear antiga (`98 - distância*constante`): ela comprimia demais
+  /// distâncias intermediárias, que é justamente onde a maioria dos
+  /// resultados reais cai.
+  static const _affinityK = 0.62;
+
+  /// Média/desvio padrão de cada dimensão calculados a partir das 21
+  /// referências — usados pra padronizar (z-score) os vetores antes de
+  /// medir distância. Sem isso, uma dimensão naturalmente pouco variável
+  /// entre os jogadores de referência (ex.: intensidade, historicamente
+  /// mais parecida no elenco) pesaria MENOS na comparação do que uma
+  /// dimensão naturalmente dispersa (ex.: criatividade) só por causa da
+  /// escala — não porque seja de fato menos relevante pro estilo de
+  /// ninguém. `late final` (não `const`): depende de percorrer a lista de
+  /// referências, calculado uma vez, na primeira leitura.
+  static final Map<PlayerIdentityDimension, (double mean, double stdDev)>
+  _referenceStats = _computeReferenceStats();
+
+  static Map<PlayerIdentityDimension, (double, double)>
+  _computeReferenceStats() {
+    final stats = <PlayerIdentityDimension, (double, double)>{};
+    for (final d in PlayerIdentityDimension.values) {
+      final values = playerIdentityReferences
+          .map((r) => r[d].toDouble())
+          .toList();
+      final mean = values.reduce((a, b) => a + b) / values.length;
+      final variance =
+          values.map((v) => (v - mean) * (v - mean)).reduce((a, b) => a + b) /
+          values.length;
+      final stdDev = math.sqrt(variance);
+      // Guarda contra divisão por zero — nunca acontece com o dataset
+      // atual (nenhuma dimensão é constante entre as 21 referências), mas
+      // uma dimensão futura sem variância não pode derrubar o cálculo.
+      stats[d] = (mean, stdDev == 0 ? 1.0 : stdDev);
+    }
+    return stats;
+  }
+
+  double _zScore(int value, PlayerIdentityDimension d) {
+    final (mean, stdDev) = _referenceStats[d]!;
+    return (value - mean) / stdDev;
+  }
 
   int _contribution(PlayerIdentityOption option, PlayerIdentityDimension d) {
     var points = 0;
@@ -87,32 +125,31 @@ class PlayerIdentityEngine {
     );
   }
 
-  /// Distância RMS entre o vetor do usuário e o de UM jogador de
-  /// referência: `sqrt(sum((user_i - player_i)^2) / 6)`.
+  /// Distância RMS no espaço PADRONIZADO (z-score) entre o vetor do
+  /// usuário e o de UM jogador de referência — nunca a distância bruta nas
+  /// escalas originais (ver `_referenceStats`/`_zScore`). Nunca arredondada
+  /// aqui: arredondamento só acontece na apresentação (`affinityFor`).
   double distanceTo(
     PlayerIdentityAttributes attributes,
     PlayerIdentityReference reference,
   ) {
     var sumSquares = 0.0;
     for (final d in PlayerIdentityDimension.values) {
-      final diff = (attributes[d] - reference[d]).toDouble();
+      final diff = _zScore(attributes[d], d) - _zScore(reference[d], d);
       sumSquares += diff * diff;
     }
     return math.sqrt(sumSquares / PlayerIdentityDimension.values.length);
   }
 
-  /// `normalizedDistance = clamp(distance/_maxTheoreticalDistance, 0, 1)`;
-  /// `affinity = _affinityCeiling - normalizedDistance * (_affinityCeiling -
-  /// _affinityFloor)`, arredondado pra uma casa decimal (nunca pro inteiro
-  /// — ver `PlayerIdentityAffinity.affinity`), clamp
-  /// `_affinityFloor`–`_affinityCeiling`.
+  /// Curva NÃO LINEAR: `similarity = exp(-_affinityK * distance)`,
+  /// `affinity = _affinityFloor + similarity * (_affinityCeiling -
+  /// _affinityFloor)`. Precisão total até aqui (distância em double, sem
+  /// arredondar em nenhum passo intermediário) — só a casa decimal final
+  /// arredonda, na apresentação.
   double affinityFor(double distance) {
-    final normalizedDistance = (distance / _maxTheoreticalDistance).clamp(
-      0.0,
-      1.0,
-    );
+    final similarity = math.exp(-_affinityK * distance);
     const range = _affinityCeiling - _affinityFloor;
-    final raw = _affinityCeiling - normalizedDistance * range;
+    final raw = _affinityFloor + similarity * range;
     return ((raw * 10).round() / 10).clamp(_affinityFloor, _affinityCeiling);
   }
 

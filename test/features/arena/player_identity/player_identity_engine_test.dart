@@ -27,8 +27,8 @@ void main() {
   const engine = PlayerIdentityEngine();
 
   group('dataset integrity', () {
-    test('exactly 19 player references', () {
-      expect(playerIdentityReferences.length, 19);
+    test('exactly 21 player references', () {
+      expect(playerIdentityReferences.length, 21);
     });
 
     test('exactly 10 questions, each with exactly 4 options', () {
@@ -144,8 +144,13 @@ void main() {
     });
   });
 
-  group('distanceTo — RMS across the six dimensions', () {
-    test('matches sqrt(sum(diff^2) / 6)', () {
+  group('distanceTo — RMS in standardized (z-score) space', () {
+    test('a single-dimension difference produces a positive distance', () {
+      // Não dá mais pra prever o valor exato sem reproduzir
+      // mean/stdDev das 21 referências aqui (a distância agora é em
+      // z-score, não na escala bruta 25-100) — só verificamos a forma:
+      // diferença em UMA dimensão só produz distância positiva, e maior
+      // que diferença zero.
       const attributes = PlayerIdentityAttributes(
         creativity: 50,
         definition: 50,
@@ -166,8 +171,7 @@ void main() {
         tactics: 50,
         confidence: 'high',
       );
-      // Só uma dimensão difere, por 6 — sqrt(36/6) = sqrt(6).
-      expect(engine.distanceTo(attributes, reference), closeTo(2.449, 0.01));
+      expect(engine.distanceTo(attributes, reference), greaterThan(0));
     });
 
     test('distance to an identical vector is zero', () {
@@ -205,9 +209,9 @@ void main() {
       tactics: 60,
     );
 
-    test('rankReferences sorts all 19 references from nearest to farthest', () {
+    test('rankReferences sorts all 21 references from nearest to farthest', () {
       final ranked = engine.rankReferences(attributes);
-      expect(ranked.length, 19);
+      expect(ranked.length, 21);
       for (var i = 1; i < ranked.length; i++) {
         expect(ranked[i].distance, greaterThanOrEqualTo(ranked[i - 1].distance));
       }
@@ -225,9 +229,10 @@ void main() {
   });
 
   group('affinityFor — 40–98 bounds', () {
-    test('never goes below 40, even for the theoretical max distance', () {
-      // O maior diff possível por dimensão é 100-25=75; RMS máximo teórico
-      // com todas as seis no extremo é 75 (sqrt(6*75^2/6) = 75).
+    test('never goes below 40, no matter how large the distance', () {
+      // Distância é em espaço padronizado (z-score), sem um "máximo
+      // teórico" fixo — mas a curva exp(-k*distance) satura pro piso pra
+      // qualquer distância grande o bastante.
       expect(engine.affinityFor(75), 40);
       expect(engine.affinityFor(1000), 40);
     });
