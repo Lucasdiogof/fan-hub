@@ -9,16 +9,10 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get languageName => 'English';
-
-  @override
   String get settingsLanguageTitle => 'LANGUAGE';
 
   @override
   String get settingsLanguageMenu => 'Language';
-
-  @override
-  String get settingsLanguageSubtitle => 'Choose the app language';
 
   @override
   String get languageSystemLabel => 'System default';
@@ -34,14 +28,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonPasswordLabel => 'Password';
-
-  @override
-  String get authTagline =>
-      'Follow everything about the biggest club in the Central-West';
-
-  @override
-  String get authRegisterSubtitle =>
-      'Follow everything about the biggest club in the Central-West.';
 
   @override
   String get authForgotPassword => 'Forgot password';
@@ -83,9 +69,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authRegisterButton => 'CREATE MY ACCOUNT';
-
-  @override
-  String get authCreatingAccount => 'Creating...';
 
   @override
   String get authTermsPrefix => 'I have read and accept the ';
@@ -139,9 +122,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navMedia => 'Media';
 
   @override
-  String get navArena => 'Arena';
-
-  @override
   String get navStore => 'Store';
 
   @override
@@ -169,15 +149,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeTickets => 'TICKETS';
 
   @override
-  String get homeQuickAccessTitle => 'Quick access';
-
-  @override
-  String get homeQuickAccessTickets => 'Tickets';
-
-  @override
-  String get homeQuickAccessNews => 'News';
-
-  @override
   String get homeCountdownTitle => 'THE MATCH STARTS IN';
 
   @override
@@ -191,22 +162,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeCountdownSeconds => 'SEC';
-
-  @override
-  String get homeMembershipPitch =>
-      'Get even closer to Goiás\nand be part of this story!';
-
-  @override
-  String get homeMembershipBenefit1 => 'Priority access to the stadium';
-
-  @override
-  String get homeMembershipBenefit2 => 'Savings on ticket prices';
-
-  @override
-  String get homeMembershipBenefit3 => 'Exclusive discounts and much more';
-
-  @override
-  String get homeMembershipCta => 'BECOME A MEMBER';
 
   @override
   String get matchGamesTitle => 'MATCHES';
@@ -225,21 +180,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get matchCalendarAway => 'AWAY';
-
-  @override
-  String get matchCalendarFilterAll => 'All';
-
-  @override
-  String get matchCalendarFilterBrasileirao => 'Brasileirão';
-
-  @override
-  String get matchCalendarFilterCopaDoBrasil => 'Copa do Brasil';
-
-  @override
-  String get matchCalendarFilterGoiano => 'Goiano';
-
-  @override
-  String get matchCalendarFilterOutros => 'Others';
 
   @override
   String get matchLoadError => 'Couldn\'t load the matches';
@@ -264,9 +204,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get matchFinishedLabel => 'Finished';
-
-  @override
-  String get homeLiveMatch => 'LIVE NOW';
 
   @override
   String get matchDateToBeConfirmed => 'Date to be confirmed';
@@ -394,9 +331,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileSecurity => 'Security';
 
   @override
-  String get profileTheme => 'Theme';
-
-  @override
   String get profileAppearance => 'Appearance';
 
   @override
@@ -413,17 +347,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileMyTickets => 'My tickets';
-
-  @override
-  String profileJourneyMatchesLived(num count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count matches lived',
-      one: '1 match lived',
-    );
-    return '$_temp0';
-  }
 
   @override
   String profileVersion(Object version) {
@@ -470,13 +393,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authSessionExpiredCta => 'Sign in again';
 
   @override
-  String get debugMockMembershipTitle => 'Active member (mock)';
-
-  @override
-  String get debugMockMembershipDescription =>
-      'Simulates an active Sócio Esmeralda member while there\'s no real integration with the program.';
-
-  @override
   String get personalDataTitle => 'PERSONAL DATA';
 
   @override
@@ -487,9 +403,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get personalFieldBirthDate => 'Date of birth';
-
-  @override
-  String get personalSelectDate => 'Select date';
 
   @override
   String get personalFieldPhone => 'Mobile';
@@ -670,18 +583,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaTitle => 'Arena Esmeraldina';
 
   @override
-  String get arenaSectionPlayNow => 'PLAY NOW';
-
-  @override
-  String get arenaSectionMoreChallenges => 'MORE CHALLENGES';
-
-  @override
-  String get arenaHighlightsSectionTitle => 'Fan Highlights';
-
-  @override
-  String get arenaGamesSectionTitle => 'Arena Games';
-
-  @override
   String get arenaGamesSectionSubtitle => 'Test your Goiás knowledge.';
 
   @override
@@ -689,19 +590,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arenaHighlightViewLineup => 'View lineup';
-
-  @override
-  String get arenaHighlightEscaleLineup => 'Line up now';
-
-  @override
-  String get arenaHighlightViewRanking => 'View ranking';
-
-  @override
-  String get arenaRankingHighlightDesc =>
-      'See who\'s dominating the minigames.';
-
-  @override
-  String get arenaRankingPlayToRank => 'Play to enter the ranking';
 
   @override
   String get arenaPlay => 'PLAY';
@@ -751,26 +639,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaSpotlightCta => 'Enter the Arena';
 
   @override
-  String arenaSpotlightRankSummary(int rank, int points) {
-    return '#$rank · $points pts';
-  }
-
-  @override
   String get arenaLineupHeroEyebrow => 'FANS\' LINEUP';
 
   @override
   String get arenaLineupHeroCta => 'Build my lineup';
-
-  @override
-  String arenaLineupHeroParticipants(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count fans have already lined up',
-      one: '1 fan has already lined up',
-    );
-    return '$_temp0';
-  }
 
   @override
   String get arenaLineupHeroEmptyTitle => 'No match for now';
@@ -778,42 +650,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get arenaLineupHeroEmptyMessage =>
       'As soon as the next match is confirmed, you\'ll be able to build your lineup here.';
-
-  @override
-  String get arenaContinuePlayingTitle => 'CONTINUE PLAYING';
-
-  @override
-  String arenaContinueQuizRemaining(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'Just $count questions left.',
-      one: 'Just 1 question left.',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String arenaContinueLineupRemaining(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'Just $count lineups left.',
-      one: 'Just 1 lineup left.',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String arenaContinueCareerRemaining(int count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'Just $count players left.',
-      one: 'Just 1 player left.',
-    );
-    return '$_temp0';
-  }
 
   @override
   String get arenaChallengesSectionTitle => 'Challenges';
@@ -855,18 +691,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Uncover the secret player from a blurred photo and clues.';
 
   @override
-  String get arenaSubtitleQuiz => '60 questions';
-
-  @override
-  String get arenaSubtitleLineup => '31 lineups';
-
-  @override
-  String get arenaSubtitleCareer => '30 players';
-
-  @override
-  String get arenaSubtitleGuessPlayer => 'Uncover the player from the clues';
-
-  @override
   String get arenaRankingWeekly => 'Weekly';
 
   @override
@@ -888,25 +712,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaRankingUnknownFan => 'Fan';
 
   @override
-  String get passportEyebrow => 'Emerald memories';
-
-  @override
   String get passportTitle => 'Passaporte Esmeraldino';
 
   @override
   String get passportCardDescription =>
       'Mark the matches you lived with Goiás.';
-
-  @override
-  String passportCardRegisteredCount(num count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: 'You\'ve registered $count matches',
-      one: 'You\'ve registered 1 match',
-    );
-    return '$_temp0';
-  }
 
   @override
   String get passportCardCta => 'Open passport';
@@ -1148,9 +958,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Mark the matches you lived with Verdão and build your Passaporte Esmeraldino.';
 
   @override
-  String get passportEmptyCta => 'Start my passport';
-
-  @override
   String get passportChangeSeasonCta => 'Change season';
 
   @override
@@ -1161,28 +968,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String passportSeasonTotalOnly(Object total) {
     return '$total matches';
-  }
-
-  @override
-  String get passportFilterImWasThere => 'I was there';
-
-  @override
-  String get passportFilterNeutral => 'Neutral venue';
-
-  @override
-  String get passportFiltersCta => 'Filters';
-
-  @override
-  String passportFiltersActiveSummary(Object label) {
-    return 'Filter: $label';
-  }
-
-  @override
-  String get passportFiltersClear => 'Clear';
-
-  @override
-  String passportMonthProgressLine(Object marked, Object total) {
-    return '$marked of $total matches lived';
   }
 
   @override
@@ -1229,9 +1014,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get arenaRankingDetailAbandoned => 'Revealed/abandoned';
-
-  @override
-  String get arenaRankingDetailTotal => 'TOTAL';
 
   @override
   String get arenaRankingYouTag => 'YOU';
@@ -1542,9 +1324,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get playerProcessingTitle => 'Calculating your style...';
-
-  @override
-  String get playerResultCompleted => 'TEST COMPLETED';
 
   @override
   String get playerResultYourProfile => 'YOUR PROFILE';
@@ -1914,12 +1693,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newsPdfShareButton => 'Share PDF';
 
   @override
-  String get newsSeeMore => 'See more';
-
-  @override
-  String get commonNoConnection => 'No internet connection.';
-
-  @override
   String get relTimeNow => 'now';
 
   @override
@@ -1952,12 +1725,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get partnersSubtitle => 'Brands that walk alongside Goiás.';
-
-  @override
-  String get partnersSectionTitle => 'GOIÁS PARTNERS';
-
-  @override
-  String get partnersSeeAll => 'See all';
 
   @override
   String partnersOpenInstagram(String name) {
@@ -2008,18 +1775,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get squadFoot => 'Foot';
-
-  @override
-  String get squadHistoryYears => 'Years';
-
-  @override
-  String get squadHistoryClubs => 'Clubs';
-
-  @override
-  String get squadHistoryMatches => 'Apps';
-
-  @override
-  String get squadHistoryGoals => 'Goals';
 
   @override
   String get squadLoanTag => '(loan)';
@@ -2088,16 +1843,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get checkEmailTitle => 'Confirm your email';
-
-  @override
-  String get checkEmailSentTo => 'We sent a confirmation link to:';
-
-  @override
-  String get checkEmailInstruction =>
-      'Open your inbox and confirm your email to activate the account.';
-
-  @override
-  String get checkEmailBackToLogin => 'Back to login';
 
   @override
   String get checkEmailResending => 'Resending...';
@@ -2296,10 +2041,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ticketsCheckinClosedButton => 'Check-in closed';
-
-  @override
-  String get ticketsHasOwnTicketLabel =>
-      'YOU ALREADY HAVE A TICKET FOR THIS MATCH';
 
   @override
   String get ticketsViewTicketButton => 'View ticket';
@@ -2757,24 +2498,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get crowdCanAlsoPlayBadge => 'Can play';
 
   @override
-  String get crowdCardTitleVoted => 'Fans\' Lineup';
-
-  @override
-  String get crowdCardTitleNew => 'Build the fans\' lineup';
-
-  @override
   String get crowdCardDescVoted =>
       'See how the fans are lining up Goiás for the next match.';
 
   @override
   String get crowdCardDescNew =>
       'Line up Goiás for the next match and see the fans\' most-picked team.';
-
-  @override
-  String get crowdCardCtaView => 'VIEW FANS\' LINEUP';
-
-  @override
-  String get crowdCardCtaEscale => 'LINE UP NOW';
 
   @override
   String get clubSectionHistory => 'History';
@@ -2898,14 +2627,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clubMainTitles => 'MAIN TITLES';
 
   @override
-  String get clubTitleMoments => 'HISTORIC MOMENTS';
-
-  @override
   String get clubHistoricCampaigns => 'HISTORIC RUNS';
-
-  @override
-  String get clubCampaignsSubtitle =>
-      'Great Goiás runs that didn\'t end in a title.';
 
   @override
   String clubTimesChampion(int count) {
@@ -2964,17 +2686,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipWantToJoin => 'I WANT TO JOIN';
 
   @override
-  String get membershipStadiumAccess => 'Stadium access';
-
-  @override
   String get membershipNoStadiumAccess => 'No stadium access';
 
   @override
   String get membershipViewPlan => 'VIEW PLAN';
-
-  @override
-  String get membershipCheckinUnavailable =>
-      'Sócio Esmeralda check-in isn\'t available in the app yet.';
 
   @override
   String get membershipOtherOptions => 'OTHER OPTIONS';
@@ -3165,11 +2880,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipHolder => 'Holder';
 
   @override
-  String membershipCpfMasked(String cpf) {
-    return 'CPF $cpf';
-  }
-
-  @override
   String get membershipAssociatedSince => 'Member since';
 
   @override
@@ -3324,9 +3034,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipStepAddress => 'Address';
 
   @override
-  String get membershipRegulationContentPending => 'Official content pending.';
-
-  @override
   String get membershipFaqSearchHint => 'Search a question...';
 
   @override
@@ -3419,16 +3126,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipValCity => 'Enter the city.';
 
   @override
-  String arenaYouMarker(String name) {
-    return '$name (you)';
-  }
-
-  @override
-  String arenaYourPosition(int rank) {
-    return '#$rank your position';
-  }
-
-  @override
   String lineupShareStats(int solved, int total, int attempts, String time) {
     return '$solved/$total found · $attempts attempts · $time';
   }
@@ -3441,18 +3138,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get crowdSubmitted => 'Lineup submitted!';
-
-  @override
-  String get storeEntryBadge => 'OFFICIAL STORE';
-
-  @override
-  String get storeEntryTitle => 'Wear the Green';
-
-  @override
-  String get storeEntrySubtitle => 'Official Goiás jerseys and gear.';
-
-  @override
-  String get storeEntryCta => 'Visit the Goiás Store';
 
   @override
   String get storeHomeEntryBadge => 'GOIÁS STORE';
@@ -3474,9 +3159,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeProfileMyOrders => 'My orders';
 
   @override
-  String get storeProfileAddresses => 'Delivery addresses';
-
-  @override
   String get storeHomeTitle => 'Goiás Store';
 
   @override
@@ -3493,42 +3175,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeSectionCategories => 'Categories';
-
-  @override
-  String get storeSectionLaunches => 'New arrivals';
-
-  @override
-  String get storeSectionOfficialJerseys => 'Official jerseys';
-
-  @override
-  String get storeSectionForEveryFan => 'For every fan';
-
-  @override
-  String get storeSectionTrainingTravel => 'Training & travel';
-
-  @override
-  String get storeSectionAccessories => 'Emerald accessories';
-
-  @override
-  String get storeSectionOffers => 'Deals';
-
-  @override
-  String get storeSectionPersonalize => 'Personalize your jersey';
-
-  @override
-  String get storeSectionPickup => 'Pickup at Goiás Store';
-
-  @override
-  String get storeSectionRelated => 'You might also like';
-
-  @override
-  String get storeBenefitPickup => 'Free pickup at Goiás Store';
-
-  @override
-  String get storeBenefitPersonalize => 'Personalize your jersey';
-
-  @override
-  String get storeBenefitInstallments => 'Sample installment plan';
 
   @override
   String get storeSearchHint => 'Search the Goiás Store';
@@ -3730,18 +3376,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeBadgeOnSale => 'Sale';
 
   @override
-  String get storeBadgeNew => 'New';
-
-  @override
-  String get storeBadgePersonalizable => 'Customizable';
-
-  @override
-  String get storeAddFavorite => 'Add to favorites';
-
-  @override
-  String get storeRemoveFavorite => 'Remove from favorites';
-
-  @override
   String storeInstallmentsLabel(Object count, Object value) {
     return 'up to ${count}x of $value';
   }
@@ -3780,9 +3414,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeReferenceLabel => 'Ref.';
 
   @override
-  String get storeViewProductButton => 'View product';
-
-  @override
   String get storeDeliveryOrPickupLabel => 'Delivery or pickup';
 
   @override
@@ -3799,19 +3430,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storePersonalizationLabel => 'Personalization (optional)';
-
-  @override
-  String get storePersonalizeCardTitle => 'Your way';
-
-  @override
-  String get storePersonalizeCardText =>
-      'Add a name and number to your jersey.';
-
-  @override
-  String get storePersonalizeCardCta => 'Personalize';
-
-  @override
-  String get storePickupCardCta => 'View location';
 
   @override
   String storePersonalizationNameField(Object price) {
@@ -3835,13 +3453,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeAddToCartButton => 'Add to bag';
 
   @override
-  String get storeAddShort => 'Add';
-
-  @override
   String get storeSeeCartAction => 'View bag';
-
-  @override
-  String get storeChooseSizeTitle => 'Choose a size';
 
   @override
   String get storeChooseSizeMessage =>
@@ -4209,9 +3821,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeStateLabel => 'State';
 
   @override
-  String get storeAddressFormError => 'Fill in all required fields correctly.';
-
-  @override
   String get storeSaveAddressButton => 'Save address';
 
   @override
@@ -4244,12 +3853,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeValFullNameIncomplete => 'Enter your first and last name.';
-
-  @override
-  String get storeValEmailRequired => 'Enter an email address.';
-
-  @override
-  String get storeValEmailInvalid => 'Invalid email address.';
 
   @override
   String get storeValPhoneInvalid => 'Invalid phone number.';

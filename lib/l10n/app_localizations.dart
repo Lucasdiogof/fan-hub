@@ -100,12 +100,6 @@ abstract class AppLocalizations {
     Locale('pt'),
   ];
 
-  /// Nome deste idioma, exibido no seletor de idioma.
-  ///
-  /// In pt, this message translates to:
-  /// **'Português'**
-  String get languageName;
-
   /// No description provided for @settingsLanguageTitle.
   ///
   /// In pt, this message translates to:
@@ -117,12 +111,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Idioma'**
   String get settingsLanguageMenu;
-
-  /// No description provided for @settingsLanguageSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Escolha o idioma do aplicativo'**
-  String get settingsLanguageSubtitle;
 
   /// No description provided for @languageSystemLabel.
   ///
@@ -153,18 +141,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Senha'**
   String get commonPasswordLabel;
-
-  /// No description provided for @authTagline.
-  ///
-  /// In pt, this message translates to:
-  /// **'Acompanhe tudo sobre o maior do Centro-Oeste'**
-  String get authTagline;
-
-  /// No description provided for @authRegisterSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Acompanhe tudo sobre o maior do Centro-Oeste.'**
-  String get authRegisterSubtitle;
 
   /// No description provided for @authForgotPassword.
   ///
@@ -243,12 +219,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'CRIAR MINHA CONTA'**
   String get authRegisterButton;
-
-  /// No description provided for @authCreatingAccount.
-  ///
-  /// In pt, this message translates to:
-  /// **'Criando...'**
-  String get authCreatingAccount;
 
   /// No description provided for @authTermsPrefix.
   ///
@@ -346,12 +316,6 @@ abstract class AppLocalizations {
   /// **'Mídia'**
   String get navMedia;
 
-  /// No description provided for @navArena.
-  ///
-  /// In pt, this message translates to:
-  /// **'Arena'**
-  String get navArena;
-
   /// No description provided for @navStore.
   ///
   /// In pt, this message translates to:
@@ -406,24 +370,6 @@ abstract class AppLocalizations {
   /// **'INGRESSOS'**
   String get homeTickets;
 
-  /// No description provided for @homeQuickAccessTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Acesso rápido'**
-  String get homeQuickAccessTitle;
-
-  /// No description provided for @homeQuickAccessTickets.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ingressos'**
-  String get homeQuickAccessTickets;
-
-  /// No description provided for @homeQuickAccessNews.
-  ///
-  /// In pt, this message translates to:
-  /// **'Notícias'**
-  String get homeQuickAccessNews;
-
   /// No description provided for @homeCountdownTitle.
   ///
   /// In pt, this message translates to:
@@ -453,36 +399,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'SEG'**
   String get homeCountdownSeconds;
-
-  /// No description provided for @homeMembershipPitch.
-  ///
-  /// In pt, this message translates to:
-  /// **'Esteja ainda mais perto do Goiás\ne faça parte dessa história!'**
-  String get homeMembershipPitch;
-
-  /// No description provided for @homeMembershipBenefit1.
-  ///
-  /// In pt, this message translates to:
-  /// **'Prioridade de acesso ao estádio'**
-  String get homeMembershipBenefit1;
-
-  /// No description provided for @homeMembershipBenefit2.
-  ///
-  /// In pt, this message translates to:
-  /// **'Economia no valor do ingresso'**
-  String get homeMembershipBenefit2;
-
-  /// No description provided for @homeMembershipBenefit3.
-  ///
-  /// In pt, this message translates to:
-  /// **'Descontos exclusivos e muito mais'**
-  String get homeMembershipBenefit3;
-
-  /// No description provided for @homeMembershipCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'SEJA SÓCIO ESMERALDINO'**
-  String get homeMembershipCta;
 
   /// No description provided for @matchGamesTitle.
   ///
@@ -519,36 +435,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'FORA'**
   String get matchCalendarAway;
-
-  /// No description provided for @matchCalendarFilterAll.
-  ///
-  /// In pt, this message translates to:
-  /// **'Todos'**
-  String get matchCalendarFilterAll;
-
-  /// No description provided for @matchCalendarFilterBrasileirao.
-  ///
-  /// In pt, this message translates to:
-  /// **'Brasileirão'**
-  String get matchCalendarFilterBrasileirao;
-
-  /// No description provided for @matchCalendarFilterCopaDoBrasil.
-  ///
-  /// In pt, this message translates to:
-  /// **'Copa do Brasil'**
-  String get matchCalendarFilterCopaDoBrasil;
-
-  /// No description provided for @matchCalendarFilterGoiano.
-  ///
-  /// In pt, this message translates to:
-  /// **'Goiano'**
-  String get matchCalendarFilterGoiano;
-
-  /// No description provided for @matchCalendarFilterOutros.
-  ///
-  /// In pt, this message translates to:
-  /// **'Outros'**
-  String get matchCalendarFilterOutros;
 
   /// No description provided for @matchLoadError.
   ///
@@ -597,12 +483,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Finalizado'**
   String get matchFinishedLabel;
-
-  /// No description provided for @homeLiveMatch.
-  ///
-  /// In pt, this message translates to:
-  /// **'AO VIVO AGORA'**
-  String get homeLiveMatch;
 
   /// No description provided for @matchDateToBeConfirmed.
   ///
@@ -850,12 +730,6 @@ abstract class AppLocalizations {
   /// **'Segurança'**
   String get profileSecurity;
 
-  /// No description provided for @profileTheme.
-  ///
-  /// In pt, this message translates to:
-  /// **'Tema'**
-  String get profileTheme;
-
   /// No description provided for @profileAppearance.
   ///
   /// In pt, this message translates to:
@@ -891,12 +765,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Meus ingressos'**
   String get profileMyTickets;
-
-  /// No description provided for @profileJourneyMatchesLived.
-  ///
-  /// In pt, this message translates to:
-  /// **'{count, plural, =0{Nenhum jogo vivido ainda} =1{1 jogo vivido} other{{count} jogos vividos}}'**
-  String profileJourneyMatchesLived(num count);
 
   /// No description provided for @profileVersion.
   ///
@@ -976,18 +844,6 @@ abstract class AppLocalizations {
   /// **'Entrar novamente'**
   String get authSessionExpiredCta;
 
-  /// No description provided for @debugMockMembershipTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Sócio ativo (mock)'**
-  String get debugMockMembershipTitle;
-
-  /// No description provided for @debugMockMembershipDescription.
-  ///
-  /// In pt, this message translates to:
-  /// **'Simula um sócio esmeraldino ativo enquanto não há integração real com o programa.'**
-  String get debugMockMembershipDescription;
-
   /// No description provided for @personalDataTitle.
   ///
   /// In pt, this message translates to:
@@ -1011,12 +867,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Data de nascimento'**
   String get personalFieldBirthDate;
-
-  /// No description provided for @personalSelectDate.
-  ///
-  /// In pt, this message translates to:
-  /// **'Selecionar data'**
-  String get personalSelectDate;
 
   /// No description provided for @personalFieldPhone.
   ///
@@ -1354,30 +1204,6 @@ abstract class AppLocalizations {
   /// **'Arena Esmeraldina'**
   String get arenaTitle;
 
-  /// No description provided for @arenaSectionPlayNow.
-  ///
-  /// In pt, this message translates to:
-  /// **'JOGUE AGORA'**
-  String get arenaSectionPlayNow;
-
-  /// No description provided for @arenaSectionMoreChallenges.
-  ///
-  /// In pt, this message translates to:
-  /// **'MAIS DESAFIOS'**
-  String get arenaSectionMoreChallenges;
-
-  /// No description provided for @arenaHighlightsSectionTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Destaques da Torcida'**
-  String get arenaHighlightsSectionTitle;
-
-  /// No description provided for @arenaGamesSectionTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Jogos da Arena'**
-  String get arenaGamesSectionTitle;
-
   /// No description provided for @arenaGamesSectionSubtitle.
   ///
   /// In pt, this message translates to:
@@ -1395,30 +1221,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Ver escalação'**
   String get arenaHighlightViewLineup;
-
-  /// No description provided for @arenaHighlightEscaleLineup.
-  ///
-  /// In pt, this message translates to:
-  /// **'Escalar agora'**
-  String get arenaHighlightEscaleLineup;
-
-  /// No description provided for @arenaHighlightViewRanking.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ver ranking'**
-  String get arenaHighlightViewRanking;
-
-  /// No description provided for @arenaRankingHighlightDesc.
-  ///
-  /// In pt, this message translates to:
-  /// **'Veja quem está dominando os minigames.'**
-  String get arenaRankingHighlightDesc;
-
-  /// No description provided for @arenaRankingPlayToRank.
-  ///
-  /// In pt, this message translates to:
-  /// **'Jogue para entrar no ranking'**
-  String get arenaRankingPlayToRank;
 
   /// No description provided for @arenaPlay.
   ///
@@ -1504,12 +1306,6 @@ abstract class AppLocalizations {
   /// **'Entrar na Arena'**
   String get arenaSpotlightCta;
 
-  /// No description provided for @arenaSpotlightRankSummary.
-  ///
-  /// In pt, this message translates to:
-  /// **'{rank}º lugar · {points} pts'**
-  String arenaSpotlightRankSummary(int rank, int points);
-
   /// No description provided for @arenaLineupHeroEyebrow.
   ///
   /// In pt, this message translates to:
@@ -1522,12 +1318,6 @@ abstract class AppLocalizations {
   /// **'Montar minha escalação'**
   String get arenaLineupHeroCta;
 
-  /// No description provided for @arenaLineupHeroParticipants.
-  ///
-  /// In pt, this message translates to:
-  /// **'{count, plural, =0{Nenhum torcedor escalou ainda} =1{1 torcedor já escalou} other{{count} torcedores já escalaram}}'**
-  String arenaLineupHeroParticipants(int count);
-
   /// No description provided for @arenaLineupHeroEmptyTitle.
   ///
   /// In pt, this message translates to:
@@ -1539,30 +1329,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Assim que a próxima partida for confirmada, você já pode montar sua escalação aqui.'**
   String get arenaLineupHeroEmptyMessage;
-
-  /// No description provided for @arenaContinuePlayingTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'CONTINUE JOGANDO'**
-  String get arenaContinuePlayingTitle;
-
-  /// No description provided for @arenaContinueQuizRemaining.
-  ///
-  /// In pt, this message translates to:
-  /// **'{count, plural, =0{Você já respondeu todas.} =1{Falta apenas 1 pergunta.} other{Faltam apenas {count} perguntas.}}'**
-  String arenaContinueQuizRemaining(int count);
-
-  /// No description provided for @arenaContinueLineupRemaining.
-  ///
-  /// In pt, this message translates to:
-  /// **'{count, plural, =0{Você já escalou todos.} =1{Falta apenas 1 escalação.} other{Faltam apenas {count} escalações.}}'**
-  String arenaContinueLineupRemaining(int count);
-
-  /// No description provided for @arenaContinueCareerRemaining.
-  ///
-  /// In pt, this message translates to:
-  /// **'{count, plural, =0{Você já acertou todos.} =1{Falta apenas 1 jogador.} other{Faltam apenas {count} jogadores.}}'**
-  String arenaContinueCareerRemaining(int count);
 
   /// No description provided for @arenaChallengesSectionTitle.
   ///
@@ -1636,30 +1402,6 @@ abstract class AppLocalizations {
   /// **'Descubra o jogador secreto pela foto embaçada e pelas pistas.'**
   String get arenaGuessPlayerTagline;
 
-  /// No description provided for @arenaSubtitleQuiz.
-  ///
-  /// In pt, this message translates to:
-  /// **'60 perguntas'**
-  String get arenaSubtitleQuiz;
-
-  /// No description provided for @arenaSubtitleLineup.
-  ///
-  /// In pt, this message translates to:
-  /// **'31 escalações'**
-  String get arenaSubtitleLineup;
-
-  /// No description provided for @arenaSubtitleCareer.
-  ///
-  /// In pt, this message translates to:
-  /// **'30 jogadores'**
-  String get arenaSubtitleCareer;
-
-  /// No description provided for @arenaSubtitleGuessPlayer.
-  ///
-  /// In pt, this message translates to:
-  /// **'Descubra o jogador pelas pistas'**
-  String get arenaSubtitleGuessPlayer;
-
   /// No description provided for @arenaRankingWeekly.
   ///
   /// In pt, this message translates to:
@@ -1702,12 +1444,6 @@ abstract class AppLocalizations {
   /// **'Torcedor'**
   String get arenaRankingUnknownFan;
 
-  /// No description provided for @passportEyebrow.
-  ///
-  /// In pt, this message translates to:
-  /// **'Memórias esmeraldinas'**
-  String get passportEyebrow;
-
   /// No description provided for @passportTitle.
   ///
   /// In pt, this message translates to:
@@ -1719,12 +1455,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Marque os jogos que você viveu com o Verdão.'**
   String get passportCardDescription;
-
-  /// No description provided for @passportCardRegisteredCount.
-  ///
-  /// In pt, this message translates to:
-  /// **'{count, plural, =0{Você ainda não registrou nenhuma partida} =1{Você já registrou 1 partida} other{Você já registrou {count} partidas}}'**
-  String passportCardRegisteredCount(num count);
 
   /// No description provided for @passportCardCta.
   ///
@@ -2122,12 +1852,6 @@ abstract class AppLocalizations {
   /// **'Marque os jogos que você viveu com o Verdão e construa seu Passaporte Esmeraldino.'**
   String get passportEmptyBody;
 
-  /// No description provided for @passportEmptyCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'Começar meu passaporte'**
-  String get passportEmptyCta;
-
   /// No description provided for @passportChangeSeasonCta.
   ///
   /// In pt, this message translates to:
@@ -2145,42 +1869,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'{total} jogos'**
   String passportSeasonTotalOnly(Object total);
-
-  /// No description provided for @passportFilterImWasThere.
-  ///
-  /// In pt, this message translates to:
-  /// **'Eu fui'**
-  String get passportFilterImWasThere;
-
-  /// No description provided for @passportFilterNeutral.
-  ///
-  /// In pt, this message translates to:
-  /// **'Campo neutro'**
-  String get passportFilterNeutral;
-
-  /// No description provided for @passportFiltersCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'Filtros'**
-  String get passportFiltersCta;
-
-  /// No description provided for @passportFiltersActiveSummary.
-  ///
-  /// In pt, this message translates to:
-  /// **'Filtro: {label}'**
-  String passportFiltersActiveSummary(Object label);
-
-  /// No description provided for @passportFiltersClear.
-  ///
-  /// In pt, this message translates to:
-  /// **'Limpar'**
-  String get passportFiltersClear;
-
-  /// No description provided for @passportMonthProgressLine.
-  ///
-  /// In pt, this message translates to:
-  /// **'{marked} de {total} jogos vividos'**
-  String passportMonthProgressLine(Object marked, Object total);
 
   /// No description provided for @passportSealLabel.
   ///
@@ -2259,12 +1947,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Revelados/desistências'**
   String get arenaRankingDetailAbandoned;
-
-  /// No description provided for @arenaRankingDetailTotal.
-  ///
-  /// In pt, this message translates to:
-  /// **'TOTAL'**
-  String get arenaRankingDetailTotal;
 
   /// No description provided for @arenaRankingYouTag.
   ///
@@ -2787,12 +2469,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Calculando seu estilo...'**
   String get playerProcessingTitle;
-
-  /// No description provided for @playerResultCompleted.
-  ///
-  /// In pt, this message translates to:
-  /// **'TESTE COMPLETADO'**
-  String get playerResultCompleted;
 
   /// No description provided for @playerResultYourProfile.
   ///
@@ -3393,18 +3069,6 @@ abstract class AppLocalizations {
   /// **'Compartilhar PDF'**
   String get newsPdfShareButton;
 
-  /// No description provided for @newsSeeMore.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ver mais'**
-  String get newsSeeMore;
-
-  /// No description provided for @commonNoConnection.
-  ///
-  /// In pt, this message translates to:
-  /// **'Sem conexão com a internet.'**
-  String get commonNoConnection;
-
   /// No description provided for @relTimeNow.
   ///
   /// In pt, this message translates to:
@@ -3452,18 +3116,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Marcas que caminham junto com o Verdão.'**
   String get partnersSubtitle;
-
-  /// No description provided for @partnersSectionTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'PARCEIROS DO GOIÁS'**
-  String get partnersSectionTitle;
-
-  /// No description provided for @partnersSeeAll.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ver todos'**
-  String get partnersSeeAll;
 
   /// No description provided for @partnersOpenInstagram.
   ///
@@ -3548,30 +3200,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Pé'**
   String get squadFoot;
-
-  /// No description provided for @squadHistoryYears.
-  ///
-  /// In pt, this message translates to:
-  /// **'Anos'**
-  String get squadHistoryYears;
-
-  /// No description provided for @squadHistoryClubs.
-  ///
-  /// In pt, this message translates to:
-  /// **'Clubes'**
-  String get squadHistoryClubs;
-
-  /// No description provided for @squadHistoryMatches.
-  ///
-  /// In pt, this message translates to:
-  /// **'Jogos'**
-  String get squadHistoryMatches;
-
-  /// No description provided for @squadHistoryGoals.
-  ///
-  /// In pt, this message translates to:
-  /// **'Gols'**
-  String get squadHistoryGoals;
 
   /// No description provided for @squadLoanTag.
   ///
@@ -3704,24 +3332,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Confirme seu e-mail'**
   String get checkEmailTitle;
-
-  /// No description provided for @checkEmailSentTo.
-  ///
-  /// In pt, this message translates to:
-  /// **'Enviamos um link de confirmação para:'**
-  String get checkEmailSentTo;
-
-  /// No description provided for @checkEmailInstruction.
-  ///
-  /// In pt, this message translates to:
-  /// **'Abra sua caixa de entrada e confirme seu e-mail para ativar a conta.'**
-  String get checkEmailInstruction;
-
-  /// No description provided for @checkEmailBackToLogin.
-  ///
-  /// In pt, this message translates to:
-  /// **'Voltar para o login'**
-  String get checkEmailBackToLogin;
 
   /// No description provided for @checkEmailResending.
   ///
@@ -4088,12 +3698,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Check-in encerrado'**
   String get ticketsCheckinClosedButton;
-
-  /// No description provided for @ticketsHasOwnTicketLabel.
-  ///
-  /// In pt, this message translates to:
-  /// **'VOCÊ JÁ TEM INGRESSO PARA ESTA PARTIDA'**
-  String get ticketsHasOwnTicketLabel;
 
   /// No description provided for @ticketsViewTicketButton.
   ///
@@ -4887,18 +4491,6 @@ abstract class AppLocalizations {
   /// **'Pode atuar'**
   String get crowdCanAlsoPlayBadge;
 
-  /// No description provided for @crowdCardTitleVoted.
-  ///
-  /// In pt, this message translates to:
-  /// **'Escalação da Torcida'**
-  String get crowdCardTitleVoted;
-
-  /// No description provided for @crowdCardTitleNew.
-  ///
-  /// In pt, this message translates to:
-  /// **'Monte a escalação da torcida'**
-  String get crowdCardTitleNew;
-
   /// No description provided for @crowdCardDescVoted.
   ///
   /// In pt, this message translates to:
@@ -4910,18 +4502,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.'**
   String get crowdCardDescNew;
-
-  /// No description provided for @crowdCardCtaView.
-  ///
-  /// In pt, this message translates to:
-  /// **'VER ESCALAÇÃO DA TORCIDA'**
-  String get crowdCardCtaView;
-
-  /// No description provided for @crowdCardCtaEscale.
-  ///
-  /// In pt, this message translates to:
-  /// **'ESCALAR AGORA'**
-  String get crowdCardCtaEscale;
 
   /// No description provided for @clubSectionHistory.
   ///
@@ -5133,23 +4713,11 @@ abstract class AppLocalizations {
   /// **'TÍTULOS PRINCIPAIS'**
   String get clubMainTitles;
 
-  /// No description provided for @clubTitleMoments.
-  ///
-  /// In pt, this message translates to:
-  /// **'MOMENTOS HISTÓRICOS'**
-  String get clubTitleMoments;
-
   /// No description provided for @clubHistoricCampaigns.
   ///
   /// In pt, this message translates to:
   /// **'CAMPANHAS HISTÓRICAS'**
   String get clubHistoricCampaigns;
-
-  /// No description provided for @clubCampaignsSubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Grandes campanhas do Goiás que não resultaram em título.'**
-  String get clubCampaignsSubtitle;
 
   /// No description provided for @clubTimesChampion.
   ///
@@ -5247,12 +4815,6 @@ abstract class AppLocalizations {
   /// **'QUERO SER SÓCIO'**
   String get membershipWantToJoin;
 
-  /// No description provided for @membershipStadiumAccess.
-  ///
-  /// In pt, this message translates to:
-  /// **'Acesso ao estádio'**
-  String get membershipStadiumAccess;
-
   /// No description provided for @membershipNoStadiumAccess.
   ///
   /// In pt, this message translates to:
@@ -5264,12 +4826,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'CONHECER PLANO'**
   String get membershipViewPlan;
-
-  /// No description provided for @membershipCheckinUnavailable.
-  ///
-  /// In pt, this message translates to:
-  /// **'O check-in do Sócio Esmeralda ainda não está disponível no app.'**
-  String get membershipCheckinUnavailable;
 
   /// No description provided for @membershipOtherOptions.
   ///
@@ -5631,12 +5187,6 @@ abstract class AppLocalizations {
   /// **'Titular'**
   String get membershipHolder;
 
-  /// No description provided for @membershipCpfMasked.
-  ///
-  /// In pt, this message translates to:
-  /// **'CPF {cpf}'**
-  String membershipCpfMasked(String cpf);
-
   /// No description provided for @membershipAssociatedSince.
   ///
   /// In pt, this message translates to:
@@ -5919,12 +5469,6 @@ abstract class AppLocalizations {
   /// **'Endereço'**
   String get membershipStepAddress;
 
-  /// No description provided for @membershipRegulationContentPending.
-  ///
-  /// In pt, this message translates to:
-  /// **'Conteúdo oficial pendente de envio.'**
-  String get membershipRegulationContentPending;
-
   /// No description provided for @membershipFaqSearchHint.
   ///
   /// In pt, this message translates to:
@@ -6105,18 +5649,6 @@ abstract class AppLocalizations {
   /// **'Informe a cidade.'**
   String get membershipValCity;
 
-  /// No description provided for @arenaYouMarker.
-  ///
-  /// In pt, this message translates to:
-  /// **'{name} (você)'**
-  String arenaYouMarker(String name);
-
-  /// No description provided for @arenaYourPosition.
-  ///
-  /// In pt, this message translates to:
-  /// **'#{rank} sua posição'**
-  String arenaYourPosition(int rank);
-
   /// No description provided for @lineupShareStats.
   ///
   /// In pt, this message translates to:
@@ -6140,30 +5672,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Escalação enviada!'**
   String get crowdSubmitted;
-
-  /// No description provided for @storeEntryBadge.
-  ///
-  /// In pt, this message translates to:
-  /// **'LOJA OFICIAL'**
-  String get storeEntryBadge;
-
-  /// No description provided for @storeEntryTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Vista o Verdão'**
-  String get storeEntryTitle;
-
-  /// No description provided for @storeEntrySubtitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Uniformes e produtos oficiais do Goiás.'**
-  String get storeEntrySubtitle;
-
-  /// No description provided for @storeEntryCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'Conhecer a Goiás Store'**
-  String get storeEntryCta;
 
   /// No description provided for @storeHomeEntryBadge.
   ///
@@ -6201,12 +5709,6 @@ abstract class AppLocalizations {
   /// **'Meus pedidos'**
   String get storeProfileMyOrders;
 
-  /// No description provided for @storeProfileAddresses.
-  ///
-  /// In pt, this message translates to:
-  /// **'Endereços de entrega'**
-  String get storeProfileAddresses;
-
   /// No description provided for @storeHomeTitle.
   ///
   /// In pt, this message translates to:
@@ -6242,78 +5744,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Categorias'**
   String get storeSectionCategories;
-
-  /// No description provided for @storeSectionLaunches.
-  ///
-  /// In pt, this message translates to:
-  /// **'Lançamentos'**
-  String get storeSectionLaunches;
-
-  /// No description provided for @storeSectionOfficialJerseys.
-  ///
-  /// In pt, this message translates to:
-  /// **'Mantos oficiais'**
-  String get storeSectionOfficialJerseys;
-
-  /// No description provided for @storeSectionForEveryFan.
-  ///
-  /// In pt, this message translates to:
-  /// **'Para toda a torcida'**
-  String get storeSectionForEveryFan;
-
-  /// No description provided for @storeSectionTrainingTravel.
-  ///
-  /// In pt, this message translates to:
-  /// **'Treino e viagem'**
-  String get storeSectionTrainingTravel;
-
-  /// No description provided for @storeSectionAccessories.
-  ///
-  /// In pt, this message translates to:
-  /// **'Acessórios esmeraldinos'**
-  String get storeSectionAccessories;
-
-  /// No description provided for @storeSectionOffers.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ofertas'**
-  String get storeSectionOffers;
-
-  /// No description provided for @storeSectionPersonalize.
-  ///
-  /// In pt, this message translates to:
-  /// **'Personalize seu manto'**
-  String get storeSectionPersonalize;
-
-  /// No description provided for @storeSectionPickup.
-  ///
-  /// In pt, this message translates to:
-  /// **'Retirada na Goiás Store'**
-  String get storeSectionPickup;
-
-  /// No description provided for @storeSectionRelated.
-  ///
-  /// In pt, this message translates to:
-  /// **'Você também pode gostar'**
-  String get storeSectionRelated;
-
-  /// No description provided for @storeBenefitPickup.
-  ///
-  /// In pt, this message translates to:
-  /// **'Retirada grátis na Goiás Store'**
-  String get storeBenefitPickup;
-
-  /// No description provided for @storeBenefitPersonalize.
-  ///
-  /// In pt, this message translates to:
-  /// **'Personalize seu manto'**
-  String get storeBenefitPersonalize;
-
-  /// No description provided for @storeBenefitInstallments.
-  ///
-  /// In pt, this message translates to:
-  /// **'Parcelamento demonstrativo'**
-  String get storeBenefitInstallments;
 
   /// No description provided for @storeSearchHint.
   ///
@@ -6657,30 +6087,6 @@ abstract class AppLocalizations {
   /// **'Promoção'**
   String get storeBadgeOnSale;
 
-  /// No description provided for @storeBadgeNew.
-  ///
-  /// In pt, this message translates to:
-  /// **'Lançamento'**
-  String get storeBadgeNew;
-
-  /// No description provided for @storeBadgePersonalizable.
-  ///
-  /// In pt, this message translates to:
-  /// **'Personalizável'**
-  String get storeBadgePersonalizable;
-
-  /// No description provided for @storeAddFavorite.
-  ///
-  /// In pt, this message translates to:
-  /// **'Adicionar aos favoritos'**
-  String get storeAddFavorite;
-
-  /// No description provided for @storeRemoveFavorite.
-  ///
-  /// In pt, this message translates to:
-  /// **'Remover dos favoritos'**
-  String get storeRemoveFavorite;
-
   /// No description provided for @storeInstallmentsLabel.
   ///
   /// In pt, this message translates to:
@@ -6747,12 +6153,6 @@ abstract class AppLocalizations {
   /// **'Ref.'**
   String get storeReferenceLabel;
 
-  /// No description provided for @storeViewProductButton.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ver produto'**
-  String get storeViewProductButton;
-
   /// No description provided for @storeDeliveryOrPickupLabel.
   ///
   /// In pt, this message translates to:
@@ -6789,30 +6189,6 @@ abstract class AppLocalizations {
   /// **'Personalização (opcional)'**
   String get storePersonalizationLabel;
 
-  /// No description provided for @storePersonalizeCardTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Do seu jeito'**
-  String get storePersonalizeCardTitle;
-
-  /// No description provided for @storePersonalizeCardText.
-  ///
-  /// In pt, this message translates to:
-  /// **'Adicione nome e número ao seu manto.'**
-  String get storePersonalizeCardText;
-
-  /// No description provided for @storePersonalizeCardCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'Personalizar'**
-  String get storePersonalizeCardCta;
-
-  /// No description provided for @storePickupCardCta.
-  ///
-  /// In pt, this message translates to:
-  /// **'Ver localização'**
-  String get storePickupCardCta;
-
   /// No description provided for @storePersonalizationNameField.
   ///
   /// In pt, this message translates to:
@@ -6843,23 +6219,11 @@ abstract class AppLocalizations {
   /// **'Adicionar na sacola'**
   String get storeAddToCartButton;
 
-  /// No description provided for @storeAddShort.
-  ///
-  /// In pt, this message translates to:
-  /// **'Adicionar'**
-  String get storeAddShort;
-
   /// No description provided for @storeSeeCartAction.
   ///
   /// In pt, this message translates to:
   /// **'Ver sacola'**
   String get storeSeeCartAction;
-
-  /// No description provided for @storeChooseSizeTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Escolha um tamanho'**
-  String get storeChooseSizeTitle;
 
   /// No description provided for @storeChooseSizeMessage.
   ///
@@ -7509,12 +6873,6 @@ abstract class AppLocalizations {
   /// **'Estado'**
   String get storeStateLabel;
 
-  /// No description provided for @storeAddressFormError.
-  ///
-  /// In pt, this message translates to:
-  /// **'Preencha todos os campos obrigatórios corretamente.'**
-  String get storeAddressFormError;
-
   /// No description provided for @storeSaveAddressButton.
   ///
   /// In pt, this message translates to:
@@ -7580,18 +6938,6 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Informe nome e sobrenome.'**
   String get storeValFullNameIncomplete;
-
-  /// No description provided for @storeValEmailRequired.
-  ///
-  /// In pt, this message translates to:
-  /// **'Informe um e-mail.'**
-  String get storeValEmailRequired;
-
-  /// No description provided for @storeValEmailInvalid.
-  ///
-  /// In pt, this message translates to:
-  /// **'E-mail inválido.'**
-  String get storeValEmailInvalid;
 
   /// No description provided for @storeValPhoneInvalid.
   ///
