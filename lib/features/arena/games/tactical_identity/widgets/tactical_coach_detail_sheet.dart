@@ -33,7 +33,9 @@ Future<void> showTacticalCoachSheet(
             borderRadius: BorderRadius.circular(999),
           ),
           child: Text(
-            l10n.tacticalIdentityAffinityLabel(affinity.affinity),
+            l10n.tacticalIdentityAffinityLabel(
+              affinity.affinity.toStringAsFixed(1),
+            ),
             style: TextStyle(
               color: context.colors.primary,
               fontSize: 13,
@@ -46,7 +48,11 @@ Future<void> showTacticalCoachSheet(
           children: [
             Expanded(
               child: _StatColumn(
-                value: _axisStat(coach.x, negative: 'POSSE', positive: 'VERTICAL'),
+                value: _axisStat(
+                  coach.x,
+                  negative: 'POSSE',
+                  positive: 'VERTICAL',
+                ),
               ),
             ),
             Container(width: 1, height: 32, color: context.colors.border),
@@ -68,7 +74,11 @@ Future<void> showTacticalCoachSheet(
 
 /// "65 VERTICAL" / "40 POSSE" — a intensidade (0–100) do lado do eixo pra
 /// onde a coordenada pende, nunca a coordenada crua (-100..100).
-String _axisStat(double value, {required String negative, required String positive}) {
+String _axisStat(
+  double value, {
+  required String negative,
+  required String positive,
+}) {
   final intensity = value.abs().round();
   return '$intensity ${value >= 0 ? positive : negative}';
 }

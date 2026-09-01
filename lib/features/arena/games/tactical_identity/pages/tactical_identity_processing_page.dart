@@ -33,10 +33,7 @@ class _TacticalIdentityProcessingPageState
     final result = _engine.computeResult(widget.answers);
     await Future<void>.delayed(const Duration(milliseconds: 1100));
     if (!mounted) return;
-    context.pushReplacement(
-      '/arena/tactical-identity/result',
-      extra: result,
-    );
+    context.pushReplacement('/arena/tactical-identity/result', extra: result);
   }
 
   @override

@@ -41,6 +41,7 @@ class _TacticalIdentityResultPageState
   late final _rankedCoaches = _engine.rankCoaches(
     widget.result.x,
     widget.result.y,
+    widget.result.answers,
   );
 
   @override
@@ -73,7 +74,7 @@ class _TacticalIdentityResultPageState
     if (top != null) {
       buffer.writeln(
         '${top.coach.coach} • Goiás ${top.coach.period} · '
-        '${l10n.tacticalIdentityAffinityLabel(top.affinity)}',
+        '${l10n.tacticalIdentityAffinityLabel(top.affinity.toStringAsFixed(1))}',
       );
     }
     return shareFieldImage(
@@ -164,9 +165,7 @@ class _TacticalIdentityResultPageState
                             child: LayoutBuilder(
                               builder: (context, constraints) {
                                 final wide = constraints.maxWidth >= 760;
-                                final profile = _ProfileSection(
-                                  result: result,
-                                );
+                                final profile = _ProfileSection(result: result);
                                 final map = _MapSection(
                                   result: result,
                                   ranked: _rankedCoaches,
@@ -216,9 +215,7 @@ class _TacticalIdentityResultPageState
                                               ],
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: AppSpacing.xl,
-                                          ),
+                                          const SizedBox(width: AppSpacing.xl),
                                           Expanded(flex: 4, child: map),
                                         ],
                                       ),
@@ -361,8 +358,7 @@ class _MapSection extends StatelessWidget {
             userX: result.x,
             userY: result.y,
             coaches: ranked,
-            onCoachTap: (affinity) =>
-                showTacticalCoachSheet(context, affinity),
+            onCoachTap: (affinity) => showTacticalCoachSheet(context, affinity),
           ),
         ],
       ),
@@ -476,7 +472,7 @@ class _OtherReferenceRow extends StatelessWidget {
           ),
         ),
         Text(
-          '${affinity.affinity}%',
+          '${affinity.affinity.toStringAsFixed(1)}%',
           style: const TextStyle(
             color: ArenaColors.goiasOutfield,
             fontSize: 15,
@@ -491,19 +487,22 @@ class _OtherReferenceRow extends StatelessWidget {
 class _AffinityPill extends StatelessWidget {
   const _AffinityPill({required this.affinity});
 
-  final int affinity;
+  final double affinity;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 6),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md,
+        vertical: 6,
+      ),
       decoration: BoxDecoration(
         color: ArenaColors.goiasOutfield.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(999),
       ),
       child: Text(
-        l10n.tacticalIdentityAffinityLabel(affinity),
+        l10n.tacticalIdentityAffinityLabel(affinity.toStringAsFixed(1)),
         style: const TextStyle(
           color: ArenaColors.goiasOutfield,
           fontSize: 12.5,

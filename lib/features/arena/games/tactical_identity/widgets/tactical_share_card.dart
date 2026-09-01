@@ -25,7 +25,9 @@ class TacticalShareCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final top = result.closestCoaches.isEmpty ? null : result.closestCoaches.first;
+    final top = result.closestCoaches.isEmpty
+        ? null
+        : result.closestCoaches.first;
     return Container(
       width: 380,
       padding: const EdgeInsets.all(28),
@@ -148,7 +150,11 @@ class TacticalShareCard extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              l10n.tacticalIdentityAffinityLabel(top.affinity).toUpperCase(),
+              l10n
+                  .tacticalIdentityAffinityLabel(
+                    top.affinity.toStringAsFixed(1),
+                  )
+                  .toUpperCase(),
               style: const TextStyle(
                 color: ArenaColors.goiasKeeper,
                 fontSize: 12.5,

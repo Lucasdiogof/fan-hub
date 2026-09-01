@@ -1,18 +1,34 @@
 /// Uma alternativa de uma pergunta da Identidade Futebolística. Nunca existe
 /// "certo/errado" — cada alternativa só desloca o perfil do usuário nos dois
-/// eixos táticos. [deltaX]/[deltaY] nunca aparecem pro usuário.
+/// eixos táticos PÚBLICOS ([deltaX]/[deltaY], nunca aparecem pro usuário) e,
+/// desde a recalibração v2, também pequenas contribuições pras 4 dimensões
+/// TÁTICAS OCULTAS ([pressing]/[blockHeight]/[risk]/[structuralFluidity]) —
+/// usadas só na AFINIDADE completa com os técnicos, nunca no mapa 2D
+/// (ver `tactical_identity_engine.dart`).
 class TacticalOption {
   const TacticalOption({
     required this.id,
     required this.text,
     required this.deltaX,
     required this.deltaY,
+    this.pressing = 0,
+    this.blockHeight = 0,
+    this.risk = 0,
+    this.structuralFluidity = 0,
   });
 
   final String id;
   final String text;
   final int deltaX;
   final int deltaY;
+
+  /// Contribuições pras dimensões ocultas — pequenas (tipicamente -2..+2),
+  /// nunca mostradas ao usuário, derivadas do SIGNIFICADO real de cada
+  /// alternativa (nunca alteradas só pra "encaixar matemática").
+  final int pressing;
+  final int blockHeight;
+  final int risk;
+  final int structuralFluidity;
 }
 
 class TacticalQuestion {
@@ -31,6 +47,13 @@ class TacticalQuestion {
 /// dele, só como aquele período se comportou taticamente. [x]/[y] são dados
 /// editoriais do jogo (não estatísticas oficiais); nunca recalibrar sem
 /// decisão explícita, ver `tactical_coach_references.dart`.
+///
+/// [pressing]/[blockHeight]/[risk]/[structuralFluidity] (0–100, desde a
+/// recalibração v2) são dimensões táticas OCULTAS — nunca aparecem no mapa
+/// nem em nenhuma tela, só entram no cálculo de afinidade completa. Existem
+/// porque dois técnicos podem estar relativamente próximos em posse/vertical
+/// e dogmático/pragmático e ainda assim serem bem diferentes taticamente
+/// (ex.: pressão alta vs. baixa, bloco alto vs. baixo).
 class TacticalCoachReference {
   const TacticalCoachReference({
     required this.id,
@@ -39,6 +62,10 @@ class TacticalCoachReference {
     required this.x,
     required this.y,
     required this.confidence,
+    required this.pressing,
+    required this.blockHeight,
+    required this.risk,
+    required this.structuralFluidity,
     this.assetPath,
     this.imageUrl,
   });
@@ -49,6 +76,10 @@ class TacticalCoachReference {
   final double x;
   final double y;
   final String confidence;
+  final int pressing;
+  final int blockHeight;
+  final int risk;
+  final int structuralFluidity;
 
   /// Preparado pra quando o jogo tiver fotos — nesta versão sempre `null`,
   /// a UI precisa ficar completa sem foto nenhuma.
@@ -87,8 +118,10 @@ class CoachAffinity {
   final TacticalCoachReference coach;
   final double distance;
 
-  /// 55–98, nunca fora dessa faixa — métrica recreativa, não científica.
-  final int affinity;
+  /// 40.0–98.0, nunca fora dessa faixa — métrica recreativa, não
+  /// científica. Uma casa decimal (nunca arredondada pro inteiro) de
+  /// propósito, mesma razão de `PlayerIdentityAffinity.affinity`.
+  final double affinity;
 }
 
 /// Resultado final de uma sessão completa — sempre recalculado do zero a

@@ -54,11 +54,10 @@ class TacticalBipolarBar extends StatelessWidget {
           builder: (context, constraints) {
             const markerSize = 16.0;
             final trackWidth = constraints.maxWidth;
-            final markerLeft =
-                (fraction * trackWidth - markerSize / 2).clamp(
-                  0.0,
-                  trackWidth - markerSize,
-                );
+            final markerLeft = (fraction * trackWidth - markerSize / 2).clamp(
+              0.0,
+              trackWidth - markerSize,
+            );
             return SizedBox(
               height: markerSize,
               child: Stack(

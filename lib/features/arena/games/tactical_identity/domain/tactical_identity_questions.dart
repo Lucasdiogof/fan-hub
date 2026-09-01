@@ -6,6 +6,13 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical
 /// nem alterar `deltaX`/`deltaY` sem decisão explícita — ver
 /// `tactical_coach_references.dart` sobre a mesma regra pro dataset de
 /// técnicos.
+///
+/// Desde a recalibração v2 (2026-09-01), cada alternativa também carrega
+/// pequenas contribuições pras 4 dimensões táticas OCULTAS (pressing,
+/// blockHeight, risk, structuralFluidity — nunca mostradas ao usuário,
+/// nunca no mapa 2D) — derivadas do SIGNIFICADO real de cada texto, nunca
+/// alteradas só pra "encaixar matemática" (quando uma alternativa
+/// genuinamente não tem relação com uma dimensão oculta, o valor fica 0).
 const tacticalIdentityQuestions = <TacticalQuestion>[
   TacticalQuestion(
     id: 'q01',
@@ -20,6 +27,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'homem livre.',
         deltaX: -2,
         deltaY: -2,
+        risk: -1,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q01_b',
@@ -28,6 +37,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'o espaço nas costas.',
         deltaX: -1,
         deltaY: 2,
+        risk: 1,
+        structuralFluidity: 2,
       ),
       TacticalOption(
         id: 'q01_c',
@@ -36,6 +47,9 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'para ganhar a segunda bola.',
         deltaX: 2,
         deltaY: -1,
+        pressing: 1,
+        risk: 1,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q01_d',
@@ -44,6 +58,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'saída por ali, curta ou longa.',
         deltaX: 1,
         deltaY: 2,
+        structuralFluidity: 2,
       ),
     ],
   ),
@@ -58,6 +73,9 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         text: 'Retém a bola, aproxima o time e organiza o ataque.',
         deltaX: -2,
         deltaY: -1,
+        pressing: -1,
+        risk: -1,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q02_b',
@@ -66,12 +84,17 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'mantém a posse.',
         deltaX: -1,
         deltaY: 2,
+        structuralFluidity: 2,
       ),
       TacticalOption(
         id: 'q02_c',
         text: 'Acelera imediatamente e tenta chegar ao gol em poucos passes.',
         deltaX: 2,
         deltaY: -1,
+        pressing: 1,
+        blockHeight: 1,
+        risk: 2,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q02_d',
@@ -80,6 +103,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'numérica daquele lance.',
         deltaX: 1,
         deltaY: 2,
+        structuralFluidity: 2,
       ),
     ],
   ),
@@ -89,10 +113,12 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
     options: [
       TacticalOption(
         id: 'q03_a',
-        text: 'Não muda o comportamento. Se o plano trouxe a vantagem, '
+        text:
+            'Não muda o comportamento. Se o plano trouxe a vantagem, '
             'continua igual.',
         deltaX: 0,
         deltaY: -2,
+        structuralFluidity: -2,
       ),
       TacticalOption(
         id: 'q03_b',
@@ -101,13 +127,21 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'correr atrás da bola.',
         deltaX: -2,
         deltaY: 1,
+        pressing: -1,
+        risk: -1,
+        structuralFluidity: 1,
       ),
       TacticalOption(
         id: 'q03_c',
-        text: 'Fecha melhor os espaços e prepara transições para matar o '
+        text:
+            'Fecha melhor os espaços e prepara transições para matar o '
             'jogo.',
         deltaX: 2,
         deltaY: 2,
+        pressing: -1,
+        blockHeight: -2,
+        risk: -1,
+        structuralFluidity: 1,
       ),
       TacticalOption(
         id: 'q03_d',
@@ -116,6 +150,10 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'rival cresça.',
         deltaX: 1,
         deltaY: -1,
+        pressing: 2,
+        blockHeight: 1,
+        risk: 1,
+        structuralFluidity: -1,
       ),
     ],
   ),
@@ -130,6 +168,9 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         text: 'Circula pacientemente até surgir o espaço certo.',
         deltaX: -2,
         deltaY: -2,
+        blockHeight: 1,
+        risk: -1,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q04_b',
@@ -138,6 +179,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'pelos lados.',
         deltaX: -1,
         deltaY: 2,
+        blockHeight: 1,
+        structuralFluidity: 2,
       ),
       TacticalOption(
         id: 'q04_c',
@@ -146,6 +189,9 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'rebotes.',
         deltaX: 2,
         deltaY: -1,
+        blockHeight: 1,
+        risk: 2,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q04_d',
@@ -154,6 +200,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'a defesa reage.',
         deltaX: 1,
         deltaY: 2,
+        risk: 1,
+        structuralFluidity: 2,
       ),
     ],
   ),
@@ -170,6 +218,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'o time joga.',
         deltaX: -2,
         deltaY: -2,
+        risk: 1,
+        structuralFluidity: -2,
       ),
       TacticalOption(
         id: 'q05_b',
@@ -178,6 +228,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'posicionamento ao rival.',
         deltaX: -1,
         deltaY: 2,
+        structuralFluidity: 2,
       ),
       TacticalOption(
         id: 'q05_c',
@@ -186,6 +237,10 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'transição.',
         deltaX: 2,
         deltaY: 2,
+        pressing: -1,
+        blockHeight: -2,
+        risk: -1,
+        structuralFluidity: 1,
       ),
       TacticalOption(
         id: 'q05_d',
@@ -194,6 +249,10 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'risco.',
         deltaX: 2,
         deltaY: -1,
+        pressing: 2,
+        blockHeight: 2,
+        risk: 2,
+        structuralFluidity: -1,
       ),
     ],
   ),
@@ -210,6 +269,9 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'vaga.',
         deltaX: 0,
         deltaY: -2,
+        pressing: 1,
+        risk: -1,
+        structuralFluidity: -2,
       ),
       TacticalOption(
         id: 'q06_b',
@@ -218,6 +280,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'coletivo.',
         deltaX: -1,
         deltaY: 2,
+        structuralFluidity: 2,
       ),
       TacticalOption(
         id: 'q06_c',
@@ -226,6 +289,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'em zonas ofensivas.',
         deltaX: 1,
         deltaY: 1,
+        structuralFluidity: 1,
       ),
       TacticalOption(
         id: 'q06_d',
@@ -234,12 +298,16 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'maneira especial.',
         deltaX: 1,
         deltaY: -1,
+        pressing: -1,
+        risk: 1,
+        structuralFluidity: 1,
       ),
     ],
   ),
   TacticalQuestion(
     id: 'q07',
-    text: 'Intervalo. Goiás perde por 1 a 0, mas está jogando bem e criando '
+    text:
+        'Intervalo. Goiás perde por 1 a 0, mas está jogando bem e criando '
         'chances.',
     options: [
       TacticalOption(
@@ -247,6 +315,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         text: 'Não mexe. O plano funciona e o gol será consequência.',
         deltaX: -1,
         deltaY: -2,
+        structuralFluidity: -2,
       ),
       TacticalOption(
         id: 'q07_b',
@@ -255,6 +324,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'inicial.',
         deltaX: -1,
         deltaY: 1,
+        structuralFluidity: 1,
       ),
       TacticalOption(
         id: 'q07_c',
@@ -263,6 +333,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'mais rápido.',
         deltaX: 2,
         deltaY: 1,
+        blockHeight: 1,
+        risk: 1,
       ),
       TacticalOption(
         id: 'q07_d',
@@ -271,12 +343,14 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'entre as linhas.',
         deltaX: -2,
         deltaY: 1,
+        structuralFluidity: 1,
       ),
     ],
   ),
   TacticalQuestion(
     id: 'q08',
-    text: 'Seu time perde a bola perto da área adversária. Qual reação você '
+    text:
+        'Seu time perde a bola perto da área adversária. Qual reação você '
         'espera?',
     options: [
       TacticalOption(
@@ -286,6 +360,10 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'do rival.',
         deltaX: -1,
         deltaY: -2,
+        pressing: 2,
+        blockHeight: 2,
+        risk: 1,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q08_b',
@@ -294,12 +372,17 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'contrário, recompõe.',
         deltaX: 0,
         deltaY: 2,
+        pressing: 1,
+        structuralFluidity: 2,
       ),
       TacticalOption(
         id: 'q08_c',
         text: 'Primeiro reorganiza o bloco e fecha o centro do campo.',
         deltaX: 1,
         deltaY: 1,
+        pressing: -1,
+        blockHeight: -1,
+        risk: -1,
       ),
       TacticalOption(
         id: 'q08_d',
@@ -308,6 +391,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'acelerar.',
         deltaX: 2,
         deltaY: -1,
+        pressing: 1,
       ),
     ],
   ),
@@ -317,10 +401,11 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
     options: [
       TacticalOption(
         id: 'q09_a',
-        text:
-            'Mantém a construção paciente. Desorganização não é solução.',
+        text: 'Mantém a construção paciente. Desorganização não é solução.',
         deltaX: -2,
         deltaY: -2,
+        risk: -1,
+        structuralFluidity: -2,
       ),
       TacticalOption(
         id: 'q09_b',
@@ -329,6 +414,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'estrutura.',
         deltaX: -1,
         deltaY: 2,
+        risk: 1,
+        structuralFluidity: 1,
       ),
       TacticalOption(
         id: 'q09_c',
@@ -337,6 +424,10 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'segunda bolas.',
         deltaX: 2,
         deltaY: -1,
+        pressing: 1,
+        blockHeight: 2,
+        risk: 2,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q09_d',
@@ -345,6 +436,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'defesa oferecer espaço.',
         deltaX: 1,
         deltaY: 2,
+        risk: 1,
+        structuralFluidity: 2,
       ),
     ],
   ),
@@ -359,20 +452,27 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'adversário.',
         deltaX: -1,
         deltaY: -2,
+        structuralFluidity: -2,
       ),
       TacticalOption(
         id: 'q10_b',
-        text: 'Os princípios permanecem, mas esquema e estratégia podem '
+        text:
+            'Os princípios permanecem, mas esquema e estratégia podem '
             'mudar.',
         deltaX: -1,
         deltaY: 2,
+        structuralFluidity: 2,
       ),
       TacticalOption(
         id: 'q10_c',
-        text: 'Chegar ao gol rapidamente vale mais do que ter a bola por '
+        text:
+            'Chegar ao gol rapidamente vale mais do que ter a bola por '
             'ter.',
         deltaX: 2,
         deltaY: -1,
+        blockHeight: 1,
+        risk: 1,
+        structuralFluidity: -1,
       ),
       TacticalOption(
         id: 'q10_d',
@@ -381,6 +481,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
             'fraquezas do rival.',
         deltaX: 1,
         deltaY: 2,
+        risk: 1,
+        structuralFluidity: 2,
       ),
     ],
   ),

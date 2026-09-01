@@ -183,32 +183,37 @@ void main() {
 
   group('rankCoaches / closestCoaches', () {
     test('rankCoaches sorts all 12 coaches from nearest to farthest', () {
-      final ranked = engine.rankCoaches(0, 0);
+      final answers = _answers(List.filled(10, (0, 0)));
+      final ranked = engine.rankCoaches(0, 0, answers);
       expect(ranked.length, 12);
       for (var i = 1; i < ranked.length; i++) {
-        expect(ranked[i].distance, greaterThanOrEqualTo(ranked[i - 1].distance));
+        expect(
+          ranked[i].distance,
+          greaterThanOrEqualTo(ranked[i - 1].distance),
+        );
       }
     });
 
     test('closestCoaches returns exactly the top 3', () {
-      final top3 = engine.closestCoaches(0, 0);
+      final answers = _answers(List.filled(10, (0, 0)));
+      final top3 = engine.closestCoaches(0, 0, answers);
       expect(top3.length, 3);
-      final ranked = engine.rankCoaches(0, 0);
-      expect(top3.map((c) => c.coach.id), ranked.take(3).map((c) => c.coach.id));
+      final ranked = engine.rankCoaches(0, 0, answers);
+      expect(
+        top3.map((c) => c.coach.id),
+        ranked.take(3).map((c) => c.coach.id),
+      );
     });
   });
 
   group('affinityFor', () {
-    test('never goes below 55, even for a very distant point', () {
-      // O ponto mais distante possível é um canto do quadrado -100..100,
-      // bem mais longe que qualquer técnico do dataset.
-      final distance = engine.euclideanDistance(
-        userX: -100,
-        userY: -100,
-        coachX: 100,
-        coachY: 100,
-      );
-      expect(engine.affinityFor(distance), 55);
+    test('never goes below the floor (40), even for a very distant point', () {
+      // Uma distância bem maior que qualquer distância real observada no
+      // espaço z-score do dataset — usada só pra exercitar o clamp inferior
+      // de affinityFor, não representa mais uma distância euclidiana 2D
+      // (a partir da recalibração v2, affinityFor opera sobre a distância
+      // ponderada em z-score das 6 dimensões, não mais x/y puro).
+      expect(engine.affinityFor(1000), 40);
     });
 
     test('never goes above 98, even at distance zero', () {
@@ -256,10 +261,7 @@ void main() {
         // Exatamente 10 respostas, uma por pergunta — trocar 3 vezes a
         // mesma pergunta nunca duplicou nada na lista final.
         expect(answers.length, tacticalIdentityQuestions.length);
-        expect(
-          answers.first.id,
-          tacticalIdentityQuestions.first.options[3].id,
-        );
+        expect(answers.first.id, tacticalIdentityQuestions.first.options[3].id);
       },
     );
   });
@@ -315,10 +317,7 @@ void main() {
 
     test('POSSE + PRAGMÁTICO extreme', () {
       final result = engine.computeResult(_answers(List.filled(10, (-2, 2))));
-      expect(
-        result.archetype,
-        TacticalArchetype.associativoFlexivel,
-      );
+      expect(result.archetype, TacticalArchetype.associativoFlexivel);
     });
 
     test('VERTICAL + PRAGMÁTICO extreme', () {
@@ -327,9 +326,7 @@ void main() {
     });
 
     test('POSSE + DOGMÁTICO extreme', () {
-      final result = engine.computeResult(
-        _answers(List.filled(10, (-2, -2))),
-      );
+      final result = engine.computeResult(_answers(List.filled(10, (-2, -2))));
       expect(result.archetype, TacticalArchetype.controladorConvicto);
     });
 
@@ -339,13 +336,10 @@ void main() {
     });
   });
 
-  test(
-    'TacticalIdentityCubit never depends on ranking/score infrastructure — '
-    'its constructor takes zero arguments, so it structurally cannot call '
-    'ArenaRankingRepository or any equivalent',
-    () {
-      final cubit = TacticalIdentityCubit();
-      expect(cubit.state.index, 0);
-    },
-  );
+  test('TacticalIdentityCubit never depends on ranking/score infrastructure — '
+      'its constructor takes zero arguments, so it structurally cannot call '
+      'ArenaRankingRepository or any equivalent', () {
+    final cubit = TacticalIdentityCubit();
+    expect(cubit.state.index, 0);
+  });
 }

@@ -73,9 +73,7 @@ class _QuestionView extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: ContentWidth.form.maxWidth,
-              ),
+              constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
               child: Padding(
                 padding: const EdgeInsets.all(AppSpacing.lg),
                 child: Column(
@@ -121,51 +119,56 @@ class _QuestionView extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSpacing.xl),
                     Expanded(
-                      child: BlocBuilder<
-                        TacticalIdentityCubit,
-                        TacticalIdentityState
-                      >(
-                        builder: (context, state) {
-                          final question = state.currentQuestion;
-                          return SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.all(
-                                    AppSpacing.lg,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: colors.surface,
-                                    borderRadius: BorderRadius.circular(16),
-                                    border: Border.all(color: colors.border),
-                                  ),
-                                  child: Text(
-                                    question.text,
-                                    style: TextStyle(
-                                      color: colors.textPrimary,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w800,
-                                      height: 1.35,
+                      child:
+                          BlocBuilder<
+                            TacticalIdentityCubit,
+                            TacticalIdentityState
+                          >(
+                            builder: (context, state) {
+                              final question = state.currentQuestion;
+                              return SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(
+                                        AppSpacing.lg,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: colors.surface,
+                                        borderRadius: BorderRadius.circular(16),
+                                        border: Border.all(
+                                          color: colors.border,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        question.text,
+                                        style: TextStyle(
+                                          color: colors.textPrimary,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w800,
+                                          height: 1.35,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    const SizedBox(height: AppSpacing.lg),
+                                    for (final option in question.options) ...[
+                                      TacticalOptionTile(
+                                        option: option,
+                                        selected:
+                                            state.selected?.id == option.id,
+                                        onTap: () => context
+                                            .read<TacticalIdentityCubit>()
+                                            .selectOption(option),
+                                      ),
+                                      const SizedBox(height: AppSpacing.sm),
+                                    ],
+                                  ],
                                 ),
-                                const SizedBox(height: AppSpacing.lg),
-                                for (final option in question.options) ...[
-                                  TacticalOptionTile(
-                                    option: option,
-                                    selected: state.selected?.id == option.id,
-                                    onTap: () => context
-                                        .read<TacticalIdentityCubit>()
-                                        .selectOption(option),
-                                  ),
-                                  const SizedBox(height: AppSpacing.sm),
-                                ],
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+                              );
+                            },
+                          ),
                     ),
                     const SizedBox(height: AppSpacing.md),
                     BlocBuilder<TacticalIdentityCubit, TacticalIdentityState>(

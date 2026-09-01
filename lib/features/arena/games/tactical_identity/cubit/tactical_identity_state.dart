@@ -6,15 +6,10 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical
 /// voltar e escolher outra alternativa só sobrescreve a posição, o
 /// resultado final sempre é recalculado percorrendo esta lista inteira.
 class TacticalIdentityState {
-  TacticalIdentityState({
-    this.index = 0,
-    List<TacticalOption?>? answers,
-  }) : answers =
-           answers ??
-           List<TacticalOption?>.filled(
-             tacticalIdentityQuestions.length,
-             null,
-           );
+  TacticalIdentityState({this.index = 0, List<TacticalOption?>? answers})
+    : answers =
+          answers ??
+          List<TacticalOption?>.filled(tacticalIdentityQuestions.length, null);
 
   final int index;
   final List<TacticalOption?> answers;
