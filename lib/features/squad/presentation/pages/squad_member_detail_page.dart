@@ -142,8 +142,8 @@ class _PlayerProfileHeader extends StatelessWidget {
             positionLine,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
               color: colors.primary,
             ),
           ),
@@ -356,7 +356,7 @@ class _PlayerCareerItem extends StatelessWidget {
   static final _monthPrefix = RegExp('[a-zçã]{3}/', caseSensitive: false);
   String _yearsOnly(String period) => period.replaceAll(_monthPrefix, '');
 
-  String _n(int? value) => value?.toString() ?? '—';
+  String _n(int? value) => value?.toString() ?? '0';
 
   @override
   Widget build(BuildContext context) {
