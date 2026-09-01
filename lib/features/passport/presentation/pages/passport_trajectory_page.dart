@@ -496,32 +496,31 @@ class _TrajectoryCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [colors.deepGreen, colors.darkGreen],
+          colors: [
+            Color.lerp(colors.deepGreen, Colors.black, 0.25)!,
+            Color.lerp(colors.darkGreen, Colors.black, 0.25)!,
+          ],
         ),
         borderRadius: BorderRadius.circular(AppRadius.banner),
       ),
       clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
-          // Selo 3D inteiro, sem cortar — só textura de marca no espaço
-          // vazio acima das estatísticas, nunca compete com o conteúdo em
-          // cima (por isso fica atrás de tudo e não recebe toque).
-          // `ClipOval` descarta os cantos quadrados do JPG de origem (o
-          // render 3D vem sobre um fundo verde próprio, não transparente),
-          // deixando só o círculo do selo.
+          // Escudo oficial (cores reais, mesmo usado em toda identificação
+          // de time no app) — só textura de marca no espaço vazio acima das
+          // estatísticas, nunca compete com o conteúdo em cima (por isso
+          // fica atrás de tudo e não recebe toque).
           Positioned(
-            top: AppSpacing.md,
+            top: 4,
             right: AppSpacing.lg,
             child: IgnorePointer(
               child: Opacity(
                 opacity: 0.22,
-                child: ClipOval(
-                  child: Image.asset(
-                    AppAssets.goiasCrest3d,
-                    width: 84,
-                    height: 84,
-                    fit: BoxFit.cover,
-                  ),
+                child: Image.asset(
+                  AppAssets.goiasCrestBadge,
+                  width: 84,
+                  height: 84,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
@@ -588,7 +587,7 @@ class _UserHeaderContent extends StatelessWidget {
     return Row(
       children: [
         _Avatar(name: name, avatarUrl: avatarUrl),
-        const SizedBox(width: AppSpacing.md),
+        const SizedBox(width: AppSpacing.lg),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
