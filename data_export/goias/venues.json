@@ -1,0 +1,1282 @@
+[
+  {
+    "id": "venue_a7c5ab9fb3f3",
+    "canonical_name": "Estádio Serra Dourada",
+    "display_name": "Estádio Serra Dourada",
+    "city": "Goiânia",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4cb12651ded1",
+    "canonical_name": "Estádio Divino Garcia Rosa",
+    "display_name": "Estádio Divino Garcia Rosa",
+    "city": "Goiatuba",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_240a07fe8b20",
+    "canonical_name": "Estádio Olímpico Pedro Ludovico Teixeira",
+    "display_name": "Estádio Olímpico Pedro Ludovico Teixeira",
+    "city": "Goiânia",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_81f614b087e4",
+    "canonical_name": "Estádio Mozart Veloso do Carmo",
+    "display_name": "Estádio Mozart Veloso do Carmo",
+    "city": "Rio Verde",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_2285f4815de3",
+    "canonical_name": "Estádio Hailé Pinheiro",
+    "display_name": "Estádio Hailé Pinheiro",
+    "city": "Goiânia",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_b209e43938c9",
+    "canonical_name": "Estádio Valdeir José de Oliveira",
+    "display_name": "Estádio Valdeir José de Oliveira",
+    "city": "Goianésia",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4f561269d826",
+    "canonical_name": "Estádio Municipal Juscelino Kubitschek",
+    "display_name": "Estádio Municipal Juscelino Kubitschek",
+    "city": "Itumbiara",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4664d66cb052",
+    "canonical_name": "Estádio João Hora de Oliveira",
+    "display_name": "Estádio João Hora de Oliveira",
+    "city": "Aracaju",
+    "state": "SE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_376e43a2075d",
+    "canonical_name": "Estádio Serra de Caldas",
+    "display_name": "Estádio Serra de Caldas",
+    "city": "Caldas Novas",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_8cff4e7b35b8",
+    "canonical_name": "Estádio Jonas Duarte",
+    "display_name": "Estádio Jonas Duarte",
+    "city": "Anápolis",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_f4a44fee21b5",
+    "canonical_name": "Estádio Eládio de Barros Carvalho (Aflitos)",
+    "display_name": "Estádio Eládio de Barros Carvalho (Aflitos)",
+    "city": "Recife",
+    "state": "PE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_0f05257d9500",
+    "canonical_name": "Estádio Dr. João Cláudio Vasconcelos Machado (Machadão)",
+    "display_name": "Estádio Dr. João Cláudio Vasconcelos Machado (Machadão)",
+    "city": "Natal",
+    "state": "RN",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4d93859f29b1",
+    "canonical_name": "Estádio Aníbal Batista de Toledo",
+    "display_name": "Estádio Aníbal Batista de Toledo",
+    "city": "Aparecida de Goiânia",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_7074f3f0cd90",
+    "canonical_name": "Estádio Sérgio Pereira",
+    "display_name": "Estádio Sérgio Pereira",
+    "city": "Minaçu",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_05aaf500c162",
+    "canonical_name": "Estádio Zico Brandão",
+    "display_name": "Estádio Zico Brandão",
+    "city": "Inhumas",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_df4f980bb28d",
+    "canonical_name": "Estádio Manoel Barradas (Barradão)",
+    "display_name": "Estádio Manoel Barradas (Barradão)",
+    "city": "Salvador",
+    "state": "BA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_6266bb74c53c",
+    "canonical_name": "Estádio Rei Pelé",
+    "display_name": "Estádio Rei Pelé",
+    "city": "Maceió",
+    "state": "AL",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_bf11f2ca99d2",
+    "canonical_name": "Estádio José Américo de Almeida Filho (Almeidão)",
+    "display_name": "Estádio José Américo de Almeida Filho (Almeidão)",
+    "city": "João Pessoa",
+    "state": "PB",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_f649506c2669",
+    "canonical_name": "Estádio José Pinheiro Borda (Beira-Rio)",
+    "display_name": "Estádio José Pinheiro Borda (Beira-Rio)",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ea7011fc3a05",
+    "canonical_name": "Estádio Doutor Oswaldo Teixeira Duarte (Canindé)",
+    "display_name": "Estádio Doutor Oswaldo Teixeira Duarte (Canindé)",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4327fb15a9b6",
+    "canonical_name": "Estádio Palestra Itália (Parque Antártica)",
+    "display_name": "Estádio Palestra Itália (Parque Antártica)",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_fe49c2dbeea8",
+    "canonical_name": "Estádio Walmir Campelo Bezerra (Bezerrão)",
+    "display_name": "Estádio Walmir Campelo Bezerra (Bezerrão)",
+    "city": "Gama",
+    "state": "DF",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_116c473b4202",
+    "canonical_name": "Estádio Adelmar da Costa Carvalho (Ilha do Retiro)",
+    "display_name": "Estádio Adelmar da Costa Carvalho (Ilha do Retiro)",
+    "city": "Recife",
+    "state": "PE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_736e911dd1b1",
+    "canonical_name": "Estádio Jornalista Mário Filho (Maracanã)",
+    "display_name": "Estádio Jornalista Mário Filho (Maracanã)",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_f774e30330d9",
+    "canonical_name": "Estádio Brinco de Ouro da Princesa",
+    "display_name": "Estádio Brinco de Ouro da Princesa",
+    "city": "Campinas",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_81cc960a5a69",
+    "canonical_name": "Estádio Governador Magalhães Pinto (Mineirão)",
+    "display_name": "Estádio Governador Magalhães Pinto (Mineirão)",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_c2c08a28ec2d",
+    "canonical_name": "Estádio Alfredo Jaconi",
+    "display_name": "Estádio Alfredo Jaconi",
+    "city": "Caxias do Sul",
+    "state": "RS",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_927d39ddef20",
+    "canonical_name": "Estádio Vasco da Gama (São Januário)",
+    "display_name": "Estádio Vasco da Gama (São Januário)",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4b7c46fb495a",
+    "canonical_name": "Estádio Joaquim Américo Guimarães (Arena da Baixada)",
+    "display_name": "Estádio Joaquim Américo Guimarães (Arena da Baixada)",
+    "city": "Curitiba",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_a0c382db9fdb",
+    "canonical_name": "Arena Fonte Nova",
+    "display_name": "Arena Fonte Nova",
+    "city": "Salvador",
+    "state": "BA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_78b1abdfcfab",
+    "canonical_name": "Estádio Pinheirão",
+    "display_name": "Estádio Pinheirão",
+    "city": "Curitiba",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_66b1353dd023",
+    "canonical_name": "Estádio Durval Ferreira Franco",
+    "display_name": "Estádio Durval Ferreira Franco",
+    "city": "Ipameri",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_5e660a873d54",
+    "canonical_name": "Estádio Godofredo Cruz",
+    "display_name": "Estádio Godofredo Cruz",
+    "city": "Campos dos Goytacazes",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_2e45eaac4b6a",
+    "canonical_name": "Estádio Major Antônio Couto Pereira",
+    "display_name": "Estádio Major Antônio Couto Pereira",
+    "city": "Curitiba",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_bdb263a6dd1f",
+    "canonical_name": "Estádio Vivaldo Lima (Vivaldão)",
+    "display_name": "Estádio Vivaldo Lima (Vivaldão)",
+    "city": "Manaus",
+    "state": "AM",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_7408925f1988",
+    "canonical_name": "Estádio Olímpico Monumental",
+    "display_name": "Estádio Olímpico Monumental",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_fdd3c3ff4a3d",
+    "canonical_name": "Estádio Urbano Caldeira (Vila Belmiro)",
+    "display_name": "Estádio Urbano Caldeira (Vila Belmiro)",
+    "city": "Santos",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_51d31d268714",
+    "canonical_name": "Estádio Santa Cruz",
+    "display_name": "Estádio Santa Cruz",
+    "city": "Ribeirão Preto",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_412444ff5a78",
+    "canonical_name": "Estádio José do Rego Maciel (Arruda)",
+    "display_name": "Estádio José do Rego Maciel (Arruda)",
+    "city": "Recife",
+    "state": "PE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_83c21d94b911",
+    "canonical_name": "Estádio Municipal Jacy Scaff (Estádio do Café)",
+    "display_name": "Estádio Municipal Jacy Scaff (Estádio do Café)",
+    "city": "Londrina",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ccdbc17792d3",
+    "canonical_name": "Estádio Governador Plácido Aderaldo Castelo (Castelão)",
+    "display_name": "Estádio Governador Plácido Aderaldo Castelo (Castelão)",
+    "city": "Fortaleza",
+    "state": "CE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_342a289e0ba8",
+    "canonical_name": "Estádio Cícero Pompeu de Toledo (Morumbi)",
+    "display_name": "Estádio Cícero Pompeu de Toledo (Morumbi)",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ba6c0d8a7ca0",
+    "canonical_name": "Estádio Municipal Paulo Machado de Carvalho (Pacaembu)",
+    "display_name": "Estádio Municipal Paulo Machado de Carvalho (Pacaembu)",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_8f67d756b119",
+    "canonical_name": "Estádio Moisés Lucarelli",
+    "display_name": "Estádio Moisés Lucarelli",
+    "city": "Campinas",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_cd6de9b44c88",
+    "canonical_name": "Estádio Olímpico do Pará (Mangueirão)",
+    "display_name": "Estádio Olímpico do Pará (Mangueirão)",
+    "city": "Belém",
+    "state": "PA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_940583fc531a",
+    "canonical_name": "Estádio Arapucão",
+    "display_name": "Estádio Arapucão",
+    "city": "Jataí",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_57d82b8a65d4",
+    "canonical_name": "Estádio Municipal Epaminondas Mendes Brito (Ipatingão)",
+    "display_name": "Estádio Municipal Epaminondas Mendes Brito (Ipatingão)",
+    "city": "Ipatinga",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_637d4ff7e022",
+    "canonical_name": "Estádio Municipal Doutor Novelli Júnior",
+    "display_name": "Estádio Municipal Doutor Novelli Júnior",
+    "city": "Itu",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_04f834d33e9c",
+    "canonical_name": "Estádio Orlando Scarpelli",
+    "display_name": "Estádio Orlando Scarpelli",
+    "city": "Florianópolis",
+    "state": "SC",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_44dfa5641fe4",
+    "canonical_name": "Estádio Heriberto Hülse",
+    "display_name": "Estádio Heriberto Hülse",
+    "city": "Criciúma",
+    "state": "SC",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_a6ffc3aee5bb",
+    "canonical_name": "Estádio Anacleto Campanella",
+    "display_name": "Estádio Anacleto Campanella",
+    "city": "São Caetano do Sul",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_d1e49c6d6bd7",
+    "canonical_name": "Estádio Genervino da Fonseca",
+    "display_name": "Estádio Genervino da Fonseca",
+    "city": "Catalão",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_5bc17fdb6374",
+    "canonical_name": "Estádio José Fragelli (Verdão)",
+    "display_name": "Estádio José Fragelli (Verdão)",
+    "city": "Cuiabá",
+    "state": "MT",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_0f36316ac277",
+    "canonical_name": "Estádio Elmo Serejo Farias (Serejão/Boca do Jacaré)",
+    "display_name": "Estádio Elmo Serejo Farias (Serejão/Boca do Jacaré)",
+    "city": "Taguatinga",
+    "state": "DF",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_91cdf3fe1e18",
+    "canonical_name": "Estádio Raimundo Sampaio (Independência)",
+    "display_name": "Estádio Raimundo Sampaio (Independência)",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_b96a2c2f45de",
+    "canonical_name": "Estádio Elmo Serejo Farias (Boca do Jacaré)",
+    "display_name": "Estádio Elmo Serejo Farias (Boca do Jacaré)",
+    "city": "Taguatinga",
+    "state": "DF",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_a4d90a8b3c21",
+    "canonical_name": "Estadio Alejandro Serrano Aguilar",
+    "display_name": "Estadio Alejandro Serrano Aguilar",
+    "city": "Cuenca",
+    "state": "Azuay",
+    "country": "Equador"
+  },
+  {
+    "id": "venue_dc3025fbb48e",
+    "canonical_name": "Estádio Odilon Flores",
+    "display_name": "Estádio Odilon Flores",
+    "city": "Mineiros",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_22c586826fbf",
+    "canonical_name": "Estadio Santa Laura",
+    "display_name": "Estadio Santa Laura",
+    "city": "Santiago",
+    "state": "Região Metropolitana de Santiago",
+    "country": "Chile"
+  },
+  {
+    "id": "venue_f257f4780dfa",
+    "canonical_name": "Estadio El Coloso del Parque",
+    "display_name": "Estadio El Coloso del Parque",
+    "city": "Rosario",
+    "state": "Santa Fe",
+    "country": "Argentina"
+  },
+  {
+    "id": "venue_0fb983d61701",
+    "canonical_name": "Estadio Hernando Siles",
+    "display_name": "Estadio Hernando Siles",
+    "city": "La Paz",
+    "state": "La Paz",
+    "country": "Bolívia"
+  },
+  {
+    "id": "venue_f68a94170b75",
+    "canonical_name": "Estadio Centenario Dr. José Luis Meiszner",
+    "display_name": "Estadio Centenario Dr. José Luis Meiszner",
+    "city": "Quilmes",
+    "state": "Buenos Aires",
+    "country": "Argentina"
+  },
+  {
+    "id": "venue_c70f8101c544",
+    "canonical_name": "Estádio Plínio José de Souza",
+    "display_name": "Estádio Plínio José de Souza",
+    "city": "Senador Canedo",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_784117707513",
+    "canonical_name": "Estádio Nhozinho Santos",
+    "display_name": "Estádio Nhozinho Santos",
+    "city": "São Luís",
+    "state": "MA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_39b2c1ab0fbe",
+    "canonical_name": "Estádio Octávio Mangabeira (Fonte Nova)",
+    "display_name": "Estádio Octávio Mangabeira (Fonte Nova)",
+    "city": "Salvador",
+    "state": "BA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_c72bf63a58b9",
+    "canonical_name": "Estadio Julio Humberto Grondona",
+    "display_name": "Estadio Julio Humberto Grondona",
+    "city": "Sarandí",
+    "state": "Buenos Aires",
+    "country": "Argentina"
+  },
+  {
+    "id": "venue_3d4bbc53d6e6",
+    "canonical_name": "Estádio Olímpico Nilton Santos",
+    "display_name": "Estádio Olímpico Nilton Santos",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_378895bbd8ed",
+    "canonical_name": "Estádio Durival Britto e Silva (Vila Capanema)",
+    "display_name": "Estádio Durival Britto e Silva (Vila Capanema)",
+    "city": "Curitiba",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ee019cb46e89",
+    "canonical_name": "Estádio Abrão Manoel da Costa",
+    "display_name": "Estádio Abrão Manoel da Costa",
+    "city": "Trindade",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_5366245fc5ca",
+    "canonical_name": "Estádio Municipal João Lamego Netto (Ipatingão)",
+    "display_name": "Estádio Municipal João Lamego Netto (Ipatingão)",
+    "city": "Ipatinga",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4fcfe28390e7",
+    "canonical_name": "Estádio Raimundo Ribeiro de Souza (Ribeirão)",
+    "display_name": "Estádio Raimundo Ribeiro de Souza (Ribeirão)",
+    "city": "Boa Vista",
+    "state": "RR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4acc264423e2",
+    "canonical_name": "Estádio Bruno José Daniel",
+    "display_name": "Estádio Bruno José Daniel",
+    "city": "Santo André",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_593f6edcce9f",
+    "canonical_name": "Arena Barueri",
+    "display_name": "Arena Barueri",
+    "city": "Barueri",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_d1abb7ac3ba4",
+    "canonical_name": "Estadio General Pablo Rojas (La Nueva Olla)",
+    "display_name": "Estadio General Pablo Rojas (La Nueva Olla)",
+    "city": "Asunción",
+    "state": "Capital",
+    "country": "Paraguai"
+  },
+  {
+    "id": "venue_4c157881087a",
+    "canonical_name": "Estádio Aderbal Ramos da Silva (Ressacada)",
+    "display_name": "Estádio Aderbal Ramos da Silva (Ressacada)",
+    "city": "Florianópolis",
+    "state": "SC",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_90f961f675b9",
+    "canonical_name": "Estádio Antônio Accioly",
+    "display_name": "Estádio Antônio Accioly",
+    "city": "Goiânia",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_7017240e717e",
+    "canonical_name": "Estádio João Vilela",
+    "display_name": "Estádio João Vilela",
+    "city": "Morrinhos",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_728cf1ee3b16",
+    "canonical_name": "Estádio da Fazendinha",
+    "display_name": "Estádio da Fazendinha",
+    "city": "Ituiutaba",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4f080ec42cac",
+    "canonical_name": "Estádio Municipal Glicério de Souza Marques (Glicerão)",
+    "display_name": "Estádio Municipal Glicério de Souza Marques (Glicerão)",
+    "city": "Macapá",
+    "state": "AP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_179c6bb72980",
+    "canonical_name": "Estádio Pedro Romualdo Cabral",
+    "display_name": "Estádio Pedro Romualdo Cabral",
+    "city": "Santa Helena de Goiás",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_d8556f81c39d",
+    "canonical_name": "Engenhão",
+    "display_name": "Engenhão",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_d371f9c13ffd",
+    "canonical_name": "Arena do Jacaré",
+    "display_name": "Arena do Jacaré",
+    "city": "Sete Lagoas",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_84e7ee60c08c",
+    "canonical_name": "Estadio Centenario",
+    "display_name": "Estadio Centenario",
+    "city": "Montevideo",
+    "state": "Montevideo",
+    "country": "Uruguai"
+  },
+  {
+    "id": "venue_e99b4df655a9",
+    "canonical_name": "Prudentão",
+    "display_name": "Prudentão",
+    "city": "Presidente Prudente",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_e32062df9748",
+    "canonical_name": "Estadio Libertadores de América",
+    "display_name": "Estadio Libertadores de América",
+    "city": "Avellaneda",
+    "state": "Buenos Aires",
+    "country": "Argentina"
+  },
+  {
+    "id": "venue_19c65b25f08e",
+    "canonical_name": "Estádio Salvador Venâncio da Costa (Ninho das Águias)",
+    "display_name": "Estádio Salvador Venâncio da Costa (Ninho das Águias)",
+    "city": "Vitória",
+    "state": "ES",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_6604f9eb98f3",
+    "canonical_name": "Estádio Maria Lamas Farache (Frasqueirão)",
+    "display_name": "Estádio Maria Lamas Farache (Frasqueirão)",
+    "city": "Natal",
+    "state": "RN",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_0117cf489e4b",
+    "canonical_name": "Estádio Ademir Cunha",
+    "display_name": "Estádio Ademir Cunha",
+    "city": "Paulista",
+    "state": "PE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_59bf5abdc3d9",
+    "canonical_name": "Estádio Dario Rodrigues Leite",
+    "display_name": "Estádio Dario Rodrigues Leite",
+    "city": "Guaratinguetá",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_9c7bac915b4c",
+    "canonical_name": "Estádio General Sylvio Raulino de Oliveira (Estádio da Cidadania)",
+    "display_name": "Estádio General Sylvio Raulino de Oliveira (Estádio da Cidadania)",
+    "city": "Volta Redonda",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_a4f7ba25c559",
+    "canonical_name": "Estádio Mauro Sampaio (Romeirão)",
+    "display_name": "Estádio Mauro Sampaio (Romeirão)",
+    "city": "Juazeiro do Norte",
+    "state": "CE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_2b7d2773070d",
+    "canonical_name": "Estádio Municipal Coaracy da Mata Fonseca",
+    "display_name": "Estádio Municipal Coaracy da Mata Fonseca",
+    "city": "Arapiraca",
+    "state": "AL",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_dd4a45f77df6",
+    "canonical_name": "Estádio Dilzon Melo (Melão)",
+    "display_name": "Estádio Dilzon Melo (Melão)",
+    "city": "Varginha",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_f74e1907b529",
+    "canonical_name": "Estádio Nabi Abi Chedid",
+    "display_name": "Estádio Nabi Abi Chedid",
+    "city": "Bragança Paulista",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_68f9d5598766",
+    "canonical_name": "Estádio Jayme Cintra",
+    "display_name": "Estádio Jayme Cintra",
+    "city": "Jundiaí",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_1f6defa98c62",
+    "canonical_name": "Estádio José Nazareno do Nascimento (Nazarenão)",
+    "display_name": "Estádio José Nazareno do Nascimento (Nazarenão)",
+    "city": "Goianinha",
+    "state": "RN",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_6044299e789a",
+    "canonical_name": "Estádio Presidente Vargas",
+    "display_name": "Estádio Presidente Vargas",
+    "city": "Fortaleza",
+    "state": "CE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_5199bc90ca83",
+    "canonical_name": "Estádio Gigante do Itiberê",
+    "display_name": "Estádio Gigante do Itiberê",
+    "city": "Paranaguá",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_352e626373d5",
+    "canonical_name": "Arena Joinville",
+    "display_name": "Arena Joinville",
+    "city": "Joinville",
+    "state": "SC",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_a711a37295dc",
+    "canonical_name": "Estádio Martins Pereira",
+    "display_name": "Estádio Martins Pereira",
+    "city": "São José dos Campos",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_6f75ab7b6296",
+    "canonical_name": "Glicerão",
+    "display_name": "Glicerão",
+    "city": "Macapá",
+    "state": "AP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_eb2cee52af11",
+    "canonical_name": "Estádio Cláudio Moacyr de Azevedo",
+    "display_name": "Estádio Cláudio Moacyr de Azevedo",
+    "city": "Macaé",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4dcec0a56615",
+    "canonical_name": "Frasqueirão",
+    "display_name": "Frasqueirão",
+    "city": "Natal",
+    "state": "RN",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_3a58ce1bb38a",
+    "canonical_name": "Estádio Nacional Mané Garrincha",
+    "display_name": "Estádio Nacional Mané Garrincha",
+    "city": "Brasília",
+    "state": "DF",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_9a072867032f",
+    "canonical_name": "Estádio do Vale",
+    "display_name": "Estádio do Vale",
+    "city": "Novo Hamburgo",
+    "state": "RS",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ee4d03a12037",
+    "canonical_name": "Arena de Pernambuco",
+    "display_name": "Arena de Pernambuco",
+    "city": "São Lourenço da Mata",
+    "state": "PE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_58c4ddffb06c",
+    "canonical_name": "Arena do Grêmio",
+    "display_name": "Arena do Grêmio",
+    "city": "Porto Alegre",
+    "state": "RS",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_9a08b2337c0f",
+    "canonical_name": "Almeidão",
+    "display_name": "Almeidão",
+    "city": "João Pessoa",
+    "state": "PB",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_a230674b7fce",
+    "canonical_name": "Estádio Nacional de Brasília Mané Garrincha",
+    "display_name": "Estádio Nacional de Brasília Mané Garrincha",
+    "city": "Brasília",
+    "state": "DF",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_839bb912ec29",
+    "canonical_name": "Estádio Municipal Radialista Mário Helênio",
+    "display_name": "Estádio Municipal Radialista Mário Helênio",
+    "city": "Juiz de Fora",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_524bfc6e4570",
+    "canonical_name": "Arena Corinthians",
+    "display_name": "Arena Corinthians",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_237662354302",
+    "canonical_name": "Arena Condá",
+    "display_name": "Arena Condá",
+    "city": "Chapecó",
+    "state": "SC",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_268457d3ade6",
+    "canonical_name": "Arena Pantanal",
+    "display_name": "Arena Pantanal",
+    "city": "Cuiabá",
+    "state": "MT",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_3e33fc984e62",
+    "canonical_name": "Estadio George Capwell",
+    "display_name": "Estadio George Capwell",
+    "city": "Guayaquil",
+    "state": "Guayas",
+    "country": "Equador"
+  },
+  {
+    "id": "venue_d90ec517b9c1",
+    "canonical_name": "Navegantão",
+    "display_name": "Navegantão",
+    "city": "Tucuruí",
+    "state": "PA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_49554ee9cb33",
+    "canonical_name": "Estádio Novelli Júnior",
+    "display_name": "Estádio Novelli Júnior",
+    "city": "Itu",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_2ca86a49ebd5",
+    "canonical_name": "Allianz Parque",
+    "display_name": "Allianz Parque",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_753e9db1c7bf",
+    "canonical_name": "Albertão",
+    "display_name": "Albertão",
+    "city": "Teresina",
+    "state": "PI",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_0a7b4f74f4d8",
+    "canonical_name": "Estádio Governador João Castelo (Castelão)",
+    "display_name": "Estádio Governador João Castelo (Castelão)",
+    "city": "São Luís",
+    "state": "MA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_89834e413f80",
+    "canonical_name": "Estádio Bento Freitas",
+    "display_name": "Estádio Bento Freitas",
+    "city": "Pelotas",
+    "state": "RS",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_feb771d0c259",
+    "canonical_name": "Estádio da Curuzu",
+    "display_name": "Estádio da Curuzu",
+    "city": "Belém",
+    "state": "PA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_98eda520cd92",
+    "canonical_name": "Estádio Passo das Emas",
+    "display_name": "Estádio Passo das Emas",
+    "city": "Lucas do Rio Verde",
+    "state": "MT",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_6c51bff49e39",
+    "canonical_name": "Estádio Etelvino Mendonça",
+    "display_name": "Estádio Etelvino Mendonça",
+    "city": "Itabaiana",
+    "state": "SE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_298e2a2bb8b8",
+    "canonical_name": "Estádio Giulite Coutinho",
+    "display_name": "Estádio Giulite Coutinho",
+    "city": "Mesquita",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_539d4ca0526b",
+    "canonical_name": "Gigante do Norte",
+    "display_name": "Gigante do Norte",
+    "city": "Sinop",
+    "state": "MT",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_00bb1557011b",
+    "canonical_name": "Estádio Francisco José Ferreira (Ferreirão)",
+    "display_name": "Estádio Francisco José Ferreira (Ferreirão)",
+    "city": "Iporá",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_6196681ab827",
+    "canonical_name": "Estádio Walter Ribeiro (CIC)",
+    "display_name": "Estádio Walter Ribeiro (CIC)",
+    "city": "Sorocaba",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_afc09e435dc8",
+    "canonical_name": "Estádio do Café",
+    "display_name": "Estádio do Café",
+    "city": "Londrina",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_be2be6747fa4",
+    "canonical_name": "Estádio Castelão",
+    "display_name": "Estádio Castelão",
+    "city": "São Luís",
+    "state": "MA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_dc3f8414a701",
+    "canonical_name": "Batistão",
+    "display_name": "Batistão",
+    "city": "Aracaju",
+    "state": "SE",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ebaaeda45ad3",
+    "canonical_name": "Arena da Amazônia",
+    "display_name": "Arena da Amazônia",
+    "city": "Manaus",
+    "state": "AM",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_80a0909061b2",
+    "canonical_name": "Estadio Luis Alfonso Giagni",
+    "display_name": "Estadio Luis Alfonso Giagni",
+    "city": "Villa Elisa",
+    "state": "Central",
+    "country": "Paraguai"
+  },
+  {
+    "id": "venue_88a6e15af38a",
+    "canonical_name": "Estádio Onésio Brasileiro Alvarenga (OBA)",
+    "display_name": "Estádio Onésio Brasileiro Alvarenga (OBA)",
+    "city": "Goiânia",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_9160227c2afe",
+    "canonical_name": "Neo Química Arena",
+    "display_name": "Neo Química Arena",
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_48a9e258e4cf",
+    "canonical_name": "Estádio Elcyr Resende de Mendonça (Elcyrzão)",
+    "display_name": "Estádio Elcyr Resende de Mendonça (Elcyrzão)",
+    "city": "Saquarema",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_66a8dba0a1bb",
+    "canonical_name": "Estádio Amintas de Freitas",
+    "display_name": "Estádio Amintas de Freitas",
+    "city": "Jaraguá",
+    "state": "GO",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_6d7d697c93d0",
+    "canonical_name": "Nilton Santos",
+    "display_name": "Nilton Santos",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_073224fdebe9",
+    "canonical_name": "Augusto Bauer",
+    "display_name": "Augusto Bauer",
+    "city": "Brusque",
+    "state": "SC",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_d93136bbdf56",
+    "canonical_name": "Estádio Germano Krüger",
+    "display_name": "Estádio Germano Krüger",
+    "city": "Ponta Grossa",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_00c5eeedb254",
+    "canonical_name": "Estádio Evandro Almeida (Baenão)",
+    "display_name": "Estádio Evandro Almeida (Baenão)",
+    "city": "Belém",
+    "state": "PA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_10489881844b",
+    "canonical_name": "Estádio Antônio Mariz (Marizão)",
+    "display_name": "Estádio Antônio Mariz (Marizão)",
+    "city": "Sousa",
+    "state": "PB",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ed0bed07acf4",
+    "canonical_name": "Estádio Municipal Zinho de Oliveira",
+    "display_name": "Estádio Municipal Zinho de Oliveira",
+    "city": "Marabá",
+    "state": "PA",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_a0c0f9d6c0fb",
+    "canonical_name": "Estadio Monumental U",
+    "display_name": "Estadio Monumental U",
+    "city": "Lima",
+    "state": "Lima",
+    "country": "Peru"
+  },
+  {
+    "id": "venue_7511950e1aec",
+    "canonical_name": "Estadio Juan Carmelo Zerillo",
+    "display_name": "Estadio Juan Carmelo Zerillo",
+    "city": "La Plata",
+    "state": "Buenos Aires",
+    "country": "Argentina"
+  },
+  {
+    "id": "venue_c9e18a067745",
+    "canonical_name": "Estadio Nemesio Camacho El Campín",
+    "display_name": "Estadio Nemesio Camacho El Campín",
+    "city": "Bogotá",
+    "state": "Bogotá D.C.",
+    "country": "Colômbia"
+  },
+  {
+    "id": "venue_a9e0bc53dfbe",
+    "canonical_name": "Estadio Jorge Luis Hirschi",
+    "display_name": "Estadio Jorge Luis Hirschi",
+    "city": "La Plata",
+    "state": "Buenos Aires",
+    "country": "Argentina"
+  },
+  {
+    "id": "venue_6b99c24aa208",
+    "canonical_name": "Arena MRV",
+    "display_name": "Arena MRV",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_922ce037ff0c",
+    "canonical_name": "Estádio Hercílio Luz",
+    "display_name": "Estádio Hercílio Luz",
+    "city": "Itajaí",
+    "state": "SC",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_fdce4843265c",
+    "canonical_name": "Estádio José Maria de Campos Maia (Maião)",
+    "display_name": "Estádio José Maria de Campos Maia (Maião)",
+    "city": "Mirassol",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_7e9b22779cec",
+    "canonical_name": "Estádio Jorge Ismael de Biasi",
+    "display_name": "Estádio Jorge Ismael de Biasi",
+    "city": "Novo Horizonte",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ecc7dfbe4cdb",
+    "canonical_name": "Estádio Carlos Zamith",
+    "display_name": "Estádio Carlos Zamith",
+    "city": "Manaus",
+    "state": "AM",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_29c33f9f7a9f",
+    "canonical_name": "Estádio Engenheiro Luthero Lopes",
+    "display_name": "Estádio Engenheiro Luthero Lopes",
+    "city": "Rondonópolis",
+    "state": "MT",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_218bd335f023",
+    "canonical_name": "Estádio Fonte Luminosa",
+    "display_name": "Estádio Fonte Luminosa",
+    "city": "Araraquara",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_5b5f2c0c6412",
+    "canonical_name": "Estádio Raulino de Oliveira",
+    "display_name": "Estádio Raulino de Oliveira",
+    "city": "Volta Redonda",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_2da21e63ed75",
+    "canonical_name": "Arena Sicredi",
+    "display_name": "Arena Sicredi",
+    "city": "São João del-Rei",
+    "state": "MG",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_5c3c8c1cd8d5",
+    "canonical_name": "Bezerrão",
+    "display_name": "Bezerrão",
+    "city": "Brasília",
+    "state": "DF",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_4eec597e876f",
+    "canonical_name": "Estádio Willie Davids",
+    "display_name": "Estádio Willie Davids",
+    "city": "Maringá",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_ffb28e444711",
+    "canonical_name": "Estádio Vitorino Gonçalves Dias (VGD)",
+    "display_name": "Estádio Vitorino Gonçalves Dias (VGD)",
+    "city": "Londrina",
+    "state": "PR",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_d0fa4ce0341b",
+    "canonical_name": "Estádio Primeiro de Maio",
+    "display_name": "Estádio Primeiro de Maio",
+    "city": "São Bernardo do Campo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  {
+    "id": "venue_d0e989f7773d",
+    "canonical_name": "Arena Sicredi",
+    "display_name": "Arena Sicredi",
+    "city": "São João del Rei",
+    "state": "MG",
+    "country": "Brasil"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "in_memoriam",
+    "title": "In memoriam",
+    "sort_order": 0
+  },
+  {
+    "id": "conselho_deliberativo",
+    "title": "Conselho Deliberativo",
+    "sort_order": 1
+  },
+  {
+    "id": "presidencia_executiva",
+    "title": "Presidência Executiva",
+    "sort_order": 2
+  },
+  {
+    "id": "diretoria_executiva",
+    "title": "Diretoria Executiva",
+    "sort_order": 3
+  },
+  {
+    "id": "conselho_fiscal",
+    "title": "Conselho Fiscal",
+    "sort_order": 4
+  },
+  {
+    "id": "suplentes",
+    "title": "Suplentes",
+    "sort_order": 5
+  }
+]

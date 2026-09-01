@@ -1,0 +1,128 @@
+[
+  {
+    "id": "haile_selassie_pinheiro",
+    "section_id": "in_memoriam",
+    "name": "Hailé Selassié de Goiás Pinheiro",
+    "role": "Presidente de Honra",
+    "sort_order": 0
+  },
+  {
+    "id": "lino_barsi",
+    "section_id": "in_memoriam",
+    "name": "Lino Barsi",
+    "role": "Patrono do clube",
+    "sort_order": 1
+  },
+  {
+    "id": "paulo_rogerio_pinheiro",
+    "section_id": "conselho_deliberativo",
+    "name": "Paulo Rogério Pinheiro",
+    "role": "Presidente do Conselho Deliberativo",
+    "sort_order": 0
+  },
+  {
+    "id": "eduardo_ribeiro",
+    "section_id": "conselho_deliberativo",
+    "name": "Eduardo Ribeiro",
+    "role": "1º Vice-Presidente do Conselho Deliberativo",
+    "sort_order": 1
+  },
+  {
+    "id": "wagner_donizete_villela",
+    "section_id": "conselho_deliberativo",
+    "name": "Wagner Donizete Villela",
+    "role": "2º Vice-Presidente do Conselho Deliberativo",
+    "sort_order": 2
+  },
+  {
+    "id": "aroldo_guidao_filho",
+    "section_id": "presidencia_executiva",
+    "name": "Aroldo Guidão Filho",
+    "role": "Presidente Executivo",
+    "sort_order": 0
+  },
+  {
+    "id": "jose_joao_batista_stival_junior",
+    "section_id": "presidencia_executiva",
+    "name": "José João Batista Stival Júnior",
+    "role": "Vice-Presidente de Esportes Olímpicos, Paralímpicos, Iniciação Esportiva e Social",
+    "sort_order": 1
+  },
+  {
+    "id": "marco_antonio_da_silva_castro",
+    "section_id": "presidencia_executiva",
+    "name": "Marco Antônio da Silva Castro",
+    "role": "Vice-Presidente Jurídico",
+    "sort_order": 2
+  },
+  {
+    "id": "marcus_ulysses_de_oliveira",
+    "section_id": "presidencia_executiva",
+    "name": "Marcus Ulysses de Oliveira",
+    "role": "Vice-Presidente Marketing, Comunicação e Novos Negócios",
+    "sort_order": 3
+  },
+  {
+    "id": "leonardo_pacheco",
+    "section_id": "diretoria_executiva",
+    "name": "Leonardo Pacheco",
+    "role": "Diretor Executivo",
+    "sort_order": 0
+  },
+  {
+    "id": "michel_alves",
+    "section_id": "diretoria_executiva",
+    "name": "Michel Alves",
+    "role": "Diretor de Futebol",
+    "sort_order": 1
+  },
+  {
+    "id": "jessica_rezende",
+    "section_id": "diretoria_executiva",
+    "name": "Jessica Rezende",
+    "role": "Diretora de Marketing & Comunicação",
+    "sort_order": 2
+  },
+  {
+    "id": "lourival_fonseca_jr",
+    "section_id": "conselho_fiscal",
+    "name": "Lourival Fonseca Jr.",
+    "role": "Presidente do Conselho Fiscal",
+    "sort_order": 0
+  },
+  {
+    "id": "marcello_pena",
+    "section_id": "conselho_fiscal",
+    "name": "Marcello Pena",
+    "role": "Vice-Presidente do Conselho Fiscal",
+    "sort_order": 1
+  },
+  {
+    "id": "wandervan_antonio_de_azevedo",
+    "section_id": "conselho_fiscal",
+    "name": "Wandervan Antônio de Azevedo",
+    "role": "Membro Efetivo do Conselho Fiscal",
+    "sort_order": 2
+  },
+  {
+    "id": "jonas_godoy",
+    "section_id": "suplentes",
+    "name": "Jonas Godoy",
+    "role": "Suplente",
+    "sort_order": 0
+  },
+  {
+    "id": "priscila_wardil",
+    "section_id": "suplentes",
+    "name": "Priscila Wardil",
+    "role": "Suplente",
+    "sort_order": 1
+  },
+  {
+    "id": "rogerio_santana",
+    "section_id": "suplentes",
+    "name": "Rogério Santana",
+    "role": "Suplente",
+    "sort_order": 2
+  }
+]

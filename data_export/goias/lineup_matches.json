@@ -1,0 +1,3011 @@
+[
+  {
+    "id": "1990_flamengo_cdb_final_volta",
+    "competition": "Copa do Brasil",
+    "season": "1990",
+    "phase": "Final - volta",
+    "match_date": "1990-11-07",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 0,
+    "away_team": "Flamengo",
+    "away_score": 0,
+    "formation": "4-4-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Eduardo Heuser",
+        "answer": "EDUARDO",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": null,
+        "name": "Wilson Goiano",
+        "answer": "WILSON",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Richard",
+        "answer": "RICHARD",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Jorge Batata",
+        "answer": "JORGE BATATA",
+        "aliases": [
+          "J. Batata"
+        ]
+      },
+      {
+        "pos": "LE",
+        "no": null,
+        "name": "Dalton",
+        "answer": "DALTON",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": null,
+        "name": "Wallace",
+        "answer": "WALLACE",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Fagundes",
+        "answer": "FAGUNDES",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Luvanor",
+        "answer": "LUVANOR",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Josué",
+        "answer": "JOSUÉ",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Niltinho",
+        "answer": "NILTINHO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Túlio Maravilha",
+        "answer": "TÚLIO",
+        "aliases": [
+          "Túlio Maravilha"
+        ]
+      }
+    ],
+    "display_order": 1
+  },
+  {
+    "id": "1996_guarani_brA_quartas",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "1996",
+    "phase": "Quartas de final",
+    "match_date": "1996-11-27",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Guarani",
+    "away_score": 1,
+    "formation": "4-3-3",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Kléber",
+        "answer": "KLÉBER",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": null,
+        "name": "Índio",
+        "answer": "ÍNDIO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Sílvio Criciúma",
+        "answer": "SILVIO",
+        "aliases": [
+          "Sílvio"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Richard",
+        "answer": "RICHARD",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": null,
+        "name": "Augusto",
+        "answer": "AUGUSTO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Reidner",
+        "answer": "REIDNER",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Túlio Maravilha",
+        "answer": "TÚLIO",
+        "aliases": [
+          "Túlio Maravilha"
+        ]
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Lúcio",
+        "answer": "LÚCIO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Alex Dias",
+        "answer": "ALEX",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Jaques",
+        "answer": "JAQUES",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Evandro",
+        "answer": "EVANDRO",
+        "aliases": []
+      }
+    ],
+    "display_order": 2
+  },
+  {
+    "id": "1996_gremio_brA_semi",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "1996",
+    "phase": "Semifinal",
+    "match_date": "1996-12-08",
+    "venue": null,
+    "home_team": "Grêmio",
+    "home_score": 2,
+    "away_team": "Goiás",
+    "away_score": 2,
+    "formation": "4-4-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Kléber",
+        "answer": "KLÉBER",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": null,
+        "name": "Índio",
+        "answer": "ÍNDIO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Sílvio Criciúma",
+        "answer": "SILVIO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Richard",
+        "answer": "RICHARD",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": null,
+        "name": "Augusto",
+        "answer": "AUGUSTO",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": null,
+        "name": "Romeu",
+        "answer": "ROMEU",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Reidner",
+        "answer": "REIDNER",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Túlio Maravilha",
+        "answer": "TÚLIO",
+        "aliases": [
+          "Túlio Maravilha"
+        ]
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Lúcio",
+        "answer": "LÚCIO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Evandro",
+        "answer": "EVANDRO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Alex Dias",
+        "answer": "ALEX",
+        "aliases": []
+      }
+    ],
+    "display_order": 15
+  },
+  {
+    "id": "1999_santacruz_brB_titulo",
+    "competition": "Campeonato Brasileiro Série B",
+    "season": "1999",
+    "phase": "Jogo do título",
+    "match_date": "1999-12-12",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 0,
+    "away_team": "Santa Cruz",
+    "away_score": 0,
+    "formation": "4-4-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": null,
+        "name": "Neném",
+        "answer": "NENÉM",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Sílvio Criciúma",
+        "answer": "SILVIO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Álvaro",
+        "answer": "ÁLVARO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": null,
+        "name": "Fernando Nunes",
+        "answer": "FERNANDO NUNES",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": null,
+        "name": "Túlio Maravilha",
+        "answer": "TÚLIO",
+        "aliases": [
+          "Túlio Maravilha"
+        ]
+      },
+      {
+        "pos": "VOL",
+        "no": null,
+        "name": "Marabá",
+        "answer": "MARABÁ",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Cacá",
+        "answer": "CACÁ",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Michael",
+        "answer": "MICHAEL",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Fernandão",
+        "answer": "FERNANDÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Araújo",
+        "answer": "ARAÚJO",
+        "aliases": []
+      }
+    ],
+    "display_order": 3
+  },
+  {
+    "id": "2003_juventude_brA_reacao",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2003",
+    "phase": "Campanha de reação",
+    "match_date": "2003-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 7,
+    "away_team": "Juventude",
+    "away_score": 0,
+    "formation": "4-4-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "DEF",
+        "no": null,
+        "name": "Alexandre",
+        "answer": "ALEXANDRE",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Fabão",
+        "answer": "FABÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Leandro Smith",
+        "answer": "LEANDRO",
+        "aliases": []
+      },
+      {
+        "pos": "DEF",
+        "no": null,
+        "name": "Michel Santana",
+        "answer": "MICHEL",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": null,
+        "name": "Marabá",
+        "answer": "MARABÁ",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": null,
+        "name": "Tiago Fraga",
+        "answer": "TIAGO FRAGA",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Caíco",
+        "answer": "CAÍCO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Danilo",
+        "answer": "DANILO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Araújo",
+        "answer": "ARAÚJO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Dimba",
+        "answer": "DIMBA",
+        "aliases": []
+      }
+    ],
+    "display_order": 4
+  },
+  {
+    "id": "2003_fluminense_brA_reacao",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2003",
+    "phase": "Campanha de reação",
+    "match_date": "2003-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 6,
+    "away_team": "Fluminense",
+    "away_score": 1,
+    "formation": "3-4-3",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Rodrigo Calaça",
+        "answer": "RODRIGO CALAÇA",
+        "aliases": [
+          "Calaça"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Fabão",
+        "answer": "FABÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Renato Silva",
+        "answer": "RENATO SILVA",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Leandro Smith",
+        "answer": "LEANDRO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Josué",
+        "answer": "JOSUÉ",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Simão",
+        "answer": "SIMÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Gil Baiano",
+        "answer": "GIL BAIANO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Wando",
+        "answer": "WANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Araújo",
+        "answer": "ARAÚJO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Grafite",
+        "answer": "GRAFITE",
+        "aliases": []
+      }
+    ],
+    "display_order": 16
+  },
+  {
+    "id": "2003_santos_brA_reacao",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2003",
+    "phase": "Campanha de reação",
+    "match_date": "2003-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Santos",
+    "away_score": 0,
+    "formation": "3-5-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Rodrigo Calaça",
+        "answer": "RODRIGO CALAÇA",
+        "aliases": [
+          "Calaça"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Pedro Paulo",
+        "answer": "PEDRO PAULO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Esquerdinha",
+        "answer": "ESQUERDINHA",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Gustavo",
+        "answer": "GUSTAVO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Josué",
+        "answer": "JOSUÉ",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Marabá",
+        "answer": "MARABÁ",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Simão",
+        "answer": "SIMÃO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Danilo",
+        "answer": "DANILO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Dimba",
+        "answer": "DIMBA",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Grafite",
+        "answer": "GRAFITE",
+        "aliases": []
+      }
+    ],
+    "display_order": 26
+  },
+  {
+    "id": "2005_pontepreta_brA_3lugar",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2005",
+    "phase": "3º lugar - vaga na Libertadores",
+    "match_date": "2005-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 4,
+    "away_team": "Ponte Preta",
+    "away_score": 1,
+    "formation": "4-4-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "DEF",
+        "no": null,
+        "name": "André Dias",
+        "answer": "ANDRÉ DIAS",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "André Leone",
+        "answer": "ANDRÉ LEONE",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Rogério Corrêa",
+        "answer": "ROGÉRIO CORRÊA",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": null,
+        "name": "Jadílson",
+        "answer": "JADÍLSON",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Gaúcho",
+        "answer": "CLÉBER GAÚCHO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Paulo Baier",
+        "answer": "PAULO BAIER",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Rodrigo Tabata",
+        "answer": "RODRIGO TABATA",
+        "aliases": [
+          "Tabata"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Roni",
+        "answer": "RONI",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Souza",
+        "answer": "SOUZA",
+        "aliases": []
+      }
+    ],
+    "display_order": 5
+  },
+  {
+    "id": "2005_athleticopr_brA_3lugar",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2005",
+    "phase": "3º lugar - vaga na Libertadores",
+    "match_date": "2005-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 4,
+    "away_team": "Athletico-PR",
+    "away_score": 2,
+    "formation": "3-5-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Júlio Santos",
+        "answer": "JÚLIO SANTOS",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Jadílson",
+        "answer": "JADÍLSON",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Luciano Almeida",
+        "answer": "LUCIANO ALMEIDA",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Danilo Portugal",
+        "answer": "DANILO PORTUGAL",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Paulo Baier",
+        "answer": "PAULO BAIER",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Romerito",
+        "answer": "ROMERITO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Rodrigo Tabata",
+        "answer": "RODRIGO TABATA",
+        "aliases": [
+          "Tabata"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Roni",
+        "answer": "RONI",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Souza",
+        "answer": "SOUZA",
+        "aliases": []
+      }
+    ],
+    "display_order": 17
+  },
+  {
+    "id": "2005_saopaulo_brA_3lugar",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2005",
+    "phase": "3º lugar - vaga na Libertadores",
+    "match_date": "2005-11-16",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "São Paulo",
+    "away_score": 0,
+    "formation": "3-5-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "André Leone",
+        "answer": "ANDRÉ LEONE",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Rafael Dias",
+        "answer": "RAFAEL DIAS",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "André Dias",
+        "answer": "ANDRÉ DIAS",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Paulo Baier",
+        "answer": "PAULO BAIER",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Gaúcho",
+        "answer": "CLÉBER GAÚCHO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Romerito",
+        "answer": "ROMERITO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Jadílson",
+        "answer": "JADÍLSON",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Roni",
+        "answer": "RONI",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Souza",
+        "answer": "SOUZA",
+        "aliases": []
+      }
+    ],
+    "display_order": 27
+  },
+  {
+    "id": "2005_corinthians_brA_3lugar",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2005",
+    "phase": "3º lugar - vaga na Libertadores",
+    "match_date": "2005-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Corinthians",
+    "away_score": 2,
+    "formation": "4-4-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": null,
+        "name": "Aldo",
+        "answer": "ALDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "André Leone",
+        "answer": "ANDRÉ LEONE",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Rafael Dias",
+        "answer": "RAFAEL DIAS",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": null,
+        "name": "Jadílson",
+        "answer": "JADÍLSON",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Gaúcho",
+        "answer": "CLÉBER GAÚCHO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Paulo Baier",
+        "answer": "PAULO BAIER",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Rodrigo Tabata",
+        "answer": "RODRIGO TABATA",
+        "aliases": [
+          "Tabata"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Roni",
+        "answer": "RONI",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Souza",
+        "answer": "SOUZA",
+        "aliases": []
+      }
+    ],
+    "display_order": 31
+  },
+  {
+    "id": "2006_cuenca_lib_1fase",
+    "competition": "Copa Libertadores",
+    "season": "2006",
+    "phase": "1ª fase - classificação",
+    "match_date": "2006-02-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Deportivo Cuenca",
+    "away_score": 0,
+    "formation": "3-5-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Rogério Corrêa",
+        "answer": "ROGÉRIO CORRÊA",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Júlio Santos",
+        "answer": "JÚLIO SANTOS",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Leonardo",
+        "answer": "LEONARDO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Fabiano",
+        "answer": "FABIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Danilo Portugal",
+        "answer": "DANILO PORTUGAL",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Juliano",
+        "answer": "JULIANO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Jadílson",
+        "answer": "JADÍLSON",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Nonato",
+        "answer": "NONATO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Romerito",
+        "answer": "ROMERITO",
+        "aliases": []
+      }
+    ],
+    "display_order": 6
+  },
+  {
+    "id": "2006_newells_lib_grupos",
+    "competition": "Copa Libertadores",
+    "season": "2006",
+    "phase": "Fase de grupos",
+    "match_date": "2006-01-01",
+    "venue": null,
+    "home_team": "Newell's Old Boys",
+    "home_score": 0,
+    "away_team": "Goiás",
+    "away_score": 0,
+    "formation": "5-3-2",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "DEF",
+        "no": null,
+        "name": "Fabiano",
+        "answer": "FABIANO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Leonardo",
+        "answer": "LEONARDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Rogério Corrêa",
+        "answer": "ROGÉRIO CORRÊA",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Júlio Santos",
+        "answer": "JÚLIO SANTOS",
+        "aliases": []
+      },
+      {
+        "pos": "DEF",
+        "no": null,
+        "name": "Jadílson",
+        "answer": "JADÍLSON",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Cléber Goiano",
+        "answer": "CLÉBER GOIANO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Danilo Portugal",
+        "answer": "DANILO PORTUGAL",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Vampeta",
+        "answer": "VAMPETA",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Souza",
+        "answer": "SOUZA",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Welliton",
+        "answer": "WELLITON",
+        "aliases": []
+      }
+    ],
+    "display_order": 18
+  },
+  {
+    "id": "2006_estudiantes_lib_oitavas_volta",
+    "competition": "Copa Libertadores",
+    "season": "2006",
+    "phase": "Oitavas de final - volta",
+    "match_date": "2006-05-04",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Estudiantes",
+    "away_score": 1,
+    "formation": "3-4-3",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "DEF",
+        "no": null,
+        "name": "Fabiano",
+        "answer": "FABIANO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Júlio Santos",
+        "answer": "JÚLIO SANTOS",
+        "aliases": []
+      },
+      {
+        "pos": "DEF",
+        "no": null,
+        "name": "Jadílson",
+        "answer": "JADÍLSON",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Rogério Corrêa",
+        "answer": "ROGÉRIO CORRÊA",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": null,
+        "name": "Vítor",
+        "answer": "VÍTOR",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Danilo Portugal",
+        "answer": "DANILO PORTUGAL",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": null,
+        "name": "Romerito",
+        "answer": "ROMERITO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Welliton",
+        "answer": "WELLITON",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Nonato",
+        "answer": "NONATO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Roni",
+        "answer": "RONI",
+        "aliases": []
+      }
+    ],
+    "display_order": 28
+  },
+  {
+    "id": "2010_palmeiras_sulamericana_semi_volta",
+    "competition": "Copa Sul-Americana",
+    "season": "2010",
+    "phase": "Semifinal - volta",
+    "match_date": "2010-11-24",
+    "venue": null,
+    "home_team": "Palmeiras",
+    "home_score": 1,
+    "away_team": "Goiás",
+    "away_score": 2,
+    "formation": "3-5-2",
+    "formation_confidence": "confirmed",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "Rafael Tolói",
+        "answer": "RAFAEL TOLOI",
+        "aliases": [
+          "Tolói"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 19,
+        "name": "Marcão",
+        "answer": "MARCÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": 20,
+        "name": "Douglas",
+        "answer": "DOUGLAS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 8,
+        "name": "Amaral",
+        "answer": "AMARAL",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 2,
+        "name": "Carlos Alberto",
+        "answer": "CARLOS ALBERTO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 17,
+        "name": "Marcelo Costa",
+        "answer": "MARCELO COSTA",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": 6,
+        "name": "Wellington Saci",
+        "answer": "WELLINGTON SACI",
+        "aliases": [
+          "Saci"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 22,
+        "name": "Otacílio Neto",
+        "answer": "OTACILIO NETO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Rafael Moura",
+        "answer": "RAFAEL MOURA",
+        "aliases": [
+          "He-Man",
+          "Heman"
+        ]
+      }
+    ],
+    "display_order": 7
+  },
+  {
+    "id": "2010_independiente_sulamericana_final_ida",
+    "competition": "Copa Sul-Americana",
+    "season": "2010",
+    "phase": "Final - ida",
+    "match_date": "2010-12-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 2,
+    "away_team": "Independiente",
+    "away_score": 0,
+    "formation": "3-5-2",
+    "formation_confidence": "confirmed",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "Rafael Tolói",
+        "answer": "RAFAEL TOLOI",
+        "aliases": [
+          "Tolói"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 19,
+        "name": "Marcão",
+        "answer": "MARCÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": 20,
+        "name": "Douglas",
+        "answer": "DOUGLAS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 8,
+        "name": "Amaral",
+        "answer": "AMARAL",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 2,
+        "name": "Carlos Alberto",
+        "answer": "CARLOS ALBERTO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 17,
+        "name": "Marcelo Costa",
+        "answer": "MARCELO COSTA",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": 6,
+        "name": "Wellington Saci",
+        "answer": "WELLINGTON SACI",
+        "aliases": [
+          "Saci"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Rafael Moura",
+        "answer": "RAFAEL MOURA",
+        "aliases": [
+          "He-Man",
+          "Heman"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 22,
+        "name": "Otacílio Neto",
+        "answer": "OTACILIO NETO",
+        "aliases": []
+      }
+    ],
+    "display_order": 19
+  },
+  {
+    "id": "2010_independiente_sulamericana_final_volta",
+    "competition": "Copa Sul-Americana",
+    "season": "2010",
+    "phase": "Final - volta (Independiente campeão nos pênaltis, 5 x 3)",
+    "match_date": "2010-12-08",
+    "venue": null,
+    "home_team": "Independiente",
+    "home_score": 3,
+    "away_team": "Goiás",
+    "away_score": 1,
+    "formation": "3-5-2",
+    "formation_confidence": "confirmed",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "Rafael Tolói",
+        "answer": "RAFAEL TOLOI",
+        "aliases": [
+          "Tolói"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 19,
+        "name": "Marcão",
+        "answer": "MARCÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": 20,
+        "name": "Douglas",
+        "answer": "DOUGLAS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 8,
+        "name": "Amaral",
+        "answer": "AMARAL",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 2,
+        "name": "Carlos Alberto",
+        "answer": "CARLOS ALBERTO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 17,
+        "name": "Marcelo Costa",
+        "answer": "MARCELO COSTA",
+        "aliases": []
+      },
+      {
+        "pos": "ALA",
+        "no": 6,
+        "name": "Wellington Saci",
+        "answer": "WELLINGTON SACI",
+        "aliases": [
+          "Saci"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 22,
+        "name": "Otacílio Neto",
+        "answer": "OTACILIO NETO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Rafael Moura",
+        "answer": "RAFAEL MOURA",
+        "aliases": [
+          "He-Man",
+          "Heman"
+        ]
+      }
+    ],
+    "display_order": 29
+  },
+  {
+    "id": "2012_guarani_brB_retafinal",
+    "competition": "Campeonato Brasileiro Série B",
+    "season": "2012",
+    "phase": "Reta final da campanha campeã",
+    "match_date": "2012-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 5,
+    "away_team": "Guarani",
+    "away_score": 0,
+    "formation": "4-4-2",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Vítor",
+        "answer": "VÍTOR",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "Valmir Lucas",
+        "answer": "VALMIR LUCAS",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Egídio",
+        "answer": "EGÍDIO",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Amaral",
+        "answer": "AMARAL",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 8,
+        "name": "Thiago Mendes",
+        "answer": "THIAGO MENDES",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 7,
+        "name": "Ramón",
+        "answer": "RAMÓN",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 11,
+        "name": "Renan Oliveira",
+        "answer": "RENAN OLIVEIRA",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Ricardo Goulart",
+        "answer": "RICARDO GOULART",
+        "aliases": [
+          "Goulart"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 18,
+        "name": "Walter",
+        "answer": "WALTER",
+        "aliases": []
+      }
+    ],
+    "display_order": 8
+  },
+  {
+    "id": "2012_joinville_brB_titulo",
+    "competition": "Campeonato Brasileiro Série B",
+    "season": "2012",
+    "phase": "Última rodada - título",
+    "match_date": "2012-11-24",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 2,
+    "away_team": "Joinville",
+    "away_score": 1,
+    "formation": "4-4-2",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Harlei",
+        "answer": "HARLEI",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Vítor",
+        "answer": "VÍTOR",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 13,
+        "name": "Rafael Lacerda",
+        "answer": "RAFAEL LACERDA",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Egídio",
+        "answer": "EGÍDIO",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Amaral",
+        "answer": "AMARAL",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 8,
+        "name": "Thiago Mendes",
+        "answer": "THIAGO MENDES",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 7,
+        "name": "Ramón",
+        "answer": "RAMÓN",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 11,
+        "name": "Renan Oliveira",
+        "answer": "RENAN OLIVEIRA",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Ricardo Goulart",
+        "answer": "RICARDO GOULART",
+        "aliases": [
+          "Goulart"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 18,
+        "name": "Walter",
+        "answer": "WALTER",
+        "aliases": []
+      }
+    ],
+    "display_order": 20
+  },
+  {
+    "id": "2013_fluminense_cdb_oitavas_volta",
+    "competition": "Copa do Brasil",
+    "season": "2013",
+    "phase": "Oitavas de final - volta",
+    "match_date": "2013-08-28",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 2,
+    "away_team": "Fluminense",
+    "away_score": 0,
+    "formation": "4-2-3-1",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 12,
+        "name": "Renan",
+        "answer": "RENAN",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Vítor",
+        "answer": "VÍTOR",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 13,
+        "name": "Rodrigo",
+        "answer": "RODRIGO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "William Matheus",
+        "answer": "WILLIAM MATHEUS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 8,
+        "name": "Dudu Cearense",
+        "answer": "DUDU",
+        "aliases": [
+          "Dudu"
+        ]
+      },
+      {
+        "pos": "VOL",
+        "no": 45,
+        "name": "David",
+        "answer": "DAVID",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 11,
+        "name": "Renan Oliveira",
+        "answer": "RENAN OLIVEIRA",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 20,
+        "name": "Ramón",
+        "answer": "RAMÓN",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Hugo",
+        "answer": "HUGO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 18,
+        "name": "Walter",
+        "answer": "WALTER",
+        "aliases": []
+      }
+    ],
+    "display_order": 9
+  },
+  {
+    "id": "2013_vasco_cdb_quartas_ida",
+    "competition": "Copa do Brasil",
+    "season": "2013",
+    "phase": "Quartas de final - ida",
+    "match_date": "2013-01-01",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 2,
+    "away_team": "Vasco",
+    "away_score": 1,
+    "formation": "4-4-2",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 12,
+        "name": "Renan",
+        "answer": "RENAN",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Vítor",
+        "answer": "VÍTOR",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 13,
+        "name": "Rodrigo",
+        "answer": "RODRIGO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "William Matheus",
+        "answer": "WILLIAM MATHEUS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Amaral",
+        "answer": "AMARAL",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 45,
+        "name": "David",
+        "answer": "DAVID",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Hugo",
+        "answer": "HUGO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 11,
+        "name": "Renan Oliveira",
+        "answer": "RENAN OLIVEIRA",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Roni",
+        "answer": "RONI",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 18,
+        "name": "Walter",
+        "answer": "WALTER",
+        "aliases": []
+      }
+    ],
+    "display_order": 21
+  },
+  {
+    "id": "2013_vasco_cdb_quartas_volta",
+    "competition": "Copa do Brasil",
+    "season": "2013",
+    "phase": "Quartas de final - volta (Goiás classificado)",
+    "match_date": "2013-01-01",
+    "venue": null,
+    "home_team": "Vasco",
+    "home_score": 3,
+    "away_team": "Goiás",
+    "away_score": 2,
+    "formation": "4-4-2",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 12,
+        "name": "Renan",
+        "answer": "RENAN",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Vítor",
+        "answer": "VÍTOR",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Ernando",
+        "answer": "ERNANDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 13,
+        "name": "Rodrigo",
+        "answer": "RODRIGO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "William Matheus",
+        "answer": "WILLIAM MATHEUS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Amaral",
+        "answer": "AMARAL",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 45,
+        "name": "David",
+        "answer": "DAVID",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Hugo",
+        "answer": "HUGO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 9,
+        "name": "Roni",
+        "answer": "RONI",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 17,
+        "name": "Eduardo Sasha",
+        "answer": "EDUARDO SASHA",
+        "aliases": [
+          "Sasha"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 18,
+        "name": "Walter",
+        "answer": "WALTER",
+        "aliases": []
+      }
+    ],
+    "display_order": 30
+  },
+  {
+    "id": "2018_aparecidense_goiano_final_volta",
+    "competition": "Campeonato Goiano",
+    "season": "2018",
+    "phase": "Final - volta / tetracampeonato",
+    "match_date": "2018-04-08",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Aparecidense",
+    "away_score": 1,
+    "formation": "4-3-3",
+    "formation_confidence": "estimated",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": null,
+        "name": "Marcelo Rangel",
+        "answer": "MARCELO RANGEL",
+        "aliases": [
+          "Rangel"
+        ]
+      },
+      {
+        "pos": "LD",
+        "no": null,
+        "name": "Caíque Sá",
+        "answer": "CAIQUE SA",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "David Duarte",
+        "answer": "DAVID DUARTE",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": null,
+        "name": "Eduardo Brock",
+        "answer": "EDUARDO BROCK",
+        "aliases": [
+          "Brock"
+        ]
+      },
+      {
+        "pos": "LE",
+        "no": null,
+        "name": "Breno",
+        "answer": "BRENO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Léo Sena",
+        "answer": "LEO SENA",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Giovanni",
+        "answer": "GIOVANNI",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": null,
+        "name": "Madison",
+        "answer": "MADISON",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Maranhão",
+        "answer": "MARANHÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Júnior Viçosa",
+        "answer": "JÚNIOR VIÇOSA",
+        "aliases": [
+          "Viçosa"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": null,
+        "name": "Carlos Eduardo",
+        "answer": "CARLOS EDUARDO",
+        "aliases": []
+      }
+    ],
+    "display_order": 10
+  },
+  {
+    "id": "2021_csa_brB_g4",
+    "competition": "Campeonato Brasileiro Série B",
+    "season": "2021",
+    "phase": "Confronto direto pelo G-4",
+    "match_date": "2021-10-15",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "CSA",
+    "away_score": 1,
+    "formation": "4-2-3-1",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Tadeu",
+        "answer": "TADEU",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Apodi",
+        "answer": "APODI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "David Duarte",
+        "answer": "DAVID DUARTE",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Reynaldo",
+        "answer": "REYNALDO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Hugo",
+        "answer": "HUGO",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 8,
+        "name": "Fellipe Bastos",
+        "answer": "FELLIPE BASTOS",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 18,
+        "name": "Dieguinho",
+        "answer": "DIEGUINHO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 11,
+        "name": "Luan Dias",
+        "answer": "LUAN DIAS",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Élvis",
+        "answer": "ELVIS",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Nicolas",
+        "answer": "NICOLAS",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 7,
+        "name": "Alef Manga",
+        "answer": "ALEF MANGA",
+        "aliases": []
+      }
+    ],
+    "display_order": 11
+  },
+  {
+    "id": "2021_guarani_brB_acesso",
+    "competition": "Campeonato Brasileiro Série B",
+    "season": "2021",
+    "phase": "Jogo do acesso",
+    "match_date": "2021-11-22",
+    "venue": null,
+    "home_team": "Guarani",
+    "home_score": 0,
+    "away_team": "Goiás",
+    "away_score": 2,
+    "formation": "4-3-3",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Tadeu",
+        "answer": "TADEU",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Reynaldo",
+        "answer": "REYNALDO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "David Duarte",
+        "answer": "DAVID DUARTE",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 8,
+        "name": "Fellipe Bastos",
+        "answer": "FELLIPE BASTOS",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Artur",
+        "answer": "ARTUR",
+        "aliases": []
+      },
+      {
+        "pos": "LD/MC",
+        "no": 18,
+        "name": "Dieguinho",
+        "answer": "DIEGUINHO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Élvis",
+        "answer": "ELVIS",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 11,
+        "name": "Júlio César",
+        "answer": "JULIO CESAR",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Caio Vinícius",
+        "answer": "CAIO VINICIUS",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 7,
+        "name": "Dadá Belmonte",
+        "answer": "DADA",
+        "aliases": [
+          "Dadá"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Nicolas",
+        "answer": "NICOLAS",
+        "aliases": []
+      }
+    ],
+    "display_order": 22
+  },
+  {
+    "id": "2023_corinthians_brA_rodada2",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2023",
+    "phase": "Rodada 2",
+    "match_date": "2023-04-23",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Corinthians",
+    "away_score": 1,
+    "formation": "4-2-3-1",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 23,
+        "name": "Tadeu",
+        "answer": "TADEU",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Maguinho",
+        "answer": "MAGUINHO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "Lucas Halter",
+        "answer": "LUCAS HALTER",
+        "aliases": [
+          "Halter"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 19,
+        "name": "Bruno Melo",
+        "answer": "BRUNO MELO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Sander",
+        "answer": "SANDER",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 20,
+        "name": "Dieguinho",
+        "answer": "DIEGUINHO",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Zé Ricardo",
+        "answer": "ZE RICARDO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 40,
+        "name": "Everton Morelli",
+        "answer": "MORELLI",
+        "aliases": [
+          "Morelli"
+        ]
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Julián Palacios",
+        "answer": "PALACIOS",
+        "aliases": [
+          "Palacios"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 7,
+        "name": "Vinícius",
+        "answer": "VINICIUS",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 17,
+        "name": "Matheus Peixoto",
+        "answer": "MATHEUS PEIXOTO",
+        "aliases": [
+          "Peixoto"
+        ]
+      }
+    ],
+    "display_order": 12
+  },
+  {
+    "id": "2023_botafogo_brA_rodada6",
+    "competition": "Campeonato Brasileiro Série A",
+    "season": "2023",
+    "phase": "Rodada 6",
+    "match_date": "2023-05-14",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 2,
+    "away_team": "Botafogo",
+    "away_score": 1,
+    "formation": "4-3-3",
+    "formation_confidence": "probable",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 1,
+        "name": "Marcelo Rangel",
+        "answer": "MARCELO RANGEL",
+        "aliases": [
+          "Rangel"
+        ]
+      },
+      {
+        "pos": "LD",
+        "no": 2,
+        "name": "Maguinho",
+        "answer": "MAGUINHO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 3,
+        "name": "Lucas Halter",
+        "answer": "LUCAS HALTER",
+        "aliases": [
+          "Halter"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 19,
+        "name": "Bruno Melo",
+        "answer": "BRUNO MELO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Sander",
+        "answer": "SANDER",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 20,
+        "name": "Dieguinho",
+        "answer": "DIEGUINHO",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Zé Ricardo",
+        "answer": "ZE RICARDO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 12,
+        "name": "Willian Oliveira",
+        "answer": "WILLIAN OLIVEIRA",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 10,
+        "name": "Julián Palacios",
+        "answer": "PALACIOS",
+        "aliases": [
+          "Palacios"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 11,
+        "name": "Diego Gonçalves",
+        "answer": "DIEGO GONCALVES",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 17,
+        "name": "Matheus Peixoto",
+        "answer": "MATHEUS PEIXOTO",
+        "aliases": [
+          "Peixoto"
+        ]
+      }
+    ],
+    "display_order": 23
+  },
+  {
+    "id": "2025_paysandu_copaverde_final_ida",
+    "competition": "Copa Verde",
+    "season": "2025",
+    "phase": "Final - ida",
+    "match_date": "2025-04-09",
+    "venue": null,
+    "home_team": "Paysandu",
+    "home_score": 0,
+    "away_team": "Goiás",
+    "away_score": 0,
+    "formation": "4-3-3",
+    "formation_confidence": "confirmed",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 23,
+        "name": "Tadeu",
+        "answer": "TADEU",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 97,
+        "name": "Willean Lepo",
+        "answer": "WILLEAN LEPO",
+        "aliases": [
+          "Lepo"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 14,
+        "name": "Lucas Ribeiro",
+        "answer": "LUCAS RIBEIRO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 75,
+        "name": "Messias",
+        "answer": "MESSIAS",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 36,
+        "name": "Lucas Lovat",
+        "answer": "LUCAS LOVAT",
+        "aliases": [
+          "Lovat"
+        ]
+      },
+      {
+        "pos": "MC",
+        "no": 28,
+        "name": "Juninho",
+        "answer": "JUNINHO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 32,
+        "name": "Rodrigo Andrade",
+        "answer": "RODRIGO ANDRADE",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 77,
+        "name": "Marcão",
+        "answer": "MARCÃO",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 45,
+        "name": "Arthur Caíke",
+        "answer": "ARTHUR CAIKE",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 7,
+        "name": "Jajá",
+        "answer": "JAJA",
+        "aliases": [
+          "Jajá"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 71,
+        "name": "Zé Hugo",
+        "answer": "ZE HUGO",
+        "aliases": []
+      }
+    ],
+    "display_order": 13
+  },
+  {
+    "id": "2025_cuiaba_brB_rodada17",
+    "competition": "Campeonato Brasileiro Série B",
+    "season": "2025",
+    "phase": "Rodada 17 - liderança",
+    "match_date": "2025-07-19",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 3,
+    "away_team": "Cuiabá",
+    "away_score": 1,
+    "formation": "4-3-3",
+    "formation_confidence": "confirmed",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 23,
+        "name": "Tadeu",
+        "answer": "TADEU",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 20,
+        "name": "Diego Caito",
+        "answer": "DIEGO CAITO",
+        "aliases": [
+          "Caito"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 4,
+        "name": "Titi",
+        "answer": "TITI",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 75,
+        "name": "Messias",
+        "answer": "MESSIAS",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 97,
+        "name": "Willean Lepo",
+        "answer": "WILLEAN LEPO",
+        "aliases": [
+          "Lepo"
+        ]
+      },
+      {
+        "pos": "MEI",
+        "no": 27,
+        "name": "Wellington Rato",
+        "answer": "WELLINGTON RATO",
+        "aliases": [
+          "Rato"
+        ]
+      },
+      {
+        "pos": "MC",
+        "no": 28,
+        "name": "Juninho",
+        "answer": "JUNINHO",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Gonzalo Freitas",
+        "answer": "GONZALO FREITAS",
+        "aliases": [
+          "Freitas"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 7,
+        "name": "Jajá",
+        "answer": "JAJA",
+        "aliases": [
+          "Jajá"
+        ]
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Anselmo Ramón",
+        "answer": "ANSELMO RAMON",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 17,
+        "name": "Pedrinho",
+        "answer": "PEDRINHO",
+        "aliases": []
+      }
+    ],
+    "display_order": 24
+  },
+  {
+    "id": "2026_atleticogo_goiano_final_ida",
+    "competition": "Campeonato Goiano",
+    "season": "2026",
+    "phase": "Final - ida",
+    "match_date": "2026-03-07",
+    "venue": null,
+    "home_team": "Atlético-GO",
+    "home_score": 0,
+    "away_team": "Goiás",
+    "away_score": 2,
+    "formation": "4-5-1",
+    "formation_confidence": "confirmed",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 23,
+        "name": "Tadeu",
+        "answer": "TADEU",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 20,
+        "name": "Diego Caito",
+        "answer": "DIEGO CAITO",
+        "aliases": [
+          "Caito"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 25,
+        "name": "Luisão",
+        "answer": "LUISAO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 14,
+        "name": "Lucas Ribeiro",
+        "answer": "LUCAS RIBEIRO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Nicolas",
+        "answer": "NICOLAS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Filipe Machado",
+        "answer": "FILIPE MACHADO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 28,
+        "name": "Gegê",
+        "answer": "GEGE",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 97,
+        "name": "Lourenço",
+        "answer": "LOURENÇO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Lucas Lima",
+        "answer": "LUCAS LIMA",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 21,
+        "name": "Jean Carlos",
+        "answer": "JEAN CARLOS",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Anselmo Ramón",
+        "answer": "ANSELMO RAMON",
+        "aliases": []
+      }
+    ],
+    "display_order": 14
+  },
+  {
+    "id": "2026_atleticogo_goiano_final_volta",
+    "competition": "Campeonato Goiano",
+    "season": "2026",
+    "phase": "Final - volta / título invicto",
+    "match_date": "2026-03-15",
+    "venue": null,
+    "home_team": "Goiás",
+    "home_score": 0,
+    "away_team": "Atlético-GO",
+    "away_score": 0,
+    "formation": "4-5-1",
+    "formation_confidence": "confirmed",
+    "lineup": [
+      {
+        "pos": "GOL",
+        "no": 23,
+        "name": "Tadeu",
+        "answer": "TADEU",
+        "aliases": []
+      },
+      {
+        "pos": "LD",
+        "no": 20,
+        "name": "Diego Caito",
+        "answer": "DIEGO CAITO",
+        "aliases": [
+          "Caito"
+        ]
+      },
+      {
+        "pos": "ZAG",
+        "no": 25,
+        "name": "Luisão",
+        "answer": "LUISAO",
+        "aliases": []
+      },
+      {
+        "pos": "ZAG",
+        "no": 14,
+        "name": "Lucas Ribeiro",
+        "answer": "LUCAS RIBEIRO",
+        "aliases": []
+      },
+      {
+        "pos": "LE",
+        "no": 6,
+        "name": "Nicolas",
+        "answer": "NICOLAS",
+        "aliases": []
+      },
+      {
+        "pos": "VOL",
+        "no": 5,
+        "name": "Filipe Machado",
+        "answer": "FILIPE MACHADO",
+        "aliases": []
+      },
+      {
+        "pos": "MC",
+        "no": 28,
+        "name": "Gegê",
+        "answer": "GEGE",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 97,
+        "name": "Lourenço",
+        "answer": "LOURENÇO",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 10,
+        "name": "Lucas Lima",
+        "answer": "LUCAS LIMA",
+        "aliases": []
+      },
+      {
+        "pos": "MEI",
+        "no": 21,
+        "name": "Jean Carlos",
+        "answer": "JEAN CARLOS",
+        "aliases": []
+      },
+      {
+        "pos": "ATA",
+        "no": 9,
+        "name": "Anselmo Ramón",
+        "answer": "ANSELMO RAMON",
+        "aliases": []
+      }
+    ],
+    "display_order": 25
+  }
+]

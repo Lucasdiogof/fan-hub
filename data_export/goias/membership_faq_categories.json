@@ -1,0 +1,52 @@
+[
+  {
+    "id": "duvidas-gerais",
+    "title": "Dúvidas Gerais",
+    "sort_order": 1
+  },
+  {
+    "id": "pagamento",
+    "title": "Pagamento",
+    "sort_order": 2
+  },
+  {
+    "id": "atendimento",
+    "title": "Atendimento",
+    "sort_order": 3
+  },
+  {
+    "id": "acoes",
+    "title": "Ações",
+    "sort_order": 4
+  },
+  {
+    "id": "setores-do-estadio",
+    "title": "Setores do estádio",
+    "sort_order": 5
+  },
+  {
+    "id": "beneficios",
+    "title": "Benefícios",
+    "sort_order": 6
+  },
+  {
+    "id": "planos-e-cancelamento",
+    "title": "Planos e Cancelamento",
+    "sort_order": 7
+  },
+  {
+    "id": "reconhecimento-facial",
+    "title": "Reconhecimento Facial",
+    "sort_order": 8
+  },
+  {
+    "id": "rating",
+    "title": "Rating",
+    "sort_order": 9
+  },
+  {
+    "id": "no-show",
+    "title": "No-Show",
+    "sort_order": 10
+  }
+]

@@ -1,0 +1,2687 @@
+[
+  {
+    "id": "tadeu",
+    "name": "Tadeu",
+    "full_name": "Tadeu Antônio Ferreira",
+    "shirt_number": 23,
+    "position": "Goleiro",
+    "position_group": "Goleiros",
+    "birth_date": "1992-02-04",
+    "nationality": "Brasil",
+    "height_cm": 184,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "abr/2012–jan/2013",
+        "team": "Coritiba",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem identificada; totais não exibidos na tabela consultada."
+      },
+      {
+        "period": "fev/2013–dez/2013",
+        "team": "Tupi",
+        "appearances": 5,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2014–jul/2014",
+        "team": "Coritiba",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem identificada; totais não exibidos."
+      },
+      {
+        "period": "jan/2015–jan/2016",
+        "team": "Maringá FC",
+        "appearances": 10,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2016–jul/2016",
+        "team": "Ceará",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem identificada; totais não exibidos."
+      },
+      {
+        "period": "jul/2016–abr/2018",
+        "team": "Ferroviária",
+        "appearances": 47,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2018–dez/2018",
+        "team": "Osasco Sporting",
+        "appearances": 37,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2019–mar/2019",
+        "team": "Ferroviária",
+        "appearances": 13,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2019–dez/2019",
+        "team": "Goiás",
+        "appearances": 38,
+        "goals": 0,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2020–atual",
+        "team": "Goiás",
+        "appearances": 360,
+        "goals": 13,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 0
+  },
+  {
+    "id": "ezequiel",
+    "name": "Ezequiel",
+    "full_name": "Ezequiel Alves de Oliveira Vieira",
+    "shirt_number": 12,
+    "position": "Goleiro",
+    "position_group": "Goleiros",
+    "birth_date": "2003-06-13",
+    "nationality": "Brasil",
+    "height_cm": 185,
+    "foot": "Canhoto",
+    "club_history": [
+      {
+        "period": "fev/2022–dez/2022",
+        "team": "Cruzeiro",
+        "appearances": 1,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2023–atual",
+        "team": "Goiás",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "partial",
+        "notes": "Carreira no Goiás confirmada; agregador não exibiu total consolidado de jogos/gols nesta passagem."
+      }
+    ],
+    "sort_order": 1
+  },
+  {
+    "id": "murillo_victorio",
+    "name": "Murillo Victorio",
+    "full_name": "Murillo Carvalho Victorio",
+    "shirt_number": 32,
+    "position": "Goleiro",
+    "position_group": "Goleiros",
+    "birth_date": "2006-10-10",
+    "nationality": "Brasil",
+    "height_cm": null,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "jun/2025–atual",
+        "team": "Goiás",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "partial",
+        "notes": "Único clube profissional encontrado; total consolidado não exibido na fonte."
+      }
+    ],
+    "sort_order": 2
+  },
+  {
+    "id": "thiago_rodrigues",
+    "name": "Thiago Rodrigues",
+    "full_name": "Thiago Rodrigues de Oliveira Nogueira",
+    "shirt_number": 1,
+    "position": "Goleiro",
+    "position_group": "Goleiros",
+    "birth_date": "1988-10-20",
+    "nationality": "Brasil",
+    "height_cm": 189,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "mai/2008–dez/2013",
+        "team": "Paraná Clube",
+        "appearances": 33,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2014–jan/2015",
+        "team": "Rio Branco SC",
+        "appearances": 14,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2015–jan/2016",
+        "team": "Caxias",
+        "appearances": 16,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2016–mai/2016",
+        "team": "Guarani de Palhoça",
+        "appearances": 16,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mai/2016–dez/2017",
+        "team": "Figueirense",
+        "appearances": 43,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2018",
+        "team": "Itumbiara EC",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem identificada; totais não exibidos."
+      },
+      {
+        "period": "jan/2018–fev/2020",
+        "team": "Paraná Clube",
+        "appearances": 62,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2020–dez/2021",
+        "team": "CSA",
+        "appearances": 59,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–mar/2023",
+        "team": "Vasco da Gama",
+        "appearances": 50,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2023–dez/2023",
+        "team": "Vitória",
+        "appearances": 2,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2024–atual",
+        "team": "Goiás",
+        "appearances": 10,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 3
+  },
+  {
+    "id": "luisao",
+    "name": "Luisão",
+    "full_name": "Luis Fellipe Campos Doria",
+    "shirt_number": 25,
+    "position": "Zagueiro",
+    "position_group": "Zagueiros",
+    "birth_date": "2003-09-09",
+    "nationality": "Brasil",
+    "height_cm": 192,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "jan/2023–jan/2025",
+        "team": "Novorizontino",
+        "appearances": 49,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–dez/2025",
+        "team": "Santos",
+        "appearances": 9,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–dez/2026",
+        "team": "Goiás",
+        "appearances": 26,
+        "goals": 2,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 4
+  },
+  {
+    "id": "lucas_ribeiro",
+    "name": "Lucas Ribeiro",
+    "full_name": "Lucas Ribeiro dos Santos",
+    "shirt_number": 14,
+    "position": "Zagueiro",
+    "position_group": "Zagueiros",
+    "birth_date": "1999-01-19",
+    "nationality": "Brasil",
+    "height_cm": 190,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "jul/2018–dez/2018",
+        "team": "Vitória",
+        "appearances": 16,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2019–ago/2020",
+        "team": "Hoffenheim",
+        "appearances": 3,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2020–dez/2021",
+        "team": "Internacional",
+        "appearances": 33,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–abr/2024",
+        "team": "Ceará",
+        "appearances": 32,
+        "goals": 1,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2024–atual",
+        "team": "Goiás",
+        "appearances": 104,
+        "goals": 3,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 5
+  },
+  {
+    "id": "luiz_felipe",
+    "name": "Luiz Felipe",
+    "full_name": "Luiz Felipe do Nascimento dos Santos",
+    "shirt_number": 3,
+    "position": "Zagueiro",
+    "position_group": "Zagueiros",
+    "birth_date": "1993-09-09",
+    "nationality": "Brasil",
+    "height_cm": 189,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "jan/2012–jan/2014",
+        "team": "Caxias",
+        "appearances": 19,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2014–jan/2015",
+        "team": "Duque de Caxias",
+        "appearances": 6,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2015–fev/2016",
+        "team": "Paraná Clube",
+        "appearances": 43,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2016–jul/2023",
+        "team": "Santos",
+        "appearances": 169,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2023–dez/2024",
+        "team": "Atlético-GO",
+        "appearances": 35,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–nov/2025",
+        "team": "Goiás",
+        "appearances": 19,
+        "goals": 2,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–atual",
+        "team": "Goiás",
+        "appearances": 26,
+        "goals": 1,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 6
+  },
+  {
+    "id": "ramon_menezes",
+    "name": "Ramon Menezes",
+    "full_name": "Ramon Menezes Roma",
+    "shirt_number": 4,
+    "position": "Zagueiro",
+    "position_group": "Zagueiros",
+    "birth_date": "1995-05-03",
+    "nationality": "Brasil",
+    "height_cm": 186,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "fev/2013–fev/2015",
+        "team": "Bahia de Feira",
+        "appearances": 17,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2015–jan/2017",
+        "team": "Vitória",
+        "appearances": 90,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2017–mai/2017",
+        "team": "Maccabi Tel Aviv",
+        "appearances": 3,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jun/2017–dez/2019",
+        "team": "Vitória",
+        "appearances": 115,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2020–dez/2021",
+        "team": "Cruzeiro",
+        "appearances": 73,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–jul/2023",
+        "team": "Atlético-GO",
+        "appearances": 52,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2023–dez/2023",
+        "team": "CRB",
+        "appearances": 15,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2024–jul/2025",
+        "team": "Ceará",
+        "appearances": 36,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2025–mar/2026",
+        "team": "Sport Recife",
+        "appearances": 33,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2026–dez/2026",
+        "team": "Goiás",
+        "appearances": 13,
+        "goals": 0,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": "Total é snapshot da tabela de carreira; pode variar conforme atualização da fonte."
+      }
+    ],
+    "sort_order": 7
+  },
+  {
+    "id": "murilo_camara",
+    "name": "Murilo Câmara",
+    "full_name": "Murilo Camara Saquetti Chimelo Pereira",
+    "shirt_number": 29,
+    "position": "Zagueiro",
+    "position_group": "Zagueiros",
+    "birth_date": "2006-11-04",
+    "nationality": "Brasil",
+    "height_cm": 193,
+    "foot": "Canhoto",
+    "club_history": [
+      {
+        "period": "jun/2024–dez/2024",
+        "team": "Rio Branco EC",
+        "appearances": 4,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2025–dez/2025",
+        "team": "Goiás",
+        "appearances": 2,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2026–atual",
+        "team": "Goiás",
+        "appearances": 1,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 8
+  },
+  {
+    "id": "rodrigo_soares",
+    "name": "Rodrigo Soares",
+    "full_name": "Rodrigo Alves Soares",
+    "shirt_number": 2,
+    "position": "Lateral-direito",
+    "position_group": "Laterais-direitos",
+    "birth_date": "1992-12-26",
+    "nationality": "Brasil",
+    "height_cm": 176,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "jan/2012–dez/2012",
+        "team": "União São João",
+        "appearances": 14,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2013–dez/2013",
+        "team": "Santo André",
+        "appearances": 1,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2013",
+        "team": "Atlético Sorocaba",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem identificada; totais não exibidos."
+      },
+      {
+        "period": "jan/2014–jun/2015",
+        "team": "Grêmio Anápolis",
+        "appearances": 14,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2015–jun/2016",
+        "team": "FC Porto",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem no elenco principal identificada; totais não exibidos."
+      },
+      {
+        "period": "jul/2015–fev/2017",
+        "team": "FC Porto B",
+        "appearances": 25,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2017–jun/2017",
+        "team": "Chaves",
+        "appearances": 8,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2017–jun/2019",
+        "team": "Aves",
+        "appearances": 73,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2019–jan/2022",
+        "team": "PAOK",
+        "appearances": 64,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–nov/2022",
+        "team": "Juventude",
+        "appearances": 48,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2023–nov/2023",
+        "team": "Atlético-GO",
+        "appearances": 38,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2024–nov/2025",
+        "team": "Novorizontino",
+        "appearances": 82,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–atual",
+        "team": "Goiás",
+        "appearances": 37,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 9
+  },
+  {
+    "id": "marcos_vinicius",
+    "name": "Marcos Vinicius",
+    "full_name": "Marcos Vinicius da Silva Santos",
+    "shirt_number": 63,
+    "position": "Lateral-direito",
+    "position_group": "Laterais-direitos",
+    "birth_date": "1997-03-25",
+    "nationality": "Brasil",
+    "height_cm": 178,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "jan/2017–mai/2017",
+        "team": "CA Tubarão",
+        "appearances": 12,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mai/2017–set/2017",
+        "team": "Brusque",
+        "appearances": 6,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "set/2017–abr/2018",
+        "team": "CA Tubarão",
+        "appearances": 15,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2018–mar/2019",
+        "team": "Chapecoense",
+        "appearances": 7,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2019–dez/2019",
+        "team": "Criciúma",
+        "appearances": 11,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2020–jul/2020",
+        "team": "Chapecoense",
+        "appearances": 4,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2020–jun/2021",
+        "team": "UD Vilafranquense",
+        "appearances": 25,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2021–abr/2022",
+        "team": "Maringá",
+        "appearances": 17,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2022–out/2022",
+        "team": "ABC",
+        "appearances": 22,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "nov/2022–abr/2023",
+        "team": "Maringá",
+        "appearances": 16,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2023–jul/2023",
+        "team": "Coritiba",
+        "appearances": 5,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2023–abr/2024",
+        "team": "Maringá",
+        "appearances": 22,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2024–nov/2024",
+        "team": "Avaí",
+        "appearances": 35,
+        "goals": 1,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–dez/2025",
+        "team": "Avaí",
+        "appearances": 47,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–ago/2026",
+        "team": "Chapecoense",
+        "appearances": 25,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2026–atual",
+        "team": "Goiás",
+        "appearances": 4,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 10
+  },
+  {
+    "id": "nicolas",
+    "name": "Nicolas",
+    "full_name": "Nicolas Vichiatto da Silva",
+    "shirt_number": 6,
+    "position": "Lateral-esquerdo",
+    "position_group": "Laterais-esquerdos",
+    "birth_date": "1997-02-24",
+    "nationality": "Brasil",
+    "height_cm": 181,
+    "foot": "Canhoto",
+    "club_history": [
+      {
+        "period": "mar/2016–ago/2018",
+        "team": "Athletico Paranaense",
+        "appearances": 41,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2018–dez/2018",
+        "team": "Ponte Preta",
+        "appearances": 7,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2019–fev/2019",
+        "team": "Athletico Paranaense",
+        "appearances": 6,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2019–mar/2021",
+        "team": "Atlético-GO",
+        "appearances": 92,
+        "goals": 4,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2021–dez/2021",
+        "team": "Athletico Paranaense",
+        "appearances": 34,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–dez/2022",
+        "team": "Grêmio",
+        "appearances": 36,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2023–dez/2024",
+        "team": "América-MG",
+        "appearances": 52,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–dez/2025",
+        "team": "Ceará",
+        "appearances": 24,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–atual",
+        "team": "Goiás",
+        "appearances": 38,
+        "goals": 2,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 11
+  },
+  {
+    "id": "danilo",
+    "name": "Danilo",
+    "full_name": "Danilo Cunha da Silva",
+    "shirt_number": 66,
+    "position": "Lateral-esquerdo",
+    "position_group": "Laterais-esquerdos",
+    "birth_date": "2007-05-12",
+    "nationality": "Brasil",
+    "height_cm": 176,
+    "foot": "Canhoto",
+    "club_history": [
+      {
+        "period": "jan/2025–atual",
+        "team": "Goiás",
+        "appearances": 8,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 12
+  },
+  {
+    "id": "djalma",
+    "name": "Djalma",
+    "full_name": "Djalma Antônio da Silva Filho",
+    "shirt_number": 54,
+    "position": "Lateral-esquerdo",
+    "position_group": "Laterais-esquerdos",
+    "birth_date": "1994-09-19",
+    "nationality": "Brasil",
+    "height_cm": 180,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "jun/2012–ago/2017",
+        "team": "Atlético Pernambucano",
+        "appearances": 44,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2017–out/2017",
+        "team": "Nacional AC (Patos)",
+        "appearances": null,
+        "goals": null,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Empréstimo identificado; totais não exibidos."
+      },
+      {
+        "period": "out/2017–jan/2018",
+        "team": "Decisão",
+        "appearances": null,
+        "goals": null,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Empréstimo identificado; totais não exibidos."
+      },
+      {
+        "period": "jan/2018–abr/2018",
+        "team": "Nacional AC (Patos)",
+        "appearances": null,
+        "goals": 4,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "review",
+        "notes": "A fonte retornou 0 jogos/4 gols, combinação impossível; jogos deixados como null para revisão."
+      },
+      {
+        "period": "abr/2018–ago/2018",
+        "team": "Treze",
+        "appearances": 13,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2019–abr/2019",
+        "team": "URT",
+        "appearances": 13,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2019–out/2019",
+        "team": "Treze",
+        "appearances": 17,
+        "goals": 1,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2019–jan/2021",
+        "team": "Confiança",
+        "appearances": 48,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2021–dez/2021",
+        "team": "Operário-PR",
+        "appearances": 42,
+        "goals": 4,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–ago/2022",
+        "team": "Bahia",
+        "appearances": 21,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2022–mai/2024",
+        "team": "AEL Limassol",
+        "appearances": 75,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jun/2024–jun/2025",
+        "team": "Göztepe",
+        "appearances": 25,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–atual",
+        "team": "Goiás",
+        "appearances": 19,
+        "goals": 2,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 13
+  },
+  {
+    "id": "lourenco",
+    "name": "Lourenço",
+    "full_name": "João Paulo Ferreira Lourenço",
+    "shirt_number": 97,
+    "position": "Volante",
+    "position_group": "Volantes",
+    "birth_date": "1997-09-07",
+    "nationality": "Brasil",
+    "height_cm": 169,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "mar/2017–set/2020",
+        "team": "Avaí",
+        "appearances": 97,
+        "goals": 4,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "set/2020–fev/2021",
+        "team": "Santa Cruz",
+        "appearances": 17,
+        "goals": 4,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2021–abr/2022",
+        "team": "Avaí",
+        "appearances": 67,
+        "goals": 7,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2022–dez/2022",
+        "team": "CSA",
+        "appearances": 32,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2023–dez/2023",
+        "team": "Vila Nova",
+        "appearances": 51,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2023–dez/2025",
+        "team": "Ceará",
+        "appearances": 98,
+        "goals": 9,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–atual",
+        "team": "Goiás",
+        "appearances": 35,
+        "goals": 1,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 14
+  },
+  {
+    "id": "filipe_machado",
+    "name": "Filipe Machado",
+    "full_name": "Luiz Filipe da Rosa Machado",
+    "shirt_number": 5,
+    "position": "Volante",
+    "position_group": "Volantes",
+    "birth_date": "1996-01-20",
+    "nationality": "Brasil",
+    "height_cm": 175,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "jul/2016–fev/2018",
+        "team": "Grêmio",
+        "appearances": 7,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2018–nov/2018",
+        "team": "Boa Esporte",
+        "appearances": 22,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2019–nov/2019",
+        "team": "São José-RS",
+        "appearances": 17,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2020–jan/2021",
+        "team": "Cruzeiro",
+        "appearances": 37,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2021–jul/2024",
+        "team": "Cruzeiro",
+        "appearances": 94,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2024–jan/2025",
+        "team": "Vitória",
+        "appearances": 18,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–nov/2025",
+        "team": "Coritiba",
+        "appearances": 41,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–nov/2026",
+        "team": "Goiás",
+        "appearances": 32,
+        "goals": 0,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 15
+  },
+  {
+    "id": "baldoria",
+    "name": "Baldória",
+    "full_name": "Guilherme Baldória de Camargo",
+    "shirt_number": 55,
+    "position": "Volante",
+    "position_group": "Volantes",
+    "birth_date": "2005-04-21",
+    "nationality": "Brasil",
+    "height_cm": 181,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "fev/2025–atual",
+        "team": "Goiás",
+        "appearances": 31,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 16
+  },
+  {
+    "id": "juninho",
+    "name": "Juninho",
+    "full_name": "Adilson dos Anjos Oliveira",
+    "shirt_number": 8,
+    "position": "Volante",
+    "position_group": "Volantes",
+    "birth_date": "1987-10-23",
+    "nationality": "Brasil",
+    "height_cm": 173,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "out/2011–mai/2012",
+        "team": "Rio Verde",
+        "appearances": 17,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jun/2012–mai/2013",
+        "team": "Mogi Mirim",
+        "appearances": 16,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mai/2013–abr/2014",
+        "team": "Athletico Paranaense",
+        "appearances": 38,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2014–jan/2016",
+        "team": "Ponte Preta",
+        "appearances": 73,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2016–mai/2016",
+        "team": "Ferroviária",
+        "appearances": 18,
+        "goals": 2,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mai/2016–nov/2024",
+        "team": "América-MG",
+        "appearances": 438,
+        "goals": 37,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–atual",
+        "team": "Goiás",
+        "appearances": 83,
+        "goals": 3,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 17
+  },
+  {
+    "id": "lucas_rodrigues",
+    "name": "Lucas Rodrigues",
+    "full_name": "Lucas Rodrigues Moreira Costa",
+    "shirt_number": 35,
+    "position": "Volante",
+    "position_group": "Volantes",
+    "birth_date": "2007-10-29",
+    "nationality": "Brasil",
+    "height_cm": 180,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "fev/2025–atual",
+        "team": "Goiás",
+        "appearances": 26,
+        "goals": 4,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 18
+  },
+  {
+    "id": "gege",
+    "name": "Gegê",
+    "full_name": "Geirton Marques Aires",
+    "shirt_number": 28,
+    "position": "Meia-atacante",
+    "position_group": "Meios-campistas",
+    "birth_date": "1994-01-28",
+    "nationality": "Brasil",
+    "height_cm": 175,
+    "foot": "Canhoto",
+    "club_history": [
+      {
+        "period": "abr/2013–jan/2017",
+        "team": "Botafogo",
+        "appearances": 77,
+        "goals": 6,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2017–nov/2017",
+        "team": "ABC",
+        "appearances": 51,
+        "goals": 10,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2018–jun/2018",
+        "team": "Adana Demirspor",
+        "appearances": 13,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2019–dez/2019",
+        "team": "Avaí",
+        "appearances": 19,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2020–dez/2020",
+        "team": "Brasil de Pelotas",
+        "appearances": 21,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2021–mai/2021",
+        "team": "Santo André",
+        "appearances": 11,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2021–dez/2021",
+        "team": "Londrina",
+        "appearances": 18,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–abr/2022",
+        "team": "Ferroviária",
+        "appearances": 12,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mai/2022–nov/2022",
+        "team": "Londrina",
+        "appearances": 30,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2022–dez/2023",
+        "team": "Vitória",
+        "appearances": 43,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2024–dez/2025",
+        "team": "CRB",
+        "appearances": 106,
+        "goals": 19,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–dez/2026",
+        "team": "Goiás",
+        "appearances": 28,
+        "goals": 3,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 19
+  },
+  {
+    "id": "lucas_lima",
+    "name": "Lucas Lima",
+    "full_name": "Lucas Rafael Araújo Lima",
+    "shirt_number": 10,
+    "position": "Meia-atacante",
+    "position_group": "Meios-campistas",
+    "birth_date": "1990-07-09",
+    "nationality": "Brasil",
+    "height_cm": 176,
+    "foot": "Canhoto",
+    "club_history": [
+      {
+        "period": "jan/2011–jul/2012",
+        "team": "Inter de Limeira",
+        "appearances": 38,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2012–mar/2013",
+        "team": "Internacional",
+        "appearances": 16,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2013–fev/2014",
+        "team": "Sport Recife",
+        "appearances": 53,
+        "goals": 9,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2014–dez/2017",
+        "team": "Santos",
+        "appearances": 201,
+        "goals": 19,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2018–ago/2021",
+        "team": "Palmeiras",
+        "appearances": 165,
+        "goals": 12,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2021–dez/2022",
+        "team": "Fortaleza",
+        "appearances": 68,
+        "goals": 1,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2023–dez/2023",
+        "team": "Santos",
+        "appearances": 50,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2024–dez/2024",
+        "team": "Sport Recife",
+        "appearances": 53,
+        "goals": 3,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–jan/2026",
+        "team": "Sport Recife",
+        "appearances": 48,
+        "goals": 4,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2026–atual",
+        "team": "Goiás",
+        "appearances": 32,
+        "goals": 1,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 20
+  },
+  {
+    "id": "brayann",
+    "name": "Brayann",
+    "full_name": "Brayann Brito Batista",
+    "shirt_number": 88,
+    "position": "Meia-atacante",
+    "position_group": "Meios-campistas",
+    "birth_date": "1997-10-25",
+    "nationality": "Brasil",
+    "height_cm": 176,
+    "foot": "Canhoto",
+    "club_history": [
+      {
+        "period": "ago/2021–dez/2021",
+        "team": "Guarany de Sobral",
+        "appearances": 9,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2022",
+        "team": "Guarany de Sobral",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Biografia oficial do Goiás também lista o Guarany em 2022; totais granulares não encontrados."
+      },
+      {
+        "period": "dez/2021–dez/2022",
+        "team": "Maracanã",
+        "appearances": 5,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2023–mar/2023",
+        "team": "Caucaia",
+        "appearances": 10,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2023–abr/2023",
+        "team": "Afogados da Ingazeira",
+        "appearances": 2,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mai/2023–nov/2023",
+        "team": "Caucaia",
+        "appearances": 11,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2023–jun/2024",
+        "team": "Altos",
+        "appearances": 19,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jun/2024–ago/2025",
+        "team": "CSA",
+        "appearances": 44,
+        "goals": 6,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "set/2025–atual",
+        "team": "Goiás",
+        "appearances": 26,
+        "goals": 1,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 21
+  },
+  {
+    "id": "wellington_rato",
+    "name": "Wellington Rato",
+    "full_name": "Wellington Soares da Silva",
+    "shirt_number": 27,
+    "position": "Ponta-direita",
+    "position_group": "Meios-campistas",
+    "birth_date": "1992-06-28",
+    "nationality": "Brasil",
+    "height_cm": 172,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "jan/2013–jun/2014",
+        "team": "Audax Rio",
+        "appearances": 22,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2014–fev/2015",
+        "team": "Guaratinguetá",
+        "appearances": 5,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2015–nov/2016",
+        "team": "Red Bull Brasil",
+        "appearances": 22,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2017–jun/2017",
+        "team": "Caldense",
+        "appearances": 15,
+        "goals": 4,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jun/2017–out/2018",
+        "team": "Sampaio Corrêa",
+        "appearances": 27,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2018–jun/2019",
+        "team": "Joinville",
+        "appearances": 13,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2019–set/2020",
+        "team": "Ferroviário",
+        "appearances": 22,
+        "goals": 7,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "out/2020–mar/2021",
+        "team": "Atlético-GO",
+        "appearances": 30,
+        "goals": 6,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2021–dez/2021",
+        "team": "V-Varen Nagasaki",
+        "appearances": 23,
+        "goals": 7,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–dez/2022",
+        "team": "Atlético-GO",
+        "appearances": 70,
+        "goals": 15,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2022–jan/2025",
+        "team": "São Paulo",
+        "appearances": 105,
+        "goals": 6,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–jul/2025",
+        "team": "Vitória",
+        "appearances": 24,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2025–dez/2026",
+        "team": "Goiás",
+        "appearances": 22,
+        "goals": 2,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 22
+  },
+  {
+    "id": "pedrinho",
+    "name": "Pedrinho",
+    "full_name": "Pedro Junqueira de Oliveira",
+    "shirt_number": 17,
+    "position": "Ponta-direita",
+    "position_group": "Atacantes",
+    "birth_date": "2004-03-23",
+    "nationality": "Brasil",
+    "height_cm": 182,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "mai/2022–atual",
+        "team": "Goiás",
+        "appearances": 96,
+        "goals": 6,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 23
+  },
+  {
+    "id": "anselmo_ramon",
+    "name": "Anselmo Ramon",
+    "full_name": "Anselmo Ramon Alves Herculano",
+    "shirt_number": 9,
+    "position": "Centroavante",
+    "position_group": "Atacantes",
+    "birth_date": "1988-06-23",
+    "nationality": "Brasil",
+    "height_cm": 182,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "fev/2009–mai/2009",
+        "team": "Cabofriense",
+        "appearances": 11,
+        "goals": 6,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": "Empréstimo cruzado com histórico de transferências."
+      },
+      {
+        "period": "jun/2009–dez/2009",
+        "team": "Kashiwa Reysol",
+        "appearances": 5,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": "Empréstimo cruzado com histórico de transferências."
+      },
+      {
+        "period": "jan/2010–mai/2010",
+        "team": "Rio Branco-ES",
+        "appearances": 13,
+        "goals": 5,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": "Empréstimo cruzado com histórico de transferências."
+      },
+      {
+        "period": "mai/2010–dez/2010",
+        "team": "Avaí",
+        "appearances": 4,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": "Empréstimo cruzado com histórico de transferências."
+      },
+      {
+        "period": "ago/2010–dez/2010",
+        "team": "CFR Cluj",
+        "appearances": 3,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": "Empréstimo cruzado com histórico de transferências."
+      },
+      {
+        "period": "jan/2011–mai/2011",
+        "team": "Osasco Sporting",
+        "appearances": 17,
+        "goals": 10,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": "Empréstimo cruzado com histórico de transferências."
+      },
+      {
+        "period": "mai/2011–jan/2014",
+        "team": "Cruzeiro",
+        "appearances": 83,
+        "goals": 25,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2014–fev/2018",
+        "team": "Zhejiang Professional",
+        "appearances": 67,
+        "goals": 35,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2018–mai/2019",
+        "team": "Guarani",
+        "appearances": 13,
+        "goals": 2,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mai/2019–dez/2019",
+        "team": "Vitória",
+        "appearances": 32,
+        "goals": 7,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2020–dez/2021",
+        "team": "Chapecoense",
+        "appearances": 81,
+        "goals": 21,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–abr/2025",
+        "team": "CRB",
+        "appearances": 177,
+        "goals": 64,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "abr/2025–atual",
+        "team": "Goiás",
+        "appearances": 76,
+        "goals": 24,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 24
+  },
+  {
+    "id": "cadu",
+    "name": "Cadu",
+    "full_name": "Carlos Eduardo Amaral Pereira de Castro",
+    "shirt_number": 18,
+    "position": "Centroavante",
+    "position_group": "Atacantes",
+    "birth_date": "2004-05-24",
+    "nationality": "Brasil",
+    "height_cm": 188,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "abr/2022–dez/2022",
+        "team": "Atlético-MG",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem no profissional identificada; totais não exibidos."
+      },
+      {
+        "period": "fev/2023–fev/2026",
+        "team": "Atlético-MG",
+        "appearances": 38,
+        "goals": 4,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2026–dez/2026",
+        "team": "Goiás",
+        "appearances": 25,
+        "goals": 4,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 25
+  },
+  {
+    "id": "felipe_clemente",
+    "name": "Felipe Clemente",
+    "full_name": "Luiz Felipe Clemente de Almeida",
+    "shirt_number": 11,
+    "position": "Centroavante",
+    "position_group": "Atacantes",
+    "birth_date": "1999-06-17",
+    "nationality": "Brasil",
+    "height_cm": 181,
+    "foot": "Destro",
+    "club_history": [
+      {
+        "period": "2021",
+        "team": "Uberaba",
+        "appearances": 12,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2022",
+        "team": "Capital-DF",
+        "appearances": 15,
+        "goals": 5,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2022",
+        "team": "Uberaba",
+        "appearances": 8,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2022",
+        "team": "Ceilândia",
+        "appearances": 4,
+        "goals": 3,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2022",
+        "team": "Anapolina",
+        "appearances": 5,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2022",
+        "team": "Araxá",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Clube consta no histórico; jogos/gols não publicados na tabela consultada."
+      },
+      {
+        "period": "2023",
+        "team": "Ceilândia",
+        "appearances": 26,
+        "goals": 10,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2023",
+        "team": "Ceilandense",
+        "appearances": 8,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2024",
+        "team": "Ceilândia",
+        "appearances": 15,
+        "goals": 7,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2024",
+        "team": "Manauara",
+        "appearances": 12,
+        "goals": 4,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2025",
+        "team": "Ceilândia",
+        "appearances": 13,
+        "goals": 7,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2025",
+        "team": "Confiança",
+        "appearances": 7,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "2025",
+        "team": "Pouso Alegre",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Clube consta no histórico; totais não publicados."
+      },
+      {
+        "period": "2025",
+        "team": "Brasília",
+        "appearances": 7,
+        "goals": 10,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2025–dez/2025",
+        "team": "Kiryat Yam SC",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "review",
+        "notes": "365Scores lista a passagem; outro histórico consultado traz clubes brasileiros no mesmo ano. Revisar cronologia antes de produção se a ordem exata for crítica."
+      },
+      {
+        "period": "jan/2026–ago/2026",
+        "team": "Gama",
+        "appearances": 32,
+        "goals": 21,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "ago/2026–dez/2026",
+        "team": "Goiás",
+        "appearances": 0,
+        "goals": 0,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": "Chegou por empréstimo em 21/08/2026; snapshot antes de estreia oficial pelo Goiás."
+      }
+    ],
+    "sort_order": 26
+  },
+  {
+    "id": "jean_carlos",
+    "name": "Jean Carlos",
+    "full_name": "Jean Carlos Alves Ferreira",
+    "shirt_number": 21,
+    "position": "Meia-atacante",
+    "position_group": "Atacantes",
+    "birth_date": "2005-05-08",
+    "nationality": "Brasil",
+    "height_cm": null,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "ago/2024–dez/2024",
+        "team": "Atlético-GO",
+        "appearances": 3,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "fev/2025–atual",
+        "team": "Goiás",
+        "appearances": 47,
+        "goals": 4,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 27
+  },
+  {
+    "id": "halerrandrio",
+    "name": "Halerrandrio",
+    "full_name": "Halerrandrio dos Santos Feitosa",
+    "shirt_number": 77,
+    "position": "Ponta-direita",
+    "position_group": "Atacantes",
+    "birth_date": "2006-07-08",
+    "nationality": "Brasil",
+    "height_cm": 175,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "abr/2023–atual",
+        "team": "Goiás",
+        "appearances": 12,
+        "goals": 0,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 28
+  },
+  {
+    "id": "esli_garcia",
+    "name": "Esli Garcia",
+    "full_name": "Esli Samuel García Cordero",
+    "shirt_number": 15,
+    "position": "Ponta-esquerda",
+    "position_group": "Atacantes",
+    "birth_date": "2000-07-14",
+    "nationality": "Venezuela",
+    "height_cm": 165,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "ago/2016–mai/2018",
+        "team": "Portuguesa FC (Venezuela)",
+        "appearances": 41,
+        "goals": 9,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jul/2018–dez/2019",
+        "team": "Deportivo Táchira",
+        "appearances": 55,
+        "goals": 12,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2020–fev/2021",
+        "team": "Santiago Wanderers",
+        "appearances": 11,
+        "goals": 0,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "mar/2021–dez/2021",
+        "team": "Deportivo Táchira",
+        "appearances": 15,
+        "goals": 1,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2022–dez/2022",
+        "team": "Universidad Central",
+        "appearances": 27,
+        "goals": 5,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2023–dez/2023",
+        "team": "Deportivo Táchira",
+        "appearances": 31,
+        "goals": 5,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2024–nov/2024",
+        "team": "Paysandu",
+        "appearances": 38,
+        "goals": 11,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "jan/2025–atual",
+        "team": "Goiás",
+        "appearances": 44,
+        "goals": 5,
+        "loan": false,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 29
+  },
+  {
+    "id": "kadu_sousa",
+    "name": "Kadu Sousa",
+    "full_name": "Carlos Eduardo de Sousa Leopoldino",
+    "shirt_number": 40,
+    "position": "Ponta-esquerda",
+    "position_group": "Atacantes",
+    "birth_date": "2002-03-03",
+    "nationality": "Brasil",
+    "height_cm": 178,
+    "foot": null,
+    "club_history": [
+      {
+        "period": "2022",
+        "team": "São Joseense",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "review",
+        "notes": "FotMob exibe uma faixa de datas incoerente para esta passagem; clube confirmado, período exato deve ser revisado."
+      },
+      {
+        "period": "mar/2023–mai/2023",
+        "team": "Široki Brijeg",
+        "appearances": 4,
+        "goals": 0,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "nov/2024–jan/2025",
+        "team": "AC Paranavaí",
+        "appearances": null,
+        "goals": null,
+        "loan": false,
+        "is_goias": false,
+        "data_quality": "partial",
+        "notes": "Passagem identificada; totais não exibidos."
+      },
+      {
+        "period": "jan/2025–set/2025",
+        "team": "Anápolis",
+        "appearances": 28,
+        "goals": 4,
+        "loan": true,
+        "is_goias": false,
+        "data_quality": "verified",
+        "notes": null
+      },
+      {
+        "period": "dez/2025–dez/2026",
+        "team": "Goiás",
+        "appearances": 16,
+        "goals": 6,
+        "loan": true,
+        "is_goias": true,
+        "data_quality": "verified",
+        "notes": null
+      }
+    ],
+    "sort_order": 30
+  }
+]

@@ -1,0 +1,482 @@
+[
+  {
+    "id": "torcedor_01",
+    "difficulty": "torcedor",
+    "question": "Em que data o Goiás Esporte Clube foi fundado?",
+    "options": "jsonb_build_array('6 de abril de 1939', '6 de abril de 1943', '12 de maio de 1945', '1º de janeiro de 1950')",
+    "correct_index": 1,
+    "sort_order": 1
+  },
+  {
+    "id": "torcedor_02",
+    "difficulty": "torcedor",
+    "question": "Qual foi o primeiro título conquistado pelo Goiás?",
+    "options": "jsonb_build_array('Copa Centro-Oeste', 'Campeonato Brasileiro Série B', 'Campeonato Goiano de 1966', 'Copa Verde')",
+    "correct_index": 2,
+    "sort_order": 2
+  },
+  {
+    "id": "torcedor_03",
+    "difficulty": "torcedor",
+    "question": "Quem o Goiás derrotou na decisão do Goianão de 1966 para conquistar seu primeiro título?",
+    "options": "jsonb_build_array('Atlético-GO', 'Goiânia', 'Anápolis', 'Vila Nova')",
+    "correct_index": 3,
+    "sort_order": 3
+  },
+  {
+    "id": "torcedor_04",
+    "difficulty": "torcedor",
+    "question": "Quantas vezes o Goiás conquistou o Campeonato Brasileiro da Série B?",
+    "options": "jsonb_build_array('Uma', 'Duas', 'Três', 'Quatro')",
+    "correct_index": 1,
+    "sort_order": 4
+  },
+  {
+    "id": "torcedor_05",
+    "difficulty": "torcedor",
+    "question": "Em qual competição o Goiás conquistou um título nacional pela primeira vez?",
+    "options": "jsonb_build_array('Copa do Brasil', 'Copa Verde', 'Série C', 'Campeonato Brasileiro Série B')",
+    "correct_index": 3,
+    "sort_order": 5
+  },
+  {
+    "id": "torcedor_06",
+    "difficulty": "torcedor",
+    "question": "Qual foi a melhor colocação da história do Goiás no Campeonato Brasileiro Série A?",
+    "options": "jsonb_build_array('Vice-campeão', '3º lugar', '4º lugar', '5º lugar')",
+    "correct_index": 1,
+    "sort_order": 6
+  },
+  {
+    "id": "torcedor_07",
+    "difficulty": "torcedor",
+    "question": "A campanha de 2005 garantiu ao Goiás uma vaga inédita em qual competição?",
+    "options": "jsonb_build_array('Mundial de Clubes', 'Copa Mercosul', 'Recopa Sul-Americana', 'Copa Libertadores')",
+    "correct_index": 3,
+    "sort_order": 7
+  },
+  {
+    "id": "torcedor_08",
+    "difficulty": "torcedor",
+    "question": "Em que ano o Goiás disputou a Copa Libertadores pela primeira vez?",
+    "options": "jsonb_build_array('2003', '2004', '2005', '2006')",
+    "correct_index": 3,
+    "sort_order": 8
+  },
+  {
+    "id": "torcedor_09",
+    "difficulty": "torcedor",
+    "question": "Contra qual clube o Goiás disputou a final da Copa Sul-Americana de 2010?",
+    "options": "jsonb_build_array('San Lorenzo', 'Vélez Sarsfield', 'Estudiantes', 'Independiente')",
+    "correct_index": 3,
+    "sort_order": 9
+  },
+  {
+    "id": "torcedor_10",
+    "difficulty": "torcedor",
+    "question": "Contra quem o Goiás disputou a final da Copa do Brasil de 1990?",
+    "options": "jsonb_build_array('Corinthians', 'Grêmio', 'Vasco', 'Flamengo')",
+    "correct_index": 3,
+    "sort_order": 10
+  },
+  {
+    "id": "torcedor_11",
+    "difficulty": "torcedor",
+    "question": "Qual jogador marcou 31 gols pelo Goiás no Brasileirão de 2003?",
+    "options": "jsonb_build_array('Araújo', 'Alex Dias', 'Paulo Baier', 'Dimba')",
+    "correct_index": 3,
+    "sort_order": 11
+  },
+  {
+    "id": "torcedor_12",
+    "difficulty": "torcedor",
+    "question": "Contra quem o Goiás conquistou a Copa Verde de 2023?",
+    "options": "jsonb_build_array('Cuiabá', 'Brasiliense', 'Remo', 'Paysandu')",
+    "correct_index": 3,
+    "sort_order": 12
+  },
+  {
+    "id": "torcedor_13",
+    "difficulty": "torcedor",
+    "question": "Em que ano o Goiás passou a fazer parte do Clube dos 13?",
+    "options": "jsonb_build_array('1993', '1995', '1997', '1999')",
+    "correct_index": 2,
+    "sort_order": 13
+  },
+  {
+    "id": "torcedor_14",
+    "difficulty": "torcedor",
+    "question": "Qual foi o primeiro adversário do Goiás no Campeonato Brasileiro?",
+    "options": "jsonb_build_array('Flamengo', 'Santos', 'Olaria', 'América-RJ')",
+    "correct_index": 2,
+    "sort_order": 14
+  },
+  {
+    "id": "torcedor_15",
+    "difficulty": "torcedor",
+    "question": "Qual foi o placar da primeira partida do Goiás no Campeonato Brasileiro, em 1973?",
+    "options": "jsonb_build_array('Goiás 1 x 0 Olaria', 'Olaria 2 x 1 Goiás', 'Goiás 2 x 0 Olaria', 'Goiás 0 x 0 Olaria')",
+    "correct_index": 3,
+    "sort_order": 15
+  },
+  {
+    "id": "torcedor_16",
+    "difficulty": "torcedor",
+    "question": "Contra qual clube saiu a primeira vitória do Goiás em um Campeonato Brasileiro?",
+    "options": "jsonb_build_array('Vasco', 'Botafogo', 'Flamengo', 'Santos')",
+    "correct_index": 2,
+    "sort_order": 16
+  },
+  {
+    "id": "torcedor_17",
+    "difficulty": "torcedor",
+    "question": "Quem foi o primeiro jogador do Goiás a terminar como artilheiro do Campeonato Brasileiro?",
+    "options": "jsonb_build_array('Araújo', 'Dill', 'Lincoln', 'Túlio Maravilha')",
+    "correct_index": 3,
+    "sort_order": 17
+  },
+  {
+    "id": "torcedor_18",
+    "difficulty": "torcedor",
+    "question": "Qual jogador detém a histórica marca de 831 partidas pelo Goiás?",
+    "options": "jsonb_build_array('Amaral', 'Araújo', 'Fernandão', 'Harlei')",
+    "correct_index": 3,
+    "sort_order": 18
+  },
+  {
+    "id": "torcedor_19",
+    "difficulty": "torcedor",
+    "question": "Contra qual clube o Goiás disputou o jogo decisivo do título da Série B de 1999?",
+    "options": "jsonb_build_array('Bahia', 'Náutico', 'Paraná', 'Santa Cruz')",
+    "correct_index": 3,
+    "sort_order": 19
+  },
+  {
+    "id": "torcedor_20",
+    "difficulty": "torcedor",
+    "question": "Contra qual equipe aconteceu o primeiro jogo oficial do Goiás no Estádio Hailé Pinheiro?",
+    "options": "jsonb_build_array('Vila Nova', 'Atlético-GO', 'Goiânia', 'Inhumas')",
+    "correct_index": 3,
+    "sort_order": 20
+  },
+  {
+    "id": "esmeraldino_01",
+    "difficulty": "esmeraldino",
+    "question": "Qual equipe eliminou o Goiás nas oitavas de final da Libertadores de 2006?",
+    "options": "jsonb_build_array('Boca Juniors', 'River Plate', 'Vélez Sarsfield', 'Estudiantes')",
+    "correct_index": 3,
+    "sort_order": 21
+  },
+  {
+    "id": "esmeraldino_02",
+    "difficulty": "esmeraldino",
+    "question": "Mesmo eliminado, qual foi o placar da vitória do Goiás sobre o Estudiantes no Serra Dourada em 2006?",
+    "options": "jsonb_build_array('1 x 0', '2 x 0', '3 x 1', '4 x 2')",
+    "correct_index": 2,
+    "sort_order": 22
+  },
+  {
+    "id": "esmeraldino_03",
+    "difficulty": "esmeraldino",
+    "question": "Como terminou a decisão da Sul-Americana de 2010?",
+    "options": "jsonb_build_array('Goiás campeão no tempo normal', 'Goiás campeão nos pênaltis', 'Independiente campeão no tempo normal', 'Independiente campeão nos pênaltis')",
+    "correct_index": 3,
+    "sort_order": 23
+  },
+  {
+    "id": "esmeraldino_04",
+    "difficulty": "esmeraldino",
+    "question": "Quem marcou o gol do Goiás no jogo de volta da final da Sul-Americana de 2010?",
+    "options": "jsonb_build_array('Harlei', 'Rafael Tolói', 'Carlos Alberto', 'Rafael Moura')",
+    "correct_index": 3,
+    "sort_order": 24
+  },
+  {
+    "id": "esmeraldino_05",
+    "difficulty": "esmeraldino",
+    "question": "Qual sequência representa o pentacampeonato goiano conquistado pelo Goiás?",
+    "options": "jsonb_build_array('1993–1997', '1994–1998', '1995–1999', '1996–2000')",
+    "correct_index": 3,
+    "sort_order": 25
+  },
+  {
+    "id": "esmeraldino_06",
+    "difficulty": "esmeraldino",
+    "question": "Quem eliminou o Goiás na semifinal do Campeonato Brasileiro de 1996?",
+    "options": "jsonb_build_array('Palmeiras', 'Cruzeiro', 'Portuguesa', 'Grêmio')",
+    "correct_index": 3,
+    "sort_order": 26
+  },
+  {
+    "id": "esmeraldino_07",
+    "difficulty": "esmeraldino",
+    "question": "Qual foi a maior goleada do Goiás registrada no Campeonato Brasileiro?",
+    "options": "jsonb_build_array('Goiás 6 x 0 Bahia', 'Goiás 7 x 1 Vitória', 'Goiás 7 x 0 Juventude', 'Goiás 8 x 0 Paraná')",
+    "correct_index": 2,
+    "sort_order": 27
+  },
+  {
+    "id": "esmeraldino_08",
+    "difficulty": "esmeraldino",
+    "question": "Qual adversário o Goiás enfrentou em sua estreia na Libertadores de 2006?",
+    "options": "jsonb_build_array('Deportivo Táchira', 'The Strongest', 'Deportivo Cuenca', 'Newell''s Old Boys')",
+    "correct_index": 2,
+    "sort_order": 28
+  },
+  {
+    "id": "esmeraldino_09",
+    "difficulty": "esmeraldino",
+    "question": "Qual destas equipes NÃO estava no grupo do Goiás na Libertadores de 2006?",
+    "options": "jsonb_build_array('Newell''s Old Boys', 'The Strongest', 'Unión Española', 'River Plate')",
+    "correct_index": 3,
+    "sort_order": 29
+  },
+  {
+    "id": "esmeraldino_10",
+    "difficulty": "esmeraldino",
+    "question": "Quantos pontos o Goiás fez na fase de grupos da Libertadores de 2006?",
+    "options": "jsonb_build_array('8', '9', '11', '13')",
+    "correct_index": 2,
+    "sort_order": 30
+  },
+  {
+    "id": "esmeraldino_11",
+    "difficulty": "esmeraldino",
+    "question": "Qual foi o placar agregado da final da Copa Verde de 2023?",
+    "options": "jsonb_build_array('2 x 0', '3 x 1', '4 x 1', '4 x 2')",
+    "correct_index": 2,
+    "sort_order": 31
+  },
+  {
+    "id": "esmeraldino_12",
+    "difficulty": "esmeraldino",
+    "question": "Antes de enfrentar o Paysandu na final da Copa Verde de 2023, quem o Goiás eliminou na semifinal?",
+    "options": "jsonb_build_array('Remo', 'Vila Nova', 'Cuiabá', 'Atlético-GO')",
+    "correct_index": 2,
+    "sort_order": 32
+  },
+  {
+    "id": "esmeraldino_13",
+    "difficulty": "esmeraldino",
+    "question": "Por que os fundadores do Goiás acabaram fazendo a reunião do lado de fora da casa dos irmãos Barsi?",
+    "options": "jsonb_build_array('Faltou energia elétrica', 'A casa estava fechada', 'A conversa estava fazendo muito barulho', 'Começou a chover')",
+    "correct_index": 2,
+    "sort_order": 33
+  },
+  {
+    "id": "esmeraldino_14",
+    "difficulty": "esmeraldino",
+    "question": "Quem marcou o primeiro gol da história do Goiás no Campeonato Brasileiro?",
+    "options": "jsonb_build_array('Túlio Maravilha', 'Lucinho', 'Matinha', 'Lincoln')",
+    "correct_index": 3,
+    "sort_order": 34
+  },
+  {
+    "id": "esmeraldino_15",
+    "difficulty": "esmeraldino",
+    "question": "Em 1974, o Goiás protagonizou uma reação histórica contra o Santos de Pelé. Qual era o placar antes da reação?",
+    "options": "jsonb_build_array('2 x 0', '3 x 0', '4 x 1', '5 x 2')",
+    "correct_index": 2,
+    "sort_order": 35
+  },
+  {
+    "id": "esmeraldino_16",
+    "difficulty": "esmeraldino",
+    "question": "Como terminou o histórico Goiás x Santos de 1974 no Pacaembu?",
+    "options": "jsonb_build_array('Santos 5 x 4 Goiás', 'Goiás 5 x 4 Santos', 'Santos 4 x 4 Goiás', 'Santos 4 x 3 Goiás')",
+    "correct_index": 2,
+    "sort_order": 36
+  },
+  {
+    "id": "esmeraldino_17",
+    "difficulty": "esmeraldino",
+    "question": "Quantos gols Túlio Maravilha marcou para ser artilheiro do Brasileiro de 1989?",
+    "options": "jsonb_build_array('9', '10', '11', '15')",
+    "correct_index": 2,
+    "sort_order": 37
+  },
+  {
+    "id": "esmeraldino_18",
+    "difficulty": "esmeraldino",
+    "question": "Quem é o maior artilheiro da história do Goiás?",
+    "options": "jsonb_build_array('Fernandão', 'Dill', 'Lincoln', 'Araújo')",
+    "correct_index": 3,
+    "sort_order": 38
+  },
+  {
+    "id": "esmeraldino_19",
+    "difficulty": "esmeraldino",
+    "question": "Quantos gols Araújo marcou pelo Goiás?",
+    "options": "jsonb_build_array('108', '133', '140', '145')",
+    "correct_index": 3,
+    "sort_order": 39
+  },
+  {
+    "id": "esmeraldino_20",
+    "difficulty": "esmeraldino",
+    "question": "Quem era o técnico do Goiás na conquista da Série B de 1999?",
+    "options": "jsonb_build_array('Enderson Moreira', 'Geninho', 'Paulo Gonçalves', 'Hélio dos Anjos')",
+    "correct_index": 3,
+    "sort_order": 40
+  },
+  {
+    "id": "fanatico_01",
+    "difficulty": "fanatico",
+    "question": "Qual clube o Goiás eliminou nos pênaltis na semifinal da Copa do Brasil de 1990?",
+    "options": "jsonb_build_array('Atlético-MG', 'Flamengo', 'Grêmio', 'Criciúma')",
+    "correct_index": 3,
+    "sort_order": 41
+  },
+  {
+    "id": "fanatico_02",
+    "difficulty": "fanatico",
+    "question": "Quem foi o adversário do Goiás no amistoso de inauguração do Estádio Hailé Pinheiro, em 1995?",
+    "options": "jsonb_build_array('São Paulo', 'Peñarol', 'Atlético-MG', 'Kashima Antlers')",
+    "correct_index": 3,
+    "sort_order": 42
+  },
+  {
+    "id": "fanatico_03",
+    "difficulty": "fanatico",
+    "question": "Quem marcou o primeiro gol da história do Goiás na Libertadores?",
+    "options": "jsonb_build_array('Romerito', 'Jadílson', 'Welliton', 'Rogério Corrêa')",
+    "correct_index": 3,
+    "sort_order": 43
+  },
+  {
+    "id": "fanatico_04",
+    "difficulty": "fanatico",
+    "question": "Qual jogador marcou dois gols na goleada de 7 x 0 sobre o Juventude em 2003?",
+    "options": "jsonb_build_array('Apenas Dimba', 'Apenas Danilo', 'Dimba e Danilo marcaram dois cada', 'Araújo e Dimba')",
+    "correct_index": 2,
+    "sort_order": 44
+  },
+  {
+    "id": "fanatico_05",
+    "difficulty": "fanatico",
+    "question": "Qual destes jogadores NÃO é citado entre os nomes do time do Goiás na Libertadores de 2006?",
+    "options": "jsonb_build_array('Harlei', 'Romerito', 'Jadílson', 'Túlio Maravilha')",
+    "correct_index": 3,
+    "sort_order": 45
+  },
+  {
+    "id": "fanatico_06",
+    "difficulty": "fanatico",
+    "question": "Onde aconteceu a reunião que deu origem ao Goiás Esporte Clube?",
+    "options": "jsonb_build_array('Em um bar no Centro', 'No Estádio Olímpico', 'Na sede da Federação Goiana', 'Na calçada da Rua 23')",
+    "correct_index": 3,
+    "sort_order": 46
+  },
+  {
+    "id": "fanatico_07",
+    "difficulty": "fanatico",
+    "question": "Quantos gols Paghetti marcou na reação histórica contra o Santos de Pelé, em 1974?",
+    "options": "jsonb_build_array('1', '2', '3', '4')",
+    "correct_index": 2,
+    "sort_order": 47
+  },
+  {
+    "id": "fanatico_08",
+    "difficulty": "fanatico",
+    "question": "Quem aparece atrás de Araújo entre os maiores artilheiros históricos do clube nas estatísticas divulgadas pelo Goiás?",
+    "options": "jsonb_build_array('Fernandão', 'Lincoln', 'Dill', 'Túlio Maravilha')",
+    "correct_index": 2,
+    "sort_order": 48
+  },
+  {
+    "id": "fanatico_09",
+    "difficulty": "fanatico",
+    "question": "Quantas partidas Fernandão disputou pelo Goiás?",
+    "options": "jsonb_build_array('198', '225', '271', '319')",
+    "correct_index": 2,
+    "sort_order": 49
+  },
+  {
+    "id": "fanatico_10",
+    "difficulty": "fanatico",
+    "question": "Quantos gols Fernandão marcou com a camisa esmeraldina?",
+    "options": "jsonb_build_array('89', '99', '108', '121')",
+    "correct_index": 2,
+    "sort_order": 50
+  },
+  {
+    "id": "fanatico_11",
+    "difficulty": "fanatico",
+    "question": "Qual jogador participou de TODOS os cinco títulos do pentacampeonato goiano de 1996 a 2000?",
+    "options": "jsonb_build_array('Araújo', 'Harlei', 'Dill', 'Fernandão')",
+    "correct_index": 3,
+    "sort_order": 51
+  },
+  {
+    "id": "fanatico_12",
+    "difficulty": "fanatico",
+    "question": "Contra qual clube Fernandão marcou seu famoso gol de bicicleta de fora da área?",
+    "options": "jsonb_build_array('Flamengo', 'Vila Nova', 'Palmeiras', 'Bahia')",
+    "correct_index": 3,
+    "sort_order": 52
+  },
+  {
+    "id": "fanatico_13",
+    "difficulty": "fanatico",
+    "question": "Qual foi o placar do jogo marcado pela famosa bicicleta de Fernandão contra o Bahia?",
+    "options": "jsonb_build_array('Goiás 3 x 2 Bahia', 'Goiás 4 x 2 Bahia', 'Goiás 3 x 3 Bahia', 'Goiás 4 x 4 Bahia')",
+    "correct_index": 3,
+    "sort_order": 53
+  },
+  {
+    "id": "fanatico_14",
+    "difficulty": "fanatico",
+    "question": "Qual foi o placar do jogo decisivo do título da Série B de 1999 contra o Santa Cruz?",
+    "options": "jsonb_build_array('Goiás 1 x 0 Santa Cruz', 'Goiás 2 x 1 Santa Cruz', 'Goiás 0 x 0 Santa Cruz', 'Goiás 3 x 0 Santa Cruz')",
+    "correct_index": 2,
+    "sort_order": 54
+  },
+  {
+    "id": "fanatico_15",
+    "difficulty": "fanatico",
+    "question": "Quantas vitórias o Goiás teve na campanha da Série B de 1999?",
+    "options": "jsonb_build_array('12', '13', '14', '15')",
+    "correct_index": 3,
+    "sort_order": 55
+  },
+  {
+    "id": "fanatico_16",
+    "difficulty": "fanatico",
+    "question": "Quem marcou os três gols do Goiás na vitória por 3 x 1 sobre o Inhumas no primeiro jogo oficial da Serrinha?",
+    "options": "jsonb_build_array('Araújo', 'Dill', 'Fernandão', 'Marcelo Batista')",
+    "correct_index": 3,
+    "sort_order": 56
+  },
+  {
+    "id": "fanatico_17",
+    "difficulty": "fanatico",
+    "question": "Qual foi a maior sequência de invencibilidade histórica do Goiás na Serrinha citada pelo clube?",
+    "options": "jsonb_build_array('22 partidas', '29 partidas', '34 partidas', '38 partidas')",
+    "correct_index": 3,
+    "sort_order": 57
+  },
+  {
+    "id": "fanatico_18",
+    "difficulty": "fanatico",
+    "question": "Quem é o maior artilheiro da história do Estádio Hailé Pinheiro segundo os registros do Goiás?",
+    "options": "jsonb_build_array('Araújo', 'Fernandão', 'Dill', 'Walter')",
+    "correct_index": 2,
+    "sort_order": 58
+  },
+  {
+    "id": "fanatico_19",
+    "difficulty": "fanatico",
+    "question": "Qual seleção utilizou a Serrinha como local de preparação para a Copa das Confederações de 2013?",
+    "options": "jsonb_build_array('Argentina', 'Uruguai', 'Portugal', 'Brasil')",
+    "correct_index": 3,
+    "sort_order": 59
+  },
+  {
+    "id": "fanatico_20",
+    "difficulty": "fanatico",
+    "question": "Qual foi a maior goleada registrada pelo Goiás no Estádio Hailé Pinheiro?",
+    "options": "jsonb_build_array('Goiás 7 x 0 São José-AP', 'Goiás 8 x 0 Anápolis', 'Goiás 9 x 0 Serra-ES', 'Goiás 10 x 0 Goiânia')",
+    "correct_index": 2,
+    "sort_order": 60
+  }
+]
