@@ -121,8 +121,13 @@ class _TacticalIdentityResultPageState
                         Row(
                           children: [
                             InkWell(
-                              onTap: () =>
-                                  context.canPop() ? context.pop() : context.go('/'),
+                              // Nunca `pop()` aqui: a tela de processamento
+                              // usa `push` (não `replace`) pra chegar até o
+                              // resultado, então a pergunta anterior fica
+                              // "presa" na pilha por baixo — `pop()`
+                              // voltaria pra última pergunta, não pra
+                              // Arena. Vai direto, sempre.
+                              onTap: () => context.go('/arena'),
                               borderRadius: BorderRadius.circular(999),
                               child: Container(
                                 width: 38,
@@ -233,18 +238,22 @@ class _TacticalIdentityResultPageState
               ),
             ),
           ),
-          // Card compartilhável — invisível na tela (`Opacity(opacity: 0)`
-          // pinta normalmente, só não aparece), existe só pra
-          // `shareFieldImage` capturar via `RepaintBoundary`.
+          // Card compartilhável — fora da área visível (nunca
+          // `Opacity(opacity: 0)`: o Flutter pula o pintado de um filho com
+          // opacidade zero como otimização, então o `RepaintBoundary` nunca
+          // chegava a ser pintado de verdade e `toImage()` quebrava com
+          // "!debugNeedsPaint"). Posicionado longe da tela em vez de
+          // invisível — assim é pintado normalmente, só nunca aparece pro
+          // usuário.
           Positioned(
-            left: 0,
+            left: -4000,
             top: 0,
             child: IgnorePointer(
-              child: Opacity(
-                opacity: 0,
-                child: RepaintBoundary(
-                  key: _shareKey,
-                  child: TacticalShareCard(result: result),
+              child: RepaintBoundary(
+                key: _shareKey,
+                child: TacticalShareCard(
+                  result: result,
+                  ranked: _rankedCoaches,
                 ),
               ),
             ),

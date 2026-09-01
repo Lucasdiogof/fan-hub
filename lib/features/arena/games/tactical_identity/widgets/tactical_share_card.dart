@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_archetype_descriptions.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_map.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 
-/// Card compartilhável — conteúdo fixo (marca + jogo + perfil + percentuais
-/// + referência principal), sempre no MESMO layout independente do tema
-/// atual do app (é uma imagem que sai do app, não uma tela nele — por isso
-/// cores fixas, não `context.colors`). Nunca renderizado visível na tela;
-/// só existe pra ser capturado por `shareFieldImage` (ver
+/// Card compartilhável — conteúdo fixo (marca + jogo + perfil + análise +
+/// mapa tático + percentuais + referência principal, o resultado inteiro,
+/// não um resumo), sempre no MESMO layout independente do tema atual do
+/// app (é uma imagem que sai do app, não uma tela nele — por isso cores
+/// fixas, não `context.colors`). Nunca renderizado visível na tela; só
+/// existe pra ser capturado por `shareFieldImage` (ver
 /// `TacticalIdentityResultPage`).
 class TacticalShareCard extends StatelessWidget {
-  const TacticalShareCard({required this.result, super.key});
+  const TacticalShareCard({
+    required this.result,
+    required this.ranked,
+    super.key,
+  });
 
   final TacticalIdentityResult result;
+  final List<CoachAffinity> ranked;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +79,30 @@ class TacticalShareCard extends StatelessWidget {
               height: 1.1,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 12),
+          Text(
+            result.archetype.description,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.85),
+              fontSize: 13.5,
+              height: 1.4,
+            ),
+          ),
+          const SizedBox(height: 24),
+          Container(
+            padding: const EdgeInsets.all(14),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.06),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: TacticalMap(
+              userX: result.x,
+              userY: result.y,
+              coaches: ranked,
+              onCoachTap: (_) {},
+            ),
+          ),
+          const SizedBox(height: 24),
           _ShareBar(
             leftLabel: l10n.tacticalAxisPossession,
             leftPercent: result.possession,

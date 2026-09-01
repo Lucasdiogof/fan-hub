@@ -40,146 +40,165 @@ class TacticalMap extends StatelessWidget {
     );
   }
 
+  static const _sideLabelWidth = 20.0;
+  static const _gap = 4.0;
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        _AxisLabel(colors.textHint, label: 'PRAGMÁTICO'),
-        const SizedBox(height: 4),
-        Row(
+    // O quadrado do mapa calcula o próprio lado a partir da largura
+    // disponível, em vez de `Expanded(AspectRatio(...))` dentro de um `Row`
+    // com `stretch`: essa combinação quebra ("RenderBox was not laid out")
+    // sempre que a altura ao redor não é totalmente definida — comum aqui,
+    // já que este card fica dentro de uma tela com scroll.
+    return LayoutBuilder(
+      builder: (context, outerConstraints) {
+        final squareSide =
+            outerConstraints.maxWidth - (_sideLabelWidth + _gap) * 2;
+        return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _SideAxisLabel(colors.textHint, 'POSSE'),
-            const SizedBox(width: 4),
-            Expanded(
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: colors.secondary,
-                    borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-                    border: Border.all(color: colors.border),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-                    child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        final size = Size(
-                          constraints.maxWidth,
-                          constraints.maxHeight,
-                        );
-                        return Stack(
-                          children: [
-                            // Linhas de referência x=0 / y=0.
-                            Positioned(
-                              left: size.width / 2,
-                              top: 0,
-                              bottom: 0,
-                              child: Container(width: 1, color: colors.border),
-                            ),
-                            Positioned(
-                              top: size.height / 2,
-                              left: 0,
-                              right: 0,
-                              child: Container(height: 1, color: colors.border),
-                            ),
-                            Center(
-                              child: Text(
-                                '0 / 0',
-                                style: TextStyle(
-                                  color: colors.textHint,
-                                  fontSize: 9,
-                                  fontWeight: FontWeight.w700,
+            _AxisLabel(colors.textHint, label: 'PRAGMÁTICO'),
+            const SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _SideAxisLabel(colors.textHint, 'POSSE'),
+                const SizedBox(width: _gap),
+                SizedBox(
+                  width: squareSide,
+                  height: squareSide,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: colors.secondary,
+                      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+                      border: Border.all(color: colors.border),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          final size = Size(
+                            constraints.maxWidth,
+                            constraints.maxHeight,
+                          );
+                          return Stack(
+                            children: [
+                              // Linhas de referência x=0 / y=0.
+                              Positioned(
+                                left: size.width / 2,
+                                top: 0,
+                                bottom: 0,
+                                child: Container(
+                                  width: 1,
+                                  color: colors.border,
                                 ),
                               ),
-                            ),
-                            for (final coach in coaches)
+                              Positioned(
+                                top: size.height / 2,
+                                left: 0,
+                                right: 0,
+                                child: Container(
+                                  height: 1,
+                                  color: colors.border,
+                                ),
+                              ),
+                              Center(
+                                child: Text(
+                                  '0 / 0',
+                                  style: TextStyle(
+                                    color: colors.textHint,
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                              for (final coach in coaches)
+                                Builder(
+                                  builder: (context) {
+                                    final position = _positionFor(
+                                      coach.coach.x,
+                                      coach.coach.y,
+                                      size,
+                                    );
+                                    return Positioned(
+                                      left: position.dx - _coachDotSize / 2,
+                                      top: position.dy - _coachDotSize / 2,
+                                      child: GestureDetector(
+                                        behavior: HitTestBehavior.opaque,
+                                        onTap: () => onCoachTap(coach),
+                                        child: Container(
+                                          width: _coachDotSize + 12,
+                                          height: _coachDotSize + 12,
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                            width: _coachDotSize,
+                                            height: _coachDotSize,
+                                            decoration: BoxDecoration(
+                                              color: colors.textHint,
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                color: colors.surface,
+                                                width: 1.5,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
                               Builder(
                                 builder: (context) {
                                   final position = _positionFor(
-                                    coach.coach.x,
-                                    coach.coach.y,
+                                    userX.toDouble(),
+                                    userY.toDouble(),
                                     size,
                                   );
                                   return Positioned(
-                                    left: position.dx - _coachDotSize / 2,
-                                    top: position.dy - _coachDotSize / 2,
-                                    child: GestureDetector(
-                                      behavior: HitTestBehavior.opaque,
-                                      onTap: () => onCoachTap(coach),
+                                    left: position.dx - _userDotSize / 2,
+                                    top: position.dy - _userDotSize / 2,
+                                    child: IgnorePointer(
                                       child: Container(
-                                        width: _coachDotSize + 12,
-                                        height: _coachDotSize + 12,
-                                        alignment: Alignment.center,
-                                        child: Container(
-                                          width: _coachDotSize,
-                                          height: _coachDotSize,
-                                          decoration: BoxDecoration(
-                                            color: colors.textHint,
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                              color: colors.surface,
-                                              width: 1.5,
-                                            ),
+                                        width: _userDotSize,
+                                        height: _userDotSize,
+                                        decoration: BoxDecoration(
+                                          color: colors.primary,
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: colors.surface,
+                                            width: 3,
                                           ),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: colors.primary.withValues(
+                                                alpha: 0.45,
+                                              ),
+                                              blurRadius: 10,
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),
                                   );
                                 },
                               ),
-                            Builder(
-                              builder: (context) {
-                                final position = _positionFor(
-                                  userX.toDouble(),
-                                  userY.toDouble(),
-                                  size,
-                                );
-                                return Positioned(
-                                  left: position.dx - _userDotSize / 2,
-                                  top: position.dy - _userDotSize / 2,
-                                  child: IgnorePointer(
-                                    child: Container(
-                                      width: _userDotSize,
-                                      height: _userDotSize,
-                                      decoration: BoxDecoration(
-                                        color: colors.primary,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: colors.surface,
-                                          width: 3,
-                                        ),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: colors.primary.withValues(
-                                              alpha: 0.45,
-                                            ),
-                                            blurRadius: 10,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
-                        );
-                      },
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
+                const SizedBox(width: _gap),
+                _SideAxisLabel(colors.textHint, 'VERTICAL'),
+              ],
             ),
-            const SizedBox(width: 4),
-            _SideAxisLabel(colors.textHint, 'VERTICAL'),
+            const SizedBox(height: 4),
+            _AxisLabel(colors.textHint, label: 'DOGMÁTICO'),
           ],
-        ),
-        const SizedBox(height: 4),
-        _AxisLabel(colors.textHint, label: 'DOGMÁTICO'),
-      ],
+        );
+      },
     );
   }
 }
