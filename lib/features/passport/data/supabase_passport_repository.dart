@@ -52,9 +52,12 @@ class SupabasePassportRepository implements PassportRepository {
   }
 
   @override
-  Future<Result<PassportSummary>> getSummary() async {
+  Future<Result<PassportSummary>> getSummary({String? userId}) async {
     try {
-      final rows = await _client.rpc<List<dynamic>>('passport_summary');
+      final rows = await _client.rpc<List<dynamic>>(
+        'passport_summary',
+        params: {'p_user_id': ?userId},
+      );
       if (rows.isEmpty) return const Success(PassportSummary.empty);
       return Success(
         PassportSummary.fromMap(rows.first as Map<String, dynamic>),
@@ -66,10 +69,13 @@ class SupabasePassportRepository implements PassportRepository {
   }
 
   @override
-  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown() async {
+  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown({
+    String? userId,
+  }) async {
     try {
       final rows = await _client.rpc<List<dynamic>>(
         'passport_attendance_breakdown',
+        params: {'p_user_id': ?userId},
       );
       if (rows.isEmpty) {
         return const Success(PassportAttendanceBreakdown.empty);
@@ -84,9 +90,14 @@ class SupabasePassportRepository implements PassportRepository {
   }
 
   @override
-  Future<Result<PassportStadiumSummary>> getStadiumSummary() async {
+  Future<Result<PassportStadiumSummary>> getStadiumSummary({
+    String? userId,
+  }) async {
     try {
-      final rows = await _client.rpc<List<dynamic>>('passport_stadium_summary');
+      final rows = await _client.rpc<List<dynamic>>(
+        'passport_stadium_summary',
+        params: {'p_user_id': ?userId},
+      );
       if (rows.isEmpty) return const Success(PassportStadiumSummary.empty);
       return Success(
         PassportStadiumSummary.fromMap(rows.first as Map<String, dynamic>),
@@ -98,10 +109,13 @@ class SupabasePassportRepository implements PassportRepository {
   }
 
   @override
-  Future<Result<List<PassportMatch>>> getAttendedMatches() async {
+  Future<Result<List<PassportMatch>>> getAttendedMatches({
+    String? userId,
+  }) async {
     try {
       final rows = await _client.rpc<List<dynamic>>(
         'passport_attended_matches',
+        params: {'p_user_id': ?userId},
       );
       return Success(
         rows
@@ -119,13 +133,13 @@ class SupabasePassportRepository implements PassportRepository {
   }
 
   @override
-  Future<Result<String?>> getMemorableMatchId() async {
+  Future<Result<String?>> getMemorableMatchId({String? userId}) async {
     try {
-      final row = await _client
-          .from('passport_memorable_matches')
-          .select('match_id')
-          .maybeSingle();
-      return Success(row?['match_id'] as String?);
+      final matchId = await _client.rpc<String?>(
+        'passport_memorable_match_id',
+        params: {'p_user_id': ?userId},
+      );
+      return Success(matchId);
     } catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return const Error(ServerFailure(_genericErrorMessage));

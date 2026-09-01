@@ -34,31 +34,37 @@ class _FakeTrajectoryRepository implements PassportRepository {
   String? lastSetMemorableMatchId;
 
   @override
-  Future<Result<PassportSummary>> getSummary() async {
+  Future<Result<PassportSummary>> getSummary({String? userId}) async {
     if (failSummary) return const Error(ServerFailure('falhou'));
     return Success(summary);
   }
 
   @override
-  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown() async {
+  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown({
+    String? userId,
+  }) async {
     if (failBreakdown) return const Error(ServerFailure('falhou'));
     return Success(breakdown);
   }
 
   @override
-  Future<Result<PassportStadiumSummary>> getStadiumSummary() async {
+  Future<Result<PassportStadiumSummary>> getStadiumSummary({
+    String? userId,
+  }) async {
     if (failStadium) return const Error(ServerFailure('falhou'));
     return Success(stadiumSummary);
   }
 
   @override
-  Future<Result<List<PassportMatch>>> getAttendedMatches() async {
+  Future<Result<List<PassportMatch>>> getAttendedMatches({
+    String? userId,
+  }) async {
     if (failAttended) return const Error(ServerFailure('falhou'));
     return Success(attendedMatches);
   }
 
   @override
-  Future<Result<String?>> getMemorableMatchId() async {
+  Future<Result<String?>> getMemorableMatchId({String? userId}) async {
     if (failMemorableId) return const Error(ServerFailure('falhou'));
     return Success(memorableMatchId);
   }

@@ -9,14 +9,16 @@ import 'package:goias_app/features/arena/ranking/presentation/widgets/ranking_av
 import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_state.dart';
+import 'package:goias_app/features/passport/presentation/pages/passport_trajectory_page.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
-/// Mesma tela/Cubit/regra de pontuação da V1 — só o cabeçalho segue a
-/// linguagem compacta da V2 (sem a barra verde + escudo do `PageTitle`).
+/// Mesma tela/Cubit/regra de pontuação da V1 — só a apresentação visual
+/// segue a linguagem V2.
 class PassportRankingPageV2 extends StatelessWidget {
   const PassportRankingPageV2({super.key});
 
@@ -51,17 +53,13 @@ class _PassportRankingViewV2 extends StatelessWidget {
                     AppSpacing.lg,
                     AppSpacing.sm,
                   ),
-                  child: Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(width: AppSpacing.md),
-                      Text(
-                        context.l10n.passportRankingTitle,
-                        style: TextStyle(
-                          fontSize: 16.5,
-                          fontWeight: FontWeight.w800,
-                          color: colors.textPrimary,
-                        ),
+                      const SizedBox(height: AppSpacing.lg),
+                      PageTitle(
+                        context.l10n.passportRankingTitle.toUpperCase(),
                       ),
                     ],
                   ),
@@ -226,73 +224,98 @@ class _RankingRowV2 extends StatelessWidget {
 
   final PassportRankingEntry entry;
 
+  /// Tocar em si mesmo abre a própria trajetória no modo normal (edita jogo
+  /// memorável, nome/foto do `ProfileCubit`) — nunca no modo só-leitura de
+  /// outro torcedor, mesmo sendo tecnicamente a mesma pessoa.
+  void _openTrajectory(BuildContext context) {
+    context.push(
+      '/arena/passport/trajectory',
+      extra: entry.isMe
+          ? null
+          : PassportTrajectoryArgs(
+              userId: entry.userId,
+              name: entry.name,
+              avatarUrl: entry.avatarUrl,
+            ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
-    return Container(
-      margin: const EdgeInsets.only(bottom: AppSpacing.sm),
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md,
-        vertical: AppSpacing.sm,
-      ),
-      decoration: BoxDecoration(
-        color: entry.isMe ? colors.secondary : colors.surface,
+    return Material(
+      color: entry.isMe ? colors.secondary : colors.surface,
+      borderRadius: BorderRadius.circular(AppRadius.card),
+      child: InkWell(
+        onTap: () => _openTrajectory(context),
         borderRadius: BorderRadius.circular(AppRadius.card),
-        border: Border.all(
-          color: entry.isMe
-              ? colors.primary.withValues(alpha: 0.35)
-              : colors.border,
-        ),
-      ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: 28,
-            child: Text(
-              '${entry.rank}',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w800,
-                color: colors.textSecondary,
-              ),
+        child: Container(
+          margin: const EdgeInsets.only(bottom: AppSpacing.sm),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.sm,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppRadius.card),
+            border: Border.all(
+              color: entry.isMe
+                  ? colors.primary.withValues(alpha: 0.35)
+                  : colors.border,
             ),
           ),
-          const SizedBox(width: AppSpacing.sm),
-          RankingAvatar(name: entry.name, avatarUrl: entry.avatarUrl),
-          const SizedBox(width: AppSpacing.sm),
-          Expanded(
-            child: Row(
-              children: [
-                Flexible(
-                  child: Text(
-                    entry.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      color: entry.isMe ? colors.primary : colors.textPrimary,
-                    ),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 28,
+                child: Text(
+                  '${entry.rank}',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w800,
+                    color: colors.textSecondary,
                   ),
                 ),
-                if (entry.isMember) ...[
-                  const SizedBox(width: 6),
-                  RankingMemberBadge(label: l10n.arenaRankingMemberBadge),
-                ],
-              ],
-            ),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              RankingAvatar(name: entry.name, avatarUrl: entry.avatarUrl),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        entry.name,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: entry.isMe
+                              ? colors.primary
+                              : colors.textPrimary,
+                        ),
+                      ),
+                    ),
+                    if (entry.isMember) ...[
+                      const SizedBox(width: 6),
+                      RankingMemberBadge(label: l10n.arenaRankingMemberBadge),
+                    ],
+                  ],
+                ),
+              ),
+              Text(
+                l10n.passportRankingMatchCount(entry.matchCount),
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                  color: colors.textPrimary,
+                ),
+              ),
+            ],
           ),
-          Text(
-            l10n.passportRankingMatchCount(entry.matchCount),
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w800,
-              color: colors.textPrimary,
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

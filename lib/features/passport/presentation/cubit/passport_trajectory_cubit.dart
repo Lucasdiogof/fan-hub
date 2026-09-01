@@ -17,14 +17,20 @@ class PassportTrajectoryCubit extends Cubit<PassportTrajectoryState> {
 
   final PassportRepository _repository;
 
-  Future<void> load() async {
+  /// `null` = usuário logado. Lembrado entre chamadas pra um `load()` sem
+  /// argumento (ex.: botão de "tentar de novo") recarregar o MESMO alvo, não
+  /// silenciosamente cair pro usuário logado.
+  String? _userId;
+
+  Future<void> load({String? userId}) async {
+    _userId = userId ?? _userId;
     emit(state.copyWith(status: LoadStatus.loading));
 
-    final summaryFuture = _repository.getSummary();
-    final breakdownFuture = _repository.getAttendanceBreakdown();
-    final stadiumFuture = _repository.getStadiumSummary();
-    final attendedFuture = _repository.getAttendedMatches();
-    final memorableIdFuture = _repository.getMemorableMatchId();
+    final summaryFuture = _repository.getSummary(userId: _userId);
+    final breakdownFuture = _repository.getAttendanceBreakdown(userId: _userId);
+    final stadiumFuture = _repository.getStadiumSummary(userId: _userId);
+    final attendedFuture = _repository.getAttendedMatches(userId: _userId);
+    final memorableIdFuture = _repository.getMemorableMatchId(userId: _userId);
 
     final summaryResult = await summaryFuture;
     if (summaryResult is Error<PassportSummary>) {

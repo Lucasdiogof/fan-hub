@@ -57,20 +57,21 @@ class PassportSeasonSelectorV2 extends StatelessWidget {
           enabled: hasPrevious,
           onTap: () => onSelected(seasons[index + 1].season),
         ),
-        Expanded(
-          child: InkWell(
-            onTap: () => _openSheet(context),
-            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Text(
-                current != null ? '${current.season}' : '—',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w900,
-                  color: colors.textPrimary,
-                ),
+        InkWell(
+          onTap: () => _openSheet(context),
+          borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 4,
+              horizontal: AppSpacing.xs,
+            ),
+            child: Text(
+              current != null ? '${current.season}' : '—',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 19,
+                fontWeight: FontWeight.w900,
+                color: colors.textPrimary,
               ),
             ),
           ),
@@ -80,7 +81,7 @@ class PassportSeasonSelectorV2 extends StatelessWidget {
           enabled: hasNext,
           onTap: () => onSelected(seasons[index - 1].season),
         ),
-        const SizedBox(width: 4),
+        const SizedBox(width: AppSpacing.sm),
         TextButton(
           onPressed: () => _openSheet(context),
           style: TextButton.styleFrom(
@@ -91,7 +92,7 @@ class PassportSeasonSelectorV2 extends StatelessWidget {
           child: Text(
             l10n.passportChangeSeasonCta,
             style: TextStyle(
-              fontSize: 12.5,
+              fontSize: 14.5,
               fontWeight: FontWeight.w800,
               color: colors.primary,
             ),

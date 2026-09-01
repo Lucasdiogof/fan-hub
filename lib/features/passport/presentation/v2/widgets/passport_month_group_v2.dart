@@ -71,9 +71,9 @@ class PassportMonthGroupV2 extends StatelessWidget {
                     child: Text(
                       label,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14.5,
                         fontWeight: FontWeight.w800,
-                        letterSpacing: 0.5,
+                        letterSpacing: 0.3,
                         color: colors.textPrimary,
                       ),
                     ),

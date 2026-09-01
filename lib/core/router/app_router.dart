@@ -59,6 +59,8 @@ import 'package:goias_app/features/news/presentation/pages/pdf_viewer_page.dart'
 import 'package:goias_app/features/notifications/presentation/pages/notification_preferences_page.dart';
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/features/membership/presentation/pages/my_membership_page.dart';
+import 'package:goias_app/features/passport/presentation/pages/passport_count_list_page.dart';
+import 'package:goias_app/features/passport/presentation/pages/passport_match_list_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_ranking_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_trajectory_page.dart';
@@ -428,8 +430,30 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
           ),
           GoRoute(
             path: '/arena/passport/trajectory',
-            pageBuilder: (context, state) =>
-                appPage(state, const PassportTrajectoryPage()),
+            pageBuilder: (context, state) => appPage(
+              state,
+              PassportTrajectoryPage(
+                viewedUser: state.extra as PassportTrajectoryArgs?,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/arena/passport/trajectory/matches',
+            pageBuilder: (context, state) => appPage(
+              state,
+              PassportMatchListPage(
+                args: state.extra! as PassportMatchListArgs,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/arena/passport/trajectory/counts',
+            pageBuilder: (context, state) => appPage(
+              state,
+              PassportCountListPage(
+                args: state.extra! as PassportCountListArgs,
+              ),
+            ),
           ),
           GoRoute(
             path: '/partners',

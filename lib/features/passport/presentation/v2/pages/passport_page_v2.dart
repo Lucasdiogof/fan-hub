@@ -14,13 +14,13 @@ import 'package:goias_app/features/passport/presentation/passport_discard_dialog
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_cover_v2.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_empty_v2.dart';
-import 'package:goias_app/features/passport/presentation/v2/widgets/passport_filter_control_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_month_group_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_save_bar_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_season_selector_v2.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
@@ -50,19 +50,6 @@ class _PassportViewV2 extends StatefulWidget {
 }
 
 class _PassportViewV2State extends State<_PassportViewV2> {
-  final _seasonSelectorKey = GlobalKey();
-
-  void _scrollToSeasonSelector() {
-    final ctx = _seasonSelectorKey.currentContext;
-    if (ctx == null) return;
-    Scrollable.ensureVisible(
-      ctx,
-      duration: const Duration(milliseconds: 350),
-      curve: Curves.easeInOut,
-      alignment: 0.08,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
@@ -116,13 +103,7 @@ class _PassportViewV2State extends State<_PassportViewV2> {
                       builder: (context, state) {
                         return Column(
                           children: [
-                            Expanded(
-                              child: _BodyV2(
-                                state: state,
-                                seasonSelectorKey: _seasonSelectorKey,
-                                onStartEmptyState: _scrollToSeasonSelector,
-                              ),
-                            ),
+                            Expanded(child: _BodyV2(state: state)),
                             PassportSaveBarV2(
                               state: state,
                               onSave: () =>
@@ -158,44 +139,39 @@ class _AppBarV2 extends StatelessWidget {
         AppSpacing.lg,
         AppSpacing.sm,
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BackButtonCircle(onTap: onBack),
-          const SizedBox(width: AppSpacing.md),
-          Expanded(
-            child: Text(
-              context.l10n.passportTitle,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 16.5,
-                fontWeight: FontWeight.w800,
-                color: colors.textPrimary,
-              ),
-            ),
-          ),
-          Semantics(
-            button: true,
-            label: context.l10n.passportRankingCta,
-            child: InkWell(
-              onTap: () => context.push('/arena/passport/ranking'),
-              borderRadius: BorderRadius.circular(999),
-              child: Container(
-                width: 36,
-                height: 36,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: colors.secondary,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.leaderboard_outlined,
-                  size: 17,
-                  color: colors.textPrimary,
+          Row(
+            children: [
+              BackButtonCircle(onTap: onBack),
+              const Spacer(),
+              Semantics(
+                button: true,
+                label: context.l10n.passportRankingCta,
+                child: InkWell(
+                  onTap: () => context.push('/arena/passport/ranking'),
+                  borderRadius: BorderRadius.circular(999),
+                  child: Container(
+                    width: 34,
+                    height: 34,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: colors.secondary,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.leaderboard_outlined,
+                      size: 17,
+                      color: colors.primary,
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
+          const SizedBox(height: AppSpacing.lg),
+          PageTitle(context.l10n.passportTitle.toUpperCase()),
         ],
       ),
     );
@@ -203,15 +179,9 @@ class _AppBarV2 extends StatelessWidget {
 }
 
 class _BodyV2 extends StatelessWidget {
-  const _BodyV2({
-    required this.state,
-    required this.seasonSelectorKey,
-    required this.onStartEmptyState,
-  });
+  const _BodyV2({required this.state});
 
   final PassportState state;
-  final GlobalKey seasonSelectorKey;
-  final VoidCallback onStartEmptyState;
 
   @override
   Widget build(BuildContext context) {
@@ -253,13 +223,10 @@ class _BodyV2 extends StatelessWidget {
     // abaixo mostra os jogos em si, então repetir números aqui (jogos
     // vividos / progresso da temporada) só duplicava informação.
     final personalSection = state.summary.totalMatches == 0
-        ? PassportEmptyV2(onStart: onStartEmptyState)
+        ? const PassportEmptyV2()
         : null;
 
-    final seasonAndList = _MainColumnV2(
-      state: state,
-      seasonSelectorKey: seasonSelectorKey,
-    );
+    final seasonAndList = _MainColumnV2(state: state);
 
     if (context.isAtLeastExpanded) {
       return Padding(
@@ -306,8 +273,7 @@ class _BodyV2 extends StatelessWidget {
           personalSection,
         ],
         const SizedBox(height: AppSpacing.xl),
-        Container(key: seasonSelectorKey),
-        _SeasonAndFiltersV2(state: state),
+        _SeasonSelectorSectionV2(state: state),
         const SizedBox(height: AppSpacing.lg),
         _MatchTimelineV2(state: state),
       ],
@@ -318,18 +284,16 @@ class _BodyV2 extends StatelessWidget {
 /// Coluna principal no layout web (seletor + filtros + lista) — o próprio
 /// `ListView` que rola independente da coluna lateral fixa.
 class _MainColumnV2 extends StatelessWidget {
-  const _MainColumnV2({required this.state, required this.seasonSelectorKey});
+  const _MainColumnV2({required this.state});
 
   final PassportState state;
-  final GlobalKey seasonSelectorKey;
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.only(bottom: AppSpacing.lg),
       children: [
-        Container(key: seasonSelectorKey),
-        _SeasonAndFiltersV2(state: state),
+        _SeasonSelectorSectionV2(state: state),
         const SizedBox(height: AppSpacing.lg),
         _MatchTimelineV2(state: state),
       ],
@@ -337,30 +301,19 @@ class _MainColumnV2 extends StatelessWidget {
   }
 }
 
-class _SeasonAndFiltersV2 extends StatelessWidget {
-  const _SeasonAndFiltersV2({required this.state});
+class _SeasonSelectorSectionV2 extends StatelessWidget {
+  const _SeasonSelectorSectionV2({required this.state});
 
   final PassportState state;
 
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<PassportCubit>();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        PassportSeasonSelectorV2(
-          seasons: state.seasons,
-          selectedYear: state.selectedYear,
-          markedCountsByYear: state.markedCountsByYear,
-          onSelected: cubit.selectYear,
-        ),
-        const SizedBox(height: AppSpacing.md),
-        PassportFilterControlV2(
-          state: state,
-          onFilterChanged: cubit.setFilter,
-          onCompetitionChanged: cubit.setCompetitionFilter,
-        ),
-      ],
+    return PassportSeasonSelectorV2(
+      seasons: state.seasons,
+      selectedYear: state.selectedYear,
+      markedCountsByYear: state.markedCountsByYear,
+      onSelected: cubit.selectYear,
     );
   }
 }

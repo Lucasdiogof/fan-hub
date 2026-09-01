@@ -35,11 +35,13 @@ class _FakePassportRepository implements PassportRepository {
   }
 
   @override
-  Future<Result<PassportSummary>> getSummary() async => Success(summary);
+  Future<Result<PassportSummary>> getSummary({String? userId}) async =>
+      Success(summary);
 
   @override
-  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown() async =>
-      const Success(PassportAttendanceBreakdown.empty);
+  Future<Result<PassportAttendanceBreakdown>> getAttendanceBreakdown({
+    String? userId,
+  }) async => const Success(PassportAttendanceBreakdown.empty);
 
   @override
   Future<Result<List<PassportAttendanceChangeResult>>> saveAttendances(
@@ -74,15 +76,18 @@ class _FakePassportRepository implements PassportRepository {
       const Success(null);
 
   @override
-  Future<Result<PassportStadiumSummary>> getStadiumSummary() async =>
-      const Success(PassportStadiumSummary.empty);
+  Future<Result<PassportStadiumSummary>> getStadiumSummary({
+    String? userId,
+  }) async => const Success(PassportStadiumSummary.empty);
 
   @override
-  Future<Result<List<PassportMatch>>> getAttendedMatches() async =>
-      const Success([]);
+  Future<Result<List<PassportMatch>>> getAttendedMatches({
+    String? userId,
+  }) async => const Success([]);
 
   @override
-  Future<Result<String?>> getMemorableMatchId() async => const Success(null);
+  Future<Result<String?>> getMemorableMatchId({String? userId}) async =>
+      const Success(null);
 
   @override
   Future<Result<void>> setMemorableMatch(String matchId) async =>

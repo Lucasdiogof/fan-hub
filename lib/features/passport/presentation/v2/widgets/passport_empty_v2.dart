@@ -5,12 +5,9 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 
 /// Estado inicial (zero partidas marcadas em toda a história do usuário) —
 /// substitui os indicadores por um convite emocional em vez de estatística
-/// zerada repetida. O CTA só rola até o seletor de temporada, que já fica
-/// logo abaixo — não navega pra outro lugar.
+/// zerada repetida.
 class PassportEmptyV2 extends StatelessWidget {
-  const PassportEmptyV2({required this.onStart, super.key});
-
-  final VoidCallback onStart;
+  const PassportEmptyV2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,33 +33,6 @@ class PassportEmptyV2 extends StatelessWidget {
               fontSize: 13,
               height: 1.4,
               color: colors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: AppSpacing.md),
-          InkWell(
-            onTap: onStart,
-            borderRadius: BorderRadius.circular(999),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    l10n.passportEmptyCta,
-                    style: TextStyle(
-                      fontSize: 13.5,
-                      fontWeight: FontWeight.w800,
-                      color: colors.primary,
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                  Icon(
-                    Icons.arrow_downward_rounded,
-                    size: 15,
-                    color: colors.primary,
-                  ),
-                ],
-              ),
             ),
           ),
         ],
