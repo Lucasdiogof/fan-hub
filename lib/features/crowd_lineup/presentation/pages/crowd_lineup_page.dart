@@ -6,8 +6,8 @@ import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_state.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/crowd_tab.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/widgets/escale_tab.dart';
-import 'package:goias_app/features/crowd_lineup/presentation/widgets/share_field_image.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/shared/utils/share_field_image.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 

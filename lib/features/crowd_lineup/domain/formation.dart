@@ -5,7 +5,14 @@ import 'package:goias_app/shared/domain/player_position.dart';
 /// proximidade heurística de `y`) e pra travar a ordem "ataque acima do
 /// meio, meio acima da defesa, defesa acima do goleiro" em teste. A ordem
 /// dos valores no enum É a ordem tática do campo (ataque primeiro).
-enum TacticalLine { attack, attackingMid, midfield, defensiveMid, defense, keeper }
+enum TacticalLine {
+  attack,
+  attackingMid,
+  midfield,
+  defensiveMid,
+  defense,
+  keeper,
+}
 
 /// `y` alvo de cada linha tática — ponto de partida único pra toda formação;
 /// pequenos desvios por formação (ex.: losango precisando de uma linha a
@@ -37,11 +44,13 @@ const _backFour = 0.36; // linha de 4 (defesa ou ataque totalmente aberto)
 const _backThree = 0.22; // trio de zagueiros centrais
 const _backFive = 0.40; // linha de 5 com alas na função de lateral
 const _flatMidFour = 0.36; // meio-campo em linha de 4 (ME/MC/MC/MD)
-const _centralPair = 0.12; // dupla central colada (2 VOL ou 2 MC sem linha acima)
+const _centralPair =
+    0.12; // dupla central colada (2 VOL ou 2 MC sem linha acima)
 const _deepPair = 0.20; // dupla central com uma linha acima dela (ex.: losango)
 const _halfSpace = 0.15; // dupla em half-space (nunca aberta feito ponta)
 const _frontThree = 0.32; // ponta/centroavante/ponta
-const _wingBack = 0.38; // alas avançados de linha de 3 (não são laterais de 4/5)
+const _wingBack =
+    0.38; // alas avançados de linha de 3 (não são laterais de 4/5)
 const _trio = 0.22; // trio central (MC/VOL/MC ou zagueiros)
 
 class FormationSlot {
@@ -72,7 +81,9 @@ List<FormationSlot> _line(
   double halfSpan,
 ) {
   final xs = distributeLine(positions.length, halfSpan);
-  return [for (var i = 0; i < positions.length; i++) _slot(positions[i], xs[i], line)];
+  return [
+    for (var i = 0; i < positions.length; i++) _slot(positions[i], xs[i], line),
+  ];
 }
 
 /// Seleção de 12 formações conhecidas e visualmente distintas. Cada formação
@@ -87,23 +98,27 @@ final List<Formation> formations = [
     label: '4-3-3',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.le,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ld,
-      ], TacticalLine.defense, _backFour),
+      ..._line(
+        [
+          PlayerPosition.le,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ld,
+        ],
+        TacticalLine.defense,
+        _backFour,
+      ),
       _slot(PlayerPosition.vol, 0.5, TacticalLine.defensiveMid),
       ..._line(
         [PlayerPosition.mc, PlayerPosition.mc],
         TacticalLine.midfield,
         _centralPair,
       ),
-      ..._line([
-        PlayerPosition.pe,
-        PlayerPosition.ata,
-        PlayerPosition.pd,
-      ], TacticalLine.attack, _frontThree),
+      ..._line(
+        [PlayerPosition.pe, PlayerPosition.ata, PlayerPosition.pd],
+        TacticalLine.attack,
+        _frontThree,
+      ),
     ],
   ),
   Formation(
@@ -111,22 +126,26 @@ final List<Formation> formations = [
     label: '4-2-3-1',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.le,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ld,
-      ], TacticalLine.defense, _backFour),
+      ..._line(
+        [
+          PlayerPosition.le,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ld,
+        ],
+        TacticalLine.defense,
+        _backFour,
+      ),
       ..._line(
         [PlayerPosition.vol, PlayerPosition.vol],
         TacticalLine.midfield,
         _centralPair,
       ),
-      ..._line([
-        PlayerPosition.pe,
-        PlayerPosition.mei,
-        PlayerPosition.pd,
-      ], TacticalLine.attackingMid, _frontThree),
+      ..._line(
+        [PlayerPosition.pe, PlayerPosition.mei, PlayerPosition.pd],
+        TacticalLine.attackingMid,
+        _frontThree,
+      ),
       _slot(PlayerPosition.ata, 0.5, TacticalLine.attack),
     ],
   ),
@@ -135,12 +154,16 @@ final List<Formation> formations = [
     label: '4-2-2-2',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.le,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ld,
-      ], TacticalLine.defense, _backFour),
+      ..._line(
+        [
+          PlayerPosition.le,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ld,
+        ],
+        TacticalLine.defense,
+        _backFour,
+      ),
       ..._line(
         [PlayerPosition.vol, PlayerPosition.vol],
         TacticalLine.midfield,
@@ -165,19 +188,27 @@ final List<Formation> formations = [
     label: '4-4-2',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.le,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ld,
-      ], TacticalLine.defense, _backFour),
+      ..._line(
+        [
+          PlayerPosition.le,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ld,
+        ],
+        TacticalLine.defense,
+        _backFour,
+      ),
       // Meio-campistas de lado (não pontas) — ME/MD, na mesma linha dos MC.
-      ..._line([
-        PlayerPosition.me,
-        PlayerPosition.mc,
-        PlayerPosition.mc,
-        PlayerPosition.md,
-      ], TacticalLine.midfield, _flatMidFour),
+      ..._line(
+        [
+          PlayerPosition.me,
+          PlayerPosition.mc,
+          PlayerPosition.mc,
+          PlayerPosition.md,
+        ],
+        TacticalLine.midfield,
+        _flatMidFour,
+      ),
       ..._line(
         [PlayerPosition.ata, PlayerPosition.ata],
         TacticalLine.attack,
@@ -194,12 +225,16 @@ final List<Formation> formations = [
       // espaço vertical. `TacticalLine.defensiveMid`/`midfield`/`attackingMid`
       // cobrem as 3 camadas centrais sem precisar espremer nada à mão.
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.le,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ld,
-      ], TacticalLine.defense, _backFour),
+      ..._line(
+        [
+          PlayerPosition.le,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ld,
+        ],
+        TacticalLine.defense,
+        _backFour,
+      ),
       _slot(PlayerPosition.vol, 0.5, TacticalLine.defensiveMid),
       ..._line(
         [PlayerPosition.mc, PlayerPosition.mc],
@@ -219,21 +254,29 @@ final List<Formation> formations = [
     label: '4-1-4-1',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.le,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ld,
-      ], TacticalLine.defense, _backFour),
+      ..._line(
+        [
+          PlayerPosition.le,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ld,
+        ],
+        TacticalLine.defense,
+        _backFour,
+      ),
       // O "1" isolado na frente da defesa — mais baixo que a linha de 4 do
       // meio, nunca colado nela.
       _slot(PlayerPosition.vol, 0.5, TacticalLine.defensiveMid),
-      ..._line([
-        PlayerPosition.me,
-        PlayerPosition.mc,
-        PlayerPosition.mc,
-        PlayerPosition.md,
-      ], TacticalLine.midfield, _flatMidFour),
+      ..._line(
+        [
+          PlayerPosition.me,
+          PlayerPosition.mc,
+          PlayerPosition.mc,
+          PlayerPosition.md,
+        ],
+        TacticalLine.midfield,
+        _flatMidFour,
+      ),
       _slot(PlayerPosition.ata, 0.5, TacticalLine.attack),
     ],
   ),
@@ -242,12 +285,16 @@ final List<Formation> formations = [
     label: '4-2-4',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.le,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ld,
-      ], TacticalLine.defense, _backFour),
+      ..._line(
+        [
+          PlayerPosition.le,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ld,
+        ],
+        TacticalLine.defense,
+        _backFour,
+      ),
       ..._line(
         [PlayerPosition.mc, PlayerPosition.mc],
         TacticalLine.midfield,
@@ -256,12 +303,16 @@ final List<Formation> formations = [
       // Quatro praticamente na mesma linha de frente — é isto que
       // diferencia visualmente do 4-2-2-2, cujos avançados ficam nos
       // half-spaces bem mais recuados.
-      ..._line([
-        PlayerPosition.pe,
-        PlayerPosition.ata,
-        PlayerPosition.ata,
-        PlayerPosition.pd,
-      ], TacticalLine.attack, _backFour),
+      ..._line(
+        [
+          PlayerPosition.pe,
+          PlayerPosition.ata,
+          PlayerPosition.ata,
+          PlayerPosition.pd,
+        ],
+        TacticalLine.attack,
+        _backFour,
+      ),
     ],
   ),
   Formation(
@@ -269,11 +320,11 @@ final List<Formation> formations = [
     label: '3-5-2',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-      ], TacticalLine.defense, _backThree),
+      ..._line(
+        [PlayerPosition.zag, PlayerPosition.zag, PlayerPosition.zag],
+        TacticalLine.defense,
+        _backThree,
+      ),
       _slot(PlayerPosition.ale, 0.5 - _wingBack, TacticalLine.midfield),
       ..._line(
         [PlayerPosition.mc, PlayerPosition.mc],
@@ -294,11 +345,11 @@ final List<Formation> formations = [
     label: '3-4-3',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-      ], TacticalLine.defense, _backThree),
+      ..._line(
+        [PlayerPosition.zag, PlayerPosition.zag, PlayerPosition.zag],
+        TacticalLine.defense,
+        _backThree,
+      ),
       _slot(PlayerPosition.ale, 0.5 - _wingBack, TacticalLine.midfield),
       ..._line(
         [PlayerPosition.mc, PlayerPosition.mc],
@@ -306,11 +357,11 @@ final List<Formation> formations = [
         _deepPair,
       ),
       _slot(PlayerPosition.ald, 0.5 + _wingBack, TacticalLine.midfield),
-      ..._line([
-        PlayerPosition.pe,
-        PlayerPosition.ata,
-        PlayerPosition.pd,
-      ], TacticalLine.attack, _frontThree),
+      ..._line(
+        [PlayerPosition.pe, PlayerPosition.ata, PlayerPosition.pd],
+        TacticalLine.attack,
+        _frontThree,
+      ),
     ],
   ),
   Formation(
@@ -318,11 +369,11 @@ final List<Formation> formations = [
     label: '3-4-2-1',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-      ], TacticalLine.defense, _backThree),
+      ..._line(
+        [PlayerPosition.zag, PlayerPosition.zag, PlayerPosition.zag],
+        TacticalLine.defense,
+        _backThree,
+      ),
       _slot(PlayerPosition.ale, 0.5 - _wingBack, TacticalLine.midfield),
       ..._line(
         [PlayerPosition.mc, PlayerPosition.mc],
@@ -346,18 +397,22 @@ final List<Formation> formations = [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
       // Linha de 5 de verdade — ala aqui é lateral da defesa, não um
       // wing-back avançado como nas formações de linha de 3 acima.
-      ..._line([
-        PlayerPosition.ale,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ald,
-      ], TacticalLine.defense, _backFive),
-      ..._line([
-        PlayerPosition.mc,
-        PlayerPosition.vol,
-        PlayerPosition.mc,
-      ], TacticalLine.midfield, _trio),
+      ..._line(
+        [
+          PlayerPosition.ale,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ald,
+        ],
+        TacticalLine.defense,
+        _backFive,
+      ),
+      ..._line(
+        [PlayerPosition.mc, PlayerPosition.vol, PlayerPosition.mc],
+        TacticalLine.midfield,
+        _trio,
+      ),
       ..._line(
         [PlayerPosition.ata, PlayerPosition.ata],
         TacticalLine.attack,
@@ -370,19 +425,27 @@ final List<Formation> formations = [
     label: '5-4-1',
     slots: [
       _slot(PlayerPosition.gol, 0.5, TacticalLine.keeper),
-      ..._line([
-        PlayerPosition.ale,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.zag,
-        PlayerPosition.ald,
-      ], TacticalLine.defense, _backFive),
-      ..._line([
-        PlayerPosition.me,
-        PlayerPosition.mc,
-        PlayerPosition.mc,
-        PlayerPosition.md,
-      ], TacticalLine.midfield, _flatMidFour),
+      ..._line(
+        [
+          PlayerPosition.ale,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.zag,
+          PlayerPosition.ald,
+        ],
+        TacticalLine.defense,
+        _backFive,
+      ),
+      ..._line(
+        [
+          PlayerPosition.me,
+          PlayerPosition.mc,
+          PlayerPosition.mc,
+          PlayerPosition.md,
+        ],
+        TacticalLine.midfield,
+        _flatMidFour,
+      ),
       _slot(PlayerPosition.ata, 0.5, TacticalLine.attack),
     ],
   ),

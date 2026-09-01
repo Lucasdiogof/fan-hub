@@ -13,6 +13,17 @@ List<String> splitNameForDisplay(String name) {
   return [parts.first, parts.skip(1).join(' ')];
 }
 
+/// Nome completo abreviado numa linha só — pros formatos com `nameMaxLines`
+/// 1 (o losango 4-1-2-1-2, único caso hoje). Nunca descarta o sobrenome:
+/// "Lucas Halter" → "Lucas H."; nome de uma palavra só fica como está.
+String abbreviateNameForDisplay(String name) {
+  final trimmed = name.trim();
+  if (trimmed.isEmpty) return '';
+  final parts = trimmed.split(RegExp(r'\s+'));
+  if (parts.length == 1) return parts.first;
+  return '${parts.first} ${parts.last[0]}.';
+}
+
 /// Rótulo compartilhado pelos dois modos da Escalação (Torcida e Escale) —
 /// nome do jogador (até [maxLines] linhas, ver [splitNameForDisplay]) ou a
 /// sigla da posição quando o slot está vazio. Largura sempre igual ao
@@ -43,7 +54,11 @@ class LineupNameLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final lines = allowSplit ? splitNameForDisplay(text) : [text];
+    final lines = !allowSplit
+        ? [text]
+        : maxLines == 1
+        ? [abbreviateNameForDisplay(text)]
+        : splitNameForDisplay(text);
     const style = TextStyle(
       color: Colors.white,
       fontSize: 9.5,

@@ -18,18 +18,23 @@ class PlayerVisualFootprint {
     required this.width,
     required this.height,
     required this.nameMaxLines,
+    required this.showPercentBadge,
   });
 
   final double jerseySize;
   final double width;
   final double height;
 
-  /// 1 ou 2 — quantas linhas o nome pode usar. Cai pra 1 só quando a
-  /// formação empilha tantas linhas táticas ao mesmo tempo (ex.: o losango
-  /// do 4-1-2-1-2, com 6) que não sobra altura pra 2 linhas SEM encolher a
-  /// camisa — e a camisa nunca encolhe. Rótulo/nome cede espaço primeiro,
-  /// exatamente a prioridade pedida.
+  /// Sempre 2 — nome e sobrenome do jogador, em qualquer formação (pedido
+  /// explícito: nunca abreviar por causa do formato tático).
   final int nameMaxLines;
+
+  /// `false` só quando a formação empilha tantas linhas táticas ao mesmo
+  /// tempo (ex.: o losango 4-1-2-1-2, com 6) que não sobra altura pra nome
+  /// em 2 linhas + camisa fixa + badge de porcentagem SEM violar
+  /// `minSafetyGap` — e a camisa nunca encolhe, o nome nunca abrevia. A
+  /// badge (só informativa) é o que cede espaço aqui, nunca o nome.
+  final bool showPercentBadge;
 }
 
 /// Resultado final e completo de UM slot: onde a camisa fica (`anchor`,
@@ -78,24 +83,21 @@ class LineupLayoutEngine {
 
   /// A partir de quantas LINHAS táticas simultâneas (não jogadores por
   /// linha — linhas empilhadas verticalmente) uma formação deixa de caber
-  /// com nome em 2 linhas + badge cheia sem violar `minSafetyGap`. Hoje só
-  /// o losango do 4-1-2-1-2 (6 linhas: ataque/meia/meio/volante/defesa/gol)
-  /// bate nisso — as demais (até 5 linhas) sobram espaço de sobra.
+  /// com nome em 2 linhas + badge de porcentagem sem violar `minSafetyGap`.
+  /// Hoje só o losango do 4-1-2-1-2 (6 linhas: ataque/meia/meio/volante/
+  /// defesa/gol) bate nisso — as demais (até 5 linhas) sobram espaço de
+  /// sobra. Nessas formações a badge para de ser reservada/desenhada (ver
+  /// `PlayerVisualFootprint.showPercentBadge`) — nome e camisa nunca cedem.
   static const _manyLinesThreshold = 6;
 
   // Medido com folga em cima do que o `LineupNameLabel`/`LineupPercentBadge`
-  // renderizam de verdade (padding do container + `height` da fonte) —
-  // nunca cortado por pixel. Quando a formação empilha muitas linhas ao
-  // mesmo tempo, cai pro tier "compacto": nome em 1 linha só e badge menor
-  // — NUNCA a camisa, que é fixa em qualquer um dos dois tiers.
+  // renderizam de verdade (padding do container + `height` da fonte, mais
+  // os `SizedBox` fixos de `_CrowdSlot`/`_EditableSlot` antes de cada um) —
+  // nunca cortado por pixel.
   static const _nameLineHeight = 13.0;
   static const _nameTopGap = 6.0;
   static const _percentAllowance = 20.0;
   static const _removeAllowance = 10.0;
-
-  static const _nameTopGapCompact = 3.0;
-  static const _percentAllowanceCompact = 16.0;
-  static const _removeAllowanceCompact = 8.0;
 
   double _jerseySizeFor(double fieldWidth) =>
       fieldWidth < _compactBreakpoint ? _jerseySizeCompact : _jerseySizeRegular;
@@ -114,8 +116,14 @@ class LineupLayoutEngine {
     final widestLine = lines.values
         .map((slots) => slots.length)
         .reduce((a, b) => a > b ? a : b);
+    // Nome do jogador é sempre nome + sobrenome em 2 linhas, em qualquer
+    // formação — pedido explícito. Quando a formação empilha muitas linhas
+    // (o losango 4-1-2-1-2), não sobra altura pra isso MAIS a badge de
+    // porcentagem sem violar `minSafetyGap` ou encolher a camisa — então é
+    // a badge que para de ser reservada, nunca o nome.
     final manyLines = lines.length >= _manyLinesThreshold;
-    final nameMaxLines = manyLines ? 1 : 2;
+    const nameMaxLines = 2;
+    final showPercentBadge = !manyLines;
 
     // O ANCHOR nunca pode depender do modo — se dimensionássemos a altura
     // com a allowance de cada modo separadamente, os dois modos
@@ -124,18 +132,11 @@ class LineupLayoutEngine {
     // altura "de segurança" sempre usa a MAIOR allowance entre os dois
     // modos — o modo com menos conteúdo (`editable`) só usa uma fatia menor
     // dessa mesma célula reservada, nunca uma célula própria.
-    final percentAllowance = manyLines
-        ? _percentAllowanceCompact
-        : _percentAllowance;
-    final removeAllowance = manyLines
-        ? _removeAllowanceCompact
-        : _removeAllowance;
-    final sharedAllowance = percentAllowance > removeAllowance
+    final percentAllowance = showPercentBadge ? _percentAllowance : 0.0;
+    final sharedAllowance = percentAllowance > _removeAllowance
         ? percentAllowance
-        : removeAllowance;
-    final nameAllowance =
-        (manyLines ? _nameTopGapCompact : _nameTopGap) +
-        _nameLineHeight * nameMaxLines;
+        : _removeAllowance;
+    const nameAllowance = _nameTopGap + _nameLineHeight * nameMaxLines;
     final sharedCellHeight = jerseySize + nameAllowance + sharedAllowance;
 
     // Largura da célula (reserva pro nome/spacing, NUNCA pra camisa em si)
@@ -148,6 +149,7 @@ class LineupLayoutEngine {
       width: cellWidth,
       height: sharedCellHeight,
       nameMaxLines: nameMaxLines,
+      showPercentBadge: showPercentBadge,
     );
 
     final anchors = <int, Offset>{};
@@ -187,8 +189,9 @@ class LineupLayoutEngine {
       height:
           jerseySize +
           nameAllowance +
-          _modeAllowance(mode, manyLines: manyLines),
+          _modeAllowance(mode, showPercentBadge: showPercentBadge),
       nameMaxLines: nameMaxLines,
+      showPercentBadge: showPercentBadge,
     );
     return [
       for (final layout in corrected)
@@ -201,13 +204,13 @@ class LineupLayoutEngine {
     ];
   }
 
-  double _modeAllowance(LineupRenderMode mode, {required bool manyLines}) =>
-      switch (mode) {
-        LineupRenderMode.crowd =>
-          manyLines ? _percentAllowanceCompact : _percentAllowance,
-        LineupRenderMode.editable =>
-          manyLines ? _removeAllowanceCompact : _removeAllowance,
-      };
+  double _modeAllowance(
+    LineupRenderMode mode, {
+    required bool showPercentBadge,
+  }) => switch (mode) {
+    LineupRenderMode.crowd => showPercentBadge ? _percentAllowance : 0.0,
+    LineupRenderMode.editable => _removeAllowance,
+  };
 
   /// Agrupamento por `TacticalLine` — determinístico (a mesma linha tática
   /// sempre compartilha o mesmo `y`, vindo de `tacticalLineY`), nunca uma

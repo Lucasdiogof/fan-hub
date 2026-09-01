@@ -98,34 +98,33 @@ void main() {
             expect(
               ys[i] - ys[i - 1],
               greaterThanOrEqualTo(0.11),
-              reason: '${formation.id}: lines at y≈${ys[i - 1]} and '
+              reason:
+                  '${formation.id}: lines at y≈${ys[i - 1]} and '
                   'y≈${ys[i]} are too close',
             );
           }
         },
       );
 
-      test(
-        '${formation.id} keeps a safe horizontal gap within each line',
-        () {
-          final byLine = <TacticalLine, List<double>>{};
-          for (final slot in formation.slots) {
-            byLine.putIfAbsent(slot.line, () => []).add(slot.x);
+      test('${formation.id} keeps a safe horizontal gap within each line', () {
+        final byLine = <TacticalLine, List<double>>{};
+        for (final slot in formation.slots) {
+          byLine.putIfAbsent(slot.line, () => []).add(slot.x);
+        }
+        for (final xs in byLine.values) {
+          if (xs.length < 2) continue;
+          xs.sort();
+          for (var i = 1; i < xs.length; i++) {
+            expect(
+              xs[i] - xs[i - 1],
+              greaterThanOrEqualTo(0.13),
+              reason:
+                  '${formation.id}: slots at x=${xs[i - 1]} and '
+                  'x=${xs[i]} on the same line are too close',
+            );
           }
-          for (final xs in byLine.values) {
-            if (xs.length < 2) continue;
-            xs.sort();
-            for (var i = 1; i < xs.length; i++) {
-              expect(
-                xs[i] - xs[i - 1],
-                greaterThanOrEqualTo(0.13),
-                reason: '${formation.id}: slots at x=${xs[i - 1]} and '
-                    'x=${xs[i]} on the same line are too close',
-              );
-            }
-          }
-        },
-      );
+        }
+      });
 
       // A ordem tática do campo (ataque → goleiro) precisa ser respeitada
       // por toda linha presente na formação, não só nas extremidades.

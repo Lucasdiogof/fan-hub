@@ -99,7 +99,8 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
   /// pode ser bem menor e inflar o percentual artificialmente).
   CrowdLineup _parseCrowd(Map<String, dynamic> data) {
     final totalVotes = (data['total_votes'] as num?)?.toInt() ?? 0;
-    final slotsByFormation = (data['slots'] as Map<String, dynamic>?) ?? const {};
+    final slotsByFormation =
+        (data['slots'] as Map<String, dynamic>?) ?? const {};
     if (totalVotes == 0 || slotsByFormation.isEmpty) {
       return const CrowdLineup.empty();
     }
