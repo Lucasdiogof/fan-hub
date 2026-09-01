@@ -373,6 +373,16 @@
       "count": {"type": "int"}
     }
   },
+  "passportTrajectoryListEmpty": "No games here yet",
+  "passportTrajectoryShareText": "This is my journey with Goiás! 💚",
+  "passportTrajectoryShareAction": "Share",
+  "passportTrajectoryOfUser": "{name}'s journey",
+  "@passportTrajectoryOfUser": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "passportTrajectoryMemorableEmptyReadOnly": "Hasn't picked a favorite match yet",
   "passportCoverEyebrow": "MY PASSPORT",
   "passportCoverMatchesLived": "{count, plural, =1{1 match singing and roaring with Verdão} other{{count} matches singing and roaring with Verdão}}",
   "passportLevelStarter": "First Steps",

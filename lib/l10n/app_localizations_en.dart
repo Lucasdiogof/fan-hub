@@ -1070,6 +1070,24 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get passportTrajectoryListEmpty => 'No games here yet';
+
+  @override
+  String get passportTrajectoryShareText => 'This is my journey with Goiás! 💚';
+
+  @override
+  String get passportTrajectoryShareAction => 'Share';
+
+  @override
+  String passportTrajectoryOfUser(String name) {
+    return '$name\'s journey';
+  }
+
+  @override
+  String get passportTrajectoryMemorableEmptyReadOnly =>
+      'Hasn\'t picked a favorite match yet';
+
+  @override
   String get passportCoverEyebrow => 'MY PASSPORT';
 
   @override

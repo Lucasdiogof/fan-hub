@@ -373,6 +373,16 @@
       "count": {"type": "int"}
     }
   },
+  "passportTrajectoryListEmpty": "Todavía no hay partidos aquí",
+  "passportTrajectoryShareText": "¡Esta es mi trayectoria con el Goiás! 💚",
+  "passportTrajectoryShareAction": "Compartir",
+  "passportTrajectoryOfUser": "Trayectoria de {name}",
+  "@passportTrajectoryOfUser": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "passportTrajectoryMemorableEmptyReadOnly": "Todavía no eligió un partido memorable",
   "passportCoverEyebrow": "MI PASAPORTE",
   "passportCoverMatchesLived": "{count, plural, =1{1 partido cantando y vibrando con el Verdão} other{{count} partidos cantando y vibrando con el Verdão}}",
   "passportLevelStarter": "Primeros Pasos",

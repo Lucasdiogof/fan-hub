@@ -1074,6 +1074,25 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get passportTrajectoryListEmpty => 'Todavía no hay partidos aquí';
+
+  @override
+  String get passportTrajectoryShareText =>
+      '¡Esta es mi trayectoria con el Goiás! 💚';
+
+  @override
+  String get passportTrajectoryShareAction => 'Compartir';
+
+  @override
+  String passportTrajectoryOfUser(String name) {
+    return 'Trayectoria de $name';
+  }
+
+  @override
+  String get passportTrajectoryMemorableEmptyReadOnly =>
+      'Todavía no eligió un partido memorable';
+
+  @override
   String get passportCoverEyebrow => 'MI PASAPORTE';
 
   @override

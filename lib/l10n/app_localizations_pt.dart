@@ -396,6 +396,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: '$count jogos vividos',
       one: '1 jogo vivido',
+      zero: 'Nenhum jogo vivido ainda',
     );
     return '$_temp0';
   }
@@ -745,6 +746,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: '$count torcedores já escalaram',
       one: '1 torcedor já escalou',
+      zero: 'Nenhum torcedor escalou ainda',
     );
     return '$_temp0';
   }
@@ -766,6 +768,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: 'Faltam apenas $count perguntas.',
       one: 'Falta apenas 1 pergunta.',
+      zero: 'Você já respondeu todas.',
     );
     return '$_temp0';
   }
@@ -777,6 +780,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: 'Faltam apenas $count escalações.',
       one: 'Falta apenas 1 escalação.',
+      zero: 'Você já escalou todos.',
     );
     return '$_temp0';
   }
@@ -788,6 +792,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: 'Faltam apenas $count jogadores.',
       one: 'Falta apenas 1 jogador.',
+      zero: 'Você já acertou todos.',
     );
     return '$_temp0';
   }
@@ -881,6 +886,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: 'Você já registrou $count partidas',
       one: 'Você já registrou 1 partida',
+      zero: 'Você ainda não registrou nenhuma partida',
     );
     return '$_temp0';
   }
@@ -1072,6 +1078,25 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get passportTrajectoryListEmpty => 'Nenhum jogo por aqui ainda';
+
+  @override
+  String get passportTrajectoryShareText =>
+      'Essa é a minha trajetória com o Goiás! 💚';
+
+  @override
+  String get passportTrajectoryShareAction => 'Compartilhar';
+
+  @override
+  String passportTrajectoryOfUser(String name) {
+    return 'Trajetória de $name';
+  }
+
+  @override
+  String get passportTrajectoryMemorableEmptyReadOnly =>
+      'Ainda não escolheu um jogo memorável';
+
+  @override
   String get passportCoverEyebrow => 'MEU PASSAPORTE';
 
   @override
@@ -1081,6 +1106,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: '$count jogos cantando e vibrando com o Verdão',
       one: '1 jogo cantando e vibrando com o Verdão',
+      zero: 'Nenhum jogo vivido ainda com o Verdão',
     );
     return '$_temp0';
   }
@@ -2632,6 +2658,7 @@ class AppLocalizationsPt extends AppLocalizations {
       locale: localeName,
       other: '$count documentos',
       one: '1 documento',
+      zero: 'Nenhum documento',
     );
     return '$_temp0';
   }

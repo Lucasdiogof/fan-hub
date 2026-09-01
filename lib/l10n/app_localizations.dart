@@ -853,7 +853,7 @@ abstract class AppLocalizations {
   /// No description provided for @profileJourneyMatchesLived.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{1 jogo vivido} other{{count} jogos vividos}}'**
+  /// **'{count, plural, =0{Nenhum jogo vivido ainda} =1{1 jogo vivido} other{{count} jogos vividos}}'**
   String profileJourneyMatchesLived(num count);
 
   /// No description provided for @profileVersion.
@@ -1483,7 +1483,7 @@ abstract class AppLocalizations {
   /// No description provided for @arenaLineupHeroParticipants.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{1 torcedor já escalou} other{{count} torcedores já escalaram}}'**
+  /// **'{count, plural, =0{Nenhum torcedor escalou ainda} =1{1 torcedor já escalou} other{{count} torcedores já escalaram}}'**
   String arenaLineupHeroParticipants(int count);
 
   /// No description provided for @arenaLineupHeroEmptyTitle.
@@ -1507,19 +1507,19 @@ abstract class AppLocalizations {
   /// No description provided for @arenaContinueQuizRemaining.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{Falta apenas 1 pergunta.} other{Faltam apenas {count} perguntas.}}'**
+  /// **'{count, plural, =0{Você já respondeu todas.} =1{Falta apenas 1 pergunta.} other{Faltam apenas {count} perguntas.}}'**
   String arenaContinueQuizRemaining(int count);
 
   /// No description provided for @arenaContinueLineupRemaining.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{Falta apenas 1 escalação.} other{Faltam apenas {count} escalações.}}'**
+  /// **'{count, plural, =0{Você já escalou todos.} =1{Falta apenas 1 escalação.} other{Faltam apenas {count} escalações.}}'**
   String arenaContinueLineupRemaining(int count);
 
   /// No description provided for @arenaContinueCareerRemaining.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{Falta apenas 1 jogador.} other{Faltam apenas {count} jogadores.}}'**
+  /// **'{count, plural, =0{Você já acertou todos.} =1{Falta apenas 1 jogador.} other{Faltam apenas {count} jogadores.}}'**
   String arenaContinueCareerRemaining(int count);
 
   /// No description provided for @arenaChallengesSectionTitle.
@@ -1681,7 +1681,7 @@ abstract class AppLocalizations {
   /// No description provided for @passportCardRegisteredCount.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{Você já registrou 1 partida} other{Você já registrou {count} partidas}}'**
+  /// **'{count, plural, =0{Você ainda não registrou nenhuma partida} =1{Você já registrou 1 partida} other{Você já registrou {count} partidas}}'**
   String passportCardRegisteredCount(num count);
 
   /// No description provided for @passportCardCta.
@@ -1996,6 +1996,36 @@ abstract class AppLocalizations {
   /// **'{count, plural, =1{1 jogo} other{{count} jogos}}'**
   String passportTrajectoryGamesCount(int count);
 
+  /// No description provided for @passportTrajectoryListEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum jogo por aqui ainda'**
+  String get passportTrajectoryListEmpty;
+
+  /// No description provided for @passportTrajectoryShareText.
+  ///
+  /// In pt, this message translates to:
+  /// **'Essa é a minha trajetória com o Goiás! 💚'**
+  String get passportTrajectoryShareText;
+
+  /// No description provided for @passportTrajectoryShareAction.
+  ///
+  /// In pt, this message translates to:
+  /// **'Compartilhar'**
+  String get passportTrajectoryShareAction;
+
+  /// No description provided for @passportTrajectoryOfUser.
+  ///
+  /// In pt, this message translates to:
+  /// **'Trajetória de {name}'**
+  String passportTrajectoryOfUser(String name);
+
+  /// No description provided for @passportTrajectoryMemorableEmptyReadOnly.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ainda não escolheu um jogo memorável'**
+  String get passportTrajectoryMemorableEmptyReadOnly;
+
   /// No description provided for @passportCoverEyebrow.
   ///
   /// In pt, this message translates to:
@@ -2005,7 +2035,7 @@ abstract class AppLocalizations {
   /// No description provided for @passportCoverMatchesLived.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{1 jogo cantando e vibrando com o Verdão} other{{count} jogos cantando e vibrando com o Verdão}}'**
+  /// **'{count, plural, =0{Nenhum jogo vivido ainda com o Verdão} =1{1 jogo cantando e vibrando com o Verdão} other{{count} jogos cantando e vibrando com o Verdão}}'**
   String passportCoverMatchesLived(num count);
 
   /// No description provided for @passportLevelStarter.
@@ -4644,7 +4674,7 @@ abstract class AppLocalizations {
   /// No description provided for @clubTransparencyDocumentCount.
   ///
   /// In pt, this message translates to:
-  /// **'{count, plural, =1{1 documento} other{{count} documentos}}'**
+  /// **'{count, plural, =0{Nenhum documento} =1{1 documento} other{{count} documentos}}'**
   String clubTransparencyDocumentCount(num count);
 
   /// No description provided for @clubTransparencyShareButton.

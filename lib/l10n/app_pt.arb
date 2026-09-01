@@ -155,7 +155,7 @@
   "profilePreferences": "PREFERÊNCIAS",
   "profilePurchasesAndServices": "COMPRAS E SERVIÇOS",
   "profileMyTickets": "Meus ingressos",
-  "profileJourneyMatchesLived": "{count, plural, =1{1 jogo vivido} other{{count} jogos vividos}}",
+  "profileJourneyMatchesLived": "{count, plural, =0{Nenhum jogo vivido ainda} =1{1 jogo vivido} other{{count} jogos vividos}}",
   "profileVersion": "Versão {version}",
   "profileLegal": "LEGAL",
   "profileAccount": "CONTA",
@@ -284,22 +284,22 @@
   "@arenaSpotlightRankSummary": { "placeholders": { "rank": { "type": "int" }, "points": { "type": "int" } } },
   "arenaLineupHeroEyebrow": "ESCALAÇÃO DA TORCIDA",
   "arenaLineupHeroCta": "Montar minha escalação",
-  "arenaLineupHeroParticipants": "{count, plural, =1{1 torcedor já escalou} other{{count} torcedores já escalaram}}",
+  "arenaLineupHeroParticipants": "{count, plural, =0{Nenhum torcedor escalou ainda} =1{1 torcedor já escalou} other{{count} torcedores já escalaram}}",
   "@arenaLineupHeroParticipants": {
     "placeholders": { "count": { "type": "int" } }
   },
   "arenaLineupHeroEmptyTitle": "Sem jogo por enquanto",
   "arenaLineupHeroEmptyMessage": "Assim que a próxima partida for confirmada, você já pode montar sua escalação aqui.",
   "arenaContinuePlayingTitle": "CONTINUE JOGANDO",
-  "arenaContinueQuizRemaining": "{count, plural, =1{Falta apenas 1 pergunta.} other{Faltam apenas {count} perguntas.}}",
+  "arenaContinueQuizRemaining": "{count, plural, =0{Você já respondeu todas.} =1{Falta apenas 1 pergunta.} other{Faltam apenas {count} perguntas.}}",
   "@arenaContinueQuizRemaining": {
     "placeholders": { "count": { "type": "int" } }
   },
-  "arenaContinueLineupRemaining": "{count, plural, =1{Falta apenas 1 escalação.} other{Faltam apenas {count} escalações.}}",
+  "arenaContinueLineupRemaining": "{count, plural, =0{Você já escalou todos.} =1{Falta apenas 1 escalação.} other{Faltam apenas {count} escalações.}}",
   "@arenaContinueLineupRemaining": {
     "placeholders": { "count": { "type": "int" } }
   },
-  "arenaContinueCareerRemaining": "{count, plural, =1{Falta apenas 1 jogador.} other{Faltam apenas {count} jogadores.}}",
+  "arenaContinueCareerRemaining": "{count, plural, =0{Você já acertou todos.} =1{Falta apenas 1 jogador.} other{Faltam apenas {count} jogadores.}}",
   "@arenaContinueCareerRemaining": {
     "placeholders": { "count": { "type": "int" } }
   },
@@ -332,7 +332,7 @@
   "passportEyebrow": "Memórias esmeraldinas",
   "passportTitle": "Passaporte Esmeraldino",
   "passportCardDescription": "Marque os jogos que você viveu com o Verdão.",
-  "passportCardRegisteredCount": "{count, plural, =1{Você já registrou 1 partida} other{Você já registrou {count} partidas}}",
+  "passportCardRegisteredCount": "{count, plural, =0{Você ainda não registrou nenhuma partida} =1{Você já registrou 1 partida} other{Você já registrou {count} partidas}}",
   "passportCardCta": "Abrir passaporte",
   "passportRankingCta": "Ranking do Passaporte",
   "passportLoadErrorTitle": "Não foi possível carregar o passaporte",
@@ -390,8 +390,18 @@
       "count": {"type": "int"}
     }
   },
+  "passportTrajectoryListEmpty": "Nenhum jogo por aqui ainda",
+  "passportTrajectoryShareText": "Essa é a minha trajetória com o Goiás! 💚",
+  "passportTrajectoryShareAction": "Compartilhar",
+  "passportTrajectoryOfUser": "Trajetória de {name}",
+  "@passportTrajectoryOfUser": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "passportTrajectoryMemorableEmptyReadOnly": "Ainda não escolheu um jogo memorável",
   "passportCoverEyebrow": "MEU PASSAPORTE",
-  "passportCoverMatchesLived": "{count, plural, =1{1 jogo cantando e vibrando com o Verdão} other{{count} jogos cantando e vibrando com o Verdão}}",
+  "passportCoverMatchesLived": "{count, plural, =0{Nenhum jogo vivido ainda com o Verdão} =1{1 jogo cantando e vibrando com o Verdão} other{{count} jogos cantando e vibrando com o Verdão}}",
   "passportLevelStarter": "Primeiros Passos",
   "passportLevelPresent": "Torcedor Presente",
   "passportLevelBleacher": "Esmeraldino de Arquibancada",
@@ -923,7 +933,7 @@
   "clubTransparencyLoadErrorTitle": "Não foi possível carregar a transparência",
   "clubTransparencyEmptyTitle": "Nenhum documento disponível",
   "clubTransparencyEmptyMessage": "Volte em breve para conferir os documentos.",
-  "clubTransparencyDocumentCount": "{count, plural, =1{1 documento} other{{count} documentos}}",
+  "clubTransparencyDocumentCount": "{count, plural, =0{Nenhum documento} =1{1 documento} other{{count} documentos}}",
   "clubTransparencyShareButton": "Compartilhar PDF",
   "clubSectionTimeline": "Linha do Tempo",
   "clubSectionSongs": "Hino & Músicas",
