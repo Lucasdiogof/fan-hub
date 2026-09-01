@@ -28,11 +28,35 @@ abstract interface class AuthRepository {
     required String password,
   });
 
+  /// `true` no resultado significa "precisa confirmar o e-mail antes de
+  /// entrar" (é o que acontece sempre, com "Confirm email" ligado no
+  /// Supabase) — [cpf]/[birthDate]/[phone]/[marketingOptIn] vão só no
+  /// `user_metadata` do signup (nenhuma sessão existe ainda pra gravar em
+  /// `profiles` diretamente); [verifyEmailOtp] é quem copia isso pra
+  /// `profiles` depois que o código é confirmado.
   Future<Result<bool>> signUp({
     required String fullName,
     required String email,
     required String password,
+    required String cpf,
+    required DateTime birthDate,
+    required String phone,
+    required bool marketingOptIn,
   });
+
+  /// Confirma o cadastro com o código de 6 dígitos enviado por e-mail
+  /// (`{{ .Token }}` do template "Confirm signup"). Sucesso já estabelece
+  /// sessão válida (o SDK faz isso sozinho) e finaliza o `profiles`
+  /// pendente com os dados que foram pro metadata em [signUp].
+  Future<Result<void>> verifyEmailOtp({
+    required String email,
+    required String token,
+  });
+
+  /// Checagem de UX no Passo 1 — nunca a autoridade final (essa é o unique
+  /// index no Postgres, ver `supabase/profiles_signup_fields.sql`). Só
+  /// evita o usuário preencher os 3 passos pra descobrir o conflito no fim.
+  Future<Result<bool>> isCpfTaken(String cpf);
 
   Future<Result<void>> signOut();
 

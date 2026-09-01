@@ -1,301 +1,106 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
-import 'package:goias_app/shared/validation/app_validators.dart';
-import 'package:goias_app/shared/validation/field_touch.dart';
-import 'package:goias_app/shared/widgets/app_primary_button.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_scaffold.dart';
-import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
+import 'package:goias_app/features/auth/presentation/cubit/register_cubit.dart';
+import 'package:goias_app/features/auth/presentation/cubit/register_state.dart';
+import 'package:goias_app/features/auth/presentation/widgets/register_step_contact.dart';
+import 'package:goias_app/features/auth/presentation/widgets/register_step_personal.dart';
+import 'package:goias_app/features/auth/presentation/widgets/register_step_security.dart';
+import 'package:goias_app/features/auth/presentation/widgets/register_stepper.dart';
+import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 
-class RegisterPage extends StatefulWidget {
+/// Cadastro em 3 passos — mesma estrutura do
+/// `MembershipRegistrationPage`/`MembershipRegistrationCubit`: um único
+/// `RegisterCubit` hospeda os dados dos 3 passos, então voltar uma etapa
+/// nunca perde o que já foi digitado (os valores vivem no cubit, não no
+/// widget do passo). Cada passo é reconstruído ao trocar (um `switch`, não
+/// `IndexedStack`) — o único efeito colateral disso é o "campo tocado" de
+/// cada `FieldTouch` resetar ao revisitar um passo (o valor em si nunca
+/// some). Cada passo próprio faz `Expanded(ListView) + botão fixo`, então
+/// só os campos rolam — cabeçalho/stepper (aqui) e o CTA (dentro do passo)
+/// ficam sempre visíveis, mesmo com o teclado aberto.
+class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
-}
-
-class _RegisterPageState extends State<RegisterPage> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _confirmController = TextEditingController();
-  final _emailFocus = FocusNode();
-  final _passwordFocus = FocusNode();
-  final _confirmFocus = FocusNode();
-
-  final _nameTouch = FieldTouch();
-  final _emailTouch = FieldTouch();
-  final _passwordTouch = FieldTouch();
-  final _confirmTouch = FieldTouch();
-  bool _submitted = false;
-  String? _formError;
-  bool _acceptedTerms = false;
-  bool _termsError = false;
-  bool _loading = false;
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    _confirmController.dispose();
-    _emailFocus.dispose();
-    _passwordFocus.dispose();
-    _confirmFocus.dispose();
-    super.dispose();
-  }
-
-  Future<void> _submit() async {
-    FocusScope.of(context).unfocus();
-    final l10n = context.l10n;
-    setState(() {
-      _submitted = true;
-      _termsError = !_acceptedTerms;
-      _formError = null;
-    });
-    final nameError = AppValidators.fullName(l10n, _nameController.text);
-    final emailError = AppValidators.email(l10n, _emailController.text);
-    final passwordError = AppValidators.newPassword(
-      l10n,
-      _passwordController.text,
-    );
-    final confirmError = AppValidators.confirmPassword(
-      l10n,
-      _confirmController.text,
-      _passwordController.text,
-    );
-    if (nameError != null ||
-        emailError != null ||
-        passwordError != null ||
-        confirmError != null ||
-        !_acceptedTerms) {
-      return;
-    }
-
-    setState(() => _loading = true);
-    final result = await context.read<AuthCubit>().signUp(
-      fullName: _nameController.text.trim(),
-      email: AppValidators.normalizeEmail(_emailController.text),
-      password: _passwordController.text,
-    );
-    if (!mounted) return;
-    setState(() => _loading = false);
-    switch (result) {
-      case Success<bool>(:final data):
-        if (data) {
-          context.go(
-            '/check-email',
-            extra: AppValidators.normalizeEmail(_emailController.text),
-          );
-        }
-      case Error<bool>(:final failure):
-        setState(() => _formError = failure.message);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return AuthScaffold(
-      title: l10n.authRegisterTitle,
-      subtitle: l10n.authRegisterSubtitle,
-      children: [
-        AuthErrorBanner(message: _formError),
-        AuthTextField(
-          controller: _nameController,
-          label: l10n.authFullNameLabel,
-          icon: Icons.person_outline_rounded,
-          hintText: l10n.authFullNameHint,
-          keyboardType: TextInputType.name,
-          textInputAction: TextInputAction.next,
-          autofillHints: const [AutofillHints.name],
-          errorText: _nameTouch.errorFor(
-            _nameController.text,
-            submitted: _submitted,
-            format: (v) => AppValidators.fullName(l10n, v),
-            requiredMessage: l10n.validatorNameRequired,
-          ),
-          onChanged: (_) {
-            _nameTouch.touched = true;
-            setState(() {});
-          },
-          onSubmitted: (_) => _emailFocus.requestFocus(),
-        ),
-        const SizedBox(height: AppSpacing.lg),
-        AuthTextField(
-          controller: _emailController,
-          focusNode: _emailFocus,
-          label: l10n.commonEmailLabel,
-          icon: Icons.mail_outline_rounded,
-          hintText: l10n.commonEmailHint,
-          keyboardType: TextInputType.emailAddress,
-          textInputAction: TextInputAction.next,
-          autofillHints: const [AutofillHints.email],
-          errorText: _emailTouch.errorFor(
-            _emailController.text,
-            submitted: _submitted,
-            format: (v) => AppValidators.email(l10n, v),
-            requiredMessage: l10n.validatorEmailRequired,
-          ),
-          onChanged: (_) {
-            _emailTouch.touched = true;
-            setState(() {});
-          },
-          onSubmitted: (_) => _passwordFocus.requestFocus(),
-        ),
-        const SizedBox(height: AppSpacing.lg),
-        AuthTextField(
-          controller: _passwordController,
-          focusNode: _passwordFocus,
-          label: l10n.commonPasswordLabel,
-          icon: Icons.lock_outline_rounded,
-          hintText: l10n.authPasswordMinHint(AppValidators.minPasswordLength),
-          obscurable: true,
-          textInputAction: TextInputAction.next,
-          autofillHints: const [AutofillHints.newPassword],
-          errorText: _passwordTouch.errorFor(
-            _passwordController.text,
-            submitted: _submitted,
-            format: (v) => AppValidators.newPassword(l10n, v),
-            requiredMessage: l10n.validatorPasswordCreate,
-          ),
-          onChanged: (_) {
-            _passwordTouch.touched = true;
-            setState(() {});
-          },
-          onSubmitted: (_) => _confirmFocus.requestFocus(),
-        ),
-        const SizedBox(height: AppSpacing.lg),
-        AuthTextField(
-          controller: _confirmController,
-          focusNode: _confirmFocus,
-          label: l10n.authConfirmPasswordLabel,
-          icon: Icons.lock_outline_rounded,
-          hintText: l10n.authConfirmPasswordHint,
-          obscurable: true,
-          textInputAction: TextInputAction.done,
-          autofillHints: const [AutofillHints.newPassword],
-          errorText: _confirmTouch.errorFor(
-            _confirmController.text,
-            submitted: _submitted,
-            format: (v) => AppValidators.confirmPassword(
-              l10n,
-              v,
-              _passwordController.text,
-            ),
-            requiredMessage: l10n.validatorConfirmRequired,
-          ),
-          onChanged: (_) {
-            _confirmTouch.touched = true;
-            setState(() {});
-          },
-          onSubmitted: (_) => _submit(),
-        ),
-        const SizedBox(height: AppSpacing.lg),
-        _TermsCheckbox(
-          value: _acceptedTerms,
-          hasError: _termsError,
-          onChanged: (value) => setState(() {
-            _acceptedTerms = value;
-            if (value) _termsError = false;
-          }),
-        ),
-        const SizedBox(height: AppSpacing.xl),
-        AppPrimaryButton(
-          label: l10n.authRegisterButton,
-          loading: _loading,
-          loadingLabel: l10n.authCreatingAccount,
-          onPressed: _acceptedTerms ? _submit : null,
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => RegisterCubit(context.read<AuthCubit>()),
+      child: const _RegisterView(),
     );
   }
 }
 
-class _TermsCheckbox extends StatelessWidget {
-  const _TermsCheckbox({
-    required this.value,
-    required this.hasError,
-    required this.onChanged,
-  });
-
-  final bool value;
-  final bool hasError;
-  final ValueChanged<bool> onChanged;
+class _RegisterView extends StatelessWidget {
+  const _RegisterView();
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final l10n = context.l10n;
-    final linkStyle = TextStyle(
-      fontSize: 13,
-      fontWeight: FontWeight.w700,
-      color: colors.primary,
-    );
-    final baseStyle = TextStyle(
-      fontSize: 13,
-      height: 1.4,
-      color: colors.textSecondary,
-    );
+    final cubit = context.read<RegisterCubit>();
+    final step = context.select((RegisterCubit c) => c.state.step);
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          onTap: () => onChanged(!value),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 140),
-            width: 22,
-            height: 22,
-            margin: const EdgeInsets.only(top: 1),
-            decoration: BoxDecoration(
-              color: value ? colors.primary : colors.surface,
-              borderRadius: BorderRadius.circular(6),
-              border: Border.all(
-                color: hasError
-                    ? colors.error
-                    : (value ? colors.primary : colors.border),
-                width: 1.5,
+    return PopScope(
+      canPop: step == RegisterStep.personal,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) cubit.back();
+      },
+      child: Scaffold(
+        backgroundColor: colors.background,
+        body: SafeArea(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      AppSpacing.md,
+                      AppSpacing.lg,
+                      0,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BackButtonCircle(
+                          onTap: () {
+                            if (!cubit.back()) context.pop();
+                          },
+                        ),
+                        const SizedBox(height: AppSpacing.lg),
+                        Text(
+                          context.l10n.authRegisterTitle,
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w900,
+                            color: colors.textPrimary,
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.lg),
+                        RegisterStepper(step: step),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: switch (step) {
+                      RegisterStep.personal => const RegisterStepPersonal(),
+                      RegisterStep.contact => const RegisterStepContact(),
+                      RegisterStep.security => const RegisterStepSecurity(),
+                    },
+                  ),
+                ],
               ),
             ),
-            child: value
-                ? Icon(Icons.check_rounded, size: 15, color: colors.onPrimary)
-                : null,
           ),
         ),
-        const SizedBox(width: AppSpacing.md),
-        Expanded(
-          child: Text.rich(
-            TextSpan(
-              style: baseStyle,
-              children: [
-                TextSpan(text: l10n.authTermsPrefix),
-                TextSpan(
-                  text: l10n.authTermsLink,
-                  style: linkStyle,
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () => context.push('/profile/terms'),
-                ),
-                TextSpan(text: l10n.authTermsConnector),
-                TextSpan(
-                  text: l10n.authPrivacyLink,
-                  style: linkStyle,
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () => context.push('/profile/privacy'),
-                ),
-                TextSpan(text: l10n.authTermsSuffix),
-              ],
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

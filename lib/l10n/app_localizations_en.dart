@@ -82,7 +82,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authConfirmPasswordHint => 'Repeat the password';
 
   @override
-  String get authRegisterButton => 'CREATE ACCOUNT';
+  String get authRegisterButton => 'CREATE MY ACCOUNT';
 
   @override
   String get authCreatingAccount => 'Creating...';
@@ -101,6 +101,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authTermsSuffix => '.';
+
+  @override
+  String get authStepPersonal => 'Your info';
+
+  @override
+  String get authStepContact => 'Contact';
+
+  @override
+  String get authStepSecurity => 'Security';
+
+  @override
+  String get authMarketingOptIn =>
+      'I want to receive news, promotions and information from Goiás';
+
+  @override
+  String authPasswordRequirementLength(int count) {
+    return 'At least $count characters';
+  }
+
+  @override
+  String get authCpfLabel => 'CPF';
+
+  @override
+  String get authBirthDateHint => 'DD/MM/YYYY';
 
   @override
   String get navHome => 'Home';
@@ -1404,6 +1428,82 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get tacticalIdentityGameTitle => 'Football Identity';
+
+  @override
+  String get tacticalIdentityCardSubtitleNew =>
+      'What kind of football do you believe in?';
+
+  @override
+  String get tacticalIdentityCardCtaStart => 'Discover my profile';
+
+  @override
+  String get tacticalIdentityCardCtaViewResult => 'View result';
+
+  @override
+  String get tacticalIdentityCardCtaRedo => 'Redo';
+
+  @override
+  String tacticalIdentityYourProfile(String name) {
+    return 'Your profile: $name';
+  }
+
+  @override
+  String get tacticalIntroTitle => 'What\'s your football identity?';
+
+  @override
+  String get tacticalIntroDescription =>
+      '10 decisions. No right answer. Discover how you see the game and which coaches who managed Goiás your philosophy is closest to.';
+
+  @override
+  String get tacticalIntroMeta => '10 questions • ~3 minutes';
+
+  @override
+  String get tacticalIntroNoRightWrong =>
+      'There are no right or wrong answers.';
+
+  @override
+  String get tacticalIntroStart => 'Start';
+
+  @override
+  String get tacticalQuestionContinue => 'Continue';
+
+  @override
+  String get tacticalProcessingTitle => 'Analyzing your identity...';
+
+  @override
+  String get tacticalResultYourProfile => 'YOUR PROFILE';
+
+  @override
+  String get tacticalResultTacticalMap => 'TACTICAL MAP';
+
+  @override
+  String get tacticalResultMainReference => 'YOUR MAIN GOIÁS REFERENCE';
+
+  @override
+  String get tacticalResultOtherReferences => 'OTHER REFERENCES';
+
+  @override
+  String tacticalIdentityAffinityLabel(int percent) {
+    return '$percent% tactical affinity';
+  }
+
+  @override
+  String get tacticalResultShare => 'Share result';
+
+  @override
+  String get tacticalAxisPossession => 'POSSESSION';
+
+  @override
+  String get tacticalAxisVertical => 'VERTICAL';
+
+  @override
+  String get tacticalAxisDogmatic => 'DOGMATIC';
+
+  @override
+  String get tacticalAxisPragmatic => 'PRAGMATIC';
+
+  @override
   String get lineupPlayerHeading => 'PLAYER';
 
   @override
@@ -1944,7 +2044,29 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get checkEmailResend => 'Resend email';
+  String get checkEmailResend => 'Resend code';
+
+  @override
+  String get checkEmailOtpSentTo => 'We sent a 6-digit code to';
+
+  @override
+  String get checkEmailConfirmButton => 'CONFIRM CODE';
+
+  @override
+  String get checkEmailDidNotReceive => 'Didn\'t receive the code?';
+
+  @override
+  String get checkEmailChangeEmail => 'Wrong email? Change email';
+
+  @override
+  String get checkEmailChangeTitle => 'Change email?';
+
+  @override
+  String get checkEmailChangeMessage =>
+      'This ends this signup and starts a new one, so you can enter the correct email.';
+
+  @override
+  String get checkEmailChangeConfirm => 'Change email';
 
   @override
   String get resetPasswordTitle => 'Create new password';
@@ -1964,13 +2086,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotVerifyEmailTitle => 'Check your email';
 
   @override
-  String get forgotSentDescription => 'We sent a reset link to';
+  String get forgotSentDescription =>
+      'If this email has an account with the Goiás app, you\'ll receive a reset link shortly:';
 
   @override
   String get forgotNotReceived => 'Didn\'t get it?';
 
   @override
-  String get forgotResendSuccess => 'Email resent.';
+  String get forgotResendSuccess =>
+      'If the account exists, we resent the email.';
 
   @override
   String get commonGotIt => 'Got it';

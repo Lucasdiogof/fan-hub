@@ -9,6 +9,7 @@ class Profile extends Equatable {
     this.birthDate,
     this.phone,
     this.avatarUrl,
+    this.marketingOptIn = false,
   });
 
   final String id;
@@ -18,6 +19,7 @@ class Profile extends Equatable {
   final DateTime? birthDate;
   final String? phone;
   final String? avatarUrl;
+  final bool marketingOptIn;
 
   String get displayName {
     final name = fullName?.trim() ?? '';
@@ -33,5 +35,6 @@ class Profile extends Equatable {
     birthDate,
     phone,
     avatarUrl,
+    marketingOptIn,
   ];
 }

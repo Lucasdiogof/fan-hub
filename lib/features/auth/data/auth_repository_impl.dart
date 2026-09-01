@@ -7,13 +7,19 @@ import 'package:goias_app/features/auth/data/auth_error_mapper.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
 import 'package:goias_app/features/auth/domain/entities/auth_user.dart';
 import 'package:goias_app/features/auth/domain/repositories/auth_repository.dart';
+import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' hide AuthUser;
 
 class AuthRepositoryImpl implements AuthRepository {
-  AuthRepositoryImpl(this._dataSource);
+  AuthRepositoryImpl(this._dataSource, this._profileRepository);
 
   final AuthRemoteDataSource _dataSource;
+
+  /// Só usado por [verifyEmailOtp], pra copiar cpf/data de
+  /// nascimento/telefone/opt-in do `user_metadata` pendente pra `profiles`
+  /// assim que a confirmação estabelece sessão válida.
+  final ProfileRepository _profileRepository;
 
   @override
   bool get isAuthenticated => _dataSource.currentSession != null;
@@ -107,15 +113,65 @@ class AuthRepositoryImpl implements AuthRepository {
     required String fullName,
     required String email,
     required String password,
+    required String cpf,
+    required DateTime birthDate,
+    required String phone,
+    required bool marketingOptIn,
   }) async {
     try {
       final response = await _dataSource.signUp(
         fullName: fullName,
         email: email,
         password: password,
-        emailRedirectTo: SupabaseConfig.redirectUrl,
+        cpf: cpf,
+        birthDate: birthDate,
+        phone: phone,
+        marketingOptIn: marketingOptIn,
       );
       return Success(response.session == null);
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
+    }
+  }
+
+  @override
+  Future<Result<void>> verifyEmailOtp({
+    required String email,
+    required String token,
+  }) async {
+    try {
+      final response = await _dataSource.verifyEmailOtp(
+        email: email,
+        token: token,
+      );
+      final metadata = response.user?.userMetadata ?? const {};
+      // Nunca deixa uma falha aqui derrubar a confirmação — a sessão já
+      // está válida nesse ponto (o usuário É real e confirmado), então o
+      // pior cenário é entrar no app com `profiles` ainda incompleto (o
+      // Perfil deixa completar depois), nunca ficar preso na tela de OTP.
+      try {
+        final birthRaw = metadata['birth_date'] as String?;
+        await _profileRepository.updateProfile(
+          fullName: metadata['full_name'] as String?,
+          cpf: metadata['cpf'] as String?,
+          birthDate: birthRaw == null ? null : DateTime.tryParse(birthRaw),
+          phone: metadata['phone'] as String?,
+          marketingOptIn: metadata['marketing_opt_in'] as bool? ?? false,
+        );
+        unawaited(_dataSource.clearPendingSignupMetadata());
+      } catch (error, stackTrace) {
+        unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      }
+      return const Success(null);
+    } catch (error, stackTrace) {
+      return Error(mapAuthError(error, stackTrace));
+    }
+  }
+
+  @override
+  Future<Result<bool>> isCpfTaken(String cpf) async {
+    try {
+      return Success(await _dataSource.isCpfTaken(cpf));
     } catch (error, stackTrace) {
       return Error(mapAuthError(error, stackTrace));
     }
@@ -147,10 +203,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<void>> resendConfirmationEmail(String email) async {
     try {
-      await _dataSource.resendConfirmation(
-        email,
-        emailRedirectTo: SupabaseConfig.redirectUrl,
-      );
+      await _dataSource.resendConfirmation(email);
       return const Success(null);
     } catch (error, stackTrace) {
       return Error(mapAuthError(error, stackTrace));

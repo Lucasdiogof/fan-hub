@@ -53,6 +53,8 @@ class RegistrationTextField extends StatefulWidget {
     this.suffixIcon,
     this.hintText,
     this.textCapitalization = TextCapitalization.none,
+    this.autofillHints,
+    this.obscureText = false,
     super.key,
   });
 
@@ -71,6 +73,12 @@ class RegistrationTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final String? hintText;
   final TextCapitalization textCapitalization;
+  final List<String>? autofillHints;
+
+  /// Quando `true`, o campo esconde o texto digitado e ganha um ícone de
+  /// olho (à direita) que alterna a visibilidade — nunca combinado com
+  /// [suffixIcon] externo, já que só senha usa isso hoje.
+  final bool obscureText;
 
   @override
   State<RegistrationTextField> createState() => _RegistrationTextFieldState();
@@ -85,11 +93,27 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
   late final TextEditingController _controller = TextEditingController(
     text: widget.value,
   );
+  final _focusNode = FocusNode();
+  late bool _obscured = widget.obscureText;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (!_focusNode.hasFocus) widget.onBlur?.call();
+    });
+  }
 
   @override
   void didUpdateWidget(covariant RegistrationTextField oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.value != _controller.text) {
+    // Só força o controller a partir de fora (autofill de CEP, reset ao
+    // voltar um passo etc.) quando o campo NÃO está focado — sincronizar
+    // enquanto o usuário digita mata o `composing` do teclado no meio de um
+    // acento composto (segurar "c" pra escolher "ç", "~"+"a" pra "ã"...),
+    // porque o próprio `onChanged` já reemite pro Cubit e volta aqui a cada
+    // tecla.
+    if (widget.value != _controller.text && !_focusNode.hasFocus) {
       _controller.value = _controller.value.copyWith(
         text: widget.value,
         selection: TextSelection.collapsed(offset: widget.value.length),
@@ -101,6 +125,7 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -112,18 +137,17 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
       children: [
         FieldLabel(widget.label, isRequired: widget.isRequired),
         const SizedBox(height: 6),
-        Focus(
-          onFocusChange: (hasFocus) {
-            if (!hasFocus) widget.onBlur?.call();
-          },
-          child: TextFormField(
+        TextFormField(
             controller: _controller,
+            focusNode: _focusNode,
             onChanged: widget.onChanged,
             readOnly: widget.readOnly,
             onTap: widget.onTap,
+            obscureText: widget.obscureText && _obscured,
             keyboardType: widget.keyboardType,
             inputFormatters: widget.inputFormatters,
             textCapitalization: widget.textCapitalization,
+            autofillHints: widget.autofillHints,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -133,7 +157,18 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
               isDense: true,
               prefixText: widget.prefixText,
               prefix: widget.prefix,
-              suffixIcon: widget.suffixIcon,
+              suffixIcon: widget.obscureText
+                  ? IconButton(
+                      icon: Icon(
+                        _obscured
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        size: 20,
+                        color: colors.textHint,
+                      ),
+                      onPressed: () => setState(() => _obscured = !_obscured),
+                    )
+                  : widget.suffixIcon,
               hintText: widget.hintText,
               hintStyle: TextStyle(
                 fontSize: 14,
@@ -171,7 +206,6 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
               ),
             ),
           ),
-        ),
       ],
     );
   }

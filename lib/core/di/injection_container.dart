@@ -13,6 +13,8 @@ import 'package:goias_app/features/arena/games/lineup/data/lineup_match_reposito
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/data/supabase_tactical_identity_repository.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/core/session/account_session_cache_guard.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
@@ -131,7 +133,9 @@ void setupDependencies() {
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSource(Supabase.instance.client),
   );
-  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(sl(), sl()),
+  );
   sl.registerLazySingleton<AuthCubit>(() => AuthCubit(sl()));
   // Fonte única de "é sócio?" pro app inteiro (Home, Ingresso, Ranking,
   // Perfil) — nunca cada tela consultando `MembershipRepository` sozinha.
@@ -195,6 +199,9 @@ void setupDependencies() {
   );
   sl.registerLazySingleton<CrowdLineupRepository>(
     () => SupabaseCrowdLineupRepository(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<TacticalIdentityRepository>(
+    () => SupabaseTacticalIdentityRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<ThemeCubit>(ThemeCubit.new);
   sl.registerLazySingleton<LocaleCubit>(LocaleCubit.new);

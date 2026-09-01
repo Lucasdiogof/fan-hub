@@ -27,6 +27,13 @@ Failure mapProfileError(
       name.contains('TimeoutException')) {
     return const NetworkFailure();
   }
+  // 23505 = unique_violation do Postgres — o único índice único em
+  // `profiles` além da PK (que não pode colidir num UPDATE) é
+  // `profiles_cpf_unique_idx`, então qualquer 23505 aqui é sempre CPF já
+  // cadastrado em outra conta.
+  if (error is PostgrestException && error.code == '23505') {
+    return const ServerFailure('Este CPF já está cadastrado em outra conta.');
+  }
   if (error is PostgrestException || error is StorageException) {
     return ServerFailure(
       isWrite

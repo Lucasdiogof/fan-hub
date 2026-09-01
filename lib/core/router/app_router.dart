@@ -20,6 +20,12 @@ import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_result_page.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/cubit/tactical_identity_cubit.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/pages/tactical_identity_intro_page.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/pages/tactical_identity_processing_page.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/pages/tactical_identity_question_page.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/pages/tactical_identity_result_page.dart';
 import 'package:goias_app/features/arena/presentation/pages/arena_page.dart';
 import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/arena/ranking/presentation/pages/ranking_page.dart';
@@ -143,6 +149,10 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
 
       if (location == '/splash') return loggedIn ? '/' : '/login';
       if (!loggedIn && !onAuthArea) return '/login';
+      // Nenhum cadastro pendente é retomado entre sessões de propósito — se
+      // o app fechar antes da confirmação do OTP, o usuário reabre no login
+      // e recomeça o cadastro do zero (ele é curto, 3 passos). O `auth.users`
+      // não confirmado abandonado é limpo pelo cron de 48h no servidor.
       if (loggedIn && (onAuthArea || location == '/reset-password')) return '/';
       return null;
     },
@@ -419,6 +429,38 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
             ),
           ),
           GoRoute(
+            path: '/arena/tactical-identity',
+            pageBuilder: (context, state) =>
+                appPage(state, const TacticalIdentityIntroPage()),
+          ),
+          GoRoute(
+            path: '/arena/tactical-identity/play',
+            pageBuilder: (context, state) => appPage(
+              state,
+              TacticalIdentityQuestionPage(
+                cubit: state.extra as TacticalIdentityCubit?,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/arena/tactical-identity/processing',
+            pageBuilder: (context, state) => appPage(
+              state,
+              TacticalIdentityProcessingPage(
+                answers: state.extra! as List<TacticalOption>,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/arena/tactical-identity/result',
+            pageBuilder: (context, state) => appPage(
+              state,
+              TacticalIdentityResultPage(
+                result: state.extra! as TacticalIdentityResult,
+              ),
+            ),
+          ),
+          GoRoute(
             path: '/arena/passport',
             pageBuilder: (context, state) =>
                 appPage(state, const PassportPage()),
@@ -660,10 +702,8 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       ),
       GoRoute(
         path: '/check-email',
-        pageBuilder: (context, state) => appPage(
-          state,
-          CheckYourEmailPage(email: state.extra as String? ?? ''),
-        ),
+        pageBuilder: (context, state) =>
+            appPage(state, CheckYourEmailPage(email: state.extra as String?)),
       ),
       GoRoute(
         path: '/reset-password',

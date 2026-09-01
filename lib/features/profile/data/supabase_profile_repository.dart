@@ -34,6 +34,7 @@ class SupabaseProfileRepository implements ProfileRepository {
     String? cpf,
     DateTime? birthDate,
     String? phone,
+    bool? marketingOptIn,
   }) async {
     try {
       final row = await _client
@@ -43,6 +44,12 @@ class SupabaseProfileRepository implements ProfileRepository {
             'cpf': cpf,
             'birth_date': birthDate == null ? null : _dateOnly(birthDate),
             'phone': phone,
+            // Diferente dos 4 campos acima (sempre sobrescritos, mesmo com
+            // null — é assim que a tela de Dados Pessoais consegue LIMPAR um
+            // campo de propósito): `marketingOptIn` só entra no update
+            // quando o chamador realmente passou um valor, nunca apaga o
+            // opt-in existente por omissão.
+            'marketing_opt_in': ?marketingOptIn,
             'updated_at': DateTime.now().toUtc().toIso8601String(),
           })
           .eq('id', _uid)
@@ -146,6 +153,7 @@ class SupabaseProfileRepository implements ProfileRepository {
       birthDate: birth == null ? null : DateTime.tryParse(birth),
       phone: row?['phone'] as String?,
       avatarUrl: row?['avatar_url'] as String?,
+      marketingOptIn: row?['marketing_opt_in'] as bool? ?? false,
     );
   }
 

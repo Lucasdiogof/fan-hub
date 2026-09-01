@@ -241,7 +241,7 @@ abstract class AppLocalizations {
   /// No description provided for @authRegisterButton.
   ///
   /// In pt, this message translates to:
-  /// **'CRIAR CONTA'**
+  /// **'CRIAR MINHA CONTA'**
   String get authRegisterButton;
 
   /// No description provided for @authCreatingAccount.
@@ -279,6 +279,48 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'.'**
   String get authTermsSuffix;
+
+  /// No description provided for @authStepPersonal.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seus dados'**
+  String get authStepPersonal;
+
+  /// No description provided for @authStepContact.
+  ///
+  /// In pt, this message translates to:
+  /// **'Contato'**
+  String get authStepContact;
+
+  /// No description provided for @authStepSecurity.
+  ///
+  /// In pt, this message translates to:
+  /// **'Segurança'**
+  String get authStepSecurity;
+
+  /// No description provided for @authMarketingOptIn.
+  ///
+  /// In pt, this message translates to:
+  /// **'Quero receber novidades, promoções e informações do Goiás'**
+  String get authMarketingOptIn;
+
+  /// No description provided for @authPasswordRequirementLength.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mínimo de {count} caracteres'**
+  String authPasswordRequirementLength(int count);
+
+  /// No description provided for @authCpfLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CPF'**
+  String get authCpfLabel;
+
+  /// No description provided for @authBirthDateHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'DD/MM/AAAA'**
+  String get authBirthDateHint;
 
   /// No description provided for @navHome.
   ///
@@ -2536,6 +2578,144 @@ abstract class AppLocalizations {
   /// **'Recorde: {best} pts'**
   String quizBestRecord(int best);
 
+  /// No description provided for @tacticalIdentityGameTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Identidade Futebolística'**
+  String get tacticalIdentityGameTitle;
+
+  /// No description provided for @tacticalIdentityCardSubtitleNew.
+  ///
+  /// In pt, this message translates to:
+  /// **'Que tipo de futebol você acredita?'**
+  String get tacticalIdentityCardSubtitleNew;
+
+  /// No description provided for @tacticalIdentityCardCtaStart.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descobrir meu perfil'**
+  String get tacticalIdentityCardCtaStart;
+
+  /// No description provided for @tacticalIdentityCardCtaViewResult.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver resultado'**
+  String get tacticalIdentityCardCtaViewResult;
+
+  /// No description provided for @tacticalIdentityCardCtaRedo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Refazer'**
+  String get tacticalIdentityCardCtaRedo;
+
+  /// No description provided for @tacticalIdentityYourProfile.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu perfil: {name}'**
+  String tacticalIdentityYourProfile(String name);
+
+  /// No description provided for @tacticalIntroTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Qual é a sua identidade futebolística?'**
+  String get tacticalIntroTitle;
+
+  /// No description provided for @tacticalIntroDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo Goiás sua filosofia mais se aproxima.'**
+  String get tacticalIntroDescription;
+
+  /// No description provided for @tacticalIntroMeta.
+  ///
+  /// In pt, this message translates to:
+  /// **'10 perguntas • ~3 minutos'**
+  String get tacticalIntroMeta;
+
+  /// No description provided for @tacticalIntroNoRightWrong.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não existem respostas certas ou erradas.'**
+  String get tacticalIntroNoRightWrong;
+
+  /// No description provided for @tacticalIntroStart.
+  ///
+  /// In pt, this message translates to:
+  /// **'Começar'**
+  String get tacticalIntroStart;
+
+  /// No description provided for @tacticalQuestionContinue.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continuar'**
+  String get tacticalQuestionContinue;
+
+  /// No description provided for @tacticalProcessingTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Analisando sua identidade...'**
+  String get tacticalProcessingTitle;
+
+  /// No description provided for @tacticalResultYourProfile.
+  ///
+  /// In pt, this message translates to:
+  /// **'SEU PERFIL'**
+  String get tacticalResultYourProfile;
+
+  /// No description provided for @tacticalResultTacticalMap.
+  ///
+  /// In pt, this message translates to:
+  /// **'MAPA TÁTICO'**
+  String get tacticalResultTacticalMap;
+
+  /// No description provided for @tacticalResultMainReference.
+  ///
+  /// In pt, this message translates to:
+  /// **'SUA PRINCIPAL REFERÊNCIA ESMERALDINA'**
+  String get tacticalResultMainReference;
+
+  /// No description provided for @tacticalResultOtherReferences.
+  ///
+  /// In pt, this message translates to:
+  /// **'OUTRAS REFERÊNCIAS'**
+  String get tacticalResultOtherReferences;
+
+  /// No description provided for @tacticalIdentityAffinityLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'{percent}% de afinidade tática'**
+  String tacticalIdentityAffinityLabel(int percent);
+
+  /// No description provided for @tacticalResultShare.
+  ///
+  /// In pt, this message translates to:
+  /// **'Compartilhar resultado'**
+  String get tacticalResultShare;
+
+  /// No description provided for @tacticalAxisPossession.
+  ///
+  /// In pt, this message translates to:
+  /// **'POSSE'**
+  String get tacticalAxisPossession;
+
+  /// No description provided for @tacticalAxisVertical.
+  ///
+  /// In pt, this message translates to:
+  /// **'VERTICAL'**
+  String get tacticalAxisVertical;
+
+  /// No description provided for @tacticalAxisDogmatic.
+  ///
+  /// In pt, this message translates to:
+  /// **'DOGMÁTICO'**
+  String get tacticalAxisDogmatic;
+
+  /// No description provided for @tacticalAxisPragmatic.
+  ///
+  /// In pt, this message translates to:
+  /// **'PRAGMÁTICO'**
+  String get tacticalAxisPragmatic;
+
   /// No description provided for @lineupPlayerHeading.
   ///
   /// In pt, this message translates to:
@@ -3444,8 +3624,50 @@ abstract class AppLocalizations {
   /// No description provided for @checkEmailResend.
   ///
   /// In pt, this message translates to:
-  /// **'Reenviar e-mail'**
+  /// **'Reenviar código'**
   String get checkEmailResend;
+
+  /// No description provided for @checkEmailOtpSentTo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Enviamos um código de 6 dígitos para'**
+  String get checkEmailOtpSentTo;
+
+  /// No description provided for @checkEmailConfirmButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'CONFIRMAR CÓDIGO'**
+  String get checkEmailConfirmButton;
+
+  /// No description provided for @checkEmailDidNotReceive.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não recebeu o código?'**
+  String get checkEmailDidNotReceive;
+
+  /// No description provided for @checkEmailChangeEmail.
+  ///
+  /// In pt, this message translates to:
+  /// **'E-mail incorreto? Alterar e-mail'**
+  String get checkEmailChangeEmail;
+
+  /// No description provided for @checkEmailChangeTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Alterar e-mail?'**
+  String get checkEmailChangeTitle;
+
+  /// No description provided for @checkEmailChangeMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Isso encerra este cadastro e abre um novo, pra você digitar o e-mail correto.'**
+  String get checkEmailChangeMessage;
+
+  /// No description provided for @checkEmailChangeConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'Alterar e-mail'**
+  String get checkEmailChangeConfirm;
 
   /// No description provided for @resetPasswordTitle.
   ///
@@ -3480,7 +3702,7 @@ abstract class AppLocalizations {
   /// No description provided for @forgotSentDescription.
   ///
   /// In pt, this message translates to:
-  /// **'Enviamos um link de redefinição para'**
+  /// **'Se este e-mail tiver uma conta no aplicativo do Goiás, você vai receber um link de redefinição em instantes:'**
   String get forgotSentDescription;
 
   /// No description provided for @forgotNotReceived.
@@ -3492,7 +3714,7 @@ abstract class AppLocalizations {
   /// No description provided for @forgotResendSuccess.
   ///
   /// In pt, this message translates to:
-  /// **'E-mail reenviado.'**
+  /// **'Se a conta existir, reenviamos o e-mail.'**
   String get forgotResendSuccess;
 
   /// No description provided for @commonGotIt.
@@ -7170,7 +7392,7 @@ abstract class AppLocalizations {
   /// No description provided for @storeStateLabel.
   ///
   /// In pt, this message translates to:
-  /// **'UF'**
+  /// **'Estado'**
   String get storeStateLabel;
 
   /// No description provided for @storeAddressFormError.

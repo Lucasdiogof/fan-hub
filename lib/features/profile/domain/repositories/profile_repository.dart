@@ -12,6 +12,7 @@ abstract class ProfileRepository {
     String? cpf,
     DateTime? birthDate,
     String? phone,
+    bool? marketingOptIn,
   });
 
   Future<Result<UserAddress?>> getAddress();

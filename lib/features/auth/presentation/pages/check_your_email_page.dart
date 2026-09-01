@@ -3,39 +3,59 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
+import 'package:goias_app/features/auth/presentation/widgets/otp_code_field.dart';
+import 'package:goias_app/features/auth/presentation/widgets/register_primary_button.dart';
+import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
-class CheckYourEmailPage extends StatefulWidget {
-  const CheckYourEmailPage({required this.email, super.key});
+const _otpLength = 6;
+const _resendCooldownSeconds = 60;
 
-  final String email;
+/// Confirmação de e-mail por código de 6 dígitos (OTP, `{{ .Token }}` do
+/// template "Confirm signup" do Supabase — nunca link). [email] vem sempre
+/// explícito de quem navegou pra cá (ver `RegisterStepSecurity`) — não há
+/// retomada entre sessões: se o app fechar antes da confirmação, reabrir
+/// manda pro login e o cadastro recomeça do zero (ver `app_router.dart`).
+/// Sucesso na verificação já estabelece sessão sozinho (o SDK faz isso) —
+/// o redirect do router tira o usuário desta tela automaticamente, nunca
+/// precisa de navegação explícita daqui.
+class CheckYourEmailPage extends StatefulWidget {
+  const CheckYourEmailPage({this.email, super.key});
+
+  final String? email;
 
   @override
   State<CheckYourEmailPage> createState() => _CheckYourEmailPageState();
 }
 
 class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
-  static const _cooldownSeconds = 30;
+  final _otpKey = GlobalKey<OtpCodeFieldState>();
 
-  Timer? _timer;
+  String _code = '';
+  Timer? _cooldownTimer;
   int _cooldown = 0;
-  bool _sending = false;
+  bool _verifying = false;
+  bool _resending = false;
+  String? _error;
+
+  String get _email => widget.email ?? '';
 
   @override
   void dispose() {
-    _timer?.cancel();
+    _cooldownTimer?.cancel();
     super.dispose();
   }
 
   void _startCooldown() {
-    setState(() => _cooldown = _cooldownSeconds);
-    _timer?.cancel();
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    setState(() => _cooldown = _resendCooldownSeconds);
+    _cooldownTimer?.cancel();
+    _cooldownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_cooldown <= 1) {
         timer.cancel();
         setState(() => _cooldown = 0);
@@ -45,17 +65,44 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
     });
   }
 
-  Future<void> _resend() async {
-    if (_cooldown > 0 || _sending) return;
-    setState(() => _sending = true);
-    final result = await context.read<AuthCubit>().resendConfirmation(
-      widget.email,
+  Future<void> _verify() async {
+    if (_code.length != _otpLength || _verifying) return;
+    setState(() {
+      _verifying = true;
+      _error = null;
+    });
+    final result = await context.read<AuthCubit>().verifyEmailOtp(
+      email: _email,
+      token: _code,
     );
     if (!mounted) return;
-    setState(() => _sending = false);
+    setState(() => _verifying = false);
+    switch (result) {
+      case Success<void>():
+        // Nunca navega explicitamente — o redirect do router já tira o
+        // usuário desta tela assim que `AuthCubit` emite Authenticated (ver
+        // `app_router.dart`).
+        break;
+      case Error<void>(:final failure):
+        setState(() {
+          _error = failure.message;
+          _code = '';
+        });
+    }
+  }
+
+  Future<void> _resend() async {
+    if (_cooldown > 0 || _resending) return;
+    setState(() {
+      _resending = true;
+      _error = null;
+    });
+    final result = await context.read<AuthCubit>().resendConfirmation(_email);
+    if (!mounted) return;
+    setState(() => _resending = false);
     final messenger = ScaffoldMessenger.of(context);
     if (result is Error<void>) {
-      messenger.showSnackBar(SnackBar(content: Text(result.failure.message)));
+      setState(() => _error = result.failure.message);
     } else {
       _startCooldown();
       messenger.showSnackBar(
@@ -64,9 +111,34 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
     }
   }
 
+  Future<void> _changeEmail() async {
+    final confirmed = await AppBottomSheet.show(
+      context,
+      icon: Icons.alternate_email_rounded,
+      title: context.l10n.checkEmailChangeTitle,
+      description: context.l10n.checkEmailChangeMessage,
+      confirmLabel: context.l10n.checkEmailChangeConfirm,
+      cancelLabel: context.l10n.commonCancel,
+    );
+    if (confirmed != true || !mounted) return;
+    // O signup antigo (mesmo CPF, e-mail errado) fica pendente e some
+    // sozinho na limpeza de 48h do servidor — nunca tentamos "corrigir" via
+    // `updateUser` (não existe sessão válida nesse ponto pra isso).
+    context.go('/register');
+  }
+
+  String _maskEmail(String email) {
+    final parts = email.split('@');
+    if (parts.length != 2 || parts[0].isEmpty) return email;
+    final local = parts[0];
+    final visible = local.length <= 3 ? local : local.substring(0, 3);
+    return '$visible***@${parts[1]}';
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final l10n = context.l10n;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -93,7 +165,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   ),
                   const SizedBox(height: AppSpacing.xxl),
                   Text(
-                    context.l10n.checkEmailTitle,
+                    l10n.checkEmailTitle,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 24,
@@ -103,7 +175,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   ),
                   const SizedBox(height: AppSpacing.md),
                   Text(
-                    context.l10n.checkEmailSentTo,
+                    l10n.checkEmailOtpSentTo,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -113,7 +185,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(
-                    widget.email,
+                    _maskEmail(_email),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
@@ -121,30 +193,47 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                       color: colors.textPrimary,
                     ),
                   ),
-                  const SizedBox(height: AppSpacing.md),
-                  Text(
-                    context.l10n.checkEmailInstruction,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      height: 1.4,
-                      color: colors.textSecondary,
-                    ),
+                  const SizedBox(height: AppSpacing.xxl),
+                  AuthErrorBanner(message: _error),
+                  OtpCodeField(
+                    key: _otpKey,
+                    length: _otpLength,
+                    value: _code,
+                    onChanged: (value) {
+                      setState(() {
+                        _code = value;
+                        _error = null;
+                      });
+                    },
+                    onSubmitted: _verify,
                   ),
                   const SizedBox(height: AppSpacing.xxl),
-                  _ResendButton(
+                  RegisterPrimaryButton(
+                    label: l10n.checkEmailConfirmButton,
+                    loading: _verifying,
+                    onPressed: _code.length == _otpLength && !_verifying
+                        ? _verify
+                        : null,
+                  ),
+                  const SizedBox(height: AppSpacing.xl),
+                  Text(
+                    l10n.checkEmailDidNotReceive,
+                    style: TextStyle(fontSize: 13, color: colors.textHint),
+                  ),
+                  const SizedBox(height: AppSpacing.xs),
+                  _ResendLink(
                     cooldown: _cooldown,
-                    sending: _sending,
+                    sending: _resending,
                     onTap: _resend,
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   TextButton(
-                    onPressed: () => context.go('/login'),
+                    onPressed: _changeEmail,
                     style: TextButton.styleFrom(
                       foregroundColor: colors.textSecondary,
                     ),
                     child: Text(
-                      context.l10n.checkEmailBackToLogin,
+                      l10n.checkEmailChangeEmail,
                       style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -158,8 +247,8 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
   }
 }
 
-class _ResendButton extends StatelessWidget {
-  const _ResendButton({
+class _ResendLink extends StatelessWidget {
+  const _ResendLink({
     required this.cooldown,
     required this.sending,
     required this.onTap,
@@ -179,30 +268,10 @@ class _ResendButton extends StatelessWidget {
         ? context.l10n.checkEmailResendIn(cooldown)
         : context.l10n.checkEmailResend;
 
-    return Opacity(
-      opacity: disabled ? 0.6 : 1,
-      child: Material(
-        color: colors.secondary,
-        borderRadius: BorderRadius.circular(AppRadius.button),
-        child: InkWell(
-          onTap: disabled ? null : onTap,
-          borderRadius: BorderRadius.circular(AppRadius.button),
-          child: SizedBox(
-            height: 52,
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                label,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: colors.primary,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+    return TextButton(
+      onPressed: disabled ? null : onTap,
+      style: TextButton.styleFrom(foregroundColor: colors.primary),
+      child: Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
     );
   }
 }

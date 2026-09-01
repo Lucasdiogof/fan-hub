@@ -45,13 +45,28 @@ class AuthCubit extends Cubit<AuthState> {
     required String fullName,
     required String email,
     required String password,
+    required String cpf,
+    required DateTime birthDate,
+    required String phone,
+    required bool marketingOptIn,
   }) {
     return _repository.signUp(
       fullName: fullName,
       email: email,
       password: password,
+      cpf: cpf,
+      birthDate: birthDate,
+      phone: phone,
+      marketingOptIn: marketingOptIn,
     );
   }
+
+  Future<Result<void>> verifyEmailOtp({
+    required String email,
+    required String token,
+  }) => _repository.verifyEmailOtp(email: email, token: token);
+
+  Future<Result<bool>> isCpfTaken(String cpf) => _repository.isCpfTaken(cpf);
 
   Future<Result<void>> sendPasswordReset(String email) =>
       _repository.sendPasswordReset(email);

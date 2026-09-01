@@ -74,7 +74,20 @@ class _FakeAuthRepository implements AuthRepository {
     required String fullName,
     required String email,
     required String password,
+    required String cpf,
+    required DateTime birthDate,
+    required String phone,
+    required bool marketingOptIn,
   }) async => const Success(true);
+
+  @override
+  Future<Result<void>> verifyEmailOtp({
+    required String email,
+    required String token,
+  }) async => const Success(null);
+
+  @override
+  Future<Result<bool>> isCpfTaken(String cpf) async => const Success(false);
 
   @override
   Future<Result<void>> signOut() async => const Success(null);

@@ -113,40 +113,34 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
     phoneInputFormatter(),
     widget.profile.phone ?? '',
   );
-  late DateTime? _birthDate = widget.profile.birthDate;
+  late String _birthDate = _formatBirthDate(widget.profile.birthDate);
 
   final _nameTouch = FieldTouch();
   final _cpfTouch = FieldTouch();
+  final _birthTouch = FieldTouch();
   final _phoneTouch = FieldTouch();
   bool _submitted = false;
-
-  Future<void> _pickDate() async {
-    final now = DateTime.now();
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: _birthDate ?? DateTime(now.year - 25),
-      firstDate: DateTime(1900),
-      lastDate: now,
-      helpText: context.l10n.personalFieldBirthDate,
-    );
-    if (picked != null) setState(() => _birthDate = picked);
-  }
 
   Future<void> _save() async {
     FocusScope.of(context).unfocus();
     setState(() => _submitted = true);
     final nameValid = _name.trim().isNotEmpty;
     final cpfValid = _cpf.isEmpty || AppValidators.isValidCpf(onlyDigits(_cpf));
+    final birthValid =
+        _birthDate.isEmpty ||
+        AppValidators.birthDate(context.l10n, _birthDate) == null;
     final phoneValid =
         _phone.isEmpty || AppValidators.isValidMobilePhone(_phone);
-    if (!nameValid || !cpfValid || !phoneValid) return;
+    if (!nameValid || !cpfValid || !birthValid || !phoneValid) return;
 
     final cpfDigits = onlyDigits(_cpf);
     final phoneDigits = onlyDigits(_phone);
     final failure = await context.read<ProfileCubit>().updatePersonalData(
       fullName: _name.trim(),
       cpf: cpfDigits.isEmpty ? null : cpfDigits,
-      birthDate: _birthDate,
+      birthDate: _birthDate.isEmpty
+          ? null
+          : AppValidators.parseBirthDate(_birthDate),
       phone: phoneDigits.isEmpty ? null : phoneDigits,
     );
     if (!mounted) return;
@@ -164,9 +158,6 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final birthLabel = _birthDate == null
-        ? ''
-        : '${_birthDate!.day.toString().padLeft(2, '0')}/${_birthDate!.month.toString().padLeft(2, '0')}/${_birthDate!.year}';
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(
@@ -209,11 +200,21 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
           },
         ),
         const SizedBox(height: AppSpacing.lg),
-        RegistrationPickerField(
+        RegistrationTextField(
           label: context.l10n.personalFieldBirthDate,
-          value: birthLabel,
-          placeholder: context.l10n.personalSelectDate,
-          onTap: _pickDate,
+          value: _birthDate,
+          hintText: context.l10n.authBirthDateHint,
+          errorText: _birthTouch.errorFor(
+            _birthDate,
+            submitted: _submitted,
+            format: (v) => AppValidators.birthDate(context.l10n, v),
+          ),
+          keyboardType: TextInputType.number,
+          inputFormatters: [birthDateInputFormatter()],
+          onChanged: (value) {
+            _birthTouch.touched = true;
+            setState(() => _birthDate = value);
+          },
         ),
         const SizedBox(height: AppSpacing.lg),
         RegistrationTextField(
@@ -267,4 +268,11 @@ String _applyMask(TextInputFormatter formatter, String raw) {
   return formatter
       .formatEditUpdate(TextEditingValue.empty, TextEditingValue(text: raw))
       .text;
+}
+
+String _formatBirthDate(DateTime? date) {
+  if (date == null) return '';
+  return '${date.day.toString().padLeft(2, '0')}/'
+      '${date.month.toString().padLeft(2, '0')}/'
+      '${date.year}';
 }
