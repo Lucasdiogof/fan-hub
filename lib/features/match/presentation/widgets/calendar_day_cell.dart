@@ -33,35 +33,38 @@ class CalendarDayCell extends StatelessWidget {
     // nunca ficar poluída.
     final match = matches.isEmpty ? null : matches.first;
 
-    return Padding(
-      padding: const EdgeInsets.all(2),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 24,
-            height: 24,
-            alignment: Alignment.center,
-            decoration: isToday
-                ? BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: colors.primary.withValues(alpha: 0.14),
-                    border: Border.all(color: colors.primary, width: 1.2),
-                  )
-                : null,
-            child: Text(
-              '${date.day}',
-              style: TextStyle(
-                fontSize: 12.5,
-                fontWeight: isToday ? FontWeight.w800 : FontWeight.w600,
-                color: match == null ? colors.textHint : colors.textPrimary,
-              ),
+    // Dia sem partida: só o número, do jeito simples de sempre. Dia com
+    // partida: só o escudo (ver `_MatchIndicator`) — sem número nenhum, nem
+    // solto nem sobreposto.
+    if (match == null) {
+      return Padding(
+        padding: const EdgeInsets.all(2),
+        child: Container(
+          width: 24,
+          height: 24,
+          alignment: Alignment.center,
+          decoration: isToday
+              ? BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: colors.primary.withValues(alpha: 0.14),
+                  border: Border.all(color: colors.primary, width: 1.2),
+                )
+              : null,
+          child: Text(
+            '${date.day}',
+            style: TextStyle(
+              fontSize: 12.5,
+              fontWeight: isToday ? FontWeight.w800 : FontWeight.w600,
+              color: colors.textHint,
             ),
           ),
-          const SizedBox(height: 3),
-          if (match != null) _MatchIndicator(match: match, onTap: onMatchTap),
-        ],
-      ),
+        ),
+      );
+    }
+
+    return Padding(
+      padding: const EdgeInsets.all(2),
+      child: _MatchIndicator(match: match, onTap: onMatchTap),
     );
   }
 }
@@ -86,7 +89,7 @@ class _MatchIndicator extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ClubBadge(team: opponent, size: 22),
+              ClubBadge(team: opponent, size: 30),
               const SizedBox(height: 3),
               _HomeAwayPill(isHome: isHome),
             ],

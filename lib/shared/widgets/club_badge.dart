@@ -127,11 +127,20 @@ class ClubBadge extends StatelessWidget {
     // vez ele aparece na hora em qualquer reabertura do app — sem o "flash"
     // do círculo vazio enquanto rebuscava da rede. O `fadeIn` curto suaviza
     // a primeira aparição (quando ainda não está em cache).
+    //
+    // `memCacheWidth`/`memCacheHeight`: os ícones da OneFootball vêm bem
+    // maiores que o badge exibido (ex.: escudo de bolso a 22px). Sem isso,
+    // toda vez decodifica o PNG no tamanho original antes de encolher —
+    // caro o bastante pra ficar visível quando o calendário mostra várias
+    // dezenas de escudos diferentes de uma vez no grid do mês.
+    final pixelSize = (size * MediaQuery.of(context).devicePixelRatio).round();
     return CachedNetworkImage(
       imageUrl: url,
       width: size,
       height: size,
       fit: BoxFit.contain,
+      memCacheWidth: pixelSize,
+      memCacheHeight: pixelSize,
       fadeInDuration: const Duration(milliseconds: 180),
       placeholder: (context, _) => _LoadingBadge(size: size),
       errorWidget: (context, _, _) => _fallback(context),

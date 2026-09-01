@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/match/domain/calendar_competition_filter.dart';
 import 'package:goias_app/features/match/domain/calendar_month_grid.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/cubit/game_calendar_cubit.dart';
@@ -92,21 +91,9 @@ class _SeasonAndFilterHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const _SeasonBadge(),
-          const SizedBox(height: AppSpacing.md),
-          BlocBuilder<GameCalendarCubit, GameCalendarState>(
-            builder: (context, state) => _CompetitionFilterRow(
-              selected: state.competitionFilter,
-              onChanged: context.read<GameCalendarCubit>().setCompetitionFilter,
-            ),
-          ),
-        ],
-      ),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+      child: _SeasonBadge(),
     );
   }
 }
@@ -133,87 +120,6 @@ class _SeasonBadge extends StatelessWidget {
         const SizedBox(width: 2),
         Icon(Icons.expand_more_rounded, size: 18, color: colors.textHint),
       ],
-    );
-  }
-}
-
-class _CompetitionFilterRow extends StatelessWidget {
-  const _CompetitionFilterRow({
-    required this.selected,
-    required this.onChanged,
-  });
-
-  final CalendarCompetitionFilter selected;
-  final ValueChanged<CalendarCompetitionFilter> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final options = {
-      CalendarCompetitionFilter.all: l10n.matchCalendarFilterAll,
-      CalendarCompetitionFilter.brasileirao:
-          l10n.matchCalendarFilterBrasileirao,
-      CalendarCompetitionFilter.copaDoBrasil:
-          l10n.matchCalendarFilterCopaDoBrasil,
-      CalendarCompetitionFilter.goiano: l10n.matchCalendarFilterGoiano,
-      CalendarCompetitionFilter.outros: l10n.matchCalendarFilterOutros,
-    };
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          for (final entry in options.entries) ...[
-            _FilterChip(
-              label: entry.value,
-              selected: selected == entry.key,
-              onTap: () => onChanged(entry.key),
-            ),
-            const SizedBox(width: AppSpacing.xs),
-          ],
-        ],
-      ),
-    );
-  }
-}
-
-class _FilterChip extends StatelessWidget {
-  const _FilterChip({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
-
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Material(
-      color: selected ? colors.primary : colors.surface,
-      borderRadius: BorderRadius.circular(999),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(999),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(999),
-            border: Border.all(
-              color: selected ? Colors.transparent : colors.border,
-            ),
-          ),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 11.5,
-              fontWeight: FontWeight.w700,
-              color: selected ? colors.onPrimary : colors.textSecondary,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
@@ -312,10 +218,11 @@ class _MonthGrid extends StatelessWidget {
           crossAxisCount: 7,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          // Baixo de propósito: a célula com partida empilha número + escudo
-          // + pill CASA/FORA (~80px de conteúdo) — um aspect ratio maior
-          // (célula mais "quadrada") estourava layout nessa altura real.
-          childAspectRatio: 0.56,
+          // O número fica sobreposto no canto do escudo (ver
+          // `CalendarDayCell`), então o conteúdo real da célula com partida
+          // é só escudo + pill CASA/FORA (~50px) — bem mais compacto que
+          // quando eram dois blocos empilhados.
+          childAspectRatio: 0.85,
           children: [
             for (final date in days)
               CalendarDayCell(
