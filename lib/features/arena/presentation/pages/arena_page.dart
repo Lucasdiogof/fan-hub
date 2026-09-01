@@ -21,6 +21,9 @@ import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/cubit/tactical_identity_cubit.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_challenge_card.dart';
@@ -28,6 +31,7 @@ import 'package:goias_app/features/arena/presentation/widgets/arena_header_bar.d
 import 'package:goias_app/features/arena/presentation/widgets/arena_highlight_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_section_header.dart';
 import 'package:goias_app/features/arena/presentation/widgets/crowd_lineup_hero_card.dart';
+import 'package:goias_app/features/arena/presentation/widgets/tactical_identity_arena_card.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/open_crowd_lineup.dart';
@@ -58,6 +62,13 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   late Future<ArenaProgressSnapshot> _progressFuture =
       sl<ArenaProgressRepository>().loadSnapshot();
   late Future<int?> _crowdParticipantsFuture = _loadCrowdParticipants();
+  // Independente de `ArenaProgressSnapshot` de propósito — a Identidade
+  // Futebolística não participa de nenhuma pontuação/coleção do resto da
+  // Arena, então nunca deveria compartilhar infraestrutura com o que
+  // alimenta ranking/progresso (ver spec: "não chamar qualquer
+  // infraestrutura atual de score/acerto").
+  late Future<TacticalIdentityResult?> _tacticalIdentityFuture =
+      sl<TacticalIdentityRepository>().loadLatestResult();
   bool _celebrationShown = false;
 
   /// Só usado pro "X torcedores já escalaram" do hero — opcional por
@@ -74,7 +85,29 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     setState(() {
       _progressFuture = sl<ArenaProgressRepository>().loadSnapshot();
       _crowdParticipantsFuture = _loadCrowdParticipants();
+      _tacticalIdentityFuture = sl<TacticalIdentityRepository>()
+          .loadLatestResult();
     });
+  }
+
+  void _startTacticalIdentity(BuildContext context) {
+    unawaited(context.push('/arena/tactical-identity'));
+  }
+
+  Future<void> _viewTacticalIdentityResult(
+    BuildContext context,
+    TacticalIdentityResult result,
+  ) async {
+    await context.push('/arena/tactical-identity/result', extra: result);
+  }
+
+  void _redoTacticalIdentity(BuildContext context) {
+    unawaited(
+      context.push(
+        '/arena/tactical-identity/play',
+        extra: TacticalIdentityCubit(),
+      ),
+    );
   }
 
   @override
@@ -357,6 +390,27 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                             ),
                         ],
                       ),
+                    ),
+                    const SizedBox(height: AppSpacing.md),
+                    // Identidade Futebolística — jogo de PERFIL, não de
+                    // pontuação: por isso um card próprio abaixo do grid dos
+                    // 4 desafios, nunca um item a mais nele (o
+                    // `ArenaChallengeCard` genérico assume coleção/
+                    // progresso, que este jogo não tem). Nunca lê
+                    // `ArenaProgressSnapshot` — ver `_tacticalIdentityFuture`.
+                    FutureBuilder<TacticalIdentityResult?>(
+                      future: _tacticalIdentityFuture,
+                      builder: (context, snapshot) {
+                        final result = snapshot.data;
+                        return TacticalIdentityArenaCard(
+                          result: result,
+                          onStart: () => _startTacticalIdentity(context),
+                          onViewResult: () => result == null
+                              ? null
+                              : _viewTacticalIdentityResult(context, result),
+                          onRedo: () => _redoTacticalIdentity(context),
+                        );
+                      },
                     ),
                   ],
                 ),
