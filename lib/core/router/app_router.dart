@@ -16,6 +16,12 @@ import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_page.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_cubit.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
+import 'package:goias_app/features/arena/games/player_identity/cubit/player_identity_cubit.dart';
+import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
+import 'package:goias_app/features/arena/games/player_identity/pages/player_identity_intro_page.dart';
+import 'package:goias_app/features/arena/games/player_identity/pages/player_identity_processing_page.dart';
+import 'package:goias_app/features/arena/games/player_identity/pages/player_identity_question_page.dart';
+import 'package:goias_app/features/arena/games/player_identity/pages/player_identity_result_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_page.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_result_page.dart';
@@ -457,6 +463,38 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
               state,
               TacticalIdentityResultPage(
                 result: state.extra! as TacticalIdentityResult,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/arena/player-identity',
+            pageBuilder: (context, state) =>
+                appPage(state, const PlayerIdentityIntroPage()),
+          ),
+          GoRoute(
+            path: '/arena/player-identity/play',
+            pageBuilder: (context, state) => appPage(
+              state,
+              PlayerIdentityQuestionPage(
+                cubit: state.extra as PlayerIdentityCubit?,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/arena/player-identity/processing',
+            pageBuilder: (context, state) => appPage(
+              state,
+              PlayerIdentityProcessingPage(
+                answers: state.extra! as List<PlayerIdentityOption>,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/arena/player-identity/result',
+            pageBuilder: (context, state) => appPage(
+              state,
+              PlayerIdentityResultPage(
+                result: state.extra! as PlayerIdentityResult,
               ),
             ),
           ),

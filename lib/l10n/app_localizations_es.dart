@@ -1509,6 +1509,70 @@ class AppLocalizationsEs extends AppLocalizations {
   String get tacticalAxisPragmatic => 'PRAGMÁTICO';
 
   @override
+  String get playerIdentityGameTitle => '¿Qué crack esmeraldino eres?';
+
+  @override
+  String get playerIdentityCardSubtitleNew =>
+      '10 situaciones de juego. Descubre con qué ídolo del Verdão tu estilo combina más.';
+
+  @override
+  String get playerIdentityCardCtaStart => 'Descubrir mi perfil';
+
+  @override
+  String get playerIdentityCardCtaViewResult => 'Ver resultado';
+
+  @override
+  String get playerIdentityCardCtaRedo => 'Rehacer';
+
+  @override
+  String playerIdentityYourProfile(String name) {
+    return 'Tu perfil: $name';
+  }
+
+  @override
+  String get playerIntroTitle => '¿Qué crack esmeraldino eres?';
+
+  @override
+  String get playerIntroDescription =>
+      'Cada jugador ve el partido de una manera. Responde 10 situaciones de juego y descubre qué nombre que marcó la historia del Goiás combina más con tus elecciones.';
+
+  @override
+  String get playerIntroMeta => '10 preguntas • ~3 minutos';
+
+  @override
+  String get playerIntroNoRightWrong => 'No existen respuestas correctas.';
+
+  @override
+  String get playerIntroStart => 'Empezar prueba';
+
+  @override
+  String get playerProcessingTitle => 'Calculando tu estilo...';
+
+  @override
+  String get playerResultCompleted => 'PRUEBA COMPLETADA';
+
+  @override
+  String get playerResultYourProfile => 'TU PERFIL';
+
+  @override
+  String get playerResultReferencesTitle => 'REFERENCIAS ESMERALDINAS';
+
+  @override
+  String get playerResultTraitsTitle => 'TUS RASGOS';
+
+  @override
+  String playerIdentityAffinityLabel(String percent) {
+    return '$percent% afinidad de estilo';
+  }
+
+  @override
+  String get playerResultShare => 'Compartir resultado';
+
+  @override
+  String get playerReferenceDisclaimer =>
+      'Estos atributos son referencias editoriales usadas en esta experiencia y no evaluaciones oficiales del jugador.';
+
+  @override
   String get lineupPlayerHeading => 'JUGADOR';
 
   @override

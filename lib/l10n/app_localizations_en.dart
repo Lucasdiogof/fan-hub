@@ -1504,6 +1504,70 @@ class AppLocalizationsEn extends AppLocalizations {
   String get tacticalAxisPragmatic => 'PRAGMATIC';
 
   @override
+  String get playerIdentityGameTitle => 'Which Emerald legend are you?';
+
+  @override
+  String get playerIdentityCardSubtitleNew =>
+      '10 game situations. Find out which Goiás idol your style matches most.';
+
+  @override
+  String get playerIdentityCardCtaStart => 'Discover my profile';
+
+  @override
+  String get playerIdentityCardCtaViewResult => 'See result';
+
+  @override
+  String get playerIdentityCardCtaRedo => 'Retake';
+
+  @override
+  String playerIdentityYourProfile(String name) {
+    return 'Your profile: $name';
+  }
+
+  @override
+  String get playerIntroTitle => 'Which Emerald legend are you?';
+
+  @override
+  String get playerIntroDescription =>
+      'Every player sees the match differently. Answer 10 game situations and find out which name that marked Goiás history matches your choices most.';
+
+  @override
+  String get playerIntroMeta => '10 questions • ~3 minutes';
+
+  @override
+  String get playerIntroNoRightWrong => 'There are no right answers.';
+
+  @override
+  String get playerIntroStart => 'Start test';
+
+  @override
+  String get playerProcessingTitle => 'Calculating your style...';
+
+  @override
+  String get playerResultCompleted => 'TEST COMPLETED';
+
+  @override
+  String get playerResultYourProfile => 'YOUR PROFILE';
+
+  @override
+  String get playerResultReferencesTitle => 'EMERALD REFERENCES';
+
+  @override
+  String get playerResultTraitsTitle => 'YOUR TRAITS';
+
+  @override
+  String playerIdentityAffinityLabel(String percent) {
+    return '$percent% style affinity';
+  }
+
+  @override
+  String get playerResultShare => 'Share result';
+
+  @override
+  String get playerReferenceDisclaimer =>
+      'These attributes are editorial references used in this experience and not the player\'s official ratings.';
+
+  @override
   String get lineupPlayerHeading => 'PLAYER';
 
   @override

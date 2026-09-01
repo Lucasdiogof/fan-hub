@@ -2716,6 +2716,120 @@ abstract class AppLocalizations {
   /// **'PRAGMÁTICO'**
   String get tacticalAxisPragmatic;
 
+  /// No description provided for @playerIdentityGameTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Que craque esmeraldino é você?'**
+  String get playerIdentityGameTitle;
+
+  /// No description provided for @playerIdentityCardSubtitleNew.
+  ///
+  /// In pt, this message translates to:
+  /// **'10 situações de jogo. Descubra com qual ídolo do Verdão seu estilo mais combina.'**
+  String get playerIdentityCardSubtitleNew;
+
+  /// No description provided for @playerIdentityCardCtaStart.
+  ///
+  /// In pt, this message translates to:
+  /// **'Descobrir meu perfil'**
+  String get playerIdentityCardCtaStart;
+
+  /// No description provided for @playerIdentityCardCtaViewResult.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver resultado'**
+  String get playerIdentityCardCtaViewResult;
+
+  /// No description provided for @playerIdentityCardCtaRedo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Refazer'**
+  String get playerIdentityCardCtaRedo;
+
+  /// No description provided for @playerIdentityYourProfile.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu perfil: {name}'**
+  String playerIdentityYourProfile(String name);
+
+  /// No description provided for @playerIntroTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Que craque esmeraldino é você?'**
+  String get playerIntroTitle;
+
+  /// No description provided for @playerIntroDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do Goiás mais combina com suas escolhas.'**
+  String get playerIntroDescription;
+
+  /// No description provided for @playerIntroMeta.
+  ///
+  /// In pt, this message translates to:
+  /// **'10 perguntas • ~3 minutos'**
+  String get playerIntroMeta;
+
+  /// No description provided for @playerIntroNoRightWrong.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não existem respostas certas.'**
+  String get playerIntroNoRightWrong;
+
+  /// No description provided for @playerIntroStart.
+  ///
+  /// In pt, this message translates to:
+  /// **'Começar teste'**
+  String get playerIntroStart;
+
+  /// No description provided for @playerProcessingTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Calculando seu estilo...'**
+  String get playerProcessingTitle;
+
+  /// No description provided for @playerResultCompleted.
+  ///
+  /// In pt, this message translates to:
+  /// **'TESTE COMPLETADO'**
+  String get playerResultCompleted;
+
+  /// No description provided for @playerResultYourProfile.
+  ///
+  /// In pt, this message translates to:
+  /// **'SEU PERFIL'**
+  String get playerResultYourProfile;
+
+  /// No description provided for @playerResultReferencesTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'REFERÊNCIAS ESMERALDINAS'**
+  String get playerResultReferencesTitle;
+
+  /// No description provided for @playerResultTraitsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'SUAS MARCAS'**
+  String get playerResultTraitsTitle;
+
+  /// No description provided for @playerIdentityAffinityLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'{percent}% afinidade de estilo'**
+  String playerIdentityAffinityLabel(String percent);
+
+  /// No description provided for @playerResultShare.
+  ///
+  /// In pt, this message translates to:
+  /// **'Compartilhar resultado'**
+  String get playerResultShare;
+
+  /// No description provided for @playerReferenceDisclaimer.
+  ///
+  /// In pt, this message translates to:
+  /// **'Os atributos são referências editoriais utilizadas nesta experiência e não avaliações oficiais do jogador.'**
+  String get playerReferenceDisclaimer;
+
   /// No description provided for @lineupPlayerHeading.
   ///
   /// In pt, this message translates to:

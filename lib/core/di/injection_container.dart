@@ -13,6 +13,8 @@ import 'package:goias_app/features/arena/games/lineup/data/lineup_match_reposito
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_question_repository.dart';
+import 'package:goias_app/features/arena/games/player_identity/data/player_identity_repository.dart';
+import 'package:goias_app/features/arena/games/player_identity/data/supabase_player_identity_repository.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/supabase_tactical_identity_repository.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
@@ -202,6 +204,9 @@ void setupDependencies() {
   );
   sl.registerLazySingleton<TacticalIdentityRepository>(
     () => SupabaseTacticalIdentityRepository(Supabase.instance.client),
+  );
+  sl.registerLazySingleton<PlayerIdentityRepository>(
+    () => SupabasePlayerIdentityRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<ThemeCubit>(ThemeCubit.new);
   sl.registerLazySingleton<LocaleCubit>(LocaleCubit.new);

@@ -20,6 +20,9 @@ import 'package:goias_app/features/arena/games/guess_player/data/guess_player_st
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
+import 'package:goias_app/features/arena/games/player_identity/cubit/player_identity_cubit.dart';
+import 'package:goias_app/features/arena/games/player_identity/data/player_identity_repository.dart';
+import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
 import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/cubit/tactical_identity_cubit.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
@@ -31,6 +34,7 @@ import 'package:goias_app/features/arena/presentation/widgets/arena_header_bar.d
 import 'package:goias_app/features/arena/presentation/widgets/arena_highlight_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_section_header.dart';
 import 'package:goias_app/features/arena/presentation/widgets/crowd_lineup_hero_card.dart';
+import 'package:goias_app/features/arena/presentation/widgets/player_identity_arena_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/tactical_identity_arena_card.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
@@ -69,6 +73,11 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   // infraestrutura atual de score/acerto").
   late Future<TacticalIdentityResult?> _tacticalIdentityFuture =
       sl<TacticalIdentityRepository>().loadLatestResult();
+  // Mesmo isolamento do `_tacticalIdentityFuture` acima — o "Que craque
+  // esmeraldino é você?" também é um teste de perfil, nunca participa de
+  // ranking/XP/streak/pontuação.
+  late Future<PlayerIdentityResult?> _playerIdentityFuture =
+      sl<PlayerIdentityRepository>().loadLatestResult();
   bool _celebrationShown = false;
 
   /// Só usado pro "X torcedores já escalaram" do hero — opcional por
@@ -87,6 +96,8 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
       _crowdParticipantsFuture = _loadCrowdParticipants();
       _tacticalIdentityFuture = sl<TacticalIdentityRepository>()
           .loadLatestResult();
+      _playerIdentityFuture = sl<PlayerIdentityRepository>()
+          .loadLatestResult();
     });
   }
 
@@ -99,6 +110,26 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     TacticalIdentityResult result,
   ) async {
     await context.push('/arena/tactical-identity/result', extra: result);
+  }
+
+  void _startPlayerIdentity(BuildContext context) {
+    unawaited(context.push('/arena/player-identity'));
+  }
+
+  Future<void> _viewPlayerIdentityResult(
+    BuildContext context,
+    PlayerIdentityResult result,
+  ) async {
+    await context.push('/arena/player-identity/result', extra: result);
+  }
+
+  void _redoPlayerIdentity(BuildContext context) {
+    unawaited(
+      context.push(
+        '/arena/player-identity/play',
+        extra: PlayerIdentityCubit(),
+      ),
+    );
   }
 
   void _redoTacticalIdentity(BuildContext context) {
@@ -409,6 +440,24 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                               ? null
                               : _viewTacticalIdentityResult(context, result),
                           onRedo: () => _redoTacticalIdentity(context),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: AppSpacing.md),
+                    // "Que craque esmeraldino é você?" — mesmo tratamento
+                    // da Identidade Futebolística logo acima: card próprio,
+                    // teste de perfil independente, nunca no grid genérico.
+                    FutureBuilder<PlayerIdentityResult?>(
+                      future: _playerIdentityFuture,
+                      builder: (context, snapshot) {
+                        final result = snapshot.data;
+                        return PlayerIdentityArenaCard(
+                          result: result,
+                          onStart: () => _startPlayerIdentity(context),
+                          onViewResult: () => result == null
+                              ? null
+                              : _viewPlayerIdentityResult(context, result),
+                          onRedo: () => _redoPlayerIdentity(context),
                         );
                       },
                     ),
