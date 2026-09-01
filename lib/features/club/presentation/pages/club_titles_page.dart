@@ -90,14 +90,6 @@ class ClubTitlesPage extends StatelessWidget {
                           color: colors.textSecondary,
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        context.l10n.clubCampaignsSubtitle,
-                        style: TextStyle(
-                          fontSize: 12.5,
-                          color: colors.textHint,
-                        ),
-                      ),
                       const SizedBox(height: AppSpacing.md),
                       for (
                         var i = 0;
@@ -138,8 +130,6 @@ class _TitleGroupSection extends StatelessWidget {
         _TitleGroupCard(group: group),
         if (group.images.isNotEmpty) ...[
           const SizedBox(height: AppSpacing.md),
-          const _MomentsLabel(),
-          const SizedBox(height: AppSpacing.sm),
           TitleImageCarousel(
             images: group.images,
             title: group.competitionName,
@@ -219,8 +209,6 @@ class _CampaignSection extends StatelessWidget {
         _CampaignCard(campaign: campaign),
         if (campaign.images.isNotEmpty) ...[
           const SizedBox(height: AppSpacing.md),
-          const _MomentsLabel(),
-          const SizedBox(height: AppSpacing.sm),
           TitleImageCarousel(images: campaign.images, title: campaign.title),
         ],
       ],
@@ -266,23 +254,6 @@ class _CampaignCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _MomentsLabel extends StatelessWidget {
-  const _MomentsLabel();
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      context.l10n.clubTitleMoments,
-      style: TextStyle(
-        fontSize: 11,
-        fontWeight: FontWeight.w800,
-        letterSpacing: 0.8,
-        color: context.colors.textHint,
       ),
     );
   }

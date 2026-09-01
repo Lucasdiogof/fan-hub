@@ -59,6 +59,14 @@ flutter:
     - lib/assets/content/
     - lib/assets/sponsors/
     - lib/assets/branding/
+    - lib/assets/club/titles/campeonato-goiano/
+    - lib/assets/club/titles/copa-centro-oeste/
+    - lib/assets/club/titles/serie-b/
+    - lib/assets/club/titles/copa-verde/
+    - lib/assets/club/titles/copa-do-brasil-1990/
+    - lib/assets/club/titles/libertadores-2006/
+    - lib/assets/club/titles/sula-2010/
+    - lib/assets/club/titles/brasileirao-2005/
     - lib/assets/games/guess_player/
     - lib/assets/games/penalty/
     - lib/assets/squad/

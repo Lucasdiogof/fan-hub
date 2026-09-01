@@ -9,9 +9,8 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/data/club_titles_data.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_header.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 class ClubPage extends StatelessWidget {
   const ClubPage({super.key});
@@ -30,88 +29,64 @@ class ClubPage extends StatelessWidget {
     final colors = context.colors;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: BackButtonCircle(onTap: () => context.pop()),
+      body: DetailPageHeader(
+        title: context.l10n.clubEntryTitle,
+        heroTitle: const ClubHeader(),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xxl),
+          child: Column(
+            children: [
+              _ClubBigCard(
+                icon: Icons.auto_stories_outlined,
+                title: context.l10n.clubSectionHistory,
+                subtitle: context.l10n.clubHistorySubtitle,
+                onTap: () => context.push('/clube/historia'),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              _ClubBigCard(
+                icon: Icons.emoji_events_outlined,
+                title: context.l10n.clubSectionTitles,
+                subtitle: context.l10n.clubTitlesSubtitle(
+                  ClubTitlesData.totalTitles,
                 ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    children: [
-                      const ClubHeader(),
-                      const SizedBox(height: AppSpacing.xxl),
-                      _ClubBigCard(
-                        icon: Icons.auto_stories_outlined,
-                        title: context.l10n.clubSectionHistory,
-                        subtitle: context.l10n.clubHistorySubtitle,
-                        onTap: () => context.push('/clube/historia'),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
-                        icon: Icons.emoji_events_outlined,
-                        title: context.l10n.clubSectionTitles,
-                        subtitle: context.l10n.clubTitlesSubtitle(
-                          ClubTitlesData.totalTitles,
-                        ),
-                        onTap: () => context.push('/clube/titulos'),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
-                        icon: Icons.groups_outlined,
-                        title: context.l10n.clubSectionBoard,
-                        subtitle: context.l10n.clubBoardSubtitle,
-                        onTap: () => context.push('/clube/diretoria'),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
-                        icon: Icons.shield_outlined,
-                        title: context.l10n.clubSectionSquad,
-                        subtitle: context.l10n.clubSquadSubtitle,
-                        onTap: () => _openSquad(context),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
-                        icon: Icons.music_note_outlined,
-                        title: context.l10n.clubSectionSongs,
-                        subtitle: context.l10n.clubSongsSubtitle,
-                        onTap: () => context.push('/clube/hino'),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
-                        icon: Icons.fact_check_outlined,
-                        title: context.l10n.clubSectionTransparency,
-                        subtitle: context.l10n.clubTransparencySubtitle,
-                        onTap: () => context.push('/clube/transparencia'),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      _ClubBigCard(
-                        icon: Icons.handshake_outlined,
-                        title: context.l10n.clubSectionPartners,
-                        subtitle: context.l10n.clubPartnersSubtitle,
-                        onTap: () => context.push('/partners'),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                onTap: () => context.push('/clube/titulos'),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              _ClubBigCard(
+                icon: Icons.groups_outlined,
+                title: context.l10n.clubSectionBoard,
+                subtitle: context.l10n.clubBoardSubtitle,
+                onTap: () => context.push('/clube/diretoria'),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              _ClubBigCard(
+                icon: Icons.shield_outlined,
+                title: context.l10n.clubSectionSquad,
+                subtitle: context.l10n.clubSquadSubtitle,
+                onTap: () => _openSquad(context),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              _ClubBigCard(
+                icon: Icons.music_note_outlined,
+                title: context.l10n.clubSectionSongs,
+                subtitle: context.l10n.clubSongsSubtitle,
+                onTap: () => context.push('/clube/hino'),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              _ClubBigCard(
+                icon: Icons.fact_check_outlined,
+                title: context.l10n.clubSectionTransparency,
+                subtitle: context.l10n.clubTransparencySubtitle,
+                onTap: () => context.push('/clube/transparencia'),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              _ClubBigCard(
+                icon: Icons.handshake_outlined,
+                title: context.l10n.clubSectionPartners,
+                subtitle: context.l10n.clubPartnersSubtitle,
+                onTap: () => context.push('/partners'),
+              ),
+            ],
           ),
         ),
       ),
