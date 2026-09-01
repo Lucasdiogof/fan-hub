@@ -19,6 +19,7 @@ import 'package:goias_app/features/home/presentation/widgets/next_match_section.
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/match_navigation.dart';
 import 'package:goias_app/features/match/presentation/widgets/live_match_poller.dart';
+import 'package:goias_app/features/store/presentation/widgets/goias_store_banner.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_entry_card.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -282,6 +283,11 @@ class _ScrollContent extends StatelessWidget {
               const ArenaSpotlightCard(),
               const SizedBox(height: AppSpacing.lg),
               StoreEntryCard(
+                onTap: () =>
+                    sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              GoiasStoreBanner(
                 onTap: () =>
                     sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
               ),
