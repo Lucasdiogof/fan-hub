@@ -45,9 +45,11 @@ class AppAssets {
   static const String arenaStadiumPhoto =
       'lib/assets/branding/arena_stadium.png';
 
-  /// Foto colorida da caixa/uniformes da Goiás Store — usada só como marca
-  /// d'água do banner de entrada da loja na Home (ver [StoreEntryCard]),
-  /// tingida de verde e com opacidade baixa em tempo real (o arquivo em si
-  /// não é duotone, ao contrário de [arenaStadiumPhoto]).
-  static const String storeBanner = 'lib/assets/store_banner.png';
+  /// Foto da caixa/uniformes da Goiás Store, sem fundo e já tingida de
+  /// verde escuro (duotone gravado no arquivo, igual [arenaStadiumPhoto])
+  /// — usada no banner de entrada da loja na Home (ver [StoreEntryCard]).
+  /// Nunca tingir em tempo de execução: toda tentativa via `ColorFiltered`
+  /// externo ou `Image.color`/`colorBlendMode` quebrou a transparência do
+  /// PNG (retângulo sólido) — bug de composição do Skia/Flutter.
+  static const String storeBanner = 'lib/assets/store_banner_green.png';
 }

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
+import 'package:goias_app/shared/widgets/diagonal_texture.dart';
 
 /// Destaque da Arena Esmeraldina na Home — é a porta de entrada pro hub da
 /// Arena inteiro, nunca propaganda de um minigame específico (já foi
@@ -27,13 +29,14 @@ class ArenaSpotlightCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => context.push('/arena'),
+        // O botão "Entrar na Arena" já é o controle semântico real (foco
+        // por teclado, rótulo próprio); esta camada só existe pra deixar o
+        // cartão inteiro clicável no toque/mouse, sem duplicar o mesmo
+        // botão pra leitores de tela — mesmo padrão do `StoreEntryCard`.
+        excludeFromSemantics: true,
         child: Container(
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [ArenaColors.arenaTop, ArenaColors.arenaBottom],
-            ),
+            color: AppColors.light.deepGreen,
             border: Border.all(
               color: ArenaColors.pitch.withValues(alpha: 0.22),
             ),
@@ -47,6 +50,7 @@ class ArenaSpotlightCard extends StatelessWidget {
           ),
           child: Stack(
             children: [
+              const Positioned.fill(child: DiagonalTexture()),
               // Marca d'água — centralizada verticalmente, cortada pela
               // borda direita, em tom verde (duotone já gravado no asset,
               // não a foto colorida) e opacidade baixa: profundidade sem
@@ -109,24 +113,16 @@ class ArenaSpotlightCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: AppSpacing.md),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          l10n.arenaSpotlightCta,
-                          style: const TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white,
-                          ),
+                    ElevatedButton(
+                      onPressed: () => context.push('/arena'),
+                      style: whiteFilledOnDarkStyle(),
+                      child: Text(
+                        l10n.arenaSpotlightCta,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w800,
                         ),
-                        const SizedBox(width: 6),
-                        const Icon(
-                          Icons.arrow_forward_rounded,
-                          size: 16,
-                          color: Colors.white,
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
