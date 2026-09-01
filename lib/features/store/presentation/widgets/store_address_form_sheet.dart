@@ -1,12 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
+import 'package:goias_app/shared/domain/brazilian_states.dart';
 import 'package:goias_app/shared/utils/masks.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
 import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
+import 'package:goias_app/shared/widgets/app_option_picker.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 
 /// Formulário de endereço de ENTREGA da Store — separado do endereço
@@ -66,15 +73,30 @@ class _StoreAddressFormState extends State<_StoreAddressForm> {
   bool _saving = false;
   bool _submitted = false;
 
+  Timer? _cepDebounce;
+  bool _cepLoading = false;
+
+  List<String> _availableCities = const [];
+  bool _citiesLoading = false;
+
   final _zipTouch = FieldTouch();
   final _streetTouch = FieldTouch();
   final _numberTouch = FieldTouch();
   final _neighborhoodTouch = FieldTouch();
-  final _cityTouch = FieldTouch();
-  final _stateTouch = FieldTouch();
+
+  @override
+  void initState() {
+    super.initState();
+    // Editando (ou pré-preenchendo a partir do residencial) um endereço que
+    // já tem Estado — carrega a lista de cidades de uma vez, pra abrir o
+    // seletor de Cidade já pronto sem precisar trocar de Estado primeiro.
+    final state = _stateController.text;
+    if (state.isNotEmpty) unawaited(_loadCities(state));
+  }
 
   @override
   void dispose() {
+    _cepDebounce?.cancel();
     _labelController.dispose();
     _zipController.dispose();
     _streetController.dispose();
@@ -86,13 +108,115 @@ class _StoreAddressFormState extends State<_StoreAddressForm> {
     super.dispose();
   }
 
+  void _onZipChanged(String value) {
+    _zipTouch.touched = true;
+    setState(() {});
+    _cepDebounce?.cancel();
+
+    final digits = onlyDigits(value);
+    if (digits.length != 8) return;
+
+    _cepDebounce = Timer(
+      const Duration(milliseconds: 500),
+      () => _lookupZip(digits),
+    );
+  }
+
+  Future<void> _lookupZip(String digits) async {
+    setState(() => _cepLoading = true);
+    final result = await sl<AddressRepository>().findByZipCode(digits);
+    if (!mounted) return;
+    // O usuário pode ter mudado o CEP enquanto a consulta rodava.
+    if (onlyDigits(_zipController.text) != digits) return;
+
+    setState(() => _cepLoading = false);
+    switch (result) {
+      case Success(:final data):
+        if (data == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(context.l10n.addressCepNotFound)),
+          );
+          return;
+        }
+        setState(() {
+          if (data.street.isNotEmpty) _streetController.text = data.street;
+          if (data.neighborhood.isNotEmpty) {
+            _neighborhoodController.text = data.neighborhood;
+          }
+          if (data.city.isNotEmpty) _cityController.text = data.city;
+          if (data.state.isNotEmpty) {
+            _stateController.text = BrazilianStates.nameForCode(data.state);
+          }
+        });
+        if (data.state.isNotEmpty) {
+          unawaited(_loadCities(_stateController.text));
+        }
+      case Error(:final failure):
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(failure.message)));
+    }
+  }
+
+  Future<void> _loadCities(String stateName) async {
+    setState(() {
+      _citiesLoading = true;
+      _availableCities = const [];
+    });
+    final code = BrazilianStates.codeForName(stateName) ?? stateName;
+    final result = await sl<AddressRepository>().getCitiesByState(code);
+    if (!mounted || _stateController.text != stateName) return;
+    switch (result) {
+      case Success(:final data):
+        setState(() {
+          _availableCities = data;
+          _citiesLoading = false;
+        });
+      case Error():
+        setState(() => _citiesLoading = false);
+    }
+  }
+
+  Future<void> _pickState() async {
+    final current = _stateController.text;
+    final picked = await AppOptionPicker.show<String>(
+      context,
+      selected: current.isEmpty ? null : current,
+      options: [
+        for (final state in BrazilianStates.states)
+          AppPickerOption(value: state.name, label: state.name),
+      ],
+    );
+    if (picked == null || picked == current) return;
+    // Trocar de Estado manualmente limpa a Cidade — uma cidade do Estado
+    // anterior não faz mais sentido — e busca os municípios da nova UF.
+    setState(() {
+      _stateController.text = picked;
+      _cityController.text = '';
+    });
+    unawaited(_loadCities(picked));
+  }
+
+  Future<void> _pickCity() async {
+    final current = _cityController.text;
+    final picked = await AppOptionPicker.show<String>(
+      context,
+      selected: current.isEmpty ? null : current,
+      options: [
+        for (final city in _availableCities)
+          AppPickerOption(value: city, label: city),
+      ],
+    );
+    if (picked != null) setState(() => _cityController.text = picked);
+  }
+
   bool get _isValid =>
       AppValidators.isValidZipCode(_zipController.text) &&
       _streetController.text.trim().isNotEmpty &&
       _numberController.text.trim().isNotEmpty &&
       _neighborhoodController.text.trim().isNotEmpty &&
       _cityController.text.trim().isNotEmpty &&
-      _stateController.text.trim().length == 2;
+      _stateController.text.trim().isNotEmpty;
 
   Future<void> _submit() async {
     setState(() => _submitted = true);
@@ -111,7 +235,7 @@ class _StoreAddressFormState extends State<_StoreAddressForm> {
             : _complementController.text.trim(),
         neighborhood: _neighborhoodController.text.trim(),
         city: _cityController.text.trim(),
-        state: _stateController.text.trim().toUpperCase(),
+        state: _stateController.text.trim(),
         isDefault: widget.initial?.isDefault ?? false,
         label: _labelController.text.trim().isEmpty
             ? null
@@ -166,22 +290,33 @@ class _StoreAddressFormState extends State<_StoreAddressForm> {
                 controller: _zipController,
                 keyboardType: TextInputType.number,
                 inputFormatters: [cepInputFormatter()],
-                onChanged: (v) {
-                  _zipTouch.touched = true;
-                  setState(() {});
-                },
-                decoration: _decoration(
-                  context,
-                  l10n.storeZipCodeLabel,
-                  errorText: _zipTouch.errorFor(
-                    _zipController.text,
-                    submitted: _submitted,
-                    format: (v) => AppValidators.isValidZipCode(v)
-                        ? null
-                        : l10n.storeValZipInvalid,
-                    requiredMessage: l10n.validatorZipRequired,
-                  ),
-                ),
+                onChanged: _onZipChanged,
+                decoration:
+                    _decoration(
+                      context,
+                      l10n.storeZipCodeLabel,
+                      errorText: _zipTouch.errorFor(
+                        _zipController.text,
+                        submitted: _submitted,
+                        format: (v) => AppValidators.isValidZipCode(v)
+                            ? null
+                            : l10n.storeValZipInvalid,
+                        requiredMessage: l10n.validatorZipRequired,
+                      ),
+                    ).copyWith(
+                      suffixIcon: _cepLoading
+                          ? const Padding(
+                              padding: EdgeInsets.all(14),
+                              child: SizedBox(
+                                width: 16,
+                                height: 16,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              ),
+                            )
+                          : null,
+                    ),
               ),
               const SizedBox(height: AppSpacing.sm),
               TextField(
@@ -258,46 +393,41 @@ class _StoreAddressFormState extends State<_StoreAddressForm> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    flex: 3,
                     child: TextField(
-                      controller: _cityController,
-                      onChanged: (v) {
-                        _cityTouch.touched = true;
-                        setState(() {});
-                      },
+                      controller: _stateController,
+                      readOnly: true,
+                      onTap: _pickState,
                       decoration: _decoration(
                         context,
-                        l10n.storeCityLabel,
-                        errorText: _cityTouch.errorFor(
-                          _cityController.text,
-                          submitted: _submitted,
-                          requiredMessage: l10n.membershipValCity,
-                        ),
+                        l10n.storeStateLabel,
+                        errorText: _submitted && _stateController.text.isEmpty
+                            ? l10n.membershipValState
+                            : null,
                       ),
                     ),
                   ),
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(
+                    flex: 3,
                     child: TextField(
-                      controller: _stateController,
-                      maxLength: 2,
-                      textCapitalization: TextCapitalization.characters,
-                      onChanged: (v) {
-                        _stateTouch.touched = true;
-                        setState(() {});
-                      },
+                      controller: _cityController,
+                      readOnly: true,
+                      onTap: _stateController.text.isEmpty || _citiesLoading
+                          ? null
+                          : _pickCity,
                       decoration: _decoration(
                         context,
-                        l10n.storeStateLabel,
-                        errorText: _stateTouch.errorFor(
-                          _stateController.text,
-                          submitted: _submitted,
-                          format: (v) => v.trim().length == 2
-                              ? null
-                              : l10n.membershipValState,
-                          requiredMessage: l10n.membershipValState,
-                        ),
-                      ).copyWith(counterText: ''),
+                        l10n.storeCityLabel,
+                        errorText: _submitted && _cityController.text.isEmpty
+                            ? l10n.membershipValCity
+                            : null,
+                      ).copyWith(
+                        hintText: _citiesLoading
+                            ? l10n.membershipLoadingCities
+                            : (_stateController.text.isEmpty
+                                  ? l10n.membershipSelectStateFirst
+                                  : l10n.membershipSelectCity),
+                      ),
                     ),
                   ),
                 ],

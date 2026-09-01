@@ -174,17 +174,47 @@ class _AddressFormState extends State<_AddressForm> {
   Timer? _cepDebounce;
   bool _cepLoading = false;
 
+  List<String> _availableCities = const [];
+  bool _citiesLoading = false;
+
   final _zipTouch = FieldTouch();
   final _streetTouch = FieldTouch();
   final _numberTouch = FieldTouch();
   final _neighborhoodTouch = FieldTouch();
-  final _cityTouch = FieldTouch();
   bool _submitted = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Editando um endereço que já tem Estado — carrega a lista de cidades
+    // de uma vez, pra abrir o seletor de Cidade já pronto sem precisar
+    // trocar de Estado primeiro.
+    if (_state.isNotEmpty) unawaited(_loadCities(_state));
+  }
 
   @override
   void dispose() {
     _cepDebounce?.cancel();
     super.dispose();
+  }
+
+  Future<void> _loadCities(String stateName) async {
+    setState(() {
+      _citiesLoading = true;
+      _availableCities = const [];
+    });
+    final code = BrazilianStates.codeForName(stateName) ?? stateName;
+    final result = await sl<AddressRepository>().getCitiesByState(code);
+    if (!mounted || _state != stateName) return;
+    switch (result) {
+      case Success(:final data):
+        setState(() {
+          _availableCities = data;
+          _citiesLoading = false;
+        });
+      case Error():
+        setState(() => _citiesLoading = false);
+    }
   }
 
   void _onZipChanged(String value) {
@@ -217,14 +247,19 @@ class _AddressFormState extends State<_AddressForm> {
           );
           return;
         }
+        var newState = _state;
         setState(() {
           if (data.street.isNotEmpty) _street = data.street;
           if (data.neighborhood.isNotEmpty) _neighborhood = data.neighborhood;
           if (data.city.isNotEmpty) _city = data.city;
           if (data.state.isNotEmpty) {
-            _state = BrazilianStates.nameForCode(data.state);
+            newState = BrazilianStates.nameForCode(data.state);
+            _state = newState;
           }
         });
+        // Carrega a lista de cidades da UF que o CEP preencheu, pra manter
+        // o seletor de Cidade coerente caso o usuário queira revisar.
+        if (data.state.isNotEmpty) unawaited(_loadCities(newState));
       case Error(:final failure):
         ScaffoldMessenger.of(
           context,
@@ -241,7 +276,26 @@ class _AddressFormState extends State<_AddressForm> {
           AppPickerOption(value: state, label: state),
       ],
     );
-    if (picked != null) setState(() => _state = picked);
+    if (picked == null || picked == _state) return;
+    // Trocar de Estado manualmente limpa a Cidade — uma cidade do Estado
+    // anterior não faz mais sentido — e busca os municípios da nova UF.
+    setState(() {
+      _state = picked;
+      _city = '';
+    });
+    unawaited(_loadCities(picked));
+  }
+
+  Future<void> _pickCity() async {
+    final picked = await AppOptionPicker.show<String>(
+      context,
+      selected: _city.isEmpty ? null : _city,
+      options: [
+        for (final city in _availableCities)
+          AppPickerOption(value: city, label: city),
+      ],
+    );
+    if (picked != null) setState(() => _city = picked);
   }
 
   bool get _isValid =>
@@ -383,18 +437,18 @@ class _AddressFormState extends State<_AddressForm> {
           onTap: _pickState,
         ),
         const SizedBox(height: AppSpacing.lg),
-        RegistrationTextField(
+        RegistrationPickerField(
           label: context.l10n.addressFieldCity,
           value: _city,
-          errorText: _cityTouch.errorFor(
-            _city,
-            submitted: _submitted,
-            requiredMessage: context.l10n.membershipValCity,
-          ),
-          onChanged: (value) {
-            _cityTouch.touched = true;
-            setState(() => _city = value);
-          },
+          placeholder: _citiesLoading
+              ? context.l10n.membershipLoadingCities
+              : (_state.isEmpty
+                    ? context.l10n.membershipSelectStateFirst
+                    : context.l10n.membershipSelectCity),
+          errorText: _submitted && _city.isEmpty
+              ? context.l10n.membershipValCity
+              : null,
+          onTap: _state.isEmpty || _citiesLoading ? () {} : _pickCity,
         ),
         const SizedBox(height: AppSpacing.xxl),
         BlocBuilder<AddressCubit, AddressState>(
