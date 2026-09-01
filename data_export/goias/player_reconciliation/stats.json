@@ -1,0 +1,38 @@
+{
+  "totalCandidates": 292,
+  "bySources": {
+    "squad_members": 31,
+    "career_players": 30,
+    "guess_players": 173,
+    "lineup_matches": 151,
+    "player_identity_references": 21,
+    "goias_players_dart": 215
+  },
+  "byIdentity": {
+    "DISTINCT_PEOPLE": 3,
+    "AMBIGUOUS_IDENTITY": 86,
+    "EXACT_IDENTITY": 85,
+    "SINGLE_SOURCE": 118
+  },
+  "byPrimaryDataStatus": {
+    "POSITION_CONFLICT": 7,
+    "NEEDS_REVIEW": 78,
+    "INCOMPLETE": 7,
+    "PERIOD_CONFLICT": 3,
+    "STATS_CONFLICT": 1,
+    "CONSISTENT": 78,
+    "SINGLE_SOURCE": 118
+  },
+  "secondPass": {
+    "totalNeedsReviewOrAmbiguousBefore": 86,
+    "promotedToExact": 0,
+    "promotedToProbable": 0,
+    "stillPending": 86,
+    "reasonTagCounts": {
+      "sem_nome_completo_em_nenhuma_fonte": 86,
+      "periodo_incompativel": 1,
+      "nome_ou_apelido_isolado": 41,
+      "so_lineup_matches_ou_guess": 16
+    }
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "_comment": "Fonte ÚNICA das decisões humanas de reconciliação — o relatório v3.1 é gerado A PARTIR deste arquivo (+ candidates.json do motor automático), nunca o contrário. Cada override cita a evidência que sustenta a decisão. 'target' identifica o cluster automático afetado pela lista ordenada de 'source:sourceId' que o compõe (mesma chave usada por provisionalId em reconcile_players.mjs) — mecanicamente verificável, não uma referência solta a um nome.",
+  "version": "3.1",
+  "generatedForCandidatesFile": "candidates.json",
+  "overrides": [
+    {
+      "id": "danilo_split",
+      "type": "split",
+      "target": [
+        "career_players:danilo",
+        "guess_players:danilo_cunha_da_silva",
+        "lineup_matches:danilo",
+        "squad_members:danilo"
+      ],
+      "reason": "Confirmado por fonte externa: duas pessoas reais e documentadas, não colisão de dado. squad_members.birth_date=2007-05-12 já tornava cronologicamente impossível a passagem 1999-2003 de career_players, o que o motor automático já havia detectado sozinho (DISTINCT_PEOPLE, confiança 0.05) — esta evidência externa confirma a conclusão automática, não a contradiz.",
+      "evidence": [
+        {
+          "type": "external",
+          "url": "https://pt.wikipedia.org/wiki/Danilo_Gabriel_de_Andrade",
+          "description": "Danilo Gabriel de Andrade — meia, passagem histórica pelo Goiás"
+        },
+        {
+          "type": "external",
+          "url": "https://www.transfermarkt.com.br/danilo-cunha/profil/spieler/1257107",
+          "description": "Danilo Cunha da Silva — lateral-esquerdo, elenco atual"
+        },
+        {
+          "type": "internal",
+          "description": "As 2 aparições de lineup_matches:danilo (partidas 2003_juventude_brA_reacao e 2003_santos_brA_reacao, ambas 2003-01-01) caem inteiramente dentro do período 1999-2003 de career_players — pertencem 100% ao Danilo Gabriel de Andrade, nenhuma divisão adicional necessária dentro de lineup_matches."
+        }
+      ],
+      "resultingGroups": [
+        {
+          "canonicalName": "Danilo Cunha da Silva",
+          "identity": "EXACT_IDENTITY",
+          "identityConfidence": 0.98,
+          "members": [
+            {
+              "source": "squad_members",
+              "sourceId": "danilo"
+            },
+            {
+              "source": "guess_players",
+              "sourceId": "danilo_cunha_da_silva"
+            }
+          ]
+        },
+        {
+          "canonicalName": "Danilo Gabriel de Andrade",
+          "identity": "EXACT_IDENTITY",
+          "identityConfidence": 0.9,
+          "members": [
+            {
+              "source": "career_players",
+              "sourceId": "danilo"
+            },
+            {
+              "source": "lineup_matches",
+              "sourceId": "danilo",
+              "matchIdFilter": [
+                "2003_juventude_brA_reacao",
+                "2003_santos_brA_reacao"
+              ]
+            }
+          ],
+          "note": "Período 1999-2003 pelo Goiás ainda não auditado item a item contra a Wikipédia — só a NÃO-identidade com o Danilo atual foi confirmada. Ver pendingVerification."
+        }
+      ],
+      "pendingVerification": [
+        "Auditar o período exato 1999-2003 de career_players:danilo contra a fonte Wikipédia antes do INSERT final."
+      ],
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "nicolas_split",
+      "type": "split",
+      "target": [
+        "guess_players:nicolas_vichiatto_da_silva",
+        "lineup_matches:nicolas",
+        "squad_members:nicolas",
+        "goias_players_dart:178"
+      ],
+      "reason": "Confirmado por fonte externa: duas pessoas reais. As 4 aparições de lineup_matches:nicolas se dividem exatamente em 2 grupos por data, sem ambiguidade. Desde v3.1, goias_players_dart:178 ('Nicolas' bare, autocomplete) uniu com este mesmo cluster automático — mas SEM nenhum dado (posição/data/camisa) pra decidir qual dos dois Nicolas ele representa, então fica em unassignedMembers (nunca atribuído a um lado só) — é exatamente o caso que motivou o pedido de AMBIGUOUS_ALIAS no dataset canônico.",
+      "evidence": [
+        {
+          "type": "external",
+          "url": "https://www.transfermarkt.com.br/nicolas/profil/spieler/186408",
+          "description": "Nicolas Godinho Johann — atacante, Goiás 2021/2022"
+        },
+        {
+          "type": "external",
+          "url": "https://www.transfermarkt.com.br/nicolas/profil/spieler/442258",
+          "description": "Nicolas Vichiatto da Silva — lateral-esquerdo, Goiás 2026-atual, camisa 6"
+        },
+        {
+          "type": "internal",
+          "description": "lineup_matches:nicolas tem 4 aparições: 2021-10-15 e 2021-11-22 (ATA, camisa 9) vs. 2026-03-07 e 2026-03-15 (LE, camisa 6). O grupo 2026 bate exatamente com squad_members:nicolas (camisa 6, lateral-esquerdo)."
+        }
+      ],
+      "resultingGroups": [
+        {
+          "canonicalName": "Nicolas Vichiatto da Silva",
+          "identity": "EXACT_IDENTITY",
+          "identityConfidence": 0.95,
+          "members": [
+            {
+              "source": "squad_members",
+              "sourceId": "nicolas"
+            },
+            {
+              "source": "guess_players",
+              "sourceId": "nicolas_vichiatto_da_silva"
+            },
+            {
+              "source": "lineup_matches",
+              "sourceId": "nicolas",
+              "matchIdFilter": [
+                "2026_atleticogo_goiano_final_ida",
+                "2026_atleticogo_goiano_final_volta"
+              ]
+            }
+          ]
+        },
+        {
+          "canonicalName": "Nicolas Godinho Johann",
+          "identity": "EXACT_IDENTITY",
+          "identityConfidence": 0.9,
+          "members": [
+            {
+              "source": "lineup_matches",
+              "sourceId": "nicolas",
+              "matchIdFilter": [
+                "2021_csa_brB_g4",
+                "2021_guarani_brB_acesso"
+              ]
+            }
+          ],
+          "note": "Sem nenhuma outra fonte associada hoje (não está em career_players/guess_players) — se vier a ser incluído em outra fonte no futuro, associar por este nome."
+        }
+      ],
+      "unassignedMembers": [
+        {
+          "source": "goias_players_dart",
+          "sourceId": "178",
+          "reason": "Entrada 'Nicolas' (bare, sem posição/data/camisa) do autocomplete — não há nenhum dado nesta fonte pra decidir entre Nicolas Vichiatto da Silva e Nicolas Godinho Johann. Fica fora de AMBOS os `members` — o alias 'nicolas' é modelado como AMBIGUOUS_ALIAS (aponta pras duas pessoas, nunca resolvido sozinho) em canonical_aliases.json, nunca fundido silenciosamente num dos dois lados."
+        }
+      ],
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "michael_split",
+      "type": "split",
+      "target": [
+        "career_players:michael",
+        "guess_players:michael",
+        "lineup_matches:michael",
+        "player_identity_references:michael"
+      ],
+      "reason": "Investigação nos dados já exportados (seguindo a instrução do usuário de checar a data da partida): a única aparição de lineup_matches:michael é de 1999-12-12 (final do acesso da Série B de 1999) — 18 anos antes da passagem de Michael Richard Delgado de Oliveira (2017-2019). A data NÃO confirma a fusão que a instrução original condicionava — reportado honestamente como evidência CONTRA associar as duas.",
+      "evidence": [
+        {
+          "type": "internal",
+          "description": "career_players + guess_players + player_identity_references concordam em período 2017-2019, camisa 11, posição ponta/atacante — núcleo confirmado (Michael Richard Delgado de Oliveira)."
+        },
+        {
+          "type": "internal",
+          "description": "lineup_matches:michael é a partida 1999_santacruz_brB_titulo, 1999-12-12 — fora de qualquer sobreposição plausível com 2017-2019."
+        }
+      ],
+      "resultingGroups": [
+        {
+          "canonicalName": "Michael Richard Delgado de Oliveira",
+          "identity": "EXACT_IDENTITY",
+          "identityConfidence": 0.9,
+          "members": [
+            {
+              "source": "career_players",
+              "sourceId": "michael"
+            },
+            {
+              "source": "guess_players",
+              "sourceId": "michael"
+            },
+            {
+              "source": "player_identity_references",
+              "sourceId": "michael"
+            }
+          ]
+        },
+        {
+          "canonicalName": "Michael (1999, elenco do acesso à Série A)",
+          "identity": "PROBABLE_IDENTITY",
+          "identityConfidence": 0.4,
+          "members": [
+            {
+              "source": "lineup_matches",
+              "sourceId": "michael",
+              "matchIdFilter": [
+                "1999_santacruz_brB_titulo"
+              ]
+            }
+          ],
+          "note": "Nome completo não determinado — sem outra fonte associada. Não confundir com o Michael moderno (2017-2019) em nenhuma exportação futura."
+        }
+      ],
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "dieguinho_reclassify",
+      "type": "reclassify",
+      "target": [
+        "guess_players:dieguinho",
+        "lineup_matches:dieguinho",
+        "goias_players_dart:174"
+      ],
+      "reason": "O Dieguinho do Goiás é Jackson Diego Ibraim Fagundes — já atuou como volante, lateral-direito e meio-campista/meia de criação. O conflito de posição (LD em guess_players vs. MC em lineup_matches) é polivalência real, não sinal de identidade diferente. Desde v3.1, goias_players_dart:174 ('Dieguinho' bare) uniu com este mesmo cluster automático — sem ambiguidade aqui (reclassify não desmembra, o registro só corrobora o nome, sem precisar de atribuição por partida/período).",
+      "evidence": [
+        {
+          "type": "external",
+          "description": "Fornecido pelo usuário: Jackson Diego Ibraim Fagundes, já jogou como volante/lateral-direito/meia."
+        }
+      ],
+      "newIdentity": "EXACT_IDENTITY",
+      "newIdentityConfidence": 0.9,
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "positionModel": {
+        "primary": "meio-campo",
+        "secondary": [
+          "lateral-direito",
+          "volante"
+        ],
+        "note": "Posição por partida (lineup_matches) continua granular — nunca decide identidade sozinha quando já há corroboração de outro tipo."
+      },
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "erik_reclassify",
+      "type": "reclassify",
+      "target": [
+        "career_players:erik",
+        "guess_players:erik",
+        "player_identity_references:erik"
+      ],
+      "reason": "Confirmado por fonte externa + pela própria carreira completa já presente em career_players (não só o trecho is_goias): Erik Nascimento de Lima, Goiás 2013-2015, camisa 11. career_players.club_career já lista 2019-2020 no Yokohama F. Marinos (Japão), incompatível com qualquer passagem 2020 no Goiás — o \"anos 2020\" de player_identity_references está incorreto.",
+      "evidence": [
+        {
+          "type": "external",
+          "description": "Fornecido pelo usuário: Erik Nascimento de Lima, Goiás profissional 2013-2015, camisa 11; em 2020 estava no futebol japonês."
+        },
+        {
+          "type": "internal",
+          "description": "career_players:erik.club_career (carreira completa, não filtrada por is_goias) já mostra 2019-2020 Yokohama F. Marinos, 2021-2022 Changchun Yatai, 2023-2026 de volta ao Japão — sem nenhuma passagem 2020 no Goiás em lugar nenhum do próprio dataset."
+        }
+      ],
+      "newIdentity": "EXACT_IDENTITY",
+      "newIdentityConfidence": 0.9,
+      "canonicalName": "Erik Nascimento de Lima",
+      "contentCorrectionNeeded": {
+        "file": "lib/features/arena/games/player_identity/domain/player_identity_references.dart",
+        "field": "period (id: erik)",
+        "currentValue": "anos 2020",
+        "issue": "Não corresponde a nenhuma passagem real pelo Goiás — corrigir quando a migração de dado for implementada, fora do escopo desta reconciliação."
+      },
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "fabiano_reclassify",
+      "type": "reclassify",
+      "target": [
+        "guess_players:fabiano",
+        "lineup_matches:fabiano"
+      ],
+      "reason": "Investigação nos dados já exportados: as 3 aparições de lineup_matches:fabiano são todas de 2006 (Copa Libertadores), ao lado de Harlei/Rogério Corrêa/Júlio Santos/Cléber Goiano/Danilo Portugal/Romerito. guess_players:fabiano tem academy_club=Flamengo, goias_debut_year=2006, posição zag — bate exatamente com esse grupo (defensor que jogou 1x de MC, mesmo padrão de polivalência do Dieguinho). Nome completo pesquisado e confirmado nesta rodada (v3.1, item 10 do pedido): Fabiano Cézar Viegas.",
+      "evidence": [
+        {
+          "type": "internal",
+          "description": "lineup_matches:fabiano: 2006_newells_lib_grupos (2006-01-01, DEF), 2006_cuenca_lib_1fase (2006-02-01, MC), 2006_estudiantes_lib_oitavas_volta (2006-05-04, DEF) — todas a mesma campanha da Libertadores 2006."
+        },
+        {
+          "type": "internal",
+          "description": "guess_players:fabiano.goias_debut_year=2006 corrobora exatamente."
+        },
+        {
+          "type": "external",
+          "url": "https://www.futeboldegoyaz.com.br/jogadores/3714/jogador",
+          "description": "Fabiano Cézar Viegas — 'o jogador com mais jogos disputados pelo Goiás na Copa Libertadores da América de 2006' (10 partidas), passagem 2006-2007, zagueiro."
+        },
+        {
+          "type": "external",
+          "url": "https://pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas",
+          "description": "Fabiano Cézar Viegas, nascido 04/08/1975, zagueiro — Flamengo (1993-1999) → Atlético-PR → Kashima Antlers/Vegalta Sendai (Japão) → Atlético-PR → Flamengo → Goiás (2006)."
+        },
+        {
+          "type": "external",
+          "url": "https://www.bdfutbol.com/en/j/j33761.html",
+          "description": "BDFutbol — corrobora identidade e posição (central defender)."
+        }
+      ],
+      "newIdentity": "EXACT_IDENTITY",
+      "newIdentityConfidence": 0.85,
+      "canonicalName": "Fabiano Cézar Viegas",
+      "biographicalProvenance": {
+        "fullName": { "value": "Fabiano Cézar Viegas", "source": "external", "refs": ["futeboldegoyaz.com.br/jogadores/3714", "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas", "bdfutbol.com/en/j/j33761"], "confidence": "3 fontes externas independentes concordam" },
+        "birthDate": { "value": "1975-08-04", "source": "external", "refs": ["futeboldegoyaz.com.br/jogadores/3714", "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"], "confidence": "2 fontes externas independentes concordam" },
+        "position": { "value": "zagueiro (central defender)", "source": "local+external", "refs": ["guess_players.fabiano.position=zag (local)", "bdfutbol.com/en/j/j33761 (externa, 'central defender')"] },
+        "formationClub": { "value": "Flamengo", "meaning": "clube onde iniciou a carreira profissional, 1993, aos 18 anos — NÃO o clube imediatamente anterior ao Goiás", "source": "external", "refs": ["pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"], "localFieldEquivalent": "guess_players.fabiano.academy_club='Flamengo' — CORRETO como clube de formação, o campo local já significa isso; o erro foi meu, na análise anterior, ao apresentar academy_club como se fosse 'clube anterior ao Goiás' — não é erro da fonte local." },
+        "priorCareerFull": { "value": "Flamengo (1993-1999) → Atlético-PR → Kashima Antlers/Vegalta Sendai (Japão, ~3 temporadas) → Atlético-PR (retorno) → Flamengo (retorno)", "source": "external", "refs": ["pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"], "note": "Não existe em NENHUMA fonte local hoje — nem career_players (Fabiano não está cadastrado lá) nem guess_players (só tem academy_club, sem carreira completa)." },
+        "clubImmediatelyBeforeGoias": { "value": "Flamengo (2ª passagem, retorno)", "meaning": "coincide de NOME com o clube de formação por acaso — são dois fatos temporais distintos (1993 vs. retorno pré-2006), nunca deduzir um do outro", "source": "external", "refs": ["pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"] },
+        "joinedGoias": { "value": "2006", "source": "local+external", "refs": ["guess_players.fabiano.goias_debut_year=2006 (local)", "futeboldegoyaz.com.br/jogadores/3714, passagem 2006-2007 (externa)", "lineup_matches:fabiano, 3 partidas todas 2006 (local)"] }
+      },
+      "note": "Nome completo determinado por pesquisa externa nesta rodada (v3.1) — cruzado em 3 fontes independentes (Futebol de Goyaz, Wikipédia PT, BDFutbol). Confiança da IDENTIDADE (é o mesmo jogador de lineup_matches/guess_players) permanece 0.85 — a pesquisa resolve o NOME/biografia, não eleva a confiança de que os registros internos são a mesma pessoa (já era alta por corroboração interna). Ver biographicalProvenance pra proveniência campo-a-campo — NUNCA tratar academy_club como 'clube anterior ao Goiás', é o clube de formação (1993), um fato diferente que só coincide de nome.",
+      "futureCollisionWarning": "O usuário mencionou um jogador moderno 'Fabiano Monroe Alves de Oliveira' (meia, nascido 2007-11-17) que NÃO aparece em nenhuma fonte atual do dataset. Quando ele for cadastrado em qualquer fonte futura, checar ativamente contra este registro (Fabiano Cézar Viegas, nascido 1975) antes de reaproveitar o slug 'fabiano' — mesmo padrão de colisão do caso Danilo.",
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "tadeu_annotation",
+      "type": "annotate",
+      "target": [
+        "squad_members:tadeu",
+        "career_players:tadeu",
+        "guess_players:tadeu_antonio_ferreira",
+        "lineup_matches:tadeu",
+        "player_identity_references:tadeu"
+      ],
+      "reason": "398 (squad_members) e 400 (career_players) não são um conflito de dado no sentido de \"qual fonte está errada\" — são duas leituras do mesmo fato em momentos diferentes. 400 é o valor confirmado em 28/08/2026 (Goiás 2-1 São Bernardo, passport_matches:pe_cb52680435343cc4); 398 é um snapshot anterior a essa partida.",
+      "evidence": [
+        {
+          "type": "external",
+          "description": "Fornecido pelo usuário: Tadeu completou 400 partidas oficiais pelo Goiás em 28/08/2026, contra o São Bernardo."
+        },
+        {
+          "type": "internal",
+          "description": "passport_matches:pe_cb52680435343cc4 = Goiás 2-1 São Bernardo, 2026-08-28 — mesma partida citada pelo usuário, já presente no export de partidas."
+        }
+      ],
+      "liveDataBaseline": {
+        "personCanonicalName": "Tadeu Antônio Ferreira",
+        "clubSlug": "goias",
+        "appearances": 400,
+        "asOfDate": "2026-08-28",
+        "asOfMatchId": "pe_cb52680435343cc4",
+        "source": "manual_verified",
+        "supersedes": {
+          "value": 398,
+          "sourceTable": "squad_members",
+          "note": "snapshot desatualizado, não incorreto — só anterior à partida de 28/08/2026"
+        }
+      },
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "walter_annotation",
+      "type": "annotate",
+      "target": [
+        "career_players:walter",
+        "guess_players:walter",
+        "lineup_matches:walter",
+        "player_identity_references:walter"
+      ],
+      "reason": "O trecho \"2019\" de player_identity_references não é dado suspeito — é uma passagem real (recontratação/integração ao elenco) sem jogos oficiais disputados, porque a suspensão por doping foi ampliada antes da reestreia. career_players está INCOMPLETO por não listar essa terceira passagem, não errado.",
+      "evidence": [
+        {
+          "type": "external",
+          "description": "Fornecido pelo usuário: Walter recontratado em 2019, suspensão por doping ampliada antes de reestrear pelo Goiás."
+        },
+        {
+          "type": "internal",
+          "description": "As 5 aparições de lineup_matches:walter são todas 2012-2013 (camisa 18) — nenhuma de 2019, consistente com uma passagem sem jogo oficial."
+        }
+      ],
+      "spellModelImplication": {
+        "personCanonicalName": "Walter Henrique da Silva",
+        "clubSlug": "goias",
+        "spells": [
+          {
+            "period": "2012-2013",
+            "registrationType": "loan",
+            "appearancesKnown": true
+          },
+          {
+            "period": "2016-2017",
+            "registrationType": "loan",
+            "appearancesKnown": true
+          },
+          {
+            "period": "2019",
+            "registrationType": "permanent",
+            "appearancesKnown": true,
+            "appearances": 0,
+            "note": "Integrado ao elenco, suspensão por doping ampliada antes da reestreia — passagem real com 0 jogos, não pendência de verificação."
+          }
+        ]
+      },
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-01"
+    }
+  ]
+}

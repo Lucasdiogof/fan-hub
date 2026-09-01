@@ -1,0 +1,38 @@
+{
+  "totalCanonicalPeople": 295,
+  "originalAutomaticCandidates": 292,
+  "byIdentity": {
+    "EXACT_IDENTITY": 93,
+    "PROBABLE_IDENTITY": 1,
+    "AMBIGUOUS_IDENTITY": 83,
+    "DISTINCT_PEOPLE_UNRESOLVED": 0,
+    "SINGLE_SOURCE": 118
+  },
+  "distinctPeopleClustersResolved": 3,
+  "distinctPeopleClustersUnresolved": 0,
+  "humanVerified": 9,
+  "humanReviewedAnnotationsOnly": 2,
+  "automaticUntouched": 284,
+  "overridesApplied": 8,
+  "overridesTotal": 8,
+  "overridesIgnored": 0,
+  "aliasIndexSize": 385,
+  "ambiguousAliases": 3,
+  "invariants": {
+    "totalSourceRecords": 621,
+    "sourceRecordsMappedToExactlyOnePerson": 619,
+    "sourceRecordsIntentionallyContextualSplit": 1,
+    "sourceRecordsIntentionallyContextualUnassigned": 1,
+    "sourceRecordsUnaccounted": 0,
+    "everySourceRecordAccounted": true,
+    "duplicateCanonicalIds": [],
+    "noDuplicateCanonicalIds": true,
+    "duplicateSourceRecordMappings": [],
+    "noSourceRecordMapsToTwoPeopleUnintentionally": true,
+    "peopleWithZeroSourceRecords": [],
+    "noPeopleWithZeroSourceRecords": true,
+    "goiasPlayersDartRecordsInCandidates": 215,
+    "goiasPlayersDartRecordsAccounted": 215,
+    "all215DartEntriesAccounted": true
+  }
+}
