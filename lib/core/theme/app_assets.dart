@@ -15,6 +15,12 @@ class AppAssets {
   /// uma cor sólida (selo do login, PDF do ingresso).
   static const String goiasCrestBadge = 'lib/assets/branding/goias_crest.png';
 
+  /// Render 3D do selo do Goiás (relevo, não achatado) — usado só como
+  /// marca d'água decorativa em superfícies grandes (ex.: banner da Minha
+  /// Trajetória), nunca como identificação de time (isso é
+  /// [goiasCrestBadge]).
+  static const String goiasCrest3d = 'lib/assets/branding/goias_crest_3d.jpg';
+
   static const String loginBackground =
       'lib/assets/branding/background_login.png';
 
@@ -27,4 +33,15 @@ class AppAssets {
   /// Ilustração de prancheta tática pro card "Escalação da Torcida" da Home.
   static const String tacticsBoardIllustration =
       'lib/assets/branding/tactics_board.png';
+
+  /// Traço isométrico de estádio, sem fundo — versão anterior (linha) da
+  /// marca d'água do card da Arena Esmeraldina, mantida pra rollback rápido.
+  /// Ver [arenaStadiumPhoto] pra versão em uso.
+  static const String arenaStadiumIcon =
+      'lib/assets/branding/arena_stadium.svg';
+
+  /// Render colorido de estádio, sem fundo — marca d'água do card da Arena
+  /// Esmeraldina na Home (ver [ArenaSpotlightCard]).
+  static const String arenaStadiumPhoto =
+      'lib/assets/branding/arena_stadium.png';
 }

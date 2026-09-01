@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
@@ -48,22 +47,19 @@ class ArenaSpotlightCard extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              // Marca d'água do escudo — grande, cortada pela borda direita,
-              // tom de verde ligeiramente diferente do fundo e opacidade
-              // muito baixa: profundidade sem competir com o texto nem
-              // parecer uma segunda logo jogada em cima do card.
-              Positioned(
-                right: -34,
-                top: -30,
-                child: Opacity(
-                  opacity: 0.10,
-                  child: SvgPicture.asset(
-                    AppAssets.goiasCrest,
-                    width: 180,
-                    height: 180,
-                    colorFilter: const ColorFilter.mode(
-                      ArenaColors.pitch,
-                      BlendMode.srcIn,
+              // Marca d'água — centralizada verticalmente, cortada pela
+              // borda direita, em tom verde (duotone já gravado no asset,
+              // não a foto colorida) e opacidade baixa: profundidade sem
+              // competir com o texto.
+              Positioned.fill(
+                child: Align(
+                  alignment: const Alignment(1.3, 0),
+                  child: Opacity(
+                    opacity: 0.6,
+                    child: Image.asset(
+                      AppAssets.arenaStadiumPhoto,
+                      width: 170,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),

@@ -1,0 +1,27 @@
+<svg width="200" height="170" viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="100" cy="80" rx="92" ry="50" stroke="currentColor" stroke-width="3"/>
+<ellipse cx="100" cy="80" rx="70" ry="38" stroke="currentColor" stroke-width="3"/>
+<g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<line x1="100" y1="30" x2="100" y2="42" />
+<line x1="123.8" y1="32.6" x2="118.9" y2="43.6" />
+<line x1="146.1" y1="40.2" x2="137.6" y2="49.1" />
+<line x1="164.8" y1="52.5" x2="153.8" y2="58.1" />
+<line x1="178.1" y1="68.9" x2="165.5" y2="70.6" />
+<line x1="184.6" y1="88.1" x2="171.9" y2="86.1" />
+<line x1="183.6" y1="108.1" x2="171.6" y2="103.1" />
+<line x1="175.4" y1="125.5" x2="165.5" y2="117.5" />
+<line x1="76.2" y1="32.6" x2="81.1" y2="43.6" />
+<line x1="53.9" y1="40.2" x2="62.4" y2="49.1" />
+<line x1="35.2" y1="52.5" x2="46.2" y2="58.1" />
+<line x1="21.9" y1="68.9" x2="34.5" y2="70.6" />
+<line x1="15.4" y1="88.1" x2="28.1" y2="86.1" />
+<line x1="16.4" y1="108.1" x2="28.4" y2="103.1" />
+<line x1="24.6" y1="125.5" x2="34.5" y2="117.5" />
+</g>
+<rect x="61" y="63" width="78" height="34" rx="3" stroke="currentColor" stroke-width="3"/>
+<line x1="100" y1="63" x2="100" y2="97" stroke="currentColor" stroke-width="2.5"/>
+<circle cx="100" cy="80" r="9" stroke="currentColor" stroke-width="2.5"/>
+<rect x="61" y="71" width="7" height="18" stroke="currentColor" stroke-width="2.5"/>
+<rect x="132" y="71" width="7" height="18" stroke="currentColor" stroke-width="2.5"/>
+<path d="M84 129.5C89.5 133 110.5 133 116 129.5L112 141H88L84 129.5Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+</svg>
