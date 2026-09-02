@@ -404,6 +404,14 @@ Nenhuma divergência — os 5 datasets críticos (`career_players`, `guess_playe
 - 0 precondition/postcondition hardcoded contra o snapshot congelado (removida na rodada de revisão, antes do push).
 - 0 `git push`.
 
+## 40. Commit
+
+`0d5db94` — `feat(multiclub): add additive tenant schema`. 18 arquivos (6 migrations + 3 tooling novos + 2 JSON de plano/snapshot + este relatório + os 6 testes de etapas anteriores corrigidos para não depender mais de "35 migrations" hardcoded). `store_entry_card.dart`/`_competitions_pkg/`/`migration_dump.txt`/`docs/multiclub/19_etapa_e_v4_applied_report.md`/`supabase/.temp/` confirmados fora do commit.
+
+`git status` pós-commit: só as exclusões padrão permanecem (`store_entry_card.dart` modificado-mas-não-staged, `_competitions_pkg/`, `migration_dump.txt`, `docs/multiclub/19_etapa_e_v4_applied_report.md` untracked) — nenhum arquivo de M2.2A pendente.
+
+**`git push` NÃO executado** — nunca sem pedido explícito.
+
 ---
 
-**APPLIED. Aguardando autorização pra commit (concedida — ver §40).**
+**APPLIED e commitada (`0d5db94`). `git push` não autorizado.**
