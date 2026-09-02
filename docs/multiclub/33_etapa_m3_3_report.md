@@ -1,7 +1,7 @@
 # Etapa M3.3 — Runtime Hardcode Elimination + Server-Side Club Context
 
 Data: 2026-09-02
-Status: **Arquitetura APROVADA + rodada de hardening concluída (3 achados corrigidos — ver §51+). 0 commit, 0 `db push`, 0 deploy (Edge Functions/Worker). PARADO PARA REVISÃO.**
+Status: **M3.3 APPLIED. Edge Functions deployadas (3/3, v2→v3). Worker NÃO deployado — `WORKER_DEPLOY_BLOCKED_BY_NO_GIT_PUSH` (confirmado pelo usuário: deploy do Worker só ocorre via git push, proibido nesta sessão). Commit `185658130e2f32088cac8af7391bb4b185abaf4d`. 0 `db push` (0 SQL na M3.3 inteira). 0 `git push`.**
 
 Roadmap: `M2.2A ✅ → M3.1 ✅ → M3.2 ✅ → M3.3 ← AGORA → M2.2B → M4`. `SECOND_CLUB_BLOCKED = true` (inalterado).
 
@@ -363,31 +363,79 @@ JÁ estão cobertos por vitest (§55, §60) — é só a integração Deno-speci
 runtime real no deploy/Supabase.
 ```
 
-## 63. Mecanismo de deploy do Worker — dúvida real, reportada antes de executar
+## 63. Mecanismo de deploy do Worker — perguntado, resolvido: `WORKER_DEPLOY_BLOCKED_BY_NO_GIT_PUSH`
 
-`package.json` tem `"deploy": "wrangler deploy"` — um comando manual, já configurado, existente no projeto (não inventado agora). Mas a memória deste projeto (`reference_goias_app_cloudflare_worker`, pesquisa de uma sessão anterior) registra o mecanismo de deploy como **"git-push deploy"** — sugerindo que o Cloudflare Pages/Workers está conectado diretamente ao repositório (integração nativa da Cloudflare, sem GitHub Actions — confirmado que não existe workflow de deploy em `.github/workflows/`, só `sync_x_posts.yml`, não relacionado). Isso deixa uma ambiguidade real: se a integração Git nativa da Cloudflare estiver ativa, rodar `wrangler deploy` manualmente PODE ser redundante (a integração já deployaria no próximo push) ou, pior, poderia divergir do que a integração esperaria deployar depois. Não tenho como confirmar de dentro do repositório qual dos dois é o mecanismo real hoje (a configuração da integração Git vive no dashboard da Cloudflare, fora deste código). Por instrução explícita do usuário ("reporte antes de executar se houver dúvida... não alterar pipeline"), não vou rodar `wrangler deploy`/`npm run deploy` sem confirmação — perguntando antes de prosseguir pro deploy do Worker.
+`package.json` tem `"deploy": "wrangler deploy"` — comando manual, já configurado, existente no projeto. Mas a memória deste projeto registrava o mecanismo como "git-push deploy", uma ambiguidade real que não dava pra resolver de dentro do repositório (a configuração da integração Git vive só no dashboard da Cloudflare). Perguntado ao usuário antes de executar qualquer coisa — resposta: **deploy do Worker é SÓ automático via git push** (a integração Git nativa da Cloudflare está ativa). `git push` continua proibido nesta sessão (regra permanente do projeto) — portanto:
+```
+WORKER_DEPLOY_BLOCKED_BY_NO_GIT_PUSH — o código novo do Worker (src/) está
+commitado localmente (§64), mas NÃO deployado. Vai ao ar automaticamente
+só quando o usuário fizer `git push` pra main, fora desta sessão.
+```
+`wrangler deploy`/`npm run deploy` **NÃO foram executados** — nem manualmente nem por engano.
 
-## Reexecução completa — pós compatibility gate
+## 64. Edge Functions — deployadas (3/3)
+
+Diferente do Worker, o deploy das Edge Functions usa um mecanismo TOTALMENTE separado (Supabase CLI, `supabase functions deploy`, autenticado por token do Supabase — nunca depende de git push). Confirmado antes: as 3 funções tocadas chamam `/api/football/team/goias` no Worker — a MESMA URL que o Worker ATUAL (não deployado, mas já em produção) já serve hoje via seu handler antigo — então as Edge Functions novas funcionam corretamente mesmo com o Worker antigo ainda no ar.
+
+```bash
+npx supabase functions deploy notifications-poll-live-match notifications-sync-and-check-access notifications-dispatch
+```
+Resultado: as 3 subiram com sucesso, incluindo os módulos `_shared/` (`club_server_config.ts` nas 3; `notification_message_builder.ts` também em `notifications-dispatch`). `npx supabase functions list` pós-deploy confirma **version 2→3** nas 3 tocadas, `updated_at` no mesmo timestamp do deploy; `delete-account` (v2) e `cleanup-unconfirmed-signups` (v1) **inalteradas** — nunca deployadas indiscriminadamente.
+
+**Logs/status**: esta CLI não tem um subcomando `functions logs` (só `list`/`delete`/`download`/`deploy`/`new`/`serve`) — logs ao vivo exigiriam o dashboard do Supabase, fora do alcance desta sessão. As 3 funções estão `ACTIVE` e vão rodar de verdade no próximo disparo real do `pg_cron` (`supabase/notifications_cron.sql`) — **nenhum evento/gol/pedido artificial foi gerado** pra testar, por instrução explícita.
+
+**Segurança de dados pós-deploy, reconfirmada estruturalmente** (grep direto no código deployado, não só lembrança das rodadas anteriores):
+```
+match_monitor_sessions insert → club_id: clubConfig.canonicalClubId (sync-and-check-access:85)
+match_monitor_sessions updates → .eq('club_id', ...) em todos os 4 pontos (poll-live-match + sync-and-check-access)
+notification_events inserts → club_id: session.club_id (poll-live-match:216,251)
+                              club_id: clubConfig.canonicalClubId (sync-and-check-access:114)
+dispatch → resolveClubServerConfigByClubId(event.club_id) (dispatch:123)
+unknown club_id → if (!clubConfig) { ...; return/continue } — fail closed nos 2 arquivos que resolvem
+```
+Nenhuma PK/UNIQUE tocada.
+
+## Reexecução completa — pós deploy das Edge Functions
 
 ```
 flutter analyze → 0 issues
-flutter test → 865 passed, 1 skip, 0 failed (841 + 24 novos de local
-  storage/cleanup — contagem corrigida, ver §61; 0 teste novo Flutter
-  nesta rodada de gate, só os 8 golden ficam no lado TS)
-
-tooling/multiclub/test_*.mjs → 663 passando, 0 falhando (inalterado
-  nesta rodada de gate)
-
-npm run test:worker (vitest) → 99 passando, 0 falhando (91 da rodada de
-  hardening + 8 golden compatibility novos em
-  notification_message_builder.test.ts, §60)
+flutter test → 865 passed, 1 skip, 0 failed
+tooling/multiclub/test_*.mjs → 663 passando, 0 falhando
+npm run test:worker (vitest) → 99 passando, 0 falhando
 npx tsc --noEmit → 0 erros
 
 npx supabase migration list → 46 locais, 46 local=remote, 0 mismatch
-  (inalterado — 0 SQL tocado em toda a M3.3)
+  (0 SQL tocado em toda a M3.3, ponta a ponta)
+npx supabase functions list → notifications-poll-live-match v3,
+  notifications-sync-and-check-access v3, notifications-dispatch v3
+  (só as 3 tocadas — delete-account/cleanup-unconfirmed-signups inalteradas)
+
+genericRuntimeGoiasLiteralViolations/genericRuntimeGoiasIdViolations/
+  serverRuntimeGoiasLiteralViolations/localStorageScopeViolations = 0
+  (todos, ver audit_multiclub_runtime_hardcodes.mjs)
+realClubRegistryCount = 1, serverClubConfigRegistryCount = 1
+  (Flutter clubRegistry / Worker SERVER_CLUB_CODES; Edge Functions
+  SERVER_CLUB_REGISTRY também = 1, mesmo não capturado nesse campo)
 ```
 
-`SECOND_CLUB_BLOCKED=true` reconfirmado. **0 commit, 0 db push, 0 deploy (Worker/Edge Functions) ainda nesta etapa — deploy só depois da decisão do §63.**
+Passaporte, `GOI-`, PK/UNIQUE/DEFAULT Goiás, RLS, `LEGACY_RPC_PUBLIC_EXECUTE_DEBT`, M2.2B — todos intocados (§58). `SECOND_CLUB_BLOCKED=true` reconfirmado.
+
+## 65. Commit M3.3
+
+```
+git log -1 --format="%H %s"
+185658130e2f32088cac8af7391bb4b185abaf4d feat(multiclub): generalize club runtime integrations
+```
+70 arquivos, paths explícitos (nunca `git add .`). Exclusões padrão confirmadas fora via `git status` antes e depois: `store_entry_card.dart`, `multiclub_hardcode_audit_stats.json`, `_competitions_pkg/`, `migration_dump.txt`, `docs/multiclub/19_etapa_e_v4_applied_report.md`, `supabase/.temp/`.
+```
+git status pós-commit:
+ M data_export/goias/player_reconciliation/multiclub_hardcode_audit_stats.json
+ M lib/features/store/presentation/widgets/store_entry_card.dart
+?? _competitions_pkg/
+?? docs/multiclub/19_etapa_e_v4_applied_report.md
+?? migration_dump.txt
+```
+**0 `git push`.**
 
 ---
 
@@ -397,4 +445,4 @@ Confirmado — nenhuma PK/UNIQUE/DEFAULT tocada, nenhum clube real cadastrado em
 
 ---
 
-**PARADO PARA REVISÃO (rodada de hardening concluída). Nada commitado, nada aplicado no banco, nada deployado (Worker/Edge Functions).**
+**M3.3 CONCLUÍDA. Edge Functions deployadas (3/3). Worker `WORKER_DEPLOY_BLOCKED_BY_NO_GIT_PUSH` — código commitado, vai ao ar só num `git push` futuro fora desta sessão. Commit `185658130e2f32088cac8af7391bb4b185abaf4d`. 0 `git push`.**
