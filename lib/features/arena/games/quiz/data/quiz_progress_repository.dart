@@ -1,3 +1,4 @@
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -35,17 +36,20 @@ class QuizLevelSummary {
 }
 
 class QuizProgressRepository {
-  QuizProgressRepository(this._client);
+  QuizProgressRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   Future<Set<String>> getAnsweredIds(QuizDifficulty difficulty) async {
     final rows = await _client
         .from('quiz_question_progress')
         .select('question_id')
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .eq('difficulty', difficulty.name);
     return rows.map((row) => row['question_id'] as String).toSet();
   }
@@ -55,6 +59,7 @@ class QuizProgressRepository {
         .from('quiz_question_progress')
         .select('question_id')
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .eq('difficulty', difficulty.name)
         .eq('pending_review', true);
     return rows.map((row) => row['question_id'] as String).toSet();
@@ -68,7 +73,8 @@ class QuizProgressRepository {
     final rows = await _client
         .from('quiz_question_progress')
         .select('difficulty, pending_review')
-        .eq('user_id', _uid);
+        .eq('user_id', _uid)
+        .eq('club_id', _clubId);
 
     final answered = <QuizDifficulty, int>{};
     final pending = <QuizDifficulty, int>{};
@@ -105,11 +111,17 @@ class QuizProgressRepository {
         .from('quiz_question_progress')
         .select('was_correct_first_attempt')
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .eq('question_id', questionId)
         .maybeSingle();
 
+    // onConflict continua (user_id, question_id) — o par não inclui
+    // club_id (KEY_SCOPE_BLOCKED, ver M3.2 §22/M2.2B): o club_id abaixo só
+    // marca a linha corretamente quando ela ainda não existe sob outra
+    // chave; não resolve colisão entre clubes.
     await _client.from('quiz_question_progress').upsert({
       'user_id': _uid,
+      'club_id': _clubId,
       'question_id': questionId,
       'difficulty': difficulty.name,
       'was_correct_first_attempt': existing != null
@@ -125,6 +137,7 @@ class QuizProgressRepository {
         .from('quiz_active_session')
         .select()
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .eq('difficulty', difficulty.name)
         .maybeSingle();
     if (row == null) return null;
@@ -145,8 +158,11 @@ class QuizProgressRepository {
     required List<Map<String, dynamic>> answers,
     required bool isReview,
   }) async {
+    // onConflict continua (user_id, difficulty) — mesma ressalva de
+    // KEY_SCOPE_BLOCKED do `recordAnswer` acima.
     await _client.from('quiz_active_session').upsert({
       'user_id': _uid,
+      'club_id': _clubId,
       'difficulty': difficulty.name,
       'question_ids': questionIds,
       'current_index': currentIndex,
@@ -160,6 +176,7 @@ class QuizProgressRepository {
         .from('quiz_active_session')
         .delete()
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .eq('difficulty', difficulty.name);
   }
 }

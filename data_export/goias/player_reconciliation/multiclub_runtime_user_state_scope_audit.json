@@ -1,0 +1,744 @@
+{
+  "directTables": {
+    "quiz_question_progress": {
+      "repos": [
+        "features/arena/games/quiz/data/quiz_progress_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "quiz_active_session": {
+      "repos": [
+        "features/arena/games/quiz/data/quiz_progress_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "career_path_progress": {
+      "repos": [
+        "features/arena/games/career_path/data/supabase_career_path_storage.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "lineup_match_progress": {
+      "repos": [
+        "features/arena/games/lineup/data/supabase_lineup_storage.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "arena_selected_content": {
+      "repos": [
+        "features/arena/games/career_path/data/supabase_career_path_storage.dart",
+        "features/arena/games/lineup/data/supabase_lineup_storage.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "arena_achievements": {
+      "repos": [
+        "features/arena/data/arena_progress_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "player_identity_results": {
+      "repos": [
+        "features/arena/games/player_identity/data/supabase_player_identity_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "tactical_identity_results": {
+      "repos": [
+        "features/arena/games/tactical_identity/data/supabase_tactical_identity_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "match_lineup_votes": {
+      "repos": [
+        "features/crowd_lineup/data/supabase_crowd_lineup_repository.dart"
+      ],
+      "keyScopeBlocked": false,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "ticket_checkin_decisions": {
+      "repos": [
+        "features/ticket/data/mock_ticket_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "ticket_orders": {
+      "repos": [
+        "features/ticket/data/mock_ticket_repository.dart"
+      ],
+      "keyScopeBlocked": false,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "tickets": {
+      "repos": [
+        "features/ticket/data/mock_ticket_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "store_orders": {
+      "repos": [
+        "features/store/data/supabase_store_orders_repository.dart"
+      ],
+      "keyScopeBlocked": false,
+      "writeVia": "rpc",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": false,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    },
+    "user_notification_preferences": {
+      "repos": [
+        "features/notifications/data/supabase_notification_repository.dart"
+      ],
+      "keyScopeBlocked": true,
+      "writeVia": "direct",
+      "hasClubIdInReads": true,
+      "hasClubIdInWrites": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "rowScopeReady": true
+    }
+  },
+  "rpcs": {
+    "arena_record_score_for_club": {
+      "legacy": "arena_record_score",
+      "callerRepo": "features/arena/ranking/data/supabase_arena_ranking_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": true,
+      "isSecurityDefiner": true,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    },
+    "arena_ranking_for_club": {
+      "legacy": "arena_ranking",
+      "callerRepo": "features/arena/ranking/data/supabase_arena_ranking_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": true,
+      "isSecurityDefiner": true,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    },
+    "arena_my_rank_for_club": {
+      "legacy": "arena_my_rank",
+      "callerRepo": "features/arena/ranking/data/supabase_arena_ranking_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": true,
+      "isSecurityDefiner": true,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    },
+    "arena_user_detail_for_club": {
+      "legacy": "arena_user_detail",
+      "callerRepo": "features/arena/ranking/data/supabase_arena_ranking_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": true,
+      "isSecurityDefiner": true,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    },
+    "get_my_membership_for_club": {
+      "legacy": "get_my_membership",
+      "callerRepo": "features/membership/data/supabase_membership_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903010000_add_membership_tenant_aware_rpcs.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903010000_add_membership_tenant_aware_rpcs.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": true,
+      "isSecurityDefiner": true,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    },
+    "subscribe_to_plan_for_club": {
+      "legacy": "subscribe_to_plan",
+      "callerRepo": "features/membership/data/supabase_membership_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903010000_add_membership_tenant_aware_rpcs.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903010000_add_membership_tenant_aware_rpcs.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": true,
+      "isSecurityDefiner": true,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    },
+    "crowd_lineup_for_club": {
+      "legacy": "crowd_lineup",
+      "callerRepo": "features/crowd_lineup/data/supabase_crowd_lineup_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903020000_add_crowd_lineup_tenant_aware_rpc.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903020000_add_crowd_lineup_tenant_aware_rpc.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": true,
+      "isSecurityDefiner": true,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    },
+    "create_store_order_for_club": {
+      "legacy": "create_store_order",
+      "callerRepo": "features/store/data/supabase_store_orders_repository.dart",
+      "newRpcCallSitePresent": true,
+      "hasClubIdParam": true,
+      "legacyStillCalledInFlutter": false,
+      "migrationExists": true,
+      "migrationValidatesClubId": true,
+      "migrationIsAdditiveOnly": true,
+      "legacySqlStillDefined": true,
+      "expectedRoles": [
+        "authenticated"
+      ],
+      "grantedRoles": [
+        "authenticated"
+      ],
+      "revokePublicPresent": true,
+      "grantAllowlistMatches": true,
+      "hardeningMigration": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "effectiveRoles": [
+        "authenticated"
+      ],
+      "effectivePublicGranted": false,
+      "effectiveAnonGranted": false,
+      "effectiveServiceRoleGranted": false,
+      "effectiveGrantAllowlistMatches": true,
+      "grantTimeline": [
+        {
+          "file": "20260903030000_add_store_tenant_aware_rpc.sql",
+          "type": "revoke",
+          "roles": [
+            "public"
+          ]
+        },
+        {
+          "file": "20260903030000_add_store_tenant_aware_rpc.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "revoke",
+          "roles": [
+            "public",
+            "anon",
+            "service_role"
+          ]
+        },
+        {
+          "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+          "type": "grant",
+          "roles": [
+            "authenticated"
+          ]
+        }
+      ],
+      "expectedSecurityDefiner": false,
+      "isSecurityDefiner": false,
+      "securityDefinerMatchesExpected": true,
+      "safeSearchPath": true,
+      "schemaQualified": true,
+      "schemaQualificationProblems": [],
+      "securityHardeningReady": true,
+      "tenantAwareReady": true
+    }
+  },
+  "edgeFunctionOnlyTables": {
+    "match_monitor_sessions": {
+      "reason": "só Edge Functions (Deno) escrevem — 0 owner Dart. Server-side ainda 100% hardcoded pro Goiás (GOIAS_TEAM_ID=1863 em notifications-poll-live-match); club-aware aí é M3.3.",
+      "hasClubIdColumn": true
+    },
+    "notification_events": {
+      "reason": "mesma razão de match_monitor_sessions — só Edge Functions.",
+      "hasClubIdColumn": true
+    },
+    "notification_deliveries": {
+      "reason": "herda tenancy via event_id (FK pra notification_events) — nunca ganhou club_id próprio, por decisão explícita da M2.2A.",
+      "hasClubIdColumn": false
+    }
+  },
+  "globalTables": {
+    "user_notification_tokens": {
+      "reason": "GLOBAL de propósito — token FCM é do APARELHO, não do clube (owner: supabase_notification_repository.dart, registerToken/deactivateToken). Nunca deve ganhar club_id.",
+      "ownerRepo": "features/notifications/data/supabase_notification_repository.dart",
+      "hasClubIdColumn": false
+    }
+  },
+  "goiasUuidHardcodedInTouchedFiles": [],
+  "allDirectTablesRowScopeReady": true,
+  "allRpcsTenantAwareReady": true,
+  "allRpcsSecurityHardeningReady": true,
+  "summary": {
+    "directTablesCount": 14,
+    "rpcsCount": 8,
+    "edgeFunctionOnlyTablesCount": 3,
+    "globalTablesCount": 1,
+    "securityDefinerCount": 7,
+    "securityInvokerCount": 1
+  }
+}

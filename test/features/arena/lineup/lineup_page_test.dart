@@ -68,6 +68,7 @@ class _FakeLineupStorage extends SupabaseLineupStorage {
           'anon-key',
           authOptions: const AuthClientOptions(autoRefreshToken: false),
         ),
+        goiasClubConfig,
       );
 
   final _states = <String, LineupGameState>{};

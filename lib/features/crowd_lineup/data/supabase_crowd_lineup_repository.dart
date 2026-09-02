@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
@@ -12,11 +13,13 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
-  SupabaseCrowdLineupRepository(this._client);
+  SupabaseCrowdLineupRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   @override
   Future<Result<LineupVote?>> getMyVote(String matchId) async {
@@ -26,6 +29,7 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
           .select('formation, slots')
           .eq('match_id', matchId)
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .maybeSingle();
       if (row == null) return const Success(null);
 
@@ -55,9 +59,12 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
         for (final entry in vote.playerIdBySlot.entries)
           {'i': entry.key, 'pid': entry.value},
       ];
+      // onConflict continua (match_id, user_id) — KEY_SCOPE_BLOCKED, mesma
+      // ressalva das outras tabelas de estado por usuário desta etapa.
       await _client.from('match_lineup_votes').upsert({
         'match_id': matchId,
         'user_id': _uid,
+        'club_id': _clubId,
         'formation': vote.formationId,
         'slots': slots,
         'updated_at': DateTime.now().toUtc().toIso8601String(),
@@ -74,9 +81,11 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
   @override
   Future<Result<CrowdLineup>> getCrowdLineup(String matchId) async {
     try {
+      // Runtime novo (M3.2): variante tenant-aware, nunca a `crowd_lineup`
+      // legacy (fica só pro app antigo — ver §17 do pedido da M3.2).
       final data = await _client.rpc<Map<String, dynamic>>(
-        'crowd_lineup',
-        params: {'p_match_id': matchId},
+        'crowd_lineup_for_club',
+        params: {'p_club_id': _clubId, 'p_match_id': matchId},
       );
       return Success(_parseCrowd(data));
     } catch (error, stackTrace) {

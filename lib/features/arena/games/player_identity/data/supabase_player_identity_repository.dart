@@ -1,3 +1,4 @@
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/arena/games/player_identity/data/player_identity_repository.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_engine.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
@@ -12,20 +13,25 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// roda `PlayerIdentityEngine.computeResult` de novo — mesmo princípio de
 /// "fonte da verdade única" usado em `SupabaseTacticalIdentityRepository`.
 class SupabasePlayerIdentityRepository implements PlayerIdentityRepository {
-  SupabasePlayerIdentityRepository(this._client);
+  SupabasePlayerIdentityRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
   static const _engine = PlayerIdentityEngine();
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   @override
   Future<void> saveResult(PlayerIdentityResult result) async {
     final top = result.closestReferences.isEmpty
         ? null
         : result.closestReferences.first.reference.id;
+    // onConflict continua 'user_id' (PK é só user_id — KEY_SCOPE_BLOCKED,
+    // ver M3.2 §27: 1 resultado por usuário no total, ainda não por clube).
     await _client.from('player_identity_results').upsert({
       'user_id': _uid,
+      'club_id': _clubId,
       'test_type': 'player_identity',
       'archetype': result.archetype.name,
       'creativity': result.attributes.creativity,
@@ -46,6 +52,7 @@ class SupabasePlayerIdentityRepository implements PlayerIdentityRepository {
         .from('player_identity_results')
         .select('answers')
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .maybeSingle();
     if (row == null) return null;
     try {

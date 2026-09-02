@@ -19,7 +19,7 @@ SupabaseClient _dummyClient() => SupabaseClient(
 );
 
 class _SpyQuizProgressRepository extends QuizProgressRepository {
-  _SpyQuizProgressRepository() : super(_dummyClient());
+  _SpyQuizProgressRepository() : super(_dummyClient(), goiasClubConfig);
 
   int recordAnswerCallCount = 0;
   int saveSessionCallCount = 0;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -24,12 +25,14 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// troca futura por uma implementação com API real de ingressos não deve
 /// exigir mudança nas telas, só nesta classe.
 class MockTicketRepository implements TicketRepository {
-  MockTicketRepository(this._client, this._footballRepository);
+  MockTicketRepository(this._client, this._footballRepository, this._clubConfig);
 
   final SupabaseClient _client;
   final FootballRepository _footballRepository;
+  final ClubConfig _clubConfig;
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   @override
   Future<Result<TicketEvent?>> getFeaturedEvent() async {
@@ -57,6 +60,7 @@ class MockTicketRepository implements TicketRepository {
           .from('ticket_checkin_decisions')
           .select('decision, sector_id')
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .eq('match_id', matchId)
           .maybeSingle();
 
@@ -83,6 +87,7 @@ class MockTicketRepository implements TicketRepository {
             .from('tickets')
             .select()
             .eq('user_id', _uid)
+            .eq('club_id', _clubId)
             .eq('match_id', matchId)
             .eq('origin', 'membership_check_in')
             .eq('status', 'active')
@@ -94,6 +99,7 @@ class MockTicketRepository implements TicketRepository {
           .from('tickets')
           .select('id')
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .eq('match_id', matchId)
           .eq('origin', 'purchase')
           .eq('status', 'active')
@@ -141,8 +147,11 @@ class MockTicketRepository implements TicketRepository {
         return const Error(ServerFailure('Setor não encontrado.'));
       }
 
+      // onConflict continua (user_id, match_id) — KEY_SCOPE_BLOCKED, mesma
+      // ressalva das outras tabelas de estado por usuário desta etapa.
       await _client.from('ticket_checkin_decisions').upsert({
         'user_id': _uid,
+        'club_id': _clubId,
         'match_id': matchId,
         'decision': 'confirmed',
         'sector_id': sectorId,
@@ -153,6 +162,7 @@ class MockTicketRepository implements TicketRepository {
           .from('tickets')
           .upsert({
             'user_id': _uid,
+            'club_id': _clubId,
             'match_id': matchId,
             'competition': match.competition,
             'round': match.round,
@@ -188,6 +198,7 @@ class MockTicketRepository implements TicketRepository {
     try {
       await _client.from('ticket_checkin_decisions').upsert({
         'user_id': _uid,
+        'club_id': _clubId,
         'match_id': matchId,
         'decision': 'declined',
         'sector_id': null,
@@ -206,6 +217,7 @@ class MockTicketRepository implements TicketRepository {
           .from('ticket_checkin_decisions')
           .delete()
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .eq('match_id', matchId);
       return const Success(null);
     } catch (error, stackTrace) {
@@ -216,10 +228,14 @@ class MockTicketRepository implements TicketRepository {
   @override
   Future<Result<void>> undoCheckIn(String matchId) async {
     try {
+      // update/delete precisam do MESMO filtro de tenant que os selects —
+      // nunca deixar um update de conta+clube alcançar a linha de outro
+      // clube da mesma conta (regra 6 do pedido da M3.2).
       await _client
           .from('tickets')
           .update({'status': 'cancelled'})
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .eq('match_id', matchId)
           .eq('origin', 'membership_check_in')
           .eq('status', 'active');
@@ -227,6 +243,7 @@ class MockTicketRepository implements TicketRepository {
           .from('ticket_checkin_decisions')
           .delete()
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .eq('match_id', matchId);
       return const Success(null);
     } catch (error, stackTrace) {
@@ -256,6 +273,7 @@ class MockTicketRepository implements TicketRepository {
           .from('ticket_orders')
           .insert({
             'user_id': _uid,
+            'club_id': _clubId,
             'number': number,
             'match_id': matchId,
             'competition': match.competition,
@@ -284,6 +302,7 @@ class MockTicketRepository implements TicketRepository {
           holderIndex++;
           ticketRows.add({
             'user_id': _uid,
+            'club_id': _clubId,
             'match_id': matchId,
             'competition': match.competition,
             'round': match.round,
@@ -341,6 +360,7 @@ class MockTicketRepository implements TicketRepository {
           .from('tickets')
           .select()
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .order('created_at', ascending: false);
       return Success(rows.map(_mapTicket).toList());
     } catch (error, stackTrace) {
@@ -355,6 +375,7 @@ class MockTicketRepository implements TicketRepository {
           .from('ticket_orders')
           .select()
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .order('created_at', ascending: false);
       return Success(rows.map(_mapOrder).toList());
     } catch (error, stackTrace) {
@@ -380,6 +401,7 @@ class MockTicketRepository implements TicketRepository {
           })
           .eq('id', ticketId)
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .eq('origin', 'purchase')
           .eq('status', 'active')
           .select();

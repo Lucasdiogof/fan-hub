@@ -1,3 +1,4 @@
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/ranking/data/arena_ranking_error_mapper.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
@@ -5,11 +6,13 @@ import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseArenaRankingRepository implements ArenaRankingRepository {
-  SupabaseArenaRankingRepository(this._client);
+  SupabaseArenaRankingRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
   String? get _uid => _client.auth.currentUser?.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   @override
   Future<Result<ScoreResult>> recordScore({
@@ -25,9 +28,13 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
     bool wasAbandoned = false,
   }) async {
     try {
+      // Runtime novo (M3.2): variante tenant-aware, nunca a
+      // `arena_record_score` legacy (fica só pro app antigo — §12 do
+      // pedido da M3.2).
       final rows = await _client.rpc<List<dynamic>>(
-        'arena_record_score',
+        'arena_record_score_for_club',
         params: {
+          'p_club_id': _clubId,
           'p_game_id': gameId,
           'p_item_id': itemId,
           'p_event_type': eventType,
@@ -61,8 +68,12 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
   }) async {
     try {
       final rows = await _client.rpc<List<dynamic>>(
-        'arena_ranking',
-        params: {'p_period': period.apiValue, 'p_limit': limit},
+        'arena_ranking_for_club',
+        params: {
+          'p_club_id': _clubId,
+          'p_period': period.apiValue,
+          'p_limit': limit,
+        },
       );
       final uid = _uid;
       return Success(
@@ -95,8 +106,8 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
   ) async {
     try {
       final rows = await _client.rpc<List<dynamic>>(
-        'arena_my_rank',
-        params: {'p_period': period.apiValue},
+        'arena_my_rank_for_club',
+        params: {'p_club_id': _clubId, 'p_period': period.apiValue},
       );
       if (rows.isEmpty) return const Success(null);
       final map = rows.first as Map<String, dynamic>;
@@ -113,8 +124,8 @@ class SupabaseArenaRankingRepository implements ArenaRankingRepository {
   Future<Result<RankingUserDetail>> getUserDetail(RankingEntry context) async {
     try {
       final rows = await _client.rpc<List<dynamic>>(
-        'arena_user_detail',
-        params: {'p_user_id': context.userId},
+        'arena_user_detail_for_club',
+        params: {'p_club_id': _clubId, 'p_user_id': context.userId},
       );
       final breakdown = rows.map((row) {
         final map = row as Map<String, dynamic>;

@@ -1,3 +1,4 @@
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/membership/data/membership_error_mapper.dart';
@@ -21,11 +22,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// nunca é calculada aqui — vem pronta de `subscribe_to_plan()`, pelo mesmo
 /// motivo (ver `submitRegistration`).
 class SupabaseMembershipRepository implements MembershipRepository {
-  SupabaseMembershipRepository(this._client);
+  SupabaseMembershipRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   @override
   Future<Result<List<MembershipPlan>>> getPlans() async {
@@ -35,7 +38,14 @@ class SupabaseMembershipRepository implements MembershipRepository {
   @override
   Future<Result<Membership?>> getMyMembership() async {
     try {
-      final rows = await _client.rpc<List<dynamic>>('get_my_membership');
+      // Runtime novo (M3.2): variante tenant-aware — filtra
+      // `user_id = auth.uid() AND club_id = p_club_id`, nunca o
+      // `order by created_at desc limit 1` global da RPC legacy (que
+      // continua intacta só pro app antigo — §15-16 do pedido da M3.2).
+      final rows = await _client.rpc<List<dynamic>>(
+        'get_my_membership_for_club',
+        params: {'p_club_id': _clubId},
+      );
       final row = rows.isEmpty ? null : rows.first as Map<String, dynamic>;
       if (row == null || row['is_active'] != true) return const Success(null);
       return Success(_mapRow(row));
@@ -70,9 +80,13 @@ class SupabaseMembershipRepository implements MembershipRepository {
       // dois com o horário do próprio Postgres e rejeita se já existe
       // assinatura ativa ou se `plan.id` não corresponde a um plano real
       // (ver supabase/migrations/20260830220002_subscribe_to_plan_rpc.sql).
+      // Runtime novo (M3.2): variante tenant-aware — grava `club_id`
+      // explícito e permite assinaturas simultâneas ativas em clubes
+      // diferentes (mesmo padrão de `user_notification_preferences`), nunca
+      // a RPC legacy (fica só pro app antigo).
       final rows = await _client.rpc<List<dynamic>>(
-        'subscribe_to_plan',
-        params: {'p_plan_id': plan.id},
+        'subscribe_to_plan_for_club',
+        params: {'p_club_id': _clubId, 'p_plan_id': plan.id},
       );
       final row = rows.first as Map<String, dynamic>;
       return Success(

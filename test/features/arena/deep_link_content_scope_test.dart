@@ -164,7 +164,7 @@ class _SentinelLineupMatchRepository extends LineupMatchRepository {
 }
 
 class _FakeCareerPathStorage extends SupabaseCareerPathStorage {
-  _FakeCareerPathStorage() : super(_dummyClient());
+  _FakeCareerPathStorage() : super(_dummyClient(), goiasClubConfig);
   @override
   Future<CareerRoundState?> load(String playerId) async => null;
   @override
@@ -199,7 +199,7 @@ class _FakeGuessPlayerStorage extends GuessPlayerStorage {
 }
 
 class _FakeLineupStorage extends SupabaseLineupStorage {
-  _FakeLineupStorage() : super(_dummyClient());
+  _FakeLineupStorage() : super(_dummyClient(), goiasClubConfig);
   @override
   Future<LineupGameState?> load(String matchId) async => null;
   @override

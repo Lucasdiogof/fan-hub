@@ -1,3 +1,4 @@
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_engine.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
@@ -12,20 +13,25 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// `TacticalIdentityEngine.computeResult` de novo — mesmo princípio de
 /// "fonte da verdade única" da sessão em memória, agora pra persistência.
 class SupabaseTacticalIdentityRepository implements TacticalIdentityRepository {
-  SupabaseTacticalIdentityRepository(this._client);
+  SupabaseTacticalIdentityRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
   static const _engine = TacticalIdentityEngine();
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   @override
   Future<void> saveResult(TacticalIdentityResult result) async {
     final top = result.closestCoaches.isEmpty
         ? null
         : result.closestCoaches.first.coach.id;
+    // onConflict continua 'user_id' — mesma ressalva KEY_SCOPE_BLOCKED de
+    // `supabase_player_identity_repository.dart`.
     await _client.from('tactical_identity_results').upsert({
       'user_id': _uid,
+      'club_id': _clubId,
       'game_type': 'tactical_identity',
       'x': result.x,
       'y': result.y,
@@ -46,6 +52,7 @@ class SupabaseTacticalIdentityRepository implements TacticalIdentityRepository {
         .from('tactical_identity_results')
         .select('answers')
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .maybeSingle();
     if (row == null) return null;
     try {

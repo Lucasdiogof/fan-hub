@@ -104,10 +104,10 @@ void setupDependencies() {
   sl.registerSingleton<ClubConfig>(resolveActiveClub());
 
   sl.registerLazySingleton<TicketRepository>(
-    () => MockTicketRepository(Supabase.instance.client, sl()),
+    () => MockTicketRepository(Supabase.instance.client, sl(), sl()),
   );
   sl.registerLazySingleton<MembershipRepository>(
-    () => SupabaseMembershipRepository(Supabase.instance.client),
+    () => SupabaseMembershipRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<MembershipFaqDataSource>(
     () => MembershipFaqDataSource(Supabase.instance.client),
@@ -165,7 +165,7 @@ void setupDependencies() {
     () => SupabaseProfileRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<NotificationRepository>(
-    () => SupabaseNotificationRepository(Supabase.instance.client),
+    () => SupabaseNotificationRepository(Supabase.instance.client, sl()),
   );
   sl.registerFactory<NotificationPreferencesCubit>(
     () => NotificationPreferencesCubit(sl()),
@@ -188,17 +188,17 @@ void setupDependencies() {
   sl.registerLazySingleton<ClubSongVolumeStore>(ClubSongVolumeStore.new);
   sl.registerLazySingleton<SplashGate>(SplashGate.new);
   sl.registerLazySingleton<ArenaRankingRepository>(
-    () => SupabaseArenaRankingRepository(Supabase.instance.client),
+    () => SupabaseArenaRankingRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<LocalBestScoreStore>(LocalBestScoreStore.new);
   sl.registerLazySingleton<SupabaseLineupStorage>(
-    () => SupabaseLineupStorage(Supabase.instance.client),
+    () => SupabaseLineupStorage(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<LineupMatchRepository>(
     () => LineupMatchRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<SupabaseCareerPathStorage>(
-    () => SupabaseCareerPathStorage(Supabase.instance.client),
+    () => SupabaseCareerPathStorage(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<CareerPlayerRepository>(
     () => CareerPlayerRepository(Supabase.instance.client, sl()),
@@ -208,13 +208,13 @@ void setupDependencies() {
     () => GuessPlayerRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<CrowdLineupRepository>(
-    () => SupabaseCrowdLineupRepository(Supabase.instance.client),
+    () => SupabaseCrowdLineupRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<TacticalIdentityRepository>(
-    () => SupabaseTacticalIdentityRepository(Supabase.instance.client),
+    () => SupabaseTacticalIdentityRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<PlayerIdentityRepository>(
-    () => SupabasePlayerIdentityRepository(Supabase.instance.client),
+    () => SupabasePlayerIdentityRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<ThemeCubit>(ThemeCubit.new);
   sl.registerLazySingleton<LocaleCubit>(LocaleCubit.new);
@@ -234,11 +234,12 @@ void setupDependencies() {
     () => QuizQuestionRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<QuizProgressRepository>(
-    () => QuizProgressRepository(Supabase.instance.client),
+    () => QuizProgressRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<ArenaProgressRepository>(
     () => ArenaProgressRepository(
       client: Supabase.instance.client,
+      clubConfig: sl(),
       quizQuestionRepository: sl(),
       quizProgressRepository: sl(),
       lineupStorage: sl(),
@@ -275,7 +276,7 @@ void setupDependencies() {
   sl.registerLazySingleton<StoreLocalStorage>(StoreLocalStorage.new);
   sl.registerLazySingleton<StoreRepository>(() => MockStoreRepository(sl()));
   sl.registerLazySingleton<StoreOrdersRepository>(
-    () => SupabaseStoreOrdersRepository(Supabase.instance.client),
+    () => SupabaseStoreOrdersRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<DeliveryAddressRepository>(
     () => SupabaseDeliveryAddressRepository(Supabase.instance.client),

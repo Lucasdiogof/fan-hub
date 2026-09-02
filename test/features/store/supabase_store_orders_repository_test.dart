@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/data/supabase_store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
@@ -37,6 +38,7 @@ void main() {
         'anon-key',
         authOptions: const AuthClientOptions(autoRefreshToken: false),
       ),
+      goiasClubConfig,
     );
   });
 
