@@ -1,0 +1,26 @@
+{
+  "totalMatches": 31,
+  "withPassportLink": 15,
+  "withoutPassportLink": 16,
+  "verified": 21,
+  "partial": 10,
+  "byKickoffPrecision": {
+    "DATE": 6,
+    "YEAR": 10,
+    "DATETIME": 15
+  },
+  "sourceRefsTotal": 46,
+  "sourceRefsByNamespace": {
+    "goias_lineup_curated": 31,
+    "goias_passport": 15
+  },
+  "matchesWith1Source": 16,
+  "matchesWith2PlusSources": 15,
+  "byResultKind": {
+    "NEW_MATCH": 31
+  },
+  "existingMatchByStage": {},
+  "blockedAmbiguousMatch": [],
+  "registryConflicts": [],
+  "blockedInsufficientMatchIdentity": []
+}

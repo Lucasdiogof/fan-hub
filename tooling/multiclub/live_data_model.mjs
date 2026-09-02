@@ -112,9 +112,21 @@ export function temporalValue(precision, { year, month, day }) {
   return { precision, year, month: precision === 'YEAR' ? null : month, day: precision === 'DAY' ? day : null };
 }
 
-/** SQL: matches.club_id / passport_match_id / (match_source,
- * match_external_id) — nunca um `match_id text` ambíguo entre origens.
- * Namespace explícito por fonte. */
+/** SUPERSEDIDA — mantida só por compatibilidade com test_live_data_model.
+ * mjs (prova histórica de conceito), NUNCA use como padrão real. Um
+ * `"${source}:${externalId}"` como id ainda é um texto ambíguo derivado de
+ * UMA fonte só (o mesmo problema de raiz que motivou esta função: cada
+ * fonte tem seu próprio namespace, nenhuma é neutra) — não resolve o
+ * cenário multi-clube (2 fontes diferentes achando a MESMA partida) nem é
+ * estável se aquela fonte específica for descontinuada.
+ *
+ * O desenho REAL, implementado e testado, é
+ * tooling/multiclub/match_registry.mjs + public.matches (id = UUID
+ * literal do registry, nunca derivado de texto de fonte) +
+ * public.match_source_refs (uma linha por (fonte, partida), várias fontes
+ * podem apontar pro MESMO matches.id). Ver docs/multiclub/
+ * 16_live_data_architecture.md §8 e a migration 20260902100000_create_
+ * matches.sql. */
 export function canonicalMatchId({ source, externalId }) {
   if (!source || !externalId) throw new Error('canonicalMatchId exige source e externalId');
   return `${source}:${externalId}`;

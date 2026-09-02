@@ -1,0 +1,308 @@
+{
+  "idNamespaces": [
+    {
+      "source": "passport_matches.json / public.passport_matches",
+      "idType": "text opaco \"pe_<hash16>\" — fornecido pelo usuário no JSON de origem, NUNCA gerado por script deste repo",
+      "example": "pe_cb52680435343cc4",
+      "stable": true,
+      "stableReason": "README confirma: \"que nunca muda numa reimportação\" — reimportar o JSON faz UPDATE, nunca troca o id.",
+      "global": false,
+      "globalReason": "Namespace isolado — não tem NENHUMA referência cruzada com lineup_matches.id nem com nenhum id de provider (OneFootball). Cada fonte tem seu próprio id sem ponte.",
+      "goiasSpecific": true,
+      "goiasSpecificReason": "Schema é construído do ponto de vista do Goiás: goias_is_home, goias_score, opponent, opponent_score — não tem home_club_id/away_club_id simétricos. Um 2º clube que jogasse a MESMA partida não teria como apontar pra esta linha sem reinterpretar os campos.",
+      "servesAsCanonical": false,
+      "servesAsCanonicalReason": "Estável, mas não é multi-clube-safe (goiasSpecific=true) — reutilizar direto criaria uma identidade de partida enviesada pro Goiás desde a fundação."
+    },
+    {
+      "source": "lineup_matches.json (Adivinhe a Escalação)",
+      "idType": "slug legível \"<temporada>_<oponente-slug>_<competição-código>_<fase-slug>\", curado à mão",
+      "example": "2021_guarani_brB_acesso",
+      "stable": true,
+      "stableReason": "Arquivo versionado no git, nunca regenerado por script — muda só se editado manualmente.",
+      "global": false,
+      "globalReason": "Namespace PRÓPRIO, desconectado de passport_matches e de qualquer provider — confirmado por cross-check de (match_date, oponente): só 15 das 31 partidas batem 1:1 com uma linha de passport_matches por data+oponente; as outras 16 não têm par claro (10 delas têm match_date \"-01-01\", indício de dia-placeholder, não uma partida real de 1º de janeiro).",
+      "goiasSpecific": true,
+      "goiasSpecificReason": "home_team/away_team são STRINGS de nome, sem club_id nenhum — e o dataset inteiro só existe porque é \"escalação do Goiás\", nunca pensado como partida de 2 clubes peers.",
+      "servesAsCanonical": false,
+      "servesAsCanonicalReason": "Mesma limitação de passport_matches — estável dentro do próprio arquivo, mas não é uma identidade neutra de partida."
+    },
+    {
+      "source": "src/football/providers/onefootball_provider.ts (Worker, OneFootballMatchCard.matchId)",
+      "idType": "string numérica própria do provider OneFootball",
+      "example": "(id interno do OneFootball, não exposto cru pro Flutter — o Worker prefixa \"onef-<id>\" antes de devolver)",
+      "stable": false,
+      "stableReason": "Amarrado a UM provider específico — troca de provider troca o id inteiro. O próprio comentário do código diz: \"id vem prefixado (onef-<id>) — o Flutter nunca precisa entender o prefixo\".",
+      "global": false,
+      "globalReason": "Cobre SÓ 1 competição por vez (ONEFOOTBALL_COMPETITION_SLUG fixo no wrangler.toml, hoje Brasileirão Série B) — não cobre Goiano/Copa do Brasil/Libertadores/etc., e não tem histórico (só partidas atuais/recentes do provider).",
+      "goiasSpecific": false,
+      "goiasSpecificReason": "Tecnicamente é uma partida entre 2 times quaisquer (formato provider genérico), mas na prática o Worker só busca partidas do Goiás.",
+      "servesAsCanonical": false,
+      "servesAsCanonicalReason": "Nem estável (amarrado a provider) nem coberto historicamente — inadequado como fundação, só serve pro \"próximo jogo/últimos resultados\" do momento."
+    },
+    {
+      "source": "src/football/normalize/match_lineup.ts + onefootball_provider.ts (jogador)",
+      "idType": "NENHUM — só name/jerseyNumber/image.path",
+      "example": "{ name: \"Fulano\", jerseyNumber: 9, image: {...} }",
+      "stable": false,
+      "stableReason": "Não existe id de jogador em lugar nenhum do tipo OneFootballLineupPlayer nem em OneFootballMatchEvent (goal.scorer/card.player/substitution.playerIn/playerOut — todos só {name}).",
+      "global": false,
+      "goiasSpecific": false,
+      "servesAsCanonical": false,
+      "servesAsCanonicalReason": "N/A pra jogador — não existe ID nenhum a reaproveitar. Ver decisão sobre player_external_ids no relatório."
+    }
+  ],
+  "crossCheckLineupVsPassport": [
+    {
+      "lineupMatchId": "1990_flamengo_cdb_final_volta",
+      "matchDate": "1990-11-07",
+      "opponent": "Flamengo",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "1996_guarani_brA_quartas",
+      "matchDate": "1996-11-27",
+      "opponent": "Guarani",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "1996_gremio_brA_semi",
+      "matchDate": "1996-12-08",
+      "opponent": "Grêmio",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "1999_santacruz_brB_titulo",
+      "matchDate": "1999-12-12",
+      "opponent": "Santa Cruz",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2003_juventude_brA_reacao",
+      "matchDate": "2003-01-01",
+      "opponent": "Juventude",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2003_fluminense_brA_reacao",
+      "matchDate": "2003-01-01",
+      "opponent": "Fluminense",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2003_santos_brA_reacao",
+      "matchDate": "2003-01-01",
+      "opponent": "Santos",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2005_pontepreta_brA_3lugar",
+      "matchDate": "2005-01-01",
+      "opponent": "Ponte Preta",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2005_athleticopr_brA_3lugar",
+      "matchDate": "2005-01-01",
+      "opponent": "Athletico-PR",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2005_saopaulo_brA_3lugar",
+      "matchDate": "2005-11-16",
+      "opponent": "São Paulo",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_17d74b2ea9e015d1",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2005_corinthians_brA_3lugar",
+      "matchDate": "2005-01-01",
+      "opponent": "Corinthians",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2006_cuenca_lib_1fase",
+      "matchDate": "2006-02-01",
+      "opponent": "Deportivo Cuenca",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_88ef144e0da4d3d2",
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2006_newells_lib_grupos",
+      "matchDate": "2006-01-01",
+      "opponent": "Newell's Old Boys",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2006_estudiantes_lib_oitavas_volta",
+      "matchDate": "2006-05-04",
+      "opponent": "Estudiantes",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_5874ea43cd176ba9",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2010_palmeiras_sulamericana_semi_volta",
+      "matchDate": "2010-11-24",
+      "opponent": "Palmeiras",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_a62fdaf973f98f24",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2010_independiente_sulamericana_final_ida",
+      "matchDate": "2010-12-01",
+      "opponent": "Independiente",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_f2659643432acb89",
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2010_independiente_sulamericana_final_volta",
+      "matchDate": "2010-12-08",
+      "opponent": "Independiente",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_645af47a1234a92d",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2012_guarani_brB_retafinal",
+      "matchDate": "2012-01-01",
+      "opponent": "Guarani",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2012_joinville_brB_titulo",
+      "matchDate": "2012-11-24",
+      "opponent": "Joinville",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_d045a1b785dbf480",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2013_fluminense_cdb_oitavas_volta",
+      "matchDate": "2013-08-28",
+      "opponent": "Fluminense",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_43e29e22e41095b6",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2013_vasco_cdb_quartas_ida",
+      "matchDate": "2013-01-01",
+      "opponent": "Vasco",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2013_vasco_cdb_quartas_volta",
+      "matchDate": "2013-01-01",
+      "opponent": "Vasco",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": true
+    },
+    {
+      "lineupMatchId": "2018_aparecidense_goiano_final_volta",
+      "matchDate": "2018-04-08",
+      "opponent": "Aparecidense",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_fe051cd605ac4b09",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2021_csa_brB_g4",
+      "matchDate": "2021-10-15",
+      "opponent": "CSA",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_26087010ae0b66d6",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2021_guarani_brB_acesso",
+      "matchDate": "2021-11-22",
+      "opponent": "Guarani",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_382ffaa0ed399d2a",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "opponent": "Corinthians",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_25d23cf4c59101a6",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "opponent": "Botafogo",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_9f8a92393fd18710",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2025_paysandu_copaverde_final_ida",
+      "matchDate": "2025-04-09",
+      "opponent": "Paysandu",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_a44d7062b76636ff",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2025_cuiaba_brB_rodada17",
+      "matchDate": "2025-07-19",
+      "opponent": "Cuiabá",
+      "passportMatchesCandidates": 1,
+      "linkedPassportMatchId": "pe_af2020d68d406371",
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2026_atleticogo_goiano_final_ida",
+      "matchDate": "2026-03-07",
+      "opponent": "Atlético-GO",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": false
+    },
+    {
+      "lineupMatchId": "2026_atleticogo_goiano_final_volta",
+      "matchDate": "2026-03-15",
+      "opponent": "Atlético-GO",
+      "passportMatchesCandidates": 0,
+      "linkedPassportMatchId": null,
+      "suspectPlaceholderDay": false
+    }
+  ],
+  "linkedCount": 15,
+  "unlinkedCount": 16,
+  "totalLineupMatches": 31,
+  "totalPassportMatches": 1697
+}

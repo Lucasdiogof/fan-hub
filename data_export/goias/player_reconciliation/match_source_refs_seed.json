@@ -1,0 +1,324 @@
+[
+  {
+    "matchId": "a03cae2d-062a-56de-95c5-a740abb79517",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "1990_flamengo_cdb_final_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "9099c65b-8fcb-57d1-a6bd-65ff5d9a7b6a",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "1996_guarani_brA_quartas",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "d9a23f58-f510-5c3b-9a01-830484afa34d",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "1996_gremio_brA_semi",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "2f1bbabe-e6ed-5e6b-9f2b-5de3c2921458",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "1999_santacruz_brB_titulo",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "3223c44c-2ca5-5de9-8a95-e13324216dc1",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2003_juventude_brA_reacao",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "56d56e70-5c18-5797-adf8-16d107fa28bb",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2003_fluminense_brA_reacao",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "85863207-3408-5312-bcae-4ae904150572",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2003_santos_brA_reacao",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "2329418e-5027-591c-a117-af085e255027",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2005_pontepreta_brA_3lugar",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "36f08f38-be62-552b-ae53-1f746ead75a0",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2005_athleticopr_brA_3lugar",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "940dc66b-c7b3-5769-8e1e-b7d06361a343",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2005_saopaulo_brA_3lugar",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "940dc66b-c7b3-5769-8e1e-b7d06361a343",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_17d74b2ea9e015d1",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "9403f088-d984-5cbe-8fb7-0c4e7500df4e",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2005_corinthians_brA_3lugar",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "8b3f4a36-c877-561e-a6fc-e3a9b34be1ce",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2006_cuenca_lib_1fase",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "8b3f4a36-c877-561e-a6fc-e3a9b34be1ce",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_88ef144e0da4d3d2",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "84815132-0ade-5cb2-b017-e2f049c4e18f",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2006_newells_lib_grupos",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "ad35207e-af8c-5aeb-b873-a1efba5c4680",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2006_estudiantes_lib_oitavas_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "ad35207e-af8c-5aeb-b873-a1efba5c4680",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_5874ea43cd176ba9",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "7a6288eb-0cd0-5903-8d05-83dc261f5015",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2010_palmeiras_sulamericana_semi_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "7a6288eb-0cd0-5903-8d05-83dc261f5015",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_a62fdaf973f98f24",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "8b85a8ae-9ab4-5296-bfaa-902d6f5ceab8",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2010_independiente_sulamericana_final_ida",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "8b85a8ae-9ab4-5296-bfaa-902d6f5ceab8",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_f2659643432acb89",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "ad4be142-68c9-5ab3-a313-1fef33fb73a4",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2010_independiente_sulamericana_final_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "ad4be142-68c9-5ab3-a313-1fef33fb73a4",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_645af47a1234a92d",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "058d666e-aa84-58d9-b19b-a6ff3ccef4ec",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2012_guarani_brB_retafinal",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "d66fb88a-3c5f-5460-9ff4-ec8ca9cf5de9",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2012_joinville_brB_titulo",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "d66fb88a-3c5f-5460-9ff4-ec8ca9cf5de9",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_d045a1b785dbf480",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "1e3855de-7bcf-59ec-baf0-978bc8cda659",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2013_fluminense_cdb_oitavas_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "1e3855de-7bcf-59ec-baf0-978bc8cda659",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_43e29e22e41095b6",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "e2aab068-3555-5bbf-b99b-2ce45dbb1972",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2013_vasco_cdb_quartas_ida",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "fea69f06-3354-5960-9ce4-3f9ef0a48393",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2013_vasco_cdb_quartas_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "f8e9e61a-2fd5-5152-94e7-4d842917c02f",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2018_aparecidense_goiano_final_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "f8e9e61a-2fd5-5152-94e7-4d842917c02f",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_fe051cd605ac4b09",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "cc8d583b-42c1-5f1f-9cbe-31e83d52c2bc",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2021_csa_brB_g4",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "cc8d583b-42c1-5f1f-9cbe-31e83d52c2bc",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_26087010ae0b66d6",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "0b06ee45-884c-5a3d-b80a-ac341d203f74",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2021_guarani_brB_acesso",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "0b06ee45-884c-5a3d-b80a-ac341d203f74",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_382ffaa0ed399d2a",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "9559c821-6e12-5b5a-bb91-fa14baefd84c",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2023_corinthians_brA_rodada2",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "9559c821-6e12-5b5a-bb91-fa14baefd84c",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_25d23cf4c59101a6",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "b43c29e9-ade3-5094-a48b-ec3fa574fdb1",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2023_botafogo_brA_rodada6",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "b43c29e9-ade3-5094-a48b-ec3fa574fdb1",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_9f8a92393fd18710",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "3d92c7c8-edb0-5154-b5fd-9ca1e7ae7e6a",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2025_paysandu_copaverde_final_ida",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "3d92c7c8-edb0-5154-b5fd-9ca1e7ae7e6a",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_a44d7062b76636ff",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "7a2cca6d-cfc4-5980-b962-c05166163e0d",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2025_cuiaba_brB_rodada17",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "7a2cca6d-cfc4-5980-b962-c05166163e0d",
+    "sourceType": "PASSPORT_MATCH",
+    "sourceNamespace": "goias_passport",
+    "sourceRef": "pe_af2020d68d406371",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "21078bdc-5503-5062-ab23-164f6548b9dc",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2026_atleticogo_goiano_final_ida",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  },
+  {
+    "matchId": "40c6b119-92cf-5702-bb3f-2f190a322e06",
+    "sourceType": "LINEUP_MATCH",
+    "sourceNamespace": "goias_lineup_curated",
+    "sourceRef": "2026_atleticogo_goiano_final_volta",
+    "sourceClubId": "4c16340d-300c-5ab2-903f-17519db9b146"
+  }
+]

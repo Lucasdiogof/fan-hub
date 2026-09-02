@@ -1,0 +1,1105 @@
+{
+  "version": 1,
+  "_permanenceWarning": "ESTE ARQUIVO É UM REGISTRY PERSISTENTE DE IDENTIDADE DE PARTIDA, NÃO UM CACHE. match_id, uma vez atribuído, NUNCA muda — mesmo se data/horário/nomes de time/competição/placar forem corrigidos depois, ou se uma nova fonte (passport_matches, um provider futuro, o import de outro clube) for ligada à mesma partida (isso só ACRESCENTA um anchor à entrada existente). Matching é por SOBREPOSIÇÃO DE ANCHOR (sourceType+sourceRef), nunca por atributo de partida nenhum. canonicalMatchKey é sequencial e NUNCA é reaproveitado, mesmo em SUPERSEDED.",
+  "nextSequence": 32,
+  "entries": [
+    {
+      "matchId": "a03cae2d-062a-56de-95c5-a740abb79517",
+      "canonicalMatchKey": "goias-app:multiclub:match:1",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "1990_flamengo_cdb_final_volta"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "flamengo"
+        },
+        "kickoff": {
+          "precision": "DATE",
+          "year": 1990,
+          "month": 11,
+          "date": "1990-11-07",
+          "at": null
+        },
+        "competition": "Copa do Brasil",
+        "season": "1990"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "9099c65b-8fcb-57d1-a6bd-65ff5d9a7b6a",
+      "canonicalMatchKey": "goias-app:multiclub:match:2",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "1996_guarani_brA_quartas"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "guarani"
+        },
+        "kickoff": {
+          "precision": "DATE",
+          "year": 1996,
+          "month": 11,
+          "date": "1996-11-27",
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "1996"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "d9a23f58-f510-5c3b-9a01-830484afa34d",
+      "canonicalMatchKey": "goias-app:multiclub:match:3",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "1996_gremio_brA_semi"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "gremio"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "DATE",
+          "year": 1996,
+          "month": 12,
+          "date": "1996-12-08",
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "1996"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "2f1bbabe-e6ed-5e6b-9f2b-5de3c2921458",
+      "canonicalMatchKey": "goias-app:multiclub:match:4",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "1999_santacruz_brB_titulo"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "santa cruz"
+        },
+        "kickoff": {
+          "precision": "DATE",
+          "year": 1999,
+          "month": 12,
+          "date": "1999-12-12",
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série B",
+        "season": "1999"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "3223c44c-2ca5-5de9-8a95-e13324216dc1",
+      "canonicalMatchKey": "goias-app:multiclub:match:5",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2003_juventude_brA_reacao"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "juventude"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2003,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2003"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "56d56e70-5c18-5797-adf8-16d107fa28bb",
+      "canonicalMatchKey": "goias-app:multiclub:match:6",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2003_fluminense_brA_reacao"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "fluminense"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2003,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2003"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "85863207-3408-5312-bcae-4ae904150572",
+      "canonicalMatchKey": "goias-app:multiclub:match:7",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2003_santos_brA_reacao"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "santos"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2003,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2003"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "2329418e-5027-591c-a117-af085e255027",
+      "canonicalMatchKey": "goias-app:multiclub:match:8",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2005_pontepreta_brA_3lugar"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "ponte preta"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2005,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2005"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "36f08f38-be62-552b-ae53-1f746ead75a0",
+      "canonicalMatchKey": "goias-app:multiclub:match:9",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2005_athleticopr_brA_3lugar"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "athletico-pr"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2005,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2005"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "940dc66b-c7b3-5769-8e1e-b7d06361a343",
+      "canonicalMatchKey": "goias-app:multiclub:match:10",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2005_saopaulo_brA_3lugar"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_17d74b2ea9e015d1"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "sao paulo"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2005,
+          "month": 11,
+          "date": "2005-11-16",
+          "at": "2005-11-16T20:30:00"
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2005"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "9403f088-d984-5cbe-8fb7-0c4e7500df4e",
+      "canonicalMatchKey": "goias-app:multiclub:match:11",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2005_corinthians_brA_3lugar"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "corinthians"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2005,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2005"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "8b3f4a36-c877-561e-a6fc-e3a9b34be1ce",
+      "canonicalMatchKey": "goias-app:multiclub:match:12",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2006_cuenca_lib_1fase"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_88ef144e0da4d3d2"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "deportivo cuenca"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2006,
+          "month": 2,
+          "date": "2006-02-01",
+          "at": "2006-02-01T20:30:00"
+        },
+        "competition": "Copa Libertadores",
+        "season": "2006"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "84815132-0ade-5cb2-b017-e2f049c4e18f",
+      "canonicalMatchKey": "goias-app:multiclub:match:13",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2006_newells_lib_grupos"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "newell's old boys"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2006,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Copa Libertadores",
+        "season": "2006"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "ad35207e-af8c-5aeb-b873-a1efba5c4680",
+      "canonicalMatchKey": "goias-app:multiclub:match:14",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2006_estudiantes_lib_oitavas_volta"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_5874ea43cd176ba9"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "estudiantes"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2006,
+          "month": 5,
+          "date": "2006-05-04",
+          "at": "2006-05-04T19:15:00"
+        },
+        "competition": "Copa Libertadores",
+        "season": "2006"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "7a6288eb-0cd0-5903-8d05-83dc261f5015",
+      "canonicalMatchKey": "goias-app:multiclub:match:15",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2010_palmeiras_sulamericana_semi_volta"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_a62fdaf973f98f24"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "palmeiras"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2010,
+          "month": 11,
+          "date": "2010-11-24",
+          "at": "2010-11-24T21:50:00"
+        },
+        "competition": "Copa Sul-Americana",
+        "season": "2010"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "8b85a8ae-9ab4-5296-bfaa-902d6f5ceab8",
+      "canonicalMatchKey": "goias-app:multiclub:match:16",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2010_independiente_sulamericana_final_ida"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_f2659643432acb89"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "independiente"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2010,
+          "month": 12,
+          "date": "2010-12-01",
+          "at": "2010-12-01T22:00:00"
+        },
+        "competition": "Copa Sul-Americana",
+        "season": "2010"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "ad4be142-68c9-5ab3-a313-1fef33fb73a4",
+      "canonicalMatchKey": "goias-app:multiclub:match:17",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2010_independiente_sulamericana_final_volta"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_645af47a1234a92d"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "independiente"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2010,
+          "month": 12,
+          "date": "2010-12-08",
+          "at": "2010-12-08T21:00:00"
+        },
+        "competition": "Copa Sul-Americana",
+        "season": "2010"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "058d666e-aa84-58d9-b19b-a6ff3ccef4ec",
+      "canonicalMatchKey": "goias-app:multiclub:match:18",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2012_guarani_brB_retafinal"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "guarani"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2012,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Campeonato Brasileiro Série B",
+        "season": "2012"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "d66fb88a-3c5f-5460-9ff4-ec8ca9cf5de9",
+      "canonicalMatchKey": "goias-app:multiclub:match:19",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2012_joinville_brB_titulo"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_d045a1b785dbf480"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "joinville"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2012,
+          "month": 11,
+          "date": "2012-11-24",
+          "at": "2012-11-24T16:20:00"
+        },
+        "competition": "Campeonato Brasileiro Série B",
+        "season": "2012"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "1e3855de-7bcf-59ec-baf0-978bc8cda659",
+      "canonicalMatchKey": "goias-app:multiclub:match:20",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2013_fluminense_cdb_oitavas_volta"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_43e29e22e41095b6"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "fluminense"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2013,
+          "month": 8,
+          "date": "2013-08-28",
+          "at": "2013-08-28T19:30:00"
+        },
+        "competition": "Copa do Brasil",
+        "season": "2013"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "e2aab068-3555-5bbf-b99b-2ce45dbb1972",
+      "canonicalMatchKey": "goias-app:multiclub:match:21",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2013_vasco_cdb_quartas_ida"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "vasco"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2013,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Copa do Brasil",
+        "season": "2013"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "fea69f06-3354-5960-9ce4-3f9ef0a48393",
+      "canonicalMatchKey": "goias-app:multiclub:match:22",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2013_vasco_cdb_quartas_volta"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "vasco"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "YEAR",
+          "year": 2013,
+          "month": null,
+          "date": null,
+          "at": null
+        },
+        "competition": "Copa do Brasil",
+        "season": "2013"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "f8e9e61a-2fd5-5152-94e7-4d842917c02f",
+      "canonicalMatchKey": "goias-app:multiclub:match:23",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2018_aparecidense_goiano_final_volta"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_fe051cd605ac4b09"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "aparecidense"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2018,
+          "month": 4,
+          "date": "2018-04-08",
+          "at": "2018-04-08T16:00:00"
+        },
+        "competition": "Campeonato Goiano",
+        "season": "2018"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "cc8d583b-42c1-5f1f-9cbe-31e83d52c2bc",
+      "canonicalMatchKey": "goias-app:multiclub:match:24",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2021_csa_brB_g4"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_26087010ae0b66d6"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "csa"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2021,
+          "month": 10,
+          "date": "2021-10-15",
+          "at": "2021-10-15T21:30:00"
+        },
+        "competition": "Campeonato Brasileiro Série B",
+        "season": "2021"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "0b06ee45-884c-5a3d-b80a-ac341d203f74",
+      "canonicalMatchKey": "goias-app:multiclub:match:25",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2021_guarani_brB_acesso"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_382ffaa0ed399d2a"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "guarani"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2021,
+          "month": 11,
+          "date": "2021-11-22",
+          "at": "2021-11-22T20:00:00"
+        },
+        "competition": "Campeonato Brasileiro Série B",
+        "season": "2021"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "9559c821-6e12-5b5a-bb91-fa14baefd84c",
+      "canonicalMatchKey": "goias-app:multiclub:match:26",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2023_corinthians_brA_rodada2"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_25d23cf4c59101a6"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "corinthians"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2023,
+          "month": 4,
+          "date": "2023-04-23",
+          "at": "2023-04-23T19:00:00"
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2023"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "b43c29e9-ade3-5094-a48b-ec3fa574fdb1",
+      "canonicalMatchKey": "goias-app:multiclub:match:27",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2023_botafogo_brA_rodada6"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_9f8a92393fd18710"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "botafogo"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2023,
+          "month": 5,
+          "date": "2023-05-14",
+          "at": "2023-05-14T18:30:00"
+        },
+        "competition": "Campeonato Brasileiro Série A",
+        "season": "2023"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "3d92c7c8-edb0-5154-b5fd-9ca1e7ae7e6a",
+      "canonicalMatchKey": "goias-app:multiclub:match:28",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2025_paysandu_copaverde_final_ida"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_a44d7062b76636ff"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "paysandu"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2025,
+          "month": 4,
+          "date": "2025-04-09",
+          "at": "2025-04-09T20:00:00"
+        },
+        "competition": "Copa Verde",
+        "season": "2025"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "7a2cca6d-cfc4-5980-b962-c05166163e0d",
+      "canonicalMatchKey": "goias-app:multiclub:match:29",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2025_cuiaba_brB_rodada17"
+        },
+        {
+          "sourceType": "PASSPORT_MATCH",
+          "sourceNamespace": "goias_passport",
+          "sourceRef": "pe_af2020d68d406371"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "cuiaba"
+        },
+        "kickoff": {
+          "precision": "DATETIME",
+          "year": 2025,
+          "month": 7,
+          "date": "2025-07-19",
+          "at": "2025-07-19T16:00:00"
+        },
+        "competition": "Campeonato Brasileiro Série B",
+        "season": "2025"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "21078bdc-5503-5062-ab23-164f6548b9dc",
+      "canonicalMatchKey": "goias-app:multiclub:match:30",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2026_atleticogo_goiano_final_ida"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": null,
+          "normalizedName": "atletico-go"
+        },
+        "awayIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "kickoff": {
+          "precision": "DATE",
+          "year": 2026,
+          "month": 3,
+          "date": "2026-03-07",
+          "at": null
+        },
+        "competition": "Campeonato Goiano",
+        "season": "2026"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    },
+    {
+      "matchId": "40c6b119-92cf-5702-bb3f-2f190a322e06",
+      "canonicalMatchKey": "goias-app:multiclub:match:31",
+      "sourceAnchors": [
+        {
+          "sourceType": "LINEUP_MATCH",
+          "sourceNamespace": "goias_lineup_curated",
+          "sourceRef": "2026_atleticogo_goiano_final_volta"
+        }
+      ],
+      "descriptor": {
+        "homeIdentity": {
+          "clubKey": "goias-app:multiclub:club:1",
+          "normalizedName": "goias"
+        },
+        "awayIdentity": {
+          "clubKey": null,
+          "normalizedName": "atletico-go"
+        },
+        "kickoff": {
+          "precision": "DATE",
+          "year": 2026,
+          "month": 3,
+          "date": "2026-03-15",
+          "at": null
+        },
+        "competition": "Campeonato Goiano",
+        "season": "2026"
+      },
+      "status": "ACTIVE",
+      "supersededByCanonicalMatchKey": null,
+      "registeredAt": "2026-09-02"
+    }
+  ]
+}

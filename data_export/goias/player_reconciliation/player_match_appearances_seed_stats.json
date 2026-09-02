@@ -1,0 +1,819 @@
+{
+  "approvedPeopleTotal": 96,
+  "peopleWithAtLeastOneAppearance": 62,
+  "peopleBlocked": 34,
+  "totalAppearanceRows": 162,
+  "byParticipationStatus": {
+    "STARTED": 162
+  },
+  "workerLimitation": "lineup_matches.json cobre SOMENTE titulares (11/partida) — provider OneFootball atual (src/football) não expõe banco de reservas completo, só lineup titular + eventos de substituição. UNUSED_SUBSTITUTE é suportado pelo schema mas NUNCA inventado por este seed nem deve ser por um sync futuro deste provider.",
+  "verifiedRows": 123,
+  "partialRows": 39,
+  "withSpellId": 80,
+  "withoutSpellId": 82,
+  "spellDecomposition": {
+    "A": 82,
+    "B": 0,
+    "C": 0,
+    "D": 0
+  },
+  "spellDecompositionLegend": {
+    "A": "pessoa não possui nenhum spell canônico Goiás",
+    "B": "boundary de precisão YEAR a <= 6 meses da partida — precisão insuficiente pra decidir",
+    "C": "possui spell(s), mas a data cai realmente fora de todos eles",
+    "D": "2+ spells candidatos se sobrepõem à mesma data — ambiguidade real"
+  },
+  "withPositionCode": 152,
+  "withoutPositionCode": 10,
+  "totalSourceRows": 162,
+  "conflictsReport": [
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "issue": "lineup_matches:2021_guarani_brB_acesso pos \"LD/MC\" é composto (2+ códigos numa só partida) — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Fabiano Cézar Viegas",
+      "issue": "lineup_matches:2006_newells_lib_grupos pos \"DEF\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Fabiano Cézar Viegas",
+      "issue": "lineup_matches:2006_estudiantes_lib_oitavas_volta pos \"DEF\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Paulo Baier",
+      "issue": "lineup_matches:2005_saopaulo_brA_3lugar pos \"ALA\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Douglas",
+      "issue": "lineup_matches:2010_palmeiras_sulamericana_semi_volta pos \"ALA\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Douglas",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_ida pos \"ALA\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Douglas",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_volta pos \"ALA\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "issue": "lineup_matches:2010_palmeiras_sulamericana_semi_volta pos \"ALA\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_ida pos \"ALA\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_volta pos \"ALA\" tem fragmento genérico não mapeável — position_code fica NULL na appearance, valor bruto preservado na provenance."
+    }
+  ],
+  "spellCoherenceReport": [
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "matchId": "2021_csa_brB_g4",
+      "matchDate": "2021-10-15",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "matchId": "2021_guarani_brB_acesso",
+      "matchDate": "2021-11-22",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Amaral",
+      "matchId": "2010_palmeiras_sulamericana_semi_volta",
+      "matchDate": "2010-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Amaral",
+      "matchId": "2010_independiente_sulamericana_final_ida",
+      "matchDate": "2010-12-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Amaral",
+      "matchId": "2010_independiente_sulamericana_final_volta",
+      "matchDate": "2010-12-08",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Amaral",
+      "matchId": "2012_guarani_brB_retafinal",
+      "matchDate": "2012-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Amaral",
+      "matchId": "2012_joinville_brB_titulo",
+      "matchDate": "2012-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Amaral",
+      "matchId": "2013_vasco_cdb_quartas_ida",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Amaral",
+      "matchId": "2013_vasco_cdb_quartas_volta",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Artur",
+      "matchId": "2021_guarani_brB_acesso",
+      "matchDate": "2021-11-22",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Bruno Melo",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Bruno Melo",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Caio Vinícius",
+      "matchId": "2021_guarani_brB_acesso",
+      "matchDate": "2021-11-22",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Carlos Alberto",
+      "matchId": "2010_palmeiras_sulamericana_semi_volta",
+      "matchDate": "2010-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Carlos Alberto",
+      "matchId": "2010_independiente_sulamericana_final_ida",
+      "matchDate": "2010-12-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Carlos Alberto",
+      "matchId": "2010_independiente_sulamericana_final_volta",
+      "matchDate": "2010-12-08",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "David",
+      "matchId": "2013_fluminense_cdb_oitavas_volta",
+      "matchDate": "2013-08-28",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "David",
+      "matchId": "2013_vasco_cdb_quartas_ida",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "David",
+      "matchId": "2013_vasco_cdb_quartas_volta",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Diego Caito",
+      "matchId": "2025_cuiaba_brB_rodada17",
+      "matchDate": "2025-07-19",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Diego Caito",
+      "matchId": "2026_atleticogo_goiano_final_ida",
+      "matchDate": "2026-03-07",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Diego Caito",
+      "matchId": "2026_atleticogo_goiano_final_volta",
+      "matchDate": "2026-03-15",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Diego Gonçalves",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Douglas",
+      "matchId": "2010_palmeiras_sulamericana_semi_volta",
+      "matchDate": "2010-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Douglas",
+      "matchId": "2010_independiente_sulamericana_final_ida",
+      "matchDate": "2010-12-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Douglas",
+      "matchId": "2010_independiente_sulamericana_final_volta",
+      "matchDate": "2010-12-08",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Eduardo Sasha",
+      "matchId": "2013_vasco_cdb_quartas_volta",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Élvis",
+      "matchId": "2021_csa_brB_g4",
+      "matchDate": "2021-10-15",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Élvis",
+      "matchId": "2021_guarani_brB_acesso",
+      "matchDate": "2021-11-22",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Fellipe Bastos",
+      "matchId": "2021_csa_brB_g4",
+      "matchDate": "2021-10-15",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Fellipe Bastos",
+      "matchId": "2021_guarani_brB_acesso",
+      "matchDate": "2021-11-22",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Gonzalo Freitas",
+      "matchId": "2025_cuiaba_brB_rodada17",
+      "matchDate": "2025-07-19",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Jajá",
+      "matchId": "2025_paysandu_copaverde_final_ida",
+      "matchDate": "2025-04-09",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Jajá",
+      "matchId": "2025_cuiaba_brB_rodada17",
+      "matchDate": "2025-07-19",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Lucas Halter",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Lucas Halter",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Lucas Lovat",
+      "matchId": "2025_paysandu_copaverde_final_ida",
+      "matchDate": "2025-04-09",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Maguinho",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Maguinho",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Marcelo Costa",
+      "matchId": "2010_palmeiras_sulamericana_semi_volta",
+      "matchDate": "2010-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Marcelo Costa",
+      "matchId": "2010_independiente_sulamericana_final_ida",
+      "matchDate": "2010-12-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Marcelo Costa",
+      "matchId": "2010_independiente_sulamericana_final_volta",
+      "matchDate": "2010-12-08",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Matheus Peixoto",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Matheus Peixoto",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Messias",
+      "matchId": "2025_paysandu_copaverde_final_ida",
+      "matchDate": "2025-04-09",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Messias",
+      "matchId": "2025_cuiaba_brB_rodada17",
+      "matchDate": "2025-07-19",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Otacílio Neto",
+      "matchId": "2010_palmeiras_sulamericana_semi_volta",
+      "matchDate": "2010-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Otacílio Neto",
+      "matchId": "2010_independiente_sulamericana_final_ida",
+      "matchDate": "2010-12-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Otacílio Neto",
+      "matchId": "2010_independiente_sulamericana_final_volta",
+      "matchDate": "2010-12-08",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Rafael Lacerda",
+      "matchId": "2012_joinville_brB_titulo",
+      "matchDate": "2012-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Renan",
+      "matchId": "2013_fluminense_cdb_oitavas_volta",
+      "matchDate": "2013-08-28",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Renan",
+      "matchId": "2013_vasco_cdb_quartas_ida",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Renan",
+      "matchId": "2013_vasco_cdb_quartas_volta",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Renan Oliveira",
+      "matchId": "2012_guarani_brB_retafinal",
+      "matchDate": "2012-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Renan Oliveira",
+      "matchId": "2012_joinville_brB_titulo",
+      "matchDate": "2012-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Renan Oliveira",
+      "matchId": "2013_fluminense_cdb_oitavas_volta",
+      "matchDate": "2013-08-28",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Renan Oliveira",
+      "matchId": "2013_vasco_cdb_quartas_ida",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Rodrigo",
+      "matchId": "2013_fluminense_cdb_oitavas_volta",
+      "matchDate": "2013-08-28",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Rodrigo",
+      "matchId": "2013_vasco_cdb_quartas_ida",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Rodrigo",
+      "matchId": "2013_vasco_cdb_quartas_volta",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Rodrigo Andrade",
+      "matchId": "2025_paysandu_copaverde_final_ida",
+      "matchDate": "2025-04-09",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Sander",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Sander",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Thiago Mendes",
+      "matchId": "2012_guarani_brB_retafinal",
+      "matchDate": "2012-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Thiago Mendes",
+      "matchId": "2012_joinville_brB_titulo",
+      "matchDate": "2012-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Titi",
+      "matchId": "2025_cuiaba_brB_rodada17",
+      "matchDate": "2025-07-19",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Valmir Lucas",
+      "matchId": "2012_guarani_brB_retafinal",
+      "matchDate": "2012-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Vinícius",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "matchId": "2010_palmeiras_sulamericana_semi_volta",
+      "matchDate": "2010-11-24",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "matchId": "2010_independiente_sulamericana_final_ida",
+      "matchDate": "2010-12-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "matchId": "2010_independiente_sulamericana_final_volta",
+      "matchDate": "2010-12-08",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Willean Lepo",
+      "matchId": "2025_paysandu_copaverde_final_ida",
+      "matchDate": "2025-04-09",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Willean Lepo",
+      "matchId": "2025_cuiaba_brB_rodada17",
+      "matchDate": "2025-07-19",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "William Matheus",
+      "matchId": "2013_fluminense_cdb_oitavas_volta",
+      "matchDate": "2013-08-28",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "William Matheus",
+      "matchId": "2013_vasco_cdb_quartas_ida",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "William Matheus",
+      "matchId": "2013_vasco_cdb_quartas_volta",
+      "matchDate": "2013-01-01",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Willian Oliveira",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Zé Hugo",
+      "matchId": "2025_paysandu_copaverde_final_ida",
+      "matchDate": "2025-04-09",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Zé Ricardo",
+      "matchId": "2023_corinthians_brA_rodada2",
+      "matchDate": "2023-04-23",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    },
+    {
+      "canonicalName": "Zé Ricardo",
+      "matchId": "2023_botafogo_brA_rodada6",
+      "matchDate": "2023-05-14",
+      "category": "A",
+      "reason": "pessoa não possui nenhum spell canônico Goiás."
+    }
+  ],
+  "blocked": [
+    {
+      "canonicalName": "Araújo",
+      "canonicalId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Brayann Brito Batista",
+      "canonicalId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Carlos Eduardo Amaral Pereira de Castro",
+      "canonicalId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Carlos Eduardo de Sousa Leopoldino",
+      "canonicalId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Dadá Belmonte",
+      "canonicalId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Danilo Cunha da Silva",
+      "canonicalId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Dill",
+      "canonicalId": "7dcb9ad0-b573-5261-aa53-736c3c9b96aa",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Djalma Antônio da Silva Filho",
+      "canonicalId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Douglas Pereira dos Santos",
+      "canonicalId": "ceba53d4-f785-545e-9a60-603a126c33e2",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Dudu Cearense",
+      "canonicalId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Egídio",
+      "canonicalId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Erik Nascimento de Lima",
+      "canonicalId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Esli Samuel García Cordero",
+      "canonicalId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Evair Aparecido Paulino",
+      "canonicalId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Everton Morelli",
+      "canonicalId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Ezequiel Alves de Oliveira Vieira",
+      "canonicalId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Fernandão",
+      "canonicalId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Guilherme Baldória de Camargo",
+      "canonicalId": "747cb968-a339-586c-94cf-583a3e0c3296",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Halerrandrio dos Santos Feitosa",
+      "canonicalId": "140ba628-c222-53a5-8621-a774092a125b",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Iarley",
+      "canonicalId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "João Paulo Ferreira Lourenço",
+      "canonicalId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Josué",
+      "canonicalId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Julián Palacios",
+      "canonicalId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Lucas Rodrigues Moreira Costa",
+      "canonicalId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Luiz Felipe Clemente de Almeida",
+      "canonicalId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Luiz Felipe do Nascimento dos Santos",
+      "canonicalId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Marcos Vinicius da Silva Santos",
+      "canonicalId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Michael Richard Delgado de Oliveira",
+      "canonicalId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Murillo Carvalho Victorio",
+      "canonicalId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Murilo Camara Saquetti Chimelo Pereira",
+      "canonicalId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Ramón",
+      "canonicalId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Ramon Menezes Roma",
+      "canonicalId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Rodrigo Alves Soares",
+      "canonicalId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+      "reason": "NO_LINEUP_EVIDENCE"
+    },
+    {
+      "canonicalName": "Thiago Rodrigues de Oliveira Nogueira",
+      "canonicalId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+      "reason": "NO_LINEUP_EVIDENCE"
+    }
+  ]
+}

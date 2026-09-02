@@ -3,6 +3,8 @@
 > Proposta de design — nada implementado, nenhuma tabela criada além da `people` já proposta em `10_club_config.md`/migration `20260901000000_create_people.sql`. Gerado em 2026-09-01, motivado por um requisito que ficou evidente durante a reconciliação (`15_player_reconciliation_report.md`): o caso Tadeu (398×400 jogos) não era um erro de dado — era o sintoma de não existir UMA fonte viva única para estatística de jogador. Este documento resolve isso.
 >
 > **Revisão v3.1 (mesma data)** — firma 6 pontos que a v1 deste documento deixava como "decisão a fechar depois": `club_id` vira `uuid` (não mais texto), `player_match_appearances` ganha um status explícito de comparecimento (titular/reserva-usado/reserva-não-usado, nunca contando quem não entrou), o sync ganha uma chave de idempotência formal (§5.1), a identidade de partida ganha um namespace explícito por fonte (§1.5) em vez de um `match_id text` ambíguo, `joined_at`/`left_at` ganham precisão temporal explícita (§1.6), e posição múltipla (§2) deixa de ser "decisão futura" e vira `player_positions`, a mesma tabela já usada pra validar os 7 cenários de teste em `tooling/multiclub/test_live_data_model.mjs`/`live_data_model.mjs` (implementação de referência em memória, não o schema real — prova o desenho antes do INSERT).
+>
+> **Revisão v4 (Etapa E — 2026-09-02)** — a v3.1 acima ainda era um DESENHO (implementação de referência em memória, `live_data_model.mjs`). A Etapa E implementou o schema REAL (`supabase/migrations/20260902100000_create_matches.sql`, `20260902120000_create_player_match_appearances.sql`) e ele diverge da v3.1 em pontos concretos, corrigidos aqui: §1.1 (schema real de `player_match_appearances` — sem colunas de evento, isso é escopo de uma tabela futura `match_events`), §1.5 (uma tabela `matches` central FOI criada, com `id` estável via registry — não o `match_source||':'||match_external_id` texto que a v3.1 sugeria como PK), e §5.2 (baseline+delta agora usa `kickoff_at` quando disponível pra resolver fronteira de mesmo-dia). `§2`/`player_positions` já estava correto e JÁ FOI aplicado de verdade na Etapa C (`supabase/migrations/20260902060000_create_player_positions.sql` ou equivalente) — não é mais proposta futura. Ver `docs/multiclub/17_etapa_e_v2_report.md` pro relatório completo desta revisão.
 
 ## 0. O problema, exatamente como apareceu
 
@@ -24,8 +26,8 @@ player_match_appearances    -- 1 linha por comparecimento REAL (titular ou reser
                                 existir cobertura — ver §5
 ```
 
-### §1.0 `clubs` — `id` é UUID, nunca o slug (NOVO nesta revisão)
-`10_club_config.md` (rascunho anterior) usava `clubs.id = 'goias'` (texto) como chave relacional — exatamente o padrão que causou a colisão de slug do caso Danilo em `people` (`15_player_reconciliation_report.md`). Corrigido aqui antes de qualquer FK ser escrita:
+### §1.0 `clubs` — `id` é UUID, nunca o slug (JÁ APLICADO — Etapa A/B, não é mais proposta)
+`10_club_config.md` (rascunho anterior) usava `clubs.id = 'goias'` (texto) como chave relacional — exatamente o padrão que causou a colisão de slug do caso Danilo em `people` (`15_player_reconciliation_report.md`). Corrigido e **aplicado de verdade** em `supabase/migrations/20260902020000_create_clubs.sql` (Etapa A/B, já rodou no Supabase) antes de qualquer FK ser escrita:
 ```sql
 create table clubs (
   id uuid primary key default gen_random_uuid(),
@@ -76,45 +78,71 @@ create table player_club_stats (
 ```
 Este é o `UPDATE player_club_stats SET appearances = 401 WHERE person_id = TADEU AND club_id = GOIAS;` que a Parte 8 do pedido pede — literal, 1 linha, 1 update, e toda feature que ler daqui enxerga o valor novo imediatamente, sem precisar tocar em `squad_members`/`career_players`/`guess_players`/nada mais, porque essas tabelas PARARAM DE GUARDAR o número (ver §3).
 
-### §1.1 `player_match_appearances` — status de comparecimento explícito, nunca `started boolean` sozinho
-A v1 deste documento usava só `started boolean`, que não distinguia "reserva que entrou" de "reserva que nunca saiu do banco" — os dois ficavam `started=false`, e um `COUNT(*)` ingênuo contaria os dois como aparição, o que está errado (Parte 3 do pedido). Corrigido:
+### §1.1 `player_match_appearances` — status de comparecimento explícito, nunca `started boolean` sozinho (SCHEMA REAL, implementado)
+A v1 deste documento usava só `started boolean`, que não distinguia "reserva que entrou" de "reserva que nunca saiu do banco" — os dois ficavam `started=false`, e um `COUNT(*)` ingênuo contaria os dois como aparição, o que está errado (Parte 3 do pedido). A v3.1 (rascunho) propunha um `enum appearance_status` com colunas de evento (gols/cartões/minutos) embutidas na própria linha de appearance — a Etapa E implementou de fato uma versão mais enxuta, e é ESTA a real (`supabase/migrations/20260902120000_create_player_match_appearances.sql`):
 ```sql
-create type appearance_status as enum ('STARTED', 'SUBSTITUTE_USED', 'UNUSED_SUBSTITUTE');
-
 create table player_match_appearances (
   id uuid primary key default gen_random_uuid(),
   person_id uuid not null references people(id),
   club_id uuid not null references clubs(id),
-  match_source text not null,     -- ver §1.5 — nunca um match_id ambíguo sozinho
-  match_external_id text not null,
-  canonical_match_id text generated always as (match_source || ':' || match_external_id) stored,
-  status appearance_status not null,
-  came_in_minute int,             -- só quando status = SUBSTITUTE_USED
-  came_out_minute int,
-  shirt_number int,
-  position text,                  -- posição NAQUELA partida, nunca a "posição da pessoa"
-  goals int default 0,
-  assists int default 0,
-  yellow_cards int default 0,
-  red_cards int default 0,
-  minutes_played int,
-  source text not null,
-  source_external_id text,
-  recorded_at timestamptz not null default now(),
+  canonical_match_id uuid not null references matches(id),  -- ver §1.5 (schema real)
+  spell_id uuid,  -- NULL quando ambíguo/sem overlap — nunca um palpite (ver relatório, decomposição A/B/C/D)
+  participation_status text not null check (participation_status in ('STARTED', 'SUBSTITUTE_USED', 'UNUSED_SUBSTITUTE')),
+  position_code text check (position_code in (/* catálogo de 15 códigos da Etapa C */)),
+  shirt_number integer check (shirt_number > 0),
+  verification_status text not null check (verification_status in ('VERIFIED', 'PARTIAL')),
   unique (person_id, club_id, canonical_match_id)   -- idempotência — ver §5.1
 );
 ```
-Regra de contagem (Parte 3 do pedido, implementada e testada em `live_data_model.mjs`/`countsAsAppearance`): **só `STARTED` e `SUBSTITUTE_USED` contam como aparição** — `UNUSED_SUBSTITUTE` fica registrado (é dado real: "estava no banco naquela partida"), mas nunca soma pra `player_club_stats.appearances`. `player_club_stats.appearances/goals/assists` idealmente é `COUNT`/`SUM` filtrado por `status IN ('STARTED','SUBSTITUTE_USED')` desta tabela — mas só quando a cobertura permitir (ver §5, é exatamente por isso que as duas tabelas são separadas: uma é o agregado vivo consultável rápido, a outra é o detalhe que idealmente a alimenta).
+Diferenças deliberadas vs. a v3.1 rascunhada: **sem** `goals`/`assists`/`yellow_cards`/`red_cards`/`minutes_played`/`came_in_minute`/`came_out_minute` embutidos na linha — evento de partida (gol, cartão, substituição com minuto) é um fato granular por natureza e tem escopo próprio (`match_events`, tabela FUTURA, fora desta etapa) que não deveria viver misturado com "esteve nesta partida". `position_code` reusa o catálogo canônico de 15 códigos já fechado na Etapa C (`player_positions`), nunca um vocabulário paralelo. Regra de contagem (Parte 3 do pedido, implementada e testada em `test_player_match_appearances.mjs`): **só `STARTED` e `SUBSTITUTE_USED` contam como aparição** — `UNUSED_SUBSTITUTE` fica registrado (é dado real: "estava no banco naquela partida"), mas nunca soma pra `player_club_stats.appearances`.
 
-### §1.5 Identidade canônica de partida — nunca um `match_id text` ambíguo
-A v1 deste documento (e o dataset atual) usa `match_id text` que ora significa um id de `passport_matches`, ora um fixture id do OneFootball — a mesma ambiguidade de namespace que causou a colisão de slug em `people` (Danilo), só que pra partida em vez de pessoa. Resolvido com namespace explícito, sem precisar criar uma tabela `matches` central nesta etapa (fica como evolução futura se o número de fontes crescer):
+**Limitação real do provider atual (OneFootball via Worker)**: `src/football/normalize/match_lineup.ts` + `onefootball_provider.ts` entregam `matchLineup.lineup` (titulares) e eventos de substituição (`playerIn`/`playerOut`), mas **nunca** a lista completa do banco de reservas — não dá pra afirmar `UNUSED_SUBSTITUTE` de forma completa com o dado hoje disponível. O schema SUPORTA os 3 estados; nenhum sync deste provider deve inventar `UNUSED_SUBSTITUTE`. O seed histórico desta etapa (`lineup_matches.json`, só titulares confirmados por auditoria) é 100% `STARTED`, exatamente porque é a única coisa que aquela fonte distingue.
+
+### §1.5 Identidade canônica de partida — SCHEMA REAL, implementado (`matches` + `match_source_refs`)
+A v1 deste documento (e o dataset atual) usa `match_id text` que ora significa um id de `passport_matches`, ora um fixture id do OneFootball — a mesma ambiguidade de namespace que causou a colisão de slug em `people` (Danilo), só que pra partida em vez de pessoa. A v3.1 (rascunho) propunha resolver isso só com um par de colunas `match_source`/`match_external_id` concatenadas em texto (`canonicalMatchId({source, externalId}) => "source:externalId"`), sem tabela central — **essa abordagem foi descartada**: ainda amarra a identidade de partida a UMA fonte só (o mesmo problema de raiz), e não resolve o cenário multi-clube (2 clubes, 2 fontes independentes, achando a MESMA partida — a segunda nunca teria como saber que o texto que ELA geraria já existe sob outro texto gerado pela primeira).
+
+O que foi de fato implementado (`supabase/migrations/20260902100000_create_matches.sql`, `tooling/multiclub/match_registry.mjs`):
+```sql
+create table matches (
+  id uuid primary key,   -- LITERAL, do match registry — nunca gen_random_uuid(), nunca derivado de texto de fonte
+  home_club_id uuid references clubs(id),
+  away_club_id uuid references clubs(id),
+  home_team_name text not null,
+  away_team_name text not null,
+  kickoff_year int not null,
+  kickoff_month int,                 -- NULL só quando kickoff_precision='YEAR'
+  kickoff_date date not null,        -- placeholder de ordenação quando a precisão é coarse — nunca fato sem checar precision
+  kickoff_at timestamptz,            -- só quando kickoff_precision='DATETIME'
+  kickoff_precision text not null check (kickoff_precision in ('YEAR','MONTH','DATE','DATETIME')),
+  competition text, season text, home_score int, away_score int,
+  verification_status text not null check (verification_status in ('VERIFIED','PARTIAL')),
+  check (home_club_id is not null or away_club_id is not null),
+  check (home_club_id is null or away_club_id is null or home_club_id <> away_club_id)
+);
+
+create table match_source_refs (
+  id uuid primary key default gen_random_uuid(),
+  match_id uuid not null references matches(id) on delete cascade,
+  source_type text not null check (source_type in ('LINEUP_MATCH','PASSPORT_MATCH','ONEFOOTBALL')),
+  source_ref text not null,
+  external_match_id text,
+  source_club_id uuid references clubs(id),
+  unique (source_type, source_ref)   -- a MESMA identidade de fonte nunca aponta pra 2 matches
+);
 ```
-match_source        -- 'passport_matches' | 'onefootball_worker' | ... — de onde veio o id
-match_external_id   -- o id NAQUELA fonte (ex.: 'pe_cb52680435343cc4' pra passport_matches)
-canonical_match_id  -- match_source || ':' || match_external_id — SEMPRE usado como chave,
-                        nunca match_external_id sozinho
+`matches.id` **nunca** é derivado de data/horário/nome de time/placar/competição, nem de nenhum id de fonte externa — vem de um `canonicalMatchKey` sequencial e imutável (`tooling/multiclub/matches_registry.json`), exatamente como `people`/`clubs`/`player_club_spells`. Identidade de fonte (`passport_matches.id`, o slug de `lineup_matches.json`, um futuro fixture id de provider) fica em `match_source_refs`, nunca em coluna de `matches` — é isso que resolve o cenário multi-clube: quando o Juventude importar sua própria base e encontrar a MESMA partida, a fonte dele vira uma **nova linha em `match_source_refs`** apontando pro **mesmo `matches.id`**, nunca uma 2ª linha em `matches`. Um candidate cujos anchors casam com 2 entradas JÁ registradas diferentes fica `BLOCKED_AMBIGUOUS_MATCH`/`ambiguous` — nunca resolvido sozinho (`match_registry.mjs.resolveMatchAnchors`). SPLIT/MERGE (2 registros que eram a mesma partida) usa a mesma filosofia ACTIVE/SUPERSEDED de `spell_registry.mjs` (`supersedeMatch()`), pronta mas não exercitada nesta etapa (só existe 1 fonte real hoje).
+
+Precisão temporal do **kickoff**, específica de `matches` (distinta de `joined_at`/`left_at` de spells, que são um PERÍODO — ver §1.6): `YEAR` (nem mês é confiável — caso real: `lineup_matches.match_date` com padrão `YYYY-01-01`, mês E dia fabricados), `MONTH` (mês confiável, só o dia é placeholder — `YYYY-MM-01` com MM plausível), `DATE` (dia confirmado), `DATETIME` (horário confirmado, hoje só via `passport_matches.date_precision='datetime'` + `kickoff_at`). Um link `passport_matches` único e confiável SEMPRE tem prioridade sobre a data de `lineup_matches` quando existe — nunca promovido a uma precisão maior só porque o campo tem um valor.
+
+### §1.5.1 Identidade viva de jogador por nome — BLOQUEADA nesta etapa (regra permanente pra qualquer sync futuro)
+O provider atual (OneFootball via Worker) só devolve `name` pra jogador — nenhum id. Um sync futuro que tente resolver "de quem é esse `name`" pra gravar uma `player_match_appearances` viva **nunca** pode escolher a primeira pessoa que bate pelo nome. Regra obrigatória, permanente, pra qualquer código futuro de sync ao vivo:
 ```
-`live_data_model.mjs.canonicalMatchId({source, externalId})` implementa isso — usado tanto no baseline do Tadeu (`as_of_match_id = 'passport_matches:pe_cb52680435343cc4'`, atualizando a nomenclatura livre "pe_..." que os overrides de reconciliação usaram) quanto em cada linha nova de `player_match_appearances`. Se/quando uma tabela `matches` central for criada, `canonical_match_id` vira sua PK e as duas colunas (`match_source`/`match_external_id`) continuam existindo como o jeito de POPULAR essa PK — não é trabalho perdido.
+1 pessoa casa de forma inequívoca no contexto permitido (ex.: nome + elenco atual do clube)
+                                                                -> vira candidate, grava
+2+ pessoas casam                                               -> AMBIGUOUS, NUNCA grava sozinho
+0 pessoas casam                                                -> UNRESOLVED, NUNCA grava
+```
+Mesmo um match único por nome continua sendo uma estratégia de BAIXA CONFIANÇA/transitória — só deixa de ser transitória quando existir `player_external_ids` (ver `player_external_ids` — deliberadamente NÃO criado nesta etapa: nenhum provider hoje fornece um id de jogador real pra persistir; quando um provider futuro fornecer `provider`+`external_player_id`, essa tabela é criada e a resolução por nome deixa de ser necessária). Esta regra NÃO se aplica ao seed histórico desta etapa (`build_player_match_appearances_seed.mjs`), que nunca resolve por nome cru — só processa `person.members` já reconciliados manualmente/por override (Etapa A/v3.1).
 
 ### §1.6 Precisão temporal — nunca inventar dia/mês que a fonte não dá
 Mesmo padrão já usado na auditoria de estádios do Passaporte (`joined_at`/`left_at` de `player_club_spells`, `date_original`/`date_precision` de `passport_matches`): se a fonte só sabe o ano ("2004"), `joined_at_precision='YEAR'` e `joined_at` fica no dia 1º de janeiro só como placeholder de ordenação — a UI NUNCA deve mostrar "01/01/2004" como se fosse uma data real, sempre reformatar conforme `*_precision`. Regras (implementadas e testadas em `live_data_model.mjs.temporalValue`):
@@ -198,9 +226,11 @@ A v1 deste documento sugeria literalmente `appearances += 1` a cada sync — **i
 Já introduzido no baseline do Tadeu acima; formalizado aqui como regra geral pra qualquer pessoa×clube:
 ```
 player_club_stats.appearances = player_club_stats (linha "baseline", congelada em as_of_date/as_of_match_id)
-                                + COUNT(player_match_appearances com status contável, recorded_at > as_of_date)
+                                + COUNT(player_match_appearances com status contável, ESTRITAMENTE posterior ao baseline)
 ```
-Nunca um contador solto sem essa decomposição — qualquer auditoria futura ("por que esse número é esse?") precisa conseguir responder "baseline X + Y aparições registradas depois de as_of_date", nunca só um inteiro sem histórico.
+Nunca um contador solto sem essa decomposição — qualquer auditoria futura ("por que esse número é esse?") precisa conseguir responder "baseline X + Y aparições registradas depois de as_of_date", nunca só um inteiro sem histórico. Implementado e testado em `tooling/multiclub/recompute_player_club_stats.mjs` (`computeDelta`/`recomputeTotal`, exercitado em `test_player_match_appearances.mjs`).
+
+**Fronteira do mesmo dia, usando `kickoff_at` quando existir (correção desta revisão)**: partida do candidate estritamente anterior ao `as_of_date` nunca soma (backfill não aumenta o total); o próprio match do baseline (`canonical_match_id === as_of_match_id`) nunca soma de novo; estritamente posterior sempre soma (dedup por `canonical_match_id`, garante idempotência mesmo processando a mesma partida N vezes); **mesmo dia, partida DIFERENTE** — se os DOIS lados (baseline e candidate) têm `kickoff_at` confiável (precisão `DATETIME`), compara o TIMESTAMP: só soma se o candidate for estritamente posterior; se falta horário confiável de QUALQUER um dos lados, cai em `AMBIGUOUS_BOUNDARY` — nunca resolvido silenciosamente, sempre reportado pra revisão humana. A política é deliberadamente conservadora: só aproveita horário quando ele existe E é confiável dos dois lados, nunca assume uma ordem.
 
 ## 6. Pipeline de sincronização — nunca o Flutter fazendo scraping
 
