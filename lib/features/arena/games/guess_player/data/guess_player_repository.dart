@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/club_data_unavailable_exception.dart';
+import 'package:goias_app/core/club/club_scoped_fallback.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_catalog.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.dart';
 import 'package:goias_app/features/squad/domain/squad_photos.dart';
@@ -7,17 +10,30 @@ import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// Catálogo do Quem Vestiu o Manto. Fonte da verdade é o Supabase
-/// (editável sem republicar o app); o const `guessPlayerCatalog` fica como
-/// fallback offline / tabela vazia. `photo_key` guarda só a chave de
-/// `squadPhotoAssets` — a foto em si continua resolvida aqui, nunca uma URL
-/// duplicada/guardada na tabela (só o elenco atual tem foto).
+/// Fallback offline por clube — ver comentário equivalente em
+/// `career_player_repository.dart`.
+final guessPlayerCatalogFallback = ClubScopedFallback<List<GuessPlayer>>({
+  'goias': guessPlayerCatalog,
+});
+
+/// Catálogo do Quem Vestiu o Manto. Fonte da verdade é o Supabase, SEMPRE
+/// filtrada pelo clube ativo (`club_id`); fallback também resolvido por
+/// clube — nunca cai pro fallback de outro clube. `photo_key` guarda só a
+/// chave de `squadPhotoAssets` — a foto em si continua resolvida aqui,
+/// nunca uma URL duplicada/guardada na tabela (só o elenco atual tem foto).
 class GuessPlayerRepository {
-  GuessPlayerRepository(this._client);
+  GuessPlayerRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
+  /// Ver o comentário equivalente em `career_player_repository.dart`: 0
+  /// linhas (sucesso) e falha real (rede/parse) NUNCA são conflatadas —
+  /// só a 1ª pode virar `ClubDataUnavailableException` sem fallback; a 2ª
+  /// sobe a exceção original intacta.
   Future<List<GuessPlayer>> load() async {
+    final clubCode = _clubConfig.identity.code;
+    List<GuessPlayer> parsed;
     try {
       final rows = await _client
           .from('guess_players')
@@ -26,18 +42,27 @@ class GuessPlayerRepository {
             'academy_club, nationality_code, nationality_name, '
             'goias_debut_year, photo_key, data_status, person_id',
           )
+          .eq('club_id', _clubConfig.identity.canonicalClubId)
           .eq('is_active', true)
           .order('sort_order', ascending: true);
-      final parsed = <GuessPlayer>[];
+      parsed = <GuessPlayer>[];
       for (final row in rows) {
         final player = _map(row);
         if (player != null) parsed.add(player);
       }
-      return parsed.isEmpty ? guessPlayerCatalog : parsed;
     } catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
-      return guessPlayerCatalog;
+      final fallback = guessPlayerCatalogFallback.forClub(clubCode);
+      if (fallback != null) return fallback;
+      Error.throwWithStackTrace(error, stackTrace);
     }
+    if (parsed.isNotEmpty) return parsed;
+    final fallback = guessPlayerCatalogFallback.forClub(clubCode);
+    if (fallback != null) return fallback;
+    throw ClubDataUnavailableException(
+      table: 'guess_players',
+      clubCode: clubCode,
+    );
   }
 
   GuessPlayer? _map(Map<String, dynamic> row) {

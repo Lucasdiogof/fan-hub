@@ -9,8 +9,8 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_state.dart';
+import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
-import 'package:goias_app/features/arena/games/lineup/lineup_matches.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_guess_page.dart';
 import 'package:goias_app/features/arena/games/lineup/widgets/lineup_result_dialog.dart';
@@ -29,8 +29,9 @@ import 'package:goias_app/shared/widgets/content_container.dart';
 /// [cubit], quando fornecido, já veio construído e com a última partida
 /// vista carregada por quem navegou pra cá (ver `GlobalLoading.run` em
 /// `arena_page.dart`) — a tela só reaproveita via `BlocProvider.value`.
-/// Fica `null` (e a tela cria/carrega o próprio Cubit) só em navegação
-/// direta por URL.
+/// Fica `null` (e a tela busca as partidas do repository ela mesma —
+/// SEMPRE via `LineupMatchRepository`, nunca a lista local direto) só em
+/// navegação direta por URL.
 class LineupPage extends StatelessWidget {
   const LineupPage({this.cubit, super.key});
 
@@ -42,18 +43,53 @@ class LineupPage extends StatelessWidget {
     if (preloaded != null) {
       return BlocProvider.value(value: preloaded, child: const _LineupView());
     }
+    return const _LineupLoader();
+  }
+}
+
+/// Só existe pro caminho de deep link (sem [LineupPage.cubit] preloaded)
+/// — busca as partidas tenant-scoped antes de montar o Cubit, exatamente
+/// como `arena_page.dart._openLineup` já faz pra quem navega pelo card
+/// da Arena.
+class _LineupLoader extends StatefulWidget {
+  const _LineupLoader();
+
+  @override
+  State<_LineupLoader> createState() => _LineupLoaderState();
+}
+
+class _LineupLoaderState extends State<_LineupLoader> {
+  late final Future<LineupCubit> _future = _build();
+
+  Future<LineupCubit> _build() async {
+    final matches = await sl<LineupMatchRepository>().load();
     final storage = sl<SupabaseLineupStorage>();
-    return BlocProvider(
-      create: (_) => LineupCubit(
-        matches: orderedLineupMatches,
-        loadState: storage.load,
-        saveState: storage.save,
-        loadSelectedMatchId: storage.loadSelectedMatchId,
-        saveSelectedMatchId: storage.saveSelectedMatchId,
-        loadCompletedIds: storage.completedIds,
-        ranking: sl<ArenaRankingRepository>(),
-      )..loadSelectedMatch(),
-      child: const _LineupView(),
+    final cubit = LineupCubit(
+      matches: matches,
+      loadState: storage.load,
+      saveState: storage.save,
+      loadSelectedMatchId: storage.loadSelectedMatchId,
+      saveSelectedMatchId: storage.saveSelectedMatchId,
+      loadCompletedIds: storage.completedIds,
+      ranking: sl<ArenaRankingRepository>(),
+    );
+    await cubit.loadSelectedMatch();
+    return cubit;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<LineupCubit>(
+      future: _future,
+      builder: (context, snapshot) {
+        final cubit = snapshot.data;
+        if (cubit == null) {
+          return const Scaffold(
+            body: Center(child: GoiasLoadingIndicator()),
+          );
+        }
+        return BlocProvider.value(value: cubit, child: const _LineupView());
+      },
     );
   }
 }

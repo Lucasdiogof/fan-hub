@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/games/quiz/cubit/quiz_cubit.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
@@ -65,7 +66,8 @@ class _SpyQuizProgressRepository extends QuizProgressRepository {
 }
 
 class _SpyQuizQuestionRepository extends QuizQuestionRepository {
-  _SpyQuizQuestionRepository(this._questions) : super(_dummyClient());
+  _SpyQuizQuestionRepository(this._questions)
+    : super(_dummyClient(), goiasClubConfig);
 
   final List<QuizQuestion> _questions;
 

@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/arena/games/lineup/cubit/lineup_cubit.dart';
+import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/data/supabase_lineup_storage.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/lineup/pages/lineup_page.dart';
@@ -103,6 +105,21 @@ void main() {
       ),
     );
     sl.registerLazySingleton<ArenaRankingRepository>(_FakeRanking.new);
+    // `LineupPage` sem `cubit` preloaded busca as partidas via
+    // `LineupMatchRepository` (M3.1) — o client nunca conecta de verdade
+    // (mesmo padrão de `_FakeLineupStorage` acima), então a chamada real
+    // falha e o repository cai no fallback local (`orderedLineupMatches`),
+    // reproduzindo o mesmo dado que o teste já esperava antes da M3.1.
+    sl.registerLazySingleton<LineupMatchRepository>(
+      () => LineupMatchRepository(
+        SupabaseClient(
+          'https://example.supabase.co',
+          'anon-key',
+          authOptions: const AuthClientOptions(autoRefreshToken: false),
+        ),
+        goiasClubConfig,
+      ),
+    );
   });
 
   testWidgets(

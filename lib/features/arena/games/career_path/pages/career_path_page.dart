@@ -7,8 +7,8 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/career_path/career_autocomplete.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
+import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
-import 'package:goias_app/features/arena/games/career_path/career_players.dart';
 import 'package:goias_app/features/arena/games/career_path/goias_players.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_cubit.dart';
 import 'package:goias_app/features/arena/games/career_path/cubit/career_path_state.dart';
@@ -22,8 +22,10 @@ import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 /// [cubit], quando fornecido, já veio construído e com o último jogador
 /// visto carregado por quem navegou pra cá (ver `GlobalLoading.run` em
 /// `arena_page.dart`) — a tela só reaproveita via `BlocProvider.value`.
-/// Fica `null` (e a tela cria/carrega o próprio Cubit) só em navegação
-/// direta por URL.
+/// Fica `null` (e a tela busca os jogadores do repository ela mesma —
+/// SEMPRE via `CareerPlayerRepository`, nunca a lista local direto, senão
+/// um clube não-Goiás acessando por deep link veria dado do Goiás pra
+/// sempre) só em navegação direta por URL.
 class CareerPathPage extends StatelessWidget {
   const CareerPathPage({this.cubit, super.key});
 
@@ -38,18 +40,53 @@ class CareerPathPage extends StatelessWidget {
         child: const _CareerPathView(),
       );
     }
+    return const _CareerPathLoader();
+  }
+}
+
+/// Só existe pro caminho de deep link (sem [CareerPathPage.cubit]
+/// preloaded) — busca os jogadores tenant-scoped antes de montar o Cubit,
+/// exatamente como `arena_page.dart._openCareerPath` já faz pra quem
+/// navega pelo card da Arena.
+class _CareerPathLoader extends StatefulWidget {
+  const _CareerPathLoader();
+
+  @override
+  State<_CareerPathLoader> createState() => _CareerPathLoaderState();
+}
+
+class _CareerPathLoaderState extends State<_CareerPathLoader> {
+  late final Future<CareerPathCubit> _future = _build();
+
+  Future<CareerPathCubit> _build() async {
+    final players = await sl<CareerPlayerRepository>().load();
     final storage = sl<SupabaseCareerPathStorage>();
-    return BlocProvider(
-      create: (_) => CareerPathCubit(
-        players: careerPlayers,
-        loadRound: storage.load,
-        saveRound: storage.save,
-        loadSelectedId: storage.loadSelectedPlayerId,
-        saveSelectedId: storage.saveSelectedPlayerId,
-        loadCompletedIds: storage.completedIds,
-        ranking: sl<ArenaRankingRepository>(),
-      )..loadSelected(),
-      child: const _CareerPathView(),
+    final cubit = CareerPathCubit(
+      players: players,
+      loadRound: storage.load,
+      saveRound: storage.save,
+      loadSelectedId: storage.loadSelectedPlayerId,
+      saveSelectedId: storage.saveSelectedPlayerId,
+      loadCompletedIds: storage.completedIds,
+      ranking: sl<ArenaRankingRepository>(),
+    );
+    await cubit.loadSelected();
+    return cubit;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<CareerPathCubit>(
+      future: _future,
+      builder: (context, snapshot) {
+        final cubit = snapshot.data;
+        if (cubit == null) {
+          return const Scaffold(
+            body: Center(child: GoiasLoadingIndicator()),
+          );
+        }
+        return BlocProvider.value(value: cubit, child: const _CareerPathView());
+      },
     );
   }
 }

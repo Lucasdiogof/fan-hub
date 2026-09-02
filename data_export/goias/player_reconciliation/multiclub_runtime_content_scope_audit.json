@@ -1,0 +1,168 @@
+{
+  "tables": {
+    "career_players": {
+      "hasClubIdFilter": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "usesClubScopedFallback": true,
+      "usesUnconditionalFallbackReturn": false,
+      "hasErrorPreservingRethrow": true,
+      "hasEmptyResultThrow": true,
+      "catchNeverThrowsClubDataUnavailable": true,
+      "emptyAndFailureSemanticsDistinct": true,
+      "allProtectedColumnsPresent": true,
+      "columnsCoverage": [
+        {
+          "column": "id",
+          "present": true
+        },
+        {
+          "column": "answer",
+          "present": true
+        },
+        {
+          "column": "accepted_answers",
+          "present": true
+        },
+        {
+          "column": "club_career",
+          "present": true
+        },
+        {
+          "column": "person_id",
+          "present": true
+        }
+      ],
+      "bypassFixed": true,
+      "pageAudited": "features/arena/games/career_path/pages/career_path_page.dart"
+    },
+    "guess_players": {
+      "hasClubIdFilter": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "usesClubScopedFallback": true,
+      "usesUnconditionalFallbackReturn": false,
+      "hasErrorPreservingRethrow": true,
+      "hasEmptyResultThrow": true,
+      "catchNeverThrowsClubDataUnavailable": true,
+      "emptyAndFailureSemanticsDistinct": true,
+      "allProtectedColumnsPresent": true,
+      "columnsCoverage": [
+        {
+          "column": "id",
+          "present": true
+        },
+        {
+          "column": "name",
+          "present": true
+        },
+        {
+          "column": "display_name",
+          "present": true
+        },
+        {
+          "column": "person_id",
+          "present": true
+        }
+      ],
+      "bypassFixed": true,
+      "pageAudited": "features/arena/games/guess_player/pages/guess_player_page.dart"
+    },
+    "squad_members": {
+      "hasClubIdFilter": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "usesClubScopedFallback": true,
+      "usesUnconditionalFallbackReturn": false,
+      "hasErrorPreservingRethrow": true,
+      "hasEmptyResultThrow": true,
+      "catchNeverThrowsClubDataUnavailable": true,
+      "emptyAndFailureSemanticsDistinct": true,
+      "allProtectedColumnsPresent": true,
+      "columnsCoverage": [],
+      "bypassFixed": true,
+      "pageAudited": null
+    },
+    "lineup_matches": {
+      "hasClubIdFilter": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "usesClubScopedFallback": true,
+      "usesUnconditionalFallbackReturn": false,
+      "hasErrorPreservingRethrow": true,
+      "hasEmptyResultThrow": true,
+      "catchNeverThrowsClubDataUnavailable": true,
+      "emptyAndFailureSemanticsDistinct": true,
+      "allProtectedColumnsPresent": true,
+      "columnsCoverage": [
+        {
+          "column": "id",
+          "present": true
+        },
+        {
+          "column": "lineup",
+          "present": true
+        },
+        {
+          "column": "formation",
+          "present": true
+        }
+      ],
+      "bypassFixed": true,
+      "pageAudited": "features/arena/games/lineup/pages/lineup_page.dart"
+    },
+    "quiz_questions": {
+      "hasClubIdFilter": true,
+      "hasClubConfigCtorParam": true,
+      "hardcodedGoiasUuid": false,
+      "usesClubScopedFallback": true,
+      "usesUnconditionalFallbackReturn": false,
+      "hasErrorPreservingRethrow": true,
+      "hasEmptyResultThrow": true,
+      "catchNeverThrowsClubDataUnavailable": true,
+      "emptyAndFailureSemanticsDistinct": true,
+      "allProtectedColumnsPresent": true,
+      "columnsCoverage": [
+        {
+          "column": "id",
+          "present": true
+        },
+        {
+          "column": "difficulty",
+          "present": true
+        },
+        {
+          "column": "question",
+          "present": true
+        },
+        {
+          "column": "options",
+          "present": true
+        },
+        {
+          "column": "correct_index",
+          "present": true
+        }
+      ],
+      "bypassFixed": true,
+      "pageAudited": null
+    }
+  },
+  "diHasSlCallForEachRepo": {
+    "CareerPlayerRepository": true,
+    "GuessPlayerRepository": true,
+    "SupabaseSquadRepository": true,
+    "LineupMatchRepository": true,
+    "QuizQuestionRepository": true
+  },
+  "clubRegistryEntryCount": 1,
+  "clubRegistryOnlyGoias": true,
+  "goiasUuidHardcodedInRepositories": [],
+  "clubScopedFallbackExists": true,
+  "clubDataUnavailableExists": true,
+  "allRuntimeReadPathsScoped": true,
+  "emptyVsRemoteFailureSemanticsInvariant": {
+    "description": "EMPTY_NO_FALLBACK != REMOTE_FAILURE_NO_FALLBACK: sucesso com 0 linhas e sem fallback lança ClubDataUnavailableException; falha remota (rede/parse/exception) sem fallback SEMPRE relança a exceção original via Error.throwWithStackTrace, nunca ClubDataUnavailableException.",
+    "holds": true
+  }
+}

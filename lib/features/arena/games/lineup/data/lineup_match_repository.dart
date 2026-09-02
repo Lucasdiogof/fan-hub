@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/club_data_unavailable_exception.dart';
+import 'package:goias_app/core/club/club_scoped_fallback.dart';
 import 'package:goias_app/features/arena/games/lineup/formation_layout_service.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_matches.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
@@ -8,18 +11,33 @@ import 'package:goias_app/features/arena/games/lineup/word_evaluation_service.da
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+/// Fallback offline por clube — ver comentário equivalente em
+/// `career_player_repository.dart`.
+final orderedLineupMatchesFallback = ClubScopedFallback<List<LineupMatch>>({
+  'goias': orderedLineupMatches,
+});
+
 /// Banco de partidas do Adivinhe a Escalação. Fonte da verdade é o
-/// Supabase (editável sem republicar o app); o const `orderedLineupMatches`
-/// fica como fallback offline / tabela vazia. Só o que foi curado à mão
-/// (posição, número, nome, resposta, apelidos) vem do banco — coordenadas
-/// de campo e resposta normalizada são sempre recalculadas aqui, igual o
-/// dataset local já fazia, nunca duplicadas na tabela.
+/// Supabase, SEMPRE filtrada pelo clube ativo (`club_id`); fallback também
+/// resolvido por clube. Só o que foi curado à mão (posição, número, nome,
+/// resposta, apelidos) vem do banco — coordenadas de campo e resposta
+/// normalizada são sempre recalculadas aqui, igual o dataset local já
+/// fazia, nunca duplicadas na tabela. O jsonb `lineup` continua editorial,
+/// sem `person_id` (F7) — esta mudança só filtra a LINHA por `club_id`,
+/// nunca toca o conteúdo do slot.
 class LineupMatchRepository {
-  LineupMatchRepository(this._client);
+  LineupMatchRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
+  /// Ver o comentário equivalente em `career_player_repository.dart`: 0
+  /// linhas (sucesso) e falha real (rede/parse) NUNCA são conflatadas —
+  /// só a 1ª pode virar `ClubDataUnavailableException` sem fallback; a 2ª
+  /// sobe a exceção original intacta.
   Future<List<LineupMatch>> load() async {
+    final clubCode = _clubConfig.identity.code;
+    List<LineupMatch> parsed;
     try {
       final rows = await _client
           .from('lineup_matches')
@@ -28,18 +46,27 @@ class LineupMatchRepository {
             'away_team, home_score, away_score, formation, '
             'formation_confidence, lineup',
           )
+          .eq('club_id', _clubConfig.identity.canonicalClubId)
           .eq('is_active', true)
           .order('display_order', ascending: true);
-      final parsed = <LineupMatch>[];
+      parsed = <LineupMatch>[];
       for (final row in rows) {
         final match = _map(row);
         if (match != null) parsed.add(match);
       }
-      return parsed.isEmpty ? orderedLineupMatches : parsed;
     } catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
-      return orderedLineupMatches;
+      final fallback = orderedLineupMatchesFallback.forClub(clubCode);
+      if (fallback != null) return fallback;
+      Error.throwWithStackTrace(error, stackTrace);
     }
+    if (parsed.isNotEmpty) return parsed;
+    final fallback = orderedLineupMatchesFallback.forClub(clubCode);
+    if (fallback != null) return fallback;
+    throw ClubDataUnavailableException(
+      table: 'lineup_matches',
+      clubCode: clubCode,
+    );
   }
 
   LineupMatch? _map(Map<String, dynamic> row) {

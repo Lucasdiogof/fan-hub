@@ -7,7 +7,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/guess_player/cubit/guess_player_cubit.dart';
 import 'package:goias_app/features/arena/games/guess_player/cubit/guess_player_state.dart';
-import 'package:goias_app/features/arena/games/guess_player/data/guess_player_catalog.dart';
+import 'package:goias_app/features/arena/games/guess_player/data/guess_player_repository.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_storage.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_round_state.dart';
 import 'package:goias_app/features/arena/games/guess_player/widgets/guess_autocomplete_field.dart';
@@ -24,7 +24,8 @@ import 'package:goias_app/shared/widgets/content_container.dart';
 /// [cubit], quando fornecido, já veio construído com o catálogo carregado
 /// por quem navegou pra cá (ver `GlobalLoading.run` em `arena_page.dart`)
 /// — a tela só reaproveita via `BlocProvider.value`. Fica `null` (e a tela
-/// cria/carrega o próprio Cubit com o catálogo local) só em navegação
+/// busca o catálogo do repository ela mesma — SEMPRE via
+/// `GuessPlayerRepository`, nunca a lista local direto) só em navegação
 /// direta por URL.
 class GuessPlayerPage extends StatelessWidget {
   const GuessPlayerPage({this.cubit, super.key});
@@ -40,22 +41,58 @@ class GuessPlayerPage extends StatelessWidget {
         child: const _GuessPlayerView(),
       );
     }
+    return const _GuessPlayerLoader();
+  }
+}
+
+/// Só existe pro caminho de deep link (sem [GuessPlayerPage.cubit]
+/// preloaded) — busca o catálogo tenant-scoped antes de montar o Cubit,
+/// exatamente como `arena_page.dart._openGuessPlayer` já faz pra quem
+/// navega pelo card da Arena.
+class _GuessPlayerLoader extends StatefulWidget {
+  const _GuessPlayerLoader();
+
+  @override
+  State<_GuessPlayerLoader> createState() => _GuessPlayerLoaderState();
+}
+
+class _GuessPlayerLoaderState extends State<_GuessPlayerLoader> {
+  late final Future<GuessPlayerCubit> _future = _build();
+
+  Future<GuessPlayerCubit> _build() async {
+    final catalog = await sl<GuessPlayerRepository>().load();
     final storage = sl<GuessPlayerStorage>();
-    return BlocProvider(
-      create: (_) => GuessPlayerCubit(
-        catalog: guessPlayerCatalog,
-        loadRound: storage.loadActiveRound,
-        saveRound: storage.saveActiveRound,
-        clearRound: storage.clearActiveRound,
-        recordRoundResult: storage.recordRoundResult,
-        ranking: sl<ArenaRankingRepository>(),
-        loadSeenIds: storage.loadSeenIds,
-        addSeenId: storage.addSeenId,
-        clearSeenIds: storage.clearSeenIds,
-        loadSeenSignature: storage.loadSeenSignature,
-        saveSeenSignature: storage.saveSeenSignature,
-      ),
-      child: const _GuessPlayerView(),
+    return GuessPlayerCubit(
+      catalog: catalog,
+      loadRound: storage.loadActiveRound,
+      saveRound: storage.saveActiveRound,
+      clearRound: storage.clearActiveRound,
+      recordRoundResult: storage.recordRoundResult,
+      ranking: sl<ArenaRankingRepository>(),
+      loadSeenIds: storage.loadSeenIds,
+      addSeenId: storage.addSeenId,
+      clearSeenIds: storage.clearSeenIds,
+      loadSeenSignature: storage.loadSeenSignature,
+      saveSeenSignature: storage.saveSeenSignature,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<GuessPlayerCubit>(
+      future: _future,
+      builder: (context, snapshot) {
+        final cubit = snapshot.data;
+        if (cubit == null) {
+          return const Scaffold(
+            body: Center(child: GoiasLoadingIndicator()),
+          );
+        }
+        return BlocProvider.value(
+          value: cubit,
+          child: const _GuessPlayerView(),
+        );
+      },
     );
   }
 }

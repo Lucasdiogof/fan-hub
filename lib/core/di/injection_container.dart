@@ -195,17 +195,17 @@ void setupDependencies() {
     () => SupabaseLineupStorage(Supabase.instance.client),
   );
   sl.registerLazySingleton<LineupMatchRepository>(
-    () => LineupMatchRepository(Supabase.instance.client),
+    () => LineupMatchRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<SupabaseCareerPathStorage>(
     () => SupabaseCareerPathStorage(Supabase.instance.client),
   );
   sl.registerLazySingleton<CareerPlayerRepository>(
-    () => CareerPlayerRepository(Supabase.instance.client),
+    () => CareerPlayerRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<GuessPlayerStorage>(GuessPlayerStorage.new);
   sl.registerLazySingleton<GuessPlayerRepository>(
-    () => GuessPlayerRepository(Supabase.instance.client),
+    () => GuessPlayerRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<CrowdLineupRepository>(
     () => SupabaseCrowdLineupRepository(Supabase.instance.client),
@@ -219,7 +219,7 @@ void setupDependencies() {
   sl.registerLazySingleton<ThemeCubit>(ThemeCubit.new);
   sl.registerLazySingleton<LocaleCubit>(LocaleCubit.new);
   sl.registerLazySingleton<SquadRepository>(
-    () => SupabaseSquadRepository(Supabase.instance.client),
+    () => SupabaseSquadRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<ClubBoardRepository>(
     () => SupabaseClubBoardRepository(Supabase.instance.client),
@@ -231,7 +231,7 @@ void setupDependencies() {
     () => SupabasePassportRepository(Supabase.instance.client),
   );
   sl.registerLazySingleton<QuizQuestionRepository>(
-    () => QuizQuestionRepository(Supabase.instance.client),
+    () => QuizQuestionRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<QuizProgressRepository>(
     () => QuizProgressRepository(Supabase.instance.client),
