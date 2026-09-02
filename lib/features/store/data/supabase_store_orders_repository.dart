@@ -1,3 +1,4 @@
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/data/store_error_mapper.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
@@ -23,11 +24,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// separados que pudessem deixar um pedido "órfão" sem itens se o segundo
 /// falhasse no meio do caminho.
 class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
-  SupabaseStoreOrdersRepository(this._client);
+  SupabaseStoreOrdersRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   @override
   Future<Result<StoreOrder>> createOrder({
@@ -132,9 +135,13 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
       );
     }
 
+    // Runtime novo (M3.2): variante tenant-aware — grava `club_id`
+    // explícito no pedido, nunca confia no DEFAULT Goiás da coluna. A RPC
+    // legacy `create_store_order` fica intacta só pro app antigo (§21).
     final row = await _client.rpc<Map<String, dynamic>>(
-      'create_store_order',
+      'create_store_order_for_club',
       params: {
+        'p_club_id': _clubId,
         'p_status': status.name,
         'p_fulfillment_method': fulfillmentMethod.name,
         'p_customer': identification.toJson(),
@@ -191,6 +198,7 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
           .from('store_orders')
           .select('*, store_order_items(*)')
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .order('created_at', ascending: false);
       return Success(rows.map(_mapOrder).toList());
     } catch (error, stackTrace) {
@@ -205,6 +213,7 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
           .from('store_orders')
           .select('*, store_order_items(*)')
           .eq('user_id', _uid)
+          .eq('club_id', _clubId)
           .eq('order_number', id)
           .maybeSingle();
       return Success(row == null ? null : _mapOrder(row));

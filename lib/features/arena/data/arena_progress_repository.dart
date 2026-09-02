@@ -1,3 +1,4 @@
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/arena/games/career_path/career_players.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_storage.dart';
@@ -54,6 +55,7 @@ class ArenaProgressSnapshot {
 class ArenaProgressRepository {
   ArenaProgressRepository({
     required this._client,
+    required this._clubConfig,
     required this._quizQuestionRepository,
     required this._quizProgressRepository,
     required this._lineupStorage,
@@ -62,6 +64,7 @@ class ArenaProgressRepository {
   });
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
   final QuizQuestionRepository _quizQuestionRepository;
   final QuizProgressRepository _quizProgressRepository;
   final SupabaseLineupStorage _lineupStorage;
@@ -71,6 +74,7 @@ class ArenaProgressRepository {
   static const _achievementId = 'arena_100_percent';
 
   String get _uid => _client.auth.currentUser!.id;
+  String get _clubId => _clubConfig.identity.canonicalClubId;
 
   Future<ArenaProgressSnapshot> loadSnapshot() async {
     final bank = await _quizQuestionRepository.load();
@@ -129,14 +133,21 @@ class ArenaProgressRepository {
         .from('arena_achievements')
         .select('achievement_id')
         .eq('user_id', _uid)
+        .eq('club_id', _clubId)
         .eq('achievement_id', _achievementId)
         .maybeSingle();
     if (existing != null) return false;
 
+    // onConflict continua (user_id, achievement_id) — KEY_SCOPE_BLOCKED,
+    // mesma ressalva das demais tabelas de progresso desta etapa.
     await _client
         .from('arena_achievements')
         .upsert(
-          {'user_id': _uid, 'achievement_id': _achievementId},
+          {
+            'user_id': _uid,
+            'club_id': _clubId,
+            'achievement_id': _achievementId,
+          },
           onConflict: 'user_id,achievement_id',
           ignoreDuplicates: true,
         );

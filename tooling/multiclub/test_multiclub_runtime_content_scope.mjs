@@ -170,32 +170,29 @@ test('career_path_page.dart / guess_player_page.dart / lineup_page.dart usam Fut
 });
 
 // ============================================================================
-// 8) Escopo — nenhuma tabela fora das 5 foi tocada nesta rodada
+// 8) Escopo — nenhuma tabela fora das 5 foi tocada NESTA ETAPA (M3.1)
 // ============================================================================
-console.log('\n8) escopo estrito — só as 5 tabelas de conteúdo, nada de M3.2/Passaporte');
+// Nota de supersessão (M3.2): esta seção originalmente também provava que
+// progress/score/membership/notification/ticket/store/crowd_lineup NUNCA
+// tinham sido tocados — isso era um limite de escopo só da M3.1, correto
+// SÓ enquanto a M3.2 não existia. A M3.2 (autorização própria e explícita,
+// 2026-09-02) passou a tocar exatamente esses arquivos de propósito — a
+// prova de que ESSA rodada está correta mora em
+// `test_multiclub_runtime_user_state_scope.mjs`, não aqui. Mesmo padrão já
+// usado antes pras 6 asserções "N migrations" que quebravam a cada etapa
+// nova (ver M2.2A) — filtra pela janela de tempo da PRÓPRIA etapa, nunca
+// pelo total bruto atual.
+console.log('\n8) escopo estrito (na janela da M3.1) — só as 5 tabelas de conteúdo, nada de M3.2/Passaporte');
 test('passport_matches/passport_attendances/passport_memorable_matches: repository do Passaporte não foi tocado', () => {
   const src = fs.readFileSync(path.join(LIB, 'features/passport/data/supabase_passport_repository.dart'), 'utf8');
   assert.doesNotMatch(src, /_clubConfig/);
   assert.doesNotMatch(src, /club_id/);
 });
-test('progress/score/membership/notification/ticket/store repositories NÃO foram tocados (M3.2)', () => {
-  const untouchedFiles = [
-    'features/arena/data/arena_progress_repository.dart',
-    'features/membership/data/supabase_membership_repository.dart',
-    'features/notifications/data/supabase_notification_repository.dart',
-    'features/ticket/data/mock_ticket_repository.dart',
-    'features/store/data/supabase_store_orders_repository.dart',
-    'features/crowd_lineup/data/supabase_crowd_lineup_repository.dart',
-  ];
-  for (const f of untouchedFiles) {
-    const src = fs.readFileSync(path.join(LIB, f), 'utf8');
-    assert.doesNotMatch(src, /_clubConfig/, `${f} foi tocado — fora de escopo da M3.1`);
-  }
-});
-test('nenhuma RPC (arena_record_score/arena_ranking/get_my_membership/crowd_lineup) foi tocada — 0 arquivo .sql novo', () => {
+test('0 migration nova NA JANELA DA M3.1 (até 20260902270000, o fim da M2.2A) — migrations depois disso são de etapas seguintes (M3.2+), não desta', () => {
   const migrationsDir = path.join(ROOT, 'supabase', 'migrations');
-  const count = fs.readdirSync(migrationsDir).filter((f) => f.endsWith('.sql')).length;
-  assert.strictEqual(count, 41, `esperava 41 migrations (M2.2A já aplicada, M3.1 é 0 migration), achou ${count}`);
+  const files = fs.readdirSync(migrationsDir).filter((f) => f.endsWith('.sql'));
+  const withinM31Window = files.filter((f) => f <= '20260902270000_z').length;
+  assert.strictEqual(withinM31Window, 41, `esperava 41 migrations até o fim da M2.2A (M3.1 é 0 migration), achou ${withinM31Window}`);
 });
 
 // ============================================================================
