@@ -1,0 +1,1060 @@
+{
+  "total": 215,
+  "RESOLVED": 41,
+  "AMBIGUOUS": 58,
+  "UNRESOLVED": 116,
+  "TEXT_ALIAS_ONLY": 0,
+  "OUT_OF_SCOPE": 0,
+  "distinctNormalizedTexts": 231,
+  "normalizedTextCollisions": 0,
+  "samePersonCollisions": 0,
+  "crossPersonCollisions": 0,
+  "unresolvedInvolvedCollisions": 0,
+  "crossPersonCollisionDetail": [],
+  "unresolvedList": [
+    {
+      "sourceIndex": 0,
+      "sourceName": "Lumumba",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Lumumba, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 1,
+      "sourceName": "Triel",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Triel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 2,
+      "sourceName": "Emílio",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Emílio, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 3,
+      "sourceName": "Matinha",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Matinha, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 4,
+      "sourceName": "Cláudio",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Cláudio, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 5,
+      "sourceName": "Tuíra",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Tuíra, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 6,
+      "sourceName": "Hertz",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Hertz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 7,
+      "sourceName": "Paghetti",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Paghetti, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 8,
+      "sourceName": "Lucinho",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Lucinho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 9,
+      "sourceName": "Lincoln",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Lincoln, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 10,
+      "sourceName": "Raimundinho",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Raimundinho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 11,
+      "sourceName": "Macalé",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Macalé, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 12,
+      "sourceName": "Luvanor",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Luvanor\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 13,
+      "sourceName": "Niltinho",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Niltinho\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 14,
+      "sourceName": "Túlio Maravilha",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Túlio Maravilha\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 15,
+      "sourceName": "Eduardo Heuser",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Eduardo Heuser\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 16,
+      "sourceName": "Wilson Goiano",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Wilson Goiano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 17,
+      "sourceName": "Richard",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Richard\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 18,
+      "sourceName": "Jorge Batata",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Jorge Batata\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 19,
+      "sourceName": "Dalton",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Dalton\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 20,
+      "sourceName": "Wallace",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Wallace\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 21,
+      "sourceName": "Fagundes",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Fagundes\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 22,
+      "sourceName": "Kléber",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Kléber\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 23,
+      "sourceName": "Índio",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Índio\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 24,
+      "sourceName": "Sílvio Criciúma",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Sílvio Criciúma\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 25,
+      "sourceName": "Augusto",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Augusto\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 26,
+      "sourceName": "Reidner",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Reidner\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 27,
+      "sourceName": "Lúcio",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Lúcio\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 28,
+      "sourceName": "Alex Dias",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Alex Dias\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 29,
+      "sourceName": "Jaques",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Jaques\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 30,
+      "sourceName": "Evandro",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Evandro\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 31,
+      "sourceName": "Neném",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Neném\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 32,
+      "sourceName": "Álvaro",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Álvaro\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 33,
+      "sourceName": "Fernando Nunes",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Fernando Nunes\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 34,
+      "sourceName": "Cacá",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Cacá\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 35,
+      "sourceName": "Marcelo Batista",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Marcelo Batista, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 36,
+      "sourceName": "Lira",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Lira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 37,
+      "sourceName": "Alexandre",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Alexandre\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 38,
+      "sourceName": "Fabão",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Fabão\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 39,
+      "sourceName": "Leandro Smith",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Leandro Smith\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 40,
+      "sourceName": "Michel Santana",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Michel Santana\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 41,
+      "sourceName": "Marabá",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Marabá\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 42,
+      "sourceName": "Tiago Fraga",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Tiago Fraga\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 43,
+      "sourceName": "Caíco",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Caíco\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 44,
+      "sourceName": "Dimba",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Dimba\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 45,
+      "sourceName": "Pedro Paulo",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Pedro Paulo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 46,
+      "sourceName": "Esquerdinha",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Esquerdinha\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 47,
+      "sourceName": "Gustavo",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Gustavo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 48,
+      "sourceName": "Cléber Goiano",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Cléber Goiano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 49,
+      "sourceName": "Danilo Portugal",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Danilo Portugal\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 50,
+      "sourceName": "Tácio",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Tácio, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 51,
+      "sourceName": "Gil Baiano",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Gil Baiano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 52,
+      "sourceName": "Wando",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Wando\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 53,
+      "sourceName": "Rodrigo Calaça",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Rodrigo Calaça\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 54,
+      "sourceName": "Rafael Dias",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Rafael Dias\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 55,
+      "sourceName": "Júlio Santos",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Júlio Santos\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 56,
+      "sourceName": "André Dias",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"André Dias\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 57,
+      "sourceName": "Andrezinho",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Andrezinho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 58,
+      "sourceName": "Rogério Corrêa",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Rogério Corrêa\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 59,
+      "sourceName": "Aldo",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Aldo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 60,
+      "sourceName": "João Paulo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (João Paulo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 61,
+      "sourceName": "Luciano Almeida",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Luciano Almeida\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 62,
+      "sourceName": "André Leone",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"André Leone\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 63,
+      "sourceName": "Rômulo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rômulo, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 64,
+      "sourceName": "Cléber Gaúcho",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Cléber Gaúcho\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 65,
+      "sourceName": "Juliano",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Juliano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 66,
+      "sourceName": "Mário Jardel",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Mário Jardel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 67,
+      "sourceName": "Romerito",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Romerito\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 68,
+      "sourceName": "Wendell Lira",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Wendell Lira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 69,
+      "sourceName": "Edmílson Matias",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Edmílson Matias, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 70,
+      "sourceName": "Marcelo Carioca",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Marcelo Carioca, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 71,
+      "sourceName": "Danilo Dias",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Danilo Dias, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 72,
+      "sourceName": "Ramalho",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Ramalho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 73,
+      "sourceName": "Fernando",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Fernando, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 74,
+      "sourceName": "Henrique",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Henrique, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 75,
+      "sourceName": "Alex Terra",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Alex Terra, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 76,
+      "sourceName": "Paulo Henrique",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Paulo Henrique, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 77,
+      "sourceName": "Anderson Aquino",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Anderson Aquino, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 78,
+      "sourceName": "Pituca",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Pituca, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 79,
+      "sourceName": "Schwenck",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Schwenck, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 80,
+      "sourceName": "Felipe",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Felipe, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 81,
+      "sourceName": "Rinaldo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rinaldo, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 82,
+      "sourceName": "Frontini",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Frontini, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 83,
+      "sourceName": "Fábio Bahia",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Fábio Bahia, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 84,
+      "sourceName": "Alex Ferreira",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Alex Ferreira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 85,
+      "sourceName": "Rafael Marques",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rafael Marques, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 86,
+      "sourceName": "Leandro Euzébio",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Leandro Euzébio, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 87,
+      "sourceName": "Wellington Monteiro",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Wellington Monteiro, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 89,
+      "sourceName": "Marcão",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Marcão\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 91,
+      "sourceName": "Bernardo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Bernardo, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 92,
+      "sourceName": "Hugo",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Hugo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 93,
+      "sourceName": "Éverton Santos",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Éverton Santos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 95,
+      "sourceName": "Bruno Meneghel",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Bruno Meneghel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 97,
+      "sourceName": "Renan Brito",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Renan Brito, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 98,
+      "sourceName": "Édson",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Édson, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 102,
+      "sourceName": "Felipe Amorim",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Felipe Amorim, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 103,
+      "sourceName": "Júnior Viçosa",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Júnior Viçosa\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 107,
+      "sourceName": "Jackson",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Jackson, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 108,
+      "sourceName": "Wallinson",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Wallinson, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 109,
+      "sourceName": "Alex Alves",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Alex Alves, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 110,
+      "sourceName": "Felipe Macedo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Felipe Macedo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 111,
+      "sourceName": "Léo Veloso",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Léo Veloso, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 113,
+      "sourceName": "Mário Sérgio",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Mário Sérgio, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 114,
+      "sourceName": "Clayton",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Clayton, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 115,
+      "sourceName": "Moisés",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Moisés, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 116,
+      "sourceName": "Abuda",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Abuda, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 117,
+      "sourceName": "Tiago Real",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Tiago Real, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 118,
+      "sourceName": "Raphael Luz",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Raphael Luz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 119,
+      "sourceName": "Assuério",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Assuério, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 120,
+      "sourceName": "Murilo Henrique",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Murilo Henrique, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 121,
+      "sourceName": "Liniker",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Liniker, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 122,
+      "sourceName": "Samuel Rosa",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Samuel Rosa, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 123,
+      "sourceName": "Léo Bonatini",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Léo Bonatini, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 124,
+      "sourceName": "Bruno Mineiro",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Bruno Mineiro, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 125,
+      "sourceName": "Márcio",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Márcio, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 126,
+      "sourceName": "Ivan",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Ivan, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 127,
+      "sourceName": "Fred",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Fred, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 128,
+      "sourceName": "Anderson Salles",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Anderson Salles, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 129,
+      "sourceName": "Rafael Forster",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rafael Forster, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 130,
+      "sourceName": "Artur Vieira",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Artur Vieira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 131,
+      "sourceName": "Wesley Matos",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Wesley Matos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 132,
+      "sourceName": "David Duarte",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"David Duarte\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 134,
+      "sourceName": "Diogo Barbosa",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Diogo Barbosa, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 136,
+      "sourceName": "Ramires",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Ramires, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 137,
+      "sourceName": "Léo Sena",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Léo Sena\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 138,
+      "sourceName": "Patrick",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Patrick, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 139,
+      "sourceName": "Arthur Rezende",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Arthur Rezende, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 140,
+      "sourceName": "Wendel",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Wendel, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 141,
+      "sourceName": "Jhon Cley",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Jhon Cley, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 142,
+      "sourceName": "Léo Lima",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Léo Lima, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 143,
+      "sourceName": "Daniel Carvalho",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Daniel Carvalho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 144,
+      "sourceName": "Higor Leite",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Higor Leite, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 145,
+      "sourceName": "Léo Gamalho",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Léo Gamalho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 146,
+      "sourceName": "Rossi",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rossi, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 147,
+      "sourceName": "Carlos Eduardo",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Carlos Eduardo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 148,
+      "sourceName": "Cléo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Cléo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 149,
+      "sourceName": "Sueliton",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Sueliton, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 150,
+      "sourceName": "Eduardo Brock",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Eduardo Brock\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 151,
+      "sourceName": "Victor Ramos",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Victor Ramos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 152,
+      "sourceName": "Renato Cajá",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Renato Cajá, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 153,
+      "sourceName": "Sidão",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Sidão, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 154,
+      "sourceName": "Rafael Vaz",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rafael Vaz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 155,
+      "sourceName": "Fábio Sanches",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Fábio Sanches, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 156,
+      "sourceName": "Paulo Ricardo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Paulo Ricardo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 157,
+      "sourceName": "Iago Mendonça",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Iago Mendonça, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 158,
+      "sourceName": "Heron",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Heron, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 159,
+      "sourceName": "Marcelo Hermes",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Marcelo Hermes, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 160,
+      "sourceName": "Alan Ruschel",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Alan Ruschel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 161,
+      "sourceName": "Yago Felipe",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Yago Felipe, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 162,
+      "sourceName": "Giovanni Augusto",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Giovanni Augusto, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 163,
+      "sourceName": "Marlone",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Marlone, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 164,
+      "sourceName": "Leandro Barcia",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Leandro Barcia, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 165,
+      "sourceName": "Vinícius Lopes",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Vinícius Lopes, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 166,
+      "sourceName": "Kayke",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Kayke, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 167,
+      "sourceName": "Brenner",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Brenner, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 168,
+      "sourceName": "Junior Brandão",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Junior Brandão, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 169,
+      "sourceName": "Rafael Elias",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rafael Elias, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 170,
+      "sourceName": "Daniel Bessa",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Daniel Bessa, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 171,
+      "sourceName": "Sandro",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Sandro, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 172,
+      "sourceName": "Reynaldo",
+      "status": "AMBIGUOUS",
+      "reason": "A própria pessoa canônica \"Reynaldo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único."
+    },
+    {
+      "sourceIndex": 178,
+      "sourceName": "Nicolas",
+      "status": "AMBIGUOUS",
+      "reason": "Nenhuma pessoa canônica reivindica goias_players_dart:178 — o motor de reconciliação deixou este registro deliberadamente fora de qualquer member (não é ausência de dado, é ambiguidade real sem evidência pra decidir). Ver player_reconciliation_overrides.json e canonical_aliases.json."
+    },
+    {
+      "sourceIndex": 189,
+      "sourceName": "Bruno Santos",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Bruno Santos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 190,
+      "sourceName": "Alesson",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Alesson, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 191,
+      "sourceName": "Eduardo Simioni",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Eduardo Simioni, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 195,
+      "sourceName": "Martín Rea",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Martín Rea, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 196,
+      "sourceName": "Yan Souto",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Yan Souto, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 197,
+      "sourceName": "Sidimar",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Sidimar, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 198,
+      "sourceName": "David Braz",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (David Braz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 199,
+      "sourceName": "Matheus Babi",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Matheus Babi, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 200,
+      "sourceName": "Higor Meritão",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Higor Meritão, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 201,
+      "sourceName": "Régis",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Régis, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 202,
+      "sourceName": "Paulo Baya",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Paulo Baya, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 203,
+      "sourceName": "Thiago Galhardo",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Thiago Galhardo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "sourceIndex": 204,
+      "sourceName": "Rafael Gava",
+      "status": "UNRESOLVED",
+      "reason": "1 pessoa canônica encontrada (Rafael Gava, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação."
+    }
+  ]
+}

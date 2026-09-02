@@ -5,6 +5,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/arena/games/career_path/career_autocomplete.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
 import 'package:goias_app/features/arena/games/career_path/career_players.dart';
@@ -71,36 +72,18 @@ class _CareerPathViewState extends State<_CareerPathView> {
   @override
   void initState() {
     super.initState();
-    final resolve = <String, String>{};
-    for (final entry in goiasPlayers) {
-      resolve[normalizeName(entry.name)] = entry.name;
-      for (final alias in entry.aliases) {
-        resolve[normalizeName(alias)] = entry.name;
-      }
-    }
     final players = context.read<CareerPathCubit>().state.players;
-    for (final player in players) {
-      for (final answer in player.acceptedAnswers) {
-        resolve[normalizeName(answer)] = player.answer;
-      }
-    }
+    // Prioridade EXPLÍCITA career_players > goiasPlayers em caso de
+    // colisão de texto (nunca mais dependente da ordem de inserção — ver
+    // career_autocomplete.dart). Nenhuma colisão real existe hoje (Etapa
+    // F6), mas o índice já reporta se um dia existir.
+    final index = buildCareerAutocompleteIndex(
+      careerPlayers: players,
+      goiasPlayers: goiasPlayers,
+    );
 
-    final names = <String>[];
-    final seen = <String>{};
-    void addName(String display) {
-      if (seen.add(normalizeName(display))) names.add(display);
-    }
-
-    for (final player in players) {
-      addName(player.answer);
-    }
-    for (final entry in goiasPlayers) {
-      addName(entry.name);
-    }
-    names.sort();
-
-    _suggestions = names;
-    _resolveMap = resolve;
+    _suggestions = index.suggestions.map((s) => s.label).toList();
+    _resolveMap = index.resolveMap;
     _controller.addListener(_onQueryChanged);
   }
 

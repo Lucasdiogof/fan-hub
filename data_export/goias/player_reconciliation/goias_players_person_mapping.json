@@ -1,0 +1,3593 @@
+[
+  {
+    "sourceIndex": 0,
+    "sourceName": "Lumumba",
+    "normalizedName": "lumumba",
+    "personId": null,
+    "canonicalName": "Lumumba",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Lumumba, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "73688b86-aa0d-5285-bba6-26d920719e71",
+        "canonicalName": "Lumumba",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 1,
+    "sourceName": "Triel",
+    "normalizedName": "triel",
+    "personId": null,
+    "canonicalName": "Triel",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Triel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "33a475bd-0339-5fca-bac4-ce8ea78dd88f",
+        "canonicalName": "Triel",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 2,
+    "sourceName": "Emílio",
+    "normalizedName": "emilio",
+    "personId": null,
+    "canonicalName": "Emílio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Emílio, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "a68c7d33-1e17-5f27-8b53-b9e069c0be5c",
+        "canonicalName": "Emílio",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 3,
+    "sourceName": "Matinha",
+    "normalizedName": "matinha",
+    "personId": null,
+    "canonicalName": "Matinha",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Matinha, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "f77ec621-fb8d-53d4-bfe1-60f82406543f",
+        "canonicalName": "Matinha",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 4,
+    "sourceName": "Cláudio",
+    "normalizedName": "claudio",
+    "personId": null,
+    "canonicalName": "Cláudio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Cláudio, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5d21eff6-896f-51d7-a3c1-3d6915b4bd80",
+        "canonicalName": "Cláudio",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 5,
+    "sourceName": "Tuíra",
+    "normalizedName": "tuira",
+    "personId": null,
+    "canonicalName": "Tuíra",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Tuíra, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "3ef7f309-a5c6-5106-8ebd-ca9223035c9e",
+        "canonicalName": "Tuíra",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 6,
+    "sourceName": "Hertz",
+    "normalizedName": "hertz",
+    "personId": null,
+    "canonicalName": "Hertz",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Hertz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "17a9eab4-a8e7-53c9-aa73-70117734d976",
+        "canonicalName": "Hertz",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 7,
+    "sourceName": "Paghetti",
+    "normalizedName": "paghetti",
+    "personId": null,
+    "canonicalName": "Paghetti",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Paghetti, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "294c70c1-1f96-5a21-ab88-1c2ff1a7a5ca",
+        "canonicalName": "Paghetti",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 8,
+    "sourceName": "Lucinho",
+    "normalizedName": "lucinho",
+    "personId": null,
+    "canonicalName": "Lucinho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Lucinho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "74cf2f38-8ee6-5ceb-8b50-0c74b579870b",
+        "canonicalName": "Lucinho",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 9,
+    "sourceName": "Lincoln",
+    "normalizedName": "lincoln",
+    "personId": null,
+    "canonicalName": "Lincoln",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Lincoln, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "d234a90d-73a8-5558-8526-4350ec8f8456",
+        "canonicalName": "Lincoln",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 10,
+    "sourceName": "Raimundinho",
+    "normalizedName": "raimundinho",
+    "personId": null,
+    "canonicalName": "Raimundinho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Raimundinho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "884b8e23-bf1d-56c1-a00d-955540d1037f",
+        "canonicalName": "Raimundinho",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 11,
+    "sourceName": "Macalé",
+    "normalizedName": "macale",
+    "personId": null,
+    "canonicalName": "Macalé",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Macalé, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "d29afc56-653d-5c30-9d43-2b5be120c4f9",
+        "canonicalName": "Macalé",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 12,
+    "sourceName": "Luvanor",
+    "normalizedName": "luvanor",
+    "personId": null,
+    "canonicalName": "Luvanor",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Luvanor\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "a31cad8d-ccb0-59be-beee-b7af941c247a",
+        "canonicalName": "Luvanor",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 13,
+    "sourceName": "Niltinho",
+    "normalizedName": "niltinho",
+    "personId": null,
+    "canonicalName": "Niltinho",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Niltinho\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "caf80535-2862-5309-8c1e-92ab0dbdaea3",
+        "canonicalName": "Niltinho",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 14,
+    "sourceName": "Túlio Maravilha",
+    "normalizedName": "tulio maravilha",
+    "personId": null,
+    "canonicalName": "Túlio Maravilha",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Túlio Maravilha\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "7ed1ac03-2a62-52b0-9569-c981f5adc5c9",
+        "canonicalName": "Túlio Maravilha",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 15,
+    "sourceName": "Eduardo Heuser",
+    "normalizedName": "eduardo heuser",
+    "personId": null,
+    "canonicalName": "Eduardo Heuser",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Eduardo Heuser\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "fab74005-7e57-5edf-88ec-6fc2e3d65100",
+        "canonicalName": "Eduardo Heuser",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 16,
+    "sourceName": "Wilson Goiano",
+    "normalizedName": "wilson goiano",
+    "personId": null,
+    "canonicalName": "Wilson Goiano",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Wilson Goiano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "f6c4cd51-9a60-5054-a195-3bc9fe4ef895",
+        "canonicalName": "Wilson Goiano",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 17,
+    "sourceName": "Richard",
+    "normalizedName": "richard",
+    "personId": null,
+    "canonicalName": "Richard",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Richard\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "cda9f7e9-e37e-5aed-9929-2fec572f843c",
+        "canonicalName": "Richard",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 18,
+    "sourceName": "Jorge Batata",
+    "normalizedName": "jorge batata",
+    "personId": null,
+    "canonicalName": "Jorge Batata",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Jorge Batata\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "07c659c2-2490-5ab5-a32c-6b2804e2efdc",
+        "canonicalName": "Jorge Batata",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 19,
+    "sourceName": "Dalton",
+    "normalizedName": "dalton",
+    "personId": null,
+    "canonicalName": "Dalton",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Dalton\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "b8ac4ea7-2337-5887-9f57-6b6d8ad80492",
+        "canonicalName": "Dalton",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 20,
+    "sourceName": "Wallace",
+    "normalizedName": "wallace",
+    "personId": null,
+    "canonicalName": "Wallace",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Wallace\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "905d87ae-5b34-563a-9f43-713cde240764",
+        "canonicalName": "Wallace",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 21,
+    "sourceName": "Fagundes",
+    "normalizedName": "fagundes",
+    "personId": null,
+    "canonicalName": "Fagundes",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Fagundes\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "c950c69e-5881-527e-bf47-a9ddfcf28c68",
+        "canonicalName": "Fagundes",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 22,
+    "sourceName": "Kléber",
+    "normalizedName": "kleber",
+    "personId": null,
+    "canonicalName": "Kléber",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Kléber\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "47d79914-f16c-50f7-a966-2e738ff91f0b",
+        "canonicalName": "Kléber",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 23,
+    "sourceName": "Índio",
+    "normalizedName": "indio",
+    "personId": null,
+    "canonicalName": "Índio",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Índio\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "7cb31401-5664-56a4-adf3-e4cbd67a4a54",
+        "canonicalName": "Índio",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 24,
+    "sourceName": "Sílvio Criciúma",
+    "normalizedName": "silvio criciuma",
+    "personId": null,
+    "canonicalName": "Sílvio Criciúma",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Sílvio Criciúma\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "f19f0f24-d854-5199-80a4-d1c2b961ce4a",
+        "canonicalName": "Sílvio Criciúma",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 25,
+    "sourceName": "Augusto",
+    "normalizedName": "augusto",
+    "personId": null,
+    "canonicalName": "Augusto",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Augusto\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "df10a00d-7f7d-504b-8493-5b9530ace6f3",
+        "canonicalName": "Augusto",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 26,
+    "sourceName": "Reidner",
+    "normalizedName": "reidner",
+    "personId": null,
+    "canonicalName": "Reidner",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Reidner\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "25be25cc-afc5-52c4-80fe-913db916e463",
+        "canonicalName": "Reidner",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 27,
+    "sourceName": "Lúcio",
+    "normalizedName": "lucio",
+    "personId": null,
+    "canonicalName": "Lúcio",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Lúcio\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "95239096-6559-550c-a868-20f7f1bc1a49",
+        "canonicalName": "Lúcio",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 28,
+    "sourceName": "Alex Dias",
+    "normalizedName": "alex dias",
+    "personId": null,
+    "canonicalName": "Alex Dias",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Alex Dias\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "bad2882d-f170-57cd-961b-2fb662a29715",
+        "canonicalName": "Alex Dias",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 29,
+    "sourceName": "Jaques",
+    "normalizedName": "jaques",
+    "personId": null,
+    "canonicalName": "Jaques",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Jaques\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "26a56bc3-7d2c-5255-ad00-623e3dee9087",
+        "canonicalName": "Jaques",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 30,
+    "sourceName": "Evandro",
+    "normalizedName": "evandro",
+    "personId": null,
+    "canonicalName": "Evandro",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Evandro\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "dd42b77a-3bbc-541b-bb8a-15ab1549a314",
+        "canonicalName": "Evandro",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 31,
+    "sourceName": "Neném",
+    "normalizedName": "nenem",
+    "personId": null,
+    "canonicalName": "Neném",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Neném\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "98e0de13-e281-59f4-b422-b6b7e674fc5e",
+        "canonicalName": "Neném",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 32,
+    "sourceName": "Álvaro",
+    "normalizedName": "alvaro",
+    "personId": null,
+    "canonicalName": "Álvaro",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Álvaro\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "d25b36b7-6d4b-588e-b685-042788f4db53",
+        "canonicalName": "Álvaro",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 33,
+    "sourceName": "Fernando Nunes",
+    "normalizedName": "fernando nunes",
+    "personId": null,
+    "canonicalName": "Fernando Nunes",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Fernando Nunes\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "7b39fea0-9d91-53f7-bce5-9c84dddf76c8",
+        "canonicalName": "Fernando Nunes",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 34,
+    "sourceName": "Cacá",
+    "normalizedName": "caca",
+    "personId": null,
+    "canonicalName": "Cacá",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Cacá\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "23f70f11-2170-5b0e-9795-8d29fe72b8df",
+        "canonicalName": "Cacá",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 35,
+    "sourceName": "Marcelo Batista",
+    "normalizedName": "marcelo batista",
+    "personId": null,
+    "canonicalName": "Marcelo Batista",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marcelo Batista, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "3623f99d-32d9-5f9c-b171-609e754e77cd",
+        "canonicalName": "Marcelo Batista",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 36,
+    "sourceName": "Lira",
+    "normalizedName": "lira",
+    "personId": null,
+    "canonicalName": "Lira",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Lira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "580323c2-a42b-5390-a378-a2955743c544",
+        "canonicalName": "Lira",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 37,
+    "sourceName": "Alexandre",
+    "normalizedName": "alexandre",
+    "personId": null,
+    "canonicalName": "Alexandre",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Alexandre\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "1e95ec1e-d71b-586c-9dc2-f894fee14231",
+        "canonicalName": "Alexandre",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 38,
+    "sourceName": "Fabão",
+    "normalizedName": "fabao",
+    "personId": null,
+    "canonicalName": "Fabão",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Fabão\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "5014c1cc-e0c8-5481-8408-12cdc15d287b",
+        "canonicalName": "Fabão",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 39,
+    "sourceName": "Leandro Smith",
+    "normalizedName": "leandro smith",
+    "personId": null,
+    "canonicalName": "Leandro Smith",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Leandro Smith\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "7538bdb8-a23c-5c48-abcf-7df8b96eaa43",
+        "canonicalName": "Leandro Smith",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 40,
+    "sourceName": "Michel Santana",
+    "normalizedName": "michel santana",
+    "personId": null,
+    "canonicalName": "Michel Santana",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Michel Santana\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "98976e8b-d001-54da-aacc-c8ae7abc5aa2",
+        "canonicalName": "Michel Santana",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 41,
+    "sourceName": "Marabá",
+    "normalizedName": "maraba",
+    "personId": null,
+    "canonicalName": "Marabá",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Marabá\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "59b3356d-080e-5154-b1e3-7cc67b3dffae",
+        "canonicalName": "Marabá",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 42,
+    "sourceName": "Tiago Fraga",
+    "normalizedName": "tiago fraga",
+    "personId": null,
+    "canonicalName": "Tiago Fraga",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Tiago Fraga\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "ae05d013-8ede-587d-9ed3-344d561666c3",
+        "canonicalName": "Tiago Fraga",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 43,
+    "sourceName": "Caíco",
+    "normalizedName": "caico",
+    "personId": null,
+    "canonicalName": "Caíco",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Caíco\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "fe4ae1e3-7c24-5eea-ab42-f5f7fbbd8a72",
+        "canonicalName": "Caíco",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 44,
+    "sourceName": "Dimba",
+    "normalizedName": "dimba",
+    "personId": null,
+    "canonicalName": "Dimba",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Dimba\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "2cddddcb-7d72-5799-9637-3dd399cdad31",
+        "canonicalName": "Dimba",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 45,
+    "sourceName": "Pedro Paulo",
+    "normalizedName": "pedro paulo",
+    "personId": null,
+    "canonicalName": "Pedro Paulo",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Pedro Paulo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "ad561e0d-ad59-5c27-a5ab-34395047c20a",
+        "canonicalName": "Pedro Paulo",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 46,
+    "sourceName": "Esquerdinha",
+    "normalizedName": "esquerdinha",
+    "personId": null,
+    "canonicalName": "Esquerdinha",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Esquerdinha\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "46c56b76-419d-55a1-becb-f5571c6a41e0",
+        "canonicalName": "Esquerdinha",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 47,
+    "sourceName": "Gustavo",
+    "normalizedName": "gustavo",
+    "personId": null,
+    "canonicalName": "Gustavo",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Gustavo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "a7a0712f-0d35-5659-a2ea-049497f7d8f4",
+        "canonicalName": "Gustavo",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 48,
+    "sourceName": "Cléber Goiano",
+    "normalizedName": "cleber goiano",
+    "personId": null,
+    "canonicalName": "Cléber Goiano",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Cléber Goiano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "6bbbd7cc-1b35-51c6-bfe9-fbcf8d934348",
+        "canonicalName": "Cléber Goiano",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 49,
+    "sourceName": "Danilo Portugal",
+    "normalizedName": "danilo portugal",
+    "personId": null,
+    "canonicalName": "Danilo Portugal",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Danilo Portugal\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "c9ede558-0b0a-59d3-b965-7e990774a5d8",
+        "canonicalName": "Danilo Portugal",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 50,
+    "sourceName": "Tácio",
+    "normalizedName": "tacio",
+    "personId": null,
+    "canonicalName": "Tácio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Tácio, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9f12c90e-25d7-58ce-b0b0-b64b6d875a25",
+        "canonicalName": "Tácio",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 51,
+    "sourceName": "Gil Baiano",
+    "normalizedName": "gil baiano",
+    "personId": null,
+    "canonicalName": "Gil Baiano",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Gil Baiano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "eb317c24-cd92-5810-abc7-8a971e07f1b1",
+        "canonicalName": "Gil Baiano",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 52,
+    "sourceName": "Wando",
+    "normalizedName": "wando",
+    "personId": null,
+    "canonicalName": "Wando",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Wando\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "e04f2cf9-3f35-52b4-9f18-e5d4bf23f6a5",
+        "canonicalName": "Wando",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 53,
+    "sourceName": "Rodrigo Calaça",
+    "normalizedName": "rodrigo calaca",
+    "personId": null,
+    "canonicalName": "Rodrigo Calaça",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Rodrigo Calaça\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "4a791dac-a6b6-53a6-9c51-54efcf9a7051",
+        "canonicalName": "Rodrigo Calaça",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 54,
+    "sourceName": "Rafael Dias",
+    "normalizedName": "rafael dias",
+    "personId": null,
+    "canonicalName": "Rafael Dias",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Rafael Dias\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "80453d6a-6cd6-54fb-8706-710ed293faf6",
+        "canonicalName": "Rafael Dias",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 55,
+    "sourceName": "Júlio Santos",
+    "normalizedName": "julio santos",
+    "personId": null,
+    "canonicalName": "Júlio Santos",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Júlio Santos\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "738ce1fa-32fe-5346-bba1-94c4d2d44d0d",
+        "canonicalName": "Júlio Santos",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 56,
+    "sourceName": "André Dias",
+    "normalizedName": "andre dias",
+    "personId": null,
+    "canonicalName": "André Dias",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"André Dias\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "796a3e44-45f9-52e9-bcd2-b66f2820b2c7",
+        "canonicalName": "André Dias",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 57,
+    "sourceName": "Andrezinho",
+    "normalizedName": "andrezinho",
+    "personId": null,
+    "canonicalName": "Andrezinho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Andrezinho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "dc6df4ac-a7d2-58cd-87c4-86fc68011342",
+        "canonicalName": "Andrezinho",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 58,
+    "sourceName": "Rogério Corrêa",
+    "normalizedName": "rogerio correa",
+    "personId": null,
+    "canonicalName": "Rogério Corrêa",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Rogério Corrêa\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "d3350033-eab8-53b8-bdf2-cf26faaf3409",
+        "canonicalName": "Rogério Corrêa",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 59,
+    "sourceName": "Aldo",
+    "normalizedName": "aldo",
+    "personId": null,
+    "canonicalName": "Aldo",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Aldo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "494b3a39-970e-5f4c-8756-1cd7068f9a5b",
+        "canonicalName": "Aldo",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 60,
+    "sourceName": "João Paulo",
+    "normalizedName": "joao paulo",
+    "personId": null,
+    "canonicalName": "João Paulo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (João Paulo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9cb0bc03-9bf8-52d0-b64a-911dfbd7a8bf",
+        "canonicalName": "João Paulo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 61,
+    "sourceName": "Luciano Almeida",
+    "normalizedName": "luciano almeida",
+    "personId": null,
+    "canonicalName": "Luciano Almeida",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Luciano Almeida\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "10bbe48b-d9d9-5b73-852b-054f61817dde",
+        "canonicalName": "Luciano Almeida",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 62,
+    "sourceName": "André Leone",
+    "normalizedName": "andre leone",
+    "personId": null,
+    "canonicalName": "André Leone",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"André Leone\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "7bc40235-75da-587c-a4c7-cca50fa6fb83",
+        "canonicalName": "André Leone",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 63,
+    "sourceName": "Rômulo",
+    "normalizedName": "romulo",
+    "personId": null,
+    "canonicalName": "Rômulo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rômulo, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "12fe7ec7-a72a-5c79-afac-04e463df5dbc",
+        "canonicalName": "Rômulo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 64,
+    "sourceName": "Cléber Gaúcho",
+    "normalizedName": "cleber gaucho",
+    "personId": null,
+    "canonicalName": "Cléber Gaúcho",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Cléber Gaúcho\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "7d9ccf69-9e18-5d85-8578-c12f569135b1",
+        "canonicalName": "Cléber Gaúcho",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 65,
+    "sourceName": "Juliano",
+    "normalizedName": "juliano",
+    "personId": null,
+    "canonicalName": "Juliano",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Juliano\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "0128bb04-127f-55e4-8ab9-381094e72352",
+        "canonicalName": "Juliano",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 66,
+    "sourceName": "Mário Jardel",
+    "normalizedName": "mario jardel",
+    "personId": null,
+    "canonicalName": "Mário Jardel",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Mário Jardel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "99b220af-1754-5e80-9a49-3ad2a47a0c62",
+        "canonicalName": "Mário Jardel",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 67,
+    "sourceName": "Romerito",
+    "normalizedName": "romerito",
+    "personId": null,
+    "canonicalName": "Romerito",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Romerito\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "b098e3d4-85d3-5ee3-b163-9d270ec1403c",
+        "canonicalName": "Romerito",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 68,
+    "sourceName": "Wendell Lira",
+    "normalizedName": "wendell lira",
+    "personId": null,
+    "canonicalName": "Wendell Lira",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wendell Lira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "eca536bd-6465-5539-accb-90c4767102fb",
+        "canonicalName": "Wendell Lira",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 69,
+    "sourceName": "Edmílson Matias",
+    "normalizedName": "edmilson matias",
+    "personId": null,
+    "canonicalName": "Edmílson Matias",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Edmílson Matias, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5d57c5f3-b72b-57b8-8828-8fc70be5f331",
+        "canonicalName": "Edmílson Matias",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 70,
+    "sourceName": "Marcelo Carioca",
+    "normalizedName": "marcelo carioca",
+    "personId": null,
+    "canonicalName": "Marcelo Carioca",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marcelo Carioca, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "b3e6baa9-04bd-5bc6-b2f0-ceb4796e0123",
+        "canonicalName": "Marcelo Carioca",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 71,
+    "sourceName": "Danilo Dias",
+    "normalizedName": "danilo dias",
+    "personId": null,
+    "canonicalName": "Danilo Dias",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Danilo Dias, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e66d76f0-5fbc-5c21-bb84-342d950b8a68",
+        "canonicalName": "Danilo Dias",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 72,
+    "sourceName": "Ramalho",
+    "normalizedName": "ramalho",
+    "personId": null,
+    "canonicalName": "Ramalho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Ramalho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9713495a-8f4f-58ef-acad-c3f4dc5ba74d",
+        "canonicalName": "Ramalho",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 73,
+    "sourceName": "Fernando",
+    "normalizedName": "fernando",
+    "personId": null,
+    "canonicalName": "Fernando",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Fernando, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "a8fdc462-6dee-55de-94a5-7a62236acf28",
+        "canonicalName": "Fernando",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 74,
+    "sourceName": "Henrique",
+    "normalizedName": "henrique",
+    "personId": null,
+    "canonicalName": "Henrique",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Henrique, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "fd3c43bc-275d-5b51-811a-d982066d8d15",
+        "canonicalName": "Henrique",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 75,
+    "sourceName": "Alex Terra",
+    "normalizedName": "alex terra",
+    "personId": null,
+    "canonicalName": "Alex Terra",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alex Terra, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "a5e9b271-6e4c-5e7f-a651-a9e86a5c4ead",
+        "canonicalName": "Alex Terra",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 76,
+    "sourceName": "Paulo Henrique",
+    "normalizedName": "paulo henrique",
+    "personId": null,
+    "canonicalName": "Paulo Henrique",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Paulo Henrique, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "04dea13d-fbb5-566b-878e-a2218f846dbe",
+        "canonicalName": "Paulo Henrique",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 77,
+    "sourceName": "Anderson Aquino",
+    "normalizedName": "anderson aquino",
+    "personId": null,
+    "canonicalName": "Anderson Aquino",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Anderson Aquino, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9167350b-7d8a-5fd5-aabc-60016b33798c",
+        "canonicalName": "Anderson Aquino",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 78,
+    "sourceName": "Pituca",
+    "normalizedName": "pituca",
+    "personId": null,
+    "canonicalName": "Pituca",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Pituca, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7a9ccdef-4ba5-5e33-96ee-356715494811",
+        "canonicalName": "Pituca",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 79,
+    "sourceName": "Schwenck",
+    "normalizedName": "schwenck",
+    "personId": null,
+    "canonicalName": "Schwenck",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Schwenck, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "264d0a60-06dd-51f2-917d-01e7acc2293e",
+        "canonicalName": "Schwenck",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 80,
+    "sourceName": "Felipe",
+    "normalizedName": "felipe",
+    "personId": null,
+    "canonicalName": "Felipe",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Felipe, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "67a962ce-5797-56c8-a161-415dae885860",
+        "canonicalName": "Felipe",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 81,
+    "sourceName": "Rinaldo",
+    "normalizedName": "rinaldo",
+    "personId": null,
+    "canonicalName": "Rinaldo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rinaldo, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "122b754f-8646-5bfd-b42a-c91a69f35d52",
+        "canonicalName": "Rinaldo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 82,
+    "sourceName": "Frontini",
+    "normalizedName": "frontini",
+    "personId": null,
+    "canonicalName": "Frontini",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Frontini, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "02202ed9-daf8-51fc-be71-ecf58d501dbc",
+        "canonicalName": "Frontini",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 83,
+    "sourceName": "Fábio Bahia",
+    "normalizedName": "fabio bahia",
+    "personId": null,
+    "canonicalName": "Fábio Bahia",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Fábio Bahia, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "c88fa6da-2af3-5d46-be98-b3e844ce749b",
+        "canonicalName": "Fábio Bahia",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 84,
+    "sourceName": "Alex Ferreira",
+    "normalizedName": "alex ferreira",
+    "personId": null,
+    "canonicalName": "Alex Ferreira",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alex Ferreira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9e0f046f-9235-54fa-b566-94b00f9872d2",
+        "canonicalName": "Alex Ferreira",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 85,
+    "sourceName": "Rafael Marques",
+    "normalizedName": "rafael marques",
+    "personId": null,
+    "canonicalName": "Rafael Marques",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rafael Marques, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "654d8f6b-811f-5691-864c-0ed956470390",
+        "canonicalName": "Rafael Marques",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 86,
+    "sourceName": "Leandro Euzébio",
+    "normalizedName": "leandro euzebio",
+    "personId": null,
+    "canonicalName": "Leandro Euzébio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Leandro Euzébio, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5332cf21-d830-5ff3-a2f9-106390899e73",
+        "canonicalName": "Leandro Euzébio",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 87,
+    "sourceName": "Wellington Monteiro",
+    "normalizedName": "wellington monteiro",
+    "personId": null,
+    "canonicalName": "Wellington Monteiro",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wellington Monteiro, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "444fe634-5fd0-5a6a-b1f5-5934c621d8ad",
+        "canonicalName": "Wellington Monteiro",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 88,
+    "sourceName": "Valmir Lucas",
+    "normalizedName": "valmir lucas",
+    "personId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+    "canonicalName": "Valmir Lucas",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Valmir Lucas), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+        "canonicalName": "Valmir Lucas",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 89,
+    "sourceName": "Marcão",
+    "normalizedName": "marcao",
+    "personId": null,
+    "canonicalName": "Marcão",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Marcão\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "e3723fb6-1c7a-5512-8547-50d69a04da99",
+        "canonicalName": "Marcão",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 90,
+    "sourceName": "Carlos Alberto",
+    "normalizedName": "carlos alberto",
+    "personId": "02a0df33-8a89-5b78-8011-00868b240029",
+    "canonicalName": "Carlos Alberto",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Carlos Alberto), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "02a0df33-8a89-5b78-8011-00868b240029",
+        "canonicalName": "Carlos Alberto",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 91,
+    "sourceName": "Bernardo",
+    "normalizedName": "bernardo",
+    "personId": null,
+    "canonicalName": "Bernardo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Bernardo, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "d2a355a9-d1cf-5cb4-99e9-637ac2f59b04",
+        "canonicalName": "Bernardo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 92,
+    "sourceName": "Hugo",
+    "normalizedName": "hugo",
+    "personId": null,
+    "canonicalName": "Hugo",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Hugo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "92eefd57-f96b-5e79-9bed-bb13d28fed34",
+        "canonicalName": "Hugo",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 93,
+    "sourceName": "Éverton Santos",
+    "normalizedName": "everton santos",
+    "personId": null,
+    "canonicalName": "Éverton Santos",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Éverton Santos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e163b3fa-44be-5c21-97e7-d450e5c43de1",
+        "canonicalName": "Éverton Santos",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 94,
+    "sourceName": "Otacílio Neto",
+    "normalizedName": "otacilio neto",
+    "personId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+    "canonicalName": "Otacílio Neto",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Otacílio Neto), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+        "canonicalName": "Otacílio Neto",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 95,
+    "sourceName": "Bruno Meneghel",
+    "normalizedName": "bruno meneghel",
+    "personId": null,
+    "canonicalName": "Bruno Meneghel",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Bruno Meneghel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "16684d86-a44c-52fe-aafd-1d8ebb55530a",
+        "canonicalName": "Bruno Meneghel",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 96,
+    "sourceName": "Wellington Saci",
+    "normalizedName": "wellington saci",
+    "personId": "9a4c2c66-0936-5921-8714-95714db79daa",
+    "canonicalName": "Wellington Saci",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Wellington Saci), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9a4c2c66-0936-5921-8714-95714db79daa",
+        "canonicalName": "Wellington Saci",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 97,
+    "sourceName": "Renan Brito",
+    "normalizedName": "renan brito",
+    "personId": null,
+    "canonicalName": "Renan Brito",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Renan Brito, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e5bf06f2-c883-5ccd-9ff5-26a412e37888",
+        "canonicalName": "Renan Brito",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 98,
+    "sourceName": "Édson",
+    "normalizedName": "edson",
+    "personId": null,
+    "canonicalName": "Édson",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Édson, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "1581e0d6-1376-5f11-a331-9fe3f3d5ce75",
+        "canonicalName": "Édson",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 99,
+    "sourceName": "Ramón",
+    "normalizedName": "ramon",
+    "personId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+    "canonicalName": "Ramón",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ramón), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+        "canonicalName": "Ramón",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 100,
+    "sourceName": "Renan Oliveira",
+    "normalizedName": "renan oliveira",
+    "personId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+    "canonicalName": "Renan Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Renan Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+        "canonicalName": "Renan Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 101,
+    "sourceName": "Thiago Mendes",
+    "normalizedName": "thiago mendes",
+    "personId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+    "canonicalName": "Thiago Mendes",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Thiago Mendes), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+        "canonicalName": "Thiago Mendes",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 102,
+    "sourceName": "Felipe Amorim",
+    "normalizedName": "felipe amorim",
+    "personId": null,
+    "canonicalName": "Felipe Amorim",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Felipe Amorim, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "6f2be735-687b-5709-a6e7-12ea04aa1fe4",
+        "canonicalName": "Felipe Amorim",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 103,
+    "sourceName": "Júnior Viçosa",
+    "normalizedName": "junior vicosa",
+    "personId": null,
+    "canonicalName": "Júnior Viçosa",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Júnior Viçosa\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "a8b4e639-0d8f-58eb-9a44-6fdcb8b870d1",
+        "canonicalName": "Júnior Viçosa",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 104,
+    "sourceName": "Eduardo Sasha",
+    "normalizedName": "eduardo sasha",
+    "personId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+    "canonicalName": "Eduardo Sasha",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Eduardo Sasha), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+        "canonicalName": "Eduardo Sasha",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 105,
+    "sourceName": "William Matheus",
+    "normalizedName": "william matheus",
+    "personId": "03fca98b-17cd-5484-838d-6690bb677f70",
+    "canonicalName": "William Matheus",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (William Matheus), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "03fca98b-17cd-5484-838d-6690bb677f70",
+        "canonicalName": "William Matheus",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 106,
+    "sourceName": "David",
+    "normalizedName": "david",
+    "personId": "68880467-49ea-5661-8f08-2a177a060558",
+    "canonicalName": "David",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (David), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "68880467-49ea-5661-8f08-2a177a060558",
+        "canonicalName": "David",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 107,
+    "sourceName": "Jackson",
+    "normalizedName": "jackson",
+    "personId": null,
+    "canonicalName": "Jackson",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Jackson, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5e116b8c-3054-5952-8a0f-fb8afdefa381",
+        "canonicalName": "Jackson",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 108,
+    "sourceName": "Wallinson",
+    "normalizedName": "wallinson",
+    "personId": null,
+    "canonicalName": "Wallinson",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wallinson, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "1c960a43-08db-5b5e-a5c9-8dec129b2b65",
+        "canonicalName": "Wallinson",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 109,
+    "sourceName": "Alex Alves",
+    "normalizedName": "alex alves",
+    "personId": null,
+    "canonicalName": "Alex Alves",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alex Alves, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9c4915ed-7eae-5719-b6c1-e9b5c2bf0553",
+        "canonicalName": "Alex Alves",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 110,
+    "sourceName": "Felipe Macedo",
+    "normalizedName": "felipe macedo",
+    "personId": null,
+    "canonicalName": "Felipe Macedo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Felipe Macedo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e606f900-73fb-582c-bf52-868795ec077b",
+        "canonicalName": "Felipe Macedo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 111,
+    "sourceName": "Léo Veloso",
+    "normalizedName": "leo veloso",
+    "personId": null,
+    "canonicalName": "Léo Veloso",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Léo Veloso, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "1bf67c89-094d-59bb-befd-d59af3f14e21",
+        "canonicalName": "Léo Veloso",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 112,
+    "sourceName": "Lucas Lima",
+    "normalizedName": "lucas lima",
+    "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+    "canonicalName": "Lucas Rafael Araújo Lima",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Rafael Araújo Lima), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+        "canonicalName": "Lucas Rafael Araújo Lima",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 113,
+    "sourceName": "Mário Sérgio",
+    "normalizedName": "mario sergio",
+    "personId": null,
+    "canonicalName": "Mário Sérgio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Mário Sérgio, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5639f14e-2e07-515c-8a5f-a376493987bd",
+        "canonicalName": "Mário Sérgio",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 114,
+    "sourceName": "Clayton",
+    "normalizedName": "clayton",
+    "personId": null,
+    "canonicalName": "Clayton",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Clayton, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "fd593ba4-d252-5fe5-b0c7-a09292c76798",
+        "canonicalName": "Clayton",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 115,
+    "sourceName": "Moisés",
+    "normalizedName": "moises",
+    "personId": null,
+    "canonicalName": "Moisés",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Moisés, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "4227dd15-e300-54fc-a5a9-fb3959c68064",
+        "canonicalName": "Moisés",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 116,
+    "sourceName": "Abuda",
+    "normalizedName": "abuda",
+    "personId": null,
+    "canonicalName": "Abuda",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Abuda, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "c97ae745-4730-5064-ab53-6a29d049d67a",
+        "canonicalName": "Abuda",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 117,
+    "sourceName": "Tiago Real",
+    "normalizedName": "tiago real",
+    "personId": null,
+    "canonicalName": "Tiago Real",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Tiago Real, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "269490a9-2b46-5d92-b076-9fd55eae6723",
+        "canonicalName": "Tiago Real",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 118,
+    "sourceName": "Raphael Luz",
+    "normalizedName": "raphael luz",
+    "personId": null,
+    "canonicalName": "Raphael Luz",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Raphael Luz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "d1466442-9eba-5e77-9f8c-ff3117f740a0",
+        "canonicalName": "Raphael Luz",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 119,
+    "sourceName": "Assuério",
+    "normalizedName": "assuerio",
+    "personId": null,
+    "canonicalName": "Assuério",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Assuério, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "224ffbee-f0ff-50b5-8913-436b5ed9207c",
+        "canonicalName": "Assuério",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 120,
+    "sourceName": "Murilo Henrique",
+    "normalizedName": "murilo henrique",
+    "personId": null,
+    "canonicalName": "Murilo Henrique",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Murilo Henrique, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9eb72776-436a-5825-8c8e-74de163e312f",
+        "canonicalName": "Murilo Henrique",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 121,
+    "sourceName": "Liniker",
+    "normalizedName": "liniker",
+    "personId": null,
+    "canonicalName": "Liniker",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Liniker, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "337ea48e-1631-5db5-b8cc-05aece3d4c98",
+        "canonicalName": "Liniker",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 122,
+    "sourceName": "Samuel Rosa",
+    "normalizedName": "samuel rosa",
+    "personId": null,
+    "canonicalName": "Samuel Rosa",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Samuel Rosa, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7f0ad6b0-bcf2-5454-8c44-cb641967c6b6",
+        "canonicalName": "Samuel Rosa",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 123,
+    "sourceName": "Léo Bonatini",
+    "normalizedName": "leo bonatini",
+    "personId": null,
+    "canonicalName": "Léo Bonatini",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Léo Bonatini, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "fe249471-939c-53b0-a96a-5bc3a08cf4ff",
+        "canonicalName": "Léo Bonatini",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 124,
+    "sourceName": "Bruno Mineiro",
+    "normalizedName": "bruno mineiro",
+    "personId": null,
+    "canonicalName": "Bruno Mineiro",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Bruno Mineiro, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "c7ddc4be-4ac5-5c25-b44d-c43c7a8fb9f9",
+        "canonicalName": "Bruno Mineiro",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 125,
+    "sourceName": "Márcio",
+    "normalizedName": "marcio",
+    "personId": null,
+    "canonicalName": "Márcio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Márcio, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "64b07bb5-d02c-5350-9c63-7f172009e4e4",
+        "canonicalName": "Márcio",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 126,
+    "sourceName": "Ivan",
+    "normalizedName": "ivan",
+    "personId": null,
+    "canonicalName": "Ivan",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Ivan, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7986f4e0-203d-5dde-9090-abee613879d4",
+        "canonicalName": "Ivan",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 127,
+    "sourceName": "Fred",
+    "normalizedName": "fred",
+    "personId": null,
+    "canonicalName": "Fred",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Fred, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0f62bac2-6f45-5f7e-ab8a-8aeba37ff3a0",
+        "canonicalName": "Fred",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 128,
+    "sourceName": "Anderson Salles",
+    "normalizedName": "anderson salles",
+    "personId": null,
+    "canonicalName": "Anderson Salles",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Anderson Salles, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e1e95eda-1e8c-518f-8a90-057e01ee1726",
+        "canonicalName": "Anderson Salles",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 129,
+    "sourceName": "Rafael Forster",
+    "normalizedName": "rafael forster",
+    "personId": null,
+    "canonicalName": "Rafael Forster",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rafael Forster, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "b21fae88-759d-5343-968b-b5856698e091",
+        "canonicalName": "Rafael Forster",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 130,
+    "sourceName": "Artur Vieira",
+    "normalizedName": "artur vieira",
+    "personId": null,
+    "canonicalName": "Artur Vieira",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Artur Vieira, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5e1d0157-2aac-50a7-a43f-96d217bab581",
+        "canonicalName": "Artur Vieira",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 131,
+    "sourceName": "Wesley Matos",
+    "normalizedName": "wesley matos",
+    "personId": null,
+    "canonicalName": "Wesley Matos",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wesley Matos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "66498300-be3a-5ff4-b697-d7469ffa6741",
+        "canonicalName": "Wesley Matos",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 132,
+    "sourceName": "David Duarte",
+    "normalizedName": "david duarte",
+    "personId": null,
+    "canonicalName": "David Duarte",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"David Duarte\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "1927e2ea-da7a-5df4-87f5-6df580353d8e",
+        "canonicalName": "David Duarte",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 133,
+    "sourceName": "Juninho",
+    "normalizedName": "juninho",
+    "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+    "canonicalName": "Adilson dos Anjos Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Adilson dos Anjos Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+        "canonicalName": "Adilson dos Anjos Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 134,
+    "sourceName": "Diogo Barbosa",
+    "normalizedName": "diogo barbosa",
+    "personId": null,
+    "canonicalName": "Diogo Barbosa",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Diogo Barbosa, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "cd80d22d-fabd-5719-8e65-8bf36de3aa5a",
+        "canonicalName": "Diogo Barbosa",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 135,
+    "sourceName": "Willian Oliveira",
+    "normalizedName": "willian oliveira",
+    "personId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+    "canonicalName": "Willian Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Willian Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+        "canonicalName": "Willian Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 136,
+    "sourceName": "Ramires",
+    "normalizedName": "ramires",
+    "personId": null,
+    "canonicalName": "Ramires",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Ramires, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "1d22be40-d0df-55b9-8ddd-dd368a12ee90",
+        "canonicalName": "Ramires",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 137,
+    "sourceName": "Léo Sena",
+    "normalizedName": "leo sena",
+    "personId": null,
+    "canonicalName": "Léo Sena",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Léo Sena\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "4625f4ac-dfc8-59e0-a463-f7d8795b56e1",
+        "canonicalName": "Léo Sena",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 138,
+    "sourceName": "Patrick",
+    "normalizedName": "patrick",
+    "personId": null,
+    "canonicalName": "Patrick",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Patrick, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "42a5c855-80c3-5be9-98c0-93d971694414",
+        "canonicalName": "Patrick",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 139,
+    "sourceName": "Arthur Rezende",
+    "normalizedName": "arthur rezende",
+    "personId": null,
+    "canonicalName": "Arthur Rezende",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Arthur Rezende, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "647f2208-b0e2-5ed2-8bd4-ed18a4f0b8dc",
+        "canonicalName": "Arthur Rezende",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 140,
+    "sourceName": "Wendel",
+    "normalizedName": "wendel",
+    "personId": null,
+    "canonicalName": "Wendel",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wendel, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "256c0dfd-afc5-5ca1-84e9-e909be37e502",
+        "canonicalName": "Wendel",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 141,
+    "sourceName": "Jhon Cley",
+    "normalizedName": "jhon cley",
+    "personId": null,
+    "canonicalName": "Jhon Cley",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Jhon Cley, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "d06541d2-12ef-5387-8567-85ba07cea5d5",
+        "canonicalName": "Jhon Cley",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 142,
+    "sourceName": "Léo Lima",
+    "normalizedName": "leo lima",
+    "personId": null,
+    "canonicalName": "Léo Lima",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Léo Lima, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7935c9ea-dada-59c4-986d-b92217c5c01f",
+        "canonicalName": "Léo Lima",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 143,
+    "sourceName": "Daniel Carvalho",
+    "normalizedName": "daniel carvalho",
+    "personId": null,
+    "canonicalName": "Daniel Carvalho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Daniel Carvalho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "615aa9dd-4b4f-5086-bf11-8ec99e8f414b",
+        "canonicalName": "Daniel Carvalho",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 144,
+    "sourceName": "Higor Leite",
+    "normalizedName": "higor leite",
+    "personId": null,
+    "canonicalName": "Higor Leite",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Higor Leite, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "13c87e1a-0aa6-5737-b522-8dd13c388bfc",
+        "canonicalName": "Higor Leite",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 145,
+    "sourceName": "Léo Gamalho",
+    "normalizedName": "leo gamalho",
+    "personId": null,
+    "canonicalName": "Léo Gamalho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Léo Gamalho, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "bb78c7f0-15f0-54c2-a535-b579997522f2",
+        "canonicalName": "Léo Gamalho",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 146,
+    "sourceName": "Rossi",
+    "normalizedName": "rossi",
+    "personId": null,
+    "canonicalName": "Rossi",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rossi, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "01da5ee1-4c4a-5dc5-b3c7-f92c0f8c9ab2",
+        "canonicalName": "Rossi",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 147,
+    "sourceName": "Carlos Eduardo",
+    "normalizedName": "carlos eduardo",
+    "personId": null,
+    "canonicalName": "Carlos Eduardo",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Carlos Eduardo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "523b9905-c01a-573d-a135-7cf42475179c",
+        "canonicalName": "Carlos Eduardo",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 148,
+    "sourceName": "Cléo",
+    "normalizedName": "cleo",
+    "personId": null,
+    "canonicalName": "Cléo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Cléo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "62a131c8-d9aa-56ac-a82a-c2646b3c55b5",
+        "canonicalName": "Cléo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 149,
+    "sourceName": "Sueliton",
+    "normalizedName": "sueliton",
+    "personId": null,
+    "canonicalName": "Sueliton",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Sueliton, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "deb688bd-624d-5411-b2fd-8065f9cc075e",
+        "canonicalName": "Sueliton",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 150,
+    "sourceName": "Eduardo Brock",
+    "normalizedName": "eduardo brock",
+    "personId": null,
+    "canonicalName": "Eduardo Brock",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Eduardo Brock\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "bbc75432-9c64-5e9e-b68b-f0937957ffc7",
+        "canonicalName": "Eduardo Brock",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 151,
+    "sourceName": "Victor Ramos",
+    "normalizedName": "victor ramos",
+    "personId": null,
+    "canonicalName": "Victor Ramos",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Victor Ramos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "ead29911-9825-5dce-a123-cfa3f18e9357",
+        "canonicalName": "Victor Ramos",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 152,
+    "sourceName": "Renato Cajá",
+    "normalizedName": "renato caja",
+    "personId": null,
+    "canonicalName": "Renato Cajá",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Renato Cajá, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "170d1c57-8610-5a19-b104-d8f633412d30",
+        "canonicalName": "Renato Cajá",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 153,
+    "sourceName": "Sidão",
+    "normalizedName": "sidao",
+    "personId": null,
+    "canonicalName": "Sidão",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Sidão, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "8126eb68-efbf-5496-9e66-e4cdacfa242d",
+        "canonicalName": "Sidão",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 154,
+    "sourceName": "Rafael Vaz",
+    "normalizedName": "rafael vaz",
+    "personId": null,
+    "canonicalName": "Rafael Vaz",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rafael Vaz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "f54e97b9-f46e-538c-9de3-15e0939e6350",
+        "canonicalName": "Rafael Vaz",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 155,
+    "sourceName": "Fábio Sanches",
+    "normalizedName": "fabio sanches",
+    "personId": null,
+    "canonicalName": "Fábio Sanches",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Fábio Sanches, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "bf676345-9ada-543a-a280-0e20d3b76cbd",
+        "canonicalName": "Fábio Sanches",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 156,
+    "sourceName": "Paulo Ricardo",
+    "normalizedName": "paulo ricardo",
+    "personId": null,
+    "canonicalName": "Paulo Ricardo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Paulo Ricardo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "74b4f95b-dac0-592c-9090-d51a2cbc4bc8",
+        "canonicalName": "Paulo Ricardo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 157,
+    "sourceName": "Iago Mendonça",
+    "normalizedName": "iago mendonca",
+    "personId": null,
+    "canonicalName": "Iago Mendonça",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Iago Mendonça, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "bdd2ee6e-1648-5bf8-8a39-318fa1491058",
+        "canonicalName": "Iago Mendonça",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 158,
+    "sourceName": "Heron",
+    "normalizedName": "heron",
+    "personId": null,
+    "canonicalName": "Heron",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Heron, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "04ca3d5f-576f-555b-bdae-70c16e464b2a",
+        "canonicalName": "Heron",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 159,
+    "sourceName": "Marcelo Hermes",
+    "normalizedName": "marcelo hermes",
+    "personId": null,
+    "canonicalName": "Marcelo Hermes",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marcelo Hermes, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7687f7d5-552b-5c09-a65a-e08f4e762c84",
+        "canonicalName": "Marcelo Hermes",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 160,
+    "sourceName": "Alan Ruschel",
+    "normalizedName": "alan ruschel",
+    "personId": null,
+    "canonicalName": "Alan Ruschel",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alan Ruschel, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "36df84c5-fb05-5edb-955e-467616c99c48",
+        "canonicalName": "Alan Ruschel",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 161,
+    "sourceName": "Yago Felipe",
+    "normalizedName": "yago felipe",
+    "personId": null,
+    "canonicalName": "Yago Felipe",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Yago Felipe, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "abb5f2ec-75c1-53e0-8639-510cf9af9345",
+        "canonicalName": "Yago Felipe",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 162,
+    "sourceName": "Giovanni Augusto",
+    "normalizedName": "giovanni augusto",
+    "personId": null,
+    "canonicalName": "Giovanni Augusto",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Giovanni Augusto, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "eceb0375-a405-5f87-8c1b-5a3e3cbfe898",
+        "canonicalName": "Giovanni Augusto",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 163,
+    "sourceName": "Marlone",
+    "normalizedName": "marlone",
+    "personId": null,
+    "canonicalName": "Marlone",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marlone, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "589081d6-8f37-594c-aca0-a898c56e129e",
+        "canonicalName": "Marlone",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 164,
+    "sourceName": "Leandro Barcia",
+    "normalizedName": "leandro barcia",
+    "personId": null,
+    "canonicalName": "Leandro Barcia",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Leandro Barcia, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "efb2ee1b-46e1-5f24-994e-0549aa51fd56",
+        "canonicalName": "Leandro Barcia",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 165,
+    "sourceName": "Vinícius Lopes",
+    "normalizedName": "vinicius lopes",
+    "personId": null,
+    "canonicalName": "Vinícius Lopes",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Vinícius Lopes, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e48da7e9-6cec-5cf1-80b8-21432009d7bb",
+        "canonicalName": "Vinícius Lopes",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 166,
+    "sourceName": "Kayke",
+    "normalizedName": "kayke",
+    "personId": null,
+    "canonicalName": "Kayke",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Kayke, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "3d3c6c48-f24c-5908-927f-980185b2eca7",
+        "canonicalName": "Kayke",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 167,
+    "sourceName": "Brenner",
+    "normalizedName": "brenner",
+    "personId": null,
+    "canonicalName": "Brenner",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Brenner, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9436bb2c-8aee-54c2-afa0-afed9a87daac",
+        "canonicalName": "Brenner",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 168,
+    "sourceName": "Junior Brandão",
+    "normalizedName": "junior brandao",
+    "personId": null,
+    "canonicalName": "Junior Brandão",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Junior Brandão, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "696eb0bd-aed3-534e-9e28-fb8ec25cb7e3",
+        "canonicalName": "Junior Brandão",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 169,
+    "sourceName": "Rafael Elias",
+    "normalizedName": "rafael elias",
+    "personId": null,
+    "canonicalName": "Rafael Elias",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rafael Elias, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5ae829f7-de82-550a-b0df-a141c2053eeb",
+        "canonicalName": "Rafael Elias",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 170,
+    "sourceName": "Daniel Bessa",
+    "normalizedName": "daniel bessa",
+    "personId": null,
+    "canonicalName": "Daniel Bessa",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Daniel Bessa, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "8da3deb1-0fdc-5991-bc6b-8c3d58233549",
+        "canonicalName": "Daniel Bessa",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 171,
+    "sourceName": "Sandro",
+    "normalizedName": "sandro",
+    "personId": null,
+    "canonicalName": "Sandro",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Sandro, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "4bdbdefc-752c-5cc4-a8a8-bfa76a240165",
+        "canonicalName": "Sandro",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 172,
+    "sourceName": "Reynaldo",
+    "normalizedName": "reynaldo",
+    "personId": null,
+    "canonicalName": "Reynaldo",
+    "status": "AMBIGUOUS",
+    "resolutionReason": "A própria pessoa canônica \"Reynaldo\" tem identity=AMBIGUOUS_IDENTITY — ela mesma representa uma mistura não resolvida de possíveis pessoas reais diferentes, não é seguro atribuir um person_id único.",
+    "sources": [
+      {
+        "personId": "e3f11445-639c-527e-8b02-f11bd089d9bf",
+        "canonicalName": "Reynaldo",
+        "identity": "AMBIGUOUS_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 173,
+    "sourceName": "Artur",
+    "normalizedName": "artur",
+    "personId": "d8600945-4f69-5c47-a42d-662921fa9557",
+    "canonicalName": "Artur",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Artur), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d8600945-4f69-5c47-a42d-662921fa9557",
+        "canonicalName": "Artur",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 174,
+    "sourceName": "Dieguinho",
+    "normalizedName": "dieguinho",
+    "personId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+    "canonicalName": "Jackson Diego Ibraim Fagundes",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Jackson Diego Ibraim Fagundes), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+        "canonicalName": "Jackson Diego Ibraim Fagundes",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 175,
+    "sourceName": "Élvis",
+    "normalizedName": "elvis",
+    "personId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+    "canonicalName": "Élvis",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Élvis), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+        "canonicalName": "Élvis",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 176,
+    "sourceName": "Caio Vinícius",
+    "normalizedName": "caio vinicius",
+    "personId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+    "canonicalName": "Caio Vinícius",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Caio Vinícius), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+        "canonicalName": "Caio Vinícius",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 177,
+    "sourceName": "Dadá Belmonte",
+    "normalizedName": "dada belmonte",
+    "personId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+    "canonicalName": "Dadá Belmonte",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Dadá Belmonte), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+        "canonicalName": "Dadá Belmonte",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 178,
+    "sourceName": "Nicolas",
+    "normalizedName": "nicolas",
+    "personId": null,
+    "canonicalName": null,
+    "status": "AMBIGUOUS",
+    "resolutionReason": "Nenhuma pessoa canônica reivindica goias_players_dart:178 — o motor de reconciliação deixou este registro deliberadamente fora de qualquer member (não é ausência de dado, é ambiguidade real sem evidência pra decidir). Ver player_reconciliation_overrides.json e canonical_aliases.json.",
+    "sources": []
+  },
+  {
+    "sourceIndex": 179,
+    "sourceName": "Fellipe Bastos",
+    "normalizedName": "fellipe bastos",
+    "personId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+    "canonicalName": "Fellipe Bastos",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Fellipe Bastos), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+        "canonicalName": "Fellipe Bastos",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 180,
+    "sourceName": "Maguinho",
+    "normalizedName": "maguinho",
+    "personId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+    "canonicalName": "Maguinho",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Maguinho), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+        "canonicalName": "Maguinho",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 181,
+    "sourceName": "Lucas Halter",
+    "normalizedName": "lucas halter",
+    "personId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+    "canonicalName": "Lucas Halter",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Halter), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+        "canonicalName": "Lucas Halter",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 182,
+    "sourceName": "Bruno Melo",
+    "normalizedName": "bruno melo",
+    "personId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+    "canonicalName": "Bruno Melo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Bruno Melo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+        "canonicalName": "Bruno Melo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 183,
+    "sourceName": "Sander",
+    "normalizedName": "sander",
+    "personId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+    "canonicalName": "Sander",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Sander), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+        "canonicalName": "Sander",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 184,
+    "sourceName": "Zé Ricardo",
+    "normalizedName": "ze ricardo",
+    "personId": "d5256bb9-5c40-5354-87d0-38d304523039",
+    "canonicalName": "Zé Ricardo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Zé Ricardo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d5256bb9-5c40-5354-87d0-38d304523039",
+        "canonicalName": "Zé Ricardo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 185,
+    "sourceName": "Everton Morelli",
+    "normalizedName": "everton morelli",
+    "personId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+    "canonicalName": "Everton Morelli",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Everton Morelli), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+        "canonicalName": "Everton Morelli",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 186,
+    "sourceName": "Julián Palacios",
+    "normalizedName": "julian palacios",
+    "personId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+    "canonicalName": "Julián Palacios",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Julián Palacios), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+        "canonicalName": "Julián Palacios",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 187,
+    "sourceName": "Matheus Peixoto",
+    "normalizedName": "matheus peixoto",
+    "personId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+    "canonicalName": "Matheus Peixoto",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Matheus Peixoto), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+        "canonicalName": "Matheus Peixoto",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 188,
+    "sourceName": "Diego Gonçalves",
+    "normalizedName": "diego goncalves",
+    "personId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+    "canonicalName": "Diego Gonçalves",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Diego Gonçalves), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+        "canonicalName": "Diego Gonçalves",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 189,
+    "sourceName": "Bruno Santos",
+    "normalizedName": "bruno santos",
+    "personId": null,
+    "canonicalName": "Bruno Santos",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Bruno Santos, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "02058d04-bb34-5f84-8bed-4b30887b8681",
+        "canonicalName": "Bruno Santos",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 190,
+    "sourceName": "Alesson",
+    "normalizedName": "alesson",
+    "personId": null,
+    "canonicalName": "Alesson",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alesson, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0e7abf70-8008-514a-a140-fd3397af96a4",
+        "canonicalName": "Alesson",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 191,
+    "sourceName": "Eduardo Simioni",
+    "normalizedName": "eduardo simioni",
+    "personId": null,
+    "canonicalName": "Eduardo Simioni",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Eduardo Simioni, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0471ba9e-c618-58d5-82f8-b59fd8fcd423",
+        "canonicalName": "Eduardo Simioni",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 192,
+    "sourceName": "Thiago Rodrigues",
+    "normalizedName": "thiago rodrigues",
+    "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+    "canonicalName": "Thiago Rodrigues de Oliveira Nogueira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Thiago Rodrigues de Oliveira Nogueira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+        "canonicalName": "Thiago Rodrigues de Oliveira Nogueira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 193,
+    "sourceName": "Lucas Ribeiro",
+    "normalizedName": "lucas ribeiro",
+    "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+    "canonicalName": "Lucas Ribeiro dos Santos",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Ribeiro dos Santos), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+        "canonicalName": "Lucas Ribeiro dos Santos",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 194,
+    "sourceName": "Messias",
+    "normalizedName": "messias",
+    "personId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+    "canonicalName": "Messias",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Messias), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+        "canonicalName": "Messias",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 195,
+    "sourceName": "Martín Rea",
+    "normalizedName": "martin rea",
+    "personId": null,
+    "canonicalName": "Martín Rea",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Martín Rea, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e941b827-a6a1-5d5a-b6f1-e2be9ff783b0",
+        "canonicalName": "Martín Rea",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 196,
+    "sourceName": "Yan Souto",
+    "normalizedName": "yan souto",
+    "personId": null,
+    "canonicalName": "Yan Souto",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Yan Souto, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "94672678-52e7-5514-b36f-9b1022925b8d",
+        "canonicalName": "Yan Souto",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 197,
+    "sourceName": "Sidimar",
+    "normalizedName": "sidimar",
+    "personId": null,
+    "canonicalName": "Sidimar",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Sidimar, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "c3897b52-9967-5773-99be-829522c0464d",
+        "canonicalName": "Sidimar",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 198,
+    "sourceName": "David Braz",
+    "normalizedName": "david braz",
+    "personId": null,
+    "canonicalName": "David Braz",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (David Braz, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9da576c0-30ee-5125-9bef-d815e64e8576",
+        "canonicalName": "David Braz",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 199,
+    "sourceName": "Matheus Babi",
+    "normalizedName": "matheus babi",
+    "personId": null,
+    "canonicalName": "Matheus Babi",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Matheus Babi, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "041a8ba0-2585-5637-bf0f-87b7be45e7d4",
+        "canonicalName": "Matheus Babi",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 200,
+    "sourceName": "Higor Meritão",
+    "normalizedName": "higor meritao",
+    "personId": null,
+    "canonicalName": "Higor Meritão",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Higor Meritão, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "21020eaa-bc1e-5ea4-a002-c09f66af9c0a",
+        "canonicalName": "Higor Meritão",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 201,
+    "sourceName": "Régis",
+    "normalizedName": "regis",
+    "personId": null,
+    "canonicalName": "Régis",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Régis, identity=SINGLE_SOURCE), mas insert_status=BLOCKED_INSUFFICIENT_IDENTITY — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "22b9a8f1-141a-52d1-9f41-bb050c4c5f46",
+        "canonicalName": "Régis",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "BLOCKED_INSUFFICIENT_IDENTITY"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 202,
+    "sourceName": "Paulo Baya",
+    "normalizedName": "paulo baya",
+    "personId": null,
+    "canonicalName": "Paulo Baya",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Paulo Baya, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e505512a-db45-5b99-9fff-01bc947ff451",
+        "canonicalName": "Paulo Baya",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 203,
+    "sourceName": "Thiago Galhardo",
+    "normalizedName": "thiago galhardo",
+    "personId": null,
+    "canonicalName": "Thiago Galhardo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Thiago Galhardo, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5fd68b4b-1a9d-5df5-acdc-24ca53e3cc53",
+        "canonicalName": "Thiago Galhardo",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 204,
+    "sourceName": "Rafael Gava",
+    "normalizedName": "rafael gava",
+    "personId": null,
+    "canonicalName": "Rafael Gava",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rafael Gava, identity=SINGLE_SOURCE), mas insert_status=PROVISIONAL — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "c7a880b1-367f-50dd-9d43-66ad604320cd",
+        "canonicalName": "Rafael Gava",
+        "identity": "SINGLE_SOURCE",
+        "insertStatus": "PROVISIONAL"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 205,
+    "sourceName": "Wellington Rato",
+    "normalizedName": "wellington rato",
+    "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "canonicalName": "Wellington Soares da Silva",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Wellington Soares da Silva), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+        "canonicalName": "Wellington Soares da Silva",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 206,
+    "sourceName": "Jajá",
+    "normalizedName": "jaja",
+    "personId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+    "canonicalName": "Jajá",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Jajá), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+        "canonicalName": "Jajá",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 207,
+    "sourceName": "Anselmo Ramon",
+    "normalizedName": "anselmo ramon",
+    "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+    "canonicalName": "Anselmo Ramon Alves Herculano",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Anselmo Ramon Alves Herculano), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+        "canonicalName": "Anselmo Ramon Alves Herculano",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 208,
+    "sourceName": "Pedrinho",
+    "normalizedName": "pedrinho",
+    "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+    "canonicalName": "Pedro Junqueira de Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Pedro Junqueira de Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+        "canonicalName": "Pedro Junqueira de Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 209,
+    "sourceName": "Diego Caito",
+    "normalizedName": "diego caito",
+    "personId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+    "canonicalName": "Diego Caito",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Diego Caito), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+        "canonicalName": "Diego Caito",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 210,
+    "sourceName": "Luisão",
+    "normalizedName": "luisao",
+    "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+    "canonicalName": "Luis Fellipe Campos Doria",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Luis Fellipe Campos Doria), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+        "canonicalName": "Luis Fellipe Campos Doria",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 211,
+    "sourceName": "Filipe Machado",
+    "normalizedName": "filipe machado",
+    "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+    "canonicalName": "Luiz Filipe da Rosa Machado",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Luiz Filipe da Rosa Machado), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+        "canonicalName": "Luiz Filipe da Rosa Machado",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 212,
+    "sourceName": "Gegê",
+    "normalizedName": "gege",
+    "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+    "canonicalName": "Geirton Marques Aires",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Geirton Marques Aires), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+        "canonicalName": "Geirton Marques Aires",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 213,
+    "sourceName": "Lourenço",
+    "normalizedName": "lourenco",
+    "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+    "canonicalName": "João Paulo Ferreira Lourenço",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (João Paulo Ferreira Lourenço), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+        "canonicalName": "João Paulo Ferreira Lourenço",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "sourceIndex": 214,
+    "sourceName": "Jean Carlos",
+    "normalizedName": "jean carlos",
+    "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+    "canonicalName": "Jean Carlos Alves Ferreira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Jean Carlos Alves Ferreira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+        "canonicalName": "Jean Carlos Alves Ferreira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  }
+]
