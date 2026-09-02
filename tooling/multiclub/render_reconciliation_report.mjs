@@ -294,11 +294,10 @@ parts.push('');
 parts.push('## Confirmações finais');
 parts.push('');
 parts.push('- Nenhuma alteração em código Flutter.');
-parts.push('- Nenhuma alteração em tabela existente do Supabase.');
-parts.push('- Nenhum INSERT em `people` (ou qualquer outra tabela) gerado.');
-parts.push('- Nenhuma execução realizada contra o Supabase (a migration `20260901000000_create_people.sql` continua não aplicada).');
+parts.push('- Nenhuma alteração em tabela EXISTENTE do Supabase (só a criação/seed aditivos abaixo).');
+parts.push('- **`20260901000000_create_people.sql` e `20260901010000_seed_goias_people.sql` foram aplicadas manualmente pelo usuário (confirmado 2026-09-01)** — `public.people` existe e tem os 94 `APPROVED` desta rodada. `player_club_spells`/`player_positions`/`player_club_stats`/`person_aliases` continuam NÃO criadas (design em `16_live_data_architecture.md`, nada implementado ainda).');
 parts.push('- `docs/multiclub/16_live_data_architecture.md` atualizado com club_id UUID, baseline+delta, idempotência, reserva usado/não-usado, identidade canônica de partida, precisão temporal e posições múltiplas — ainda design, nada implementado.');
-parts.push('- Nenhum commit feito.');
+parts.push('- Reconciliação e preparação do seed commitadas em 2 commits locais (`b061f2e`, `c84a3ab`), sem push.');
 parts.push('');
 
 parts.push('## Reprodutibilidade');

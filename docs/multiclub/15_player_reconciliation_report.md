@@ -271,11 +271,10 @@ Fonte destes números: `canonical_stats.json.invariants`, recalculado do zero a 
 ## Confirmações finais
 
 - Nenhuma alteração em código Flutter.
-- Nenhuma alteração em tabela existente do Supabase.
-- Nenhum INSERT em `people` (ou qualquer outra tabela) gerado.
-- Nenhuma execução realizada contra o Supabase (a migration `20260901000000_create_people.sql` continua não aplicada).
+- Nenhuma alteração em tabela EXISTENTE do Supabase (só a criação/seed aditivos abaixo).
+- **`20260901000000_create_people.sql` e `20260901010000_seed_goias_people.sql` foram aplicadas manualmente pelo usuário (confirmado 2026-09-01)** — `public.people` existe e tem os 94 `APPROVED` desta rodada. `player_club_spells`/`player_positions`/`player_club_stats`/`person_aliases` continuam NÃO criadas (design em `16_live_data_architecture.md`, nada implementado ainda).
 - `docs/multiclub/16_live_data_architecture.md` atualizado com club_id UUID, baseline+delta, idempotência, reserva usado/não-usado, identidade canônica de partida, precisão temporal e posições múltiplas — ainda design, nada implementado.
-- Nenhum commit feito.
+- Reconciliação e preparação do seed commitadas em 2 commits locais (`b061f2e`, `c84a3ab`), sem push.
 
 ## Reprodutibilidade
 
