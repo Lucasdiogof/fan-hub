@@ -1,0 +1,293 @@
+{
+  "rows": [
+    {
+      "id": "tadeu",
+      "goiasSquadName": "Tadeu",
+      "squadMembersName": "Tadeu",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 23,
+      "squadMembersShirt": 23,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "ezequiel",
+      "goiasSquadName": "Ezequiel",
+      "squadMembersName": "Ezequiel",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 12,
+      "squadMembersShirt": 12,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "murillo_victorio",
+      "goiasSquadName": "Murillo Victorio",
+      "squadMembersName": "Murillo Victorio",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 32,
+      "squadMembersShirt": 32,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "thiago_rodrigues",
+      "goiasSquadName": "Thiago Rodrigues",
+      "squadMembersName": "Thiago Rodrigues",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 1,
+      "squadMembersShirt": 1,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "luisao",
+      "goiasSquadName": "Luisão",
+      "squadMembersName": "Luisão",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 25,
+      "squadMembersShirt": 25,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "lucas_ribeiro",
+      "goiasSquadName": "Lucas Ribeiro",
+      "squadMembersName": "Lucas Ribeiro",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 14,
+      "squadMembersShirt": 14,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "luiz_felipe",
+      "goiasSquadName": "Luiz Felipe",
+      "squadMembersName": "Luiz Felipe",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 3,
+      "squadMembersShirt": 3,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "ramon_menezes",
+      "goiasSquadName": "Ramon Menezes",
+      "squadMembersName": "Ramon Menezes",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 4,
+      "squadMembersShirt": 4,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "murilo_camara",
+      "goiasSquadName": "Murilo Câmara",
+      "squadMembersName": "Murilo Câmara",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 29,
+      "squadMembersShirt": 29,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "rodrigo_soares",
+      "goiasSquadName": "Rodrigo Soares",
+      "squadMembersName": "Rodrigo Soares",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 2,
+      "squadMembersShirt": 2,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "marcos_vinicius",
+      "goiasSquadName": "Marcos Vinicius",
+      "squadMembersName": "Marcos Vinicius",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 63,
+      "squadMembersShirt": 63,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "nicolas",
+      "goiasSquadName": "Nicolas",
+      "squadMembersName": "Nicolas",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 6,
+      "squadMembersShirt": 6,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "danilo",
+      "goiasSquadName": "Danilo",
+      "squadMembersName": "Danilo",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 66,
+      "squadMembersShirt": 66,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "djalma",
+      "goiasSquadName": "Djalma",
+      "squadMembersName": "Djalma",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 54,
+      "squadMembersShirt": 54,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "lourenco",
+      "goiasSquadName": "Lourenço",
+      "squadMembersName": "Lourenço",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 97,
+      "squadMembersShirt": 97,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "filipe_machado",
+      "goiasSquadName": "Filipe Machado",
+      "squadMembersName": "Filipe Machado",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 5,
+      "squadMembersShirt": 5,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "baldoria",
+      "goiasSquadName": "Baldória",
+      "squadMembersName": "Baldória",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 55,
+      "squadMembersShirt": 55,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "juninho",
+      "goiasSquadName": "Juninho",
+      "squadMembersName": "Juninho",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 8,
+      "squadMembersShirt": 8,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "lucas_rodrigues",
+      "goiasSquadName": "Lucas Rodrigues",
+      "squadMembersName": "Lucas Rodrigues",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 35,
+      "squadMembersShirt": 35,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "gege",
+      "goiasSquadName": "Gegê",
+      "squadMembersName": "Gegê",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 28,
+      "squadMembersShirt": 28,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "lucas_lima",
+      "goiasSquadName": "Lucas Lima",
+      "squadMembersName": "Lucas Lima",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 10,
+      "squadMembersShirt": 10,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "brayann",
+      "goiasSquadName": "Brayann",
+      "squadMembersName": "Brayann",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 88,
+      "squadMembersShirt": 88,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "wellington_rato",
+      "goiasSquadName": "Wellington Rato",
+      "squadMembersName": "Wellington Rato",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 27,
+      "squadMembersShirt": 27,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "pedrinho",
+      "goiasSquadName": "Pedrinho",
+      "squadMembersName": "Pedrinho",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 17,
+      "squadMembersShirt": 17,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "anselmo_ramon",
+      "goiasSquadName": "Anselmo Ramon",
+      "squadMembersName": "Anselmo Ramon",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 9,
+      "squadMembersShirt": 9,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "cadu",
+      "goiasSquadName": "Cadu",
+      "squadMembersName": "Cadu",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 18,
+      "squadMembersShirt": 18,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "felipe_clemente",
+      "goiasSquadName": "Felipe Clemente",
+      "squadMembersName": "Felipe Clemente",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 11,
+      "squadMembersShirt": 11,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "jean_carlos",
+      "goiasSquadName": "Jean Carlos",
+      "squadMembersName": "Jean Carlos",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 21,
+      "squadMembersShirt": 21,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "halerrandrio",
+      "goiasSquadName": "Halerrandrio",
+      "squadMembersName": "Halerrandrio",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 77,
+      "squadMembersShirt": 77,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "esli_garcia",
+      "goiasSquadName": "Esli Garcia",
+      "squadMembersName": "Esli Garcia",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 15,
+      "squadMembersShirt": 15,
+      "shirtClassification": "SHIRT_MATCH"
+    },
+    {
+      "id": "kadu_sousa",
+      "goiasSquadName": "Kadu Sousa",
+      "squadMembersName": "Kadu Sousa",
+      "nameClassification": "NAME_MATCH",
+      "goiasSquadShirt": 40,
+      "squadMembersShirt": 40,
+      "shirtClassification": "SHIRT_MATCH"
+    }
+  ],
+  "stats": {
+    "total": 31,
+    "NAME_MATCH": 31,
+    "NAME_FORMAT_ONLY": 0,
+    "NAME_DIVERGENCE": 0,
+    "SHIRT_MATCH": 31,
+    "SHIRT_DIVERGENCE": 0,
+    "nameDivergences": [],
+    "shirtDivergences": []
+  }
+}

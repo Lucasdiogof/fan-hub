@@ -5,6 +5,7 @@ import 'package:goias_app/shared/domain/player_position.dart';
 
 SquadPlayer _player(List<PlayerPosition> positions) => SquadPlayer(
   id: 'p',
+  personId: 'p-person-id',
   name: 'Player',
   shirtNumber: 10,
   allowedPositions: positions,

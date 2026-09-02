@@ -3,13 +3,24 @@ import 'package:goias_app/shared/domain/player_position.dart';
 class SquadPlayer {
   const SquadPlayer({
     required this.id,
+    required this.personId,
     required this.name,
     required this.shirtNumber,
     required this.allowedPositions,
     this.imageUrl,
   });
 
+  /// Chave estável da feature (slug) — é o que fica salvo em
+  /// `match_lineup_votes.slots` e circula por toda a gameplay/persistência
+  /// já em produção (`playerIdBySlot`, `pickedIds`, `squadById`). Nunca
+  /// substituir por [personId] em nenhum desses usos.
   final String id;
+
+  /// Identidade canônica real da pessoa (`people.id`), a mesma resolvida
+  /// pra `squad_members.person_id` na Etapa F4. Existe só pra permitir
+  /// cruzar este roster hardcoded com o resto da fundação multiclube —
+  /// nunca usado pra persistência/gameplay desta feature.
+  final String personId;
   final String name;
   final int? shirtNumber;
 

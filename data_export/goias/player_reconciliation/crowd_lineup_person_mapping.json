@@ -1,0 +1,250 @@
+[
+  {
+    "squadPlayerId": "tadeu",
+    "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+    "canonicalName": "Tadeu Antônio Ferreira",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "ezequiel",
+    "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+    "canonicalName": "Ezequiel Alves de Oliveira Vieira",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "murillo_victorio",
+    "personId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+    "canonicalName": "Murillo Carvalho Victorio",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "thiago_rodrigues",
+    "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+    "canonicalName": "Thiago Rodrigues de Oliveira Nogueira",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "luisao",
+    "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+    "canonicalName": "Luis Fellipe Campos Doria",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "lucas_ribeiro",
+    "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+    "canonicalName": "Lucas Ribeiro dos Santos",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "luiz_felipe",
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "canonicalName": "Luiz Felipe do Nascimento dos Santos",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "ramon_menezes",
+    "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+    "canonicalName": "Ramon Menezes Roma",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "murilo_camara",
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "canonicalName": "Murilo Camara Saquetti Chimelo Pereira",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "rodrigo_soares",
+    "personId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+    "canonicalName": "Rodrigo Alves Soares",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "marcos_vinicius",
+    "personId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+    "canonicalName": "Marcos Vinicius da Silva Santos",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "nicolas",
+    "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+    "canonicalName": "Nicolas Vichiatto da Silva",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "danilo",
+    "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+    "canonicalName": "Danilo Cunha da Silva",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "djalma",
+    "personId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+    "canonicalName": "Djalma Antônio da Silva Filho",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "lourenco",
+    "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+    "canonicalName": "João Paulo Ferreira Lourenço",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "filipe_machado",
+    "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+    "canonicalName": "Luiz Filipe da Rosa Machado",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "baldoria",
+    "personId": "747cb968-a339-586c-94cf-583a3e0c3296",
+    "canonicalName": "Guilherme Baldória de Camargo",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "juninho",
+    "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+    "canonicalName": "Adilson dos Anjos Oliveira",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "lucas_rodrigues",
+    "personId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+    "canonicalName": "Lucas Rodrigues Moreira Costa",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "gege",
+    "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+    "canonicalName": "Geirton Marques Aires",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "lucas_lima",
+    "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+    "canonicalName": "Lucas Rafael Araújo Lima",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "brayann",
+    "personId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+    "canonicalName": "Brayann Brito Batista",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "wellington_rato",
+    "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "canonicalName": "Wellington Soares da Silva",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "pedrinho",
+    "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+    "canonicalName": "Pedro Junqueira de Oliveira",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "anselmo_ramon",
+    "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+    "canonicalName": "Anselmo Ramon Alves Herculano",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "cadu",
+    "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+    "canonicalName": "Carlos Eduardo Amaral Pereira de Castro",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "felipe_clemente",
+    "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+    "canonicalName": "Luiz Felipe Clemente de Almeida",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "jean_carlos",
+    "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+    "canonicalName": "Jean Carlos Alves Ferreira",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "halerrandrio",
+    "personId": "140ba628-c222-53a5-8621-a774092a125b",
+    "canonicalName": "Halerrandrio dos Santos Feitosa",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "esli_garcia",
+    "personId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+    "canonicalName": "Esli Samuel García Cordero",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  },
+  {
+    "squadPlayerId": "kadu_sousa",
+    "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+    "canonicalName": "Carlos Eduardo de Sousa Leopoldino",
+    "source": "squad_members_person_mapping",
+    "status": "RESOLVED",
+    "notes": null
+  }
+]
