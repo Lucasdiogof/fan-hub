@@ -1,0 +1,219 @@
+{
+  "totalTables": 32,
+  "verified": 32,
+  "stale": 0,
+  "staleList": [],
+  "byGroup": {
+    "CONTENT": 6,
+    "PROGRESS": 18,
+    "MEMBERSHIP": 1,
+    "NOTIFICATIONS": 5,
+    "USER_GLOBAL": 2
+  },
+  "byTenantStrategy": {
+    "COMPOSITE_PK_OR_SURROGATE": 5,
+    "NEEDS_PRODUCT_DECISION": 1,
+    "COMPOSITE_PK": 11,
+    "TENANT_COLUMN_ONLY": 4,
+    "INHERITS_FROM_PASSPORT_MATCHES": 2,
+    "NEEDS_CLUB_SCOPE": 4,
+    "INHERITS_FROM_STORE_ORDERS": 1,
+    "KEEP_GLOBAL": 3,
+    "INHERITS_FROM_EVENT": 1
+  },
+  "rowScopeProblemTables": [
+    "career_players",
+    "guess_players",
+    "squad_members",
+    "lineup_matches",
+    "quiz_questions",
+    "passport_matches",
+    "user_game_item_progress",
+    "score_events",
+    "quiz_question_progress",
+    "quiz_active_session",
+    "lineup_match_progress",
+    "career_path_progress",
+    "arena_selected_content",
+    "arena_achievements",
+    "player_identity_results",
+    "tactical_identity_results",
+    "passport_attendances",
+    "passport_memorable_matches",
+    "match_lineup_votes",
+    "ticket_checkin_decisions",
+    "ticket_orders",
+    "tickets",
+    "store_orders",
+    "supporter_memberships",
+    "user_notification_preferences",
+    "match_monitor_sessions",
+    "notification_events"
+  ],
+  "keyScopeProblemTables": [
+    "career_players",
+    "guess_players",
+    "squad_members",
+    "lineup_matches",
+    "quiz_questions",
+    "passport_matches",
+    "user_game_item_progress",
+    "quiz_question_progress",
+    "lineup_match_progress",
+    "career_path_progress",
+    "arena_selected_content",
+    "arena_achievements",
+    "match_lineup_votes",
+    "ticket_checkin_decisions",
+    "tickets",
+    "user_notification_preferences",
+    "match_monitor_sessions",
+    "notification_events"
+  ],
+  "criticalTables": [
+    "supporter_memberships"
+  ],
+  "needsProductDecisionTables": [
+    "passport_matches"
+  ],
+  "uniqueDecisions": [
+    {
+      "table": "career_players",
+      "columns": [
+        "person_id"
+      ],
+      "class": "NEEDS_CLUB_SCOPE",
+      "global": false,
+      "partial": null,
+      "future": "unique(club_id, person_id) where person_id is not null"
+    },
+    {
+      "table": "guess_players",
+      "columns": [
+        "person_id"
+      ],
+      "class": "NEEDS_CLUB_SCOPE",
+      "global": false,
+      "partial": null,
+      "future": "unique(club_id, person_id) where person_id is not null"
+    },
+    {
+      "table": "squad_members",
+      "columns": [
+        "person_id"
+      ],
+      "class": "NEEDS_CLUB_SCOPE",
+      "global": false,
+      "partial": null,
+      "future": "unique(club_id, person_id) where person_id is not null"
+    },
+    {
+      "table": "passport_attendances",
+      "columns": [
+        "user_id",
+        "match_id"
+      ],
+      "class": "NEEDS_CLUB_SCOPE_VIA_MATCH",
+      "global": false,
+      "partial": null,
+      "future": null
+    },
+    {
+      "table": "match_lineup_votes",
+      "columns": [
+        "match_id",
+        "user_id"
+      ],
+      "class": "NEEDS_CLUB_SCOPE",
+      "global": false,
+      "partial": null,
+      "future": null
+    },
+    {
+      "table": "tickets",
+      "columns": [
+        "user_id",
+        "match_id"
+      ],
+      "class": "NEEDS_CLUB_SCOPE",
+      "global": false,
+      "partial": "where origin='membership_check_in'",
+      "future": null
+    },
+    {
+      "table": "store_orders",
+      "columns": [
+        "order_number"
+      ],
+      "class": "KEEP_GLOBAL",
+      "global": true,
+      "partial": null,
+      "future": null
+    },
+    {
+      "table": "user_notification_tokens",
+      "columns": [
+        "fcm_token"
+      ],
+      "class": "KEEP_GLOBAL",
+      "global": true,
+      "partial": null,
+      "future": null
+    },
+    {
+      "table": "notification_events",
+      "columns": [
+        "event_type",
+        "dedupe_key"
+      ],
+      "class": "NEEDS_REDESIGN_OR_NAMESPACE",
+      "global": true,
+      "partial": null,
+      "future": null
+    },
+    {
+      "table": "notification_deliveries",
+      "columns": [
+        "event_id",
+        "token_id"
+      ],
+      "class": "KEEP_GLOBAL",
+      "global": true,
+      "partial": null,
+      "future": null
+    }
+  ],
+  "uniqueByClass": {
+    "NEEDS_CLUB_SCOPE": 5,
+    "NEEDS_CLUB_SCOPE_VIA_MATCH": 1,
+    "KEEP_GLOBAL": 3,
+    "NEEDS_REDESIGN_OR_NAMESPACE": 1
+  },
+  "contentTables": [
+    "career_players",
+    "guess_players",
+    "squad_members",
+    "lineup_matches",
+    "quiz_questions",
+    "passport_matches"
+  ],
+  "personIdContentTables": [
+    "career_players",
+    "guess_players",
+    "squad_members"
+  ],
+  "clubIdType": {
+    "type": "uuid",
+    "references": "clubs(id)",
+    "neverUse": "text references clubs(slug)"
+  },
+  "rpcsNeedingClubId": [
+    "arena_record_score (p_club_id + validação exists com club_id + upsert/insert com club_id)",
+    "arena_ranking / arena_my_rank / arena_user_detail (where/group by club_id)",
+    "get_my_membership (p_club_id, ou order by dentro do clube)",
+    "crowd_lineup (p_club_id no filtro por match_id)",
+    "passport_ranking / passport_my_rank / passport_save_attendances (club_id)"
+  ],
+  "legacyIdPolicy": "NUNCA renomear id existente, NUNCA namespacing \"goias:tadeu\". Só PK composta unique(club_id, id) OU surrogate row_id uuid + unique(club_id, id).",
+  "classificationSum": 32
+}
