@@ -526,4 +526,4 @@ Confirmado — nenhuma PK/UNIQUE tocada, nenhum clube real cadastrado, `clubRegi
 
 ---
 
-**M3.2 APPLIED. 5 migrations aplicadas ao banco remoto (46/46 local=remote). 8 RPCs tenant-aware ativas, ACL hardened authenticated-only. Legacy intacta. `DEPLOY_ORDER=DB_FIRST` satisfeito. Commit autorizado (ver instrução do usuário) — ainda não executado nesta etapa do relatório; ver confirmação abaixo. 0 `git push`.**
+**M3.2 APPLIED. 5 migrations aplicadas ao banco remoto (46/46 local=remote). 8 RPCs tenant-aware ativas, ACL hardened authenticated-only. Legacy intacta. `DEPLOY_ORDER=DB_FIRST` satisfeito. Commit `96a813bb9a96ce89080d36f2d131044cfdaa624d` ("feat(multiclub): scope user state runtime by club", 29 arquivos) — as exclusões padrão (`store_entry_card.dart`, `multiclub_hardcode_audit_stats.json`, `_competitions_pkg/`, `migration_dump.txt`, `docs/multiclub/19_etapa_e_v4_applied_report.md`, `supabase/.temp/`) confirmadas fora, via `git status` antes e depois. 0 `git push`.**
