@@ -234,7 +234,7 @@ Nenhuma pessoa/alias/override/appearance foi criada pra melhorar os números —
 ## 34. Commit
 
 ```
-1b7f3d4a2c9e6081f5d3a7b8c4e2109fa6d5c3b1
+c7c6d431181581fe0a5cfa788e8c57055630f2d3
 docs(multiclub): map historical lineups to canonical data
 ```
 
