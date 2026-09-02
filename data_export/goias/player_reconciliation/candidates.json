@@ -1,10 +1,10 @@
 [
   {
     "provisionalId": "959ab6f5-9516-9be1-503a-eeec51e19798",
-    "proposedCanonicalName": "Danilo Gabriel de Andrade",
+    "proposedCanonicalName": "Danilo Cunha da Silva",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
       "Danilo",
-      "Danilo Cunha da Silva",
       "Danilo Gabriel de Andrade"
     ],
     "sources": [
@@ -127,9 +127,9 @@
   {
     "provisionalId": "458aa180-f4d7-98bd-14b4-fa3215627dc2",
     "proposedCanonicalName": "Nicolas Vichiatto da Silva",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Nicolas",
-      "Nicolas Vichiatto da Silva"
+      "Nicolas"
     ],
     "sources": [
       {
@@ -238,9 +238,9 @@
   },
   {
     "provisionalId": "0d51efd9-d5c4-1df7-c74e-a002335c2590",
-    "proposedCanonicalName": "Michael Richard Delgado de Oliveira",
+    "proposedCanonicalName": "Michael",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Michael",
       "Michael Richard Delgado de Oliveira"
     ],
     "sources": [
@@ -340,9 +340,8 @@
   {
     "provisionalId": "e1497e3a-235b-1400-1ba4-89a70c45f7eb",
     "proposedCanonicalName": "Aldo",
-    "aliases": [
-      "Aldo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -410,9 +409,8 @@
   {
     "provisionalId": "2c74e776-5361-d930-4582-ee032f825c3d",
     "proposedCanonicalName": "Alexandre",
-    "aliases": [
-      "Alexandre"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -480,9 +478,8 @@
   {
     "provisionalId": "2f4fd62d-0a92-5fbe-ab5f-6a93f4227bf7",
     "proposedCanonicalName": "Álvaro",
-    "aliases": [
-      "Álvaro"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -550,9 +547,8 @@
   {
     "provisionalId": "b1e26f94-bdf8-5c40-24a0-e40a8c1caa0c",
     "proposedCanonicalName": "Augusto",
-    "aliases": [
-      "Augusto"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -628,9 +624,8 @@
   {
     "provisionalId": "2bba662a-e0a1-bf9c-025a-a4c22fe56f5a",
     "proposedCanonicalName": "Breno",
-    "aliases": [
-      "Breno"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -688,9 +683,8 @@
   {
     "provisionalId": "8107bc81-fce3-3923-e53d-1f9a0aa7cabd",
     "proposedCanonicalName": "Cacá",
-    "aliases": [
-      "Cacá"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -758,9 +752,8 @@
   {
     "provisionalId": "28277235-2b46-1792-3237-264094fa3f93",
     "proposedCanonicalName": "Caíco",
-    "aliases": [
-      "Caíco"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -828,9 +821,8 @@
   {
     "provisionalId": "33244b67-fff6-2422-15d0-29c4fdd56ec8",
     "proposedCanonicalName": "Dalton",
-    "aliases": [
-      "Dalton"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -898,9 +890,8 @@
   {
     "provisionalId": "b292b1dc-73bb-8fb9-de1b-f361cfc41973",
     "proposedCanonicalName": "Dimba",
-    "aliases": [
-      "Dimba"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -994,9 +985,8 @@
   {
     "provisionalId": "1ec5e656-1bca-9f7b-3df5-896680f4758f",
     "proposedCanonicalName": "Esquerdinha",
-    "aliases": [
-      "Esquerdinha"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1064,9 +1054,8 @@
   {
     "provisionalId": "bf61697b-1247-6774-8677-a107d9dbf899",
     "proposedCanonicalName": "Evandro",
-    "aliases": [
-      "Evandro"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1142,9 +1131,8 @@
   {
     "provisionalId": "f3d0a2c7-8b43-70ee-9225-5baf5819b352",
     "proposedCanonicalName": "Fabão",
-    "aliases": [
-      "Fabão"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1220,9 +1208,8 @@
   {
     "provisionalId": "772d8276-b633-d3d4-0fdb-dad6c379274b",
     "proposedCanonicalName": "Fagundes",
-    "aliases": [
-      "Fagundes"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1290,9 +1277,8 @@
   {
     "provisionalId": "d7c62786-e82e-22cc-1ba6-93a63b18b1c8",
     "proposedCanonicalName": "Giovanni",
-    "aliases": [
-      "Giovanni"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1350,9 +1336,8 @@
   {
     "provisionalId": "57719645-4f55-f0d1-c18f-b038465d27d2",
     "proposedCanonicalName": "Gustavo",
-    "aliases": [
-      "Gustavo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1420,9 +1405,8 @@
   {
     "provisionalId": "30a21af4-fbec-fbe9-56d4-900a04ecd1cc",
     "proposedCanonicalName": "Hugo",
-    "aliases": [
-      "Hugo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1506,9 +1490,8 @@
   {
     "provisionalId": "44b30188-8559-5792-494b-e47dbea391c6",
     "proposedCanonicalName": "Índio",
-    "aliases": [
-      "Índio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1584,9 +1567,8 @@
   {
     "provisionalId": "2184122f-5edf-2a3e-6b95-903f63d14461",
     "proposedCanonicalName": "Jaques",
-    "aliases": [
-      "Jaques"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1654,9 +1636,8 @@
   {
     "provisionalId": "e023dcd1-45c9-5e89-4d5d-3d987ca35e58",
     "proposedCanonicalName": "Juliano",
-    "aliases": [
-      "Juliano"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1724,9 +1705,8 @@
   {
     "provisionalId": "008a8736-1f46-1687-b0b5-e6357682d0b8",
     "proposedCanonicalName": "Kléber",
-    "aliases": [
-      "Kléber"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1802,9 +1782,8 @@
   {
     "provisionalId": "4ed704de-fecb-f66b-e92d-bb86bef5cb75",
     "proposedCanonicalName": "Leonardo",
-    "aliases": [
-      "Leonardo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1870,9 +1849,8 @@
   {
     "provisionalId": "34cd4338-bd97-7954-2bf1-1c16ac8b6323",
     "proposedCanonicalName": "Lúcio",
-    "aliases": [
-      "Lúcio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -1948,9 +1926,8 @@
   {
     "provisionalId": "2db92d23-6135-8849-a3ab-4808a9e5856a",
     "proposedCanonicalName": "Luvanor",
-    "aliases": [
-      "Luvanor"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2036,9 +2013,8 @@
   {
     "provisionalId": "93219638-d7ec-bfc0-d476-f650ac0bfc7e",
     "proposedCanonicalName": "Madison",
-    "aliases": [
-      "Madison"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2096,9 +2072,8 @@
   {
     "provisionalId": "532f50a1-2683-7284-3ec7-7477175bee5a",
     "proposedCanonicalName": "Marabá",
-    "aliases": [
-      "Marabá"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2182,9 +2157,8 @@
   {
     "provisionalId": "25e619ba-d31d-618b-fc82-02e11bd1df7d",
     "proposedCanonicalName": "Maranhão",
-    "aliases": [
-      "Maranhão"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2242,9 +2216,8 @@
   {
     "provisionalId": "350d105a-fd7d-aecc-c4c1-3ce750626932",
     "proposedCanonicalName": "Marcão",
-    "aliases": [
-      "Marcão"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2328,9 +2301,8 @@
   {
     "provisionalId": "4d5e6670-460d-1e0f-1fcb-6d4ec02acad8",
     "proposedCanonicalName": "Neném",
-    "aliases": [
-      "Neném"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2398,9 +2370,8 @@
   {
     "provisionalId": "0af6945c-cf1c-e7e3-70cd-41224f5a858c",
     "proposedCanonicalName": "Niltinho",
-    "aliases": [
-      "Niltinho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2468,9 +2439,8 @@
   {
     "provisionalId": "b42b3739-1cda-565d-91d9-0f55c6b0828d",
     "proposedCanonicalName": "Nonato",
-    "aliases": [
-      "Nonato"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2536,9 +2506,8 @@
   {
     "provisionalId": "8848086a-27fb-05d1-251b-3fe2ae5f97f8",
     "proposedCanonicalName": "Reidner",
-    "aliases": [
-      "Reidner"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2614,9 +2583,8 @@
   {
     "provisionalId": "a3a7666d-3c97-ff2e-d98c-b8f04163bdcf",
     "proposedCanonicalName": "Reynaldo",
-    "aliases": [
-      "Reynaldo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2692,9 +2660,8 @@
   {
     "provisionalId": "5e12179b-41ac-c94d-babe-e28b9db569e3",
     "proposedCanonicalName": "Richard",
-    "aliases": [
-      "Richard"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2778,9 +2745,8 @@
   {
     "provisionalId": "2289d760-4ad1-7a19-2e9e-bc3101e81a5c",
     "proposedCanonicalName": "Romerito",
-    "aliases": [
-      "Romerito"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2864,9 +2830,8 @@
   {
     "provisionalId": "3a092f59-a559-8d9f-6e3e-f33dc32f4342",
     "proposedCanonicalName": "Romeu",
-    "aliases": [
-      "Romeu"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2924,9 +2889,8 @@
   {
     "provisionalId": "a3a76da7-0b7c-018e-03d9-72dc9e39c77b",
     "proposedCanonicalName": "Simão",
-    "aliases": [
-      "Simão"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -2992,9 +2956,8 @@
   {
     "provisionalId": "2b345538-e3ab-4d70-362a-cc63d4bd7a4b",
     "proposedCanonicalName": "Vampeta",
-    "aliases": [
-      "Vampeta"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -3052,9 +3015,8 @@
   {
     "provisionalId": "14868769-90ea-2655-5dc8-b7c9c758f8dd",
     "proposedCanonicalName": "Wallace",
-    "aliases": [
-      "Wallace"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -3122,9 +3084,8 @@
   {
     "provisionalId": "ca7bea24-bad0-1738-7de9-76351cf532cf",
     "proposedCanonicalName": "Wando",
-    "aliases": [
-      "Wando"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -3192,9 +3153,8 @@
   {
     "provisionalId": "bc0f2b34-82fe-0df0-33f8-97de6f74f70d",
     "proposedCanonicalName": "Dieguinho",
-    "aliases": [
-      "Dieguinho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -3282,9 +3242,8 @@
   {
     "provisionalId": "3c9e864e-ea20-40c3-05d0-2f1c0093e8df",
     "proposedCanonicalName": "Fabiano",
-    "aliases": [
-      "Fabiano"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -3361,9 +3320,9 @@
   },
   {
     "provisionalId": "ae2e6d72-7ff3-1711-c786-681742452d77",
-    "proposedCanonicalName": "Edinaldo Batista Libânio",
+    "proposedCanonicalName": "Grafite",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Grafite",
       "Edinaldo Batista Libânio"
     ],
     "sources": [
@@ -3449,9 +3408,9 @@
   },
   {
     "provisionalId": "3a196d0a-31ed-f9b4-4ecc-f4fd78e4be77",
-    "proposedCanonicalName": "Evair Aparecido Paulino",
+    "proposedCanonicalName": "Evair",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Evair",
       "Evair Aparecido Paulino"
     ],
     "sources": [
@@ -3513,9 +3472,9 @@
   },
   {
     "provisionalId": "825df9c9-38c8-2ecd-7eef-19d66707b0cd",
-    "proposedCanonicalName": "Bruno Henrique Pinto",
+    "proposedCanonicalName": "Bruno Henrique",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Bruno Henrique",
       "Bruno Henrique Pinto"
     ],
     "sources": [
@@ -3571,9 +3530,9 @@
   },
   {
     "provisionalId": "391f5861-bc86-58a9-d58f-3821ca5b6b24",
-    "proposedCanonicalName": "Welliton Soares de Morais",
+    "proposedCanonicalName": "Welliton",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Welliton",
       "Welliton Soares de Morais"
     ],
     "sources": [
@@ -3665,9 +3624,9 @@
   },
   {
     "provisionalId": "c9044473-ec0e-994e-3255-effdee8b5529",
-    "proposedCanonicalName": "Erik Nascimento de Lima",
+    "proposedCanonicalName": "Erik",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Erik",
       "Erik Nascimento de Lima"
     ],
     "sources": [
@@ -3745,9 +3704,9 @@
   },
   {
     "provisionalId": "f8e46ee5-27cf-3af5-6edd-b1729c3e85cf",
-    "proposedCanonicalName": "Pedro Raul Garay da Silva",
+    "proposedCanonicalName": "Pedro Raul",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Pedro Raul",
       "Pedro Raul Garay da Silva"
     ],
     "sources": [
@@ -3803,9 +3762,9 @@
   },
   {
     "provisionalId": "fc139ada-59d0-c3de-a39b-bc48bf9ab782",
-    "proposedCanonicalName": "José Jadílson dos Santos Silva",
+    "proposedCanonicalName": "Jadílson",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Jadílson",
       "José Jadílson dos Santos Silva"
     ],
     "sources": [
@@ -3905,9 +3864,9 @@
   },
   {
     "provisionalId": "b6146f70-61d0-1d62-02df-5b3006fd2098",
-    "proposedCanonicalName": "Rodrigo de Souza Cardoso",
+    "proposedCanonicalName": "Souza",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Souza",
       "Rodrigo de Souza Cardoso"
     ],
     "sources": [
@@ -4001,9 +3960,9 @@
   },
   {
     "provisionalId": "73e4f50c-30ca-c8ac-6e82-ba51e35d03eb",
-    "proposedCanonicalName": "Roniéliton Pereira Santos",
+    "proposedCanonicalName": "Rôni",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Rôni",
       "Roniéliton Pereira Santos",
       "Roni"
     ],
@@ -4098,9 +4057,9 @@
   },
   {
     "provisionalId": "f3aa4566-9b4e-0894-222f-81cede3fe67e",
-    "proposedCanonicalName": "Cícero Vítor dos Santos Júnior",
+    "proposedCanonicalName": "Vítor",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Vítor",
       "Cícero Vítor dos Santos Júnior"
     ],
     "sources": [
@@ -4200,9 +4159,9 @@
   },
   {
     "provisionalId": "80de1eda-1809-c4b2-93dc-474a0549d656",
-    "proposedCanonicalName": "Marcelo Rangel Rosa",
+    "proposedCanonicalName": "Marcelo Rangel",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Marcelo Rangel",
       "Marcelo Rangel Rosa",
       "Rangel"
     ],
@@ -4291,9 +4250,9 @@
   },
   {
     "provisionalId": "231cf537-8b2c-b86a-ce4d-d7ea48d22fb8",
-    "proposedCanonicalName": "Luís Dialisson de Souza Alves",
+    "proposedCanonicalName": "Apodi",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Apodi",
       "Luís Dialisson de Souza Alves"
     ],
     "sources": [
@@ -4372,9 +4331,8 @@
   {
     "provisionalId": "cb775c29-31c2-86da-f138-c451a48c8728",
     "proposedCanonicalName": "Alef Manga",
-    "aliases": [
-      "Alef Manga"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4431,9 +4389,8 @@
   {
     "provisionalId": "2de3a2ac-6378-94d6-c442-14e55ea89d4a",
     "proposedCanonicalName": "Alex Dias",
-    "aliases": [
-      "Alex Dias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4508,9 +4465,8 @@
   {
     "provisionalId": "d83e44b9-1dde-fc81-9f8e-717e5b063a50",
     "proposedCanonicalName": "André Dias",
-    "aliases": [
-      "André Dias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4585,9 +4541,8 @@
   {
     "provisionalId": "bcb3520a-b115-f5fa-d3d0-8c02291e2b1b",
     "proposedCanonicalName": "André Leone",
-    "aliases": [
-      "André Leone"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4670,9 +4625,8 @@
   {
     "provisionalId": "2b3b8554-d039-8f2e-ea83-4f95e048ac66",
     "proposedCanonicalName": "Arthur Caíke",
-    "aliases": [
-      "Arthur Caíke"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4729,9 +4683,8 @@
   {
     "provisionalId": "1c23b134-2de3-9b9f-16ed-da9ca5fac21a",
     "proposedCanonicalName": "Caíque Sá",
-    "aliases": [
-      "Caíque Sá"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4788,9 +4741,8 @@
   {
     "provisionalId": "8ad4f911-9896-b390-3210-202eb1a21b47",
     "proposedCanonicalName": "Carlos Eduardo",
-    "aliases": [
-      "Carlos Eduardo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4857,9 +4809,8 @@
   {
     "provisionalId": "2a03170d-e6db-8c8d-b30c-f6599621946a",
     "proposedCanonicalName": "Cléber Gaúcho",
-    "aliases": [
-      "Cléber Gaúcho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -4942,9 +4893,8 @@
   {
     "provisionalId": "25cb6dab-98d2-2773-dc8f-09a909e2ed17",
     "proposedCanonicalName": "Cléber Goiano",
-    "aliases": [
-      "Cléber Goiano"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5027,9 +4977,8 @@
   {
     "provisionalId": "d43218bc-3d35-3503-0025-461bbbfbdf33",
     "proposedCanonicalName": "Danilo Portugal",
-    "aliases": [
-      "Danilo Portugal"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5112,9 +5061,8 @@
   {
     "provisionalId": "20a4f106-a12d-fa07-334d-cc1ac0acaffb",
     "proposedCanonicalName": "David Duarte",
-    "aliases": [
-      "David Duarte"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5197,8 +5145,8 @@
   {
     "provisionalId": "1aba04ec-9645-5aa5-c74d-8aef0e45828a",
     "proposedCanonicalName": "Eduardo Brock",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Eduardo Brock",
       "Brock"
     ],
     "sources": [
@@ -5269,9 +5217,8 @@
   {
     "provisionalId": "94b8f1f8-78dc-56df-7a28-1f80ef8dfce9",
     "proposedCanonicalName": "Eduardo Heuser",
-    "aliases": [
-      "Eduardo Heuser"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5338,9 +5285,8 @@
   {
     "provisionalId": "2e4ee6a1-977c-c48f-85b3-97aa11fc6d99",
     "proposedCanonicalName": "Fernando Nunes",
-    "aliases": [
-      "Fernando Nunes"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5407,9 +5353,8 @@
   {
     "provisionalId": "6c557884-5823-c7f8-15fb-1ce75db300f2",
     "proposedCanonicalName": "Gil Baiano",
-    "aliases": [
-      "Gil Baiano"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5476,8 +5421,8 @@
   {
     "provisionalId": "ae4288fe-a20c-3344-63e1-a4073dc1fc58",
     "proposedCanonicalName": "Jorge Batata",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Jorge Batata",
       "J. Batata",
       "Batata"
     ],
@@ -5551,9 +5496,8 @@
   {
     "provisionalId": "4a846d79-6c95-286b-a25b-193baab2393d",
     "proposedCanonicalName": "Júlio César",
-    "aliases": [
-      "Júlio César"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5610,9 +5554,8 @@
   {
     "provisionalId": "edf6be5c-5d1b-4e0f-cfb4-eef0bda691ed",
     "proposedCanonicalName": "Júlio Santos",
-    "aliases": [
-      "Júlio Santos"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5695,8 +5638,8 @@
   {
     "provisionalId": "697f6d9f-4e98-b6cc-1472-e38d454caa0b",
     "proposedCanonicalName": "Júnior Viçosa",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Júnior Viçosa",
       "Viçosa"
     ],
     "sources": [
@@ -5769,9 +5712,8 @@
   {
     "provisionalId": "a2f51fea-5327-2b3e-6add-929362e2a2f4",
     "proposedCanonicalName": "Leandro Smith",
-    "aliases": [
-      "Leandro Smith"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5846,9 +5788,8 @@
   {
     "provisionalId": "8e0fbbea-8d33-700e-9b7e-445383c92392",
     "proposedCanonicalName": "Léo Sena",
-    "aliases": [
-      "Léo Sena"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5915,9 +5856,8 @@
   {
     "provisionalId": "1645b73e-56ee-85e0-1d3c-d0265297ddb3",
     "proposedCanonicalName": "Luan Dias",
-    "aliases": [
-      "Luan Dias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -5974,9 +5914,8 @@
   {
     "provisionalId": "271ba9d0-9558-f2af-dbbb-76adb86ed569",
     "proposedCanonicalName": "Luciano Almeida",
-    "aliases": [
-      "Luciano Almeida"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6043,9 +5982,8 @@
   {
     "provisionalId": "91cf74d5-bff2-5686-c0ad-9482dfdb5e22",
     "proposedCanonicalName": "Michel Santana",
-    "aliases": [
-      "Michel Santana"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6112,9 +6050,8 @@
   {
     "provisionalId": "8ae74d36-ab0d-5203-5218-f84a3499e071",
     "proposedCanonicalName": "Pedro Paulo",
-    "aliases": [
-      "Pedro Paulo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6181,9 +6118,8 @@
   {
     "provisionalId": "ad4fd842-194b-b7a3-4eb8-008b0f2eec41",
     "proposedCanonicalName": "Rafael Dias",
-    "aliases": [
-      "Rafael Dias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6258,9 +6194,8 @@
   {
     "provisionalId": "c0114648-dae7-7bc2-a6fb-718dc3af2304",
     "proposedCanonicalName": "Renato Silva",
-    "aliases": [
-      "Renato Silva"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6317,8 +6252,8 @@
   {
     "provisionalId": "96f4ccf4-4223-41ac-c1f3-52c881a2f627",
     "proposedCanonicalName": "Rodrigo Calaça",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Rodrigo Calaça",
       "Calaça"
     ],
     "sources": [
@@ -6399,9 +6334,8 @@
   {
     "provisionalId": "8b0aff90-6865-e7f6-4c37-ccdad50ef390",
     "proposedCanonicalName": "Rogério Corrêa",
-    "aliases": [
-      "Rogério Corrêa"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6484,8 +6418,8 @@
   {
     "provisionalId": "bbf5c6be-fbf2-afeb-f366-871a4a02c8fc",
     "proposedCanonicalName": "Sílvio Criciúma",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Sílvio Criciúma",
       "Sílvio"
     ],
     "sources": [
@@ -6590,9 +6524,8 @@
   {
     "provisionalId": "c6f9f7c8-d87d-f625-e43e-c4e56b3f424d",
     "proposedCanonicalName": "Tiago Fraga",
-    "aliases": [
-      "Tiago Fraga"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6659,8 +6592,8 @@
   {
     "provisionalId": "a631b19f-83a6-0a29-c093-4de5f168c88c",
     "proposedCanonicalName": "Túlio Maravilha",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Túlio Maravilha",
       "Túlio"
     ],
     "sources": [
@@ -6749,9 +6682,8 @@
   {
     "provisionalId": "3c6dc209-74bb-0ac8-0664-2110561fd7a4",
     "proposedCanonicalName": "Wilson Goiano",
-    "aliases": [
-      "Wilson Goiano"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -6818,9 +6750,9 @@
   {
     "provisionalId": "0572deb8-e3fc-cc9f-4d82-ad45dddab0c5",
     "proposedCanonicalName": "Tadeu Antônio Ferreira",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Tadeu",
-      "Tadeu Antônio Ferreira"
+      "Tadeu"
     ],
     "sources": [
       {
@@ -6972,9 +6904,9 @@
   {
     "provisionalId": "9645685e-6302-8c85-915b-a1ca5dab0b16",
     "proposedCanonicalName": "Ezequiel Alves de Oliveira Vieira",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Ezequiel",
-      "Ezequiel Alves de Oliveira Vieira"
+      "Ezequiel"
     ],
     "sources": [
       {
@@ -7031,9 +6963,9 @@
   {
     "provisionalId": "ac09fd3d-f8e3-4fef-3a15-27b046630e8c",
     "proposedCanonicalName": "Murillo Carvalho Victorio",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Murillo Victorio",
-      "Murillo Carvalho Victorio"
+      "Murillo Victorio"
     ],
     "sources": [
       {
@@ -7090,9 +7022,9 @@
   {
     "provisionalId": "923ef8f6-3fd5-972e-535d-3c70aebe34b5",
     "proposedCanonicalName": "Thiago Rodrigues de Oliveira Nogueira",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Thiago Rodrigues",
-      "Thiago Rodrigues de Oliveira Nogueira"
+      "Thiago Rodrigues"
     ],
     "sources": [
       {
@@ -7160,9 +7092,9 @@
   {
     "provisionalId": "d6d065eb-0240-36f3-6596-96b9838a5091",
     "proposedCanonicalName": "Luis Fellipe Campos Doria",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Luisão",
-      "Luis Fellipe Campos Doria"
+      "Luisão"
     ],
     "sources": [
       {
@@ -7260,9 +7192,9 @@
   {
     "provisionalId": "b533f63f-ca10-0229-c071-209b21a609ad",
     "proposedCanonicalName": "Lucas Ribeiro dos Santos",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Lucas Ribeiro",
-      "Lucas Ribeiro dos Santos"
+      "Lucas Ribeiro"
     ],
     "sources": [
       {
@@ -7368,9 +7300,9 @@
   {
     "provisionalId": "a68fae83-dedf-6827-8a57-a73447b087d3",
     "proposedCanonicalName": "Luiz Felipe do Nascimento dos Santos",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Luiz Felipe",
-      "Luiz Felipe do Nascimento dos Santos"
+      "Luiz Felipe"
     ],
     "sources": [
       {
@@ -7433,9 +7365,9 @@
   {
     "provisionalId": "7e09d2f5-5a2c-e21e-06c7-9903cd51e933",
     "proposedCanonicalName": "Ramon Menezes Roma",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Ramon Menezes",
-      "Ramon Menezes Roma"
+      "Ramon Menezes"
     ],
     "sources": [
       {
@@ -7492,9 +7424,9 @@
   {
     "provisionalId": "12b7b9bb-6ddc-d196-3a9e-936da61b2d9a",
     "proposedCanonicalName": "Murilo Camara Saquetti Chimelo Pereira",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Murilo Câmara",
-      "Murilo Camara Saquetti Chimelo Pereira"
+      "Murilo Câmara"
     ],
     "sources": [
       {
@@ -7557,9 +7489,9 @@
   {
     "provisionalId": "53bd9a26-94f3-33a5-b4e9-27052e8073dc",
     "proposedCanonicalName": "Rodrigo Alves Soares",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Rodrigo Soares",
-      "Rodrigo Alves Soares"
+      "Rodrigo Soares"
     ],
     "sources": [
       {
@@ -7616,9 +7548,9 @@
   {
     "provisionalId": "119a3e7f-6672-70a4-2f44-2100ac449c22",
     "proposedCanonicalName": "Marcos Vinicius da Silva Santos",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Marcos Vinicius",
-      "Marcos Vinicius da Silva Santos"
+      "Marcos Vinicius"
     ],
     "sources": [
       {
@@ -7675,9 +7607,9 @@
   {
     "provisionalId": "f8bab609-761f-a60a-be09-e30e4e3158d4",
     "proposedCanonicalName": "Djalma Antônio da Silva Filho",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Djalma",
-      "Djalma Antônio da Silva Filho"
+      "Djalma"
     ],
     "sources": [
       {
@@ -7734,9 +7666,9 @@
   {
     "provisionalId": "9d95b40a-4761-4290-f82d-c26979777b86",
     "proposedCanonicalName": "João Paulo Ferreira Lourenço",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Lourenço",
-      "João Paulo Ferreira Lourenço"
+      "Lourenço"
     ],
     "sources": [
       {
@@ -7834,9 +7766,9 @@
   {
     "provisionalId": "7e84bc92-70a0-f214-501b-4838001801f9",
     "proposedCanonicalName": "Luiz Filipe da Rosa Machado",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Filipe Machado",
-      "Luiz Filipe da Rosa Machado"
+      "Filipe Machado"
     ],
     "sources": [
       {
@@ -7934,9 +7866,9 @@
   {
     "provisionalId": "cff11e9d-ba49-05d0-c6a9-ae4e3e5acb4a",
     "proposedCanonicalName": "Guilherme Baldória de Camargo",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Baldória",
-      "Guilherme Baldória de Camargo"
+      "Baldória"
     ],
     "sources": [
       {
@@ -7993,9 +7925,9 @@
   {
     "provisionalId": "4a45059e-593a-4615-a4f5-2dfc00693f60",
     "proposedCanonicalName": "Adilson dos Anjos Oliveira",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Juninho",
-      "Adilson dos Anjos Oliveira"
+      "Juninho"
     ],
     "sources": [
       {
@@ -8092,9 +8024,9 @@
   {
     "provisionalId": "780daf01-2442-3be2-c98d-cc2b401e738e",
     "proposedCanonicalName": "Lucas Rodrigues Moreira Costa",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Lucas Rodrigues",
-      "Lucas Rodrigues Moreira Costa"
+      "Lucas Rodrigues"
     ],
     "sources": [
       {
@@ -8151,9 +8083,9 @@
   {
     "provisionalId": "06dd734e-1d3e-07a4-9f63-6f548844916b",
     "proposedCanonicalName": "Geirton Marques Aires",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Gegê",
-      "Geirton Marques Aires"
+      "Gegê"
     ],
     "sources": [
       {
@@ -8251,9 +8183,9 @@
   {
     "provisionalId": "34e6f2d6-7b94-3c02-189f-627eec7e9ccb",
     "proposedCanonicalName": "Lucas Rafael Araújo Lima",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Lucas Lima",
-      "Lucas Rafael Araújo Lima"
+      "Lucas Lima"
     ],
     "sources": [
       {
@@ -8351,9 +8283,9 @@
   {
     "provisionalId": "462fb293-e6b6-496e-7c2e-48dd91e748c4",
     "proposedCanonicalName": "Brayann Brito Batista",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Brayann",
-      "Brayann Brito Batista"
+      "Brayann"
     ],
     "sources": [
       {
@@ -8410,9 +8342,9 @@
   {
     "provisionalId": "4f8ee889-15fb-6261-a96f-f5ffec7b5cf4",
     "proposedCanonicalName": "Wellington Soares da Silva",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
       "Wellington Rato",
-      "Wellington Soares da Silva",
       "Rato"
     ],
     "sources": [
@@ -8512,9 +8444,9 @@
   {
     "provisionalId": "09048278-54d1-3b6b-41e6-b1570b21c0a3",
     "proposedCanonicalName": "Pedro Junqueira de Oliveira",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Pedrinho",
-      "Pedro Junqueira de Oliveira"
+      "Pedrinho"
     ],
     "sources": [
       {
@@ -8604,9 +8536,9 @@
   {
     "provisionalId": "1f8b14d2-a99f-4ac6-467c-35480bd57232",
     "proposedCanonicalName": "Anselmo Ramon Alves Herculano",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
       "Anselmo Ramon",
-      "Anselmo Ramon Alves Herculano",
       "Anselmo Ramón"
     ],
     "sources": [
@@ -8713,9 +8645,9 @@
   {
     "provisionalId": "d232045f-73e1-3ede-e6e9-cea2ce9e7c1a",
     "proposedCanonicalName": "Carlos Eduardo Amaral Pereira de Castro",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Cadu",
-      "Carlos Eduardo Amaral Pereira de Castro"
+      "Cadu"
     ],
     "sources": [
       {
@@ -8772,9 +8704,9 @@
   {
     "provisionalId": "18063b2e-ae7f-1e8b-b64b-f6f908f281b2",
     "proposedCanonicalName": "Luiz Felipe Clemente de Almeida",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Felipe Clemente",
-      "Luiz Felipe Clemente de Almeida"
+      "Felipe Clemente"
     ],
     "sources": [
       {
@@ -8831,9 +8763,9 @@
   {
     "provisionalId": "ef75940a-e93b-8523-acfe-fc4d9c428fbf",
     "proposedCanonicalName": "Jean Carlos Alves Ferreira",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Jean Carlos",
-      "Jean Carlos Alves Ferreira"
+      "Jean Carlos"
     ],
     "sources": [
       {
@@ -8931,9 +8863,9 @@
   {
     "provisionalId": "db7f23c4-875b-b21c-b007-427ea2d2826d",
     "proposedCanonicalName": "Halerrandrio dos Santos Feitosa",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Halerrandrio",
-      "Halerrandrio dos Santos Feitosa"
+      "Halerrandrio"
     ],
     "sources": [
       {
@@ -8989,9 +8921,9 @@
   {
     "provisionalId": "92d67998-ec64-a419-0733-fd95ec346895",
     "proposedCanonicalName": "Esli Samuel García Cordero",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Esli Garcia",
-      "Esli Samuel García Cordero"
+      "Esli Garcia"
     ],
     "sources": [
       {
@@ -9048,9 +8980,9 @@
   {
     "provisionalId": "3a98c0a1-5c0d-a757-efaf-474d7b6848dc",
     "proposedCanonicalName": "Carlos Eduardo de Sousa Leopoldino",
+    "proposedCanonicalNameSource": "fullNameField",
     "aliases": [
-      "Kadu Sousa",
-      "Carlos Eduardo de Sousa Leopoldino"
+      "Kadu Sousa"
     ],
     "sources": [
       {
@@ -9106,9 +9038,9 @@
   },
   {
     "provisionalId": "df82d0a1-3d9e-f4da-13f4-d6c45f145583",
-    "proposedCanonicalName": "Fernando Lúcio da Costa",
+    "proposedCanonicalName": "Fernandão",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Fernandão",
       "Fernando Lúcio da Costa"
     ],
     "sources": [
@@ -9207,9 +9139,9 @@
   },
   {
     "provisionalId": "8d668be9-fcfa-3dc4-2905-3982433953c3",
-    "proposedCanonicalName": "Josué Anunciado de Oliveira",
+    "proposedCanonicalName": "Josué",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Josué",
       "Josué Anunciado de Oliveira"
     ],
     "sources": [
@@ -9318,9 +9250,9 @@
   },
   {
     "provisionalId": "a3ec0a92-d2d8-f5e4-776e-2596dffb5ca8",
-    "proposedCanonicalName": "Alexandro Silva de Sousa",
+    "proposedCanonicalName": "Dudu Cearense",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Dudu Cearense",
       "Alexandro Silva de Sousa",
       "Dudu"
     ],
@@ -9401,8 +9333,8 @@
   {
     "provisionalId": "1d01c487-2b33-9479-9d15-4bccceda64c3",
     "proposedCanonicalName": "Rafael Tolói",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Rafael Tolói",
       "Tolói"
     ],
     "sources": [
@@ -9517,9 +9449,9 @@
   },
   {
     "provisionalId": "c9d85948-cd73-b859-e15f-909d25334a98",
-    "proposedCanonicalName": "Rafael Martiniano de Miranda Moura",
+    "proposedCanonicalName": "Rafael Moura",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Rafael Moura",
       "Rafael Martiniano de Miranda Moura",
       "He-Man",
       "Heman"
@@ -9645,9 +9577,9 @@
   },
   {
     "provisionalId": "c0a2d88c-6adf-5079-de1f-8640527a819c",
-    "proposedCanonicalName": "Clemerson de Araújo Soares",
+    "proposedCanonicalName": "Araújo",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Araújo",
       "Clemerson de Araújo Soares"
     ],
     "sources": [
@@ -9762,9 +9694,9 @@
   },
   {
     "provisionalId": "02824f52-ba9b-96fb-59bb-487737bd3dd7",
-    "proposedCanonicalName": "Ernando Rodrigues Lopes",
+    "proposedCanonicalName": "Ernando",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Ernando",
       "Ernando Rodrigues Lopes"
     ],
     "sources": [
@@ -9857,9 +9789,9 @@
   },
   {
     "provisionalId": "3e77e2a6-e4ea-7ad2-475f-77b5cfa755cb",
-    "proposedCanonicalName": "Pedro Iarley Lima Dantas",
+    "proposedCanonicalName": "Iarley",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Iarley",
       "Pedro Iarley Lima Dantas"
     ],
     "sources": [
@@ -9936,9 +9868,9 @@
   },
   {
     "provisionalId": "bd1a07bf-9c76-23ce-a903-73bb1a641c38",
-    "proposedCanonicalName": "Paulo César Baier",
+    "proposedCanonicalName": "Paulo Baier",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Paulo Baier",
       "Paulo César Baier"
     ],
     "sources": [
@@ -10055,9 +9987,9 @@
   },
   {
     "provisionalId": "7e538f4b-3399-4f5a-c395-5d2b46ee0302",
-    "proposedCanonicalName": "Ricardo Goulart Pereira",
+    "proposedCanonicalName": "Ricardo Goulart",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Ricardo Goulart",
       "Ricardo Goulart Pereira",
       "Goulart"
     ],
@@ -10166,9 +10098,9 @@
   },
   {
     "provisionalId": "afe8a1c7-7c5b-6bb6-24b9-d2e8d6f1844e",
-    "proposedCanonicalName": "Rodrigo Barbosa Tabata",
+    "proposedCanonicalName": "Rodrigo Tabata",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Rodrigo Tabata",
       "Rodrigo Barbosa Tabata",
       "Tabata"
     ],
@@ -10280,9 +10212,9 @@
   },
   {
     "provisionalId": "bba6b4bb-e454-2639-5810-0da578889849",
-    "proposedCanonicalName": "Egídio de Araújo Pereira Júnior",
+    "proposedCanonicalName": "Egídio",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Egídio",
       "Egídio de Araújo Pereira Júnior"
     ],
     "sources": [
@@ -10367,9 +10299,9 @@
   },
   {
     "provisionalId": "34beff01-e84c-18cd-f48f-2aa3387cb3b7",
-    "proposedCanonicalName": "Harlei de Menezes Silva",
+    "proposedCanonicalName": "Harlei",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Harlei",
       "Harlei de Menezes Silva"
     ],
     "sources": [
@@ -10478,9 +10410,9 @@
   },
   {
     "provisionalId": "e38e5e43-00bd-0914-1e73-31299ed1e1f1",
-    "proposedCanonicalName": "Walter Henrique da Silva",
+    "proposedCanonicalName": "Walter",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Walter",
       "Walter Henrique da Silva"
     ],
     "sources": [
@@ -10599,9 +10531,9 @@
   },
   {
     "provisionalId": "d223adff-2d40-7afd-828f-e64bbcd27a3e",
-    "proposedCanonicalName": "Elpídio Barbosa Conceição",
+    "proposedCanonicalName": "Dill",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Dill",
       "Elpídio Barbosa Conceição"
     ],
     "sources": [
@@ -10662,9 +10594,8 @@
   {
     "provisionalId": "b05b09c3-dc1a-3a67-36a5-22c94e78852d",
     "proposedCanonicalName": "Amaral",
-    "aliases": [
-      "Amaral"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -10753,9 +10684,8 @@
   {
     "provisionalId": "b5109a79-8158-8ae8-03dd-420ac171ed6f",
     "proposedCanonicalName": "Artur",
-    "aliases": [
-      "Artur"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -10821,9 +10751,8 @@
   {
     "provisionalId": "e551a7c9-3f70-0924-ebb8-9e09fbadedc3",
     "proposedCanonicalName": "Bruno Melo",
-    "aliases": [
-      "Bruno Melo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -10897,9 +10826,8 @@
   {
     "provisionalId": "8a36ecd1-b952-e760-64c4-c18905dd3cde",
     "proposedCanonicalName": "Caio Vinícius",
-    "aliases": [
-      "Caio Vinícius"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -10965,9 +10893,8 @@
   {
     "provisionalId": "8ddf1497-ca07-2245-e2ab-a96e7567680e",
     "proposedCanonicalName": "Carlos Alberto",
-    "aliases": [
-      "Carlos Alberto"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -11049,8 +10976,8 @@
   {
     "provisionalId": "eeff0961-5c05-e552-7e13-8f550902cb1e",
     "proposedCanonicalName": "Dadá Belmonte",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Dadá Belmonte",
       "Dadá"
     ],
     "sources": [
@@ -11122,9 +11049,8 @@
   {
     "provisionalId": "8be3150d-bd41-e314-67d6-429bcf6d403d",
     "proposedCanonicalName": "David",
-    "aliases": [
-      "David"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -11206,8 +11132,8 @@
   {
     "provisionalId": "35fe6c33-dd12-488f-2ba8-6992fbadfa77",
     "proposedCanonicalName": "Diego Caito",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Diego Caito",
       "Caito"
     ],
     "sources": [
@@ -11295,9 +11221,8 @@
   {
     "provisionalId": "3a5c6d04-f090-93ec-2748-668b8b5f9d69",
     "proposedCanonicalName": "Diego Gonçalves",
-    "aliases": [
-      "Diego Gonçalves"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -11363,9 +11288,8 @@
   {
     "provisionalId": "b9a09e7c-3ad3-910d-8596-2fc1e7455a6f",
     "proposedCanonicalName": "Douglas",
-    "aliases": [
-      "Douglas"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -11436,8 +11360,8 @@
   {
     "provisionalId": "ee2dd9b7-1c33-8bd5-63ac-017d5140804c",
     "proposedCanonicalName": "Eduardo Sasha",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Eduardo Sasha",
       "Sasha"
     ],
     "sources": [
@@ -11509,9 +11433,8 @@
   {
     "provisionalId": "121797ac-3983-d320-e227-f26e4ffa820a",
     "proposedCanonicalName": "Élvis",
-    "aliases": [
-      "Élvis"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -11585,8 +11508,8 @@
   {
     "provisionalId": "805a6517-9253-1ed3-049d-a7951a1c1fcc",
     "proposedCanonicalName": "Everton Morelli",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Everton Morelli",
       "Morelli"
     ],
     "sources": [
@@ -11658,9 +11581,8 @@
   {
     "provisionalId": "59a40de1-5cea-5c66-4a8f-70fee183a445",
     "proposedCanonicalName": "Fellipe Bastos",
-    "aliases": [
-      "Fellipe Bastos"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -11734,8 +11656,8 @@
   {
     "provisionalId": "48fa6576-1a9b-6e2c-6410-9a0ca16942f0",
     "proposedCanonicalName": "Gonzalo Freitas",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Gonzalo Freitas",
       "Freitas"
     ],
     "sources": [
@@ -11794,9 +11716,8 @@
   {
     "provisionalId": "b3a94732-c46c-a10c-82e2-2fe9a4a006e7",
     "proposedCanonicalName": "Jajá",
-    "aliases": [
-      "Jajá"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -11872,8 +11793,8 @@
   {
     "provisionalId": "cc3e4301-531a-72d0-4d9a-91ee5888bea9",
     "proposedCanonicalName": "Julián Palacios",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Julián Palacios",
       "Palacios"
     ],
     "sources": [
@@ -11953,8 +11874,8 @@
   {
     "provisionalId": "2fc304e7-9ab4-5870-2bcb-2d7aea16848e",
     "proposedCanonicalName": "Lucas Halter",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Lucas Halter",
       "Halter"
     ],
     "sources": [
@@ -12032,8 +11953,8 @@
   {
     "provisionalId": "794ddae2-63fd-73dd-82e5-c5cda90a30a0",
     "proposedCanonicalName": "Lucas Lovat",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Lucas Lovat",
       "Lovat"
     ],
     "sources": [
@@ -12092,9 +12013,8 @@
   {
     "provisionalId": "a8fa947c-85ac-5695-224a-221da638c625",
     "proposedCanonicalName": "Maguinho",
-    "aliases": [
-      "Maguinho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12168,9 +12088,8 @@
   {
     "provisionalId": "febb0d6e-4532-d48e-8c21-e041a757865c",
     "proposedCanonicalName": "Marcelo Costa",
-    "aliases": [
-      "Marcelo Costa"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12241,8 +12160,8 @@
   {
     "provisionalId": "7233b43a-650c-d7d8-b654-39dc5805f27d",
     "proposedCanonicalName": "Matheus Peixoto",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Matheus Peixoto",
       "Peixoto"
     ],
     "sources": [
@@ -12322,9 +12241,8 @@
   {
     "provisionalId": "5965f0e4-2f14-b5d6-8478-a903f92e42cf",
     "proposedCanonicalName": "Messias",
-    "aliases": [
-      "Messias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12398,9 +12316,8 @@
   {
     "provisionalId": "6c0816fd-c552-a840-d954-7440aa417ad5",
     "proposedCanonicalName": "Otacílio Neto",
-    "aliases": [
-      "Otacílio Neto"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12482,9 +12399,8 @@
   {
     "provisionalId": "c0e8c6c2-3092-3ef0-8fbb-30f7dbff6a28",
     "proposedCanonicalName": "Rafael Lacerda",
-    "aliases": [
-      "Rafael Lacerda"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12539,9 +12455,8 @@
   {
     "provisionalId": "ea050544-6e0f-328c-ef46-661012fe328c",
     "proposedCanonicalName": "Ramón",
-    "aliases": [
-      "Ramón"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12623,9 +12538,8 @@
   {
     "provisionalId": "8f9760c1-a043-31bd-0c2e-dc832c04c123",
     "proposedCanonicalName": "Renan",
-    "aliases": [
-      "Renan"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12696,9 +12610,8 @@
   {
     "provisionalId": "f840307c-3452-51b0-0241-299c755116a9",
     "proposedCanonicalName": "Renan Oliveira",
-    "aliases": [
-      "Renan Oliveira"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12780,9 +12693,8 @@
   {
     "provisionalId": "039e6bf1-5b7f-fc39-4368-874d21b34156",
     "proposedCanonicalName": "Rodrigo",
-    "aliases": [
-      "Rodrigo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12853,9 +12765,8 @@
   {
     "provisionalId": "22707118-96a9-fe47-917d-db33d77fc69e",
     "proposedCanonicalName": "Rodrigo Andrade",
-    "aliases": [
-      "Rodrigo Andrade"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12910,9 +12821,8 @@
   {
     "provisionalId": "3e5c1859-4cb4-2b01-1a17-3544d77ca336",
     "proposedCanonicalName": "Sander",
-    "aliases": [
-      "Sander"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -12986,9 +12896,8 @@
   {
     "provisionalId": "993d8af5-4333-0fa9-b3b1-b1a0e5b4ed44",
     "proposedCanonicalName": "Thiago Mendes",
-    "aliases": [
-      "Thiago Mendes"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13062,9 +12971,8 @@
   {
     "provisionalId": "ba6f0d09-0009-410f-f77a-4438ca6ba551",
     "proposedCanonicalName": "Titi",
-    "aliases": [
-      "Titi"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13119,9 +13027,8 @@
   {
     "provisionalId": "89d4245e-b18c-257e-cba2-9c52d1df816e",
     "proposedCanonicalName": "Valmir Lucas",
-    "aliases": [
-      "Valmir Lucas"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13187,9 +13094,8 @@
   {
     "provisionalId": "2201093a-e22f-6c5d-0da9-bdb8db48ec28",
     "proposedCanonicalName": "Vinícius",
-    "aliases": [
-      "Vinícius"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13244,8 +13150,8 @@
   {
     "provisionalId": "a4d1bb10-cdd5-885c-a45b-ae11c912fc58",
     "proposedCanonicalName": "Wellington Saci",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Wellington Saci",
       "Saci"
     ],
     "sources": [
@@ -13333,8 +13239,8 @@
   {
     "provisionalId": "e81582c9-d761-1b9b-2030-cd2abef81ee9",
     "proposedCanonicalName": "Willean Lepo",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Willean Lepo",
       "Lepo"
     ],
     "sources": [
@@ -13401,9 +13307,8 @@
   {
     "provisionalId": "934ed776-f0c0-9cba-c8bb-a5b4f7b031e8",
     "proposedCanonicalName": "William Matheus",
-    "aliases": [
-      "William Matheus"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13485,9 +13390,8 @@
   {
     "provisionalId": "eb3ecf16-7c77-f82a-a891-0a20f0bb55e3",
     "proposedCanonicalName": "Willian Oliveira",
-    "aliases": [
-      "Willian Oliveira"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13553,9 +13457,8 @@
   {
     "provisionalId": "7c4a2dd7-1dc0-47e0-72ee-41c4461eccc6",
     "proposedCanonicalName": "Zé Hugo",
-    "aliases": [
-      "Zé Hugo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13610,9 +13513,8 @@
   {
     "provisionalId": "e625dcb1-0ab5-3b8e-9a62-ee3313a21780",
     "proposedCanonicalName": "Zé Ricardo",
-    "aliases": [
-      "Zé Ricardo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "guess_players",
@@ -13686,9 +13588,8 @@
   {
     "provisionalId": "525b14ba-8694-27cc-b106-1346b3a75ad3",
     "proposedCanonicalName": "Uidemar",
-    "aliases": [
-      "Uidemar"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "player_identity_references",
@@ -13725,9 +13626,8 @@
   {
     "provisionalId": "95304f72-382c-75b5-7b88-c68e885048ce",
     "proposedCanonicalName": "Douglas Pereira dos Santos",
-    "aliases": [
-      "Douglas Pereira dos Santos"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "player_identity_references",
@@ -13764,9 +13664,8 @@
   {
     "provisionalId": "ff6997dd-4435-d4c4-3fee-7f38550ecb08",
     "proposedCanonicalName": "Lumumba",
-    "aliases": [
-      "Lumumba"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -13796,9 +13695,8 @@
   {
     "provisionalId": "af26812c-29cf-b69f-abc3-e711baa3a021",
     "proposedCanonicalName": "Triel",
-    "aliases": [
-      "Triel"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -13828,9 +13726,8 @@
   {
     "provisionalId": "16b4c98a-d7af-95c9-6c3b-59ec7d8d95e0",
     "proposedCanonicalName": "Emílio",
-    "aliases": [
-      "Emílio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -13860,9 +13757,8 @@
   {
     "provisionalId": "6596d893-1a92-d836-6486-90661c6d300c",
     "proposedCanonicalName": "Matinha",
-    "aliases": [
-      "Matinha"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -13892,9 +13788,8 @@
   {
     "provisionalId": "a71ba282-94cc-d413-b722-a5f1d95b1b6a",
     "proposedCanonicalName": "Cláudio",
-    "aliases": [
-      "Cláudio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -13924,9 +13819,8 @@
   {
     "provisionalId": "e6a067fd-1d1d-cf1f-cd96-63b725892808",
     "proposedCanonicalName": "Tuíra",
-    "aliases": [
-      "Tuíra"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -13956,9 +13850,8 @@
   {
     "provisionalId": "7ae0bfc2-e8a3-cd9b-8791-b04be1f4773a",
     "proposedCanonicalName": "Hertz",
-    "aliases": [
-      "Hertz"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -13988,9 +13881,8 @@
   {
     "provisionalId": "06fd3321-7be5-931f-d56d-5966c550e19a",
     "proposedCanonicalName": "Paghetti",
-    "aliases": [
-      "Paghetti"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14020,9 +13912,8 @@
   {
     "provisionalId": "4e9d8442-4125-c1e6-c873-0540d76509e9",
     "proposedCanonicalName": "Lucinho",
-    "aliases": [
-      "Lucinho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14051,9 +13942,9 @@
   },
   {
     "provisionalId": "988e062c-c7a9-cd81-64ae-56ba16208ffc",
-    "proposedCanonicalName": "Leão da Serra",
+    "proposedCanonicalName": "Lincoln",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Lincoln",
       "Leão da Serra"
     ],
     "sources": [
@@ -14087,9 +13978,8 @@
   {
     "provisionalId": "98bf2cc9-3619-b7a2-90bb-9c213889688a",
     "proposedCanonicalName": "Raimundinho",
-    "aliases": [
-      "Raimundinho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14119,9 +14009,8 @@
   {
     "provisionalId": "b2a86bee-f9a9-1670-b1ed-0dcb7187f6fd",
     "proposedCanonicalName": "Macalé",
-    "aliases": [
-      "Macalé"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14151,9 +14040,8 @@
   {
     "provisionalId": "b48d7732-39cd-f64e-56c5-ff9bce57bb25",
     "proposedCanonicalName": "Marcelo Batista",
-    "aliases": [
-      "Marcelo Batista"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14183,9 +14071,8 @@
   {
     "provisionalId": "a2d1610c-b28f-3e80-dcf2-013b0642d796",
     "proposedCanonicalName": "Lira",
-    "aliases": [
-      "Lira"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14215,9 +14102,8 @@
   {
     "provisionalId": "de0ab207-70b7-972e-48bc-68748d95689b",
     "proposedCanonicalName": "Tácio",
-    "aliases": [
-      "Tácio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14247,9 +14133,8 @@
   {
     "provisionalId": "e037517c-5f61-1f17-1e0b-ed9beaf364bf",
     "proposedCanonicalName": "Andrezinho",
-    "aliases": [
-      "Andrezinho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14279,9 +14164,8 @@
   {
     "provisionalId": "63ff2a31-529f-774d-2a25-6f9dd4e23338",
     "proposedCanonicalName": "João Paulo",
-    "aliases": [
-      "João Paulo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14311,9 +14195,8 @@
   {
     "provisionalId": "fc0599af-f1bb-e46d-b1de-f9d50beda5d7",
     "proposedCanonicalName": "Rômulo",
-    "aliases": [
-      "Rômulo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14343,8 +14226,8 @@
   {
     "provisionalId": "f1d0311c-487d-a83f-b8c3-fd5daa1de1e4",
     "proposedCanonicalName": "Mário Jardel",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Mário Jardel",
       "Jardel"
     ],
     "sources": [
@@ -14378,9 +14261,8 @@
   {
     "provisionalId": "d136a9ca-0b70-eb41-1b04-318048c83715",
     "proposedCanonicalName": "Wendell Lira",
-    "aliases": [
-      "Wendell Lira"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14410,9 +14292,8 @@
   {
     "provisionalId": "e4c3bb27-52ea-bc34-1fb7-9d654f35989c",
     "proposedCanonicalName": "Edmílson Matias",
-    "aliases": [
-      "Edmílson Matias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14442,9 +14323,8 @@
   {
     "provisionalId": "8a297708-76b9-b2ce-ffe4-d5de316f32b7",
     "proposedCanonicalName": "Marcelo Carioca",
-    "aliases": [
-      "Marcelo Carioca"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14474,9 +14354,8 @@
   {
     "provisionalId": "4580d2d6-42ee-edc2-ce6c-b38a6b254757",
     "proposedCanonicalName": "Danilo Dias",
-    "aliases": [
-      "Danilo Dias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14506,9 +14385,8 @@
   {
     "provisionalId": "63b0570e-8a58-b490-d358-ae26d0d47566",
     "proposedCanonicalName": "Ramalho",
-    "aliases": [
-      "Ramalho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14538,9 +14416,8 @@
   {
     "provisionalId": "fefcd550-5b03-9bb9-4d3d-7ef7683bb4a2",
     "proposedCanonicalName": "Fernando",
-    "aliases": [
-      "Fernando"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14570,9 +14447,8 @@
   {
     "provisionalId": "a38ea253-afee-a7c5-d878-2ed46be01978",
     "proposedCanonicalName": "Henrique",
-    "aliases": [
-      "Henrique"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14602,9 +14478,8 @@
   {
     "provisionalId": "0cc1b88f-fd2b-8f62-3409-48fbd06cd2e7",
     "proposedCanonicalName": "Alex Terra",
-    "aliases": [
-      "Alex Terra"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14634,9 +14509,8 @@
   {
     "provisionalId": "1fecb408-dc8a-ed67-aa26-84b5576520ee",
     "proposedCanonicalName": "Paulo Henrique",
-    "aliases": [
-      "Paulo Henrique"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14666,9 +14540,8 @@
   {
     "provisionalId": "1b32c80f-1a70-6acc-c456-540cd6b6b5fe",
     "proposedCanonicalName": "Anderson Aquino",
-    "aliases": [
-      "Anderson Aquino"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14698,9 +14571,8 @@
   {
     "provisionalId": "eaffebdb-7249-5719-8b03-54e91b7159a9",
     "proposedCanonicalName": "Pituca",
-    "aliases": [
-      "Pituca"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14730,9 +14602,8 @@
   {
     "provisionalId": "4b7fb786-ae8f-e9a9-6fbd-6279d5acd3b7",
     "proposedCanonicalName": "Schwenck",
-    "aliases": [
-      "Schwenck"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14762,9 +14633,8 @@
   {
     "provisionalId": "2acde111-8e0f-94d9-1b5a-4dfa272cd912",
     "proposedCanonicalName": "Felipe",
-    "aliases": [
-      "Felipe"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14794,9 +14664,8 @@
   {
     "provisionalId": "5edcdb3d-6bc8-3952-8888-b49b89c34bbb",
     "proposedCanonicalName": "Rinaldo",
-    "aliases": [
-      "Rinaldo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14826,9 +14695,8 @@
   {
     "provisionalId": "caea9bb2-4bb4-4cd1-c312-419b1ad0d324",
     "proposedCanonicalName": "Frontini",
-    "aliases": [
-      "Frontini"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14858,9 +14726,8 @@
   {
     "provisionalId": "035a8bf0-4c21-ec86-75dc-52cf77e950c3",
     "proposedCanonicalName": "Fábio Bahia",
-    "aliases": [
-      "Fábio Bahia"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14890,9 +14757,8 @@
   {
     "provisionalId": "216a7a23-d6e6-7a41-fb9b-fa5d29db9119",
     "proposedCanonicalName": "Alex Ferreira",
-    "aliases": [
-      "Alex Ferreira"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14922,9 +14788,8 @@
   {
     "provisionalId": "738d83f4-3591-0d3c-a0c4-6d25dd3d3235",
     "proposedCanonicalName": "Rafael Marques",
-    "aliases": [
-      "Rafael Marques"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14954,9 +14819,8 @@
   {
     "provisionalId": "540cf09c-2359-61aa-cddc-29074d3dfc40",
     "proposedCanonicalName": "Leandro Euzébio",
-    "aliases": [
-      "Leandro Euzébio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -14986,9 +14850,8 @@
   {
     "provisionalId": "5b0388fc-33aa-3d36-651b-dccc263ad49f",
     "proposedCanonicalName": "Wellington Monteiro",
-    "aliases": [
-      "Wellington Monteiro"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15018,9 +14881,8 @@
   {
     "provisionalId": "7dd95e80-ee69-ecf1-df92-4a41f27b0723",
     "proposedCanonicalName": "Bernardo",
-    "aliases": [
-      "Bernardo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15050,9 +14912,8 @@
   {
     "provisionalId": "a80884da-560e-91e4-f1c9-9cc90b1fdc89",
     "proposedCanonicalName": "Éverton Santos",
-    "aliases": [
-      "Éverton Santos"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15082,9 +14943,8 @@
   {
     "provisionalId": "acd0b8d3-da32-d8e9-6a24-422dd040d015",
     "proposedCanonicalName": "Bruno Meneghel",
-    "aliases": [
-      "Bruno Meneghel"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15114,9 +14974,8 @@
   {
     "provisionalId": "3a37408e-90a5-cd0f-01dd-9c718b701cab",
     "proposedCanonicalName": "Renan Brito",
-    "aliases": [
-      "Renan Brito"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15146,9 +15005,8 @@
   {
     "provisionalId": "cab2309d-11b7-e315-80d4-1d46c44cafd1",
     "proposedCanonicalName": "Édson",
-    "aliases": [
-      "Édson"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15178,9 +15036,8 @@
   {
     "provisionalId": "3611adc4-050e-5555-fc63-5d0ffc960ea9",
     "proposedCanonicalName": "Felipe Amorim",
-    "aliases": [
-      "Felipe Amorim"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15210,9 +15067,8 @@
   {
     "provisionalId": "3614dd27-ffc2-3c3b-85af-418c82fe8c39",
     "proposedCanonicalName": "Jackson",
-    "aliases": [
-      "Jackson"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15242,9 +15098,8 @@
   {
     "provisionalId": "9eb7da51-c142-70be-d327-34e00ea029d9",
     "proposedCanonicalName": "Wallinson",
-    "aliases": [
-      "Wallinson"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15274,9 +15129,8 @@
   {
     "provisionalId": "c05a8beb-0283-1286-6a46-b07fab900497",
     "proposedCanonicalName": "Alex Alves",
-    "aliases": [
-      "Alex Alves"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15306,9 +15160,8 @@
   {
     "provisionalId": "23f11468-eefe-1eaf-d21c-de9f1e3b81ee",
     "proposedCanonicalName": "Felipe Macedo",
-    "aliases": [
-      "Felipe Macedo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15338,9 +15191,8 @@
   {
     "provisionalId": "6b339b14-eeb6-07b5-41f9-4b3dab599629",
     "proposedCanonicalName": "Léo Veloso",
-    "aliases": [
-      "Léo Veloso"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15370,9 +15222,8 @@
   {
     "provisionalId": "3bada694-e813-b69d-74d0-86801fcd035f",
     "proposedCanonicalName": "Mário Sérgio",
-    "aliases": [
-      "Mário Sérgio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15402,9 +15253,8 @@
   {
     "provisionalId": "7f8d12bd-66a1-c0d9-0ae4-53f4df1bd080",
     "proposedCanonicalName": "Clayton",
-    "aliases": [
-      "Clayton"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15434,9 +15284,8 @@
   {
     "provisionalId": "2aee0562-eb06-9905-2dcd-c18040f24c19",
     "proposedCanonicalName": "Moisés",
-    "aliases": [
-      "Moisés"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15466,9 +15315,8 @@
   {
     "provisionalId": "315449b4-25f3-395b-2582-14d2618843c0",
     "proposedCanonicalName": "Abuda",
-    "aliases": [
-      "Abuda"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15498,9 +15346,8 @@
   {
     "provisionalId": "ce2009c8-3ba5-1eec-7c87-77aaab1eef3d",
     "proposedCanonicalName": "Tiago Real",
-    "aliases": [
-      "Tiago Real"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15530,9 +15377,8 @@
   {
     "provisionalId": "8bc0729c-354a-d23f-1802-169ba53dc27d",
     "proposedCanonicalName": "Raphael Luz",
-    "aliases": [
-      "Raphael Luz"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15562,9 +15408,8 @@
   {
     "provisionalId": "354cb07b-d8ee-a54a-0dbc-853b93f7743e",
     "proposedCanonicalName": "Assuério",
-    "aliases": [
-      "Assuério"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15594,9 +15439,8 @@
   {
     "provisionalId": "91bdca59-7acd-707e-fe58-f86af39e4e32",
     "proposedCanonicalName": "Murilo Henrique",
-    "aliases": [
-      "Murilo Henrique"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15626,9 +15470,8 @@
   {
     "provisionalId": "d78ffb2c-ff74-7516-7eed-4ecf95273425",
     "proposedCanonicalName": "Liniker",
-    "aliases": [
-      "Liniker"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15658,9 +15501,8 @@
   {
     "provisionalId": "ca5b7cc0-4497-aa9e-1e2c-f752fb8a0f54",
     "proposedCanonicalName": "Samuel Rosa",
-    "aliases": [
-      "Samuel Rosa"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15690,9 +15532,8 @@
   {
     "provisionalId": "23d01c8b-8308-2189-3ff2-b8a5852a3baf",
     "proposedCanonicalName": "Léo Bonatini",
-    "aliases": [
-      "Léo Bonatini"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15722,9 +15563,8 @@
   {
     "provisionalId": "9de1edec-b2a8-bc9c-2eb1-bcc13a806478",
     "proposedCanonicalName": "Bruno Mineiro",
-    "aliases": [
-      "Bruno Mineiro"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15754,9 +15594,8 @@
   {
     "provisionalId": "cb48abad-fce0-a753-eb61-49c05ba18c7b",
     "proposedCanonicalName": "Márcio",
-    "aliases": [
-      "Márcio"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15786,9 +15625,8 @@
   {
     "provisionalId": "5843d289-1c96-3413-dab1-63b4ff55372f",
     "proposedCanonicalName": "Ivan",
-    "aliases": [
-      "Ivan"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15818,9 +15656,8 @@
   {
     "provisionalId": "f1386c43-0587-2501-4556-6216f55ca21b",
     "proposedCanonicalName": "Fred",
-    "aliases": [
-      "Fred"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15850,9 +15687,8 @@
   {
     "provisionalId": "43ba9055-edb8-81e3-b974-67bb45b7fac3",
     "proposedCanonicalName": "Anderson Salles",
-    "aliases": [
-      "Anderson Salles"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15882,9 +15718,8 @@
   {
     "provisionalId": "a359b1b6-c5d5-cc2d-8e59-4f480fbdb297",
     "proposedCanonicalName": "Rafael Forster",
-    "aliases": [
-      "Rafael Forster"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15914,9 +15749,8 @@
   {
     "provisionalId": "34d5d5f8-616a-0527-b067-144aeecbd664",
     "proposedCanonicalName": "Artur Vieira",
-    "aliases": [
-      "Artur Vieira"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15946,9 +15780,8 @@
   {
     "provisionalId": "9f118954-4bf8-55dd-dbb2-00e16e07735c",
     "proposedCanonicalName": "Wesley Matos",
-    "aliases": [
-      "Wesley Matos"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -15978,9 +15811,8 @@
   {
     "provisionalId": "5dd7cf7d-4cc3-c7b0-ea51-c74c2611b8d9",
     "proposedCanonicalName": "Diogo Barbosa",
-    "aliases": [
-      "Diogo Barbosa"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16010,9 +15842,8 @@
   {
     "provisionalId": "58a9aa12-4707-4c85-f9e3-134d26c5fb21",
     "proposedCanonicalName": "Ramires",
-    "aliases": [
-      "Ramires"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16042,9 +15873,8 @@
   {
     "provisionalId": "1f1c867b-3e56-be66-ce59-4f4dd7dfc519",
     "proposedCanonicalName": "Patrick",
-    "aliases": [
-      "Patrick"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16074,9 +15904,8 @@
   {
     "provisionalId": "b794065e-3b03-e07b-50c8-e9d9c8a2c6e7",
     "proposedCanonicalName": "Arthur Rezende",
-    "aliases": [
-      "Arthur Rezende"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16106,9 +15935,8 @@
   {
     "provisionalId": "5dbdca8a-8168-2bb1-145c-db86aa308f6c",
     "proposedCanonicalName": "Wendel",
-    "aliases": [
-      "Wendel"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16138,9 +15966,8 @@
   {
     "provisionalId": "7dbf566e-bcb6-85a7-cd49-aab42b37a821",
     "proposedCanonicalName": "Jhon Cley",
-    "aliases": [
-      "Jhon Cley"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16170,9 +15997,8 @@
   {
     "provisionalId": "556089ef-c2ba-811d-0ad4-d9ee5e522d44",
     "proposedCanonicalName": "Léo Lima",
-    "aliases": [
-      "Léo Lima"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16202,9 +16028,8 @@
   {
     "provisionalId": "9cc90ecf-a711-4e6a-b41f-607c034d6acf",
     "proposedCanonicalName": "Daniel Carvalho",
-    "aliases": [
-      "Daniel Carvalho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16234,9 +16059,8 @@
   {
     "provisionalId": "38e6da47-c8c5-0f97-adb4-91af508f00e5",
     "proposedCanonicalName": "Higor Leite",
-    "aliases": [
-      "Higor Leite"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16266,9 +16090,8 @@
   {
     "provisionalId": "130c555c-83cb-a115-cf6c-e0225f1ac38a",
     "proposedCanonicalName": "Léo Gamalho",
-    "aliases": [
-      "Léo Gamalho"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16298,9 +16121,8 @@
   {
     "provisionalId": "be897d3b-91b8-04d8-9d96-8e4f18073e60",
     "proposedCanonicalName": "Rossi",
-    "aliases": [
-      "Rossi"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16330,9 +16152,8 @@
   {
     "provisionalId": "c21e475a-e957-b219-361b-9f5a39cc4c42",
     "proposedCanonicalName": "Cléo",
-    "aliases": [
-      "Cléo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16362,9 +16183,8 @@
   {
     "provisionalId": "4d1cbf2e-cfe5-abc0-b20e-3b3a287b13b1",
     "proposedCanonicalName": "Sueliton",
-    "aliases": [
-      "Sueliton"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16394,9 +16214,8 @@
   {
     "provisionalId": "60b2eb09-4296-b11b-0392-a87f2d13239f",
     "proposedCanonicalName": "Victor Ramos",
-    "aliases": [
-      "Victor Ramos"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16426,9 +16245,8 @@
   {
     "provisionalId": "75c2ba40-afdb-26d9-96dd-05227c7d8bae",
     "proposedCanonicalName": "Renato Cajá",
-    "aliases": [
-      "Renato Cajá"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16458,9 +16276,8 @@
   {
     "provisionalId": "1a3b3d01-0893-7eee-c8b2-16dbb20afc50",
     "proposedCanonicalName": "Sidão",
-    "aliases": [
-      "Sidão"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16490,9 +16307,8 @@
   {
     "provisionalId": "5a74c8aa-cfe3-6c11-f669-39fd16a659a5",
     "proposedCanonicalName": "Rafael Vaz",
-    "aliases": [
-      "Rafael Vaz"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16522,9 +16338,8 @@
   {
     "provisionalId": "f5b34a45-9545-d34a-ba3d-62e4735fa006",
     "proposedCanonicalName": "Fábio Sanches",
-    "aliases": [
-      "Fábio Sanches"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16554,9 +16369,8 @@
   {
     "provisionalId": "4d1af11d-c10b-0997-3cbd-3d0114f536c2",
     "proposedCanonicalName": "Paulo Ricardo",
-    "aliases": [
-      "Paulo Ricardo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16586,9 +16400,8 @@
   {
     "provisionalId": "5325586f-ed73-b773-95c4-52c5ff5a3a4e",
     "proposedCanonicalName": "Iago Mendonça",
-    "aliases": [
-      "Iago Mendonça"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16618,9 +16431,8 @@
   {
     "provisionalId": "599c6928-6593-4ce9-792f-788a1dba2e7c",
     "proposedCanonicalName": "Heron",
-    "aliases": [
-      "Heron"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16650,9 +16462,8 @@
   {
     "provisionalId": "670b84c8-df2a-0353-5927-bef89711f5a4",
     "proposedCanonicalName": "Marcelo Hermes",
-    "aliases": [
-      "Marcelo Hermes"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16682,9 +16493,8 @@
   {
     "provisionalId": "326994d6-911a-eb95-063f-e69aa0bbea6b",
     "proposedCanonicalName": "Alan Ruschel",
-    "aliases": [
-      "Alan Ruschel"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16714,9 +16524,8 @@
   {
     "provisionalId": "a7e80882-3deb-819f-5e1b-99ec541b2f77",
     "proposedCanonicalName": "Yago Felipe",
-    "aliases": [
-      "Yago Felipe"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16746,9 +16555,8 @@
   {
     "provisionalId": "daaa32a6-2797-1413-13da-65714c9556d6",
     "proposedCanonicalName": "Giovanni Augusto",
-    "aliases": [
-      "Giovanni Augusto"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16778,9 +16586,8 @@
   {
     "provisionalId": "3dd55d0a-79cb-f662-c185-b796aac7a3ea",
     "proposedCanonicalName": "Marlone",
-    "aliases": [
-      "Marlone"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16810,9 +16617,8 @@
   {
     "provisionalId": "f66601e1-9c71-f1cd-851c-537cd51ce0e0",
     "proposedCanonicalName": "Leandro Barcia",
-    "aliases": [
-      "Leandro Barcia"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16842,9 +16648,8 @@
   {
     "provisionalId": "673b2507-21f0-b115-0f38-3bdca0f47cf5",
     "proposedCanonicalName": "Vinícius Lopes",
-    "aliases": [
-      "Vinícius Lopes"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16874,9 +16679,8 @@
   {
     "provisionalId": "307fb579-7928-b19f-18d8-3587554c3f17",
     "proposedCanonicalName": "Kayke",
-    "aliases": [
-      "Kayke"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16906,9 +16710,8 @@
   {
     "provisionalId": "c15655ff-01f1-6d47-2216-1995fde461f2",
     "proposedCanonicalName": "Brenner",
-    "aliases": [
-      "Brenner"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16938,9 +16741,8 @@
   {
     "provisionalId": "b60d40f3-cae9-9640-e341-73e9c7cf928f",
     "proposedCanonicalName": "Junior Brandão",
-    "aliases": [
-      "Junior Brandão"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -16970,9 +16772,8 @@
   {
     "provisionalId": "5c26e0a3-0f75-4fa1-dfae-da7708d16d3d",
     "proposedCanonicalName": "Rafael Elias",
-    "aliases": [
-      "Rafael Elias"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17002,9 +16803,8 @@
   {
     "provisionalId": "9ad00c4f-613d-212e-b632-f7fcac6aab9d",
     "proposedCanonicalName": "Daniel Bessa",
-    "aliases": [
-      "Daniel Bessa"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17034,9 +16834,8 @@
   {
     "provisionalId": "7606a3f9-8aa5-cda2-cb3d-54b96ff69a3f",
     "proposedCanonicalName": "Sandro",
-    "aliases": [
-      "Sandro"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17066,9 +16865,8 @@
   {
     "provisionalId": "27c048ba-13a9-6e41-a03e-d7fe7b7b5449",
     "proposedCanonicalName": "Bruno Santos",
-    "aliases": [
-      "Bruno Santos"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17098,9 +16896,8 @@
   {
     "provisionalId": "16c6c157-baa1-e484-7422-2bf23ff6e429",
     "proposedCanonicalName": "Alesson",
-    "aliases": [
-      "Alesson"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17130,8 +16927,8 @@
   {
     "provisionalId": "15a28924-0b37-e8b1-0253-7c946f4404b1",
     "proposedCanonicalName": "Eduardo Simioni",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Eduardo Simioni",
       "Simioni"
     ],
     "sources": [
@@ -17165,9 +16962,8 @@
   {
     "provisionalId": "b463b661-6828-6290-512d-9c9ba6489b4f",
     "proposedCanonicalName": "Martín Rea",
-    "aliases": [
-      "Martín Rea"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17197,9 +16993,8 @@
   {
     "provisionalId": "b894cb0d-192d-a232-1faf-2933d14274bf",
     "proposedCanonicalName": "Yan Souto",
-    "aliases": [
-      "Yan Souto"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17229,9 +17024,8 @@
   {
     "provisionalId": "6d04707c-c79f-6f58-0722-55931a068a7e",
     "proposedCanonicalName": "Sidimar",
-    "aliases": [
-      "Sidimar"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17261,9 +17055,8 @@
   {
     "provisionalId": "29b07eeb-a21e-0062-db7b-bd6c17188edb",
     "proposedCanonicalName": "David Braz",
-    "aliases": [
-      "David Braz"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17293,9 +17086,8 @@
   {
     "provisionalId": "76d18f43-f3d5-2efe-7a05-a2dae16543e4",
     "proposedCanonicalName": "Matheus Babi",
-    "aliases": [
-      "Matheus Babi"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17325,9 +17117,8 @@
   {
     "provisionalId": "6f4fe1ab-a255-eba2-647a-e2a37e279689",
     "proposedCanonicalName": "Higor Meritão",
-    "aliases": [
-      "Higor Meritão"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17357,9 +17148,8 @@
   {
     "provisionalId": "ca4ba453-41a1-1941-99f3-008b9f34fea3",
     "proposedCanonicalName": "Régis",
-    "aliases": [
-      "Régis"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17389,8 +17179,8 @@
   {
     "provisionalId": "49a6579c-a14b-27e5-0d18-e5f8582b5eb2",
     "proposedCanonicalName": "Paulo Baya",
+    "proposedCanonicalNameSource": "primaryName",
     "aliases": [
-      "Paulo Baya",
       "Baya"
     ],
     "sources": [
@@ -17424,9 +17214,8 @@
   {
     "provisionalId": "54305c28-877e-768d-dcb6-3bb92983acc5",
     "proposedCanonicalName": "Thiago Galhardo",
-    "aliases": [
-      "Thiago Galhardo"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",
@@ -17456,9 +17245,8 @@
   {
     "provisionalId": "e9703d8a-525d-c5b1-2cf7-a503bad0c954",
     "proposedCanonicalName": "Rafael Gava",
-    "aliases": [
-      "Rafael Gava"
-    ],
+    "proposedCanonicalNameSource": "primaryName",
+    "aliases": [],
     "sources": [
       {
         "source": "goias_players_dart",

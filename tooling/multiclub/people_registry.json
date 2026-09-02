@@ -1,0 +1,2693 @@
+{
+  "version": 1,
+  "nextSequence": 296,
+  "entries": [
+    {
+      "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+      "canonicalPersonKey": "goias-app:multiclub:person:1",
+      "foundingMemberKeys": [
+        "guess_players:danilo_cunha_da_silva",
+        "squad_members:danilo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+      "canonicalPersonKey": "goias-app:multiclub:person:2",
+      "foundingMemberKeys": [
+        "career_players:danilo",
+        "lineup_matches:danilo#2003_juventude_brA_reacao,2003_santos_brA_reacao"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+      "canonicalPersonKey": "goias-app:multiclub:person:3",
+      "foundingMemberKeys": [
+        "guess_players:nicolas_vichiatto_da_silva",
+        "lineup_matches:nicolas#2026_atleticogo_goiano_final_ida,2026_atleticogo_goiano_final_volta",
+        "squad_members:nicolas"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "28e672db-34c0-5505-b3fa-703cbd422879",
+      "canonicalPersonKey": "goias-app:multiclub:person:4",
+      "foundingMemberKeys": [
+        "lineup_matches:nicolas#2021_csa_brB_g4,2021_guarani_brB_acesso"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+      "canonicalPersonKey": "goias-app:multiclub:person:5",
+      "foundingMemberKeys": [
+        "career_players:michael",
+        "guess_players:michael",
+        "player_identity_references:michael"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "fdea65d0-9c8e-53d4-935b-ffe67d06c44f",
+      "canonicalPersonKey": "goias-app:multiclub:person:6",
+      "foundingMemberKeys": [
+        "lineup_matches:michael#1999_santacruz_brB_titulo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+      "canonicalPersonKey": "goias-app:multiclub:person:7",
+      "foundingMemberKeys": [
+        "goias_players_dart:174",
+        "guess_players:dieguinho",
+        "lineup_matches:dieguinho"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+      "canonicalPersonKey": "goias-app:multiclub:person:8",
+      "foundingMemberKeys": [
+        "career_players:erik",
+        "guess_players:erik",
+        "player_identity_references:erik"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+      "canonicalPersonKey": "goias-app:multiclub:person:9",
+      "foundingMemberKeys": [
+        "guess_players:fabiano",
+        "lineup_matches:fabiano"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+      "canonicalPersonKey": "goias-app:multiclub:person:10",
+      "foundingMemberKeys": [
+        "career_players:tadeu",
+        "guess_players:tadeu_antonio_ferreira",
+        "lineup_matches:tadeu",
+        "player_identity_references:tadeu",
+        "squad_members:tadeu"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+      "canonicalPersonKey": "goias-app:multiclub:person:11",
+      "foundingMemberKeys": [
+        "career_players:walter",
+        "guess_players:walter",
+        "lineup_matches:walter",
+        "player_identity_references:walter"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "494b3a39-970e-5f4c-8756-1cd7068f9a5b",
+      "canonicalPersonKey": "goias-app:multiclub:person:12",
+      "foundingMemberKeys": [
+        "goias_players_dart:59",
+        "guess_players:aldo",
+        "lineup_matches:aldo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "1e95ec1e-d71b-586c-9dc2-f894fee14231",
+      "canonicalPersonKey": "goias-app:multiclub:person:13",
+      "foundingMemberKeys": [
+        "goias_players_dart:37",
+        "guess_players:alexandre",
+        "lineup_matches:alexandre"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d25b36b7-6d4b-588e-b685-042788f4db53",
+      "canonicalPersonKey": "goias-app:multiclub:person:14",
+      "foundingMemberKeys": [
+        "goias_players_dart:32",
+        "guess_players:alvaro",
+        "lineup_matches:alvaro"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "df10a00d-7f7d-504b-8493-5b9530ace6f3",
+      "canonicalPersonKey": "goias-app:multiclub:person:15",
+      "foundingMemberKeys": [
+        "goias_players_dart:25",
+        "guess_players:augusto",
+        "lineup_matches:augusto"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "296aace6-b5da-5fe8-a813-787f3387aafc",
+      "canonicalPersonKey": "goias-app:multiclub:person:16",
+      "foundingMemberKeys": [
+        "guess_players:breno",
+        "lineup_matches:breno"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "23f70f11-2170-5b0e-9795-8d29fe72b8df",
+      "canonicalPersonKey": "goias-app:multiclub:person:17",
+      "foundingMemberKeys": [
+        "goias_players_dart:34",
+        "guess_players:caca",
+        "lineup_matches:caca"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "fe4ae1e3-7c24-5eea-ab42-f5f7fbbd8a72",
+      "canonicalPersonKey": "goias-app:multiclub:person:18",
+      "foundingMemberKeys": [
+        "goias_players_dart:43",
+        "guess_players:caico",
+        "lineup_matches:caico"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b8ac4ea7-2337-5887-9f57-6b6d8ad80492",
+      "canonicalPersonKey": "goias-app:multiclub:person:19",
+      "foundingMemberKeys": [
+        "goias_players_dart:19",
+        "guess_players:dalton",
+        "lineup_matches:dalton"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "2cddddcb-7d72-5799-9637-3dd399cdad31",
+      "canonicalPersonKey": "goias-app:multiclub:person:20",
+      "foundingMemberKeys": [
+        "goias_players_dart:44",
+        "guess_players:dimba",
+        "lineup_matches:dimba",
+        "player_identity_references:dimba"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "46c56b76-419d-55a1-becb-f5571c6a41e0",
+      "canonicalPersonKey": "goias-app:multiclub:person:21",
+      "foundingMemberKeys": [
+        "goias_players_dart:46",
+        "guess_players:esquerdinha",
+        "lineup_matches:esquerdinha"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "dd42b77a-3bbc-541b-bb8a-15ab1549a314",
+      "canonicalPersonKey": "goias-app:multiclub:person:22",
+      "foundingMemberKeys": [
+        "goias_players_dart:30",
+        "guess_players:evandro",
+        "lineup_matches:evandro"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5014c1cc-e0c8-5481-8408-12cdc15d287b",
+      "canonicalPersonKey": "goias-app:multiclub:person:23",
+      "foundingMemberKeys": [
+        "goias_players_dart:38",
+        "guess_players:fabao",
+        "lineup_matches:fabao"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c950c69e-5881-527e-bf47-a9ddfcf28c68",
+      "canonicalPersonKey": "goias-app:multiclub:person:24",
+      "foundingMemberKeys": [
+        "goias_players_dart:21",
+        "guess_players:fagundes",
+        "lineup_matches:fagundes"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "da2f537b-946c-5fd4-a5ec-1db71873c512",
+      "canonicalPersonKey": "goias-app:multiclub:person:25",
+      "foundingMemberKeys": [
+        "guess_players:giovanni",
+        "lineup_matches:giovanni"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a7a0712f-0d35-5659-a2ea-049497f7d8f4",
+      "canonicalPersonKey": "goias-app:multiclub:person:26",
+      "foundingMemberKeys": [
+        "goias_players_dart:47",
+        "guess_players:gustavo",
+        "lineup_matches:gustavo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "92eefd57-f96b-5e79-9bed-bb13d28fed34",
+      "canonicalPersonKey": "goias-app:multiclub:person:27",
+      "foundingMemberKeys": [
+        "goias_players_dart:92",
+        "guess_players:hugo_identity_review",
+        "lineup_matches:hugo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7cb31401-5664-56a4-adf3-e4cbd67a4a54",
+      "canonicalPersonKey": "goias-app:multiclub:person:28",
+      "foundingMemberKeys": [
+        "goias_players_dart:23",
+        "guess_players:indio",
+        "lineup_matches:indio"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "26a56bc3-7d2c-5255-ad00-623e3dee9087",
+      "canonicalPersonKey": "goias-app:multiclub:person:29",
+      "foundingMemberKeys": [
+        "goias_players_dart:29",
+        "guess_players:jaques",
+        "lineup_matches:jaques"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0128bb04-127f-55e4-8ab9-381094e72352",
+      "canonicalPersonKey": "goias-app:multiclub:person:30",
+      "foundingMemberKeys": [
+        "goias_players_dart:65",
+        "guess_players:juliano",
+        "lineup_matches:juliano"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "47d79914-f16c-50f7-a966-2e738ff91f0b",
+      "canonicalPersonKey": "goias-app:multiclub:person:31",
+      "foundingMemberKeys": [
+        "goias_players_dart:22",
+        "guess_players:kleber",
+        "lineup_matches:kleber"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "3b9acdfb-caf9-5e48-9f09-f253788be15a",
+      "canonicalPersonKey": "goias-app:multiclub:person:32",
+      "foundingMemberKeys": [
+        "guess_players:leonardo",
+        "lineup_matches:leonardo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "95239096-6559-550c-a868-20f7f1bc1a49",
+      "canonicalPersonKey": "goias-app:multiclub:person:33",
+      "foundingMemberKeys": [
+        "goias_players_dart:27",
+        "guess_players:lucio",
+        "lineup_matches:lucio"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a31cad8d-ccb0-59be-beee-b7af941c247a",
+      "canonicalPersonKey": "goias-app:multiclub:person:34",
+      "foundingMemberKeys": [
+        "goias_players_dart:12",
+        "guess_players:luvanor",
+        "lineup_matches:luvanor",
+        "player_identity_references:luvanor"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "827f2891-4aaa-50e0-b3d7-67bf2f1d0de5",
+      "canonicalPersonKey": "goias-app:multiclub:person:35",
+      "foundingMemberKeys": [
+        "guess_players:madison",
+        "lineup_matches:madison"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "59b3356d-080e-5154-b1e3-7cc67b3dffae",
+      "canonicalPersonKey": "goias-app:multiclub:person:36",
+      "foundingMemberKeys": [
+        "goias_players_dart:41",
+        "guess_players:maraba",
+        "lineup_matches:maraba"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b4e91a16-f498-5caf-a042-cb795c33dfba",
+      "canonicalPersonKey": "goias-app:multiclub:person:37",
+      "foundingMemberKeys": [
+        "guess_players:maranhao",
+        "lineup_matches:maranhao"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e3723fb6-1c7a-5512-8547-50d69a04da99",
+      "canonicalPersonKey": "goias-app:multiclub:person:38",
+      "foundingMemberKeys": [
+        "goias_players_dart:89",
+        "guess_players:marcao_identity_review",
+        "lineup_matches:marcao"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "98e0de13-e281-59f4-b422-b6b7e674fc5e",
+      "canonicalPersonKey": "goias-app:multiclub:person:39",
+      "foundingMemberKeys": [
+        "goias_players_dart:31",
+        "guess_players:nenem",
+        "lineup_matches:nenem"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "caf80535-2862-5309-8c1e-92ab0dbdaea3",
+      "canonicalPersonKey": "goias-app:multiclub:person:40",
+      "foundingMemberKeys": [
+        "goias_players_dart:13",
+        "guess_players:niltinho",
+        "lineup_matches:niltinho"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "19fba8e8-9899-5471-8426-7b83e73b35a0",
+      "canonicalPersonKey": "goias-app:multiclub:person:41",
+      "foundingMemberKeys": [
+        "guess_players:nonato",
+        "lineup_matches:nonato"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "25be25cc-afc5-52c4-80fe-913db916e463",
+      "canonicalPersonKey": "goias-app:multiclub:person:42",
+      "foundingMemberKeys": [
+        "goias_players_dart:26",
+        "guess_players:reidner",
+        "lineup_matches:reidner"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e3f11445-639c-527e-8b02-f11bd089d9bf",
+      "canonicalPersonKey": "goias-app:multiclub:person:43",
+      "foundingMemberKeys": [
+        "goias_players_dart:172",
+        "guess_players:reynaldo",
+        "lineup_matches:reynaldo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "cda9f7e9-e37e-5aed-9929-2fec572f843c",
+      "canonicalPersonKey": "goias-app:multiclub:person:44",
+      "foundingMemberKeys": [
+        "goias_players_dart:17",
+        "guess_players:richard",
+        "lineup_matches:richard"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b098e3d4-85d3-5ee3-b163-9d270ec1403c",
+      "canonicalPersonKey": "goias-app:multiclub:person:45",
+      "foundingMemberKeys": [
+        "goias_players_dart:67",
+        "guess_players:romerito",
+        "lineup_matches:romerito"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "53682877-ae8b-59bc-b5e8-86fc35e7a3ed",
+      "canonicalPersonKey": "goias-app:multiclub:person:46",
+      "foundingMemberKeys": [
+        "guess_players:romeu",
+        "lineup_matches:romeu"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "3f7ae1ce-489e-5f70-9ba4-53760fe0dddb",
+      "canonicalPersonKey": "goias-app:multiclub:person:47",
+      "foundingMemberKeys": [
+        "guess_players:simao",
+        "lineup_matches:simao"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6a08c7de-fba8-5a6e-a923-cef1dd536266",
+      "canonicalPersonKey": "goias-app:multiclub:person:48",
+      "foundingMemberKeys": [
+        "guess_players:vampeta",
+        "lineup_matches:vampeta"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "905d87ae-5b34-563a-9f43-713cde240764",
+      "canonicalPersonKey": "goias-app:multiclub:person:49",
+      "foundingMemberKeys": [
+        "goias_players_dart:20",
+        "guess_players:wallace",
+        "lineup_matches:wallace"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e04f2cf9-3f35-52b4-9f18-e5d4bf23f6a5",
+      "canonicalPersonKey": "goias-app:multiclub:person:50",
+      "foundingMemberKeys": [
+        "goias_players_dart:52",
+        "guess_players:wando",
+        "lineup_matches:wando"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0ae93f99-77d3-54fe-863c-198f1a5f5002",
+      "canonicalPersonKey": "goias-app:multiclub:person:51",
+      "foundingMemberKeys": [
+        "career_players:grafite",
+        "guess_players:grafite",
+        "lineup_matches:grafite"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+      "canonicalPersonKey": "goias-app:multiclub:person:52",
+      "foundingMemberKeys": [
+        "career_players:evair",
+        "guess_players:evair"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "be4bf8d6-5b57-532d-bc56-118e7970a01f",
+      "canonicalPersonKey": "goias-app:multiclub:person:53",
+      "foundingMemberKeys": [
+        "career_players:bruno_henrique",
+        "guess_players:bruno_henrique"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+      "canonicalPersonKey": "goias-app:multiclub:person:54",
+      "foundingMemberKeys": [
+        "career_players:welliton",
+        "guess_players:welliton_identity_review",
+        "lineup_matches:welliton"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0fac94c7-87fc-5061-b7a4-29ea9f620794",
+      "canonicalPersonKey": "goias-app:multiclub:person:55",
+      "foundingMemberKeys": [
+        "career_players:pedro_raul",
+        "guess_players:pedro_raul"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "04981cf4-75f8-556e-9e03-9a472f2a8619",
+      "canonicalPersonKey": "goias-app:multiclub:person:56",
+      "foundingMemberKeys": [
+        "career_players:jadilson",
+        "guess_players:jadilson",
+        "lineup_matches:jadilson"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e02185f6-7fc3-5ae6-8fc2-60030c821025",
+      "canonicalPersonKey": "goias-app:multiclub:person:57",
+      "foundingMemberKeys": [
+        "career_players:souza",
+        "guess_players:souza",
+        "lineup_matches:souza"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "331ed712-5fbe-5f97-84cf-5e12bd3bd6ab",
+      "canonicalPersonKey": "goias-app:multiclub:person:58",
+      "foundingMemberKeys": [
+        "career_players:roni",
+        "guess_players:roni",
+        "lineup_matches:roni"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "8fa80d15-d0f5-552e-b029-b8df5771bceb",
+      "canonicalPersonKey": "goias-app:multiclub:person:59",
+      "foundingMemberKeys": [
+        "career_players:vitor",
+        "guess_players:vitor",
+        "lineup_matches:vitor"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "17620cb8-7492-5068-a43c-51bf857b937b",
+      "canonicalPersonKey": "goias-app:multiclub:person:60",
+      "foundingMemberKeys": [
+        "career_players:marcelo_rangel",
+        "guess_players:marcelo_rangel",
+        "lineup_matches:marcelo rangel"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9293eb26-0bed-50d2-9168-6099dbc5a08a",
+      "canonicalPersonKey": "goias-app:multiclub:person:61",
+      "foundingMemberKeys": [
+        "career_players:apodi",
+        "guess_players:apodi",
+        "lineup_matches:apodi"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a14e6a0e-ea6c-5bcc-ad5e-c8cf1d9a31bd",
+      "canonicalPersonKey": "goias-app:multiclub:person:62",
+      "foundingMemberKeys": [
+        "guess_players:alef_manga",
+        "lineup_matches:alef manga"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "bad2882d-f170-57cd-961b-2fb662a29715",
+      "canonicalPersonKey": "goias-app:multiclub:person:63",
+      "foundingMemberKeys": [
+        "goias_players_dart:28",
+        "guess_players:alex_dias",
+        "lineup_matches:alex dias"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "796a3e44-45f9-52e9-bcd2-b66f2820b2c7",
+      "canonicalPersonKey": "goias-app:multiclub:person:64",
+      "foundingMemberKeys": [
+        "goias_players_dart:56",
+        "guess_players:andre_dias",
+        "lineup_matches:andre dias"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7bc40235-75da-587c-a4c7-cca50fa6fb83",
+      "canonicalPersonKey": "goias-app:multiclub:person:65",
+      "foundingMemberKeys": [
+        "goias_players_dart:62",
+        "guess_players:andre_leone",
+        "lineup_matches:andre leone"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5afaf949-65bc-590d-a9fe-45d47cb34664",
+      "canonicalPersonKey": "goias-app:multiclub:person:66",
+      "foundingMemberKeys": [
+        "guess_players:arthur_caike",
+        "lineup_matches:arthur caike"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "845d4d69-a6c5-5f05-8fed-fc7364623252",
+      "canonicalPersonKey": "goias-app:multiclub:person:67",
+      "foundingMemberKeys": [
+        "guess_players:caique_sa",
+        "lineup_matches:caique sa"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "523b9905-c01a-573d-a135-7cf42475179c",
+      "canonicalPersonKey": "goias-app:multiclub:person:68",
+      "foundingMemberKeys": [
+        "goias_players_dart:147",
+        "guess_players:carlos_eduardo",
+        "lineup_matches:carlos eduardo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7d9ccf69-9e18-5d85-8578-c12f569135b1",
+      "canonicalPersonKey": "goias-app:multiclub:person:69",
+      "foundingMemberKeys": [
+        "goias_players_dart:64",
+        "guess_players:cleber_gaucho",
+        "lineup_matches:cleber gaucho"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6bbbd7cc-1b35-51c6-bfe9-fbcf8d934348",
+      "canonicalPersonKey": "goias-app:multiclub:person:70",
+      "foundingMemberKeys": [
+        "goias_players_dart:48",
+        "guess_players:cleber_goiano",
+        "lineup_matches:cleber goiano"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c9ede558-0b0a-59d3-b965-7e990774a5d8",
+      "canonicalPersonKey": "goias-app:multiclub:person:71",
+      "foundingMemberKeys": [
+        "goias_players_dart:49",
+        "guess_players:danilo_portugal",
+        "lineup_matches:danilo portugal"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "1927e2ea-da7a-5df4-87f5-6df580353d8e",
+      "canonicalPersonKey": "goias-app:multiclub:person:72",
+      "foundingMemberKeys": [
+        "goias_players_dart:132",
+        "guess_players:david_duarte",
+        "lineup_matches:david duarte"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "bbc75432-9c64-5e9e-b68b-f0937957ffc7",
+      "canonicalPersonKey": "goias-app:multiclub:person:73",
+      "foundingMemberKeys": [
+        "goias_players_dart:150",
+        "guess_players:eduardo_brock",
+        "lineup_matches:eduardo brock"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "fab74005-7e57-5edf-88ec-6fc2e3d65100",
+      "canonicalPersonKey": "goias-app:multiclub:person:74",
+      "foundingMemberKeys": [
+        "goias_players_dart:15",
+        "guess_players:eduardo_heuser",
+        "lineup_matches:eduardo heuser"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7b39fea0-9d91-53f7-bce5-9c84dddf76c8",
+      "canonicalPersonKey": "goias-app:multiclub:person:75",
+      "foundingMemberKeys": [
+        "goias_players_dart:33",
+        "guess_players:fernando_nunes",
+        "lineup_matches:fernando nunes"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "eb317c24-cd92-5810-abc7-8a971e07f1b1",
+      "canonicalPersonKey": "goias-app:multiclub:person:76",
+      "foundingMemberKeys": [
+        "goias_players_dart:51",
+        "guess_players:gil_baiano",
+        "lineup_matches:gil baiano"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "07c659c2-2490-5ab5-a32c-6b2804e2efdc",
+      "canonicalPersonKey": "goias-app:multiclub:person:77",
+      "foundingMemberKeys": [
+        "goias_players_dart:18",
+        "guess_players:jorge_batata",
+        "lineup_matches:jorge batata"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "ee7c0f46-3a02-56da-9e37-0a98147ead74",
+      "canonicalPersonKey": "goias-app:multiclub:person:78",
+      "foundingMemberKeys": [
+        "guess_players:julio_cesar_identity_review",
+        "lineup_matches:julio cesar"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "738ce1fa-32fe-5346-bba1-94c4d2d44d0d",
+      "canonicalPersonKey": "goias-app:multiclub:person:79",
+      "foundingMemberKeys": [
+        "goias_players_dart:55",
+        "guess_players:julio_santos",
+        "lineup_matches:julio santos"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a8b4e639-0d8f-58eb-9a44-6fdcb8b870d1",
+      "canonicalPersonKey": "goias-app:multiclub:person:80",
+      "foundingMemberKeys": [
+        "goias_players_dart:103",
+        "guess_players:junior_vicosa",
+        "lineup_matches:junior vicosa"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7538bdb8-a23c-5c48-abcf-7df8b96eaa43",
+      "canonicalPersonKey": "goias-app:multiclub:person:81",
+      "foundingMemberKeys": [
+        "goias_players_dart:39",
+        "guess_players:leandro_smith",
+        "lineup_matches:leandro smith"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "4625f4ac-dfc8-59e0-a463-f7d8795b56e1",
+      "canonicalPersonKey": "goias-app:multiclub:person:82",
+      "foundingMemberKeys": [
+        "goias_players_dart:137",
+        "guess_players:leo_sena",
+        "lineup_matches:leo sena"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "ca038acb-a248-5b26-8b9a-5f9f8a590f64",
+      "canonicalPersonKey": "goias-app:multiclub:person:83",
+      "foundingMemberKeys": [
+        "guess_players:luan_dias",
+        "lineup_matches:luan dias"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "10bbe48b-d9d9-5b73-852b-054f61817dde",
+      "canonicalPersonKey": "goias-app:multiclub:person:84",
+      "foundingMemberKeys": [
+        "goias_players_dart:61",
+        "guess_players:luciano_almeida",
+        "lineup_matches:luciano almeida"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "98976e8b-d001-54da-aacc-c8ae7abc5aa2",
+      "canonicalPersonKey": "goias-app:multiclub:person:85",
+      "foundingMemberKeys": [
+        "goias_players_dart:40",
+        "guess_players:michel_santana",
+        "lineup_matches:michel santana"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "ad561e0d-ad59-5c27-a5ab-34395047c20a",
+      "canonicalPersonKey": "goias-app:multiclub:person:86",
+      "foundingMemberKeys": [
+        "goias_players_dart:45",
+        "guess_players:pedro_paulo",
+        "lineup_matches:pedro paulo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "80453d6a-6cd6-54fb-8706-710ed293faf6",
+      "canonicalPersonKey": "goias-app:multiclub:person:87",
+      "foundingMemberKeys": [
+        "goias_players_dart:54",
+        "guess_players:rafael_dias",
+        "lineup_matches:rafael dias"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "f3bb7ba1-b3b4-5492-8359-d0b98e494430",
+      "canonicalPersonKey": "goias-app:multiclub:person:88",
+      "foundingMemberKeys": [
+        "guess_players:renato_silva",
+        "lineup_matches:renato silva"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "4a791dac-a6b6-53a6-9c51-54efcf9a7051",
+      "canonicalPersonKey": "goias-app:multiclub:person:89",
+      "foundingMemberKeys": [
+        "goias_players_dart:53",
+        "guess_players:rodrigo_calaca",
+        "lineup_matches:rodrigo calaca"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d3350033-eab8-53b8-bdf2-cf26faaf3409",
+      "canonicalPersonKey": "goias-app:multiclub:person:90",
+      "foundingMemberKeys": [
+        "goias_players_dart:58",
+        "guess_players:rogerio_correa",
+        "lineup_matches:rogerio correa"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "f19f0f24-d854-5199-80a4-d1c2b961ce4a",
+      "canonicalPersonKey": "goias-app:multiclub:person:91",
+      "foundingMemberKeys": [
+        "goias_players_dart:24",
+        "guess_players:silvio_criciuma",
+        "lineup_matches:silvio criciuma",
+        "player_identity_references:silvio_criciuma"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "ae05d013-8ede-587d-9ed3-344d561666c3",
+      "canonicalPersonKey": "goias-app:multiclub:person:92",
+      "foundingMemberKeys": [
+        "goias_players_dart:42",
+        "guess_players:tiago_fraga",
+        "lineup_matches:tiago fraga"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7ed1ac03-2a62-52b0-9569-c981f5adc5c9",
+      "canonicalPersonKey": "goias-app:multiclub:person:93",
+      "foundingMemberKeys": [
+        "goias_players_dart:14",
+        "guess_players:tulio_maravilha",
+        "lineup_matches:tulio maravilha"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "f6c4cd51-9a60-5054-a195-3bc9fe4ef895",
+      "canonicalPersonKey": "goias-app:multiclub:person:94",
+      "foundingMemberKeys": [
+        "goias_players_dart:16",
+        "guess_players:wilson_goiano",
+        "lineup_matches:wilson goiano"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+      "canonicalPersonKey": "goias-app:multiclub:person:95",
+      "foundingMemberKeys": [
+        "guess_players:ezequiel_alves_de_oliveira_vieira",
+        "squad_members:ezequiel"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+      "canonicalPersonKey": "goias-app:multiclub:person:96",
+      "foundingMemberKeys": [
+        "guess_players:murillo_carvalho_victorio",
+        "squad_members:murillo_victorio"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+      "canonicalPersonKey": "goias-app:multiclub:person:97",
+      "foundingMemberKeys": [
+        "goias_players_dart:192",
+        "guess_players:thiago_rodrigues_de_oliveira_nogueira",
+        "squad_members:thiago_rodrigues"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+      "canonicalPersonKey": "goias-app:multiclub:person:98",
+      "foundingMemberKeys": [
+        "goias_players_dart:210",
+        "guess_players:luis_fellipe_campos_doria",
+        "lineup_matches:luisao",
+        "squad_members:luisao"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+      "canonicalPersonKey": "goias-app:multiclub:person:99",
+      "foundingMemberKeys": [
+        "goias_players_dart:193",
+        "guess_players:lucas_ribeiro_dos_santos",
+        "lineup_matches:lucas ribeiro",
+        "squad_members:lucas_ribeiro"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+      "canonicalPersonKey": "goias-app:multiclub:person:100",
+      "foundingMemberKeys": [
+        "guess_players:luiz_felipe_do_nascimento_dos_santos",
+        "squad_members:luiz_felipe"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+      "canonicalPersonKey": "goias-app:multiclub:person:101",
+      "foundingMemberKeys": [
+        "guess_players:ramon_menezes_roma",
+        "squad_members:ramon_menezes"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+      "canonicalPersonKey": "goias-app:multiclub:person:102",
+      "foundingMemberKeys": [
+        "guess_players:murilo_camara_saquetti_chimelo_pereira",
+        "squad_members:murilo_camara"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+      "canonicalPersonKey": "goias-app:multiclub:person:103",
+      "foundingMemberKeys": [
+        "guess_players:rodrigo_alves_soares",
+        "squad_members:rodrigo_soares"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+      "canonicalPersonKey": "goias-app:multiclub:person:104",
+      "foundingMemberKeys": [
+        "guess_players:marcos_vinicius_da_silva_santos",
+        "squad_members:marcos_vinicius"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+      "canonicalPersonKey": "goias-app:multiclub:person:105",
+      "foundingMemberKeys": [
+        "guess_players:djalma_antonio_da_silva_filho",
+        "squad_members:djalma"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+      "canonicalPersonKey": "goias-app:multiclub:person:106",
+      "foundingMemberKeys": [
+        "goias_players_dart:213",
+        "guess_players:joao_paulo_ferreira_lourenco",
+        "lineup_matches:lourenco",
+        "squad_members:lourenco"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+      "canonicalPersonKey": "goias-app:multiclub:person:107",
+      "foundingMemberKeys": [
+        "goias_players_dart:211",
+        "guess_players:luiz_filipe_da_rosa_machado",
+        "lineup_matches:filipe machado",
+        "squad_members:filipe_machado"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "747cb968-a339-586c-94cf-583a3e0c3296",
+      "canonicalPersonKey": "goias-app:multiclub:person:108",
+      "foundingMemberKeys": [
+        "guess_players:guilherme_baldoria_de_camargo",
+        "squad_members:baldoria"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+      "canonicalPersonKey": "goias-app:multiclub:person:109",
+      "foundingMemberKeys": [
+        "goias_players_dart:133",
+        "guess_players:adilson_dos_anjos_oliveira",
+        "lineup_matches:juninho",
+        "squad_members:juninho"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+      "canonicalPersonKey": "goias-app:multiclub:person:110",
+      "foundingMemberKeys": [
+        "guess_players:lucas_rodrigues_moreira_costa",
+        "squad_members:lucas_rodrigues"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+      "canonicalPersonKey": "goias-app:multiclub:person:111",
+      "foundingMemberKeys": [
+        "goias_players_dart:212",
+        "guess_players:geirton_marques_aires",
+        "lineup_matches:gege",
+        "squad_members:gege"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+      "canonicalPersonKey": "goias-app:multiclub:person:112",
+      "foundingMemberKeys": [
+        "goias_players_dart:112",
+        "guess_players:lucas_rafael_araujo_lima",
+        "lineup_matches:lucas lima",
+        "squad_members:lucas_lima"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+      "canonicalPersonKey": "goias-app:multiclub:person:113",
+      "foundingMemberKeys": [
+        "guess_players:brayann_brito_batista",
+        "squad_members:brayann"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+      "canonicalPersonKey": "goias-app:multiclub:person:114",
+      "foundingMemberKeys": [
+        "goias_players_dart:205",
+        "guess_players:wellington_soares_da_silva",
+        "lineup_matches:wellington rato",
+        "squad_members:wellington_rato"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+      "canonicalPersonKey": "goias-app:multiclub:person:115",
+      "foundingMemberKeys": [
+        "goias_players_dart:208",
+        "guess_players:pedro_junqueira_de_oliveira",
+        "lineup_matches:pedrinho",
+        "squad_members:pedrinho"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+      "canonicalPersonKey": "goias-app:multiclub:person:116",
+      "foundingMemberKeys": [
+        "goias_players_dart:207",
+        "guess_players:anselmo_ramon_alves_herculano",
+        "lineup_matches:anselmo ramon",
+        "squad_members:anselmo_ramon"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+      "canonicalPersonKey": "goias-app:multiclub:person:117",
+      "foundingMemberKeys": [
+        "guess_players:carlos_eduardo_amaral_pereira_de_castro",
+        "squad_members:cadu"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+      "canonicalPersonKey": "goias-app:multiclub:person:118",
+      "foundingMemberKeys": [
+        "guess_players:luiz_felipe_clemente_de_almeida",
+        "squad_members:felipe_clemente"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+      "canonicalPersonKey": "goias-app:multiclub:person:119",
+      "foundingMemberKeys": [
+        "goias_players_dart:214",
+        "guess_players:jean_carlos_alves_ferreira",
+        "lineup_matches:jean carlos",
+        "squad_members:jean_carlos"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "140ba628-c222-53a5-8621-a774092a125b",
+      "canonicalPersonKey": "goias-app:multiclub:person:120",
+      "foundingMemberKeys": [
+        "guess_players:halerrandrio_dos_santos_feitosa",
+        "squad_members:halerrandrio"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+      "canonicalPersonKey": "goias-app:multiclub:person:121",
+      "foundingMemberKeys": [
+        "guess_players:esli_samuel_garcia_cordero",
+        "squad_members:esli_garcia"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+      "canonicalPersonKey": "goias-app:multiclub:person:122",
+      "foundingMemberKeys": [
+        "guess_players:carlos_eduardo_de_sousa_leopoldino",
+        "squad_members:kadu_sousa"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+      "canonicalPersonKey": "goias-app:multiclub:person:123",
+      "foundingMemberKeys": [
+        "career_players:fernandao",
+        "guess_players:fernandao",
+        "lineup_matches:fernandao",
+        "player_identity_references:fernandao"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+      "canonicalPersonKey": "goias-app:multiclub:person:124",
+      "foundingMemberKeys": [
+        "career_players:josue",
+        "guess_players:josue",
+        "lineup_matches:josue",
+        "player_identity_references:josue"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+      "canonicalPersonKey": "goias-app:multiclub:person:125",
+      "foundingMemberKeys": [
+        "career_players:dudu_cearense",
+        "guess_players:dudu_cearense",
+        "lineup_matches:dudu cearense"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+      "canonicalPersonKey": "goias-app:multiclub:person:126",
+      "foundingMemberKeys": [
+        "career_players:rafael_toloi",
+        "guess_players:rafael_toloi",
+        "lineup_matches:rafael toloi",
+        "player_identity_references:rafael_toloi"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+      "canonicalPersonKey": "goias-app:multiclub:person:127",
+      "foundingMemberKeys": [
+        "career_players:rafael_moura",
+        "guess_players:rafael_moura",
+        "lineup_matches:rafael moura",
+        "player_identity_references:rafael_moura"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+      "canonicalPersonKey": "goias-app:multiclub:person:128",
+      "foundingMemberKeys": [
+        "career_players:araujo",
+        "guess_players:araujo",
+        "lineup_matches:araujo",
+        "player_identity_references:araujo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+      "canonicalPersonKey": "goias-app:multiclub:person:129",
+      "foundingMemberKeys": [
+        "career_players:ernando",
+        "guess_players:ernando",
+        "lineup_matches:ernando"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+      "canonicalPersonKey": "goias-app:multiclub:person:130",
+      "foundingMemberKeys": [
+        "career_players:iarley",
+        "guess_players:iarley",
+        "player_identity_references:iarley"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+      "canonicalPersonKey": "goias-app:multiclub:person:131",
+      "foundingMemberKeys": [
+        "career_players:paulo_baier",
+        "guess_players:paulo_baier",
+        "lineup_matches:paulo baier",
+        "player_identity_references:paulo_baier"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+      "canonicalPersonKey": "goias-app:multiclub:person:132",
+      "foundingMemberKeys": [
+        "career_players:ricardo_goulart",
+        "guess_players:ricardo_goulart",
+        "lineup_matches:ricardo goulart",
+        "player_identity_references:ricardo_goulart"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+      "canonicalPersonKey": "goias-app:multiclub:person:133",
+      "foundingMemberKeys": [
+        "career_players:rodrigo_tabata",
+        "guess_players:rodrigo_tabata",
+        "lineup_matches:rodrigo tabata",
+        "player_identity_references:rodrigo_tabata"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+      "canonicalPersonKey": "goias-app:multiclub:person:134",
+      "foundingMemberKeys": [
+        "career_players:egidio",
+        "guess_players:egidio",
+        "lineup_matches:egidio"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+      "canonicalPersonKey": "goias-app:multiclub:person:135",
+      "foundingMemberKeys": [
+        "career_players:harlei",
+        "guess_players:harlei",
+        "lineup_matches:harlei",
+        "player_identity_references:harlei"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7dcb9ad0-b573-5261-aa53-736c3c9b96aa",
+      "canonicalPersonKey": "goias-app:multiclub:person:136",
+      "foundingMemberKeys": [
+        "career_players:dill",
+        "player_identity_references:dill"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6416b152-ed92-52fc-8f3f-6027800dddaa",
+      "canonicalPersonKey": "goias-app:multiclub:person:137",
+      "foundingMemberKeys": [
+        "guess_players:amaral",
+        "lineup_matches:amaral",
+        "player_identity_references:amaral"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d8600945-4f69-5c47-a42d-662921fa9557",
+      "canonicalPersonKey": "goias-app:multiclub:person:138",
+      "foundingMemberKeys": [
+        "goias_players_dart:173",
+        "guess_players:artur",
+        "lineup_matches:artur"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+      "canonicalPersonKey": "goias-app:multiclub:person:139",
+      "foundingMemberKeys": [
+        "goias_players_dart:182",
+        "guess_players:bruno_melo",
+        "lineup_matches:bruno melo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+      "canonicalPersonKey": "goias-app:multiclub:person:140",
+      "foundingMemberKeys": [
+        "goias_players_dart:176",
+        "guess_players:caio_vinicius",
+        "lineup_matches:caio vinicius"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "02a0df33-8a89-5b78-8011-00868b240029",
+      "canonicalPersonKey": "goias-app:multiclub:person:141",
+      "foundingMemberKeys": [
+        "goias_players_dart:90",
+        "guess_players:carlos_alberto",
+        "lineup_matches:carlos alberto"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+      "canonicalPersonKey": "goias-app:multiclub:person:142",
+      "foundingMemberKeys": [
+        "goias_players_dart:177",
+        "guess_players:dada_belmonte",
+        "lineup_matches:dada belmonte"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "68880467-49ea-5661-8f08-2a177a060558",
+      "canonicalPersonKey": "goias-app:multiclub:person:143",
+      "foundingMemberKeys": [
+        "goias_players_dart:106",
+        "guess_players:david",
+        "lineup_matches:david"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+      "canonicalPersonKey": "goias-app:multiclub:person:144",
+      "foundingMemberKeys": [
+        "goias_players_dart:209",
+        "guess_players:diego_caito",
+        "lineup_matches:diego caito"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+      "canonicalPersonKey": "goias-app:multiclub:person:145",
+      "foundingMemberKeys": [
+        "goias_players_dart:188",
+        "guess_players:diego_goncalves",
+        "lineup_matches:diego goncalves"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e23bec2f-5da1-5544-ae02-7e97b9136bb6",
+      "canonicalPersonKey": "goias-app:multiclub:person:146",
+      "foundingMemberKeys": [
+        "guess_players:douglas",
+        "lineup_matches:douglas"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+      "canonicalPersonKey": "goias-app:multiclub:person:147",
+      "foundingMemberKeys": [
+        "goias_players_dart:104",
+        "guess_players:eduardo_sasha",
+        "lineup_matches:eduardo sasha"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+      "canonicalPersonKey": "goias-app:multiclub:person:148",
+      "foundingMemberKeys": [
+        "goias_players_dart:175",
+        "guess_players:elvis",
+        "lineup_matches:elvis"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+      "canonicalPersonKey": "goias-app:multiclub:person:149",
+      "foundingMemberKeys": [
+        "goias_players_dart:185",
+        "guess_players:everton_morelli",
+        "lineup_matches:everton morelli"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+      "canonicalPersonKey": "goias-app:multiclub:person:150",
+      "foundingMemberKeys": [
+        "goias_players_dart:179",
+        "guess_players:fellipe_bastos",
+        "lineup_matches:fellipe bastos"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "645725d2-4a9b-596e-bfae-7436af12ff59",
+      "canonicalPersonKey": "goias-app:multiclub:person:151",
+      "foundingMemberKeys": [
+        "guess_players:gonzalo_freitas",
+        "lineup_matches:gonzalo freitas"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+      "canonicalPersonKey": "goias-app:multiclub:person:152",
+      "foundingMemberKeys": [
+        "goias_players_dart:206",
+        "guess_players:jaja",
+        "lineup_matches:jaja"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+      "canonicalPersonKey": "goias-app:multiclub:person:153",
+      "foundingMemberKeys": [
+        "goias_players_dart:186",
+        "guess_players:julian_palacios",
+        "lineup_matches:julian palacios"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+      "canonicalPersonKey": "goias-app:multiclub:person:154",
+      "foundingMemberKeys": [
+        "goias_players_dart:181",
+        "guess_players:lucas_halter",
+        "lineup_matches:lucas halter"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6d1615fb-9bab-5a4f-851b-7c4b74f564c7",
+      "canonicalPersonKey": "goias-app:multiclub:person:155",
+      "foundingMemberKeys": [
+        "guess_players:lucas_lovat",
+        "lineup_matches:lucas lovat"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+      "canonicalPersonKey": "goias-app:multiclub:person:156",
+      "foundingMemberKeys": [
+        "goias_players_dart:180",
+        "guess_players:maguinho",
+        "lineup_matches:maguinho"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5d1b418d-b0eb-59bf-a7c3-c622a1569e57",
+      "canonicalPersonKey": "goias-app:multiclub:person:157",
+      "foundingMemberKeys": [
+        "guess_players:marcelo_costa",
+        "lineup_matches:marcelo costa"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+      "canonicalPersonKey": "goias-app:multiclub:person:158",
+      "foundingMemberKeys": [
+        "goias_players_dart:187",
+        "guess_players:matheus_peixoto",
+        "lineup_matches:matheus peixoto"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+      "canonicalPersonKey": "goias-app:multiclub:person:159",
+      "foundingMemberKeys": [
+        "goias_players_dart:194",
+        "guess_players:messias",
+        "lineup_matches:messias"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+      "canonicalPersonKey": "goias-app:multiclub:person:160",
+      "foundingMemberKeys": [
+        "goias_players_dart:94",
+        "guess_players:otacilio_neto",
+        "lineup_matches:otacilio neto"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6f6e77e6-237d-59bf-bf01-9f2710377af3",
+      "canonicalPersonKey": "goias-app:multiclub:person:161",
+      "foundingMemberKeys": [
+        "guess_players:rafael_lacerda",
+        "lineup_matches:rafael lacerda"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+      "canonicalPersonKey": "goias-app:multiclub:person:162",
+      "foundingMemberKeys": [
+        "goias_players_dart:99",
+        "guess_players:ramon",
+        "lineup_matches:ramon"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "38149930-5985-56fe-9832-cd101ea3d501",
+      "canonicalPersonKey": "goias-app:multiclub:person:163",
+      "foundingMemberKeys": [
+        "guess_players:renan",
+        "lineup_matches:renan"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+      "canonicalPersonKey": "goias-app:multiclub:person:164",
+      "foundingMemberKeys": [
+        "goias_players_dart:100",
+        "guess_players:renan_oliveira",
+        "lineup_matches:renan oliveira"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "dfc91f87-d812-54c6-b759-fe3761000752",
+      "canonicalPersonKey": "goias-app:multiclub:person:165",
+      "foundingMemberKeys": [
+        "guess_players:rodrigo",
+        "lineup_matches:rodrigo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "77241a5f-1e7c-5a5e-be50-495dcf1438e4",
+      "canonicalPersonKey": "goias-app:multiclub:person:166",
+      "foundingMemberKeys": [
+        "guess_players:rodrigo_andrade",
+        "lineup_matches:rodrigo andrade"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+      "canonicalPersonKey": "goias-app:multiclub:person:167",
+      "foundingMemberKeys": [
+        "goias_players_dart:183",
+        "guess_players:sander",
+        "lineup_matches:sander"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+      "canonicalPersonKey": "goias-app:multiclub:person:168",
+      "foundingMemberKeys": [
+        "goias_players_dart:101",
+        "guess_players:thiago_mendes",
+        "lineup_matches:thiago mendes"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5ee54a6c-45ec-50dd-bc29-d5d3ac29d2a9",
+      "canonicalPersonKey": "goias-app:multiclub:person:169",
+      "foundingMemberKeys": [
+        "guess_players:titi",
+        "lineup_matches:titi"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+      "canonicalPersonKey": "goias-app:multiclub:person:170",
+      "foundingMemberKeys": [
+        "goias_players_dart:88",
+        "guess_players:valmir_lucas",
+        "lineup_matches:valmir lucas"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "3083606c-a924-5f61-8477-1381c6bf2a7e",
+      "canonicalPersonKey": "goias-app:multiclub:person:171",
+      "foundingMemberKeys": [
+        "guess_players:vinicius",
+        "lineup_matches:vinicius"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9a4c2c66-0936-5921-8714-95714db79daa",
+      "canonicalPersonKey": "goias-app:multiclub:person:172",
+      "foundingMemberKeys": [
+        "goias_players_dart:96",
+        "guess_players:wellington_saci",
+        "lineup_matches:wellington saci"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c652d7a2-e1cc-51cc-b349-cb1afa86e63b",
+      "canonicalPersonKey": "goias-app:multiclub:person:173",
+      "foundingMemberKeys": [
+        "guess_players:willean_lepo",
+        "lineup_matches:willean lepo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "03fca98b-17cd-5484-838d-6690bb677f70",
+      "canonicalPersonKey": "goias-app:multiclub:person:174",
+      "foundingMemberKeys": [
+        "goias_players_dart:105",
+        "guess_players:william_matheus",
+        "lineup_matches:william matheus"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+      "canonicalPersonKey": "goias-app:multiclub:person:175",
+      "foundingMemberKeys": [
+        "goias_players_dart:135",
+        "guess_players:willian_oliveira",
+        "lineup_matches:willian oliveira"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "19122a64-36c5-55d2-b734-7f682c70b5aa",
+      "canonicalPersonKey": "goias-app:multiclub:person:176",
+      "foundingMemberKeys": [
+        "guess_players:ze_hugo",
+        "lineup_matches:ze hugo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d5256bb9-5c40-5354-87d0-38d304523039",
+      "canonicalPersonKey": "goias-app:multiclub:person:177",
+      "foundingMemberKeys": [
+        "goias_players_dart:184",
+        "guess_players:ze_ricardo",
+        "lineup_matches:ze ricardo"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b0eb9330-0591-53b1-b427-644db9d225d9",
+      "canonicalPersonKey": "goias-app:multiclub:person:178",
+      "foundingMemberKeys": [
+        "player_identity_references:uidemar"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "ceba53d4-f785-545e-9a60-603a126c33e2",
+      "canonicalPersonKey": "goias-app:multiclub:person:179",
+      "foundingMemberKeys": [
+        "player_identity_references:douglas_pereira"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "73688b86-aa0d-5285-bba6-26d920719e71",
+      "canonicalPersonKey": "goias-app:multiclub:person:180",
+      "foundingMemberKeys": [
+        "goias_players_dart:0"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "33a475bd-0339-5fca-bac4-ce8ea78dd88f",
+      "canonicalPersonKey": "goias-app:multiclub:person:181",
+      "foundingMemberKeys": [
+        "goias_players_dart:1"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a68c7d33-1e17-5f27-8b53-b9e069c0be5c",
+      "canonicalPersonKey": "goias-app:multiclub:person:182",
+      "foundingMemberKeys": [
+        "goias_players_dart:2"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "f77ec621-fb8d-53d4-bfe1-60f82406543f",
+      "canonicalPersonKey": "goias-app:multiclub:person:183",
+      "foundingMemberKeys": [
+        "goias_players_dart:3"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5d21eff6-896f-51d7-a3c1-3d6915b4bd80",
+      "canonicalPersonKey": "goias-app:multiclub:person:184",
+      "foundingMemberKeys": [
+        "goias_players_dart:4"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "3ef7f309-a5c6-5106-8ebd-ca9223035c9e",
+      "canonicalPersonKey": "goias-app:multiclub:person:185",
+      "foundingMemberKeys": [
+        "goias_players_dart:5"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "17a9eab4-a8e7-53c9-aa73-70117734d976",
+      "canonicalPersonKey": "goias-app:multiclub:person:186",
+      "foundingMemberKeys": [
+        "goias_players_dart:6"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "294c70c1-1f96-5a21-ab88-1c2ff1a7a5ca",
+      "canonicalPersonKey": "goias-app:multiclub:person:187",
+      "foundingMemberKeys": [
+        "goias_players_dart:7"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "74cf2f38-8ee6-5ceb-8b50-0c74b579870b",
+      "canonicalPersonKey": "goias-app:multiclub:person:188",
+      "foundingMemberKeys": [
+        "goias_players_dart:8"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d234a90d-73a8-5558-8526-4350ec8f8456",
+      "canonicalPersonKey": "goias-app:multiclub:person:189",
+      "foundingMemberKeys": [
+        "goias_players_dart:9"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "884b8e23-bf1d-56c1-a00d-955540d1037f",
+      "canonicalPersonKey": "goias-app:multiclub:person:190",
+      "foundingMemberKeys": [
+        "goias_players_dart:10"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d29afc56-653d-5c30-9d43-2b5be120c4f9",
+      "canonicalPersonKey": "goias-app:multiclub:person:191",
+      "foundingMemberKeys": [
+        "goias_players_dart:11"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "3623f99d-32d9-5f9c-b171-609e754e77cd",
+      "canonicalPersonKey": "goias-app:multiclub:person:192",
+      "foundingMemberKeys": [
+        "goias_players_dart:35"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "580323c2-a42b-5390-a378-a2955743c544",
+      "canonicalPersonKey": "goias-app:multiclub:person:193",
+      "foundingMemberKeys": [
+        "goias_players_dart:36"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9f12c90e-25d7-58ce-b0b0-b64b6d875a25",
+      "canonicalPersonKey": "goias-app:multiclub:person:194",
+      "foundingMemberKeys": [
+        "goias_players_dart:50"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "dc6df4ac-a7d2-58cd-87c4-86fc68011342",
+      "canonicalPersonKey": "goias-app:multiclub:person:195",
+      "foundingMemberKeys": [
+        "goias_players_dart:57"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9cb0bc03-9bf8-52d0-b64a-911dfbd7a8bf",
+      "canonicalPersonKey": "goias-app:multiclub:person:196",
+      "foundingMemberKeys": [
+        "goias_players_dart:60"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "12fe7ec7-a72a-5c79-afac-04e463df5dbc",
+      "canonicalPersonKey": "goias-app:multiclub:person:197",
+      "foundingMemberKeys": [
+        "goias_players_dart:63"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "99b220af-1754-5e80-9a49-3ad2a47a0c62",
+      "canonicalPersonKey": "goias-app:multiclub:person:198",
+      "foundingMemberKeys": [
+        "goias_players_dart:66"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "eca536bd-6465-5539-accb-90c4767102fb",
+      "canonicalPersonKey": "goias-app:multiclub:person:199",
+      "foundingMemberKeys": [
+        "goias_players_dart:68"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5d57c5f3-b72b-57b8-8828-8fc70be5f331",
+      "canonicalPersonKey": "goias-app:multiclub:person:200",
+      "foundingMemberKeys": [
+        "goias_players_dart:69"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b3e6baa9-04bd-5bc6-b2f0-ceb4796e0123",
+      "canonicalPersonKey": "goias-app:multiclub:person:201",
+      "foundingMemberKeys": [
+        "goias_players_dart:70"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e66d76f0-5fbc-5c21-bb84-342d950b8a68",
+      "canonicalPersonKey": "goias-app:multiclub:person:202",
+      "foundingMemberKeys": [
+        "goias_players_dart:71"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9713495a-8f4f-58ef-acad-c3f4dc5ba74d",
+      "canonicalPersonKey": "goias-app:multiclub:person:203",
+      "foundingMemberKeys": [
+        "goias_players_dart:72"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a8fdc462-6dee-55de-94a5-7a62236acf28",
+      "canonicalPersonKey": "goias-app:multiclub:person:204",
+      "foundingMemberKeys": [
+        "goias_players_dart:73"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "fd3c43bc-275d-5b51-811a-d982066d8d15",
+      "canonicalPersonKey": "goias-app:multiclub:person:205",
+      "foundingMemberKeys": [
+        "goias_players_dart:74"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "a5e9b271-6e4c-5e7f-a651-a9e86a5c4ead",
+      "canonicalPersonKey": "goias-app:multiclub:person:206",
+      "foundingMemberKeys": [
+        "goias_players_dart:75"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "04dea13d-fbb5-566b-878e-a2218f846dbe",
+      "canonicalPersonKey": "goias-app:multiclub:person:207",
+      "foundingMemberKeys": [
+        "goias_players_dart:76"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9167350b-7d8a-5fd5-aabc-60016b33798c",
+      "canonicalPersonKey": "goias-app:multiclub:person:208",
+      "foundingMemberKeys": [
+        "goias_players_dart:77"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7a9ccdef-4ba5-5e33-96ee-356715494811",
+      "canonicalPersonKey": "goias-app:multiclub:person:209",
+      "foundingMemberKeys": [
+        "goias_players_dart:78"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "264d0a60-06dd-51f2-917d-01e7acc2293e",
+      "canonicalPersonKey": "goias-app:multiclub:person:210",
+      "foundingMemberKeys": [
+        "goias_players_dart:79"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "67a962ce-5797-56c8-a161-415dae885860",
+      "canonicalPersonKey": "goias-app:multiclub:person:211",
+      "foundingMemberKeys": [
+        "goias_players_dart:80"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "122b754f-8646-5bfd-b42a-c91a69f35d52",
+      "canonicalPersonKey": "goias-app:multiclub:person:212",
+      "foundingMemberKeys": [
+        "goias_players_dart:81"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "02202ed9-daf8-51fc-be71-ecf58d501dbc",
+      "canonicalPersonKey": "goias-app:multiclub:person:213",
+      "foundingMemberKeys": [
+        "goias_players_dart:82"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c88fa6da-2af3-5d46-be98-b3e844ce749b",
+      "canonicalPersonKey": "goias-app:multiclub:person:214",
+      "foundingMemberKeys": [
+        "goias_players_dart:83"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9e0f046f-9235-54fa-b566-94b00f9872d2",
+      "canonicalPersonKey": "goias-app:multiclub:person:215",
+      "foundingMemberKeys": [
+        "goias_players_dart:84"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "654d8f6b-811f-5691-864c-0ed956470390",
+      "canonicalPersonKey": "goias-app:multiclub:person:216",
+      "foundingMemberKeys": [
+        "goias_players_dart:85"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5332cf21-d830-5ff3-a2f9-106390899e73",
+      "canonicalPersonKey": "goias-app:multiclub:person:217",
+      "foundingMemberKeys": [
+        "goias_players_dart:86"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "444fe634-5fd0-5a6a-b1f5-5934c621d8ad",
+      "canonicalPersonKey": "goias-app:multiclub:person:218",
+      "foundingMemberKeys": [
+        "goias_players_dart:87"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d2a355a9-d1cf-5cb4-99e9-637ac2f59b04",
+      "canonicalPersonKey": "goias-app:multiclub:person:219",
+      "foundingMemberKeys": [
+        "goias_players_dart:91"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e163b3fa-44be-5c21-97e7-d450e5c43de1",
+      "canonicalPersonKey": "goias-app:multiclub:person:220",
+      "foundingMemberKeys": [
+        "goias_players_dart:93"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "16684d86-a44c-52fe-aafd-1d8ebb55530a",
+      "canonicalPersonKey": "goias-app:multiclub:person:221",
+      "foundingMemberKeys": [
+        "goias_players_dart:95"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e5bf06f2-c883-5ccd-9ff5-26a412e37888",
+      "canonicalPersonKey": "goias-app:multiclub:person:222",
+      "foundingMemberKeys": [
+        "goias_players_dart:97"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "1581e0d6-1376-5f11-a331-9fe3f3d5ce75",
+      "canonicalPersonKey": "goias-app:multiclub:person:223",
+      "foundingMemberKeys": [
+        "goias_players_dart:98"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "6f2be735-687b-5709-a6e7-12ea04aa1fe4",
+      "canonicalPersonKey": "goias-app:multiclub:person:224",
+      "foundingMemberKeys": [
+        "goias_players_dart:102"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5e116b8c-3054-5952-8a0f-fb8afdefa381",
+      "canonicalPersonKey": "goias-app:multiclub:person:225",
+      "foundingMemberKeys": [
+        "goias_players_dart:107"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "1c960a43-08db-5b5e-a5c9-8dec129b2b65",
+      "canonicalPersonKey": "goias-app:multiclub:person:226",
+      "foundingMemberKeys": [
+        "goias_players_dart:108"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9c4915ed-7eae-5719-b6c1-e9b5c2bf0553",
+      "canonicalPersonKey": "goias-app:multiclub:person:227",
+      "foundingMemberKeys": [
+        "goias_players_dart:109"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e606f900-73fb-582c-bf52-868795ec077b",
+      "canonicalPersonKey": "goias-app:multiclub:person:228",
+      "foundingMemberKeys": [
+        "goias_players_dart:110"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "1bf67c89-094d-59bb-befd-d59af3f14e21",
+      "canonicalPersonKey": "goias-app:multiclub:person:229",
+      "foundingMemberKeys": [
+        "goias_players_dart:111"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5639f14e-2e07-515c-8a5f-a376493987bd",
+      "canonicalPersonKey": "goias-app:multiclub:person:230",
+      "foundingMemberKeys": [
+        "goias_players_dart:113"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "fd593ba4-d252-5fe5-b0c7-a09292c76798",
+      "canonicalPersonKey": "goias-app:multiclub:person:231",
+      "foundingMemberKeys": [
+        "goias_players_dart:114"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "4227dd15-e300-54fc-a5a9-fb3959c68064",
+      "canonicalPersonKey": "goias-app:multiclub:person:232",
+      "foundingMemberKeys": [
+        "goias_players_dart:115"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c97ae745-4730-5064-ab53-6a29d049d67a",
+      "canonicalPersonKey": "goias-app:multiclub:person:233",
+      "foundingMemberKeys": [
+        "goias_players_dart:116"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "269490a9-2b46-5d92-b076-9fd55eae6723",
+      "canonicalPersonKey": "goias-app:multiclub:person:234",
+      "foundingMemberKeys": [
+        "goias_players_dart:117"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d1466442-9eba-5e77-9f8c-ff3117f740a0",
+      "canonicalPersonKey": "goias-app:multiclub:person:235",
+      "foundingMemberKeys": [
+        "goias_players_dart:118"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "224ffbee-f0ff-50b5-8913-436b5ed9207c",
+      "canonicalPersonKey": "goias-app:multiclub:person:236",
+      "foundingMemberKeys": [
+        "goias_players_dart:119"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9eb72776-436a-5825-8c8e-74de163e312f",
+      "canonicalPersonKey": "goias-app:multiclub:person:237",
+      "foundingMemberKeys": [
+        "goias_players_dart:120"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "337ea48e-1631-5db5-b8cc-05aece3d4c98",
+      "canonicalPersonKey": "goias-app:multiclub:person:238",
+      "foundingMemberKeys": [
+        "goias_players_dart:121"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7f0ad6b0-bcf2-5454-8c44-cb641967c6b6",
+      "canonicalPersonKey": "goias-app:multiclub:person:239",
+      "foundingMemberKeys": [
+        "goias_players_dart:122"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "fe249471-939c-53b0-a96a-5bc3a08cf4ff",
+      "canonicalPersonKey": "goias-app:multiclub:person:240",
+      "foundingMemberKeys": [
+        "goias_players_dart:123"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c7ddc4be-4ac5-5c25-b44d-c43c7a8fb9f9",
+      "canonicalPersonKey": "goias-app:multiclub:person:241",
+      "foundingMemberKeys": [
+        "goias_players_dart:124"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "64b07bb5-d02c-5350-9c63-7f172009e4e4",
+      "canonicalPersonKey": "goias-app:multiclub:person:242",
+      "foundingMemberKeys": [
+        "goias_players_dart:125"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7986f4e0-203d-5dde-9090-abee613879d4",
+      "canonicalPersonKey": "goias-app:multiclub:person:243",
+      "foundingMemberKeys": [
+        "goias_players_dart:126"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0f62bac2-6f45-5f7e-ab8a-8aeba37ff3a0",
+      "canonicalPersonKey": "goias-app:multiclub:person:244",
+      "foundingMemberKeys": [
+        "goias_players_dart:127"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e1e95eda-1e8c-518f-8a90-057e01ee1726",
+      "canonicalPersonKey": "goias-app:multiclub:person:245",
+      "foundingMemberKeys": [
+        "goias_players_dart:128"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "b21fae88-759d-5343-968b-b5856698e091",
+      "canonicalPersonKey": "goias-app:multiclub:person:246",
+      "foundingMemberKeys": [
+        "goias_players_dart:129"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5e1d0157-2aac-50a7-a43f-96d217bab581",
+      "canonicalPersonKey": "goias-app:multiclub:person:247",
+      "foundingMemberKeys": [
+        "goias_players_dart:130"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "66498300-be3a-5ff4-b697-d7469ffa6741",
+      "canonicalPersonKey": "goias-app:multiclub:person:248",
+      "foundingMemberKeys": [
+        "goias_players_dart:131"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "cd80d22d-fabd-5719-8e65-8bf36de3aa5a",
+      "canonicalPersonKey": "goias-app:multiclub:person:249",
+      "foundingMemberKeys": [
+        "goias_players_dart:134"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "1d22be40-d0df-55b9-8ddd-dd368a12ee90",
+      "canonicalPersonKey": "goias-app:multiclub:person:250",
+      "foundingMemberKeys": [
+        "goias_players_dart:136"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "42a5c855-80c3-5be9-98c0-93d971694414",
+      "canonicalPersonKey": "goias-app:multiclub:person:251",
+      "foundingMemberKeys": [
+        "goias_players_dart:138"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "647f2208-b0e2-5ed2-8bd4-ed18a4f0b8dc",
+      "canonicalPersonKey": "goias-app:multiclub:person:252",
+      "foundingMemberKeys": [
+        "goias_players_dart:139"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "256c0dfd-afc5-5ca1-84e9-e909be37e502",
+      "canonicalPersonKey": "goias-app:multiclub:person:253",
+      "foundingMemberKeys": [
+        "goias_players_dart:140"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "d06541d2-12ef-5387-8567-85ba07cea5d5",
+      "canonicalPersonKey": "goias-app:multiclub:person:254",
+      "foundingMemberKeys": [
+        "goias_players_dart:141"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7935c9ea-dada-59c4-986d-b92217c5c01f",
+      "canonicalPersonKey": "goias-app:multiclub:person:255",
+      "foundingMemberKeys": [
+        "goias_players_dart:142"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "615aa9dd-4b4f-5086-bf11-8ec99e8f414b",
+      "canonicalPersonKey": "goias-app:multiclub:person:256",
+      "foundingMemberKeys": [
+        "goias_players_dart:143"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "13c87e1a-0aa6-5737-b522-8dd13c388bfc",
+      "canonicalPersonKey": "goias-app:multiclub:person:257",
+      "foundingMemberKeys": [
+        "goias_players_dart:144"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "bb78c7f0-15f0-54c2-a535-b579997522f2",
+      "canonicalPersonKey": "goias-app:multiclub:person:258",
+      "foundingMemberKeys": [
+        "goias_players_dart:145"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "01da5ee1-4c4a-5dc5-b3c7-f92c0f8c9ab2",
+      "canonicalPersonKey": "goias-app:multiclub:person:259",
+      "foundingMemberKeys": [
+        "goias_players_dart:146"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "62a131c8-d9aa-56ac-a82a-c2646b3c55b5",
+      "canonicalPersonKey": "goias-app:multiclub:person:260",
+      "foundingMemberKeys": [
+        "goias_players_dart:148"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "deb688bd-624d-5411-b2fd-8065f9cc075e",
+      "canonicalPersonKey": "goias-app:multiclub:person:261",
+      "foundingMemberKeys": [
+        "goias_players_dart:149"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "ead29911-9825-5dce-a123-cfa3f18e9357",
+      "canonicalPersonKey": "goias-app:multiclub:person:262",
+      "foundingMemberKeys": [
+        "goias_players_dart:151"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "170d1c57-8610-5a19-b104-d8f633412d30",
+      "canonicalPersonKey": "goias-app:multiclub:person:263",
+      "foundingMemberKeys": [
+        "goias_players_dart:152"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "8126eb68-efbf-5496-9e66-e4cdacfa242d",
+      "canonicalPersonKey": "goias-app:multiclub:person:264",
+      "foundingMemberKeys": [
+        "goias_players_dart:153"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "f54e97b9-f46e-538c-9de3-15e0939e6350",
+      "canonicalPersonKey": "goias-app:multiclub:person:265",
+      "foundingMemberKeys": [
+        "goias_players_dart:154"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "bf676345-9ada-543a-a280-0e20d3b76cbd",
+      "canonicalPersonKey": "goias-app:multiclub:person:266",
+      "foundingMemberKeys": [
+        "goias_players_dart:155"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "74b4f95b-dac0-592c-9090-d51a2cbc4bc8",
+      "canonicalPersonKey": "goias-app:multiclub:person:267",
+      "foundingMemberKeys": [
+        "goias_players_dart:156"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "bdd2ee6e-1648-5bf8-8a39-318fa1491058",
+      "canonicalPersonKey": "goias-app:multiclub:person:268",
+      "foundingMemberKeys": [
+        "goias_players_dart:157"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "04ca3d5f-576f-555b-bdae-70c16e464b2a",
+      "canonicalPersonKey": "goias-app:multiclub:person:269",
+      "foundingMemberKeys": [
+        "goias_players_dart:158"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "7687f7d5-552b-5c09-a65a-e08f4e762c84",
+      "canonicalPersonKey": "goias-app:multiclub:person:270",
+      "foundingMemberKeys": [
+        "goias_players_dart:159"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "36df84c5-fb05-5edb-955e-467616c99c48",
+      "canonicalPersonKey": "goias-app:multiclub:person:271",
+      "foundingMemberKeys": [
+        "goias_players_dart:160"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "abb5f2ec-75c1-53e0-8639-510cf9af9345",
+      "canonicalPersonKey": "goias-app:multiclub:person:272",
+      "foundingMemberKeys": [
+        "goias_players_dart:161"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "eceb0375-a405-5f87-8c1b-5a3e3cbfe898",
+      "canonicalPersonKey": "goias-app:multiclub:person:273",
+      "foundingMemberKeys": [
+        "goias_players_dart:162"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "589081d6-8f37-594c-aca0-a898c56e129e",
+      "canonicalPersonKey": "goias-app:multiclub:person:274",
+      "foundingMemberKeys": [
+        "goias_players_dart:163"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "efb2ee1b-46e1-5f24-994e-0549aa51fd56",
+      "canonicalPersonKey": "goias-app:multiclub:person:275",
+      "foundingMemberKeys": [
+        "goias_players_dart:164"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e48da7e9-6cec-5cf1-80b8-21432009d7bb",
+      "canonicalPersonKey": "goias-app:multiclub:person:276",
+      "foundingMemberKeys": [
+        "goias_players_dart:165"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "3d3c6c48-f24c-5908-927f-980185b2eca7",
+      "canonicalPersonKey": "goias-app:multiclub:person:277",
+      "foundingMemberKeys": [
+        "goias_players_dart:166"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9436bb2c-8aee-54c2-afa0-afed9a87daac",
+      "canonicalPersonKey": "goias-app:multiclub:person:278",
+      "foundingMemberKeys": [
+        "goias_players_dart:167"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "696eb0bd-aed3-534e-9e28-fb8ec25cb7e3",
+      "canonicalPersonKey": "goias-app:multiclub:person:279",
+      "foundingMemberKeys": [
+        "goias_players_dart:168"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5ae829f7-de82-550a-b0df-a141c2053eeb",
+      "canonicalPersonKey": "goias-app:multiclub:person:280",
+      "foundingMemberKeys": [
+        "goias_players_dart:169"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "8da3deb1-0fdc-5991-bc6b-8c3d58233549",
+      "canonicalPersonKey": "goias-app:multiclub:person:281",
+      "foundingMemberKeys": [
+        "goias_players_dart:170"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "4bdbdefc-752c-5cc4-a8a8-bfa76a240165",
+      "canonicalPersonKey": "goias-app:multiclub:person:282",
+      "foundingMemberKeys": [
+        "goias_players_dart:171"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "02058d04-bb34-5f84-8bed-4b30887b8681",
+      "canonicalPersonKey": "goias-app:multiclub:person:283",
+      "foundingMemberKeys": [
+        "goias_players_dart:189"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0e7abf70-8008-514a-a140-fd3397af96a4",
+      "canonicalPersonKey": "goias-app:multiclub:person:284",
+      "foundingMemberKeys": [
+        "goias_players_dart:190"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "0471ba9e-c618-58d5-82f8-b59fd8fcd423",
+      "canonicalPersonKey": "goias-app:multiclub:person:285",
+      "foundingMemberKeys": [
+        "goias_players_dart:191"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e941b827-a6a1-5d5a-b6f1-e2be9ff783b0",
+      "canonicalPersonKey": "goias-app:multiclub:person:286",
+      "foundingMemberKeys": [
+        "goias_players_dart:195"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "94672678-52e7-5514-b36f-9b1022925b8d",
+      "canonicalPersonKey": "goias-app:multiclub:person:287",
+      "foundingMemberKeys": [
+        "goias_players_dart:196"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c3897b52-9967-5773-99be-829522c0464d",
+      "canonicalPersonKey": "goias-app:multiclub:person:288",
+      "foundingMemberKeys": [
+        "goias_players_dart:197"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "9da576c0-30ee-5125-9bef-d815e64e8576",
+      "canonicalPersonKey": "goias-app:multiclub:person:289",
+      "foundingMemberKeys": [
+        "goias_players_dart:198"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "041a8ba0-2585-5637-bf0f-87b7be45e7d4",
+      "canonicalPersonKey": "goias-app:multiclub:person:290",
+      "foundingMemberKeys": [
+        "goias_players_dart:199"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "21020eaa-bc1e-5ea4-a002-c09f66af9c0a",
+      "canonicalPersonKey": "goias-app:multiclub:person:291",
+      "foundingMemberKeys": [
+        "goias_players_dart:200"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "22b9a8f1-141a-52d1-9f41-bb050c4c5f46",
+      "canonicalPersonKey": "goias-app:multiclub:person:292",
+      "foundingMemberKeys": [
+        "goias_players_dart:201"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "e505512a-db45-5b99-9fff-01bc947ff451",
+      "canonicalPersonKey": "goias-app:multiclub:person:293",
+      "foundingMemberKeys": [
+        "goias_players_dart:202"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "5fd68b4b-1a9d-5df5-acdc-24ca53e3cc53",
+      "canonicalPersonKey": "goias-app:multiclub:person:294",
+      "foundingMemberKeys": [
+        "goias_players_dart:203"
+      ],
+      "registeredAt": "2026-09-01"
+    },
+    {
+      "personId": "c7a880b1-367f-50dd-9d43-66ad604320cd",
+      "canonicalPersonKey": "goias-app:multiclub:person:295",
+      "foundingMemberKeys": [
+        "goias_players_dart:204"
+      ],
+      "registeredAt": "2026-09-01"
+    }
+  ],
+  "_permanenceWarning": "ESTE ARQUIVO É UM REGISTRY PERSISTENTE DE IDENTIDADE, NÃO UM CACHE. NÃO APAGAR NEM REGENERAR DO ZERO depois que qualquer person_id daqui for usado em INSERT no Supabase — isso trocaria o UUID de pessoas que já têm linha no banco e quebraria toda FK existente. person_id, uma vez atribuído, NUNCA muda (mesmo se nome/alias/fonte/posição/período mudar depois). canonicalPersonKey é sequencial e NUNCA é reaproveitado — mesmo que uma pessoa seja removida do universo canônico, o número dela fica aposentado pra sempre, nextSequence nunca volta atrás."
+}

@@ -99,8 +99,8 @@ Metodologia do motor automático (união por STRING COMPLETA idêntica — nunca
   - **[interna]** As 2 aparições de lineup_matches:danilo (partidas 2003_juventude_brA_reacao e 2003_santos_brA_reacao, ambas 2003-01-01) caem inteiramente dentro do período 1999-2003 de career_players — pertencem 100% ao Danilo Gabriel de Andrade, nenhuma divisão adicional necessária dentro de lineup_matches.
 
 **Resultado**: 
-- **Danilo Cunha da Silva** — `EXACT_IDENTITY` (confiança 0.98) — membros: `squad_members:danilo`, `guess_players:danilo_cunha_da_silva`
-- **Danilo Gabriel de Andrade** — `EXACT_IDENTITY` (confiança 0.9) — membros: `career_players:danilo`, `lineup_matches:danilo` (só partidas: 2003_juventude_brA_reacao, 2003_santos_brA_reacao)
+- **undefined** — `EXACT_IDENTITY` (confiança 0.98) — membros: `squad_members:danilo`, `guess_players:danilo_cunha_da_silva`
+- **undefined** — `EXACT_IDENTITY` (confiança 0.9) — membros: `career_players:danilo`, `lineup_matches:danilo` (só partidas: 2003_juventude_brA_reacao, 2003_santos_brA_reacao)
   - _Período 1999-2003 pelo Goiás ainda não auditado item a item contra a Wikipédia — só a NÃO-identidade com o Danilo atual foi confirmada. Ver pendingVerification._
 
 **Pendência explícita**: Auditar o período exato 1999-2003 de career_players:danilo contra a fonte Wikipédia antes do INSERT final.
@@ -115,8 +115,8 @@ Metodologia do motor automático (união por STRING COMPLETA idêntica — nunca
   - **[interna]** lineup_matches:nicolas tem 4 aparições: 2021-10-15 e 2021-11-22 (ATA, camisa 9) vs. 2026-03-07 e 2026-03-15 (LE, camisa 6). O grupo 2026 bate exatamente com squad_members:nicolas (camisa 6, lateral-esquerdo).
 
 **Resultado**: 
-- **Nicolas Vichiatto da Silva** — `EXACT_IDENTITY` (confiança 0.95) — membros: `squad_members:nicolas`, `guess_players:nicolas_vichiatto_da_silva`, `lineup_matches:nicolas` (só partidas: 2026_atleticogo_goiano_final_ida, 2026_atleticogo_goiano_final_volta)
-- **Nicolas Godinho Johann** — `EXACT_IDENTITY` (confiança 0.9) — membros: `lineup_matches:nicolas` (só partidas: 2021_csa_brB_g4, 2021_guarani_brB_acesso)
+- **undefined** — `EXACT_IDENTITY` (confiança 0.95) — membros: `squad_members:nicolas`, `guess_players:nicolas_vichiatto_da_silva`, `lineup_matches:nicolas` (só partidas: 2026_atleticogo_goiano_final_ida, 2026_atleticogo_goiano_final_volta)
+- **undefined** — `EXACT_IDENTITY` (confiança 0.9) — membros: `lineup_matches:nicolas` (só partidas: 2021_csa_brB_g4, 2021_guarani_brB_acesso)
   - _Sem nenhuma outra fonte associada hoje (não está em career_players/guess_players) — se vier a ser incluído em outra fonte no futuro, associar por este nome._
 
 **Membros NÃO atribuídos a nenhum dos lados** (viram alias ambíguo — ver seção "Aliases ambíguos" abaixo, nunca fundidos silenciosamente):
@@ -131,8 +131,8 @@ Metodologia do motor automático (união por STRING COMPLETA idêntica — nunca
   - **[interna]** lineup_matches:michael é a partida 1999_santacruz_brB_titulo, 1999-12-12 — fora de qualquer sobreposição plausível com 2017-2019.
 
 **Resultado**: 
-- **Michael Richard Delgado de Oliveira** — `EXACT_IDENTITY` (confiança 0.9) — membros: `career_players:michael`, `guess_players:michael`, `player_identity_references:michael`
-- **Michael (1999, elenco do acesso à Série A)** — `PROBABLE_IDENTITY` (confiança 0.4) — membros: `lineup_matches:michael` (só partidas: 1999_santacruz_brB_titulo)
+- **undefined** — `EXACT_IDENTITY` (confiança 0.9) — membros: `career_players:michael`, `guess_players:michael`, `player_identity_references:michael`
+- **undefined** — `PROBABLE_IDENTITY` (confiança 0.4) — membros: `lineup_matches:michael` (só partidas: 1999_santacruz_brB_titulo)
   - _Nome completo não determinado — sem outra fonte associada. Não confundir com o Michael moderno (2017-2019) em nenhuma exportação futura._
 
 ### `dieguinho_reclassify` — RECLASSIFICAR (mesma pessoa, identidade automática estava errada)
@@ -142,7 +142,7 @@ Metodologia do motor automático (união por STRING COMPLETA idêntica — nunca
 **Evidência**:
   - **[externa]** Fornecido pelo usuário: Jackson Diego Ibraim Fagundes, já jogou como volante/lateral-direito/meia.
 
-**Resultado**: mantido como 1 pessoa — **Jackson Diego Ibraim Fagundes** — `EXACT_IDENTITY` (confiança 0.9), era `AMBIGUOUS_IDENTITY` no motor automático.
+**Resultado**: mantido como 1 pessoa — **undefined** — `EXACT_IDENTITY` (confiança 0.9), era `AMBIGUOUS_IDENTITY` no motor automático.
 - **Modelo de posição**: primária = meio-campo; secundárias = lateral-direito, volante. Posição por partida (lineup_matches) continua granular — nunca decide identidade sozinha quando já há corroboração de outro tipo.
 
 ### `erik_reclassify` — RECLASSIFICAR (mesma pessoa, identidade automática estava errada)
@@ -153,7 +153,7 @@ Metodologia do motor automático (união por STRING COMPLETA idêntica — nunca
   - **[externa]** Fornecido pelo usuário: Erik Nascimento de Lima, Goiás profissional 2013-2015, camisa 11; em 2020 estava no futebol japonês.
   - **[interna]** career_players:erik.club_career (carreira completa, não filtrada por is_goias) já mostra 2019-2020 Yokohama F. Marinos, 2021-2022 Changchun Yatai, 2023-2026 de volta ao Japão — sem nenhuma passagem 2020 no Goiás em lugar nenhum do próprio dataset.
 
-**Resultado**: mantido como 1 pessoa — **Erik Nascimento de Lima** — `EXACT_IDENTITY` (confiança 0.9), era `AMBIGUOUS_IDENTITY` no motor automático.
+**Resultado**: mantido como 1 pessoa — **undefined** — `EXACT_IDENTITY` (confiança 0.9), era `AMBIGUOUS_IDENTITY` no motor automático.
 - **Correção de conteúdo pendente** (fora do escopo desta reconciliação): `lib/features/arena/games/player_identity/domain/player_identity_references.dart`, campo `period (id: erik)` — valor atual "anos 2020" — Não corresponde a nenhuma passagem real pelo Goiás — corrigir quando a migração de dado for implementada, fora do escopo desta reconciliação.
 
 ### `fabiano_reclassify` — RECLASSIFICAR (mesma pessoa, identidade automática estava errada)
@@ -167,7 +167,7 @@ Metodologia do motor automático (união por STRING COMPLETA idêntica — nunca
   - **[externa]** [Fabiano Cézar Viegas, nascido 04/08/1975, zagueiro — Flamengo (1993-1999) → Atlético-PR → Kashima Antlers/Vegalta Sendai (Japão) → Atlético-PR → Flamengo → Goiás (2006).](https://pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas)
   - **[externa]** [BDFutbol — corrobora identidade e posição (central defender).](https://www.bdfutbol.com/en/j/j33761.html)
 
-**Resultado**: mantido como 1 pessoa — **Fabiano Cézar Viegas** — `EXACT_IDENTITY` (confiança 0.85), era `AMBIGUOUS_IDENTITY` no motor automático.
+**Resultado**: mantido como 1 pessoa — **undefined** — `EXACT_IDENTITY` (confiança 0.85), era `AMBIGUOUS_IDENTITY` no motor automático.
 - **Proveniência biográfica, campo a campo** (nunca conflatar clube de formação com clube anterior ao Goiás):
   - `fullName`: **Fabiano Cézar Viegas** — fonte: external (futeboldegoyaz.com.br/jogadores/3714; pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas; bdfutbol.com/en/j/j33761) [3 fontes externas independentes concordam]
   - `birthDate`: **1975-08-04** — fonte: external (futeboldegoyaz.com.br/jogadores/3714; pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas) [2 fontes externas independentes concordam]
@@ -211,9 +211,9 @@ Metodologia do motor automático (união por STRING COMPLETA idêntica — nunca
 
 | Alias | Status | Person IDs |
 |---|---|---|
-| `danilo` | `AMBIGUOUS_ALIAS` | Danilo Cunha da Silva (`894fc590…`) — Danilo Gabriel de Andrade (`c5e9f51a…`) |
-| `michael` | `AMBIGUOUS_ALIAS` | Michael Richard Delgado de Oliveira (`f48c1a7f…`) — Michael (1999, elenco do acesso à Série A) (`e7231ebe…`) |
-| `nicolas` | `AMBIGUOUS_ALIAS` | Nicolas Vichiatto da Silva (`64130fa3…`) — Nicolas Godinho Johann (`020a6b40…`) |
+| `danilo` | `AMBIGUOUS_ALIAS` | Danilo Cunha da Silva (`34d6fed1…`) — Danilo Gabriel de Andrade (`c628f9d8…`) |
+| `michael` | `AMBIGUOUS_ALIAS` | Michael Richard Delgado de Oliveira (`13c239d9…`) — Michael (1999, elenco do acesso à Série A) (`fdea65d0…`) |
+| `nicolas` | `AMBIGUOUS_ALIAS` | Nicolas Vichiatto da Silva (`a597dae2…`) — Nicolas Godinho Johann (`28e672db…`) |
 
 Total: **3** aliases ambíguos em 385 no índice inteiro — todos os 3 já existiam ANTES de dobrar `goias_players.dart` (são os mesmos 3 splits: Danilo/Michael/Nicolas). O nome bare "Nicolas" do autocomplete (`goias_players_dart:178`) contribui pra essa MESMA entrada ambígua (já não é mais um caso à parte, ver override `nicolas_split.unassignedMembers` acima) — nenhuma ambiguidade nova, nenhuma fusão silenciosa.
 

@@ -18,6 +18,15 @@
   "overridesIgnored": 0,
   "aliasIndexSize": 385,
   "ambiguousAliases": 3,
+  "identityRegistry": {
+    "registryPath": "tooling/multiclub/people_registry.json",
+    "totalEntriesInRegistry": 295,
+    "matchedExistingThisRun": 295,
+    "newlyRegisteredThisRun": 0,
+    "unmatchedRegistryEntries": 0,
+    "ambiguousRegistryMatches": 0,
+    "nextSequence": 296
+  },
   "invariants": {
     "totalSourceRecords": 621,
     "sourceRecordsMappedToExactlyOnePerson": 619,

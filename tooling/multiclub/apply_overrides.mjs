@@ -15,13 +15,15 @@
 // mudam entre execuções do motor, a composição de fontes não).
 import fs from 'fs';
 import path from 'path';
-import crypto from 'crypto';
 import { fileURLToPath } from 'url';
+import { loadRegistry, saveRegistry, resolvePersonId, registerNewPerson } from './person_registry.mjs';
+import { buildPrimaryNameIndex, deriveDisplayName } from './display_name.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const TOOLING = path.join(ROOT, 'tooling', 'multiclub');
+const REGISTRY_PATH = path.join(TOOLING, 'people_registry.json');
 
 const candidates = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'candidates.json'), 'utf8'));
 const overridesFile = JSON.parse(fs.readFileSync(path.join(TOOLING, 'player_reconciliation_overrides.json'), 'utf8'));
@@ -29,6 +31,18 @@ const overrides = overridesFile.overrides;
 
 function memberKey(source, sourceId) {
   return `${source}:${sourceId}`;
+}
+
+/** Chave de registro/identidade pra um membro — incorpora `matchIdFilter`
+ * quando presente, senão duas pessoas de um split contextual (ex.: os dois
+ * "Nicolas", cada um com um subconjunto de partidas do MESMO
+ * lineup_matches:nicolas) compartilhariam a mesma chave bare
+ * "lineup_matches:nicolas" e o registry não conseguiria distingui-las (bug
+ * real encontrado e corrigido nesta revisão — ficava ambíguo na 2ª
+ * execução do pipeline). */
+function registryKey(m) {
+  const base = memberKey(m.source, m.sourceId);
+  return m.matchIdFilter?.length ? `${base}#${[...m.matchIdFilter].sort().join(',')}` : base;
 }
 
 function candidateKeySet(candidate) {
@@ -40,24 +54,22 @@ function sameSet(setA, arrB) {
   return arrB.every((k) => setA.has(k));
 }
 
-function deterministicId(memberKeys) {
-  const hash = crypto.createHash('sha256').update([...memberKeys].sort().join('|')).digest('hex');
-  return [hash.slice(0, 8), hash.slice(8, 12), hash.slice(12, 16), hash.slice(16, 20), hash.slice(20, 32)].join('-');
-}
-
 function sourceRecordFor(candidate, source, sourceId) {
   return candidate.sources.find((s) => s.source === source && s.sourceId === sourceId);
 }
 
-function aliasesFor(sourceRecords) {
+function aliasesFor(sourceRecords, excludeName) {
   const out = new Set();
   for (const s of sourceRecords) {
     if (s.name) out.add(s.name);
     if (s.fullName) out.add(s.fullName);
     for (const a of s.aliases || []) out.add(a);
   }
+  if (excludeName) out.delete(excludeName);
   return [...out];
 }
+
+const primaryNameIndex = buildPrimaryNameIndex(candidates);
 
 // ---------------------------------------------------------------------------
 // 1. Localiza, pra cada override, o(s) candidato(s) automático(s) afetado(s)
@@ -99,16 +111,22 @@ const unassignedSourceRecords = []; // pro invariante "source records intenciona
 
 for (const { override: ov, candidate } of appliedOverrides) {
   if (ov.type === 'split') {
-    const groupIds = [];
+    const groupIndexes = [];
     for (const group of ov.resultingGroups) {
-      const memberKeys = group.members.map((m) => memberKey(m.source, m.sourceId));
+      if (!group.canonicalIdentity?.canonicalName) {
+        warnings.push(`Override "${ov.id}": resultingGroup sem canonicalIdentity.canonicalName — nome de identidade humana ausente, corrigir o override.`);
+      }
+      const memberKeys = group.members.map((m) => registryKey(m));
       const sourceRecords = group.members.map((m) => sourceRecordFor(candidate, m.source, m.sourceId)).filter(Boolean);
-      const canonicalId = deterministicId(memberKeys);
-      groupIds.push(canonicalId);
+      const canonicalName = group.canonicalIdentity?.canonicalName ?? '(sem nome)';
+      const displayName = group.canonicalIdentity?.displayName ?? deriveDisplayName(primaryNameIndex, group.members, canonicalName);
+      groupIndexes.push(canonicalPeople.length);
       canonicalPeople.push({
-        canonicalId,
-        canonicalName: group.canonicalName,
-        displayName: group.canonicalName,
+        _memberKeys: memberKeys,
+        canonicalId: null,
+        canonicalName,
+        displayName,
+        nameQuality: group.canonicalIdentity?.nameQuality ?? null,
         identity: group.identity,
         identityConfidence: group.identityConfidence,
         origin: 'HUMAN_VERIFIED',
@@ -117,7 +135,7 @@ for (const { override: ov, candidate } of appliedOverrides) {
         overrideType: ov.type,
         reviewedAt: ov.reviewedAt,
         members: group.members,
-        aliases: aliasesFor(sourceRecords),
+        aliases: aliasesFor(sourceRecords, canonicalName),
         reason: ov.reason,
         evidence: ov.evidence,
         note: group.note,
@@ -138,16 +156,26 @@ for (const { override: ov, candidate } of appliedOverrides) {
       const rec = sourceRecordFor(candidate, u.source, u.sourceId);
       unassignedSourceRecords.push({ source: u.source, sourceId: u.sourceId, overrideId: ov.id, reason: u.reason });
       if (!rec) continue;
+      // resolvido em canonicalId de verdade DEPOIS da resolução via
+      // registry — por enquanto guarda os ÍNDICES em canonicalPeople.
       for (const alias of [rec.name, rec.fullName, ...(rec.aliases || [])].filter(Boolean)) {
-        forcedAmbiguousAliasContributions.push({ normalizedAlias: normalize(alias), canonicalIds: groupIds });
+        forcedAmbiguousAliasContributions.push({ normalizedAlias: normalize(alias), groupIndexes });
       }
     }
   } else if (ov.type === 'reclassify') {
+    if (!ov.canonicalIdentity?.canonicalName) {
+      warnings.push(`Override "${ov.id}": sem canonicalIdentity.canonicalName — nome de identidade humana ausente, corrigir o override.`);
+    }
     const memberKeys = ov.target;
+    const members = candidate.sources.map((s) => ({ source: s.source, sourceId: s.sourceId }));
+    const canonicalName = ov.canonicalIdentity?.canonicalName ?? '(sem nome)';
+    const displayName = ov.canonicalIdentity?.displayName ?? deriveDisplayName(primaryNameIndex, members, canonicalName);
     canonicalPeople.push({
-      canonicalId: deterministicId(memberKeys),
-      canonicalName: ov.canonicalName,
-      displayName: ov.canonicalName,
+      _memberKeys: memberKeys,
+      canonicalId: null,
+      canonicalName,
+      displayName,
+      nameQuality: ov.canonicalIdentity?.nameQuality ?? null,
       identity: ov.newIdentity,
       identityConfidence: ov.newIdentityConfidence,
       origin: 'HUMAN_VERIFIED',
@@ -155,8 +183,8 @@ for (const { override: ov, candidate } of appliedOverrides) {
       overrideId: ov.id,
       overrideType: ov.type,
       reviewedAt: ov.reviewedAt,
-      members: candidate.sources.map((s) => ({ source: s.source, sourceId: s.sourceId })),
-      aliases: aliasesFor(candidate.sources),
+      members,
+      aliases: aliasesFor(candidate.sources, canonicalName),
       reason: ov.reason,
       evidence: ov.evidence,
       positionModel: ov.positionModel,
@@ -171,10 +199,24 @@ for (const { override: ov, candidate } of appliedOverrides) {
     // (baseline vivo, implicação de spell) a uma classificação automática
     // que já estava correta. origin continua AUTOMATIC (a IDENTIDADE veio
     // do motor), mas humanReviewed=true e overrideId ficam registrados.
+    //
+    // Nome: SÓ de `ov.canonicalIdentity.canonicalName` (campo estruturado
+    // explícito) — NUNCA de liveDataBaseline.personCanonicalName ou
+    // spellModelImplication.personCanonicalName (esses continuam existindo
+    // como documentação/evidência do baseline em si, mas o tooling não lê
+    // mais neles pra decidir identidade — mudar a redação de uma nota não
+    // pode mudar canonical_name). Sem canonicalIdentity, cai pro automático
+    // (fullName estruturado > primaryName, nunca alias/prosa).
+    const members = candidate.sources.map((s) => ({ source: s.source, sourceId: s.sourceId }));
+    const canonicalName = ov.canonicalIdentity?.canonicalName ?? candidate.proposedCanonicalName;
+    const displayName = ov.canonicalIdentity?.displayName ?? deriveDisplayName(primaryNameIndex, members, canonicalName);
     canonicalPeople.push({
-      canonicalId: deterministicId(candidate.sources.map((s) => memberKey(s.source, s.sourceId))),
-      canonicalName: candidate.proposedCanonicalName,
-      displayName: candidate.proposedCanonicalName,
+      _memberKeys: members.map((m) => memberKey(m.source, m.sourceId)),
+      canonicalId: null,
+      canonicalName,
+      canonicalNameSource: ov.canonicalIdentity?.canonicalName ? 'humanCanonicalIdentity' : candidate.proposedCanonicalNameSource,
+      displayName,
+      nameQuality: ov.canonicalIdentity?.nameQuality ?? null,
       identity: candidate.identity,
       identityConfidence: candidate.identityConfidence,
       origin: 'AUTOMATIC',
@@ -183,7 +225,7 @@ for (const { override: ov, candidate } of appliedOverrides) {
       overrideType: ov.type,
       reviewedAt: ov.reviewedAt,
       members: candidate.sources.map((s) => ({ source: s.source, sourceId: s.sourceId })),
-      aliases: aliasesFor(candidate.sources),
+      aliases: aliasesFor(candidate.sources, canonicalName),
       reason: ov.reason,
       evidence: ov.evidence,
       liveDataBaseline: ov.liveDataBaseline,
@@ -207,23 +249,78 @@ candidates.forEach((c, idx) => {
     untouchedDistinctPeopleWithoutOverride++;
     warnings.push(`Candidato "${c.proposedCanonicalName}" (provisionalId ${c.provisionalId}) é DISTINCT_PEOPLE mas NÃO tem override de split — mantido como 1 entrada única marcada DISTINCT_PEOPLE, NUNCA deve virar 1 linha em people sem ser desmembrado primeiro.`);
   }
+  const members = c.sources.map((s) => ({ source: s.source, sourceId: s.sourceId }));
   canonicalPeople.push({
-    canonicalId: deterministicId(c.sources.map((s) => memberKey(s.source, s.sourceId))),
+    _memberKeys: c.sources.map((s) => memberKey(s.source, s.sourceId)),
+    canonicalId: null,
     canonicalName: c.proposedCanonicalName,
-    displayName: c.proposedCanonicalName,
+    canonicalNameSource: c.proposedCanonicalNameSource,
+    displayName: deriveDisplayName(primaryNameIndex, members, c.proposedCanonicalName),
+    nameQuality: null,
     identity: c.identity,
     identityConfidence: c.identityConfidence,
     origin: 'AUTOMATIC',
     humanReviewed: false,
     overrideId: null,
     overrideType: null,
-    members: c.sources.map((s) => ({ source: s.source, sourceId: s.sourceId })),
-    aliases: aliasesFor(c.sources),
+    members,
+    aliases: aliasesFor(c.sources, c.proposedCanonicalName),
     identityReason: c.identityReason,
     primaryDataStatus: c.primaryDataStatus,
     dataStatus: c.dataStatus,
   });
 });
+
+// ---------------------------------------------------------------------------
+// 3.5. Resolução de person_id via REGISTRY PERSISTIDO — nunca recomputado
+//    da composição de fontes. Cada pessoa canônica (já com `members`
+//    finais definidos acima) procura uma entrada já registrada cujas
+//    founding member keys sejam um SUBCONJUNTO dos seus membros atuais —
+//    se achar, REUSA o id antigo (mesmo que membros novos tenham sido
+//    somados desde então); se não achar, registra como pessoa nova
+//    (canonicalPersonKey sequencial, nunca reaproveitado). Ver
+//    person_registry.mjs pro porquê disso ser necessário.
+// ---------------------------------------------------------------------------
+
+const registry = loadRegistry(REGISTRY_PATH);
+const preExistingEntries = [...registry.entries]; // snapshot ANTES desta execução criar pessoas novas — só entradas que já existiam podem ficar "órfãs"
+const registryMatchedEntryIds = new Set();
+let newPeopleRegistered = 0;
+let existingPeopleMatched = 0;
+
+for (const person of canonicalPeople) {
+  const resolution = resolvePersonId(registry, person._memberKeys);
+  if (resolution.status === 'matched') {
+    person.canonicalId = resolution.personId;
+    person.canonicalPersonKey = resolution.canonicalPersonKey;
+    person.idOrigin = 'REGISTRY_MATCHED';
+    registryMatchedEntryIds.add(resolution.entry);
+    existingPeopleMatched++;
+  } else if (resolution.status === 'new') {
+    const entry = registerNewPerson(registry, person._memberKeys);
+    person.canonicalId = entry.personId;
+    person.canonicalPersonKey = entry.canonicalPersonKey;
+    person.idOrigin = 'REGISTRY_NEW';
+    newPeopleRegistered++;
+  } else {
+    // status === 'ambiguous' — 2+ entradas do registry casam com os mesmos
+    // membros atuais. NUNCA escolhe sozinho: bloqueia com um id sentinela
+    // óbvio (nunca um UUID de verdade) e grita bem alto no warning.
+    person.canonicalId = 'AMBIGUOUS_REGISTRY_MATCH';
+    person.idOrigin = 'REGISTRY_AMBIGUOUS';
+    warnings.push(`Pessoa "${person.canonicalName}" (membros: ${person._memberKeys.join(', ')}) casa com ${resolution.matches.length} entradas JÁ REGISTRADAS ao mesmo tempo (${resolution.matches.map((m) => m.canonicalPersonKey).join(', ')}) — resolução automática recusada, precisa de decisão humana antes de gerar qualquer SQL.`);
+  }
+  delete person._memberKeys;
+}
+
+const unmatchedRegistryEntries = preExistingEntries.filter((e) => !registryMatchedEntryIds.has(e));
+if (unmatchedRegistryEntries.length) {
+  for (const e of unmatchedRegistryEntries) {
+    warnings.push(`Entrada do registry "${e.canonicalPersonKey}" (person_id ${e.personId}) não foi casada por NENHUMA pessoa canônica desta execução — pode indicar que a pessoa foi dividida (split) e as founding keys originais não formam mais um subconjunto de nenhum cluster único. O id NUNCA é removido automaticamente do registry — decisão humana necessária.`);
+  }
+}
+
+saveRegistry(REGISTRY_PATH, registry);
 
 // ---------------------------------------------------------------------------
 // 4. canonical_aliases.json — índice nome normalizado -> pessoa(s)
@@ -261,9 +358,11 @@ for (const person of canonicalPeople) {
 // injeta as contribuições de unassignedMembers — SEMPRE força o alias a
 // apontar pra TODOS os canonicalId do split, mesmo que nenhuma outra fonte
 // já causasse a ambiguidade por coincidência (não depende de sorte).
-const idToName = new Map(canonicalPeople.map((p) => [p.canonicalId, p.canonicalName]));
 for (const contrib of forcedAmbiguousAliasContributions) {
-  for (const id of contrib.canonicalIds) addAlias(contrib.normalizedAlias, id, idToName.get(id));
+  for (const idx of contrib.groupIndexes) {
+    const p = canonicalPeople[idx];
+    addAlias(contrib.normalizedAlias, p.canonicalId, p.canonicalName);
+  }
 }
 
 const canonicalAliases = [...aliasIndex.entries()]
@@ -300,6 +399,15 @@ const finalStats = {
   overridesIgnored: overrides.length - appliedOverrides.length,
   aliasIndexSize: canonicalAliases.length,
   ambiguousAliases: canonicalAliases.filter((a) => a.status === 'AMBIGUOUS_ALIAS').length,
+  identityRegistry: {
+    registryPath: 'tooling/multiclub/people_registry.json',
+    totalEntriesInRegistry: registry.entries.length,
+    matchedExistingThisRun: existingPeopleMatched,
+    newlyRegisteredThisRun: newPeopleRegistered,
+    unmatchedRegistryEntries: unmatchedRegistryEntries.length,
+    ambiguousRegistryMatches: count((p) => p.idOrigin === 'REGISTRY_AMBIGUOUS'),
+    nextSequence: registry.nextSequence,
+  },
 };
 
 // ---------------------------------------------------------------------------

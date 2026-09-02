@@ -31,7 +31,6 @@
       ],
       "resultingGroups": [
         {
-          "canonicalName": "Danilo Cunha da Silva",
           "identity": "EXACT_IDENTITY",
           "identityConfidence": 0.98,
           "members": [
@@ -43,10 +42,14 @@
               "source": "guess_players",
               "sourceId": "danilo_cunha_da_silva"
             }
-          ]
+          ],
+          "canonicalIdentity": {
+            "canonicalName": "Danilo Cunha da Silva",
+            "displayName": "Danilo",
+            "nameQuality": "LEGAL_FULL_NAME"
+          }
         },
         {
-          "canonicalName": "Danilo Gabriel de Andrade",
           "identity": "EXACT_IDENTITY",
           "identityConfidence": 0.9,
           "members": [
@@ -63,7 +66,12 @@
               ]
             }
           ],
-          "note": "Período 1999-2003 pelo Goiás ainda não auditado item a item contra a Wikipédia — só a NÃO-identidade com o Danilo atual foi confirmada. Ver pendingVerification."
+          "note": "Período 1999-2003 pelo Goiás ainda não auditado item a item contra a Wikipédia — só a NÃO-identidade com o Danilo atual foi confirmada. Ver pendingVerification.",
+          "canonicalIdentity": {
+            "canonicalName": "Danilo Gabriel de Andrade",
+            "displayName": "Danilo",
+            "nameQuality": "LEGAL_FULL_NAME"
+          }
         }
       ],
       "pendingVerification": [
@@ -100,7 +108,6 @@
       ],
       "resultingGroups": [
         {
-          "canonicalName": "Nicolas Vichiatto da Silva",
           "identity": "EXACT_IDENTITY",
           "identityConfidence": 0.95,
           "members": [
@@ -120,10 +127,14 @@
                 "2026_atleticogo_goiano_final_volta"
               ]
             }
-          ]
+          ],
+          "canonicalIdentity": {
+            "canonicalName": "Nicolas Vichiatto da Silva",
+            "displayName": "Nicolas",
+            "nameQuality": "LEGAL_FULL_NAME"
+          }
         },
         {
-          "canonicalName": "Nicolas Godinho Johann",
           "identity": "EXACT_IDENTITY",
           "identityConfidence": 0.9,
           "members": [
@@ -136,7 +147,12 @@
               ]
             }
           ],
-          "note": "Sem nenhuma outra fonte associada hoje (não está em career_players/guess_players) — se vier a ser incluído em outra fonte no futuro, associar por este nome."
+          "note": "Sem nenhuma outra fonte associada hoje (não está em career_players/guess_players) — se vier a ser incluído em outra fonte no futuro, associar por este nome.",
+          "canonicalIdentity": {
+            "canonicalName": "Nicolas Godinho Johann",
+            "displayName": "Nicolas",
+            "nameQuality": "LEGAL_FULL_NAME"
+          }
         }
       ],
       "unassignedMembers": [
@@ -171,7 +187,6 @@
       ],
       "resultingGroups": [
         {
-          "canonicalName": "Michael Richard Delgado de Oliveira",
           "identity": "EXACT_IDENTITY",
           "identityConfidence": 0.9,
           "members": [
@@ -187,10 +202,14 @@
               "source": "player_identity_references",
               "sourceId": "michael"
             }
-          ]
+          ],
+          "canonicalIdentity": {
+            "canonicalName": "Michael Richard Delgado de Oliveira",
+            "displayName": "Michael",
+            "nameQuality": "LEGAL_FULL_NAME"
+          }
         },
         {
-          "canonicalName": "Michael (1999, elenco do acesso à Série A)",
           "identity": "PROBABLE_IDENTITY",
           "identityConfidence": 0.4,
           "members": [
@@ -202,7 +221,11 @@
               ]
             }
           ],
-          "note": "Nome completo não determinado — sem outra fonte associada. Não confundir com o Michael moderno (2017-2019) em nenhuma exportação futura."
+          "note": "Nome completo não determinado — sem outra fonte associada. Não confundir com o Michael moderno (2017-2019) em nenhuma exportação futura.",
+          "canonicalIdentity": {
+            "canonicalName": "Michael (1999, elenco do acesso à Série A)",
+            "displayName": "Michael (1999, elenco do acesso à Série A)"
+          }
         }
       ],
       "origin": "HUMAN_VERIFIED",
@@ -225,7 +248,11 @@
       ],
       "newIdentity": "EXACT_IDENTITY",
       "newIdentityConfidence": 0.9,
-      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "canonicalIdentity": {
+        "canonicalName": "Jackson Diego Ibraim Fagundes",
+        "displayName": "Dieguinho",
+        "nameQuality": "LEGAL_FULL_NAME"
+      },
       "positionModel": {
         "primary": "meio-campo",
         "secondary": [
@@ -258,7 +285,11 @@
       ],
       "newIdentity": "EXACT_IDENTITY",
       "newIdentityConfidence": 0.9,
-      "canonicalName": "Erik Nascimento de Lima",
+      "canonicalIdentity": {
+        "canonicalName": "Erik Nascimento de Lima",
+        "displayName": "Erik",
+        "nameQuality": "LEGAL_FULL_NAME"
+      },
       "contentCorrectionNeeded": {
         "file": "lib/features/arena/games/player_identity/domain/player_identity_references.dart",
         "field": "period (id: erik)",
@@ -303,15 +334,73 @@
       ],
       "newIdentity": "EXACT_IDENTITY",
       "newIdentityConfidence": 0.85,
-      "canonicalName": "Fabiano Cézar Viegas",
+      "canonicalIdentity": {
+        "canonicalName": "Fabiano Cézar Viegas",
+        "displayName": "Fabiano",
+        "nameQuality": "LEGAL_FULL_NAME"
+      },
       "biographicalProvenance": {
-        "fullName": { "value": "Fabiano Cézar Viegas", "source": "external", "refs": ["futeboldegoyaz.com.br/jogadores/3714", "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas", "bdfutbol.com/en/j/j33761"], "confidence": "3 fontes externas independentes concordam" },
-        "birthDate": { "value": "1975-08-04", "source": "external", "refs": ["futeboldegoyaz.com.br/jogadores/3714", "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"], "confidence": "2 fontes externas independentes concordam" },
-        "position": { "value": "zagueiro (central defender)", "source": "local+external", "refs": ["guess_players.fabiano.position=zag (local)", "bdfutbol.com/en/j/j33761 (externa, 'central defender')"] },
-        "formationClub": { "value": "Flamengo", "meaning": "clube onde iniciou a carreira profissional, 1993, aos 18 anos — NÃO o clube imediatamente anterior ao Goiás", "source": "external", "refs": ["pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"], "localFieldEquivalent": "guess_players.fabiano.academy_club='Flamengo' — CORRETO como clube de formação, o campo local já significa isso; o erro foi meu, na análise anterior, ao apresentar academy_club como se fosse 'clube anterior ao Goiás' — não é erro da fonte local." },
-        "priorCareerFull": { "value": "Flamengo (1993-1999) → Atlético-PR → Kashima Antlers/Vegalta Sendai (Japão, ~3 temporadas) → Atlético-PR (retorno) → Flamengo (retorno)", "source": "external", "refs": ["pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"], "note": "Não existe em NENHUMA fonte local hoje — nem career_players (Fabiano não está cadastrado lá) nem guess_players (só tem academy_club, sem carreira completa)." },
-        "clubImmediatelyBeforeGoias": { "value": "Flamengo (2ª passagem, retorno)", "meaning": "coincide de NOME com o clube de formação por acaso — são dois fatos temporais distintos (1993 vs. retorno pré-2006), nunca deduzir um do outro", "source": "external", "refs": ["pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"] },
-        "joinedGoias": { "value": "2006", "source": "local+external", "refs": ["guess_players.fabiano.goias_debut_year=2006 (local)", "futeboldegoyaz.com.br/jogadores/3714, passagem 2006-2007 (externa)", "lineup_matches:fabiano, 3 partidas todas 2006 (local)"] }
+        "fullName": {
+          "value": "Fabiano Cézar Viegas",
+          "source": "external",
+          "refs": [
+            "futeboldegoyaz.com.br/jogadores/3714",
+            "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas",
+            "bdfutbol.com/en/j/j33761"
+          ],
+          "confidence": "3 fontes externas independentes concordam"
+        },
+        "birthDate": {
+          "value": "1975-08-04",
+          "source": "external",
+          "refs": [
+            "futeboldegoyaz.com.br/jogadores/3714",
+            "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"
+          ],
+          "confidence": "2 fontes externas independentes concordam"
+        },
+        "position": {
+          "value": "zagueiro (central defender)",
+          "source": "local+external",
+          "refs": [
+            "guess_players.fabiano.position=zag (local)",
+            "bdfutbol.com/en/j/j33761 (externa, 'central defender')"
+          ]
+        },
+        "formationClub": {
+          "value": "Flamengo",
+          "meaning": "clube onde iniciou a carreira profissional, 1993, aos 18 anos — NÃO o clube imediatamente anterior ao Goiás",
+          "source": "external",
+          "refs": [
+            "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"
+          ],
+          "localFieldEquivalent": "guess_players.fabiano.academy_club='Flamengo' — CORRETO como clube de formação, o campo local já significa isso; o erro foi meu, na análise anterior, ao apresentar academy_club como se fosse 'clube anterior ao Goiás' — não é erro da fonte local."
+        },
+        "priorCareerFull": {
+          "value": "Flamengo (1993-1999) → Atlético-PR → Kashima Antlers/Vegalta Sendai (Japão, ~3 temporadas) → Atlético-PR (retorno) → Flamengo (retorno)",
+          "source": "external",
+          "refs": [
+            "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"
+          ],
+          "note": "Não existe em NENHUMA fonte local hoje — nem career_players (Fabiano não está cadastrado lá) nem guess_players (só tem academy_club, sem carreira completa)."
+        },
+        "clubImmediatelyBeforeGoias": {
+          "value": "Flamengo (2ª passagem, retorno)",
+          "meaning": "coincide de NOME com o clube de formação por acaso — são dois fatos temporais distintos (1993 vs. retorno pré-2006), nunca deduzir um do outro",
+          "source": "external",
+          "refs": [
+            "pt.wikipedia.org/wiki/Fabiano_Cezar_Viegas"
+          ]
+        },
+        "joinedGoias": {
+          "value": "2006",
+          "source": "local+external",
+          "refs": [
+            "guess_players.fabiano.goias_debut_year=2006 (local)",
+            "futeboldegoyaz.com.br/jogadores/3714, passagem 2006-2007 (externa)",
+            "lineup_matches:fabiano, 3 partidas todas 2006 (local)"
+          ]
+        }
       },
       "note": "Nome completo determinado por pesquisa externa nesta rodada (v3.1) — cruzado em 3 fontes independentes (Futebol de Goyaz, Wikipédia PT, BDFutbol). Confiança da IDENTIDADE (é o mesmo jogador de lineup_matches/guess_players) permanece 0.85 — a pesquisa resolve o NOME/biografia, não eleva a confiança de que os registros internos são a mesma pessoa (já era alta por corroboração interna). Ver biographicalProvenance pra proveniência campo-a-campo — NUNCA tratar academy_club como 'clube anterior ao Goiás', é o clube de formação (1993), um fato diferente que só coincide de nome.",
       "futureCollisionWarning": "O usuário mencionou um jogador moderno 'Fabiano Monroe Alves de Oliveira' (meia, nascido 2007-11-17) que NÃO aparece em nenhuma fonte atual do dataset. Quando ele for cadastrado em qualquer fonte futura, checar ativamente contra este registro (Fabiano Cézar Viegas, nascido 1975) antes de reaproveitar o slug 'fabiano' — mesmo padrão de colisão do caso Danilo.",
@@ -339,6 +428,11 @@
           "description": "passport_matches:pe_cb52680435343cc4 = Goiás 2-1 São Bernardo, 2026-08-28 — mesma partida citada pelo usuário, já presente no export de partidas."
         }
       ],
+      "canonicalIdentity": {
+        "canonicalName": "Tadeu Antônio Ferreira",
+        "displayName": "Tadeu",
+        "nameQuality": "LEGAL_FULL_NAME"
+      },
       "liveDataBaseline": {
         "personCanonicalName": "Tadeu Antônio Ferreira",
         "clubSlug": "goias",
@@ -375,6 +469,11 @@
           "description": "As 5 aparições de lineup_matches:walter são todas 2012-2013 (camisa 18) — nenhuma de 2019, consistente com uma passagem sem jogo oficial."
         }
       ],
+      "canonicalIdentity": {
+        "canonicalName": "Walter Henrique da Silva",
+        "displayName": "Walter",
+        "nameQuality": "LEGAL_FULL_NAME"
+      },
       "spellModelImplication": {
         "personCanonicalName": "Walter Henrique da Silva",
         "clubSlug": "goias",

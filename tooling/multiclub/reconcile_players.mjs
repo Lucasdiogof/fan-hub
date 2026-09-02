@@ -516,12 +516,23 @@ function classifyCluster(records) {
 // Monta os candidatos
 // ---------------------------------------------------------------------------
 
+function pickCanonicalName(records) {
+  // NUNCA escolhe a partir de `aliases` — apelido/apelido composto não vira
+  // nome canônico só por ser mais comprido (bug real corrigido nesta
+  // revisão: "Leão da Serra" vencia "Lincoln" por contagem de caracteres).
+  // Prioridade: campo estruturado `fullName` (sinal mais forte, vem de
+  // squad_members.full_name/guess_players.display_name) > `primaryName`
+  // (como a fonte de fato chama a pessoa, nunca um alias solto) > vazio.
+  const fullNames = records.map((r) => r.fullName).filter(Boolean).sort((a, b) => b.length - a.length);
+  if (fullNames[0]) return { name: fullNames[0], nameSource: 'fullNameField' };
+  const primaryNames = records.map((r) => r.primaryName).filter(Boolean).sort((a, b) => b.length - a.length);
+  if (primaryNames[0]) return { name: primaryNames[0], nameSource: 'primaryName' };
+  return { name: '(sem nome)', nameSource: 'none' };
+}
+
 const candidates = [...clustersByRoot.values()].map((records) => {
   const result = classifyCluster(records);
-  const namesByLength = records
-    .flatMap((r) => [r.fullName, r.primaryName, ...(r.aliases || [])])
-    .filter(Boolean).sort((a, b) => b.length - a.length);
-  const proposedCanonicalName = namesByLength[0] || '(sem nome)';
+  const { name: proposedCanonicalName, nameSource: proposedCanonicalNameSource } = pickCanonicalName(records);
   const key = records.map((r) => `${r.source}:${r.sourceId}`).sort().join('|');
 
   let recommendation, recommendationReason;
@@ -542,7 +553,8 @@ const candidates = [...clustersByRoot.values()].map((records) => {
   return {
     provisionalId: provisionalUuid(key),
     proposedCanonicalName,
-    aliases: [...new Set(records.flatMap((r) => [r.primaryName, r.fullName, ...(r.aliases || [])]).filter(Boolean))],
+    proposedCanonicalNameSource,
+    aliases: [...new Set(records.flatMap((r) => [r.primaryName, r.fullName, ...(r.aliases || [])]).filter(Boolean).filter((n) => n !== proposedCanonicalName))],
     sources: records.map((r) => ({
       source: r.source, sourceId: r.sourceId, name: r.primaryName, fullName: r.fullName,
       aliases: r.aliases || [],

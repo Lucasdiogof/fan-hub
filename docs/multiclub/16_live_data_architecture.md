@@ -244,3 +244,25 @@ set appearances = 401, as_of_date = '2026-09-05', as_of_match_id = 'onefootball_
 where person_id = '<uuid do Tadeu>' and club_id = (select id from clubs where slug = 'goias');
 ```
 1 UPDATE, 1 linha. Elenco, perfil, Arena, Adivinhe o Jogador, Quem Vestiu o Manto e qualquer outra tela que precise do número atual leem dessa mesma linha — nenhuma delas guarda uma cópia própria depois da migração completa (`03_data_sources.md`/`08_multiclub_data_contract.md` documentam a duplicação atual que isso substitui). Isso só é verdade DEPOIS que `career_players`/`guess_players`/`squad_members`/etc. pararem de guardar `appearances`/`goals` próprios — a migração de schema (`player_club_stats` existir) é necessária mas não suficiente; as features precisam ser migradas pra consumi-la, item que entra no plano de implementação incremental (não nesta etapa de design).
+
+## 9. `person_aliases` — desenho do seed futuro (tabela ainda NÃO criada)
+
+Motivado pela reconciliação v3.1 (`15_player_reconciliation_report.md`): `canonical_aliases.json` já modela isso hoje em memória (gerado por `apply_overrides.mjs`) — este parágrafo só documenta como isso vira tabela quando for a hora, sem criar nada agora.
+
+```sql
+-- PROPOSTA — não executar ainda, nem faz parte da migration 20260901000000
+create table person_aliases (
+  id uuid primary key default gen_random_uuid(),
+  person_id uuid not null references people(id),
+  alias text not null,                    -- forma original (ex.: "Nicolas")
+  normalized_alias text not null,         -- normalizado (ex.: "nicolas") — ver normalize() em apply_overrides.mjs, mesma função
+  source text,                            -- de onde veio esse alias (ex.: 'guess_players', 'goias_players_dart')
+  -- SEM unique(normalized_alias) — homônimos são reais e esperados (Danilo/
+  -- Michael/Nicolas hoje, mais no futuro conforme o histórico crescer).
+  unique (person_id, normalized_alias)    -- só impede a MESMA pessoa duplicar o mesmo alias
+);
+```
+
+**Regra de leitura, não de schema** (a tabela sozinha não impede consulta ingênua): todo lookup de alias precisa checar se `normalized_alias` bate com **mais de um `person_id`** antes de decidir — se sim, é um alias ambíguo (equivalente a `status='AMBIGUOUS_ALIAS'` em `canonical_aliases.json` hoje) e a aplicação NUNCA deve escolher um `person_id` sozinha; precisa de contexto adicional (data da partida, camisa, posição — o mesmo tipo de evidência que resolveu Nicolas/Danilo/Michael nesta reconciliação) ou perguntar ao humano. Um `select ... where normalized_alias = 'nicolas' limit 1` é exatamente o bug que este desenho existe pra prevenir — a consulta correta é `select person_id from person_aliases where normalized_alias = 'nicolas'` (sem `limit 1`) seguida de uma decisão explícita quando vier mais de 1 linha.
+
+Seed futuro (quando a tabela existir): 1 INSERT por linha de `canonical_aliases.json`, expandido — hoje o JSON agrupa por alias com uma lista de `refs`; a tabela inverte pra 1 linha por (person, alias), que é o formato natural de FK. Nenhuma transformação de dado, só de forma.
