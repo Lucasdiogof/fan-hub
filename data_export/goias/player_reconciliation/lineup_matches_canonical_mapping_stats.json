@@ -1,0 +1,422 @@
+{
+  "totalLineupMatches": 31,
+  "totalSlots": 341,
+  "matchesWithCanonical": 31,
+  "matchesWithoutCanonical": 0,
+  "matchesWithoutCanonicalList": [],
+  "matchesWith2PlusCanonical": 0,
+  "matchesWith2PlusCanonicalList": [],
+  "idaVoltaChecks": [
+    {
+      "pair": [
+        "2010_independiente_sulamericana_final_ida",
+        "2010_independiente_sulamericana_final_volta"
+      ],
+      "canonicalMatchIdA": "8b85a8ae-9ab4-5296-bfaa-902d6f5ceab8",
+      "canonicalMatchIdB": "ad4be142-68c9-5ab3-a313-1fef33fb73a4",
+      "distinct": true
+    },
+    {
+      "pair": [
+        "2013_vasco_cdb_quartas_ida",
+        "2013_vasco_cdb_quartas_volta"
+      ],
+      "canonicalMatchIdA": "e2aab068-3555-5bbf-b99b-2ce45dbb1972",
+      "canonicalMatchIdB": "fea69f06-3354-5960-9ce4-3f9ef0a48393",
+      "distinct": true
+    },
+    {
+      "pair": [
+        "2026_atleticogo_goiano_final_ida",
+        "2026_atleticogo_goiano_final_volta"
+      ],
+      "canonicalMatchIdA": "21078bdc-5503-5062-ab23-164f6548b9dc",
+      "canonicalMatchIdB": "40c6b119-92cf-5702-bb3f-2f190a322e06",
+      "distinct": true
+    }
+  ],
+  "slotStatus": {
+    "UNRESOLVED_PERSON": 96,
+    "AMBIGUOUS_PERSON": 83,
+    "RESOLVED_EXISTING_APPEARANCE": 162
+  },
+  "positionDiff": {
+    "MATCH": 152,
+    "CANONICAL_NULL": 10,
+    "SOURCE_NULL": 0,
+    "DIVERGENCE": 0
+  },
+  "shirtDiff": {
+    "MATCH": 162,
+    "CANONICAL_NULL": 0,
+    "SOURCE_NULL": 0,
+    "DIVERGENCE": 0
+  },
+  "duplicateSourcePlayers": [],
+  "orphanAppearances": [],
+  "passportSanity": [
+    {
+      "lineupMatchId": "2005_saopaulo_brA_3lugar",
+      "passportMatchId": "pe_17d74b2ea9e015d1",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2006_cuenca_lib_1fase",
+      "passportMatchId": "pe_88ef144e0da4d3d2",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2006_estudiantes_lib_oitavas_volta",
+      "passportMatchId": "pe_5874ea43cd176ba9",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2010_palmeiras_sulamericana_semi_volta",
+      "passportMatchId": "pe_a62fdaf973f98f24",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2010_independiente_sulamericana_final_ida",
+      "passportMatchId": "pe_f2659643432acb89",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2010_independiente_sulamericana_final_volta",
+      "passportMatchId": "pe_645af47a1234a92d",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2012_joinville_brB_titulo",
+      "passportMatchId": "pe_d045a1b785dbf480",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2013_fluminense_cdb_oitavas_volta",
+      "passportMatchId": "pe_43e29e22e41095b6",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2018_aparecidense_goiano_final_volta",
+      "passportMatchId": "pe_fe051cd605ac4b09",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2021_csa_brB_g4",
+      "passportMatchId": "pe_26087010ae0b66d6",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2021_guarani_brB_acesso",
+      "passportMatchId": "pe_382ffaa0ed399d2a",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2023_corinthians_brA_rodada2",
+      "passportMatchId": "pe_25d23cf4c59101a6",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2023_botafogo_brA_rodada6",
+      "passportMatchId": "pe_9f8a92393fd18710",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2025_paysandu_copaverde_final_ida",
+      "passportMatchId": "pe_a44d7062b76636ff",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    },
+    {
+      "lineupMatchId": "2025_cuiaba_brB_rodada17",
+      "passportMatchId": "pe_af2020d68d406371",
+      "dateMatch": true,
+      "scoreMatch": true,
+      "competitionMatch": true
+    }
+  ],
+  "homonymAuditCounts": {
+    "danilo": 6,
+    "nicolas": 4,
+    "michael": 1,
+    "fabiano": 3,
+    "carlos_eduardo": 1,
+    "luiz_felipe": 0,
+    "murilo": 0,
+    "murillo": 0
+  },
+  "totalAppearancesInSeed": 162,
+  "appearancesLinkedToSlot": 162,
+  "coverage": {
+    "matchIdentityCoverage": {
+      "description": "Quantas lineup_matches têm canonicalMatchId (matches.id) resolvido — NADA a ver com quantos jogadores foram identificados.",
+      "matchesTotal": 31,
+      "matchesWithCanonicalMatchId": 31
+    },
+    "playerIdentityCoverageByMatch": {
+      "description": "Das partidas com canonicalMatchId, quantas têm PELO MENOS 1 slot com appearance canônica resolvida vs quantas têm ZERO.",
+      "matchesWithAtLeastOneResolvedAppearance": 26,
+      "matchesWithZeroResolvedAppearances": 5,
+      "zeroAppearanceMatches": [
+        {
+          "lineupMatchId": "1990_flamengo_cdb_final_volta",
+          "canonicalMatchId": "a03cae2d-062a-56de-95c5-a740abb79517",
+          "matchDate": "1990-11-07",
+          "homeTeam": "Goiás",
+          "awayTeam": "Flamengo",
+          "competition": "Copa do Brasil",
+          "season": "1990",
+          "slotStatusBreakdown": {
+            "UNRESOLVED_PERSON": 4,
+            "AMBIGUOUS_PERSON": 7
+          },
+          "slotCount": 11,
+          "isGapFromEtapaE": false
+        },
+        {
+          "lineupMatchId": "1996_guarani_brA_quartas",
+          "canonicalMatchId": "9099c65b-8fcb-57d1-a6bd-65ff5d9a7b6a",
+          "matchDate": "1996-11-27",
+          "homeTeam": "Goiás",
+          "awayTeam": "Guarani",
+          "competition": "Campeonato Brasileiro Série A",
+          "season": "1996",
+          "slotStatusBreakdown": {
+            "UNRESOLVED_PERSON": 6,
+            "AMBIGUOUS_PERSON": 5
+          },
+          "slotCount": 11,
+          "isGapFromEtapaE": false
+        },
+        {
+          "lineupMatchId": "1996_gremio_brA_semi",
+          "canonicalMatchId": "d9a23f58-f510-5c3b-9a01-830484afa34d",
+          "matchDate": "1996-12-08",
+          "homeTeam": "Grêmio",
+          "awayTeam": "Goiás",
+          "competition": "Campeonato Brasileiro Série A",
+          "season": "1996",
+          "slotStatusBreakdown": {
+            "UNRESOLVED_PERSON": 6,
+            "AMBIGUOUS_PERSON": 5
+          },
+          "slotCount": 11,
+          "isGapFromEtapaE": false
+        },
+        {
+          "lineupMatchId": "2003_fluminense_brA_reacao",
+          "canonicalMatchId": "56d56e70-5c18-5797-adf8-16d107fa28bb",
+          "matchDate": "2003-01-01",
+          "homeTeam": "Goiás",
+          "awayTeam": "Fluminense",
+          "competition": "Campeonato Brasileiro Série A",
+          "season": "2003",
+          "slotStatusBreakdown": {
+            "UNRESOLVED_PERSON": 7,
+            "AMBIGUOUS_PERSON": 4
+          },
+          "slotCount": 11,
+          "isGapFromEtapaE": false
+        },
+        {
+          "lineupMatchId": "2018_aparecidense_goiano_final_volta",
+          "canonicalMatchId": "f8e9e61a-2fd5-5152-94e7-4d842917c02f",
+          "matchDate": "2018-04-08",
+          "homeTeam": "Goiás",
+          "awayTeam": "Aparecidense",
+          "competition": "Campeonato Goiano",
+          "season": "2018",
+          "slotStatusBreakdown": {
+            "AMBIGUOUS_PERSON": 9,
+            "UNRESOLVED_PERSON": 2
+          },
+          "slotCount": 11,
+          "isGapFromEtapaE": false
+        }
+      ],
+      "anyGapFromEtapaE": false
+    },
+    "playerIdentityCoverageBySlot": {
+      "description": "Dos 341 slots totais, quantos têm appearance canônica resolvida — granularidade de JOGADOR, não de partida.",
+      "totalSlots": 341,
+      "resolvedSlots": 162,
+      "resolvedSlotsPct": 47.5
+    }
+  },
+  "homonymAudit": {
+    "danilo": [
+      {
+        "lineupMatchId": "2003_juventude_brA_reacao",
+        "slot": 8,
+        "rawName": "Danilo",
+        "sourceId": "danilo",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+        "canonicalName": "Danilo Gabriel de Andrade"
+      },
+      {
+        "lineupMatchId": "2003_santos_brA_reacao",
+        "slot": 8,
+        "rawName": "Danilo",
+        "sourceId": "danilo",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+        "canonicalName": "Danilo Gabriel de Andrade"
+      },
+      {
+        "lineupMatchId": "2005_athleticopr_brA_3lugar",
+        "slot": 5,
+        "rawName": "Danilo Portugal",
+        "sourceId": "danilo portugal",
+        "status": "AMBIGUOUS_PERSON",
+        "personId": null,
+        "canonicalName": "Danilo Portugal"
+      },
+      {
+        "lineupMatchId": "2006_cuenca_lib_1fase",
+        "slot": 6,
+        "rawName": "Danilo Portugal",
+        "sourceId": "danilo portugal",
+        "status": "AMBIGUOUS_PERSON",
+        "personId": null,
+        "canonicalName": "Danilo Portugal"
+      },
+      {
+        "lineupMatchId": "2006_newells_lib_grupos",
+        "slot": 7,
+        "rawName": "Danilo Portugal",
+        "sourceId": "danilo portugal",
+        "status": "AMBIGUOUS_PERSON",
+        "personId": null,
+        "canonicalName": "Danilo Portugal"
+      },
+      {
+        "lineupMatchId": "2006_estudiantes_lib_oitavas_volta",
+        "slot": 6,
+        "rawName": "Danilo Portugal",
+        "sourceId": "danilo portugal",
+        "status": "AMBIGUOUS_PERSON",
+        "personId": null,
+        "canonicalName": "Danilo Portugal"
+      }
+    ],
+    "nicolas": [
+      {
+        "lineupMatchId": "2021_csa_brB_g4",
+        "slot": 9,
+        "rawName": "Nicolas",
+        "sourceId": "nicolas",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "28e672db-34c0-5505-b3fa-703cbd422879",
+        "canonicalName": "Nicolas Godinho Johann"
+      },
+      {
+        "lineupMatchId": "2021_guarani_brB_acesso",
+        "slot": 10,
+        "rawName": "Nicolas",
+        "sourceId": "nicolas",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "28e672db-34c0-5505-b3fa-703cbd422879",
+        "canonicalName": "Nicolas Godinho Johann"
+      },
+      {
+        "lineupMatchId": "2026_atleticogo_goiano_final_ida",
+        "slot": 4,
+        "rawName": "Nicolas",
+        "sourceId": "nicolas",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+        "canonicalName": "Nicolas Vichiatto da Silva"
+      },
+      {
+        "lineupMatchId": "2026_atleticogo_goiano_final_volta",
+        "slot": 4,
+        "rawName": "Nicolas",
+        "sourceId": "nicolas",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+        "canonicalName": "Nicolas Vichiatto da Silva"
+      }
+    ],
+    "michael": [
+      {
+        "lineupMatchId": "1999_santacruz_brB_titulo",
+        "slot": 8,
+        "rawName": "Michael",
+        "sourceId": "michael",
+        "status": "UNRESOLVED_PERSON",
+        "personId": null,
+        "canonicalName": "Michael (1999, elenco do acesso à Série A)"
+      }
+    ],
+    "fabiano": [
+      {
+        "lineupMatchId": "2006_cuenca_lib_1fase",
+        "slot": 5,
+        "rawName": "Fabiano",
+        "sourceId": "fabiano",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+        "canonicalName": "Fabiano Cézar Viegas"
+      },
+      {
+        "lineupMatchId": "2006_newells_lib_grupos",
+        "slot": 1,
+        "rawName": "Fabiano",
+        "sourceId": "fabiano",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+        "canonicalName": "Fabiano Cézar Viegas"
+      },
+      {
+        "lineupMatchId": "2006_estudiantes_lib_oitavas_volta",
+        "slot": 1,
+        "rawName": "Fabiano",
+        "sourceId": "fabiano",
+        "status": "RESOLVED_EXISTING_APPEARANCE",
+        "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+        "canonicalName": "Fabiano Cézar Viegas"
+      }
+    ],
+    "carlos_eduardo": [
+      {
+        "lineupMatchId": "2018_aparecidense_goiano_final_volta",
+        "slot": 10,
+        "rawName": "Carlos Eduardo",
+        "sourceId": "carlos eduardo",
+        "status": "AMBIGUOUS_PERSON",
+        "personId": null,
+        "canonicalName": "Carlos Eduardo"
+      }
+    ],
+    "luiz_felipe": [],
+    "murilo": [],
+    "murillo": []
+  }
+}
