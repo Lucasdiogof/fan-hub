@@ -1,0 +1,1224 @@
+[
+  {
+    "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "danilo",
+    "rawValue": {
+      "period": "jan/2025–atual",
+      "team": "Goiás",
+      "appearances": 8,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "danilo",
+    "rawValue": {
+      "period": "1999-2003",
+      "team": "Goiás",
+      "appearances": 116,
+      "goals": 15,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "nicolas",
+    "rawValue": {
+      "period": "jan/2026–atual",
+      "team": "Goiás",
+      "appearances": 38,
+      "goals": 2,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "michael",
+    "rawValue": {
+      "period": "2017-2019",
+      "team": "Goiás",
+      "appearances": 129,
+      "goals": 24,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "erik",
+    "rawValue": {
+      "period": "2013-2015",
+      "team": "Goiás",
+      "appearances": 103,
+      "goals": 36,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "override_live_data_baseline",
+    "sourceRef": "tadeu_annotation",
+    "rawValue": {
+      "personCanonicalName": "Tadeu Antônio Ferreira",
+      "clubSlug": "goias",
+      "appearances": 400,
+      "asOfDate": "2026-08-28",
+      "asOfMatchId": "pe_cb52680435343cc4",
+      "source": "manual_verified",
+      "supersedes": {
+        "value": 398,
+        "sourceTable": "squad_members",
+        "note": "snapshot desatualizado, não incorreto — só anterior à partida de 28/08/2026"
+      }
+    },
+    "sourceRole": "BASELINE",
+    "asOfDate": "2026-08-28"
+  },
+  {
+    "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "walter",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "2012-2013",
+        "2016-2017"
+      ],
+      "appearances": 97,
+      "goals": 48,
+      "note": "Total histórico local; há ledger com 98/48."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+    "clubSlug": "goias",
+    "spellId": "40354072-1a71-50a3-867c-7a96c7af4f18",
+    "statsScope": "SPELL",
+    "sourceType": "override_spell_model_implication",
+    "sourceRef": "walter_annotation:2",
+    "rawValue": {
+      "period": "2019",
+      "registrationType": "permanent",
+      "appearancesKnown": true,
+      "appearances": 0,
+      "note": "Integrado ao elenco, suspensão por doping ampliada antes da reestreia — passagem real com 0 jogos, não pendência de verificação."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "evair",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "2000",
+        "2002"
+      ],
+      "appearances": 40,
+      "goals": 16,
+      "note": "Passagens agora individualizadas pela mesma base."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "evair:2000",
+    "rawValue": {
+      "period": "2000",
+      "team": "Goiás",
+      "appearances": 25,
+      "goals": 8,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "CORROBORATING",
+    "asOfDate": null
+  },
+  {
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "evair:2002",
+    "rawValue": {
+      "period": "2002",
+      "team": "Goiás",
+      "appearances": 15,
+      "goals": 8,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "CORROBORATING",
+    "asOfDate": null
+  },
+  {
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "clubSlug": "goias",
+    "spellId": "e34ef702-b7df-570f-a08d-9f00e2b5904d",
+    "statsScope": "SPELL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "evair",
+    "rawValue": {
+      "period": "2000",
+      "team": "Goiás",
+      "appearances": 25,
+      "goals": 8,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "clubSlug": "goias",
+    "spellId": "4a768f8b-78c5-5a17-8750-6adc50aeb9af",
+    "statsScope": "SPELL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "evair",
+    "rawValue": {
+      "period": "2002",
+      "team": "Goiás",
+      "appearances": 15,
+      "goals": 8,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "welliton",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "2005-2007",
+        "2021"
+      ],
+      "appearances": 61,
+      "goals": 22,
+      "note": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "welliton:2005-2007",
+    "rawValue": {
+      "period": "2005-2007",
+      "team": "Goiás",
+      "appearances": 53,
+      "goals": 21,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "CORROBORATING",
+    "asOfDate": null
+  },
+  {
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "welliton:2021",
+    "rawValue": {
+      "period": "2021",
+      "team": "Goiás",
+      "appearances": 8,
+      "goals": 1,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "CORROBORATING",
+    "asOfDate": null
+  },
+  {
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "clubSlug": "goias",
+    "spellId": "81e06be3-b0eb-5f57-be88-33ff1c108854",
+    "statsScope": "SPELL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "welliton",
+    "rawValue": {
+      "period": "2005-2007",
+      "team": "Goiás",
+      "appearances": 53,
+      "goals": 21,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "clubSlug": "goias",
+    "spellId": "8b0aa269-c377-52be-bb29-95a0dc69658d",
+    "statsScope": "SPELL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "welliton",
+    "rawValue": {
+      "period": "2021",
+      "team": "Goiás",
+      "appearances": 8,
+      "goals": 1,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "thiago_rodrigues",
+    "rawValue": {
+      "period": "jan/2024–atual",
+      "team": "Goiás",
+      "appearances": 10,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "luisao",
+    "rawValue": {
+      "period": "jan/2026–dez/2026",
+      "team": "Goiás",
+      "appearances": 26,
+      "goals": 2,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "lucas_ribeiro",
+    "rawValue": {
+      "period": "abr/2024–atual",
+      "team": "Goiás",
+      "appearances": 104,
+      "goals": 3,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "luiz_felipe:jan/2025–nov/2025",
+    "rawValue": {
+      "period": "jan/2025–nov/2025",
+      "team": "Goiás",
+      "appearances": 19,
+      "goals": 2,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "DERIVED_COMPONENT",
+    "asOfDate": null
+  },
+  {
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "luiz_felipe:jan/2026–atual",
+    "rawValue": {
+      "period": "jan/2026–atual",
+      "team": "Goiás",
+      "appearances": 26,
+      "goals": 1,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "DERIVED_COMPONENT",
+    "asOfDate": null
+  },
+  {
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "clubSlug": "goias",
+    "spellId": "43d3d136-b00e-5393-a108-82adeef94fce",
+    "statsScope": "SPELL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "luiz_felipe",
+    "rawValue": {
+      "period": "jan/2025–nov/2025",
+      "team": "Goiás",
+      "appearances": 19,
+      "goals": 2,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "clubSlug": "goias",
+    "spellId": "69dd430f-2090-562f-bcc4-bdcfb19e6ae2",
+    "statsScope": "SPELL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "luiz_felipe",
+    "rawValue": {
+      "period": "jan/2026–atual",
+      "team": "Goiás",
+      "appearances": 26,
+      "goals": 1,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "ramon_menezes",
+    "rawValue": {
+      "period": "mar/2026–dez/2026",
+      "team": "Goiás",
+      "appearances": 13,
+      "goals": 0,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": "Total é snapshot da tabela de carreira; pode variar conforme atualização da fonte."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "murilo_camara:fev/2025–dez/2025",
+    "rawValue": {
+      "period": "fev/2025–dez/2025",
+      "team": "Goiás",
+      "appearances": 2,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "DERIVED_COMPONENT",
+    "asOfDate": null
+  },
+  {
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "murilo_camara:mar/2026–atual",
+    "rawValue": {
+      "period": "mar/2026–atual",
+      "team": "Goiás",
+      "appearances": 1,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "DERIVED_COMPONENT",
+    "asOfDate": null
+  },
+  {
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "clubSlug": "goias",
+    "spellId": "cc08f610-8dc7-5e5a-b4e4-f5059f3763f6",
+    "statsScope": "SPELL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "murilo_camara",
+    "rawValue": {
+      "period": "fev/2025–dez/2025",
+      "team": "Goiás",
+      "appearances": 2,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "clubSlug": "goias",
+    "spellId": "abf80090-af12-521a-b764-70c0d43058ff",
+    "statsScope": "SPELL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "murilo_camara",
+    "rawValue": {
+      "period": "mar/2026–atual",
+      "team": "Goiás",
+      "appearances": 1,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "rodrigo_soares",
+    "rawValue": {
+      "period": "jan/2026–atual",
+      "team": "Goiás",
+      "appearances": 37,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "marcos_vinicius",
+    "rawValue": {
+      "period": "ago/2026–atual",
+      "team": "Goiás",
+      "appearances": 4,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "djalma",
+    "rawValue": {
+      "period": "jan/2026–atual",
+      "team": "Goiás",
+      "appearances": 19,
+      "goals": 2,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "lourenco",
+    "rawValue": {
+      "period": "jan/2026–atual",
+      "team": "Goiás",
+      "appearances": 35,
+      "goals": 1,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "filipe_machado",
+    "rawValue": {
+      "period": "jan/2026–nov/2026",
+      "team": "Goiás",
+      "appearances": 32,
+      "goals": 0,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "747cb968-a339-586c-94cf-583a3e0c3296",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "baldoria",
+    "rawValue": {
+      "period": "fev/2025–atual",
+      "team": "Goiás",
+      "appearances": 31,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "juninho",
+    "rawValue": {
+      "period": "jan/2025–atual",
+      "team": "Goiás",
+      "appearances": 83,
+      "goals": 3,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "lucas_rodrigues",
+    "rawValue": {
+      "period": "fev/2025–atual",
+      "team": "Goiás",
+      "appearances": 26,
+      "goals": 4,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "gege",
+    "rawValue": {
+      "period": "jan/2026–dez/2026",
+      "team": "Goiás",
+      "appearances": 28,
+      "goals": 3,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "lucas_lima",
+    "rawValue": {
+      "period": "jan/2026–atual",
+      "team": "Goiás",
+      "appearances": 32,
+      "goals": 1,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "brayann",
+    "rawValue": {
+      "period": "set/2025–atual",
+      "team": "Goiás",
+      "appearances": 26,
+      "goals": 1,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "wellington_rato",
+    "rawValue": {
+      "period": "jul/2025–dez/2026",
+      "team": "Goiás",
+      "appearances": 22,
+      "goals": 2,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "pedrinho",
+    "rawValue": {
+      "period": "mai/2022–atual",
+      "team": "Goiás",
+      "appearances": 96,
+      "goals": 6,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "anselmo_ramon",
+    "rawValue": {
+      "period": "abr/2025–atual",
+      "team": "Goiás",
+      "appearances": 76,
+      "goals": 24,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "cadu",
+    "rawValue": {
+      "period": "fev/2026–dez/2026",
+      "team": "Goiás",
+      "appearances": 25,
+      "goals": 4,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "felipe_clemente",
+    "rawValue": {
+      "period": "ago/2026–dez/2026",
+      "team": "Goiás",
+      "appearances": 0,
+      "goals": 0,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": "Chegou por empréstimo em 21/08/2026; snapshot antes de estreia oficial pelo Goiás."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "jean_carlos",
+    "rawValue": {
+      "period": "fev/2025–atual",
+      "team": "Goiás",
+      "appearances": 47,
+      "goals": 4,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "140ba628-c222-53a5-8621-a774092a125b",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "halerrandrio",
+    "rawValue": {
+      "period": "abr/2023–atual",
+      "team": "Goiás",
+      "appearances": 12,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "esli_garcia",
+    "rawValue": {
+      "period": "jan/2025–atual",
+      "team": "Goiás",
+      "appearances": 44,
+      "goals": 5,
+      "loan": false,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "squad_members_club_history",
+    "sourceRef": "kadu_sousa",
+    "rawValue": {
+      "period": "dez/2025–dez/2026",
+      "team": "Goiás",
+      "appearances": 16,
+      "goals": 6,
+      "loan": true,
+      "is_goias": true,
+      "data_quality": "verified",
+      "notes": null
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "fernandao",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "1995-2001",
+        "2009-2010"
+      ],
+      "appearances": 271,
+      "goals": 108,
+      "note": "Total oficial do Goiás; não distribuir entre as duas passagens."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "josue",
+    "rawValue": {
+      "period": "1997-2004",
+      "team": "Goiás",
+      "appearances": 386,
+      "goals": 10,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "dudu_cearense",
+    "rawValue": {
+      "period": "2012-2013",
+      "team": "Goiás",
+      "appearances": 46,
+      "goals": 7,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "rafael_toloi",
+    "rawValue": {
+      "period": "2008-2012",
+      "team": "Goiás",
+      "appearances": 150,
+      "goals": 18,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "rafael_moura",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "2010",
+        "2019-2020"
+      ],
+      "appearances": 120,
+      "goals": 49,
+      "note": "Há divergência de escopo em fontes; valor preservado do ledger consolidado do projeto."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "araujo",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "1997-2003",
+        "2013-2014"
+      ],
+      "appearances": 391,
+      "goals": 145,
+      "note": "Total histórico oficial do Goiás."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "ernando",
+    "rawValue": {
+      "period": "2006-2013",
+      "team": "Goiás",
+      "appearances": 405,
+      "goals": null,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "iarley",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "2008-2009",
+        "2011-2012"
+      ],
+      "appearances": 173,
+      "goals": 47,
+      "note": "Total histórico local; não atribuir a uma passagem isolada."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_aggregate_stats",
+    "sourceRef": "paulo_baier",
+    "rawValue": {
+      "club": "Goiás",
+      "spells": [
+        "2004-2005",
+        "2007-2008"
+      ],
+      "appearances": 177,
+      "goals": 78,
+      "note": "Gols seguem total histórico local do projeto; base secundária diverge."
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "ricardo_goulart",
+    "rawValue": {
+      "period": "2012",
+      "team": "Goiás",
+      "appearances": 63,
+      "goals": 25,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "rodrigo_tabata",
+    "rawValue": {
+      "period": "2004-2005",
+      "team": "Goiás",
+      "appearances": 87,
+      "goals": 28,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "egidio",
+    "rawValue": {
+      "period": "2012",
+      "team": "Goiás",
+      "appearances": 61,
+      "goals": 8,
+      "loan": true,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  },
+  {
+    "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+    "clubSlug": "goias",
+    "spellId": null,
+    "statsScope": "CLUB_TOTAL",
+    "sourceType": "career_players_club_career",
+    "sourceRef": "harlei",
+    "rawValue": {
+      "period": "1999-2014",
+      "team": "Goiás",
+      "appearances": 831,
+      "goals": 0,
+      "loan": false,
+      "is_goias": true
+    },
+    "sourceRole": "PRIMARY",
+    "asOfDate": null
+  }
+]

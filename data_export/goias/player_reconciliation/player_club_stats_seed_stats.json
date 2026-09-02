@@ -1,0 +1,306 @@
+{
+  "approvedPeopleTotal": 96,
+  "peopleWithAnyStats": 48,
+  "peopleWithClubTotal": 48,
+  "peopleWithSpellStats": 5,
+  "peopleBlocked": 48,
+  "eligibilityApproved": 46,
+  "eligibilityPartial": 2,
+  "eligibilityBlocked": 48,
+  "totalStatRows": 57,
+  "clubTotalRows": 48,
+  "spellRows": 9,
+  "verifiedRows": 54,
+  "partialRows": 3,
+  "totalSourceRows": 63,
+  "sourceRowsByRole": {
+    "PRIMARY": 54,
+    "BASELINE": 1,
+    "CORROBORATING": 4,
+    "DERIVED_COMPONENT": 4
+  },
+  "appearancesKnown": 57,
+  "goalsKnown": 54,
+  "appearancesNull": 0,
+  "goalsNull": 3,
+  "appearancesZeroExplicit": 2,
+  "goalsZeroExplicit": 13,
+  "partialDivergences": [
+    {
+      "canonicalName": "Walter Henrique da Silva",
+      "persistedValue": {
+        "appearances": 97,
+        "goals": 48
+      },
+      "competingValue": {
+        "appearances": 98,
+        "goals": 48
+      },
+      "reason": "Total histórico local; há ledger com 98/48.",
+      "source": "career_players_aggregate_stats:walter"
+    },
+    {
+      "canonicalName": "Rafael Moura",
+      "persistedValue": {
+        "appearances": 120,
+        "goals": 49
+      },
+      "competingValue": null,
+      "reason": "Há divergência de escopo em fontes; valor preservado do ledger consolidado do projeto.",
+      "source": "career_players_aggregate_stats:rafael_moura"
+    },
+    {
+      "canonicalName": "Paulo Baier",
+      "persistedValue": {
+        "appearances": 177,
+        "goals": 78
+      },
+      "competingValue": null,
+      "reason": "Gols seguem total histórico local do projeto; base secundária diverge.",
+      "source": "career_players_aggregate_stats:paulo_baier"
+    }
+  ],
+  "conflictsReport": [],
+  "blocked": [
+    {
+      "canonicalName": "Amaral",
+      "canonicalId": "6416b152-ed92-52fc-8f3f-6027800dddaa",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Artur",
+      "canonicalId": "d8600945-4f69-5c47-a42d-662921fa9557",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Bruno Melo",
+      "canonicalId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Caio Vinícius",
+      "canonicalId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Carlos Alberto",
+      "canonicalId": "02a0df33-8a89-5b78-8011-00868b240029",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Dadá Belmonte",
+      "canonicalId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "David",
+      "canonicalId": "68880467-49ea-5661-8f08-2a177a060558",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Diego Caito",
+      "canonicalId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Diego Gonçalves",
+      "canonicalId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Dill",
+      "canonicalId": "7dcb9ad0-b573-5261-aa53-736c3c9b96aa",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Douglas",
+      "canonicalId": "e23bec2f-5da1-5544-ae02-7e97b9136bb6",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Douglas Pereira dos Santos",
+      "canonicalId": "ceba53d4-f785-545e-9a60-603a126c33e2",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Eduardo Sasha",
+      "canonicalId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Élvis",
+      "canonicalId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Everton Morelli",
+      "canonicalId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Ezequiel Alves de Oliveira Vieira",
+      "canonicalId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Fabiano Cézar Viegas",
+      "canonicalId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Fellipe Bastos",
+      "canonicalId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Gonzalo Freitas",
+      "canonicalId": "645725d2-4a9b-596e-bfae-7436af12ff59",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "canonicalId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Jajá",
+      "canonicalId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Julián Palacios",
+      "canonicalId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Lucas Halter",
+      "canonicalId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Lucas Lovat",
+      "canonicalId": "6d1615fb-9bab-5a4f-851b-7c4b74f564c7",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Maguinho",
+      "canonicalId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Marcelo Costa",
+      "canonicalId": "5d1b418d-b0eb-59bf-a7c3-c622a1569e57",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Matheus Peixoto",
+      "canonicalId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Messias",
+      "canonicalId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Murillo Carvalho Victorio",
+      "canonicalId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Nicolas Godinho Johann",
+      "canonicalId": "28e672db-34c0-5505-b3fa-703cbd422879",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Otacílio Neto",
+      "canonicalId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Rafael Lacerda",
+      "canonicalId": "6f6e77e6-237d-59bf-bf01-9f2710377af3",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Ramón",
+      "canonicalId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Renan",
+      "canonicalId": "38149930-5985-56fe-9832-cd101ea3d501",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Renan Oliveira",
+      "canonicalId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Rodrigo",
+      "canonicalId": "dfc91f87-d812-54c6-b759-fe3761000752",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Rodrigo Andrade",
+      "canonicalId": "77241a5f-1e7c-5a5e-be50-495dcf1438e4",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Sander",
+      "canonicalId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Thiago Mendes",
+      "canonicalId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Titi",
+      "canonicalId": "5ee54a6c-45ec-50dd-bc29-d5d3ac29d2a9",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Valmir Lucas",
+      "canonicalId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Vinícius",
+      "canonicalId": "3083606c-a924-5f61-8477-1381c6bf2a7e",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "canonicalId": "9a4c2c66-0936-5921-8714-95714db79daa",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Willean Lepo",
+      "canonicalId": "c652d7a2-e1cc-51cc-b349-cb1afa86e63b",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "William Matheus",
+      "canonicalId": "03fca98b-17cd-5484-838d-6690bb677f70",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Willian Oliveira",
+      "canonicalId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Zé Hugo",
+      "canonicalId": "19122a64-36c5-55d2-b734-7f682c70b5aa",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    },
+    {
+      "canonicalName": "Zé Ricardo",
+      "canonicalId": "d5256bb9-5c40-5354-87d0-38d304523039",
+      "reason": "NO_RESOLVABLE_STATS_EVIDENCE"
+    }
+  ]
+}
