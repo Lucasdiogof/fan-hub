@@ -1,0 +1,464 @@
+[
+  {
+    "spellId": "216eb0c4-c367-55fe-97a3-42944ffbd5db",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:danilo:club_history:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "5b3d8256-74e7-5109-84b6-857f31f8e7a0",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:danilo:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "872c706a-540f-5a90-94d6-c9e18282cfd3",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:nicolas:club_history:8",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "7637529d-219b-5714-8c2b-a83b87e06395",
+    "source": "override",
+    "sourceRecordKey": "override:nicolas_split:spell_model_implication:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "UNKNOWN"
+  },
+  {
+    "spellId": "d8a7f134-ca1b-542a-8705-4fea3ff7a64c",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:michael:club_career:3",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "92087d74-dd21-5d16-81e0-53c391f636a5",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:erik:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "7288704d-9f7e-55f6-b7b0-e05e34a87cc8",
+    "source": "override",
+    "sourceRecordKey": "override:fabiano_reclassify:spell_model_implication:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "UNKNOWN"
+  },
+  {
+    "spellId": "9cd424a8-dd4a-54fb-8bf5-061d095dfbd1",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:tadeu:club_career:7",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "9cd424a8-dd4a-54fb-8bf5-061d095dfbd1",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:tadeu:club_history:8",
+    "evidenceType": "CORROBORATING",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "9cd424a8-dd4a-54fb-8bf5-061d095dfbd1",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:tadeu:club_history:9",
+    "evidenceType": "CORROBORATING",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "e206ba3e-a45f-5229-8abf-77ffde1d6ee0",
+    "source": "override",
+    "sourceRecordKey": "override:walter_annotation:spell_model_implication:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "5c254545-4e51-55af-b312-01f3c7d64250",
+    "source": "override",
+    "sourceRecordKey": "override:walter_annotation:spell_model_implication:1",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "40354072-1a71-50a3-867c-7a96c7af4f18",
+    "source": "override",
+    "sourceRecordKey": "override:walter_annotation:spell_model_implication:2",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "e34ef702-b7df-570f-a08d-9f00e2b5904d",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:evair:club_career:9",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "4a768f8b-78c5-5a17-8750-6adc50aeb9af",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:evair:club_career:11",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "81e06be3-b0eb-5f57-be88-33ff1c108854",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:welliton:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "8b0aa269-c377-52be-bb29-95a0dc69658d",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:welliton:club_career:11",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "3c64f07b-ae90-5869-a293-ed206d2dbfe4",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:ezequiel:club_history:1",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "646cfe81-274a-539d-941e-c19919eaf629",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:murillo_victorio:club_history:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "ba8a521d-63e6-5c35-a4c9-5b7746515f64",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:thiago_rodrigues:club_history:10",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "7153d35c-3268-5d44-b119-230c51e0e18e",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:luisao:club_history:2",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "bf319add-f86d-5e63-a2a4-2e3113617f08",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:lucas_ribeiro:club_history:4",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "43d3d136-b00e-5393-a108-82adeef94fce",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:luiz_felipe:club_history:5",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "69dd430f-2090-562f-bcc4-bdcfb19e6ae2",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:luiz_felipe:club_history:6",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "51689444-28a6-557f-a5d9-02fb4b697aaa",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:ramon_menezes:club_history:9",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "cc08f610-8dc7-5e5a-b4e4-f5059f3763f6",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:murilo_camara:club_history:1",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "abf80090-af12-521a-b764-70c0d43058ff",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:murilo_camara:club_history:2",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "0b6e0953-6ab4-5506-b755-2babf62ae07b",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:rodrigo_soares:club_history:12",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "1c73f52f-be80-5369-b45d-d503a5ffcdb3",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:marcos_vinicius:club_history:15",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "7bac9de5-aa85-595d-895a-379320402ef8",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:djalma:club_history:12",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "c3b0a45f-123b-5128-ac3e-49de8d1b81b1",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:lourenco:club_history:6",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "2bf5083c-3406-5cc0-a52f-62f7204ac01e",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:filipe_machado:club_history:7",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "07905744-e471-5ac8-af46-dfb7e85cf5fa",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:baldoria:club_history:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "f010a3b0-f789-56ba-ae20-c07b80fc26fa",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:juninho:club_history:6",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "47cd1ba0-d985-5c8e-96ab-bc03eb28e727",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:lucas_rodrigues:club_history:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "34671275-a21f-5850-b5c3-6b6a7fb682c2",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:gege:club_history:11",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "b88250ad-de6f-5093-8f36-7fc48890959a",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:lucas_lima:club_history:9",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "d0e72877-85f4-5c97-93b9-a2c9a3c5242a",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:brayann:club_history:8",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "ea61834d-ecb4-5bfc-98f6-dd1b50fbca67",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:wellington_rato:club_history:12",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "c1ea058d-af99-53a0-8244-2a61e0488dbb",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:pedrinho:club_history:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "47b449ee-7e42-56a5-bda4-43cb46e54c26",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:anselmo_ramon:club_history:12",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "9fb99be2-3301-57fc-8a90-c541fbe51271",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:cadu:club_history:2",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "7888b147-6881-56cd-8c19-8bd94bc2ea20",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:felipe_clemente:club_history:16",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "b559ea9c-a5b6-57fe-ab94-82f664deb15b",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:jean_carlos:club_history:1",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "37f995b4-aec0-5904-80a7-c9ba3d1ad313",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:halerrandrio:club_history:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "9b1c7d3b-b9c4-5e5f-948f-c234ee19ee56",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:esli_garcia:club_history:7",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "17202656-70b9-502e-9766-e7bd7b593eee",
+    "source": "squad_members",
+    "sourceRecordKey": "squad_members:kadu_sousa:club_history:4",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "187f624d-8ee2-58e1-9478-3cf35a3a016b",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:fernandao:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "a39018a0-2ac2-5392-a65d-ed5cfc402add",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:fernandao:club_career:5",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "899833d9-a663-5b45-80f6-5f7ad4f204a9",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:josue:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "9f4e0422-fb5b-53b9-a589-eac66d4f8e60",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:dudu_cearense:club_career:6",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "f7bd5cb2-8432-5028-a0b6-257292085479",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:rafael_toloi:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "1fa876c4-6971-55f8-9816-15e4bf18258c",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:rafael_moura:club_career:7",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "d7e64579-3f6d-5bb4-b0d3-4e21fdba803d",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:rafael_moura:club_career:13",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "bae00dc6-80b1-5760-a28d-94c657412299",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:araujo:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "31006e1c-bc5b-5a4d-acdf-20607d5d728a",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:araujo:club_career:8",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "d663da37-f3ca-51c7-9fbb-d9488134fbf2",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:ernando:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "8bc616d4-3a41-5b2d-a0de-ba76bcd69337",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:iarley:club_career:11",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "7d03b11e-810c-5924-ae4e-e519a2b7af8b",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:iarley:club_career:14",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "57afb6fd-32fa-50c7-aa76-2fb6dab53182",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:paulo_baier:club_career:11",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "16e0a37d-a122-5080-9be4-de38b8b73227",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:paulo_baier:club_career:13",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "e4e7e6d1-84bd-54f4-86ac-b79e3d3f4334",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:ricardo_goulart:club_career:2",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "4337585b-5abf-560e-8115-05d263579128",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:rodrigo_tabata:club_career:11",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "69d26115-b3d0-5c17-bf05-d69887b0faac",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:egidio:club_career:9",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "LOAN"
+  },
+  {
+    "spellId": "85c1c9be-0e83-579f-a7e5-a30a61105d54",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:harlei:club_career:3",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  },
+  {
+    "spellId": "2cce4563-18aa-58f4-8646-09c09c507812",
+    "source": "career_players",
+    "sourceRecordKey": "career_players:dill:club_career:0",
+    "evidenceType": "PRIMARY",
+    "relationshipType": "PERMANENT"
+  }
+]

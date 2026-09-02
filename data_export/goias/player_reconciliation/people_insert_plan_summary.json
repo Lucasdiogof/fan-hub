@@ -1,19 +1,19 @@
 {
   "totalCanonicalCandidates": 295,
   "byInsertStatus": {
-    "APPROVED": 94,
+    "APPROVED": 96,
     "PROVISIONAL": 99,
-    "BLOCKED_AMBIGUOUS": 83,
+    "BLOCKED_AMBIGUOUS": 81,
     "BLOCKED_INSUFFICIENT_IDENTITY": 19
   },
   "byIdentityStatus": {
-    "EXACT_IDENTITY": 93,
+    "EXACT_IDENTITY": 95,
     "PROBABLE_IDENTITY": 1,
-    "AMBIGUOUS_IDENTITY": 83,
+    "AMBIGUOUS_IDENTITY": 81,
     "SINGLE_SOURCE": 118
   },
   "byNameQuality": {
-    "LEGAL_FULL_NAME": 10,
+    "LEGAL_FULL_NAME": 12,
     "FULL_NAME": 29,
     "PUBLIC_NAME": 120,
     "COMPOUND_NICKNAME": 0,
@@ -30,7 +30,7 @@
   },
   "sourceRecordAccounting": {
     "totalSourceRecordsAcrossAllCandidates": 621,
-    "sourceRecordsGettingAPersonIdInFirstInsert": 269,
-    "sourceRecordsWithoutPersonIdForNow": 352
+    "sourceRecordsGettingAPersonIdInFirstInsert": 274,
+    "sourceRecordsWithoutPersonIdForNow": 347
   }
 }

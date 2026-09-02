@@ -246,11 +246,18 @@ test('cada linha de VALUES em person_alias_sources tem exatamente 1 literal ::uu
     assert.strictEqual(uuidCasts, 1, `linha com número inesperado de ::uuid (${uuidCasts}): ${row}`);
   }
 });
-test('reexecutar o mesmo generate_person_aliases_seed.mjs produz o MESMO texto SQL byte-a-byte (nenhum gen_random_uuid() é chamado em JS)', () => {
+test('generate_person_aliases_seed.mjs está TRAVADO (migration já aplicada) — rodar de novo tem que se recusar, nunca sobrescrever o arquivo', () => {
   const before = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
-  execFileSync(process.execPath, [path.join(__dirname, 'generate_person_aliases_seed.mjs')], { stdio: 'pipe' });
+  assert.throws(() => execFileSync(process.execPath, [path.join(__dirname, 'generate_person_aliases_seed.mjs')], { stdio: 'pipe' }));
   const after = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
-  assert.strictEqual(before, after, 'a migration mudou ao regenerar — a geração não é determinística');
+  assert.strictEqual(before, after, 'o arquivo já aplicado mudou — o guard de "migration travada" falhou');
+});
+test('reexecutar generate_additive_person_aliases_seed.mjs (a migration de Evair/Welliton, essa sim ainda não aplicada) produz o MESMO SQL byte-a-byte', () => {
+  const additivePath = path.join(ROOT, 'supabase', 'migrations', '20260902010000_add_evair_welliton_aliases.sql');
+  const before = fs.readFileSync(additivePath, 'utf8');
+  execFileSync(process.execPath, [path.join(__dirname, 'generate_additive_person_aliases_seed.mjs')], { stdio: 'pipe' });
+  const after = fs.readFileSync(additivePath, 'utf8');
+  assert.strictEqual(before, after, 'a migration aditiva mudou ao regenerar — a geração não é determinística');
 });
 
 console.log(`\n${passed} passaram, ${failures.length} falharam.`);

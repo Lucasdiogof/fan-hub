@@ -1,0 +1,535 @@
+{
+  "approvedPeopleTotal": 96,
+  "peopleWithAtLeastOneSpell": 53,
+  "peopleWithMultipleSpells": 10,
+  "peopleBlocked": 43,
+  "totalSpellRows": 64,
+  "approvedSpellRows": 64,
+  "provisionalSpellRows": 0,
+  "totalSpellSourceRows": 66,
+  "ongoingSpells": 23,
+  "byStartPrecision": {
+    "MONTH": 33,
+    "YEAR": 31
+  },
+  "byEndPrecision": {
+    "ONGOING": 23,
+    "YEAR": 31,
+    "MONTH": 10
+  },
+  "ambiguousMatches": [],
+  "mergeDecisions": [
+    {
+      "canonicalName": "Tadeu Antônio Ferreira",
+      "rawSegmentCount": 3,
+      "mergedSpellCount": 1,
+      "groups": [
+        {
+          "boundary": "2019/4-atual",
+          "segments": [
+            "career_players:tadeu:club_career:7 [PERMANENT] PRIMARY",
+            "squad_members:tadeu:club_history:8 [LOAN] CORROBORATING",
+            "squad_members:tadeu:club_history:9 [PERMANENT] CORROBORATING"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Walter Henrique da Silva",
+      "rawSegmentCount": 3,
+      "mergedSpellCount": 3,
+      "groups": [
+        {
+          "boundary": "2012-2013",
+          "segments": [
+            "override:walter_annotation:spell_model_implication:0 [LOAN] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2016-2017",
+          "segments": [
+            "override:walter_annotation:spell_model_implication:1 [LOAN] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2019-2019",
+          "segments": [
+            "override:walter_annotation:spell_model_implication:2 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Evair Aparecido Paulino",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "2000-2000",
+          "segments": [
+            "career_players:evair:club_career:9 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2002-2002",
+          "segments": [
+            "career_players:evair:club_career:11 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Welliton Soares de Morais",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "2005-2007",
+          "segments": [
+            "career_players:welliton:club_career:0 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2021-2021",
+          "segments": [
+            "career_players:welliton:club_career:11 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Luiz Felipe do Nascimento dos Santos",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "2025/1-2025/11",
+          "segments": [
+            "squad_members:luiz_felipe:club_history:5 [LOAN] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2026/1-atual",
+          "segments": [
+            "squad_members:luiz_felipe:club_history:6 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Murilo Camara Saquetti Chimelo Pereira",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "2025/2-2025/12",
+          "segments": [
+            "squad_members:murilo_camara:club_history:1 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2026/3-atual",
+          "segments": [
+            "squad_members:murilo_camara:club_history:2 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Fernandão",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "1995-2001",
+          "segments": [
+            "career_players:fernandao:club_career:0 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2009-2010",
+          "segments": [
+            "career_players:fernandao:club_career:5 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Rafael Moura",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "2010-2010",
+          "segments": [
+            "career_players:rafael_moura:club_career:7 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2019-2020",
+          "segments": [
+            "career_players:rafael_moura:club_career:13 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Araújo",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "1997-2003",
+          "segments": [
+            "career_players:araujo:club_career:0 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2013-2014",
+          "segments": [
+            "career_players:araujo:club_career:8 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Iarley",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "2008-2009",
+          "segments": [
+            "career_players:iarley:club_career:11 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2011-2012",
+          "segments": [
+            "career_players:iarley:club_career:14 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    },
+    {
+      "canonicalName": "Paulo Baier",
+      "rawSegmentCount": 2,
+      "mergedSpellCount": 2,
+      "groups": [
+        {
+          "boundary": "2004-2005",
+          "segments": [
+            "career_players:paulo_baier:club_career:11 [PERMANENT] PRIMARY"
+          ]
+        },
+        {
+          "boundary": "2007-2008",
+          "segments": [
+            "career_players:paulo_baier:club_career:13 [PERMANENT] PRIMARY"
+          ]
+        }
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "canonicalName": "Amaral",
+      "canonicalId": "6416b152-ed92-52fc-8f3f-6027800dddaa",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Artur",
+      "canonicalId": "d8600945-4f69-5c47-a42d-662921fa9557",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Bruno Melo",
+      "canonicalId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Caio Vinícius",
+      "canonicalId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Carlos Alberto",
+      "canonicalId": "02a0df33-8a89-5b78-8011-00868b240029",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Dadá Belmonte",
+      "canonicalId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "David",
+      "canonicalId": "68880467-49ea-5661-8f08-2a177a060558",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Diego Caito",
+      "canonicalId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Diego Gonçalves",
+      "canonicalId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Douglas",
+      "canonicalId": "e23bec2f-5da1-5544-ae02-7e97b9136bb6",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Douglas Pereira dos Santos",
+      "canonicalId": "ceba53d4-f785-545e-9a60-603a126c33e2",
+      "reason": "NO_STRUCTURED_EVIDENCE"
+    },
+    {
+      "canonicalName": "Eduardo Sasha",
+      "canonicalId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Élvis",
+      "canonicalId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Everton Morelli",
+      "canonicalId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Fellipe Bastos",
+      "canonicalId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Gonzalo Freitas",
+      "canonicalId": "645725d2-4a9b-596e-bfae-7436af12ff59",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "canonicalId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Jajá",
+      "canonicalId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Julián Palacios",
+      "canonicalId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Lucas Halter",
+      "canonicalId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Lucas Lovat",
+      "canonicalId": "6d1615fb-9bab-5a4f-851b-7c4b74f564c7",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Maguinho",
+      "canonicalId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Marcelo Costa",
+      "canonicalId": "5d1b418d-b0eb-59bf-a7c3-c622a1569e57",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Matheus Peixoto",
+      "canonicalId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Messias",
+      "canonicalId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Otacílio Neto",
+      "canonicalId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Rafael Lacerda",
+      "canonicalId": "6f6e77e6-237d-59bf-bf01-9f2710377af3",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Ramón",
+      "canonicalId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Renan",
+      "canonicalId": "38149930-5985-56fe-9832-cd101ea3d501",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Renan Oliveira",
+      "canonicalId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Rodrigo",
+      "canonicalId": "dfc91f87-d812-54c6-b759-fe3761000752",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Rodrigo Andrade",
+      "canonicalId": "77241a5f-1e7c-5a5e-be50-495dcf1438e4",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Sander",
+      "canonicalId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Thiago Mendes",
+      "canonicalId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Titi",
+      "canonicalId": "5ee54a6c-45ec-50dd-bc29-d5d3ac29d2a9",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Valmir Lucas",
+      "canonicalId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Vinícius",
+      "canonicalId": "3083606c-a924-5f61-8477-1381c6bf2a7e",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "canonicalId": "9a4c2c66-0936-5921-8714-95714db79daa",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Willean Lepo",
+      "canonicalId": "c652d7a2-e1cc-51cc-b349-cb1afa86e63b",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "William Matheus",
+      "canonicalId": "03fca98b-17cd-5484-838d-6690bb677f70",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Willian Oliveira",
+      "canonicalId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Zé Hugo",
+      "canonicalId": "19122a64-36c5-55d2-b734-7f682c70b5aa",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    },
+    {
+      "canonicalName": "Zé Ricardo",
+      "canonicalId": "d5256bb9-5c40-5354-87d0-38d304523039",
+      "reason": "ONLY_UNFILTERED_LINEUP_MATCHES"
+    }
+  ],
+  "peopleWithMultipleSpellsList": [
+    {
+      "canonicalName": "Araújo",
+      "spellCount": 2,
+      "periods": [
+        "1997-2003",
+        "2013-2014"
+      ]
+    },
+    {
+      "canonicalName": "Evair Aparecido Paulino",
+      "spellCount": 2,
+      "periods": [
+        "2000-2000",
+        "2002-2002"
+      ]
+    },
+    {
+      "canonicalName": "Fernandão",
+      "spellCount": 2,
+      "periods": [
+        "1995-2001",
+        "2009-2010"
+      ]
+    },
+    {
+      "canonicalName": "Iarley",
+      "spellCount": 2,
+      "periods": [
+        "2008-2009",
+        "2011-2012"
+      ]
+    },
+    {
+      "canonicalName": "Luiz Felipe do Nascimento dos Santos",
+      "spellCount": 2,
+      "periods": [
+        "2025/1-2025/11",
+        "2026/1-atual"
+      ]
+    },
+    {
+      "canonicalName": "Murilo Camara Saquetti Chimelo Pereira",
+      "spellCount": 2,
+      "periods": [
+        "2025/2-2025/12",
+        "2026/3-atual"
+      ]
+    },
+    {
+      "canonicalName": "Paulo Baier",
+      "spellCount": 2,
+      "periods": [
+        "2004-2005",
+        "2007-2008"
+      ]
+    },
+    {
+      "canonicalName": "Rafael Moura",
+      "spellCount": 2,
+      "periods": [
+        "2010-2010",
+        "2019-2020"
+      ]
+    },
+    {
+      "canonicalName": "Walter Henrique da Silva",
+      "spellCount": 3,
+      "periods": [
+        "2012-2013",
+        "2016-2017",
+        "2019-2019"
+      ]
+    },
+    {
+      "canonicalName": "Welliton Soares de Morais",
+      "spellCount": 2,
+      "periods": [
+        "2005-2007",
+        "2021-2021"
+      ]
+    }
+  ],
+  "provisionalList": []
+}

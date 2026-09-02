@@ -1,7 +1,7 @@
 {
-  "approvedPeopleCount": 94,
-  "totalAliasRows": 163,
-  "uniqueNormalizedAliases": 161,
+  "approvedPeopleCount": 96,
+  "totalAliasRows": 167,
+  "uniqueNormalizedAliases": 165,
   "ambiguousNormalizedAliases": 2,
   "ambiguousList": [
     {
@@ -32,10 +32,10 @@
     }
   ],
   "peopleWithNoExtraAliasBeyondCanonicalDisplay": 31,
-  "totalAliasSourceRows": 375,
+  "totalAliasSourceRows": 382,
   "byAliasType": {
-    "LEGAL_NAME": 10,
-    "DISPLAY_NAME": 38,
+    "LEGAL_NAME": 12,
+    "DISPLAY_NAME": 40,
     "FULL_NAME": 94,
     "NICKNAME": 6,
     "SHORT_NAME": 15

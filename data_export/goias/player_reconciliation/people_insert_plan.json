@@ -318,6 +318,60 @@
     "review_status": "HUMAN_ANNOTATED"
   },
   {
+    "canonical_person_id": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "canonical_person_key": "goias-app:multiclub:person:52",
+    "canonical_name": "Evair Aparecido Paulino",
+    "display_name": "Evair",
+    "identity_status": "EXACT_IDENTITY",
+    "insert_status": "APPROVED",
+    "reason": "Nome civil pesquisado e confirmado com evidência externa registrada no override (confiança 0.9).",
+    "source_records": [
+      {
+        "source": "career_players",
+        "sourceId": "evair"
+      },
+      {
+        "source": "guess_players",
+        "sourceId": "evair"
+      }
+    ],
+    "aliases": [
+      "Evair"
+    ],
+    "confidence": 0.9,
+    "name_quality_bucket": "LEGAL_FULL_NAME",
+    "review_status": "HUMAN_VERIFIED"
+  },
+  {
+    "canonical_person_id": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "canonical_person_key": "goias-app:multiclub:person:54",
+    "canonical_name": "Welliton Soares de Morais",
+    "display_name": "Welliton",
+    "identity_status": "EXACT_IDENTITY",
+    "insert_status": "APPROVED",
+    "reason": "Nome civil pesquisado e confirmado com evidência externa registrada no override (confiança 0.9).",
+    "source_records": [
+      {
+        "source": "career_players",
+        "sourceId": "welliton"
+      },
+      {
+        "source": "guess_players",
+        "sourceId": "welliton_identity_review"
+      },
+      {
+        "source": "lineup_matches",
+        "sourceId": "welliton"
+      }
+    ],
+    "aliases": [
+      "Welliton"
+    ],
+    "confidence": 0.9,
+    "name_quality_bucket": "LEGAL_FULL_NAME",
+    "review_status": "HUMAN_VERIFIED"
+  },
+  {
     "canonical_person_id": "494b3a39-970e-5f4c-8756-1cd7068f9a5b",
     "canonical_person_key": "goias-app:multiclub:person:12",
     "canonical_name": "Aldo",
@@ -1372,31 +1426,6 @@
     "review_status": "AUTOMATIC_UNREVIEWED"
   },
   {
-    "canonical_person_id": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
-    "canonical_person_key": "goias-app:multiclub:person:52",
-    "canonical_name": "Evair",
-    "display_name": "Evair",
-    "identity_status": "AMBIGUOUS_IDENTITY",
-    "insert_status": "BLOCKED_AMBIGUOUS",
-    "reason": "Motor automático não conseguiu confirmar nem refutar se as fontes envolvidas são a mesma pessoa (sem nome completo/camisa/período que corrobore ou contradiga). Preservar a ambiguidade é melhor que fundir errado — fica pendente até enriquecimento (fonte externa, dado adicional) ou revisão humana explícita.",
-    "source_records": [
-      {
-        "source": "career_players",
-        "sourceId": "evair"
-      },
-      {
-        "source": "guess_players",
-        "sourceId": "evair"
-      }
-    ],
-    "aliases": [
-      "Evair Aparecido Paulino"
-    ],
-    "confidence": 0.4,
-    "name_quality_bucket": null,
-    "review_status": "AUTOMATIC_UNREVIEWED"
-  },
-  {
     "canonical_person_id": "be4bf8d6-5b57-532d-bc56-118e7970a01f",
     "canonical_person_key": "goias-app:multiclub:person:53",
     "canonical_name": "Bruno Henrique",
@@ -1416,35 +1445,6 @@
     ],
     "aliases": [
       "Bruno Henrique Pinto"
-    ],
-    "confidence": 0.4,
-    "name_quality_bucket": null,
-    "review_status": "AUTOMATIC_UNREVIEWED"
-  },
-  {
-    "canonical_person_id": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
-    "canonical_person_key": "goias-app:multiclub:person:54",
-    "canonical_name": "Welliton",
-    "display_name": "Welliton",
-    "identity_status": "AMBIGUOUS_IDENTITY",
-    "insert_status": "BLOCKED_AMBIGUOUS",
-    "reason": "Motor automático não conseguiu confirmar nem refutar se as fontes envolvidas são a mesma pessoa (sem nome completo/camisa/período que corrobore ou contradiga). Preservar a ambiguidade é melhor que fundir errado — fica pendente até enriquecimento (fonte externa, dado adicional) ou revisão humana explícita.",
-    "source_records": [
-      {
-        "source": "career_players",
-        "sourceId": "welliton"
-      },
-      {
-        "source": "guess_players",
-        "sourceId": "welliton_identity_review"
-      },
-      {
-        "source": "lineup_matches",
-        "sourceId": "welliton"
-      }
-    ],
-    "aliases": [
-      "Welliton Soares de Morais"
     ],
     "confidence": 0.4,
     "name_quality_bucket": null,

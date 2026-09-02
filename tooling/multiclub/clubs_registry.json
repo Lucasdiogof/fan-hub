@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "_permanenceWarning": "ESTE ARQUIVO É UM REGISTRY PERSISTENTE DE IDENTIDADE DE CLUBE, NÃO UM CACHE. club_id, uma vez atribuído, NUNCA muda — mesmo se slug/name/short_name forem corrigidos depois. canonicalClubKey é sequencial e NUNCA é reaproveitado.",
+  "nextSequence": 2,
+  "entries": [
+    {
+      "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+      "canonicalClubKey": "goias-app:multiclub:club:1",
+      "registryLookupKey": "goias",
+      "registeredAt": "2026-09-02"
+    }
+  ]
+}

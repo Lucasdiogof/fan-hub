@@ -160,6 +160,38 @@
     "isPreferred": true
   },
   {
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "canonicalPersonKey": "goias-app:multiclub:person:52",
+    "alias": "Evair Aparecido Paulino",
+    "normalizedAlias": "evair aparecido paulino",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "canonicalPersonKey": "goias-app:multiclub:person:52",
+    "alias": "Evair",
+    "normalizedAlias": "evair",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "canonicalPersonKey": "goias-app:multiclub:person:54",
+    "alias": "Welliton Soares de Morais",
+    "normalizedAlias": "welliton soares de morais",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "canonicalPersonKey": "goias-app:multiclub:person:54",
+    "alias": "Welliton",
+    "normalizedAlias": "welliton",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
     "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
     "canonicalPersonKey": "goias-app:multiclub:person:95",
     "alias": "Ezequiel Alves de Oliveira Vieira",

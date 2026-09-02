@@ -141,6 +141,8 @@ for (const { override: ov, candidate } of appliedOverrides) {
         note: group.note,
         pendingVerification: ov.pendingVerification,
         futureCollisionWarning: ov.futureCollisionWarning,
+        spellModelImplication: group.spellModelImplication,
+        continuousSpellOverride: group.continuousSpellOverride,
       });
     }
     // valida: target inteiro precisa estar coberto por resultingGroups +
@@ -193,6 +195,8 @@ for (const { override: ov, candidate } of appliedOverrides) {
       futureCollisionWarning: ov.futureCollisionWarning,
       note: ov.note,
       pendingVerification: ov.pendingVerification,
+      spellModelImplication: ov.spellModelImplication,
+      continuousSpellOverride: ov.continuousSpellOverride,
     });
   } else if (ov.type === 'annotate') {
     // Não muda identidade/membros — só anexa dado estruturado extra
@@ -230,6 +234,7 @@ for (const { override: ov, candidate } of appliedOverrides) {
       evidence: ov.evidence,
       liveDataBaseline: ov.liveDataBaseline,
       spellModelImplication: ov.spellModelImplication,
+      continuousSpellOverride: ov.continuousSpellOverride,
       primaryDataStatus: candidate.primaryDataStatus,
     });
   } else {

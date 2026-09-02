@@ -152,6 +152,18 @@
             "canonicalName": "Nicolas Godinho Johann",
             "displayName": "Nicolas",
             "nameQuality": "LEGAL_FULL_NAME"
+          },
+          "spellModelImplication": {
+            "personCanonicalName": "Nicolas Godinho Johann",
+            "clubSlug": "goias",
+            "spells": [
+              {
+                "period": "2021-2022",
+                "registrationType": "unknown",
+                "appearancesKnown": false,
+                "note": "Período validado por fonte externa (Transfermarkt: 'Goiás 2021/2022'). lineup_matches:nicolas (matchIdFilter deste grupo) só cobre 2021-10-15 e 2021-11-22 — evidência interna sozinha não alcançaria 2022, por isso este campo estruturado, mesmo padrão do Walter: a decisão humana passa a ser a entrada canônica, a prosa/evidence externa só justifica."
+              }
+            ]
           }
         }
       ],
@@ -404,8 +416,20 @@
       },
       "note": "Nome completo determinado por pesquisa externa nesta rodada (v3.1) — cruzado em 3 fontes independentes (Futebol de Goyaz, Wikipédia PT, BDFutbol). Confiança da IDENTIDADE (é o mesmo jogador de lineup_matches/guess_players) permanece 0.85 — a pesquisa resolve o NOME/biografia, não eleva a confiança de que os registros internos são a mesma pessoa (já era alta por corroboração interna). Ver biographicalProvenance pra proveniência campo-a-campo — NUNCA tratar academy_club como 'clube anterior ao Goiás', é o clube de formação (1993), um fato diferente que só coincide de nome.",
       "futureCollisionWarning": "O usuário mencionou um jogador moderno 'Fabiano Monroe Alves de Oliveira' (meia, nascido 2007-11-17) que NÃO aparece em nenhuma fonte atual do dataset. Quando ele for cadastrado em qualquer fonte futura, checar ativamente contra este registro (Fabiano Cézar Viegas, nascido 1975) antes de reaproveitar o slug 'fabiano' — mesmo padrão de colisão do caso Danilo.",
+      "spellModelImplication": {
+        "personCanonicalName": "Fabiano Cézar Viegas",
+        "clubSlug": "goias",
+        "spells": [
+          {
+            "period": "2006-2007",
+            "registrationType": "unknown",
+            "appearancesKnown": false,
+            "note": "Período validado por fonte externa (futeboldegoyaz.com.br: 'passagem 2006-2007'), corroborado internamente por lineup_matches:fabiano (3 partidas, todas 2006, mesma campanha da Libertadores). career_players não cadastra Fabiano — sem entrada estruturada própria pra este spell, por isso a necessidade deste campo, mesmo padrão do Walter."
+          }
+        ]
+      },
       "origin": "HUMAN_VERIFIED",
-      "reviewedAt": "2026-09-01"
+      "reviewedAt": "2026-09-02"
     },
     {
       "id": "tadeu_annotation",
@@ -445,6 +469,10 @@
           "sourceTable": "squad_members",
           "note": "snapshot desatualizado, não incorreto — só anterior à partida de 28/08/2026"
         }
+      },
+      "continuousSpellOverride": {
+        "clubSlug": "goias",
+        "note": "Continuidade confirmada: o empréstimo (abr/2019–dez/2019, squad_members.club_history[8]) foi seguido pela compra definitiva (jan/2020–atual, squad_members.club_history[9]) SEM saída real do clube entre os dois — é a mesma passagem, só mudou a natureza contratual. Corroborado por career_players.club_career[7] ('2019-atual', 400 partidas, uma única entrada contínua) e pela contagem viva de aparições (liveDataBaseline acima) nunca reiniciar entre os dois contratos. Força a mesclagem de TODOS os segmentos Tier 1 deste clube num único spell, independente de qualquer gap detectado automaticamente."
       },
       "origin": "HUMAN_VERIFIED",
       "reviewedAt": "2026-09-01"
@@ -499,6 +527,61 @@
       },
       "origin": "HUMAN_VERIFIED",
       "reviewedAt": "2026-09-01"
+    },
+    {
+      "id": "evair_reclassify",
+      "type": "reclassify",
+      "target": [
+        "career_players:evair",
+        "guess_players:evair"
+      ],
+      "reason": "Motor automático marcou AMBIGUOUS_IDENTITY (confiança 0.4) só por falta de nome completo/período/camisa que corroborasse — não por conflito real entre as fontes (career_players e guess_players nunca se contradizem, career_players.position='Centroavante' e guess_players.position='ata' são a mesma posição em granularidades diferentes). Validação externa confirma: é uma única pessoa, Evair Aparecido Paulino.",
+      "evidence": [
+        {
+          "type": "external",
+          "description": "Fornecido pelo usuário: Evair Aparecido Paulino, uma única pessoa, duas passagens pelo Goiás (2000 e 2002)."
+        }
+      ],
+      "newIdentity": "EXACT_IDENTITY",
+      "newIdentityConfidence": 0.9,
+      "canonicalIdentity": {
+        "canonicalName": "Evair Aparecido Paulino",
+        "displayName": "Evair",
+        "nameQuality": "LEGAL_FULL_NAME"
+      },
+      "note": "career_players:evair.club_career já lista as 2 passagens Goiás corretas (2000 e 2002, is_goias=true cada) — sem necessidade de spellModelImplication, a fonte estruturada existente basta.",
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-02"
+    },
+    {
+      "id": "welliton_reclassify",
+      "type": "reclassify",
+      "target": [
+        "career_players:welliton",
+        "guess_players:welliton_identity_review",
+        "lineup_matches:welliton"
+      ],
+      "reason": "Motor automático marcou AMBIGUOUS_IDENTITY (confiança 0.4) só por falta de nome completo/período/camisa que corroborasse — não por conflito real. lineup_matches:welliton (2 partidas, 2006, posição ATA) cai inteiramente dentro da passagem 2005-2007 de career_players, sem contradição. Validação externa confirma: é uma única pessoa, Welliton Soares de Morais.",
+      "evidence": [
+        {
+          "type": "external",
+          "description": "Fornecido pelo usuário: Welliton Soares de Morais, uma única pessoa, duas passagens pelo Goiás (2005-2007 e 2021)."
+        },
+        {
+          "type": "internal",
+          "description": "lineup_matches:welliton: 2006_newells_lib_grupos e 2006_estudiantes_lib_oitavas_volta, ambas 2006, posição ATA — dentro da janela 2005-2007 de career_players, sem conflito."
+        }
+      ],
+      "newIdentity": "EXACT_IDENTITY",
+      "newIdentityConfidence": 0.9,
+      "canonicalIdentity": {
+        "canonicalName": "Welliton Soares de Morais",
+        "displayName": "Welliton",
+        "nameQuality": "LEGAL_FULL_NAME"
+      },
+      "note": "career_players:welliton.club_career já lista as 2 passagens Goiás corretas (2005-2007 e 2021, is_goias=true cada) — sem necessidade de spellModelImplication, a fonte estruturada existente basta.",
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-02"
     }
   ]
 }

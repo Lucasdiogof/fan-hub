@@ -15,6 +15,20 @@ const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const TOOLING = path.join(ROOT, 'tooling', 'multiclub');
 const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql');
 
+// GUARD — esta migration JÁ FOI APLICADA em produção. person_aliases_seed
+// .json/person_alias_sources_seed.json refletem o estado ATUAL de people
+// (que evolui — ex.: Evair/Welliton), então rodar este gerador de novo
+// sobrescreveria o arquivo aplicado com um conteúdo divergente do banco.
+// Pessoas novas ganham aliases numa migration ADITIVA separada (ver
+// generate_additive_person_aliases_seed.mjs). Já aconteceu por engano uma
+// vez (rodado sem querer dentro de um teste de reprodutibilidade) —
+// restaurado via `git checkout` a tempo.
+const MIGRATION_ALREADY_APPLIED = true;
+if (MIGRATION_ALREADY_APPLIED) {
+  console.error(`RECUSADO: ${path.relative(ROOT, MIGRATION_PATH).replace(/\\/g, '/')} já foi aplicada em produção — este gerador não roda mais. Pessoas novas vão em migration ADITIVA própria (ver generate_additive_person_aliases_seed.mjs).`);
+  process.exit(1);
+}
+
 const aliasSeed = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'person_aliases_seed.json'), 'utf8'));
 const aliasSourceSeed = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'person_alias_sources_seed.json'), 'utf8'));
 const registry = JSON.parse(fs.readFileSync(path.join(TOOLING, 'people_registry.json'), 'utf8'));

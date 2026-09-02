@@ -22,6 +22,22 @@ const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const TOOLING = path.join(ROOT, 'tooling', 'multiclub');
 const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260901010000_seed_goias_people.sql');
 
+// GUARD — esta migration JÁ FOI APLICADA em produção (confirmado
+// diretamente no Supabase). Rodar este gerador de novo agora refletiria o
+// estado ATUAL de people_insert_plan.json (que evolui — ex.: Evair/
+// Welliton promovidos depois), sobrescrevendo o arquivo já aplicado com
+// conteúdo divergente do que está no banco. Pessoas novas ficam em
+// migrations ADITIVAS separadas (ver generate_additive_people_seed.mjs) —
+// este arquivo nunca deve ser regenerado. Já aconteceu por engano uma vez
+// (rodado sem querer dentro de um teste de reprodutibilidade) — restaurado
+// via `git checkout` a tempo. Este guard existe pra isso nunca mais
+// silenciosamente sobrescrever o arquivo.
+const MIGRATION_ALREADY_APPLIED = true;
+if (MIGRATION_ALREADY_APPLIED) {
+  console.error(`RECUSADO: ${path.relative(ROOT, MIGRATION_PATH).replace(/\\/g, '/')} já foi aplicada em produção — este gerador não roda mais. Pessoas novas vão em migration ADITIVA própria (ver generate_additive_people_seed.mjs).`);
+  process.exit(1);
+}
+
 const plan = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'people_insert_plan.json'), 'utf8'));
 const registry = JSON.parse(fs.readFileSync(path.join(TOOLING, 'people_registry.json'), 'utf8'));
 
