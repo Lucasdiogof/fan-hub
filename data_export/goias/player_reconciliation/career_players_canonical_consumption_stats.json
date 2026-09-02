@@ -1,0 +1,83 @@
+{
+  "totalCareerPlayers": 30,
+  "resolved": 21,
+  "blockedNoPersonId": 9,
+  "blockedIds": [
+    "apodi",
+    "bruno_henrique",
+    "grafite",
+    "jadilson",
+    "marcelo_rangel",
+    "pedro_raul",
+    "roni",
+    "souza",
+    "vitor"
+  ],
+  "positionComparisonTally": {
+    "BROADER_EDITORIAL_LABEL": 2,
+    "MATCH_PRIMARY": 19
+  },
+  "goiasSpellComparisonTally": {
+    "MATCH": 20,
+    "LEGACY_MISSING_SPELL": 1
+  },
+  "appearancesComparisonTally": {
+    "MATCH": 20,
+    "NOT_COMPARABLE": 1
+  },
+  "goalsComparisonTally": {
+    "MATCH": 19,
+    "NOT_COMPARABLE": 1,
+    "CANONICAL_NULL": 1
+  },
+  "peopleWithMultipleGoiasSpells": [
+    {
+      "careerPlayerId": "fernandao",
+      "canonicalSpellCount": 2,
+      "editorialGoiasEntryCount": 2,
+      "result": "MATCH"
+    },
+    {
+      "careerPlayerId": "evair",
+      "canonicalSpellCount": 2,
+      "editorialGoiasEntryCount": 2,
+      "result": "MATCH"
+    },
+    {
+      "careerPlayerId": "welliton",
+      "canonicalSpellCount": 2,
+      "editorialGoiasEntryCount": 2,
+      "result": "MATCH"
+    },
+    {
+      "careerPlayerId": "rafael_moura",
+      "canonicalSpellCount": 2,
+      "editorialGoiasEntryCount": 2,
+      "result": "MATCH"
+    },
+    {
+      "careerPlayerId": "araujo",
+      "canonicalSpellCount": 2,
+      "editorialGoiasEntryCount": 2,
+      "result": "MATCH"
+    },
+    {
+      "careerPlayerId": "iarley",
+      "canonicalSpellCount": 2,
+      "editorialGoiasEntryCount": 2,
+      "result": "MATCH"
+    },
+    {
+      "careerPlayerId": "paulo_baier",
+      "canonicalSpellCount": 2,
+      "editorialGoiasEntryCount": 2,
+      "result": "MATCH"
+    },
+    {
+      "careerPlayerId": "walter",
+      "canonicalSpellCount": 3,
+      "editorialGoiasEntryCount": 2,
+      "result": "LEGACY_MISSING_SPELL"
+    }
+  ]
+}
