@@ -1,0 +1,973 @@
+{
+  "tables": [
+    {
+      "table": "people",
+      "file": "supabase/migrations/20260901000000_create_people.sql",
+      "clubIdPattern": null,
+      "currentPrimaryKey": "id uuid (gen_random_uuid)",
+      "scope": "CANONICAL_GLOBAL_DATA",
+      "rowScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "keyScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "classification": "GLOBAL",
+      "note": "representa a PESSOA, nunca a relação com um clube.",
+      "columnConfirmed": null,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "clubs",
+      "file": "supabase/migrations/20260902020000_create_clubs.sql",
+      "clubIdPattern": "id uuid primary key",
+      "currentPrimaryKey": "id uuid",
+      "scope": "CANONICAL_GLOBAL_DATA",
+      "rowScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "keyScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "classification": "GLOBAL",
+      "note": "é o próprio registro de clubes — id UUID, slug text UNIQUE separado. Confirma o tipo correto pro §10: club_id em qualquer outra tabela deve ser uuid, nunca text apontando pro slug.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "slug"
+          ]
+        }
+      ],
+      "foreignKeys": [],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "player_club_spells",
+      "file": "supabase/migrations/20260902040000_create_player_club_spells.sql",
+      "clubIdPattern": "club_id uuid not null references public.clubs(id)",
+      "currentPrimaryKey": "id uuid; unique(person_id, club_id, spell_order)",
+      "scope": "CLUB_SCOPED_DATA",
+      "rowScope": "ALREADY_SCOPED",
+      "keyScope": "SAFE_COMPOSITE_OR_SURROGATE",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "já resolvido nos 2 eixos — modelo de referência pra M2.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "person_id",
+            "club_id",
+            "spell_order"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "references": "people(id)"
+        },
+        {
+          "columns": [
+            "club_id"
+          ],
+          "references": "clubs(id)"
+        }
+      ],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "player_positions",
+      "file": "supabase/migrations/20260902060000_create_player_positions.sql",
+      "clubIdPattern": "club_id uuid not null references public.clubs(id)",
+      "currentPrimaryKey": "id uuid; unique parcial c/ club_id",
+      "scope": "CLUB_SCOPED_DATA",
+      "rowScope": "ALREADY_SCOPED",
+      "keyScope": "SAFE_COMPOSITE_OR_SURROGATE",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "person_id",
+            "club_id",
+            "spell_id",
+            "position_code"
+          ]
+        },
+        {
+          "columns": [
+            "person_id",
+            "club_id",
+            "spell_id",
+            "position_order"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "references": "people(id)"
+        },
+        {
+          "columns": [
+            "club_id"
+          ],
+          "references": "clubs(id)"
+        }
+      ],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "player_club_stats",
+      "file": "supabase/migrations/20260902080000_create_player_club_stats.sql",
+      "clubIdPattern": "club_id uuid not null references public.clubs(id)",
+      "currentPrimaryKey": "id uuid; unique parcial c/ club_id",
+      "scope": "CLUB_SCOPED_DATA",
+      "rowScope": "ALREADY_SCOPED",
+      "keyScope": "SAFE_COMPOSITE_OR_SURROGATE",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "person_id",
+            "club_id",
+            "scope",
+            "competition"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "references": "people(id)"
+        },
+        {
+          "columns": [
+            "club_id"
+          ],
+          "references": "clubs(id)"
+        }
+      ],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "matches",
+      "file": "supabase/migrations/20260902100000_create_matches.sql",
+      "clubIdPattern": "home_club_id uuid references public.clubs(id)",
+      "currentPrimaryKey": "id uuid",
+      "scope": "CLUB_SCOPED_DATA",
+      "rowScope": "ALREADY_SCOPED",
+      "keyScope": "SAFE_COMPOSITE_OR_SURROGATE",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "simétrico (home/away), nunca \"goias + adversário\".",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [
+        {
+          "columns": [
+            "home_club_id"
+          ],
+          "references": "clubs(id)"
+        },
+        {
+          "columns": [
+            "away_club_id"
+          ],
+          "references": "clubs(id)"
+        }
+      ],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "match_source_refs",
+      "file": "supabase/migrations/20260902100000_create_matches.sql",
+      "clubIdPattern": "source_club_id uuid references public.clubs(id)",
+      "currentPrimaryKey": "id uuid; unique(source_namespace, source_ref)",
+      "scope": "CLUB_SCOPED_DATA",
+      "rowScope": "ALREADY_SCOPED",
+      "keyScope": "SAFE_COMPOSITE_OR_SURROGATE",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "ATENÇÃO: source_club_id é só informativo — a unicidade real vem de unique(source_namespace, source_ref), convenção de namespace, não constraint sobre club_id.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "source_namespace",
+            "source_ref"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "source_club_id"
+          ],
+          "references": "clubs(id)"
+        }
+      ],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "player_match_appearances",
+      "file": "supabase/migrations/20260902120000_create_player_match_appearances.sql",
+      "clubIdPattern": "club_id uuid not null references public.clubs(id)",
+      "currentPrimaryKey": "id uuid; unique(person_id, club_id, canonical_match_id)",
+      "scope": "CLUB_SCOPED_DATA",
+      "rowScope": "ALREADY_SCOPED",
+      "keyScope": "SAFE_COMPOSITE_OR_SURROGATE",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "person_id",
+            "club_id",
+            "canonical_match_id"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "references": "people(id)"
+        },
+        {
+          "columns": [
+            "club_id"
+          ],
+          "references": "clubs(id)"
+        }
+      ],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "career_players",
+      "file": "supabase/career_players.sql",
+      "clubIdPattern": "id text primary key",
+      "currentPrimaryKey": "id text (ex.: \"tadeu\")",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "PK é só id (texto livre) — adicionar club_id resolve ROW_SCOPE (filtrar por clube) mas NÃO resolve KEY_SCOPE sozinho: \"tadeu\" ainda não poderia existir em 2 clubes ao mesmo tempo sem migrar a PK pra composta unique(club_id, id) ou pra um id surrogate novo. RPC arena_record_score confia em exists(select 1 from career_players where id = p_item_id) SEM filtro de clube (supabase/arena_ranking.sql) — precisaria ganhar club_id no predicado.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "constraint": "career_players_person_id_key",
+          "addedBy": "supabase/migrations/20260902140000_add_person_id_to_career_players.sql",
+          "keyScopeRisk": true,
+          "futureMultiTenant": "UNIQUE(club_id, person_id) quando person_id is not null — permite a mesma pessoa em produtos de clubes diferentes sem perder a proteção 1:1 dentro de um mesmo clube"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "references": "people(id)"
+        }
+      ],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        },
+        {
+          "kind": "UNIQUE",
+          "columns": [
+            "person_id"
+          ],
+          "constraint": "career_players_person_id_key",
+          "reason": "UNIQUE(person_id) força unicidade global dessa(s) coluna(s) — hoje impede a mesma pessoa em 2 clubes. Candidato futuro: UNIQUE(club_id, person_id) quando person_id is not null — permite a mesma pessoa em produtos de clubes diferentes sem perder a proteção 1:1 dentro de um mesmo clube"
+        }
+      ]
+    },
+    {
+      "table": "guess_players",
+      "file": "supabase/guess_players.sql",
+      "clubIdPattern": "id text primary key",
+      "currentPrimaryKey": "id text",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "mesmo padrão de career_players — mesma entrada na RPC arena_record_score (case guess_player).",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "constraint": "guess_players_person_id_key",
+          "addedBy": "supabase/migrations/20260902160000_add_person_id_to_guess_players.sql",
+          "keyScopeRisk": true,
+          "futureMultiTenant": "UNIQUE(club_id, person_id) quando person_id is not null — permite a mesma pessoa em produtos de clubes diferentes sem perder a proteção 1:1 dentro de um mesmo clube"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "references": "people(id)"
+        }
+      ],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        },
+        {
+          "kind": "UNIQUE",
+          "columns": [
+            "person_id"
+          ],
+          "constraint": "guess_players_person_id_key",
+          "reason": "UNIQUE(person_id) força unicidade global dessa(s) coluna(s) — hoje impede a mesma pessoa em 2 clubes. Candidato futuro: UNIQUE(club_id, person_id) quando person_id is not null — permite a mesma pessoa em produtos de clubes diferentes sem perder a proteção 1:1 dentro de um mesmo clube"
+        }
+      ]
+    },
+    {
+      "table": "squad_members",
+      "file": "supabase/squad_members.sql",
+      "clubIdPattern": "id text primary key",
+      "currentPrimaryKey": "id text",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "ÚNICA do grupo sem nenhuma tabela de progress/ranking dependente (confirmado — grep não achou referência fora de supabase/checkup.sql, que é só sanity check) — o mais simples de escopar dos 6, sem cadeia de RPC pra reconciliar.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "constraint": "squad_members_person_id_key",
+          "addedBy": "supabase/migrations/20260902180000_add_person_id_to_squad_members.sql",
+          "keyScopeRisk": true,
+          "futureMultiTenant": "UNIQUE(club_id, person_id) quando person_id is not null — permite a mesma pessoa em produtos de clubes diferentes sem perder a proteção 1:1 dentro de um mesmo clube"
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "person_id"
+          ],
+          "references": "people(id)"
+        }
+      ],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        },
+        {
+          "kind": "UNIQUE",
+          "columns": [
+            "person_id"
+          ],
+          "constraint": "squad_members_person_id_key",
+          "reason": "UNIQUE(person_id) força unicidade global dessa(s) coluna(s) — hoje impede a mesma pessoa em 2 clubes. Candidato futuro: UNIQUE(club_id, person_id) quando person_id is not null — permite a mesma pessoa em produtos de clubes diferentes sem perder a proteção 1:1 dentro de um mesmo clube"
+        }
+      ]
+    },
+    {
+      "table": "lineup_matches",
+      "file": "supabase/lineup_matches.sql",
+      "clubIdPattern": "id text primary key",
+      "currentPrimaryKey": "id text (ex.: \"2021_csa_brB_g4\")",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "PERMANECE explicitamente na lista de collision risk — corrige a contradição da rodada anterior do relatório (que listava esta tabela como COLLISION_RISK mas depois dizia que M2 nunca tocaria conteúdo editorial). Continua editorial/gameplay-driven (F7 intocada) — club_id aqui é só tenant scope, NUNCA person_id dentro do jsonb de slot.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "passport_matches",
+      "file": "supabase/passport_esmeraldino.sql",
+      "clubIdPattern": "id text primary key",
+      "currentPrimaryKey": "id text (ex.: \"pe_...\")",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "NEEDS_DECISION",
+      "note": "ÚNICA tabela deste grupo com FK REAL de banco apontando pra ela (passport_attendances.match_id, passport_trajectory.match_id — confirmado via grep) — schema também é assimétrico (goias_is_home/goias_score/opponent, não home_club_id/away_club_id como matches). Coexistência de 2 clubes na MESMA tabela hoje exigiria redesenho de schema, não só uma coluna club_id — marcado NEEDS_DECISION, não TENANT_SCOPE_REQUIRED, porque a resposta não é mecânica.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "quiz_questions",
+      "file": "supabase/quiz_questions.sql",
+      "clubIdPattern": "id text primary key",
+      "currentPrimaryKey": "id text",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "estava AUSENTE da 1ª rodada da auditoria (só quiz_question_progress, a tabela de PROGRESSO, estava presente — a tabela de CONTEÚDO tinha ficado de fora do universo). Mesmo padrão RPC de career_players/guess_players/lineup_matches (case quiz em arena_record_score).",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "user_game_item_progress",
+      "file": "supabase/arena_ranking.sql",
+      "clubIdPattern": "primary key (user_id, game_id, item_id)",
+      "currentPrimaryKey": "(user_id, game_id, item_id)",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "item_id texto livre — mesmo problema de KEY_SCOPE que a tabela de conteúdo que referencia (encadeamento, ver §17 do relatório).",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "user_id",
+        "game_id",
+        "item_id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "user_id",
+            "game_id",
+            "item_id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "score_events",
+      "file": "supabase/arena_ranking.sql",
+      "clubIdPattern": "game_id text not null",
+      "currentPrimaryKey": "id uuid (append-only)",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "note": "PK própria (uuid) nunca colide — o problema aqui é só ROW_SCOPE, nas RPCs de agregação (arena_ranking/arena_my_rank/arena_user_detail somam sem filtro de clube), nunca na tabela em si.",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "lineup_match_progress",
+      "file": "supabase/arena_progress.sql",
+      "clubIdPattern": "primary key (user_id, match_id)",
+      "currentPrimaryKey": "(user_id, match_id)",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "user_id",
+        "match_id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "user_id",
+            "match_id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "arena_selected_content",
+      "file": "supabase/arena_progress.sql",
+      "clubIdPattern": "primary key (user_id, game_id)",
+      "currentPrimaryKey": "(user_id, game_id) — nem inclui item_id",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "a mais frágil do grupo — PK nem tem item_id, só game_id.",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "user_id",
+        "game_id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "user_id",
+            "game_id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "quiz_question_progress",
+      "file": "supabase/arena_progress.sql",
+      "clubIdPattern": "primary key (user_id, question_id)",
+      "currentPrimaryKey": "(user_id, question_id)",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "user_id",
+        "question_id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "user_id",
+            "question_id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "career_path_progress",
+      "file": "supabase/arena_progress.sql",
+      "clubIdPattern": "primary key (user_id, player_id)",
+      "currentPrimaryKey": "(user_id, player_id)",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "user_id",
+        "player_id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "user_id",
+            "player_id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "match_lineup_votes",
+      "file": "supabase/crowd_lineup.sql",
+      "clubIdPattern": "unique (match_id, user_id)",
+      "currentPrimaryKey": "id uuid; unique(match_id, user_id)",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "match_id sem FK real pra lineup_matches.id (confirmado — é só convenção, não constraint).",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "match_id",
+            "user_id"
+          ]
+        }
+      ],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "ticket_checkin_decisions",
+      "file": "supabase/tickets.sql",
+      "clubIdPattern": "primary key (user_id, match_id)",
+      "currentPrimaryKey": "(user_id, match_id)",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "user_id",
+        "match_id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "user_id",
+            "match_id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "match_monitor_sessions",
+      "file": "supabase/notifications.sql",
+      "clubIdPattern": "match_id text primary key",
+      "currentPrimaryKey": "match_id text",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "COLLISION_RISK_LEGACY_ID_GLOBAL_PK",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": null,
+      "columnConfirmed": true,
+      "primaryKey": [
+        "match_id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": true,
+      "keyScopeSources": [
+        {
+          "kind": "PRIMARY_KEY",
+          "columns": [
+            "match_id"
+          ],
+          "reason": "chave legada global (id/PK texto livre) — o mesmo id poderia existir em 2 clubes e colidir; club_id sozinho não resolve, precisa de PK composta unique(club_id, id) ou surrogate."
+        }
+      ]
+    },
+    {
+      "table": "supporter_memberships",
+      "file": "supabase/supporter_memberships.sql",
+      "clubIdPattern": "create table if not exists public.supporter_memberships",
+      "currentPrimaryKey": "id uuid (sem club_id nenhum)",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "CRITICAL — get_my_membership() é order by created_at desc limit 1 SEM filtro de clube nenhum. Aqui o problema é 100% ROW_SCOPE (não há id legado colidindo, o problema é a ausência total de dimensão de clube).",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "store_orders",
+      "file": "supabase/store_orders.sql",
+      "clubIdPattern": "create table if not exists public.store_orders",
+      "currentPrimaryKey": "id uuid",
+      "scope": "FEATURE_GLOBAL_DATA",
+      "rowScope": "ADDING_CLUB_ID_SUFFICIENT",
+      "keyScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "classification": "TENANT_SCOPE_REQUIRED",
+      "note": "sem catálogo compartilhado hoje (product_id é snapshot jsonb, não FK) então 0 colisão de KEY_SCOPE ativa — mas order_prefix \"GOI-\" hardcoded e 0 conceito de clube (ROW_SCOPE).",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "order_number"
+          ],
+          "global": true,
+          "note": "sequência global public.store_order_number_seq — prefixo+sequência garantem unicidade global, candidato KEEP_GLOBAL (decisão de M2)"
+        }
+      ],
+      "foreignKeys": [],
+      "rowScopeProblem": true,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "profiles",
+      "file": null,
+      "clubIdPattern": null,
+      "currentPrimaryKey": "id uuid = auth.users.id",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "keyScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "classification": "GLOBAL",
+      "note": "SEM arquivo .sql no repo (criada direto no dashboard) — 1 pessoa pode torcer por clubes diferentes com a mesma conta, correto ficar global. Identidade do usuário != estado do usuário por clube (membership/progress/ranking SÃO club-scoped, profiles não é).",
+      "columnConfirmed": null,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [
+        {
+          "columns": [
+            "id"
+          ],
+          "references": "auth.users(id)"
+        }
+      ],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    },
+    {
+      "table": "user_notification_tokens",
+      "file": "supabase/notifications.sql",
+      "clubIdPattern": "fcm_token",
+      "currentPrimaryKey": "user_id + fcm_token unique",
+      "scope": "USER_GLOBAL_DATA",
+      "rowScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "keyScope": "GLOBAL_NO_SCOPE_NEEDED",
+      "classification": "GLOBAL",
+      "note": "token de device não é inerentemente de clube — mas user_notification_preferences precisaria de dimensão de clube se uma conta seguir 2 clubes (não auditado como tabela própria, é o mesmo arquivo).",
+      "columnConfirmed": true,
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "columns": [
+            "fcm_token"
+          ],
+          "global": true,
+          "note": "token de device é globalmente único por natureza — KEEP_GLOBAL"
+        }
+      ],
+      "foreignKeys": [],
+      "rowScopeProblem": false,
+      "keyScopeProblem": false,
+      "keyScopeSources": []
+    }
+  ],
+  "stale": [],
+  "realForeignKeys": {
+    "career_players": [],
+    "guess_players": [],
+    "squad_members": [],
+    "lineup_matches": [],
+    "passport_matches": [
+      {
+        "file": "supabase/passport_esmeraldino.sql",
+        "line": "match_id text not null references public.passport_matches (id) on delete cascade,"
+      },
+      {
+        "file": "supabase/passport_trajectory.sql",
+        "line": "match_id text not null references public.passport_matches (id) on delete cascade,"
+      }
+    ],
+    "quiz_questions": []
+  },
+  "progressChains": [
+    {
+      "content": "lineup_matches",
+      "progress": [
+        "lineup_match_progress",
+        "arena_selected_content(game_id=lineup)"
+      ],
+      "ranking": [
+        "user_game_item_progress(game_id=lineup)",
+        "score_events(game_id=lineup)"
+      ],
+      "rpc": "arena_record_score — case lineup: exists(select 1 from lineup_matches where id = p_item_id)"
+    },
+    {
+      "content": "career_players",
+      "progress": [
+        "career_path_progress",
+        "arena_selected_content(game_id=career_path)"
+      ],
+      "ranking": [
+        "user_game_item_progress(game_id=career_path)",
+        "score_events(game_id=career_path)"
+      ],
+      "rpc": "arena_record_score — case career_path: exists(select 1 from career_players where id = p_item_id)"
+    },
+    {
+      "content": "guess_players",
+      "progress": [],
+      "ranking": [
+        "user_game_item_progress(game_id=guess_player)",
+        "score_events(game_id=guess_player)"
+      ],
+      "rpc": "arena_record_score — case guess_player: exists(select 1 from guess_players where id = p_item_id)"
+    },
+    {
+      "content": "quiz_questions",
+      "progress": [
+        "quiz_question_progress",
+        "quiz_active_session(por difficulty, não por id)"
+      ],
+      "ranking": [
+        "user_game_item_progress(game_id=quiz)",
+        "score_events(game_id=quiz)"
+      ],
+      "rpc": "arena_record_score — case quiz: exists(select 1 from quiz_questions where id = p_item_id)"
+    },
+    {
+      "content": "squad_members",
+      "progress": [],
+      "ranking": [],
+      "rpc": "nenhuma — squad_members não alimenta nenhum jogo/progresso, confirmado por grep (só supabase/checkup.sql referencia, e é sanity check)."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "totalHardcodes": 20,
+  "verified": 20,
+  "stale": 0,
+  "staleList": [],
+  "byRisk": {
+    "CRITICAL": 3,
+    "HIGH": 4,
+    "MEDIUM": 10,
+    "LOW": 3
+  },
+  "byClassification": {
+    "DATABASE_FILTER": 4,
+    "LEGACY_TECH_DEBT": 6,
+    "NETWORK_INTEGRATION": 3,
+    "CLUB_CONFIGURATION": 1,
+    "THEME": 2,
+    "FEATURE_SPECIFIC_DATA": 1,
+    "HISTORICAL_DATA": 1,
+    "EDITORIAL_CONTENT": 1,
+    "SAFE_STATIC_CONTENT": 1
+  },
+  "sanity": {
+    "clubUuidOnlyInGoiasClubConfig": {
+      "pass": true,
+      "offenders": [],
+      "allowedFile": "lib\\core\\club\\goias_club_config.dart"
+    },
+    "clubRegistryOnlyGoias": {
+      "pass": true,
+      "keys": [
+        "goias"
+      ]
+    },
+    "noSecondClubConfigFile": {
+      "pass": true,
+      "files": [
+        "club_assets.dart",
+        "club_branding.dart",
+        "club_capabilities.dart",
+        "club_config.dart",
+        "club_identity.dart",
+        "club_integrations.dart",
+        "club_product_naming.dart",
+        "club_registry.dart",
+        "goias_club_config.dart",
+        "resolve_active_club.dart"
+      ],
+      "suspicious": []
+    },
+    "routesHaveNoClubSlug": {
+      "pass": true,
+      "totalRoutes": 81,
+      "offenders": []
+    }
+  }
+}

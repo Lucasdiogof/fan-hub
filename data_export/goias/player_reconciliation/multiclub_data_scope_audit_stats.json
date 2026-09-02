@@ -1,0 +1,101 @@
+{
+  "totalTables": 27,
+  "verified": 27,
+  "stale": 0,
+  "staleList": [],
+  "byScope": {
+    "CANONICAL_GLOBAL_DATA": 2,
+    "CLUB_SCOPED_DATA": 6,
+    "FEATURE_GLOBAL_DATA": 10,
+    "USER_GLOBAL_DATA": 9
+  },
+  "byClassification": {
+    "GLOBAL": 4,
+    "TENANT_SCOPE_REQUIRED": 22,
+    "NEEDS_DECISION": 1
+  },
+  "byRowScope": {
+    "GLOBAL_NO_SCOPE_NEEDED": 4,
+    "ALREADY_SCOPED": 6,
+    "ADDING_CLUB_ID_SUFFICIENT": 17
+  },
+  "byKeyScope": {
+    "GLOBAL_NO_SCOPE_NEEDED": 7,
+    "SAFE_COMPOSITE_OR_SURROGATE": 6,
+    "COLLISION_RISK_LEGACY_ID_GLOBAL_PK": 14
+  },
+  "needsDecisionTables": [
+    "passport_matches"
+  ],
+  "keyScopeCollisionTables": [
+    "career_players",
+    "guess_players",
+    "squad_members",
+    "lineup_matches",
+    "passport_matches",
+    "quiz_questions",
+    "user_game_item_progress",
+    "lineup_match_progress",
+    "arena_selected_content",
+    "quiz_question_progress",
+    "career_path_progress",
+    "match_lineup_votes",
+    "ticket_checkin_decisions",
+    "match_monitor_sessions"
+  ],
+  "keyScopeProblemTables": [
+    "career_players",
+    "guess_players",
+    "squad_members",
+    "lineup_matches",
+    "passport_matches",
+    "quiz_questions",
+    "user_game_item_progress",
+    "lineup_match_progress",
+    "arena_selected_content",
+    "quiz_question_progress",
+    "career_path_progress",
+    "match_lineup_votes",
+    "ticket_checkin_decisions",
+    "match_monitor_sessions"
+  ],
+  "rowScopeProblemTables": [
+    "career_players",
+    "guess_players",
+    "squad_members",
+    "lineup_matches",
+    "passport_matches",
+    "quiz_questions",
+    "user_game_item_progress",
+    "score_events",
+    "lineup_match_progress",
+    "arena_selected_content",
+    "quiz_question_progress",
+    "career_path_progress",
+    "match_lineup_votes",
+    "ticket_checkin_decisions",
+    "match_monitor_sessions",
+    "supporter_memberships",
+    "store_orders"
+  ],
+  "personIdUniqueKeyScopeTables": [
+    "career_players",
+    "guess_players",
+    "squad_members"
+  ],
+  "contentTablesWithRealFk": {
+    "career_players": 0,
+    "guess_players": 0,
+    "squad_members": 0,
+    "lineup_matches": 0,
+    "passport_matches": 2,
+    "quiz_questions": 0
+  },
+  "clubIdTypeRecommendation": {
+    "type": "uuid",
+    "references": "clubs(id)",
+    "neverUse": "text references clubs(slug)",
+    "confirmedClubsIdType": "uuid (supabase/migrations/20260902020000_create_clubs.sql)"
+  },
+  "classificationSum": 27
+}

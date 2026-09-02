@@ -2,6 +2,12 @@
 
 > Proposta — nada aqui foi executado. Parte de um único projeto Supabase existente (`yonozsdgyrhgqrvydbnr`), preservando free tier via multi-tenant (`club_id`), conforme preferência explícita. Gerado em 2026-09-01.
 
+> **STATUS: HISTORICAL / NEEDS_RECONCILIATION** (nota adicionada na M1, 2026-09-02). Este documento é anterior à série F e à M1 — a decisão de fundo (Supabase compartilhado, multi-tenant via `club_id`) **continua válida e foi revalidada na M1** (`docs/multiclub/28_etapa_m1_report.md`), mas 2 detalhes concretos deste plano estão SUPERSEDED pelo schema real construído desde então:
+> 1. **Passo 1 propõe `clubs.id text primary key` (slug)** — o `clubs` real (`supabase/migrations/20260902020000_create_clubs.sql`) usa **`id uuid primary key` + `slug text unique` separado**. Qualquer `club_id` novo deve ser `uuid references clubs(id)`, nunca `text references clubs(slug)`.
+> 2. **A tabela "Passo 2" trata `career_players`/`guess_players`/`squad_members`/`lineup_matches`/`passport_matches` como 🟢 "simples"** — a auditoria da M1 mostrou que adicionar `club_id` a essas tabelas resolve só ROW_SCOPE (filtro), nunca KEY_SCOPE sozinho (a PK continua sendo só `id` texto — `'tadeu'` ainda colidiria entre 2 clubes sem uma PK composta ou um id surrogate). Não é "simples" como rotulado aqui.
+>
+> A migração real de identidade de jogador (`people`/`club_player_stints`) também já aconteceu, mas por um desenho DIFERENTE do proposto aqui (ver Etapas B-F7 e `28_etapa_m1_report.md`) — `career_players` etc. nunca ganharam FK pra `people`, só um `person_id` nullable opcional. Ver `28_etapa_m1_report.md` pra o desenho de M2 que reconcilia este plano com o que foi construído.
+
 ## Princípio geral
 
 Um projeto Supabase só, uma tabela `clubs` na raiz, `club_id` (FK pra `clubs.id`) em toda tabela de conteúdo, RLS reforçada pra nunca vazar dado entre clubes. **Nenhuma tabela muda de nome** (evita quebrar RPCs/repositórios existentes desnecessariamente) — a mudança é aditiva: nova coluna `club_id` + novo índice + RLS atualizada.

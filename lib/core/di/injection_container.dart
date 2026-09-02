@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/resolve_active_club.dart';
 import 'package:goias_app/core/network/api_client.dart';
 import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
 import 'package:goias_app/features/arena/ranking/data/supabase_arena_ranking_repository.dart';
@@ -95,6 +97,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final GetIt sl = GetIt.instance;
 
 void setupDependencies() {
+  // Registrado primeiro, eager (nunca lazy — é uma constante resolvida
+  // sincronamente, sem trabalho assíncrono) — qualquer registro abaixo
+  // pode depender de sl<ClubConfig>() com segurança. Etapa M1: nenhum
+  // consumidor real ainda lê isto, é só a fundação.
+  sl.registerSingleton<ClubConfig>(resolveActiveClub());
+
   sl.registerLazySingleton<TicketRepository>(
     () => MockTicketRepository(Supabase.instance.client, sl()),
   );
