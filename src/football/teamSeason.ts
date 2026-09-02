@@ -1,5 +1,6 @@
 import type { Env } from './_lib/config';
-import { loadConfig, requireGoiasOneFootballSlug } from './_lib/config';
+import { loadConfig } from './_lib/config';
+import { resolveClubServerConfig } from './_lib/club_server_config';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
 import { fetchTeamSeasonMatchCards } from './providers/onefootball_provider';
@@ -12,23 +13,27 @@ import { normalizeOneFootballMatchCard } from './normalize/match';
 const CACHE_TTL_SECONDS = 1200;
 
 /**
- * Todos os jogos do Goiás na temporada (todas as competições juntas — cada
- * partida já carrega o próprio nome de competição, diferente dos outros
- * endpoints que têm UM `competition` no nível da resposta). Sem estádio:
- * buscar isso pra ~50 partidas de uma vez custaria uma chamada extra por
- * partida — o calendário não mostra estádio por dia (só escudo + casa/fora,
- * por design), e a tela de detalhes de cada jogo já busca o estádio à
- * parte quando o usuário toca numa partida.
+ * Todos os jogos do clube ativo na temporada (todas as competições juntas —
+ * cada partida já carrega o próprio nome de competição, diferente dos
+ * outros endpoints que têm UM `competition` no nível da resposta). Sem
+ * estádio: buscar isso pra ~50 partidas de uma vez custaria uma chamada
+ * extra por partida — o calendário não mostra estádio por dia (só escudo +
+ * casa/fora, por design), e a tela de detalhes de cada jogo já busca o
+ * estádio à parte quando o usuário toca numa partida.
+ *
+ * M3.3 — rota genérica `/api/football/team/:clubCode/season`;
+ * `/team/goias/season` continua como alias legacy em `index.ts`.
  */
-export async function handleGoiasTeamSeason(request: Request, env: Env): Promise<Response> {
+export async function handleTeamSeason(request: Request, env: Env, clubCode: string): Promise<Response> {
   return withErrorHandling(async () => {
     const config = loadConfig(env);
-    const teamSlug = requireGoiasOneFootballSlug(config);
+    const clubConfig = resolveClubServerConfig(clubCode, env);
+    const teamSlug = clubConfig.oneFootballSlug;
 
     return cacheFirst(
       request,
       CACHE_TTL_SECONDS,
-      'football.team.goias.season',
+      `football.team.${clubConfig.code}.season`,
       config.cacheVersion,
       async () => {
         const cards = await fetchTeamSeasonMatchCards(teamSlug);

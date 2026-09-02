@@ -122,7 +122,7 @@ void setupDependencies() {
 
   sl.registerLazySingleton<Dio>(ApiClient.create);
   sl.registerLazySingleton<FootballRemoteDataSource>(
-    () => FootballRemoteDataSource(sl()),
+    () => FootballRemoteDataSource(sl(), sl()),
   );
   sl.registerLazySingleton<FootballRepository>(
     () => FootballRepositoryImpl(sl()),
@@ -190,7 +190,7 @@ void setupDependencies() {
   sl.registerLazySingleton<ArenaRankingRepository>(
     () => SupabaseArenaRankingRepository(Supabase.instance.client, sl()),
   );
-  sl.registerLazySingleton<LocalBestScoreStore>(LocalBestScoreStore.new);
+  sl.registerLazySingleton<LocalBestScoreStore>(() => LocalBestScoreStore(sl()));
   sl.registerLazySingleton<SupabaseLineupStorage>(
     () => SupabaseLineupStorage(Supabase.instance.client, sl()),
   );
@@ -203,7 +203,7 @@ void setupDependencies() {
   sl.registerLazySingleton<CareerPlayerRepository>(
     () => CareerPlayerRepository(Supabase.instance.client, sl()),
   );
-  sl.registerLazySingleton<GuessPlayerStorage>(GuessPlayerStorage.new);
+  sl.registerLazySingleton<GuessPlayerStorage>(() => GuessPlayerStorage(sl()));
   sl.registerLazySingleton<GuessPlayerRepository>(
     () => GuessPlayerRepository(Supabase.instance.client, sl()),
   );
@@ -273,7 +273,7 @@ void setupDependencies() {
   sl.registerLazySingleton<ProfileCubit>(() => ProfileCubit(sl(), sl()));
   sl.registerFactory<AddressCubit>(() => AddressCubit(sl()));
 
-  sl.registerLazySingleton<StoreLocalStorage>(StoreLocalStorage.new);
+  sl.registerLazySingleton<StoreLocalStorage>(() => StoreLocalStorage(sl()));
   sl.registerLazySingleton<StoreRepository>(() => MockStoreRepository(sl()));
   sl.registerLazySingleton<StoreOrdersRepository>(
     () => SupabaseStoreOrdersRepository(Supabase.instance.client, sl()),

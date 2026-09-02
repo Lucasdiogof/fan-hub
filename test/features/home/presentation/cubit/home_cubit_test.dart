@@ -52,13 +52,13 @@ class _FakeFootballRepository implements FootballRepository {
   Match? nextMatch;
   List<Match> recentResults = const [];
 
-  /// Quando setado, `getGoiasSnapshot` retorna `Error` com isto em vez de
+  /// Quando setado, `getActiveClubSnapshot` retorna `Error` com isto em vez de
   /// funcionar normalmente — pra testar o estado de erro do `HomeCubit`.
   Failure? failure;
 
   @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
-  getGoiasSnapshot() async {
+  getActiveClubSnapshot() async {
     final currentFailure = failure;
     if (currentFailure != null) return Error(currentFailure);
     return Success((nextMatch: nextMatch, recentResults: recentResults));

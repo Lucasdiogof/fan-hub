@@ -29,7 +29,7 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> load() async {
     emit(state.copyWith(status: LoadStatus.loading));
 
-    final snapshotResult = await _footballRepository.getGoiasSnapshot();
+    final snapshotResult = await _footballRepository.getActiveClubSnapshot();
 
     switch (snapshotResult) {
       case Success(:final data):

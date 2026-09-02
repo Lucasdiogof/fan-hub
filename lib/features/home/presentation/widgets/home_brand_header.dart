@@ -34,7 +34,7 @@ class HomeBrandHeader extends StatelessWidget {
           // O brasão oficial já é auto-contido (aro branco próprio,
           // contraste em qualquer fundo) — não precisa mais do chip
           // circular por trás que a versão tingida antiga precisava.
-          const ClubBadge(team: MockData.goias, size: 44),
+          ClubBadge(team: MockData.goias, size: 44),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(

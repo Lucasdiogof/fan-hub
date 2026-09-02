@@ -8,7 +8,7 @@ import 'package:goias_app/shared/widgets/club_badge.dart';
 class StandingsRow extends StatelessWidget {
   const StandingsRow({
     required this.standing,
-    required this.isGoias,
+    required this.isActiveClub,
     super.key,
   });
 
@@ -16,12 +16,12 @@ class StandingsRow extends StatelessWidget {
 
   /// Vem de comparação por `team.id`, decidida por quem monta a lista —
   /// esse widget não sabe (nem precisa saber) qual é o id do Goiás.
-  final bool isGoias;
+  final bool isActiveClub;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final foreground = isGoias ? colors.primary : colors.textPrimary;
+    final foreground = isActiveClub ? colors.primary : colors.textPrimary;
     final numberStyle = TextStyle(
       fontSize: 12.5,
       fontWeight: FontWeight.w700,
@@ -34,7 +34,7 @@ class StandingsRow extends StatelessWidget {
         vertical: AppSpacing.md,
       ),
       decoration: BoxDecoration(
-        color: isGoias ? colors.secondary : Colors.transparent,
+        color: isActiveClub ? colors.secondary : Colors.transparent,
         borderRadius: BorderRadius.circular(AppRadius.cardSmall),
       ),
       child: Row(
@@ -60,7 +60,7 @@ class StandingsRow extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 13,
-                fontWeight: isGoias ? FontWeight.w800 : FontWeight.w600,
+                fontWeight: isActiveClub ? FontWeight.w800 : FontWeight.w600,
                 color: foreground,
               ),
             ),

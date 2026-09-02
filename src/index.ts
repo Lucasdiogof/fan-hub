@@ -1,8 +1,8 @@
 import type { SocialEnv } from './social/config';
 import { handleStandings } from './football/standings';
 import { handleCurrentRound } from './football/currentRound';
-import { handleGoiasTeam } from './football/team';
-import { handleGoiasTeamSeason } from './football/teamSeason';
+import { handleTeam } from './football/team';
+import { handleTeamSeason } from './football/teamSeason';
 import { handleFixtureDetails } from './football/fixtureDetails';
 import { handleSocialFeed } from './social/feed';
 import { handleNewsList } from './news/list';
@@ -12,9 +12,15 @@ import { handleImageProxy } from './media/imageProxy';
 
 const FIXTURE_DETAILS_PATTERN = /^\/api\/football\/fixtures\/([^/]+)\/?$/;
 const NEWS_ARTICLE_PATTERN = /^\/api\/news\/([^/]+)\/?$/;
+// M3.3 — rota genérica `/team/:clubCode(/season)`. `handleTeam`/
+// `handleTeamSeason` resolvem `clubCode` via `resolveClubServerConfig`
+// (`_lib/club_server_config.ts`) — código desconhecido nunca cai pro
+// Goiás, vira 404 controlado (`UnknownClubError`, ver `handleErrors.ts`).
+const TEAM_SEASON_PATTERN = /^\/api\/football\/team\/([^/]+)\/season\/?$/;
+const TEAM_PATTERN = /^\/api\/football\/team\/([^/]+)\/?$/;
 
 export default {
-  async fetch(request: Request, env: SocialEnv): Promise<Response> {
+  async fetch(request: Request, env: SocialEnv, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
 
@@ -26,12 +32,20 @@ export default {
       return handleCurrentRound(request, env);
     }
 
-    if (pathname === '/api/football/team/goias') {
-      return handleGoiasTeam(request, env);
+    // `/team/goias`/`/team/goias/season` continuam funcionando pro app já
+    // publicado — nunca uma rota especial separada, só o MESMO padrão
+    // genérico resolvendo `clubCode='goias'` (M3.3). Season checado
+    // primeiro: sua regex é mais específica (tem `/season` no fim), então
+    // nunca conflita com `TEAM_PATTERN`, mas checar antes deixa a
+    // intenção clara.
+    const teamSeasonMatch = pathname.match(TEAM_SEASON_PATTERN);
+    if (teamSeasonMatch) {
+      return handleTeamSeason(request, env, decodeURIComponent(teamSeasonMatch[1]));
     }
 
-    if (pathname === '/api/football/team/goias/season') {
-      return handleGoiasTeamSeason(request, env);
+    const teamMatch = pathname.match(TEAM_PATTERN);
+    if (teamMatch) {
+      return handleTeam(request, env, decodeURIComponent(teamMatch[1]));
     }
 
     const fixtureMatch = pathname.match(FIXTURE_DETAILS_PATTERN);

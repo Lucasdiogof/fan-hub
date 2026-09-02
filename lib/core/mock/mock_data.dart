@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
@@ -9,13 +10,13 @@ import 'package:goias_app/features/match/domain/entities/team.dart';
 class MockData {
   const MockData._();
 
-  // Id real do Goiás no OneFootball (ver `Team.goiasId`), não mais um
-  // placeholder — confirmado via `GOIAS_ONEFOOTBALL_SLUG` no Worker.
-  static const goias = Team(
-    id: Team.goiasId,
+  // Id real do Goiás no OneFootball — vem de `goiasClubConfig.integrations.
+  // oneFootballTeamId` (M1), nunca mais um literal duplicado aqui.
+  static final goias = Team(
+    id: goiasClubConfig.integrations.oneFootballTeamId,
     name: 'Goiás',
     shortName: 'GO',
-    color: Color(0xFF004C1B),
+    color: const Color(0xFF004C1B),
     crestAsset: AppAssets.goiasCrest,
   );
 

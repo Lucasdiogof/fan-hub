@@ -77,7 +77,7 @@ class _LiveMatchPollerState extends State<LiveMatchPoller>
 
   Future<void> _poll() async {
     if (_ended || !mounted) return;
-    final result = await sl<FootballRepository>().getGoiasSnapshot();
+    final result = await sl<FootballRepository>().getActiveClubSnapshot();
     if (!mounted || _ended) return;
     switch (result) {
       case Success(:final data):

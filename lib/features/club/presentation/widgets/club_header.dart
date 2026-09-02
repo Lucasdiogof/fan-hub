@@ -15,7 +15,7 @@ class ClubHeader extends StatelessWidget {
     final colors = context.colors;
     return Column(
       children: [
-        const ClubBadge(team: MockData.goias, size: 76),
+        ClubBadge(team: MockData.goias, size: 76),
         const SizedBox(height: AppSpacing.lg),
         Text(
           'GOIÁS ESPORTE CLUBE',

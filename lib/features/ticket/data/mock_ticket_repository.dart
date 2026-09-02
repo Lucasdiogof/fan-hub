@@ -37,7 +37,7 @@ class MockTicketRepository implements TicketRepository {
   @override
   Future<Result<TicketEvent?>> getFeaturedEvent() async {
     try {
-      final snapshotResult = await _footballRepository.getGoiasSnapshot();
+      final snapshotResult = await _footballRepository.getActiveClubSnapshot();
       final Match? match;
       switch (snapshotResult) {
         case Success(:final data):
@@ -422,7 +422,7 @@ class MockTicketRepository implements TicketRepository {
   /// jogo atual (ex.: já aconteceu e outro entrou no lugar), trata como não
   /// encontrada em vez de devolver dado errado.
   Future<Match?> _requireMatch(String matchId) async {
-    final result = await _footballRepository.getGoiasSnapshot();
+    final result = await _footballRepository.getActiveClubSnapshot();
     if (result case Success(:final data)) {
       final match = data.nextMatch;
       if (match != null && match.id.toString() == matchId) return match;

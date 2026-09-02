@@ -70,7 +70,7 @@ class DigitalMembershipCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const ClubBadge(team: MockData.goias, size: 30, onDark: true),
+                  ClubBadge(team: MockData.goias, size: 30, onDark: true),
                   const SizedBox(width: AppSpacing.sm),
                   const Text(
                     'SÓCIO ESMERALDA',

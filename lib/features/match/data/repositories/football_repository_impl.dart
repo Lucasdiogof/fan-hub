@@ -65,9 +65,9 @@ class FootballRepositoryImpl implements FootballRepository {
 
   @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
-  getGoiasSnapshot() async {
+  getActiveClubSnapshot() async {
     try {
-      final result = await _remote.getGoiasSnapshot();
+      final result = await _remote.getActiveClubSnapshot();
       final competitionName = result.competition.name;
       return Success((
         nextMatch: result.nextMatch?.toEntity(competitionName: competitionName),

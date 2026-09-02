@@ -1,32 +1,35 @@
 import type { Env } from './_lib/config';
-import { loadConfig, requireGoiasOneFootballSlug } from './_lib/config';
+import { loadConfig } from './_lib/config';
+import { resolveClubServerConfig } from './_lib/club_server_config';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
 import { fetchTeamMatchLists, fetchMatchDetail } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchCard } from './normalize/match';
 
 // Era 30 min — baixado pra caber o card "ao vivo" da Home/Jogos, que faz
-// polling desta MESMA rota a cada ~45s enquanto o jogo do Goiás está
+// polling desta MESMA rota a cada ~45s enquanto o jogo do clube ativo está
 // rolando (ver `LiveMatchPoller` no Flutter). O cache do Worker ainda
 // protege o OneFootball de qualquer coisa: com N usuários acompanhando ao
-// mesmo tempo, o upstream só é chamado uma vez a cada 60s (cache
-// compartilhado na borda), nunca uma vez por usuário/poll.
+// mesmo tempo, o upstream só é chamado uma vez a cada 60s por clube (cache
+// compartilhado na borda, chave inclui `clubCode`), nunca uma vez por
+// usuário/poll.
 const CACHE_TTL_SECONDS = 60;
 const COMPETITION_NAME = 'Brasileirão Série B';
 
 /**
- * Só existe `/team/goias` por enquanto — o app tem um único time de
- * interesse. Se um dia precisar de outros times, o path vira `/team/:slug`
- * sem quebrar esse contrato.
+ * M3.3 — rota genérica `/api/football/team/:clubCode`. `/team/goias`
+ * continua existindo em `index.ts` como alias legacy pro app já publicado
+ * (nunca removido só porque o runtime novo usa o path genérico) —
+ * resolvido pelo MESMO `clubCode='goias'`, nunca uma implementação
+ * duplicada.
  */
-export const onRequestGet = handleGoiasTeam;
-
-export async function handleGoiasTeam(request: Request, env: Env): Promise<Response> {
+export async function handleTeam(request: Request, env: Env, clubCode: string): Promise<Response> {
   return withErrorHandling(async () => {
     const config = loadConfig(env);
-    const teamSlug = requireGoiasOneFootballSlug(config);
+    const clubConfig = resolveClubServerConfig(clubCode, env);
+    const teamSlug = clubConfig.oneFootballSlug;
 
-    return cacheFirst(request, CACHE_TTL_SECONDS, 'football.team.goias', config.cacheVersion, async () => {
+    return cacheFirst(request, CACHE_TTL_SECONDS, `football.team.${clubConfig.code}`, config.cacheVersion, async () => {
       const [upcomingLists, resultLists] = await Promise.all([
         fetchTeamMatchLists(teamSlug, 'jogos'),
         fetchTeamMatchLists(teamSlug, 'resultados'),

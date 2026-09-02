@@ -29,7 +29,7 @@ class ClubEntryCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              const ClubBadge(team: MockData.goias, size: 48),
+              ClubBadge(team: MockData.goias, size: 48),
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Column(

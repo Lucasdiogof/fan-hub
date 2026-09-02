@@ -11,6 +11,8 @@
 // nova chave privada). Nunca vai pro Flutter, só existe aqui.
 import { createClient, SupabaseClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 import { GoogleAuth } from 'npm:google-auth-library@9';
+import { resolveClubServerConfigByClubId, type ClubServerConfig } from '../_shared/club_server_config.ts';
+import { buildNotificationMessage, type NotificationEventPayload } from '../_shared/notification_message_builder.ts';
 
 const STUCK_PROCESSING_MINUTES = 5;
 const SEND_CONCURRENCY = 30;
@@ -25,6 +27,7 @@ function jsonResponse(body: unknown, status: number): Response {
 interface NotificationEvent {
   id: string;
   match_id: string;
+  club_id: string;
   event_type: 'match_access_open' | 'goal' | 'full_time';
   payload: Record<string, unknown>;
 }
@@ -34,62 +37,6 @@ interface TokenRow {
   user_id: string;
   fcm_token: string;
   platform: 'android' | 'ios';
-}
-
-/** Título/body/rota de acordo com o tipo de evento. Pra `match_access_open`,
- * a mensagem depende do status de sócio de CADA destinatário (decidido no
- * momento do envio — nunca client-side), então essa função recebe também se
- * o destinatário é sócio ativo agora. */
-function buildMessage(
-  event: NotificationEvent,
-  opts: { isActiveMember: boolean },
-): { title: string; body: string; type: string } {
-  const p = event.payload as {
-    homeTeamName?: string;
-    awayTeamName?: string;
-    homeScore?: number;
-    awayScore?: number;
-    goiasSide?: 'home' | 'away';
-  };
-
-  switch (event.event_type) {
-    case 'match_access_open': {
-      const opponent =
-        p.homeTeamName === 'Goiás' ? p.awayTeamName : p.homeTeamName === undefined ? '' : p.homeTeamName;
-      if (opts.isActiveMember) {
-        return {
-          type: 'checkin',
-          title: 'Check-in aberto',
-          body: `O check-in pra ${opponent ?? 'o próximo jogo'} já está disponível.`,
-        };
-      }
-      return {
-        type: 'tickets',
-        title: 'Ingressos disponíveis',
-        body: `Os ingressos pra ${opponent ?? 'o próximo jogo'} já estão à venda.`,
-      };
-    }
-    case 'goal': {
-      return {
-        type: 'goal',
-        title: 'GOOOOOOL DO GOIÁS! ⚽💚',
-        body: `${p.homeTeamName} ${p.homeScore} x ${p.awayScore} ${p.awayTeamName}`,
-      };
-    }
-    case 'full_time': {
-      const home = p.homeScore ?? 0;
-      const away = p.awayScore ?? 0;
-      const goiasScore = p.goiasSide === 'home' ? home : away;
-      const opponentScore = p.goiasSide === 'home' ? away : home;
-      const title = goiasScore > opponentScore ? 'VITÓRIA DO VERDÃO! 💚' : 'Fim de jogo';
-      const suffix = goiasScore > opponentScore ? ' Fim de jogo!' : '.';
-      return {
-        type: 'full_time',
-        title,
-        body: `${p.homeTeamName} ${home} x ${away} ${p.awayTeamName}${suffix}`,
-      };
-    }
-  }
 }
 
 async function fetchRecipientTokens(
@@ -144,6 +91,7 @@ async function sendFcm(
   token: string,
   message: { title: string; body: string; type: string },
   matchId: string,
+  clubConfig: ClubServerConfig,
 ): Promise<{ ok: boolean; invalidToken: boolean; error?: string }> {
   const res = await fetch(`https://fcm.googleapis.com/v1/projects/${projectId}/messages:send`, {
     method: 'POST',
@@ -153,7 +101,9 @@ async function sendFcm(
         token,
         notification: { title: message.title, body: message.body },
         data: { type: message.type, matchId },
-        android: { priority: 'high', notification: { channel_id: 'goias_matches' } },
+        // Canal por clube (M3.3, era hardcoded `'goias_matches'`) — nunca
+        // 2 clubes reais compartilhando o mesmo canal Android.
+        android: { priority: 'high', notification: { channel_id: `${clubConfig.code}_matches` } },
         apns: { payload: { aps: { sound: 'default' } } },
       },
     }),
@@ -167,6 +117,15 @@ async function sendFcm(
 }
 
 async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcmAuth: { token: string; projectId: string }) {
+  // club_id nunca é opcional — evento com club_id desconhecido (nunca visto
+  // no registry) é marcado failed com observability, NUNCA tratado como
+  // Goiás por omissão (NO_SERVER_CROSS_CLUB_FALLBACK).
+  const clubConfig = resolveClubServerConfigByClubId(event.club_id);
+  if (!clubConfig) {
+    console.error('dispatch: club_id desconhecido, evento pulado', event.id, event.club_id);
+    return;
+  }
+
   const recipients = await fetchRecipientTokens(admin, event.event_type);
 
   if (recipients.length > 0) {
@@ -206,8 +165,13 @@ async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcm
         isMember = memberCache.get(tokenRow.user_id)!;
       }
 
-      const message = buildMessage(event, { isActiveMember: isMember });
-      const result = await sendFcm(fcmAuth.projectId, fcmAuth.token, tokenRow.fcm_token, message, event.match_id);
+      const message = buildNotificationMessage(
+        event.event_type,
+        event.payload as NotificationEventPayload,
+        clubConfig,
+        { isActiveMember: isMember },
+      );
+      const result = await sendFcm(fcmAuth.projectId, fcmAuth.token, tokenRow.fcm_token, message, event.match_id, clubConfig);
 
       if (result.ok) {
         await admin
@@ -262,11 +226,11 @@ Deno.serve(async (_req) => {
       .from('notification_events')
       .update({ status: 'processing' })
       .eq('status', 'pending')
-      .select('id,match_id,event_type,payload');
+      .select('id,match_id,club_id,event_type,payload');
 
     const { data: stuckEvents } = await admin
       .from('notification_events')
-      .select('id,match_id,event_type,payload,detected_at')
+      .select('id,match_id,club_id,event_type,payload,detected_at')
       .eq('status', 'processing')
       .lt('detected_at', stuckSince);
 

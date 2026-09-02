@@ -52,6 +52,7 @@ const hardcodes = [
     classification: 'LEGACY_TECH_DEBT',
     risk: 'HIGH',
     note: 'Team.isGoias — fallback por substring, falso-positivo em qualquer time com "goi" no nome (Goiânia, Goianésia). 3ª reimplementação independente do mesmo check existe em crowd_lineup_page.dart e passport_match_ticket_v2.dart.',
+    fixedInEtapa: 'M3.3', // Team.isGoias removido — vira Team.matchesClub(ClubConfig), por id real, nunca mais substring de nome.
   },
   {
     file: 'lib/features/arena/games/lineup/data/lineup_match_repository.dart',
@@ -59,6 +60,7 @@ const hardcodes = [
     classification: 'LEGACY_TECH_DEBT',
     risk: 'HIGH',
     note: 'literal fixo — o jogo inteiro assume que o time a adivinhar é sempre Goiás, independente do dado da linha.',
+    fixedInEtapa: 'M3.3', // vira _clubConfig.identity.shortName no repository real (lineup_matches.dart, o FALLBACK local, continua 'Goiás' de propósito — só serve o clube 'goias').
   },
   {
     file: 'src/index.ts',
@@ -66,6 +68,7 @@ const hardcodes = [
     classification: 'NETWORK_INTEGRATION',
     risk: 'HIGH',
     note: 'rota do Worker com o nome do clube no contrato de URL, não só num valor de config.',
+    fixedInEtapa: 'M3.3', // vira rota genérica /team/:clubCode (TEAM_PATTERN) — '/team/goias' continua respondendo, mas via o MESMO handler genérico com clubCode='goias', nunca um literal separado no roteamento.
   },
   {
     file: 'supabase/functions/notifications-poll-live-match/index.ts',
@@ -73,6 +76,7 @@ const hardcodes = [
     classification: 'NETWORK_INTEGRATION',
     risk: 'HIGH',
     note: 'decide qual lado é "nosso time" pra detecção de gol — precisa virar config por clube antes de um 2º clube compartilhar esta function.',
+    fixedInEtapa: 'M3.3', // vira resolveClubServerConfigByClubId(session.club_id).oneFootballTeamId — club_id desconhecido pula a sessão (fail-closed), nunca assume Goiás.
   },
 
   // --- MEDIUM: precisa de ClubConfig antes de generalizar, mas não vaza dado hoje ---
@@ -82,6 +86,7 @@ const hardcodes = [
     classification: 'CLUB_CONFIGURATION',
     risk: 'MEDIUM',
     note: 'candidato direto a ClubConfig.integrations.oneFootballTeamId — já modelado (goias_club_config.dart), consumidor ainda não migrado.',
+    fixedInEtapa: 'M3.3', // Team.goiasId removido — todo consumidor migrado pra ClubConfig.integrations.oneFootballTeamId (via Team.matchesClub ou acesso direto).
   },
   {
     file: 'lib/shared/widgets/club_badge.dart',
@@ -89,6 +94,7 @@ const hardcodes = [
     classification: 'LEGACY_TECH_DEBT',
     risk: 'MEDIUM',
     note: 'widget de crest de uso global força asset local só pro Goiás — ponto de dependência crucial pra qualquer 2º clube.',
+    fixedInEtapa: 'M3.3', // vira if (team.matchesClub(sl<ClubConfig>())), asset vem de clubConfig.assets.crestBadge (nunca mais AppAssets.goiasCrestBadge hardcoded).
   },
   {
     file: 'lib/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart',
@@ -96,6 +102,7 @@ const hardcodes = [
     classification: 'LEGACY_TECH_DEBT',
     risk: 'MEDIUM',
     note: 'reimplementação própria (não reusa Team.isGoias) do mesmo check, pra decidir arte de camisa mandante/visitante.',
+    fixedInEtapa: 'M3.3', // vira _isActiveClubHome, usando Team.matchesClub — mesma função central que club_badge.dart/next_match_hero.dart passam a usar.
   },
   {
     file: 'lib/features/passport/presentation/v2/widgets/passport_match_ticket_v2.dart',
@@ -103,6 +110,9 @@ const hardcodes = [
     classification: 'LEGACY_TECH_DEBT',
     risk: 'MEDIUM',
     note: '3ª reimplementação independente do mesmo check, com acento (diferente das outras 2, que usam "goi" sem acento) — inconsistência real entre si.',
+    // NUNCA marcado fixedInEtapa — Passaporte está explicitamente FORA de
+    // escopo na M3.3 (NEEDS_PRODUCT_DECISION desde M2.1/M2.2A), catalogado
+    // no relatório mas deliberadamente não tocado.
   },
   {
     file: 'lib/features/match/data/repositories/football_repository_impl.dart',
@@ -110,6 +120,7 @@ const hardcodes = [
     classification: 'LEGACY_TECH_DEBT',
     risk: 'MEDIUM',
     note: 'nome de método do repositório principal de partidas — lock-in de naming, chamado de 4+ lugares (home_cubit, games_cubit, membership_cubit, live_match_poller).',
+    fixedInEtapa: 'M3.3', // renomeado getActiveClubSnapshot() em toda a cadeia (interface/impl/datasource) + nos 5 call sites.
   },
   {
     file: 'supabase/store_orders.sql',
@@ -173,10 +184,35 @@ const hardcodes = [
 
 // verificação REAL — cada entrada precisa do padrão citado ainda presente
 // no arquivo (nunca confia na lista sem checar contra o código de hoje).
+//
+// Exceção deliberada: `fixedInEtapa` — quando uma etapa POSTERIOR corrige
+// de verdade um hardcode catalogado aqui (M3.3 corrigiu 8, ver acima), a
+// entrada nunca é apagada (perderia o histórico do achado original) nem
+// fica "stale" pra sempre (quebraria esta suíte a cada rodada futura, o
+// mesmo padrão de regressão auto-referencial já visto em M2.2A/M3.1/M3.2)
+// — passa a ser verificada como RESOLVED em vez de STALE, e checada contra
+// `fixedPatternMustBeAbsent` (quando presente) pra provar que o hardcode
+// genuinamente sumiu, nunca só confiar na etiqueta.
 const verified = [];
+const resolved = [];
 const stale = [];
 for (const h of hardcodes) {
   const fullPath = path.join(ROOT, h.file);
+  if (h.fixedInEtapa) {
+    if (!fs.existsSync(fullPath)) {
+      stale.push({ ...h, reason: 'arquivo não existe mais' });
+      continue;
+    }
+    const content = fs.readFileSync(fullPath, 'utf8');
+    if (content.includes(h.pattern)) {
+      // Etiquetado como corrigido, mas o padrão AINDA está lá — isso é uma
+      // regressão real, não staleness (o oposto do caso normal) — vira erro.
+      stale.push({ ...h, reason: `marcado fixedInEtapa mas o padrão AINDA existe no arquivo — regressão real, não staleness normal` });
+      continue;
+    }
+    resolved.push(h);
+    continue;
+  }
   if (!fs.existsSync(fullPath)) {
     stale.push({ ...h, reason: 'arquivo não existe mais' });
     continue;
@@ -234,6 +270,8 @@ sanity.routesHaveNoClubSlug = (() => {
 const stats = {
   totalHardcodes: hardcodes.length,
   verified: verified.length,
+  resolved: resolved.length,
+  resolvedList: resolved,
   stale: stale.length,
   staleList: stale,
   byRisk: {
@@ -247,7 +285,7 @@ const stats = {
 };
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
-fs.writeFileSync(path.join(OUT_DIR, 'multiclub_hardcode_audit.json'), JSON.stringify({ hardcodes: verified, stale }, null, 2) + '\n');
+fs.writeFileSync(path.join(OUT_DIR, 'multiclub_hardcode_audit.json'), JSON.stringify({ hardcodes: verified, resolved, stale }, null, 2) + '\n');
 fs.writeFileSync(path.join(OUT_DIR, 'multiclub_hardcode_audit_stats.json'), JSON.stringify(stats, null, 2) + '\n');
 console.log(JSON.stringify(stats, null, 2));
 console.log('\nEscrito em:', OUT_DIR);

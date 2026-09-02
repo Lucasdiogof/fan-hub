@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
-import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
 
 /// Uma célula do grid — `date == null` é espaço vazio antes/depois do mês
@@ -77,7 +78,7 @@ class _MatchIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isHome = match.isHomeTeam(Team.goiasId);
+    final isHome = match.isHomeTeam(sl<ClubConfig>().integrations.oneFootballTeamId);
     final opponent = isHome ? match.awayTeam : match.homeTeam;
     return Material(
       color: Colors.transparent,

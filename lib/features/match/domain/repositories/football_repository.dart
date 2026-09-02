@@ -34,15 +34,19 @@ abstract interface class FootballRepository {
   >
   getCurrentRound({int offset = 0});
 
-  /// Próximo jogo do Goiás (se houver dado confiável) + últimos resultados.
+  /// Próximo jogo do clube ativo (se houver dado confiável) + últimos
+  /// resultados. Nome genérico desde a M3.3 — substitui `getGoiasSnapshot`
+  /// (o Worker resolve o time real via `ClubConfig.identity.code`, nunca
+  /// hardcoded aqui).
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
-  getGoiasSnapshot();
+  getActiveClubSnapshot();
 
-  /// Todos os jogos do Goiás na temporada atual, de qualquer competição
-  /// (Goianão, Brasileirão Série B, Copa do Brasil...), ordenados por
-  /// kickoff — fonte do Calendário de Jogos. Nunca traz estádio (custaria
-  /// uma chamada extra por partida pra ~50 partidas de uma vez); quem
-  /// precisar do estádio de uma partida específica usa `getMatchDetails`.
+  /// Todos os jogos do clube ativo na temporada atual, de qualquer
+  /// competição (Goianão, Brasileirão Série B, Copa do Brasil...), ordenados
+  /// por kickoff — fonte do Calendário de Jogos. Nunca traz estádio
+  /// (custaria uma chamada extra por partida pra ~50 partidas de uma vez);
+  /// quem precisar do estádio de uma partida específica usa
+  /// `getMatchDetails`.
   Future<Result<List<Match>>> getSeasonFixtures();
 
   Future<

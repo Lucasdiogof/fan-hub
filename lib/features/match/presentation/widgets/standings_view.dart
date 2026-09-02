@@ -31,7 +31,7 @@ class StandingsView extends StatelessWidget {
             children: [
               const StandingsHeader(),
               for (final standing in state.standings)
-                StandingsRow(standing: standing, isGoias: standing.isGoias),
+                StandingsRow(standing: standing, isActiveClub: standing.isActiveClub),
             ],
           ),
         );

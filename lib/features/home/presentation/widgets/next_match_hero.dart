@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
@@ -100,7 +102,7 @@ class NextMatchHero extends StatelessWidget {
                 ],
                 // Fora de casa não tem ingresso pra vender — só o mandante
                 // do jogo controla a bilheteria do próprio estádio.
-                if (match.homeTeam.isGoias) ...[
+                if (match.homeTeam.matchesClub(sl<ClubConfig>())) ...[
                   const SizedBox(height: AppSpacing.lg),
                   SizedBox(
                     width: double.infinity,

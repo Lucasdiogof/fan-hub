@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
@@ -84,6 +87,11 @@ Future<CrowdLineupCubit> _pump(
 }
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   testWidgets(
     'share button is hidden on "Escalação da torcida" when nobody has voted yet',
     (tester) async {

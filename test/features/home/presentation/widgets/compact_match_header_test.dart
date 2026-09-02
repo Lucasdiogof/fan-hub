@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/home/presentation/widgets/compact_match_header.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
@@ -50,6 +53,11 @@ Future<void> _pump(WidgetTester tester, Match match) => tester.pumpWidget(
 );
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   testWidgets('scheduled match shows date and time, no score', (tester) async {
     await _pump(
       tester,

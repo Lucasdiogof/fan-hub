@@ -94,7 +94,7 @@ class _FakeFootballRepository implements FootballRepository {
 
   @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
-  getGoiasSnapshot() async =>
+  getActiveClubSnapshot() async =>
       Success((nextMatch: match, recentResults: const []));
 
   @override
