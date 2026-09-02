@@ -1,0 +1,285 @@
+{
+  "goiasClubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+  "totalEligibleTables": 24,
+  "groups": {
+    "A_content": [
+      {
+        "table": "career_players",
+        "pk": [
+          "id"
+        ],
+        "group": "CONTENT",
+        "rowCountBefore": 30,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "guess_players",
+        "pk": [
+          "id"
+        ],
+        "group": "CONTENT",
+        "rowCountBefore": 173,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "squad_members",
+        "pk": [
+          "id"
+        ],
+        "group": "CONTENT",
+        "rowCountBefore": 31,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "lineup_matches",
+        "pk": [
+          "id"
+        ],
+        "group": "CONTENT",
+        "rowCountBefore": 31,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "quiz_questions",
+        "pk": [
+          "id"
+        ],
+        "group": "CONTENT",
+        "rowCountBefore": 60,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      }
+    ],
+    "B1_arena_quiz_identity": [
+      {
+        "table": "user_game_item_progress",
+        "pk": [
+          "user_id",
+          "game_id",
+          "item_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 211,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "score_events",
+        "pk": [
+          "id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 262,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "quiz_question_progress",
+        "pk": [
+          "user_id",
+          "question_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 160,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "quiz_active_session",
+        "pk": [
+          "user_id",
+          "difficulty"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 9,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "arena_selected_content",
+        "pk": [
+          "user_id",
+          "game_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 9,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "arena_achievements",
+        "pk": [
+          "user_id",
+          "achievement_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 0,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "player_identity_results",
+        "pk": [
+          "user_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 1,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "tactical_identity_results",
+        "pk": [
+          "user_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 1,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      }
+    ],
+    "B2_career_lineup_votes": [
+      {
+        "table": "career_path_progress",
+        "pk": [
+          "user_id",
+          "player_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 40,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "lineup_match_progress",
+        "pk": [
+          "user_id",
+          "match_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 34,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "match_lineup_votes",
+        "pk": [
+          "id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 3,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      }
+    ],
+    "B3_tickets_store": [
+      {
+        "table": "ticket_checkin_decisions",
+        "pk": [
+          "user_id",
+          "match_id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 1,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "ticket_orders",
+        "pk": [
+          "id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 0,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "tickets",
+        "pk": [
+          "id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 0,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "store_orders",
+        "pk": [
+          "id"
+        ],
+        "group": "PROGRESS",
+        "rowCountBefore": 0,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      }
+    ],
+    "C_membership": [
+      {
+        "table": "supporter_memberships",
+        "pk": [
+          "id"
+        ],
+        "group": "MEMBERSHIP",
+        "rowCountBefore": 0,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      }
+    ],
+    "D_notifications": [
+      {
+        "table": "user_notification_preferences",
+        "pk": [
+          "user_id"
+        ],
+        "group": "NOTIFICATIONS",
+        "rowCountBefore": 0,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "match_monitor_sessions",
+        "pk": [
+          "match_id"
+        ],
+        "group": "NOTIFICATIONS",
+        "rowCountBefore": 1,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      },
+      {
+        "table": "notification_events",
+        "pk": [
+          "id"
+        ],
+        "group": "NOTIFICATIONS",
+        "rowCountBefore": 0,
+        "strategy": "ADD_COLUMN_NOT_NULL_DEFAULT_GOIAS"
+      }
+    ]
+  },
+  "excludedTables": [
+    {
+      "table": "passport_matches",
+      "reason": "PASSPORT_OUT_OF_SCOPE_THIS_ROUND",
+      "tenantStrategy": "NEEDS_PRODUCT_DECISION"
+    },
+    {
+      "table": "passport_attendances",
+      "reason": "PASSPORT_OUT_OF_SCOPE_THIS_ROUND",
+      "tenantStrategy": "INHERITS_FROM_PASSPORT_MATCHES"
+    },
+    {
+      "table": "passport_memorable_matches",
+      "reason": "PASSPORT_OUT_OF_SCOPE_THIS_ROUND",
+      "tenantStrategy": "INHERITS_FROM_PASSPORT_MATCHES"
+    },
+    {
+      "table": "store_order_items",
+      "reason": "NO_ROW_SCOPE_PROBLEM",
+      "tenantStrategy": "INHERITS_FROM_STORE_ORDERS"
+    },
+    {
+      "table": "user_notification_tokens",
+      "reason": "NO_ROW_SCOPE_PROBLEM",
+      "tenantStrategy": "KEEP_GLOBAL"
+    },
+    {
+      "table": "notification_deliveries",
+      "reason": "NO_ROW_SCOPE_PROBLEM",
+      "tenantStrategy": "INHERITS_FROM_EVENT (via event_id FK)"
+    },
+    {
+      "table": "profiles",
+      "reason": "NO_ROW_SCOPE_PROBLEM",
+      "tenantStrategy": "KEEP_GLOBAL"
+    },
+    {
+      "table": "delivery_addresses",
+      "reason": "NO_ROW_SCOPE_PROBLEM",
+      "tenantStrategy": "KEEP_GLOBAL"
+    }
+  ]
+}

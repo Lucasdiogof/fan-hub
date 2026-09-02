@@ -207,8 +207,14 @@ test('rodar audit_career_players_canonical_consumption.mjs de novo produz o mesm
 
 console.log('\n0 migrations');
 test('nenhuma migration nova em supabase/migrations/ (F2 é auditoria, 0 mudança de banco)', () => {
-  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations')).filter((f) => f.endsWith('.sql')).length;
-  assert.strictEqual(count, 35, `esperava 35 migrations (mesmo total desde F5-F7), achei ${count}`);
+  // Filtra por timestamp <= o baseline da F4.5 (última migration aplicada
+  // antes de F2/F5/F6/F7) em vez de comparar o total absoluto — assim o
+  // teste continua válido mesmo depois de etapas futuras (M2.2A em diante)
+  // adicionarem migrations próprias; o que importa aqui é só que F2 mesma
+  // não gerou nenhuma.
+  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+    .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z').length;
+  assert.strictEqual(count, 35, `esperava 35 migrations até o baseline da F4.5, achei ${count}`);
 });
 
 console.log(`\n${passed} passaram, ${failures.length} falharam.`);

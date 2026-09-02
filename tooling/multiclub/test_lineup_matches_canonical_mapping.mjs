@@ -312,8 +312,11 @@ test('rodar build_lineup_matches_canonical_mapping.mjs de novo produz o mesmo JS
 // ============================================================================
 console.log('\n28) 0 migrations');
 test('nenhuma migration nova em supabase/migrations/ (F7 é auditoria/tooling, 0 mudança de banco)', () => {
-  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations')).filter((f) => f.endsWith('.sql')).length;
-  assert.strictEqual(count, 35, `esperava 35 migrations (mesmo total desde F5/F6), achei ${count}`);
+  // Filtra por timestamp <= o baseline da F4.5 — etapas futuras (M2.2A em
+  // diante) podem adicionar migrations próprias sem invalidar este teste.
+  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+    .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z').length;
+  assert.strictEqual(count, 35, `esperava 35 migrations até o baseline da F4.5, achei ${count}`);
 });
 
 console.log(`\n${passed} passaram, ${failures.length} falharam.`);

@@ -184,8 +184,12 @@ test('rodar audit_multiclub_data_scope.mjs de novo produz o mesmo JSON byte a by
 // ============================================================================
 console.log('\n6) 0 migrations');
 test('nenhuma migration nova em supabase/migrations/ (M1 é fundação Dart + auditoria, 0 mudança de banco)', () => {
-  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations')).filter((f) => f.endsWith('.sql')).length;
-  assert.strictEqual(count, 35, `esperava 35 migrations (mesmo total desde F5-F7/F2), achei ${count}`);
+  // Filtra por timestamp <= o baseline da F4.5 — a M2.2A (etapa seguinte)
+  // adiciona migrations próprias sem invalidar este teste, que só afirma
+  // que M1 mesma não gerou nenhuma.
+  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+    .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z').length;
+  assert.strictEqual(count, 35, `esperava 35 migrations até o baseline da F4.5, achei ${count}`);
 });
 
 console.log(`\n${passed} passaram, ${failures.length} falharam.`);

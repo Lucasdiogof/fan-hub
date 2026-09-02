@@ -204,8 +204,12 @@ test('o script só escreve nos próprios outputs (OUT_DIR)', () => {
   for (const w of writes) assert.match(w, /OUT_DIR/, `write fora de OUT_DIR: ${w}`);
 });
 test('nenhuma migration nova (M2.1 é auditoria/design, 0 mudança de banco) — 35 migrations', () => {
-  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations')).filter((f) => f.endsWith('.sql')).length;
-  assert.strictEqual(count, 35, `esperava 35 migrations, achei ${count}`);
+  // Filtra por timestamp <= o baseline da F4.5 — a M2.2A (etapa seguinte)
+  // adiciona migrations próprias sem invalidar este teste, que só afirma
+  // que M2.1 mesma não gerou nenhuma.
+  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+    .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z').length;
+  assert.strictEqual(count, 35, `esperava 35 migrations até o baseline da F4.5, achei ${count}`);
 });
 
 console.log('\n12) reprodutibilidade byte a byte');
