@@ -1,0 +1,2770 @@
+[
+  {
+    "guessPlayerId": "adilson_dos_anjos_oliveira",
+    "currentName": "Juninho",
+    "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+    "canonicalName": "Adilson dos Anjos Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Adilson dos Anjos Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+        "canonicalName": "Adilson dos Anjos Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "aldo",
+    "currentName": "Aldo",
+    "personId": null,
+    "canonicalName": "Aldo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Aldo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "494b3a39-970e-5f4c-8756-1cd7068f9a5b",
+        "canonicalName": "Aldo",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "alef_manga",
+    "currentName": "Alef Manga",
+    "personId": null,
+    "canonicalName": "Alef Manga",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alef Manga, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "a14e6a0e-ea6c-5bcc-ad5e-c8cf1d9a31bd",
+        "canonicalName": "Alef Manga",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "alex_dias",
+    "currentName": "Alex Dias",
+    "personId": null,
+    "canonicalName": "Alex Dias",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alex Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "bad2882d-f170-57cd-961b-2fb662a29715",
+        "canonicalName": "Alex Dias",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "alexandre",
+    "currentName": "Alexandre",
+    "personId": null,
+    "canonicalName": "Alexandre",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Alexandre, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "1e95ec1e-d71b-586c-9dc2-f894fee14231",
+        "canonicalName": "Alexandre",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "alvaro",
+    "currentName": "Álvaro",
+    "personId": null,
+    "canonicalName": "Álvaro",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Álvaro, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "d25b36b7-6d4b-588e-b685-042788f4db53",
+        "canonicalName": "Álvaro",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "amaral",
+    "currentName": "Amaral",
+    "personId": "6416b152-ed92-52fc-8f3f-6027800dddaa",
+    "canonicalName": "Amaral",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Amaral), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6416b152-ed92-52fc-8f3f-6027800dddaa",
+        "canonicalName": "Amaral",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "andre_dias",
+    "currentName": "André Dias",
+    "personId": null,
+    "canonicalName": "André Dias",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (André Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "796a3e44-45f9-52e9-bcd2-b66f2820b2c7",
+        "canonicalName": "André Dias",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "andre_leone",
+    "currentName": "André Leone",
+    "personId": null,
+    "canonicalName": "André Leone",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (André Leone, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7bc40235-75da-587c-a4c7-cca50fa6fb83",
+        "canonicalName": "André Leone",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "anselmo_ramon_alves_herculano",
+    "currentName": "Anselmo Ramon",
+    "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+    "canonicalName": "Anselmo Ramon Alves Herculano",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Anselmo Ramon Alves Herculano), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+        "canonicalName": "Anselmo Ramon Alves Herculano",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "apodi",
+    "currentName": "Apodi",
+    "personId": null,
+    "canonicalName": "Apodi",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Apodi, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9293eb26-0bed-50d2-9168-6099dbc5a08a",
+        "canonicalName": "Apodi",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "araujo",
+    "currentName": "Araújo",
+    "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+    "canonicalName": "Araújo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Araújo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+        "canonicalName": "Araújo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "arthur_caike",
+    "currentName": "Arthur Caíke",
+    "personId": null,
+    "canonicalName": "Arthur Caíke",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Arthur Caíke, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5afaf949-65bc-590d-a9fe-45d47cb34664",
+        "canonicalName": "Arthur Caíke",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "artur",
+    "currentName": "Artur",
+    "personId": "d8600945-4f69-5c47-a42d-662921fa9557",
+    "canonicalName": "Artur",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Artur), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d8600945-4f69-5c47-a42d-662921fa9557",
+        "canonicalName": "Artur",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "augusto",
+    "currentName": "Augusto",
+    "personId": null,
+    "canonicalName": "Augusto",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Augusto, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "df10a00d-7f7d-504b-8493-5b9530ace6f3",
+        "canonicalName": "Augusto",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "brayann_brito_batista",
+    "currentName": "Brayann",
+    "personId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+    "canonicalName": "Brayann Brito Batista",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Brayann Brito Batista), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+        "canonicalName": "Brayann Brito Batista",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "breno",
+    "currentName": "Breno",
+    "personId": null,
+    "canonicalName": "Breno",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Breno, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "296aace6-b5da-5fe8-a813-787f3387aafc",
+        "canonicalName": "Breno",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "bruno_henrique",
+    "currentName": "Bruno Henrique",
+    "personId": null,
+    "canonicalName": "Bruno Henrique",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Bruno Henrique, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "be4bf8d6-5b57-532d-bc56-118e7970a01f",
+        "canonicalName": "Bruno Henrique",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "bruno_melo",
+    "currentName": "Bruno Melo",
+    "personId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+    "canonicalName": "Bruno Melo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Bruno Melo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+        "canonicalName": "Bruno Melo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "caca",
+    "currentName": "Cacá",
+    "personId": null,
+    "canonicalName": "Cacá",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Cacá, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "23f70f11-2170-5b0e-9795-8d29fe72b8df",
+        "canonicalName": "Cacá",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "caico",
+    "currentName": "Caíco",
+    "personId": null,
+    "canonicalName": "Caíco",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Caíco, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "fe4ae1e3-7c24-5eea-ab42-f5f7fbbd8a72",
+        "canonicalName": "Caíco",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "caio_vinicius",
+    "currentName": "Caio Vinícius",
+    "personId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+    "canonicalName": "Caio Vinícius",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Caio Vinícius), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+        "canonicalName": "Caio Vinícius",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "caique_sa",
+    "currentName": "Caíque Sá",
+    "personId": null,
+    "canonicalName": "Caíque Sá",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Caíque Sá, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "845d4d69-a6c5-5f05-8fed-fc7364623252",
+        "canonicalName": "Caíque Sá",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "carlos_alberto",
+    "currentName": "Carlos Alberto",
+    "personId": "02a0df33-8a89-5b78-8011-00868b240029",
+    "canonicalName": "Carlos Alberto",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Carlos Alberto), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "02a0df33-8a89-5b78-8011-00868b240029",
+        "canonicalName": "Carlos Alberto",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "carlos_eduardo",
+    "currentName": "Carlos Eduardo",
+    "personId": null,
+    "canonicalName": "Carlos Eduardo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Carlos Eduardo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "523b9905-c01a-573d-a135-7cf42475179c",
+        "canonicalName": "Carlos Eduardo",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "carlos_eduardo_amaral_pereira_de_castro",
+    "currentName": "Cadu",
+    "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+    "canonicalName": "Carlos Eduardo Amaral Pereira de Castro",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Carlos Eduardo Amaral Pereira de Castro), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+        "canonicalName": "Carlos Eduardo Amaral Pereira de Castro",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "carlos_eduardo_de_sousa_leopoldino",
+    "currentName": "Kadu Sousa",
+    "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+    "canonicalName": "Carlos Eduardo de Sousa Leopoldino",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Carlos Eduardo de Sousa Leopoldino), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+        "canonicalName": "Carlos Eduardo de Sousa Leopoldino",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "cleber_gaucho",
+    "currentName": "Cléber Gaúcho",
+    "personId": null,
+    "canonicalName": "Cléber Gaúcho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Cléber Gaúcho, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7d9ccf69-9e18-5d85-8578-c12f569135b1",
+        "canonicalName": "Cléber Gaúcho",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "cleber_goiano",
+    "currentName": "Cléber Goiano",
+    "personId": null,
+    "canonicalName": "Cléber Goiano",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Cléber Goiano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "6bbbd7cc-1b35-51c6-bfe9-fbcf8d934348",
+        "canonicalName": "Cléber Goiano",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "dada_belmonte",
+    "currentName": "Dadá Belmonte",
+    "personId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+    "canonicalName": "Dadá Belmonte",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Dadá Belmonte), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+        "canonicalName": "Dadá Belmonte",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "dalton",
+    "currentName": "Dalton",
+    "personId": null,
+    "canonicalName": "Dalton",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Dalton, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "b8ac4ea7-2337-5887-9f57-6b6d8ad80492",
+        "canonicalName": "Dalton",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "danilo_cunha_da_silva",
+    "currentName": "Danilo",
+    "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+    "canonicalName": "Danilo Cunha da Silva",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Danilo Cunha da Silva), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+        "canonicalName": "Danilo Cunha da Silva",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "danilo_portugal",
+    "currentName": "Danilo Portugal",
+    "personId": null,
+    "canonicalName": "Danilo Portugal",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Danilo Portugal, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "c9ede558-0b0a-59d3-b965-7e990774a5d8",
+        "canonicalName": "Danilo Portugal",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "david",
+    "currentName": "David",
+    "personId": "68880467-49ea-5661-8f08-2a177a060558",
+    "canonicalName": "David",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (David), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "68880467-49ea-5661-8f08-2a177a060558",
+        "canonicalName": "David",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "david_duarte",
+    "currentName": "David Duarte",
+    "personId": null,
+    "canonicalName": "David Duarte",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (David Duarte, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "1927e2ea-da7a-5df4-87f5-6df580353d8e",
+        "canonicalName": "David Duarte",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "diego_caito",
+    "currentName": "Diego Caito",
+    "personId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+    "canonicalName": "Diego Caito",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Diego Caito), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+        "canonicalName": "Diego Caito",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "diego_goncalves",
+    "currentName": "Diego Gonçalves",
+    "personId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+    "canonicalName": "Diego Gonçalves",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Diego Gonçalves), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+        "canonicalName": "Diego Gonçalves",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "dieguinho",
+    "currentName": "Dieguinho",
+    "personId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+    "canonicalName": "Jackson Diego Ibraim Fagundes",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Jackson Diego Ibraim Fagundes), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+        "canonicalName": "Jackson Diego Ibraim Fagundes",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "dimba",
+    "currentName": "Dimba",
+    "personId": null,
+    "canonicalName": "Dimba",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Dimba, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "2cddddcb-7d72-5799-9637-3dd399cdad31",
+        "canonicalName": "Dimba",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "djalma_antonio_da_silva_filho",
+    "currentName": "Djalma",
+    "personId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+    "canonicalName": "Djalma Antônio da Silva Filho",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Djalma Antônio da Silva Filho), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+        "canonicalName": "Djalma Antônio da Silva Filho",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "douglas",
+    "currentName": "Douglas",
+    "personId": "e23bec2f-5da1-5544-ae02-7e97b9136bb6",
+    "canonicalName": "Douglas",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Douglas), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e23bec2f-5da1-5544-ae02-7e97b9136bb6",
+        "canonicalName": "Douglas",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "dudu_cearense",
+    "currentName": "Dudu Cearense",
+    "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+    "canonicalName": "Dudu Cearense",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Dudu Cearense), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+        "canonicalName": "Dudu Cearense",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "eduardo_brock",
+    "currentName": "Eduardo Brock",
+    "personId": null,
+    "canonicalName": "Eduardo Brock",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Eduardo Brock, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "bbc75432-9c64-5e9e-b68b-f0937957ffc7",
+        "canonicalName": "Eduardo Brock",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "eduardo_heuser",
+    "currentName": "Eduardo Heuser",
+    "personId": null,
+    "canonicalName": "Eduardo Heuser",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Eduardo Heuser, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "fab74005-7e57-5edf-88ec-6fc2e3d65100",
+        "canonicalName": "Eduardo Heuser",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "eduardo_sasha",
+    "currentName": "Eduardo Sasha",
+    "personId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+    "canonicalName": "Eduardo Sasha",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Eduardo Sasha), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+        "canonicalName": "Eduardo Sasha",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "egidio",
+    "currentName": "Egídio",
+    "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+    "canonicalName": "Egídio",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Egídio), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+        "canonicalName": "Egídio",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "elvis",
+    "currentName": "Élvis",
+    "personId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+    "canonicalName": "Élvis",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Élvis), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+        "canonicalName": "Élvis",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "erik",
+    "currentName": "Erik",
+    "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+    "canonicalName": "Erik Nascimento de Lima",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Erik Nascimento de Lima), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+        "canonicalName": "Erik Nascimento de Lima",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "ernando",
+    "currentName": "Ernando",
+    "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+    "canonicalName": "Ernando",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ernando), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+        "canonicalName": "Ernando",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "esli_samuel_garcia_cordero",
+    "currentName": "Esli Garcia",
+    "personId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+    "canonicalName": "Esli Samuel García Cordero",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Esli Samuel García Cordero), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+        "canonicalName": "Esli Samuel García Cordero",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "esquerdinha",
+    "currentName": "Esquerdinha",
+    "personId": null,
+    "canonicalName": "Esquerdinha",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Esquerdinha, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "46c56b76-419d-55a1-becb-f5571c6a41e0",
+        "canonicalName": "Esquerdinha",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "evair",
+    "currentName": "Evair",
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "canonicalName": "Evair Aparecido Paulino",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Evair Aparecido Paulino), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+        "canonicalName": "Evair Aparecido Paulino",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "evandro",
+    "currentName": "Evandro",
+    "personId": null,
+    "canonicalName": "Evandro",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Evandro, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "dd42b77a-3bbc-541b-bb8a-15ab1549a314",
+        "canonicalName": "Evandro",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "everton_morelli",
+    "currentName": "Everton Morelli",
+    "personId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+    "canonicalName": "Everton Morelli",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Everton Morelli), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+        "canonicalName": "Everton Morelli",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "ezequiel_alves_de_oliveira_vieira",
+    "currentName": "Ezequiel",
+    "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+    "canonicalName": "Ezequiel Alves de Oliveira Vieira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ezequiel Alves de Oliveira Vieira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+        "canonicalName": "Ezequiel Alves de Oliveira Vieira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "fabao",
+    "currentName": "Fabão",
+    "personId": null,
+    "canonicalName": "Fabão",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Fabão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "5014c1cc-e0c8-5481-8408-12cdc15d287b",
+        "canonicalName": "Fabão",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "fabiano",
+    "currentName": "Fabiano",
+    "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+    "canonicalName": "Fabiano Cézar Viegas",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Fabiano Cézar Viegas), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+        "canonicalName": "Fabiano Cézar Viegas",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "fagundes",
+    "currentName": "Fagundes",
+    "personId": null,
+    "canonicalName": "Fagundes",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Fagundes, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "c950c69e-5881-527e-bf47-a9ddfcf28c68",
+        "canonicalName": "Fagundes",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "fellipe_bastos",
+    "currentName": "Fellipe Bastos",
+    "personId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+    "canonicalName": "Fellipe Bastos",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Fellipe Bastos), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+        "canonicalName": "Fellipe Bastos",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "fernandao",
+    "currentName": "Fernandão",
+    "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+    "canonicalName": "Fernandão",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Fernandão), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+        "canonicalName": "Fernandão",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "fernando_nunes",
+    "currentName": "Fernando Nunes",
+    "personId": null,
+    "canonicalName": "Fernando Nunes",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Fernando Nunes, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7b39fea0-9d91-53f7-bce5-9c84dddf76c8",
+        "canonicalName": "Fernando Nunes",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "geirton_marques_aires",
+    "currentName": "Gegê",
+    "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+    "canonicalName": "Geirton Marques Aires",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Geirton Marques Aires), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+        "canonicalName": "Geirton Marques Aires",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "gil_baiano",
+    "currentName": "Gil Baiano",
+    "personId": null,
+    "canonicalName": "Gil Baiano",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Gil Baiano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "eb317c24-cd92-5810-abc7-8a971e07f1b1",
+        "canonicalName": "Gil Baiano",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "giovanni",
+    "currentName": "Giovanni",
+    "personId": null,
+    "canonicalName": "Giovanni",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Giovanni, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "da2f537b-946c-5fd4-a5ec-1db71873c512",
+        "canonicalName": "Giovanni",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "gonzalo_freitas",
+    "currentName": "Gonzalo Freitas",
+    "personId": "645725d2-4a9b-596e-bfae-7436af12ff59",
+    "canonicalName": "Gonzalo Freitas",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Gonzalo Freitas), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "645725d2-4a9b-596e-bfae-7436af12ff59",
+        "canonicalName": "Gonzalo Freitas",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "grafite",
+    "currentName": "Grafite",
+    "personId": null,
+    "canonicalName": "Grafite",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Grafite, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0ae93f99-77d3-54fe-863c-198f1a5f5002",
+        "canonicalName": "Grafite",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "guilherme_baldoria_de_camargo",
+    "currentName": "Baldória",
+    "personId": "747cb968-a339-586c-94cf-583a3e0c3296",
+    "canonicalName": "Guilherme Baldória de Camargo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Guilherme Baldória de Camargo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "747cb968-a339-586c-94cf-583a3e0c3296",
+        "canonicalName": "Guilherme Baldória de Camargo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "gustavo",
+    "currentName": "Gustavo",
+    "personId": null,
+    "canonicalName": "Gustavo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Gustavo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "a7a0712f-0d35-5659-a2ea-049497f7d8f4",
+        "canonicalName": "Gustavo",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "halerrandrio_dos_santos_feitosa",
+    "currentName": "Halerrandrio",
+    "personId": "140ba628-c222-53a5-8621-a774092a125b",
+    "canonicalName": "Halerrandrio dos Santos Feitosa",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Halerrandrio dos Santos Feitosa), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "140ba628-c222-53a5-8621-a774092a125b",
+        "canonicalName": "Halerrandrio dos Santos Feitosa",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "harlei",
+    "currentName": "Harlei",
+    "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+    "canonicalName": "Harlei",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Harlei), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+        "canonicalName": "Harlei",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "hugo_identity_review",
+    "currentName": "Hugo",
+    "personId": null,
+    "canonicalName": "Hugo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Hugo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "92eefd57-f96b-5e79-9bed-bb13d28fed34",
+        "canonicalName": "Hugo",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "iarley",
+    "currentName": "Iarley",
+    "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+    "canonicalName": "Iarley",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Iarley), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+        "canonicalName": "Iarley",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "indio",
+    "currentName": "Índio",
+    "personId": null,
+    "canonicalName": "Índio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Índio, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7cb31401-5664-56a4-adf3-e4cbd67a4a54",
+        "canonicalName": "Índio",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "jadilson",
+    "currentName": "Jadílson",
+    "personId": null,
+    "canonicalName": "Jadílson",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Jadílson, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "04981cf4-75f8-556e-9e03-9a472f2a8619",
+        "canonicalName": "Jadílson",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "jaja",
+    "currentName": "Jajá",
+    "personId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+    "canonicalName": "Jajá",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Jajá), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+        "canonicalName": "Jajá",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "jaques",
+    "currentName": "Jaques",
+    "personId": null,
+    "canonicalName": "Jaques",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Jaques, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "26a56bc3-7d2c-5255-ad00-623e3dee9087",
+        "canonicalName": "Jaques",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "jean_carlos_alves_ferreira",
+    "currentName": "Jean Carlos",
+    "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+    "canonicalName": "Jean Carlos Alves Ferreira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Jean Carlos Alves Ferreira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+        "canonicalName": "Jean Carlos Alves Ferreira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "joao_paulo_ferreira_lourenco",
+    "currentName": "Lourenço",
+    "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+    "canonicalName": "João Paulo Ferreira Lourenço",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (João Paulo Ferreira Lourenço), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+        "canonicalName": "João Paulo Ferreira Lourenço",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "jorge_batata",
+    "currentName": "Jorge Batata",
+    "personId": null,
+    "canonicalName": "Jorge Batata",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Jorge Batata, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "07c659c2-2490-5ab5-a32c-6b2804e2efdc",
+        "canonicalName": "Jorge Batata",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "josue",
+    "currentName": "Josué",
+    "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+    "canonicalName": "Josué",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Josué), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+        "canonicalName": "Josué",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "julian_palacios",
+    "currentName": "Julián Palacios",
+    "personId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+    "canonicalName": "Julián Palacios",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Julián Palacios), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+        "canonicalName": "Julián Palacios",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "juliano",
+    "currentName": "Juliano",
+    "personId": null,
+    "canonicalName": "Juliano",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Juliano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0128bb04-127f-55e4-8ab9-381094e72352",
+        "canonicalName": "Juliano",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "julio_cesar_identity_review",
+    "currentName": "Júlio César",
+    "personId": null,
+    "canonicalName": "Júlio César",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Júlio César, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "ee7c0f46-3a02-56da-9e37-0a98147ead74",
+        "canonicalName": "Júlio César",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "julio_santos",
+    "currentName": "Júlio Santos",
+    "personId": null,
+    "canonicalName": "Júlio Santos",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Júlio Santos, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "738ce1fa-32fe-5346-bba1-94c4d2d44d0d",
+        "canonicalName": "Júlio Santos",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "junior_vicosa",
+    "currentName": "Júnior Viçosa",
+    "personId": null,
+    "canonicalName": "Júnior Viçosa",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Júnior Viçosa, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "a8b4e639-0d8f-58eb-9a44-6fdcb8b870d1",
+        "canonicalName": "Júnior Viçosa",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "kleber",
+    "currentName": "Kléber",
+    "personId": null,
+    "canonicalName": "Kléber",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Kléber, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "47d79914-f16c-50f7-a966-2e738ff91f0b",
+        "canonicalName": "Kléber",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "leandro_smith",
+    "currentName": "Leandro Smith",
+    "personId": null,
+    "canonicalName": "Leandro Smith",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Leandro Smith, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7538bdb8-a23c-5c48-abcf-7df8b96eaa43",
+        "canonicalName": "Leandro Smith",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "leo_sena",
+    "currentName": "Léo Sena",
+    "personId": null,
+    "canonicalName": "Léo Sena",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Léo Sena, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "4625f4ac-dfc8-59e0-a463-f7d8795b56e1",
+        "canonicalName": "Léo Sena",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "leonardo",
+    "currentName": "Leonardo",
+    "personId": null,
+    "canonicalName": "Leonardo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Leonardo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "3b9acdfb-caf9-5e48-9f09-f253788be15a",
+        "canonicalName": "Leonardo",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "luan_dias",
+    "currentName": "Luan Dias",
+    "personId": null,
+    "canonicalName": "Luan Dias",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Luan Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "ca038acb-a248-5b26-8b9a-5f9f8a590f64",
+        "canonicalName": "Luan Dias",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "lucas_halter",
+    "currentName": "Lucas Halter",
+    "personId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+    "canonicalName": "Lucas Halter",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Halter), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+        "canonicalName": "Lucas Halter",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "lucas_lovat",
+    "currentName": "Lucas Lovat",
+    "personId": "6d1615fb-9bab-5a4f-851b-7c4b74f564c7",
+    "canonicalName": "Lucas Lovat",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Lovat), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6d1615fb-9bab-5a4f-851b-7c4b74f564c7",
+        "canonicalName": "Lucas Lovat",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "lucas_rafael_araujo_lima",
+    "currentName": "Lucas Lima",
+    "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+    "canonicalName": "Lucas Rafael Araújo Lima",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Rafael Araújo Lima), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+        "canonicalName": "Lucas Rafael Araújo Lima",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "lucas_ribeiro_dos_santos",
+    "currentName": "Lucas Ribeiro",
+    "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+    "canonicalName": "Lucas Ribeiro dos Santos",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Ribeiro dos Santos), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+        "canonicalName": "Lucas Ribeiro dos Santos",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "lucas_rodrigues_moreira_costa",
+    "currentName": "Lucas Rodrigues",
+    "personId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+    "canonicalName": "Lucas Rodrigues Moreira Costa",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Lucas Rodrigues Moreira Costa), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+        "canonicalName": "Lucas Rodrigues Moreira Costa",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "luciano_almeida",
+    "currentName": "Luciano Almeida",
+    "personId": null,
+    "canonicalName": "Luciano Almeida",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Luciano Almeida, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "10bbe48b-d9d9-5b73-852b-054f61817dde",
+        "canonicalName": "Luciano Almeida",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "lucio",
+    "currentName": "Lúcio",
+    "personId": null,
+    "canonicalName": "Lúcio",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Lúcio, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "95239096-6559-550c-a868-20f7f1bc1a49",
+        "canonicalName": "Lúcio",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "luis_fellipe_campos_doria",
+    "currentName": "Luisão",
+    "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+    "canonicalName": "Luis Fellipe Campos Doria",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Luis Fellipe Campos Doria), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+        "canonicalName": "Luis Fellipe Campos Doria",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "luiz_felipe_clemente_de_almeida",
+    "currentName": "Felipe Clemente",
+    "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+    "canonicalName": "Luiz Felipe Clemente de Almeida",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Luiz Felipe Clemente de Almeida), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+        "canonicalName": "Luiz Felipe Clemente de Almeida",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "luiz_felipe_do_nascimento_dos_santos",
+    "currentName": "Luiz Felipe",
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "canonicalName": "Luiz Felipe do Nascimento dos Santos",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Luiz Felipe do Nascimento dos Santos), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+        "canonicalName": "Luiz Felipe do Nascimento dos Santos",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "luiz_filipe_da_rosa_machado",
+    "currentName": "Filipe Machado",
+    "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+    "canonicalName": "Luiz Filipe da Rosa Machado",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Luiz Filipe da Rosa Machado), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+        "canonicalName": "Luiz Filipe da Rosa Machado",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "luvanor",
+    "currentName": "Luvanor",
+    "personId": null,
+    "canonicalName": "Luvanor",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Luvanor, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "a31cad8d-ccb0-59be-beee-b7af941c247a",
+        "canonicalName": "Luvanor",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "madison",
+    "currentName": "Madison",
+    "personId": null,
+    "canonicalName": "Madison",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Madison, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "827f2891-4aaa-50e0-b3d7-67bf2f1d0de5",
+        "canonicalName": "Madison",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "maguinho",
+    "currentName": "Maguinho",
+    "personId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+    "canonicalName": "Maguinho",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Maguinho), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+        "canonicalName": "Maguinho",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "maraba",
+    "currentName": "Marabá",
+    "personId": null,
+    "canonicalName": "Marabá",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marabá, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "59b3356d-080e-5154-b1e3-7cc67b3dffae",
+        "canonicalName": "Marabá",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "maranhao",
+    "currentName": "Maranhão",
+    "personId": null,
+    "canonicalName": "Maranhão",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Maranhão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "b4e91a16-f498-5caf-a042-cb795c33dfba",
+        "canonicalName": "Maranhão",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "marcao_identity_review",
+    "currentName": "Marcão",
+    "personId": null,
+    "canonicalName": "Marcão",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marcão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e3723fb6-1c7a-5512-8547-50d69a04da99",
+        "canonicalName": "Marcão",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "marcelo_costa",
+    "currentName": "Marcelo Costa",
+    "personId": "5d1b418d-b0eb-59bf-a7c3-c622a1569e57",
+    "canonicalName": "Marcelo Costa",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Marcelo Costa), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "5d1b418d-b0eb-59bf-a7c3-c622a1569e57",
+        "canonicalName": "Marcelo Costa",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "marcelo_rangel",
+    "currentName": "Marcelo Rangel",
+    "personId": null,
+    "canonicalName": "Marcelo Rangel",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marcelo Rangel, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "17620cb8-7492-5068-a43c-51bf857b937b",
+        "canonicalName": "Marcelo Rangel",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "marcos_vinicius_da_silva_santos",
+    "currentName": "Marcos Vinicius",
+    "personId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+    "canonicalName": "Marcos Vinicius da Silva Santos",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Marcos Vinicius da Silva Santos), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+        "canonicalName": "Marcos Vinicius da Silva Santos",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "matheus_peixoto",
+    "currentName": "Matheus Peixoto",
+    "personId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+    "canonicalName": "Matheus Peixoto",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Matheus Peixoto), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+        "canonicalName": "Matheus Peixoto",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "messias",
+    "currentName": "Messias",
+    "personId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+    "canonicalName": "Messias",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Messias), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+        "canonicalName": "Messias",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "michael",
+    "currentName": "Michael",
+    "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+    "canonicalName": "Michael Richard Delgado de Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Michael Richard Delgado de Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+        "canonicalName": "Michael Richard Delgado de Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "michel_santana",
+    "currentName": "Michel Santana",
+    "personId": null,
+    "canonicalName": "Michel Santana",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Michel Santana, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "98976e8b-d001-54da-aacc-c8ae7abc5aa2",
+        "canonicalName": "Michel Santana",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "murillo_carvalho_victorio",
+    "currentName": "Murillo Victorio",
+    "personId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+    "canonicalName": "Murillo Carvalho Victorio",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Murillo Carvalho Victorio), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+        "canonicalName": "Murillo Carvalho Victorio",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "murilo_camara_saquetti_chimelo_pereira",
+    "currentName": "Murilo Câmara",
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "canonicalName": "Murilo Camara Saquetti Chimelo Pereira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Murilo Camara Saquetti Chimelo Pereira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+        "canonicalName": "Murilo Camara Saquetti Chimelo Pereira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "nenem",
+    "currentName": "Neném",
+    "personId": null,
+    "canonicalName": "Neném",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Neném, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "98e0de13-e281-59f4-b422-b6b7e674fc5e",
+        "canonicalName": "Neném",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "nicolas_vichiatto_da_silva",
+    "currentName": "Nicolas",
+    "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+    "canonicalName": "Nicolas Vichiatto da Silva",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Nicolas Vichiatto da Silva), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+        "canonicalName": "Nicolas Vichiatto da Silva",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "niltinho",
+    "currentName": "Niltinho",
+    "personId": null,
+    "canonicalName": "Niltinho",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Niltinho, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "caf80535-2862-5309-8c1e-92ab0dbdaea3",
+        "canonicalName": "Niltinho",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "nonato",
+    "currentName": "Nonato",
+    "personId": null,
+    "canonicalName": "Nonato",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Nonato, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "19fba8e8-9899-5471-8426-7b83e73b35a0",
+        "canonicalName": "Nonato",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "otacilio_neto",
+    "currentName": "Otacílio Neto",
+    "personId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+    "canonicalName": "Otacílio Neto",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Otacílio Neto), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+        "canonicalName": "Otacílio Neto",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "paulo_baier",
+    "currentName": "Paulo Baier",
+    "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+    "canonicalName": "Paulo Baier",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Paulo Baier), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+        "canonicalName": "Paulo Baier",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "pedro_junqueira_de_oliveira",
+    "currentName": "Pedrinho",
+    "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+    "canonicalName": "Pedro Junqueira de Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Pedro Junqueira de Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+        "canonicalName": "Pedro Junqueira de Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "pedro_paulo",
+    "currentName": "Pedro Paulo",
+    "personId": null,
+    "canonicalName": "Pedro Paulo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Pedro Paulo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "ad561e0d-ad59-5c27-a5ab-34395047c20a",
+        "canonicalName": "Pedro Paulo",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "pedro_raul",
+    "currentName": "Pedro Raul",
+    "personId": null,
+    "canonicalName": "Pedro Raul",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Pedro Raul, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0fac94c7-87fc-5061-b7a4-29ea9f620794",
+        "canonicalName": "Pedro Raul",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rafael_dias",
+    "currentName": "Rafael Dias",
+    "personId": null,
+    "canonicalName": "Rafael Dias",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rafael Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "80453d6a-6cd6-54fb-8706-710ed293faf6",
+        "canonicalName": "Rafael Dias",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rafael_lacerda",
+    "currentName": "Rafael Lacerda",
+    "personId": "6f6e77e6-237d-59bf-bf01-9f2710377af3",
+    "canonicalName": "Rafael Lacerda",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rafael Lacerda), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6f6e77e6-237d-59bf-bf01-9f2710377af3",
+        "canonicalName": "Rafael Lacerda",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rafael_moura",
+    "currentName": "Rafael Moura",
+    "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+    "canonicalName": "Rafael Moura",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rafael Moura), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+        "canonicalName": "Rafael Moura",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rafael_toloi",
+    "currentName": "Rafael Tolói",
+    "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+    "canonicalName": "Rafael Tolói",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rafael Tolói), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+        "canonicalName": "Rafael Tolói",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "ramon",
+    "currentName": "Ramón",
+    "personId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+    "canonicalName": "Ramón",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ramón), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+        "canonicalName": "Ramón",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "ramon_menezes_roma",
+    "currentName": "Ramon Menezes",
+    "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+    "canonicalName": "Ramon Menezes Roma",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ramon Menezes Roma), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+        "canonicalName": "Ramon Menezes Roma",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "reidner",
+    "currentName": "Reidner",
+    "personId": null,
+    "canonicalName": "Reidner",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Reidner, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "25be25cc-afc5-52c4-80fe-913db916e463",
+        "canonicalName": "Reidner",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "renan",
+    "currentName": "Renan",
+    "personId": "38149930-5985-56fe-9832-cd101ea3d501",
+    "canonicalName": "Renan",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Renan), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "38149930-5985-56fe-9832-cd101ea3d501",
+        "canonicalName": "Renan",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "renan_oliveira",
+    "currentName": "Renan Oliveira",
+    "personId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+    "canonicalName": "Renan Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Renan Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+        "canonicalName": "Renan Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "renato_silva",
+    "currentName": "Renato Silva",
+    "personId": null,
+    "canonicalName": "Renato Silva",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Renato Silva, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "f3bb7ba1-b3b4-5492-8359-d0b98e494430",
+        "canonicalName": "Renato Silva",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "reynaldo",
+    "currentName": "Reynaldo",
+    "personId": null,
+    "canonicalName": "Reynaldo",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Reynaldo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e3f11445-639c-527e-8b02-f11bd089d9bf",
+        "canonicalName": "Reynaldo",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "ricardo_goulart",
+    "currentName": "Ricardo Goulart",
+    "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+    "canonicalName": "Ricardo Goulart",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ricardo Goulart), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+        "canonicalName": "Ricardo Goulart",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "richard",
+    "currentName": "Richard",
+    "personId": null,
+    "canonicalName": "Richard",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Richard, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "cda9f7e9-e37e-5aed-9929-2fec572f843c",
+        "canonicalName": "Richard",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rodrigo",
+    "currentName": "Rodrigo",
+    "personId": "dfc91f87-d812-54c6-b759-fe3761000752",
+    "canonicalName": "Rodrigo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rodrigo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "dfc91f87-d812-54c6-b759-fe3761000752",
+        "canonicalName": "Rodrigo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rodrigo_alves_soares",
+    "currentName": "Rodrigo Soares",
+    "personId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+    "canonicalName": "Rodrigo Alves Soares",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rodrigo Alves Soares), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+        "canonicalName": "Rodrigo Alves Soares",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rodrigo_andrade",
+    "currentName": "Rodrigo Andrade",
+    "personId": "77241a5f-1e7c-5a5e-be50-495dcf1438e4",
+    "canonicalName": "Rodrigo Andrade",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rodrigo Andrade), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "77241a5f-1e7c-5a5e-be50-495dcf1438e4",
+        "canonicalName": "Rodrigo Andrade",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rodrigo_calaca",
+    "currentName": "Rodrigo Calaça",
+    "personId": null,
+    "canonicalName": "Rodrigo Calaça",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rodrigo Calaça, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "4a791dac-a6b6-53a6-9c51-54efcf9a7051",
+        "canonicalName": "Rodrigo Calaça",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rodrigo_tabata",
+    "currentName": "Rodrigo Tabata",
+    "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+    "canonicalName": "Rodrigo Tabata",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rodrigo Tabata), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+        "canonicalName": "Rodrigo Tabata",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "rogerio_correa",
+    "currentName": "Rogério Corrêa",
+    "personId": null,
+    "canonicalName": "Rogério Corrêa",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rogério Corrêa, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "d3350033-eab8-53b8-bdf2-cf26faaf3409",
+        "canonicalName": "Rogério Corrêa",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "romerito",
+    "currentName": "Romerito",
+    "personId": null,
+    "canonicalName": "Romerito",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Romerito, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "b098e3d4-85d3-5ee3-b163-9d270ec1403c",
+        "canonicalName": "Romerito",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "romeu",
+    "currentName": "Romeu",
+    "personId": null,
+    "canonicalName": "Romeu",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Romeu, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "53682877-ae8b-59bc-b5e8-86fc35e7a3ed",
+        "canonicalName": "Romeu",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "roni",
+    "currentName": "Roni",
+    "personId": null,
+    "canonicalName": "Rôni",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rôni, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "331ed712-5fbe-5f97-84cf-5e12bd3bd6ab",
+        "canonicalName": "Rôni",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "sander",
+    "currentName": "Sander",
+    "personId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+    "canonicalName": "Sander",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Sander), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+        "canonicalName": "Sander",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "silvio_criciuma",
+    "currentName": "Sílvio Criciúma",
+    "personId": null,
+    "canonicalName": "Sílvio Criciúma",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Sílvio Criciúma, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "f19f0f24-d854-5199-80a4-d1c2b961ce4a",
+        "canonicalName": "Sílvio Criciúma",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "simao",
+    "currentName": "Simão",
+    "personId": null,
+    "canonicalName": "Simão",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Simão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "3f7ae1ce-489e-5f70-9ba4-53760fe0dddb",
+        "canonicalName": "Simão",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "souza",
+    "currentName": "Souza",
+    "personId": null,
+    "canonicalName": "Souza",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Souza, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e02185f6-7fc3-5ae6-8fc2-60030c821025",
+        "canonicalName": "Souza",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "tadeu_antonio_ferreira",
+    "currentName": "Tadeu",
+    "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+    "canonicalName": "Tadeu Antônio Ferreira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Tadeu Antônio Ferreira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+        "canonicalName": "Tadeu Antônio Ferreira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "thiago_mendes",
+    "currentName": "Thiago Mendes",
+    "personId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+    "canonicalName": "Thiago Mendes",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Thiago Mendes), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+        "canonicalName": "Thiago Mendes",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "thiago_rodrigues_de_oliveira_nogueira",
+    "currentName": "Thiago Rodrigues",
+    "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+    "canonicalName": "Thiago Rodrigues de Oliveira Nogueira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Thiago Rodrigues de Oliveira Nogueira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+        "canonicalName": "Thiago Rodrigues de Oliveira Nogueira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "tiago_fraga",
+    "currentName": "Tiago Fraga",
+    "personId": null,
+    "canonicalName": "Tiago Fraga",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Tiago Fraga, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "ae05d013-8ede-587d-9ed3-344d561666c3",
+        "canonicalName": "Tiago Fraga",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "titi",
+    "currentName": "Titi",
+    "personId": "5ee54a6c-45ec-50dd-bc29-d5d3ac29d2a9",
+    "canonicalName": "Titi",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Titi), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "5ee54a6c-45ec-50dd-bc29-d5d3ac29d2a9",
+        "canonicalName": "Titi",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "tulio_maravilha",
+    "currentName": "Túlio Maravilha",
+    "personId": null,
+    "canonicalName": "Túlio Maravilha",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Túlio Maravilha, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "7ed1ac03-2a62-52b0-9569-c981f5adc5c9",
+        "canonicalName": "Túlio Maravilha",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "valmir_lucas",
+    "currentName": "Valmir Lucas",
+    "personId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+    "canonicalName": "Valmir Lucas",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Valmir Lucas), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+        "canonicalName": "Valmir Lucas",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "vampeta",
+    "currentName": "Vampeta",
+    "personId": null,
+    "canonicalName": "Vampeta",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Vampeta, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "6a08c7de-fba8-5a6e-a923-cef1dd536266",
+        "canonicalName": "Vampeta",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "vinicius",
+    "currentName": "Vinícius",
+    "personId": "3083606c-a924-5f61-8477-1381c6bf2a7e",
+    "canonicalName": "Vinícius",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Vinícius), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "3083606c-a924-5f61-8477-1381c6bf2a7e",
+        "canonicalName": "Vinícius",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "vitor",
+    "currentName": "Vítor",
+    "personId": null,
+    "canonicalName": "Vítor",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Vítor, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "8fa80d15-d0f5-552e-b029-b8df5771bceb",
+        "canonicalName": "Vítor",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "wallace",
+    "currentName": "Wallace",
+    "personId": null,
+    "canonicalName": "Wallace",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wallace, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "905d87ae-5b34-563a-9f43-713cde240764",
+        "canonicalName": "Wallace",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "walter",
+    "currentName": "Walter",
+    "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+    "canonicalName": "Walter Henrique da Silva",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Walter Henrique da Silva), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+        "canonicalName": "Walter Henrique da Silva",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "wando",
+    "currentName": "Wando",
+    "personId": null,
+    "canonicalName": "Wando",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wando, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e04f2cf9-3f35-52b4-9f18-e5d4bf23f6a5",
+        "canonicalName": "Wando",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "wellington_saci",
+    "currentName": "Wellington Saci",
+    "personId": "9a4c2c66-0936-5921-8714-95714db79daa",
+    "canonicalName": "Wellington Saci",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Wellington Saci), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "9a4c2c66-0936-5921-8714-95714db79daa",
+        "canonicalName": "Wellington Saci",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "wellington_soares_da_silva",
+    "currentName": "Wellington Rato",
+    "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "canonicalName": "Wellington Soares da Silva",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Wellington Soares da Silva), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+        "canonicalName": "Wellington Soares da Silva",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "welliton_identity_review",
+    "currentName": "Welliton",
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "canonicalName": "Welliton Soares de Morais",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Welliton Soares de Morais), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+        "canonicalName": "Welliton Soares de Morais",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "willean_lepo",
+    "currentName": "Willean Lepo",
+    "personId": "c652d7a2-e1cc-51cc-b349-cb1afa86e63b",
+    "canonicalName": "Willean Lepo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Willean Lepo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "c652d7a2-e1cc-51cc-b349-cb1afa86e63b",
+        "canonicalName": "Willean Lepo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "william_matheus",
+    "currentName": "William Matheus",
+    "personId": "03fca98b-17cd-5484-838d-6690bb677f70",
+    "canonicalName": "William Matheus",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (William Matheus), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "03fca98b-17cd-5484-838d-6690bb677f70",
+        "canonicalName": "William Matheus",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "willian_oliveira",
+    "currentName": "Willian Oliveira",
+    "personId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+    "canonicalName": "Willian Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Willian Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+        "canonicalName": "Willian Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "wilson_goiano",
+    "currentName": "Wilson Goiano",
+    "personId": null,
+    "canonicalName": "Wilson Goiano",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Wilson Goiano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "f6c4cd51-9a60-5054-a195-3bc9fe4ef895",
+        "canonicalName": "Wilson Goiano",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "ze_hugo",
+    "currentName": "Zé Hugo",
+    "personId": "19122a64-36c5-55d2-b734-7f682c70b5aa",
+    "canonicalName": "Zé Hugo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Zé Hugo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "19122a64-36c5-55d2-b734-7f682c70b5aa",
+        "canonicalName": "Zé Hugo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "guessPlayerId": "ze_ricardo",
+    "currentName": "Zé Ricardo",
+    "personId": "d5256bb9-5c40-5354-87d0-38d304523039",
+    "canonicalName": "Zé Ricardo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Zé Ricardo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "d5256bb9-5c40-5354-87d0-38d304523039",
+        "canonicalName": "Zé Ricardo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  }
+]

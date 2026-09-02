@@ -12,6 +12,7 @@ import 'package:goias_app/shared/domain/player_position.dart';
 final guessPlayerCatalog = <GuessPlayer>[
   GuessPlayer(
     id: 'adilson_dos_anjos_oliveira',
+    personId: 'b9d994d7-3605-5e6e-89ca-7d223f87d14a',
     name: 'Juninho',
     displayName: 'Juninho',
     aliases: ['Adilson dos Anjos Oliveira'],
@@ -26,6 +27,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'aldo',
+    personId: null,
     name: 'Aldo',
     displayName: 'Aldo',
     position: PlayerPosition.zag,
@@ -37,6 +39,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'alef_manga',
+    personId: null,
     name: 'Alef Manga',
     displayName: 'Alef Manga',
     position: PlayerPosition.ata,
@@ -49,6 +52,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'alex_dias',
+    personId: null,
     name: 'Alex Dias',
     displayName: 'Alex Dias',
     position: PlayerPosition.ata,
@@ -62,6 +66,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'alexandre',
+    personId: null,
     name: 'Alexandre',
     displayName: 'Alexandre',
     position: PlayerPosition.zag,
@@ -73,6 +78,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'alvaro',
+    personId: null,
     name: 'Álvaro',
     displayName: 'Álvaro',
     position: PlayerPosition.zag,
@@ -84,6 +90,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'amaral',
+    personId: '6416b152-ed92-52fc-8f3f-6027800dddaa',
     name: 'Amaral',
     displayName: 'Amaral',
     position: PlayerPosition.vol,
@@ -96,6 +103,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'andre_dias',
+    personId: null,
     name: 'André Dias',
     displayName: 'André Dias',
     position: PlayerPosition.zag,
@@ -107,6 +115,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'andre_leone',
+    personId: null,
     name: 'André Leone',
     displayName: 'André Leone',
     position: PlayerPosition.zag,
@@ -118,6 +127,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'anselmo_ramon_alves_herculano',
+    personId: 'e277edea-70b1-5092-ad39-48be1a5297d6',
     name: 'Anselmo Ramon',
     displayName: 'Anselmo Ramon',
     aliases: ['Anselmo Ramon Alves Herculano'],
@@ -132,6 +142,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'apodi',
+    personId: null,
     name: 'Apodi',
     displayName: 'Apodi',
     position: PlayerPosition.ld,
@@ -144,6 +155,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'araujo',
+    personId: '50863ba2-ea68-5ebd-9a97-fe43f3882484',
     name: 'Araújo',
     displayName: 'Araújo',
     position: PlayerPosition.ata,
@@ -155,6 +167,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'arthur_caike',
+    personId: null,
     name: 'Arthur Caíke',
     displayName: 'Arthur Caíke',
     position: PlayerPosition.ata,
@@ -166,6 +179,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'artur',
+    personId: 'd8600945-4f69-5c47-a42d-662921fa9557',
     name: 'Artur',
     displayName: 'Artur',
     position: PlayerPosition.le,
@@ -178,6 +192,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'augusto',
+    personId: null,
     name: 'Augusto',
     displayName: 'Augusto',
     position: PlayerPosition.le,
@@ -189,6 +204,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'brayann_brito_batista',
+    personId: '75723744-c847-55e8-acf2-d8ee0d75c7a1',
     name: 'Brayann',
     displayName: 'Brayann',
     aliases: ['Brayann Brito Batista'],
@@ -202,6 +218,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'breno',
+    personId: null,
     name: 'Breno',
     displayName: 'Breno',
     position: PlayerPosition.le,
@@ -213,6 +230,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'bruno_henrique',
+    personId: null,
     name: 'Bruno Henrique',
     displayName: 'Bruno Henrique',
     position: PlayerPosition.ata,
@@ -223,6 +241,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'bruno_melo',
+    personId: 'd274fa09-a83e-5526-86cd-2caf8244a4d3',
     name: 'Bruno Melo',
     displayName: 'Bruno Melo',
     position: PlayerPosition.zag,
@@ -236,6 +255,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'caca',
+    personId: null,
     name: 'Cacá',
     displayName: 'Cacá',
     position: PlayerPosition.mei,
@@ -246,6 +266,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'caico',
+    personId: null,
     name: 'Caíco',
     displayName: 'Caíco',
     position: PlayerPosition.mei,
@@ -257,6 +278,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'caio_vinicius',
+    personId: '12b59f80-07bb-584d-a7eb-976739c07c6c',
     name: 'Caio Vinícius',
     displayName: 'Caio Vinícius',
     position: PlayerPosition.vol,
@@ -270,6 +292,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'caique_sa',
+    personId: null,
     name: 'Caíque Sá',
     displayName: 'Caíque Sá',
     position: PlayerPosition.ld,
@@ -281,6 +304,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'carlos_alberto',
+    personId: '02a0df33-8a89-5b78-8011-00868b240029',
     name: 'Carlos Alberto',
     displayName: 'Carlos Alberto',
     position: PlayerPosition.mei,
@@ -293,6 +317,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'carlos_eduardo',
+    personId: null,
     name: 'Carlos Eduardo',
     displayName: 'Carlos Eduardo',
     position: PlayerPosition.ata,
@@ -304,6 +329,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'carlos_eduardo_amaral_pereira_de_castro',
+    personId: '6702c943-0b4e-5041-8cd4-76991b85633d',
     name: 'Cadu',
     displayName: 'Cadu',
     aliases: ['Carlos Eduardo Amaral Pereira de Castro'],
@@ -318,6 +344,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'carlos_eduardo_de_sousa_leopoldino',
+    personId: '6bc585a3-1b56-58c3-8ba7-6f208151ae47',
     name: 'Kadu Sousa',
     displayName: 'Kadu Sousa',
     aliases: ['Carlos Eduardo de Sousa Leopoldino'],
@@ -332,6 +359,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'cleber_gaucho',
+    personId: null,
     name: 'Cléber Gaúcho',
     displayName: 'Cléber Gaúcho',
     position: PlayerPosition.mc,
@@ -343,6 +371,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'cleber_goiano',
+    personId: null,
     name: 'Cléber Goiano',
     displayName: 'Cléber Goiano',
     position: PlayerPosition.vol,
@@ -354,6 +383,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'dada_belmonte',
+    personId: 'dbedb80d-a764-52a6-905f-ff01f9a3cdea',
     name: 'Dadá Belmonte',
     displayName: 'Dadá Belmonte',
     position: PlayerPosition.ata,
@@ -366,6 +396,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'dalton',
+    personId: null,
     name: 'Dalton',
     displayName: 'Dalton',
     position: PlayerPosition.le,
@@ -376,6 +407,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'danilo_cunha_da_silva',
+    personId: '34d6fed1-6282-564a-bcb0-5be7d705760a',
     name: 'Danilo',
     displayName: 'Danilo',
     aliases: ['Danilo Cunha da Silva'],
@@ -390,6 +422,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'danilo_portugal',
+    personId: null,
     name: 'Danilo Portugal',
     displayName: 'Danilo Portugal',
     position: PlayerPosition.vol,
@@ -401,6 +434,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'david',
+    personId: '68880467-49ea-5661-8f08-2a177a060558',
     name: 'David',
     displayName: 'David',
     position: PlayerPosition.vol,
@@ -414,6 +448,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'david_duarte',
+    personId: null,
     name: 'David Duarte',
     displayName: 'David Duarte',
     position: PlayerPosition.zag,
@@ -427,6 +462,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'diego_caito',
+    personId: '9a740e1a-b0c0-53c9-9adf-f675f0cba5ca',
     name: 'Diego Caito',
     displayName: 'Diego Caito',
     position: PlayerPosition.ld,
@@ -440,6 +476,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'diego_goncalves',
+    personId: '9f51dcb7-51c8-5f95-8b11-fc17e327b1f3',
     name: 'Diego Gonçalves',
     displayName: 'Diego Gonçalves',
     position: PlayerPosition.ata,
@@ -452,6 +489,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'dieguinho',
+    personId: '79902fc2-167c-5af2-a303-8044dbc6cff5',
     name: 'Dieguinho',
     displayName: 'Dieguinho',
     position: PlayerPosition.ld,
@@ -463,6 +501,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'dimba',
+    personId: null,
     name: 'Dimba',
     displayName: 'Dimba',
     position: PlayerPosition.ata,
@@ -475,6 +514,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'djalma_antonio_da_silva_filho',
+    personId: '54e8cc38-7ac7-5927-b7a5-ca11a372a545',
     name: 'Djalma',
     displayName: 'Djalma',
     aliases: ['Djalma Antônio da Silva Filho'],
@@ -488,6 +528,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'douglas',
+    personId: 'e23bec2f-5da1-5544-ae02-7e97b9136bb6',
     name: 'Douglas',
     displayName: 'Douglas',
     position: PlayerPosition.ld,
@@ -500,6 +541,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'dudu_cearense',
+    personId: '7587fc6d-f810-5c41-b206-0a2ffe09a96d',
     name: 'Dudu Cearense',
     displayName: 'Dudu Cearense',
     position: PlayerPosition.vol,
@@ -513,6 +555,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'eduardo_brock',
+    personId: null,
     name: 'Eduardo Brock',
     displayName: 'Eduardo Brock',
     position: PlayerPosition.zag,
@@ -524,6 +567,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'eduardo_heuser',
+    personId: null,
     name: 'Eduardo Heuser',
     displayName: 'Eduardo Heuser',
     position: PlayerPosition.gol,
@@ -533,6 +577,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'eduardo_sasha',
+    personId: 'cd2285a5-82d6-59a5-bb5b-88b88b1afa8d',
     name: 'Eduardo Sasha',
     displayName: 'Eduardo Sasha',
     position: PlayerPosition.ata,
@@ -546,6 +591,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'egidio',
+    personId: '6e8b3d49-4926-5b66-b7f1-8481c2c7a701',
     name: 'Egídio',
     displayName: 'Egídio',
     position: PlayerPosition.le,
@@ -559,6 +605,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'elvis',
+    personId: '9548aabb-4559-55f4-9bff-bd3c8b1984b9',
     name: 'Élvis',
     displayName: 'Élvis',
     position: PlayerPosition.mei,
@@ -572,6 +619,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'erik',
+    personId: '48016516-27c1-5c06-a52a-9893bfc90cf2',
     name: 'Erik',
     displayName: 'Erik',
     position: PlayerPosition.ata,
@@ -585,6 +633,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'ernando',
+    personId: 'a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25',
     name: 'Ernando',
     displayName: 'Ernando',
     position: PlayerPosition.zag,
@@ -598,6 +647,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'esli_samuel_garcia_cordero',
+    personId: '10f6579f-1bc4-5b2a-ab9f-0a1a262519a1',
     name: 'Esli Garcia',
     displayName: 'Esli Garcia',
     aliases: ['Esli Samuel García Cordero'],
@@ -612,6 +662,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'esquerdinha',
+    personId: null,
     name: 'Esquerdinha',
     displayName: 'Esquerdinha',
     position: PlayerPosition.le,
@@ -622,6 +673,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'evair',
+    personId: '6b36f211-ed18-50fb-8cfc-77f8430f1616',
     name: 'Evair',
     displayName: 'Evair',
     position: PlayerPosition.ata,
@@ -633,6 +685,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'evandro',
+    personId: null,
     name: 'Evandro',
     displayName: 'Evandro',
     position: PlayerPosition.ata,
@@ -644,6 +697,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'everton_morelli',
+    personId: '9c4d1f1b-de75-5e63-8bda-ffab87d20969',
     name: 'Everton Morelli',
     displayName: 'Everton Morelli',
     position: PlayerPosition.vol,
@@ -657,6 +711,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'ezequiel_alves_de_oliveira_vieira',
+    personId: '66cd616b-9b5d-56f9-879e-1b171a8a33d0',
     name: 'Ezequiel',
     displayName: 'Ezequiel',
     aliases: ['Ezequiel Alves de Oliveira Vieira'],
@@ -670,6 +725,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'fabao',
+    personId: null,
     name: 'Fabão',
     displayName: 'Fabão',
     position: PlayerPosition.zag,
@@ -681,6 +737,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'fabiano',
+    personId: '063cc04f-afd9-516a-96d7-6f27bfb0c818',
     name: 'Fabiano',
     displayName: 'Fabiano',
     position: PlayerPosition.zag,
@@ -692,6 +749,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'fagundes',
+    personId: null,
     name: 'Fagundes',
     displayName: 'Fagundes',
     position: PlayerPosition.mc,
@@ -703,6 +761,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'fellipe_bastos',
+    personId: '0da8b2fc-a261-554a-a35f-4ad3ef422112',
     name: 'Fellipe Bastos',
     displayName: 'Fellipe Bastos',
     position: PlayerPosition.vol,
@@ -716,6 +775,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'fernandao',
+    personId: '491bf2d0-f640-5b03-9ab1-a1772095133d',
     name: 'Fernandão',
     displayName: 'Fernandão',
     position: PlayerPosition.ata,
@@ -729,6 +789,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'fernando_nunes',
+    personId: null,
     name: 'Fernando Nunes',
     displayName: 'Fernando Nunes',
     position: PlayerPosition.le,
@@ -739,6 +800,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'geirton_marques_aires',
+    personId: '88a5f4a0-ed1a-5a0f-b2d9-0294157789dd',
     name: 'Gegê',
     displayName: 'Gegê',
     aliases: ['Geirton Marques Aires'],
@@ -753,6 +815,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'gil_baiano',
+    personId: null,
     name: 'Gil Baiano',
     displayName: 'Gil Baiano',
     position: PlayerPosition.ld,
@@ -764,6 +827,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'giovanni',
+    personId: null,
     name: 'Giovanni',
     displayName: 'Giovanni',
     position: PlayerPosition.mc,
@@ -775,6 +839,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'gonzalo_freitas',
+    personId: '645725d2-4a9b-596e-bfae-7436af12ff59',
     name: 'Gonzalo Freitas',
     displayName: 'Gonzalo Freitas',
     position: PlayerPosition.vol,
@@ -787,6 +852,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'grafite',
+    personId: null,
     name: 'Grafite',
     displayName: 'Grafite',
     position: PlayerPosition.ata,
@@ -797,6 +863,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'guilherme_baldoria_de_camargo',
+    personId: '747cb968-a339-586c-94cf-583a3e0c3296',
     name: 'Baldória',
     displayName: 'Baldória',
     aliases: ['Guilherme Baldória de Camargo'],
@@ -811,6 +878,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'gustavo',
+    personId: null,
     name: 'Gustavo',
     displayName: 'Gustavo',
     nationalityCode: 'BR',
@@ -820,6 +888,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'halerrandrio_dos_santos_feitosa',
+    personId: '140ba628-c222-53a5-8621-a774092a125b',
     name: 'Halerrandrio',
     displayName: 'Halerrandrio',
     aliases: ['Halerrandrio dos Santos Feitosa'],
@@ -834,6 +903,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'harlei',
+    personId: '66e38ffb-89f6-5c33-8f67-d9016304b564',
     name: 'Harlei',
     displayName: 'Harlei',
     position: PlayerPosition.gol,
@@ -847,6 +917,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'hugo_identity_review',
+    personId: null,
     name: 'Hugo',
     displayName: 'Hugo',
     nationalityCode: 'BR',
@@ -855,6 +926,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'iarley',
+    personId: '652b4be1-ed2b-5c0e-a384-4626b9bb5920',
     name: 'Iarley',
     displayName: 'Iarley',
     position: PlayerPosition.ata,
@@ -866,6 +938,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'indio',
+    personId: null,
     name: 'Índio',
     displayName: 'Índio',
     position: PlayerPosition.ld,
@@ -877,6 +950,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'jadilson',
+    personId: null,
     name: 'Jadílson',
     displayName: 'Jadílson',
     position: PlayerPosition.le,
@@ -890,6 +964,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'jaja',
+    personId: '12aff9c4-2a6e-595a-a725-cf66adc7ba88',
     name: 'Jajá',
     displayName: 'Jajá',
     position: PlayerPosition.ata,
@@ -902,6 +977,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'jaques',
+    personId: null,
     name: 'Jaques',
     displayName: 'Jaques',
     position: PlayerPosition.ata,
@@ -912,6 +988,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'jean_carlos_alves_ferreira',
+    personId: '424f8724-6855-58d6-ad36-24e2d9bdd7f6',
     name: 'Jean Carlos',
     displayName: 'Jean Carlos',
     aliases: ['Jean Carlos Alves Ferreira'],
@@ -926,6 +1003,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'joao_paulo_ferreira_lourenco',
+    personId: 'be72ef65-0fdc-5f2a-b09a-ff8da6a279fb',
     name: 'Lourenço',
     displayName: 'Lourenço',
     aliases: ['João Paulo Ferreira Lourenço'],
@@ -940,6 +1018,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'jorge_batata',
+    personId: null,
     name: 'Jorge Batata',
     displayName: 'Jorge Batata',
     position: PlayerPosition.zag,
@@ -951,6 +1030,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'josue',
+    personId: '09c38bac-99ee-5173-98f6-cc0d59ecca9c',
     name: 'Josué',
     displayName: 'Josué',
     position: PlayerPosition.vol,
@@ -962,6 +1042,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'julian_palacios',
+    personId: 'c6483fa7-ac39-52c9-9bbd-01ede638ba97',
     name: 'Julián Palacios',
     displayName: 'Julián Palacios',
     position: PlayerPosition.mei,
@@ -975,6 +1056,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'juliano',
+    personId: null,
     name: 'Juliano',
     displayName: 'Juliano',
     position: PlayerPosition.mei,
@@ -985,6 +1067,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'julio_cesar_identity_review',
+    personId: null,
     name: 'Júlio César',
     displayName: 'Júlio César',
     nationalityCode: 'BR',
@@ -993,6 +1076,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'julio_santos',
+    personId: null,
     name: 'Júlio Santos',
     displayName: 'Júlio Santos',
     position: PlayerPosition.zag,
@@ -1004,6 +1088,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'junior_vicosa',
+    personId: null,
     name: 'Júnior Viçosa',
     displayName: 'Júnior Viçosa',
     position: PlayerPosition.ata,
@@ -1015,6 +1100,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'kleber',
+    personId: null,
     name: 'Kléber',
     displayName: 'Kléber',
     position: PlayerPosition.gol,
@@ -1026,6 +1112,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'leandro_smith',
+    personId: null,
     name: 'Leandro Smith',
     displayName: 'Leandro Smith',
     position: PlayerPosition.le,
@@ -1036,6 +1123,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'leo_sena',
+    personId: null,
     name: 'Léo Sena',
     displayName: 'Léo Sena',
     position: PlayerPosition.vol,
@@ -1047,6 +1135,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'leonardo',
+    personId: null,
     name: 'Leonardo',
     displayName: 'Leonardo',
     position: PlayerPosition.zag,
@@ -1057,6 +1146,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'luan_dias',
+    personId: null,
     name: 'Luan Dias',
     displayName: 'Luan Dias',
     position: PlayerPosition.mei,
@@ -1068,6 +1158,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'lucas_halter',
+    personId: '14bbaa8e-4309-56a6-9e1c-e387dcdbfde8',
     name: 'Lucas Halter',
     displayName: 'Lucas Halter',
     position: PlayerPosition.zag,
@@ -1081,6 +1172,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'lucas_lovat',
+    personId: '6d1615fb-9bab-5a4f-851b-7c4b74f564c7',
     name: 'Lucas Lovat',
     displayName: 'Lucas Lovat',
     position: PlayerPosition.le,
@@ -1094,6 +1186,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'lucas_rafael_araujo_lima',
+    personId: 'd58d5ae2-85c7-5336-80b6-0f4c0ed0a24b',
     name: 'Lucas Lima',
     displayName: 'Lucas Lima',
     aliases: ['Lucas Rafael Araújo Lima'],
@@ -1108,6 +1201,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'lucas_ribeiro_dos_santos',
+    personId: '36ed37b5-02be-5117-91d6-a62d5236505f',
     name: 'Lucas Ribeiro',
     displayName: 'Lucas Ribeiro',
     aliases: ['Lucas Ribeiro dos Santos'],
@@ -1122,6 +1216,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'lucas_rodrigues_moreira_costa',
+    personId: 'af92cda1-aeba-5f69-a354-2928d8677c6f',
     name: 'Lucas Rodrigues',
     displayName: 'Lucas Rodrigues',
     aliases: ['Lucas Rodrigues Moreira Costa'],
@@ -1136,6 +1231,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'luciano_almeida',
+    personId: null,
     name: 'Luciano Almeida',
     displayName: 'Luciano Almeida',
     position: PlayerPosition.le,
@@ -1147,6 +1243,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'lucio',
+    personId: null,
     name: 'Lúcio',
     displayName: 'Lúcio',
     position: PlayerPosition.mei,
@@ -1157,6 +1254,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'luis_fellipe_campos_doria',
+    personId: '91e2722f-6fce-535e-9bd9-d2420889b1af',
     name: 'Luisão',
     displayName: 'Luisão',
     aliases: ['Luis Fellipe Campos Doria'],
@@ -1171,6 +1269,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'luiz_felipe_clemente_de_almeida',
+    personId: '7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4',
     name: 'Felipe Clemente',
     displayName: 'Felipe Clemente',
     aliases: ['Luiz Felipe Clemente de Almeida'],
@@ -1184,6 +1283,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'luiz_felipe_do_nascimento_dos_santos',
+    personId: '83765e63-a9f9-584e-aef1-bf11c3324b5e',
     name: 'Luiz Felipe',
     displayName: 'Luiz Felipe',
     aliases: ['Luiz Felipe do Nascimento dos Santos'],
@@ -1198,6 +1298,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'luiz_filipe_da_rosa_machado',
+    personId: 'ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f',
     name: 'Filipe Machado',
     displayName: 'Filipe Machado',
     aliases: ['Luiz Filipe da Rosa Machado'],
@@ -1212,6 +1313,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'luvanor',
+    personId: null,
     name: 'Luvanor',
     displayName: 'Luvanor',
     position: PlayerPosition.mei,
@@ -1223,6 +1325,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'madison',
+    personId: null,
     name: 'Madison',
     displayName: 'Madison',
     position: PlayerPosition.mc,
@@ -1234,6 +1337,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'maguinho',
+    personId: 'bef7397d-fe4d-5d35-ac92-46c450198b3c',
     name: 'Maguinho',
     displayName: 'Maguinho',
     position: PlayerPosition.ld,
@@ -1247,6 +1351,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'maraba',
+    personId: null,
     name: 'Marabá',
     displayName: 'Marabá',
     position: PlayerPosition.vol,
@@ -1257,6 +1362,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'maranhao',
+    personId: null,
     name: 'Maranhão',
     displayName: 'Maranhão',
     position: PlayerPosition.ata,
@@ -1267,6 +1373,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'marcao_identity_review',
+    personId: null,
     name: 'Marcão',
     displayName: 'Marcão',
     nationalityCode: 'BR',
@@ -1275,6 +1382,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'marcelo_costa',
+    personId: '5d1b418d-b0eb-59bf-a7c3-c622a1569e57',
     name: 'Marcelo Costa',
     displayName: 'Marcelo Costa',
     position: PlayerPosition.mei,
@@ -1286,6 +1394,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'marcelo_rangel',
+    personId: null,
     name: 'Marcelo Rangel',
     displayName: 'Marcelo Rangel',
     position: PlayerPosition.gol,
@@ -1296,6 +1405,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'marcos_vinicius_da_silva_santos',
+    personId: 'a7ba5544-1384-5830-94a6-632f1c9e8414',
     name: 'Marcos Vinicius',
     displayName: 'Marcos Vinicius',
     aliases: ['Marcos Vinicius da Silva Santos'],
@@ -1310,6 +1420,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'matheus_peixoto',
+    personId: 'd1caad47-b1a6-5d1f-b0e3-c7fad9a8212d',
     name: 'Matheus Peixoto',
     displayName: 'Matheus Peixoto',
     position: PlayerPosition.ata,
@@ -1323,6 +1434,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'messias',
+    personId: '2b370606-4dd7-585c-867d-0bf3b2fcd0de',
     name: 'Messias',
     displayName: 'Messias',
     position: PlayerPosition.zag,
@@ -1335,6 +1447,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'michael',
+    personId: '13c239d9-de5a-51de-b9ce-b4c42aa88d57',
     name: 'Michael',
     displayName: 'Michael',
     position: PlayerPosition.ata,
@@ -1346,6 +1459,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'michel_santana',
+    personId: null,
     name: 'Michel Santana',
     displayName: 'Michel Santana',
     position: PlayerPosition.ld,
@@ -1356,6 +1470,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'murillo_carvalho_victorio',
+    personId: 'e590ad99-16d4-52a1-88fd-2fbb064444b6',
     name: 'Murillo Victorio',
     displayName: 'Murillo Victorio',
     aliases: ['Murillo Carvalho Victorio'],
@@ -1369,6 +1484,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'murilo_camara_saquetti_chimelo_pereira',
+    personId: 'a2ef1bbc-c0a2-572c-9954-4c5513b07eae',
     name: 'Murilo Câmara',
     displayName: 'Murilo Câmara',
     aliases: ['Murilo Camara Saquetti Chimelo Pereira'],
@@ -1383,6 +1499,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'nenem',
+    personId: null,
     name: 'Neném',
     displayName: 'Neném',
     position: PlayerPosition.ld,
@@ -1394,6 +1511,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'nicolas_vichiatto_da_silva',
+    personId: 'a597dae2-6ca9-5588-b1e3-a3532dd36f0e',
     name: 'Nicolas',
     displayName: 'Nicolas',
     aliases: ['Nicolas Vichiatto da Silva'],
@@ -1408,6 +1526,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'niltinho',
+    personId: null,
     name: 'Niltinho',
     displayName: 'Niltinho',
     position: PlayerPosition.ata,
@@ -1419,6 +1538,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'nonato',
+    personId: null,
     name: 'Nonato',
     displayName: 'Nonato',
     position: PlayerPosition.ata,
@@ -1430,6 +1550,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'otacilio_neto',
+    personId: '22588c95-9663-569a-9616-e2b1d7a0cb76',
     name: 'Otacílio Neto',
     displayName: 'Otacílio Neto',
     position: PlayerPosition.ata,
@@ -1443,6 +1564,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'paulo_baier',
+    personId: '493bde6b-e169-5649-9c23-e4a5e5f5f08e',
     name: 'Paulo Baier',
     displayName: 'Paulo Baier',
     position: PlayerPosition.mei,
@@ -1455,6 +1577,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'pedro_junqueira_de_oliveira',
+    personId: '879326ba-8353-5fc8-ab0f-c6ca4646a143',
     name: 'Pedrinho',
     displayName: 'Pedrinho',
     aliases: ['Pedro Junqueira de Oliveira'],
@@ -1469,6 +1592,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'pedro_paulo',
+    personId: null,
     name: 'Pedro Paulo',
     displayName: 'Pedro Paulo',
     position: PlayerPosition.zag,
@@ -1479,6 +1603,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'pedro_raul',
+    personId: null,
     name: 'Pedro Raul',
     displayName: 'Pedro Raul',
     position: PlayerPosition.ata,
@@ -1490,6 +1615,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'rafael_dias',
+    personId: null,
     name: 'Rafael Dias',
     displayName: 'Rafael Dias',
     position: PlayerPosition.zag,
@@ -1501,6 +1627,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'rafael_lacerda',
+    personId: '6f6e77e6-237d-59bf-bf01-9f2710377af3',
     name: 'Rafael Lacerda',
     displayName: 'Rafael Lacerda',
     position: PlayerPosition.zag,
@@ -1513,6 +1640,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'rafael_moura',
+    personId: '16d026a7-49b3-5257-9daa-30601e3ef357',
     name: 'Rafael Moura',
     displayName: 'Rafael Moura',
     position: PlayerPosition.ata,
@@ -1526,6 +1654,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'rafael_toloi',
+    personId: 'b5d66b3b-e755-5b44-8765-3f2da953a759',
     name: 'Rafael Tolói',
     displayName: 'Rafael Tolói',
     position: PlayerPosition.zag,
@@ -1539,6 +1668,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'ramon',
+    personId: 'e8b6e0ec-2a1a-52d5-b399-aee42c146690',
     name: 'Ramón',
     displayName: 'Ramón',
     position: PlayerPosition.mei,
@@ -1551,6 +1681,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'ramon_menezes_roma',
+    personId: 'd30dc008-4189-58bf-9823-8e8ab93dd7e0',
     name: 'Ramon Menezes',
     displayName: 'Ramon Menezes',
     aliases: ['Ramon Menezes Roma'],
@@ -1565,6 +1696,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'reidner',
+    personId: null,
     name: 'Reidner',
     displayName: 'Reidner',
     position: PlayerPosition.mc,
@@ -1574,6 +1706,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'renan',
+    personId: '38149930-5985-56fe-9832-cd101ea3d501',
     name: 'Renan',
     displayName: 'Renan',
     position: PlayerPosition.gol,
@@ -1587,6 +1720,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'renan_oliveira',
+    personId: '8a55a430-aff6-5611-8ae8-d21b6c6a06ee',
     name: 'Renan Oliveira',
     displayName: 'Renan Oliveira',
     position: PlayerPosition.mei,
@@ -1600,6 +1734,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'renato_silva',
+    personId: null,
     name: 'Renato Silva',
     displayName: 'Renato Silva',
     position: PlayerPosition.zag,
@@ -1611,6 +1746,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'reynaldo',
+    personId: null,
     name: 'Reynaldo',
     displayName: 'Reynaldo',
     position: PlayerPosition.zag,
@@ -1623,6 +1759,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'ricardo_goulart',
+    personId: '4b153bcc-657a-5007-8c20-48c04130a484',
     name: 'Ricardo Goulart',
     displayName: 'Ricardo Goulart',
     position: PlayerPosition.mei,
@@ -1636,6 +1773,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'richard',
+    personId: null,
     name: 'Richard',
     displayName: 'Richard',
     position: PlayerPosition.zag,
@@ -1647,6 +1785,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'rodrigo',
+    personId: 'dfc91f87-d812-54c6-b759-fe3761000752',
     name: 'Rodrigo',
     displayName: 'Rodrigo',
     position: PlayerPosition.zag,
@@ -1659,6 +1798,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'rodrigo_alves_soares',
+    personId: '2bd4e578-4739-5f93-b5db-8ecf6ba44393',
     name: 'Rodrigo Soares',
     displayName: 'Rodrigo Soares',
     aliases: ['Rodrigo Alves Soares'],
@@ -1673,6 +1813,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'rodrigo_andrade',
+    personId: '77241a5f-1e7c-5a5e-be50-495dcf1438e4',
     name: 'Rodrigo Andrade',
     displayName: 'Rodrigo Andrade',
     position: PlayerPosition.vol,
@@ -1686,6 +1827,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'rodrigo_calaca',
+    personId: null,
     name: 'Rodrigo Calaça',
     displayName: 'Rodrigo Calaça',
     position: PlayerPosition.gol,
@@ -1697,6 +1839,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'rodrigo_tabata',
+    personId: '81a433ef-5acf-51c1-a38d-742a42ae346e',
     name: 'Rodrigo Tabata',
     displayName: 'Rodrigo Tabata',
     position: PlayerPosition.mei,
@@ -1708,6 +1851,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'rogerio_correa',
+    personId: null,
     name: 'Rogério Corrêa',
     displayName: 'Rogério Corrêa',
     position: PlayerPosition.zag,
@@ -1719,6 +1863,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'romerito',
+    personId: null,
     name: 'Romerito',
     displayName: 'Romerito',
     position: PlayerPosition.mei,
@@ -1732,6 +1877,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'romeu',
+    personId: null,
     name: 'Romeu',
     displayName: 'Romeu',
     position: PlayerPosition.vol,
@@ -1742,6 +1888,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'roni',
+    personId: null,
     name: 'Roni',
     displayName: 'Roni',
     position: PlayerPosition.ata,
@@ -1754,6 +1901,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'sander',
+    personId: '662105cf-1e18-5af3-a24d-e5afb7f37b6d',
     name: 'Sander',
     displayName: 'Sander',
     position: PlayerPosition.le,
@@ -1766,6 +1914,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'silvio_criciuma',
+    personId: null,
     name: 'Sílvio Criciúma',
     displayName: 'Sílvio Criciúma',
     position: PlayerPosition.zag,
@@ -1777,6 +1926,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'simao',
+    personId: null,
     name: 'Simão',
     displayName: 'Simão',
     position: PlayerPosition.vol,
@@ -1788,6 +1938,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'souza',
+    personId: null,
     name: 'Souza',
     displayName: 'Souza',
     position: PlayerPosition.ata,
@@ -1801,6 +1952,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'tadeu_antonio_ferreira',
+    personId: 'e2507d62-8cb5-5152-af56-f67464196ac6',
     name: 'Tadeu',
     displayName: 'Tadeu',
     aliases: ['Tadeu Antônio Ferreira'],
@@ -1815,6 +1967,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'thiago_mendes',
+    personId: '67bdde7d-fad6-516d-9a0b-ff81a3f6c765',
     name: 'Thiago Mendes',
     displayName: 'Thiago Mendes',
     position: PlayerPosition.vol,
@@ -1828,6 +1981,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'thiago_rodrigues_de_oliveira_nogueira',
+    personId: '0b374c05-3edd-5cbb-9ddf-71b1b37e79ba',
     name: 'Thiago Rodrigues',
     displayName: 'Thiago Rodrigues',
     aliases: ['Thiago Rodrigues de Oliveira Nogueira'],
@@ -1842,6 +1996,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'tiago_fraga',
+    personId: null,
     name: 'Tiago Fraga',
     displayName: 'Tiago Fraga',
     position: PlayerPosition.vol,
@@ -1852,6 +2007,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'titi',
+    personId: '5ee54a6c-45ec-50dd-bc29-d5d3ac29d2a9',
     name: 'Titi',
     displayName: 'Titi',
     position: PlayerPosition.zag,
@@ -1865,6 +2021,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'tulio_maravilha',
+    personId: null,
     name: 'Túlio Maravilha',
     displayName: 'Túlio Maravilha',
     position: PlayerPosition.ata,
@@ -1878,6 +2035,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'valmir_lucas',
+    personId: '64af0c2c-ea56-5ea9-871d-59b6a4892570',
     name: 'Valmir Lucas',
     displayName: 'Valmir Lucas',
     position: PlayerPosition.zag,
@@ -1890,6 +2048,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'vampeta',
+    personId: null,
     name: 'Vampeta',
     displayName: 'Vampeta',
     position: PlayerPosition.vol,
@@ -1901,6 +2060,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'vinicius',
+    personId: '3083606c-a924-5f61-8477-1381c6bf2a7e',
     name: 'Vinícius',
     displayName: 'Vinícius',
     position: PlayerPosition.ata,
@@ -1913,6 +2073,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'vitor',
+    personId: null,
     name: 'Vítor',
     displayName: 'Vítor',
     position: PlayerPosition.ld,
@@ -1926,6 +2087,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'wallace',
+    personId: null,
     name: 'Wallace',
     displayName: 'Wallace',
     position: PlayerPosition.vol,
@@ -1936,6 +2098,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'walter',
+    personId: '828c3bc8-7e25-55c3-8468-d3cec50cd2e5',
     name: 'Walter',
     displayName: 'Walter',
     position: PlayerPosition.ata,
@@ -1949,6 +2112,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'wando',
+    personId: null,
     name: 'Wando',
     displayName: 'Wando',
     position: PlayerPosition.ata,
@@ -1959,6 +2123,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'wellington_saci',
+    personId: '9a4c2c66-0936-5921-8714-95714db79daa',
     name: 'Wellington Saci',
     displayName: 'Wellington Saci',
     position: PlayerPosition.le,
@@ -1971,6 +2136,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'wellington_soares_da_silva',
+    personId: '4dd73b43-f2ac-536a-8b22-ab4f7c125c68',
     name: 'Wellington Rato',
     displayName: 'Wellington Rato',
     aliases: ['Wellington Soares da Silva'],
@@ -1985,6 +2151,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'welliton_identity_review',
+    personId: 'a6577244-2373-5e79-b65c-b9200cb2a6e9',
     name: 'Welliton',
     displayName: 'Welliton',
     nationalityCode: 'BR',
@@ -1993,6 +2160,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'willean_lepo',
+    personId: 'c652d7a2-e1cc-51cc-b349-cb1afa86e63b',
     name: 'Willean Lepo',
     displayName: 'Willean Lepo',
     position: PlayerPosition.ld,
@@ -2006,6 +2174,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'william_matheus',
+    personId: '03fca98b-17cd-5484-838d-6690bb677f70',
     name: 'William Matheus',
     displayName: 'William Matheus',
     position: PlayerPosition.le,
@@ -2019,6 +2188,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'willian_oliveira',
+    personId: '3390bf06-81e1-55dc-ae35-70bd3306b0ef',
     name: 'Willian Oliveira',
     displayName: 'Willian Oliveira',
     position: PlayerPosition.vol,
@@ -2032,6 +2202,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   const GuessPlayer(
     id: 'wilson_goiano',
+    personId: null,
     name: 'Wilson Goiano',
     displayName: 'Wilson Goiano',
     position: PlayerPosition.ld,
@@ -2044,6 +2215,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'ze_hugo',
+    personId: '19122a64-36c5-55d2-b734-7f682c70b5aa',
     name: 'Zé Hugo',
     displayName: 'Zé Hugo',
     position: PlayerPosition.ata,
@@ -2057,6 +2229,7 @@ final guessPlayerCatalog = <GuessPlayer>[
   ),
   GuessPlayer(
     id: 'ze_ricardo',
+    personId: 'd5256bb9-5c40-5354-87d0-38d304523039',
     name: 'Zé Ricardo',
     displayName: 'Zé Ricardo',
     position: PlayerPosition.vol,

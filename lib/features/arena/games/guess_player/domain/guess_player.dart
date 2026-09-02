@@ -32,11 +32,19 @@ class GuessPlayer {
     this.goiasDebutYear,
     this.imageUrl,
     this.dataStatus = GuessPlayerDataStatus.incomplete,
+    this.personId,
   });
 
   /// Nunca usar o nome como chave — jogadores de gerações diferentes podem
   /// compartilhar nome/apelido (ver casos Hugo, Marcão no dataset).
   final String id;
+
+  /// Identidade canônica (people.id, Etapa F3) — null quando a
+  /// reconciliação ainda não fechou uma pessoa aprovada com segurança
+  /// suficiente pra este jogador (ver guess_players_person_mapping.json).
+  /// [id] continua sendo a chave do JOGO (progresso/ranking, nunca muda);
+  /// [personId] é a identidade da PESSOA real, quando conhecida.
+  final String? personId;
   final String name;
   final String displayName;
   final List<String> aliases;

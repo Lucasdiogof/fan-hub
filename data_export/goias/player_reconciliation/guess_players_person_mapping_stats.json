@@ -1,0 +1,416 @@
+{
+  "total": 173,
+  "RESOLVED": 92,
+  "AMBIGUOUS": 0,
+  "UNRESOLVED": 81,
+  "OUT_OF_SCOPE": 0,
+  "distinctPersonIdsAmongResolved": 92,
+  "personIdReusedAcrossRows": [],
+  "unresolvedList": [
+    {
+      "guessPlayerId": "aldo",
+      "currentName": "Aldo",
+      "reason": "1 pessoa canônica encontrada (Aldo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "alef_manga",
+      "currentName": "Alef Manga",
+      "reason": "1 pessoa canônica encontrada (Alef Manga, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "alex_dias",
+      "currentName": "Alex Dias",
+      "reason": "1 pessoa canônica encontrada (Alex Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "alexandre",
+      "currentName": "Alexandre",
+      "reason": "1 pessoa canônica encontrada (Alexandre, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "alvaro",
+      "currentName": "Álvaro",
+      "reason": "1 pessoa canônica encontrada (Álvaro, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "andre_dias",
+      "currentName": "André Dias",
+      "reason": "1 pessoa canônica encontrada (André Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "andre_leone",
+      "currentName": "André Leone",
+      "reason": "1 pessoa canônica encontrada (André Leone, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "apodi",
+      "currentName": "Apodi",
+      "reason": "1 pessoa canônica encontrada (Apodi, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "arthur_caike",
+      "currentName": "Arthur Caíke",
+      "reason": "1 pessoa canônica encontrada (Arthur Caíke, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "augusto",
+      "currentName": "Augusto",
+      "reason": "1 pessoa canônica encontrada (Augusto, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "breno",
+      "currentName": "Breno",
+      "reason": "1 pessoa canônica encontrada (Breno, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "bruno_henrique",
+      "currentName": "Bruno Henrique",
+      "reason": "1 pessoa canônica encontrada (Bruno Henrique, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "caca",
+      "currentName": "Cacá",
+      "reason": "1 pessoa canônica encontrada (Cacá, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "caico",
+      "currentName": "Caíco",
+      "reason": "1 pessoa canônica encontrada (Caíco, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "caique_sa",
+      "currentName": "Caíque Sá",
+      "reason": "1 pessoa canônica encontrada (Caíque Sá, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "carlos_eduardo",
+      "currentName": "Carlos Eduardo",
+      "reason": "1 pessoa canônica encontrada (Carlos Eduardo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "cleber_gaucho",
+      "currentName": "Cléber Gaúcho",
+      "reason": "1 pessoa canônica encontrada (Cléber Gaúcho, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "cleber_goiano",
+      "currentName": "Cléber Goiano",
+      "reason": "1 pessoa canônica encontrada (Cléber Goiano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "dalton",
+      "currentName": "Dalton",
+      "reason": "1 pessoa canônica encontrada (Dalton, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "danilo_portugal",
+      "currentName": "Danilo Portugal",
+      "reason": "1 pessoa canônica encontrada (Danilo Portugal, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "david_duarte",
+      "currentName": "David Duarte",
+      "reason": "1 pessoa canônica encontrada (David Duarte, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "dimba",
+      "currentName": "Dimba",
+      "reason": "1 pessoa canônica encontrada (Dimba, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "eduardo_brock",
+      "currentName": "Eduardo Brock",
+      "reason": "1 pessoa canônica encontrada (Eduardo Brock, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "eduardo_heuser",
+      "currentName": "Eduardo Heuser",
+      "reason": "1 pessoa canônica encontrada (Eduardo Heuser, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "esquerdinha",
+      "currentName": "Esquerdinha",
+      "reason": "1 pessoa canônica encontrada (Esquerdinha, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "evandro",
+      "currentName": "Evandro",
+      "reason": "1 pessoa canônica encontrada (Evandro, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "fabao",
+      "currentName": "Fabão",
+      "reason": "1 pessoa canônica encontrada (Fabão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "fagundes",
+      "currentName": "Fagundes",
+      "reason": "1 pessoa canônica encontrada (Fagundes, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "fernando_nunes",
+      "currentName": "Fernando Nunes",
+      "reason": "1 pessoa canônica encontrada (Fernando Nunes, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "gil_baiano",
+      "currentName": "Gil Baiano",
+      "reason": "1 pessoa canônica encontrada (Gil Baiano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "giovanni",
+      "currentName": "Giovanni",
+      "reason": "1 pessoa canônica encontrada (Giovanni, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "grafite",
+      "currentName": "Grafite",
+      "reason": "1 pessoa canônica encontrada (Grafite, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "gustavo",
+      "currentName": "Gustavo",
+      "reason": "1 pessoa canônica encontrada (Gustavo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "hugo_identity_review",
+      "currentName": "Hugo",
+      "reason": "1 pessoa canônica encontrada (Hugo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "indio",
+      "currentName": "Índio",
+      "reason": "1 pessoa canônica encontrada (Índio, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "jadilson",
+      "currentName": "Jadílson",
+      "reason": "1 pessoa canônica encontrada (Jadílson, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "jaques",
+      "currentName": "Jaques",
+      "reason": "1 pessoa canônica encontrada (Jaques, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "jorge_batata",
+      "currentName": "Jorge Batata",
+      "reason": "1 pessoa canônica encontrada (Jorge Batata, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "juliano",
+      "currentName": "Juliano",
+      "reason": "1 pessoa canônica encontrada (Juliano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "julio_cesar_identity_review",
+      "currentName": "Júlio César",
+      "reason": "1 pessoa canônica encontrada (Júlio César, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "julio_santos",
+      "currentName": "Júlio Santos",
+      "reason": "1 pessoa canônica encontrada (Júlio Santos, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "junior_vicosa",
+      "currentName": "Júnior Viçosa",
+      "reason": "1 pessoa canônica encontrada (Júnior Viçosa, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "kleber",
+      "currentName": "Kléber",
+      "reason": "1 pessoa canônica encontrada (Kléber, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "leandro_smith",
+      "currentName": "Leandro Smith",
+      "reason": "1 pessoa canônica encontrada (Leandro Smith, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "leo_sena",
+      "currentName": "Léo Sena",
+      "reason": "1 pessoa canônica encontrada (Léo Sena, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "leonardo",
+      "currentName": "Leonardo",
+      "reason": "1 pessoa canônica encontrada (Leonardo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "luan_dias",
+      "currentName": "Luan Dias",
+      "reason": "1 pessoa canônica encontrada (Luan Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "luciano_almeida",
+      "currentName": "Luciano Almeida",
+      "reason": "1 pessoa canônica encontrada (Luciano Almeida, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "lucio",
+      "currentName": "Lúcio",
+      "reason": "1 pessoa canônica encontrada (Lúcio, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "luvanor",
+      "currentName": "Luvanor",
+      "reason": "1 pessoa canônica encontrada (Luvanor, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "madison",
+      "currentName": "Madison",
+      "reason": "1 pessoa canônica encontrada (Madison, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "maraba",
+      "currentName": "Marabá",
+      "reason": "1 pessoa canônica encontrada (Marabá, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "maranhao",
+      "currentName": "Maranhão",
+      "reason": "1 pessoa canônica encontrada (Maranhão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "marcao_identity_review",
+      "currentName": "Marcão",
+      "reason": "1 pessoa canônica encontrada (Marcão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "marcelo_rangel",
+      "currentName": "Marcelo Rangel",
+      "reason": "1 pessoa canônica encontrada (Marcelo Rangel, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "michel_santana",
+      "currentName": "Michel Santana",
+      "reason": "1 pessoa canônica encontrada (Michel Santana, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "nenem",
+      "currentName": "Neném",
+      "reason": "1 pessoa canônica encontrada (Neném, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "niltinho",
+      "currentName": "Niltinho",
+      "reason": "1 pessoa canônica encontrada (Niltinho, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "nonato",
+      "currentName": "Nonato",
+      "reason": "1 pessoa canônica encontrada (Nonato, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "pedro_paulo",
+      "currentName": "Pedro Paulo",
+      "reason": "1 pessoa canônica encontrada (Pedro Paulo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "pedro_raul",
+      "currentName": "Pedro Raul",
+      "reason": "1 pessoa canônica encontrada (Pedro Raul, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "rafael_dias",
+      "currentName": "Rafael Dias",
+      "reason": "1 pessoa canônica encontrada (Rafael Dias, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "reidner",
+      "currentName": "Reidner",
+      "reason": "1 pessoa canônica encontrada (Reidner, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "renato_silva",
+      "currentName": "Renato Silva",
+      "reason": "1 pessoa canônica encontrada (Renato Silva, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "reynaldo",
+      "currentName": "Reynaldo",
+      "reason": "1 pessoa canônica encontrada (Reynaldo, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "richard",
+      "currentName": "Richard",
+      "reason": "1 pessoa canônica encontrada (Richard, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "rodrigo_calaca",
+      "currentName": "Rodrigo Calaça",
+      "reason": "1 pessoa canônica encontrada (Rodrigo Calaça, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "rogerio_correa",
+      "currentName": "Rogério Corrêa",
+      "reason": "1 pessoa canônica encontrada (Rogério Corrêa, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "romerito",
+      "currentName": "Romerito",
+      "reason": "1 pessoa canônica encontrada (Romerito, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "romeu",
+      "currentName": "Romeu",
+      "reason": "1 pessoa canônica encontrada (Romeu, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "roni",
+      "currentName": "Roni",
+      "reason": "1 pessoa canônica encontrada (Rôni, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "silvio_criciuma",
+      "currentName": "Sílvio Criciúma",
+      "reason": "1 pessoa canônica encontrada (Sílvio Criciúma, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "simao",
+      "currentName": "Simão",
+      "reason": "1 pessoa canônica encontrada (Simão, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "souza",
+      "currentName": "Souza",
+      "reason": "1 pessoa canônica encontrada (Souza, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "tiago_fraga",
+      "currentName": "Tiago Fraga",
+      "reason": "1 pessoa canônica encontrada (Tiago Fraga, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "tulio_maravilha",
+      "currentName": "Túlio Maravilha",
+      "reason": "1 pessoa canônica encontrada (Túlio Maravilha, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "vampeta",
+      "currentName": "Vampeta",
+      "reason": "1 pessoa canônica encontrada (Vampeta, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "vitor",
+      "currentName": "Vítor",
+      "reason": "1 pessoa canônica encontrada (Vítor, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "wallace",
+      "currentName": "Wallace",
+      "reason": "1 pessoa canônica encontrada (Wallace, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "wando",
+      "currentName": "Wando",
+      "reason": "1 pessoa canônica encontrada (Wando, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "guessPlayerId": "wilson_goiano",
+      "currentName": "Wilson Goiano",
+      "reason": "1 pessoa canônica encontrada (Wilson Goiano, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    }
+  ]
+}
