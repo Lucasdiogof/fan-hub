@@ -385,6 +385,14 @@ Confirmado — nenhum dos dois executado nesta rodada.
 
 ---
 
-**Commit executado com a lista exata autorizada pelo usuário — hash real preenchido abaixo após o commit.**
+**Commit executado com a lista exata autorizada pelo usuário (21 arquivos, `git add` nomeado, nunca `git add .`).**
 
-`git rev-parse HEAD` (pós-commit M3.1): `<preencher após o commit>`
+```
+git rev-parse HEAD (pós-commit M3.1): f69b4b1
+commit f69b4b1 — feat(multiclub): scope content runtime by club
+  21 files changed, 2020 insertions(+), 84 deletions(-)
+```
+
+`git status` pós-commit: limpo em relação aos 21 arquivos do commit — restam só as exclusões padrão não tocadas (`store_entry_card.dart` modificado não-staged, `multiclub_hardcode_audit_stats.json` modificado não-staged, `_competitions_pkg/`, `migration_dump.txt`, `docs/multiclub/19_etapa_e_v4_applied_report.md` untracked). **0 `git push`.**
+
+**PARADO. M3.1 encerrada. NÃO iniciar M3.2 ainda.**
