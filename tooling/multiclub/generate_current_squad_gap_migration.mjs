@@ -45,7 +45,7 @@ function eq(col, v) {
 if (spellFixable.length > 0) {
   const total = spellFixable.length;
   const idsList = spellFixable.map((f) => sqlLiteral(f.spellId)).join(', ');
-  const squadPersonIdsValues = plan.currentSquadPersonIds.map((id) => `(${sqlLiteral(id)})`).join(',\n    ');
+  const squadPersonIdsValues = plan.currentSquadPersonIds.map((id) => `(${sqlLiteral(id)}::uuid)`).join(',\n    ');
 
   const preconditions = spellFixable
     .map((f) => {

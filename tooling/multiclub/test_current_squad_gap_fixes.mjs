@@ -186,11 +186,19 @@ test('migration de spells detecta drift com RAISE EXCEPTION antes de qualquer UP
   for (const idx of driftRaises) assert.ok(idx < firstUpdateIdx, 'uma checagem de drift aparece DEPOIS do primeiro UPDATE — preconditions precisam vir todas antes');
 });
 test('migration de spells valida o invariante do ELENCO INTEIRO (31 person_ids), não só os 8 corrigidos', () => {
-  const valuesBlocks = [...spellSql.matchAll(/values\n(\s*\('[0-9a-f-]{36}'\),?\n?)+/g)];
+  const valuesBlocks = [...spellSql.matchAll(/values\n(\s*\('[0-9a-f-]{36}'::uuid\),?\n?)+/g)];
   assert.ok(valuesBlocks.length >= 2, 'esperava pelo menos 2 blocos VALUES com os 31 person_ids (1 pro invariante de ongoing, 1 pro overlap)');
   for (const block of valuesBlocks) {
     const ids = [...block[0].matchAll(/'([0-9a-f-]{36})'/g)].map((m) => m[1]);
     assert.strictEqual(ids.length, 31, 'bloco VALUES não tem os 31 person_ids do elenco atual');
+  }
+});
+test('migration de spells casta os person_ids literais do CTE como ::uuid (senão Postgres rejeita uuid = text)', () => {
+  const valuesBlocks = [...spellSql.matchAll(/values\n(\s*\('[0-9a-f-]{36}'(::uuid)?\),?\n?)+/g)];
+  assert.ok(valuesBlocks.length >= 2);
+  for (const block of valuesBlocks) {
+    const rows = [...block[0].matchAll(/\('[0-9a-f-]{36}'(::uuid)?\)/g)];
+    for (const r of rows) assert.match(r[0], /::uuid\)$/, `literal sem cast ::uuid: ${r[0]}`);
   }
 });
 test('migration de spells checa "0 pessoas com != 1 ongoing" e "0 overlap" como pós-condição', () => {
