@@ -57,3 +57,8 @@ venv/
 
 # Scratchpad de docs/temporários gerados durante o desenvolvimento
 scratchpad/
+
+# Cache/estado local do Supabase CLI (supabase link/db etc.) — inclui a
+# connection string do Postgres COM SENHA em texto puro (.temp/pooler-url).
+# Nunca deve ir pro git.
+supabase/.temp/

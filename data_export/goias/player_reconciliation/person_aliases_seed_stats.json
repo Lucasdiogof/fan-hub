@@ -1,0 +1,44 @@
+{
+  "approvedPeopleCount": 94,
+  "totalAliasRows": 163,
+  "uniqueNormalizedAliases": 161,
+  "ambiguousNormalizedAliases": 2,
+  "ambiguousList": [
+    {
+      "normalizedAlias": "danilo",
+      "people": [
+        {
+          "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+          "canonicalPersonKey": "goias-app:multiclub:person:1"
+        },
+        {
+          "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+          "canonicalPersonKey": "goias-app:multiclub:person:2"
+        }
+      ]
+    },
+    {
+      "normalizedAlias": "nicolas",
+      "people": [
+        {
+          "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+          "canonicalPersonKey": "goias-app:multiclub:person:3"
+        },
+        {
+          "personId": "28e672db-34c0-5505-b3fa-703cbd422879",
+          "canonicalPersonKey": "goias-app:multiclub:person:4"
+        }
+      ]
+    }
+  ],
+  "peopleWithNoExtraAliasBeyondCanonicalDisplay": 31,
+  "totalAliasSourceRows": 375,
+  "byAliasType": {
+    "LEGAL_NAME": 10,
+    "DISPLAY_NAME": 38,
+    "FULL_NAME": 94,
+    "NICKNAME": 6,
+    "SHORT_NAME": 15
+  },
+  "missingFromCanonicalAliasesCrossCheck": 0
+}

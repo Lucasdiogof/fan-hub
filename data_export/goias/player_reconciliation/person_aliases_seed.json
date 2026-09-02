@@ -1,0 +1,1306 @@
+[
+  {
+    "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+    "canonicalPersonKey": "goias-app:multiclub:person:1",
+    "alias": "Danilo Cunha da Silva",
+    "normalizedAlias": "danilo cunha da silva",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "34d6fed1-6282-564a-bcb0-5be7d705760a",
+    "canonicalPersonKey": "goias-app:multiclub:person:1",
+    "alias": "Danilo",
+    "normalizedAlias": "danilo",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+    "canonicalPersonKey": "goias-app:multiclub:person:2",
+    "alias": "Danilo Gabriel de Andrade",
+    "normalizedAlias": "danilo gabriel de andrade",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+    "canonicalPersonKey": "goias-app:multiclub:person:2",
+    "alias": "Danilo",
+    "normalizedAlias": "danilo",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+    "canonicalPersonKey": "goias-app:multiclub:person:3",
+    "alias": "Nicolas Vichiatto da Silva",
+    "normalizedAlias": "nicolas vichiatto da silva",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+    "canonicalPersonKey": "goias-app:multiclub:person:3",
+    "alias": "Nicolas",
+    "normalizedAlias": "nicolas",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "28e672db-34c0-5505-b3fa-703cbd422879",
+    "canonicalPersonKey": "goias-app:multiclub:person:4",
+    "alias": "Nicolas Godinho Johann",
+    "normalizedAlias": "nicolas godinho johann",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "28e672db-34c0-5505-b3fa-703cbd422879",
+    "canonicalPersonKey": "goias-app:multiclub:person:4",
+    "alias": "Nicolas",
+    "normalizedAlias": "nicolas",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+    "canonicalPersonKey": "goias-app:multiclub:person:5",
+    "alias": "Michael Richard Delgado de Oliveira",
+    "normalizedAlias": "michael richard delgado de oliveira",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+    "canonicalPersonKey": "goias-app:multiclub:person:5",
+    "alias": "Michael",
+    "normalizedAlias": "michael",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+    "canonicalPersonKey": "goias-app:multiclub:person:7",
+    "alias": "Jackson Diego Ibraim Fagundes",
+    "normalizedAlias": "jackson diego ibraim fagundes",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "79902fc2-167c-5af2-a303-8044dbc6cff5",
+    "canonicalPersonKey": "goias-app:multiclub:person:7",
+    "alias": "Dieguinho",
+    "normalizedAlias": "dieguinho",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+    "canonicalPersonKey": "goias-app:multiclub:person:8",
+    "alias": "Erik Nascimento de Lima",
+    "normalizedAlias": "erik nascimento de lima",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+    "canonicalPersonKey": "goias-app:multiclub:person:8",
+    "alias": "Erik",
+    "normalizedAlias": "erik",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+    "canonicalPersonKey": "goias-app:multiclub:person:9",
+    "alias": "Fabiano Cézar Viegas",
+    "normalizedAlias": "fabiano cezar viegas",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "063cc04f-afd9-516a-96d7-6f27bfb0c818",
+    "canonicalPersonKey": "goias-app:multiclub:person:9",
+    "alias": "Fabiano",
+    "normalizedAlias": "fabiano",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+    "canonicalPersonKey": "goias-app:multiclub:person:10",
+    "alias": "Tadeu Antônio Ferreira",
+    "normalizedAlias": "tadeu antonio ferreira",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+    "canonicalPersonKey": "goias-app:multiclub:person:10",
+    "alias": "Tadeu",
+    "normalizedAlias": "tadeu",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+    "canonicalPersonKey": "goias-app:multiclub:person:11",
+    "alias": "Walter Henrique da Silva",
+    "normalizedAlias": "walter henrique da silva",
+    "aliasType": "LEGAL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+    "canonicalPersonKey": "goias-app:multiclub:person:11",
+    "alias": "Walter",
+    "normalizedAlias": "walter",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+    "canonicalPersonKey": "goias-app:multiclub:person:95",
+    "alias": "Ezequiel Alves de Oliveira Vieira",
+    "normalizedAlias": "ezequiel alves de oliveira vieira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+    "canonicalPersonKey": "goias-app:multiclub:person:95",
+    "alias": "Ezequiel",
+    "normalizedAlias": "ezequiel",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+    "canonicalPersonKey": "goias-app:multiclub:person:96",
+    "alias": "Murillo Carvalho Victorio",
+    "normalizedAlias": "murillo carvalho victorio",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+    "canonicalPersonKey": "goias-app:multiclub:person:96",
+    "alias": "Murillo Victorio",
+    "normalizedAlias": "murillo victorio",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+    "canonicalPersonKey": "goias-app:multiclub:person:97",
+    "alias": "Thiago Rodrigues de Oliveira Nogueira",
+    "normalizedAlias": "thiago rodrigues de oliveira nogueira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+    "canonicalPersonKey": "goias-app:multiclub:person:97",
+    "alias": "Thiago Rodrigues",
+    "normalizedAlias": "thiago rodrigues",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+    "canonicalPersonKey": "goias-app:multiclub:person:98",
+    "alias": "Luis Fellipe Campos Doria",
+    "normalizedAlias": "luis fellipe campos doria",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+    "canonicalPersonKey": "goias-app:multiclub:person:98",
+    "alias": "Luisão",
+    "normalizedAlias": "luisao",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+    "canonicalPersonKey": "goias-app:multiclub:person:99",
+    "alias": "Lucas Ribeiro dos Santos",
+    "normalizedAlias": "lucas ribeiro dos santos",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "36ed37b5-02be-5117-91d6-a62d5236505f",
+    "canonicalPersonKey": "goias-app:multiclub:person:99",
+    "alias": "Lucas Ribeiro",
+    "normalizedAlias": "lucas ribeiro",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "canonicalPersonKey": "goias-app:multiclub:person:100",
+    "alias": "Luiz Felipe do Nascimento dos Santos",
+    "normalizedAlias": "luiz felipe do nascimento dos santos",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "canonicalPersonKey": "goias-app:multiclub:person:100",
+    "alias": "Luiz Felipe",
+    "normalizedAlias": "luiz felipe",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+    "canonicalPersonKey": "goias-app:multiclub:person:101",
+    "alias": "Ramon Menezes Roma",
+    "normalizedAlias": "ramon menezes roma",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+    "canonicalPersonKey": "goias-app:multiclub:person:101",
+    "alias": "Ramon Menezes",
+    "normalizedAlias": "ramon menezes",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "canonicalPersonKey": "goias-app:multiclub:person:102",
+    "alias": "Murilo Camara Saquetti Chimelo Pereira",
+    "normalizedAlias": "murilo camara saquetti chimelo pereira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "canonicalPersonKey": "goias-app:multiclub:person:102",
+    "alias": "Murilo Câmara",
+    "normalizedAlias": "murilo camara",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+    "canonicalPersonKey": "goias-app:multiclub:person:103",
+    "alias": "Rodrigo Alves Soares",
+    "normalizedAlias": "rodrigo alves soares",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+    "canonicalPersonKey": "goias-app:multiclub:person:103",
+    "alias": "Rodrigo Soares",
+    "normalizedAlias": "rodrigo soares",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+    "canonicalPersonKey": "goias-app:multiclub:person:104",
+    "alias": "Marcos Vinicius da Silva Santos",
+    "normalizedAlias": "marcos vinicius da silva santos",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "a7ba5544-1384-5830-94a6-632f1c9e8414",
+    "canonicalPersonKey": "goias-app:multiclub:person:104",
+    "alias": "Marcos Vinicius",
+    "normalizedAlias": "marcos vinicius",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+    "canonicalPersonKey": "goias-app:multiclub:person:105",
+    "alias": "Djalma Antônio da Silva Filho",
+    "normalizedAlias": "djalma antonio da silva filho",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+    "canonicalPersonKey": "goias-app:multiclub:person:105",
+    "alias": "Djalma",
+    "normalizedAlias": "djalma",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+    "canonicalPersonKey": "goias-app:multiclub:person:106",
+    "alias": "João Paulo Ferreira Lourenço",
+    "normalizedAlias": "joao paulo ferreira lourenco",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+    "canonicalPersonKey": "goias-app:multiclub:person:106",
+    "alias": "Lourenço",
+    "normalizedAlias": "lourenco",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+    "canonicalPersonKey": "goias-app:multiclub:person:107",
+    "alias": "Luiz Filipe da Rosa Machado",
+    "normalizedAlias": "luiz filipe da rosa machado",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+    "canonicalPersonKey": "goias-app:multiclub:person:107",
+    "alias": "Filipe Machado",
+    "normalizedAlias": "filipe machado",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "747cb968-a339-586c-94cf-583a3e0c3296",
+    "canonicalPersonKey": "goias-app:multiclub:person:108",
+    "alias": "Guilherme Baldória de Camargo",
+    "normalizedAlias": "guilherme baldoria de camargo",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "747cb968-a339-586c-94cf-583a3e0c3296",
+    "canonicalPersonKey": "goias-app:multiclub:person:108",
+    "alias": "Baldória",
+    "normalizedAlias": "baldoria",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+    "canonicalPersonKey": "goias-app:multiclub:person:109",
+    "alias": "Adilson dos Anjos Oliveira",
+    "normalizedAlias": "adilson dos anjos oliveira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+    "canonicalPersonKey": "goias-app:multiclub:person:109",
+    "alias": "Juninho",
+    "normalizedAlias": "juninho",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+    "canonicalPersonKey": "goias-app:multiclub:person:110",
+    "alias": "Lucas Rodrigues Moreira Costa",
+    "normalizedAlias": "lucas rodrigues moreira costa",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "af92cda1-aeba-5f69-a354-2928d8677c6f",
+    "canonicalPersonKey": "goias-app:multiclub:person:110",
+    "alias": "Lucas Rodrigues",
+    "normalizedAlias": "lucas rodrigues",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+    "canonicalPersonKey": "goias-app:multiclub:person:111",
+    "alias": "Geirton Marques Aires",
+    "normalizedAlias": "geirton marques aires",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+    "canonicalPersonKey": "goias-app:multiclub:person:111",
+    "alias": "Gegê",
+    "normalizedAlias": "gege",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+    "canonicalPersonKey": "goias-app:multiclub:person:112",
+    "alias": "Lucas Rafael Araújo Lima",
+    "normalizedAlias": "lucas rafael araujo lima",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+    "canonicalPersonKey": "goias-app:multiclub:person:112",
+    "alias": "Lucas Lima",
+    "normalizedAlias": "lucas lima",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+    "canonicalPersonKey": "goias-app:multiclub:person:113",
+    "alias": "Brayann Brito Batista",
+    "normalizedAlias": "brayann brito batista",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+    "canonicalPersonKey": "goias-app:multiclub:person:113",
+    "alias": "Brayann",
+    "normalizedAlias": "brayann",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "canonicalPersonKey": "goias-app:multiclub:person:114",
+    "alias": "Wellington Soares da Silva",
+    "normalizedAlias": "wellington soares da silva",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "canonicalPersonKey": "goias-app:multiclub:person:114",
+    "alias": "Wellington Rato",
+    "normalizedAlias": "wellington rato",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "canonicalPersonKey": "goias-app:multiclub:person:114",
+    "alias": "Rato",
+    "normalizedAlias": "rato",
+    "aliasType": "NICKNAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+    "canonicalPersonKey": "goias-app:multiclub:person:115",
+    "alias": "Pedro Junqueira de Oliveira",
+    "normalizedAlias": "pedro junqueira de oliveira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+    "canonicalPersonKey": "goias-app:multiclub:person:115",
+    "alias": "Pedrinho",
+    "normalizedAlias": "pedrinho",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+    "canonicalPersonKey": "goias-app:multiclub:person:116",
+    "alias": "Anselmo Ramon Alves Herculano",
+    "normalizedAlias": "anselmo ramon alves herculano",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "e277edea-70b1-5092-ad39-48be1a5297d6",
+    "canonicalPersonKey": "goias-app:multiclub:person:116",
+    "alias": "Anselmo Ramon",
+    "normalizedAlias": "anselmo ramon",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+    "canonicalPersonKey": "goias-app:multiclub:person:117",
+    "alias": "Carlos Eduardo Amaral Pereira de Castro",
+    "normalizedAlias": "carlos eduardo amaral pereira de castro",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+    "canonicalPersonKey": "goias-app:multiclub:person:117",
+    "alias": "Cadu",
+    "normalizedAlias": "cadu",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+    "canonicalPersonKey": "goias-app:multiclub:person:118",
+    "alias": "Luiz Felipe Clemente de Almeida",
+    "normalizedAlias": "luiz felipe clemente de almeida",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+    "canonicalPersonKey": "goias-app:multiclub:person:118",
+    "alias": "Felipe Clemente",
+    "normalizedAlias": "felipe clemente",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+    "canonicalPersonKey": "goias-app:multiclub:person:119",
+    "alias": "Jean Carlos Alves Ferreira",
+    "normalizedAlias": "jean carlos alves ferreira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+    "canonicalPersonKey": "goias-app:multiclub:person:119",
+    "alias": "Jean Carlos",
+    "normalizedAlias": "jean carlos",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "140ba628-c222-53a5-8621-a774092a125b",
+    "canonicalPersonKey": "goias-app:multiclub:person:120",
+    "alias": "Halerrandrio dos Santos Feitosa",
+    "normalizedAlias": "halerrandrio dos santos feitosa",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "140ba628-c222-53a5-8621-a774092a125b",
+    "canonicalPersonKey": "goias-app:multiclub:person:120",
+    "alias": "Halerrandrio",
+    "normalizedAlias": "halerrandrio",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+    "canonicalPersonKey": "goias-app:multiclub:person:121",
+    "alias": "Esli Samuel García Cordero",
+    "normalizedAlias": "esli samuel garcia cordero",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+    "canonicalPersonKey": "goias-app:multiclub:person:121",
+    "alias": "Esli Garcia",
+    "normalizedAlias": "esli garcia",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+    "canonicalPersonKey": "goias-app:multiclub:person:122",
+    "alias": "Carlos Eduardo de Sousa Leopoldino",
+    "normalizedAlias": "carlos eduardo de sousa leopoldino",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+    "canonicalPersonKey": "goias-app:multiclub:person:122",
+    "alias": "Kadu Sousa",
+    "normalizedAlias": "kadu sousa",
+    "aliasType": "DISPLAY_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+    "canonicalPersonKey": "goias-app:multiclub:person:123",
+    "alias": "Fernandão",
+    "normalizedAlias": "fernandao",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+    "canonicalPersonKey": "goias-app:multiclub:person:123",
+    "alias": "Fernando Lúcio da Costa",
+    "normalizedAlias": "fernando lucio da costa",
+    "aliasType": "NICKNAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+    "canonicalPersonKey": "goias-app:multiclub:person:124",
+    "alias": "Josué",
+    "normalizedAlias": "josue",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+    "canonicalPersonKey": "goias-app:multiclub:person:124",
+    "alias": "Josué Anunciado de Oliveira",
+    "normalizedAlias": "josue anunciado de oliveira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+    "canonicalPersonKey": "goias-app:multiclub:person:125",
+    "alias": "Dudu Cearense",
+    "normalizedAlias": "dudu cearense",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+    "canonicalPersonKey": "goias-app:multiclub:person:125",
+    "alias": "Alexandro Silva de Sousa",
+    "normalizedAlias": "alexandro silva de sousa",
+    "aliasType": "NICKNAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+    "canonicalPersonKey": "goias-app:multiclub:person:125",
+    "alias": "Dudu",
+    "normalizedAlias": "dudu",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+    "canonicalPersonKey": "goias-app:multiclub:person:126",
+    "alias": "Rafael Tolói",
+    "normalizedAlias": "rafael toloi",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+    "canonicalPersonKey": "goias-app:multiclub:person:126",
+    "alias": "Tolói",
+    "normalizedAlias": "toloi",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+    "canonicalPersonKey": "goias-app:multiclub:person:127",
+    "alias": "Rafael Moura",
+    "normalizedAlias": "rafael moura",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+    "canonicalPersonKey": "goias-app:multiclub:person:127",
+    "alias": "Rafael Martiniano de Miranda Moura",
+    "normalizedAlias": "rafael martiniano de miranda moura",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+    "canonicalPersonKey": "goias-app:multiclub:person:127",
+    "alias": "He-Man",
+    "normalizedAlias": "he man",
+    "aliasType": "NICKNAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+    "canonicalPersonKey": "goias-app:multiclub:person:127",
+    "alias": "Heman",
+    "normalizedAlias": "heman",
+    "aliasType": "NICKNAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+    "canonicalPersonKey": "goias-app:multiclub:person:128",
+    "alias": "Araújo",
+    "normalizedAlias": "araujo",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+    "canonicalPersonKey": "goias-app:multiclub:person:128",
+    "alias": "Clemerson de Araújo Soares",
+    "normalizedAlias": "clemerson de araujo soares",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+    "canonicalPersonKey": "goias-app:multiclub:person:129",
+    "alias": "Ernando",
+    "normalizedAlias": "ernando",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+    "canonicalPersonKey": "goias-app:multiclub:person:129",
+    "alias": "Ernando Rodrigues Lopes",
+    "normalizedAlias": "ernando rodrigues lopes",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+    "canonicalPersonKey": "goias-app:multiclub:person:130",
+    "alias": "Iarley",
+    "normalizedAlias": "iarley",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+    "canonicalPersonKey": "goias-app:multiclub:person:130",
+    "alias": "Pedro Iarley Lima Dantas",
+    "normalizedAlias": "pedro iarley lima dantas",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+    "canonicalPersonKey": "goias-app:multiclub:person:131",
+    "alias": "Paulo Baier",
+    "normalizedAlias": "paulo baier",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+    "canonicalPersonKey": "goias-app:multiclub:person:131",
+    "alias": "Paulo César Baier",
+    "normalizedAlias": "paulo cesar baier",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+    "canonicalPersonKey": "goias-app:multiclub:person:132",
+    "alias": "Ricardo Goulart",
+    "normalizedAlias": "ricardo goulart",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+    "canonicalPersonKey": "goias-app:multiclub:person:132",
+    "alias": "Ricardo Goulart Pereira",
+    "normalizedAlias": "ricardo goulart pereira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+    "canonicalPersonKey": "goias-app:multiclub:person:132",
+    "alias": "Goulart",
+    "normalizedAlias": "goulart",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+    "canonicalPersonKey": "goias-app:multiclub:person:133",
+    "alias": "Rodrigo Tabata",
+    "normalizedAlias": "rodrigo tabata",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+    "canonicalPersonKey": "goias-app:multiclub:person:133",
+    "alias": "Rodrigo Barbosa Tabata",
+    "normalizedAlias": "rodrigo barbosa tabata",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+    "canonicalPersonKey": "goias-app:multiclub:person:133",
+    "alias": "Tabata",
+    "normalizedAlias": "tabata",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+    "canonicalPersonKey": "goias-app:multiclub:person:134",
+    "alias": "Egídio",
+    "normalizedAlias": "egidio",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+    "canonicalPersonKey": "goias-app:multiclub:person:134",
+    "alias": "Egídio de Araújo Pereira Júnior",
+    "normalizedAlias": "egidio de araujo pereira junior",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+    "canonicalPersonKey": "goias-app:multiclub:person:135",
+    "alias": "Harlei",
+    "normalizedAlias": "harlei",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+    "canonicalPersonKey": "goias-app:multiclub:person:135",
+    "alias": "Harlei de Menezes Silva",
+    "normalizedAlias": "harlei de menezes silva",
+    "aliasType": "FULL_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "7dcb9ad0-b573-5261-aa53-736c3c9b96aa",
+    "canonicalPersonKey": "goias-app:multiclub:person:136",
+    "alias": "Dill",
+    "normalizedAlias": "dill",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "7dcb9ad0-b573-5261-aa53-736c3c9b96aa",
+    "canonicalPersonKey": "goias-app:multiclub:person:136",
+    "alias": "Elpídio Barbosa Conceição",
+    "normalizedAlias": "elpidio barbosa conceicao",
+    "aliasType": "NICKNAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "6416b152-ed92-52fc-8f3f-6027800dddaa",
+    "canonicalPersonKey": "goias-app:multiclub:person:137",
+    "alias": "Amaral",
+    "normalizedAlias": "amaral",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "d8600945-4f69-5c47-a42d-662921fa9557",
+    "canonicalPersonKey": "goias-app:multiclub:person:138",
+    "alias": "Artur",
+    "normalizedAlias": "artur",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "d274fa09-a83e-5526-86cd-2caf8244a4d3",
+    "canonicalPersonKey": "goias-app:multiclub:person:139",
+    "alias": "Bruno Melo",
+    "normalizedAlias": "bruno melo",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "12b59f80-07bb-584d-a7eb-976739c07c6c",
+    "canonicalPersonKey": "goias-app:multiclub:person:140",
+    "alias": "Caio Vinícius",
+    "normalizedAlias": "caio vinicius",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "02a0df33-8a89-5b78-8011-00868b240029",
+    "canonicalPersonKey": "goias-app:multiclub:person:141",
+    "alias": "Carlos Alberto",
+    "normalizedAlias": "carlos alberto",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+    "canonicalPersonKey": "goias-app:multiclub:person:142",
+    "alias": "Dadá Belmonte",
+    "normalizedAlias": "dada belmonte",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "dbedb80d-a764-52a6-905f-ff01f9a3cdea",
+    "canonicalPersonKey": "goias-app:multiclub:person:142",
+    "alias": "Dadá",
+    "normalizedAlias": "dada",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "68880467-49ea-5661-8f08-2a177a060558",
+    "canonicalPersonKey": "goias-app:multiclub:person:143",
+    "alias": "David",
+    "normalizedAlias": "david",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+    "canonicalPersonKey": "goias-app:multiclub:person:144",
+    "alias": "Diego Caito",
+    "normalizedAlias": "diego caito",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "9a740e1a-b0c0-53c9-9adf-f675f0cba5ca",
+    "canonicalPersonKey": "goias-app:multiclub:person:144",
+    "alias": "Caito",
+    "normalizedAlias": "caito",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "9f51dcb7-51c8-5f95-8b11-fc17e327b1f3",
+    "canonicalPersonKey": "goias-app:multiclub:person:145",
+    "alias": "Diego Gonçalves",
+    "normalizedAlias": "diego goncalves",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "e23bec2f-5da1-5544-ae02-7e97b9136bb6",
+    "canonicalPersonKey": "goias-app:multiclub:person:146",
+    "alias": "Douglas",
+    "normalizedAlias": "douglas",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+    "canonicalPersonKey": "goias-app:multiclub:person:147",
+    "alias": "Eduardo Sasha",
+    "normalizedAlias": "eduardo sasha",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "cd2285a5-82d6-59a5-bb5b-88b88b1afa8d",
+    "canonicalPersonKey": "goias-app:multiclub:person:147",
+    "alias": "Sasha",
+    "normalizedAlias": "sasha",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "9548aabb-4559-55f4-9bff-bd3c8b1984b9",
+    "canonicalPersonKey": "goias-app:multiclub:person:148",
+    "alias": "Élvis",
+    "normalizedAlias": "elvis",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+    "canonicalPersonKey": "goias-app:multiclub:person:149",
+    "alias": "Everton Morelli",
+    "normalizedAlias": "everton morelli",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "9c4d1f1b-de75-5e63-8bda-ffab87d20969",
+    "canonicalPersonKey": "goias-app:multiclub:person:149",
+    "alias": "Morelli",
+    "normalizedAlias": "morelli",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "0da8b2fc-a261-554a-a35f-4ad3ef422112",
+    "canonicalPersonKey": "goias-app:multiclub:person:150",
+    "alias": "Fellipe Bastos",
+    "normalizedAlias": "fellipe bastos",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "645725d2-4a9b-596e-bfae-7436af12ff59",
+    "canonicalPersonKey": "goias-app:multiclub:person:151",
+    "alias": "Gonzalo Freitas",
+    "normalizedAlias": "gonzalo freitas",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "645725d2-4a9b-596e-bfae-7436af12ff59",
+    "canonicalPersonKey": "goias-app:multiclub:person:151",
+    "alias": "Freitas",
+    "normalizedAlias": "freitas",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "12aff9c4-2a6e-595a-a725-cf66adc7ba88",
+    "canonicalPersonKey": "goias-app:multiclub:person:152",
+    "alias": "Jajá",
+    "normalizedAlias": "jaja",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+    "canonicalPersonKey": "goias-app:multiclub:person:153",
+    "alias": "Julián Palacios",
+    "normalizedAlias": "julian palacios",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "c6483fa7-ac39-52c9-9bbd-01ede638ba97",
+    "canonicalPersonKey": "goias-app:multiclub:person:153",
+    "alias": "Palacios",
+    "normalizedAlias": "palacios",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+    "canonicalPersonKey": "goias-app:multiclub:person:154",
+    "alias": "Lucas Halter",
+    "normalizedAlias": "lucas halter",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "14bbaa8e-4309-56a6-9e1c-e387dcdbfde8",
+    "canonicalPersonKey": "goias-app:multiclub:person:154",
+    "alias": "Halter",
+    "normalizedAlias": "halter",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "6d1615fb-9bab-5a4f-851b-7c4b74f564c7",
+    "canonicalPersonKey": "goias-app:multiclub:person:155",
+    "alias": "Lucas Lovat",
+    "normalizedAlias": "lucas lovat",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "6d1615fb-9bab-5a4f-851b-7c4b74f564c7",
+    "canonicalPersonKey": "goias-app:multiclub:person:155",
+    "alias": "Lovat",
+    "normalizedAlias": "lovat",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "bef7397d-fe4d-5d35-ac92-46c450198b3c",
+    "canonicalPersonKey": "goias-app:multiclub:person:156",
+    "alias": "Maguinho",
+    "normalizedAlias": "maguinho",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "5d1b418d-b0eb-59bf-a7c3-c622a1569e57",
+    "canonicalPersonKey": "goias-app:multiclub:person:157",
+    "alias": "Marcelo Costa",
+    "normalizedAlias": "marcelo costa",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+    "canonicalPersonKey": "goias-app:multiclub:person:158",
+    "alias": "Matheus Peixoto",
+    "normalizedAlias": "matheus peixoto",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "d1caad47-b1a6-5d1f-b0e3-c7fad9a8212d",
+    "canonicalPersonKey": "goias-app:multiclub:person:158",
+    "alias": "Peixoto",
+    "normalizedAlias": "peixoto",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "2b370606-4dd7-585c-867d-0bf3b2fcd0de",
+    "canonicalPersonKey": "goias-app:multiclub:person:159",
+    "alias": "Messias",
+    "normalizedAlias": "messias",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "22588c95-9663-569a-9616-e2b1d7a0cb76",
+    "canonicalPersonKey": "goias-app:multiclub:person:160",
+    "alias": "Otacílio Neto",
+    "normalizedAlias": "otacilio neto",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "6f6e77e6-237d-59bf-bf01-9f2710377af3",
+    "canonicalPersonKey": "goias-app:multiclub:person:161",
+    "alias": "Rafael Lacerda",
+    "normalizedAlias": "rafael lacerda",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "e8b6e0ec-2a1a-52d5-b399-aee42c146690",
+    "canonicalPersonKey": "goias-app:multiclub:person:162",
+    "alias": "Ramón",
+    "normalizedAlias": "ramon",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "38149930-5985-56fe-9832-cd101ea3d501",
+    "canonicalPersonKey": "goias-app:multiclub:person:163",
+    "alias": "Renan",
+    "normalizedAlias": "renan",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "8a55a430-aff6-5611-8ae8-d21b6c6a06ee",
+    "canonicalPersonKey": "goias-app:multiclub:person:164",
+    "alias": "Renan Oliveira",
+    "normalizedAlias": "renan oliveira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "dfc91f87-d812-54c6-b759-fe3761000752",
+    "canonicalPersonKey": "goias-app:multiclub:person:165",
+    "alias": "Rodrigo",
+    "normalizedAlias": "rodrigo",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "77241a5f-1e7c-5a5e-be50-495dcf1438e4",
+    "canonicalPersonKey": "goias-app:multiclub:person:166",
+    "alias": "Rodrigo Andrade",
+    "normalizedAlias": "rodrigo andrade",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "662105cf-1e18-5af3-a24d-e5afb7f37b6d",
+    "canonicalPersonKey": "goias-app:multiclub:person:167",
+    "alias": "Sander",
+    "normalizedAlias": "sander",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "67bdde7d-fad6-516d-9a0b-ff81a3f6c765",
+    "canonicalPersonKey": "goias-app:multiclub:person:168",
+    "alias": "Thiago Mendes",
+    "normalizedAlias": "thiago mendes",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "5ee54a6c-45ec-50dd-bc29-d5d3ac29d2a9",
+    "canonicalPersonKey": "goias-app:multiclub:person:169",
+    "alias": "Titi",
+    "normalizedAlias": "titi",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "64af0c2c-ea56-5ea9-871d-59b6a4892570",
+    "canonicalPersonKey": "goias-app:multiclub:person:170",
+    "alias": "Valmir Lucas",
+    "normalizedAlias": "valmir lucas",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "3083606c-a924-5f61-8477-1381c6bf2a7e",
+    "canonicalPersonKey": "goias-app:multiclub:person:171",
+    "alias": "Vinícius",
+    "normalizedAlias": "vinicius",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "9a4c2c66-0936-5921-8714-95714db79daa",
+    "canonicalPersonKey": "goias-app:multiclub:person:172",
+    "alias": "Wellington Saci",
+    "normalizedAlias": "wellington saci",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "9a4c2c66-0936-5921-8714-95714db79daa",
+    "canonicalPersonKey": "goias-app:multiclub:person:172",
+    "alias": "Saci",
+    "normalizedAlias": "saci",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "c652d7a2-e1cc-51cc-b349-cb1afa86e63b",
+    "canonicalPersonKey": "goias-app:multiclub:person:173",
+    "alias": "Willean Lepo",
+    "normalizedAlias": "willean lepo",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "c652d7a2-e1cc-51cc-b349-cb1afa86e63b",
+    "canonicalPersonKey": "goias-app:multiclub:person:173",
+    "alias": "Lepo",
+    "normalizedAlias": "lepo",
+    "aliasType": "SHORT_NAME",
+    "isPreferred": false
+  },
+  {
+    "personId": "03fca98b-17cd-5484-838d-6690bb677f70",
+    "canonicalPersonKey": "goias-app:multiclub:person:174",
+    "alias": "William Matheus",
+    "normalizedAlias": "william matheus",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "3390bf06-81e1-55dc-ae35-70bd3306b0ef",
+    "canonicalPersonKey": "goias-app:multiclub:person:175",
+    "alias": "Willian Oliveira",
+    "normalizedAlias": "willian oliveira",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "19122a64-36c5-55d2-b734-7f682c70b5aa",
+    "canonicalPersonKey": "goias-app:multiclub:person:176",
+    "alias": "Zé Hugo",
+    "normalizedAlias": "ze hugo",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "d5256bb9-5c40-5354-87d0-38d304523039",
+    "canonicalPersonKey": "goias-app:multiclub:person:177",
+    "alias": "Zé Ricardo",
+    "normalizedAlias": "ze ricardo",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  },
+  {
+    "personId": "ceba53d4-f785-545e-9a60-603a126c33e2",
+    "canonicalPersonKey": "goias-app:multiclub:person:179",
+    "alias": "Douglas Pereira dos Santos",
+    "normalizedAlias": "douglas pereira dos santos",
+    "aliasType": "FULL_NAME",
+    "isPreferred": true
+  }
+]
