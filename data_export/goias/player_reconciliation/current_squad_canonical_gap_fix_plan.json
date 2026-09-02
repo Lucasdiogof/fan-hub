@@ -1,0 +1,483 @@
+{
+  "goiasClubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+  "currentSquadPersonIds": [
+    "0b374c05-3edd-5cbb-9ddf-71b1b37e79ba",
+    "10f6579f-1bc4-5b2a-ab9f-0a1a262519a1",
+    "140ba628-c222-53a5-8621-a774092a125b",
+    "2bd4e578-4739-5f93-b5db-8ecf6ba44393",
+    "34d6fed1-6282-564a-bcb0-5be7d705760a",
+    "36ed37b5-02be-5117-91d6-a62d5236505f",
+    "424f8724-6855-58d6-ad36-24e2d9bdd7f6",
+    "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+    "54e8cc38-7ac7-5927-b7a5-ca11a372a545",
+    "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+    "6702c943-0b4e-5041-8cd4-76991b85633d",
+    "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+    "747cb968-a339-586c-94cf-583a3e0c3296",
+    "75723744-c847-55e8-acf2-d8ee0d75c7a1",
+    "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+    "83765e63-a9f9-584e-aef1-bf11c3324b5e",
+    "879326ba-8353-5fc8-ab0f-c6ca4646a143",
+    "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+    "91e2722f-6fce-535e-9bd9-d2420889b1af",
+    "a2ef1bbc-c0a2-572c-9954-4c5513b07eae",
+    "a597dae2-6ca9-5588-b1e3-a3532dd36f0e",
+    "a7ba5544-1384-5830-94a6-632f1c9e8414",
+    "af92cda1-aeba-5f69-a354-2928d8677c6f",
+    "b9d994d7-3605-5e6e-89ca-7d223f87d14a",
+    "be72ef65-0fdc-5f2a-b09a-ff8da6a279fb",
+    "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+    "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+    "d58d5ae2-85c7-5336-80b6-0f4c0ed0a24b",
+    "e2507d62-8cb5-5152-af56-f67464196ac6",
+    "e277edea-70b1-5092-ad39-48be1a5297d6",
+    "e590ad99-16d4-52a1-88fd-2fbb064444b6"
+  ],
+  "totalPlayerClubSpellsBeforeFix": 64,
+  "spellFixes": [
+    {
+      "squadMemberId": "luisao",
+      "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+      "canonicalName": "Luis Fellipe Campos Doria",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "7153d35c-3268-5d44-b119-230c51e0e18e",
+      "canonicalSpellKey": "goias-app:multiclub:spell:19",
+      "before": {
+        "personId": "91e2722f-6fce-535e-9bd9-d2420889b1af",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2026,
+        "startMonth": 1,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 12,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2026,
+        "startMonth": 1,
+        "startPrecision": "MONTH",
+        "startDate": null,
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "Mesmo padrão — period 'jan/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "detail": "period='jan/2026–dez/2026', loan=true, is_goias=true, data_quality=verified"
+        },
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members",
+          "detail": "presente no elenco atual, updated_at=2026-08-24"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "ramon_menezes",
+      "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+      "canonicalName": "Ramon Menezes Roma",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "51689444-28a6-557f-a5d9-02fb4b697aaa",
+      "canonicalSpellKey": "goias-app:multiclub:spell:23",
+      "before": {
+        "personId": "d30dc008-4189-58bf-9823-8e8ab93dd7e0",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2026,
+        "startMonth": 3,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 12,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2026,
+        "startMonth": 3,
+        "startPrecision": "MONTH",
+        "startDate": null,
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "period 'mar/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "detail": "period='mar/2026–dez/2026', loan=true, is_goias=true, data_quality=verified, notes='Total é snapshot da tabela de carreira; pode variar conforme atualização da fonte.'"
+        },
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members",
+          "detail": "presente no elenco atual, updated_at=2026-08-24"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "filipe_machado",
+      "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+      "canonicalName": "Luiz Filipe da Rosa Machado",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "2bf5083c-3406-5cc0-a52f-62f7204ac01e",
+      "canonicalSpellKey": "goias-app:multiclub:spell:30",
+      "before": {
+        "personId": "ce0c99ff-f0a3-5743-9bf6-3cfb7ecfcf5f",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2026,
+        "startMonth": 1,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 11,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2026,
+        "startMonth": 1,
+        "startPrecision": "MONTH",
+        "startDate": null,
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "period 'jan/2026–nov/2026' (loan=true), fim contratual futuro (novembro/2026 ainda não chegou em 2026-09-02), presença confirmada.",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "detail": "period='jan/2026–nov/2026', loan=true, is_goias=true, data_quality=verified"
+        },
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members",
+          "detail": "presente no elenco atual, updated_at=2026-08-24"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "gege",
+      "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+      "canonicalName": "Geirton Marques Aires",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "34671275-a21f-5850-b5c3-6b6a7fb682c2",
+      "canonicalSpellKey": "goias-app:multiclub:spell:34",
+      "before": {
+        "personId": "88a5f4a0-ed1a-5a0f-b2d9-0294157789dd",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2026,
+        "startMonth": 1,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 12,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2026,
+        "startMonth": 1,
+        "startPrecision": "MONTH",
+        "startDate": null,
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "Mesmo padrão — period 'jan/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "sourceRecordKey": "squad_members:gege:club_history:11",
+          "detail": "period='jan/2026–dez/2026', loan=true, is_goias=true, data_quality=verified"
+        },
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members",
+          "detail": "presente no elenco atual, updated_at=2026-08-24"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "wellington_rato",
+      "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+      "canonicalName": "Wellington Soares da Silva",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "ea61834d-ecb4-5bfc-98f6-dd1b50fbca67",
+      "canonicalSpellKey": "goias-app:multiclub:spell:37",
+      "before": {
+        "personId": "4dd73b43-f2ac-536a-8b22-ab4f7c125c68",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2025,
+        "startMonth": 7,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 12,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2025,
+        "startMonth": 7,
+        "startPrecision": "MONTH",
+        "startDate": null,
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "period 'jul/2025–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "detail": "period='jul/2025–dez/2026', loan=true, is_goias=true, data_quality=verified"
+        },
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members",
+          "detail": "presente no elenco atual, updated_at=2026-08-24"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "cadu",
+      "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+      "canonicalName": "Carlos Eduardo Amaral Pereira de Castro",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "9fb99be2-3301-57fc-8a90-c541fbe51271",
+      "canonicalSpellKey": "goias-app:multiclub:spell:40",
+      "before": {
+        "personId": "6702c943-0b4e-5041-8cd4-76991b85633d",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2026,
+        "startMonth": 2,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 12,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2026,
+        "startMonth": 2,
+        "startPrecision": "MONTH",
+        "startDate": null,
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "squad_members.club_history (fonte já cadastrada, is_goias=true, loan=true) tem period 'fev/2026–dez/2026' — o spell existente (build_player_club_spells_seed.mjs) parseou literalmente esse fim como is_ongoing=false, end=2026-12. Mas 2026-12 é POSTERIOR a hoje (2026-09-02, data desta auditoria) — o vínculo não pode ter terminado numa data que ainda não chegou. squad_members (elenco ATUAL, updated_at=2026-08-24, 9 dias antes desta auditoria) confirma presença ativa. O 'fim' registrado é o término CONTRATUAL do empréstimo, não uma saída já ocorrida — squad_members.club_history não distingue as 2 coisas no campo period, mas nenhuma evidência aponta pra saída antecipada.",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "sourceRecordKey": "squad_members:cadu:club_history:2",
+          "detail": "period='fev/2026–dez/2026', loan=true, is_goias=true, data_quality=verified"
+        },
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members",
+          "detail": "presente no elenco atual (31 titulares), updated_at=2026-08-24"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "felipe_clemente",
+      "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+      "canonicalName": "Luiz Felipe Clemente de Almeida",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "7888b147-6881-56cd-8c19-8bd94bc2ea20",
+      "canonicalSpellKey": "goias-app:multiclub:spell:41",
+      "before": {
+        "personId": "7e23a7b8-33ac-5c84-9b35-bfe5bc2cc5a4",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2026,
+        "startMonth": 8,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 12,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2026,
+        "startMonth": 8,
+        "startPrecision": "DATE",
+        "startDate": "2026-08-21",
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "period 'ago/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada. ADICIONAL: a própria nota da fonte já cadastrada ('Chegou por empréstimo em 21/08/2026; snapshot antes de estreia oficial pelo Goiás') dá o DIA exato de chegada — evidência já existente, não pesquisa nova — permite refinar start de MONTH pra DATE sem fabricar nada (o dado já estava lá, só não tinha sido promovido).",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "detail": "period='ago/2026–dez/2026', loan=true, notes='Chegou por empréstimo em 21/08/2026; snapshot antes de estreia oficial pelo Goiás.'"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "kadu_sousa",
+      "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+      "canonicalName": "Carlos Eduardo de Sousa Leopoldino",
+      "gapType": "MISSING_ONGOING_SPELL",
+      "resolution": "EXTEND_EXISTING_SPELL",
+      "spellId": "17202656-70b9-502e-9766-e7bd7b593eee",
+      "canonicalSpellKey": "goias-app:multiclub:spell:45",
+      "before": {
+        "personId": "6bc585a3-1b56-58c3-8ba7-6f208151ae47",
+        "clubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+        "isOngoing": false,
+        "startYear": 2025,
+        "startMonth": 12,
+        "startDate": null,
+        "startPrecision": "MONTH",
+        "endYear": 2026,
+        "endMonth": 12,
+        "endDate": null,
+        "endPrecision": "MONTH",
+        "verificationStatus": "VERIFIED",
+        "provenanceSourceCount": 1
+      },
+      "after": {
+        "isOngoing": true,
+        "startYear": 2025,
+        "startMonth": 12,
+        "startPrecision": "MONTH",
+        "startDate": null,
+        "endYear": null,
+        "endMonth": null,
+        "endPrecision": null
+      },
+      "reasoning": "Mesmo padrão de cadu — period 'dez/2025–dez/2026' (loan=true), fim contratual futuro relativo a hoje (2026-09-02), presença confirmada no elenco atual.",
+      "evidence": [
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members.club_history",
+          "sourceRecordKey": "squad_members:kadu_sousa:club_history:4",
+          "detail": "period='dez/2025–dez/2026', loan=true, is_goias=true, data_quality=verified"
+        },
+        {
+          "type": "LOCAL_STRUCTURED",
+          "source": "squad_members",
+          "detail": "presente no elenco atual, updated_at=2026-08-24"
+        }
+      ]
+    }
+  ],
+  "statsFixes": [
+    {
+      "squadMemberId": "ezequiel",
+      "personId": "66cd616b-9b5d-56f9-879e-1b171a8a33d0",
+      "canonicalName": "Ezequiel Alves de Oliveira Vieira",
+      "gapType": "MISSING_CLUB_TOTAL",
+      "resolution": "FIXABLE",
+      "appearances": 0,
+      "goals": 0,
+      "verificationStatus": "PARTIAL",
+      "dataMode": "SNAPSHOT",
+      "asOfDate": "2026-09-02",
+      "asOfMatchId": null,
+      "reasoning": "Fontes locais (squad_members.club_history) já sinalizavam data_quality=partial com nota explícita 'agregador não exibiu total consolidado' — não davam appearances/goals. Pesquisa externa: ogol.com.br (base de dados estruturada de futebol) mostra explicitamente 'Sem jogos disputados' pro time PROFISSIONAL do Goiás em todas as temporadas 2023-2026 (em contraste com números reais em U20/U23 do mesmo perfil, confirmando que a ausência é um '0' real, não 'dado indisponível'). Ezequiel é 3º goleiro (atrás de Tadeu e Thiago Rodrigues), ainda não estreou pelo profissional — condizente com a posição no elenco. PARTIAL porque é fonte externa secundária (não confirmação oficial do clube com o número explícito), nunca promovido a VERIFIED sem confirmação primária.",
+      "sources": [
+        {
+          "sourceType": "external_verified",
+          "sourceRef": "ogol.com.br/jogador/ezequiel/722092",
+          "url": "https://www.ogol.com.br/jogador/ezequiel/722092",
+          "detail": "'Sem jogos disputados' (2026) pro time profissional do Goiás; times 2023-2026 todos com traço/sem registro no profissional; só há números reais em Goiás U23 (2024, 7 jogos) e Goiás U20 (2023, 26 jogos), que não contam pro CLUB_TOTAL do time principal."
+        },
+        {
+          "sourceType": "external_corroborating",
+          "sourceRef": "goiasec.com.br/elenco/atleta/ezequiel",
+          "url": "https://www.goiasec.com.br/elenco/atleta/ezequiel",
+          "detail": "site oficial do clube — perfil sem número de jogos/gols listado, sem contradizer o achado do ogol"
+        }
+      ]
+    },
+    {
+      "squadMemberId": "murillo_victorio",
+      "personId": "e590ad99-16d4-52a1-88fd-2fbb064444b6",
+      "canonicalName": "Murillo Carvalho Victorio",
+      "gapType": "MISSING_CLUB_TOTAL",
+      "resolution": "FIXABLE",
+      "appearances": 0,
+      "goals": 0,
+      "verificationStatus": "PARTIAL",
+      "dataMode": "SNAPSHOT",
+      "asOfDate": "2026-09-02",
+      "asOfMatchId": null,
+      "reasoning": "Mesma situação de Ezequiel — fontes locais já sinalizavam data_quality=partial ('total consolidado não exibido na fonte'). Pesquisa externa: ogol.com.br mostra explicitamente '-' (nenhum jogo/gol registrado) pro time PROFISSIONAL do Goiás em 2026, em contraste com estatística REAL e detalhada no Sub-20 (12 jogos, 12 gols sofridos, 1.080 minutos em 4 competições — Brasileiro Sub-20 Série B, Copinha, Copa Goiás, Goiano Sub-20). Contrato estendido até dezembro/2028 (achado adicional, não usado pro stat) reforça que é uma promessa da base, ainda sem estreia profissional. PARTIAL pela mesma razão de Ezequiel — fonte externa secundária, nunca VERIFIED sem confirmação oficial explícita.",
+      "sources": [
+        {
+          "sourceType": "external_verified",
+          "sourceRef": "ogol.com.br/jogador/murillo-victorio/972457",
+          "url": "https://www.ogol.com.br/jogador/murillo-victorio/972457",
+          "detail": "'-' pro time profissional 2026; 12 jogos/1 gol marcado/12 gols sofridos no Goiás Sub-20 2026 (Brasileiro Sub-20 Série B 3 jogos, Copinha 4 jogos, Copa Goiás 1 jogo, Goiano Sub-20 4 jogos) — não contam pro CLUB_TOTAL do time principal"
+        },
+        {
+          "sourceType": "external_corroborating",
+          "sourceRef": "web_search_summary",
+          "url": null,
+          "detail": "resumo de busca web (múltiplas fontes) confirma 'Murillo has not yet played for Goiás in the professional squad'"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "spellGapsTotal": 8,
+    "spellFixesFixable": 8,
+    "spellFixesBlocked": 0,
+    "ongoingCoverageBefore": "23/31",
+    "ongoingCoverageAfterProposed": "31/31",
+    "statsGapsTotal": 2,
+    "statsFixesFixable": 2,
+    "statsFixesBlocked": 0,
+    "clubTotalCoverageBefore": "29/31",
+    "clubTotalCoverageAfterProposed": "31/31"
+  }
+}

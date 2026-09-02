@@ -1,0 +1,91 @@
+{
+  "_comment": "Etapa F4.5 — evidência estruturada, separada da lógica de geração (mesmo princípio de player_reconciliation_overrides.json: evidência é dado, nunca hardcoded dentro do script). build_current_squad_gap_fixes.mjs consome este arquivo + current_squad_canonical_gap_audit.json pra produzir current_squad_canonical_gap_fix_plan.json. Nunca editar o fix_plan.json à mão — ele é gerado.",
+  "spellCorrections": [
+    {
+      "squadMemberId": "cadu",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "squad_members.club_history (fonte já cadastrada, is_goias=true, loan=true) tem period 'fev/2026–dez/2026' — o spell existente (build_player_club_spells_seed.mjs) parseou literalmente esse fim como is_ongoing=false, end=2026-12. Mas 2026-12 é POSTERIOR a hoje (2026-09-02, data desta auditoria) — o vínculo não pode ter terminado numa data que ainda não chegou. squad_members (elenco ATUAL, updated_at=2026-08-24, 9 dias antes desta auditoria) confirma presença ativa. O 'fim' registrado é o término CONTRATUAL do empréstimo, não uma saída já ocorrida — squad_members.club_history não distingue as 2 coisas no campo period, mas nenhuma evidência aponta pra saída antecipada.",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "sourceRecordKey": "squad_members:cadu:club_history:2", "detail": "period='fev/2026–dez/2026', loan=true, is_goias=true, data_quality=verified" }, { "type": "LOCAL_STRUCTURED", "source": "squad_members", "detail": "presente no elenco atual (31 titulares), updated_at=2026-08-24" }],
+      "action": { "isOngoing": true, "clearEnd": true }
+    },
+    {
+      "squadMemberId": "kadu_sousa",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "Mesmo padrão de cadu — period 'dez/2025–dez/2026' (loan=true), fim contratual futuro relativo a hoje (2026-09-02), presença confirmada no elenco atual.",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "sourceRecordKey": "squad_members:kadu_sousa:club_history:4", "detail": "period='dez/2025–dez/2026', loan=true, is_goias=true, data_quality=verified" }, { "type": "LOCAL_STRUCTURED", "source": "squad_members", "detail": "presente no elenco atual, updated_at=2026-08-24" }],
+      "action": { "isOngoing": true, "clearEnd": true }
+    },
+    {
+      "squadMemberId": "gege",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "Mesmo padrão — period 'jan/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "sourceRecordKey": "squad_members:gege:club_history:11", "detail": "period='jan/2026–dez/2026', loan=true, is_goias=true, data_quality=verified" }, { "type": "LOCAL_STRUCTURED", "source": "squad_members", "detail": "presente no elenco atual, updated_at=2026-08-24" }],
+      "action": { "isOngoing": true, "clearEnd": true }
+    },
+    {
+      "squadMemberId": "luisao",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "Mesmo padrão — period 'jan/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "detail": "period='jan/2026–dez/2026', loan=true, is_goias=true, data_quality=verified" }, { "type": "LOCAL_STRUCTURED", "source": "squad_members", "detail": "presente no elenco atual, updated_at=2026-08-24" }],
+      "action": { "isOngoing": true, "clearEnd": true }
+    },
+    {
+      "squadMemberId": "felipe_clemente",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "period 'ago/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada. ADICIONAL: a própria nota da fonte já cadastrada ('Chegou por empréstimo em 21/08/2026; snapshot antes de estreia oficial pelo Goiás') dá o DIA exato de chegada — evidência já existente, não pesquisa nova — permite refinar start de MONTH pra DATE sem fabricar nada (o dado já estava lá, só não tinha sido promovido).",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "detail": "period='ago/2026–dez/2026', loan=true, notes='Chegou por empréstimo em 21/08/2026; snapshot antes de estreia oficial pelo Goiás.'" }],
+      "action": { "isOngoing": true, "clearEnd": true, "upgradeStart": { "precision": "DATE", "date": "2026-08-21" } }
+    },
+    {
+      "squadMemberId": "filipe_machado",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "period 'jan/2026–nov/2026' (loan=true), fim contratual futuro (novembro/2026 ainda não chegou em 2026-09-02), presença confirmada.",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "detail": "period='jan/2026–nov/2026', loan=true, is_goias=true, data_quality=verified" }, { "type": "LOCAL_STRUCTURED", "source": "squad_members", "detail": "presente no elenco atual, updated_at=2026-08-24" }],
+      "action": { "isOngoing": true, "clearEnd": true }
+    },
+    {
+      "squadMemberId": "ramon_menezes",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "period 'mar/2026–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "detail": "period='mar/2026–dez/2026', loan=true, is_goias=true, data_quality=verified, notes='Total é snapshot da tabela de carreira; pode variar conforme atualização da fonte.'" }, { "type": "LOCAL_STRUCTURED", "source": "squad_members", "detail": "presente no elenco atual, updated_at=2026-08-24" }],
+      "action": { "isOngoing": true, "clearEnd": true }
+    },
+    {
+      "squadMemberId": "wellington_rato",
+      "classification": "EXTEND_EXISTING_SPELL",
+      "reasoning": "period 'jul/2025–dez/2026' (loan=true), fim contratual futuro, presença confirmada.",
+      "evidence": [{ "type": "LOCAL_STRUCTURED", "source": "squad_members.club_history", "detail": "period='jul/2025–dez/2026', loan=true, is_goias=true, data_quality=verified" }, { "type": "LOCAL_STRUCTURED", "source": "squad_members", "detail": "presente no elenco atual, updated_at=2026-08-24" }],
+      "action": { "isOngoing": true, "clearEnd": true }
+    }
+  ],
+  "statsAdditions": [
+    {
+      "squadMemberId": "ezequiel",
+      "canonicalName": "Ezequiel Alves de Oliveira Vieira",
+      "classification": "FIXABLE",
+      "appearances": 0,
+      "goals": 0,
+      "verificationStatus": "PARTIAL",
+      "asOfDate": "2026-09-02",
+      "reasoning": "Fontes locais (squad_members.club_history) já sinalizavam data_quality=partial com nota explícita 'agregador não exibiu total consolidado' — não davam appearances/goals. Pesquisa externa: ogol.com.br (base de dados estruturada de futebol) mostra explicitamente 'Sem jogos disputados' pro time PROFISSIONAL do Goiás em todas as temporadas 2023-2026 (em contraste com números reais em U20/U23 do mesmo perfil, confirmando que a ausência é um '0' real, não 'dado indisponível'). Ezequiel é 3º goleiro (atrás de Tadeu e Thiago Rodrigues), ainda não estreou pelo profissional — condizente com a posição no elenco. PARTIAL porque é fonte externa secundária (não confirmação oficial do clube com o número explícito), nunca promovido a VERIFIED sem confirmação primária.",
+      "sources": [
+        { "sourceType": "external_verified", "sourceRef": "ogol.com.br/jogador/ezequiel/722092", "url": "https://www.ogol.com.br/jogador/ezequiel/722092", "detail": "'Sem jogos disputados' (2026) pro time profissional do Goiás; times 2023-2026 todos com traço/sem registro no profissional; só há números reais em Goiás U23 (2024, 7 jogos) e Goiás U20 (2023, 26 jogos), que não contam pro CLUB_TOTAL do time principal." },
+        { "sourceType": "external_corroborating", "sourceRef": "goiasec.com.br/elenco/atleta/ezequiel", "url": "https://www.goiasec.com.br/elenco/atleta/ezequiel", "detail": "site oficial do clube — perfil sem número de jogos/gols listado, sem contradizer o achado do ogol" }
+      ]
+    },
+    {
+      "squadMemberId": "murillo_victorio",
+      "canonicalName": "Murillo Carvalho Victorio",
+      "classification": "FIXABLE",
+      "appearances": 0,
+      "goals": 0,
+      "verificationStatus": "PARTIAL",
+      "asOfDate": "2026-09-02",
+      "reasoning": "Mesma situação de Ezequiel — fontes locais já sinalizavam data_quality=partial ('total consolidado não exibido na fonte'). Pesquisa externa: ogol.com.br mostra explicitamente '-' (nenhum jogo/gol registrado) pro time PROFISSIONAL do Goiás em 2026, em contraste com estatística REAL e detalhada no Sub-20 (12 jogos, 12 gols sofridos, 1.080 minutos em 4 competições — Brasileiro Sub-20 Série B, Copinha, Copa Goiás, Goiano Sub-20). Contrato estendido até dezembro/2028 (achado adicional, não usado pro stat) reforça que é uma promessa da base, ainda sem estreia profissional. PARTIAL pela mesma razão de Ezequiel — fonte externa secundária, nunca VERIFIED sem confirmação oficial explícita.",
+      "sources": [
+        { "sourceType": "external_verified", "sourceRef": "ogol.com.br/jogador/murillo-victorio/972457", "url": "https://www.ogol.com.br/jogador/murillo-victorio/972457", "detail": "'-' pro time profissional 2026; 12 jogos/1 gol marcado/12 gols sofridos no Goiás Sub-20 2026 (Brasileiro Sub-20 Série B 3 jogos, Copinha 4 jogos, Copa Goiás 1 jogo, Goiano Sub-20 4 jogos) — não contam pro CLUB_TOTAL do time principal" },
+        { "sourceType": "external_corroborating", "sourceRef": "web_search_summary", "url": null, "detail": "resumo de busca web (múltiplas fontes) confirma 'Murillo has not yet played for Goiás in the professional squad'" }
+      ]
+    }
+  ]
+}
