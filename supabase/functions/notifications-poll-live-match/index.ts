@@ -12,12 +12,9 @@
 // event_id. Ver comentário em `buildGoalDedupeKey` pros casos conhecidos que
 // ela não cobre (VAR revertendo o evento, correção de minuto).
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
+import { resolveClubServerConfigByClubId } from '../_shared/club_server_config.ts';
 
 const WORKER_BASE_URL = 'https://goias-app.lucasdiogo1234.workers.dev';
-// Confirmado no path do time no OneFootball (".../pt-br/time/goias-1863")
-// e no crest das partidas (".../icons/teams/164/1863.png") — mesmo id usado
-// em `standing.ts` no Worker.
-const GOIAS_TEAM_ID = 1863;
 const PRE_KICKOFF_BUFFER_MINUTES = 5;
 
 function jsonResponse(body: unknown, status: number): Response {
@@ -60,11 +57,17 @@ function normalizedMinute(raw: string): number {
 
 /**
  * Reconstrói, a partir do array de eventos ATUAL (nunca incrementalmente),
- * a posição do gol entre os gols do Goiás e o placar corrido até ali —
- * usando só os eventos de gol de AMBOS os lados, ordenados por minuto
+ * a posição do gol entre os gols do clube ativo e o placar corrido até ali
+ * — usando só os eventos de gol de AMBOS os lados, ordenados por minuto
  * normalizado com a posição no array como desempate estável. Enriquecer
  * `player` depois (null -> nome) não muda nenhum desses componentes, então
  * o dedupe_key não muda.
+ *
+ * `clubCode` entra no dedupe_key (M3.3) — `NOTIFICATION_DEDUPE_KEY_SCOPE_
+ * BLOCKED`: `UNIQUE(event_type, dedupe_key)` ainda não inclui `club_id` de
+ * verdade (M2.2B resolve isso na chave física), então embutir o código do
+ * clube na STRING é a única coisa que evita 2 clubes reais colidindo nessa
+ * chave hoje — nunca mais hardcoded `'goias'` pra qualquer clube.
  *
  * Limitações conhecidas e aceitas (não há event_id na fonte pra evitar
  * isso): (1) se a OneFootball reverter um gol por VAR removendo-o do
@@ -76,8 +79,9 @@ function normalizedMinute(raw: string): number {
 function buildGoalDedupeKey(
   matchId: string,
   events: FixtureEvent[],
-  goiasSide: 'home' | 'away',
+  activeClubSide: 'home' | 'away',
   targetIndex: number,
+  clubCode: string,
 ): string {
   const goalEvents = events
     .map((event, index) => ({ event, index }))
@@ -89,13 +93,13 @@ function buildGoalDedupeKey(
 
   let homeGoals = 0;
   let awayGoals = 0;
-  let goiasOrdinal = 0;
+  let activeClubOrdinal = 0;
   let scoreAfter = '';
 
   for (const { event, index } of goalEvents) {
     if (event.side === 'home') homeGoals += 1;
     else awayGoals += 1;
-    if (event.side === goiasSide) goiasOrdinal += 1;
+    if (event.side === activeClubSide) activeClubOrdinal += 1;
 
     if (index === targetIndex) {
       scoreAfter = `${homeGoals}-${awayGoals}`;
@@ -104,7 +108,7 @@ function buildGoalDedupeKey(
   }
 
   const target = events[targetIndex];
-  return `${matchId}|goias|${normalizedMinute(target.minute)}|${goiasOrdinal}|${scoreAfter}`;
+  return `${matchId}|${clubCode}|${normalizedMinute(target.minute)}|${activeClubOrdinal}|${scoreAfter}`;
 }
 
 Deno.serve(async (_req) => {
@@ -140,7 +144,8 @@ Deno.serve(async (_req) => {
         await admin
           .from('match_monitor_sessions')
           .update({ status: 'timed_out' })
-          .eq('match_id', session.match_id);
+          .eq('match_id', session.match_id)
+          .eq('club_id', session.club_id);
         console.warn('match monitor timed out', session.match_id);
       }
       return jsonResponse({ ok: true, polled: 0 }, 200);
@@ -149,11 +154,21 @@ Deno.serve(async (_req) => {
     let anyEventCreated = false;
 
     for (const session of dueSessions) {
+      // club_id nunca é opcional — sessão sem clube resolvível (código
+      // desconhecido, nunca visto neste registry) é pulada com log, NUNCA
+      // tratada como Goiás por omissão (NO_SERVER_CROSS_CLUB_FALLBACK).
+      const clubConfig = resolveClubServerConfigByClubId(session.club_id);
+      if (!clubConfig) {
+        console.error('poll-live-match: club_id desconhecido, sessão pulada', session.match_id, session.club_id);
+        continue;
+      }
+
       if (session.status === 'scheduled') {
         await admin
           .from('match_monitor_sessions')
           .update({ status: 'active', started_at: now.toISOString() })
-          .eq('match_id', session.match_id);
+          .eq('match_id', session.match_id)
+          .eq('club_id', session.club_id);
         console.log('match monitor started', session.match_id);
       }
 
@@ -168,17 +183,21 @@ Deno.serve(async (_req) => {
       const fixture = (await fixtureRes.json()) as FixtureResponse;
       const { match, events } = fixture;
 
-      const goiasSide: 'home' | 'away' | null =
-        match.homeTeam.id === GOIAS_TEAM_ID ? 'home' : match.awayTeam.id === GOIAS_TEAM_ID ? 'away' : null;
+      const activeClubSide: 'home' | 'away' | null =
+        match.homeTeam.id === clubConfig.oneFootballTeamId
+          ? 'home'
+          : match.awayTeam.id === clubConfig.oneFootballTeamId
+            ? 'away'
+            : null;
 
-      if (goiasSide) {
-        const goiasGoalIndexes = events
+      if (activeClubSide) {
+        const activeClubGoalIndexes = events
           .map((event, index) => ({ event, index }))
-          .filter(({ event }) => event.type === 'goal' && event.side === goiasSide);
+          .filter(({ event }) => event.type === 'goal' && event.side === activeClubSide);
 
         await Promise.all(
-          goiasGoalIndexes.map(async ({ event, index }) => {
-            const dedupeKey = buildGoalDedupeKey(session.match_id, events, goiasSide, index);
+          activeClubGoalIndexes.map(async ({ event, index }) => {
+            const dedupeKey = buildGoalDedupeKey(session.match_id, events, activeClubSide, index, clubConfig.code);
             const goalPayload = {
               homeTeamName: match.homeTeam.name,
               awayTeamName: match.awayTeam.name,
@@ -186,6 +205,7 @@ Deno.serve(async (_req) => {
               awayScore: match.awayScore,
               scorer: event.player,
               minute: event.minute,
+              activeClubSide,
             };
 
             const { data: inserted, error } = await admin
@@ -193,6 +213,7 @@ Deno.serve(async (_req) => {
               .upsert(
                 {
                   match_id: session.match_id,
+                  club_id: session.club_id,
                   event_type: 'goal',
                   dedupe_key: dedupeKey,
                   payload: goalPayload,
@@ -218,7 +239,7 @@ Deno.serve(async (_req) => {
           }),
         );
       } else {
-        console.warn('poll-live-match: não foi possível identificar o lado do Goiás', session.match_id);
+        console.warn('poll-live-match: não foi possível identificar o lado do clube ativo', session.match_id);
       }
 
       if (match.status === 'finished') {
@@ -227,14 +248,15 @@ Deno.serve(async (_req) => {
           .upsert(
             {
               match_id: session.match_id,
+              club_id: session.club_id,
               event_type: 'full_time',
-              dedupe_key: session.match_id,
+              dedupe_key: `${session.match_id}|${clubConfig.code}`,
               payload: {
                 homeTeamName: match.homeTeam.name,
                 awayTeamName: match.awayTeam.name,
                 homeScore: match.homeScore,
                 awayScore: match.awayScore,
-                goiasSide,
+                activeClubSide,
               },
             },
             { onConflict: 'event_type,dedupe_key', ignoreDuplicates: true },
@@ -251,7 +273,8 @@ Deno.serve(async (_req) => {
         await admin
           .from('match_monitor_sessions')
           .update({ status: 'finished', last_polled_at: now.toISOString() })
-          .eq('match_id', session.match_id);
+          .eq('match_id', session.match_id)
+          .eq('club_id', session.club_id);
       } else {
         await admin
           .from('match_monitor_sessions')
@@ -259,7 +282,8 @@ Deno.serve(async (_req) => {
             last_polled_at: now.toISOString(),
             last_known_score: { homeScore: match.homeScore, awayScore: match.awayScore },
           })
-          .eq('match_id', session.match_id);
+          .eq('match_id', session.match_id)
+          .eq('club_id', session.club_id);
       }
     }
 

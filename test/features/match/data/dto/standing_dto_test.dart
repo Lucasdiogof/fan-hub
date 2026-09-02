@@ -10,7 +10,6 @@ void main() {
         'name': 'Goiás',
         'logo': 'https://example.com/goias.png',
       },
-      'isGoias': true,
       'points': 40,
       'played': 21,
       'wins': 11,
@@ -24,16 +23,14 @@ void main() {
       final dto = StandingDto.fromJson(json);
       expect(dto.position, 2);
       expect(dto.team.id, 1);
-      expect(dto.isGoias, isTrue);
       expect(dto.points, 40);
       expect(dto.form, 'WWDLW');
     });
 
-    test('maps to domain entity with correct goal difference and isGoias', () {
+    test('maps to domain entity with correct goal difference', () {
       final entity = StandingDto.fromJson(json).toEntity();
       expect(entity.position, 2);
       expect(entity.team.name, 'Goiás');
-      expect(entity.isGoias, isTrue);
       expect(entity.goalDifference, 12);
     });
 
@@ -42,12 +39,17 @@ void main() {
       expect(dto.form, isNull);
     });
 
-    test(
-      'isGoias defaults to false when absent — decided server-side, never guessed by name',
-      () {
-        final dto = StandingDto.fromJson({...json}..remove('isGoias'));
-        expect(dto.isGoias, isFalse);
-      },
-    );
+    // M3.3: "é o clube ativo?" não é mais decidido no servidor (era
+    // `isGoias`, removido de StandingDto/Standing) — agora é sempre
+    // `standing.team.matchesClub(clubConfig)`, calculado só no Flutter. A
+    // prova de que o campo genuinamente não existe mais é o próprio tipo:
+    // `StandingDto.fromJson`/`Standing` não aceitam mais `isGoias` como
+    // parâmetro nomeado — `flutter analyze` já falha se alguém reintroduzir
+    // isso sem atualizar todos os call sites (ver também
+    // `test_multiclub_runtime_hardcodes.mjs`, checagem estática dedicada).
+    test('an extra unknown "isGoias" key in the source json is simply ignored, never resurrected as a field', () {
+      final dto = StandingDto.fromJson({...json, 'isGoias': true});
+      expect(dto.position, 2); // parseia normalmente, sem quebrar
+    });
   });
 }

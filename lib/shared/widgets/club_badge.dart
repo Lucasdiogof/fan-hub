@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/utils/inline_svg_css.dart';
@@ -21,13 +22,36 @@ bool get _isIosWeb => kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
 
 /// Badge esportivo de um time — fonte única de verdade pra escudo de clube
 /// no app inteiro (nenhuma outra tela busca/renderiza escudo por conta
-/// própria). Prioridade: Goiás sempre usa o asset oficial local (nunca
-/// rede) → `logoUrl` (escudo vindo do Worker/OneFootball, via elemento HTML
-/// no Safari/iOS Web — ver `_isIosWeb` — ou pipeline normal do Flutter nos
-/// demais ambientes) → `crestAsset` (vetor local de fallback) → escudo
-/// desenhado como último recurso. O círculo genérico com sigla nunca é a
-/// aparência "normal" — só aparece quando não há nenhum escudo disponível
-/// ou o carregamento da rede falha.
+/// própria). Prioridade: o clube ativo sempre usa o asset oficial local
+/// (nunca rede) → `logoUrl` (escudo vindo do Worker/OneFootball, via
+/// elemento HTML no Safari/iOS Web — ver `_isIosWeb` — ou pipeline normal
+/// do Flutter nos demais ambientes) → `crestAsset` (vetor local de
+/// fallback) → escudo desenhado como último recurso. O círculo genérico
+/// com sigla nunca é a aparência "normal" — só aparece quando não há
+/// nenhum escudo disponível ou o carregamento da rede falha.
+///
+/// **Decisão de DI (revisão M3.3, explícita, não acidental)**: usa
+/// `sl<ClubConfig>()` internamente em vez de receber `ClubConfig` por
+/// construtor. Considerado e rejeitado tornar isso explícito — exigiria
+/// editar 19 call sites em 15 arquivos (`crowd_lineup_hero_card.dart`,
+/// `compact_match_header.dart`, `live_match_hero.dart`,
+/// `next_match_hero.dart`, `match_details_page.dart`,
+/// `calendar_day_cell.dart`, `match_list_item.dart`, `next_match_card.dart`,
+/// `standings_row.dart`, `member_next_match_card.dart`,
+/// `featured_event_card.dart` e mais 4), NENHUM dos quais hoje resolve
+/// `ClubConfig` de nenhuma forma — um refactor grande só por estética,
+/// explicitamente fora do critério desta rodada. `sl<T>()` direto na camada
+/// de apresentação já é o padrão DOMINANTE e consistente deste app (100+
+/// ocorrências em `lib/features/*/presentation/`, incluindo
+/// `calendar_day_cell.dart`/`next_match_hero.dart`/`crowd_lineup_page.dart`,
+/// que já fazem exatamente isso com `ClubConfig` desde esta mesma etapa) —
+/// a única distinção real é `ClubBadge` morar em `shared/widgets/` em vez
+/// de `features/*/presentation/`, uma organização de pasta, não uma
+/// fronteira arquitetural. `ClubConfig` é registrado eager (1ª linha de
+/// `setupDependencies()`) — sempre disponível em runtime real, nunca
+/// opcional. **KEEP.** Custo real pago é só em teste (widget tests que
+/// renderizam `ClubBadge` precisam de `sl.registerSingleton<ClubConfig>()`
+/// no `setUp` — 4 arquivos já ajustados, ver relatório da M3.3).
 class ClubBadge extends StatelessWidget {
   const ClubBadge({
     required this.team,
@@ -47,14 +71,16 @@ class ClubBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // O Goiás sempre usa o brasão oficial embutido no app, nunca o que a
-    // fonte de dado ao vivo devolve — evita depender da rede pra mostrar o
-    // escudo do próprio clube, e garante que é sempre a arte oficial. Nunca
-    // muda com o tema: é um `Image.asset` puro, sem filtro de cor nenhum.
-    if (team.isGoias) {
-      _debugLog(source: 'asset:goias');
+    // O clube ativo sempre usa o brasão oficial embutido no app, nunca o
+    // que a fonte de dado ao vivo devolve — evita depender da rede pra
+    // mostrar o escudo do próprio clube, e garante que é sempre a arte
+    // oficial. Nunca muda com o tema: é um `Image.asset` puro, sem filtro
+    // de cor nenhum.
+    final clubConfig = sl<ClubConfig>();
+    if (team.matchesClub(clubConfig)) {
+      _debugLog(source: 'asset:active-club');
       return Image.asset(
-        AppAssets.goiasCrestBadge,
+        clubConfig.assets.crestBadge,
         width: size,
         height: size,
         fit: BoxFit.contain,
@@ -104,7 +130,8 @@ class ClubBadge extends StatelessWidget {
   void _debugLog({required String source, String? url, String? proxied}) {
     if (!kDebugMode) return;
     debugPrint(
-      '[ClubBadge] team="${team.name}" id=${team.id} isGoias=${team.isGoias} '
+      '[ClubBadge] team="${team.name}" id=${team.id} '
+      'matchesActiveClub=${team.matchesClub(sl<ClubConfig>())} '
       'source=$source isWeb=$kIsWeb platform=$defaultTargetPlatform '
       'url=$url proxied=$proxied',
     );

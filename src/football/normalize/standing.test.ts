@@ -17,29 +17,29 @@ const goiasRow: OneFootballStandingRow = {
 
 describe('normalizeStandingEntry', () => {
   it('extracts the team id from the trailing digits in teamPath', () => {
-    const entry = normalizeStandingEntry(goiasRow, 1863);
+    const entry = normalizeStandingEntry(goiasRow);
     expect(entry.team.id).toBe(1863);
   });
 
-  it('flags isGoias only when the extracted id matches the configured one', () => {
-    expect(normalizeStandingEntry(goiasRow, 1863).isGoias).toBe(true);
-    expect(normalizeStandingEntry(goiasRow, 999).isGoias).toBe(false);
-    expect(normalizeStandingEntry(goiasRow, null).isGoias).toBe(false);
+  it('never decides "is the active club" server-side (M3.3: that comparison moved to Flutter, Team.matchesClub)', () => {
+    const entry = normalizeStandingEntry(goiasRow);
+    expect(entry).not.toHaveProperty('isGoias');
+    expect(entry).not.toHaveProperty('isActiveClub');
   });
 
   it('maps goalsDiff straight through as goalDifference — no goalsFor/goalsAgainst split available', () => {
-    expect(normalizeStandingEntry(goiasRow, 1863).goalDifference).toBe(-6);
+    expect(normalizeStandingEntry(goiasRow).goalDifference).toBe(-6);
   });
 
   it('always sets form to null (OneFootball\'s table has no recent-results string)', () => {
-    expect(normalizeStandingEntry(goiasRow, 1863).form).toBeNull();
+    expect(normalizeStandingEntry(goiasRow).form).toBeNull();
   });
 
   it('defaults any missing numeric field to 0 instead of leaking undefined — seen in production for one team', () => {
     const rowMissingGoalsDiff = { ...goiasRow };
     // @ts-expect-error simulating a field OneFootball actually omitted in production
     delete rowMissingGoalsDiff.goalsDiff;
-    const entry = normalizeStandingEntry(rowMissingGoalsDiff, 1863);
+    const entry = normalizeStandingEntry(rowMissingGoalsDiff);
     expect(entry.goalDifference).toBe(0);
   });
 });

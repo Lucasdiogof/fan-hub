@@ -1,0 +1,105 @@
+{
+  "namedViolationChecks": {
+    "teamIsGoiasRemoved": true,
+    "teamMatchesClubPresent": true,
+    "isGoiasHomeRemoved": true,
+    "getGoiasSnapshotRemovedFromRepository": true,
+    "hardcodedTeamRouteRemovedFromDatasource": true,
+    "teamToGuessHardcodeRemovedFromRepository": true,
+    "goiasTeamIdRemovedFromPollLiveMatch": true,
+    "hardcodedTeamRouteRemovedFromSyncAndCheckAccess": true,
+    "goiasStringComparisonRemovedFromDispatch": true,
+    "workerGenericTeamRouteExists": true,
+    "workerLegacyGoiasRouteStillServed": true,
+    "notificationCopyNeverUsesFanDemonymField": true,
+    "fanDemonymFieldRemovedFromEdgeConfig": true
+  },
+  "driftCheck": {
+    "sharedIdentityFields": [
+      "canonicalClubId",
+      "oneFootballTeamId",
+      "code"
+    ],
+    "serverOnlyPresentationFields": [
+      "notificationGoalClubName",
+      "notificationVictoryNickname"
+    ],
+    "flutterCanonicalClubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+    "workerCanonicalClubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+    "edgeCanonicalClubId": "4c16340d-300c-5ab2-903f-17519db9b146",
+    "flutterOneFootballTeamId": "1863",
+    "workerOneFootballTeamId": "1863",
+    "edgeOneFootballTeamId": "1863",
+    "flutterCode": "goias",
+    "edgeCode": "goias",
+    "canonicalClubIdMatchesAcrossAll3": true,
+    "oneFootballTeamIdMatchesAcrossAll3": true,
+    "codeMatchesFlutterAndEdge": true,
+    "edgeNotificationGoalClubName": "Goiás",
+    "edgeNotificationVictoryNickname": "Verdão",
+    "goiasNotificationCopyCorrect": true
+  },
+  "classifiedButNotFixed": {
+    "clubHistoryEntryIsGoias": {
+      "file": "lib/features/squad/domain/club_history_entry.dart",
+      "present": true,
+      "classification": "GENERIC_RUNTIME_BUG_DEFERRED",
+      "reason": "is_goias é coluna real no Supabase, marcando se uma passagem no histórico de clube de um jogador é a do clube atualmente mostrado — resolver de verdade exigiria casar nome de clube livre-texto contra um registry canônico, fora do escopo desta etapa (M3.3 é Flutter+Worker+Edge Functions, não redesign de schema de conteúdo editorial)."
+    },
+    "careerEntryIsGoias": {
+      "file": "lib/features/arena/games/career_path/career_models.dart",
+      "present": true,
+      "classification": "GENERIC_RUNTIME_BUG_DEFERRED",
+      "reason": "mesmo padrão de club_history_entry.dart, aplicado ao jogo Adivinhe o Clube (Arena) — mesma razão de não resolver aqui."
+    },
+    "passportIsGoias": {
+      "file": "lib/features/passport/presentation/v2/widgets/passport_match_ticket_v2.dart",
+      "present": true,
+      "classification": "EDITORIAL_CONTENT_ALLOWED_PASSPORT_EXCLUDED",
+      "reason": "Passaporte continua fora da tenancy nesta etapa (NEEDS_PRODUCT_DECISION, ver M2.1/M2.2A) — catalogado, não alterado, por instrução explícita."
+    },
+    "lineupMatchesFallbackTeamToGuess": {
+      "file": "lib/features/arena/games/lineup/lineup_matches.dart",
+      "present": true,
+      "classification": "CONFIG_ALLOWED_FALLBACK_DATASET",
+      "reason": "dataset local de fallback registrado só sob a chave 'goias' em ClubScopedFallback (nunca servido pra outro clube) — mesmo padrão de career_players.dart/goias_players.dart desde a M3.1."
+    },
+    "clubSongVolumeStoreUnscoped": {
+      "file": "lib/features/club/data/club_song_volume_store.dart",
+      "present": true,
+      "classification": "LOCAL_STORAGE_SCOPE_NOT_REQUIRED",
+      "reason": "guarda só o volume preferido (0.0-1.0), uma preferência de hábito do usuário, nunca conteúdo do clube — o próprio arquivo de música já vem de ClubAssets/branding, não depende dessa chave."
+    }
+  },
+  "localStorageFixes": {
+    "storeLocalStorage": {
+      "file": "lib/features/store/data/store_local_storage.dart",
+      "scoped": true,
+      "legacyMigration": true
+    },
+    "guessPlayerStorage": {
+      "file": "lib/features/arena/games/guess_player/data/guess_player_storage.dart",
+      "scoped": true,
+      "legacyMigration": true
+    },
+    "localBestScoreStore": {
+      "file": "lib/features/arena/shared/local_best_score_store.dart",
+      "scoped": true,
+      "legacyMigration": true
+    }
+  },
+  "summary": {
+    "genericRuntimeGoiasLiteralViolations": 0,
+    "genericRuntimeGoiasIdViolations": 0,
+    "serverRuntimeGoiasLiteralViolations": 0,
+    "hardcodedApiFootballTeamIds": 0,
+    "workerSpecificRouteViolations": 0,
+    "crossClubFallbackViolations": 0,
+    "localStorageScopeViolations": 0,
+    "serverClubConfigRegistryCount": 1,
+    "realClubRegistryCount": 1
+  },
+  "allNamedViolationsFixed": true,
+  "driftFree": true,
+  "allLocalStorageFixed": true
+}

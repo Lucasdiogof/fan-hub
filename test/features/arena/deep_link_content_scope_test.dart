@@ -178,6 +178,8 @@ class _FakeCareerPathStorage extends SupabaseCareerPathStorage {
 }
 
 class _FakeGuessPlayerStorage extends GuessPlayerStorage {
+  _FakeGuessPlayerStorage() : super(goiasClubConfig);
+
   @override
   Future<GuessPlayerRoundState?> loadActiveRound() async => null;
   @override

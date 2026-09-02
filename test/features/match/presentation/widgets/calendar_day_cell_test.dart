@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/presentation/widgets/calendar_day_cell.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 
+// Fixture de teste, explicitamente Goiás (TEST_FIXTURE_ALLOWED) — mesmo id
+// de `goiasClubConfig.integrations.oneFootballTeamId`.
+const _goiasTeamId = 1863;
 const _goias = Team(
-  id: Team.goiasId,
+  id: _goiasTeamId,
   name: 'Goiás',
   shortName: 'GOI',
   color: Color(0xFF004C1B),
@@ -45,6 +51,11 @@ Widget _wrap(Widget child) => MaterialApp(
 );
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   testWidgets('dia sem partida não é clicável e não mostra escudo', (
     tester,
   ) async {

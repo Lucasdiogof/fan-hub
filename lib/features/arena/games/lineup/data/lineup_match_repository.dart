@@ -108,7 +108,7 @@ class LineupMatchRepository {
       awayTeam: row['away_team'] as String? ?? '',
       homeScore: (row['home_score'] as num?)?.toInt() ?? 0,
       awayScore: (row['away_score'] as num?)?.toInt() ?? 0,
-      teamToGuess: 'Goiás',
+      teamToGuess: _clubConfig.identity.shortName,
       formation: formation,
       formationConfidence: confidence,
       players: players,

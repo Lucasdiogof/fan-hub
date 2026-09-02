@@ -9,9 +9,14 @@ function extractTeamIdFromPath(teamPath: string): number {
 }
 
 /**
- * Entrada crua do OneFootball → JSON interno simples. `isGoias` é decidido
- * aqui, comparando id contra o id confirmado (nunca por nome) — o Flutter
- * só recebe um booleano, sem saber de qual provider veio o id.
+ * Entrada crua do OneFootball → JSON interno simples. M3.3: não decide mais
+ * "é o clube ativo" aqui (era `isGoias`, calculado no servidor comparando
+ * id) — essa comparação virou responsabilidade só do Flutter
+ * (`Team.matchesClub(ClubConfig)`, mesma função usada em qualquer outro
+ * lugar do app que precisa saber se um `Team` é o clube ativo). O Worker
+ * devolve só o id do time; nunca mais precisa saber qual é "o clube ativo"
+ * pra montar a classificação, então nunca fica desatualizado se um 2º clube
+ * for registrado no futuro.
  *
  * Só saldo de gols, não gols pró/contra separados — é tudo que o
  * OneFootball dá, e é tudo que a UI já mostrava (coluna "SG").
@@ -21,7 +26,7 @@ function extractTeamIdFromPath(teamPath: string): number {
  * vez de deixar `undefined` vazar pro Flutter e quebrar o parse da lista
  * inteira por causa de uma linha.
  */
-export function normalizeStandingEntry(entry: OneFootballStandingRow, goiasId: number | null) {
+export function normalizeStandingEntry(entry: OneFootballStandingRow) {
   const teamId = extractTeamIdFromPath(entry.teamPath);
   return {
     position: entry.position,
@@ -31,7 +36,6 @@ export function normalizeStandingEntry(entry: OneFootballStandingRow, goiasId: n
       shortName: null,
       logo: entry.imageObject.path,
     },
-    isGoias: goiasId != null && teamId === goiasId,
     points: entry.points ?? 0,
     played: entry.playedMatchesCount ?? 0,
     wins: entry.wonMatchesCount ?? 0,

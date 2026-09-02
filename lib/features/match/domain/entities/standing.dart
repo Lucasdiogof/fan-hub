@@ -5,7 +5,7 @@ class Standing extends Equatable {
   const Standing({
     required this.position,
     required this.team,
-    required this.isGoias,
+    required this.isActiveClub,
     required this.points,
     required this.played,
     required this.wins,
@@ -20,7 +20,7 @@ class Standing extends Equatable {
 
   /// Decidido no backend por id confirmado — nunca compare `team.name`
   /// pra descobrir se é o Goiás.
-  final bool isGoias;
+  final bool isActiveClub;
   final int points;
   final int played;
   final int wins;
@@ -38,7 +38,7 @@ class Standing extends Equatable {
   List<Object?> get props => [
     position,
     team,
-    isGoias,
+    isActiveClub,
     points,
     played,
     wins,

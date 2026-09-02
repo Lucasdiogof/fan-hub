@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
@@ -65,11 +67,11 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
   /// confirmação em vez de só ela piscar embaixo da tela.
   bool _justSubmitted = false;
 
-  /// Mesma heurística usada no card da Home (não existe um id de time
-  /// oficial "Goiás" cadastrado no app) — se o Goiás está listado como
-  /// mandante, uniforme principal; senão, reserva.
-  bool get _isGoiasHome =>
-      widget.match.homeTeam.name.toLowerCase().contains('goi');
+  /// Se o clube ativo está listado como mandante, uniforme principal;
+  /// senão, reserva — comparação por id real (`ClubConfig.integrations.
+  /// oneFootballTeamId`), nunca mais substring do nome (M3.3).
+  bool get _isActiveClubHome =>
+      widget.match.homeTeam.matchesClub(sl<ClubConfig>());
 
   @override
   void initState() {
@@ -184,9 +186,9 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      CrowdTab(isHome: _isGoiasHome, fieldKey: _crowdFieldKey),
+                      CrowdTab(isHome: _isActiveClubHome, fieldKey: _crowdFieldKey),
                       EscaleTab(
-                        isHome: _isGoiasHome,
+                        isHome: _isActiveClubHome,
                         fieldKey: _escaleFieldKey,
                         onConfirm: () => _submit(context),
                         justSubmitted: _justSubmitted,

@@ -13,8 +13,13 @@ import 'package:goias_app/features/match/domain/repositories/football_repository
 import 'package:goias_app/features/match/presentation/cubit/game_calendar_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
+// Fixture de teste, explicitamente Goiás (TEST_FIXTURE_ALLOWED) — mesmo id
+// de `goiasClubConfig.integrations.oneFootballTeamId`, duplicado aqui só
+// porque acesso a campo de objeto const de outro arquivo não é uma
+// constant expression válida neste contexto.
+const _goiasTeamId = 1863;
 const _goias = Team(
-  id: Team.goiasId,
+  id: _goiasTeamId,
   name: 'Goiás',
   shortName: 'GOI',
   color: Color(0xFF004C1B),
@@ -74,7 +79,7 @@ class _FakeFootballRepository implements FootballRepository {
 
   @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
-  getGoiasSnapshot() async => throw UnimplementedError();
+  getActiveClubSnapshot() async => throw UnimplementedError();
 
   @override
   Future<
@@ -204,8 +209,8 @@ void main() {
       goiasHome: false,
     );
 
-    expect(home.isHomeTeam(Team.goiasId), isTrue);
-    expect(away.isHomeTeam(Team.goiasId), isFalse);
+    expect(home.isHomeTeam(_goiasTeamId), isTrue);
+    expect(away.isHomeTeam(_goiasTeamId), isFalse);
   });
 
   test('filtro de competição some com jogos de outras categorias', () async {

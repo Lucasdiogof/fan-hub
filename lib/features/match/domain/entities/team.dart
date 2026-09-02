@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
 
 class Team extends Equatable {
   const Team({
@@ -27,16 +28,12 @@ class Team extends Equatable {
   /// de partidas (header/banner da Home), não relacionado a `logoUrl`.
   final String? crestAsset;
 
-  /// `1863` é o id do Goiás no OneFootball — o mesmo número do slug
-  /// `goias-1863` (`GOIAS_ONEFOOTBALL_SLUG` no `wrangler.toml`), extraído
-  /// pelo Worker direto da URL do escudo/path do time (ver
-  /// `extractTeamIdFromCrest`/`extractTeamIdFromPath` em
-  /// `src/football/normalize/*.ts`) — o mesmo padrão que as standings já
-  /// usam pra decidir `isGoias` no backend. Nome só entra como fallback
-  /// defensivo (cobre `MockData`/id ausente), nunca como regra principal.
-  static const int goiasId = 1863;
-
-  bool get isGoias => id == goiasId || name.toLowerCase().contains('goi');
+  /// Compara este time contra o clube ATIVO (via `ClubConfig.integrations.
+  /// oneFootballTeamId`) — nunca contra um id/nome hardcoded de um clube
+  /// específico (M3.3: substitui o antigo `Team.isGoias`/`Team.goiasId`).
+  /// Pura — recebe o config de fora, nunca resolve `GetIt` internamente
+  /// (entity não deve depender de DI).
+  bool matchesClub(ClubConfig config) => id == config.integrations.oneFootballTeamId;
 
   @override
   List<Object?> get props => [id, name, shortName, color, logoUrl, crestAsset];

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/club/presentation/pages/club_page.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   Widget wrap() {
     final router = GoRouter(
       initialLocation: '/',

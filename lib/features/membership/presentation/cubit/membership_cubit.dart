@@ -31,7 +31,7 @@ class MembershipCubit extends Cubit<MembershipState> {
     final membershipFuture = _membershipRepository.getMyMembership();
     final plansFuture = _membershipRepository.getPlans();
     final userFuture = _profileRepository.getProfile();
-    final snapshotFuture = _footballRepository.getGoiasSnapshot();
+    final snapshotFuture = _footballRepository.getActiveClubSnapshot();
 
     final membershipResult = await membershipFuture;
     final plansResult = await plansFuture;

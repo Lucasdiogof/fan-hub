@@ -22,67 +22,11 @@
       "note": "sem club_id — get_my_membership() (limit 1, sem filtro) vazaria status de sócio de um clube pro app de outro se o backend fosse compartilhado sem correção."
     },
     {
-      "file": "lib/features/match/domain/entities/team.dart",
-      "pattern": "name.toLowerCase().contains('goi')",
-      "classification": "LEGACY_TECH_DEBT",
-      "risk": "HIGH",
-      "note": "Team.isGoias — fallback por substring, falso-positivo em qualquer time com \"goi\" no nome (Goiânia, Goianésia). 3ª reimplementação independente do mesmo check existe em crowd_lineup_page.dart e passport_match_ticket_v2.dart."
-    },
-    {
-      "file": "lib/features/arena/games/lineup/data/lineup_match_repository.dart",
-      "pattern": "teamToGuess: 'Goiás'",
-      "classification": "LEGACY_TECH_DEBT",
-      "risk": "HIGH",
-      "note": "literal fixo — o jogo inteiro assume que o time a adivinhar é sempre Goiás, independente do dado da linha."
-    },
-    {
-      "file": "src/index.ts",
-      "pattern": "/api/football/team/goias",
-      "classification": "NETWORK_INTEGRATION",
-      "risk": "HIGH",
-      "note": "rota do Worker com o nome do clube no contrato de URL, não só num valor de config."
-    },
-    {
-      "file": "supabase/functions/notifications-poll-live-match/index.ts",
-      "pattern": "GOIAS_TEAM_ID = 1863",
-      "classification": "NETWORK_INTEGRATION",
-      "risk": "HIGH",
-      "note": "decide qual lado é \"nosso time\" pra detecção de gol — precisa virar config por clube antes de um 2º clube compartilhar esta function."
-    },
-    {
-      "file": "lib/features/match/domain/entities/team.dart",
-      "pattern": "static const int goiasId = 1863;",
-      "classification": "CLUB_CONFIGURATION",
-      "risk": "MEDIUM",
-      "note": "candidato direto a ClubConfig.integrations.oneFootballTeamId — já modelado (goias_club_config.dart), consumidor ainda não migrado."
-    },
-    {
-      "file": "lib/shared/widgets/club_badge.dart",
-      "pattern": "if (team.isGoias)",
-      "classification": "LEGACY_TECH_DEBT",
-      "risk": "MEDIUM",
-      "note": "widget de crest de uso global força asset local só pro Goiás — ponto de dependência crucial pra qualquer 2º clube."
-    },
-    {
-      "file": "lib/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart",
-      "pattern": "_isGoiasHome",
-      "classification": "LEGACY_TECH_DEBT",
-      "risk": "MEDIUM",
-      "note": "reimplementação própria (não reusa Team.isGoias) do mesmo check, pra decidir arte de camisa mandante/visitante."
-    },
-    {
       "file": "lib/features/passport/presentation/v2/widgets/passport_match_ticket_v2.dart",
       "pattern": "team.toLowerCase().contains('goiás')",
       "classification": "LEGACY_TECH_DEBT",
       "risk": "MEDIUM",
       "note": "3ª reimplementação independente do mesmo check, com acento (diferente das outras 2, que usam \"goi\" sem acento) — inconsistência real entre si."
-    },
-    {
-      "file": "lib/features/match/data/repositories/football_repository_impl.dart",
-      "pattern": "getGoiasSnapshot",
-      "classification": "LEGACY_TECH_DEBT",
-      "risk": "MEDIUM",
-      "note": "nome de método do repositório principal de partidas — lock-in de naming, chamado de 4+ lugares (home_cubit, games_cubit, membership_cubit, live_match_poller)."
     },
     {
       "file": "supabase/store_orders.sql",
@@ -139,6 +83,72 @@
       "classification": "SAFE_STATIC_CONTENT",
       "risk": "LOW",
       "note": "título do MaterialApp.router — não visível na maioria das plataformas, cosmético."
+    }
+  ],
+  "resolved": [
+    {
+      "file": "lib/features/match/domain/entities/team.dart",
+      "pattern": "name.toLowerCase().contains('goi')",
+      "classification": "LEGACY_TECH_DEBT",
+      "risk": "HIGH",
+      "note": "Team.isGoias — fallback por substring, falso-positivo em qualquer time com \"goi\" no nome (Goiânia, Goianésia). 3ª reimplementação independente do mesmo check existe em crowd_lineup_page.dart e passport_match_ticket_v2.dart.",
+      "fixedInEtapa": "M3.3"
+    },
+    {
+      "file": "lib/features/arena/games/lineup/data/lineup_match_repository.dart",
+      "pattern": "teamToGuess: 'Goiás'",
+      "classification": "LEGACY_TECH_DEBT",
+      "risk": "HIGH",
+      "note": "literal fixo — o jogo inteiro assume que o time a adivinhar é sempre Goiás, independente do dado da linha.",
+      "fixedInEtapa": "M3.3"
+    },
+    {
+      "file": "src/index.ts",
+      "pattern": "/api/football/team/goias",
+      "classification": "NETWORK_INTEGRATION",
+      "risk": "HIGH",
+      "note": "rota do Worker com o nome do clube no contrato de URL, não só num valor de config.",
+      "fixedInEtapa": "M3.3"
+    },
+    {
+      "file": "supabase/functions/notifications-poll-live-match/index.ts",
+      "pattern": "GOIAS_TEAM_ID = 1863",
+      "classification": "NETWORK_INTEGRATION",
+      "risk": "HIGH",
+      "note": "decide qual lado é \"nosso time\" pra detecção de gol — precisa virar config por clube antes de um 2º clube compartilhar esta function.",
+      "fixedInEtapa": "M3.3"
+    },
+    {
+      "file": "lib/features/match/domain/entities/team.dart",
+      "pattern": "static const int goiasId = 1863;",
+      "classification": "CLUB_CONFIGURATION",
+      "risk": "MEDIUM",
+      "note": "candidato direto a ClubConfig.integrations.oneFootballTeamId — já modelado (goias_club_config.dart), consumidor ainda não migrado.",
+      "fixedInEtapa": "M3.3"
+    },
+    {
+      "file": "lib/shared/widgets/club_badge.dart",
+      "pattern": "if (team.isGoias)",
+      "classification": "LEGACY_TECH_DEBT",
+      "risk": "MEDIUM",
+      "note": "widget de crest de uso global força asset local só pro Goiás — ponto de dependência crucial pra qualquer 2º clube.",
+      "fixedInEtapa": "M3.3"
+    },
+    {
+      "file": "lib/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart",
+      "pattern": "_isGoiasHome",
+      "classification": "LEGACY_TECH_DEBT",
+      "risk": "MEDIUM",
+      "note": "reimplementação própria (não reusa Team.isGoias) do mesmo check, pra decidir arte de camisa mandante/visitante.",
+      "fixedInEtapa": "M3.3"
+    },
+    {
+      "file": "lib/features/match/data/repositories/football_repository_impl.dart",
+      "pattern": "getGoiasSnapshot",
+      "classification": "LEGACY_TECH_DEBT",
+      "risk": "MEDIUM",
+      "note": "nome de método do repositório principal de partidas — lock-in de naming, chamado de 4+ lugares (home_cubit, games_cubit, membership_cubit, live_match_poller).",
+      "fixedInEtapa": "M3.3"
     }
   ],
   "stale": []

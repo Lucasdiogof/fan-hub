@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/data/mock_store_repository.dart';
 import 'package:goias_app/features/store/data/store_local_storage.dart';
@@ -20,7 +21,7 @@ void main() {
 
   setUp(() {
     SharedPreferences.setMockInitialValues({});
-    repository = MockStoreRepository(StoreLocalStorage());
+    repository = MockStoreRepository(StoreLocalStorage(goiasClubConfig));
   });
 
   test('getProducts loads the real catalog asset', () async {
@@ -135,7 +136,7 @@ void main() {
       );
       await repository.saveCart(cart);
 
-      final reloaded = MockStoreRepository(StoreLocalStorage());
+      final reloaded = MockStoreRepository(StoreLocalStorage(goiasClubConfig));
       final loaded = _unwrap(await reloaded.loadCart());
       expect(loaded.items, hasLength(1));
       expect(loaded.items.single.productId, 'uniform_01_female_fan');

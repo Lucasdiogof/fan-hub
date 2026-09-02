@@ -165,7 +165,7 @@ class _SuccessHero extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const ClubBadge(team: MockData.goias, size: 20, onDark: true),
+              ClubBadge(team: MockData.goias, size: 20, onDark: true),
               const SizedBox(width: AppSpacing.sm),
               Text(
                 'SÓCIO ESMERALDA',

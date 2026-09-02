@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/match/data/dto/competition_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_dto.dart';
 import 'package:goias_app/features/match/data/dto/lineup_dto.dart';
@@ -7,11 +8,16 @@ import 'package:goias_app/features/match/data/dto/match_stat_dto.dart';
 import 'package:goias_app/features/match/data/dto/standing_dto.dart';
 
 /// Só sabe conversar com o nosso backend interno (`/api/football/*`) —
-/// nunca com campeonato-brasileiro-api ou TheSportsDB diretamente.
+/// nunca com campeonato-brasileiro-api ou TheSportsDB diretamente. As rotas
+/// `/team/<code>` e `/team/<code>/season` usam `ClubConfig.identity.code`
+/// (M3.3) — o Worker resolve `<code>` num `ClubServerConfig` próprio (ver
+/// `src/_shared/club_server_config.ts`); `/team/goias` continua existindo
+/// no Worker só como alias legacy, o app novo nunca chama esse literal.
 class FootballRemoteDataSource {
-  FootballRemoteDataSource(this._dio);
+  FootballRemoteDataSource(this._dio, this._clubConfig);
 
   final Dio _dio;
+  final ClubConfig _clubConfig;
 
   Future<({CompetitionDto competition, List<StandingDto> standings})>
   getStandings() async {
@@ -65,9 +71,9 @@ class FootballRemoteDataSource {
       List<MatchDto> recentResults,
     })
   >
-  getGoiasSnapshot() async {
+  getActiveClubSnapshot() async {
     final response = await _dio.get<Map<String, dynamic>>(
-      '/api/football/team/goias',
+      '/api/football/team/${_clubConfig.identity.code}',
     );
     final data = response.data!;
     final nextMatchJson = data['nextMatch'] as Map<String, dynamic>?;
@@ -90,7 +96,7 @@ class FootballRemoteDataSource {
   /// competição só (ver `MatchDto.competition`).
   Future<List<MatchDto>> getSeasonFixtures() async {
     final response = await _dio.get<Map<String, dynamic>>(
-      '/api/football/team/goias/season',
+      '/api/football/team/${_clubConfig.identity.code}/season',
     );
     final data = response.data!;
     return (data['matches'] as List)

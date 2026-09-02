@@ -86,7 +86,7 @@ class GamesCubit extends Cubit<GamesState> {
 
   Future<void> loadSnapshot() async {
     emit(state.copyWith(snapshotStatus: LoadStatus.loading));
-    final result = await _footballRepository.getGoiasSnapshot();
+    final result = await _footballRepository.getActiveClubSnapshot();
     switch (result) {
       case Success(:final data):
         final nextMatch =

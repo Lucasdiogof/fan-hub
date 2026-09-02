@@ -149,16 +149,19 @@ test('user_notification_tokens continua sem club_id em supabase_notification_rep
 // ============================================================================
 // 6) Escopo — Passaporte e M3.3 continuam intocados
 // ============================================================================
-console.log('\n6) escopo estrito — Passaporte e M3.3 (branding/isGoias/Worker) intocados');
+console.log('\n6) escopo estrito — Passaporte intocado (M3.3 é quem legitimamente toca branding/isGoias/Worker agora)');
 test('passport_matches/passport_attendances/passport_memorable_matches: repository do Passaporte não foi tocado', () => {
   const src = fs.readFileSync(path.join(LIB, 'features/passport/data/supabase_passport_repository.dart'), 'utf8');
   assert.doesNotMatch(src, /_clubConfig/);
   assert.doesNotMatch(src, /club_id/);
 });
-test('Team.isGoias/_isGoiasHome/getGoiasSnapshot/Team.goiasId continuam sem nenhuma referência a ClubConfig', () => {
-  const teamSrc = fs.readFileSync(path.join(LIB, 'features/match/domain/entities/team.dart'), 'utf8');
-  assert.doesNotMatch(teamSrc, /ClubConfig/);
-});
+// SUPERSEDIDO pela M3.3 (mesmo padrão de regressão auto-referencial já
+// visto em M2.2A/M3.1): esta asserção provava, na época da M3.2, que
+// `team.dart` (Team.isGoias/goiasId) ainda não tinha sido tocado — a M3.3
+// é exatamente a etapa que devia tocar, adicionando `Team.matchesClub
+// (ClubConfig)` e removendo `isGoias`/`goiasId`. A prova de que ISSO
+// aconteceu corretamente mora em `test_multiclub_runtime_hardcodes.mjs`
+// (seção 1), não aqui — nunca reintroduzir esta asserção como estava.
 test('AppColors/AppAssets não foram tocados nesta etapa (nenhum arquivo de tema no diff esperado)', () => {
   const themeFile = path.join(LIB, 'core/theme/app_colors.dart');
   assert.ok(fs.existsSync(themeFile));
