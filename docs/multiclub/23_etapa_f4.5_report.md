@@ -329,3 +329,32 @@ nunca commitado).
 - Revisada e aprovada 2026-09-02 com os endurecimentos da seção 21 — commit
   controlado + `supabase db push` autorizados a seguir. `git push` segue
   **não autorizado** (nunca fazer sem pedido explícito).
+
+## 22. Aplicada — 2026-09-02
+
+Commits: `b2c50d0` (fix original) + `fb25c83` (correção de um bug pego no
+1º `db push`: o CTE que lista os 31 `person_id` do elenco atual comparava
+literais sem cast contra uma coluna `uuid`, e o Postgres rejeitou com
+`operator does not exist: uuid = text` — nada foi aplicado nessa tentativa
+(o erro ocorreu no parse, antes do `DO $$` começar a rodar), corrigido
+castando cada literal como `::uuid` na própria tupla `VALUES`, mesmo padrão
+já usado em outras etapas). 2ª tentativa de `db push` aplicou as 2
+migrations sem nenhum `RAISE EXCEPTION` — todas as preconditions e
+postconditions (seção 21) passaram ao vivo.
+
+Validação live pós-push: `player_club_spells` continua com 64 linhas (igual
+a antes — só UPDATE, 0 spell novo); os 8 spells corrigidos: 8/8
+`is_ongoing=true`, 8/8 com os 4 campos de fim NULL; Felipe Clemente
+confirmado com `start_date=2026-08-21, start_precision=DATE`; proveniência
+dos 8 spells continua em 8 linhas (nada apagado); elenco atual (31
+`squad_members.person_id` não nulos): 31/31 com exatamente 1 spell Goiás
+ongoing (0 com zero, 0 com 2+), 0 pares de spells Goiás sobrepostos
+(recheck independente, fora da migration); `player_club_stats` CLUB_TOTAL:
+31/31 no elenco atual, 0 duplicado; Ezequiel e Murillo Victorio confirmados
+`0/0, PARTIAL, SNAPSHOT, as_of_date=2026-09-02, as_of_match_id=null`; 4
+linhas de provenance (2 `PRIMARY` + 2 `CORROBORATING`); 0 FK órfã
+(spell→people, stat→people, stat_sources→stats); Murilo Câmara
+(`a2ef1bbc...`) e Murillo Victorio (`e590ad99...`) confirmados como pessoas
+distintas ao vivo. `npx supabase migration list` final: **35 migrations,
+todas local=remote**. `git status`: limpo (nenhum arquivo de F4.5
+pendente); nenhum `git push` executado.
