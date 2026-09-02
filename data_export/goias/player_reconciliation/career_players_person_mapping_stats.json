@@ -1,0 +1,107 @@
+{
+  "total": 30,
+  "RESOLVED": 21,
+  "AMBIGUOUS": 0,
+  "UNRESOLVED": 9,
+  "OUT_OF_SCOPE": 0,
+  "duplicatePersonIdIssues": [],
+  "unresolvedList": [
+    {
+      "careerPlayerKey": "grafite",
+      "currentName": "Grafite",
+      "reason": "1 pessoa canônica encontrada (Grafite, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "bruno_henrique",
+      "currentName": "Bruno Henrique",
+      "reason": "1 pessoa canônica encontrada (Bruno Henrique, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "pedro_raul",
+      "currentName": "Pedro Raul",
+      "reason": "1 pessoa canônica encontrada (Pedro Raul, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "jadilson",
+      "currentName": "Jadílson",
+      "reason": "1 pessoa canônica encontrada (Jadílson, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "souza",
+      "currentName": "Souza",
+      "reason": "1 pessoa canônica encontrada (Souza, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "roni",
+      "currentName": "Rôni",
+      "reason": "1 pessoa canônica encontrada (Rôni, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "vitor",
+      "currentName": "Vítor",
+      "reason": "1 pessoa canônica encontrada (Vítor, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "marcelo_rangel",
+      "currentName": "Marcelo Rangel",
+      "reason": "1 pessoa canônica encontrada (Marcelo Rangel, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    },
+    {
+      "careerPlayerKey": "apodi",
+      "currentName": "Apodi",
+      "reason": "1 pessoa canônica encontrada (Apodi, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação."
+    }
+  ],
+  "multiplePassagens": [
+    {
+      "careerPlayerKey": "fernandao",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "evair",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "welliton",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "rafael_moura",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "araujo",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "iarley",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "jadilson",
+      "status": "UNRESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "paulo_baier",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "vitor",
+      "status": "UNRESOLVED",
+      "goiasSpellsInClubCareer": 2
+    },
+    {
+      "careerPlayerKey": "walter",
+      "status": "RESOLVED",
+      "goiasSpellsInClubCareer": 2
+    }
+  ]
+}

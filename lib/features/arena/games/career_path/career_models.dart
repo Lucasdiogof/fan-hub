@@ -66,6 +66,7 @@ class CareerPlayer extends Equatable {
     this.aggregateStats = const [],
     this.position,
     this.imageAsset,
+    this.personId,
   });
 
   final String id;
@@ -77,6 +78,14 @@ class CareerPlayer extends Equatable {
   final String? position;
   final String? imageAsset;
 
+  /// Identidade canônica (people.id, Etapa F1) — null quando a
+  /// reconciliação ainda não fechou uma pessoa aprovada com segurança
+  /// suficiente pra este jogador (ver career_players_person_mapping.json).
+  /// [id] continua sendo a chave do JOGO (progresso/ranking, nunca muda);
+  /// [personId] é a identidade da PESSOA real, quando conhecida — os dois
+  /// nunca devem ser confundidos.
+  final String? personId;
+
   @override
   List<Object?> get props => [
     id,
@@ -87,6 +96,7 @@ class CareerPlayer extends Equatable {
     aggregateStats,
     position,
     imageAsset,
+    personId,
   ];
 }
 

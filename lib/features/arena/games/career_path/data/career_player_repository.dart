@@ -18,7 +18,7 @@ class CareerPlayerRepository {
       final rows = await _client
           .from('career_players')
           .select(
-            'id, answer, accepted_answers, position, club_career, national_teams, aggregate_stats',
+            'id, answer, accepted_answers, position, club_career, national_teams, aggregate_stats, person_id',
           )
           .eq('is_active', true)
           .order('sort_order', ascending: true);
@@ -68,6 +68,7 @@ class CareerPlayerRepository {
       clubCareer: clubCareer,
       nationalTeams: nationalTeams,
       aggregateStats: aggregateStats,
+      personId: row['person_id'] as String?,
     );
   }
 

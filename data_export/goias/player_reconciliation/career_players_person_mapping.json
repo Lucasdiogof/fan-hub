@@ -1,0 +1,512 @@
+[
+  {
+    "careerPlayerKey": "fernandao",
+    "currentName": "Fernandão",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+    "canonicalName": "Fernandão",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Fernandão), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "491bf2d0-f640-5b03-9ab1-a1772095133d",
+        "canonicalName": "Fernandão",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "josue",
+    "currentName": "Josué",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+    "canonicalName": "Josué",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Josué), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "09c38bac-99ee-5173-98f6-cc0d59ecca9c",
+        "canonicalName": "Josué",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "danilo",
+    "currentName": "Danilo",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+    "canonicalName": "Danilo Gabriel de Andrade",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Danilo Gabriel de Andrade), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "c628f9d8-6719-5506-acbd-adfb683fcf9b",
+        "canonicalName": "Danilo Gabriel de Andrade",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "grafite",
+    "currentName": "Grafite",
+    "goiasSpellsInClubCareer": 1,
+    "personId": null,
+    "canonicalName": "Grafite",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Grafite, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0ae93f99-77d3-54fe-863c-198f1a5f5002",
+        "canonicalName": "Grafite",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "dudu_cearense",
+    "currentName": "Dudu Cearense",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+    "canonicalName": "Dudu Cearense",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Dudu Cearense), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "7587fc6d-f810-5c41-b206-0a2ffe09a96d",
+        "canonicalName": "Dudu Cearense",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "evair",
+    "currentName": "Evair",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+    "canonicalName": "Evair Aparecido Paulino",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Evair Aparecido Paulino), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6b36f211-ed18-50fb-8cfc-77f8430f1616",
+        "canonicalName": "Evair Aparecido Paulino",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "rafael_toloi",
+    "currentName": "Rafael Tolói",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+    "canonicalName": "Rafael Tolói",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rafael Tolói), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "b5d66b3b-e755-5b44-8765-3f2da953a759",
+        "canonicalName": "Rafael Tolói",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "bruno_henrique",
+    "currentName": "Bruno Henrique",
+    "goiasSpellsInClubCareer": 1,
+    "personId": null,
+    "canonicalName": "Bruno Henrique",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Bruno Henrique, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "be4bf8d6-5b57-532d-bc56-118e7970a01f",
+        "canonicalName": "Bruno Henrique",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "welliton",
+    "currentName": "Welliton",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+    "canonicalName": "Welliton Soares de Morais",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Welliton Soares de Morais), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "a6577244-2373-5e79-b65c-b9200cb2a6e9",
+        "canonicalName": "Welliton Soares de Morais",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "erik",
+    "currentName": "Erik",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+    "canonicalName": "Erik Nascimento de Lima",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Erik Nascimento de Lima), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "48016516-27c1-5c06-a52a-9893bfc90cf2",
+        "canonicalName": "Erik Nascimento de Lima",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "pedro_raul",
+    "currentName": "Pedro Raul",
+    "goiasSpellsInClubCareer": 1,
+    "personId": null,
+    "canonicalName": "Pedro Raul",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Pedro Raul, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "0fac94c7-87fc-5061-b7a4-29ea9f620794",
+        "canonicalName": "Pedro Raul",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "rafael_moura",
+    "currentName": "Rafael Moura",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+    "canonicalName": "Rafael Moura",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rafael Moura), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "16d026a7-49b3-5257-9daa-30601e3ef357",
+        "canonicalName": "Rafael Moura",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "araujo",
+    "currentName": "Araújo",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+    "canonicalName": "Araújo",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Araújo), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "50863ba2-ea68-5ebd-9a97-fe43f3882484",
+        "canonicalName": "Araújo",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "ernando",
+    "currentName": "Ernando",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+    "canonicalName": "Ernando",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ernando), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25",
+        "canonicalName": "Ernando",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "iarley",
+    "currentName": "Iarley",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+    "canonicalName": "Iarley",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Iarley), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "652b4be1-ed2b-5c0e-a384-4626b9bb5920",
+        "canonicalName": "Iarley",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "jadilson",
+    "currentName": "Jadílson",
+    "goiasSpellsInClubCareer": 2,
+    "personId": null,
+    "canonicalName": "Jadílson",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Jadílson, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "04981cf4-75f8-556e-9e03-9a472f2a8619",
+        "canonicalName": "Jadílson",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "paulo_baier",
+    "currentName": "Paulo Baier",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+    "canonicalName": "Paulo Baier",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Paulo Baier), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "493bde6b-e169-5649-9c23-e4a5e5f5f08e",
+        "canonicalName": "Paulo Baier",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "ricardo_goulart",
+    "currentName": "Ricardo Goulart",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+    "canonicalName": "Ricardo Goulart",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Ricardo Goulart), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "4b153bcc-657a-5007-8c20-48c04130a484",
+        "canonicalName": "Ricardo Goulart",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "souza",
+    "currentName": "Souza",
+    "goiasSpellsInClubCareer": 1,
+    "personId": null,
+    "canonicalName": "Souza",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Souza, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "e02185f6-7fc3-5ae6-8fc2-60030c821025",
+        "canonicalName": "Souza",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "roni",
+    "currentName": "Rôni",
+    "goiasSpellsInClubCareer": 1,
+    "personId": null,
+    "canonicalName": "Rôni",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Rôni, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "331ed712-5fbe-5f97-84cf-5e12bd3bd6ab",
+        "canonicalName": "Rôni",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "vitor",
+    "currentName": "Vítor",
+    "goiasSpellsInClubCareer": 2,
+    "personId": null,
+    "canonicalName": "Vítor",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Vítor, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "8fa80d15-d0f5-552e-b029-b8df5771bceb",
+        "canonicalName": "Vítor",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "rodrigo_tabata",
+    "currentName": "Rodrigo Tabata",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+    "canonicalName": "Rodrigo Tabata",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Rodrigo Tabata), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "81a433ef-5acf-51c1-a38d-742a42ae346e",
+        "canonicalName": "Rodrigo Tabata",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "egidio",
+    "currentName": "Egídio",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+    "canonicalName": "Egídio",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Egídio), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "6e8b3d49-4926-5b66-b7f1-8481c2c7a701",
+        "canonicalName": "Egídio",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "michael",
+    "currentName": "Michael",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+    "canonicalName": "Michael Richard Delgado de Oliveira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Michael Richard Delgado de Oliveira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "13c239d9-de5a-51de-b9ce-b4c42aa88d57",
+        "canonicalName": "Michael Richard Delgado de Oliveira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "harlei",
+    "currentName": "Harlei",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+    "canonicalName": "Harlei",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Harlei), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "66e38ffb-89f6-5c33-8f67-d9016304b564",
+        "canonicalName": "Harlei",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "walter",
+    "currentName": "Walter",
+    "goiasSpellsInClubCareer": 2,
+    "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+    "canonicalName": "Walter Henrique da Silva",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Walter Henrique da Silva), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "828c3bc8-7e25-55c3-8468-d3cec50cd2e5",
+        "canonicalName": "Walter Henrique da Silva",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "dill",
+    "currentName": "Dill",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "7dcb9ad0-b573-5261-aa53-736c3c9b96aa",
+    "canonicalName": "Dill",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Dill), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "7dcb9ad0-b573-5261-aa53-736c3c9b96aa",
+        "canonicalName": "Dill",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "tadeu",
+    "currentName": "Tadeu",
+    "goiasSpellsInClubCareer": 1,
+    "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+    "canonicalName": "Tadeu Antônio Ferreira",
+    "status": "RESOLVED",
+    "resolutionReason": "1 pessoa canônica (Tadeu Antônio Ferreira), identity=EXACT_IDENTITY, insert_status=APPROVED.",
+    "sources": [
+      {
+        "personId": "e2507d62-8cb5-5152-af56-f67464196ac6",
+        "canonicalName": "Tadeu Antônio Ferreira",
+        "identity": "EXACT_IDENTITY",
+        "insertStatus": "APPROVED"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "marcelo_rangel",
+    "currentName": "Marcelo Rangel",
+    "goiasSpellsInClubCareer": 1,
+    "personId": null,
+    "canonicalName": "Marcelo Rangel",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Marcelo Rangel, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "17620cb8-7492-5068-a43c-51bf857b937b",
+        "canonicalName": "Marcelo Rangel",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  },
+  {
+    "careerPlayerKey": "apodi",
+    "currentName": "Apodi",
+    "goiasSpellsInClubCareer": 1,
+    "personId": null,
+    "canonicalName": "Apodi",
+    "status": "UNRESOLVED",
+    "resolutionReason": "1 pessoa canônica encontrada (Apodi, identity=AMBIGUOUS_IDENTITY), mas insert_status=BLOCKED_AMBIGUOUS — não é seguro persistir person_id sem aprovação.",
+    "sources": [
+      {
+        "personId": "9293eb26-0bed-50d2-9168-6099dbc5a08a",
+        "canonicalName": "Apodi",
+        "identity": "AMBIGUOUS_IDENTITY",
+        "insertStatus": "BLOCKED_AMBIGUOUS"
+      }
+    ]
+  }
+]

@@ -61,6 +61,7 @@ CareerAggregateStat _agg(
 final List<CareerPlayer> careerPlayers = [
   CareerPlayer(
     id: 'fernandao',
+    personId: '491bf2d0-f640-5b03-9ab1-a1772095133d',
     answer: 'Fernandão',
     acceptedAnswers: const ['Fernandão', 'Fernando Lúcio da Costa'],
     position: 'Atacante / meia-atacante',
@@ -86,6 +87,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'josue',
+    personId: '09c38bac-99ee-5173-98f6-cc0d59ecca9c',
     answer: 'Josué',
     acceptedAnswers: const ['Josué', 'Josué Anunciado de Oliveira'],
     position: 'Volante',
@@ -99,6 +101,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'danilo',
+    personId: 'c628f9d8-6719-5506-acbd-adfb683fcf9b',
     answer: 'Danilo',
     acceptedAnswers: const ['Danilo', 'Danilo Gabriel de Andrade'],
     position: 'Meia',
@@ -112,6 +115,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'grafite',
+    personId: null,
     answer: 'Grafite',
     acceptedAnswers: const ['Grafite', 'Edinaldo Batista Libânio'],
     position: 'Centroavante',
@@ -143,6 +147,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'dudu_cearense',
+    personId: '7587fc6d-f810-5c41-b206-0a2ffe09a96d',
     answer: 'Dudu Cearense',
     acceptedAnswers: const ['Dudu Cearense', 'Alexandro Silva de Sousa'],
     position: 'Volante / meia',
@@ -163,6 +168,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'evair',
+    personId: '6b36f211-ed18-50fb-8cfc-77f8430f1616',
     answer: 'Evair',
     acceptedAnswers: const ['Evair', 'Evair Aparecido Paulino'],
     position: 'Centroavante',
@@ -201,6 +207,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'rafael_toloi',
+    personId: 'b5d66b3b-e755-5b44-8765-3f2da953a759',
     answer: 'Rafael Tolói',
     acceptedAnswers: const ['Rafael Tolói'],
     position: 'Zagueiro',
@@ -226,6 +233,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'bruno_henrique',
+    personId: null,
     answer: 'Bruno Henrique',
     acceptedAnswers: const ['Bruno Henrique', 'Bruno Henrique Pinto'],
     position: 'Atacante / ponta',
@@ -241,6 +249,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'welliton',
+    personId: 'a6577244-2373-5e79-b65c-b9200cb2a6e9',
     answer: 'Welliton',
     acceptedAnswers: const ['Welliton', 'Welliton Soares de Morais'],
     position: 'Atacante',
@@ -266,6 +275,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'erik',
+    personId: '48016516-27c1-5c06-a52a-9893bfc90cf2',
     answer: 'Erik',
     acceptedAnswers: const ['Erik', 'Erik Nascimento de Lima'],
     position: 'Atacante / ponta',
@@ -283,6 +293,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'pedro_raul',
+    personId: null,
     answer: 'Pedro Raul',
     acceptedAnswers: const ['Pedro Raul', 'Pedro Raul Garay da Silva'],
     position: 'Centroavante',
@@ -304,6 +315,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'rafael_moura',
+    personId: '16d026a7-49b3-5257-9daa-30601e3ef357',
     answer: 'Rafael Moura',
     acceptedAnswers: const [
       'Rafael Moura',
@@ -348,6 +360,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'araujo',
+    personId: '50863ba2-ea68-5ebd-9a97-fe43f3882484',
     answer: 'Araújo',
     acceptedAnswers: const ['Araújo', 'Clemerson de Araújo Soares'],
     position: 'Atacante',
@@ -378,6 +391,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'ernando',
+    personId: 'a79a75b3-6b9c-5dfb-9afd-cb2fe1a1fe25',
     answer: 'Ernando',
     acceptedAnswers: const ['Ernando', 'Ernando Rodrigues Lopes'],
     position: 'Zagueiro',
@@ -392,6 +406,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'iarley',
+    personId: '652b4be1-ed2b-5c0e-a384-4626b9bb5920',
     answer: 'Iarley',
     acceptedAnswers: const ['Iarley', 'Pedro Iarley Lima Dantas'],
     position: 'Meia-atacante / atacante',
@@ -429,6 +444,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'jadilson',
+    personId: null,
     answer: 'Jadílson',
     acceptedAnswers: const ['Jadílson', 'José Jadílson dos Santos Silva'],
     position: 'Lateral-esquerdo',
@@ -463,6 +479,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'paulo_baier',
+    personId: '493bde6b-e169-5649-9c23-e4a5e5f5f08e',
     answer: 'Paulo Baier',
     acceptedAnswers: const ['Paulo Baier', 'Paulo César Baier'],
     position: 'Meia / lateral-direito',
@@ -505,6 +522,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'ricardo_goulart',
+    personId: '4b153bcc-657a-5007-8c20-48c04130a484',
     answer: 'Ricardo Goulart',
     acceptedAnswers: const ['Ricardo Goulart', 'Ricardo Goulart Pereira'],
     position: 'Meia-atacante / atacante',
@@ -527,6 +545,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'souza',
+    personId: null,
     answer: 'Souza',
     acceptedAnswers: const ['Souza', 'Rodrigo de Souza Cardoso'],
     position: 'Centroavante',
@@ -552,6 +571,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'roni',
+    personId: null,
     answer: 'Rôni',
     acceptedAnswers: const ['Rôni', 'Roniéliton Pereira Santos'],
     position: 'Atacante',
@@ -580,6 +600,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'vitor',
+    personId: null,
     answer: 'Vítor',
     acceptedAnswers: const ['Vítor', 'Cícero Vítor dos Santos Júnior'],
     position: 'Lateral-direito',
@@ -607,6 +628,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'rodrigo_tabata',
+    personId: '81a433ef-5acf-51c1-a38d-742a42ae346e',
     answer: 'Rodrigo Tabata',
     acceptedAnswers: const ['Rodrigo Tabata', 'Rodrigo Barbosa Tabata'],
     position: 'Meia-atacante',
@@ -647,6 +669,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'egidio',
+    personId: '6e8b3d49-4926-5b66-b7f1-8481c2c7a701',
     answer: 'Egídio',
     acceptedAnswers: const ['Egídio', 'Egídio de Araújo Pereira Júnior'],
     position: 'Lateral-esquerdo',
@@ -683,6 +706,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'michael',
+    personId: '13c239d9-de5a-51de-b9ce-b4c42aa88d57',
     answer: 'Michael',
     acceptedAnswers: const ['Michael', 'Michael Richard Delgado de Oliveira'],
     position: 'Ponta / atacante',
@@ -702,6 +726,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'harlei',
+    personId: '66e38ffb-89f6-5c33-8f67-d9016304b564',
     answer: 'Harlei',
     acceptedAnswers: const ['Harlei', 'Harlei de Menezes Silva'],
     position: 'Goleiro',
@@ -714,6 +739,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'walter',
+    personId: '828c3bc8-7e25-55c3-8468-d3cec50cd2e5',
     answer: 'Walter',
     acceptedAnswers: const ['Walter', 'Walter Henrique da Silva'],
     position: 'Centroavante',
@@ -758,6 +784,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'dill',
+    personId: '7dcb9ad0-b573-5261-aa53-736c3c9b96aa',
     answer: 'Dill',
     acceptedAnswers: const ['Dill', 'Elpídio Barbosa Conceição'],
     position: 'Atacante',
@@ -780,6 +807,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'tadeu',
+    personId: 'e2507d62-8cb5-5152-af56-f67464196ac6',
     answer: 'Tadeu',
     acceptedAnswers: const ['Tadeu', 'Tadeu Antônio Ferreira'],
     position: 'Goleiro',
@@ -796,6 +824,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'marcelo_rangel',
+    personId: null,
     answer: 'Marcelo Rangel',
     acceptedAnswers: const ['Marcelo Rangel', 'Marcelo Rangel Rosa'],
     position: 'Goleiro',
@@ -810,6 +839,7 @@ final List<CareerPlayer> careerPlayers = [
   ),
   CareerPlayer(
     id: 'apodi',
+    personId: null,
     answer: 'Apodi',
     acceptedAnswers: const ['Apodi', 'Luís Dialisson de Souza Alves'],
     position: 'Lateral-direito / ala',
