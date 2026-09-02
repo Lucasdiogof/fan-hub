@@ -15,11 +15,20 @@ class SquadMember {
     this.photoUrl,
     this.instagramUrl,
     this.clubHistory = const [],
+    this.personId,
   });
 
   final String id;
   final String name;
   final String? fullName;
+
+  /// Identidade canônica (people.id, Etapa F4) — null quando a
+  /// reconciliação ainda não fechou uma pessoa aprovada com segurança
+  /// suficiente pra este atleta (ver squad_members_person_mapping.json).
+  /// [id] continua a chave interna/editorial da feature (nome exibido,
+  /// foto via squadPhotoAssets); [personId] é a identidade da PESSOA
+  /// real, quando conhecida.
+  final String? personId;
   final int? shirtNumber;
   final String position;
   final String positionGroup;
@@ -63,6 +72,7 @@ class SquadMember {
       clubHistory: history
           .map((e) => ClubHistoryEntry.fromJson(e as Map<String, dynamic>))
           .toList(growable: false),
+      personId: json['person_id'] as String?,
     );
   }
 }

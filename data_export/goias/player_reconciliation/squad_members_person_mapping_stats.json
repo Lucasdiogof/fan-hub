@@ -1,0 +1,11 @@
+{
+  "total": 31,
+  "RESOLVED": 31,
+  "AMBIGUOUS": 0,
+  "UNRESOLVED": 0,
+  "OUT_OF_SCOPE": 0,
+  "distinctPersonIdsAmongResolved": 31,
+  "personIdReusedAcrossRows": [],
+  "reverseMultiMembership": [],
+  "unresolvedList": []
+}
