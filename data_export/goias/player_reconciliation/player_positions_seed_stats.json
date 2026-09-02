@@ -1,0 +1,150 @@
+{
+  "approvedPeopleTotal": 96,
+  "peopleWithAtLeastOnePosition": 95,
+  "peopleBlocked": 1,
+  "totalPositionRows": 145,
+  "verifiedRows": 124,
+  "partialRows": 21,
+  "totalSourceRows": 370,
+  "peopleWith1Position": 64,
+  "peopleWith2Positions": 16,
+  "peopleWith3PlusPositions": 15,
+  "peopleFromGoldSource": 21,
+  "conflictsReport": [
+    {
+      "canonicalName": "Michael Richard Delgado de Oliveira",
+      "issue": "career_players.position \"Ponta / atacante\" tem fragmento(s) não mapeável(is): Ponta (lado desconhecido, nunca adivinhado)"
+    },
+    {
+      "canonicalName": "Jackson Diego Ibraim Fagundes",
+      "issue": "versatilidade sem fonte-ouro: códigos MC,LD,VOL — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Erik Nascimento de Lima",
+      "issue": "career_players.position \"Atacante / ponta\" tem fragmento(s) não mapeável(is): ponta (lado desconhecido, nunca adivinhado)"
+    },
+    {
+      "canonicalName": "Fabiano Cézar Viegas",
+      "issue": "lineup_matches:2006_newells_lib_grupos pos \"DEF\" tem fragmento(s) genérico(s) não mapeável(is): DEF"
+    },
+    {
+      "canonicalName": "Fabiano Cézar Viegas",
+      "issue": "lineup_matches:2006_estudiantes_lib_oitavas_volta pos \"DEF\" tem fragmento(s) genérico(s) não mapeável(is): DEF"
+    },
+    {
+      "canonicalName": "Fabiano Cézar Viegas",
+      "issue": "versatilidade sem fonte-ouro: códigos MC,ZAG — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Fernandão",
+      "issue": "versatilidade sem fonte-ouro: códigos ATA,MEI — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Dudu Cearense",
+      "issue": "versatilidade sem fonte-ouro: códigos VOL,MEI — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Iarley",
+      "issue": "versatilidade sem fonte-ouro: códigos ATA,MEI — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Paulo Baier",
+      "issue": "lineup_matches:2005_saopaulo_brA_3lugar pos \"ALA\" tem fragmento(s) genérico(s) não mapeável(is): ALA"
+    },
+    {
+      "canonicalName": "Paulo Baier",
+      "issue": "versatilidade sem fonte-ouro: códigos MEI,LD — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Ricardo Goulart",
+      "issue": "versatilidade sem fonte-ouro: códigos ATA,MEI — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "David",
+      "issue": "versatilidade sem fonte-ouro: códigos MC,VOL — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL).",
+      "classification": "COMPATIBLE_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Douglas",
+      "issue": "lineup_matches:2010_palmeiras_sulamericana_semi_volta pos \"ALA\" tem fragmento(s) genérico(s) não mapeável(is): ALA"
+    },
+    {
+      "canonicalName": "Douglas",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_ida pos \"ALA\" tem fragmento(s) genérico(s) não mapeável(is): ALA"
+    },
+    {
+      "canonicalName": "Douglas",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_volta pos \"ALA\" tem fragmento(s) genérico(s) não mapeável(is): ALA"
+    },
+    {
+      "canonicalName": "Rodrigo Andrade",
+      "issue": "versatilidade sem fonte-ouro: códigos MC,VOL — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL).",
+      "classification": "COMPATIBLE_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Thiago Mendes",
+      "issue": "versatilidade sem fonte-ouro: códigos MC,VOL — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL).",
+      "classification": "COMPATIBLE_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "issue": "lineup_matches:2010_palmeiras_sulamericana_semi_volta pos \"ALA\" tem fragmento(s) genérico(s) não mapeável(is): ALA"
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_ida pos \"ALA\" tem fragmento(s) genérico(s) não mapeável(is): ALA"
+    },
+    {
+      "canonicalName": "Wellington Saci",
+      "issue": "lineup_matches:2010_independiente_sulamericana_final_volta pos \"ALA\" tem fragmento(s) genérico(s) não mapeável(is): ALA"
+    },
+    {
+      "canonicalName": "Willean Lepo",
+      "issue": "versatilidade sem fonte-ouro: códigos LD,LE — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL). Sem adjacência tática conhecida no motor de escalação atual — flag de revisão, evidência PRESERVADA, nunca descartada.",
+      "classification": "NON_ADJACENT_MULTI_POSITION"
+    },
+    {
+      "canonicalName": "Willian Oliveira",
+      "issue": "versatilidade sem fonte-ouro: códigos MC,VOL — position_order por frequência, NÃO por hierarquia confirmada (PARTIAL).",
+      "classification": "COMPATIBLE_MULTI_POSITION"
+    }
+  ],
+  "suppressedPositions": [
+    {
+      "canonicalName": "Fernandão",
+      "suppressedCodes": [
+        "MEI"
+      ],
+      "keptCodes": [
+        "ATA"
+      ],
+      "reason": "Avaliação humana (revisão da Etapa C, 2026-09-02): a evidência de MEI vem de career_players.position=\"Atacante / meia-atacante\" — \"meia-atacante\" classifica de forma ampla demais uma função ofensiva/2º atacante, e não representa bem a posição que o app quer usar pra este jogador. A evidência bruta NÃO foi apagada (continua intacta em career_players.json, e documentada em conflictsReport/suppressedPositions do build) — só não vira uma linha canônica própria em player_positions.",
+      "overrideId": "fernandao_position_cap"
+    },
+    {
+      "canonicalName": "Iarley",
+      "suppressedCodes": [
+        "MEI"
+      ],
+      "keptCodes": [
+        "ATA"
+      ],
+      "reason": "Mesmo racional do Fernandão: career_players.position=\"Meia-atacante / atacante\" — \"meia-atacante\" classifica de forma ampla demais, MEI não promovido a linha canônica. Evidência bruta preservada em career_players.json.",
+      "overrideId": "iarley_position_cap"
+    }
+  ],
+  "blocked": [
+    {
+      "canonicalName": "Douglas Pereira dos Santos",
+      "canonicalId": "ceba53d4-f785-545e-9a60-603a126c33e2",
+      "reason": "NO_RESOLVABLE_POSITION_EVIDENCE"
+    }
+  ]
+}

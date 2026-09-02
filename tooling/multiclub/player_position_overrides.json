@@ -1,0 +1,26 @@
+{
+  "_comment": "Decisões humanas específicas da Etapa C (player_positions) — separado de player_reconciliation_overrides.json de propósito: aquele arquivo é sobre IDENTIDADE (quem é a pessoa), este é sobre qual posição vira CANÔNICA depois que a identidade já está resolvida. Nunca usado pra fundir/dividir pessoa.",
+  "version": "1.0",
+  "overrides": [
+    {
+      "id": "fernandao_position_cap",
+      "canonicalName": "Fernandão",
+      "type": "cap_canonical_positions",
+      "canonicalPositions": ["ATA"],
+      "suppressedCodes": ["MEI"],
+      "reason": "Avaliação humana (revisão da Etapa C, 2026-09-02): a evidência de MEI vem de career_players.position=\"Atacante / meia-atacante\" — \"meia-atacante\" classifica de forma ampla demais uma função ofensiva/2º atacante, e não representa bem a posição que o app quer usar pra este jogador. A evidência bruta NÃO foi apagada (continua intacta em career_players.json, e documentada em conflictsReport/suppressedPositions do build) — só não vira uma linha canônica própria em player_positions.",
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-02"
+    },
+    {
+      "id": "iarley_position_cap",
+      "canonicalName": "Iarley",
+      "type": "cap_canonical_positions",
+      "canonicalPositions": ["ATA"],
+      "suppressedCodes": ["MEI"],
+      "reason": "Mesmo racional do Fernandão: career_players.position=\"Meia-atacante / atacante\" — \"meia-atacante\" classifica de forma ampla demais, MEI não promovido a linha canônica. Evidência bruta preservada em career_players.json.",
+      "origin": "HUMAN_VERIFIED",
+      "reviewedAt": "2026-09-02"
+    }
+  ]
+}
