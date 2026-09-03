@@ -24,10 +24,10 @@
     "notificationMulticlubModelReady": true,
     "notificationMembershipLookupClubScoped": true,
     "notificationSchemaAppliedLive": true,
-    "notificationSchemaBAppliedLive": false,
+    "notificationSchemaBAppliedLive": true,
     "notificationTokenClubColumnReady": true,
-    "notificationTokenClubDefaultTransitional": true,
-    "notificationTokenDefaultFinal": false,
+    "notificationTokenClubDefaultTransitional": false,
+    "notificationTokenDefaultFinal": true,
     "migration": {
       "path": "supabase/migrations/20260903160000_add_club_id_to_notification_tokens.sql",
       "exists": true,
@@ -43,7 +43,7 @@
       "dropsDefault": true,
       "touchesOnlyDefault": true,
       "designCorrect": true,
-      "appliedLive": false
+      "appliedLive": true
     },
     "tokenFetchFiltersByClubId": true,
     "flutterRegistersClubId": true
