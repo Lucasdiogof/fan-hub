@@ -1,0 +1,58 @@
+{
+  "capabilityConsumers": [
+    "features/home/presentation/pages/home_page.dart",
+    "features/home/presentation/pages/home_shell_page.dart",
+    "features/home/presentation/widgets/main_navigation_items.dart",
+    "features/home/presentation/widgets/goias_bottom_navigation_bar.dart",
+    "features/home/presentation/widgets/main_navigation_rail.dart",
+    "features/profile/presentation/pages/profile_page.dart",
+    "features/arena/presentation/pages/arena_page.dart",
+    "features/match/presentation/pages/games_page.dart",
+    "features/social/presentation/pages/social_feed_page.dart",
+    "core/router/app_router.dart"
+  ],
+  "capabilityConsumersCount": 10,
+  "capabilityUngatedEntryPoints": [
+    {
+      "feature": "Squad",
+      "route": "/squad",
+      "reason": "infraestrutura básica, sempre club_id-scoped no repository (M3.1) — decisão registrada em ClubCapabilities."
+    },
+    {
+      "feature": "Notifications",
+      "route": "/profile/notifications",
+      "reason": "infraestrutura básica, sempre club_id-scoped no repository (M3.2/M4.1c) — decisão registrada em ClubCapabilities."
+    }
+  ],
+  "gatedPrefixes": {
+    "passport": true,
+    "arenaHub": true,
+    "arenaGames": true,
+    "store": true,
+    "membership": true,
+    "tickets": true,
+    "crowdLineup": true,
+    "news": true
+  },
+  "routerWired": true,
+  "passportBlockedForSyntheticClub": true,
+  "storeBlockedForSyntheticClub": true,
+  "membershipBlockedForSyntheticClub": true,
+  "ticketsBlockedForSyntheticClub": true,
+  "crowdLineupBlockedForSyntheticClub": true,
+  "newsBlockedForSyntheticClub": true,
+  "socialBlockedForSyntheticClub": true,
+  "syntheticEnabledArenaGames": [
+    "quiz"
+  ],
+  "arenaCapabilityEnforced": true,
+  "newsCapabilityEnforced": true,
+  "socialCapabilityEnforced": true,
+  "socialFeedPageFiltersOptionsByCapability": true,
+  "syntheticClubFeatureLeaks": false,
+  "requiredTestsExist": {
+    "routeGateUnitTests": true,
+    "navWidgetTests": true
+  },
+  "m4CapabilitiesReady": true
+}

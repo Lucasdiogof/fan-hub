@@ -6,7 +6,7 @@
   "blockersPerFeatureCount": 3,
   "directReadTenantCoveragePct": 100,
   "directWriteTenantCoveragePct": 100,
-  "clubCapabilitiesWired": false,
+  "clubCapabilitiesWired": true,
   "localStorageIsolated": true,
   "registryConsistencyReady": true
 }

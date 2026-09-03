@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
@@ -245,6 +246,11 @@ class _ScrollContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // M4.2A: cada card/CTA só aparece se o clube ativo realmente tem a
+    // capability — nunca um "sempre visível" hardcoded. `enabledArenaGames`
+    // vazio (nenhum jogo cadastrado) já é o gate natural do card da Arena
+    // inteira, sem precisar de um `hasArena` bool redundante.
+    final capabilities = sl<ClubConfig>().capabilities;
     return Align(
       alignment: Alignment.topCenter,
       child: ConstrainedBox(
@@ -266,7 +272,9 @@ class _ScrollContent extends StatelessWidget {
                 NextMatchSection(
                   key: heroKey,
                   match: match!,
-                  onTickets: () => context.push('/tickets'),
+                  onTickets: capabilities.hasTickets
+                      ? () => context.push('/tickets')
+                      : null,
                   onMatchStarted: () => context.read<HomeCubit>().load(),
                 ),
               ] else if (isError) ...[
@@ -281,12 +289,17 @@ class _ScrollContent extends StatelessWidget {
               ],
               const SizedBox(height: AppSpacing.xl),
               ClubEntryCard(onTap: () => context.push('/clube')),
-              const SizedBox(height: AppSpacing.lg),
-              const ArenaSpotlightCard(),
-              const SizedBox(height: AppSpacing.lg),
-              StoreEntryCard(
-                onTap: () => sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
-              ),
+              if (capabilities.enabledArenaGames.isNotEmpty) ...[
+                const SizedBox(height: AppSpacing.lg),
+                const ArenaSpotlightCard(),
+              ],
+              if (capabilities.hasStore) ...[
+                const SizedBox(height: AppSpacing.lg),
+                StoreEntryCard(
+                  onTap: () =>
+                      sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
+                ),
+              ],
             ],
           ),
         ),

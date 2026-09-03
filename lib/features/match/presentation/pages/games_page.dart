@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -187,6 +188,13 @@ Widget _centered(Widget child) => viewportCentered(child);
 bool _isLive(Match match) =>
     match.status == MatchStatus.live || match.status == MatchStatus.halftime;
 
+/// M4.2A — `null` some com o CTA de comprar ingresso (`NextMatchCard` já
+/// trata o botão como opcional).
+VoidCallback? _onBuyTicket(BuildContext context) =>
+    sl<ClubConfig>().capabilities.hasTickets
+    ? () => context.push('/tickets')
+    : null;
+
 class _MatchesContent extends StatelessWidget {
   const _MatchesContent({required this.state, required this.onMatchTap});
 
@@ -221,13 +229,13 @@ class _MatchesContent extends StatelessWidget {
                   onMatchEnded: () => context.read<GamesCubit>().refresh(),
                   builder: (context, liveMatch) => NextMatchCard(
                     match: liveMatch,
-                    onBuyTicket: () => context.push('/tickets'),
+                    onBuyTicket: _onBuyTicket(context),
                     onViewDetails: () => onMatchTap(liveMatch),
                   ),
                 )
               : NextMatchCard(
                   match: nextMatch,
-                  onBuyTicket: () => context.push('/tickets'),
+                  onBuyTicket: _onBuyTicket(context),
                   onViewDetails: () => onMatchTap(nextMatch),
                 ),
           const SizedBox(height: AppSpacing.xxl),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/club/club_capabilities.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -48,7 +50,17 @@ class _SocialFeedView extends StatefulWidget {
 }
 
 class _SocialFeedViewState extends State<_SocialFeedView> {
-  var _filter = _MediaFilter.news;
+  // M4.2A — o filtro inicial precisa ser um que o clube ativo realmente
+  // tem; Notícias é só a preferência quando as duas existem (mantém o
+  // comportamento de sempre pro Goiás).
+  late var _filter = _initialFilter();
+
+  _MediaFilter _initialFilter() {
+    final capabilities = sl<ClubConfig>().capabilities;
+    if (capabilities.hasNews) return _MediaFilter.news;
+    if (capabilities.hasSocial) return _MediaFilter.instagram;
+    return _MediaFilter.news;
+  }
 
   void _select(_MediaFilter filter) {
     setState(() => _filter = filter);
@@ -87,7 +99,11 @@ class _SocialFeedViewState extends State<_SocialFeedView> {
                     children: [
                       PageTitle(context.l10n.socialMediaTitle),
                       const SizedBox(height: AppSpacing.lg),
-                      _MediaFilterBar(selected: _filter, onSelected: _select),
+                      _MediaFilterBar(
+                        selected: _filter,
+                        onSelected: _select,
+                        capabilities: sl<ClubConfig>().capabilities,
+                      ),
                     ],
                   ),
                 ),
@@ -107,19 +123,28 @@ class _SocialFeedViewState extends State<_SocialFeedView> {
 }
 
 class _MediaFilterBar extends StatelessWidget {
-  const _MediaFilterBar({required this.selected, required this.onSelected});
+  const _MediaFilterBar({
+    required this.selected,
+    required this.onSelected,
+    required this.capabilities,
+  });
 
   final _MediaFilter selected;
   final ValueChanged<_MediaFilter> onSelected;
+  final ClubCapabilities capabilities;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    // M4.2A — Notícias e as 3 redes sociais são gateadas separadamente
+    // (hasNews/hasSocial): um clube pode ter uma sem a outra.
     final options = [
-      (_MediaFilter.news, l10n.newsTitle),
-      (_MediaFilter.instagram, l10n.socialPlatformInstagram),
-      (_MediaFilter.youtube, l10n.socialPlatformYoutube),
-      (_MediaFilter.x, l10n.socialPlatformX),
+      if (capabilities.hasNews) (_MediaFilter.news, l10n.newsTitle),
+      if (capabilities.hasSocial) ...[
+        (_MediaFilter.instagram, l10n.socialPlatformInstagram),
+        (_MediaFilter.youtube, l10n.socialPlatformYoutube),
+        (_MediaFilter.x, l10n.socialPlatformX),
+      ],
     ];
     final colors = context.colors;
     return Container(

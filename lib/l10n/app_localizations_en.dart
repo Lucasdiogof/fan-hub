@@ -1077,6 +1077,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonComingSoonMessage => 'This area is still being prepared.';
 
   @override
+  String get featureUnavailableTitle => 'Unavailable';
+
+  @override
+  String get featureUnavailableMessage => 'This area isn\'t available.';
+
+  @override
   String get commonLinkOpenError => 'Couldn\'t open this link.';
 
   @override
