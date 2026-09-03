@@ -187,7 +187,7 @@ void main() {
       authCubit: authCubit,
       navigatorKey: navigatorKey,
       child: MaterialApp.router(
-        theme: AppTheme.light,
+        theme: AppTheme.light(),
         locale: const Locale('pt'),
         routerConfig: router,
         localizationsDelegates: AppLocalizations.localizationsDelegates,

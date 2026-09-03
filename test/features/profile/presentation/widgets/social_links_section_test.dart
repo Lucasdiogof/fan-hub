@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   testWidgets('shows the section title and description', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -12,7 +20,7 @@ void main() {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
 
-        theme: AppTheme.light,
+        theme: AppTheme.light(),
         home: const Scaffold(body: SocialLinksSection()),
       ),
     );
@@ -33,7 +41,7 @@ void main() {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
 
-          theme: AppTheme.light,
+          theme: AppTheme.light(),
           home: const Scaffold(body: SocialLinksSection()),
         ),
       );
@@ -60,7 +68,7 @@ void main() {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
 
-          theme: AppTheme.light,
+          theme: AppTheme.light(),
           home: const Scaffold(body: SocialLinksSection()),
         ),
       );
@@ -79,7 +87,7 @@ void main() {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
 
-          theme: AppTheme.light,
+          theme: AppTheme.light(),
           home: const Scaffold(body: SocialLinksSection()),
         ),
       );

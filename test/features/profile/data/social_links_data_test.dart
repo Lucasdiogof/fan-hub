@@ -1,7 +1,15 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/features/profile/data/social_links_data.dart';
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   group('SocialLinksData', () {
     test('has exactly the 6 official channels', () {
       expect(SocialLinksData.all, hasLength(6));

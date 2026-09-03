@@ -115,7 +115,7 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
       final now = DateTime.now();
       final pseudoSequence = 100000 + (now.millisecondsSinceEpoch % 900000);
       return StoreOrder(
-        id: 'GOI-${now.year}-$pseudoSequence',
+        id: '${_clubConfig.integrations.orderPrefix}-${now.year}-$pseudoSequence',
         createdAt: now,
         items: items,
         identification: identification,
@@ -123,7 +123,7 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
         address: resolvedAddress,
         shippingOption: resolvedShippingOption,
         pickupInfo: fulfillmentMethod == FulfillmentMethod.pickup
-            ? const PickupInformation()
+            ? PickupInformation.forActiveClub()
             : null,
         pickupResponsible: resolvedPickupResponsible,
         payment: simulation,
@@ -179,7 +179,7 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
       address: resolvedAddress,
       shippingOption: resolvedShippingOption,
       pickupInfo: fulfillmentMethod == FulfillmentMethod.pickup
-          ? const PickupInformation()
+          ? PickupInformation.forActiveClub()
           : null,
       pickupResponsible: resolvedPickupResponsible,
       payment: simulation,
@@ -243,7 +243,7 @@ class SupabaseStoreOrdersRepository implements StoreOrdersRepository {
               row['shipping_option'] as Map<String, dynamic>,
             )
           : null,
-      pickupInfo: isPickup ? const PickupInformation() : null,
+      pickupInfo: isPickup ? PickupInformation.forActiveClub() : null,
       pickupResponsible: row['pickup_responsible'] != null
           ? PickupResponsible.fromJson(
               row['pickup_responsible'] as Map<String, dynamic>,

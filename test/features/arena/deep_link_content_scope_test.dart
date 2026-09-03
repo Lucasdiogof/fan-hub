@@ -12,6 +12,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -215,7 +216,7 @@ class _FakeLineupStorage extends SupabaseLineupStorage {
 }
 
 Widget _wrap(Widget home) => MaterialApp(
-  theme: AppTheme.light,
+  theme: AppTheme.light(),
   locale: const Locale('pt'),
   localizationsDelegates: AppLocalizations.localizationsDelegates,
   supportedLocales: AppLocalizations.supportedLocales,
@@ -225,6 +226,7 @@ Widget _wrap(Widget home) => MaterialApp(
 void main() {
   setUp(() async {
     await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
     sl.registerLazySingleton<ArenaRankingRepository>(_FakeRanking.new);
   });
 

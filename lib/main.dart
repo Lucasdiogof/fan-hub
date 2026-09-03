@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/config/sentry_config.dart';
 import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -80,6 +81,7 @@ class _GoiasAppState extends State<GoiasApp> {
   final AuthCubit _authCubit = sl<AuthCubit>();
   final ThemeCubit _themeCubit = sl<ThemeCubit>();
   final LocaleCubit _localeCubit = sl<LocaleCubit>();
+  final ClubConfig _clubConfig = sl<ClubConfig>();
   // Nunca lido depois — só precisa existir cedo pro listener de
   // logout/sessão expirada já estar de pé (ver `AccountSessionCacheGuard`).
   // ignore: unused_field
@@ -123,10 +125,10 @@ class _GoiasAppState extends State<GoiasApp> {
                 authCubit: _authCubit,
                 navigatorKey: rootNavigatorKey,
                 child: MaterialApp.router(
-                  title: 'Goiás EC',
+                  title: _clubConfig.identity.displayName,
                   debugShowCheckedModeBanner: false,
-                  theme: AppTheme.light,
-                  darkTheme: AppTheme.dark,
+                  theme: AppTheme.light(_clubConfig.branding.light),
+                  darkTheme: AppTheme.dark(_clubConfig.branding.dark),
                   themeMode: themeMode,
                   locale: locale,
                   localizationsDelegates:

@@ -78,7 +78,7 @@ class StoreOrderDetailPage extends StatelessWidget {
                             ? Text(
                                 l10n.storePickupAddressPrefix(
                                   order.pickupInfo?.fullAddress ??
-                                      const PickupInformation().fullAddress,
+                                      PickupInformation.forActiveClub().fullAddress,
                                 ),
                                 style: _valueStyle(context),
                               )

@@ -373,7 +373,7 @@ class _ReviewStep extends StatelessWidget {
             children: state.fulfillmentMethod == FulfillmentMethod.pickup
                 ? [
                     Text(
-                      const PickupInformation().fullAddress,
+                      PickupInformation.forActiveClub().fullAddress,
                       style: _reviewValueStyle(context),
                     ),
                     Text(
@@ -668,7 +668,7 @@ class _ConfirmationStep extends StatelessWidget {
                       ? l10n.storePickupWord
                       : l10n.storeStepDelivery,
                   order.isPickup
-                      ? const PickupInformation().fullAddress
+                      ? PickupInformation.forActiveClub().fullAddress
                       : (order.shippingOption != null
                             ? shippingEtaLabel(
                                 l10n,

@@ -49,6 +49,12 @@ const goiasClubConfig = ClubConfig(
     ),
     contactWhatsappNumber: '(62) 99472-2541',
     contactWhatsappUrl: 'https://wa.me/5562994722541',
+    socialInstagramUrl: 'https://www.instagram.com/goiasoficial/',
+    socialYoutubeUrl: 'https://www.youtube.com/@TVGoias',
+    socialTiktokUrl: 'https://www.tiktok.com/@goiasec',
+    socialFacebookUrl: 'https://www.facebook.com/goiasoficial/',
+    socialXUrl: 'https://x.com/goiasoficial',
+    officialSiteUrl: 'https://www.goiasec.com.br/',
   ),
   capabilities: ClubCapabilities(
     hasMembership: true,

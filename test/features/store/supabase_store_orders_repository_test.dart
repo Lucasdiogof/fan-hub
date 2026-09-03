@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/data/supabase_store_orders_repository.dart';
 import 'package:goias_app/features/store/domain/entities/customer.dart';
@@ -31,7 +33,9 @@ void main() {
   // exatamente a mesma nos dois caminhos.
   late SupabaseStoreOrdersRepository repository;
 
-  setUp(() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
     repository = SupabaseStoreOrdersRepository(
       SupabaseClient(
         'https://example.supabase.co',

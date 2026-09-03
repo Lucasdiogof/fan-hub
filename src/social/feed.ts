@@ -1,5 +1,6 @@
 import { cacheFirst } from '../football/_lib/cache';
 import { jsonResponse, errorResponse } from '../football/_lib/respond';
+import { NEWS_SOCIAL_CONFIGURED_CLUB_CODE, resolveRequestedClubCode } from '../football/_lib/club_server_config';
 import type { SocialEnv } from './config';
 import { loadSocialProviders } from './config';
 import type { SocialPost } from './types';
@@ -8,6 +9,15 @@ export async function handleSocialFeed(request: Request, env: SocialEnv): Promis
   const url = new URL(request.url);
   const platformFilter = url.searchParams.get('platform');
   const cacheVersion = env.CACHE_VERSION || '1';
+
+  // Achado da auditoria M4: os providers (Instagram/YouTube/TikTok/
+  // Facebook/X) eram instanciados sem NENHUM parâmetro de clube — sempre o
+  // feed do Goiás pra qualquer chamador. `?club=` diferente do único
+  // integrado hoje devolve feed vazio explícito, nunca posts do Goiás.
+  const clubCode = resolveRequestedClubCode(request);
+  if (clubCode !== NEWS_SOCIAL_CONFIGURED_CLUB_CODE) {
+    return jsonResponse({ posts: [], available: false }, { status: 404 });
+  }
 
   try {
     return await cacheFirst(

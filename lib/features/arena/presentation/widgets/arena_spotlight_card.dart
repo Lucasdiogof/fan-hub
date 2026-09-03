@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -61,7 +62,7 @@ class ArenaSpotlightCard extends StatelessWidget {
                   child: Opacity(
                     opacity: 0.6,
                     child: Image.asset(
-                      AppAssets.arenaStadiumPhoto,
+                      sl<ClubConfig>().assets.arenaStadiumPhoto,
                       width: 170,
                       fit: BoxFit.contain,
                     ),

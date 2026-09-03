@@ -5,7 +5,7 @@ import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 Widget _harness({VoidCallback? onBack}) {
   return MaterialApp(
-    theme: AppTheme.light,
+    theme: AppTheme.light(),
     home: Scaffold(
       body: DetailPageHeader(
         title: 'Nossa Gente',

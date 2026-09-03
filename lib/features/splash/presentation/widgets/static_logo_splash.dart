@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 
 /// Mesma cor do `flutter_native_splash` (pubspec.yaml) — continuação da
 /// splash nativa, não branco puro por acaso.
@@ -45,7 +46,10 @@ class _StaticLogoSplashState extends State<StaticLogoSplash> {
 
   Future<void> _prepare() async {
     try {
-      await precacheImage(const AssetImage(AppAssets.goiasCrestBadge), context);
+      await precacheImage(
+        AssetImage(sl<ClubConfig>().assets.crestBadge),
+        context,
+      );
     } catch (_) {
       // Asset local, praticamente nunca falha — mas se falhar, mostra o
       // que der (o `Image.asset` no build já tem seu próprio tratamento de
@@ -70,7 +74,7 @@ class _StaticLogoSplashState extends State<StaticLogoSplash> {
       color: _splashBackground,
       child: Center(
         child: Image.asset(
-          AppAssets.goiasCrestBadge,
+          sl<ClubConfig>().assets.crestBadge,
           width: 140,
           height: 140,
           fit: BoxFit.contain,

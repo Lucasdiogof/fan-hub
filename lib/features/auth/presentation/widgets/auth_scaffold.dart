@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -78,7 +79,7 @@ class _Hero extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            const StadiumBackdrop(imageAsset: AppAssets.stadium),
+            StadiumBackdrop(imageAsset: sl<ClubConfig>().assets.stadium),
             Padding(
               padding: const EdgeInsets.fromLTRB(
                 AppSpacing.xxl,
@@ -134,7 +135,7 @@ class _CrestSeal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      AppAssets.goiasCrest,
+      sl<ClubConfig>().assets.crest,
       height: 56,
       colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
     );

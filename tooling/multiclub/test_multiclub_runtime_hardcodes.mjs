@@ -118,8 +118,9 @@ test('club_history_entry.dart/career_models.dart: isGoias catalogado como GENERI
   assert.strictEqual(audit.classifiedButNotFixed.careerEntryIsGoias.present, true);
   assert.strictEqual(audit.classifiedButNotFixed.careerEntryIsGoias.classification, 'GENERIC_RUNTIME_BUG_DEFERRED');
 });
-test('Passaporte (_isGoias) catalogado, presente, nunca alterado — Passaporte fora de escopo nesta etapa', () => {
-  assert.strictEqual(audit.classifiedButNotFixed.passportIsGoias.present, true);
+test('SUPERSEDIDO PELA M4.1: Passaporte (_isGoias) era presente no M3.3; corrigido isoladamente (só esse bug pontual, Passaporte tenancy continua fora de escopo — ver test_m4_critical_club_leakage.mjs §4)', () => {
+  assert.strictEqual(audit.classifiedButNotFixed.passportIsGoias.present, false);
+  assert.strictEqual(audit.classifiedButNotFixed.passportIsGoias.fixedInEtapa, 'M4.1');
   assert.strictEqual(audit.classifiedButNotFixed.passportIsGoias.classification, 'EDITORIAL_CONTENT_ALLOWED_PASSPORT_EXCLUDED');
 });
 test("lineup_matches.dart (fallback local): teamToGuess: 'Goiás' presente e classificado CONFIG_ALLOWED_FALLBACK_DATASET (nunca servido a outro clube)", () => {

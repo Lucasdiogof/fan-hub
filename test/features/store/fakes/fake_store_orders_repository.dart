@@ -47,7 +47,14 @@ class FakeStoreOrdersRepository implements StoreOrdersRepository {
       address: address,
       shippingOption: shippingOption,
       pickupInfo: fulfillmentMethod == FulfillmentMethod.pickup
-          ? const PickupInformation()
+          ? const PickupInformation(
+              storeName: 'Test Store',
+              street: 'Rua Teste, 1',
+              neighborhood: 'Bairro Teste',
+              city: 'Cidade Teste',
+              state: 'TS',
+              zipCode: '00000-000',
+            )
           : null,
       pickupResponsible: pickupResponsible,
       payment: PaymentSimulation(

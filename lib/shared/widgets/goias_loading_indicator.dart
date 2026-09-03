@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 
 /// Brasão oficial do Goiás pulsando — mostra a arte real (não um traço
@@ -16,7 +17,7 @@ class GoiasLoadingBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      AppAssets.goiasCrestBadge,
+      sl<ClubConfig>().assets.crestBadge,
       width: size,
       height: size,
       fit: BoxFit.contain,

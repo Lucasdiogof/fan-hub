@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -212,16 +214,27 @@ class _Matchup extends StatelessWidget {
   final String? away;
   final String opponent;
 
-  bool _isGoias(String team) => team.toLowerCase().contains('goiás');
+  /// Compara pelo nome de exibição do clube ativo (`ClubConfig.identity`),
+  /// nunca um literal hardcoded — este widget só recebe nomes de time como
+  /// `String` (não `Team`), então não dá pra usar `Team.matchesClub` aqui
+  /// direto, mas a fonte do valor comparado é sempre a config, não um
+  /// texto fixo.
+  bool _isActiveClub(String team) {
+    final identity = sl<ClubConfig>().identity;
+    final normalized = team.toLowerCase();
+    return normalized.contains(identity.shortName.toLowerCase()) ||
+        normalized.contains(identity.displayName.toLowerCase());
+  }
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final activeClubShortName = sl<ClubConfig>().identity.shortName;
     if (home == null || away == null) {
       return _MatchupText(
         spans: [
           TextSpan(
-            text: 'Goiás',
+            text: activeClubShortName,
             style: TextStyle(
               fontWeight: FontWeight.w900,
               color: colors.primary,
@@ -236,14 +249,14 @@ class _Matchup extends StatelessWidget {
       spans: [
         TextSpan(
           text: home,
-          style: _isGoias(home!)
+          style: _isActiveClub(home!)
               ? TextStyle(fontWeight: FontWeight.w900, color: colors.primary)
               : null,
         ),
         const TextSpan(text: ' x '),
         TextSpan(
           text: away,
-          style: _isGoias(away!)
+          style: _isActiveClub(away!)
               ? TextStyle(fontWeight: FontWeight.w900, color: colors.primary)
               : null,
         ),

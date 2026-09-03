@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
@@ -104,7 +105,7 @@ class PassportCoverV2 extends StatelessWidget {
                         BlendMode.srcIn,
                       ),
                       child: Image.asset(
-                        AppAssets.goiasCrestBadge,
+                        sl<ClubConfig>().assets.crestBadge,
                         width: 150,
                         height: 150,
                       ),

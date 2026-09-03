@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { env as rawEnv } from 'cloudflare:test';
 import type { Env } from './config';
-import { resolveClubServerConfig, UnknownClubError, SERVER_CLUB_CODES } from './club_server_config';
+import {
+  resolveClubServerConfig,
+  UnknownClubError,
+  SERVER_CLUB_CODES,
+  NEWS_SOCIAL_CONFIGURED_CLUB_CODE,
+  resolveRequestedClubCode,
+} from './club_server_config';
 
 // `cloudflare:test`'s `env` é tipado pelo `Env` global gerado por
 // `wrangler types` — este projeto não gera esse arquivo, então o tipo
@@ -27,5 +33,24 @@ describe('resolveClubServerConfig', () => {
 
   it('SERVER_CLUB_CODES tem exatamente 1 código (goias) — SECOND_CLUB_BLOCKED', () => {
     expect(SERVER_CLUB_CODES).toEqual(['goias']);
+  });
+});
+
+describe('resolveRequestedClubCode — gate de News/Social (achado crítico M4: eram 100% hardcoded, 0 dimensão de clube)', () => {
+  it('sem ?club= na request -> resolve pro único clube integrado hoje (goias), mesma regra de compat do APP_CLUB ausente', () => {
+    const request = new Request('https://example.com/api/news');
+    expect(resolveRequestedClubCode(request)).toBe('goias');
+    expect(resolveRequestedClubCode(request)).toBe(NEWS_SOCIAL_CONFIGURED_CLUB_CODE);
+  });
+
+  it('?club=goias explícito -> resolve normalmente', () => {
+    const request = new Request('https://example.com/api/news?club=goias');
+    expect(resolveRequestedClubCode(request)).toBe('goias');
+  });
+
+  it('FABRICADO: ?club=club-b (sintético, nunca cadastrado de verdade) -> resolve o código pedido, nunca reescreve pra goias por conta própria', () => {
+    const request = new Request('https://example.com/api/news?club=club-b');
+    expect(resolveRequestedClubCode(request)).toBe('club-b');
+    expect(resolveRequestedClubCode(request)).not.toBe(NEWS_SOCIAL_CONFIGURED_CLUB_CODE);
   });
 });

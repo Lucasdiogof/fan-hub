@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -70,7 +71,10 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Image.asset(AppAssets.loginBackground, fit: BoxFit.cover),
+            child: Image.asset(
+              sl<ClubConfig>().assets.loginBackground,
+              fit: BoxFit.cover,
+            ),
           ),
           SafeArea(
             child: LayoutBuilder(

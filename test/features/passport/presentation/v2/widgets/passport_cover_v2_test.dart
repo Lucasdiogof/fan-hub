@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_cover_v2.dart';
@@ -11,7 +14,7 @@ Future<void> _pump(WidgetTester tester, int totalMatches, {ThemeData? theme}) =>
         locale: const Locale('pt'),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        theme: theme ?? AppTheme.light,
+        theme: theme ?? AppTheme.light(),
         home: Scaffold(
           body: PassportCoverV2(
             summary: PassportSummary(
@@ -24,6 +27,11 @@ Future<void> _pump(WidgetTester tester, int totalMatches, {ThemeData? theme}) =>
     );
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   testWidgets('singular: 1 jogo cantando e vibrando com o Verdão', (
     tester,
   ) async {
@@ -91,7 +99,7 @@ void main() {
   );
 
   testWidgets('renderiza sem erro no tema escuro também', (tester) async {
-    await _pump(tester, 43, theme: AppTheme.dark);
+    await _pump(tester, 43, theme: AppTheme.dark());
     expect(find.byType(PassportCoverV2), findsOneWidget);
     expect(tester.takeException(), isNull);
   });

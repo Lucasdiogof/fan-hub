@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 
 enum ShippingSpeed { economy, standard, express }
 
@@ -39,16 +41,30 @@ class ShippingOption extends Equatable {
   List<Object?> get props => [speed, label, etaLabel, price];
 }
 
-/// Endereço fixo da loja física — texto nunca inventado, vem só daqui.
+/// Endereço fixo da loja física do clube ativo — texto nunca inventado,
+/// vem sempre de `ClubConfig.integrations.pickupAddress`, nunca hardcoded
+/// aqui (ver `PickupInformation.forActiveClub`).
 class PickupInformation extends Equatable {
   const PickupInformation({
-    this.storeName = 'Goiás Store',
-    this.street = 'Av. 85, 3277',
-    this.neighborhood = 'Setor Bela Vista',
-    this.city = 'Goiânia',
-    this.state = 'GO',
-    this.zipCode = '74823-310',
+    required this.storeName,
+    required this.street,
+    required this.neighborhood,
+    required this.city,
+    required this.state,
+    required this.zipCode,
   });
+
+  factory PickupInformation.forActiveClub() {
+    final pickup = sl<ClubConfig>().integrations.pickupAddress;
+    return PickupInformation(
+      storeName: pickup.storeName,
+      street: pickup.street,
+      neighborhood: pickup.neighborhood,
+      city: pickup.city,
+      state: pickup.state,
+      zipCode: pickup.zipCode,
+    );
+  }
 
   final String storeName;
   final String street;

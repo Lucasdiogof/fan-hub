@@ -20,9 +20,15 @@ class SupabaseNotificationRepository implements NotificationRepository {
   String get _uid => _client.auth.currentUser!.id;
   String get _clubId => _clubConfig.identity.canonicalClubId;
 
-  // `user_notification_tokens` fica GLOBAL de propósito — o token FCM é do
-  // aparelho, não do clube (§25 do pedido da M3.2). Nunca adicionar club_id
-  // aqui.
+  // `user_notification_tokens` continua GLOBAL no sentido de "aparelho, não
+  // conta" (mesma linha física pode trocar de `user_id` se outra conta
+  // logar no mesmo app instalado — é assim desde sempre, upsert por
+  // `fcm_token`). Mas desde a M4.1c cada linha SABE a qual clube pertence:
+  // um token FCM é escopado pela instalação do app que o gerou (Firebase
+  // App ID = package/bundle id), nunca compartilhado entre 2 apps
+  // diferentes — `club_id` grava isso explicitamente, nunca inferido.
+  // fcm_token continua a ÚNICA chave de unicidade (nunca (club_id,
+  // fcm_token) — o mesmo token físico nunca duplica, com ou sem clube).
   @override
   Future<Result<void>> registerToken({
     required String fcmToken,
@@ -32,6 +38,7 @@ class SupabaseNotificationRepository implements NotificationRepository {
       await _client.from('user_notification_tokens').upsert({
         'user_id': _uid,
         'fcm_token': fcmToken,
+        'club_id': _clubId,
         'platform': platform,
         'is_active': true,
         'last_seen_at': DateTime.now().toUtc().toIso8601String(),

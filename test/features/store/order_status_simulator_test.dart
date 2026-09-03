@@ -30,7 +30,16 @@ StoreOrder _order({
   fulfillmentMethod: isPickup
       ? FulfillmentMethod.pickup
       : FulfillmentMethod.delivery,
-  pickupInfo: isPickup ? const PickupInformation() : null,
+  pickupInfo: isPickup
+      ? const PickupInformation(
+          storeName: 'Test Store',
+          street: 'Rua Teste, 1',
+          neighborhood: 'Bairro Teste',
+          city: 'Cidade Teste',
+          state: 'TS',
+          zipCode: '00000-000',
+        )
+      : null,
   payment: _payment,
   subtotal: 79.90,
   discountAmount: 0,

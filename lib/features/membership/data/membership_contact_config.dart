@@ -1,10 +1,22 @@
-/// Contato oficial do Sócio Esmeralda — fonte única, não espalhar o número
-/// em vários widgets.
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
+
+/// Contato oficial do programa de sócio do clube ativo — lê de
+/// `ClubConfig.integrations`, nunca duplica o valor aqui.
 class MembershipContactConfig {
   const MembershipContactConfig._();
 
-  static const whatsappNumber = '(62) 99472-2541';
-  static const whatsappUrl = 'https://wa.me/5562994722541';
+  static String get whatsappNumber =>
+      sl<ClubConfig>().integrations.contactWhatsappNumber ??
+      (throw StateError(
+        'club "${sl<ClubConfig>().identity.code}" has no contactWhatsappNumber configured',
+      ));
+
+  static String get whatsappUrl =>
+      sl<ClubConfig>().integrations.contactWhatsappUrl ??
+      (throw StateError(
+        'club "${sl<ClubConfig>().identity.code}" has no contactWhatsappUrl configured',
+      ));
 
   static String whatsappUrlWithMessage(String message) =>
       '$whatsappUrl?text=${Uri.encodeComponent(message)}';

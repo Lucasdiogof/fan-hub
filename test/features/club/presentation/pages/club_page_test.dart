@@ -42,7 +42,7 @@ void main() {
       ],
     );
     return MaterialApp.router(
-      theme: AppTheme.light,
+      theme: AppTheme.light(),
       locale: const Locale('pt'),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

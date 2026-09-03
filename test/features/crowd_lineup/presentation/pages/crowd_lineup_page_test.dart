@@ -78,7 +78,7 @@ Future<CrowdLineupCubit> _pump(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
 
-      theme: AppTheme.light,
+      theme: AppTheme.light(),
       home: CrowdLineupPage(match: _match, cubit: cubit),
     ),
   );

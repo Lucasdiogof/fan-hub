@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -95,6 +96,7 @@ class _FakeLineupStorage extends SupabaseLineupStorage {
 void main() {
   setUp(() async {
     await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
     // Pré-seleciona a partida pelo id — desde que a ordem passou a
     // embaralhar a cada abertura (mantendo só as já concluídas paradas no
     // lugar, ver `shuffleKeepingDone`), depender de "a primeira do banco"
@@ -128,7 +130,7 @@ void main() {
     (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: AppTheme.light,
+          theme: AppTheme.light(),
           locale: const Locale('pt'),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
@@ -254,7 +256,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           navigatorKey: navigatorKey,
-          theme: AppTheme.light,
+          theme: AppTheme.light(),
           locale: const Locale('pt'),
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,

@@ -13,7 +13,7 @@ class SocialLinksSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    const links = SocialLinksData.all;
+    final links = SocialLinksData.all;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
