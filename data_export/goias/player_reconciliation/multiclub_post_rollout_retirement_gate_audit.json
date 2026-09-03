@@ -1,0 +1,231 @@
+{
+  "legacyContractAuditReused": {
+    "oldDirectUpserts": 16,
+    "autoRetiredByKeyEnforcement": 14,
+    "legacyRpcsUsed": 8,
+    "legacyRpcsUsedWrites": 3,
+    "safeToRevokeLegacyRpcs": 0,
+    "legacyWritesSurvivingKeyEnforcement": 5,
+    "defaultDependentLegacyWrites": 5,
+    "autoRetiredByDefaultRemoval": 5,
+    "unversionedLegacyWritesRemaining": 0,
+    "alreadyBrokenIndependentOfM2_2bB": 1,
+    "outOfScopeNoClubIdColumn": 1,
+    "globalWritesOutOfScope": 2,
+    "rpcOnlyMigrationRequired": false,
+    "legacyContractRetirementReady": true,
+    "commitsAheadOfLegacyBaseline": 41,
+    "originMainMatchesHead": false,
+    "rpcInventoryMatchesCode": true
+  },
+  "newWebDeploymentSnapshot": {
+    "checkedAt": "2026-09-03",
+    "url": "https://goias-app.lucasdiogo1234.workers.dev/",
+    "versionJson": {
+      "version": "1.0.1",
+      "build_number": "2"
+    },
+    "httpStatusRoot": 200,
+    "serviceWorkerHttpStatus": 200,
+    "workerGoiasRouteHttpStatus": 200,
+    "workerUnknownClubHttpStatus": 404,
+    "bundleContainsM34Markers": {
+      "updateRequired": true,
+      "upsertMembershipCheckinTicketForClub": true,
+      "appReleaseRequirements": true
+    }
+  },
+  "headWritesIncludeClubId": {
+    "ticketOrdersInsert": true,
+    "ticketsPurchaseInsert": true,
+    "undoCheckInFiltersClubId": true
+  },
+  "legacyTenantUpdatesDeletesRemaining": [
+    {
+      "feature": "undoCheckIn — tickets.status=cancelled",
+      "table": "tickets",
+      "legacyFiltersClubId": false,
+      "headFiltersClubId": true
+    },
+    {
+      "feature": "undoCheckIn — ticket_checkin_decisions delete",
+      "table": "ticket_checkin_decisions",
+      "legacyFiltersClubId": false,
+      "headFiltersClubId": true
+    },
+    {
+      "feature": "clearCheckInDecision — ticket_checkin_decisions delete",
+      "table": "ticket_checkin_decisions",
+      "legacyFiltersClubId": false,
+      "headFiltersClubId": true
+    }
+  ],
+  "oldClientReadsContinue": true,
+  "oldClientWritesBlocked": true,
+  "legacyRpcAclSnapshot": {
+    "checkedAt": "2026-09-03",
+    "rpcs": [
+      "arena_record_score",
+      "arena_ranking",
+      "arena_my_rank",
+      "arena_user_detail",
+      "crowd_lineup",
+      "get_my_membership",
+      "subscribe_to_plan",
+      "create_store_order"
+    ],
+    "currentEffectiveAcl": {
+      "anon": true,
+      "authenticated": true,
+      "service_role": true,
+      "public": true
+    },
+    "plannedFinalAclIfRevoked": {
+      "anon": false,
+      "authenticated": false,
+      "service_role": "REVIEW (nenhum uso de admin/backend identificado nesta rodada — não assumido)",
+      "public": false
+    }
+  },
+  "defaultTablesClassification": [
+    {
+      "table": "arena_achievements",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "arena_selected_content",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "career_path_progress",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "lineup_match_progress",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "match_lineup_votes",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "quiz_active_session",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "quiz_question_progress",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "player_identity_results",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "tactical_identity_results",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "user_notification_preferences",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "ticket_checkin_decisions",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "onConflict do HEAD já é tenant-aware (bridge M2.2B-A); write legacy fecha por KEY"
+    },
+    {
+      "table": "score_events",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "HEAD já manda club_id explícito nesse insert (confirmado por grep/pg_proc nesta rodada); write legacy fecha por DEFAULT"
+    },
+    {
+      "table": "store_orders",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "HEAD já manda club_id explícito nesse insert (confirmado por grep/pg_proc nesta rodada); write legacy fecha por DEFAULT"
+    },
+    {
+      "table": "supporter_memberships",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "HEAD já manda club_id explícito nesse insert (confirmado por grep/pg_proc nesta rodada); write legacy fecha por DEFAULT"
+    },
+    {
+      "table": "ticket_orders",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "HEAD já manda club_id explícito nesse insert (confirmado por grep/pg_proc nesta rodada); write legacy fecha por DEFAULT"
+    },
+    {
+      "table": "tickets",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "HEAD já manda club_id explícito nesse insert (confirmado por grep/pg_proc nesta rodada); write legacy fecha por DEFAULT"
+    },
+    {
+      "table": "career_players",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "conteúdo, seed via SQL — nenhum upsert do app por person_id (M2.2B round 1)"
+    },
+    {
+      "table": "guess_players",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "idem career_players"
+    },
+    {
+      "table": "squad_members",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "idem career_players"
+    },
+    {
+      "table": "lineup_matches",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "conteúdo, seed via SQL"
+    },
+    {
+      "table": "quiz_questions",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "conteúdo, seed via SQL"
+    },
+    {
+      "table": "notification_events",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "Edge já manda club_id explícito (M3.3/M3.4)"
+    },
+    {
+      "table": "match_monitor_sessions",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "Edge já filtra por club_id (M3.3)"
+    },
+    {
+      "table": "user_game_item_progress",
+      "classification": "DROP_IN_M2_2B_B",
+      "reason": "RPC nova já manda club_id explícito"
+    }
+  ],
+  "dropInM2_2bBCount": 24,
+  "keepOrOutOfScopeCount": 0,
+  "legacyWebClientConfirmed": true,
+  "nativeClientSnapshot": {
+    "registeredAt": "2026-09-03",
+    "source": "confirmação direta do dono do projeto (não derivável do repo)",
+    "legacyNativeClientConfirmed": true,
+    "legacyNativeClientCount": 3,
+    "legacyNativeClientsControlled": true,
+    "publicNativeRelease": false
+  },
+  "apk101_2Status": {
+    "attemptedAt": "2026-09-03",
+    "buildCommand": "flutter build apk --release",
+    "buildSucceeded": false,
+    "buildBlocker": "Gradle 9.1 falha com 'java.io.IOException: Unable to establish loopback connection' (UnixDomainSockets.connect0 'Invalid argument: connect', dentro do PipeImpl interno do JDK 17 usado pelo Selector do daemon) ao rodar `flutter build apk --release` NESTE ambiente de sessão — 4 tentativas com mitigações diferentes (retry simples, --no-daemon + -Djava.net.preferIPv4Stack=true, sandbox desabilitado, TEMP com path longo em vez de 8.3) — todas falharam do mesmo jeito. NÃO parece ser um problema do código/config do projeto: existe um `build/app/outputs/apk/release/app-release.apk` de 2026-09-01 (versão 1.0.0, antiga) — ou seja, esse mesmo build JÁ funcionou antes, só não nesta sessão. Provável causa: diferença de ambiente/sandbox/rede local entre esta sessão e o terminal onde o build de 01/09 rodou.",
+    "apkGenerated": false,
+    "apkDeliveredToLegacyUsers": false
+  }
+}

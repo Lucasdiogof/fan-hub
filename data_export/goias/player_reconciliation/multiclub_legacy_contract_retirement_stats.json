@@ -13,6 +13,7 @@
   "globalWritesOutOfScope": 2,
   "rpcOnlyMigrationRequired": false,
   "legacyContractRetirementReady": true,
-  "commitsBehindOriginMain": 35,
+  "commitsAheadOfLegacyBaseline": 41,
+  "originMainMatchesHead": false,
   "rpcInventoryMatchesCode": true
 }
