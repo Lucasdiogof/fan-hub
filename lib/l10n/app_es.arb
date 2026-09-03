@@ -1265,5 +1265,9 @@
   "storeValPhoneInvalid": "Teléfono inválido.",
   "storeValCpfRequired": "Ingresa el CPF.",
   "storeValCpfInvalid": "CPF inválido.",
-  "storeValZipInvalid": "Código postal inválido."
+  "storeValZipInvalid": "Código postal inválido.",
+
+  "releaseGateTitle": "Actualización necesaria",
+  "releaseGateMessage": "Esta versión de la app ya no es compatible. Actualiza para continuar.",
+  "releaseGateUpdateButton": "Actualizar ahora"
 }

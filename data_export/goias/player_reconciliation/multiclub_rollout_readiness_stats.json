@@ -1,0 +1,17 @@
+{
+  "minimumVersionMechanismExists": true,
+  "newAppContainsMinimumVersionGate": true,
+  "releaseGateIsSecurityBoundary": false,
+  "publicStoreReleaseExists": false,
+  "testDistributionExists": false,
+  "webDeploymentExists": true,
+  "legacyClientsInTheWild": true,
+  "legacyWritePathsExist": true,
+  "serverCanIdentifyClientVersion": false,
+  "directPostgrestWritesCanBeVersionRejected": false,
+  "legacyRpcCallsCanBeVersionRejected": false,
+  "telemetryCanProvideReleaseSignalFromCapturedActivity": true,
+  "legacyAppWritesBlocked": false,
+  "m2_2bBBlockedByRollout": true,
+  "m2_2bBReady": false
+}

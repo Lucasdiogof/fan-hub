@@ -1,0 +1,69 @@
+{
+  "minimumVersion": {
+    "releaseGateFileExists": true,
+    "releaseMigrationExists": true,
+    "releaseTableClubAndPlatformScoped": true,
+    "releaseTablePublicReadOnly": true,
+    "releaseMigrationSeedIsInert": true,
+    "releaseTableStoreUrlNullable": true
+  },
+  "boot": {
+    "routerRedirectsOnBlocked": true,
+    "splashAwaitsReleaseCheck": true,
+    "releaseGateHasTimeout": true,
+    "releaseGateFailsOpenOnError": true
+  },
+  "distributionEvidence": {
+    "publicStoreReleaseExists": {
+      "value": false,
+      "confidence": "high_not_absolute",
+      "evidence": {
+        "androidReleaseUsesDebugSigning": true,
+        "androidHasRealKeystoreConfig": false,
+        "iosDocConfirmsNotPublished": true,
+        "hasFastlaneOrCodemagic": false
+      }
+    },
+    "testDistributionExists": {
+      "value": false,
+      "confidence": "high_not_absolute",
+      "evidence": {
+        "androidReleaseUsesDebugSigning": true,
+        "iosDocConfirmsNotPublished": true,
+        "hasFastlaneOrCodemagic": false
+      }
+    },
+    "githubReleasesExistence": "UNKNOWN_REQUIRES_OWNER_CONFIRMATION",
+    "manualApkIpaDistribution": "UNKNOWN_REQUIRES_OWNER_CONFIRMATION",
+    "webPwaDeploymentExists": {
+      "value": true,
+      "checkedAt": "2026-09-03T03:03Z",
+      "evidence": {
+        "wranglerTomlServesWebBuild": true,
+        "liveCheckUrl": "https://goias-app.lucasdiogo1234.workers.dev/",
+        "liveCheckHttpStatus": 200,
+        "liveCheckCfCacheStatus": "HIT (primeira request desta sessão — indício de tráfego anterior real, não prova volume/quem)",
+        "versionJson": {
+          "version": "1.0.0",
+          "build_number": "1"
+        }
+      }
+    },
+    "legacyClientsInTheWild": {
+      "value": true,
+      "reasoning": "webPwaDeploymentExists=true E ele reflete um commit anterior a toda a série multiclub (M3.2-M3.4 nunca foram pushados) — logo usa onConflict/PK legacy, confirmado ao vivo.",
+      "degreeOfActiveUsage": "UNKNOWN_REQUIRES_OWNER_CONFIRMATION",
+      "commitsLocalHeadAheadOfOriginMainAtCheckTime": 35,
+      "commitsLocalHeadAheadOfOriginMainNow": 35
+    }
+  },
+  "serverEnforcement": {
+    "customVersionHeaderSent": false,
+    "rlsReferencesRequestVersion": false,
+    "anyPolicyReferencesVersion": false,
+    "anyRpcTakesVersionParam": false
+  },
+  "telemetry": {
+    "sentryReleaseTaggingPresent": true
+  }
+}

@@ -111,10 +111,12 @@ import 'package:goias_app/features/ticket/presentation/pages/purchase_summary_pa
 import 'package:goias_app/features/ticket/presentation/pages/ticket_view_page.dart';
 import 'package:goias_app/features/ticket/presentation/pages/tickets_page.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
+import 'package:goias_app/core/release/release_gate.dart';
 import 'package:goias_app/core/router/root_navigator_key.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/home/presentation/widgets/desktop_shell_frame.dart';
+import 'package:goias_app/features/release_gate/presentation/pages/update_required_page.dart';
 import 'package:goias_app/features/splash/presentation/pages/splash_video_page.dart';
 import 'package:goias_app/shared/widgets/coming_soon_page.dart';
 
@@ -124,7 +126,11 @@ const _authArea = {'/login', '/register', '/check-email'};
 /// de cadastro precisam abrir sem o usuário estar autenticado.
 const _publicRoutes = {'/profile/terms', '/profile/privacy'};
 
-GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
+GoRouter createAppRouter(
+  AuthCubit authCubit,
+  SplashGate splashGate,
+  ReleaseGate releaseGate,
+) {
   return GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: '/',
@@ -135,6 +141,7 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
     refreshListenable: Listenable.merge([
       _AuthRefresh(authCubit.stream),
       splashGate,
+      releaseGate,
     ]),
     redirect: (context, state) {
       final authState = authCubit.state;
@@ -146,6 +153,14 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
 
       if (!splashGate.done) {
         return location == '/splash' ? null : '/splash';
+      }
+
+      // Bloqueia TUDO, inclusive login/cadastro — uma instalação obsoleta
+      // não deve conseguir autenticar e escrever no banco. `SplashVideoPage`
+      // já espera `ReleaseGate.ensureChecked()` terminar antes de liberar o
+      // `splashGate`, então `blocked` já está resolvido neste ponto.
+      if (releaseGate.blocked) {
+        return location == '/update-required' ? null : '/update-required';
       }
 
       if (_publicRoutes.contains(location)) return null;
@@ -187,6 +202,11 @@ GoRouter createAppRouter(AuthCubit authCubit, SplashGate splashGate) {
       // Fora do shell de propósito: acessíveis sem estar logado (Termos e
       // Privacidade linkados no cadastro) ou imersivo por natureza (o
       // gameplay do Pênalti é um `GameWidget` em tela cheia).
+      GoRoute(
+        path: '/update-required',
+        pageBuilder: (context, state) =>
+            appPage(state, const UpdateRequiredPage()),
+      ),
       GoRoute(
         path: '/profile/terms',
         pageBuilder: (context, state) => appPage(

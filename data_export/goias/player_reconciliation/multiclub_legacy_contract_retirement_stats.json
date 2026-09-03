@@ -1,0 +1,18 @@
+{
+  "oldDirectUpserts": 16,
+  "autoRetiredByKeyEnforcement": 14,
+  "legacyRpcsUsed": 8,
+  "legacyRpcsUsedWrites": 3,
+  "safeToRevokeLegacyRpcs": 0,
+  "legacyWritesSurvivingKeyEnforcement": 5,
+  "defaultDependentLegacyWrites": 5,
+  "autoRetiredByDefaultRemoval": 5,
+  "unversionedLegacyWritesRemaining": 0,
+  "alreadyBrokenIndependentOfM2_2bB": 1,
+  "outOfScopeNoClubIdColumn": 1,
+  "globalWritesOutOfScope": 2,
+  "rpcOnlyMigrationRequired": false,
+  "legacyContractRetirementReady": true,
+  "commitsBehindOriginMain": 35,
+  "rpcInventoryMatchesCode": true
+}

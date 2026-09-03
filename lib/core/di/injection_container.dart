@@ -19,6 +19,9 @@ import 'package:goias_app/features/arena/games/player_identity/data/player_ident
 import 'package:goias_app/features/arena/games/player_identity/data/supabase_player_identity_repository.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/supabase_tactical_identity_repository.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
+import 'package:goias_app/core/release/release_gate.dart';
+import 'package:goias_app/core/release/release_requirement_repository.dart';
+import 'package:goias_app/core/release/supabase_release_requirement_repository.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/core/session/account_session_cache_guard.dart';
 import 'package:goias_app/features/auth/data/auth_remote_data_source.dart';
@@ -187,6 +190,10 @@ void setupDependencies() {
   sl.registerLazySingleton<AudioPlayer>(AudioPlayer.new);
   sl.registerLazySingleton<ClubSongVolumeStore>(ClubSongVolumeStore.new);
   sl.registerLazySingleton<SplashGate>(SplashGate.new);
+  sl.registerLazySingleton<ReleaseRequirementRepository>(
+    () => SupabaseReleaseRequirementRepository(Supabase.instance.client, sl()),
+  );
+  sl.registerLazySingleton<ReleaseGate>(() => ReleaseGate(sl()));
   sl.registerLazySingleton<ArenaRankingRepository>(
     () => SupabaseArenaRankingRepository(Supabase.instance.client, sl()),
   );

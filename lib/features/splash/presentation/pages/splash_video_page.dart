@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/release/release_gate.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
@@ -137,11 +138,13 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   }
 
   /// Só libera o gate (e portanto a navegação) depois que o pré-carregamento
-  /// da Home também tiver terminado — na prática quase sempre já terminou
-  /// nesse ponto (rodou em paralelo com a splash), então isso raras vezes
-  /// segura a splash por mais tempo do que ela já levaria sozinha.
+  /// da Home E a checagem de versão mínima (`ReleaseGate`) também tiverem
+  /// terminado — na prática quase sempre já terminaram nesse ponto (rodam
+  /// em paralelo com a splash), então isso raras vezes segura a splash por
+  /// mais tempo do que ela já levaria sozinha. `ReleaseGate.ensureChecked()`
+  /// nunca lança (timeout próprio, fail-open) — `Future.wait` aqui é seguro.
   Future<void> _completeGateAfterPreload() async {
-    await _homePreload;
+    await Future.wait([_homePreload, sl<ReleaseGate>().ensureChecked()]);
     sl<SplashGate>().complete();
   }
 
