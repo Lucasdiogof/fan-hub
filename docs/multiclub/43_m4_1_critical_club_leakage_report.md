@@ -715,8 +715,66 @@ npx supabase db push --dry-run -> só 20260903170000_drop_default_notification_t
 
 Staged por nome: migration B, os 2 arquivos de tooling atualizados, o relatório 43 (esta seção). `78be21d` (docs-only, resultado do release 1.0.2+3) preservado na linha do tempo — nenhum hash reescrito/amendado.
 
-## 6. `db push`
+## 6. `db push` — aplicação
 
-Ver §"Aplicação" abaixo.
+```
+npx supabase db push
+Applying migration 20260903170000_drop_default_notification_tokens_club_id.sql...
+Finished supabase db push.
+```
+
+## 7. DB final
+
+`npx supabase migration list` → **59 local / 59 remote, 0 pending.**
+
+## 8. `DEFAULT` removido — confirmado ao vivo
+
+```sql
+column_name=club_id, is_nullable=NO, column_default=null
+```
+
+## 9. `NOT NULL`/FK/`UNIQUE` intactos — confirmado ao vivo
+
+```
+user_notification_tokens_club_id_fkey  -> FOREIGN KEY (club_id) REFERENCES clubs(id)
+user_notification_tokens_fcm_token_key -> UNIQUE (fcm_token)
+user_notification_tokens_pkey          -> PRIMARY KEY (id)
+```
+Nenhum tocado por esta migration — exatamente os mesmos de antes.
+
+## 10. Integridade dos dados
+
+```sql
+total=2, null_club_id=0, distinct_tokens=2
+```
+0 nulo, 0 token perdido (2 distintos = 2 total).
+
+## 11. Tooling — atualizado pra refletir o estado ao vivo pós-apply
+
+`audit_m4_critical_club_leakage.mjs`: `notificationSchemaBAppliedLive` (era `false`, reflete o preflight) → `true` (reconfirmado ao vivo: DEFAULT nulo, `NOT NULL`/FK/`UNIQUE` intactos, 0 dado perdido). `notificationTokenClubDefaultTransitional` agora `false`, `notificationTokenDefaultFinal` agora `true` — as 2 fases do rollout convergem, nunca colapsadas numa métrica só. 2 testes que descreviam o estado PRÉ-apply foram atualizados via nota de supersessão (nunca deletados) pro estado FINAL. **34 testes, 0 falhando** (inalterado em contagem — os 2 testes atualizados continuam sendo os mesmos 2, só a asserção mudou de fase).
+
+## Gates
+
+```
+flutter analyze: 0 issues
+flutter test: 912 passed, 1 skip, 0 failed (inalterado — 0 Dart tocado nesta rodada)
+tooling/multiclub/test_*.mjs: 856 passando, 0 falhando (854 + 2 novos, fabricados pra M4.1c-B)
+Worker/Edge: não rodado — nenhum código correspondente mudou nesta rodada
+```
+
+## Estados finais
+
+```
+NOTIFICATION_TOKEN_CLUB_DEFAULT_TRANSITIONAL=false
+NOTIFICATION_TOKEN_DEFAULT_FINAL=true
+NOTIFICATION_MULTICLUB_MODEL_READY=true
+M4_CRITICAL_LEAKAGE_READY=true
+```
+
+## Git
+
+Commit `5f32371` (`feat(multiclub): drop transitional default on notification tokens club_id`) — staged por nome (migration B + 2 arquivos de tooling + 2 JSON + relatório 43), nunca `git add .`. `78be21d` preservado na linha do tempo, nenhum hash reescrito. **0 `git push` nesta rodada** (autorizado só depois de tudo validado — ver instrução).
 
 ---
+
+**PARE.** `0 git push`, `0 M4.2`, `0 flavor`, `0 Bragantino`. M4.1c-B encerrada — o modelo de tenancy de `user_notification_tokens` está completo (schema + Flutter + Edge, todos ao vivo, sem rede de compatibilidade residual).

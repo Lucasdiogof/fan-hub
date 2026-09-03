@@ -116,10 +116,13 @@ test('migration B (DROP DEFAULT) existe, só remove o DEFAULT (nada mais), ainda
   assert.strictEqual(audit.notifications.migrationB.touchesOnlyDefault, true);
   assert.strictEqual(audit.notifications.migrationB.designCorrect, true);
 });
-test('estados de rollout ANTES do db push da M4.1c-B: coluna pronta + DEFAULT transicional=true, DEFAULT final=false — as 2 fases nunca colapsadas numa flag só', () => {
+// Supersessão (M4.1c-B, pós db push): a migration B foi aplicada ao vivo e
+// reconfirmada (column_default=null, is_nullable=NO, FK/UNIQUE intactos,
+// 0 token perdido) — o rollout de 2 fases chegou ao estado final.
+test('estados de rollout FINAIS (pós db push da M4.1c-B): coluna pronta + DEFAULT transicional=false + DEFAULT final=true — as 2 fases nunca colapsadas numa flag só', () => {
   assert.strictEqual(stats.notificationTokenClubColumnReady, true);
-  assert.strictEqual(stats.notificationTokenClubDefaultTransitional, true);
-  assert.strictEqual(stats.notificationTokenDefaultFinal, false);
+  assert.strictEqual(stats.notificationTokenClubDefaultTransitional, false);
+  assert.strictEqual(stats.notificationTokenDefaultFinal, true);
 });
 test('FABRICADO: migration B com qualquer coisa além de DROP DEFAULT (ex.: ADD COLUMN) derruba touchesOnlyDefault — nunca ampliar o escopo da migration B silenciosamente', () => {
   const fakeExpandedMigrationB =
@@ -221,14 +224,11 @@ test('m4_1ImplementationLocalComplete=true — o código desta rodada foi escrit
 test('m4CriticalLeakageReady=true — CORRIGIDO DE NOVO: agora corretamente true, porque o gap real (entrega por token) foi fechado EM CÓDIGO nesta rodada, testado, não forçado', () => {
   assert.strictEqual(stats.m4CriticalLeakageReady, true);
 });
-// Supersessão (M4.1c-B): migration A já está aplicada ao vivo desde a
-// M4.1c-A — o guarda-corpo real agora é notificationSchemaBAppliedLive
-// (migration B, o DROP DEFAULT), ainda false neste ponto (antes do db push
-// desta rodada) — nunca confundir "código correto" com "seguro em
-// produção" continua valendo, só que pra fase B agora.
-test('notificationSchemaAppliedLive=true (A) mas notificationSchemaBAppliedLive=false (B, antes do db push desta rodada) — o guarda-corpo migrou de fase, nunca some', () => {
+// Supersessão (M4.1c-B, pós db push): as 2 migrations (A e B) estão
+// aplicadas ao vivo e reconfirmadas — o rollout de 2 fases chegou ao fim.
+test('notificationSchemaAppliedLive=true (A) E notificationSchemaBAppliedLive=true (B) — as 2 fases do rollout aplicadas e reconfirmadas ao vivo', () => {
   assert.strictEqual(stats.notificationSchemaAppliedLive, true);
-  assert.strictEqual(stats.notificationSchemaBAppliedLive, false);
+  assert.strictEqual(stats.notificationSchemaBAppliedLive, true);
 });
 test('FABRICADO: se qualquer 1 dos hardcodes de asset ainda existisse, m4CriticalLeakageReady teria que cair independente do token', () => {
   const simulate = (assetHardcodes) => assetHardcodes === 0;

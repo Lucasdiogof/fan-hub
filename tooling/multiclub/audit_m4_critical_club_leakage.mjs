@@ -206,12 +206,12 @@ function checkNotificationsDispatch() {
   // re-derived by grepping TS/Dart source, embedded as dated baselines,
   // same pattern as every other live DB fact in this project's tooling.
   // migrationA (club_id column + NOT NULL + DEFAULT) applied live 2026-09-03
-  // (M4.1c-A rollout). migrationB (DROP DEFAULT) designed + committed
-  // 2026-09-03 (M4.1c-B) but NOT applied yet at the time this file was last
-  // regenerated — flip to true only after a real `db push` + live
-  // reconfirmation (see report 43 §"M4.1c-B — Aplicação").
+  // (M4.1c-A rollout). migrationB (DROP DEFAULT) applied live 2026-09-03
+  // too (M4.1c-B, same day, after the owner confirmed PWA+APK 1.0.2+3 both
+  // published/distributed) — reconfirmed live: column_default=null,
+  // is_nullable=NO, FK/UNIQUE intact, 2/2 tokens still valid, 0 lost.
   const notificationSchemaAppliedLive = true;
-  const notificationSchemaBAppliedLive = false;
+  const notificationSchemaBAppliedLive = true;
 
   const tokenFetchFiltersByClubId = /activeTokensForClub\(clubId\)/.test(shared);
   const flutterRegistersClubId = /'club_id': _clubId/.test(
