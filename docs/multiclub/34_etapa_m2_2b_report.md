@@ -1,7 +1,7 @@
 # M2.2B — Tenant-Aware Physical Keys, Constraints & Enforcement
 
 Data: 2026-09-02
-Status: **M2.2B-A APLICADO (4 bridge migrations pushed, 50/50 local=remote, 18 tenant-aware unique indexes ativos, TODAS as chaves legacy preservadas, 0 dado alterado). 0 git push, 0 Edge/Worker deploy, 0 M3.4, 0 M2.2B-B, 0 M4, 0 segundo clube. `SECOND_CLUB_BLOCKED=true`.**
+Status: **M2.2B-A APLICADO + commitado (`8d64316` `feat(multiclub): add tenant-aware key bridges`). 4 bridge migrations pushed, 50/50 local=remote, 18 tenant-aware unique indexes ativos, TODAS as chaves legacy preservadas, 0 dado alterado. 0 git push, 0 Edge/Worker deploy, 0 M3.4, 0 M2.2B-B, 0 M4, 0 segundo clube. `SECOND_CLUB_BLOCKED=true`.**
 
 Duas fases documentadas aqui: (1ª rodada) AUDIT → DESIGN → BRIDGE MIGRATIONS locais → correção; (2ª rodada) **APLICAÇÃO da M2.2B-A** com preflight + revalidação ao vivo + push + validação pós-push. Nenhum 2º clube cadastrado (`clubRegistry` = 1).
 
