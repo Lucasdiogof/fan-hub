@@ -1,0 +1,785 @@
+{
+  "liveSnapshot": {
+    "capturedAt": "2026-09-02",
+    "method": "supabase db query --linked (read-only)",
+    "clubs": {
+      "count": 1,
+      "goiasId": "4c16340d-300c-5ab2-903f-17519db9b146",
+      "goiasSlug": "goias"
+    },
+    "integrityAllClean": true,
+    "rowCounts": {
+      "career_players": 30,
+      "guess_players": 173,
+      "squad_members": 31,
+      "lineup_matches": 31,
+      "quiz_questions": 60,
+      "user_game_item_progress": 211,
+      "score_events": 262,
+      "quiz_question_progress": 160,
+      "quiz_active_session": 9,
+      "career_path_progress": 40,
+      "lineup_match_progress": 34,
+      "arena_selected_content": 9,
+      "arena_achievements": 0,
+      "player_identity_results": 1,
+      "tactical_identity_results": 1,
+      "match_lineup_votes": 3,
+      "ticket_checkin_decisions": 1,
+      "ticket_orders": 0,
+      "tickets": 0,
+      "store_orders": 0,
+      "store_order_items": 0,
+      "supporter_memberships": 0,
+      "user_notification_preferences": 0,
+      "user_notification_tokens": 2,
+      "match_monitor_sessions": 1,
+      "notification_events": 0,
+      "notification_deliveries": 0,
+      "passport_matches": 1697,
+      "passport_attendances": 7,
+      "passport_memorable_matches": 1,
+      "profiles": 14,
+      "delivery_addresses": 0
+    },
+    "personIdNulls": {
+      "career_players": 9,
+      "guess_players": 81,
+      "squad_members": 0
+    },
+    "dupPersonId": {
+      "career_players": 0,
+      "guess_players": 0,
+      "squad_members": 0
+    },
+    "prospectiveKeyCollisions": {
+      "user_game_item_progress": 0,
+      "match_lineup_votes": 0,
+      "notification_events": 0
+    },
+    "transitionalDefaultTables": 24
+  },
+  "targets": [
+    {
+      "table": "career_players",
+      "family": "content",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "club_id",
+        "id"
+      ],
+      "bridgeIndex": null,
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "ENFORCE_IN_B",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "career_players",
+      "family": "content",
+      "currentKind": "UNIQUE",
+      "currentKey": [
+        "person_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "person_id"
+      ],
+      "bridgeIndex": "career_players_club_person_uidx",
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "guess_players",
+      "family": "content",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "club_id",
+        "id"
+      ],
+      "bridgeIndex": null,
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "ENFORCE_IN_B",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "guess_players",
+      "family": "content",
+      "currentKind": "UNIQUE",
+      "currentKey": [
+        "person_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "person_id"
+      ],
+      "bridgeIndex": "guess_players_club_person_uidx",
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "squad_members",
+      "family": "content",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "club_id",
+        "id"
+      ],
+      "bridgeIndex": null,
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "ENFORCE_IN_B",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "squad_members",
+      "family": "content",
+      "currentKind": "UNIQUE",
+      "currentKey": [
+        "person_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "person_id"
+      ],
+      "bridgeIndex": "squad_members_club_person_uidx",
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "lineup_matches",
+      "family": "content",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "club_id",
+        "id"
+      ],
+      "bridgeIndex": null,
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "ENFORCE_IN_B",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "quiz_questions",
+      "family": "content",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "club_id",
+        "id"
+      ],
+      "bridgeIndex": null,
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "ENFORCE_IN_B",
+      "keyScopeBlocked": true,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "user_game_item_progress",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "game_id",
+        "item_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "game_id",
+        "item_id"
+      ],
+      "bridgeIndex": "ugip_club_user_game_item_uidx",
+      "writer": "RPC",
+      "appOnConflict": null,
+      "rpcConflict": "user_id, game_id, item_id",
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_RPC_UPDATE",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "quiz_question_progress",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "question_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "question_id"
+      ],
+      "bridgeIndex": "qqp_club_user_question_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,question_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "quiz_active_session",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "difficulty"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "difficulty"
+      ],
+      "bridgeIndex": "qas_club_user_difficulty_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,difficulty",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "career_path_progress",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "player_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "player_id"
+      ],
+      "bridgeIndex": "cpp_club_user_player_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,player_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "lineup_match_progress",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "match_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "match_id"
+      ],
+      "bridgeIndex": "lmp_club_user_match_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,match_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "arena_selected_content",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "game_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "game_id"
+      ],
+      "bridgeIndex": "asc_club_user_game_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,game_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "arena_achievements",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "achievement_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "achievement_id"
+      ],
+      "bridgeIndex": "aa_club_user_achievement_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,achievement_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "player_identity_results",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id"
+      ],
+      "targetKey": [
+        "user_id",
+        "club_id"
+      ],
+      "bridgeIndex": "pir_user_club_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "tactical_identity_results",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id"
+      ],
+      "targetKey": [
+        "user_id",
+        "club_id"
+      ],
+      "bridgeIndex": "tir_user_club_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "score_events",
+      "family": "progress",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "id"
+      ],
+      "bridgeIndex": null,
+      "writer": "RPC",
+      "appOnConflict": null,
+      "rpcConflict": "append-only (no conflict)",
+      "inboundFk": false,
+      "keyScope": "GLOBAL_OK",
+      "note": "PK uuid própria; só ROW_SCOPE (ranking RPC já filtra por club_id via _for_club). Sem mudança de chave.",
+      "classification": "KEEP_GLOBAL",
+      "keyScopeBlocked": false,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "match_lineup_votes",
+      "family": "crowd",
+      "currentKind": "UNIQUE",
+      "currentKey": [
+        "match_id",
+        "user_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "match_id",
+        "user_id"
+      ],
+      "bridgeIndex": "mlv_club_match_user_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "match_id,user_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "ticket_checkin_decisions",
+      "family": "tickets",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id",
+        "match_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "match_id"
+      ],
+      "bridgeIndex": "tcd_club_user_match_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,match_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "tickets",
+      "family": "tickets",
+      "currentKind": "PARTIAL_UNIQUE",
+      "currentKey": [
+        "user_id",
+        "match_id"
+      ],
+      "currentPredicate": "origin = 'membership_check_in'",
+      "targetKey": [
+        "club_id",
+        "user_id",
+        "match_id"
+      ],
+      "targetPredicate": "origin = 'membership_check_in'",
+      "bridgeIndex": "tickets_club_user_match_checkin_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id,match_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT",
+        "REQUIRES_RPC_UPDATE"
+      ],
+      "partialOnConflictRequiresPredicate": true
+    },
+    {
+      "table": "notification_events",
+      "family": "notifications",
+      "currentKind": "UNIQUE",
+      "currentKey": [
+        "event_type",
+        "dedupe_key"
+      ],
+      "targetKey": [
+        "club_id",
+        "event_type",
+        "dedupe_key"
+      ],
+      "bridgeIndex": "ne_club_event_dedupe_uidx",
+      "writer": "SERVICE_ROLE",
+      "appOnConflict": null,
+      "rpcConflict": "Edge on conflict (event_type, dedupe_key)",
+      "inboundFk": true,
+      "keyScope": "BLOCKED",
+      "note": "M3.3 já colocou club code na string dedupe_key como ponte. notification_deliveries.event_id FK aponta pra PK(id) uuid — NÃO muda.",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_EDGE_UPDATE"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "match_monitor_sessions",
+      "family": "notifications",
+      "currentKind": "PK",
+      "currentKey": [
+        "match_id"
+      ],
+      "targetKey": [
+        "club_id",
+        "match_id"
+      ],
+      "bridgeIndex": "mms_club_match_uidx",
+      "writer": "SERVICE_ROLE",
+      "appOnConflict": null,
+      "rpcConflict": "Edge upsert por match_id",
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_EDGE_UPDATE"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "user_notification_preferences",
+      "family": "notifications",
+      "currentKind": "PK",
+      "currentKey": [
+        "user_id"
+      ],
+      "targetKey": [
+        "user_id",
+        "club_id"
+      ],
+      "bridgeIndex": "unp_user_club_uidx",
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id",
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "BLOCKED",
+      "classification": "BRIDGE_FIRST",
+      "keyScopeBlocked": true,
+      "dropBlockers": [
+        "REQUIRES_NEW_APP",
+        "REQUIRES_OLD_APP_RETIREMENT"
+      ],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "store_orders",
+      "family": "commerce",
+      "currentKind": "UNIQUE",
+      "currentKey": [
+        "order_number"
+      ],
+      "targetKey": [
+        "order_number"
+      ],
+      "bridgeIndex": null,
+      "writer": "RPC",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": false,
+      "keyScope": "GLOBAL_OK",
+      "note": "order_number por sequência global (GOI- é só branding, vai pra ClubConfig em M4). KEEP_GLOBAL.",
+      "classification": "KEEP_GLOBAL",
+      "keyScopeBlocked": false,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "user_notification_tokens",
+      "family": "notifications",
+      "currentKind": "UNIQUE",
+      "currentKey": [
+        "fcm_token"
+      ],
+      "targetKey": [
+        "fcm_token"
+      ],
+      "bridgeIndex": null,
+      "writer": "APP_UPSERT",
+      "appOnConflict": "fcm_token",
+      "rpcConflict": null,
+      "inboundFk": true,
+      "keyScope": "GLOBAL_OK",
+      "note": "token de device global por natureza. KEEP_GLOBAL, nunca ganha club_id.",
+      "classification": "KEEP_GLOBAL",
+      "keyScopeBlocked": false,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "profiles",
+      "family": "user_global",
+      "currentKind": "PARTIAL_UNIQUE",
+      "currentKey": [
+        "cpf"
+      ],
+      "currentPredicate": "cpf is not null",
+      "targetKey": [
+        "cpf"
+      ],
+      "bridgeIndex": null,
+      "writer": "APP_UPSERT",
+      "appOnConflict": "user_id",
+      "rpcConflict": null,
+      "inboundFk": true,
+      "keyScope": "GLOBAL_OK",
+      "note": "CPF é identidade humana global; profiles não tem club_id. KEEP_GLOBAL.",
+      "classification": "KEEP_GLOBAL",
+      "keyScopeBlocked": false,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "supporter_memberships",
+      "family": "membership",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "id"
+      ],
+      "bridgeIndex": null,
+      "writer": "RPC",
+      "appOnConflict": null,
+      "rpcConflict": "get_my_membership_for_club (order by created_at desc)",
+      "inboundFk": false,
+      "keyScope": "PRODUCT",
+      "note": "\"1 membership ativa por (user, club)\" é derivado de expires_at>now — não é constraint estática. Hoje 100% na RPC. Mesmo user PODE ter membership em clubes diferentes (club_id já na coluna). Constraint física opcional é decisão de produto.",
+      "classification": "PRODUCT_DECISION",
+      "keyScopeBlocked": false,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    },
+    {
+      "table": "passport_matches",
+      "family": "passport",
+      "currentKind": "PK",
+      "currentKey": [
+        "id"
+      ],
+      "targetKey": [
+        "?"
+      ],
+      "bridgeIndex": null,
+      "writer": "SEED_ONLY",
+      "appOnConflict": null,
+      "rpcConflict": null,
+      "inboundFk": true,
+      "keyScope": "PRODUCT",
+      "note": "PASSPORT_TENANCY_DEFERRED — sem club_id, fora da M2.2B. Decisão de produto A/B/C pendente (doc 29 §19).",
+      "classification": "PRODUCT_DECISION",
+      "keyScopeBlocked": false,
+      "dropBlockers": [],
+      "partialOnConflictRequiresPredicate": false
+    }
+  ],
+  "appOnConflicts": {
+    "user_id,achievement_id": 1,
+    "user_id,player_id": 1,
+    "user_id,game_id": 2,
+    "user_id,match_id": 4,
+    "user_id": 4,
+    "user_id,question_id": 1,
+    "user_id,difficulty": 1,
+    "match_id,user_id": 1,
+    "fcm_token": 1
+  }
+}
