@@ -148,6 +148,33 @@ void main() {
       await gate.ensureChecked();
       expect(notifications, 1);
     });
+
+    test(
+      'release M3.4 real (app 1.0.1+2) contra a config publicada (mínimo 1.0.0/build 1, force_update=false) -> nunca bloqueia',
+      () async {
+        PackageInfo.setMockInitialValues(
+          appName: 'goias_app',
+          packageName: 'br.com.goiasec.goias_app',
+          version: '1.0.1',
+          buildNumber: '2',
+          buildSignature: '',
+        );
+        final gate = ReleaseGate(
+          _FakeRepository(
+            const Success(
+              AppReleaseRequirement(
+                platform: 'web',
+                minimumVersion: '1.0.0',
+                minimumBuild: 1,
+                forceUpdate: false,
+              ),
+            ),
+          ),
+        );
+        await gate.ensureChecked();
+        expect(gate.blocked, isFalse);
+      },
+    );
   });
 }
 

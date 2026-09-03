@@ -2,7 +2,7 @@ name: goias_app
 description: "Goiás EC - o ecossistema digital do torcedor esmeraldino."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ^3.12.1
