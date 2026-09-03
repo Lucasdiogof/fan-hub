@@ -675,3 +675,48 @@ M4_1_RUNTIME_APK_RELEASED=false   (build falhou nesta sessão, ambiente — não
 ---
 
 **PARE.** PWA `1.0.2+3` publicado e validado. APK não gerado nesta sessão (erro de ambiente, registrado, não contornado). `0 migration B`, `0 M4.2`, `0 flavor real`, `0 Bragantino`. Aguardando: (1) o dono gerar o APK `1.0.2+3` no próprio terminal, (2) confirmar entrega às ~3 pessoas — só então M4.1c-B (`DROP DEFAULT`) pode ser autorizada.
+
+---
+
+# M4.1c-B — Finalizar Notification Token Club Ownership
+
+Data: 2026-09-03. Autorizada pela confirmação do dono: PWA `1.0.2+3` publicado ✅, APK `1.0.2+3` gerado ✅, entregue às ~3 pessoas ✅.
+
+## 1. Migration B
+
+`supabase/migrations/20260903170000_drop_default_notification_tokens_club_id.sql` (nova):
+```sql
+alter table public.user_notification_tokens
+  alter column club_id drop default;
+```
+Nada além disso — `club_id NOT NULL`, FK → `clubs(id)`, `fcm_token UNIQUE` (sozinho) preservados, nenhum tocado por este arquivo.
+
+## 2. Preflight live (antes de aplicar)
+
+```
+DB = 58/58 (0 pending, antes desta migration existir)
+club_id: is_nullable=NO, column_default='<goias-uuid>'::uuid
+tokens: total=2, null_club_id=0, invalid_club_id=0
+```
+Runtime `1.0.2+3` reconfirmado (`lib/features/notifications/data/supabase_notification_repository.dart`): `registerToken` grava `'club_id': _clubId` explicitamente no upsert — já é o código publicado/distribuído, confirmado pelo dono.
+
+## 3. Dry-run
+
+```
+npx supabase migration list -> 59 local / 58 remote / 1 pending
+npx supabase db push --dry-run -> só 20260903170000_drop_default_notification_tokens_club_id.sql
+```
+
+## 4. Tooling — 2 achados corrigidos antes do commit
+
+`audit_m4_critical_club_leakage.mjs`: (a) `migrationDesignCorrect` (migration A) não deveria mais depender de `!migrationBFileExists` — essa era uma guarda temporal só da rodada M4.1c-A, agora migration B existe legitimamente; removida. (b) Nova distinção `notificationSchemaAppliedLive` (A, já aplicada) vs. `notificationSchemaBAppliedLive` (B, ainda não) — `notificationTokenClubDefaultTransitional`/`notificationTokenDefaultFinal` agora exigem a migration DESENHADA CORRETAMENTE **e** aplicada ao vivo, nunca só "o arquivo existe". (c) **Falso-positivo de comentário** (mesma classe já documentada neste projeto): o checker `migrationBTouchesOnlyDefault` batia contra o TEXTO do comentário explicativo da própria migration B ("fcm_token continua a única UNIQUE", "NOT NULL sem DEFAULT"), reprovando uma migration correta — corrigido com `stripSqlComments()` (filtra linhas `--` antes de checar), mesmo padrão de `stripComments` já usado nos scripts de tooling Dart deste projeto. 3 testes antigos que assumiam "migration B não é um arquivo ainda"/"0 db push" foram atualizados (nunca deletados) via nota de supersessão — mesmo padrão de M2.2A/M3.1/M3.2/M4.1. +2 testes fabricados novos (escopo da migration B nunca amplia silenciosamente; o falso-positivo de comentário é reproduzido E provado corrigido). `tooling/multiclub/test_m4_critical_club_leakage.mjs`: **34 testes, 0 falhando** (era 32).
+
+## 5. Commit local antes do `db push`
+
+Staged por nome: migration B, os 2 arquivos de tooling atualizados, o relatório 43 (esta seção). `78be21d` (docs-only, resultado do release 1.0.2+3) preservado na linha do tempo — nenhum hash reescrito/amendado.
+
+## 6. `db push`
+
+Ver §"Aplicação" abaixo.
+
+---

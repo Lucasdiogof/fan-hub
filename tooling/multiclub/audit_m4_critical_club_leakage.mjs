@@ -11,6 +11,17 @@ function read(relPath) {
   return fs.readFileSync(path.join(ROOT, relPath), 'utf8');
 }
 
+// Mesma classe de falso-positivo já documentada neste projeto (comentário
+// explicativo mencionando a própria coisa que o código não faz): SQL `--`
+// vira `//` do Dart aqui — sempre filtrar antes de checar "essa migration
+// NUNCA menciona X" contra texto de comentário, não só o SQL executável.
+function stripSqlComments(src) {
+  return src
+    .split('\n')
+    .map((l) => l.replace(/--.*$/, ''))
+    .join('\n');
+}
+
 function grepCount(pattern, globPattern) {
   try {
     const out = execSync(`git grep -c -E "${pattern}" -- "${globPattern}"`, {
@@ -161,9 +172,26 @@ function checkNotificationsDispatch() {
   // later. If this migration (still named 20260903160000, "A") ever drops
   // the default, that's a rollout-compatibility regression, not progress.
   const migrationADropsDefaultRegression = /alter column club_id drop default/.test(migrationSrc);
+  // Migration B (M4.1c-B) — additive-only in the sense that it touches
+  // nothing but the DEFAULT: drops the transitional Goiás default now that
+  // the runtime sending club_id explicitly (1.0.2+3) is confirmed
+  // published (PWA) AND distributed (APK, ~3 people, owner-confirmed).
+  // Deliberately its OWN migration file, never folded into A — keeps the
+  // rollout's 2 phases independently reviewable/revertible.
   const migrationBFilePath =
     'supabase/migrations/20260903170000_drop_default_notification_tokens_club_id.sql';
   const migrationBFileExists = fs.existsSync(path.join(ROOT, migrationBFilePath));
+  const migrationBSrc = migrationBFileExists ? read(migrationBFilePath) : '';
+  const migrationBBody = stripSqlComments(migrationBSrc);
+  const migrationBDropsDefault = /alter column club_id drop default/.test(migrationBBody);
+  const migrationBTouchesOnlyDefault =
+    migrationBFileExists &&
+    !/add column/i.test(migrationBBody) &&
+    !/set not null/i.test(migrationBBody) &&
+    !/drop\s+(constraint|column)/i.test(migrationBBody) &&
+    !/unique/i.test(migrationBBody);
+  const migrationBDesignCorrect =
+    migrationBFileExists && migrationBDropsDefault && migrationBTouchesOnlyDefault;
   const migrationPreservesFcmTokenUniqueOnly =
     !/add\s+constraint[\s\S]*club_id[\s\S]*fcm_token/i.test(migrationSrc) &&
     !/unique\s*\(\s*club_id\s*,\s*fcm_token\s*\)/i.test(migrationSrc);
@@ -172,15 +200,18 @@ function checkNotificationsDispatch() {
     migrationAddsClubIdColumn &&
     migrationSetsNotNull &&
     !migrationADropsDefaultRegression &&
-    !migrationBFileExists && // B is deliberately NOT a file yet this round
     migrationPreservesFcmTokenUniqueOnly;
 
-  // Live-confirmed schema fact (2026-09-03, reconfirmed before writing the
-  // migration): user_notification_tokens has NO club_id column yet — 0 db
-  // push this round. Cannot be re-derived by a plain grep of TS/Dart
-  // source — embedded as a dated baseline, same pattern as every other
-  // live DB fact in this project's tooling.
-  const notificationSchemaAppliedLive = false;
+  // Live-confirmed schema facts, reconfirmed at each rollout phase — never
+  // re-derived by grepping TS/Dart source, embedded as dated baselines,
+  // same pattern as every other live DB fact in this project's tooling.
+  // migrationA (club_id column + NOT NULL + DEFAULT) applied live 2026-09-03
+  // (M4.1c-A rollout). migrationB (DROP DEFAULT) designed + committed
+  // 2026-09-03 (M4.1c-B) but NOT applied yet at the time this file was last
+  // regenerated — flip to true only after a real `db push` + live
+  // reconfirmation (see report 43 §"M4.1c-B — Aplicação").
+  const notificationSchemaAppliedLive = true;
+  const notificationSchemaBAppliedLive = false;
 
   const tokenFetchFiltersByClubId = /activeTokensForClub\(clubId\)/.test(shared);
   const flutterRegistersClubId = /'club_id': _clubId/.test(
@@ -203,10 +234,14 @@ function checkNotificationsDispatch() {
 
   // Rollout-phase states (M4.1c-A vs M4.1c-B), never collapsed into one
   // "the column exists" flag — a compatibility DEFAULT being present is a
-  // deliberately DIFFERENT state from it being gone for good.
+  // deliberately DIFFERENT state from it being gone for good. FINAL
+  // requires BOTH the migration being designed correctly AND actually
+  // applied live — never just "the file exists locally" (same
+  // design/applied split as notificationSchemaAppliedLive).
   const notificationTokenClubColumnReady = migrationDesignCorrect; // column+NOT NULL designed correctly (A)
-  const notificationTokenClubDefaultTransitional = migrationDesignCorrect; // A keeps the DEFAULT on purpose
-  const notificationTokenDefaultFinal = migrationBFileExists; // B (drop default) not even a file yet
+  const notificationTokenClubDefaultTransitional =
+    migrationDesignCorrect && !(migrationBDesignCorrect && notificationSchemaBAppliedLive);
+  const notificationTokenDefaultFinal = migrationBDesignCorrect && notificationSchemaBAppliedLive;
 
   return {
     notificationDispatchClubScoped: notificationUserEligibilityClubScoped, // kept for backward-compat with M4.1's original (incomplete) metric name
@@ -215,6 +250,7 @@ function checkNotificationsDispatch() {
     notificationMulticlubModelReady,
     notificationMembershipLookupClubScoped: isActiveMemberClubScoped,
     notificationSchemaAppliedLive,
+    notificationSchemaBAppliedLive,
     notificationTokenClubColumnReady,
     notificationTokenClubDefaultTransitional,
     notificationTokenDefaultFinal,
@@ -229,7 +265,11 @@ function checkNotificationsDispatch() {
     },
     migrationB: {
       plannedPath: migrationBFilePath,
-      createdAsFileYet: migrationBFileExists, // deliberately false this round
+      createdAsFileYet: migrationBFileExists,
+      dropsDefault: migrationBDropsDefault,
+      touchesOnlyDefault: migrationBTouchesOnlyDefault,
+      designCorrect: migrationBDesignCorrect,
+      appliedLive: notificationSchemaBAppliedLive,
     },
     tokenFetchFiltersByClubId,
     flutterRegistersClubId,
@@ -356,6 +396,7 @@ const stats = {
   notificationMulticlubModelReady: notifCheck.notificationMulticlubModelReady,
   notificationMembershipLookupClubScoped: notifCheck.notificationMembershipLookupClubScoped,
   notificationSchemaAppliedLive: notifCheck.notificationSchemaAppliedLive,
+  notificationSchemaBAppliedLive: notifCheck.notificationSchemaBAppliedLive,
   notificationTokenClubColumnReady: notifCheck.notificationTokenClubColumnReady,
   notificationTokenClubDefaultTransitional: notifCheck.notificationTokenClubDefaultTransitional,
   notificationTokenDefaultFinal: notifCheck.notificationTokenDefaultFinal,
