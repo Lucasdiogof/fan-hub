@@ -1,7 +1,7 @@
-# M2.2B-B — Final Key Enforcement (round 1: AUDIT + DESIGN + MIGRATIONS LOCAIS)
+# M2.2B-B — Final Key Enforcement
 
 Data: 2026-09-03
-Status: **PARADO PARA REVISÃO. Migrations geradas e testadas LOCALMENTE. 0 db push, 0 DROP remoto, 0 REVOKE remoto, 0 M4, 0 segundo clube.**
+Status: **APLICADO EM PRODUÇÃO (RODADA 2).** As 3 migrations foram commitadas (`5bfa77b`) e aplicadas via `npx supabase db push` real. Validação pós-apply completa, 0 divergência. `0 git push` ainda — aguardando autorização separada. `0 M4`, `0 segundo clube`.
 
 Autorizado pelo Post-Rollout Legacy Retirement Gate (`docs/multiclub/39_post_rollout_legacy_retirement_gate.md`): APK `1.0.1+2` gerado e confirmado entregue às ~3 pessoas com o `1.0.0+1` legacy → `LEGACY_VERSION_SUPPORT_ENDED=true` → `POST_ROLLOUT_RETIREMENT_READY=true` → `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=false`. Isso desbloqueia a *possibilidade* de M2.2B-B — a execução em si continua exigindo autorização própria, separada, ainda não dada.
 
@@ -227,10 +227,141 @@ Exatamente as 3, nada mais. **0 aplicação.**
 
 ---
 
-## Estados
+## RODADA 2 — APPLICATION (2026-09-03)
 
-`KEY_SCOPE_FINAL_READY=true` (design/migrations prontos, NÃO aplicado) · `POST_ROLLOUT_RETIREMENT_READY=true` (inalterado) · `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=false` (inalterado) · `LEGACY_CONTRACT_RETIREMENT_READY=true` · `RPC_ONLY_MIGRATION_REQUIRED=false` · `AUTH_SCOPE_ACTIVE_CLUB_ENFORCEMENT_BLOCKED=true` (inalterado — M2.2B-B não mexe nisso) · `SECOND_CLUB_BLOCKED=true` (inalterado) · `KEY_SCOPE_SECOND_CLUB_BLOCKER` só vira `false` DEPOIS da aplicação real, não agora.
+Autorização: **"M2.2B-B — AUTORIZADA APLICAÇÃO FINAL"**, dono validou independentemente as 12/12 bridges + 0 FKs de entrada + 24 defaults/8 RPCs antes de autorizar.
+
+### 0. Correção de wording (antes de tudo)
+
+Resposta #21 (§27 acima) corrigida: `"Destructive DDL inventory: 0"` → `FORBIDDEN_DDL=0, DML=0, CASCADE=0, IF_EXISTS=0`. Esta etapa **contém** DDL destrutivo deliberado (`DROP CONSTRAINT`/`DROP INDEX`/`DROP DEFAULT`/`REVOKE EXECUTE`) — "0" nunca significou ausência de DDL destrutivo, significa 0 das operações proibidas (CASCADE/TRUNCATE/DML/IF EXISTS escondendo drift). Wording-only, nenhum SQL alterado.
+
+### 1-2. Preflight + revalidação final
+
+`HEAD == origin/main == 22f58fd`. `git status` limpo (só os 8 artefatos M2.2B-B pendentes de commit + exclusões-padrão + leftovers legítimos de rodadas anteriores, deixados de fora deste commit por escopo). `migration list`: 56 total / 53 remote / 3 pending — mesmos 3 arquivos. `db push --dry-run`: confirma exatamente os 3, nada a mais.
+
+Revalidação ao vivo (imediatamente antes do push, não reaproveitada de relatório anterior): `clubs=1/goias` · 18/18 bridges `unique=valid=ready=true` · `defaults_count=24` · `rpc_count=8` · **collisions 18/18 tabelas: 0 nulls, 0 wrong club_id**.
+
+### 3. Revalidação específica das 12 bridges de PK
+
+Para as 12 tabelas cuja PK legacy seria trocada: 12/12 `btree`, `unique=true`, `valid=true`, `ready=true`, **`partial=false`**, **`expression=false`** (colunas simples). **Incoming FKs para as 12 PKs legacy: 0** (`pg_constraint` com `contype='f'` e `confrelid` em qualquer uma das 12 → 0 linhas). Nenhum bloqueio estrutural encontrado.
+
+### 4-5. Commit do design + repreflight
+
+Staged explicitamente (nunca `git add .`): as 3 migrations, `audit_multiclub_final_key_enforcement.mjs`, `test_multiclub_final_key_enforcement.mjs`, os 2 JSONs gerados, este relatório. Commit `5bfa77b` — `"feat(multiclub): finalize tenant-aware database keys"`. Repreflight pós-commit: `git status` confirma só os 8 arquivos saíram da lista de untracked/modified; `migration list` e `db push --dry-run` reconfirmam 56/53/3 pending, mesmos 3 arquivos — 0 divergência.
+
+### 6. Aplicação real
+
+`npx supabase db push` (sem dry-run) — **as 3 migrations aplicaram em sequência sem erro**: `20260903120000` → `20260903130000` → `20260903140000`. `{"upToDate":false,"dryRun":false,...}` confirmando as 3 no payload de resposta. Nenhuma falha, nenhum estado parcial a reportar.
+
+### 7. Migration history pós-push
+
+`migration list`: **56 local = 56 remote, 0 pending**. `db push --dry-run`: `{"upToDate":true,"migrations":[],"message":"Remote database is up to date."}`.
+
+### 8. As 12 PKs promovidas — validadas pela definição FINAL (não pelo nome antigo da bridge)
+
+Postgres renomeia o índice promovido para `<tabela>_pkey` — confirmado nas 12, com a composição de colunas tenant-aware esperada:
+
+| Tabela | PK final |
+|---|---|
+| `arena_achievements` | `PRIMARY KEY (club_id, user_id, achievement_id)` |
+| `arena_selected_content` | `PRIMARY KEY (club_id, user_id, game_id)` |
+| `career_path_progress` | `PRIMARY KEY (club_id, user_id, player_id)` |
+| `lineup_match_progress` | `PRIMARY KEY (club_id, user_id, match_id)` |
+| `player_identity_results` | `PRIMARY KEY (user_id, club_id)` |
+| `quiz_active_session` | `PRIMARY KEY (club_id, user_id, difficulty)` |
+| `quiz_question_progress` | `PRIMARY KEY (club_id, user_id, question_id)` |
+| `tactical_identity_results` | `PRIMARY KEY (user_id, club_id)` |
+| `ticket_checkin_decisions` | `PRIMARY KEY (club_id, user_id, match_id)` |
+| `user_game_item_progress` | `PRIMARY KEY (club_id, user_id, game_id, item_id)` |
+| `user_notification_preferences` | `PRIMARY KEY (user_id, club_id)` |
+| `match_monitor_sessions` | `PRIMARY KEY (club_id, match_id)` |
+
+12/12 confirmadas.
+
+### 9. As 6 bridges tenant-unique restantes (não promovidas) — nomes originais preservados
+
+`career_players_club_person_uidx`, `guess_players_club_person_uidx`, `mlv_club_match_user_uidx`, `ne_club_event_dedupe_uidx`, `squad_members_club_person_uidx`, `tickets_club_user_match_checkin_uidx` — 6/6 `unique=valid=ready=true`. A bridge de `tickets` continua **parcial** (`partial=true`) — nunca virou unique completa, como exigido.
+
+### 10. 18/18 chaves legacy confirmadas removidas
+
+As 5 constraints UNIQUE legacy + 1 índice parcial legacy (`tickets_user_match_checkin_uidx`) buscados por nome: **0 encontrados**. Combinado com §8 (as 12 antigas PKs agora têm definição nova sob o mesmo nome de constraint), os 18 objetos legacy físicos não existem mais.
+
+### 11. 4 constraints globais — intactos
+
+`store_orders_order_number_key`, `user_notification_tokens_fcm_token_key`, `notification_deliveries_event_id_token_id_key` (constraints) + `profiles_cpf_unique_idx` (índice parcial) — 4/4 presentes, definições inalteradas.
+
+### 12. 24 DEFAULTs removidos, NOT NULL + FK preservados
+
+24/24 tabelas: `column_default=null`, `is_nullable=NO`. FK para `clubs(id)` reconfirmada presente nas 24 (`contype='f'` com `confrelid=clubs`) — 24/24.
+
+### 13. Sobrevivência do app atual — reconfirmada
+
+Grep direto (não reaproveitado) por `.rpc('<nome_legacy>'` nas 8 RPCs: **0 chamadas reais** no `lib/` atual (as 2 ocorrências de texto encontradas são comentários de documentação, não chamadas). `currentAppDependsOnGoiasDefaults=false`, `currentAppUsesLegacyRpcs=false` seguem válidos.
+
+### 14. ACL final das 8 RPCs legacy
+
+`has_function_privilege` pós-push: **8/8 com `anon=authenticated=service_role=public=false`**. `REVOKE` funcionou nas 4 roles, nas 8 funções, sem exceção.
+
+### 15. As 9 variantes `_for_club` — ACL NÃO afetada colateralmente
+
+9/9 confirmadas com `authenticated=true, anon=false, service_role=false, public=false` — idêntico ao estado pré-push. O `REVOKE` da migration 3 mirou exclusivamente as 8 assinaturas legacy exatas, sem colateral nas variantes `_for_club`.
+
+### 16-17. Passaporte e RLS — intocados
+
+Grep das 3 migrations por `policy`/`passaporte`/`passport`: **0 ocorrências**. Contagem de RLS policies em `public`: 90 (nenhuma criada/removida/alterada — as migrations não contêm nenhum `CREATE POLICY`/`ALTER POLICY`/`DROP POLICY`).
+
+### 18. Row counts — 0 DML confirmado
+
+Grep das 3 migrations por `INSERT INTO`/`UPDATE `/`DELETE FROM`: **0 ocorrências**. Migrations são DDL puro (constraints/defaults/grants) — contagens de linha das 18 tabelas afetadas capturadas pós-push só como evidência complementar, não como prova (a prova real é a ausência estrutural de DML no SQL aplicado).
+
+### 19. Recheck final de colisão/integridade
+
+18/18 tabelas tenant-scoped: **0 nulls, 0 wrong club_id, 0 orphan club_id** — pós-push, idêntico ao pré-push.
+
+### 20. `key_scope_collision` guard — mantido, novo blocker formal registrado
+
+Guard **não removido** (fora do escopo DDL desta etapa, como já registrado na rodada 1). Estados formalmente registrados:
+
+- `KEY_SCOPE_FINAL=true`
+- `ARENA_RPC_CROSS_CLUB_READ_FIX_PENDING=true`
+- `M4_BLOCKED_BY_ARENA_RPC_FIX=true`
+
+(`arena_record_score_for_club` tem 3 leituras não filtradas por `club_id` no corpo da função — inofensivo hoje só porque `SECOND_CLUB_BLOCKED=true`; vira bloqueador formal de M4 a partir de agora.)
+
+### 21. Estados finais — lista exata
+
+Ver seção **Estados** abaixo, atualizada.
+
+### 22. Matriz de compatibilidade — formalizada estruturalmente
+
+`1.0.0+1` (legacy) + schema pós-M2.2B-B (56 migrations) = ❌ esperado (writes sem `club_id` explícito falham contra as novas PKs/NOT NULL sem DEFAULT). `1.0.1+2`/PWA M3.4 (HEAD atual) + schema pós-M2.2B-B = ✅ confirmado (§13). Formalizado via catálogo/tooling (`currentAppDependsOnGoiasDefaults=false`, `currentAppUsesLegacyRpcs=false`) — nunca testado escrevendo de fato com um cliente legacy real.
+
+### 23. Gates de código
+
+`flutter analyze`: **0 issues**. Suíte JS (`tooling/**/test_*.mjs`, 27 arquivos): **777 passaram, 0 falharam** — bate exatamente com a baseline. `src/` (Worker) não foi tocado nesta rodada → `vitest`/`tsc` do Worker não rodados (não aplicável).
+
+### 24. Tooling que referenciava os 12 nomes antigos de bridge — avaliado, nenhuma mudança necessária
+
+`audit_multiclub_conflict_targets.mjs` e `audit_multiclub_key_scope.mjs` citam os 12 nomes de bridge, mas apenas como metadado descritivo — o `onConflict` que o Flutter realmente envia ao Supabase é a **lista de colunas** (`'club_id,user_id,achievement_id'`, etc.), não o nome do índice/constraint. Resolução `ON CONFLICT` no Postgres casa por conjunto de colunas, não por nome — a renomeação (`<tabela>_pkey`) é transparente para o app e para os scripts. Ambos os scripts rodados pós-apply: `exit=0`, suite completa (777/0) inclui os testes desses 2 arquivos sem falha. `audit_multiclub_final_key_enforcement.mjs` referencia os nomes antigos ao ler o **texto das migrations** (correto — é isso que as migrations dizem: `USING INDEX aa_club_user_achievement_uidx`), não o estado ao vivo — segue válido sem alteração. Nenhum código ou tooling precisou de atualização.
+
+### 25. Este documento
+
+Seção RODADA 2 adicionada (esta seção).
+
+### 26. Commit de acompanhamento
+
+Não necessário — nenhuma mudança de código/tooling foi exigida por §24. Commit `5bfa77b` já cobre o design + este relatório atualizado ficará para um commit docs-only separado, se autorizado.
+
+### 27. Git push
+
+**Não executado.** Aguardando autorização explícita e separada, conforme instrução do dono.
 
 ---
 
-**PARADO PARA REVISÃO.** 3 migrations locais criadas, testadas, dry-run confirmado — **nada aplicado**. Não iniciar M2.2B-B de verdade (nenhum `db push`). Não iniciar M4. Não cadastrar segundo clube. Aguardando revisão do design + decisão explícita de aplicar (ou não) antes de qualquer `db push`/`commit`/`git push`.
+## Estados
+
+`KEY_SCOPE_FINAL=true` (aplicado em produção, validado ao vivo) · `ARENA_RPC_CROSS_CLUB_READ_FIX_PENDING=true` (novo — bloqueador formal) · `M4_BLOCKED_BY_ARENA_RPC_FIX=true` (novo) · `POST_ROLLOUT_RETIREMENT_READY=true` (inalterado) · `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=false` (inalterado) · `LEGACY_CONTRACT_RETIREMENT_READY=true` (inalterado) · `RPC_ONLY_MIGRATION_REQUIRED=false` (inalterado) · `AUTH_SCOPE_ACTIVE_CLUB_ENFORCEMENT_BLOCKED=true` (inalterado — M2.2B-B não mexeu em RLS/auth scope) · `KEY_SCOPE_SECOND_CLUB_BLOCKER=false` (o problema físico de chaves está resolvido) · `SECOND_CLUB_PRODUCT_READY=false` (**nunca colapsar com o campo acima** — falta ainda o fix da Arena RPC, o M4 em si, o Passaporte, e decisões de produto) · `GIT_PUSH_PENDING=true` (aguardando autorização separada).
+
+---
+
+**APLICADO EM PRODUÇÃO.** As 3 migrations foram commitadas e aplicadas via `db push` real, validação pós-apply completa e limpa em todos os pontos (7-19). `0 git push` ainda. **PARE. Não iniciar M4. Não cadastrar segundo clube.**
