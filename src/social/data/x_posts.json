@@ -1,5 +1,33 @@
 [
   {
+    "tweet_id": "2095258105873318025",
+    "text": "Mais um dia de preparação no CT Edmo Pinheiro, para o confronto contra o @FortalezaEC \n\nSÁBADO É DECISÃO! 🇳🇬 https://t.co/u7YJwy1PTg",
+    "timestamp": "2026-09-02T21:10:35+00:00",
+    "tweet_url": "https://x.com/goiasoficial/status/2095258105873318025",
+    "image_links": [
+      "https://pbs.twimg.com/amplify_video_thumb/2095257904186015749/img/3W-pS0-ArxPo1U7O.jpg"
+    ],
+    "user_screen_name": "goiasoficial",
+    "user_name": "Goiás Esporte Clube",
+    "likes": 19,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2095165705406599416",
+    "text": "NOVO DESAFIO LANÇADO!\n\nBateu 8K, tem PAGODE nas cadeiras 🇳🇬💥 https://t.co/QcVBUYqzX1",
+    "timestamp": "2026-09-02T15:03:25+00:00",
+    "tweet_url": "https://x.com/goiasoficial/status/2095165705406599416",
+    "image_links": [
+      "https://pbs.twimg.com/media/HROGGbgbAAAZVOS.jpg"
+    ],
+    "user_screen_name": "goiasoficial",
+    "user_name": "Goiás Esporte Clube",
+    "likes": 40,
+    "retweets": 3,
+    "comments": 2
+  },
+  {
     "tweet_id": "2095124223056281923",
     "text": "PROMESSA DE CASA CHEIA!\n\nINGRESSOS À VENDA PARA MAIS UMA BATALHA!💚🇳🇬\n\nGaranta seu lugar para Goiás x Fortaleza pela 26ª rodada do @brasileiraob ✅\n\n🎫 https://t.co/q9mn9ZAhYw https://t.co/rlDzGiyZjt",
     "timestamp": "2026-09-02T12:18:34+00:00",
@@ -12,8 +40,8 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 13,
-    "retweets": 2,
+    "likes": 40,
+    "retweets": 3,
     "comments": 0
   },
   {
@@ -26,8 +54,8 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 67,
-    "retweets": 5,
+    "likes": 81,
+    "retweets": 6,
     "comments": 3
   },
   {
@@ -40,7 +68,7 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 27,
+    "likes": 29,
     "retweets": 1,
     "comments": 0
   },
@@ -54,7 +82,7 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 61,
+    "likes": 64,
     "retweets": 7,
     "comments": 3
   },
@@ -68,8 +96,8 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 34,
-    "retweets": 2,
+    "likes": 37,
+    "retweets": 4,
     "comments": 0
   },
   {
@@ -82,7 +110,7 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 44,
+    "likes": 47,
     "retweets": 3,
     "comments": 1
   },
@@ -96,9 +124,9 @@
     ],
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
-    "likes": 77,
+    "likes": 81,
     "retweets": 4,
-    "comments": 28
+    "comments": 38
   },
   {
     "tweet_id": "2094526436170244282",
@@ -240,29 +268,5 @@
     "likes": 7,
     "retweets": 0,
     "comments": 0
-  },
-  {
-    "tweet_id": "2093483748863905887",
-    "text": "RECOMEÇA NO ESTÁDIO HAILÉ PINHEIRO!\n\nVai pra cima deles, Goiás! 💚🇳🇬\n\nGEC 1 X 0 SBO\n#BrasileirãoB\n#esmeraldino",
-    "timestamp": "2026-08-28T23:39:55+00:00",
-    "tweet_url": "https://x.com/goiasoficial/status/2093483748863905887",
-    "image_links": [],
-    "user_screen_name": "goiasoficial",
-    "user_name": "Goiás Esporte Clube",
-    "likes": 5,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2093479779672400152",
-    "text": "INTERVALO NA SERRINHA.\n\nVamos Verdão 🇳🇬🇳🇬🇳🇬\n\nGEC 1 X 0 SBO\n#BrasileirãoB\n#esmeraldino",
-    "timestamp": "2026-08-28T23:24:09+00:00",
-    "tweet_url": "https://x.com/goiasoficial/status/2093479779672400152",
-    "image_links": [],
-    "user_screen_name": "goiasoficial",
-    "user_name": "Goiás Esporte Clube",
-    "likes": 7,
-    "retweets": 0,
-    "comments": 2
   }
 ]
