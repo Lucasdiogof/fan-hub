@@ -127,11 +127,16 @@ test('FABRICADO — client version signal sozinho (RPC aceita p_client_build) NU
 });
 
 console.log('\n8) reprodutibilidade — mesma execução, mesmo resultado (a recomputação de rede/git pode divergir entre sessões distantes, mas não entre 2 chamadas seguidas)');
-test('rodar o audit de novo produz o mesmo JSON byte a byte', () => {
-  const before = fs.readFileSync(path.join(RECON, 'multiclub_rollout_readiness_audit.json'), 'utf8');
+test('rodar o audit de novo produz o mesmo resultado, exceto commitsLocalHeadAheadOfOriginMainNow (recalculado ao vivo de propósito)', () => {
+  const stripLive = (json) => {
+    const c = JSON.parse(json);
+    delete c.distributionEvidence.legacyClientsInTheWild.commitsLocalHeadAheadOfOriginMainNow;
+    return c;
+  };
+  const before = stripLive(fs.readFileSync(path.join(RECON, 'multiclub_rollout_readiness_audit.json'), 'utf8'));
   execFileSync(process.execPath, [SCRIPT], { cwd: ROOT });
-  const after = fs.readFileSync(path.join(RECON, 'multiclub_rollout_readiness_audit.json'), 'utf8');
-  assert.strictEqual(before, after);
+  const after = stripLive(fs.readFileSync(path.join(RECON, 'multiclub_rollout_readiness_audit.json'), 'utf8'));
+  assert.deepStrictEqual(before, after);
 });
 
 console.log(`\n${passed} passaram, ${failures.length} falharam.`);
