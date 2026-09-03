@@ -91,8 +91,12 @@ test('notificationTokenDeliveryClubScoped=true — migration desenhada corretame
 test('notificationMulticlubModelReady=true — as duas camadas juntas, nunca mascaradas numa flag só', () => {
   assert.strictEqual(stats.notificationMulticlubModelReady, true);
 });
-test('notificationSchemaAppliedLive=false — CRÍTICO: código correto != aplicado em produção; 0 db push nesta rodada, nunca confundir os dois', () => {
-  assert.strictEqual(stats.notificationSchemaAppliedLive, false);
+// Supersessão (M4.1c-B): migration A (club_id + NOT NULL + DEFAULT) foi
+// aplicada ao vivo na rodada M4.1c-A (2026-09-03) — o teste original daqui
+// assumia "0 db push nesta rodada" (verdade só na rodada M4.1c). Nunca
+// deletado, corrigido pra refletir o estado real de cada rodada.
+test('notificationSchemaAppliedLive=true — migration A (club_id/NOT NULL/DEFAULT) já foi aplicada ao vivo (M4.1c-A)', () => {
+  assert.strictEqual(stats.notificationSchemaAppliedLive, true);
 });
 test('migration A: adiciona club_id, SET NOT NULL, MANTÉM DEFAULT (rollout-compat com 1.0.1+2, achado do dono — corrigido nesta rodada) — fcm_token continua a única UNIQUE', () => {
   assert.strictEqual(audit.notifications.migration.addsClubIdColumn, true);
@@ -100,13 +104,58 @@ test('migration A: adiciona club_id, SET NOT NULL, MANTÉM DEFAULT (rollout-comp
   assert.strictEqual(audit.notifications.migration.keepsDefaultForRolloutCompat, true);
   assert.strictEqual(audit.notifications.migration.preservesFcmTokenUniqueOnly, true);
 });
-test('migration B (DROP DEFAULT) NÃO é um arquivo ainda — só planejada, só aplicável depois do rollout do runtime novo confirmado', () => {
-  assert.strictEqual(audit.notifications.migrationB.createdAsFileYet, false);
+// Supersessão (M4.1c-B): migration B agora É um arquivo real
+// (20260903170000_drop_default_notification_tokens_club_id.sql),
+// autorizada só depois do PWA+APK 1.0.2+3 confirmados publicados/entregues
+// pelo dono. O teste original daqui provava a AUSÊNCIA do arquivo — agora
+// prova o DESIGN dele (só DROP DEFAULT, nada mais) e que ainda não foi
+// aplicado ao vivo NESTE PONTO da rodada (antes do db push).
+test('migration B (DROP DEFAULT) existe, só remove o DEFAULT (nada mais), ainda não aplicada ao vivo antes do db push desta rodada', () => {
+  assert.strictEqual(audit.notifications.migrationB.createdAsFileYet, true);
+  assert.strictEqual(audit.notifications.migrationB.dropsDefault, true);
+  assert.strictEqual(audit.notifications.migrationB.touchesOnlyDefault, true);
+  assert.strictEqual(audit.notifications.migrationB.designCorrect, true);
 });
-test('estados de rollout: coluna pronta + DEFAULT transicional=true, DEFAULT final=false — as 2 fases nunca colapsadas numa flag só', () => {
+test('estados de rollout ANTES do db push da M4.1c-B: coluna pronta + DEFAULT transicional=true, DEFAULT final=false — as 2 fases nunca colapsadas numa flag só', () => {
   assert.strictEqual(stats.notificationTokenClubColumnReady, true);
   assert.strictEqual(stats.notificationTokenClubDefaultTransitional, true);
   assert.strictEqual(stats.notificationTokenDefaultFinal, false);
+});
+test('FABRICADO: migration B com qualquer coisa além de DROP DEFAULT (ex.: ADD COLUMN) derruba touchesOnlyDefault — nunca ampliar o escopo da migration B silenciosamente', () => {
+  const fakeExpandedMigrationB =
+    'alter table public.user_notification_tokens alter column club_id drop default;\n' +
+    'alter table public.user_notification_tokens add column extra text;';
+  const touchesOnlyDefault =
+    !/add column/i.test(fakeExpandedMigrationB) &&
+    !/set not null/i.test(fakeExpandedMigrationB) &&
+    !/drop\s+(constraint|column)/i.test(fakeExpandedMigrationB) &&
+    !/unique/i.test(fakeExpandedMigrationB);
+  assert.strictEqual(touchesOnlyDefault, false);
+});
+test('FABRICADO: comentário SQL mencionando "UNIQUE"/"NOT NULL" (explicando o que a migration B NÃO faz) nunca derruba touchesOnlyDefault — mesma classe de falso-positivo de comentário já corrigida em outras rodadas deste projeto', () => {
+  const realMigrationBWithExplanatoryComments =
+    '-- club_id continua NOT NULL, FK -> clubs(id), fcm_token continua a única\n' +
+    '-- UNIQUE — nada disso muda aqui, só o DEFAULT sai.\n' +
+    'alter table public.user_notification_tokens\n' +
+    '  alter column club_id drop default;\n';
+  const stripped = realMigrationBWithExplanatoryComments
+    .split('\n')
+    .map((l) => l.replace(/--.*$/, ''))
+    .join('\n');
+  const touchesOnlyDefault =
+    !/add column/i.test(stripped) &&
+    !/set not null/i.test(stripped) &&
+    !/drop\s+(constraint|column)/i.test(stripped) &&
+    !/unique/i.test(stripped);
+  assert.strictEqual(touchesOnlyDefault, true, 'comentário explicativo não deveria contar como código real');
+  // prova que SEM o strip o mesmo texto falsamente reprovaria — é isso que
+  // o audit real corrige (stripSqlComments antes de checar).
+  const withoutStrip =
+    !/add column/i.test(realMigrationBWithExplanatoryComments) &&
+    !/set not null/i.test(realMigrationBWithExplanatoryComments) &&
+    !/drop\s+(constraint|column)/i.test(realMigrationBWithExplanatoryComments) &&
+    !/unique/i.test(realMigrationBWithExplanatoryComments);
+  assert.strictEqual(withoutStrip, false, 'sem o strip, o comentário derrubaria o check — prova que o bug era real');
 });
 test('FABRICADO: reproduz o bug de rollout que o dono encontrou — se a migration A tivesse DROP DEFAULT, keepsDefaultForRolloutCompat cairia (e quebraria o registro do 1.0.1+2 em produção)', () => {
   const fakeMigrationWithDrop =
@@ -172,8 +221,14 @@ test('m4_1ImplementationLocalComplete=true — o código desta rodada foi escrit
 test('m4CriticalLeakageReady=true — CORRIGIDO DE NOVO: agora corretamente true, porque o gap real (entrega por token) foi fechado EM CÓDIGO nesta rodada, testado, não forçado', () => {
   assert.strictEqual(stats.m4CriticalLeakageReady, true);
 });
-test('notificationSchemaAppliedLive=false continua o guarda-corpo — nunca confundir "código correto" com "seguro em produção" (0 db push, 0 Edge deploy, 0 git push)', () => {
-  assert.strictEqual(stats.notificationSchemaAppliedLive, false);
+// Supersessão (M4.1c-B): migration A já está aplicada ao vivo desde a
+// M4.1c-A — o guarda-corpo real agora é notificationSchemaBAppliedLive
+// (migration B, o DROP DEFAULT), ainda false neste ponto (antes do db push
+// desta rodada) — nunca confundir "código correto" com "seguro em
+// produção" continua valendo, só que pra fase B agora.
+test('notificationSchemaAppliedLive=true (A) mas notificationSchemaBAppliedLive=false (B, antes do db push desta rodada) — o guarda-corpo migrou de fase, nunca some', () => {
+  assert.strictEqual(stats.notificationSchemaAppliedLive, true);
+  assert.strictEqual(stats.notificationSchemaBAppliedLive, false);
 });
 test('FABRICADO: se qualquer 1 dos hardcodes de asset ainda existisse, m4CriticalLeakageReady teria que cair independente do token', () => {
   const simulate = (assetHardcodes) => assetHardcodes === 0;
