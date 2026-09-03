@@ -271,7 +271,7 @@ Não tocado — 0 arquivo em `src/` (Worker). `WORKER_DEPLOY_PENDING_GIT_PUSH=tr
 Todos intocados nesta rodada: `PASSPORT_TENANCY_DEFERRED`, `GOI-`/`order_number` intactos, 24 `DEFAULT Goiás` intactos, RLS intacta (§14).
 
 ### 31. Commit
-Todos os critérios de "tudo verde" satisfeitos: DB 52/52 ✅ · 2 RPCs corretas ✅ · ACL efetivo 2/2 ✅ · RLS intacta ✅ · legacy intacta ✅ · Edge deploy 2/2 ✅ · Flutter green ✅ · JS green ✅. Commit local feito com paths explícitos (nunca `git add .`); hash registrado em follow-up de docs. **0 git push.**
+Todos os critérios de "tudo verde" satisfeitos: DB 52/52 ✅ · 2 RPCs corretas ✅ · ACL efetivo 2/2 ✅ · RLS intacta ✅ · legacy intacta ✅ · Edge deploy 2/2 ✅ · Flutter green ✅ · JS green ✅. Commit local feito com paths explícitos (nunca `git add .`), 23 arquivos (21 legítimos M3.4 + este relatório + docs-only follow-up): **`6aee932`** — "feat(multiclub): adopt tenant-aware conflict targets". Exclusões-padrão preservadas fora do stage (`store_entry_card.dart`, `multiclub_hardcode_audit_stats.json`, `_competitions_pkg/`, `migration_dump.txt`, `19_etapa_e_v4_applied_report.md`). **0 git push.**
 
 ## Estados finais (rodada 2)
 `ROW_SCOPE_READY=true` · `KEY_SCOPE_BRIDGED=true` · `KEY_SCOPE_FINAL=false` · `NEW_RUNTIME_CONFLICT_TARGETS_ARE_TENANT_AWARE=true` · `AUTH_SCOPE_ACTIVE_CLUB_ENFORCEMENT_BLOCKED=true` · `SECOND_CLUB_BLOCKED=true` · `M3_4_CODE_COMPLETE=true` · `M3_4_DB_APPLIED=true` · `M3_4_EDGE_DEPLOYED=true` · `M3_4_APP_DISTRIBUTED=false` · `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=true` · `WORKER_DEPLOY_PENDING_GIT_PUSH=true`.
