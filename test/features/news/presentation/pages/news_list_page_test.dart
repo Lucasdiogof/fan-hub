@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/error/failures.dart';
@@ -46,7 +48,7 @@ Widget _wrap() {
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
 
-    theme: AppTheme.light,
+    theme: AppTheme.light(),
     routerConfig: GoRouter(
       initialLocation: '/news',
       routes: [
@@ -58,7 +60,10 @@ Widget _wrap() {
 }
 
 void main() {
-  setUp(() => sl.reset());
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
 
   testWidgets('shows every item returned by the repository', (tester) async {
     sl.registerLazySingleton<NewsCubit>(

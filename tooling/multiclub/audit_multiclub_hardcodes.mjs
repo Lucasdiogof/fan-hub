@@ -110,9 +110,7 @@ const hardcodes = [
     classification: 'LEGACY_TECH_DEBT',
     risk: 'MEDIUM',
     note: '3ª reimplementação independente do mesmo check, com acento (diferente das outras 2, que usam "goi" sem acento) — inconsistência real entre si.',
-    // NUNCA marcado fixedInEtapa — Passaporte está explicitamente FORA de
-    // escopo na M3.3 (NEEDS_PRODUCT_DECISION desde M2.1/M2.2A), catalogado
-    // no relatório mas deliberadamente não tocado.
+    fixedInEtapa: 'M4.1', // Passaporte segue NEEDS_PRODUCT_DECISION/PASSPORT_TENANCY_DEFERRED (nada de tenancy mudou), mas esse bug pontual de identificação de time virou sl<ClubConfig>().identity.shortName/.displayName — corrigido isoladamente, achado da auditoria M4.
   },
   {
     file: 'lib/features/match/data/repositories/football_repository_impl.dart',
@@ -179,6 +177,7 @@ const hardcodes = [
     classification: 'SAFE_STATIC_CONTENT',
     risk: 'LOW',
     note: 'título do MaterialApp.router — não visível na maioria das plataformas, cosmético.',
+    fixedInEtapa: 'M4.1', // vira _clubConfig.identity.displayName — achado da auditoria M4 (title bypassava ClubConfig mesmo já existindo o campo certo).
   },
 ];
 

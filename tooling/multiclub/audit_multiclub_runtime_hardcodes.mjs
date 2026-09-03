@@ -181,9 +181,15 @@ const classifiedButNotFixed = {
   },
   passportIsGoias: {
     file: 'lib/features/passport/presentation/v2/widgets/passport_match_ticket_v2.dart',
+    // Corrigido isoladamente na M4.1 (achado da auditoria M4): a checagem
+    // por string virou sl<ClubConfig>().identity — mas isso é só esse 1
+    // bug pontual, NÃO tenantização de Passaporte. `PASSPORT_TENANCY_
+    // DEFERRED` continua true, nenhuma tabela/RPC de Passaporte ganhou
+    // club_id, nada mais em Passaporte foi tocado.
     present: /_isGoias\(String team\)/.test(read('lib/features/passport/presentation/v2/widgets/passport_match_ticket_v2.dart')),
+    fixedInEtapa: 'M4.1',
     classification: 'EDITORIAL_CONTENT_ALLOWED_PASSPORT_EXCLUDED',
-    reason: 'Passaporte continua fora da tenancy nesta etapa (NEEDS_PRODUCT_DECISION, ver M2.1/M2.2A) — catalogado, não alterado, por instrução explícita.',
+    reason: 'Passaporte continua fora da tenancy (NEEDS_PRODUCT_DECISION, ver M2.1/M2.2A) — só este bug pontual de identificação de time foi corrigido na M4.1, por instrução explícita e escopo estreito (ver docs/multiclub/43).',
   },
   lineupMatchesFallbackTeamToGuess: {
     file: 'lib/features/arena/games/lineup/lineup_matches.dart',

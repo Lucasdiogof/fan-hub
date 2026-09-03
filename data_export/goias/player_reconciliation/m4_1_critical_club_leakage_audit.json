@@ -1,0 +1,61 @@
+{
+  "clubAssetRuntimeHardcodes": [],
+  "storeEntryCardStillExcluded": true,
+  "clubBrandingConsumers": 1,
+  "clubCapabilitiesConsumers": 0,
+  "productNamingConsumers": 0,
+  "configBypasses": {
+    "membershipContactFixed": true,
+    "pickupInfoFixed": true,
+    "socialLinksFixed": true,
+    "mainTitleFixed": true,
+    "mainThemeFixed": true,
+    "passportTicketFixed": true
+  },
+  "orderPrefix": {
+    "flutterUsesConfig": true,
+    "flutterHasGoiHardcode": false,
+    "sqlStillHardcoded": true
+  },
+  "notifications": {
+    "notificationDispatchClubScoped": true,
+    "notificationUserEligibilityClubScoped": true,
+    "notificationTokenDeliveryClubScoped": true,
+    "notificationMulticlubModelReady": true,
+    "notificationMembershipLookupClubScoped": true,
+    "notificationSchemaAppliedLive": false,
+    "notificationTokenClubColumnReady": true,
+    "notificationTokenClubDefaultTransitional": true,
+    "notificationTokenDefaultFinal": false,
+    "migration": {
+      "path": "supabase/migrations/20260903160000_add_club_id_to_notification_tokens.sql",
+      "exists": true,
+      "addsClubIdColumn": true,
+      "setsNotNull": true,
+      "keepsDefaultForRolloutCompat": true,
+      "preservesFcmTokenUniqueOnly": true,
+      "designCorrect": true
+    },
+    "migrationB": {
+      "plannedPath": "supabase/migrations/20260903170000_drop_default_notification_tokens_club_id.sql",
+      "createdAsFileYet": false
+    },
+    "tokenFetchFiltersByClubId": true,
+    "flutterRegistersClubId": true
+  },
+  "workerNewsSocialGate": {
+    "gateHelperExists": true,
+    "workerNewsCrossClubFallback": false,
+    "workerSocialCrossClubFallback": false
+  },
+  "syntheticClub": {
+    "noGoiasAssetReuse": true,
+    "noGoiasBrandingReuse": true,
+    "noGoiasIntegrationsReuse": true,
+    "noGoiasProductNamesReuse": true,
+    "testFileExists": true
+  },
+  "storeSafeForClubB": false,
+  "m4_1ImplementationLocalComplete": true,
+  "m4CriticalLeakageReady": true
+}

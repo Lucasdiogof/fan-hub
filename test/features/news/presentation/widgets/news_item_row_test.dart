@@ -22,7 +22,7 @@ void main() {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
 
-        theme: AppTheme.light,
+        theme: AppTheme.light(),
         home: Scaffold(
           body: NewsItemRow(item: _item, onTap: () {}),
         ),
@@ -42,7 +42,7 @@ void main() {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
 
-        theme: AppTheme.light,
+        theme: AppTheme.light(),
         home: Scaffold(
           body: NewsItemRow(item: _item, onTap: () {}),
         ),
@@ -60,7 +60,7 @@ void main() {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
 
-        theme: AppTheme.light,
+        theme: AppTheme.light(),
         home: Scaffold(
           body: NewsItemRow(item: _item, onTap: () => tapped = true),
         ),

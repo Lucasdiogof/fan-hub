@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -35,9 +36,9 @@ class LiveMatchHero extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppRadius.hero),
       child: Stack(
         children: [
-          const Positioned.fill(
+          Positioned.fill(
             child: StadiumBackdrop(
-              imageAsset: AppAssets.matchHero,
+              imageAsset: sl<ClubConfig>().assets.matchHero,
               showFloodlights: false,
               overlayOpacity: 0.85,
             ),

@@ -1206,7 +1206,7 @@ class _PickupSectionState extends State<_PickupSection> {
     final colors = context.colors;
     final l10n = context.l10n;
     final cubit = context.read<CheckoutCubit>();
-    const pickupInfo = PickupInformation();
+    final pickupInfo = PickupInformation.forActiveClub();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

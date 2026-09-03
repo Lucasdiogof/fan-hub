@@ -47,7 +47,7 @@ Future<void> _pump(WidgetTester tester, Match match) => tester.pumpWidget(
     locale: const Locale('pt'),
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
-    theme: AppTheme.dark,
+    theme: AppTheme.dark(),
     home: Scaffold(body: CompactMatchHeader(match: match)),
   ),
 );
@@ -158,7 +158,7 @@ void main() {
         locale: const Locale('pt'),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        theme: AppTheme.dark,
+        theme: AppTheme.dark(),
         home: Scaffold(
           body: CompactMatchHeader(
             match: _match(

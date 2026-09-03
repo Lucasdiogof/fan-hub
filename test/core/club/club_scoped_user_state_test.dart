@@ -352,6 +352,60 @@ void main() {
     });
   });
 
+  group('Notificações — token FCM grava club_id no upsert real (M4.1c)', () {
+    for (final (label, config) in [
+      ('Goiás', goiasClubConfig),
+      ('club-b (sintético)', syntheticClubBConfig),
+    ]) {
+      test('registerToken grava club_id do clube ativo ($label)', () async {
+        final client = await _authedClient(httpClient);
+        final repo = SupabaseNotificationRepository(client, config);
+        await repo.registerToken(fcmToken: 'fcm-test-token', platform: 'android');
+        final row = _firstRow(httpClient.lastRequestBodyJson);
+        expect(row['club_id'], config.identity.canonicalClubId);
+        expect(row['fcm_token'], 'fcm-test-token');
+        expect(row['platform'], 'android');
+        expect(row['is_active'], true);
+      });
+    }
+
+    test('token refresh (2ª chamada de registerToken, mesmo fluxo do onTokenRefresh) atualiza club_id corretamente se o clube ativo mudou', () async {
+      // Simula o cenário do pedido: o mesmo fluxo de registro roda de novo
+      // (refresh) — se o clube ativo desta instalação for outro, o upsert
+      // por fcm_token precisa gravar o club_id NOVO, nunca manter um valor
+      // antigo preso.
+      final clientGoias = await _authedClient(httpClient);
+      final repoGoias = SupabaseNotificationRepository(clientGoias, goiasClubConfig);
+      await repoGoias.registerToken(fcmToken: 'fcm-refresh-token', platform: 'android');
+      expect(
+        _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+        goiasClubConfig.identity.canonicalClubId,
+      );
+
+      final clientClubB = await _authedClient(httpClient);
+      final repoClubB = SupabaseNotificationRepository(clientClubB, syntheticClubBConfig);
+      await repoClubB.registerToken(fcmToken: 'fcm-refresh-token', platform: 'android');
+      expect(
+        _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+        syntheticClubBConfig.identity.canonicalClubId,
+      );
+    });
+
+    test('registerToken continua usando onConflict:fcm_token — nunca (club_id,fcm_token)', () async {
+      final client = await _authedClient(httpClient);
+      final repo = SupabaseNotificationRepository(client, goiasClubConfig);
+      await repo.registerToken(fcmToken: 'fcm-conflict-check', platform: 'ios');
+      expect(
+        httpClient.lastRequestUrl.toString(),
+        contains('on_conflict=fcm_token'),
+      );
+      expect(
+        httpClient.lastRequestUrl.toString(),
+        isNot(contains('on_conflict=club_id')),
+      );
+    });
+  });
+
   group('Ingressos — check-in/compra gravam club_id nas 3 tabelas', () {
     for (final (label, config) in [
       ('Goiás', goiasClubConfig),

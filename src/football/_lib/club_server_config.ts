@@ -43,6 +43,23 @@ export const SERVER_CLUB_CODES = ['goias'] as const;
  * — nunca resolve silenciosamente pro Goiás. As env vars continuam sendo a
  * fonte real do valor (nada duplicado no código além do registry/lookup em
  * si), então o `wrangler.toml` não precisa mudar. */
+// News/Social (raspagem do site oficial + redes sociais) só têm
+// integração configurada pro Goiás hoje — diferente do futebol
+// (`resolveClubServerConfig`, que resolveria qualquer código em
+// `SERVER_CLUB_CODES`), essas 2 features não têm nenhum outro clube pra
+// apontar ainda (achado da auditoria M4: eram 100% hardcoded, sem NENHUMA
+// dimensão de clube). Um `clubCode` diferente NUNCA cai pro conteúdo do
+// Goiás — os handlers devolvem "unavailable" explícito.
+export const NEWS_SOCIAL_CONFIGURED_CLUB_CODE = 'goias';
+
+/** `clubCode` explícito da request (`?club=<code>`) — ausente = o único
+ * clube que este Worker já serve hoje (mesma regra de compat do
+ * `APP_CLUB` ausente no Flutter: nunca um valor mágico, só o comportamento
+ * de sempre quando nada é dito). */
+export function resolveRequestedClubCode(request: Request): string {
+  return new URL(request.url).searchParams.get('club') ?? NEWS_SOCIAL_CONFIGURED_CLUB_CODE;
+}
+
 export function resolveClubServerConfig(clubCode: string, env: Env): ClubServerConfig {
   if (clubCode !== 'goias') {
     throw new UnknownClubError(clubCode);

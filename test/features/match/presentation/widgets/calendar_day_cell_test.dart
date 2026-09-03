@@ -41,7 +41,7 @@ final _match = Match(
 // estoura layout no teste (nunca acontece de verdade, porque o grid real
 // sempre dá um tamanho definido pra cada célula).
 Widget _wrap(Widget child) => MaterialApp(
-  theme: AppTheme.light,
+  theme: AppTheme.light(),
   locale: const Locale('pt'),
   localizationsDelegates: AppLocalizations.localizationsDelegates,
   supportedLocales: AppLocalizations.supportedLocales,

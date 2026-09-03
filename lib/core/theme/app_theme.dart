@@ -5,9 +5,11 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 class AppTheme {
   const AppTheme._();
 
-  static ThemeData get light => _themeFor(AppColors.light, Brightness.light);
+  static ThemeData light([AppColors? colors]) =>
+      _themeFor(colors ?? AppColors.light, Brightness.light);
 
-  static ThemeData get dark => _themeFor(AppColors.dark, Brightness.dark);
+  static ThemeData dark([AppColors? colors]) =>
+      _themeFor(colors ?? AppColors.dark, Brightness.dark);
 
   static ThemeData _themeFor(AppColors colors, Brightness brightness) {
     final base = ThemeData(brightness: brightness, useMaterial3: true);

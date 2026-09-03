@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
@@ -15,8 +16,8 @@ const _crestGapWidth = _crestSize + 18;
 const _animationDuration = Duration(milliseconds: 220);
 
 /// Bottom nav flutuante do shell principal — 4 abas lineares em volta de um
-/// quinto slot central que não é um ícone, é o escudo oficial do Goiás
-/// (`AppAssets.goiasCrestBadge`), ligeiramente elevado sobre a barra. Home é
+/// quinto slot central que não é um ícone, é o escudo oficial do clube ativo
+/// (`ClubConfig.assets.crestBadge`), ligeiramente elevado sobre a barra. Home é
 /// esse escudo, não um item normal: não tem label visível (só
 /// `Semantics`), e o toque nele sempre chama [onSelected] com
 /// [homeTabIndex]. Ver `main_navigation_items.dart` pra ordem/índices das
@@ -352,7 +353,7 @@ class _HomeCrestButtonState extends State<_HomeCrestButton> {
                     ],
                   ),
                   child: Image.asset(
-                    AppAssets.goiasCrestBadge,
+                    sl<ClubConfig>().assets.crestBadge,
                     width: _crestImageSize,
                     height: _crestImageSize,
                   ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -88,7 +91,7 @@ Widget _wrap(AuthCubit cubit) {
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
 
-    theme: AppTheme.light,
+    theme: AppTheme.light(),
     home: BlocProvider.value(value: cubit, child: const DeleteAccountPage()),
   );
 }
@@ -113,6 +116,11 @@ bool _isSubmitEnabled(WidgetTester tester) {
 }
 
 void main() {
+  setUp(() async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
+  });
+
   group('DeleteAccountPage', () {
     testWidgets('button stays disabled with empty fields', (tester) async {
       final cubit = AuthCubit(_FakeAuthRepository());

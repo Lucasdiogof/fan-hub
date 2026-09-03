@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_match.dart';
@@ -517,7 +517,7 @@ class _TrajectoryCard extends StatelessWidget {
               child: Opacity(
                 opacity: 0.22,
                 child: Image.asset(
-                  AppAssets.goiasCrestBadge,
+                  sl<ClubConfig>().assets.crestBadge,
                   width: 84,
                   height: 84,
                   fit: BoxFit.contain,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -7,23 +9,35 @@ import 'package:goias_app/shared/utils/external_link_launcher.dart';
 class SocialEmptyState extends StatelessWidget {
   const SocialEmptyState({super.key});
 
-  static const _profiles = [
-    (
-      label: 'Instagram',
-      url: 'https://instagram.com/goiasoficial',
-      icon: Icons.camera_alt_rounded,
-    ),
-    (
-      label: 'YouTube',
-      url: 'https://youtube.com/@TVGoias',
-      icon: Icons.play_circle_filled,
-    ),
-    (label: 'X', url: 'https://x.com/goiasoficial', icon: Icons.tag),
-  ];
+  /// Só as redes com URL configurada no clube ativo aparecem — mesma fonte
+  /// (`ClubConfig.integrations`) que `SocialLinksData`, nunca uma segunda
+  /// lista hardcoded.
+  static List<({String label, String url, IconData icon})> _profiles(
+    ClubConfig config,
+  ) {
+    final social = config.integrations;
+    return [
+      if (social.socialInstagramUrl != null)
+        (
+          label: 'Instagram',
+          url: social.socialInstagramUrl!,
+          icon: Icons.camera_alt_rounded,
+        ),
+      if (social.socialYoutubeUrl != null)
+        (
+          label: 'YouTube',
+          url: social.socialYoutubeUrl!,
+          icon: Icons.play_circle_filled,
+        ),
+      if (social.socialXUrl != null)
+        (label: 'X', url: social.socialXUrl!, icon: Icons.tag),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final profiles = _profiles(sl<ClubConfig>());
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
@@ -44,13 +58,13 @@ class SocialEmptyState extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for (final profile in _profiles) ...[
+                for (final profile in profiles) ...[
                   _ProfileLink(
                     icon: profile.icon,
                     label: profile.label,
                     onTap: () => openExternalUrl(context, profile.url),
                   ),
-                  if (profile != _profiles.last)
+                  if (profile != profiles.last)
                     const SizedBox(width: AppSpacing.xl),
                 ],
               ],

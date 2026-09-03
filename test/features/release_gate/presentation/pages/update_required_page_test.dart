@@ -22,7 +22,7 @@ class _FixedRepository implements ReleaseRequirementRepository {
 }
 
 Widget _wrap(Widget child) => MaterialApp(
-  theme: AppTheme.light,
+  theme: AppTheme.light(),
   locale: const Locale('pt'),
   localizationsDelegates: AppLocalizations.localizationsDelegates,
   supportedLocales: AppLocalizations.supportedLocales,

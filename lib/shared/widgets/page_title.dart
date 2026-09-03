@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 
 /// Título de topo de aba — usado no lugar de um `Text` solto genérico.
@@ -15,6 +16,7 @@ class PageTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final clubAssets = sl<ClubConfig>().assets;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -27,7 +29,7 @@ class PageTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        Image.asset(AppAssets.goiasCrestBadge, width: 22, height: 22),
+        Image.asset(clubAssets.crestBadge, width: 22, height: 22),
         const SizedBox(width: 8),
         Flexible(
           child: Text(

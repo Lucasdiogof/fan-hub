@@ -33,6 +33,12 @@ class ClubIntegrations {
     required this.pickupAddress,
     this.contactWhatsappNumber,
     this.contactWhatsappUrl,
+    this.socialInstagramUrl,
+    this.socialYoutubeUrl,
+    this.socialTiktokUrl,
+    this.socialFacebookUrl,
+    this.socialXUrl,
+    this.officialSiteUrl,
   });
 
   /// Substitui `Team.goiasId = 1863` (hoje hardcoded em
@@ -53,4 +59,14 @@ class ClubIntegrations {
   final ClubPickupAddress pickupAddress;
   final String? contactWhatsappNumber;
   final String? contactWhatsappUrl;
+
+  /// Redes sociais oficiais do clube — `null` quando o clube não tem perfil
+  /// numa dessas plataformas (`SocialLinksData` pula a entrada, nunca
+  /// inventa/reusa a URL de outro clube).
+  final String? socialInstagramUrl;
+  final String? socialYoutubeUrl;
+  final String? socialTiktokUrl;
+  final String? socialFacebookUrl;
+  final String? socialXUrl;
+  final String? officialSiteUrl;
 }

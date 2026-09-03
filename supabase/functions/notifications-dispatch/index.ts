@@ -13,6 +13,12 @@ import { createClient, SupabaseClient } from 'https://esm.sh/@supabase/supabase-
 import { GoogleAuth } from 'npm:google-auth-library@9';
 import { resolveClubServerConfigByClubId, type ClubServerConfig } from '../_shared/club_server_config.ts';
 import { buildNotificationMessage, type NotificationEventPayload } from '../_shared/notification_message_builder.ts';
+import {
+  fetchRecipientTokens as resolveRecipientTokens,
+  isActiveMember as resolveIsActiveMember,
+  type RecipientEligibilitySource,
+  type TokenRow,
+} from '../_shared/recipient_eligibility.ts';
 
 const STUCK_PROCESSING_MINUTES = 5;
 const SEND_CONCURRENCY = 30;
@@ -32,45 +38,56 @@ interface NotificationEvent {
   payload: Record<string, unknown>;
 }
 
-interface TokenRow {
-  id: string;
-  user_id: string;
-  fcm_token: string;
-  platform: 'android' | 'ios';
-}
-
-async function fetchRecipientTokens(
-  admin: SupabaseClient,
-  eventType: NotificationEvent['event_type'],
-): Promise<TokenRow[]> {
-  const prefColumn = eventType === 'match_access_open' ? 'tickets_enabled' : 'matches_enabled';
-
-  const { data: optedOutUserIds } = await admin
-    .from('user_notification_preferences')
-    .select('user_id')
-    .eq(prefColumn, false);
-  const excluded = new Set((optedOutUserIds ?? []).map((r) => r.user_id as string));
-
-  const { data: tokens, error } = await admin
-    .from('user_notification_tokens')
-    .select('id,user_id,fcm_token,platform')
-    .eq('is_active', true);
-
-  if (error) {
-    console.error('dispatch: falha ao ler tokens', error.message);
-    return [];
-  }
-
-  return (tokens ?? []).filter((t) => !excluded.has(t.user_id));
-}
-
-async function isActiveMember(admin: SupabaseClient, userId: string): Promise<boolean> {
-  const { count } = await admin
-    .from('supporter_memberships')
-    .select('id', { count: 'exact', head: true })
-    .eq('user_id', userId)
-    .gt('expires_at', new Date().toISOString());
-  return (count ?? 0) > 0;
+// Adapta o `SupabaseClient` real pra `RecipientEligibilitySource` — a
+// LÓGICA de elegibilidade (quem recebe o quê, sem vazar entre clubes) vive
+// em `_shared/recipient_eligibility.ts`, testável sem Deno. Aqui é só o
+// fiozinho de I/O real.
+function supabaseRecipientEligibilitySource(admin: SupabaseClient): RecipientEligibilitySource {
+  return {
+    async explicitlyEligibleUserIds(clubId, prefColumn) {
+      const { data, error } = await admin
+        .from('user_notification_preferences')
+        .select('user_id')
+        .eq('club_id', clubId)
+        .eq(prefColumn, true);
+      if (error) {
+        console.error('dispatch: falha ao ler preferências (clube)', error.message);
+        return [];
+      }
+      return (data ?? []).map((r) => r.user_id as string);
+    },
+    async usersWithAnyPreferenceRow() {
+      const { data, error } = await admin
+        .from('user_notification_preferences')
+        .select('user_id');
+      if (error) {
+        console.error('dispatch: falha ao ler preferências (qualquer clube)', error.message);
+        return [];
+      }
+      return (data ?? []).map((r) => r.user_id as string);
+    },
+    async activeTokensForClub(clubId) {
+      const { data, error } = await admin
+        .from('user_notification_tokens')
+        .select('id,user_id,fcm_token,platform,club_id')
+        .eq('is_active', true)
+        .eq('club_id', clubId);
+      if (error) {
+        console.error('dispatch: falha ao ler tokens', error.message);
+        return [];
+      }
+      return (data ?? []) as TokenRow[];
+    },
+    async activeMembershipCount(userId, clubId) {
+      const { count } = await admin
+        .from('supporter_memberships')
+        .select('id', { count: 'exact', head: true })
+        .eq('user_id', userId)
+        .eq('club_id', clubId)
+        .gt('expires_at', new Date().toISOString());
+      return count ?? 0;
+    },
+  };
 }
 
 async function getAccessToken(): Promise<{ token: string; projectId: string }> {
@@ -126,7 +143,8 @@ async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcm
     return;
   }
 
-  const recipients = await fetchRecipientTokens(admin, event.event_type);
+  const eligibilitySource = supabaseRecipientEligibilitySource(admin);
+  const recipients = await resolveRecipientTokens(eligibilitySource, event.club_id, event.event_type);
 
   if (recipients.length > 0) {
     const rows = recipients.map((r) => ({ event_id: event.id, token_id: r.id }));
@@ -135,7 +153,7 @@ async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcm
 
   const { data: pending, error } = await admin
     .from('notification_deliveries')
-    .select('id,token_id,user_notification_tokens(id,user_id,fcm_token,platform)')
+    .select('id,token_id,user_notification_tokens(id,user_id,fcm_token,platform,club_id)')
     .eq('event_id', event.id)
     .eq('status', 'pending');
 
@@ -160,7 +178,10 @@ async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcm
       let isMember = false;
       if (event.event_type === 'match_access_open') {
         if (!memberCache.has(tokenRow.user_id)) {
-          memberCache.set(tokenRow.user_id, await isActiveMember(admin, tokenRow.user_id));
+          memberCache.set(
+            tokenRow.user_id,
+            await resolveIsActiveMember(eligibilitySource, tokenRow.user_id, event.club_id),
+          );
         }
         isMember = memberCache.get(tokenRow.user_id)!;
       }

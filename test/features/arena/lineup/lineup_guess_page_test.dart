@@ -99,7 +99,7 @@ Future<LineupCubit> _pump(
       locale: const Locale('pt'),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: AppTheme.light,
+      theme: AppTheme.light(),
       home: BlocProvider.value(
         value: cubit,
         child: LineupGuessPage(inputModeOverride: mode),

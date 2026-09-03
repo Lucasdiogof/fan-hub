@@ -1,6 +1,7 @@
 import { cacheFirst } from '../football/_lib/cache';
 import type { Env } from '../football/_lib/config';
-import { errorResponse } from '../football/_lib/respond';
+import { jsonResponse, errorResponse } from '../football/_lib/respond';
+import { NEWS_SOCIAL_CONFIGURED_CLUB_CODE, resolveRequestedClubCode } from '../football/_lib/club_server_config';
 import { scrapeNewsList } from './scraper';
 
 const NEWS_LIST_URL = 'https://www.goiasec.com.br/noticias';
@@ -12,6 +13,14 @@ const NEWS_LIST_URL = 'https://www.goiasec.com.br/noticias';
  */
 export async function handleNewsList(request: Request, env: Env): Promise<Response> {
   const cacheVersion = env.CACHE_VERSION || '1';
+
+  // Achado da auditoria M4: esta rota nunca teve dimensão de clube — sempre
+  // servia o site do Goiás pra qualquer chamador. Um `?club=` explícito e
+  // diferente do único integrado hoje nunca cai pro conteúdo do Goiás.
+  const clubCode = resolveRequestedClubCode(request);
+  if (clubCode !== NEWS_SOCIAL_CONFIGURED_CLUB_CODE) {
+    return jsonResponse({ items: [], available: false }, { status: 404 });
+  }
 
   try {
     return await cacheFirst(request, 600, 'news.list', cacheVersion, async () => {

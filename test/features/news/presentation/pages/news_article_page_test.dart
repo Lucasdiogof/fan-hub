@@ -26,7 +26,7 @@ Widget _wrap(NewsArticle article) {
     localizationsDelegates: AppLocalizations.localizationsDelegates,
     supportedLocales: AppLocalizations.supportedLocales,
 
-    theme: AppTheme.light,
+    theme: AppTheme.light(),
     routerConfig: GoRouter(
       initialLocation: '/news/article',
       routes: [

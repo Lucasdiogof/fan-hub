@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
@@ -49,7 +50,7 @@ class CrowdLineupHeroCard extends StatelessWidget {
             child: Opacity(
               opacity: 0.1,
               child: Image.asset(
-                AppAssets.tacticsBoardIllustration,
+                sl<ClubConfig>().assets.tacticsBoardIllustration,
                 width: 160,
                 height: 160,
                 fit: BoxFit.contain,
