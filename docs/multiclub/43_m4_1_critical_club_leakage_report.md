@@ -602,3 +602,76 @@ M4_CRITICAL_LEAKAGE_READY=true
 ---
 
 **PARE.** `0 bump de pubspec`, `0 release PWA`, `0 release APK`, `0 migration B` (`DROP DEFAULT`, projetada não criada), `0 M4.2`, `0 flavor`, `0 clubB real`, `0 git push`. Server-side pronto e validado; o runtime Flutter que manda `club_id` explícito no registro ainda não foi publicado — até lá, o `DEFAULT` transicional continua sendo a rede de segurança real.
+
+---
+
+# M4.1 — Runtime Release 1.0.2+3
+
+Data: 2026-09-03. Status: **PWA publicado e validado em produção. APK falhou nesta sessão (mesmo erro de ambiente já documentado, Gradle) — deixado pro terminal do dono.**
+
+## 1. Version bump
+
+`pubspec.yaml`: `1.0.1+2` → **`1.0.2+3`**. Nenhuma outra mudança de runtime oportunista. Nenhum teste precisou de ajuste — os 2 arquivos que citam `1.0.1+2` (`release_gate_test.dart`, `app_version_comparator_test.dart`) são cenários fixos históricos ("release M3.4 real"), não leem `pubspec.yaml` dinamicamente.
+
+## 2. Gates
+
+```
+flutter analyze: 0 issues
+flutter test: 912 passed, 1 skip, 0 failed
+tooling/multiclub/test_*.mjs: 854 passando, 0 falhando
+npm run test:worker: 121 passando, 0 falhando
+tsc --noEmit: 0 erros
+flutter build web --release: sucesso
+build/web/version.json: {"version":"1.0.2","build_number":"3"}
+```
+Todos batendo com o baseline esperado.
+
+## 3. Commit do bump
+
+`0efe7a5` (`chore(release): bump app version to 1.0.2+3`) — só `pubspec.yaml`, `git add pubspec.yaml` nomeado.
+
+## 4. Pre-push
+
+`git fetch origin` encontrou 1 commit novo em `origin/main` (`c110a1c "Update X posts feed"`, bot `github-actions[bot]`, só `src/social/data/x_posts.json`, 0 sobreposição com qualquer arquivo desta etapa). Merge controlado (`git merge origin/main --no-edit`, sem rebase, sem force) — **0 conflito**. Merge commit `858fe19`.
+
+## 5. `git push`
+
+```
+git push origin main
+c110a1c..858fe19  main -> main
+```
+
+## 6. Produção — validado ao vivo
+
+```
+GET /                          -> 200
+GET /version.json              -> {"version":"1.0.2","build_number":"3"}  (após ~1min20s de propagação do build Cloudflare)
+GET /flutter_service_worker.js -> 200
+GET /api/football/team/goias   -> 200
+GET /api/football/team/club-b  -> 404
+GET /api/news?club=club-b      -> 404, {"items":[],"available":false}
+GET /api/news (compat)         -> 200, conteúdo real do Goiás confirmado
+GET /api/social/feed?club=club-b -> 404, {"posts":[],"available":false}
+```
+Nunca vazou conteúdo do Goiás pro `club-b` sintético em nenhuma das 2 rotas — confirmado com o corpo da resposta, não só o status code.
+
+## 7. APK
+
+`flutter build apk --release` falhou nesta sessão com o MESMO erro já documentado na Rodada 2 do gate de retirada pós-rollout (`java.io.IOException: Unable to establish loopback connection`, Gradle 9.1/JDK 17, problema de ambiente desta sessão específica — não do projeto/código). Conforme instrução explícita: **JDK/Gradle não foram tocados**. Build do APK `1.0.2+3` fica pro terminal do próprio dono (mesmo padrão que gerou com sucesso o `1.0.1+2` antes). Envio continua manual, só pras ~3 pessoas já usando os builds internos — nunca Play Store/App Store.
+
+## 8. `DEFAULT` transicional — inalterado
+
+`NOTIFICATION_TOKEN_CLUB_DEFAULT_TRANSITIONAL=true` continua. **0 migration B criada/aplicada** nesta rodada — só depois que o dono confirmar a entrega do APK `1.0.2+3` às ~3 pessoas.
+
+## Estados finais
+
+```
+M4_1_RUNTIME_WEB_RELEASED=true
+NOTIFICATION_TOKEN_CLIENT_WRITES_CLUB_ID=true
+NOTIFICATION_TOKEN_DEFAULT_FINAL=false
+M4_1_RUNTIME_APK_RELEASED=false   (build falhou nesta sessão, ambiente — não código)
+```
+
+---
+
+**PARE.** PWA `1.0.2+3` publicado e validado. APK não gerado nesta sessão (erro de ambiente, registrado, não contornado). `0 migration B`, `0 M4.2`, `0 flavor real`, `0 Bragantino`. Aguardando: (1) o dono gerar o APK `1.0.2+3` no próprio terminal, (2) confirmar entrega às ~3 pessoas — só então M4.1c-B (`DROP DEFAULT`) pode ser autorizada.
