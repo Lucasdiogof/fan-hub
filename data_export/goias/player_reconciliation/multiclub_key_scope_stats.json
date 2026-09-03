@@ -1,0 +1,75 @@
+{
+  "tenantScopedConstraintsAudited": 29,
+  "distinctTablesAudited": 26,
+  "keyScopeBlockedCount": 23,
+  "keepGlobalCount": 4,
+  "bridgeFirstCount": 18,
+  "enforceInBCount": 5,
+  "safeNowCount": 0,
+  "productDecisionCount": 2,
+  "requiresNewAppCount": 12,
+  "requiresOldAppRetirementCount": 13,
+  "requiresRpcUpdateCount": 2,
+  "requiresEdgeUpdateCount": 2,
+  "requiresRpcUpdateTables": [
+    "user_game_item_progress",
+    "tickets"
+  ],
+  "partialOnConflictRequiresPredicateTables": [
+    "tickets"
+  ],
+  "bridgeIndexes": [
+    "career_players_club_person_uidx",
+    "guess_players_club_person_uidx",
+    "squad_members_club_person_uidx",
+    "ugip_club_user_game_item_uidx",
+    "qqp_club_user_question_uidx",
+    "qas_club_user_difficulty_uidx",
+    "cpp_club_user_player_uidx",
+    "lmp_club_user_match_uidx",
+    "asc_club_user_game_uidx",
+    "aa_club_user_achievement_uidx",
+    "pir_user_club_uidx",
+    "tir_user_club_uidx",
+    "mlv_club_match_user_uidx",
+    "tcd_club_user_match_uidx",
+    "tickets_club_user_match_checkin_uidx",
+    "ne_club_event_dedupe_uidx",
+    "mms_club_match_uidx",
+    "unp_user_club_uidx"
+  ],
+  "globalPersonUniqueConstraints": [
+    "career_players",
+    "guess_players",
+    "squad_members"
+  ],
+  "globalUserKeyConstraints": [
+    "user_game_item_progress",
+    "quiz_question_progress",
+    "quiz_active_session",
+    "career_path_progress",
+    "lineup_match_progress",
+    "arena_selected_content",
+    "arena_achievements",
+    "player_identity_results",
+    "tactical_identity_results",
+    "match_lineup_votes",
+    "ticket_checkin_decisions",
+    "tickets",
+    "user_notification_preferences"
+  ],
+  "appOnConflicts": {
+    "user_id,achievement_id": 1,
+    "user_id,player_id": 1,
+    "user_id,game_id": 2,
+    "user_id,match_id": 4,
+    "user_id": 4,
+    "user_id,question_id": 1,
+    "user_id,difficulty": 1,
+    "match_id,user_id": 1,
+    "fcm_token": 1
+  },
+  "appOnConflictKeysWithClub": [],
+  "liveCollisionZero": true,
+  "secondClubBlocked": true
+}
