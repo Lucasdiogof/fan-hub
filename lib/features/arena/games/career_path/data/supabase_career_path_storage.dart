@@ -46,7 +46,7 @@ class SupabaseCareerPathStorage {
       'status': state.isDone ? 'completed' : 'in_progress',
       'completed_at': state.completedAt?.toIso8601String(),
       'updated_at': DateTime.now().toUtc().toIso8601String(),
-    }, onConflict: 'user_id,player_id');
+    }, onConflict: 'club_id,user_id,player_id');
   }
 
   Future<String?> loadSelectedPlayerId() async {
@@ -70,7 +70,7 @@ class SupabaseCareerPathStorage {
       'club_id': _clubId,
       'game_id': _gameId,
       'selected_id': playerId,
-    }, onConflict: 'user_id,game_id');
+    }, onConflict: 'club_id,user_id,game_id');
   }
 
   /// Ids dos jogadores que o usuário já concluiu (acertou, errou tudo ou

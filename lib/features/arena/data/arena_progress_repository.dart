@@ -148,7 +148,7 @@ class ArenaProgressRepository {
             'club_id': _clubId,
             'achievement_id': _achievementId,
           },
-          onConflict: 'user_id,achievement_id',
+          onConflict: 'club_id,user_id,achievement_id',
           ignoreDuplicates: true,
         );
     return true;

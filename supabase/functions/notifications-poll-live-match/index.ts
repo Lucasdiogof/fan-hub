@@ -218,7 +218,8 @@ Deno.serve(async (_req) => {
                   dedupe_key: dedupeKey,
                   payload: goalPayload,
                 },
-                { onConflict: 'event_type,dedupe_key', ignoreDuplicates: true },
+                // M3.4: conflict tenant-aware (bridge ne_club_event_dedupe_uidx).
+                { onConflict: 'club_id,event_type,dedupe_key', ignoreDuplicates: true },
               )
               .select('id');
 
@@ -230,9 +231,12 @@ Deno.serve(async (_req) => {
             } else {
               // Já existia (ex.: scorer preenchido depois) — atualiza só o
               // payload, sem tocar em status/detected_at.
+              // M3.4: dedupe lookup também tenant-scoped (club_id + event_type
+              // + dedupe_key = a bridge física ne_club_event_dedupe_uidx).
               await admin
                 .from('notification_events')
                 .update({ payload: goalPayload })
+                .eq('club_id', session.club_id)
                 .eq('event_type', 'goal')
                 .eq('dedupe_key', dedupeKey);
             }
@@ -259,7 +263,8 @@ Deno.serve(async (_req) => {
                 activeClubSide,
               },
             },
-            { onConflict: 'event_type,dedupe_key', ignoreDuplicates: true },
+            // M3.4: conflict tenant-aware (bridge ne_club_event_dedupe_uidx).
+            { onConflict: 'club_id,event_type,dedupe_key', ignoreDuplicates: true },
           )
           .select('id');
 

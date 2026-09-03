@@ -1,0 +1,30 @@
+{
+  "directTenantUpsertsAudited": 11,
+  "directTenantUpsertsReady": 11,
+  "legacyConflictTargetsRemainingInNewRuntime": [],
+  "partialConflictTargets": [
+    "tickets"
+  ],
+  "globalConflictTargets": [
+    {
+      "table": "user_notification_tokens",
+      "onConflict": "fcm_token"
+    },
+    {
+      "table": "profiles",
+      "onConflict": "user_id"
+    }
+  ],
+  "rpcConflictTargetsReady": true,
+  "edgeConflictTargetsReady": true,
+  "arenaScoreUsesTenantConflict": true,
+  "ticketsUsesDedicatedRpc": true,
+  "ticketsPartialPredicatePresent": true,
+  "notificationEventsTenantConflictReady": true,
+  "matchMonitorTenantConflictReady": true,
+  "bridgeDependencyCount": 12,
+  "dbBridgePreconditionSatisfied": true,
+  "keyScopeCollisionGuardKept": true,
+  "secondClubBlocked": true,
+  "functionSignatureAclMatchAll": true
+}

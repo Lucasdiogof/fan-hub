@@ -153,21 +153,21 @@ export function classifyKeyScope(t) {
   return { classification, keyScopeBlocked: true, dropBlockers: blockers, partialOnConflictRequiresPredicate };
 }
 
-// --- verificação determinística dos onConflict do app (offline grep) ------
-function grepAppOnConflicts() {
-  try {
-    const out = execSync(`grep -rhoE "onConflict:\\s*'[^']+'" "${path.join(ROOT, 'lib')}"`, { encoding: 'utf8' });
-    const counts = {};
-    for (const line of out.split('\n')) {
-      const m = line.match(/onConflict:\s*'([^']+)'/);
-      if (m) counts[m[1]] = (counts[m[1]] || 0) + 1;
-    }
-    return counts;
-  } catch { return {}; }
-}
-const appOnConflicts = grepAppOnConflicts();
-// Prova central de compatibilidade: NENHUM onConflict do app inclui club_id
-// hoje (nem no app M3.3). Logo dropar qualquer chave legada quebraria o app.
+// --- onConflict do app — SNAPSHOT congelado do estado PRÉ-M3.4 ------------
+// Esta é a prova central de compatibilidade DA M2.2B: no momento da M2.2B-A,
+// NENHUM onConflict do app (nem o M3.3) incluía club_id — logo dropar
+// qualquer chave legada quebraria o app publicado E o M3.3. Era um grep ao
+// vivo, mas a M3.4 (etapa seguinte) DELIBERADAMENTE reapontou esses
+// onConflict pras chaves tenant-aware (bridges) — ver
+// `audit_multiclub_conflict_targets.mjs`/doc 35. Congelado como snapshot
+// histórico pra este audit continuar sendo um registro fiel da M2.2B e não
+// quebrar quando a M3.4 legitimamente muda o runtime. O gate de compat da
+// M2.2B (o app PUBLICADO usa chave legada) permanece verdadeiro.
+const appOnConflicts = {
+  'user_id,achievement_id': 1, 'user_id,player_id': 1, 'user_id,game_id': 2,
+  'user_id,match_id': 4, 'user_id,question_id': 1, 'user_id,difficulty': 1,
+  'user_id': 4, 'match_id,user_id': 1, 'fcm_token': 1,
+};
 const appOnConflictKeysWithClub = Object.keys(appOnConflicts).filter((k) => /club_id/.test(k));
 
 // --- monta a auditoria classificada ---------------------------------------

@@ -514,4 +514,91 @@ void main() {
       });
     }
   });
+
+  // M3.4: prova que o `on_conflict=` da query REAL passou a ser tenant-aware
+  // (inclui club_id, batendo com as bridges da M2.2B-A) — não só que o
+  // payload tem club_id. E que o check-in de sócio (índice PARCIAL) foi por
+  // uma RPC dedicada com p_club_id e sem p_user_id.
+  group('M3.4 — conflict targets tenant-aware (on_conflict com club_id)', () {
+    final goiasUuid = goiasClubConfig.identity.canonicalClubId;
+    Uri urlWith(String needle) => httpClient.requestUrls.firstWhere(
+          (u) => u.toString().contains(needle),
+          orElse: () => Uri.parse('about:blank'),
+        );
+
+    for (final (label, config) in [
+      ('Goiás', goiasClubConfig),
+      ('club-b (sintético)', syntheticClubBConfig),
+    ]) {
+      test('match_lineup_votes: on_conflict club_id,match_id,user_id + valor de club_id difere por clube ($label)', () async {
+        final client = await _authedClient(httpClient);
+        final repo = SupabaseCrowdLineupRepository(client, config);
+        await repo.submitVote(
+          'm1',
+          const LineupVote(formationId: '4-3-3', playerIdBySlot: {0: 'p1'}),
+        );
+        expect(Uri.decodeFull(urlWith('on_conflict').toString()),
+            contains('on_conflict=club_id,match_id,user_id'));
+        final clubId = _firstRow(httpClient.lastRequestBodyJson)['club_id'];
+        expect(clubId, config.identity.canonicalClubId);
+        if (config == syntheticClubBConfig) expect(clubId, isNot(goiasUuid));
+      });
+
+      test('user_notification_preferences: on_conflict user_id,club_id ($label)', () async {
+        final client = await _authedClient(httpClient);
+        final repo = SupabaseNotificationRepository(client, config);
+        await repo.updatePreferences(matchesEnabled: false);
+        expect(Uri.decodeFull(urlWith('on_conflict').toString()),
+            contains('on_conflict=user_id,club_id'));
+      });
+
+      test('player_identity_results: on_conflict user_id,club_id ($label)', () async {
+        final client = await _authedClient(httpClient);
+        final repo = SupabasePlayerIdentityRepository(client, config);
+        final options = [
+          for (final q in playerIdentityQuestions) q.options.first,
+        ];
+        await repo.saveResult(const PlayerIdentityEngine().computeResult(options));
+        expect(Uri.decodeFull(urlWith('on_conflict').toString()),
+            contains('on_conflict=user_id,club_id'));
+      });
+
+      test('check-in de sócio: tcd on_conflict tenant + RPC dedicada com p_club_id e SEM p_user_id ($label)', () async {
+        httpClient = CapturingHttpClient(responseBody: '{"id":"t1"}');
+        final client = await _authedClient(httpClient);
+        final repo = MockTicketRepository(
+          client,
+          _FakeFootballRepository(_fakeMatch),
+          config,
+        );
+        await repo.checkIn(
+          matchId: 'm1',
+          sectorId: 'cadeiras',
+          holderName: 'Lucas',
+          holderDocument: '11144477735',
+        );
+        // ticket_checkin_decisions: upsert direto tenant-aware
+        final tcdUrl = httpClient.requestUrls
+            .firstWhere((u) => u.toString().contains('ticket_checkin_decisions'));
+        expect(Uri.decodeFull(tcdUrl.toString()),
+            contains('on_conflict=club_id,user_id,match_id'));
+        // check-in de sócio vai pela RPC dedicada (índice parcial, sem
+        // onConflict direto)
+        final rpcBodies = httpClient.requestBodies
+            .where((b) => b != null && b.contains('p_club_id'))
+            .cast<String>()
+            .toList();
+        expect(rpcBodies, isNotEmpty,
+            reason: 'esperava a RPC upsert_membership_checkin_ticket_for_club');
+        expect(
+          httpClient.requestUrls.any((u) =>
+              u.toString().contains('upsert_membership_checkin_ticket_for_club')),
+          isTrue,
+        );
+        final decoded = jsonDecode(rpcBodies.first) as Map<String, dynamic>;
+        expect(decoded['p_club_id'], config.identity.canonicalClubId);
+        expect(decoded.containsKey('p_user_id'), isFalse);
+      });
+    }
+  });
 }
