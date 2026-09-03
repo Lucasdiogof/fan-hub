@@ -1,0 +1,44 @@
+{
+  "capturedAtUtc": "2026-09-03",
+  "note": "Snapshot ao vivo (pg_get_functiondef + ACL real via has_function_privilege) das duas RPCs ANTES da migration 20260903180000_fix_ambiguous_id_membership_rpcs.sql. Serve de baseline para o teste automatizado provar que só a linha ambígua mudou.",
+  "functions": {
+    "get_my_membership_for_club": {
+      "identityArgs": "p_club_id uuid",
+      "returns": "TABLE(id uuid, plan_id text, plan_name text, started_at timestamp with time zone, expires_at timestamp with time zone, is_active boolean)",
+      "provolatile": "v",
+      "proisstrict": false,
+      "proparallel": "u",
+      "prosecdef": true,
+      "acl": {
+        "anon": false,
+        "authenticated": true,
+        "service_role": false
+      },
+      "liveDefBefore": "CREATE OR REPLACE FUNCTION public.get_my_membership_for_club(p_club_id uuid)\n RETURNS TABLE(id uuid, plan_id text, plan_name text, started_at timestamp with time zone, expires_at timestamp with time zone, is_active boolean)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog', 'public', 'pg_temp'\nAS $function$\nbegin\n  if p_club_id is null then\n    raise exception 'p_club_id is required';\n  end if;\n  if not exists (select 1 from public.clubs where id = p_club_id) then\n    raise exception 'unknown club_id %', p_club_id;\n  end if;\n\n  return query\n  select\n    m.id,\n    m.plan_id,\n    m.plan_name,\n    m.started_at,\n    m.expires_at,\n    (m.expires_at > now()) as is_active\n  from public.supporter_memberships m\n  where m.user_id = auth.uid() and m.club_id = p_club_id\n  order by m.created_at desc\n  limit 1;\nend;\n$function$\n"
+    },
+    "subscribe_to_plan_for_club": {
+      "identityArgs": "p_club_id uuid, p_plan_id text",
+      "returns": "TABLE(id uuid, plan_id text, plan_name text, started_at timestamp with time zone, expires_at timestamp with time zone)",
+      "provolatile": "v",
+      "proisstrict": false,
+      "proparallel": "u",
+      "prosecdef": true,
+      "acl": {
+        "anon": false,
+        "authenticated": true,
+        "service_role": false
+      },
+      "liveDefBefore": "CREATE OR REPLACE FUNCTION public.subscribe_to_plan_for_club(p_club_id uuid, p_plan_id text)\n RETURNS TABLE(id uuid, plan_id text, plan_name text, started_at timestamp with time zone, expires_at timestamp with time zone)\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog', 'public', 'pg_temp'\nAS $function$\ndeclare\n  v_uid uuid := auth.uid();\n  v_plan_name text;\n  v_active_count int;\n  v_started_at timestamptz;\n  v_expires_at timestamptz;\n  v_id uuid;\nbegin\n  if v_uid is null then\n    raise exception 'not authenticated';\n  end if;\n\n  if p_club_id is null then\n    raise exception 'p_club_id is required';\n  end if;\n  if not exists (select 1 from public.clubs where id = p_club_id) then\n    raise exception 'unknown club_id %', p_club_id;\n  end if;\n\n  perform pg_advisory_xact_lock(\n    hashtext('subscribe_to_plan_for_club:' || v_uid::text || ':' || p_club_id::text)\n  );\n\n  -- Mesmo catálogo hardcoded da RPC legacy (ver comentário lá) — se um\n  -- plano for adicionado/renomeado, precisa espelhar aqui também.\n  v_plan_name := case p_plan_id\n    when 'nossa-gente' then 'NOSSA GENTE'\n    when 'nossa-historia' then 'NOSSA HISTORIA'\n    when 'nossa-garra' then 'NOSSA GARRA'\n    when 'nossa-gloria' then 'NOSSA GLORIA'\n    when 'nossa-familia' then 'NOSSA FAMILIA'\n    when 'plano-vip' then 'PLANO VIP'\n    else null\n  end;\n\n  if v_plan_name is null then\n    raise exception 'invalid plan_id %', p_plan_id;\n  end if;\n\n  select count(*) into v_active_count\n  from public.supporter_memberships\n  where supporter_memberships.user_id = v_uid\n    and supporter_memberships.club_id = p_club_id\n    and supporter_memberships.expires_at > now();\n\n  if v_active_count > 0 then\n    raise exception 'membership already active';\n  end if;\n\n  v_started_at := now();\n  v_expires_at := v_started_at + interval '30 days';\n\n  insert into public.supporter_memberships (\n    user_id, club_id, plan_id, plan_name, started_at, expires_at\n  )\n  values (\n    v_uid, p_club_id, p_plan_id, v_plan_name, v_started_at, v_expires_at\n  )\n  returning supporter_memberships.id into v_id;\n\n  return query\n  select v_id, p_plan_id, v_plan_name, v_started_at, v_expires_at;\nend;\n$function$\n"
+    }
+  },
+  "otherForClubRpcsScanned": [
+    "arena_my_rank_for_club",
+    "arena_ranking_for_club",
+    "arena_record_score_for_club",
+    "arena_user_detail_for_club",
+    "create_store_order_for_club",
+    "crowd_lineup_for_club",
+    "upsert_membership_checkin_ticket_for_club"
+  ],
+  "otherForClubRpcsScannedNote": "Todas as 9 RPCs public.*_for_club foram varridas ao vivo (pg_get_functiondef) por conterem o texto 'where id = p_club_id'. Só as 2 acima têm coluna id em RETURNS TABLE(...) (as outras 7 retornam TABLE sem coluna id, ou um row-type único via RETURNS <tabela>, que não cria variável OUT) — não sofrem a ambiguidade e não são tocadas por esta migration."
+}
