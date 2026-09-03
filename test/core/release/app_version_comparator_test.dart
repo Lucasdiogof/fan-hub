@@ -89,4 +89,19 @@ void main() {
       },
     );
   });
+
+  group('release M3.4 real (1.0.1+2) contra o mínimo publicado (1.0.0+1)', () {
+    test('1.0.1+2 >= 1.0.0+1 -> nunca abaixo do mínimo', () {
+      expect(compareSemanticVersions('1.0.1', '1.0.0'), greaterThan(0));
+      expect(
+        isBelowMinimumRelease(
+          currentBuild: 2,
+          currentVersion: '1.0.1',
+          minimumBuild: 1,
+          minimumVersion: '1.0.0',
+        ),
+        isFalse,
+      );
+    });
+  });
 }
