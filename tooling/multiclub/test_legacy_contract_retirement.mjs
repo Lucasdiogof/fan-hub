@@ -19,10 +19,13 @@ function test(name, fn) {
   catch (err) { failures.push({ name, err }); console.log(`  FAIL — ${name}\n    ${err.message}`); }
 }
 
-console.log('1) origin/main vs HEAD — números reais');
-test('origin/main = 613874a (a mesma baseline do rollout gate) — commits atrás só cresce a cada novo commit local, nunca diminui, nunca é hardcoded como um número fixo', () => {
-  assert.strictEqual(audit.originMainCommit, '613874a7e00073c19560f8a9ebe0325efc395c0a');
-  assert.ok(stats.commitsBehindOriginMain >= 35, `esperado >= 35 (snapshot do rollout gate), veio ${stats.commitsBehindOriginMain}`);
+console.log('1) commit legacy fixo vs HEAD — números reais');
+test('baseline legacy = 613874a, um HASH FIXO — nunca mais `origin/main` (que virou o código novo depois do M3.4 Web Release); commits à frente só cresce, nunca é hardcoded como número fixo', () => {
+  assert.strictEqual(audit.legacyBaselineCommit, '613874a7e00073c19560f8a9ebe0325efc395c0a');
+  assert.ok(stats.commitsAheadOfLegacyBaseline >= 39, `esperado >= 39 (pós M3.4 Web Release), veio ${stats.commitsAheadOfLegacyBaseline}`);
+});
+test('originMainMatchesHead é só informativo (drift local não-pushado é normal, nunca falha o gate)', () => {
+  assert.ok(typeof stats.originMainMatchesHead === 'boolean' || stats.originMainMatchesHead === null);
 });
 test('o inventário de RPC bate com o código real (extraído via git show, não hardcoded cego)', () => {
   assert.strictEqual(stats.rpcInventoryMatchesCode, true);
@@ -127,8 +130,8 @@ test('FABRICADO: se existisse 1 write sem KEY nem DEFAULT nem ALREADY_BROKEN, o 
 });
 
 console.log('\n10) reprodutibilidade — o resto do audit, fora do que é DELIBERADAMENTE ao vivo');
-test('rodar o audit de novo produz o mesmo resultado, exceto commitsBehindOriginMain (recalculado ao vivo de propósito — HEAD avança a cada commit desta etapa, não é um bug)', () => {
-  const stripLive = (json) => { const c = JSON.parse(json); delete c.commitsBehindOriginMain; return c; };
+test('rodar o audit de novo produz o mesmo resultado, exceto commitsAheadOfLegacyBaseline/originMainMatchesHead (recalculados ao vivo de propósito — HEAD avança a cada commit desta etapa, não é um bug)', () => {
+  const stripLive = (json) => { const c = JSON.parse(json); delete c.commitsAheadOfLegacyBaseline; delete c.originMainMatchesHead; return c; };
   const before = stripLive(fs.readFileSync(path.join(RECON, 'multiclub_legacy_contract_retirement_audit.json'), 'utf8'));
   execFileSync(process.execPath, [SCRIPT], { cwd: ROOT });
   const after = stripLive(fs.readFileSync(path.join(RECON, 'multiclub_legacy_contract_retirement_audit.json'), 'utf8'));

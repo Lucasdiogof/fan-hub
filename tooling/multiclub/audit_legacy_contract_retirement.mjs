@@ -6,12 +6,18 @@
 // rodada) já é TECNICAMENTE suficiente pra aposentar os writes do PWA
 // publicado (`origin/main`), sem precisar converter nada pra RPC-only?
 //
-// Método: `origin/main` é o baseline do código REALMENTE publicado (ver
-// [[project-goias-app-rollout-gate]] — deployment web ao vivo confirmado
-// rodando exatamente esse snapshot). Cada write de `origin/main` foi
-// inventariado via `git show origin/main:<file>` (reproduzível, sem rede) e
-// classificado contra 2 mecanismos de fechamento, que NUNCA dependem do que
-// o cliente declara (CLIENT_VERSION_SIGNAL != SERVER_ENFORCED_CONTRACT):
+// Método: o código do CLIENTE LEGACY é fixado no commit `613874a` (era
+// `origin/main` no momento desta auditoria original — ver
+// [[project-goias-app-rollout-gate]], deployment web ao vivo confirmado
+// rodando exatamente esse snapshot). **Correção pós-release**: depois do
+// M3.4 Web Release, `origin/main` passou a SER o código novo (mesmo commit
+// que HEAD) — usar a ref `origin/main` aqui deixaria de comparar
+// "legacy vs novo" e passaria a comparar "novo vs novo", invalidando o
+// audit inteiro. Por isso a baseline legacy é um HASH FIXO, nunca mais uma
+// ref que se move. Cada write do commit legacy foi inventariado via
+// `git show 613874a:<file>` (reproduzível, sem rede) e classificado contra
+// 2 mecanismos de fechamento, que NUNCA dependem do que o cliente declara
+// (CLIENT_VERSION_SIGNAL != SERVER_ENFORCED_CONTRACT):
 //
 //   AUTO_RETIRED_BY_KEY_ENFORCEMENT — o write usa `upsert(onConflict: ...)`
 //     numa chave que M2.2B-B troca (ex.: `(user_id,x)` -> `(club_id,user_id,x)`).
@@ -41,11 +47,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const OUT_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 
-function showOriginMain(relPath) {
+// Commit real do PWA legacy publicado ANTES do M3.4 Web Release — fixo de
+// propósito, nunca `origin/main` (que agora É o código novo pós-push).
+const LEGACY_BASELINE_COMMIT = '613874a7e00073c19560f8a9ebe0325efc395c0a';
+
+function showLegacyBaseline(relPath) {
   try {
-    return execSync(`git show origin/main:${JSON.stringify(relPath)}`, { cwd: ROOT, encoding: 'utf8' });
+    return execSync(`git show ${LEGACY_BASELINE_COMMIT}:${JSON.stringify(relPath)}`, { cwd: ROOT, encoding: 'utf8' });
   } catch {
-    return null; // arquivo não existe em origin/main
+    return null; // arquivo não existe no commit legacy
   }
 }
 function readHead(relPath) {
@@ -68,20 +78,30 @@ function extractRpcNames(src) {
   return [...src.matchAll(/\.rpc[^'";]{0,60}'([a-z_]+)'/g)].map((m) => m[1]);
 }
 
-// --- 1. origin/main vs HEAD — números reais --------------------------------
-const commitsBehind = (() => {
+// --- 1. commit legacy fixo vs HEAD — números reais -------------------------
+// Pós M3.4 Web Release: `origin/main` já É o código novo (mesmo commit que
+// HEAD, a menos de trabalho local não pushado ainda). "Commits à frente"
+// deixou de significar "quanto falta publicar" pra virar só "quanto HEAD
+// já andou desde o snapshot legacy fixo" — cresce pra sempre, por design.
+const commitsAheadOfLegacyBaseline = (() => {
   try {
-    execSync('git fetch origin', { cwd: ROOT, stdio: 'ignore' });
-    return parseInt(execSync('git rev-list --count origin/main..HEAD', { cwd: ROOT, encoding: 'utf8' }).trim(), 10);
+    return parseInt(execSync(`git rev-list --count ${LEGACY_BASELINE_COMMIT}..HEAD`, { cwd: ROOT, encoding: 'utf8' }).trim(), 10);
   } catch { return null; }
 })();
-const originMainCommit = (() => {
-  try { return execSync('git log origin/main -1 --format=%H', { cwd: ROOT, encoding: 'utf8' }).trim(); }
-  catch { return null; }
+// Drift detector NOVO desta rodada: origin/main ainda é o mesmo commit que
+// HEAD (== release realmente publicado, sem trabalho local não-pushado
+// acumulando silenciosamente)? Só informativo — nunca usado pra decidir
+// nada sozinho.
+const originMainMatchesHead = (() => {
+  try {
+    execSync('git fetch origin', { cwd: ROOT, stdio: 'ignore' });
+    const originMain = execSync('git rev-parse origin/main', { cwd: ROOT, encoding: 'utf8' }).trim();
+    const head = execSync('git rev-parse HEAD', { cwd: ROOT, encoding: 'utf8' }).trim();
+    return { matches: originMain === head, originMain, head };
+  } catch { return { matches: null, originMain: null, head: null }; }
 })();
-
-// --- 2. Inventário completo dos write files (origin/main vs HEAD) ---------
-// Cada entrada é um write site real, achado por `git show origin/main:` +
+// --- 2. Inventário completo dos write files (commit legacy fixo vs HEAD) --
+// Cada entrada é um write site real, achado por `git show <hash legacy>:` +
 // leitura manual desta rodada (não um grep cego — onConflict/.rpc sozinhos
 // não bastam pra saber SE é write nem qual tabela/coluna realmente conta).
 const WRITE_MATRIX = [
@@ -148,7 +168,7 @@ const RPC_INVENTORY = [
 ];
 
 // --- 4. Verificação reproduzível: os RPC names acima batem com o código? --
-const verifiedOriginRpcNames = new Set();
+const verifiedLegacyRpcNames = new Set();
 const verifiedHeadRpcNames = new Set();
 for (const relFile of [
   'lib/features/arena/ranking/data/supabase_arena_ranking_repository.dart',
@@ -159,12 +179,12 @@ for (const relFile of [
   'lib/features/store/data/supabase_store_orders_repository.dart',
   'lib/features/ticket/data/mock_ticket_repository.dart',
 ]) {
-  for (const n of extractRpcNames(showOriginMain(relFile))) verifiedOriginRpcNames.add(n);
+  for (const n of extractRpcNames(showLegacyBaseline(relFile))) verifiedLegacyRpcNames.add(n);
   for (const n of extractRpcNames(readHead(relFile))) verifiedHeadRpcNames.add(n);
 }
 const rpcInventoryMatchesCode = RPC_INVENTORY.filter((r) => r.name !== 'upsert_membership_checkin_ticket_for_club')
-  .every((r) => verifiedOriginRpcNames.has(r.name)) &&
-  [...verifiedOriginRpcNames].every((n) => RPC_INVENTORY.some((r) => r.name === n));
+  .every((r) => verifiedLegacyRpcNames.has(r.name)) &&
+  [...verifiedLegacyRpcNames].every((n) => RPC_INVENTORY.some((r) => r.name === n));
 
 // --- 5. Snapshot AO VIVO (datado) — constraints, DEFAULT, e o bug achado --
 // Consultas reais rodadas nesta sessão (read-only: information_schema,
@@ -235,13 +255,15 @@ const metrics = {
   globalWritesOutOfScope: globalWrites.length,
   rpcOnlyMigrationRequired,
   legacyContractRetirementReady,
-  commitsBehindOriginMain: commitsBehind,
+  commitsAheadOfLegacyBaseline,
+  originMainMatchesHead: originMainMatchesHead.matches,
   rpcInventoryMatchesCode,
 };
 
 const audit = {
-  originMainCommit,
-  commitsBehindOriginMain: commitsBehind,
+  legacyBaselineCommit: LEGACY_BASELINE_COMMIT,
+  commitsAheadOfLegacyBaseline,
+  originMainMatchesHead,
   writeMatrix: WRITE_MATRIX,
   rpcInventory: RPC_INVENTORY,
   liveSnapshot: LIVE_SNAPSHOT,
