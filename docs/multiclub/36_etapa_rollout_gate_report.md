@@ -195,7 +195,7 @@ Autorizado após aprovação do Legacy Contract Retirement Audit (rodada 2 / rel
 
 **Baselines**: `flutter analyze` 0 issues · `flutter test` **894 passed / 1 skip** · JS **743 passed / 0 failed**.
 
-**Commit autorizado — tudo verde**: DB 53/53 ✅, seed correto ✅, RLS/grants provados ✅, Release Gate tests verdes ✅, Flutter verde ✅, JS verde ✅. Commit local com paths explícitos (nunca `git add .`) — arquivos do Release Gate (Flutter + migration + testes + l10n + wiring) + tooling/report dos audits 36/37: **`<hash registrado no follow-up de docs>`** — `feat(multiclub): add app release gate`. Exclusões-padrão preservadas fora do stage. **0 git push** — o próximo push é uma operação de release separada (dispara Cloudflare: rebuild Flutter web + publica PWA novo + publica o Worker M3.3 que ainda está pendente), deliberadamente não misturada a esta rodada.
+**Commit autorizado — tudo verde**: DB 53/53 ✅, seed correto ✅, RLS/grants provados ✅, Release Gate tests verdes ✅, Flutter verde ✅, JS verde ✅. Commit local com paths explícitos (nunca `git add .`), 32 arquivos — arquivos do Release Gate (Flutter + migration + testes + l10n + wiring) + tooling/report dos audits 36/37: **`65189eb`** — `feat(multiclub): add app release gate`. Exclusões-padrão preservadas fora do stage. **0 git push** — o próximo push é uma operação de release separada (dispara Cloudflare: rebuild Flutter web + publica PWA novo + publica o Worker M3.3 que ainda está pendente), deliberadamente não misturada a esta rodada.
 
 ## Estados finais (rodada 3)
 
