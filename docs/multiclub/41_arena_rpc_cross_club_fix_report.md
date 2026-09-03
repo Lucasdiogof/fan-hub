@@ -133,9 +133,18 @@ Correção autorizada (exclusivamente a assinatura, corpo/return type/SECURITY D
 
 `functionArgumentDefaultsMatchLive` adicionado a `audit_arena_rpc_cross_club_fix.mjs`: parseia os parâmetros declarados no `CREATE OR REPLACE FUNCTION` (nome + tipo + default, se houver) e compara contra um baseline com os 7 defaults confirmados ao vivo em 2026-09-03. 2 novos testes fabricados: (a) reproduz o bug real desta rodada removendo 1 `DEFAULT` — detectado; (b) prova que não é só "tem default ou não" — um default com valor errado (`false`→`true`) também é detectado. Suíte cresceu de 18 para **21 testes, 0 falhando**.
 
-### 2ª tentativa — aplicação
+### 2ª tentativa — aplicação bem-sucedida
 
-Ver validação live abaixo.
+`npx supabase db push` — aplicou sem erro. `migration list`: **57 local = 57 remote, 0 pending**; `db push --dry-run`: `"Remote database is up to date"`.
+
+### Validação live pós-sucesso (6/6)
+
+1. `pg_get_function_arguments()`: os 7 `DEFAULT`s idênticos ao baseline, `pronargdefaults=7`.
+2. `pg_proc.prosrc`: `v_prev` SELECT confirmado com `club_id = p_club_id`.
+3. `total_score`/`game_score`: confirmados intactos, tenant-aware (byte-idênticos ao que já existia).
+4. ACL `arena_record_score_for_club`: `authenticated=true`, `anon=service_role=public=false`.
+5. ACL `arena_record_score` (legacy): `anon=authenticated=service_role=public=false` — continua revogada (M2.2B-B).
+6. `tooling/multiclub/test_arena_rpc_cross_club_fix.mjs`: **21/21**. `flutter analyze`: **0 issues**.
 
 ---
 
