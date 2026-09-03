@@ -6,7 +6,8 @@
     "arenaScoreTotalScoreClubScoped": true,
     "arenaScoreGameScoreClubScoped": true,
     "arenaScoreConflictTargetTenantAware": true,
-    "arenaScoreAclCorrect": true
+    "arenaScoreAclCorrect": true,
+    "functionArgumentDefaultsMatchLive": true
   },
   "keyScopeGuardDecision": "KEEP_DEFENSIVELY",
   "keyScopeGuardPresent": true,

@@ -13,6 +13,28 @@ const MIGRATION_PATH = path.join(
 const RPC_SIGNATURE_TYPES =
   'uuid, text, text, text, integer, text, integer, integer, integer, boolean, boolean';
 
+// Live-confirmed via pg_get_function_arguments() on 2026-09-03 — the source
+// of truth for a COMPLETE signature (including defaults). Never use
+// pg_get_function_identity_arguments() to rebuild a CREATE OR REPLACE: it
+// omits defaults by design (it exists for overload resolution only), which
+// is exactly what caused the 1st db push attempt here to fail with
+// SQLSTATE 42P13 ("cannot remove parameter defaults from existing
+// function").
+const LIVE_ARG_DEFAULTS_BASELINE = [
+  { name: 'p_club_id', default: null },
+  { name: 'p_game_id', default: null },
+  { name: 'p_item_id', default: null },
+  { name: 'p_event_type', default: null },
+  { name: 'p_attempt_number', default: 'null::integer' },
+  { name: 'p_difficulty', default: 'null::text' },
+  { name: 'p_wrong_count', default: 'null::integer' },
+  { name: 'p_found_count', default: 'null::integer' },
+  { name: 'p_total_count', default: 'null::integer' },
+  { name: 'p_was_revealed', default: 'false' },
+  { name: 'p_was_abandoned', default: 'false' },
+];
+const LIVE_PRONARGDEFAULTS = 7;
+
 function stripComments(sql) {
   return sql
     .split('\n')
@@ -35,6 +57,50 @@ function extractBlock(body, startAnchor, endAnchor) {
   const e = body.indexOf(endAnchor, s + startAnchor.length);
   if (e === -1) return null;
   return body.slice(s, e + endAnchor.length);
+}
+
+// Parses the CREATE OR REPLACE FUNCTION parameter list, including any
+// DEFAULT clause per parameter — this is what must match pg_get_function_
+// arguments() live, never pg_get_function_identity_arguments() (which
+// omits defaults).
+function parseCreateFunctionParams(codeOnly) {
+  const m = codeOnly.match(
+    /create or replace function public\.arena_record_score_for_club\(\s*([\s\S]*?)\n\)\s*\nreturns table/i
+  );
+  if (!m) return null;
+  const paramsText = m[1];
+  return paramsText
+    .split(',\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const dm = line.match(/^(\S+)\s+([\w()]+)(?:\s+default\s+(.+))?$/i);
+      if (!dm) return { raw: line, name: null, type: null, default: null };
+      return {
+        raw: line,
+        name: dm[1],
+        type: dm[2].toLowerCase(),
+        default: dm[3] ? dm[3].trim().toLowerCase().replace(/;$/, '') : null,
+      };
+    });
+}
+
+function checkFunctionArgumentDefaultsMatchLive(codeOnly) {
+  const params = parseCreateFunctionParams(codeOnly);
+  if (!params || params.length !== LIVE_ARG_DEFAULTS_BASELINE.length) return false;
+  const actualDefaultsCount = params.filter((p) => p.default !== null).length;
+  if (actualDefaultsCount !== LIVE_PRONARGDEFAULTS) return false;
+  for (let i = 0; i < LIVE_ARG_DEFAULTS_BASELINE.length; i++) {
+    const expected = LIVE_ARG_DEFAULTS_BASELINE[i];
+    const actual = params[i];
+    if (!actual || actual.name !== expected.name) return false;
+    if (expected.default === null) {
+      if (actual.default !== null) return false;
+    } else if (actual.default !== expected.default) {
+      return false;
+    }
+  }
+  return true;
 }
 
 export function auditArenaRpcCrossClubFix(sqlText) {
@@ -123,6 +189,8 @@ export function auditArenaRpcCrossClubFix(sqlText) {
   );
   const guardPresent = /clubs\)\s*<>\s*1|esperava clubs=1/i.test(codeOnly);
 
+  const functionArgumentDefaultsMatchLive = checkFunctionArgumentDefaultsMatchLive(codeOnly);
+
   const arenaScorePrevReadClubScoped =
     vPrevHasClubFilter && vPrevHasUserFilter && vPrevHasGameFilter && vPrevHasItemFilter;
   const arenaScoreTotalScoreClubScoped = totalScoreHasClubFilter;
@@ -136,6 +204,7 @@ export function auditArenaRpcCrossClubFix(sqlText) {
     arenaScoreGameScoreClubScoped &&
     arenaScoreConflictTargetTenantAware &&
     arenaScoreAclCorrect &&
+    functionArgumentDefaultsMatchLive &&
     keyScopeGuardPresent &&
     noForbiddenDdl &&
     guardPresent;
@@ -149,6 +218,7 @@ export function auditArenaRpcCrossClubFix(sqlText) {
       arenaScoreGameScoreClubScoped,
       arenaScoreConflictTargetTenantAware,
       arenaScoreAclCorrect,
+      functionArgumentDefaultsMatchLive,
     },
     keyScopeGuardDecision: 'KEEP_DEFENSIVELY',
     keyScopeGuardPresent,
