@@ -1,0 +1,12 @@
+{
+  "secondClubTechnicallySafe": false,
+  "secondClubProductReady": false,
+  "blockersBeforeAnySecondClubCount": 7,
+  "blockersBeforePublicSecondClubCount": 5,
+  "blockersPerFeatureCount": 3,
+  "directReadTenantCoveragePct": 100,
+  "directWriteTenantCoveragePct": 100,
+  "clubCapabilitiesWired": false,
+  "localStorageIsolated": true,
+  "registryConsistencyReady": true
+}

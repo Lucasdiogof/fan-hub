@@ -1,0 +1,204 @@
+{
+  "liveDbBaselineDate": "2026-09-03",
+  "rowScopeReady": true,
+  "keyScopeFinal": true,
+  "arenaCrossClubReady": true,
+  "directReadTenantCoverage": {
+    "correct": 39,
+    "total": 39,
+    "pct": 100
+  },
+  "directWriteTenantCoverage": {
+    "correct": 20,
+    "total": 20,
+    "pct": 100
+  },
+  "rpcTenantCoverage": {
+    "forClubCorrect": 9,
+    "forClubTotal": 9,
+    "passportUntenanted": 12
+  },
+  "edgeTenantCoverage": {
+    "notificationsPollLiveMatch": "CLUB_CONFIGURED",
+    "notificationsSyncAndCheckAccess": "CLUB_CONFIGURED",
+    "notificationsDispatch": "BLOCKED",
+    "cleanupUnconfirmedSignups": "GLOBAL_INTENTIONAL",
+    "deleteAccount": "GLOBAL_INTENTIONAL"
+  },
+  "workerTenantCoverage": {
+    "football": "CLUB_CONFIGURED",
+    "news": "BLOCKED",
+    "social": "BLOCKED"
+  },
+  "localStorageIsolated": true,
+  "explicitUnknownClubFails": true,
+  "emptyAppClubDefaultsToGoias": true,
+  "clubScopedFallbackNeverDefaults": true,
+  "goiasFallbacksRemaining": 3,
+  "runtimeGoiasHardcodes": {
+    "mustConfigBeforeClubB": 7,
+    "deferredNonBlocker": 5
+  },
+  "clubConfigCoverage": {
+    "identityConsumers": 22,
+    "assetsConsumers": 1,
+    "integrationsConsumers": 1,
+    "brandingConsumers": 0,
+    "capabilitiesConsumers": 0,
+    "productNamesConsumers": 0
+  },
+  "clubCapabilitiesCoverage": {
+    "wired": false,
+    "fieldsCovered": [
+      "hasMembership",
+      "hasStore",
+      "hasTickets",
+      "hasCrowdLineup",
+      "hasPassport",
+      "enabledArenaGames"
+    ],
+    "fieldsMissing": [
+      "notifications",
+      "social",
+      "squad"
+    ]
+  },
+  "registryDrift": {
+    "dbRegistryCodes": [
+      "goias"
+    ],
+    "flutterRegistryCodes": [
+      "goias"
+    ],
+    "workerRegistryCodes": [
+      "goias"
+    ],
+    "edgeRegistryCodes": [
+      "goias"
+    ],
+    "registryConsistencyReady": true,
+    "dbIncludedInDriftCheck": false
+  },
+  "passportRpcAcl": {
+    "functions": [
+      "passport_attendance_breakdown",
+      "passport_attended_matches",
+      "passport_matches_for_year",
+      "passport_memorable_match_id",
+      "passport_my_attendances_for_year",
+      "passport_my_rank",
+      "passport_ranking",
+      "passport_save_attendances",
+      "passport_seasons",
+      "passport_set_memorable_match",
+      "passport_stadium_summary",
+      "passport_summary"
+    ],
+    "publicExecuteCount": 12,
+    "total": 12
+  },
+  "passportStrategy": "B_CAPABILITY_FALSE_AFTER_CAPABILITIES_WIRED",
+  "authScopeDecision": {
+    "model": "C_APP_DEFINES_CLUB_ACCOUNT_GLOBAL",
+    "activeClubEnforcementBlocked": true,
+    "rlsUserIsolation": true,
+    "rlsClubIsolation": false,
+    "rlsTenantTablePoliciesTotal": 52,
+    "rlsTenantTablePoliciesReferencingClubId": 0
+  },
+  "releaseGateTenantReady": true,
+  "notificationsDispatchClubScoped": {
+    "filtersClubId": false,
+    "isActiveMemberFiltersClubId": false
+  },
+  "storeOrderNumberHardcode": {
+    "hasGoiPrefixInFlutter": false,
+    "orderPrefixDefined": true,
+    "orderPrefixConsumedElsewhere": true
+  },
+  "secondClubTechnicalBlockers": [
+    {
+      "area": "ASSETS",
+      "finding": "AppAssets literals (crest/login/banner/etc) bypass ClubConfig.assets entirely — a clubB build would show real Goiás assets, not missing/fallback ones",
+      "severity": "CRITICAL"
+    },
+    {
+      "area": "EDGE_FUNCTIONS",
+      "finding": "notifications-dispatch fetchRecipientTokens/isActiveMember do not filter by club_id — cross-club notification fan-out",
+      "severity": "CRITICAL"
+    },
+    {
+      "area": "FLAVOR_PIPELINE",
+      "finding": "no Android/iOS flavors — a clubB build shares applicationId/bundle id with Goiás, cascading into shared local storage + Supabase auth session",
+      "severity": "CRITICAL"
+    },
+    {
+      "area": "FLUTTER_CONFIG",
+      "finding": "MembershipContactConfig/PickupInformation/SocialLinksData/MaterialApp title bypass ClubConfig with hardcoded Goiás values",
+      "severity": "HIGH"
+    },
+    {
+      "area": "STORE",
+      "finding": "'GOI-' order-number prefix hardcoded in both the SQL function and a Flutter demo path, ClubIntegrations.orderPrefix never consumed",
+      "severity": "MEDIUM"
+    },
+    {
+      "area": "WORKER",
+      "finding": "News and Social subsystems have zero clubCode routing dimension — 100% Goiás-hardcoded, unlike the football routes",
+      "severity": "HIGH"
+    },
+    {
+      "area": "FLUTTER_CONFIG",
+      "finding": "passport_match_ticket_v2.dart still does a raw string isGoias check instead of Team.matchesClub",
+      "severity": "MEDIUM"
+    }
+  ],
+  "secondClubProductBlockers": [
+    {
+      "area": "RLS",
+      "finding": "0/52 policies on tenant-scoped tables reference club_id — club isolation is app-layer only, no DB-level defense in depth"
+    },
+    {
+      "area": "CLUB_CAPABILITIES",
+      "finding": "ClubCapabilities exists but has 0 real consumers — cannot actually disable a feature per club yet"
+    },
+    {
+      "area": "FLAVOR_PIPELINE",
+      "finding": "Android/iOS/Web flavor pipelines fully designed (docs 10-13) but not implemented"
+    },
+    {
+      "area": "SCHEMA",
+      "finding": "club_transparency_*/club_board_*/membership_faq_* tables have no club_id column, never touched by tenant migrations — needs a product decision"
+    },
+    {
+      "area": "L10N",
+      "finding": "ClubProductNaming-mapped l10n keys still hardcoded to Goiás copy instead of reading the config"
+    }
+  ],
+  "blockersPerFeature": [
+    {
+      "feature": "PASSAPORTE",
+      "blocker": "BLOCKER_BEFORE_ENABLING_PASSAPORTE",
+      "detail": "0 club_id anywhere in 12 RPCs, PUBLIC/anon/service_role EXECUTE granted on all of them (widest ACL of any RPC in the project)"
+    },
+    {
+      "feature": "STORE",
+      "blocker": "BLOCKER_BEFORE_ENABLING_STORE",
+      "detail": "product catalog is static Dart data, not a tenant-aware DB dataset"
+    },
+    {
+      "feature": "CLUB_INSTITUTIONAL_PAGES",
+      "blocker": "BLOCKER_BEFORE_ENABLING_CLUB_INSTITUTIONAL_PAGES",
+      "detail": "club_board_*/club_transparency_* have no club_id column"
+    }
+  ],
+  "deferredNonBlockers": [
+    "web/manifest.json placeholder defaults (pre-existing Goiás bug, unrelated to multiclub)",
+    "QuizDifficulty/PassportLevel enum member names carrying brand identity (label only, not logic)",
+    "AppColors semantic token naming (darkGreen/deepGreen/ctaGreen)",
+    "ClubSongVolumeStore not club-scoped (low risk, volume preference not content)",
+    "Worker GOIAS_ONEFOOTBALL_SLUG env var naming (works today, each club gets its own Worker deploy anyway)"
+  ],
+  "secondClubTechnicallySafe": false,
+  "secondClubProductReady": false
+}
