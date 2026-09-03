@@ -494,3 +494,111 @@ M4_CRITICAL_LEAKAGE_READY=true
 ---
 
 **PARE.** `0 db push`, `0 Edge deploy`, `0 git push`, `0 flavor`, `0 clubB real`, `0 bump de versão aplicado`. Migration A corrigida e pronta; migration B projetada, não criada. Aguardando autorização separada pra aplicar a migration A e iniciar o rollout.
+
+---
+
+# M4.1c-A — Aplicação (server-side rollout)
+
+Data: 2026-09-03. Status: **APLICADO. Migration A ao vivo, `notifications-dispatch` v4 deployada, validado. Flutter/PWA/APK NÃO publicados nesta rodada.**
+
+## 1. Commits locais
+
+`51c9fc0` (`docs(multiclub): audit second club product readiness` — M4 round 1) + `a2276f3` (`feat(multiclub): remove critical club leakage, scope notification tokens by club` — M4.1+M4.1b+M4.1c+M4.1c-A, 73 arquivos). Staged por nome (`git add <arquivo> <arquivo> ...`), nunca `git add .` — confirmado via `git status` antes e depois que as exclusões-padrão (`store_entry_card.dart`, `_competitions_pkg/`, `migration_dump.txt`, `docs/multiclub/19_etapa_e_v4_applied_report.md`) e o trabalho não-relacionado ainda em andamento (Rodada 3 do gate de retirada pós-rollout, `docs/multiclub/39_post_rollout_legacy_retirement_gate.md` + tooling correspondente) permaneceram fora, intocados.
+
+## 2. Preflight
+
+```
+npx supabase migration list -> 58 local / 57 remote / 1 pending (20260903160000)
+npx supabase db push --dry-run -> só 20260903160000_add_club_id_to_notification_tokens.sql
+```
+Exatamente como esperado.
+
+## 3. `db push`
+
+```
+npx supabase db push
+Applying migration 20260903160000_add_club_id_to_notification_tokens.sql...
+Finished supabase db push.
+```
+
+## 4. DB pós-push
+
+`npx supabase migration list` → **58 local / 58 remote, 0 pending.**
+
+## 5. Schema ao vivo
+
+```sql
+column_name=club_id, data_type=uuid, is_nullable=NO,
+column_default='4c16340d-300c-5ab2-903f-17519db9b146'::uuid
+```
+`NOT NULL=true`, `DEFAULT` Goiás presente, confirmado via `information_schema.columns`.
+
+## 6. Backfill dos tokens existentes
+
+```sql
+total=2, null_club_id=0, goias_club_id=2, distinct_tokens=2
+```
+2/2 tokens com `club_id=Goiás`, 0 nulo, 0 token perdido (2 distintos = 2 total, sem duplicação).
+
+## 7. `DEFAULT` transicional
+
+Confirmado via `pg_constraint`: `user_notification_tokens_club_id_fkey` (FK → `clubs(id)`), `user_notification_tokens_fcm_token_key` (`UNIQUE(fcm_token)`, sozinho, inalterado) — nenhum `DROP DEFAULT` executado. `NOTIFICATION_TOKEN_CLUB_DEFAULT_TRANSITIONAL=true` confirmado ao vivo, não só no arquivo da migration.
+
+## 8. Edge deploy
+
+```
+npx supabase functions deploy notifications-dispatch
+Uploading asset: notifications-dispatch/index.ts
+Uploading asset: _shared/recipient_eligibility.ts
+Uploading asset: _shared/notification_message_builder.ts
+Uploading asset: _shared/club_server_config.ts
+Deployed Functions: ["notifications-dispatch"]
+```
+Só esta função foi deployada — confirmado via `functions list` pós-deploy que `delete-account`/`notifications-sync-and-check-access`/`notifications-poll-live-match`/`cleanup-unconfirmed-signups` mantiveram seus `updated_at` antigos, intocados.
+
+## 9. Versão da Edge
+
+`notifications-dispatch`: v3 → **v4**, `updated_at=2026-09-03T14:56:13.226Z`.
+
+## 10. Validação live (sem disparar FCM real)
+
+Sem comando `functions logs` disponível nesta versão do CLI (`supabase functions --help` não lista `logs`) — validação feita por revisão estrutural do CÓDIGO REALMENTE ENVIADO (os mesmos 2 arquivos do passo 8, relidos após o deploy, não uma cópia local presumida):
+- **event eligibility = club scoped**: `explicitlyEligibleUserIds(clubId, ...)` → `.eq('club_id', clubId)` em `user_notification_preferences`.
+- **token lookup = club scoped**: `activeTokensForClub(clubId)` → `.eq('club_id', clubId)` em `user_notification_tokens`.
+- **membership lookup = club scoped**: `activeMembershipCount(userId, clubId)` → `.eq('club_id', clubId)` em `supporter_memberships`.
+
+Nenhum evento de teste foi criado, nenhuma mensagem FCM foi disparada.
+
+## 11. Compatibilidade `1.0.1+2` — reconfirmada
+
+Estrutural (semântica padrão do Postgres/PostgREST, não uma escrita de teste na tabela de produção): INSERT sem `club_id` no payload → coluna cai no `DEFAULT` (Goiás); `UPDATE` via `ON CONFLICT DO UPDATE` só toca as colunas presentes no payload do cliente — um cliente `1.0.1+2` (que nunca manda `club_id`) nunca sobrescreve o `club_id` já populado. Ambos os caminhos confirmados sem erro possível dado o schema real (passo 5-7).
+
+## Gates
+
+```
+flutter analyze: 0 issues
+flutter test: 912 passed, 1 skip, 0 failed
+tooling/multiclub/test_*.mjs: 854 passando, 0 falhando
+npm run test:worker (inclui Edge): 121 passando, 0 falhando (16 arquivos)
+tsc --noEmit: 0 erros
+```
+
+## Estados finais
+
+```
+NOTIFICATION_TOKEN_DELIVERY_CLUB_SCOPED=true
+NOTIFICATION_MULTICLUB_MODEL_READY=true
+NOTIFICATION_SCHEMA_APPLIED_LIVE=true
+NOTIFICATION_EDGE_DEPLOYED_LIVE=true
+NOTIFICATION_TOKEN_CLUB_DEFAULT_TRANSITIONAL=true
+NOTIFICATION_TOKEN_DEFAULT_FINAL=false
+M4_CRITICAL_LEAKAGE_READY=true
+```
+
+## Git
+
+`git status` limpo quanto a este trabalho — só sobram as exclusões-padrão e a Rodada 3 (não relacionada) do gate de retirada pós-rollout, não tocadas. **0 `git push`.**
+
+---
+
+**PARE.** `0 bump de pubspec`, `0 release PWA`, `0 release APK`, `0 migration B` (`DROP DEFAULT`, projetada não criada), `0 M4.2`, `0 flavor`, `0 clubB real`, `0 git push`. Server-side pronto e validado; o runtime Flutter que manda `club_id` explícito no registro ainda não foi publicado — até lá, o `DEFAULT` transicional continua sendo a rede de segurança real.
