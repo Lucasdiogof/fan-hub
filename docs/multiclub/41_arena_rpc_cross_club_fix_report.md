@@ -106,7 +106,36 @@ Novo `tooling/multiclub/audit_arena_rpc_cross_club_fix.mjs` + `test_arena_rpc_cr
 
 ## 10-19. Aplicação
 
-Ver seção **APLICAÇÃO** abaixo (preenchida após o `db push` real).
+### 1ª tentativa — falhou, diagnosticada, corrigida (sem migration repair)
+
+O primeiro `npx supabase db push` falhou: `SQLSTATE 42P13: cannot remove parameter defaults from existing function`. Causa raiz: a assinatura lida no §2 usou `pg_get_function_identity_arguments()`, que **omite DEFAULTs por design** (existe só para resolução de overload) — a migration foi então escrita sem os 7 `DEFAULT`s que a função já tem em produção, e o Postgres recusa um `CREATE OR REPLACE FUNCTION` que removeria defaults existentes de parâmetros já declarados.
+
+Estado confirmado imediatamente após a falha (nunca assumido): `migration list` → **56 remote / 1 pending, 0 aplicada** — falhou na 1ª declaração da transação, sem estado parcial.
+
+Assinatura completa real, via `pg_get_function_arguments()` (`pronargdefaults=7`):
+
+```
+p_club_id uuid, p_game_id text, p_item_id text, p_event_type text,
+p_attempt_number integer DEFAULT NULL::integer,
+p_difficulty text DEFAULT NULL::text,
+p_wrong_count integer DEFAULT NULL::integer,
+p_found_count integer DEFAULT NULL::integer,
+p_total_count integer DEFAULT NULL::integer,
+p_was_revealed boolean DEFAULT false,
+p_was_abandoned boolean DEFAULT false
+```
+
+**Lição registrada** (e agora coberta por tooling, ver §8-bis): `pg_get_function_identity_arguments()` = resolução de identidade/overload, sem defaults. `pg_get_function_arguments()` = declaração completa, incluindo defaults — é a fonte certa para reconstruir uma assinatura em `CREATE OR REPLACE FUNCTION`.
+
+Correção autorizada (exclusivamente a assinatura, corpo/return type/SECURITY DEFINER/search_path/ACL preservados): a migration pendente (`20260903150000`, ainda não aplicada) foi editada para incluir os 7 `DEFAULT`s exatos. Commit `03ecee1` (que continha a versão incorreta) **não foi reescrito/amendado** — correção entrou em commit separado.
+
+### 8-bis. Tooling — novo check
+
+`functionArgumentDefaultsMatchLive` adicionado a `audit_arena_rpc_cross_club_fix.mjs`: parseia os parâmetros declarados no `CREATE OR REPLACE FUNCTION` (nome + tipo + default, se houver) e compara contra um baseline com os 7 defaults confirmados ao vivo em 2026-09-03. 2 novos testes fabricados: (a) reproduz o bug real desta rodada removendo 1 `DEFAULT` — detectado; (b) prova que não é só "tem default ou não" — um default com valor errado (`false`→`true`) também é detectado. Suíte cresceu de 18 para **21 testes, 0 falhando**.
+
+### 2ª tentativa — aplicação
+
+Ver validação live abaixo.
 
 ---
 

@@ -46,6 +46,9 @@ test('arenaScoreConflictTargetTenantAware=true — on conflict (club_id,user_id,
 test('arenaScoreAclCorrect=true — REVOKE public/anon/service_role + GRANT authenticated, assinatura exata', () => {
   assert.strictEqual(real.checks.arenaScoreAclCorrect, true);
 });
+test('functionArgumentDefaultsMatchLive=true — os 7 DEFAULTs reproduzem pg_get_function_arguments() ao vivo (lição da 1ª tentativa: SQLSTATE 42P13)', () => {
+  assert.strictEqual(real.checks.functionArgumentDefaultsMatchLive, true);
+});
 test('missingClubFilterCountBefore=1, missingClubFilterCountAfter=0 — premissa corrigida (não mais "3")', () => {
   assert.strictEqual(real.missingClubFilterCountBefore, 1);
   assert.strictEqual(real.missingClubFilterCountAfter, 0);
@@ -119,6 +122,27 @@ test('FABRICADO: GRANT vazando pra anon é detectado (ACL não fica "correct" po
   const result = auditArenaRpcCrossClubFix(broken);
   assert.strictEqual(result.checks.arenaScoreAclCorrect, false);
   assert.strictEqual(result.arenaScoreCrossClubReady, false);
+});
+
+test('FABRICADO: reproduz o bug real desta rodada — remover 1 DEFAULT (o que causou SQLSTATE 42P13) é detectado', () => {
+  const broken = realSql.replace(
+    '  p_was_revealed boolean default false,\n  p_was_abandoned boolean default false',
+    '  p_was_revealed boolean,\n  p_was_abandoned boolean default false'
+  );
+  assert.notStrictEqual(broken, realSql);
+  const result = auditArenaRpcCrossClubFix(broken);
+  assert.strictEqual(result.checks.functionArgumentDefaultsMatchLive, false);
+  assert.strictEqual(result.arenaScoreCrossClubReady, false);
+});
+
+test('FABRICADO: DEFAULT presente mas com valor errado (false→true) também é detectado — não é só "tem default ou não"', () => {
+  const broken = realSql.replace(
+    'p_was_revealed boolean default false,',
+    'p_was_revealed boolean default true,'
+  );
+  assert.notStrictEqual(broken, realSql);
+  const result = auditArenaRpcCrossClubFix(broken);
+  assert.strictEqual(result.checks.functionArgumentDefaultsMatchLive, false);
 });
 
 test('FABRICADO: assinatura do REVOKE divergindo da CREATE FUNCTION (mesmo bug do M3.4) é detectado', () => {

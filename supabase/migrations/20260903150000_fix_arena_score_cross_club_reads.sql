@@ -14,7 +14,17 @@
 --
 -- Assinatura, tipo de retorno, SECURITY DEFINER, search_path, semântica de
 -- pontuação, ON CONFLICT tenant-aware e mensagens de erro preservados
--- integralmente. Nenhuma tabela/constraint/index/default é alterada aqui.
+-- integralmente. Nenhuma tabela/constraint/index/default de tabela é
+-- alterada aqui.
+--
+-- Correção (1ª tentativa falhou, SQLSTATE 42P13): a assinatura precisa
+-- reproduzir os 7 DEFAULTs que a função já tem em produção
+-- (p_attempt_number/p_difficulty/p_wrong_count/p_found_count/p_total_count
+-- DEFAULT NULL, p_was_revealed/p_was_abandoned DEFAULT false) — Postgres
+-- recusa um CREATE OR REPLACE FUNCTION que remova defaults existentes.
+-- pg_get_function_identity_arguments() omite defaults por design (serve só
+-- pra resolução de overload); pg_get_function_arguments() é a fonte certa
+-- pra reconstruir uma assinatura completa.
 
 do $$
 begin
@@ -34,13 +44,13 @@ create or replace function public.arena_record_score_for_club(
   p_game_id text,
   p_item_id text,
   p_event_type text,
-  p_attempt_number integer,
-  p_difficulty text,
-  p_wrong_count integer,
-  p_found_count integer,
-  p_total_count integer,
-  p_was_revealed boolean,
-  p_was_abandoned boolean
+  p_attempt_number integer default null::integer,
+  p_difficulty text default null::text,
+  p_wrong_count integer default null::integer,
+  p_found_count integer default null::integer,
+  p_total_count integer default null::integer,
+  p_was_revealed boolean default false,
+  p_was_abandoned boolean default false
 )
 returns table(
   points_delta integer,
