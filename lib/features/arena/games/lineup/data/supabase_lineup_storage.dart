@@ -46,7 +46,7 @@ class SupabaseLineupStorage {
       'status': state.isFinished ? 'completed' : 'in_progress',
       'completed_at': state.completedAt?.toIso8601String(),
       'updated_at': DateTime.now().toUtc().toIso8601String(),
-    }, onConflict: 'user_id,match_id');
+    }, onConflict: 'club_id,user_id,match_id');
   }
 
   Future<String?> loadSelectedMatchId() async {
@@ -68,7 +68,7 @@ class SupabaseLineupStorage {
       'club_id': _clubId,
       'game_id': _gameId,
       'selected_id': matchId,
-    }, onConflict: 'user_id,game_id');
+    }, onConflict: 'club_id,user_id,game_id');
   }
 
   /// Ids das partidas que o usuário já concluiu (desistiu ou resolveu os

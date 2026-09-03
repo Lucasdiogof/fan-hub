@@ -129,7 +129,7 @@ class QuizProgressRepository {
           : wasCorrect,
       'pending_review': !wasCorrect,
       'updated_at': DateTime.now().toUtc().toIso8601String(),
-    }, onConflict: 'user_id,question_id');
+    }, onConflict: 'club_id,user_id,question_id');
   }
 
   Future<QuizSession?> loadSession(QuizDifficulty difficulty) async {
@@ -168,7 +168,7 @@ class QuizProgressRepository {
       'current_index': currentIndex,
       'answers': answers,
       'is_review': isReview,
-    }, onConflict: 'user_id,difficulty');
+    }, onConflict: 'club_id,user_id,difficulty');
   }
 
   Future<void> clearSession(QuizDifficulty difficulty) async {

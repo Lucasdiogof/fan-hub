@@ -86,17 +86,17 @@ class SupabaseNotificationRepository implements NotificationRepository {
     bool? ticketsEnabled,
   }) async {
     try {
-      // onConflict continua 'user_id' — PK ainda é só user_id
-      // (KEY_SCOPE_BLOCKED, §22 do pedido da M3.2): ROW_SCOPE já pronto
-      // (lê/escreve filtrado por club_id), mas uma 2ª linha de preferências
-      // por clube só existe de verdade depois da M2.2B trocar a PK.
+      // M3.4: onConflict tenant-aware usando a bridge unp_user_club_uidx
+      // (user_id, club_id) — a PK legada (user_id) continua intacta pro app
+      // publicado. Uma 2ª linha de preferências por clube só passa a existir
+      // de fato quando a M2.2B-B trocar a PK; até lá o único clube é Goiás.
       await _client.from('user_notification_preferences').upsert({
         'user_id': _uid,
         'club_id': _clubId,
         'matches_enabled': ?matchesEnabled,
         'tickets_enabled': ?ticketsEnabled,
         'updated_at': DateTime.now().toUtc().toIso8601String(),
-      }, onConflict: 'user_id');
+      }, onConflict: 'user_id,club_id');
       return const Success(null);
     } catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));

@@ -68,7 +68,7 @@ class SupabaseCrowdLineupRepository implements CrowdLineupRepository {
         'formation': vote.formationId,
         'slots': slots,
         'updated_at': DateTime.now().toUtc().toIso8601String(),
-      }, onConflict: 'match_id,user_id');
+      }, onConflict: 'club_id,match_id,user_id');
       return const Success(null);
     } catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));

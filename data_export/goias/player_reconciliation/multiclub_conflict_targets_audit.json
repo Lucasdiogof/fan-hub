@@ -1,0 +1,178 @@
+{
+  "flutterTargets": [
+    {
+      "table": "arena_achievements",
+      "onConflict": "club_id,user_id,achievement_id",
+      "bridge": "aa_club_user_achievement_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "career_path_progress",
+      "onConflict": "club_id,user_id,player_id",
+      "bridge": "cpp_club_user_player_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "arena_selected_content",
+      "onConflict": "club_id,user_id,game_id",
+      "bridge": "asc_club_user_game_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "lineup_match_progress",
+      "onConflict": "club_id,user_id,match_id",
+      "bridge": "lmp_club_user_match_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "quiz_question_progress",
+      "onConflict": "club_id,user_id,question_id",
+      "bridge": "qqp_club_user_question_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "quiz_active_session",
+      "onConflict": "club_id,user_id,difficulty",
+      "bridge": "qas_club_user_difficulty_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "match_lineup_votes",
+      "onConflict": "club_id,match_id,user_id",
+      "bridge": "mlv_club_match_user_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "ticket_checkin_decisions",
+      "onConflict": "club_id,user_id,match_id",
+      "bridge": "tcd_club_user_match_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "player_identity_results",
+      "onConflict": "user_id,club_id",
+      "bridge": "pir_user_club_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "tactical_identity_results",
+      "onConflict": "user_id,club_id",
+      "bridge": "tir_user_club_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "user_notification_preferences",
+      "onConflict": "user_id,club_id",
+      "bridge": "unp_user_club_uidx",
+      "scope": "TENANT"
+    },
+    {
+      "table": "user_notification_tokens",
+      "onConflict": "fcm_token",
+      "bridge": null,
+      "scope": "GLOBAL"
+    },
+    {
+      "table": "profiles",
+      "onConflict": "user_id",
+      "bridge": null,
+      "scope": "GLOBAL"
+    },
+    {
+      "table": "tickets",
+      "onConflict": null,
+      "rpc": "upsert_membership_checkin_ticket_for_club",
+      "bridge": "tickets_club_user_match_checkin_uidx",
+      "scope": "PARTIAL_RPC"
+    }
+  ],
+  "libOnConflicts": {
+    "club_id,user_id,achievement_id": 1,
+    "club_id,user_id,player_id": 1,
+    "club_id,user_id,game_id": 2,
+    "club_id,user_id,match_id": 3,
+    "user_id,club_id": 3,
+    "club_id,user_id,question_id": 1,
+    "club_id,user_id,difficulty": 1,
+    "club_id,match_id,user_id": 1,
+    "fcm_token": 1,
+    "user_id": 1
+  },
+  "tenantLibMissingClub": [],
+  "arena": {
+    "tenantConflict": true,
+    "noLegacyConflict": true,
+    "keyScopeGuardKept": true,
+    "securityDefiner": true,
+    "safeSearchPath": true,
+    "aclRevokeAnon": true,
+    "aclGrantAuthenticated": true,
+    "functionSignatureAclMatch": true
+  },
+  "ticketRpc": {
+    "partialPredicate": true,
+    "derivesAuthUid": true,
+    "validatesClub": true,
+    "onlyMembershipOrigin": true,
+    "safeSearchPath": true,
+    "aclRevokeAnon": true,
+    "aclRevokeServiceRole": true,
+    "aclGrantAuthenticated": true,
+    "functionSignatureAclMatch": true
+  },
+  "edge": {
+    "notificationEventsTenant": 3,
+    "notificationEventsLegacyRemaining": 0,
+    "deliveriesUnchanged": true
+  },
+  "edgeOnConflicts": [
+    "event_id,token_id",
+    "club_id,event_type,dedupe_key",
+    "club_id,event_type,dedupe_key",
+    "club_id,event_type,dedupe_key"
+  ],
+  "migrationsTouchLegacyDrop": false,
+  "functionSignatureAclChecks": {
+    "arena_record_score_for_club": {
+      "ok": true,
+      "createTypes": [
+        "uuid",
+        "text",
+        "text",
+        "text",
+        "int",
+        "text",
+        "int",
+        "int",
+        "int",
+        "boolean",
+        "boolean"
+      ],
+      "aclOccurrences": 4,
+      "mismatches": []
+    },
+    "upsert_membership_checkin_ticket_for_club": {
+      "ok": true,
+      "createTypes": [
+        "uuid",
+        "text",
+        "text",
+        "text",
+        "int",
+        "text",
+        "int",
+        "text",
+        "timestamptz",
+        "text",
+        "text",
+        "text",
+        "text",
+        "text",
+        "text",
+        "text"
+      ],
+      "aclOccurrences": 4,
+      "mismatches": []
+    }
+  }
+}

@@ -119,7 +119,8 @@ async function syncClub(
             awayTeamName: nextMatch.awayTeam.name,
           },
         },
-        { onConflict: 'event_type,dedupe_key', ignoreDuplicates: true },
+        // M3.4: conflict tenant-aware (bridge ne_club_event_dedupe_uidx).
+        { onConflict: 'club_id,event_type,dedupe_key', ignoreDuplicates: true },
       )
       .select('id');
 

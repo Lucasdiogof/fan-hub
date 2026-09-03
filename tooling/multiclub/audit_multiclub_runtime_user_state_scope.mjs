@@ -73,6 +73,11 @@ const DIRECT_TABLES = {
   tickets: {
     repos: ['features/ticket/data/mock_ticket_repository.dart'],
     keyScopeBlocked: true, // só o índice parcial (user_id, match_id) WHERE origin='membership_check_in'
+    // M3.4: o check-in de sócio passou a gravar via RPC dedicada
+    // (upsert_membership_checkin_ticket_for_club, p_club_id) porque o índice
+    // é PARCIAL e o onConflict do PostgREST não expressa o predicate; a
+    // compra (purchase) continua gravando club_id direto em cada linha.
+    checkinRpc: 'upsert_membership_checkin_ticket_for_club',
   },
   store_orders: {
     repos: ['features/store/data/supabase_store_orders_repository.dart'],
@@ -333,8 +338,15 @@ for (const [table, cfg] of Object.entries(DIRECT_TABLES)) {
     }
     if (
       new RegExp(`from\\('${table}'\\)[\\s\\S]{0,60}?\\.(upsert|insert|update)\\([\\s\\S]{0,400}?'club_id':`).test(body) ||
-      new RegExp(`'club_id':\\s*_clubId[\\s\\S]{0,400}?from\\('${table}'\\)`).test(body)
+      // janela maior pro caso do purchase: monta uma lista de linhas (com
+      // 'club_id') e depois insere a variável em .from('tickets').insert(rows)
+      new RegExp(`'club_id':\\s*_clubId[\\s\\S]{0,1600}?from\\('${table}'\\)`).test(body)
     ) {
+      hasClubIdInWrites = true;
+    }
+    // M3.4: caminho de escrita tenant-aware via RPC dedicada (ex.: check-in
+    // de sócio, cujo índice é parcial e não vai por onConflict de colunas).
+    if (cfg.checkinRpc && new RegExp(`${cfg.checkinRpc}[\\s\\S]{0,400}?'p_club_id':`).test(body)) {
       hasClubIdInWrites = true;
     }
     if (/this\._clubConfig\)/.test(body) || /,\s*this\._clubConfig\s*[,)]/.test(body) || /required this\._clubConfig/.test(body)) {

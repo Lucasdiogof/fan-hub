@@ -147,8 +147,8 @@ class MockTicketRepository implements TicketRepository {
         return const Error(ServerFailure('Setor não encontrado.'));
       }
 
-      // onConflict continua (user_id, match_id) — KEY_SCOPE_BLOCKED, mesma
-      // ressalva das outras tabelas de estado por usuário desta etapa.
+      // M3.4: onConflict tenant-aware via bridge tcd_club_user_match_uidx
+      // (club_id, user_id, match_id). PK legada (user_id, match_id) intacta.
       await _client.from('ticket_checkin_decisions').upsert({
         'user_id': _uid,
         'club_id': _clubId,
@@ -156,36 +156,36 @@ class MockTicketRepository implements TicketRepository {
         'decision': 'confirmed',
         'sector_id': sectorId,
         'updated_at': DateTime.now().toUtc().toIso8601String(),
-      }, onConflict: 'user_id,match_id');
+      }, onConflict: 'club_id,user_id,match_id');
 
-      final row = await _client
-          .from('tickets')
-          .upsert({
-            'user_id': _uid,
-            'club_id': _clubId,
-            'match_id': matchId,
-            'competition': match.competition,
-            'round': match.round,
-            'home_team_id': match.homeTeam.id,
-            'home_team_name': match.homeTeam.name,
-            'away_team_id': match.awayTeam.id,
-            'away_team_name': match.awayTeam.name,
-            'kickoff': match.kickoff?.toUtc().toIso8601String(),
-            'stadium': match.stadium,
-            'sector_id': sector.id,
-            'sector_name': sector.name,
-            'venue_label': sector.venueLabel,
-            'gate': sector.gate,
-            'category_label': null,
-            'holder_name': holderName,
-            'holder_document': holderDocument,
-            'status': 'active',
-            'origin': 'membership_check_in',
-            'order_id': null,
-            'price': null,
-          }, onConflict: 'user_id,match_id')
-          .select()
-          .single();
+      // M3.4: o índice único do check-in de sócio é PARCIAL
+      // (club_id, user_id, match_id) WHERE origin='membership_check_in'. O
+      // `onConflict:` do PostgREST só expressa colunas, nunca o predicate,
+      // então o upsert tenant-aware vai por uma RPC dedicada: deriva o
+      // usuário de auth.uid() no servidor e faz o ON CONFLICT com o predicate.
+      // Nunca toca em tickets origin='purchase' (compra continua no fluxo
+      // próprio de pedido).
+      final row = await _client.rpc<Map<String, dynamic>>(
+        'upsert_membership_checkin_ticket_for_club',
+        params: {
+          'p_club_id': _clubId,
+          'p_match_id': matchId,
+          'p_competition': match.competition,
+          'p_round': match.round,
+          'p_home_team_id': match.homeTeam.id,
+          'p_home_team_name': match.homeTeam.name,
+          'p_away_team_id': match.awayTeam.id,
+          'p_away_team_name': match.awayTeam.name,
+          'p_kickoff': match.kickoff?.toUtc().toIso8601String(),
+          'p_stadium': match.stadium,
+          'p_sector_id': sector.id,
+          'p_sector_name': sector.name,
+          'p_venue_label': sector.venueLabel,
+          'p_gate': sector.gate,
+          'p_holder_name': holderName,
+          'p_holder_document': holderDocument,
+        },
+      );
 
       return Success(_mapTicket(row));
     } catch (error, stackTrace) {
@@ -203,7 +203,7 @@ class MockTicketRepository implements TicketRepository {
         'decision': 'declined',
         'sector_id': null,
         'updated_at': DateTime.now().toUtc().toIso8601String(),
-      }, onConflict: 'user_id,match_id');
+      }, onConflict: 'club_id,user_id,match_id');
       return const Success(null);
     } catch (error, stackTrace) {
       return Error(mapTicketError(error, stackTrace));

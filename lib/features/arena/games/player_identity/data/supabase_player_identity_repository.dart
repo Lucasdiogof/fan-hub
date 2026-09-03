@@ -43,7 +43,7 @@ class SupabasePlayerIdentityRepository implements PlayerIdentityRepository {
       'closest_player_id': top,
       'answers': result.answers.map((option) => option.id).toList(),
       'completed_at': DateTime.now().toUtc().toIso8601String(),
-    }, onConflict: 'user_id');
+    }, onConflict: 'user_id,club_id');
   }
 
   @override
