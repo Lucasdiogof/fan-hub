@@ -2050,6 +2050,18 @@ abstract class AppLocalizations {
   /// **'Essa área ainda está sendo preparada.'**
   String get commonComingSoonMessage;
 
+  /// No description provided for @featureUnavailableTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Indisponível'**
+  String get featureUnavailableTitle;
+
+  /// No description provided for @featureUnavailableMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Essa área não está disponível.'**
+  String get featureUnavailableMessage;
+
   /// No description provided for @commonLinkOpenError.
   ///
   /// In pt, this message translates to:

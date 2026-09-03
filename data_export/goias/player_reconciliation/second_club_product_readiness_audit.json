@@ -48,7 +48,7 @@
     "productNamesConsumers": 0
   },
   "clubCapabilitiesCoverage": {
-    "wired": false,
+    "wired": true,
     "fieldsCovered": [
       "hasMembership",
       "hasStore",

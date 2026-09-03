@@ -62,6 +62,8 @@ const goiasClubConfig = ClubConfig(
     hasTickets: true,
     hasCrowdLineup: true,
     hasPassport: true,
+    hasNews: true,
+    hasSocial: true,
     enabledArenaGames: {
       'quiz',
       'lineup',

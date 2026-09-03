@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
@@ -36,6 +37,7 @@ class GoiasBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final items = mainNavItems(context);
+    final capabilities = sl<ClubConfig>().capabilities;
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -62,32 +64,40 @@ class GoiasBottomNavigationBar extends StatelessWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: _SideNavItem(
-                        data: items[jogosTabIndex],
-                        selected: selectedIndex == jogosTabIndex,
-                        onTap: () => onSelected(jogosTabIndex),
+                      child: _navSlot(
+                        index: jogosTabIndex,
+                        items: items,
+                        capabilities: capabilities,
+                        selectedIndex: selectedIndex,
+                        onSelected: onSelected,
                       ),
                     ),
                     Expanded(
-                      child: _SideNavItem(
-                        data: items[socioTabIndex],
-                        selected: selectedIndex == socioTabIndex,
-                        onTap: () => onSelected(socioTabIndex),
+                      child: _navSlot(
+                        index: socioTabIndex,
+                        items: items,
+                        capabilities: capabilities,
+                        selectedIndex: selectedIndex,
+                        onSelected: onSelected,
                       ),
                     ),
                     const SizedBox(width: _crestGapWidth),
                     Expanded(
-                      child: _SideNavItem(
-                        data: items[lojaTabIndex],
-                        selected: selectedIndex == lojaTabIndex,
-                        onTap: () => onSelected(lojaTabIndex),
+                      child: _navSlot(
+                        index: lojaTabIndex,
+                        items: items,
+                        capabilities: capabilities,
+                        selectedIndex: selectedIndex,
+                        onSelected: onSelected,
                       ),
                     ),
                     Expanded(
-                      child: _SideNavItem(
-                        data: items[midiaTabIndex],
-                        selected: selectedIndex == midiaTabIndex,
-                        onTap: () => onSelected(midiaTabIndex),
+                      child: _navSlot(
+                        index: midiaTabIndex,
+                        items: items,
+                        capabilities: capabilities,
+                        selectedIndex: selectedIndex,
+                        onSelected: onSelected,
                       ),
                     ),
                   ],
@@ -110,6 +120,26 @@ class GoiasBottomNavigationBar extends StatelessWidget {
       ),
     );
   }
+}
+
+/// M4.2A — aba sem a capability correspondente NUNCA aparece: vira um
+/// espaço vazio (nunca escondida trocando o layout de 4 `Expanded` pra 2/3,
+/// que reajustaria proporções e criaria um "pulo" visual toda vez que a
+/// capability mudasse) — no Goiás (todas `true`) o resultado é
+/// pixel-idêntico ao de antes desta etapa, nunca uma regressão perceptível.
+Widget _navSlot({
+  required int index,
+  required List<MainNavItemData> items,
+  required ClubCapabilities capabilities,
+  required int selectedIndex,
+  required ValueChanged<int> onSelected,
+}) {
+  if (!isTabEnabled(index, capabilities)) return const SizedBox.shrink();
+  return _SideNavItem(
+    data: items[index],
+    selected: selectedIndex == index,
+    onTap: () => onSelected(index),
+  );
 }
 
 /// Superfície da pílula flutuante — cor, borda, sombra e o degradê quase

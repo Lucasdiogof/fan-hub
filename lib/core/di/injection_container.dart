@@ -132,14 +132,14 @@ void setupDependencies() {
   );
 
   sl.registerLazySingleton<SocialRemoteDataSource>(
-    () => SocialRemoteDataSource(sl()),
+    () => SocialRemoteDataSource(sl(), sl()),
   );
   sl.registerLazySingleton<SocialFeedRepository>(
     () => SocialFeedRepositoryImpl(sl()),
   );
 
   sl.registerLazySingleton<NewsRemoteDataSource>(
-    () => NewsRemoteDataSource(sl()),
+    () => NewsRemoteDataSource(sl(), sl()),
   );
   sl.registerLazySingleton<NewsRepository>(() => NewsRepositoryImpl(sl()));
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
@@ -23,6 +25,7 @@ class MainNavigationRail extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final items = mainNavItems(context);
+    final capabilities = sl<ClubConfig>().capabilities;
     return DecoratedBox(
       decoration: BoxDecoration(
         color: colors.surface,
@@ -34,12 +37,16 @@ class MainNavigationRail extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: AppSpacing.xl),
+              // M4.2A — aba sem capability nunca aparece no rail (o rail,
+              // ao contrário da bottom nav, não tem geometria fixa a
+              // preservar, então pode simplesmente omitir o item).
               for (var i = 0; i < items.length; i++)
-                _RailItem(
-                  data: items[i],
-                  selected: i == selectedIndex,
-                  onTap: () => onSelected(i),
-                ),
+                if (isTabEnabled(i, capabilities))
+                  _RailItem(
+                    data: items[i],
+                    selected: i == selectedIndex,
+                    onTap: () => onSelected(i),
+                  ),
             ],
           ),
         ),

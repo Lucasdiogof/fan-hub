@@ -375,6 +375,8 @@
   "commonRetry": "Try again",
   "commonComingSoon": "Coming soon",
   "commonComingSoonMessage": "This area is still being prepared.",
+  "featureUnavailableTitle": "Unavailable",
+  "featureUnavailableMessage": "This area isn't available.",
   "commonLinkOpenError": "Couldn't open this link.",
   "commonLoadError": "Couldn't load the data",
   "commonSelectPlaceholder": "Select",

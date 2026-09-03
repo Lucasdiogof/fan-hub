@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 
 /// Índices das 5 abas do shell principal — Home ocupa o centro (2), não a
@@ -66,4 +67,21 @@ List<MainNavItemData> mainNavItems(BuildContext context) {
     label: l10n.navMedia,
   );
   return items;
+}
+
+/// M4.2A — se a aba [index] deve aparecer/ser navegável pro clube ativo.
+/// Jogos e Home nunca são gateados (são o núcleo do produto, sem capability
+/// dedicada) — Sócio/Loja/Mídia sim. Mídia (Notícias + Instagram/YouTube/X)
+/// fica visível se QUALQUER uma das duas capabilities dela estiver ligada —
+/// a granularidade de qual filtro aparece DENTRO da aba é decidida por
+/// `SocialFeedPage`, não aqui.
+bool isTabEnabled(int index, ClubCapabilities capabilities) {
+  return switch (index) {
+    jogosTabIndex => true,
+    socioTabIndex => capabilities.hasMembership,
+    homeTabIndex => true,
+    lojaTabIndex => capabilities.hasStore,
+    midiaTabIndex => capabilities.hasNews || capabilities.hasSocial,
+    _ => true,
+  };
 }

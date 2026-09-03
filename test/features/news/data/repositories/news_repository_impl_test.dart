@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/news/data/datasources/news_remote_data_source.dart';
 import 'package:goias_app/features/news/data/dto/news_article_dto.dart';
@@ -20,7 +21,7 @@ const _articleJson = {..._itemJson, 'content': <Map<String, String>>[]};
 /// Dublê em memória — sobrescreve os 2 métodos que fazem rede, mesma ideia
 /// do `_FakeLineupStorage` em `test/features/arena/lineup/lineup_page_test.dart`.
 class _FakeNewsRemoteDataSource extends NewsRemoteDataSource {
-  _FakeNewsRemoteDataSource() : super(Dio());
+  _FakeNewsRemoteDataSource() : super(Dio(), goiasClubConfig);
 
   List<NewsItemDto>? listResult;
   Object? listError;

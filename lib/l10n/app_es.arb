@@ -375,6 +375,8 @@
   "commonRetry": "Intentar de nuevo",
   "commonComingSoon": "Próximamente",
   "commonComingSoonMessage": "Esta sección aún se está preparando.",
+  "featureUnavailableTitle": "No disponible",
+  "featureUnavailableMessage": "Esta sección no está disponible.",
   "commonLinkOpenError": "No se pudo abrir este enlace.",
   "commonLoadError": "No se pudieron cargar los datos",
   "commonSelectPlaceholder": "Seleccionar",

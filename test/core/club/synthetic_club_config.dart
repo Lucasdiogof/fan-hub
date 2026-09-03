@@ -98,12 +98,27 @@ const syntheticClubBConfig = ClubConfig(
     // Sem redes sociais/site oficial de propósito — prova que uma
     // integração ausente vira "indisponível", nunca cai pro Goiás.
   ),
+  // M4.2A — desligado tudo que hoje depende de CONTEÚDO hardcoded do Goiás
+  // sem nenhum scoping por clube (não é sobre a tabela ter club_id ou não —
+  // é sobre o próprio dado, sempre real e sempre do Goiás, embutido no
+  // binário): Loja (catálogo estático, `store_products.json`), Sócio
+  // (`MembershipPlansCatalog.plans`, nomes/preços reais fixos), Ingressos
+  // (`TicketFixture`, setores/preços/portões reais do Goiás E.C.) e
+  // Escalação da Torcida (`goiasSquad`, elenco real usado pra resolver o
+  // resultado da votação) — os 2 últimos são achados NOVOS desta rodada
+  // (M4.2A), não estavam na auditoria M4 round 1/M4.1, que só tinham
+  // olhado pra tabelas com club_id, não pro catálogo estático por trás
+  // delas. Passaporte já era `false`. `enabledArenaGames` continua com
+  // 'quiz' porque o conteúdo do Arena É genuinamente club_id-scoped
+  // (M3.1/M3.2, com `ClubScopedFallback` nunca cross-club).
   capabilities: ClubCapabilities(
-    hasMembership: true,
-    hasStore: true,
-    hasTickets: true,
-    hasCrowdLineup: true,
+    hasMembership: false,
+    hasStore: false,
+    hasTickets: false,
+    hasCrowdLineup: false,
     hasPassport: false,
+    hasNews: false,
+    hasSocial: false,
     enabledArenaGames: {'quiz'},
   ),
   productNames: ClubProductNaming(

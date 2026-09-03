@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/capability_route_gate.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/app_page.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -119,6 +122,7 @@ import 'package:goias_app/features/home/presentation/widgets/desktop_shell_frame
 import 'package:goias_app/features/release_gate/presentation/pages/update_required_page.dart';
 import 'package:goias_app/features/splash/presentation/pages/splash_video_page.dart';
 import 'package:goias_app/shared/widgets/coming_soon_page.dart';
+import 'package:goias_app/shared/widgets/feature_unavailable_page.dart';
 
 const _authArea = {'/login', '/register', '/check-email'};
 
@@ -175,6 +179,17 @@ GoRouter createAppRouter(
       // e recomeça o cadastro do zero (ele é curto, 3 passos). O `auth.users`
       // não confirmado abandonado é limpo pelo cron de 48h no servidor.
       if (loggedIn && (onAuthArea || location == '/reset-password')) return '/';
+
+      // M4.2A — gate de capability roda por ÚLTIMO, só depois de
+      // splash/release/auth resolvidos: cobre TODA navegação (link direto,
+      // deep link, `context.push` de dentro do app) pro mesmo destino
+      // genérico, nunca deixando uma rota interna abrir sem a capability
+      // correspondente — ver `capabilityGateRedirect`.
+      if (location == featureUnavailableRoute) return null;
+      final capabilities = sl<ClubConfig>().capabilities;
+      final capabilityRedirect = capabilityGateRedirect(location, capabilities);
+      if (capabilityRedirect != null) return capabilityRedirect;
+
       return null;
     },
     routes: [
@@ -206,6 +221,11 @@ GoRouter createAppRouter(
         path: '/update-required',
         pageBuilder: (context, state) =>
             appPage(state, const UpdateRequiredPage()),
+      ),
+      GoRoute(
+        path: featureUnavailableRoute,
+        pageBuilder: (context, state) =>
+            appPage(state, const FeatureUnavailablePage()),
       ),
       GoRoute(
         path: '/profile/terms',

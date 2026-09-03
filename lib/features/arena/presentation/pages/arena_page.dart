@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
@@ -311,7 +312,14 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    const games = ArenaCatalog.games;
+    // M4.2A — só os jogos com dataset habilitado pro clube ativo entram no
+    // grid; os 2 cards de perfil (Identidade Tática/de Craque) abaixo têm o
+    // próprio check por fora deste filtro, já que não vêm de
+    // `ArenaCatalog.games`.
+    final capabilities = sl<ClubConfig>().capabilities;
+    final games = ArenaCatalog.games
+        .where((game) => capabilities.enabledArenaGames.contains(game.id))
+        .toList();
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -349,44 +357,49 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                     // reformulação). `HomeCubit` é singleton (pré-carregado
                     // desde a Splash), então basta ler o estado atual, sem
                     // recarregar nada aqui.
-                    BlocBuilder<HomeCubit, HomeState>(
-                      bloc: sl<HomeCubit>(),
-                      builder: (context, homeState) {
-                        final nextMatch = homeState.nextMatch;
-                        if (nextMatch == null) {
-                          return const CrowdLineupHeroEmptyCard();
-                        }
-                        return FutureBuilder<int?>(
-                          future: _crowdParticipantsFuture,
-                          builder: (context, participantsSnapshot) {
-                            return CrowdLineupHeroCard(
-                              match: nextMatch,
-                              hasVoted: homeState.hasVotedForNextMatch,
-                              participants: participantsSnapshot.data,
-                              onTap: () => openCrowdLineup(context, nextMatch),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    const SizedBox(height: AppSpacing.xl),
+                    if (capabilities.hasCrowdLineup) ...[
+                      BlocBuilder<HomeCubit, HomeState>(
+                        bloc: sl<HomeCubit>(),
+                        builder: (context, homeState) {
+                          final nextMatch = homeState.nextMatch;
+                          if (nextMatch == null) {
+                            return const CrowdLineupHeroEmptyCard();
+                          }
+                          return FutureBuilder<int?>(
+                            future: _crowdParticipantsFuture,
+                            builder: (context, participantsSnapshot) {
+                              return CrowdLineupHeroCard(
+                                match: nextMatch,
+                                hasVoted: homeState.hasVotedForNextMatch,
+                                participants: participantsSnapshot.data,
+                                onTap: () =>
+                                    openCrowdLineup(context, nextMatch),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: AppSpacing.xl),
+                    ],
                     // Passaporte — memória/coleção do torcedor, com
                     // identidade própria (fundo claro), nunca misturado
                     // com os desafios/minigames abaixo.
-                    ArenaHighlightCard(
-                      leading: ArenaHighlightLeading(
-                        child: Icon(
-                          Icons.confirmation_number_outlined,
-                          color: colors.primary,
-                          size: 24,
+                    if (capabilities.hasPassport) ...[
+                      ArenaHighlightCard(
+                        leading: ArenaHighlightLeading(
+                          child: Icon(
+                            Icons.confirmation_number_outlined,
+                            color: colors.primary,
+                            size: 24,
+                          ),
                         ),
+                        title: context.l10n.passportTitle,
+                        description: context.l10n.passportCardDescription,
+                        ctaLabel: context.l10n.passportCardCta,
+                        onTap: () => context.push('/arena/passport'),
                       ),
-                      title: context.l10n.passportTitle,
-                      description: context.l10n.passportCardDescription,
-                      ctaLabel: context.l10n.passportCardCta,
-                      onTap: () => context.push('/arena/passport'),
-                    ),
-                    const SizedBox(height: AppSpacing.xxl),
+                      const SizedBox(height: AppSpacing.xxl),
+                    ],
                     ArenaSectionHeader(
                       context.l10n.arenaChallengesSectionTitle,
                       subtitle: context.l10n.arenaGamesSectionSubtitle,
@@ -422,45 +435,53 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                         ],
                       ),
                     ),
-                    const SizedBox(height: AppSpacing.md),
                     // Identidade Futebolística — jogo de PERFIL, não de
                     // pontuação: por isso um card próprio abaixo do grid dos
                     // 4 desafios, nunca um item a mais nele (o
                     // `ArenaChallengeCard` genérico assume coleção/
                     // progresso, que este jogo não tem). Nunca lê
                     // `ArenaProgressSnapshot` — ver `_tacticalIdentityFuture`.
-                    FutureBuilder<TacticalIdentityResult?>(
-                      future: _tacticalIdentityFuture,
-                      builder: (context, snapshot) {
-                        final result = snapshot.data;
-                        return TacticalIdentityArenaCard(
-                          result: result,
-                          onStart: () => _startTacticalIdentity(context),
-                          onViewResult: () => result == null
-                              ? null
-                              : _viewTacticalIdentityResult(context, result),
-                          onRedo: () => _redoTacticalIdentity(context),
-                        );
-                      },
-                    ),
-                    const SizedBox(height: AppSpacing.md),
+                    if (capabilities.enabledArenaGames.contains(
+                      'tactical_identity',
+                    )) ...[
+                      const SizedBox(height: AppSpacing.md),
+                      FutureBuilder<TacticalIdentityResult?>(
+                        future: _tacticalIdentityFuture,
+                        builder: (context, snapshot) {
+                          final result = snapshot.data;
+                          return TacticalIdentityArenaCard(
+                            result: result,
+                            onStart: () => _startTacticalIdentity(context),
+                            onViewResult: () => result == null
+                                ? null
+                                : _viewTacticalIdentityResult(context, result),
+                            onRedo: () => _redoTacticalIdentity(context),
+                          );
+                        },
+                      ),
+                    ],
                     // "Que craque esmeraldino é você?" — mesmo tratamento
                     // da Identidade Futebolística logo acima: card próprio,
                     // teste de perfil independente, nunca no grid genérico.
-                    FutureBuilder<PlayerIdentityResult?>(
-                      future: _playerIdentityFuture,
-                      builder: (context, snapshot) {
-                        final result = snapshot.data;
-                        return PlayerIdentityArenaCard(
-                          result: result,
-                          onStart: () => _startPlayerIdentity(context),
-                          onViewResult: () => result == null
-                              ? null
-                              : _viewPlayerIdentityResult(context, result),
-                          onRedo: () => _redoPlayerIdentity(context),
-                        );
-                      },
-                    ),
+                    if (capabilities.enabledArenaGames.contains(
+                      'player_identity',
+                    )) ...[
+                      const SizedBox(height: AppSpacing.md),
+                      FutureBuilder<PlayerIdentityResult?>(
+                        future: _playerIdentityFuture,
+                        builder: (context, snapshot) {
+                          final result = snapshot.data;
+                          return PlayerIdentityArenaCard(
+                            result: result,
+                            onStart: () => _startPlayerIdentity(context),
+                            onViewResult: () => result == null
+                                ? null
+                                : _viewPlayerIdentityResult(context, result),
+                            onRedo: () => _redoPlayerIdentity(context),
+                          );
+                        },
+                      ),
+                    ],
                   ],
                 ),
               ),

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
@@ -102,11 +103,14 @@ class _ProfileView extends StatelessWidget {
                             label: context.l10n.profileMyAddress,
                             onTap: () => _openAddress(context),
                           ),
-                          _MenuRow(
-                            icon: Icons.location_on_outlined,
-                            label: context.l10n.profileDeliveryAddresses,
-                            onTap: () => context.push('/store/addresses'),
-                          ),
+                          // M4.2A — endereço de ENTREGA só faz sentido com
+                          // Loja habilitada.
+                          if (sl<ClubConfig>().capabilities.hasStore)
+                            _MenuRow(
+                              icon: Icons.location_on_outlined,
+                              label: context.l10n.profileDeliveryAddresses,
+                              onTap: () => context.push('/store/addresses'),
+                            ),
                           _MenuRow(
                             icon: Icons.lock_outline_rounded,
                             label: context.l10n.profileSecurity,
@@ -269,21 +273,23 @@ class _JourneySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _MenuSection(
-      title: context.l10n.profileMyJourney,
-      rows: [
+    final capabilities = sl<ClubConfig>().capabilities;
+    final rows = [
+      if (capabilities.enabledArenaGames.isNotEmpty)
         _MenuRow(
           icon: Icons.emoji_events_outlined,
           label: context.l10n.arenaTitle,
           onTap: () => context.push('/arena'),
         ),
+      if (capabilities.hasPassport)
         _MenuRow(
           icon: Icons.menu_book_outlined,
           label: context.l10n.passportTitle,
           onTap: () => context.push('/arena/passport'),
         ),
-      ],
-    );
+    ];
+    if (rows.isEmpty) return const SizedBox.shrink();
+    return _MenuSection(title: context.l10n.profileMyJourney, rows: rows);
   }
 }
 
@@ -298,14 +304,15 @@ class _PurchasesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _MenuSection(
-      title: context.l10n.profilePurchasesAndServices,
-      rows: [
+    final capabilities = sl<ClubConfig>().capabilities;
+    final rows = [
+      if (capabilities.hasTickets)
         _MenuRow(
           icon: Icons.confirmation_number_outlined,
           label: context.l10n.profileMyTickets,
           onTap: () => context.push('/tickets/my'),
         ),
+      if (capabilities.hasStore) ...[
         _MenuRow(
           icon: Icons.receipt_long_outlined,
           label: context.l10n.storeProfileMyOrders,
@@ -324,6 +331,11 @@ class _PurchasesSection extends StatelessWidget {
           },
         ),
       ],
+    ];
+    if (rows.isEmpty) return const SizedBox.shrink();
+    return _MenuSection(
+      title: context.l10n.profilePurchasesAndServices,
+      rows: rows,
     );
   }
 }

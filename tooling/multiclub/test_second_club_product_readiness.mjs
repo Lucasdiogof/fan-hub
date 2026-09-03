@@ -70,10 +70,22 @@ test('ClubScopedFallback nunca resolve a um clube default (forClub devolve null 
   assert.strictEqual(audit.clubScopedFallbackNeverDefaults, true);
 });
 
-console.log('\n6) ClubCapabilities — existe mas não está wireada (achado real)');
-test('clubCapabilitiesWired=false — 0 consumidores reais de config.capabilities.<campo> em todo o lib/', () => {
-  assert.strictEqual(stats.clubCapabilitiesWired, false);
-  assert.strictEqual(audit.clubCapabilitiesCoverage.wired, false);
+// Supersessão (M4.2A, mesmo padrão já usado nesta suíte pra M4.1/M4.1c):
+// a M4.2A ligou `ClubCapabilities` de verdade (Home/bottom-nav/rail/
+// Perfil/rotas/Arena/News/Social, ver docs/multiclub/44_m4_2_club_
+// capabilities_report.md) — `clubCapabilitiesWired` é uma checagem
+// DINÂMICA (grep em `lib/`), então já reflete isso sozinha ao rodar de
+// novo. `clubCapabilitiesCoverage.fieldsCovered`/`fieldsMissing`
+// continuam sendo um snapshot ESCRITO À MÃO da rodada M4 original (não
+// dinâmico) — histórico daquele momento, não reescrito aqui; a M4.2A
+// acrescentou `hasNews`/`hasSocial` (não `enabledArenaGames`-like
+// genéricos "notifications"/"social"/"squad" do snapshot antigo) —
+// Squad/Notifications continuam SEM capability própria, por decisão
+// (ver relatório 44), não por lacuna esquecida.
+console.log('\n6) ClubCapabilities — LIGADA de verdade na M4.2A (achado do M4 round 1 fechado)');
+test('clubCapabilitiesWired=true — Home/nav/Perfil/rotas/Arena/News/Social leem config.capabilities.<campo> de verdade', () => {
+  assert.strictEqual(stats.clubCapabilitiesWired, true);
+  assert.strictEqual(audit.clubCapabilitiesCoverage.wired, true);
 });
 test('FABRICADO: se um consumidor real existisse, o check deveria virar true', () => {
   const fakeDartWithConsumer = `
