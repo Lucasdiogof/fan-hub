@@ -3884,4 +3884,14 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get storeValZipInvalid => 'CEP inválido.';
+
+  @override
+  String get releaseGateTitle => 'Atualização necessária';
+
+  @override
+  String get releaseGateMessage =>
+      'Esta versão do app não é mais suportada. Atualize para continuar.';
+
+  @override
+  String get releaseGateUpdateButton => 'Atualizar agora';
 }

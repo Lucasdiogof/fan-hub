@@ -3865,4 +3865,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get storeValZipInvalid => 'Invalid ZIP code.';
+
+  @override
+  String get releaseGateTitle => 'Update required';
+
+  @override
+  String get releaseGateMessage =>
+      'This version of the app is no longer supported. Update to continue.';
+
+  @override
+  String get releaseGateUpdateButton => 'Update now';
 }

@@ -8,6 +8,7 @@ import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/network/session_aware_http_client.dart';
+import 'package:goias_app/core/release/release_gate.dart';
 import 'package:goias_app/core/router/app_router.dart';
 import 'package:goias_app/core/router/root_navigator_key.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
@@ -89,7 +90,11 @@ class _GoiasAppState extends State<GoiasApp> {
   // ignore: unused_field
   final PushNotificationService _pushNotificationService =
       sl<PushNotificationService>();
-  late final GoRouter _router = createAppRouter(_authCubit, sl<SplashGate>());
+  late final GoRouter _router = createAppRouter(
+    _authCubit,
+    sl<SplashGate>(),
+    sl<ReleaseGate>(),
+  );
 
   @override
   Widget build(BuildContext context) {

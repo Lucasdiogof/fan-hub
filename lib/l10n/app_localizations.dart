@@ -6962,6 +6962,24 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'CEP inválido.'**
   String get storeValZipInvalid;
+
+  /// No description provided for @releaseGateTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Atualização necessária'**
+  String get releaseGateTitle;
+
+  /// No description provided for @releaseGateMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esta versão do app não é mais suportada. Atualize para continuar.'**
+  String get releaseGateMessage;
+
+  /// No description provided for @releaseGateUpdateButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Atualizar agora'**
+  String get releaseGateUpdateButton;
 }
 
 class _AppLocalizationsDelegate

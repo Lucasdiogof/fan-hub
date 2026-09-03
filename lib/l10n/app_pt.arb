@@ -1343,5 +1343,9 @@
   "storeValPhoneInvalid": "Telefone inválido.",
   "storeValCpfRequired": "Informe o CPF.",
   "storeValCpfInvalid": "CPF inválido.",
-  "storeValZipInvalid": "CEP inválido."
+  "storeValZipInvalid": "CEP inválido.",
+
+  "releaseGateTitle": "Atualização necessária",
+  "releaseGateMessage": "Esta versão do app não é mais suportada. Atualize para continuar.",
+  "releaseGateUpdateButton": "Atualizar agora"
 }

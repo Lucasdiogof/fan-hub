@@ -1,0 +1,489 @@
+{
+  "originMainCommit": "613874a7e00073c19560f8a9ebe0325efc395c0a",
+  "commitsBehindOriginMain": 35,
+  "writeMatrix": [
+    {
+      "feature": "Arena — conquista 100%",
+      "table": "arena_achievements",
+      "file": "lib/features/arena/data/arena_progress_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,achievement_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,achievement_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — progresso Quem Vestiu (career_path)",
+      "table": "career_path_progress",
+      "file": "lib/features/arena/games/career_path/data/supabase_career_path_storage.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,player_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,player_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — jogo selecionado (career_path owner)",
+      "table": "arena_selected_content",
+      "file": "lib/features/arena/games/career_path/data/supabase_career_path_storage.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,game_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,game_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — progresso Escalação (lineup)",
+      "table": "lineup_match_progress",
+      "file": "lib/features/arena/games/lineup/data/supabase_lineup_storage.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,match_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,match_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — jogo selecionado (lineup owner)",
+      "table": "arena_selected_content",
+      "file": "lib/features/arena/games/lineup/data/supabase_lineup_storage.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,game_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,game_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — Que Craque Você É",
+      "table": "player_identity_results",
+      "file": "lib/features/arena/games/player_identity/data/supabase_player_identity_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "user_id,club_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — Quiz (progresso pergunta)",
+      "table": "quiz_question_progress",
+      "file": "lib/features/arena/games/quiz/data/quiz_progress_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,question_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,question_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — Quiz (sessão ativa)",
+      "table": "quiz_active_session",
+      "file": "lib/features/arena/games/quiz/data/quiz_progress_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,difficulty",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,difficulty",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — Identidade Tática",
+      "table": "tactical_identity_results",
+      "file": "lib/features/arena/games/tactical_identity/data/supabase_tactical_identity_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "user_id,club_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Escalação da Torcida — voto",
+      "table": "match_lineup_votes",
+      "file": "lib/features/crowd_lineup/data/supabase_crowd_lineup_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "match_id,user_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,match_id,user_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Preferências de notificação",
+      "table": "user_notification_preferences",
+      "file": "lib/features/notifications/data/supabase_notification_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "user_id,club_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Ingresso — confirmar check-in (decisão)",
+      "table": "ticket_checkin_decisions",
+      "file": "lib/features/ticket/data/mock_ticket_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,match_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,match_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Ingresso — recusar check-in (decisão)",
+      "table": "ticket_checkin_decisions",
+      "file": "lib/features/ticket/data/mock_ticket_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,match_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "club_id,user_id,match_id",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Token de push (FCM)",
+      "table": "user_notification_tokens",
+      "file": "lib/features/notifications/data/supabase_notification_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "fcm_token",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "fcm_token",
+      "closesBy": "OUT_OF_SCOPE_GLOBAL",
+      "scope": "GLOBAL"
+    },
+    {
+      "feature": "Perfil do usuário",
+      "table": "profiles",
+      "file": "lib/features/profile/data/supabase_profile_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id",
+      "newMechanism": "upsert onConflict",
+      "newTarget": "user_id",
+      "closesBy": "OUT_OF_SCOPE_GLOBAL",
+      "scope": "GLOBAL"
+    },
+    {
+      "feature": "Ingresso — check-in de sócio (o ingresso em si)",
+      "table": "tickets",
+      "file": "lib/features/ticket/data/mock_ticket_repository.dart",
+      "oldMechanism": "upsert onConflict",
+      "oldTarget": "user_id,match_id",
+      "newMechanism": "RPC dedicada (M3.4)",
+      "newTarget": "upsert_membership_checkin_ticket_for_club",
+      "closesBy": "ALREADY_BROKEN_PRE_EXISTING",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — gravação de pontuação (parte user_game_item_progress)",
+      "table": "user_game_item_progress",
+      "file": "lib/features/arena/ranking/data/supabase_arena_ranking_repository.dart",
+      "oldMechanism": "RPC arena_record_score",
+      "oldTarget": "on conflict (user_id,game_id,item_id)",
+      "newMechanism": "RPC arena_record_score_for_club",
+      "newTarget": "on conflict (club_id,user_id,game_id,item_id)",
+      "closesBy": "KEY",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Arena — gravação de pontuação (parte score_events)",
+      "table": "score_events",
+      "file": "lib/features/arena/ranking/data/supabase_arena_ranking_repository.dart",
+      "oldMechanism": "RPC arena_record_score (insert simples)",
+      "oldTarget": "nenhum (plain insert)",
+      "newMechanism": "RPC arena_record_score_for_club",
+      "newTarget": "club_id explícito no insert",
+      "closesBy": "DEFAULT (redundante — a mesma transação já falha antes, no insert de user_game_item_progress)",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Loja — criação de pedido",
+      "table": "store_orders",
+      "file": "lib/features/store/data/supabase_store_orders_repository.dart",
+      "oldMechanism": "RPC create_store_order (insert simples)",
+      "oldTarget": "nenhum (plain insert)",
+      "newMechanism": "RPC create_store_order_for_club",
+      "newTarget": "club_id explícito no insert",
+      "closesBy": "DEFAULT",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Loja — itens do pedido",
+      "table": "store_order_items",
+      "file": "lib/features/store/data/supabase_store_orders_repository.dart",
+      "oldMechanism": "RPC create_store_order (insert simples)",
+      "oldTarget": "nenhum (tabela sem club_id — escopo via FK order_id)",
+      "newMechanism": "RPC create_store_order_for_club",
+      "newTarget": "sem club_id (inalterado — herda via FK)",
+      "closesBy": "OUT_OF_SCOPE_NO_CLUB_ID_COLUMN",
+      "scope": "N/A"
+    },
+    {
+      "feature": "Sócio Torcedor — assinatura",
+      "table": "supporter_memberships",
+      "file": "lib/features/membership/data/supabase_membership_repository.dart",
+      "oldMechanism": "RPC subscribe_to_plan (insert simples)",
+      "oldTarget": "nenhum (plain insert)",
+      "newMechanism": "RPC subscribe_to_plan_for_club",
+      "newTarget": "club_id explícito no insert",
+      "closesBy": "DEFAULT",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Ingresso — pedido de compra",
+      "table": "ticket_orders",
+      "file": "lib/features/ticket/data/mock_ticket_repository.dart",
+      "oldMechanism": "insert simples",
+      "oldTarget": "nenhum",
+      "newMechanism": "insert simples (club_id adicionado)",
+      "newTarget": "club_id explícito",
+      "closesBy": "DEFAULT",
+      "scope": "TENANT"
+    },
+    {
+      "feature": "Ingresso — linhas de compra",
+      "table": "tickets",
+      "file": "lib/features/ticket/data/mock_ticket_repository.dart",
+      "oldMechanism": "insert simples (origin=purchase)",
+      "oldTarget": "nenhum",
+      "newMechanism": "insert simples (club_id adicionado)",
+      "newTarget": "club_id explícito",
+      "closesBy": "DEFAULT",
+      "scope": "TENANT"
+    }
+  ],
+  "rpcInventory": [
+    {
+      "name": "arena_record_score",
+      "kind": "WRITE",
+      "replacement": "arena_record_score_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "arena_ranking",
+      "kind": "READ",
+      "replacement": "arena_ranking_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "arena_my_rank",
+      "kind": "READ",
+      "replacement": "arena_my_rank_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "arena_user_detail",
+      "kind": "READ",
+      "replacement": "arena_user_detail_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "crowd_lineup",
+      "kind": "READ",
+      "replacement": "crowd_lineup_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "get_my_membership",
+      "kind": "READ",
+      "replacement": "get_my_membership_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "subscribe_to_plan",
+      "kind": "WRITE",
+      "replacement": "subscribe_to_plan_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "create_store_order",
+      "kind": "WRITE",
+      "replacement": "create_store_order_for_club",
+      "stillCalledByHead": false,
+      "classification": "SAFE_TO_REVOKE_AFTER_WEB_ROLLOUT"
+    },
+    {
+      "name": "cpf_is_taken",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED"
+    },
+    {
+      "name": "passport_seasons",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED — sem club_id na tabela)"
+    },
+    {
+      "name": "passport_matches_for_year",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "passport_summary",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "passport_attendance_breakdown",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "passport_stadium_summary",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "passport_attended_matches",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "passport_memorable_match_id",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "passport_set_memorable_match",
+      "kind": "WRITE",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED — tabela sem club_id)"
+    },
+    {
+      "name": "passport_save_attendances",
+      "kind": "WRITE",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED — tabela sem club_id)"
+    },
+    {
+      "name": "passport_ranking",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "passport_my_rank",
+      "kind": "READ",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "STILL_REQUIRED (OUT_OF_SCOPE_PASSPORT_DEFERRED)"
+    },
+    {
+      "name": "upsert_membership_checkin_ticket_for_club",
+      "kind": "WRITE",
+      "replacement": null,
+      "stillCalledByHead": true,
+      "classification": "NEW_IN_M3_4 (não existe em origin/main)"
+    }
+  ],
+  "liveSnapshot": {
+    "checkedAt": "2026-09-03",
+    "clubIdDefaultTables": [
+      "arena_achievements",
+      "arena_selected_content",
+      "career_path_progress",
+      "career_players",
+      "guess_players",
+      "lineup_match_progress",
+      "lineup_matches",
+      "match_lineup_votes",
+      "match_monitor_sessions",
+      "notification_events",
+      "player_identity_results",
+      "quiz_active_session",
+      "quiz_question_progress",
+      "quiz_questions",
+      "score_events",
+      "squad_members",
+      "store_orders",
+      "supporter_memberships",
+      "tactical_identity_results",
+      "ticket_checkin_decisions",
+      "ticket_orders",
+      "tickets",
+      "user_game_item_progress",
+      "user_notification_preferences"
+    ],
+    "tablesWithoutClubIdColumn": [
+      "store_order_items",
+      "profiles",
+      "user_notification_tokens",
+      "passport_matches",
+      "passport_attendances",
+      "passport_memorable_matches",
+      "user_addresses",
+      "delivery_addresses"
+    ],
+    "ticketCheckinAlreadyBrokenInProduction": {
+      "finding": "A UNICA unique constraint cobrindo (user_id, match_id) em tickets é PARCIAL (tickets_user_match_checkin_uidx, WHERE origin='membership_check_in'), desde a criação original (supabase/tickets.sql linha 110-112) — não introduzida por trabalho multiclub.",
+      "verification": "EXPLAIN (COSTS false) [read-only, nenhuma escrita real] no exato SQL que o upsert(onConflict: \"user_id,match_id\") de origin/main gera -> Postgres recusa: 42P10 \"there is no unique or exclusion constraint matching the ON CONFLICT specification\".",
+      "consequence": "O check-in de ingresso de sócio no PWA publicado HOJE já falha, para todo usuário, independente de M2.2B-B. Achado incidental desta auditoria — fora do escopo desta rodada consertar (0 db push/commit)."
+    }
+  },
+  "breakdown": {
+    "tenantWriteCount": 20,
+    "autoRetiredByKeyEnforcement": [
+      "Arena — conquista 100%",
+      "Arena — progresso Quem Vestiu (career_path)",
+      "Arena — jogo selecionado (career_path owner)",
+      "Arena — progresso Escalação (lineup)",
+      "Arena — jogo selecionado (lineup owner)",
+      "Arena — Que Craque Você É",
+      "Arena — Quiz (progresso pergunta)",
+      "Arena — Quiz (sessão ativa)",
+      "Arena — Identidade Tática",
+      "Escalação da Torcida — voto",
+      "Preferências de notificação",
+      "Ingresso — confirmar check-in (decisão)",
+      "Ingresso — recusar check-in (decisão)",
+      "Arena — gravação de pontuação (parte user_game_item_progress)"
+    ],
+    "closedByDefault": [
+      "Arena — gravação de pontuação (parte score_events)",
+      "Loja — criação de pedido",
+      "Sócio Torcedor — assinatura",
+      "Ingresso — pedido de compra",
+      "Ingresso — linhas de compra"
+    ],
+    "alreadyBroken": [
+      "Ingresso — check-in de sócio (o ingresso em si)"
+    ],
+    "outOfScopeNoColumn": [
+      "Loja — itens do pedido"
+    ],
+    "globalOutOfScope": [
+      "Token de push (FCM)",
+      "Perfil do usuário"
+    ],
+    "unversionedRemaining": []
+  }
+}

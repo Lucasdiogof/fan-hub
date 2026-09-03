@@ -3880,4 +3880,14 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get storeValZipInvalid => 'Código postal inválido.';
+
+  @override
+  String get releaseGateTitle => 'Actualización necesaria';
+
+  @override
+  String get releaseGateMessage =>
+      'Esta versión de la app ya no es compatible. Actualiza para continuar.';
+
+  @override
+  String get releaseGateUpdateButton => 'Actualizar ahora';
 }
