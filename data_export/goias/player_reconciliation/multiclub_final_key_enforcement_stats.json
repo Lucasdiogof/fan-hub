@@ -1,0 +1,17 @@
+{
+  "legacyKeysToDrop": 18,
+  "tenantKeysReady": 18,
+  "goiasDefaultsToDrop": 24,
+  "legacyRpcsToRetire": 8,
+  "legacyRpcAuthenticatedExecuteRemaining": 0,
+  "globalConstraintsPreserved": true,
+  "passportUntouched": true,
+  "rlsUntouched": true,
+  "currentAppSurvivesFinalSchema": true,
+  "legacyAppExpectedToFail": true,
+  "anyForbiddenDdl": false,
+  "anyDml": false,
+  "anyIfExists": false,
+  "guardPresentInAllThree": true,
+  "keyScopeFinalReady": true
+}

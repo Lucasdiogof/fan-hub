@@ -1,0 +1,151 @@
+{
+  "pkPromotions": [
+    {
+      "table": "arena_achievements",
+      "legacyPk": "arena_achievements_pkey",
+      "bridge": "aa_club_user_achievement_uidx"
+    },
+    {
+      "table": "arena_selected_content",
+      "legacyPk": "arena_selected_content_pkey",
+      "bridge": "asc_club_user_game_uidx"
+    },
+    {
+      "table": "career_path_progress",
+      "legacyPk": "career_path_progress_pkey",
+      "bridge": "cpp_club_user_player_uidx"
+    },
+    {
+      "table": "lineup_match_progress",
+      "legacyPk": "lineup_match_progress_pkey",
+      "bridge": "lmp_club_user_match_uidx"
+    },
+    {
+      "table": "player_identity_results",
+      "legacyPk": "player_identity_results_pkey",
+      "bridge": "pir_user_club_uidx"
+    },
+    {
+      "table": "quiz_active_session",
+      "legacyPk": "quiz_active_session_pkey",
+      "bridge": "qas_club_user_difficulty_uidx"
+    },
+    {
+      "table": "quiz_question_progress",
+      "legacyPk": "quiz_question_progress_pkey",
+      "bridge": "qqp_club_user_question_uidx"
+    },
+    {
+      "table": "tactical_identity_results",
+      "legacyPk": "tactical_identity_results_pkey",
+      "bridge": "tir_user_club_uidx"
+    },
+    {
+      "table": "ticket_checkin_decisions",
+      "legacyPk": "ticket_checkin_decisions_pkey",
+      "bridge": "tcd_club_user_match_uidx"
+    },
+    {
+      "table": "user_game_item_progress",
+      "legacyPk": "user_game_item_progress_pkey",
+      "bridge": "ugip_club_user_game_item_uidx"
+    },
+    {
+      "table": "user_notification_preferences",
+      "legacyPk": "user_notification_preferences_pkey",
+      "bridge": "unp_user_club_uidx"
+    },
+    {
+      "table": "match_monitor_sessions",
+      "legacyPk": "match_monitor_sessions_pkey",
+      "bridge": "mms_club_match_uidx"
+    }
+  ],
+  "uniqueDrops": [
+    {
+      "table": "match_lineup_votes",
+      "legacyConstraint": "match_lineup_votes_match_id_user_id_key",
+      "bridge": "mlv_club_match_user_uidx"
+    },
+    {
+      "table": "career_players",
+      "legacyConstraint": "career_players_person_id_key",
+      "bridge": "career_players_club_person_uidx"
+    },
+    {
+      "table": "guess_players",
+      "legacyConstraint": "guess_players_person_id_key",
+      "bridge": "guess_players_club_person_uidx"
+    },
+    {
+      "table": "squad_members",
+      "legacyConstraint": "squad_members_person_id_key",
+      "bridge": "squad_members_club_person_uidx"
+    },
+    {
+      "table": "notification_events",
+      "legacyConstraint": "notification_events_event_type_dedupe_key_key",
+      "bridge": "ne_club_event_dedupe_uidx"
+    }
+  ],
+  "partialIndexDrops": [
+    {
+      "table": "tickets",
+      "legacyIndex": "tickets_user_match_checkin_uidx",
+      "bridge": "tickets_club_user_match_checkin_uidx"
+    }
+  ],
+  "defaultTables": [
+    "arena_achievements",
+    "arena_selected_content",
+    "career_path_progress",
+    "career_players",
+    "guess_players",
+    "lineup_match_progress",
+    "lineup_matches",
+    "match_lineup_votes",
+    "match_monitor_sessions",
+    "notification_events",
+    "player_identity_results",
+    "quiz_active_session",
+    "quiz_question_progress",
+    "quiz_questions",
+    "score_events",
+    "squad_members",
+    "store_orders",
+    "supporter_memberships",
+    "tactical_identity_results",
+    "ticket_checkin_decisions",
+    "ticket_orders",
+    "tickets",
+    "user_game_item_progress",
+    "user_notification_preferences"
+  ],
+  "legacyRpcs": [
+    "arena_record_score",
+    "arena_ranking",
+    "arena_my_rank",
+    "arena_user_detail",
+    "crowd_lineup",
+    "get_my_membership",
+    "subscribe_to_plan",
+    "create_store_order"
+  ],
+  "globalConstraintsNeverTouched": [
+    "store_orders_order_number_key",
+    "user_notification_tokens_fcm_token_key",
+    "profiles_cpf_unique_idx",
+    "notification_deliveries_event_id_token_id_key"
+  ],
+  "passportTables": [
+    "passport_matches",
+    "passport_attendances",
+    "passport_memorable_matches",
+    "passport_sync_runs"
+  ],
+  "keyScopeCollisionGuardFinding": {
+    "classification": "KEEP_TEMPORARILY",
+    "reason": "O guard não vira redundante só pela troca de PK — a query em si (v_prev + 2 subqueries de total) continua sem filtro de club_id. Precisa de fix no corpo da RPC (fora do escopo desta rodada de DDL) antes de M4.",
+    "requiredPreM4Fix": "Adicionar \"and club_id = p_club_id\" nas 3 leituras de arena_record_score_for_club (v_prev select + 2 subqueries de soma) — não aplicado nesta rodada."
+  }
+}
