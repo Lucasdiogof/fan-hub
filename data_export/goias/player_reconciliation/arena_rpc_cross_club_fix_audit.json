@@ -1,0 +1,16 @@
+{
+  "missingClubFilterCountBefore": 1,
+  "missingClubFilterCountAfter": 0,
+  "checks": {
+    "arenaScorePrevReadClubScoped": true,
+    "arenaScoreTotalScoreClubScoped": true,
+    "arenaScoreGameScoreClubScoped": true,
+    "arenaScoreConflictTargetTenantAware": true,
+    "arenaScoreAclCorrect": true
+  },
+  "keyScopeGuardDecision": "KEEP_DEFENSIVELY",
+  "keyScopeGuardPresent": true,
+  "signatureGuardPresent": true,
+  "noForbiddenDdl": true,
+  "arenaScoreCrossClubReady": true
+}
