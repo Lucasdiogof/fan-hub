@@ -6,6 +6,7 @@
   "shortName": "Bragantino",
   "description": "Red Bull Bragantino — app do torcedor (em preparação).",
   "appleTitle": "Bragantino",
+  "outDir": "build/flavors/web/bragantino",
   "themeColor": "#37474F",
   "themeLight": "#F4F5F7",
   "themeDark": "#12171B",

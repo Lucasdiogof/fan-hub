@@ -72,7 +72,18 @@ function restore() {
   for (const f of iconFiles) fs.writeFileSync(path.join(iconsDir, f), backup.icons[f]);
 }
 
-const outDir = path.join(ROOT, 'build', 'flavors', 'web', flavor.code);
+// `outDir` vem do JSON do flavor, NUNCA um padrão hardcoded aqui — cada
+// clube tem o path que seu `wrangler*.toml` real já espera em `[assets]
+// directory` (Goiás: `build/web`, o Cloudflare builda direto sem passar
+// por este script, path do Flutter puro; Bragantino: `build/flavors/web/
+// bragantino`, novo, nunca teve um deploy real ainda). Divergir daqui
+// quebraria o deploy silenciosamente — por isso falha loud se faltar, em
+// vez de inventar um path que pareça razoável.
+if (!flavor.outDir) {
+  console.error(`Config de flavor "${club}" não tem "outDir" — teria que adivinhar o path que o wrangler*.toml espera, nunca façemos isso. Adicione "outDir" em ${flavorConfigPath}.`);
+  process.exit(1);
+}
+const outDir = path.join(ROOT, ...flavor.outDir.split('/'));
 
 try {
   fs.writeFileSync(manifestPath, newManifest);
