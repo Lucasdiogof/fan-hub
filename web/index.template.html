@@ -18,7 +18,7 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Goiás EC - o ecossistema digital do torcedor esmeraldino.">
+  <meta name="description" content="__CLUB_DESCRIPTION__">
 
   <!--
     `viewport-fit=cover` é o que permite o conteúdo (não só o fundo) ir por
@@ -40,7 +40,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Goiás EC">
+  <meta name="apple-mobile-web-app-title" content="__CLUB_APPLE_TITLE__">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Cor da UI do navegador (aba do Safari/Chrome, barra de tarefas do
@@ -50,13 +50,13 @@
     no Android a já abrirem na cor certa antes do Flutter pintar. Segue
     `prefers-color-scheme` do SISTEMA — não tem como refletir o tema
     escolhido manualmente dentro do app aqui fora do Flutter. -->
-  <meta name="theme-color" content="#F6F8F7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#09110C" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="__CLUB_THEME_LIGHT__" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="__CLUB_THEME_DARK__" media="(prefers-color-scheme: dark)">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>Goiás EC</title>
+  <title>__CLUB_APP_NAME__</title>
   <link rel="manifest" href="manifest.json">
 
   <!--
@@ -85,12 +85,12 @@
       height: 100%;
       margin: 0;
       padding: 0;
-      background: #F6F8F7;
+      background: __CLUB_THEME_LIGHT__;
     }
 
     @media (prefers-color-scheme: dark) {
       html, body {
-        background: #09110C;
+        background: __CLUB_THEME_DARK__;
       }
     }
   </style>

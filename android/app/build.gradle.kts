@@ -6,7 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "br.com.goiasec.goias_app"
+    // Rebrand Fan Hub — o namespace (package do código: R/BuildConfig) passa
+    // a ser `br.com.fanhub.goias`, desacoplado do applicationId de cada flavor
+    // (Gradle permite namespace != applicationId). MainActivity.kt movida pro
+    // mesmo package.
+    namespace = "br.com.fanhub.goias"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -15,9 +19,19 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    // M4.3B — `buildConfig` pra `buildConfigField` (canal de notificação por
+    // flavor) gerar `BuildConfig.*`; `resValues` pra `resValue()` (nome do
+    // app por flavor) — o AGP passou a exigir os dois habilitados
+    // explicitamente, cada um por sua própria flag, mesmo já estando em uso
+    // dentro de `productFlavors` abaixo.
+    buildFeatures {
+        buildConfig = true
+        resValues = true
+    }
+
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "br.com.goiasec.goias_app"
+        // Rebrand Fan Hub. Cada flavor sobrescreve com o seu; este é só o base.
+        applicationId = "br.com.fanhub.goias"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -26,10 +40,39 @@ android {
         versionName = flutter.versionName
     }
 
+    // Rebrand Fan Hub — dimensão "club", 2 flavors REAIS: `goias`
+    // (`br.com.fanhub.goias`) e `bragantino` (`br.com.fanhub.bragantino`).
+    // Cada flavor lê SÓ o seu `src/<flavor>/google-services.json` oficial do
+    // projeto Fan Hub; nenhum carrega o do outro. O flavor sintético `clubb`
+    // foi removido (supersedido pelo Bragantino real).
+    flavorDimensions += "club"
+    productFlavors {
+        create("goias") {
+            dimension = "club"
+            applicationId = "br.com.fanhub.goias"
+            resValue("string", "app_name", "Goiás EC")
+            manifestPlaceholders["notificationChannelId"] = "goias_matches"
+            buildConfigField("String", "NOTIFICATION_CHANNEL_ID", "\"goias_matches\"")
+            buildConfigField("String", "NOTIFICATION_CHANNEL_NAME", "\"Partidas do Goiás\"")
+        }
+        create("bragantino") {
+            dimension = "club"
+            applicationId = "br.com.fanhub.bragantino"
+            resValue("string", "app_name", "Red Bull Bragantino")
+            manifestPlaceholders["notificationChannelId"] = "bragantino_matches"
+            buildConfigField("String", "NOTIFICATION_CHANNEL_ID", "\"bragantino_matches\"")
+            buildConfigField("String", "NOTIFICATION_CHANNEL_NAME", "\"Partidas do Bragantino\"")
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
+            // Gap pré-existente, não introduzido por multiclube (ver
+            // docs/multiclub/45_m4_3a_flavor_pipeline_audit.md §11) — release
+            // de QUALQUER flavor, inclusive `goias`, ainda assina com a
+            // chave de debug.
             signingConfig = signingConfigs.getByName("debug")
         }
     }

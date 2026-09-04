@@ -1,0 +1,13 @@
+{
+  "code": "goias",
+  "appClub": "goias",
+  "enableSyntheticClub": false,
+  "appName": "Goiás EC",
+  "shortName": "Goiás EC",
+  "description": "Goiás EC - o ecossistema digital do torcedor esmeraldino.",
+  "appleTitle": "Goiás EC",
+  "themeColor": "#004C1B",
+  "themeLight": "#F6F8F7",
+  "themeDark": "#09110C",
+  "iconsSourceDir": null
+}

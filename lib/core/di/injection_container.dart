@@ -123,12 +123,12 @@ void setupDependencies() {
     () => ViaCepAddressRepository(sl(), sl()),
   );
 
-  sl.registerLazySingleton<Dio>(ApiClient.create);
+  sl.registerLazySingleton<Dio>(() => ApiClient.create(sl()));
   sl.registerLazySingleton<FootballRemoteDataSource>(
     () => FootballRemoteDataSource(sl(), sl()),
   );
   sl.registerLazySingleton<FootballRepository>(
-    () => FootballRepositoryImpl(sl()),
+    () => FootballRepositoryImpl(sl(), sl()),
   );
 
   sl.registerLazySingleton<SocialRemoteDataSource>(

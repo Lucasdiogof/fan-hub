@@ -59,6 +59,7 @@ flutter:
     - lib/assets/content/
     - lib/assets/sponsors/
     - lib/assets/branding/
+    - lib/assets/branding/bragantino/
     - lib/assets/club/titles/campeonato-goiano/
     - lib/assets/club/titles/copa-centro-oeste/
     - lib/assets/club/titles/serie-b/

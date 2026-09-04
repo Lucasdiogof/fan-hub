@@ -1,4 +1,4 @@
-package br.com.goiasec.goias_app
+package br.com.fanhub.goias
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,9 +15,13 @@ class MainActivity : FlutterActivity() {
     override fun onCreate(savedInstanceState: android.os.Bundle?) {
         super.onCreate(savedInstanceState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // M4.3B — id/nome vêm de `BuildConfig` (gerado por flavor, ver
+            // `productFlavors` em build.gradle.kts) em vez de literal fixo,
+            // pra bater com `${notificationChannelId}` do AndroidManifest.xml
+            // em CADA flavor, sem precisar de 2 cópias deste arquivo.
             val channel = NotificationChannel(
-                "goias_matches",
-                "Partidas do Goiás",
+                BuildConfig.NOTIFICATION_CHANNEL_ID,
+                BuildConfig.NOTIFICATION_CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_DEFAULT,
             )
             val manager = getSystemService(NotificationManager::class.java)

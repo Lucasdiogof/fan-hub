@@ -31,6 +31,7 @@ class ClubIntegrations {
     required this.oneFootballCompetitionSlug,
     required this.orderPrefix,
     required this.pickupAddress,
+    this.workerBaseUrl,
     this.contactWhatsappNumber,
     this.contactWhatsappUrl,
     this.socialInstagramUrl,
@@ -50,6 +51,15 @@ class ClubIntegrations {
   /// (`wrangler.toml`) continua com sua própria env var, não lê isto.
   final String oneFootballSlug;
   final String oneFootballCompetitionSlug;
+
+  /// URL base do Worker deste clube (`ApiClient` lê daqui — nunca mais um
+  /// literal fixo, ver `resolve_api_base_url.dart`). `null` enquanto o
+  /// Worker do clube não existir/não foi validado — `ApiClient` NUNCA cai
+  /// pro Worker de outro clube quando isto é `null`; as chamadas falham de
+  /// forma controlada (host `.invalid`), e a UI que depende delas
+  /// (`hasMatches`, `hasNews`, `hasSocial`) já fica indisponível antes
+  /// disso de qualquer jeito.
+  final String? workerBaseUrl;
 
   /// Substitui o literal `'GOI'` em `generate_store_order_number()`
   /// (`supabase/store_orders.sql`) — hoje só documentado, a function SQL

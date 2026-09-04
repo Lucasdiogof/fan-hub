@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "205743969933",
+    "project_id": "fan-hub-29e9b",
+    "storage_bucket": "fan-hub-29e9b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205743969933:android:f47ac3c050918f7d44f4c4",
+        "android_client_info": {
+          "package_name": "br.com.fanhub.bragantino"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB36tP6S5qq3hqNRU9RiIk_VyNWSDd2s5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205743969933:android:1111518ec1b2d33644f4c4",
+        "android_client_info": {
+          "package_name": "br.com.fanhub.goias"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB36tP6S5qq3hqNRU9RiIk_VyNWSDd2s5Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,6 +20,8 @@ class ClubCapabilities {
     required this.hasPassport,
     required this.hasNews,
     required this.hasSocial,
+    required this.hasClubContent,
+    required this.hasMatches,
     required this.enabledArenaGames,
   });
 
@@ -28,6 +30,19 @@ class ClubCapabilities {
   final bool hasTickets;
   final bool hasCrowdLineup;
   final bool hasPassport;
+
+  /// Aba "Jogos" + calendário/detalhe de partida (`/match/:id`) — depende
+  /// do Worker de futebol do PRÓPRIO clube estar no ar (`ClubIntegrations.
+  /// workerBaseUrl` configurado e testado). `false` enquanto esse Worker
+  /// não existir — nunca usa o Worker de outro clube nem por omissão.
+  final bool hasMatches;
+
+  /// História, títulos, diretoria, hino e parceiros (`/clube` e
+  /// `/partners`) — conteúdo editorial estático que hoje só existe pro
+  /// Goiás (ver `docs/multiclub/...`). Elenco (`/squad`) fica de fora de
+  /// propósito, mesma razão do comentário de classe acima: já é
+  /// `club_id`-scoped de verdade, não depende deste gate.
+  final bool hasClubContent;
 
   /// Notícias (site oficial, via Worker `/api/news`).
   final bool hasNews;

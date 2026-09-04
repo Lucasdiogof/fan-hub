@@ -33,11 +33,13 @@ const goiasClubConfig = ClubConfig(
     arenaStadiumIcon: AppAssets.arenaStadiumIcon,
     arenaStadiumPhoto: AppAssets.arenaStadiumPhoto,
     storeBanner: AppAssets.storeBanner,
+    splashVideo: 'lib/assets/videos/goias_splash.mp4',
   ),
   integrations: ClubIntegrations(
     oneFootballTeamId: 1863,
     oneFootballSlug: 'goias-1863',
     oneFootballCompetitionSlug: 'brasileirao-serie-b-superbet-119',
+    workerBaseUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
     orderPrefix: 'GOI',
     pickupAddress: ClubPickupAddress(
       storeName: 'Goiás Store',
@@ -64,6 +66,8 @@ const goiasClubConfig = ClubConfig(
     hasPassport: true,
     hasNews: true,
     hasSocial: true,
+    hasClubContent: true,
+    hasMatches: true,
     enabledArenaGames: {
       'quiz',
       'lineup',
