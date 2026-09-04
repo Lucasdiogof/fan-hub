@@ -211,7 +211,7 @@ test('8/8 RPCs novas: toda relação real referenciada no corpo é schema-qualif
 });
 test('detecção de qualificação funciona de verdade: uma referência bare fabricada (from supporter_memberships) é sinalizada como problema', () => {
   const migSrc = fs.readFileSync(
-    path.join(ROOT, 'supabase', 'migrations', '20260903010000_add_membership_tenant_aware_rpcs.sql'),
+    path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260903010000_add_membership_tenant_aware_rpcs.sql'),
     'utf8'
   );
   const bareInjected = migSrc.replace(
@@ -275,7 +275,7 @@ test('8/8 RPCs novas têm hardeningMigration registrada e o arquivo existe', () 
   for (const r of RPCS) {
     assert.strictEqual(audit.rpcs[r].hardeningMigration, '20260903040000_harden_tenant_rpc_execute_grants.sql', r);
   }
-  assert.ok(fs.existsSync(path.join(ROOT, 'supabase', 'migrations', '20260903040000_harden_tenant_rpc_execute_grants.sql')));
+  assert.ok(fs.existsSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260903040000_harden_tenant_rpc_execute_grants.sql')));
 });
 test('ACL efetivo das 8 novas = exatamente ["authenticated"] — public/anon/service_role fora, mesmo somando as 2 migrations', () => {
   for (const r of RPCS) {
@@ -292,7 +292,7 @@ test('allRpcsSecurityHardeningReady/allRpcsTenantAwareReady agora dependem do AC
 });
 test('a migration de hardening não altera as 4 originais nem a legacy — só REVOKE/GRANT sobre as 8 já criadas', () => {
   const src = fs.readFileSync(
-    path.join(ROOT, 'supabase', 'migrations', '20260903040000_harden_tenant_rpc_execute_grants.sql'),
+    path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260903040000_harden_tenant_rpc_execute_grants.sql'),
     'utf8'
   );
   // Só o SQL executável importa aqui — o próprio comentário explicativo do

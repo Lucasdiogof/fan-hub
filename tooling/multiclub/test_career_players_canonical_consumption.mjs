@@ -212,7 +212,7 @@ test('nenhuma migration nova em supabase/migrations/ (F2 é auditoria, 0 mudanç
   // teste continua válido mesmo depois de etapas futuras (M2.2A em diante)
   // adicionarem migrations próprias; o que importa aqui é só que F2 mesma
   // não gerou nenhuma.
-  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+  const count = fs.readdirSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files'))
     .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z').length;
   assert.strictEqual(count, 35, `esperava 35 migrations até o baseline da F4.5, achei ${count}`);
 });

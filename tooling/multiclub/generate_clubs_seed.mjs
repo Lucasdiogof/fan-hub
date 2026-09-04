@@ -9,7 +9,7 @@ import { loadClubRegistry, saveClubRegistry, resolveClubId, registerNewClub } fr
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const REGISTRY_PATH = path.join(__dirname, 'clubs_registry.json');
-const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260902030000_seed_clubs.sql');
+const MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902030000_seed_clubs.sql');
 
 const CLUBS = [
   { registryLookupKey: 'goias', slug: 'goias', name: 'Goiás Esporte Clube', shortName: 'Goiás' },

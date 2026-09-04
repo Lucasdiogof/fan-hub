@@ -26,7 +26,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const RECON = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
-const MIGRATIONS = path.join(ROOT, 'supabase', 'migrations');
+const MIGRATIONS = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files');
 
 const plan = JSON.parse(fs.readFileSync(path.join(RECON, 'multiclub_m2_2a_plan.json'), 'utf8'));
 const GOIAS = plan.goiasClubId;

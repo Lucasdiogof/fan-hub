@@ -12,14 +12,11 @@
   "legacyNativeClientCount": 3,
   "legacyNativeClientsControlled": true,
   "publicNativeRelease": false,
-  "apk101_2Generated": false,
-  "apk101_2DeliveredToLegacyUsers": false,
-  "legacyVersionSupportEnded": false,
+  "apk101_2Generated": true,
+  "apk101_2DeliveredToLegacyUsers": true,
+  "legacyVersionSupportEnded": true,
   "sentryReleaseSignalAvailable": false,
   "sentryIsBlockingGate": false,
-  "postRolloutRetirementReady": false,
-  "blockers": [
-    "APK 1.0.1+2 ainda não gerado nesta sessão (bloqueio de ambiente Gradle/JDK, não de código — ver apk101_2Status)",
-    "APK 1.0.1+2 ainda não confirmado como entregue aos ~3 usuários legacy (ação manual do dono, pendente)"
-  ]
+  "postRolloutRetirementReady": true,
+  "blockers": []
 }

@@ -16,7 +16,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const TOOLING = path.join(ROOT, 'tooling', 'multiclub');
-const MIGRATIONS_DIR = path.join(ROOT, 'supabase', 'migrations');
+const MIGRATIONS_DIR = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files');
 
 const OUTPUT_PATH = path.join(MIGRATIONS_DIR, '20260902000000_add_evair_welliton_people.sql');
 const APPLIED_MIGRATION_PATHS = [

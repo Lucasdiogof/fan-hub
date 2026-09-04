@@ -19,8 +19,8 @@ const sources = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_club_spell_
 const canonicalPeople = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'canonical_people_candidates.json'), 'utf8'));
 const spellRegistry = loadSpellRegistry(path.join(__dirname, 'spells_registry.json'));
 const clubRegistry = loadClubRegistry(path.join(__dirname, 'clubs_registry.json'));
-const migrationSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902040000_create_player_club_spells.sql'), 'utf8');
-const seedSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902050000_seed_goias_player_club_spells.sql'), 'utf8');
+const migrationSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902040000_create_player_club_spells.sql'), 'utf8');
+const seedSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902050000_seed_goias_player_club_spells.sql'), 'utf8');
 
 let passed = 0;
 const failures = [];
@@ -226,10 +226,10 @@ test('nenhuma entrada do registry real usa índice de array na sua identidade (s
   }
 });
 test('reexecutar build+generate produz o MESMO SQL byte-a-byte (nova provenance/reruns não mudam ids)', () => {
-  const before = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902050000_seed_goias_player_club_spells.sql'), 'utf8');
+  const before = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902050000_seed_goias_player_club_spells.sql'), 'utf8');
   execFileSync(process.execPath, [path.join(__dirname, 'build_player_club_spells_seed.mjs')], { stdio: 'pipe' });
   execFileSync(process.execPath, [path.join(__dirname, 'generate_player_club_spells_seed.mjs')], { stdio: 'pipe' });
-  const after = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902050000_seed_goias_player_club_spells.sql'), 'utf8');
+  const after = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902050000_seed_goias_player_club_spells.sql'), 'utf8');
   assert.strictEqual(before, after);
 });
 
@@ -261,7 +261,7 @@ test('resolveClubId depende só do registryLookupKey, nunca de name/slug/short_n
 test('o clubs registry real e a migration de seed de clubs concordam no mesmo clubId pro Goiás', () => {
   const goiasEntry = clubRegistry.entries.find((e) => e.registryLookupKey === 'goias');
   assert.ok(goiasEntry);
-  const seedClubsSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902030000_seed_clubs.sql'), 'utf8');
+  const seedClubsSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902030000_seed_clubs.sql'), 'utf8');
   assert.ok(seedClubsSql.includes(goiasEntry.clubId));
 });
 test('todo spell do seed real usa exatamente o clubId do registry (nunca um UUID diferente)', () => {

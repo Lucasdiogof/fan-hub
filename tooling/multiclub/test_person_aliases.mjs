@@ -223,20 +223,20 @@ test('NUNCA transliteração: normalizeAlias("søren") !== normalizeAlias("soren
 
 console.log('\n15) Idempotência de UUID no seed gerado — prova estrutural da Opção B');
 test('a migration de person_aliases NUNCA lista a coluna "id" — sempre DEFAULT gen_random_uuid() da tabela', () => {
-  const sql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
+  const sql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
   const insertLine = sql.match(/insert into public\.person_aliases \(([^)]+)\)/);
   assert.ok(insertLine, 'não achou o INSERT de person_aliases na migration');
   const columns = insertLine[1].split(',').map((c) => c.trim());
   assert.ok(!columns.includes('id'), `coluna "id" não deveria aparecer no INSERT, achou: ${columns.join(', ')}`);
 });
 test('a migration de person_alias_sources resolve person_alias_id por JOIN (person_id + normalized_alias), nunca por UUID literal pré-calculado', () => {
-  const sql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
+  const sql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
   assert.ok(sql.includes('select pa.id, v.source, v.source_record_key'), 'esperava resolver person_alias_id via select de pa.id');
   assert.ok(sql.includes('join public.person_aliases pa'), 'esperava um JOIN em public.person_aliases');
   assert.ok(sql.includes('on pa.person_id = v.person_id and pa.normalized_alias = v.normalized_alias'), 'esperava o JOIN casando por (person_id, normalized_alias), não por id');
 });
 test('cada linha de VALUES em person_alias_sources tem exatamente 1 literal ::uuid (person_id, vindo do registry) — nenhum 2º UUID pré-calculado (seria o alias id)', () => {
-  const sql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
+  const sql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
   const valuesBlock = sql.split(') as v(person_id, normalized_alias, source, source_record_key)')[0].split('values\n  (')[1];
   const rows = sql.match(/^\s{4}\('[0-9a-f-]+'::uuid,/gm) || [];
   assert.ok(rows.length > 0, 'não achou linhas de VALUES com ::uuid em person_alias_sources');
@@ -247,13 +247,13 @@ test('cada linha de VALUES em person_alias_sources tem exatamente 1 literal ::uu
   }
 });
 test('generate_person_aliases_seed.mjs está TRAVADO (migration já aplicada) — rodar de novo tem que se recusar, nunca sobrescrever o arquivo', () => {
-  const before = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
+  const before = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
   assert.throws(() => execFileSync(process.execPath, [path.join(__dirname, 'generate_person_aliases_seed.mjs')], { stdio: 'pipe' }));
-  const after = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
+  const after = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260901030000_seed_goias_person_aliases.sql'), 'utf8');
   assert.strictEqual(before, after, 'o arquivo já aplicado mudou — o guard de "migration travada" falhou');
 });
 test('reexecutar generate_additive_person_aliases_seed.mjs (a migration de Evair/Welliton, essa sim ainda não aplicada) produz o MESMO SQL byte-a-byte', () => {
-  const additivePath = path.join(ROOT, 'supabase', 'migrations', '20260902010000_add_evair_welliton_aliases.sql');
+  const additivePath = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902010000_add_evair_welliton_aliases.sql');
   const before = fs.readFileSync(additivePath, 'utf8');
   execFileSync(process.execPath, [path.join(__dirname, 'generate_additive_person_aliases_seed.mjs')], { stdio: 'pipe' });
   const after = fs.readFileSync(additivePath, 'utf8');

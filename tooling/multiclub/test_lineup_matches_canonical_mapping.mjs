@@ -314,7 +314,7 @@ console.log('\n28) 0 migrations');
 test('nenhuma migration nova em supabase/migrations/ (F7 é auditoria/tooling, 0 mudança de banco)', () => {
   // Filtra por timestamp <= o baseline da F4.5 — etapas futuras (M2.2A em
   // diante) podem adicionar migrations próprias sem invalidar este teste.
-  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+  const count = fs.readdirSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files'))
     .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z').length;
   assert.strictEqual(count, 35, `esperava 35 migrations até o baseline da F4.5, achei ${count}`);
 });

@@ -26,9 +26,9 @@ function grepCount(pattern, dir) {
   } catch { return 0; }
 }
 
-const MIG_KEYS = 'supabase/migrations/20260903120000_finalize_tenant_aware_keys.sql';
-const MIG_DEFAULTS = 'supabase/migrations/20260903130000_drop_transitional_club_defaults.sql';
-const MIG_RPC = 'supabase/migrations/20260903140000_retire_legacy_rpc_execute_grants.sql';
+const MIG_KEYS = 'archive/supabase/goias-legacy-migrations/files/20260903120000_finalize_tenant_aware_keys.sql';
+const MIG_DEFAULTS = 'archive/supabase/goias-legacy-migrations/files/20260903130000_drop_transitional_club_defaults.sql';
+const MIG_RPC = 'archive/supabase/goias-legacy-migrations/files/20260903140000_retire_legacy_rpc_execute_grants.sql';
 
 const migKeysSql = read(MIG_KEYS);
 const migDefaultsSql = read(MIG_DEFAULTS);

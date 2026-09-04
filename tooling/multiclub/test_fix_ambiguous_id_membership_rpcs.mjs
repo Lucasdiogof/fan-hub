@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const MIGRATION_PATH = path.join(
   ROOT,
-  'supabase/migrations/20260903180000_fix_ambiguous_id_membership_rpcs.sql'
+  'archive/supabase/goias-legacy-migrations/files/20260903180000_fix_ambiguous_id_membership_rpcs.sql'
 );
 const BASELINE_PATH = path.join(
   ROOT,
@@ -202,30 +202,26 @@ test('nenhum GRANT para anon/service_role/public em nenhum ponto do arquivo', ()
 });
 
 console.log('\n7) git status restrito aos arquivos desta rodada (nenhum arquivo alheio entrou no diff)');
-// SUPERSEDIDO: esta asserção originalmente checava `git status --porcelain`
-// (a migration ainda untracked/staged, pré-commit). A migration já foi
-// commitada (6bfc622) numa rodada seguinte — `git status` legitimamente
-// não mostra mais nada em `supabase/migrations/` (working tree limpo é o
-// resultado CORRETO agora, não uma regressão). O invariante que continua
-// valendo é "a migration existe e está rastreada no git", verificado via
-// `git ls-files` em vez de `git status` — mesmo padrão de nota de
-// supersessão já usado no projeto (ver test_second_club_product_readiness.mjs
-// §6).
-test('migration está commitada e rastreada no git (working tree limpo é esperado, não um erro)', () => {
+// SUPERSEDIDO 2x: 1ª vez, a migration foi commitada (working tree limpo
+// virou o resultado correto). 2ª vez (migration-history cutover de
+// 2026-09-04): as 63 migrations legadas do Goiás, incluindo esta,
+// deixaram de ser a cadeia OPERACIONAL (supabase/migrations/ agora só tem
+// os 2 arquivos canônicos) e foram arquivadas em
+// archive/supabase/goias-legacy-migrations/files/ (git mv, preservando
+// histórico de rename). O invariante que continua valendo, atualizado pro
+// novo caminho: o arquivo está rastreado no git (via `git ls-files`,
+// nunca perdido no meio do `git mv`) e nenhum OUTRO arquivo do archive foi
+// tocado como efeito colateral desta migration específica.
+test('migration está rastreada no git no NOVO caminho (archive/), preservando o rename', () => {
   const tracked = execSync(
-    'git ls-files supabase/migrations/20260903180000_fix_ambiguous_id_membership_rpcs.sql',
+    'git ls-files archive/supabase/goias-legacy-migrations/files/20260903180000_fix_ambiguous_id_membership_rpcs.sql',
     { cwd: ROOT, encoding: 'utf8' },
   ).trim();
-  assert.strictEqual(tracked, 'supabase/migrations/20260903180000_fix_ambiguous_id_membership_rpcs.sql');
-  const dirtyMigrations = execSync('git status --porcelain supabase/migrations/', {
-    cwd: ROOT,
-    encoding: 'utf8',
-  }).trim();
-  assert.strictEqual(dirtyMigrations, '', `esperava 0 mudança pendente em supabase/migrations/, achei:\n${dirtyMigrations}`);
+  assert.strictEqual(tracked, 'archive/supabase/goias-legacy-migrations/files/20260903180000_fix_ambiguous_id_membership_rpcs.sql');
 });
-test('a migration não altera nenhum outro arquivo .sql', () => {
+test('a migration existe no archive, exatamente 1 arquivo com este nome', () => {
   const sqlFiles = fs
-    .readdirSync(path.join(ROOT, 'supabase/migrations'))
+    .readdirSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files'))
     .filter((f) => f.endsWith('.sql'));
   const newOnes = sqlFiles.filter((f) =>
     f === '20260903180000_fix_ambiguous_id_membership_rpcs.sql'

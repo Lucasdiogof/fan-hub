@@ -1,0 +1,51 @@
+{
+  "baselineFiles": [
+    "supabase\\migrations\\20260904000000_canonical_baseline.sql",
+    "supabase\\migrations\\20260904210000_add_delivery_address_triggers.sql"
+  ],
+  "a_noForbiddenClubLiterals": true,
+  "forbiddenLiteralHits": [],
+  "a2_noForbiddenIdentifiers": true,
+  "identifierHits": [],
+  "b_noRealClubUuid": true,
+  "uuidHits": [],
+  "c_noHardcodedClubIdDefault": true,
+  "defaultClubIdHitsCount": 0,
+  "d_rpcAclClean": true,
+  "rpcAclIssues": [],
+  "functionCount": 28,
+  "e_hasProfilesTable": true,
+  "e_hasUserAddressesTable": true,
+  "e_hasHandleNewUserFn": true,
+  "f_hasAuthTrigger": true,
+  "g_storageBucketsOk": true,
+  "bucketInserts": [
+    "avatars",
+    "email-assets"
+  ],
+  "g_storagePoliciesOk": true,
+  "storagePolicyNames": [
+    "avatars_public_read",
+    "avatars_write_own",
+    "avatars_update_own",
+    "avatars_delete_own"
+  ],
+  "h_zeroEditorialSeeds": true,
+  "nonStorageInserts": [],
+  "j_canonicalConfigExists": true,
+  "j_workdirRecognized": true,
+  "workdirCheckError": "{\"_tag\":\"Error\",\"error\":{\"code\":\"LegacyDbConnectError\",\"message\":\"failed to connect to postgres: failed to connect to `host=localhost user=invalid database=x`: dial error (connect ECONNREFUSED 127.0.0.1:1)\",\"suggestion\":\"Make sure your local IP is allowed in Network Restrictions and Network Bans.\\nh",
+  "l_noEditorialPlanContent": true,
+  "editorialPlanHits": [],
+  "m_storeSchemaGeneric": true,
+  "m_storeTablesPresent": true,
+  "m_storeOrderNumberFnGeneric": true,
+  "m_storeCreateOrderFnPresent": true,
+  "m_clubsHasOrderPrefixColumn": true,
+  "n_membershipOkOrBlocked": true,
+  "n_membershipSchemaGeneric": true,
+  "n_membershipPlansTablePresent": true,
+  "n_membershipRpcIsDataDriven": true,
+  "n_canonicalBaselineBlockers": [],
+  "baselineReady": true
+}

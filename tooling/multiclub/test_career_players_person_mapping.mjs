@@ -13,8 +13,8 @@ const stats = JSON.parse(fs.readFileSync(path.join(RECON, 'career_players_person
 const canonicalPeople = JSON.parse(fs.readFileSync(path.join(RECON, 'canonical_people_candidates.json'), 'utf8'));
 const careerPlayers = JSON.parse(fs.readFileSync(path.join(ROOT, 'data_export', 'goias', 'career_players.json'), 'utf8'));
 
-const schemaSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902140000_add_person_id_to_career_players.sql'), 'utf8');
-const backfillSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902150000_backfill_career_players_person_id.sql'), 'utf8');
+const schemaSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902140000_add_person_id_to_career_players.sql'), 'utf8');
+const backfillSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902150000_backfill_career_players_person_id.sql'), 'utf8');
 
 let passed = 0;
 const failures = [];

@@ -31,10 +31,10 @@ const insertPlan = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'people_insert_p
 const clubSpells = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_club_spells_seed.json'), 'utf8'));
 const lineupMatches = JSON.parse(fs.readFileSync(path.join(ROOT, 'data_export', 'goias', 'lineup_matches.json'), 'utf8'));
 
-const createMatchesSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902100000_create_matches.sql'), 'utf8');
-const seedMatchesSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902110000_seed_goias_matches.sql'), 'utf8');
-const createAppearancesSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902120000_create_player_match_appearances.sql'), 'utf8');
-const seedAppearancesSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902130000_seed_goias_player_match_appearances.sql'), 'utf8');
+const createMatchesSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902100000_create_matches.sql'), 'utf8');
+const seedMatchesSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902110000_seed_goias_matches.sql'), 'utf8');
+const createAppearancesSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902120000_create_player_match_appearances.sql'), 'utf8');
+const seedAppearancesSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902130000_seed_goias_player_match_appearances.sql'), 'utf8');
 
 let passed = 0;
 const failures = [];

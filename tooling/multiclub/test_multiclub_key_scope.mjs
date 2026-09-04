@@ -118,7 +118,7 @@ test('SECOND_CLUB_BLOCKED = true enquanto existir constraint global bloqueando r
 });
 
 console.log('\n6) testes estáticos das migrations bridge (M2.2B-A) — só aditivo');
-const MIG = path.join(ROOT, 'supabase', 'migrations');
+const MIG = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files');
 const bridgeFiles = fs.existsSync(MIG) ? fs.readdirSync(MIG).filter((f) => f.includes('prepare_tenant_aware') && f.endsWith('.sql')) : [];
 const bridgeSql = bridgeFiles.map((f) => fs.readFileSync(path.join(MIG, f), 'utf8')).join('\n');
 test('existem as 4 migrations bridge tenant_aware (content/progress/engagement/notification)', () => {

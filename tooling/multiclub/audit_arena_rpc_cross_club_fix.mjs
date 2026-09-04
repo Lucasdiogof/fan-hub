@@ -7,7 +7,7 @@ const ROOT = path.resolve(__dirname, '../..');
 const RECON = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const MIGRATION_PATH = path.join(
   ROOT,
-  'supabase/migrations/20260903150000_fix_arena_score_cross_club_reads.sql'
+  'archive/supabase/goias-legacy-migrations/files/20260903150000_fix_arena_score_cross_club_reads.sql'
 );
 
 const RPC_SIGNATURE_TYPES =

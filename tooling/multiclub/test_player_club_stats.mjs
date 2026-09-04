@@ -15,8 +15,8 @@ const sources = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_club_stat_s
 const canonicalPeople = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'canonical_people_candidates.json'), 'utf8'));
 const clubSpells = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_club_spells_seed.json'), 'utf8'));
 const buildStats = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_club_stats_seed_stats.json'), 'utf8'));
-const migrationSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902080000_create_player_club_stats.sql'), 'utf8');
-const seedSql = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902090000_seed_goias_player_club_stats.sql'), 'utf8');
+const migrationSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902080000_create_player_club_stats.sql'), 'utf8');
+const seedSql = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902090000_seed_goias_player_club_stats.sql'), 'utf8');
 
 let passed = 0;
 const failures = [];
@@ -146,10 +146,10 @@ test('o INSERT de player_club_stat_sources usa ON CONFLICT (player_club_stat_id,
   assert.ok(seedSql.includes('on conflict (player_club_stat_id, source_type, source_ref) do nothing;'));
 });
 test('reexecutar build+generate produz o MESMO SQL byte-a-byte', () => {
-  const before = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902090000_seed_goias_player_club_stats.sql'), 'utf8');
+  const before = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902090000_seed_goias_player_club_stats.sql'), 'utf8');
   execFileSync(process.execPath, [path.join(__dirname, 'build_player_club_stats_seed.mjs')], { stdio: 'pipe' });
   execFileSync(process.execPath, [path.join(__dirname, 'generate_player_club_stats_seed.mjs')], { stdio: 'pipe' });
-  const after = fs.readFileSync(path.join(ROOT, 'supabase', 'migrations', '20260902090000_seed_goias_player_club_stats.sql'), 'utf8');
+  const after = fs.readFileSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902090000_seed_goias_player_club_stats.sql'), 'utf8');
   assert.strictEqual(before, after);
 });
 test('nenhum CLUB_TOTAL duplicado (person_id, club_id); nenhum spell_id duplicado entre linhas SPELL', () => {
