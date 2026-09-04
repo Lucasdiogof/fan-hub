@@ -94,6 +94,62 @@ test('Debug-bragantino.xcconfig define APP_CLUB = bragantino', () => {
   assert.match(debugBragantinoXcconfig, /APP_CLUB = bragantino/);
 });
 
+console.log('\n4b) cadeia INTEIRA prova ponta-a-ponta: as 6 build configs REAIS do target Runner (não as do PROJECT, que têm o mesmo nome mas nenhum baseConfigurationReference) -> xcconfig -> APP_CLUB certo, pros 3 build types (Debug/Release/Profile inclui Archive)');
+// Extrai só o buildConfigurationList do TARGET Runner (97C147051CF9000F007C117D),
+// nunca o do PROJECT (que tem configs com os MESMOS nomes "Debug-goias" etc.
+// mas sem xcconfig nenhum) -- achar por nome sozinho pegaria o bloco errado.
+const targetConfigListMatch = pbxproj.match(
+  /97C147051CF9000F007C117D \/\* Build configuration list[^*]*\*\/ = \{[\s\S]*?buildConfigurations = \(([\s\S]*?)\);/,
+);
+test('achou o buildConfigurationList do target Runner (não o do PROJECT)', () => {
+  assert.ok(targetConfigListMatch, 'bloco não encontrado');
+});
+const targetConfigEntries = [...targetConfigListMatch[1].matchAll(/(\w{24}) \/\* ([\w-]+) \*\//g)];
+test('target Runner tem exatamente 9 build configs (Debug/Release/Profile x nenhum-flavor/goias/bragantino)', () => {
+  assert.strictEqual(targetConfigEntries.length, 9);
+});
+
+const expectedAppClub = { goias: 'goias', bragantino: 'bragantino' };
+for (const club of ['goias', 'bragantino']) {
+  for (const buildType of ['Debug', 'Release', 'Profile']) {
+    const configName = `${buildType}-${club}`;
+    test(`target Runner "${configName}" -> xcconfig -> APP_CLUB = ${expectedAppClub[club]} (prova completa, não assumida)`, () => {
+      const entry = targetConfigEntries.find((e) => e[2] === configName);
+      assert.ok(entry, `config "${configName}" não está no buildConfigurationList do target Runner`);
+      const configUuid = entry[1];
+      // acha o BLOCO XCBuildConfiguration com esse UUID (pode haver um bloco
+      // de mesmo NOME no nível do PROJECT — por isso busca pelo UUID exato,
+      // nunca pelo nome).
+      const blockMatch = pbxproj.match(new RegExp(`\\t\\t${configUuid} /\\* ${configName} \\*/ = \\{[\\s\\S]*?\\n\\t\\t\\};`));
+      assert.ok(blockMatch, `bloco XCBuildConfiguration ${configUuid} não encontrado`);
+      const baseConfigMatch = blockMatch[0].match(/baseConfigurationReference = (\w{24}) \/\* ([\w.-]+) \*\//);
+      assert.ok(baseConfigMatch, `"${configName}" (target Runner) não tem baseConfigurationReference -- APP_CLUB nunca chegaria no build`);
+      const xcconfigFileName = baseConfigMatch[2];
+      assert.strictEqual(xcconfigFileName, `${configName}.xcconfig`);
+      const xcconfigContent = fs.readFileSync(path.join(ROOT, 'ios', 'Flutter', 'Flavors', xcconfigFileName), 'utf8');
+      assert.match(xcconfigContent, new RegExp(`APP_CLUB = ${expectedAppClub[club]}\\b`));
+    });
+  }
+}
+
+console.log('\n4c) prova por analogia: o MESMO mecanismo (xcconfig -> env var em Run Script) já é usado de verdade neste projeto para FLUTTER_ROOT — não é uma suposição sobre como o Xcode se comporta');
+test('FLUTTER_ROOT é definido em Generated.xcconfig, incluído pela MESMA cadeia (Debug.xcconfig -> Debug-<flavor>.xcconfig) que define APP_CLUB', () => {
+  const generatedXcconfig = fs.readFileSync(path.join(ROOT, 'ios', 'Flutter', 'Generated.xcconfig'), 'utf8');
+  const debugXcconfig = fs.readFileSync(path.join(ROOT, 'ios', 'Flutter', 'Debug.xcconfig'), 'utf8');
+  assert.match(generatedXcconfig, /FLUTTER_ROOT\s*=/);
+  assert.match(debugXcconfig, /#include "Generated\.xcconfig"/);
+  assert.match(debugGoiasXcconfig, /#include "\.\.\/Debug\.xcconfig"/);
+});
+test('o "Run Script" (Flutter) já existente usa $FLUTTER_ROOT direto no shellScript -- prova viva de que build settings de xcconfig chegam no ambiente de um Run Script deste projeto', () => {
+  // Busca a DEFINIÇÃO do bloco (com " = {" no fim), nunca a referência
+  // dentro de `buildPhases = (...)` que aparece antes no arquivo e tem o
+  // MESMO UUID — um regex sem essa âncora captura o shellScript errado
+  // (achado real ao rodar este teste: pegava a phase nova, não a do Flutter).
+  const flutterRunScriptMatch = pbxproj.match(/9740EEB61CF901F6004384FC \/\* Run Script \*\/ = \{[\s\S]*?shellScript = "((?:[^"\\]|\\.)*)"/);
+  assert.ok(flutterRunScriptMatch);
+  assert.match(flutterRunScriptMatch[1], /\$FLUTTER_ROOT/);
+});
+
 console.log('\n5) pbxproj continua sintaticamente coerente (contagem de chaves balanceada)');
 test('número de "{" == número de "}" no arquivo inteiro', () => {
   const opens = (pbxproj.match(/\{/g) || []).length;
