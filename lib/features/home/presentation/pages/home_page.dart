@@ -287,8 +287,10 @@ class _ScrollContent extends StatelessWidget {
                   onAction: () => context.read<HomeCubit>().load(),
                 ),
               ],
-              const SizedBox(height: AppSpacing.xl),
-              ClubEntryCard(onTap: () => context.push('/clube')),
+              if (capabilities.hasClubContent) ...[
+                const SizedBox(height: AppSpacing.xl),
+                ClubEntryCard(onTap: () => context.push('/clube')),
+              ],
               if (capabilities.enabledArenaGames.isNotEmpty) ...[
                 const SizedBox(height: AppSpacing.lg),
                 const ArenaSpotlightCard(),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
@@ -70,11 +71,12 @@ class DigitalMembershipCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  ClubBadge(team: MockData.goias, size: 30, onDark: true),
+                  const ClubBadge.activeClub(size: 30, onDark: true),
                   const SizedBox(width: AppSpacing.sm),
-                  const Text(
-                    'SÓCIO ESMERALDA',
-                    style: TextStyle(
+                  Text(
+                    sl<ClubConfig>().productNames.membershipProgramName
+                        .toUpperCase(),
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 11,
                       fontWeight: FontWeight.w800,

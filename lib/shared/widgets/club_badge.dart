@@ -54,13 +54,21 @@ bool get _isIosWeb => kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
 /// no `setUp` — 4 arquivos já ajustados, ver relatório da M3.3).
 class ClubBadge extends StatelessWidget {
   const ClubBadge({
-    required this.team,
+    required Team this.team,
     this.size = 44,
     this.onDark = false,
     super.key,
   });
 
-  final Team team;
+  /// Escudo do clube ATIVO, direto de `ClubConfig` — sem nenhum `Team`
+  /// (mockado ou real) envolvido. Preferir esta variante em qualquer lugar
+  /// que só precise "meu escudo" (Home, cabeçalho de "O Clube", carteirinha
+  /// de sócio) — nunca escudo de adversário/partida, que continua exigindo
+  /// [ClubBadge.new] com um `Team` de verdade.
+  const ClubBadge.activeClub({this.size = 44, this.onDark = false, super.key})
+    : team = null;
+
+  final Team? team;
   final double size;
 
   /// Sobre fundo escuro (Hero, banners), o escudo oficial aparece na cor
@@ -77,7 +85,8 @@ class ClubBadge extends StatelessWidget {
     // oficial. Nunca muda com o tema: é um `Image.asset` puro, sem filtro
     // de cor nenhum.
     final clubConfig = sl<ClubConfig>();
-    if (team.matchesClub(clubConfig)) {
+    final team = this.team;
+    if (team == null || team.matchesClub(clubConfig)) {
       _debugLog(source: 'asset:active-club');
       return Image.asset(
         clubConfig.assets.crestBadge,
@@ -129,9 +138,10 @@ class ClubBadge extends StatelessWidget {
 
   void _debugLog({required String source, String? url, String? proxied}) {
     if (!kDebugMode) return;
+    final team = this.team;
     debugPrint(
-      '[ClubBadge] team="${team.name}" id=${team.id} '
-      'matchesActiveClub=${team.matchesClub(sl<ClubConfig>())} '
+      '[ClubBadge] team="${team?.name ?? '(activeClub)'}" id=${team?.id} '
+      'matchesActiveClub=${team == null || team.matchesClub(sl<ClubConfig>())} '
       'source=$source isWeb=$kIsWeb platform=$defaultTargetPlatform '
       'url=$url proxied=$proxied',
     );
@@ -194,7 +204,11 @@ class ClubBadge extends StatelessWidget {
     );
   }
 
+  // Só chamado a partir de `build()` depois do branch `activeClub`/
+  // `matchesClub` acima já ter retornado — `team` é sempre não-nulo aqui
+  // (time de partida/adversário sem escudo de rede).
   Widget _fallback(BuildContext context) {
+    final team = this.team!;
     final asset = team.crestAsset;
     if (asset != null) {
       return SizedBox(

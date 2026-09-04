@@ -70,14 +70,14 @@ List<MainNavItemData> mainNavItems(BuildContext context) {
 }
 
 /// M4.2A — se a aba [index] deve aparecer/ser navegável pro clube ativo.
-/// Jogos e Home nunca são gateados (são o núcleo do produto, sem capability
-/// dedicada) — Sócio/Loja/Mídia sim. Mídia (Notícias + Instagram/YouTube/X)
-/// fica visível se QUALQUER uma das duas capabilities dela estiver ligada —
-/// a granularidade de qual filtro aparece DENTRO da aba é decidida por
+/// Home nunca é gateada (é o núcleo do produto, sem capability dedicada) —
+/// Jogos/Sócio/Loja/Mídia sim. Mídia (Notícias + Instagram/YouTube/X) fica
+/// visível se QUALQUER uma das duas capabilities dela estiver ligada — a
+/// granularidade de qual filtro aparece DENTRO da aba é decidida por
 /// `SocialFeedPage`, não aqui.
 bool isTabEnabled(int index, ClubCapabilities capabilities) {
   return switch (index) {
-    jogosTabIndex => true,
+    jogosTabIndex => capabilities.hasMatches,
     socioTabIndex => capabilities.hasMembership,
     homeTabIndex => true,
     lojaTabIndex => capabilities.hasStore,

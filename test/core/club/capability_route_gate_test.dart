@@ -36,6 +36,14 @@ void main() {
       '/crowd-lineup',
       '/news',
       '/news/article',
+      '/clube',
+      '/clube/historia',
+      '/clube/titulos',
+      '/clube/diretoria',
+      '/clube/hino',
+      '/clube/transparencia',
+      '/partners',
+      '/match/onef-123',
       '/squad',
       '/squad/123',
       '/profile/notifications',
@@ -147,6 +155,40 @@ void main() {
       },
     );
 
+    test('hasClubContent=false: /clube e sub-rotas bloqueadas', () {
+      expect(
+        capabilityGateRedirect('/clube', capabilities),
+        featureUnavailableRoute,
+      );
+      for (final blocked in [
+        '/clube/historia',
+        '/clube/titulos',
+        '/clube/diretoria',
+        '/clube/hino',
+        '/clube/transparencia',
+      ]) {
+        expect(
+          capabilityGateRedirect(blocked, capabilities),
+          featureUnavailableRoute,
+          reason: blocked,
+        );
+      }
+    });
+
+    test('hasClubContent=false: /partners bloqueada', () {
+      expect(
+        capabilityGateRedirect('/partners', capabilities),
+        featureUnavailableRoute,
+      );
+    });
+
+    test('hasMatches=false: /match/:fixtureId bloqueada (deep link direto também)', () {
+      expect(
+        capabilityGateRedirect('/match/onef-123', capabilities),
+        featureUnavailableRoute,
+      );
+    });
+
     test('Squad e Notificações NUNCA gateadas, mesmo pro clube sintético', () {
       expect(capabilityGateRedirect('/squad', capabilities), isNull);
       expect(capabilityGateRedirect('/squad/123', capabilities), isNull);
@@ -174,6 +216,8 @@ void main() {
         hasPassport: false,
         hasNews: false,
         hasSocial: false,
+        hasClubContent: false,
+        hasMatches: false,
         enabledArenaGames: {},
       );
       expect(
@@ -199,6 +243,8 @@ void main() {
           hasPassport: false,
           hasNews: false,
           hasSocial: false,
+          hasClubContent: false,
+          hasMatches: false,
           enabledArenaGames: {'quiz'},
         );
         expect(capabilityGateRedirect('/arena', capabilities), isNull);

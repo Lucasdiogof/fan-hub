@@ -14,6 +14,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/club_data_unavailable_exception.dart';
+import 'package:goias_app/core/club/club_registry.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/games/career_path/career_players.dart';
@@ -237,14 +238,15 @@ void main() {
     });
   });
 
-  group('Sanity — clubRegistry ainda só tem Goiás (nenhum 2º clube real cadastrado)', () {
-    test('syntheticClubBConfig nunca é resolvido por resolveActiveClub — só usado direto em teste', () {
+  group('Sanity — a fixture sintética syntheticClubBConfig é só de TESTE (nunca no clubRegistry de produção, que hoje tem goias + bragantino)', () {
+    test('syntheticClubBConfig é distinta do Goiás e nunca cadastrada no registry — só usada direto em teste de isolamento', () {
       expect(goiasClubConfig, isA<ClubConfig>());
       expect(syntheticClubBConfig.identity.code, isNot('goias'));
       expect(
         syntheticClubBConfig.identity.canonicalClubId,
         isNot(goiasClubConfig.identity.canonicalClubId),
       );
+      expect(clubRegistry.values.contains(syntheticClubBConfig), isFalse);
     });
   });
 }

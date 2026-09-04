@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -29,7 +28,7 @@ class ClubEntryCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              ClubBadge(team: MockData.goias, size: 48),
+              const ClubBadge.activeClub(size: 48),
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Column(

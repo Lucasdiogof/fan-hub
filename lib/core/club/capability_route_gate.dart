@@ -66,6 +66,15 @@ String? capabilityGateRedirect(String location, ClubCapabilities capabilities) {
   if (_matches(location, '/news') && !capabilities.hasNews) {
     return featureUnavailableRoute;
   }
+  if (_matches(location, '/clube') && !capabilities.hasClubContent) {
+    return featureUnavailableRoute;
+  }
+  if (_matches(location, '/partners') && !capabilities.hasClubContent) {
+    return featureUnavailableRoute;
+  }
+  if (_matches(location, '/match') && !capabilities.hasMatches) {
+    return featureUnavailableRoute;
+  }
 
   // Squad (`/squad`) e Notificações (`/profile/notifications`) NUNCA são
   // gateadas de propósito — ver o comentário em `ClubCapabilities`.

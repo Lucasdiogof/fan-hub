@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:video_player/video_player.dart';
 
-const _videoAsset = 'lib/assets/videos/goias_splash.mp4';
 const _videoEndTolerance = Duration(milliseconds: 60);
 
 /// Mesma cor do `flutter_native_splash` (pubspec.yaml) — não é branco puro
@@ -12,18 +11,25 @@ const _videoEndTolerance = Duration(milliseconds: 60);
 /// variante dark configurada.
 const _splashBackground = Color(0xFFF6F8F7);
 
-/// Splash em vídeo (`goias_splash.mp4`) — usada em toda plataforma que não
-/// seja iOS Web/PWA (ver `SplashVideoPage`, que decide entre esta e
-/// `AnimatedImageSplash`). Dono do ciclo de vida do `VideoPlayerController`
-/// e de tudo que é específico de vídeo (pausar ao ir pra segundo plano,
-/// detectar o fim); o pai só recebe os callbacks já resolvidos.
+/// Splash em vídeo — usada em toda plataforma que não seja iOS Web/PWA nem
+/// clube sem vídeo próprio (ver `SplashVideoPage`, que decide entre esta e
+/// `StaticLogoSplash` e passa o asset via `videoAsset`). Dono do ciclo de
+/// vida do `VideoPlayerController` e de tudo que é específico de vídeo
+/// (pausar ao ir pra segundo plano, detectar o fim); o pai só recebe os
+/// callbacks já resolvidos.
 class VideoSplashView extends StatefulWidget {
   const VideoSplashView({
+    required this.videoAsset,
     required this.onReady,
     required this.onCompleted,
     required this.onFailure,
     super.key,
   });
+
+  /// Path do vídeo a tocar — vem de `ClubConfig.assets.splashVideo`. Quem
+  /// chama (`SplashVideoPage`) só monta este widget quando o valor não é
+  /// `null`; nunca há um vídeo default embutido aqui dentro.
+  final String videoAsset;
 
   /// O primeiro frame já foi decodificado — pai usa isso pra disparar a
   /// revelação em círculo.
@@ -53,7 +59,7 @@ class _VideoSplashViewState extends State<VideoSplashView>
   }
 
   Future<void> _initVideo() async {
-    final controller = VideoPlayerController.asset(_videoAsset);
+    final controller = VideoPlayerController.asset(widget.videoAsset);
     try {
       await controller.initialize();
       // Mudo + sem loop ANTES de `play()` — Safari/iOS só libera autoplay
