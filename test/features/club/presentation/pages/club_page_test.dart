@@ -66,6 +66,13 @@ void main() {
     await tester.pumpWidget(wrap());
 
     expect(find.text('GOIÁS ESPORTE CLUBE'), findsOneWidget);
+    final headerCrest = tester.widget<Image>(
+      find.byType(Image).first,
+    );
+    expect(
+      (headerCrest.image as AssetImage).assetName,
+      goiasClubConfig.assets.crestBadge,
+    );
     expect(find.text('História'), findsOneWidget);
     expect(find.text('Elenco'), findsOneWidget);
     expect(find.text('Títulos'), findsOneWidget);

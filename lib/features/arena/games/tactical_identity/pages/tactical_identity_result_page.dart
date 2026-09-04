@@ -184,9 +184,9 @@ class _TacticalIdentityResultPageState
                                     children: [
                                       profile,
                                       const SizedBox(height: AppSpacing.xl),
-                                      map,
-                                      const SizedBox(height: AppSpacing.xl),
                                       references,
+                                      const SizedBox(height: AppSpacing.xl),
+                                      map,
                                       const SizedBox(height: AppSpacing.xl),
                                       actions,
                                     ],
@@ -559,7 +559,7 @@ class _ActionsSection extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: AppSpacing.sm),
+        const SizedBox(height: AppSpacing.md),
         SizedBox(
           height: 50,
           child: OutlinedButton(

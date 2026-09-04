@@ -39,11 +39,12 @@ class _FakeAssetBundle extends CachingAssetBundle {
   }
 }
 
-/// M4.2A — prova de VERDADE (widget real montado, não só a lógica pura de
-/// `capabilityGateRedirect`) que "capability=false não aparece em menus" é
-/// real: Sócio/Loja/Mídia (rótulos reais) somem da bottom nav E do rail
-/// pro clube sintético (todas as 3 capabilities correspondentes false),
-/// mas o Goiás continua vendo as 5 abas de sempre — nenhuma regressão.
+/// M4.2A (+ auditoria Matches/football) — prova de VERDADE (widget real
+/// montado, não só a lógica pura de `capabilityGateRedirect`) que
+/// "capability=false não aparece em menus" é real: Jogos/Sócio/Loja/Mídia
+/// (rótulos reais) somem da bottom nav E do rail pro clube sintético (todas
+/// as capabilities correspondentes false), mas o Goiás continua vendo as 5
+/// abas de sempre — nenhuma regressão.
 Future<void> _pumpBottomNav(WidgetTester tester) async {
   await tester.pumpWidget(
     DefaultAssetBundle(
@@ -111,27 +112,32 @@ void main() {
     });
   });
 
-  group('club-b sintético — Sócio/Loja/Mídia somem (capability=false)', () {
+  // SUPERSEDIDO (auditoria Matches/football multiclub): Jogos passou a ter
+  // capability própria (`hasMatches`, hoje `false` no fixture sintético —
+  // Worker de futebol ainda não existe pro clube). Antes desta rodada,
+  // Jogos nunca era gateado (era "núcleo do produto"); os testes abaixo
+  // refletem o novo comportamento correto — só Home continua nunca gateada.
+  group('club-b sintético — Jogos/Sócio/Loja/Mídia somem (capability=false)', () {
     setUp(() => sl.registerSingleton<ClubConfig>(syntheticClubBConfig));
 
     testWidgets(
-      'bottom nav esconde Sócio/Loja/Mídia, mantém Jogos',
+      'bottom nav esconde Jogos/Sócio/Loja/Mídia',
       (tester) async {
         await _pumpBottomNav(tester);
         final l10n = await AppLocalizations.delegate.load(const Locale('pt'));
-        expect(find.text(l10n.navMatches), findsOneWidget);
+        expect(find.text(l10n.navMatches), findsNothing);
         expect(find.text(l10n.navMembership), findsNothing);
         expect(find.text(l10n.navStore), findsNothing);
         expect(find.text(l10n.navMedia), findsNothing);
       },
     );
 
-    testWidgets('rail esconde Sócio/Loja/Mídia, mantém Jogos e Home', (
+    testWidgets('rail esconde Jogos/Sócio/Loja/Mídia, mantém Home', (
       tester,
     ) async {
       await _pumpRail(tester);
       final l10n = await AppLocalizations.delegate.load(const Locale('pt'));
-      expect(find.text(l10n.navMatches), findsOneWidget);
+      expect(find.text(l10n.navMatches), findsNothing);
       expect(find.text(l10n.navHome), findsOneWidget);
       expect(find.text(l10n.navMembership), findsNothing);
       expect(find.text(l10n.navStore), findsNothing);

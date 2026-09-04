@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/release/release_gate.dart';
 import 'package:goias_app/core/router/splash_gate.dart';
@@ -40,13 +41,21 @@ const _fallbackTimeout = Duration(seconds: 7);
 /// carregar antes do timer de segurança em rede móvel ruim) — pra essa
 /// plataforma restrita, o mais confiável é o mais simples: só o brasão
 /// oficial parado sobre o fundo da splash (`StaticLogoSplash`), sem vídeo
-/// nem timeline. Em qualquer outro ambiente (Android, iOS nativo, Web fora
-/// do iOS) o vídeo `goias_splash.mp4` continua normalmente, sem mudança.
-/// Mesmo `kIsWeb && defaultTargetPlatform == TargetPlatform.iOS` usado em
-/// `ClubBadge` pro bug do CanvasKit — mesma raiz (Safari/WebKit se comportando diferente
-/// do resto), sinalização de plataforma consistente no app inteiro.
-bool get _shouldUseStaticLogo =>
-    kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
+/// nem timeline. Mesmo `kIsWeb && defaultTargetPlatform == TargetPlatform.
+/// iOS` usado em `ClubBadge` pro bug do CanvasKit — mesma raiz (Safari/
+/// WebKit se comportando diferente do resto), sinalização de plataforma
+/// consistente no app inteiro.
+bool get _isIosWeb => kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
+
+/// Pura (sem `BuildContext`/widget) — decide vídeo (`VideoSplashView`) vs.
+/// brasão estático (`StaticLogoSplash`), testável sozinha, mesmo padrão do
+/// `capabilityGateRedirect`. `splashVideoAsset` vem de `ClubConfig.assets.
+/// splashVideo` — `null` (clube sem vídeo oficial ainda) nunca cai pro
+/// vídeo de outro clube, sempre pro brasão estático.
+bool shouldPlaySplashVideo({
+  required bool isIosWeb,
+  required String? splashVideoAsset,
+}) => !isIosWeb && splashVideoAsset != null;
 
 class SplashVideoPage extends StatefulWidget {
   const SplashVideoPage({super.key});
@@ -210,11 +219,19 @@ class _SplashVideoPageState extends State<SplashVideoPage>
     );
   }
 
+  /// `splashVideo == null` (clube sem vídeo oficial ainda — ver
+  /// `ClubAssets.splashVideo`) cai pro mesmo fallback do iOS Web: nunca um
+  /// vídeo de outro clube.
   Widget _buildSplashContent() {
-    if (_shouldUseStaticLogo) {
+    final splashVideo = sl<ClubConfig>().assets.splashVideo;
+    if (!shouldPlaySplashVideo(
+      isIosWeb: _isIosWeb,
+      splashVideoAsset: splashVideo,
+    )) {
       return StaticLogoSplash(onReady: _reveal, onCompleted: _finishSplash);
     }
     return VideoSplashView(
+      videoAsset: splashVideo!,
       onReady: _reveal,
       onCompleted: _finishSplash,
       onFailure: _finishSplash,

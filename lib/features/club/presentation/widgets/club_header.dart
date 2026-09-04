@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/mock/mock_data.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -15,10 +16,10 @@ class ClubHeader extends StatelessWidget {
     final colors = context.colors;
     return Column(
       children: [
-        ClubBadge(team: MockData.goias, size: 76),
+        const ClubBadge.activeClub(size: 76),
         const SizedBox(height: AppSpacing.lg),
         Text(
-          'GOIÁS ESPORTE CLUBE',
+          sl<ClubConfig>().identity.displayName.toUpperCase(),
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20,

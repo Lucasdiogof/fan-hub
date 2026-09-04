@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/mock/mock_data.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -25,7 +26,7 @@ class HomeBrandHeader extends StatelessWidget {
 
     final title = firstName != null
         ? '${_greeting(context)}, $firstName'
-        : 'GOIÁS ESPORTE CLUBE';
+        : sl<ClubConfig>().identity.displayName.toUpperCase();
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
@@ -34,7 +35,7 @@ class HomeBrandHeader extends StatelessWidget {
           // O brasão oficial já é auto-contido (aro branco próprio,
           // contraste em qualquer fundo) — não precisa mais do chip
           // circular por trás que a versão tingida antiga precisava.
-          ClubBadge(team: MockData.goias, size: 44),
+          const ClubBadge.activeClub(size: 44),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(

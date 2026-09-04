@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/network/api_client.dart';
 
 /// Hosts que não mandam `Access-Control-Allow-Origin` (ou bloqueiam de
@@ -31,6 +33,6 @@ String proxiedImageUrl(String url) {
   final parsed = Uri.tryParse(url);
   if (parsed == null || !_needsProxy(parsed.host)) return url;
   return Uri.parse(
-    '${resolveApiBaseUrl()}/api/image-proxy',
+    '${resolveApiBaseUrl(sl<ClubConfig>())}/api/image-proxy',
   ).replace(queryParameters: {'url': url}).toString();
 }
