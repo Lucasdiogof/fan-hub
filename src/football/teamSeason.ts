@@ -4,7 +4,7 @@ import { resolveClubServerConfig } from './_lib/club_server_config';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
 import { fetchTeamSeasonMatchCards } from './providers/onefootball_provider';
-import { normalizeOneFootballMatchCard } from './normalize/match';
+import { normalizeOneFootballMatchCardWithCompetition } from './normalize/match';
 
 // A temporada muda pouco — só quando um jogo agendado ganha data/horário
 // confirmado, ou quando um jogo termina. Bem mais longo que os outros
@@ -38,10 +38,7 @@ export async function handleTeamSeason(request: Request, env: Env, clubCode: str
       async () => {
         const cards = await fetchTeamSeasonMatchCards(teamSlug);
         const matches = cards
-          .map((card) => ({
-            ...normalizeOneFootballMatchCard(card),
-            competition: card.competitionName ?? null,
-          }))
+          .map((card) => normalizeOneFootballMatchCardWithCompetition(card))
           .sort((a, b) => (a.kickoff ?? '').localeCompare(b.kickoff ?? ''));
         return { matches };
       },

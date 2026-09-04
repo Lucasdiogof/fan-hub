@@ -1,5 +1,9 @@
 import type { Env } from './_lib/config';
-import { loadConfig, requireOneFootballCompetitionSlug } from './_lib/config';
+import {
+  loadConfig,
+  requirePrimaryCompetitionDisplayName,
+  requirePrimaryCompetitionSlug,
+} from './_lib/config';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
 import { fetchCompetitionMatchLists } from './providers/onefootball_provider';
@@ -7,14 +11,14 @@ import type { OneFootballMatchList } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchCard } from './normalize/match';
 
 const CACHE_TTL_SECONDS = 20 * 60;
-const COMPETITION_NAME = 'Brasileirão Série B';
 
 export const onRequestGet = handleCurrentRound;
 
 export async function handleCurrentRound(request: Request, env: Env): Promise<Response> {
   return withErrorHandling(async () => {
     const config = loadConfig(env);
-    const competitionSlug = requireOneFootballCompetitionSlug(config);
+    const competitionSlug = requirePrimaryCompetitionSlug(config);
+    const competitionName = requirePrimaryCompetitionDisplayName(config);
     const offset = parseOffset(new URL(request.url).searchParams.get('offset'));
 
     return cacheFirst(request, CACHE_TTL_SECONDS, 'football.current_round', config.cacheVersion, async () => {
@@ -24,7 +28,7 @@ export async function handleCurrentRound(request: Request, env: Env): Promise<Re
       const target = lists[targetIndex] ?? null;
 
       return {
-        competition: { name: COMPETITION_NAME, season: null },
+        competition: { name: competitionName, season: null },
         round: { number: null, label: target?.sectionHeader?.subtitle ?? null },
         matches: (target?.matchCards ?? []).map((card) => normalizeOneFootballMatchCard(card)),
         hasPrevious: targetIndex > 0,

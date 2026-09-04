@@ -1,27 +1,27 @@
-// M3.3 — registry mínimo de config de clube pro lado do servidor (Worker).
-// O `ClubConfig` do Flutter não existe aqui (runtimes diferentes) — este é
-// o equivalente mínimo, só com os campos que o Worker realmente usa. Nunca
-// duplica a config inteira do Flutter, nunca guarda secret (as credenciais
-// continuam só em env/wrangler secrets, nunca aqui).
+// M3.3 -> auditoria Matches/football multiclube: registry de config de
+// clube pro lado do servidor (Worker). O `ClubConfig` do Flutter não existe
+// aqui (runtimes diferentes) — este é o equivalente mínimo, só com os
+// campos que o Worker realmente usa. Nunca duplica a config inteira do
+// Flutter, nunca guarda secret (as credenciais continuam só em env/wrangler
+// secrets, nunca aqui).
 //
-// Hoje só `'goias'` está registrado — nenhum 2º clube real. Um `clubCode`
-// desconhecido NUNCA cai pro Goiás por omissão: lança `UnknownClubError`,
-// erro controlado (ver NO_SERVER_CROSS_CLUB_FALLBACK no relatório da M3.3).
+// Modelo: 1 Worker deploy POR CLUBE, mesmo código-fonte (`src/index.ts`
+// nunca muda por clube). Cada deploy carrega seu próprio `CLUB_CODE` (env
+// var, ver `config.ts`) — o allowlist de "qual clube este deploy serve" É
+// essa env var, não mais uma lista hardcoded no código. Um `clubCode`
+// pedido que não bata com o `CLUB_CODE` do PRÓPRIO deploy NUNCA cai pro
+// clube deste deploy por omissão: lança `UnknownClubError`, erro
+// controlado (ver NO_SERVER_CROSS_CLUB_FALLBACK no relatório da M3.3) — o
+// Worker do Goiás rejeita `bragantino`, o Worker do Bragantino rejeita
+// `goias`, sem exceção.
 import type { Env } from './config';
+import { ConfigError, loadConfig, requireTeamOneFootballSlug } from './config';
 
 export interface ClubServerConfig {
   code: string;
-  /** Mesmo UUID de `goiasClubConfig.identity.canonicalClubId` no Flutter
-   * (`lib/core/club/goias_club_config.dart`) — usado pra propagar `club_id`
-   * em `match_monitor_sessions`/`notification_events`. Testado por
-   * `club_server_config_drift.test.ts` que os 2 lados nunca divergem. */
-  canonicalClubId: string;
-  /** Substitui `Team.goiasId`/`ClubIntegrations.oneFootballTeamId` do lado
-   * do servidor — mesmo id (1863 pro Goiás), usado pra decidir de qual lado
-   * (casa/fora) o clube está numa partida ao vivo. */
-  oneFootballTeamId: number;
+  /** Slug do time no OneFootball (path `/pt-br/time/<slug>`) — único dado
+   * de clube que os handlers de futebol realmente leem hoje. */
   oneFootballSlug: string;
-  oneFootballCompetitionSlug: string;
 }
 
 export class UnknownClubError extends Error {
@@ -31,25 +31,28 @@ export class UnknownClubError extends Error {
   }
 }
 
-const GOIAS_CANONICAL_CLUB_ID = '4c16340d-300c-5ab2-903f-17519db9b146';
-const GOIAS_ONEFOOTBALL_TEAM_ID = 1863;
+/** Resolve [requestedClubCode] contra o `CLUB_CODE` deste deploy — nunca
+ * uma lista de múltiplos clubes num Worker só. `requestedClubCode` fora do
+ * `CLUB_CODE` do próprio deploy (ou `CLUB_CODE` ausente/mal configurado)
+ * sempre lança, nunca resolve silenciosamente pro clube deste deploy. */
+export function resolveClubServerConfig(requestedClubCode: string, env: Env): ClubServerConfig {
+  const config = loadConfig(env);
+  if (!config.clubCode) {
+    throw new ConfigError('CLUB_CODE não configurado neste deploy.');
+  }
+  if (requestedClubCode !== config.clubCode) {
+    throw new UnknownClubError(requestedClubCode);
+  }
+  return {
+    code: config.clubCode,
+    oneFootballSlug: requireTeamOneFootballSlug(config),
+  };
+}
 
-/** Todo `clubCode` que o Worker sabe resolver hoje — SECOND_CLUB_BLOCKED:
- * nenhum 2º clube real deve ser adicionado aqui sem autorização explícita
- * separada (mesma regra do `clubRegistry` do Flutter). */
-export const SERVER_CLUB_CODES = ['goias'] as const;
-
-/** Lança `UnknownClubError` pra qualquer código fora de `SERVER_CLUB_CODES`
- * — nunca resolve silenciosamente pro Goiás. As env vars continuam sendo a
- * fonte real do valor (nada duplicado no código além do registry/lookup em
- * si), então o `wrangler.toml` não precisa mudar. */
-// News/Social (raspagem do site oficial + redes sociais) só têm
-// integração configurada pro Goiás hoje — diferente do futebol
-// (`resolveClubServerConfig`, que resolveria qualquer código em
-// `SERVER_CLUB_CODES`), essas 2 features não têm nenhum outro clube pra
-// apontar ainda (achado da auditoria M4: eram 100% hardcoded, sem NENHUMA
-// dimensão de clube). Um `clubCode` diferente NUNCA cai pro conteúdo do
-// Goiás — os handlers devolvem "unavailable" explícito.
+// News/Social (raspagem do site oficial + redes sociais) — achado da
+// auditoria M4: eram 100% hardcoded, sem NENHUMA dimensão de clube. Fora
+// do escopo da auditoria Matches/football desta rodada (não tocado aqui);
+// continuam com o próprio `'goias'` fixo até uma rodada dedicada.
 export const NEWS_SOCIAL_CONFIGURED_CLUB_CODE = 'goias';
 
 /** `clubCode` explícito da request (`?club=<code>`) — ausente = o único
@@ -58,25 +61,4 @@ export const NEWS_SOCIAL_CONFIGURED_CLUB_CODE = 'goias';
  * de sempre quando nada é dito). */
 export function resolveRequestedClubCode(request: Request): string {
   return new URL(request.url).searchParams.get('club') ?? NEWS_SOCIAL_CONFIGURED_CLUB_CODE;
-}
-
-export function resolveClubServerConfig(clubCode: string, env: Env): ClubServerConfig {
-  if (clubCode !== 'goias') {
-    throw new UnknownClubError(clubCode);
-  }
-  const oneFootballSlug = env.GOIAS_ONEFOOTBALL_SLUG;
-  const oneFootballCompetitionSlug = env.ONEFOOTBALL_COMPETITION_SLUG;
-  if (!oneFootballSlug) {
-    throw new Error('GOIAS_ONEFOOTBALL_SLUG não configurado no wrangler.toml.');
-  }
-  if (!oneFootballCompetitionSlug) {
-    throw new Error('ONEFOOTBALL_COMPETITION_SLUG não configurado no wrangler.toml.');
-  }
-  return {
-    code: 'goias',
-    canonicalClubId: GOIAS_CANONICAL_CLUB_ID,
-    oneFootballTeamId: GOIAS_ONEFOOTBALL_TEAM_ID,
-    oneFootballSlug,
-    oneFootballCompetitionSlug,
-  };
 }

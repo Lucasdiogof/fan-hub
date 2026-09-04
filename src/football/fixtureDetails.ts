@@ -10,11 +10,10 @@ import { normalizeOneFootballMatchLineups } from './normalize/match_lineup';
 import { normalizeOneFootballMatchStat } from './normalize/match_stat';
 
 // Era 30 min — baixado por causa do mesmo motivo do team.ts: a Central da
-// partida agora faz polling nesta rota enquanto o jogo do Goiás está ao
-// vivo (ver `MatchDetailsCubit`), então 30 min deixaria o placar/minuto/
+// partida agora faz polling nesta rota enquanto o jogo do clube ativo está
+// ao vivo (ver `MatchDetailsCubit`), então 30 min deixaria o placar/minuto/
 // estatísticas presos na primeira leitura por boa parte do jogo.
 const CACHE_TTL_SECONDS = 60;
-const COMPETITION_NAME = 'Brasileirão Série B';
 
 /** `id` vem prefixado (`onef-<id>`) — o próprio Flutter nunca precisa
  * entender o prefixo, só devolve o que recebeu. */
@@ -36,8 +35,15 @@ async function handleOneFootballFixture(request: Request, cacheVersion: string, 
     if (!detail) {
       throw new ProviderError('Partida não encontrada.', 404, 'onefootball');
     }
+    // REGRA ABSOLUTA (auditoria Matches/football): esta partida pode ser de
+    // QUALQUER competição que o clube dispute — jamais usar
+    // PRIMARY_COMPETITION_DISPLAY_NAME aqui, nem como fallback. Só a
+    // competição REAL encontrada no payload (`detail.score.competition`,
+    // confirmada presente ao vivo) ou string vazia — nunca um campeonato
+    // inventado. `''` é a mesma convenção de "desconhecida" já usada em
+    // `getSeasonFixtures` no Flutter (`competitionName: ''`).
     return {
-      competition: { name: COMPETITION_NAME, season: null },
+      competition: { name: detail.score.competition?.name ?? '', season: null },
       match: normalizeOneFootballMatchScore(matchId, detail.score, detail.stadium),
       events: detail.events.map(normalizeOneFootballMatchEvent),
       lineups: detail.lineup ? normalizeOneFootballMatchLineups(detail.lineup) : null,

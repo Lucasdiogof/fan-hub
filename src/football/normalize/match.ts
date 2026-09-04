@@ -74,6 +74,24 @@ export function normalizeOneFootballMatchCard(card: OneFootballMatchCard, venue:
   };
 }
 
+/** Mesma normalização acima, mas com a competição REAL dessa partida
+ * específica anexada (`card.competitionName`, confirmado presente em todo
+ * card real de `/time/<slug>/<tab>` — ver auditoria Matches/football
+ * multiclube). Um time pode disputar várias competições ao mesmo tempo
+ * (Brasileirão, Copa do Brasil, torneio continental...) — nunca rotular
+ * TODOS os jogos do time com a competição principal do clube; o Flutter
+ * (`MatchDto.toEntity`) já sabe preferir este campo por partida e só cair
+ * pro nome de competição do nível da resposta quando ele vier `null`. */
+export function normalizeOneFootballMatchCardWithCompetition(
+  card: OneFootballMatchCard,
+  venue: string | null = null,
+): InternalMatch & { competition: string | null } {
+  return {
+    ...normalizeOneFootballMatchCard(card, venue),
+    competition: card.competitionName ?? null,
+  };
+}
+
 export function normalizeOneFootballMatchScore(
   matchId: string,
   score: OneFootballMatchScore,
