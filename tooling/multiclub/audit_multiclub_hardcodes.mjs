@@ -246,17 +246,26 @@ sanity.clubUuidOnlyInGoiasClubConfig = (() => {
   return { pass: offenders.length === 0, offenders, allowedFile: path.relative(ROOT, allowed) };
 })();
 
-sanity.clubRegistryOnlyGoias = (() => {
+// M4 (rebrand Fan Hub): o registry de produção tem os clubes REAIS `goias` +
+// `bragantino` (o sintético `club-b`/`clubb` foi removido). O sanity check
+// garante que SÓ clubes reais conhecidos entram — nenhum placeholder/sintético
+// e o Goiás sempre presente.
+sanity.clubRegistryRealClubs = (() => {
   const src = fs.readFileSync(path.join(ROOT, 'lib', 'core', 'club', 'club_registry.dart'), 'utf8');
   const keys = [...src.matchAll(/'([a-z_]+)':\s*\w+ClubConfig/g)].map((m) => m[1]);
-  return { pass: keys.length === 1 && keys[0] === 'goias', keys };
+  const known = ['goias', 'bragantino'];
+  const unexpected = keys.filter((k) => !known.includes(k));
+  return { pass: keys.includes('goias') && unexpected.length === 0, keys, unexpected };
 })();
 
-sanity.noSecondClubConfigFile = (() => {
+// Só as configs de clube CONHECIDAS podem existir (goias + bragantino reais);
+// qualquer outro `*_club_config.dart` seria um clube não-cadastrado/sintético.
+sanity.onlyKnownClubConfigs = (() => {
   const clubDir = path.join(ROOT, 'lib', 'core', 'club');
   const files = fs.readdirSync(clubDir);
-  const suspicious = files.filter((f) => /club_config\.dart$/.test(f) && f !== 'club_config.dart' && f !== 'goias_club_config.dart');
-  return { pass: suspicious.length === 0, files, suspicious };
+  const allowed = ['club_config.dart', 'goias_club_config.dart', 'bragantino_club_config.dart'];
+  const unexpected = files.filter((f) => /club_config\.dart$/.test(f) && !allowed.includes(f));
+  return { pass: unexpected.length === 0, files, unexpected };
 })();
 
 sanity.routesHaveNoClubSlug = (() => {

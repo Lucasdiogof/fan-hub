@@ -155,8 +155,9 @@
     "LineupMatchRepository": true,
     "QuizQuestionRepository": true
   },
-  "clubRegistryEntryCount": 1,
-  "clubRegistryOnlyGoias": true,
+  "clubRegistryEntryCount": 2,
+  "clubRegistryHasGoias": true,
+  "clubRegistryHasBragantino": true,
   "goiasUuidHardcodedInRepositories": [],
   "clubScopedFallbackExists": true,
   "clubDataUnavailableExists": true,

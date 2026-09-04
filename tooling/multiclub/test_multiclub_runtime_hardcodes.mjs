@@ -81,13 +81,28 @@ test('SHARED_IDENTITY_FIELDS explicitamente separado de SERVER_ONLY_PRESENTATION
     ['notificationGoalClubName', 'notificationVictoryNickname'],
   );
 });
-test('canonicalClubId idêntico nos 3 (Flutter goiasClubConfig, Worker club_server_config.ts, Edge Functions _shared/club_server_config.ts)', () => {
+// SUPERSEDIDO (genericização do Worker de futebol, rodada Fan Hub/
+// Bragantino): `canonicalClubId`/`oneFootballTeamId` deixaram de ser "nos
+// 3" — o Worker não carrega mais nenhum dos dois (moveu pra config por
+// deploy via wrangler.toml, com SLUG em vez de id numérico, e nunca fala
+// com Supabase pra precisar de canonicalClubId). Viraram 2-way
+// (Flutter<->Edge, os 2 pontos que genuinamente usam esses campos); o
+// Worker é coberto separadamente pelo teste de slug abaixo. Não é
+// regressão de isolamento — é a arquitetura pretendida.
+test('canonicalClubId idêntico entre Flutter e Edge Functions (Worker não carrega esse campo — nunca fala com Supabase)', () => {
   assert.strictEqual(audit.driftCheck.canonicalClubIdMatchesAcrossAll3, true);
   assert.strictEqual(audit.driftCheck.flutterCanonicalClubId, '4c16340d-300c-5ab2-903f-17519db9b146');
+  assert.strictEqual(audit.driftCheck.workerCanonicalClubId, null);
 });
-test('oneFootballTeamId idêntico nos 3 (1863)', () => {
+test('oneFootballTeamId idêntico entre Flutter e Edge Functions (1863)', () => {
   assert.strictEqual(audit.driftCheck.oneFootballTeamIdMatchesAcrossAll3, true);
   assert.strictEqual(audit.driftCheck.flutterOneFootballTeamId, '1863');
+  assert.strictEqual(audit.driftCheck.workerOneFootballTeamId, null);
+});
+test('oneFootballSlug idêntico entre Flutter e Worker (wrangler.toml) — o campo que o Worker REALMENTE usa hoje', () => {
+  assert.strictEqual(audit.driftCheck.oneFootballSlugMatchesFlutterAndWorker, true);
+  assert.strictEqual(audit.driftCheck.flutterOneFootballSlug, 'goias-1863');
+  assert.strictEqual(audit.driftCheck.workerOneFootballSlug, 'goias-1863');
 });
 test('code idêntico entre Flutter e Edge Functions (\'goias\')', () => {
   assert.strictEqual(audit.driftCheck.codeMatchesFlutterAndEdge, true);

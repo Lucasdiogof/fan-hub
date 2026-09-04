@@ -49,9 +49,19 @@ test('FABRICADO: se main.dart nunca tivesse sido tocado, o grep encontraria 0 �
   assert.strictEqual(/\.branding\./.test(fakeMainWithoutBranding), false);
 });
 
-console.log('\n3) ProductNaming — deliberadamente NÃO wireado nesta rodada (decisão documentada, não esquecimento)');
-test('productNamingConsumers=0 — l10n continua sendo a fonte real de copy, ClubProductNaming não foi ligado (fora de escopo da M4.1 por decisão explícita)', () => {
-  assert.strictEqual(stats.productNamingConsumers, 0);
+// SUPERSEDIDO (rodada Fan Hub/Bragantino): a M4.1 documentou
+// `productNamingConsumers=0` como decisão explícita ("l10n é a fonte real
+// de copy, ClubProductNaming fora de escopo"). A rodada de isolamento
+// visual/membership desta etapa LIGOU 2 consumidores reais —
+// `digital_membership_card.dart`/`membership_success_page.dart` agora leem
+// `sl<ClubConfig>().productNames.membershipProgramName` em vez de
+// hardcoded "Sócio Esmeralda" — exatamente o tipo de wiring que a M4.1
+// previu como possível numa etapa futura, não uma regressão de escopo. O
+// check em si (`grepCount('\\.productNames\\.', 'lib/')`) é dinâmico, só
+// reflete a contagem real atual.
+console.log('\n3) ProductNaming — parcialmente wireado (2 consumidores reais em Membership, ligados nesta rodada)');
+test('productNamingConsumers=2 — digital_membership_card.dart + membership_success_page.dart leem productNames.membershipProgramName de verdade', () => {
+  assert.strictEqual(stats.productNamingConsumers, 2);
 });
 
 console.log('\n4) Config bypasses — os 5 confirmados corrigidos');

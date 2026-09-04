@@ -152,7 +152,10 @@ const audit = {
   tables: results,
   diHasSlCallForEachRepo,
   clubRegistryEntryCount,
-  clubRegistryOnlyGoias: clubRegistryEntryCount === 1 && registrySrc.includes("'goias'"),
+  // M4: registry de produção agora tem 2 clubes REAIS (goias + bragantino);
+  // o Goiás continua presente e não há clube sintético.
+  clubRegistryHasGoias: registrySrc.includes("'goias'"),
+  clubRegistryHasBragantino: registrySrc.includes("'bragantino'"),
   goiasUuidHardcodedInRepositories: globalUuidGrepFiles,
   clubScopedFallbackExists,
   clubDataUnavailableExists,
