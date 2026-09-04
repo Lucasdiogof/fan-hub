@@ -51,9 +51,10 @@ void main() {
       expect(key.toLowerCase(), isNot(contains('secret')));
     });
 
-    test('redirectUrl do Bragantino é null (sem Worker próprio ainda) — nunca herda o do Goiás', () {
+    test('redirectUrl do Bragantino aponta pro Worker DELE (deployado em 2026-09-04), nunca herda o do Goiás', () {
       SupabaseConfig.configure(bragantinoClubConfig);
-      expect(SupabaseConfig.redirectUrl, isNull);
+      expect(SupabaseConfig.redirectUrl, isNotNull);
+      expect(SupabaseConfig.redirectUrl, isNot(goiasClubConfig.integrations.supabaseRedirectUrl));
       SupabaseConfig.configure(goiasClubConfig);
       expect(SupabaseConfig.redirectUrl, isNotNull);
     });
