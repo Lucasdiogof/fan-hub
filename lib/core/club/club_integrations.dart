@@ -32,6 +32,9 @@ class ClubIntegrations {
     required this.orderPrefix,
     required this.pickupAddress,
     this.workerBaseUrl,
+    this.supabaseUrl,
+    this.supabasePublishableKey,
+    this.supabaseRedirectUrl,
     this.contactWhatsappNumber,
     this.contactWhatsappUrl,
     this.socialInstagramUrl,
@@ -60,6 +63,26 @@ class ClubIntegrations {
   /// (`hasMatches`, `hasNews`, `hasSocial`) já fica indisponível antes
   /// disso de qualquer jeito.
   final String? workerBaseUrl;
+
+  /// Projeto Supabase deste clube — cada clube tem seu PRÓPRIO projeto,
+  /// fisicamente separado, `auth.users` nunca compartilhado (ver
+  /// docs/multiclub/48-53). `null` só enquanto o clube não tiver projeto
+  /// Supabase configurado (nenhum caso real hoje — Goiás e Bragantino já
+  /// têm os dois projetos). `SupabaseConfig.configure` (chamado 1x em
+  /// `main()`) FALHA LOUD se isto for `null` pro clube ativo — nunca cai
+  /// pro projeto do Goiás como fallback.
+  final String? supabaseUrl;
+
+  /// Chave publishable/anon — client-side por design (nunca
+  /// service_role/senha de banco aqui). `null` = DATA_GAP real (ex.:
+  /// Bragantino ainda não tem a chave anon copiada do dashboard) — nunca
+  /// um valor inventado.
+  final String? supabasePublishableKey;
+
+  /// URL de redirect pra fluxos de auth (magic link / reset de senha) —
+  /// tipicamente a URL do Worker deste clube. `null` enquanto o clube não
+  /// tiver esse Worker/rota configurada (mesmo racional de [workerBaseUrl]).
+  final String? supabaseRedirectUrl;
 
   /// Substitui o literal `'GOI'` em `generate_store_order_number()`
   /// (`supabase/store_orders.sql`) — hoje só documentado, a function SQL

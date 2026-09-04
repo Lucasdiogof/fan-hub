@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/resolve_active_club.dart';
 import 'package:goias_app/core/config/sentry_config.dart';
 import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -41,6 +42,11 @@ Future<void> main() async {
   } catch (error, stackTrace) {
     debugPrint('Firebase.initializeApp falhou: $error\n$stackTrace');
   }
+  // Resolve o Supabase do clube ATIVO (flavor) antes de qualquer outra
+  // coisa — nunca depende de `--dart-define`/Additional run args pra saber
+  // qual projeto usar, e nunca cai pro Goiás se o clube ativo não tiver
+  // config real (ver `SupabaseConfig.configure`).
+  SupabaseConfig.configure(resolveActiveClub());
   await Supabase.initialize(
     url: SupabaseConfig.url,
     publishableKey: SupabaseConfig.publishableKey,

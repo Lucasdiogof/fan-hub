@@ -89,9 +89,13 @@ const bragantinoClubConfig = ClubConfig(
     displayName: 'Red Bull Bragantino',
     shortName: 'Bragantino',
     fanDemonym: 'Bragantino',
-    // TODO(M4-dados): uuid REAL de public.clubs (0 db push nesta rodada).
-    // Placeholder óbvio — enquanto for isto, dado tenant do Bragantino é vazio.
-    canonicalClubId: '00000000-0000-0000-0000-0000000b2a60',
+    // UUID REAL, já aplicado em public.clubs do projeto Bragantino
+    // (yrgyzkaaudyzmsqwzecj) — uuidV5(CLUBS_UUID_NAMESPACE,
+    // 'goias-app:multiclub:club:2'), canonizado em
+    // tooling/multiclub/clubs_registry.json e confirmado ao vivo via
+    // `select * from public.clubs` (ver docs/multiclub/53+). Não é mais
+    // placeholder desde a convergência de schema de 2026-09-04.
+    canonicalClubId: '51683d2a-ea1d-57c6-8014-996146f242e7',
   ),
   branding: ClubBranding(light: _placeholderLight, dark: _placeholderDark),
   assets: ClubAssets(
@@ -129,6 +133,17 @@ const bragantinoClubConfig = ClubConfig(
     // a URL do Worker do Goiás. `null` faz `ApiClient` falhar de forma
     // controlada (nunca cross-club) — ver `ClubIntegrations.workerBaseUrl`.
     workerBaseUrl: null,
+    // Projeto Supabase REAL já existe (yrgyzkaaudyzmsqwzecj) e já tem o
+    // schema canônico convergido (SCHEMA_DIFF=0 contra o Goiás) — a URL é
+    // informação pública (deriva só do project ref), preenchida. A chave
+    // publishable/anon é DATA_GAP real: nunca copiada do dashboard nesta
+    // sessão (só a senha de banco foi compartilhada, e senha de banco NUNCA
+    // vai pro Flutter — client-side só usa a chave anon). `null` aqui faz
+    // `SupabaseConfig.configure` falhar loud se alguém tentar rodar o
+    // flavor bragantino sem preencher isto antes — nunca cai pro Goiás.
+    supabaseUrl: 'https://yrgyzkaaudyzmsqwzecj.supabase.co',
+    supabasePublishableKey: null,
+    supabaseRedirectUrl: null,
     orderPrefix: 'BRA',
     // Loja desligada (hasStore=false) — endereço nunca é exibido; placeholder.
     pickupAddress: ClubPickupAddress(

@@ -40,6 +40,13 @@ const goiasClubConfig = ClubConfig(
     oneFootballSlug: 'goias-1863',
     oneFootballCompetitionSlug: 'brasileirao-serie-b-superbet-119',
     workerBaseUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
+    // Projeto Supabase real do Goiás (yonozsdgyrhgqrvydbnr) — valores que
+    // já eram o `defaultValue` hardcoded de `SupabaseConfig` (agora
+    // resolvido por clube, não mais por dart-define com fallback pro
+    // Goiás). Chave publishable, nunca segredo de servidor.
+    supabaseUrl: 'https://yonozsdgyrhgqrvydbnr.supabase.co',
+    supabasePublishableKey: 'sb_publishable_G7wFeRd5jcKNI0oek24-5g_x3lDJV8t',
+    supabaseRedirectUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
     orderPrefix: 'GOI',
     pickupAddress: ClubPickupAddress(
       storeName: 'Goiás Store',

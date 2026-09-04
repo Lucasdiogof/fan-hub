@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/config/supabase_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/main.dart';
@@ -17,6 +18,10 @@ void main() {
     // storage needs a mocked shared_preferences channel to init in tests.
     SharedPreferences.setMockInitialValues({});
     initializeBrazilTimeZone();
+    // Este smoke test é pré-multiclub (skip: true no único testWidgets, ver
+    // comentário abaixo) — sempre configurado pro Goiás explicitamente,
+    // nunca depende de --dart-define/APP_CLUB do ambiente de teste.
+    SupabaseConfig.configure(goiasClubConfig);
     await Supabase.initialize(
       url: SupabaseConfig.url,
       publishableKey: SupabaseConfig.publishableKey,
