@@ -166,11 +166,13 @@ void main() {
       });
 
       test(
-        'Bragantino HOJE: hasMatches=false + workerBaseUrl=null -> combinação válida '
-        '(Worker ainda não existe; o dia que existir, os dois mudam juntos)',
+        'Bragantino: Worker deployado e validado em 2026-09-04 -> hasMatches=true + '
+        'workerBaseUrl real, os dois juntos (nunca um sem o outro)',
         () {
-          expect(bragantinoClubConfig.capabilities.hasMatches, isFalse);
-          expect(bragantinoClubConfig.integrations.workerBaseUrl, isNull);
+          expect(bragantinoClubConfig.capabilities.hasMatches, isTrue);
+          expect(bragantinoClubConfig.integrations.workerBaseUrl, isNotNull);
+          expect(bragantinoClubConfig.integrations.workerBaseUrl, isNotEmpty);
+          expect(bragantinoClubConfig.integrations.workerBaseUrl, isNot(goiasClubConfig.integrations.workerBaseUrl));
         },
       );
     },

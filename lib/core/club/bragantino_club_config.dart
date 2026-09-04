@@ -129,10 +129,13 @@ const bragantinoClubConfig = ClubConfig(
     // Worker) — consistente com `_competitionShortNames` em
     // `next_match_hero.dart`, que já normaliza pra esse padrão.
     oneFootballCompetitionSlug: 'brasileirao-betano-16',
-    // Worker do Bragantino ainda não existe/não foi deployado — NUNCA usa
-    // a URL do Worker do Goiás. `null` faz `ApiClient` falhar de forma
-    // controlada (nunca cross-club) — ver `ClubIntegrations.workerBaseUrl`.
-    workerBaseUrl: null,
+    // Worker do Bragantino live desde 2026-09-04 — Cloudflare Workers
+    // Builds (Git integration) rodando `tool/cloudflare_build_web_flavor.sh
+    // bragantino`, validado ao vivo: /, /api/football/team/bragantino,
+    // /api/football/standings (Brasileirão Série A), /api/football/
+    // current-round todos OK; /api/football/team/goias corretamente
+    // rejeitado (404) por este mesmo deploy.
+    workerBaseUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
     // Projeto Supabase REAL já existe (yrgyzkaaudyzmsqwzecj) e já tem o
     // schema canônico convergido (SCHEMA_DIFF=0 contra o Goiás). URL +
     // chave publishable/anon confirmadas pelo usuário em 2026-09-04 —
@@ -141,12 +144,9 @@ const bragantinoClubConfig = ClubConfig(
     // de verdade pro projeto Bragantino quando o flavor `bragantino` roda.
     supabaseUrl: 'https://yrgyzkaaudyzmsqwzecj.supabase.co',
     supabasePublishableKey: 'sb_publishable_pa2JzbHgClEqRBAajsPjig_uvL5Ntcc',
-    // Sem Worker/domínio próprio do Bragantino ainda (workerBaseUrl
-    // continua null) -- redirectTo fica null nos fluxos de auth (reset de
-    // senha etc.), Supabase usa a Site URL configurada no dashboard do
-    // próprio projeto Bragantino como destino. Preencher quando o Worker
-    // for deployado (mesmo racional de workerBaseUrl).
-    supabaseRedirectUrl: null,
+    // Worker próprio existe desde 2026-09-04 — mesmo padrão do Goiás
+    // (redirectTo dos fluxos de auth aponta pro Worker do próprio clube).
+    supabaseRedirectUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
     orderPrefix: 'BRA',
     // Loja desligada (hasStore=false) — endereço nunca é exibido; placeholder.
     pickupAddress: ClubPickupAddress(
@@ -177,10 +177,11 @@ const bragantinoClubConfig = ClubConfig(
     hasNews: false,
     hasSocial: false,
     hasClubContent: false,
-    // Worker do Bragantino ainda não existe/não foi testado — nunca usa o
-    // Worker do Goiás nem temporariamente. Vira true só depois do deploy
-    // + validação (ver ClubIntegrations.workerBaseUrl abaixo).
-    hasMatches: false,
+    // Worker deployado e validado ao vivo em 2026-09-04 (ver
+    // ClubIntegrations.workerBaseUrl) — hasMatches liga junto com
+    // workerBaseUrl, nunca um sem o outro (invariante já coberto pelo
+    // teste em resolve_active_club_test.dart).
+    hasMatches: true,
     enabledArenaGames: <String>{},
   ),
   productNames: ClubProductNaming(
