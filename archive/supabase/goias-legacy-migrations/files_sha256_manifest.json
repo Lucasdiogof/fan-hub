@@ -1,0 +1,321 @@
+{
+  "generatedAt": "2026-09-04T18:03:38.843Z",
+  "fileCount": 63,
+  "files": [
+    {
+      "file": "20260830220000_baseline_marker.sql",
+      "sha256": "2d930c7405151f107665aa9fb6946bf42298569718bbb63cd0a0a3d3744e4e34",
+      "bytes": 1156
+    },
+    {
+      "file": "20260830220001_arena_record_score_item_validation.sql",
+      "sha256": "22e080aac0a57545ae8655268350835f070758db42a3671252ab47339e30ccc0",
+      "bytes": 5971
+    },
+    {
+      "file": "20260830220002_subscribe_to_plan_rpc.sql",
+      "sha256": "0be39943e148fd0b26bbd0574dd2ad475b08eb7eb2a48e8a024743476ff4ff15",
+      "bytes": 4306
+    },
+    {
+      "file": "20260831000000_tickets_refund_status.sql",
+      "sha256": "b497b391fde81dc1fdbe61987e4bbc002303a47292e94ee61c6e84323ebc8714",
+      "bytes": 1040
+    },
+    {
+      "file": "20260831010000_passport_attendance_breakdown.sql",
+      "sha256": "1a95295de6cb7f0601b6ba156f70a338afc3bc5b83390491710a184104ad7595",
+      "bytes": 1561
+    },
+    {
+      "file": "20260831020000_career_players_revalidated_v2.sql",
+      "sha256": "114109fb99863ed51d9a15d643f9d51692caf12ce0a21df07b36123083f577df",
+      "bytes": 46386
+    },
+    {
+      "file": "20260831030000_passport_trajectory_view_other_users.sql",
+      "sha256": "94a082c183fd14ce8b3850c0160ef303cd53dc66d57752c4aa519c6d6f0bbb62",
+      "bytes": 6682
+    },
+    {
+      "file": "20260831040000_passport_venue_audit.sql",
+      "sha256": "d91974f8a8c25591fc858f38d1e88fbc378db1613a349e5a6646b596b4c3c129",
+      "bytes": 996220
+    },
+    {
+      "file": "20260831050000_passport_venue_haile_pinheiro_name.sql",
+      "sha256": "cd370d08bd52bfe8ecea006647622dc984ac17dd7a4173a17cb9acbf483a34dd",
+      "bytes": 847
+    },
+    {
+      "file": "20260901000000_create_people.sql",
+      "sha256": "14f51905f7f179eab233edbaecf1a19f19509711ce83107c7efb4b49b784e5fc",
+      "bytes": 3320
+    },
+    {
+      "file": "20260901010000_seed_goias_people.sql",
+      "sha256": "5ffadfdb8ece972ebf23fad227db6b6b12ef137a4b732a8a905b03d0323286f9",
+      "bytes": 9551
+    },
+    {
+      "file": "20260901020000_create_person_aliases.sql",
+      "sha256": "8d538416ee6fa3c8a997b02d65112d995233ee60b7677beaf5acff67d68b2e22",
+      "bytes": 9108
+    },
+    {
+      "file": "20260901030000_seed_goias_person_aliases.sql",
+      "sha256": "9f3ce700c68a897811f882d929f159406b706ebda61ea8bda7a63e561ff1cc5b",
+      "bytes": 64629
+    },
+    {
+      "file": "20260902000000_add_evair_welliton_people.sql",
+      "sha256": "1751e1a2d406c85d013c9fc7aa9484aa4bd8b15437a28e0b2302ffdd651f8269",
+      "bytes": 1260
+    },
+    {
+      "file": "20260902010000_add_evair_welliton_aliases.sql",
+      "sha256": "95d982161c7724cdafa6b0d8792b2f40e06dbb554d267ce326dc83bff443e0ac",
+      "bytes": 2756
+    },
+    {
+      "file": "20260902020000_create_clubs.sql",
+      "sha256": "1f7493914c2535fa7a5e06830872582ba8b4ace31af9d44f083b859ffba6430c",
+      "bytes": 2490
+    },
+    {
+      "file": "20260902030000_seed_clubs.sql",
+      "sha256": "f904548cf9db61bdaf49c119b84a1f5f6f2c111bb46038839406c9f276956eb7",
+      "bytes": 1962
+    },
+    {
+      "file": "20260902040000_create_player_club_spells.sql",
+      "sha256": "d9efdc760378efc4785175ce19b77e122370a177dce0e5e22cf86979adba7d23",
+      "bytes": 8848
+    },
+    {
+      "file": "20260902050000_seed_goias_player_club_spells.sql",
+      "sha256": "550b04545a52911640c100f9f7c6ef9f266a73a838b7428427e5118fa012968d",
+      "bytes": 23387
+    },
+    {
+      "file": "20260902060000_create_player_positions.sql",
+      "sha256": "122d163765392e9e26d15ff4b1ae2275650dcbb035ea9cc7bc663c2af4298b83",
+      "bytes": 9017
+    },
+    {
+      "file": "20260902070000_seed_goias_player_positions.sql",
+      "sha256": "b4571799c245bb2549016c32ba0426ad6dda0000f024df0a885cd6c1043fd33a",
+      "bytes": 74808
+    },
+    {
+      "file": "20260902080000_create_player_club_stats.sql",
+      "sha256": "cfd5274dadb248b5703887b9e760d5586d140efa123f2fca57c59cffd0a07daa",
+      "bytes": 11144
+    },
+    {
+      "file": "20260902090000_seed_goias_player_club_stats.sql",
+      "sha256": "180749cb73803d3475fc2e171bd8e12f96063fc9c91369de1998de9c338bd1d5",
+      "bytes": 29590
+    },
+    {
+      "file": "20260902100000_create_matches.sql",
+      "sha256": "0e5f595c098ad6c8a8a2602a9d79773b33ad4496f51691a0bc552ab21fdff511",
+      "bytes": 13325
+    },
+    {
+      "file": "20260902110000_seed_goias_matches.sql",
+      "sha256": "52e0a6449512a6e85fbaf07a4dbbeffabe300f527c058704ab91654ea8ecc2bb",
+      "bytes": 18748
+    },
+    {
+      "file": "20260902120000_create_player_match_appearances.sql",
+      "sha256": "4486937eb69f2382d31afb00c1bb07b6b7bedfb97fbf6b4f501cba114a525ee5",
+      "bytes": 7979
+    },
+    {
+      "file": "20260902130000_seed_goias_player_match_appearances.sql",
+      "sha256": "82fc5d51dda518d2bd3c6f02144179e6f8325e15a2ab4975491f165b48a2e10c",
+      "bytes": 76804
+    },
+    {
+      "file": "20260902140000_add_person_id_to_career_players.sql",
+      "sha256": "47b421cf8f67e216f19452e706172cc1f4fa904f0f213c8cfef6dc7ce1f9ea3c",
+      "bytes": 2624
+    },
+    {
+      "file": "20260902150000_backfill_career_players_person_id.sql",
+      "sha256": "0faec693d9c6e7f43a1937ee9a91edcd3100f12ced7470f7cec818052baa8f12",
+      "bytes": 11258
+    },
+    {
+      "file": "20260902160000_add_person_id_to_guess_players.sql",
+      "sha256": "4ed5d85f541dd619099ebd9373eb679cee7c319fcc8958a64f562656df157ced",
+      "bytes": 2391
+    },
+    {
+      "file": "20260902170000_backfill_guess_players_person_id.sql",
+      "sha256": "4bea31f1530f91684b2f64bb62c59e41f094156337a0877c4c0b9697b77c0fd1",
+      "bytes": 35960
+    },
+    {
+      "file": "20260902180000_add_person_id_to_squad_members.sql",
+      "sha256": "e45eff3115b01935339b7b5dcda4222c96b22f1a9d45296e50a45b0c1d7ce08b",
+      "bytes": 2548
+    },
+    {
+      "file": "20260902190000_backfill_squad_members_person_id.sql",
+      "sha256": "d91a44872d0590cbacb04bd3fcf42d15b0c309eeee59570bb43a88426bd530fd",
+      "bytes": 15877
+    },
+    {
+      "file": "20260902200000_fix_current_squad_ongoing_spells.sql",
+      "sha256": "6aaa5d4d73885a3e1ccb1d3c34041436f786a40a0079473b79bf13fe78f66a7a",
+      "bytes": 19657
+    },
+    {
+      "file": "20260902210000_add_current_squad_missing_club_total_stats.sql",
+      "sha256": "5fccb44c1f4f4bf7d14b4760106560b76db05bb8c3c7103cc624cd97d455384d",
+      "bytes": 9452
+    },
+    {
+      "file": "20260902220000_add_multiclub_content_tenant_scope.sql",
+      "sha256": "0b6ff256f22d4bcc961ca455184b1f9dc36bbdb3944862aa005d6c61ad24eeec",
+      "bytes": 13018
+    },
+    {
+      "file": "20260902230000_add_multiclub_arena_quiz_progress_tenant_scope.sql",
+      "sha256": "43aaf28be58fddef9d7f9855cafa09e9801184d23aaf9af47c42093889d89d04",
+      "bytes": 19861
+    },
+    {
+      "file": "20260902240000_add_multiclub_career_lineup_progress_tenant_scope.sql",
+      "sha256": "01d2f72c172d6b7f7771cdadf6ea6f64cb4ab61e229ca918fc93414c468054be",
+      "bytes": 9212
+    },
+    {
+      "file": "20260902250000_add_multiclub_tickets_store_tenant_scope.sql",
+      "sha256": "689efa2d4087e4130ff7ca2bb9345781958d20d74a9f19d59e7daead53d6a88a",
+      "bytes": 10980
+    },
+    {
+      "file": "20260902260000_add_multiclub_membership_tenant_scope.sql",
+      "sha256": "b5fa9db74aa589ec6c734e210a5e702f00a6de7e8df5eedf9001f42fdaa5c9d5",
+      "bytes": 5054
+    },
+    {
+      "file": "20260902270000_add_multiclub_notifications_tenant_scope.sql",
+      "sha256": "c21bc54e62dca4f085c74363efc7926eb58475c2d9e4afe314c90e22488fa63b",
+      "bytes": 9350
+    },
+    {
+      "file": "20260903000000_add_arena_tenant_aware_rpcs.sql",
+      "sha256": "374e1ad4929be4990f636c917e0dc46a782167d33cf492755d80cabd66508c65",
+      "bytes": 15519
+    },
+    {
+      "file": "20260903010000_add_membership_tenant_aware_rpcs.sql",
+      "sha256": "b3428bc21441cabe7781f5203435ef7b8944eb5a93fa0e05f8bd8f6c129cf141",
+      "bytes": 4787
+    },
+    {
+      "file": "20260903020000_add_crowd_lineup_tenant_aware_rpc.sql",
+      "sha256": "bca18ffc631fd4f997019e93d0d46d3c772b99d076f9e26b49c69848263110b3",
+      "bytes": 2715
+    },
+    {
+      "file": "20260903030000_add_store_tenant_aware_rpc.sql",
+      "sha256": "a5e7dbb44340d67868e0927ea9854068f0b71ae85d4acb1b92ee47d841ed281d",
+      "bytes": 3797
+    },
+    {
+      "file": "20260903040000_harden_tenant_rpc_execute_grants.sql",
+      "sha256": "e9aade91380f98a68ce45a141cb3b294cd10c5bee2c78f808d9e47cec967475e",
+      "bytes": 4518
+    },
+    {
+      "file": "20260903050000_prepare_tenant_aware_content_keys.sql",
+      "sha256": "4e6543f5f833e6ae51b096eff7a3ca8841685104592c890d111d89d8eb2ce316",
+      "bytes": 2637
+    },
+    {
+      "file": "20260903060000_prepare_tenant_aware_progress_keys.sql",
+      "sha256": "bd8743e78da2ef965f8994c6f76928b79e5930cf105a32cbcd52cb066919e31e",
+      "bytes": 2736
+    },
+    {
+      "file": "20260903070000_prepare_tenant_aware_engagement_keys.sql",
+      "sha256": "41737c14e4730487e35a9e908e30ab691304d70766f1f121b0d2770250972cb5",
+      "bytes": 2920
+    },
+    {
+      "file": "20260903080000_prepare_tenant_aware_notification_keys.sql",
+      "sha256": "a6323e8e3644452308e8c2984656fc8b410082da9c23f5073bbf670d875bb7d5",
+      "bytes": 2139
+    },
+    {
+      "file": "20260903090000_update_arena_score_tenant_conflict.sql",
+      "sha256": "8f6fe3b68fe3563c0cc4e5326d242c5d61e352833bcab6c69a06cd0cea9081a7",
+      "bytes": 8199
+    },
+    {
+      "file": "20260903100000_add_membership_checkin_ticket_rpc.sql",
+      "sha256": "47cdc740be27dc3c15a8aa0aec12c44224c3afce82747a4b96864a23f4d906ca",
+      "bytes": 4442
+    },
+    {
+      "file": "20260903110000_add_app_release_requirements.sql",
+      "sha256": "7bdb05adc21c6a83d267e3a658fd98de7493532e6afd025a3bae72381a83a091",
+      "bytes": 2664
+    },
+    {
+      "file": "20260903120000_finalize_tenant_aware_keys.sql",
+      "sha256": "3589084dadf1f7e168e0d757f2c084c60dddfad609eea4045abe953d0f1aca39",
+      "bytes": 5535
+    },
+    {
+      "file": "20260903130000_drop_transitional_club_defaults.sql",
+      "sha256": "dca105688cd8b9acd24f8bc2504fbbc0a7e33fb7613584c8b556b5c92c93c049",
+      "bytes": 3083
+    },
+    {
+      "file": "20260903140000_retire_legacy_rpc_execute_grants.sql",
+      "sha256": "e179badc8583742aa61e621445cac84de925ef0336f8f07ee72fe51467771274",
+      "bytes": 2621
+    },
+    {
+      "file": "20260903150000_fix_arena_score_cross_club_reads.sql",
+      "sha256": "1b40b8603c6876fdb42310fbad8913e7de339c320f9be34c60e56ff270be5ef0",
+      "bytes": 8646
+    },
+    {
+      "file": "20260903160000_add_club_id_to_notification_tokens.sql",
+      "sha256": "05b77429913773dc505f7cc594b45e00864b6ea58151d4fc2f5e7768198b5887",
+      "bytes": 2482
+    },
+    {
+      "file": "20260903170000_drop_default_notification_tokens_club_id.sql",
+      "sha256": "697ab703e44101e6e7c7a6f2736946589039bed87a203d94e6d05bb5b148c076",
+      "bytes": 645
+    },
+    {
+      "file": "20260903180000_fix_ambiguous_id_membership_rpcs.sql",
+      "sha256": "607b57e30aaef26bfcd46a316b24e56cd9bf91903cbe311a75eeb0836d0cde95",
+      "bytes": 4545
+    },
+    {
+      "file": "20260904190000_multiclub_canonical_convergence.sql",
+      "sha256": "d6f9c466f10581690e770602f7513f3a9152d912c1a17411059aed7d6e84b633",
+      "bytes": 15551
+    },
+    {
+      "file": "20260904220000_harden_legacy_rpc_acl_parity.sql",
+      "sha256": "d8cec2b795bd83a8239aa9f41c3cf4d98807cfcaa56db6a2b29887d46d1d5d6d",
+      "bytes": 3693
+    },
+    {
+      "file": "20260904230000_align_function_body_order_with_canonical.sql",
+      "sha256": "cc232edb043fca8f7490d0daca2ea1996498bec09275b4d63cbbadb27261b9e0",
+      "bytes": 4736
+    }
+  ]
+}
