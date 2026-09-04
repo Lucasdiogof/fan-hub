@@ -6,6 +6,7 @@
   "shortName": "Goiás EC",
   "description": "Goiás EC - o ecossistema digital do torcedor esmeraldino.",
   "appleTitle": "Goiás EC",
+  "outDir": "build/web",
   "themeColor": "#004C1B",
   "themeLight": "#F6F8F7",
   "themeDark": "#09110C",
