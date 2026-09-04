@@ -29,7 +29,7 @@ class GuessPlayer {
     this.academyHistory = const [],
     this.nationalityCode,
     this.nationalityName,
-    this.goiasDebutYear,
+    this.clubDebutYear,
     this.imageUrl,
     this.dataStatus = GuessPlayerDataStatus.incomplete,
     this.personId,
@@ -73,7 +73,7 @@ class GuessPlayer {
 
   /// Primeiro ano em que o jogador entrou em campo oficialmente pelo
   /// Goiás — nunca ano de contratação/anúncio/retorno.
-  final int? goiasDebutYear;
+  final int? clubDebutYear;
 
   final String? imageUrl;
 
@@ -87,7 +87,7 @@ class GuessPlayer {
       position != null &&
       shirtNumber != null &&
       academyClub != null &&
-      goiasDebutYear != null;
+      clubDebutYear != null;
 
   /// Derivado, não guardado: evita uma segunda fonte de verdade que possa
   /// dessincronizar dos 5 campos + status.

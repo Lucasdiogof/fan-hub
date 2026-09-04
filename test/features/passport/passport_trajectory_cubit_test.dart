@@ -104,7 +104,7 @@ class _FakeTrajectoryRepository implements PassportRepository {
 
 PassportMatch _attendedMatch(
   String id, {
-  int goiasScore = 1,
+  int clubScore = 1,
   int opponentScore = 0,
 }) {
   return PassportMatch(
@@ -115,7 +115,7 @@ PassportMatch _attendedMatch(
     competition: 'Campeonato Goiano',
     competitionCode: 'GOIANO',
     opponent: 'Vila Nova',
-    goiasScore: goiasScore,
+    clubScore: clubScore,
     opponentScore: opponentScore,
     attended: true,
   );
@@ -280,7 +280,7 @@ void main() {
   test(
     'selectMemorableMatch: só pode escolher entre as partidas "Eu fui" já carregadas',
     () async {
-      final match = _attendedMatch('m2', goiasScore: 3, opponentScore: 2);
+      final match = _attendedMatch('m2', clubScore: 3, opponentScore: 2);
       repository.attendedMatches = [match];
       await cubit.load();
 

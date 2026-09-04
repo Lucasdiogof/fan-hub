@@ -75,9 +75,9 @@ class PassportState extends Equatable {
             case PassportFilter.notAttended:
               return !effectiveAttended(match);
             case PassportFilter.home:
-              return match.goiasIsHome == true;
+              return match.clubIsHome == true;
             case PassportFilter.away:
-              return match.goiasIsHome == false;
+              return match.clubIsHome == false;
             case PassportFilter.neutral:
               return match.neutralSite == true;
           }

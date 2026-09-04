@@ -105,7 +105,7 @@ class _MatchRow extends StatelessWidget {
     final dateLabel =
         '${date.day.toString().padLeft(2, '0')}/'
         '${date.month.toString().padLeft(2, '0')}/${date.year}';
-    final hasScore = match.goiasScore != null && match.opponentScore != null;
+    final hasScore = match.clubScore != null && match.opponentScore != null;
 
     return Material(
       color: selected
@@ -156,7 +156,7 @@ class _MatchRow extends StatelessWidget {
               if (hasScore) ...[
                 const SizedBox(width: AppSpacing.sm),
                 Text(
-                  '${match.goiasScore} x ${match.opponentScore}',
+                  '${match.clubScore} x ${match.opponentScore}',
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w900,

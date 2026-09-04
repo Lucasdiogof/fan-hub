@@ -119,7 +119,7 @@ class _ResultRow extends StatelessWidget {
             flex: 2,
             child: _DirectionalCell(
               result: result.debutYear,
-              label: result.guessedPlayer.goiasDebutYear?.toString() ?? '—',
+              label: result.guessedPlayer.clubDebutYear?.toString() ?? '—',
             ),
           ),
         ],

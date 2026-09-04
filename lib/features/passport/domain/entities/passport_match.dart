@@ -38,13 +38,13 @@ class PassportMatch extends Equatable {
     this.matchTime,
     this.kickoffAt,
     this.round,
-    this.goiasIsHome,
+    this.clubIsHome,
     this.neutralSite,
     this.homeTeam,
     this.awayTeam,
     this.homeScore,
     this.awayScore,
-    this.goiasScore,
+    this.clubScore,
     this.opponentScore,
     this.scoreDisplay,
     this.outcome,
@@ -62,13 +62,13 @@ class PassportMatch extends Equatable {
   final String competitionCode;
   final String? round;
   final String opponent;
-  final bool? goiasIsHome;
+  final bool? clubIsHome;
   final bool? neutralSite;
   final String? homeTeam;
   final String? awayTeam;
   final int? homeScore;
   final int? awayScore;
-  final int? goiasScore;
+  final int? clubScore;
   final int? opponentScore;
   final String? scoreDisplay;
   final PassportOutcome? outcome;
@@ -97,13 +97,13 @@ class PassportMatch extends Equatable {
     competitionCode: map['competition_code'] as String,
     round: map['round'] as String?,
     opponent: map['opponent'] as String,
-    goiasIsHome: map['goias_is_home'] as bool?,
+    clubIsHome: map['club_is_home'] as bool?,
     neutralSite: map['neutral_site'] as bool?,
     homeTeam: map['home_team'] as String?,
     awayTeam: map['away_team'] as String?,
     homeScore: map['home_score'] as int?,
     awayScore: map['away_score'] as int?,
-    goiasScore: map['goias_score'] as int?,
+    clubScore: map['club_score'] as int?,
     opponentScore: map['opponent_score'] as int?,
     scoreDisplay: map['score_display'] as String?,
     outcome: _parseOutcome(map['outcome'] as String?),
@@ -123,13 +123,13 @@ class PassportMatch extends Equatable {
     competitionCode: competitionCode,
     round: round,
     opponent: opponent,
-    goiasIsHome: goiasIsHome,
+    clubIsHome: clubIsHome,
     neutralSite: neutralSite,
     homeTeam: homeTeam,
     awayTeam: awayTeam,
     homeScore: homeScore,
     awayScore: awayScore,
-    goiasScore: goiasScore,
+    clubScore: clubScore,
     opponentScore: opponentScore,
     scoreDisplay: scoreDisplay,
     outcome: outcome,
@@ -150,13 +150,13 @@ class PassportMatch extends Equatable {
     competitionCode,
     round,
     opponent,
-    goiasIsHome,
+    clubIsHome,
     neutralSite,
     homeTeam,
     awayTeam,
     homeScore,
     awayScore,
-    goiasScore,
+    clubScore,
     opponentScore,
     scoreDisplay,
     outcome,

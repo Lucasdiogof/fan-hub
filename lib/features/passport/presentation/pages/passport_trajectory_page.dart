@@ -313,10 +313,10 @@ class _TrajectoryBody extends StatelessWidget {
         .where((m) => m.outcome == PassportOutcome.loss)
         .toList();
     final homeMatches = state.attendedMatches
-        .where((m) => m.goiasIsHome == true)
+        .where((m) => m.clubIsHome == true)
         .toList();
     final awayMatches = state.attendedMatches
-        .where((m) => m.goiasIsHome == false)
+        .where((m) => m.clubIsHome == false)
         .toList();
 
     return ListView(
@@ -1023,7 +1023,7 @@ class _MemorableMatchDetail extends StatelessWidget {
     final dateLabel =
         '${date.day.toString().padLeft(2, '0')}/'
         '${date.month.toString().padLeft(2, '0')}/${date.year}';
-    final hasScore = match.goiasScore != null && match.opponentScore != null;
+    final hasScore = match.clubScore != null && match.opponentScore != null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1039,7 +1039,7 @@ class _MemorableMatchDetail extends StatelessWidget {
         if (hasScore) ...[
           const SizedBox(height: 4),
           Text(
-            '${match.goiasScore} x ${match.opponentScore}',
+            '${match.clubScore} x ${match.opponentScore}',
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w900,

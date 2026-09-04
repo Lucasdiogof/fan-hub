@@ -68,6 +68,6 @@ GuessComparisonResult compareGuess({
     position: comparePosition(secret.position, guess.position),
     shirtNumber: compareShirtNumber(secret.shirtNumber, guess.shirtNumber),
     academy: compareAcademy(secret.academyClub, guess.academyClub),
-    debutYear: compareDebutYear(secret.goiasDebutYear, guess.goiasDebutYear),
+    debutYear: compareDebutYear(secret.clubDebutYear, guess.clubDebutYear),
   );
 }

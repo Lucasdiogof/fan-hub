@@ -263,7 +263,7 @@ void main() {
         competition: 'Goiano',
         competitionCode: 'GOIANO',
         opponent: 'Vila Nova',
-        goiasIsHome: true,
+        clubIsHome: true,
         attended: false,
       );
       final awayMatch = PassportMatch(
@@ -274,7 +274,7 @@ void main() {
         competition: 'Goiano',
         competitionCode: 'GOIANO',
         opponent: 'Vila Nova',
-        goiasIsHome: false,
+        clubIsHome: false,
         attended: false,
       );
       cubit.emit(cubit.state.copyWith(matches: [homeMatch, awayMatch]));
