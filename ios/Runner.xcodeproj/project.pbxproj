@@ -172,6 +172,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
+				ED6554E6BEE1B81D6F7A6754 /* Select Firebase Plist For Flavor */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
@@ -255,6 +256,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		ED6554E6BEE1B81D6F7A6754 /* Select Firebase Plist For Flavor */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Select Firebase Plist For Flavor";
+			outputPaths = (
+				"$(SRCROOT)/Runner/GoogleService-Info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nif [ -z \"$APP_CLUB\" ]; then\n  echo \"error: APP_CLUB not set -- cannot pick a GoogleService-Info.plist. Build via the goias/bragantino scheme (each sets APP_CLUB through its .xcconfig), never the generic Runner scheme.\"\n  exit 1\nfi\nSRC=\"${SRCROOT}/Runner/Firebase/${APP_CLUB}/GoogleService-Info.plist\"\nDEST=\"${SRCROOT}/Runner/GoogleService-Info.plist\"\nif [ ! -f \"$SRC\" ]; then\n  echo \"error: no GoogleService-Info.plist for APP_CLUB=\\\"${APP_CLUB}\\\" at ${SRC} -- never falls back to Goias.\"\n  exit 1\nfi\ncp \"$SRC\" \"$DEST\"\necho \"Selected GoogleService-Info.plist for APP_CLUB=${APP_CLUB}\"\n";
+		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;

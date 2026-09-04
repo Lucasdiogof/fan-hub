@@ -134,15 +134,18 @@ const bragantinoClubConfig = ClubConfig(
     // controlada (nunca cross-club) — ver `ClubIntegrations.workerBaseUrl`.
     workerBaseUrl: null,
     // Projeto Supabase REAL já existe (yrgyzkaaudyzmsqwzecj) e já tem o
-    // schema canônico convergido (SCHEMA_DIFF=0 contra o Goiás) — a URL é
-    // informação pública (deriva só do project ref), preenchida. A chave
-    // publishable/anon é DATA_GAP real: nunca copiada do dashboard nesta
-    // sessão (só a senha de banco foi compartilhada, e senha de banco NUNCA
-    // vai pro Flutter — client-side só usa a chave anon). `null` aqui faz
-    // `SupabaseConfig.configure` falhar loud se alguém tentar rodar o
-    // flavor bragantino sem preencher isto antes — nunca cai pro Goiás.
+    // schema canônico convergido (SCHEMA_DIFF=0 contra o Goiás). URL +
+    // chave publishable/anon confirmadas pelo usuário em 2026-09-04 —
+    // chave client-side oficial (nunca a anon key legacy, nunca service_
+    // role/senha de banco). `Supabase.initialize`/Auth passam a apontar
+    // de verdade pro projeto Bragantino quando o flavor `bragantino` roda.
     supabaseUrl: 'https://yrgyzkaaudyzmsqwzecj.supabase.co',
-    supabasePublishableKey: null,
+    supabasePublishableKey: 'sb_publishable_pa2JzbHgClEqRBAajsPjig_uvL5Ntcc',
+    // Sem Worker/domínio próprio do Bragantino ainda (workerBaseUrl
+    // continua null) -- redirectTo fica null nos fluxos de auth (reset de
+    // senha etc.), Supabase usa a Site URL configurada no dashboard do
+    // próprio projeto Bragantino como destino. Preencher quando o Worker
+    // for deployado (mesmo racional de workerBaseUrl).
     supabaseRedirectUrl: null,
     orderPrefix: 'BRA',
     // Loja desligada (hasStore=false) — endereço nunca é exibido; placeholder.
