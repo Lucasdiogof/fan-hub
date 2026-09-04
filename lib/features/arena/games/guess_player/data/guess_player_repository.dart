@@ -40,7 +40,7 @@ class GuessPlayerRepository {
           .select(
             'id, name, display_name, aliases, position, shirt_number, '
             'academy_club, nationality_code, nationality_name, '
-            'goias_debut_year, photo_key, data_status, person_id',
+            'club_debut_year, photo_key, data_status, person_id',
           )
           .eq('club_id', _clubConfig.identity.canonicalClubId)
           .eq('is_active', true)
@@ -85,7 +85,7 @@ class GuessPlayerRepository {
       academyClub: row['academy_club'] as String?,
       nationalityCode: row['nationality_code'] as String?,
       nationalityName: row['nationality_name'] as String?,
-      goiasDebutYear: (row['goias_debut_year'] as num?)?.toInt(),
+      clubDebutYear: (row['club_debut_year'] as num?)?.toInt(),
       imageUrl: photoKey != null ? squadPhotoAssets[photoKey] : null,
       dataStatus: _dataStatusFrom(row['data_status'] as String?),
       personId: row['person_id'] as String?,

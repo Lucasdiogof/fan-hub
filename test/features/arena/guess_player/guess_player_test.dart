@@ -15,7 +15,7 @@ GuessPlayer _fullPlayer({
     academyClub: 'Goiás',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
-    goiasDebutYear: 2020,
+    clubDebutYear: 2020,
     imageUrl: 'lib/assets/squad/x.jpg',
     dataStatus: status,
   );
@@ -35,7 +35,7 @@ void main() {
         position: PlayerPosition.ata,
         shirtNumber: 9,
         academyClub: 'Goiás',
-        goiasDebutYear: 2020,
+        clubDebutYear: 2020,
         imageUrl: 'lib/assets/squad/x.jpg',
         dataStatus: GuessPlayerDataStatus.verified,
       );
@@ -63,7 +63,7 @@ void main() {
         academyClub: 'Goiás',
         nationalityCode: 'BR',
         nationalityName: 'Brasil',
-        goiasDebutYear: 2020,
+        clubDebutYear: 2020,
         dataStatus: GuessPlayerDataStatus.verified,
       );
       expect(player.eligibleAsSecret, isFalse);
@@ -80,7 +80,7 @@ void main() {
           academyClub: base.academyClub,
           nationalityCode: base.nationalityCode,
           nationalityName: base.nationalityName,
-          goiasDebutYear: base.goiasDebutYear,
+          clubDebutYear: base.clubDebutYear,
           imageUrl: base.imageUrl,
           dataStatus: base.dataStatus,
         ).eligibleAsSecret,
