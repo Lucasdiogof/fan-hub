@@ -11,7 +11,7 @@ const RECON = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const SCRIPT = path.join(__dirname, 'audit_arena_rpc_cross_club_fix.mjs');
 const MIGRATION_PATH = path.join(
   ROOT,
-  'supabase/migrations/20260903150000_fix_arena_score_cross_club_reads.sql'
+  'archive/supabase/goias-legacy-migrations/files/20260903150000_fix_arena_score_cross_club_reads.sql'
 );
 
 const realSql = fs.readFileSync(MIGRATION_PATH, 'utf8');

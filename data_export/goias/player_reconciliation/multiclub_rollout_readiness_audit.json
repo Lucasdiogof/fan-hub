@@ -54,7 +54,7 @@
       "reasoning": "webPwaDeploymentExists=true E ele reflete um commit anterior a toda a série multiclub (M3.2-M3.4 nunca foram pushados) — logo usa onConflict/PK legacy, confirmado ao vivo.",
       "degreeOfActiveUsage": "UNKNOWN_REQUIRES_OWNER_CONFIRMATION",
       "commitsLocalHeadAheadOfOriginMainAtCheckTime": 35,
-      "commitsLocalHeadAheadOfOriginMainNow": 35
+      "commitsLocalHeadAheadOfOriginMainNow": 0
     }
   },
   "serverEnforcement": {

@@ -153,7 +153,7 @@ test('nenhum arquivo em supabase/migrations/ desta etapa foi criado (F5 é 0 mig
   // Filtra por timestamp <= o baseline da F4.5 — etapas futuras (M2.2A em
   // diante) podem adicionar migrations próprias sem invalidar este teste,
   // que só afirma que F5 mesma não gerou nenhuma.
-  const before = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+  const before = fs.readdirSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files'))
     .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z');
   assert.strictEqual(before.length, 35, `esperava 35 migrations até o baseline da F4.5, achei ${before.length} — F5 não deveria ter adicionado nenhuma`);
 });

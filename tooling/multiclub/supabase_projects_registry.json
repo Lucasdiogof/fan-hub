@@ -1,0 +1,17 @@
+{
+  "_comment": "Fonte única de verdade de quais projetos Supabase existem e a que clube pertencem. Nunca uma connection string/senha aqui — só o project ref (público, não é segredo).",
+  "goias": {
+    "projectRef": "yonozsdgyrhgqrvydbnr",
+    "workdir": ".",
+    "writable": true,
+    "envVar": "GOIAS_DB_URL",
+    "_note": "writable=true desde 2026-09-04 — autorização explícita pra convergência real do schema do Goiás pro canonical. Depois do migration-history cutover (mesmo dia), goias e bragantino usam o MESMO workdir (\".\", supabase/migrations/ na raiz) — não existe mais 'workdir legacy do Goiás' vs 'workdir canonical do Bragantino'. Só muda DB_URL/project ref por clube. --yes continua obrigatório pra escrita real em db-push.mjs, dry-run continua disponível sem --yes."
+  },
+  "bragantino": {
+    "projectRef": "yrgyzkaaudyzmsqwzecj",
+    "workdir": ".",
+    "writable": true,
+    "envVar": "BRAGANTINO_DB_URL",
+    "_note": "workdir=\".\" desde o migration-history cutover de 2026-09-04 — infra/supabase/canonical/ (a antiga cadeia paralela usada só pra provar o baseline) foi removida depois de promovida pra supabase/migrations/ na raiz, a mesma cadeia oficial que o Goiás usa. Staging descartável — vazio de usuário/dado real, só schema+identidade."
+  }
+}

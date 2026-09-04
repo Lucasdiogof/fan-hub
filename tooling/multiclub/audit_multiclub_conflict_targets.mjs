@@ -127,8 +127,8 @@ const ticketRpcCalledInLib = grep("upsert_membership_checkin_ticket_for_club", '
 const ticketsStillHasDirectUpsert = grep("from\\('tickets'\\)[\\s\\S]{0,40}upsert", 'lib').length > 0;
 
 // --- verificação: RPC migrations M3.4 -------------------------------------
-const arenaMig = read('supabase/migrations/20260903090000_update_arena_score_tenant_conflict.sql');
-const ticketMig = read('supabase/migrations/20260903100000_add_membership_checkin_ticket_rpc.sql');
+const arenaMig = read('archive/supabase/goias-legacy-migrations/files/20260903090000_update_arena_score_tenant_conflict.sql');
+const ticketMig = read('archive/supabase/goias-legacy-migrations/files/20260903100000_add_membership_checkin_ticket_rpc.sql');
 // SQL sem linhas de comentário — pra distinguir o ON CONFLICT REAL das
 // citações à PK legada nos comentários explicativos.
 const stripComments = (sql) => sql.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');

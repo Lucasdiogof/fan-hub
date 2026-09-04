@@ -29,7 +29,7 @@
     "notificationTokenClubDefaultTransitional": false,
     "notificationTokenDefaultFinal": true,
     "migration": {
-      "path": "supabase/migrations/20260903160000_add_club_id_to_notification_tokens.sql",
+      "path": "archive/supabase/goias-legacy-migrations/files/20260903160000_add_club_id_to_notification_tokens.sql",
       "exists": true,
       "addsClubIdColumn": true,
       "setsNotNull": true,
@@ -38,7 +38,7 @@
       "designCorrect": true
     },
     "migrationB": {
-      "plannedPath": "supabase/migrations/20260903170000_drop_default_notification_tokens_club_id.sql",
+      "plannedPath": "archive/supabase/goias-legacy-migrations/files/20260903170000_drop_default_notification_tokens_club_id.sql",
       "createdAsFileYet": true,
       "dropsDefault": true,
       "touchesOnlyDefault": true,

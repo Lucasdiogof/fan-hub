@@ -20,7 +20,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const TOOLING = path.join(ROOT, 'tooling', 'multiclub');
-const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260901010000_seed_goias_people.sql');
+const MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260901010000_seed_goias_people.sql');
 
 // GUARD — esta migration JÁ FOI APLICADA em produção (confirmado
 // diretamente no Supabase). Rodar este gerador de novo agora refletiria o

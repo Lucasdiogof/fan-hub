@@ -295,7 +295,7 @@ function computeEffectiveGrants(rpc, cfg) {
   const roles = new Set(DEFAULT_ACL_ROLES_ON_CREATE);
   const timeline = [];
   for (const file of files) {
-    const p = path.join(ROOT, 'supabase', 'migrations', file);
+    const p = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', file);
     if (!fs.existsSync(p)) continue;
     const src = fs.readFileSync(p, 'utf8');
     for (const stmt of extractGrantRevokeStatements(src, rpc)) {
@@ -385,7 +385,7 @@ for (const [rpc, cfg] of Object.entries(RPCS)) {
   const legacyCallPattern = new RegExp(`'${cfg.legacy}'(?!_for_club)`);
   const legacyStillCalledInFlutter = legacyCallPattern.test(body);
 
-  const migrationPath = path.join(ROOT, 'supabase', 'migrations', cfg.migration);
+  const migrationPath = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', cfg.migration);
   const migrationExists = fs.existsSync(migrationPath);
   let migrationValidatesClubId = false;
   let migrationIsAdditiveOnly = true;

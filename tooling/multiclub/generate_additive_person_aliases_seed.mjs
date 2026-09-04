@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
-const MIGRATIONS_DIR = path.join(ROOT, 'supabase', 'migrations');
+const MIGRATIONS_DIR = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files');
 
 const OUTPUT_PATH = path.join(MIGRATIONS_DIR, '20260902010000_add_evair_welliton_aliases.sql');
 const APPLIED_ALIASES_MIGRATION = path.join(MIGRATIONS_DIR, '20260901030000_seed_goias_person_aliases.sql');

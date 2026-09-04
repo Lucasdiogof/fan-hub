@@ -41,7 +41,7 @@ test('legacyRpcsToRetire=8, 0 authenticated remanescente — as 8 realmente revo
   assert.strictEqual(audit.legacyRpcs.length, 8);
 });
 test('a migration usa REVOKE — "DROP FUNCTION" só aparece em comentário explicando que NÃO é usado (achado e corrigido nesta rodada: falso positivo de regex em comentário)', () => {
-  const migRpc = fs.readFileSync(path.join(ROOT, 'supabase/migrations/20260903140000_retire_legacy_rpc_execute_grants.sql'), 'utf8');
+  const migRpc = fs.readFileSync(path.join(ROOT, 'archive/supabase/goias-legacy-migrations/files/20260903140000_retire_legacy_rpc_execute_grants.sql'), 'utf8');
   const codeOnly = migRpc.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
   assert.ok(/revoke execute/i.test(codeOnly));
   assert.ok(!/drop\s+function/i.test(codeOnly));

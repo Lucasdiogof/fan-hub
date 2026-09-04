@@ -8,7 +8,7 @@ import { pathToFileURL } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const RECON = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
-const MIGRATIONS = path.join(ROOT, 'supabase', 'migrations');
+const MIGRATIONS = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files');
 
 const audit = JSON.parse(fs.readFileSync(path.join(RECON, 'current_squad_canonical_gap_audit.json'), 'utf8'));
 const evidence = JSON.parse(fs.readFileSync(path.join(__dirname, 'current_squad_gap_evidence.json'), 'utf8'));

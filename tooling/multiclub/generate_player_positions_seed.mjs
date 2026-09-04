@@ -14,7 +14,7 @@ import { CANONICAL_POSITIONS } from './position_catalog.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
-const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260902070000_seed_goias_player_positions.sql');
+const MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902070000_seed_goias_player_positions.sql');
 
 const positions = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_positions_seed.json'), 'utf8'));
 const sources = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_position_sources_seed.json'), 'utf8'));

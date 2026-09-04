@@ -163,7 +163,7 @@ function checkNotificationsDispatch() {
   // §"M4.1c-B") drops it, and only after the new runtime is confirmed
   // distributed.
   const migrationPath =
-    'supabase/migrations/20260903160000_add_club_id_to_notification_tokens.sql';
+    'archive/supabase/goias-legacy-migrations/files/20260903160000_add_club_id_to_notification_tokens.sql';
   const migrationExists = fs.existsSync(path.join(ROOT, migrationPath));
   const migrationSrc = migrationExists ? read(migrationPath) : '';
   const migrationAddsClubIdColumn = /add column club_id uuid/.test(migrationSrc);
@@ -179,7 +179,7 @@ function checkNotificationsDispatch() {
   // Deliberately its OWN migration file, never folded into A — keeps the
   // rollout's 2 phases independently reviewable/revertible.
   const migrationBFilePath =
-    'supabase/migrations/20260903170000_drop_default_notification_tokens_club_id.sql';
+    'archive/supabase/goias-legacy-migrations/files/20260903170000_drop_default_notification_tokens_club_id.sql';
   const migrationBFileExists = fs.existsSync(path.join(ROOT, migrationBFilePath));
   const migrationBSrc = migrationBFileExists ? read(migrationBFilePath) : '';
   const migrationBBody = stripSqlComments(migrationBSrc);

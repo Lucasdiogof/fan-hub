@@ -14,8 +14,8 @@
     "globalWritesOutOfScope": 2,
     "rpcOnlyMigrationRequired": false,
     "legacyContractRetirementReady": true,
-    "commitsAheadOfLegacyBaseline": 41,
-    "originMainMatchesHead": false,
+    "commitsAheadOfLegacyBaseline": 65,
+    "originMainMatchesHead": true,
     "rpcInventoryMatchesCode": true
   },
   "newWebDeploymentSnapshot": {
@@ -223,9 +223,18 @@
   "apk101_2Status": {
     "attemptedAt": "2026-09-03",
     "buildCommand": "flutter build apk --release",
-    "buildSucceeded": false,
-    "buildBlocker": "Gradle 9.1 falha com 'java.io.IOException: Unable to establish loopback connection' (UnixDomainSockets.connect0 'Invalid argument: connect', dentro do PipeImpl interno do JDK 17 usado pelo Selector do daemon) ao rodar `flutter build apk --release` NESTE ambiente de sessão — 4 tentativas com mitigações diferentes (retry simples, --no-daemon + -Djava.net.preferIPv4Stack=true, sandbox desabilitado, TEMP com path longo em vez de 8.3) — todas falharam do mesmo jeito. NÃO parece ser um problema do código/config do projeto: existe um `build/app/outputs/apk/release/app-release.apk` de 2026-09-01 (versão 1.0.0, antiga) — ou seja, esse mesmo build JÁ funcionou antes, só não nesta sessão. Provável causa: diferença de ambiente/sandbox/rede local entre esta sessão e o terminal onde o build de 01/09 rodou.",
-    "apkGenerated": false,
-    "apkDeliveredToLegacyUsers": false
+    "buildSucceeded": true,
+    "generatedBy": "owner, own terminal (this session's own attempts all failed — see buildBlockerHistory)",
+    "buildBlockerHistory": "Gradle 9.1 falhou NESTA SESSÃO com 'java.io.IOException: Unable to establish loopback connection' (UnixDomainSockets.connect0 'Invalid argument: connect') — 4 mitigações tentadas, todas sem sucesso; confirma que era um problema de ambiente desta sessão específica, não do projeto — o dono rodou o MESMO comando no próprio terminal e funcionou.",
+    "verifiedArtifact": {
+      "path": "build/app/outputs/apk/release/output-metadata.json",
+      "versionCode": 2,
+      "versionName": "1.0.1",
+      "applicationId": "br.com.goiasec.goias_app"
+    },
+    "apkGenerated": true,
+    "apkDeliveredToLegacyUsers": true,
+    "apkDeliveredConfirmedAt": "2026-09-03",
+    "apkDeliveredConfirmedBy": "owner, direct confirmation in chat (\"já mandei pra 3 amigos aqui, tá de boa\")"
   }
 }

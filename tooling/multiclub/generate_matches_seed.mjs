@@ -12,7 +12,7 @@ import { kickoffIntervalDays } from './kickoff_precision.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
-const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260902110000_seed_goias_matches.sql');
+const MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902110000_seed_goias_matches.sql');
 
 const matches = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'matches_seed.json'), 'utf8'));
 const sourceRefs = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'match_source_refs_seed.json'), 'utf8'));

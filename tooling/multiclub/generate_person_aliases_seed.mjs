@@ -13,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
 const TOOLING = path.join(ROOT, 'tooling', 'multiclub');
-const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260901030000_seed_goias_person_aliases.sql');
+const MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260901030000_seed_goias_person_aliases.sql');
 
 // GUARD — esta migration JÁ FOI APLICADA em produção. person_aliases_seed
 // .json/person_alias_sources_seed.json refletem o estado ATUAL de people

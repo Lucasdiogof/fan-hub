@@ -190,7 +190,7 @@ test('passport_matches/passport_attendances/passport_memorable_matches: reposito
   assert.doesNotMatch(src, /club_id/);
 });
 test('0 migration nova NA JANELA DA M3.1 (até 20260902270000, o fim da M2.2A) — migrations depois disso são de etapas seguintes (M3.2+), não desta', () => {
-  const migrationsDir = path.join(ROOT, 'supabase', 'migrations');
+  const migrationsDir = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files');
   const files = fs.readdirSync(migrationsDir).filter((f) => f.endsWith('.sql'));
   const withinM31Window = files.filter((f) => f <= '20260902270000_z').length;
   assert.strictEqual(withinM31Window, 41, `esperava 41 migrations até o fim da M2.2A (M3.1 é 0 migration), achou ${withinM31Window}`);

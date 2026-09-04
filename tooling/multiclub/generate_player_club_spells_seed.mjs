@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
-const MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260902050000_seed_goias_player_club_spells.sql');
+const MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902050000_seed_goias_player_club_spells.sql');
 
 const spells = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_club_spells_seed.json'), 'utf8'));
 const sources = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'player_club_spell_sources_seed.json'), 'utf8'));

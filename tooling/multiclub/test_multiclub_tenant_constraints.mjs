@@ -207,7 +207,7 @@ test('nenhuma migration nova (M2.1 é auditoria/design, 0 mudança de banco) —
   // Filtra por timestamp <= o baseline da F4.5 — a M2.2A (etapa seguinte)
   // adiciona migrations próprias sem invalidar este teste, que só afirma
   // que M2.1 mesma não gerou nenhuma.
-  const count = fs.readdirSync(path.join(ROOT, 'supabase', 'migrations'))
+  const count = fs.readdirSync(path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files'))
     .filter((f) => f.endsWith('.sql') && f <= '20260902210000_z').length;
   assert.strictEqual(count, 35, `esperava 35 migrations até o baseline da F4.5, achei ${count}`);
 });

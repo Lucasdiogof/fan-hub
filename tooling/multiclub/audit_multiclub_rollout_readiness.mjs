@@ -52,9 +52,9 @@ function read(rel) { return fs.readFileSync(path.join(ROOT, rel), 'utf8'); }
 
 // --- 1. o mecanismo de minimum-version existe no código? -------------------
 const releaseGateFileExists = fileExists('lib/core/release/release_gate.dart');
-const releaseMigrationExists = fileExists('supabase/migrations/20260903110000_add_app_release_requirements.sql');
+const releaseMigrationExists = fileExists('archive/supabase/goias-legacy-migrations/files/20260903110000_add_app_release_requirements.sql');
 const releaseMigrationSql = releaseMigrationExists
-  ? read('supabase/migrations/20260903110000_add_app_release_requirements.sql')
+  ? read('archive/supabase/goias-legacy-migrations/files/20260903110000_add_app_release_requirements.sql')
   : '';
 const releaseTableClubAndPlatformScoped =
   /club_id uuid not null references public\.clubs/i.test(releaseMigrationSql) &&
@@ -193,11 +193,11 @@ const customVersionHeaderSent = grepCount(
   "X-App-Version|X-Client-Version|app[-_]version.*header|headers\\['[Xx]-[Aa]pp",
   'lib',
 ) > 0;
-const rlsReferencesRequestVersion = grepCount('request\\.headers.*version', 'supabase/migrations') > 0;
+const rlsReferencesRequestVersion = grepCount('request\\.headers.*version', 'archive/supabase/goias-legacy-migrations/files') > 0;
 const serverCanIdentifyClientVersion = customVersionHeaderSent && rlsReferencesRequestVersion;
 
 // --- 7. writes diretos via PostgREST podem ser rejeitados por versão? ------
-const anyPolicyReferencesVersion = grepCount('policy[\\s\\S]{0,200}version', 'supabase/migrations') > 0;
+const anyPolicyReferencesVersion = grepCount('policy[\\s\\S]{0,200}version', 'archive/supabase/goias-legacy-migrations/files') > 0;
 const directPostgrestWritesCanBeVersionRejected = serverCanIdentifyClientVersion && anyPolicyReferencesVersion;
 
 // --- 8. RPCs legacy podem rejeitar por versão? ------------------------------
@@ -208,7 +208,7 @@ const directPostgrestWritesCanBeVersionRejected = serverCanIdentifyClientVersion
 // deixar de existir/executar. Este grep continua medindo só a existência
 // do parâmetro porque nenhuma RPC tem isso hoje — mas o significado do
 // metric, se um dia ficar true, NUNCA deve ser lido como "seguro" sozinho.
-const anyRpcTakesVersionParam = grepCount('p_client_version|p_app_version|p_app_build', 'supabase/migrations') > 0;
+const anyRpcTakesVersionParam = grepCount('p_client_version|p_app_version|p_app_build', 'archive/supabase/goias-legacy-migrations/files') > 0;
 const legacyRpcCallsCanBeVersionRejected = anyRpcTakesVersionParam;
 
 // --- 9. LEGACY_WRITE_PATHS_EXIST -------------------------------------------

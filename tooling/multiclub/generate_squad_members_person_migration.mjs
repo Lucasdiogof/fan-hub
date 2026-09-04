@@ -11,8 +11,8 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../..');
 const IN_DIR = path.join(ROOT, 'data_export', 'goias', 'player_reconciliation');
-const SCHEMA_MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260902180000_add_person_id_to_squad_members.sql');
-const BACKFILL_MIGRATION_PATH = path.join(ROOT, 'supabase', 'migrations', '20260902190000_backfill_squad_members_person_id.sql');
+const SCHEMA_MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902180000_add_person_id_to_squad_members.sql');
+const BACKFILL_MIGRATION_PATH = path.join(ROOT, 'archive', 'supabase', 'goias-legacy-migrations', 'files', '20260902190000_backfill_squad_members_person_id.sql');
 
 const mapping = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'squad_members_person_mapping.json'), 'utf8'));
 const stats = JSON.parse(fs.readFileSync(path.join(IN_DIR, 'squad_members_person_mapping_stats.json'), 'utf8'));
