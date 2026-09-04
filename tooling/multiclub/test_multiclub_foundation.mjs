@@ -39,12 +39,12 @@ console.log('\n2) sanity checks estruturais');
 test('UUID canônico do Goiás só existe em lib/core/club/goias_club_config.dart — nenhum outro arquivo Dart o repete', () => {
   assert.strictEqual(hardcodeStats.sanity.clubUuidOnlyInGoiasClubConfig.pass, true, JSON.stringify(hardcodeStats.sanity.clubUuidOnlyInGoiasClubConfig));
 });
-test('clubRegistry tem EXATAMENTE 1 clube (goias) — nenhum 2º clube cadastrado nesta M1', () => {
-  assert.strictEqual(hardcodeStats.sanity.clubRegistryOnlyGoias.pass, true);
-  assert.deepStrictEqual(hardcodeStats.sanity.clubRegistryOnlyGoias.keys, ['goias']);
+test('clubRegistry tem só clubes REAIS conhecidos (M4: goias + bragantino), Goiás sempre presente, nenhum sintético', () => {
+  assert.strictEqual(hardcodeStats.sanity.clubRegistryRealClubs.pass, true, JSON.stringify(hardcodeStats.sanity.clubRegistryRealClubs));
+  assert.deepStrictEqual([...hardcodeStats.sanity.clubRegistryRealClubs.keys].sort(), ['bragantino', 'goias']);
 });
-test('nenhum arquivo de config de um 2º clube foi criado (nenhum juventude_club_config.dart, bragantino_club_config.dart etc.)', () => {
-  assert.strictEqual(hardcodeStats.sanity.noSecondClubConfigFile.pass, true, JSON.stringify(hardcodeStats.sanity.noSecondClubConfigFile));
+test('só as configs de clube conhecidas existem (goias + bragantino reais) — nenhum *_club_config.dart sintético/não-cadastrado', () => {
+  assert.strictEqual(hardcodeStats.sanity.onlyKnownClubConfigs.pass, true, JSON.stringify(hardcodeStats.sanity.onlyKnownClubConfigs));
 });
 test('rotas GoRouter (81 confirmadas) não têm slug/nome de clube em nenhum path', () => {
   assert.strictEqual(hardcodeStats.sanity.routesHaveNoClubSlug.pass, true, JSON.stringify(hardcodeStats.sanity.routesHaveNoClubSlug));

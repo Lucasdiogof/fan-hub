@@ -1,0 +1,39 @@
+{
+  "clientRegistry": [
+    "goias",
+    "bragantino"
+  ],
+  "clientRegistryIsGoiasBragantino": true,
+  "serverRegistry": {
+    "workerRegistry": [
+      "goias"
+    ],
+    "edgeRegistry": [
+      "goias"
+    ],
+    "dbRegistry": [
+      "goias"
+    ]
+  },
+  "serverRegistryOnlyGoias": true,
+  "buildMechanisms": {
+    "androidFlavors": [
+      "goias",
+      "bragantino"
+    ],
+    "iosSchemes": [
+      "bragantino",
+      "goias",
+      "Runner"
+    ],
+    "webBuildConfigs": [
+      "bragantino",
+      "goias"
+    ]
+  },
+  "buildMechanismsHaveBothClubs": true,
+  "syntheticResidueFiles": [],
+  "noSyntheticResidue": true,
+  "appClubEnforcedEverywhere": true,
+  "registryDrift": false
+}

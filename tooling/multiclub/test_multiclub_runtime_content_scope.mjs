@@ -92,10 +92,11 @@ test('as 5 tabelas (incl. squad_members, que nunca lançou nada) têm emptyAndFa
 // ============================================================================
 // 4) 0 2º clube real cadastrado
 // ============================================================================
-console.log('\n4) 0 segundo clube real — clubRegistry ainda só Goiás');
-test('clubRegistry tem exatamente 1 entrada (goias)', () => {
-  assert.strictEqual(audit.clubRegistryEntryCount, 1);
-  assert.strictEqual(audit.clubRegistryOnlyGoias, true);
+console.log('\n4) M4 — clubRegistry: Goiás + Bragantino (2º clube REAL cadastrado)');
+test('clubRegistry tem 2 entradas reais (goias + bragantino)', () => {
+  assert.strictEqual(audit.clubRegistryEntryCount, 2);
+  assert.strictEqual(audit.clubRegistryHasGoias, true);
+  assert.strictEqual(audit.clubRegistryHasBragantino, true);
 });
 
 // ============================================================================

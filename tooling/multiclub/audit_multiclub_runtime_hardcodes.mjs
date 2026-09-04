@@ -107,13 +107,28 @@ function extractFirst(src, re) {
 const flutterSrc = read('lib/core/club/goias_club_config.dart');
 const workerConfigSrc = read('src/football/_lib/club_server_config.ts');
 const edgeConfigSrc = read('supabase/functions/_shared/club_server_config.ts');
+const wranglerSrc = read('wrangler.toml');
 
 const flutterCanonicalClubId = extractFirst(flutterSrc, /canonicalClubId:\s*'([^']+)'/);
 const flutterOneFootballTeamId = extractFirst(flutterSrc, /oneFootballTeamId:\s*(\d+)/);
+const flutterOneFootballSlug = extractFirst(flutterSrc, /oneFootballSlug:\s*'([^']+)'/);
 const flutterCode = extractFirst(flutterSrc, /code:\s*'([^']+)'/);
 
+// SUPERSEDIDO (genericização do Worker de futebol, rodada Fan Hub/
+// Bragantino): `club_server_config.ts` deixou de ter `GOIAS_CANONICAL_
+// CLUB_ID`/`GOIAS_ONEFOOTBALL_TEAM_ID` como constantes hardcoded — o
+// modelo novo é 1 deploy por clube, config vinda de `wrangler.toml`
+// (`CLUB_CODE`/`TEAM_ONEFOOTBALL_SLUG`), sem id numérico do OneFootball
+// (só slug) e sem `canonicalClubId` nenhum (isso é conceito de
+// Supabase/RLS — o Worker de futebol nunca fala com o Supabase). Não é
+// regressão: é a arquitetura pretendida (ver
+// docs/multiclub/45_m4_3a_flavor_pipeline_audit.md + auditoria do football
+// worker genericizado). `workerCanonicalClubId`/`workerOneFootballTeamId`
+// ficam sempre `null` de propósito — o campo que o Worker REALMENTE
+// carrega agora é o slug, comparado abaixo.
 const workerCanonicalClubId = extractFirst(workerConfigSrc, /GOIAS_CANONICAL_CLUB_ID = '([^']+)'/);
 const workerOneFootballTeamId = extractFirst(workerConfigSrc, /GOIAS_ONEFOOTBALL_TEAM_ID = (\d+)/);
+const workerOneFootballSlug = extractFirst(wranglerSrc, /TEAM_ONEFOOTBALL_SLUG = "([^"]+)"/);
 
 const edgeCanonicalClubId = extractFirst(edgeConfigSrc, /canonicalClubId:\s*'([^']+)'/);
 const edgeOneFootballTeamId = extractFirst(edgeConfigSrc, /oneFootballTeamId:\s*(\d+)/);
@@ -141,16 +156,28 @@ const driftCheck = {
   flutterOneFootballTeamId,
   workerOneFootballTeamId,
   edgeOneFootballTeamId,
+  flutterOneFootballSlug,
+  workerOneFootballSlug,
   flutterCode,
   edgeCode,
+  // `canonicalClubId` é 2-way de propósito (Flutter<->Edge) — o Worker de
+  // futebol nunca carrega esse campo (não fala com Supabase), então
+  // exigir os 3 seria comparar contra um `null` estrutural, não uma
+  // divergência real.
   canonicalClubIdMatchesAcrossAll3:
     flutterCanonicalClubId != null &&
-    flutterCanonicalClubId === workerCanonicalClubId &&
     flutterCanonicalClubId === edgeCanonicalClubId,
+  // Idem — o Worker não carrega mais o id numérico do OneFootball (só o
+  // slug, comparado separadamente logo abaixo). Flutter<->Edge continua
+  // 2-way real (os 2 pontos que genuinamente precisam do id numérico).
   oneFootballTeamIdMatchesAcrossAll3:
     flutterOneFootballTeamId != null &&
-    flutterOneFootballTeamId === workerOneFootballTeamId &&
     flutterOneFootballTeamId === edgeOneFootballTeamId,
+  // Novo — o campo que o Worker REALMENTE carrega desde a genericização
+  // (`wrangler.toml`'s TEAM_ONEFOOTBALL_SLUG) precisa bater com o slug do
+  // Flutter, senão o Worker chamaria o OneFootball com o time errado.
+  oneFootballSlugMatchesFlutterAndWorker:
+    flutterOneFootballSlug != null && flutterOneFootballSlug === workerOneFootballSlug,
   codeMatchesFlutterAndEdge: flutterCode != null && flutterCode === edgeCode,
   // Server-only — nunca comparado contra Flutter/Worker (não fazem sentido
   // lá), só verificado que EXISTE e é o valor real esperado pro Goiás —
@@ -242,11 +269,17 @@ const serverRuntimeGoiasLiteralViolations = [
   stripComments(read('src/football/teamSeason.ts')),
   stripComments(read('supabase/functions/notifications-sync-and-check-access/index.ts')),
 ].filter((src) => /\/api\/football\/team\/goias\b/.test(src)).length;
-const hardcodedApiFootballTeamIds = [flutterOneFootballTeamId, workerOneFootballTeamId, edgeOneFootballTeamId].every(
-  (v) => v === '1863',
-)
-  ? 0 // os 3 concordam entre si e vivem só dentro dos respectivos ClubConfig/registry — não é hardcode fora de config
-  : 3;
+// SUPERSEDIDO: comparava os 3 pontos pelo id numérico do OneFootball — o
+// Worker não carrega mais esse campo (só o slug, ver
+// oneFootballSlugMatchesFlutterAndWorker). Flutter/Edge continuam
+// comparados pelo id (2 pontos que genuinamente precisam dele); o Worker
+// entra pela via do slug, checado à parte.
+const hardcodedApiFootballTeamIds =
+  flutterOneFootballTeamId === edgeOneFootballTeamId &&
+  flutterOneFootballTeamId === '1863' &&
+  flutterOneFootballSlug === workerOneFootballSlug
+    ? 0 // os pontos que carregam cada campo concordam entre si — não é hardcode fora de config
+    : 3;
 const workerSpecificRouteViolations = /pathname === '\/api\/football\/team\/goias'/.test(
   stripComments(read('src/index.ts')),
 )
@@ -289,6 +322,7 @@ const audit = {
   driftFree:
     driftCheck.canonicalClubIdMatchesAcrossAll3 &&
     driftCheck.oneFootballTeamIdMatchesAcrossAll3 &&
+    driftCheck.oneFootballSlugMatchesFlutterAndWorker &&
     driftCheck.codeMatchesFlutterAndEdge &&
     driftCheck.goiasNotificationCopyCorrect,
   allLocalStorageFixed: Object.values(localStorageFixes).every((v) => v.scoped && v.legacyMigration),

@@ -109,15 +109,19 @@
       "offenders": [],
       "allowedFile": "lib\\core\\club\\goias_club_config.dart"
     },
-    "clubRegistryOnlyGoias": {
+    "clubRegistryRealClubs": {
       "pass": true,
       "keys": [
-        "goias"
-      ]
+        "goias",
+        "bragantino"
+      ],
+      "unexpected": []
     },
-    "noSecondClubConfigFile": {
+    "onlyKnownClubConfigs": {
       "pass": true,
       "files": [
+        "bragantino_club_config.dart",
+        "capability_route_gate.dart",
         "club_assets.dart",
         "club_branding.dart",
         "club_capabilities.dart",
@@ -132,7 +136,7 @@
         "goias_club_config.dart",
         "resolve_active_club.dart"
       ],
-      "suspicious": []
+      "unexpected": []
     },
     "routesHaveNoClubSlug": {
       "pass": true,
