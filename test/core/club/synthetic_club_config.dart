@@ -119,6 +119,8 @@ const syntheticClubBConfig = ClubConfig(
     hasPassport: false,
     hasNews: false,
     hasSocial: false,
+    hasClubContent: false,
+    hasMatches: false,
     enabledArenaGames: {'quiz'},
   ),
   productNames: ClubProductNaming(

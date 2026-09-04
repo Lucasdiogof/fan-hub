@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_registry.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/club/resolve_active_club.dart';
@@ -16,15 +17,11 @@ void main() {
       expect(config, same(goiasClubConfig));
     });
 
-    test('APP_CLUB explícito e inválido -> NUNCA resolve pro Goiás, sempre lança (fail-fast)', () {
-      expect(() => resolveActiveClub('club-b'), throwsStateError);
-    });
-
     test(
       'teste crítico anti-vazamento: nenhum código de clube desconhecido resolve pro Goiás, '
-      'mesmo variações plausíveis de digitação/caixa/espaço',
+      'mesmo variações plausíveis de digitação/caixa/espaço (nem o antigo código sintético club-b, já removido)',
       () {
-        for (final invalid in ['goia', 'goiass', 'GOIAS', ' goias', 'goias ', 'other-club', 'unknown-club', '0']) {
+        for (final invalid in ['goia', 'goiass', 'GOIAS', ' goias', 'goias ', 'club-b', 'clubb', 'other-club', '0']) {
           expect(
             () => resolveActiveClub(invalid),
             throwsStateError,
@@ -41,21 +38,33 @@ void main() {
       } on StateError catch (e) {
         expect(e.message, contains('xyz'));
         expect(e.message, contains('goias'));
+        expect(e.message, contains('bragantino'));
       }
     });
   });
 
-  group('clubRegistry — M1: só Goiás cadastrado', () {
-    test('registry tem exatamente 1 entrada', () {
-      expect(clubRegistry.length, 1);
-      expect(clubRegistry.keys, ['goias']);
+  group('resolveActiveClub — M4: Bragantino é clube REAL no registry (não mais sintético)', () {
+    test('APP_CLUB="bragantino" -> resolve pra bragantinoClubConfig via registry normal', () {
+      final config = resolveActiveClub('bragantino');
+      expect(config, same(bragantinoClubConfig));
+      expect(config.identity.code, 'bragantino');
     });
 
-    test('nenhum outro clube (placeholder neutro, cópia do Goiás, etc.) foi cadastrado nesta rodada — sem citar nenhum clube real, nenhum 2º clube foi nomeado/pressuposto na M1', () {
-      expect(clubRegistry.containsKey('club_b'), isFalse);
+    test('o antigo gate sintético sumiu: club-b não é especial, é só um código desconhecido -> fail-fast', () {
+      expect(() => resolveActiveClub('club-b'), throwsStateError);
+    });
+  });
+
+  group('clubRegistry — M4: Goiás + Bragantino', () {
+    test('registry tem exatamente 2 entradas: goias e bragantino', () {
+      expect(clubRegistry.length, 2);
+      expect(clubRegistry.keys.toSet(), {'goias', 'bragantino'});
+    });
+
+    test('nenhum clube sintético/placeholder cadastrado (club-b/clubb removidos)', () {
       expect(clubRegistry.containsKey('club-b'), isFalse);
-      expect(clubRegistry.containsKey('other_club'), isFalse);
-      expect(clubRegistry.containsKey('placeholder_club'), isFalse);
+      expect(clubRegistry.containsKey('clubb'), isFalse);
+      expect(clubRegistry.containsKey('club_b'), isFalse);
     });
   });
 
@@ -72,8 +81,6 @@ void main() {
     });
 
     test('branding embrulha os MESMOS valores estáticos de AppColors, nunca uma cópia divergente', () {
-      // igualdade de valor (AppColors não tem == customizado além do
-      // ThemeExtension.lerp) — comparamos os campos que importam.
       expect(goiasClubConfig.branding.light.primary, isNotNull);
       expect(goiasClubConfig.branding.dark.primary, isNotNull);
     });
@@ -85,4 +92,87 @@ void main() {
       expect(goiasClubConfig.capabilities.enabledArenaGames.contains('penalty'), isFalse);
     });
   });
+
+  group('bragantinoClubConfig — onboarding mínimo: capabilities OFF, sem dado do Goiás', () {
+    test('identity básica correta + canonicalClubId é PLACEHOLDER (nunca o do Goiás)', () {
+      expect(bragantinoClubConfig.identity.code, 'bragantino');
+      expect(bragantinoClubConfig.identity.displayName, 'Red Bull Bragantino');
+      expect(bragantinoClubConfig.identity.canonicalClubId, isNot(goiasClubConfig.identity.canonicalClubId));
+    });
+
+    test('TODAS as capabilities começam desligadas e enabledArenaGames vazio (nenhum dado real ainda)', () {
+      final c = bragantinoClubConfig.capabilities;
+      expect(c.hasMembership, isFalse);
+      expect(c.hasStore, isFalse);
+      expect(c.hasTickets, isFalse);
+      expect(c.hasCrowdLineup, isFalse);
+      expect(c.hasPassport, isFalse);
+      expect(c.hasNews, isFalse);
+      expect(c.hasSocial, isFalse);
+      expect(c.hasClubContent, isFalse);
+      expect(c.enabledArenaGames, isEmpty);
+    });
+
+    test('não reusa asset nem cor do Goiás — assets apontam pra placeholder do bragantino', () {
+      expect(bragantinoClubConfig.assets.crest, contains('branding/bragantino/'));
+      expect(bragantinoClubConfig.assets.crest, isNot(goiasClubConfig.assets.crest));
+      expect(bragantinoClubConfig.branding.light.primary, isNot(goiasClubConfig.branding.light.primary));
+    });
+
+    test('splashVideo é null — nunca cai pro goias_splash.mp4', () {
+      expect(bragantinoClubConfig.assets.splashVideo, isNull);
+    });
+  });
+
+  group('goiasClubConfig — feature "Clube" e splash continuam ligados', () {
+    test('hasClubContent=true e splashVideo aponta pro vídeo oficial do Goiás', () {
+      expect(goiasClubConfig.capabilities.hasClubContent, isTrue);
+      expect(
+        goiasClubConfig.assets.splashVideo,
+        'lib/assets/videos/goias_splash.mp4',
+      );
+    });
+  });
+
+  group(
+    'INVARIANTE — hasMatches=true exige workerBaseUrl configurado (auditoria Matches/football)',
+    () {
+      test(
+        'para TODO clube em clubRegistry: hasMatches=true implica workerBaseUrl != null e não vazio '
+        '(nunca liga a aba/rota de Jogos sem um Worker de verdade pra falar)',
+        () {
+          for (final entry in clubRegistry.entries) {
+            final config = entry.value;
+            if (config.capabilities.hasMatches) {
+              expect(
+                config.integrations.workerBaseUrl,
+                isNotNull,
+                reason: '${entry.key}: hasMatches=true mas workerBaseUrl é null',
+              );
+              expect(
+                config.integrations.workerBaseUrl,
+                isNotEmpty,
+                reason: '${entry.key}: hasMatches=true mas workerBaseUrl é vazio',
+              );
+            }
+          }
+        },
+      );
+
+      test('Goiás: hasMatches=true + workerBaseUrl real -> combinação válida', () {
+        expect(goiasClubConfig.capabilities.hasMatches, isTrue);
+        expect(goiasClubConfig.integrations.workerBaseUrl, isNotNull);
+        expect(goiasClubConfig.integrations.workerBaseUrl, isNotEmpty);
+      });
+
+      test(
+        'Bragantino HOJE: hasMatches=false + workerBaseUrl=null -> combinação válida '
+        '(Worker ainda não existe; o dia que existir, os dois mudam juntos)',
+        () {
+          expect(bragantinoClubConfig.capabilities.hasMatches, isFalse);
+          expect(bragantinoClubConfig.integrations.workerBaseUrl, isNull);
+        },
+      );
+    },
+  );
 }

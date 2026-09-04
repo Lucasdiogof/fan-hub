@@ -1,0 +1,7 @@
+#include "../Profile.xcconfig"
+// Rebrand Fan Hub — flavor bragantino.
+PRODUCT_BUNDLE_IDENTIFIER = br.com.fanhub.bragantino
+APP_DISPLAY_NAME = Red Bull Bragantino
+// Só informativo (nada nativo lê isto). O runtime real depende do
+// --dart-define=APP_CLUB=bragantino passado pro flutter build/run.
+APP_CLUB = bragantino

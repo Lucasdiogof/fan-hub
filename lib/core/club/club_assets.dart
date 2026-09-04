@@ -17,6 +17,7 @@ class ClubAssets {
     required this.arenaStadiumIcon,
     required this.arenaStadiumPhoto,
     required this.storeBanner,
+    this.splashVideo,
   });
 
   final String crest;
@@ -29,4 +30,10 @@ class ClubAssets {
   final String arenaStadiumIcon;
   final String arenaStadiumPhoto;
   final String storeBanner;
+
+  /// Vídeo da splash (`VideoSplashView`) — `null` quando o clube ainda não
+  /// tem vídeo oficial próprio. NUNCA cai pro vídeo de outro clube: `null`
+  /// aqui faz `SplashVideoPage` usar `StaticLogoSplash` (o mesmo fallback
+  /// já usado pro iOS Web/PWA) em vez de qualquer vídeo.
+  final String? splashVideo;
 }

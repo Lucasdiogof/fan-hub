@@ -1,11 +1,11 @@
 {
-    "name": "Goiás EC",
-    "short_name": "Goiás EC",
+    "name": "__CLUB_APP_NAME__",
+    "short_name": "__CLUB_SHORT_NAME__",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#004C1B",
-    "theme_color": "#004C1B",
-    "description": "Goiás EC - o ecossistema digital do torcedor esmeraldino.",
+    "background_color": "__CLUB_THEME_COLOR__",
+    "theme_color": "__CLUB_THEME_COLOR__",
+    "description": "__CLUB_DESCRIPTION__",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,0 +1,13 @@
+{
+  "code": "bragantino",
+  "appClub": "bragantino",
+  "enableSyntheticClub": false,
+  "appName": "Red Bull Bragantino",
+  "shortName": "Bragantino",
+  "description": "Red Bull Bragantino — app do torcedor (em preparação).",
+  "appleTitle": "Bragantino",
+  "themeColor": "#37474F",
+  "themeLight": "#F4F5F7",
+  "themeDark": "#12171B",
+  "iconsSourceDir": null
+}

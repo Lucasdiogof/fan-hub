@@ -1,0 +1,4 @@
+#include "../Release.xcconfig"
+PRODUCT_BUNDLE_IDENTIFIER = br.com.fanhub.goias
+APP_DISPLAY_NAME = Goiás EC
+APP_CLUB = goias
