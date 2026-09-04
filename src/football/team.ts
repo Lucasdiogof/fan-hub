@@ -4,7 +4,7 @@ import { resolveClubServerConfig } from './_lib/club_server_config';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
 import { fetchTeamMatchLists, fetchMatchDetail } from './providers/onefootball_provider';
-import { normalizeOneFootballMatchCard } from './normalize/match';
+import { normalizeOneFootballMatchCardWithCompetition } from './normalize/match';
 
 // Era 30 min — baixado pra caber o card "ao vivo" da Home/Jogos, que faz
 // polling desta MESMA rota a cada ~45s enquanto o jogo do clube ativo está
@@ -14,7 +14,6 @@ import { normalizeOneFootballMatchCard } from './normalize/match';
 // compartilhado na borda, chave inclui `clubCode`), nunca uma vez por
 // usuário/poll.
 const CACHE_TTL_SECONDS = 60;
-const COMPETITION_NAME = 'Brasileirão Série B';
 
 /**
  * M3.3 — rota genérica `/api/football/team/:clubCode`. `/team/goias`
@@ -43,10 +42,19 @@ export async function handleTeam(request: Request, env: Env, clubCode: string): 
       // vale a pena um fetch extra por item pros resultados recentes.
       const nextStadium = nextCard ? (await fetchMatchDetail(nextCard.matchId))?.stadium ?? null : null;
 
+      // REGRA ABSOLUTA (auditoria Matches/football): `/team/:clubCode` NÃO
+      // é uma operação de competição principal — o time pode estar
+      // disputando Brasileirão, Copa do Brasil, torneio continental etc.
+      // na mesma janela. `competition` no nível da resposta nunca usa
+      // PRIMARY_COMPETITION_DISPLAY_NAME (isso é só pra `standings`/
+      // `current-round`, que SÃO operações da competição principal) — cada
+      // partida carrega a própria competição real
+      // (`card.competitionName`, ver `normalizeOneFootballMatchCardWithCompetition`);
+      // `''` é só o valor de "desconhecida" quando nem a partida tem o dado.
       return {
-        competition: { name: COMPETITION_NAME, season: null },
-        nextMatch: nextCard ? normalizeOneFootballMatchCard(nextCard, nextStadium) : null,
-        recentResults: recent.map((card) => normalizeOneFootballMatchCard(card)),
+        competition: { name: '', season: null },
+        nextMatch: nextCard ? normalizeOneFootballMatchCardWithCompetition(nextCard, nextStadium) : null,
+        recentResults: recent.map((card) => normalizeOneFootballMatchCardWithCompetition(card)),
       };
     });
   });

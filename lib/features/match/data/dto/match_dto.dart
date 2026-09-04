@@ -21,10 +21,13 @@ class MatchDto {
   final TeamDto homeTeam;
   final TeamDto awayTeam;
 
-  /// Só vem preenchido no endpoint de temporada (`getSeasonFixtures`), onde
-  /// cada partida pode ser de uma competição diferente (Goianão, Brasileirão
-  /// Série B, Copa do Brasil...) — os outros endpoints têm UM `competition`
-  /// só no nível da resposta inteira (ver `toEntity`).
+  /// Preenchido nos endpoints onde uma partida pode ser de uma competição
+  /// diferente da principal do clube (Goianão, Copa do Brasil, torneio
+  /// continental...): temporada (`getSeasonFixtures`) e o feed do time
+  /// (`getActiveClubSnapshot`). `standings`/`current-round` são operações
+  /// da competição principal de verdade — todo item já é dela, então nunca
+  /// precisam desse campo por partida (ver `toEntity`, que nunca usa a
+  /// competição principal como fallback de partida, só `''`).
   final String? competition;
 
   /// Horário já em hora local do Brasil, sem offset (a fonte não fornece

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
@@ -13,15 +14,26 @@ import 'package:goias_app/features/match/domain/repositories/football_repository
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 class FootballRepositoryImpl implements FootballRepository {
-  FootballRepositoryImpl(this._remote);
+  FootballRepositoryImpl(this._remote, this._clubConfig);
 
   final FootballRemoteDataSource _remote;
+  final ClubConfig _clubConfig;
 
   @override
   Future<Result<List<Standing>>> getStandings() async {
     try {
       final result = await _remote.getStandings();
-      return Success(result.standings.map((dto) => dto.toEntity()).toList());
+      // M3.3 tirou o cálculo de "é o clube ativo?" do servidor — o cliente
+      // marca a linha comparando o id do time com o oneFootballTeamId do
+      // clube ativo deste build (flavor). Sem isto a classificação não
+      // destaca mais o time logado.
+      final activeTeamId = _clubConfig.integrations.oneFootballTeamId;
+      return Success(
+        result.standings
+            .map((dto) => dto.toEntity())
+            .map((s) => s.copyWith(isActiveClub: s.team.id == activeTeamId))
+            .toList(),
+      );
     } on DioException catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return Error(_mapDioError(error));
@@ -68,11 +80,18 @@ class FootballRepositoryImpl implements FootballRepository {
   getActiveClubSnapshot() async {
     try {
       final result = await _remote.getActiveClubSnapshot();
-      final competitionName = result.competition.name;
+      // REGRA ABSOLUTA (auditoria Matches/football): `/team/:clubCode` não
+      // é uma operação de competição principal — o clube pode disputar
+      // Brasileirão, Copa do Brasil, torneio continental etc. ao mesmo
+      // tempo. Nunca usar `result.competition.name` (que nem representa
+      // mais a competição principal, ver `team.ts`) como fallback de
+      // partida — cada `MatchDto` já carrega a própria competição real;
+      // `''` é a mesma convenção de "desconhecida" que `getSeasonFixtures`
+      // já usa logo abaixo.
       return Success((
-        nextMatch: result.nextMatch?.toEntity(competitionName: competitionName),
+        nextMatch: result.nextMatch?.toEntity(competitionName: ''),
         recentResults: result.recentResults
-            .map((dto) => dto.toEntity(competitionName: competitionName))
+            .map((dto) => dto.toEntity(competitionName: ''))
             .toList(),
       ));
     } on DioException catch (error, stackTrace) {
@@ -114,6 +133,9 @@ class FootballRepositoryImpl implements FootballRepository {
   getMatchDetails(String fixtureId) async {
     try {
       final result = await _remote.getFixtureDetails(fixtureId);
+      // `result.competition.name` já é a competição REAL desta partida
+      // específica (ou `''` se o OneFootball não trouxe o dado) — nunca a
+      // competição principal do clube, ver `fixtureDetails.ts`.
       return Success((
         match: result.match.toEntity(competitionName: result.competition.name),
         events: result.events.map((dto) => dto.toEntity()).toList(),

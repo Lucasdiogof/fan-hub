@@ -23,16 +23,28 @@ not_found_handling = "single-page-application"
 # expirar (até 45min), mesmo já deployada.
 [vars]
 
+# Código do clube que ESTE deploy serve — único allowlist de
+# `resolveClubServerConfig` (ver src/football/_lib/club_server_config.ts).
+# Modelo: 1 Worker deploy por clube, mesmo código-fonte — o Bragantino
+# (wrangler.bragantino.toml) tem seu próprio CLUB_CODE, nunca os dois no
+# mesmo deploy. `/api/football/team/bragantino` NESTE deploy sempre lança
+# UnknownClubError, por design (NO_SERVER_CROSS_CLUB_FALLBACK).
+CLUB_CODE = "goias"
+
 # Slug do Goiás no OneFootball (path /pt-br/time/<slug>) — usado pro card de
 # Próximo Jogo e pela tela de Jogos. Confirmado navegando o site, não muda
 # entre temporadas (é o id do clube, não do campeonato).
-GOIAS_ONEFOOTBALL_SLUG = "goias-1863"
+TEAM_ONEFOOTBALL_SLUG = "goias-1863"
 
-# Slug da competição no OneFootball (path /pt-br/competicao/<slug>) — ESSE
-# muda a cada temporada/edição. Se a rodada atual ou a classificação
-# pararem de bater, confira se o slug ainda é válido navegando
-# https://onefootball.com/pt-br/competicao/.
-ONEFOOTBALL_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
+# Slug da competição PRINCIPAL do clube no OneFootball (path
+# /pt-br/competicao/<slug>) — ESSE muda a cada temporada/edição. Se a
+# rodada atual ou a classificação pararem de bater, confira se o slug ainda
+# é válido navegando https://onefootball.com/pt-br/competicao/.
+PRIMARY_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
+
+# Nome de exibição da competição principal — devolvido em `competition.name`
+# pelos endpoints de futebol (nunca o nome com patrocinador do OneFootball).
+PRIMARY_COMPETITION_DISPLAY_NAME = "Brasileirão Série B"
 
 CACHE_VERSION = "16"
 

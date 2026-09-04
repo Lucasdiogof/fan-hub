@@ -18,9 +18,26 @@ class Standing extends Equatable {
   final int position;
   final Team team;
 
-  /// Decidido no backend por id confirmado — nunca compare `team.name`
-  /// pra descobrir se é o Goiás.
+  /// `true` quando esta linha é o clube ATIVO deste build (comparando o id
+  /// confirmado do time com `ClubConfig.integrations.oneFootballTeamId` —
+  /// computado no cliente desde a M3.3, que tirou o cálculo do servidor).
+  /// Nunca compare `team.name` pra descobrir o clube.
   final bool isActiveClub;
+
+  Standing copyWith({bool? isActiveClub}) {
+    return Standing(
+      position: position,
+      team: team,
+      isActiveClub: isActiveClub ?? this.isActiveClub,
+      points: points,
+      played: played,
+      wins: wins,
+      draws: draws,
+      losses: losses,
+      goalDifference: goalDifference,
+      form: form,
+    );
+  }
   final int points;
   final int played;
   final int wins;

@@ -1,0 +1,54 @@
+# Deploy do Bragantino — MESMO código-fonte de wrangler.toml (main =
+# src/index.ts, nunca duplicado), config/env própria. Ver auditoria
+# Matches/football multiclube (docs/multiclub) pra contexto completo.
+#
+# NÃO aplicar `wrangler deploy` com este arquivo ainda — o Worker do
+# Bragantino não existe até uma autorização separada (ver "próximo deploy"
+# no relatório desta rodada). `hasMatches=false` no Flutter (Bragantino)
+# garante que nada tenta falar com este Worker antes disso de qualquer
+# forma.
+#
+# `name` diferente de "goias-app" de propósito — cada deploy tem seu
+# próprio subdomínio `*.workers.dev`; nomes/domínio final ainda podem
+# mudar numa etapa de infra dedicada, isto é só o necessário pra existir.
+name = "bragantino-app"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+[assets]
+# Saída de `node tool/build_web_flavor.mjs bragantino` (ver
+# tool/build_web_flavor.mjs) — NUNCA build/web (isso é do Goiás).
+directory = "build/flavors/web/bragantino"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[vars]
+
+# Código do clube que ESTE deploy serve — allowlist de
+# `resolveClubServerConfig`. `/api/football/team/goias` NESTE deploy
+# sempre lança UnknownClubError, por design.
+CLUB_CODE = "bragantino"
+
+# Confirmado navegando onefootball.com/pt-br/time/rb-bragantino-4734 (e
+# /en/team/rb-bragantino-4734) — nome oficial exibido "RB Bragantino", id
+# numérico 4734 (usado só no slug, não há campo de id numérico nesta
+# config — ver ClubServerConfig).
+TEAM_ONEFOOTBALL_SLUG = "rb-bragantino-4734"
+
+# Confirmado navegando onefootball.com/pt-br/competicao/
+# brasileirao-betano-16 (e /tabela) — RB Bragantino aparece na
+# classificação. Nome de exibição na própria página é "Brasileirão
+# Betano" (patrocínio); PRIMARY_COMPETITION_DISPLAY_NAME abaixo usa
+# "Brasileirão Série A" pelo mesmo motivo do Goiás usar "Brasileirão
+# Série B" em vez do nome com patrocinador.
+PRIMARY_COMPETITION_SLUG = "brasileirao-betano-16"
+PRIMARY_COMPETITION_DISPLAY_NAME = "Brasileirão Série A"
+
+CACHE_VERSION = "1"
+
+# Social/Instagram (APIFY_INSTAGRAM_TASK_ID, SOCIAL_FEED_KV, [triggers])
+# DELIBERADAMENTE OMITIDOS — hasSocial=false no Bragantino hoje (achado da
+# M4: era 100% hardcoded pro Goiás), e não existe task/KV própria do
+# Bragantino ainda. Nunca copiar a infraestrutura do Goiás pra cá; se/
+# quando o Bragantino ligar social, essas vars entram aqui com dado
+# REAL dele, nunca reaproveitando o do Goiás.

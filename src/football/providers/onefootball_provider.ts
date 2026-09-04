@@ -28,6 +28,11 @@ export interface OneFootballMatchList {
 }
 
 export interface OneFootballMatchScore {
+  /** Confirmado ao vivo (GET .../match/<id>): o node `matchScore` já traz
+   * a competição REAL dessa partida (ex.: um jogo de torneio continental
+   * do RB Bragantino veio com `competition.name: "CONMEBOL Sudamericana"`)
+   * — nunca assumir que toda partida é da competição principal do clube. */
+  competition?: { name: string };
   kickoff: { utcTimestamp: string };
   period: string;
   /** Mesmo campo de `OneFootballMatchCard.timePeriod` — ver ali. */
