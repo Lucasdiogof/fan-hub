@@ -1,0 +1,385 @@
+{
+  "capturedAt": "2026-09-04T18:00:44.975Z",
+  "projectRef": "yonozsdgyrhgqrvydbnr",
+  "versionCount": 63,
+  "versions": [
+    {
+      "name": "baseline_marker",
+      "statement_count": 2,
+      "statements_md5": "888ec74746f6265760b848cdcf7e5704",
+      "version": "20260830220000"
+    },
+    {
+      "name": "arena_record_score_item_validation",
+      "statement_count": 2,
+      "statements_md5": "92e6471993f18dbcf62bc5d5337bef59",
+      "version": "20260830220001"
+    },
+    {
+      "name": "subscribe_to_plan_rpc",
+      "statement_count": 3,
+      "statements_md5": "45d59c1a7afdc89f557e82edfb2687e1",
+      "version": "20260830220002"
+    },
+    {
+      "name": "tickets_refund_status",
+      "statement_count": 3,
+      "statements_md5": "592afc596d7726e443444967a80cdb4b",
+      "version": "20260831000000"
+    },
+    {
+      "name": "passport_attendance_breakdown",
+      "statement_count": 2,
+      "statements_md5": "d0f3bee6697123518f2dc40fe3f8dc57",
+      "version": "20260831010000"
+    },
+    {
+      "name": "career_players_revalidated_v2",
+      "statement_count": 2,
+      "statements_md5": "b7fc5c87be7bc75a4058043ef93e2a92",
+      "version": "20260831020000"
+    },
+    {
+      "name": "passport_trajectory_view_other_users",
+      "statement_count": 14,
+      "statements_md5": "b655ccf5fcd34350cb06e925183ed7b3",
+      "version": "20260831030000"
+    },
+    {
+      "name": "passport_venue_audit",
+      "statement_count": 3,
+      "statements_md5": "9d10fcdfde2c1073984f1d73c2404a3e",
+      "version": "20260831040000"
+    },
+    {
+      "name": "passport_venue_haile_pinheiro_name",
+      "statement_count": 1,
+      "statements_md5": "b93828d5d2ad06a5d65b3fa9097b4fa5",
+      "version": "20260831050000"
+    },
+    {
+      "name": "create_people",
+      "statement_count": 9,
+      "statements_md5": "cf9eda06b8c32089361828ea81a466af",
+      "version": "20260901000000"
+    },
+    {
+      "name": "seed_goias_people",
+      "statement_count": 1,
+      "statements_md5": "d562da0f4c263e0dfc93ca9799d6b08f",
+      "version": "20260901010000"
+    },
+    {
+      "name": "create_person_aliases",
+      "statement_count": 16,
+      "statements_md5": "90739696f51108063f3ac47173b78d76",
+      "version": "20260901020000"
+    },
+    {
+      "name": "seed_goias_person_aliases",
+      "statement_count": 2,
+      "statements_md5": "7d51b23c9e06257aaeeff6f1f92ff0e6",
+      "version": "20260901030000"
+    },
+    {
+      "name": "add_evair_welliton_people",
+      "statement_count": 1,
+      "statements_md5": "ff16b4390f240bc5a90431e2e512386a",
+      "version": "20260902000000"
+    },
+    {
+      "name": "add_evair_welliton_aliases",
+      "statement_count": 2,
+      "statements_md5": "e6b9f24c1aaa2c60a0047a5790ba2a09",
+      "version": "20260902010000"
+    },
+    {
+      "name": "create_clubs",
+      "statement_count": 9,
+      "statements_md5": "91b3767a48c41b5e1b5fcb5c20c2e72c",
+      "version": "20260902020000"
+    },
+    {
+      "name": "seed_clubs",
+      "statement_count": 2,
+      "statements_md5": "f6983223aeacbda286a1c8525e3d77a5",
+      "version": "20260902030000"
+    },
+    {
+      "name": "create_player_club_spells",
+      "statement_count": 17,
+      "statements_md5": "ecd748a9384e0708588e661bc8c1e56b",
+      "version": "20260902040000"
+    },
+    {
+      "name": "seed_goias_player_club_spells",
+      "statement_count": 2,
+      "statements_md5": "4dfba9971cc4a3fc0565c21927a9e117",
+      "version": "20260902050000"
+    },
+    {
+      "name": "create_player_positions",
+      "statement_count": 21,
+      "statements_md5": "c026c333489f0e03e50a1289f4e073ca",
+      "version": "20260902060000"
+    },
+    {
+      "name": "seed_goias_player_positions",
+      "statement_count": 2,
+      "statements_md5": "0a7b9180d9db4258836f8a809da23432",
+      "version": "20260902070000"
+    },
+    {
+      "name": "create_player_club_stats",
+      "statement_count": 22,
+      "statements_md5": "f451040d6a6a288cb106b8ce0976904d",
+      "version": "20260902080000"
+    },
+    {
+      "name": "seed_goias_player_club_stats",
+      "statement_count": 2,
+      "statements_md5": "5bf82afb06cd8ad81a9302a91d87c9a8",
+      "version": "20260902090000"
+    },
+    {
+      "name": "create_matches",
+      "statement_count": 20,
+      "statements_md5": "c03e2bcf57634d98dd55c46e76869b17",
+      "version": "20260902100000"
+    },
+    {
+      "name": "seed_goias_matches",
+      "statement_count": 2,
+      "statements_md5": "dc6fccc96f0c7a7b168bd43ad76145d3",
+      "version": "20260902110000"
+    },
+    {
+      "name": "create_player_match_appearances",
+      "statement_count": 17,
+      "statements_md5": "2777c359b53a7a205968a910dd18db45",
+      "version": "20260902120000"
+    },
+    {
+      "name": "seed_goias_player_match_appearances",
+      "statement_count": 2,
+      "statements_md5": "23b821ade0ee1273bde78f89b76791d3",
+      "version": "20260902130000"
+    },
+    {
+      "name": "add_person_id_to_career_players",
+      "statement_count": 3,
+      "statements_md5": "efadad4201b988763e0a5949a206bbb4",
+      "version": "20260902140000"
+    },
+    {
+      "name": "backfill_career_players_person_id",
+      "statement_count": 1,
+      "statements_md5": "c4ce76109758e5aee684883c75bfa142",
+      "version": "20260902150000"
+    },
+    {
+      "name": "add_person_id_to_guess_players",
+      "statement_count": 3,
+      "statements_md5": "af1d40e9d735883f314a45ff1d79bf44",
+      "version": "20260902160000"
+    },
+    {
+      "name": "backfill_guess_players_person_id",
+      "statement_count": 1,
+      "statements_md5": "e028c3e3268c6036c646b2b20ef0e4ed",
+      "version": "20260902170000"
+    },
+    {
+      "name": "add_person_id_to_squad_members",
+      "statement_count": 3,
+      "statements_md5": "b821cf26f229a500785b7990a5e2a808",
+      "version": "20260902180000"
+    },
+    {
+      "name": "backfill_squad_members_person_id",
+      "statement_count": 1,
+      "statements_md5": "a3f2ff6554ad7d4e184ad618197603a8",
+      "version": "20260902190000"
+    },
+    {
+      "name": "fix_current_squad_ongoing_spells",
+      "statement_count": 1,
+      "statements_md5": "e6cfc21494651e986922d3461a341cf8",
+      "version": "20260902200000"
+    },
+    {
+      "name": "add_current_squad_missing_club_total_stats",
+      "statement_count": 1,
+      "statements_md5": "813823c15745c42ef3c941381d0eee05",
+      "version": "20260902210000"
+    },
+    {
+      "name": "add_multiclub_content_tenant_scope",
+      "statement_count": 1,
+      "statements_md5": "3bcd161857a01f9264ccf4bb14a92461",
+      "version": "20260902220000"
+    },
+    {
+      "name": "add_multiclub_arena_quiz_progress_tenant_scope",
+      "statement_count": 1,
+      "statements_md5": "156df4b2310a75aebb42aa60a4bdb3df",
+      "version": "20260902230000"
+    },
+    {
+      "name": "add_multiclub_career_lineup_progress_tenant_scope",
+      "statement_count": 1,
+      "statements_md5": "96e66502fd2adbae7e78d046db98d260",
+      "version": "20260902240000"
+    },
+    {
+      "name": "add_multiclub_tickets_store_tenant_scope",
+      "statement_count": 1,
+      "statements_md5": "134d468e07e627422c0c0dbc272964bb",
+      "version": "20260902250000"
+    },
+    {
+      "name": "add_multiclub_membership_tenant_scope",
+      "statement_count": 1,
+      "statements_md5": "103375108423b8cd97566b2cb6b07ebd",
+      "version": "20260902260000"
+    },
+    {
+      "name": "add_multiclub_notifications_tenant_scope",
+      "statement_count": 1,
+      "statements_md5": "1b50ad67ffe5caaa2f43ec01d6c6f6a5",
+      "version": "20260902270000"
+    },
+    {
+      "name": "add_arena_tenant_aware_rpcs",
+      "statement_count": 12,
+      "statements_md5": "5231f56396ee4bafdebba2bd01e5dbd7",
+      "version": "20260903000000"
+    },
+    {
+      "name": "add_membership_tenant_aware_rpcs",
+      "statement_count": 6,
+      "statements_md5": "a7ddc3d62b78ab74535a3865462d00e9",
+      "version": "20260903010000"
+    },
+    {
+      "name": "add_crowd_lineup_tenant_aware_rpc",
+      "statement_count": 3,
+      "statements_md5": "c3132a10296c0126c2d2e0bea521e5ad",
+      "version": "20260903020000"
+    },
+    {
+      "name": "add_store_tenant_aware_rpc",
+      "statement_count": 3,
+      "statements_md5": "8592a38234b7c3c7fbce86443c6af8e6",
+      "version": "20260903030000"
+    },
+    {
+      "name": "harden_tenant_rpc_execute_grants",
+      "statement_count": 16,
+      "statements_md5": "e84b43fb41f56bb0f2bc32d1b139642d",
+      "version": "20260903040000"
+    },
+    {
+      "name": "prepare_tenant_aware_content_keys",
+      "statement_count": 5,
+      "statements_md5": "e54941a7ddb2f368b1abc6cd136bdcf1",
+      "version": "20260903050000"
+    },
+    {
+      "name": "prepare_tenant_aware_progress_keys",
+      "statement_count": 11,
+      "statements_md5": "fe6efd004ad93182fc62001caaca03cf",
+      "version": "20260903060000"
+    },
+    {
+      "name": "prepare_tenant_aware_engagement_keys",
+      "statement_count": 5,
+      "statements_md5": "fd91143b0fa6e46986401d1e530877b0",
+      "version": "20260903070000"
+    },
+    {
+      "name": "prepare_tenant_aware_notification_keys",
+      "statement_count": 4,
+      "statements_md5": "400d745c214ec2ed0820c152cee21e98",
+      "version": "20260903080000"
+    },
+    {
+      "name": "update_arena_score_tenant_conflict",
+      "statement_count": 5,
+      "statements_md5": "dc032f879218556738c8d155c3bbad47",
+      "version": "20260903090000"
+    },
+    {
+      "name": "add_membership_checkin_ticket_rpc",
+      "statement_count": 5,
+      "statements_md5": "11c0a0f242708a5dcd479e2000a6db54",
+      "version": "20260903100000"
+    },
+    {
+      "name": "add_app_release_requirements",
+      "statement_count": 4,
+      "statements_md5": "a389ab101e5145b6c495c70154fd1bb5",
+      "version": "20260903110000"
+    },
+    {
+      "name": "finalize_tenant_aware_keys",
+      "statement_count": 31,
+      "statements_md5": "c9bb653cd90d281590ff9176cf66cbfa",
+      "version": "20260903120000"
+    },
+    {
+      "name": "drop_transitional_club_defaults",
+      "statement_count": 25,
+      "statements_md5": "b728dd07ebaba85983f1c4840ce27a87",
+      "version": "20260903130000"
+    },
+    {
+      "name": "retire_legacy_rpc_execute_grants",
+      "statement_count": 9,
+      "statements_md5": "9990c744a458ed611ed407e926240b67",
+      "version": "20260903140000"
+    },
+    {
+      "name": "fix_arena_score_cross_club_reads",
+      "statement_count": 4,
+      "statements_md5": "587a86c4af6bdbc65905b608255b1783",
+      "version": "20260903150000"
+    },
+    {
+      "name": "add_club_id_to_notification_tokens",
+      "statement_count": 4,
+      "statements_md5": "0a3fafbe45e94a1b393488c154c95981",
+      "version": "20260903160000"
+    },
+    {
+      "name": "drop_default_notification_tokens_club_id",
+      "statement_count": 1,
+      "statements_md5": "3a9184f2a0ae32b0223d85bf61419396",
+      "version": "20260903170000"
+    },
+    {
+      "name": "fix_ambiguous_id_membership_rpcs",
+      "statement_count": 6,
+      "statements_md5": "43ff5752d8f07f13c17af935524e71d6",
+      "version": "20260903180000"
+    },
+    {
+      "name": "multiclub_canonical_convergence",
+      "statement_count": 40,
+      "statements_md5": "62e42a918a4a7a6161dc4044d50aa42f",
+      "version": "20260904190000"
+    },
+    {
+      "name": "harden_legacy_rpc_acl_parity",
+      "statement_count": 28,
+      "statements_md5": "d35d73cbdf4110f8259321e0399ef23a",
+      "version": "20260904220000"
+    },
+    {
+      "name": "align_function_body_order_with_canonical",
+      "statement_count": 2,
+      "statements_md5": "ea98cb5122cb38c4b8618b40842a58e8",
+      "version": "20260904230000"
+    }
+  ]
+}
