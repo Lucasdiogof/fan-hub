@@ -95,8 +95,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get authStepSecurity => 'Segurança';
 
   @override
-  String get authMarketingOptIn =>
-      'Quero receber novidades, promoções e informações do Goiás';
+  String authMarketingOptIn(String clubShortName) {
+    return 'Quero receber novidades, promoções e informações do $clubShortName';
+  }
 
   @override
   String authPasswordRequirementLength(int count) {

@@ -271,8 +271,8 @@ abstract class AppLocalizations {
   /// No description provided for @authMarketingOptIn.
   ///
   /// In pt, this message translates to:
-  /// **'Quero receber novidades, promoções e informações do Goiás'**
-  String get authMarketingOptIn;
+  /// **'Quero receber novidades, promoções e informações do {clubShortName}'**
+  String authMarketingOptIn(String clubShortName);
 
   /// No description provided for @authPasswordRequirementLength.
   ///
