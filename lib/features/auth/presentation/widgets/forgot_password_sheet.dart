@@ -61,10 +61,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
       _submitted = true;
       _formError = null;
     });
-    final emailError = AppValidators.email(
-      context.l10n,
-      _emailController.text,
-    );
+    final emailError = AppValidators.email(context.l10n, _emailController.text);
     if (emailError != null) return;
 
     final email = AppValidators.normalizeEmail(_emailController.text);
@@ -131,9 +128,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
             Positioned(
               top: 0,
               right: 0,
-              child: _CloseButton(
-                onTap: () => Navigator.of(context).pop(),
-              ),
+              child: _CloseButton(onTap: () => Navigator.of(context).pop()),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/router/route_observer.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
@@ -260,7 +261,9 @@ class _LevelBanner extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          level.difficulty.label.toUpperCase(),
+                          level.difficulty
+                              .label(sl<ClubConfig>().identity.fanDemonym)
+                              .toUpperCase(),
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w900,

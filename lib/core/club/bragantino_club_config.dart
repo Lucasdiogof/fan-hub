@@ -10,6 +10,7 @@ import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/club/data/bragantino_history_data.dart';
+import 'package:goias_app/features/club/data/bragantino_idols_data.dart';
 import 'package:goias_app/features/club/data/bragantino_songs_data.dart';
 import 'package:goias_app/features/club/data/bragantino_timeline_data.dart';
 import 'package:goias_app/features/club/data/bragantino_titles_data.dart';
@@ -225,5 +226,6 @@ const bragantinoClubConfig = ClubConfig(
     historicalCampaigns: BragantinoTitlesData.historicalCampaigns,
     songs: BragantinoSongsData.songs,
     partners: BragantinoPartnersData.all,
+    idols: BragantinoIdolsData.idols,
   ),
 );

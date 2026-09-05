@@ -183,62 +183,56 @@ void main() {
       );
     });
 
-    test(
-      'hasClubContent e hasPartners são independentes — um clube pode ter '
-      '/clube liberado com /partners ainda bloqueado (parceiros nem sempre '
-      'prontos junto com história/títulos), e vice-versa',
-      () {
-        const clubContentSemPartners = ClubCapabilities(
-          hasMembership: false,
-          hasStore: false,
-          hasTickets: false,
-          hasCrowdLineup: false,
-          hasPassport: false,
-          hasNews: false,
-          hasSocial: false,
-          hasClubContent: true,
-          hasPartners: false,
-          hasMatches: false,
-          enabledArenaGames: {},
-          storeCommerceMode: CommerceMode.demo,
-          ticketCommerceMode: CommerceMode.demo,
-          membershipCommerceMode: CommerceMode.demo,
-        );
-        expect(
-          capabilityGateRedirect('/clube', clubContentSemPartners),
-          isNull,
-        );
-        expect(
-          capabilityGateRedirect('/partners', clubContentSemPartners),
-          featureUnavailableRoute,
-        );
+    test('hasClubContent e hasPartners são independentes — um clube pode ter '
+        '/clube liberado com /partners ainda bloqueado (parceiros nem sempre '
+        'prontos junto com história/títulos), e vice-versa', () {
+      const clubContentSemPartners = ClubCapabilities(
+        hasMembership: false,
+        hasStore: false,
+        hasTickets: false,
+        hasCrowdLineup: false,
+        hasPassport: false,
+        hasNews: false,
+        hasSocial: false,
+        hasClubContent: true,
+        hasPartners: false,
+        hasMatches: false,
+        enabledArenaGames: {},
+        storeCommerceMode: CommerceMode.demo,
+        ticketCommerceMode: CommerceMode.demo,
+        membershipCommerceMode: CommerceMode.demo,
+      );
+      expect(capabilityGateRedirect('/clube', clubContentSemPartners), isNull);
+      expect(
+        capabilityGateRedirect('/partners', clubContentSemPartners),
+        featureUnavailableRoute,
+      );
 
-        const partnersSemClubContent = ClubCapabilities(
-          hasMembership: false,
-          hasStore: false,
-          hasTickets: false,
-          hasCrowdLineup: false,
-          hasPassport: false,
-          hasNews: false,
-          hasSocial: false,
-          hasClubContent: false,
-          hasPartners: true,
-          hasMatches: false,
-          enabledArenaGames: {},
-          storeCommerceMode: CommerceMode.demo,
-          ticketCommerceMode: CommerceMode.demo,
-          membershipCommerceMode: CommerceMode.demo,
-        );
-        expect(
-          capabilityGateRedirect('/clube', partnersSemClubContent),
-          featureUnavailableRoute,
-        );
-        expect(
-          capabilityGateRedirect('/partners', partnersSemClubContent),
-          isNull,
-        );
-      },
-    );
+      const partnersSemClubContent = ClubCapabilities(
+        hasMembership: false,
+        hasStore: false,
+        hasTickets: false,
+        hasCrowdLineup: false,
+        hasPassport: false,
+        hasNews: false,
+        hasSocial: false,
+        hasClubContent: false,
+        hasPartners: true,
+        hasMatches: false,
+        enabledArenaGames: {},
+        storeCommerceMode: CommerceMode.demo,
+        ticketCommerceMode: CommerceMode.demo,
+        membershipCommerceMode: CommerceMode.demo,
+      );
+      expect(
+        capabilityGateRedirect('/clube', partnersSemClubContent),
+        featureUnavailableRoute,
+      );
+      expect(
+        capabilityGateRedirect('/partners', partnersSemClubContent),
+        isNull,
+      );
+    });
 
     test(
       'hasMatches=false: /match/:fixtureId bloqueada (deep link direto também)',
@@ -311,7 +305,7 @@ void main() {
             hasNews: false,
             hasSocial: false,
             hasClubContent: false,
-        hasPartners: false,
+            hasPartners: false,
             hasMatches: false,
             enabledArenaGames: {'quiz'},
             storeCommerceMode: CommerceMode.demo,

@@ -1,4 +1,5 @@
 import 'package:goias_app/features/club/domain/entities/club_history_section.dart';
+import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/domain/entities/club_timeline_event.dart';
 import 'package:goias_app/features/club/domain/entities/club_title_group.dart';
@@ -25,6 +26,7 @@ class ClubInstitutionalContent {
     this.historicalCampaigns = const [],
     this.songs = const [],
     this.partners = const [],
+    this.idols = const [],
   });
 
   final List<ClubHistorySection> history;
@@ -36,4 +38,9 @@ class ClubInstitutionalContent {
   final List<ClubHistoricalCampaign> historicalCampaigns;
   final List<ClubSong> songs;
   final List<Partner> partners;
+
+  /// Sem página própria ainda em nenhum clube (nem o Goiás tem) — só o
+  /// dado, preparado como pool inicial pro futuro jogo de identidade de
+  /// jogador (ver `ClubIdol`).
+  final List<ClubIdol> idols;
 }
