@@ -1,0 +1,6 @@
+# tooling/passaporte_esmeraldino/generate_import_sql.py valida o SHA-256
+# deste arquivo antes de gerar qualquer SQL. Sem esta regra, um checkout no
+# Windows com `core.autocrlf=true` (comum, é o default de várias instalações
+# do Git for Windows) reescreve LF -> CRLF e quebra esse checksum
+# permanentemente, mesmo com o conteúdo/dado real intacto.
+tooling/passaporte_esmeraldino/source/*.json text eol=lf
