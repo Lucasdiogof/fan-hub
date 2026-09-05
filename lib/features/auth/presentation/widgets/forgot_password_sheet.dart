@@ -116,10 +116,26 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
           AppSpacing.xxl,
           MediaQuery.viewInsetsOf(context).bottom + AppSpacing.xl,
         ),
-        child: AnimatedSize(
-          duration: const Duration(milliseconds: 200),
-          alignment: Alignment.topCenter,
-          child: _sent ? _buildConfirmation(context) : _buildForm(context),
+        child: Stack(
+          children: [
+            AnimatedSize(
+              duration: const Duration(milliseconds: 200),
+              alignment: Alignment.topCenter,
+              child: _sent ? _buildConfirmation(context) : _buildForm(context),
+            ),
+            // No desktop/Web, `AppModalSheet` vira um `Dialog` centralizado
+            // sem drag handle nenhum — sem este botão, a única forma de
+            // fechar é clicar fora, o que não é óbvio pra quem não conhece o
+            // app. No mobile (bottom sheet com drag handle) ele é redundante
+            // mas inofensivo, então não vale a pena esconder por plataforma.
+            Positioned(
+              top: 0,
+              right: 0,
+              child: _CloseButton(
+                onTap: () => Navigator.of(context).pop(),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -326,6 +342,41 @@ class _ResendAction extends StatelessWidget {
           ],
         ),
         textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
+
+/// Botão explícito de fechar, sempre no canto superior direito — no
+/// desktop/Web (`AppModalSheet` vira `Dialog`, sem drag handle) é a única
+/// forma óbvia de sair sem preencher o formulário; no mobile é redundante
+/// com o drag handle, mas não atrapalha.
+class _CloseButton extends StatelessWidget {
+  const _CloseButton({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Semantics(
+      button: true,
+      label: context.l10n.commonClose,
+      child: Material(
+        color: Colors.transparent,
+        shape: const CircleBorder(),
+        child: InkWell(
+          onTap: onTap,
+          customBorder: const CircleBorder(),
+          child: Padding(
+            padding: const EdgeInsets.all(AppSpacing.xs),
+            child: Icon(
+              Icons.close_rounded,
+              size: 22,
+              color: colors.textSecondary,
+            ),
+          ),
+        ),
       ),
     );
   }
