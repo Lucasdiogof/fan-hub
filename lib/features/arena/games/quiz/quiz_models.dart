@@ -5,9 +5,14 @@
 enum QuizDifficulty { torcedor, esmeraldino, fanatico }
 
 extension QuizDifficultyLabel on QuizDifficulty {
-  String get label => switch (this) {
+  /// O nível do meio usa o gentílico da torcida do clube ATIVO — no Goiás
+  /// sempre foi "Esmeraldino" (o valor do enum é só o código interno do
+  /// nível, nunca o texto mostrado), mas um clube sem esse mesmo gentílico
+  /// não pode herdar "Esmeraldino" como rótulo. [fanDemonym] vem de
+  /// `ClubIdentity.fanDemonym` — cada clube já tem o seu.
+  String label(String fanDemonym) => switch (this) {
     QuizDifficulty.torcedor => 'Torcedor',
-    QuizDifficulty.esmeraldino => 'Esmeraldino',
+    QuizDifficulty.esmeraldino => fanDemonym,
     QuizDifficulty.fanatico => 'Fanático',
   };
 }

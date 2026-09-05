@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -103,7 +104,9 @@ class _QuizView extends StatelessWidget {
                     ArenaGameHeader(
                       title: context.l10n.arenaGameQuizTitle.toUpperCase(),
                       subtitle: context.l10n.quizLevelName(
-                        context.read<QuizCubit>().difficulty.label,
+                        context.read<QuizCubit>().difficulty.label(
+                          sl<ClubConfig>().identity.fanDemonym,
+                        ),
                       ),
                       onBack: () =>
                           context.canPop() ? context.pop() : context.go('/'),

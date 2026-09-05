@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -52,7 +54,11 @@ class _QuizResultPageState extends State<QuizResultPage> {
       // ignore: use_build_context_synchronously
       context,
       icon: Icons.emoji_events_rounded,
-      title: l10n.quizLevelCompleted(data.difficulty.label.toUpperCase()),
+      title: l10n.quizLevelCompleted(
+        data.difficulty
+            .label(sl<ClubConfig>().identity.fanDemonym)
+            .toUpperCase(),
+      ),
       description: description.toString(),
       confirmLabel: wrongCount > 0 ? l10n.quizReviewErrors : l10n.quizPlayAgain,
       cancelLabel: l10n.commonClose,
@@ -126,10 +132,14 @@ class _QuizResultPageState extends State<QuizResultPage> {
                         Text(
                           (data.isReview
                                   ? context.l10n.quizReviewLevel(
-                                      data.difficulty.label,
+                                      data.difficulty.label(
+                                        sl<ClubConfig>().identity.fanDemonym,
+                                      ),
                                     )
                                   : context.l10n.quizFinalResultLevel(
-                                      data.difficulty.label,
+                                      data.difficulty.label(
+                                        sl<ClubConfig>().identity.fanDemonym,
+                                      ),
                                     ))
                               .toUpperCase(),
                           textAlign: TextAlign.center,

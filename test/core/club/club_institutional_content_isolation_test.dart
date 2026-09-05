@@ -176,16 +176,19 @@ void main() {
   });
 
   group('Títulos sem imagem funcionam — o modelo nunca exige foto', () {
-    test('todo título do Bragantino tem images vazio, e count continua > 0', () {
-      for (final group in BragantinoTitlesData.groups) {
-        expect(
-          group.images,
-          isEmpty,
-          reason: '${group.competitionName} não deveria ter imagem ainda',
-        );
-        expect(group.count, greaterThan(0));
-      }
-    });
+    test(
+      'todo título do Bragantino tem images vazio, e count continua > 0',
+      () {
+        for (final group in BragantinoTitlesData.groups) {
+          expect(
+            group.images,
+            isEmpty,
+            reason: '${group.competitionName} não deveria ter imagem ainda',
+          );
+          expect(group.count, greaterThan(0));
+        }
+      },
+    );
 
     testWidgets(
       'ClubTitlesPage do Bragantino renderiza título sem quebrar, sem carrossel',
@@ -282,63 +285,123 @@ void main() {
       expect(find.textContaining('Goiás'), findsNothing);
     });
 
-    testWidgets('PartnersPage do Bragantino mostra os parceiros do Bragantino', (
-      tester,
-    ) async {
-      sl.registerSingleton<ClubConfig>(bragantinoClubConfig);
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: AppTheme.light(),
-          locale: const Locale('pt'),
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          home: const PartnersPage(),
-        ),
-      );
-      await tester.pumpAndSettle();
+    testWidgets(
+      'PartnersPage do Bragantino mostra os parceiros do Bragantino',
+      (tester) async {
+        sl.registerSingleton<ClubConfig>(bragantinoClubConfig);
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: AppTheme.light(),
+            locale: const Locale('pt'),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            home: const PartnersPage(),
+          ),
+        );
+        await tester.pumpAndSettle();
 
-      expect(find.text('Puma'), findsOneWidget);
-      expect(find.text('Farmina'), findsOneWidget);
-      for (final goiasPartner in PartnersData.all) {
-        expect(find.text(goiasPartner.name), findsNothing);
-      }
-    });
+        expect(find.text('Puma'), findsOneWidget);
+        expect(find.text('Farmina'), findsOneWidget);
+        for (final goiasPartner in PartnersData.all) {
+          expect(find.text(goiasPartner.name), findsNothing);
+        }
+      },
+    );
   });
 
-  test(
-    'FABRICADO — nenhuma string de identidade do Goiás aparece em nenhum '
-    'campo textual do institutionalContent do Bragantino',
-    () {
-      const forbidden = ['Goiás', 'Esmeraldino', 'Verdão', 'Serrinha'];
-      final content = bragantinoClubConfig.institutionalContent;
-      final texts = <String>[
-        for (final s in content.history) ...[s.period, s.title, ...s.paragraphs],
-        for (final e in content.timeline) e.title,
-        for (final g in content.titles) g.competitionName,
-        for (final c in content.historicalCampaigns) c.title,
-        for (final s in content.songs) s.title,
-        for (final p in content.partners) p.name,
-      ];
-      for (final text in texts) {
-        for (final leaked in forbidden) {
-          expect(
-            text.toLowerCase(),
-            isNot(contains(leaked.toLowerCase())),
-            reason: '"$text" contém identidade do Goiás ("$leaked")',
-          );
-        }
+  test('FABRICADO — nenhuma string de identidade do Goiás aparece em nenhum '
+      'campo textual do institutionalContent do Bragantino', () {
+    const forbidden = ['Goiás', 'Esmeraldino', 'Verdão', 'Serrinha'];
+    final content = bragantinoClubConfig.institutionalContent;
+    final texts = <String>[
+      for (final s in content.history) ...[s.period, s.title, ...s.paragraphs],
+      for (final e in content.timeline) e.title,
+      for (final g in content.titles) g.competitionName,
+      for (final c in content.historicalCampaigns) c.title,
+      for (final s in content.songs) s.title,
+      for (final p in content.partners) p.name,
+      for (final i in content.idols) ...[i.name, i.description],
+    ];
+    for (final text in texts) {
+      for (final leaked in forbidden) {
+        expect(
+          text.toLowerCase(),
+          isNot(contains(leaked.toLowerCase())),
+          reason: '"$text" contém identidade do Goiás ("$leaked")',
+        );
       }
-    },
-  );
+    }
+  });
 
-  test(
-    'FABRICADO — categoria de música nunca mais leva o nome "esmeraldina" '
-    '(era um vazamento de nomenclatura do Goiás no enum compartilhado)',
-    () {
-      expect(
-        ClubSongCategory.values.map((v) => v.name),
-        isNot(contains('esmeraldina')),
-      );
-    },
-  );
+  test('FABRICADO — categoria de música nunca mais leva o nome "esmeraldina" '
+      '(era um vazamento de nomenclatura do Goiás no enum compartilhado)', () {
+    expect(
+      ClubSongCategory.values.map((v) => v.name),
+      isNot(contains('esmeraldina')),
+    );
+  });
+
+  group('Ídolos do Bragantino — semântica de evidência preservada', () {
+    test(
+      'Goiás não tem ídolos (feature nunca existiu pra ele — sem regressão)',
+      () {
+        expect(goiasClubConfig.institutionalContent.idols, isEmpty);
+      },
+    );
+
+    test(
+      'Lincom é ídolo, mas NUNCA carrega estatística numérica na descrição',
+      () {
+        final lincom = bragantinoClubConfig.institutionalContent.idols
+            .firstWhere((i) => i.name == 'Lincom');
+        expect(lincom.evidenceExplicitIdol, isTrue);
+        expect(
+          RegExp(r'\d').hasMatch(lincom.description),
+          isFalse,
+          reason:
+              'conflito estatístico aberto (73 gols / 133+ jogos) não pode '
+              'aparecer como fato publicado: "${lincom.description}"',
+        );
+      },
+    );
+
+    test('nomes sem evidência explícita nunca usam a formulação forte de '
+        '"ídolo" na descrição — só destaque/geração histórica', () {
+      final idols = bragantinoClubConfig.institutionalContent.idols;
+      for (final idol in idols.where((i) => !i.evidenceExplicitIdol)) {
+        expect(
+          idol.description.toLowerCase(),
+          isNot(contains('ídolo')),
+          reason:
+              '"${idol.name}" não tem evidência explícita de ídolo, mas a '
+              'descrição usa a palavra: "${idol.description}"',
+        );
+      }
+    });
+
+    test('tier 1 tem exatamente os 8 nomes fortes do levantamento', () {
+      final tier1Names = bragantinoClubConfig.institutionalContent.idols
+          .where((i) => i.tier == 1)
+          .map((i) => i.name)
+          .toSet();
+      expect(tier1Names, {
+        'Mauro Silva',
+        'Lincom',
+        'Léo Jaime',
+        'Cleiton',
+        'Gil Baiano',
+        'Marcelo',
+        'Mazinho',
+        'Luís Müller',
+      });
+    });
+
+    test('26 nomes ao todo (8 tier 1 + 12 tier 2 + 6 tier 3)', () {
+      final idols = bragantinoClubConfig.institutionalContent.idols;
+      expect(idols.length, 26);
+      expect(idols.where((i) => i.tier == 1).length, 8);
+      expect(idols.where((i) => i.tier == 2).length, 12);
+      expect(idols.where((i) => i.tier == 3).length, 6);
+    });
+  });
 }
