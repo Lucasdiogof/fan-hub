@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -8,6 +11,7 @@ import 'package:goias_app/features/membership/domain/membership_registration_val
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/masks.dart';
+import 'package:goias_app/shared/widgets/demo_disclaimer_banner.dart';
 
 /// Não conta como uma quarta etapa do stepper — é a tela que aparece depois
 /// da Etapa 3, dentro do mesmo fluxo/cubit.
@@ -114,6 +118,16 @@ class MembershipReviewPage extends StatelessWidget {
           value: state.regulationAccepted,
           onChanged: cubit.setRegulationAccepted,
         ),
+        if (sl<ClubConfig>().capabilities.membershipCommerceMode ==
+            CommerceMode.demo) ...[
+          const SizedBox(height: AppSpacing.lg),
+          DemoDisclaimerBanner(
+            title: context.l10n.commonDemoBannerTitle,
+            body: context.l10n.membershipDemoDisclaimerBody(
+              sl<ClubConfig>().productNames.membershipProgramName,
+            ),
+          ),
+        ],
         const SizedBox(height: AppSpacing.xxxl),
       ],
     );
@@ -267,6 +281,20 @@ class _RegulationAcceptance extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (sl<ClubConfig>().capabilities.membershipCommerceMode ==
+                    CommerceMode.demo) ...[
+                  const SizedBox(height: 6),
+                  Text(
+                    context.l10n.membershipRegulationDemoNote(
+                      sl<ClubConfig>().productNames.membershipProgramName,
+                    ),
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontStyle: FontStyle.italic,
+                      color: colors.textHint,
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

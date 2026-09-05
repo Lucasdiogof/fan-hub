@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -11,6 +14,7 @@ import 'package:goias_app/features/store/presentation/widgets/store_price_block.
 import 'package:goias_app/shared/utils/masks.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/demo_tag.dart';
 
 class StoreOrderDetailPage extends StatelessWidget {
   const StoreOrderDetailPage({required this.order, super.key});
@@ -46,6 +50,7 @@ class StoreOrderDetailPage extends StatelessWidget {
                       Expanded(
                         child: Text(
                           order.id,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w900,
@@ -53,6 +58,11 @@ class StoreOrderDetailPage extends StatelessWidget {
                           ),
                         ),
                       ),
+                      if (sl<ClubConfig>().capabilities.storeCommerceMode ==
+                          CommerceMode.demo) ...[
+                        const SizedBox(width: AppSpacing.sm),
+                        DemoTag(label: l10n.commonDemoTag),
+                      ],
                     ],
                   ),
                 ),
@@ -78,7 +88,8 @@ class StoreOrderDetailPage extends StatelessWidget {
                             ? Text(
                                 l10n.storePickupAddressPrefix(
                                   order.pickupInfo?.fullAddress ??
-                                      PickupInformation.forActiveClub().fullAddress,
+                                      PickupInformation.forActiveClub()
+                                          .fullAddress,
                                 ),
                                 style: _valueStyle(context),
                               )

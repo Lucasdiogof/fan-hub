@@ -3,6 +3,7 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
@@ -183,6 +184,13 @@ const bragantinoClubConfig = ClubConfig(
     // teste em resolve_active_club_test.dart).
     hasMatches: true,
     enabledArenaGames: <String>{},
+    // Todas as 3 capabilities de comércio já estão false acima — o modo
+    // não importa funcionalmente ainda, mas precisa de um valor (nenhum
+    // campo de ClubCapabilities é opcional). demo é o valor seguro/real
+    // pros dois clubes hoje, nenhum tem gateway/bilheteria/API oficial.
+    storeCommerceMode: CommerceMode.demo,
+    ticketCommerceMode: CommerceMode.demo,
+    membershipCommerceMode: CommerceMode.demo,
   ),
   productNames: ClubProductNaming(
     arenaName: 'Arena',

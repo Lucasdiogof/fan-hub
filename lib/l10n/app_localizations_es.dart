@@ -315,6 +315,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get commonContinue => 'CONTINUAR';
 
   @override
+  String get commonDemoTag => 'Demostración';
+
+  @override
+  String get commonDemoBannerTitle => 'Demostración';
+
+  @override
   String get profileTitle => 'PERFIL';
 
   @override
@@ -2281,6 +2287,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ticketsRefundDetailsRequestedAtLabel => 'Fecha de la solicitud';
 
   @override
+  String get ticketsDemoDisclaimerBody =>
+      'Esta compra es simulada. No se realizará ningún cobro y la entrada generada no es válida para el ingreso al estadio.';
+
+  @override
+  String get ticketsDemoTag => 'Entrada de demostración';
+
+  @override
+  String get ticketsRefundDemoNotice =>
+      'Esta simulación no involucra dinero real — no se reembolsará nada.';
+
+  @override
+  String get ticketsRefundDemoConcludedNote =>
+      'Reembolso de demostración — ningún valor fue movido.';
+
+  @override
+  String get ticketPdfDemoWatermark =>
+      'DEMOSTRACIÓN\nNO VÁLIDO PARA EL INGRESO';
+
+  @override
+  String get ticketPdfDemoQrCaption => 'QR de demostración';
+
+  @override
   String get ticketPdfFieldVenue => 'Lugar';
 
   @override
@@ -2868,6 +2896,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get membershipReadFullRegulation => 'Leer el reglamento completo →';
+
+  @override
+  String membershipDemoDisclaimerBody(String programName) {
+    return 'Esta adhesión es simulada y no crea ningún vínculo con el $programName. No se realizará ningún cobro.';
+  }
+
+  @override
+  String membershipRegulationDemoNote(String programName) {
+    return 'Ver/aceptar esto en la demostración no constituye una adhesión oficial al $programName.';
+  }
+
+  @override
+  String get membershipStatusDemoBadge => 'Modo Socio — Demostración';
 
   @override
   String get membershipYourMembership => 'TU AFILIACIÓN';

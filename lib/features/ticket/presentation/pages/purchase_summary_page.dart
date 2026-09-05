@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -16,6 +19,7 @@ import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/demo_disclaimer_banner.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
@@ -55,7 +59,9 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
     // comprar pelo menos 1 ingresso pro próprio usuário. Os demais ficam
     // em branco, aguardando os dados de quem realmente vai usá-los.
     final holders = cubit.state.holders;
-    if (holders.isNotEmpty && holders.first.name.isEmpty && !holders.first.isSelf) {
+    if (holders.isNotEmpty &&
+        holders.first.name.isEmpty &&
+        !holders.first.isSelf) {
       cubit.setHolderIsSelf(
         0,
         value: true,
@@ -68,7 +74,8 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
       for (final holder in current) TextEditingController(text: holder.name),
     ];
     _documentControllers = [
-      for (final holder in current) TextEditingController(text: holder.document),
+      for (final holder in current)
+        TextEditingController(text: holder.document),
     ];
     _nameTouches = [for (final _ in current) FieldTouch()];
     _documentTouches = [for (final _ in current) FieldTouch()];
@@ -86,7 +93,11 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
   }
 
   void _syncControllers(PurchaseState state) {
-    for (var i = 0; i < state.holders.length && i < _nameControllers.length; i++) {
+    for (
+      var i = 0;
+      i < state.holders.length && i < _nameControllers.length;
+      i++
+    ) {
       final holder = state.holders[i];
       if (_nameControllers[i].text != holder.name) {
         _nameControllers[i].text = holder.name;
@@ -306,15 +317,35 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(AppSpacing.lg),
-                      child: AppPrimaryButton(
-                        label: context.l10n.ticketsFinalizePurchaseButton,
-                        loading: state.saving,
-                        onPressed: state.canFinalize
-                            ? () => context
-                                  .read<PurchaseCubit>()
-                                  .finalizePurchase()
-                            : null,
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        0,
+                        AppSpacing.lg,
+                        AppSpacing.lg,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          if (sl<ClubConfig>()
+                                  .capabilities
+                                  .ticketCommerceMode ==
+                              CommerceMode.demo) ...[
+                            DemoDisclaimerBanner(
+                              title: context.l10n.commonDemoBannerTitle,
+                              body: context.l10n.ticketsDemoDisclaimerBody,
+                            ),
+                            const SizedBox(height: AppSpacing.md),
+                          ],
+                          AppPrimaryButton(
+                            label: context.l10n.ticketsFinalizePurchaseButton,
+                            loading: state.saving,
+                            onPressed: state.canFinalize
+                                ? () => context
+                                      .read<PurchaseCubit>()
+                                      .finalizePurchase()
+                                : null,
+                          ),
+                        ],
                       ),
                     ),
                   ],

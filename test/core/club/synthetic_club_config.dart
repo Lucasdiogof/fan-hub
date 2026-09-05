@@ -3,6 +3,7 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
@@ -122,6 +123,9 @@ const syntheticClubBConfig = ClubConfig(
     hasClubContent: false,
     hasMatches: false,
     enabledArenaGames: {'quiz'},
+    storeCommerceMode: CommerceMode.demo,
+    ticketCommerceMode: CommerceMode.demo,
+    membershipCommerceMode: CommerceMode.demo,
   ),
   productNames: ClubProductNaming(
     arenaName: 'Arena B',

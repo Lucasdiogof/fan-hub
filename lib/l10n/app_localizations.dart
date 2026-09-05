@@ -694,6 +694,18 @@ abstract class AppLocalizations {
   /// **'CONTINUAR'**
   String get commonContinue;
 
+  /// No description provided for @commonDemoTag.
+  ///
+  /// In pt, this message translates to:
+  /// **'Demonstração'**
+  String get commonDemoTag;
+
+  /// No description provided for @commonDemoBannerTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Demonstração'**
+  String get commonDemoBannerTitle;
+
   /// No description provided for @profileTitle.
   ///
   /// In pt, this message translates to:
@@ -4095,6 +4107,42 @@ abstract class AppLocalizations {
   /// **'Data da solicitação'**
   String get ticketsRefundDetailsRequestedAtLabel;
 
+  /// No description provided for @ticketsDemoDisclaimerBody.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esta compra é simulada. Nenhuma cobrança será realizada e o ingresso gerado não é válido para entrada no estádio.'**
+  String get ticketsDemoDisclaimerBody;
+
+  /// No description provided for @ticketsDemoTag.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ingresso demonstrativo'**
+  String get ticketsDemoTag;
+
+  /// No description provided for @ticketsRefundDemoNotice.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esta simulação não envolve nenhum valor real — nada será estornado.'**
+  String get ticketsRefundDemoNotice;
+
+  /// No description provided for @ticketsRefundDemoConcludedNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reembolso demonstrativo — nenhum valor foi movimentado.'**
+  String get ticketsRefundDemoConcludedNote;
+
+  /// No description provided for @ticketPdfDemoWatermark.
+  ///
+  /// In pt, this message translates to:
+  /// **'DEMONSTRAÇÃO\nNÃO VÁLIDO PARA ENTRADA'**
+  String get ticketPdfDemoWatermark;
+
+  /// No description provided for @ticketPdfDemoQrCaption.
+  ///
+  /// In pt, this message translates to:
+  /// **'QR demonstrativo'**
+  String get ticketPdfDemoQrCaption;
+
   /// No description provided for @ticketPdfFieldVenue.
   ///
   /// In pt, this message translates to:
@@ -5150,6 +5198,24 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Ler regulamento completo →'**
   String get membershipReadFullRegulation;
+
+  /// No description provided for @membershipDemoDisclaimerBody.
+  ///
+  /// In pt, this message translates to:
+  /// **'Esta adesão é simulada e não cria vínculo com o {programName}. Nenhuma cobrança será realizada.'**
+  String membershipDemoDisclaimerBody(String programName);
+
+  /// No description provided for @membershipRegulationDemoNote.
+  ///
+  /// In pt, this message translates to:
+  /// **'A visualização/aceite nesta demonstração não constitui adesão oficial ao {programName}.'**
+  String membershipRegulationDemoNote(String programName);
+
+  /// No description provided for @membershipStatusDemoBadge.
+  ///
+  /// In pt, this message translates to:
+  /// **'Modo Sócio — Demonstração'**
+  String get membershipStatusDemoBadge;
 
   /// No description provided for @membershipYourMembership.
   ///

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -17,12 +19,16 @@ import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/demo_tag.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/viewport_centered.dart';
+
+bool get _ticketsAreDemo =>
+    sl<ClubConfig>().capabilities.ticketCommerceMode == CommerceMode.demo;
 
 class MyTicketsPage extends StatelessWidget {
   const MyTicketsPage({super.key});
@@ -78,7 +84,9 @@ class _MyTicketsViewState extends State<_MyTicketsView>
       context,
       icon: Icons.assignment_return_outlined,
       title: l10n.ticketsRefundConfirmTitle,
-      description: l10n.ticketsRefundConfirmMessage,
+      description: _ticketsAreDemo
+          ? '${l10n.ticketsRefundConfirmMessage}\n\n${l10n.ticketsRefundDemoNotice}'
+          : l10n.ticketsRefundConfirmMessage,
       content: _MatchSummaryBlock(ticket: ticket),
       confirmLabel: l10n.ticketsRefundConfirmButton,
       cancelLabel: l10n.ticketsRefundCancelButton,
@@ -118,6 +126,17 @@ class _MyTicketsViewState extends State<_MyTicketsView>
               value:
                   '${fullDateLabel(requestedAt)} · ${timeLabel(requestedAt)}',
             ),
+          if (_ticketsAreDemo) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              l10n.ticketsRefundDemoConcludedNote,
+              style: TextStyle(
+                fontSize: 11.5,
+                fontStyle: FontStyle.italic,
+                color: context.colors.textHint,
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -327,6 +346,13 @@ class _TicketCard extends StatelessWidget {
               _StatusChip(status: ticket.status),
             ],
           ),
+          if (_ticketsAreDemo) ...[
+            const SizedBox(height: 6),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: DemoTag(label: context.l10n.ticketsDemoTag),
+            ),
+          ],
           const SizedBox(height: AppSpacing.sm),
           if (kickoff != null)
             _MetaRow(

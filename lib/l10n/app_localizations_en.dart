@@ -314,6 +314,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonContinue => 'CONTINUE';
 
   @override
+  String get commonDemoTag => 'Demo';
+
+  @override
+  String get commonDemoBannerTitle => 'Demo';
+
+  @override
   String get profileTitle => 'PROFILE';
 
   @override
@@ -2272,6 +2278,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketsRefundDetailsRequestedAtLabel => 'Requested on';
 
   @override
+  String get ticketsDemoDisclaimerBody =>
+      'This purchase is simulated. No charge will be made and the generated ticket is not valid for stadium entry.';
+
+  @override
+  String get ticketsDemoTag => 'Demo ticket';
+
+  @override
+  String get ticketsRefundDemoNotice =>
+      'This simulation involves no real money — nothing will be refunded.';
+
+  @override
+  String get ticketsRefundDemoConcludedNote =>
+      'Demo refund — no money was moved.';
+
+  @override
+  String get ticketPdfDemoWatermark => 'DEMO\nNOT VALID FOR ENTRY';
+
+  @override
+  String get ticketPdfDemoQrCaption => 'Demo QR code';
+
+  @override
   String get ticketPdfFieldVenue => 'Venue';
 
   @override
@@ -2858,6 +2885,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get membershipReadFullRegulation => 'Read the full regulation →';
+
+  @override
+  String membershipDemoDisclaimerBody(String programName) {
+    return 'This membership is simulated and does not create a bond with $programName. No charge will be made.';
+  }
+
+  @override
+  String membershipRegulationDemoNote(String programName) {
+    return 'Viewing/accepting this in the demo does not constitute an official membership with $programName.';
+  }
+
+  @override
+  String get membershipStatusDemoBadge => 'Member Mode — Demo';
 
   @override
   String get membershipYourMembership => 'YOUR MEMBERSHIP';

@@ -1,3 +1,5 @@
+import 'package:goias_app/core/club/commerce_mode.dart';
+
 /// Capacidades REAIS do clube — cada flag existe porque a auditoria da M1
 /// (e a M4.2A, pra `hasNews`/`hasSocial`) encontrou o runtime
 /// correspondente (não são flags especulativas). M4.2A liga isto de
@@ -11,6 +13,14 @@
 /// das duas; os repositories delas já são `club_id`-scoped desde M3.1/M3.2,
 /// então "capability=true sempre" não é um risco de vazamento, é só uma
 /// decisão de escopo (ver relatório).
+///
+/// `storeCommerceMode`/`ticketCommerceMode`/`membershipCommerceMode`
+/// (auditoria 2026-09-05): existência (`hasStore`/`hasTickets`/
+/// `hasMembership`) e MODO são perguntas diferentes — um clube pode ter a
+/// feature (existe, navegável) sem ela processar dinheiro/vínculo de
+/// verdade ainda. `CommerceMode.demo` liga o disclaimer/marca d'água/tag
+/// nas 3 telas; `CommerceMode.real` os desliga — nenhuma tela precisa ser
+/// reescrita quando uma área virar real, só a config muda.
 class ClubCapabilities {
   const ClubCapabilities({
     required this.hasMembership,
@@ -23,6 +33,9 @@ class ClubCapabilities {
     required this.hasClubContent,
     required this.hasMatches,
     required this.enabledArenaGames,
+    required this.storeCommerceMode,
+    required this.ticketCommerceMode,
+    required this.membershipCommerceMode,
   });
 
   final bool hasMembership;
@@ -30,6 +43,9 @@ class ClubCapabilities {
   final bool hasTickets;
   final bool hasCrowdLineup;
   final bool hasPassport;
+  final CommerceMode storeCommerceMode;
+  final CommerceMode ticketCommerceMode;
+  final CommerceMode membershipCommerceMode;
 
   /// Aba "Jogos" + calendário/detalhe de partida (`/match/:id`) — depende
   /// do Worker de futebol do PRÓPRIO clube estar no ar (`ClubIntegrations.

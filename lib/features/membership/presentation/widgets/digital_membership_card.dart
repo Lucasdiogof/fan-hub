@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
+import 'package:goias_app/shared/widgets/demo_tag.dart';
 
 /// Carteirinha visual do Sócio Esmeralda — mock enquanto não existe emissão
 /// real (QR Code, biometria etc. fora de escopo por enquanto).
@@ -84,6 +86,11 @@ class DigitalMembershipCard extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
+                  if (sl<ClubConfig>().capabilities.membershipCommerceMode ==
+                      CommerceMode.demo) ...[
+                    DemoTag(label: context.l10n.commonDemoTag, onDark: true),
+                    const SizedBox(width: 6),
+                  ],
                   _StatusPill(status: status),
                 ],
               ),
