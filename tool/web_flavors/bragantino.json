@@ -10,5 +10,5 @@
   "themeColor": "#37474F",
   "themeLight": "#F4F5F7",
   "themeDark": "#12171B",
-  "iconsSourceDir": null
+  "iconsSourceDir": "lib/assets/branding/bragantino/web_icons"
 }
