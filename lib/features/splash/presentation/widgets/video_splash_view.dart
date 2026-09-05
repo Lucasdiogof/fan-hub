@@ -179,17 +179,25 @@ class _CenteredVideo extends StatelessWidget {
   Widget build(BuildContext context) {
     final videoSize = controller.value.size;
     final screenSize = MediaQuery.sizeOf(context);
+    // Antes tinha um teto fixo de 420 de largura — numa janela desktop/Web
+    // comum (bem mais larga que alta), isso deixava o vídeo do tamanho de
+    // um celular plantado no meio de uma tela enorme, a maior parte vazia.
+    // `FittedBox` com `contain` cresce o vídeo até encostar numa das bordas
+    // da caixa de 92% da tela (nunca cropa, sempre mantém a proporção) —
+    // usa o espaço disponível de verdade, sem depender de um número mágico.
     return Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: 420,
-          maxHeight: screenSize.height * 0.88,
-        ),
-        child: AspectRatio(
-          aspectRatio: videoSize.width / videoSize.height,
+      child: SizedBox(
+        width: screenSize.width * 0.92,
+        height: screenSize.height * 0.92,
+        child: FittedBox(
+          fit: BoxFit.contain,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(28),
-            child: VideoPlayer(controller),
+            child: SizedBox(
+              width: videoSize.width,
+              height: videoSize.height,
+              child: VideoPlayer(controller),
+            ),
           ),
         ),
       ),

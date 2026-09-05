@@ -74,6 +74,15 @@ class _LoginPageState extends State<LoginPage> {
             child: Image.asset(
               sl<ClubConfig>().assets.loginBackground,
               fit: BoxFit.cover,
+              // A arte é vertical (celular) com o escudo no terço de cima e
+              // só degradê vazio embaixo (onde o formulário se sobrepõe).
+              // Alinhamento padrão (center) cropa simétrico quando a tela é
+              // mais larga que a arte (qualquer navegador desktop/Web) —
+              // como a imagem precisa crescer bem mais em altura pra cobrir
+              // a largura, o corte simétrico esconde o escudo por cima.
+              // Ancorando no topo, o corte some só embaixo (degradê vazio),
+              // e o escudo fica sempre visível.
+              alignment: Alignment.topCenter,
             ),
           ),
           SafeArea(
