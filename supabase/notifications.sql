@@ -2,7 +2,16 @@
 -- Push Notifications V1 — 3 tipos: match_access_open (check-in às 48h antes
 -- do kickoff pra sócio ativo, ingressos disponíveis pra quem não é), goal
 -- (gol do Goiás) e full_time (resultado final). Nada além disso nesta
--- versão. Rode este arquivo no SQL Editor do Supabase.
+-- versão.
+--
+-- STALE (auditoria 2026-09-05) — histórico, NÃO roda mais como está. Já
+-- aplicado em produção antes da convergência multiclube; o schema real
+-- hoje diverge deste arquivo em pelo menos 1 ponto: `user_notification_
+-- preferences` tinha PK só `user_id` aqui, mas em produção é
+-- `PRIMARY KEY (user_id, club_id)` (confirmado ao vivo). O schema
+-- canônico atual é `supabase/migrations/20260904000000_canonical_
+-- baseline.sql` — consulte ele, nunca este arquivo, pra saber a
+-- estrutura real das tabelas de notificação.
 -- ============================================================================
 
 -- Tokens FCM — multi-device por usuário. `fcm_token` é único: o mesmo
