@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/club/data/club_songs_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
@@ -19,11 +20,12 @@ class ClubSongsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final anthems = ClubSongsData.songs
+    final allSongs = sl<ClubConfig>().institutionalContent.songs;
+    final anthems = allSongs
         .where((s) => s.category == ClubSongCategory.anthem)
         .toList();
-    final songs = ClubSongsData.songs
-        .where((s) => s.category == ClubSongCategory.esmeraldina)
+    final songs = allSongs
+        .where((s) => s.category == ClubSongCategory.fanChant)
         .toList();
     return Scaffold(
       backgroundColor: colors.background,
@@ -59,18 +61,23 @@ class ClubSongsPage extends StatelessWidget {
                       AppSpacing.xxxl,
                     ),
                     children: [
-                      ClubSectionLabel(context.l10n.clubAnthemSection),
-                      const SizedBox(height: AppSpacing.sm),
-                      for (var i = 0; i < anthems.length; i++) ...[
-                        if (i > 0) const SizedBox(height: AppSpacing.sm),
-                        _SongCard(song: anthems[i]),
+                      if (anthems.isNotEmpty) ...[
+                        ClubSectionLabel(context.l10n.clubAnthemSection),
+                        const SizedBox(height: AppSpacing.sm),
+                        for (var i = 0; i < anthems.length; i++) ...[
+                          if (i > 0) const SizedBox(height: AppSpacing.sm),
+                          _SongCard(song: anthems[i]),
+                        ],
                       ],
-                      const SizedBox(height: AppSpacing.xl),
-                      ClubSectionLabel(context.l10n.clubSongsSection),
-                      const SizedBox(height: AppSpacing.sm),
-                      for (var i = 0; i < songs.length; i++) ...[
-                        if (i > 0) const SizedBox(height: AppSpacing.sm),
-                        _SongCard(song: songs[i]),
+                      if (anthems.isNotEmpty && songs.isNotEmpty)
+                        const SizedBox(height: AppSpacing.xl),
+                      if (songs.isNotEmpty) ...[
+                        ClubSectionLabel(context.l10n.clubSongsSection),
+                        const SizedBox(height: AppSpacing.sm),
+                        for (var i = 0; i < songs.length; i++) ...[
+                          if (i > 0) const SizedBox(height: AppSpacing.sm),
+                          _SongCard(song: songs[i]),
+                        ],
                       ],
                     ],
                   ),

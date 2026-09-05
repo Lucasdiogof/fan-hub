@@ -2,12 +2,18 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/club/data/club_history_data.dart';
+import 'package:goias_app/features/club/data/club_songs_data.dart';
+import 'package:goias_app/features/club/data/club_timeline_data.dart';
+import 'package:goias_app/features/club/data/club_titles_data.dart';
+import 'package:goias_app/features/partners/data/partners_data.dart';
 
 /// A ÚNICA entrada de `clubRegistry` nesta rodada (M1). Todo valor abaixo
 /// é o mesmo já em produção hoje — isto é reempacotamento, nunca dado
@@ -75,6 +81,7 @@ const goiasClubConfig = ClubConfig(
     hasNews: true,
     hasSocial: true,
     hasClubContent: true,
+    hasPartners: true,
     hasMatches: true,
     enabledArenaGames: {
       'quiz',
@@ -97,5 +104,18 @@ const goiasClubConfig = ClubConfig(
     passportName: 'Passaporte Esmeraldino',
     storeName: 'Goiás Store',
     membershipProgramName: 'Sócio Esmeralda',
+  ),
+  // Reempacotamento, igual ao resto do arquivo: as classes estáticas
+  // (`ClubHistoryData` etc.) continuam existindo e com o MESMO conteúdo —
+  // isto só as conecta ao `ClubConfig` do Goiás, pra que `/clube`/
+  // `/partners` deixem de ler a classe global direto e passem a ler do
+  // clube ativo (ver `ClubInstitutionalContent`).
+  institutionalContent: ClubInstitutionalContent(
+    history: ClubHistoryData.sections,
+    timeline: ClubTimelineData.events,
+    titles: ClubTitlesData.groups,
+    historicalCampaigns: ClubTitlesData.historicalCampaigns,
+    songs: ClubSongsData.songs,
+    partners: PartnersData.all,
   ),
 );

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/club/data/club_timeline_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_timeline_event.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -14,7 +15,7 @@ class ClubTimelinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    const events = ClubTimelineData.events;
+    final events = sl<ClubConfig>().institutionalContent.timeline;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(

@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/club/data/club_titles_data.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_header.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
@@ -27,6 +27,13 @@ class ClubPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final content = sl<ClubConfig>().institutionalContent;
+    final hasTitlesContent =
+        content.titles.isNotEmpty || content.historicalCampaigns.isNotEmpty;
+    final totalTitles = content.titles.fold<int>(
+      0,
+      (sum, group) => sum + group.count,
+    );
     return Scaffold(
       backgroundColor: colors.background,
       body: DetailPageHeader(
@@ -36,22 +43,32 @@ class ClubPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: AppSpacing.xxl),
           child: Column(
             children: [
-              _ClubBigCard(
-                icon: Icons.auto_stories_outlined,
-                title: context.l10n.clubSectionHistory,
-                subtitle: context.l10n.clubHistorySubtitle,
-                onTap: () => context.push('/clube/historia'),
-              ),
-              const SizedBox(height: AppSpacing.md),
-              _ClubBigCard(
-                icon: Icons.emoji_events_outlined,
-                title: context.l10n.clubSectionTitles,
-                subtitle: context.l10n.clubTitlesSubtitle(
-                  ClubTitlesData.totalTitles,
+              // Cada tile de conteúdo estático (história/títulos/hino/
+              // parceiros) só aparece se o clube ativo já tiver dado de
+              // verdade pra aquela seção — nunca mostra uma tela vazia
+              // navegável, e nunca depende de esconder o `/clube` inteiro
+              // só porque UMA seção ainda não tem conteúdo (ver
+              // `ClubInstitutionalContent`). Diretoria/Elenco/Transparência
+              // continuam sempre visíveis: já são dado real (Supabase),
+              // não estático, e suas próprias telas tratam "vazio".
+              if (content.history.isNotEmpty) ...[
+                _ClubBigCard(
+                  icon: Icons.auto_stories_outlined,
+                  title: context.l10n.clubSectionHistory,
+                  subtitle: context.l10n.clubHistorySubtitle,
+                  onTap: () => context.push('/clube/historia'),
                 ),
-                onTap: () => context.push('/clube/titulos'),
-              ),
-              const SizedBox(height: AppSpacing.md),
+                const SizedBox(height: AppSpacing.md),
+              ],
+              if (hasTitlesContent) ...[
+                _ClubBigCard(
+                  icon: Icons.emoji_events_outlined,
+                  title: context.l10n.clubSectionTitles,
+                  subtitle: context.l10n.clubTitlesSubtitle(totalTitles),
+                  onTap: () => context.push('/clube/titulos'),
+                ),
+                const SizedBox(height: AppSpacing.md),
+              ],
               _ClubBigCard(
                 icon: Icons.groups_outlined,
                 title: context.l10n.clubSectionBoard,
@@ -65,13 +82,15 @@ class ClubPage extends StatelessWidget {
                 subtitle: context.l10n.clubSquadSubtitle,
                 onTap: () => _openSquad(context),
               ),
-              const SizedBox(height: AppSpacing.md),
-              _ClubBigCard(
-                icon: Icons.music_note_outlined,
-                title: context.l10n.clubSectionSongs,
-                subtitle: context.l10n.clubSongsSubtitle,
-                onTap: () => context.push('/clube/hino'),
-              ),
+              if (content.songs.isNotEmpty) ...[
+                const SizedBox(height: AppSpacing.md),
+                _ClubBigCard(
+                  icon: Icons.music_note_outlined,
+                  title: context.l10n.clubSectionSongs,
+                  subtitle: context.l10n.clubSongsSubtitle,
+                  onTap: () => context.push('/clube/hino'),
+                ),
+              ],
               const SizedBox(height: AppSpacing.md),
               _ClubBigCard(
                 icon: Icons.fact_check_outlined,
@@ -79,13 +98,15 @@ class ClubPage extends StatelessWidget {
                 subtitle: context.l10n.clubTransparencySubtitle,
                 onTap: () => context.push('/clube/transparencia'),
               ),
-              const SizedBox(height: AppSpacing.md),
-              _ClubBigCard(
-                icon: Icons.handshake_outlined,
-                title: context.l10n.clubSectionPartners,
-                subtitle: context.l10n.clubPartnersSubtitle,
-                onTap: () => context.push('/partners'),
-              ),
+              if (content.partners.isNotEmpty) ...[
+                const SizedBox(height: AppSpacing.md),
+                _ClubBigCard(
+                  icon: Icons.handshake_outlined,
+                  title: context.l10n.clubSectionPartners,
+                  subtitle: context.l10n.clubPartnersSubtitle,
+                  onTap: () => context.push('/partners'),
+                ),
+              ],
             ],
           ),
         ),

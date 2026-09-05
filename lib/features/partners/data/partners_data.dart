@@ -37,6 +37,7 @@ class PartnersData {
       name: 'Diadora',
       assetPath: 'lib/assets/sponsors/diadora.png',
       url: 'https://www.diadorabrasil.com.br/',
+      category: PartnerCategory.kitSupplier,
     ),
     Partner(
       name: 'Movement',

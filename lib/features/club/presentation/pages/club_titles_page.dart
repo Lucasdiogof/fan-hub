@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/club/data/club_titles_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_title_group.dart';
 import 'package:goias_app/features/club/presentation/widgets/title_image_carousel.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
@@ -16,6 +17,11 @@ class ClubTitlesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final content = sl<ClubConfig>().institutionalContent;
+    final totalTitles = content.titles.fold<int>(
+      0,
+      (sum, group) => sum + group.count,
+    );
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -54,7 +60,7 @@ class ClubTitlesPage extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              '${ClubTitlesData.totalTitles}',
+                              '$totalTitles',
                               style: TextStyle(
                                 fontSize: 56,
                                 fontWeight: FontWeight.w900,
@@ -76,31 +82,33 @@ class ClubTitlesPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: AppSpacing.xxl),
-                      for (final group in ClubTitlesData.groups) ...[
+                      for (final group in content.titles) ...[
                         _TitleGroupSection(group: group),
                         const SizedBox(height: AppSpacing.md),
                       ],
-                      const SizedBox(height: AppSpacing.lg),
-                      Text(
-                        context.l10n.clubHistoricCampaigns,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 1.2,
-                          color: colors.textSecondary,
+                      if (content.historicalCampaigns.isNotEmpty) ...[
+                        const SizedBox(height: AppSpacing.lg),
+                        Text(
+                          context.l10n.clubHistoricCampaigns,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 1.2,
+                            color: colors.textSecondary,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: AppSpacing.md),
-                      for (
-                        var i = 0;
-                        i < ClubTitlesData.historicalCampaigns.length;
-                        i++
-                      ) ...[
-                        _CampaignSection(
-                          campaign: ClubTitlesData.historicalCampaigns[i],
-                        ),
-                        if (i < ClubTitlesData.historicalCampaigns.length - 1)
-                          const SizedBox(height: AppSpacing.md),
+                        const SizedBox(height: AppSpacing.md),
+                        for (
+                          var i = 0;
+                          i < content.historicalCampaigns.length;
+                          i++
+                        ) ...[
+                          _CampaignSection(
+                            campaign: content.historicalCampaigns[i],
+                          ),
+                          if (i < content.historicalCampaigns.length - 1)
+                            const SizedBox(height: AppSpacing.md),
+                        ],
                       ],
                     ],
                   ),

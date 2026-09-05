@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-enum ClubSongCategory { anthem, esmeraldina }
+enum ClubSongCategory { anthem, fanChant }
 
 /// [artist], [lyrics] e [audioAsset] ficam `null` até existir o conteúdo
 /// real — a UI já sabe lidar com cada ausência (sem artista não mostra a

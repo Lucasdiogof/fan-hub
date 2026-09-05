@@ -31,6 +31,7 @@ class ClubCapabilities {
     required this.hasNews,
     required this.hasSocial,
     required this.hasClubContent,
+    required this.hasPartners,
     required this.hasMatches,
     required this.enabledArenaGames,
     required this.storeCommerceMode,
@@ -53,12 +54,19 @@ class ClubCapabilities {
   /// não existir — nunca usa o Worker de outro clube nem por omissão.
   final bool hasMatches;
 
-  /// História, títulos, diretoria, hino e parceiros (`/clube` e
-  /// `/partners`) — conteúdo editorial estático que hoje só existe pro
-  /// Goiás (ver `docs/multiclub/...`). Elenco (`/squad`) fica de fora de
+  /// História, títulos, diretoria e hino (`/clube`) — conteúdo editorial
+  /// (estático pra história/títulos/hino, real via Supabase pra
+  /// diretoria/transparência). Elenco (`/squad`) fica de fora de
   /// propósito, mesma razão do comentário de classe acima: já é
-  /// `club_id`-scoped de verdade, não depende deste gate.
+  /// `club_id`-scoped de verdade, não depende deste gate. Separada de
+  /// [hasPartners] porque um clube pode ter história/títulos prontos
+  /// bem antes de ter parceiros/patrocinadores levantados (ou vice-versa)
+  /// — nunca as duas coisas premiadas juntas por causa de uma única flag.
   final bool hasClubContent;
+
+  /// Parceiros/patrocinadores (`/partners`) — separada de [hasClubContent]
+  /// (ver acima).
+  final bool hasPartners;
 
   /// Notícias (site oficial, via Worker `/api/news`).
   final bool hasNews;
