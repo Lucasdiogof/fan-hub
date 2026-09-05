@@ -2,6 +2,7 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
@@ -83,6 +84,13 @@ const goiasClubConfig = ClubConfig(
       'player_identity',
       'tactical_identity',
     },
+    // Auditoria 2026-09-05: decisão de produto — Loja/Ingressos/Sócio
+    // continuam DEMO por enquanto (sem gateway/bilheteria oficial/API do
+    // Programa Esmeralda). Nenhum dos 3 processa dinheiro ou vínculo
+    // oficial de verdade ainda.
+    storeCommerceMode: CommerceMode.demo,
+    ticketCommerceMode: CommerceMode.demo,
+    membershipCommerceMode: CommerceMode.demo,
   ),
   productNames: ClubProductNaming(
     arenaName: 'Arena Esmeraldina',

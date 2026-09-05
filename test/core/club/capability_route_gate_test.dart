@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/capability_route_gate.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 
 import 'synthetic_club_config.dart';
@@ -182,12 +183,15 @@ void main() {
       );
     });
 
-    test('hasMatches=false: /match/:fixtureId bloqueada (deep link direto também)', () {
-      expect(
-        capabilityGateRedirect('/match/onef-123', capabilities),
-        featureUnavailableRoute,
-      );
-    });
+    test(
+      'hasMatches=false: /match/:fixtureId bloqueada (deep link direto também)',
+      () {
+        expect(
+          capabilityGateRedirect('/match/onef-123', capabilities),
+          featureUnavailableRoute,
+        );
+      },
+    );
 
     test('Squad e Notificações NUNCA gateadas, mesmo pro clube sintético', () {
       expect(capabilityGateRedirect('/squad', capabilities), isNull);
@@ -219,6 +223,9 @@ void main() {
         hasClubContent: false,
         hasMatches: false,
         enabledArenaGames: {},
+        storeCommerceMode: CommerceMode.demo,
+        ticketCommerceMode: CommerceMode.demo,
+        membershipCommerceMode: CommerceMode.demo,
       );
       expect(
         capabilityGateRedirect('/arena', emptyArenaCapabilities),
@@ -231,28 +238,34 @@ void main() {
     });
   });
 
-  group('FABRICADO — colisão de prefixo nunca confunde /arena com /arena/passport', () {
-    test(
-      'clube com jogos habilitados mas hasPassport=false: /arena liberado, /arena/passport bloqueado',
-      () {
-        const capabilities = ClubCapabilities(
-          hasMembership: false,
-          hasStore: false,
-          hasTickets: false,
-          hasCrowdLineup: false,
-          hasPassport: false,
-          hasNews: false,
-          hasSocial: false,
-          hasClubContent: false,
-          hasMatches: false,
-          enabledArenaGames: {'quiz'},
-        );
-        expect(capabilityGateRedirect('/arena', capabilities), isNull);
-        expect(
-          capabilityGateRedirect('/arena/passport', capabilities),
-          featureUnavailableRoute,
-        );
-      },
-    );
-  });
+  group(
+    'FABRICADO — colisão de prefixo nunca confunde /arena com /arena/passport',
+    () {
+      test(
+        'clube com jogos habilitados mas hasPassport=false: /arena liberado, /arena/passport bloqueado',
+        () {
+          const capabilities = ClubCapabilities(
+            hasMembership: false,
+            hasStore: false,
+            hasTickets: false,
+            hasCrowdLineup: false,
+            hasPassport: false,
+            hasNews: false,
+            hasSocial: false,
+            hasClubContent: false,
+            hasMatches: false,
+            enabledArenaGames: {'quiz'},
+            storeCommerceMode: CommerceMode.demo,
+            ticketCommerceMode: CommerceMode.demo,
+            membershipCommerceMode: CommerceMode.demo,
+          );
+          expect(capabilityGateRedirect('/arena', capabilities), isNull);
+          expect(
+            capabilityGateRedirect('/arena/passport', capabilities),
+            featureUnavailableRoute,
+          );
+        },
+      );
+    },
+  );
 }

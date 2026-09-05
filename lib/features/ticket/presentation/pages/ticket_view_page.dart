@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -24,6 +27,8 @@ class TicketViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final isDemo =
+        sl<ClubConfig>().capabilities.ticketCommerceMode == CommerceMode.demo;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -55,7 +60,8 @@ class TicketViewPage extends StatelessWidget {
                 const SizedBox(height: AppSpacing.md),
                 Expanded(
                   child: PdfPreview(
-                    build: (format) => buildTicketPdf(ticket, context.l10n),
+                    build: (format) =>
+                        buildTicketPdf(ticket, context.l10n, isDemo: isDemo),
                     useActions: false,
                     canChangePageFormat: false,
                     canChangeOrientation: false,
@@ -69,7 +75,8 @@ class TicketViewPage extends StatelessWidget {
                     width: double.infinity,
                     height: 54,
                     child: FilledButton.icon(
-                      onPressed: () => shareTicketPdf(ticket, context.l10n),
+                      onPressed: () =>
+                          shareTicketPdf(ticket, context.l10n, isDemo: isDemo),
                       icon: const Icon(Icons.ios_share_rounded, size: 19),
                       label: Text(
                         context.l10n.ticketsSaveTicketButton,

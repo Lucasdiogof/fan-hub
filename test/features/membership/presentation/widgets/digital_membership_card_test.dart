@@ -1,73 +1,88 @@
+// Auditoria 2026-09-05 — a carteirinha de sócio é o único widget mostrado
+// em várias telas (Home/Perfil/check-in), então é o ponto mais importante
+// pra travar: com o clube em `CommerceMode.demo`, o selo "DEMONSTRAÇÃO"
+// aparece; se um clube um dia virar `real`, ele some sozinho — nenhuma
+// tela precisa ser reescrita.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/presentation/widgets/digital_membership_card.dart';
+import 'package:goias_app/l10n/app_localizations.dart';
 
-import '../../../../core/club/synthetic_club_config.dart';
-import '../../../../support/fake_asset_bundle.dart';
+ClubConfig _configWith(CommerceMode membershipMode) => ClubConfig(
+  identity: goiasClubConfig.identity,
+  branding: goiasClubConfig.branding,
+  assets: goiasClubConfig.assets,
+  integrations: goiasClubConfig.integrations,
+  productNames: goiasClubConfig.productNames,
+  capabilities: ClubCapabilities(
+    hasMembership: goiasClubConfig.capabilities.hasMembership,
+    hasStore: goiasClubConfig.capabilities.hasStore,
+    hasTickets: goiasClubConfig.capabilities.hasTickets,
+    hasCrowdLineup: goiasClubConfig.capabilities.hasCrowdLineup,
+    hasPassport: goiasClubConfig.capabilities.hasPassport,
+    hasNews: goiasClubConfig.capabilities.hasNews,
+    hasSocial: goiasClubConfig.capabilities.hasSocial,
+    hasClubContent: goiasClubConfig.capabilities.hasClubContent,
+    hasMatches: goiasClubConfig.capabilities.hasMatches,
+    enabledArenaGames: goiasClubConfig.capabilities.enabledArenaGames,
+    storeCommerceMode: goiasClubConfig.capabilities.storeCommerceMode,
+    ticketCommerceMode: goiasClubConfig.capabilities.ticketCommerceMode,
+    membershipCommerceMode: membershipMode,
+  ),
+);
 
-/// Preventivo (M4 — isolamento visual): mesmo com `hasMembership=false`
-/// bloqueando a rota inteira hoje, o card não deve mais depender de
-/// `MockData.goias`/`'SÓCIO ESMERALDA'` — prova que ele lê
-/// `ClubConfig.productNames.membershipProgramName` e `assets.crestBadge`
-/// do clube ativo, pra não repetir o erro se `hasMembership` virar `true`
-/// no futuro.
+Widget _wrap(Widget child) => MaterialApp(
+  locale: const Locale('pt'),
+  localizationsDelegates: AppLocalizations.localizationsDelegates,
+  supportedLocales: AppLocalizations.supportedLocales,
+  theme: AppTheme.light(),
+  home: Scaffold(body: child),
+);
+
 void main() {
   setUp(() async {
     await sl.reset();
   });
 
-  Widget wrap() => DefaultAssetBundle(
-    bundle: FakeAssetBundle(),
-    child: MaterialApp(
-      theme: AppTheme.light(),
-      home: const Scaffold(
-        body: DigitalMembershipCard(
+  testWidgets('membershipCommerceMode.demo -> mostra o selo de demonstração', (
+    tester,
+  ) async {
+    sl.registerSingleton<ClubConfig>(_configWith(CommerceMode.demo));
+    await tester.pumpWidget(
+      _wrap(
+        const DigitalMembershipCard(
           holderName: 'Torcedor Teste',
-          planName: 'Plano Teste',
+          planName: 'Plano Padrão',
           status: MembershipStatus.active,
         ),
       ),
-    ),
-  );
-
-  testWidgets('Goiás -> mostra "SÓCIO ESMERALDA" e o crest do Goiás', (
-    tester,
-  ) async {
-    sl.registerSingleton<ClubConfig>(goiasClubConfig);
-    await tester.pumpWidget(wrap());
-
-    expect(find.text('SÓCIO ESMERALDA'), findsOneWidget);
-    final image = tester.widget<Image>(find.byType(Image));
-    expect(
-      (image.image as AssetImage).assetName,
-      goiasClubConfig.assets.crestBadge,
     );
+
+    expect(find.text('DEMONSTRAÇÃO'), findsOneWidget);
   });
 
   testWidgets(
-    'clube sintético (Bragantino-like) -> nunca mostra "SÓCIO ESMERALDA" nem o crest do Goiás',
+    'membershipCommerceMode.real -> nunca mostra o selo de demonstração',
     (tester) async {
-      sl.registerSingleton<ClubConfig>(syntheticClubBConfig);
-      await tester.pumpWidget(wrap());
-
-      expect(find.text('SÓCIO ESMERALDA'), findsNothing);
-      expect(
-        find.text(
-          syntheticClubBConfig.productNames.membershipProgramName
-              .toUpperCase(),
+      sl.registerSingleton<ClubConfig>(_configWith(CommerceMode.real));
+      await tester.pumpWidget(
+        _wrap(
+          const DigitalMembershipCard(
+            holderName: 'Torcedor Teste',
+            planName: 'Plano Padrão',
+            status: MembershipStatus.active,
+          ),
         ),
-        findsOneWidget,
       );
-      final image = tester.widget<Image>(find.byType(Image));
-      expect(
-        (image.image as AssetImage).assetName,
-        isNot(goiasClubConfig.assets.crestBadge),
-      );
+
+      expect(find.text('DEMONSTRAÇÃO'), findsNothing);
     },
   );
 }

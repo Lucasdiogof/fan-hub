@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -183,6 +184,27 @@ class _SuccessHero extends StatelessWidget {
           const SizedBox(height: AppSpacing.xl),
           const _AnimatedSuccessCheck(),
           const SizedBox(height: AppSpacing.lg),
+          if (sl<ClubConfig>().capabilities.membershipCommerceMode ==
+              CommerceMode.demo) ...[
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.16),
+                borderRadius: BorderRadius.circular(999),
+                border: Border.all(color: Colors.white.withValues(alpha: 0.4)),
+              ),
+              child: Text(
+                context.l10n.membershipStatusDemoBadge.toUpperCase(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+            const SizedBox(height: AppSpacing.md),
+          ],
           Text(
             context.l10n.membershipWelcome,
             textAlign: TextAlign.center,
