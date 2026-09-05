@@ -140,17 +140,24 @@ final guessPlayerCatalog = <GuessPlayer>[
     imageUrl: squadPhotoAssets['anselmo_ramon'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
-  const GuessPlayer(
+  GuessPlayer(
     id: 'apodi',
     personId: null,
     name: 'Apodi',
     displayName: 'Apodi',
+    aliases: ['Luiz Diallisson de Souza Alves'],
     position: PlayerPosition.ld,
     shirtNumber: 22,
     academyClub: 'Vitória',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2021,
+    imageUrl: guessPlayerPhotoAssets['apodi'],
+    // Auditoria 2026-09-05: identidade (Luiz Diallisson de Souza Alves) e
+    // posição (lateral-direito) confirmadas por múltiplas fontes
+    // independentes. A camisa 22 já cadastrada não foi encontrada em
+    // nenhuma fonte externa consultada (nem confirmada, nem contestada) —
+    // continua `review` até essa checagem final, não `verified`.
     dataStatus: GuessPlayerDataStatus.review,
   ),
   const GuessPlayer(
@@ -498,6 +505,24 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityName: 'Brasil',
     clubDebutYear: 2021,
     dataStatus: GuessPlayerDataStatus.incomplete,
+  ),
+  GuessPlayer(
+    id: 'dill',
+    personId: null,
+    name: 'Dill',
+    displayName: 'Dill',
+    aliases: ['Elpídio Barbosa Conceição'],
+    position: PlayerPosition.ata,
+    academyClub: 'Brasília',
+    nationalityCode: 'BR',
+    nationalityName: 'Brasil',
+    clubDebutYear: 1994,
+    imageUrl: guessPlayerPhotoAssets['dill'],
+    // Auditoria 2026-09-05: maior artilheiro/ídolo do Goiás nos anos 2000,
+    // nunca cadastrado no catálogo. Camisa: fontes externas divergem entre
+    // 7 e 9, sem uma fonte primária que resolva — deixado `null` até
+    // confirmação, nunca um número chutado.
+    dataStatus: GuessPlayerDataStatus.review,
   ),
   const GuessPlayer(
     id: 'dimba',
@@ -1392,16 +1417,20 @@ final guessPlayerCatalog = <GuessPlayer>[
     clubDebutYear: 2010,
     dataStatus: GuessPlayerDataStatus.incomplete,
   ),
-  const GuessPlayer(
+  GuessPlayer(
     id: 'marcelo_rangel',
     personId: null,
     name: 'Marcelo Rangel',
     displayName: 'Marcelo Rangel',
+    aliases: ['Marcelo Rangel Rosa'],
     position: PlayerPosition.gol,
+    shirtNumber: 1,
+    academyClub: 'Chapecoense',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2017,
-    dataStatus: GuessPlayerDataStatus.incomplete,
+    imageUrl: guessPlayerPhotoAssets['marcelo_rangel'],
+    dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
     id: 'marcos_vinicius_da_silva_santos',
@@ -1445,17 +1474,20 @@ final guessPlayerCatalog = <GuessPlayer>[
     clubDebutYear: 2024,
     dataStatus: GuessPlayerDataStatus.review,
   ),
-  const GuessPlayer(
+  GuessPlayer(
     id: 'michael',
     personId: '13c239d9-de5a-51de-b9ce-b4c42aa88d57',
     name: 'Michael',
     displayName: 'Michael',
+    aliases: ['Michael Richard Delgado de Oliveira'],
     position: PlayerPosition.ata,
     shirtNumber: 11,
+    academyClub: 'Goianésia',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2017,
-    dataStatus: GuessPlayerDataStatus.incomplete,
+    imageUrl: guessPlayerPhotoAssets['michael'],
+    dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
     id: 'michel_santana',
@@ -1963,7 +1995,12 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityName: 'Brasil',
     clubDebutYear: 2019,
     imageUrl: squadPhotoAssets['tadeu'],
-    dataStatus: GuessPlayerDataStatus.review,
+    // Auditoria 2026-09-05: os 4 campos (posição, camisa 23, clube
+    // formador Coritiba, estreia 2019) foram confirmados de forma
+    // independente por Wikipédia + Lance! + release oficial do Goiás EC
+    // ("17º reforço de 2019... usará a camisa 23"). Nenhuma fonte externa
+    // contradiz nenhum campo — sem ambiguidade real encontrada.
+    dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
     id: 'thiago_mendes',
