@@ -93,14 +93,14 @@ void main() {
     });
   });
 
-  group('bragantinoClubConfig — onboarding mínimo: capabilities OFF, sem dado do Goiás', () {
+  group('bragantinoClubConfig — onboarding real, sem dado/asset do Goiás', () {
     test('identity básica correta + canonicalClubId é PLACEHOLDER (nunca o do Goiás)', () {
       expect(bragantinoClubConfig.identity.code, 'bragantino');
       expect(bragantinoClubConfig.identity.displayName, 'Red Bull Bragantino');
       expect(bragantinoClubConfig.identity.canonicalClubId, isNot(goiasClubConfig.identity.canonicalClubId));
     });
 
-    test('TODAS as capabilities começam desligadas e enabledArenaGames vazio (nenhum dado real ainda)', () {
+    test('capabilities sem dado real nenhum continuam desligadas', () {
       final c = bragantinoClubConfig.capabilities;
       expect(c.hasMembership, isFalse);
       expect(c.hasStore, isFalse);
@@ -109,8 +109,18 @@ void main() {
       expect(c.hasPassport, isFalse);
       expect(c.hasNews, isFalse);
       expect(c.hasSocial, isFalse);
-      expect(c.hasClubContent, isFalse);
       expect(c.enabledArenaGames, isEmpty);
+    });
+
+    // 2026-09-05 (M4.3): história/títulos/hino têm conteúdo real e
+    // pesquisado (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
+    // `BragantinoSongsData`), e Puma/Farmina são parceiros confirmados
+    // com URL oficial — as duas capabilities ligam de verdade, não mais
+    // "tudo desligado até ter QUALQUER dado".
+    test('hasClubContent/hasPartners ligam quando o conteúdo passa a existir', () {
+      final c = bragantinoClubConfig.capabilities;
+      expect(c.hasClubContent, isTrue);
+      expect(c.hasPartners, isTrue);
     });
 
     test('não reusa asset nem cor do Goiás — assets apontam pra placeholder do bragantino', () {

@@ -3,11 +3,17 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/club/data/bragantino_history_data.dart';
+import 'package:goias_app/features/club/data/bragantino_songs_data.dart';
+import 'package:goias_app/features/club/data/bragantino_timeline_data.dart';
+import 'package:goias_app/features/club/data/bragantino_titles_data.dart';
+import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 
 // ============================================================================
 // Red Bull Bragantino — 2ª entrada REAL do clubRegistry (onboarding M4).
@@ -89,7 +95,11 @@ const bragantinoClubConfig = ClubConfig(
     slug: 'bragantino',
     displayName: 'Red Bull Bragantino',
     shortName: 'Bragantino',
-    fanDemonym: 'Bragantino',
+    // "Massa Bruta" — apelido do clube desde a conquista da Taça Raul Leme
+    // (1931), usado até hoje pela própria torcida/clube (ver
+    // massabruta.com.br, programa oficial de sócio-torcedor). Confirmado
+    // via pesquisa em fontes oficiais/imprensa em 2026-09-05.
+    fanDemonym: 'Massa Bruta',
     // UUID REAL, já aplicado em public.clubs do projeto Bragantino
     // (yrgyzkaaudyzmsqwzecj) — uuidV5(CLUBS_UUID_NAMESPACE,
     // 'goias-app:multiclub:club:2'), canonizado em
@@ -177,7 +187,17 @@ const bragantinoClubConfig = ClubConfig(
     hasPassport: false,
     hasNews: false,
     hasSocial: false,
-    hasClubContent: false,
+    // 2026-09-05: história/títulos/hino têm conteúdo real e pesquisado
+    // (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
+    // `BragantinoSongsData`) — liga o `/clube`. Diretoria/Transparência
+    // seguem vazias no Supabase do Bragantino ainda (SQL preparado, não
+    // rodado) — a própria tela já trata isso como `LoadStatus.empty`
+    // (ver `ClubDiretoriaPage`/`ClubTransparencyPage`), nunca crash.
+    hasClubContent: true,
+    // Puma + Farmina confirmados com URL oficial (ver
+    // `BragantinoPartnersData`) — ainda sem logo real (ASSET_GAP),
+    // `PartnerCard` mostra o nome em texto nesse caso.
+    hasPartners: true,
     // Worker deployado e validado ao vivo em 2026-09-04 (ver
     // ClubIntegrations.workerBaseUrl) — hasMatches liga junto com
     // workerBaseUrl, nunca um sem o outro (invariante já coberto pelo
@@ -197,5 +217,13 @@ const bragantinoClubConfig = ClubConfig(
     passportName: 'Passaporte',
     storeName: 'Loja',
     membershipProgramName: 'Sócio',
+  ),
+  institutionalContent: ClubInstitutionalContent(
+    history: BragantinoHistoryData.sections,
+    timeline: BragantinoTimelineData.events,
+    titles: BragantinoTitlesData.groups,
+    historicalCampaigns: BragantinoTitlesData.historicalCampaigns,
+    songs: BragantinoSongsData.songs,
+    partners: BragantinoPartnersData.all,
   ),
 );

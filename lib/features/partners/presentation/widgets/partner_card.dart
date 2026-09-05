@@ -51,9 +51,37 @@ class PartnerCard extends StatelessWidget {
             child: SizedBox(
               height: logoHeight,
               width: double.infinity,
-              child: Image.asset(partner.assetPath, fit: BoxFit.contain),
+              child: partner.assetPath == null
+                  ? _PartnerNameFallback(name: partner.name)
+                  : Image.asset(partner.assetPath!, fit: BoxFit.contain),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Enquanto o logo real não existe (ver [Partner.assetPath]) — nome do
+/// parceiro centralizado, sem tentar imitar visualmente uma marca que a
+/// gente não tem a arte oficial.
+class _PartnerNameFallback extends StatelessWidget {
+  const _PartnerNameFallback({required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        name,
+        textAlign: TextAlign.center,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w700,
+          color: Colors.black87,
         ),
       ),
     );

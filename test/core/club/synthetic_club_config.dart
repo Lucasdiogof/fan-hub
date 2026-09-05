@@ -121,6 +121,7 @@ const syntheticClubBConfig = ClubConfig(
     hasNews: false,
     hasSocial: false,
     hasClubContent: false,
+    hasPartners: false,
     hasMatches: false,
     enabledArenaGames: {'quiz'},
     storeCommerceMode: CommerceMode.demo,

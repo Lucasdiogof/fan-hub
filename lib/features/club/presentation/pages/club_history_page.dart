@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/club/data/club_history_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_history_section.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
@@ -13,6 +14,7 @@ class ClubHistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final title = context.l10n.clubSectionHistory.toUpperCase();
+    final sections = sl<ClubConfig>().institutionalContent.history;
     return Scaffold(
       backgroundColor: colors.background,
       body: DetailPageHeader(
@@ -30,9 +32,9 @@ class ClubHistoryPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (var i = 0; i < ClubHistoryData.sections.length; i++) ...[
+              for (var i = 0; i < sections.length; i++) ...[
                 if (i > 0) const SizedBox(height: AppSpacing.xl),
-                _HistorySectionCard(section: ClubHistoryData.sections[i]),
+                _HistorySectionCard(section: sections[i]),
               ],
             ],
           ),

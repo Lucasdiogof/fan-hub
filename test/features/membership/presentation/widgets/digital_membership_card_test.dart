@@ -30,6 +30,7 @@ ClubConfig _configWith(CommerceMode membershipMode) => ClubConfig(
     hasNews: goiasClubConfig.capabilities.hasNews,
     hasSocial: goiasClubConfig.capabilities.hasSocial,
     hasClubContent: goiasClubConfig.capabilities.hasClubContent,
+    hasPartners: goiasClubConfig.capabilities.hasPartners,
     hasMatches: goiasClubConfig.capabilities.hasMatches,
     enabledArenaGames: goiasClubConfig.capabilities.enabledArenaGames,
     storeCommerceMode: goiasClubConfig.capabilities.storeCommerceMode,

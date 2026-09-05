@@ -2,6 +2,7 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_identity.dart';
+import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 
@@ -26,6 +27,7 @@ class ClubConfig {
     required this.integrations,
     required this.capabilities,
     required this.productNames,
+    this.institutionalContent = const ClubInstitutionalContent(),
   });
 
   final ClubIdentity identity;
@@ -34,4 +36,9 @@ class ClubConfig {
   final ClubIntegrations integrations;
   final ClubCapabilities capabilities;
   final ClubProductNaming productNames;
+
+  /// História/títulos/hino/parceiros — ver `ClubInstitutionalContent`.
+  /// Default vazio: um clube sem `ClubConfig` explícito pra isto (nenhum
+  /// hoje) nunca herdaria conteúdo de outro por omissão.
+  final ClubInstitutionalContent institutionalContent;
 }

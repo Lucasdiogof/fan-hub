@@ -82,7 +82,7 @@ class ClubSongsData {
     ClubSong(
       id: 'sou_goias_e_dai',
       title: 'Sou Goiás, e daí?',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/sou_goias_e_dai.mp3',
       lyrics: '''
 Vamos, vamos, vamos, FORÇA JOVEM
@@ -103,7 +103,7 @@ Louco por ti! Louco por ti!''',
     ClubSong(
       id: 'sou_goias_com_muito_amor',
       title: 'Sou Goiás com muito amor',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/sou_goias_com_muito_amor.mp3',
       lyrics: '''
 A nossa torcida está sempre ao seu lado,
@@ -116,7 +116,7 @@ Sou Goiás com muito amor.''',
     ClubSong(
       id: 'sou_esmeraldino',
       title: 'Sou esmeraldino',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/sou_esmeraldino.mp3',
       lyrics: '''
 Olê, olê, olê,
@@ -138,7 +138,7 @@ Hoje vou cantar!''',
     ClubSong(
       id: 'sou_verdao_de_coracao',
       title: 'Sou Verdão de coração',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/sou_verdao_de_coracao.mp3',
       lyrics: '''
 Onde você jogar,
@@ -157,7 +157,7 @@ Sou Verdão de coração.''',
     ClubSong(
       id: 'alegria',
       title: 'Alegria',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/alegria.mp3',
       lyrics: '''
 Dá-lhe alegria, alegria no coração,
@@ -172,7 +172,7 @@ Eu canto, eu sou Goiás até morrer.''',
     ClubSong(
       id: 'ta_ligado',
       title: 'Tá ligado',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/ta_ligado.mp3',
       lyrics: '''
 Eu vou cantar um funk pra ninguém ficar parado,
@@ -191,7 +191,7 @@ Sai que a Força Jovem é chapa quente!''',
     ClubSong(
       id: 'sempre_serei_goias',
       title: 'Sempre serei Goiás',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/sempre_serei_goias.mp3',
       lyrics: '''
 Sempre serei Goiás,
@@ -209,7 +209,7 @@ A maior da capital!
     ClubSong(
       id: 'coracao_verde_e_branco',
       title: 'Coração verde e branco',
-      category: ClubSongCategory.esmeraldina,
+      category: ClubSongCategory.fanChant,
       audioAsset: 'lib/assets/audio/club/musicas/coracao_verde_e_branco.mp3',
       lyrics: '''
 Alegria, alegria

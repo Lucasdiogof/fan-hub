@@ -69,7 +69,7 @@ String? capabilityGateRedirect(String location, ClubCapabilities capabilities) {
   if (_matches(location, '/clube') && !capabilities.hasClubContent) {
     return featureUnavailableRoute;
   }
-  if (_matches(location, '/partners') && !capabilities.hasClubContent) {
+  if (_matches(location, '/partners') && !capabilities.hasPartners) {
     return featureUnavailableRoute;
   }
   if (_matches(location, '/match') && !capabilities.hasMatches) {

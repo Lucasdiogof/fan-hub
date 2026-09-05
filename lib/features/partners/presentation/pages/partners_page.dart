@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/partners/data/partners_data.dart';
 import 'package:goias_app/features/partners/presentation/widgets/partner_card.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
@@ -13,6 +14,7 @@ class PartnersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final partners = sl<ClubConfig>().institutionalContent.partners;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -72,9 +74,9 @@ class PartnersPage extends StatelessWidget {
                           crossAxisSpacing: AppSpacing.md,
                           childAspectRatio: 1.3,
                         ),
-                    itemCount: PartnersData.all.length,
+                    itemCount: partners.length,
                     itemBuilder: (context, index) =>
-                        PartnerCard(partner: PartnersData.all[index]),
+                        PartnerCard(partner: partners[index]),
                   ),
                 ),
               ],
