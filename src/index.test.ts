@@ -74,3 +74,39 @@ describe('Worker fetch — padrão de rota /team/:clubCode captura o clubCode co
     expect(match?.[1]).toBe('unknown-club');
   });
 });
+
+describe('Worker fetch — preflight CORS de /api/* é centralizado, nunca endpoint por endpoint', () => {
+  async function optionsRequest(path: string): Promise<Response> {
+    const request = new Request(`https://example.com${path}`, { method: 'OPTIONS' });
+    const ctx = createExecutionContext();
+    const response = await worker.fetch(request, env, ctx);
+    await waitOnExecutionContext(ctx);
+    return response;
+  }
+
+  it('OPTIONS em /api/football/current-round responde 204 com os headers de CORS certos, sem executar a rota', async () => {
+    const response = await optionsRequest('/api/football/current-round');
+
+    expect(response.status).toBe(204);
+    expect(response.headers.get('access-control-allow-origin')).toBe('*');
+    expect(response.headers.get('access-control-allow-methods')).toBe('GET, OPTIONS');
+    const allowHeaders = response.headers.get('access-control-allow-headers');
+    expect(allowHeaders).toContain('sentry-trace');
+    expect(allowHeaders).toContain('baggage');
+    expect(allowHeaders).toContain('content-type');
+    expect(allowHeaders).toContain('authorization');
+  });
+
+  it('a MESMA política de preflight vale pra /api/news, sem precisar repetir nada por rota', async () => {
+    const response = await optionsRequest('/api/news');
+
+    expect(response.status).toBe(204);
+    expect(response.headers.get('access-control-allow-headers')).toContain('sentry-trace');
+  });
+
+  it('preflight responde ANTES de qualquer resolução de rota — mesmo um clubCode desconhecido dá 204, nunca 404', async () => {
+    const response = await optionsRequest('/api/football/team/unknown-club');
+
+    expect(response.status).toBe(204);
+  });
+});

@@ -19,10 +19,36 @@ const NEWS_ARTICLE_PATTERN = /^\/api\/news\/([^/]+)\/?$/;
 const TEAM_SEASON_PATTERN = /^\/api\/football\/team\/([^/]+)\/season\/?$/;
 const TEAM_PATTERN = /^\/api\/football\/team\/([^/]+)\/?$/;
 
+// Preflight (`OPTIONS`) de TODA `/api/*` — um lugar só, nunca endpoint por
+// endpoint. O app só usa GET nessas rotas (nenhum repository manda POST/PUT/
+// DELETE pro Worker), e os únicos headers "não simples" que ele manda de
+// verdade são os de tracing automático do Sentry (`sentry-trace`/`baggage`,
+// via `dio.addSentry()` em `api_client.dart`) — sem responder o preflight
+// com esses headers liberados, o Chrome nunca chega a mandar o GET de
+// verdade (vira `DioException [connection error]` sem status nenhum, mesmo
+// o endpoint funcionando). `content-type`/`authorization` entram por
+// segurança/futuro (nenhuma rota pública usa hoje, mas custo zero permitir).
+// Resposta em `access-control-allow-origin: '*'` porque nenhuma dessas rotas
+// usa cookie/credential — mesma política que `jsonResponse` já aplica nas
+// respostas reais (ver `_lib/respond.ts`).
+const API_CORS_HEADERS: Record<string, string> = {
+  'access-control-allow-origin': '*',
+  'access-control-allow-methods': 'GET, OPTIONS',
+  'access-control-allow-headers': 'content-type, authorization, sentry-trace, baggage',
+  'access-control-max-age': '86400',
+};
+
 export default {
   async fetch(request: Request, env: SocialEnv, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
+
+    // Responde o preflight ANTES de qualquer roteamento/lógica de negócio —
+    // localhost (`wrangler dev`) e `*.workers.dev` recebem exatamente a
+    // mesma resposta, já que os headers não dependem de `env`/domínio.
+    if (pathname.startsWith('/api/') && request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: API_CORS_HEADERS });
+    }
 
     if (pathname === '/api/football/standings') {
       return handleStandings(request, env);

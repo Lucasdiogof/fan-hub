@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -30,50 +31,105 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  initializeBrazilTimeZone();
-  // Nunca derruba o app se a config nativa do Firebase (google-services.json/
-  // GoogleService-Info.plist) ainda não tiver sido adicionada — só fica sem
-  // push até isso existir (ver `PushNotificationService`, que também é
-  // defensivo pelo mesmo motivo).
-  try {
-    await Firebase.initializeApp();
-    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
-  } catch (error, stackTrace) {
-    debugPrint('Firebase.initializeApp falhou: $error\n$stackTrace');
-  }
-  // Resolve o Supabase do clube ATIVO (flavor) antes de qualquer outra
-  // coisa — nunca depende de `--dart-define`/Additional run args pra saber
-  // qual projeto usar, e nunca cai pro Goiás se o clube ativo não tiver
-  // config real (ver `SupabaseConfig.configure`).
-  SupabaseConfig.configure(resolveActiveClub());
-  await Supabase.initialize(
-    url: SupabaseConfig.url,
-    publishableKey: SupabaseConfig.publishableKey,
-    // Renova a sessão sozinho e tenta de novo quando o servidor rejeita um
-    // token que o relógio local ainda achava válido (ver
-    // `SessionAwareHttpClient`) — único ponto pra isso, cobre todo
-    // repositório que fala com o Supabase, sem precisar mexer em cada um.
-    httpClient: SessionAwareHttpClient(http.Client()),
+  // Puro (só lê `String.fromEnvironment` + faz lookup num Map) — não precisa
+  // do binding do Flutter, por isso pode ser resolvido ANTES de qualquer
+  // outra coisa, inclusive antes do `SentryFlutter.init` abaixo.
+  final clubConfig = resolveActiveClub();
+
+  // O binding do Flutter (`WidgetsFlutterBinding.ensureInitialized`) e todo
+  // o resto do boot (Firebase/Supabase/DI) agora vivem DENTRO do
+  // `appRunner`, não antes do `SentryFlutter.init`. Motivo: no Web, o
+  // próprio Sentry usa `runZonedGuarded` pra capturar erro de `Future` (o
+  // `PlatformDispatcher.onError` não funciona no Web — ver
+  // `sentry_flutter`), criando uma ZONA NOVA em volta do `appRunner`. Se o
+  // binding for criado ANTES dessa zona existir (como estava antes), o
+  // Flutter registra a zona “errada” pro binding, e o `runApp` (já dentro
+  // da zona nova) dispara o assert de "Zone mismatch" — só em modo debug no
+  // Web (o assert cai fora em release, por isso nunca apareceu no build).
+  // Criando o binding já DENTRO do `appRunner`, as duas zonas batem sempre.
+  // Em Android/iOS/desktop isso não muda nada de verdade: `SentryFlutter`
+  // só usa `runZonedGuarded` no Web (`isOnErrorSupported = !isWeb`) — nas
+  // outras plataformas o `appRunner` já rodava direto, sem zona nenhuma, e
+  // continua rodando exatamente assim.
+  // Capturado na configuração síncrona abaixo pra poder ser atualizado de
+  // dentro do `appRunner` (ver `release` mais abaixo) — evita depender de
+  // `Sentry.currentHub` (API interna do pacote) só pra reobter as mesmas
+  // options depois.
+  late final SentryFlutterOptions sentryOptions;
+  await SentryFlutter.init(
+    (options) {
+      sentryOptions = options;
+      options.dsn = SentryConfig.dsn;
+      options.environment = SentryConfig.environment;
+      options.sendDefaultPii = false;
+      options.tracesSampleRate = 1.0;
+      // Sem isto, o Sentry usa o default (`['.*']`) e injeta `sentry-trace`/
+      // `baggage` em QUALQUER request — inclusive a chamada cross-origin
+      // pro Worker do próprio clube durante dev local (`API_BASE_URL`
+      // apontando pro Worker publicado), o que faz o Dio disparar preflight
+      // CORS. O Worker já foi corrigido pra aceitar esses headers (ver
+      // `src/index.ts`), então tracing pro Worker CONTINUA ligado — só
+      // restringe o alvo ao Worker do clube ativo, em vez de "qualquer
+      // request", que nunca teve benefício real (o app não fala com mais
+      // nada além do próprio Worker/Supabase, e o Supabase já tem seu
+      // próprio tracing). `tracePropagationTargets` é `final` (a LISTA, não
+      // a referência) — por isso `clear`/`add` em vez de reatribuir.
+      options.tracePropagationTargets.clear();
+      if (clubConfig.integrations.workerBaseUrl case final workerBaseUrl?) {
+        options.tracePropagationTargets.add(RegExp.escape(workerBaseUrl));
+      }
+    },
+    appRunner: () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      initializeBrazilTimeZone();
+      // Nunca derruba o app se a config nativa do Firebase (google-services.
+      // json/GoogleService-Info.plist) ainda não tiver sido adicionada — só
+      // fica sem push até isso existir (ver `PushNotificationService`, que
+      // também é defensivo pelo mesmo motivo). No Web, FCM já é
+      // deliberadamente desativado (`PushNotificationService._initialize`
+      // sai cedo com `kIsWeb`) e não existe `FirebaseOptions` Web
+      // configurado — chamar `Firebase.initializeApp()` mesmo assim só
+      // derruba a inicialização com "FirebaseOptions cannot be null" sem
+      // nenhum benefício (nunca implementamos Web Push), então nem tenta.
+      if (!kIsWeb) {
+        try {
+          await Firebase.initializeApp();
+          FirebaseMessaging.onBackgroundMessage(
+            firebaseMessagingBackgroundHandler,
+          );
+        } catch (error, stackTrace) {
+          debugPrint('Firebase.initializeApp falhou: $error\n$stackTrace');
+        }
+      }
+      // Resolve o Supabase do clube ATIVO (flavor) antes de qualquer outra
+      // coisa — nunca depende de `--dart-define`/Additional run args pra
+      // saber qual projeto usar, e nunca cai pro Goiás se o clube ativo não
+      // tiver config real (ver `SupabaseConfig.configure`).
+      SupabaseConfig.configure(clubConfig);
+      await Supabase.initialize(
+        url: SupabaseConfig.url,
+        publishableKey: SupabaseConfig.publishableKey,
+        // Renova a sessão sozinho e tenta de novo quando o servidor rejeita
+        // um token que o relógio local ainda achava válido (ver
+        // `SessionAwareHttpClient`) — único ponto pra isso, cobre todo
+        // repositório que fala com o Supabase, sem precisar mexer em cada
+        // um.
+        httpClient: SessionAwareHttpClient(http.Client()),
+      );
+      setupDependencies();
+      // Lido do build instalado (funciona igual em Web/PWA — mesma fonte já
+      // usada em `profile_page.dart` pra mostrar a versão no Perfil), nunca
+      // hardcoded — assim o release no Sentry nunca desalinha do
+      // `pubspec.yaml`. Só dá pra ler DEPOIS do binding existir, por isso
+      // atualiza `options.release` aqui (mesmo objeto vivo lido por
+      // referência em todo evento, nunca um snapshot antigo) em vez de na
+      // configuração síncrona do `SentryFlutter.init` acima.
+      final packageInfo = await PackageInfo.fromPlatform();
+      sentryOptions.release =
+          'goias_app@${packageInfo.version}+${packageInfo.buildNumber}';
+      runApp(const GoiasApp());
+    },
   );
-  setupDependencies();
-  // Lido do build instalado (funciona igual em Web/PWA — mesma fonte já
-  // usada em `profile_page.dart` pra mostrar a versão no Perfil), nunca
-  // hardcoded — assim o release no Sentry nunca desalinha do
-  // `pubspec.yaml`.
-  final packageInfo = await PackageInfo.fromPlatform();
-  final release = 'goias_app@${packageInfo.version}+${packageInfo.buildNumber}';
-  // Nunca manda PII automático (o app lida com CPF/telefone/e-mail real) —
-  // o que queremos ver no Sentry é o erro, não dado pessoal do usuário.
-  // `tracesSampleRate: 1.0` é seguro pro volume desse app (fã-clube, não
-  // um app de milhões de usuários); baixar se algum dia isso mudar.
-  await SentryFlutter.init((options) {
-    options.dsn = SentryConfig.dsn;
-    options.environment = SentryConfig.environment;
-    options.release = release;
-    options.sendDefaultPii = false;
-    options.tracesSampleRate = 1.0;
-  }, appRunner: () => runApp(const GoiasApp()));
 }
 
 class GoiasApp extends StatefulWidget {
