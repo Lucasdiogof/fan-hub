@@ -28,7 +28,7 @@ class CompactMatchHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Material(
-      color: colors.darkGreen,
+      color: colors.brandDark,
       child: InkWell(
         onTap: onTap,
         child: Container(
@@ -105,7 +105,7 @@ class _MetaLine extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (isReallyLive) ...[
-            LivePulseDot(color: colors.ctaGreen, size: 6),
+            LivePulseDot(color: colors.cta, size: 6),
             const SizedBox(width: 6),
           ],
           Text(
@@ -114,7 +114,7 @@ class _MetaLine extends StatelessWidget {
               if (isReallyLive && match.minute != null) match.minute!,
             ].join(' • '),
             style: TextStyle(
-              color: isReallyLive ? colors.ctaGreen : Colors.white,
+              color: isReallyLive ? colors.cta : Colors.white,
               fontSize: 10.5,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.2,

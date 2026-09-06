@@ -8,9 +8,9 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.primary,
     required this.onPrimary,
     required this.secondary,
-    required this.darkGreen,
-    required this.deepGreen,
-    required this.ctaGreen,
+    required this.brandDark,
+    required this.brandDeep,
+    required this.cta,
     required this.gold,
     required this.textPrimary,
     required this.textSecondary,
@@ -27,19 +27,22 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color onPrimary;
   final Color secondary;
 
-  /// Verdes mais escuros para elementos especiais (hero, banners) — não usar
-  /// como cor de fundo geral da UI.
-  final Color darkGreen;
-  final Color deepGreen;
+  /// Tom profundo da marca pra elementos especiais (hero, banners) — não
+  /// usar como cor de fundo geral da UI. No Goiás é verde-escuro; em outro
+  /// clube é a cor profunda que a identidade dele definir (ex.: o
+  /// azul-marinho do escudo do Bragantino) — por isso o nome não carrega
+  /// "green": um `ctaGreen` vermelho ficaria estranho de ler no código.
+  final Color brandDark;
+  final Color brandDeep;
 
-  /// Verde de CTA de destaque (ex.: "Comprar ingresso", botão de entrar) —
-  /// preenchimento sólido nos dois temas, sem borda. No dark theme é um
-  /// verde mais vívido que `primary`/`darkGreen` de propósito (escolhido
+  /// Cor de CTA de destaque (ex.: "Comprar ingresso", botão de entrar) —
+  /// preenchimento sólido nos dois temas, sem borda. No dark theme é uma
+  /// variante mais vívida que `primary`/`brandDark` de propósito (escolhido
   /// comparando variantes lado a lado) — é a cor de ação principal do app,
   /// então precisa se destacar mais que o resto da paleta sóbria do dark
   /// theme. Ver `matchCtaFilledStyle`/`ctaButtonStyle` em
   /// `app_button_styles.dart` e `AppPrimaryButton`.
-  final Color ctaGreen;
+  final Color cta;
   final Color gold;
   final Color textPrimary;
   final Color textSecondary;
@@ -55,9 +58,9 @@ class AppColors extends ThemeExtension<AppColors> {
     primary: Color(0xFF004C1B),
     onPrimary: Color(0xFFFFFFFF),
     secondary: Color(0xFFE6F0E9),
-    darkGreen: Color(0xFF003712),
-    deepGreen: Color(0xFF00280D),
-    ctaGreen: Color(0xFF169447),
+    brandDark: Color(0xFF003712),
+    brandDeep: Color(0xFF00280D),
+    cta: Color(0xFF169447),
     gold: Color(0xFFA9822E),
     textPrimary: Color(0xFF121815),
     textSecondary: Color(0xFF5E6963),
@@ -81,9 +84,9 @@ class AppColors extends ThemeExtension<AppColors> {
     primary: Color(0xFF1F8A4D),
     onPrimary: Color(0xFFFFFFFF),
     secondary: Color(0xFF17271C),
-    darkGreen: Color(0xFF003712),
-    deepGreen: Color(0xFF00280D),
-    ctaGreen: Color(0xFF2FA968),
+    brandDark: Color(0xFF003712),
+    brandDeep: Color(0xFF00280D),
+    cta: Color(0xFF2FA968),
     gold: Color(0xFFB8904A),
     textPrimary: Color(0xFFF4F7F5),
     textSecondary: Color(0xFFAAB5AF),
@@ -101,9 +104,9 @@ class AppColors extends ThemeExtension<AppColors> {
     Color? primary,
     Color? onPrimary,
     Color? secondary,
-    Color? darkGreen,
-    Color? deepGreen,
-    Color? ctaGreen,
+    Color? brandDark,
+    Color? brandDeep,
+    Color? cta,
     Color? gold,
     Color? textPrimary,
     Color? textSecondary,
@@ -119,9 +122,9 @@ class AppColors extends ThemeExtension<AppColors> {
       primary: primary ?? this.primary,
       onPrimary: onPrimary ?? this.onPrimary,
       secondary: secondary ?? this.secondary,
-      darkGreen: darkGreen ?? this.darkGreen,
-      deepGreen: deepGreen ?? this.deepGreen,
-      ctaGreen: ctaGreen ?? this.ctaGreen,
+      brandDark: brandDark ?? this.brandDark,
+      brandDeep: brandDeep ?? this.brandDeep,
+      cta: cta ?? this.cta,
       gold: gold ?? this.gold,
       textPrimary: textPrimary ?? this.textPrimary,
       textSecondary: textSecondary ?? this.textSecondary,
@@ -142,9 +145,9 @@ class AppColors extends ThemeExtension<AppColors> {
       primary: Color.lerp(primary, other.primary, t)!,
       onPrimary: Color.lerp(onPrimary, other.onPrimary, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
-      darkGreen: Color.lerp(darkGreen, other.darkGreen, t)!,
-      deepGreen: Color.lerp(deepGreen, other.deepGreen, t)!,
-      ctaGreen: Color.lerp(ctaGreen, other.ctaGreen, t)!,
+      brandDark: Color.lerp(brandDark, other.brandDark, t)!,
+      brandDeep: Color.lerp(brandDeep, other.brandDeep, t)!,
+      cta: Color.lerp(cta, other.cta, t)!,
       gold: Color.lerp(gold, other.gold, t)!,
       textPrimary: Color.lerp(textPrimary, other.textPrimary, t)!,
       textSecondary: Color.lerp(textSecondary, other.textSecondary, t)!,

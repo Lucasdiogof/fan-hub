@@ -154,7 +154,7 @@ class _SuccessHero extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [colors.primary, colors.darkGreen],
+          colors: [colors.primary, colors.brandDark],
         ),
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(AppRadius.hero),

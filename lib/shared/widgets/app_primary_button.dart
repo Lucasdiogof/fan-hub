@@ -11,7 +11,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 ///
 /// [color]/[borderColor] são escape hatches — na ausência deles o botão
 /// decide sozinho pelo tema atual: preenchido com [AppColors.primary] no
-/// light, e com [AppColors.ctaGreen] (verde vívido, sem borda) no dark.
+/// light, e com [AppColors.cta] (verde vívido, sem borda) no dark.
 /// Never `if (dark)` espalhado pelas telas — quem chama só passa
 /// `label`/`onPressed` e recebe o padrão certo.
 class AppPrimaryButton extends StatelessWidget {
@@ -45,7 +45,7 @@ class AppPrimaryButton extends StatelessWidget {
     final colors = context.colors;
     final enabled = onPressed != null && !loading;
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final resolvedColor = color ?? (isDark ? colors.ctaGreen : colors.primary);
+    final resolvedColor = color ?? (isDark ? colors.cta : colors.primary);
     final resolvedBorderColor = borderColor;
 
     return Opacity(

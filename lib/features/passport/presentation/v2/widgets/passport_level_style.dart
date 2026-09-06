@@ -77,7 +77,7 @@ PassportLevelStyle passportLevelStyleFor(PassportLevel level) {
   final gold = AppColors.light.gold;
   return switch (level) {
     PassportLevel.primeirosPassos => PassportLevelStyle(
-      borderColor: AppColors.light.darkGreen.withValues(alpha: 0.9),
+      borderColor: AppColors.light.brandDark.withValues(alpha: 0.9),
       innerBorderColor: null,
       accentLineColor: null,
       badgeBackground: Colors.white.withValues(alpha: 0.1),

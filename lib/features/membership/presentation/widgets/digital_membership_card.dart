@@ -43,7 +43,7 @@ class DigitalMembershipCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [colors.primary, colors.darkGreen],
+          colors: [colors.primary, colors.brandDark],
         ),
         boxShadow: [
           BoxShadow(

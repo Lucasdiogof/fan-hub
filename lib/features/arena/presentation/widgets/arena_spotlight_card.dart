@@ -37,7 +37,7 @@ class ArenaSpotlightCard extends StatelessWidget {
         excludeFromSemantics: true,
         child: Container(
           decoration: BoxDecoration(
-            color: AppColors.light.deepGreen,
+            color: AppColors.light.brandDeep,
             border: Border.all(
               color: ArenaColors.pitch.withValues(alpha: 0.22),
             ),

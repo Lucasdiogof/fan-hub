@@ -32,8 +32,8 @@ import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 //     agora). Enquanto for este placeholder, toda query tenant-scoped do
 //     Bragantino retorna vazio e toda RPC (que valida exists em clubs) falha
 //     — esperado, o app só compila/roda com as telas gated off.
-//   * branding — paleta NEUTRA de placeholder (nem verde do Goiás nem
-//     vermelho oficial do Bragantino inventado). TODO: cores oficiais.
+//   * branding — paleta V1 oficial real (vermelho/azul-marinho/amarelo do
+//     escudo), cedida pelo usuário em 2026-09-06. Não é mais placeholder.
 //   * assets — `crestBadge` já é o escudo oficial real (cedido pelo usuário
 //     em 2026-09-06). Resto (crest vetorial, crest3d, fotos de estádio,
 //     login, loja) continua placeholder neutro — TODO: artes reais.
@@ -46,45 +46,61 @@ import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 //     até lá, ver ClubCapabilities).
 // ============================================================================
 
-// Paleta NEUTRA de placeholder — deliberadamente sem identidade (cinzas +
-// azul neutro), pra deixar claro que NÃO é a cor real do Bragantino nem a do
-// Goiás. TODO(M4-dados): substituir pelas cores oficiais.
-const _placeholderLight = AppColors(
-  background: Color(0xFFF4F5F7),
+// Paleta V1 oficial do Bragantino, cedida pelo usuário em 2026-09-06 — cores
+// reais do escudo (vermelho/azul-marinho/amarelo), não mais placeholder.
+const _bragantinoLight = AppColors(
+  // Quase branco neutro — o Braga deve parecer muito mais branco que
+  // vermelho no tema claro.
+  background: Color(0xFFF7F7F8),
   surface: Color(0xFFFFFFFF),
-  surfaceRaised: Color(0xFFECEFF1),
-  primary: Color(0xFF37474F),
+  surfaceRaised: Color(0xFFFFFFFF),
+  // Vermelho principal do escudo.
+  primary: Color(0xFFD2003C),
   onPrimary: Color(0xFFFFFFFF),
-  secondary: Color(0xFFECEFF1),
-  darkGreen: Color(0xFF263238),
-  deepGreen: Color(0xFF1B2429),
-  ctaGreen: Color(0xFF37474F),
-  gold: Color(0xFFB0812E),
-  textPrimary: Color(0xFF1F2429),
-  textSecondary: Color(0xFF5B646B),
-  textHint: Color(0xFF9AA2A8),
-  border: Color(0xFFD9DEE2),
-  error: Color(0xFFB00020),
-  success: Color(0xFF2E7D32),
+  // Azul do escudo numa versão extremamente suave, pra chips/superfícies
+  // selecionadas/áreas secundárias.
+  secondary: Color(0xFFEDF1F6),
+  // Azul-marinho oficial como cor profunda da identidade.
+  brandDark: Color(0xFF001D46),
+  // Variação ainda mais profunda pra heroes/gradientes/banners.
+  brandDeep: Color(0xFF000D22),
+  // No light o vermelho oficial já tem contraste muito bom com branco.
+  cta: Color(0xFFD2003C),
+  // Amarelo do escudo/Red Bull — troféus, destaques, pequenos accents.
+  gold: Color(0xFFFFCC00),
+  textPrimary: Color(0xFF111318),
+  textSecondary: Color(0xFF5D636D),
+  textHint: Color(0xFF969CA5),
+  border: Color(0xFFE1E4E8),
+  // Erro continua semanticamente vermelho, mas mais escuro que o vermelho
+  // de marca pra ser distinguível por contexto.
+  error: Color(0xFFB42318),
+  // Verde fica exclusivamente semântico — não faz parte da identidade.
+  success: Color(0xFF198754),
 );
 
-const _placeholderDark = AppColors(
-  background: Color(0xFF12171B),
-  surface: Color(0xFF1B2228),
-  surfaceRaised: Color(0xFF232C33),
-  primary: Color(0xFF90A4AE),
-  onPrimary: Color(0xFF10161A),
-  secondary: Color(0xFF263238),
-  darkGreen: Color(0xFF0E1417),
-  deepGreen: Color(0xFF0A0F12),
-  ctaGreen: Color(0xFF90A4AE),
-  gold: Color(0xFFD4A84B),
-  textPrimary: Color(0xFFF2F4F5),
-  textSecondary: Color(0xFFAEB6BC),
-  textHint: Color(0xFF7C858B),
-  border: Color(0xFF313A40),
-  error: Color(0xFFCF6679),
-  success: Color(0xFF81C784),
+const _bragantinoDark = AppColors(
+  // Preto levemente azulado.
+  background: Color(0xFF080B10),
+  surface: Color(0xFF10151C),
+  surfaceRaised: Color(0xFF171E27),
+  // Um pouco mais luminoso que o vermelho de marca pra funcionar melhor
+  // sobre superfícies escuras.
+  primary: Color(0xFFE0194D),
+  onPrimary: Color(0xFFFFFFFF),
+  // Navy discreto pra cards/chips selecionados.
+  secondary: Color(0xFF172235),
+  brandDark: Color(0xFF001D46),
+  brandDeep: Color(0xFF000D22),
+  // CTA ligeiramente mais vívido que primary.
+  cta: Color(0xFFE52A5C),
+  gold: Color(0xFFFFCC00),
+  textPrimary: Color(0xFFF5F6F8),
+  textSecondary: Color(0xFFAEB4BD),
+  textHint: Color(0xFF747C87),
+  border: Color(0xFF29323D),
+  error: Color(0xFFFF6B6B),
+  success: Color(0xFF3FBF75),
 );
 
 // Placeholders de asset — 2 arquivos neutros; nunca os do Goiás.
@@ -116,7 +132,7 @@ const bragantinoClubConfig = ClubConfig(
     // placeholder desde a convergência de schema de 2026-09-04.
     canonicalClubId: '51683d2a-ea1d-57c6-8014-996146f242e7',
   ),
-  branding: ClubBranding(light: _placeholderLight, dark: _placeholderDark),
+  branding: ClubBranding(light: _bragantinoLight, dark: _bragantinoDark),
   assets: ClubAssets(
     crest: _phVector,
     crestBadge: _crestBadgeReal,

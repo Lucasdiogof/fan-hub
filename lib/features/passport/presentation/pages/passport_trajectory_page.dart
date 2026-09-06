@@ -497,8 +497,8 @@ class _TrajectoryCard extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color.lerp(colors.deepGreen, Colors.black, 0.25)!,
-            Color.lerp(colors.darkGreen, Colors.black, 0.25)!,
+            Color.lerp(colors.brandDeep, Colors.black, 0.25)!,
+            Color.lerp(colors.brandDark, Colors.black, 0.25)!,
           ],
         ),
         borderRadius: BorderRadius.circular(AppRadius.banner),

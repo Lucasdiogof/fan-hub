@@ -3,7 +3,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
 /// CTA principal (ex.: "Ingressos"/"Comprar ingresso"/"Salvar ingresso") — verde
-/// sólido preenchido ([AppColors.ctaGreen]), sem borda, nos dois temas.
+/// sólido preenchido ([AppColors.cta]), sem borda, nos dois temas.
 /// [forceDark] é pra fundos sempre escuros independente do tema do app
 /// (ex.: Hero da Home) — usa a paleta `AppColors.dark` fixa em vez de
 /// `context.colors`, que mudaria com o tema do app.
@@ -13,7 +13,7 @@ ButtonStyle matchCtaFilledStyle(
   bool? forceDark,
 }) {
   final isDark = forceDark ?? (Theme.of(context).brightness == Brightness.dark);
-  final fill = isDark ? AppColors.dark.ctaGreen : AppColors.light.ctaGreen;
+  final fill = isDark ? AppColors.dark.cta : AppColors.light.cta;
   return ElevatedButton.styleFrom(
     backgroundColor: fill,
     foregroundColor: Colors.white,
@@ -57,9 +57,9 @@ ButtonStyle goldFilledStyle(BuildContext context, {double minHeight = 52}) {
   final colors = context.colors;
   return ElevatedButton.styleFrom(
     backgroundColor: colors.gold,
-    foregroundColor: colors.deepGreen,
+    foregroundColor: colors.brandDeep,
     disabledBackgroundColor: colors.gold.withValues(alpha: 0.45),
-    disabledForegroundColor: colors.deepGreen.withValues(alpha: 0.5),
+    disabledForegroundColor: colors.brandDeep.withValues(alpha: 0.5),
     minimumSize: Size.fromHeight(minHeight),
     elevation: 0,
     textStyle: const TextStyle(fontWeight: FontWeight.w800),
@@ -78,7 +78,7 @@ ButtonStyle matchCtaOutlineStyle(
   bool? forceDark,
 }) {
   final isDark = forceDark ?? (Theme.of(context).brightness == Brightness.dark);
-  final accent = isDark ? AppColors.dark.ctaGreen : AppColors.light.ctaGreen;
+  final accent = isDark ? AppColors.dark.cta : AppColors.light.cta;
   final text = isDark ? const Color(0xFF4FCB8A) : AppColors.light.primary;
   return OutlinedButton.styleFrom(
     foregroundColor: text,
