@@ -34,8 +34,9 @@ import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 //     — esperado, o app só compila/roda com as telas gated off.
 //   * branding — paleta NEUTRA de placeholder (nem verde do Goiás nem
 //     vermelho oficial do Bragantino inventado). TODO: cores oficiais.
-//   * assets — placeholders neutros em lib/assets/branding/bragantino/. TODO:
-//     escudo/artes reais do Bragantino.
+//   * assets — `crestBadge` já é o escudo oficial real (cedido pelo usuário
+//     em 2026-09-06). Resto (crest vetorial, crest3d, fotos de estádio,
+//     login, loja) continua placeholder neutro — TODO: artes reais.
 //   * integrations.oneFootball{TeamId,Slug,CompetitionSlug} — CONFIRMADOS
 //     (não são mais placeholder), navegando onefootball.com/pt-br/time/
 //     rb-bragantino-4734 e onefootball.com/pt-br/competicao/
@@ -90,6 +91,12 @@ const _placeholderDark = AppColors(
 const _phRaster = 'lib/assets/branding/bragantino/placeholder.png';
 const _phVector = 'lib/assets/branding/bragantino/placeholder.svg';
 
+// Escudo oficial real, cedido pelo usuário em 2026-09-06 — só o raster
+// (PNG). `crest` (usado via `SvgPicture.asset` com `colorFilter` sólido
+// em `auth_scaffold.dart`) continua placeholder até existir uma versão
+// vetorial de verdade — um PNG não abre como SVG.
+const _crestBadgeReal = 'lib/assets/branding/bragantino/crest_badge.png';
+
 const bragantinoClubConfig = ClubConfig(
   identity: ClubIdentity(
     code: 'bragantino',
@@ -112,7 +119,7 @@ const bragantinoClubConfig = ClubConfig(
   branding: ClubBranding(light: _placeholderLight, dark: _placeholderDark),
   assets: ClubAssets(
     crest: _phVector,
-    crestBadge: _phRaster,
+    crestBadge: _crestBadgeReal,
     crest3d: _phRaster,
     loginBackground: _phRaster,
     stadium: _phRaster,
