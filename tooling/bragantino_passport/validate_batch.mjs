@@ -80,5 +80,12 @@ const openParens = (sql.match(/\(/g) || []).length;
 const closeParens = (sql.match(/\)/g) || []).length;
 check('parênteses balanceados na SQL gerada', openParens === closeParens);
 
+// Contrato compartilhado com o Goiás (tabela `passport_matches`, mesmo
+// nome — o isolamento é o projeto Supabase, não um nome de tabela por
+// clube). Ver bragantino_passport_matches.sql.
+check('SQL insere em public.passport_matches (nome compartilhado com o Goiás, NÃO bragantino_passport_matches)', /insert into public\.passport_matches\b/.test(sql));
+const insertedRowsCount = (sql.match(/^\s*\('pb_\w+_/gm) || []).length;
+check(`SQL tem exatamente ${rows.length} linhas de INSERT (nenhuma partida perdida na regeneração)`, insertedRowsCount === rows.length);
+
 console.log(`\n${failed === 0 ? 'TODAS AS VALIDAÇÕES PASSARAM' : `${failed} VALIDAÇÃO(ÕES) FALHARAM`}`);
 process.exit(failed === 0 ? 0 : 1);
