@@ -127,20 +127,35 @@ reservas que ficaram no banco o jogo inteiro vêm numa linha separada
 ("Reservas", classe `inactive`). Sem checar isso, todo mundo que jogou
 (18+ por time) apareceria como "titular".
 
-Gerado a partir das 125 fichas já em cache dos lotes 2024/2025 — 123 com
-onze completo do Bragantino identificado (as 2 exceções são as únicas 2
-fichas que ficaram com conteúdo incompleto por causa do rate limit do
-oGol, ver seção acima). **Não é** uma busca dedicada pelas partidas
-históricas prioritárias do briefing original (Paulista 1990, Série B
-1989/2019, Série C 2007, Sul-Americana 2021, Libertadores 2022) — essas
-exigem sua própria pesquisa, já que o oGol provavelmente não tem esse
-nível de detalhe de escalação pra jogos tão antigos (a confirmar quando
-chegar a vez desses lotes).
+### Duas categorias — nunca misturar sem critério
 
-Arquivo: `source/lineup_shortlist_v2.json`. Cada candidato tem: partida
-(data/competição/adversário/mando/placar/estádio/fonte), onze titular
-(camisa+nome+capitão), reservas usados. Nenhuma interface criada ainda —
-é só o dataset base.
+`source/lineup_shortlist_v2.json` tem `recent_lineups.matches` e
+`historical_lineups.matches` separados de propósito:
+
+- **RECENT_LINEUPS** — 123 partidas de 2024/2025, extraídas automaticamente
+  das 125 fichas já em cache dos lotes do Passaporte (as 2 exceções
+  ficaram com conteúdo incompleto por causa do rate limit do oGol, ver
+  seção acima). Fácil de obter porque já é reaproveitamento de dado
+  baixado por outro motivo — **isso não significa que deva dominar o jogo
+  final**.
+- **HISTORICAL_LINEUPS** — partidas historicamente relevantes (Série B
+  1989, Paulista 1990, campanhas antigas importantes, partidas marcantes,
+  jogos decisivos). **Ainda vazio, `research_status: "PENDING_RESEARCH"`**
+  — nunca preenchido com dado inventado só pra balancear a proporção com
+  RECENT_LINEUPS. `historical_lineups.research_targets` documenta as 5
+  frentes prioritárias a pesquisar; o oGol provavelmente não tem esse
+  nível de detalhe de escalação pra jogos tão antigos (a confirmar quando
+  essa frente for aberta — pode exigir CBF/imprensa de época/RSSSF).
+
+Cada registro (recente ou histórico) preserva: `source`, `source_match_id`,
+`source_url`, `date`, `competition`, `competition_edition`, `opponent`,
+`club_is_home`, `score_display`, `outcome`, `stadium`, `starting_xi`
+(camisa+nome+capitão), `used_substitutes`, `manual_corrections` (motivo
+registrado quando uma camisa/dado precisou de correção pontual, `null`
+quando não houve nenhuma). A seleção final de partidas pro app (misturando
+as duas categorias) é uma decisão futura, feita só depois que
+HISTORICAL_LINEUPS tiver conteúdo de verdade — nenhuma interface criada
+ainda, é só o dataset base.
 
 ## Tabela
 
