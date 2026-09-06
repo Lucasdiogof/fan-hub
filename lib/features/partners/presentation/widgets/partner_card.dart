@@ -51,9 +51,7 @@ class PartnerCard extends StatelessWidget {
             child: SizedBox(
               height: logoHeight,
               width: double.infinity,
-              child: partner.assetPath == null
-                  ? _PartnerNameFallback(name: partner.name)
-                  : Image.asset(partner.assetPath!, fit: BoxFit.contain),
+              child: _PartnerLogo(partner: partner),
             ),
           ),
         ),
@@ -62,9 +60,37 @@ class PartnerCard extends StatelessWidget {
   }
 }
 
-/// Enquanto o logo real não existe (ver [Partner.assetPath]) — nome do
-/// parceiro centralizado, sem tentar imitar visualmente uma marca que a
-/// gente não tem a arte oficial.
+/// [Partner.assetPath] (local, padrão histórico) tem prioridade sobre
+/// [Partner.logoUrl] (remoto, CDN oficial) — os dois `null`/falha de rede
+/// caem no nome em texto (nunca um placeholder genérico de imagem).
+class _PartnerLogo extends StatelessWidget {
+  const _PartnerLogo({required this.partner});
+
+  final Partner partner;
+
+  @override
+  Widget build(BuildContext context) {
+    if (partner.assetPath != null) {
+      return Image.asset(partner.assetPath!, fit: BoxFit.contain);
+    }
+    final logoUrl = partner.logoUrl;
+    if (logoUrl != null) {
+      return Image.network(
+        logoUrl,
+        fit: BoxFit.contain,
+        errorBuilder: (context, _, _) =>
+            _PartnerNameFallback(name: partner.name),
+        loadingBuilder: (context, child, progress) =>
+            progress == null ? child : const SizedBox.shrink(),
+      );
+    }
+    return _PartnerNameFallback(name: partner.name);
+  }
+}
+
+/// Enquanto o logo real não existe (ver [Partner.assetPath]/[logoUrl]) —
+/// nome do parceiro centralizado, sem tentar imitar visualmente uma marca
+/// que a gente não tem a arte oficial.
 class _PartnerNameFallback extends StatelessWidget {
   const _PartnerNameFallback({required this.name});
 
