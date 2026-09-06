@@ -24,7 +24,12 @@ class ClubAssets {
   final String crestBadge;
   final String crest3d;
   final String loginBackground;
-  final String stadium;
+
+  /// `null` quando o clube ainda não tem foto oficial de estádio — mesmo
+  /// padrão do [splashVideo]. `StadiumBackdrop` já sabe desenhar um fundo
+  /// procedural (gradiente + holofotes + grão) nesse caso, então `null`
+  /// nunca deixa a tela sem fundo.
+  final String? stadium;
   final String matchHero;
   final String tacticsBoardIllustration;
   final String arenaStadiumIcon;
