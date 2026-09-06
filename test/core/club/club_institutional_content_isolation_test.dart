@@ -281,7 +281,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Hino do Massa Bruta'), findsOneWidget);
+      expect(find.text('Massa Bruta Campeão'), findsOneWidget);
       expect(find.textContaining('Goiás'), findsNothing);
     });
 
@@ -301,8 +301,15 @@ void main() {
         await tester.pumpAndSettle();
 
         expect(find.text('Puma'), findsOneWidget);
-        expect(find.text('Farmina'), findsOneWidget);
+        expect(find.text('Asaas'), findsOneWidget);
+        // "Unimed" é uma marca nacional com unidades regionais
+        // independentes — o Bragantino tem a sua PRÓPRIA (Os
+        // Bandeirantes, Bragança Paulista), sem nenhuma relação com a
+        // Unimed Goianiense do Goiás. Coincidência de nome, não
+        // vazamento de dado — único nome que se repete de propósito
+        // nesta checagem.
         for (final goiasPartner in PartnersData.all) {
+          if (goiasPartner.name == 'Unimed') continue;
           expect(find.text(goiasPartner.name), findsNothing);
         }
       },

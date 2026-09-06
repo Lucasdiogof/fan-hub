@@ -11,16 +11,23 @@ class Partner {
     required this.name,
     required this.url,
     this.assetPath,
+    this.logoUrl,
     this.category = PartnerCategory.sponsor,
   });
 
   final String name;
 
-  /// `null` = parceiro real e confirmado, mas ainda sem logo cedido/
-  /// levantado (ASSET_GAP) — `PartnerCard` mostra o nome em texto em vez
-  /// de travar o parceiro inteiro até existir arte. Nunca um placeholder
-  /// de imagem genérico só pra preencher o espaço.
+  /// Logo local empacotado no app (padrão histórico do Goiás,
+  /// `lib/assets/sponsors/*.png`).
   final String? assetPath;
+
+  /// Logo remoto (CDN oficial do próprio clube/parceiro) — mesmo padrão
+  /// já usado pra foto de jogador (`SquadAvatar`/`squad_members.photo_url`):
+  /// nunca baixar/versionar dezenas de logos no repo quando a URL oficial
+  /// já é estável. `PartnerCard` tenta [assetPath] primeiro, depois
+  /// [logoUrl]; os dois `null` = nome em texto (ASSET_GAP real, nunca um
+  /// placeholder genérico só pra preencher o espaço).
+  final String? logoUrl;
   final String url;
   final PartnerCategory category;
 }

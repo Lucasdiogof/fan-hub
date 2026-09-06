@@ -218,9 +218,8 @@ const bragantinoClubConfig = ClubConfig(
     // rodado) — a própria tela já trata isso como `LoadStatus.empty`
     // (ver `ClubDiretoriaPage`/`ClubTransparencyPage`), nunca crash.
     hasClubContent: true,
-    // Puma + Farmina confirmados com URL oficial (ver
-    // `BragantinoPartnersData`) — ainda sem logo real (ASSET_GAP),
-    // `PartnerCard` mostra o nome em texto nesse caso.
+    // 10 parceiros confirmados com URL e logo oficiais direto da API do
+    // clube (ver `BragantinoPartnersData`) — auditoria de 2026-09-06.
     hasPartners: true,
     // Worker deployado e validado ao vivo em 2026-09-04 (ver
     // ClubIntegrations.workerBaseUrl) — hasMatches liga junto com
