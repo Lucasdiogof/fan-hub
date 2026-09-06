@@ -35,8 +35,10 @@ import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 //   * branding — paleta V1 oficial real (vermelho/azul-marinho/amarelo do
 //     escudo), cedida pelo usuário em 2026-09-06. Não é mais placeholder.
 //   * assets — `crestBadge` já é o escudo oficial real (cedido pelo usuário
-//     em 2026-09-06). Resto (crest vetorial, crest3d, fotos de estádio,
-//     login, loja) continua placeholder neutro — TODO: artes reais.
+//     em 2026-09-06). `loginBackground` é um gradiente+escudo provisório
+//     (composto, não desenhado por designer). Resto (crest vetorial,
+//     crest3d, fotos de estádio, loja) continua placeholder neutro — TODO:
+//     artes reais.
 //   * integrations.oneFootball{TeamId,Slug,CompetitionSlug} — CONFIRMADOS
 //     (não são mais placeholder), navegando onefootball.com/pt-br/time/
 //     rb-bragantino-4734 e onefootball.com/pt-br/competicao/
@@ -108,10 +110,25 @@ const _phRaster = 'lib/assets/branding/bragantino/placeholder.png';
 const _phVector = 'lib/assets/branding/bragantino/placeholder.svg';
 
 // Escudo oficial real, cedido pelo usuário em 2026-09-06 — só o raster
-// (PNG). `crest` (usado via `SvgPicture.asset` com `colorFilter` sólido
-// em `auth_scaffold.dart`) continua placeholder até existir uma versão
-// vetorial de verdade — um PNG não abre como SVG.
+// (PNG). Ver `_crestSealReal` abaixo pra versão "vetorial" provisória
+// (mesmo PNG embrulhado em SVG) usada em `crest`.
 const _crestBadgeReal = 'lib/assets/branding/bragantino/crest_badge.png';
+
+// Fundo provisório do login — gradiente com as cores oficiais (brandDark/
+// brandDeep) + escudo real, composto programaticamente só pra tirar o
+// placeholder neutro dessa tela. Ainda não é arte definitiva (hero
+// desenhado por um designer, como o do Goiás).
+const _loginBackgroundReal =
+    'lib/assets/branding/bragantino/login_background.png';
+
+// Versão "vetorial" provisória do escudo — sem traço vetorial de verdade
+// ainda, então é o mesmo PNG oficial (`crest_badge.png`) embrulhado num SVG
+// (`<image>` com o PNG em base64) só pra parar de usar o placeholder.svg
+// (genérico) no selo tingido de branco do cadastro (`_CrestSeal` em
+// auth_scaffold.dart, `ColorFilter.mode(Colors.white, srcIn)` — como o PNG
+// já tem alfa real recortando o brasão, vira uma silhueta branca limpa,
+// igual ao tratamento que o Goiás já tem com o SVG de verdade dele).
+const _crestSealReal = 'lib/assets/branding/bragantino/crest_seal.svg';
 
 const bragantinoClubConfig = ClubConfig(
   identity: ClubIdentity(
@@ -134,11 +151,14 @@ const bragantinoClubConfig = ClubConfig(
   ),
   branding: ClubBranding(light: _bragantinoLight, dark: _bragantinoDark),
   assets: ClubAssets(
-    crest: _phVector,
+    crest: _crestSealReal,
     crestBadge: _crestBadgeReal,
     crest3d: _phRaster,
-    loginBackground: _phRaster,
-    stadium: _phRaster,
+    loginBackground: _loginBackgroundReal,
+    // `null` — sem foto oficial de estádio ainda. `StadiumBackdrop` (usado
+    // pelo hero do cadastro) já desenha um fundo procedural com as cores
+    // reais do clube nesse caso, bem melhor que o placeholder neutro.
+    stadium: null,
     matchHero: _phRaster,
     tacticsBoardIllustration: _phRaster,
     arenaStadiumIcon: _phVector,
