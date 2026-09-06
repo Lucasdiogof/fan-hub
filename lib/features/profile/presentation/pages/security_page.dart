@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
@@ -33,7 +35,7 @@ class _SecurityPageState extends State<SecurityPage> {
   final _passwordTouch = FieldTouch();
   final _confirmTouch = FieldTouch();
   bool _submitted = false;
-  String? _formError;
+  Failure? _formError;
   bool _loading = false;
 
   @override
@@ -80,7 +82,7 @@ class _SecurityPageState extends State<SecurityPage> {
     if (!mounted) return;
     setState(() => _loading = false);
     if (result is Error<void>) {
-      setState(() => _formError = result.failure.message);
+      setState(() => _formError = result.failure);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(context.l10n.securityChangeSuccess)),
@@ -135,7 +137,11 @@ class _SecurityPageState extends State<SecurityPage> {
                         ),
                       ),
                       const SizedBox(height: AppSpacing.xl),
-                      AuthErrorBanner(message: _formError),
+                      AuthErrorBanner(
+                        message: _formError == null
+                            ? null
+                            : localizeAuthFailure(_formError!, context.l10n),
+                      ),
                       AuthTextField(
                         controller: _currentPasswordController,
                         label: context.l10n.securityCurrentPassword,
@@ -147,11 +153,10 @@ class _SecurityPageState extends State<SecurityPage> {
                         errorText: _currentPasswordTouch.errorFor(
                           _currentPasswordController.text,
                           submitted: _submitted,
-                          format: (v) => AppValidators.password(
-                            context.l10n,
-                            v,
-                          ),
-                          requiredMessage: context.l10n.validatorPasswordRequired,
+                          format: (v) =>
+                              AppValidators.password(context.l10n, v),
+                          requiredMessage:
+                              context.l10n.validatorPasswordRequired,
                         ),
                         onChanged: (_) {
                           _currentPasswordTouch.touched = true;
@@ -202,7 +207,8 @@ class _SecurityPageState extends State<SecurityPage> {
                             v,
                             _passwordController.text,
                           ),
-                          requiredMessage: context.l10n.validatorConfirmRequired,
+                          requiredMessage:
+                              context.l10n.validatorConfirmRequired,
                         ),
                         onChanged: (_) {
                           _confirmTouch.touched = true;

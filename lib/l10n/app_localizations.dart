@@ -856,6 +856,108 @@ abstract class AppLocalizations {
   /// **'Entrar novamente'**
   String get authSessionExpiredCta;
 
+  /// No description provided for @authErrorInvalidCredentials.
+  ///
+  /// In pt, this message translates to:
+  /// **'E-mail ou senha incorretos.'**
+  String get authErrorInvalidCredentials;
+
+  /// No description provided for @authErrorCurrentPasswordIncorrect.
+  ///
+  /// In pt, this message translates to:
+  /// **'Senha atual incorreta.'**
+  String get authErrorCurrentPasswordIncorrect;
+
+  /// No description provided for @authErrorPasswordIncorrect.
+  ///
+  /// In pt, this message translates to:
+  /// **'Senha incorreta.'**
+  String get authErrorPasswordIncorrect;
+
+  /// No description provided for @authErrorEmailAlreadyRegistered.
+  ///
+  /// In pt, this message translates to:
+  /// **'Este e-mail já possui uma conta.'**
+  String get authErrorEmailAlreadyRegistered;
+
+  /// No description provided for @authErrorWeakPassword.
+  ///
+  /// In pt, this message translates to:
+  /// **'A senha não atende aos requisitos mínimos.'**
+  String get authErrorWeakPassword;
+
+  /// No description provided for @authErrorInvalidEmail.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe um e-mail válido.'**
+  String get authErrorInvalidEmail;
+
+  /// No description provided for @authErrorRateLimited.
+  ///
+  /// In pt, this message translates to:
+  /// **'Já enviamos um código recentemente. Aguarde um pouco antes de solicitar outro.'**
+  String get authErrorRateLimited;
+
+  /// No description provided for @authErrorOtpInvalidOrExpired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Este código não é válido ou já expirou. Confira e tente novamente, ou solicite um novo código.'**
+  String get authErrorOtpInvalidOrExpired;
+
+  /// No description provided for @authErrorSessionExpired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua sessão expirou. Faça login novamente.'**
+  String get authErrorSessionExpired;
+
+  /// No description provided for @authErrorSignupDisabled.
+  ///
+  /// In pt, this message translates to:
+  /// **'Novos cadastros estão temporariamente indisponíveis.'**
+  String get authErrorSignupDisabled;
+
+  /// No description provided for @authErrorEmailNotConfirmed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Confirme seu e-mail antes de entrar.'**
+  String get authErrorEmailNotConfirmed;
+
+  /// No description provided for @authErrorServiceUnavailable.
+  ///
+  /// In pt, this message translates to:
+  /// **'O serviço está temporariamente indisponível. Tente novamente em instantes.'**
+  String get authErrorServiceUnavailable;
+
+  /// No description provided for @authErrorNewPasswordSameAsCurrent.
+  ///
+  /// In pt, this message translates to:
+  /// **'A nova senha precisa ser diferente da atual.'**
+  String get authErrorNewPasswordSameAsCurrent;
+
+  /// No description provided for @authErrorCpfAlreadyTaken.
+  ///
+  /// In pt, this message translates to:
+  /// **'Este CPF já está cadastrado em outra conta.'**
+  String get authErrorCpfAlreadyTaken;
+
+  /// No description provided for @authErrorAccountDeletionFailed.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível excluir sua conta. Tente novamente em alguns instantes.'**
+  String get authErrorAccountDeletionFailed;
+
+  /// No description provided for @authErrorNetwork.
+  ///
+  /// In pt, this message translates to:
+  /// **'Verifique sua conexão com a internet.'**
+  String get authErrorNetwork;
+
+  /// No description provided for @authErrorGeneric.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível concluir agora. Tente novamente.'**
+  String get authErrorGeneric;
+
   /// No description provided for @personalDataTitle.
   ///
   /// In pt, this message translates to:

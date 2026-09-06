@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/error/auth_error_code.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -180,7 +181,7 @@ void main() {
     ) async {
       final repository = _FakeAuthRepository()
         ..deleteFailure = const AuthFailure(
-          'Não foi possível excluir sua conta. Tente novamente em alguns instantes.',
+          AuthErrorCode.accountDeletionFailed,
         );
       final cubit = AuthCubit(repository);
       await tester.pumpWidget(_wrap(cubit));

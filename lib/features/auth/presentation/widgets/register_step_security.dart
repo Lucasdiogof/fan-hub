@@ -6,6 +6,7 @@ import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/register_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/register_state.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
@@ -67,7 +68,11 @@ class _RegisterStepSecurityState extends State<RegisterStepSecurity> {
                   AppSpacing.lg,
                 ),
                 children: [
-                  AuthErrorBanner(message: state.formError),
+                  AuthErrorBanner(
+                    message: state.formError == null
+                        ? null
+                        : localizeAuthFailure(state.formError!, l10n),
+                  ),
                   RegistrationTextField(
                     label: l10n.commonPasswordLabel,
                     isRequired: true,
@@ -95,7 +100,9 @@ class _RegisterStepSecurityState extends State<RegisterStepSecurity> {
                   ),
                   const SizedBox(height: AppSpacing.sm),
                   _PasswordRequirement(
-                    met: state.password.length >= AppValidators.minPasswordLength,
+                    met:
+                        state.password.length >=
+                        AppValidators.minPasswordLength,
                     label: l10n.authPasswordRequirementLength(
                       AppValidators.minPasswordLength,
                     ),
@@ -175,7 +182,11 @@ class _PasswordRequirement extends StatelessWidget {
         const SizedBox(width: 6),
         Text(
           label,
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: color),
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: color,
+          ),
         ),
       ],
     );

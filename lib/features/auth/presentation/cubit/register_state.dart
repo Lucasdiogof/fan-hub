@@ -1,3 +1,5 @@
+import 'package:goias_app/core/error/failures.dart';
+
 enum RegisterStep { personal, contact, security }
 
 /// Fonte única dos dados do cadastro em 3 passos — cada `Step*` widget lê e
@@ -47,7 +49,7 @@ class RegisterState {
   /// Loading do `signUp` de verdade, só existe no Passo 3.
   final bool submitting;
 
-  final String? formError;
+  final Failure? formError;
 
   RegisterState copyWith({
     RegisterStep? step,
@@ -62,7 +64,7 @@ class RegisterState {
     bool? acceptedTerms,
     bool? checkingCpf,
     bool? submitting,
-    String? formError,
+    Failure? formError,
     bool clearFormError = false,
   }) {
     return RegisterState(

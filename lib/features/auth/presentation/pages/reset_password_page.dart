@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
@@ -28,7 +30,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   final _passwordTouch = FieldTouch();
   final _confirmTouch = FieldTouch();
   bool _submitted = false;
-  String? _formError;
+  Failure? _formError;
   bool _loading = false;
   bool _done = false;
 
@@ -68,7 +70,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
       case Success<void>():
         setState(() => _done = true);
       case Error<void>(:final failure):
-        setState(() => _formError = failure.message);
+        setState(() => _formError = failure);
     }
   }
 
@@ -119,7 +121,11 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           ),
         ),
         const SizedBox(height: AppSpacing.xl),
-        AuthErrorBanner(message: _formError),
+        AuthErrorBanner(
+          message: _formError == null
+              ? null
+              : localizeAuthFailure(_formError!, context.l10n),
+        ),
         AuthTextField(
           controller: _passwordController,
           label: context.l10n.securityNewPassword,

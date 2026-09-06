@@ -1,4 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/error/auth_error_code.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/register_state.dart';
@@ -46,16 +48,14 @@ class RegisterCubit extends Cubit<RegisterState> {
             checkingCpf: false,
             step: data ? state.step : RegisterStep.contact,
             formError: data
-                ? 'Este CPF já está cadastrado em outra conta.'
+                ? const AuthFailure(AuthErrorCode.cpfAlreadyTaken)
                 : null,
             clearFormError: !data,
           ),
         );
         return !data;
       case Error<bool>(:final failure):
-        emit(
-          state.copyWith(checkingCpf: false, formError: failure.message),
-        );
+        emit(state.copyWith(checkingCpf: false, formError: failure));
         return false;
     }
   }
@@ -94,7 +94,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       case Success<bool>():
         emit(state.copyWith(submitting: false));
       case Error<bool>(:final failure):
-        emit(state.copyWith(submitting: false, formError: failure.message));
+        emit(state.copyWith(submitting: false, formError: failure));
     }
     return result;
   }

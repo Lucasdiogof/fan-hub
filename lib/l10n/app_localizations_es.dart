@@ -401,6 +401,70 @@ class AppLocalizationsEs extends AppLocalizations {
   String get authSessionExpiredCta => 'Iniciar sesión de nuevo';
 
   @override
+  String get authErrorInvalidCredentials => 'Correo o contraseña incorrectos.';
+
+  @override
+  String get authErrorCurrentPasswordIncorrect =>
+      'La contraseña actual es incorrecta.';
+
+  @override
+  String get authErrorPasswordIncorrect => 'Contraseña incorrecta.';
+
+  @override
+  String get authErrorEmailAlreadyRegistered =>
+      'Este correo ya tiene una cuenta.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'La contraseña no cumple los requisitos mínimos.';
+
+  @override
+  String get authErrorInvalidEmail => 'Ingresa un correo electrónico válido.';
+
+  @override
+  String get authErrorRateLimited =>
+      'Ya enviamos un código recientemente. Espera un poco antes de solicitar otro.';
+
+  @override
+  String get authErrorOtpInvalidOrExpired =>
+      'Este código no es válido o ya expiró. Revísalo e intenta de nuevo, o solicita uno nuevo.';
+
+  @override
+  String get authErrorSessionExpired =>
+      'Tu sesión ha expirado. Inicia sesión de nuevo.';
+
+  @override
+  String get authErrorSignupDisabled =>
+      'Los nuevos registros no están disponibles por el momento.';
+
+  @override
+  String get authErrorEmailNotConfirmed =>
+      'Confirma tu correo antes de iniciar sesión.';
+
+  @override
+  String get authErrorServiceUnavailable =>
+      'El servicio no está disponible en este momento. Intenta de nuevo en unos instantes.';
+
+  @override
+  String get authErrorNewPasswordSameAsCurrent =>
+      'La nueva contraseña debe ser diferente de la actual.';
+
+  @override
+  String get authErrorCpfAlreadyTaken =>
+      'Este CPF ya está registrado en otra cuenta.';
+
+  @override
+  String get authErrorAccountDeletionFailed =>
+      'No fue posible eliminar tu cuenta. Intenta de nuevo en unos instantes.';
+
+  @override
+  String get authErrorNetwork => 'Verifica tu conexión a internet.';
+
+  @override
+  String get authErrorGeneric =>
+      'No fue posible completar esto ahora. Intenta de nuevo.';
+
+  @override
   String get personalDataTitle => 'DATOS PERSONALES';
 
   @override
