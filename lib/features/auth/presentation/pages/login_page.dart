@@ -209,7 +209,7 @@ class _LoginPageState extends State<LoginPage> {
           // sempre uma foto escura, então o botão precisa do mesmo verde
           // vívido tanto no light quanto no dark theme do app, ao contrário
           // do padrão novo do `AppPrimaryButton` (que decide pelo tema).
-          color: AppColors.dark.ctaGreen,
+          color: AppColors.dark.cta,
         ),
         const SizedBox(height: AppSpacing.xl),
         Center(

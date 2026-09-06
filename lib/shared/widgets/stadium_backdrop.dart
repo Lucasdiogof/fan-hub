@@ -36,10 +36,10 @@ class StadiumBackdrop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final base = tint ?? colors.deepGreen;
+    final base = tint ?? colors.brandDeep;
     final mid = tint != null
         ? Color.lerp(tint, Colors.black, 0.4)!
-        : colors.darkGreen;
+        : colors.brandDark;
 
     return Stack(
       fit: StackFit.expand,

@@ -76,7 +76,7 @@ class PassportCoverV2 extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(AppRadius.hero),
         child: Material(
-          color: AppColors.light.deepGreen,
+          color: AppColors.light.brandDeep,
           child: InkWell(
             onTap: onTap,
             child: Stack(

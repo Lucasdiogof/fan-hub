@@ -36,7 +36,7 @@ class StoreEntryCard extends StatelessWidget {
         child: Ink(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.banner),
-            color: AppColors.light.deepGreen,
+            color: AppColors.light.brandDeep,
             border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
           ),
           child: Stack(
@@ -53,7 +53,10 @@ class StoreEntryCard extends StatelessWidget {
                 child: Align(
                   alignment: const Alignment(1.15, 0.3),
                   child: ExcludeSemantics(
-                    child: Opacity(opacity: 0.75, child: Image.asset(AppAssets.storeBanner, width: 190)),
+                    child: Opacity(
+                      opacity: 0.50,
+                      child: Image.asset(AppAssets.storeBanner, width: 190),
+                    ),
                   ),
                 ),
               ),
@@ -81,7 +84,11 @@ class StoreEntryCard extends StatelessWidget {
                         l10n.storeHomeEntryDescription,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 12.5, height: 1.3, color: Colors.white.withValues(alpha: 0.78)),
+                        style: TextStyle(
+                          fontSize: 12.5,
+                          height: 1.3,
+                          color: Colors.white.withValues(alpha: 0.78),
+                        ),
                       ),
                     ),
                     const SizedBox(height: AppSpacing.md),
@@ -90,7 +97,10 @@ class StoreEntryCard extends StatelessWidget {
                       style: whiteFilledOnDarkStyle(),
                       child: Text(
                         l10n.storeHomeEntryCta,
-                        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800),
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
                   ],
@@ -122,11 +132,20 @@ class _StoreBadge extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.shopping_bag_outlined, size: 12, color: Colors.white),
+          const Icon(
+            Icons.shopping_bag_outlined,
+            size: 12,
+            color: Colors.white,
+          ),
           const SizedBox(width: 5),
           Text(
             label,
-            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 0.7, color: Colors.white),
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.7,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
