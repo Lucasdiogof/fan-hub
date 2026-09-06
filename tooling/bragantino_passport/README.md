@@ -105,6 +105,42 @@ seguidos, uma exceção real aconteceu.
   placares, consistência mandante/visitante, regra crítica de estádio,
   SQL bem formada, contagem de linhas batendo com o JSON). Uso:
   `node validate_batch.mjs 2025`.
+- `parse_ogol_lineup.mjs <arquivo.html>` — extrai a escalação (titulares,
+  reservas usados, banco não usado, capitão) da mesma ficha de partida já
+  baixada pro Passaporte (`id="game_report"`) — ver seção
+  "LINEUP_SHORTLIST_V2" abaixo. Exporta `parseOgolLineup(html)`.
+- `validate_lineup_shortlist.mjs` — valida `source/lineup_shortlist_v2.json`
+  (onze completo, camisas sem duplicata/fora de faixa, fonte rastreável).
+
+## LINEUP_SHORTLIST_V2 (candidatos pro "Adivinhe a Escalação")
+
+Reconstrução NOVA — a lista de 24 partidas referenciada em pesquisa
+anterior nunca foi encontrada no repositório (procurada e confirmada
+ausente); esta lista não reivindica nenhuma continuidade com aquela.
+
+A ficha de partida do oGol (a mesma já baixada pra extrair estádio/data via
+JSON-LD, ver acima) embute a escalação completa numa seção
+`id="game_report"` — **sem nenhuma request nova**. A seção lista, por time,
+quem entrou em campo (titulares + reservas usados), então titular de
+verdade é só quem NUNCA tem um evento `title="Entrou"` (reserva que jogou);
+reservas que ficaram no banco o jogo inteiro vêm numa linha separada
+("Reservas", classe `inactive`). Sem checar isso, todo mundo que jogou
+(18+ por time) apareceria como "titular".
+
+Gerado a partir das 125 fichas já em cache dos lotes 2024/2025 — 123 com
+onze completo do Bragantino identificado (as 2 exceções são as únicas 2
+fichas que ficaram com conteúdo incompleto por causa do rate limit do
+oGol, ver seção acima). **Não é** uma busca dedicada pelas partidas
+históricas prioritárias do briefing original (Paulista 1990, Série B
+1989/2019, Série C 2007, Sul-Americana 2021, Libertadores 2022) — essas
+exigem sua própria pesquisa, já que o oGol provavelmente não tem esse
+nível de detalhe de escalação pra jogos tão antigos (a confirmar quando
+chegar a vez desses lotes).
+
+Arquivo: `source/lineup_shortlist_v2.json`. Cada candidato tem: partida
+(data/competição/adversário/mando/placar/estádio/fonte), onze titular
+(camisa+nome+capitão), reservas usados. Nenhuma interface criada ainda —
+é só o dataset base.
 
 ## Tabela
 
