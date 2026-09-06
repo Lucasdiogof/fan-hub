@@ -5,6 +5,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/register_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/register_state.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
@@ -56,7 +57,11 @@ class _RegisterStepContactState extends State<RegisterStepContact> {
                   AppSpacing.lg,
                 ),
                 children: [
-                  AuthErrorBanner(message: state.formError),
+                  AuthErrorBanner(
+                    message: state.formError == null
+                        ? null
+                        : localizeAuthFailure(state.formError!, l10n),
+                  ),
                   RegistrationTextField(
                     label: l10n.commonEmailLabel,
                     isRequired: true,
@@ -160,7 +165,9 @@ class _MarketingOptInCheckbox extends StatelessWidget {
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(
-              context.l10n.authMarketingOptIn(sl<ClubConfig>().identity.shortName),
+              context.l10n.authMarketingOptIn(
+                sl<ClubConfig>().identity.shortName,
+              ),
               style: TextStyle(
                 fontSize: 13,
                 height: 1.4,

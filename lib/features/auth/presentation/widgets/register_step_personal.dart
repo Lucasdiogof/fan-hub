@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/register_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/register_state.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
@@ -63,7 +64,11 @@ class _RegisterStepPersonalState extends State<RegisterStepPersonal> {
                   AppSpacing.lg,
                 ),
                 children: [
-                  AuthErrorBanner(message: state.formError),
+                  AuthErrorBanner(
+                    message: state.formError == null
+                        ? null
+                        : localizeAuthFailure(state.formError!, l10n),
+                  ),
                   RegistrationTextField(
                     label: l10n.authFullNameLabel,
                     isRequired: true,

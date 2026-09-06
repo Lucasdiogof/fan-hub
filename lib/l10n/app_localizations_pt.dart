@@ -400,6 +400,69 @@ class AppLocalizationsPt extends AppLocalizations {
   String get authSessionExpiredCta => 'Entrar novamente';
 
   @override
+  String get authErrorInvalidCredentials => 'E-mail ou senha incorretos.';
+
+  @override
+  String get authErrorCurrentPasswordIncorrect => 'Senha atual incorreta.';
+
+  @override
+  String get authErrorPasswordIncorrect => 'Senha incorreta.';
+
+  @override
+  String get authErrorEmailAlreadyRegistered =>
+      'Este e-mail já possui uma conta.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'A senha não atende aos requisitos mínimos.';
+
+  @override
+  String get authErrorInvalidEmail => 'Informe um e-mail válido.';
+
+  @override
+  String get authErrorRateLimited =>
+      'Já enviamos um código recentemente. Aguarde um pouco antes de solicitar outro.';
+
+  @override
+  String get authErrorOtpInvalidOrExpired =>
+      'Este código não é válido ou já expirou. Confira e tente novamente, ou solicite um novo código.';
+
+  @override
+  String get authErrorSessionExpired =>
+      'Sua sessão expirou. Faça login novamente.';
+
+  @override
+  String get authErrorSignupDisabled =>
+      'Novos cadastros estão temporariamente indisponíveis.';
+
+  @override
+  String get authErrorEmailNotConfirmed =>
+      'Confirme seu e-mail antes de entrar.';
+
+  @override
+  String get authErrorServiceUnavailable =>
+      'O serviço está temporariamente indisponível. Tente novamente em instantes.';
+
+  @override
+  String get authErrorNewPasswordSameAsCurrent =>
+      'A nova senha precisa ser diferente da atual.';
+
+  @override
+  String get authErrorCpfAlreadyTaken =>
+      'Este CPF já está cadastrado em outra conta.';
+
+  @override
+  String get authErrorAccountDeletionFailed =>
+      'Não foi possível excluir sua conta. Tente novamente em alguns instantes.';
+
+  @override
+  String get authErrorNetwork => 'Verifique sua conexão com a internet.';
+
+  @override
+  String get authErrorGeneric =>
+      'Não foi possível concluir agora. Tente novamente.';
+
+  @override
   String get personalDataTitle => 'DADOS PESSOAIS';
 
   @override

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/session/local_game_cache.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_text_field.dart';
@@ -28,7 +30,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
   final _confirmWordFocus = FocusNode();
 
   String? _passwordError;
-  String? _formError;
+  Failure? _formError;
   bool _loading = false;
   bool _canSubmit = false;
 
@@ -70,7 +72,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
     if (result is Error<void>) {
       setState(() {
         _loading = false;
-        _formError = result.failure.message;
+        _formError = result.failure;
       });
       return;
     }
@@ -132,7 +134,11 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                         ),
                       ),
                       const SizedBox(height: AppSpacing.xl),
-                      AuthErrorBanner(message: _formError),
+                      AuthErrorBanner(
+                        message: _formError == null
+                            ? null
+                            : localizeAuthFailure(_formError!, context.l10n),
+                      ),
                       AuthTextField(
                         controller: _passwordController,
                         label: context.l10n.securityCurrentPassword,

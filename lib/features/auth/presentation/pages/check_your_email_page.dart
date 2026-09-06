@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/features/auth/presentation/widgets/otp_code_field.dart';
@@ -42,7 +44,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
   int _cooldown = 0;
   bool _verifying = false;
   bool _resending = false;
-  String? _error;
+  Failure? _error;
 
   String get _email => widget.email ?? '';
 
@@ -85,7 +87,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
         break;
       case Error<void>(:final failure):
         setState(() {
-          _error = failure.message;
+          _error = failure;
           _code = '';
         });
     }
@@ -102,7 +104,7 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
     setState(() => _resending = false);
     final messenger = ScaffoldMessenger.of(context);
     if (result is Error<void>) {
-      setState(() => _error = result.failure.message);
+      setState(() => _error = result.failure);
     } else {
       _startCooldown();
       messenger.showSnackBar(
@@ -194,7 +196,11 @@ class _CheckYourEmailPageState extends State<CheckYourEmailPage> {
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xxl),
-                  AuthErrorBanner(message: _error),
+                  AuthErrorBanner(
+                    message: _error == null
+                        ? null
+                        : localizeAuthFailure(_error!, l10n),
+                  ),
                   OtpCodeField(
                     key: _otpKey,
                     length: _otpLength,

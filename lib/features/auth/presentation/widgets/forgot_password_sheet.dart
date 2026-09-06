@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/widgets/auth_error_banner.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
@@ -30,7 +32,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
   final _emailController = TextEditingController();
   final _emailTouch = FieldTouch();
 
-  String? _formError;
+  Failure? _formError;
   bool _submitted = false;
   bool _loading = false;
   bool _canSubmit = false;
@@ -40,7 +42,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
 
   bool _resending = false;
   bool _resendDone = false;
-  String? _resendError;
+  Failure? _resendError;
 
   @override
   void dispose() {
@@ -76,7 +78,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
           _sentEmail = email;
         });
       case Error<void>(:final failure):
-        setState(() => _formError = failure.message);
+        setState(() => _formError = failure);
     }
   }
 
@@ -97,7 +99,7 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
         case Success<void>():
           _resendDone = true;
         case Error<void>(:final failure):
-          _resendError = failure.message;
+          _resendError = failure;
       }
     });
   }
@@ -150,7 +152,11 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
           description: l10n.forgotSubtitle,
         ),
         const SizedBox(height: AppSpacing.xxl),
-        AuthErrorBanner(message: _formError),
+        AuthErrorBanner(
+          message: _formError == null
+              ? null
+              : localizeAuthFailure(_formError!, l10n),
+        ),
         AuthTextField(
           controller: _emailController,
           label: l10n.commonEmailLabel,
@@ -283,7 +289,7 @@ class _ResendAction extends StatelessWidget {
 
   final bool resending;
   final bool done;
-  final String? error;
+  final Failure? error;
   final VoidCallback onResend;
 
   @override
@@ -293,7 +299,7 @@ class _ResendAction extends StatelessWidget {
 
     if (error != null) {
       return Text(
-        error!,
+        localizeAuthFailure(error!, l10n),
         textAlign: TextAlign.center,
         style: TextStyle(fontSize: 13, color: colors.error),
       );

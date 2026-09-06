@@ -400,6 +400,70 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authSessionExpiredCta => 'Sign in again';
 
   @override
+  String get authErrorInvalidCredentials => 'Incorrect email or password.';
+
+  @override
+  String get authErrorCurrentPasswordIncorrect =>
+      'Current password is incorrect.';
+
+  @override
+  String get authErrorPasswordIncorrect => 'Incorrect password.';
+
+  @override
+  String get authErrorEmailAlreadyRegistered =>
+      'This email already has an account.';
+
+  @override
+  String get authErrorWeakPassword =>
+      'Password doesn\'t meet the minimum requirements.';
+
+  @override
+  String get authErrorInvalidEmail => 'Enter a valid email address.';
+
+  @override
+  String get authErrorRateLimited =>
+      'We already sent a code recently. Wait a bit before requesting another one.';
+
+  @override
+  String get authErrorOtpInvalidOrExpired =>
+      'This code isn\'t valid or has expired. Check it and try again, or request a new code.';
+
+  @override
+  String get authErrorSessionExpired =>
+      'Your session has expired. Please sign in again.';
+
+  @override
+  String get authErrorSignupDisabled =>
+      'New sign-ups are temporarily unavailable.';
+
+  @override
+  String get authErrorEmailNotConfirmed =>
+      'Confirm your email before signing in.';
+
+  @override
+  String get authErrorServiceUnavailable =>
+      'The service is temporarily unavailable. Please try again shortly.';
+
+  @override
+  String get authErrorNewPasswordSameAsCurrent =>
+      'The new password must be different from the current one.';
+
+  @override
+  String get authErrorCpfAlreadyTaken =>
+      'This CPF is already registered to another account.';
+
+  @override
+  String get authErrorAccountDeletionFailed =>
+      'Couldn\'t delete your account. Please try again shortly.';
+
+  @override
+  String get authErrorNetwork => 'Check your internet connection.';
+
+  @override
+  String get authErrorGeneric =>
+      'Couldn\'t complete this right now. Please try again.';
+
+  @override
   String get personalDataTitle => 'PERSONAL DATA';
 
   @override

@@ -7,6 +7,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
 import 'package:goias_app/shared/validation/field_touch.dart';
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
         context,
         icon: Icons.error_outline_rounded,
         title: l10n.authSignInErrorTitle,
-        description: result.failure.message,
+        description: localizeAuthFailure(result.failure, l10n),
         confirmLabel: l10n.commonClose,
       );
     }

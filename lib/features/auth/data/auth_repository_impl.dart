@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:goias_app/core/config/supabase_config.dart';
+import 'package:goias_app/core/error/auth_error_code.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/auth/data/auth_error_mapper.dart';
@@ -84,8 +85,7 @@ class AuthRepositoryImpl implements AuthRepository {
             Sentry.captureMessage(
               'auth_session_recovery_failed',
               level: SentryLevel.warning,
-              withScope: (scope) =>
-                  scope.setTag('reason', reason!.name),
+              withScope: (scope) => scope.setTag('reason', reason!.name),
             ),
           );
         }
@@ -235,7 +235,7 @@ class AuthRepositoryImpl implements AuthRepository {
       if (error is AuthException &&
           error.message.toLowerCase().contains('invalid login credentials')) {
         unawaited(Sentry.captureException(error, stackTrace: stackTrace));
-        return const Error(AuthFailure('Senha atual incorreta.'));
+        return const Error(AuthFailure(AuthErrorCode.currentPasswordIncorrect));
       }
       return Error(mapAuthError(error, stackTrace));
     }
@@ -250,22 +250,29 @@ class AuthRepositoryImpl implements AuthRepository {
       if (error is AuthException &&
           error.message.toLowerCase().contains('invalid login credentials')) {
         unawaited(Sentry.captureException(error, stackTrace: stackTrace));
-        return const Error(AuthFailure('Senha incorreta.'));
+        return const Error(AuthFailure(AuthErrorCode.passwordIncorrect));
       }
       if (error is FunctionException) {
         unawaited(Sentry.captureException(error, stackTrace: stackTrace));
-        return Error(AuthFailure(_messageForFunctionsError(error)));
+        return Error(_failureForFunctionsError(error));
       }
       return Error(mapAuthError(error, stackTrace));
     }
   }
 
-  String _messageForFunctionsError(FunctionException error) {
+  /// `details['error']` (quando presente) é texto dinâmico do backend —
+  /// nunca traduzido em runtime, mesma convenção do resto do app. Sem
+  /// isso, cai num código com mensagem localizada de verdade (ver
+  /// `AuthErrorCode.accountDeletionFailed`).
+  Failure _failureForFunctionsError(FunctionException error) {
     final details = error.details;
     if (details is Map && details['error'] is String) {
-      return details['error'] as String;
+      return AuthFailure(
+        AuthErrorCode.functionError,
+        rawMessage: details['error'] as String,
+      );
     }
-    return 'Não foi possível excluir sua conta. Tente novamente em alguns instantes.';
+    return const AuthFailure(AuthErrorCode.accountDeletionFailed);
   }
 
   AuthUser _mapUser(User user) {
