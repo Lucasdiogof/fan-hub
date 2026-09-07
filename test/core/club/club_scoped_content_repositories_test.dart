@@ -406,7 +406,8 @@ void main() {
     'SupabaseSquadRepository — tenant scope (sem fallback, F4 — semântica própria preservada)',
     () {
       test(
-        'query real inclui club_id=eq.<canonicalClubId> do clube ativo',
+        'query real inclui club_id=eq.<canonicalClubId> do clube ativo '
+        'e active=eq.true (2026-09-07: atleta que saiu nunca aparece)',
         () async {
           final http = CapturingHttpClient();
           final repo = SupabaseSquadRepository(
@@ -414,10 +415,12 @@ void main() {
             goiasClubConfig,
           );
           await repo.getSquad();
+          final url = http.lastRequestUrl.toString();
           expect(
-            http.lastRequestUrl.toString(),
+            url,
             contains('club_id=eq.${goiasClubConfig.identity.canonicalClubId}'),
           );
+          expect(url, contains('active=eq.true'));
         },
       );
 

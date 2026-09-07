@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "name": "Mauro Silva",
+      "chapters": [
+        {
+          "period": "1989-1992",
+          "club": "Bragantino",
+          "note": "Série B 1989, Paulista 1990 e vice brasileiro 1991"
+        },
+        {
+          "period": "1992-2005",
+          "club": "Deportivo La Coruña",
+          "note": "sequência da carreira europeia"
+        }
+      ]
+    },
+    {
+      "name": "Claudinho",
+      "chapters": [
+        {
+          "period": "2019-2021",
+          "club": "Red Bull Bragantino",
+          "note": "Série B 2019 e artilharia do Brasileiro 2020"
+        },
+        {
+          "period": "2021+",
+          "club": "Zenit",
+          "note": "transferência após destaque no Braga"
+        }
+      ]
+    },
+    {
+      "name": "Léo Ortiz",
+      "chapters": [
+        {
+          "period": "2019-2024",
+          "club": "Red Bull Bragantino",
+          "note": "liderança defensiva e final continental"
+        },
+        {
+          "period": "2024+",
+          "club": "Flamengo",
+          "note": "sequência após saída do Braga"
+        }
+      ]
+    },
+    {
+      "name": "Artur",
+      "chapters": [
+        {
+          "period": "2020-2023",
+          "club": "Red Bull Bragantino",
+          "note": "protagonismo continental"
+        },
+        {
+          "period": "2023+",
+          "club": "Palmeiras / carreira posterior",
+          "note": "sequência após o Braga"
+        }
+      ]
+    },
+    {
+      "name": "Ytalo",
+      "chapters": [
+        {
+          "period": "2019-2022",
+          "club": "Red Bull Bragantino",
+          "note": "campanhas de Série B, Brasileiro e Sul-Americana"
+        }
+      ]
+    },
+    {
+      "name": "Gil Baiano",
+      "chapters": [
+        {
+          "period": "1989-1991",
+          "club": "Bragantino",
+          "note": "geração campeã e vice brasileira; destaque nacional"
+        }
+      ]
+    },
+    {
+      "name": "Cleiton",
+      "chapters": [
+        {
+          "period": "2020s",
+          "club": "Red Bull Bragantino",
+          "note": "goleiro de longa permanência na era Red Bull"
+        }
+      ]
+    }
+  ],
+  "note": "Trajetórias são seeds editoriais curtos. Para jogo de caminho de clubes, usar base de carreira separada e auditada antes de adicionar todos os clubes."
+}

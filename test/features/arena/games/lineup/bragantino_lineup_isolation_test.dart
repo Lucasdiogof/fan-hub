@@ -165,14 +165,25 @@ void main() {
     });
 
     test(
-      'HISTORICAL_LINEUPS segue como pesquisa pendente, sem dado forjado',
+      'HISTORICAL_LINEUPS: 15 partidas curadas em 2026-09-07 (XI nominal '
+      'validado, sem número de camisa/formação forjados)',
       () {
-        expect(historical, isEmpty);
+        expect(historical, hasLength(15));
         expect(
           (pool['historical_lineups']
               as Map<String, dynamic>)['research_status'],
-          'PENDING_RESEARCH',
+          'CURATED_NO_FORMATION_YET',
         );
+        for (final match in historical) {
+          final map = match as Map<String, dynamic>;
+          final xi = (map['starting_xi'] as List).cast<Map<String, dynamic>>();
+          expect(xi, hasLength(11), reason: map['source_match_id'] as String);
+          // Nenhum número de camisa inventado — todo mundo fica null até
+          // existir fonte real por partida.
+          for (final player in xi) {
+            expect(player['number'], isNull, reason: player['name'] as String);
+          }
+        }
       },
     );
 
@@ -193,11 +204,11 @@ void main() {
       'tooling/bragantino_lineup/out/eligibility_report.json',
     );
 
-    test('o relatório existe e cobre o pool inteiro', () {
+    test('o relatório existe e cobre o pool inteiro (123 RECENT + 15 HISTORICAL)', () {
       expect(reportFile.existsSync(), isTrue);
       final report =
           jsonDecode(reportFile.readAsStringSync()) as Map<String, dynamic>;
-      expect(report['avaliadas'], 123);
+      expect(report['avaliadas'], 138);
       expect(report['rejeitadas'], report['avaliadas']);
     });
 
@@ -206,8 +217,8 @@ void main() {
           jsonDecode(reportFile.readAsStringSync()) as Map<String, dynamic>;
       expect(report['publicaveis'], 0);
       final reasons = report['motivos'] as Map<String, dynamic>;
-      expect(reasons['SEM_FORMACAO'], 123);
-      expect(reasons['SEM_POSICAO_POR_JOGADOR'], 123);
+      expect(reasons['SEM_FORMACAO'], 138);
+      expect(reasons['SEM_POSICAO_POR_JOGADOR'], 138);
     });
   });
 }

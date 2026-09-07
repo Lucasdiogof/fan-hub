@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-07",
+  "items": [
+    {
+      "name": "Estádio Municipal Cícero de Souza Marques",
+      "role": "CURRENT_TEMPORARY_HOME",
+      "city": "Bragança Paulista",
+      "capacity": 12000,
+      "built_area_m2": 11290,
+      "boxes": 35,
+      "broadcast_booths": 14,
+      "bathrooms": 25,
+      "pitch": "natural grass",
+      "official_debut": "2025-05-05",
+      "status": "ACTIVE"
+    },
+    {
+      "name": "Estádio Nabi Abi Chedid",
+      "aliases": [
+        "Nabizão",
+        "Marcelo Stefani"
+      ],
+      "role": "HISTORIC_HOME",
+      "city": "Bragança Paulista",
+      "opened_year": 1949,
+      "last_rbb_match": "2025-04-20",
+      "last_rbb_result": "Red Bull Bragantino 1-0 Cruzeiro",
+      "status": "REPLACED_FOR_NEW_ARENA"
+    },
+    {
+      "name": "Nova arena do Red Bull Bragantino",
+      "role": "FUTURE_HOME",
+      "city": "Bragança Paulista",
+      "capacity_approx": 20000,
+      "status": "PLANNED/UNDER_DEVELOPMENT_AS_OF_SNAPSHOT"
+    }
+  ]
+}

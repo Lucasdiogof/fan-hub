@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-09-07",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2360
+    },
+    {
+      "path": "data/bragantino_club_timeline_seed_v1.json",
+      "bytes": 3279
+    },
+    {
+      "path": "data/bragantino_lineup_shortlist_v2.json",
+      "bytes": 7789
+    },
+    {
+      "path": "data/bragantino_research_checkpoint_v2.json",
+      "bytes": 5880
+    },
+    {
+      "path": "data/club.json",
+      "bytes": 1244
+    },
+    {
+      "path": "data/honors.json",
+      "bytes": 1015
+    },
+    {
+      "path": "data/idols_and_icons.json",
+      "bytes": 2903
+    },
+    {
+      "path": "data/leadership.json",
+      "bytes": 673
+    },
+    {
+      "path": "data/partners.json",
+      "bytes": 1161
+    },
+    {
+      "path": "data/quiz_questions_seed_v2.json",
+      "bytes": 9961
+    },
+    {
+      "path": "data/quiz_questions_seed_v3.json",
+      "bytes": 19362
+    },
+    {
+      "path": "data/squad_2026_snapshot.json",
+      "bytes": 3017
+    },
+    {
+      "path": "data/stadiums.json",
+      "bytes": 1030
+    },
+    {
+      "path": "data/trajectories_seed.json",
+      "bytes": 2333
+    },
+    {
+      "path": "data/transparency_financials.json",
+      "bytes": 496
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "bytes": 720
+    },
+    {
+      "path": "sources/source_catalog.json",
+      "bytes": 2411
+    },
+    {
+      "path": "sql/001_bragantino_content_seed.sql",
+      "bytes": 37616
+    }
+  ],
+  "master_updated_at": "2026-09-07",
+  "lincom_stats": {
+    "matches": 160,
+    "goals": 72,
+    "status": "RESOLVED"
+  },
+  "passport": {
+    "audit_manifest": "data/bragantino_passport_audit_manifest_v4.json",
+    "research_coverage": "100%",
+    "individual_rows_2000_2023_materialized": false,
+    "finished_matches_through_2026_09_05": 1424
+  }
+}

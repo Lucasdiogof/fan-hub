@@ -26,8 +26,17 @@ const _tier1Names = [
   'Marcelo',
   'Mazinho',
   'Luís Müller',
+  // Promovidos de tier 2 em 2026-09-07 (docs/bragantino_data) — conquistas
+  // concretas encontradas, não mais "revisão pendente".
+  'Biro-Biro',
+  'Ivair',
+  'Ytalo',
+  'Claudinho',
+  'Artur',
+  'Léo Ortiz',
+  'Aderlan',
 ];
-const _tier2Names = ['Biro-Biro', 'Ytalo', 'Claudinho', 'Léo Ortiz'];
+const _tier2Names = ['Tiba', 'Júnior', 'Nei', 'Jadsom', 'Lucas Evangelista'];
 const _tier3Names = ['Adãozinho', 'Somália', 'Davi', 'Matheus Peixoto'];
 
 ClubConfig _withIdols(ClubConfig base, List<ClubIdol> idols) => ClubConfig(

@@ -25,6 +25,7 @@ class SupabaseSquadRepository implements SquadRepository {
           .from('squad_members')
           .select()
           .eq('club_id', _clubConfig.identity.canonicalClubId)
+          .eq('active', true)
           .order('sort_order', ascending: true);
       final members = rows
           .map((row) => SquadMember.fromJson(row))

@@ -1,0 +1,333 @@
+{
+  "generated_at": "2026-09-06",
+  "name": "LINEUP_SHORTLIST_V2",
+  "description": "New reconstruction; not claimed to be the lost original shortlist.",
+  "matches": [
+    {
+      "date": "1989-12-16",
+      "match": "Sao Jose 0-1 Bragantino",
+      "competition": "Serie B 1989 Final - ida",
+      "venue": "Martins Pereira",
+      "coach": "Vanderlei Luxemburgo",
+      "xi": [
+        "Marcelo",
+        "Gil Baiano",
+        "Junior",
+        "Nei",
+        "Biro-Biro",
+        "Mauro Silva",
+        "Ivair",
+        "Gataozinho",
+        "Valmir",
+        "Mario",
+        "Luis Muller"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "1989-12-20",
+      "match": "Bragantino 2-1 Sao Jose",
+      "competition": "Serie B 1989 Final - volta / titulo",
+      "venue": "Marcelo Stefani",
+      "coach": "Vanderlei Luxemburgo",
+      "xi": [
+        "Marcelo",
+        "Gil Baiano",
+        "Junior",
+        "Nei",
+        "Biro-Biro",
+        "Mauro Silva",
+        "Ivair",
+        "Gataozinho",
+        "Valmir",
+        "Mario",
+        "Luis Muller"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "1990-08-19",
+      "match": "Novorizontino 1-1 Bragantino",
+      "competition": "Paulista 1990 Final - ida",
+      "venue": "Jorge Ismael de Biasi",
+      "coach": "Vanderlei Luxemburgo",
+      "xi": [
+        "Marcelo",
+        "Gil Baiano",
+        "Junior",
+        "Carlos Augusto",
+        "Biro-Biro",
+        "Ivair",
+        "Mauro Silva",
+        "Robert",
+        "Tiba",
+        "Mario",
+        "Joao Santos"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "1990-08-26",
+      "match": "Bragantino 1-1 Novorizontino",
+      "competition": "Paulista 1990 Final - volta / titulo",
+      "venue": "Marcelo Stefani",
+      "coach": "Vanderlei Luxemburgo",
+      "xi": [
+        "Marcelo",
+        "Gil Baiano",
+        "Biro-Biro",
+        "Carlos Augusto",
+        "Junior Paulista",
+        "Mauro Silva",
+        "Ivair",
+        "Mazinho Oliveira",
+        "Tiba",
+        "Joao Santos",
+        "Mario"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "1991-06-05",
+      "match": "Sao Paulo 1-0 Bragantino",
+      "competition": "Brasileirao 1991 Final - ida",
+      "venue": "Morumbi",
+      "coach": "Carlos Alberto Parreira",
+      "xi": [
+        "Marcelo",
+        "Gil Baiano",
+        "Junior",
+        "Nei",
+        "Biro-Biro",
+        "Mauro Silva",
+        "Alberto",
+        "Mazinho Oliveira",
+        "Ivair",
+        "Silvio",
+        "Ronaldo Alfredo"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "1991-06-09",
+      "match": "Bragantino 0-0 Sao Paulo",
+      "competition": "Brasileirao 1991 Final - volta",
+      "venue": "Marcelo Stefani",
+      "coach": "Carlos Alberto Parreira",
+      "xi": [
+        "Marcelo",
+        "Gil Baiano",
+        "Junior",
+        "Nei",
+        "Biro-Biro",
+        "Mauro Silva",
+        "Alberto",
+        "Mazinho Oliveira",
+        "Ivair",
+        "Silvio",
+        "Joao Santos"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "2007-11-25",
+      "match": "Bragantino 3-1 Barras",
+      "competition": "Serie C 2007 fase final R13",
+      "venue": "Nabi Abi Chedid / Marcelo Stefani",
+      "coach": "Marcelo Veiga",
+      "xi": [
+        "Gleguer",
+        "Tiago Vieira",
+        "Vanderlei",
+        "Cesar Gaucho",
+        "Da Silva",
+        "Somalia",
+        "Paulinho",
+        "Niander",
+        "Andre Gaspar",
+        "Valdir Papel",
+        "Davi"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "2019-11-15",
+      "match": "Bragantino 1-1 Criciuma",
+      "competition": "Serie B 2019 R36 / titulo",
+      "venue": "Nabi Abi Chedid",
+      "coach": "Antonio Carlos Zago",
+      "xi": [
+        "Julio Cesar",
+        "Aderlan",
+        "Leo Ortiz",
+        "Rayan",
+        "Edimar",
+        "Barreto",
+        "Ricardo Ryller",
+        "Claudinho",
+        "Morato",
+        "Wesley",
+        "Ytalo"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "2021-09-22",
+      "match": "Red Bull Bragantino 2-0 Libertad",
+      "competition": "Sul-Americana 2021 semifinal - ida",
+      "coach": "Mauricio Barbieri",
+      "xi": [
+        "Cleiton",
+        "Aderlan",
+        "Fabricio Bruno",
+        "Leo Ortiz",
+        "Edimar",
+        "Jadsom",
+        "Eric Ramires",
+        "Praxedes",
+        "Artur",
+        "Cuello",
+        "Ytalo"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "2021-11-20",
+      "match": "Athletico-PR 1-0 Red Bull Bragantino",
+      "competition": "Sul-Americana 2021 Final",
+      "venue": "Estadio Centenario, Montevideo",
+      "coach": "Mauricio Barbieri",
+      "xi": [
+        "Cleiton",
+        "Aderlan",
+        "Fabricio Bruno",
+        "Leo Ortiz",
+        "Edimar",
+        "Jadsom",
+        "Praxedes",
+        "Artur",
+        "Ytalo",
+        "Helinho",
+        "Tomas Cuello"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "2023-03-15",
+      "match": "Ypiranga-RS 3-1 Red Bull Bragantino",
+      "competition": "Copa do Brasil 2023 2F",
+      "venue": "Olimpico Colosso da Lagoa",
+      "coach": "Pedro Caixinha",
+      "xi": [
+        "Cleiton",
+        "Andres Hurtado",
+        "Lucas Cunha",
+        "Natan",
+        "Juninho Capixaba",
+        "Matheus Fernandes",
+        "Jadsom",
+        "Bruninho",
+        "Eric Ramires",
+        "Artur",
+        "Alerrandro"
+      ],
+      "status": "READY",
+      "priority": "C"
+    },
+    {
+      "date": "2024-03-13",
+      "match": "Red Bull Bragantino 1-1 Botafogo",
+      "competition": "Libertadores 2024 3E volta",
+      "coach": "Pedro Caixinha",
+      "xi": [
+        "Cleiton",
+        "Nathan Mendes",
+        "Lucas Cunha",
+        "Luan Candido",
+        "Juninho Capixaba",
+        "Jadsom",
+        "Lincoln",
+        "Eric Ramires",
+        "Eduardo Sasha",
+        "Thiago Borbas",
+        "Helinho"
+      ],
+      "status": "READY",
+      "priority": "A"
+    },
+    {
+      "date": "2024-03-27",
+      "match": "Santos 3-1 Red Bull Bragantino",
+      "competition": "Paulista 2024 semifinal",
+      "venue": "Neo Quimica Arena",
+      "coach": "Pedro Caixinha",
+      "xi": [
+        "Cleiton",
+        "Nathan Mendes",
+        "Lucas Cunha",
+        "Juninho Capixaba",
+        "Luan Candido",
+        "Matheus Fernandes",
+        "Jadsom",
+        "Eric Ramires",
+        "Eduardo Sasha",
+        "Helinho",
+        "Vitinho"
+      ],
+      "status": "READY",
+      "priority": "B"
+    },
+    {
+      "date": "2024-08-13",
+      "match": "Red Bull Bragantino 1-2 Corinthians",
+      "competition": "Sul-Americana 2024 oitavas - ida",
+      "venue": "Estadio Santa Cruz / Arena Nicnet",
+      "coach": "Pedro Caixinha",
+      "xi": [
+        "Fabricio",
+        "Nathan Mendes",
+        "Douglas Mendes",
+        "Eduardo Santos",
+        "Luan Candido",
+        "Jadsom",
+        "Jhon Jhon",
+        "Lucas Evangelista",
+        "Helinho",
+        "Mosquera",
+        "Eduardo Sasha"
+      ],
+      "status": "READY",
+      "priority": "B"
+    },
+    {
+      "date": "2025-02-20",
+      "match": "Red Bull Bragantino 3-0 Mirassol",
+      "competition": "Paulista 2025",
+      "xi": [
+        "Cleiton",
+        "Agustin Sant'Anna",
+        "Pedro Henrique",
+        "Guzman Rodriguez",
+        "Juninho Capixaba",
+        "Matheus Fernandes",
+        "Gabriel",
+        "Lucas Evangelista",
+        "Jhon Jhon",
+        "Eduardo Sasha",
+        "Vinicinho"
+      ],
+      "status": "READY",
+      "priority": "C"
+    }
+  ]
+}

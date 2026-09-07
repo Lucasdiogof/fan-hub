@@ -1,0 +1,346 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-09-05",
+  "ready_count": 19,
+  "review_count": 3,
+  "questions": [
+    {
+      "id": "bra_q_001",
+      "difficulty": "EASY",
+      "question": "Em que ano o Bragantino foi fundado?",
+      "options": [
+        "1928",
+        "1931",
+        "1949",
+        "1965"
+      ],
+      "correct_index": 0,
+      "fact_key": "foundation_year",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_002",
+      "difficulty": "MEDIUM",
+      "question": "Qual é a data de fundação do Bragantino?",
+      "options": [
+        "8 de janeiro de 1928",
+        "8 de janeiro de 1931",
+        "15 de novembro de 1928",
+        "1º de maio de 1928"
+      ],
+      "correct_index": 0,
+      "fact_key": "foundation_date",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_003",
+      "difficulty": "EASY",
+      "question": "Qual apelido tradicional do Bragantino aparece na história do clube?",
+      "options": [
+        "Massa Bruta",
+        "Toro Loko",
+        "Leão do Interior",
+        "Pantera"
+      ],
+      "correct_index": 0,
+      "fact_key": "nickname",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_004",
+      "difficulty": "MEDIUM",
+      "question": "Segundo a história institucional pesquisada, desde que ano o apelido 'Massa Bruta' remonta?",
+      "options": [
+        "1931",
+        "1928",
+        "1965",
+        "1989"
+      ],
+      "correct_index": 0,
+      "fact_key": "nickname_origin_year",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_005",
+      "difficulty": "EASY",
+      "question": "Em que ano começou a parceria do Bragantino com a Red Bull?",
+      "options": [
+        "2019",
+        "2017",
+        "2020",
+        "2021"
+      ],
+      "correct_index": 0,
+      "fact_key": "red_bull_partnership_year",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_006",
+      "difficulty": "HARD",
+      "question": "Em qual mês de 2019 foi anunciada a parceria com a Red Bull, conforme a pesquisa histórica?",
+      "options": [
+        "Março",
+        "Janeiro",
+        "Julho",
+        "Dezembro"
+      ],
+      "correct_index": 0,
+      "fact_key": "red_bull_partnership_month",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_007",
+      "difficulty": "EASY",
+      "question": "Qual competição nacional o Bragantino venceu em 1989?",
+      "options": [
+        "Campeonato Brasileiro Série B",
+        "Campeonato Brasileiro Série A",
+        "Campeonato Brasileiro Série C",
+        "Copa do Brasil"
+      ],
+      "correct_index": 0,
+      "fact_key": "title_1989",
+      "source_hint": "CBF / clube / bases históricas",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_008",
+      "difficulty": "EASY",
+      "question": "Qual título estadual o Bragantino conquistou em 1990?",
+      "options": [
+        "Campeonato Paulista",
+        "Paulista Série A2",
+        "Copa Paulista",
+        "Torneio Rio-São Paulo"
+      ],
+      "correct_index": 0,
+      "fact_key": "title_1990",
+      "source_hint": "FPF / clube",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_009",
+      "difficulty": "MEDIUM",
+      "question": "Em que ano o Bragantino conquistou a Série C do Campeonato Brasileiro?",
+      "options": [
+        "2007",
+        "2005",
+        "2008",
+        "2010"
+      ],
+      "correct_index": 0,
+      "fact_key": "title_serie_c",
+      "source_hint": "CBF / clube",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_010",
+      "difficulty": "EASY",
+      "question": "O Bragantino foi campeão da Série B novamente em qual ano?",
+      "options": [
+        "2019",
+        "2018",
+        "2020",
+        "2021"
+      ],
+      "correct_index": 0,
+      "fact_key": "title_serie_b_2019",
+      "source_hint": "CBF / clube",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_011",
+      "difficulty": "MEDIUM",
+      "question": "Quais foram os dois anos de títulos da Série B identificados na pesquisa?",
+      "options": [
+        "1989 e 2019",
+        "1990 e 2019",
+        "1988 e 2007",
+        "1989 e 2021"
+      ],
+      "correct_index": 0,
+      "fact_key": "serie_b_title_years",
+      "source_hint": "CBF / clube",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_012",
+      "difficulty": "MEDIUM",
+      "question": "Quais anos aparecem como títulos do Campeonato Paulista Série A2?",
+      "options": [
+        "1965 e 1988",
+        "1965 e 1989",
+        "1988 e 1990",
+        "1964 e 1988"
+      ],
+      "correct_index": 0,
+      "fact_key": "a2_title_years",
+      "source_hint": "FPF / bases históricas",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_013",
+      "difficulty": "EASY",
+      "question": "Em 2021, o Red Bull Bragantino foi vice-campeão de qual torneio?",
+      "options": [
+        "CONMEBOL Sul-Americana",
+        "CONMEBOL Libertadores",
+        "Copa do Brasil",
+        "Campeonato Paulista"
+      ],
+      "correct_index": 0,
+      "fact_key": "sudamericana_2021_runner_up",
+      "source_hint": "CONMEBOL / clube",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_014",
+      "difficulty": "MEDIUM",
+      "question": "Qual destas conquistas deve aparecer no app como campanha/vice, e não como título?",
+      "options": [
+        "Sul-Americana de 2021",
+        "Série B de 1989",
+        "Paulista de 1990",
+        "Série C de 2007"
+      ],
+      "correct_index": 0,
+      "fact_key": "runner_up_not_title",
+      "source_hint": "CONMEBOL / clube",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_015",
+      "difficulty": "EASY",
+      "question": "Em qual ano o Red Bull Bragantino disputou a Libertadores mencionada no levantamento histórico?",
+      "options": [
+        "2022",
+        "2020",
+        "2021",
+        "2023"
+      ],
+      "correct_index": 0,
+      "fact_key": "libertadores_2022",
+      "source_hint": "CONMEBOL / clube",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_016",
+      "difficulty": "HARD",
+      "question": "Qual jogador do Bragantino foi associado à Bola de Ouro da Placar de 1991 no levantamento de ídolos?",
+      "options": [
+        "Mauro Silva",
+        "Lincom",
+        "Claudinho",
+        "Léo Ortiz"
+      ],
+      "correct_index": 0,
+      "fact_key": "mauro_silva_bola_ouro_1991",
+      "source_hint": "Pesquisa de ídolos / Placar",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_018",
+      "difficulty": "HARD",
+      "question": "Qual marca de jogos Cleiton atingiu em 2025 segundo o levantamento anterior?",
+      "options": [
+        "300 jogos",
+        "250 jogos",
+        "200 jogos",
+        "350 jogos"
+      ],
+      "correct_index": 0,
+      "fact_key": "cleiton_300_matches",
+      "source_hint": "Loja/club official reference cited in prior research",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_019",
+      "difficulty": "MEDIUM",
+      "question": "Qual destes nomes pertence à geração histórica destacada de 1990–91?",
+      "options": [
+        "Gil Baiano",
+        "Ytalo",
+        "Artur",
+        "Aderlan"
+      ],
+      "correct_index": 0,
+      "fact_key": "historic_generation_1990_91",
+      "source_hint": "Pesquisa de ídolos / prêmios históricos",
+      "status": "READY"
+    },
+    {
+      "id": "bra_q_020",
+      "difficulty": "MEDIUM",
+      "question": "Qual destes jogadores foi colocado no grupo de símbolos históricos com evidência explícita de 'ídolo'?",
+      "options": [
+        "Léo Jaime",
+        "Jadsom",
+        "Matheus Peixoto",
+        "Guilherme Mattis"
+      ],
+      "correct_index": 0,
+      "fact_key": "explicit_idol_group",
+      "source_hint": "Pesquisa de ídolos",
+      "status": "READY"
+    }
+  ],
+  "review_candidates": [
+    {
+      "id": "bra_q_r001",
+      "difficulty": "HARD",
+      "question": "Quem comandava o Bragantino no título paulista de 1990?",
+      "options": [
+        "Vanderlei Luxemburgo",
+        "Carlos Alberto Parreira",
+        "Marcelo Veiga",
+        "Antônio Carlos Zago"
+      ],
+      "correct_index": 0,
+      "fact_key": "coach_1990_title",
+      "source_hint": "Fonte individual ainda precisa ser anexada ao pacote",
+      "status": "NEEDS_SOURCE_RECHECK"
+    },
+    {
+      "id": "bra_q_r002",
+      "difficulty": "HARD",
+      "question": "Quem comandou o Bragantino na campanha do vice brasileiro de 1991?",
+      "options": [
+        "Carlos Alberto Parreira",
+        "Vanderlei Luxemburgo",
+        "Marcelo Veiga",
+        "Maurício Barbieri"
+      ],
+      "correct_index": 0,
+      "fact_key": "coach_1991_runner_up",
+      "source_hint": "Fonte individual ainda precisa ser anexada ao pacote",
+      "status": "NEEDS_SOURCE_RECHECK"
+    },
+    {
+      "id": "bra_q_017",
+      "difficulty": "HARD",
+      "question": "Quantos gols Lincom tinha no levantamento histórico recuperado?",
+      "options": [
+        "73",
+        "63",
+        "83",
+        "53"
+      ],
+      "correct_index": 0,
+      "fact_key": "lincom_goals",
+      "source_hint": "Conflito estatístico aberto no checkpoint posterior; não publicar até fechar a fonte.",
+      "status": "NEEDS_SOURCE_RECHECK"
+    }
+  ],
+  "editorial_notes": [
+    "Questões READY usam apenas fatos recuperados como confirmados na pesquisa anterior.",
+    "Questões com estatística de jogador devem preservar o mesmo escopo da fonte antes de publicar.",
+    "Vice-campeonato da Sul-Americana 2021 nunca deve ser modelado como título.",
+    "A pergunta sobre 73 gols de Lincom foi removida de READY após recuperar um checkpoint posterior com conflito estatístico aberto."
+  ]
+}

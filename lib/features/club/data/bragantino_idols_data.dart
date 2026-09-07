@@ -6,9 +6,21 @@ import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 /// ainda em revisão (`REVIEW`, menor confiança). NUNCA promover 2/3 pro
 /// mesmo peso do Tier 1 sem checagem adicional.
 ///
-/// Lincom: condição de ídolo mantida, mas total de jogos/gols NÃO entra
-/// aqui — um checkpoint posterior marcou os números (73 gols / 133+
-/// jogos) como conflito estatístico aberto, sem revalidação.
+/// Lincom: RESOLVIDO em 2026-09-07 (pacote `docs/bragantino_data`) — fonte
+/// contemporânea de dezembro/2016 registra explicitamente 160 jogos / 72
+/// gols (passagens pelo Bragantino, todas as competições oficiais). Fontes
+/// retrospectivas posteriores citam 73 gols — mantido como nota de
+/// auditoria, nunca como contador principal.
+///
+/// Atualização 2026-09-07 (mesmo pacote): Biro-Biro, Ivair, Claudinho, Léo
+/// Ortiz, Artur, Ytalo e Aderlan promovidos de tier 2 pra tier 1 — a nova
+/// pesquisa trouxe conquistas/marcos concretos e específicos pra cada um
+/// (não mais só "revisão pendente"), o suficiente pra publicar mesmo sem
+/// citação explícita de "ídolo" (`evidenceExplicitIdol: false`, mesmo
+/// padrão de Gil Baiano/Marcelo). Léo Jaime, Mazinho e Luís Müller
+/// PRESERVADOS sem alteração — a ausência deles na pesquisa nova não é
+/// evidência de erro na pesquisa anterior (decisão explícita do usuário:
+/// união, nunca substituição).
 ///
 /// Nenhuma característica comportamental/técnica (estilo, dimensões,
 /// pesos) foi anexada — isso é DATA_GAP separado, necessário só quando o
@@ -21,9 +33,6 @@ class BragantinoIdolsData {
       'Destaque da geração histórica do clube de 1990-91.';
   static const _tier2Historico =
       'Nome histórico levantado como candidato a destaque — revisão '
-      'editorial pendente.';
-  static const _tier2RedBullEra =
-      'Nome da era Red Bull levantado como candidato a destaque — revisão '
       'editorial pendente.';
   static const _tier2Longevidade =
       'Nome associado à longevidade no clube — revisão editorial '
@@ -41,7 +50,12 @@ class BragantinoIdolsData {
       name: 'Lincom',
       tier: 1,
       evidenceExplicitIdol: true,
-      description: 'Ídolo histórico do clube.',
+      description:
+          'Ídolo histórico do clube, com 160 jogos e 72 gols em suas '
+          'passagens pelo Bragantino (fonte contemporânea de dezembro de '
+          '2016; fontes retrospectivas posteriores citam 73 gols).',
+      position: 'Atacante',
+      period: '2011-2016',
     ),
     ClubIdol(
       name: 'Léo Jaime',
@@ -85,15 +99,21 @@ class BragantinoIdolsData {
     ),
     ClubIdol(
       name: 'Biro-Biro',
-      tier: 2,
+      tier: 1,
       evidenceExplicitIdol: false,
-      description: _tier2Historico,
+      description:
+          'Integrante das equipes campeãs de 1989 e 1990 e vice-campeã '
+          'em 1991 — geração histórica do clube.',
+      period: '1989-1991',
     ),
     ClubIdol(
       name: 'Ivair',
-      tier: 2,
+      tier: 1,
       evidenceExplicitIdol: false,
-      description: _tier2Historico,
+      description:
+          'Meio-campista da geração histórica de 1989-1991, presente nos '
+          'títulos de Série B 1989 e Paulista 1990.',
+      period: '1989-1991',
     ),
     ClubIdol(
       name: 'Tiba',
@@ -115,33 +135,48 @@ class BragantinoIdolsData {
     ),
     ClubIdol(
       name: 'Ytalo',
-      tier: 2,
+      tier: 1,
       evidenceExplicitIdol: false,
-      description: _tier2RedBullEra,
+      description:
+          'Parte das campanhas de acesso via Série B 2019 e da final da '
+          'Sul-Americana 2021.',
+      period: '2019-2022',
     ),
     ClubIdol(
       name: 'Claudinho',
-      tier: 2,
+      tier: 1,
       evidenceExplicitIdol: false,
-      description: _tier2RedBullEra,
+      description:
+          'Campeão da Série B em 2019 e artilheiro do Campeonato '
+          'Brasileiro de 2020 pelo clube, com 18 gols.',
+      period: '2019-2021',
     ),
     ClubIdol(
       name: 'Artur',
-      tier: 2,
+      tier: 1,
       evidenceExplicitIdol: false,
-      description: _tier2RedBullEra,
+      description:
+          'Um dos protagonistas da campanha de vice-campeão da '
+          'Sul-Americana 2021, integrante da seleção da competição.',
+      period: '2020-2023',
     ),
     ClubIdol(
       name: 'Léo Ortiz',
-      tier: 2,
+      tier: 1,
       evidenceExplicitIdol: false,
-      description: _tier2RedBullEra,
+      description:
+          'Capitão e referência defensiva na campanha de vice-campeão '
+          'da Sul-Americana 2021, integrante da seleção da competição.',
+      period: '2019-2024',
     ),
     ClubIdol(
       name: 'Aderlan',
-      tier: 2,
+      tier: 1,
       evidenceExplicitIdol: false,
-      description: _tier2Longevidade,
+      description:
+          'Presença recorrente nas campanhas do clube ao longo da era '
+          'Red Bull.',
+      period: '2019-2020s',
     ),
     ClubIdol(
       name: 'Jadsom',

@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-05",
+  "items": [
+    {
+      "date": "1928-01-08",
+      "year": 1928,
+      "title": "Fundação do Bragantino",
+      "body": "O clube foi fundado em Bragança Paulista em 8 de janeiro de 1928.",
+      "category": "FOUNDATION",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "year": 1931,
+      "title": "Massa Bruta",
+      "body": "A história institucional pesquisada remete o tradicional apelido Massa Bruta a 1931.",
+      "category": "IDENTITY",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "year": 1965,
+      "title": "Título da Paulista A2",
+      "body": "O Bragantino conquistou o Campeonato Paulista Série A2.",
+      "category": "TITLE",
+      "source_hint": "FPF / bases históricas",
+      "status": "READY"
+    },
+    {
+      "year": 1988,
+      "title": "Novo título da Paulista A2",
+      "body": "O clube voltou a conquistar o Campeonato Paulista Série A2.",
+      "category": "TITLE",
+      "source_hint": "FPF / bases históricas",
+      "status": "READY"
+    },
+    {
+      "year": 1989,
+      "title": "Campeão brasileiro da Série B",
+      "body": "O Bragantino venceu o Campeonato Brasileiro Série B.",
+      "category": "TITLE",
+      "source_hint": "CBF / clube",
+      "status": "READY"
+    },
+    {
+      "year": 1990,
+      "title": "Campeão Paulista",
+      "body": "O Bragantino conquistou o Campeonato Paulista.",
+      "category": "TITLE",
+      "source_hint": "FPF / clube",
+      "status": "READY"
+    },
+    {
+      "year": 2007,
+      "title": "Campeão brasileiro da Série C",
+      "body": "O clube conquistou o Campeonato Brasileiro Série C.",
+      "category": "TITLE",
+      "source_hint": "CBF / clube",
+      "status": "READY"
+    },
+    {
+      "date": "2019-03",
+      "year": 2019,
+      "title": "Início da parceria com a Red Bull",
+      "body": "A parceria com a Red Bull foi anunciada em março de 2019, marco da nova fase institucional do clube.",
+      "category": "IDENTITY",
+      "source_hint": "Red Bull Bragantino / História",
+      "status": "READY"
+    },
+    {
+      "year": 2019,
+      "title": "Campeão brasileiro da Série B",
+      "body": "No mesmo ano, o Bragantino conquistou novamente o Campeonato Brasileiro Série B.",
+      "category": "TITLE",
+      "source_hint": "CBF / clube",
+      "status": "READY"
+    },
+    {
+      "year": 2021,
+      "title": "Final continental",
+      "body": "O Red Bull Bragantino foi vice-campeão da CONMEBOL Sul-Americana.",
+      "category": "CAMPAIGN",
+      "source_hint": "CONMEBOL / clube",
+      "status": "READY",
+      "is_title": false
+    },
+    {
+      "year": 2022,
+      "title": "Libertadores",
+      "body": "O Red Bull Bragantino disputou a CONMEBOL Libertadores.",
+      "category": "CAMPAIGN",
+      "source_hint": "CONMEBOL / clube",
+      "status": "READY"
+    }
+  ],
+  "editorial_rules": [
+    "Sul-Americana 2021 é campanha de vice, não título.",
+    "Manter uma história contínua entre Clube Atlético Bragantino e Red Bull Bragantino, com eras identificáveis.",
+    "Não adicionar datas específicas de jogos, treinadores ou placares sem ficha/fonte individual."
+  ]
+}

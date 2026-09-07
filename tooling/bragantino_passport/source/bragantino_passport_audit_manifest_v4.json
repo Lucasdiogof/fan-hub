@@ -1,0 +1,253 @@
+{
+  "schema_version": 4,
+  "dataset": "Passaporte Massa Bruta — auditoria 2000–2026",
+  "generated_at": "2026-09-07",
+  "scope": {
+    "include": [
+      "partidas oficiais da equipe profissional masculina principal"
+    ],
+    "exclude": [
+      "amistosos",
+      "equipes B/reservas",
+      "U23",
+      "categorias de base"
+    ],
+    "identity": "Clube Atlético Bragantino e Red Bull Bragantino tratados como história contínua",
+    "date_model": [
+      "calendar_year",
+      "competition_edition"
+    ],
+    "venue_rule": "Somente estádio explicitamente confirmado para a partida; nunca inferir."
+  },
+  "totals": {
+    "official_finished_2000_2025": 1378,
+    "official_finished_2000_2026_through_2026_09_05": 1424,
+    "calendar_records_2000_2026": 1437,
+    "source_rows_still_to_materialize_2000_2023": 1251,
+    "already_materialized_2024_2026": 186
+  },
+  "important_reconciliations": [
+    {
+      "year": 2008,
+      "final": 61,
+      "note": "19 Paulista + 38 Série B + 4 Copa do Brasil; Copa Paulista excluída do principal."
+    },
+    {
+      "year": 2012,
+      "final": 61,
+      "note": "23 Paulista + 38 Série B."
+    },
+    {
+      "year": 2013,
+      "final": 59,
+      "note": "19 Paulista + 38 Série B + 2 Copa do Brasil."
+    },
+    {
+      "year": 2018,
+      "final": 40,
+      "note": "14 Paulista + 22 Série C + 4 Copa do Brasil; Copa Paulista era da equipe B."
+    },
+    {
+      "year": 2020,
+      "final": 44,
+      "note": "Ano-calendário: 27 jogos do Brasileirão 2020 ocorreram em 2020; 11 ficaram para jan/fev de 2021."
+    },
+    {
+      "year": 2021,
+      "final": 80,
+      "note": "Ano-calendário inclui 11 jogos remanescentes da edição Brasileirão 2020."
+    }
+  ],
+  "years": [
+    {
+      "calendar_year": 2000,
+      "official_matches": 38,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=129&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2001,
+      "official_matches": 56,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=130&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2002,
+      "official_matches": 41,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=131&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2003,
+      "official_matches": 26,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=132&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2004,
+      "official_matches": 14,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=133&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2005,
+      "official_matches": 36,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=134&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2006,
+      "official_matches": 41,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=135&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2007,
+      "official_matches": 65,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=136&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2008,
+      "official_matches": 61,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=137&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2009,
+      "official_matches": 57,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=138&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2010,
+      "official_matches": 57,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=139&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2011,
+      "official_matches": 57,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=140&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2012,
+      "official_matches": 61,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=141&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2013,
+      "official_matches": 59,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=142&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2014,
+      "official_matches": 62,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=143&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2015,
+      "official_matches": 56,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=144&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2016,
+      "official_matches": 84,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=145&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2017,
+      "official_matches": 42,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=146&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2018,
+      "official_matches": 40,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=147&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2019,
+      "official_matches": 52,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=148&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2020,
+      "official_matches": 44,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=149&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2021,
+      "official_matches": 80,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=150&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2022,
+      "official_matches": 60,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=151&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2023,
+      "official_matches": 62,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=152&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2024,
+      "official_matches": 70,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=153&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2025,
+      "official_matches": 57,
+      "source_provider": "oGol",
+      "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=154&grp=1",
+      "status": "AUDITED_COMPLETE"
+    },
+    {
+      "calendar_year": 2026,
+      "calendar_records": 59,
+      "finished_matches": 46,
+      "postponed_matches": 1,
+      "scheduled_matches": 12,
+      "status": "AUDITED_CURRENT_SNAPSHOT"
+    }
+  ]
+}

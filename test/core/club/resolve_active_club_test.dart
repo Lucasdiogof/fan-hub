@@ -174,9 +174,10 @@ void main() {
 
     // 2026-09-05/06 (M4.3): história/títulos/hino têm conteúdo real e
     // pesquisado (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
-    // `BragantinoSongsData`), e 10 parceiros confirmados com URL/logo
-    // oficiais (ver `BragantinoPartnersData`) — as duas capabilities
-    // ligam de verdade, não mais "tudo desligado até ter QUALQUER dado".
+    // `BragantinoSongsData`), e 12 parceiros confirmados com URL oficial
+    // (ver `BragantinoPartnersData`, +2 em 2026-09-07) — as duas
+    // capabilities ligam de verdade, não mais "tudo desligado até ter
+    // QUALQUER dado".
     test(
       'hasClubContent/hasPartners ligam quando o conteúdo passa a existir',
       () {

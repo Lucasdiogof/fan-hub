@@ -1,0 +1,220 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-09-05",
+  "club": {
+    "canonical_app_code": "bragantino",
+    "display_name_current": "RB Bragantino",
+    "historical_identity_policy": {
+      "single_continuous_club_history": true,
+      "eras": [
+        {
+          "label": "Clube Atlético Bragantino",
+          "through": "2019-12-31"
+        },
+        {
+          "label": "Red Bull Bragantino",
+          "from": "2020-01-01"
+        }
+      ],
+      "note": "Não tratar como dois clubes no Passaporte; permitir filtros/labels por era."
+    }
+  },
+  "history": [
+    {
+      "fact": "Fundação em 8 de janeiro de 1928.",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH",
+      "source_hint": "Red Bull Bragantino / História"
+    },
+    {
+      "fact": "O apelido Massa Bruta remonta a 1931.",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH",
+      "source_hint": "Red Bull Bragantino / História"
+    },
+    {
+      "fact": "A parceria com a Red Bull foi anunciada em março de 2019.",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH",
+      "source_hint": "Red Bull Bragantino / História"
+    },
+    {
+      "fact": "Foi vice-campeão da CONMEBOL Sul-Americana em 2021.",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH",
+      "source_hint": "CONMEBOL / clube"
+    },
+    {
+      "fact": "Disputou a CONMEBOL Libertadores em 2022.",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH",
+      "source_hint": "CONMEBOL / clube"
+    }
+  ],
+  "honors": [
+    {
+      "competition": "Campeonato Brasileiro Série B",
+      "year": 1989,
+      "type": "TITLE",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH"
+    },
+    {
+      "competition": "Campeonato Paulista",
+      "year": 1990,
+      "type": "TITLE",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH"
+    },
+    {
+      "competition": "Campeonato Brasileiro Série C",
+      "year": 2007,
+      "type": "TITLE",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH"
+    },
+    {
+      "competition": "Campeonato Brasileiro Série B",
+      "year": 2019,
+      "type": "TITLE",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH"
+    },
+    {
+      "competition": "Campeonato Paulista Série A2",
+      "year": 1965,
+      "type": "TITLE",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH"
+    },
+    {
+      "competition": "Campeonato Paulista Série A2",
+      "year": 1988,
+      "type": "TITLE",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH"
+    },
+    {
+      "competition": "CONMEBOL Sul-Americana",
+      "year": 2021,
+      "type": "RUNNER_UP",
+      "status": "CONFIRMED_IN_PRIOR_RESEARCH"
+    }
+  ],
+  "leadership_snapshot": [
+    {
+      "name": "Marco Antônio Abi Chedid",
+      "status": "PRIOR_RESEARCH_SNAPSHOT",
+      "note": "Cargo exato/currentidade deve ser revalidado antes de publicação."
+    },
+    {
+      "name": "Diego Cerri",
+      "status": "PRIOR_RESEARCH_SNAPSHOT",
+      "note": "Cargo exato/currentidade deve ser revalidado antes de publicação."
+    }
+  ],
+  "partners_snapshot": [
+    {
+      "name": "Red Bull",
+      "status": "PRIOR_RESEARCH_CONFIRMED_RELATIONSHIP",
+      "note": "Relação estrutural de marca/clube; não confundir automaticamente com patrocínio comum."
+    },
+    {
+      "name": "New Balance",
+      "status": "PRIOR_RESEARCH_SNAPSHOT",
+      "note": "Revalidar vigência e papel comercial antes de publicação."
+    }
+  ],
+  "content_status": {
+    "current_squad": {
+      "prior_state": "PRELIMINARY_30_PLAYERS",
+      "snapshot_date_hint": "2026-08-10",
+      "source_hint": "Wikipedia + cruzamentos planejados com CBF/clube",
+      "recovered_player_list": false,
+      "next_action": "Não reconstruir de memória; recuperar/refazer a lista por fonte atual."
+    },
+    "songs": {
+      "prior_state": "NOT_RESEARCHED_ENOUGH",
+      "next_action": "Hino e músicas exigem bloco específico; para letra integral observar direitos autorais."
+    },
+    "transparency": {
+      "prior_state": "SOURCE_MAP_READY_DATA_NOT_CLOSED",
+      "source_hints": [
+        "FPF",
+        "demonstrativos oficiais",
+        "publicações institucionais"
+      ]
+    }
+  },
+  "source_catalog": {
+    "OFFICIAL_CLUB": {
+      "priority": 1,
+      "examples": [
+        "https://www.redbullbragantino.com.br/",
+        "https://www.redbullbragantino.com.br/historia"
+      ],
+      "use_for": [
+        "historia",
+        "noticias",
+        "elenco",
+        "parceiros",
+        "estrutura",
+        "marcos institucionais"
+      ]
+    },
+    "OFFICIAL_FEDERATIONS": {
+      "priority": 2,
+      "examples": [
+        "CBF",
+        "FPF",
+        "CONMEBOL"
+      ],
+      "use_for": [
+        "sumulas",
+        "competicoes",
+        "titulos",
+        "escalacoes",
+        "jogos oficiais",
+        "transparencia quando publicada"
+      ]
+    },
+    "HISTORICAL_DATABASES": {
+      "priority": 3,
+      "examples": [
+        "oGol",
+        "RSSSF",
+        "Futebol 80",
+        "acervos historicos"
+      ],
+      "use_for": [
+        "seed de partidas",
+        "reconstrucao historica",
+        "elencos e fichas antigas"
+      ]
+    },
+    "STAT_PROVIDERS": {
+      "priority": 4,
+      "examples": [
+        "OneFootball",
+        "Sofascore"
+      ],
+      "use_for": [
+        "estatisticas atuais",
+        "jogos atuais",
+        "identificadores tecnicos"
+      ]
+    },
+    "PRESS_ARCHIVES": {
+      "priority": 5,
+      "examples": [
+        "ge",
+        "Folha",
+        "imprensa regional e nacional"
+      ],
+      "use_for": [
+        "contexto",
+        "idolos",
+        "marcos historicos",
+        "entrevistas",
+        "confirmacao cruzada"
+      ]
+    }
+  },
+  "known_conflicts": [
+    {
+      "entity": "Lincom",
+      "field": "historical_goals_and_match_count",
+      "status": "RESOLVED_2026_09_07",
+      "note": "Fonte contemporânea de dezembro/2016 registra explicitamente 160 jogos / 72 gols (passagens pelo Bragantino, todas as competições oficiais) — publicado como contador principal. O número anterior (73 gols / 133+ jogos), citado por fontes retrospectivas posteriores, preservado apenas como nota de auditoria."
+    }
+  ]
+}

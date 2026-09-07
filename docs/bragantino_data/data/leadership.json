@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-07",
+  "items": [
+    {
+      "name": "André Raul Rocha",
+      "role": "CEO / administrador",
+      "status": "CURRENT_SNAPSHOT"
+    },
+    {
+      "name": "Diego Cerri",
+      "role": "Executivo de futebol / administrador",
+      "status": "CURRENT_SNAPSHOT"
+    },
+    {
+      "name": "Luiz Felipe Monteiro Lemos",
+      "role": "Administrador societário",
+      "status": "CURRENT_SNAPSHOT"
+    },
+    {
+      "name": "Marco Antônio Abi Chedid",
+      "role": "Referência histórica/institucional da gestão",
+      "status": "HISTORICAL_INSTITUTIONAL; não usar como CEO atual sem fonte específica"
+    }
+  ]
+}

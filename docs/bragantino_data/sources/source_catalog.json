@@ -1,0 +1,82 @@
+{
+  "snapshot_date": "2026-09-07",
+  "items": [
+    {
+      "key": "official_home",
+      "url": "https://www.redbullbragantino.com/br-pt/",
+      "use_for": [
+        "games",
+        "news",
+        "players",
+        "partners"
+      ]
+    },
+    {
+      "key": "official_players",
+      "url": "https://www.redbullbragantino.com/br-pt/jogadores",
+      "use_for": [
+        "current_squad"
+      ]
+    },
+    {
+      "key": "official_stadium_guide",
+      "url": "https://www.redbullbragantino.com/br-pt/noticias/guia-do-estadio-cicero-de-souza-marques",
+      "use_for": [
+        "stadiums"
+      ]
+    },
+    {
+      "key": "official_wallace_yan",
+      "url": "https://www.redbullbragantino.com/br-pt/noticias/wallace-yan-e-o-novo-jogador-do-red-bull-bragantino",
+      "use_for": [
+        "squad",
+        "transfers"
+      ]
+    },
+    {
+      "key": "official_fernando_renewal",
+      "url": "https://www.redbullbragantino.com/br-pt/noticias/red-bull-bragantino-estende-contrato-com-fernando-ate-o-fim-de-2028",
+      "use_for": [
+        "squad",
+        "stats"
+      ]
+    },
+    {
+      "key": "official_pedro_henrique_sale",
+      "url": "https://www.redbullbragantino.com/br-pt/noticias/red-bull-bragantino-acerta-venda-de-pedro-henrique-ao-al-ettifaq",
+      "use_for": [
+        "squad",
+        "transfers"
+      ]
+    },
+    {
+      "key": "official_bahia_match_2026_09_05",
+      "url": "https://www.redbullbragantino.com/br-pt/noticias/em-partida-movimentada-red-bull-bragantino-e-superado-pelo-bahia-no-brasileirao-2026",
+      "use_for": [
+        "squad_recent_activity"
+      ]
+    },
+    {
+      "key": "cbf_2019_vila_nova",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/campeonato-brasileiro/serie-b/2019/306551/red-bull-bragantino-x-vila-nova/812799?view=escalacao",
+      "use_for": [
+        "lineups"
+      ]
+    },
+    {
+      "key": "cbf_2021_flamengo",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/campeonato-brasileiro/serie-a/2021/389228/flamengo-x-red-bull-bragantino/817986?view=escalacao",
+      "use_for": [
+        "lineups"
+      ]
+    },
+    {
+      "key": "fpf_financials_2025",
+      "url": "https://futebolpaulista.com.br/Repositorio/Institucional/2025/3333-26%20%20Relat%C3%B3rio%20dos%20auditores%20independentes%20RB%20Bragantino%202025.pdf",
+      "use_for": [
+        "transparency",
+        "financials"
+      ]
+    }
+  ]
+}

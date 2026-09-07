@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "name": "Mauro Silva",
+      "era": "1989-1991",
+      "tier": "HISTORIC_ICON",
+      "highlights": [
+        "Série B 1989",
+        "Paulista 1990",
+        "vice brasileiro 1991",
+        "Bola de Ouro Placar 1991"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Gil Baiano",
+      "era": "1989-1991",
+      "tier": "HISTORIC_ICON",
+      "highlights": [
+        "Série B 1989",
+        "Paulista 1990",
+        "vice brasileiro 1991",
+        "Bola de Prata 1990 e 1991"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Marcelo",
+      "era": "1989-1991",
+      "tier": "HISTORIC_CORE",
+      "highlights": [
+        "goleiro das finais de 1989, 1990 e 1991"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Biro-Biro",
+      "era": "1989-1991",
+      "tier": "HISTORIC_CORE",
+      "highlights": [
+        "presente nas equipes campeãs de 1989/1990 e vice de 1991"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Ivair",
+      "era": "1989-1991",
+      "tier": "HISTORIC_CORE",
+      "highlights": [
+        "meio-campo da geração histórica"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Lincom",
+      "era": "2011-2016",
+      "tier": "FAN_ICON",
+      "highlights": [
+        "forte identificação com a torcida"
+      ],
+      "safe_for_app": true,
+      "stats_policy": "PUBLISH_160_MATCHES_72_GOALS",
+      "position": "ATA",
+      "matches": 160,
+      "goals": 72,
+      "stats_scope": "ALL_OFFICIAL_COMPETITIONS",
+      "stats_snapshot": "2016-12",
+      "stats_confidence": "HIGH",
+      "audit_note": "Fontes retrospectivas posteriores citam 73 gols. O contador primário usa a fotografia contemporânea ao fim da última passagem: cerca de 160 jogos e 72 gols."
+    },
+    {
+      "name": "Claudinho",
+      "era": "2019-2021",
+      "tier": "MODERN_ICON",
+      "highlights": [
+        "Série B 2019",
+        "artilheiro do Brasileirão 2020 com 18 gols"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Léo Ortiz",
+      "era": "2019-2024",
+      "tier": "MODERN_ICON",
+      "highlights": [
+        "capitão/referência defensiva",
+        "vice Sul-Americana 2021",
+        "Seleção da Sul-Americana 2021"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Artur",
+      "era": "2020-2023",
+      "tier": "MODERN_ICON",
+      "highlights": [
+        "protagonista da Sul-Americana 2021",
+        "Seleção da Sul-Americana 2021"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Ytalo",
+      "era": "2019-2022",
+      "tier": "MODERN_CORE",
+      "highlights": [
+        "Série B 2019",
+        "final Sul-Americana 2021"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Aderlan",
+      "era": "2019-2020s",
+      "tier": "MODERN_CORE",
+      "highlights": [
+        "presença recorrente em campanhas da era Red Bull"
+      ],
+      "safe_for_app": true
+    },
+    {
+      "name": "Cleiton",
+      "era": "2020s",
+      "tier": "MODERN_CORE",
+      "highlights": [
+        "goleiro da final da Sul-Americana 2021",
+        "marca de 300 jogos alcançada na pesquisa anterior"
+      ],
+      "safe_for_app": true
+    }
+  ]
+}

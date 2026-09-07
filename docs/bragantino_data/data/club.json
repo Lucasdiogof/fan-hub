@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-07",
+  "club_id": "51683d2a-ea1d-57c6-8014-996146f242e7",
+  "canonical_app_code": "bragantino",
+  "slug": "rb-bragantino-4734",
+  "team_id_external": 4734,
+  "display_name": "Red Bull Bragantino",
+  "short_name": "RB Bragantino",
+  "city": "Bragança Paulista",
+  "state": "SP",
+  "country": "Brasil",
+  "founded_on": "1928-01-08",
+  "traditional_nickname": "Massa Bruta",
+  "nickname_origin_year": 1931,
+  "identity_policy": {
+    "single_continuous_club_history": true,
+    "eras": [
+      {
+        "label": "Clube Atlético Bragantino",
+        "through": "2019-12-31"
+      },
+      {
+        "label": "Red Bull Bragantino",
+        "from": "2020-01-01"
+      }
+    ],
+    "note": "Não tratar como dois clubes no Passaporte; permitir filtros/labels por era."
+  },
+  "current_home": "Estádio Municipal Cícero de Souza Marques",
+  "current_home_capacity": 12000,
+  "temporary_home_since": "2025-05-05",
+  "previous_home": "Estádio Nabi Abi Chedid",
+  "previous_home_last_match": "2025-04-20",
+  "future_arena_target_capacity_approx": 20000,
+  "content_scope_note": "Músicas/cânticos excluídos por decisão do usuário. Passaporte não integra este pacote de conteúdo principal."
+}
