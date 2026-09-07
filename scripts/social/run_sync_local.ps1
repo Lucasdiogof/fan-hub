@@ -1,4 +1,4 @@
-# Roda o sync do X localmente, na SUA rede — que é o teste que decide se o
+﻿# Roda o sync do X localmente, na SUA rede — que é o teste que decide se o
 # problema é o script/token ou o IP do runner do GitHub.
 #
 #   powershell -ExecutionPolicy Bypass -File scripts\social\run_sync_local.ps1
