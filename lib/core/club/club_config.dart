@@ -5,6 +5,7 @@ import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
+import 'package:goias_app/features/passport/domain/club_passport_content.dart';
 
 /// Configuração completa e IMUTÁVEL de um clube — a raiz de tudo que este
 /// build do app sabe sobre "qual clube estamos executando".
@@ -27,6 +28,7 @@ class ClubConfig {
     required this.integrations,
     required this.capabilities,
     required this.productNames,
+    required this.passportContent,
     this.institutionalContent = const ClubInstitutionalContent(),
   });
 
@@ -41,4 +43,10 @@ class ClubConfig {
   /// Default vazio: um clube sem `ClubConfig` explícito pra isto (nenhum
   /// hoje) nunca herdaria conteúdo de outro por omissão.
   final ClubInstitutionalContent institutionalContent;
+
+  /// Cópia do Passaporte nos três idiomas — ver `ClubPassportContent`.
+  /// Obrigatório, sem default: identidade de clube não tem valor neutro
+  /// razoável, e cair no texto de outro clube por omissão é exatamente o
+  /// que não pode acontecer. Clube novo escreve a sua ou não compila.
+  final ClubPassportContent passportContent;
 }

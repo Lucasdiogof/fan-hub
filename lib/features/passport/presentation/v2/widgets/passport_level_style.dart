@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/passport/domain/club_passport_content.dart';
 import 'package:goias_app/features/passport/domain/passport_level.dart';
 
 /// Label e visual (moldura/selo/textura) de cada [PassportLevel] — o único
@@ -63,20 +63,20 @@ class PassportLevelStyle {
 /// docstring de [PassportLevelStyle].
 const passportCoverBorderWidth = 1.4;
 
-String passportLevelLabel(AppLocalizations l10n, PassportLevel level) =>
-    switch (level) {
-      PassportLevel.primeirosPassos => l10n.passportLevelStarter,
-      PassportLevel.torcedorPresente => l10n.passportLevelPresent,
-      PassportLevel.esmeraldinoDeArquibancada => l10n.passportLevelBleacher,
-      PassportLevel.verdaoRaiz => l10n.passportLevelRoots,
-      PassportLevel.lendaEsmeraldina => l10n.passportLevelLegend,
-    };
+/// Nome da faixa, vindo da cópia editorial do clube ativo.
+///
+/// Recebe [PassportCopy] em vez de `AppLocalizations` porque nome de nível
+/// não é tradução de uma frase única: "Lenda Esmeraldina" e "Lenda da Massa
+/// Bruta" são textos de clubes diferentes, não do mesmo texto em idiomas
+/// diferentes. O idioma já foi resolvido ao obter a cópia.
+String passportLevelLabel(PassportCopy copy, PassportLevel level) =>
+    copy.levels.forLevel(level);
 
 PassportLevelStyle passportLevelStyleFor(PassportLevel level) {
   final green = AppColors.light.primary;
   final gold = AppColors.light.gold;
   return switch (level) {
-    PassportLevel.primeirosPassos => PassportLevelStyle(
+    PassportLevel.starter => PassportLevelStyle(
       borderColor: AppColors.light.brandDark.withValues(alpha: 0.9),
       innerBorderColor: null,
       accentLineColor: null,
@@ -87,7 +87,7 @@ PassportLevelStyle passportLevelStyleFor(PassportLevel level) {
       watermarkOpacity: 0.04,
       textureOpacity: 0,
     ),
-    PassportLevel.torcedorPresente => PassportLevelStyle(
+    PassportLevel.present => PassportLevelStyle(
       borderColor: green.withValues(alpha: 0.5),
       innerBorderColor: null,
       accentLineColor: null,
@@ -98,7 +98,7 @@ PassportLevelStyle passportLevelStyleFor(PassportLevel level) {
       watermarkOpacity: 0.048,
       textureOpacity: 0,
     ),
-    PassportLevel.esmeraldinoDeArquibancada => PassportLevelStyle(
+    PassportLevel.bleacher => PassportLevelStyle(
       borderColor: green.withValues(alpha: 0.68),
       innerBorderColor: green.withValues(alpha: 0.28),
       accentLineColor: null,
@@ -109,7 +109,7 @@ PassportLevelStyle passportLevelStyleFor(PassportLevel level) {
       watermarkOpacity: 0.056,
       textureOpacity: 0.03,
     ),
-    PassportLevel.verdaoRaiz => PassportLevelStyle(
+    PassportLevel.roots => PassportLevelStyle(
       borderColor: green.withValues(alpha: 0.85),
       innerBorderColor: green.withValues(alpha: 0.32),
       accentLineColor: gold.withValues(alpha: 0.5),
@@ -120,7 +120,7 @@ PassportLevelStyle passportLevelStyleFor(PassportLevel level) {
       watermarkOpacity: 0.064,
       textureOpacity: 0.038,
     ),
-    PassportLevel.lendaEsmeraldina => PassportLevelStyle(
+    PassportLevel.legend => PassportLevelStyle(
       borderColor: gold.withValues(alpha: 0.8),
       innerBorderColor: gold.withValues(alpha: 0.34),
       accentLineColor: gold.withValues(alpha: 0.85),

@@ -4,18 +4,15 @@
   "settingsLanguageMenu": "Idioma",
   "languageSystemLabel": "Predeterminado del sistema",
   "languageSystemDescription": "Sigue el idioma de tu dispositivo",
-
   "commonEmailLabel": "Correo electrónico",
   "commonEmailHint": "tucorreo@email.com",
   "commonPasswordLabel": "Contraseña",
-
   "authForgotPassword": "Olvidé mi contraseña",
   "authSignInButton": "ENTRAR",
   "authSignInErrorTitle": "No fue posible iniciar sesión",
   "authSigningIn": "Iniciando sesión...",
   "authNoAccountQuestion": "¿Aún no tienes una cuenta? ",
   "authCreateAccount": "Crear cuenta",
-
   "authRegisterTitle": "Crear cuenta",
   "authFullNameLabel": "Nombre completo",
   "authFullNameHint": "Tu nombre",
@@ -32,35 +29,34 @@
   "authStepContact": "Contacto",
   "authStepSecurity": "Seguridad",
   "authMarketingOptIn": "Quiero recibir novedades, promociones e información de {clubShortName}",
-  "@authMarketingOptIn": { "placeholders": { "clubShortName": { "type": "String" } } },
+  "@authMarketingOptIn": {
+    "placeholders": {
+      "clubShortName": {
+        "type": "String"
+      }
+    }
+  },
   "authPasswordRequirementLength": "Mínimo de {count} caracteres",
   "authCpfLabel": "CPF",
   "authBirthDateHint": "DD/MM/AAAA",
-
   "navHome": "Inicio",
   "navMatches": "Partidos",
   "navMembership": "Socio",
   "navMedia": "Medios",
   "navStore": "Tienda",
-
   "homeGreetingMorning": "Buenos días",
   "homeGreetingAfternoon": "Buenas tardes",
   "homeGreetingEvening": "Buenas noches",
-
   "homeNextMatch": "PRÓXIMO PARTIDO",
   "homeDateToBeConfirmed": "FECHA POR CONFIRMAR",
   "homeCompactMatchToday": "HOY",
   "homeCompactMatchFinished": "Fin del partido",
   "homeTickets": "ENTRADAS",
-
-
   "homeCountdownTitle": "EL PARTIDO COMIENZA EN",
   "homeCountdownDays": "DÍAS",
   "homeCountdownHours": "HORAS",
   "homeCountdownMinutes": "MIN",
   "homeCountdownSeconds": "SEG",
-
-
   "matchGamesTitle": "PARTIDOS",
   "matchTabMatches": "PARTIDOS",
   "matchTabCalendar": "CALENDARIO",
@@ -77,7 +73,6 @@
   "matchFinishedLabel": "Finalizado",
   "matchDateToBeConfirmed": "Fecha por confirmar",
   "matchToBeConfirmed": "Por confirmar",
-
   "matchInfoTitle": "INFORMACIÓN",
   "matchFieldDate": "Fecha",
   "matchFieldTime": "Hora",
@@ -86,27 +81,28 @@
   "matchFieldCompetition": "Competición",
   "matchFieldRound": "Jornada",
   "matchFieldStatus": "Estado",
-
   "matchEventsTitle": "EVENTOS DEL PARTIDO",
   "matchEventGoal": "Gol",
   "matchEventCard": "Tarjeta",
   "matchEventSubstitution": "{playerIn} entra por {playerOut}",
   "@matchEventSubstitution": {
     "placeholders": {
-      "playerIn": { "type": "String" },
-      "playerOut": { "type": "String" }
+      "playerIn": {
+        "type": "String"
+      },
+      "playerOut": {
+        "type": "String"
+      }
     }
   },
   "matchLineupsTitle": "ALINEACIONES",
   "matchStatsTitle": "ESTADÍSTICAS",
-
   "standingsClub": "CLUB",
   "standingsColPoints": "Pts",
   "standingsColPlayed": "PJ",
   "standingsColWins": "G",
   "standingsColGoalDiff": "DG",
   "standingsUnavailable": "Clasificación no disponible en este momento.",
-
   "matchStatusScheduled": "Programado",
   "matchStatusLive": "En vivo",
   "matchStatusHalfTime": "Descanso",
@@ -116,14 +112,12 @@
   "matchStatusSuspended": "Suspendido",
   "matchStatusUnknown": "Indefinido",
   "matchCurrentRound": "Jornada actual",
-
   "commonSave": "GUARDAR",
   "commonSaving": "Guardando...",
   "commonCancel": "Cancelar",
   "commonContinue": "CONTINUAR",
   "commonDemoTag": "Demostración",
   "commonDemoBannerTitle": "Demostración",
-
   "profileTitle": "PERFIL",
   "profileMyAccount": "MI CUENTA",
   "profilePersonalData": "Datos personales",
@@ -146,11 +140,9 @@
   "profileSignOutMessage": "Tendrás que iniciar sesión de nuevo para acceder a tu cuenta.",
   "profileSignOutConfirm": "CERRAR SESIÓN",
   "profileSignOut": "Cerrar sesión",
-
   "authSessionExpiredTitle": "Tu sesión expiró",
   "authSessionExpiredMessage": "Por seguridad, necesitamos confirmar tu acceso de nuevo. Inicia sesión para seguir usando todos los recursos del Goiás.",
   "authSessionExpiredCta": "Iniciar sesión de nuevo",
-
   "authErrorInvalidCredentials": "Correo o contraseña incorrectos.",
   "authErrorCurrentPasswordIncorrect": "La contraseña actual es incorrecta.",
   "authErrorPasswordIncorrect": "Contraseña incorrecta.",
@@ -168,8 +160,6 @@
   "authErrorAccountDeletionFailed": "No fue posible eliminar tu cuenta. Intenta de nuevo en unos instantes.",
   "authErrorNetwork": "Verifica tu conexión a internet.",
   "authErrorGeneric": "No fue posible completar esto ahora. Intenta de nuevo.",
-
-
   "personalDataTitle": "DATOS PERSONALES",
   "personalDataLoadError": "No se pudieron cargar tus datos.",
   "personalFieldCpf": "CPF (opcional)",
@@ -179,7 +169,6 @@
   "personalNameRequired": "Ingresa tu nombre completo.",
   "personalCpfInvalid": "CPF inválido.",
   "personalUpdateSuccess": "Datos actualizados con éxito.",
-
   "securityTitle": "SEGURIDAD",
   "securitySubtitle": "Cambia la contraseña de tu cuenta Goiás EC.",
   "securityCurrentPassword": "Contraseña actual",
@@ -189,7 +178,6 @@
   "securityConfirmNewPasswordHint": "Repite la nueva contraseña",
   "securitySaveButton": "GUARDAR NUEVA CONTRASEÑA",
   "securityChangeSuccess": "Contraseña cambiada con éxito.",
-
   "addressTitle": "DIRECCIÓN RESIDENCIAL",
   "addressResidentialSubtitle": "Tu dirección principal registrada en la cuenta.",
   "addressLoadError": "No se pudo cargar tu dirección.",
@@ -204,7 +192,6 @@
   "addressSelectState": "Seleccionar estado",
   "addressFieldCity": "Ciudad",
   "addressSaveButton": "GUARDAR DIRECCIÓN",
-
   "deleteAccountTitle": "ELIMINAR CUENTA",
   "deleteAccountConfirmWord": "ELIMINAR",
   "deleteAccountInstruction": "Esta acción es permanente. Confirma tu contraseña y escribe {word} para eliminar tu cuenta y todo tu progreso.",
@@ -212,7 +199,6 @@
   "deleteAccountTypeWordLabel": "Escribe {word} para confirmar",
   "deleteAccountConfirmButton": "ELIMINAR MI CUENTA",
   "deleteAccountDeleting": "ELIMINANDO CUENTA...",
-
   "settingsNotificationsTitle": "NOTIFICACIONES",
   "notificationsMatchesTitle": "Partidos del Goiás",
   "notificationsMatchesDescription": "Goles y resultado final en tiempo real.",
@@ -228,14 +214,11 @@
   "themeModeAutoDesc": "Sigue el tema de tu teléfono",
   "themeModeLightDesc": "Siempre con fondo claro",
   "themeModeDarkDesc": "Siempre con fondo oscuro",
-
   "avatarTakePhoto": "Tomar foto",
   "avatarChooseFromGallery": "Elegir de la galería",
-
   "socialFollowTitle": "SIGUE AL GOIÁS",
   "socialFollowSubtitle": "Sigue al Goiás también en las redes sociales.",
   "socialOpenLink": "Abrir {name}",
-
   "arenaTitle": "Arena Esmeraldina",
   "arenaGamesSectionSubtitle": "Pon a prueba tu conocimiento sobre el Goiás.",
   "arenaNextMatchBadge": "PRÓXIMO PARTIDO",
@@ -250,9 +233,15 @@
   "arenaPlayFirstTime": "Juega por primera vez",
   "arenaStatMatchesCorrect": "{played} partidas · {correct} aciertos",
   "@arenaStatMatchesCorrect": {
-    "placeholders": { "played": { "type": "int" }, "correct": { "type": "int" } }
+    "placeholders": {
+      "played": {
+        "type": "int"
+      },
+      "correct": {
+        "type": "int"
+      }
+    }
   },
-
   "arenaHeaderSubtitle": "Juega, participa y vive el Goiás.",
   "arenaSpotlightEyebrow": "Arena Esmeraldina",
   "arenaSpotlightHeadline": "Tu pasión entra en el campo",
@@ -266,7 +255,6 @@
   "arenaChallengeCtaContinue": "Continuar",
   "arenaChallengeCtaStart": "Empezar",
   "arenaChallengeCtaCompleted": "Completado",
-
   "arenaGameQuizTitle": "Quiz del Goiás",
   "arenaGameQuizTagline": "Pon a prueba cuánto conoces al Goiás.",
   "arenaGameLineupTitle": "Adivina la Alineación",
@@ -275,7 +263,6 @@
   "arenaGameCareerTagline": "Descubre al jugador por su trayectoria.",
   "arenaGuessPlayerTitle": "¿Quién Vistió la Camiseta?",
   "arenaGuessPlayerTagline": "Descubre al jugador secreto por la foto borrosa y las pistas.",
-
   "arenaRankingWeekly": "Semanal",
   "arenaRankingMonthly": "Mensual",
   "arenaRankingAllTime": "General",
@@ -283,9 +270,6 @@
   "arenaRankingYourPosition": "TU POSICIÓN",
   "arenaRankingMemberBadge": "Socio",
   "arenaRankingUnknownFan": "Hincha",
-
-  "passportTitle": "Passaporte Esmeraldino",
-  "passportCardDescription": "Marca los partidos que viviste con el Goiás.",
   "passportCardCta": "Abrir pasaporte",
   "passportRankingCta": "Ranking del Pasaporte",
   "passportLoadErrorTitle": "No se pudo cargar el pasaporte",
@@ -340,28 +324,24 @@
   "passportTrajectoryGamesCount": "{count, plural, =1{1 partido} other{{count} partidos}}",
   "@passportTrajectoryGamesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "passportTrajectoryListEmpty": "Todavía no hay partidos aquí",
-  "passportTrajectoryShareText": "¡Esta es mi trayectoria con el Goiás! 💚",
   "passportTrajectoryShareAction": "Compartir",
   "passportTrajectoryOfUser": "Trayectoria de {name}",
   "@passportTrajectoryOfUser": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "passportTrajectoryMemorableEmptyReadOnly": "Todavía no eligió un partido memorable",
   "passportCoverEyebrow": "MI PASAPORTE",
-  "passportCoverMatchesLived": "{count, plural, =1{1 partido cantando y vibrando con el Verdão} other{{count} partidos cantando y vibrando con el Verdão}}",
-  "passportLevelStarter": "Primeros Pasos",
-  "passportLevelPresent": "Hincha Presente",
-  "passportLevelBleacher": "Esmeraldino de Tribuna",
-  "passportLevelRoots": "Raíz Verdão",
-  "passportLevelLegend": "Leyenda Esmeraldina",
   "passportEmptyHeadline": "Todo hincha tiene una historia.",
-  "passportEmptyBody": "Marca los partidos que viviste con el Verdão y construye tu Passaporte Esmeraldino.",
   "passportChangeSeasonCta": "Cambiar temporada",
   "passportSeasonProgressLine": "{marked} de {total} partidos registrados",
   "passportSeasonTotalOnly": "{total} partidos",
@@ -391,7 +371,6 @@
   "arenaRankingNoPointsOther": "Este hincha aún no ha puntuado en los juegos durante el período seleccionado.",
   "arenaRankingNoPointsSelf": "Aún no has puntuado en los juegos durante el período seleccionado.",
   "arenaRankingGapToNext": "{points} pts para alcanzar el {rank}.º",
-
   "commonClose": "CERRAR",
   "commonRetry": "Intentar de nuevo",
   "commonComingSoon": "Próximamente",
@@ -433,7 +412,6 @@
   "quizScoreLine": "Acertaste {correct} de {total} preguntas",
   "quizLevelQuestions": "{answered}/{total} preguntas del nivel",
   "quizBestRecord": "Récord: {best} pts",
-
   "tacticalIdentityGameTitle": "Identidad Futbolística",
   "tacticalIdentityCardSubtitleNew": "¿En qué tipo de fútbol crees?",
   "tacticalIdentityCardCtaStart": "Descubrir mi perfil",
@@ -457,14 +435,19 @@
   "tacticalAxisVertical": "VERTICAL",
   "tacticalAxisDogmatic": "DOGMÁTICO",
   "tacticalAxisPragmatic": "PRAGMÁTICO",
-
   "playerIdentityGameTitle": "¿Qué crack esmeraldino eres?",
   "playerIdentityCardSubtitleNew": "10 situaciones de juego. Descubre con qué ídolo del Verdão tu estilo combina más.",
   "playerIdentityCardCtaStart": "Descubrir mi perfil",
   "playerIdentityCardCtaViewResult": "Ver resultado",
   "playerIdentityCardCtaRedo": "Rehacer",
   "playerIdentityYourProfile": "Tu perfil: {name}",
-  "@playerIdentityYourProfile": { "placeholders": { "name": { "type": "String" } } },
+  "@playerIdentityYourProfile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "playerIntroTitle": "¿Qué crack esmeraldino eres?",
   "playerIntroDescription": "Cada jugador ve el partido de una manera. Responde 10 situaciones de juego y descubre qué nombre que marcó la historia del Goiás combina más con tus elecciones.",
   "playerIntroMeta": "10 preguntas • ~3 minutos",
@@ -475,10 +458,15 @@
   "playerResultReferencesTitle": "REFERENCIAS ESMERALDINAS",
   "playerResultTraitsTitle": "TUS RASGOS",
   "playerIdentityAffinityLabel": "{percent}% afinidad de estilo",
-  "@playerIdentityAffinityLabel": { "placeholders": { "percent": { "type": "String" } } },
+  "@playerIdentityAffinityLabel": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
   "playerResultShare": "Compartir resultado",
   "playerReferenceDisclaimer": "Estos atributos son referencias editoriales usadas en esta experiencia y no evaluaciones oficiales del jugador.",
-
   "lineupPlayerHeading": "JUGADOR",
   "lineupShirt": "CAMISETA {number}",
   "lineupTypePlayerName": "Escribe el nombre del jugador",
@@ -510,7 +498,6 @@
   "lineupTileEmpty": "vacío",
   "keyboardDelete": "Borrar",
   "keyboardConfirm": "Confirmar",
-
   "commonCloseLabel": "Cerrar",
   "careerSubtitle": "Descubre por la carrera",
   "careerSelectFromList": "Selecciona un jugador de la lista.",
@@ -539,8 +526,22 @@
   "careerOnLoan": "{team} (cedido)",
   "careerAggregateTitle": "Totales combinados",
   "careerAggregateLine": "{club} ({spells}): {apps} partidos · {goals} goles",
-  "@careerAggregateLine": { "placeholders": { "club": { "type": "String" }, "spells": { "type": "String" }, "apps": { "type": "String" }, "goals": { "type": "String" } } },
-
+  "@careerAggregateLine": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      },
+      "spells": {
+        "type": "String"
+      },
+      "apps": {
+        "type": "String"
+      },
+      "goals": {
+        "type": "String"
+      }
+    }
+  },
   "commonBack": "VOLVER",
   "guessCorrectTitle": "¡ACERTASTE!",
   "guessOutOfAttempts": "Se acabaron los intentos",
@@ -554,12 +555,10 @@
   "guessColShirt": "CAMISETA",
   "guessColBase": "CANTERA",
   "guessColDebut": "DEBUT",
-
   "dateMinutesAgo": "hace {minutes}min",
   "dateHoursAgo": "hace {hours}h",
   "dateDaysAgo": "{days, plural, =1{hace 1 día} other{hace {days} días}}",
   "datePrepositionFull": "{day} de {month}",
-
   "socialMediaTitle": "MEDIOS",
   "socialFeedLoadError": "No se pudo cargar el feed",
   "socialEmptyState": "Sigue al Goiás en las redes",
@@ -569,7 +568,6 @@
   "socialPlatformInstagram": "INSTAGRAM",
   "socialPlatformYoutube": "YOUTUBE",
   "socialPlatformX": "X",
-
   "newsTitle": "NOTICIAS",
   "newsLoadError": "No se pudieron cargar las noticias",
   "newsEmptyTitle": "Aún no hay noticias",
@@ -578,20 +576,16 @@
   "newsOpenOriginal": "Abrir artículo original",
   "newsPdfLoadErrorTitle": "No se pudo cargar el PDF",
   "newsPdfShareButton": "Compartir PDF",
-
-
   "relTimeNow": "ahora",
   "relTimeMinutes": "{n}min",
   "relTimeHours": "{n}h",
   "relTimeDays": "{n}d",
   "relTimeWeeks": "{n}sem",
   "relTimeMonths": "{n}m",
-
   "partnersTitle": "Socios del Goiás",
   "partnersSubtitle": "Marcas que caminan junto al Goiás.",
   "partnersOpenInstagram": "Abrir Instagram de {name}",
   "partnersOpenWebsite": "Abrir sitio de {name}",
-
   "squadTitle": "PLANTILLA",
   "squadLoadError": "No se pudo cargar la plantilla",
   "squadEmpty": "Plantilla no disponible en este momento",
@@ -599,7 +593,14 @@
   "squadAboutSection": "Acerca de",
   "squadCareerStatsLine": "{matches} partidos · {goals} goles",
   "@squadCareerStatsLine": {
-    "placeholders": { "matches": { "type": "String" }, "goals": { "type": "String" } }
+    "placeholders": {
+      "matches": {
+        "type": "String"
+      },
+      "goals": {
+        "type": "String"
+      }
+    }
   },
   "squadNumber": "Número",
   "squadAge": "Edad",
@@ -617,7 +618,6 @@
   "squadGroupMidfielders": "Mediocampistas",
   "squadGroupForwards": "Delanteros",
   "squadInstagramLabel": "Instagram",
-
   "validatorNameRequired": "Ingresa tu nombre completo.",
   "validatorEmailRequired": "Ingresa tu correo.",
   "validatorEmailInvalid": "Ingresa un correo válido.",
@@ -628,7 +628,6 @@
   "validatorPasswordsDoNotMatch": "Las contraseñas no coinciden.",
   "validatorPhoneRequired": "Ingresa tu teléfono.",
   "validatorZipRequired": "Ingresa el código postal.",
-
   "checkEmailResent": "Correo reenviado. Revisa tu bandeja de entrada.",
   "checkEmailTitle": "Confirma tu correo",
   "checkEmailResending": "Reenviando...",
@@ -641,12 +640,10 @@
   "checkEmailChangeTitle": "¿Cambiar correo?",
   "checkEmailChangeMessage": "Esto termina este registro y comienza uno nuevo, para que ingreses el correo correcto.",
   "checkEmailChangeConfirm": "Cambiar correo",
-
   "resetPasswordTitle": "Crear nueva contraseña",
   "resetPasswordSubtitle": "Elige una nueva contraseña para acceder a tu cuenta.",
   "resetPasswordSuccessTitle": "Contraseña cambiada con éxito",
   "resetPasswordSuccessMessage": "Tu contraseña se ha actualizado. Inicia sesión de nuevo para continuar.",
-
   "forgotVerifyEmailTitle": "Revisa tu correo",
   "forgotSentDescription": "Si este correo tiene una cuenta en la app de Goiás, recibirás un enlace de restablecimiento en breve:",
   "forgotNotReceived": "¿No lo recibiste?",
@@ -656,10 +653,8 @@
   "forgotSubtitle": "Escribe tu correo para recibir el enlace de restablecimiento.",
   "forgotSendButton": "Enviar enlace",
   "forgotSending": "Enviando...",
-
   "authShowPassword": "Mostrar contraseña",
   "authHidePassword": "Ocultar contraseña",
-
   "ticketsLoadError": "No se pudieron cargar las entradas.",
   "ticketsNextEvent": "PRÓXIMO EVENTO",
   "ticketsQuickAccess": "ACCESO RÁPIDO",
@@ -687,12 +682,18 @@
   "orderStatusPending": "Pendiente",
   "orderStatusCancelled": "Cancelado",
   "orderStatusRefunded": "Reembolsado",
-
   "ticketsCheckinUnavailableLabel": "CHECK-IN AÚN NO DISPONIBLE",
   "ticketsCheckinUnavailableButton": "Check-in próximamente",
   "ticketsCheckinAvailableFrom": "Disponible a partir del {date} a las {time}",
   "@ticketsCheckinAvailableFrom": {
-    "placeholders": { "date": { "type": "String" }, "time": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
   },
   "ticketsCheckinAvailableLabel": "TU PLAN TE DA ACCESO A ESTE PARTIDO",
   "ticketsCheckInButton": "Hacer check-in",
@@ -705,7 +706,14 @@
   "ticketsSaleUpcomingButton": "Venta próximamente",
   "ticketsSaleStartsAt": "Inicio de venta: {date} a las {time}",
   "@ticketsSaleStartsAt": {
-    "placeholders": { "date": { "type": "String" }, "time": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
   },
   "ticketsSaleOpenLabel": "ENTRADAS DISPONIBLES",
   "ticketsBuyTicketButton": "Comprar entrada",
@@ -715,7 +723,6 @@
   "ticketsSaleClosedButton": "Venta cerrada",
   "ticketsCheckinConfirmedLabel": "CHECK-IN CONFIRMADO",
   "ticketsUndoCheckInButton": "Deshacer check-in",
-
   "ticketsConfirmPresenceTitle": "CONFIRMAR PRESENCIA",
   "ticketsGoToMatchButton": "Voy al partido",
   "ticketsNotThisTimeButton": "Esta vez no",
@@ -730,28 +737,42 @@
   "ticketsSectorPickerTitle": "¿Dónde quieres apoyar al Verdão?",
   "ticketsSectorPickerSubtitle": "Elige el sector para este partido.",
   "ticketsConfirmCheckInButton": "Confirmar check-in",
-
   "ticketsViewTicketTitle": "MI ENTRADA",
   "ticketsMatchInfoTitle": "INFORMACIÓN DEL PARTIDO",
-
   "ticketsHomeCrowdLabel": "HINCHADA DEL GOIÁS",
   "ticketsAwayCrowdLabel": "HINCHADA VISITANTE",
   "ticketsContinueButton": "Continuar",
   "ticketsTicketCount": "{count, plural, =1{1 entrada} other{{count} entradas}}",
-
   "ticketsSummaryTitle": "RESUMEN DE LA COMPRA",
   "ticketsTotalLabel": "Total",
   "ticketsHolderDataTitle": "{count, plural, =1{DATOS DEL TITULAR} other{DATOS DE LOS TITULARES}}",
-  "@ticketsHolderDataTitle": { "placeholders": { "count": { "type": "int" } } },
+  "@ticketsHolderDataTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "ticketsHolderSlotLabel": "Entrada {index} · {sector} · {category}",
-  "@ticketsHolderSlotLabel": { "placeholders": { "index": { "type": "int" }, "sector": { "type": "String" }, "category": { "type": "String" } } },
+  "@ticketsHolderSlotLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "sector": {
+        "type": "String"
+      },
+      "category": {
+        "type": "String"
+      }
+    }
+  },
   "ticketsHolderIsSelfCheckbox": "Esta entrada es para mí",
   "ticketsDocumentLabel": "DNI o pasaporte",
   "ticketsNominalWarning": "La entrada es nominal e intransferible. Revisa los datos antes de continuar.",
   "ticketsFinalizePurchaseButton": "Finalizar compra",
   "ticketsPurchaseSuccessTitle": "¡Entrada comprada!",
   "ticketsPurchaseSuccessMessage": "La entrada también está disponible en el menú Mis Entradas.",
-
   "ticketsTabUpcoming": "Próximos",
   "ticketsTabHistory": "Historial",
   "ticketsUndoCheckInConfirmTitle": "¿Deshacer check-in?",
@@ -791,7 +812,6 @@
   "ticketPdfAntiScalpingSubtitle": "La entrada puede ser falsa.",
   "ticketPdfFooterNotice": "Esta entrada es personal e intransferible. Es obligatoria la presentación de un documento con foto en el ingreso. Solo se permite camiseta del Goiás o de la Selección Brasileña.",
   "ticketPdfInvalidTicket": "ENTRADA\nINVÁLIDA",
-
   "penaltyFinalResult": "RESULTADO FINAL",
   "penaltyConverted": "Convertiste {goals} de {total} tiros",
   "penaltyScoreLabel": "PENALES",
@@ -806,7 +826,6 @@
   "penaltyResultSaveShort": "Atajada",
   "penaltyResultOutShort": "Fuera",
   "penaltyResultPostShort": "Palo",
-
   "playerPositionGolFull": "Portero",
   "playerPositionGolShort": "POR",
   "playerPositionZagFull": "Defensa central",
@@ -837,7 +856,6 @@
   "playerPositionSaShort": "SD",
   "playerPositionAtaFull": "Delantero",
   "playerPositionAtaShort": "DEL",
-
   "crowdTitle": "ALINEACIÓN DE LA AFICIÓN",
   "crowdTabEscale": "ALINEAR",
   "crowdSubmissionsLabel": "{count, plural, =1{alineación enviada} other{alineaciones enviadas}}",
@@ -853,7 +871,6 @@
   "crowdCanAlsoPlayBadge": "Puede jugar",
   "crowdCardDescVoted": "Mira cómo la afición está alineando al Goiás para el próximo partido.",
   "crowdCardDescNew": "Alinea al Goiás para el próximo partido y mira el equipo más elegido por la afición.",
-
   "clubSectionHistory": "Historia",
   "clubSectionSquad": "Plantel",
   "clubSectionTitles": "Títulos",
@@ -880,7 +897,13 @@
   "clubSectionIdols": "Ídolos",
   "clubIdolsSubtitle": "Nombres que marcaron la historia del club.",
   "clubIdolsCount": "{count, plural, =1{1 ídolo} other{{count} ídolos}}",
-  "@clubIdolsCount": { "placeholders": { "count": { "type": "int" } } },
+  "@clubIdolsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "clubAnthemSection": "HIMNO",
   "clubSongsSection": "CANCIONES ESMERALDINAS",
   "clubLyricsLabel": "LETRA",
@@ -891,9 +914,21 @@
   "clubUnmuteSemantics": "Activar sonido",
   "clubVolumeSemantics": "Control de volumen",
   "clubPlaySongSemantics": "Reproducir {title}",
-  "@clubPlaySongSemantics": { "placeholders": { "title": { "type": "String" } } },
+  "@clubPlaySongSemantics": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "clubPauseSongSemantics": "Pausar {title}",
-  "@clubPauseSongSemantics": { "placeholders": { "title": { "type": "String" } } },
+  "@clubPauseSongSemantics": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "clubMainTitles": "TÍTULOS PRINCIPALES",
   "clubHistoricCampaigns": "CAMPAÑAS HISTÓRICAS",
   "clubTimesChampion": "{count}× CAMPEÓN",
@@ -901,7 +936,6 @@
   "clubEntrySubtitle": "Historia, títulos, plantel e identidad del Goiás.",
   "clubEntryCta": "CONOCER AL GOIÁS",
   "clubHeaderTagline": "EL MAYOR DEL CENTRO-OESTE",
-
   "membershipLoadError": "No se pudo cargar Sócio Esmeralda.",
   "membershipPlansTitle": "PLANES",
   "membershipSector": "Sector {sector}",
@@ -929,7 +963,6 @@
   "membershipChoosePlan": "ELIGE TU PLAN",
   "membershipChosenPlan": "PLAN ELEGIDO",
   "membershipChangePlan": "CAMBIAR PLAN",
-
   "membershipStep1Access": "1 de 3 · Datos de acceso",
   "membershipStep2Personal": "2 de 3 · Datos de registro",
   "membershipStep3Address": "3 de 3 · Dirección",
@@ -952,7 +985,6 @@
   "membershipSelectStateFirst": "Selecciona primero el estado",
   "membershipSelectCity": "Seleccionar ciudad",
   "membershipConfirmAssociation": "CONFIRMAR AFILIACIÓN",
-
   "membershipReviewTitle": "REVISA TU AFILIACIÓN",
   "membershipPlanLabel": "Plan",
   "membershipSectorLabel": "Sector",
@@ -970,9 +1002,21 @@
   "membershipAcceptRegulation": "He leído y acepto el Reglamento de Sócio Esmeralda",
   "membershipReadFullRegulation": "Leer el reglamento completo →",
   "membershipDemoDisclaimerBody": "Esta adhesión es simulada y no crea ningún vínculo con el {programName}. No se realizará ningún cobro.",
-  "@membershipDemoDisclaimerBody": { "placeholders": { "programName": { "type": "String" } } },
+  "@membershipDemoDisclaimerBody": {
+    "placeholders": {
+      "programName": {
+        "type": "String"
+      }
+    }
+  },
   "membershipRegulationDemoNote": "Ver/aceptar esto en la demostración no constituye una adhesión oficial al {programName}.",
-  "@membershipRegulationDemoNote": { "placeholders": { "programName": { "type": "String" } } },
+  "@membershipRegulationDemoNote": {
+    "placeholders": {
+      "programName": {
+        "type": "String"
+      }
+    }
+  },
   "membershipStatusDemoBadge": "Modo Socio — Demostración",
   "membershipYourMembership": "TU AFILIACIÓN",
   "membershipYourBenefits": "TUS BENEFICIOS",
@@ -987,7 +1031,6 @@
   "membershipSeeAllBenefits": "Ver todos los beneficios →",
   "membershipWhatNow": "¿Y AHORA?",
   "membershipWhatNowMessage": "Tu área de socio ya está disponible. Sigue tu plan y tus beneficios y, cuando esté disponible, haz el check-in en los partidos.",
-
   "membershipSituation": "Situación",
   "membershipMemberNumber": "Número de socio",
   "membershipMonthlyFee": "Cuota mensual",
@@ -996,11 +1039,23 @@
   "membershipRegulationName": "Reglamento de Sócio Esmeralda",
   "membershipMatchAccessNotice": "Tu plan te da acceso a este partido.",
   "membershipCardNumber": "N.º {number}",
-  "@membershipCardNumber": { "placeholders": { "number": { "type": "String" } } },
+  "@membershipCardNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
   "membershipRegulationPageTitle": "REGLAMENTO",
   "membershipProgramName": "Sócio Esmeralda",
   "membershipRegulationEffectiveSince": "Vigente desde {date}",
-  "@membershipRegulationEffectiveSince": { "placeholders": { "date": { "type": "String" } } },
+  "@membershipRegulationEffectiveSince": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "membershipRegulationTableOfContents": "CONTENIDO",
   "membershipCancelWhatsapp": "Hola, me gustaría cancelar mi afiliación Sócio Esmeralda ({plan}).",
   "membershipCancel": "CANCELAR AFILIACIÓN",
@@ -1008,7 +1063,6 @@
   "membershipStatusPending": "Pendiente",
   "membershipStatusSuspended": "Suspendido",
   "membershipStatusCancelled": "Cancelado",
-
   "membershipFaqTitle": "PREGUNTAS FRECUENTES",
   "membershipFaqSubtitle": "Encuentra respuestas sobre planes, pagos, check-in y beneficios.",
   "membershipFaqLoadError": "No se pudieron cargar las preguntas frecuentes.",
@@ -1036,7 +1090,6 @@
   "membershipFaqSearchHint": "Buscar una pregunta...",
   "membershipHelpTitle": "AYUDA E INFORMACIÓN",
   "membershipFaqMenuItem": "Preguntas frecuentes",
-
   "membershipFindCepTitle": "ENCONTRAR MI CÓDIGO POSTAL",
   "membershipFindCepSubtitle": "Ingresa tu dirección y encontraremos el código postal correspondiente.",
   "membershipStreetLabel": "Calle / Dirección",
@@ -1045,7 +1098,6 @@
   "membershipNoAddressFound": "No se encontró ninguna dirección.",
   "membershipNoAddressHint": "Revisa el estado, la ciudad y la calle que ingresaste.",
   "membershipAddressSearchError": "No se pudo buscar la dirección.",
-
   "membershipValCpfRequired": "Ingresa tu CPF.",
   "membershipValNationality": "Selecciona tu nacionalidad.",
   "membershipValPassport": "Ingresa un pasaporte válido.",
@@ -1065,26 +1117,22 @@
   "membershipValNeighborhood": "Ingresa el barrio.",
   "membershipValState": "Ingresa el estado.",
   "membershipValCity": "Ingresa la ciudad.",
-
   "lineupShareStats": "{solved}/{total} descubiertos · {attempts} intentos · {time}",
   "crowdShareCrowd": "¡Mira la alineación de la afición para el Goiás! 💚",
   "crowdShareMine": "¡Esta es mi alineación para el Goiás! 💚",
   "crowdSubmitted": "¡Alineación enviada!",
-
   "storeHomeEntryBadge": "GOIÁS STORE",
   "storeHomeEntryTitle": "El manto te espera",
   "storeHomeEntryDescription": "Lleva al Verdão contigo dentro y fuera de la cancha.",
   "storeHomeEntryCta": "Conocer la tienda",
   "storeProfileEntry": "Goiás Store",
   "storeProfileMyOrders": "Mis pedidos",
-
   "storeHomeTitle": "Goiás Store",
   "storeHomeLoadErrorTitle": "No se pudo cargar la tienda",
   "storeHomeEmptyTitle": "Tienda en preparación",
   "storeHomeEmptyMessage": "Vuelve pronto para ver los productos oficiales.",
   "storeMyPurchasesTitle": "Mis Compras",
   "storeSectionCategories": "Categorías",
-
   "storeSearchHint": "Buscar en la Goiás Store",
   "storeListingDefaultTitle": "Productos",
   "storeSearchEmptyTitle": "Busca productos",
@@ -1097,7 +1145,6 @@
   "storeSortLabel": "Ordenar",
   "storeFiltersLabel": "Filtros",
   "storeFiltersLabelCount": "Filtros ({count})",
-
   "storeSortSheetTitle": "Ordenar por",
   "storeFiltersSheetTitle": "Filtros",
   "storeClearFilters": "Borrar filtros",
@@ -1116,7 +1163,6 @@
   "storeSortPriceLowToHigh": "Menor precio",
   "storeSortPriceHighToLow": "Mayor precio",
   "storeSortBiggestDiscount": "Mayor descuento",
-
   "storeAudienceMasculine": "Hombre",
   "storeAudienceFeminine": "Mujer",
   "storeAudienceKids": "Niños",
@@ -1136,18 +1182,15 @@
   "storeCollectionPlayer": "Jugador",
   "storeCollectionTrainingTravel": "Entrenamiento, viaje y concentración",
   "storeCollectionSocksGloves": "Medias y guantes",
-
   "storeShippingEconomyLabel": "Económico",
   "storeShippingStandardLabel": "Estándar",
   "storeShippingExpressLabel": "Exprés",
   "storeShippingEconomyEta": "7 a 10 días hábiles",
   "storeShippingStandardEta": "4 a 7 días hábiles",
   "storeShippingExpressEta": "2 a 3 días hábiles",
-
   "storeBadgeSoldOut": "Agotado",
   "storeBadgeOnSale": "Oferta",
   "storeInstallmentsLabel": "hasta {count}x de {value}",
-
   "storeProductLoadErrorTitle": "No se pudo cargar este producto",
   "storeProductLoadErrorMessage": "Vuelve e inténtalo de nuevo.",
   "storeOrderCreateErrorTitle": "No se pudo confirmar tu pedido",
@@ -1156,7 +1199,17 @@
   "storeProductSoldOut": "Este producto está agotado por el momento.",
   "storeProductPhotoLabel": "{name}, foto {index} de {total}",
   "@storeProductPhotoLabel": {
-    "placeholders": { "name": { "type": "String" }, "index": { "type": "int" }, "total": { "type": "int" } }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
   },
   "storeZoomImageHint": "Toca para ampliar",
   "storeShareProduct": "Compartir producto",
@@ -1176,7 +1229,6 @@
   "storeChooseSizeMessage": "Selecciona una talla antes de agregar a la bolsa.",
   "storeBuyNowButton": "Comprar ahora",
   "storeVariationSoldOut": "Esta variación está agotada.",
-
   "storeCartTitle": "BOLSA",
   "storeCartEmptyTitle": "Tu bolsa está vacía",
   "storeCartEmptyMessage": "Elige tus productos oficiales y lleva al Verdão contigo.",
@@ -1199,7 +1251,6 @@
   "storeFree": "Gratis",
   "storeShippingLabel": "Envío",
   "storePickupWord": "Retiro",
-
   "storeStepIdentification": "Identificación",
   "storeStepDelivery": "Entrega",
   "storeStepPayment": "Pago",
@@ -1222,7 +1273,6 @@
   "storePickupBySelf": "Retiro por el propio titular",
   "storePickupByOther": "Retiro por {name}",
   "storePickupAddressPrefix": "Retirar en: {address}",
-
   "storePaymentPix": "Pix",
   "storeCreditCard": "Tarjeta de crédito",
   "storeDemoDisclaimer": "Entorno de demostración. No se realizará ningún cobro.",
@@ -1241,7 +1291,6 @@
   "storeCardApprovedWithDigits": "Tarjeta terminada en {digits} aprobada (simulado).",
   "storeCardFinalDigits": "Tarjeta de crédito terminada en {digits}",
   "storeCardSummaryLine": "Tarjeta de crédito terminada en {digits} · {installments}x",
-
   "storeConfirmOrderButton": "Confirmar pedido",
   "storeEdit": "Editar",
   "storeAcceptTerms": "Leí y acepto los términos de compra de la Goiás Store.",
@@ -1251,7 +1300,6 @@
   "storeTrackOrderButton": "Seguir pedido",
   "storeContinueShoppingButton": "Seguir comprando",
   "storeBackHomeButton": "Volver al inicio",
-
   "storeOrdersTitle": "MIS PEDIDOS",
   "storeOrdersEmptyTitle": "Todavía no has hecho ningún pedido",
   "storeOrdersEmptyMessage": "Tus pedidos de la Goiás Store aparecerán aquí.",
@@ -1260,7 +1308,6 @@
   "storeCustomerLabel": "Cliente",
   "storeStatusStepDone": "completado",
   "storeStatusStepPending": "pendiente",
-
   "storeStatusCreated": "Pedido realizado",
   "storeStatusPaymentPending": "Esperando pago",
   "storeStatusPaid": "Pago aprobado",
@@ -1270,7 +1317,6 @@
   "storeStatusDeliveredPickup": "Retirado",
   "storeStatusDeliveredShipping": "Entregado",
   "storeStatusCancelled": "Cancelado",
-
   "storeAddressesTitle": "DIRECCIONES DE ENTREGA",
   "storeAddressesSubtitle": "Elige dónde deseas recibir tus pedidos.",
   "storeAddressesEmptyTitle": "Ninguna dirección guardada",
@@ -1297,14 +1343,12 @@
   "storeChooseDeliveryAddressTitle": "ELIGE DÓNDE RECIBIR",
   "storeNoDeliveryAddressTitle": "Todavía no tienes una dirección de entrega.",
   "storeAddAnotherAddress": "Agregar otra dirección",
-
   "storeValFullNameRequired": "Ingresa tu nombre completo.",
   "storeValFullNameIncomplete": "Ingresa tu nombre y apellido.",
   "storeValPhoneInvalid": "Teléfono inválido.",
   "storeValCpfRequired": "Ingresa el CPF.",
   "storeValCpfInvalid": "CPF inválido.",
   "storeValZipInvalid": "Código postal inválido.",
-
   "releaseGateTitle": "Actualización necesaria",
   "releaseGateMessage": "Esta versión de la app ya no es compatible. Actualiza para continuar.",
   "releaseGateUpdateButton": "Actualizar ahora"

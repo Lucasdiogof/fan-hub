@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 
 /// Estado inicial (zero partidas marcadas em toda a história do usuário) —
 /// substitui os indicadores por um convite emocional em vez de estatística
@@ -28,7 +29,7 @@ class PassportEmptyV2 extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Text(
-            l10n.passportEmptyBody,
+            context.passportCopy.emptyBody,
             style: TextStyle(
               fontSize: 13,
               height: 1.4,

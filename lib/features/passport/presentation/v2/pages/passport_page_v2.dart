@@ -8,20 +8,21 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_state.dart';
+import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 import 'package:goias_app/features/passport/presentation/passport_discard_dialog.dart';
-import 'package:goias_app/features/passport/presentation/v2/widgets/passport_cover_v2.dart';
-import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
-import 'package:goias_app/features/passport/presentation/v2/widgets/passport_empty_v2.dart';
 import 'package:goias_app/features/passport/presentation/passport_month_grouping.dart';
+import 'package:goias_app/features/passport/presentation/v2/widgets/passport_cover_v2.dart';
+import 'package:goias_app/features/passport/presentation/v2/widgets/passport_empty_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_month_group_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_save_bar_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_season_selector_v2.dart';
+import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 class PassportPageV2 extends StatelessWidget {
   const PassportPageV2({super.key});
@@ -170,7 +171,7 @@ class _AppBarV2 extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppSpacing.lg),
-          PageTitle(context.l10n.passportTitle.toUpperCase()),
+          PageTitle(context.passportCopy.title.toUpperCase()),
         ],
       ),
     );
