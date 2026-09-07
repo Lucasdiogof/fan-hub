@@ -39,8 +39,17 @@ class ClubInstitutionalContent {
   final List<ClubSong> songs;
   final List<Partner> partners;
 
-  /// Sem página própria ainda em nenhum clube (nem o Goiás tem) — só o
-  /// dado, preparado como pool inicial pro futuro jogo de identidade de
-  /// jogador (ver `ClubIdol`).
+  /// Pool COMPLETO de ídolos do clube, incluindo candidatos e nomes ainda
+  /// em revisão editorial — é o dado bruto, não o que vai pra tela. Quem
+  /// monta UI deve usar [publishedIdols].
   final List<ClubIdol> idols;
+
+  /// Só os ídolos liberados pra publicação (ver `ClubIdol.isPublishable`)
+  /// — a fonte de verdade tanto pra decidir se a entrada de Ídolos
+  /// aparece em `/clube` quanto pro que a página lista. Deriva do conteúdo
+  /// REAL do clube ativo, nunca de "qual clube é este": um clube sem
+  /// nenhum ídolo publicável simplesmente não ganha a seção, e nenhum
+  /// clube herda a lista de outro (todo campo aqui tem default vazio).
+  List<ClubIdol> get publishedIdols =>
+      idols.where((idol) => idol.isPublishable).toList(growable: false);
 }

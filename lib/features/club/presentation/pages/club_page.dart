@@ -69,6 +69,18 @@ class ClubPage extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.md),
               ],
+              // Só os ídolos LIBERADOS pra publicação contam pra entrada
+              // aparecer — um clube cujo pool só tem candidato/em revisão
+              // fica sem a seção, em vez de abrir uma tela vazia.
+              if (content.publishedIdols.isNotEmpty) ...[
+                _ClubBigCard(
+                  icon: Icons.stars_outlined,
+                  title: context.l10n.clubSectionIdols,
+                  subtitle: context.l10n.clubIdolsSubtitle,
+                  onTap: () => context.push('/clube/idolos'),
+                ),
+                const SizedBox(height: AppSpacing.md),
+              ],
               _ClubBigCard(
                 icon: Icons.groups_outlined,
                 title: context.l10n.clubSectionBoard,

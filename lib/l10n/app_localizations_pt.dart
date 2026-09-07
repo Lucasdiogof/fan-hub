@@ -2699,6 +2699,23 @@ class AppLocalizationsPt extends AppLocalizations {
   String get clubSongsSubtitle => 'Hino e músicas que embalam a torcida.';
 
   @override
+  String get clubSectionIdols => 'Ídolos';
+
+  @override
+  String get clubIdolsSubtitle => 'Nomes que marcaram a história do clube.';
+
+  @override
+  String clubIdolsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ídolos',
+      one: '1 ídolo',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get clubAnthemSection => 'HINO';
 
   @override
