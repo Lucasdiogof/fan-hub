@@ -18,6 +18,7 @@ class ClubAssets {
     required this.arenaStadiumPhoto,
     required this.storeBanner,
     this.splashVideo,
+    this.squadPhotos = const {},
   });
 
   final String crest;
@@ -41,4 +42,14 @@ class ClubAssets {
   /// aqui faz `SplashVideoPage` usar `StaticLogoSplash` (o mesmo fallback
   /// já usado pro iOS Web/PWA) em vez de qualquer vídeo.
   final String? splashVideo;
+
+  /// Fotos do elenco embutidas no app, por `SquadMember.id` — **por
+  /// clube**, nunca um mapa global. Antes era uma constante única
+  /// (`squadPhotoAssets`) consultada por id solto: como os ids são slugs
+  /// curtos e repetíveis ("juninho", "pedrinho", "danilo"), bastava um
+  /// clube novo ter um atleta homônimo pra o rosto de um jogador do Goiás
+  /// aparecer no card de outro clube. Vazio = clube ainda sem foto local;
+  /// a tela cai pra `photo_url` do banco e, se não houver, pro número da
+  /// camisa — nunca pra foto de outro atleta.
+  final Map<String, String> squadPhotos;
 }

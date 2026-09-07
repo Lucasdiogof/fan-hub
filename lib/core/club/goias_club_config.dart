@@ -14,6 +14,7 @@ import 'package:goias_app/features/club/data/club_songs_data.dart';
 import 'package:goias_app/features/club/data/club_timeline_data.dart';
 import 'package:goias_app/features/club/data/club_titles_data.dart';
 import 'package:goias_app/features/partners/data/partners_data.dart';
+import 'package:goias_app/features/squad/domain/squad_photos.dart';
 
 /// A ÚNICA entrada de `clubRegistry` nesta rodada (M1). Todo valor abaixo
 /// é o mesmo já em produção hoje — isto é reempacotamento, nunca dado
@@ -41,6 +42,7 @@ const goiasClubConfig = ClubConfig(
     arenaStadiumPhoto: AppAssets.arenaStadiumPhoto,
     storeBanner: AppAssets.storeBanner,
     splashVideo: 'lib/assets/videos/goias_splash.mp4',
+    squadPhotos: squadPhotoAssets,
   ),
   integrations: ClubIntegrations(
     oneFootballTeamId: 1863,
