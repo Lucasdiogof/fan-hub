@@ -70,11 +70,18 @@ const homeAwayConsistent = rows.every((r) => {
 });
 check('mandante/visitante consistente (o Bragantino aparece no lado certo em toda partida)', homeAwayConsistent);
 
-const stadiumRuleRespected = rows.every((r) => (r.stadium ? r.stadium_status === 'MATCH_SPECIFIC' : r.stadium_status === 'NEEDS_SOURCE'));
-check('regra crítica de estádio respeitada (nunca stadium preenchido sem status MATCH_SPECIFIC)', stadiumRuleRespected);
+// Evidência de estádio em 3 níveis, iguais aos do banco: MATCH_SPECIFIC
+// (a ficha da partida diz), HISTORICAL_RECONSTRUCTION (deduzido de contexto
+// histórico, com fonte, mas não confirmado na ficha) e UNKNOWN (não se sabe,
+// `stadium` fica null). 'NEEDS_SOURCE' é o nome antigo de UNKNOWN.
+const EVIDENCE_STATUS = ['MATCH_SPECIFIC', 'HISTORICAL_RECONSTRUCTION'];
+const isUnknown = (r) => r.stadium_status === 'UNKNOWN' || r.stadium_status === 'NEEDS_SOURCE';
 
-const noInventedStadium = rows.every((r) => r.stadium_status !== 'MATCH_SPECIFIC' || (r.source_url && r.source_match_id));
-check('todo estádio MATCH_SPECIFIC tem fonte rastreável (source_url + source_match_id)', noInventedStadium);
+const stadiumRuleRespected = rows.every((r) => (r.stadium ? EVIDENCE_STATUS.includes(r.stadium_status) : isUnknown(r)));
+check('regra crítica de estádio respeitada (nunca stadium preenchido sem evidência, nem evidência sem stadium)', stadiumRuleRespected);
+
+const noInventedStadium = rows.every((r) => !EVIDENCE_STATUS.includes(r.stadium_status) || (r.source_url && r.source_match_id));
+check('todo estádio com evidência tem fonte rastreável (source_url + source_match_id)', noInventedStadium);
 
 const openParens = (sql.match(/\(/g) || []).length;
 const closeParens = (sql.match(/\)/g) || []).length;

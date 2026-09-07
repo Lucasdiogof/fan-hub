@@ -38,7 +38,20 @@ const GOIAS_MARKERS = [
 const VALID_STATUS = ['FINISHED', 'SCHEDULED', 'POSTPONED', 'CANCELLED'];
 const VALID_DAY_PERIOD = ['MORNING', 'AFTERNOON', 'NIGHT', 'UNKNOWN'];
 const VALID_DAY_TYPE = ['WEEKDAY', 'WEEKEND'];
-const VALID_STADIUM_STATUS = ['MATCH_SPECIFIC', 'NEEDS_SOURCE'];
+// Três níveis de evidência de estádio, iguais aos do banco:
+//   MATCH_SPECIFIC            — a ficha da própria partida diz o estádio.
+//   HISTORICAL_RECONSTRUCTION — deduzido de contexto histórico, com fonte,
+//                               mas NÃO confirmado na ficha da partida.
+//   UNKNOWN                   — não se sabe; o campo `stadium` fica null.
+// `NEEDS_SOURCE` é o nome antigo de UNKNOWN, aceito pros datasets que já
+// existiam antes do renomeio.
+const STADIUM_STATUS_ALIASES = { NEEDS_SOURCE: 'UNKNOWN' };
+const VALID_STADIUM_STATUS = [
+  'MATCH_SPECIFIC',
+  'HISTORICAL_RECONSTRUCTION',
+  'UNKNOWN',
+];
+const EVIDENCE_STATUS = ['MATCH_SPECIFIC', 'HISTORICAL_RECONSTRUCTION'];
 
 function loadBatches() {
   const files = fs
@@ -144,19 +157,20 @@ export function validate(batches) {
     }
 
     // --- estádio / evidência ---------------------------------------------
-    if (!VALID_STADIUM_STATUS.includes(m.stadium_status)) {
+    const stadiumStatus =
+      STADIUM_STATUS_ALIASES[m.stadium_status] ?? m.stadium_status;
+    if (!VALID_STADIUM_STATUS.includes(stadiumStatus)) {
       fail('ESTADIO_EVIDENCIA', `stadium_status inválido: ${where}`);
     }
-    if (m.stadium && m.stadium_status !== 'MATCH_SPECIFIC') {
-      fail(
-        'ESTADIO_EVIDENCIA',
-        `estádio preenchido sem evidência MATCH_SPECIFIC: ${where}`,
-      );
+    // Estádio e evidência andam juntos nos dois sentidos: sem evidência não
+    // pode haver estádio, e com evidência ele não pode faltar.
+    if (m.stadium && stadiumStatus === 'UNKNOWN') {
+      fail('ESTADIO_EVIDENCIA', `estádio preenchido sem evidência: ${where}`);
     }
-    if (!m.stadium && m.stadium_status === 'MATCH_SPECIFIC') {
-      fail('ESTADIO_EVIDENCIA', `MATCH_SPECIFIC sem estádio: ${where}`);
+    if (!m.stadium && EVIDENCE_STATUS.includes(stadiumStatus)) {
+      fail('ESTADIO_EVIDENCIA', `${stadiumStatus} sem estádio: ${where}`);
     }
-    if (m.stadium_status === 'MATCH_SPECIFIC' && !m.source_url) {
+    if (EVIDENCE_STATUS.includes(stadiumStatus) && !m.source_url) {
       fail('ESTADIO_EVIDENCIA', `estádio confirmado sem fonte rastreável: ${where}`);
     }
 

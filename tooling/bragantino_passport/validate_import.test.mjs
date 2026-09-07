@@ -140,10 +140,41 @@ test('estádio sem evidência específica é pego', () => {
 });
 
 test('estádio desconhecido de forma honesta NÃO é erro', () => {
+  // 'NEEDS_SOURCE' é o nome antigo de UNKNOWN e segue aceito.
+  for (const status of ['UNKNOWN', 'NEEDS_SOURCE']) {
+    const result = run([baseMatch({ stadium: null, stadium_status: status })]);
+    assert.deepEqual(result.problems, [], status);
+  }
+});
+
+test('estádio reconstruído historicamente é evidência válida', () => {
   const result = run([
-    baseMatch({ stadium: null, stadium_status: 'NEEDS_SOURCE' }),
+    baseMatch({ stadium_status: 'HISTORICAL_RECONSTRUCTION' }),
   ]);
   assert.deepEqual(result.problems, []);
+});
+
+test('HISTORICAL_RECONSTRUCTION sem estádio nem fonte é pego', () => {
+  assert.ok(
+    checks(
+      run([baseMatch({ stadium: null, stadium_status: 'HISTORICAL_RECONSTRUCTION' })]),
+    ).has('ESTADIO_EVIDENCIA'),
+    'evidência declarada exige o estádio preenchido',
+  );
+  assert.ok(
+    checks(
+      run([baseMatch({ stadium_status: 'HISTORICAL_RECONSTRUCTION', source_url: null })]),
+    ).has('ESTADIO_EVIDENCIA'),
+    'reconstrução histórica sem fonte é exatamente o que não pode passar',
+  );
+});
+
+test('status de estádio fora do vocabulário é pego', () => {
+  assert.ok(
+    checks(run([baseMatch({ stadium_status: 'ACHO_QUE_FOI_LA' })])).has(
+      'ESTADIO_EVIDENCIA',
+    ),
+  );
 });
 
 test('período do dia incoerente com o horário é pego', () => {
