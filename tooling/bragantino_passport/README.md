@@ -168,3 +168,47 @@ campos exclusivos do Bragantino (`competition_edition`, `phase_status`,
 country` etc) só existem no schema dele. Ver comentário no topo do arquivo
 SQL pra mais detalhes, incluindo um bug pré-existente encontrado (não
 corrigido, fora de escopo) na RPC `passport_matches_for_year` do Goiás.
+
+## Importar no Supabase do Bragantino — runbook
+
+Nenhum destes arquivos é aplicado por aqui: rode você mesmo no SQL Editor do
+projeto do **Bragantino** (`yrgyzkaaudyzmsqwzecj`), nesta ordem. Todos são
+idempotentes e nenhum apaga presença de usuário.
+
+1. `supabase/bragantino_passport_infra.sql`
+2. `supabase/bragantino_passport_venues_seed.sql`
+3. `supabase/bragantino_passport_matches_2024_seed.sql`
+4. `supabase/bragantino_passport_matches_2025_seed.sql`
+5. `supabase/bragantino_passport_matches_2026_seed.sql`
+
+Antes de rodar qualquer coisa: `node tooling/bragantino_passport/validate_import.mjs`
+(as 186 partidas de uma vez) — se não passar, não aplique nada.
+
+### O que já existia no banco (verificado ao vivo, 2026-09-07)
+
+Ao contrário do que a auditoria estática dos `.sql` deste repositório dizia,
+o projeto do Bragantino **já tinha** `passport_matches`, `venues`,
+`passport_attendances`, `passport_memorable_matches` e as 11 RPCs, todas
+devolvendo os nomes genéricos que o Flutter espera (`club_is_home`,
+`club_score`, `venue_name`, `venue_city`). Só faltava dado e as colunas de
+enriquecimento — que é tudo o que o passo 1 adiciona.
+
+Lição que vale pro resto do projeto: **arquivo `.sql` versionado não é fonte de
+verdade sobre o que está rodando.** Chame a RPC / consulte o REST antes de
+concluir que algo falta ou está quebrado.
+
+### Estádios
+
+`build_venues.mjs` transforma as 62 grafias da fonte em 49 estádios. Ele só
+agrupa grafias que estão escritas explicitamente em `MERGE_GROUPS` — nunca por
+semelhança de string, porque "Estadio Monumental Banco Pichincha" (Guayaquil) e
+"Estadio Monumental" (Buenos Aires) são casas diferentes. Regenerar:
+
+```
+node tooling/bragantino_passport/build_venues.mjs
+node tooling/bragantino_passport/generate_seed_sql.mjs 2024   # e 2025, 2026
+```
+
+O seed de partidas grava `venue_id` direto e termina com um bloco que estoura
+se sobrar partida com estádio e sem `venue_id` — falha alta em vez de partida
+aparecendo sem estádio no app.

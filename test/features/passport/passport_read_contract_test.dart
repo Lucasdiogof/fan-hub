@@ -3,10 +3,12 @@
 // Bragantino roda num projeto Supabase SEPARADO — quem for escrever as
 // RPCs de lá precisa devolver estes nomes, e não os nomes crus da tabela.
 //
-// É também a rede de segurança do bug já conhecido do Goiás: a RPC
-// `passport_matches_for_year` de lá devolve `goias_is_home`/`goias_score`,
-// que o app NÃO lê (ele lê `club_is_home`/`club_score`), então esses dois
-// campos chegam nulos em produção hoje.
+// O arquivo `supabase/passport_esmeraldino_functions.sql` deste repositório
+// devolve `goias_is_home`/`goias_score` e sugere que o app leria nulo — mas
+// chamando a RPC do Goiás AO VIVO (2026-09-06) ela já devolve
+// `club_is_home`/`club_score`. O SQL versionado está defasado em relação à
+// produção; não há bug. O teste abaixo trava o formato correto justamente
+// pra que ninguém "reintroduza" o formato legado achando que é o certo.
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_match.dart';
 
@@ -71,8 +73,9 @@ void main() {
     );
 
     test('mando/placar TÊM que vir como club_is_home/club_score', () {
-      // Exatamente o formato que a RPC do Goiás devolve hoje (nomes
-      // crus da coluna) — o app lê nulo nos dois.
+      // Formato legado, com o nome do clube no campo. Nenhuma RPC devolve
+      // isso hoje; o teste existe pra provar o custo caso alguém volte a
+      // devolver — o app lê nulo nos dois e a partida perde mando e placar.
       final legacy = row()
         ..remove('club_is_home')
         ..remove('club_score')
