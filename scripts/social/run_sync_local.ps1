@@ -50,9 +50,19 @@ if (-not $hasScweet) {
 $token = Get-Token
 if (-not $token) { Write-Error 'Nenhum token informado.'; exit 1 }
 
+# ct0 é opcional aqui: na sua máquina a Scweet consegue derivar um sozinha.
+# No runner é justamente esse passo que falha, então lá ele é necessário.
+if (-not $env:X_CSRF_TOKEN) {
+    $secureCsrf = Read-Host 'Cole o cookie ct0 (opcional, Enter pula)' -AsSecureString
+    $csrf = [System.Net.NetworkCredential]::new('', $secureCsrf).Password
+} else {
+    $csrf = $env:X_CSRF_TOKEN
+}
+
 Push-Location $repo
 try {
     $env:X_AUTH_TOKEN = $token
+    if ($csrf) { $env:X_CSRF_TOKEN = $csrf }
     python scripts/social/sync_x_posts.py
     $code = $LASTEXITCODE
 
@@ -72,5 +82,6 @@ try {
 } finally {
     # Some com o token do ambiente deste processo assim que termina.
     Remove-Item Env:\X_AUTH_TOKEN -ErrorAction SilentlyContinue
+    Remove-Item Env:\X_CSRF_TOKEN -ErrorAction SilentlyContinue
     Pop-Location
 }

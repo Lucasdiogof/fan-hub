@@ -28,6 +28,10 @@ jobs:
       - name: Fetch latest posts
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
+          # Cookie ct0 da mesma sessão do X. Sem ele a Scweet tenta derivar
+          # um chamando o X, e é essa chamada que falha no runner
+          # (AccountPoolExhausted: missing_csrf).
+          X_CSRF_TOKEN: ${{ secrets.X_CSRF_TOKEN }}
           # Vazio por padrão. Se o X estiver bloqueando o IP do runner (a
           # teoria principal hoje), definir este secret tira a requisição do
           # datacenter do GitHub sem precisar mexer no script.
