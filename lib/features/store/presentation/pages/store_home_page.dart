@@ -69,6 +69,11 @@ class _StoreHomeView extends StatelessWidget {
                     AppSpacing.lg,
                     0,
                   ),
+                  // Título e ações na MESMA linha, como em toda seção de
+                  // aba (ver `social_feed_page.dart`): antes as ações vinham
+                  // numa linha própria acima, o que empurrava o "GOIÁS STORE"
+                  // uns 50px pra baixo e deixava a Loja desalinhada das
+                  // outras telas do menu inferior.
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -82,9 +87,13 @@ class _StoreHomeView extends StatelessWidget {
                                   ? context.pop()
                                   : context.go('/'),
                             ),
-                            const Spacer(),
-                          ] else
-                            const Spacer(),
+                            const SizedBox(width: AppSpacing.sm),
+                          ],
+                          Expanded(
+                            child: PageTitle(
+                              context.l10n.storeHomeTitle.toUpperCase(),
+                            ),
+                          ),
                           Semantics(
                             button: true,
                             label: context.l10n.storeSearchHint,
@@ -113,8 +122,6 @@ class _StoreHomeView extends StatelessWidget {
                           const CartIconButton(size: 34, iconSize: 16),
                         ],
                       ),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.storeHomeTitle.toUpperCase()),
                     ],
                   ),
                 ),
