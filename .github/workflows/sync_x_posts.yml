@@ -28,6 +28,10 @@ jobs:
       - name: Fetch latest posts
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
+          # Vazio por padrão. Se o X estiver bloqueando o IP do runner (a
+          # teoria principal hoje), definir este secret tira a requisição do
+          # datacenter do GitHub sem precisar mexer no script.
+          X_PROXY: ${{ secrets.X_PROXY }}
         run: python scripts/social/sync_x_posts.py
 
       - name: Commit and push if changed
