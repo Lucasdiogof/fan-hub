@@ -55,6 +55,7 @@ flutter:
 
   assets:
     - lib/assets/
+    - lib/assets/fonts/
     - lib/assets/legal/
     - lib/assets/content/
     - lib/assets/sponsors/

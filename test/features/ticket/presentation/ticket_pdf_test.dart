@@ -8,6 +8,9 @@ import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 import 'package:goias_app/features/ticket/presentation/ticket_pdf.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart';
 
 const _home = Team(
   id: 1863,
@@ -104,6 +107,52 @@ void main() {
       isDemo: true,
     );
     expect(bytes, isNotEmpty);
+  });
+
+  group('fonte embutida', () {
+    // O Helvetica embutido no pacote `pdf` é um Type1 cujo isRuneSupported é
+    // `charCode <= 0xff` (pdf/src/pdf/obj/type1_font.dart). Quem cai fora
+    // disso não é ignorado: vira um Placeholder, o retângulo riscado, no meio
+    // do ingresso. Por isso o documento precisa de uma fonte TTF de verdade.
+    const glifos = {
+      0x2014: 'em dash',
+      0x2022: 'bullet',
+      0x2013: 'en dash',
+      0x2026: 'reticências',
+      0x201C: 'aspa curva esquerda',
+      0x201D: 'aspa curva direita',
+    };
+
+    for (final arquivo in ['Lato-Regular.ttf', 'Lato-Bold.ttf']) {
+      test('$arquivo traz a pontuação tipográfica e os acentos', () async {
+        final parser = TtfParser(
+          await rootBundle.load('lib/assets/fonts/$arquivo'),
+        );
+        glifos.forEach((rune, nome) {
+          expect(
+            parser.charToGlyphIndexMap.containsKey(rune),
+            isTrue,
+            reason: '$nome (U+${rune.toRadixString(16)}) sairia como caixa riscada',
+          );
+        });
+        for (final char in 'áàâãéêíóôõúüçÁÃÇÉÍÓÕÚ'.runes) {
+          expect(parser.charToGlyphIndexMap.containsKey(char), isTrue);
+        }
+      });
+    }
+
+    test('o tema usa TTF nos dois pesos, não o Type1 embutido', () async {
+      final theme = await ticketPdfTheme();
+      // `TtfFont` é o que `Font.ttf` devolve; qualquer `Font.type1` aqui
+      // significaria ter voltado pro Helvetica com o limite de 0xFF.
+      expect(theme.defaultTextStyle.font, isA<TtfFont>());
+      expect(theme.defaultTextStyle.fontBold, isA<TtfFont>());
+    });
+
+    test('o tema é reaproveitado entre ingressos', () async {
+      // ~640 KB por peso: reparsear a cada PDF gerado seria desperdício.
+      expect(identical(await ticketPdfTheme(), await ticketPdfTheme()), isTrue);
+    });
   });
 
   group('payload do QR', () {

@@ -32,6 +32,42 @@ Future<void> shareTicketPdf(
 String ticketQrPayload(String ticketId, {required bool isDemo}) =>
     isDemo ? 'DEMO-GOIAS-EC-$ticketId' : 'GOIAS-EC-$ticketId';
 
+/// Tema do PDF do ingresso — existe por causa de um limite concreto do
+/// pacote `pdf`: o Helvetica embutido é um Type1 cujo `isRuneSupported` é
+/// literalmente `charCode >= 0x00 && charCode <= 0xff`
+/// (`pdf/src/pdf/obj/type1_font.dart`). Acento de português passa (tudo
+/// abaixo de 0xFF), mas pontuação tipográfica não: em dash (U+2014),
+/// bullet (U+2022), aspas curvas e reticências ficam de fora. E o pacote
+/// não ignora o caractere que não sabe desenhar — ele desenha um
+/// `Placeholder`, o retângulo riscado. Ou seja, sem uma fonte de verdade o
+/// ingresso sai com caixas cruzadas no meio do texto.
+///
+/// Lato cobre tudo isso e é SIL OFL (ver `lib/assets/fonts/OFL.txt`).
+/// Carregada uma vez por processo: são ~640 KB por peso, e reparsear a
+/// cada ingresso gerado seria desperdício puro.
+pw.ThemeData? _cachedTheme;
+
+Future<pw.ThemeData> ticketPdfTheme() async {
+  final cached = _cachedTheme;
+  if (cached != null) return cached;
+
+  final base = pw.Font.ttf(
+    await rootBundle.load('lib/assets/fonts/Lato-Regular.ttf'),
+  );
+  final bold = pw.Font.ttf(
+    await rootBundle.load('lib/assets/fonts/Lato-Bold.ttf'),
+  );
+  // `italic` aponta pros mesmos arquivos de propósito: o ingresso não usa
+  // itálico em lugar nenhum, e embutir mais dois pesos só pra preencher o
+  // tema seria peso morto no bundle.
+  return _cachedTheme = pw.ThemeData.withFont(
+    base: base,
+    bold: bold,
+    italic: base,
+    boldItalic: bold,
+  );
+}
+
 const _green = PdfColor.fromInt(0xFF004C1B);
 const _greenBanner = PdfColor.fromInt(0xFF0B7A3B);
 const _grey = PdfColor.fromInt(0xFF6B7280);
@@ -54,7 +90,7 @@ Future<Uint8List> buildTicketPdf(
   AppLocalizations l10n, {
   required bool isDemo,
 }) async {
-  final doc = pw.Document();
+  final doc = pw.Document(theme: await ticketPdfTheme());
   final crestSvg = await rootBundle.loadString('lib/assets/branding/logo.svg');
   final maskedDocument = ticket.holderDocument.contains(RegExp(r'^\d{11}$'))
       ? maskCpf(ticket.holderDocument)
