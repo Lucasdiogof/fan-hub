@@ -784,13 +784,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaRankingUnknownFan => 'Torcedor';
 
   @override
-  String get passportTitle => 'Passaporte Esmeraldino';
-
-  @override
-  String get passportCardDescription =>
-      'Marque os jogos que você viveu com o Verdão.';
-
-  @override
   String get passportCardCta => 'Abrir passaporte';
 
   @override
@@ -980,10 +973,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get passportTrajectoryListEmpty => 'Nenhum jogo por aqui ainda';
 
   @override
-  String get passportTrajectoryShareText =>
-      'Essa é a minha trajetória com o Goiás! 💚';
-
-  @override
   String get passportTrajectoryShareAction => 'Compartilhar';
 
   @override
@@ -999,38 +988,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get passportCoverEyebrow => 'MEU PASSAPORTE';
 
   @override
-  String passportCoverMatchesLived(num count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count jogos cantando e vibrando com o Verdão',
-      one: '1 jogo cantando e vibrando com o Verdão',
-      zero: 'Nenhum jogo vivido ainda com o Verdão',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String get passportLevelStarter => 'Primeiros Passos';
-
-  @override
-  String get passportLevelPresent => 'Torcedor Presente';
-
-  @override
-  String get passportLevelBleacher => 'Esmeraldino de Arquibancada';
-
-  @override
-  String get passportLevelRoots => 'Verdão Raiz';
-
-  @override
-  String get passportLevelLegend => 'Lenda Esmeraldina';
-
-  @override
   String get passportEmptyHeadline => 'Todo torcedor tem uma história.';
-
-  @override
-  String get passportEmptyBody =>
-      'Marque os jogos que você viveu com o Verdão e construa seu Passaporte Esmeraldino.';
 
   @override
   String get passportChangeSeasonCta => 'Trocar temporada';

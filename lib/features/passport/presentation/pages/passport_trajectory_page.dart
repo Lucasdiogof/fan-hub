@@ -13,6 +13,7 @@ import 'package:goias_app/features/passport/presentation/cubit/passport_trajecto
 import 'package:goias_app/features/passport/presentation/cubit/passport_trajectory_state.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_count_list_page.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_match_list_page.dart';
+import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_level_style.dart';
 import 'package:goias_app/features/passport/presentation/widgets/passport_memorable_match_picker.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
@@ -20,10 +21,10 @@ import 'package:goias_app/features/profile/presentation/cubit/profile_state.dart
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/share_field_image.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Dono de uma trajetória vista a partir do ranking — `null` em todo lugar
 /// que espera [PassportTrajectoryArgs]? significa "o usuário logado", nunca
@@ -88,7 +89,7 @@ class _PassportTrajectoryViewState extends State<_PassportTrajectoryView> {
 
   Future<void> _share(BuildContext context) => shareFieldImage(
     _cardKey,
-    text: context.l10n.passportTrajectoryShareText,
+    text: context.passportCopy.shareText,
     fileName: 'minha_trajetoria.png',
   );
 
@@ -616,7 +617,7 @@ class _UserHeaderContent extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  passportLevelLabel(context.l10n, level),
+                  passportLevelLabel(context.passportCopy, level),
                   style: const TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,

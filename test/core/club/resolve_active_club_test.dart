@@ -167,7 +167,6 @@ void main() {
       expect(c.hasStore, isFalse);
       expect(c.hasTickets, isFalse);
       expect(c.hasCrowdLineup, isFalse);
-      expect(c.hasPassport, isFalse);
       expect(c.hasNews, isFalse);
       expect(c.hasSocial, isFalse);
       expect(c.enabledArenaGames, isEmpty);
@@ -186,6 +185,16 @@ void main() {
         expect(c.hasPartners, isTrue);
       },
     );
+
+    // 2026-09-07: as 186 partidas e os 49 estádios do Bragantino estão no
+    // Supabase dele, a auditoria pós-importação passou, E a identidade da tela
+    // agora é própria (`bragantinoPassportContent`) — nenhuma string do Goiás
+    // vaza mais. Por isso a capability sobe pra true de verdade, não mais
+    // provisória; fica separado do "tudo desligado" acima porque é a única
+    // capability ligada do Bragantino hoje.
+    test('hasPassport ligado — dado real importado e identidade própria', () {
+      expect(bragantinoClubConfig.capabilities.hasPassport, isTrue);
+    });
 
     test(
       'não reusa asset nem cor do Goiás — assets apontam pra placeholder do bragantino',

@@ -14,6 +14,7 @@ ClubConfig _bragantinoWithoutSupabase() => ClubConfig(
   assets: bragantinoClubConfig.assets,
   capabilities: bragantinoClubConfig.capabilities,
   productNames: bragantinoClubConfig.productNames,
+  passportContent: bragantinoClubConfig.passportContent,
   integrations: ClubIntegrations(
     oneFootballTeamId: bragantinoClubConfig.integrations.oneFootballTeamId,
     oneFootballSlug: bragantinoClubConfig.integrations.oneFootballSlug,

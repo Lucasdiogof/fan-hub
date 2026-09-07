@@ -1,9 +1,3 @@
-// M4.3 — refactor club-aware de História/Títulos/Hino/Timeline/Parceiros
-// (`ClubInstitutionalContent`, ver `lib/core/club/club_institutional_
-// content.dart`). Antes deste refactor, `ClubHistoryData`/`ClubTitlesData`/
-// `ClubSongsData`/`ClubTimelineData`/`PartnersData` eram classes estáticas
-// globais só do Goiás, lidas direto pelas páginas — este arquivo prova que
-// cada clube agora resolve o PRÓPRIO conteúdo, sem fallback cruzado.
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
@@ -35,6 +29,7 @@ import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 import 'package:goias_app/features/partners/data/partners_data.dart';
 import 'package:goias_app/features/partners/presentation/pages/partners_page.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
+import 'synthetic_passport_content.dart';
 
 /// Clube sintético sem NENHUM `institutionalContent` — usa o default de
 /// `ClubConfig` (`const ClubInstitutionalContent()`, tudo vazio). Existe só
@@ -110,6 +105,7 @@ const _emptyContentConfig = ClubConfig(
     storeName: 'Loja',
     membershipProgramName: 'Sócio',
   ),
+  passportContent: syntheticPassportContent,
   // Nenhum `institutionalContent:` passado — usa o default vazio de
   // `ClubConfig`, de propósito.
 );

@@ -786,13 +786,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get arenaRankingUnknownFan => 'Hincha';
 
   @override
-  String get passportTitle => 'Passaporte Esmeraldino';
-
-  @override
-  String get passportCardDescription =>
-      'Marca los partidos que viviste con el Goiás.';
-
-  @override
   String get passportCardCta => 'Abrir pasaporte';
 
   @override
@@ -983,10 +976,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get passportTrajectoryListEmpty => 'Todavía no hay partidos aquí';
 
   @override
-  String get passportTrajectoryShareText =>
-      '¡Esta es mi trayectoria con el Goiás! 💚';
-
-  @override
   String get passportTrajectoryShareAction => 'Compartir';
 
   @override
@@ -1002,37 +991,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get passportCoverEyebrow => 'MI PASAPORTE';
 
   @override
-  String passportCoverMatchesLived(num count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count partidos cantando y vibrando con el Verdão',
-      one: '1 partido cantando y vibrando con el Verdão',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String get passportLevelStarter => 'Primeros Pasos';
-
-  @override
-  String get passportLevelPresent => 'Hincha Presente';
-
-  @override
-  String get passportLevelBleacher => 'Esmeraldino de Tribuna';
-
-  @override
-  String get passportLevelRoots => 'Raíz Verdão';
-
-  @override
-  String get passportLevelLegend => 'Leyenda Esmeraldina';
-
-  @override
   String get passportEmptyHeadline => 'Todo hincha tiene una historia.';
-
-  @override
-  String get passportEmptyBody =>
-      'Marca los partidos que viviste con el Verdão y construye tu Passaporte Esmeraldino.';
 
   @override
   String get passportChangeSeasonCta => 'Cambiar temporada';

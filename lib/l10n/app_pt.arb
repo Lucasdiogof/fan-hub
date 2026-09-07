@@ -4,25 +4,24 @@
   "settingsLanguageMenu": "Idioma",
   "languageSystemLabel": "Padrão do sistema",
   "languageSystemDescription": "Segue o idioma do seu aparelho",
-
   "commonEmailLabel": "E-mail",
   "commonEmailHint": "seuemail@email.com",
   "commonPasswordLabel": "Senha",
-
   "authForgotPassword": "Esqueci a senha",
   "authSignInButton": "ENTRAR",
   "authSignInErrorTitle": "Não foi possível entrar",
   "authSigningIn": "Entrando...",
   "authNoAccountQuestion": "Ainda não possui uma conta? ",
   "authCreateAccount": "Criar conta",
-
   "authRegisterTitle": "Criar conta",
   "authFullNameLabel": "Nome completo",
   "authFullNameHint": "Seu nome",
   "authPasswordMinHint": "Mínimo {count} caracteres",
   "@authPasswordMinHint": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "authConfirmPasswordLabel": "Confirmar senha",
@@ -37,36 +36,41 @@
   "authStepContact": "Contato",
   "authStepSecurity": "Segurança",
   "authMarketingOptIn": "Quero receber novidades, promoções e informações do {clubShortName}",
-  "@authMarketingOptIn": { "placeholders": { "clubShortName": { "type": "String" } } },
+  "@authMarketingOptIn": {
+    "placeholders": {
+      "clubShortName": {
+        "type": "String"
+      }
+    }
+  },
   "authPasswordRequirementLength": "Mínimo de {count} caracteres",
-  "@authPasswordRequirementLength": { "placeholders": { "count": { "type": "int" } } },
+  "@authPasswordRequirementLength": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "authCpfLabel": "CPF",
   "authBirthDateHint": "DD/MM/AAAA",
-
   "navHome": "Início",
   "navMatches": "Jogos",
   "navMembership": "Sócio",
   "navMedia": "Mídia",
   "navStore": "Loja",
-
   "homeGreetingMorning": "Bom dia",
   "homeGreetingAfternoon": "Boa tarde",
   "homeGreetingEvening": "Boa noite",
-
   "homeNextMatch": "PRÓXIMO JOGO",
   "homeDateToBeConfirmed": "DATA A CONFIRMAR",
   "homeCompactMatchToday": "HOJE",
   "homeCompactMatchFinished": "Fim de jogo",
   "homeTickets": "INGRESSOS",
-
-
   "homeCountdownTitle": "O JOGO COMEÇA EM",
   "homeCountdownDays": "DIAS",
   "homeCountdownHours": "HORAS",
   "homeCountdownMinutes": "MIN",
   "homeCountdownSeconds": "SEG",
-
-
   "matchGamesTitle": "JOGOS",
   "matchTabMatches": "PARTIDAS",
   "matchTabCalendar": "CALENDÁRIO",
@@ -83,7 +87,6 @@
   "matchFinishedLabel": "Finalizado",
   "matchDateToBeConfirmed": "Data a confirmar",
   "matchToBeConfirmed": "A confirmar",
-
   "matchInfoTitle": "INFORMAÇÕES",
   "matchFieldDate": "Data",
   "matchFieldTime": "Horário",
@@ -92,27 +95,28 @@
   "matchFieldCompetition": "Competição",
   "matchFieldRound": "Rodada",
   "matchFieldStatus": "Status",
-
   "matchEventsTitle": "EVENTOS DA PARTIDA",
   "matchEventGoal": "Gol",
   "matchEventCard": "Cartão",
   "matchEventSubstitution": "{playerIn} entra no lugar de {playerOut}",
   "@matchEventSubstitution": {
     "placeholders": {
-      "playerIn": { "type": "String" },
-      "playerOut": { "type": "String" }
+      "playerIn": {
+        "type": "String"
+      },
+      "playerOut": {
+        "type": "String"
+      }
     }
   },
   "matchLineupsTitle": "ESCALAÇÕES",
   "matchStatsTitle": "ESTATÍSTICAS",
-
   "standingsClub": "CLUBE",
   "standingsColPoints": "P",
   "standingsColPlayed": "J",
   "standingsColWins": "V",
   "standingsColGoalDiff": "SG",
   "standingsUnavailable": "Classificação indisponível no momento.",
-
   "matchStatusScheduled": "Agendada",
   "matchStatusLive": "Ao vivo",
   "matchStatusHalfTime": "Intervalo",
@@ -122,14 +126,12 @@
   "matchStatusSuspended": "Suspensa",
   "matchStatusUnknown": "Indefinido",
   "matchCurrentRound": "Rodada atual",
-
   "commonSave": "SALVAR",
   "commonSaving": "Salvando...",
   "commonCancel": "Cancelar",
   "commonContinue": "CONTINUAR",
   "commonDemoTag": "Demonstração",
   "commonDemoBannerTitle": "Demonstração",
-
   "profileTitle": "PERFIL",
   "profileMyAccount": "MINHA CONTA",
   "profilePersonalData": "Dados pessoais",
@@ -152,11 +154,9 @@
   "profileSignOutMessage": "Você precisará entrar novamente para acessar sua conta.",
   "profileSignOutConfirm": "SAIR",
   "profileSignOut": "Sair",
-
   "authSessionExpiredTitle": "Sua sessão expirou",
   "authSessionExpiredMessage": "Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do Goiás.",
   "authSessionExpiredCta": "Entrar novamente",
-
   "authErrorInvalidCredentials": "E-mail ou senha incorretos.",
   "authErrorCurrentPasswordIncorrect": "Senha atual incorreta.",
   "authErrorPasswordIncorrect": "Senha incorreta.",
@@ -174,8 +174,6 @@
   "authErrorAccountDeletionFailed": "Não foi possível excluir sua conta. Tente novamente em alguns instantes.",
   "authErrorNetwork": "Verifique sua conexão com a internet.",
   "authErrorGeneric": "Não foi possível concluir agora. Tente novamente.",
-
-
   "personalDataTitle": "DADOS PESSOAIS",
   "personalDataLoadError": "Não foi possível carregar seus dados.",
   "personalFieldCpf": "CPF (opcional)",
@@ -185,7 +183,6 @@
   "personalNameRequired": "Informe seu nome completo.",
   "personalCpfInvalid": "CPF inválido.",
   "personalUpdateSuccess": "Dados atualizados com sucesso.",
-
   "securityTitle": "SEGURANÇA",
   "securitySubtitle": "Altere a senha da sua conta Goiás EC.",
   "securityCurrentPassword": "Senha atual",
@@ -195,7 +192,6 @@
   "securityConfirmNewPasswordHint": "Repita a nova senha",
   "securitySaveButton": "SALVAR NOVA SENHA",
   "securityChangeSuccess": "Senha alterada com sucesso.",
-
   "addressTitle": "ENDEREÇO RESIDENCIAL",
   "addressResidentialSubtitle": "Seu endereço principal cadastrado na conta.",
   "addressLoadError": "Não foi possível carregar seu endereço.",
@@ -210,21 +206,27 @@
   "addressSelectState": "Selecionar estado",
   "addressFieldCity": "Cidade",
   "addressSaveButton": "SALVAR ENDEREÇO",
-
   "deleteAccountTitle": "EXCLUIR CONTA",
   "deleteAccountConfirmWord": "EXCLUIR",
   "deleteAccountInstruction": "Essa ação é permanente. Confirme sua senha e digite {word} para excluir sua conta e todo o seu progresso.",
   "@deleteAccountInstruction": {
-    "placeholders": { "word": { "type": "String" } }
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
   },
   "deleteAccountPasswordHint": "Confirme sua senha",
   "deleteAccountTypeWordLabel": "Digite {word} para confirmar",
   "@deleteAccountTypeWordLabel": {
-    "placeholders": { "word": { "type": "String" } }
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
   },
   "deleteAccountConfirmButton": "EXCLUIR MINHA CONTA",
   "deleteAccountDeleting": "EXCLUINDO CONTA...",
-
   "settingsNotificationsTitle": "NOTIFICAÇÕES",
   "notificationsMatchesTitle": "Partidas do Goiás",
   "notificationsMatchesDescription": "Gols e resultado final em tempo real.",
@@ -240,17 +242,18 @@
   "themeModeAutoDesc": "Segue o tema do seu celular",
   "themeModeLightDesc": "Sempre com fundo claro",
   "themeModeDarkDesc": "Sempre com fundo escuro",
-
   "avatarTakePhoto": "Tirar foto",
   "avatarChooseFromGallery": "Escolher da galeria",
-
   "socialFollowTitle": "SIGA O GOIÁS",
   "socialFollowSubtitle": "Acompanhe o Verdão também nas redes sociais.",
   "socialOpenLink": "Abrir {name}",
   "@socialOpenLink": {
-    "placeholders": { "name": { "type": "String" } }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   },
-
   "arenaTitle": "Arena Esmeraldina",
   "arenaGamesSectionSubtitle": "Teste seus conhecimentos sobre o Verdão.",
   "arenaNextMatchBadge": "PRÓXIMO JOGO",
@@ -265,9 +268,15 @@
   "arenaPlayFirstTime": "Jogue pela primeira vez",
   "arenaStatMatchesCorrect": "{played} partidas · {correct} acertos",
   "@arenaStatMatchesCorrect": {
-    "placeholders": { "played": { "type": "int" }, "correct": { "type": "int" } }
+    "placeholders": {
+      "played": {
+        "type": "int"
+      },
+      "correct": {
+        "type": "int"
+      }
+    }
   },
-
   "arenaHeaderSubtitle": "Jogue, participe e viva o Goiás.",
   "arenaSpotlightEyebrow": "Arena Esmeraldina",
   "arenaSpotlightHeadline": "A sua paixão entra em campo",
@@ -281,7 +290,6 @@
   "arenaChallengeCtaContinue": "Continuar",
   "arenaChallengeCtaStart": "Começar",
   "arenaChallengeCtaCompleted": "Concluído",
-
   "arenaGameQuizTitle": "Quiz do Verdão",
   "arenaGameQuizTagline": "Teste o quanto você conhece o Goiás.",
   "arenaGameLineupTitle": "Adivinhe a Escalação",
@@ -290,7 +298,6 @@
   "arenaGameCareerTagline": "Descubra o jogador pela trajetória na carreira.",
   "arenaGuessPlayerTitle": "Quem Vestiu o Manto?",
   "arenaGuessPlayerTagline": "Descubra o jogador secreto pela foto embaçada e pelas pistas.",
-
   "arenaRankingWeekly": "Semanal",
   "arenaRankingMonthly": "Mensal",
   "arenaRankingAllTime": "Geral",
@@ -298,9 +305,6 @@
   "arenaRankingYourPosition": "SUA POSIÇÃO",
   "arenaRankingMemberBadge": "Sócio",
   "arenaRankingUnknownFan": "Torcedor",
-
-  "passportTitle": "Passaporte Esmeraldino",
-  "passportCardDescription": "Marque os jogos que você viveu com o Verdão.",
   "passportCardCta": "Abrir passaporte",
   "passportRankingCta": "Ranking do Passaporte",
   "passportLoadErrorTitle": "Não foi possível carregar o passaporte",
@@ -355,28 +359,24 @@
   "passportTrajectoryGamesCount": "{count, plural, =1{1 jogo} other{{count} jogos}}",
   "@passportTrajectoryGamesCount": {
     "placeholders": {
-      "count": {"type": "int"}
+      "count": {
+        "type": "int"
+      }
     }
   },
   "passportTrajectoryListEmpty": "Nenhum jogo por aqui ainda",
-  "passportTrajectoryShareText": "Essa é a minha trajetória com o Goiás! 💚",
   "passportTrajectoryShareAction": "Compartilhar",
   "passportTrajectoryOfUser": "Trajetória de {name}",
   "@passportTrajectoryOfUser": {
     "placeholders": {
-      "name": {"type": "String"}
+      "name": {
+        "type": "String"
+      }
     }
   },
   "passportTrajectoryMemorableEmptyReadOnly": "Ainda não escolheu um jogo memorável",
   "passportCoverEyebrow": "MEU PASSAPORTE",
-  "passportCoverMatchesLived": "{count, plural, =0{Nenhum jogo vivido ainda com o Verdão} =1{1 jogo cantando e vibrando com o Verdão} other{{count} jogos cantando e vibrando com o Verdão}}",
-  "passportLevelStarter": "Primeiros Passos",
-  "passportLevelPresent": "Torcedor Presente",
-  "passportLevelBleacher": "Esmeraldino de Arquibancada",
-  "passportLevelRoots": "Verdão Raiz",
-  "passportLevelLegend": "Lenda Esmeraldina",
   "passportEmptyHeadline": "Todo torcedor tem uma história.",
-  "passportEmptyBody": "Marque os jogos que você viveu com o Verdão e construa seu Passaporte Esmeraldino.",
   "passportChangeSeasonCta": "Trocar temporada",
   "passportSeasonProgressLine": "{marked} de {total} jogos registrados",
   "passportSeasonTotalOnly": "{total} jogos",
@@ -388,32 +388,79 @@
   "passportRoundPlayoff": "Repescagem",
   "passportRoundOf16": "Oitavas de final",
   "passportRoundPhase": "{n}ª fase",
-  "@passportRoundPhase": { "placeholders": { "n": { "type": "int" } } },
+  "@passportRoundPhase": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "passportRoundMatchday": "Rodada {n}",
-  "@passportRoundMatchday": { "placeholders": { "n": { "type": "int" } } },
+  "@passportRoundMatchday": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "passportRoundGroup": "Grupo {letter}",
-  "@passportRoundGroup": { "placeholders": { "letter": { "type": "String" } } },
+  "@passportRoundGroup": {
+    "placeholders": {
+      "letter": {
+        "type": "String"
+      }
+    }
+  },
   "arenaRankingDetailFirstTry": "Acertos de primeira",
   "arenaRankingDetailReview": "Acertos na revisão",
   "arenaRankingDetailAbandoned": "Revelados/desistências",
   "arenaRankingYouTag": "VOCÊ",
   "arenaRankingPlace": "{rank}º lugar",
-  "@arenaRankingPlace": { "placeholders": { "rank": { "type": "int" } } },
+  "@arenaRankingPlace": {
+    "placeholders": {
+      "rank": {
+        "type": "int"
+      }
+    }
+  },
   "arenaRankingPointsFull": "pontos",
   "arenaRankingPeriodOverall": "Ranking Geral",
   "arenaRankingPeriodWeek": "Esta semana",
   "arenaRankingByGame": "Pontuação por jogo",
   "arenaRankingHowScoredSelf": "Como você pontuou",
   "arenaRankingHowScoredOther": "Como {name} pontuou",
-  "@arenaRankingHowScoredOther": { "placeholders": { "name": { "type": "String" } } },
+  "@arenaRankingHowScoredOther": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "arenaRankingGamePointsShare": "{score} pts • {percent}% do total",
-  "@arenaRankingGamePointsShare": { "placeholders": { "score": { "type": "int" }, "percent": { "type": "int" } } },
+  "@arenaRankingGamePointsShare": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "arenaRankingNoPointsTitle": "Nenhum ponto neste período",
   "arenaRankingNoPointsOther": "Este torcedor ainda não pontuou nos jogos durante o período selecionado.",
   "arenaRankingNoPointsSelf": "Você ainda não pontuou nos jogos durante o período selecionado.",
   "arenaRankingGapToNext": "{points} pts para alcançar o {rank}º",
-  "@arenaRankingGapToNext": { "placeholders": { "points": { "type": "int" }, "rank": { "type": "int" } } },
-
+  "@arenaRankingGapToNext": {
+    "placeholders": {
+      "points": {
+        "type": "int"
+      },
+      "rank": {
+        "type": "int"
+      }
+    }
+  },
   "commonClose": "FECHAR",
   "commonRetry": "Tentar novamente",
   "commonComingSoon": "Em breve",
@@ -444,37 +491,126 @@
   "quizLevelDescEsmeraldino": "História, ídolos e jogos marcantes pra quem manja do clube.",
   "quizLevelDescFanatico": "Recordes e números pra quem não erra nenhuma.",
   "quizLevelName": "Nível {level}",
-  "@quizLevelName": { "placeholders": { "level": { "type": "String" } } },
+  "@quizLevelName": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
   "quizQuestionProgress": "Pergunta {current} de {total}",
-  "@quizQuestionProgress": { "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } } },
+  "@quizQuestionProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "quizAnsweredCount": "{answered}/{total} perguntas",
-  "@quizAnsweredCount": { "placeholders": { "answered": { "type": "int" }, "total": { "type": "int" } } },
+  "@quizAnsweredCount": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "quizPendingReview": "{count} para revisar",
-  "@quizPendingReview": { "placeholders": { "count": { "type": "int" } } },
+  "@quizPendingReview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "quizLevelCompleted": "NÍVEL {level} CONCLUÍDO",
-  "@quizLevelCompleted": { "placeholders": { "level": { "type": "String" } } },
+  "@quizLevelCompleted": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
   "quizAllAnswered": "Você respondeu todas as {total} perguntas deste nível.",
-  "@quizAllAnswered": { "placeholders": { "total": { "type": "int" } } },
+  "@quizAllAnswered": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "quizCorrectCount": "{count} acertadas",
-  "@quizCorrectCount": { "placeholders": { "count": { "type": "int" } } },
+  "@quizCorrectCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "quizReviewLevel": "Revisão · Nível {level}",
-  "@quizReviewLevel": { "placeholders": { "level": { "type": "String" } } },
+  "@quizReviewLevel": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
   "quizFinalResultLevel": "Resultado final · Nível {level}",
-  "@quizFinalResultLevel": { "placeholders": { "level": { "type": "String" } } },
+  "@quizFinalResultLevel": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
   "quizScoreLine": "Você acertou {correct} de {total} perguntas",
-  "@quizScoreLine": { "placeholders": { "correct": { "type": "int" }, "total": { "type": "int" } } },
+  "@quizScoreLine": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "quizLevelQuestions": "{answered}/{total} perguntas do nível",
-  "@quizLevelQuestions": { "placeholders": { "answered": { "type": "int" }, "total": { "type": "int" } } },
+  "@quizLevelQuestions": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "quizBestRecord": "Recorde: {best} pts",
-  "@quizBestRecord": { "placeholders": { "best": { "type": "int" } } },
-
+  "@quizBestRecord": {
+    "placeholders": {
+      "best": {
+        "type": "int"
+      }
+    }
+  },
   "tacticalIdentityGameTitle": "Identidade Futebolística",
   "tacticalIdentityCardSubtitleNew": "Que tipo de futebol você acredita?",
   "tacticalIdentityCardCtaStart": "Descobrir meu perfil",
   "tacticalIdentityCardCtaViewResult": "Ver resultado",
   "tacticalIdentityCardCtaRedo": "Refazer",
   "tacticalIdentityYourProfile": "Seu perfil: {name}",
-  "@tacticalIdentityYourProfile": { "placeholders": { "name": { "type": "String" } } },
+  "@tacticalIdentityYourProfile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "tacticalIntroTitle": "Qual é a sua identidade futebolística?",
   "tacticalIntroDescription": "10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo Goiás sua filosofia mais se aproxima.",
   "tacticalIntroMeta": "10 perguntas • ~3 minutos",
@@ -487,20 +623,31 @@
   "tacticalResultMainReference": "SUA PRINCIPAL REFERÊNCIA ESMERALDINA",
   "tacticalResultOtherReferences": "OUTRAS REFERÊNCIAS",
   "tacticalIdentityAffinityLabel": "{percent}% de afinidade tática",
-  "@tacticalIdentityAffinityLabel": { "placeholders": { "percent": { "type": "String" } } },
+  "@tacticalIdentityAffinityLabel": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
   "tacticalResultShare": "Compartilhar resultado",
   "tacticalAxisPossession": "POSSE",
   "tacticalAxisVertical": "VERTICAL",
   "tacticalAxisDogmatic": "DOGMÁTICO",
   "tacticalAxisPragmatic": "PRAGMÁTICO",
-
   "playerIdentityGameTitle": "Que craque esmeraldino é você?",
   "playerIdentityCardSubtitleNew": "10 situações de jogo. Descubra com qual ídolo do Verdão seu estilo mais combina.",
   "playerIdentityCardCtaStart": "Descobrir meu perfil",
   "playerIdentityCardCtaViewResult": "Ver resultado",
   "playerIdentityCardCtaRedo": "Refazer",
   "playerIdentityYourProfile": "Seu perfil: {name}",
-  "@playerIdentityYourProfile": { "placeholders": { "name": { "type": "String" } } },
+  "@playerIdentityYourProfile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "playerIntroTitle": "Que craque esmeraldino é você?",
   "playerIntroDescription": "Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do Goiás mais combina com suas escolhas.",
   "playerIntroMeta": "10 perguntas • ~3 minutos",
@@ -511,13 +658,24 @@
   "playerResultReferencesTitle": "REFERÊNCIAS ESMERALDINAS",
   "playerResultTraitsTitle": "SUAS MARCAS",
   "playerIdentityAffinityLabel": "{percent}% afinidade de estilo",
-  "@playerIdentityAffinityLabel": { "placeholders": { "percent": { "type": "String" } } },
+  "@playerIdentityAffinityLabel": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
   "playerResultShare": "Compartilhar resultado",
   "playerReferenceDisclaimer": "Os atributos são referências editoriais utilizadas nesta experiência e não avaliações oficiais do jogador.",
-
   "lineupPlayerHeading": "JOGADOR",
   "lineupShirt": "CAMISA {number}",
-  "@lineupShirt": { "placeholders": { "number": { "type": "int" } } },
+  "@lineupShirt": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
   "lineupTypePlayerName": "Digite o nome do jogador",
   "lineupBackToField": "VOLTAR AO CAMPO",
   "lineupGiveUp": "DESISTIR DA PARTIDA",
@@ -526,9 +684,27 @@
   "lineupGiveUpConfirm": "DESISTIR",
   "lineupKeepPlaying": "Continuar jogando",
   "lineupMatchProgress": "PARTIDA {current} DE {total}",
-  "@lineupMatchProgress": { "placeholders": { "current": { "type": "int" }, "total": { "type": "int" } } },
+  "@lineupMatchProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "lineupWordCount": "{words, plural, =1{1 palavra} other{{words} palavras}} • {letters, plural, =1{1 letra} other{{letters} letras}}",
-  "@lineupWordCount": { "placeholders": { "words": { "type": "int" }, "letters": { "type": "int" } } },
+  "@lineupWordCount": {
+    "placeholders": {
+      "words": {
+        "type": "int"
+      },
+      "letters": {
+        "type": "int"
+      }
+    }
+  },
   "lineupComplete": "ESCALAÇÃO COMPLETA",
   "lineupDiscovered": "DESCOBERTOS",
   "lineupAttempts": "TENTATIVAS",
@@ -540,20 +716,49 @@
   "lineupPreviousMatch": "ANTERIOR",
   "lineupNoNumber": "Jogador sem número confirmado",
   "lineupNotDiscovered": "{shirt}, não descoberto",
-  "@lineupNotDiscovered": { "placeholders": { "shirt": { "type": "String" } } },
+  "@lineupNotDiscovered": {
+    "placeholders": {
+      "shirt": {
+        "type": "String"
+      }
+    }
+  },
   "lineupShirtLabel": "Camisa {number}",
-  "@lineupShirtLabel": { "placeholders": { "number": { "type": "int" } } },
+  "@lineupShirtLabel": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
   "lineupA11yRevealed": "{shirt}, {name}, descoberto",
-  "@lineupA11yRevealed": { "placeholders": { "shirt": { "type": "String" }, "name": { "type": "String" } } },
+  "@lineupA11yRevealed": {
+    "placeholders": {
+      "shirt": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "lineupA11yPending": "{shirt}, {position}, ainda não descoberto",
-  "@lineupA11yPending": { "placeholders": { "shirt": { "type": "String" }, "position": { "type": "String" } } },
+  "@lineupA11yPending": {
+    "placeholders": {
+      "shirt": {
+        "type": "String"
+      },
+      "position": {
+        "type": "String"
+      }
+    }
+  },
   "lineupTileCorrect": "posição correta",
   "lineupTilePresent": "letra existe, posição errada",
   "lineupTileAbsent": "letra não existe",
   "lineupTileEmpty": "vazio",
   "keyboardDelete": "Apagar",
   "keyboardConfirm": "Confirmar",
-
   "commonCloseLabel": "Fechar",
   "careerSubtitle": "Descubra pela carreira",
   "careerSelectFromList": "Selecione um jogador da lista.",
@@ -564,14 +769,32 @@
   "careerGuess": "CHUTAR",
   "careerNextPlayer": "PRÓXIMO JOGADOR",
   "careerAttemptsRemaining": "Tentativas · Restam {remaining}",
-  "@careerAttemptsRemaining": { "placeholders": { "remaining": { "type": "int" } } },
+  "@careerAttemptsRemaining": {
+    "placeholders": {
+      "remaining": {
+        "type": "int"
+      }
+    }
+  },
   "careerCorrectTitle": "Você acertou!",
   "careerCorrectFirstTry": "Acertou de primeira!",
   "careerCorrectInAttempts": "Você acertou em {attempts} tentativas.",
-  "@careerCorrectInAttempts": { "placeholders": { "attempts": { "type": "int" } } },
+  "@careerCorrectInAttempts": {
+    "placeholders": {
+      "attempts": {
+        "type": "int"
+      }
+    }
+  },
   "careerWrongTitle": "Não foi dessa vez",
   "careerUsedAllAttempts": "Você usou as {max} tentativas.",
-  "@careerUsedAllAttempts": { "placeholders": { "max": { "type": "int" } } },
+  "@careerUsedAllAttempts": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
   "careerPlayerRevealed": "Jogador revelado",
   "careerRoundEnded": "Rodada encerrada.",
   "careerYouGotIt": "Você acertou",
@@ -585,47 +808,124 @@
   "careerOnLoan": "{team} (emp.)",
   "careerAggregateTitle": "Totais agregados",
   "careerAggregateLine": "{club} ({spells}): {apps} jogos · {goals} gols",
-  "@careerAggregateLine": { "placeholders": { "club": { "type": "String" }, "spells": { "type": "String" }, "apps": { "type": "String" }, "goals": { "type": "String" } } },
-  "@careerOnLoan": { "placeholders": { "team": { "type": "String" } } },
-
+  "@careerAggregateLine": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      },
+      "spells": {
+        "type": "String"
+      },
+      "apps": {
+        "type": "String"
+      },
+      "goals": {
+        "type": "String"
+      }
+    }
+  },
+  "@careerOnLoan": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
   "commonBack": "VOLTAR",
   "guessCorrectTitle": "ACERTOU!",
   "guessOutOfAttempts": "Fim das tentativas",
   "guessCorrectDetail": "Você acertou em {used} de {max} tentativas.",
-  "@guessCorrectDetail": { "placeholders": { "used": { "type": "int" }, "max": { "type": "int" } } },
+  "@guessCorrectDetail": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
   "guessNoPlayers": "Nenhum jogador disponível pra essa arena ainda.",
   "guessRoundEnded": "Rodada encerrada",
   "guessAttemptsRemaining": "{remaining} tentativas restantes",
-  "@guessAttemptsRemaining": { "placeholders": { "remaining": { "type": "int" } } },
+  "@guessAttemptsRemaining": {
+    "placeholders": {
+      "remaining": {
+        "type": "int"
+      }
+    }
+  },
   "guessThePlayerWas": "O jogador era: ",
   "guessTypePlayer": "Digite um jogador...",
   "guessColPos": "POS",
   "guessColShirt": "CAMISA",
   "guessColBase": "BASE",
   "guessColDebut": "ESTREIA",
-
   "dateMinutesAgo": "{minutes}min atrás",
-  "@dateMinutesAgo": { "placeholders": { "minutes": { "type": "int" } } },
+  "@dateMinutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
   "dateHoursAgo": "{hours}h atrás",
-  "@dateHoursAgo": { "placeholders": { "hours": { "type": "int" } } },
+  "@dateHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
   "dateDaysAgo": "{days, plural, =1{1 dia atrás} other{{days} dias atrás}}",
-  "@dateDaysAgo": { "placeholders": { "days": { "type": "int" } } },
+  "@dateDaysAgo": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
   "datePrepositionFull": "{day} de {month}",
-  "@datePrepositionFull": { "placeholders": { "day": { "type": "int" }, "month": { "type": "String" } } },
-
+  "@datePrepositionFull": {
+    "placeholders": {
+      "day": {
+        "type": "int"
+      },
+      "month": {
+        "type": "String"
+      }
+    }
+  },
   "socialMediaTitle": "MÍDIA",
   "socialFeedLoadError": "Não foi possível carregar o feed",
   "socialEmptyState": "Acompanhe o Goiás nas redes",
   "socialViewsM": "{value}M visualizações",
-  "@socialViewsM": { "placeholders": { "value": { "type": "String" } } },
+  "@socialViewsM": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "socialViewsK": "{value}K visualizações",
-  "@socialViewsK": { "placeholders": { "value": { "type": "String" } } },
+  "@socialViewsK": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "socialViewsCount": "{count} visualizações",
-  "@socialViewsCount": { "placeholders": { "count": { "type": "int" } } },
+  "@socialViewsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "socialPlatformInstagram": "INSTAGRAM",
   "socialPlatformYoutube": "YOUTUBE",
   "socialPlatformX": "X",
-
   "newsTitle": "NOTÍCIAS",
   "newsLoadError": "Não foi possível carregar as notícias",
   "newsEmptyTitle": "Nenhuma notícia por aqui ainda",
@@ -634,27 +934,65 @@
   "newsOpenOriginal": "Abrir matéria original",
   "newsPdfLoadErrorTitle": "Não foi possível carregar o PDF",
   "newsPdfShareButton": "Compartilhar PDF",
-
-
   "relTimeNow": "agora",
   "relTimeMinutes": "{n}min",
-  "@relTimeMinutes": { "placeholders": { "n": { "type": "int" } } },
+  "@relTimeMinutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "relTimeHours": "{n}h",
-  "@relTimeHours": { "placeholders": { "n": { "type": "int" } } },
+  "@relTimeHours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "relTimeDays": "{n}d",
-  "@relTimeDays": { "placeholders": { "n": { "type": "int" } } },
+  "@relTimeDays": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "relTimeWeeks": "{n}sem",
-  "@relTimeWeeks": { "placeholders": { "n": { "type": "int" } } },
+  "@relTimeWeeks": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "relTimeMonths": "{n}m",
-  "@relTimeMonths": { "placeholders": { "n": { "type": "int" } } },
-
+  "@relTimeMonths": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "partnersTitle": "Parceiros do Goiás",
   "partnersSubtitle": "Marcas que caminham junto com o Verdão.",
   "partnersOpenInstagram": "Abrir Instagram de {name}",
-  "@partnersOpenInstagram": { "placeholders": { "name": { "type": "String" } } },
+  "@partnersOpenInstagram": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "partnersOpenWebsite": "Abrir site de {name}",
-  "@partnersOpenWebsite": { "placeholders": { "name": { "type": "String" } } },
-
+  "@partnersOpenWebsite": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "squadTitle": "ELENCO",
   "squadLoadError": "Não foi possível carregar o elenco",
   "squadEmpty": "Elenco indisponível no momento",
@@ -662,12 +1000,25 @@
   "squadAboutSection": "Sobre",
   "squadCareerStatsLine": "{matches} jogos · {goals} gols",
   "@squadCareerStatsLine": {
-    "placeholders": { "matches": { "type": "String" }, "goals": { "type": "String" } }
+    "placeholders": {
+      "matches": {
+        "type": "String"
+      },
+      "goals": {
+        "type": "String"
+      }
+    }
   },
   "squadNumber": "Número",
   "squadAge": "Idade",
   "squadAgeValue": "{age} anos",
-  "@squadAgeValue": { "placeholders": { "age": { "type": "int" } } },
+  "@squadAgeValue": {
+    "placeholders": {
+      "age": {
+        "type": "int"
+      }
+    }
+  },
   "squadNationality": "Nacionalidade",
   "squadHeight": "Altura",
   "squadFoot": "Pé",
@@ -681,24 +1032,34 @@
   "squadGroupMidfielders": "Meios-campistas",
   "squadGroupForwards": "Atacantes",
   "squadInstagramLabel": "Instagram",
-
   "validatorNameRequired": "Informe seu nome completo.",
   "validatorEmailRequired": "Informe seu e-mail.",
   "validatorEmailInvalid": "Informe um e-mail válido.",
   "validatorPasswordRequired": "Informe sua senha.",
   "validatorPasswordCreate": "Crie uma senha.",
   "validatorPasswordMinLength": "A senha deve ter ao menos {min} caracteres.",
-  "@validatorPasswordMinLength": { "placeholders": { "min": { "type": "int" } } },
+  "@validatorPasswordMinLength": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
   "validatorConfirmRequired": "Confirme sua senha.",
   "validatorPasswordsDoNotMatch": "As senhas não coincidem.",
   "validatorPhoneRequired": "Informe seu telefone.",
   "validatorZipRequired": "Informe o CEP.",
-
   "checkEmailResent": "E-mail reenviado. Confira sua caixa de entrada.",
   "checkEmailTitle": "Confirme seu e-mail",
   "checkEmailResending": "Reenviando...",
   "checkEmailResendIn": "Reenviar em {seconds}s",
-  "@checkEmailResendIn": { "placeholders": { "seconds": { "type": "int" } } },
+  "@checkEmailResendIn": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
   "checkEmailResend": "Reenviar código",
   "checkEmailOtpSentTo": "Enviamos um código de 6 dígitos para",
   "checkEmailConfirmButton": "CONFIRMAR CÓDIGO",
@@ -707,12 +1068,10 @@
   "checkEmailChangeTitle": "Alterar e-mail?",
   "checkEmailChangeMessage": "Isso encerra este cadastro e abre um novo, pra você digitar o e-mail correto.",
   "checkEmailChangeConfirm": "Alterar e-mail",
-
   "resetPasswordTitle": "Criar nova senha",
   "resetPasswordSubtitle": "Escolha uma nova senha para acessar sua conta.",
   "resetPasswordSuccessTitle": "Senha alterada com sucesso",
   "resetPasswordSuccessMessage": "Sua senha foi atualizada. Entre novamente para continuar.",
-
   "forgotVerifyEmailTitle": "Confira seu e-mail",
   "forgotSentDescription": "Se este e-mail tiver uma conta no aplicativo do Goiás, você vai receber um link de redefinição em instantes:",
   "forgotNotReceived": "Não recebeu?",
@@ -722,10 +1081,8 @@
   "forgotSubtitle": "Digite seu e-mail para receber o link de redefinição.",
   "forgotSendButton": "Enviar link",
   "forgotSending": "Enviando...",
-
   "authShowPassword": "Mostrar senha",
   "authHidePassword": "Ocultar senha",
-
   "ticketsLoadError": "Não foi possível carregar os ingressos.",
   "ticketsNextEvent": "PRÓXIMO EVENTO",
   "ticketsQuickAccess": "ACESSO RÁPIDO",
@@ -744,7 +1101,13 @@
   "ticketsMyOrdersEmpty": "Nenhum pedido encontrado",
   "ticketsMyOrdersEmptyMessage": "Suas compras de ingressos aparecerão aqui.",
   "ticketsOrderNumber": "Pedido {number}",
-  "@ticketsOrderNumber": { "placeholders": { "number": { "type": "String" } } },
+  "@ticketsOrderNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
   "ticketStatusValid": "Válido",
   "ticketStatusUsed": "Utilizado",
   "ticketStatusCancelled": "Cancelado",
@@ -754,12 +1117,18 @@
   "orderStatusPending": "Pendente",
   "orderStatusCancelled": "Cancelado",
   "orderStatusRefunded": "Reembolsado",
-
   "ticketsCheckinUnavailableLabel": "CHECK-IN AINDA NÃO DISPONÍVEL",
   "ticketsCheckinUnavailableButton": "Check-in em breve",
   "ticketsCheckinAvailableFrom": "Disponível a partir de {date} às {time}",
   "@ticketsCheckinAvailableFrom": {
-    "placeholders": { "date": { "type": "String" }, "time": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
   },
   "ticketsCheckinAvailableLabel": "SEU PLANO PERMITE ACESSO A ESTA PARTIDA",
   "ticketsCheckInButton": "Fazer check-in",
@@ -772,7 +1141,14 @@
   "ticketsSaleUpcomingButton": "Venda em breve",
   "ticketsSaleStartsAt": "Início da venda: {date} às {time}",
   "@ticketsSaleStartsAt": {
-    "placeholders": { "date": { "type": "String" }, "time": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
   },
   "ticketsSaleOpenLabel": "INGRESSOS DISPONÍVEIS",
   "ticketsBuyTicketButton": "Comprar ingresso",
@@ -782,7 +1158,6 @@
   "ticketsSaleClosedButton": "Venda encerrada",
   "ticketsCheckinConfirmedLabel": "CHECK-IN CONFIRMADO",
   "ticketsUndoCheckInButton": "Desfazer check-in",
-
   "ticketsConfirmPresenceTitle": "CONFIRMAR PRESENÇA",
   "ticketsGoToMatchButton": "Vou ao jogo",
   "ticketsNotThisTimeButton": "Não dessa vez",
@@ -797,28 +1172,42 @@
   "ticketsSectorPickerTitle": "Onde você quer apoiar o Verdão?",
   "ticketsSectorPickerSubtitle": "Escolha o setor para esta partida.",
   "ticketsConfirmCheckInButton": "Confirmar check-in",
-
   "ticketsViewTicketTitle": "MEU INGRESSO",
   "ticketsMatchInfoTitle": "INFORMAÇÕES DA PARTIDA",
-
   "ticketsHomeCrowdLabel": "TORCIDA DO GOIÁS",
   "ticketsAwayCrowdLabel": "TORCIDA VISITANTE",
   "ticketsContinueButton": "Continuar",
   "ticketsTicketCount": "{count, plural, =1{1 ingresso} other{{count} ingressos}}",
-
   "ticketsSummaryTitle": "RESUMO DA COMPRA",
   "ticketsTotalLabel": "Total",
   "ticketsHolderDataTitle": "{count, plural, =1{DADOS DO TITULAR} other{DADOS DOS TITULARES}}",
-  "@ticketsHolderDataTitle": { "placeholders": { "count": { "type": "int" } } },
+  "@ticketsHolderDataTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "ticketsHolderSlotLabel": "Ingresso {index} · {sector} · {category}",
-  "@ticketsHolderSlotLabel": { "placeholders": { "index": { "type": "int" }, "sector": { "type": "String" }, "category": { "type": "String" } } },
+  "@ticketsHolderSlotLabel": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "sector": {
+        "type": "String"
+      },
+      "category": {
+        "type": "String"
+      }
+    }
+  },
   "ticketsHolderIsSelfCheckbox": "Este ingresso é para mim",
   "ticketsDocumentLabel": "CPF ou passaporte",
   "ticketsNominalWarning": "O ingresso é nominal e intransferível. Confira os dados antes de continuar.",
   "ticketsFinalizePurchaseButton": "Finalizar compra",
   "ticketsPurchaseSuccessTitle": "Ingresso comprado!",
   "ticketsPurchaseSuccessMessage": "O ingresso também está disponível no menu Meus Ingressos.",
-
   "ticketsTabUpcoming": "Próximos",
   "ticketsTabHistory": "Histórico",
   "ticketsUndoCheckInConfirmTitle": "Desfazer check-in?",
@@ -858,16 +1247,36 @@
   "ticketPdfAntiScalpingSubtitle": "O ingresso pode ser falso.",
   "ticketPdfFooterNotice": "Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.",
   "ticketPdfInvalidTicket": "INGRESSO\nINVÁLIDO",
-
   "penaltyFinalResult": "RESULTADO FINAL",
   "penaltyConverted": "Você converteu {goals} de {total} cobranças",
-  "@penaltyConverted": { "placeholders": { "goals": { "type": "int" }, "total": { "type": "int" } } },
+  "@penaltyConverted": {
+    "placeholders": {
+      "goals": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "penaltyScoreLabel": "PÊNALTIS",
   "penaltyDragToShoot": "Arraste a bola para chutar",
   "penaltyGoalsCount": "{goals, plural, =1{1 Gol} other{{goals} Gols}}",
-  "@penaltyGoalsCount": { "placeholders": { "goals": { "type": "int" } } },
+  "@penaltyGoalsCount": {
+    "placeholders": {
+      "goals": {
+        "type": "int"
+      }
+    }
+  },
   "penaltyGoalsCountUpper": "{goals, plural, =1{1 GOL} other{{goals} GOLS}}",
-  "@penaltyGoalsCountUpper": { "placeholders": { "goals": { "type": "int" } } },
+  "@penaltyGoalsCountUpper": {
+    "placeholders": {
+      "goals": {
+        "type": "int"
+      }
+    }
+  },
   "penaltyResultGoal": "GOL!",
   "penaltyResultSave": "DEFESA!",
   "penaltyResultOut": "PRA FORA!",
@@ -876,7 +1285,6 @@
   "penaltyResultSaveShort": "Defesa",
   "penaltyResultOutShort": "Fora",
   "penaltyResultPostShort": "Trave",
-
   "playerPositionGolFull": "Goleiro",
   "playerPositionGolShort": "GOL",
   "playerPositionZagFull": "Zagueiro",
@@ -907,11 +1315,16 @@
   "playerPositionSaShort": "SA",
   "playerPositionAtaFull": "Atacante",
   "playerPositionAtaShort": "ATA",
-
   "crowdTitle": "ESCALAÇÃO DA TORCIDA",
   "crowdTabEscale": "ESCALE",
   "crowdSubmissionsLabel": "{count, plural, =1{escalação enviada} other{escalações enviadas}}",
-  "@crowdSubmissionsLabel": { "placeholders": { "count": { "type": "int" } } },
+  "@crowdSubmissionsLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "crowdMostVotedFormation": "formação escolhida",
   "crowdNoVotes": "Ainda não há votos",
   "crowdNoVotesMessage": "Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.",
@@ -924,7 +1337,6 @@
   "crowdCanAlsoPlayBadge": "Pode atuar",
   "crowdCardDescVoted": "Veja como a torcida está escalando o Goiás para o próximo jogo.",
   "crowdCardDescNew": "Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.",
-
   "clubSectionHistory": "História",
   "clubSectionSquad": "Elenco",
   "clubSectionTitles": "Títulos",
@@ -946,13 +1358,25 @@
   "clubHistorySubtitle": "De 1943 até os dias de hoje.",
   "clubSquadSubtitle": "Os jogadores que vestem o manto.",
   "clubTitlesSubtitle": "{count} conquistas ao longo da história.",
-  "@clubTitlesSubtitle": { "placeholders": { "count": { "type": "int" } } },
+  "@clubTitlesSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "clubPartnersSubtitle": "Quem caminha junto com o Verdão.",
   "clubSongsSubtitle": "Hino e músicas que embalam a torcida.",
   "clubSectionIdols": "Ídolos",
   "clubIdolsSubtitle": "Nomes que marcaram a história do clube.",
   "clubIdolsCount": "{count, plural, =1{1 ídolo} other{{count} ídolos}}",
-  "@clubIdolsCount": { "placeholders": { "count": { "type": "int" } } },
+  "@clubIdolsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "clubAnthemSection": "HINO",
   "clubSongsSection": "MÚSICAS ESMERALDINAS",
   "clubLyricsLabel": "LETRA",
@@ -963,26 +1387,55 @@
   "clubUnmuteSemantics": "Ativar som",
   "clubVolumeSemantics": "Controle de volume",
   "clubPlaySongSemantics": "Reproduzir {title}",
-  "@clubPlaySongSemantics": { "placeholders": { "title": { "type": "String" } } },
+  "@clubPlaySongSemantics": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "clubPauseSongSemantics": "Pausar {title}",
-  "@clubPauseSongSemantics": { "placeholders": { "title": { "type": "String" } } },
+  "@clubPauseSongSemantics": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "clubMainTitles": "TÍTULOS PRINCIPAIS",
   "clubHistoricCampaigns": "CAMPANHAS HISTÓRICAS",
   "clubTimesChampion": "{count}× CAMPEÃO",
-  "@clubTimesChampion": { "placeholders": { "count": { "type": "int" } } },
+  "@clubTimesChampion": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "clubEntryTitle": "O CLUBE",
   "clubEntrySubtitle": "História, títulos, elenco e identidade do Verdão.",
   "clubEntryCta": "CONHECER O GOIÁS",
   "clubHeaderTagline": "O MAIOR DO CENTRO-OESTE",
-
   "membershipLoadError": "Não foi possível carregar o Sócio Esmeralda.",
   "membershipPlansTitle": "PLANOS",
   "membershipSector": "Setor {sector}",
-  "@membershipSector": { "placeholders": { "sector": { "type": "String" } } },
+  "@membershipSector": {
+    "placeholders": {
+      "sector": {
+        "type": "String"
+      }
+    }
+  },
   "membershipMostChosen": "MAIS ESCOLHIDO",
   "membershipPerMonth": "/mês",
   "membershipOrAnnual": "ou {price} no plano anual",
-  "@membershipOrAnnual": { "placeholders": { "price": { "type": "String" } } },
+  "@membershipOrAnnual": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
   "membershipBenefits": "BENEFÍCIOS",
   "membershipSeeFullRegulation": "Consulte o regulamento completo →",
   "membershipStillHaveDoubts": "Ainda tem dúvidas sobre este plano?",
@@ -1004,7 +1457,6 @@
   "membershipChoosePlan": "ESCOLHA SEU PLANO",
   "membershipChosenPlan": "PLANO ESCOLHIDO",
   "membershipChangePlan": "ALTERAR PLANO",
-
   "membershipStep1Access": "1 de 3 · Dados de acesso",
   "membershipStep2Personal": "2 de 3 · Dados cadastrais",
   "membershipStep3Address": "3 de 3 · Endereço",
@@ -1027,7 +1479,6 @@
   "membershipSelectStateFirst": "Selecione o estado primeiro",
   "membershipSelectCity": "Selecionar cidade",
   "membershipConfirmAssociation": "CONFIRMAR ASSOCIAÇÃO",
-
   "membershipReviewTitle": "REVISE SUA ASSOCIAÇÃO",
   "membershipPlanLabel": "Plano",
   "membershipSectorLabel": "Setor",
@@ -1045,9 +1496,21 @@
   "membershipAcceptRegulation": "Li e aceito o Regulamento do Sócio Esmeralda",
   "membershipReadFullRegulation": "Ler regulamento completo →",
   "membershipDemoDisclaimerBody": "Esta adesão é simulada e não cria vínculo com o {programName}. Nenhuma cobrança será realizada.",
-  "@membershipDemoDisclaimerBody": { "placeholders": { "programName": { "type": "String" } } },
+  "@membershipDemoDisclaimerBody": {
+    "placeholders": {
+      "programName": {
+        "type": "String"
+      }
+    }
+  },
   "membershipRegulationDemoNote": "A visualização/aceite nesta demonstração não constitui adesão oficial ao {programName}.",
-  "@membershipRegulationDemoNote": { "placeholders": { "programName": { "type": "String" } } },
+  "@membershipRegulationDemoNote": {
+    "placeholders": {
+      "programName": {
+        "type": "String"
+      }
+    }
+  },
   "membershipStatusDemoBadge": "Modo Sócio — Demonstração",
   "membershipYourMembership": "SUA ASSOCIAÇÃO",
   "membershipYourBenefits": "SEUS BENEFÍCIOS",
@@ -1056,14 +1519,19 @@
   "membershipWelcome": "BEM-VINDO AO\nSÓCIO ESMERALDA",
   "membershipSuccessMessage": "Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do Verdão.",
   "membershipAnnualPlan": "Plano anual • {price}",
-  "@membershipAnnualPlan": { "placeholders": { "price": { "type": "String" } } },
+  "@membershipAnnualPlan": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
   "membershipHolder": "Titular",
   "membershipAssociatedSince": "Associado desde",
   "membershipStatusActive": "Ativo",
   "membershipSeeAllBenefits": "Ver todos os benefícios →",
   "membershipWhatNow": "E AGORA?",
   "membershipWhatNowMessage": "Sua área de sócio já está disponível. Acompanhe seu plano e seus benefícios e, quando disponível, faça o check-in nos jogos.",
-
   "membershipSituation": "Situação",
   "membershipMemberNumber": "Número do sócio",
   "membershipMonthlyFee": "Mensalidade",
@@ -1072,20 +1540,37 @@
   "membershipRegulationName": "Regulamento do Sócio Esmeralda",
   "membershipMatchAccessNotice": "Seu plano permite acesso a esta partida.",
   "membershipCardNumber": "Nº {number}",
-  "@membershipCardNumber": { "placeholders": { "number": { "type": "String" } } },
+  "@membershipCardNumber": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
   "membershipRegulationPageTitle": "REGULAMENTO",
   "membershipProgramName": "Sócio Esmeralda",
   "membershipRegulationEffectiveSince": "Em vigor desde {date}",
-  "@membershipRegulationEffectiveSince": { "placeholders": { "date": { "type": "String" } } },
+  "@membershipRegulationEffectiveSince": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "membershipRegulationTableOfContents": "CONTEÚDO",
   "membershipCancelWhatsapp": "Olá, gostaria de cancelar minha associação Sócio Esmeralda ({plan}).",
-  "@membershipCancelWhatsapp": { "placeholders": { "plan": { "type": "String" } } },
+  "@membershipCancelWhatsapp": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
   "membershipCancel": "CANCELAR ASSOCIAÇÃO",
   "membershipCancelInfo": "O cancelamento é feito com o atendimento pelo WhatsApp, sem cobrança de multa fora dos prazos previstos no Regulamento.",
   "membershipStatusPending": "Pendente",
   "membershipStatusSuspended": "Suspenso",
   "membershipStatusCancelled": "Cancelado",
-
   "membershipFaqTitle": "DÚVIDAS FREQUENTES",
   "membershipFaqSubtitle": "Encontre respostas sobre planos, pagamentos, check-in e benefícios.",
   "membershipFaqLoadError": "Não foi possível carregar as dúvidas frequentes.",
@@ -1113,7 +1598,6 @@
   "membershipFaqSearchHint": "Buscar uma dúvida...",
   "membershipHelpTitle": "AJUDA E INFORMAÇÕES",
   "membershipFaqMenuItem": "Dúvidas frequentes",
-
   "membershipFindCepTitle": "ENCONTRAR MEU CEP",
   "membershipFindCepSubtitle": "Informe seu endereço para encontrarmos o CEP correspondente.",
   "membershipStreetLabel": "Rua / Logradouro",
@@ -1122,7 +1606,6 @@
   "membershipNoAddressFound": "Nenhum endereço encontrado.",
   "membershipNoAddressHint": "Confira o estado, a cidade e o logradouro informados.",
   "membershipAddressSearchError": "Não foi possível buscar o endereço.",
-
   "membershipValCpfRequired": "Informe seu CPF.",
   "membershipValNationality": "Selecione sua nacionalidade.",
   "membershipValPassport": "Informe um passaporte válido.",
@@ -1142,27 +1625,38 @@
   "membershipValNeighborhood": "Informe o bairro.",
   "membershipValState": "Informe o estado.",
   "membershipValCity": "Informe a cidade.",
-
   "lineupShareStats": "{solved}/{total} descobertos · {attempts} tentativas · {time}",
-  "@lineupShareStats": { "placeholders": { "solved": { "type": "int" }, "total": { "type": "int" }, "attempts": { "type": "int" }, "time": { "type": "String" } } },
+  "@lineupShareStats": {
+    "placeholders": {
+      "solved": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "attempts": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "crowdShareCrowd": "Confira a escalação da torcida pro Goiás! 💚",
   "crowdShareMine": "Essa é a minha escalação pro Goiás! 💚",
   "crowdSubmitted": "Escalação enviada!",
-
   "storeHomeEntryBadge": "GOIÁS STORE",
   "storeHomeEntryTitle": "O manto te espera",
   "storeHomeEntryDescription": "Leve o Verdão com você dentro e fora de campo.",
   "storeHomeEntryCta": "Conhecer a loja",
   "storeProfileEntry": "Goiás Store",
   "storeProfileMyOrders": "Meus pedidos",
-
   "storeHomeTitle": "Goiás Store",
   "storeHomeLoadErrorTitle": "Não foi possível carregar a loja",
   "storeHomeEmptyTitle": "Loja em preparação",
   "storeHomeEmptyMessage": "Volte em breve para conferir os produtos oficiais.",
   "storeMyPurchasesTitle": "Minhas Compras",
   "storeSectionCategories": "Categorias",
-
   "storeSearchHint": "Buscar na Goiás Store",
   "storeListingDefaultTitle": "Produtos",
   "storeSearchEmptyTitle": "Busque por produtos",
@@ -1175,7 +1669,6 @@
   "storeSortLabel": "Ordenar",
   "storeFiltersLabel": "Filtros",
   "storeFiltersLabelCount": "Filtros ({count})",
-
   "storeSortSheetTitle": "Ordenar por",
   "storeFiltersSheetTitle": "Filtros",
   "storeClearFilters": "Limpar filtros",
@@ -1194,7 +1687,6 @@
   "storeSortPriceLowToHigh": "Menor preço",
   "storeSortPriceHighToLow": "Maior preço",
   "storeSortBiggestDiscount": "Maior desconto",
-
   "storeAudienceMasculine": "Masculino",
   "storeAudienceFeminine": "Feminino",
   "storeAudienceKids": "Infantil",
@@ -1214,18 +1706,15 @@
   "storeCollectionPlayer": "Jogador",
   "storeCollectionTrainingTravel": "Treino, viagem e concentração",
   "storeCollectionSocksGloves": "Meias e luvas",
-
   "storeShippingEconomyLabel": "Econômica",
   "storeShippingStandardLabel": "Padrão",
   "storeShippingExpressLabel": "Expressa",
   "storeShippingEconomyEta": "7 a 10 dias úteis",
   "storeShippingStandardEta": "4 a 7 dias úteis",
   "storeShippingExpressEta": "2 a 3 dias úteis",
-
   "storeBadgeSoldOut": "Esgotado",
   "storeBadgeOnSale": "Promoção",
   "storeInstallmentsLabel": "em até {count}x de {value}",
-
   "storeProductLoadErrorTitle": "Não foi possível carregar este produto",
   "storeProductLoadErrorMessage": "Volte e tente novamente.",
   "storeOrderCreateErrorTitle": "Não foi possível confirmar seu pedido",
@@ -1234,7 +1723,17 @@
   "storeProductSoldOut": "Este produto está esgotado no momento.",
   "storeProductPhotoLabel": "{name}, foto {index} de {total}",
   "@storeProductPhotoLabel": {
-    "placeholders": { "name": { "type": "String" }, "index": { "type": "int" }, "total": { "type": "int" } }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
   },
   "storeZoomImageHint": "Toque para ampliar",
   "storeShareProduct": "Compartilhar produto",
@@ -1254,7 +1753,6 @@
   "storeChooseSizeMessage": "Selecione um tamanho antes de adicionar à sacola.",
   "storeBuyNowButton": "Comprar agora",
   "storeVariationSoldOut": "Essa variação está esgotada.",
-
   "storeCartTitle": "SACOLA",
   "storeCartEmptyTitle": "Sua sacola está vazia",
   "storeCartEmptyMessage": "Escolha seus produtos oficiais e carregue o Verdão com você.",
@@ -1277,7 +1775,6 @@
   "storeFree": "Grátis",
   "storeShippingLabel": "Frete",
   "storePickupWord": "Retirada",
-
   "storeStepIdentification": "Identificação",
   "storeStepDelivery": "Entrega",
   "storeStepPayment": "Pagamento",
@@ -1300,7 +1797,6 @@
   "storePickupBySelf": "Retirada pelo próprio titular",
   "storePickupByOther": "Retirada por {name}",
   "storePickupAddressPrefix": "Retirar em: {address}",
-
   "storePaymentPix": "Pix",
   "storeCreditCard": "Cartão de crédito",
   "storeDemoDisclaimer": "Ambiente demonstrativo. Nenhuma cobrança será realizada.",
@@ -1319,7 +1815,6 @@
   "storeCardApprovedWithDigits": "Cartão final {digits} aprovado (simulado).",
   "storeCardFinalDigits": "Cartão de crédito final {digits}",
   "storeCardSummaryLine": "Cartão de crédito final {digits} · {installments}x",
-
   "storeConfirmOrderButton": "Confirmar pedido",
   "storeEdit": "Editar",
   "storeAcceptTerms": "Li e aceito os termos de compra da Goiás Store.",
@@ -1329,7 +1824,6 @@
   "storeTrackOrderButton": "Acompanhar pedido",
   "storeContinueShoppingButton": "Continuar comprando",
   "storeBackHomeButton": "Voltar ao início",
-
   "storeOrdersTitle": "MEUS PEDIDOS",
   "storeOrdersEmptyTitle": "Você ainda não fez nenhum pedido",
   "storeOrdersEmptyMessage": "Seus pedidos na Goiás Store aparecerão aqui.",
@@ -1338,7 +1832,6 @@
   "storeCustomerLabel": "Cliente",
   "storeStatusStepDone": "concluído",
   "storeStatusStepPending": "pendente",
-
   "storeStatusCreated": "Pedido realizado",
   "storeStatusPaymentPending": "Aguardando pagamento",
   "storeStatusPaid": "Pagamento aprovado",
@@ -1348,7 +1841,6 @@
   "storeStatusDeliveredPickup": "Retirado",
   "storeStatusDeliveredShipping": "Entregue",
   "storeStatusCancelled": "Cancelado",
-
   "storeAddressesTitle": "ENDEREÇOS DE ENTREGA",
   "storeAddressesSubtitle": "Escolha onde deseja receber seus pedidos.",
   "storeAddressesEmptyTitle": "Nenhum endereço salvo",
@@ -1375,14 +1867,12 @@
   "storeChooseDeliveryAddressTitle": "ESCOLHA ONDE RECEBER",
   "storeNoDeliveryAddressTitle": "Você ainda não possui endereço de entrega.",
   "storeAddAnotherAddress": "Adicionar outro endereço",
-
   "storeValFullNameRequired": "Informe o nome completo.",
   "storeValFullNameIncomplete": "Informe nome e sobrenome.",
   "storeValPhoneInvalid": "Telefone inválido.",
   "storeValCpfRequired": "Informe o CPF.",
   "storeValCpfInvalid": "CPF inválido.",
   "storeValZipInvalid": "CEP inválido.",
-
   "releaseGateTitle": "Atualização necessária",
   "releaseGateMessage": "Esta versão do app não é mais suportada. Atualize para continuar.",
   "releaseGateUpdateButton": "Atualizar agora"

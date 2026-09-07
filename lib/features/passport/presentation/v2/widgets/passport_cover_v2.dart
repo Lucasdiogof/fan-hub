@@ -6,6 +6,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
 import 'package:goias_app/features/passport/domain/passport_level.dart';
+import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_level_style.dart';
 
 /// Capa do passaporte — inspirada num cartão de identidade do torcedor, não
@@ -186,14 +187,14 @@ class PassportCoverV2 extends StatelessWidget {
                             ),
                           ),
                           _LevelBadge(
-                            label: passportLevelLabel(l10n, level),
+                            label: passportLevelLabel(context.passportCopy, level),
                             style: levelStyle,
                           ),
                         ],
                       ),
                       const SizedBox(height: AppSpacing.md),
                       Text(
-                        l10n.passportCoverMatchesLived(summary.totalMatches),
+                        context.passportCopy.matchesLived(summary.totalMatches),
                         style: const TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.w900,

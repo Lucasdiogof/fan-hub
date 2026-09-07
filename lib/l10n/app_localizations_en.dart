@@ -783,13 +783,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaRankingUnknownFan => 'Fan';
 
   @override
-  String get passportTitle => 'Passaporte Esmeraldino';
-
-  @override
-  String get passportCardDescription =>
-      'Mark the matches you lived with Goiás.';
-
-  @override
   String get passportCardCta => 'Open passport';
 
   @override
@@ -978,9 +971,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passportTrajectoryListEmpty => 'No games here yet';
 
   @override
-  String get passportTrajectoryShareText => 'This is my journey with Goiás! 💚';
-
-  @override
   String get passportTrajectoryShareAction => 'Share';
 
   @override
@@ -996,37 +986,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passportCoverEyebrow => 'MY PASSPORT';
 
   @override
-  String passportCoverMatchesLived(num count) {
-    String _temp0 = intl.Intl.pluralLogic(
-      count,
-      locale: localeName,
-      other: '$count matches singing and roaring with Verdão',
-      one: '1 match singing and roaring with Verdão',
-    );
-    return '$_temp0';
-  }
-
-  @override
-  String get passportLevelStarter => 'First Steps';
-
-  @override
-  String get passportLevelPresent => 'Regular Supporter';
-
-  @override
-  String get passportLevelBleacher => 'Bleacher Esmeraldino';
-
-  @override
-  String get passportLevelRoots => 'Verdão Roots';
-
-  @override
-  String get passportLevelLegend => 'Esmeraldino Legend';
-
-  @override
   String get passportEmptyHeadline => 'Every fan has a story.';
-
-  @override
-  String get passportEmptyBody =>
-      'Mark the matches you lived with Verdão and build your Passaporte Esmeraldino.';
 
   @override
   String get passportChangeSeasonCta => 'Change season';

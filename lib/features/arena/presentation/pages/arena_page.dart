@@ -1,13 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
+import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/router/route_observer.dart';
-import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/data/arena_catalog.dart';
@@ -28,8 +27,6 @@ import 'package:goias_app/features/arena/games/quiz/pages/quiz_level_page.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/cubit/tactical_identity_cubit.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
-import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
-import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_challenge_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_header_bar.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_highlight_card.dart';
@@ -37,15 +34,18 @@ import 'package:goias_app/features/arena/presentation/widgets/arena_section_head
 import 'package:goias_app/features/arena/presentation/widgets/crowd_lineup_hero_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/player_identity_arena_card.dart';
 import 'package:goias_app/features/arena/presentation/widgets/tactical_identity_arena_card.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/presentation/cubit/ranking_cubit.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/features/crowd_lineup/domain/repositories/crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/open_crowd_lineup.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_state.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
+import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
-import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/global_loading.dart';
 
 class ArenaPage extends StatefulWidget {
   const ArenaPage({super.key});
@@ -393,8 +393,8 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                             size: 24,
                           ),
                         ),
-                        title: context.l10n.passportTitle,
-                        description: context.l10n.passportCardDescription,
+                        title: context.passportCopy.title,
+                        description: context.passportCopy.cardDescription,
                         ctaLabel: context.l10n.passportCardCta,
                         onTap: () => context.push('/arena/passport'),
                       ),

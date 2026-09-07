@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,15 +15,16 @@ import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
+import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 import 'package:goias_app/features/profile/presentation/cubit/address_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/widgets/profile_avatar_header.dart';
 import 'package:goias_app/features/profile/presentation/widgets/social_links_section.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -284,7 +284,7 @@ class _JourneySection extends StatelessWidget {
       if (capabilities.hasPassport)
         _MenuRow(
           icon: Icons.menu_book_outlined,
-          label: context.l10n.passportTitle,
+          label: context.passportCopy.title,
           onTap: () => context.push('/arena/passport'),
         ),
     ];

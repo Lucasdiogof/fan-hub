@@ -1558,18 +1558,6 @@ abstract class AppLocalizations {
   /// **'Torcedor'**
   String get arenaRankingUnknownFan;
 
-  /// No description provided for @passportTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Passaporte Esmeraldino'**
-  String get passportTitle;
-
-  /// No description provided for @passportCardDescription.
-  ///
-  /// In pt, this message translates to:
-  /// **'Marque os jogos que você viveu com o Verdão.'**
-  String get passportCardDescription;
-
   /// No description provided for @passportCardCta.
   ///
   /// In pt, this message translates to:
@@ -1888,12 +1876,6 @@ abstract class AppLocalizations {
   /// **'Nenhum jogo por aqui ainda'**
   String get passportTrajectoryListEmpty;
 
-  /// No description provided for @passportTrajectoryShareText.
-  ///
-  /// In pt, this message translates to:
-  /// **'Essa é a minha trajetória com o Goiás! 💚'**
-  String get passportTrajectoryShareText;
-
   /// No description provided for @passportTrajectoryShareAction.
   ///
   /// In pt, this message translates to:
@@ -1918,53 +1900,11 @@ abstract class AppLocalizations {
   /// **'MEU PASSAPORTE'**
   String get passportCoverEyebrow;
 
-  /// No description provided for @passportCoverMatchesLived.
-  ///
-  /// In pt, this message translates to:
-  /// **'{count, plural, =0{Nenhum jogo vivido ainda com o Verdão} =1{1 jogo cantando e vibrando com o Verdão} other{{count} jogos cantando e vibrando com o Verdão}}'**
-  String passportCoverMatchesLived(num count);
-
-  /// No description provided for @passportLevelStarter.
-  ///
-  /// In pt, this message translates to:
-  /// **'Primeiros Passos'**
-  String get passportLevelStarter;
-
-  /// No description provided for @passportLevelPresent.
-  ///
-  /// In pt, this message translates to:
-  /// **'Torcedor Presente'**
-  String get passportLevelPresent;
-
-  /// No description provided for @passportLevelBleacher.
-  ///
-  /// In pt, this message translates to:
-  /// **'Esmeraldino de Arquibancada'**
-  String get passportLevelBleacher;
-
-  /// No description provided for @passportLevelRoots.
-  ///
-  /// In pt, this message translates to:
-  /// **'Verdão Raiz'**
-  String get passportLevelRoots;
-
-  /// No description provided for @passportLevelLegend.
-  ///
-  /// In pt, this message translates to:
-  /// **'Lenda Esmeraldina'**
-  String get passportLevelLegend;
-
   /// No description provided for @passportEmptyHeadline.
   ///
   /// In pt, this message translates to:
   /// **'Todo torcedor tem uma história.'**
   String get passportEmptyHeadline;
-
-  /// No description provided for @passportEmptyBody.
-  ///
-  /// In pt, this message translates to:
-  /// **'Marque os jogos que você viveu com o Verdão e construa seu Passaporte Esmeraldino.'**
-  String get passportEmptyBody;
 
   /// No description provided for @passportChangeSeasonCta.
   ///

@@ -7,6 +7,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_state.dart';
+import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 import 'package:goias_app/features/passport/presentation/passport_discard_dialog.dart';
 import 'package:goias_app/features/passport/presentation/passport_month_grouping.dart';
 import 'package:goias_app/features/passport/presentation/v1/widgets/passport_filter_bar_v1.dart';
@@ -16,10 +17,10 @@ import 'package:goias_app/features/passport/presentation/v1/widgets/passport_sum
 import 'package:goias_app/features/passport/presentation/v1/widgets/passport_year_selector_v1.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Tela principal do Passaporte Esmeraldino — inspirada no Futbology, mas
 /// com identidade própria: ano selecionado, filtros, lista agrupada por
@@ -119,7 +120,7 @@ class _PassportView extends StatelessWidget {
                     ),
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: PageTitle(context.l10n.passportTitle),
+                      child: PageTitle(context.passportCopy.title),
                     ),
                   ),
                   Expanded(

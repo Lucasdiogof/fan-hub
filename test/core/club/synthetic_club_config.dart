@@ -3,11 +3,12 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
-import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'synthetic_passport_content.dart';
 
 /// Clube sintético/neutro pra testes de tenant-scope e isolamento de
 /// identidade (M3.1 + M4.1) — nunca um time real, nunca cadastrado em
@@ -134,4 +135,5 @@ const syntheticClubBConfig = ClubConfig(
     storeName: 'Club B Store',
     membershipProgramName: 'Sócio B',
   ),
+  passportContent: syntheticPassportContent,
 );

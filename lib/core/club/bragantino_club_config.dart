@@ -3,11 +3,11 @@ import 'package:goias_app/core/club/club_assets.dart';
 import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
-import 'package:goias_app/core/club/club_institutional_content.dart';
-import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/club_identity.dart';
+import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
+import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/club/data/bragantino_history_data.dart';
 import 'package:goias_app/features/club/data/bragantino_idols_data.dart';
@@ -15,6 +15,7 @@ import 'package:goias_app/features/club/data/bragantino_songs_data.dart';
 import 'package:goias_app/features/club/data/bragantino_timeline_data.dart';
 import 'package:goias_app/features/club/data/bragantino_titles_data.dart';
 import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
+import 'package:goias_app/features/passport/data/bragantino_passport_content.dart';
 
 // ============================================================================
 // Red Bull Bragantino — 2ª entrada REAL do clubRegistry (onboarding M4).
@@ -228,7 +229,13 @@ const bragantinoClubConfig = ClubConfig(
     hasStore: false,
     hasTickets: false,
     hasCrowdLineup: false,
-    hasPassport: false,
+    // 2026-09-07: as 186 partidas e os 49 estádios do Bragantino estão no
+    // Supabase dele, a auditoria pós-importação passou, e a identidade da
+    // tela agora é própria do clube (`bragantinoPassportContent`: "Passaporte
+    // Massa Bruta", "Braga Raiz", "Lenda da Massa Bruta") — nada mais lê as
+    // strings do Goiás. Falta só o teste autenticado do dono antes de marcar
+    // como confirmado em produção.
+    hasPassport: true,
     hasNews: false,
     hasSocial: false,
     // 2026-09-05: história/títulos/hino têm conteúdo real e pesquisado
@@ -261,6 +268,7 @@ const bragantinoClubConfig = ClubConfig(
     storeName: 'Loja',
     membershipProgramName: 'Sócio',
   ),
+  passportContent: BragantinoPassportContent.content,
   institutionalContent: ClubInstitutionalContent(
     history: BragantinoHistoryData.sections,
     timeline: BragantinoTimelineData.events,

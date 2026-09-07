@@ -4,15 +4,15 @@ import 'package:goias_app/features/passport/domain/passport_level.dart';
 void main() {
   group('passportLevelForMatches — boundaries', () {
     final cases = {
-      0: PassportLevel.primeirosPassos,
-      9: PassportLevel.primeirosPassos,
-      10: PassportLevel.torcedorPresente,
-      24: PassportLevel.torcedorPresente,
-      25: PassportLevel.esmeraldinoDeArquibancada,
-      49: PassportLevel.esmeraldinoDeArquibancada,
-      50: PassportLevel.verdaoRaiz,
-      99: PassportLevel.verdaoRaiz,
-      100: PassportLevel.lendaEsmeraldina,
+      0: PassportLevel.starter,
+      9: PassportLevel.starter,
+      10: PassportLevel.present,
+      24: PassportLevel.present,
+      25: PassportLevel.bleacher,
+      49: PassportLevel.bleacher,
+      50: PassportLevel.roots,
+      99: PassportLevel.roots,
+      100: PassportLevel.legend,
     };
 
     for (final entry in cases.entries) {
@@ -24,16 +24,16 @@ void main() {
     test('43 jogos (caso real) → esmeraldinoDeArquibancada', () {
       expect(
         passportLevelForMatches(43),
-        PassportLevel.esmeraldinoDeArquibancada,
+        PassportLevel.bleacher,
       );
     });
 
     test('um número bem grande continua lendaEsmeraldina', () {
-      expect(passportLevelForMatches(500), PassportLevel.lendaEsmeraldina);
+      expect(passportLevelForMatches(500), PassportLevel.legend);
     });
 
     test('nunca recebe negativo, mas não deve quebrar se receber', () {
-      expect(passportLevelForMatches(-1), PassportLevel.primeirosPassos);
+      expect(passportLevelForMatches(-1), PassportLevel.starter);
     });
   });
 }
