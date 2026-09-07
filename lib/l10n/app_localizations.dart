@@ -4803,6 +4803,24 @@ abstract class AppLocalizations {
   /// **'Hino e músicas que embalam a torcida.'**
   String get clubSongsSubtitle;
 
+  /// No description provided for @clubSectionIdols.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ídolos'**
+  String get clubSectionIdols;
+
+  /// No description provided for @clubIdolsSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nomes que marcaram a história do clube.'**
+  String get clubIdolsSubtitle;
+
+  /// No description provided for @clubIdolsCount.
+  ///
+  /// In pt, this message translates to:
+  /// **'{count, plural, =1{1 ídolo} other{{count} ídolos}}'**
+  String clubIdolsCount(int count);
+
   /// No description provided for @clubAnthemSection.
   ///
   /// In pt, this message translates to:

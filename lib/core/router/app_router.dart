@@ -48,6 +48,7 @@ import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/domain/entities/club_transparency_topic.dart';
 import 'package:goias_app/features/club/presentation/pages/club_diretoria_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_history_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_idols_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_transparency_document_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_transparency_page.dart';
@@ -593,6 +594,11 @@ GoRouter createAppRouter(
             path: '/clube/titulos',
             pageBuilder: (context, state) =>
                 appPage(state, const ClubTitlesPage()),
+          ),
+          GoRoute(
+            path: '/clube/idolos',
+            pageBuilder: (context, state) =>
+                appPage(state, const ClubIdolsPage()),
           ),
           GoRoute(
             path: '/clube/diretoria',

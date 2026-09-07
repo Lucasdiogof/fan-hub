@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -13,6 +14,11 @@ void main() {
     await sl.reset();
     sl.registerSingleton<ClubConfig>(goiasClubConfig);
   });
+
+  Future<void> useClub(ClubConfig config) async {
+    await sl.reset();
+    sl.registerSingleton<ClubConfig>(config);
+  }
 
   Widget wrap() {
     final router = GoRouter(
@@ -34,6 +40,11 @@ void main() {
         GoRoute(
           path: '/clube/titulos',
           builder: (context, state) => const Scaffold(body: Text('Títulos')),
+        ),
+        GoRoute(
+          path: '/clube/idolos',
+          builder: (context, state) =>
+              const Scaffold(body: Text('Página de Ídolos')),
         ),
         GoRoute(
           path: '/clube/hino',
@@ -66,9 +77,7 @@ void main() {
     await tester.pumpWidget(wrap());
 
     expect(find.text('GOIÁS ESPORTE CLUBE'), findsOneWidget);
-    final headerCrest = tester.widget<Image>(
-      find.byType(Image).first,
-    );
+    final headerCrest = tester.widget<Image>(find.byType(Image).first);
     expect(
       (headerCrest.image as AssetImage).assetName,
       goiasClubConfig.assets.crestBadge,
@@ -108,5 +117,28 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Hino'), findsOneWidget);
+  });
+
+  testWidgets('Bragantino ganha a entrada de Ídolos (dataset próprio)', (
+    tester,
+  ) async {
+    useTallSurface(tester);
+    await useClub(bragantinoClubConfig);
+    await tester.pumpWidget(wrap());
+    await tester.pumpAndSettle();
+
+    expect(find.text('Ídolos'), findsOneWidget);
+  });
+
+  testWidgets('tocar em Ídolos navega pra página de Ídolos', (tester) async {
+    useTallSurface(tester);
+    await useClub(bragantinoClubConfig);
+    await tester.pumpWidget(wrap());
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Ídolos'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Página de Ídolos'), findsOneWidget);
   });
 }
