@@ -116,6 +116,58 @@ void main() {
     expect(text.style?.fontWeight, FontWeight.w800);
   });
 
+  // O destaque de "hoje" sumia exatamente no dia de jogo: a célula troca o
+  // número pelo escudo e levava junto a decoração, então o dia mais
+  // importante do mês era o único sem marcação.
+  testWidgets('dia de jogo que é hoje mantém o destaque de hoje', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      _wrap(
+        CalendarDayCell(
+          date: DateTime(2026, 8, 15),
+          matches: [_match],
+          isToday: true,
+          onMatchTap: (_) {},
+        ),
+      ),
+    );
+
+    final decorated = tester
+        .widgetList<DecoratedBox>(find.byType(DecoratedBox))
+        .map((w) => w.decoration)
+        .whereType<BoxDecoration>()
+        .where((d) => d.border != null)
+        .toList();
+    expect(
+      decorated,
+      isNotEmpty,
+      reason: 'dia de jogo em que hoje bate precisa continuar contornado',
+    );
+    // E o escudo continua lá — o destaque não substitui a informação.
+    expect(find.byType(InkWell), findsOneWidget);
+  });
+
+  testWidgets('dia de jogo que NÃO é hoje não ganha contorno', (tester) async {
+    await tester.pumpWidget(
+      _wrap(
+        CalendarDayCell(
+          date: DateTime(2026, 8, 15),
+          matches: [_match],
+          isToday: false,
+          onMatchTap: (_) {},
+        ),
+      ),
+    );
+
+    final bordered = tester
+        .widgetList<DecoratedBox>(find.byType(DecoratedBox))
+        .map((w) => w.decoration)
+        .whereType<BoxDecoration>()
+        .where((d) => d.border != null);
+    expect(bordered, isEmpty);
+  });
+
   testWidgets('célula vazia (fora do mês) não renderiza nada', (tester) async {
     await tester.pumpWidget(
       _wrap(

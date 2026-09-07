@@ -44,13 +44,7 @@ class CalendarDayCell extends StatelessWidget {
           width: 24,
           height: 24,
           alignment: Alignment.center,
-          decoration: isToday
-              ? BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: colors.primary.withValues(alpha: 0.14),
-                  border: Border.all(color: colors.primary, width: 1.2),
-                )
-              : null,
+          decoration: isToday ? _todayDecoration(colors, circle: true) : null,
           child: Text(
             '${date.day}',
             style: TextStyle(
@@ -63,9 +57,29 @@ class CalendarDayCell extends StatelessWidget {
       );
     }
 
+    // Dia de jogo que também é hoje precisa continuar marcado como hoje. Sem
+    // isso o destaque some justamente no dia mais importante do mês: a
+    // célula troca o número pelo escudo e leva junto o círculo. O contorno é
+    // arredondado em vez de circular só porque aqui o conteúdo é um bloco
+    // (escudo + pill), não um dígito — a cor e a espessura são as mesmas, pra
+    // ler como a mesma marcação.
     return Padding(
       padding: const EdgeInsets.all(2),
-      child: _MatchIndicator(match: match, onTap: onMatchTap),
+      child: DecoratedBox(
+        decoration: isToday
+            ? _todayDecoration(colors, circle: false)
+            : const BoxDecoration(),
+        child: _MatchIndicator(match: match, onTap: onMatchTap),
+      ),
+    );
+  }
+
+  BoxDecoration _todayDecoration(AppColors colors, {required bool circle}) {
+    return BoxDecoration(
+      shape: circle ? BoxShape.circle : BoxShape.rectangle,
+      borderRadius: circle ? null : BorderRadius.circular(12),
+      color: colors.primary.withValues(alpha: 0.14),
+      border: Border.all(color: colors.primary, width: 1.2),
     );
   }
 }
