@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/passport/domain/entities/passport_match.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_state.dart';
 import 'package:goias_app/features/passport/presentation/passport_discard_dialog.dart';
+import 'package:goias_app/features/passport/presentation/passport_month_grouping.dart';
 import 'package:goias_app/features/passport/presentation/v1/widgets/passport_filter_bar_v1.dart';
 import 'package:goias_app/features/passport/presentation/v1/widgets/passport_match_row_v1.dart';
 import 'package:goias_app/features/passport/presentation/v1/widgets/passport_save_bar_v1.dart';
@@ -268,22 +267,20 @@ class _MatchList extends StatelessWidget {
       );
     }
 
-    final locale = Localizations.localeOf(context).toLanguageTag();
-    final groups = <String, List<PassportMatch>>{};
-    for (final match in matches) {
-      final label = DateFormat.yMMMM(locale).format(match.matchDate);
-      (groups[label] ??= []).add(match);
-    }
+    final entries = groupMatchesByMonth(
+      matches,
+      Localizations.localeOf(context).toLanguageTag(),
+    );
 
     final cubit = context.read<PassportCubit>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        for (final entry in groups.entries) ...[
+        for (final entry in entries) ...[
           Padding(
             padding: const EdgeInsets.only(bottom: 6, top: AppSpacing.md),
             child: Text(
-              entry.key[0].toUpperCase() + entry.key.substring(1),
+              entry.label,
               style: TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w800,
@@ -300,12 +297,12 @@ class _MatchList extends StatelessWidget {
             ),
             child: Column(
               children: [
-                for (var i = 0; i < entry.value.length; i++) ...[
+                for (var i = 0; i < entry.matches.length; i++) ...[
                   if (i > 0) Divider(height: 1, color: context.colors.border),
                   PassportMatchRowV1(
-                    match: entry.value[i],
-                    attended: state.effectiveAttended(entry.value[i]),
-                    onToggle: () => cubit.toggleAttendance(entry.value[i]),
+                    match: entry.matches[i],
+                    attended: state.effectiveAttended(entry.matches[i]),
+                    onToggle: () => cubit.toggleAttendance(entry.matches[i]),
                   ),
                 ],
               ],

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_breakpoints.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/passport/domain/entities/passport_match.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_state.dart';
 import 'package:goias_app/features/passport/presentation/passport_discard_dialog.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_cover_v2.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_empty_v2.dart';
+import 'package:goias_app/features/passport/presentation/passport_month_grouping.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_month_group_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_save_bar_v2.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_season_selector_v2.dart';
@@ -360,23 +359,19 @@ class _MatchTimelineV2 extends StatelessWidget {
       );
     }
 
-    final locale = Localizations.localeOf(context).toLanguageTag();
-    final groups = <String, List<PassportMatch>>{};
-    for (final match in matches) {
-      final label = DateFormat.yMMMM(locale).format(match.matchDate);
-      (groups[label] ??= []).add(match);
-    }
+    final entries = groupMatchesByMonth(
+      matches,
+      Localizations.localeOf(context).toLanguageTag(),
+    );
     final cubit = context.read<PassportCubit>();
-    final entries = groups.entries.toList(growable: false);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         for (var i = 0; i < entries.length; i++)
           PassportMonthGroupV2(
-            label:
-                entries[i].key[0].toUpperCase() + entries[i].key.substring(1),
-            matches: entries[i].value,
+            label: entries[i].label,
+            matches: entries[i].matches,
             effectiveAttended: state.effectiveAttended,
             onToggle: cubit.toggleAttendance,
             isLast: i == entries.length - 1,
