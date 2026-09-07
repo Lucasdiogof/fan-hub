@@ -62,3 +62,8 @@ scratchpad/
 # connection string do Postgres COM SENHA em texto puro (.temp/pooler-url).
 # Nunca deve ir pro git.
 supabase/.temp/
+
+# Segredos locais (token do X, chaves de teste). Nunca versionar.
+.env
+.env.*
+!.env.example
