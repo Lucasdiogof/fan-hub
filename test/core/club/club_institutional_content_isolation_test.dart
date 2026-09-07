@@ -308,6 +308,16 @@ void main() {
           if (goiasPartner.name == 'Unimed') continue;
           expect(find.text(goiasPartner.name), findsNothing);
         }
+        // Regressão 2026-09-07: o subtítulo da página era um l10n global
+        // hardcoded ("Brands that walk alongside Goiás."), nunca checado
+        // aqui porque o teste só olhava os NOMES dos parceiros, não o
+        // texto ao redor.
+        expect(find.textContaining('Goiás', skipOffstage: false), findsNothing);
+        expect(
+          find.textContaining('Verdão', skipOffstage: false),
+          findsNothing,
+        );
+        expect(find.textContaining('Bragantino'), findsWidgets);
       },
     );
   });
@@ -352,21 +362,22 @@ void main() {
       },
     );
 
-    test(
-      'Lincom é ídolo, mas NUNCA carrega estatística numérica na descrição',
-      () {
-        final lincom = bragantinoClubConfig.institutionalContent.idols
-            .firstWhere((i) => i.name == 'Lincom');
-        expect(lincom.evidenceExplicitIdol, isTrue);
-        expect(
-          RegExp(r'\d').hasMatch(lincom.description),
-          isFalse,
-          reason:
-              'conflito estatístico aberto (73 gols / 133+ jogos) não pode '
-              'aparecer como fato publicado: "${lincom.description}"',
-        );
-      },
-    );
+    test('Lincom: estatística RESOLVIDA em 2026-09-07 — 160 jogos/72 gols como '
+        'contador principal, 73 preservado só como nota de auditoria', () {
+      final lincom = bragantinoClubConfig.institutionalContent.idols.firstWhere(
+        (i) => i.name == 'Lincom',
+      );
+      expect(lincom.evidenceExplicitIdol, isTrue);
+      expect(lincom.description, contains('160 jogos'));
+      expect(lincom.description, contains('72 gols'));
+      expect(
+        lincom.description,
+        contains('73'),
+        reason:
+            'a divergência de 73 gols precisa continuar preservada como '
+            'nota de auditoria, nunca apagada silenciosamente',
+      );
+    });
 
     test('nomes sem evidência explícita nunca usam a formulação forte de '
         '"ídolo" na descrição — só destaque/geração histórica', () {
@@ -382,7 +393,8 @@ void main() {
       }
     });
 
-    test('tier 1 tem exatamente os 8 nomes fortes do levantamento', () {
+    test('tier 1 tem exatamente os 15 nomes fortes do levantamento '
+        '(8 originais + 7 promovidos em 2026-09-07, nunca substituídos)', () {
       final tier1Names = bragantinoClubConfig.institutionalContent.idols
           .where((i) => i.tier == 1)
           .map((i) => i.name)
@@ -396,14 +408,21 @@ void main() {
         'Marcelo',
         'Mazinho',
         'Luís Müller',
+        'Biro-Biro',
+        'Ivair',
+        'Ytalo',
+        'Claudinho',
+        'Artur',
+        'Léo Ortiz',
+        'Aderlan',
       });
     });
 
-    test('26 nomes ao todo (8 tier 1 + 12 tier 2 + 6 tier 3)', () {
+    test('26 nomes ao todo (15 tier 1 + 5 tier 2 + 6 tier 3)', () {
       final idols = bragantinoClubConfig.institutionalContent.idols;
       expect(idols.length, 26);
-      expect(idols.where((i) => i.tier == 1).length, 8);
-      expect(idols.where((i) => i.tier == 2).length, 12);
+      expect(idols.where((i) => i.tier == 1).length, 15);
+      expect(idols.where((i) => i.tier == 2).length, 5);
       expect(idols.where((i) => i.tier == 3).length, 6);
     });
   });

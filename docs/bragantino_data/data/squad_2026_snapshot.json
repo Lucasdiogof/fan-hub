@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-07",
+  "snapshot_kind": "CURRENT_ACTIVE_EVIDENCE",
+  "coach": "Vagner Mancini",
+  "players": [
+    {
+      "name": "Tiago Volpi",
+      "position": "GOL",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Andrés Hurtado",
+      "position": "LD",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Ryan",
+      "position": "LD",
+      "evidence": "used vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Alix Vinícius",
+      "position": "ZAG",
+      "evidence": "captain/starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Gustavo Marques",
+      "position": "ZAG",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Juninho Capixaba",
+      "position": "LE",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Fabinho",
+      "position": "VOL",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Rodriguinho",
+      "position": "MEI",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Gustavo Neves",
+      "position": "MEI",
+      "evidence": "used vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Lucas Barbosa",
+      "position": "ATA",
+      "evidence": "starter/scorer vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Jhuan Nunes",
+      "position": "ATA",
+      "evidence": "used vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Herrera",
+      "position": "ATA",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Henry Mosquera",
+      "position": "ATA",
+      "evidence": "used vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Fernando",
+      "position": "ATA",
+      "shirt_number": 11,
+      "contract_until": "2028-12-31",
+      "club_matches_as_of_2026-09-03": 44,
+      "club_goals_as_of_2026-09-03": 7,
+      "season_2026_goals_as_of_2026-09-03": 7
+    },
+    {
+      "name": "Wallace Yan",
+      "position": "MEI/ATA",
+      "contract_until": "2031-08",
+      "joined": "2026-09-02",
+      "evidence": "starter vs Bahia 2026-09-05"
+    },
+    {
+      "name": "Vinicinho",
+      "position": "ATA",
+      "shirt_number": 17,
+      "evidence": "used vs Bahia 2026-09-05; official interview 2026-08-27"
+    },
+    {
+      "name": "Isidro Pitta",
+      "position": "ATA",
+      "evidence": "active in Sudamericana 2026; official match report 2026-08-19"
+    },
+    {
+      "name": "Agustín Sant’Anna",
+      "position": "LD",
+      "evidence": "active in Sudamericana 2026; official match report 2026-08-19"
+    }
+  ],
+  "departures_recent": [
+    {
+      "name": "Pedro Henrique",
+      "position": "ZAG",
+      "destination": "Al Ettifaq",
+      "transfer_date": "2026-09-06",
+      "club_matches_total_including_2015_spell": 115,
+      "club_goals": 5
+    }
+  ],
+  "publishing_rule": "This file is a freshness-safe activity snapshot, not an assertion that omitted registered players left the club. Merge with app roster registry before destructive replacement."
+}

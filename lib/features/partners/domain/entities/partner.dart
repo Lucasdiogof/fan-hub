@@ -3,8 +3,10 @@
 /// FABRICA o material esportivo (camisa/uniforme) — categoria à parte
 /// porque é sempre um fato público e verificável, ao contrário de
 /// "patrocinador master/principal", que exigiria saber valor de contrato
-/// pra classificar com segurança.
-enum PartnerCategory { sponsor, kitSupplier }
+/// pra classificar com segurança. `shirtSponsor`/`academySponsor` só
+/// existem quando a própria fonte já classifica explicitamente o
+/// posicionamento contratual (nunca inferido pela gente).
+enum PartnerCategory { sponsor, kitSupplier, shirtSponsor, academySponsor }
 
 class Partner {
   const Partner({

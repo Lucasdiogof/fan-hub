@@ -1,15 +1,16 @@
 {
-  "generated_at": "2026-09-07T00:31:12.963Z",
+  "generated_at": "2026-09-07T22:24:59.273Z",
   "pool_source": "tooling/bragantino_passport/source/lineup_shortlist_v2.json",
-  "avaliadas": 123,
+  "avaliadas": 138,
   "publicaveis": 0,
-  "rejeitadas": 123,
+  "rejeitadas": 138,
   "motivos": {
-    "SEM_FORMACAO": 123,
-    "SEM_POSICAO_POR_JOGADOR": 123
+    "SEM_FORMACAO": 138,
+    "SEM_POSICAO_POR_JOGADOR": 138
   },
   "por_categoria": {
-    "RECENT": 123
+    "RECENT": 123,
+    "HISTORICAL": 15
   },
   "detalhe": [
     {
@@ -1482,6 +1483,186 @@
       "competition": "Brasileirão Série A",
       "opponent": "Internacional",
       "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_1989-12-16_0",
+      "date": "1989-12-16",
+      "competition": "Serie B 1989 Final - ida",
+      "opponent": "Sao Jose",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_1989-12-20_1",
+      "date": "1989-12-20",
+      "competition": "Serie B 1989 Final - volta / titulo",
+      "opponent": "Sao Jose",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_1990-08-19_2",
+      "date": "1990-08-19",
+      "competition": "Paulista 1990 Final - ida",
+      "opponent": "Novorizontino",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_1990-08-26_3",
+      "date": "1990-08-26",
+      "competition": "Paulista 1990 Final - volta / titulo",
+      "opponent": "Novorizontino",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_1991-06-05_4",
+      "date": "1991-06-05",
+      "competition": "Brasileirao 1991 Final - ida",
+      "opponent": "Sao Paulo",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_1991-06-09_5",
+      "date": "1991-06-09",
+      "competition": "Brasileirao 1991 Final - volta",
+      "opponent": "Sao Paulo",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2007-11-25_6",
+      "date": "2007-11-25",
+      "competition": "Serie C 2007 fase final R13",
+      "opponent": "Barras",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2019-11-15_7",
+      "date": "2019-11-15",
+      "competition": "Serie B 2019 R36 / titulo",
+      "opponent": "Criciuma",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2021-09-22_8",
+      "date": "2021-09-22",
+      "competition": "Sul-Americana 2021 semifinal - ida",
+      "opponent": "Libertad",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2021-11-20_9",
+      "date": "2021-11-20",
+      "competition": "Sul-Americana 2021 Final",
+      "opponent": "Athletico-PR",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2023-03-15_10",
+      "date": "2023-03-15",
+      "competition": "Copa do Brasil 2023 2F",
+      "opponent": "Ypiranga-RS",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2024-03-13_11",
+      "date": "2024-03-13",
+      "competition": "Libertadores 2024 3E volta",
+      "opponent": "Botafogo",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2024-03-27_12",
+      "date": "2024-03-27",
+      "competition": "Paulista 2024 semifinal",
+      "opponent": "Santos",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2024-08-13_13",
+      "date": "2024-08-13",
+      "competition": "Sul-Americana 2024 oitavas - ida",
+      "opponent": "Corinthians",
+      "category": "HISTORICAL",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "ext_pkg_2025-02-20_14",
+      "date": "2025-02-20",
+      "competition": "Paulista 2025",
+      "opponent": "Mirassol",
+      "category": "HISTORICAL",
       "publishable": false,
       "reasons": [
         "SEM_FORMACAO",

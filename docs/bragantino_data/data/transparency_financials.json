@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "currency": "BRL",
+  "unit": "BRL",
+  "items": [
+    {
+      "year": 2025,
+      "net_revenue": 499199000,
+      "net_income": 31773000,
+      "source": "FPF / audited financial statements / BDO"
+    }
+  ],
+  "historical_reports_available": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "note": "Valores de 2025 convertidos de milhares de reais para reais. Relatórios históricos devem ser armazenados como links/documentos, não copiados integralmente."
+}

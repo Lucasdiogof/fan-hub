@@ -15,9 +15,27 @@ import 'package:goias_app/features/partners/domain/entities/partner.dart';
 ///
 /// 10 de ~19 têm `link` oficial exposto pela própria API (o resto vem
 /// `null` direto na fonte) — só esses entram como [Partner] de verdade.
-/// Os outros 9 (KNN Idiomas, TRENDX, RHODES, Nogalves, Lo Sardo,
-/// Humanitarian, Unimagem, Bellicasa, Curaprox) ficam de fora do model —
-/// DATA_GAP de URL, não de existência: todos têm nome/logo reais
+///
+/// Atualização 2026-09-07 (pacote `docs/bragantino_data/data/partners.json`,
+/// que já classifica o TIPO de relação contratual — algo que a raspagem da
+/// página "Parceiros" não trazia): KNN Idiomas e Curaprox saem do DATA_GAP
+/// de URL — busca confirmou domínio oficial real pra cada um (sem logo do
+/// CDN do clube ainda, cai no fallback de nome em texto). Farmina/N&D e
+/// Betfast CONTINUAM fora do model: Betfast tem múltiplos domínios
+/// conflitantes/afiliados retornando pra "site oficial de apostas" numa
+/// busca — risco real de linkar pro domínio errado (possível site de
+/// afiliado, não o operador de verdade) — nunca adivinhar nesse caso;
+/// Farmina/N&D segue sem link confirmado.
+///
+/// Red Bull (dono/marca controladora, não patrocinador comum) fica de
+/// FORA desta lista de propósito — colocá-lo na mesma grade visual dos
+/// parceiros comerciais reproduziria exatamente o erro que o usuário
+/// pediu pra evitar. Precisa de uma seção/tratamento visual próprio antes
+/// de entrar em qualquer lugar do app — decisão de produto em aberto, não
+/// um dado faltando.
+///
+/// Os 7 restantes (TRENDX, RHODES, Nogalves, Lo Sardo, Humanitarian,
+/// Unimagem, Bellicasa) seguem DATA_GAP de URL — nome/logo reais
 /// confirmados, só sem destino oficial pra abrir.
 ///
 /// `logoUrl`: nenhum logo baixado/versionado no repo — vem direto do CDN
@@ -48,6 +66,7 @@ class BragantinoPartnersData {
       url: 'https://www.asaas.com/parceiros/redbullbragantino',
       logoUrl:
           'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/4/9/sttqoyvrxewigmndoxxy/asaas',
+      category: PartnerCategory.shirtSponsor,
     ),
     Partner(
       name: 'Peluso Sperandio',
@@ -96,6 +115,16 @@ class BragantinoPartnersData {
       url: 'https://meuinglessobmedida.com.br/red-bull/',
       logoUrl:
           'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/2/4/uhguugeltbzukv5vkc8z/meu-ingles-sob-medida',
+    ),
+    Partner(
+      name: 'Curaprox',
+      url: 'https://www.loja.curaprox.com.br/',
+      category: PartnerCategory.academySponsor,
+    ),
+    Partner(
+      name: 'KNN Idiomas',
+      url: 'https://www.knnidiomas.com.br/',
+      category: PartnerCategory.academySponsor,
     ),
   ];
 }

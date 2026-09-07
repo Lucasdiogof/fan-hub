@@ -19,7 +19,19 @@ um arquivo `source/bragantino_passport_<ano>.json` + uma SQL de seed
 | 1 | 2026 | CLOSED | 59 | OneFootball (`api.onefootball.com/web-experience`) |
 | 2 | 2025 | CLOSED | 57 | oGol (`ogol.com.br/equipe/red-bull-bragantino`) |
 | 3 | 2024 | CLOSED | 70 | oGol |
-| 4 | 2023 | não iniciado (oGol rate-limitou a sessão no fim do lote 3 — ver abaixo) | — | oGol |
+| 4 | 2023 | BLOQUEADO — oGol respondeu 403 na última checagem (2026-09-07), não é mais o 503 de rate-limit original; não ficar reprovando "só pra ver" | — | oGol |
+
+## Controle de cobertura 2000-2026 (`source/bragantino_passport_audit_manifest_v4.json`)
+
+Adicionado em 2026-09-07 (pacote `docs/bragantino_data`): contagem oficial
+de partidas por ano-calendário 2000-2026 + `epoca_id`/URL do oGol pra cada
+um — confirma exatamente os números já derivados abaixo (nenhuma
+divergência encontrada) e já traz pronta a URL de cada ano ainda não
+raspado (2000-2023). **Só controle/auditoria — nenhuma das 1.251 partidas
+individuais de 2000-2023 está materializada aqui; não gerar nenhuma até
+raspar de verdade.** Reconciliações por competição/ano (ex.: 2020 vs 2021
+por causa do Brasileirão que virou o ano) também vêm documentadas no
+manifesto — usar como checklist ao fechar cada lote futuro.
 
 ## Por que 2026 usa OneFootball e temporadas passadas usam oGol
 

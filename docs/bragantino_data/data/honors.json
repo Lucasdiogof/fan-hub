@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "competition": "Campeonato Paulista Série A2",
+      "year": 1965,
+      "result": "CHAMPION"
+    },
+    {
+      "competition": "Campeonato Paulista Série A2",
+      "year": 1988,
+      "result": "CHAMPION"
+    },
+    {
+      "competition": "Campeonato Brasileiro Série B",
+      "year": 1989,
+      "result": "CHAMPION"
+    },
+    {
+      "competition": "Campeonato Paulista",
+      "year": 1990,
+      "result": "CHAMPION"
+    },
+    {
+      "competition": "Campeonato Brasileiro Série A",
+      "year": 1991,
+      "result": "RUNNER_UP"
+    },
+    {
+      "competition": "Campeonato Brasileiro Série C",
+      "year": 2007,
+      "result": "CHAMPION"
+    },
+    {
+      "competition": "Campeonato Brasileiro Série B",
+      "year": 2019,
+      "result": "CHAMPION"
+    },
+    {
+      "competition": "CONMEBOL Sul-Americana",
+      "year": 2021,
+      "result": "RUNNER_UP"
+    }
+  ],
+  "editorial_rule": "Vice-campeonatos são campanhas, nunca títulos."
+}

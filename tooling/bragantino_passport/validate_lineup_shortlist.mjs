@@ -46,11 +46,19 @@ if (allMatches.length > 0) {
   const allElevenStarters = allMatches.every((c) => c.starting_xi.length === 11);
   check('todo registro tem exatamente 11 titulares', allElevenStarters);
 
+  // Registros históricos (2026-09-07) vêm sem número de camisa na fonte —
+  // `number: null` em todo o XI não é "camisa duplicada", é "desconhecida"
+  // (nunca inferida). Só checa duplicata quando o registro TEM números
+  // reais.
   const noShirtDuplicates = allMatches.every((c) => {
     const numbers = c.starting_xi.map((p) => p.number);
+    if (numbers.every((n) => n === null)) return true;
     return new Set(numbers).size === 11;
   });
-  check('nenhum registro tem camisa duplicada no onze', noShirtDuplicates);
+  check(
+    'nenhum registro COM número de camisa conhecido tem duplicata no onze',
+    noShirtDuplicates,
+  );
 
   const noNameDuplicates = allMatches.every((c) => {
     const names = c.starting_xi.map((p) => p.name);
@@ -58,18 +66,23 @@ if (allMatches.length > 0) {
   });
   check('nenhum registro tem nome duplicado no onze', noNameDuplicates);
 
+  // Camisa desconhecida (null) é válida — só um número FORA da faixa (ex.:
+  // 0 ou negativo) é erro de dado.
   const validShirtRange = allMatches.every((c) =>
-    c.starting_xi.every((p) => p.number >= 1 && p.number <= 99),
+    c.starting_xi.every((p) => p.number === null || (p.number >= 1 && p.number <= 99)),
   );
-  check('todas as camisas em faixa válida (1-99)', validShirtRange);
+  check('todas as camisas conhecidas em faixa válida (1-99)', validShirtRange);
 
   const validDates = allMatches.every(
     (c) => /^\d{4}-\d{2}-\d{2}$/.test(c.date) && !Number.isNaN(Date.parse(c.date)),
   );
   check('todas as datas válidas (YYYY-MM-DD parseável)', validDates);
 
-  const hasSource = allMatches.every((c) => c.source_url && c.source_match_id && c.source);
-  check('todo registro tem fonte rastreável (source + source_url + source_match_id)', hasSource);
+  // Registros curados de um pacote consolidado (não de uma ficha
+  // individual ao vivo) legitimamente não têm `source_url` por partida —
+  // `source` + `source_match_id` continuam obrigatórios sempre.
+  const hasSource = allMatches.every((c) => c.source_match_id && c.source);
+  check('todo registro tem fonte rastreável (source + source_match_id)', hasSource);
 
   const captainsPresent = allMatches.some((c) => c.starting_xi.some((p) => p.captain));
   check('pelo menos 1 registro com capitão identificado', captainsPresent);

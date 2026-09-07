@@ -3,9 +3,9 @@ import 'package:goias_app/features/club/domain/entities/club_history_section.dar
 /// Fontes: https://www.redbullbragantino.com/br-pt/historia (site oficial),
 /// cruzado com https://en.wikipedia.org/wiki/Red_Bull_Bragantino pra datas
 /// exatas — pesquisado e redigido com palavras próprias em 2026-09-05.
-/// Cobre até a estreia na fase de grupos da Libertadores (2022); marcos
-/// mais recentes (2023 em diante) ainda não levantados — DATA_GAP, não
-/// inventar.
+/// Seção final (mudança de estádio) adicionada em 2026-09-07 a partir do
+/// pacote `docs/bragantino_data/data/stadiums.json`. Marcos entre 2023 e a
+/// mudança de estádio em 2025 continuam DATA_GAP — não inventar.
 class BragantinoHistoryData {
   const BragantinoHistoryData._();
 
@@ -74,6 +74,19 @@ class BragantinoHistoryData {
             'Athletico-PR.',
         'Em 2022, o clube fez sua primeira participação na fase de grupos '
             'da Copa Libertadores da América.',
+      ],
+    ),
+    ClubHistorySection(
+      period: 'NOVA CASA — 2025',
+      title: 'Mudança para o Cícero de Souza Marques',
+      paragraphs: [
+        'Em 20 de abril de 2025, o Red Bull Bragantino jogou pela última '
+            'vez no Estádio Nabi Abi Chedid, vencendo o Cruzeiro por 1 a 0, '
+            'antes de o estádio ser reformado para virar a futura arena do '
+            'clube, com capacidade projetada de cerca de 20 mil lugares.',
+        'Desde 5 de maio de 2025, o time manda seus jogos no Estádio '
+            'Municipal Cícero de Souza Marques, em Bragança Paulista, como '
+            'casa provisória enquanto a nova arena é construída.',
       ],
     ),
   ];

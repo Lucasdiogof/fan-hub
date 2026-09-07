@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-07",
+  "items": [
+    {
+      "name": "Red Bull",
+      "type": "OWNER/INSTITUTIONAL_BRAND",
+      "scope": [
+        "club"
+      ]
+    },
+    {
+      "name": "PUMA",
+      "type": "KIT_SUPPLIER",
+      "scope": [
+        "men",
+        "women",
+        "academy"
+      ],
+      "period": "2025-2030"
+    },
+    {
+      "name": "Betfast",
+      "type": "MAIN_SPONSOR",
+      "scope": [
+        "professional_men"
+      ],
+      "period": "2026"
+    },
+    {
+      "name": "Asaas",
+      "type": "SHIRT_SPONSOR",
+      "placement": "back",
+      "scope": [
+        "professional_men"
+      ],
+      "period": "2026"
+    },
+    {
+      "name": "Farmina Pet Foods / N&D",
+      "type": "PREMIUM_SPONSOR",
+      "scope": [
+        "professional_men"
+      ],
+      "period": "2026"
+    },
+    {
+      "name": "Curaprox",
+      "type": "ACADEMY_SPONSOR",
+      "scope": [
+        "academy"
+      ],
+      "period": "2026"
+    },
+    {
+      "name": "KNN Idiomas",
+      "type": "ACADEMY_AND_WOMEN_SPONSOR",
+      "scope": [
+        "academy_men",
+        "women"
+      ],
+      "announced": "2026-09"
+    }
+  ]
+}

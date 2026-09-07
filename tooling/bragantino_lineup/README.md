@@ -13,10 +13,17 @@ node --test tooling/bragantino_lineup/select_challenges.test.mjs
 
 | | |
 |---|---|
-| Avaliadas | 123 |
+| Avaliadas | 138 (123 RECENT + 15 HISTORICAL, adicionadas em 2026-09-07) |
 | Publicáveis | **0** |
-| Rejeitadas | 123 |
-| Motivos | `SEM_FORMACAO` (123), `SEM_POSICAO_POR_JOGADOR` (123) |
+| Rejeitadas | 138 |
+| Motivos | `SEM_FORMACAO` (138), `SEM_POSICAO_POR_JOGADOR` (138) |
+
+`LINEUP_ARENA_ENABLED = false` continua — as 15 partidas históricas novas
+(finais de 1989/1990/1991, Série C 2007, Série B 2019, Sul-Americana 2021 e
+algumas de 2023-2025) resolvem o `PENDING_RESEARCH` de `HISTORICAL_LINEUPS`
+com XI nominal validado (`docs/bragantino_data`), mas vieram **sem número
+de camisa** na fonte — mesmo bloqueio de formação/posição do pool RECENT,
+não inferido.
 
 O contrato do jogo (`LineupMatchRepository._map`) exige **formação** — é
 dela que o `FormationLayoutService` gera os 11 slots do campo — e uma
@@ -69,8 +76,9 @@ time. Com pool pequeno ele para em vez de encher de repetição.
 
 ## Histórico
 
-`HISTORICAL_LINEUPS` continua `PENDING_RESEARCH` e **vazio**. A primeira
-temporada pode sair só de partidas recentes, mas nada aqui trata isso
-como "a história do clube": as duas categorias entram no mesmo pipeline
-(`select_challenges.mjs` já lê as duas), então partida histórica publica
-depois sem migration nem refactor.
+`HISTORICAL_LINEUPS` saiu de `PENDING_RESEARCH`/vazio: tem 15 partidas
+curadas (2026-09-07, `docs/bragantino_data`), status
+`CURATED_NO_FORMATION_YET` — XI nominal validado, sem número de camisa.
+As duas categorias entram no mesmo pipeline (`select_challenges.mjs` já lê
+as duas), então assim que formação+posição existirem pra qualquer uma das
+138, ela publica sem migration nem refactor.
