@@ -17,6 +17,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/club_data_unavailable_exception.dart';
 import 'package:goias_app/core/club/club_registry.dart';
+import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/games/career_path/career_players.dart';
@@ -454,6 +455,24 @@ void main() {
           expect(result, isA<Error<List<Object?>>>());
         },
       );
+
+      test('Bragantino consulta o club_id DELE, nunca o do Goiás', () async {
+        final http = CapturingHttpClient();
+        final repo = SupabaseSquadRepository(
+          _clientWith(http),
+          bragantinoClubConfig,
+        );
+        await repo.getSquad();
+
+        final url = http.lastRequestUrl.toString();
+        expect(
+          url,
+          contains(
+            'club_id=eq.${bragantinoClubConfig.identity.canonicalClubId}',
+          ),
+        );
+        expect(url, isNot(contains(goiasClubConfig.identity.canonicalClubId)));
+      });
     },
   );
 

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
-import 'package:goias_app/features/squad/domain/squad_photos.dart';
 
 /// Foto do atleta com fallback pro número da camisa — nunca quebra a lista
 /// se a imagem falhar ou não existir. Prioriza a foto embutida no app
-/// (offline, por [memberId]); se não houver, tenta [photoUrl] do banco.
+/// (offline, por [memberId]) DO CLUBE ATIVO; se não houver, tenta
+/// [photoUrl] do banco. O mapa de fotos é por clube justamente pra um
+/// atleta homônimo de outro clube nunca herdar o rosto errado.
 class SquadAvatar extends StatelessWidget {
   const SquadAvatar({
     required this.memberId,
@@ -22,7 +25,7 @@ class SquadAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fallback = _NumberCircle(number: shirtNumber, size: size);
-    final asset = squadPhotoAssets[memberId];
+    final asset = sl<ClubConfig>().assets.squadPhotos[memberId];
 
     if (asset != null) {
       return ClipOval(

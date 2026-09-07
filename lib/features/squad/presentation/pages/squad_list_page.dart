@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/squad/domain/position_groups.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
-import 'package:goias_app/features/squad/domain/squad_photos.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
@@ -266,7 +266,7 @@ class _SquadCardPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final asset = squadPhotoAssets[member.id];
+    final asset = sl<ClubConfig>().assets.squadPhotos[member.id];
     if (asset != null) {
       return Image.asset(
         asset,
