@@ -1765,10 +1765,14 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get partnersTitle => 'Socios del Goiás';
+  String partnersTitle(String clubName) {
+    return 'Socios del $clubName';
+  }
 
   @override
-  String get partnersSubtitle => 'Marcas que caminan junto al Goiás.';
+  String partnersSubtitle(String clubName) {
+    return 'Marcas que caminan junto al $clubName.';
+  }
 
   @override
   String partnersOpenInstagram(String name) {
@@ -2638,7 +2642,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get clubSectionSongs => 'Himno y Canciones';
 
   @override
-  String get clubHistorySubtitle => 'Desde 1943 hasta hoy.';
+  String clubHistorySubtitle(String year) {
+    return 'Desde $year hasta hoy.';
+  }
 
   @override
   String get clubSquadSubtitle => 'Los jugadores que visten la camiseta.';
@@ -2649,7 +2655,9 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
-  String get clubPartnersSubtitle => 'Quienes caminan junto al Goiás.';
+  String clubPartnersSubtitle(String clubName) {
+    return 'Quienes caminan junto al $clubName.';
+  }
 
   @override
   String get clubSongsSubtitle =>
@@ -2724,14 +2732,14 @@ class AppLocalizationsEs extends AppLocalizations {
   String get clubEntryTitle => 'EL CLUB';
 
   @override
-  String get clubEntrySubtitle =>
-      'Historia, títulos, plantel e identidad del Goiás.';
+  String clubEntrySubtitle(String clubName) {
+    return 'Historia, títulos, plantel e identidad del $clubName.';
+  }
 
   @override
-  String get clubEntryCta => 'CONOCER AL GOIÁS';
-
-  @override
-  String get clubHeaderTagline => 'EL MAYOR DEL CENTRO-OESTE';
+  String clubEntryCta(String clubName) {
+    return 'CONOCER AL $clubName';
+  }
 
   @override
   String get membershipLoadError => 'No se pudo cargar Sócio Esmeralda.';

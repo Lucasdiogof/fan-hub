@@ -582,8 +582,22 @@
   "relTimeDays": "{n}d",
   "relTimeWeeks": "{n}sem",
   "relTimeMonths": "{n}m",
-  "partnersTitle": "Socios del Goiás",
-  "partnersSubtitle": "Marcas que caminan junto al Goiás.",
+  "partnersTitle": "Socios del {clubName}",
+  "@partnersTitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
+  "partnersSubtitle": "Marcas que caminan junto al {clubName}.",
+  "@partnersSubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "partnersOpenInstagram": "Abrir Instagram de {name}",
   "partnersOpenWebsite": "Abrir sitio de {name}",
   "squadTitle": "PLANTILLA",
@@ -889,10 +903,24 @@
   "clubTransparencyShareButton": "Compartir PDF",
   "clubSectionTimeline": "Cronología",
   "clubSectionSongs": "Himno y Canciones",
-  "clubHistorySubtitle": "Desde 1943 hasta hoy.",
+  "clubHistorySubtitle": "Desde {year} hasta hoy.",
+  "@clubHistorySubtitle": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
   "clubSquadSubtitle": "Los jugadores que visten la camiseta.",
   "clubTitlesSubtitle": "{count} conquistas a lo largo de la historia.",
-  "clubPartnersSubtitle": "Quienes caminan junto al Goiás.",
+  "clubPartnersSubtitle": "Quienes caminan junto al {clubName}.",
+  "@clubPartnersSubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "clubSongsSubtitle": "El himno y las canciones que animan a la afición.",
   "clubSectionIdols": "Ídolos",
   "clubIdolsSubtitle": "Nombres que marcaron la historia del club.",
@@ -933,9 +961,22 @@
   "clubHistoricCampaigns": "CAMPAÑAS HISTÓRICAS",
   "clubTimesChampion": "{count}× CAMPEÓN",
   "clubEntryTitle": "EL CLUB",
-  "clubEntrySubtitle": "Historia, títulos, plantel e identidad del Goiás.",
-  "clubEntryCta": "CONOCER AL GOIÁS",
-  "clubHeaderTagline": "EL MAYOR DEL CENTRO-OESTE",
+  "clubEntrySubtitle": "Historia, títulos, plantel e identidad del {clubName}.",
+  "@clubEntrySubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
+  "clubEntryCta": "CONOCER AL {clubName}",
+  "@clubEntryCta": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "membershipLoadError": "No se pudo cargar Sócio Esmeralda.",
   "membershipPlansTitle": "PLANES",
   "membershipSector": "Sector {sector}",

@@ -14,6 +14,8 @@ class ClubIdentity {
     required this.shortName,
     required this.fanDemonym,
     required this.canonicalClubId,
+    this.headerTagline = const {},
+    this.foundingYear,
   });
 
   /// Seletor de build — o valor esperado em `APP_CLUB`.
@@ -39,4 +41,19 @@ class ClubIdentity {
   /// `supabase/migrations/*` e `tooling/multiclub/*`, nunca em `lib/`
   /// (confirmado por auditoria — zero ocorrências).
   final String canonicalClubId;
+
+  /// Frase de orgulho/identidade abaixo do nome no header de "O Clube"
+  /// (ex.: Goiás → "O MAIOR DO CENTRO-OESTE") — chaveado por código de
+  /// idioma (`pt`/`en`/`es`). Default vazio de propósito: um clube sem
+  /// frase própria real simplesmente não mostra a linha (`ClubHeader` já
+  /// trata isso), nunca herda ou reaproveita a de outro clube. Nunca
+  /// composto por interpolação (mesma razão de `ClubPassportContent`) —
+  /// cada clube escreve a frase inteira, nos idiomas que tiver.
+  final Map<String, String> headerTagline;
+
+  /// Ano de fundação — usado só pra compor `clubHistorySubtitle` ("De
+  /// {ano} até os dias de hoje."). `null` até existir fonte confirmada; a
+  /// tela cai num texto genérico sem ano nesse caso, nunca herda o ano de
+  /// outro clube.
+  final int? foundingYear;
 }

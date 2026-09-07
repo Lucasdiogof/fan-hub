@@ -975,8 +975,22 @@
       }
     }
   },
-  "partnersTitle": "Parceiros do Goiás",
-  "partnersSubtitle": "Marcas que caminham junto com o Verdão.",
+  "partnersTitle": "Parceiros do {clubName}",
+  "@partnersTitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
+  "partnersSubtitle": "Marcas que caminham junto com o {clubName}.",
+  "@partnersSubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "partnersOpenInstagram": "Abrir Instagram de {name}",
   "@partnersOpenInstagram": {
     "placeholders": {
@@ -1355,8 +1369,15 @@
   "clubTransparencyShareButton": "Compartilhar PDF",
   "clubSectionTimeline": "Linha do Tempo",
   "clubSectionSongs": "Hino & Músicas",
-  "clubHistorySubtitle": "De 1943 até os dias de hoje.",
-  "clubSquadSubtitle": "Os jogadores que vestem o manto.",
+  "clubHistorySubtitle": "De {year} até os dias de hoje.",
+  "@clubHistorySubtitle": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
+  "clubSquadSubtitle": "Os jogadores que vestem a camisa.",
   "clubTitlesSubtitle": "{count} conquistas ao longo da história.",
   "@clubTitlesSubtitle": {
     "placeholders": {
@@ -1365,7 +1386,14 @@
       }
     }
   },
-  "clubPartnersSubtitle": "Quem caminha junto com o Verdão.",
+  "clubPartnersSubtitle": "Quem caminha junto com o {clubName}.",
+  "@clubPartnersSubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "clubSongsSubtitle": "Hino e músicas que embalam a torcida.",
   "clubSectionIdols": "Ídolos",
   "clubIdolsSubtitle": "Nomes que marcaram a história do clube.",
@@ -1413,9 +1441,22 @@
     }
   },
   "clubEntryTitle": "O CLUBE",
-  "clubEntrySubtitle": "História, títulos, elenco e identidade do Verdão.",
-  "clubEntryCta": "CONHECER O GOIÁS",
-  "clubHeaderTagline": "O MAIOR DO CENTRO-OESTE",
+  "clubEntrySubtitle": "História, títulos, elenco e identidade do {clubName}.",
+  "@clubEntrySubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
+  "clubEntryCta": "CONHECER O {clubName}",
+  "@clubEntryCta": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "membershipLoadError": "Não foi possível carregar o Sócio Esmeralda.",
   "membershipPlansTitle": "PLANOS",
   "membershipSector": "Setor {sector}",

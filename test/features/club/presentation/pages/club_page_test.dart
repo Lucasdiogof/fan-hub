@@ -141,4 +141,16 @@ void main() {
 
     expect(find.text('Página de Ídolos'), findsOneWidget);
   });
+
+  testWidgets('Bragantino: subtítulo do tile de Parceiros nunca menciona Goiás '
+      '(regressão 2026-09-07 — era um l10n global hardcoded)', (tester) async {
+    useTallSurface(tester);
+    await useClub(bragantinoClubConfig);
+    await tester.pumpWidget(wrap());
+    await tester.pumpAndSettle();
+
+    expect(find.textContaining('Goiás', skipOffstage: false), findsNothing);
+    expect(find.textContaining('Verdão', skipOffstage: false), findsNothing);
+    expect(find.textContaining('Bragantino'), findsWidgets);
+  });
 }

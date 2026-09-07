@@ -149,6 +149,9 @@ const bragantinoClubConfig = ClubConfig(
     // `select * from public.clubs` (ver docs/multiclub/53+). Não é mais
     // placeholder desde a convergência de schema de 2026-09-04.
     canonicalClubId: '51683d2a-ea1d-57c6-8014-996146f242e7',
+    // Fundação do Clube Atlético Bragantino em 8/1/1928 (docs/bragantino_data
+    // /data/club.json + BragantinoHistoryData) — nunca o ano do Goiás (1943).
+    foundingYear: 1928,
   ),
   branding: ClubBranding(light: _bragantinoLight, dark: _bragantinoDark),
   assets: ClubAssets(
