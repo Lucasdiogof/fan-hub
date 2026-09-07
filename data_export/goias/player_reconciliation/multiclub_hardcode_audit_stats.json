@@ -128,11 +128,13 @@
         "club_config.dart",
         "club_data_unavailable_exception.dart",
         "club_identity.dart",
+        "club_institutional_content.dart",
         "club_integrations.dart",
         "club_product_naming.dart",
         "club_registry.dart",
         "club_scoped_fallback.dart",
         "club_scoped_storage_key.dart",
+        "commerce_mode.dart",
         "goias_club_config.dart",
         "resolve_active_club.dart"
       ],
@@ -140,7 +142,7 @@
     },
     "routesHaveNoClubSlug": {
       "pass": true,
-      "totalRoutes": 82,
+      "totalRoutes": 83,
       "offenders": []
     }
   }

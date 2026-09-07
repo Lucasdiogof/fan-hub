@@ -67,3 +67,16 @@ supabase/.temp/
 .env
 .env.*
 !.env.example
+
+# Estado local da Scweet: a tabela `accounts` guarda auth_token, csrf e
+# cookies da sessão do X. Nunca versionar.
+scweet_state.db
+
+# Cache de respostas HTTP do coletor de competições (~129 MB). O código do
+# coletor é versionado; o cache é reconstruível e inflaria o repositório
+# pra sempre, porque histórico de git não se apaga.
+_competitions_pkg/**/.cache/
+
+# Concatenação de migrations pra leitura. Os 9 arquivos já existem em
+# archive/supabase/goias-legacy-migrations/files/ — é cópia, não fonte.
+migration_dump.txt

@@ -2,8 +2,8 @@
   "clubAssetRuntimeHardcodes": [],
   "storeEntryCardStillExcluded": true,
   "clubBrandingConsumers": 1,
-  "clubCapabilitiesConsumers": 2,
-  "productNamingConsumers": 2,
+  "clubCapabilitiesConsumers": 9,
+  "productNamingConsumers": 3,
   "configBypasses": {
     "membershipContactFixed": true,
     "pickupInfoFixed": true,

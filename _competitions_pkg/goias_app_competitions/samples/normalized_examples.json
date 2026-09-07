@@ -1,0 +1,38 @@
+{
+  "competition": {
+    "id": "brasileirao_a",
+    "name": "Campeonato Brasileiro - Série A",
+    "category": "national",
+    "source_competition_id": 4
+  },
+  "edition": {
+    "id": "brasileirao_a_2025_1599",
+    "competition_id": "brasileirao_a",
+    "source_edition_id": 1599,
+    "season": 2025,
+    "status": "finished",
+    "is_complete": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1599/edicao"
+  },
+  "edition_statistics": {
+    "edition_id": "brasileirao_a_2025_1599",
+    "matches": 380,
+    "goals": 959,
+    "goals_per_match": 2.52,
+    "best_attack": [{"team_name_raw":"Flamengo","value":78}],
+    "best_defense": [{"team_name_raw":"Flamengo","value":27}],
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1599/edicao?aba=es"
+  },
+  "scorer": {
+    "edition_id": "brasileirao_a_2025_1599",
+    "rank": 1,
+    "player_name_raw": "Kaio Jorge",
+    "team_name_raw": "Cruzeiro",
+    "goals": 21,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1599/edicao?aba=at"
+  },
+  "penalty_score_shape": {
+    "score": {"home":1,"away":1,"penalties_home":4,"penalties_away":5,"raw":"1 (4) x (5) 1"},
+    "note": "Keep regulation score and shootout score separate."
+  }
+}

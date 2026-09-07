@@ -1,0 +1,1037 @@
+[
+  {
+    "id": "finalrank_73a94274c7572b65",
+    "edition_id": "campeonato_goiano_1947_632",
+    "position": 1,
+    "team_source_id": 465,
+    "team_name_raw": "Anápolis",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_a6cc90483db9fcd2",
+    "edition_id": "campeonato_goiano_1947_632",
+    "position": 2,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_6ddc539f37b641a8",
+    "edition_id": "campeonato_goiano_1957_628",
+    "position": 1,
+    "team_source_id": 484,
+    "team_name_raw": "América",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_0d1a06aba2ca4322",
+    "edition_id": "campeonato_goiano_1959_629",
+    "position": 1,
+    "team_source_id": 1,
+    "team_name_raw": "Goiânia",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_de7d15aa520b3091",
+    "edition_id": "campeonato_goiano_1960_630",
+    "position": 1,
+    "team_source_id": 1,
+    "team_name_raw": "Goiânia",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_d2bf16fc18d1e523",
+    "edition_id": "campeonato_goiano_1961_631",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_706e4de351f4cb62",
+    "edition_id": "campeonato_goiano_1962_321",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_87637cda5d13230b",
+    "edition_id": "campeonato_goiano_1963_323",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_cde2ccd7a9b3d1b1",
+    "edition_id": "campeonato_goiano_1964_324",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_811cfd7a07967bf6",
+    "edition_id": "campeonato_goiano_1965_325",
+    "position": 1,
+    "team_source_id": 465,
+    "team_name_raw": "Anápolis",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_7e50242a9ecaff62",
+    "edition_id": "campeonato_goiano_1966_326",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_0b8017011d463bd8",
+    "edition_id": "campeonato_goiano_1967_327",
+    "position": 1,
+    "team_source_id": 467,
+    "team_name_raw": "CRAC",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_7b3d8c24c56c01a3",
+    "edition_id": "campeonato_goiano_1968_328",
+    "position": 1,
+    "team_source_id": 1,
+    "team_name_raw": "Goiânia",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_baeb889fffdc5b7b",
+    "edition_id": "campeonato_goiano_1969_329",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_1c860fad2f6c8139",
+    "edition_id": "campeonato_goiano_1970_330",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_15a8850b8bff8970",
+    "edition_id": "campeonato_goiano_1971_331",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_6957ea608c6dcd5b",
+    "edition_id": "campeonato_goiano_1972_332",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_668d02488c8057fd",
+    "edition_id": "campeonato_goiano_1973_333",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_50b3981d32ae7c68",
+    "edition_id": "campeonato_goiano_1974_334",
+    "position": 1,
+    "team_source_id": 1,
+    "team_name_raw": "Goiânia",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_4d4e1547aa1b2e20",
+    "edition_id": "campeonato_goiano_1975_335",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_966f21232f969519",
+    "edition_id": "campeonato_goiano_1976_336",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_06bcc236e55503af",
+    "edition_id": "campeonato_goiano_1977_337",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_98a3cc6aba91dab1",
+    "edition_id": "campeonato_goiano_1978_338",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_55134936720bc591",
+    "edition_id": "campeonato_goiano_1979_339",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_ac40dc0af92aaf32",
+    "edition_id": "campeonato_goiano_1980_340",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_3fcf0dbae8f3ff05",
+    "edition_id": "campeonato_goiano_1981_341",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_d660f8aad03bd676",
+    "edition_id": "campeonato_goiano_1982_343",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_364e1dabbf96d1c5",
+    "edition_id": "campeonato_goiano_1983_344",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_35a0df42c6846048",
+    "edition_id": "campeonato_goiano_1984_345",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_3d0f50573d1d6770",
+    "edition_id": "campeonato_goiano_1985_346",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_7fb7bac0aed03db5",
+    "edition_id": "campeonato_goiano_1986_347",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_924cf5d4edaea0d7",
+    "edition_id": "campeonato_goiano_1987_348",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_82d6a89a50d82a8c",
+    "edition_id": "campeonato_goiano_1988_349",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_126a7b6c2c5d656e",
+    "edition_id": "campeonato_goiano_1989_350",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_b733f81539644f2b",
+    "edition_id": "campeonato_goiano_1990_351",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_33f7785e6cfa08db",
+    "edition_id": "campeonato_goiano_1991_352",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_2cedc642d78465f0",
+    "edition_id": "campeonato_goiano_1992_353",
+    "position": 1,
+    "team_source_id": 490,
+    "team_name_raw": "Goiatuba",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_64f4c1ed547bcd60",
+    "edition_id": "campeonato_goiano_1993_355",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_1ad93c98ae622d56",
+    "edition_id": "campeonato_goiano_1994_356",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_27ffc616f583cd05",
+    "edition_id": "campeonato_goiano_1995_357",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_21bd3665dd89a64c",
+    "edition_id": "campeonato_goiano_1996_358",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_9db7872ab678cad9",
+    "edition_id": "campeonato_goiano_1997_359",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_b38c292eace9ae90",
+    "edition_id": "campeonato_goiano_1998_360",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_6e41c931a3ba947f",
+    "edition_id": "campeonato_goiano_1999_361",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_bc62389507b0b705",
+    "edition_id": "campeonato_goiano_2000_362",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_f4a52a205bdb637a",
+    "edition_id": "campeonato_goiano_2001_363",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_58b992494bfd19cd",
+    "edition_id": "campeonato_goiano_2002_364",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_1783b1e8dcd74fd4",
+    "edition_id": "campeonato_goiano_2003_365",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_e0b073607f38f6f4",
+    "edition_id": "campeonato_goiano_2004_366",
+    "position": 1,
+    "team_source_id": 467,
+    "team_name_raw": "CRAC",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_8e99eb48de271271",
+    "edition_id": "campeonato_goiano_2005_367",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_51592f9c326b291d",
+    "edition_id": "campeonato_goiano_2006_368",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_60969ade03657d0f",
+    "edition_id": "campeonato_goiano_2007_369",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_b323fb3992a8c72f",
+    "edition_id": "campeonato_goiano_2008_354",
+    "position": 1,
+    "team_source_id": 476,
+    "team_name_raw": "Itumbiara",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_05decb86e216c5db",
+    "edition_id": "campeonato_goiano_2009_372",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_fb4ff86cd1ce1a1d",
+    "edition_id": "campeonato_goiano_2010_371",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_79dea3706ea8c72f",
+    "edition_id": "campeonato_goiano_2011_370",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_4e6a518f5147754b",
+    "edition_id": "campeonato_goiano_2012_342",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_98a3ef293dd29f8a",
+    "edition_id": "campeonato_goiano_2013_22",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_a811c4f8b0ab435b",
+    "edition_id": "campeonato_goiano_2014_307",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_85a09150f76d499e",
+    "edition_id": "campeonato_goiano_2015_614",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_6cafec846bbf0da8",
+    "edition_id": "campeonato_goiano_2016_649",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_ab904046d696181a",
+    "edition_id": "campeonato_goiano_2017_685",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_9a51712d61e43ded",
+    "edition_id": "campeonato_goiano_2018_704",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_23cb2cea8a1949f7",
+    "edition_id": "campeonato_goiano_2019_784",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_46dc9ec026604d1c",
+    "edition_id": "campeonato_goiano_2020_838",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_06bf2d732ab2e7da",
+    "edition_id": "campeonato_goiano_2021_856",
+    "position": 1,
+    "team_source_id": 470,
+    "team_name_raw": "Grêmio Anápolis",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_dfe89317fefd2f11",
+    "edition_id": "campeonato_goiano_2022_874",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_528307d5a5bdd75b",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_c3829af93db27fdd",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 2,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_fda1f8eb35652f4b",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 3,
+    "team_source_id": 464,
+    "team_name_raw": "Aparecidense",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_20c1313832c0fa90",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 4,
+    "team_source_id": 465,
+    "team_name_raw": "Anápolis",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_2c63313ef222239e",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 5,
+    "team_source_id": 467,
+    "team_name_raw": "CRAC",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_d38add43e645330d",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 6,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_d71f906481072d00",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 7,
+    "team_source_id": 489,
+    "team_name_raw": "Iporá",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_e4090926d5e19d9c",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 8,
+    "team_source_id": 1,
+    "team_name_raw": "Goiânia",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_c2137cf45a5f7508",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 9,
+    "team_source_id": 468,
+    "team_name_raw": "Goianésia",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_f5653d91f1d0b7ad",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 10,
+    "team_source_id": 478,
+    "team_name_raw": "Morrinhos",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_bf7c2472418d5f75",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 11,
+    "team_source_id": 470,
+    "team_name_raw": "Grêmio Anápolis",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_1d4487fcb78e6194",
+    "edition_id": "campeonato_goiano_2023_990",
+    "position": 12,
+    "team_source_id": 486,
+    "team_name_raw": "Inhumas",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_4f0f41893f14abd0",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 1,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_3c6e0945e4341b77",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 2,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_fb3764c470a45d6c",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 3,
+    "team_source_id": 464,
+    "team_name_raw": "Aparecidense",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_b42ec68f6e6852a6",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 4,
+    "team_source_id": 1,
+    "team_name_raw": "Goiânia",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_c31d9d5d250a8486",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 5,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_f98c3f80ea1f44b0",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 6,
+    "team_source_id": 465,
+    "team_name_raw": "Anápolis",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_8474566de459e93e",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 7,
+    "team_source_id": 490,
+    "team_name_raw": "Goiatuba",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_2e070f537d055d54",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 8,
+    "team_source_id": 468,
+    "team_name_raw": "Goianésia",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_69f119f03f0b2086",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 9,
+    "team_source_id": 492,
+    "team_name_raw": "Jataiense",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_dd324f6934eb0b71",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 10,
+    "team_source_id": 467,
+    "team_name_raw": "CRAC",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_3727b5c92c4e7731",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 11,
+    "team_source_id": 478,
+    "team_name_raw": "Morrinhos",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_6ae99de6fb53e105",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "position": 12,
+    "team_source_id": 489,
+    "team_name_raw": "Iporá",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_c2dbf3f28e0ecc1f",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 1,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_9ce5d2b456fa0a0e",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 2,
+    "team_source_id": 465,
+    "team_name_raw": "Anápolis",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_d1dcb88221406520",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 3,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_9d5a16924d0beead",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 4,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_a6d6c15aee4931e1",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 5,
+    "team_source_id": 467,
+    "team_name_raw": "CRAC",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_bf1c9c66c76908f9",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 6,
+    "team_source_id": 1138,
+    "team_name_raw": "Abecat",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_4cde27ca12aa3bd6",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 7,
+    "team_source_id": 486,
+    "team_name_raw": "Inhumas",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_92de584a0693015b",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 8,
+    "team_source_id": 492,
+    "team_name_raw": "Jataiense",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_41f3aba57b92edb9",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 9,
+    "team_source_id": 490,
+    "team_name_raw": "Goiatuba",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_2b14a9fb9fd71221",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 10,
+    "team_source_id": 464,
+    "team_name_raw": "Aparecidense",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_d4a7dc89e3ef2ff0",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 11,
+    "team_source_id": 468,
+    "team_name_raw": "Goianésia",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_083543023ffcf7c9",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "position": 12,
+    "team_source_id": 1,
+    "team_name_raw": "Goiânia",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_7fe5030059da72c9",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 1,
+    "team_source_id": 469,
+    "team_name_raw": "Goiás",
+    "is_champion": true,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_cd546a80951ba220",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 2,
+    "team_source_id": 466,
+    "team_name_raw": "Atlético",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_9be68c8b5cce226d",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 3,
+    "team_source_id": 472,
+    "team_name_raw": "Vila Nova",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_d729b4ec31a611fe",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 4,
+    "team_source_id": 463,
+    "team_name_raw": "Anapolina",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_2cce185ef2957d91",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 5,
+    "team_source_id": 1138,
+    "team_name_raw": "Abecat",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_a0b2b59c183844eb",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 6,
+    "team_source_id": 492,
+    "team_name_raw": "Jataiense",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_7e182bc819017dda",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 7,
+    "team_source_id": 465,
+    "team_name_raw": "Anápolis",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_1d95dccf714d66f4",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 8,
+    "team_source_id": 467,
+    "team_name_raw": "CRAC",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_0bb742aecc438fe7",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 9,
+    "team_source_id": 490,
+    "team_name_raw": "Goiatuba",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_8de976a088067114",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 10,
+    "team_source_id": 464,
+    "team_name_raw": "Aparecidense",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_3b7cf5dd15eae7c6",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 11,
+    "team_source_id": 1422,
+    "team_name_raw": "Centro Oeste",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  },
+  {
+    "id": "finalrank_05f489b83fbbbbf5",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "position": 12,
+    "team_source_id": 486,
+    "team_name_raw": "Inhumas",
+    "is_champion": false,
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf"
+  }
+]

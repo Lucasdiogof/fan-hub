@@ -107,22 +107,22 @@ test('sentryReleaseSignalAvailable=false (sem token de API, 401 confirmado) MAS 
   assert.ok(!stats.blockers.some((b) => /sentry/i.test(b)), 'Sentry não deveria mais bloquear o gate');
 });
 
-console.log('\n12) APK 1.0.1+2 — tentativa registrada, bloqueio de ambiente documentado');
-test('build tentado nesta rodada, falhou por bloqueio de ambiente (Gradle/JDK), não de código — evidência de que já funcionou antes (APK 1.0.0 de 01/09) citada', () => {
-  assert.strictEqual(audit.apk101_2Status.buildSucceeded, false);
-  assert.ok(audit.apk101_2Status.buildBlocker.includes('loopback connection'));
-  assert.strictEqual(stats.apk101_2Generated, false);
-  assert.strictEqual(stats.apk101_2DeliveredToLegacyUsers, false);
-  assert.strictEqual(stats.legacyVersionSupportEnded, false);
+console.log('\n12) APK 1.0.1+2 — gerado pelo dono (própria sessão falhou, mas artefato confirmado no disco)');
+test('build falhou nesta sessão (bloqueio de ambiente, não de código) mas o dono gerou no próprio terminal — verificado via output-metadata.json real (versionCode=2, versionName=1.0.1), entrega CONFIRMADA pelo dono ("já mandei pra 3 amigos aqui, tá de boa")', () => {
+  assert.strictEqual(audit.apk101_2Status.buildSucceeded, true);
+  assert.ok(audit.apk101_2Status.buildBlockerHistory.includes('loopback connection'));
+  assert.strictEqual(audit.apk101_2Status.verifiedArtifact.versionCode, 2);
+  assert.strictEqual(audit.apk101_2Status.verifiedArtifact.versionName, '1.0.1');
+  assert.strictEqual(stats.apk101_2Generated, true);
+  assert.strictEqual(stats.apk101_2DeliveredToLegacyUsers, true);
+  assert.ok(audit.apk101_2Status.apkDeliveredConfirmedBy.length > 0, 'a confirmação de entrega precisa citar a fonte (afirmação do dono), nunca assumida');
+  assert.strictEqual(stats.legacyVersionSupportEnded, true);
 });
 
-console.log('\n13) DECISÃO FINAL — não forçada pra true, e não mais bloqueada por Sentry/UNKNOWN nativo');
-test('postRolloutRetirementReady=false HOJE, mas só por causa do APK (não Sentry, não risco nativo desconhecido)', () => {
-  assert.strictEqual(stats.postRolloutRetirementReady, false);
-  assert.ok(stats.blockers.length >= 1);
-  assert.ok(stats.blockers.some((b) => /APK/.test(b)));
-  assert.ok(!stats.blockers.some((b) => /sentry/i.test(b)));
-  assert.ok(!stats.blockers.some((b) => /UNKNOWN/.test(b)));
+console.log('\n13) DECISÃO FINAL — agora true de verdade, todos os critérios reais satisfeitos');
+test('postRolloutRetirementReady=true HOJE — 0 blockers, nem técnico nem de produto', () => {
+  assert.strictEqual(stats.postRolloutRetirementReady, true);
+  assert.deepStrictEqual(stats.blockers, []);
 });
 test('FABRICADO: se apk101_2DeliveredToLegacyUsers fosse true, legacyVersionSupportEnded e postRolloutRetirementReady ligariam (prova que os campos pesam de verdade)', () => {
   const simulateDelivered = (delivered) => {
@@ -140,11 +140,19 @@ test('FABRICADO: nenhum write residual pode existir pro gate considerar "chaves 
 });
 
 console.log('\n14) reprodutibilidade');
-test('rodar o audit de novo produz o mesmo JSON byte a byte (nada aqui é ao vivo/git-dependente desta vez — tudo snapshot datado ou grep local)', () => {
-  const before = fs.readFileSync(path.join(RECON, 'multiclub_post_rollout_retirement_gate_audit.json'), 'utf8');
+test('rodar o audit de novo produz o mesmo resultado, exceto os campos ao-vivo herdados de dentro de legacyContractAuditReused (commitsAheadOfLegacyBaseline/originMainMatchesHead — o mesmo motivo já documentado no audit de legacy-contract-retirement)', () => {
+  const stripLive = (json) => {
+    const c = JSON.parse(json);
+    if (c.legacyContractAuditReused) {
+      delete c.legacyContractAuditReused.commitsAheadOfLegacyBaseline;
+      delete c.legacyContractAuditReused.originMainMatchesHead;
+    }
+    return c;
+  };
+  const before = stripLive(fs.readFileSync(path.join(RECON, 'multiclub_post_rollout_retirement_gate_audit.json'), 'utf8'));
   execFileSync(process.execPath, [SCRIPT], { cwd: ROOT });
-  const after = fs.readFileSync(path.join(RECON, 'multiclub_post_rollout_retirement_gate_audit.json'), 'utf8');
-  assert.strictEqual(before, after);
+  const after = stripLive(fs.readFileSync(path.join(RECON, 'multiclub_post_rollout_retirement_gate_audit.json'), 'utf8'));
+  assert.deepStrictEqual(before, after);
 });
 
 console.log(`\n${passed} passaram, ${failures.length} falharam.`);

@@ -1,0 +1,3369 @@
+[
+  {
+    "id": "stage_d21ce785e3529511",
+    "edition_id": "campeonato_goiano_1947_632",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 0,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_ba68503eb89eddb9",
+    "edition_id": "campeonato_goiano_1957_628",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 1,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_160a79e62823fd02",
+    "edition_id": "campeonato_goiano_1959_629",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 2,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_97c556e60598c464",
+    "edition_id": "campeonato_goiano_1959_629",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 3,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1325"
+    }
+  },
+  {
+    "id": "stage_bb9c767055b917e0",
+    "edition_id": "campeonato_goiano_1960_630",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 4,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_b275f7fd36d29586",
+    "edition_id": "campeonato_goiano_1961_631",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 5,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_2f6a5a6707053ab0",
+    "edition_id": "campeonato_goiano_1962_321",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 6,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_37378a68c962c7a6",
+    "edition_id": "campeonato_goiano_1963_323",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 7,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_02b609de56530615",
+    "edition_id": "campeonato_goiano_1964_324",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 8,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_8ff0db16802cf8dd",
+    "edition_id": "campeonato_goiano_1965_325",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 9,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_863a81f89e5acbf8",
+    "edition_id": "campeonato_goiano_1965_325",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 10,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1701"
+    }
+  },
+  {
+    "id": "stage_26673e3db24a870b",
+    "edition_id": "campeonato_goiano_1965_325",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 11,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1275"
+    }
+  },
+  {
+    "id": "stage_a4086bdab113edd4",
+    "edition_id": "campeonato_goiano_1966_326",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 12,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_19bbb5d8bf66fd32",
+    "edition_id": "campeonato_goiano_1967_327",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 13,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_1c2f41b09840c281",
+    "edition_id": "campeonato_goiano_1968_328",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 14,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_e15435a5bbb067cc",
+    "edition_id": "campeonato_goiano_1969_329",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 15,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_298e318c40543556",
+    "edition_id": "campeonato_goiano_1970_330",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 16,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_d52afc019bec0031",
+    "edition_id": "campeonato_goiano_1971_331",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 17,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_95e582403656bb9f",
+    "edition_id": "campeonato_goiano_1971_331",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 18,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "502"
+    }
+  },
+  {
+    "id": "stage_89c2c2a71da97036",
+    "edition_id": "campeonato_goiano_1972_332",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 19,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_02c07980b942c48e",
+    "edition_id": "campeonato_goiano_1972_332",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 20,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "505"
+    }
+  },
+  {
+    "id": "stage_f6bdfcfa1f718a5e",
+    "edition_id": "campeonato_goiano_1972_332",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 21,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "504"
+    }
+  },
+  {
+    "id": "stage_e742520cb2c2c08c",
+    "edition_id": "campeonato_goiano_1973_333",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 22,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_37af0cde622e4293",
+    "edition_id": "campeonato_goiano_1973_333",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 23,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "509"
+    }
+  },
+  {
+    "id": "stage_a445a7bab6a9a5d3",
+    "edition_id": "campeonato_goiano_1973_333",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 24,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "508"
+    }
+  },
+  {
+    "id": "stage_9cfdd33f585448b6",
+    "edition_id": "campeonato_goiano_1973_333",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 25,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "507"
+    }
+  },
+  {
+    "id": "stage_680bb390d141c2da",
+    "edition_id": "campeonato_goiano_1974_334",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 26,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_3e85f5006cdd07dd",
+    "edition_id": "campeonato_goiano_1974_334",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 27,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "512"
+    }
+  },
+  {
+    "id": "stage_9c93604e567b853b",
+    "edition_id": "campeonato_goiano_1974_334",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 28,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "513"
+    }
+  },
+  {
+    "id": "stage_1d69bc158bb4b6ca",
+    "edition_id": "campeonato_goiano_1974_334",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 29,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "511"
+    }
+  },
+  {
+    "id": "stage_8a331324c0ec937b",
+    "edition_id": "campeonato_goiano_1975_335",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 30,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_1bac309fa278dd5b",
+    "edition_id": "campeonato_goiano_1975_335",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 31,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "515"
+    }
+  },
+  {
+    "id": "stage_97fd5ace44715d11",
+    "edition_id": "campeonato_goiano_1975_335",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 32,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "514"
+    }
+  },
+  {
+    "id": "stage_c74f69135bdc5a8b",
+    "edition_id": "campeonato_goiano_1976_336",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 33,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_cf5e91b2c70d844e",
+    "edition_id": "campeonato_goiano_1976_336",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 34,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "518"
+    }
+  },
+  {
+    "id": "stage_ce7ad850a1ac93ca",
+    "edition_id": "campeonato_goiano_1976_336",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 35,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "519"
+    }
+  },
+  {
+    "id": "stage_b45d721f715b632b",
+    "edition_id": "campeonato_goiano_1977_337",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 36,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_db207c13b2e6bc15",
+    "edition_id": "campeonato_goiano_1977_337",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 37,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "521"
+    }
+  },
+  {
+    "id": "stage_4691e4fac8f44ac4",
+    "edition_id": "campeonato_goiano_1977_337",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 38,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "520"
+    }
+  },
+  {
+    "id": "stage_1b00fd3d97902246",
+    "edition_id": "campeonato_goiano_1978_338",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 39,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_60c128c0bf8aae0f",
+    "edition_id": "campeonato_goiano_1978_338",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 40,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "523"
+    }
+  },
+  {
+    "id": "stage_b3309aa10fc5ecc3",
+    "edition_id": "campeonato_goiano_1978_338",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 41,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "525"
+    }
+  },
+  {
+    "id": "stage_48504989d94f6aa8",
+    "edition_id": "campeonato_goiano_1979_339",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 42,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_c4df0f640061865d",
+    "edition_id": "campeonato_goiano_1979_339",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 43,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "527"
+    }
+  },
+  {
+    "id": "stage_462498178c35e5cb",
+    "edition_id": "campeonato_goiano_1979_339",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 44,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "526"
+    }
+  },
+  {
+    "id": "stage_3e0a646b5c203597",
+    "edition_id": "campeonato_goiano_1980_340",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 45,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_415f8c8cea3e0358",
+    "edition_id": "campeonato_goiano_1980_340",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 46,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1725"
+    }
+  },
+  {
+    "id": "stage_fd8841832ab2a42e",
+    "edition_id": "campeonato_goiano_1980_340",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 47,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "529"
+    }
+  },
+  {
+    "id": "stage_7eed4d02321b7bca",
+    "edition_id": "campeonato_goiano_1980_340",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 48,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1724"
+    }
+  },
+  {
+    "id": "stage_e1400fde4e8042c2",
+    "edition_id": "campeonato_goiano_1980_340",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 49,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "528"
+    }
+  },
+  {
+    "id": "stage_36ae5a51c9d9a6c8",
+    "edition_id": "campeonato_goiano_1981_341",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 50,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_a03e3b2d7d98660f",
+    "edition_id": "campeonato_goiano_1981_341",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 51,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "534"
+    }
+  },
+  {
+    "id": "stage_c740bc03c22b2e67",
+    "edition_id": "campeonato_goiano_1981_341",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 52,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "533"
+    }
+  },
+  {
+    "id": "stage_44b1e644a5dc2273",
+    "edition_id": "campeonato_goiano_1981_341",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 53,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "532"
+    }
+  },
+  {
+    "id": "stage_e516c886578fa90b",
+    "edition_id": "campeonato_goiano_1981_341",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 54,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "531"
+    }
+  },
+  {
+    "id": "stage_cc58438f71c042a1",
+    "edition_id": "campeonato_goiano_1982_343",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 55,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_f3732c9802a94f82",
+    "edition_id": "campeonato_goiano_1982_343",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 56,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "541"
+    }
+  },
+  {
+    "id": "stage_206047bb0024823d",
+    "edition_id": "campeonato_goiano_1982_343",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 57,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "540"
+    }
+  },
+  {
+    "id": "stage_ea91d8d957868a8d",
+    "edition_id": "campeonato_goiano_1982_343",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 58,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "539"
+    }
+  },
+  {
+    "id": "stage_b188cda073293415",
+    "edition_id": "campeonato_goiano_1983_344",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 59,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_92535022f3112052",
+    "edition_id": "campeonato_goiano_1983_344",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 60,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "544"
+    }
+  },
+  {
+    "id": "stage_381f358897870455",
+    "edition_id": "campeonato_goiano_1983_344",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 61,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "546"
+    }
+  },
+  {
+    "id": "stage_9ed9a5a45e259cfd",
+    "edition_id": "campeonato_goiano_1983_344",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 62,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "543"
+    }
+  },
+  {
+    "id": "stage_8009026638621959",
+    "edition_id": "campeonato_goiano_1983_344",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 63,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "547"
+    }
+  },
+  {
+    "id": "stage_6e69bf201e666ba4",
+    "edition_id": "campeonato_goiano_1983_344",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 64,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "548"
+    }
+  },
+  {
+    "id": "stage_8f728a73dbd9046b",
+    "edition_id": "campeonato_goiano_1984_345",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 65,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_35901b3229ca979e",
+    "edition_id": "campeonato_goiano_1984_345",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 66,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "551"
+    }
+  },
+  {
+    "id": "stage_ea5c099d9af78604",
+    "edition_id": "campeonato_goiano_1984_345",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 67,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "550"
+    }
+  },
+  {
+    "id": "stage_094083fc07e5c78d",
+    "edition_id": "campeonato_goiano_1984_345",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 68,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "549"
+    }
+  },
+  {
+    "id": "stage_23b46f97d1d5c9f2",
+    "edition_id": "campeonato_goiano_1985_346",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 69,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_5773ba4398e03da9",
+    "edition_id": "campeonato_goiano_1985_346",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 70,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "553"
+    }
+  },
+  {
+    "id": "stage_eb9decad2bb15fcc",
+    "edition_id": "campeonato_goiano_1985_346",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 71,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "555"
+    }
+  },
+  {
+    "id": "stage_611bc649974ffe17",
+    "edition_id": "campeonato_goiano_1986_347",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 72,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_2fc887b4a2fa9cb6",
+    "edition_id": "campeonato_goiano_1986_347",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 73,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "556"
+    }
+  },
+  {
+    "id": "stage_7118e3f98dbcac1e",
+    "edition_id": "campeonato_goiano_1987_348",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 74,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_5787cbf4f0dcccda",
+    "edition_id": "campeonato_goiano_1987_348",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 75,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "558"
+    }
+  },
+  {
+    "id": "stage_18d2bbccf57e7d6b",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 76,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_91e931996565bd98",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 77,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "571"
+    }
+  },
+  {
+    "id": "stage_0047b53383889449",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 78,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "570"
+    }
+  },
+  {
+    "id": "stage_50734f020e557fcd",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 79,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "569"
+    }
+  },
+  {
+    "id": "stage_1299f6cb593bbc22",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 80,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "568"
+    }
+  },
+  {
+    "id": "stage_98e69390cc24eb3b",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 81,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "567"
+    }
+  },
+  {
+    "id": "stage_b3a9002ff6edd0e1",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 82,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "566"
+    }
+  },
+  {
+    "id": "stage_037d330cd22d4806",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 83,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "565"
+    }
+  },
+  {
+    "id": "stage_47665f9f0522968b",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 84,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "564"
+    }
+  },
+  {
+    "id": "stage_063fa30a5a841ae7",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 85,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "563"
+    }
+  },
+  {
+    "id": "stage_a308947f76ea96ec",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 86,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "562"
+    }
+  },
+  {
+    "id": "stage_691dc4ae4d412dc5",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 87,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "561"
+    }
+  },
+  {
+    "id": "stage_028bbe2ec3d5421d",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 88,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "560"
+    }
+  },
+  {
+    "id": "stage_122afb0b348f4076",
+    "edition_id": "campeonato_goiano_1989_350",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 89,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_3461a2d3c891b418",
+    "edition_id": "campeonato_goiano_1989_350",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 90,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "574"
+    }
+  },
+  {
+    "id": "stage_2ab760fd32a9f1b0",
+    "edition_id": "campeonato_goiano_1989_350",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 91,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "573"
+    }
+  },
+  {
+    "id": "stage_b9842c12eaa9ca6f",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 92,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_2d01b1bbad507b2b",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 93,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "578"
+    }
+  },
+  {
+    "id": "stage_8f8ce7912c2a757e",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 94,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "580"
+    }
+  },
+  {
+    "id": "stage_16e79151a74f235f",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 95,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "577"
+    }
+  },
+  {
+    "id": "stage_6cf33481136fad37",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 96,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "581"
+    }
+  },
+  {
+    "id": "stage_47072464aa11e744",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 97,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "576"
+    }
+  },
+  {
+    "id": "stage_7da30f4131a04c26",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 98,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "582"
+    }
+  },
+  {
+    "id": "stage_55672e26606a299f",
+    "edition_id": "campeonato_goiano_1991_352",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 99,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_d1a5b3d043019b1b",
+    "edition_id": "campeonato_goiano_1991_352",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 100,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "583"
+    }
+  },
+  {
+    "id": "stage_dbe497c5520153a2",
+    "edition_id": "campeonato_goiano_1991_352",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 101,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "585"
+    }
+  },
+  {
+    "id": "stage_58616c82a7ca39c3",
+    "edition_id": "campeonato_goiano_1992_353",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 102,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_7a37056ac4d558e4",
+    "edition_id": "campeonato_goiano_1992_353",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 103,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "587"
+    }
+  },
+  {
+    "id": "stage_459b84c4e3bcf91f",
+    "edition_id": "campeonato_goiano_1992_353",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 104,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "586"
+    }
+  },
+  {
+    "id": "stage_c2ab44e5d1456217",
+    "edition_id": "campeonato_goiano_1993_355",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 105,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_e02b339ab0cb6f06",
+    "edition_id": "campeonato_goiano_1993_355",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 106,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "600"
+    }
+  },
+  {
+    "id": "stage_14fd8a7ef29e3059",
+    "edition_id": "campeonato_goiano_1993_355",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 107,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "599"
+    }
+  },
+  {
+    "id": "stage_e155c14834045108",
+    "edition_id": "campeonato_goiano_1993_355",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 108,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "598"
+    }
+  },
+  {
+    "id": "stage_aad1eff327155d5c",
+    "edition_id": "campeonato_goiano_1994_356",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 109,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_8b0a38e85481e8f1",
+    "edition_id": "campeonato_goiano_1994_356",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 110,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "605"
+    }
+  },
+  {
+    "id": "stage_deca2b3842c05823",
+    "edition_id": "campeonato_goiano_1994_356",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 111,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "604"
+    }
+  },
+  {
+    "id": "stage_e14a8746a859ee74",
+    "edition_id": "campeonato_goiano_1994_356",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 112,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "603"
+    }
+  },
+  {
+    "id": "stage_1b67834e6d51ce05",
+    "edition_id": "campeonato_goiano_1994_356",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 113,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "602"
+    }
+  },
+  {
+    "id": "stage_236cd3a151e9d710",
+    "edition_id": "campeonato_goiano_1995_357",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 114,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_8dca1dfe99b4bb3e",
+    "edition_id": "campeonato_goiano_1995_357",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 115,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "612"
+    }
+  },
+  {
+    "id": "stage_a72d863362d43e31",
+    "edition_id": "campeonato_goiano_1995_357",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 116,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "611"
+    }
+  },
+  {
+    "id": "stage_b6b6a3d676a63127",
+    "edition_id": "campeonato_goiano_1995_357",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 117,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "610"
+    }
+  },
+  {
+    "id": "stage_bd8bf9fc2e2723e4",
+    "edition_id": "campeonato_goiano_1995_357",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 118,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "609"
+    }
+  },
+  {
+    "id": "stage_f7dd14e49e48d697",
+    "edition_id": "campeonato_goiano_1995_357",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 119,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "608"
+    }
+  },
+  {
+    "id": "stage_c463c2299ecb0551",
+    "edition_id": "campeonato_goiano_1995_357",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 120,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "607"
+    }
+  },
+  {
+    "id": "stage_c344e1658d0467a5",
+    "edition_id": "campeonato_goiano_1996_358",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 121,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_43d01678d7512b4e",
+    "edition_id": "campeonato_goiano_1996_358",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 122,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "618"
+    }
+  },
+  {
+    "id": "stage_8e14c004f8b538d9",
+    "edition_id": "campeonato_goiano_1996_358",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 123,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "617"
+    }
+  },
+  {
+    "id": "stage_30ea4485b711dc91",
+    "edition_id": "campeonato_goiano_1996_358",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 124,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "616"
+    }
+  },
+  {
+    "id": "stage_ca8ebbcdff099903",
+    "edition_id": "campeonato_goiano_1996_358",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 125,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "615"
+    }
+  },
+  {
+    "id": "stage_73d8401688852be9",
+    "edition_id": "campeonato_goiano_1996_358",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 126,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "614"
+    }
+  },
+  {
+    "id": "stage_c37a8dada86a50c1",
+    "edition_id": "campeonato_goiano_1997_359",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 127,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_42fbe9b102206514",
+    "edition_id": "campeonato_goiano_1997_359",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 128,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "623"
+    }
+  },
+  {
+    "id": "stage_b53afced6c6db609",
+    "edition_id": "campeonato_goiano_1997_359",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 129,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "622"
+    }
+  },
+  {
+    "id": "stage_c575754f81bf5504",
+    "edition_id": "campeonato_goiano_1997_359",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 130,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "621"
+    }
+  },
+  {
+    "id": "stage_14e0913e80dd38a6",
+    "edition_id": "campeonato_goiano_1997_359",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 131,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "620"
+    }
+  },
+  {
+    "id": "stage_679ea84334894164",
+    "edition_id": "campeonato_goiano_1998_360",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 132,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_707322afa68b2534",
+    "edition_id": "campeonato_goiano_1998_360",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 133,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "627"
+    }
+  },
+  {
+    "id": "stage_1cf6057e836c9143",
+    "edition_id": "campeonato_goiano_1998_360",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 134,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "626"
+    }
+  },
+  {
+    "id": "stage_9baf27807f181d05",
+    "edition_id": "campeonato_goiano_1998_360",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 135,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "625"
+    }
+  },
+  {
+    "id": "stage_977b55531b1fa0c8",
+    "edition_id": "campeonato_goiano_1999_361",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 136,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_59402d09b97ebaaa",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 137,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_8abe1494607cb970",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 138,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "635"
+    }
+  },
+  {
+    "id": "stage_7deab3acbfe210a7",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 139,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "634"
+    }
+  },
+  {
+    "id": "stage_4c487757555a771f",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 140,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "636"
+    }
+  },
+  {
+    "id": "stage_25a336066121a970",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 141,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "633"
+    }
+  },
+  {
+    "id": "stage_5e2267fea55aff82",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 142,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "632"
+    }
+  },
+  {
+    "id": "stage_d027f008cc0bb29b",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 143,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "631"
+    }
+  },
+  {
+    "id": "stage_1d65debe334b5044",
+    "edition_id": "campeonato_goiano_2000_362",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 144,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "630"
+    }
+  },
+  {
+    "id": "stage_02c82830832f7559",
+    "edition_id": "campeonato_goiano_2001_363",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 145,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_da3c5849f68ef0e1",
+    "edition_id": "campeonato_goiano_2001_363",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 146,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "639"
+    }
+  },
+  {
+    "id": "stage_91908338b4e79722",
+    "edition_id": "campeonato_goiano_2001_363",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 147,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "638"
+    }
+  },
+  {
+    "id": "stage_9a75a1f729050e19",
+    "edition_id": "campeonato_goiano_2002_364",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 148,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_389b2769dab3a54b",
+    "edition_id": "campeonato_goiano_2002_364",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 149,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "642"
+    }
+  },
+  {
+    "id": "stage_b3fc93c7888cfa6e",
+    "edition_id": "campeonato_goiano_2002_364",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 150,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "641"
+    }
+  },
+  {
+    "id": "stage_bc75875aeaddc100",
+    "edition_id": "campeonato_goiano_2003_365",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 151,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_7f9017e99077a5f6",
+    "edition_id": "campeonato_goiano_2003_365",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 152,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "646"
+    }
+  },
+  {
+    "id": "stage_c127d309148fda1b",
+    "edition_id": "campeonato_goiano_2003_365",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 153,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "645"
+    }
+  },
+  {
+    "id": "stage_9de1379b5c568832",
+    "edition_id": "campeonato_goiano_2003_365",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 154,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "644"
+    }
+  },
+  {
+    "id": "stage_1aab7e96ee293471",
+    "edition_id": "campeonato_goiano_2004_366",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 155,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_db4ba3c9843a534c",
+    "edition_id": "campeonato_goiano_2004_366",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 156,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "649"
+    }
+  },
+  {
+    "id": "stage_a1c851dbfd1b814d",
+    "edition_id": "campeonato_goiano_2004_366",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 157,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "648"
+    }
+  },
+  {
+    "id": "stage_dcdfb7efbdb1ca3f",
+    "edition_id": "campeonato_goiano_2005_367",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 158,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_ce2633e58b13fe80",
+    "edition_id": "campeonato_goiano_2005_367",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 159,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "652"
+    }
+  },
+  {
+    "id": "stage_e9a59e5b1c85b66e",
+    "edition_id": "campeonato_goiano_2005_367",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 160,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "651"
+    }
+  },
+  {
+    "id": "stage_b73edad72c0d5b04",
+    "edition_id": "campeonato_goiano_2006_368",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 161,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_e46900064e22c7f9",
+    "edition_id": "campeonato_goiano_2006_368",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 162,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "655"
+    }
+  },
+  {
+    "id": "stage_f05d16bfd6cf5d96",
+    "edition_id": "campeonato_goiano_2006_368",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 163,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "654"
+    }
+  },
+  {
+    "id": "stage_9c7c192a737356c3",
+    "edition_id": "campeonato_goiano_2007_369",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 164,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_46a783904f0652dc",
+    "edition_id": "campeonato_goiano_2007_369",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 165,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "657"
+    }
+  },
+  {
+    "id": "stage_90a0c7858e23f1d7",
+    "edition_id": "campeonato_goiano_2007_369",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 166,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "659"
+    }
+  },
+  {
+    "id": "stage_884201b2fe3fb81d",
+    "edition_id": "campeonato_goiano_2008_354",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 167,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_7460eaef9daba475",
+    "edition_id": "campeonato_goiano_2008_354",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 168,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "596"
+    }
+  },
+  {
+    "id": "stage_34012e7c5245166b",
+    "edition_id": "campeonato_goiano_2008_354",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 169,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "595"
+    }
+  },
+  {
+    "id": "stage_969a9b83f6bcbe05",
+    "edition_id": "campeonato_goiano_2009_372",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 170,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_2368bbfbaa1eb1cd",
+    "edition_id": "campeonato_goiano_2009_372",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 171,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "667"
+    }
+  },
+  {
+    "id": "stage_f29faba9560ccd2f",
+    "edition_id": "campeonato_goiano_2009_372",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 172,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "666"
+    }
+  },
+  {
+    "id": "stage_5686535aac4226e7",
+    "edition_id": "campeonato_goiano_2010_371",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 173,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_1334d455ddd350a7",
+    "edition_id": "campeonato_goiano_2010_371",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 174,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "664"
+    }
+  },
+  {
+    "id": "stage_d863351c55c2463e",
+    "edition_id": "campeonato_goiano_2010_371",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 175,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "663"
+    }
+  },
+  {
+    "id": "stage_4c657153ce1765ef",
+    "edition_id": "campeonato_goiano_2011_370",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 176,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_cfaaba3440d76645",
+    "edition_id": "campeonato_goiano_2011_370",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 177,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "661"
+    }
+  },
+  {
+    "id": "stage_709ec9f2e528933b",
+    "edition_id": "campeonato_goiano_2011_370",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 178,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "660"
+    }
+  },
+  {
+    "id": "stage_d0655edbf5defcb6",
+    "edition_id": "campeonato_goiano_2012_342",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 179,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_7941be8f00fa2e2b",
+    "edition_id": "campeonato_goiano_2012_342",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 180,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "537"
+    }
+  },
+  {
+    "id": "stage_3bef886608821aaa",
+    "edition_id": "campeonato_goiano_2012_342",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 181,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "536"
+    }
+  },
+  {
+    "id": "stage_e44c9eb4c4048289",
+    "edition_id": "campeonato_goiano_2013_22",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 182,
+    "has_groups": false,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_5b20749fd3a9f9fb",
+    "edition_id": "campeonato_goiano_2013_22",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 183,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "9"
+    }
+  },
+  {
+    "id": "stage_0352ce33ec66c84b",
+    "edition_id": "campeonato_goiano_2013_22",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 184,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "8"
+    }
+  },
+  {
+    "id": "stage_0e7263ab5b1cbec7",
+    "edition_id": "campeonato_goiano_2014_307",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 185,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_21a115863f235bc5",
+    "edition_id": "campeonato_goiano_2014_307",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 186,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "125"
+    }
+  },
+  {
+    "id": "stage_20efa9796bc8d908",
+    "edition_id": "campeonato_goiano_2014_307",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 187,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "124"
+    }
+  },
+  {
+    "id": "stage_79d5a25533399e6e",
+    "edition_id": "campeonato_goiano_2015_614",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 188,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_8239851880cb7aff",
+    "edition_id": "campeonato_goiano_2015_614",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 189,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1331"
+    }
+  },
+  {
+    "id": "stage_f8f7154f990fd799",
+    "edition_id": "campeonato_goiano_2015_614",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 190,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1300"
+    }
+  },
+  {
+    "id": "stage_d4ae0785bcf3fef7",
+    "edition_id": "campeonato_goiano_2016_649",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 191,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_1c3a6e18cfac7cc3",
+    "edition_id": "campeonato_goiano_2016_649",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 192,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1400"
+    }
+  },
+  {
+    "id": "stage_70367a432065f390",
+    "edition_id": "campeonato_goiano_2016_649",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 193,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1367"
+    }
+  },
+  {
+    "id": "stage_57eb3da605aec4c7",
+    "edition_id": "campeonato_goiano_2017_685",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 194,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_9faffcf3e170dfb7",
+    "edition_id": "campeonato_goiano_2017_685",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 195,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1477"
+    }
+  },
+  {
+    "id": "stage_f18376d2d92f7bad",
+    "edition_id": "campeonato_goiano_2017_685",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 196,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1468"
+    }
+  },
+  {
+    "id": "stage_36b49459da2666b9",
+    "edition_id": "campeonato_goiano_2018_704",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 197,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_d294b5cd8fb0ce0d",
+    "edition_id": "campeonato_goiano_2018_704",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 198,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1501"
+    }
+  },
+  {
+    "id": "stage_ca0b6893999fca29",
+    "edition_id": "campeonato_goiano_2018_704",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 199,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1488"
+    }
+  },
+  {
+    "id": "stage_c4990e74aaee30d1",
+    "edition_id": "campeonato_goiano_2019_784",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 200,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_1faafc0ad7f2a261",
+    "edition_id": "campeonato_goiano_2019_784",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 201,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1682"
+    }
+  },
+  {
+    "id": "stage_28e920922127ff8d",
+    "edition_id": "campeonato_goiano_2019_784",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 202,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1675"
+    }
+  },
+  {
+    "id": "stage_4d9442cc33472fd5",
+    "edition_id": "campeonato_goiano_2019_784",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 203,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1654"
+    }
+  },
+  {
+    "id": "stage_f245813cb35a1d3a",
+    "edition_id": "campeonato_goiano_2020_838",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 204,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_a2876456ed91c189",
+    "edition_id": "campeonato_goiano_2020_838",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 205,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1809"
+    }
+  },
+  {
+    "id": "stage_50c3760566540f1f",
+    "edition_id": "campeonato_goiano_2020_838",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 206,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1808"
+    }
+  },
+  {
+    "id": "stage_4f20bcfc6f8c203b",
+    "edition_id": "campeonato_goiano_2020_838",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 207,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1765"
+    }
+  },
+  {
+    "id": "stage_1098ce4e0aff16d3",
+    "edition_id": "campeonato_goiano_2021_856",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 208,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_cf303c47495ffcee",
+    "edition_id": "campeonato_goiano_2021_856",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 209,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1833"
+    }
+  },
+  {
+    "id": "stage_d0ed59afccaaf788",
+    "edition_id": "campeonato_goiano_2021_856",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 210,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1832"
+    }
+  },
+  {
+    "id": "stage_302609c01d937974",
+    "edition_id": "campeonato_goiano_2021_856",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 211,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1812"
+    }
+  },
+  {
+    "id": "stage_8d6036f74cb669f6",
+    "edition_id": "campeonato_goiano_2022_874",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 212,
+    "has_groups": false,
+    "has_standings": true,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_e4073478e110058c",
+    "edition_id": "campeonato_goiano_2022_874",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 213,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1930"
+    }
+  },
+  {
+    "id": "stage_f8a5f71793f3144d",
+    "edition_id": "campeonato_goiano_2022_874",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 214,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "1927"
+    }
+  },
+  {
+    "id": "stage_6c49b121eddfe68f",
+    "edition_id": "campeonato_goiano_2022_874",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 215,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1885"
+    }
+  },
+  {
+    "id": "stage_ab324d8b28c89750",
+    "edition_id": "campeonato_goiano_2023_990",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 216,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_ea83673ad053ef56",
+    "edition_id": "campeonato_goiano_2023_990",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 217,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "2751"
+    }
+  },
+  {
+    "id": "stage_496b8e52ac5a7305",
+    "edition_id": "campeonato_goiano_2023_990",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 218,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "2750"
+    }
+  },
+  {
+    "id": "stage_b965d226a0e2e572",
+    "edition_id": "campeonato_goiano_2023_990",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 219,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "2319"
+    }
+  },
+  {
+    "id": "stage_b5dfabdb5e7216b3",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 220,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_10f9dbe8740835a7",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 221,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "3559"
+    }
+  },
+  {
+    "id": "stage_6c913e8b14a06024",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 222,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "3558"
+    }
+  },
+  {
+    "id": "stage_1215c60b6a9669c0",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 223,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "3557"
+    }
+  },
+  {
+    "id": "stage_92ba9f6460cae3b9",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 224,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_b22ae2d43c251bbb",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 225,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "4017"
+    }
+  },
+  {
+    "id": "stage_48270fec2904f61c",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 226,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "4016"
+    }
+  },
+  {
+    "id": "stage_387b00e321f02cc3",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 227,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "4015"
+    }
+  },
+  {
+    "id": "stage_8aeeb4617f70a19a",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 228,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": null
+    }
+  },
+  {
+    "id": "stage_8865ee71d4cd5c30",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 229,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "4323"
+    }
+  },
+  {
+    "id": "stage_e5ea481b521d9608",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 230,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "4378"
+    }
+  },
+  {
+    "id": "stage_abd5b9317dfb2fe3",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 231,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "4374"
+    }
+  },
+  {
+    "id": "stage_d3193f95af0596cd",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 232,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "4322"
+    }
+  },
+  {
+    "id": "stage_edf6258f0add66c8",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "unknown",
+    "sort_order": 233,
+    "has_groups": false,
+    "has_standings": false,
+    "extra": {
+      "fase_param": "4373"
+    }
+  },
+  {
+    "id": "stage_258fc3457ebb9b52",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 234,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "4321"
+    }
+  },
+  {
+    "id": "stage_f46ed50993f1a612",
+    "edition_id": "campeonato_goiano_1957_628",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 235,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1324"
+    }
+  },
+  {
+    "id": "stage_bcfbbad066e4da27",
+    "edition_id": "campeonato_goiano_1960_630",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 236,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1327"
+    }
+  },
+  {
+    "id": "stage_f7f03c0ee351d777",
+    "edition_id": "campeonato_goiano_1961_631",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 237,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1328"
+    }
+  },
+  {
+    "id": "stage_b716ef4d384219f8",
+    "edition_id": "campeonato_goiano_1962_321",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 238,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "496"
+    }
+  },
+  {
+    "id": "stage_ed816d9982fa9536",
+    "edition_id": "campeonato_goiano_1963_323",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 239,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1299"
+    }
+  },
+  {
+    "id": "stage_21e12d323ee2b95b",
+    "edition_id": "campeonato_goiano_1964_324",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 240,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "497"
+    }
+  },
+  {
+    "id": "stage_fb5255ada3eae596",
+    "edition_id": "campeonato_goiano_1966_326",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 241,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "1053"
+    }
+  },
+  {
+    "id": "stage_83dd30f2feb439cc",
+    "edition_id": "campeonato_goiano_1967_327",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 242,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "498"
+    }
+  },
+  {
+    "id": "stage_09e8cee587ce6be2",
+    "edition_id": "campeonato_goiano_1968_328",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 243,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "499"
+    }
+  },
+  {
+    "id": "stage_5acab03b55ccd6d0",
+    "edition_id": "campeonato_goiano_1969_329",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 244,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "500"
+    }
+  },
+  {
+    "id": "stage_9d79e690ddf26447",
+    "edition_id": "campeonato_goiano_1970_330",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 245,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "501"
+    }
+  },
+  {
+    "id": "stage_2b25cf14be8b299a",
+    "edition_id": "campeonato_goiano_1976_336",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 246,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "517"
+    }
+  },
+  {
+    "id": "stage_599c70bbcca0821b",
+    "edition_id": "campeonato_goiano_1977_337",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 247,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "522"
+    }
+  },
+  {
+    "id": "stage_e8895491b4879dc7",
+    "edition_id": "campeonato_goiano_1978_338",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 248,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "524"
+    }
+  },
+  {
+    "id": "stage_59a490e7e6dc037e",
+    "edition_id": "campeonato_goiano_1980_340",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 249,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "530"
+    }
+  },
+  {
+    "id": "stage_7f5b5eb3c27bdb30",
+    "edition_id": "campeonato_goiano_1984_345",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 250,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "552"
+    }
+  },
+  {
+    "id": "stage_21552b4a3686a55b",
+    "edition_id": "campeonato_goiano_1985_346",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 251,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "554"
+    }
+  },
+  {
+    "id": "stage_5762cf1c3160fa3b",
+    "edition_id": "campeonato_goiano_1986_347",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 252,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "557"
+    }
+  },
+  {
+    "id": "stage_0aa45707a109be00",
+    "edition_id": "campeonato_goiano_1987_348",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 253,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "559"
+    }
+  },
+  {
+    "id": "stage_f34a780afe33e2f0",
+    "edition_id": "campeonato_goiano_1988_349",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 254,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "572"
+    }
+  },
+  {
+    "id": "stage_75f36c2821de4217",
+    "edition_id": "campeonato_goiano_1990_351",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 255,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "579"
+    }
+  },
+  {
+    "id": "stage_79a9acab14ad68fb",
+    "edition_id": "campeonato_goiano_1992_353",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 256,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "588"
+    }
+  },
+  {
+    "id": "stage_7d2a7266de9cedff",
+    "edition_id": "campeonato_goiano_1996_358",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 257,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "619"
+    }
+  },
+  {
+    "id": "stage_46409a6af74a2118",
+    "edition_id": "campeonato_goiano_1999_361",
+    "name": "Fase única",
+    "raw_name": null,
+    "stage_type": "group_stage",
+    "sort_order": 258,
+    "has_groups": true,
+    "has_standings": true,
+    "extra": {
+      "fase_param": "629"
+    }
+  }
+]

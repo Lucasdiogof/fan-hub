@@ -1,0 +1,702 @@
+[
+  {
+    "id": "campeonato_goiano_1947_632",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 632,
+    "season": 1947,
+    "name": "Campeonato Goiano 1947",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1957_628",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 628,
+    "season": 1957,
+    "name": "Campeonato Goiano 1957",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1959_629",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 629,
+    "season": 1959,
+    "name": "Campeonato Goiano 1959",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1960_630",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 630,
+    "season": 1960,
+    "name": "Campeonato Goiano 1960",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1961_631",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 631,
+    "season": 1961,
+    "name": "Campeonato Goiano 1961",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1962_321",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 321,
+    "season": 1962,
+    "name": "Campeonato Goiano 1962",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1963_323",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 323,
+    "season": 1963,
+    "name": "Campeonato Goiano 1963",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1964_324",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 324,
+    "season": 1964,
+    "name": "Campeonato Goiano 1964",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1965_325",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 325,
+    "season": 1965,
+    "name": "Campeonato Goiano 1965",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1966_326",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 326,
+    "season": 1966,
+    "name": "Campeonato Goiano 1966",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1967_327",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 327,
+    "season": 1967,
+    "name": "Campeonato Goiano 1967",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1968_328",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 328,
+    "season": 1968,
+    "name": "Campeonato Goiano 1968",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1969_329",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 329,
+    "season": 1969,
+    "name": "Campeonato Goiano 1969",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1970_330",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 330,
+    "season": 1970,
+    "name": "Campeonato Goiano 1970",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1971_331",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 331,
+    "season": 1971,
+    "name": "Campeonato Goiano 1971",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1972_332",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 332,
+    "season": 1972,
+    "name": "Campeonato Goiano 1972",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1973_333",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 333,
+    "season": 1973,
+    "name": "Campeonato Goiano 1973",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1974_334",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 334,
+    "season": 1974,
+    "name": "Campeonato Goiano 1974",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1975_335",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 335,
+    "season": 1975,
+    "name": "Campeonato Goiano 1975",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1976_336",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 336,
+    "season": 1976,
+    "name": "Campeonato Goiano 1976",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1977_337",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 337,
+    "season": 1977,
+    "name": "Campeonato Goiano 1977",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1978_338",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 338,
+    "season": 1978,
+    "name": "Campeonato Goiano 1978",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1979_339",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 339,
+    "season": 1979,
+    "name": "Campeonato Goiano 1979",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1980_340",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 340,
+    "season": 1980,
+    "name": "Campeonato Goiano 1980",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1981_341",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 341,
+    "season": 1981,
+    "name": "Campeonato Goiano 1981",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1982_343",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 343,
+    "season": 1982,
+    "name": "Campeonato Goiano 1982",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1983_344",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 344,
+    "season": 1983,
+    "name": "Campeonato Goiano 1983",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1984_345",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 345,
+    "season": 1984,
+    "name": "Campeonato Goiano 1984",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1985_346",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 346,
+    "season": 1985,
+    "name": "Campeonato Goiano 1985",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1986_347",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 347,
+    "season": 1986,
+    "name": "Campeonato Goiano 1986",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1987_348",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 348,
+    "season": 1987,
+    "name": "Campeonato Goiano 1987",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1988_349",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 349,
+    "season": 1988,
+    "name": "Campeonato Goiano 1988",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1989_350",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 350,
+    "season": 1989,
+    "name": "Campeonato Goiano 1989",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1990_351",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 351,
+    "season": 1990,
+    "name": "Campeonato Goiano 1990",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1991_352",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 352,
+    "season": 1991,
+    "name": "Campeonato Goiano 1991",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1992_353",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 353,
+    "season": 1992,
+    "name": "Campeonato Goiano 1992",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1993_355",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 355,
+    "season": 1993,
+    "name": "Campeonato Goiano 1993",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1994_356",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 356,
+    "season": 1994,
+    "name": "Campeonato Goiano 1994",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1995_357",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 357,
+    "season": 1995,
+    "name": "Campeonato Goiano 1995",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1996_358",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 358,
+    "season": 1996,
+    "name": "Campeonato Goiano 1996",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1997_359",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 359,
+    "season": 1997,
+    "name": "Campeonato Goiano 1997",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1998_360",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 360,
+    "season": 1998,
+    "name": "Campeonato Goiano 1998",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_1999_361",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 361,
+    "season": 1999,
+    "name": "Campeonato Goiano 1999",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2000_362",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 362,
+    "season": 2000,
+    "name": "Campeonato Goiano 2000",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2001_363",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 363,
+    "season": 2001,
+    "name": "Campeonato Goiano 2001",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2002_364",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 364,
+    "season": 2002,
+    "name": "Campeonato Goiano 2002",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2003_365",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 365,
+    "season": 2003,
+    "name": "Campeonato Goiano 2003",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2004_366",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 366,
+    "season": 2004,
+    "name": "Campeonato Goiano 2004",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2005_367",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 367,
+    "season": 2005,
+    "name": "Campeonato Goiano 2005",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2006_368",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 368,
+    "season": 2006,
+    "name": "Campeonato Goiano 2006",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2007_369",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 369,
+    "season": 2007,
+    "name": "Campeonato Goiano 2007",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2008_354",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 354,
+    "season": 2008,
+    "name": "Campeonato Goiano 2008",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2009_372",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 372,
+    "season": 2009,
+    "name": "Campeonato Goiano 2009",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2010_371",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 371,
+    "season": 2010,
+    "name": "Campeonato Goiano 2010",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2011_370",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 370,
+    "season": 2011,
+    "name": "Campeonato Goiano 2011",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2012_342",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 342,
+    "season": 2012,
+    "name": "Campeonato Goiano 2012",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2013_22",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 22,
+    "season": 2013,
+    "name": "Campeonato Goiano 2013",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2014_307",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 307,
+    "season": 2014,
+    "name": "Campeonato Goiano 2014",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2015_614",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 614,
+    "season": 2015,
+    "name": "Campeonato Goiano 2015",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2016_649",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 649,
+    "season": 2016,
+    "name": "Campeonato Goiano 2016",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2017_685",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 685,
+    "season": 2017,
+    "name": "Campeonato Goiano 2017",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2018_704",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 704,
+    "season": 2018,
+    "name": "Campeonato Goiano 2018",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2019_784",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 784,
+    "season": 2019,
+    "name": "Campeonato Goiano 2019",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2020_838",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 838,
+    "season": 2020,
+    "name": "Campeonato Goiano 2020",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2021_856",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 856,
+    "season": 2021,
+    "name": "Campeonato Goiano 2021",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2022_874",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 874,
+    "season": 2022,
+    "name": "Campeonato Goiano 2022",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2023_990",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 990,
+    "season": 2023,
+    "name": "Campeonato Goiano 2023",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2024_1372",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 1372,
+    "season": 2024,
+    "name": "Campeonato Goiano 2024",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2025_1509",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 1509,
+    "season": 2025,
+    "name": "Campeonato Goiano 2025",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao",
+    "status": "unknown",
+    "is_complete": null
+  },
+  {
+    "id": "campeonato_goiano_2026_1603",
+    "competition_id": "campeonato_goiano",
+    "source_edition_id": 1603,
+    "season": 2026,
+    "name": "Campeonato Goiano 2026",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao",
+    "status": "unknown",
+    "is_complete": null
+  }
+]

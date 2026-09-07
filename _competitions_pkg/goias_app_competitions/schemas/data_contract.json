@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goias-app.local/schemas/data-contract.json",
+  "title": "Goiás-app competition data contract",
+  "type": "object",
+  "$defs": {
+    "score": {
+      "type": "object",
+      "properties": {
+        "home": {"type": ["integer", "null"], "minimum": 0},
+        "away": {"type": ["integer", "null"], "minimum": 0},
+        "penalties_home": {"type": ["integer", "null"], "minimum": 0},
+        "penalties_away": {"type": ["integer", "null"], "minimum": 0},
+        "raw": {"type": ["string", "null"]}
+      },
+      "required": ["home", "away", "penalties_home", "penalties_away", "raw"],
+      "additionalProperties": false
+    },
+    "match": {
+      "type": "object",
+      "required": ["id", "edition_id", "status", "source_url"],
+      "properties": {
+        "id": {"type": "string"},
+        "source_match_id": {"type": ["integer", "null"]},
+        "edition_id": {"type": "string"},
+        "stage_name_raw": {"type": ["string", "null"]},
+        "round_name_raw": {"type": ["string", "null"]},
+        "datetime_local": {"type": ["string", "null"]},
+        "home_team_source_id": {"type": ["integer", "null"]},
+        "home_team_name_raw": {"type": ["string", "null"]},
+        "away_team_source_id": {"type": ["integer", "null"]},
+        "away_team_name_raw": {"type": ["string", "null"]},
+        "score": {"$ref": "#/$defs/score"},
+        "status": {"type": "string"},
+        "stadium": {"type": ["object", "null"]},
+        "source_url": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "scorer": {
+      "type": "object",
+      "required": ["id", "edition_id", "player_name_raw", "goals", "source_url"],
+      "properties": {
+        "id": {"type": "string"},
+        "edition_id": {"type": "string"},
+        "rank": {"type": ["integer", "null"], "minimum": 1},
+        "player_source_id": {"type": ["integer", "null"]},
+        "player_name_raw": {"type": "string"},
+        "team_source_id": {"type": ["integer", "null"]},
+        "team_name_raw": {"type": ["string", "null"]},
+        "goals": {"type": "integer", "minimum": 0},
+        "source_url": {"type": "string"}
+      },
+      "additionalProperties": true
+    }
+  }
+}
