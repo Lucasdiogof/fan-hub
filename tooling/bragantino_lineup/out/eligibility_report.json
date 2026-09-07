@@ -1,0 +1,1492 @@
+{
+  "generated_at": "2026-09-07T00:31:12.963Z",
+  "pool_source": "tooling/bragantino_passport/source/lineup_shortlist_v2.json",
+  "avaliadas": 123,
+  "publicaveis": 0,
+  "rejeitadas": 123,
+  "motivos": {
+    "SEM_FORMACAO": 123,
+    "SEM_POSICAO_POR_JOGADOR": 123
+  },
+  "por_categoria": {
+    "RECENT": 123
+  },
+  "detalhe": [
+    {
+      "source_match_id": "9837441",
+      "date": "2024-01-20",
+      "competition": "Paulista",
+      "opponent": "EC Água Santa",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837448",
+      "date": "2024-01-24",
+      "competition": "Paulista",
+      "opponent": "Portuguesa",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837456",
+      "date": "2024-01-27",
+      "competition": "Paulista",
+      "opponent": "Botafogo-SP",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837466",
+      "date": "2024-01-31",
+      "competition": "Paulista",
+      "opponent": "Palmeiras",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837473",
+      "date": "2024-02-04",
+      "competition": "Paulista",
+      "opponent": "Santo André",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837479",
+      "date": "2024-02-07",
+      "competition": "Paulista",
+      "opponent": "Grêmio Novorizontino",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837489",
+      "date": "2024-02-10",
+      "competition": "Paulista",
+      "opponent": "São Bernardo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837497",
+      "date": "2024-02-14",
+      "competition": "Paulista",
+      "opponent": "Ponte Preta",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837506",
+      "date": "2024-02-17",
+      "competition": "Paulista",
+      "opponent": "São Paulo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9845579",
+      "date": "2024-02-20",
+      "competition": "CONMEBOL Libertadores",
+      "opponent": "Rionegro Águilas",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837511",
+      "date": "2024-02-24",
+      "competition": "Paulista",
+      "opponent": "Ituano",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837521",
+      "date": "2024-03-03",
+      "competition": "Paulista",
+      "opponent": "Santos",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9984730",
+      "date": "2024-03-06",
+      "competition": "CONMEBOL Libertadores",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9837524",
+      "date": "2024-03-10",
+      "competition": "Paulista",
+      "opponent": "Guarani",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9984733",
+      "date": "2024-03-13",
+      "competition": "CONMEBOL Libertadores",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9996799",
+      "date": "2024-03-17",
+      "competition": "Paulista",
+      "opponent": "Inter de Limeira",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10004912",
+      "date": "2024-03-27",
+      "competition": "Paulista",
+      "opponent": "Santos",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10008162",
+      "date": "2024-04-03",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Coquimbo Unido",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10008178",
+      "date": "2024-04-10",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Racing Club",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985674",
+      "date": "2024-04-13",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fluminense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985687",
+      "date": "2024-04-17",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vasco",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985697",
+      "date": "2024-04-20",
+      "competition": "Brasileirão Série A",
+      "opponent": "Corinthians",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10008192",
+      "date": "2024-04-24",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Sportivo Luqueño",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985708",
+      "date": "2024-04-28",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fortaleza",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10053168",
+      "date": "2024-05-01",
+      "competition": "Copa do Brasil",
+      "opponent": "Sousa",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985717",
+      "date": "2024-05-04",
+      "competition": "Brasileirão Série A",
+      "opponent": "Flamengo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10008210",
+      "date": "2024-05-09",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Racing Club",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985723",
+      "date": "2024-05-12",
+      "competition": "Brasileirão Série A",
+      "opponent": "Bahia",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10008226",
+      "date": "2024-05-16",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Sportivo Luqueño",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10053184",
+      "date": "2024-05-21",
+      "competition": "Copa do Brasil",
+      "opponent": "Sousa",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10008242",
+      "date": "2024-05-28",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Coquimbo Unido",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985731",
+      "date": "2024-06-01",
+      "competition": "Brasileirão Série A",
+      "opponent": "Grêmio",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985747",
+      "date": "2024-06-11",
+      "competition": "Brasileirão Série A",
+      "opponent": "Atlético Mineiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985757",
+      "date": "2024-06-15",
+      "competition": "Brasileirão Série A",
+      "opponent": "Juventude",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985766",
+      "date": "2024-06-20",
+      "competition": "Brasileirão Série A",
+      "opponent": "Palmeiras",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985777",
+      "date": "2024-06-23",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vitória",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985785",
+      "date": "2024-06-26",
+      "competition": "Brasileirão Série A",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985799",
+      "date": "2024-06-29",
+      "competition": "Brasileirão Série A",
+      "opponent": "Cuiabá",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985807",
+      "date": "2024-07-03",
+      "competition": "Brasileirão Série A",
+      "opponent": "Atlético Goianiense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985817",
+      "date": "2024-07-06",
+      "competition": "Brasileirão Série A",
+      "opponent": "São Paulo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985832",
+      "date": "2024-07-13",
+      "competition": "Brasileirão Série A",
+      "opponent": "Cruzeiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10140315",
+      "date": "2024-07-17",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Barcelona SC",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985847",
+      "date": "2024-07-21",
+      "competition": "Brasileirão Série A",
+      "opponent": "Athletico Paranaense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10140316",
+      "date": "2024-07-24",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Barcelona SC",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985867",
+      "date": "2024-07-28",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fluminense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10268110",
+      "date": "2024-07-31",
+      "competition": "Copa do Brasil",
+      "opponent": "Athletico Paranaense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985875",
+      "date": "2024-08-03",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vasco",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10268118",
+      "date": "2024-08-07",
+      "competition": "Copa do Brasil",
+      "opponent": "Athletico Paranaense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985886",
+      "date": "2024-08-10",
+      "competition": "Brasileirão Série A",
+      "opponent": "Corinthians",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10287567",
+      "date": "2024-08-13",
+      "competition": "CONMEBOL Sudamericana",
+      "opponent": "Corinthians",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985897",
+      "date": "2024-08-17",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fortaleza",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985904",
+      "date": "2024-08-25",
+      "competition": "Brasileirão Série A",
+      "opponent": "Flamengo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985860",
+      "date": "2024-08-28",
+      "competition": "Brasileirão Série A",
+      "opponent": "Criciúma",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985917",
+      "date": "2024-09-01",
+      "competition": "Brasileirão Série A",
+      "opponent": "Bahia",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985927",
+      "date": "2024-09-15",
+      "competition": "Brasileirão Série A",
+      "opponent": "Grêmio",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985932",
+      "date": "2024-09-22",
+      "competition": "Brasileirão Série A",
+      "opponent": "Atlético Mineiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985827",
+      "date": "2024-09-25",
+      "competition": "Brasileirão Série A",
+      "opponent": "Internacional",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985950",
+      "date": "2024-09-29",
+      "competition": "Brasileirão Série A",
+      "opponent": "Juventude",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985957",
+      "date": "2024-10-05",
+      "competition": "Brasileirão Série A",
+      "opponent": "Palmeiras",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985963",
+      "date": "2024-10-19",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vitória",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985977",
+      "date": "2024-10-26",
+      "competition": "Brasileirão Série A",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985987",
+      "date": "2024-11-02",
+      "competition": "Brasileirão Série A",
+      "opponent": "Cuiabá",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9985999",
+      "date": "2024-11-09",
+      "competition": "Brasileirão Série A",
+      "opponent": "Atlético Goianiense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9986007",
+      "date": "2024-11-20",
+      "competition": "Brasileirão Série A",
+      "opponent": "São Paulo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9986011",
+      "date": "2024-11-24",
+      "competition": "Brasileirão Série A",
+      "opponent": "Internacional",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9986027",
+      "date": "2024-12-01",
+      "competition": "Brasileirão Série A",
+      "opponent": "Cruzeiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9986038",
+      "date": "2024-12-05",
+      "competition": "Brasileirão Série A",
+      "opponent": "Athletico Paranaense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "9986047",
+      "date": "2024-12-08",
+      "competition": "Brasileirão Série A",
+      "opponent": "Criciúma",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657564",
+      "date": "2025-01-16",
+      "competition": "Paulista",
+      "opponent": "Corinthians",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657577",
+      "date": "2025-01-19",
+      "competition": "Paulista",
+      "opponent": "São Bernardo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657582",
+      "date": "2025-01-22",
+      "competition": "Paulista",
+      "opponent": "Velo Clube",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657593",
+      "date": "2025-01-25",
+      "competition": "Paulista",
+      "opponent": "EC Água Santa",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657598",
+      "date": "2025-01-28",
+      "competition": "Paulista",
+      "opponent": "Palmeiras",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657606",
+      "date": "2025-01-31",
+      "competition": "Paulista",
+      "opponent": "Grêmio Novorizontino",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657612",
+      "date": "2025-02-04",
+      "competition": "Paulista",
+      "opponent": "Inter de Limeira",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657623",
+      "date": "2025-02-08",
+      "competition": "Paulista",
+      "opponent": "São Paulo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657625",
+      "date": "2025-02-11",
+      "competition": "Paulista",
+      "opponent": "Botafogo-SP",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657637",
+      "date": "2025-02-15",
+      "competition": "Paulista",
+      "opponent": "Noroeste",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657645",
+      "date": "2025-02-20",
+      "competition": "Paulista",
+      "opponent": "Mirassol",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10657654",
+      "date": "2025-02-23",
+      "competition": "Paulista",
+      "opponent": "Ponte Preta",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10792176",
+      "date": "2025-03-02",
+      "competition": "Paulista",
+      "opponent": "Santos",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779836",
+      "date": "2025-03-31",
+      "competition": "Brasileirão Série A",
+      "opponent": "Ceará",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779842",
+      "date": "2025-04-06",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fluminense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779856",
+      "date": "2025-04-12",
+      "competition": "Brasileirão Série A",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779871",
+      "date": "2025-04-16",
+      "competition": "Brasileirão Série A",
+      "opponent": "Sport",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779876",
+      "date": "2025-04-20",
+      "competition": "Brasileirão Série A",
+      "opponent": "Cruzeiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779885",
+      "date": "2025-04-27",
+      "competition": "Brasileirão Série A",
+      "opponent": "Santos",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10854924",
+      "date": "2025-05-01",
+      "competition": "Copa do Brasil",
+      "opponent": "Criciúma",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779896",
+      "date": "2025-05-05",
+      "competition": "Brasileirão Série A",
+      "opponent": "Mirassol",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779908",
+      "date": "2025-05-10",
+      "competition": "Brasileirão Série A",
+      "opponent": "Grêmio",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779916",
+      "date": "2025-05-18",
+      "competition": "Brasileirão Série A",
+      "opponent": "Palmeiras",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10854940",
+      "date": "2025-05-22",
+      "competition": "Copa do Brasil",
+      "opponent": "Criciúma",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779926",
+      "date": "2025-05-26",
+      "competition": "Brasileirão Série A",
+      "opponent": "Juventude",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779933",
+      "date": "2025-05-31",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vasco",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779946",
+      "date": "2025-06-12",
+      "competition": "Brasileirão Série A",
+      "opponent": "Bahia",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779954",
+      "date": "2025-07-13",
+      "competition": "Brasileirão Série A",
+      "opponent": "Corinthians",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779966",
+      "date": "2025-07-16",
+      "competition": "Brasileirão Série A",
+      "opponent": "São Paulo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779979",
+      "date": "2025-07-20",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vitória",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10779986",
+      "date": "2025-07-23",
+      "competition": "Brasileirão Série A",
+      "opponent": "Flamengo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780000",
+      "date": "2025-07-26",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fortaleza",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "11026741",
+      "date": "2025-07-29",
+      "competition": "Copa do Brasil",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780007",
+      "date": "2025-08-03",
+      "competition": "Brasileirão Série A",
+      "opponent": "Atlético Mineiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "11026749",
+      "date": "2025-08-06",
+      "competition": "Copa do Brasil",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780016",
+      "date": "2025-08-09",
+      "competition": "Brasileirão Série A",
+      "opponent": "Internacional",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780030",
+      "date": "2025-08-16",
+      "competition": "Brasileirão Série A",
+      "opponent": "Ceará",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780036",
+      "date": "2025-08-23",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fluminense",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780043",
+      "date": "2025-08-30",
+      "competition": "Brasileirão Série A",
+      "opponent": "Botafogo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780056",
+      "date": "2025-09-14",
+      "competition": "Brasileirão Série A",
+      "opponent": "Sport",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780067",
+      "date": "2025-09-21",
+      "competition": "Brasileirão Série A",
+      "opponent": "Cruzeiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780076",
+      "date": "2025-09-28",
+      "competition": "Brasileirão Série A",
+      "opponent": "Santos",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780086",
+      "date": "2025-10-01",
+      "competition": "Brasileirão Série A",
+      "opponent": "Mirassol",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780096",
+      "date": "2025-10-04",
+      "competition": "Brasileirão Série A",
+      "opponent": "Grêmio",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780104",
+      "date": "2025-10-15",
+      "competition": "Brasileirão Série A",
+      "opponent": "Palmeiras",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780121",
+      "date": "2025-10-20",
+      "competition": "Brasileirão Série A",
+      "opponent": "Juventude",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780126",
+      "date": "2025-10-26",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vasco",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780139",
+      "date": "2025-11-02",
+      "competition": "Brasileirão Série A",
+      "opponent": "Bahia",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780146",
+      "date": "2025-11-05",
+      "competition": "Brasileirão Série A",
+      "opponent": "Corinthians",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780155",
+      "date": "2025-11-08",
+      "competition": "Brasileirão Série A",
+      "opponent": "São Paulo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780196",
+      "date": "2025-11-16",
+      "competition": "Brasileirão Série A",
+      "opponent": "Atlético Mineiro",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780172",
+      "date": "2025-11-22",
+      "competition": "Brasileirão Série A",
+      "opponent": "Flamengo",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780186",
+      "date": "2025-11-26",
+      "competition": "Brasileirão Série A",
+      "opponent": "Fortaleza",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780166",
+      "date": "2025-12-03",
+      "competition": "Brasileirão Série A",
+      "opponent": "Vitória",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    },
+    {
+      "source_match_id": "10780207",
+      "date": "2025-12-07",
+      "competition": "Brasileirão Série A",
+      "opponent": "Internacional",
+      "category": "RECENT",
+      "publishable": false,
+      "reasons": [
+        "SEM_FORMACAO",
+        "SEM_POSICAO_POR_JOGADOR"
+      ]
+    }
+  ]
+}
