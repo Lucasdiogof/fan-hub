@@ -1,0 +1,24 @@
+{
+  "package": "goias_app_competitions_collector",
+  "version": "0.1.0",
+  "created_on": "2026-08-31",
+  "purpose": "Collect and normalize all available editions for the selected competitions, including scorers and rich edition/match metadata.",
+  "deliverables": [
+    "README.md",
+    "HANDOFF.md",
+    "schema.sql",
+    "requirements.txt",
+    "run.py",
+    "config/scope.json",
+    "config/verified_source_catalog.json",
+    "collector/http.py",
+    "collector/parser.py",
+    "collector/validate.py",
+    "collector/cli.py",
+    "samples/normalized_examples.json",
+    "tests_smoke.py"
+  ],
+  "data_materialization_status": "collector_ready_not_bulk_materialized_in_this_runtime",
+  "reason": "The file-building runtime has no direct outbound HTTP access for bulk downloads. Public source structure was verified separately and encoded into the collector/audit model.",
+  "smoke_tests": "passed"
+}

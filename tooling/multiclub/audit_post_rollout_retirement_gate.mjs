@@ -161,19 +161,33 @@ const NATIVE_CLIENT_SNAPSHOT = {
   legacyNativeClientsControlled: true,
   publicNativeRelease: false,
 };
-// APK 1.0.1+2 — tentativa de geração NESTA rodada.
+// APK 1.0.1+2 — tentativa de geração NESTA sessão FALHOU (ver histórico
+// abaixo); o DONO gerou com sucesso no próprio terminal logo em seguida —
+// confirmado nesta sessão via `build/app/outputs/apk/release/output-
+// metadata.json` (mesmo filesystem/diretório do projeto): versionCode=2,
+// versionName=1.0.1, timestamp 2026-09-03 (bate com o pedido).
 const APK_1_0_1_2_STATUS = {
   attemptedAt: '2026-09-03',
   buildCommand: 'flutter build apk --release',
-  buildSucceeded: false,
-  buildBlocker: "Gradle 9.1 falha com 'java.io.IOException: Unable to establish loopback connection' " +
-    "(UnixDomainSockets.connect0 'Invalid argument: connect', dentro do PipeImpl interno do JDK 17 usado pelo Selector do daemon) " +
-    'ao rodar `flutter build apk --release` NESTE ambiente de sessão — 4 tentativas com mitigações diferentes ' +
-    '(retry simples, --no-daemon + -Djava.net.preferIPv4Stack=true, sandbox desabilitado, TEMP com path longo em vez de 8.3) — todas falharam do mesmo jeito. ' +
-    'NÃO parece ser um problema do código/config do projeto: existe um `build/app/outputs/apk/release/app-release.apk` de 2026-09-01 (versão 1.0.0, antiga) — ' +
-    'ou seja, esse mesmo build JÁ funcionou antes, só não nesta sessão. Provável causa: diferença de ambiente/sandbox/rede local entre esta sessão e o terminal onde o build de 01/09 rodou.',
-  apkGenerated: false,
-  apkDeliveredToLegacyUsers: false, // ação manual do dono (enviar o arquivo pras ~3 pessoas) — nunca automatizável daqui
+  buildSucceeded: true, // gerado pelo dono no PRÓPRIO terminal, não nesta sessão
+  generatedBy: 'owner, own terminal (this session\'s own attempts all failed — see buildBlockerHistory)',
+  buildBlockerHistory: "Gradle 9.1 falhou NESTA SESSÃO com 'java.io.IOException: Unable to establish loopback connection' " +
+    "(UnixDomainSockets.connect0 'Invalid argument: connect') — 4 mitigações tentadas, todas sem sucesso; " +
+    'confirma que era um problema de ambiente desta sessão específica, não do projeto — o dono rodou o MESMO comando no próprio terminal e funcionou.',
+  verifiedArtifact: {
+    path: 'build/app/outputs/apk/release/output-metadata.json',
+    versionCode: 2,
+    versionName: '1.0.1',
+    applicationId: 'br.com.goiasec.goias_app',
+  },
+  apkGenerated: true,
+  // Confirmado pelo dono nesta sessão ("já mandei pra 3 amigos aqui, tá de
+  // boa") — ação manual, nunca automatizável/verificável daqui; registrado
+  // como afirmação do dono, mesmo padrão de toda "fato fornecido pelo
+  // dono" já usado neste audit (ex.: NATIVE_CLIENT_SNAPSHOT acima).
+  apkDeliveredToLegacyUsers: true,
+  apkDeliveredConfirmedAt: '2026-09-03',
+  apkDeliveredConfirmedBy: 'owner, direct confirmation in chat ("já mandei pra 3 amigos aqui, tá de boa")',
 };
 const legacyVersionSupportEnded = APK_1_0_1_2_STATUS.apkDeliveredToLegacyUsers === true;
 

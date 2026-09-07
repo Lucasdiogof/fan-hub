@@ -64,6 +64,6 @@
     "anyRpcTakesVersionParam": false
   },
   "telemetry": {
-    "sentryReleaseTaggingPresent": true
+    "sentryReleaseTaggingPresent": false
   }
 }

@@ -1,0 +1,1234 @@
+[
+  {
+    "id": "group_1381ae8c3c83cc4b",
+    "stage_id": "stage_ba68503eb89eddb9",
+    "name": "Grupo único",
+    "sort_order": 0,
+    "extra": {}
+  },
+  {
+    "id": "group_a50aeb7518cc0c60",
+    "stage_id": "stage_f46ed50993f1a612",
+    "name": "Grupo único",
+    "sort_order": 1,
+    "extra": {}
+  },
+  {
+    "id": "group_daa070dee59cb071",
+    "stage_id": "stage_97c556e60598c464",
+    "name": "Grupo único",
+    "sort_order": 2,
+    "extra": {}
+  },
+  {
+    "id": "group_a4d0ba767bc00c27",
+    "stage_id": "stage_bb9c767055b917e0",
+    "name": "Grupo único",
+    "sort_order": 3,
+    "extra": {}
+  },
+  {
+    "id": "group_c05800388da159ff",
+    "stage_id": "stage_bcfbbad066e4da27",
+    "name": "Grupo único",
+    "sort_order": 4,
+    "extra": {}
+  },
+  {
+    "id": "group_c585488f7506476c",
+    "stage_id": "stage_b275f7fd36d29586",
+    "name": "Grupo único",
+    "sort_order": 5,
+    "extra": {}
+  },
+  {
+    "id": "group_27f01e43adf1fbf9",
+    "stage_id": "stage_f7f03c0ee351d777",
+    "name": "Grupo único",
+    "sort_order": 6,
+    "extra": {}
+  },
+  {
+    "id": "group_8bc953bdf3ba084d",
+    "stage_id": "stage_2f6a5a6707053ab0",
+    "name": "Grupo único",
+    "sort_order": 7,
+    "extra": {}
+  },
+  {
+    "id": "group_6599354cfc55fd74",
+    "stage_id": "stage_b716ef4d384219f8",
+    "name": "Grupo único",
+    "sort_order": 8,
+    "extra": {}
+  },
+  {
+    "id": "group_39479e67ccae281b",
+    "stage_id": "stage_37378a68c962c7a6",
+    "name": "Grupo único",
+    "sort_order": 9,
+    "extra": {}
+  },
+  {
+    "id": "group_036a6038d58185db",
+    "stage_id": "stage_ed816d9982fa9536",
+    "name": "Grupo único",
+    "sort_order": 10,
+    "extra": {}
+  },
+  {
+    "id": "group_55da46cd468695db",
+    "stage_id": "stage_02b609de56530615",
+    "name": "Grupo único",
+    "sort_order": 11,
+    "extra": {}
+  },
+  {
+    "id": "group_a7e90770bfa21e74",
+    "stage_id": "stage_21e12d323ee2b95b",
+    "name": "Grupo único",
+    "sort_order": 12,
+    "extra": {}
+  },
+  {
+    "id": "group_e99f3efb611103cd",
+    "stage_id": "stage_26673e3db24a870b",
+    "name": "Grupo Único",
+    "sort_order": 13,
+    "extra": {}
+  },
+  {
+    "id": "group_4e7fd9904563521c",
+    "stage_id": "stage_a4086bdab113edd4",
+    "name": "Grupo único",
+    "sort_order": 14,
+    "extra": {}
+  },
+  {
+    "id": "group_e589594af8d77556",
+    "stage_id": "stage_fb5255ada3eae596",
+    "name": "Grupo único",
+    "sort_order": 15,
+    "extra": {}
+  },
+  {
+    "id": "group_e13856a547e3ade3",
+    "stage_id": "stage_19bbb5d8bf66fd32",
+    "name": "Grupo único",
+    "sort_order": 16,
+    "extra": {}
+  },
+  {
+    "id": "group_77b06de84c1b194c",
+    "stage_id": "stage_83dd30f2feb439cc",
+    "name": "Grupo único",
+    "sort_order": 17,
+    "extra": {}
+  },
+  {
+    "id": "group_cb3355d8565d8347",
+    "stage_id": "stage_1c2f41b09840c281",
+    "name": "Grupo único",
+    "sort_order": 18,
+    "extra": {}
+  },
+  {
+    "id": "group_bcdcc6525505c3e9",
+    "stage_id": "stage_09e8cee587ce6be2",
+    "name": "Grupo único",
+    "sort_order": 19,
+    "extra": {}
+  },
+  {
+    "id": "group_393d70066e44c48e",
+    "stage_id": "stage_e15435a5bbb067cc",
+    "name": "Grupo único",
+    "sort_order": 20,
+    "extra": {}
+  },
+  {
+    "id": "group_c20ab1ae455c9d83",
+    "stage_id": "stage_5acab03b55ccd6d0",
+    "name": "Grupo único",
+    "sort_order": 21,
+    "extra": {}
+  },
+  {
+    "id": "group_969c848835d05b61",
+    "stage_id": "stage_298e318c40543556",
+    "name": "Grupo único",
+    "sort_order": 22,
+    "extra": {}
+  },
+  {
+    "id": "group_4cef9679333ab6b5",
+    "stage_id": "stage_9d79e690ddf26447",
+    "name": "Grupo único",
+    "sort_order": 23,
+    "extra": {}
+  },
+  {
+    "id": "group_11c7f0787c3ccc2c",
+    "stage_id": "stage_95e582403656bb9f",
+    "name": "Grupo único",
+    "sort_order": 24,
+    "extra": {}
+  },
+  {
+    "id": "group_35490e7187497cc8",
+    "stage_id": "stage_02c07980b942c48e",
+    "name": "Grupo único",
+    "sort_order": 25,
+    "extra": {}
+  },
+  {
+    "id": "group_d87b4aaab4c009c1",
+    "stage_id": "stage_f6bdfcfa1f718a5e",
+    "name": "Grupo único",
+    "sort_order": 26,
+    "extra": {}
+  },
+  {
+    "id": "group_eccf537439febaff",
+    "stage_id": "stage_37af0cde622e4293",
+    "name": "Grupo único",
+    "sort_order": 27,
+    "extra": {}
+  },
+  {
+    "id": "group_6696e734fa66a2be",
+    "stage_id": "stage_9cfdd33f585448b6",
+    "name": "Grupo único",
+    "sort_order": 28,
+    "extra": {}
+  },
+  {
+    "id": "group_3609cb7522a438f9",
+    "stage_id": "stage_3e85f5006cdd07dd",
+    "name": "Grupo único",
+    "sort_order": 29,
+    "extra": {}
+  },
+  {
+    "id": "group_7af8e38d16038a43",
+    "stage_id": "stage_1d69bc158bb4b6ca",
+    "name": "Grupo único",
+    "sort_order": 30,
+    "extra": {}
+  },
+  {
+    "id": "group_7373dd80e918341e",
+    "stage_id": "stage_1bac309fa278dd5b",
+    "name": "Grupo único",
+    "sort_order": 31,
+    "extra": {}
+  },
+  {
+    "id": "group_c9d7ad85b460e80a",
+    "stage_id": "stage_97fd5ace44715d11",
+    "name": "Grupo único",
+    "sort_order": 32,
+    "extra": {}
+  },
+  {
+    "id": "group_44cc04120de0b18d",
+    "stage_id": "stage_c74f69135bdc5a8b",
+    "name": "Grupo único",
+    "sort_order": 33,
+    "extra": {}
+  },
+  {
+    "id": "group_795b014a974f8915",
+    "stage_id": "stage_2b25cf14be8b299a",
+    "name": "Grupo único",
+    "sort_order": 34,
+    "extra": {}
+  },
+  {
+    "id": "group_12f70d90aa446c76",
+    "stage_id": "stage_cf5e91b2c70d844e",
+    "name": "Grupo único",
+    "sort_order": 35,
+    "extra": {}
+  },
+  {
+    "id": "group_52de8a0cd2f1e957",
+    "stage_id": "stage_ce7ad850a1ac93ca",
+    "name": "Grupo 1",
+    "sort_order": 36,
+    "extra": {}
+  },
+  {
+    "id": "group_ca78aa84938570ad",
+    "stage_id": "stage_b45d721f715b632b",
+    "name": "Grupo único",
+    "sort_order": 37,
+    "extra": {}
+  },
+  {
+    "id": "group_c31bc4b7173867b3",
+    "stage_id": "stage_db207c13b2e6bc15",
+    "name": "Grupo único",
+    "sort_order": 38,
+    "extra": {}
+  },
+  {
+    "id": "group_048fb27c8ec73076",
+    "stage_id": "stage_599c70bbcca0821b",
+    "name": "Grupo único",
+    "sort_order": 39,
+    "extra": {}
+  },
+  {
+    "id": "group_82a4e0684f71790d",
+    "stage_id": "stage_4691e4fac8f44ac4",
+    "name": "Grupo único",
+    "sort_order": 40,
+    "extra": {}
+  },
+  {
+    "id": "group_893db3ec4418567a",
+    "stage_id": "stage_1b00fd3d97902246",
+    "name": "Grupo único",
+    "sort_order": 41,
+    "extra": {}
+  },
+  {
+    "id": "group_de9f5a1de5b478f4",
+    "stage_id": "stage_60c128c0bf8aae0f",
+    "name": "Grupo único",
+    "sort_order": 42,
+    "extra": {}
+  },
+  {
+    "id": "group_244aff5c307e0619",
+    "stage_id": "stage_e8895491b4879dc7",
+    "name": "Grupo único",
+    "sort_order": 43,
+    "extra": {}
+  },
+  {
+    "id": "group_67046c432f5fb764",
+    "stage_id": "stage_b3309aa10fc5ecc3",
+    "name": "Grupo único",
+    "sort_order": 44,
+    "extra": {}
+  },
+  {
+    "id": "group_fa1e20ff0bd26173",
+    "stage_id": "stage_c4df0f640061865d",
+    "name": "Grupo único",
+    "sort_order": 45,
+    "extra": {}
+  },
+  {
+    "id": "group_fda39b9b042b409f",
+    "stage_id": "stage_462498178c35e5cb",
+    "name": "Grupo A",
+    "sort_order": 46,
+    "extra": {}
+  },
+  {
+    "id": "group_9ceb0186e15ed389",
+    "stage_id": "stage_462498178c35e5cb",
+    "name": "Grupo B",
+    "sort_order": 47,
+    "extra": {}
+  },
+  {
+    "id": "group_9dd49d3833276a7e",
+    "stage_id": "stage_3e0a646b5c203597",
+    "name": "Grupo único",
+    "sort_order": 48,
+    "extra": {}
+  },
+  {
+    "id": "group_a8140bcd77f9e3d2",
+    "stage_id": "stage_415f8c8cea3e0358",
+    "name": "Grupo único",
+    "sort_order": 49,
+    "extra": {}
+  },
+  {
+    "id": "group_1439e1da9bf7c7a8",
+    "stage_id": "stage_59a490e7e6dc037e",
+    "name": "Grupo único",
+    "sort_order": 50,
+    "extra": {}
+  },
+  {
+    "id": "group_948985ccadee41b0",
+    "stage_id": "stage_fd8841832ab2a42e",
+    "name": "Grupo único",
+    "sort_order": 51,
+    "extra": {}
+  },
+  {
+    "id": "group_aa5b7e6de9cd74e2",
+    "stage_id": "stage_7eed4d02321b7bca",
+    "name": "Grupo único",
+    "sort_order": 52,
+    "extra": {}
+  },
+  {
+    "id": "group_57334493fd4a5685",
+    "stage_id": "stage_e1400fde4e8042c2",
+    "name": "Grupo único",
+    "sort_order": 53,
+    "extra": {}
+  },
+  {
+    "id": "group_21904fedac0568fd",
+    "stage_id": "stage_a03e3b2d7d98660f",
+    "name": "Grupo único",
+    "sort_order": 54,
+    "extra": {}
+  },
+  {
+    "id": "group_f9aed6ccfdd4fba4",
+    "stage_id": "stage_c740bc03c22b2e67",
+    "name": "Grupo único",
+    "sort_order": 55,
+    "extra": {}
+  },
+  {
+    "id": "group_534740d29f0a40da",
+    "stage_id": "stage_44b1e644a5dc2273",
+    "name": "Grupo único",
+    "sort_order": 56,
+    "extra": {}
+  },
+  {
+    "id": "group_993633b2f20f2719",
+    "stage_id": "stage_e516c886578fa90b",
+    "name": "Grupo único",
+    "sort_order": 57,
+    "extra": {}
+  },
+  {
+    "id": "group_706a59e9c6e9fa41",
+    "stage_id": "stage_f3732c9802a94f82",
+    "name": "Grupo único",
+    "sort_order": 58,
+    "extra": {}
+  },
+  {
+    "id": "group_7bc21a68b4105da5",
+    "stage_id": "stage_206047bb0024823d",
+    "name": "Grupo único",
+    "sort_order": 59,
+    "extra": {}
+  },
+  {
+    "id": "group_9a23cb1359fdcd7f",
+    "stage_id": "stage_ea91d8d957868a8d",
+    "name": "Grupo único",
+    "sort_order": 60,
+    "extra": {}
+  },
+  {
+    "id": "group_7fab979a042bb96f",
+    "stage_id": "stage_381f358897870455",
+    "name": "Grupo A",
+    "sort_order": 61,
+    "extra": {}
+  },
+  {
+    "id": "group_771a16664bf8e9da",
+    "stage_id": "stage_381f358897870455",
+    "name": "Grupo B",
+    "sort_order": 62,
+    "extra": {}
+  },
+  {
+    "id": "group_8364621337151aaf",
+    "stage_id": "stage_9ed9a5a45e259cfd",
+    "name": "Grupo A",
+    "sort_order": 63,
+    "extra": {}
+  },
+  {
+    "id": "group_16c5c3ca06dbbf67",
+    "stage_id": "stage_9ed9a5a45e259cfd",
+    "name": "Grupo B",
+    "sort_order": 64,
+    "extra": {}
+  },
+  {
+    "id": "group_d966e82b6ed34c1d",
+    "stage_id": "stage_8f728a73dbd9046b",
+    "name": "Grupo único",
+    "sort_order": 65,
+    "extra": {}
+  },
+  {
+    "id": "group_e8a31293d50b04e5",
+    "stage_id": "stage_35901b3229ca979e",
+    "name": "Grupo único",
+    "sort_order": 66,
+    "extra": {}
+  },
+  {
+    "id": "group_93c1ae1cfb620a87",
+    "stage_id": "stage_7f5b5eb3c27bdb30",
+    "name": "Grupo único",
+    "sort_order": 67,
+    "extra": {}
+  },
+  {
+    "id": "group_8abb8d882b0e5564",
+    "stage_id": "stage_ea5c099d9af78604",
+    "name": "Grupo único",
+    "sort_order": 68,
+    "extra": {}
+  },
+  {
+    "id": "group_88a1693622113abc",
+    "stage_id": "stage_094083fc07e5c78d",
+    "name": "Grupo único",
+    "sort_order": 69,
+    "extra": {}
+  },
+  {
+    "id": "group_724c366ad2303fd3",
+    "stage_id": "stage_23b46f97d1d5c9f2",
+    "name": "Grupo único",
+    "sort_order": 70,
+    "extra": {}
+  },
+  {
+    "id": "group_17404217d0f767c4",
+    "stage_id": "stage_5773ba4398e03da9",
+    "name": "Grupo único",
+    "sort_order": 71,
+    "extra": {}
+  },
+  {
+    "id": "group_a1f864dcfcbb8a51",
+    "stage_id": "stage_21552b4a3686a55b",
+    "name": "Grupo único",
+    "sort_order": 72,
+    "extra": {}
+  },
+  {
+    "id": "group_b4d7bbb633256062",
+    "stage_id": "stage_eb9decad2bb15fcc",
+    "name": "Grupo único",
+    "sort_order": 73,
+    "extra": {}
+  },
+  {
+    "id": "group_292e420f6ef39219",
+    "stage_id": "stage_611bc649974ffe17",
+    "name": "Grupo único",
+    "sort_order": 74,
+    "extra": {}
+  },
+  {
+    "id": "group_1c48280ef2c09bd8",
+    "stage_id": "stage_2fc887b4a2fa9cb6",
+    "name": "Grupo único",
+    "sort_order": 75,
+    "extra": {}
+  },
+  {
+    "id": "group_db2f5338f037f1d4",
+    "stage_id": "stage_5762cf1c3160fa3b",
+    "name": "Grupo único",
+    "sort_order": 76,
+    "extra": {}
+  },
+  {
+    "id": "group_7ac91cabdb7bda64",
+    "stage_id": "stage_7118e3f98dbcac1e",
+    "name": "Grupo único",
+    "sort_order": 77,
+    "extra": {}
+  },
+  {
+    "id": "group_18b90abdeb30a487",
+    "stage_id": "stage_5787cbf4f0dcccda",
+    "name": "Grupo único",
+    "sort_order": 78,
+    "extra": {}
+  },
+  {
+    "id": "group_6747877771fbef0a",
+    "stage_id": "stage_0aa45707a109be00",
+    "name": "Grupo único",
+    "sort_order": 79,
+    "extra": {}
+  },
+  {
+    "id": "group_a37edf1aeb4feb47",
+    "stage_id": "stage_18d2bbccf57e7d6b",
+    "name": "Grupo único",
+    "sort_order": 80,
+    "extra": {}
+  },
+  {
+    "id": "group_43d8c94c6aadf5ac",
+    "stage_id": "stage_f34a780afe33e2f0",
+    "name": "Grupo único",
+    "sort_order": 81,
+    "extra": {}
+  },
+  {
+    "id": "group_36d8dc3ba0177892",
+    "stage_id": "stage_50734f020e557fcd",
+    "name": "Grupo A",
+    "sort_order": 82,
+    "extra": {}
+  },
+  {
+    "id": "group_9305091f8cec333a",
+    "stage_id": "stage_50734f020e557fcd",
+    "name": "Grupo B",
+    "sort_order": 83,
+    "extra": {}
+  },
+  {
+    "id": "group_83ed94522a44beb9",
+    "stage_id": "stage_b3a9002ff6edd0e1",
+    "name": "Grupo A",
+    "sort_order": 84,
+    "extra": {}
+  },
+  {
+    "id": "group_076d914321abdb3a",
+    "stage_id": "stage_b3a9002ff6edd0e1",
+    "name": "Grupo B",
+    "sort_order": 85,
+    "extra": {}
+  },
+  {
+    "id": "group_aa5f46bfedb35525",
+    "stage_id": "stage_063fa30a5a841ae7",
+    "name": "Grupo A",
+    "sort_order": 86,
+    "extra": {}
+  },
+  {
+    "id": "group_c0157fa61904f532",
+    "stage_id": "stage_063fa30a5a841ae7",
+    "name": "Grupo B",
+    "sort_order": 87,
+    "extra": {}
+  },
+  {
+    "id": "group_f1d48ac5d15739fd",
+    "stage_id": "stage_028bbe2ec3d5421d",
+    "name": "Grupo A",
+    "sort_order": 88,
+    "extra": {}
+  },
+  {
+    "id": "group_761affed32b80c37",
+    "stage_id": "stage_028bbe2ec3d5421d",
+    "name": "Grupo B",
+    "sort_order": 89,
+    "extra": {}
+  },
+  {
+    "id": "group_48f0950cb28aac91",
+    "stage_id": "stage_3461a2d3c891b418",
+    "name": "Grupo único",
+    "sort_order": 90,
+    "extra": {}
+  },
+  {
+    "id": "group_e1c78c362ebe455e",
+    "stage_id": "stage_2ab760fd32a9f1b0",
+    "name": "Grupo único",
+    "sort_order": 91,
+    "extra": {}
+  },
+  {
+    "id": "group_441c5be24063a005",
+    "stage_id": "stage_b9842c12eaa9ca6f",
+    "name": "Grupo único",
+    "sort_order": 92,
+    "extra": {}
+  },
+  {
+    "id": "group_c15bf07e0f0fbf96",
+    "stage_id": "stage_75f36c2821de4217",
+    "name": "Grupo único",
+    "sort_order": 93,
+    "extra": {}
+  },
+  {
+    "id": "group_2bb816287986d03f",
+    "stage_id": "stage_8f8ce7912c2a757e",
+    "name": "Grupo A",
+    "sort_order": 94,
+    "extra": {}
+  },
+  {
+    "id": "group_83ebe98d075a5495",
+    "stage_id": "stage_8f8ce7912c2a757e",
+    "name": "Grupo B",
+    "sort_order": 95,
+    "extra": {}
+  },
+  {
+    "id": "group_6ebde5ef7963eaed",
+    "stage_id": "stage_47072464aa11e744",
+    "name": "Grupo A",
+    "sort_order": 96,
+    "extra": {}
+  },
+  {
+    "id": "group_77af2eda348f160f",
+    "stage_id": "stage_47072464aa11e744",
+    "name": "Grupo B",
+    "sort_order": 97,
+    "extra": {}
+  },
+  {
+    "id": "group_b3506ae5f638528d",
+    "stage_id": "stage_d1a5b3d043019b1b",
+    "name": "Grupo único",
+    "sort_order": 98,
+    "extra": {}
+  },
+  {
+    "id": "group_adae7dc5f05c365f",
+    "stage_id": "stage_dbe497c5520153a2",
+    "name": "Grupo único",
+    "sort_order": 99,
+    "extra": {}
+  },
+  {
+    "id": "group_6a656ade65079732",
+    "stage_id": "stage_58616c82a7ca39c3",
+    "name": "Grupo único",
+    "sort_order": 100,
+    "extra": {}
+  },
+  {
+    "id": "group_a1e0004e4ebf1b1e",
+    "stage_id": "stage_7a37056ac4d558e4",
+    "name": "Grupo A",
+    "sort_order": 101,
+    "extra": {}
+  },
+  {
+    "id": "group_3e472907dc3a30c4",
+    "stage_id": "stage_7a37056ac4d558e4",
+    "name": "Grupo B",
+    "sort_order": 102,
+    "extra": {}
+  },
+  {
+    "id": "group_e9153f9fe1929594",
+    "stage_id": "stage_79a9acab14ad68fb",
+    "name": "Grupo único",
+    "sort_order": 103,
+    "extra": {}
+  },
+  {
+    "id": "group_5418d0daa0d46597",
+    "stage_id": "stage_459b84c4e3bcf91f",
+    "name": "Grupo único",
+    "sort_order": 104,
+    "extra": {}
+  },
+  {
+    "id": "group_510e271c765e72ab",
+    "stage_id": "stage_14fd8a7ef29e3059",
+    "name": "Grupo A",
+    "sort_order": 105,
+    "extra": {}
+  },
+  {
+    "id": "group_855099db6a56cf6f",
+    "stage_id": "stage_14fd8a7ef29e3059",
+    "name": "Grupo B",
+    "sort_order": 106,
+    "extra": {}
+  },
+  {
+    "id": "group_43f3bef36eae173b",
+    "stage_id": "stage_e155c14834045108",
+    "name": "Grupo único",
+    "sort_order": 107,
+    "extra": {}
+  },
+  {
+    "id": "group_c23e6cec32ebd06b",
+    "stage_id": "stage_deca2b3842c05823",
+    "name": "Grupo A",
+    "sort_order": 108,
+    "extra": {}
+  },
+  {
+    "id": "group_ef8ec87bed52062f",
+    "stage_id": "stage_deca2b3842c05823",
+    "name": "Grupo B",
+    "sort_order": 109,
+    "extra": {}
+  },
+  {
+    "id": "group_8540580a6a636e8a",
+    "stage_id": "stage_e14a8746a859ee74",
+    "name": "Grupo único",
+    "sort_order": 110,
+    "extra": {}
+  },
+  {
+    "id": "group_3073bda8c895b8df",
+    "stage_id": "stage_1b67834e6d51ce05",
+    "name": "Grupo único",
+    "sort_order": 111,
+    "extra": {}
+  },
+  {
+    "id": "group_2cb5a306ae4b0b9c",
+    "stage_id": "stage_8dca1dfe99b4bb3e",
+    "name": "Grupo único",
+    "sort_order": 112,
+    "extra": {}
+  },
+  {
+    "id": "group_9e95b7d0ee996f70",
+    "stage_id": "stage_a72d863362d43e31",
+    "name": "Grupo A",
+    "sort_order": 113,
+    "extra": {}
+  },
+  {
+    "id": "group_cdf74b76827551e3",
+    "stage_id": "stage_a72d863362d43e31",
+    "name": "Grupo B",
+    "sort_order": 114,
+    "extra": {}
+  },
+  {
+    "id": "group_da56baa8cecb3e7d",
+    "stage_id": "stage_bd8bf9fc2e2723e4",
+    "name": "Grupo único",
+    "sort_order": 115,
+    "extra": {}
+  },
+  {
+    "id": "group_de7cfa178ad1261b",
+    "stage_id": "stage_c463c2299ecb0551",
+    "name": "Grupo A",
+    "sort_order": 116,
+    "extra": {}
+  },
+  {
+    "id": "group_04b1f369a77b2948",
+    "stage_id": "stage_c463c2299ecb0551",
+    "name": "Grupo B",
+    "sort_order": 117,
+    "extra": {}
+  },
+  {
+    "id": "group_0cd0f7dfbb1c370b",
+    "stage_id": "stage_c344e1658d0467a5",
+    "name": "Grupo único",
+    "sort_order": 118,
+    "extra": {}
+  },
+  {
+    "id": "group_369ae29651c11f88",
+    "stage_id": "stage_43d01678d7512b4e",
+    "name": "Grupo único",
+    "sort_order": 119,
+    "extra": {}
+  },
+  {
+    "id": "group_7e77eedadfc00086",
+    "stage_id": "stage_7d2a7266de9cedff",
+    "name": "Grupo único",
+    "sort_order": 120,
+    "extra": {}
+  },
+  {
+    "id": "group_9ce4e9765e293920",
+    "stage_id": "stage_30ea4485b711dc91",
+    "name": "Grupo único",
+    "sort_order": 121,
+    "extra": {}
+  },
+  {
+    "id": "group_01d073c2339b24d8",
+    "stage_id": "stage_73d8401688852be9",
+    "name": "Grupo único",
+    "sort_order": 122,
+    "extra": {}
+  },
+  {
+    "id": "group_ba30ef3f61e9b562",
+    "stage_id": "stage_b53afced6c6db609",
+    "name": "Grupo A",
+    "sort_order": 123,
+    "extra": {}
+  },
+  {
+    "id": "group_b6e637cb64a14a15",
+    "stage_id": "stage_b53afced6c6db609",
+    "name": "Grupo B",
+    "sort_order": 124,
+    "extra": {}
+  },
+  {
+    "id": "group_20909cee8889433f",
+    "stage_id": "stage_c575754f81bf5504",
+    "name": "Grupo único",
+    "sort_order": 125,
+    "extra": {}
+  },
+  {
+    "id": "group_7ec609edd24e147a",
+    "stage_id": "stage_14e0913e80dd38a6",
+    "name": "Grupo único",
+    "sort_order": 126,
+    "extra": {}
+  },
+  {
+    "id": "group_1cf5935035dabbf9",
+    "stage_id": "stage_707322afa68b2534",
+    "name": "Grupo único",
+    "sort_order": 127,
+    "extra": {}
+  },
+  {
+    "id": "group_0aabd61e3448d643",
+    "stage_id": "stage_9baf27807f181d05",
+    "name": "Grupo único",
+    "sort_order": 128,
+    "extra": {}
+  },
+  {
+    "id": "group_7abf62a1802db79f",
+    "stage_id": "stage_977b55531b1fa0c8",
+    "name": "Grupo único",
+    "sort_order": 129,
+    "extra": {}
+  },
+  {
+    "id": "group_597fdabedb4c402a",
+    "stage_id": "stage_46409a6af74a2118",
+    "name": "Grupo único",
+    "sort_order": 130,
+    "extra": {}
+  },
+  {
+    "id": "group_bbf3d8da608dc18a",
+    "stage_id": "stage_7deab3acbfe210a7",
+    "name": "Grupo único",
+    "sort_order": 131,
+    "extra": {}
+  },
+  {
+    "id": "group_5528c15386b2fdf5",
+    "stage_id": "stage_1d65debe334b5044",
+    "name": "Grupo único",
+    "sort_order": 132,
+    "extra": {}
+  },
+  {
+    "id": "group_2482c22bf7314125",
+    "stage_id": "stage_da3c5849f68ef0e1",
+    "name": "Grupo único",
+    "sort_order": 133,
+    "extra": {}
+  },
+  {
+    "id": "group_d8f03ad20dc025b4",
+    "stage_id": "stage_91908338b4e79722",
+    "name": "Grupo único",
+    "sort_order": 134,
+    "extra": {}
+  },
+  {
+    "id": "group_7afc7784fb22f800",
+    "stage_id": "stage_389b2769dab3a54b",
+    "name": "Grupo A",
+    "sort_order": 135,
+    "extra": {}
+  },
+  {
+    "id": "group_434ac72e0d0e65fd",
+    "stage_id": "stage_389b2769dab3a54b",
+    "name": "Grupo B",
+    "sort_order": 136,
+    "extra": {}
+  },
+  {
+    "id": "group_aa3ce0069c445beb",
+    "stage_id": "stage_b3fc93c7888cfa6e",
+    "name": "Grupo único",
+    "sort_order": 137,
+    "extra": {}
+  },
+  {
+    "id": "group_2b4e83ea733ee2a1",
+    "stage_id": "stage_9de1379b5c568832",
+    "name": "Grupo único",
+    "sort_order": 138,
+    "extra": {}
+  },
+  {
+    "id": "group_0a0e13ea918024b3",
+    "stage_id": "stage_a1c851dbfd1b814d",
+    "name": "Grupo A",
+    "sort_order": 139,
+    "extra": {}
+  },
+  {
+    "id": "group_3120f8aebd580870",
+    "stage_id": "stage_a1c851dbfd1b814d",
+    "name": "Grupo B",
+    "sort_order": 140,
+    "extra": {}
+  },
+  {
+    "id": "group_0cbccd84d0d000ec",
+    "stage_id": "stage_e9a59e5b1c85b66e",
+    "name": "Grupo A",
+    "sort_order": 141,
+    "extra": {}
+  },
+  {
+    "id": "group_012d5cef6ebf5cf1",
+    "stage_id": "stage_e9a59e5b1c85b66e",
+    "name": "Grupo B",
+    "sort_order": 142,
+    "extra": {}
+  },
+  {
+    "id": "group_b0e7392ac51157db",
+    "stage_id": "stage_f05d16bfd6cf5d96",
+    "name": "Grupo A",
+    "sort_order": 143,
+    "extra": {}
+  },
+  {
+    "id": "group_92813c30d677a2b7",
+    "stage_id": "stage_f05d16bfd6cf5d96",
+    "name": "Grupo B",
+    "sort_order": 144,
+    "extra": {}
+  },
+  {
+    "id": "group_de6f49d93516aee3",
+    "stage_id": "stage_90a0c7858e23f1d7",
+    "name": "Grupo A",
+    "sort_order": 145,
+    "extra": {}
+  },
+  {
+    "id": "group_3f4e8fb772c56c75",
+    "stage_id": "stage_90a0c7858e23f1d7",
+    "name": "Grupo B",
+    "sort_order": 146,
+    "extra": {}
+  },
+  {
+    "id": "group_835058149696a095",
+    "stage_id": "stage_34012e7c5245166b",
+    "name": "Grupo A",
+    "sort_order": 147,
+    "extra": {}
+  },
+  {
+    "id": "group_6b3d9b6dad2a50c5",
+    "stage_id": "stage_34012e7c5245166b",
+    "name": "Grupo B",
+    "sort_order": 148,
+    "extra": {}
+  },
+  {
+    "id": "group_8788f8110323e214",
+    "stage_id": "stage_f29faba9560ccd2f",
+    "name": "Grupo A",
+    "sort_order": 149,
+    "extra": {}
+  },
+  {
+    "id": "group_07a8a051e3a90534",
+    "stage_id": "stage_f29faba9560ccd2f",
+    "name": "Grupo B",
+    "sort_order": 150,
+    "extra": {}
+  },
+  {
+    "id": "group_c42e6352c580afac",
+    "stage_id": "stage_d863351c55c2463e",
+    "name": "Grupo único",
+    "sort_order": 151,
+    "extra": {}
+  },
+  {
+    "id": "group_6ed08f5c84496bdf",
+    "stage_id": "stage_709ec9f2e528933b",
+    "name": "Grupo único",
+    "sort_order": 152,
+    "extra": {}
+  },
+  {
+    "id": "group_72d644bcddd5f70b",
+    "stage_id": "stage_3bef886608821aaa",
+    "name": "Grupo único",
+    "sort_order": 153,
+    "extra": {}
+  },
+  {
+    "id": "group_3586530ef65a4165",
+    "stage_id": "stage_0352ce33ec66c84b",
+    "name": "Grupo Único",
+    "sort_order": 154,
+    "extra": {}
+  },
+  {
+    "id": "group_b74b1c89a3e0ffda",
+    "stage_id": "stage_20efa9796bc8d908",
+    "name": "Grupo A",
+    "sort_order": 155,
+    "extra": {}
+  },
+  {
+    "id": "group_a9e0c5b412c72d72",
+    "stage_id": "stage_20efa9796bc8d908",
+    "name": "Grupo B",
+    "sort_order": 156,
+    "extra": {}
+  },
+  {
+    "id": "group_95b75d644d5b3656",
+    "stage_id": "stage_20efa9796bc8d908",
+    "name": "Grupo Geral",
+    "sort_order": 157,
+    "extra": {}
+  },
+  {
+    "id": "group_e9a327e2131dcc83",
+    "stage_id": "stage_f8f7154f990fd799",
+    "name": "Grupo A",
+    "sort_order": 158,
+    "extra": {}
+  },
+  {
+    "id": "group_18fe31dd3419d9e5",
+    "stage_id": "stage_f8f7154f990fd799",
+    "name": "Grupo B",
+    "sort_order": 159,
+    "extra": {}
+  },
+  {
+    "id": "group_c3b66c7d8ccea035",
+    "stage_id": "stage_70367a432065f390",
+    "name": "Grupo A",
+    "sort_order": 160,
+    "extra": {}
+  },
+  {
+    "id": "group_24fae0f44549b776",
+    "stage_id": "stage_70367a432065f390",
+    "name": "Grupo B",
+    "sort_order": 161,
+    "extra": {}
+  },
+  {
+    "id": "group_e7bce3e201eef695",
+    "stage_id": "stage_f18376d2d92f7bad",
+    "name": "Grupo A",
+    "sort_order": 162,
+    "extra": {}
+  },
+  {
+    "id": "group_84a0c5cb48b62081",
+    "stage_id": "stage_f18376d2d92f7bad",
+    "name": "Grupo B",
+    "sort_order": 163,
+    "extra": {}
+  },
+  {
+    "id": "group_a690367d93eaedef",
+    "stage_id": "stage_ca0b6893999fca29",
+    "name": "Grupo A",
+    "sort_order": 164,
+    "extra": {}
+  },
+  {
+    "id": "group_1a3ef522561aeaf0",
+    "stage_id": "stage_ca0b6893999fca29",
+    "name": "Grupo B",
+    "sort_order": 165,
+    "extra": {}
+  },
+  {
+    "id": "group_1272ffabecd0ed63",
+    "stage_id": "stage_4d9442cc33472fd5",
+    "name": "Grupo único",
+    "sort_order": 166,
+    "extra": {}
+  },
+  {
+    "id": "group_12b35f11166f3824",
+    "stage_id": "stage_4f20bcfc6f8c203b",
+    "name": "Grupo único",
+    "sort_order": 167,
+    "extra": {}
+  },
+  {
+    "id": "group_f6e098657dd16767",
+    "stage_id": "stage_302609c01d937974",
+    "name": "Grupo A",
+    "sort_order": 168,
+    "extra": {}
+  },
+  {
+    "id": "group_5d6e32299b92c95c",
+    "stage_id": "stage_302609c01d937974",
+    "name": "Grupo B",
+    "sort_order": 169,
+    "extra": {}
+  },
+  {
+    "id": "group_17af465cb4ecd94d",
+    "stage_id": "stage_6c49b121eddfe68f",
+    "name": "Grupo A",
+    "sort_order": 170,
+    "extra": {}
+  },
+  {
+    "id": "group_2c12ff9d14e1db94",
+    "stage_id": "stage_6c49b121eddfe68f",
+    "name": "Grupo B",
+    "sort_order": 171,
+    "extra": {}
+  },
+  {
+    "id": "group_ae7c848445d3f511",
+    "stage_id": "stage_b965d226a0e2e572",
+    "name": "Grupo único",
+    "sort_order": 172,
+    "extra": {}
+  },
+  {
+    "id": "group_149300e466df31b2",
+    "stage_id": "stage_1215c60b6a9669c0",
+    "name": "Grupo único",
+    "sort_order": 173,
+    "extra": {}
+  },
+  {
+    "id": "group_ebb4b91e31399860",
+    "stage_id": "stage_387b00e321f02cc3",
+    "name": "Grupo único",
+    "sort_order": 174,
+    "extra": {}
+  },
+  {
+    "id": "group_409874abaf3962e2",
+    "stage_id": "stage_258fc3457ebb9b52",
+    "name": "Grupo único",
+    "sort_order": 175,
+    "extra": {}
+  }
+]

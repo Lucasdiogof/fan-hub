@@ -1,0 +1,714 @@
+{
+  "summary": {
+    "editions": 70,
+    "matches": 877,
+    "standings_rows": 1613,
+    "scorer_rows": 1897,
+    "edition_errors": 0,
+    "edition_warnings": 0
+  },
+  "editions": [
+    {
+      "edition_id": "campeonato_goiano_1947_632",
+      "season": 1947,
+      "matches_collected": 1,
+      "played_matches": 0,
+      "standings_rows": 0,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1957_628",
+      "season": 1957,
+      "matches_collected": 1,
+      "played_matches": 0,
+      "standings_rows": 9,
+      "scorer_rows": 29,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1959_629",
+      "season": 1959,
+      "matches_collected": 4,
+      "played_matches": 0,
+      "standings_rows": 3,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1960_630",
+      "season": 1960,
+      "matches_collected": 1,
+      "played_matches": 0,
+      "standings_rows": 9,
+      "scorer_rows": 26,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1961_631",
+      "season": 1961,
+      "matches_collected": 1,
+      "played_matches": 0,
+      "standings_rows": 9,
+      "scorer_rows": 23,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1962_321",
+      "season": 1962,
+      "matches_collected": 1,
+      "played_matches": 0,
+      "standings_rows": 36,
+      "scorer_rows": 135,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1963_323",
+      "season": 1963,
+      "matches_collected": 7,
+      "played_matches": 0,
+      "standings_rows": 51,
+      "scorer_rows": 201,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1964_324",
+      "season": 1964,
+      "matches_collected": 1,
+      "played_matches": 0,
+      "standings_rows": 36,
+      "scorer_rows": 140,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1965_325",
+      "season": 1965,
+      "matches_collected": 9,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1966_326",
+      "season": 1966,
+      "matches_collected": 5,
+      "played_matches": 0,
+      "standings_rows": 30,
+      "scorer_rows": 3,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1967_327",
+      "season": 1967,
+      "matches_collected": 3,
+      "played_matches": 0,
+      "standings_rows": 30,
+      "scorer_rows": 122,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1968_328",
+      "season": 1968,
+      "matches_collected": 4,
+      "played_matches": 0,
+      "standings_rows": 30,
+      "scorer_rows": 129,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1969_329",
+      "season": 1969,
+      "matches_collected": 2,
+      "played_matches": 0,
+      "standings_rows": 30,
+      "scorer_rows": 133,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1970_330",
+      "season": 1970,
+      "matches_collected": 5,
+      "played_matches": 0,
+      "standings_rows": 39,
+      "scorer_rows": 162,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1971_331",
+      "season": 1971,
+      "matches_collected": 5,
+      "played_matches": 0,
+      "standings_rows": 9,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1972_332",
+      "season": 1972,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 24,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1973_333",
+      "season": 1973,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 18,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1974_334",
+      "season": 1974,
+      "matches_collected": 8,
+      "played_matches": 0,
+      "standings_rows": 18,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1975_335",
+      "season": 1975,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 22,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1976_336",
+      "season": 1976,
+      "matches_collected": 4,
+      "played_matches": 0,
+      "standings_rows": 51,
+      "scorer_rows": 132,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1977_337",
+      "season": 1977,
+      "matches_collected": 8,
+      "played_matches": 0,
+      "standings_rows": 32,
+      "scorer_rows": 26,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1978_338",
+      "season": 1978,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 53,
+      "scorer_rows": 155,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1979_339",
+      "season": 1979,
+      "matches_collected": 6,
+      "played_matches": 0,
+      "standings_rows": 16,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1980_340",
+      "season": 1980,
+      "matches_collected": 14,
+      "played_matches": 0,
+      "standings_rows": 45,
+      "scorer_rows": 37,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1981_341",
+      "season": 1981,
+      "matches_collected": 16,
+      "played_matches": 0,
+      "standings_rows": 32,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1982_343",
+      "season": 1982,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 24,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1983_344",
+      "season": 1983,
+      "matches_collected": 21,
+      "played_matches": 0,
+      "standings_rows": 16,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1984_345",
+      "season": 1984,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 40,
+      "scorer_rows": 34,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1985_346",
+      "season": 1985,
+      "matches_collected": 5,
+      "played_matches": 0,
+      "standings_rows": 36,
+      "scorer_rows": 55,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1986_347",
+      "season": 1986,
+      "matches_collected": 9,
+      "played_matches": 0,
+      "standings_rows": 30,
+      "scorer_rows": 62,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1987_348",
+      "season": 1987,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 48,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1988_349",
+      "season": 1988,
+      "matches_collected": 50,
+      "played_matches": 0,
+      "standings_rows": 68,
+      "scorer_rows": 38,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1989_350",
+      "season": 1989,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 20,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1990_351",
+      "season": 1990,
+      "matches_collected": 25,
+      "played_matches": 0,
+      "standings_rows": 40,
+      "scorer_rows": 63,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1991_352",
+      "season": 1991,
+      "matches_collected": 15,
+      "played_matches": 0,
+      "standings_rows": 28,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1992_353",
+      "season": 1992,
+      "matches_collected": 14,
+      "played_matches": 0,
+      "standings_rows": 36,
+      "scorer_rows": 37,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1993_355",
+      "season": 1993,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 26,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1994_356",
+      "season": 1994,
+      "matches_collected": 25,
+      "played_matches": 0,
+      "standings_rows": 46,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1995_357",
+      "season": 1995,
+      "matches_collected": 21,
+      "played_matches": 0,
+      "standings_rows": 36,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1996_358",
+      "season": 1996,
+      "matches_collected": 18,
+      "played_matches": 0,
+      "standings_rows": 39,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1997_359",
+      "season": 1997,
+      "matches_collected": 23,
+      "played_matches": 0,
+      "standings_rows": 34,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1998_360",
+      "season": 1998,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 16,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_1999_361",
+      "season": 1999,
+      "matches_collected": 6,
+      "played_matches": 0,
+      "standings_rows": 36,
+      "scorer_rows": 130,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2000_362",
+      "season": 2000,
+      "matches_collected": 42,
+      "played_matches": 0,
+      "standings_rows": 28,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2001_363",
+      "season": 2001,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 20,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2002_364",
+      "season": 2002,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 18,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2003_365",
+      "season": 2003,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2004_366",
+      "season": 2004,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2005_367",
+      "season": 2005,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2006_368",
+      "season": 2006,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2007_369",
+      "season": 2007,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 0,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2008_354",
+      "season": 2008,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2009_372",
+      "season": 2009,
+      "matches_collected": 12,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2010_371",
+      "season": 2010,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 10,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2011_370",
+      "season": 2011,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 10,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2012_342",
+      "season": 2012,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 10,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2013_22",
+      "season": 2013,
+      "matches_collected": 11,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2014_307",
+      "season": 2014,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 20,
+      "scorer_rows": 3,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2015_614",
+      "season": 2015,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 10,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2016_649",
+      "season": 2016,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 10,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2017_685",
+      "season": 2017,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 10,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2018_704",
+      "season": 2018,
+      "matches_collected": 10,
+      "played_matches": 0,
+      "standings_rows": 10,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2019_784",
+      "season": 2019,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2020_838",
+      "season": 2020,
+      "matches_collected": 13,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2021_856",
+      "season": 2021,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2022_874",
+      "season": 2022,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 14,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2023_990",
+      "season": 2023,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2024_1372",
+      "season": 2024,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2025_1509",
+      "season": 2025,
+      "matches_collected": 20,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 1,
+      "issues": [],
+      "status": "approved"
+    },
+    {
+      "edition_id": "campeonato_goiano_2026_1603",
+      "season": 2026,
+      "matches_collected": 28,
+      "played_matches": 0,
+      "standings_rows": 12,
+      "scorer_rows": 2,
+      "issues": [],
+      "status": "approved"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

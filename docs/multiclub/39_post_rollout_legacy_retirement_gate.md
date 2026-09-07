@@ -242,10 +242,18 @@ Não forçado pra `true` — casos fabricados provam que os critérios pesam de 
 
 ---
 
-## Estados finais (pós rodada 2)
+## RODADA 3 — Encerramento: APK gerado e entregue, confirmado pelo dono
 
-`POST_ROLLOUT_RETIREMENT_READY=false` · `LEGACY_CONTRACT_RETIREMENT_READY=true` (técnico, inalterado) · `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=true` · `LEGACY_CLIENTS_IN_THE_WILD=true` · `LEGACY_NATIVE_CLIENT_CONFIRMED=true` · `LEGACY_NATIVE_CLIENT_COUNT≈3` · `LEGACY_NATIVE_CLIENTS_CONTROLLED=true` · `PUBLIC_NATIVE_RELEASE=false` · `APK_1_0_1_2_GENERATED=false` · `APK_DISTRIBUTION_PENDING=true` · `APK_1_0_1_2_DELIVERED_TO_LEGACY_USERS=false` · `LEGACY_VERSION_SUPPORT_ENDED=false` · `SENTRY_IS_BLOCKING_GATE=false` · `SECOND_CLUB_BLOCKED=true` · `M3_4_APP_DISTRIBUTED=true` · `WORKER_DEPLOY_PENDING_GIT_PUSH=false`.
+O dono gerou `1.0.1+2` no próprio terminal (build falhou só nesta sessão, ver RODADA 2) — verificado nesta sessão via `build/app/outputs/apk/release/output-metadata.json` (`versionCode=2`, `versionName=1.0.1`, mesmo diretório de projeto). Confirmação direta do dono, em 2 mensagens: "já mandei pra 3 amigos aqui, tá de boa", reforçada por "APK novo 1.0.1+2 já foi enviado para TODAS elas". Nenhuma entrega é verificável a partir daqui (é sempre uma ação manual fora do alcance desta sessão) — registrada como afirmação do dono, com a fonte citada explicitamente no tooling (`apkDeliveredConfirmedBy`), nunca assumida silenciosamente.
+
+Com isso, os 3 estados condicionais da rodada 2 viram realidade: `APK_1_0_1_2_GENERATED=true`, `APK_DISTRIBUTION_PENDING=false`, `APK_1_0_1_2_DELIVERED_TO_LEGACY_USERS=true`, `LEGACY_VERSION_SUPPORT_ENDED=true`, `POST_ROLLOUT_RETIREMENT_READY=true`, `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=false`. `audit_post_rollout_retirement_gate.mjs` recalculado: `blockers=[]`. Testes atualizados e verdes (17/17).
+
+**Isso NÃO autoriza M2.2B-B sozinho** — só remove o bloqueio de rollout. A execução de M2.2B-B continua exigindo sua própria autorização explícita, separada (ver `docs/multiclub/40_etapa_m2_2b_b_report.md` pra essa próxima etapa, iniciada como AUDIT+DESIGN, ainda sem nenhuma aplicação).
+
+## Estados finais (pós rodada 3 — DEFINITIVOS pra esta etapa)
+
+`POST_ROLLOUT_RETIREMENT_READY=true` · `LEGACY_CONTRACT_RETIREMENT_READY=true` · `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=false` · `LEGACY_VERSION_SUPPORT_ENDED=true` · `LEGACY_CLIENTS_IN_THE_WILD=true` (browsers com cache antigo — risco residual diferente, não afeta esta decisão) · `LEGACY_NATIVE_CLIENT_CONFIRMED=true` · `LEGACY_NATIVE_CLIENT_COUNT≈3` · `LEGACY_NATIVE_CLIENTS_CONTROLLED=true` · `PUBLIC_NATIVE_RELEASE=false` · `APK_1_0_1_2_GENERATED=true` · `APK_DISTRIBUTION_PENDING=false` · `APK_1_0_1_2_DELIVERED_TO_LEGACY_USERS=true` · `SENTRY_IS_BLOCKING_GATE=false` · `SECOND_CLUB_BLOCKED=true` · `M3_4_APP_DISTRIBUTED=true` · `WORKER_DEPLOY_PENDING_GIT_PUSH=false`.
 
 ---
 
-**PARADO.** 0 M2.2B-B iniciada. 0 M4 iniciada. 0 segundo clube. 0 git push. Aguardando: (1) o APK `1.0.1+2` ser gerado com sucesso (recomendado: `flutter build apk --release` no terminal do próprio dono, fora desta sessão — o mesmo comando já funcionou lá em 01/09), e (2) confirmação de que foi entregue às ~3 pessoas com o `1.0.0+1`. Só então os 3 estados finais (`LEGACY_VERSION_SUPPORT_ENDED`, `POST_ROLLOUT_RETIREMENT_READY`, `M2_2B_B_BLOCKED_BY_APP_ROLLOUT=false`) devem ser marcados — e mesmo assim, M2.2B-B em si precisa de uma autorização própria e explícita, separada desta.
+**ENCERRADO.** Rollout gate resolvido — M2.2B-B deixou de estar bloqueada por distribuição, mas continua exigindo autorização própria pra ser executada (ver etapa 40).

@@ -10,7 +10,7 @@
   "serverCanIdentifyClientVersion": false,
   "directPostgrestWritesCanBeVersionRejected": false,
   "legacyRpcCallsCanBeVersionRejected": false,
-  "telemetryCanProvideReleaseSignalFromCapturedActivity": true,
+  "telemetryCanProvideReleaseSignalFromCapturedActivity": false,
   "legacyAppWritesBlocked": false,
   "m2_2bBBlockedByRollout": true,
   "m2_2bBReady": false

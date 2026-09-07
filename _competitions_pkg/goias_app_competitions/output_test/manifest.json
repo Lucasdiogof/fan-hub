@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-09-01T00:35:46Z",
+  "source": "https://www.futeboldegoyaz.com.br",
+  "competition_count": 1,
+  "edition_count": 70,
+  "files": [
+    "competitions.json",
+    "editions.json",
+    "stages.json",
+    "groups.json",
+    "rounds.json",
+    "edition_statistics.json",
+    "regulations.json",
+    "final_classification.json",
+    "sources.json",
+    "matches.jsonl",
+    "standings.jsonl",
+    "scorers.jsonl",
+    "validation_report.json"
+  ],
+  "notes": [
+    "Missing source values remain null; the collector does not guess historical data.",
+    "Current seasons may be incomplete by design and should not be treated as collection failures.",
+    "Competition format is edition/stage-driven, never hardcoded globally by competition."
+  ]
+}

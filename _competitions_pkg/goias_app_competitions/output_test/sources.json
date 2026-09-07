@@ -1,0 +1,3432 @@
+[
+  {
+    "id": "source_edition_632",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1947_632",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1947_632_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1947_632",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1947_632_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1947_632",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1947_632_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1947_632",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1947_632_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1947_632",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1947_632_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1947_632",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1947_632_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1947_632",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_628",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1957_628",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1957_628_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1957_628",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1957_628_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1957_628",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1957_628_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1957_628",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1957_628_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1957_628",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1957_628_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1957_628",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1957_628_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1957_628",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_629",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1959_629",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1959_629_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1959_629",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1959_629_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1959_629",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1959_629_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1959_629",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1959_629_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1959_629",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1959_629_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1959_629",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1959_629_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1959_629",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_630",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1960_630",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1960_630_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1960_630",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1960_630_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1960_630",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1960_630_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1960_630",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1960_630_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1960_630",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1960_630_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1960_630",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1960_630_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1960_630",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_631",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1961_631",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1961_631_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1961_631",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1961_631_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1961_631",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1961_631_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1961_631",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1961_631_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1961_631",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1961_631_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1961_631",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1961_631_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1961_631",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_321",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1962_321",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1962_321_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1962_321",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1962_321_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1962_321",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1962_321_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1962_321",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1962_321_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1962_321",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1962_321_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1962_321",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1962_321_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1962_321",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_323",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1963_323",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1963_323_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1963_323",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1963_323_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1963_323",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1963_323_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1963_323",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1963_323_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1963_323",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1963_323_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1963_323",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1963_323_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1963_323",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_324",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1964_324",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1964_324_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1964_324",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1964_324_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1964_324",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1964_324_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1964_324",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1964_324_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1964_324",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1964_324_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1964_324",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1964_324_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1964_324",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_325",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1965_325",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1965_325_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1965_325",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1965_325_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1965_325",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1965_325_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1965_325",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1965_325_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1965_325",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1965_325_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1965_325",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1965_325_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1965_325",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_326",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1966_326",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1966_326_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1966_326",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1966_326_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1966_326",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1966_326_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1966_326",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1966_326_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1966_326",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1966_326_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1966_326",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1966_326_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1966_326",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_327",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1967_327",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1967_327_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1967_327",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1967_327_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1967_327",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1967_327_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1967_327",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1967_327_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1967_327",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1967_327_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1967_327",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1967_327_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1967_327",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_328",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1968_328",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1968_328_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1968_328",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1968_328_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1968_328",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1968_328_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1968_328",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1968_328_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1968_328",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1968_328_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1968_328",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1968_328_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1968_328",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_329",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1969_329",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1969_329_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1969_329",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1969_329_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1969_329",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1969_329_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1969_329",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1969_329_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1969_329",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1969_329_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1969_329",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1969_329_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1969_329",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_330",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1970_330",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1970_330_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1970_330",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1970_330_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1970_330",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1970_330_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1970_330",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1970_330_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1970_330",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1970_330_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1970_330",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1970_330_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1970_330",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_331",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1971_331",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1971_331_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1971_331",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1971_331_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1971_331",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1971_331_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1971_331",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1971_331_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1971_331",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1971_331_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1971_331",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1971_331_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1971_331",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_332",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1972_332",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1972_332_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1972_332",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1972_332_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1972_332",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1972_332_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1972_332",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1972_332_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1972_332",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1972_332_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1972_332",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1972_332_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1972_332",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_333",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1973_333",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1973_333_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1973_333",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1973_333_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1973_333",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1973_333_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1973_333",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1973_333_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1973_333",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1973_333_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1973_333",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1973_333_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1973_333",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_334",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1974_334",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1974_334_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1974_334",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1974_334_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1974_334",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1974_334_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1974_334",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1974_334_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1974_334",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1974_334_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1974_334",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1974_334_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1974_334",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_335",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1975_335",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1975_335_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1975_335",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1975_335_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1975_335",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1975_335_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1975_335",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1975_335_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1975_335",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1975_335_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1975_335",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1975_335_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1975_335",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_336",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1976_336",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1976_336_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1976_336",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1976_336_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1976_336",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1976_336_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1976_336",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1976_336_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1976_336",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1976_336_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1976_336",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1976_336_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1976_336",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_337",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1977_337",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1977_337_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1977_337",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1977_337_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1977_337",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1977_337_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1977_337",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1977_337_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1977_337",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1977_337_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1977_337",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1977_337_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1977_337",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_338",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1978_338",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1978_338_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1978_338",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1978_338_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1978_338",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1978_338_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1978_338",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1978_338_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1978_338",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1978_338_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1978_338",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1978_338_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1978_338",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_339",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1979_339",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1979_339_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1979_339",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1979_339_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1979_339",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1979_339_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1979_339",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1979_339_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1979_339",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1979_339_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1979_339",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1979_339_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1979_339",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_340",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1980_340",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1980_340_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1980_340",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1980_340_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1980_340",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1980_340_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1980_340",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1980_340_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1980_340",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1980_340_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1980_340",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1980_340_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1980_340",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_341",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1981_341",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1981_341_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1981_341",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1981_341_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1981_341",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1981_341_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1981_341",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1981_341_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1981_341",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1981_341_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1981_341",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1981_341_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1981_341",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_343",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1982_343",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1982_343_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1982_343",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1982_343_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1982_343",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1982_343_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1982_343",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1982_343_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1982_343",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1982_343_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1982_343",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1982_343_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1982_343",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_344",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1983_344",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1983_344_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1983_344",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1983_344_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1983_344",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1983_344_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1983_344",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1983_344_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1983_344",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1983_344_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1983_344",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1983_344_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1983_344",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_345",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1984_345",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1984_345_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1984_345",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1984_345_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1984_345",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1984_345_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1984_345",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1984_345_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1984_345",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1984_345_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1984_345",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1984_345_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1984_345",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_346",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1985_346",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1985_346_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1985_346",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1985_346_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1985_346",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1985_346_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1985_346",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1985_346_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1985_346",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1985_346_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1985_346",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1985_346_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1985_346",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_347",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1986_347",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1986_347_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1986_347",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1986_347_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1986_347",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1986_347_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1986_347",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1986_347_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1986_347",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1986_347_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1986_347",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1986_347_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1986_347",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_348",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1987_348",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1987_348_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1987_348",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1987_348_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1987_348",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1987_348_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1987_348",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1987_348_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1987_348",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1987_348_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1987_348",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1987_348_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1987_348",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_349",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1988_349",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1988_349_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1988_349",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1988_349_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1988_349",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1988_349_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1988_349",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1988_349_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1988_349",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1988_349_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1988_349",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1988_349_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1988_349",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_350",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1989_350",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1989_350_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1989_350",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1989_350_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1989_350",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1989_350_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1989_350",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1989_350_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1989_350",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1989_350_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1989_350",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1989_350_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1989_350",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_351",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1990_351",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1990_351_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1990_351",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1990_351_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1990_351",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1990_351_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1990_351",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1990_351_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1990_351",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1990_351_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1990_351",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1990_351_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1990_351",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_352",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1991_352",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1991_352_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1991_352",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1991_352_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1991_352",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1991_352_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1991_352",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1991_352_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1991_352",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1991_352_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1991_352",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1991_352_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1991_352",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_353",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1992_353",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1992_353_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1992_353",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1992_353_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1992_353",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1992_353_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1992_353",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1992_353_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1992_353",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1992_353_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1992_353",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1992_353_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1992_353",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_355",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1993_355",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1993_355_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1993_355",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1993_355_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1993_355",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1993_355_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1993_355",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1993_355_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1993_355",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1993_355_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1993_355",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1993_355_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1993_355",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_356",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1994_356",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1994_356_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1994_356",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1994_356_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1994_356",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1994_356_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1994_356",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1994_356_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1994_356",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1994_356_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1994_356",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1994_356_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1994_356",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_357",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1995_357",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1995_357_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1995_357",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1995_357_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1995_357",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1995_357_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1995_357",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1995_357_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1995_357",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1995_357_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1995_357",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1995_357_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1995_357",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_358",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1996_358",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1996_358_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1996_358",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1996_358_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1996_358",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1996_358_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1996_358",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1996_358_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1996_358",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1996_358_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1996_358",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1996_358_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1996_358",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_359",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1997_359",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1997_359_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1997_359",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1997_359_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1997_359",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1997_359_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1997_359",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1997_359_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1997_359",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1997_359_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1997_359",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1997_359_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1997_359",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_360",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1998_360",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1998_360_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1998_360",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1998_360_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1998_360",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1998_360_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1998_360",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1998_360_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1998_360",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1998_360_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1998_360",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1998_360_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1998_360",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_361",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_1999_361",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1999_361_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1999_361",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1999_361_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1999_361",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1999_361_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1999_361",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1999_361_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1999_361",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1999_361_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1999_361",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_1999_361_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_1999_361",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_362",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2000_362",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2000_362_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2000_362",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2000_362_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2000_362",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2000_362_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2000_362",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2000_362_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2000_362",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2000_362_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2000_362",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2000_362_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2000_362",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_363",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2001_363",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2001_363_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2001_363",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2001_363_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2001_363",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2001_363_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2001_363",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2001_363_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2001_363",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2001_363_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2001_363",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2001_363_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2001_363",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_364",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2002_364",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2002_364_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2002_364",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2002_364_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2002_364",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2002_364_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2002_364",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2002_364_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2002_364",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2002_364_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2002_364",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2002_364_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2002_364",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_365",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2003_365",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2003_365_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2003_365",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2003_365_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2003_365",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2003_365_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2003_365",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2003_365_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2003_365",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2003_365_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2003_365",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2003_365_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2003_365",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_366",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2004_366",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2004_366_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2004_366",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2004_366_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2004_366",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2004_366_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2004_366",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2004_366_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2004_366",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2004_366_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2004_366",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2004_366_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2004_366",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_367",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2005_367",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2005_367_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2005_367",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2005_367_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2005_367",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2005_367_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2005_367",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2005_367_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2005_367",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2005_367_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2005_367",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2005_367_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2005_367",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_368",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2006_368",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2006_368_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2006_368",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2006_368_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2006_368",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2006_368_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2006_368",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2006_368_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2006_368",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2006_368_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2006_368",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2006_368_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2006_368",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_369",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2007_369",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2007_369_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2007_369",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2007_369_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2007_369",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2007_369_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2007_369",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2007_369_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2007_369",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2007_369_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2007_369",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2007_369_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2007_369",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_354",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2008_354",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2008_354_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2008_354",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2008_354_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2008_354",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2008_354_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2008_354",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2008_354_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2008_354",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2008_354_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2008_354",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2008_354_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2008_354",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_372",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2009_372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2009_372_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2009_372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2009_372_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2009_372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2009_372_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2009_372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2009_372_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2009_372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2009_372_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2009_372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2009_372_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2009_372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_371",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2010_371",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2010_371_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2010_371",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2010_371_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2010_371",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2010_371_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2010_371",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2010_371_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2010_371",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2010_371_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2010_371",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2010_371_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2010_371",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_370",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2011_370",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2011_370_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2011_370",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2011_370_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2011_370",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2011_370_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2011_370",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2011_370_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2011_370",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2011_370_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2011_370",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2011_370_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2011_370",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_342",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2012_342",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2012_342_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2012_342",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2012_342_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2012_342",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2012_342_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2012_342",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2012_342_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2012_342",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2012_342_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2012_342",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2012_342_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2012_342",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_22",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2013_22",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2013_22_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2013_22",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2013_22_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2013_22",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2013_22_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2013_22",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2013_22_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2013_22",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2013_22_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2013_22",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2013_22_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2013_22",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_307",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2014_307",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2014_307_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2014_307",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2014_307_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2014_307",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2014_307_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2014_307",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2014_307_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2014_307",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2014_307_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2014_307",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2014_307_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2014_307",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_614",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2015_614",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2015_614_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2015_614",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2015_614_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2015_614",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2015_614_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2015_614",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2015_614_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2015_614",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2015_614_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2015_614",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2015_614_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2015_614",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_649",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2016_649",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2016_649_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2016_649",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2016_649_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2016_649",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2016_649_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2016_649",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2016_649_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2016_649",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2016_649_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2016_649",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2016_649_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2016_649",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_685",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2017_685",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2017_685_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2017_685",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2017_685_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2017_685",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2017_685_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2017_685",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2017_685_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2017_685",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2017_685_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2017_685",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2017_685_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2017_685",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_704",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2018_704",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2018_704_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2018_704",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2018_704_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2018_704",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2018_704_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2018_704",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2018_704_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2018_704",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2018_704_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2018_704",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2018_704_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2018_704",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_784",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2019_784",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2019_784_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2019_784",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2019_784_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2019_784",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2019_784_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2019_784",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2019_784_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2019_784",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2019_784_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2019_784",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2019_784_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2019_784",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_838",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2020_838",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2020_838_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2020_838",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2020_838_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2020_838",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2020_838_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2020_838",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2020_838_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2020_838",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2020_838_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2020_838",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2020_838_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2020_838",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_856",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2021_856",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2021_856_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2021_856",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2021_856_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2021_856",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2021_856_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2021_856",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2021_856_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2021_856",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=rg",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2021_856_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2021_856",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2021_856_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2021_856",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_874",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2022_874",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2022_874_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2022_874",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2022_874_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2022_874",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2022_874_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2022_874",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2022_874_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2022_874",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2022_874_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2022_874",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2022_874_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2022_874",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_990",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2023_990",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2023_990_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2023_990",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2023_990_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2023_990",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2023_990_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2023_990",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2023_990_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2023_990",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2023_990_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2023_990",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2023_990_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2023_990",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_1372",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2024_1372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2024_1372_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2024_1372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2024_1372_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2024_1372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2024_1372_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2024_1372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2024_1372_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2024_1372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2024_1372_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2024_1372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2024_1372_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2024_1372",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_1509",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2025_1509",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2025_1509_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2025_1509",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2025_1509_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2025_1509",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2025_1509_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2025_1509",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2025_1509_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2025_1509",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2025_1509_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2025_1509",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2025_1509_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2025_1509",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_edition_1603",
+    "entity_type": "edition",
+    "entity_id": "campeonato_goiano_2026_1603",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2026_1603_statistics",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2026_1603",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=es",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2026_1603_scorers",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2026_1603",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=at",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2026_1603_final_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2026_1603",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=cf",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2026_1603_regulation",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2026_1603",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2026_1603_extra_standings",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2026_1603",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=ce",
+    "provider": "Futebol de Goyaz"
+  },
+  {
+    "id": "source_campeonato_goiano_2026_1603_other_editions",
+    "entity_type": "edition_tab",
+    "entity_id": "campeonato_goiano_2026_1603",
+    "url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=ed",
+    "provider": "Futebol de Goyaz"
+  }
+]

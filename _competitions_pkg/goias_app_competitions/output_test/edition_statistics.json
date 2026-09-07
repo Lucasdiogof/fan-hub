@@ -1,0 +1,3012 @@
+[
+  {
+    "id": "stats_campeonato_goiano_1947_632",
+    "edition_id": "campeonato_goiano_1947_632",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/632/edicao?aba=es",
+    "matches": 1,
+    "goals": 5,
+    "goals_per_match": 5.0,
+    "best_attack": [
+      {
+        "team_name_raw": "Anápolis",
+        "value": 3
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Anápolis",
+        "value": 2
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anápolis",
+        "matches": 1
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 1
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Atlético",
+        "matches": 1
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 1
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1957_628",
+    "edition_id": "campeonato_goiano_1957_628",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/628/edicao?aba=es",
+    "matches": 6,
+    "goals": 13,
+    "goals_per_match": 2.17,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 6
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "América",
+        "value": 2
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 3
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "América",
+        "matches": 2
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Ipiranga",
+        "matches": 2
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Ipiranga",
+        "matches": 4
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1959_629",
+    "edition_id": "campeonato_goiano_1959_629",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/629/edicao?aba=es",
+    "matches": 9,
+    "goals": 42,
+    "goals_per_match": 4.67,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 25
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 7
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Ipiranga",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Ipiranga",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Ceres",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Ceres",
+        "matches": 4
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1960_630",
+    "edition_id": "campeonato_goiano_1960_630",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/630/edicao?aba=es",
+    "matches": 6,
+    "goals": 27,
+    "goals_per_match": 4.5,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 18
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 7
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiânia",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Inhumas",
+        "matches": 3
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Inhumas",
+        "matches": 4
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1961_631",
+    "edition_id": "campeonato_goiano_1961_631",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/631/edicao?aba=es",
+    "matches": 6,
+    "goals": 17,
+    "goals_per_match": 2.83,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 10
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 1
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Ipiranga",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Ipiranga",
+        "matches": 4
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1962_321",
+    "edition_id": "campeonato_goiano_1962_321",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/321/edicao?aba=es",
+    "matches": 66,
+    "goals": 267,
+    "goals_per_match": 4.05,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 30
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 13
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1963_323",
+    "edition_id": "campeonato_goiano_1963_323",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/323/edicao?aba=es",
+    "matches": 136,
+    "goals": 466,
+    "goals_per_match": 3.43,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 48
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 11
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Sírio Libanês",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Trindade EC",
+        "matches": 15
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1964_324",
+    "edition_id": "campeonato_goiano_1964_324",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/324/edicao?aba=es",
+    "matches": 133,
+    "goals": 438,
+    "goals_per_match": 3.29,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 52
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Ferroviário",
+        "value": 23
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Inhumas",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Inhumas",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Botafogo de Buriti",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "São Luís",
+        "matches": 13
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1965_325",
+    "edition_id": "campeonato_goiano_1965_325",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/325/edicao?aba=es",
+    "matches": 115,
+    "goals": 368,
+    "goals_per_match": 3.2,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 46
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 17
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiânia",
+        "matches": 16
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Ferroviário",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Ferroviário",
+        "matches": 11
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1966_326",
+    "edition_id": "campeonato_goiano_1966_326",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/326/edicao?aba=es",
+    "matches": 90,
+    "goals": 248,
+    "goals_per_match": 2.76,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 34
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Anápolis",
+        "value": 16
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 16
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Botafogo de Buriti",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 12
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1967_327",
+    "edition_id": "campeonato_goiano_1967_327",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/327/edicao?aba=es",
+    "matches": 93,
+    "goals": 233,
+    "goals_per_match": 2.51,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 32
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 14
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "CRAC",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Ceres",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Ceres",
+        "matches": 13
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1968_328",
+    "edition_id": "campeonato_goiano_1968_328",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/328/edicao?aba=es",
+    "matches": 90,
+    "goals": 244,
+    "goals_per_match": 2.71,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 32
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 15
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Atlético",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 11
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1969_329",
+    "edition_id": "campeonato_goiano_1969_329",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/329/edicao?aba=es",
+    "matches": 90,
+    "goals": 283,
+    "goals_per_match": 3.14,
+    "best_attack": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 37
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 13
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "CRAC",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "CRAC",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 12
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 18
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1970_330",
+    "edition_id": "campeonato_goiano_1970_330",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/330/edicao?aba=es",
+    "matches": 143,
+    "goals": 394,
+    "goals_per_match": 2.76,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 49
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 11
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiânia",
+        "matches": 23
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "América",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "América",
+        "matches": 18
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1971_331",
+    "edition_id": "campeonato_goiano_1971_331",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/331/edicao?aba=es",
+    "matches": 73,
+    "goals": 176,
+    "goals_per_match": 2.41,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 31
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 10
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 12
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goianésia",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiatuba",
+        "matches": 9
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1972_332",
+    "edition_id": "campeonato_goiano_1972_332",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/332/edicao?aba=es",
+    "matches": 131,
+    "goals": 290,
+    "goals_per_match": 2.21,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 43
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 14
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 24
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Inhumas",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "América",
+        "matches": 12
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1973_333",
+    "edition_id": "campeonato_goiano_1973_333",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/333/edicao?aba=es",
+    "matches": 75,
+    "goals": 187,
+    "goals_per_match": 2.49,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 35
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 10
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 15
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Novo Horizonte",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1974_334",
+    "edition_id": "campeonato_goiano_1974_334",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/334/edicao?aba=es",
+    "matches": 68,
+    "goals": 133,
+    "goals_per_match": 1.96,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 21
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 7
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiânia",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Santa Helena",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 9
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1975_335",
+    "edition_id": "campeonato_goiano_1975_335",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/335/edicao?aba=es",
+    "matches": 113,
+    "goals": 241,
+    "goals_per_match": 2.13,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 42
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 7
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 23
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Rio Verde",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Rio Verde",
+        "matches": 20
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1976_336",
+    "edition_id": "campeonato_goiano_1976_336",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/336/edicao?aba=es",
+    "matches": 133,
+    "goals": 307,
+    "goals_per_match": 2.31,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 47
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Itumbiara",
+        "value": 9
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiânia",
+        "matches": 14
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Inhumas",
+        "matches": 15
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1977_337",
+    "edition_id": "campeonato_goiano_1977_337",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/337/edicao?aba=es",
+    "matches": 96,
+    "goals": 201,
+    "goals_per_match": 2.09,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 38
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Anapolina",
+        "value": 13
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Mineiros",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Mineiros",
+        "matches": 18
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1978_338",
+    "edition_id": "campeonato_goiano_1978_338",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/338/edicao?aba=es",
+    "matches": 242,
+    "goals": 535,
+    "goals_per_match": 2.21,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 72
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 19
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 19
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiatuba",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Santa Helena",
+        "matches": 19
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1979_339",
+    "edition_id": "campeonato_goiano_1979_339",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/339/edicao?aba=es",
+    "matches": 81,
+    "goals": 170,
+    "goals_per_match": 2.1,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 30
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 7
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 17
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiatuba",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1980_340",
+    "edition_id": "campeonato_goiano_1980_340",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/340/edicao?aba=es",
+    "matches": 135,
+    "goals": 292,
+    "goals_per_match": 2.16,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 58
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Rio Verde",
+        "value": 24
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 18
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiatuba",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Itumbiara",
+        "matches": 10
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1981_341",
+    "edition_id": "campeonato_goiano_1981_341",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/341/edicao?aba=es",
+    "matches": 250,
+    "goals": 504,
+    "goals_per_match": 2.02,
+    "best_attack": [
+      {
+        "team_name_raw": "Anapolina",
+        "value": 77
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 31
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anapolina",
+        "matches": 15
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Monte Cristo",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Monte Cristo",
+        "matches": 18
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1982_343",
+    "edition_id": "campeonato_goiano_1982_343",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/343/edicao?aba=es",
+    "matches": 202,
+    "goals": 456,
+    "goals_per_match": 2.26,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 63
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 23
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 15
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Monte Cristo",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Monte Cristo",
+        "matches": 15
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1983_344",
+    "edition_id": "campeonato_goiano_1983_344",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/344/edicao?aba=es",
+    "matches": 125,
+    "goals": 265,
+    "goals_per_match": 2.12,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 49
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 22
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anápolis",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anápolis",
+        "matches": 3
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Itumbiara",
+        "matches": 10
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1984_345",
+    "edition_id": "campeonato_goiano_1984_345",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/345/edicao?aba=es",
+    "matches": 154,
+    "goals": 300,
+    "goals_per_match": 1.95,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 46
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Anapolina",
+        "value": 18
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiânia",
+        "matches": 14
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Itumbiara",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Atlético",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Jataiense",
+        "matches": 15
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1985_346",
+    "edition_id": "campeonato_goiano_1985_346",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/346/edicao?aba=es",
+    "matches": 183,
+    "goals": 384,
+    "goals_per_match": 2.1,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 47
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 16
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 19
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Itumbiara",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Nacional",
+        "matches": 18
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1986_347",
+    "edition_id": "campeonato_goiano_1986_347",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/347/edicao?aba=es",
+    "matches": 162,
+    "goals": 309,
+    "goals_per_match": 1.91,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 49
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 13
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 13
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Ceres",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "América",
+        "matches": 12
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1987_348",
+    "edition_id": "campeonato_goiano_1987_348",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/348/edicao?aba=es",
+    "matches": 132,
+    "goals": 249,
+    "goals_per_match": 1.89,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 47
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Santa Helena",
+        "value": 9
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Santa Helena",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "CRAC",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiatuba",
+        "matches": 12
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1988_349",
+    "edition_id": "campeonato_goiano_1988_349",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/349/edicao?aba=es",
+    "matches": 218,
+    "goals": 403,
+    "goals_per_match": 1.85,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 73
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Santa Helena",
+        "value": 14
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 16
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiânia",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Jataiense",
+        "matches": 20
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1989_350",
+    "edition_id": "campeonato_goiano_1989_350",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/350/edicao?aba=es",
+    "matches": 214,
+    "goals": 405,
+    "goals_per_match": 1.89,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 52
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Santa Helena",
+        "value": 18
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 19
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "América",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 11
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1990_351",
+    "edition_id": "campeonato_goiano_1990_351",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/351/edicao?aba=es",
+    "matches": 158,
+    "goals": 304,
+    "goals_per_match": 1.92,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 61
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Novo Horizonte",
+        "value": 13
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anapolina",
+        "matches": 15
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "América",
+        "matches": 3
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 10
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1991_352",
+    "edition_id": "campeonato_goiano_1991_352",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/352/edicao?aba=es",
+    "matches": 183,
+    "goals": 379,
+    "goals_per_match": 2.07,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 50
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Pires do Rio",
+        "value": 13
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiatuba",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Pires do Rio",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anápolis",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 17
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1992_353",
+    "edition_id": "campeonato_goiano_1992_353",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/353/edicao?aba=es",
+    "matches": 276,
+    "goals": 626,
+    "goals_per_match": 2.27,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiatuba",
+        "value": 70
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Itumbiara",
+        "value": 22
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 17
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Piracanjuba",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Piracanjuba",
+        "matches": 13
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1993_355",
+    "edition_id": "campeonato_goiano_1993_355",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/355/edicao?aba=es",
+    "matches": 337,
+    "goals": 771,
+    "goals_per_match": 2.29,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiânia",
+        "value": 78
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Mineiros",
+        "value": 27
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 21
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Ceres",
+        "matches": 12
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 17
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1994_356",
+    "edition_id": "campeonato_goiano_1994_356",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/356/edicao?aba=es",
+    "matches": 351,
+    "goals": 826,
+    "goals_per_match": 2.35,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 88
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Rio Verde",
+        "value": 24
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 20
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anápolis",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Piracanjuba",
+        "matches": 14
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1995_357",
+    "edition_id": "campeonato_goiano_1995_357",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/357/edicao?aba=es",
+    "matches": 214,
+    "goals": 516,
+    "goals_per_match": 2.41,
+    "best_attack": [
+      {
+        "team_name_raw": "Anápolis",
+        "value": 63
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Santa Helena",
+        "value": 14
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 20
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "América",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiatuba",
+        "matches": 11
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1996_358",
+    "edition_id": "campeonato_goiano_1996_358",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/358/edicao?aba=es",
+    "matches": 167,
+    "goals": 424,
+    "goals_per_match": 2.54,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 57
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 20
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 22
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiatuba",
+        "matches": 16
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1997_359",
+    "edition_id": "campeonato_goiano_1997_359",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/359/edicao?aba=es",
+    "matches": 187,
+    "goals": 509,
+    "goals_per_match": 2.72,
+    "best_attack": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 74
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 24
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 24
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiânia",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Bom Jesus",
+        "matches": 13
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1998_360",
+    "edition_id": "campeonato_goiano_1998_360",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/360/edicao?aba=es",
+    "matches": 156,
+    "goals": 480,
+    "goals_per_match": 3.08,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 77
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 32
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 17
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Caldas",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_1999_361",
+    "edition_id": "campeonato_goiano_1999_361",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/361/edicao?aba=es",
+    "matches": 132,
+    "goals": 366,
+    "goals_per_match": 2.77,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 69
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiatuba",
+        "value": 22
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Bom Jesus",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 10
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2000_362",
+    "edition_id": "campeonato_goiano_2000_362",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/362/edicao?aba=es",
+    "matches": 209,
+    "goals": 636,
+    "goals_per_match": 3.04,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 92
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 30
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anapolina",
+        "matches": 14
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Itumbiara",
+        "matches": 18
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Itumbiara",
+        "matches": 20
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2001_363",
+    "edition_id": "campeonato_goiano_2001_363",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/363/edicao?aba=es",
+    "matches": 108,
+    "goals": 327,
+    "goals_per_match": 3.03,
+    "best_attack": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 48
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 18
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anapolina",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goianésia",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 7
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2002_364",
+    "edition_id": "campeonato_goiano_2002_364",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/364/edicao?aba=es",
+    "matches": 108,
+    "goals": 322,
+    "goals_per_match": 2.98,
+    "best_attack": [
+      {
+        "team_name_raw": "Novo Horizonte",
+        "value": 41
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 6
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anapolina",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Atlético",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Real",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2003_365",
+    "edition_id": "campeonato_goiano_2003_365",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/365/edicao?aba=es",
+    "matches": 80,
+    "goals": 253,
+    "goals_per_match": 3.16,
+    "best_attack": [
+      {
+        "team_name_raw": "Novo Horizonte",
+        "value": 36
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 16
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Jataiense",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Atlético",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 9
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2004_366",
+    "edition_id": "campeonato_goiano_2004_366",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/366/edicao?aba=es",
+    "matches": 107,
+    "goals": 344,
+    "goals_per_match": 3.21,
+    "best_attack": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 40
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 17
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Real",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Real",
+        "matches": 14
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2005_367",
+    "edition_id": "campeonato_goiano_2005_367",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/367/edicao?aba=es",
+    "matches": 108,
+    "goals": 315,
+    "goals_per_match": 2.92,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 45
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 16
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiânia",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2006_368",
+    "edition_id": "campeonato_goiano_2006_368",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/368/edicao?aba=es",
+    "matches": 108,
+    "goals": 328,
+    "goals_per_match": 3.04,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 50
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Jataiense",
+        "value": 18
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiatuba",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiatuba",
+        "matches": 7
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2007_369",
+    "edition_id": "campeonato_goiano_2007_369",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/369/edicao?aba=es",
+    "matches": 108,
+    "goals": 338,
+    "goals_per_match": 3.13,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 49
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 21
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 14
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Jataiense",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 11
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2008_354",
+    "edition_id": "campeonato_goiano_2008_354",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/354/edicao?aba=es",
+    "matches": 108,
+    "goals": 357,
+    "goals_per_match": 3.31,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 54
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Itumbiara",
+        "value": 20
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "CRAC",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Canedense",
+        "matches": 16
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2009_372",
+    "edition_id": "campeonato_goiano_2009_372",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/372/edicao?aba=es",
+    "matches": 108,
+    "goals": 324,
+    "goals_per_match": 3.0,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 52
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 11
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 13
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Aparecidense",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 7
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2010_371",
+    "edition_id": "campeonato_goiano_2010_371",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/371/edicao?aba=es",
+    "matches": 96,
+    "goals": 316,
+    "goals_per_match": 3.29,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 57
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Itumbiara",
+        "value": 25
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Vila Nova",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Canedense",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Itumbiara",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2011_370",
+    "edition_id": "campeonato_goiano_2011_370",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/370/edicao?aba=es",
+    "matches": 96,
+    "goals": 310,
+    "goals_per_match": 3.23,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 44
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 24
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Anapolina",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Morrinhos",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goianésia",
+        "matches": 7
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2012_342",
+    "edition_id": "campeonato_goiano_2012_342",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/342/edicao?aba=es",
+    "matches": 96,
+    "goals": 306,
+    "goals_per_match": 3.19,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 55
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 20
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 3
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 9
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2013_22",
+    "edition_id": "campeonato_goiano_2013_22",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/22/edicao?aba=es",
+    "matches": 96,
+    "goals": 273,
+    "goals_per_match": 2.84,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 48
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 15
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Itumbiara",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Itumbiara",
+        "matches": 11
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2014_307",
+    "edition_id": "campeonato_goiano_2014_307",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/307/edicao?aba=es",
+    "matches": 76,
+    "goals": 179,
+    "goals_per_match": 2.36,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 33
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 10
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 17
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Vila Nova",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2015_614",
+    "edition_id": "campeonato_goiano_2015_614",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/614/edicao?aba=es",
+    "matches": 76,
+    "goals": 166,
+    "goals_per_match": 2.18,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 32
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Itumbiara",
+        "value": 9
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 13
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Caldas Novas",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Caldas Novas",
+        "matches": 14
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2016_649",
+    "edition_id": "campeonato_goiano_2016_649",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/649/edicao?aba=es",
+    "matches": 76,
+    "goals": 146,
+    "goals_per_match": 1.92,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 28
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 9
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Itumbiara",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2017_685",
+    "edition_id": "campeonato_goiano_2017_685",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/685/edicao?aba=es",
+    "matches": 76,
+    "goals": 174,
+    "goals_per_match": 2.29,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 29
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Iporá",
+        "value": 12
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Aparecidense",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Aparecidense",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "CRAC",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "CRAC",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2018_704",
+    "edition_id": "campeonato_goiano_2018_704",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/704/edicao?aba=es",
+    "matches": 76,
+    "goals": 170,
+    "goals_per_match": 2.24,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 28
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Iporá",
+        "value": 12
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 3
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Rio Verde",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Rio Verde",
+        "matches": 13
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2019_784",
+    "edition_id": "campeonato_goiano_2019_784",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/784/edicao?aba=es",
+    "matches": 86,
+    "goals": 210,
+    "goals_per_match": 2.44,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 35
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "CRAC",
+        "value": 14
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Iporá",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Iporá",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2020_838",
+    "edition_id": "campeonato_goiano_2020_838",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/838/edicao?aba=es",
+    "matches": 79,
+    "goals": 187,
+    "goals_per_match": 2.37,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 35
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 8
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 7
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Jaraguá",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Anapolina",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Anapolina",
+        "matches": 6
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2021_856",
+    "edition_id": "campeonato_goiano_2021_856",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/856/edicao?aba=es",
+    "matches": 74,
+    "goals": 151,
+    "goals_per_match": 2.04,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 27
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 5
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 12
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Jaraguá",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "CRAC",
+        "matches": 7
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2022_874",
+    "edition_id": "campeonato_goiano_2022_874",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/874/edicao?aba=es",
+    "matches": 74,
+    "goals": 177,
+    "goals_per_match": 2.39,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 30
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Grêmio Anápolis",
+        "value": 8
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 11
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 9
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Goiatuba",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Grêmio Anápolis",
+        "matches": 10
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2023_990",
+    "edition_id": "campeonato_goiano_2023_990",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/990/edicao?aba=es",
+    "matches": 80,
+    "goals": 208,
+    "goals_per_match": 2.6,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 40
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 6
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 13
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 10
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Inhumas",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Inhumas",
+        "matches": 10
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2024_1372",
+    "edition_id": "campeonato_goiano_2024_1372",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1372/edicao?aba=es",
+    "matches": 80,
+    "goals": 187,
+    "goals_per_match": 2.34,
+    "best_attack": [
+      {
+        "team_name_raw": "Atlético",
+        "value": 44
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 4
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Atlético",
+        "matches": 13
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Atlético",
+        "matches": 13
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Iporá",
+        "matches": 6
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiânia",
+        "matches": 9
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2025_1509",
+    "edition_id": "campeonato_goiano_2025_1509",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1509/edicao?aba=es",
+    "matches": 80,
+    "goals": 153,
+    "goals_per_match": 1.91,
+    "best_attack": [
+      {
+        "team_name_raw": "Anápolis",
+        "value": 25
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Vila Nova",
+        "value": 7
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Vila Nova",
+        "matches": 8
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Anápolis",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "Abecat",
+        "matches": 4
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Goiatuba",
+        "matches": 8
+      }
+    ]
+  },
+  {
+    "id": "stats_campeonato_goiano_2026_1603",
+    "edition_id": "campeonato_goiano_2026_1603",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1603/edicao?aba=es",
+    "matches": 70,
+    "goals": 176,
+    "goals_per_match": 2.51,
+    "best_attack": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 24
+      }
+    ],
+    "best_defense": [
+      {
+        "team_name_raw": "Goiás",
+        "value": 6
+      }
+    ],
+    "biggest_wins": [],
+    "streaks": [
+      {
+        "type": "maior_invencibilidade",
+        "team_name_raw": "Goiás",
+        "matches": 14
+      },
+      {
+        "type": "maior_sequencia_de_vitorias",
+        "team_name_raw": "Goiás",
+        "matches": 5
+      },
+      {
+        "type": "maior_sequencia_de_derrotas",
+        "team_name_raw": "CRAC",
+        "matches": 3
+      },
+      {
+        "type": "maior_sequencia_sem_vitorias",
+        "team_name_raw": "Inhumas",
+        "matches": 8
+      }
+    ]
+  }
+]

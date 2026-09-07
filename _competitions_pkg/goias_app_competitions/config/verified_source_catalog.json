@@ -1,0 +1,68 @@
+{
+  "verified_on": "2026-08-31",
+  "provider": "Futebol de Goyaz",
+  "provider_home_snapshot": {
+    "matches_catalogued": 140226,
+    "clubs": 3164,
+    "players": 13497,
+    "coaches": 760,
+    "referees": 2790,
+    "stadiums": 2245,
+    "note": "Provider-wide counters are dynamic and used only as breadth evidence, not as import totals."
+  },
+  "verified_capabilities": [
+    "competition edition list/history",
+    "matches by edition, stage and round",
+    "standings",
+    "extra standings where available",
+    "final classification where available",
+    "edition statistics: match count, goals, average, best attack/defense, biggest win and streaks",
+    "top scorers / artilharia where available",
+    "regulation text where available",
+    "match stadium/date/time",
+    "penalty shootout scores on applicable matches",
+    "match lineups and formations on many historical match pages",
+    "coaches on many match pages",
+    "match events (goals/cards/substitutions) on many match pages",
+    "referee crew on many match pages",
+    "attendance/gate on some match pages",
+    "source notes that can flag annulled/cancelled historical matches"
+  ],
+  "verified_examples": [
+    {
+      "edition": "Campeonato Brasileiro - Série A 2025",
+      "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1599/edicao",
+      "tabs_seen": ["Tabela","Classificações extras","Estatísticas","Artilharia","Classificação final","Outras edições"],
+      "statistics": {"matches":380,"goals":959,"goals_per_match":2.52,"best_attack":"Flamengo","best_attack_goals":78,"best_defense":"Flamengo","best_defense_goals_against":27},
+      "top_scorer_example": {"player":"Kaio Jorge","team":"Cruzeiro","goals":21}
+    },
+    {
+      "edition": "Copa Libertadores da América 2006",
+      "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/267/edicao?aba=es",
+      "tabs_seen": ["Tabela","Estatísticas","Artilharia","Regulamento","Outras edições"],
+      "statistics": {"matches":138,"goals":386,"goals_per_match":2.80,"best_attack":"River Plate","best_attack_goals":27}
+    },
+    {
+      "edition": "Copa Sul-Americana 2002",
+      "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/211/edicao",
+      "format_example": "knockout/two-legged final"
+    },
+    {
+      "edition": "Copa Sul-Americana 2026",
+      "source_url": "https://futeboldegoyaz.com.br/campeonatos/1628/edicao?fase=4445",
+      "format_example": "group stage with standings plus later knockout stages"
+    },
+    {
+      "edition": "Copa dos Campeões 2002",
+      "match_example_url": "https://www.futeboldegoyaz.com.br/partidas/2528/partida",
+      "match_detail_seen": ["lineups","formations","coaches","events","referees"]
+    }
+  ],
+  "data_policy": {
+    "unknown_values": "null",
+    "never_guess": true,
+    "preserve_raw_source_score": true,
+    "preserve_source_notes": true,
+    "current_editions_are_partial_by_design": true
+  }
+}

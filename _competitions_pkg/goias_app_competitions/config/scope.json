@@ -1,0 +1,40 @@
+{
+  "project": "goias-app-competitions",
+  "generated_for": "Goiás-app",
+  "source": "Futebol de Goyaz",
+  "source_base_url": "https://www.futeboldegoyaz.com.br",
+  "all_available_editions": true,
+  "competitions": [
+    {"key":"brasileirao_a","name":"Campeonato Brasileiro - Série A","category":"national","source_competition_id":4,"enabled":true},
+    {"key":"brasileirao_b","name":"Campeonato Brasileiro - Série B","category":"national","source_competition_id":6,"enabled":true},
+    {"key":"brasileirao_c","name":"Campeonato Brasileiro - Série C","category":"national","source_competition_id":7,"enabled":true},
+    {"key":"brasileirao_d","name":"Campeonato Brasileiro - Série D","category":"national","source_competition_id":8,"enabled":true},
+    {"key":"copa_do_brasil","name":"Copa do Brasil","category":"national","source_competition_id":10,"enabled":true},
+    {"key":"campeonato_goiano","name":"Campeonato Goiano","category":"state","source_competition_id":1,"enabled":true},
+    {"key":"goiano_2","name":"Campeonato Goiano - Segunda Divisão","category":"state","source_competition_id":23,"enabled":true},
+    {"key":"goiano_3","name":"Campeonato Goiano - Terceira Divisão","category":"state","source_competition_id":24,"enabled":true},
+    {"key":"copa_verde","name":"Copa Verde","category":"regional","source_competition_id":88,"enabled":true},
+    {"key":"copa_centro_oeste","name":"Copa Centro Oeste","category":"regional","source_competition_id":11,"enabled":true},
+    {"key":"copa_dos_campeoes","name":"Copa dos Campeões","category":"national_historical","source_seed_edition_id":188,"enabled":true},
+    {"key":"copa_leonino_caiado","name":"Copa Leonino Caiado","category":"regional_historical","source_competition_id":40,"enabled":true},
+    {"key":"copa_goias","name":"Copa Goiás","category":"state_historical","source_competition_id":37,"enabled":true},
+    {"key":"copa_brasil_central","name":"Copa Brasil Central","category":"regional_historical","source_competition_id":53,"enabled":true},
+    {"key":"torneio_centro_oeste","name":"Torneio Centro-Oeste","category":"regional_historical","source_competition_id":62,"enabled":true},
+    {"key":"torneio_centro_sul","name":"Torneio Centro-Sul","category":"regional_historical","source_competition_id":135,"enabled":true},
+    {"key":"libertadores","name":"Copa Libertadores da América","category":"international","source_seed_edition_id":267,"enabled":true},
+    {"key":"sul_americana","name":"Copa Sul-Americana","category":"international","source_competition_id":5,"source_seed_edition_id":1628,"enabled":true},
+    {"key":"copa_do_mundo","name":"Copa do Mundo","category":"national_teams","source_competition_id":2,"enabled":true}
+  ],
+  "collection": {
+    "edition_tabs": ["table","extra_standings","statistics","scorers","final_standings","regulation","other_editions"],
+    "match_details": true,
+    "lineups": true,
+    "match_events": true,
+    "officials": true,
+    "attendance_and_gate": true,
+    "stadiums": true,
+    "coaches": true,
+    "player_profiles": false,
+    "raw_html_snapshots": false
+  }
+}

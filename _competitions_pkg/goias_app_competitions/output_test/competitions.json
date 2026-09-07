@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Campeonato Goiano",
+    "category": "state",
+    "source_competition_id": 1,
+    "enabled": true,
+    "id": "campeonato_goiano",
+    "source_url": "https://www.futeboldegoyaz.com.br/campeonatos/1/campeonato"
+  }
+]
