@@ -7,6 +7,7 @@ from pathlib import Path
 
 from Scweet import Scweet
 from Scweet.exceptions import (
+    AccountPoolExhausted,
     AuthError,
     ManifestError,
     NetworkError,
@@ -115,6 +116,14 @@ def log(message):
 # caía no mesmo "0 posts" sem explicação, e a investigação virava chute.
 DIAGNOSIS = [
     (AuthError, "o auth_token foi recusado (401/403) — sessão do X expirada ou revogada"),
+    (
+        AccountPoolExhausted,
+        "a Scweet não conseguiu montar uma sessão utilizável. Com "
+        "`missing_csrf` significa que ela tinha o auth_token mas não o ct0 e "
+        "o bootstrap que deriva um a partir do outro falhou — esse bootstrap "
+        "é uma chamada ao X, então falha típica de ambiente bloqueado. "
+        "Defina X_CSRF_TOKEN pra pular esse passo",
+    ),
     (RateLimitError, "o X respondeu 429 — rate limit, adianta esperar e tentar depois"),
     (ProxyError, "falha no proxy configurado em X_PROXY"),
     (NetworkError, "falha de rede/conectividade — combina com bloqueio do X ao IP do runner"),
@@ -129,27 +138,41 @@ def describe(exc):
     return f"{type(exc).__name__}: {exc}"
 
 
-def make_client(token):
-    """Cliente da Scweet, tentando renovar o manifesto de queries do X.
+def make_client(token, csrf):
+    """Cliente da Scweet, com sessão já pronta quando possível.
+
+    Passando SÓ o auth_token, a Scweet precisa derivar o cookie CSRF (`ct0`)
+    sozinha, e pra isso faz uma chamada ao X ("bootstrap", ver
+    `Scweet/auth.py`). Essa chamada é o ponto que falha em ambiente bloqueado:
+    o resultado é `AccountPoolExhausted: missing_csrf`, e não um erro de rede
+    ou de token, o que torna o sintoma bem confuso. Fornecendo os dois
+    cookies o bootstrap nem acontece.
 
     O manifesto guarda os ids das queries GraphQL do X. Quando o X troca os
     endpoints, o manifesto embutido na versão instalada fica velho e a
-    raspagem passa a devolver ZERO sem erro nenhum — que é exatamente o
-    sintoma. Renovar na inicialização cobre esse caso; se a renovação em si
-    falhar, cair pro embutido é melhor que não rodar.
+    raspagem devolve ZERO sem erro nenhum. Renovar na inicialização cobre
+    esse caso; se a renovação falhar, cair pro embutido é melhor que não
+    rodar.
     """
-    # `X_PROXY` fica vazio por padrão: só existe porque, se a hipótese de
-    # bloqueio por IP de datacenter se confirmar, sair do IP do runner passa
-    # a ser questão de definir um secret, sem mexer em código.
+    # `X_PROXY` fica vazio por padrão: só existe porque, se sobrar mesmo o
+    # bloqueio por IP de datacenter, sair do IP do runner passa a ser questão
+    # de definir um secret, sem mexer em código.
     proxy = os.environ.get("X_PROXY") or None
     if proxy:
         log("usando proxy de X_PROXY")
 
+    if csrf:
+        log("usando auth_token + ct0 (sem bootstrap de CSRF)")
+        credentials = {"cookies": {"auth_token": token, "ct0": csrf}}
+    else:
+        log("só auth_token; a Scweet vai precisar derivar o ct0 sozinha")
+        credentials = {"auth_token": token}
+
     try:
-        return Scweet(auth_token=token, proxy=proxy, manifest_scrape_on_init=True)
+        return Scweet(proxy=proxy, manifest_scrape_on_init=True, **credentials)
     except ScweetError as exc:
         log(f"manifesto novo falhou ({describe(exc)}); usando o embutido")
-        return Scweet(auth_token=token, proxy=proxy, manifest_scrape_on_init=False)
+        return Scweet(proxy=proxy, manifest_scrape_on_init=False, **credentials)
 
 
 def fetch(scweet):
@@ -190,12 +213,16 @@ def fetch(scweet):
 
 
 def main():
-    token = os.environ.get("X_AUTH_TOKEN")
+    # `.strip()` porque colar num campo de secret costuma levar junto espaço
+    # ou quebra de linha, e o cookie deixa de valer sem nenhuma pista do
+    # porquê.
+    token = (os.environ.get("X_AUTH_TOKEN") or "").strip()
+    csrf = (os.environ.get("X_CSRF_TOKEN") or "").strip()
     if not token:
         log("X_AUTH_TOKEN não definido")
         return 1
 
-    tweets = fetch(make_client(token))
+    tweets = fetch(make_client(token, csrf))
 
     posts = [normalize(t) for t in tweets if isinstance(t, dict)]
     posts = [p for p in posts if p["tweet_id"] and p["timestamp"]]
