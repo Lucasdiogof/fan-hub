@@ -61,8 +61,19 @@ Future<Uint8List> buildTicketPdf(
       : ticket.holderDocument;
   final kickoff = ticket.kickoff;
 
+  // `Page` e não `MultiPage`: um ingresso é UMA página por definição —
+  // paginar um ingresso não faz sentido. E como o conteúdo é uma `Column`
+  // (que não é `SpanningWidget`), o `MultiPage` não conseguia nem quebrar
+  // nem encolher: passando da altura da A5 ele simplesmente lançava. Foi o
+  // crash real em produção — o modo demonstração sozinho já estourava, e
+  // com nomes longos de setor/titular chegava a 694pt contra 595pt de página.
+  //
+  // O `FittedBox` com `scaleDown` é a rede: se couber, nada muda; se passar,
+  // encolhe proporcionalmente em vez de derrubar a tela. O `SizedBox` com a
+  // largura da página é necessário porque o `FittedBox` mede o filho sem
+  // restrição, e o cabeçalho usa `width: double.infinity`.
   doc.addPage(
-    pw.MultiPage(
+    pw.Page(
       pageFormat: PdfPageFormat.a5,
       margin: pw.EdgeInsets.zero,
       build: (context) {
@@ -348,33 +359,43 @@ Future<Uint8List> buildTicketPdf(
         // fixa do rodapé (fácil de cortar fora numa impressão). Repetida
         // (não 1 só grande) pra sobreviver a qualquer recorte parcial do
         // documento.
-        if (!isDemo) return [content];
-        return [
-          pw.Stack(
-            children: [
-              content,
-              pw.Positioned.fill(
-                child: pw.Center(
-                  child: pw.Transform.rotate(
-                    angle: 0.5,
-                    child: pw.Opacity(
-                      opacity: 0.16,
-                      child: pw.Text(
-                        l10n.ticketPdfDemoWatermark,
-                        textAlign: pw.TextAlign.center,
-                        style: const pw.TextStyle(
-                          fontSize: 30,
-                          fontWeight: pw.FontWeight.bold,
-                          color: PdfColors.red900,
-                        ),
+        final page = pw.FittedBox(
+          fit: pw.BoxFit.scaleDown,
+          alignment: pw.Alignment.topCenter,
+          child: pw.SizedBox(
+            width: PdfPageFormat.a5.width,
+            child: content,
+          ),
+        );
+        if (!isDemo) return page;
+        // A marca d'água fica FORA do FittedBox: ela cobre a página inteira,
+        // não o conteúdo — se entrasse junto, encolheria com ele e deixaria
+        // uma faixa sem marca embaixo, que é justamente o pedaço fácil de
+        // recortar.
+        return pw.Stack(
+          children: [
+            page,
+            pw.Positioned.fill(
+              child: pw.Center(
+                child: pw.Transform.rotate(
+                  angle: 0.5,
+                  child: pw.Opacity(
+                    opacity: 0.16,
+                    child: pw.Text(
+                      l10n.ticketPdfDemoWatermark,
+                      textAlign: pw.TextAlign.center,
+                      style: const pw.TextStyle(
+                        fontSize: 30,
+                        fontWeight: pw.FontWeight.bold,
+                        color: PdfColors.red900,
                       ),
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
-        ];
+            ),
+          ],
+        );
       },
     ),
   );
