@@ -582,8 +582,22 @@
   "relTimeDays": "{n}d",
   "relTimeWeeks": "{n}wk",
   "relTimeMonths": "{n}mo",
-  "partnersTitle": "Goiás Partners",
-  "partnersSubtitle": "Brands that walk alongside Goiás.",
+  "partnersTitle": "{clubName} Partners",
+  "@partnersTitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
+  "partnersSubtitle": "Brands that walk alongside {clubName}.",
+  "@partnersSubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "partnersOpenInstagram": "Open {name} on Instagram",
   "partnersOpenWebsite": "Open {name} website",
   "squadTitle": "SQUAD",
@@ -889,10 +903,24 @@
   "clubTransparencyShareButton": "Share PDF",
   "clubSectionTimeline": "Timeline",
   "clubSectionSongs": "Anthem & Songs",
-  "clubHistorySubtitle": "From 1943 to today.",
+  "clubHistorySubtitle": "From {year} to today.",
+  "@clubHistorySubtitle": {
+    "placeholders": {
+      "year": {
+        "type": "String"
+      }
+    }
+  },
   "clubSquadSubtitle": "The players who wear the shirt.",
   "clubTitlesSubtitle": "{count} trophies throughout history.",
-  "clubPartnersSubtitle": "Who stands with Goiás.",
+  "clubPartnersSubtitle": "Who stands with {clubName}.",
+  "@clubPartnersSubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "clubSongsSubtitle": "The anthem and songs that carry the fans.",
   "clubSectionIdols": "Idols",
   "clubIdolsSubtitle": "Names that shaped the club's history.",
@@ -933,9 +961,22 @@
   "clubHistoricCampaigns": "HISTORIC RUNS",
   "clubTimesChampion": "{count}× CHAMPION",
   "clubEntryTitle": "THE CLUB",
-  "clubEntrySubtitle": "History, titles, squad and identity of Goiás.",
-  "clubEntryCta": "GET TO KNOW GOIÁS",
-  "clubHeaderTagline": "THE BIGGEST IN THE CENTRAL-WEST",
+  "clubEntrySubtitle": "History, titles, squad and identity of {clubName}.",
+  "@clubEntrySubtitle": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
+  "clubEntryCta": "GET TO KNOW {clubName}",
+  "@clubEntryCta": {
+    "placeholders": {
+      "clubName": {
+        "type": "String"
+      }
+    }
+  },
   "membershipLoadError": "Couldn't load Sócio Esmeralda.",
   "membershipPlansTitle": "PLANS",
   "membershipSector": "Sector {sector}",

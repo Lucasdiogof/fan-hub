@@ -27,7 +27,8 @@ class ClubPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final content = sl<ClubConfig>().institutionalContent;
+    final clubConfig = sl<ClubConfig>();
+    final content = clubConfig.institutionalContent;
     final hasTitlesContent =
         content.titles.isNotEmpty || content.historicalCampaigns.isNotEmpty;
     final totalTitles = content.titles.fold<int>(
@@ -55,7 +56,11 @@ class ClubPage extends StatelessWidget {
                 _ClubBigCard(
                   icon: Icons.auto_stories_outlined,
                   title: context.l10n.clubSectionHistory,
-                  subtitle: context.l10n.clubHistorySubtitle,
+                  subtitle: clubConfig.identity.foundingYear == null
+                      ? context.l10n.clubSectionHistory
+                      : context.l10n.clubHistorySubtitle(
+                          clubConfig.identity.foundingYear.toString(),
+                        ),
                   onTap: () => context.push('/clube/historia'),
                 ),
                 const SizedBox(height: AppSpacing.md),
@@ -115,7 +120,9 @@ class ClubPage extends StatelessWidget {
                 _ClubBigCard(
                   icon: Icons.handshake_outlined,
                   title: context.l10n.clubSectionPartners,
-                  subtitle: context.l10n.clubPartnersSubtitle,
+                  subtitle: context.l10n.clubPartnersSubtitle(
+                    clubConfig.identity.shortName,
+                  ),
                   onTap: () => context.push('/partners'),
                 ),
               ],

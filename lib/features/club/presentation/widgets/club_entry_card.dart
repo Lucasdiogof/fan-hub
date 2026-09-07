@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -14,6 +16,7 @@ class ClubEntryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final clubName = sl<ClubConfig>().identity.shortName;
     return Material(
       color: colors.surface,
       borderRadius: BorderRadius.circular(AppRadius.banner),
@@ -45,7 +48,7 @@ class ClubEntryCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      context.l10n.clubEntrySubtitle,
+                      context.l10n.clubEntrySubtitle(clubName),
                       style: TextStyle(
                         fontSize: 12.5,
                         color: colors.textSecondary,
@@ -56,7 +59,7 @@ class ClubEntryCard extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          context.l10n.clubEntryCta,
+                          context.l10n.clubEntryCta(clubName).toUpperCase(),
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w800,

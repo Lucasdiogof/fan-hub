@@ -3174,14 +3174,14 @@ abstract class AppLocalizations {
   /// No description provided for @partnersTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Parceiros do Goiás'**
-  String get partnersTitle;
+  /// **'Parceiros do {clubName}'**
+  String partnersTitle(String clubName);
 
   /// No description provided for @partnersSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Marcas que caminham junto com o Verdão.'**
-  String get partnersSubtitle;
+  /// **'Marcas que caminham junto com o {clubName}.'**
+  String partnersSubtitle(String clubName);
 
   /// No description provided for @partnersOpenInstagram.
   ///
@@ -4716,13 +4716,13 @@ abstract class AppLocalizations {
   /// No description provided for @clubHistorySubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'De 1943 até os dias de hoje.'**
-  String get clubHistorySubtitle;
+  /// **'De {year} até os dias de hoje.'**
+  String clubHistorySubtitle(String year);
 
   /// No description provided for @clubSquadSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Os jogadores que vestem o manto.'**
+  /// **'Os jogadores que vestem a camisa.'**
   String get clubSquadSubtitle;
 
   /// No description provided for @clubTitlesSubtitle.
@@ -4734,8 +4734,8 @@ abstract class AppLocalizations {
   /// No description provided for @clubPartnersSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Quem caminha junto com o Verdão.'**
-  String get clubPartnersSubtitle;
+  /// **'Quem caminha junto com o {clubName}.'**
+  String clubPartnersSubtitle(String clubName);
 
   /// No description provided for @clubSongsSubtitle.
   ///
@@ -4854,20 +4854,14 @@ abstract class AppLocalizations {
   /// No description provided for @clubEntrySubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'História, títulos, elenco e identidade do Verdão.'**
-  String get clubEntrySubtitle;
+  /// **'História, títulos, elenco e identidade do {clubName}.'**
+  String clubEntrySubtitle(String clubName);
 
   /// No description provided for @clubEntryCta.
   ///
   /// In pt, this message translates to:
-  /// **'CONHECER O GOIÁS'**
-  String get clubEntryCta;
-
-  /// No description provided for @clubHeaderTagline.
-  ///
-  /// In pt, this message translates to:
-  /// **'O MAIOR DO CENTRO-OESTE'**
-  String get clubHeaderTagline;
+  /// **'CONHECER O {clubName}'**
+  String clubEntryCta(String clubName);
 
   /// No description provided for @membershipLoadError.
   ///

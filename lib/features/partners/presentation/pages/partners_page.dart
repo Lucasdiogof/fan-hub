@@ -14,7 +14,8 @@ class PartnersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final partners = sl<ClubConfig>().institutionalContent.partners;
+    final clubConfig = sl<ClubConfig>();
+    final partners = clubConfig.institutionalContent.partners;
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -40,7 +41,9 @@ class PartnersPage extends StatelessWidget {
                       ),
                       const SizedBox(height: AppSpacing.lg),
                       Text(
-                        context.l10n.partnersTitle,
+                        context.l10n.partnersTitle(
+                          clubConfig.identity.shortName,
+                        ),
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w800,
@@ -49,7 +52,9 @@ class PartnersPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        context.l10n.partnersSubtitle,
+                        context.l10n.partnersSubtitle(
+                          clubConfig.identity.shortName,
+                        ),
                         style: TextStyle(
                           fontSize: 14,
                           color: colors.textSecondary,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -26,9 +27,7 @@ void main() {
     ),
   );
 
-  testWidgets('Goiás -> crest do card é o crestBadge do Goiás', (
-    tester,
-  ) async {
+  testWidgets('Goiás -> crest do card é o crestBadge do Goiás', (tester) async {
     sl.registerSingleton<ClubConfig>(goiasClubConfig);
     await tester.pumpWidget(wrap());
 
@@ -54,6 +53,19 @@ void main() {
         (image.image as AssetImage).assetName,
         isNot(goiasClubConfig.assets.crestBadge),
       );
+    },
+  );
+
+  testWidgets(
+    'Bragantino (clube real) -> CTA/subtítulo mostram "Bragantino", nunca '
+    '"Goiás" (regressão do vazamento achado em 2026-09-07)',
+    (tester) async {
+      sl.registerSingleton<ClubConfig>(bragantinoClubConfig);
+      await tester.pumpWidget(wrap());
+
+      expect(find.textContaining('Bragantino'), findsWidgets);
+      expect(find.textContaining('Goiás', skipOffstage: false), findsNothing);
+      expect(find.textContaining('GOIÁS', skipOffstage: false), findsNothing);
     },
   );
 }

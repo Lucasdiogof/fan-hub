@@ -29,6 +29,12 @@ const goiasClubConfig = ClubConfig(
     shortName: 'Goiás',
     fanDemonym: 'Esmeraldino',
     canonicalClubId: '4c16340d-300c-5ab2-903f-17519db9b146',
+    headerTagline: {
+      'pt': 'O MAIOR DO CENTRO-OESTE',
+      'en': 'THE BIGGEST IN THE CENTRAL-WEST',
+      'es': 'EL MAYOR DEL CENTRO-OESTE',
+    },
+    foundingYear: 1943,
   ),
   branding: ClubBranding(light: AppColors.light, dark: AppColors.dark),
   assets: ClubAssets(

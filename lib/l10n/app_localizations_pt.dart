@@ -1763,10 +1763,14 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get partnersTitle => 'Parceiros do Goiás';
+  String partnersTitle(String clubName) {
+    return 'Parceiros do $clubName';
+  }
 
   @override
-  String get partnersSubtitle => 'Marcas que caminham junto com o Verdão.';
+  String partnersSubtitle(String clubName) {
+    return 'Marcas que caminham junto com o $clubName.';
+  }
 
   @override
   String partnersOpenInstagram(String name) {
@@ -2640,10 +2644,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get clubSectionSongs => 'Hino & Músicas';
 
   @override
-  String get clubHistorySubtitle => 'De 1943 até os dias de hoje.';
+  String clubHistorySubtitle(String year) {
+    return 'De $year até os dias de hoje.';
+  }
 
   @override
-  String get clubSquadSubtitle => 'Os jogadores que vestem o manto.';
+  String get clubSquadSubtitle => 'Os jogadores que vestem a camisa.';
 
   @override
   String clubTitlesSubtitle(int count) {
@@ -2651,7 +2657,9 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get clubPartnersSubtitle => 'Quem caminha junto com o Verdão.';
+  String clubPartnersSubtitle(String clubName) {
+    return 'Quem caminha junto com o $clubName.';
+  }
 
   @override
   String get clubSongsSubtitle => 'Hino e músicas que embalam a torcida.';
@@ -2725,14 +2733,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get clubEntryTitle => 'O CLUBE';
 
   @override
-  String get clubEntrySubtitle =>
-      'História, títulos, elenco e identidade do Verdão.';
+  String clubEntrySubtitle(String clubName) {
+    return 'História, títulos, elenco e identidade do $clubName.';
+  }
 
   @override
-  String get clubEntryCta => 'CONHECER O GOIÁS';
-
-  @override
-  String get clubHeaderTagline => 'O MAIOR DO CENTRO-OESTE';
+  String clubEntryCta(String clubName) {
+    return 'CONHECER O $clubName';
+  }
 
   @override
   String get membershipLoadError =>
