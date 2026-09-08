@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -454,7 +455,8 @@ class _ReferenceRow extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Goiás • ${affinity.reference.period}',
+                    '${sl<ClubConfig>().identity.shortName} • '
+                    '${affinity.reference.period}',
                     style: const TextStyle(
                       color: Color(0xFF6B6F6D),
                       fontSize: 12,

@@ -1,6 +1,6 @@
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
-import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_engine.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_reference_sets.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_questions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -17,7 +17,7 @@ class SupabaseTacticalIdentityRepository implements TacticalIdentityRepository {
 
   final SupabaseClient _client;
   final ClubConfig _clubConfig;
-  static const _engine = TacticalIdentityEngine();
+  late final _engine = tacticalIdentityEngineForClub(_clubConfig);
 
   String get _uid => _client.auth.currentUser!.id;
   String get _clubId => _clubConfig.identity.canonicalClubId;

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_engine.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_reference_sets.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
@@ -21,7 +23,7 @@ class TacticalIdentityProcessingPage extends StatefulWidget {
 
 class _TacticalIdentityProcessingPageState
     extends State<TacticalIdentityProcessingPage> {
-  static const _engine = TacticalIdentityEngine();
+  late final _engine = tacticalIdentityEngineForClub(sl<ClubConfig>());
 
   @override
   void initState() {

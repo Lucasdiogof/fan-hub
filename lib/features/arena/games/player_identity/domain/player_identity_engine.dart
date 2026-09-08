@@ -3,15 +3,26 @@ import 'dart:math' as math;
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_archetype_descriptions.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_questions.dart';
-import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_references.dart';
 
-/// Toda a matemática do jogo "Que craque esmeraldino é você?" — funções
-/// puras, sem estado, sem I/O (mesmo espírito de
-/// `tactical_identity_engine.dart`). O resultado SEMPRE é recalculado
-/// percorrendo as 10 respostas, nunca um score incremental acumulado —
-/// voltar e trocar uma resposta nunca duplica nada.
+/// Toda a matemática do jogo "Que craque é você?" — funções puras, sem
+/// estado, sem I/O (mesmo espírito de `tactical_identity_engine.dart`). O
+/// resultado SEMPRE é recalculado percorrendo as 10 respostas, nunca um
+/// score incremental acumulado — voltar e trocar uma resposta nunca
+/// duplica nada.
+///
+/// [references] é o ÚNICO dado que varia por clube (2026-09-08, arquitetura
+/// multiclube) — perguntas, fórmula, dimensões e curva de afinidade são os
+/// MESMOS pra qualquer clube, nunca alterados aqui. Ver
+/// `player_identity_reference_sets.dart` pra como resolver o dataset certo
+/// a partir do `ClubConfig` ativo; para o Goiás o valor é
+/// `playerIdentityReferences`, byte a byte o mesmo dataset de sempre.
 class PlayerIdentityEngine {
-  const PlayerIdentityEngine();
+  // Não é `const`: `_referenceStats` é `late final` (depende de [references],
+  // que varia por clube), e Dart não permite `late final` de instância numa
+  // classe com construtor `const`.
+  PlayerIdentityEngine(this.references);
+
+  final List<PlayerIdentityReference> references;
 
   /// Piso/teto dos atributos exibidos — alargado a pedido (era 45–98,
   /// espalhava pouco as barras de um mesmo usuário entre si). Continua
@@ -35,25 +46,25 @@ class PlayerIdentityEngine {
   /// resultados reais cai.
   static const _affinityK = 0.62;
 
-  /// Média/desvio padrão de cada dimensão calculados a partir das 21
-  /// referências — usados pra padronizar (z-score) os vetores antes de
-  /// medir distância. Sem isso, uma dimensão naturalmente pouco variável
-  /// entre os jogadores de referência (ex.: intensidade, historicamente
-  /// mais parecida no elenco) pesaria MENOS na comparação do que uma
-  /// dimensão naturalmente dispersa (ex.: criatividade) só por causa da
-  /// escala — não porque seja de fato menos relevante pro estilo de
-  /// ninguém. `late final` (não `const`): depende de percorrer a lista de
-  /// referências, calculado uma vez, na primeira leitura.
-  static final Map<PlayerIdentityDimension, (double mean, double stdDev)>
+  /// Média/desvio padrão de cada dimensão calculados a partir das
+  /// referências do CLUBE ATIVO — usados pra padronizar (z-score) os
+  /// vetores antes de medir distância. Sem isso, uma dimensão naturalmente
+  /// pouco variável entre os jogadores de referência (ex.: intensidade,
+  /// historicamente mais parecida no elenco) pesaria MENOS na comparação do
+  /// que uma dimensão naturalmente dispersa (ex.: criatividade) só por
+  /// causa da escala — não porque seja de fato menos relevante pro estilo
+  /// de ninguém. `late final` de INSTÂNCIA (não mais `static`, desde a
+  /// multiclube): cada clube tem seu próprio dataset, então as estatísticas
+  /// não podem ser compartilhadas entre instâncias com [references]
+  /// diferentes — continua calculado uma vez só, na primeira leitura desta
+  /// instância.
+  late final Map<PlayerIdentityDimension, (double mean, double stdDev)>
   _referenceStats = _computeReferenceStats();
 
-  static Map<PlayerIdentityDimension, (double, double)>
-  _computeReferenceStats() {
+  Map<PlayerIdentityDimension, (double, double)> _computeReferenceStats() {
     final stats = <PlayerIdentityDimension, (double, double)>{};
     for (final d in PlayerIdentityDimension.values) {
-      final values = playerIdentityReferences
-          .map((r) => r[d].toDouble())
-          .toList();
+      final values = references.map((r) => r[d].toDouble()).toList();
       final mean = values.reduce((a, b) => a + b) / values.length;
       final variance =
           values.map((v) => (v - mean) * (v - mean)).reduce((a, b) => a + b) /
@@ -153,11 +164,12 @@ class PlayerIdentityEngine {
     return ((raw * 10).round() / 10).clamp(_affinityFloor, _affinityCeiling);
   }
 
-  /// As 19 referências ordenadas do mais próximo pro mais distante do vetor
-  /// do usuário — sempre as 19, quem decide "top 3" é [closestReferences].
+  /// Todas as referências do clube ativo, ordenadas do mais próximo pro
+  /// mais distante do vetor do usuário — sempre todas elas, quem decide
+  /// "top 3" é [closestReferences].
   List<PlayerIdentityAffinity> rankReferences(PlayerIdentityAttributes attributes) {
     final ranked =
-        playerIdentityReferences.map((reference) {
+        references.map((reference) {
           final distance = distanceTo(attributes, reference);
           return PlayerIdentityAffinity(
             reference: reference,

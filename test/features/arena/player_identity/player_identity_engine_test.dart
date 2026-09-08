@@ -24,7 +24,7 @@ PlayerIdentityOption _optionFor(PlayerIdentityDimension dimension) {
 }
 
 void main() {
-  const engine = PlayerIdentityEngine();
+  final engine = PlayerIdentityEngine(playerIdentityReferences);
 
   group('dataset integrity', () {
     test('exactly 21 player references', () {

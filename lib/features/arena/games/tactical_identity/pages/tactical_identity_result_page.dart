@@ -2,13 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/cubit/tactical_identity_cubit.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_identity_repository.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_archetype_descriptions.dart';
-import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_engine.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_reference_sets.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_bipolar_bar.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_coach_detail_sheet.dart';
@@ -35,7 +36,7 @@ class TacticalIdentityResultPage extends StatefulWidget {
 
 class _TacticalIdentityResultPageState
     extends State<TacticalIdentityResultPage> {
-  static const _engine = TacticalIdentityEngine();
+  late final _engine = tacticalIdentityEngineForClub(sl<ClubConfig>());
   final _shareKey = GlobalKey();
 
   late final _rankedCoaches = _engine.rankCoaches(
@@ -72,8 +73,9 @@ class _TacticalIdentityResultPageState
         '${result.pragmatic}% ${l10n.tacticalAxisPragmatic}',
       );
     if (top != null) {
+      final clubName = sl<ClubConfig>().identity.shortName;
       buffer.writeln(
-        '${top.coach.coach} • Goiás ${top.coach.period} · '
+        '${top.coach.coach} • $clubName ${top.coach.period} · '
         '${l10n.tacticalIdentityAffinityLabel(top.affinity.toStringAsFixed(1))}',
       );
     }
@@ -406,7 +408,7 @@ class _ReferencesSection extends StatelessWidget {
             ),
           ),
           Text(
-            'Goiás • ${top.coach.period}',
+            '${sl<ClubConfig>().identity.shortName} • ${top.coach.period}',
             style: const TextStyle(
               color: Color(0xFF6B6F6D),
               fontSize: 12.5,
@@ -462,7 +464,8 @@ class _OtherReferenceRow extends StatelessWidget {
                 ),
               ),
               Text(
-                'Goiás • ${affinity.coach.period}',
+                '${sl<ClubConfig>().identity.shortName} • '
+                '${affinity.coach.period}',
                 style: const TextStyle(
                   color: Color(0xFF6B6F6D),
                   fontSize: 11.5,
