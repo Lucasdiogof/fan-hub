@@ -3971,4 +3971,206 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get releaseGateUpdateButton => 'Update now';
+
+  @override
+  String tacticalQ01(String club) {
+    return 'The opposition presses your build-up and shuts down the short passes. What does your $club do?';
+  }
+
+  @override
+  String get tacticalQ01A =>
+      'Keep playing out short, drawing the press in until the free man appears.';
+
+  @override
+  String get tacticalQ01B =>
+      'Try to play out short, but the moment the press bites, go for the space in behind.';
+
+  @override
+  String get tacticalQ01C =>
+      'Go straight to the striker or the channel and set the team up to win the second ball.';
+
+  @override
+  String get tacticalQ01D =>
+      'Find where their press is weakest and build out through there, short or long.';
+
+  @override
+  String get tacticalQ02 =>
+      'Your side wins the ball in midfield with the opposition still out of shape. What is the first thought?';
+
+  @override
+  String get tacticalQ02A =>
+      'Keep the ball, bring the team up and build the attack.';
+
+  @override
+  String get tacticalQ02B =>
+      'Look for the forward pass if the advantage is on; if not, keep possession.';
+
+  @override
+  String get tacticalQ02C =>
+      'Go at once and try to reach goal in a handful of passes.';
+
+  @override
+  String get tacticalQ02D =>
+      'Decide by where their players are and who has the extra man in that moment.';
+
+  @override
+  String tacticalQ03(String club) {
+    return '$club lead 1-0 away from home with 75 minutes gone.';
+  }
+
+  @override
+  String get tacticalQ03A =>
+      'Change nothing. If the plan built the lead, the plan stays.';
+
+  @override
+  String get tacticalQ03B =>
+      'Take control with more of the ball and make them chase it.';
+
+  @override
+  String get tacticalQ03C =>
+      'Close the spaces tighter and set up transitions to kill the game.';
+
+  @override
+  String get tacticalQ03D =>
+      'Keep pressing for the second goal before they grow into it.';
+
+  @override
+  String get tacticalQ04 =>
+      'They have parked two banks close to their own box. How do you break it down?';
+
+  @override
+  String get tacticalQ04A =>
+      'Circulate patiently until the right gap opens up.';
+
+  @override
+  String get tacticalQ04B =>
+      'Shift positions and create an overload between the lines or out wide.';
+
+  @override
+  String get tacticalQ04C =>
+      'Raise the tempo — crosses, runs in behind and second balls.';
+
+  @override
+  String get tacticalQ04D =>
+      'Put more bodies in the box and switch the route of the attack as they react.';
+
+  @override
+  String get tacticalQ05 =>
+      'You are away to a side that is clearly better on the ball.';
+
+  @override
+  String get tacticalQ05A =>
+      'Stick to control and playing out. That is how this team plays.';
+
+  @override
+  String get tacticalQ05B =>
+      'Still try to have the ball, but adjust the press and the shape to them.';
+
+  @override
+  String get tacticalQ05C =>
+      'Accept less possession, protect the spaces and live off the transition.';
+
+  @override
+  String get tacticalQ05D => 'Press high and go at them quickly, risk and all.';
+
+  @override
+  String get tacticalQ06 =>
+      'Your best player wins matches but barely tracks back. What do you do?';
+
+  @override
+  String get tacticalQ06A =>
+      'The model comes first. No defensive work, no place in the side.';
+
+  @override
+  String get tacticalQ06B =>
+      'Change his role so the talent stays without unbalancing the team.';
+
+  @override
+  String get tacticalQ06C =>
+      'Reorganise the others to cover for him and keep him high up the pitch.';
+
+  @override
+  String get tacticalQ06D =>
+      'Give him licence. Special players are handled in a special way.';
+
+  @override
+  String tacticalQ07(String club) {
+    return 'Half-time. $club are 1-0 down, but playing well and creating chances.';
+  }
+
+  @override
+  String get tacticalQ07A =>
+      'Leave it. The plan is working and the goal will come.';
+
+  @override
+  String get tacticalQ07B =>
+      'Small positional tweaks, without giving up the original idea.';
+
+  @override
+  String get tacticalQ07C =>
+      'Add depth or another forward and start getting there quicker.';
+
+  @override
+  String get tacticalQ07D =>
+      'Move the ball faster and put more players between the lines.';
+
+  @override
+  String get tacticalQ08 =>
+      'Your team loses the ball near the opposition box. What reaction do you want?';
+
+  @override
+  String get tacticalQ08A =>
+      'Press instantly and win it back right there, whoever the opponent is.';
+
+  @override
+  String get tacticalQ08B =>
+      'Press if there are enough bodies close by; otherwise drop and reset.';
+
+  @override
+  String get tacticalQ08C =>
+      'Get the block back in shape first and shut the middle of the pitch.';
+
+  @override
+  String get tacticalQ08D =>
+      'Break up the transition so they never get to run at you.';
+
+  @override
+  String tacticalQ09(String club) {
+    return 'Ten minutes left and $club need a goal.';
+  }
+
+  @override
+  String get tacticalQ09A => 'Keep building patiently. Chaos is not a plan.';
+
+  @override
+  String get tacticalQ09B =>
+      'Bring on more attacking players, but keep the ball down and the shape intact.';
+
+  @override
+  String get tacticalQ09C =>
+      'Camp in their half, go more direct and attack first and second balls.';
+
+  @override
+  String get tacticalQ09D =>
+      'Change the shape and mix short and direct depending on what they give you.';
+
+  @override
+  String get tacticalQ10 =>
+      'Which line best describes the way you think about football?';
+
+  @override
+  String get tacticalQ10A =>
+      'Our way of playing comes first; the opponent comes after.';
+
+  @override
+  String get tacticalQ10B =>
+      'The principles hold, but the shape and the plan can change.';
+
+  @override
+  String get tacticalQ10C =>
+      'Reaching the goal quickly is worth more than having the ball for its own sake.';
+
+  @override
+  String get tacticalQ10D =>
+      'The best football is the one that suits our players and hurts their weaknesses.';
 }

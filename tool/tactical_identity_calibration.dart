@@ -26,7 +26,7 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_questions.dart';
 
-const _engine = TacticalIdentityEngine();
+final _engine = TacticalIdentityEngine(tacticalCoachReferences);
 const _gridSize = 5;
 
 void main(List<String> args) {

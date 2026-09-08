@@ -3987,4 +3987,207 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get releaseGateUpdateButton => 'Atualizar agora';
+
+  @override
+  String tacticalQ01(String club) {
+    return 'O adversário pressiona sua saída de bola e fecha os passes curtos. O que seu $club faz?';
+  }
+
+  @override
+  String get tacticalQ01A =>
+      'Continua saindo curto, atraindo a pressão até encontrar o homem livre.';
+
+  @override
+  String get tacticalQ01B =>
+      'Tenta sair curto, mas se a pressão encaixar busca imediatamente o espaço nas costas.';
+
+  @override
+  String get tacticalQ01C =>
+      'Aciona o atacante ou o corredor diretamente e prepara a equipe para ganhar a segunda bola.';
+
+  @override
+  String get tacticalQ01D =>
+      'Identifica onde a pressão rival é mais vulnerável e escolhe a saída por ali, curta ou longa.';
+
+  @override
+  String get tacticalQ02 =>
+      'Seu time recupera a bola no meio-campo com o adversário ainda desorganizado. Qual é a primeira ideia?';
+
+  @override
+  String get tacticalQ02A =>
+      'Retém a bola, aproxima o time e organiza o ataque.';
+
+  @override
+  String get tacticalQ02B =>
+      'Procura o passe para frente se houver vantagem; se não houver, mantém a posse.';
+
+  @override
+  String get tacticalQ02C =>
+      'Acelera imediatamente e tenta chegar ao gol em poucos passes.';
+
+  @override
+  String get tacticalQ02D =>
+      'Decide pela posição dos adversários e pela superioridade numérica daquele lance.';
+
+  @override
+  String tacticalQ03(String club) {
+    return 'O $club vence por 1 a 0 fora de casa aos 75 minutos.';
+  }
+
+  @override
+  String get tacticalQ03A =>
+      'Não muda o comportamento. Se o plano trouxe a vantagem, continua igual.';
+
+  @override
+  String get tacticalQ03B =>
+      'Passa a controlar o jogo com mais posse e faz o adversário correr atrás da bola.';
+
+  @override
+  String get tacticalQ03C =>
+      'Fecha melhor os espaços e prepara transições para matar o jogo.';
+
+  @override
+  String get tacticalQ03D =>
+      'Continua pressionando e buscando o segundo gol antes que o rival cresça.';
+
+  @override
+  String get tacticalQ04 =>
+      'O rival estacionou duas linhas perto da própria área. Como furar o bloqueio?';
+
+  @override
+  String get tacticalQ04A => 'Circula pacientemente até surgir o espaço certo.';
+
+  @override
+  String get tacticalQ04B =>
+      'Muda posicionamentos e cria superioridade entre linhas ou pelos lados.';
+
+  @override
+  String get tacticalQ04C =>
+      'Aumenta velocidade, cruzamentos, profundidade e disputa de rebotes.';
+
+  @override
+  String get tacticalQ04D =>
+      'Coloca mais presença na área e muda a rota do ataque conforme a defesa reage.';
+
+  @override
+  String get tacticalQ05 =>
+      'Você vai enfrentar fora de casa um adversário claramente superior tecnicamente.';
+
+  @override
+  String get tacticalQ05A =>
+      'Mantém sua proposta de controle e saída com bola; é assim que o time joga.';
+
+  @override
+  String get tacticalQ05B =>
+      'Continua tentando ter a bola, mas ajusta pressão e posicionamento ao rival.';
+
+  @override
+  String get tacticalQ05C =>
+      'Aceita ter menos posse, protege os espaços e prioriza a transição.';
+
+  @override
+  String get tacticalQ05D =>
+      'Pressiona alto e procura atacar rapidamente, mesmo assumindo risco.';
+
+  @override
+  String get tacticalQ06 =>
+      'Seu melhor jogador decide partidas, mas participa pouco da recomposição. O que fazer?';
+
+  @override
+  String get tacticalQ06A =>
+      'O modelo vem primeiro; se não cumprir a função, pode perder a vaga.';
+
+  @override
+  String get tacticalQ06B =>
+      'Muda a função dele para manter o talento sem desequilibrar o coletivo.';
+
+  @override
+  String get tacticalQ06C =>
+      'Reorganiza os companheiros para compensar e preserva o craque em zonas ofensivas.';
+
+  @override
+  String get tacticalQ06D =>
+      'Dá liberdade. Jogadores especiais precisam ser tratados de maneira especial.';
+
+  @override
+  String tacticalQ07(String club) {
+    return 'Intervalo. O $club perde por 1 a 0, mas está jogando bem e criando chances.';
+  }
+
+  @override
+  String get tacticalQ07A =>
+      'Não mexe. O plano funciona e o gol será consequência.';
+
+  @override
+  String get tacticalQ07B =>
+      'Faz pequenos ajustes de posicionamento sem abandonar a ideia inicial.';
+
+  @override
+  String get tacticalQ07C =>
+      'Coloca mais profundidade ou outro atacante e passa a chegar mais rápido.';
+
+  @override
+  String get tacticalQ07D =>
+      'Aumenta a velocidade da circulação e coloca mais jogadores entre as linhas.';
+
+  @override
+  String get tacticalQ08 =>
+      'Seu time perde a bola perto da área adversária. Qual reação você espera?';
+
+  @override
+  String get tacticalQ08A =>
+      'Pressão imediata para recuperar ali mesmo, independentemente do rival.';
+
+  @override
+  String get tacticalQ08B =>
+      'Pressiona se houver jogadores suficientes perto; caso contrário, recompõe.';
+
+  @override
+  String get tacticalQ08C =>
+      'Primeiro reorganiza o bloco e fecha o centro do campo.';
+
+  @override
+  String get tacticalQ08D =>
+      'Interrompe a transição e impede que o adversário consiga acelerar.';
+
+  @override
+  String tacticalQ09(String club) {
+    return 'Faltam dez minutos e o $club precisa de um gol.';
+  }
+
+  @override
+  String get tacticalQ09A =>
+      'Mantém a construção paciente. Desorganização não é solução.';
+
+  @override
+  String get tacticalQ09B =>
+      'Coloca jogadores mais ofensivos, mas mantém a bola no chão e a estrutura.';
+
+  @override
+  String get tacticalQ09C =>
+      'Ocupa o campo adversário, joga mais direto e ataca primeira e segunda bolas.';
+
+  @override
+  String get tacticalQ09D =>
+      'Muda o desenho e alterna ataques curtos e diretos conforme a defesa oferecer espaço.';
+
+  @override
+  String get tacticalQ10 =>
+      'Qual frase mais representa sua maneira de pensar futebol?';
+
+  @override
+  String get tacticalQ10A =>
+      'Primeiro vem a nossa maneira de jogar; depois pensamos no adversário.';
+
+  @override
+  String get tacticalQ10B =>
+      'Os princípios permanecem, mas esquema e estratégia podem mudar.';
+
+  @override
+  String get tacticalQ10C =>
+      'Chegar ao gol rapidamente vale mais do que ter a bola por ter.';
+
+  @override
+  String get tacticalQ10D =>
+      'O melhor futebol é o que potencializa nossas peças e ataca as fraquezas do rival.';
 }

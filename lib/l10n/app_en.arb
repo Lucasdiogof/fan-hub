@@ -1392,5 +1392,87 @@
   "storeValZipInvalid": "Invalid ZIP code.",
   "releaseGateTitle": "Update required",
   "releaseGateMessage": "This version of the app is no longer supported. Update to continue.",
-  "releaseGateUpdateButton": "Update now"
+  "releaseGateUpdateButton": "Update now",
+  "tacticalQ01": "The opposition presses your build-up and shuts down the short passes. What does your {club} do?",
+  "@tacticalQ01": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ01A": "Keep playing out short, drawing the press in until the free man appears.",
+  "tacticalQ01B": "Try to play out short, but the moment the press bites, go for the space in behind.",
+  "tacticalQ01C": "Go straight to the striker or the channel and set the team up to win the second ball.",
+  "tacticalQ01D": "Find where their press is weakest and build out through there, short or long.",
+  "tacticalQ02": "Your side wins the ball in midfield with the opposition still out of shape. What is the first thought?",
+  "tacticalQ02A": "Keep the ball, bring the team up and build the attack.",
+  "tacticalQ02B": "Look for the forward pass if the advantage is on; if not, keep possession.",
+  "tacticalQ02C": "Go at once and try to reach goal in a handful of passes.",
+  "tacticalQ02D": "Decide by where their players are and who has the extra man in that moment.",
+  "tacticalQ03": "{club} lead 1-0 away from home with 75 minutes gone.",
+  "@tacticalQ03": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ03A": "Change nothing. If the plan built the lead, the plan stays.",
+  "tacticalQ03B": "Take control with more of the ball and make them chase it.",
+  "tacticalQ03C": "Close the spaces tighter and set up transitions to kill the game.",
+  "tacticalQ03D": "Keep pressing for the second goal before they grow into it.",
+  "tacticalQ04": "They have parked two banks close to their own box. How do you break it down?",
+  "tacticalQ04A": "Circulate patiently until the right gap opens up.",
+  "tacticalQ04B": "Shift positions and create an overload between the lines or out wide.",
+  "tacticalQ04C": "Raise the tempo — crosses, runs in behind and second balls.",
+  "tacticalQ04D": "Put more bodies in the box and switch the route of the attack as they react.",
+  "tacticalQ05": "You are away to a side that is clearly better on the ball.",
+  "tacticalQ05A": "Stick to control and playing out. That is how this team plays.",
+  "tacticalQ05B": "Still try to have the ball, but adjust the press and the shape to them.",
+  "tacticalQ05C": "Accept less possession, protect the spaces and live off the transition.",
+  "tacticalQ05D": "Press high and go at them quickly, risk and all.",
+  "tacticalQ06": "Your best player wins matches but barely tracks back. What do you do?",
+  "tacticalQ06A": "The model comes first. No defensive work, no place in the side.",
+  "tacticalQ06B": "Change his role so the talent stays without unbalancing the team.",
+  "tacticalQ06C": "Reorganise the others to cover for him and keep him high up the pitch.",
+  "tacticalQ06D": "Give him licence. Special players are handled in a special way.",
+  "tacticalQ07": "Half-time. {club} are 1-0 down, but playing well and creating chances.",
+  "@tacticalQ07": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ07A": "Leave it. The plan is working and the goal will come.",
+  "tacticalQ07B": "Small positional tweaks, without giving up the original idea.",
+  "tacticalQ07C": "Add depth or another forward and start getting there quicker.",
+  "tacticalQ07D": "Move the ball faster and put more players between the lines.",
+  "tacticalQ08": "Your team loses the ball near the opposition box. What reaction do you want?",
+  "tacticalQ08A": "Press instantly and win it back right there, whoever the opponent is.",
+  "tacticalQ08B": "Press if there are enough bodies close by; otherwise drop and reset.",
+  "tacticalQ08C": "Get the block back in shape first and shut the middle of the pitch.",
+  "tacticalQ08D": "Break up the transition so they never get to run at you.",
+  "tacticalQ09": "Ten minutes left and {club} need a goal.",
+  "@tacticalQ09": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ09A": "Keep building patiently. Chaos is not a plan.",
+  "tacticalQ09B": "Bring on more attacking players, but keep the ball down and the shape intact.",
+  "tacticalQ09C": "Camp in their half, go more direct and attack first and second balls.",
+  "tacticalQ09D": "Change the shape and mix short and direct depending on what they give you.",
+  "tacticalQ10": "Which line best describes the way you think about football?",
+  "tacticalQ10A": "Our way of playing comes first; the opponent comes after.",
+  "tacticalQ10B": "The principles hold, but the shape and the plan can change.",
+  "tacticalQ10C": "Reaching the goal quickly is worth more than having the ball for its own sake.",
+  "tacticalQ10D": "The best football is the one that suits our players and hurts their weaknesses."
 }
