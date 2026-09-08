@@ -162,7 +162,7 @@ void main() {
     );
 
     test(
-      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social, reais desde 2026-09-08)',
+      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social e os 2 jogos de identidade, reais desde 2026-09-08)',
       () {
         final c = bragantinoClubConfig.capabilities;
         expect(c.hasMembership, isFalse);
@@ -177,7 +177,16 @@ void main() {
         // derruba o feed inteiro (`Promise.allSettled` por provider).
         expect(c.hasNews, isTrue);
         expect(c.hasSocial, isTrue);
-        expect(c.enabledArenaGames, isEmpty);
+        // player_identity e tactical_identity: datasets próprios do
+        // Bragantino auditados, simulados e corrigidos (ver
+        // `bragantino_player_identity_references.dart` e
+        // `bragantino_tactical_coach_references.dart`) — ligados em
+        // 2026-09-08. Os outros 4 jogos de Arena seguem sem dataset
+        // próprio, por isso de fora.
+        expect(
+          c.enabledArenaGames,
+          equals({'player_identity', 'tactical_identity'}),
+        );
       },
     );
 

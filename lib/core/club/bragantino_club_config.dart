@@ -21,9 +21,12 @@ import 'package:goias_app/features/passport/data/bragantino_passport_content.dar
 // Red Bull Bragantino — 2ª entrada REAL do clubRegistry (onboarding M4).
 //
 // MÍNIMO viável pra COMPILAR/rodar o flavor `bragantino` no Fan Hub. TODAS as
-// capabilities começam FALSE e `enabledArenaGames` VAZIO — nenhuma feature do
-// Bragantino tem dado/conteúdo real ainda. NUNCA usa dado/asset do Goiás como
-// fallback.
+// capabilities começam FALSE — nenhuma feature do Bragantino tem
+// dado/conteúdo real ainda. NUNCA usa dado/asset do Goiás como fallback.
+// `enabledArenaGames` é a exceção: 'player_identity' e 'tactical_identity'
+// entraram em 2026-09-08 depois de auditoria completa (datasets revisados,
+// simulados e corrigidos — ver `bragantino_player_identity_references.dart`
+// e `bragantino_tactical_coach_references.dart` pro histórico da revisão).
 //
 // Os campos marcados PLACEHOLDER/TODO abaixo são DATA_GAP/ASSET_GAP reais que
 // precisam de dado oficial antes de ligar qualquer capability — ver
@@ -357,7 +360,7 @@ const bragantinoClubConfig = ClubConfig(
     // workerBaseUrl, nunca um sem o outro (invariante já coberto pelo
     // teste em resolve_active_club_test.dart).
     hasMatches: true,
-    enabledArenaGames: <String>{},
+    enabledArenaGames: {'player_identity', 'tactical_identity'},
     // Todas as 3 capabilities de comércio já estão false acima — o modo
     // não importa funcionalmente ainda, mas precisa de um valor (nenhum
     // campo de ClubCapabilities é opcional). demo é o valor seguro/real
