@@ -174,14 +174,42 @@ describe('Gate por env.CLUB_CODE — deploy do Bragantino', () => {
     expect(articleBody.article?.content.length).toBeGreaterThan(0);
   });
 
-  it('social do Bragantino sem secrets -> feed vazio (WAITING_EXTERNAL_SECRET), NUNCA posts do Goiás', async () => {
+  it('social do Bragantino sem secrets -> só X aparece (bundle estático, sem secret nenhum), NUNCA posts do Goiás', async () => {
+    // YouTube exige YOUTUBE_API_KEY, Instagram exige SOCIAL_FEED_KV — nenhum
+    // dos dois está presente em `bragantinoSocialEnv`. X é dado estático
+    // versionado no próprio Worker, então é o único que sobrevive.
     const feed = await handleSocialFeed(
       new Request('https://x/api/social/feed?club=bragantino'),
       bragantinoSocialEnv,
-    ).catch(() => null);
-    if (feed) {
-      const b = (await body(feed)) as { posts?: unknown[] };
-      expect(b?.posts ?? []).toEqual([]);
+    );
+    expect(feed.status).toBe(200);
+    const b = (await body(feed)) as { posts: { platform: string; authorHandle: string }[] };
+    expect(b.posts.length).toBeGreaterThan(0);
+    for (const post of b.posts) {
+      expect(post.platform).toBe('x');
+      expect(post.authorHandle).toBe('RedBullBraga');
+    }
+  });
+
+  it('X do Bragantino (RedBullBraga, dado real) -> ?platform=x devolve os posts reais, isolado do Goiás', async () => {
+    const feed = await handleSocialFeed(
+      new Request('https://x/api/social/feed?club=bragantino&platform=x'),
+      bragantinoSocialEnv,
+    );
+    expect(feed.status).toBe(200);
+    const b = (await body(feed)) as {
+      posts: { platform: string; authorHandle: string; authorName: string; permalink: string }[];
+    };
+    expect(b.posts.length).toBeGreaterThan(0);
+    for (const post of b.posts) {
+      expect(post.platform).toBe('x');
+      expect(post.authorHandle).toBe('RedBullBraga');
+      expect(post.authorName).toBe('Red Bull Bragantino');
+      expect(post.permalink).toContain('x.com/RedBullBraga');
+    }
+    const blob = JSON.stringify(b.posts).toLowerCase();
+    for (const termo of ['goiasoficial', 'goiás', 'esmeraldin']) {
+      expect(blob).not.toContain(termo);
     }
   });
 
@@ -203,7 +231,7 @@ describe('Gate por env.CLUB_CODE — deploy do Bragantino', () => {
     }
   });
 
-  it('feed agregado do Bragantino (sem ?platform=) funciona só com YouTube — Instagram/X ausentes não derrubam nada', async () => {
+  it('feed agregado do Bragantino: News/YouTube/X reais juntos — Instagram ausente não derruba nada', async () => {
     mockBragantinoYouTubeFetch();
     const envComYoutube: SocialEnv = { ...bragantinoSocialEnv, YOUTUBE_API_KEY: 'k' };
 
@@ -212,7 +240,13 @@ describe('Gate por env.CLUB_CODE — deploy do Bragantino', () => {
       envComYoutube,
     );
     expect(feed.status).toBe(200);
-    const b = (await body(feed)) as { posts: unknown[] };
-    expect(b.posts).toHaveLength(3);
+    const b = (await body(feed)) as { posts: { platform: string }[] };
+    const platforms = new Set(b.posts.map(p => p.platform));
+    // YouTube (3 do mock) + X (20 reais) = os dois presentes; Instagram
+    // nunca aparece (sem SOCIAL_FEED_KV neste env) e isso não derruba nada.
+    expect(platforms.has('youtube')).toBe(true);
+    expect(platforms.has('x')).toBe(true);
+    expect(platforms.has('instagram')).toBe(false);
+    expect(b.posts.length).toBeGreaterThan(3);
   });
 });

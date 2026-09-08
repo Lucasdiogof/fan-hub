@@ -5,6 +5,7 @@ import { YouTubeProvider } from './providers/youtube_provider';
 import { InstagramProvider } from './providers/instagram_provider';
 import { XProvider, type RawXPost } from './providers/x_provider';
 import goiasXPosts from './data/goias/x_posts.json';
+import bragantinoXPosts from './data/bragantino/x_posts.json';
 
 export interface SocialEnv extends Env {
   YOUTUBE_API_KEY?: string;
@@ -24,6 +25,8 @@ function xDataFor(dataFile: XDataFileId): RawXPost[] {
   switch (dataFile) {
     case 'goias':
       return goiasXPosts as RawXPost[];
+    case 'bragantino':
+      return bragantinoXPosts as RawXPost[];
   }
 }
 

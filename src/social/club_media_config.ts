@@ -24,7 +24,7 @@
 export type NewsParserId = 'goias' | 'bragantino';
 
 /** Qual arquivo de dados do X carregar (bundle estático por clube). */
-export type XDataFileId = 'goias';
+export type XDataFileId = 'goias' | 'bragantino';
 
 export interface ClubNewsConfig {
   /** Página de listagem raspada. */
@@ -98,7 +98,15 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
   // oficial, sem chave — ver `news/bragantino_parser.ts`); YouTube confirmado
   // em 2026-09-08 (canal oficial dado pelo usuário, `@MassaBrutaTV` — id e
   // metadados abaixo verificados navegando `youtube.com/@MassaBrutaTV`, nunca
-  // inventados). X segue WAITING_EXTERNAL_CONFIG (handle sem pipeline).
+  // inventados). X confirmado em 2026-09-08: handle `RedBullBraga`
+  // triangulado por duas fontes oficiais independentes (a página "Sobre" do
+  // canal oficial do YouTube lista `twitter.com/RedBullBraga` entre os
+  // links do canal; o próprio perfil se declara "Perfil oficial do Red Bull
+  // Bragantino", localização e link de site batendo com o oficial) — nunca
+  // as fan pages/contas antigas que aparecem numa busca qualquer
+  // (`@bragabull`, `@rbbragainfo`, `@BragantinoRed`). 20 posts reais
+  // coletados pelo mesmo pipeline do Goiás (`sync_x_posts.py --club
+  // bragantino`), auditados individualmente antes de entrar aqui.
   // Instagram só tem a CHAVE de KV estruturada (não é secret e não é dado)
   // pra o Cron do deploy do Bragantino escrever no namespace DELE quando a
   // Apify task for configurada (WAITING_EXTERNAL_TASK_CONFIG). Enquanto não
@@ -132,6 +140,7 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
       authorHandle: 'MassaBrutaTV',
     },
     instagram: { kvKey: instagramKvKey('bragantino') },
+    x: { dataFile: 'bragantino' },
   },
 };
 
