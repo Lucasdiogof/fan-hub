@@ -1175,7 +1175,10 @@ create table public.squad_members (
   position_group text NOT NULL,
   instagram_url text,
   person_id uuid,
-  club_id uuid NOT NULL
+  club_id uuid NOT NULL,
+  active boolean NOT NULL DEFAULT true,
+  departed_at date,
+  departed_to text
 );
 alter table public.squad_members add constraint squad_members_pkey PRIMARY KEY (id);
 CREATE INDEX squad_members_club_id_idx ON public.squad_members USING btree (club_id);
