@@ -2,11 +2,8 @@
 # src/index.ts, nunca duplicado), config/env própria. Ver auditoria
 # Matches/football multiclube (docs/multiclub) pra contexto completo.
 #
-# NÃO aplicar `wrangler deploy` com este arquivo ainda — o Worker do
-# Bragantino não existe até uma autorização separada (ver "próximo deploy"
-# no relatório desta rodada). `hasMatches=false` no Flutter (Bragantino)
-# garante que nada tenta falar com este Worker antes disso de qualquer
-# forma.
+# Worker já deployado (2026-09-08) em bragantino-app.lucasdiogo1234.workers.dev
+# — News, YouTube, X e Instagram confirmados reais e isolados por clube.
 #
 # `name` diferente de "goias-app" de propósito — cada deploy tem seu
 # próprio subdomínio `*.workers.dev`; nomes/domínio final ainda podem
@@ -46,9 +43,49 @@ PRIMARY_COMPETITION_DISPLAY_NAME = "Brasileirão Série A"
 
 CACHE_VERSION = "1"
 
-# Social/Instagram (APIFY_INSTAGRAM_TASK_ID, SOCIAL_FEED_KV, [triggers])
-# DELIBERADAMENTE OMITIDOS — hasSocial=false no Bragantino hoje (achado da
-# M4: era 100% hardcoded pro Goiás), e não existe task/KV própria do
-# Bragantino ainda. Nunca copiar a infraestrutura do Goiás pra cá; se/
-# quando o Bragantino ligar social, essas vars entram aqui com dado
-# REAL dele, nunca reaproveitando o do Goiás.
+# Instagram — pipeline igual ao do Goiás (Apify -> Cron -> KV ->
+# InstagramProvider), isolado por clube.
+#
+# Conta oficial confirmada em 2026-09-08 (username `redbullbragantino`):
+# batida entre a config própria do site oficial (bloco
+# `social-follow-panel` embutido em redbullbragantino.com, o mesmo
+# `buttonsOverride` que também lista `x.com/RedBullBraga` — handle já
+# confirmado e em produção) e o próprio perfil do Instagram, verificado,
+# com bio "Perfil oficial do Red Bull Bragantino" e posts recentes
+# (setembro de 2026). Nunca confundir com Red Bull Brasil, fan pages ou
+# perfis regionais.
+#
+# APIFY_INSTAGRAM_TASK_ID — Task DEDICADA do Bragantino (não é a do Goiás,
+# que está com o username fixado no próprio painel do Apify — ver
+# docs/multiclub/04_external_integrations.md, nunca reaproveitável só
+# trocando parâmetro daqui). Task "rb-bragantino-instagram-latest",
+# Actor "instagram-post-scraper", input apontando pro `redbullbragantino`
+# confirmado acima. Configurada em 2026-09-08. Task ID não é secret.
+APIFY_INSTAGRAM_TASK_ID = "nfbZY0CVxSVlsqawS"
+
+# APIFY_TOKEN (secret) configurado em 2026-09-08 via
+# `wrangler secret put APIFY_TOKEN --config wrangler.bragantino.toml`
+# neste deploy especificamente — secrets não são compartilhados entre
+# deploys, mesmo usando o mesmo token do Goiás. INSTAGRAM_SYNC_KEY (secret
+# da rota admin de sync manual) também configurado, mesmo padrão do Goiás.
+#
+# Instagram atualizado 2x/dia pelo Cron:
+# 14h UTC = 11h BRT
+# 20h UTC = 17h BRT
+#
+# REDUZIDO de 4x/dia -> 2x/dia em 2026-09-08 (decisão do usuário): a conta
+# Cloudflare tem limite de 5 cron triggers no total (plano Free) — Goiás
+# usa 3 (ver wrangler.toml), sobram exatamente 2 pro Bragantino. Horários
+# desencontrados de propósito dos horários do Goiás (08h/14h/20h BRT) pra
+# nunca disparar os dois ao mesmo tempo / concorrer pela mesma cota da
+# conta Apify.
+[triggers]
+crons = ["0 14 * * *", "0 20 * * *"]
+
+# MESMO namespace físico do Goiás, de propósito — não é vazamento: a
+# isolação é pela CHAVE (`instagram:<code>:latest`, ver `instagramKvKey`
+# em `club_media_config.ts`), nunca pelo namespace. É exatamente pra isso
+# que a chave carrega o código do clube.
+[[kv_namespaces]]
+binding = "SOCIAL_FEED_KV"
+id = "ef4444f9b6eb46df882659dcb9b41703"
