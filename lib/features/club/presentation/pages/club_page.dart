@@ -126,6 +126,9 @@ class ClubPage extends StatelessWidget {
                   onTap: () => context.push('/partners'),
                 ),
               ],
+              SizedBox(
+                height: MediaQuery.of(context).padding.bottom + AppSpacing.xxl,
+              ),
             ],
           ),
         ),

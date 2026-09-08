@@ -41,10 +41,12 @@ class _HomeShellPageState extends State<HomeShellPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: _shellCubit,
-      child: BlocBuilder<HomeShellCubit, HomeShellState>(
-        builder: (context, shellState) {
+    return PopScope(
+      canPop: false,
+      child: BlocProvider.value(
+        value: _shellCubit,
+        child: BlocBuilder<HomeShellCubit, HomeShellState>(
+          builder: (context, shellState) {
           // Ordem: Jogos, Sócio, Home (centro), Loja, Mídia — ver
           // `HomeShellState`/`main_navigation_items.dart`. M4.2A: cada slot
           // some por trás da nav (ver `isTabEnabled`), mas se ALGUM outro
@@ -96,6 +98,7 @@ class _HomeShellPageState extends State<HomeShellPage> {
             ),
           );
         },
+        ),
       ),
     );
   }
