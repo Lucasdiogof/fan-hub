@@ -2371,8 +2371,8 @@ abstract class AppLocalizations {
   /// No description provided for @tacticalIntroDescription.
   ///
   /// In pt, this message translates to:
-  /// **'10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo Goiás sua filosofia mais se aproxima.'**
-  String get tacticalIntroDescription;
+  /// **'10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo {club} sua filosofia mais se aproxima.'**
+  String tacticalIntroDescription(String club);
 
   /// No description provided for @tacticalIntroMeta.
   ///
@@ -2419,8 +2419,8 @@ abstract class AppLocalizations {
   /// No description provided for @tacticalResultMainReference.
   ///
   /// In pt, this message translates to:
-  /// **'SUA PRINCIPAL REFERÊNCIA ESMERALDINA'**
-  String get tacticalResultMainReference;
+  /// **'Sua principal referência do {club}'**
+  String tacticalResultMainReference(String club);
 
   /// No description provided for @tacticalResultOtherReferences.
   ///
@@ -2467,14 +2467,14 @@ abstract class AppLocalizations {
   /// No description provided for @playerIdentityGameTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Que craque esmeraldino é você?'**
-  String get playerIdentityGameTitle;
+  /// **'Que craque do {club} você é?'**
+  String playerIdentityGameTitle(String club);
 
   /// No description provided for @playerIdentityCardSubtitleNew.
   ///
   /// In pt, this message translates to:
-  /// **'10 situações de jogo. Descubra com qual ídolo do Verdão seu estilo mais combina.'**
-  String get playerIdentityCardSubtitleNew;
+  /// **'10 situações de jogo. Descubra com qual ídolo do {club} seu estilo mais combina.'**
+  String playerIdentityCardSubtitleNew(String club);
 
   /// No description provided for @playerIdentityCardCtaStart.
   ///
@@ -2503,14 +2503,14 @@ abstract class AppLocalizations {
   /// No description provided for @playerIntroTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Que craque esmeraldino é você?'**
-  String get playerIntroTitle;
+  /// **'Que craque do {club} você é?'**
+  String playerIntroTitle(String club);
 
   /// No description provided for @playerIntroDescription.
   ///
   /// In pt, this message translates to:
-  /// **'Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do Goiás mais combina com suas escolhas.'**
-  String get playerIntroDescription;
+  /// **'Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do {club} mais combina com suas escolhas.'**
+  String playerIntroDescription(String club);
 
   /// No description provided for @playerIntroMeta.
   ///
@@ -2545,8 +2545,8 @@ abstract class AppLocalizations {
   /// No description provided for @playerResultReferencesTitle.
   ///
   /// In pt, this message translates to:
-  /// **'REFERÊNCIAS ESMERALDINAS'**
-  String get playerResultReferencesTitle;
+  /// **'Referências do {club}'**
+  String playerResultReferencesTitle(String club);
 
   /// No description provided for @playerResultTraitsTitle.
   ///

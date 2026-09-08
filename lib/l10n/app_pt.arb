@@ -612,7 +612,14 @@
     }
   },
   "tacticalIntroTitle": "Qual é a sua identidade futebolística?",
-  "tacticalIntroDescription": "10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo Goiás sua filosofia mais se aproxima.",
+  "tacticalIntroDescription": "10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo {club} sua filosofia mais se aproxima.",
+  "@tacticalIntroDescription": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "tacticalIntroMeta": "10 perguntas • ~3 minutos",
   "tacticalIntroNoRightWrong": "Não existem respostas certas ou erradas.",
   "tacticalIntroStart": "Começar",
@@ -620,7 +627,14 @@
   "tacticalProcessingTitle": "Analisando sua identidade...",
   "tacticalResultYourProfile": "SEU PERFIL",
   "tacticalResultTacticalMap": "MAPA TÁTICO",
-  "tacticalResultMainReference": "SUA PRINCIPAL REFERÊNCIA ESMERALDINA",
+  "tacticalResultMainReference": "Sua principal referência do {club}",
+  "@tacticalResultMainReference": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "tacticalResultOtherReferences": "OUTRAS REFERÊNCIAS",
   "tacticalIdentityAffinityLabel": "{percent}% de afinidade tática",
   "@tacticalIdentityAffinityLabel": {
@@ -635,8 +649,22 @@
   "tacticalAxisVertical": "VERTICAL",
   "tacticalAxisDogmatic": "DOGMÁTICO",
   "tacticalAxisPragmatic": "PRAGMÁTICO",
-  "playerIdentityGameTitle": "Que craque esmeraldino é você?",
-  "playerIdentityCardSubtitleNew": "10 situações de jogo. Descubra com qual ídolo do Verdão seu estilo mais combina.",
+  "playerIdentityGameTitle": "Que craque do {club} você é?",
+  "@playerIdentityGameTitle": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "playerIdentityCardSubtitleNew": "10 situações de jogo. Descubra com qual ídolo do {club} seu estilo mais combina.",
+  "@playerIdentityCardSubtitleNew": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "playerIdentityCardCtaStart": "Descobrir meu perfil",
   "playerIdentityCardCtaViewResult": "Ver resultado",
   "playerIdentityCardCtaRedo": "Refazer",
@@ -648,14 +676,35 @@
       }
     }
   },
-  "playerIntroTitle": "Que craque esmeraldino é você?",
-  "playerIntroDescription": "Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do Goiás mais combina com suas escolhas.",
+  "playerIntroTitle": "Que craque do {club} você é?",
+  "@playerIntroTitle": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "playerIntroDescription": "Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do {club} mais combina com suas escolhas.",
+  "@playerIntroDescription": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "playerIntroMeta": "10 perguntas • ~3 minutos",
   "playerIntroNoRightWrong": "Não existem respostas certas.",
   "playerIntroStart": "Começar teste",
   "playerProcessingTitle": "Calculando seu estilo...",
   "playerResultYourProfile": "SEU PERFIL",
-  "playerResultReferencesTitle": "REFERÊNCIAS ESMERALDINAS",
+  "playerResultReferencesTitle": "Referências do {club}",
+  "@playerResultReferencesTitle": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "playerResultTraitsTitle": "SUAS MARCAS",
   "playerIdentityAffinityLabel": "{percent}% afinidade de estilo",
   "@playerIdentityAffinityLabel": {

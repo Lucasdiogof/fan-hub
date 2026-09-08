@@ -419,7 +419,14 @@
   "tacticalIdentityCardCtaRedo": "Redo",
   "tacticalIdentityYourProfile": "Your profile: {name}",
   "tacticalIntroTitle": "What's your football identity?",
-  "tacticalIntroDescription": "10 decisions. No right answer. Discover how you see the game and which coaches who managed Goiás your philosophy is closest to.",
+  "tacticalIntroDescription": "10 decisions. No right answer. Discover how you see the game and which coaches who managed {club} your philosophy is closest to.",
+  "@tacticalIntroDescription": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "tacticalIntroMeta": "10 questions • ~3 minutes",
   "tacticalIntroNoRightWrong": "There are no right or wrong answers.",
   "tacticalIntroStart": "Start",
@@ -427,7 +434,14 @@
   "tacticalProcessingTitle": "Analyzing your identity...",
   "tacticalResultYourProfile": "YOUR PROFILE",
   "tacticalResultTacticalMap": "TACTICAL MAP",
-  "tacticalResultMainReference": "YOUR MAIN GOIÁS REFERENCE",
+  "tacticalResultMainReference": "Your main {club} reference",
+  "@tacticalResultMainReference": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "tacticalResultOtherReferences": "OTHER REFERENCES",
   "tacticalIdentityAffinityLabel": "{percent}% tactical affinity",
   "tacticalResultShare": "Share result",
@@ -435,8 +449,22 @@
   "tacticalAxisVertical": "VERTICAL",
   "tacticalAxisDogmatic": "DOGMATIC",
   "tacticalAxisPragmatic": "PRAGMATIC",
-  "playerIdentityGameTitle": "Which Emerald legend are you?",
-  "playerIdentityCardSubtitleNew": "10 game situations. Find out which Goiás idol your style matches most.",
+  "playerIdentityGameTitle": "Which {club} legend are you?",
+  "@playerIdentityGameTitle": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "playerIdentityCardSubtitleNew": "10 game situations. Find out which {club} idol your style matches most.",
+  "@playerIdentityCardSubtitleNew": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "playerIdentityCardCtaStart": "Discover my profile",
   "playerIdentityCardCtaViewResult": "See result",
   "playerIdentityCardCtaRedo": "Retake",
@@ -448,14 +476,35 @@
       }
     }
   },
-  "playerIntroTitle": "Which Emerald legend are you?",
-  "playerIntroDescription": "Every player sees the match differently. Answer 10 game situations and find out which name that marked Goiás history matches your choices most.",
+  "playerIntroTitle": "Which {club} legend are you?",
+  "@playerIntroTitle": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "playerIntroDescription": "Every player sees the match differently. Answer 10 game situations and find out which name that marked {club} history matches your choices most.",
+  "@playerIntroDescription": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "playerIntroMeta": "10 questions • ~3 minutes",
   "playerIntroNoRightWrong": "There are no right answers.",
   "playerIntroStart": "Start test",
   "playerProcessingTitle": "Calculating your style...",
   "playerResultYourProfile": "YOUR PROFILE",
-  "playerResultReferencesTitle": "EMERALD REFERENCES",
+  "playerResultReferencesTitle": "{club} references",
+  "@playerResultReferencesTitle": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "playerResultTraitsTitle": "YOUR TRAITS",
   "playerIdentityAffinityLabel": "{percent}% style affinity",
   "@playerIdentityAffinityLabel": {

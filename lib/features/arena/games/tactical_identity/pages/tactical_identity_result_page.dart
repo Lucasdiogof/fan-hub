@@ -11,6 +11,7 @@ import 'package:goias_app/features/arena/games/tactical_identity/data/tactical_i
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_archetype_descriptions.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_reference_sets.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/presentation/tactical_identity_copy.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_bipolar_bar.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_coach_detail_sheet.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_map.dart';
@@ -390,7 +391,7 @@ class _ReferencesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            l10n.tacticalResultMainReference,
+            context.tacticalResultMainReference,
             style: const TextStyle(
               color: ArenaColors.goiasOutfield,
               fontSize: 11.5,

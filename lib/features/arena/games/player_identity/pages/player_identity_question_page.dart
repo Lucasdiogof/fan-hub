@@ -7,6 +7,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/player_identity/cubit/player_identity_cubit.dart';
 import 'package:goias_app/features/arena/games/player_identity/cubit/player_identity_state.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_questions.dart';
+import 'package:goias_app/features/arena/games/player_identity/presentation/player_identity_copy.dart';
 import 'package:goias_app/features/arena/games/player_identity/widgets/player_identity_option_tile.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
@@ -81,7 +82,7 @@ class _QuestionView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ArenaGameHeader(
-                      title: l10n.playerIdentityGameTitle.toUpperCase(),
+                      title: context.playerIdentityGameTitle.toUpperCase(),
                       onBack: () => _handleBack(context),
                     ),
                     const SizedBox(height: AppSpacing.xl),

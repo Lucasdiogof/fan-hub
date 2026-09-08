@@ -4,6 +4,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/player_identity/cubit/player_identity_cubit.dart';
+import 'package:goias_app/features/arena/games/player_identity/presentation/player_identity_copy.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -30,7 +31,7 @@ class PlayerIdentityIntroPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ArenaGameHeader(
-                    title: l10n.playerIdentityGameTitle.toUpperCase(),
+                    title: context.playerIdentityGameTitle.toUpperCase(),
                     onBack: () =>
                         context.canPop() ? context.pop() : context.go('/'),
                   ),
@@ -57,7 +58,7 @@ class PlayerIdentityIntroPage extends StatelessWidget {
                             ),
                             const SizedBox(height: AppSpacing.xl),
                             Text(
-                              l10n.playerIntroTitle,
+                              context.playerIntroTitle,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: colors.textPrimary,
@@ -68,7 +69,7 @@ class PlayerIdentityIntroPage extends StatelessWidget {
                             ),
                             const SizedBox(height: AppSpacing.md),
                             Text(
-                              l10n.playerIntroDescription,
+                              context.playerIntroDescription,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: colors.textSecondary,
