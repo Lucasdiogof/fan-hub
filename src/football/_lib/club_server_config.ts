@@ -49,16 +49,20 @@ export function resolveClubServerConfig(requestedClubCode: string, env: Env): Cl
   };
 }
 
-// News/Social (raspagem do site oficial + redes sociais) — achado da
-// auditoria M4: eram 100% hardcoded, sem NENHUMA dimensão de clube. Fora
-// do escopo da auditoria Matches/football desta rodada (não tocado aqui);
-// continuam com o próprio `'goias'` fixo até uma rodada dedicada.
-export const NEWS_SOCIAL_CONFIGURED_CLUB_CODE = 'goias';
+/** `clubCode` pedido na request (`?club=<code>`) — ausente = o clube que
+ * ESTE deploy serve (`env.CLUB_CODE`), mesma regra de compat do `APP_CLUB`
+ * ausente no Flutter: nunca um valor mágico, só o próprio clube do deploy
+ * quando nada é dito. Não existe mais uma constante `'goias'` cravada — o
+ * allowlist é o `CLUB_CODE` do deploy (igual ao lado de futebol). */
+export function resolveRequestedClubCode(request: Request, env: Env): string {
+  return new URL(request.url).searchParams.get('club') ?? (env.CLUB_CODE || '');
+}
 
-/** `clubCode` explícito da request (`?club=<code>`) — ausente = o único
- * clube que este Worker já serve hoje (mesma regra de compat do
- * `APP_CLUB` ausente no Flutter: nunca um valor mágico, só o comportamento
- * de sempre quando nada é dito). */
-export function resolveRequestedClubCode(request: Request): string {
-  return new URL(request.url).searchParams.get('club') ?? NEWS_SOCIAL_CONFIGURED_CLUB_CODE;
+/** True só quando o clube pedido é o clube DESTE deploy. News/Social usam
+ * isto pra devolver vazio/controlado (nunca conteúdo de outro clube) quando
+ * `?club=` não bate com `env.CLUB_CODE` — o Worker do Goiás rejeita
+ * `bragantino`, o do Bragantino rejeita `goias`, sem exceção nem fallback. */
+export function isRequestedClubServed(request: Request, env: Env): boolean {
+  const requested = resolveRequestedClubCode(request, env);
+  return !!env.CLUB_CODE && requested === env.CLUB_CODE;
 }

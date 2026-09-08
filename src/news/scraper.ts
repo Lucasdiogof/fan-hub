@@ -2,11 +2,9 @@ import { parsePortugueseDate } from './dateParser';
 import { cleanText, stripTags, decodeEntities } from './htmlText';
 import type { NewsArticle, NewsContentBlock, NewsItem } from './types';
 
-const SITE_ORIGIN = 'https://www.goiasec.com.br';
-
-function resolveUrl(href: string): string {
+function resolveUrl(href: string, siteOrigin: string): string {
   if (href.startsWith('http')) return href;
-  return `${SITE_ORIGIN}${href.startsWith('/') ? '' : '/'}${href}`;
+  return `${siteOrigin}${href.startsWith('/') ? '' : '/'}${href}`;
 }
 
 function slugFromUrl(url: string): string {
@@ -28,7 +26,7 @@ interface RawListItem {
  * ficam um nível mais fundo dentro de uma `<div>`), então `article > a`
  * identifica a URL da notícia sem ambiguidade.
  */
-export async function scrapeNewsList(html: string): Promise<NewsItem[]> {
+export async function scrapeNewsList(html: string, siteOrigin: string): Promise<NewsItem[]> {
   const items: RawListItem[] = [];
   let current: RawListItem | null = null;
 
@@ -83,13 +81,13 @@ export async function scrapeNewsList(html: string): Promise<NewsItem[]> {
       category: (raw.category ?? '').trim(),
       publishedAt: raw.dateLabel ? (parsePortugueseDate(raw.dateLabel) ?? '') : '',
       imageUrl: raw.imageUrl ?? '',
-      url: resolveUrl(raw.url),
+      url: resolveUrl(raw.url, siteOrigin),
     });
   }
   return result;
 }
 
-function parseBodyBlocks(rawHtml: string): NewsContentBlock[] {
+function parseBodyBlocks(rawHtml: string, siteOrigin: string): NewsContentBlock[] {
   const blocks: NewsContentBlock[] = [];
   const segments = rawHtml.split(/<br\s*\/?>/i);
 
@@ -99,7 +97,7 @@ function parseBodyBlocks(rawHtml: string): NewsContentBlock[] {
 
     const linkMatch = trimmed.match(/^<a\s+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>$/i);
     if (linkMatch) {
-      const url = resolveUrl(linkMatch[1]);
+      const url = resolveUrl(linkMatch[1], siteOrigin);
       const text = decodeEntities(stripTags(linkMatch[2])).trim();
       if (text) blocks.push({ type: 'link', text, url });
       continue;
@@ -124,7 +122,7 @@ function parseBodyBlocks(rawHtml: string): NewsContentBlock[] {
  * encontrado) — quem chama deve cair pro link externo, nunca inventar
  * conteúdo.
  */
-export function scrapeNewsArticle(html: string, pageUrl: string): NewsArticle | null {
+export function scrapeNewsArticle(html: string, pageUrl: string, siteOrigin: string): NewsArticle | null {
   const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
   if (!h1Match || h1Match.index === undefined) return null;
   const title = cleanText(h1Match[1]);
@@ -153,7 +151,7 @@ export function scrapeNewsArticle(html: string, pageUrl: string): NewsArticle | 
   const divCloseStart = html.indexOf('</div>', divOpenEnd);
   if (divCloseStart < 0) return null;
 
-  const content = parseBodyBlocks(html.slice(divOpenEnd + 1, divCloseStart));
+  const content = parseBodyBlocks(html.slice(divOpenEnd + 1, divCloseStart), siteOrigin);
   if (content.length === 0) return null;
 
   return {

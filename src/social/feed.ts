@@ -1,8 +1,9 @@
 import { cacheFirst } from '../football/_lib/cache';
 import { jsonResponse, errorResponse } from '../football/_lib/respond';
-import { NEWS_SOCIAL_CONFIGURED_CLUB_CODE, resolveRequestedClubCode } from '../football/_lib/club_server_config';
+import { isRequestedClubServed } from '../football/_lib/club_server_config';
 import type { SocialEnv } from './config';
 import { loadSocialProviders } from './config';
+import { clubMediaConfig } from './club_media_config';
 import type { SocialPost } from './types';
 
 export async function handleSocialFeed(request: Request, env: SocialEnv): Promise<Response> {
@@ -10,12 +11,15 @@ export async function handleSocialFeed(request: Request, env: SocialEnv): Promis
   const platformFilter = url.searchParams.get('platform');
   const cacheVersion = env.CACHE_VERSION || '1';
 
-  // Achado da auditoria M4: os providers (Instagram/YouTube/TikTok/
-  // Facebook/X) eram instanciados sem NENHUM parâmetro de clube — sempre o
-  // feed do Goiás pra qualquer chamador. `?club=` diferente do único
-  // integrado hoje devolve feed vazio explícito, nunca posts do Goiás.
-  const clubCode = resolveRequestedClubCode(request);
-  if (clubCode !== NEWS_SOCIAL_CONFIGURED_CLUB_CODE) {
+  // Gate por deploy: `?club=` diferente do `CLUB_CODE` deste Worker devolve
+  // feed vazio explícito, NUNCA posts de outro clube. Cada provider é
+  // montado a partir da config de Mídia do PRÓPRIO clube (redes sem config
+  // simplesmente não entram no feed, sem derrubar as outras).
+  if (!isRequestedClubServed(request, env)) {
+    return jsonResponse({ posts: [], available: false }, { status: 404 });
+  }
+  const media = clubMediaConfig(env.CLUB_CODE);
+  if (!media) {
     return jsonResponse({ posts: [], available: false }, { status: 404 });
   }
 
@@ -26,7 +30,7 @@ export async function handleSocialFeed(request: Request, env: SocialEnv): Promis
       'social.feed',
       cacheVersion,
       async () => {
-        const providers = loadSocialProviders(env);
+        const providers = loadSocialProviders(env, media);
         const activeProviders = platformFilter
           ? providers.filter(p => p.name === platformFilter)
           : providers;

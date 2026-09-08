@@ -4,7 +4,7 @@ import type { Env } from './config';
 import {
   resolveClubServerConfig,
   UnknownClubError,
-  NEWS_SOCIAL_CONFIGURED_CLUB_CODE,
+  isRequestedClubServed,
   resolveRequestedClubCode,
 } from './club_server_config';
 
@@ -97,23 +97,29 @@ describe('TEAM vs PRIMARY COMPETITION — dados por clube nunca se confundem', (
   });
 });
 
-describe('resolveRequestedClubCode — gate de News/Social (achado crítico M4: eram 100% hardcoded, 0 dimensão de clube)', () => {
-  // Fora do escopo desta rodada (Matches/football) — comportamento
-  // inalterado, cobertura só realocada pro arquivo reescrito.
-  it('sem ?club= na request -> resolve pro único clube integrado hoje (goias), mesma regra de compat do APP_CLUB ausente', () => {
-    const request = new Request('https://example.com/api/news');
-    expect(resolveRequestedClubCode(request)).toBe('goias');
-    expect(resolveRequestedClubCode(request)).toBe(NEWS_SOCIAL_CONFIGURED_CLUB_CODE);
+describe('gate de News/Social por env.CLUB_CODE (sem mais a constante NEWS_SOCIAL_CONFIGURED_CLUB_CODE)', () => {
+  it('sem ?club= -> resolve pro CLUB_CODE do PRÓPRIO deploy, nunca um "goias" mágico cravado', () => {
+    expect(resolveRequestedClubCode(new Request('https://x/api/news'), goiasEnv)).toBe('goias');
+    expect(resolveRequestedClubCode(new Request('https://x/api/news'), fakeBragantinoEnv)).toBe('bragantino');
   });
 
-  it('?club=goias explícito -> resolve normalmente', () => {
-    const request = new Request('https://example.com/api/news?club=goias');
-    expect(resolveRequestedClubCode(request)).toBe('goias');
+  it('?club= explícito -> resolve o código pedido, nunca reescreve por conta própria', () => {
+    expect(resolveRequestedClubCode(new Request('https://x/api/news?club=club-b'), goiasEnv)).toBe('club-b');
   });
 
-  it('FABRICADO: ?club=club-b (sintético, nunca cadastrado de verdade) -> resolve o código pedido, nunca reescreve pra goias por conta própria', () => {
-    const request = new Request('https://example.com/api/news?club=club-b');
-    expect(resolveRequestedClubCode(request)).toBe('club-b');
-    expect(resolveRequestedClubCode(request)).not.toBe(NEWS_SOCIAL_CONFIGURED_CLUB_CODE);
+  it('CROSS-CLUB: cada deploy só SERVE o próprio clube (goias<->bragantino nos dois sentidos)', () => {
+    // Worker do Goiás: serve goias (com ou sem ?club=), rejeita bragantino.
+    expect(isRequestedClubServed(new Request('https://x/api/news?club=goias'), goiasEnv)).toBe(true);
+    expect(isRequestedClubServed(new Request('https://x/api/news'), goiasEnv)).toBe(true);
+    expect(isRequestedClubServed(new Request('https://x/api/news?club=bragantino'), goiasEnv)).toBe(false);
+    // Worker do Bragantino: serve bragantino, rejeita goias.
+    expect(isRequestedClubServed(new Request('https://x/api/news?club=bragantino'), fakeBragantinoEnv)).toBe(true);
+    expect(isRequestedClubServed(new Request('https://x/api/news?club=goias'), fakeBragantinoEnv)).toBe(false);
+  });
+
+  it('CLUB_CODE ausente/vazio nunca serve — config quebrada vira vazio, nunca cross-club', () => {
+    const broken: Env = { ...goiasEnv, CLUB_CODE: '' };
+    expect(isRequestedClubServed(new Request('https://x/api/news?club=goias'), broken)).toBe(false);
+    expect(isRequestedClubServed(new Request('https://x/api/news'), broken)).toBe(false);
   });
 });

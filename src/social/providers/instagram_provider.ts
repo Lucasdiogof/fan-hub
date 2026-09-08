@@ -10,11 +10,16 @@ import { readInstagramFromKv } from '../instagram_sync';
 export class InstagramProvider implements SocialProvider {
   name = 'instagram';
 
-  constructor(private readonly env: InstagramSyncEnv | null) {}
+  /** [kvKey] é a chave do PRÓPRIO clube (`instagram:<code>:latest`, vinda da
+   * `ClubMediaConfig`) — o provider nunca lê a chave de outro clube. */
+  constructor(
+    private readonly env: InstagramSyncEnv | null,
+    private readonly kvKey: string,
+  ) {}
 
   async fetch(): Promise<SocialPost[]> {
     if (!this.env?.SOCIAL_FEED_KV) return [];
-    const stored = await readInstagramFromKv(this.env);
+    const stored = await readInstagramFromKv(this.env, this.kvKey);
     if (!stored) return [];
     return stored.posts.map(mapStoredToSocialPost);
   }
