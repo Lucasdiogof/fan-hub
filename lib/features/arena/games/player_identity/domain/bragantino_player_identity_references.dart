@@ -19,8 +19,9 @@ import 'package:goias_app/features/arena/games/player_identity/domain/player_ide
 /// por z-score contra as estatísticas do PRÓPRIO dataset, e uma cartela
 /// centrada bem acima do que o questionário consegue produzir enviesa a
 /// comparação a favor de quem responder mais "baixo/moderado". Médias
-/// obtidas aqui: criatividade 48,5 / definição 43,7 / liderança 55,6 /
-/// intensidade 53,6 / técnica 55,0 / tática 54,4.
+/// obtidas aqui (pós-revisão de Ivair e Ytalo, ver nota abaixo): criatividade
+/// 49,6 / definição 43,7 / liderança 55,6 / intensidade 55,2 / técnica 54,6 /
+/// tática 57,0.
 ///
 /// `definition` ficou em 43,7, abaixo da faixa do Goiás (50,7), e isso é
 /// deliberado: 6 dos 10 perfis são funções sem gol (goleiro, dois volantes,
@@ -33,11 +34,30 @@ import 'package:goias_app/features/arena/games/player_identity/domain/player_ide
 /// (`tooling/bragantino_arena/generate_career_players_sql.mjs`), não do
 /// pacote. Lincom e Ytalo não estão lá — por isso `confidence: 'medium'`.
 ///
-/// Distâncias RMS em z-space (a MESMA métrica do motor): mínima 0,582
-/// (Ivair × Léo Ortiz), mediana 1,423, máxima 2,433. Para comparação, o
-/// dataset do Goiás tem mínima 0,290 (Harlei × Tadeu) — ou seja, este
-/// conjunto está menos aglomerado que o de lá, sem nenhum valor mexido
-/// artificialmente pra isso.
+/// Distâncias RMS em z-space (a MESMA métrica do motor): mínima 0,649
+/// (Mauro Silva × Biro-Biro), máxima 2,406. Para comparação, o dataset do
+/// Goiás tem mínima 0,290 (Harlei × Tadeu) — este conjunto está menos
+/// aglomerado que o de lá, sem nenhum valor mexido artificialmente pra isso.
+///
+/// REVISÃO 2026-09-08 (Ivair e Ytalo): a calibração original (`tool/
+/// bragantino_player_identity_calibration.dart`) mostrava Ivair vencendo
+/// 48% de todas as combinações possíveis de resposta — sintoma de perfil
+/// perto demais da média em quase toda dimensão (distância ao centroide a
+/// menor do conjunto, 0,530, bem abaixo da segunda menor). A causa: só
+/// `definition` e `leadership` tinham evidência textual direta; as outras
+/// quatro dimensões ficaram em valores genéricos, sem base. A correção NÃO
+/// inventou fatos novos — usou como leitura qualitativa os 8 traços brutos
+/// já existentes em `docs/bragantino_data/new_data/
+/// perfil_jogador_bragantino_v1.json` (explicitamente vetados como fórmula
+/// de conversão, mas válidos como material de leitura): `leitura_tatica` de
+/// Ivair é 9/10, quase igual ao 10/10 de Mauro Silva, e `presenca_area`/
+/// `um_contra_um` bem acima dos de Mauro — evidência de um volante mais
+/// completo e vertical, não um clone reduzido. Corrigir só o Ivair revelou
+/// o mesmo padrão escondido em Ytalo (dominância subiu pra 30% assim que
+/// Ivair parou de mascará-lo): `leitura_tatica` 8/10 e `competitividade`
+/// 9/10 também estavam subaproveitados. Depois de ajustar os dois, nenhum
+/// jogador passa de 20% de vitórias como #1 e todos vencem pelo menos uma
+/// vez — ver o próprio arquivo de calibração para reproduzir.
 const bragantinoPlayerIdentityReferences = <PlayerIdentityReference>[
   // Goleiro da geração de 1990, decisivo na final. "Frieza" e "proteção do
   // resultado" puxam tática e liderança pra cima e criatividade/definição
@@ -73,19 +93,27 @@ const bragantinoPlayerIdentityReferences = <PlayerIdentityReference>[
     confidence: 'high',
   ),
 
-  // O outro volante de 1990, deliberadamente separado de Mauro Silva pela
-  // evidência: "chegada" com quatro gols no Paulistão (definição 40 contra
-  // 14) e "comando do setor", que é liderança vocal (78 contra 62).
+  // O outro volante de 1990, separado de Mauro Silva pela evidência —
+  // incluindo os 8 traços brutos da fonte original (`visao_criacao`,
+  // `um_contra_um`, `presenca_area`, `leitura_tatica`, ...), usados aqui só
+  // como leitura qualitativa (nunca como fórmula de conversão). Essa leitura
+  // mostra Ivair com `leitura_tatica` 9/10 — quase igual ao 10/10 de Mauro
+  // Silva, não a "média genérica" que uma leitura só do texto sugeriria — e
+  // `presenca_area`/`um_contra_um` bem acima dos de Mauro, o que casa com a
+  // evidência direta de "chegada" e quatro gols no Paulistão (definição 40
+  // contra 14) e "comando do setor", liderança vocal (78 contra 62). O
+  // resultado é um volante mais completo e mais vertical que Mauro Silva —
+  // não uma versão reduzida dele.
   PlayerIdentityReference(
     id: 'ivair',
     name: 'Ivair',
     period: '1988–1991',
-    creativity: 45,
+    creativity: 56,
     definition: 40,
     leadership: 78,
-    intensity: 50,
-    technique: 52,
-    tactics: 62,
+    intensity: 58,
+    technique: 48,
+    tactics: 74,
     confidence: 'medium',
   ),
 
@@ -174,8 +202,13 @@ const bragantinoPlayerIdentityReferences = <PlayerIdentityReference>[
   ),
 
   // Artilheiro da Série B 2019, mas a evidência insiste em "movimentação",
-  // "associação" e "ocupação de espaços" — por isso criatividade 62 e
-  // tática 50, bem acima de um centroavante de área puro.
+  // "associação" e "ocupação de espaços" — por isso criatividade 62, bem
+  // acima de um centroavante de área puro. Os traços brutos da fonte
+  // original (mesma leitura qualitativa aplicada a Ivair) mostram
+  // `leitura_tatica` 8/10 e `competitividade` 9/10 — tática e intensidade
+  // estavam abaixo do que essa leitura sustenta; sobem para refletir isso,
+  // sem tocar nos dois valores já evidenciados diretamente pelo texto
+  // (definição, pelos gols; criatividade, pela "criação de espaços").
   PlayerIdentityReference(
     id: 'ytalo',
     name: 'Ytalo',
@@ -183,9 +216,9 @@ const bragantinoPlayerIdentityReferences = <PlayerIdentityReference>[
     creativity: 62,
     definition: 78,
     leadership: 38,
-    intensity: 52,
+    intensity: 60,
     technique: 63,
-    tactics: 50,
+    tactics: 64,
     confidence: 'medium',
   ),
 
