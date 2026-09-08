@@ -1273,8 +1273,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get tacticalIntroTitle => 'Qual é a sua identidade futebolística?';
 
   @override
-  String get tacticalIntroDescription =>
-      '10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo Goiás sua filosofia mais se aproxima.';
+  String tacticalIntroDescription(String club) {
+    return '10 decisões. Nenhuma resposta certa. Descubra como você enxerga o jogo e com quais técnicos que passaram pelo $club sua filosofia mais se aproxima.';
+  }
 
   @override
   String get tacticalIntroMeta => '10 perguntas • ~3 minutos';
@@ -1299,8 +1300,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get tacticalResultTacticalMap => 'MAPA TÁTICO';
 
   @override
-  String get tacticalResultMainReference =>
-      'SUA PRINCIPAL REFERÊNCIA ESMERALDINA';
+  String tacticalResultMainReference(String club) {
+    return 'Sua principal referência do $club';
+  }
 
   @override
   String get tacticalResultOtherReferences => 'OUTRAS REFERÊNCIAS';
@@ -1326,11 +1328,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get tacticalAxisPragmatic => 'PRAGMÁTICO';
 
   @override
-  String get playerIdentityGameTitle => 'Que craque esmeraldino é você?';
+  String playerIdentityGameTitle(String club) {
+    return 'Que craque do $club você é?';
+  }
 
   @override
-  String get playerIdentityCardSubtitleNew =>
-      '10 situações de jogo. Descubra com qual ídolo do Verdão seu estilo mais combina.';
+  String playerIdentityCardSubtitleNew(String club) {
+    return '10 situações de jogo. Descubra com qual ídolo do $club seu estilo mais combina.';
+  }
 
   @override
   String get playerIdentityCardCtaStart => 'Descobrir meu perfil';
@@ -1347,11 +1352,14 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get playerIntroTitle => 'Que craque esmeraldino é você?';
+  String playerIntroTitle(String club) {
+    return 'Que craque do $club você é?';
+  }
 
   @override
-  String get playerIntroDescription =>
-      'Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do Goiás mais combina com suas escolhas.';
+  String playerIntroDescription(String club) {
+    return 'Cada jogador enxerga a partida de um jeito. Responda 10 situações de jogo e descubra qual nome que marcou a história do $club mais combina com suas escolhas.';
+  }
 
   @override
   String get playerIntroMeta => '10 perguntas • ~3 minutos';
@@ -1369,7 +1377,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get playerResultYourProfile => 'SEU PERFIL';
 
   @override
-  String get playerResultReferencesTitle => 'REFERÊNCIAS ESMERALDINAS';
+  String playerResultReferencesTitle(String club) {
+    return 'Referências do $club';
+  }
 
   @override
   String get playerResultTraitsTitle => 'SUAS MARCAS';

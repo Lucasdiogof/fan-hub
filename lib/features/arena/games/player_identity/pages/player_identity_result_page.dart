@@ -11,6 +11,7 @@ import 'package:goias_app/features/arena/games/player_identity/data/player_ident
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_archetype_descriptions.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_dimension_labels.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
+import 'package:goias_app/features/arena/games/player_identity/presentation/player_identity_copy.dart';
 import 'package:goias_app/features/arena/games/player_identity/widgets/player_identity_attribute_bar.dart';
 import 'package:goias_app/features/arena/games/player_identity/widgets/player_identity_reference_sheet.dart';
 import 'package:goias_app/features/arena/games/player_identity/widgets/player_identity_share_card.dart';
@@ -53,7 +54,7 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
         ? null
         : result.closestReferences.first;
     final buffer = StringBuffer()
-      ..writeln(l10n.playerIdentityGameTitle.toUpperCase())
+      ..writeln(context.playerIdentityGameTitle.toUpperCase())
       ..writeln(result.archetype.displayName.toUpperCase())
       ..writeln(
         result.topTraits
@@ -61,15 +62,16 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
             .join(' · '),
       );
     if (top != null) {
+      final club = sl<ClubConfig>().identity.shortName;
       buffer.writeln(
-        '${top.reference.name} • Goiás ${top.reference.period} · '
+        '${top.reference.name} • $club ${top.reference.period} · '
         '${l10n.playerIdentityAffinityLabel(top.affinity.toStringAsFixed(1))}',
       );
     }
     return shareFieldImage(
       _shareKey,
       text: buffer.toString().trim(),
-      fileName: 'que_craque_esmeraldino.png',
+      fileName: 'que_craque_${sl<ClubConfig>().identity.code}.png',
     );
   }
 
@@ -82,7 +84,6 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final result = widget.result;
 
     return Scaffold(
@@ -136,7 +137,7 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
                             ),
                             const Spacer(),
                             Text(
-                              l10n.playerIdentityGameTitle.toUpperCase(),
+                              context.playerIdentityGameTitle.toUpperCase(),
                               style: const TextStyle(
                                 color: Colors.white70,
                                 fontSize: 11,
@@ -372,7 +373,6 @@ class _ReferencesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final references = result.closestReferences;
     if (references.isEmpty) return const SizedBox.shrink();
     return Container(
@@ -385,7 +385,7 @@ class _ReferencesSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            l10n.playerResultReferencesTitle,
+            context.playerResultReferencesTitle,
             style: const TextStyle(
               color: ArenaColors.goiasOutfield,
               fontSize: 11.5,

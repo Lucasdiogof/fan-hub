@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_archetype_descriptions.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
+import 'package:goias_app/features/arena/games/player_identity/presentation/player_identity_copy.dart';
 
 /// Card de entrada do "Que craque esmeraldino é você?" na Arena — próprio,
 /// não o `ArenaChallengeCard` genérico (mesma razão de
@@ -65,7 +66,7 @@ class PlayerIdentityArenaCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          l10n.playerIdentityGameTitle,
+                          context.playerIdentityGameTitle,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -77,7 +78,7 @@ class PlayerIdentityArenaCard extends StatelessWidget {
                         const SizedBox(height: 3),
                         Text(
                           completed == null
-                              ? l10n.playerIdentityCardSubtitleNew
+                              ? context.playerIdentityCardSubtitleNew
                               : l10n.playerIdentityYourProfile(
                                   completed.archetype.displayName,
                                 ),

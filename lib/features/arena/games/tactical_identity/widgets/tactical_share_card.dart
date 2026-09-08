@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_archetype_descriptions.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/presentation/tactical_identity_copy.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_map.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 
@@ -42,9 +45,9 @@ class TacticalShareCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'GOIÁS ESPORTE CLUBE',
-            style: TextStyle(
+          Text(
+            sl<ClubConfig>().identity.displayName.toUpperCase(),
+            style: const TextStyle(
               color: Colors.white70,
               fontSize: 11,
               fontWeight: FontWeight.w800,
@@ -123,7 +126,7 @@ class TacticalShareCard extends StatelessWidget {
             Container(height: 1, color: Colors.white.withValues(alpha: 0.16)),
             const SizedBox(height: 20),
             Text(
-              l10n.tacticalResultMainReference,
+              context.tacticalResultMainReference,
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.75),
                 fontSize: 10.5,
@@ -141,7 +144,7 @@ class TacticalShareCard extends StatelessWidget {
               ),
             ),
             Text(
-              'GOIÁS • ${top.coach.period}',
+              '${sl<ClubConfig>().identity.shortName.toUpperCase()} • ${top.coach.period}',
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.7),
                 fontSize: 11.5,

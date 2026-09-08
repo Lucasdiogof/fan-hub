@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_archetype_descriptions.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_dimension_labels.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
+import 'package:goias_app/features/arena/games/player_identity/presentation/player_identity_copy.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 
 /// Card compartilhável — leva o resultado inteiro (perfil + análise + as
@@ -38,9 +41,9 @@ class PlayerIdentityShareCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'GOIÁS ESPORTE CLUBE',
-            style: TextStyle(
+          Text(
+            sl<ClubConfig>().identity.displayName.toUpperCase(),
+            style: const TextStyle(
               color: Colors.white70,
               fontSize: 11,
               fontWeight: FontWeight.w800,
@@ -49,7 +52,7 @@ class PlayerIdentityShareCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           Text(
-            l10n.playerIdentityGameTitle.toUpperCase(),
+            context.playerIdentityGameTitle.toUpperCase(),
             style: const TextStyle(
               color: Colors.white,
               fontSize: 15,
@@ -101,7 +104,7 @@ class PlayerIdentityShareCard extends StatelessWidget {
             Container(height: 1, color: Colors.white.withValues(alpha: 0.16)),
             const SizedBox(height: 20),
             Text(
-              l10n.playerResultReferencesTitle,
+              context.playerResultReferencesTitle,
               style: TextStyle(
                 color: Colors.white.withValues(alpha: 0.75),
                 fontSize: 10.5,

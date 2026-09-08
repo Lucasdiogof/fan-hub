@@ -43,6 +43,18 @@ extension TacticalIdentityCopy on BuildContext {
 
   String tacticalOptionText(TacticalOption option) =>
       _optionText(l10n, option.id);
+
+  /// Descrição da intro — também citava o clube ("...técnicos que passaram
+  /// pelo Goiás..."), mesmo bug/correção das 4 perguntas acima, achado numa
+  /// QA posterior (2026-09-08).
+  String get tacticalIntroDescription =>
+      l10n.tacticalIntroDescription(sl<ClubConfig>().identity.shortName);
+
+  /// Título "principal referência" — tinha "ESMERALDINA"/"GOIÁS" cravado.
+  /// Mesmo achado da QA de 2026-09-08.
+  String get tacticalResultMainReference => l10n
+      .tacticalResultMainReference(sl<ClubConfig>().identity.shortName)
+      .toUpperCase();
 }
 
 String _optionText(AppLocalizations l10n, String id) => switch (id) {
