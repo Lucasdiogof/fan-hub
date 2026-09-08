@@ -102,7 +102,12 @@ class _QuizView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ArenaGameHeader(
-                      title: context.l10n.arenaGameQuizTitle.toUpperCase(),
+                      title: context.l10n
+                          .arenaGameQuizTitle(
+                            sl<ClubConfig>().identity.code,
+                            sl<ClubConfig>().identity.shortName,
+                          )
+                          .toUpperCase(),
                       subtitle: context.l10n.quizLevelName(
                         context.read<QuizCubit>().difficulty.label(
                           sl<ClubConfig>().identity.fanDemonym,

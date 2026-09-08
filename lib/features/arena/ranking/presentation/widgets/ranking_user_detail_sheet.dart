@@ -8,6 +8,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/arena/ranking/presentation/widgets/ranking_avatar.dart';
+import 'package:goias_app/features/arena/shared/arena_game_l10n.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
 /// Ordem canônica dos jogos na sheet (mesma do hub da Arena).
@@ -18,13 +19,11 @@ const _games = [
   ArenaGameIds.careerPath,
 ];
 
-String gameLabel(BuildContext context, String gameId) => switch (gameId) {
-  ArenaGameIds.quiz => context.l10n.arenaGameQuizTitle,
-  ArenaGameIds.lineup => context.l10n.arenaGameLineupTitle,
-  ArenaGameIds.careerPath => context.l10n.arenaGameCareerTitle,
-  ArenaGameIds.guessPlayer => context.l10n.arenaGuessPlayerTitle,
-  _ => gameId,
-};
+/// Reaproveita `arenaGameTitle` (mesma fonte do card da Arena) em vez de
+/// duplicar o switch aqui — era uma 2ª cópia da mesma lógica que ficou pra
+/// trás quando o título do quiz virou club-aware.
+String gameLabel(BuildContext context, String gameId) =>
+    arenaGameTitle(context.l10n, gameId);
 
 IconData gameIcon(String gameId) => switch (gameId) {
   ArenaGameIds.quiz => Icons.psychology_rounded,

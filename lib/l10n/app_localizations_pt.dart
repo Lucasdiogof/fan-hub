@@ -736,10 +736,18 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaChallengeCtaCompleted => 'Concluído';
 
   @override
-  String get arenaGameQuizTitle => 'Quiz do Verdão';
+  String arenaGameQuizTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Quiz do Verdão',
+      'other': 'Quiz do $club',
+    });
+    return '$_temp0';
+  }
 
   @override
-  String get arenaGameQuizTagline => 'Teste o quanto você conhece o Goiás.';
+  String arenaGameQuizTagline(String club) {
+    return 'Teste o quanto você conhece o $club.';
+  }
 
   @override
   String get arenaGameLineupTitle => 'Adivinhe a Escalação';
