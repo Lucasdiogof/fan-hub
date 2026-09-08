@@ -62,7 +62,14 @@ jobs:
 
       - name: Commit and push if changed (Goiás)
         run: |
-          if git diff --quiet -- src/social/data/goias/x_posts.json; then
+          # `git status --porcelain`, NUNCA `git diff --quiet`: o diff só
+          # compara arquivo JÁ RASTREADO contra o índice — pra um arquivo
+          # que nunca existiu no repo (o caso do Bragantino na primeira
+          # vez), ele sempre reporta "sem mudança" mesmo com conteúdo real
+          # gravado, e o dado se perde quando o runner desliga sem nunca
+          # virar commit. `status --porcelain` detecta os dois casos
+          # (arquivo modificado E arquivo novo nunca rastreado).
+          if [ -z "$(git status --porcelain -- src/social/data/goias/x_posts.json)" ]; then
             echo "No changes to commit (Goiás)"
             exit 0
           fi
@@ -93,7 +100,7 @@ jobs:
 
       - name: Commit and push if changed (Bragantino)
         run: |
-          if git diff --quiet -- src/social/data/bragantino/x_posts.json; then
+          if [ -z "$(git status --porcelain -- src/social/data/bragantino/x_posts.json)" ]; then
             echo "No changes to commit (Bragantino)"
             exit 0
           fi
