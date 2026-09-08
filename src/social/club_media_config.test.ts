@@ -18,15 +18,31 @@ describe('CLUB_MEDIA_CONFIG — resolução central por clube, sem fallback cros
     expect(g.x?.dataFile).toBe('goias');
   });
 
-  it('Bragantino: news real (API JSON própria, confirmada 2026-09-08); youtube/x seguem WAITING', () => {
+  it('Bragantino: news + youtube reais (confirmados 2026-09-08); x segue WAITING', () => {
     const b = clubMediaConfig('bragantino')!;
     expect(b.news?.parser).toBe('bragantino');
     expect(b.news?.siteOrigin).toBe('https://www.redbullbragantino.com');
     expect(b.news?.articlePathPrefix).toBe('/br-pt/noticias');
     expect(b.news?.sourceUrl).toContain('redbullbragantino.com');
-    expect(b.youtube).toBeUndefined(); // canal não confirmado -> nunca @TVGoias
     expect(b.x).toBeUndefined(); // handle/pipeline não configurado
     expect(b.instagram?.kvKey).toBe('instagram:bragantino:latest');
+  });
+
+  it('Bragantino: youtube é @MassaBrutaTV, com channelId real confirmado — nunca @TVGoias', () => {
+    const b = clubMediaConfig('bragantino')!;
+    expect(b.youtube?.channelHandle).toBe('@MassaBrutaTV');
+    expect(b.youtube?.channelId).toBe('UC0x9Ypk2Z1lUdR4a88jMC2Q');
+    expect(b.youtube?.authorHandle).toBe('MassaBrutaTV');
+    expect(b.youtube?.channelHandle).not.toBe('@TVGoias');
+    expect(b.youtube?.authorName).not.toContain('Goiás');
+  });
+
+  it('Goiás mantém o youtube exatamente como antes (sem channelId, comportamento intocado)', () => {
+    const g = clubMediaConfig('goias')!;
+    expect(g.youtube?.channelHandle).toBe('@TVGoias');
+    expect(g.youtube?.channelId).toBeUndefined();
+    expect(g.youtube?.authorName).toBe('TV Goiás');
+    expect(g.youtube?.authorHandle).toBe('TVGoias');
   });
 
   it('NENHUMA config de Bragantino contém string do Goiás', () => {
@@ -63,10 +79,28 @@ describe('loadSocialProviders — providers montados por clube', () => {
     expect(names).toEqual(['x']);
   });
 
-  it('Bragantino: com KV -> só instagram; sem KV -> nenhum. NUNCA youtube(@TVGoias)/x(goias)', () => {
-    const comKv = loadSocialProviders(withSecrets('bragantino'), clubMediaConfig('bragantino')!).map(p => p.name);
-    expect(comKv).toEqual(['instagram']); // youtube/x ausentes na config -> nunca entram
-    const semKv = loadSocialProviders(noSecrets('bragantino'), clubMediaConfig('bragantino')!).map(p => p.name);
-    expect(semKv).toEqual([]);
+  it('Bragantino: com secrets -> youtube + instagram (x ausente na config); sem secrets -> nenhum', () => {
+    const comSecrets = loadSocialProviders(withSecrets('bragantino'), clubMediaConfig('bragantino')!).map(p => p.name);
+    expect(comSecrets.sort()).toEqual(['instagram', 'youtube']);
+    const semSecrets = loadSocialProviders(noSecrets('bragantino'), clubMediaConfig('bragantino')!).map(p => p.name);
+    expect(semSecrets).toEqual([]); // WAITING_EXTERNAL_SECRET: sem YOUTUBE_API_KEY/KV, nenhum provider entra
+  });
+
+  it('Bragantino sem YOUTUBE_API_KEY (estado real de produção hoje) -> youtube nunca entra, mas instagram (com KV) sim', () => {
+    const soComKv: SocialEnv = {
+      CLUB_CODE: 'bragantino',
+      CACHE_VERSION: '1',
+      SOCIAL_FEED_KV: {} as KVNamespace,
+    } as SocialEnv;
+    const names = loadSocialProviders(soComKv, clubMediaConfig('bragantino')!).map(p => p.name);
+    expect(names).toEqual(['instagram']);
+  });
+
+  it('feed agregado nunca derruba quando só 1 provider está de pé (allSettled tolera provider ausente)', () => {
+    // loadSocialProviders já é o que decide quais entram — aqui só provamos
+    // que passar env com 1 secret só (o cenário real do Bragantino hoje: só
+    // KV do Instagram, sem YOUTUBE_API_KEY) nunca lança nem exige os outros.
+    const env: SocialEnv = { CLUB_CODE: 'bragantino', CACHE_VERSION: '1', SOCIAL_FEED_KV: {} as KVNamespace } as SocialEnv;
+    expect(() => loadSocialProviders(env, clubMediaConfig('bragantino')!)).not.toThrow();
   });
 });

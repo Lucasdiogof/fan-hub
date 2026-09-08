@@ -7,6 +7,9 @@ interface YouTubeConfig {
   /** Handle público do canal do clube (ex.: `@TVGoias`) — vem da
    * `ClubMediaConfig`, nunca cravado no provider. */
   channelHandle: string;
+  /** Id canônico do canal — quando presente, usado em vez do handle pra
+   * resolver a playlist de uploads (ver `resolveUploadsPlaylistId`). */
+  channelId?: string;
   authorName: string;
   authorHandle: string;
 }
@@ -15,12 +18,14 @@ export class YouTubeProvider implements SocialProvider {
   name = 'youtube';
   private apiKey: string;
   private channelHandle: string;
+  private channelId?: string;
   private authorName: string;
   private authorHandle: string;
 
   constructor(config: YouTubeConfig) {
     this.apiKey = config.apiKey;
     this.channelHandle = config.channelHandle;
+    this.channelId = config.channelId;
     this.authorName = config.authorName;
     this.authorHandle = config.authorHandle;
   }
@@ -32,13 +37,18 @@ export class YouTubeProvider implements SocialProvider {
     return this.getRecentVideos(uploadsPlaylistId);
   }
 
-  // A resposta de /channels?forHandle já inclui contentDetails com a
-  // playlist de uploads — não precisa de uma segunda chamada por
-  // channels?id= só pra buscar a mesma coisa de novo (isso dobrava a
-  // cadeia sequencial de requests e, na hora do cache expirar, às vezes
-  // estourava o timeout do app).
+  // A resposta de /channels (por id OU por forHandle) já inclui
+  // contentDetails com a playlist de uploads — nunca uma segunda chamada só
+  // pra buscar a mesma coisa de novo (isso dobrava a cadeia sequencial de
+  // requests e, na hora do cache expirar, às vezes estourava o timeout do
+  // app). Prefere `id=` quando o clube tem `channelId` configurado — é
+  // canônico e nunca muda, ao contrário do handle (que pode ser renomeado);
+  // cai pro handle só quando o clube não tem id ainda, preservando o
+  // comportamento de sempre pra quem já está em produção assim.
   private async resolveUploadsPlaylistId(): Promise<string | null> {
-    const url = `${YOUTUBE_API_BASE}/channels?forHandle=${encodeURIComponent(this.channelHandle)}&part=contentDetails&key=${this.apiKey}`;
+    const url = this.channelId
+      ? `${YOUTUBE_API_BASE}/channels?id=${encodeURIComponent(this.channelId)}&part=contentDetails&key=${this.apiKey}`
+      : `${YOUTUBE_API_BASE}/channels?forHandle=${encodeURIComponent(this.channelHandle)}&part=contentDetails&key=${this.apiKey}`;
     const response = await globalThis.fetch(url);
     if (!response.ok) {
       console.log(`youtube.resolveUploadsPlaylistId.error: ${response.status}`);

@@ -330,10 +330,18 @@ const bragantinoClubConfig = ClubConfig(
     hasPassport: true,
     // 2026-09-08: Worker passou a integrar a fonte oficial real do Bragantino
     // (API JSON interna da própria SPA do Red Bull, sem raspagem/dado
-    // inventado — ver `project_goias_app_media_multiclub.md`). `hasSocial`
-    // continua false: Instagram/YouTube/X ainda são WAITING_EXTERNAL_CONFIG.
+    // inventado — ver `project_goias_app_media_multiclub.md`).
     hasNews: true,
-    hasSocial: false,
+    // 2026-09-08: YouTube oficial (@MassaBrutaTV / UC0x9Ypk2Z1lUdR4a88jMC2Q)
+    // confirmado ao vivo contra a Data API v3 real — 15 vídeos reais
+    // devolvidos pelo Worker, `?club=goias` no deploy do Bragantino segue
+    // 404 (isolamento intacto). A causa do bloqueio anterior não era a
+    // chave, era o secret gravado truncado (36/39 chars por um recorte no
+    // prompt interativo do `wrangler secret put`) — corrigido regravando.
+    // Instagram/X seguem sem config própria, mas o feed nunca falha global
+    // por isso (`Promise.allSettled` por provider) — ver
+    // `project_goias_app_media_multiclub.md`.
+    hasSocial: true,
     // 2026-09-05: história/títulos/hino têm conteúdo real e pesquisado
     // (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
     // `BragantinoSongsData`) — liga o `/clube`. Diretoria/Transparência

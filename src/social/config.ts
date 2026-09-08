@@ -40,6 +40,7 @@ export function loadSocialProviders(env: SocialEnv, media: ClubMediaConfig): Soc
       new YouTubeProvider({
         apiKey: env.YOUTUBE_API_KEY,
         channelHandle: media.youtube.channelHandle,
+        channelId: media.youtube.channelId,
         authorName: media.youtube.authorName,
         authorHandle: media.youtube.authorHandle,
       }),
