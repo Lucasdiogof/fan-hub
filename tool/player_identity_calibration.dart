@@ -16,7 +16,7 @@ import 'package:goias_app/features/arena/games/player_identity/domain/player_ide
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_questions.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_references.dart';
 
-const _engine = PlayerIdentityEngine();
+final _engine = PlayerIdentityEngine(playerIdentityReferences);
 
 void main(List<String> args) {
   final sampleEvery = args.isNotEmpty ? int.parse(args.first) : 7;

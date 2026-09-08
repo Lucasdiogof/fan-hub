@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/presentation/tactical_identity_copy.dart';
 
 /// Card de alternativa da Identidade Futebolística — mesma linguagem visual
 /// do `_OptionTile` do Quiz (Material+InkWell, borda, padding), mas SEM
@@ -51,7 +52,7 @@ class TacticalOptionTile extends StatelessWidget {
               children: [
                 Expanded(
                   child: Text(
-                    option.text,
+                    context.tacticalOptionText(option),
                     style: TextStyle(
                       color: foreground,
                       fontSize: 14.5,

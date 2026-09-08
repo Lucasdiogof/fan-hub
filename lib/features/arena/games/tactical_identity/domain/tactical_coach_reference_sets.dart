@@ -1,5 +1,6 @@
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/club_scoped_fallback.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/bragantino_tactical_coach_references.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_references.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_engine.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
@@ -18,6 +19,7 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical
 const tacticalCoachReferenceSets =
     ClubScopedFallback<List<TacticalCoachReference>>({
       'goias': tacticalCoachReferences,
+      'bragantino': bragantinoTacticalCoachReferences,
     });
 
 /// Monta o `TacticalIdentityEngine` com o dataset do clube ativo. Lança

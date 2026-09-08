@@ -7112,6 +7112,306 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Atualizar agora'**
   String get releaseGateUpdateButton;
+
+  /// Pergunta da Identidade Futebolística que cita o clube ativo.
+  ///
+  /// In pt, this message translates to:
+  /// **'O adversário pressiona sua saída de bola e fecha os passes curtos. O que seu {club} faz?'**
+  String tacticalQ01(String club);
+
+  /// No description provided for @tacticalQ01A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continua saindo curto, atraindo a pressão até encontrar o homem livre.'**
+  String get tacticalQ01A;
+
+  /// No description provided for @tacticalQ01B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tenta sair curto, mas se a pressão encaixar busca imediatamente o espaço nas costas.'**
+  String get tacticalQ01B;
+
+  /// No description provided for @tacticalQ01C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aciona o atacante ou o corredor diretamente e prepara a equipe para ganhar a segunda bola.'**
+  String get tacticalQ01C;
+
+  /// No description provided for @tacticalQ01D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Identifica onde a pressão rival é mais vulnerável e escolhe a saída por ali, curta ou longa.'**
+  String get tacticalQ01D;
+
+  /// No description provided for @tacticalQ02.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu time recupera a bola no meio-campo com o adversário ainda desorganizado. Qual é a primeira ideia?'**
+  String get tacticalQ02;
+
+  /// No description provided for @tacticalQ02A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Retém a bola, aproxima o time e organiza o ataque.'**
+  String get tacticalQ02A;
+
+  /// No description provided for @tacticalQ02B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Procura o passe para frente se houver vantagem; se não houver, mantém a posse.'**
+  String get tacticalQ02B;
+
+  /// No description provided for @tacticalQ02C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Acelera imediatamente e tenta chegar ao gol em poucos passes.'**
+  String get tacticalQ02C;
+
+  /// No description provided for @tacticalQ02D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Decide pela posição dos adversários e pela superioridade numérica daquele lance.'**
+  String get tacticalQ02D;
+
+  /// Pergunta da Identidade Futebolística que cita o clube ativo.
+  ///
+  /// In pt, this message translates to:
+  /// **'O {club} vence por 1 a 0 fora de casa aos 75 minutos.'**
+  String tacticalQ03(String club);
+
+  /// No description provided for @tacticalQ03A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não muda o comportamento. Se o plano trouxe a vantagem, continua igual.'**
+  String get tacticalQ03A;
+
+  /// No description provided for @tacticalQ03B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Passa a controlar o jogo com mais posse e faz o adversário correr atrás da bola.'**
+  String get tacticalQ03B;
+
+  /// No description provided for @tacticalQ03C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fecha melhor os espaços e prepara transições para matar o jogo.'**
+  String get tacticalQ03C;
+
+  /// No description provided for @tacticalQ03D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continua pressionando e buscando o segundo gol antes que o rival cresça.'**
+  String get tacticalQ03D;
+
+  /// No description provided for @tacticalQ04.
+  ///
+  /// In pt, this message translates to:
+  /// **'O rival estacionou duas linhas perto da própria área. Como furar o bloqueio?'**
+  String get tacticalQ04;
+
+  /// No description provided for @tacticalQ04A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Circula pacientemente até surgir o espaço certo.'**
+  String get tacticalQ04A;
+
+  /// No description provided for @tacticalQ04B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Muda posicionamentos e cria superioridade entre linhas ou pelos lados.'**
+  String get tacticalQ04B;
+
+  /// No description provided for @tacticalQ04C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aumenta velocidade, cruzamentos, profundidade e disputa de rebotes.'**
+  String get tacticalQ04C;
+
+  /// No description provided for @tacticalQ04D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coloca mais presença na área e muda a rota do ataque conforme a defesa reage.'**
+  String get tacticalQ04D;
+
+  /// No description provided for @tacticalQ05.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você vai enfrentar fora de casa um adversário claramente superior tecnicamente.'**
+  String get tacticalQ05;
+
+  /// No description provided for @tacticalQ05A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mantém sua proposta de controle e saída com bola; é assim que o time joga.'**
+  String get tacticalQ05A;
+
+  /// No description provided for @tacticalQ05B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Continua tentando ter a bola, mas ajusta pressão e posicionamento ao rival.'**
+  String get tacticalQ05B;
+
+  /// No description provided for @tacticalQ05C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aceita ter menos posse, protege os espaços e prioriza a transição.'**
+  String get tacticalQ05C;
+
+  /// No description provided for @tacticalQ05D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pressiona alto e procura atacar rapidamente, mesmo assumindo risco.'**
+  String get tacticalQ05D;
+
+  /// No description provided for @tacticalQ06.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu melhor jogador decide partidas, mas participa pouco da recomposição. O que fazer?'**
+  String get tacticalQ06;
+
+  /// No description provided for @tacticalQ06A.
+  ///
+  /// In pt, this message translates to:
+  /// **'O modelo vem primeiro; se não cumprir a função, pode perder a vaga.'**
+  String get tacticalQ06A;
+
+  /// No description provided for @tacticalQ06B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Muda a função dele para manter o talento sem desequilibrar o coletivo.'**
+  String get tacticalQ06B;
+
+  /// No description provided for @tacticalQ06C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Reorganiza os companheiros para compensar e preserva o craque em zonas ofensivas.'**
+  String get tacticalQ06C;
+
+  /// No description provided for @tacticalQ06D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Dá liberdade. Jogadores especiais precisam ser tratados de maneira especial.'**
+  String get tacticalQ06D;
+
+  /// Pergunta da Identidade Futebolística que cita o clube ativo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Intervalo. O {club} perde por 1 a 0, mas está jogando bem e criando chances.'**
+  String tacticalQ07(String club);
+
+  /// No description provided for @tacticalQ07A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não mexe. O plano funciona e o gol será consequência.'**
+  String get tacticalQ07A;
+
+  /// No description provided for @tacticalQ07B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Faz pequenos ajustes de posicionamento sem abandonar a ideia inicial.'**
+  String get tacticalQ07B;
+
+  /// No description provided for @tacticalQ07C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coloca mais profundidade ou outro atacante e passa a chegar mais rápido.'**
+  String get tacticalQ07C;
+
+  /// No description provided for @tacticalQ07D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aumenta a velocidade da circulação e coloca mais jogadores entre as linhas.'**
+  String get tacticalQ07D;
+
+  /// No description provided for @tacticalQ08.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu time perde a bola perto da área adversária. Qual reação você espera?'**
+  String get tacticalQ08;
+
+  /// No description provided for @tacticalQ08A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pressão imediata para recuperar ali mesmo, independentemente do rival.'**
+  String get tacticalQ08A;
+
+  /// No description provided for @tacticalQ08B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pressiona se houver jogadores suficientes perto; caso contrário, recompõe.'**
+  String get tacticalQ08B;
+
+  /// No description provided for @tacticalQ08C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Primeiro reorganiza o bloco e fecha o centro do campo.'**
+  String get tacticalQ08C;
+
+  /// No description provided for @tacticalQ08D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Interrompe a transição e impede que o adversário consiga acelerar.'**
+  String get tacticalQ08D;
+
+  /// Pergunta da Identidade Futebolística que cita o clube ativo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Faltam dez minutos e o {club} precisa de um gol.'**
+  String tacticalQ09(String club);
+
+  /// No description provided for @tacticalQ09A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Mantém a construção paciente. Desorganização não é solução.'**
+  String get tacticalQ09A;
+
+  /// No description provided for @tacticalQ09B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Coloca jogadores mais ofensivos, mas mantém a bola no chão e a estrutura.'**
+  String get tacticalQ09B;
+
+  /// No description provided for @tacticalQ09C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ocupa o campo adversário, joga mais direto e ataca primeira e segunda bolas.'**
+  String get tacticalQ09C;
+
+  /// No description provided for @tacticalQ09D.
+  ///
+  /// In pt, this message translates to:
+  /// **'Muda o desenho e alterna ataques curtos e diretos conforme a defesa oferecer espaço.'**
+  String get tacticalQ09D;
+
+  /// No description provided for @tacticalQ10.
+  ///
+  /// In pt, this message translates to:
+  /// **'Qual frase mais representa sua maneira de pensar futebol?'**
+  String get tacticalQ10;
+
+  /// No description provided for @tacticalQ10A.
+  ///
+  /// In pt, this message translates to:
+  /// **'Primeiro vem a nossa maneira de jogar; depois pensamos no adversário.'**
+  String get tacticalQ10A;
+
+  /// No description provided for @tacticalQ10B.
+  ///
+  /// In pt, this message translates to:
+  /// **'Os princípios permanecem, mas esquema e estratégia podem mudar.'**
+  String get tacticalQ10B;
+
+  /// No description provided for @tacticalQ10C.
+  ///
+  /// In pt, this message translates to:
+  /// **'Chegar ao gol rapidamente vale mais do que ter a bola por ter.'**
+  String get tacticalQ10C;
+
+  /// No description provided for @tacticalQ10D.
+  ///
+  /// In pt, this message translates to:
+  /// **'O melhor futebol é o que potencializa nossas peças e ataca as fraquezas do rival.'**
+  String get tacticalQ10D;
 }
 
 class _AppLocalizationsDelegate

@@ -1392,5 +1392,87 @@
   "storeValZipInvalid": "Código postal inválido.",
   "releaseGateTitle": "Actualización necesaria",
   "releaseGateMessage": "Esta versión de la app ya no es compatible. Actualiza para continuar.",
-  "releaseGateUpdateButton": "Actualizar ahora"
+  "releaseGateUpdateButton": "Actualizar ahora",
+  "tacticalQ01": "El rival presiona tu salida y cierra los pases cortos. ¿Qué hace tu {club}?",
+  "@tacticalQ01": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ01A": "Sigue saliendo en corto, atrayendo la presión hasta encontrar al hombre libre.",
+  "tacticalQ01B": "Intenta salir en corto, pero si la presión aprieta busca enseguida el espacio a la espalda.",
+  "tacticalQ01C": "Va directo al delantero o al carril y prepara al equipo para ganar la segunda pelota.",
+  "tacticalQ01D": "Detecta dónde la presión rival es más frágil y sale por ahí, en corto o en largo.",
+  "tacticalQ02": "Tu equipo recupera en el mediocampo con el rival todavía desordenado. ¿Cuál es la primera idea?",
+  "tacticalQ02A": "Retiene la pelota, junta al equipo y arma el ataque.",
+  "tacticalQ02B": "Busca el pase hacia adelante si hay ventaja; si no la hay, conserva la posesión.",
+  "tacticalQ02C": "Acelera de inmediato e intenta llegar al gol en pocos pases.",
+  "tacticalQ02D": "Decide según dónde están los rivales y quién tiene superioridad en esa jugada.",
+  "tacticalQ03": "El {club} gana 1 a 0 como visitante a los 75 minutos.",
+  "@tacticalQ03": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ03A": "No cambia nada. Si el plan dio la ventaja, el plan sigue.",
+  "tacticalQ03B": "Pasa a controlar con más posesión y hace correr al rival detrás de la pelota.",
+  "tacticalQ03C": "Cierra mejor los espacios y prepara transiciones para liquidar el partido.",
+  "tacticalQ03D": "Sigue presionando y va por el segundo antes de que el rival crezca.",
+  "tacticalQ04": "El rival se plantó con dos líneas cerca de su área. ¿Cómo rompes el bloque?",
+  "tacticalQ04A": "Circula con paciencia hasta que aparezca el espacio justo.",
+  "tacticalQ04B": "Cambia posiciones y genera superioridad entre líneas o por afuera.",
+  "tacticalQ04C": "Sube el ritmo: centros, profundidad y disputa de rebotes.",
+  "tacticalQ04D": "Mete más presencia en el área y cambia el camino del ataque según reaccione la defensa.",
+  "tacticalQ05": "Visitas a un rival claramente superior con la pelota.",
+  "tacticalQ05A": "Mantiene su propuesta de control y salida jugada; así juega este equipo.",
+  "tacticalQ05B": "Sigue queriendo la pelota, pero ajusta la presión y la posición al rival.",
+  "tacticalQ05C": "Acepta tener menos posesión, protege los espacios y prioriza la transición.",
+  "tacticalQ05D": "Presiona alto y ataca rápido, aun asumiendo el riesgo.",
+  "tacticalQ06": "Tu mejor jugador define partidos, pero casi no vuelve a marcar. ¿Qué haces?",
+  "tacticalQ06A": "El modelo va primero; si no cumple la función, puede perder el puesto.",
+  "tacticalQ06B": "Le cambia la función para conservar el talento sin desequilibrar al equipo.",
+  "tacticalQ06C": "Reordena a los compañeros para compensar y lo deja arriba, en zona de ataque.",
+  "tacticalQ06D": "Le da libertad. A los jugadores especiales se los trata de manera especial.",
+  "tacticalQ07": "Entretiempo. El {club} pierde 1 a 0, pero juega bien y genera ocasiones.",
+  "@tacticalQ07": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ07A": "No toca nada. El plan funciona y el gol va a llegar.",
+  "tacticalQ07B": "Hace pequeños ajustes de posición sin abandonar la idea inicial.",
+  "tacticalQ07C": "Suma profundidad u otro delantero y empieza a llegar más rápido.",
+  "tacticalQ07D": "Acelera la circulación y pone más jugadores entre líneas.",
+  "tacticalQ08": "Tu equipo pierde la pelota cerca del área rival. ¿Qué reacción esperas?",
+  "tacticalQ08A": "Presión inmediata para recuperarla ahí mismo, sea quien sea el rival.",
+  "tacticalQ08B": "Presiona si hay suficientes jugadores cerca; si no, se reordena.",
+  "tacticalQ08C": "Primero rearma el bloque y cierra el centro del campo.",
+  "tacticalQ08D": "Corta la transición para que el rival nunca llegue a acelerar.",
+  "tacticalQ09": "Faltan diez minutos y el {club} necesita un gol.",
+  "@tacticalQ09": {
+    "description": "Pergunta da Identidade Futebolística que cita o clube ativo.",
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "tacticalQ09A": "Mantiene la construcción paciente. El desorden no es una solución.",
+  "tacticalQ09B": "Pone jugadores más ofensivos, pero mantiene la pelota abajo y la estructura.",
+  "tacticalQ09C": "Se instala en campo rival, juega más directo y ataca primera y segunda pelota.",
+  "tacticalQ09D": "Cambia el dibujo y alterna ataques cortos y directos según el espacio que den.",
+  "tacticalQ10": "¿Qué frase representa mejor tu manera de pensar el fútbol?",
+  "tacticalQ10A": "Primero está nuestra manera de jugar; después pensamos en el rival.",
+  "tacticalQ10B": "Los principios se mantienen, pero el esquema y la estrategia pueden cambiar.",
+  "tacticalQ10C": "Llegar rápido al gol vale más que tener la pelota por tenerla.",
+  "tacticalQ10D": "El mejor fútbol es el que potencia a nuestros jugadores y ataca las debilidades del rival."
 }

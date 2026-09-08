@@ -1,5 +1,6 @@
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/club_scoped_fallback.dart';
+import 'package:goias_app/features/arena/games/player_identity/domain/bragantino_player_identity_references.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_engine.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_references.dart';
@@ -18,6 +19,7 @@ import 'package:goias_app/features/arena/games/player_identity/domain/player_ide
 const playerIdentityReferenceSets =
     ClubScopedFallback<List<PlayerIdentityReference>>({
       'goias': playerIdentityReferences,
+      'bragantino': bragantinoPlayerIdentityReferences,
     });
 
 /// Monta o `PlayerIdentityEngine` com o dataset do clube ativo. Lança

@@ -7,6 +7,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/cubit/tactical_identity_cubit.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/cubit/tactical_identity_state.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_questions.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/presentation/tactical_identity_copy.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_option_tile.dart';
 import 'package:goias_app/features/arena/presentation/widgets/arena_game_header.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
@@ -143,7 +144,7 @@ class _QuestionView extends StatelessWidget {
                                         ),
                                       ),
                                       child: Text(
-                                        question.text,
+                                        context.tacticalQuestionText(question),
                                         style: TextStyle(
                                           color: colors.textPrimary,
                                           fontSize: 17,

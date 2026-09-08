@@ -8,7 +8,6 @@
 class TacticalOption {
   const TacticalOption({
     required this.id,
-    required this.text,
     required this.deltaX,
     required this.deltaY,
     this.pressing = 0,
@@ -18,7 +17,6 @@ class TacticalOption {
   });
 
   final String id;
-  final String text;
   final int deltaX;
   final int deltaY;
 
@@ -32,14 +30,9 @@ class TacticalOption {
 }
 
 class TacticalQuestion {
-  const TacticalQuestion({
-    required this.id,
-    required this.text,
-    required this.options,
-  });
+  const TacticalQuestion({required this.id, required this.options});
 
   final String id;
-  final String text;
   final List<TacticalOption> options;
 }
 
