@@ -37,8 +37,17 @@ export interface ClubNewsConfig {
 }
 
 export interface ClubYouTubeConfig {
-  /** Handle público do canal (ex.: `@TVGoias`). Não é secret. */
+  /** Handle público do canal (ex.: `@TVGoias`) — metadata/config, nunca
+   * usado sozinho pra decisão de identidade. Não é secret. */
   channelHandle: string;
+  /** Id canônico do canal (`UC...`, nunca muda — ao contrário do handle,
+   * que pode ser renomeado). OPCIONAL: quando presente, o provider resolve
+   * a playlist de uploads por id (`channels?id=`, mais robusto); quando
+   * ausente, cai pro lookup por handle (`channels?forHandle=`, o
+   * comportamento de sempre — nunca alterado pra quem já está em produção
+   * sem essa config). Nunca inventar: só popular com um id confirmado
+   * navegando o canal de verdade. */
+  channelId?: string;
   authorName: string;
   authorHandle: string;
 }
@@ -86,13 +95,14 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
   },
 
   // Bragantino: notícias confirmadas em 2026-09-08 (API JSON interna da SPA
-  // oficial, sem chave — ver `news/bragantino_parser.ts`). YouTube/X seguem
-  // WAITING_EXTERNAL_CONFIG (canal não confirmado, handle sem pipeline) —
-  // nada inventado. Instagram só tem a CHAVE de KV estruturada (não é secret
-  // e não é dado) pra o Cron do deploy do Bragantino escrever no namespace
-  // DELE quando a Apify task for configurada (WAITING_EXTERNAL_TASK_CONFIG).
-  // Enquanto não houver dado, o KV fica vazio -> provider devolve `[]`, sem
-  // cross-club.
+  // oficial, sem chave — ver `news/bragantino_parser.ts`); YouTube confirmado
+  // em 2026-09-08 (canal oficial dado pelo usuário, `@MassaBrutaTV` — id e
+  // metadados abaixo verificados navegando `youtube.com/@MassaBrutaTV`, nunca
+  // inventados). X segue WAITING_EXTERNAL_CONFIG (handle sem pipeline).
+  // Instagram só tem a CHAVE de KV estruturada (não é secret e não é dado)
+  // pra o Cron do deploy do Bragantino escrever no namespace DELE quando a
+  // Apify task for configurada (WAITING_EXTERNAL_TASK_CONFIG). Enquanto não
+  // houver dado, o KV fica vazio -> provider devolve `[]`, sem cross-club.
   bragantino: {
     code: 'bragantino',
     news: {
@@ -107,6 +117,19 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
       siteOrigin: 'https://www.redbullbragantino.com',
       articlePathPrefix: '/br-pt/noticias',
       parser: 'bragantino',
+    },
+    youtube: {
+      channelHandle: '@MassaBrutaTV',
+      // Confirmado via `<link rel="canonical">` +
+      // `channelMetadataRenderer.externalId` da própria página do canal —
+      // `vanityChannelUrl` bate exatamente com `@MassaBrutaTV`.
+      channelId: 'UC0x9Ypk2Z1lUdR4a88jMC2Q',
+      // Nome de exibição registrado é "Massa Bruta TV | Red Bull Bragantino"
+      // (confirmado em `channelMetadataRenderer.title`) — `authorName` usa só
+      // a parte curta/humana, mesmo critério já aplicado ao Goiás (canal
+      // registrado como "Goiás Esporte Clube", `authorName` é "TV Goiás").
+      authorName: 'Massa Bruta TV',
+      authorHandle: 'MassaBrutaTV',
     },
     instagram: { kvKey: instagramKvKey('bragantino') },
   },

@@ -161,18 +161,25 @@ void main() {
       },
     );
 
-    test('capabilities sem dado real nenhum continuam desligadas (exceto News, real desde 2026-09-08)', () {
-      final c = bragantinoClubConfig.capabilities;
-      expect(c.hasMembership, isFalse);
-      expect(c.hasStore, isFalse);
-      expect(c.hasTickets, isFalse);
-      expect(c.hasCrowdLineup, isFalse);
-      // News passou a ter fonte oficial real no Worker (API JSON própria do
-      // Red Bull Bragantino) — Instagram/YouTube/X seguem sem dado real.
-      expect(c.hasNews, isTrue);
-      expect(c.hasSocial, isFalse);
-      expect(c.enabledArenaGames, isEmpty);
-    });
+    test(
+      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social, reais desde 2026-09-08)',
+      () {
+        final c = bragantinoClubConfig.capabilities;
+        expect(c.hasMembership, isFalse);
+        expect(c.hasStore, isFalse);
+        expect(c.hasTickets, isFalse);
+        expect(c.hasCrowdLineup, isFalse);
+        // News tem fonte oficial real no Worker (API JSON própria). Social
+        // (YouTube @MassaBrutaTV) confirmado ao vivo contra a Data API v3
+        // real — 15 vídeos reais devolvidos pelo Worker, isolamento
+        // cross-club intacto (`?club=goias` no deploy do Bragantino segue
+        // 404). Instagram/X seguem sem config própria, mas isso nunca
+        // derruba o feed inteiro (`Promise.allSettled` por provider).
+        expect(c.hasNews, isTrue);
+        expect(c.hasSocial, isTrue);
+        expect(c.enabledArenaGames, isEmpty);
+      },
+    );
 
     // 2026-09-05/06 (M4.3): história/títulos/hino têm conteúdo real e
     // pesquisado (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
