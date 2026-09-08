@@ -7,7 +7,7 @@
  * é fixa (3x/dia pelo Cron), independente de acesso de usuário.
  */
 
-import { instagramKvKey } from './club_media_config';
+import { clubMediaConfig, instagramKvKey } from './club_media_config';
 
 /** Post já normalizado, no formato exato guardado no KV. */
 export interface StoredInstagramPost {
@@ -107,7 +107,12 @@ export async function syncInstagram(env: InstagramSyncEnv): Promise<SyncOutcome>
     return keepPrevious(reason, duration());
   }
 
-  const posts = normalize(items);
+  const instagramConfig = clubMediaConfig(env.CLUB_CODE)?.instagram;
+  const authorOverride =
+    instagramConfig?.authorName && instagramConfig?.authorHandle
+      ? { name: instagramConfig.authorName, handle: instagramConfig.authorHandle }
+      : undefined;
+  const posts = normalize(items, authorOverride);
   console.log(`instagram.sync.received count=${items.length} valid=${posts.length}`);
 
   if (posts.length === 0) {
@@ -152,8 +157,23 @@ async function fetchApifyItems(token: string, taskId: string): Promise<ApifyInst
   return data as ApifyInstagramItem[];
 }
 
-/** Mapeia + valida + ordena (mais recente primeiro) + limita a 5. */
-export function normalize(items: ApifyInstagramItem[]): StoredInstagramPost[] {
+/** Identidade fixa a estampar em todo post, no lugar do owner cru do Apify
+ * (ver doc de `ClubInstagramConfig.authorName`/`authorHandle`). */
+export interface AuthorOverride {
+  name: string;
+  handle: string;
+}
+
+/** Mapeia + valida + ordena (mais recente primeiro) + limita a 5.
+ *
+ * [authorOverride] SÓ deve vir preenchido pra clube cuja Task raspa posts
+ * colaborativos (ver `ClubInstagramConfig`) — sem ele (undefined, o caso do
+ * Goiás, nunca alterado), author/username seguem crus do Apify, byte a byte,
+ * como sempre foi. */
+export function normalize(
+  items: ApifyInstagramItem[],
+  authorOverride?: AuthorOverride,
+): StoredInstagramPost[] {
   return items
     .map((item): StoredInstagramPost | null => {
       const id = item.shortCode;
@@ -163,11 +183,12 @@ export function normalize(items: ApifyInstagramItem[]): StoredInstagramPost[] {
       return {
         id,
         platform: 'instagram',
-        // Sem fallback de clube cravado — o autor/handle vem do próprio dado
-        // do Apify (que é a conta configurada na task DESTE deploy). Ausente
-        // -> string vazia, nunca o nome/handle de um clube específico.
-        author: item.ownerFullName ?? '',
-        username: item.ownerUsername ?? '',
+        // Sem fallback de clube cravado — sem override, o autor/handle vem
+        // do próprio dado do Apify (a conta configurada na task DESTE
+        // deploy). Ausente -> string vazia, nunca o nome/handle de um clube
+        // específico.
+        author: authorOverride?.name ?? item.ownerFullName ?? '',
+        username: authorOverride?.handle ?? item.ownerUsername ?? '',
         caption: item.caption ?? '',
         mediaType: item.type ?? 'Image',
         mediaUrl: item.displayUrl ?? '',

@@ -55,6 +55,18 @@ export interface ClubYouTubeConfig {
 export interface ClubInstagramConfig {
   /** Chave do Workers KV onde o Cron deste deploy grava/lê. Não é secret. */
   kvKey: string;
+  /** Identidade a estampar em CADA post normalizado, substituindo
+   * `ownerFullName`/`ownerUsername` crus do Apify — necessário porque a
+   * Task raspa o GRID do perfil-alvo, que inclui posts colaborativos
+   * (Instagram "collab post") onde o dado bruto do Apify aponta o OUTRO
+   * parceiro do post (ex.: patrocinador, Red Bull Brasil) como "owner",
+   * mesmo o post aparecendo no grid oficial do clube. OPCIONAL: ausente
+   * (caso do Goiás, nunca alterado) preserva o comportamento de sempre —
+   * author/username crus do Apify, byte a byte. Só populado quando a Task
+   * deste clube é conhecida por trazer posts colaborativos (Bragantino,
+   * 2026-09-08). */
+  authorName?: string;
+  authorHandle?: string;
 }
 
 export interface ClubXConfig {
@@ -139,7 +151,20 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
       authorName: 'Massa Bruta TV',
       authorHandle: 'MassaBrutaTV',
     },
-    instagram: { kvKey: instagramKvKey('bragantino') },
+    // Conta oficial confirmada em 2026-09-08 (username `redbullbragantino`
+    // — mesma checagem cruzada do X: config `social-follow-panel` do
+    // próprio site oficial + perfil verificado, bio "Perfil oficial do Red
+    // Bull Bragantino"). Task Apify dedicada
+    // `rb-bragantino-instagram-latest` (`APIFY_INSTAGRAM_TASK_ID` em
+    // `wrangler.bragantino.toml`) raspa o grid desse perfil; posts
+    // colaborativos nele (Puma Brasil, Red Bull Brasil) vêm com o
+    // `ownerUsername` cru apontando pro OUTRO parceiro — daí precisar do
+    // override abaixo (ver doc em `ClubInstagramConfig`).
+    instagram: {
+      kvKey: instagramKvKey('bragantino'),
+      authorName: 'Red Bull Bragantino',
+      authorHandle: 'redbullbragantino',
+    },
     x: { dataFile: 'bragantino' },
   },
 };

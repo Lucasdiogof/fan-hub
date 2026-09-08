@@ -104,6 +104,21 @@ describe('normalize', () => {
     ]);
     expect(posts.map(p => p.id)).toEqual(['ok']);
   });
+
+  it('sem authorOverride, author/username seguem crus do Apify (Goiás, nunca alterado)', () => {
+    const [post] = normalize([apifyItem()]);
+    expect(post.author).toBe('Goiás Esporte Clube | Oficial');
+    expect(post.username).toBe('goiasoficial');
+  });
+
+  it('COLLAB POST: com authorOverride, estampa a identidade do perfil consultado — nunca o owner cru (ex.: patrocinador/parceiro do post)', () => {
+    const [post] = normalize(
+      [apifyItem({ ownerUsername: 'pumabrasil', ownerFullName: '' })],
+      { name: 'Red Bull Bragantino', handle: 'redbullbragantino' },
+    );
+    expect(post.author).toBe('Red Bull Bragantino');
+    expect(post.username).toBe('redbullbragantino');
+  });
 });
 
 describe('syncInstagram', () => {
@@ -125,6 +140,34 @@ describe('syncInstagram', () => {
     expect(stored.posts).toHaveLength(1);
     expect(stored.updatedAt).toBeTruthy();
     expect(stored.lastSuccessfulSyncAt).toBe(stored.updatedAt);
+  });
+
+  it('COLLAB POST end-to-end: sync do Bragantino estampa a identidade oficial mesmo quando o Apify devolve o owner de outro parceiro (Puma/Red Bull Brasil)', async () => {
+    const kv = makeKv(undefined, 'bragantino');
+    stubFetch(() =>
+      new Response(
+        JSON.stringify([apifyItem({ ownerUsername: 'pumabrasil', ownerFullName: '' })]),
+        { status: 200 },
+      ),
+    );
+
+    const outcome = await syncInstagram(env(kv.env));
+
+    expect(outcome.status).toBe('updated');
+    const [post] = kv.current()!.posts;
+    expect(post.author).toBe('Red Bull Bragantino');
+    expect(post.username).toBe('redbullbragantino');
+  });
+
+  it('sync do Goiás continua com o owner cru do Apify (sem override configurado)', async () => {
+    const kv = makeKv(undefined, 'goias');
+    stubFetch(() => new Response(JSON.stringify([apifyItem()]), { status: 200 }));
+
+    await syncInstagram(env(kv.env));
+
+    const [post] = kv.current()!.posts;
+    expect(post.author).toBe('Goiás Esporte Clube | Oficial');
+    expect(post.username).toBe('goiasoficial');
   });
 
   it('keeps the previous KV when Apify returns an HTTP error', async () => {
@@ -269,6 +312,19 @@ describe('KV key por clube — isolamento cross-club', () => {
     expect(outcome.status).toBe('updated');
     expect(kv.lastPutKey()).toBe('instagram:bragantino:latest');
     expect(kv.lastPutKey()).not.toBe('instagram:goias:latest');
+  });
+
+  it('CROSS-CLUB (inverso): o Cron do Goiás escreve SÓ em instagram:goias:latest, NUNCA na chave do Bragantino', async () => {
+    const kv = makeKv(undefined, 'goias');
+    stubFetch(() => new Response(JSON.stringify([apifyItem()]), { status: 200 }));
+    const outcome = await syncInstagram({
+      ...kv.env,
+      APIFY_TOKEN: 'secret',
+      APIFY_INSTAGRAM_TASK_ID: 'task123',
+    });
+    expect(outcome.status).toBe('updated');
+    expect(kv.lastPutKey()).toBe('instagram:goias:latest');
+    expect(kv.lastPutKey()).not.toBe('instagram:bragantino:latest');
   });
 
   it('sem CLUB_CODE o sync é no-op (nunca escreve numa chave de clube errado)', async () => {

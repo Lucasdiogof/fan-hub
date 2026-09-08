@@ -16,6 +16,8 @@ describe('CLUB_MEDIA_CONFIG — resolução central por clube, sem fallback cros
     expect(g.news?.parser).toBe('goias');
     expect(g.youtube?.channelHandle).toBe('@TVGoias');
     expect(g.instagram?.kvKey).toBe('instagram:goias:latest');
+    expect(g.instagram?.authorName).toBeUndefined();
+    expect(g.instagram?.authorHandle).toBeUndefined();
     expect(g.x?.dataFile).toBe('goias');
   });
 
@@ -27,6 +29,12 @@ describe('CLUB_MEDIA_CONFIG — resolução central por clube, sem fallback cros
     expect(b.news?.sourceUrl).toContain('redbullbragantino.com');
     expect(b.x?.dataFile).toBe('bragantino');
     expect(b.instagram?.kvKey).toBe('instagram:bragantino:latest');
+  });
+
+  it('Bragantino: instagram tem authorOverride (redbullbragantino) pra corrigir posts colaborativos — Goiás nunca tem isso', () => {
+    const b = clubMediaConfig('bragantino')!;
+    expect(b.instagram?.authorName).toBe('Red Bull Bragantino');
+    expect(b.instagram?.authorHandle).toBe('redbullbragantino');
   });
 
   it('Bragantino: youtube é @MassaBrutaTV, com channelId real confirmado — nunca @TVGoias', () => {

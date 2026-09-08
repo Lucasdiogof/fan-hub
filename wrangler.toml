@@ -53,20 +53,25 @@ CACHE_VERSION = "16"
 # O APIFY_TOKEN fica como secret do Worker.
 APIFY_INSTAGRAM_TASK_ID = "81AnzgCcTifiDW6VH"
 
-# Instagram atualizado 4x/dia pelo Cron, sempre em horário de Brasil (BRT,
-# UTC-3, sem horário de verão) — nunca de madrugada, abrindo o dia de manhã e
-# concentrado no fim de tarde/noite (quando o Goiás mais posta, por causa dos
-# jogos):
-# 10h UTC = 07h BRT
-# 18h UTC = 15h BRT
+# Instagram atualizado 3x/dia pelo Cron, em horário de Brasil (BRT, UTC-3,
+# sem horário de verão):
+# 11h UTC = 08h BRT
+# 17h UTC = 14h BRT
 # 23h UTC = 20h BRT
-# 02h30 UTC = 23h30 BRT
+#
+# REDUZIDO de 4x/dia -> 3x/dia em 2026-09-08 (decisão do usuário): a conta
+# Cloudflare tem limite de 5 cron triggers no total (plano Free), e o
+# Bragantino também precisava de slots pro próprio Instagram — em vez de
+# upgrade de plano ou monopolizar os 5 slots só com o Goiás, dividimos:
+# Goiás 3x + Bragantino 2x = 5, exatamente o limite. Horários dos dois
+# clubes desencontrados de propósito (ver wrangler.bragantino.toml) pra
+# nunca disparar os dois ao mesmo tempo.
 #
 # O Cron executa o Apify e salva os últimos posts no KV.
 # O Flutter apenas lê os dados já armazenados.
 # Nenhuma abertura do aplicativo dispara o Apify.
 [triggers]
-crons = ["0 10 * * *", "0 18 * * *", "0 23 * * *", "30 2 * * *"]
+crons = ["0 11 * * *", "0 17 * * *", "0 23 * * *"]
 
 # KV persistente do feed social / Instagram.
 [[kv_namespaces]]
