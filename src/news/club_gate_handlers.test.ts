@@ -5,59 +5,77 @@ import { handleSocialFeed } from '../social/feed';
 import type { Env } from '../football/_lib/config';
 import type { SocialEnv } from '../social/config';
 
-// Gate de clube (achado crítico M4): as 3 rotas devolvem "unavailable"
-// ANTES de qualquer fetch/cache pro site do Goiás — por isso um `env`
-// mínimo (sem KV real) já basta pra provar o short-circuit. `club-b` é
-// SEMPRE sintético, nunca cadastrado em SERVER_CLUB_CODES/registry real.
-const fakeEnv = {} as Env;
-const fakeSocialEnv = {} as SocialEnv;
+// Gate de clube por `env.CLUB_CODE`: as 3 rotas devolvem "unavailable" ANTES
+// de qualquer fetch/cache quando o `?club=` não bate com o clube DESTE deploy
+// (ou quando o clube não tem a fonte configurada). Envs mínimos (sem KV/secret
+// real) bastam pra provar o short-circuit do gate. `club-b` é sintético.
+const goiasEnv = { CLUB_CODE: 'goias', CACHE_VERSION: '1' } as Env;
+const bragantinoEnv = { CLUB_CODE: 'bragantino', CACHE_VERSION: '1' } as Env;
+const goiasSocialEnv = { CLUB_CODE: 'goias', CACHE_VERSION: '1' } as SocialEnv;
+const bragantinoSocialEnv = { CLUB_CODE: 'bragantino', CACHE_VERSION: '1' } as SocialEnv;
 
-describe('News/Social club gate — clubB sintético nunca vê conteúdo do Goiás (achado crítico M4)', () => {
-  it('handleNewsList com ?club=club-b -> 404 unavailable, nunca a lista real do Goiás', async () => {
-    const request = new Request('https://example.com/api/news?club=club-b');
-    const response = await handleNewsList(request, fakeEnv);
-    expect(response.status).toBe(404);
-    const body = await response.json();
-    expect(body).toEqual({ items: [], available: false });
+async function body(res: Response): Promise<unknown> {
+  return res.json().catch(() => null);
+}
+
+describe('Gate por env.CLUB_CODE — deploy do Goiás', () => {
+  it('?club=club-b -> 404 unavailable, nunca a lista real do Goiás', async () => {
+    const res = await handleNewsList(new Request('https://x/api/news?club=club-b'), goiasEnv);
+    expect(res.status).toBe(404);
+    expect(await body(res)).toEqual({ items: [], available: false });
   });
 
-  it('handleNewsList sem ?club= continua servindo o Goiás normalmente (compat) — não passa pelo gate, chega no fetch real', async () => {
-    const request = new Request('https://example.com/api/news');
-    // Sem mock de fetch/KV aqui de propósito: só provamos que o gate NÃO
-    // interceptou (não devolveu o corpo `{ items: [], available: false }`
-    // sincronamente) — a chamada real de rede pode falhar neste ambiente
-    // de teste, o que é esperado e não é o que este teste verifica.
-    const response = await handleNewsList(request, fakeEnv).catch(() => null);
-    if (response) {
-      const body = await response.json().catch(() => null);
-      expect(body).not.toEqual({ items: [], available: false });
+  it('CROSS-CLUB: ?club=bragantino no Worker do Goiás -> 404, nunca conteúdo do Goiás', async () => {
+    const list = await handleNewsList(new Request('https://x/api/news?club=bragantino'), goiasEnv);
+    expect(list.status).toBe(404);
+    expect(await body(list)).toEqual({ items: [], available: false });
+
+    const article = await handleNewsArticle(new Request('https://x/api/news/n?club=bragantino'), goiasEnv, 'n');
+    expect(article.status).toBe(404);
+    expect(await body(article)).toEqual({ available: false, url: null });
+
+    const feed = await handleSocialFeed(new Request('https://x/api/social/feed?club=bragantino'), goiasSocialEnv);
+    expect(feed.status).toBe(404);
+    expect(await body(feed)).toEqual({ posts: [], available: false });
+  });
+
+  it('?club=goias (implícito e explícito) passa pelo gate (não é 404 do gate)', async () => {
+    for (const url of ['https://x/api/news/n', 'https://x/api/news/n?club=goias']) {
+      const res = await handleNewsArticle(new Request(url), goiasEnv, 'n').catch(() => null);
+      if (res) expect(res.status).not.toBe(404);
     }
   });
+});
 
-  it('handleNewsArticle com ?club=club-b -> 404 unavailable, url null (nunca a URL real do site do Goiás)', async () => {
-    const request = new Request('https://example.com/api/news/alguma-noticia?club=club-b');
-    const response = await handleNewsArticle(request, fakeEnv, 'alguma-noticia');
-    expect(response.status).toBe(404);
-    const body = await response.json();
-    expect(body).toEqual({ available: false, url: null });
+describe('Gate por env.CLUB_CODE — deploy do Bragantino', () => {
+  it('CROSS-CLUB: ?club=goias no Worker do Bragantino -> 404, nunca conteúdo do outro clube', async () => {
+    const list = await handleNewsList(new Request('https://x/api/news?club=goias'), bragantinoEnv);
+    expect(list.status).toBe(404);
+    expect(await body(list)).toEqual({ items: [], available: false });
+
+    const feed = await handleSocialFeed(new Request('https://x/api/social/feed?club=goias'), bragantinoSocialEnv);
+    expect(feed.status).toBe(404);
+    expect(await body(feed)).toEqual({ posts: [], available: false });
   });
 
-  it('handleSocialFeed com ?club=club-b -> 404 unavailable, feed vazio, nunca posts do Goiás', async () => {
-    const request = new Request('https://example.com/api/social/feed?club=club-b');
-    const response = await handleSocialFeed(request, fakeSocialEnv);
-    expect(response.status).toBe(404);
-    const body = await response.json();
-    expect(body).toEqual({ posts: [], available: false });
+  it('news do Bragantino (sem fonte configurada hoje) -> 404 unavailable, url null — NUNCA raspa goiasec', async () => {
+    const list = await handleNewsList(new Request('https://x/api/news?club=bragantino'), bragantinoEnv);
+    expect(list.status).toBe(404);
+    expect(await body(list)).toEqual({ items: [], available: false });
+
+    const article = await handleNewsArticle(new Request('https://x/api/news/n?club=bragantino'), bragantinoEnv, 'n');
+    expect(article.status).toBe(404);
+    expect(await body(article)).toEqual({ available: false, url: null });
   });
 
-  it('FABRICADO: ?club=goias explícito passa pelo gate igual ausência de ?club= (mesmo código de qualquer forma)', async () => {
-    const withClub = new Request('https://example.com/api/news/x?club=goias');
-    const withoutClub = new Request('https://example.com/api/news/x');
-    const responseWithClub = await handleNewsArticle(withClub, fakeEnv, 'x').catch(() => null);
-    const responseWithoutClub = await handleNewsArticle(withoutClub, fakeEnv, 'x').catch(() => null);
-    // Nenhum dos dois deveria ser interceptado pelo gate (404 unavailable) —
-    // se falhar depois disso é por causa da chamada de rede real, não do gate.
-    if (responseWithClub) expect(responseWithClub.status).not.toBe(404);
-    if (responseWithoutClub) expect(responseWithoutClub.status).not.toBe(404);
+  it('social do Bragantino -> feed vazio (sem KV/task), NUNCA posts do Goiás', async () => {
+    const feed = await handleSocialFeed(
+      new Request('https://x/api/social/feed?club=bragantino'),
+      bragantinoSocialEnv,
+    ).catch(() => null);
+    if (feed) {
+      const b = (await body(feed)) as { posts?: unknown[] };
+      expect(b?.posts ?? []).toEqual([]);
+    }
   });
 });

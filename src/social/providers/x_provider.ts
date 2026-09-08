@@ -1,7 +1,6 @@
 import type { SocialPost, SocialProvider } from '../types';
-import rawPosts from '../data/x_posts.json';
 
-interface RawXPost {
+export interface RawXPost {
   tweet_id: string;
   text: string;
   timestamp: string;
@@ -17,17 +16,23 @@ interface RawXPost {
 export class XProvider implements SocialProvider {
   name = 'x';
 
+  /** [rawPosts] é o arquivo de dados do PRÓPRIO clube (selecionado por
+   * `ClubMediaConfig.x.dataFile` em `config.ts`) — o provider nunca importa
+   * o arquivo de outro clube nem cai num handle fixo. */
+  constructor(private readonly rawPosts: RawXPost[]) {}
+
   async fetch(): Promise<SocialPost[]> {
-    const posts = rawPosts as RawXPost[];
-    return posts
+    return this.rawPosts
       .filter(post => post.tweet_id && post.timestamp)
       .map((post): SocialPost => {
         const image = post.image_links?.[0];
         return {
           id: `x-${post.tweet_id}`,
           platform: 'x',
-          authorName: post.user_name || 'Goiás Esporte Clube',
-          authorHandle: post.user_screen_name || 'goiasoficial',
+          // Sem fallback de clube: autor/handle vêm do próprio dado (a conta
+          // do clube deste deploy), ausente -> vazio, nunca "Goiás".
+          authorName: post.user_name || '',
+          authorHandle: post.user_screen_name || '',
           text: post.text || undefined,
           mediaType: image ? 'image' : 'text',
           imageUrl: image,

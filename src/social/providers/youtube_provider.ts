@@ -1,18 +1,28 @@
 import type { SocialPost, SocialProvider } from '../types';
 
-const TV_GOIAS_HANDLE = '@TVGoias';
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
 
 interface YouTubeConfig {
   apiKey: string;
+  /** Handle público do canal do clube (ex.: `@TVGoias`) — vem da
+   * `ClubMediaConfig`, nunca cravado no provider. */
+  channelHandle: string;
+  authorName: string;
+  authorHandle: string;
 }
 
 export class YouTubeProvider implements SocialProvider {
   name = 'youtube';
   private apiKey: string;
+  private channelHandle: string;
+  private authorName: string;
+  private authorHandle: string;
 
   constructor(config: YouTubeConfig) {
     this.apiKey = config.apiKey;
+    this.channelHandle = config.channelHandle;
+    this.authorName = config.authorName;
+    this.authorHandle = config.authorHandle;
   }
 
   async fetch(): Promise<SocialPost[]> {
@@ -28,7 +38,7 @@ export class YouTubeProvider implements SocialProvider {
   // cadeia sequencial de requests e, na hora do cache expirar, às vezes
   // estourava o timeout do app).
   private async resolveUploadsPlaylistId(): Promise<string | null> {
-    const url = `${YOUTUBE_API_BASE}/channels?forHandle=${encodeURIComponent(TV_GOIAS_HANDLE)}&part=contentDetails&key=${this.apiKey}`;
+    const url = `${YOUTUBE_API_BASE}/channels?forHandle=${encodeURIComponent(this.channelHandle)}&part=contentDetails&key=${this.apiKey}`;
     const response = await globalThis.fetch(url);
     if (!response.ok) {
       console.log(`youtube.resolveUploadsPlaylistId.error: ${response.status}`);
@@ -63,8 +73,8 @@ export class YouTubeProvider implements SocialProvider {
         return {
           id: `yt-${videoId}`,
           platform: 'youtube',
-          authorName: snippet.channelTitle ?? 'TV Goiás',
-          authorHandle: 'TVGoias',
+          authorName: snippet.channelTitle ?? this.authorName,
+          authorHandle: this.authorHandle,
           title: snippet.title,
           text: snippet.description ? snippet.description.slice(0, 200) : undefined,
           mediaType: 'video',

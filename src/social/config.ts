@@ -1,8 +1,10 @@
 import type { Env } from '../football/_lib/config';
 import type { SocialProvider } from './types';
+import type { ClubMediaConfig, XDataFileId } from './club_media_config';
 import { YouTubeProvider } from './providers/youtube_provider';
 import { InstagramProvider } from './providers/instagram_provider';
-import { XProvider } from './providers/x_provider';
+import { XProvider, type RawXPost } from './providers/x_provider';
+import goiasXPosts from './data/goias/x_posts.json';
 
 export interface SocialEnv extends Env {
   YOUTUBE_API_KEY?: string;
@@ -16,16 +18,43 @@ export interface SocialEnv extends Env {
   INSTAGRAM_SYNC_KEY?: string;
 }
 
-export function loadSocialProviders(env: SocialEnv): SocialProvider[] {
+/** Bundle estático dos posts do X por clube — cada deploy só serve o do
+ * próprio clube (a seleção é por `dataFile`, o gate garante o clube). */
+function xDataFor(dataFile: XDataFileId): RawXPost[] {
+  switch (dataFile) {
+    case 'goias':
+      return goiasXPosts as RawXPost[];
+  }
+}
+
+/** Monta os providers a partir da config de Mídia do clube DESTE deploy.
+ * Cada rede só entra se o clube a configura E (quando aplicável) o secret
+ * do deploy existe. Rede sem config simplesmente não aparece no feed —
+ * nunca cai pro dado de outro clube, e a ausência de uma não derruba as
+ * outras (o `handleSocialFeed` já usa `Promise.allSettled`). */
+export function loadSocialProviders(env: SocialEnv, media: ClubMediaConfig): SocialProvider[] {
   const providers: SocialProvider[] = [];
 
-  if (env.YOUTUBE_API_KEY) {
-    providers.push(new YouTubeProvider({ apiKey: env.YOUTUBE_API_KEY }));
+  if (media.youtube && env.YOUTUBE_API_KEY) {
+    providers.push(
+      new YouTubeProvider({
+        apiKey: env.YOUTUBE_API_KEY,
+        channelHandle: media.youtube.channelHandle,
+        authorName: media.youtube.authorName,
+        authorHandle: media.youtube.authorHandle,
+      }),
+    );
   }
 
-  // Instagram lê só do KV (atualizado pelo Cron) — nunca chama o Apify aqui.
-  providers.push(new InstagramProvider(env));
-  providers.push(new XProvider());
+  // Instagram lê SÓ a chave de KV do próprio clube (atualizada pelo Cron
+  // deste deploy) — nunca chama o Apify aqui, nunca lê a chave de outro clube.
+  if (media.instagram && env.SOCIAL_FEED_KV) {
+    providers.push(new InstagramProvider(env, media.instagram.kvKey));
+  }
+
+  if (media.x) {
+    providers.push(new XProvider(xDataFor(media.x.dataFile)));
+  }
 
   return providers;
 }

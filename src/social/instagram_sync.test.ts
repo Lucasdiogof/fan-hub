@@ -1,13 +1,15 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import {
-  INSTAGRAM_KV_KEY,
   normalize,
   readInstagramFromKv,
   syncInstagram,
   type InstagramKvValue,
   type InstagramSyncEnv,
 } from './instagram_sync';
+import { instagramKvKey } from './club_media_config';
 import { InstagramProvider } from './providers/instagram_provider';
+
+const GK = instagramKvKey('goias');
 
 interface ApifyRaw {
   shortCode?: string;
@@ -35,18 +37,21 @@ function apifyItem(overrides: Partial<ApifyRaw> = {}): ApifyRaw {
 }
 
 /** KV em memória com inspeção do que foi persistido. */
-function makeKv(initial?: InstagramKvValue) {
+function makeKv(initial?: InstagramKvValue, clubCode = 'goias') {
   let store: string | null = initial ? JSON.stringify(initial) : null;
+  let lastPutKey: string | null = null;
   const kv = {
     get: async (_key: string) => store,
-    put: async (_key: string, value: string) => {
+    put: async (key: string, value: string) => {
+      lastPutKey = key;
       store = value;
     },
   };
   return {
-    env: { SOCIAL_FEED_KV: kv } as unknown as InstagramSyncEnv,
+    env: { CLUB_CODE: clubCode, SOCIAL_FEED_KV: kv } as unknown as InstagramSyncEnv,
     current: () => (store ? (JSON.parse(store) as InstagramKvValue) : null),
     raw: () => store,
+    lastPutKey: () => lastPutKey,
   };
 }
 
@@ -189,15 +194,15 @@ describe('readInstagramFromKv', () => {
       posts: [],
     };
     const kv = makeKv(value);
-    expect(await readInstagramFromKv(kv.env)).toEqual(value);
+    expect(await readInstagramFromKv(kv.env, GK)).toEqual(value);
   });
 
   it('returns null when the KV is empty or holds invalid JSON', async () => {
-    expect(await readInstagramFromKv(makeKv().env)).toBeNull();
+    expect(await readInstagramFromKv(makeKv().env, GK)).toBeNull();
     const bad = {
       env: { SOCIAL_FEED_KV: { get: async () => '{oops' } } as unknown as InstagramSyncEnv,
     };
-    expect(await readInstagramFromKv(bad.env)).toBeNull();
+    expect(await readInstagramFromKv(bad.env, GK)).toBeNull();
   });
 });
 
@@ -223,7 +228,7 @@ describe('InstagramProvider', () => {
     const kv = makeKv(value);
     const fetchFn = stubFetch(() => new Response('[]'));
 
-    const posts = await new InstagramProvider(kv.env).fetch();
+    const posts = await new InstagramProvider(kv.env, GK).fetch();
 
     expect(fetchFn).not.toHaveBeenCalled(); // feed NUNCA chama o Apify
     expect(posts).toEqual([
@@ -243,12 +248,37 @@ describe('InstagramProvider', () => {
   });
 
   it('returns an empty list when the KV is empty (no crash)', async () => {
-    expect(await new InstagramProvider(makeKv().env).fetch()).toEqual([]);
+    expect(await new InstagramProvider(makeKv().env, GK).fetch()).toEqual([]);
   });
 });
 
-describe('KV key', () => {
-  it('uses the agreed single key', () => {
-    expect(INSTAGRAM_KV_KEY).toBe('instagram:goias:latest');
+describe('KV key por clube — isolamento cross-club', () => {
+  it('a chave é sempre instagram:<code>:latest', () => {
+    expect(instagramKvKey('goias')).toBe('instagram:goias:latest');
+    expect(instagramKvKey('bragantino')).toBe('instagram:bragantino:latest');
+  });
+
+  it('CROSS-CLUB: o Cron do Bragantino escreve SÓ em instagram:bragantino:latest, NUNCA na chave do Goiás', async () => {
+    const kv = makeKv(undefined, 'bragantino');
+    stubFetch(() => new Response(JSON.stringify([apifyItem()]), { status: 200 }));
+    const outcome = await syncInstagram({
+      ...kv.env,
+      APIFY_TOKEN: 'secret',
+      APIFY_INSTAGRAM_TASK_ID: 'task123',
+    });
+    expect(outcome.status).toBe('updated');
+    expect(kv.lastPutKey()).toBe('instagram:bragantino:latest');
+    expect(kv.lastPutKey()).not.toBe('instagram:goias:latest');
+  });
+
+  it('sem CLUB_CODE o sync é no-op (nunca escreve numa chave de clube errado)', async () => {
+    const kv = makeKv(undefined, '');
+    const outcome = await syncInstagram({
+      ...kv.env,
+      APIFY_TOKEN: 'secret',
+      APIFY_INSTAGRAM_TASK_ID: 'task123',
+    });
+    expect(outcome.status).toBe('no-op');
+    expect(kv.lastPutKey()).toBeNull();
   });
 });

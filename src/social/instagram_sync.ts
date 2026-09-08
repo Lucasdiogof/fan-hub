@@ -7,7 +7,7 @@
  * é fixa (3x/dia pelo Cron), independente de acesso de usuário.
  */
 
-export const INSTAGRAM_KV_KEY = 'instagram:goias:latest';
+import { instagramKvKey } from './club_media_config';
 
 /** Post já normalizado, no formato exato guardado no KV. */
 export interface StoredInstagramPost {
@@ -41,6 +41,9 @@ interface ApifyInstagramItem {
 }
 
 export interface InstagramSyncEnv {
+  /** Clube deste deploy — decide a chave de KV (`instagram:<code>:latest`),
+   * pra o Cron do Bragantino NUNCA escrever na chave do Goiás. */
+  CLUB_CODE: string;
   SOCIAL_FEED_KV: KVNamespace;
   APIFY_TOKEN?: string;
   APIFY_INSTAGRAM_TASK_ID?: string;
@@ -51,8 +54,9 @@ const APIFY_TIMEOUT_MS = 170_000;
 
 export async function readInstagramFromKv(
   env: InstagramSyncEnv,
+  kvKey: string,
 ): Promise<InstagramKvValue | null> {
-  const raw = await env.SOCIAL_FEED_KV.get(INSTAGRAM_KV_KEY);
+  const raw = await env.SOCIAL_FEED_KV.get(kvKey);
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw) as InstagramKvValue;
@@ -81,6 +85,13 @@ export async function syncInstagram(env: InstagramSyncEnv): Promise<SyncOutcome>
   const startedAt = Date.now();
   const duration = () => Date.now() - startedAt;
   console.log('instagram.sync.started');
+
+  if (!env.CLUB_CODE) {
+    console.log('instagram.sync.failed reason=missing_club_code');
+    return { status: 'no-op', received: 0, persisted: 0, durationMs: duration(), reason: 'missing_club_code' };
+  }
+  // Chave do PRÓPRIO clube deste deploy — nunca a de outro.
+  const kvKey = instagramKvKey(env.CLUB_CODE);
 
   if (!env.APIFY_TOKEN || !env.APIFY_INSTAGRAM_TASK_ID) {
     console.log('instagram.sync.failed reason=missing_config');
@@ -111,7 +122,7 @@ export async function syncInstagram(env: InstagramSyncEnv): Promise<SyncOutcome>
     lastSuccessfulSyncAt: now,
     posts,
   };
-  await env.SOCIAL_FEED_KV.put(INSTAGRAM_KV_KEY, JSON.stringify(value));
+  await env.SOCIAL_FEED_KV.put(kvKey, JSON.stringify(value));
   console.log(`instagram.sync.succeeded persisted=${posts.length} durationMs=${duration()}`);
   return { status: 'updated', received: items.length, persisted: posts.length, durationMs: duration() };
 }
@@ -152,8 +163,11 @@ export function normalize(items: ApifyInstagramItem[]): StoredInstagramPost[] {
       return {
         id,
         platform: 'instagram',
-        author: item.ownerFullName ?? 'Goiás Esporte Clube',
-        username: item.ownerUsername ?? 'goiasoficial',
+        // Sem fallback de clube cravado — o autor/handle vem do próprio dado
+        // do Apify (que é a conta configurada na task DESTE deploy). Ausente
+        // -> string vazia, nunca o nome/handle de um clube específico.
+        author: item.ownerFullName ?? '',
+        username: item.ownerUsername ?? '',
         caption: item.caption ?? '',
         mediaType: item.type ?? 'Image',
         mediaUrl: item.displayUrl ?? '',

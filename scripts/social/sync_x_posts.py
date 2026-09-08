@@ -19,7 +19,7 @@ from Scweet.exceptions import (
 HANDLE = "goiasoficial"
 LIMIT = 20
 DEFAULT_NAME = "Goiás Esporte Clube"
-OUTPUT = Path(__file__).resolve().parents[2] / "src" / "social" / "data" / "x_posts.json"
+OUTPUT = Path(__file__).resolve().parents[2] / "src" / "social" / "data" / "goias" / "x_posts.json"
 TWITTER_TS = "%a %b %d %H:%M:%S %z %Y"
 
 
