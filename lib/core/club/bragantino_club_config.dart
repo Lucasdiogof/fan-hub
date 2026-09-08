@@ -360,7 +360,24 @@ const bragantinoClubConfig = ClubConfig(
     // workerBaseUrl, nunca um sem o outro (invariante já coberto pelo
     // teste em resolve_active_club_test.dart).
     hasMatches: true,
-    enabledArenaGames: {'player_identity', 'tactical_identity'},
+    // 2026-09-08: 'quiz' e 'career_path' habilitados depois de auditoria
+    // real (44 perguntas READY no Supabase / 27 carreiras publicáveis,
+    // ambos sem string cruzada, sem colisão de id com o Goiás). 'lineup'
+    // segue de fora — bloqueado por dado (0/123 partidas com formação+
+    // posição resolvíveis), não arquitetura, nunca tocar sem dado novo.
+    // 'guess_player' FICOU DE FORA de propósito: dos 50 cards, só 1 tem
+    // `data_status='verified'` (o único elegível como "segredo" da rodada,
+    // ver `GuessPlayer.eligibleAsSecret`) — o jogo sortearia sempre o
+    // mesmo jogador, o que não é um "Quem Vestiu o Manto" de verdade.
+    // Revisitar quando mais cards do pacote ganharem as 4 dicas completas
+    // (hoje 49/50 ficam `incomplete`, aparecem só no autocomplete/
+    // comparação — nunca como segredo).
+    enabledArenaGames: {
+      'player_identity',
+      'tactical_identity',
+      'quiz',
+      'career_path',
+    },
     // Todas as 3 capabilities de comércio já estão false acima — o modo
     // não importa funcionalmente ainda, mas precisa de um valor (nenhum
     // campo de ClubCapabilities é opcional). demo é o valor seguro/real

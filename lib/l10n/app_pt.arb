@@ -290,8 +290,25 @@
   "arenaChallengeCtaContinue": "Continuar",
   "arenaChallengeCtaStart": "Começar",
   "arenaChallengeCtaCompleted": "Concluído",
-  "arenaGameQuizTitle": "Quiz do Verdão",
-  "arenaGameQuizTagline": "Teste o quanto você conhece o Goiás.",
+  "arenaGameQuizTitle": "{clubCode, select, goias{Quiz do Verdão} other{Quiz do {club}}}",
+  "@arenaGameQuizTitle": {
+    "placeholders": {
+      "clubCode": {
+        "type": "String"
+      },
+      "club": {
+        "type": "String"
+      }
+    }
+  },
+  "arenaGameQuizTagline": "Teste o quanto você conhece o {club}.",
+  "@arenaGameQuizTagline": {
+    "placeholders": {
+      "club": {
+        "type": "String"
+      }
+    }
+  },
   "arenaGameLineupTitle": "Adivinhe a Escalação",
   "arenaGameLineupTagline": "Descubra os 11 titulares de uma partida histórica do Goiás.",
   "arenaGameCareerTitle": "Adivinhe o Jogador",

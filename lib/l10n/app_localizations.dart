@@ -1471,14 +1471,14 @@ abstract class AppLocalizations {
   /// No description provided for @arenaGameQuizTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Quiz do Verdão'**
-  String get arenaGameQuizTitle;
+  /// **'{clubCode, select, goias{Quiz do Verdão} other{Quiz do {club}}}'**
+  String arenaGameQuizTitle(String clubCode, String club);
 
   /// No description provided for @arenaGameQuizTagline.
   ///
   /// In pt, this message translates to:
-  /// **'Teste o quanto você conhece o Goiás.'**
-  String get arenaGameQuizTagline;
+  /// **'Teste o quanto você conhece o {club}.'**
+  String arenaGameQuizTagline(String club);
 
   /// No description provided for @arenaGameLineupTitle.
   ///

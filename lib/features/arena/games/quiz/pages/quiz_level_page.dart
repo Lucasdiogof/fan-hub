@@ -122,7 +122,12 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ArenaGameHeader(
-                    title: context.l10n.arenaGameQuizTitle.toUpperCase(),
+                    title: context.l10n
+                        .arenaGameQuizTitle(
+                          sl<ClubConfig>().identity.code,
+                          sl<ClubConfig>().identity.shortName,
+                        )
+                        .toUpperCase(),
                     onBack: () =>
                         context.canPop() ? context.pop() : context.go('/'),
                   ),

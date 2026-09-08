@@ -181,11 +181,20 @@ void main() {
         // Bragantino auditados, simulados e corrigidos (ver
         // `bragantino_player_identity_references.dart` e
         // `bragantino_tactical_coach_references.dart`) — ligados em
-        // 2026-09-08. Os outros 4 jogos de Arena seguem sem dataset
-        // próprio, por isso de fora.
+        // 2026-09-08. quiz (44 perguntas READY) e career_path (27
+        // carreiras publicáveis) ligados no mesmo dia, depois de auditoria
+        // real. guess_player e lineup seguem de fora: guess_player por
+        // dado insuficiente (só 1/50 cards é `eligibleAsSecret`), lineup
+        // por dado insuficiente (0/123 partidas publicáveis) — nenhum dos
+        // dois é bug de arquitetura.
         expect(
           c.enabledArenaGames,
-          equals({'player_identity', 'tactical_identity'}),
+          equals({
+            'player_identity',
+            'tactical_identity',
+            'quiz',
+            'career_path',
+          }),
         );
       },
     );

@@ -735,10 +735,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaChallengeCtaCompleted => 'Completed';
 
   @override
-  String get arenaGameQuizTitle => 'Goiás Quiz';
+  String arenaGameQuizTitle(String clubCode, String club) {
+    return '$club Quiz';
+  }
 
   @override
-  String get arenaGameQuizTagline => 'Test how well you know Goiás.';
+  String arenaGameQuizTagline(String club) {
+    return 'Test how well you know $club.';
+  }
 
   @override
   String get arenaGameLineupTitle => 'Guess the Lineup';
