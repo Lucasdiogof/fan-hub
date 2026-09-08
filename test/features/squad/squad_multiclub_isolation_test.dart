@@ -31,9 +31,30 @@ void main() {
       expect(goiasClubConfig.assets.squadPhotos, isNotEmpty);
     });
 
-    test('Bragantino não tem foto local — e não herda a do Goiás', () {
+    test('Bragantino: sem asset local pro Elenco — depende só da photo_url '
+        'do banco, exatamente como antes (o pool de 46 fotos do Quem '
+        'Vestiu o Manto vive em `guessPlayerPhotos`, campo separado)', () {
       expect(bragantinoClubConfig.assets.squadPhotos, isEmpty);
       expect(syntheticClubBConfig.assets.squadPhotos, isEmpty);
+    });
+
+    test('Bragantino: 46 fotos reais pro Quem Vestiu o Manto (2026-09-08), '
+        'em `guessPlayerPhotos` — nunca em `squadPhotos` (isso quebraria o '
+        'Elenco, que só sabe tratar asset local)', () {
+      expect(bragantinoClubConfig.assets.guessPlayerPhotos, hasLength(46));
+      final remote = bragantinoClubConfig.assets.guessPlayerPhotos.values
+          .where((v) => v.startsWith('https://img.redbullbragantino.com/'));
+      final local = bragantinoClubConfig.assets.guessPlayerPhotos.values
+          .where(
+            (v) => v.startsWith('lib/assets/games/guess_player/bragantino/'),
+          );
+      // 11 = 10 do elenco atual + Cleiton (também aparece no pool
+      // histórico do Quem Vestiu o Manto, mas usa a MESMA URL do banco —
+      // nunca um asset local separado que divergiria da foto certa dele
+      // na aba Elenco).
+      expect(remote, hasLength(11));
+      expect(local, hasLength(35));
+      expect(syntheticClubBConfig.assets.guessPlayerPhotos, isEmpty);
     });
 
     test('nenhum id do Goiás resolve foto num clube que não é o Goiás', () {

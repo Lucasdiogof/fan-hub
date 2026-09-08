@@ -131,6 +131,88 @@ const _loginBackgroundReal =
 // igual ao tratamento que o Goiás já tem com o SVG de verdade dele).
 const _crestSealReal = 'lib/assets/branding/bragantino/crest_seal.svg';
 
+/// Fotos pro Quem Vestiu o Manto — as 10 do elenco atual são as MESMAS
+/// URLs do CDN oficial (`img.redbullbragantino.com`) já usadas em
+/// `bragantino_squad_members.sql`, chaveadas pelo mesmo `id` de
+/// `squad_members`; as 36 históricas (entregues em 2026-09-08, de 40
+/// pedidas — faltam `cesar_haydar`/`ligger`/`edimar`/`gonzalo_fornari`)
+/// são assets locais em `lib/assets/games/guess_player/bragantino/`,
+/// chaveadas pelo slug do nome do jogador (mesma convenção de
+/// `goiasGuessPlayerPhotos`, nunca uma chave nova/paralela). Sem entrada
+/// aqui, `GuessPlayerRepository` resolve `imageUrl` como `null`, nunca um
+/// placeholder genérico.
+const _bragantinoGuessPlayerPhotos = {
+  'tiago-volpi':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/jedmn2u3wlf6t5ypatw4/tiago-volpi',
+  'andres-hurtado':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/gpgsjiqrtc7jpzewhkyb/andres-hurtado',
+  'alix-vinicius':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/znm8zwxnjyhio147m4ew/alix',
+  'gustavo-marques':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/igzcyqrbhmeftf5jdfea/gustavo-marques',
+  'juninho-capixaba':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/qcknkekf5tdbpqoog7a3/juninho-capixaba',
+  'fabinho':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/woqwrwsmzfhng3al0fla/fabinho-silva',
+  'rodriguinho':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/pl8nxfp0taccry13ltbz/rodrigo-huendra',
+  'lucas-barbosa':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/xqq5qy3b4zcnmgx1nzmy/lucas-barbosa',
+  'henry-mosquera':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/zqtva3yctr01nfzobltl/henry-mosquera',
+  'vinicinho-pereira':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/okbny04aehkxfeibt2sd/vinicius-pereira',
+  // Históricas (36 de 40, entregues 2026-09-08) — assets locais.
+  'aderlan': 'lib/assets/games/guess_player/bragantino/aderlan.png',
+  'alerrandro': 'lib/assets/games/guess_player/bragantino/alerrandro.png',
+  'artur': 'lib/assets/games/guess_player/bragantino/artur.png',
+  'bruninho': 'lib/assets/games/guess_player/bragantino/bruninho.png',
+  'bruno_tubarao': 'lib/assets/games/guess_player/bragantino/bruno_tubarao.jpg',
+  'chrigor': 'lib/assets/games/guess_player/bragantino/chrigor.png',
+  'claudinho': 'lib/assets/games/guess_player/bragantino/claudinho.png',
+  // Cleiton segue no elenco atual — usa a mesma URL real do CDN oficial
+  // (mais precisa que uma foto histórica de arquivo).
+  'cleiton':
+      'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/gliozjfvi1mbxq88fibm/goleiro-cleiton',
+  'emiliano_martinez':
+      'lib/assets/games/guess_player/bragantino/emiliano_martinez.png',
+  'eric_ramires': 'lib/assets/games/guess_player/bragantino/eric_ramires.jpg',
+  'fabricio_bruno':
+      'lib/assets/games/guess_player/bragantino/fabricio_bruno.jpg',
+  'gabriel_novaes':
+      'lib/assets/games/guess_player/bragantino/gabriel_novaes.jpg',
+  'guilherme_lopes':
+      'lib/assets/games/guess_player/bragantino/guilherme_lopes.jpg',
+  'helinho': 'lib/assets/games/guess_player/bragantino/helinho.png',
+  'jadsom': 'lib/assets/games/guess_player/bragantino/jadsom.png',
+  'jan_hurtado': 'lib/assets/games/guess_player/bragantino/jan_hurtado.png',
+  'julio_cesar': 'lib/assets/games/guess_player/bragantino/julio_cesar.jpg',
+  'leandrinho': 'lib/assets/games/guess_player/bragantino/leandrinho.png',
+  'leo_ortiz': 'lib/assets/games/guess_player/bragantino/leo_ortiz.png',
+  'leo_realpe': 'lib/assets/games/guess_player/bragantino/leo_realpe.jpg',
+  'luan_candido': 'lib/assets/games/guess_player/bragantino/luan_candido.png',
+  'lucas_evangelista':
+      'lib/assets/games/guess_player/bragantino/lucas_evangelista.jpg',
+  'luis_phelipe': 'lib/assets/games/guess_player/bragantino/luis_phelipe.jpg',
+  'matheus_jesus': 'lib/assets/games/guess_player/bragantino/matheus_jesus.jpg',
+  'natan': 'lib/assets/games/guess_player/bragantino/natan.jpg',
+  'pedro_naressi': 'lib/assets/games/guess_player/bragantino/pedro_naressi.jpg',
+  'praxedes': 'lib/assets/games/guess_player/bragantino/praxedes.png',
+  'raul': 'lib/assets/games/guess_player/bragantino/raul.jpg',
+  'ricardo_ryller':
+      'lib/assets/games/guess_player/bragantino/ricardo_ryller.png',
+  'thonny_anderson':
+      'lib/assets/games/guess_player/bragantino/thonny_anderson.png',
+  'tomas_cuello': 'lib/assets/games/guess_player/bragantino/tomas_cuello.png',
+  'uillian_correia':
+      'lib/assets/games/guess_player/bragantino/uillian_correia.jpg',
+  'vitinho': 'lib/assets/games/guess_player/bragantino/vitinho.png',
+  'weverson_costa':
+      'lib/assets/games/guess_player/bragantino/weverson_costa.jpg',
+  'weverton': 'lib/assets/games/guess_player/bragantino/weverton.png',
+  'ytalo': 'lib/assets/games/guess_player/bragantino/ytalo.png',
+};
+
 const bragantinoClubConfig = ClubConfig(
   identity: ClubIdentity(
     code: 'bragantino',
@@ -172,6 +254,13 @@ const bragantinoClubConfig = ClubConfig(
     // vídeo de outro clube. `SplashVideoPage` cai pra `StaticLogoSplash`
     // (mostra `crestBadge`, já é o placeholder neutro acima).
     splashVideo: null,
+    // Quem Vestiu o Manto — mesmas 10 URLs do CDN oficial já usadas em
+    // `bragantino_squad_members.sql` (elenco atual) + fotos históricas
+    // locais, por `photo_key` (`GuessPlayerRepository` resolve por
+    // `ClubConfig.assets.guessPlayerPhotos` — campo separado de
+    // `squadPhotos` porque aqui misturamos URL remota e asset local, e
+    // `SquadAvatar` — dono de `squadPhotos` — só sabe tratar asset local).
+    guessPlayerPhotos: _bragantinoGuessPlayerPhotos,
   ),
   integrations: ClubIntegrations(
     // Confirmado navegando onefootball.com/pt-br/time/rb-bragantino-4734

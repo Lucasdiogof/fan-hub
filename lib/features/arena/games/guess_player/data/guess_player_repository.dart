@@ -5,8 +5,6 @@ import 'package:goias_app/core/club/club_data_unavailable_exception.dart';
 import 'package:goias_app/core/club/club_scoped_fallback.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_catalog.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player.dart';
-import 'package:goias_app/features/arena/games/guess_player/domain/guess_player_photos.dart';
-import 'package:goias_app/features/squad/domain/squad_photos.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -20,8 +18,8 @@ final guessPlayerCatalogFallback = ClubScopedFallback<List<GuessPlayer>>({
 /// Catálogo do Quem Vestiu o Manto. Fonte da verdade é o Supabase, SEMPRE
 /// filtrada pelo clube ativo (`club_id`); fallback também resolvido por
 /// clube — nunca cai pro fallback de outro clube. `photo_key` guarda só a
-/// chave de `squadPhotoAssets` — a foto em si continua resolvida aqui,
-/// nunca uma URL duplicada/guardada na tabela (só o elenco atual tem foto).
+/// chave de `ClubConfig.assets.guessPlayerPhotos` — a foto em si continua
+/// resolvida aqui, nunca uma URL duplicada/guardada na tabela.
 class GuessPlayerRepository {
   GuessPlayerRepository(this._client, this._clubConfig);
 
@@ -87,16 +85,24 @@ class GuessPlayerRepository {
       nationalityCode: row['nationality_code'] as String?,
       nationalityName: row['nationality_name'] as String?,
       clubDebutYear: (row['club_debut_year'] as num?)?.toInt(),
-      // `photo_key` pode apontar pro elenco atual (`squadPhotoAssets`) ou
-      // pro acervo só-deste-jogo (`guessPlayerPhotoAssets`, ex-jogadores
-      // sem foto de elenco) — sem essa 2ª checagem, todo `photo_key`
-      // histórico resolvia sempre pra `null` mesmo com o dado presente no
-      // banco (achado na auditoria de 2026-09-05: os 41 jogadores
-      // históricos com foto nunca apareciam em produção, só no fallback
-      // local).
+      // `photo_key` pode apontar pro elenco atual/histórico deste jogo
+      // (`ClubConfig.assets.guessPlayerPhotos`, POR CLUBE — pro Goiás são
+      // os mesmos assets locais de sempre, `squadPhotoAssets`; pro
+      // Bragantino é uma mistura de URLs remotas do CDN oficial + assets
+      // locais históricos) ou pro acervo global só-deste-jogo
+      // (`goiasGuessPlayerPhotos`, ainda só do Goiás). Campo separado de
+      // `squadPhotos` porque `SquadAvatar` (dono de `squadPhotos`) só sabe
+      // tratar asset local — colocar uma URL remota lá quebra o Elenco
+      // silenciosamente (achado ao vivo em 2026-09-08 com o goleiro
+      // Cleiton, que aparece tanto no elenco atual quanto como carta
+      // histórica deste jogo).
       imageUrl: photoKey == null
           ? null
-          : (squadPhotoAssets[photoKey] ?? guessPlayerPhotoAssets[photoKey]),
+          // SEM fallback pra outro clube: se a chave não está no mapa do
+          // clube ativo, o card fica sem foto. Antes caía num mapa global de
+          // fotos do Goiás, o que faria um clube sem foto própria mostrar o
+          // rosto de um jogador esmeraldino no card dele.
+          : _clubConfig.assets.guessPlayerPhotos[photoKey],
       dataStatus: _dataStatusFrom(row['data_status'] as String?),
       personId: row['person_id'] as String?,
     );

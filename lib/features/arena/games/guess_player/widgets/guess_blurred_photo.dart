@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
+bool _isNetworkUrl(String value) =>
+    value.startsWith('http://') || value.startsWith('https://');
+
 /// A MESMA foto do jogador secreto, do início ao fim da rodada — só o
 /// sigma do blur muda (animado suavemente entre níveis). Nunca troca de
-/// asset.
+/// asset. [imageUrl] pode ser um asset local (Goiás) ou uma URL remota do
+/// CDN oficial do clube (Bragantino) — mesmo padrão já usado em
+/// `PartnerCard`/`SquadAvatar`.
 class GuessBlurredPhoto extends StatefulWidget {
   const GuessBlurredPhoto({
     required this.imageUrl,
@@ -79,13 +84,21 @@ class _GuessBlurredPhotoState extends State<GuessBlurredPhoto>
           ),
           child: AnimatedBuilder(
             animation: _sigmaAnimation,
-            child: Image.asset(
-              widget.imageUrl,
-              fit: BoxFit.cover,
-              alignment: const Alignment(0, -0.85),
-              width: double.infinity,
-              height: double.infinity,
-            ),
+            child: _isNetworkUrl(widget.imageUrl)
+                ? Image.network(
+                    widget.imageUrl,
+                    fit: BoxFit.cover,
+                    alignment: const Alignment(0, -0.85),
+                    width: double.infinity,
+                    height: double.infinity,
+                  )
+                : Image.asset(
+                    widget.imageUrl,
+                    fit: BoxFit.cover,
+                    alignment: const Alignment(0, -0.85),
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
             builder: (context, child) {
               final sigma = _sigmaAnimation.value;
               return ImageFiltered(

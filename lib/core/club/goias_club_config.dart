@@ -9,6 +9,7 @@ import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/arena/games/guess_player/domain/guess_player_photos.dart';
 import 'package:goias_app/features/club/data/club_history_data.dart';
 import 'package:goias_app/features/club/data/club_songs_data.dart';
 import 'package:goias_app/features/club/data/club_timeline_data.dart';
@@ -50,6 +51,13 @@ const goiasClubConfig = ClubConfig(
     storeBanner: AppAssets.storeBanner,
     splashVideo: 'lib/assets/videos/goias_splash.mp4',
     squadPhotos: squadPhotoAssets,
+    // Pro Goiás os dois mapas coincidem (mesmos assets locais servem tanto
+    // pro Elenco quanto pro Quem Vestiu o Manto) — ver comentário em
+    // `ClubAssets.guessPlayerPhotos` sobre por que são campos separados.
+    // Elenco atual (`lib/assets/squad/`) + históricos padronizados
+    // (`guess_player/goias/`). Conjuntos disjuntos; se um dia colidirem, a
+    // foto histórica padronizada ganha, que é a do tratamento visual do jogo.
+    guessPlayerPhotos: {...squadPhotoAssets, ...goiasGuessPlayerPhotos},
   ),
   integrations: ClubIntegrations(
     oneFootballTeamId: 1863,

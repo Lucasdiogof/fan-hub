@@ -1,7 +1,7 @@
 // Auditoria 2026-09-05: garante, daqui pra frente, que a foto de um
 // jogador histórico nunca fica "presa" só no fallback local — o bug real
 // encontrado era `guess_player_repository.dart` só resolver `photo_key`
-// contra `squadPhotoAssets`, nunca contra `guessPlayerPhotoAssets`. Esses
+// contra `squadPhotoAssets`, nunca contra `goiasGuessPlayerPhotos`. Esses
 // testes travam as duas pontas: (1) o mapa de fotos e o catálogo nunca
 // desalinham (nenhum asset órfão, nenhuma referência quebrada); (2) todo
 // asset referenciado existe de verdade no disco.
@@ -13,29 +13,29 @@ import 'package:goias_app/features/arena/games/guess_player/domain/guess_player_
 import 'package:goias_app/features/squad/domain/squad_photos.dart';
 
 void main() {
-  group('Consistência guessPlayerPhotoAssets <-> guessPlayerCatalog', () {
+  group('Consistência goiasGuessPlayerPhotos <-> guessPlayerCatalog', () {
     test(
-      'toda chave de guessPlayerPhotoAssets é usada por exatamente 1 jogador do catálogo (0 asset órfão)',
+      'toda chave de goiasGuessPlayerPhotos é usada por exatamente 1 jogador do catálogo (0 asset órfão)',
       () {
         final usedKeys = guessPlayerCatalog
             .map((p) => p.imageUrl)
             .whereType<String>()
             .toSet();
-        for (final entry in guessPlayerPhotoAssets.entries) {
+        for (final entry in goiasGuessPlayerPhotos.entries) {
           expect(
             usedKeys.contains(entry.value),
             isTrue,
             reason:
-                'guessPlayerPhotoAssets["${entry.key}"] não é referenciado por nenhum jogador do catálogo — asset órfão.',
+                'goiasGuessPlayerPhotos["${entry.key}"] não é referenciado por nenhum jogador do catálogo — asset órfão.',
           );
         }
       },
     );
 
     test(
-      'todo arquivo de guessPlayerPhotoAssets existe de verdade no disco',
+      'todo arquivo de goiasGuessPlayerPhotos existe de verdade no disco',
       () {
-        for (final entry in guessPlayerPhotoAssets.entries) {
+        for (final entry in goiasGuessPlayerPhotos.entries) {
           expect(
             File(entry.value).existsSync(),
             isTrue,
@@ -46,11 +46,11 @@ void main() {
     );
 
     test(
-      'todo jogador verified + elegível como secreto tem um imageUrl que resolve por squadPhotoAssets OU guessPlayerPhotoAssets',
+      'todo jogador verified + elegível como secreto tem um imageUrl que resolve por squadPhotoAssets OU goiasGuessPlayerPhotos',
       () {
         final allKnownPaths = {
           ...squadPhotoAssets.values,
-          ...guessPlayerPhotoAssets.values,
+          ...goiasGuessPlayerPhotos.values,
         };
         for (final player in guessPlayerCatalog) {
           if (!player.eligibleAsSecret) continue;
