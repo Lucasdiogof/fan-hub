@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_engine.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
+import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_reference_sets.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
@@ -21,7 +23,7 @@ class PlayerIdentityProcessingPage extends StatefulWidget {
 
 class _PlayerIdentityProcessingPageState
     extends State<PlayerIdentityProcessingPage> {
-  static const _engine = PlayerIdentityEngine();
+  late final _engine = playerIdentityEngineForClub(sl<ClubConfig>());
 
   @override
   void initState() {

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -18,7 +20,7 @@ Future<void> showTacticalCoachSheet(
   return AppBottomSheet.show(
     context,
     title: coach.coach,
-    description: 'Goiás • ${coach.period}',
+    description: '${sl<ClubConfig>().identity.shortName} • ${coach.period}',
     confirmLabel: l10n.commonClose,
     content: Column(
       mainAxisSize: MainAxisSize.min,

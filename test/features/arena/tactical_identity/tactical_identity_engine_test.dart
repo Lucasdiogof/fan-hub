@@ -6,7 +6,7 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_questions.dart';
 
 TacticalOption _opt(int deltaX, int deltaY, {String id = 'x'}) =>
-    TacticalOption(id: id, text: 'x', deltaX: deltaX, deltaY: deltaY);
+    TacticalOption(id: id, deltaX: deltaX, deltaY: deltaY);
 
 List<TacticalOption> _answers(List<(int, int)> deltas) => [
   for (var i = 0; i < deltas.length; i++)
@@ -14,7 +14,7 @@ List<TacticalOption> _answers(List<(int, int)> deltas) => [
 ];
 
 void main() {
-  const engine = TacticalIdentityEngine();
+  final engine = TacticalIdentityEngine(tacticalCoachReferences);
 
   group('sumDeltaX / sumDeltaY', () {
     test('sums deltaX across all answers', () {

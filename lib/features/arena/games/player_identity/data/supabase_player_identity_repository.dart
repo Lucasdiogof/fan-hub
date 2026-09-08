@@ -1,8 +1,8 @@
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/arena/games/player_identity/data/player_identity_repository.dart';
-import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_engine.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_questions.dart';
+import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_reference_sets.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// `answers` (os 10 ids de alternativa, na ordem das perguntas) é a coluna
@@ -17,7 +17,7 @@ class SupabasePlayerIdentityRepository implements PlayerIdentityRepository {
 
   final SupabaseClient _client;
   final ClubConfig _clubConfig;
-  static const _engine = PlayerIdentityEngine();
+  late final _engine = playerIdentityEngineForClub(_clubConfig);
 
   String get _uid => _client.auth.currentUser!.id;
   String get _clubId => _clubConfig.identity.canonicalClubId;

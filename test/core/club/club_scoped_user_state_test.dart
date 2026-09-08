@@ -12,9 +12,11 @@ import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/games/player_identity/data/supabase_player_identity_repository.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_engine.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_questions.dart';
+import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_references.dart';
 import 'package:goias_app/features/arena/games/quiz/data/quiz_progress_repository.dart';
 import 'package:goias_app/features/arena/games/quiz/quiz_models.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/data/supabase_tactical_identity_repository.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_references.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_engine.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_questions.dart';
 import 'package:goias_app/features/arena/ranking/data/supabase_arena_ranking_repository.dart';
@@ -545,7 +547,9 @@ void main() {
         final options = [
           for (final q in playerIdentityQuestions) q.options.first,
         ];
-        final result = const PlayerIdentityEngine().computeResult(options);
+        final result = PlayerIdentityEngine(
+          playerIdentityReferences,
+        ).computeResult(options);
         await repo.saveResult(result);
         expect(
           _firstRow(httpClient.lastRequestBodyJson)['club_id'],
@@ -559,7 +563,9 @@ void main() {
         final options = [
           for (final q in tacticalIdentityQuestions) q.options.first,
         ];
-        final result = const TacticalIdentityEngine().computeResult(options);
+        final result = TacticalIdentityEngine(
+          tacticalCoachReferences,
+        ).computeResult(options);
         await repo.saveResult(result);
         expect(
           _firstRow(httpClient.lastRequestBodyJson)['club_id'],
@@ -612,7 +618,11 @@ void main() {
         final options = [
           for (final q in playerIdentityQuestions) q.options.first,
         ];
-        await repo.saveResult(const PlayerIdentityEngine().computeResult(options));
+        await repo.saveResult(
+          PlayerIdentityEngine(
+            playerIdentityReferences,
+          ).computeResult(options),
+        );
         expect(Uri.decodeFull(urlWith('on_conflict').toString()),
             contains('on_conflict=user_id,club_id'));
       });

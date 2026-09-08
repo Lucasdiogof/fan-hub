@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_references.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
 
 /// Toda a matemática do jogo "Identidade Futebolística" — funções puras,
@@ -17,8 +16,20 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical
 /// ainda assim serem bem diferentes taticamente; a afinidade agora
 /// consegue expressar isso, o mapa continua mostrando só posse/vertical e
 /// dogmático/pragmático.
+///
+/// [references] é o ÚNICO dado que varia por clube (2026-09-08, arquitetura
+/// multiclube) — geometria dos eixos, arquétipos, dimensões ocultas e curva
+/// de afinidade são os MESMOS pra qualquer clube, nunca alterados aqui. Ver
+/// `tactical_coach_reference_sets.dart` pra como resolver o dataset certo a
+/// partir do `ClubConfig` ativo; para o Goiás o valor é
+/// `tacticalCoachReferences`, byte a byte o mesmo dataset de sempre.
 class TacticalIdentityEngine {
-  const TacticalIdentityEngine();
+  // Não é `const`: `_referenceStats` é `late final` (depende de
+  // [references], que varia por clube), e Dart não permite `late final` de
+  // instância numa classe com construtor `const`.
+  TacticalIdentityEngine(this.references);
+
+  final List<TacticalCoachReference> references;
 
   int sumDeltaX(List<TacticalOption> answers) =>
       answers.fold(0, (sum, option) => sum + option.deltaX);
@@ -139,15 +150,16 @@ class TacticalIdentityEngine {
   static const _weightHidden = 0.1375;
 
   /// Média/desvio padrão de cada uma das 6 dimensões (x, y + 4 ocultas)
-  /// calculados a partir dos 12 técnicos — usados pra padronizar (z-score)
-  /// antes de medir distância, mesmo raciocínio de
+  /// calculados a partir dos técnicos do CLUBE ATIVO — usados pra
+  /// padronizar (z-score) antes de medir distância, mesmo raciocínio de
   /// `player_identity_engine.dart#_referenceStats`: sem isso, uma dimensão
   /// naturalmente pouco variável entre os técnicos pesaria menos na
-  /// comparação só por causa da escala.
-  static final Map<String, (double mean, double stdDev)> _referenceStats =
+  /// comparação só por causa da escala. `late final` de INSTÂNCIA (não mais
+  /// `static`, desde a multiclube): cada clube tem seu próprio dataset.
+  late final Map<String, (double mean, double stdDev)> _referenceStats =
       _computeReferenceStats();
 
-  static Map<String, (double, double)> _computeReferenceStats() {
+  Map<String, (double, double)> _computeReferenceStats() {
     (double, double) stats(List<double> values) {
       final mean = values.reduce((a, b) => a + b) / values.length;
       final variance =
@@ -158,21 +170,17 @@ class TacticalIdentityEngine {
     }
 
     return {
-      'x': stats(tacticalCoachReferences.map((c) => c.x).toList()),
-      'y': stats(tacticalCoachReferences.map((c) => c.y).toList()),
+      'x': stats(references.map((c) => c.x).toList()),
+      'y': stats(references.map((c) => c.y).toList()),
       'pressing': stats(
-        tacticalCoachReferences.map((c) => c.pressing.toDouble()).toList(),
+        references.map((c) => c.pressing.toDouble()).toList(),
       ),
       'blockHeight': stats(
-        tacticalCoachReferences.map((c) => c.blockHeight.toDouble()).toList(),
+        references.map((c) => c.blockHeight.toDouble()).toList(),
       ),
-      'risk': stats(
-        tacticalCoachReferences.map((c) => c.risk.toDouble()).toList(),
-      ),
+      'risk': stats(references.map((c) => c.risk.toDouble()).toList()),
       'structuralFluidity': stats(
-        tacticalCoachReferences
-            .map((c) => c.structuralFluidity.toDouble())
-            .toList(),
+        references.map((c) => c.structuralFluidity.toDouble()).toList(),
       ),
     };
   }
@@ -231,16 +239,16 @@ class TacticalIdentityEngine {
     return ((raw * 10).round() / 10).clamp(_affinityFloor, _affinityCeiling);
   }
 
-  /// Os 12 técnicos ordenados do mais próximo pro mais distante do PERFIL
-  /// COMPLETO do usuário (x, y + 4 ocultas) — sempre os 12, quem decide
-  /// "top 3" é [closestCoaches]. Precisa das respostas (não só x/y) pra
-  /// calcular as dimensões ocultas.
+  /// Todos os técnicos do clube ativo ordenados do mais próximo pro mais
+  /// distante do PERFIL COMPLETO do usuário (x, y + 4 ocultas) — quem
+  /// decide "top 3" é [closestCoaches]. Precisa das respostas (não só x/y)
+  /// pra calcular as dimensões ocultas.
   List<CoachAffinity> rankCoaches(int x, int y, List<TacticalOption> answers) {
     final pressing = userPressing(answers);
     final blockHeight = userBlockHeight(answers);
     final risk = userRisk(answers);
     final structuralFluidity = userStructuralFluidity(answers);
-    final ranked = tacticalCoachReferences.map((coach) {
+    final ranked = references.map((coach) {
       final distance = _weightedDistance(
         x: x,
         y: y,
