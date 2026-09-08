@@ -1,3 +1,4 @@
+import argparse
 import json
 import os
 import sys
@@ -16,11 +17,50 @@ from Scweet.exceptions import (
     ScweetError,
 )
 
-HANDLE = "goiasoficial"
+REPO_ROOT = Path(__file__).resolve().parents[2]
 LIMIT = 20
-DEFAULT_NAME = "Goiás Esporte Clube"
-OUTPUT = Path(__file__).resolve().parents[2] / "src" / "social" / "data" / "goias" / "x_posts.json"
 TWITTER_TS = "%a %b %d %H:%M:%S %z %Y"
+
+# Registro central de clube -> (handle público no X, nome de exibição,
+# arquivo de saída) — o mesmo papel que `CLUB_MEDIA_CONFIG` cumpre do lado
+# do Worker (`src/social/club_media_config.ts`), só que pro lado do
+# pipeline de coleta. Um clube novo entra AQUI; o script em si nunca muda.
+# A sessão autenticada (X_AUTH_TOKEN/X_CSRF_TOKEN) é da CONTA QUE RASPA, não
+# do clube — a mesma sessão logada consegue ler a timeline pública de
+# qualquer handle, então os dois clubes reaproveitam os mesmos secrets.
+CLUBS = {
+    "goias": {
+        "handle": "goiasoficial",
+        "author_name": "Goiás Esporte Clube",
+        "output": REPO_ROOT / "src" / "social" / "data" / "goias" / "x_posts.json",
+    },
+    "bragantino": {
+        # Confirmado por 2 fontes oficiais independentes (2026-09-08): bio
+        # "Perfil oficial do Red Bull Bragantino", localização Bragança
+        # Paulista, link pro site oficial (redbullbragantino.com/br-pt) — e
+        # reciprocamente listado em youtube.com/@MassaBrutaTV/about (canal
+        # oficial já confirmado) como o Twitter/X do clube. Nunca confundir
+        # com Red Bull Brasil/global nem com fan pages (@bragabull,
+        # @rbbragainfo, @BragantinoRed) que também aparecem numa busca.
+        "handle": "RedBullBraga",
+        "author_name": "Red Bull Bragantino",
+        "output": REPO_ROOT / "src" / "social" / "data" / "bragantino" / "x_posts.json",
+    },
+}
+
+
+def parse_args(argv):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--club",
+        choices=sorted(CLUBS),
+        default="goias",
+        help="Clube a sincronizar (default: goias, preserva o invocar sem argumentos de sempre).",
+    )
+    parser.add_argument("--handle", help="Sobrescreve o handle público registrado em CLUBS.")
+    parser.add_argument("--author-name", help="Sobrescreve o nome de exibição registrado em CLUBS.")
+    parser.add_argument("--output", type=Path, help="Sobrescreve o arquivo de saída registrado em CLUBS.")
+    return parser.parse_args(argv)
 
 
 def to_iso(value):
@@ -65,16 +105,16 @@ def pick(tweet, *keys, default=None):
     return default
 
 
-def author(tweet):
+def author(tweet, handle, default_name):
     user = tweet.get("user")
     if isinstance(user, dict):
         return (
-            user.get("screen_name") or user.get("username") or HANDLE,
-            user.get("name") or DEFAULT_NAME,
+            user.get("screen_name") or user.get("username") or handle,
+            user.get("name") or default_name,
         )
     return (
-        pick(tweet, "user_screen_name", "username", default=HANDLE),
-        pick(tweet, "user_name", "name", default=DEFAULT_NAME),
+        pick(tweet, "user_screen_name", "username", default=handle),
+        pick(tweet, "user_name", "name", default=default_name),
     )
 
 
@@ -90,8 +130,8 @@ def images(tweet):
     return []
 
 
-def normalize(tweet):
-    screen_name, name = author(tweet)
+def normalize(tweet, handle, default_name):
+    screen_name, name = author(tweet, handle, default_name)
     return {
         "tweet_id": str(pick(tweet, "tweet_id", "id", default="")),
         "text": pick(tweet, "text", "embedded_text", default=""),
@@ -175,7 +215,7 @@ def make_client(token, csrf):
         return Scweet(proxy=proxy, manifest_scrape_on_init=False, **credentials)
 
 
-def fetch(scweet):
+def fetch(scweet, handle):
     """Timeline com uma segunda tentativa; se ainda vier vazio, busca 'Latest'.
 
     São dois caminhos diferentes pro mesmo dado no X — quando um está
@@ -184,7 +224,7 @@ def fetch(scweet):
     for attempt in (1, 2):
         try:
             tweets = scweet.get_profile_tweets(
-                [HANDLE], limit=LIMIT, max_empty_pages=2, save=False
+                [handle], limit=LIMIT, max_empty_pages=2, save=False
             )
             if tweets:
                 return list(tweets)
@@ -197,7 +237,7 @@ def fetch(scweet):
     try:
         log("tentando a busca 'Latest' como alternativa")
         tweets = scweet.search(
-            from_users=[HANDLE],
+            from_users=[handle],
             display_type="Latest",
             limit=LIMIT,
             max_empty_pages=2,
@@ -212,7 +252,13 @@ def fetch(scweet):
     return []
 
 
-def main():
+def main(argv=None):
+    args = parse_args(argv)
+    club = CLUBS[args.club]
+    handle = args.handle or club["handle"]
+    author_name = args.author_name or club["author_name"]
+    output = args.output or club["output"]
+
     # `.strip()` porque colar num campo de secret costuma levar junto espaço
     # ou quebra de linha, e o cookie deixa de valer sem nenhuma pista do
     # porquê.
@@ -222,9 +268,10 @@ def main():
         log("X_AUTH_TOKEN não definido")
         return 1
 
-    tweets = fetch(make_client(token, csrf))
+    log(f"clube={args.club} handle=@{handle} output={output}")
+    tweets = fetch(make_client(token, csrf), handle)
 
-    posts = [normalize(t) for t in tweets if isinstance(t, dict)]
+    posts = [normalize(t, handle, author_name) for t in tweets if isinstance(t, dict)]
     posts = [p for p in posts if p["tweet_id"] and p["timestamp"]]
     posts.sort(key=lambda p: p["timestamp"], reverse=True)
 
@@ -234,9 +281,9 @@ def main():
     # atrás de um check verde só faria a investigação começar tarde.
     if not posts:
         existing = []
-        if OUTPUT.exists():
+        if output.exists():
             try:
-                existing = json.loads(OUTPUT.read_text(encoding="utf-8")) or []
+                existing = json.loads(output.read_text(encoding="utf-8")) or []
             except (ValueError, OSError):
                 existing = []
         if existing:
@@ -245,9 +292,9 @@ def main():
             log("0 posts raspados e não há feed salvo pra preservar")
         return 1
 
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(posts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"sync_x_posts: wrote {len(posts)} posts to {OUTPUT}")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(posts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"sync_x_posts: wrote {len(posts)} posts to {output}")
     return 0
 
 

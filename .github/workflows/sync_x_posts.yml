@@ -8,6 +8,12 @@ on:
 permissions:
   contents: write
 
+# Mesmo grupo para TODOS os clubes de propósito: o job inteiro roda
+# sequencial e sozinho (nunca duas execuções deste workflow em paralelo),
+# então nunca há duas corridas tentando dar `git push` ao mesmo tempo. Os
+# dois clubes são sincronizados DENTRO do mesmo job (não um workflow por
+# clube), pelo mesmo motivo — evita qualquer race entre eles sem precisar
+# de lock extra.
 concurrency:
   group: sync-x-posts
   cancel-in-progress: false
@@ -25,7 +31,13 @@ jobs:
       - name: Install Scweet
         run: pip install "Scweet>=5.3,<6"
 
-      - name: Fetch latest posts
+      - name: Git identity
+        run: |
+          git config user.name "Lucas Diogo"
+          git config user.email "lucasdiogo1234@gmail.com"
+
+      # --- Goiás ---------------------------------------------------------
+      - name: Fetch latest posts (Goiás)
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
           # Cookie ct0 da mesma sessão do X. Sem ele a Scweet tenta derivar
@@ -36,16 +48,40 @@ jobs:
           # teoria principal hoje), definir este secret tira a requisição do
           # datacenter do GitHub sem precisar mexer no script.
           X_PROXY: ${{ secrets.X_PROXY }}
-        run: python scripts/social/sync_x_posts.py
+        run: python scripts/social/sync_x_posts.py --club goias
 
-      - name: Commit and push if changed
+      - name: Commit and push if changed (Goiás)
         run: |
-          git config user.name "Lucas Diogo"
-          git config user.email "lucasdiogo1234@gmail.com"
+          # git pull --rebase é seguro mesmo sem nenhum commit local ainda
+          # pendente — é rede de segurança pro caso de algo ter avançado
+          # origin/main entre o checkout deste job e este ponto.
+          git pull --rebase origin main
           if git diff --quiet -- src/social/data/goias/x_posts.json; then
-            echo "No changes to commit"
+            echo "No changes to commit (Goiás)"
             exit 0
           fi
           git add src/social/data/goias/x_posts.json
           git commit -m "Update X posts feed"
+          git push
+
+      # --- Bragantino ------------------------------------------------------
+      # MESMOS secrets de sessão do X (X_AUTH_TOKEN/X_CSRF_TOKEN/X_PROXY) —
+      # eles autenticam a CONTA QUE RASPA, não o clube; a mesma sessão lê a
+      # timeline pública de qualquer handle. Só o handle/output mudam.
+      - name: Fetch latest posts (Bragantino)
+        env:
+          X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
+          X_CSRF_TOKEN: ${{ secrets.X_CSRF_TOKEN }}
+          X_PROXY: ${{ secrets.X_PROXY }}
+        run: python scripts/social/sync_x_posts.py --club bragantino
+
+      - name: Commit and push if changed (Bragantino)
+        run: |
+          git pull --rebase origin main
+          if git diff --quiet -- src/social/data/bragantino/x_posts.json; then
+            echo "No changes to commit (Bragantino)"
+            exit 0
+          fi
+          git add src/social/data/bragantino/x_posts.json
+          git commit -m "Update X posts feed (Bragantino)"
           git push
