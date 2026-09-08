@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { CLUB_MEDIA_CONFIG, clubMediaConfig, instagramKvKey } from './club_media_config';
 import { loadSocialProviders, type SocialEnv } from './config';
+import { XProvider } from './providers/x_provider';
 
 describe('CLUB_MEDIA_CONFIG — resolução central por clube, sem fallback cross-club', () => {
   it('clube desconhecido -> null (NUNCA cai pro Goiás)', () => {
@@ -18,13 +19,13 @@ describe('CLUB_MEDIA_CONFIG — resolução central por clube, sem fallback cros
     expect(g.x?.dataFile).toBe('goias');
   });
 
-  it('Bragantino: news + youtube reais (confirmados 2026-09-08); x segue WAITING', () => {
+  it('Bragantino: news + youtube + x reais (confirmados 2026-09-08)', () => {
     const b = clubMediaConfig('bragantino')!;
     expect(b.news?.parser).toBe('bragantino');
     expect(b.news?.siteOrigin).toBe('https://www.redbullbragantino.com');
     expect(b.news?.articlePathPrefix).toBe('/br-pt/noticias');
     expect(b.news?.sourceUrl).toContain('redbullbragantino.com');
-    expect(b.x).toBeUndefined(); // handle/pipeline não configurado
+    expect(b.x?.dataFile).toBe('bragantino');
     expect(b.instagram?.kvKey).toBe('instagram:bragantino:latest');
   });
 
@@ -79,21 +80,52 @@ describe('loadSocialProviders — providers montados por clube', () => {
     expect(names).toEqual(['x']);
   });
 
-  it('Bragantino: com secrets -> youtube + instagram (x ausente na config); sem secrets -> nenhum', () => {
+  it('Bragantino: com secrets -> youtube + instagram + x; sem secrets -> só x (dado estático, sem secret nenhum)', () => {
     const comSecrets = loadSocialProviders(withSecrets('bragantino'), clubMediaConfig('bragantino')!).map(p => p.name);
-    expect(comSecrets.sort()).toEqual(['instagram', 'youtube']);
+    expect(comSecrets.sort()).toEqual(['instagram', 'x', 'youtube']);
     const semSecrets = loadSocialProviders(noSecrets('bragantino'), clubMediaConfig('bragantino')!).map(p => p.name);
-    expect(semSecrets).toEqual([]); // WAITING_EXTERNAL_SECRET: sem YOUTUBE_API_KEY/KV, nenhum provider entra
+    // X é bundle estático — não depende de YOUTUBE_API_KEY nem de
+    // SOCIAL_FEED_KV, então é o único que sobrevive sem nenhum secret.
+    expect(semSecrets).toEqual(['x']);
   });
 
-  it('Bragantino sem YOUTUBE_API_KEY (estado real de produção hoje) -> youtube nunca entra, mas instagram (com KV) sim', () => {
+  it('Bragantino sem YOUTUBE_API_KEY (estado real de produção até o X) -> youtube nunca entra, instagram (com KV) e x sim', () => {
     const soComKv: SocialEnv = {
       CLUB_CODE: 'bragantino',
       CACHE_VERSION: '1',
       SOCIAL_FEED_KV: {} as KVNamespace,
     } as SocialEnv;
     const names = loadSocialProviders(soComKv, clubMediaConfig('bragantino')!).map(p => p.name);
-    expect(names).toEqual(['instagram']);
+    expect(names.sort()).toEqual(['instagram', 'x']);
+  });
+
+  it('X: cada clube resolve SÓ o próprio arquivo de dados — zero fallback cross-club', async () => {
+    const goiasProvider = loadSocialProviders(noSecrets('goias'), clubMediaConfig('goias')!).find(
+      p => p.name === 'x',
+    )!;
+    const bragantinoProvider = loadSocialProviders(noSecrets('bragantino'), clubMediaConfig('bragantino')!).find(
+      p => p.name === 'x',
+    )!;
+    expect(goiasProvider).toBeInstanceOf(XProvider);
+    expect(bragantinoProvider).toBeInstanceOf(XProvider);
+
+    const goiasPosts = await goiasProvider.fetch();
+    const bragantinoPosts = await bragantinoProvider.fetch();
+
+    expect(goiasPosts.length).toBeGreaterThan(0);
+    expect(bragantinoPosts.length).toBeGreaterThan(0);
+
+    // Nenhum post do Goiás aparece no feed do Bragantino, e vice-versa —
+    // provado pelo handle do autor, não só pela contagem.
+    expect(goiasPosts.every(p => p.authorHandle !== 'RedBullBraga')).toBe(true);
+    expect(bragantinoPosts.every(p => p.authorHandle === 'RedBullBraga')).toBe(true);
+    expect(bragantinoPosts.every(p => p.authorName === 'Red Bull Bragantino')).toBe(true);
+    expect(bragantinoPosts.some(p => p.authorHandle === 'goiasoficial')).toBe(false);
+
+    const bragantinoBlob = JSON.stringify(bragantinoPosts).toLowerCase();
+    for (const termo of ['goiasoficial', 'goiás', 'goias esporte', 'esmeraldin']) {
+      expect(bragantinoBlob).not.toContain(termo.toLowerCase());
+    }
   });
 
   it('feed agregado nunca derruba quando só 1 provider está de pé (allSettled tolera provider ausente)', () => {
