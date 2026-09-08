@@ -2,11 +2,21 @@
 # problema é o script/token ou o IP do runner do GitHub.
 #
 #   powershell -ExecutionPolicy Bypass -File scripts\social\run_sync_local.ps1
+#   powershell -ExecutionPolicy Bypass -File scripts\social\run_sync_local.ps1 -Club bragantino
+#
+# -Club aceita qualquer clube registrado em CLUBS no próprio
+# sync_x_posts.py (hoje: goias, bragantino) — default 'goias', preserva o
+# invocar sem parâmetro de sempre. A sessão (X_AUTH_TOKEN/X_CSRF_TOKEN) é da
+# CONTA QUE RASPA, não do clube: o mesmo token serve pra qualquer -Club.
 #
 # O token vem de, nesta ordem: variável de ambiente X_AUTH_TOKEN, um arquivo
 # .env na raiz do repo (ignorado pelo git), ou uma pergunta na hora. Quando
 # perguntado, ele fica só na memória deste processo: não é gravado, não vai
 # pro histórico do PowerShell e não aparece na tela enquanto você digita.
+
+param(
+    [string]$Club = 'goias'
+)
 
 $ErrorActionPreference = 'Stop'
 $repo = Resolve-Path (Join-Path $PSScriptRoot '..\..')
@@ -63,7 +73,8 @@ Push-Location $repo
 try {
     $env:X_AUTH_TOKEN = $token
     if ($csrf) { $env:X_CSRF_TOKEN = $csrf }
-    python scripts/social/sync_x_posts.py
+    Write-Host "Clube: $Club"
+    python scripts/social/sync_x_posts.py --club $Club
     $code = $LASTEXITCODE
 
     Write-Host ''
