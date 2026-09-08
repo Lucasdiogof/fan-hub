@@ -18,8 +18,10 @@
 // handler resolve sempre `clubMediaConfig(env.CLUB_CODE)` — a config do
 // PRÓPRIO clube do deploy.
 
-/** Qual parser de notícias usar — o HTML de cada site é diferente. */
-export type NewsParserId = 'goias';
+/** Qual parser de notícias usar — cada site tem sua própria fonte/formato
+ * (o Goiás raspa HTML; o Bragantino é uma SPA sem HTML raspável e consome
+ * uma API JSON interna pública, ver `news/bragantino_parser.ts`). */
+export type NewsParserId = 'goias' | 'bragantino';
 
 /** Qual arquivo de dados do X carregar (bundle estático por clube). */
 export type XDataFileId = 'goias';
@@ -83,15 +85,29 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
     x: { dataFile: 'goias' },
   },
 
-  // Bragantino: TODAS as fontes reais são WAITING_EXTERNAL_CONFIG — nada é
-  // inventado aqui (fonte de notícias oficial não determinada com segurança,
-  // canal do YouTube não confirmado, handle do X sem pipeline). Só o Instagram
-  // tem a CHAVE de KV estruturada (não é secret e não é dado) pra o Cron do
-  // deploy do Bragantino escrever no namespace DELE quando a Apify task for
-  // configurada (WAITING_EXTERNAL_TASK_CONFIG). Enquanto não houver dado, o KV
-  // fica vazio -> provider devolve `[]`, sem cross-club.
+  // Bragantino: notícias confirmadas em 2026-09-08 (API JSON interna da SPA
+  // oficial, sem chave — ver `news/bragantino_parser.ts`). YouTube/X seguem
+  // WAITING_EXTERNAL_CONFIG (canal não confirmado, handle sem pipeline) —
+  // nada inventado. Instagram só tem a CHAVE de KV estruturada (não é secret
+  // e não é dado) pra o Cron do deploy do Bragantino escrever no namespace
+  // DELE quando a Apify task for configurada (WAITING_EXTERNAL_TASK_CONFIG).
+  // Enquanto não houver dado, o KV fica vazio -> provider devolve `[]`, sem
+  // cross-club.
   bragantino: {
     code: 'bragantino',
+    news: {
+      // Já é a URL completa da API (feed "stories" ordenado por frescor, no
+      // schema `structuredData` — schema.org/NewsArticle pronto: título,
+      // resumo, imagem, data, URL do artigo, tudo numa chamada só). Nunca a
+      // URL humana da SPA (`/br-pt/noticias`), que não tem HTML raspável.
+      sourceUrl:
+        'https://www.redbullbragantino.com/v3/api/graphql/v1/v3/feed/pt-BR' +
+        '?filter[type]=stories&scoring=freshness&rb3Schema=v1:structuredData' +
+        '&rb3Locale=br-pt&page[limit]=20&disableUsageRestrictions=true',
+      siteOrigin: 'https://www.redbullbragantino.com',
+      articlePathPrefix: '/br-pt/noticias',
+      parser: 'bragantino',
+    },
     instagram: { kvKey: instagramKvKey('bragantino') },
   },
 };

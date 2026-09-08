@@ -6,28 +6,53 @@
 // parser novo. O `switch` exaustivo garante, em tempo de compilação, que
 // nenhum parser fica sem implementação.
 import { scrapeNewsList, scrapeNewsArticle } from './scraper';
-import type { NewsParserId } from '../social/club_media_config';
+import { bragantinoArticleMetadataUrl, parseBragantinoArticle, parseBragantinoNewsList } from './bragantino_parser';
+import type { ClubNewsConfig, NewsParserId } from '../social/club_media_config';
 import type { NewsArticle, NewsItem } from './types';
 
 export function parseNewsList(
-  html: string,
+  raw: string,
   parser: NewsParserId,
   siteOrigin: string,
 ): Promise<NewsItem[]> {
   switch (parser) {
     case 'goias':
-      return scrapeNewsList(html, siteOrigin);
+      return scrapeNewsList(raw, siteOrigin);
+    case 'bragantino':
+      // `raw` aqui é o corpo JSON da API (o site é uma SPA, sem HTML
+      // raspável) — `news.sourceUrl` já é a URL completa da listagem, ver
+      // `club_media_config.ts` e `bragantino_parser.ts`.
+      return Promise.resolve(parseBragantinoNewsList(raw));
+  }
+}
+
+/**
+ * URL a buscar pra obter o conteúdo PRINCIPAL de um artigo — pra o Goiás é a
+ * própria página HTML; pra o Bragantino é o endpoint de metadados da API
+ * (o corpo, que exige uma 2ª chamada, é buscado dentro de
+ * `parseNewsArticle`/`parseBragantinoArticle`). Ponto único de extensão,
+ * mesmo raciocínio do `switch` exaustivo dos parsers.
+ */
+export function newsArticlePrimaryUrl(news: ClubNewsConfig, slug: string): string {
+  switch (news.parser) {
+    case 'goias':
+      return `${news.siteOrigin}${news.articlePathPrefix}/${slug}`;
+    case 'bragantino':
+      return bragantinoArticleMetadataUrl(slug);
   }
 }
 
 export function parseNewsArticle(
-  html: string,
+  raw: string,
   pageUrl: string,
   parser: NewsParserId,
   siteOrigin: string,
-): NewsArticle | null {
+  slug: string,
+): Promise<NewsArticle | null> {
   switch (parser) {
     case 'goias':
-      return scrapeNewsArticle(html, pageUrl, siteOrigin);
+      return Promise.resolve(scrapeNewsArticle(raw, pageUrl, siteOrigin));
+    case 'bragantino':
+      return parseBragantinoArticle(raw, slug);
   }
 }

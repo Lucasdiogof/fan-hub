@@ -3,7 +3,7 @@ import type { Env } from '../football/_lib/config';
 import { jsonResponse } from '../football/_lib/respond';
 import { isRequestedClubServed } from '../football/_lib/club_server_config';
 import { clubMediaConfig } from '../social/club_media_config';
-import { parseNewsArticle } from './parsers';
+import { newsArticlePrimaryUrl, parseNewsArticle } from './parsers';
 import type { NewsArticleResult } from './types';
 
 /**
@@ -32,19 +32,23 @@ export async function handleNewsArticle(
     return jsonResponse({ available: false, url: null }, { status: 404 });
   }
 
+  // URL "humana" (usada como fallback e como `NewsItem.url`) — sempre esse
+  // formato pros dois clubes hoje, mesmo o Bragantino buscando o conteúdo de
+  // uma URL de API diferente (`newsArticlePrimaryUrl`), ver `parsers.ts`.
   const pageUrl = `${news.siteOrigin}${news.articlePathPrefix}/${slug}`;
+  const fetchUrl = newsArticlePrimaryUrl(news, slug);
 
   try {
     return await cacheFirst(request, 3600, 'news.article', cacheVersion, async () => {
-      const response = await fetch(pageUrl, {
+      const response = await fetch(fetchUrl, {
         headers: { 'user-agent': 'Mozilla/5.0 (compatible; FanHubBot/1.0)' },
       });
       if (!response.ok) {
         const fallback: NewsArticleResult = { available: false, url: pageUrl };
         return fallback;
       }
-      const html = await response.text();
-      const article = parseNewsArticle(html, pageUrl, news.parser, news.siteOrigin);
+      const raw = await response.text();
+      const article = await parseNewsArticle(raw, pageUrl, news.parser, news.siteOrigin, slug);
       const result: NewsArticleResult = article
         ? { available: true, article }
         : { available: false, url: pageUrl };
