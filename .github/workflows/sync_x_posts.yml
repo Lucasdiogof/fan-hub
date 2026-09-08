@@ -37,6 +37,16 @@ jobs:
           git config user.email "lucasdiogo1234@gmail.com"
 
       # --- Goiás ---------------------------------------------------------
+      # `git pull --rebase` SÓ pode rodar com a árvore limpa — depois do
+      # script já ter escrito o JSON, a árvore está suja e o rebase falha
+      # com "cannot pull with rebase: You have unstaged changes." (visto ao
+      # vivo numa execução real). Por isso o rebase vem ANTES do fetch
+      # (árvore garantidamente limpa aqui — logo após o checkout) e de novo
+      # DEPOIS do commit (a mudança já virou commit local, então a árvore
+      # está limpa outra vez e o rebase é válido).
+      - name: Rebase before Goiás sync
+        run: git pull --rebase origin main
+
       - name: Fetch latest posts (Goiás)
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
@@ -52,22 +62,28 @@ jobs:
 
       - name: Commit and push if changed (Goiás)
         run: |
-          # git pull --rebase é seguro mesmo sem nenhum commit local ainda
-          # pendente — é rede de segurança pro caso de algo ter avançado
-          # origin/main entre o checkout deste job e este ponto.
-          git pull --rebase origin main
           if git diff --quiet -- src/social/data/goias/x_posts.json; then
             echo "No changes to commit (Goiás)"
             exit 0
           fi
           git add src/social/data/goias/x_posts.json
           git commit -m "Update X posts feed"
+          git pull --rebase origin main
           git push
 
       # --- Bragantino ------------------------------------------------------
       # MESMOS secrets de sessão do X (X_AUTH_TOKEN/X_CSRF_TOKEN/X_PROXY) —
       # eles autenticam a CONTA QUE RASPA, não o clube; a mesma sessão lê a
       # timeline pública de qualquer handle. Só o handle/output mudam.
+      #
+      # Rebase de novo aqui, mesmo motivo do Goiás acima: garante árvore
+      # limpa antes deste fetch, e também cobre o caso de algo ter avançado
+      # origin/main enquanto o step do Goiás rodava (concurrency.group só
+      # serra execuções DESTE workflow — um push manual de outra sessão,
+      # como já aconteceu nesta mesma frente, ainda pode acontecer no meio).
+      - name: Rebase before Bragantino sync
+        run: git pull --rebase origin main
+
       - name: Fetch latest posts (Bragantino)
         env:
           X_AUTH_TOKEN: ${{ secrets.X_AUTH_TOKEN }}
@@ -77,11 +93,11 @@ jobs:
 
       - name: Commit and push if changed (Bragantino)
         run: |
-          git pull --rebase origin main
           if git diff --quiet -- src/social/data/bragantino/x_posts.json; then
             echo "No changes to commit (Bragantino)"
             exit 0
           fi
           git add src/social/data/bragantino/x_posts.json
           git commit -m "Update X posts feed (Bragantino)"
+          git pull --rebase origin main
           git push
