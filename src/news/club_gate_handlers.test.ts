@@ -1,9 +1,60 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { handleNewsList } from './list';
 import { handleNewsArticle } from './article';
 import { handleSocialFeed } from '../social/feed';
 import type { Env } from '../football/_lib/config';
 import type { SocialEnv } from '../social/config';
+
+/** Bragantino tem fonte de notícias real (API JSON) desde 2026-09-08 — os
+ * testes que passam pelo gate e chegam a buscar de verdade precisam mockar
+ * `fetch`, mesmo padrão de `football/standings.test.ts`, pra nunca bater no
+ * site de verdade num teste unitário. */
+function mockBragantinoNewsFetch() {
+  global.fetch = vi.fn(async (input: RequestInfo | URL) => {
+    const url = typeof input === 'string' ? input : input.toString();
+    if (url.includes('rb3Schema=v1:structuredData') && url.includes('filter[uriSlug]')) {
+      return new Response(
+        JSON.stringify({
+          data: [
+            {
+              headline: 'Manchete de teste',
+              description: 'Resumo de teste',
+              image: { url: 'https://img.redbullbragantino.com/x.jpg' },
+              datePublished: '2026-09-04T23:18:15Z',
+              url: 'https://www.redbullbragantino.com/br-pt/noticias/n',
+            },
+          ],
+        }),
+        { status: 200 },
+      );
+    }
+    if (url.includes('rb3Schema=v1:structuredData')) {
+      return new Response(
+        JSON.stringify({
+          data: [
+            {
+              headline: 'Manchete de teste',
+              description: 'Resumo de teste',
+              image: { url: 'https://img.redbullbragantino.com/x.jpg' },
+              datePublished: '2026-09-04T23:18:15Z',
+              url: 'https://www.redbullbragantino.com/br-pt/noticias/n',
+            },
+          ],
+        }),
+        { status: 200 },
+      );
+    }
+    if (url.includes('rb3Schema=v1:inlineContent')) {
+      return new Response(
+        JSON.stringify({
+          data: { items: [{ type: 'paragraph', elements: [{ variant: 'text', text: 'Corpo de teste' }] }] },
+        }),
+        { status: 200 },
+      );
+    }
+    throw new Error(`URL não mockada: ${url}`);
+  }) as unknown as typeof fetch;
+}
 
 // Gate de clube por `env.CLUB_CODE`: as 3 rotas devolvem "unavailable" ANTES
 // de qualquer fetch/cache quando o `?club=` não bate com o clube DESTE deploy
@@ -48,6 +99,12 @@ describe('Gate por env.CLUB_CODE — deploy do Goiás', () => {
 });
 
 describe('Gate por env.CLUB_CODE — deploy do Bragantino', () => {
+  const originalFetch = global.fetch;
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+  });
+
   it('CROSS-CLUB: ?club=goias no Worker do Bragantino -> 404, nunca conteúdo do outro clube', async () => {
     const list = await handleNewsList(new Request('https://x/api/news?club=goias'), bragantinoEnv);
     expect(list.status).toBe(404);
@@ -58,14 +115,20 @@ describe('Gate por env.CLUB_CODE — deploy do Bragantino', () => {
     expect(await body(feed)).toEqual({ posts: [], available: false });
   });
 
-  it('news do Bragantino (sem fonte configurada hoje) -> 404 unavailable, url null — NUNCA raspa goiasec', async () => {
+  it('news do Bragantino (fonte real desde 2026-09-08) -> lista e artigo passam pelo gate e vêm da API própria, NUNCA de goiasec', async () => {
+    mockBragantinoNewsFetch();
+
     const list = await handleNewsList(new Request('https://x/api/news?club=bragantino'), bragantinoEnv);
-    expect(list.status).toBe(404);
-    expect(await body(list)).toEqual({ items: [], available: false });
+    expect(list.status).toBe(200);
+    const listBody = (await body(list)) as { items: { id: string; title: string; url: string }[] };
+    expect(listBody.items).toHaveLength(1);
+    expect(listBody.items[0].url).toContain('redbullbragantino.com');
 
     const article = await handleNewsArticle(new Request('https://x/api/news/n?club=bragantino'), bragantinoEnv, 'n');
-    expect(article.status).toBe(404);
-    expect(await body(article)).toEqual({ available: false, url: null });
+    expect(article.status).toBe(200);
+    const articleBody = (await body(article)) as { available: boolean; article?: { content: unknown[] } };
+    expect(articleBody.available).toBe(true);
+    expect(articleBody.article?.content.length).toBeGreaterThan(0);
   });
 
   it('social do Bragantino -> feed vazio (sem KV/task), NUNCA posts do Goiás', async () => {

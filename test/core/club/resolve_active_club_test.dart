@@ -161,13 +161,15 @@ void main() {
       },
     );
 
-    test('capabilities sem dado real nenhum continuam desligadas', () {
+    test('capabilities sem dado real nenhum continuam desligadas (exceto News, real desde 2026-09-08)', () {
       final c = bragantinoClubConfig.capabilities;
       expect(c.hasMembership, isFalse);
       expect(c.hasStore, isFalse);
       expect(c.hasTickets, isFalse);
       expect(c.hasCrowdLineup, isFalse);
-      expect(c.hasNews, isFalse);
+      // News passou a ter fonte oficial real no Worker (API JSON própria do
+      // Red Bull Bragantino) — Instagram/YouTube/X seguem sem dado real.
+      expect(c.hasNews, isTrue);
       expect(c.hasSocial, isFalse);
       expect(c.enabledArenaGames, isEmpty);
     });

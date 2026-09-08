@@ -18,9 +18,12 @@ describe('CLUB_MEDIA_CONFIG — resolução central por clube, sem fallback cros
     expect(g.x?.dataFile).toBe('goias');
   });
 
-  it('Bragantino: fontes externas WAITING (news/youtube/x ausentes), só a chave de KV estruturada', () => {
+  it('Bragantino: news real (API JSON própria, confirmada 2026-09-08); youtube/x seguem WAITING', () => {
     const b = clubMediaConfig('bragantino')!;
-    expect(b.news).toBeUndefined(); // fonte oficial não determinada
+    expect(b.news?.parser).toBe('bragantino');
+    expect(b.news?.siteOrigin).toBe('https://www.redbullbragantino.com');
+    expect(b.news?.articlePathPrefix).toBe('/br-pt/noticias');
+    expect(b.news?.sourceUrl).toContain('redbullbragantino.com');
     expect(b.youtube).toBeUndefined(); // canal não confirmado -> nunca @TVGoias
     expect(b.x).toBeUndefined(); // handle/pipeline não configurado
     expect(b.instagram?.kvKey).toBe('instagram:bragantino:latest');

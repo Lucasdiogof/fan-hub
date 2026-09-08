@@ -328,7 +328,11 @@ const bragantinoClubConfig = ClubConfig(
     // strings do Goiás. Falta só o teste autenticado do dono antes de marcar
     // como confirmado em produção.
     hasPassport: true,
-    hasNews: false,
+    // 2026-09-08: Worker passou a integrar a fonte oficial real do Bragantino
+    // (API JSON interna da própria SPA do Red Bull, sem raspagem/dado
+    // inventado — ver `project_goias_app_media_multiclub.md`). `hasSocial`
+    // continua false: Instagram/YouTube/X ainda são WAITING_EXTERNAL_CONFIG.
+    hasNews: true,
     hasSocial: false,
     // 2026-09-05: história/títulos/hino têm conteúdo real e pesquisado
     // (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
