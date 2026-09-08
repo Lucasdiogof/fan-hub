@@ -303,11 +303,11 @@ void main() {
     });
   });
 
-  group('os jogos seguem desligados pro Bragantino', () {
-    test('enabledArenaGames não inclui nenhum dos dois ainda', () {
+  group('os jogos de identidade do Bragantino', () {
+    test('enabledArenaGames inclui os dois após a revisão de 2026-09-08', () {
       final jogos = bragantinoClubConfig.capabilities.enabledArenaGames;
-      expect(jogos, isNot(contains('player_identity')));
-      expect(jogos, isNot(contains('tactical_identity')));
+      expect(jogos, contains('player_identity'));
+      expect(jogos, contains('tactical_identity'));
     });
   });
 }
