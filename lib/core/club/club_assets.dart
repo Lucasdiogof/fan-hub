@@ -19,6 +19,7 @@ class ClubAssets {
     required this.storeBanner,
     this.splashVideo,
     this.squadPhotos = const {},
+    this.guessPlayerPhotos = const {},
   });
 
   final String crest;
@@ -52,4 +53,15 @@ class ClubAssets {
   /// a tela cai pra `photo_url` do banco e, se não houver, pro número da
   /// camisa — nunca pra foto de outro atleta.
   final Map<String, String> squadPhotos;
+
+  /// Fotos pro Quem Vestiu o Manto, por `GuessPlayer.id`/`photo_key` — **por
+  /// clube**, e SEPARADO de [squadPhotos] de propósito: `SquadAvatar` sempre
+  /// trata uma entrada de [squadPhotos] como asset LOCAL (`Image.asset`,
+  /// nunca detecta URL); este mapa aqui pode misturar asset local (foto
+  /// histórica) e URL remota (foto do elenco atual reaproveitada, ver
+  /// `GuessBlurredPhoto`, que detecta os dois). Reusar [squadPhotos] pras
+  /// duas coisas quebra a aba Elenco silenciosamente pra qualquer atleta
+  /// que também tenha carta histórica — achado ao vivo com o Cleiton
+  /// (2026-09-08). Vazio = clube ainda sem foto pro jogo.
+  final Map<String, String> guessPlayerPhotos;
 }

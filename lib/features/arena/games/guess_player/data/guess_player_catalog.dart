@@ -8,7 +8,7 @@ import 'package:goias_app/shared/domain/player_position.dart';
 /// usuário). Nada de BASE/NAC/ESTREIA é inventado: o que não veio no JSON
 /// fica `null` e o jogador só não some do autocomplete se tiver as 5 dicas.
 /// Foto (asset local) é linkada pelo nome quando existe em `squadPhotoAssets`
-/// — só o elenco atual tem foto, então só ele pode ser secreto.
+/// (elenco atual) ou em `goiasGuessPlayerPhotos` (históricos padronizados).
 final guessPlayerCatalog = <GuessPlayer>[
   GuessPlayer(
     id: 'adilson_dos_anjos_oliveira',
@@ -61,7 +61,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 1996,
-    imageUrl: guessPlayerPhotoAssets['alex_dias'],
+    imageUrl: goiasGuessPlayerPhotos['alex_dias'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -152,7 +152,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2021,
-    imageUrl: guessPlayerPhotoAssets['apodi'],
+    imageUrl: goiasGuessPlayerPhotos['apodi'],
     // Auditoria 2026-09-05: identidade (Luiz Diallisson de Souza Alves) e
     // posição (lateral-direito) confirmadas por múltiplas fontes
     // independentes. A camisa 22 já cadastrada não foi encontrada em
@@ -257,7 +257,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2023,
-    imageUrl: guessPlayerPhotoAssets['bruno_melo'],
+    imageUrl: goiasGuessPlayerPhotos['bruno_melo'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -294,7 +294,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2021,
-    imageUrl: guessPlayerPhotoAssets['caio_vinicius'],
+    imageUrl: goiasGuessPlayerPhotos['caio_vinicius'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -450,7 +450,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2012,
-    imageUrl: guessPlayerPhotoAssets['david'],
+    imageUrl: goiasGuessPlayerPhotos['david'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -464,7 +464,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2015,
-    imageUrl: guessPlayerPhotoAssets['david_duarte'],
+    imageUrl: goiasGuessPlayerPhotos['david_duarte'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -478,7 +478,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2024,
-    imageUrl: guessPlayerPhotoAssets['diego_caito'],
+    imageUrl: goiasGuessPlayerPhotos['diego_caito'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -517,7 +517,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 1994,
-    imageUrl: guessPlayerPhotoAssets['dill'],
+    imageUrl: goiasGuessPlayerPhotos['dill'],
     // Auditoria 2026-09-05: maior artilheiro/ídolo do Goiás nos anos 2000,
     // nunca cadastrado no catálogo. Camisa: fontes externas divergem entre
     // 7 e 9, sem uma fonte primária que resolva — deixado `null` até
@@ -575,7 +575,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2012,
-    imageUrl: guessPlayerPhotoAssets['dudu_cearense'],
+    imageUrl: goiasGuessPlayerPhotos['dudu_cearense'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -611,7 +611,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2012,
-    imageUrl: guessPlayerPhotoAssets['eduardo_sasha'],
+    imageUrl: goiasGuessPlayerPhotos['eduardo_sasha'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -625,7 +625,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2012,
-    imageUrl: guessPlayerPhotoAssets['egidio'],
+    imageUrl: goiasGuessPlayerPhotos['egidio'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -639,7 +639,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2021,
-    imageUrl: guessPlayerPhotoAssets['elvis'],
+    imageUrl: goiasGuessPlayerPhotos['elvis'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -653,7 +653,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2013,
-    imageUrl: guessPlayerPhotoAssets['erik'],
+    imageUrl: goiasGuessPlayerPhotos['erik'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -667,7 +667,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2006,
-    imageUrl: guessPlayerPhotoAssets['ernando'],
+    imageUrl: goiasGuessPlayerPhotos['ernando'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -731,7 +731,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2023,
-    imageUrl: guessPlayerPhotoAssets['everton_morelli'],
+    imageUrl: goiasGuessPlayerPhotos['everton_morelli'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -795,7 +795,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2021,
-    imageUrl: guessPlayerPhotoAssets['fellipe_bastos'],
+    imageUrl: goiasGuessPlayerPhotos['fellipe_bastos'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -809,7 +809,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 1996,
-    imageUrl: guessPlayerPhotoAssets['fernandao'],
+    imageUrl: goiasGuessPlayerPhotos['fernandao'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -937,7 +937,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 1999,
-    imageUrl: guessPlayerPhotoAssets['harlei'],
+    imageUrl: goiasGuessPlayerPhotos['harlei'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -984,7 +984,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2004,
-    imageUrl: guessPlayerPhotoAssets['jadilson'],
+    imageUrl: goiasGuessPlayerPhotos['jadilson'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1076,7 +1076,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'AR',
     nationalityName: 'Argentina',
     clubDebutYear: 2023,
-    imageUrl: guessPlayerPhotoAssets['julian_palacios'],
+    imageUrl: goiasGuessPlayerPhotos['julian_palacios'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1192,7 +1192,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2023,
-    imageUrl: guessPlayerPhotoAssets['lucas_halter'],
+    imageUrl: goiasGuessPlayerPhotos['lucas_halter'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -1206,7 +1206,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2025,
-    imageUrl: guessPlayerPhotoAssets['lucas_lovat'],
+    imageUrl: goiasGuessPlayerPhotos['lucas_lovat'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -1371,7 +1371,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2022,
-    imageUrl: guessPlayerPhotoAssets['maguinho'],
+    imageUrl: goiasGuessPlayerPhotos['maguinho'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1429,7 +1429,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2017,
-    imageUrl: guessPlayerPhotoAssets['marcelo_rangel'],
+    imageUrl: goiasGuessPlayerPhotos['marcelo_rangel'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -1458,7 +1458,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2023,
-    imageUrl: guessPlayerPhotoAssets['matheus_peixoto'],
+    imageUrl: goiasGuessPlayerPhotos['matheus_peixoto'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1486,7 +1486,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2017,
-    imageUrl: guessPlayerPhotoAssets['michael'],
+    imageUrl: goiasGuessPlayerPhotos['michael'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1591,7 +1591,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2010,
-    imageUrl: guessPlayerPhotoAssets['otacilio_neto'],
+    imageUrl: goiasGuessPlayerPhotos['otacilio_neto'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1681,7 +1681,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2010,
-    imageUrl: guessPlayerPhotoAssets['rafael_moura'],
+    imageUrl: goiasGuessPlayerPhotos['rafael_moura'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -1695,7 +1695,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'IT',
     nationalityName: 'Itália',
     clubDebutYear: 2008,
-    imageUrl: guessPlayerPhotoAssets['rafael_toloi'],
+    imageUrl: goiasGuessPlayerPhotos['rafael_toloi'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1747,7 +1747,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2013,
-    imageUrl: guessPlayerPhotoAssets['renan'],
+    imageUrl: goiasGuessPlayerPhotos['renan'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -1761,7 +1761,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2012,
-    imageUrl: guessPlayerPhotoAssets['renan_oliveira'],
+    imageUrl: goiasGuessPlayerPhotos['renan_oliveira'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1800,7 +1800,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2012,
-    imageUrl: guessPlayerPhotoAssets['ricardo_goulart'],
+    imageUrl: goiasGuessPlayerPhotos['ricardo_goulart'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1854,7 +1854,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2025,
-    imageUrl: guessPlayerPhotoAssets['rodrigo_andrade'],
+    imageUrl: goiasGuessPlayerPhotos['rodrigo_andrade'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1904,7 +1904,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2005,
-    imageUrl: guessPlayerPhotoAssets['romerito'],
+    imageUrl: goiasGuessPlayerPhotos['romerito'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -1979,7 +1979,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2005,
-    imageUrl: guessPlayerPhotoAssets['souza'],
+    imageUrl: goiasGuessPlayerPhotos['souza'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -2013,7 +2013,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2011,
-    imageUrl: guessPlayerPhotoAssets['thiago_mendes'],
+    imageUrl: goiasGuessPlayerPhotos['thiago_mendes'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -2053,7 +2053,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2025,
-    imageUrl: guessPlayerPhotoAssets['titi'],
+    imageUrl: goiasGuessPlayerPhotos['titi'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -2067,7 +2067,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 1988,
-    imageUrl: guessPlayerPhotoAssets['tulio_maravilha'],
+    imageUrl: goiasGuessPlayerPhotos['tulio_maravilha'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -2119,7 +2119,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2006,
-    imageUrl: guessPlayerPhotoAssets['vitor'],
+    imageUrl: goiasGuessPlayerPhotos['vitor'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -2144,7 +2144,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2012,
-    imageUrl: guessPlayerPhotoAssets['walter'],
+    imageUrl: goiasGuessPlayerPhotos['walter'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -2206,7 +2206,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2025,
-    imageUrl: guessPlayerPhotoAssets['willean_lepo'],
+    imageUrl: goiasGuessPlayerPhotos['willean_lepo'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -2220,7 +2220,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2013,
-    imageUrl: guessPlayerPhotoAssets['william_matheus'],
+    imageUrl: goiasGuessPlayerPhotos['william_matheus'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -2234,7 +2234,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2023,
-    imageUrl: guessPlayerPhotoAssets['willian_oliveira'],
+    imageUrl: goiasGuessPlayerPhotos['willian_oliveira'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   const GuessPlayer(
@@ -2261,7 +2261,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2025,
-    imageUrl: guessPlayerPhotoAssets['ze_hugo'],
+    imageUrl: goiasGuessPlayerPhotos['ze_hugo'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
   GuessPlayer(
@@ -2275,7 +2275,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
     clubDebutYear: 2023,
-    imageUrl: guessPlayerPhotoAssets['ze_ricardo'],
+    imageUrl: goiasGuessPlayerPhotos['ze_ricardo'],
     dataStatus: GuessPlayerDataStatus.verified,
   ),
 ];

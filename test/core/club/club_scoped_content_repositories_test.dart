@@ -205,7 +205,7 @@ void main() {
     // jogadores históricos com foto (commit "Add 41 historical player
     // photos") nunca apareciam em produção por causa disso.
     test(
-      'photo_key de ex-jogador (só em guessPlayerPhotoAssets, fora do elenco atual) resolve imageUrl',
+      'photo_key de ex-jogador (só em goiasGuessPlayerPhotos, fora do elenco atual) resolve imageUrl',
       () async {
         final row = {
           'id': 'harlei',
@@ -225,11 +225,50 @@ void main() {
         final http = CapturingHttpClient(responseBody: '[${jsonEncode(row)}]');
         final repo = GuessPlayerRepository(_clientWith(http), goiasClubConfig);
         final result = await repo.load();
-        expect(result.single.imageUrl, guessPlayerPhotoAssets['harlei']);
+        expect(result.single.imageUrl, goiasGuessPlayerPhotos['harlei']);
         expect(result.single.imageUrl, isNotNull);
         expect(result.single.eligibleAsSecret, isTrue);
       },
     );
+
+    // Até 2026-09-08 o repositório caía num mapa GLOBAL de fotos do Goiás
+    // quando a chave não estava no mapa do clube ativo. Nenhum id colidia na
+    // época, então nunca chegou a mostrar rosto errado — mas `cleiton` já é
+    // card do Bragantino e é nome comum o bastante pra colidir a qualquer
+    // momento, e o resultado seria um jogador do Goiás dentro do jogo do
+    // outro clube.
+    test('clube sem a foto NÃO herda a do Goiás — fica sem foto mesmo', () async {
+      final row = {
+        'id': 'harlei',
+        'name': 'Harlei',
+        'display_name': 'Harlei',
+        'aliases': <String>[],
+        'position': 'gol',
+        'shirt_number': 1,
+        'academy_club': null,
+        'nationality_code': 'BR',
+        'nationality_name': 'Brasil',
+        'club_debut_year': 1999,
+        // Chave que EXISTE no mapa do Goiás e não no deste clube.
+        'photo_key': 'harlei',
+        'data_status': 'verified',
+        'person_id': null,
+      };
+      expect(goiasGuessPlayerPhotos.containsKey('harlei'), isTrue);
+      expect(
+        syntheticClubBConfig.assets.guessPlayerPhotos.containsKey('harlei'),
+        isFalse,
+      );
+
+      final http = CapturingHttpClient(responseBody: '[${jsonEncode(row)}]');
+      final repo = GuessPlayerRepository(_clientWith(http), syntheticClubBConfig);
+      final result = await repo.load();
+      expect(
+        result.single.imageUrl,
+        isNull,
+        reason: 'herdar a foto do Goiás mostraria o rosto errado no card',
+      );
+    });
 
     test(
       'photo_key do elenco atual continua resolvendo por squadPhotoAssets (nenhuma regressão)',
@@ -255,6 +294,42 @@ void main() {
         expect(result.single.imageUrl, squadPhotoAssets['juninho']);
       },
     );
+
+    test('Bragantino: photo_key do elenco atual resolve pela URL remota do '
+        'CDN oficial (ClubConfig.assets.guessPlayerPhotos), nunca null nem a '
+        'foto de outro clube (2026-09-08, Quem Vestiu o Manto)', () async {
+      final row = {
+        'id': 'braga_manto_01',
+        'name': 'Tiago Volpi',
+        'display_name': 'Tiago Volpi',
+        'aliases': <String>[],
+        'position': 'gol',
+        'shirt_number': 18,
+        'academy_club': 'São José-RS / Fluminense (base)',
+        'nationality_code': null,
+        'nationality_name': null,
+        'club_debut_year': 2026,
+        'photo_key': 'tiago-volpi',
+        'data_status': 'verified',
+        'person_id': null,
+      };
+      final http = CapturingHttpClient(responseBody: '[${jsonEncode(row)}]');
+      final repo = GuessPlayerRepository(
+        _clientWith(http),
+        bragantinoClubConfig,
+      );
+      final result = await repo.load();
+      expect(
+        result.single.imageUrl,
+        bragantinoClubConfig.assets.guessPlayerPhotos['tiago-volpi'],
+      );
+      expect(result.single.imageUrl, isNotNull);
+      expect(
+        result.single.imageUrl,
+        startsWith('https://img.redbullbragantino.com/'),
+      );
+      expect(result.single.eligibleAsSecret, isTrue);
+    });
   });
 
   group(
