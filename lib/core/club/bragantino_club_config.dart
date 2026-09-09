@@ -253,6 +253,11 @@ const bragantinoClubConfig = ClubConfig(
     arenaStadiumIcon: _phVector,
     arenaStadiumPhoto: _phRaster,
     storeBanner: _phRaster,
+    // Catálogo REAL do Red Bull Bragantino coletado da Red Bull Shop
+    // (redbullshop.com.br) em 2026-09-09 — 143 produtos próprios (ver
+    // tooling/bragantino_store/). Nunca compartilha arquivo/asset com o
+    // Goiás (`storeCatalogAssetPath` do Goiás continua o dele, intocado).
+    storeCatalogAssetPath: 'lib/assets/content/bragantino/store_products.json',
     // Sem vídeo oficial do Bragantino ainda — `null` explícito, nunca o
     // vídeo de outro clube. `SplashVideoPage` cai pra `StaticLogoSplash`
     // (mostra `crestBadge`, já é o placeholder neutro acima).
@@ -299,15 +304,11 @@ const bragantinoClubConfig = ClubConfig(
     // (redirectTo dos fluxos de auth aponta pro Worker do próprio clube).
     supabaseRedirectUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
     orderPrefix: 'BRA',
-    // Loja desligada (hasStore=false) — endereço nunca é exibido; placeholder.
-    pickupAddress: ClubPickupAddress(
-      storeName: 'Loja (indisponível)',
-      street: '—',
-      neighborhood: '—',
-      city: '—',
-      state: '—',
-      zipCode: '—',
-    ),
+    // Sem ponto de retirada real cadastrado ainda — `null`, nunca um
+    // placeholder tipo "Loja (indisponível)"/"—". `checkout_page.dart` já
+    // esconde "Retirar na loja" por completo quando isto é `null`; a Loja
+    // continua funcionando normalmente só por entrega.
+    pickupAddress: null,
     // Sem redes/contato oficiais cadastrados ainda — null, nunca inventar.
     contactWhatsappNumber: null,
     contactWhatsappUrl: null,
@@ -321,7 +322,12 @@ const bragantinoClubConfig = ClubConfig(
   // Tudo FALSE + Arena vazia até haver dado/conteúdo real do Bragantino.
   capabilities: ClubCapabilities(
     hasMembership: false,
-    hasStore: false,
+    // 2026-09-09: catálogo REAL coletado da Red Bull Shop (143 produtos,
+    // 497 SKUs, 265 imagens locais — ver tooling/bragantino_store/),
+    // isolado por `ClubAssets.storeCatalogAssetPath`, zero produto/asset do
+    // Goiás. "Retirar na loja" fica automaticamente escondida
+    // (`pickupAddress: null` acima) — só entrega, sem placeholder.
+    hasStore: true,
     hasTickets: false,
     hasCrowdLineup: false,
     // 2026-09-07: as 186 partidas e os 49 estádios do Bragantino estão no

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/data/store_category_catalog.dart';
 import 'package:goias_app/features/store/data/store_error_mapper.dart';
@@ -20,17 +21,24 @@ const _freeShippingThreshold = 399.90;
 const _coupons = {'VERDAO10': 10.0, 'SOCIO15': 15.0};
 
 class MockStoreRepository implements StoreRepository {
-  MockStoreRepository(this._storage);
+  MockStoreRepository(this._storage, this._clubConfig);
 
   final StoreLocalStorage _storage;
+  final ClubConfig _clubConfig;
   List<StoreProduct>? _catalogCache;
 
+  /// Path é do CLUBE ATIVO (`ClubAssets.storeCatalogAssetPath`) — nunca um
+  /// literal fixo aqui. Clube sem catálogo próprio ainda (`null`) tem 0
+  /// produtos: nunca lança, e jamais cai pro JSON de outro clube.
   Future<List<StoreProduct>> _catalog() async {
     final cached = _catalogCache;
     if (cached != null) return cached;
-    final raw = await rootBundle.loadString(
-      'lib/assets/content/store_products.json',
-    );
+    final path = _clubConfig.assets.storeCatalogAssetPath;
+    if (path == null) {
+      _catalogCache = const [];
+      return const [];
+    }
+    final raw = await rootBundle.loadString(path);
     final list = (jsonDecode(raw) as List)
         .map((e) => StoreProduct.fromJson(e as Map<String, dynamic>))
         .toList(growable: false);
