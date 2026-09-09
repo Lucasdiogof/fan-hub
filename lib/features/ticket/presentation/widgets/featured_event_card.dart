@@ -133,7 +133,6 @@ class FeaturedEventCard extends StatelessWidget {
   }
 
   Widget _memberSection(BuildContext context) {
-    final colors = context.colors;
     final l10n = context.l10n;
     return switch (event.checkInStatus) {
       CheckInStatus.unavailable => _StatusBlock(
@@ -146,10 +145,9 @@ class FeaturedEventCard extends StatelessWidget {
         ),
       ),
       CheckInStatus.available => _StatusBlock(
-        label: l10n.ticketsCheckinAvailableLabel,
+        label: null,
         buttonLabel: l10n.ticketsCheckInButton,
         onTap: onCheckIn,
-        labelColor: colors.primary,
       ),
       CheckInStatus.declined => _StatusBlock(
         label: l10n.ticketsDeclinedLabel,

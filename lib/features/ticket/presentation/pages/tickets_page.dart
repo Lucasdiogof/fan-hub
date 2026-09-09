@@ -53,11 +53,19 @@ class _TicketsView extends StatelessWidget {
       Success(:final data) => data,
       Error() => null,
     };
+    if (profile == null) {
+      _showLoadError(context);
+      return;
+    }
     // Já carregada pela `MembershipStatusCubit` (fonte única de "é sócio?")
     // — nunca uma nova consulta a `MembershipRepository` só pra esta tela.
+    // Na prática nunca deveria acontecer (o CTA de check-in só aparece pra
+    // quem já é sócio, ver `_memberSection` em `featured_event_card.dart`),
+    // mas se algum bug deixar o botão visível sem associação real, explica
+    // o motivo em vez de um erro genérico e manda pra virar sócio.
     final membership = sl<MembershipStatusCubit>().state.membership;
-    if (profile == null || membership == null) {
-      _showLoadError(context);
+    if (membership == null) {
+      await _showNotMemberSheet(context);
       return;
     }
     await context.push(
@@ -99,6 +107,23 @@ class _TicketsView extends StatelessWidget {
       ..showSnackBar(
         SnackBar(content: Text(context.l10n.ticketsLoadUserDataError)),
       );
+  }
+
+  Future<void> _showNotMemberSheet(BuildContext context) async {
+    final l10n = context.l10n;
+    final result = await AppBottomSheet.show(
+      context,
+      icon: Icons.badge_outlined,
+      title: l10n.ticketsNotMemberTitle,
+      description: l10n.ticketsNotMemberMessage(
+        sl<ClubConfig>().productNames.membershipProgramName,
+      ),
+      confirmLabel: l10n.ticketsNotMemberGoToMembershipButton,
+      cancelLabel: l10n.commonClose,
+    );
+    if (result == true && context.mounted) {
+      await context.push('/membership/plans');
+    }
   }
 
   void _viewTicket(BuildContext context, Ticket ticket) {
