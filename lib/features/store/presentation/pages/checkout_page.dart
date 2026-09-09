@@ -37,8 +37,8 @@ part '../widgets/checkout_payment_review.dart';
 List<String> _stepLabels(AppLocalizations l10n) => [
   l10n.storeStepIdentification,
   l10n.storeStepDelivery,
-  l10n.storeStepPayment,
   l10n.storeStepReview,
+  l10n.storeStepPayment,
 ];
 
 class CheckoutPage extends StatelessWidget {
@@ -56,6 +56,8 @@ class CheckoutPage extends StatelessWidget {
         cart,
         prefillName: profile?.fullName,
         prefillEmail: profile?.email,
+        prefillCpf: profile?.cpf,
+        prefillPhone: profile?.phone,
       ),
       child: const _CheckoutView(),
     );
@@ -231,7 +233,7 @@ class _StepScaffold extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(
               AppSpacing.lg,
-              AppSpacing.sm,
+              AppSpacing.lg,
               AppSpacing.lg,
               AppSpacing.md,
             ),
@@ -465,9 +467,26 @@ class _IdentificationStepState extends State<_IdentificationStep> {
   late final _nameController = TextEditingController(
     text: widget.state.fullName,
   );
-  late final _cpfController = TextEditingController(text: widget.state.cpf);
+  // O perfil guarda CPF/telefone só em dígitos — passa pelo formatador na
+  // hora de pré-preencher, senão mostra "12345678900" cru até o usuário
+  // digitar algo e o `inputFormatters` do campo entrar em ação.
+  late final _cpfController = TextEditingController(
+    text: cpfInputFormatter()
+        .formatEditUpdate(
+          TextEditingValue.empty,
+          TextEditingValue(text: widget.state.cpf),
+        )
+        .text,
+  );
   late final _emailController = TextEditingController(text: widget.state.email);
-  late final _phoneController = TextEditingController(text: widget.state.phone);
+  late final _phoneController = TextEditingController(
+    text: phoneInputFormatter()
+        .formatEditUpdate(
+          TextEditingValue.empty,
+          TextEditingValue(text: widget.state.phone),
+        )
+        .text,
+  );
 
   final _nameTouch = FieldTouch();
   final _cpfTouch = FieldTouch();
@@ -503,7 +522,9 @@ class _IdentificationStepState extends State<_IdentificationStep> {
     return _StepScaffold(
       state: widget.state,
       primaryLabel: l10n.storeContinueButton,
-      onPrimaryPressed: _submit,
+      onPrimaryPressed: widget.state.canProceedFromIdentification
+          ? _submit
+          : null,
       form: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

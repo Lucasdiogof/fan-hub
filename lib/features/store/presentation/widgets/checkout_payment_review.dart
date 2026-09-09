@@ -15,8 +15,9 @@ class _PaymentStep extends StatelessWidget {
     final cubit = context.read<CheckoutCubit>();
     return _StepScaffold(
       state: state,
-      primaryLabel: l10n.storeContinueButton,
-      onPrimaryPressed: state.canProceedFromPayment ? cubit.nextStep : null,
+      primaryLabel: l10n.storeConfirmOrderButton,
+      loading: state.submitting,
+      onPrimaryPressed: state.canConfirmOrder ? cubit.confirmOrder : null,
       form: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -349,9 +350,8 @@ class _ReviewStep extends StatelessWidget {
     return _StepScaffold(
       state: state,
       showSummarySidebar: false,
-      primaryLabel: l10n.storeConfirmOrderButton,
-      loading: state.submitting,
-      onPrimaryPressed: state.canConfirmOrder ? cubit.confirmOrder : null,
+      primaryLabel: l10n.storeContinueButton,
+      onPrimaryPressed: state.canProceedFromReview ? cubit.nextStep : null,
       form: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -398,21 +398,6 @@ class _ReviewStep extends StatelessWidget {
                         style: _reviewHintStyle(context),
                       ),
                   ],
-          ),
-          _ReviewSection(
-            title: l10n.storeStepPayment,
-            onEdit: () => cubit.goToStep(CheckoutStep.payment),
-            children: [
-              Text(
-                state.paymentMethod == PaymentMethod.pix
-                    ? l10n.storePaymentPix
-                    : l10n.storeCardSummaryLine(
-                        state.cardSummary?.lastFourDigits ?? '----',
-                        state.cardSummary?.installments ?? 1,
-                      ),
-                style: _reviewValueStyle(context),
-              ),
-            ],
           ),
           _ReviewItemsSection(state: state),
           const SizedBox(height: AppSpacing.md),
@@ -664,7 +649,37 @@ class _ConfirmationStep extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _SidebarRow(l10n.storeItemsLabel, '${order.itemCount}'),
+                for (final item in order.items)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(
+                            AppRadius.cardSmall,
+                          ),
+                          child: Image.asset(
+                            item.thumbnail,
+                            width: 44,
+                            height: 44,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        const SizedBox(width: AppSpacing.sm),
+                        Expanded(
+                          child: Text(
+                            '${item.quantity}x ${item.productName} (${item.size})',
+                            style: _reviewHintStyle(context),
+                          ),
+                        ),
+                        Text(
+                          formatBrl(item.lineTotal),
+                          style: _reviewValueStyle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                const Divider(height: AppSpacing.lg),
                 _SidebarRow(
                   order.isPickup
                       ? l10n.storePickupWord

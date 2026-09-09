@@ -166,6 +166,9 @@ class FeaturedEventCard extends StatelessWidget {
         buttonLabel: l10n.ticketsCheckinClosedButton,
         onTap: null,
       ),
+      CheckInStatus.awayGame => _StatusBlock(
+        label: l10n.ticketsCheckinAwayGameLabel,
+      ),
     };
   }
 
@@ -203,6 +206,9 @@ class FeaturedEventCard extends StatelessWidget {
         label: l10n.ticketsSaleClosedLabel,
         buttonLabel: l10n.ticketsSaleClosedButton,
         onTap: null,
+      ),
+      TicketSaleStatus.awayGame => _StatusBlock(
+        label: l10n.ticketsSaleAwayGameLabel,
       ),
     };
   }
@@ -267,14 +273,16 @@ class _InfoItem extends StatelessWidget {
 class _StatusBlock extends StatelessWidget {
   const _StatusBlock({
     required this.label,
-    required this.buttonLabel,
-    required this.onTap,
+    this.buttonLabel,
+    this.onTap,
     this.subtitle,
     this.labelColor,
   });
 
   final String? label;
-  final String buttonLabel;
+  // `null` some com o botão inteiro (ex.: jogo fora de casa) — nada de
+  // botão desabilitado sem ação nenhuma pra oferecer.
+  final String? buttonLabel;
   final VoidCallback? onTap;
   final String? subtitle;
   final Color? labelColor;
@@ -282,6 +290,7 @@ class _StatusBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final buttonLabel = this.buttonLabel;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -304,25 +313,27 @@ class _StatusBlock extends StatelessWidget {
             style: TextStyle(fontSize: 11.5, color: colors.textHint),
           ),
         ],
-        const SizedBox(height: AppSpacing.lg),
-        SizedBox(
-          height: 50,
-          child: FilledButton(
-            onPressed: onTap,
-            style: matchCtaFilledStyle(context, minHeight: 50).merge(
-              FilledButton.styleFrom(
-                disabledBackgroundColor: colors.secondary,
-                disabledForegroundColor: colors.textHint,
-                textStyle: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 0.2,
+        if (buttonLabel != null) ...[
+          const SizedBox(height: AppSpacing.lg),
+          SizedBox(
+            height: 50,
+            child: FilledButton(
+              onPressed: onTap,
+              style: matchCtaFilledStyle(context, minHeight: 50).merge(
+                FilledButton.styleFrom(
+                  disabledBackgroundColor: colors.secondary,
+                  disabledForegroundColor: colors.textHint,
+                  textStyle: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.2,
+                  ),
                 ),
               ),
+              child: Text(buttonLabel),
             ),
-            child: Text(buttonLabel),
           ),
-        ),
+        ],
       ],
     );
   }

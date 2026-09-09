@@ -2186,6 +2186,10 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketsCheckinClosedButton => 'Check-in encerrado';
 
   @override
+  String get ticketsCheckinAwayGameLabel =>
+      'CHECK-IN DISPONÍVEL SÓ NO JOGO EM CASA';
+
+  @override
   String get ticketsViewTicketButton => 'Visualizar ingresso';
 
   @override
@@ -2216,6 +2220,9 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get ticketsSaleClosedButton => 'Venda encerrada';
+
+  @override
+  String get ticketsSaleAwayGameLabel => 'INGRESSOS SÓ COM O CLUBE MANDANTE';
 
   @override
   String get ticketsCheckinConfirmedLabel => 'CHECK-IN CONFIRMADO';

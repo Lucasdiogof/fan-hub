@@ -170,6 +170,26 @@ class NextMatchCard extends StatelessWidget {
               ),
               child: Text(context.l10n.matchFollowLive),
             )
+          else if (onBuyTicket == null)
+            // Sem venda pra oferecer (ex.: jogo fora de casa) — nada de
+            // botão desabilitado, some com ele por completo em vez de só
+            // deixar sem ação.
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: onViewDetails,
+                style: matchCtaOutlineStyle(context).merge(
+                  OutlinedButton.styleFrom(
+                    textStyle: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.2,
+                    ),
+                  ),
+                ),
+                child: Text(context.l10n.matchDetailsShort),
+              ),
+            )
           else
             Row(
               children: [
