@@ -393,8 +393,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get authSessionExpiredTitle => 'Sua sessão expirou';
 
   @override
-  String get authSessionExpiredMessage =>
-      'Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do Goiás.';
+  String authSessionExpiredMessage(String club) {
+    return 'Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do $club.';
+  }
 
   @override
   String get authSessionExpiredCta => 'Entrar novamente';
@@ -484,6 +485,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get personalNameRequired => 'Informe seu nome completo.';
 
   @override
+  String get personalCpfRequired => 'Informe seu CPF.';
+
+  @override
   String get personalCpfInvalid => 'CPF inválido.';
 
   @override
@@ -493,7 +497,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get securityTitle => 'SEGURANÇA';
 
   @override
-  String get securitySubtitle => 'Altere a senha da sua conta Goiás EC.';
+  String securitySubtitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Altere a senha da sua conta Goiás EC.',
+      'other': 'Altere a senha da sua conta $club.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get securityCurrentPassword => 'Senha atual';
@@ -588,7 +598,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get settingsNotificationsTitle => 'NOTIFICAÇÕES';
 
   @override
-  String get notificationsMatchesTitle => 'Partidas do Goiás';
+  String notificationsMatchesTitle(String club) {
+    return 'Partidas do $club';
+  }
 
   @override
   String get notificationsMatchesDescription =>
@@ -639,11 +651,22 @@ class AppLocalizationsPt extends AppLocalizations {
   String get avatarChooseFromGallery => 'Escolher da galeria';
 
   @override
-  String get socialFollowTitle => 'SIGA O GOIÁS';
+  String socialFollowTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'SIGA O GOIÁS',
+      'other': 'SIGA O $club',
+    });
+    return '$_temp0';
+  }
 
   @override
-  String get socialFollowSubtitle =>
-      'Acompanhe o Verdão também nas redes sociais.';
+  String socialFollowSubtitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Acompanhe o Verdão também nas redes sociais.',
+      'other': 'Acompanhe o $club também nas redes sociais.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String socialOpenLink(String name) {
@@ -651,11 +674,22 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get arenaTitle => 'Arena Esmeraldina';
+  String arenaTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Arena Esmeraldina',
+      'other': 'Arena $club',
+    });
+    return '$_temp0';
+  }
 
   @override
-  String get arenaGamesSectionSubtitle =>
-      'Teste seus conhecimentos sobre o Verdão.';
+  String arenaGamesSectionSubtitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Teste seus conhecimentos sobre o Verdão.',
+      'other': 'Teste seus conhecimentos sobre o $club.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaNextMatchBadge => 'PRÓXIMO JOGO';
@@ -695,10 +729,18 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get arenaHeaderSubtitle => 'Jogue, participe e viva o Goiás.';
+  String arenaHeaderSubtitle(String club) {
+    return 'Jogue, participe e viva o $club.';
+  }
 
   @override
-  String get arenaSpotlightEyebrow => 'Arena Esmeraldina';
+  String arenaSpotlightEyebrow(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Arena Esmeraldina',
+      'other': 'Arena $club',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaSpotlightHeadline => 'A sua paixão entra em campo';
@@ -1701,7 +1743,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get socialFeedLoadError => 'Não foi possível carregar o feed';
 
   @override
-  String get socialEmptyState => 'Acompanhe o Goiás nas redes';
+  String socialEmptyState(String club) {
+    return 'Acompanhe o $club nas redes';
+  }
 
   @override
   String socialViewsM(String value) {
@@ -1737,8 +1781,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get newsEmptyTitle => 'Nenhuma notícia por aqui ainda';
 
   @override
-  String get newsEmptyMessage =>
-      'Volte mais tarde para conferir as novidades do Goiás.';
+  String newsEmptyMessage(String club) {
+    return 'Volte mais tarde para conferir as novidades do $club.';
+  }
 
   @override
   String get newsSourceLabel => 'FONTE: GOIÁS ESPORTE CLUBE';
@@ -1960,8 +2005,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get forgotVerifyEmailTitle => 'Confira seu e-mail';
 
   @override
-  String get forgotSentDescription =>
-      'Se este e-mail tiver uma conta no aplicativo do Goiás, você vai receber um link de redefinição em instantes:';
+  String forgotSentDescription(String club) {
+    return 'Se este e-mail tiver uma conta no aplicativo do $club, você vai receber um link de redefinição em instantes:';
+  }
 
   @override
   String get forgotNotReceived => 'Não recebeu?';

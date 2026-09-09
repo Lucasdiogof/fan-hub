@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -186,7 +188,9 @@ class _MatchRow extends StatelessWidget {
                                     ]
                                   : [
                                       TextSpan(
-                                        text: 'Goiás',
+                                        text: sl<ClubConfig>()
+                                            .identity
+                                            .shortName,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w900,
                                           color: colors.primary,
@@ -246,7 +250,9 @@ class _MatchRow extends StatelessWidget {
   }
 
   TextStyle? _goiasStyle(AppColors colors, String team) =>
-      team.toLowerCase().contains('goiás')
+      team.toLowerCase().contains(
+        sl<ClubConfig>().identity.shortName.toLowerCase(),
+      )
       ? TextStyle(fontWeight: FontWeight.w900, color: colors.primary)
       : null;
 }

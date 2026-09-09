@@ -63,6 +63,10 @@ class PassportState extends Equatable {
   List<PassportMatch> get filteredMatches {
     return matches
         .where((match) {
+          // Jogo que ainda não aconteceu (agendado/adiado/cancelado) nunca
+          // aparece no Passaporte — presença/resultado só fazem sentido pra
+          // partida já disputada, em qualquer um dos filtros abaixo.
+          if (!match.isFinished) return false;
           if (competitionFilter != null &&
               match.competitionCode != competitionFilter) {
             return false;

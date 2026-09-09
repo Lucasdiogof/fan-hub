@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/auth/domain/entities/auth_user.dart';
@@ -147,6 +150,7 @@ void main() {
   late GlobalKey<NavigatorState> navigatorKey;
 
   setUp(() {
+    sl.registerSingleton<ClubConfig>(goiasClubConfig);
     authRepo = _FakeAuthRepository();
     authCubit = AuthCubit(authRepo);
     navigatorKey = GlobalKey<NavigatorState>();
@@ -180,6 +184,7 @@ void main() {
     router.dispose();
     await authCubit.close();
     await authRepo.dispose();
+    await sl.reset();
   });
 
   Widget buildApp() {

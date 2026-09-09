@@ -847,8 +847,8 @@ abstract class AppLocalizations {
   /// No description provided for @authSessionExpiredMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do Goiás.'**
-  String get authSessionExpiredMessage;
+  /// **'Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do {club}.'**
+  String authSessionExpiredMessage(String club);
 
   /// No description provided for @authSessionExpiredCta.
   ///
@@ -1000,6 +1000,12 @@ abstract class AppLocalizations {
   /// **'Informe seu nome completo.'**
   String get personalNameRequired;
 
+  /// No description provided for @personalCpfRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu CPF.'**
+  String get personalCpfRequired;
+
   /// No description provided for @personalCpfInvalid.
   ///
   /// In pt, this message translates to:
@@ -1021,8 +1027,8 @@ abstract class AppLocalizations {
   /// No description provided for @securitySubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Altere a senha da sua conta Goiás EC.'**
-  String get securitySubtitle;
+  /// **'{clubCode, select, goias{Altere a senha da sua conta Goiás EC.} other{Altere a senha da sua conta {club}.}}'**
+  String securitySubtitle(String clubCode, String club);
 
   /// No description provided for @securityCurrentPassword.
   ///
@@ -1201,8 +1207,8 @@ abstract class AppLocalizations {
   /// No description provided for @notificationsMatchesTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Partidas do Goiás'**
-  String get notificationsMatchesTitle;
+  /// **'Partidas do {club}'**
+  String notificationsMatchesTitle(String club);
 
   /// No description provided for @notificationsMatchesDescription.
   ///
@@ -1297,14 +1303,14 @@ abstract class AppLocalizations {
   /// No description provided for @socialFollowTitle.
   ///
   /// In pt, this message translates to:
-  /// **'SIGA O GOIÁS'**
-  String get socialFollowTitle;
+  /// **'{clubCode, select, goias{SIGA O GOIÁS} other{SIGA O {club}}}'**
+  String socialFollowTitle(String clubCode, String club);
 
   /// No description provided for @socialFollowSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Acompanhe o Verdão também nas redes sociais.'**
-  String get socialFollowSubtitle;
+  /// **'{clubCode, select, goias{Acompanhe o Verdão também nas redes sociais.} other{Acompanhe o {club} também nas redes sociais.}}'**
+  String socialFollowSubtitle(String clubCode, String club);
 
   /// No description provided for @socialOpenLink.
   ///
@@ -1315,14 +1321,14 @@ abstract class AppLocalizations {
   /// No description provided for @arenaTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Arena Esmeraldina'**
-  String get arenaTitle;
+  /// **'{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}'**
+  String arenaTitle(String clubCode, String club);
 
   /// No description provided for @arenaGamesSectionSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Teste seus conhecimentos sobre o Verdão.'**
-  String get arenaGamesSectionSubtitle;
+  /// **'{clubCode, select, goias{Teste seus conhecimentos sobre o Verdão.} other{Teste seus conhecimentos sobre o {club}.}}'**
+  String arenaGamesSectionSubtitle(String clubCode, String club);
 
   /// No description provided for @arenaNextMatchBadge.
   ///
@@ -1393,14 +1399,14 @@ abstract class AppLocalizations {
   /// No description provided for @arenaHeaderSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Jogue, participe e viva o Goiás.'**
-  String get arenaHeaderSubtitle;
+  /// **'Jogue, participe e viva o {club}.'**
+  String arenaHeaderSubtitle(String club);
 
   /// No description provided for @arenaSpotlightEyebrow.
   ///
   /// In pt, this message translates to:
-  /// **'Arena Esmeraldina'**
-  String get arenaSpotlightEyebrow;
+  /// **'{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}'**
+  String arenaSpotlightEyebrow(String clubCode, String club);
 
   /// No description provided for @arenaSpotlightHeadline.
   ///
@@ -3048,8 +3054,8 @@ abstract class AppLocalizations {
   /// No description provided for @socialEmptyState.
   ///
   /// In pt, this message translates to:
-  /// **'Acompanhe o Goiás nas redes'**
-  String get socialEmptyState;
+  /// **'Acompanhe o {club} nas redes'**
+  String socialEmptyState(String club);
 
   /// No description provided for @socialViewsM.
   ///
@@ -3108,8 +3114,8 @@ abstract class AppLocalizations {
   /// No description provided for @newsEmptyMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Volte mais tarde para conferir as novidades do Goiás.'**
-  String get newsEmptyMessage;
+  /// **'Volte mais tarde para conferir as novidades do {club}.'**
+  String newsEmptyMessage(String club);
 
   /// No description provided for @newsSourceLabel.
   ///
@@ -3492,8 +3498,8 @@ abstract class AppLocalizations {
   /// No description provided for @forgotSentDescription.
   ///
   /// In pt, this message translates to:
-  /// **'Se este e-mail tiver uma conta no aplicativo do Goiás, você vai receber um link de redefinição em instantes:'**
-  String get forgotSentDescription;
+  /// **'Se este e-mail tiver uma conta no aplicativo do {club}, você vai receber um link de redefinição em instantes:'**
+  String forgotSentDescription(String club);
 
   /// No description provided for @forgotNotReceived.
   ///

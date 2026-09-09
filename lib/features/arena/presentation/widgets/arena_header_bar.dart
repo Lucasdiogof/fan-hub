@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -35,10 +37,17 @@ class ArenaHeaderBar extends StatelessWidget {
           ],
         ),
         const SizedBox(height: AppSpacing.lg),
-        PageTitle(l10n.arenaTitle.toUpperCase()),
+        PageTitle(
+          l10n
+              .arenaTitle(
+                sl<ClubConfig>().identity.code,
+                sl<ClubConfig>().identity.shortName,
+              )
+              .toUpperCase(),
+        ),
         const SizedBox(height: 6),
         Text(
-          l10n.arenaHeaderSubtitle,
+          l10n.arenaHeaderSubtitle(sl<ClubConfig>().identity.shortName),
           style: TextStyle(
             fontSize: 12.5,
             fontWeight: FontWeight.w600,

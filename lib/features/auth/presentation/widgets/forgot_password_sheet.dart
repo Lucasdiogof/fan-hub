@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
@@ -197,7 +199,9 @@ class _ForgotPasswordSheetState extends State<ForgotPasswordSheet> {
         _SheetHeader(
           icon: Icons.mark_email_read_rounded,
           title: l10n.forgotVerifyEmailTitle,
-          description: l10n.forgotSentDescription,
+          description: l10n.forgotSentDescription(
+            sl<ClubConfig>().identity.shortName,
+          ),
         ),
         const SizedBox(height: AppSpacing.xs),
         Text(

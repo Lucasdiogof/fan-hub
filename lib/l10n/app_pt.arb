@@ -155,7 +155,12 @@
   "profileSignOutConfirm": "SAIR",
   "profileSignOut": "Sair",
   "authSessionExpiredTitle": "Sua sessão expirou",
-  "authSessionExpiredMessage": "Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do Goiás.",
+  "authSessionExpiredMessage": "Por segurança, precisamos confirmar seu acesso novamente. Entre na sua conta para continuar usando todos os recursos do {club}.",
+  "@authSessionExpiredMessage": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "authSessionExpiredCta": "Entrar novamente",
   "authErrorInvalidCredentials": "E-mail ou senha incorretos.",
   "authErrorCurrentPasswordIncorrect": "Senha atual incorreta.",
@@ -181,10 +186,17 @@
   "personalFieldPhone": "Celular",
   "personalEmailLocked": "O e-mail é vinculado à sua conta.",
   "personalNameRequired": "Informe seu nome completo.",
+  "personalCpfRequired": "Informe seu CPF.",
   "personalCpfInvalid": "CPF inválido.",
   "personalUpdateSuccess": "Dados atualizados com sucesso.",
   "securityTitle": "SEGURANÇA",
-  "securitySubtitle": "Altere a senha da sua conta Goiás EC.",
+  "securitySubtitle": "{clubCode, select, goias{Altere a senha da sua conta Goiás EC.} other{Altere a senha da sua conta {club}.}}",
+  "@securitySubtitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "securityCurrentPassword": "Senha atual",
   "securityCurrentPasswordHint": "Confirme sua senha atual",
   "securityNewPassword": "Nova senha",
@@ -228,7 +240,12 @@
   "deleteAccountConfirmButton": "EXCLUIR MINHA CONTA",
   "deleteAccountDeleting": "EXCLUINDO CONTA...",
   "settingsNotificationsTitle": "NOTIFICAÇÕES",
-  "notificationsMatchesTitle": "Partidas do Goiás",
+  "notificationsMatchesTitle": "Partidas do {club}",
+  "@notificationsMatchesTitle": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "notificationsMatchesDescription": "Gols e resultado final em tempo real.",
   "notificationsTicketsTitle": "Ingressos e check-in",
   "notificationsTicketsDescription": "Avisos quando a venda ou o check-in abrirem.",
@@ -244,8 +261,20 @@
   "themeModeDarkDesc": "Sempre com fundo escuro",
   "avatarTakePhoto": "Tirar foto",
   "avatarChooseFromGallery": "Escolher da galeria",
-  "socialFollowTitle": "SIGA O GOIÁS",
-  "socialFollowSubtitle": "Acompanhe o Verdão também nas redes sociais.",
+  "socialFollowTitle": "{clubCode, select, goias{SIGA O GOIÁS} other{SIGA O {club}}}",
+  "@socialFollowTitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
+  "socialFollowSubtitle": "{clubCode, select, goias{Acompanhe o Verdão também nas redes sociais.} other{Acompanhe o {club} também nas redes sociais.}}",
+  "@socialFollowSubtitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "socialOpenLink": "Abrir {name}",
   "@socialOpenLink": {
     "placeholders": {
@@ -254,8 +283,20 @@
       }
     }
   },
-  "arenaTitle": "Arena Esmeraldina",
-  "arenaGamesSectionSubtitle": "Teste seus conhecimentos sobre o Verdão.",
+  "arenaTitle": "{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}",
+  "@arenaTitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
+  "arenaGamesSectionSubtitle": "{clubCode, select, goias{Teste seus conhecimentos sobre o Verdão.} other{Teste seus conhecimentos sobre o {club}.}}",
+  "@arenaGamesSectionSubtitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaNextMatchBadge": "PRÓXIMO JOGO",
   "arenaHighlightViewLineup": "Ver escalação",
   "arenaPlay": "JOGAR",
@@ -277,8 +318,19 @@
       }
     }
   },
-  "arenaHeaderSubtitle": "Jogue, participe e viva o Goiás.",
-  "arenaSpotlightEyebrow": "Arena Esmeraldina",
+  "arenaHeaderSubtitle": "Jogue, participe e viva o {club}.",
+  "@arenaHeaderSubtitle": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
+  "arenaSpotlightEyebrow": "{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}",
+  "@arenaSpotlightEyebrow": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaSpotlightHeadline": "A sua paixão entra em campo",
   "arenaSpotlightSubtitle": "Jogue, participe e dispute seu lugar entre os Esmeraldinos.",
   "arenaSpotlightCta": "Entrar na Arena",
@@ -964,7 +1016,12 @@
   },
   "socialMediaTitle": "MÍDIA",
   "socialFeedLoadError": "Não foi possível carregar o feed",
-  "socialEmptyState": "Acompanhe o Goiás nas redes",
+  "socialEmptyState": "Acompanhe o {club} nas redes",
+  "@socialEmptyState": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "socialViewsM": "{value}M visualizações",
   "@socialViewsM": {
     "placeholders": {
@@ -995,7 +1052,12 @@
   "newsTitle": "NOTÍCIAS",
   "newsLoadError": "Não foi possível carregar as notícias",
   "newsEmptyTitle": "Nenhuma notícia por aqui ainda",
-  "newsEmptyMessage": "Volte mais tarde para conferir as novidades do Goiás.",
+  "newsEmptyMessage": "Volte mais tarde para conferir as novidades do {club}.",
+  "@newsEmptyMessage": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "newsSourceLabel": "FONTE: GOIÁS ESPORTE CLUBE",
   "newsOpenOriginal": "Abrir matéria original",
   "newsPdfLoadErrorTitle": "Não foi possível carregar o PDF",
@@ -1153,7 +1215,12 @@
   "resetPasswordSuccessTitle": "Senha alterada com sucesso",
   "resetPasswordSuccessMessage": "Sua senha foi atualizada. Entre novamente para continuar.",
   "forgotVerifyEmailTitle": "Confira seu e-mail",
-  "forgotSentDescription": "Se este e-mail tiver uma conta no aplicativo do Goiás, você vai receber um link de redefinição em instantes:",
+  "forgotSentDescription": "Se este e-mail tiver uma conta no aplicativo do {club}, você vai receber um link de redefinição em instantes:",
+  "@forgotSentDescription": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "forgotNotReceived": "Não recebeu?",
   "forgotResendSuccess": "Se a conta existir, reenviamos o e-mail.",
   "commonGotIt": "Entendi",

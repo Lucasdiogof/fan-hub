@@ -402,7 +402,10 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                     ],
                     ArenaSectionHeader(
                       context.l10n.arenaChallengesSectionTitle,
-                      subtitle: context.l10n.arenaGamesSectionSubtitle,
+                      subtitle: context.l10n.arenaGamesSectionSubtitle(
+                        sl<ClubConfig>().identity.code,
+                        sl<ClubConfig>().identity.shortName,
+                      ),
                     ),
                     const SizedBox(height: AppSpacing.md),
                     LayoutBuilder(

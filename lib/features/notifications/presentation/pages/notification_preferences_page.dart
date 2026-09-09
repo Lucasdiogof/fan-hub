@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -148,7 +149,9 @@ class _MatchesToggle extends StatelessWidget {
     >(
       builder: (context, state) => _ToggleRow(
         icon: Icons.sports_soccer_rounded,
-        title: context.l10n.notificationsMatchesTitle,
+        title: context.l10n.notificationsMatchesTitle(
+          sl<ClubConfig>().identity.shortName,
+        ),
         description: context.l10n.notificationsMatchesDescription,
         value: state.preferences.matchesEnabled,
         enabled: state.status != LoadStatus.loading,

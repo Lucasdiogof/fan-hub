@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -39,10 +40,13 @@ void main() {
     tester,
   ) async {
     useTallSurface(tester);
-    await tester.pumpWidget(wrap(LegalDocumentsData.termsOfUse));
+    final document = LegalDocumentsData.termsOfUseFor(
+      goiasClubConfig.identity.displayName,
+    );
+    await tester.pumpWidget(wrap(document));
 
     expect(find.text('TERMOS DE USO'), findsOneWidget);
-    for (final section in LegalDocumentsData.termsOfUse.sections) {
+    for (final section in document.sections) {
       expect(find.text(section.title), findsOneWidget, reason: section.title);
     }
   });
@@ -51,11 +55,32 @@ void main() {
     tester,
   ) async {
     useTallSurface(tester);
-    await tester.pumpWidget(wrap(LegalDocumentsData.privacyPolicy));
+    final document = LegalDocumentsData.privacyPolicyFor(
+      goiasClubConfig.identity.displayName,
+    );
+    await tester.pumpWidget(wrap(document));
 
     expect(find.text('POLÍTICA DE PRIVACIDADE'), findsOneWidget);
-    for (final section in LegalDocumentsData.privacyPolicy.sections) {
+    for (final section in document.sections) {
       expect(find.text(section.title), findsOneWidget, reason: section.title);
     }
+  });
+
+  test('Bragantino nunca fala "Goiás Esporte Clube" nos textos legais', () {
+    final terms = LegalDocumentsData.termsOfUseFor(
+      bragantinoClubConfig.identity.displayName,
+    );
+    final privacy = LegalDocumentsData.privacyPolicyFor(
+      bragantinoClubConfig.identity.displayName,
+    );
+    final allText = [
+      terms.intro,
+      ...terms.sections.map((s) => '${s.title}\n${s.body}'),
+      privacy.intro,
+      ...privacy.sections.map((s) => '${s.title}\n${s.body}'),
+    ].join('\n');
+
+    expect(allText, isNot(contains('Goiás')));
+    expect(allText, contains('Red Bull Bragantino'));
   });
 }
