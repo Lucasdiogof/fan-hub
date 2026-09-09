@@ -15,11 +15,9 @@ import 'package:goias_app/features/store/presentation/order_status_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/demo_tag.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 class StoreOrdersPage extends StatelessWidget {
@@ -41,67 +39,58 @@ class _StoreOrdersView extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
+    final title = l10n.storeOrdersTitle.toUpperCase();
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
+      body: DetailPageHeader(
+        title: title,
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: BlocBuilder<StoreOrdersCubit, StoreOrdersState>(
+            builder: (context, state) {
+              return switch (state.status) {
+                LoadStatus.initial || LoadStatus.loading => const Padding(
+                  padding: EdgeInsets.symmetric(vertical: AppSpacing.xxxl),
+                  child: Center(child: GoiasLoadingIndicator()),
+                ),
+                LoadStatus.empty => Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpacing.xxxl,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(l10n.storeOrdersTitle),
-                    ],
+                  child: Center(
+                    child: StateMessage(
+                      icon: Icons.receipt_long_outlined,
+                      title: l10n.storeOrdersEmptyTitle,
+                      message: l10n.storeOrdersEmptyMessage,
+                    ),
                   ),
                 ),
-                const SizedBox(height: AppSpacing.lg),
-                Expanded(
-                  child: BlocBuilder<StoreOrdersCubit, StoreOrdersState>(
-                    builder: (context, state) {
-                      return switch (state.status) {
-                        LoadStatus.initial || LoadStatus.loading =>
-                          const Center(child: GoiasLoadingIndicator()),
-                        LoadStatus.empty => Center(
-                          child: StateMessage(
-                            icon: Icons.receipt_long_outlined,
-                            title: l10n.storeOrdersEmptyTitle,
-                            message: l10n.storeOrdersEmptyMessage,
-                          ),
-                        ),
-                        LoadStatus.error => Center(
-                          child: StateMessage(
-                            icon: Icons.error_outline_rounded,
-                            title: l10n.storeOrdersLoadError,
-                          ),
-                        ),
-                        LoadStatus.success => ListView.builder(
-                          padding: const EdgeInsets.fromLTRB(
-                            AppSpacing.lg,
-                            0,
-                            AppSpacing.lg,
-                            AppSpacing.xxxl,
-                          ),
-                          itemCount: state.orders.length,
-                          itemBuilder: (context, index) =>
-                              _OrderTile(order: state.orders[index]),
-                        ),
-                      };
-                    },
+                LoadStatus.error => Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSpacing.xxxl,
+                  ),
+                  child: Center(
+                    child: StateMessage(
+                      icon: Icons.error_outline_rounded,
+                      title: l10n.storeOrdersLoadError,
+                    ),
                   ),
                 ),
-              ],
-            ),
+                LoadStatus.success => Column(
+                  children: [
+                    for (final order in state.orders) _OrderTile(order: order),
+                  ],
+                ),
+              };
+            },
           ),
         ),
       ),

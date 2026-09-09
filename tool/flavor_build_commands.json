@@ -1,11 +1,11 @@
 {
   "android": {
-    "goias": "flutter build apk --flavor goias --dart-define=APP_CLUB=goias --dart-define=API_BASE_URL=https://goias-app.lucasdiogo1234.workers.dev",
-    "bragantino": "flutter build apk --flavor bragantino --dart-define=APP_CLUB=bragantino --dart-define=API_BASE_URL=https://goias-app.lucasdiogo1234.workers.dev"
+    "goias": "flutter build apk --flavor goias --dart-define=APP_CLUB=goias",
+    "bragantino": "flutter build apk --flavor bragantino --dart-define=APP_CLUB=bragantino"
   },
   "ios": {
-    "goias": "flutter build ios --flavor goias --dart-define=APP_CLUB=goias --dart-define=API_BASE_URL=https://goias-app.lucasdiogo1234.workers.dev --no-codesign",
-    "bragantino": "flutter build ios --flavor bragantino --dart-define=APP_CLUB=bragantino --dart-define=API_BASE_URL=https://goias-app.lucasdiogo1234.workers.dev --no-codesign"
+    "goias": "flutter build ios --flavor goias --dart-define=APP_CLUB=goias --no-codesign",
+    "bragantino": "flutter build ios --flavor bragantino --dart-define=APP_CLUB=bragantino --no-codesign"
   },
   "web": {
     "goias": "node tool/build_web_flavor.mjs goias",

@@ -134,9 +134,11 @@ class NextMatchCard extends StatelessWidget {
                   ),
                 if (match.stadium.isNotEmpty) ...[
                   _Dot(color: colors.textHint),
-                  _InfoItem(
-                    icon: Icons.location_on_outlined,
-                    label: match.stadium,
+                  Flexible(
+                    child: _InfoItem(
+                      icon: Icons.location_on_outlined,
+                      label: match.stadium,
+                    ),
                   ),
                 ],
               ],
@@ -145,9 +147,11 @@ class NextMatchCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _InfoItem(
-                  icon: Icons.location_on_outlined,
-                  label: match.stadium,
+                Flexible(
+                  child: _InfoItem(
+                    icon: Icons.location_on_outlined,
+                    label: match.stadium,
+                  ),
                 ),
               ],
             ),
@@ -263,12 +267,16 @@ class _InfoItem extends StatelessWidget {
       children: [
         Icon(icon, size: 13, color: colors.textSecondary),
         const SizedBox(width: 5),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 11.5,
-            fontWeight: FontWeight.w600,
-            color: colors.textSecondary,
+        Flexible(
+          child: Text(
+            label,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: 11.5,
+              fontWeight: FontWeight.w600,
+              color: colors.textSecondary,
+            ),
           ),
         ),
       ],
