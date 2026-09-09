@@ -33,7 +33,8 @@ class Team extends Equatable {
   /// específico (M3.3: substitui o antigo `Team.isGoias`/`Team.goiasId`).
   /// Pura — recebe o config de fora, nunca resolve `GetIt` internamente
   /// (entity não deve depender de DI).
-  bool matchesClub(ClubConfig config) => id == config.integrations.oneFootballTeamId;
+  bool matchesClub(ClubConfig config) =>
+      id == config.integrations.oneFootballTeamId;
 
   @override
   List<Object?> get props => [id, name, shortName, color, logoUrl, crestAsset];

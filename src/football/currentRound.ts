@@ -46,14 +46,27 @@ function parseOffset(raw: string | null): number {
   return Number.isNaN(parsed) ? 0 : parsed;
 }
 
+/** Estados que NUNCA viram `FULL_TIME` sozinhos — um jogo adiado/cancelado/
+ * suspenso fica parado nesse `period` pra sempre até (se algum dia
+ * acontecer) ser remarcado como uma partida nova. Contá-los como "em
+ * aberto" prendia a rodada atual pra sempre na rodada de um jogo adiado
+ * (achado real 2026-09-09: Bragantino tinha Atlético-MG adiado sem nova
+ * data na Rodada 21 de julho, e a tela nunca avançava pra Rodada com o
+ * próximo jogo de verdade, em setembro). "Adiado tá adiado, espera
+ * marcar" — nunca ancora a rodada atual. */
+const _STALLED_PERIODS = new Set(['POSTPONED', 'CANCELLED', 'CANCELED', 'SUSPENDED', 'ABANDONED']);
+
 /** As listas vêm em ordem cronológica ("Rodada 24", "25", "26"...) — a
- * rodada atual é a primeira que ainda tem algum jogo não terminado. Se
- * todas já terminaram (fim de temporada), cai pra última — a mais recente
- * concluída — em vez de devolver vazio. */
+ * rodada atual é a primeira que ainda tem algum jogo realmente em aberto
+ * (agendado/ao vivo — nunca `FULL_TIME` nem um dos estados parados acima).
+ * Se todas já terminaram/estão paradas (fim de temporada), cai pra
+ * última — a mais recente concluída — em vez de devolver vazio. */
 export function pickCurrentRoundIndex(lists: OneFootballMatchList[]): number {
   for (let i = 0; i < lists.length; i++) {
-    const hasUnfinished = lists[i].matchCards.some((card) => card.period !== 'FULL_TIME');
-    if (hasUnfinished) return i;
+    const hasOpenMatch = lists[i].matchCards.some(
+      (card) => card.period !== 'FULL_TIME' && !_STALLED_PERIODS.has(card.period),
+    );
+    if (hasOpenMatch) return i;
   }
   return lists.length - 1;
 }

@@ -38,6 +38,7 @@ class Standing extends Equatable {
       form: form,
     );
   }
+
   final int points;
   final int played;
   final int wins;

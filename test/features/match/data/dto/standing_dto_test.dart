@@ -47,9 +47,12 @@ void main() {
     // parâmetro nomeado — `flutter analyze` já falha se alguém reintroduzir
     // isso sem atualizar todos os call sites (ver também
     // `test_multiclub_runtime_hardcodes.mjs`, checagem estática dedicada).
-    test('an extra unknown "isGoias" key in the source json is simply ignored, never resurrected as a field', () {
-      final dto = StandingDto.fromJson({...json, 'isGoias': true});
-      expect(dto.position, 2); // parseia normalmente, sem quebrar
-    });
+    test(
+      'an extra unknown "isGoias" key in the source json is simply ignored, never resurrected as a field',
+      () {
+        final dto = StandingDto.fromJson({...json, 'isGoias': true});
+        expect(dto.position, 2); // parseia normalmente, sem quebrar
+      },
+    );
   });
 }
