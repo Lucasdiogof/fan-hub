@@ -6,6 +6,7 @@ class TicketPriceCategory extends Equatable {
     required this.label,
     required this.price,
     this.soldOut = false,
+    this.isHalfPrice = false,
   });
 
   final String id;
@@ -13,8 +14,12 @@ class TicketPriceCategory extends Equatable {
   final double price;
   final bool soldOut;
 
+  /// Exige escolher [HalfPriceType] (e comprovante, se [HalfPriceType.law])
+  /// na tela de titulares — nunca inferido do `label`/`id` livre.
+  final bool isHalfPrice;
+
   @override
-  List<Object?> get props => [id, label, price, soldOut];
+  List<Object?> get props => [id, label, price, soldOut, isHalfPrice];
 }
 
 /// Um setor do estádio pra uma partida — usado tanto na compra (com

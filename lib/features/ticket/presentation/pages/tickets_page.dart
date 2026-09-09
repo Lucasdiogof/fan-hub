@@ -17,6 +17,8 @@ import 'package:goias_app/features/ticket/presentation/cubit/tickets_cubit.dart'
 import 'package:goias_app/features/ticket/presentation/cubit/tickets_state.dart';
 import 'package:goias_app/features/ticket/presentation/pages/check_in_confirmation_page.dart';
 import 'package:goias_app/features/ticket/presentation/widgets/featured_event_card.dart';
+import 'package:goias_app/features/ticket/presentation/widgets/sector_picker_sheet.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
@@ -101,6 +103,50 @@ class _TicketsView extends StatelessWidget {
 
   void _viewTicket(BuildContext context, Ticket ticket) {
     context.push('/tickets/view', extra: ticket);
+  }
+
+  Future<void> _changeCheckInSector(
+    BuildContext context,
+    TicketEvent event,
+  ) async {
+    final sectors = event.info.checkInSectors;
+    final currentSector = sectors
+        .where((s) => s.name == event.confirmedSectorName)
+        .toList();
+    final currentSectorId = currentSector.isEmpty
+        ? null
+        : currentSector.first.id;
+    final sectorId = await AppModalSheet.show<String>(
+      context,
+      builder: (_) => SectorPickerSheet(
+        sectors: sectors,
+        initialSectorId: currentSectorId,
+      ),
+    );
+    if (sectorId == null || !context.mounted) return;
+    final profileResult = await GlobalLoading.run(
+      context,
+      () => sl<ProfileRepository>().getProfile(),
+    );
+    if (!context.mounted) return;
+    final profile = switch (profileResult) {
+      Success(:final data) => data,
+      Error() => null,
+    };
+    if (profile == null) {
+      _showLoadError(context);
+      return;
+    }
+    await GlobalLoading.run(
+      context,
+      () => sl<TicketRepository>().checkIn(
+        matchId: event.match.id.toString(),
+        sectorId: sectorId,
+        holderName: profile.displayName,
+        holderDocument: profile.cpf ?? '',
+      ),
+    );
+    if (context.mounted) await context.read<TicketsCubit>().load();
   }
 
   Future<void> _undoCheckIn(BuildContext context, TicketEvent event) async {
@@ -189,6 +235,11 @@ class _TicketsView extends StatelessWidget {
                                             context.push('/tickets/my'),
                                         onUndoCheckIn: () =>
                                             _undoCheckIn(context, state.event!),
+                                        onChangeCheckInSector: () =>
+                                            _changeCheckInSector(
+                                              context,
+                                              state.event!,
+                                            ),
                                       ),
                                 const SizedBox(height: AppSpacing.xxl),
                                 _SectionLabel(context.l10n.ticketsQuickAccess),

@@ -1,3 +1,6 @@
+import 'dart:math';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
@@ -338,6 +341,10 @@ class MockTicketRepository implements TicketRepository {
             'origin': 'purchase',
             'order_id': orderId,
             'price': item.unitPrice,
+            if (holder.halfPriceType != null)
+              'half_price_type': holder.halfPriceType!.name,
+            if (holder.halfPriceProofPath != null)
+              'half_price_proof_path': holder.halfPriceProofPath,
           });
         }
       }
@@ -367,6 +374,34 @@ class MockTicketRepository implements TicketRepository {
       return Error(mapTicketError(error, stackTrace));
     }
   }
+
+  @override
+  Future<Result<String>> uploadHalfPriceProof(
+    Uint8List bytes,
+    String fileExtension,
+  ) async {
+    try {
+      final ext = fileExtension.toLowerCase() == 'jpg'
+          ? 'jpeg'
+          : fileExtension.toLowerCase();
+      final unique =
+          '${DateTime.now().microsecondsSinceEpoch}_${Random().nextInt(1 << 32)}';
+      final path = '$_uid/$unique.$ext';
+      await _client.storage
+          .from('half_price_proofs')
+          .uploadBinary(
+            path,
+            bytes,
+            fileOptions: FileOptions(contentType: _contentTypeFor(ext)),
+          );
+      return Success(path);
+    } catch (error, stackTrace) {
+      return Error(mapTicketError(error, stackTrace));
+    }
+  }
+
+  String _contentTypeFor(String ext) =>
+      ext == 'pdf' ? 'application/pdf' : 'image/$ext';
 
   @override
   Future<Result<List<Ticket>>> getMyTickets() async {

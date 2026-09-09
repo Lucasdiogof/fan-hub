@@ -1,5 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
@@ -49,7 +52,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     String? profileDocument,
   }) {
     final holders = List<TicketHolder>.of(state.holders);
-    holders[index] = TicketHolder(
+    holders[index] = holders[index].copyWith(
       name: value ? (profileName ?? '') : '',
       document: value ? (profileDocument ?? '') : '',
       isSelf: value,
@@ -69,6 +72,39 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     emit(state.copyWith(holders: holders));
   }
 
+  /// Trocar o tipo limpa o comprovante já enviado — `promotional` nunca
+  /// exige comprovante, e um `law` que troca de titular/categoria não deve
+  /// herdar o arquivo de uma escolha anterior sem o usuário confirmar de
+  /// novo.
+  void setHolderHalfPriceType(int index, HalfPriceType type) {
+    final holders = List<TicketHolder>.of(state.holders);
+    holders[index] = holders[index].copyWith(
+      halfPriceType: type,
+      clearHalfPriceProofPath: true,
+    );
+    emit(state.copyWith(holders: holders));
+  }
+
+  Future<void> uploadHalfPriceProof(
+    int index,
+    Uint8List bytes,
+    String fileExtension,
+  ) async {
+    emit(state.copyWith(saving: true, clearError: true));
+    final result = await _repository.uploadHalfPriceProof(
+      bytes,
+      fileExtension,
+    );
+    switch (result) {
+      case Success(:final data):
+        final holders = List<TicketHolder>.of(state.holders);
+        holders[index] = holders[index].copyWith(halfPriceProofPath: data);
+        emit(state.copyWith(saving: false, holders: holders));
+      case Error(:final failure):
+        emit(state.copyWith(saving: false, errorMessage: failure.message));
+    }
+  }
+
   Future<void> finalizePurchase() async {
     if (state.saving || !state.canFinalize) return;
     emit(state.copyWith(saving: true, clearError: true));
@@ -81,6 +117,8 @@ class PurchaseCubit extends Cubit<PurchaseState> {
             name: holder.name.trim(),
             document: holder.document.trim(),
             isSelf: holder.isSelf,
+            halfPriceType: holder.halfPriceType,
+            halfPriceProofPath: holder.halfPriceProofPath,
           ),
       ],
     );

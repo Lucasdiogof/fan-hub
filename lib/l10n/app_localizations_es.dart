@@ -2217,6 +2217,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get ticketsUndoCheckInButton => 'Deshacer check-in';
 
   @override
+  String get ticketsChangeCheckInButton => 'Cambiar check-in';
+
+  @override
   String get ticketsConfirmPresenceTitle => 'CONFIRMAR PRESENCIA';
 
   @override
@@ -2432,6 +2435,25 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get ticketsRefundDemoConcludedNote =>
       'Reembolso de demostración — ningún valor fue movido.';
+
+  @override
+  String get ticketsHalfPriceTypeLabel => 'Tipo de entrada con descuento';
+
+  @override
+  String get ticketsHalfPriceLawOption => 'Por ley';
+
+  @override
+  String get ticketsHalfPricePromotionalOption => 'Promocional';
+
+  @override
+  String get ticketsHalfPriceProofLabel =>
+      'Comprobante de descuento (obligatorio)';
+
+  @override
+  String get ticketsHalfPriceProofUploadButton => 'Adjuntar comprobante';
+
+  @override
+  String get ticketsHalfPriceProofUploaded => 'Comprobante enviado';
 
   @override
   String get ticketPdfDemoWatermark =>

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 
 enum TicketOrderStatus { confirmed, pending, cancelled, refunded }
 
@@ -21,21 +22,52 @@ class TicketHolder extends Equatable {
     required this.name,
     required this.document,
     this.isSelf = false,
+    this.halfPriceType,
+    this.halfPriceProofPath,
   });
 
   final String name;
   final String document;
   final bool isSelf;
 
-  TicketHolder copyWith({String? name, String? document, bool? isSelf}) =>
-      TicketHolder(
-        name: name ?? this.name,
-        document: document ?? this.document,
-        isSelf: isSelf ?? this.isSelf,
-      );
+  /// Só relevante quando o ingresso deste titular é de categoria
+  /// meia-entrada (`TicketOrderItem.isHalfPrice`) — `null` significa "ainda
+  /// não escolheu", nunca um default silencioso.
+  final HalfPriceType? halfPriceType;
+
+  /// Path (privado, não URL pública) do comprovante no bucket
+  /// `half_price_proofs` — obrigatório só quando [halfPriceType] é
+  /// [HalfPriceType.law]. `null` até o upload terminar.
+  final String? halfPriceProofPath;
+
+  TicketHolder copyWith({
+    String? name,
+    String? document,
+    bool? isSelf,
+    HalfPriceType? halfPriceType,
+    bool clearHalfPriceType = false,
+    String? halfPriceProofPath,
+    bool clearHalfPriceProofPath = false,
+  }) => TicketHolder(
+    name: name ?? this.name,
+    document: document ?? this.document,
+    isSelf: isSelf ?? this.isSelf,
+    halfPriceType: clearHalfPriceType
+        ? null
+        : (halfPriceType ?? this.halfPriceType),
+    halfPriceProofPath: clearHalfPriceProofPath
+        ? null
+        : (halfPriceProofPath ?? this.halfPriceProofPath),
+  );
 
   @override
-  List<Object?> get props => [name, document, isSelf];
+  List<Object?> get props => [
+    name,
+    document,
+    isSelf,
+    halfPriceType,
+    halfPriceProofPath,
+  ];
 }
 
 /// Uma linha do pedido — um setor+categoria+quantidade. Um pedido pode ter
@@ -51,6 +83,7 @@ class TicketOrderItem extends Equatable {
     required this.categoryLabel,
     required this.quantity,
     required this.unitPrice,
+    this.isHalfPrice = false,
   });
 
   final String sectorId;
@@ -61,6 +94,7 @@ class TicketOrderItem extends Equatable {
   final String categoryLabel;
   final int quantity;
   final double unitPrice;
+  final bool isHalfPrice;
 
   double get subtotal => unitPrice * quantity;
 
@@ -73,6 +107,7 @@ class TicketOrderItem extends Equatable {
     'categoryLabel': categoryLabel,
     'quantity': quantity,
     'unitPrice': unitPrice,
+    'isHalfPrice': isHalfPrice,
   };
 
   factory TicketOrderItem.fromJson(Map<String, dynamic> json) =>
@@ -85,6 +120,7 @@ class TicketOrderItem extends Equatable {
         categoryLabel: json['categoryLabel'] as String,
         quantity: json['quantity'] as int,
         unitPrice: (json['unitPrice'] as num).toDouble(),
+        isHalfPrice: json['isHalfPrice'] as bool? ?? false,
       );
 
   @override
@@ -97,6 +133,7 @@ class TicketOrderItem extends Equatable {
     categoryLabel,
     quantity,
     unitPrice,
+    isHalfPrice,
   ];
 }
 

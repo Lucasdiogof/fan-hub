@@ -74,6 +74,9 @@ const _green = PdfColor.fromInt(0xFF004C1B);
 const _greenBanner = PdfColor.fromInt(0xFF0B7A3B);
 const _grey = PdfColor.fromInt(0xFF6B7280);
 const _cardBg = PdfColor.fromInt(0xFFF2F3F5);
+// Mesmo tom de "error" do tema do app (`AppColors.error`) — nunca vermelho
+// literal em lugar nenhum do app, nem no aviso de demonstração do PDF.
+const _demoWarning = PdfColor.fromInt(0xFFA9822E);
 
 /// PDF do ingresso — usado tanto pro ingresso de check-in quanto pro de
 /// compra, só os dados mudam ([Ticket.origin]/[Ticket.price]/
@@ -373,7 +376,7 @@ Future<Uint8List> buildTicketPdf(
                       width: double.infinity,
                       padding: const pw.EdgeInsets.symmetric(vertical: 6),
                       decoration: pw.BoxDecoration(
-                        color: PdfColors.red800,
+                        color: _demoWarning,
                         borderRadius: pw.BorderRadius.circular(6),
                       ),
                       child: pw.Text(
@@ -424,7 +427,7 @@ Future<Uint8List> buildTicketPdf(
                       style: const pw.TextStyle(
                         fontSize: 30,
                         fontWeight: pw.FontWeight.bold,
-                        color: PdfColors.red900,
+                        color: _demoWarning,
                       ),
                     ),
                   ),

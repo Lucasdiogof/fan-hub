@@ -8,6 +8,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/purchase_cubit.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/purchase_state.dart';
@@ -17,11 +18,13 @@ import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
 import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
+import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/demo_disclaimer_banner.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:image_picker/image_picker.dart';
 
 class PurchaseSummaryArgs {
   const PurchaseSummaryArgs({required this.cubit, required this.profile});
@@ -486,7 +489,230 @@ class _HolderSection extends StatelessWidget {
               ),
             ),
           ),
+          if (unit.isHalfPrice) ...[
+            const SizedBox(height: AppSpacing.md),
+            _HalfPriceSection(index: index, holder: holder),
+          ],
         ],
+      ),
+    );
+  }
+}
+
+class _HalfPriceSection extends StatelessWidget {
+  const _HalfPriceSection({required this.index, required this.holder});
+
+  final int index;
+  final TicketHolder holder;
+
+  Future<void> _pickAndUpload(BuildContext context) async {
+    final source = await AppModalSheet.show<ImageSource>(
+      context,
+      builder: (sheetContext) {
+        final colors = sheetContext.colors;
+        final l10n = sheetContext.l10n;
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(
+                  Icons.photo_camera_outlined,
+                  color: colors.primary,
+                ),
+                title: Text(l10n.avatarTakePhoto),
+                onTap: () => Navigator.of(sheetContext).pop(ImageSource.camera),
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.photo_library_outlined,
+                  color: colors.primary,
+                ),
+                title: Text(l10n.avatarChooseFromGallery),
+                onTap: () =>
+                    Navigator.of(sheetContext).pop(ImageSource.gallery),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+            ],
+          ),
+        );
+      },
+    );
+    if (source == null || !context.mounted) return;
+    final cubit = context.read<PurchaseCubit>();
+    final picked = await ImagePicker().pickImage(
+      source: source,
+      maxWidth: 1600,
+      imageQuality: 85,
+    );
+    if (picked == null) return;
+    final bytes = await picked.readAsBytes();
+    final ext = picked.name.contains('.') ? picked.name.split('.').last : 'jpg';
+    await cubit.uploadHalfPriceProof(index, bytes, ext);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final l10n = context.l10n;
+    final hasProof = holder.halfPriceProofPath?.isNotEmpty ?? false;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(height: 1, color: colors.border),
+        const SizedBox(height: AppSpacing.md),
+        Text(
+          l10n.ticketsHalfPriceTypeLabel,
+          style: TextStyle(
+            fontSize: 11.5,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.3,
+            color: colors.textHint,
+          ),
+        ),
+        const SizedBox(height: 6),
+        Row(
+          children: [
+            Expanded(
+              child: _HalfPriceTypeOption(
+                label: l10n.ticketsHalfPriceLawOption,
+                selected: holder.halfPriceType == HalfPriceType.law,
+                onTap: () => context
+                    .read<PurchaseCubit>()
+                    .setHolderHalfPriceType(index, HalfPriceType.law),
+              ),
+            ),
+            const SizedBox(width: AppSpacing.sm),
+            Expanded(
+              child: _HalfPriceTypeOption(
+                label: l10n.ticketsHalfPricePromotionalOption,
+                selected: holder.halfPriceType == HalfPriceType.promotional,
+                onTap: () => context
+                    .read<PurchaseCubit>()
+                    .setHolderHalfPriceType(index, HalfPriceType.promotional),
+              ),
+            ),
+          ],
+        ),
+        if (holder.halfPriceType == HalfPriceType.law) ...[
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            l10n.ticketsHalfPriceProofLabel,
+            style: TextStyle(
+              fontSize: 11.5,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 0.3,
+              color: colors.textHint,
+            ),
+          ),
+          const SizedBox(height: 6),
+          InkWell(
+            onTap: () => _pickAndUpload(context),
+            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.md,
+              ),
+              decoration: BoxDecoration(
+                color: colors.background,
+                borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+                border: Border.all(
+                  color: hasProof ? colors.primary : colors.border,
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    hasProof
+                        ? Icons.check_circle_rounded
+                        : Icons.upload_file_outlined,
+                    size: 18,
+                    color: hasProof ? colors.primary : colors.textSecondary,
+                  ),
+                  const SizedBox(width: AppSpacing.sm),
+                  Expanded(
+                    child: Text(
+                      hasProof
+                          ? l10n.ticketsHalfPriceProofUploaded
+                          : l10n.ticketsHalfPriceProofUploadButton,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: hasProof
+                            ? colors.textPrimary
+                            : colors.textSecondary,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class _HalfPriceTypeOption extends StatelessWidget {
+  const _HalfPriceTypeOption({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Material(
+      color: selected ? colors.secondary : colors.background,
+      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+        child: Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.sm,
+            vertical: AppSpacing.sm,
+          ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
+            border: Border.all(
+              color: selected ? colors.primary : colors.border,
+              width: selected ? 1.6 : 1,
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                selected
+                    ? Icons.radio_button_checked_rounded
+                    : Icons.radio_button_off_rounded,
+                size: 18,
+                color: selected ? colors.primary : colors.textHint,
+              ),
+              const SizedBox(width: 6),
+              Flexible(
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w700,
+                    color: colors.textPrimary,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

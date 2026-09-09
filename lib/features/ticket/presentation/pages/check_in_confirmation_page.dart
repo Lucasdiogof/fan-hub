@@ -10,10 +10,10 @@ import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/presentation/widgets/digital_membership_card.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
-import 'package:goias_app/features/ticket/domain/entities/ticket_sector.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/check_in_cubit.dart';
 import 'package:goias_app/features/ticket/presentation/cubit/check_in_state.dart';
+import 'package:goias_app/features/ticket/presentation/widgets/sector_picker_sheet.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
@@ -61,7 +61,7 @@ class _CheckInView extends StatelessWidget {
     final sectors = cubit.state.event.info.checkInSectors;
     final sectorId = await AppModalSheet.show<String>(
       context,
-      builder: (_) => _SectorPickerSheet(sectors: sectors),
+      builder: (_) => SectorPickerSheet(sectors: sectors),
     );
     if (sectorId == null || !context.mounted) return;
     cubit.selectSector(sectorId);
@@ -291,139 +291,3 @@ class _CheckInView extends StatelessWidget {
   }
 }
 
-class _SectorPickerSheet extends StatefulWidget {
-  const _SectorPickerSheet({required this.sectors});
-
-  final List<TicketSector> sectors;
-
-  @override
-  State<_SectorPickerSheet> createState() => _SectorPickerSheetState();
-}
-
-class _SectorPickerSheetState extends State<_SectorPickerSheet> {
-  String? _selected;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return SafeArea(
-      top: false,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-          AppSpacing.xxl,
-          AppSpacing.sm,
-          AppSpacing.xxl,
-          AppSpacing.xl,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              context.l10n.ticketsSectorPickerTitle(
-                sl<ClubConfig>().identity.code,
-                sl<ClubConfig>().identity.shortName,
-              ),
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            Text(
-              context.l10n.ticketsSectorPickerSubtitle,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 13.5, color: colors.textSecondary),
-            ),
-            const SizedBox(height: AppSpacing.xl),
-            for (final sector in widget.sectors) ...[
-              _SectorOption(
-                sector: sector,
-                selected: _selected == sector.id,
-                onTap: () => setState(() => _selected = sector.id),
-              ),
-              const SizedBox(height: AppSpacing.sm),
-            ],
-            const SizedBox(height: AppSpacing.md),
-            AppPrimaryButton(
-              label: context.l10n.ticketsConfirmCheckInButton,
-              onPressed: _selected == null
-                  ? null
-                  : () => Navigator.of(context).pop(_selected),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _SectorOption extends StatelessWidget {
-  const _SectorOption({
-    required this.sector,
-    required this.selected,
-    required this.onTap,
-  });
-
-  final TicketSector sector;
-  final bool selected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Material(
-      color: selected ? colors.secondary : colors.surface,
-      borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.lg,
-            vertical: AppSpacing.md,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppRadius.cardSmall),
-            border: Border.all(
-              color: selected ? colors.primary : colors.border,
-              width: selected ? 1.6 : 1,
-            ),
-          ),
-          child: Row(
-            children: [
-              Icon(
-                selected
-                    ? Icons.radio_button_checked_rounded
-                    : Icons.radio_button_off_rounded,
-                color: selected ? colors.primary : colors.textHint,
-                size: 22,
-              ),
-              const SizedBox(width: AppSpacing.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      sector.name,
-                      style: TextStyle(
-                        fontSize: 14.5,
-                        fontWeight: FontWeight.w700,
-                        color: colors.textPrimary,
-                      ),
-                    ),
-                    Text(
-                      '${sector.venueLabel} · ${sector.gate}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: colors.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/error/failures.dart';
@@ -128,6 +130,12 @@ class _FakeTicketRepository implements TicketRepository {
   @override
   Future<Result<List<TicketOrder>>> getMyOrders() async =>
       throw UnimplementedError();
+
+  @override
+  Future<Result<String>> uploadHalfPriceProof(
+    Uint8List bytes,
+    String fileExtension,
+  ) async => throw UnimplementedError();
 }
 
 void main() {
