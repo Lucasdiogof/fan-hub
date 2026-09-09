@@ -37,7 +37,26 @@ export async function handleTeam(request: Request, env: Env, clubCode: string): 
       const upcoming = upcomingLists.flatMap((list) => list.matchCards);
       const recent = resultLists.flatMap((list) => list.matchCards);
 
-      const nextCard = upcoming[0];
+      // PARTE 2 (auditoria multi-competição 2026-09-09): as listas do
+      // OneFootball vêm em ordem por competição/rodada, NUNCA garantida
+      // cronológica entre competições diferentes — um clube disputando
+      // Brasileirão + Copa do Brasil na mesma janela podia ter o próximo
+      // jogo de uma competição aparecendo depois do de outra na resposta
+      // bruta, e `[0]` pegava o card errado. Ordena por kickoff ascendente
+      // antes de escolher; card sem kickoff válido (data a confirmar) vai
+      // pro fim, nunca inventa horário nem descarta a partida.
+      const sortedUpcoming = [...upcoming].sort((a, b) => {
+        const aTime = Date.parse(a.kickoff);
+        const bTime = Date.parse(b.kickoff);
+        const aValid = !Number.isNaN(aTime);
+        const bValid = !Number.isNaN(bTime);
+        if (aValid && bValid) return aTime - bTime;
+        if (aValid) return -1;
+        if (bValid) return 1;
+        return 0;
+      });
+
+      const nextCard = sortedUpcoming[0];
       // Só busca o estádio da próxima partida (a mais visível na UI) — não
       // vale a pena um fetch extra por item pros resultados recentes.
       const nextStadium = nextCard ? (await fetchMatchDetail(nextCard.matchId))?.stadium ?? null : null;

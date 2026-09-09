@@ -17,12 +17,12 @@ function fakeEnv(overrides: Partial<Env> = {}): Env {
   };
 }
 
-function card(matchId: string, competitionName: string) {
+function card(matchId: string, competitionName: string, kickoff = '2026-01-01T00:00:00Z') {
   return {
     matchId,
     link: `/pt-br/match/${matchId}`,
     competitionName,
-    kickoff: '2026-01-01T00:00:00Z',
+    kickoff,
     period: 'FULL_TIME',
     homeTeam: { name: 'A', imageObject: { path: 'https://images.onefootball.com/icons/teams/164/1.png' } },
     awayTeam: { name: 'B', imageObject: { path: 'https://images.onefootball.com/icons/teams/164/2.png' } },
@@ -249,4 +249,67 @@ describe('handleTeam — competição por partida, nunca a principal do clube pr
       expect(body.competition.name).not.toBe('Brasileirão Série A');
     },
   );
+
+  it(
+    'PARTE 2 (auditoria multi-competição): próximo jogo é o cronologicamente ' +
+      'mais próximo entre TODAS as competições, mesmo vindo depois na resposta bruta',
+    async () => {
+      mockFetchByUrl({
+        '/time/goias-1863/jogos': {
+          containers: [
+            {
+              component: {
+                matchCardsListsAppender: {
+                  // Ordem da API: Copa do Brasil (mais distante) aparece
+                  // ANTES do Brasileirão (mais próximo) — sem sort, `[0]`
+                  // pegaria o jogo errado.
+                  lists: [
+                    { matchCards: [card('copa-futuro', 'Copa do Brasil', '2026-03-10T20:00:00Z')] },
+                    { matchCards: [card('serie-b-proximo', 'Brasileirão Série B', '2026-02-01T19:00:00Z')] },
+                  ],
+                },
+              },
+            },
+          ],
+        },
+        '/time/goias-1863/resultados': {
+          containers: [{ component: { matchCardsListsAppender: { lists: [] } } }],
+        },
+      });
+
+      const request = new Request('https://example.com/api/football/team/goias?_t=sort-por-kickoff');
+      const response = await handleTeam(request, fakeEnv(), 'goias');
+      const body = (await response.json()) as { nextMatch: { id: string } | null };
+
+      expect(body.nextMatch?.id).toBe('onef-serie-b-proximo');
+    },
+  );
+
+  it('PARTE 2: jogo sem kickoff válido (data a confirmar) nunca vira o "próximo" à frente de um com data real', async () => {
+    mockFetchByUrl({
+      '/time/goias-1863/jogos': {
+        containers: [
+          {
+            component: {
+              matchCardsListsAppender: {
+                lists: [
+                  { matchCards: [card('sem-data', 'Copa do Brasil', '')] },
+                  { matchCards: [card('com-data', 'Brasileirão Série B', '2026-05-01T19:00:00Z')] },
+                ],
+              },
+            },
+          },
+        ],
+      },
+      '/time/goias-1863/resultados': {
+        containers: [{ component: { matchCardsListsAppender: { lists: [] } } }],
+      },
+    });
+
+    const request = new Request('https://example.com/api/football/team/goias?_t=sem-kickoff');
+    const response = await handleTeam(request, fakeEnv(), 'goias');
+    const body = (await response.json()) as { nextMatch: { id: string } | null };
+
+    expect(body.nextMatch?.id).toBe('onef-com-data');
+  });
 });
