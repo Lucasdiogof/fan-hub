@@ -1,10 +1,9 @@
-/// Caminhos de asset do clube — hoje só EMBRULHA os mesmos valores de
-/// `AppAssets` (nenhum arquivo movido, nenhum path mudado). `AppAssets`
-/// continua existindo e sendo a fonte real; isto é só a forma de expor os
-/// mesmos paths como instância em vez de `static const`, pra quando um 2º
-/// clube justificar `lib/assets/branding/<clubCode>/...` (ver
-/// `docs/multiclub/10_club_config.md#3`). Nenhum consumidor real lê
-/// `ClubConfig.assets` ainda.
+/// Caminhos de asset do clube — pro Goiás embrulha os valores de
+/// `AppAssets` (que ficam em `lib/assets/branding/goias/`), pro Bragantino
+/// aponta pros próprios arquivos em `lib/assets/branding/bragantino/`.
+/// Consumido de verdade hoje (crest no login/PDF do ingresso, escudo em
+/// `PageTitle`, marca d'água da Arena, fotos de elenco/Quem Vestiu o
+/// Manto, banner da Loja) — não é mais só um wrapper sem uso real.
 class ClubAssets {
   const ClubAssets({
     required this.crest,
