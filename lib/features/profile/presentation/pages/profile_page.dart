@@ -251,7 +251,7 @@ class _MembershipBadge extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppRadius.pill),
             ),
             child: Text(
-              context.l10n.membershipProgramName.toUpperCase(),
+              sl<ClubConfig>().productNames.membershipProgramName.toUpperCase(),
               style: TextStyle(
                 fontSize: 10.5,
                 fontWeight: FontWeight.w800,
@@ -323,7 +323,7 @@ class _PurchasesSection extends StatelessWidget {
         ),
         _MenuRow(
           icon: Icons.shopping_bag_outlined,
-          label: context.l10n.storeProfileEntry,
+          label: sl<ClubConfig>().productNames.storeName,
           // A Loja agora é a própria aba da bottom nav — nunca mais uma
           // segunda instância empurrada por cima. `go('/')` garante voltar
           // pra raiz do shell não importa a profundidade da pilha (Perfil

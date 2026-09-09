@@ -1030,7 +1030,7 @@ class _MemorableMatchDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Goiás x ${match.opponent}',
+          '${sl<ClubConfig>().identity.shortName} x ${match.opponent}',
           style: const TextStyle(
             fontSize: 14.5,
             fontWeight: FontWeight.w800,

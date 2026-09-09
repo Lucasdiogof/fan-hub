@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/features/crowd_lineup/domain/crowd_lineup.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
@@ -165,9 +166,17 @@ class _CrowdSlot extends StatelessWidget {
           JerseyShirt(
             size: avatarSize,
             number: player.shirtNumber,
-            fillColor: isHome ? ArenaColors.goiasOutfield : Colors.white,
-            numberColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
-            trimColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
+            // Camisa do clube ATIVO (`context.colors.primary`) — era
+            // `ArenaColors.goiasOutfield` cravado, sempre o verde do
+            // Goiás (achado real 2026-09-09, dormante hoje porque
+            // `hasCrowdLineup=false` pro Bragantino). Diferente do
+            // "outfield" do minigame de Pênaltis (esse sim é
+            // deliberadamente genérico/universal, ver comentário em
+            // `ArenaColors`) — aqui é literalmente a escalação do
+            // TORCEDOR DO CLUBE, precisa ser a cor do clube.
+            fillColor: isHome ? context.colors.primary : Colors.white,
+            numberColor: isHome ? Colors.white : context.colors.primary,
+            trimColor: isHome ? Colors.white : context.colors.primary,
           ),
         const SizedBox(height: 3),
         if (result != null && player != null)
@@ -228,7 +237,9 @@ class _EmptyCrowd extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.xs),
             Text(
-              context.l10n.crowdNoVotesMessage,
+              context.l10n.crowdNoVotesMessage(
+                sl<ClubConfig>().identity.shortName,
+              ),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13.5,

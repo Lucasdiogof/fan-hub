@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
-import 'package:goias_app/features/arena/shared/arena_colors.dart';
 
 /// Pill compacta de porcentagem da Escalação da Torcida — nunca um círculo
 /// grande tampando a camisa. Largura cresce só o necessário pra "6%",
@@ -23,8 +22,8 @@ class LineupPercentBadge extends StatelessWidget {
       ),
       child: Text(
         '$percent%',
-        style: const TextStyle(
-          color: ArenaColors.goiasOutfield,
+        style: TextStyle(
+          color: colors.primary,
           fontSize: 9.5,
           fontWeight: FontWeight.w900,
           height: 1.2,

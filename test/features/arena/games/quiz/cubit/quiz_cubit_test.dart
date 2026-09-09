@@ -173,15 +173,18 @@ void main() {
     },
   );
 
-  test('botão fica em loading (submittingNext) durante o next() em curso', () async {
-    final future = cubit.next();
-    // Ainda dentro do delay assíncrono do repositório fake.
-    await Future<void>.delayed(const Duration(milliseconds: 5));
-    expect(cubit.state.submittingNext, isTrue);
+  test(
+    'botão fica em loading (submittingNext) durante o next() em curso',
+    () async {
+      final future = cubit.next();
+      // Ainda dentro do delay assíncrono do repositório fake.
+      await Future<void>.delayed(const Duration(milliseconds: 5));
+      expect(cubit.state.submittingNext, isTrue);
 
-    await future;
-    expect(cubit.state.submittingNext, isFalse);
-  });
+      await future;
+      expect(cubit.state.submittingNext, isFalse);
+    },
+  );
 
   test(
     'a guarda existe no Cubit, não só na UI — chamar next() de novo enquanto submittingNext é true é ignorado',
@@ -200,21 +203,24 @@ void main() {
     },
   );
 
-  test('next() sem ter respondido (answered=false) nunca chama o repositório', () async {
-    final freshCubit = QuizCubit(
-      difficulty: QuizDifficulty.torcedor,
-      isReview: false,
-      repository: _SpyQuizProgressRepository(),
-      questionsRepository: _SpyQuizQuestionRepository(_questions),
-      loadBest: () async => 0,
-      saveBest: (_) async {},
-      ranking: _SpyArenaRankingRepository(),
-    );
-    await freshCubit.init();
+  test(
+    'next() sem ter respondido (answered=false) nunca chama o repositório',
+    () async {
+      final freshCubit = QuizCubit(
+        difficulty: QuizDifficulty.torcedor,
+        isReview: false,
+        repository: _SpyQuizProgressRepository(),
+        questionsRepository: _SpyQuizQuestionRepository(_questions),
+        loadBest: () async => 0,
+        saveBest: (_) async {},
+        ranking: _SpyArenaRankingRepository(),
+      );
+      await freshCubit.init();
 
-    await freshCubit.next();
+      await freshCubit.next();
 
-    expect(freshCubit.state.index, 0);
-    await freshCubit.close();
-  });
+      expect(freshCubit.state.index, 0);
+      await freshCubit.close();
+    },
+  );
 }

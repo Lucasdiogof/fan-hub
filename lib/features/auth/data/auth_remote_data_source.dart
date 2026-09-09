@@ -66,9 +66,7 @@ class AuthRemoteDataSource {
   /// assim, então nunca deve bloquear nem re-lançar.
   Future<void> clearPendingSignupMetadata() async {
     await _client.auth.updateUser(
-      UserAttributes(
-        data: {'cpf': null, 'birth_date': null, 'phone': null},
-      ),
+      UserAttributes(data: {'cpf': null, 'birth_date': null, 'phone': null}),
     );
   }
 

@@ -298,8 +298,7 @@ class _ScrollContent extends StatelessWidget {
               if (capabilities.hasStore) ...[
                 const SizedBox(height: AppSpacing.lg),
                 StoreEntryCard(
-                  onTap: () =>
-                      sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
+                  onTap: () => sl<HomeShellCubit>().navigateToTab(lojaTabIndex),
                 ),
               ],
             ],

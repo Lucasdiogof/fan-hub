@@ -186,7 +186,10 @@ class PassportCoverV2 extends StatelessWidget {
                             ),
                           ),
                           _LevelBadge(
-                            label: passportLevelLabel(context.passportCopy, level),
+                            label: passportLevelLabel(
+                              context.passportCopy,
+                              level,
+                            ),
                             style: levelStyle,
                           ),
                         ],

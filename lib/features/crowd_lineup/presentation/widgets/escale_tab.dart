@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/features/crowd_lineup/domain/formation.dart';
 import 'package:goias_app/shared/domain/player_position.dart';
 import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_cubit.dart';
@@ -133,11 +132,11 @@ class _Slot extends StatelessWidget {
                 JerseyShirt(
                   size: avatarSize,
                   number: player.shirtNumber,
-                  fillColor: isHome ? ArenaColors.goiasOutfield : Colors.white,
-                  numberColor: isHome
-                      ? Colors.white
-                      : ArenaColors.goiasOutfield,
-                  trimColor: isHome ? Colors.white : ArenaColors.goiasOutfield,
+                  // Camisa do clube ATIVO — ver comentário equivalente em
+                  // `crowd_tab.dart` (mesmo achado real 2026-09-09).
+                  fillColor: isHome ? context.colors.primary : Colors.white,
+                  numberColor: isHome ? Colors.white : context.colors.primary,
+                  trimColor: isHome ? Colors.white : context.colors.primary,
                 ),
               if (player != null && canEdit)
                 Positioned(

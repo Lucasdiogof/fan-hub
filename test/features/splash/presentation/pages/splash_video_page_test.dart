@@ -38,25 +38,31 @@ void main() {
       );
     });
 
-    test('splashVideoAsset == null -> false (StaticLogoSplash), mesmo fora do iOS Web', () {
-      expect(
-        shouldPlaySplashVideo(
-          isIosWeb: false,
-          splashVideoAsset: bragantinoClubConfig.assets.splashVideo,
-        ),
-        isFalse,
-      );
-    });
+    test(
+      'splashVideoAsset == null -> false (StaticLogoSplash), mesmo fora do iOS Web',
+      () {
+        expect(
+          shouldPlaySplashVideo(
+            isIosWeb: false,
+            splashVideoAsset: bragantinoClubConfig.assets.splashVideo,
+          ),
+          isFalse,
+        );
+      },
+    );
 
-    test('iOS Web -> false (StaticLogoSplash) mesmo com splashVideo != null', () {
-      expect(
-        shouldPlaySplashVideo(
-          isIosWeb: true,
-          splashVideoAsset: goiasClubConfig.assets.splashVideo,
-        ),
-        isFalse,
-      );
-    });
+    test(
+      'iOS Web -> false (StaticLogoSplash) mesmo com splashVideo != null',
+      () {
+        expect(
+          shouldPlaySplashVideo(
+            isIosWeb: true,
+            splashVideoAsset: goiasClubConfig.assets.splashVideo,
+          ),
+          isFalse,
+        );
+      },
+    );
 
     test(
       'iOS Web + splashVideoAsset == null -> false (as duas razões concordam)',

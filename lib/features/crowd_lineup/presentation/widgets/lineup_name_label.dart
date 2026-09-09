@@ -72,7 +72,10 @@ class LineupNameLabel extends StatelessWidget {
         children: [
           Opacity(
             opacity: 0,
-            child: _NamePill(lines: List.filled(maxLines, ''), maxWidth: maxWidth),
+            child: _NamePill(
+              lines: List.filled(maxLines, ''),
+              maxWidth: maxWidth,
+            ),
           ),
           _NamePill(lines: lines, maxWidth: maxWidth),
         ],

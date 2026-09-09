@@ -43,9 +43,7 @@ const _sector = TicketSector(
   name: 'Cadeiras',
   venueLabel: 'Serrinha',
   gate: 'A',
-  categories: [
-    TicketPriceCategory(id: 'inteira', label: 'Inteira', price: 40),
-  ],
+  categories: [TicketPriceCategory(id: 'inteira', label: 'Inteira', price: 40)],
 );
 
 TicketEvent _event() => TicketEvent(
@@ -104,8 +102,7 @@ class _FakeTicketRepository implements TicketRepository {
   Future<Result<List<Ticket>>> getMyTickets() async => const Success([]);
 
   @override
-  Future<Result<TicketEvent?>> getFeaturedEvent() async =>
-      Success(_event());
+  Future<Result<TicketEvent?>> getFeaturedEvent() async => Success(_event());
 
   @override
   Future<Result<MatchSalesInfo?>> getMatchSalesInfo(String matchId) async =>
@@ -170,22 +167,28 @@ void main() {
     },
   );
 
-  test('finalizePurchase sem itens/titular válido não chama o repositório', () async {
-    final freshCubit = PurchaseCubit(repository, _event());
-    await freshCubit.finalizePurchase();
+  test(
+    'finalizePurchase sem itens/titular válido não chama o repositório',
+    () async {
+      final freshCubit = PurchaseCubit(repository, _event());
+      await freshCubit.finalizePurchase();
 
-    expect(repository.purchaseCallCount, 0);
-    expect(freshCubit.state.order, isNull);
-  });
+      expect(repository.purchaseCallCount, 0);
+      expect(freshCubit.state.order, isNull);
+    },
+  );
 
-  test('botão fica em loading (saving) durante o finalizePurchase em curso', () async {
-    final future = cubit.finalizePurchase();
-    await Future<void>.delayed(const Duration(milliseconds: 5));
-    expect(cubit.state.saving, isTrue);
+  test(
+    'botão fica em loading (saving) durante o finalizePurchase em curso',
+    () async {
+      final future = cubit.finalizePurchase();
+      await Future<void>.delayed(const Duration(milliseconds: 5));
+      expect(cubit.state.saving, isTrue);
 
-    await future;
-    expect(cubit.state.saving, isFalse);
-  });
+      await future;
+      expect(cubit.state.saving, isFalse);
+    },
+  );
 
   group('titular por ingresso (compra de mais de um)', () {
     late PurchaseCubit multiCubit;
@@ -218,21 +221,24 @@ void main() {
       },
     );
 
-    test('cada ingresso vai pro repositório com o titular próprio dele', () async {
-      multiCubit
-        ..setHolderName(0, 'Lucas Diogo')
-        ..setHolderDocument(0, '11144477735')
-        ..setHolderName(1, 'Amigo Torcedor')
-        ..setHolderDocument(1, '52998224725');
-      await multiCubit.finalizePurchase();
+    test(
+      'cada ingresso vai pro repositório com o titular próprio dele',
+      () async {
+        multiCubit
+          ..setHolderName(0, 'Lucas Diogo')
+          ..setHolderDocument(0, '11144477735')
+          ..setHolderName(1, 'Amigo Torcedor')
+          ..setHolderDocument(1, '52998224725');
+        await multiCubit.finalizePurchase();
 
-      expect(multiCubit.state.order, isNotNull);
-      expect(multiCubit.state.order!.holderName, 'Lucas Diogo');
-      expect(repository.lastHolders?.map((h) => h.name).toList(), [
-        'Lucas Diogo',
-        'Amigo Torcedor',
-      ]);
-    });
+        expect(multiCubit.state.order, isNotNull);
+        expect(multiCubit.state.order!.holderName, 'Lucas Diogo');
+        expect(repository.lastHolders?.map((h) => h.name).toList(), [
+          'Lucas Diogo',
+          'Amigo Torcedor',
+        ]);
+      },
+    );
 
     test('marcar "é pra mim" preenche e desabilita edição daquele titular', () {
       multiCubit.setHolderIsSelf(

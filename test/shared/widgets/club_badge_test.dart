@@ -27,9 +27,7 @@ void main() {
     child: const MaterialApp(home: Center(child: ClubBadge.activeClub())),
   );
 
-  testWidgets('Goiás ativo -> renderiza o crestBadge do Goiás', (
-    tester,
-  ) async {
+  testWidgets('Goiás ativo -> renderiza o crestBadge do Goiás', (tester) async {
     sl.registerSingleton<ClubConfig>(goiasClubConfig);
     await tester.pumpWidget(wrap());
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -31,7 +33,7 @@ class PassportMatchRowV1 extends StatelessWidget {
     final away = match.awayTeam;
     final matchupLabel = (home != null && away != null)
         ? '$home x $away'
-        : 'Goiás x ${match.opponent}';
+        : '${sl<ClubConfig>().identity.shortName} x ${match.opponent}';
     final hasScore = match.homeScore != null && match.awayScore != null;
 
     return Semantics(

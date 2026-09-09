@@ -24,61 +24,77 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
   );
   late MembershipPlanPrice selectedPrice = plan.defaultPrice;
 
+  // Enquanto o registro está em andamento, esta própria tela não pode ser
+  // fechada (nem pelo botão de voltar, nem pelo gesto do sistema) — senão o
+  // `context.pop(result)` abaixo tenta completar de novo um Future que o
+  // pop antecipado já completou, e o app quebra com "Future already
+  // completed".
+  bool _registering = false;
+
   Future<void> _startRegistration() async {
+    if (_registering) return;
+    setState(() => _registering = true);
     final result = await context.push<String>(
       '/membership/register',
       extra: (plan: plan, price: selectedPrice),
     );
-    if (result != null && mounted) context.pop(result);
+    if (!mounted) return;
+    setState(() => _registering = false);
+    if (result != null) context.pop(result);
   }
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Scaffold(
-      backgroundColor: colors.background,
-      body: Column(
-        children: [
-          Expanded(
-            child: DetailPageHeader(
-              title: plan.name,
-              heroTitle: _PlanHeroTitle(plan: plan),
-              body: _PlanBody(
-                plan: plan,
-                selectedPrice: selectedPrice,
-                onSelectPrice: (price) => setState(() => selectedPrice = price),
-              ),
-            ),
-          ),
-          SafeArea(
-            top: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.sm,
-                AppSpacing.lg,
-                AppSpacing.sm,
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: _startRegistration,
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(AppRadius.button),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    textStyle: const TextStyle(
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 0.3,
-                    ),
-                  ),
-                  child: Text(context.l10n.membershipWantToJoin),
+    return PopScope(
+      canPop: !_registering,
+      child: Scaffold(
+        backgroundColor: colors.background,
+        body: Column(
+          children: [
+            Expanded(
+              child: DetailPageHeader(
+                title: plan.name,
+                heroTitle: _PlanHeroTitle(plan: plan),
+                onBack: _registering ? () {} : null,
+                body: _PlanBody(
+                  plan: plan,
+                  selectedPrice: selectedPrice,
+                  onSelectPrice: (price) =>
+                      setState(() => selectedPrice = price),
                 ),
               ),
             ),
-          ),
-        ],
+            SafeArea(
+              top: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg,
+                  AppSpacing.sm,
+                  AppSpacing.lg,
+                  AppSpacing.sm,
+                ),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _registering ? null : _startRegistration,
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(AppRadius.button),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      textStyle: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.3,
+                      ),
+                    ),
+                    child: Text(context.l10n.membershipWantToJoin),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -125,7 +141,11 @@ class _PlanHeroTitle extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           plan.tagline,
-          style: TextStyle(fontSize: 14, color: colors.textSecondary, height: 1.4),
+          style: TextStyle(
+            fontSize: 14,
+            color: colors.textSecondary,
+            height: 1.4,
+          ),
         ),
         if (plan.stadiumSector != null) ...[
           const SizedBox(height: AppSpacing.md),
@@ -241,7 +261,11 @@ class _PlanBody extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.check_circle_rounded, size: 18, color: colors.primary),
+                Icon(
+                  Icons.check_circle_rounded,
+                  size: 18,
+                  color: colors.primary,
+                ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
                   child: Text(

@@ -197,7 +197,9 @@ void setupDependencies() {
   sl.registerLazySingleton<ArenaRankingRepository>(
     () => SupabaseArenaRankingRepository(Supabase.instance.client, sl()),
   );
-  sl.registerLazySingleton<LocalBestScoreStore>(() => LocalBestScoreStore(sl()));
+  sl.registerLazySingleton<LocalBestScoreStore>(
+    () => LocalBestScoreStore(sl()),
+  );
   sl.registerLazySingleton<SupabaseLineupStorage>(
     () => SupabaseLineupStorage(Supabase.instance.client, sl()),
   );

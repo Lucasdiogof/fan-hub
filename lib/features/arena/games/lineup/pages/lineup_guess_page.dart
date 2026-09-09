@@ -203,8 +203,8 @@ class _LineupGuessPageState extends State<LineupGuessPage> {
                               AppSpacing.sm,
                               AppSpacing.md,
                             ),
-                            child: inputMode ==
-                                    LineupGuessInputMode.nativeKeyboard
+                            child:
+                                inputMode == LineupGuessInputMode.nativeKeyboard
                                 ? NativeLineupInput(
                                     key: _nativeInputKey,
                                     maxLength: player.normalizedAnswer.length,
@@ -221,8 +221,9 @@ class _LineupGuessPageState extends State<LineupGuessPage> {
                                           .removeLetter();
                                     },
                                     onEnter: () => _submit(context),
-                                    canSubmit:
-                                        context.read<LineupCubit>().canSubmit,
+                                    canSubmit: context
+                                        .read<LineupCubit>()
+                                        .canSubmit,
                                   )
                                 : LineupKeyboard(
                                     keyboardState: playerState.keyboardState,
@@ -239,8 +240,9 @@ class _LineupGuessPageState extends State<LineupGuessPage> {
                                           .removeLetter();
                                     },
                                     onEnter: () => _submit(context),
-                                    canSubmit:
-                                        context.read<LineupCubit>().canSubmit,
+                                    canSubmit: context
+                                        .read<LineupCubit>()
+                                        .canSubmit,
                                   ),
                           )
                         else

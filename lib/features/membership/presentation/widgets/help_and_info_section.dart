@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -37,7 +39,9 @@ class HelpAndInfoSection extends StatelessWidget {
             ),
             MembershipOption(
               icon: Icons.gavel_rounded,
-              label: context.l10n.membershipRegulationName,
+              label: context.l10n.membershipRegulationName(
+                sl<ClubConfig>().productNames.membershipProgramName,
+              ),
               onTap: () => context.push('/membership/regulation'),
             ),
             MembershipOption(

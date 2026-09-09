@@ -43,9 +43,7 @@ void main() {
   const es = Locale('es');
 
   group('Goiás preserva o texto EXATO de sempre (nunca muda)', () {
-    testWidgets('pt: "Quiz do Verdão" / "...conhece o Goiás."', (
-      tester,
-    ) async {
+    testWidgets('pt: "Quiz do Verdão" / "...conhece o Goiás."', (tester) async {
       final copy = await _quizCopy(tester, goiasClubConfig, pt);
       expect(copy.quizTitle, 'Quiz do Verdão');
       expect(copy.quizTagline, 'Teste o quanto você conhece o Goiás.');
@@ -66,20 +64,17 @@ void main() {
     });
   });
 
-  group(
-    'Bragantino usa o nome dele — nunca "Verdão"/"Goiás" herdado',
-    () {
-      for (final (idioma, locale) in [('pt', pt), ('en', en), ('es', es)]) {
-        testWidgets('$idioma: zero Goiás/Verdão/Esmeraldino', (tester) async {
-          final copy = await _quizCopy(tester, bragantinoClubConfig, locale);
-          final blob = '${copy.quizTitle} ${copy.quizTagline}'.toLowerCase();
-          expect(blob, isNot(contains('goiás')));
-          expect(blob, isNot(contains('goias')));
-          expect(blob, isNot(contains('verdão')));
-          expect(blob, isNot(contains('esmeraldino')));
-          expect(blob, contains('bragantino'));
-        });
-      }
-    },
-  );
+  group('Bragantino usa o nome dele — nunca "Verdão"/"Goiás" herdado', () {
+    for (final (idioma, locale) in [('pt', pt), ('en', en), ('es', es)]) {
+      testWidgets('$idioma: zero Goiás/Verdão/Esmeraldino', (tester) async {
+        final copy = await _quizCopy(tester, bragantinoClubConfig, locale);
+        final blob = '${copy.quizTitle} ${copy.quizTagline}'.toLowerCase();
+        expect(blob, isNot(contains('goiás')));
+        expect(blob, isNot(contains('goias')));
+        expect(blob, isNot(contains('verdão')));
+        expect(blob, isNot(contains('esmeraldino')));
+        expect(blob, contains('bragantino'));
+      });
+    }
+  });
 }

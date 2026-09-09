@@ -393,8 +393,9 @@ void main() {
       }
     });
 
-    test('tier 1 tem exatamente os 15 nomes fortes do levantamento '
-        '(8 originais + 7 promovidos em 2026-09-07, nunca substituídos)', () {
+    test('tier 1 tem exatamente os 14 nomes fortes do levantamento '
+        '(8 originais + 7 promovidos em 2026-09-07 - "Marcelo" removido em '
+        '2026-09-09, nunca substituídos)', () {
       final tier1Names = bragantinoClubConfig.institutionalContent.idols
           .where((i) => i.tier == 1)
           .map((i) => i.name)
@@ -405,7 +406,6 @@ void main() {
         'Léo Jaime',
         'Cleiton',
         'Gil Baiano',
-        'Marcelo',
         'Mazinho',
         'Luís Müller',
         'Biro-Biro',
@@ -418,10 +418,10 @@ void main() {
       });
     });
 
-    test('26 nomes ao todo (15 tier 1 + 5 tier 2 + 6 tier 3)', () {
+    test('25 nomes ao todo (14 tier 1 + 5 tier 2 + 6 tier 3)', () {
       final idols = bragantinoClubConfig.institutionalContent.idols;
-      expect(idols.length, 26);
-      expect(idols.where((i) => i.tier == 1).length, 15);
+      expect(idols.length, 25);
+      expect(idols.where((i) => i.tier == 1).length, 14);
       expect(idols.where((i) => i.tier == 2).length, 5);
       expect(idols.where((i) => i.tier == 3).length, 6);
     });

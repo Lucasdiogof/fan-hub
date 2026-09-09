@@ -25,7 +25,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// troca futura por uma implementação com API real de ingressos não deve
 /// exigir mudança nas telas, só nesta classe.
 class MockTicketRepository implements TicketRepository {
-  MockTicketRepository(this._client, this._footballRepository, this._clubConfig);
+  MockTicketRepository(
+    this._client,
+    this._footballRepository,
+    this._clubConfig,
+  );
 
   final SupabaseClient _client;
   final FootballRepository _footballRepository;
@@ -50,49 +54,60 @@ class MockTicketRepository implements TicketRepository {
       final matchId = match.id.toString();
       final info = TicketFixture.infoFor(matchId, match.kickoff);
       final now = DateTime.now();
-      final saleStatus = computeSaleStatus(
-        info: info,
-        kickoff: match.kickoff,
-        now: now,
-      );
+      // Fora de casa não tem venda de ingresso nem check-in de sócio pra
+      // oferecer — só o mandante do jogo controla a bilheteria e o
+      // portão do próprio estádio (mesma regra do CTA da Home/aba Jogos).
+      final isHomeMatch = match.homeTeam.matchesClub(_clubConfig);
 
-      final decisionRow = await _client
-          .from('ticket_checkin_decisions')
-          .select('decision, sector_id')
-          .eq('user_id', _uid)
-          .eq('club_id', _clubId)
-          .eq('match_id', matchId)
-          .maybeSingle();
-
-      final windowStatus = computeCheckInWindowStatus(
-        info: info,
-        kickoff: match.kickoff,
-        now: now,
-      );
+      final TicketSaleStatus saleStatus;
       final CheckInStatus checkInStatus;
       String? confirmedSectorName;
       Ticket? checkInTicket;
-      if (windowStatus == CheckInStatus.closed ||
-          windowStatus == CheckInStatus.unavailable) {
-        checkInStatus = windowStatus;
-      } else if (decisionRow == null) {
-        checkInStatus = CheckInStatus.available;
-      } else if (decisionRow['decision'] == 'declined') {
-        checkInStatus = CheckInStatus.declined;
+      if (!isHomeMatch) {
+        saleStatus = TicketSaleStatus.awayGame;
+        checkInStatus = CheckInStatus.awayGame;
       } else {
-        checkInStatus = CheckInStatus.confirmed;
-        final sectorId = decisionRow['sector_id'] as String?;
-        confirmedSectorName = _findSector(info, sectorId)?.name;
-        final ticketRow = await _client
-            .from('tickets')
-            .select()
+        saleStatus = computeSaleStatus(
+          info: info,
+          kickoff: match.kickoff,
+          now: now,
+        );
+
+        final decisionRow = await _client
+            .from('ticket_checkin_decisions')
+            .select('decision, sector_id')
             .eq('user_id', _uid)
             .eq('club_id', _clubId)
             .eq('match_id', matchId)
-            .eq('origin', 'membership_check_in')
-            .eq('status', 'active')
             .maybeSingle();
-        if (ticketRow != null) checkInTicket = _mapTicket(ticketRow);
+
+        final windowStatus = computeCheckInWindowStatus(
+          info: info,
+          kickoff: match.kickoff,
+          now: now,
+        );
+        if (windowStatus == CheckInStatus.closed ||
+            windowStatus == CheckInStatus.unavailable) {
+          checkInStatus = windowStatus;
+        } else if (decisionRow == null) {
+          checkInStatus = CheckInStatus.available;
+        } else if (decisionRow['decision'] == 'declined') {
+          checkInStatus = CheckInStatus.declined;
+        } else {
+          checkInStatus = CheckInStatus.confirmed;
+          final sectorId = decisionRow['sector_id'] as String?;
+          confirmedSectorName = _findSector(info, sectorId)?.name;
+          final ticketRow = await _client
+              .from('tickets')
+              .select()
+              .eq('user_id', _uid)
+              .eq('club_id', _clubId)
+              .eq('match_id', matchId)
+              .eq('origin', 'membership_check_in')
+              .eq('status', 'active')
+              .maybeSingle();
+          if (ticketRow != null) checkInTicket = _mapTicket(ticketRow);
+        }
       }
 
       final purchasedRows = await _client

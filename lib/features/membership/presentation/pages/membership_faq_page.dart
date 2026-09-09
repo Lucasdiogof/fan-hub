@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -200,7 +201,9 @@ class _FaqEmptyResult extends StatelessWidget {
             ),
             const SizedBox(height: AppSpacing.sm),
             Text(
-              context.l10n.membershipFaqNoResultsMessage,
+              context.l10n.membershipFaqNoResultsMessage(
+                sl<ClubConfig>().productNames.membershipProgramName,
+              ),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13,
@@ -290,7 +293,9 @@ class _FaqHelpFooter extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            context.l10n.membershipFaqScopeNote,
+            context.l10n.membershipFaqScopeNote(
+              sl<ClubConfig>().productNames.membershipProgramName,
+            ),
             style: TextStyle(fontSize: 11, color: colors.textHint, height: 1.4),
           ),
         ],

@@ -93,7 +93,8 @@ class _StoreHomeView extends StatelessWidget {
                           ],
                           Expanded(
                             child: PageTitle(
-                              sl<ClubConfig>().productNames.storeName.toUpperCase(),
+                              sl<ClubConfig>().productNames.storeName
+                                  .toUpperCase(),
                             ),
                           ),
                           Semantics(
@@ -175,20 +176,13 @@ class _StoreHomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final launch = state.launches.isEmpty ? null : state.launches.first;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(0, AppSpacing.lg, 0, AppSpacing.xxxl),
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-          child: _StoreBanner(
-            launch:
-                launch ??
-                (state.officialJerseys.isEmpty
-                    ? null
-                    : state.officialJerseys.first),
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+          child: _StoreBanner(),
         ),
         const SizedBox(height: AppSpacing.xl),
         _SectionLabel(l10n.storeMyPurchasesTitle),
@@ -243,24 +237,17 @@ class _StoreHomeContent extends StatelessWidget {
 
 /// Banner de topo da home da loja — arte pronta (com textos e CTA já
 /// embutidos na imagem), exibida na largura toda com cantos arredondados.
-/// Toque leva ao produto em destaque quando há um. Quantidade de imagens
-/// vem de `ClubConfig.assets.storeHomeBanners` — 1 banner fica fixo (era
-/// hardcoded `lib/assets/goias_store.png` direto aqui, agora só o Goiás
-/// tem essa mesma imagem configurada); >1 vira carousel com autoplay
-/// (ver `StoreBannerCarousel`), nunca um `if (club == ...)` aqui.
+/// Puramente visual, sem navegação ao toque. Quantidade de imagens vem de
+/// `ClubConfig.assets.storeHomeBanners` — 1 banner fica fixo (era hardcoded
+/// `lib/assets/goias_store.png` direto aqui, agora só o Goiás tem essa
+/// mesma imagem configurada); >1 vira carousel com autoplay (ver
+/// `StoreBannerCarousel`), nunca um `if (club == ...)` aqui.
 class _StoreBanner extends StatelessWidget {
-  const _StoreBanner({required this.launch});
-
-  final StoreProduct? launch;
+  const _StoreBanner();
 
   @override
   Widget build(BuildContext context) {
-    return StoreBannerCarousel(
-      banners: sl<ClubConfig>().assets.storeHomeBanners,
-      onTap: launch == null
-          ? null
-          : () => context.push('/store/product/${launch!.id}'),
-    );
+    return StoreBannerCarousel(banners: sl<ClubConfig>().assets.storeHomeBanners);
   }
 }
 

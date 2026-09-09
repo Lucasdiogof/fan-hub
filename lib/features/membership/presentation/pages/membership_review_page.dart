@@ -227,7 +227,9 @@ class _RegulationAcceptance extends StatelessWidget {
         children: [
           Semantics(
             checked: value,
-            label: context.l10n.membershipAcceptRegulation,
+            label: context.l10n.membershipAcceptRegulation(
+              sl<ClubConfig>().productNames.membershipProgramName,
+            ),
             child: GestureDetector(
               onTap: () => onChanged(!value),
               child: Container(
@@ -260,7 +262,9 @@ class _RegulationAcceptance extends StatelessWidget {
                 GestureDetector(
                   onTap: () => onChanged(!value),
                   child: Text(
-                    context.l10n.membershipAcceptRegulation,
+                    context.l10n.membershipAcceptRegulation(
+                      sl<ClubConfig>().productNames.membershipProgramName,
+                    ),
                     style: TextStyle(
                       fontSize: 13,
                       height: 1.4,

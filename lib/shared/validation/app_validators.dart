@@ -32,8 +32,7 @@ class AppValidators {
 
   /// Telefone genérico (aceita fixo ou celular) — usado onde o campo não é
   /// exclusivamente "Celular"/WhatsApp.
-  static bool isValidPhone(String value) =>
-      onlyDigits(value).length >= 10;
+  static bool isValidPhone(String value) => onlyDigits(value).length >= 10;
 
   /// Celular brasileiro (DDD + 9 dígitos, começando em 9) — usado nos campos
   /// rotulados "Celular"/"WhatsApp".

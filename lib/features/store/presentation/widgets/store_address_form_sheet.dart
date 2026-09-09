@@ -415,19 +415,21 @@ class _StoreAddressFormState extends State<_StoreAddressForm> {
                       onTap: _stateController.text.isEmpty || _citiesLoading
                           ? null
                           : _pickCity,
-                      decoration: _decoration(
-                        context,
-                        l10n.storeCityLabel,
-                        errorText: _submitted && _cityController.text.isEmpty
-                            ? l10n.membershipValCity
-                            : null,
-                      ).copyWith(
-                        hintText: _citiesLoading
-                            ? l10n.membershipLoadingCities
-                            : (_stateController.text.isEmpty
-                                  ? l10n.membershipSelectStateFirst
-                                  : l10n.membershipSelectCity),
-                      ),
+                      decoration:
+                          _decoration(
+                            context,
+                            l10n.storeCityLabel,
+                            errorText:
+                                _submitted && _cityController.text.isEmpty
+                                ? l10n.membershipValCity
+                                : null,
+                          ).copyWith(
+                            hintText: _citiesLoading
+                                ? l10n.membershipLoadingCities
+                                : (_stateController.text.isEmpty
+                                      ? l10n.membershipSelectStateFirst
+                                      : l10n.membershipSelectCity),
+                          ),
                     ),
                   ),
                 ],

@@ -105,7 +105,12 @@ class _FakeFootballRepository implements FootballRepository {
   @override
   Future<
     Result<
-      ({List<Match> matches, String? roundLabel, bool hasPrevious, bool hasNext})
+      ({
+        List<Match> matches,
+        String? roundLabel,
+        bool hasPrevious,
+        bool hasNext,
+      })
     >
   >
   getCurrentRound({int offset = 0}) => throw UnimplementedError();
@@ -132,7 +137,12 @@ const _fakeMatch = Match(
   competition: 'Brasileirão Série B',
   round: '10',
   homeTeam: Team(id: 1, name: 'Goiás', shortName: 'GOI', color: Colors.green),
-  awayTeam: Team(id: 2, name: 'Adversário', shortName: 'ADV', color: Colors.blue),
+  awayTeam: Team(
+    id: 2,
+    name: 'Adversário',
+    shortName: 'ADV',
+    color: Colors.blue,
+  ),
   stadium: 'Serra Dourada',
   status: MatchStatus.scheduled,
 );
@@ -144,79 +154,101 @@ void main() {
     httpClient = CapturingHttpClient();
   });
 
-  group('Arena ranking — RPCs tenant-aware carregam p_club_id no payload real', () {
-    for (final (label, config) in [
-      ('Goiás', goiasClubConfig),
-      ('club-b (sintético)', syntheticClubBConfig),
-    ]) {
-      test('recordScore ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseArenaRankingRepository(client, config);
-        await repo.recordScore(
-          gameId: 'quiz',
-          itemId: 'q1',
-          eventType: 'first_try_correct',
-        );
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
-          config.identity.canonicalClubId,
-        );
-        expect(httpClient.lastRequestUrl.toString(), contains('arena_record_score_for_club'));
-      });
+  group(
+    'Arena ranking — RPCs tenant-aware carregam p_club_id no payload real',
+    () {
+      for (final (label, config) in [
+        ('Goiás', goiasClubConfig),
+        ('club-b (sintético)', syntheticClubBConfig),
+      ]) {
+        test('recordScore ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseArenaRankingRepository(client, config);
+          await repo.recordScore(
+            gameId: 'quiz',
+            itemId: 'q1',
+            eventType: 'first_try_correct',
+          );
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
+            config.identity.canonicalClubId,
+          );
+          expect(
+            httpClient.lastRequestUrl.toString(),
+            contains('arena_record_score_for_club'),
+          );
+        });
 
-      test('getRanking ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseArenaRankingRepository(client, config);
-        await repo.getRanking(RankingPeriod.allTime);
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
-          config.identity.canonicalClubId,
-        );
-        expect(httpClient.lastRequestUrl.toString(), contains('arena_ranking_for_club'));
-      });
+        test('getRanking ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseArenaRankingRepository(client, config);
+          await repo.getRanking(RankingPeriod.allTime);
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
+            config.identity.canonicalClubId,
+          );
+          expect(
+            httpClient.lastRequestUrl.toString(),
+            contains('arena_ranking_for_club'),
+          );
+        });
 
-      test('getMyRank ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseArenaRankingRepository(client, config);
-        await repo.getMyRank(RankingPeriod.allTime);
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
-          config.identity.canonicalClubId,
-        );
-        expect(httpClient.lastRequestUrl.toString(), contains('arena_my_rank_for_club'));
-      });
+        test('getMyRank ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseArenaRankingRepository(client, config);
+          await repo.getMyRank(RankingPeriod.allTime);
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
+            config.identity.canonicalClubId,
+          );
+          expect(
+            httpClient.lastRequestUrl.toString(),
+            contains('arena_my_rank_for_club'),
+          );
+        });
 
-      test('getUserDetail ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseArenaRankingRepository(client, config);
-        await repo.getUserDetail(
-          const RankingEntry(
-            rank: 1,
-            userId: 'other-user',
-            name: 'X',
-            avatarUrl: null,
-            isMember: false,
-            totalScore: 10,
-            isMe: false,
-          ),
-        );
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
-          config.identity.canonicalClubId,
-        );
-        expect(httpClient.lastRequestUrl.toString(), contains('arena_user_detail_for_club'));
-      });
-    }
+        test('getUserDetail ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseArenaRankingRepository(client, config);
+          await repo.getUserDetail(
+            const RankingEntry(
+              rank: 1,
+              userId: 'other-user',
+              name: 'X',
+              avatarUrl: null,
+              isMember: false,
+              totalScore: 10,
+              isMe: false,
+            ),
+          );
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
+            config.identity.canonicalClubId,
+          );
+          expect(
+            httpClient.lastRequestUrl.toString(),
+            contains('arena_user_detail_for_club'),
+          );
+        });
+      }
 
-    test('club-b nunca manda o UUID do Goiás em nenhuma das 4 RPCs', () async {
-      final client = await _authedClient(httpClient);
-      final repo = SupabaseArenaRankingRepository(client, syntheticClubBConfig);
-      await repo.getRanking(RankingPeriod.allTime);
-      final sent = _firstRow(httpClient.lastRequestBodyJson)['p_club_id'] as String;
-      expect(sent, syntheticClubBConfig.identity.canonicalClubId);
-      expect(sent, isNot(goiasClubConfig.identity.canonicalClubId));
-    });
-  });
+      test(
+        'club-b nunca manda o UUID do Goiás em nenhuma das 4 RPCs',
+        () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseArenaRankingRepository(
+            client,
+            syntheticClubBConfig,
+          );
+          await repo.getRanking(RankingPeriod.allTime);
+          final sent =
+              _firstRow(httpClient.lastRequestBodyJson)['p_club_id'] as String;
+          expect(sent, syntheticClubBConfig.identity.canonicalClubId);
+          expect(sent, isNot(goiasClubConfig.identity.canonicalClubId));
+        },
+      );
+    },
+  );
 
   group('Membership — RPCs tenant-aware', () {
     for (final (label, config) in [
@@ -231,7 +263,10 @@ void main() {
           _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
           config.identity.canonicalClubId,
         );
-        expect(httpClient.lastRequestUrl.toString(), contains('get_my_membership_for_club'));
+        expect(
+          httpClient.lastRequestUrl.toString(),
+          contains('get_my_membership_for_club'),
+        );
       });
 
       test('submitRegistration/subscribe_to_plan_for_club ($label)', () async {
@@ -249,7 +284,10 @@ void main() {
           _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
           config.identity.canonicalClubId,
         );
-        expect(httpClient.lastRequestUrl.toString(), contains('subscribe_to_plan_for_club'));
+        expect(
+          httpClient.lastRequestUrl.toString(),
+          contains('subscribe_to_plan_for_club'),
+        );
       });
     }
   });
@@ -272,17 +310,23 @@ void main() {
         );
       });
 
-      test('getCrowdLineup chama crowd_lineup_for_club com p_club_id ($label)', () async {
-        httpClient = CapturingHttpClient(responseBody: '{}');
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseCrowdLineupRepository(client, config);
-        await repo.getCrowdLineup('m1');
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
-          config.identity.canonicalClubId,
-        );
-        expect(httpClient.lastRequestUrl.toString(), contains('crowd_lineup_for_club'));
-      });
+      test(
+        'getCrowdLineup chama crowd_lineup_for_club com p_club_id ($label)',
+        () async {
+          httpClient = CapturingHttpClient(responseBody: '{}');
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseCrowdLineupRepository(client, config);
+          await repo.getCrowdLineup('m1');
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
+            config.identity.canonicalClubId,
+          );
+          expect(
+            httpClient.lastRequestUrl.toString(),
+            contains('crowd_lineup_for_club'),
+          );
+        },
+      );
     }
   });
 
@@ -291,29 +335,35 @@ void main() {
       ('Goiás', goiasClubConfig),
       ('club-b (sintético)', syntheticClubBConfig),
     ]) {
-      test('createOrder chama create_store_order_for_club com p_club_id ($label)', () async {
-        httpClient = CapturingHttpClient(responseBody: '{}');
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseStoreOrdersRepository(client, config);
-        await repo.createOrder(
-          items: const [],
-          identification: const CustomerIdentification(
-            fullName: 'Lucas',
-            cpf: '11144477735',
-            email: 'lucas@example.com',
-            phone: '62999998888',
-          ),
-          fulfillmentMethod: FulfillmentMethod.pickup,
-          payment: const PaymentSimulationInput(method: PaymentMethod.pix),
-          subtotal: 10,
-          discountAmount: 0,
-        );
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
-          config.identity.canonicalClubId,
-        );
-        expect(httpClient.lastRequestUrl.toString(), contains('create_store_order_for_club'));
-      });
+      test(
+        'createOrder chama create_store_order_for_club com p_club_id ($label)',
+        () async {
+          httpClient = CapturingHttpClient(responseBody: '{}');
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseStoreOrdersRepository(client, config);
+          await repo.createOrder(
+            items: const [],
+            identification: const CustomerIdentification(
+              fullName: 'Lucas',
+              cpf: '11144477735',
+              email: 'lucas@example.com',
+              phone: '62999998888',
+            ),
+            fulfillmentMethod: FulfillmentMethod.pickup,
+            payment: const PaymentSimulationInput(method: PaymentMethod.pix),
+            subtotal: 10,
+            discountAmount: 0,
+          );
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['p_club_id'],
+            config.identity.canonicalClubId,
+          );
+          expect(
+            httpClient.lastRequestUrl.toString(),
+            contains('create_store_order_for_club'),
+          );
+        },
+      );
     }
 
     test('getOrders filtra club_id na query real', () async {
@@ -327,32 +377,38 @@ void main() {
     });
   });
 
-  group('Notificações — preferences por usuário+clube (ROW_SCOPE pronto, KEY_SCOPE bloqueado)', () {
-    for (final (label, config) in [
-      ('Goiás', goiasClubConfig),
-      ('club-b (sintético)', syntheticClubBConfig),
-    ]) {
-      test('updatePreferences grava club_id no upsert real ($label)', () async {
+  group(
+    'Notificações — preferences por usuário+clube (ROW_SCOPE pronto, KEY_SCOPE bloqueado)',
+    () {
+      for (final (label, config) in [
+        ('Goiás', goiasClubConfig),
+        ('club-b (sintético)', syntheticClubBConfig),
+      ]) {
+        test(
+          'updatePreferences grava club_id no upsert real ($label)',
+          () async {
+            final client = await _authedClient(httpClient);
+            final repo = SupabaseNotificationRepository(client, config);
+            await repo.updatePreferences(matchesEnabled: false);
+            expect(
+              _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+              config.identity.canonicalClubId,
+            );
+          },
+        );
+      }
+
+      test('getPreferences filtra club_id na query real', () async {
         final client = await _authedClient(httpClient);
-        final repo = SupabaseNotificationRepository(client, config);
-        await repo.updatePreferences(matchesEnabled: false);
+        final repo = SupabaseNotificationRepository(client, goiasClubConfig);
+        await repo.getPreferences();
         expect(
-          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-          config.identity.canonicalClubId,
+          httpClient.lastRequestUrl.toString(),
+          contains('club_id=eq.${goiasClubConfig.identity.canonicalClubId}'),
         );
       });
-    }
-
-    test('getPreferences filtra club_id na query real', () async {
-      final client = await _authedClient(httpClient);
-      final repo = SupabaseNotificationRepository(client, goiasClubConfig);
-      await repo.getPreferences();
-      expect(
-        httpClient.lastRequestUrl.toString(),
-        contains('club_id=eq.${goiasClubConfig.identity.canonicalClubId}'),
-      );
-    });
-  });
+    },
+  );
 
   group('Notificações — token FCM grava club_id no upsert real (M4.1c)', () {
     for (final (label, config) in [
@@ -362,7 +418,10 @@ void main() {
       test('registerToken grava club_id do clube ativo ($label)', () async {
         final client = await _authedClient(httpClient);
         final repo = SupabaseNotificationRepository(client, config);
-        await repo.registerToken(fcmToken: 'fcm-test-token', platform: 'android');
+        await repo.registerToken(
+          fcmToken: 'fcm-test-token',
+          platform: 'android',
+        );
         final row = _firstRow(httpClient.lastRequestBodyJson);
         expect(row['club_id'], config.identity.canonicalClubId);
         expect(row['fcm_token'], 'fcm-test-token');
@@ -371,41 +430,62 @@ void main() {
       });
     }
 
-    test('token refresh (2ª chamada de registerToken, mesmo fluxo do onTokenRefresh) atualiza club_id corretamente se o clube ativo mudou', () async {
-      // Simula o cenário do pedido: o mesmo fluxo de registro roda de novo
-      // (refresh) — se o clube ativo desta instalação for outro, o upsert
-      // por fcm_token precisa gravar o club_id NOVO, nunca manter um valor
-      // antigo preso.
-      final clientGoias = await _authedClient(httpClient);
-      final repoGoias = SupabaseNotificationRepository(clientGoias, goiasClubConfig);
-      await repoGoias.registerToken(fcmToken: 'fcm-refresh-token', platform: 'android');
-      expect(
-        _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-        goiasClubConfig.identity.canonicalClubId,
-      );
+    test(
+      'token refresh (2ª chamada de registerToken, mesmo fluxo do onTokenRefresh) atualiza club_id corretamente se o clube ativo mudou',
+      () async {
+        // Simula o cenário do pedido: o mesmo fluxo de registro roda de novo
+        // (refresh) — se o clube ativo desta instalação for outro, o upsert
+        // por fcm_token precisa gravar o club_id NOVO, nunca manter um valor
+        // antigo preso.
+        final clientGoias = await _authedClient(httpClient);
+        final repoGoias = SupabaseNotificationRepository(
+          clientGoias,
+          goiasClubConfig,
+        );
+        await repoGoias.registerToken(
+          fcmToken: 'fcm-refresh-token',
+          platform: 'android',
+        );
+        expect(
+          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+          goiasClubConfig.identity.canonicalClubId,
+        );
 
-      final clientClubB = await _authedClient(httpClient);
-      final repoClubB = SupabaseNotificationRepository(clientClubB, syntheticClubBConfig);
-      await repoClubB.registerToken(fcmToken: 'fcm-refresh-token', platform: 'android');
-      expect(
-        _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-        syntheticClubBConfig.identity.canonicalClubId,
-      );
-    });
+        final clientClubB = await _authedClient(httpClient);
+        final repoClubB = SupabaseNotificationRepository(
+          clientClubB,
+          syntheticClubBConfig,
+        );
+        await repoClubB.registerToken(
+          fcmToken: 'fcm-refresh-token',
+          platform: 'android',
+        );
+        expect(
+          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+          syntheticClubBConfig.identity.canonicalClubId,
+        );
+      },
+    );
 
-    test('registerToken continua usando onConflict:fcm_token — nunca (club_id,fcm_token)', () async {
-      final client = await _authedClient(httpClient);
-      final repo = SupabaseNotificationRepository(client, goiasClubConfig);
-      await repo.registerToken(fcmToken: 'fcm-conflict-check', platform: 'ios');
-      expect(
-        httpClient.lastRequestUrl.toString(),
-        contains('on_conflict=fcm_token'),
-      );
-      expect(
-        httpClient.lastRequestUrl.toString(),
-        isNot(contains('on_conflict=club_id')),
-      );
-    });
+    test(
+      'registerToken continua usando onConflict:fcm_token — nunca (club_id,fcm_token)',
+      () async {
+        final client = await _authedClient(httpClient);
+        final repo = SupabaseNotificationRepository(client, goiasClubConfig);
+        await repo.registerToken(
+          fcmToken: 'fcm-conflict-check',
+          platform: 'ios',
+        );
+        expect(
+          httpClient.lastRequestUrl.toString(),
+          contains('on_conflict=fcm_token'),
+        );
+        expect(
+          httpClient.lastRequestUrl.toString(),
+          isNot(contains('on_conflict=club_id')),
+        );
+      },
+    );
   });
 
   group('Ingressos — check-in/compra gravam club_id nas 3 tabelas', () {
@@ -413,128 +493,160 @@ void main() {
       ('Goiás', goiasClubConfig),
       ('club-b (sintético)', syntheticClubBConfig),
     ]) {
-      test('checkIn grava club_id em ticket_checkin_decisions e tickets ($label)', () async {
-        httpClient = CapturingHttpClient(responseBody: '{"id":"t1"}');
-        final client = await _authedClient(httpClient);
-        final repo = MockTicketRepository(client, _FakeFootballRepository(_fakeMatch), config);
-        await repo.checkIn(
-          matchId: 'm1',
-          sectorId: 'cadeiras',
-          holderName: 'Lucas',
-          holderDocument: '11144477735',
-        );
-        // 2 writes acontecem (ticket_checkin_decisions upsert, tickets
-        // upsert) — os 2 corpos capturados precisam ambos ter club_id.
-        final bodies = httpClient.requestBodies
-            .where((b) => b != null && b.isNotEmpty)
-            .map((b) => _firstRow(jsonDecode(b!)))
-            .toList();
-        expect(bodies, isNotEmpty);
-        for (final row in bodies) {
-          if (row.containsKey('user_id')) {
-            expect(row['club_id'], config.identity.canonicalClubId, reason: '$row');
+      test(
+        'checkIn grava club_id em ticket_checkin_decisions e tickets ($label)',
+        () async {
+          httpClient = CapturingHttpClient(responseBody: '{"id":"t1"}');
+          final client = await _authedClient(httpClient);
+          final repo = MockTicketRepository(
+            client,
+            _FakeFootballRepository(_fakeMatch),
+            config,
+          );
+          await repo.checkIn(
+            matchId: 'm1',
+            sectorId: 'cadeiras',
+            holderName: 'Lucas',
+            holderDocument: '11144477735',
+          );
+          // 2 writes acontecem (ticket_checkin_decisions upsert, tickets
+          // upsert) — os 2 corpos capturados precisam ambos ter club_id.
+          final bodies = httpClient.requestBodies
+              .where((b) => b != null && b.isNotEmpty)
+              .map((b) => _firstRow(jsonDecode(b!)))
+              .toList();
+          expect(bodies, isNotEmpty);
+          for (final row in bodies) {
+            if (row.containsKey('user_id')) {
+              expect(
+                row['club_id'],
+                config.identity.canonicalClubId,
+                reason: '$row',
+              );
+            }
           }
-        }
-      });
+        },
+      );
 
-      test('purchase grava club_id em ticket_orders e tickets ($label)', () async {
-        httpClient = CapturingHttpClient(responseBody: '{"id":"o1","created_at":"2026-01-01T00:00:00Z"}');
-        final client = await _authedClient(httpClient);
-        final repo = MockTicketRepository(client, _FakeFootballRepository(_fakeMatch), config);
-        await repo.purchase(
-          matchId: 'm1',
-          items: const [
-            TicketOrderItem(
-              sectorId: 'cadeiras',
-              sectorName: 'Cadeiras',
-              venueLabel: 'Superior',
-              gate: 'A',
-              categoryId: 'inteira',
-              categoryLabel: 'Inteira',
-              quantity: 1,
-              unitPrice: 80,
-            ),
-          ],
-          holders: const [TicketHolder(name: 'Lucas', document: '11144477735')],
-        );
-        final bodies = httpClient.requestBodies
-            .where((b) => b != null && b.isNotEmpty)
-            .map((b) => _firstRow(jsonDecode(b!)))
-            .toList();
-        expect(bodies, isNotEmpty);
-        for (final row in bodies) {
-          if (row.containsKey('user_id')) {
-            expect(row['club_id'], config.identity.canonicalClubId, reason: '$row');
+      test(
+        'purchase grava club_id em ticket_orders e tickets ($label)',
+        () async {
+          httpClient = CapturingHttpClient(
+            responseBody: '{"id":"o1","created_at":"2026-01-01T00:00:00Z"}',
+          );
+          final client = await _authedClient(httpClient);
+          final repo = MockTicketRepository(
+            client,
+            _FakeFootballRepository(_fakeMatch),
+            config,
+          );
+          await repo.purchase(
+            matchId: 'm1',
+            items: const [
+              TicketOrderItem(
+                sectorId: 'cadeiras',
+                sectorName: 'Cadeiras',
+                venueLabel: 'Superior',
+                gate: 'A',
+                categoryId: 'inteira',
+                categoryLabel: 'Inteira',
+                quantity: 1,
+                unitPrice: 80,
+              ),
+            ],
+            holders: const [
+              TicketHolder(name: 'Lucas', document: '11144477735'),
+            ],
+          );
+          final bodies = httpClient.requestBodies
+              .where((b) => b != null && b.isNotEmpty)
+              .map((b) => _firstRow(jsonDecode(b!)))
+              .toList();
+          expect(bodies, isNotEmpty);
+          for (final row in bodies) {
+            if (row.containsKey('user_id')) {
+              expect(
+                row['club_id'],
+                config.identity.canonicalClubId,
+                reason: '$row',
+              );
+            }
           }
-        }
-      });
+        },
+      );
     }
   });
 
-  group('Progresso de conteúdo (Quiz/Escalação/Adivinhe/Selecionado) — club_id no write real', () {
-    for (final (label, config) in [
-      ('Goiás', goiasClubConfig),
-      ('club-b (sintético)', syntheticClubBConfig),
-    ]) {
-      test('QuizProgressRepository.recordAnswer ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = QuizProgressRepository(client, config);
-        await repo.recordAnswer(
-          questionId: 'q1',
-          difficulty: QuizDifficulty.torcedor,
-          wasCorrect: true,
-        );
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-          config.identity.canonicalClubId,
-        );
-      });
+  group(
+    'Progresso de conteúdo (Quiz/Escalação/Adivinhe/Selecionado) — club_id no write real',
+    () {
+      for (final (label, config) in [
+        ('Goiás', goiasClubConfig),
+        ('club-b (sintético)', syntheticClubBConfig),
+      ]) {
+        test('QuizProgressRepository.recordAnswer ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final repo = QuizProgressRepository(client, config);
+          await repo.recordAnswer(
+            questionId: 'q1',
+            difficulty: QuizDifficulty.torcedor,
+            wasCorrect: true,
+          );
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+            config.identity.canonicalClubId,
+          );
+        });
 
-      test('SupabaseCareerPathStorage.save ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final storage = SupabaseCareerPathStorage(client, config);
-        await storage.save(
-          CareerRoundState(playerId: 'p1', startedAt: DateTime.now()),
-        );
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-          config.identity.canonicalClubId,
-        );
-      });
+        test('SupabaseCareerPathStorage.save ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final storage = SupabaseCareerPathStorage(client, config);
+          await storage.save(
+            CareerRoundState(playerId: 'p1', startedAt: DateTime.now()),
+          );
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+            config.identity.canonicalClubId,
+          );
+        });
 
-      test('SupabaseCareerPathStorage.saveSelectedPlayerId ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final storage = SupabaseCareerPathStorage(client, config);
-        await storage.saveSelectedPlayerId('p1');
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-          config.identity.canonicalClubId,
+        test(
+          'SupabaseCareerPathStorage.saveSelectedPlayerId ($label)',
+          () async {
+            final client = await _authedClient(httpClient);
+            final storage = SupabaseCareerPathStorage(client, config);
+            await storage.saveSelectedPlayerId('p1');
+            expect(
+              _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+              config.identity.canonicalClubId,
+            );
+          },
         );
-      });
 
-      test('SupabaseLineupStorage.save ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final storage = SupabaseLineupStorage(client, config);
-        await storage.save(
-          LineupGameState(matchId: 'm1', startedAt: DateTime.now()),
-        );
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-          config.identity.canonicalClubId,
-        );
-      });
+        test('SupabaseLineupStorage.save ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final storage = SupabaseLineupStorage(client, config);
+          await storage.save(
+            LineupGameState(matchId: 'm1', startedAt: DateTime.now()),
+          );
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+            config.identity.canonicalClubId,
+          );
+        });
 
-      test('SupabaseLineupStorage.saveSelectedMatchId ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final storage = SupabaseLineupStorage(client, config);
-        await storage.saveSelectedMatchId('m1');
-        expect(
-          _firstRow(httpClient.lastRequestBodyJson)['club_id'],
-          config.identity.canonicalClubId,
-        );
-      });
-    }
-  });
+        test('SupabaseLineupStorage.saveSelectedMatchId ($label)', () async {
+          final client = await _authedClient(httpClient);
+          final storage = SupabaseLineupStorage(client, config);
+          await storage.saveSelectedMatchId('m1');
+          expect(
+            _firstRow(httpClient.lastRequestBodyJson)['club_id'],
+            config.identity.canonicalClubId,
+          );
+        });
+      }
+    },
+  );
 
   group('Identidades (Craque/Técnico) — club_id no write real', () {
     for (final (label, config) in [
@@ -582,87 +694,114 @@ void main() {
   group('M3.4 — conflict targets tenant-aware (on_conflict com club_id)', () {
     final goiasUuid = goiasClubConfig.identity.canonicalClubId;
     Uri urlWith(String needle) => httpClient.requestUrls.firstWhere(
-          (u) => u.toString().contains(needle),
-          orElse: () => Uri.parse('about:blank'),
-        );
+      (u) => u.toString().contains(needle),
+      orElse: () => Uri.parse('about:blank'),
+    );
 
     for (final (label, config) in [
       ('Goiás', goiasClubConfig),
       ('club-b (sintético)', syntheticClubBConfig),
     ]) {
-      test('match_lineup_votes: on_conflict club_id,match_id,user_id + valor de club_id difere por clube ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseCrowdLineupRepository(client, config);
-        await repo.submitVote(
-          'm1',
-          const LineupVote(formationId: '4-3-3', playerIdBySlot: {0: 'p1'}),
-        );
-        expect(Uri.decodeFull(urlWith('on_conflict').toString()),
-            contains('on_conflict=club_id,match_id,user_id'));
-        final clubId = _firstRow(httpClient.lastRequestBodyJson)['club_id'];
-        expect(clubId, config.identity.canonicalClubId);
-        if (config == syntheticClubBConfig) expect(clubId, isNot(goiasUuid));
-      });
+      test(
+        'match_lineup_votes: on_conflict club_id,match_id,user_id + valor de club_id difere por clube ($label)',
+        () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseCrowdLineupRepository(client, config);
+          await repo.submitVote(
+            'm1',
+            const LineupVote(formationId: '4-3-3', playerIdBySlot: {0: 'p1'}),
+          );
+          expect(
+            Uri.decodeFull(urlWith('on_conflict').toString()),
+            contains('on_conflict=club_id,match_id,user_id'),
+          );
+          final clubId = _firstRow(httpClient.lastRequestBodyJson)['club_id'];
+          expect(clubId, config.identity.canonicalClubId);
+          if (config == syntheticClubBConfig) expect(clubId, isNot(goiasUuid));
+        },
+      );
 
-      test('user_notification_preferences: on_conflict user_id,club_id ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = SupabaseNotificationRepository(client, config);
-        await repo.updatePreferences(matchesEnabled: false);
-        expect(Uri.decodeFull(urlWith('on_conflict').toString()),
-            contains('on_conflict=user_id,club_id'));
-      });
+      test(
+        'user_notification_preferences: on_conflict user_id,club_id ($label)',
+        () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabaseNotificationRepository(client, config);
+          await repo.updatePreferences(matchesEnabled: false);
+          expect(
+            Uri.decodeFull(urlWith('on_conflict').toString()),
+            contains('on_conflict=user_id,club_id'),
+          );
+        },
+      );
 
-      test('player_identity_results: on_conflict user_id,club_id ($label)', () async {
-        final client = await _authedClient(httpClient);
-        final repo = SupabasePlayerIdentityRepository(client, config);
-        final options = [
-          for (final q in playerIdentityQuestions) q.options.first,
-        ];
-        await repo.saveResult(
-          PlayerIdentityEngine(
-            playerIdentityReferences,
-          ).computeResult(options),
-        );
-        expect(Uri.decodeFull(urlWith('on_conflict').toString()),
-            contains('on_conflict=user_id,club_id'));
-      });
+      test(
+        'player_identity_results: on_conflict user_id,club_id ($label)',
+        () async {
+          final client = await _authedClient(httpClient);
+          final repo = SupabasePlayerIdentityRepository(client, config);
+          final options = [
+            for (final q in playerIdentityQuestions) q.options.first,
+          ];
+          await repo.saveResult(
+            PlayerIdentityEngine(
+              playerIdentityReferences,
+            ).computeResult(options),
+          );
+          expect(
+            Uri.decodeFull(urlWith('on_conflict').toString()),
+            contains('on_conflict=user_id,club_id'),
+          );
+        },
+      );
 
-      test('check-in de sócio: tcd on_conflict tenant + RPC dedicada com p_club_id e SEM p_user_id ($label)', () async {
-        httpClient = CapturingHttpClient(responseBody: '{"id":"t1"}');
-        final client = await _authedClient(httpClient);
-        final repo = MockTicketRepository(
-          client,
-          _FakeFootballRepository(_fakeMatch),
-          config,
-        );
-        await repo.checkIn(
-          matchId: 'm1',
-          sectorId: 'cadeiras',
-          holderName: 'Lucas',
-          holderDocument: '11144477735',
-        );
-        // ticket_checkin_decisions: upsert direto tenant-aware
-        final tcdUrl = httpClient.requestUrls
-            .firstWhere((u) => u.toString().contains('ticket_checkin_decisions'));
-        expect(Uri.decodeFull(tcdUrl.toString()),
-            contains('on_conflict=club_id,user_id,match_id'));
-        // check-in de sócio vai pela RPC dedicada (índice parcial, sem
-        // onConflict direto)
-        final rpcBodies = httpClient.requestBodies
-            .where((b) => b != null && b.contains('p_club_id'))
-            .cast<String>()
-            .toList();
-        expect(rpcBodies, isNotEmpty,
-            reason: 'esperava a RPC upsert_membership_checkin_ticket_for_club');
-        expect(
-          httpClient.requestUrls.any((u) =>
-              u.toString().contains('upsert_membership_checkin_ticket_for_club')),
-          isTrue,
-        );
-        final decoded = jsonDecode(rpcBodies.first) as Map<String, dynamic>;
-        expect(decoded['p_club_id'], config.identity.canonicalClubId);
-        expect(decoded.containsKey('p_user_id'), isFalse);
-      });
+      test(
+        'check-in de sócio: tcd on_conflict tenant + RPC dedicada com p_club_id e SEM p_user_id ($label)',
+        () async {
+          httpClient = CapturingHttpClient(responseBody: '{"id":"t1"}');
+          final client = await _authedClient(httpClient);
+          final repo = MockTicketRepository(
+            client,
+            _FakeFootballRepository(_fakeMatch),
+            config,
+          );
+          await repo.checkIn(
+            matchId: 'm1',
+            sectorId: 'cadeiras',
+            holderName: 'Lucas',
+            holderDocument: '11144477735',
+          );
+          // ticket_checkin_decisions: upsert direto tenant-aware
+          final tcdUrl = httpClient.requestUrls.firstWhere(
+            (u) => u.toString().contains('ticket_checkin_decisions'),
+          );
+          expect(
+            Uri.decodeFull(tcdUrl.toString()),
+            contains('on_conflict=club_id,user_id,match_id'),
+          );
+          // check-in de sócio vai pela RPC dedicada (índice parcial, sem
+          // onConflict direto)
+          final rpcBodies = httpClient.requestBodies
+              .where((b) => b != null && b.contains('p_club_id'))
+              .cast<String>()
+              .toList();
+          expect(
+            rpcBodies,
+            isNotEmpty,
+            reason: 'esperava a RPC upsert_membership_checkin_ticket_for_club',
+          );
+          expect(
+            httpClient.requestUrls.any(
+              (u) => u.toString().contains(
+                'upsert_membership_checkin_ticket_for_club',
+              ),
+            ),
+            isTrue,
+          );
+          final decoded = jsonDecode(rpcBodies.first) as Map<String, dynamic>;
+          expect(decoded['p_club_id'], config.identity.canonicalClubId);
+          expect(decoded.containsKey('p_user_id'), isFalse);
+        },
+      );
     }
   });
 }

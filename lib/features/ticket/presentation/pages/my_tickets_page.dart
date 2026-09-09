@@ -211,8 +211,10 @@ class _MyTicketsViewState extends State<_MyTicketsView>
                             StateMessage(
                               icon: Icons.confirmation_number_outlined,
                               title: context.l10n.ticketsMyTicketsEmpty,
-                              message:
-                                  context.l10n.ticketsMyTicketsEmptyMessage,
+                              message: context.l10n
+                                  .ticketsMyTicketsEmptyMessage(
+                                    sl<ClubConfig>().identity.shortName,
+                                  ),
                             ),
                           ),
                           LoadStatus.success => TabBarView(
@@ -274,7 +276,9 @@ class _TicketList extends StatelessWidget {
         StateMessage(
           icon: Icons.confirmation_number_outlined,
           title: context.l10n.ticketsMyTicketsEmpty,
-          message: context.l10n.ticketsMyTicketsEmptyMessage,
+          message: context.l10n.ticketsMyTicketsEmptyMessage(
+            sl<ClubConfig>().identity.shortName,
+          ),
         ),
       );
     }

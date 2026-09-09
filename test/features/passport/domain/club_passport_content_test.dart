@@ -78,8 +78,14 @@ void main() {
 
     test('a contagem de jogos preserva o caso especial de zero, só em PT', () {
       final content = goiasClubConfig.passportContent;
-      expect(content.pt.matchesLived(0), 'Nenhum jogo vivido ainda com o Verdão');
-      expect(content.pt.matchesLived(1), '1 jogo cantando e vibrando com o Verdão');
+      expect(
+        content.pt.matchesLived(0),
+        'Nenhum jogo vivido ainda com o Verdão',
+      );
+      expect(
+        content.pt.matchesLived(1),
+        '1 jogo cantando e vibrando com o Verdão',
+      );
       expect(
         content.pt.matchesLived(43),
         '43 jogos cantando e vibrando com o Verdão',
@@ -136,7 +142,13 @@ void main() {
 
   group('nenhum clube vaza no outro', () {
     test('nada do Goiás aparece na cópia do Bragantino', () {
-      final proibidos = ['Esmeraldino', 'Esmeraldina', 'Esmeralda', 'Verdão', 'Goiás'];
+      final proibidos = [
+        'Esmeraldino',
+        'Esmeraldina',
+        'Esmeralda',
+        'Verdão',
+        'Goiás',
+      ];
       for (final texto in _everything(bragantinoClubConfig.passportContent)) {
         for (final termo in proibidos) {
           expect(
@@ -198,7 +210,10 @@ void main() {
       // "Esmeraldino". Nenhuma interpolação produz o texto correto — é por
       // isso que a cópia é escrita por extenso.
       expect(goiasClubConfig.identity.fanDemonym, 'Esmeraldino');
-      expect(goiasClubConfig.passportContent.pt.levels.legend, 'Lenda Esmeraldina');
+      expect(
+        goiasClubConfig.passportContent.pt.levels.legend,
+        'Lenda Esmeraldina',
+      );
     });
 
     test('o Bragantino precisa da preposição que uma fórmula não daria', () {
@@ -221,30 +236,54 @@ void main() {
   group('a tela resolve pelo clube ativo e pelo idioma', () {
     testWidgets('Goiás em pt/en/es', (tester) async {
       expect(
-        (await _copyOnScreen(tester, goiasClubConfig, const Locale('pt'))).cardDescription,
+        (await _copyOnScreen(
+          tester,
+          goiasClubConfig,
+          const Locale('pt'),
+        )).cardDescription,
         'Marque os jogos que você viveu com o Verdão.',
       );
       expect(
-        (await _copyOnScreen(tester, goiasClubConfig, const Locale('en'))).cardDescription,
+        (await _copyOnScreen(
+          tester,
+          goiasClubConfig,
+          const Locale('en'),
+        )).cardDescription,
         'Mark the matches you lived with Goiás.',
       );
       expect(
-        (await _copyOnScreen(tester, goiasClubConfig, const Locale('es'))).cardDescription,
+        (await _copyOnScreen(
+          tester,
+          goiasClubConfig,
+          const Locale('es'),
+        )).cardDescription,
         'Marca los partidos que viviste con el Goiás.',
       );
     });
 
     testWidgets('Bragantino em pt/en/es', (tester) async {
       expect(
-        (await _copyOnScreen(tester, bragantinoClubConfig, const Locale('pt'))).title,
+        (await _copyOnScreen(
+          tester,
+          bragantinoClubConfig,
+          const Locale('pt'),
+        )).title,
         'Passaporte Massa Bruta',
       );
       expect(
-        (await _copyOnScreen(tester, bragantinoClubConfig, const Locale('en'))).shareText,
+        (await _copyOnScreen(
+          tester,
+          bragantinoClubConfig,
+          const Locale('en'),
+        )).shareText,
         'This is my journey with Massa Bruta! 🔴⚪',
       );
       expect(
-        (await _copyOnScreen(tester, bragantinoClubConfig, const Locale('es'))).shareText,
+        (await _copyOnScreen(
+          tester,
+          bragantinoClubConfig,
+          const Locale('es'),
+        )).shareText,
         '¡Esta es mi trayectoria con el Massa Bruta! 🔴⚪',
       );
     });

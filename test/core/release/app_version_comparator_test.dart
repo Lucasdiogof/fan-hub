@@ -65,29 +65,26 @@ void main() {
       );
     });
 
-    test(
-      'cai pro semver quando build vem zerado/ausente de qualquer lado',
-      () {
-        expect(
-          isBelowMinimumRelease(
-            currentBuild: 0,
-            currentVersion: '1.9.0',
-            minimumBuild: 5,
-            minimumVersion: '1.10.0',
-          ),
-          isTrue,
-        );
-        expect(
-          isBelowMinimumRelease(
-            currentBuild: 5,
-            currentVersion: '1.10.0',
-            minimumBuild: 0,
-            minimumVersion: '1.9.0',
-          ),
-          isFalse,
-        );
-      },
-    );
+    test('cai pro semver quando build vem zerado/ausente de qualquer lado', () {
+      expect(
+        isBelowMinimumRelease(
+          currentBuild: 0,
+          currentVersion: '1.9.0',
+          minimumBuild: 5,
+          minimumVersion: '1.10.0',
+        ),
+        isTrue,
+      );
+      expect(
+        isBelowMinimumRelease(
+          currentBuild: 5,
+          currentVersion: '1.10.0',
+          minimumBuild: 0,
+          minimumVersion: '1.9.0',
+        ),
+        isFalse,
+      );
+    });
   });
 
   group('release M3.4 real (1.0.1+2) contra o mínimo publicado (1.0.0+1)', () {

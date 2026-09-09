@@ -126,7 +126,9 @@ class _DigitBox extends StatelessWidget {
         border: Border.all(
           color: focused
               ? colors.primary
-              : (filled ? colors.primary.withValues(alpha: 0.5) : colors.border),
+              : (filled
+                    ? colors.primary.withValues(alpha: 0.5)
+                    : colors.border),
           width: focused ? 1.5 : 1,
         ),
       ),

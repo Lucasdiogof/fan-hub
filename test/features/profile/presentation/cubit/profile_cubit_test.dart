@@ -114,7 +114,12 @@ class _FakeProfileRepository implements ProfileRepository {
     }
 
     return Success(
-      Profile(id: user.id, email: user.email, fullName: 'Nome ${user.id}', cpf: 'cpf-${user.id}'),
+      Profile(
+        id: user.id,
+        email: user.email,
+        fullName: 'Nome ${user.id}',
+        cpf: 'cpf-${user.id}',
+      ),
     );
   }
 

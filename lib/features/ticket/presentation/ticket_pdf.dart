@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
@@ -355,7 +357,9 @@ Future<Uint8List> buildTicketPdf(
                   ),
                   pw.SizedBox(height: 16),
                   pw.Text(
-                    l10n.ticketPdfFooterNotice,
+                    l10n.ticketPdfFooterNotice(
+                      sl<ClubConfig>().identity.shortName,
+                    ),
                     style: const pw.TextStyle(
                       fontSize: 7.5,
                       color: _grey,
@@ -398,10 +402,7 @@ Future<Uint8List> buildTicketPdf(
         final page = pw.FittedBox(
           fit: pw.BoxFit.scaleDown,
           alignment: pw.Alignment.topCenter,
-          child: pw.SizedBox(
-            width: PdfPageFormat.a5.width,
-            child: content,
-          ),
+          child: pw.SizedBox(width: PdfPageFormat.a5.width, child: content),
         );
         if (!isDemo) return page;
         // A marca d'água fica FORA do FittedBox: ela cobre a página inteira,

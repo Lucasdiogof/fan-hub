@@ -112,13 +112,14 @@ Future<LineupCubit> _pump(
 
 void main() {
   group('input mode switch', () {
-    testWidgets('nativeKeyboard renders NativeLineupInput, not LineupKeyboard', (
-      tester,
-    ) async {
-      await _pump(tester, mode: LineupGuessInputMode.nativeKeyboard);
-      expect(find.byType(NativeLineupInput), findsOneWidget);
-      expect(find.byType(LineupKeyboard), findsNothing);
-    });
+    testWidgets(
+      'nativeKeyboard renders NativeLineupInput, not LineupKeyboard',
+      (tester) async {
+        await _pump(tester, mode: LineupGuessInputMode.nativeKeyboard);
+        expect(find.byType(NativeLineupInput), findsOneWidget);
+        expect(find.byType(LineupKeyboard), findsNothing);
+      },
+    );
 
     testWidgets(
       'customKeyboard still renders LineupKeyboard, not NativeLineupInput '

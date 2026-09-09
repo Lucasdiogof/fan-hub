@@ -63,7 +63,8 @@ class _FakeTicketRepository implements TicketRepository {
   Duration refundDelay = Duration.zero;
 
   @override
-  Future<Result<List<Ticket>>> getMyTickets() async => Success(List.of(tickets));
+  Future<Result<List<Ticket>>> getMyTickets() async =>
+      Success(List.of(tickets));
 
   @override
   Future<Result<Ticket>> requestRefund(String ticketId) async {
@@ -75,7 +76,9 @@ class _FakeTicketRepository implements TicketRepository {
     if (failure != null) return Error(failure);
     final index = tickets.indexWhere((t) => t.id == ticketId);
     if (index == -1 || tickets[index].status != TicketStatus.active) {
-      return const Error(ServerFailure('Este ingresso não pode ser reembolsado.'));
+      return const Error(
+        ServerFailure('Este ingresso não pode ser reembolsado.'),
+      );
     }
     final refunded = _ticket(
       id: tickets[index].id,
@@ -224,17 +227,22 @@ void main() {
       expect(cubit.state.tickets.single.status, TicketStatus.active);
     });
 
-    test('duplo toque: duas chamadas concorrentes só reembolsam uma vez', () async {
-      repository.refundDelay = const Duration(milliseconds: 20);
-      await Future<void>.delayed(Duration.zero);
+    test(
+      'duplo toque: duas chamadas concorrentes só reembolsam uma vez',
+      () async {
+        repository.refundDelay = const Duration(milliseconds: 20);
+        await Future<void>.delayed(Duration.zero);
 
-      final first = cubit.requestRefund('t1');
-      final second = cubit.requestRefund('t1'); // ignorado — já está refunding
-      await Future.wait([first, second]);
+        final first = cubit.requestRefund('t1');
+        final second = cubit.requestRefund(
+          't1',
+        ); // ignorado — já está refunding
+        await Future.wait([first, second]);
 
-      expect(repository.requestRefundCallCount, 1);
-      expect(cubit.state.tickets.single.status, TicketStatus.refunded);
-    });
+        expect(repository.requestRefundCallCount, 1);
+        expect(cubit.state.tickets.single.status, TicketStatus.refunded);
+      },
+    );
 
     test(
       'ingresso já reembolsado (ou de outra conta) é rejeitado, não reembolsa de novo',

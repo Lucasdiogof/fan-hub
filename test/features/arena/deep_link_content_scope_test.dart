@@ -96,7 +96,11 @@ const _sentinelCareerPlayers = [
 ];
 
 const _sentinelGuessCatalog = [
-  GuessPlayer(id: 'sentinel-guess-player', name: 'Sentinela', displayName: 'Sentinela'),
+  GuessPlayer(
+    id: 'sentinel-guess-player',
+    name: 'Sentinela',
+    displayName: 'Sentinela',
+  ),
 ];
 
 final _sentinelLineupMatches = [
@@ -231,125 +235,193 @@ void main() {
   });
 
   group('CareerPathPage', () {
-    testWidgets('deep link (sem cubit preloaded) consome o dado do repository, NUNCA careerPlayers (fallback)', (tester) async {
-      sl.registerLazySingleton<SupabaseCareerPathStorage>(_FakeCareerPathStorage.new);
-      sl.registerLazySingleton<CareerPlayerRepository>(_SentinelCareerPlayerRepository.new);
+    testWidgets(
+      'deep link (sem cubit preloaded) consome o dado do repository, NUNCA careerPlayers (fallback)',
+      (tester) async {
+        sl.registerLazySingleton<SupabaseCareerPathStorage>(
+          _FakeCareerPathStorage.new,
+        );
+        sl.registerLazySingleton<CareerPlayerRepository>(
+          _SentinelCareerPlayerRepository.new,
+        );
 
-      await tester.pumpWidget(_wrap(const CareerPathPage()));
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(_wrap(const CareerPathPage()));
+        await tester.pumpAndSettle();
 
-      final cubit = BlocProvider.of<CareerPathCubit>(
-        tester.element(find.byType(Scaffold).first),
-      );
-      expect(cubit.state.players.map((p) => p.id), contains('sentinel-career-player'));
-      expect(cubit.state.players, isNot(same(careerPlayers)));
-      expect((sl<CareerPlayerRepository>() as _SentinelCareerPlayerRepository).loadCallCount, 1);
-    });
+        final cubit = BlocProvider.of<CareerPathCubit>(
+          tester.element(find.byType(Scaffold).first),
+        );
+        expect(
+          cubit.state.players.map((p) => p.id),
+          contains('sentinel-career-player'),
+        );
+        expect(cubit.state.players, isNot(same(careerPlayers)));
+        expect(
+          (sl<CareerPlayerRepository>() as _SentinelCareerPlayerRepository)
+              .loadCallCount,
+          1,
+        );
+      },
+    );
 
-    testWidgets('com cubit preloaded, NUNCA busca de novo no repository (0 fetch duplicado)', (tester) async {
-      final spyRepo = _SentinelCareerPlayerRepository();
-      sl.registerLazySingleton<SupabaseCareerPathStorage>(_FakeCareerPathStorage.new);
-      sl.registerLazySingleton<CareerPlayerRepository>(() => spyRepo);
+    testWidgets(
+      'com cubit preloaded, NUNCA busca de novo no repository (0 fetch duplicado)',
+      (tester) async {
+        final spyRepo = _SentinelCareerPlayerRepository();
+        sl.registerLazySingleton<SupabaseCareerPathStorage>(
+          _FakeCareerPathStorage.new,
+        );
+        sl.registerLazySingleton<CareerPlayerRepository>(() => spyRepo);
 
-      final storage = _FakeCareerPathStorage();
-      final preloadedCubit = CareerPathCubit(
-        players: _sentinelCareerPlayers,
-        loadRound: storage.load,
-        saveRound: storage.save,
-        loadSelectedId: storage.loadSelectedPlayerId,
-        saveSelectedId: storage.saveSelectedPlayerId,
-        loadCompletedIds: storage.completedIds,
-        ranking: sl<ArenaRankingRepository>(),
-      );
-      unawaited(preloadedCubit.loadSelected());
+        final storage = _FakeCareerPathStorage();
+        final preloadedCubit = CareerPathCubit(
+          players: _sentinelCareerPlayers,
+          loadRound: storage.load,
+          saveRound: storage.save,
+          loadSelectedId: storage.loadSelectedPlayerId,
+          saveSelectedId: storage.saveSelectedPlayerId,
+          loadCompletedIds: storage.completedIds,
+          ranking: sl<ArenaRankingRepository>(),
+        );
+        unawaited(preloadedCubit.loadSelected());
 
-      await tester.pumpWidget(_wrap(CareerPathPage(cubit: preloadedCubit)));
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(_wrap(CareerPathPage(cubit: preloadedCubit)));
+        await tester.pumpAndSettle();
 
-      expect(spyRepo.loadCallCount, 0, reason: 'CareerPathPage com cubit preloaded não deveria chamar o repository');
-    });
+        expect(
+          spyRepo.loadCallCount,
+          0,
+          reason:
+              'CareerPathPage com cubit preloaded não deveria chamar o repository',
+        );
+      },
+    );
   });
 
   group('GuessPlayerPage', () {
-    testWidgets('deep link (sem cubit preloaded) consome o dado do repository, NUNCA guessPlayerCatalog (fallback)', (tester) async {
-      sl.registerLazySingleton<GuessPlayerStorage>(_FakeGuessPlayerStorage.new);
-      sl.registerLazySingleton<GuessPlayerRepository>(_SentinelGuessPlayerRepository.new);
+    testWidgets(
+      'deep link (sem cubit preloaded) consome o dado do repository, NUNCA guessPlayerCatalog (fallback)',
+      (tester) async {
+        sl.registerLazySingleton<GuessPlayerStorage>(
+          _FakeGuessPlayerStorage.new,
+        );
+        sl.registerLazySingleton<GuessPlayerRepository>(
+          _SentinelGuessPlayerRepository.new,
+        );
 
-      await tester.pumpWidget(_wrap(const GuessPlayerPage()));
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(_wrap(const GuessPlayerPage()));
+        await tester.pumpAndSettle();
 
-      final cubit = BlocProvider.of<GuessPlayerCubit>(
-        tester.element(find.byType(Scaffold).first),
-      );
-      expect(cubit.catalog.map((p) => p.id), contains('sentinel-guess-player'));
-      expect(cubit.catalog, isNot(same(guessPlayerCatalog)));
-      expect((sl<GuessPlayerRepository>() as _SentinelGuessPlayerRepository).loadCallCount, 1);
-    });
+        final cubit = BlocProvider.of<GuessPlayerCubit>(
+          tester.element(find.byType(Scaffold).first),
+        );
+        expect(
+          cubit.catalog.map((p) => p.id),
+          contains('sentinel-guess-player'),
+        );
+        expect(cubit.catalog, isNot(same(guessPlayerCatalog)));
+        expect(
+          (sl<GuessPlayerRepository>() as _SentinelGuessPlayerRepository)
+              .loadCallCount,
+          1,
+        );
+      },
+    );
 
-    testWidgets('com cubit preloaded, NUNCA busca de novo no repository (0 fetch duplicado)', (tester) async {
-      final spyRepo = _SentinelGuessPlayerRepository();
-      sl.registerLazySingleton<GuessPlayerStorage>(_FakeGuessPlayerStorage.new);
-      sl.registerLazySingleton<GuessPlayerRepository>(() => spyRepo);
+    testWidgets(
+      'com cubit preloaded, NUNCA busca de novo no repository (0 fetch duplicado)',
+      (tester) async {
+        final spyRepo = _SentinelGuessPlayerRepository();
+        sl.registerLazySingleton<GuessPlayerStorage>(
+          _FakeGuessPlayerStorage.new,
+        );
+        sl.registerLazySingleton<GuessPlayerRepository>(() => spyRepo);
 
-      final storage = _FakeGuessPlayerStorage();
-      final preloadedCubit = GuessPlayerCubit(
-        catalog: _sentinelGuessCatalog,
-        loadRound: storage.loadActiveRound,
-        saveRound: storage.saveActiveRound,
-        clearRound: storage.clearActiveRound,
-        recordRoundResult: storage.recordRoundResult,
-        ranking: sl<ArenaRankingRepository>(),
-        loadSeenIds: storage.loadSeenIds,
-        addSeenId: storage.addSeenId,
-        clearSeenIds: storage.clearSeenIds,
-        loadSeenSignature: storage.loadSeenSignature,
-        saveSeenSignature: storage.saveSeenSignature,
-      );
+        final storage = _FakeGuessPlayerStorage();
+        final preloadedCubit = GuessPlayerCubit(
+          catalog: _sentinelGuessCatalog,
+          loadRound: storage.loadActiveRound,
+          saveRound: storage.saveActiveRound,
+          clearRound: storage.clearActiveRound,
+          recordRoundResult: storage.recordRoundResult,
+          ranking: sl<ArenaRankingRepository>(),
+          loadSeenIds: storage.loadSeenIds,
+          addSeenId: storage.addSeenId,
+          clearSeenIds: storage.clearSeenIds,
+          loadSeenSignature: storage.loadSeenSignature,
+          saveSeenSignature: storage.saveSeenSignature,
+        );
 
-      await tester.pumpWidget(_wrap(GuessPlayerPage(cubit: preloadedCubit)));
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(_wrap(GuessPlayerPage(cubit: preloadedCubit)));
+        await tester.pumpAndSettle();
 
-      expect(spyRepo.loadCallCount, 0, reason: 'GuessPlayerPage com cubit preloaded não deveria chamar o repository');
-    });
+        expect(
+          spyRepo.loadCallCount,
+          0,
+          reason:
+              'GuessPlayerPage com cubit preloaded não deveria chamar o repository',
+        );
+      },
+    );
   });
 
   group('LineupPage', () {
-    testWidgets('deep link (sem cubit preloaded) consome o dado do repository, NUNCA orderedLineupMatches (fallback)', (tester) async {
-      sl.registerLazySingleton<SupabaseLineupStorage>(_FakeLineupStorage.new);
-      sl.registerLazySingleton<LineupMatchRepository>(_SentinelLineupMatchRepository.new);
+    testWidgets(
+      'deep link (sem cubit preloaded) consome o dado do repository, NUNCA orderedLineupMatches (fallback)',
+      (tester) async {
+        sl.registerLazySingleton<SupabaseLineupStorage>(_FakeLineupStorage.new);
+        sl.registerLazySingleton<LineupMatchRepository>(
+          _SentinelLineupMatchRepository.new,
+        );
 
-      await tester.pumpWidget(_wrap(const LineupPage()));
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(_wrap(const LineupPage()));
+        await tester.pumpAndSettle();
 
-      final cubit = BlocProvider.of<LineupCubit>(
-        tester.element(find.byType(Scaffold).first),
-      );
-      expect(cubit.state.matches.map((m) => m.id), contains('sentinel-lineup-match'));
-      expect(cubit.state.matches, isNot(same(orderedLineupMatches)));
-      expect((sl<LineupMatchRepository>() as _SentinelLineupMatchRepository).loadCallCount, 1);
-    });
+        final cubit = BlocProvider.of<LineupCubit>(
+          tester.element(find.byType(Scaffold).first),
+        );
+        expect(
+          cubit.state.matches.map((m) => m.id),
+          contains('sentinel-lineup-match'),
+        );
+        expect(cubit.state.matches, isNot(same(orderedLineupMatches)));
+        expect(
+          (sl<LineupMatchRepository>() as _SentinelLineupMatchRepository)
+              .loadCallCount,
+          1,
+        );
+      },
+    );
 
-    testWidgets('com cubit preloaded, NUNCA busca de novo no repository (0 fetch duplicado)', (tester) async {
-      final spyRepo = _SentinelLineupMatchRepository();
-      sl.registerLazySingleton<SupabaseLineupStorage>(_FakeLineupStorage.new);
-      sl.registerLazySingleton<LineupMatchRepository>(() => spyRepo);
+    testWidgets(
+      'com cubit preloaded, NUNCA busca de novo no repository (0 fetch duplicado)',
+      (tester) async {
+        final spyRepo = _SentinelLineupMatchRepository();
+        sl.registerLazySingleton<SupabaseLineupStorage>(_FakeLineupStorage.new);
+        sl.registerLazySingleton<LineupMatchRepository>(() => spyRepo);
 
-      final storage = _FakeLineupStorage();
-      final preloadedCubit = LineupCubit(
-        matches: _sentinelLineupMatches,
-        loadState: storage.load,
-        saveState: storage.save,
-        loadSelectedMatchId: storage.loadSelectedMatchId,
-        saveSelectedMatchId: storage.saveSelectedMatchId,
-        loadCompletedIds: storage.completedIds,
-        ranking: sl<ArenaRankingRepository>(),
-      );
-      unawaited(preloadedCubit.loadSelectedMatch());
+        final storage = _FakeLineupStorage();
+        final preloadedCubit = LineupCubit(
+          matches: _sentinelLineupMatches,
+          loadState: storage.load,
+          saveState: storage.save,
+          loadSelectedMatchId: storage.loadSelectedMatchId,
+          saveSelectedMatchId: storage.saveSelectedMatchId,
+          loadCompletedIds: storage.completedIds,
+          ranking: sl<ArenaRankingRepository>(),
+        );
+        unawaited(preloadedCubit.loadSelectedMatch());
 
-      await tester.pumpWidget(_wrap(LineupPage(cubit: preloadedCubit)));
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(_wrap(LineupPage(cubit: preloadedCubit)));
+        await tester.pumpAndSettle();
 
-      expect(spyRepo.loadCallCount, 0, reason: 'LineupPage com cubit preloaded não deveria chamar o repository');
-    });
+        expect(
+          spyRepo.loadCallCount,
+          0,
+          reason:
+              'LineupPage com cubit preloaded não deveria chamar o repository',
+        );
+      },
+    );
   });
 }

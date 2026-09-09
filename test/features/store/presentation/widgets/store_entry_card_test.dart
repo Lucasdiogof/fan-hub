@@ -36,9 +36,7 @@ void main() {
             theme: AppTheme.light(),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            home: Scaffold(
-              body: StoreEntryCard(onTap: () {}),
-            ),
+            home: Scaffold(body: StoreEntryCard(onTap: () {})),
           ),
         );
         await tester.pump();

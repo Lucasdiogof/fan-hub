@@ -22,10 +22,7 @@ void main() {
     }
 
     test('43 jogos (caso real) → esmeraldinoDeArquibancada', () {
-      expect(
-        passportLevelForMatches(43),
-        PassportLevel.bleacher,
-      );
+      expect(passportLevelForMatches(43), PassportLevel.bleacher);
     });
 
     test('um número bem grande continua lendaEsmeraldina', () {

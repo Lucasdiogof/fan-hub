@@ -31,10 +31,15 @@ void main() {
       expect(goiasClubConfig.assets.squadPhotos, isNotEmpty);
     });
 
-    test('Bragantino: sem asset local pro Elenco — depende só da photo_url '
-        'do banco, exatamente como antes (o pool de 46 fotos do Quem '
-        'Vestiu o Manto vive em `guessPlayerPhotos`, campo separado)', () {
-      expect(bragantinoClubConfig.assets.squadPhotos, isEmpty);
+    test('Bragantino: elenco depende da photo_url do banco, exceto 1 '
+        'reaproveitamento explícito confirmado (Bruno Gonçalves/"Bruninho", '
+        'mesma foto de `guessPlayerPhotos`, 2026-09-09) — nunca automático '
+        'por nome, uma pessoa confirmada de cada vez', () {
+      expect(bragantinoClubConfig.assets.squadPhotos, hasLength(1));
+      expect(
+        bragantinoClubConfig.assets.squadPhotos['bruno-goncalves'],
+        'lib/assets/games/guess_player/bragantino/bruninho.png',
+      );
       expect(syntheticClubBConfig.assets.squadPhotos, isEmpty);
     });
 
@@ -42,12 +47,12 @@ void main() {
         'em `guessPlayerPhotos` — nunca em `squadPhotos` (isso quebraria o '
         'Elenco, que só sabe tratar asset local)', () {
       expect(bragantinoClubConfig.assets.guessPlayerPhotos, hasLength(46));
-      final remote = bragantinoClubConfig.assets.guessPlayerPhotos.values
-          .where((v) => v.startsWith('https://img.redbullbragantino.com/'));
-      final local = bragantinoClubConfig.assets.guessPlayerPhotos.values
-          .where(
-            (v) => v.startsWith('lib/assets/games/guess_player/bragantino/'),
-          );
+      final remote = bragantinoClubConfig.assets.guessPlayerPhotos.values.where(
+        (v) => v.startsWith('https://img.redbullbragantino.com/'),
+      );
+      final local = bragantinoClubConfig.assets.guessPlayerPhotos.values.where(
+        (v) => v.startsWith('lib/assets/games/guess_player/bragantino/'),
+      );
       // 11 = 10 do elenco atual + Cleiton (também aparece no pool
       // histórico do Quem Vestiu o Manto, mas usa a MESMA URL do banco —
       // nunca um asset local separado que divergiria da foto certa dele

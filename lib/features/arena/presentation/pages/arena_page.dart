@@ -68,15 +68,15 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
       sl<ArenaProgressRepository>().loadSnapshot();
   late Future<int?> _crowdParticipantsFuture = _loadCrowdParticipants();
   // Independente de `ArenaProgressSnapshot` de propósito — a Identidade
-  // Futebolística não participa de nenhuma pontuação/coleção do resto da
-  // Arena, então nunca deveria compartilhar infraestrutura com o que
-  // alimenta ranking/progresso (ver spec: "não chamar qualquer
-  // infraestrutura atual de score/acerto").
+  // Futebolística nunca teve "X/Y completos" (é um perfil único, não uma
+  // coleção), então nunca deveria compartilhar essa infraestrutura
+  // específica de progresso. Isso é ortogonal à PONTUAÇÃO: desde
+  // 2026-09-09 os 2 jogos de perfil pontuam 50 na primeira conclusão (ver
+  // `TacticalIdentityResultPage`/`PlayerIdentityResultPage.initState`) —
+  // só não têm barra de progresso nem entram no `ArenaProgressSnapshot`.
   late Future<TacticalIdentityResult?> _tacticalIdentityFuture =
       sl<TacticalIdentityRepository>().loadLatestResult();
-  // Mesmo isolamento do `_tacticalIdentityFuture` acima — o "Que craque
-  // esmeraldino é você?" também é um teste de perfil, nunca participa de
-  // ranking/XP/streak/pontuação.
+  // Mesmo isolamento do `_tacticalIdentityFuture` acima.
   late Future<PlayerIdentityResult?> _playerIdentityFuture =
       sl<PlayerIdentityRepository>().loadLatestResult();
   bool _celebrationShown = false;
@@ -97,8 +97,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
       _crowdParticipantsFuture = _loadCrowdParticipants();
       _tacticalIdentityFuture = sl<TacticalIdentityRepository>()
           .loadLatestResult();
-      _playerIdentityFuture = sl<PlayerIdentityRepository>()
-          .loadLatestResult();
+      _playerIdentityFuture = sl<PlayerIdentityRepository>().loadLatestResult();
     });
   }
 
@@ -126,10 +125,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
 
   void _redoPlayerIdentity(BuildContext context) {
     unawaited(
-      context.push(
-        '/arena/player-identity/play',
-        extra: PlayerIdentityCubit(),
-      ),
+      context.push('/arena/player-identity/play', extra: PlayerIdentityCubit()),
     );
   }
 
@@ -168,7 +164,10 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
         sl<ClubConfig>().identity.code,
         sl<ClubConfig>().identity.shortName.toUpperCase(),
       ),
-      description: context.l10n.arenaAchievementMessage,
+      description: context.l10n.arenaAchievementMessage(
+        sl<ClubConfig>().identity.code,
+        sl<ClubConfig>().identity.shortName,
+      ),
       confirmLabel: context.l10n.arenaAchievementConfirm,
     );
   }

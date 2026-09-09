@@ -237,38 +237,44 @@ void main() {
     // card do Bragantino e é nome comum o bastante pra colidir a qualquer
     // momento, e o resultado seria um jogador do Goiás dentro do jogo do
     // outro clube.
-    test('clube sem a foto NÃO herda a do Goiás — fica sem foto mesmo', () async {
-      final row = {
-        'id': 'harlei',
-        'name': 'Harlei',
-        'display_name': 'Harlei',
-        'aliases': <String>[],
-        'position': 'gol',
-        'shirt_number': 1,
-        'academy_club': null,
-        'nationality_code': 'BR',
-        'nationality_name': 'Brasil',
-        'club_debut_year': 1999,
-        // Chave que EXISTE no mapa do Goiás e não no deste clube.
-        'photo_key': 'harlei',
-        'data_status': 'verified',
-        'person_id': null,
-      };
-      expect(goiasGuessPlayerPhotos.containsKey('harlei'), isTrue);
-      expect(
-        syntheticClubBConfig.assets.guessPlayerPhotos.containsKey('harlei'),
-        isFalse,
-      );
+    test(
+      'clube sem a foto NÃO herda a do Goiás — fica sem foto mesmo',
+      () async {
+        final row = {
+          'id': 'harlei',
+          'name': 'Harlei',
+          'display_name': 'Harlei',
+          'aliases': <String>[],
+          'position': 'gol',
+          'shirt_number': 1,
+          'academy_club': null,
+          'nationality_code': 'BR',
+          'nationality_name': 'Brasil',
+          'club_debut_year': 1999,
+          // Chave que EXISTE no mapa do Goiás e não no deste clube.
+          'photo_key': 'harlei',
+          'data_status': 'verified',
+          'person_id': null,
+        };
+        expect(goiasGuessPlayerPhotos.containsKey('harlei'), isTrue);
+        expect(
+          syntheticClubBConfig.assets.guessPlayerPhotos.containsKey('harlei'),
+          isFalse,
+        );
 
-      final http = CapturingHttpClient(responseBody: '[${jsonEncode(row)}]');
-      final repo = GuessPlayerRepository(_clientWith(http), syntheticClubBConfig);
-      final result = await repo.load();
-      expect(
-        result.single.imageUrl,
-        isNull,
-        reason: 'herdar a foto do Goiás mostraria o rosto errado no card',
-      );
-    });
+        final http = CapturingHttpClient(responseBody: '[${jsonEncode(row)}]');
+        final repo = GuessPlayerRepository(
+          _clientWith(http),
+          syntheticClubBConfig,
+        );
+        final result = await repo.load();
+        expect(
+          result.single.imageUrl,
+          isNull,
+          reason: 'herdar a foto do Goiás mostraria o rosto errado no card',
+        );
+      },
+    );
 
     test(
       'photo_key do elenco atual continua resolvendo por squadPhotoAssets (nenhuma regressão)',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
@@ -195,8 +196,10 @@ class _TicketsView extends StatelessWidget {
                                 _ShortcutCard(
                                   icon: Icons.confirmation_number_outlined,
                                   title: context.l10n.ticketsMyTickets,
-                                  subtitle:
-                                      context.l10n.ticketsMyTicketsSubtitle,
+                                  subtitle: context.l10n
+                                      .ticketsMyTicketsSubtitle(
+                                        sl<ClubConfig>().identity.shortName,
+                                      ),
                                   onTap: () => context.push('/tickets/my'),
                                 ),
                                 const SizedBox(height: AppSpacing.md),

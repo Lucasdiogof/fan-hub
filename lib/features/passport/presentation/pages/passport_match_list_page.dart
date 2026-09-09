@@ -188,9 +188,8 @@ class _MatchRow extends StatelessWidget {
                                     ]
                                   : [
                                       TextSpan(
-                                        text: sl<ClubConfig>()
-                                            .identity
-                                            .shortName,
+                                        text:
+                                            sl<ClubConfig>().identity.shortName,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w900,
                                           color: colors.primary,

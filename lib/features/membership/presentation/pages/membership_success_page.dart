@@ -206,7 +206,9 @@ class _SuccessHero extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
           ],
           Text(
-            context.l10n.membershipWelcome,
+            context.l10n.membershipWelcome(
+              sl<ClubConfig>().productNames.membershipProgramName.toUpperCase(),
+            ),
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: Colors.white,
@@ -217,7 +219,9 @@ class _SuccessHero extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            context.l10n.membershipSuccessMessage,
+            context.l10n.membershipSuccessMessage(
+              sl<ClubConfig>().identity.shortName,
+            ),
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.82),

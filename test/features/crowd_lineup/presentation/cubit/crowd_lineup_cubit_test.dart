@@ -64,12 +64,14 @@ void main() {
           expect(
             squadById.containsKey(pid),
             isTrue,
-            reason: 'playerIdBySlot deveria conter o slug ($pid não é um id de goiasSquad)',
+            reason:
+                'playerIdBySlot deveria conter o slug ($pid não é um id de goiasSquad)',
           );
           expect(
             _uuidPattern.hasMatch(pid),
             isFalse,
-            reason: 'playerIdBySlot NUNCA deveria carregar um UUID — o contrato de persistência é o slug',
+            reason:
+                'playerIdBySlot NUNCA deveria carregar um UUID — o contrato de persistência é o slug',
           );
         }
       },

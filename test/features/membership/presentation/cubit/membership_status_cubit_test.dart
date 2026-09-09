@@ -189,17 +189,20 @@ void main() {
     expect(cubit.state.subscribing, isFalse);
   });
 
-  test('subscribeToPlan libera a guarda depois de um erro do servidor', () async {
-    membershipRepo.submitFailure = const ServerFailure('já é sócio');
-    final result = await subscribe();
+  test(
+    'subscribeToPlan libera a guarda depois de um erro do servidor',
+    () async {
+      membershipRepo.submitFailure = const ServerFailure('já é sócio');
+      final result = await subscribe();
 
-    expect(result, isA<Error<Membership>>());
-    expect(cubit.state.subscribing, isFalse);
-    // Depois do erro, uma nova tentativa consegue chamar o repositório de
-    // novo — a guarda não fica presa em `true` por engano.
-    membershipRepo.submitFailure = null;
-    final retryResult = await subscribe();
-    expect(retryResult, isA<Success<Membership>>());
-    expect(membershipRepo.submitRegistrationCallCount, 2);
-  });
+      expect(result, isA<Error<Membership>>());
+      expect(cubit.state.subscribing, isFalse);
+      // Depois do erro, uma nova tentativa consegue chamar o repositório de
+      // novo — a guarda não fica presa em `true` por engano.
+      membershipRepo.submitFailure = null;
+      final retryResult = await subscribe();
+      expect(retryResult, isA<Success<Membership>>());
+      expect(membershipRepo.submitRegistrationCallCount, 2);
+    },
+  );
 }

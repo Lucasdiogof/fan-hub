@@ -26,7 +26,7 @@ String arenaGameTitle(AppLocalizations l10n, String id) => switch (id) {
 
 String arenaGameTagline(AppLocalizations l10n, String id) => switch (id) {
   'quiz' => l10n.arenaGameQuizTagline(sl<ClubConfig>().identity.shortName),
-  'lineup' => l10n.arenaGameLineupTagline,
+  'lineup' => l10n.arenaGameLineupTagline(sl<ClubConfig>().identity.shortName),
   'career_path' => l10n.arenaGameCareerTagline,
   'guess_player' => l10n.arenaGuessPlayerTagline,
   _ => '',
