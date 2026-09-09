@@ -37,7 +37,7 @@ class ArenaSpotlightCard extends StatelessWidget {
         excludeFromSemantics: true,
         child: Container(
           decoration: BoxDecoration(
-            color: AppColors.light.brandDeep,
+            color: colors.brandDeep,
             border: Border.all(
               color: ArenaColors.pitch.withValues(alpha: 0.22),
             ),
@@ -83,7 +83,12 @@ class ArenaSpotlightCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 6),
                         Text(
-                          l10n.arenaSpotlightEyebrow.toUpperCase(),
+                          l10n
+                              .arenaSpotlightEyebrow(
+                                sl<ClubConfig>().identity.code,
+                                sl<ClubConfig>().identity.shortName,
+                              )
+                              .toUpperCase(),
                           style: TextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w800,

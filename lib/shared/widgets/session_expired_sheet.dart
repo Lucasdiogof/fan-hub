@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 
@@ -13,7 +15,9 @@ Future<void> showSessionExpiredSheet(BuildContext context) {
     context,
     icon: Icons.lock_clock_rounded,
     title: context.l10n.authSessionExpiredTitle,
-    description: context.l10n.authSessionExpiredMessage,
+    description: context.l10n.authSessionExpiredMessage(
+      sl<ClubConfig>().identity.shortName,
+    ),
     confirmLabel: context.l10n.authSessionExpiredCta,
     isDismissible: false,
     onConfirm: () {

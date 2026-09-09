@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
@@ -46,6 +48,19 @@ class _SecurityPageState extends State<SecurityPage> {
     _newPasswordFocus.dispose();
     _confirmFocus.dispose();
     super.dispose();
+  }
+
+  bool get _canSubmit {
+    final l10n = context.l10n;
+    return AppValidators.password(l10n, _currentPasswordController.text) ==
+            null &&
+        AppValidators.newPassword(l10n, _passwordController.text) == null &&
+        AppValidators.confirmPassword(
+              l10n,
+              _confirmController.text,
+              _passwordController.text,
+            ) ==
+            null;
   }
 
   Future<void> _submit() async {
@@ -129,7 +144,10 @@ class _SecurityPageState extends State<SecurityPage> {
                     ),
                     children: [
                       Text(
-                        context.l10n.securitySubtitle,
+                        context.l10n.securitySubtitle(
+                          sl<ClubConfig>().identity.code,
+                          sl<ClubConfig>().identity.shortName,
+                        ),
                         style: TextStyle(
                           fontSize: 14,
                           height: 1.35,
@@ -221,7 +239,7 @@ class _SecurityPageState extends State<SecurityPage> {
                         label: context.l10n.securitySaveButton,
                         loading: _loading,
                         loadingLabel: context.l10n.commonSaving,
-                        onPressed: _submit,
+                        onPressed: _canSubmit ? _submit : null,
                       ),
                     ],
                   ),

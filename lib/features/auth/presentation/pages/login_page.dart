@@ -5,7 +5,6 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/auth/presentation/auth_error_localization.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -207,10 +206,12 @@ class _LoginPageState extends State<LoginPage> {
           loadingLabel: l10n.authSigningIn,
           onPressed: _canSubmit ? _submit : null,
           // Explícito e independente do tema do app — o fundo desta tela é
-          // sempre uma foto escura, então o botão precisa do mesmo verde
-          // vívido tanto no light quanto no dark theme do app, ao contrário
-          // do padrão novo do `AppPrimaryButton` (que decide pelo tema).
-          color: AppColors.dark.cta,
+          // sempre uma foto escura, então o botão precisa do mesmo cta vívido
+          // do clube ativo tanto no light quanto no dark theme do app, ao
+          // contrário do padrão novo do `AppPrimaryButton` (que decide pelo
+          // tema) — nunca `AppColors.dark` (constante estática, sempre a
+          // paleta do Goiás, vazaria verde pro Bragantino).
+          color: sl<ClubConfig>().branding.dark.cta,
         ),
         const SizedBox(height: AppSpacing.xl),
         Center(

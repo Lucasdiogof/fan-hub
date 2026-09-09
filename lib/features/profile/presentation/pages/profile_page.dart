@@ -278,7 +278,10 @@ class _JourneySection extends StatelessWidget {
       if (capabilities.enabledArenaGames.isNotEmpty)
         _MenuRow(
           icon: Icons.emoji_events_outlined,
-          label: context.l10n.arenaTitle,
+          label: context.l10n.arenaTitle(
+            sl<ClubConfig>().identity.code,
+            sl<ClubConfig>().identity.shortName,
+          ),
           onTap: () => context.push('/arena'),
         ),
       if (capabilities.hasPassport)

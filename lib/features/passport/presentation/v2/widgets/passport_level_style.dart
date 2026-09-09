@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/features/passport/domain/club_passport_content.dart';
 import 'package:goias_app/features/passport/domain/passport_level.dart';
 
@@ -73,11 +74,12 @@ String passportLevelLabel(PassportCopy copy, PassportLevel level) =>
     copy.levels.forLevel(level);
 
 PassportLevelStyle passportLevelStyleFor(PassportLevel level) {
-  final green = AppColors.light.primary;
-  final gold = AppColors.light.gold;
+  final branding = sl<ClubConfig>().branding.light;
+  final green = branding.primary;
+  final gold = branding.gold;
   return switch (level) {
     PassportLevel.starter => PassportLevelStyle(
-      borderColor: AppColors.light.brandDark.withValues(alpha: 0.9),
+      borderColor: branding.brandDark.withValues(alpha: 0.9),
       innerBorderColor: null,
       accentLineColor: null,
       badgeBackground: Colors.white.withValues(alpha: 0.1),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -42,7 +44,9 @@ class NewsListBody extends StatelessWidget {
               StateMessage(
                 icon: Icons.article_outlined,
                 title: context.l10n.newsEmptyTitle,
-                message: context.l10n.newsEmptyMessage,
+                message: context.l10n.newsEmptyMessage(
+                  sl<ClubConfig>().identity.shortName,
+                ),
               ),
             ),
             LoadStatus.success => _NewsList(items: state.items),

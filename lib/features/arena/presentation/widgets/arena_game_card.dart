@@ -36,7 +36,7 @@ class ArenaFeaturedCard extends StatelessWidget {
           padding: const EdgeInsets.all(AppSpacing.xl),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.card),
-            gradient: const LinearGradient(
+            gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [ArenaColors.goiasOutfield, ArenaColors.arenaBottom],

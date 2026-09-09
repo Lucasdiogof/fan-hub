@@ -232,14 +232,22 @@ GoRouter createAppRouter(
         path: '/profile/terms',
         pageBuilder: (context, state) => appPage(
           state,
-          const LegalDocumentPage(document: LegalDocumentsData.termsOfUse),
+          LegalDocumentPage(
+            document: LegalDocumentsData.termsOfUseFor(
+              sl<ClubConfig>().identity.displayName,
+            ),
+          ),
         ),
       ),
       GoRoute(
         path: '/profile/privacy',
         pageBuilder: (context, state) => appPage(
           state,
-          const LegalDocumentPage(document: LegalDocumentsData.privacyPolicy),
+          LegalDocumentPage(
+            document: LegalDocumentsData.privacyPolicyFor(
+              sl<ClubConfig>().identity.displayName,
+            ),
+          ),
         ),
       ),
       GoRoute(

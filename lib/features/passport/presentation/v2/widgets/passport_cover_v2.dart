@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/passport/domain/entities/passport_summary.dart';
 import 'package:goias_app/features/passport/domain/passport_level.dart';
@@ -77,7 +76,7 @@ class PassportCoverV2 extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(AppRadius.hero),
         child: Material(
-          color: AppColors.light.brandDeep,
+          color: sl<ClubConfig>().branding.light.brandDeep,
           child: InkWell(
             onTap: onTap,
             child: Stack(

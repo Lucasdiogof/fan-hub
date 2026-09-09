@@ -30,7 +30,7 @@ class PlayerIdentityShareCard extends StatelessWidget {
     return Container(
       width: 380,
       padding: const EdgeInsets.all(28),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,

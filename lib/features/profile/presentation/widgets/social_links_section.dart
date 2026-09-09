@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -20,7 +22,12 @@ class SocialLinksSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 2, bottom: 2),
           child: Text(
-            context.l10n.socialFollowTitle,
+            context.l10n
+                .socialFollowTitle(
+                  sl<ClubConfig>().identity.code,
+                  sl<ClubConfig>().identity.shortName,
+                )
+                .toUpperCase(),
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w800,
@@ -32,7 +39,10 @@ class SocialLinksSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 2, bottom: AppSpacing.md),
           child: Text(
-            context.l10n.socialFollowSubtitle,
+            context.l10n.socialFollowSubtitle(
+              sl<ClubConfig>().identity.code,
+              sl<ClubConfig>().identity.shortName,
+            ),
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w500,

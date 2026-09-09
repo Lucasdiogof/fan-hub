@@ -47,7 +47,9 @@ class SocialEmptyState extends StatelessWidget {
             Icon(Icons.podcasts_rounded, size: 48, color: colors.textHint),
             const SizedBox(height: AppSpacing.lg),
             Text(
-              context.l10n.socialEmptyState,
+              context.l10n.socialEmptyState(
+                sl<ClubConfig>().identity.shortName,
+              ),
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,

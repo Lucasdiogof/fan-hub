@@ -1,18 +1,20 @@
 import 'package:goias_app/features/profile/domain/entities/legal_document.dart';
 
 /// Textos legais do app — aplicativo independente de torcedor, sem vínculo
-/// oficial com o Goiás Esporte Clube. Responsável: Lucas Diogo França
+/// oficial com o clube. Responsável: Lucas Diogo França
 /// (lucasdiogo1234@gmail.com). Atualize `lastUpdated` sempre que o texto
-/// mudar de verdade.
+/// mudar de verdade. `clubName` vem de `ClubConfig.identity.displayName` —
+/// nunca hardcoded, pra nunca falar "Goiás Esporte Clube" dentro do app de
+/// outro clube.
 class LegalDocumentsData {
   const LegalDocumentsData._();
 
-  static const termsOfUse = LegalDocument(
+  static LegalDocument termsOfUseFor(String clubName) => LegalDocument(
     title: 'TERMOS DE USO',
     lastUpdated: 'Última atualização: 25 de agosto de 2026',
     intro:
         'Estes Termos de Uso regulam a utilização deste aplicativo '
-        'independente dedicado aos torcedores do Goiás Esporte Clube, '
+        'independente dedicado aos torcedores do $clubName, '
         'desenvolvido e mantido por Lucas Diogo França, contato pelo '
         'e-mail lucasdiogo1234@gmail.com.\n\n'
         'Ao criar uma conta ou utilizar o aplicativo, o usuário declara '
@@ -23,13 +25,13 @@ class LegalDocumentsData {
         body:
             'Este aplicativo é um projeto independente, criado por torcedor, '
             'e não constitui aplicativo oficial, produto, serviço ou canal '
-            'institucional do Goiás Esporte Clube.\n\n'
+            'institucional do $clubName.\n\n'
             'O aplicativo não representa, não fala em nome e não mantém '
-            'vínculo oficial com o Goiás Esporte Clube, salvo se '
+            'vínculo oficial com o $clubName, salvo se '
             'futuramente houver comunicação expressa em sentido '
             'contrário.\n\n'
             'Marcas, nomes, símbolos, escudos, imagens e demais elementos '
-            'relacionados ao Goiás Esporte Clube pertencem aos seus '
+            'relacionados ao $clubName pertencem aos seus '
             'respectivos titulares.',
       ),
       LegalSection(
@@ -39,8 +41,8 @@ class LegalDocumentsData {
             'interação entre torcedores, podendo disponibilizar '
             'funcionalidades como notícias, informações sobre jogos, '
             'minigames, quizzes, rankings, escalações históricas, '
-            'votações e ferramentas relacionadas ao futebol e ao Goiás '
-            'Esporte Clube.\n\n'
+            'votações e ferramentas relacionadas ao futebol e ao '
+            '$clubName.\n\n'
             'As funcionalidades disponíveis podem ser alteradas, '
             'removidas ou ampliadas a qualquer momento.',
       ),
@@ -86,15 +88,15 @@ class LegalDocumentsData {
             'Funcionalidades como "Escalação da Torcida" representam '
             'apenas opiniões e votos dos próprios usuários.\n\n'
             'A escalação mais votada não representa uma escalação oficial '
-            'do Goiás Esporte Clube e não possui relação com decisões da '
+            'do $clubName e não possui relação com decisões da '
             'comissão técnica ou do clube.',
       ),
       LegalSection(
         title: '7. Notícias e conteúdo externo',
         body:
             'O aplicativo poderá apresentar títulos, imagens, informações '
-            'ou links de notícias provenientes do site oficial do Goiás '
-            'Esporte Clube e de outras fontes externas. Sempre que '
+            'ou links de notícias provenientes do site oficial do '
+            '$clubName e de outras fontes externas. Sempre que '
             'possível, a fonte original será identificada.\n\n'
             'Conteúdos pertencentes a terceiros permanecem sujeitos aos '
             'direitos de seus respectivos titulares. Ao acessar um link '
@@ -105,7 +107,7 @@ class LegalDocumentsData {
         title: '8. Redes sociais e links externos',
         body:
             'O aplicativo poderá disponibilizar links para canais '
-            'oficiais do Goiás Esporte Clube em plataformas como '
+            'oficiais do $clubName em plataformas como '
             'Instagram, Facebook, YouTube, TikTok, X e outros serviços.\n\n'
             'Esses serviços são independentes do aplicativo e possuem '
             'seus próprios termos de uso e políticas de privacidade.',
@@ -158,7 +160,7 @@ class LegalDocumentsData {
             'O código, estrutura, design, funcionalidades e conteúdos '
             'produzidos especificamente para este aplicativo pertencem '
             'aos seus respectivos criadores.\n\n'
-            'Elementos pertencentes ao Goiás Esporte Clube, veículos de '
+            'Elementos pertencentes ao $clubName, veículos de '
             'comunicação, atletas, competições, plataformas ou terceiros '
             'permanecem de propriedade de seus respectivos titulares.',
       ),
@@ -182,13 +184,13 @@ class LegalDocumentsData {
     ],
   );
 
-  static const privacyPolicy = LegalDocument(
+  static LegalDocument privacyPolicyFor(String clubName) => LegalDocument(
     title: 'POLÍTICA DE PRIVACIDADE',
     lastUpdated: 'Última atualização: 25 de agosto de 2026',
     intro:
         'Esta Política de Privacidade explica como os dados pessoais dos '
         'usuários são tratados neste aplicativo independente voltado aos '
-        'torcedores do Goiás Esporte Clube.\n\n'
+        'torcedores do $clubName.\n\n'
         'O responsável pelo tratamento dos dados é Lucas Diogo França, '
         'que pode ser contatado pelo e-mail lucasdiogo1234@gmail.com.',
     sections: [
@@ -284,8 +286,8 @@ class LegalDocumentsData {
         title: '8. Notícias e serviços externos',
         body:
             'O aplicativo poderá apresentar notícias e links provenientes '
-            'de sites externos, inclusive do site oficial do Goiás '
-            'Esporte Clube.\n\n'
+            'de sites externos, inclusive do site oficial do '
+            '$clubName.\n\n'
             'Ao abrir um conteúdo em um serviço externo, o tratamento de '
             'dados realizado naquele ambiente passa a ser regido também '
             'pela política de privacidade do serviço acessado.\n\n'

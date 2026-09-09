@@ -141,7 +141,7 @@
   "profileSignOutConfirm": "SIGN OUT",
   "profileSignOut": "Sign out",
   "authSessionExpiredTitle": "Your session has expired",
-  "authSessionExpiredMessage": "For your security, we need to confirm your access again. Sign in to keep using every feature of Goiás.",
+  "authSessionExpiredMessage": "For your security, we need to confirm your access again. Sign in to keep using every feature of {club}.",
   "authSessionExpiredCta": "Sign in again",
   "authErrorInvalidCredentials": "Incorrect email or password.",
   "authErrorCurrentPasswordIncorrect": "Current password is incorrect.",
@@ -167,6 +167,7 @@
   "personalFieldPhone": "Mobile",
   "personalEmailLocked": "The email is linked to your account.",
   "personalNameRequired": "Enter your full name.",
+  "personalCpfRequired": "Enter your CPF.",
   "personalCpfInvalid": "Invalid CPF.",
   "personalUpdateSuccess": "Data updated successfully.",
   "securityTitle": "SECURITY",
@@ -200,7 +201,7 @@
   "deleteAccountConfirmButton": "DELETE MY ACCOUNT",
   "deleteAccountDeleting": "DELETING ACCOUNT...",
   "settingsNotificationsTitle": "NOTIFICATIONS",
-  "notificationsMatchesTitle": "Goiás matches",
+  "notificationsMatchesTitle": "{club} matches",
   "notificationsMatchesDescription": "Goals and final result in real time.",
   "notificationsTicketsTitle": "Tickets and check-in",
   "notificationsTicketsDescription": "Alerts when sales or check-in open.",
@@ -216,11 +217,23 @@
   "themeModeDarkDesc": "Always a dark background",
   "avatarTakePhoto": "Take a photo",
   "avatarChooseFromGallery": "Choose from gallery",
-  "socialFollowTitle": "FOLLOW GOIÁS",
-  "socialFollowSubtitle": "Follow Goiás on social media too.",
+  "socialFollowTitle": "FOLLOW {club}",
+  "socialFollowSubtitle": "Follow {club} on social media too.",
   "socialOpenLink": "Open {name}",
-  "arenaTitle": "Arena Esmeraldina",
-  "arenaGamesSectionSubtitle": "Test your Goiás knowledge.",
+  "arenaTitle": "{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}",
+  "@arenaTitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
+  "arenaGamesSectionSubtitle": "{clubCode, select, goias{Test your Goiás knowledge.} other{Test your {club} knowledge.}}",
+  "@arenaGamesSectionSubtitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaNextMatchBadge": "NEXT MATCH",
   "arenaHighlightViewLineup": "View lineup",
   "arenaPlay": "PLAY",
@@ -242,8 +255,8 @@
       }
     }
   },
-  "arenaHeaderSubtitle": "Play, take part and live Goiás.",
-  "arenaSpotlightEyebrow": "Arena Esmeraldina",
+  "arenaHeaderSubtitle": "Play, take part and live {club}.",
+  "arenaSpotlightEyebrow": "{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}",
   "arenaSpotlightHeadline": "Your passion takes the field",
   "arenaSpotlightSubtitle": "Play, take part, and earn your place among the Esmeraldinos.",
   "arenaSpotlightCta": "Enter the Arena",
@@ -610,7 +623,7 @@
   "datePrepositionFull": "{month} {day}",
   "socialMediaTitle": "MEDIA",
   "socialFeedLoadError": "Couldn't load the feed",
-  "socialEmptyState": "Follow Goiás on social media",
+  "socialEmptyState": "Follow {club} on social media",
   "socialViewsM": "{value}M views",
   "socialViewsK": "{value}K views",
   "socialViewsCount": "{count} views",
@@ -620,7 +633,7 @@
   "newsTitle": "NEWS",
   "newsLoadError": "Couldn't load the news",
   "newsEmptyTitle": "No news here yet",
-  "newsEmptyMessage": "Check back later for the latest Goiás updates.",
+  "newsEmptyMessage": "Check back later for the latest {club} updates.",
   "newsSourceLabel": "SOURCE: GOIÁS ESPORTE CLUBE",
   "newsOpenOriginal": "Open original article",
   "newsPdfLoadErrorTitle": "Couldn't load the PDF",
@@ -708,7 +721,7 @@
   "resetPasswordSuccessTitle": "Password changed successfully",
   "resetPasswordSuccessMessage": "Your password has been updated. Sign in again to continue.",
   "forgotVerifyEmailTitle": "Check your email",
-  "forgotSentDescription": "If this email has an account with the Goiás app, you'll receive a reset link shortly:",
+  "forgotSentDescription": "If this email has an account with the {club} app, you'll receive a reset link shortly:",
   "forgotNotReceived": "Didn't get it?",
   "forgotResendSuccess": "If the account exists, we resent the email.",
   "commonGotIt": "Got it",

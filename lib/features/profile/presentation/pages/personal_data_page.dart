@@ -121,17 +121,28 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
   final _phoneTouch = FieldTouch();
   bool _submitted = false;
 
+  bool get _isDirty =>
+      _name != (widget.profile.fullName ?? '') ||
+      _cpf != _applyMask(cpfInputFormatter(), widget.profile.cpf ?? '') ||
+      _phone != _applyMask(phoneInputFormatter(), widget.profile.phone ?? '') ||
+      _birthDate != _formatBirthDate(widget.profile.birthDate);
+
+  // CPF deixou de ser opcional (regra de negócio nova) — nome e CPF sempre
+  // exigidos; data de nascimento/celular continuam opcionais (só validam
+  // formato quando preenchidos).
+  bool get _isValid =>
+      _name.trim().isNotEmpty &&
+      AppValidators.isValidCpf(onlyDigits(_cpf)) &&
+      (_birthDate.isEmpty ||
+          AppValidators.birthDate(context.l10n, _birthDate) == null) &&
+      (_phone.isEmpty || AppValidators.isValidMobilePhone(_phone));
+
+  bool get _canSubmit => _isDirty && _isValid;
+
   Future<void> _save() async {
     FocusScope.of(context).unfocus();
     setState(() => _submitted = true);
-    final nameValid = _name.trim().isNotEmpty;
-    final cpfValid = _cpf.isEmpty || AppValidators.isValidCpf(onlyDigits(_cpf));
-    final birthValid =
-        _birthDate.isEmpty ||
-        AppValidators.birthDate(context.l10n, _birthDate) == null;
-    final phoneValid =
-        _phone.isEmpty || AppValidators.isValidMobilePhone(_phone);
-    if (!nameValid || !cpfValid || !birthValid || !phoneValid) return;
+    if (!_isValid) return;
 
     final cpfDigits = onlyDigits(_cpf);
     final phoneDigits = onlyDigits(_phone);
@@ -188,6 +199,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
           errorText: _cpfTouch.errorFor(
             _cpf,
             submitted: _submitted,
+            requiredMessage: context.l10n.personalCpfRequired,
             format: (v) => AppValidators.isValidCpf(onlyDigits(v))
                 ? null
                 : context.l10n.personalCpfInvalid,
@@ -254,7 +266,7 @@ class _PersonalDataFormState extends State<_PersonalDataForm> {
               label: context.l10n.commonSave,
               loading: state.saving,
               loadingLabel: context.l10n.commonSaving,
-              onPressed: _save,
+              onPressed: _canSubmit ? _save : null,
             );
           },
         ),

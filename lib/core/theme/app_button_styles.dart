@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 
-/// CTA principal (ex.: "Ingressos"/"Comprar ingresso"/"Salvar ingresso") — verde
-/// sólido preenchido ([AppColors.cta]), sem borda, nos dois temas.
+/// CTA principal (ex.: "Ingressos"/"Comprar ingresso"/"Salvar ingresso") —
+/// preenchido sólido no `cta` do CLUBE ATIVO, sem borda, nos dois temas.
 /// [forceDark] é pra fundos sempre escuros independente do tema do app
-/// (ex.: Hero da Home) — usa a paleta `AppColors.dark` fixa em vez de
-/// `context.colors`, que mudaria com o tema do app.
+/// (ex.: Hero da Home) — usa a paleta escura do clube ativo fixa em vez de
+/// `context.colors`, que mudaria com o tema do app. Nunca `AppColors.dark`/
+/// `.light` diretamente — essas constantes estáticas são sempre a paleta do
+/// Goiás, vazariam a cor errada pra qualquer outro clube.
 ButtonStyle matchCtaFilledStyle(
   BuildContext context, {
   double minHeight = 46,
   bool? forceDark,
 }) {
   final isDark = forceDark ?? (Theme.of(context).brightness == Brightness.dark);
-  final fill = isDark ? AppColors.dark.cta : AppColors.light.cta;
+  final branding = sl<ClubConfig>().branding;
+  final fill = isDark ? branding.dark.cta : branding.light.cta;
   return ElevatedButton.styleFrom(
     backgroundColor: fill,
     foregroundColor: Colors.white,
@@ -34,7 +39,7 @@ ButtonStyle matchCtaFilledStyle(
 /// sempre, então o botão não muda com o tema). `ElevatedButton` já resolve
 /// hover/foco/toque sozinho a partir de `foregroundColor`.
 ButtonStyle whiteFilledOnDarkStyle({double minHeight = 44}) {
-  final text = AppColors.light.primary;
+  final text = sl<ClubConfig>().branding.light.primary;
   return ElevatedButton.styleFrom(
     backgroundColor: Colors.white,
     foregroundColor: text,
@@ -78,8 +83,9 @@ ButtonStyle matchCtaOutlineStyle(
   bool? forceDark,
 }) {
   final isDark = forceDark ?? (Theme.of(context).brightness == Brightness.dark);
-  final accent = isDark ? AppColors.dark.cta : AppColors.light.cta;
-  final text = isDark ? const Color(0xFF4FCB8A) : AppColors.light.primary;
+  final branding = sl<ClubConfig>().branding;
+  final accent = isDark ? branding.dark.cta : branding.light.cta;
+  final text = isDark ? branding.dark.cta : branding.light.primary;
   return OutlinedButton.styleFrom(
     foregroundColor: text,
     disabledForegroundColor: text.withValues(alpha: 0.5),

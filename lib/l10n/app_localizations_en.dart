@@ -393,8 +393,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authSessionExpiredTitle => 'Your session has expired';
 
   @override
-  String get authSessionExpiredMessage =>
-      'For your security, we need to confirm your access again. Sign in to keep using every feature of Goiás.';
+  String authSessionExpiredMessage(String club) {
+    return 'For your security, we need to confirm your access again. Sign in to keep using every feature of $club.';
+  }
 
   @override
   String get authSessionExpiredCta => 'Sign in again';
@@ -485,6 +486,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get personalNameRequired => 'Enter your full name.';
 
   @override
+  String get personalCpfRequired => 'Enter your CPF.';
+
+  @override
   String get personalCpfInvalid => 'Invalid CPF.';
 
   @override
@@ -494,7 +498,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get securityTitle => 'SECURITY';
 
   @override
-  String get securitySubtitle => 'Change your Goiás EC account password.';
+  String securitySubtitle(String clubCode, String club) {
+    return 'Change your Goiás EC account password.';
+  }
 
   @override
   String get securityCurrentPassword => 'Current password';
@@ -589,7 +595,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsNotificationsTitle => 'NOTIFICATIONS';
 
   @override
-  String get notificationsMatchesTitle => 'Goiás matches';
+  String notificationsMatchesTitle(String club) {
+    return '$club matches';
+  }
 
   @override
   String get notificationsMatchesDescription =>
@@ -640,10 +648,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get avatarChooseFromGallery => 'Choose from gallery';
 
   @override
-  String get socialFollowTitle => 'FOLLOW GOIÁS';
+  String socialFollowTitle(String clubCode, String club) {
+    return 'FOLLOW $club';
+  }
 
   @override
-  String get socialFollowSubtitle => 'Follow Goiás on social media too.';
+  String socialFollowSubtitle(String clubCode, String club) {
+    return 'Follow $club on social media too.';
+  }
 
   @override
   String socialOpenLink(String name) {
@@ -651,10 +663,22 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get arenaTitle => 'Arena Esmeraldina';
+  String arenaTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Arena Esmeraldina',
+      'other': 'Arena $club',
+    });
+    return '$_temp0';
+  }
 
   @override
-  String get arenaGamesSectionSubtitle => 'Test your Goiás knowledge.';
+  String arenaGamesSectionSubtitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Test your Goiás knowledge.',
+      'other': 'Test your $club knowledge.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaNextMatchBadge => 'NEXT MATCH';
@@ -694,10 +718,18 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get arenaHeaderSubtitle => 'Play, take part and live Goiás.';
+  String arenaHeaderSubtitle(String club) {
+    return 'Play, take part and live $club.';
+  }
 
   @override
-  String get arenaSpotlightEyebrow => 'Arena Esmeraldina';
+  String arenaSpotlightEyebrow(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Arena Esmeraldina',
+      'other': 'Arena $club',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaSpotlightHeadline => 'Your passion takes the field';
@@ -1693,7 +1725,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get socialFeedLoadError => 'Couldn\'t load the feed';
 
   @override
-  String get socialEmptyState => 'Follow Goiás on social media';
+  String socialEmptyState(String club) {
+    return 'Follow $club on social media';
+  }
 
   @override
   String socialViewsM(String value) {
@@ -1729,8 +1763,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newsEmptyTitle => 'No news here yet';
 
   @override
-  String get newsEmptyMessage =>
-      'Check back later for the latest Goiás updates.';
+  String newsEmptyMessage(String club) {
+    return 'Check back later for the latest $club updates.';
+  }
 
   @override
   String get newsSourceLabel => 'SOURCE: GOIÁS ESPORTE CLUBE';
@@ -1951,8 +1986,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotVerifyEmailTitle => 'Check your email';
 
   @override
-  String get forgotSentDescription =>
-      'If this email has an account with the Goiás app, you\'ll receive a reset link shortly:';
+  String forgotSentDescription(String club) {
+    return 'If this email has an account with the $club app, you\'ll receive a reset link shortly:';
+  }
 
   @override
   String get forgotNotReceived => 'Didn\'t get it?';
