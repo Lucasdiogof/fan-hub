@@ -29,8 +29,9 @@ PlayerIdentityAttributes _asAttributes(PlayerIdentityReference r) =>
       tactics: r.tactics,
     );
 
-({double min, double median, double max, String closestPair})
-_playerSpread(List<PlayerIdentityReference> refs) {
+({double min, double median, double max, String closestPair}) _playerSpread(
+  List<PlayerIdentityReference> refs,
+) {
   final engine = PlayerIdentityEngine(refs);
   final pairs = <(double, String)>[];
   for (var a = 0; a < refs.length; a++) {
@@ -65,7 +66,8 @@ const _wHidden = 0.1375;
   (double, double) stats(List<double> v) {
     final mean = v.reduce((a, b) => a + b) / v.length;
     final variance =
-        v.map((x) => (x - mean) * (x - mean)).reduce((a, b) => a + b) / v.length;
+        v.map((x) => (x - mean) * (x - mean)).reduce((a, b) => a + b) /
+        v.length;
     final sd = math.sqrt(variance);
     return (mean, sd == 0 ? 1.0 : sd);
   }
@@ -296,10 +298,26 @@ void main() {
     test('os dois eixos são realmente usados, não uma nuvem só', () {
       // Um dataset em que todo mundo cai no mesmo quadrante deixaria o mapa
       // 2D sem função nenhuma.
-      expect(refs.where((c) => c.x < 0), isNotEmpty, reason: 'ninguém de posse');
-      expect(refs.where((c) => c.x > 0), isNotEmpty, reason: 'ninguém vertical');
-      expect(refs.where((c) => c.y < 0), isNotEmpty, reason: 'ninguém dogmático');
-      expect(refs.where((c) => c.y > 0), isNotEmpty, reason: 'ninguém pragmático');
+      expect(
+        refs.where((c) => c.x < 0),
+        isNotEmpty,
+        reason: 'ninguém de posse',
+      );
+      expect(
+        refs.where((c) => c.x > 0),
+        isNotEmpty,
+        reason: 'ninguém vertical',
+      );
+      expect(
+        refs.where((c) => c.y < 0),
+        isNotEmpty,
+        reason: 'ninguém dogmático',
+      );
+      expect(
+        refs.where((c) => c.y > 0),
+        isNotEmpty,
+        reason: 'ninguém pragmático',
+      );
     });
   });
 

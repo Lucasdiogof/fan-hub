@@ -123,7 +123,9 @@ class PlayerIdentityEngine {
   }
 
   /// O vetor final do usuário nas seis dimensões, já normalizado.
-  PlayerIdentityAttributes computeAttributes(List<PlayerIdentityOption> answers) {
+  PlayerIdentityAttributes computeAttributes(
+    List<PlayerIdentityOption> answers,
+  ) {
     int scoreFor(PlayerIdentityDimension d) =>
         normalizedScore(rawScore(answers, d), maxPossibleScore(d));
     return PlayerIdentityAttributes(
@@ -167,17 +169,17 @@ class PlayerIdentityEngine {
   /// Todas as referências do clube ativo, ordenadas do mais próximo pro
   /// mais distante do vetor do usuário — sempre todas elas, quem decide
   /// "top 3" é [closestReferences].
-  List<PlayerIdentityAffinity> rankReferences(PlayerIdentityAttributes attributes) {
-    final ranked =
-        references.map((reference) {
-          final distance = distanceTo(attributes, reference);
-          return PlayerIdentityAffinity(
-            reference: reference,
-            distance: distance,
-            affinity: affinityFor(distance),
-          );
-        }).toList()
-          ..sort((a, b) => a.distance.compareTo(b.distance));
+  List<PlayerIdentityAffinity> rankReferences(
+    PlayerIdentityAttributes attributes,
+  ) {
+    final ranked = references.map((reference) {
+      final distance = distanceTo(attributes, reference);
+      return PlayerIdentityAffinity(
+        reference: reference,
+        distance: distance,
+        affinity: affinityFor(distance),
+      );
+    }).toList()..sort((a, b) => a.distance.compareTo(b.distance));
     return ranked;
   }
 
@@ -192,7 +194,9 @@ class PlayerIdentityEngine {
   /// `playerIdentityTieBreakOrder` decide (primeiro da lista vence). Se
   /// `max - min <= 8` (perfil muito equilibrado), vira "O Completo",
   /// independente de qual dimensão venceria.
-  PlayerIdentityArchetype classifyArchetype(PlayerIdentityAttributes attributes) {
+  PlayerIdentityArchetype classifyArchetype(
+    PlayerIdentityAttributes attributes,
+  ) {
     final scores = {
       for (final d in PlayerIdentityDimension.values) d: attributes[d],
     };
