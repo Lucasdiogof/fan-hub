@@ -13,6 +13,7 @@ import 'package:goias_app/features/store/presentation/cubit/store_catalog_state.
 import 'package:goias_app/features/store/presentation/store_display_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/cart_icon_button.dart';
 import 'package:goias_app/features/store/presentation/widgets/product_card.dart';
+import 'package:goias_app/features/store/presentation/widgets/store_banner_carousel.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -242,7 +243,11 @@ class _StoreHomeContent extends StatelessWidget {
 
 /// Banner de topo da home da loja — arte pronta (com textos e CTA já
 /// embutidos na imagem), exibida na largura toda com cantos arredondados.
-/// Toque leva ao produto em destaque quando há um.
+/// Toque leva ao produto em destaque quando há um. Quantidade de imagens
+/// vem de `ClubConfig.assets.storeHomeBanners` — 1 banner fica fixo (era
+/// hardcoded `lib/assets/goias_store.png` direto aqui, agora só o Goiás
+/// tem essa mesma imagem configurada); >1 vira carousel com autoplay
+/// (ver `StoreBannerCarousel`), nunca um `if (club == ...)` aqui.
 class _StoreBanner extends StatelessWidget {
   const _StoreBanner({required this.launch});
 
@@ -250,20 +255,11 @@ class _StoreBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      borderRadius: BorderRadius.circular(AppRadius.banner),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: launch == null
-            ? null
-            : () => context.push('/store/product/${launch!.id}'),
-        child: Image.asset(
-          'lib/assets/goias_store.png',
-          width: double.infinity,
-          fit: BoxFit.fitWidth,
-        ),
-      ),
+    return StoreBannerCarousel(
+      banners: sl<ClubConfig>().assets.storeHomeBanners,
+      onTap: launch == null
+          ? null
+          : () => context.push('/store/product/${launch!.id}'),
     );
   }
 }

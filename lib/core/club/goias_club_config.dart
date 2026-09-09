@@ -49,6 +49,10 @@ const goiasClubConfig = ClubConfig(
     arenaStadiumIcon: AppAssets.arenaStadiumIcon,
     arenaStadiumPhoto: AppAssets.arenaStadiumPhoto,
     storeBanner: AppAssets.storeBanner,
+    // Mesmo arquivo que já era hardcoded direto em store_home_page.dart —
+    // 1 banner só, então StoreBannerCarousel nunca monta PageView/Timer/
+    // dots aqui, comportamento visual idêntico ao de sempre.
+    storeHomeBanners: ['lib/assets/goias_store.png'],
     storeCatalogAssetPath: 'lib/assets/content/store_products.json',
     splashVideo: 'lib/assets/videos/goias_splash.mp4',
     squadPhotos: squadPhotoAssets,
