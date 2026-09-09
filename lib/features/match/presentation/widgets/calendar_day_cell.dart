@@ -92,7 +92,9 @@ class _MatchIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isHome = match.isHomeTeam(sl<ClubConfig>().integrations.oneFootballTeamId);
+    final isHome = match.isHomeTeam(
+      sl<ClubConfig>().integrations.oneFootballTeamId,
+    );
     final opponent = isHome ? match.awayTeam : match.homeTeam;
     return Material(
       color: Colors.transparent,

@@ -41,6 +41,28 @@ describe('pickCurrentRound', () => {
   it('returns null for an empty list instead of throwing', () => {
     expect(pickCurrentRound([])).toBeNull();
   });
+
+  it('REGRESSÃO 2026-09-09: jogo ADIADO nunca ancora a rodada atual (Bragantino tinha Atlético-MG adiado sem nova data preso na Rodada 21 de julho, escondendo a Rodada de setembro com o próximo jogo real, Botafogo)', () => {
+    const lists = [
+      round('Rodada 20', ['FULL_TIME', 'FULL_TIME']),
+      round('Rodada 21', ['POSTPONED']),
+      round('Rodada 22', ['FULL_TIME']),
+      round('Rodada 23', ['PRE_MATCH']),
+    ];
+    expect(pickCurrentRound(lists)?.sectionHeader?.subtitle).toBe('Rodada 23');
+  });
+
+  it('CANCELLED/SUSPENDED/ABANDONED também nunca ancoram a rodada atual, mesmo padrão do adiado', () => {
+    for (const period of ['CANCELLED', 'CANCELED', 'SUSPENDED', 'ABANDONED']) {
+      const lists = [round('Rodada 1', [period]), round('Rodada 2', ['PRE_MATCH'])];
+      expect(pickCurrentRound(lists)?.sectionHeader?.subtitle).toBe('Rodada 2');
+    }
+  });
+
+  it('rodada só com jogo adiado no fim da temporada cai pra última rodada, não trava vazio', () => {
+    const lists = [round('Rodada 1', ['FULL_TIME']), round('Rodada 2', ['POSTPONED'])];
+    expect(pickCurrentRound(lists)?.sectionHeader?.subtitle).toBe('Rodada 2');
+  });
 });
 
 function fakeEnv(overrides: Partial<Env> = {}): Env {
