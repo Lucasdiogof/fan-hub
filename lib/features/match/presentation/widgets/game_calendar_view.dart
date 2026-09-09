@@ -14,11 +14,10 @@ import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:intl/intl.dart';
 
 /// Corpo da aba "Calendário" dentro de Jogos — busca a temporada uma vez
-/// (`GameCalendarCubit.load`) e depois só navega em memória. Só a lista de
-/// temporadas é fixa em `[2026]` por enquanto — a fonte de dados hoje só
-/// dá a agenda atual do time, nunca uma temporada passada à parte (ver
-/// `FootballRepository.getSeasonFixtures`); o seletor já está pronto pra
-/// quando isso existir.
+/// (`GameCalendarCubit.load`) e depois só navega em memória, sempre dentro
+/// do ano corrente (a fonte de dados hoje só dá a agenda atual do time,
+/// nunca uma temporada passada à parte — ver
+/// `FootballRepository.getSeasonFixtures`), sem seletor de ano.
 class GameCalendarView extends StatelessWidget {
   const GameCalendarView({required this.onMatchTap, super.key});
 
@@ -28,16 +27,7 @@ class GameCalendarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GameCalendarCubit, GameCalendarState>(
       builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const _SeasonAndFilterHeader(),
-            const SizedBox(height: AppSpacing.md),
-            Expanded(
-              child: _CalendarBody(state: state, onMatchTap: onMatchTap),
-            ),
-          ],
-        );
+        return _CalendarBody(state: state, onMatchTap: onMatchTap);
       },
     );
   }
@@ -83,44 +73,6 @@ class _CalendarBody extends StatelessWidget {
         ],
       ),
     };
-  }
-}
-
-class _SeasonAndFilterHeader extends StatelessWidget {
-  const _SeasonAndFilterHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-      child: _SeasonBadge(),
-    );
-  }
-}
-
-/// "2026 ▾" — sem menu de verdade ainda (só existe uma temporada), mas já
-/// no formato visual final. Vira um `DropdownButton`/`PopupMenuButton` real
-/// assim que houver mais de uma temporada pra escolher.
-class _SeasonBadge extends StatelessWidget {
-  const _SeasonBadge();
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Row(
-      children: [
-        Text(
-          '${DateTime.now().year}',
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w800,
-            color: colors.textPrimary,
-          ),
-        ),
-        const SizedBox(width: 2),
-        Icon(Icons.expand_more_rounded, size: 18, color: colors.textHint),
-      ],
-    );
   }
 }
 
