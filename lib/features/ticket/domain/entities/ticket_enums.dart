@@ -22,3 +22,9 @@ enum CheckInStatus {
 enum TicketStatus { active, cancelled, used, expired, refunded }
 
 enum TicketOrigin { purchase, membershipCheckIn }
+
+/// Tipo de meia-entrada de um ingresso — obrigatório escolher quando a
+/// categoria do ingresso é meia-entrada (`TicketPriceCategory.isHalfPrice`).
+/// `law` exige comprovante (Lei Federal 12.933/2013); `promotional` é uma
+/// promoção do clube, sem exigência de documento.
+enum HalfPriceType { law, promotional }

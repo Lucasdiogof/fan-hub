@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
@@ -47,6 +48,7 @@ class PurchaseState extends Equatable {
             categoryLabel: category.label,
             quantity: quantity,
             unitPrice: category.price,
+            isHalfPrice: category.isHalfPrice,
           ),
         );
       }
@@ -75,19 +77,31 @@ class PurchaseState extends Equatable {
           categoryLabel: item.categoryLabel,
           quantity: 1,
           unitPrice: item.unitPrice,
+          isHalfPrice: item.isHalfPrice,
         ),
   ];
 
   bool get canProceedToSummary => totalQuantity > 0;
 
-  bool get canFinalize =>
-      totalQuantity > 0 &&
-      holders.length == totalQuantity &&
-      holders.every(
-        (holder) =>
-            holder.name.trim().isNotEmpty &&
-            AppValidators.isValidDocument(holder.document),
-      );
+  bool get canFinalize {
+    if (totalQuantity == 0 || holders.length != totalQuantity) return false;
+    final units = ticketUnits;
+    for (var i = 0; i < holders.length; i++) {
+      final holder = holders[i];
+      if (holder.name.trim().isEmpty ||
+          !AppValidators.isValidDocument(holder.document)) {
+        return false;
+      }
+      if (i >= units.length || !units[i].isHalfPrice) continue;
+      final type = holder.halfPriceType;
+      if (type == null) return false;
+      if (type == HalfPriceType.law &&
+          (holder.halfPriceProofPath?.isEmpty ?? true)) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   PurchaseState copyWith({
     Map<(String, String), int>? quantities,

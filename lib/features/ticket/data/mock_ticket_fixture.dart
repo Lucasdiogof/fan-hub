@@ -23,7 +23,7 @@ class TicketFixture {
     availableForCheckIn: true,
     categories: [
       TicketPriceCategory(id: 'inteira', label: 'Inteira', price: 80),
-      TicketPriceCategory(id: 'meia', label: 'Meia', price: 40),
+      TicketPriceCategory(id: 'meia', label: 'Meia', price: 40, isHalfPrice: true),
       TicketPriceCategory(id: 'menor18', label: 'Menores 18 anos', price: 40),
     ],
   );
@@ -36,7 +36,7 @@ class TicketFixture {
     availableForCheckIn: true,
     categories: [
       TicketPriceCategory(id: 'inteira', label: 'Inteira', price: 40),
-      TicketPriceCategory(id: 'meia', label: 'Meia', price: 20),
+      TicketPriceCategory(id: 'meia', label: 'Meia', price: 20, isHalfPrice: true),
       TicketPriceCategory(id: 'menor18', label: 'Menores 18 anos', price: 20),
     ],
   );
@@ -49,7 +49,7 @@ class TicketFixture {
     availableForCheckIn: true,
     categories: [
       TicketPriceCategory(id: 'inteira', label: 'Inteira', price: 40),
-      TicketPriceCategory(id: 'meia', label: 'Meia', price: 20),
+      TicketPriceCategory(id: 'meia', label: 'Meia', price: 20, isHalfPrice: true),
       TicketPriceCategory(id: 'menor18', label: 'Menores 18 anos', price: 20),
     ],
   );
@@ -71,7 +71,13 @@ class TicketFixture {
         price: 80,
         soldOut: true,
       ),
-      TicketPriceCategory(id: 'meia', label: 'Meia', price: 40, soldOut: true),
+      TicketPriceCategory(
+        id: 'meia',
+        label: 'Meia',
+        price: 40,
+        soldOut: true,
+        isHalfPrice: true,
+      ),
       TicketPriceCategory(
         id: 'menor18',
         label: 'Menores 18 anos',

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/ticket/domain/entities/match_sales_info.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
@@ -38,6 +40,15 @@ abstract class TicketRepository {
     required List<TicketOrderItem> items,
     required List<TicketHolder> holders,
   });
+
+  /// Sobe o comprovante de meia-entrada (Lei Federal 12.933/2013) pro
+  /// bucket privado `half_price_proofs` e devolve o path salvo (nunca uma
+  /// URL pública — o comprovante é documento pessoal). Cada chamada gera um
+  /// path novo, nunca sobrescreve um comprovante anterior no mesmo pedido.
+  Future<Result<String>> uploadHalfPriceProof(
+    Uint8List bytes,
+    String fileExtension,
+  );
 
   Future<Result<List<Ticket>>> getMyTickets();
 

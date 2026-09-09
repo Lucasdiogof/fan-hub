@@ -3855,6 +3855,12 @@ abstract class AppLocalizations {
   /// **'Desfazer check-in'**
   String get ticketsUndoCheckInButton;
 
+  /// No description provided for @ticketsChangeCheckInButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Alterar check-in'**
+  String get ticketsChangeCheckInButton;
+
   /// No description provided for @ticketsConfirmPresenceTitle.
   ///
   /// In pt, this message translates to:
@@ -4190,6 +4196,42 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Reembolso demonstrativo — nenhum valor foi movimentado.'**
   String get ticketsRefundDemoConcludedNote;
+
+  /// No description provided for @ticketsHalfPriceTypeLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tipo de meia-entrada'**
+  String get ticketsHalfPriceTypeLabel;
+
+  /// No description provided for @ticketsHalfPriceLawOption.
+  ///
+  /// In pt, this message translates to:
+  /// **'Por lei'**
+  String get ticketsHalfPriceLawOption;
+
+  /// No description provided for @ticketsHalfPricePromotionalOption.
+  ///
+  /// In pt, this message translates to:
+  /// **'Promocional'**
+  String get ticketsHalfPricePromotionalOption;
+
+  /// No description provided for @ticketsHalfPriceProofLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Comprovante de meia-entrada (obrigatório)'**
+  String get ticketsHalfPriceProofLabel;
+
+  /// No description provided for @ticketsHalfPriceProofUploadButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Anexar comprovante'**
+  String get ticketsHalfPriceProofUploadButton;
+
+  /// No description provided for @ticketsHalfPriceProofUploaded.
+  ///
+  /// In pt, this message translates to:
+  /// **'Comprovante enviado'**
+  String get ticketsHalfPriceProofUploaded;
 
   /// No description provided for @ticketPdfDemoWatermark.
   ///

@@ -24,6 +24,7 @@ class FeaturedEventCard extends StatelessWidget {
     required this.onViewTicket,
     required this.onViewMyTickets,
     required this.onUndoCheckIn,
+    required this.onChangeCheckInSector,
     super.key,
   });
 
@@ -34,6 +35,7 @@ class FeaturedEventCard extends StatelessWidget {
   final void Function(Ticket ticket) onViewTicket;
   final VoidCallback onViewMyTickets;
   final VoidCallback onUndoCheckIn;
+  final VoidCallback onChangeCheckInSector;
 
   @override
   Widget build(BuildContext context) {
@@ -160,6 +162,9 @@ class FeaturedEventCard extends StatelessWidget {
             ? null
             : () => onViewTicket(event.checkInTicket!),
         onUndo: event.info.canCancelCheckIn ? onUndoCheckIn : null,
+        onChangeSector: event.info.canCancelCheckIn
+            ? onChangeCheckInSector
+            : null,
       ),
       CheckInStatus.cancelled || CheckInStatus.closed => _StatusBlock(
         label: l10n.ticketsCheckinClosedLabel,
@@ -344,11 +349,13 @@ class _ConfirmedBlock extends StatelessWidget {
     required this.sectorName,
     required this.onViewTicket,
     required this.onUndo,
+    required this.onChangeSector,
   });
 
   final String sectorName;
   final VoidCallback? onViewTicket;
   final VoidCallback? onUndo;
+  final VoidCallback? onChangeSector;
 
   @override
   Widget build(BuildContext context) {
@@ -396,6 +403,20 @@ class _ConfirmedBlock extends StatelessWidget {
             child: Text(context.l10n.ticketsViewTicketButton),
           ),
         ),
+        if (onChangeSector != null) ...[
+          const SizedBox(height: AppSpacing.xs),
+          TextButton(
+            onPressed: onChangeSector,
+            style: TextButton.styleFrom(foregroundColor: colors.primary),
+            child: Text(
+              context.l10n.ticketsChangeCheckInButton,
+              style: const TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
         if (onUndo != null) ...[
           const SizedBox(height: AppSpacing.xs),
           TextButton(

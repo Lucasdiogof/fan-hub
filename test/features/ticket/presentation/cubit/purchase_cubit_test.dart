@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/error/failures.dart';
@@ -46,14 +48,29 @@ const _sector = TicketSector(
   categories: [TicketPriceCategory(id: 'inteira', label: 'Inteira', price: 40)],
 );
 
-TicketEvent _event() => TicketEvent(
+const _sectorHalfPrice = TicketSector(
+  id: 'cadeiras',
+  name: 'Cadeiras',
+  venueLabel: 'Serrinha',
+  gate: 'A',
+  categories: [
+    TicketPriceCategory(
+      id: 'meia',
+      label: 'Meia',
+      price: 20,
+      isHalfPrice: true,
+    ),
+  ],
+);
+
+TicketEvent _event({TicketSector sector = _sector}) => TicketEvent(
   match: _match,
   info: MatchTicketInfo(
     matchId: _match.id,
     saleOpensAt: DateTime.now().subtract(const Duration(days: 1)),
     checkInOpensAt: DateTime.now().subtract(const Duration(days: 1)),
     canCancelCheckIn: true,
-    sectors: const [_sector],
+    sectors: [sector],
   ),
   saleStatus: TicketSaleStatus.open,
   checkInStatus: CheckInStatus.unavailable,
@@ -135,6 +152,12 @@ class _FakeTicketRepository implements TicketRepository {
   @override
   Future<Result<Ticket>> requestRefund(String ticketId) async =>
       throw UnimplementedError();
+
+  @override
+  Future<Result<String>> uploadHalfPriceProof(
+    Uint8List bytes,
+    String fileExtension,
+  ) async => const Success('user-1/proof.jpg');
 }
 
 void main() {
@@ -253,6 +276,50 @@ void main() {
       // primeiro.
       expect(multiCubit.state.holders[1].isSelf, isFalse);
       expect(multiCubit.state.holders[1].name, isEmpty);
+    });
+  });
+
+  group('meia-entrada', () {
+    late PurchaseCubit halfCubit;
+
+    setUp(() {
+      halfCubit = PurchaseCubit(repository, _event(sector: _sectorHalfPrice))
+        ..setQuantity('cadeiras', 'meia', 1);
+      halfCubit.ensureHolderSlots();
+      halfCubit
+        ..setHolderName(0, 'Lucas Diogo')
+        ..setHolderDocument(0, '11144477735');
+    });
+
+    tearDown(() => halfCubit.close());
+
+    test('sem escolher o tipo, não pode finalizar', () {
+      expect(halfCubit.state.canFinalize, isFalse);
+    });
+
+    test('promocional não exige comprovante', () {
+      halfCubit.setHolderHalfPriceType(0, HalfPriceType.promotional);
+      expect(halfCubit.state.canFinalize, isTrue);
+    });
+
+    test('por lei sem comprovante ainda não pode finalizar', () {
+      halfCubit.setHolderHalfPriceType(0, HalfPriceType.law);
+      expect(halfCubit.state.canFinalize, isFalse);
+    });
+
+    test('por lei com comprovante enviado pode finalizar', () async {
+      halfCubit.setHolderHalfPriceType(0, HalfPriceType.law);
+      await halfCubit.uploadHalfPriceProof(0, Uint8List(0), 'jpg');
+      expect(halfCubit.state.holders[0].halfPriceProofPath, isNotEmpty);
+      expect(halfCubit.state.canFinalize, isTrue);
+    });
+
+    test('trocar de "por lei" pra "promocional" limpa o comprovante', () async {
+      halfCubit.setHolderHalfPriceType(0, HalfPriceType.law);
+      await halfCubit.uploadHalfPriceProof(0, Uint8List(0), 'jpg');
+      halfCubit.setHolderHalfPriceType(0, HalfPriceType.promotional);
+      expect(halfCubit.state.holders[0].halfPriceProofPath, isNull);
+      expect(halfCubit.state.canFinalize, isTrue);
     });
   });
 }
