@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -74,7 +75,11 @@ class _MembershipHomeView extends StatelessWidget {
                                 icon: state.isNetworkError
                                     ? Icons.wifi_off_rounded
                                     : Icons.error_outline_rounded,
-                                title: context.l10n.membershipLoadError,
+                                title: context.l10n.membershipLoadError(
+                                  sl<ClubConfig>()
+                                      .productNames
+                                      .membershipProgramName,
+                                ),
                                 message: state.errorMessage,
                                 actionLabel: context.l10n.commonRetry,
                                 onAction: () =>

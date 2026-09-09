@@ -17,12 +17,14 @@ import 'package:goias_app/shared/widgets/stadium_backdrop.dart';
 class NextMatchHero extends StatelessWidget {
   const NextMatchHero({
     required this.match,
+    this.onTap,
     this.onTickets,
     this.onMatchStarted,
     super.key,
   });
 
   final Match match;
+  final VoidCallback? onTap;
   final VoidCallback? onTickets;
   final VoidCallback? onMatchStarted;
 
@@ -37,6 +39,15 @@ class NextMatchHero extends StatelessWidget {
               imageAsset: sl<ClubConfig>().assets.matchHero,
               showFloodlights: false,
               overlayOpacity: 0.85,
+            ),
+          ),
+          // O botão de ingresso (quando existe) fica por cima e cuida do
+          // próprio toque — este `Positioned.fill` só cobre o resto do
+          // card, senão ele "roubaria" o toque do botão.
+          Positioned.fill(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(onTap: onTap),
             ),
           ),
           Padding(

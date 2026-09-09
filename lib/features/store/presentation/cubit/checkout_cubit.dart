@@ -23,11 +23,15 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     Cart initialCart, {
     String? prefillName,
     String? prefillEmail,
+    String? prefillCpf,
+    String? prefillPhone,
   }) : super(
          CheckoutState(
            cart: initialCart,
            fullName: prefillName ?? '',
            email: prefillEmail ?? '',
+           cpf: prefillCpf ?? '',
+           phone: prefillPhone ?? '',
          ),
        ) {
     _loadAddresses();
@@ -215,9 +219,9 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   void nextStep() {
     final next = switch (state.step) {
       CheckoutStep.identification => CheckoutStep.delivery,
-      CheckoutStep.delivery => CheckoutStep.payment,
-      CheckoutStep.payment => CheckoutStep.review,
-      CheckoutStep.review => CheckoutStep.confirmation,
+      CheckoutStep.delivery => CheckoutStep.review,
+      CheckoutStep.review => CheckoutStep.payment,
+      CheckoutStep.payment => CheckoutStep.confirmation,
       CheckoutStep.confirmation => CheckoutStep.confirmation,
     };
     emit(state.copyWith(step: next));
@@ -227,9 +231,9 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     final previous = switch (state.step) {
       CheckoutStep.identification => CheckoutStep.identification,
       CheckoutStep.delivery => CheckoutStep.identification,
-      CheckoutStep.payment => CheckoutStep.delivery,
-      CheckoutStep.review => CheckoutStep.payment,
-      CheckoutStep.confirmation => CheckoutStep.review,
+      CheckoutStep.review => CheckoutStep.delivery,
+      CheckoutStep.payment => CheckoutStep.review,
+      CheckoutStep.confirmation => CheckoutStep.payment,
     };
     emit(state.copyWith(step: previous));
   }

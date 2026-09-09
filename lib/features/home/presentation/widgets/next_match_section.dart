@@ -47,6 +47,7 @@ class NextMatchSection extends StatelessWidget {
             : NextMatchHero(
                 key: const ValueKey('upcoming'),
                 match: match,
+                onTap: () => openMatchDetails(context, match),
                 onTickets: onTickets,
                 onMatchStarted: onMatchStarted,
               ),

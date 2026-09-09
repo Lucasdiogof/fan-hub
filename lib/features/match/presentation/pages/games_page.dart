@@ -189,9 +189,13 @@ bool _isLive(Match match) =>
     match.status == MatchStatus.live || match.status == MatchStatus.halftime;
 
 /// M4.2A — `null` some com o CTA de comprar ingresso (`NextMatchCard` já
-/// trata o botão como opcional).
-VoidCallback? _onBuyTicket(BuildContext context) =>
-    sl<ClubConfig>().capabilities.hasTickets
+/// trata o botão como opcional). Fora de casa não tem ingresso pra vender
+/// — só o mandante do jogo controla a bilheteria do próprio estádio, mesmo
+/// quando o adversário joga na mesma cidade (outros estádios existem) —
+/// mesma regra já aplicada em `next_match_hero.dart`.
+VoidCallback? _onBuyTicket(BuildContext context, Match match) =>
+    sl<ClubConfig>().capabilities.hasTickets &&
+        match.homeTeam.matchesClub(sl<ClubConfig>())
     ? () => context.push('/tickets')
     : null;
 
@@ -229,13 +233,13 @@ class _MatchesContent extends StatelessWidget {
                   onMatchEnded: () => context.read<GamesCubit>().refresh(),
                   builder: (context, liveMatch) => NextMatchCard(
                     match: liveMatch,
-                    onBuyTicket: _onBuyTicket(context),
+                    onBuyTicket: _onBuyTicket(context, liveMatch),
                     onViewDetails: () => onMatchTap(liveMatch),
                   ),
                 )
               : NextMatchCard(
                   match: nextMatch,
-                  onBuyTicket: _onBuyTicket(context),
+                  onBuyTicket: _onBuyTicket(context, nextMatch),
                   onViewDetails: () => onMatchTap(nextMatch),
                 ),
           const SizedBox(height: AppSpacing.xxl),

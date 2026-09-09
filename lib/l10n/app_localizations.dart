@@ -3771,6 +3771,12 @@ abstract class AppLocalizations {
   /// **'Check-in encerrado'**
   String get ticketsCheckinClosedButton;
 
+  /// No description provided for @ticketsCheckinAwayGameLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'CHECK-IN DISPONÍVEL SÓ NO JOGO EM CASA'**
+  String get ticketsCheckinAwayGameLabel;
+
   /// No description provided for @ticketsViewTicketButton.
   ///
   /// In pt, this message translates to:
@@ -3830,6 +3836,12 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Venda encerrada'**
   String get ticketsSaleClosedButton;
+
+  /// No description provided for @ticketsSaleAwayGameLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'INGRESSOS SÓ COM O CLUBE MANDANTE'**
+  String get ticketsSaleAwayGameLabel;
 
   /// No description provided for @ticketsCheckinConfirmedLabel.
   ///

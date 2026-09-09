@@ -10,55 +10,76 @@ import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// "Conhecer outros planos" a partir da experiência de quem já é sócio —
 /// lista completa, sem competir com o plano atual.
-class MembershipPlansCatalogPage extends StatelessWidget {
+class MembershipPlansCatalogPage extends StatefulWidget {
   const MembershipPlansCatalogPage({super.key});
+
+  @override
+  State<MembershipPlansCatalogPage> createState() =>
+      _MembershipPlansCatalogPageState();
+}
+
+class _MembershipPlansCatalogPageState
+    extends State<MembershipPlansCatalogPage> {
+  // Enquanto um plano está sendo aberto, esta tela não pode ser fechada
+  // (nem pelo botão de voltar, nem pelo gesto do sistema) — senão o
+  // `context.pop(result)` abaixo tenta completar de novo um Future que o
+  // pop antecipado já completou, e o app quebra com "Future already
+  // completed".
+  bool _opening = false;
+
+  Future<void> _openPlan(String planId) async {
+    if (_opening) return;
+    setState(() => _opening = true);
+    final result = await context.push<String>('/membership/plans/$planId');
+    if (!mounted) return;
+    setState(() => _opening = false);
+    if (result != null) context.pop(result);
+  }
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Scaffold(
-      backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(onTap: () => context.pop()),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.membershipPlansTitle),
-                  const SizedBox(height: AppSpacing.xl),
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: MembershipPlansCatalog.plans.length,
-                      separatorBuilder: (_, _) =>
-                          const SizedBox(height: AppSpacing.md),
-                      itemBuilder: (context, index) {
-                        final plan = MembershipPlansCatalog.plans[index];
-                        return _PlanRow(
-                          name: plan.name,
-                          sector: plan.stadiumSector,
-                          onTap: () async {
-                            final result = await context.push<String>(
-                              '/membership/plans/${plan.id}',
-                            );
-                            if (result != null && context.mounted) {
-                              context.pop(result);
-                            }
-                          },
-                        );
-                      },
+    return PopScope(
+      canPop: !_opening,
+      child: Scaffold(
+        backgroundColor: colors.background,
+        body: SafeArea(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg,
+                  AppSpacing.md,
+                  AppSpacing.lg,
+                  0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BackButtonCircle(
+                      onTap: _opening ? () {} : () => context.pop(),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: AppSpacing.lg),
+                    PageTitle(context.l10n.membershipPlansTitle),
+                    const SizedBox(height: AppSpacing.xl),
+                    Expanded(
+                      child: ListView.separated(
+                        itemCount: MembershipPlansCatalog.plans.length,
+                        separatorBuilder: (_, _) =>
+                            const SizedBox(height: AppSpacing.md),
+                        itemBuilder: (context, index) {
+                          final plan = MembershipPlansCatalog.plans[index];
+                          return _PlanRow(
+                            name: plan.name,
+                            sector: plan.stadiumSector,
+                            onTap: _opening ? null : () => _openPlan(plan.id),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -69,15 +90,11 @@ class MembershipPlansCatalogPage extends StatelessWidget {
 }
 
 class _PlanRow extends StatelessWidget {
-  const _PlanRow({
-    required this.name,
-    required this.sector,
-    required this.onTap,
-  });
+  const _PlanRow({required this.name, required this.sector, this.onTap});
 
   final String name;
   final String? sector;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

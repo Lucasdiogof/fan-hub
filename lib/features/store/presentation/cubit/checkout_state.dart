@@ -6,7 +6,7 @@ import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/entities/store_order.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
 
-enum CheckoutStep { identification, delivery, payment, review, confirmation }
+enum CheckoutStep { identification, delivery, review, payment, confirmation }
 
 class CheckoutState extends Equatable {
   const CheckoutState({
@@ -55,13 +55,13 @@ class CheckoutState extends Equatable {
   final String? pickupResponsibleName;
   final String? pickupResponsibleCpf;
 
-  // Etapa 3 — pagamento simulado.
+  // Etapa 4 — pagamento simulado (depois da revisão).
   final PaymentMethod paymentMethod;
   final CardBillingSummary? cardSummary;
   final bool paymentSimulated;
   final bool paymentApproved;
 
-  // Etapa 4 — revisão.
+  // Etapa 3 — revisão (antes do pagamento).
   final bool acceptedTerms;
 
   final bool submitting;
@@ -108,9 +108,12 @@ class CheckoutState extends Equatable {
     return selectedAddressId != null && selectedShippingSpeed != null;
   }
 
+  bool get canProceedFromReview => acceptedTerms;
+
   bool get canProceedFromPayment => paymentApproved;
 
-  bool get canConfirmOrder => acceptedTerms && !submitting;
+  bool get canConfirmOrder =>
+      acceptedTerms && paymentApproved && !submitting;
 
   CheckoutState copyWith({
     Cart? cart,
