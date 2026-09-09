@@ -92,7 +92,11 @@ class SocialLinksData {
           svgPathData: _facebookSvgPathData,
         ),
       if (social.socialXUrl != null)
-        SocialLink(name: 'X', url: social.socialXUrl!, svgPathData: _xSvgPathData),
+        SocialLink(
+          name: 'X',
+          url: social.socialXUrl!,
+          svgPathData: _xSvgPathData,
+        ),
       if (social.officialSiteUrl != null)
         SocialLink(
           name: 'Site oficial',
@@ -101,4 +105,12 @@ class SocialLinksData {
         ),
     ];
   }
+
+  /// Glifo do Instagram exposto direto — é o ícone oficial da plataforma
+  /// (igual pra qualquer clube), nunca depende do clube ativo ter a
+  /// própria conta configurada. Usado por qualquer tela que precise
+  /// mostrar o ícone (ex.: Instagram de um ATLETA específico, em
+  /// `squad_member_detail_page.dart`) sem exigir `all` (que só lista as
+  /// redes DO CLUBE, com URL configurada).
+  static const instagramSvgPathData = _instagramSvgPathData;
 }

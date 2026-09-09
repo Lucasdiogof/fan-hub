@@ -134,6 +134,17 @@ const _loginBackgroundReal =
 // igual ao tratamento que o Goiás já tem com o SVG de verdade dele).
 const _crestSealReal = 'lib/assets/branding/bragantino/crest_seal.svg';
 
+// Marca d'água do card da Arena (Home) — MESMO render 3D do Goiás
+// (`AppAssets.arenaStadiumPhoto`), só recolorido pro vermelho oficial do
+// Bragantino (`#D2003C`, mesmo hue de `_bragantinoLight.primary`) via
+// script (troca de matiz em HSV, preservando saturação/luz — a imagem já
+// era monocromática, então a forma/sombra ficam idênticas). Pedido do
+// usuário 2026-09-09: "praticamente idênticas, só mudando a cor". Nunca
+// recolorido em tempo de execução — `ColorFiltered`/`Image.color` quebram
+// a transparência do PNG (mesmo bug documentado em
+// `AppAssets.storeBanner`), então o arquivo já vem pronto.
+const _arenaStadiumReal = 'lib/assets/branding/bragantino/arena_stadium.png';
+
 /// Fotos pro Quem Vestiu o Manto — as 10 do elenco atual são as MESMAS
 /// URLs do CDN oficial (`img.redbullbragantino.com`) já usadas em
 /// `bragantino_squad_members.sql`, chaveadas pelo mesmo `id` de
@@ -170,7 +181,7 @@ const _bragantinoGuessPlayerPhotos = {
   'alerrandro': 'lib/assets/games/guess_player/bragantino/alerrandro.png',
   'artur': 'lib/assets/games/guess_player/bragantino/artur.png',
   'bruninho': 'lib/assets/games/guess_player/bragantino/bruninho.png',
-  'bruno_tubarao': 'lib/assets/games/guess_player/bragantino/bruno_tubarao.jpg',
+  'bruno_tubarao': 'lib/assets/games/guess_player/bragantino/bruno_tubarao.png',
   'chrigor': 'lib/assets/games/guess_player/bragantino/chrigor.png',
   'claudinho': 'lib/assets/games/guess_player/bragantino/claudinho.png',
   // Cleiton segue no elenco atual — usa a mesma URL real do CDN oficial
@@ -179,39 +190,39 @@ const _bragantinoGuessPlayerPhotos = {
       'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/gliozjfvi1mbxq88fibm/goleiro-cleiton',
   'emiliano_martinez':
       'lib/assets/games/guess_player/bragantino/emiliano_martinez.png',
-  'eric_ramires': 'lib/assets/games/guess_player/bragantino/eric_ramires.jpg',
+  'eric_ramires': 'lib/assets/games/guess_player/bragantino/eric_ramires.png',
   'fabricio_bruno':
-      'lib/assets/games/guess_player/bragantino/fabricio_bruno.jpg',
+      'lib/assets/games/guess_player/bragantino/fabricio_bruno.png',
   'gabriel_novaes':
-      'lib/assets/games/guess_player/bragantino/gabriel_novaes.jpg',
+      'lib/assets/games/guess_player/bragantino/gabriel_novaes.png',
   'guilherme_lopes':
-      'lib/assets/games/guess_player/bragantino/guilherme_lopes.jpg',
+      'lib/assets/games/guess_player/bragantino/guilherme_lopes.png',
   'helinho': 'lib/assets/games/guess_player/bragantino/helinho.png',
   'jadsom': 'lib/assets/games/guess_player/bragantino/jadsom.png',
   'jan_hurtado': 'lib/assets/games/guess_player/bragantino/jan_hurtado.png',
-  'julio_cesar': 'lib/assets/games/guess_player/bragantino/julio_cesar.jpg',
+  'julio_cesar': 'lib/assets/games/guess_player/bragantino/julio_cesar.png',
   'leandrinho': 'lib/assets/games/guess_player/bragantino/leandrinho.png',
   'leo_ortiz': 'lib/assets/games/guess_player/bragantino/leo_ortiz.png',
-  'leo_realpe': 'lib/assets/games/guess_player/bragantino/leo_realpe.jpg',
+  'leo_realpe': 'lib/assets/games/guess_player/bragantino/leo_realpe.png',
   'luan_candido': 'lib/assets/games/guess_player/bragantino/luan_candido.png',
   'lucas_evangelista':
-      'lib/assets/games/guess_player/bragantino/lucas_evangelista.jpg',
-  'luis_phelipe': 'lib/assets/games/guess_player/bragantino/luis_phelipe.jpg',
-  'matheus_jesus': 'lib/assets/games/guess_player/bragantino/matheus_jesus.jpg',
-  'natan': 'lib/assets/games/guess_player/bragantino/natan.jpg',
-  'pedro_naressi': 'lib/assets/games/guess_player/bragantino/pedro_naressi.jpg',
+      'lib/assets/games/guess_player/bragantino/lucas_evangelista.png',
+  'luis_phelipe': 'lib/assets/games/guess_player/bragantino/luis_phelipe.png',
+  'matheus_jesus': 'lib/assets/games/guess_player/bragantino/matheus_jesus.png',
+  'natan': 'lib/assets/games/guess_player/bragantino/natan.png',
+  'pedro_naressi': 'lib/assets/games/guess_player/bragantino/pedro_naressi.png',
   'praxedes': 'lib/assets/games/guess_player/bragantino/praxedes.png',
-  'raul': 'lib/assets/games/guess_player/bragantino/raul.jpg',
+  'raul': 'lib/assets/games/guess_player/bragantino/raul.png',
   'ricardo_ryller':
       'lib/assets/games/guess_player/bragantino/ricardo_ryller.png',
   'thonny_anderson':
       'lib/assets/games/guess_player/bragantino/thonny_anderson.png',
   'tomas_cuello': 'lib/assets/games/guess_player/bragantino/tomas_cuello.png',
   'uillian_correia':
-      'lib/assets/games/guess_player/bragantino/uillian_correia.jpg',
+      'lib/assets/games/guess_player/bragantino/uillian_correia.png',
   'vitinho': 'lib/assets/games/guess_player/bragantino/vitinho.png',
   'weverson_costa':
-      'lib/assets/games/guess_player/bragantino/weverson_costa.jpg',
+      'lib/assets/games/guess_player/bragantino/weverson_costa.png',
   'weverton': 'lib/assets/games/guess_player/bragantino/weverton.png',
   'ytalo': 'lib/assets/games/guess_player/bragantino/ytalo.png',
 };
@@ -251,7 +262,7 @@ const bragantinoClubConfig = ClubConfig(
     matchHero: _phRaster,
     tacticsBoardIllustration: _phRaster,
     arenaStadiumIcon: _phVector,
-    arenaStadiumPhoto: _phRaster,
+    arenaStadiumPhoto: _arenaStadiumReal,
     storeBanner: _phRaster,
     // 3 banners promocionais oficiais do Red Bull Bragantino (arte da
     // Puma/Red Bull, entregues pelo dono do produto em 2026-09-09) —
@@ -278,6 +289,18 @@ const bragantinoClubConfig = ClubConfig(
     // `squadPhotos` porque aqui misturamos URL remota e asset local, e
     // `SquadAvatar` — dono de `squadPhotos` — só sabe tratar asset local).
     guessPlayerPhotos: _bragantinoGuessPlayerPhotos,
+    // Reaproveita a MESMA foto já usada em "Quem Vestiu o Manto" pro
+    // Elenco — confirmado ser a mesma pessoa (ver comentário em
+    // `bragantino_squad_members_instagram.sql`: "Bruno Gonçalves" no
+    // elenco é o "Bruninho" do jogo, `braga_manto_42`). Nunca automático
+    // por nome — só esta entrada explícita, uma pessoa confirmada de cada
+    // vez. Wallace Yan/Ryan Augusto (também sem foto no Elenco) NÃO têm
+    // entrada aqui: não existem em nenhum jogo/dataset do Bragantino
+    // ainda, nenhuma foto pra reaproveitar de verdade.
+    squadPhotos: {
+      'bruno-goncalves':
+          'lib/assets/games/guess_player/bragantino/bruninho.png',
+    },
   ),
   integrations: ClubIntegrations(
     // Confirmado navegando onefootball.com/pt-br/time/rb-bragantino-4734
@@ -356,16 +379,17 @@ const bragantinoClubConfig = ClubConfig(
     // 404 (isolamento intacto). A causa do bloqueio anterior não era a
     // chave, era o secret gravado truncado (36/39 chars por um recorte no
     // prompt interativo do `wrangler secret put`) — corrigido regravando.
-    // Instagram/X seguem sem config própria, mas o feed nunca falha global
-    // por isso (`Promise.allSettled` por provider) — ver
+    // 2026-09-08/09: X (@RedBullBraga, 20 posts) e Instagram
+    // (@redbullbragantino, Apify real, cron 2x/dia) também confirmados ao
+    // vivo — feed agregado hoje tem as 4 fontes juntas (News/YouTube/X/
+    // Instagram), 40 posts, sem cross-club. Ver
     // `project_goias_app_media_multiclub.md`.
     hasSocial: true,
     // 2026-09-05: história/títulos/hino têm conteúdo real e pesquisado
     // (ver `BragantinoHistoryData`/`BragantinoTitlesData`/
-    // `BragantinoSongsData`) — liga o `/clube`. Diretoria/Transparência
-    // seguem vazias no Supabase do Bragantino ainda (SQL preparado, não
-    // rodado) — a própria tela já trata isso como `LoadStatus.empty`
-    // (ver `ClubDiretoriaPage`/`ClubTransparencyPage`), nunca crash.
+    // `BragantinoSongsData`) — liga o `/clube`. Diretoria (13 pessoas, 3
+    // seções) e Transparência (3 exercícios + 1 relatório) confirmadas ao
+    // vivo no Supabase do Bragantino em 2026-09-09 — nada mais vazio.
     hasClubContent: true,
     // 10 parceiros confirmados com URL e logo oficiais direto da API do
     // clube (ver `BragantinoPartnersData`) — auditoria de 2026-09-06.

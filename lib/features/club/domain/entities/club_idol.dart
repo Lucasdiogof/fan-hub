@@ -39,9 +39,11 @@ class ClubIdol {
   /// Período no clube (ex.: "1988-1991"), `null` até existir fonte.
   final String? period;
 
-  /// Caminho de um asset REAL do jogador. `null` enquanto não existir foto
-  /// de verdade — a UI cai pras iniciais, nunca numa imagem genérica
-  /// fingindo ser a pessoa.
+  /// Foto REAL do jogador — asset local (histórico, `lib/assets/branding/
+  /// idols/`) ou URL remota (CDN oficial, quando a pessoa segue no elenco
+  /// atual — reaproveitar a mesma foto de lá é melhor que uma nova).
+  /// `null` enquanto não existir foto de verdade — a UI cai pras iniciais,
+  /// nunca numa imagem genérica fingindo ser a pessoa.
   final String? photoAsset;
 
   /// Só o que pode ir pro torcedor hoje. Tier 2 e 3 ficam de fora de
