@@ -1,0 +1,20 @@
+{
+  "totalUniqueProducts": 143,
+  "totalSkus": 497,
+  "uniqueSkus": 497,
+  "duplicateIds": [],
+  "duplicateSkus": [],
+  "productsWithoutImage": [],
+  "productsWithoutPrice": [],
+  "productsWithoutDescription": [],
+  "byCategory": {
+    "accessories": 68,
+    "casual": 11,
+    "training": 11,
+    "uniforms": 50,
+    "souvenirs": 3
+  },
+  "outOfScopeExcluded": [],
+  "pdpFetchErrors": [],
+  "totalImages": 265
+}

@@ -17,6 +17,7 @@ class ClubAssets {
     required this.arenaStadiumIcon,
     required this.arenaStadiumPhoto,
     required this.storeBanner,
+    this.storeCatalogAssetPath,
     this.splashVideo,
     this.squadPhotos = const {},
     this.guessPlayerPhotos = const {},
@@ -37,6 +38,14 @@ class ClubAssets {
   final String arenaStadiumIcon;
   final String arenaStadiumPhoto;
   final String storeBanner;
+
+  /// Path do JSON bundled com o catálogo da Loja (`rootBundle.loadString`,
+  /// ver `MockStoreRepository`) — **por clube**, nunca um path fixo lido
+  /// direto pelo repositório. `null` quando o clube ainda não tem catálogo
+  /// próprio coletado: a Loja fica com 0 produtos (nunca lança, nunca cai
+  /// pro JSON de outro clube) — combinado com `hasStore=false`, a tela nem
+  /// chega a ser aberta enquanto isso for verdade.
+  final String? storeCatalogAssetPath;
 
   /// Vídeo da splash (`VideoSplashView`) — `null` quando o clube ainda não
   /// tem vídeo oficial próprio. NUNCA cai pro vídeo de outro clube: `null`

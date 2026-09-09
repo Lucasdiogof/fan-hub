@@ -281,7 +281,9 @@ void setupDependencies() {
   sl.registerFactory<AddressCubit>(() => AddressCubit(sl()));
 
   sl.registerLazySingleton<StoreLocalStorage>(() => StoreLocalStorage(sl()));
-  sl.registerLazySingleton<StoreRepository>(() => MockStoreRepository(sl()));
+  sl.registerLazySingleton<StoreRepository>(
+    () => MockStoreRepository(sl(), sl()),
+  );
   sl.registerLazySingleton<StoreOrdersRepository>(
     () => SupabaseStoreOrdersRepository(Supabase.instance.client, sl()),
   );

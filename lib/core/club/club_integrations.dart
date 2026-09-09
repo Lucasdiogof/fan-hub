@@ -89,7 +89,13 @@ class ClubIntegrations {
   /// continua hardcoded (fora do escopo Dart desta M1).
   final String orderPrefix;
 
-  final ClubPickupAddress pickupAddress;
+  /// `null` = clube sem ponto de retirada real cadastrado — a Loja deste
+  /// clube nunca oferece "Retirar na loja" (a UI checa `!= null` pra decidir
+  /// se mostra a opção; ver `checkout_page.dart`). Nunca um placeholder tipo
+  /// "Loja (indisponível)"/"—": a ausência real é `null`, não um objeto
+  /// fingindo ter dado. Goiás tem endereço real; Bragantino é `null` até
+  /// existir um ponto de retirada de verdade.
+  final ClubPickupAddress? pickupAddress;
   final String? contactWhatsappNumber;
   final String? contactWhatsappUrl;
 

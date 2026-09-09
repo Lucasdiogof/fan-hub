@@ -54,8 +54,21 @@ class PickupInformation extends Equatable {
     required this.zipCode,
   });
 
+  /// Lança se o clube ativo não tem ponto de retirada real
+  /// (`pickupAddress == null`) — nunca inventa/preenche com placeholder.
+  /// Só é seguro chamar isto quando a UI já checou
+  /// `ClubConfig.integrations.pickupAddress != null` antes de sequer
+  /// oferecer "Retirar na loja" (ver `checkout_page.dart`); chegar aqui sem
+  /// essa checagem é erro de programação, não estado de runtime esperado.
   factory PickupInformation.forActiveClub() {
     final pickup = sl<ClubConfig>().integrations.pickupAddress;
+    if (pickup == null) {
+      throw StateError(
+        'Clube ${sl<ClubConfig>().identity.code} não tem pickupAddress — '
+        'nunca chame PickupInformation.forActiveClub() sem antes checar '
+        'ClubConfig.integrations.pickupAddress != null.',
+      );
+    }
     return PickupInformation(
       storeName: pickup.storeName,
       street: pickup.street,

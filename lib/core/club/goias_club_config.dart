@@ -49,6 +49,7 @@ const goiasClubConfig = ClubConfig(
     arenaStadiumIcon: AppAssets.arenaStadiumIcon,
     arenaStadiumPhoto: AppAssets.arenaStadiumPhoto,
     storeBanner: AppAssets.storeBanner,
+    storeCatalogAssetPath: 'lib/assets/content/store_products.json',
     splashVideo: 'lib/assets/videos/goias_splash.mp4',
     squadPhotos: squadPhotoAssets,
     // Pro Goiás os dois mapas coincidem (mesmos assets locais servem tanto

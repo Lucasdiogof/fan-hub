@@ -1,10 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/store/data/mock_store_repository.dart';
 import 'package:goias_app/features/store/data/store_local_storage.dart';
 import 'package:goias_app/features/store/domain/entities/cart.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
+import 'package:goias_app/features/store/presentation/cubit/store_listing_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Desembrulha um `Result` esperando sucesso — falha o teste com uma
@@ -21,7 +23,10 @@ void main() {
 
   setUp(() {
     SharedPreferences.setMockInitialValues({});
-    repository = MockStoreRepository(StoreLocalStorage(goiasClubConfig));
+    repository = MockStoreRepository(
+      StoreLocalStorage(goiasClubConfig),
+      goiasClubConfig,
+    );
   });
 
   test('getProducts loads the real catalog asset', () async {
@@ -120,6 +125,100 @@ void main() {
     });
   });
 
+  group('catálogo é por clube — sem fallback cross-club', () {
+    test(
+      'Goiás continua carregando só o catálogo dele (104 produtos, nenhum ligado ao Bragantino)',
+      () async {
+        final products = _unwrap(await repository.getProducts());
+        expect(products, isNotEmpty);
+        for (final p in products) {
+          expect(p.name.toLowerCase(), isNot(contains('bragantino')));
+          expect(p.name.toLowerCase(), isNot(contains('massa bruta')));
+        }
+      },
+    );
+
+    test(
+      'Bragantino carrega o catálogo REAL dele (143 produtos), nenhum ligado ao Goiás',
+      () async {
+        final bragantinoRepo = MockStoreRepository(
+          StoreLocalStorage(bragantinoClubConfig),
+          bragantinoClubConfig,
+        );
+        final products = _unwrap(await bragantinoRepo.getProducts());
+        expect(products, hasLength(143));
+        for (final p in products) {
+          expect(p.name.toLowerCase(), contains('bragantino'));
+          expect(p.name.toLowerCase(), isNot(contains('goiás')));
+          expect(p.name.toLowerCase(), isNot(contains('esmeraldin')));
+          expect(p.id, startsWith('bragantino_'));
+        }
+      },
+    );
+
+    test(
+      'Bragantino: todos os SKUs são únicos, todo produto tem imagem/preço/descrição',
+      () async {
+        final bragantinoRepo = MockStoreRepository(
+          StoreLocalStorage(bragantinoClubConfig),
+          bragantinoClubConfig,
+        );
+        final products = _unwrap(await bragantinoRepo.getProducts());
+        final allSkus = products.expand((p) => p.variations.map((v) => v.sku));
+        expect(allSkus.toSet(), hasLength(allSkus.length));
+        for (final p in products) {
+          expect(p.images, isNotEmpty, reason: p.id);
+          expect(p.thumbnail, isNotEmpty, reason: p.id);
+          expect(p.description, isNotEmpty, reason: p.id);
+          expect(p.price, greaterThan(0), reason: p.id);
+        }
+      },
+    );
+
+    test(
+      'getCategories do Bragantino usa só as categorias que o catálogo dele realmente tem',
+      () async {
+        final bragantinoRepo = MockStoreRepository(
+          StoreLocalStorage(bragantinoClubConfig),
+          bragantinoClubConfig,
+        );
+        final categories = _unwrap(await bragantinoRepo.getCategories());
+        expect(categories, isNotEmpty);
+        expect(
+          categories.map((c) => c.id),
+          containsAll(['uniforms', 'accessories', 'training', 'souvenirs']),
+        );
+      },
+    );
+  });
+
+  group(
+    'StoreListingCubit com o repositório REAL — prova que a Loja abre e lista o catálogo do Bragantino',
+    () {
+      test(
+        'load() com MockStoreRepository(bragantino) popula os 143 produtos reais',
+        () async {
+          final bragantinoRepo = MockStoreRepository(
+            StoreLocalStorage(bragantinoClubConfig),
+            bragantinoClubConfig,
+          );
+          final cubit = StoreListingCubit(bragantinoRepo);
+          await cubit.load();
+          addTearDown(cubit.close);
+
+          expect(cubit.state.allProducts, hasLength(143));
+          expect(
+            cubit.state.allProducts.every(
+              (p) => p.name.toLowerCase().contains('bragantino'),
+            ),
+            isTrue,
+          );
+          expect(cubit.state.visibleProducts, isNotEmpty);
+        },
+      );
+    },
+  );
+
   group('local persistence', () {
     test('cart is saved and reloaded across repository instances', () async {
       const cart = Cart(
@@ -136,7 +235,10 @@ void main() {
       );
       await repository.saveCart(cart);
 
-      final reloaded = MockStoreRepository(StoreLocalStorage(goiasClubConfig));
+      final reloaded = MockStoreRepository(
+        StoreLocalStorage(goiasClubConfig),
+        goiasClubConfig,
+      );
       final loaded = _unwrap(await reloaded.loadCart());
       expect(loaded.items, hasLength(1));
       expect(loaded.items.single.productId, 'uniform_01_female_fan');

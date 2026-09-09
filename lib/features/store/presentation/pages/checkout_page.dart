@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -605,6 +606,16 @@ class _DeliveryStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<CheckoutCubit>();
+    // "Retirar na loja" só existe pro clube que tem ponto de retirada REAL
+    // (`ClubConfig.integrations.pickupAddress != null`) — nunca um `if
+    // (club == bragantino)` hardcoded, e nunca mostrado como
+    // "indisponível"/placeholder: o clube sem endereço simplesmente não vê
+    // a opção, só entrega. Goiás (tem endereço) continua exatamente como
+    // sempre foi.
+    final hasPickup = sl<ClubConfig>().integrations.pickupAddress != null;
+    final effectiveMethod = hasPickup
+        ? state.fulfillmentMethod
+        : FulfillmentMethod.delivery;
     return _StepScaffold(
       state: state,
       primaryLabel: context.l10n.storeContinueButton,
@@ -612,8 +623,8 @@ class _DeliveryStep extends StatelessWidget {
       form: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _FulfillmentToggle(state: state),
-          if (state.fulfillmentMethod == FulfillmentMethod.delivery)
+          if (hasPickup) _FulfillmentToggle(state: state),
+          if (effectiveMethod == FulfillmentMethod.delivery)
             _DeliveryAddressSection(state: state)
           else
             _PickupSection(state: state),
