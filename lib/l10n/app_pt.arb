@@ -1424,6 +1424,14 @@
   "ticketsOriginPurchase": "Compra",
   "ticketsViewRelatedTicket": "Ver ingresso",
   "ticketsLoadUserDataError": "Não foi possível carregar seus dados. Tente novamente.",
+  "ticketsNotMemberTitle": "Você ainda não é sócio",
+  "ticketsNotMemberMessage": "O check-in é exclusivo pra quem já tem o {programName} ativo.",
+  "@ticketsNotMemberMessage": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
+  "ticketsNotMemberGoToMembershipButton": "Conhecer os planos",
   "ticketsRequestRefundButton": "Solicitar reembolso",
   "ticketsRefundConfirmTitle": "Solicitar reembolso",
   "ticketsRefundConfirmMessage": "Tem certeza de que deseja solicitar o reembolso deste ingresso?\n\nApós a confirmação, este ingresso deixará de ser válido.",

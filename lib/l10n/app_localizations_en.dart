@@ -2376,6 +2376,17 @@ class AppLocalizationsEn extends AppLocalizations {
       'Couldn\'t load your data. Please try again.';
 
   @override
+  String get ticketsNotMemberTitle => 'You\'re not a member yet';
+
+  @override
+  String ticketsNotMemberMessage(String programName) {
+    return 'Check-in is exclusive to members with an active $programName.';
+  }
+
+  @override
+  String get ticketsNotMemberGoToMembershipButton => 'See membership plans';
+
+  @override
   String get ticketsRequestRefundButton => 'Request refund';
 
   @override

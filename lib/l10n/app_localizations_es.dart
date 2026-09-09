@@ -2381,6 +2381,17 @@ class AppLocalizationsEs extends AppLocalizations {
       'No fue posible cargar tus datos. Inténtalo de nuevo.';
 
   @override
+  String get ticketsNotMemberTitle => 'Todavía no eres socio';
+
+  @override
+  String ticketsNotMemberMessage(String programName) {
+    return 'El check-in es exclusivo para quien ya tiene el $programName activo.';
+  }
+
+  @override
+  String get ticketsNotMemberGoToMembershipButton => 'Ver los planes';
+
+  @override
   String get ticketsRequestRefundButton => 'Solicitar reembolso';
 
   @override

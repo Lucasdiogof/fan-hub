@@ -4095,6 +4095,24 @@ abstract class AppLocalizations {
   /// **'Não foi possível carregar seus dados. Tente novamente.'**
   String get ticketsLoadUserDataError;
 
+  /// No description provided for @ticketsNotMemberTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você ainda não é sócio'**
+  String get ticketsNotMemberTitle;
+
+  /// No description provided for @ticketsNotMemberMessage.
+  ///
+  /// In pt, this message translates to:
+  /// **'O check-in é exclusivo pra quem já tem o {programName} ativo.'**
+  String ticketsNotMemberMessage(String programName);
+
+  /// No description provided for @ticketsNotMemberGoToMembershipButton.
+  ///
+  /// In pt, this message translates to:
+  /// **'Conhecer os planos'**
+  String get ticketsNotMemberGoToMembershipButton;
+
   /// No description provided for @ticketsRequestRefundButton.
   ///
   /// In pt, this message translates to:
