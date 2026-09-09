@@ -2,23 +2,23 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_block.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_category.dart';
 import 'package:goias_app/features/membership/domain/entities/faq_item.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-const _faqAssetPath = 'lib/assets/content/membership_faq.json';
-
 /// Fonte do conteúdo do FAQ. Supabase é a fonte da verdade (editável sem
-/// republicar o app); o asset local (extraído do HTML oficial do Sócio
-/// Esmeralda) é o fallback offline / tabela vazia. Carrega e faz o parse
-/// uma única vez por processo (`_cache`), reaproveitado por qualquer tela
-/// que precise do FAQ.
+/// republicar o app); o asset local (`ClubConfig.assets.membershipFaqAssetPath`
+/// — por clube, nunca um path fixo) é o fallback offline / tabela vazia.
+/// Carrega e faz o parse uma única vez por processo (`_cache`), reaproveitado
+/// por qualquer tela que precise do FAQ.
 class MembershipFaqDataSource {
-  MembershipFaqDataSource(this._client);
+  MembershipFaqDataSource(this._client, this._clubConfig);
 
   final SupabaseClient _client;
+  final ClubConfig _clubConfig;
 
   static List<FaqCategory>? _cache;
 
@@ -87,7 +87,9 @@ class MembershipFaqDataSource {
   }
 
   Future<List<FaqCategory>> _loadFromAsset() async {
-    final raw = await rootBundle.loadString(_faqAssetPath);
+    final path = _clubConfig.assets.membershipFaqAssetPath;
+    if (path == null) return const [];
+    final raw = await rootBundle.loadString(path);
     final json = jsonDecode(raw) as Map<String, dynamic>;
     return (json['categories'] as List<dynamic>)
         .map((c) => _parseCategory(c as Map<String, dynamic>))

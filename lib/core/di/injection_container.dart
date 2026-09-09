@@ -113,7 +113,7 @@ void setupDependencies() {
     () => SupabaseMembershipRepository(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<MembershipFaqDataSource>(
-    () => MembershipFaqDataSource(Supabase.instance.client),
+    () => MembershipFaqDataSource(Supabase.instance.client, sl()),
   );
   sl.registerLazySingleton<ViaCepDataSource>(() => ViaCepDataSource(sl()));
   sl.registerLazySingleton<IbgeLocationDataSource>(

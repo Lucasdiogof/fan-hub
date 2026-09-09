@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/features/news/domain/entities/news_article.dart';
@@ -41,6 +44,9 @@ Widget _wrap(NewsArticle article) {
 }
 
 void main() {
+  setUp(() => sl.registerSingleton<ClubConfig>(goiasClubConfig));
+  tearDown(() => sl.reset());
+
   testWidgets('shows title, category badge and every content block', (
     tester,
   ) async {

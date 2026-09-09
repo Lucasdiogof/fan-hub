@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -259,7 +261,10 @@ class _SourceFooter extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            context.l10n.newsSourceLabel,
+            context.l10n.newsSourceLabel(
+              sl<ClubConfig>().identity.code,
+              sl<ClubConfig>().identity.shortName.toUpperCase(),
+            ),
             style: TextStyle(
               fontSize: 10.5,
               fontWeight: FontWeight.w800,

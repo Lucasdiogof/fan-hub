@@ -1369,8 +1369,8 @@ abstract class AppLocalizations {
   /// No description provided for @arenaAchievementTitle.
   ///
   /// In pt, this message translates to:
-  /// **'LENDA ESMERALDINA'**
-  String get arenaAchievementTitle;
+  /// **'{clubCode, select, goias{LENDA ESMERALDINA} other{LENDA DO {club}}}'**
+  String arenaAchievementTitle(String clubCode, String club);
 
   /// No description provided for @arenaAchievementMessage.
   ///
@@ -3120,8 +3120,8 @@ abstract class AppLocalizations {
   /// No description provided for @newsSourceLabel.
   ///
   /// In pt, this message translates to:
-  /// **'FONTE: GOIÁS ESPORTE CLUBE'**
-  String get newsSourceLabel;
+  /// **'{clubCode, select, goias{FONTE: GOIÁS ESPORTE CLUBE} other{FONTE: {club}}}'**
+  String newsSourceLabel(String clubCode, String club);
 
   /// No description provided for @newsOpenOriginal.
   ///
@@ -3942,8 +3942,8 @@ abstract class AppLocalizations {
   /// No description provided for @ticketsHomeCrowdLabel.
   ///
   /// In pt, this message translates to:
-  /// **'TORCIDA DO GOIÁS'**
-  String get ticketsHomeCrowdLabel;
+  /// **'{clubCode, select, goias{TORCIDA DO GOIÁS} other{TORCIDA DO {club}}}'**
+  String ticketsHomeCrowdLabel(String clubCode, String club);
 
   /// No description provided for @ticketsAwayCrowdLabel.
   ///
@@ -4776,8 +4776,8 @@ abstract class AppLocalizations {
   /// No description provided for @clubSongsSection.
   ///
   /// In pt, this message translates to:
-  /// **'MÚSICAS ESMERALDINAS'**
-  String get clubSongsSection;
+  /// **'{clubCode, select, goias{MÚSICAS ESMERALDINAS} other{MÚSICAS DO {club}}}'**
+  String clubSongsSection(String clubCode, String club);
 
   /// No description provided for @clubLyricsLabel.
   ///

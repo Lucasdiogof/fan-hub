@@ -54,6 +54,7 @@ const goiasClubConfig = ClubConfig(
     // dots aqui, comportamento visual idêntico ao de sempre.
     storeHomeBanners: ['lib/assets/goias_store.png'],
     storeCatalogAssetPath: 'lib/assets/content/store_products.json',
+    membershipFaqAssetPath: 'lib/assets/content/membership_faq.json',
     splashVideo: 'lib/assets/videos/goias_splash.mp4',
     squadPhotos: squadPhotoAssets,
     // Pro Goiás os dois mapas coincidem (mesmos assets locais servem tanto

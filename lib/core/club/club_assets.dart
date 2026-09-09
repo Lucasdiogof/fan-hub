@@ -19,6 +19,7 @@ class ClubAssets {
     required this.storeBanner,
     this.storeHomeBanners = const [],
     this.storeCatalogAssetPath,
+    this.membershipFaqAssetPath,
     this.splashVideo,
     this.squadPhotos = const {},
     this.guessPlayerPhotos = const {},
@@ -56,6 +57,17 @@ class ClubAssets {
   /// pro JSON de outro clube) — combinado com `hasStore=false`, a tela nem
   /// chega a ser aberta enquanto isso for verdade.
   final String? storeCatalogAssetPath;
+
+  /// Path do JSON bundled com o FAQ do Sócio (`MembershipFaqDataSource`,
+  /// fallback offline quando o Supabase não devolve linha nenhuma) — **por
+  /// clube**, nunca um path fixo lido direto pelo datasource. `null` quando
+  /// o clube não tem FAQ local próprio coletado: o fallback offline vira 0
+  /// categorias (nunca lança, nunca cai pro FAQ de outro clube) — hoje é o
+  /// caso do Bragantino, que também tem `hasMembership=false`, então a tela
+  /// nem chega a abrir enquanto isso for verdade; mesmo assim o path fica
+  /// nullable e não aponta pro JSON do Goiás, pra nunca vazar se
+  /// `hasMembership` for ligado antes de existir FAQ real do Bragantino.
+  final String? membershipFaqAssetPath;
 
   /// Vídeo da splash (`VideoSplashView`) — `null` quando o clube ainda não
   /// tem vídeo oficial próprio. NUNCA cai pro vídeo de outro clube: `null`
