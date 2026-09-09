@@ -172,9 +172,7 @@ class TacticalIdentityEngine {
     return {
       'x': stats(references.map((c) => c.x).toList()),
       'y': stats(references.map((c) => c.y).toList()),
-      'pressing': stats(
-        references.map((c) => c.pressing.toDouble()).toList(),
-      ),
+      'pressing': stats(references.map((c) => c.pressing.toDouble()).toList()),
       'blockHeight': stats(
         references.map((c) => c.blockHeight.toDouble()).toList(),
       ),

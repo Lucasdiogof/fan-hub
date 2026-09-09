@@ -5,8 +5,9 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical
 /// Governa só a NAVEGAÇÃO e a coleta de respostas do questionário — nunca
 /// calcula eixo/arquétipo/técnico aqui dentro (isso é
 /// `TacticalIdentityEngine`, chamado só quando as 10 respostas já existem,
-/// ver `finalAnswers`). Nenhuma chamada a ranking/pontuação/XP/streak: este
-/// jogo não participa de nada disso.
+/// ver `finalAnswers`). A pontuação (50 pontos só na 1ª conclusão, ver
+/// `TacticalIdentityResultPage.initState`) mora na tela de resultado, não
+/// aqui — este Cubit nunca fala com ranking/RPC.
 class TacticalIdentityCubit extends Cubit<TacticalIdentityState> {
   TacticalIdentityCubit() : super(TacticalIdentityState());
 

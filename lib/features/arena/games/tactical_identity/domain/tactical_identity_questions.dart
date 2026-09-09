@@ -50,12 +50,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         risk: 1,
         structuralFluidity: -1,
       ),
-      TacticalOption(
-        id: 'q01_d',
-        deltaX: 1,
-        deltaY: 2,
-        structuralFluidity: 2,
-      ),
+      TacticalOption(id: 'q01_d', deltaX: 1, deltaY: 2, structuralFluidity: 2),
     ],
   ),
   TacticalQuestion(
@@ -69,12 +64,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         risk: -1,
         structuralFluidity: -1,
       ),
-      TacticalOption(
-        id: 'q02_b',
-        deltaX: -1,
-        deltaY: 2,
-        structuralFluidity: 2,
-      ),
+      TacticalOption(id: 'q02_b', deltaX: -1, deltaY: 2, structuralFluidity: 2),
       TacticalOption(
         id: 'q02_c',
         deltaX: 2,
@@ -84,12 +74,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         risk: 2,
         structuralFluidity: -1,
       ),
-      TacticalOption(
-        id: 'q02_d',
-        deltaX: 1,
-        deltaY: 2,
-        structuralFluidity: 2,
-      ),
+      TacticalOption(id: 'q02_d', deltaX: 1, deltaY: 2, structuralFluidity: 2),
     ],
   ),
   TacticalQuestion(
@@ -174,12 +159,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         risk: 1,
         structuralFluidity: -2,
       ),
-      TacticalOption(
-        id: 'q05_b',
-        deltaX: -1,
-        deltaY: 2,
-        structuralFluidity: 2,
-      ),
+      TacticalOption(id: 'q05_b', deltaX: -1, deltaY: 2, structuralFluidity: 2),
       TacticalOption(
         id: 'q05_c',
         deltaX: 2,
@@ -211,18 +191,8 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         risk: -1,
         structuralFluidity: -2,
       ),
-      TacticalOption(
-        id: 'q06_b',
-        deltaX: -1,
-        deltaY: 2,
-        structuralFluidity: 2,
-      ),
-      TacticalOption(
-        id: 'q06_c',
-        deltaX: 1,
-        deltaY: 1,
-        structuralFluidity: 1,
-      ),
+      TacticalOption(id: 'q06_b', deltaX: -1, deltaY: 2, structuralFluidity: 2),
+      TacticalOption(id: 'q06_c', deltaX: 1, deltaY: 1, structuralFluidity: 1),
       TacticalOption(
         id: 'q06_d',
         deltaX: 1,
@@ -242,12 +212,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         deltaY: -2,
         structuralFluidity: -2,
       ),
-      TacticalOption(
-        id: 'q07_b',
-        deltaX: -1,
-        deltaY: 1,
-        structuralFluidity: 1,
-      ),
+      TacticalOption(id: 'q07_b', deltaX: -1, deltaY: 1, structuralFluidity: 1),
       TacticalOption(
         id: 'q07_c',
         deltaX: 2,
@@ -255,12 +220,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         blockHeight: 1,
         risk: 1,
       ),
-      TacticalOption(
-        id: 'q07_d',
-        deltaX: -2,
-        deltaY: 1,
-        structuralFluidity: 1,
-      ),
+      TacticalOption(id: 'q07_d', deltaX: -2, deltaY: 1, structuralFluidity: 1),
     ],
   ),
   TacticalQuestion(
@@ -290,12 +250,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         blockHeight: -1,
         risk: -1,
       ),
-      TacticalOption(
-        id: 'q08_d',
-        deltaX: 2,
-        deltaY: -1,
-        pressing: 1,
-      ),
+      TacticalOption(id: 'q08_d', deltaX: 2, deltaY: -1, pressing: 1),
     ],
   ),
   TacticalQuestion(
@@ -342,12 +297,7 @@ const tacticalIdentityQuestions = <TacticalQuestion>[
         deltaY: -2,
         structuralFluidity: -2,
       ),
-      TacticalOption(
-        id: 'q10_b',
-        deltaX: -1,
-        deltaY: 2,
-        structuralFluidity: 2,
-      ),
+      TacticalOption(id: 'q10_b', deltaX: -1, deltaY: 2, structuralFluidity: 2),
       TacticalOption(
         id: 'q10_c',
         deltaX: 2,

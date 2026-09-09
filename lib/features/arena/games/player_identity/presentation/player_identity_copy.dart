@@ -26,9 +26,8 @@ extension PlayerIdentityCopy on BuildContext {
   String get playerIntroDescription =>
       l10n.playerIntroDescription(sl<ClubConfig>().identity.shortName);
 
-  String get playerIdentityCardSubtitleNew => l10n.playerIdentityCardSubtitleNew(
-    sl<ClubConfig>().identity.shortName,
-  );
+  String get playerIdentityCardSubtitleNew =>
+      l10n.playerIdentityCardSubtitleNew(sl<ClubConfig>().identity.shortName);
 
   String get playerResultReferencesTitle => l10n
       .playerResultReferencesTitle(sl<ClubConfig>().identity.shortName)

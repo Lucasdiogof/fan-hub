@@ -57,7 +57,11 @@ void main() {
 
     test('every other option follows the default +3/+1 split', () {
       for (var qi = 0; qi < playerIdentityQuestions.length; qi++) {
-        for (var oi = 0; oi < playerIdentityQuestions[qi].options.length; oi++) {
+        for (
+          var oi = 0;
+          oi < playerIdentityQuestions[qi].options.length;
+          oi++
+        ) {
           if (qi == 6 && oi == 3) continue; // a exceção documentada acima.
           final option = playerIdentityQuestions[qi].options[oi];
           expect(option.primaryPoints, 3);
@@ -68,15 +72,18 @@ void main() {
   });
 
   group('rawScore', () {
-    test('sums only the contributions of the selected answers for a dimension', () {
-      final answers = [_optionFor(_c), _optionFor(_c), _optionFor(_d)];
-      final raw = engine.rawScore(answers, _c);
-      // As duas primeiras contribuem +3 (primária) pra criatividade; a
-      // terceira só contribui se sua secundária também for criatividade —
-      // como pegamos por primária, isso não é garantido, então só
-      // verificamos o piso: pelo menos as duas primárias contam.
-      expect(raw, greaterThanOrEqualTo(6));
-    });
+    test(
+      'sums only the contributions of the selected answers for a dimension',
+      () {
+        final answers = [_optionFor(_c), _optionFor(_c), _optionFor(_d)];
+        final raw = engine.rawScore(answers, _c);
+        // As duas primeiras contribuem +3 (primária) pra criatividade; a
+        // terceira só contribui se sua secundária também for criatividade —
+        // como pegamos por primária, isso não é garantido, então só
+        // verificamos o piso: pelo menos as duas primárias contam.
+        expect(raw, greaterThanOrEqualTo(6));
+      },
+    );
 
     test('empty answers score zero on every dimension', () {
       for (final dimension in PlayerIdentityDimension.values) {
@@ -103,7 +110,8 @@ void main() {
           var best = 0;
           for (final option in question.options) {
             var contribution = 0;
-            if (option.primary == dimension) contribution += option.primaryPoints;
+            if (option.primary == dimension)
+              contribution += option.primaryPoints;
             if (option.secondary == dimension) {
               contribution += option.secondaryPoints;
             }
@@ -139,9 +147,12 @@ void main() {
       }
     });
 
-    test('a dimension with zero opportunities defaults to the floor, never a crash', () {
-      expect(engine.normalizedScore(0, 0), 25);
-    });
+    test(
+      'a dimension with zero opportunities defaults to the floor, never a crash',
+      () {
+        expect(engine.normalizedScore(0, 0), 25);
+      },
+    );
   });
 
   group('distanceTo — RMS in standardized (z-score) space', () {
@@ -213,19 +224,25 @@ void main() {
       final ranked = engine.rankReferences(attributes);
       expect(ranked.length, 21);
       for (var i = 1; i < ranked.length; i++) {
-        expect(ranked[i].distance, greaterThanOrEqualTo(ranked[i - 1].distance));
+        expect(
+          ranked[i].distance,
+          greaterThanOrEqualTo(ranked[i - 1].distance),
+        );
       }
     });
 
-    test('closestReferences returns exactly the top 3, matching rankReferences', () {
-      final top3 = engine.closestReferences(attributes);
-      expect(top3.length, 3);
-      final ranked = engine.rankReferences(attributes);
-      expect(
-        top3.map((a) => a.reference.id),
-        ranked.take(3).map((a) => a.reference.id),
-      );
-    });
+    test(
+      'closestReferences returns exactly the top 3, matching rankReferences',
+      () {
+        final top3 = engine.closestReferences(attributes);
+        expect(top3.length, 3);
+        final ranked = engine.rankReferences(attributes);
+        expect(
+          top3.map((a) => a.reference.id),
+          ranked.take(3).map((a) => a.reference.id),
+        );
+      },
+    );
   });
 
   group('affinityFor — 40–98 bounds', () {
@@ -258,45 +275,54 @@ void main() {
       );
     });
 
-    test('tie-break: liderança beats tática beats criatividade, in that order', () {
-      const tieLeadershipTactics = PlayerIdentityAttributes(
-        creativity: 45,
-        definition: 45,
-        leadership: 90,
-        intensity: 45,
-        technique: 45,
-        tactics: 90,
-      );
-      expect(
-        engine.classifyArchetype(tieLeadershipTactics),
-        PlayerIdentityArchetype.leadership,
-      );
+    test(
+      'tie-break: liderança beats tática beats criatividade, in that order',
+      () {
+        const tieLeadershipTactics = PlayerIdentityAttributes(
+          creativity: 45,
+          definition: 45,
+          leadership: 90,
+          intensity: 45,
+          technique: 45,
+          tactics: 90,
+        );
+        expect(
+          engine.classifyArchetype(tieLeadershipTactics),
+          PlayerIdentityArchetype.leadership,
+        );
 
-      const tieTacticsCreativity = PlayerIdentityAttributes(
-        creativity: 90,
-        definition: 45,
-        leadership: 45,
-        intensity: 45,
-        technique: 45,
-        tactics: 90,
-      );
-      expect(
-        engine.classifyArchetype(tieTacticsCreativity),
-        PlayerIdentityArchetype.tactics,
-      );
-    });
+        const tieTacticsCreativity = PlayerIdentityAttributes(
+          creativity: 90,
+          definition: 45,
+          leadership: 45,
+          intensity: 45,
+          technique: 45,
+          tactics: 90,
+        );
+        expect(
+          engine.classifyArchetype(tieTacticsCreativity),
+          PlayerIdentityArchetype.tactics,
+        );
+      },
+    );
 
-    test('"O Completo": max - min <= 8 overrides whichever dimension would win', () {
-      const flat = PlayerIdentityAttributes(
-        creativity: 70,
-        definition: 72,
-        leadership: 74,
-        intensity: 68,
-        technique: 71,
-        tactics: 69,
-      );
-      expect(engine.classifyArchetype(flat), PlayerIdentityArchetype.complete);
-    });
+    test(
+      '"O Completo": max - min <= 8 overrides whichever dimension would win',
+      () {
+        const flat = PlayerIdentityAttributes(
+          creativity: 70,
+          definition: 72,
+          leadership: 74,
+          intensity: 68,
+          technique: 71,
+          tactics: 69,
+        );
+        expect(
+          engine.classifyArchetype(flat),
+          PlayerIdentityArchetype.complete,
+        );
+      },
+    );
 
     test('a 9-point spread is NOT flat enough for "O Completo"', () {
       const almostFlat = PlayerIdentityAttributes(
@@ -364,21 +390,15 @@ void main() {
         expect(cubit.state.allAnswered, isTrue);
         final answers = cubit.finalAnswers;
         expect(answers.length, playerIdentityQuestions.length);
-        expect(
-          answers.first.id,
-          playerIdentityQuestions.first.options[3].id,
-        );
+        expect(answers.first.id, playerIdentityQuestions.first.options[3].id);
       },
     );
   });
 
-  test(
-    'PlayerIdentityCubit never depends on ranking/score infrastructure — '
-    'its constructor takes zero arguments, so it structurally cannot call '
-    'ArenaRankingRepository or any equivalent',
-    () {
-      final cubit = PlayerIdentityCubit();
-      expect(cubit.state.index, 0);
-    },
-  );
+  test('PlayerIdentityCubit never depends on ranking/score infrastructure — '
+      'its constructor takes zero arguments, so it structurally cannot call '
+      'ArenaRankingRepository or any equivalent', () {
+    final cubit = PlayerIdentityCubit();
+    expect(cubit.state.index, 0);
+  });
 }

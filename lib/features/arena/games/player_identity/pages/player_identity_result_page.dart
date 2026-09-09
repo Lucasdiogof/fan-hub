@@ -15,6 +15,8 @@ import 'package:goias_app/features/arena/games/player_identity/presentation/play
 import 'package:goias_app/features/arena/games/player_identity/widgets/player_identity_attribute_bar.dart';
 import 'package:goias_app/features/arena/games/player_identity/widgets/player_identity_reference_sheet.dart';
 import 'package:goias_app/features/arena/games/player_identity/widgets/player_identity_share_card.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/shared/utils/share_field_image.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -44,6 +46,16 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
       sl<PlayerIdentityRepository>()
           .saveResult(widget.result)
           .catchError((_) {}),
+    );
+    // 50 pontos só na PRIMEIRA vez que o perfil é descoberto — mesmo
+    // mecanismo de `TacticalIdentityResultPage` (ver comentário lá):
+    // anti-replay mora no servidor, ancorado no `item_id` fixo 'profile'.
+    unawaited(
+      sl<ArenaRankingRepository>().recordScore(
+        gameId: ArenaGameIds.playerIdentity,
+        itemId: ArenaGameIds.profileItemId,
+        eventType: 'completed',
+      ),
     );
   }
 
@@ -138,7 +150,7 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
                             const Spacer(),
                             Text(
                               context.playerIdentityGameTitle.toUpperCase(),
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 11,
                                 fontWeight: FontWeight.w800,
@@ -155,9 +167,7 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
                             child: LayoutBuilder(
                               builder: (context, constraints) {
                                 final wide = constraints.maxWidth >= 760;
-                                final profile = _ProfileSection(
-                                  result: result,
-                                );
+                                final profile = _ProfileSection(result: result);
                                 final attributes = _AttributesSection(
                                   result: result,
                                 );
@@ -206,9 +216,7 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
                                               ],
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: AppSpacing.xl,
-                                          ),
+                                          const SizedBox(width: AppSpacing.xl),
                                           Expanded(flex: 4, child: attributes),
                                         ],
                                       ),
@@ -270,8 +278,8 @@ class _ProfileSection extends StatelessWidget {
         children: [
           Text(
             l10n.playerResultYourProfile,
-            style: const TextStyle(
-              color: ArenaColors.goiasOutfield,
+            style: TextStyle(
+              color: sl<ClubConfig>().branding.light.primary,
               fontSize: 11.5,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.2,
@@ -280,7 +288,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             result.archetype.displayName.toUpperCase(),
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black,
               fontSize: 26,
               fontWeight: FontWeight.w900,
@@ -290,7 +298,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             result.archetype.description,
-            style: const TextStyle(
+            style: TextStyle(
               color: Color(0xFF3A3F3D),
               fontSize: 14,
               height: 1.45,
@@ -299,8 +307,8 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.lg),
           Text(
             l10n.playerResultTraitsTitle,
-            style: const TextStyle(
-              color: ArenaColors.goiasOutfield,
+            style: TextStyle(
+              color: sl<ClubConfig>().branding.light.primary,
               fontSize: 11,
               fontWeight: FontWeight.w800,
               letterSpacing: 1,
@@ -318,13 +326,15 @@ class _ProfileSection extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: ArenaColors.goiasOutfield.withValues(alpha: 0.10),
+                    color: sl<ClubConfig>().branding.light.primary.withValues(
+                      alpha: 0.10,
+                    ),
                     borderRadius: BorderRadius.circular(999),
                   ),
                   child: Text(
                     trait.label,
-                    style: const TextStyle(
-                      color: ArenaColors.goiasOutfield,
+                    style: TextStyle(
+                      color: sl<ClubConfig>().branding.light.primary,
                       fontSize: 12.5,
                       fontWeight: FontWeight.w800,
                     ),
@@ -386,8 +396,8 @@ class _ReferencesSection extends StatelessWidget {
         children: [
           Text(
             context.playerResultReferencesTitle,
-            style: const TextStyle(
-              color: ArenaColors.goiasOutfield,
+            style: TextStyle(
+              color: sl<ClubConfig>().branding.light.primary,
               fontSize: 11.5,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.2,
@@ -429,13 +439,15 @@ class _ReferenceRow extends StatelessWidget {
               height: 26,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: ArenaColors.goiasOutfield.withValues(alpha: 0.10),
+                color: sl<ClubConfig>().branding.light.primary.withValues(
+                  alpha: 0.10,
+                ),
                 shape: BoxShape.circle,
               ),
               child: Text(
                 '$index',
-                style: const TextStyle(
-                  color: ArenaColors.goiasOutfield,
+                style: TextStyle(
+                  color: sl<ClubConfig>().branding.light.primary,
                   fontSize: 12.5,
                   fontWeight: FontWeight.w900,
                 ),
@@ -448,7 +460,7 @@ class _ReferenceRow extends StatelessWidget {
                 children: [
                   Text(
                     affinity.reference.name,
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.w800,
@@ -457,7 +469,7 @@ class _ReferenceRow extends StatelessWidget {
                   Text(
                     '${sl<ClubConfig>().identity.shortName} • '
                     '${affinity.reference.period}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Color(0xFF6B6F6D),
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -470,8 +482,8 @@ class _ReferenceRow extends StatelessWidget {
               l10n.playerIdentityAffinityLabel(
                 affinity.affinity.toStringAsFixed(1),
               ),
-              style: const TextStyle(
-                color: ArenaColors.goiasOutfield,
+              style: TextStyle(
+                color: sl<ClubConfig>().branding.light.primary,
                 fontSize: 12.5,
                 fontWeight: FontWeight.w800,
               ),
@@ -514,18 +526,18 @@ class _ActionsSection extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.ios_share_rounded,
                     size: 19,
-                    color: ArenaColors.goiasOutfield,
+                    color: sl<ClubConfig>().branding.light.primary,
                   ),
                   const SizedBox(width: AppSpacing.sm),
                   Text(
                     l10n.playerResultShare,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w800,
-                      color: ArenaColors.goiasOutfield,
+                      color: sl<ClubConfig>().branding.light.primary,
                     ),
                   ),
                 ],

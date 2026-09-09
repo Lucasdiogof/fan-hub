@@ -16,6 +16,8 @@ import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactica
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_coach_detail_sheet.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_map.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/widgets/tactical_share_card.dart';
+import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
+import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/shared/utils/share_field_image.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -53,6 +55,19 @@ class _TacticalIdentityResultPageState
       sl<TacticalIdentityRepository>()
           .saveResult(widget.result)
           .catchError((_) {}),
+    );
+    // 50 pontos só na PRIMEIRA vez que o perfil é descoberto — a regra
+    // mora no servidor (`arena_record_score`), aqui só reporta "o
+    // resultado existe" (chamado toda vez que esta tela abre, inclusive
+    // ao só REVER um resultado salvo — o anti-replay da RPC, ancorado no
+    // `item_id` fixo 'profile', já garante 0 pontos em qualquer chamada
+    // depois da primeira, nunca duplica).
+    unawaited(
+      sl<ArenaRankingRepository>().recordScore(
+        gameId: ArenaGameIds.tacticalIdentity,
+        itemId: ArenaGameIds.profileItemId,
+        eventType: 'completed',
+      ),
     );
   }
 
@@ -151,7 +166,7 @@ class _TacticalIdentityResultPageState
                             const Spacer(),
                             Text(
                               l10n.tacticalIdentityGameTitle.toUpperCase(),
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white70,
                                 fontSize: 11,
                                 fontWeight: FontWeight.w800,
@@ -283,8 +298,8 @@ class _ProfileSection extends StatelessWidget {
         children: [
           Text(
             l10n.tacticalResultYourProfile,
-            style: const TextStyle(
-              color: ArenaColors.goiasOutfield,
+            style: TextStyle(
+              color: sl<ClubConfig>().branding.light.primary,
               fontSize: 11.5,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.2,
@@ -293,7 +308,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             result.archetype.displayName.toUpperCase(),
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black,
               fontSize: 26,
               fontWeight: FontWeight.w900,
@@ -303,7 +318,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             result.archetype.description,
-            style: const TextStyle(
+            style: TextStyle(
               color: Color(0xFF3A3F3D),
               fontSize: 14,
               height: 1.45,
@@ -349,8 +364,8 @@ class _MapSection extends StatelessWidget {
         children: [
           Text(
             l10n.tacticalResultTacticalMap,
-            style: const TextStyle(
-              color: ArenaColors.goiasOutfield,
+            style: TextStyle(
+              color: sl<ClubConfig>().branding.light.primary,
               fontSize: 11.5,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.2,
@@ -392,8 +407,8 @@ class _ReferencesSection extends StatelessWidget {
         children: [
           Text(
             context.tacticalResultMainReference,
-            style: const TextStyle(
-              color: ArenaColors.goiasOutfield,
+            style: TextStyle(
+              color: sl<ClubConfig>().branding.light.primary,
               fontSize: 11.5,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.2,
@@ -402,7 +417,7 @@ class _ReferencesSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             top.coach.coach,
-            style: const TextStyle(
+            style: TextStyle(
               color: Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.w900,
@@ -410,7 +425,7 @@ class _ReferencesSection extends StatelessWidget {
           ),
           Text(
             '${sl<ClubConfig>().identity.shortName} • ${top.coach.period}',
-            style: const TextStyle(
+            style: TextStyle(
               color: Color(0xFF6B6F6D),
               fontSize: 12.5,
               fontWeight: FontWeight.w700,
@@ -424,8 +439,8 @@ class _ReferencesSection extends StatelessWidget {
             const SizedBox(height: AppSpacing.md),
             Text(
               l10n.tacticalResultOtherReferences,
-              style: const TextStyle(
-                color: ArenaColors.goiasOutfield,
+              style: TextStyle(
+                color: sl<ClubConfig>().branding.light.primary,
                 fontSize: 11,
                 fontWeight: FontWeight.w800,
                 letterSpacing: 1,
@@ -458,7 +473,7 @@ class _OtherReferenceRow extends StatelessWidget {
             children: [
               Text(
                 affinity.coach.coach,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.black,
                   fontSize: 13.5,
                   fontWeight: FontWeight.w800,
@@ -467,18 +482,15 @@ class _OtherReferenceRow extends StatelessWidget {
               Text(
                 '${sl<ClubConfig>().identity.shortName} • '
                 '${affinity.coach.period}',
-                style: const TextStyle(
-                  color: Color(0xFF6B6F6D),
-                  fontSize: 11.5,
-                ),
+                style: TextStyle(color: Color(0xFF6B6F6D), fontSize: 11.5),
               ),
             ],
           ),
         ),
         Text(
           '${affinity.affinity.toStringAsFixed(1)}%',
-          style: const TextStyle(
-            color: ArenaColors.goiasOutfield,
+          style: TextStyle(
+            color: sl<ClubConfig>().branding.light.primary,
             fontSize: 15,
             fontWeight: FontWeight.w900,
           ),
@@ -502,13 +514,13 @@ class _AffinityPill extends StatelessWidget {
         vertical: 6,
       ),
       decoration: BoxDecoration(
-        color: ArenaColors.goiasOutfield.withValues(alpha: 0.10),
+        color: sl<ClubConfig>().branding.light.primary.withValues(alpha: 0.10),
         borderRadius: BorderRadius.circular(999),
       ),
       child: Text(
         l10n.tacticalIdentityAffinityLabel(affinity.toStringAsFixed(1)),
-        style: const TextStyle(
-          color: ArenaColors.goiasOutfield,
+        style: TextStyle(
+          color: sl<ClubConfig>().branding.light.primary,
           fontSize: 12.5,
           fontWeight: FontWeight.w800,
         ),
@@ -544,18 +556,18 @@ class _ActionsSection extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.ios_share_rounded,
                     size: 19,
-                    color: ArenaColors.goiasOutfield,
+                    color: sl<ClubConfig>().branding.light.primary,
                   ),
                   const SizedBox(width: AppSpacing.sm),
                   Text(
                     l10n.tacticalResultShare,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w800,
-                      color: ArenaColors.goiasOutfield,
+                      color: sl<ClubConfig>().branding.light.primary,
                     ),
                   ),
                 ],

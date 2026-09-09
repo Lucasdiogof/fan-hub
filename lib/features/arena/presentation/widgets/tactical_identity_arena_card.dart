@@ -34,7 +34,15 @@ class TacticalIdentityArenaCard extends StatelessWidget {
 
     return Material(
       color: colors.secondary,
-      borderRadius: BorderRadius.circular(AppRadius.card),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.card),
+        // Desafio já completado ganha uma borda de destaque — mesma cor
+        // do CTA/ícone, pra bater o olho na Arena que este perfil já foi
+        // descoberto (nunca jogado fica sem borda nenhuma, igual antes).
+        side: completed != null
+            ? BorderSide(color: colors.primary, width: 1.5)
+            : BorderSide.none,
+      ),
       child: InkWell(
         onTap: completed == null ? onStart : onViewResult,
         borderRadius: BorderRadius.circular(AppRadius.card),
@@ -86,9 +94,14 @@ class TacticalIdentityArenaCard extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: completed == null ? 13 : 13.5,
                             height: 1.35,
-                            color: colors.textSecondary,
+                            fontWeight: completed == null
+                                ? FontWeight.w400
+                                : FontWeight.w700,
+                            color: completed == null
+                                ? colors.textSecondary
+                                : colors.primary,
                           ),
                         ),
                       ],

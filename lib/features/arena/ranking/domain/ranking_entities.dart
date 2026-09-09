@@ -22,6 +22,14 @@ class ArenaGameIds {
   static const lineup = 'lineup';
   static const careerPath = 'career_path';
   static const guessPlayer = 'guess_player';
+  static const tacticalIdentity = 'tactical_identity';
+  static const playerIdentity = 'player_identity';
+
+  /// `item_id` fixo dos 2 jogos de perfil acima — eles não têm coleção de
+  /// conteúdo (pergunta/jogador/partida), só um resultado único por
+  /// usuário, então o anti-replay da RPC (`arena_record_score`) ancora
+  /// nesta chave constante, nunca um id de conteúdo real.
+  static const profileItemId = 'profile';
 }
 
 class RankingEntry extends Equatable {
