@@ -109,7 +109,8 @@ class _SquadListView extends StatelessWidget {
                                     members: state.members
                                         .where(
                                           (member) =>
-                                              member.positionGroup == group,
+                                              member.positionGroup == group &&
+                                              _hasResolvablePhoto(member),
                                         )
                                         .toList(growable: false),
                                   ),
@@ -131,6 +132,21 @@ class _SquadListView extends StatelessWidget {
 }
 
 Widget _centered(Widget child) => viewportCentered(child);
+
+/// Atleta sem foto (nem local do clube ativo, nem `photoUrl` do banco)
+/// some da lista — decisão do usuário: "como se o cara não fosse
+/// jogador" enquanto não há foto, nunca um círculo genérico/número.
+/// Nada é apagado: `member` continua existindo no `state.members`
+/// (usado em outras telas, ex. busca/detalhe por id) — é só este filtro
+/// visual da listagem por posição. Basta a foto chegar (asset novo no
+/// mapa do clube, ou `photoUrl` populado no banco) pra reaparecer sem
+/// mexer em código nenhum.
+bool _hasResolvablePhoto(SquadMember member) {
+  final asset = sl<ClubConfig>().assets.squadPhotos[member.id];
+  if (asset != null) return true;
+  final url = member.photoUrl;
+  return url != null && url.isNotEmpty;
+}
 
 class _PositionGroupSection extends StatelessWidget {
   const _PositionGroupSection({required this.title, required this.members});

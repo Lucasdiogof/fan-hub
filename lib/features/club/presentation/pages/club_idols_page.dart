@@ -187,27 +187,46 @@ class _IdolAvatar extends StatelessWidget {
     return (first + last).toUpperCase();
   }
 
+  static bool _isNetworkUrl(String value) =>
+      value.startsWith('http://') || value.startsWith('https://');
+
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     final asset = photoAsset;
     const size = 52.0;
+    Widget image;
+    if (asset == null || asset.isEmpty) {
+      image = _InitialsText(initials: _initials);
+    } else if (_isNetworkUrl(asset)) {
+      // Foto do elenco atual (CDN oficial do clube) — mesmo padrão de
+      // `SquadAvatar`/`GuessBlurredPhoto`: [photoAsset] pode ser um asset
+      // local (histórico) ou uma URL remota (jogador ainda no elenco).
+      image = Image.network(
+        asset,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) =>
+            _InitialsText(initials: _initials),
+      );
+    } else {
+      image = Image.asset(
+        asset,
+        width: size,
+        height: size,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) =>
+            _InitialsText(initials: _initials),
+      );
+    }
     return ClipOval(
       child: Container(
         width: size,
         height: size,
         alignment: Alignment.center,
         color: colors.secondary,
-        child: asset != null && asset.isNotEmpty
-            ? Image.asset(
-                asset,
-                width: size,
-                height: size,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    _InitialsText(initials: _initials),
-              )
-            : _InitialsText(initials: _initials),
+        child: image,
       ),
     );
   }

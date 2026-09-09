@@ -84,9 +84,7 @@ class _GuessPlayerLoaderState extends State<_GuessPlayerLoader> {
       builder: (context, snapshot) {
         final cubit = snapshot.data;
         if (cubit == null) {
-          return const Scaffold(
-            body: Center(child: GoiasLoadingIndicator()),
-          );
+          return const Scaffold(body: Center(child: GoiasLoadingIndicator()));
         }
         return BlocProvider.value(
           value: cubit,

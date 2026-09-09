@@ -56,7 +56,8 @@ const goiasGuessPlayerPhotos = {
   'walter': 'lib/assets/games/guess_player/goias/walter.png',
   'willean_lepo': 'lib/assets/games/guess_player/goias/willean_lepo.png',
   'william_matheus': 'lib/assets/games/guess_player/goias/william_matheus.png',
-  'willian_oliveira': 'lib/assets/games/guess_player/goias/willian_oliveira.png',
+  'willian_oliveira':
+      'lib/assets/games/guess_player/goias/willian_oliveira.png',
   'ze_hugo': 'lib/assets/games/guess_player/goias/ze_hugo.png',
   'ze_ricardo': 'lib/assets/games/guess_player/goias/ze_ricardo.png',
 };

@@ -169,9 +169,12 @@ class _PlayerProfileHeader extends StatelessWidget {
 
 /// Glifo oficial reaproveitado de `SocialLinksData` (mesmo usado no
 /// Perfil) — evita duplicar o SVG do Instagram numa segunda constante.
-final _instagramSvgPath = SocialLinksData.all
-    .firstWhere((link) => link.name == 'Instagram')
-    .svgPathData!;
+/// Acessor direto, NUNCA via `.all` (que só lista as redes do CLUBE ativo
+/// com URL configurada — um clube sem Instagram próprio configurado,
+/// como o Bragantino hoje, tem `.all` sem entrada "Instagram", e o
+/// `firstWhere` antigo quebrava com "Bad state: No element" ao abrir
+/// qualquer atleta com `instagramUrl` próprio preenchido).
+const _instagramSvgPath = SocialLinksData.instagramSvgPathData;
 
 class _InstagramButton extends StatelessWidget {
   const _InstagramButton({required this.member});

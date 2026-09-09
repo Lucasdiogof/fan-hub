@@ -24,7 +24,10 @@ class GuessPlayerStorage {
   bool get _isGoiasLegacyEligible => _clubConfig.identity.code == 'goias';
   ClubScopedStorageKey get _keys => ClubScopedStorageKey(_clubConfig);
 
-  Future<String?> _migratingGetString(SharedPreferences prefs, String legacyKey) async {
+  Future<String?> _migratingGetString(
+    SharedPreferences prefs,
+    String legacyKey,
+  ) async {
     final scoped = _keys.scoped(legacyKey);
     final value = prefs.getString(scoped);
     if (value != null || !_isGoiasLegacyEligible) return value;
@@ -33,7 +36,10 @@ class GuessPlayerStorage {
     return legacy;
   }
 
-  Future<int?> _migratingGetInt(SharedPreferences prefs, String legacyKey) async {
+  Future<int?> _migratingGetInt(
+    SharedPreferences prefs,
+    String legacyKey,
+  ) async {
     final scoped = _keys.scoped(legacyKey);
     final value = prefs.getInt(scoped);
     if (value != null || !_isGoiasLegacyEligible) return value;
@@ -42,7 +48,10 @@ class GuessPlayerStorage {
     return legacy;
   }
 
-  Future<List<String>?> _migratingGetStringList(SharedPreferences prefs, String legacyKey) async {
+  Future<List<String>?> _migratingGetStringList(
+    SharedPreferences prefs,
+    String legacyKey,
+  ) async {
     final scoped = _keys.scoped(legacyKey);
     final value = prefs.getStringList(scoped);
     if (value != null || !_isGoiasLegacyEligible) return value;

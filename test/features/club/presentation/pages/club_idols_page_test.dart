@@ -23,7 +23,9 @@ const _tier1Names = [
   'Léo Jaime',
   'Cleiton',
   'Gil Baiano',
-  'Marcelo',
+  // 'Marcelo' REMOVIDO em 2026-09-09 — a foto entregue pra ele era do
+  // técnico Marcelo Veiga (2018), mesma pessoa confirmada pelo usuário,
+  // o que contradiz a descrição do ídolo (jogador da geração 1990-91).
   'Mazinho',
   'Luís Müller',
   // Promovidos de tier 2 em 2026-09-07 (docs/bragantino_data) — conquistas
