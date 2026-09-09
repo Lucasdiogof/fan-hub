@@ -499,7 +499,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String securitySubtitle(String clubCode, String club) {
-    return 'Change your Goiás EC account password.';
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Change your Goiás EC account password.',
+      'other': 'Change your $club account password.',
+    });
+    return '$_temp0';
   }
 
   @override
@@ -703,8 +707,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaAchievementTitle => 'ESMERALDINA LEGEND';
 
   @override
-  String get arenaAchievementMessage =>
-      'You completed 100% of the Arena Esmeraldina — Goiás Quiz, Guess the Lineup and Guess the Player. This achievement is permanent.';
+  String arenaAchievementMessage(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias':
+          'You completed 100% of the Arena Esmeraldina — Goiás Quiz, Guess the Lineup and Guess the Player. This achievement is permanent.',
+      'other':
+          'You completed 100% of the $club Arena — Quiz, Guess the Lineup and Guess the Player. This achievement is permanent.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaAchievementConfirm => 'AWESOME!';
@@ -735,8 +746,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaSpotlightHeadline => 'Your passion takes the field';
 
   @override
-  String get arenaSpotlightSubtitle =>
-      'Play, take part, and earn your place among the Esmeraldinos.';
+  String arenaSpotlightSubtitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Play, take part, and earn your place among the Esmeraldinos.',
+      'other': 'Play, take part, and earn your place among $club fans.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaSpotlightCta => 'Enter the Arena';
@@ -780,8 +796,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arenaGameLineupTitle => 'Guess the Lineup';
 
   @override
-  String get arenaGameLineupTagline =>
-      'Figure out the starting 11 from a historic Goiás match.';
+  String arenaGameLineupTagline(String club) {
+    return 'Figure out the starting 11 from a historic $club match.';
+  }
 
   @override
   String get arenaGameCareerTitle => 'Guess the Player';
@@ -2031,7 +2048,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketsMyTickets => 'My tickets';
 
   @override
-  String get ticketsMyTicketsSubtitle => 'Tickets for Goiás matches';
+  String ticketsMyTicketsSubtitle(String club) {
+    return 'Tickets for $club matches';
+  }
 
   @override
   String get ticketsMyOrders => 'My orders';
@@ -2056,8 +2075,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketsMyTicketsEmpty => 'You don\'t have any tickets yet';
 
   @override
-  String get ticketsMyTicketsEmptyMessage =>
-      'Your tickets for Goiás matches will show up here.';
+  String ticketsMyTicketsEmptyMessage(String club) {
+    return 'Your tickets for $club matches will show up here.';
+  }
 
   @override
   String get ticketsMyOrdersTitle => 'MY ORDERS';
@@ -2185,8 +2205,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketsDeclineConfirmTitle => 'Are you sure you\'re not going?';
 
   @override
-  String get ticketsDeclineConfirmMessage =>
-      'Serrinha isn\'t the same without you. Goiás counts on the support of Nação Esmeraldina! 💚\n\nYou can still change your mind while check-in is open.';
+  String ticketsDeclineConfirmMessage(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias':
+          'Serrinha isn\'t the same without you. Goiás counts on the support of Nação Esmeraldina! 💚\n\nYou can still change your mind while check-in is open.',
+      'other':
+          'The stadium isn\'t the same without you. $club counts on the fans\' support! 💚\n\nYou can still change your mind while check-in is open.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get ticketsWantToGoButton => 'I want to go';
@@ -2208,8 +2235,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketsSaveTicketButton => 'Save ticket';
 
   @override
-  String get ticketsSectorPickerTitle =>
-      'Where do you want to support the Verdão?';
+  String ticketsSectorPickerTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Where do you want to support the Verdão?',
+      'other': 'Where do you want to support $club?',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get ticketsSectorPickerSubtitle =>
@@ -2405,8 +2437,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketPdfAntiScalpingSubtitle => 'This ticket may be fake.';
 
   @override
-  String get ticketPdfFooterNotice =>
-      'This ticket is personal and non-transferable. Photo ID is required for entry. Only Goiás or Brazilian national team jerseys are allowed.';
+  String ticketPdfFooterNotice(String club) {
+    return 'This ticket is personal and non-transferable. Photo ID is required for entry. Only $club or Brazilian national team jerseys are allowed.';
+  }
 
   @override
   String get ticketPdfInvalidTicket => 'INVALID\nTICKET';
@@ -2585,8 +2618,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get crowdNoVotes => 'No votes yet';
 
   @override
-  String get crowdNoVotesMessage =>
-      'Be the first to line up Goiás and help build the fans\' team.';
+  String crowdNoVotesMessage(String club) {
+    return 'Be the first to line up $club and help build the fans\' team.';
+  }
 
   @override
   String get crowdVotingClosed =>
@@ -2611,12 +2645,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get crowdCanAlsoPlayBadge => 'Can play';
 
   @override
-  String get crowdCardDescVoted =>
-      'See how the fans are lining up Goiás for the next match.';
+  String crowdCardDescVoted(String club) {
+    return 'See how the fans are lining up $club for the next match.';
+  }
 
   @override
-  String get crowdCardDescNew =>
-      'Line up Goiás for the next match and see the fans\' most-picked team.';
+  String crowdCardDescNew(String club) {
+    return 'Line up $club for the next match and see the fans\' most-picked team.';
+  }
 
   @override
   String get clubSectionHistory => 'History';
@@ -2782,7 +2818,9 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get membershipLoadError => 'Couldn\'t load Sócio Esmeralda.';
+  String membershipLoadError(String programName) {
+    return 'Couldn\'t load $programName.';
+  }
 
   @override
   String get membershipPlansTitle => 'PLANS';
@@ -2855,7 +2893,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipSeeOtherPlans => 'See other plans';
 
   @override
-  String get membershipHeroTitle => 'Get even closer\nto Goiás.';
+  String membershipHeroTitle(String club) {
+    return 'Get even closer\nto $club.';
+  }
 
   @override
   String get membershipHeroSubtitle =>
@@ -2913,8 +2953,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipHomePhone => 'Home phone (optional)';
 
   @override
-  String get membershipNewsletter =>
-      'I want to receive news from the club and Sócio Esmeralda by email.';
+  String membershipNewsletter(String programName) {
+    return 'I want to receive news from the club and $programName by email.';
+  }
 
   @override
   String get membershipCountry => 'Country';
@@ -2980,8 +3021,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipTerms => 'MEMBERSHIP TERMS';
 
   @override
-  String get membershipAcceptRegulation =>
-      'I have read and accept the Sócio Esmeralda Regulation';
+  String membershipAcceptRegulation(String programName) {
+    return 'I have read and accept the $programName Regulation';
+  }
 
   @override
   String get membershipReadFullRegulation => 'Read the full regulation →';
@@ -3012,11 +3054,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipBackToHome => 'Back to home';
 
   @override
-  String get membershipWelcome => 'WELCOME TO\nSÓCIO ESMERALDA';
+  String membershipWelcome(String programName) {
+    return 'WELCOME TO\n$programName';
+  }
 
   @override
-  String get membershipSuccessMessage =>
-      'Your membership was completed successfully.\nNow you\'re even closer to Goiás.';
+  String membershipSuccessMessage(String club) {
+    return 'Your membership was completed successfully.\nNow you\'re even closer to $club.';
+  }
 
   @override
   String membershipAnnualPlan(String price) {
@@ -3058,7 +3103,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipMemberSince => 'Member since';
 
   @override
-  String get membershipRegulationName => 'Sócio Esmeralda Regulation';
+  String membershipRegulationName(String programName) {
+    return '$programName Regulation';
+  }
 
   @override
   String get membershipMatchAccessNotice =>
@@ -3073,9 +3120,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipRegulationPageTitle => 'REGULATIONS';
 
   @override
-  String get membershipProgramName => 'Sócio Esmeralda';
-
-  @override
   String membershipRegulationEffectiveSince(String date) {
     return 'In effect since $date';
   }
@@ -3084,8 +3128,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipRegulationTableOfContents => 'CONTENTS';
 
   @override
-  String membershipCancelWhatsapp(String plan) {
-    return 'Hi, I\'d like to cancel my Sócio Esmeralda membership ($plan).';
+  String membershipCancelWhatsapp(String plan, String programName) {
+    return 'Hi, I\'d like to cancel my $programName membership ($plan).';
   }
 
   @override
@@ -3118,8 +3162,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get membershipFaqNoResults => 'No questions found';
 
   @override
-  String get membershipFaqNoResultsMessage =>
-      'Try another term or contact Sócio Esmeralda support.';
+  String membershipFaqNoResultsMessage(String programName) {
+    return 'Try another term or contact $programName support.';
+  }
 
   @override
   String get membershipTalkToSupport => 'TALK TO SUPPORT';
@@ -3135,8 +3180,9 @@ class AppLocalizationsEn extends AppLocalizations {
       'Didn\'t find the answer you were looking for?';
 
   @override
-  String get membershipFaqScopeNote =>
-      'Questions about the club, youth academy, squad and other topics outside Sócio Esmeralda aren\'t answered through this channel.';
+  String membershipFaqScopeNote(String programName) {
+    return 'Questions about the club, youth academy, squad and other topics outside $programName aren\'t answered through this channel.';
+  }
 
   @override
   String get membershipFaqAll => 'All';
@@ -3278,35 +3324,40 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get crowdShareCrowd => 'Check out the fans\' lineup for Goiás! 💚';
+  String crowdShareCrowd(String club) {
+    return 'Check out the fans\' lineup for $club! 💚';
+  }
 
   @override
-  String get crowdShareMine => 'This is my lineup for Goiás! 💚';
+  String crowdShareMine(String club) {
+    return 'This is my lineup for $club! 💚';
+  }
 
   @override
   String get crowdSubmitted => 'Lineup submitted!';
 
   @override
-  String get storeHomeEntryBadge => 'GOIÁS STORE';
+  String storeHomeEntryBadge(String storeName) {
+    return '$storeName';
+  }
 
   @override
   String get storeHomeEntryTitle => 'The kit awaits';
 
   @override
-  String get storeHomeEntryDescription =>
-      'Wear the Green on and off the pitch.';
+  String storeHomeEntryDescription(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Wear the Green on and off the pitch.',
+      'other': 'Wear $club on and off the pitch.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get storeHomeEntryCta => 'Visit the store';
 
   @override
-  String get storeProfileEntry => 'Goiás Store';
-
-  @override
   String get storeProfileMyOrders => 'My orders';
-
-  @override
-  String get storeHomeTitle => 'Goiás Store';
 
   @override
   String get storeHomeLoadErrorTitle => 'We couldn\'t load the store';
@@ -3324,7 +3375,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeSectionCategories => 'Categories';
 
   @override
-  String get storeSearchHint => 'Search the Goiás Store';
+  String storeSearchHint(String storeName) {
+    return 'Search the $storeName';
+  }
 
   @override
   String get storeListingDefaultTitle => 'Products';
@@ -3619,11 +3672,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeCartEmptyTitle => 'Your bag is empty';
 
   @override
-  String get storeCartEmptyMessage =>
-      'Pick your official gear and carry the Green with you.';
+  String storeCartEmptyMessage(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Pick your official gear and carry the Green with you.',
+      'other': 'Pick your official $club gear with you.',
+    });
+    return '$_temp0';
+  }
 
   @override
-  String get storeCartEmptyCta => 'Go to the Goiás Store';
+  String storeCartEmptyCta(String storeName) {
+    return 'Go to the $storeName';
+  }
 
   @override
   String storeCartItemSize(Object size) {
@@ -3837,8 +3897,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeEdit => 'Edit';
 
   @override
-  String get storeAcceptTerms =>
-      'I\'ve read and accept the Goiás Store purchase terms.';
+  String storeAcceptTerms(String storeName) {
+    return 'I\'ve read and accept the $storeName purchase terms.';
+  }
 
   @override
   String get storeOrderConfirmedTitle => 'Order confirmed!';
@@ -3867,8 +3928,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get storeOrdersEmptyTitle => 'You haven\'t placed any orders yet';
 
   @override
-  String get storeOrdersEmptyMessage =>
-      'Your Goiás Store orders will show up here.';
+  String storeOrdersEmptyMessage(String storeName) {
+    return 'Your $storeName orders will show up here.';
+  }
 
   @override
   String get storeOrdersLoadError => 'We couldn\'t load your orders';

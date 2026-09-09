@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -70,12 +72,19 @@ class CartPage extends StatelessWidget {
                               StateMessage(
                                 icon: Icons.shopping_bag_outlined,
                                 title: l10n.storeCartEmptyTitle,
-                                message: l10n.storeCartEmptyMessage,
+                                message: l10n.storeCartEmptyMessage(
+                                  sl<ClubConfig>().identity.code,
+                                  sl<ClubConfig>().identity.shortName,
+                                ),
                               ),
                               const SizedBox(height: AppSpacing.lg),
                               TextButton(
                                 onPressed: () => context.go('/store'),
-                                child: Text(l10n.storeCartEmptyCta),
+                                child: Text(
+                                  l10n.storeCartEmptyCta(
+                                    sl<ClubConfig>().productNames.storeName,
+                                  ),
+                                ),
                               ),
                             ],
                           ),

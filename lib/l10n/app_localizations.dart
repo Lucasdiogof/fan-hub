@@ -1375,8 +1375,8 @@ abstract class AppLocalizations {
   /// No description provided for @arenaAchievementMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.'**
-  String get arenaAchievementMessage;
+  /// **'{clubCode, select, goias{Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.} other{Você completou 100% da Arena {club} — Quiz, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.}}'**
+  String arenaAchievementMessage(String clubCode, String club);
 
   /// No description provided for @arenaAchievementConfirm.
   ///
@@ -1417,8 +1417,8 @@ abstract class AppLocalizations {
   /// No description provided for @arenaSpotlightSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Jogue, participe e dispute seu lugar entre os Esmeraldinos.'**
-  String get arenaSpotlightSubtitle;
+  /// **'{clubCode, select, goias{Jogue, participe e dispute seu lugar entre os Esmeraldinos.} other{Jogue, participe e dispute seu lugar entre os torcedores do {club}.}}'**
+  String arenaSpotlightSubtitle(String clubCode, String club);
 
   /// No description provided for @arenaSpotlightCta.
   ///
@@ -1495,8 +1495,8 @@ abstract class AppLocalizations {
   /// No description provided for @arenaGameLineupTagline.
   ///
   /// In pt, this message translates to:
-  /// **'Descubra os 11 titulares de uma partida histórica do Goiás.'**
-  String get arenaGameLineupTagline;
+  /// **'Descubra os 11 titulares de uma partida histórica do {club}.'**
+  String arenaGameLineupTagline(String club);
 
   /// No description provided for @arenaGameCareerTitle.
   ///
@@ -3582,8 +3582,8 @@ abstract class AppLocalizations {
   /// No description provided for @ticketsMyTicketsSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'Ingressos para partidas do Goiás'**
-  String get ticketsMyTicketsSubtitle;
+  /// **'Ingressos para partidas do {club}'**
+  String ticketsMyTicketsSubtitle(String club);
 
   /// No description provided for @ticketsMyOrders.
   ///
@@ -3630,8 +3630,8 @@ abstract class AppLocalizations {
   /// No description provided for @ticketsMyTicketsEmptyMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Seus ingressos para partidas do Goiás aparecerão aqui.'**
-  String get ticketsMyTicketsEmptyMessage;
+  /// **'Seus ingressos para partidas do {club} aparecerão aqui.'**
+  String ticketsMyTicketsEmptyMessage(String club);
 
   /// No description provided for @ticketsMyOrdersTitle.
   ///
@@ -3870,8 +3870,8 @@ abstract class AppLocalizations {
   /// No description provided for @ticketsDeclineConfirmMessage.
   ///
   /// In pt, this message translates to:
-  /// **'A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.'**
-  String get ticketsDeclineConfirmMessage;
+  /// **'{clubCode, select, goias{A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.} other{O estádio fica diferente com você lá. O {club} conta com o apoio da torcida! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.}}'**
+  String ticketsDeclineConfirmMessage(String clubCode, String club);
 
   /// No description provided for @ticketsWantToGoButton.
   ///
@@ -3912,8 +3912,8 @@ abstract class AppLocalizations {
   /// No description provided for @ticketsSectorPickerTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Onde você quer apoiar o Verdão?'**
-  String get ticketsSectorPickerTitle;
+  /// **'{clubCode, select, goias{Onde você quer apoiar o Verdão?} other{Onde você quer apoiar o {club}?}}'**
+  String ticketsSectorPickerTitle(String clubCode, String club);
 
   /// No description provided for @ticketsSectorPickerSubtitle.
   ///
@@ -4248,8 +4248,8 @@ abstract class AppLocalizations {
   /// No description provided for @ticketPdfFooterNotice.
   ///
   /// In pt, this message translates to:
-  /// **'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.'**
-  String get ticketPdfFooterNotice;
+  /// **'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do {club} ou da Seleção Brasileira.'**
+  String ticketPdfFooterNotice(String club);
 
   /// No description provided for @ticketPdfInvalidTicket.
   ///
@@ -4554,8 +4554,8 @@ abstract class AppLocalizations {
   /// No description provided for @crowdNoVotesMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.'**
-  String get crowdNoVotesMessage;
+  /// **'Seja o primeiro a escalar o {club} e ajude a formar o time da torcida.'**
+  String crowdNoVotesMessage(String club);
 
   /// No description provided for @crowdVotingClosed.
   ///
@@ -4602,14 +4602,14 @@ abstract class AppLocalizations {
   /// No description provided for @crowdCardDescVoted.
   ///
   /// In pt, this message translates to:
-  /// **'Veja como a torcida está escalando o Goiás para o próximo jogo.'**
-  String get crowdCardDescVoted;
+  /// **'Veja como a torcida está escalando o {club} para o próximo jogo.'**
+  String crowdCardDescVoted(String club);
 
   /// No description provided for @crowdCardDescNew.
   ///
   /// In pt, this message translates to:
-  /// **'Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.'**
-  String get crowdCardDescNew;
+  /// **'Escale o {club} para o próximo jogo e veja o time mais escalado pela torcida.'**
+  String crowdCardDescNew(String club);
 
   /// No description provided for @clubSectionHistory.
   ///
@@ -4872,8 +4872,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipLoadError.
   ///
   /// In pt, this message translates to:
-  /// **'Não foi possível carregar o Sócio Esmeralda.'**
-  String get membershipLoadError;
+  /// **'Não foi possível carregar o {programName}.'**
+  String membershipLoadError(String programName);
 
   /// No description provided for @membershipPlansTitle.
   ///
@@ -5004,8 +5004,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipHeroTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Esteja ainda mais próximo\ndo Goiás.'**
-  String get membershipHeroTitle;
+  /// **'Esteja ainda mais próximo\ndo {club}.'**
+  String membershipHeroTitle(String club);
 
   /// No description provided for @membershipHeroSubtitle.
   ///
@@ -5118,8 +5118,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipNewsletter.
   ///
   /// In pt, this message translates to:
-  /// **'Desejo receber notícias do clube e do Sócio Esmeralda por e-mail.'**
-  String get membershipNewsletter;
+  /// **'Desejo receber notícias do clube e do {programName} por e-mail.'**
+  String membershipNewsletter(String programName);
 
   /// No description provided for @membershipCountry.
   ///
@@ -5250,8 +5250,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipAcceptRegulation.
   ///
   /// In pt, this message translates to:
-  /// **'Li e aceito o Regulamento do Sócio Esmeralda'**
-  String get membershipAcceptRegulation;
+  /// **'Li e aceito o Regulamento do {programName}'**
+  String membershipAcceptRegulation(String programName);
 
   /// No description provided for @membershipReadFullRegulation.
   ///
@@ -5304,14 +5304,14 @@ abstract class AppLocalizations {
   /// No description provided for @membershipWelcome.
   ///
   /// In pt, this message translates to:
-  /// **'BEM-VINDO AO\nSÓCIO ESMERALDA'**
-  String get membershipWelcome;
+  /// **'BEM-VINDO AO\n{programName}'**
+  String membershipWelcome(String programName);
 
   /// No description provided for @membershipSuccessMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do Verdão.'**
-  String get membershipSuccessMessage;
+  /// **'Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do {club}.'**
+  String membershipSuccessMessage(String club);
 
   /// No description provided for @membershipAnnualPlan.
   ///
@@ -5388,8 +5388,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipRegulationName.
   ///
   /// In pt, this message translates to:
-  /// **'Regulamento do Sócio Esmeralda'**
-  String get membershipRegulationName;
+  /// **'Regulamento do {programName}'**
+  String membershipRegulationName(String programName);
 
   /// No description provided for @membershipMatchAccessNotice.
   ///
@@ -5409,12 +5409,6 @@ abstract class AppLocalizations {
   /// **'REGULAMENTO'**
   String get membershipRegulationPageTitle;
 
-  /// No description provided for @membershipProgramName.
-  ///
-  /// In pt, this message translates to:
-  /// **'Sócio Esmeralda'**
-  String get membershipProgramName;
-
   /// No description provided for @membershipRegulationEffectiveSince.
   ///
   /// In pt, this message translates to:
@@ -5430,8 +5424,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipCancelWhatsapp.
   ///
   /// In pt, this message translates to:
-  /// **'Olá, gostaria de cancelar minha associação Sócio Esmeralda ({plan}).'**
-  String membershipCancelWhatsapp(String plan);
+  /// **'Olá, gostaria de cancelar minha associação {programName} ({plan}).'**
+  String membershipCancelWhatsapp(String plan, String programName);
 
   /// No description provided for @membershipCancel.
   ///
@@ -5490,8 +5484,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipFaqNoResultsMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Tente outro termo ou fale com o atendimento do Sócio Esmeralda.'**
-  String get membershipFaqNoResultsMessage;
+  /// **'Tente outro termo ou fale com o atendimento do {programName}.'**
+  String membershipFaqNoResultsMessage(String programName);
 
   /// No description provided for @membershipTalkToSupport.
   ///
@@ -5520,8 +5514,8 @@ abstract class AppLocalizations {
   /// No description provided for @membershipFaqScopeNote.
   ///
   /// In pt, this message translates to:
-  /// **'Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do Sócio Esmeralda não são respondidas por este canal.'**
-  String get membershipFaqScopeNote;
+  /// **'Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do {programName} não são respondidas por este canal.'**
+  String membershipFaqScopeNote(String programName);
 
   /// No description provided for @membershipFaqAll.
   ///
@@ -5796,14 +5790,14 @@ abstract class AppLocalizations {
   /// No description provided for @crowdShareCrowd.
   ///
   /// In pt, this message translates to:
-  /// **'Confira a escalação da torcida pro Goiás! 💚'**
-  String get crowdShareCrowd;
+  /// **'Confira a escalação da torcida pro {club}! 💚'**
+  String crowdShareCrowd(String club);
 
   /// No description provided for @crowdShareMine.
   ///
   /// In pt, this message translates to:
-  /// **'Essa é a minha escalação pro Goiás! 💚'**
-  String get crowdShareMine;
+  /// **'Essa é a minha escalação pro {club}! 💚'**
+  String crowdShareMine(String club);
 
   /// No description provided for @crowdSubmitted.
   ///
@@ -5814,8 +5808,8 @@ abstract class AppLocalizations {
   /// No description provided for @storeHomeEntryBadge.
   ///
   /// In pt, this message translates to:
-  /// **'GOIÁS STORE'**
-  String get storeHomeEntryBadge;
+  /// **'{storeName}'**
+  String storeHomeEntryBadge(String storeName);
 
   /// No description provided for @storeHomeEntryTitle.
   ///
@@ -5826,8 +5820,8 @@ abstract class AppLocalizations {
   /// No description provided for @storeHomeEntryDescription.
   ///
   /// In pt, this message translates to:
-  /// **'Leve o Verdão com você dentro e fora de campo.'**
-  String get storeHomeEntryDescription;
+  /// **'{clubCode, select, goias{Leve o Verdão com você dentro e fora de campo.} other{Leve o {club} com você dentro e fora de campo.}}'**
+  String storeHomeEntryDescription(String clubCode, String club);
 
   /// No description provided for @storeHomeEntryCta.
   ///
@@ -5835,23 +5829,11 @@ abstract class AppLocalizations {
   /// **'Conhecer a loja'**
   String get storeHomeEntryCta;
 
-  /// No description provided for @storeProfileEntry.
-  ///
-  /// In pt, this message translates to:
-  /// **'Goiás Store'**
-  String get storeProfileEntry;
-
   /// No description provided for @storeProfileMyOrders.
   ///
   /// In pt, this message translates to:
   /// **'Meus pedidos'**
   String get storeProfileMyOrders;
-
-  /// No description provided for @storeHomeTitle.
-  ///
-  /// In pt, this message translates to:
-  /// **'Goiás Store'**
-  String get storeHomeTitle;
 
   /// No description provided for @storeHomeLoadErrorTitle.
   ///
@@ -5886,8 +5868,8 @@ abstract class AppLocalizations {
   /// No description provided for @storeSearchHint.
   ///
   /// In pt, this message translates to:
-  /// **'Buscar na Goiás Store'**
-  String get storeSearchHint;
+  /// **'Buscar na {storeName}'**
+  String storeSearchHint(String storeName);
 
   /// No description provided for @storeListingDefaultTitle.
   ///
@@ -6396,14 +6378,14 @@ abstract class AppLocalizations {
   /// No description provided for @storeCartEmptyMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Escolha seus produtos oficiais e carregue o Verdão com você.'**
-  String get storeCartEmptyMessage;
+  /// **'{clubCode, select, goias{Escolha seus produtos oficiais e carregue o Verdão com você.} other{Escolha seus produtos oficiais e carregue o {club} com você.}}'**
+  String storeCartEmptyMessage(String clubCode, String club);
 
   /// No description provided for @storeCartEmptyCta.
   ///
   /// In pt, this message translates to:
-  /// **'Ir para a Goiás Store'**
-  String get storeCartEmptyCta;
+  /// **'Ir para a {storeName}'**
+  String storeCartEmptyCta(String storeName);
 
   /// No description provided for @storeCartItemSize.
   ///
@@ -6768,8 +6750,8 @@ abstract class AppLocalizations {
   /// No description provided for @storeAcceptTerms.
   ///
   /// In pt, this message translates to:
-  /// **'Li e aceito os termos de compra da Goiás Store.'**
-  String get storeAcceptTerms;
+  /// **'Li e aceito os termos de compra da {storeName}.'**
+  String storeAcceptTerms(String storeName);
 
   /// No description provided for @storeOrderConfirmedTitle.
   ///
@@ -6822,8 +6804,8 @@ abstract class AppLocalizations {
   /// No description provided for @storeOrdersEmptyMessage.
   ///
   /// In pt, this message translates to:
-  /// **'Seus pedidos na Goiás Store aparecerão aqui.'**
-  String get storeOrdersEmptyMessage;
+  /// **'Seus pedidos na {storeName} aparecerão aqui.'**
+  String storeOrdersEmptyMessage(String storeName);
 
   /// No description provided for @storeOrdersLoadError.
   ///

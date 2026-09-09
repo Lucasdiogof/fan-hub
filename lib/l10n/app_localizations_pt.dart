@@ -714,8 +714,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaAchievementTitle => 'LENDA ESMERALDINA';
 
   @override
-  String get arenaAchievementMessage =>
-      'Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.';
+  String arenaAchievementMessage(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias':
+          'Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.',
+      'other':
+          'Você completou 100% da Arena $club — Quiz, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaAchievementConfirm => 'SHOW DE BOLA!';
@@ -746,8 +753,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaSpotlightHeadline => 'A sua paixão entra em campo';
 
   @override
-  String get arenaSpotlightSubtitle =>
-      'Jogue, participe e dispute seu lugar entre os Esmeraldinos.';
+  String arenaSpotlightSubtitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Jogue, participe e dispute seu lugar entre os Esmeraldinos.',
+      'other':
+          'Jogue, participe e dispute seu lugar entre os torcedores do $club.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get arenaSpotlightCta => 'Entrar na Arena';
@@ -795,8 +808,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get arenaGameLineupTitle => 'Adivinhe a Escalação';
 
   @override
-  String get arenaGameLineupTagline =>
-      'Descubra os 11 titulares de uma partida histórica do Goiás.';
+  String arenaGameLineupTagline(String club) {
+    return 'Descubra os 11 titulares de uma partida histórica do $club.';
+  }
 
   @override
   String get arenaGameCareerTitle => 'Adivinhe o Jogador';
@@ -2050,7 +2064,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketsMyTickets => 'Meus ingressos';
 
   @override
-  String get ticketsMyTicketsSubtitle => 'Ingressos para partidas do Goiás';
+  String ticketsMyTicketsSubtitle(String club) {
+    return 'Ingressos para partidas do $club';
+  }
 
   @override
   String get ticketsMyOrders => 'Meus pedidos';
@@ -2076,8 +2092,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketsMyTicketsEmpty => 'Você ainda não possui ingressos';
 
   @override
-  String get ticketsMyTicketsEmptyMessage =>
-      'Seus ingressos para partidas do Goiás aparecerão aqui.';
+  String ticketsMyTicketsEmptyMessage(String club) {
+    return 'Seus ingressos para partidas do $club aparecerão aqui.';
+  }
 
   @override
   String get ticketsMyOrdersTitle => 'MEUS PEDIDOS';
@@ -2207,8 +2224,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketsDeclineConfirmTitle => 'Tem certeza que não vai?';
 
   @override
-  String get ticketsDeclineConfirmMessage =>
-      'A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.';
+  String ticketsDeclineConfirmMessage(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias':
+          'A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.',
+      'other':
+          'O estádio fica diferente com você lá. O $club conta com o apoio da torcida! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get ticketsWantToGoButton => 'Quero ir ao jogo';
@@ -2230,7 +2254,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketsSaveTicketButton => 'Salvar ingresso';
 
   @override
-  String get ticketsSectorPickerTitle => 'Onde você quer apoiar o Verdão?';
+  String ticketsSectorPickerTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Onde você quer apoiar o Verdão?',
+      'other': 'Onde você quer apoiar o $club?',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get ticketsSectorPickerSubtitle =>
@@ -2426,8 +2456,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketPdfAntiScalpingSubtitle => 'O ingresso pode ser falso.';
 
   @override
-  String get ticketPdfFooterNotice =>
-      'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.';
+  String ticketPdfFooterNotice(String club) {
+    return 'Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do $club ou da Seleção Brasileira.';
+  }
 
   @override
   String get ticketPdfInvalidTicket => 'INGRESSO\nINVÁLIDO';
@@ -2606,8 +2637,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get crowdNoVotes => 'Ainda não há votos';
 
   @override
-  String get crowdNoVotesMessage =>
-      'Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.';
+  String crowdNoVotesMessage(String club) {
+    return 'Seja o primeiro a escalar o $club e ajude a formar o time da torcida.';
+  }
 
   @override
   String get crowdVotingClosed =>
@@ -2632,12 +2664,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get crowdCanAlsoPlayBadge => 'Pode atuar';
 
   @override
-  String get crowdCardDescVoted =>
-      'Veja como a torcida está escalando o Goiás para o próximo jogo.';
+  String crowdCardDescVoted(String club) {
+    return 'Veja como a torcida está escalando o $club para o próximo jogo.';
+  }
 
   @override
-  String get crowdCardDescNew =>
-      'Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.';
+  String crowdCardDescNew(String club) {
+    return 'Escale o $club para o próximo jogo e veja o time mais escalado pela torcida.';
+  }
 
   @override
   String get clubSectionHistory => 'História';
@@ -2807,8 +2841,9 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get membershipLoadError =>
-      'Não foi possível carregar o Sócio Esmeralda.';
+  String membershipLoadError(String programName) {
+    return 'Não foi possível carregar o $programName.';
+  }
 
   @override
   String get membershipPlansTitle => 'PLANOS';
@@ -2880,7 +2915,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipSeeOtherPlans => 'Conhecer outros planos';
 
   @override
-  String get membershipHeroTitle => 'Esteja ainda mais próximo\ndo Goiás.';
+  String membershipHeroTitle(String club) {
+    return 'Esteja ainda mais próximo\ndo $club.';
+  }
 
   @override
   String get membershipHeroSubtitle =>
@@ -2938,8 +2975,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipHomePhone => 'Telefone residencial (opcional)';
 
   @override
-  String get membershipNewsletter =>
-      'Desejo receber notícias do clube e do Sócio Esmeralda por e-mail.';
+  String membershipNewsletter(String programName) {
+    return 'Desejo receber notícias do clube e do $programName por e-mail.';
+  }
 
   @override
   String get membershipCountry => 'País';
@@ -3005,8 +3043,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipTerms => 'TERMOS DA ASSOCIAÇÃO';
 
   @override
-  String get membershipAcceptRegulation =>
-      'Li e aceito o Regulamento do Sócio Esmeralda';
+  String membershipAcceptRegulation(String programName) {
+    return 'Li e aceito o Regulamento do $programName';
+  }
 
   @override
   String get membershipReadFullRegulation => 'Ler regulamento completo →';
@@ -3037,11 +3076,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipBackToHome => 'Voltar para o início';
 
   @override
-  String get membershipWelcome => 'BEM-VINDO AO\nSÓCIO ESMERALDA';
+  String membershipWelcome(String programName) {
+    return 'BEM-VINDO AO\n$programName';
+  }
 
   @override
-  String get membershipSuccessMessage =>
-      'Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do Verdão.';
+  String membershipSuccessMessage(String club) {
+    return 'Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do $club.';
+  }
 
   @override
   String membershipAnnualPlan(String price) {
@@ -3083,7 +3125,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipMemberSince => 'Sócio desde';
 
   @override
-  String get membershipRegulationName => 'Regulamento do Sócio Esmeralda';
+  String membershipRegulationName(String programName) {
+    return 'Regulamento do $programName';
+  }
 
   @override
   String get membershipMatchAccessNotice =>
@@ -3098,9 +3142,6 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipRegulationPageTitle => 'REGULAMENTO';
 
   @override
-  String get membershipProgramName => 'Sócio Esmeralda';
-
-  @override
   String membershipRegulationEffectiveSince(String date) {
     return 'Em vigor desde $date';
   }
@@ -3109,8 +3150,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipRegulationTableOfContents => 'CONTEÚDO';
 
   @override
-  String membershipCancelWhatsapp(String plan) {
-    return 'Olá, gostaria de cancelar minha associação Sócio Esmeralda ($plan).';
+  String membershipCancelWhatsapp(String plan, String programName) {
+    return 'Olá, gostaria de cancelar minha associação $programName ($plan).';
   }
 
   @override
@@ -3144,8 +3185,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get membershipFaqNoResults => 'Nenhuma dúvida encontrada';
 
   @override
-  String get membershipFaqNoResultsMessage =>
-      'Tente outro termo ou fale com o atendimento do Sócio Esmeralda.';
+  String membershipFaqNoResultsMessage(String programName) {
+    return 'Tente outro termo ou fale com o atendimento do $programName.';
+  }
 
   @override
   String get membershipTalkToSupport => 'FALAR COM O ATENDIMENTO';
@@ -3161,8 +3203,9 @@ class AppLocalizationsPt extends AppLocalizations {
       'Não encontrou a resposta que procurava?';
 
   @override
-  String get membershipFaqScopeNote =>
-      'Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do Sócio Esmeralda não são respondidas por este canal.';
+  String membershipFaqScopeNote(String programName) {
+    return 'Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do $programName não são respondidas por este canal.';
+  }
 
   @override
   String get membershipFaqAll => 'Todas';
@@ -3305,35 +3348,40 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get crowdShareCrowd => 'Confira a escalação da torcida pro Goiás! 💚';
+  String crowdShareCrowd(String club) {
+    return 'Confira a escalação da torcida pro $club! 💚';
+  }
 
   @override
-  String get crowdShareMine => 'Essa é a minha escalação pro Goiás! 💚';
+  String crowdShareMine(String club) {
+    return 'Essa é a minha escalação pro $club! 💚';
+  }
 
   @override
   String get crowdSubmitted => 'Escalação enviada!';
 
   @override
-  String get storeHomeEntryBadge => 'GOIÁS STORE';
+  String storeHomeEntryBadge(String storeName) {
+    return '$storeName';
+  }
 
   @override
   String get storeHomeEntryTitle => 'O manto te espera';
 
   @override
-  String get storeHomeEntryDescription =>
-      'Leve o Verdão com você dentro e fora de campo.';
+  String storeHomeEntryDescription(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Leve o Verdão com você dentro e fora de campo.',
+      'other': 'Leve o $club com você dentro e fora de campo.',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get storeHomeEntryCta => 'Conhecer a loja';
 
   @override
-  String get storeProfileEntry => 'Goiás Store';
-
-  @override
   String get storeProfileMyOrders => 'Meus pedidos';
-
-  @override
-  String get storeHomeTitle => 'Goiás Store';
 
   @override
   String get storeHomeLoadErrorTitle => 'Não foi possível carregar a loja';
@@ -3352,7 +3400,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storeSectionCategories => 'Categorias';
 
   @override
-  String get storeSearchHint => 'Buscar na Goiás Store';
+  String storeSearchHint(String storeName) {
+    return 'Buscar na $storeName';
+  }
 
   @override
   String get storeListingDefaultTitle => 'Produtos';
@@ -3649,11 +3699,18 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storeCartEmptyTitle => 'Sua sacola está vazia';
 
   @override
-  String get storeCartEmptyMessage =>
-      'Escolha seus produtos oficiais e carregue o Verdão com você.';
+  String storeCartEmptyMessage(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'Escolha seus produtos oficiais e carregue o Verdão com você.',
+      'other': 'Escolha seus produtos oficiais e carregue o $club com você.',
+    });
+    return '$_temp0';
+  }
 
   @override
-  String get storeCartEmptyCta => 'Ir para a Goiás Store';
+  String storeCartEmptyCta(String storeName) {
+    return 'Ir para a $storeName';
+  }
 
   @override
   String storeCartItemSize(Object size) {
@@ -3866,8 +3923,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storeEdit => 'Editar';
 
   @override
-  String get storeAcceptTerms =>
-      'Li e aceito os termos de compra da Goiás Store.';
+  String storeAcceptTerms(String storeName) {
+    return 'Li e aceito os termos de compra da $storeName.';
+  }
 
   @override
   String get storeOrderConfirmedTitle => 'Pedido confirmado!';
@@ -3896,8 +3954,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get storeOrdersEmptyTitle => 'Você ainda não fez nenhum pedido';
 
   @override
-  String get storeOrdersEmptyMessage =>
-      'Seus pedidos na Goiás Store aparecerão aqui.';
+  String storeOrdersEmptyMessage(String storeName) {
+    return 'Seus pedidos na $storeName aparecerão aqui.';
+  }
 
   @override
   String get storeOrdersLoadError => 'Não foi possível carregar seus pedidos';

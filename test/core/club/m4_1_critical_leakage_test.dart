@@ -161,11 +161,13 @@ void main() {
           final pickup = PickupInformation.forActiveClub();
           expect(
             pickup.storeName,
-            syntheticClubBConfig.integrations.pickupAddress.storeName,
+            syntheticClubBConfig.integrations.pickupAddress!.storeName,
           );
           expect(
             pickup.storeName,
-            isNot(equals(goiasClubConfig.integrations.pickupAddress.storeName)),
+            isNot(
+              equals(goiasClubConfig.integrations.pickupAddress!.storeName),
+            ),
           );
           await sl.reset();
         },

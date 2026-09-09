@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
-import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -36,7 +37,12 @@ class StoreEntryCard extends StatelessWidget {
         child: Ink(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.banner),
-            color: AppColors.light.brandDeep,
+            // `context.colors` (clube ATIVO) — era `AppColors.light`
+            // direto, fixo no Goiás mesmo com outro clube rodando
+            // (achado real 2026-09-09, ainda sem efeito hoje porque a
+            // Loja está desligada pro Bragantino, mas prontidão pra
+            // quando ligar).
+            color: context.colors.brandDeep,
             border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
           ),
           child: Stack(
@@ -49,13 +55,24 @@ class StoreEntryCard extends StatelessWidget {
               // transparência real do PNG (alfa conferido pixel a pixel,
               // está correto — o problema é só na composição do
               // Skia/Flutter). Só a opacidade, imagem como está.
+              //
+              // `sl<ClubConfig>().assets.storeBanner` — era
+              // `AppAssets.storeBanner` direto, sempre o banner do Goiás
+              // (achado real 2026-09-09). Ainda sem efeito hoje porque a
+              // Loja do Bragantino está desligada (`hasStore=false`,
+              // `storeBanner` continua placeholder até existir arte real
+              // — o banner do Goiás tem "GOIAS STORE"/escudo cravado nos
+              // próprios pixels, NUNCA reaproveitável só recolorindo).
               Positioned.fill(
                 child: Align(
                   alignment: const Alignment(1.15, 0.3),
                   child: ExcludeSemantics(
                     child: Opacity(
                       opacity: 0.50,
-                      child: Image.asset(AppAssets.storeBanner, width: 190),
+                      child: Image.asset(
+                        sl<ClubConfig>().assets.storeBanner,
+                        width: 190,
+                      ),
                     ),
                   ),
                 ),
@@ -66,7 +83,11 @@ class StoreEntryCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    _StoreBadge(label: l10n.storeHomeEntryBadge),
+                    _StoreBadge(
+                      label: l10n.storeHomeEntryBadge(
+                        sl<ClubConfig>().productNames.storeName.toUpperCase(),
+                      ),
+                    ),
                     const SizedBox(height: AppSpacing.sm),
                     Text(
                       l10n.storeHomeEntryTitle,
@@ -81,7 +102,10 @@ class StoreEntryCard extends StatelessWidget {
                     SizedBox(
                       width: 220,
                       child: Text(
-                        l10n.storeHomeEntryDescription,
+                        l10n.storeHomeEntryDescription(
+                          sl<ClubConfig>().identity.code,
+                          sl<ClubConfig>().identity.shortName,
+                        ),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(

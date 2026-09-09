@@ -162,11 +162,14 @@ void main() {
     );
 
     test(
-      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social e os 2 jogos de identidade, reais desde 2026-09-08)',
+      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social, os 2 jogos de identidade desde 2026-09-08, e a Loja desde 2026-09-09)',
       () {
         final c = bragantinoClubConfig.capabilities;
         expect(c.hasMembership, isFalse);
-        expect(c.hasStore, isFalse);
+        // Loja: catálogo REAL coletado da Red Bull Shop (143 produtos, 497
+        // SKUs, isolado por ClubAssets.storeCatalogAssetPath), ligada em
+        // 2026-09-09 — ver tooling/bragantino_store/.
+        expect(c.hasStore, isTrue);
         expect(c.hasTickets, isFalse);
         expect(c.hasCrowdLineup, isFalse);
         // News tem fonte oficial real no Worker (API JSON própria). Social
