@@ -72,7 +72,12 @@ class ClubSongsPage extends StatelessWidget {
                       if (anthems.isNotEmpty && songs.isNotEmpty)
                         const SizedBox(height: AppSpacing.xl),
                       if (songs.isNotEmpty) ...[
-                        ClubSectionLabel(context.l10n.clubSongsSection),
+                        ClubSectionLabel(
+                          context.l10n.clubSongsSection(
+                            sl<ClubConfig>().identity.code,
+                            sl<ClubConfig>().identity.shortName.toUpperCase(),
+                          ),
+                        ),
                         const SizedBox(height: AppSpacing.sm),
                         for (var i = 0; i < songs.length; i++) ...[
                           if (i > 0) const SizedBox(height: AppSpacing.sm),

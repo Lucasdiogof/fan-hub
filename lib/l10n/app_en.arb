@@ -240,7 +240,13 @@
   "arenaRankingTitle": "Fans' Ranking",
   "arenaRankingEmpty": "Ranking is still empty",
   "arenaRankingEmptyMessage": "Play and be the first to appear in the fans' ranking.",
-  "arenaAchievementTitle": "ESMERALDINA LEGEND",
+  "arenaAchievementTitle": "{clubCode, select, goias{ESMERALDINA LEGEND} other{{club} LEGEND}}",
+  "@arenaAchievementTitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaAchievementMessage": "{clubCode, select, goias{You completed 100% of the Arena Esmeraldina — Goiás Quiz, Guess the Lineup and Guess the Player. This achievement is permanent.} other{You completed 100% of the {club} Arena — Quiz, Guess the Lineup and Guess the Player. This achievement is permanent.}}",
   "arenaAchievementConfirm": "AWESOME!",
   "arenaPlayFirstTime": "Play for the first time",
@@ -634,7 +640,13 @@
   "newsLoadError": "Couldn't load the news",
   "newsEmptyTitle": "No news here yet",
   "newsEmptyMessage": "Check back later for the latest {club} updates.",
-  "newsSourceLabel": "SOURCE: GOIÁS ESPORTE CLUBE",
+  "newsSourceLabel": "{clubCode, select, goias{SOURCE: GOIÁS ESPORTE CLUBE} other{SOURCE: {club}}}",
+  "@newsSourceLabel": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "newsOpenOriginal": "Open original article",
   "newsPdfLoadErrorTitle": "Couldn't load the PDF",
   "newsPdfShareButton": "Share PDF",
@@ -815,7 +827,13 @@
   "ticketsConfirmCheckInButton": "Confirm check-in",
   "ticketsViewTicketTitle": "MY TICKET",
   "ticketsMatchInfoTitle": "MATCH INFORMATION",
-  "ticketsHomeCrowdLabel": "GOIÁS SUPPORTERS",
+  "ticketsHomeCrowdLabel": "{clubCode, select, goias{GOIÁS SUPPORTERS} other{{club} SUPPORTERS}}",
+  "@ticketsHomeCrowdLabel": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "ticketsAwayCrowdLabel": "AWAY SUPPORTERS",
   "ticketsContinueButton": "Continue",
   "ticketsTicketCount": "{count, plural, =1{1 ticket} other{{count} tickets}}",
@@ -995,7 +1013,13 @@
     }
   },
   "clubAnthemSection": "ANTHEM",
-  "clubSongsSection": "ESMERALDINA SONGS",
+  "clubSongsSection": "{clubCode, select, goias{ESMERALDINA SONGS} other{{club} SONGS}}",
+  "@clubSongsSection": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "clubLyricsLabel": "LYRICS",
   "clubLyricsUnavailable": "Lyrics not available yet.",
   "clubAudioUnavailable": "Audio not available yet.",

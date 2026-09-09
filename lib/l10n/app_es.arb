@@ -228,7 +228,13 @@
   "arenaRankingTitle": "Ranking de la Afición",
   "arenaRankingEmpty": "El ranking aún está vacío",
   "arenaRankingEmptyMessage": "Juega y sé el primero en aparecer en el ranking de la afición.",
-  "arenaAchievementTitle": "LEYENDA ESMERALDINA",
+  "arenaAchievementTitle": "{clubCode, select, goias{LEYENDA ESMERALDINA} other{LEYENDA DEL {club}}}",
+  "@arenaAchievementTitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaAchievementMessage": "{clubCode, select, goias{Completaste el 100% de la Arena Esmeraldina — Quiz del Goiás, Adivina la Alineación y Adivina el Jugador. Este logro es permanente.} other{Completaste el 100% de la Arena {club} — Quiz, Adivina la Alineación y Adivina el Jugador. Este logro es permanente.}}",
   "arenaAchievementConfirm": "¡GENIAL!",
   "arenaPlayFirstTime": "Juega por primera vez",
@@ -622,7 +628,13 @@
   "newsLoadError": "No se pudieron cargar las noticias",
   "newsEmptyTitle": "Aún no hay noticias",
   "newsEmptyMessage": "Vuelve más tarde para las novedades del {club}.",
-  "newsSourceLabel": "FUENTE: GOIÁS ESPORTE CLUBE",
+  "newsSourceLabel": "{clubCode, select, goias{FUENTE: GOIÁS ESPORTE CLUBE} other{FUENTE: {club}}}",
+  "@newsSourceLabel": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "newsOpenOriginal": "Abrir artículo original",
   "newsPdfLoadErrorTitle": "No se pudo cargar el PDF",
   "newsPdfShareButton": "Compartir PDF",
@@ -803,7 +815,13 @@
   "ticketsConfirmCheckInButton": "Confirmar check-in",
   "ticketsViewTicketTitle": "MI ENTRADA",
   "ticketsMatchInfoTitle": "INFORMACIÓN DEL PARTIDO",
-  "ticketsHomeCrowdLabel": "HINCHADA DEL GOIÁS",
+  "ticketsHomeCrowdLabel": "{clubCode, select, goias{HINCHADA DEL GOIÁS} other{HINCHADA DEL {club}}}",
+  "@ticketsHomeCrowdLabel": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "ticketsAwayCrowdLabel": "HINCHADA VISITANTE",
   "ticketsContinueButton": "Continuar",
   "ticketsTicketCount": "{count, plural, =1{1 entrada} other{{count} entradas}}",
@@ -983,7 +1001,13 @@
     }
   },
   "clubAnthemSection": "HIMNO",
-  "clubSongsSection": "CANCIONES ESMERALDINAS",
+  "clubSongsSection": "{clubCode, select, goias{CANCIONES ESMERALDINAS} other{CANCIONES DEL {club}}}",
+  "@clubSongsSection": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "clubLyricsLabel": "LETRA",
   "clubLyricsUnavailable": "Letra aún no disponible.",
   "clubAudioUnavailable": "Audio no disponible por ahora.",

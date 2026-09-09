@@ -711,7 +711,13 @@ class AppLocalizationsPt extends AppLocalizations {
       'Jogue e seja o primeiro a aparecer no ranking da torcida.';
 
   @override
-  String get arenaAchievementTitle => 'LENDA ESMERALDINA';
+  String arenaAchievementTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'LENDA ESMERALDINA',
+      'other': 'LENDA DO $club',
+    });
+    return '$_temp0';
+  }
 
   @override
   String arenaAchievementMessage(String clubCode, String club) {
@@ -1800,7 +1806,13 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
-  String get newsSourceLabel => 'FONTE: GOIÁS ESPORTE CLUBE';
+  String newsSourceLabel(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'FONTE: GOIÁS ESPORTE CLUBE',
+      'other': 'FONTE: $club',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get newsOpenOriginal => 'Abrir matéria original';
@@ -2276,7 +2288,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get ticketsMatchInfoTitle => 'INFORMAÇÕES DA PARTIDA';
 
   @override
-  String get ticketsHomeCrowdLabel => 'TORCIDA DO GOIÁS';
+  String ticketsHomeCrowdLabel(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'TORCIDA DO GOIÁS',
+      'other': 'TORCIDA DO $club',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get ticketsAwayCrowdLabel => 'TORCIDA VISITANTE';
@@ -2783,7 +2801,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get clubAnthemSection => 'HINO';
 
   @override
-  String get clubSongsSection => 'MÚSICAS ESMERALDINAS';
+  String clubSongsSection(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'MÚSICAS ESMERALDINAS',
+      'other': 'MÚSICAS DO $club',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get clubLyricsLabel => 'LETRA';

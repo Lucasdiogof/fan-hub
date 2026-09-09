@@ -164,7 +164,10 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
     await AppBottomSheet.show(
       context,
       icon: Icons.military_tech_rounded,
-      title: context.l10n.arenaAchievementTitle,
+      title: context.l10n.arenaAchievementTitle(
+        sl<ClubConfig>().identity.code,
+        sl<ClubConfig>().identity.shortName.toUpperCase(),
+      ),
       description: context.l10n.arenaAchievementMessage,
       confirmLabel: context.l10n.arenaAchievementConfirm,
     );

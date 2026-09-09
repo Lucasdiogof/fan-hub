@@ -704,7 +704,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Play and be the first to appear in the fans\' ranking.';
 
   @override
-  String get arenaAchievementTitle => 'ESMERALDINA LEGEND';
+  String arenaAchievementTitle(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'ESMERALDINA LEGEND',
+      'other': '$club LEGEND',
+    });
+    return '$_temp0';
+  }
 
   @override
   String arenaAchievementMessage(String clubCode, String club) {
@@ -1785,7 +1791,13 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get newsSourceLabel => 'SOURCE: GOIÁS ESPORTE CLUBE';
+  String newsSourceLabel(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'SOURCE: GOIÁS ESPORTE CLUBE',
+      'other': 'SOURCE: $club',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get newsOpenOriginal => 'Open original article';
@@ -2257,7 +2269,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ticketsMatchInfoTitle => 'MATCH INFORMATION';
 
   @override
-  String get ticketsHomeCrowdLabel => 'GOIÁS SUPPORTERS';
+  String ticketsHomeCrowdLabel(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'GOIÁS SUPPORTERS',
+      'other': '$club SUPPORTERS',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get ticketsAwayCrowdLabel => 'AWAY SUPPORTERS';
@@ -2760,7 +2778,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get clubAnthemSection => 'ANTHEM';
 
   @override
-  String get clubSongsSection => 'ESMERALDINA SONGS';
+  String clubSongsSection(String clubCode, String club) {
+    String _temp0 = intl.Intl.selectLogic(clubCode, {
+      'goias': 'ESMERALDINA SONGS',
+      'other': '$club SONGS',
+    });
+    return '$_temp0';
+  }
 
   @override
   String get clubLyricsLabel => 'LYRICS';

@@ -303,7 +303,13 @@
   "arenaRankingTitle": "Ranking da Torcida",
   "arenaRankingEmpty": "Ranking ainda vazio",
   "arenaRankingEmptyMessage": "Jogue e seja o primeiro a aparecer no ranking da torcida.",
-  "arenaAchievementTitle": "LENDA ESMERALDINA",
+  "arenaAchievementTitle": "{clubCode, select, goias{LENDA ESMERALDINA} other{LENDA DO {club}}}",
+  "@arenaAchievementTitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaAchievementMessage": "{clubCode, select, goias{Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.} other{Você completou 100% da Arena {club} — Quiz, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.}}",
   "@arenaAchievementMessage": {
     "placeholders": {
@@ -1075,7 +1081,13 @@
       "club": { "type": "String" }
     }
   },
-  "newsSourceLabel": "FONTE: GOIÁS ESPORTE CLUBE",
+  "newsSourceLabel": "{clubCode, select, goias{FONTE: GOIÁS ESPORTE CLUBE} other{FONTE: {club}}}",
+  "@newsSourceLabel": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "newsOpenOriginal": "Abrir matéria original",
   "newsPdfLoadErrorTitle": "Não foi possível carregar o PDF",
   "newsPdfShareButton": "Compartilhar PDF",
@@ -1360,7 +1372,13 @@
   "ticketsConfirmCheckInButton": "Confirmar check-in",
   "ticketsViewTicketTitle": "MEU INGRESSO",
   "ticketsMatchInfoTitle": "INFORMAÇÕES DA PARTIDA",
-  "ticketsHomeCrowdLabel": "TORCIDA DO GOIÁS",
+  "ticketsHomeCrowdLabel": "{clubCode, select, goias{TORCIDA DO GOIÁS} other{TORCIDA DO {club}}}",
+  "@ticketsHomeCrowdLabel": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "ticketsAwayCrowdLabel": "TORCIDA VISITANTE",
   "ticketsContinueButton": "Continuar",
   "ticketsTicketCount": "{count, plural, =1{1 ingresso} other{{count} ingressos}}",
@@ -1598,7 +1616,13 @@
     }
   },
   "clubAnthemSection": "HINO",
-  "clubSongsSection": "MÚSICAS ESMERALDINAS",
+  "clubSongsSection": "{clubCode, select, goias{MÚSICAS ESMERALDINAS} other{MÚSICAS DO {club}}}",
+  "@clubSongsSection": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "clubLyricsLabel": "LETRA",
   "clubLyricsUnavailable": "Letra ainda não disponível.",
   "clubAudioUnavailable": "Áudio indisponível no momento.",

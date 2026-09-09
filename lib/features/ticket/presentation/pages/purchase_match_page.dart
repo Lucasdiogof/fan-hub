@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
@@ -170,7 +171,13 @@ class _PurchaseMatchView extends StatelessWidget {
                         ),
                         children: [
                           if (goiasSectors.isNotEmpty) ...[
-                            _GroupLabel(context.l10n.ticketsHomeCrowdLabel),
+                            _GroupLabel(
+                              context.l10n.ticketsHomeCrowdLabel(
+                                sl<ClubConfig>().identity.code,
+                                sl<ClubConfig>().identity.shortName
+                                    .toUpperCase(),
+                              ),
+                            ),
                             for (final sector in goiasSectors) ...[
                               _SectorCard(sector: sector),
                               const SizedBox(height: AppSpacing.md),
