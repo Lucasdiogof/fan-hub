@@ -69,7 +69,9 @@ class _StoreOrdersView extends StatelessWidget {
                     child: StateMessage(
                       icon: Icons.receipt_long_outlined,
                       title: l10n.storeOrdersEmptyTitle,
-                      message: l10n.storeOrdersEmptyMessage,
+                      message: l10n.storeOrdersEmptyMessage(
+                        sl<ClubConfig>().productNames.storeName,
+                      ),
                     ),
                   ),
                 ),

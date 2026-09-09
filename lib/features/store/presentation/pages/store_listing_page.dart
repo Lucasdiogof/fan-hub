@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -119,7 +120,9 @@ class _StoreListingViewState extends State<_StoreListingView> {
                                 onChanged: _onQueryChanged,
                                 textInputAction: TextInputAction.search,
                                 decoration: InputDecoration(
-                                  hintText: l10n.storeSearchHint,
+                                  hintText: l10n.storeSearchHint(
+                                    sl<ClubConfig>().productNames.storeName,
+                                  ),
                                   isDense: true,
                                   filled: true,
                                   fillColor: colors.secondary,

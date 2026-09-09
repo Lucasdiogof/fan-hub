@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -91,12 +92,14 @@ class _StoreHomeView extends StatelessWidget {
                           ],
                           Expanded(
                             child: PageTitle(
-                              context.l10n.storeHomeTitle.toUpperCase(),
+                              sl<ClubConfig>().productNames.storeName.toUpperCase(),
                             ),
                           ),
                           Semantics(
                             button: true,
-                            label: context.l10n.storeSearchHint,
+                            label: context.l10n.storeSearchHint(
+                              sl<ClubConfig>().productNames.storeName,
+                            ),
                             child: InkWell(
                               onTap: () => context.push('/store/search'),
                               borderRadius: BorderRadius.circular(999),

@@ -304,7 +304,13 @@
   "arenaRankingEmpty": "Ranking ainda vazio",
   "arenaRankingEmptyMessage": "Jogue e seja o primeiro a aparecer no ranking da torcida.",
   "arenaAchievementTitle": "LENDA ESMERALDINA",
-  "arenaAchievementMessage": "Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.",
+  "arenaAchievementMessage": "{clubCode, select, goias{Você completou 100% da Arena Esmeraldina — Quiz do Verdão, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.} other{Você completou 100% da Arena {club} — Quiz, Adivinhe a Escalação e Adivinhe o Jogador. Essa conquista é permanente.}}",
+  "@arenaAchievementMessage": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaAchievementConfirm": "SHOW DE BOLA!",
   "arenaPlayFirstTime": "Jogue pela primeira vez",
   "arenaStatMatchesCorrect": "{played} partidas · {correct} acertos",
@@ -332,7 +338,13 @@
     }
   },
   "arenaSpotlightHeadline": "A sua paixão entra em campo",
-  "arenaSpotlightSubtitle": "Jogue, participe e dispute seu lugar entre os Esmeraldinos.",
+  "arenaSpotlightSubtitle": "{clubCode, select, goias{Jogue, participe e dispute seu lugar entre os Esmeraldinos.} other{Jogue, participe e dispute seu lugar entre os torcedores do {club}.}}",
+  "@arenaSpotlightSubtitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "arenaSpotlightCta": "Entrar na Arena",
   "arenaLineupHeroEyebrow": "ESCALAÇÃO DA TORCIDA",
   "arenaLineupHeroCta": "Montar minha escalação",
@@ -362,7 +374,12 @@
     }
   },
   "arenaGameLineupTitle": "Adivinhe a Escalação",
-  "arenaGameLineupTagline": "Descubra os 11 titulares de uma partida histórica do Goiás.",
+  "arenaGameLineupTagline": "Descubra os 11 titulares de uma partida histórica do {club}.",
+  "@arenaGameLineupTagline": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "arenaGameCareerTitle": "Adivinhe o Jogador",
   "arenaGameCareerTagline": "Descubra o jogador pela trajetória na carreira.",
   "arenaGuessPlayerTitle": "Quem Vestiu o Manto?",
@@ -1234,7 +1251,12 @@
   "ticketsNextEvent": "PRÓXIMO EVENTO",
   "ticketsQuickAccess": "ACESSO RÁPIDO",
   "ticketsMyTickets": "Meus ingressos",
-  "ticketsMyTicketsSubtitle": "Ingressos para partidas do Goiás",
+  "ticketsMyTicketsSubtitle": "Ingressos para partidas do {club}",
+  "@ticketsMyTicketsSubtitle": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "ticketsMyOrders": "Meus pedidos",
   "ticketsMyOrdersSubtitle": "Histórico das suas compras",
   "ticketsNoEvents": "Nenhum evento disponível no momento",
@@ -1242,7 +1264,12 @@
   "ticketsMyTicketsTitle": "MEUS INGRESSOS",
   "ticketsMyTicketsLoadError": "Não foi possível carregar seus ingressos",
   "ticketsMyTicketsEmpty": "Você ainda não possui ingressos",
-  "ticketsMyTicketsEmptyMessage": "Seus ingressos para partidas do Goiás aparecerão aqui.",
+  "ticketsMyTicketsEmptyMessage": "Seus ingressos para partidas do {club} aparecerão aqui.",
+  "@ticketsMyTicketsEmptyMessage": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "ticketsMyOrdersTitle": "MEUS PEDIDOS",
   "ticketsMyOrdersLoadError": "Não foi possível carregar seus pedidos",
   "ticketsMyOrdersEmpty": "Nenhum pedido encontrado",
@@ -1309,14 +1336,26 @@
   "ticketsGoToMatchButton": "Vou ao jogo",
   "ticketsNotThisTimeButton": "Não dessa vez",
   "ticketsDeclineConfirmTitle": "Tem certeza que não vai?",
-  "ticketsDeclineConfirmMessage": "A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.",
+  "ticketsDeclineConfirmMessage": "{clubCode, select, goias{A Serrinha fica diferente com você lá. O Goiás conta com o apoio da Nação Esmeraldina! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.} other{O estádio fica diferente com você lá. O {club} conta com o apoio da torcida! 💚\n\nVocê ainda poderá mudar de ideia enquanto o check-in estiver aberto.}}",
+  "@ticketsDeclineConfirmMessage": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "ticketsWantToGoButton": "Quero ir ao jogo",
   "ticketsConfirmDeclineButton": "Confirmar que não vou",
   "ticketsCheckinSuccessTitle": "Check-in realizado!",
   "ticketsCheckinSuccessMessage": "O ingresso também está disponível no menu Meus Ingressos.",
   "ticketsCloseButton": "Fechar",
   "ticketsSaveTicketButton": "Salvar ingresso",
-  "ticketsSectorPickerTitle": "Onde você quer apoiar o Verdão?",
+  "ticketsSectorPickerTitle": "{clubCode, select, goias{Onde você quer apoiar o Verdão?} other{Onde você quer apoiar o {club}?}}",
+  "@ticketsSectorPickerTitle": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "ticketsSectorPickerSubtitle": "Escolha o setor para esta partida.",
   "ticketsConfirmCheckInButton": "Confirmar check-in",
   "ticketsViewTicketTitle": "MEU INGRESSO",
@@ -1392,7 +1431,12 @@
   "ticketPdfFieldCode": "Código",
   "ticketPdfAntiScalpingTitle": "NÃO COMPRE\nDE CAMBISTAS!",
   "ticketPdfAntiScalpingSubtitle": "O ingresso pode ser falso.",
-  "ticketPdfFooterNotice": "Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do Goiás ou da Seleção Brasileira.",
+  "ticketPdfFooterNotice": "Ingresso pessoal e intransferível. Obrigatória a apresentação de documento com foto na entrada. Permitida somente camisa do {club} ou da Seleção Brasileira.",
+  "@ticketPdfFooterNotice": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "ticketPdfInvalidTicket": "INGRESSO\nINVÁLIDO",
   "penaltyFinalResult": "RESULTADO FINAL",
   "penaltyConverted": "Você converteu {goals} de {total} cobranças",
@@ -1474,7 +1518,12 @@
   },
   "crowdMostVotedFormation": "formação escolhida",
   "crowdNoVotes": "Ainda não há votos",
-  "crowdNoVotesMessage": "Seja o primeiro a escalar o Goiás e ajude a formar o time da torcida.",
+  "crowdNoVotesMessage": "Seja o primeiro a escalar o {club} e ajude a formar o time da torcida.",
+  "@crowdNoVotesMessage": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "crowdVotingClosed": "Votação encerrada — esta é a escalação que você enviou.",
   "crowdUpdateLineup": "ATUALIZAR ESCALAÇÃO",
   "crowdConfirmLineup": "CONFIRMAR ESCALAÇÃO",
@@ -1482,8 +1531,18 @@
   "crowdSelectedPlayer": "Escalado",
   "crowdAlsoCanPlaySection": "TAMBÉM PODE ATUAR",
   "crowdCanAlsoPlayBadge": "Pode atuar",
-  "crowdCardDescVoted": "Veja como a torcida está escalando o Goiás para o próximo jogo.",
-  "crowdCardDescNew": "Escale o Goiás para o próximo jogo e veja o time mais escalado pela torcida.",
+  "crowdCardDescVoted": "Veja como a torcida está escalando o {club} para o próximo jogo.",
+  "@crowdCardDescVoted": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
+  "crowdCardDescNew": "Escale o {club} para o próximo jogo e veja o time mais escalado pela torcida.",
+  "@crowdCardDescNew": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "clubSectionHistory": "História",
   "clubSectionSquad": "Elenco",
   "clubSectionTitles": "Títulos",
@@ -1590,7 +1649,12 @@
       }
     }
   },
-  "membershipLoadError": "Não foi possível carregar o Sócio Esmeralda.",
+  "membershipLoadError": "Não foi possível carregar o {programName}.",
+  "@membershipLoadError": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
   "membershipPlansTitle": "PLANOS",
   "membershipSector": "Setor {sector}",
   "@membershipSector": {
@@ -1626,7 +1690,12 @@
   "membershipCheckinHistory": "Histórico de check-ins",
   "membershipAreaPrep": "Essa área ainda está sendo preparada.",
   "membershipSeeOtherPlans": "Conhecer outros planos",
-  "membershipHeroTitle": "Esteja ainda mais próximo\ndo Goiás.",
+  "membershipHeroTitle": "Esteja ainda mais próximo\ndo {club}.",
+  "@membershipHeroTitle": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "membershipHeroSubtitle": "Faça parte dessa história com prioridade de acesso ao estádio, economia em ingressos, descontos e experiências exclusivas.",
   "membershipChoosePlan": "ESCOLHA SEU PLANO",
   "membershipChosenPlan": "PLANO ESCOLHIDO",
@@ -1645,7 +1714,12 @@
   "membershipGenderMale": "Masculino",
   "membershipGenderFemale": "Feminino",
   "membershipHomePhone": "Telefone residencial (opcional)",
-  "membershipNewsletter": "Desejo receber notícias do clube e do Sócio Esmeralda por e-mail.",
+  "membershipNewsletter": "Desejo receber notícias do clube e do {programName} por e-mail.",
+  "@membershipNewsletter": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
   "membershipCountry": "País",
   "membershipPostalCode": "Código postal",
   "membershipDontKnowCep": "Não sei meu CEP",
@@ -1667,7 +1741,12 @@
   "membershipMonthly": "Mensal",
   "membershipAnnual": "Anual",
   "membershipTerms": "TERMOS DA ASSOCIAÇÃO",
-  "membershipAcceptRegulation": "Li e aceito o Regulamento do Sócio Esmeralda",
+  "membershipAcceptRegulation": "Li e aceito o Regulamento do {programName}",
+  "@membershipAcceptRegulation": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
   "membershipReadFullRegulation": "Ler regulamento completo →",
   "membershipDemoDisclaimerBody": "Esta adesão é simulada e não cria vínculo com o {programName}. Nenhuma cobrança será realizada.",
   "@membershipDemoDisclaimerBody": {
@@ -1690,8 +1769,18 @@
   "membershipYourBenefits": "SEUS BENEFÍCIOS",
   "membershipGoToMemberArea": "IR PARA MINHA ÁREA DE SÓCIO",
   "membershipBackToHome": "Voltar para o início",
-  "membershipWelcome": "BEM-VINDO AO\nSÓCIO ESMERALDA",
-  "membershipSuccessMessage": "Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do Verdão.",
+  "membershipWelcome": "BEM-VINDO AO\n{programName}",
+  "@membershipWelcome": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
+  "membershipSuccessMessage": "Sua associação foi concluída com sucesso.\nAgora você está ainda mais perto do {club}.",
+  "@membershipSuccessMessage": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "membershipAnnualPlan": "Plano anual • {price}",
   "@membershipAnnualPlan": {
     "placeholders": {
@@ -1711,7 +1800,12 @@
   "membershipMonthlyFee": "Mensalidade",
   "membershipAnnualFee": "Anuidade",
   "membershipMemberSince": "Sócio desde",
-  "membershipRegulationName": "Regulamento do Sócio Esmeralda",
+  "membershipRegulationName": "Regulamento do {programName}",
+  "@membershipRegulationName": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
   "membershipMatchAccessNotice": "Seu plano permite acesso a esta partida.",
   "membershipCardNumber": "Nº {number}",
   "@membershipCardNumber": {
@@ -1722,7 +1816,6 @@
     }
   },
   "membershipRegulationPageTitle": "REGULAMENTO",
-  "membershipProgramName": "Sócio Esmeralda",
   "membershipRegulationEffectiveSince": "Em vigor desde {date}",
   "@membershipRegulationEffectiveSince": {
     "placeholders": {
@@ -1732,10 +1825,13 @@
     }
   },
   "membershipRegulationTableOfContents": "CONTEÚDO",
-  "membershipCancelWhatsapp": "Olá, gostaria de cancelar minha associação Sócio Esmeralda ({plan}).",
+  "membershipCancelWhatsapp": "Olá, gostaria de cancelar minha associação {programName} ({plan}).",
   "@membershipCancelWhatsapp": {
     "placeholders": {
       "plan": {
+        "type": "String"
+      },
+      "programName": {
         "type": "String"
       }
     }
@@ -1749,12 +1845,22 @@
   "membershipFaqSubtitle": "Encontre respostas sobre planos, pagamentos, check-in e benefícios.",
   "membershipFaqLoadError": "Não foi possível carregar as dúvidas frequentes.",
   "membershipFaqNoResults": "Nenhuma dúvida encontrada",
-  "membershipFaqNoResultsMessage": "Tente outro termo ou fale com o atendimento do Sócio Esmeralda.",
+  "membershipFaqNoResultsMessage": "Tente outro termo ou fale com o atendimento do {programName}.",
+  "@membershipFaqNoResultsMessage": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
   "membershipTalkToSupport": "FALAR COM O ATENDIMENTO",
   "membershipTalkToSupportMenu": "Falar com o atendimento",
   "membershipDontStayInDoubt": "NÃO FIQUE NA DÚVIDA",
   "membershipDidntFindAnswer": "Não encontrou a resposta que procurava?",
-  "membershipFaqScopeNote": "Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do Sócio Esmeralda não são respondidas por este canal.",
+  "membershipFaqScopeNote": "Dúvidas sobre o clube, categorias de base, elenco e outros assuntos fora do {programName} não são respondidas por este canal.",
+  "@membershipFaqScopeNote": {
+    "placeholders": {
+      "programName": { "type": "String" }
+    }
+  },
   "membershipFaqAll": "Todas",
   "membershipFaqChipGeneral": "Gerais",
   "membershipFaqChipPayment": "Pagamento",
@@ -1816,22 +1922,46 @@
       }
     }
   },
-  "crowdShareCrowd": "Confira a escalação da torcida pro Goiás! 💚",
-  "crowdShareMine": "Essa é a minha escalação pro Goiás! 💚",
+  "crowdShareCrowd": "Confira a escalação da torcida pro {club}! 💚",
+  "@crowdShareCrowd": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
+  "crowdShareMine": "Essa é a minha escalação pro {club}! 💚",
+  "@crowdShareMine": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
   "crowdSubmitted": "Escalação enviada!",
-  "storeHomeEntryBadge": "GOIÁS STORE",
+  "storeHomeEntryBadge": "{storeName}",
+  "@storeHomeEntryBadge": {
+    "placeholders": {
+      "storeName": { "type": "String" }
+    }
+  },
   "storeHomeEntryTitle": "O manto te espera",
-  "storeHomeEntryDescription": "Leve o Verdão com você dentro e fora de campo.",
+  "storeHomeEntryDescription": "{clubCode, select, goias{Leve o Verdão com você dentro e fora de campo.} other{Leve o {club} com você dentro e fora de campo.}}",
+  "@storeHomeEntryDescription": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
   "storeHomeEntryCta": "Conhecer a loja",
-  "storeProfileEntry": "Goiás Store",
   "storeProfileMyOrders": "Meus pedidos",
-  "storeHomeTitle": "Goiás Store",
   "storeHomeLoadErrorTitle": "Não foi possível carregar a loja",
   "storeHomeEmptyTitle": "Loja em preparação",
   "storeHomeEmptyMessage": "Volte em breve para conferir os produtos oficiais.",
   "storeMyPurchasesTitle": "Minhas Compras",
   "storeSectionCategories": "Categorias",
-  "storeSearchHint": "Buscar na Goiás Store",
+  "storeSearchHint": "Buscar na {storeName}",
+  "@storeSearchHint": {
+    "placeholders": {
+      "storeName": { "type": "String" }
+    }
+  },
   "storeListingDefaultTitle": "Produtos",
   "storeSearchEmptyTitle": "Busque por produtos",
   "storeSearchEmptyMessage": "Nome, categoria, coleção ou tipo de peça.",
@@ -1929,8 +2059,19 @@
   "storeVariationSoldOut": "Essa variação está esgotada.",
   "storeCartTitle": "SACOLA",
   "storeCartEmptyTitle": "Sua sacola está vazia",
-  "storeCartEmptyMessage": "Escolha seus produtos oficiais e carregue o Verdão com você.",
-  "storeCartEmptyCta": "Ir para a Goiás Store",
+  "storeCartEmptyMessage": "{clubCode, select, goias{Escolha seus produtos oficiais e carregue o Verdão com você.} other{Escolha seus produtos oficiais e carregue o {club} com você.}}",
+  "@storeCartEmptyMessage": {
+    "placeholders": {
+      "clubCode": { "type": "String" },
+      "club": { "type": "String" }
+    }
+  },
+  "storeCartEmptyCta": "Ir para a {storeName}",
+  "@storeCartEmptyCta": {
+    "placeholders": {
+      "storeName": { "type": "String" }
+    }
+  },
   "storeCartItemSize": "Tamanho {size}",
   "storeCartItemNumber": "nº {number}",
   "storeRemoveItemTitle": "Remover item",
@@ -1991,7 +2132,12 @@
   "storeCardSummaryLine": "Cartão de crédito final {digits} · {installments}x",
   "storeConfirmOrderButton": "Confirmar pedido",
   "storeEdit": "Editar",
-  "storeAcceptTerms": "Li e aceito os termos de compra da Goiás Store.",
+  "storeAcceptTerms": "Li e aceito os termos de compra da {storeName}.",
+  "@storeAcceptTerms": {
+    "placeholders": {
+      "storeName": { "type": "String" }
+    }
+  },
   "storeOrderConfirmedTitle": "Pedido confirmado!",
   "storeItemsLabel": "Itens",
   "storeItemsCountLabel": "Itens ({count})",
@@ -2000,7 +2146,12 @@
   "storeBackHomeButton": "Voltar ao início",
   "storeOrdersTitle": "MEUS PEDIDOS",
   "storeOrdersEmptyTitle": "Você ainda não fez nenhum pedido",
-  "storeOrdersEmptyMessage": "Seus pedidos na Goiás Store aparecerão aqui.",
+  "storeOrdersEmptyMessage": "Seus pedidos na {storeName} aparecerão aqui.",
+  "@storeOrdersEmptyMessage": {
+    "placeholders": {
+      "storeName": { "type": "String" }
+    }
+  },
   "storeOrdersLoadError": "Não foi possível carregar seus pedidos",
   "storeOrderCancelled": "Pedido cancelado",
   "storeCustomerLabel": "Cliente",

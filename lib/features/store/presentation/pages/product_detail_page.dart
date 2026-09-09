@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_button_styles.dart';
@@ -263,15 +264,18 @@ class _GalleryState extends State<_Gallery> {
                     child: _GalleryIconButton(
                       icon: Icons.ios_share_rounded,
                       semanticLabel: l10n.storeShareProduct,
-                      onTap: () => unawaited(
-                        SharePlus.instance.share(
-                          ShareParams(
-                            text: widget.product.sourceUrl != null
-                                ? '${widget.product.name} — Goiás Store\n${widget.product.sourceUrl}'
-                                : '${widget.product.name} — Goiás Store',
+                      onTap: () {
+                        final storeName = sl<ClubConfig>().productNames.storeName;
+                        unawaited(
+                          SharePlus.instance.share(
+                            ShareParams(
+                              text: widget.product.sourceUrl != null
+                                  ? '${widget.product.name} — $storeName\n${widget.product.sourceUrl}'
+                                  : '${widget.product.name} — $storeName',
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     ),
                   ),
                 ),

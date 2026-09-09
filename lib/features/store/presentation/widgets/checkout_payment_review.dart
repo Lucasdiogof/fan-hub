@@ -584,7 +584,9 @@ class _AcceptTermsRow extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                context.l10n.storeAcceptTerms,
+                context.l10n.storeAcceptTerms(
+                  sl<ClubConfig>().productNames.storeName,
+                ),
                 style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
               ),
             ),
