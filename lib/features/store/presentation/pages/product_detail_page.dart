@@ -265,7 +265,8 @@ class _GalleryState extends State<_Gallery> {
                       icon: Icons.ios_share_rounded,
                       semanticLabel: l10n.storeShareProduct,
                       onTap: () {
-                        final storeName = sl<ClubConfig>().productNames.storeName;
+                        final storeName =
+                            sl<ClubConfig>().productNames.storeName;
                         unawaited(
                           SharePlus.instance.share(
                             ShareParams(

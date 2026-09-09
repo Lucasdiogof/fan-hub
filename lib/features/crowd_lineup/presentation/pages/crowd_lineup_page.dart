@@ -186,7 +186,10 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      CrowdTab(isHome: _isActiveClubHome, fieldKey: _crowdFieldKey),
+                      CrowdTab(
+                        isHome: _isActiveClubHome,
+                        fieldKey: _crowdFieldKey,
+                      ),
                       EscaleTab(
                         isHome: _isActiveClubHome,
                         fieldKey: _escaleFieldKey,
@@ -217,8 +220,8 @@ class _CrowdLineupViewState extends State<_CrowdLineupView>
       onTap: () => shareFieldImage(
         onCrowdTab ? _crowdFieldKey : _escaleFieldKey,
         text: onCrowdTab
-            ? context.l10n.crowdShareCrowd
-            : context.l10n.crowdShareMine,
+            ? context.l10n.crowdShareCrowd(sl<ClubConfig>().identity.shortName)
+            : context.l10n.crowdShareMine(sl<ClubConfig>().identity.shortName),
         fileName: onCrowdTab
             ? 'escalacao_da_torcida.png'
             : 'minha_escalacao.png',

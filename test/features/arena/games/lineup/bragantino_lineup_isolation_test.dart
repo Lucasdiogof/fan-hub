@@ -164,28 +164,24 @@ void main() {
       }
     });
 
-    test(
-      'HISTORICAL_LINEUPS: 15 partidas curadas em 2026-09-07 (XI nominal '
-      'validado, sem número de camisa/formação forjados)',
-      () {
-        expect(historical, hasLength(15));
-        expect(
-          (pool['historical_lineups']
-              as Map<String, dynamic>)['research_status'],
-          'CURATED_NO_FORMATION_YET',
-        );
-        for (final match in historical) {
-          final map = match as Map<String, dynamic>;
-          final xi = (map['starting_xi'] as List).cast<Map<String, dynamic>>();
-          expect(xi, hasLength(11), reason: map['source_match_id'] as String);
-          // Nenhum número de camisa inventado — todo mundo fica null até
-          // existir fonte real por partida.
-          for (final player in xi) {
-            expect(player['number'], isNull, reason: player['name'] as String);
-          }
+    test('HISTORICAL_LINEUPS: 15 partidas curadas em 2026-09-07 (XI nominal '
+        'validado, sem número de camisa/formação forjados)', () {
+      expect(historical, hasLength(15));
+      expect(
+        (pool['historical_lineups'] as Map<String, dynamic>)['research_status'],
+        'CURATED_NO_FORMATION_YET',
+      );
+      for (final match in historical) {
+        final map = match as Map<String, dynamic>;
+        final xi = (map['starting_xi'] as List).cast<Map<String, dynamic>>();
+        expect(xi, hasLength(11), reason: map['source_match_id'] as String);
+        // Nenhum número de camisa inventado — todo mundo fica null até
+        // existir fonte real por partida.
+        for (final player in xi) {
+          expect(player['number'], isNull, reason: player['name'] as String);
         }
-      },
-    );
+      }
+    });
 
     test('nenhuma partida do pool referencia o Goiás', () {
       for (final match in recent) {
@@ -204,13 +200,16 @@ void main() {
       'tooling/bragantino_lineup/out/eligibility_report.json',
     );
 
-    test('o relatório existe e cobre o pool inteiro (123 RECENT + 15 HISTORICAL)', () {
-      expect(reportFile.existsSync(), isTrue);
-      final report =
-          jsonDecode(reportFile.readAsStringSync()) as Map<String, dynamic>;
-      expect(report['avaliadas'], 138);
-      expect(report['rejeitadas'], report['avaliadas']);
-    });
+    test(
+      'o relatório existe e cobre o pool inteiro (123 RECENT + 15 HISTORICAL)',
+      () {
+        expect(reportFile.existsSync(), isTrue);
+        final report =
+            jsonDecode(reportFile.readAsStringSync()) as Map<String, dynamic>;
+        expect(report['avaliadas'], 138);
+        expect(report['rejeitadas'], report['avaliadas']);
+      },
+    );
 
     test('zero publicáveis hoje, com motivo explícito registrado', () {
       final report =

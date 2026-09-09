@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
+import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/shared/widgets/jersey_shirt.dart';
@@ -60,7 +61,7 @@ class LineupShirtButton extends StatelessWidget {
                     number: player.shirtNumber,
                     fillColor: failed
                         ? ArenaColors.opponentKeeper.withValues(alpha: 0.55)
-                        : ArenaColors.goiasOutfield,
+                        : context.colors.primary,
                   ),
                   if (solved || failed)
                     Positioned(

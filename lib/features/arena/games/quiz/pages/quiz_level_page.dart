@@ -110,6 +110,7 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final levels = _levels(colors);
     return Scaffold(
       backgroundColor: colors.background,
       body: SafeArea(
@@ -155,11 +156,11 @@ class _QuizLevelPageState extends State<QuizLevelPage> with RouteAware {
                     child: _summaries == null
                         ? const Center(child: GoiasLoadingIndicator())
                         : ListView.separated(
-                            itemCount: _levels.length,
+                            itemCount: levels.length,
                             separatorBuilder: (_, _) =>
                                 const SizedBox(height: AppSpacing.lg),
                             itemBuilder: (context, index) {
-                              final level = _levels[index];
+                              final level = levels[index];
                               return _LevelBanner(
                                 level: level,
                                 summary: _summaries![level.difficulty],
@@ -195,21 +196,27 @@ class _LevelContent {
   final List<Color> gradient;
 }
 
-const _levels = [
+/// Gradiente dos 2 primeiros níveis vem da paleta do CLUBE ATIVO (era
+/// verde cravado, sempre o do Goiás, mesmo com outro clube rodando —
+/// achado real 2026-09-09, sem efeito visual até o Quiz ligar pro
+/// Bragantino nesta mesma rodada). O nível "fanático" mantém o dourado —
+/// já é um tom universal usado em vários lugares do app (`colors.gold`),
+/// nunca a cor de nenhum clube específico.
+List<_LevelContent> _levels(AppColors colors) => [
   _LevelContent(
     difficulty: QuizDifficulty.torcedor,
     icon: Icons.groups_rounded,
-    gradient: [Color(0xFF1E7A45), Color(0xFF07230F)],
+    gradient: [colors.primary, colors.brandDark],
   ),
   _LevelContent(
     difficulty: QuizDifficulty.esmeraldino,
     icon: Icons.shield_rounded,
-    gradient: [Color(0xFF0F5C3D), Color(0xFF01140A)],
+    gradient: [colors.brandDeep, colors.brandDark],
   ),
   _LevelContent(
     difficulty: QuizDifficulty.fanatico,
     icon: Icons.local_fire_department_rounded,
-    gradient: [Color(0xFFC79A3D), Color(0xFF2A1B02)],
+    gradient: [colors.gold, const Color(0xFF2A1B02)],
   ),
 ];
 

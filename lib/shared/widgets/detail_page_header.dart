@@ -65,7 +65,9 @@ class _DetailPageHeaderState extends State<DetailPageHeader> {
   void initState() {
     super.initState();
     _scrollController.addListener(_onScroll);
-    WidgetsBinding.instance.addPostFrameCallback((_) => _updateTitleVisibility());
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _updateTitleVisibility(),
+    );
   }
 
   @override
@@ -106,13 +108,19 @@ class _DetailPageHeaderState extends State<DetailPageHeader> {
             constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
             child: SingleChildScrollView(
               controller: _scrollController,
-              padding: (widget.padding ?? const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    0,
-                    AppSpacing.lg,
-                    AppSpacing.xxxl,
-                  ))
-                  .add(EdgeInsets.only(top: topInset + _barHeight + AppSpacing.sm)),
+              padding:
+                  (widget.padding ??
+                          const EdgeInsets.fromLTRB(
+                            AppSpacing.lg,
+                            0,
+                            AppSpacing.lg,
+                            AppSpacing.xxxl,
+                          ))
+                      .add(
+                        EdgeInsets.only(
+                          top: topInset + _barHeight + AppSpacing.sm,
+                        ),
+                      ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -172,10 +180,7 @@ class _Bar extends StatelessWidget {
     final surfaceOpacity = surfaceT * 0.85;
     return ClipRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(
-          sigmaX: surfaceT * 6,
-          sigmaY: surfaceT * 6,
-        ),
+        filter: ImageFilter.blur(sigmaX: surfaceT * 6, sigmaY: surfaceT * 6),
         child: Container(
           height: topInset + barHeight,
           padding: EdgeInsets.only(top: topInset),
@@ -204,7 +209,9 @@ class _Bar extends StatelessWidget {
                         child: AnimatedSlide(
                           duration: const Duration(milliseconds: 180),
                           curve: Curves.easeOut,
-                          offset: showTitle ? Offset.zero : const Offset(0, 0.2),
+                          offset: showTitle
+                              ? Offset.zero
+                              : const Offset(0, 0.2),
                           child: Text(
                             title,
                             maxLines: 1,

@@ -48,8 +48,9 @@ class PassportTrajectoryCubit extends Cubit<PassportTrajectoryState> {
       Error() => PassportStadiumSummary.empty,
     };
     final attendedMatches = switch (await attendedFuture) {
-      Success(:final data) => [...data]
-        ..sort((a, b) => b.matchDate.compareTo(a.matchDate)),
+      Success(:final data) => [
+        ...data,
+      ]..sort((a, b) => b.matchDate.compareTo(a.matchDate)),
       Error() => const <PassportMatch>[],
     };
     final memorableId = switch (await memorableIdFuture) {

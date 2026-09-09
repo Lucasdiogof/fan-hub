@@ -95,8 +95,9 @@ class CareerAutocompleteIndex {
       collisions.where((c) => c.type == CareerCollisionType.samePerson).length;
   int get crossPersonCollisions =>
       collisions.where((c) => c.type == CareerCollisionType.crossPerson).length;
-  int get unknownIdentityCollisions =>
-      collisions.where((c) => c.type == CareerCollisionType.unknownIdentity).length;
+  int get unknownIdentityCollisions => collisions
+      .where((c) => c.type == CareerCollisionType.unknownIdentity)
+      .length;
 }
 
 int _sourcePriority(String source) => source == 'career_players' ? 1 : 0;
@@ -109,7 +110,8 @@ typedef _Owner = ({
 });
 
 CareerCollisionType _classifyCollision(String? personIdA, String? personIdB) {
-  if (personIdA == null || personIdB == null) return CareerCollisionType.unknownIdentity;
+  if (personIdA == null || personIdB == null)
+    return CareerCollisionType.unknownIdentity;
   return personIdA == personIdB
       ? CareerCollisionType.samePerson
       : CareerCollisionType.crossPerson;
@@ -132,17 +134,33 @@ CareerAutocompleteIndex buildCareerAutocompleteIndex({
   final owners = <String, _Owner>{};
   final collisions = <CareerNameTextCollision>[];
 
-  void claim(String text, String source, String acceptedText, String? personId) {
+  void claim(
+    String text,
+    String source,
+    String acceptedText,
+    String? personId,
+  ) {
     final key = normalizeName(text);
     final existing = owners[key];
     if (existing == null) {
-      owners[key] = (source: source, label: text, acceptedText: acceptedText, personId: personId);
+      owners[key] = (
+        source: source,
+        label: text,
+        acceptedText: acceptedText,
+        personId: personId,
+      );
       return;
     }
-    final candidate = (source: source, label: text, acceptedText: acceptedText, personId: personId);
+    final candidate = (
+      source: source,
+      label: text,
+      acceptedText: acceptedText,
+      personId: personId,
+    );
     final type = _classifyCollision(existing.personId, personId);
     // DISPLAY_PRIORITY — só decide o texto exibido, independente de `type`.
-    final candidateWinsDisplay = _sourcePriority(source) > _sourcePriority(existing.source);
+    final candidateWinsDisplay =
+        _sourcePriority(source) > _sourcePriority(existing.source);
     final displayed = candidateWinsDisplay ? candidate : existing;
     final other = candidateWinsDisplay ? existing : candidate;
     collisions.add(
@@ -182,17 +200,18 @@ CareerAutocompleteIndex buildCareerAutocompleteIndex({
     }
   }
 
-  final suggestions = owners.values
-      .map(
-        (o) => CareerAutocompleteSuggestion(
-          label: o.label,
-          normalizedLabel: normalizeName(o.label),
-          acceptedText: o.acceptedText,
-          personId: o.personId,
-        ),
-      )
-      .toList()
-    ..sort((a, b) => a.label.compareTo(b.label));
+  final suggestions =
+      owners.values
+          .map(
+            (o) => CareerAutocompleteSuggestion(
+              label: o.label,
+              normalizedLabel: normalizeName(o.label),
+              acceptedText: o.acceptedText,
+              personId: o.personId,
+            ),
+          )
+          .toList()
+        ..sort((a, b) => a.label.compareTo(b.label));
 
   return CareerAutocompleteIndex(
     suggestions: suggestions,

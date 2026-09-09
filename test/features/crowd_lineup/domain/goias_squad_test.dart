@@ -3,16 +3,19 @@ import 'package:goias_app/features/crowd_lineup/domain/goias_squad.dart';
 
 void main() {
   group('goiasSquad.personId', () {
-    test('31 jogadores, todos com personId não-vazio (mapping F5 100% RESOLVED)', () {
-      expect(goiasSquad.length, 31);
-      for (final player in goiasSquad) {
-        expect(
-          player.personId,
-          isNotEmpty,
-          reason: '${player.id} sem personId',
-        );
-      }
-    });
+    test(
+      '31 jogadores, todos com personId não-vazio (mapping F5 100% RESOLVED)',
+      () {
+        expect(goiasSquad.length, 31);
+        for (final player in goiasSquad) {
+          expect(
+            player.personId,
+            isNotEmpty,
+            reason: '${player.id} sem personId',
+          );
+        }
+      },
+    );
 
     test('0 personId duplicado — 1:1 entre SquadPlayer e person', () {
       final ids = goiasSquad.map((p) => p.personId).toList();
@@ -75,13 +78,16 @@ void main() {
       );
     });
 
-    test('Dieguinho não existe no goiasSquad atual (mesma ausência já confirmada em squad_members na F4)', () {
-      expect(squadById.containsKey('dieguinho'), isFalse);
-      expect(
-        goiasSquad.any((p) => p.name.toLowerCase().contains('dieguinho')),
-        isFalse,
-      );
-    });
+    test(
+      'Dieguinho não existe no goiasSquad atual (mesma ausência já confirmada em squad_members na F4)',
+      () {
+        expect(squadById.containsKey('dieguinho'), isFalse);
+        expect(
+          goiasSquad.any((p) => p.name.toLowerCase().contains('dieguinho')),
+          isFalse,
+        );
+      },
+    );
   });
 
   group('lookup canônico (benefício da F5)', () {

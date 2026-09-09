@@ -153,16 +153,19 @@ void main() {
     expect(prefs.getKeys(), isEmpty);
   });
 
-  test('sessão expirada (sessionExpired) limpa os mesmos dados que o logout', () async {
-    AccountSessionCacheGuard(authCubit, cartCubit);
+  test(
+    'sessão expirada (sessionExpired) limpa os mesmos dados que o logout',
+    () async {
+      AccountSessionCacheGuard(authCubit, cartCubit);
 
-    authRepo.emitSessionExpired();
-    await pumpEventQueue();
+      authRepo.emitSessionExpired();
+      await pumpEventQueue();
 
-    expect(cartCubit.state.cart.items, isEmpty);
-    final prefs = await SharedPreferences.getInstance();
-    expect(prefs.getKeys(), isEmpty);
-  });
+      expect(cartCubit.state.cart.items, isEmpty);
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getKeys(), isEmpty);
+    },
+  );
 
   test('login (signedIn) nunca limpa nada por engano', () async {
     AccountSessionCacheGuard(authCubit, cartCubit);

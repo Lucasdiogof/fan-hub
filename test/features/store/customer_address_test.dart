@@ -22,25 +22,28 @@ void main() {
       expect(delivery.isDefault, isFalse);
     });
 
-    test('editing the residential address afterwards never changes the copy', () {
-      final delivery = residential.copyAsNew(id: 'delivery-1');
-      final editedResidential = residential.copyWith();
+    test(
+      'editing the residential address afterwards never changes the copy',
+      () {
+        final delivery = residential.copyAsNew(id: 'delivery-1');
+        final editedResidential = residential.copyWith();
 
-      // Simula o residencial mudando de rua depois que a cópia já existe.
-      const changedResidential = CustomerAddress(
-        id: 'residential-1',
-        zipCode: '74000-000',
-        street: 'Rua B',
-        number: '200',
-        neighborhood: 'Setor Teste',
-        city: 'Goiânia',
-        state: 'GO',
-      );
+        // Simula o residencial mudando de rua depois que a cópia já existe.
+        const changedResidential = CustomerAddress(
+          id: 'residential-1',
+          zipCode: '74000-000',
+          street: 'Rua B',
+          number: '200',
+          neighborhood: 'Setor Teste',
+          city: 'Goiânia',
+          state: 'GO',
+        );
 
-      expect(delivery.street, 'Rua A');
-      expect(changedResidential.street, isNot(delivery.street));
-      expect(editedResidential.street, residential.street);
-    });
+        expect(delivery.street, 'Rua A');
+        expect(changedResidential.street, isNot(delivery.street));
+        expect(editedResidential.street, residential.street);
+      },
+    );
   });
 
   group('copyWith', () {

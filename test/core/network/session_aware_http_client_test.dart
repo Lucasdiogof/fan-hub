@@ -138,10 +138,7 @@ void main() {
           ], 200);
         },
       );
-      await env.client.auth.signInWithPassword(
-        email: 'a@a.com',
-        password: 'x',
-      );
+      await env.client.auth.signInWithPassword(email: 'a@a.com', password: 'x');
 
       final sessionBefore = env.client.auth.currentSession!;
       final tokenA = sessionBefore.accessToken;
@@ -183,34 +180,37 @@ void main() {
     },
   );
 
-  test('5 chamadas simultâneas com token expirado geram só 1 refresh', () async {
-    final env = buildClient(
-      onRest: (req) {
-        final auth = req.headers['Authorization'] ?? '';
-        if (auth.endsWith('-v1')) {
-          return _json({'code': 'PGRST303', 'message': 'JWT expired'}, 401);
-        }
-        return _json([
-          {'id': 1},
-        ], 200);
-      },
-    );
-    await env.client.auth.signInWithPassword(email: 'a@a.com', password: 'x');
+  test(
+    '5 chamadas simultâneas com token expirado geram só 1 refresh',
+    () async {
+      final env = buildClient(
+        onRest: (req) {
+          final auth = req.headers['Authorization'] ?? '';
+          if (auth.endsWith('-v1')) {
+            return _json({'code': 'PGRST303', 'message': 'JWT expired'}, 401);
+          }
+          return _json([
+            {'id': 1},
+          ], 200);
+        },
+      );
+      await env.client.auth.signInWithPassword(email: 'a@a.com', password: 'x');
 
-    final results = await Future.wait(
-      List.generate(5, (_) => env.client.from('games').select()),
-    );
+      final results = await Future.wait(
+        List.generate(5, (_) => env.client.from('games').select()),
+      );
 
-    expect(results, everyElement(isNotEmpty));
-    expect(
-      env.refreshCallCount(),
-      1,
-      reason:
-          'GoTrue já deduplica chamadas concorrentes de refreshSession pelo '
-          'mesmo refresh token — só deve existir 1 chamada de rede de '
-          'verdade mesmo com 5 requests batendo 401 ao mesmo tempo.',
-    );
-  });
+      expect(results, everyElement(isNotEmpty));
+      expect(
+        env.refreshCallCount(),
+        1,
+        reason:
+            'GoTrue já deduplica chamadas concorrentes de refreshSession pelo '
+            'mesmo refresh token — só deve existir 1 chamada de rede de '
+            'verdade mesmo com 5 requests batendo 401 ao mesmo tempo.',
+      );
+    },
+  );
 
   test(
     'refresh falha por rede: não desloga, propaga como erro de rede',
@@ -220,10 +220,7 @@ void main() {
             _json({'code': 'PGRST303', 'message': 'JWT expired'}, 401),
         onRefresh: (req) => throw Exception('simulated network failure'),
       );
-      await env.client.auth.signInWithPassword(
-        email: 'a@a.com',
-        password: 'x',
-      );
+      await env.client.auth.signInWithPassword(email: 'a@a.com', password: 'x');
 
       final events = <AuthChangeEvent>[];
       env.client.auth.onAuthStateChange.listen(
@@ -263,17 +260,15 @@ void main() {
     'refresh token inválido: sessão é encerrada (signedOut/sessionExpired) e o 401 original sobe',
     () async {
       final env = buildClient(
-        onRest: (req) => _json({'code': 'PGRST303', 'message': 'JWT expired'}, 401),
+        onRest: (req) =>
+            _json({'code': 'PGRST303', 'message': 'JWT expired'}, 401),
         onRefresh: (req) => _json({
           'code': 'refresh_token_not_found',
           'error_code': 'refresh_token_not_found',
           'msg': 'Invalid Refresh Token: Refresh Token Not Found',
         }, 400),
       );
-      await env.client.auth.signInWithPassword(
-        email: 'a@a.com',
-        password: 'x',
-      );
+      await env.client.auth.signInWithPassword(email: 'a@a.com', password: 'x');
 
       final states = <AuthState>[];
       env.client.auth.onAuthStateChange.listen(states.add, onError: (_) {});
@@ -284,29 +279,34 @@ void main() {
       );
       await Future<void>.delayed(Duration.zero);
 
-      final signedOut = states.where((s) => s.event == AuthChangeEvent.signedOut);
+      final signedOut = states.where(
+        (s) => s.event == AuthChangeEvent.signedOut,
+      );
       expect(signedOut, isNotEmpty);
       expect(signedOut.first.signOutReason, SignOutReason.sessionExpired);
       expect(env.refreshCallCount(), 1);
     },
   );
 
-  test('retry também falha: não entra em loop, refresh só acontece uma vez', () async {
-    var restCalls = 0;
-    final env = buildClient(
-      onRest: (req) {
-        restCalls++;
-        return _json({'code': 'PGRST303', 'message': 'JWT expired'}, 401);
-      },
-    );
-    await env.client.auth.signInWithPassword(email: 'a@a.com', password: 'x');
+  test(
+    'retry também falha: não entra em loop, refresh só acontece uma vez',
+    () async {
+      var restCalls = 0;
+      final env = buildClient(
+        onRest: (req) {
+          restCalls++;
+          return _json({'code': 'PGRST303', 'message': 'JWT expired'}, 401);
+        },
+      );
+      await env.client.auth.signInWithPassword(email: 'a@a.com', password: 'x');
 
-    await expectLater(
-      () => env.client.from('games').select(),
-      throwsA(isA<PostgrestException>()),
-    );
+      await expectLater(
+        () => env.client.from('games').select(),
+        throwsA(isA<PostgrestException>()),
+      );
 
-    expect(restCalls, 2);
-    expect(env.refreshCallCount(), 1);
-  });
+      expect(restCalls, 2);
+      expect(env.refreshCallCount(), 1);
+    },
+  );
 }

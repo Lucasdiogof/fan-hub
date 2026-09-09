@@ -13,7 +13,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// configurada é uma resposta válida, não erro). Precisa funcionar SEM
 /// sessão (chamada antes do login, no boot) — a policy de leitura é pública
 /// de propósito (ver migration).
-class SupabaseReleaseRequirementRepository implements ReleaseRequirementRepository {
+class SupabaseReleaseRequirementRepository
+    implements ReleaseRequirementRepository {
   SupabaseReleaseRequirementRepository(this._client, this._clubConfig);
 
   final SupabaseClient _client;

@@ -243,6 +243,5 @@ void main() {
       expect(loaded.items, hasLength(1));
       expect(loaded.items.single.productId, 'uniform_01_female_fan');
     });
-
   });
 }

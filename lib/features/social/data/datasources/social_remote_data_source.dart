@@ -11,9 +11,7 @@ class SocialRemoteDataSource {
   final ClubConfig _clubConfig;
 
   Future<List<SocialPostDto>> getFeed({String? platform}) async {
-    final queryParams = <String, dynamic>{
-      'club': _clubConfig.identity.code,
-    };
+    final queryParams = <String, dynamic>{'club': _clubConfig.identity.code};
     if (platform != null) queryParams['platform'] = platform;
 
     final response = await _dio.get<Map<String, dynamic>>(

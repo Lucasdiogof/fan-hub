@@ -33,9 +33,7 @@ class UpdateRequiredPage extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: BoxConstraints(
-                maxWidth: ContentWidth.form.maxWidth,
-              ),
+              constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
               child: StateMessage(
                 icon: Icons.system_update_rounded,
                 title: context.l10n.releaseGateTitle,

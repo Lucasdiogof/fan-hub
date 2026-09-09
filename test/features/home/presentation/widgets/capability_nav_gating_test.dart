@@ -20,12 +20,73 @@ import '../../../../core/club/synthetic_club_config.dart';
 /// delegando o resto (l10n/fontes/tema) pro bundle real — assim o
 /// `_HomeCrestButton` consegue montar sem tocar `pubspec.yaml`.
 final _transparentPng1x1 = Uint8List.fromList([
-  0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0x00, 0x00, 0x00, 0x0D,
-  0x49, 0x48, 0x44, 0x52, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01,
-  0x08, 0x06, 0x00, 0x00, 0x00, 0x1F, 0x15, 0xC4, 0x89, 0x00, 0x00, 0x00,
-  0x0A, 0x49, 0x44, 0x41, 0x54, 0x78, 0x9C, 0x63, 0x00, 0x01, 0x00, 0x00,
-  0x05, 0x00, 0x01, 0x0D, 0x0A, 0x2D, 0xB4, 0x00, 0x00, 0x00, 0x00, 0x49,
-  0x45, 0x4E, 0x44, 0xAE, 0x42, 0x60, 0x82,
+  0x89,
+  0x50,
+  0x4E,
+  0x47,
+  0x0D,
+  0x0A,
+  0x1A,
+  0x0A,
+  0x00,
+  0x00,
+  0x00,
+  0x0D,
+  0x49,
+  0x48,
+  0x44,
+  0x52,
+  0x00,
+  0x00,
+  0x00,
+  0x01,
+  0x00,
+  0x00,
+  0x00,
+  0x01,
+  0x08,
+  0x06,
+  0x00,
+  0x00,
+  0x00,
+  0x1F,
+  0x15,
+  0xC4,
+  0x89,
+  0x00,
+  0x00,
+  0x00,
+  0x0A,
+  0x49,
+  0x44,
+  0x41,
+  0x54,
+  0x78,
+  0x9C,
+  0x63,
+  0x00,
+  0x01,
+  0x00,
+  0x00,
+  0x05,
+  0x00,
+  0x01,
+  0x0D,
+  0x0A,
+  0x2D,
+  0xB4,
+  0x00,
+  0x00,
+  0x00,
+  0x00,
+  0x49,
+  0x45,
+  0x4E,
+  0x44,
+  0xAE,
+  0x42,
+  0x60,
+  0x82,
 ]);
 
 class _FakeAssetBundle extends CachingAssetBundle {
@@ -117,31 +178,31 @@ void main() {
   // Worker de futebol ainda não existe pro clube). Antes desta rodada,
   // Jogos nunca era gateado (era "núcleo do produto"); os testes abaixo
   // refletem o novo comportamento correto — só Home continua nunca gateada.
-  group('club-b sintético — Jogos/Sócio/Loja/Mídia somem (capability=false)', () {
-    setUp(() => sl.registerSingleton<ClubConfig>(syntheticClubBConfig));
+  group(
+    'club-b sintético — Jogos/Sócio/Loja/Mídia somem (capability=false)',
+    () {
+      setUp(() => sl.registerSingleton<ClubConfig>(syntheticClubBConfig));
 
-    testWidgets(
-      'bottom nav esconde Jogos/Sócio/Loja/Mídia',
-      (tester) async {
+      testWidgets('bottom nav esconde Jogos/Sócio/Loja/Mídia', (tester) async {
         await _pumpBottomNav(tester);
         final l10n = await AppLocalizations.delegate.load(const Locale('pt'));
         expect(find.text(l10n.navMatches), findsNothing);
         expect(find.text(l10n.navMembership), findsNothing);
         expect(find.text(l10n.navStore), findsNothing);
         expect(find.text(l10n.navMedia), findsNothing);
-      },
-    );
+      });
 
-    testWidgets('rail esconde Jogos/Sócio/Loja/Mídia, mantém Home', (
-      tester,
-    ) async {
-      await _pumpRail(tester);
-      final l10n = await AppLocalizations.delegate.load(const Locale('pt'));
-      expect(find.text(l10n.navMatches), findsNothing);
-      expect(find.text(l10n.navHome), findsOneWidget);
-      expect(find.text(l10n.navMembership), findsNothing);
-      expect(find.text(l10n.navStore), findsNothing);
-      expect(find.text(l10n.navMedia), findsNothing);
-    });
-  });
+      testWidgets('rail esconde Jogos/Sócio/Loja/Mídia, mantém Home', (
+        tester,
+      ) async {
+        await _pumpRail(tester);
+        final l10n = await AppLocalizations.delegate.load(const Locale('pt'));
+        expect(find.text(l10n.navMatches), findsNothing);
+        expect(find.text(l10n.navHome), findsOneWidget);
+        expect(find.text(l10n.navMembership), findsNothing);
+        expect(find.text(l10n.navStore), findsNothing);
+        expect(find.text(l10n.navMedia), findsNothing);
+      });
+    },
+  );
 }

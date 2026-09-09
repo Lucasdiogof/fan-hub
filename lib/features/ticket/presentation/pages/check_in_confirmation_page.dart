@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -80,7 +81,10 @@ class _CheckInView extends StatelessWidget {
       context,
       icon: Icons.sentiment_dissatisfied_outlined,
       title: l10n.ticketsDeclineConfirmTitle,
-      description: l10n.ticketsDeclineConfirmMessage,
+      description: l10n.ticketsDeclineConfirmMessage(
+        sl<ClubConfig>().identity.code,
+        sl<ClubConfig>().identity.shortName,
+      ),
       confirmLabel: l10n.ticketsWantToGoButton,
       cancelLabel: l10n.ticketsConfirmDeclineButton,
     );
@@ -316,7 +320,10 @@ class _SectorPickerSheetState extends State<_SectorPickerSheet> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              context.l10n.ticketsSectorPickerTitle,
+              context.l10n.ticketsSectorPickerTitle(
+                sl<ClubConfig>().identity.code,
+                sl<ClubConfig>().identity.shortName,
+              ),
               textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
             ),

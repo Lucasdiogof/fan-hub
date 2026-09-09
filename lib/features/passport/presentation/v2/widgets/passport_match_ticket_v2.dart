@@ -45,7 +45,7 @@ class PassportMatchTicketV2 extends StatelessWidget {
       checked: canMark ? attended : null,
       label: home != null && away != null
           ? '$home x $away'
-          : 'Goiás x ${match.opponent}',
+          : '${sl<ClubConfig>().identity.shortName} x ${match.opponent}',
       child: InkWell(
         onTap: canMark ? onToggle : null,
         borderRadius: BorderRadius.circular(AppRadius.card),

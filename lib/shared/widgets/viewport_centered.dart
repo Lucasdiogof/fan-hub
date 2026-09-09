@@ -13,7 +13,10 @@ Widget viewportCentered(Widget child) {
     builder: (context, constraints) => ListView(
       physics: const AlwaysScrollableScrollPhysics(),
       children: [
-        SizedBox(height: constraints.maxHeight, child: Center(child: child)),
+        SizedBox(
+          height: constraints.maxHeight,
+          child: Center(child: child),
+        ),
       ],
     ),
   );

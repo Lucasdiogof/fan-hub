@@ -108,9 +108,7 @@ void main() {
   group('Goiás — usa o próprio ClubConfig (comportamento inalterado)', () {
     setUp(() => sl.registerSingleton<ClubConfig>(goiasClubConfig));
 
-    testWidgets('mostra o crestBadge e o displayName do Goiás', (
-      tester,
-    ) async {
+    testWidgets('mostra o crestBadge e o displayName do Goiás', (tester) async {
       await tester.pumpWidget(_wrap());
       await tester.pump();
 
@@ -132,9 +130,7 @@ void main() {
       expect(find.text('CLUBE SINTÉTICO B'), findsOneWidget);
     });
 
-    testWidgets('NUNCA referencia o crest ou o nome do Goiás', (
-      tester,
-    ) async {
+    testWidgets('NUNCA referencia o crest ou o nome do Goiás', (tester) async {
       await tester.pumpWidget(_wrap());
       await tester.pump();
 

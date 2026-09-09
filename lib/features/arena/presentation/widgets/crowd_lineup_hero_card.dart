@@ -4,7 +4,6 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/arena/shared/arena_colors.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
@@ -126,7 +125,13 @@ class CrowdLineupHeroCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      hasVoted ? l10n.crowdCardDescVoted : l10n.crowdCardDescNew,
+                      hasVoted
+                          ? l10n.crowdCardDescVoted(
+                              sl<ClubConfig>().identity.shortName,
+                            )
+                          : l10n.crowdCardDescNew(
+                              sl<ClubConfig>().identity.shortName,
+                            ),
                       style: TextStyle(
                         color: Colors.white.withValues(alpha: 0.9),
                         fontSize: 14.5,
@@ -150,10 +155,10 @@ class CrowdLineupHeroCard extends StatelessWidget {
                               ? l10n.arenaHighlightViewLineup
                               : l10n.arenaLineupHeroCta,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 13.5,
                             fontWeight: FontWeight.w800,
-                            color: ArenaColors.goiasOutfield,
+                            color: sl<ClubConfig>().branding.light.primary,
                           ),
                         ),
                       ),

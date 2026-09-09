@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -79,7 +81,7 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                     ),
                   ),
                   Text(
-                    context.l10n.membershipProgramName,
+                    sl<ClubConfig>().productNames.membershipProgramName,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -133,7 +135,8 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                             section: section,
                           ),
                           const SizedBox(height: AppSpacing.xl),
-                          if (section.index != membershipRegulationSections.last.index) ...[
+                          if (section.index !=
+                              membershipRegulationSections.last.index) ...[
                             Divider(color: colors.border),
                             const SizedBox(height: AppSpacing.xl),
                           ],

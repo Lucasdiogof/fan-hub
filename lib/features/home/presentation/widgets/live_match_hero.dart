@@ -70,7 +70,10 @@ class LiveMatchHero extends StatelessWidget {
                       _isFinished
                           ? l10n.matchFinishedLabel.toUpperCase()
                           : [
-                              matchStatusLabel(l10n, match.status).toUpperCase(),
+                              matchStatusLabel(
+                                l10n,
+                                match.status,
+                              ).toUpperCase(),
                               if (_isReallyLive && match.minute != null)
                                 match.minute!,
                             ].join(' · '),
@@ -123,7 +126,9 @@ class LiveMatchHero extends StatelessWidget {
                             ),
                           ),
                       child: Text(
-                        _isFinished ? l10n.matchViewDetails : l10n.matchFollowLive,
+                        _isFinished
+                            ? l10n.matchViewDetails
+                            : l10n.matchFollowLive,
                       ),
                     ),
                   ),

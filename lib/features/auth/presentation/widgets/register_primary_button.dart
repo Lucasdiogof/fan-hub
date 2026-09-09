@@ -18,6 +18,10 @@ class RegisterPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppPrimaryButton(label: label, onPressed: onPressed, loading: loading);
+    return AppPrimaryButton(
+      label: label,
+      onPressed: onPressed,
+      loading: loading,
+    );
   }
 }

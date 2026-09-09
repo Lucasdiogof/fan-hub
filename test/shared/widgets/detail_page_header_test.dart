@@ -42,22 +42,24 @@ void main() {
     expect(opacity.opacity, 0);
   });
 
-  testWidgets(
-    'once the hero title scrolls away, the bar title fades in',
-    (tester) async {
-      await tester.pumpWidget(_harness());
-      await tester.pumpAndSettle();
+  testWidgets('once the hero title scrolls away, the bar title fades in', (
+    tester,
+  ) async {
+    await tester.pumpWidget(_harness());
+    await tester.pumpAndSettle();
 
-      await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -800));
-      await tester.pumpAndSettle();
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -800),
+    );
+    await tester.pumpAndSettle();
 
-      final opacity = tester.widget<AnimatedOpacity>(
-        find.byType(AnimatedOpacity),
-      );
-      expect(opacity.opacity, 1);
-      expect(find.text('Nossa Gente'), findsOneWidget);
-    },
-  );
+    final opacity = tester.widget<AnimatedOpacity>(
+      find.byType(AnimatedOpacity),
+    );
+    expect(opacity.opacity, 1);
+    expect(find.text('Nossa Gente'), findsOneWidget);
+  });
 
   testWidgets('scrolling back to the top hides the bar title again', (
     tester,
@@ -65,7 +67,10 @@ void main() {
     await tester.pumpWidget(_harness());
     await tester.pumpAndSettle();
 
-    await tester.drag(find.byType(SingleChildScrollView), const Offset(0, -800));
+    await tester.drag(
+      find.byType(SingleChildScrollView),
+      const Offset(0, -800),
+    );
     await tester.pumpAndSettle();
     await tester.drag(find.byType(SingleChildScrollView), const Offset(0, 800));
     await tester.pumpAndSettle();

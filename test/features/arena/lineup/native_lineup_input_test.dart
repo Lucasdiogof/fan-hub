@@ -77,17 +77,16 @@ void main() {
     expect(state.letters, ['A', 'B', 'C']);
   });
 
-  testWidgets(
-    'normalizes lowercase and strips anything that is not A-Z',
-    (tester) async {
-      await tester.pumpWidget(const _Harness());
-      await tester.enterText(textField(), 'a1 é!b');
-      await tester.pump();
+  testWidgets('normalizes lowercase and strips anything that is not A-Z', (
+    tester,
+  ) async {
+    await tester.pumpWidget(const _Harness());
+    await tester.enterText(textField(), 'a1 é!b');
+    await tester.pump();
 
-      final state = tester.state<_HarnessState>(find.byType(_Harness));
-      expect(state.letters, ['A', 'B']);
-    },
-  );
+    final state = tester.state<_HarnessState>(find.byType(_Harness));
+    expect(state.letters, ['A', 'B']);
+  });
 
   testWidgets(
     'reconciles its internal buffer when currentLength changes externally '

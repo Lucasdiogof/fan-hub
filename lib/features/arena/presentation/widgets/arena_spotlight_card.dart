@@ -110,7 +110,10 @@ class ArenaSpotlightCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      l10n.arenaSpotlightSubtitle,
+                      l10n.arenaSpotlightSubtitle(
+                        sl<ClubConfig>().identity.code,
+                        sl<ClubConfig>().identity.shortName,
+                      ),
                       style: TextStyle(
                         fontSize: 12.5,
                         fontWeight: FontWeight.w600,

@@ -56,8 +56,7 @@ void main() {
         'a condição que checkout_page.dart usa pra mostrar "Retirar na loja" é false',
         () async {
           await registerClub(bragantinoClubConfig);
-          final hasPickup =
-              sl<ClubConfig>().integrations.pickupAddress != null;
+          final hasPickup = sl<ClubConfig>().integrations.pickupAddress != null;
           expect(hasPickup, isFalse);
         },
       );

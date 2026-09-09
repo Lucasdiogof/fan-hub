@@ -106,19 +106,16 @@ void main() {
       },
     );
 
-    test(
-      'marking a second address as default unmarks the first one',
-      () async {
-        final cubit = build(Cart(items: [_cheapItem()]));
-        await cubit.addAddress(_address);
-        await cubit.addAddress(_address.copyAsNew(id: 'addr-2'));
-        await cubit.setAddressAsDefault('addr-2');
+    test('marking a second address as default unmarks the first one', () async {
+      final cubit = build(Cart(items: [_cheapItem()]));
+      await cubit.addAddress(_address);
+      await cubit.addAddress(_address.copyAsNew(id: 'addr-2'));
+      await cubit.setAddressAsDefault('addr-2');
 
-        final byId = {for (final a in addressRepository.addresses) a.id: a};
-        expect(byId['addr-2']!.isDefault, isTrue);
-        expect(byId[_address.id]!.isDefault, isFalse);
-      },
-    );
+      final byId = {for (final a in addressRepository.addresses) a.id: a};
+      expect(byId['addr-2']!.isDefault, isTrue);
+      expect(byId[_address.id]!.isDefault, isFalse);
+    });
 
     test(
       'delivery cannot proceed without both an address and a shipping speed',

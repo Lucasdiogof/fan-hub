@@ -27,7 +27,8 @@ void main() {
       expect(
         jogos,
         isNot(contains('lineup')),
-        reason: 'bloqueado por dado (0/123 partidas publicáveis) — fora de '
+        reason:
+            'bloqueado por dado (0/123 partidas publicáveis) — fora de '
             'escopo desta rodada, não tocar.',
       );
     });
@@ -55,10 +56,7 @@ void main() {
     });
 
     test('Bragantino + lineup continua bloqueado (dado insuficiente)', () {
-      expect(
-        capabilityGateRedirect('/arena/lineup', capabilities),
-        isNotNull,
-      );
+      expect(capabilityGateRedirect('/arena/lineup', capabilities), isNotNull);
     });
 
     test('deep link não burla: /arena/guess-player nunca cai no jogo', () {

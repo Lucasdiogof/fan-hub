@@ -43,7 +43,9 @@ class NativeLineupInputState extends State<NativeLineupInput> {
   /// existem no `LineupCubit`). Preenchido com um caractere neutro só pra
   /// o `TextField` ter algo do tamanho certo; o conteúdo em si nunca é lido
   /// de volta, só o `length` a cada mudança.
-  late final _controller = TextEditingController(text: _shadowFor(widget.currentLength));
+  late final _controller = TextEditingController(
+    text: _shadowFor(widget.currentLength),
+  );
 
   static String _shadowFor(int length) => '#' * length;
 
@@ -91,7 +93,9 @@ class NativeLineupInputState extends State<NativeLineupInput> {
     if (onlyLetters.length > previousLength) {
       final added = onlyLetters.substring(previousLength);
       final allowed = widget.maxLength - previousLength;
-      final toAdd = added.length > allowed ? added.substring(0, allowed) : added;
+      final toAdd = added.length > allowed
+          ? added.substring(0, allowed)
+          : added;
       for (final letter in toAdd.split('')) {
         widget.onLetter(letter);
       }

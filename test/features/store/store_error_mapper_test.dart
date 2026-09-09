@@ -62,16 +62,19 @@ void main() {
     expect(failure.message, isNot(contains('detalhe interno sensível')));
   });
 
-  test('cada chamada aciona o Sentry exatamente uma vez, nunca duplicado', () async {
-    mapStoreError(Exception('a'), StackTrace.current);
-    mapStoreError(Exception('b'), StackTrace.current);
-    mapStoreError(Exception('c'), StackTrace.current);
-    // `Sentry.captureException` é chamado via `unawaited` dentro do mapper —
-    // drena a fila de microtasks pra garantir que os 3 envios já rodaram.
-    await pumpEventQueue();
+  test(
+    'cada chamada aciona o Sentry exatamente uma vez, nunca duplicado',
+    () async {
+      mapStoreError(Exception('a'), StackTrace.current);
+      mapStoreError(Exception('b'), StackTrace.current);
+      mapStoreError(Exception('c'), StackTrace.current);
+      // `Sentry.captureException` é chamado via `unawaited` dentro do mapper —
+      // drena a fila de microtasks pra garantir que os 3 envios já rodaram.
+      await pumpEventQueue();
 
-    expect(transport.envelopes, hasLength(3));
-  });
+      expect(transport.envelopes, hasLength(3));
+    },
+  );
 
   test('o envelope carrega a stack trace original, não descartada', () async {
     Object caught;

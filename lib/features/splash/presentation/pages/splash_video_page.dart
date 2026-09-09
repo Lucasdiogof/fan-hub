@@ -210,6 +210,7 @@ class _SplashVideoPageState extends State<SplashVideoPage>
                   center: center,
                   radius: radius,
                   opacity: 1 - t,
+                  tintColor: sl<ClubConfig>().branding.light.primary,
                 ),
               ),
             ],

@@ -132,7 +132,8 @@ void main() {
           expect(
             parser.charToGlyphIndexMap.containsKey(rune),
             isTrue,
-            reason: '$nome (U+${rune.toRadixString(16)}) sairia como caixa riscada',
+            reason:
+                '$nome (U+${rune.toRadixString(16)}) sairia como caixa riscada',
           );
         });
         for (final char in 'áàâãéêíóôõúüçÁÃÇÉÍÓÕÚ'.runes) {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
@@ -246,7 +248,9 @@ class _NewsletterCheckbox extends StatelessWidget {
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(
-              context.l10n.membershipNewsletter,
+              context.l10n.membershipNewsletter(
+                sl<ClubConfig>().productNames.membershipProgramName,
+              ),
               style: TextStyle(
                 fontSize: 13,
                 height: 1.4,

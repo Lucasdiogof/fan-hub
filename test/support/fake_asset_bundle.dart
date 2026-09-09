@@ -29,9 +29,7 @@ class FakeAssetBundle extends CachingAssetBundle {
     // sem responder com um manifest vazio válido, a decodificação do
     // manifesto falha antes mesmo de chegar no path pedido.
     if (key == 'AssetManifest.bin') {
-      return const StandardMessageCodec().encodeMessage(
-        <String, dynamic>{},
-      )!;
+      return const StandardMessageCodec().encodeMessage(<String, dynamic>{})!;
     }
     return ByteData.sublistView(Uint8List.fromList(_transparentPixelPng));
   }

@@ -41,52 +41,50 @@ void main() {
     );
   });
 
-  testWidgets(
-    'sem store_url configurado -> mostra o aviso sem botão de ação',
-    (tester) async {
-      final gate = ReleaseGate(
-        _FixedRepository(
-          const AppReleaseRequirement(
-            platform: 'android',
-            minimumVersion: '2.0.0',
-            minimumBuild: 5,
-            forceUpdate: true,
-          ),
+  testWidgets('sem store_url configurado -> mostra o aviso sem botão de ação', (
+    tester,
+  ) async {
+    final gate = ReleaseGate(
+      _FixedRepository(
+        const AppReleaseRequirement(
+          platform: 'android',
+          minimumVersion: '2.0.0',
+          minimumBuild: 5,
+          forceUpdate: true,
         ),
-      );
-      await gate.ensureChecked();
-      sl.registerSingleton<ReleaseGate>(gate);
+      ),
+    );
+    await gate.ensureChecked();
+    sl.registerSingleton<ReleaseGate>(gate);
 
-      await tester.pumpWidget(_wrap(const UpdateRequiredPage()));
+    await tester.pumpWidget(_wrap(const UpdateRequiredPage()));
 
-      expect(find.text('Atualização necessária'), findsOneWidget);
-      expect(find.byIcon(Icons.system_update_rounded), findsOneWidget);
-      expect(find.text('Atualizar agora'), findsNothing);
-    },
-  );
+    expect(find.text('Atualização necessária'), findsOneWidget);
+    expect(find.byIcon(Icons.system_update_rounded), findsOneWidget);
+    expect(find.text('Atualizar agora'), findsNothing);
+  });
 
-  testWidgets(
-    'com store_url configurado -> mostra o botão "Atualizar agora"',
-    (tester) async {
-      final gate = ReleaseGate(
-        _FixedRepository(
-          const AppReleaseRequirement(
-            platform: 'android',
-            minimumVersion: '2.0.0',
-            minimumBuild: 5,
-            forceUpdate: true,
-            storeUrl: 'https://play.google.com/store/apps/details?id=x',
-          ),
+  testWidgets('com store_url configurado -> mostra o botão "Atualizar agora"', (
+    tester,
+  ) async {
+    final gate = ReleaseGate(
+      _FixedRepository(
+        const AppReleaseRequirement(
+          platform: 'android',
+          minimumVersion: '2.0.0',
+          minimumBuild: 5,
+          forceUpdate: true,
+          storeUrl: 'https://play.google.com/store/apps/details?id=x',
         ),
-      );
-      await gate.ensureChecked();
-      sl.registerSingleton<ReleaseGate>(gate);
+      ),
+    );
+    await gate.ensureChecked();
+    sl.registerSingleton<ReleaseGate>(gate);
 
-      await tester.pumpWidget(_wrap(const UpdateRequiredPage()));
+    await tester.pumpWidget(_wrap(const UpdateRequiredPage()));
 
-      expect(find.text('Atualizar agora'), findsOneWidget);
-    },
-  );
+    expect(find.text('Atualizar agora'), findsOneWidget);
+  });
 
   testWidgets(
     'mensagem do servidor sobrepõe a mensagem padrão quando presente',

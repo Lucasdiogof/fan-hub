@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
@@ -132,7 +134,9 @@ class MyMembershipPage extends StatelessWidget {
                         const SizedBox(height: AppSpacing.xl),
                         _OptionRow(
                           icon: Icons.gavel_rounded,
-                          label: context.l10n.membershipRegulationName,
+                          label: context.l10n.membershipRegulationName(
+                            sl<ClubConfig>().productNames.membershipProgramName,
+                          ),
                           onTap: () => context.push('/membership/regulation'),
                         ),
                         const SizedBox(height: AppSpacing.xxxl),
@@ -144,6 +148,9 @@ class MyMembershipPage extends StatelessWidget {
                               MembershipContactConfig.whatsappUrlWithMessage(
                                 context.l10n.membershipCancelWhatsapp(
                                   membership.plan.name,
+                                  sl<ClubConfig>()
+                                      .productNames
+                                      .membershipProgramName,
                                 ),
                               ),
                             ),

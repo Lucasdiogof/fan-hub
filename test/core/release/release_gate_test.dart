@@ -114,24 +114,28 @@ void main() {
       },
     );
 
-    test('timeout (indisponibilidade) -> fail-open, nunca bloqueia', () async {
-      final gate = ReleaseGate(
-        _FakeRepository(
-          const Success(
-            AppReleaseRequirement(
-              platform: 'android',
-              minimumVersion: '99.0.0',
-              minimumBuild: 999,
-              forceUpdate: true,
+    test(
+      'timeout (indisponibilidade) -> fail-open, nunca bloqueia',
+      () async {
+        final gate = ReleaseGate(
+          _FakeRepository(
+            const Success(
+              AppReleaseRequirement(
+                platform: 'android',
+                minimumVersion: '99.0.0',
+                minimumBuild: 999,
+                forceUpdate: true,
+              ),
             ),
+            delay: const Duration(seconds: 10), // > o timeout interno de 3s
           ),
-          delay: const Duration(seconds: 10), // > o timeout interno de 3s
-        ),
-      );
-      await gate.ensureChecked();
-      expect(gate.checked, isTrue);
-      expect(gate.blocked, isFalse);
-    }, timeout: const Timeout(Duration(seconds: 15)));
+        );
+        await gate.ensureChecked();
+        expect(gate.checked, isTrue);
+        expect(gate.blocked, isFalse);
+      },
+      timeout: const Timeout(Duration(seconds: 15)),
+    );
 
     test('idempotente — a 2ª chamada não refaz a checagem', () async {
       var calls = 0;

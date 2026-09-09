@@ -48,16 +48,19 @@ void main() {
 
   setUp(() => repository = FakeStoreOrdersRepository());
 
-  test('starts as initial and loads to empty when there are no orders', () async {
-    final cubit = StoreOrdersCubit(repository);
-    addTearDown(cubit.close);
-    expect(cubit.state.status, LoadStatus.initial);
+  test(
+    'starts as initial and loads to empty when there are no orders',
+    () async {
+      final cubit = StoreOrdersCubit(repository);
+      addTearDown(cubit.close);
+      expect(cubit.state.status, LoadStatus.initial);
 
-    await cubit.load();
+      await cubit.load();
 
-    expect(cubit.state.status, LoadStatus.empty);
-    expect(cubit.state.orders, isEmpty);
-  });
+      expect(cubit.state.status, LoadStatus.empty);
+      expect(cubit.state.orders, isEmpty);
+    },
+  );
 
   test('loads existing orders, most recent first', () async {
     repository.orders.addAll([
@@ -71,10 +74,11 @@ void main() {
     await cubit.load();
 
     expect(cubit.state.status, LoadStatus.success);
-    expect(
-      cubit.state.orders.map((o) => o.id),
-      ['GOI-2026-000002', 'GOI-2026-000003', 'GOI-2026-000001'],
-    );
+    expect(cubit.state.orders.map((o) => o.id), [
+      'GOI-2026-000002',
+      'GOI-2026-000003',
+      'GOI-2026-000001',
+    ]);
   });
 
   test('a repository failure surfaces as an error status', () async {

@@ -18,7 +18,8 @@ ClubConfig _bragantinoWithoutSupabase() => ClubConfig(
   integrations: ClubIntegrations(
     oneFootballTeamId: bragantinoClubConfig.integrations.oneFootballTeamId,
     oneFootballSlug: bragantinoClubConfig.integrations.oneFootballSlug,
-    oneFootballCompetitionSlug: bragantinoClubConfig.integrations.oneFootballCompetitionSlug,
+    oneFootballCompetitionSlug:
+        bragantinoClubConfig.integrations.oneFootballCompetitionSlug,
     orderPrefix: bragantinoClubConfig.integrations.orderPrefix,
     pickupAddress: bragantinoClubConfig.integrations.pickupAddress,
     supabaseUrl: null,
@@ -35,36 +36,57 @@ void main() {
       expect(SupabaseConfig.isConfigured, isTrue);
     });
 
-    test('configure(bragantinoClubConfig) resolve pro projeto REAL do Bragantino, nunca pro do Goiás', () {
-      SupabaseConfig.configure(bragantinoClubConfig);
-      expect(SupabaseConfig.url, 'https://yrgyzkaaudyzmsqwzecj.supabase.co');
-      expect(SupabaseConfig.url, isNot(contains('yonozsdgyrhgqrvydbnr')));
-      expect(SupabaseConfig.publishableKey, 'sb_publishable_pa2JzbHgClEqRBAajsPjig_uvL5Ntcc');
-      expect(SupabaseConfig.publishableKey, isNot(goiasClubConfig.integrations.supabasePublishableKey));
-      expect(SupabaseConfig.isConfigured, isTrue);
-    });
+    test(
+      'configure(bragantinoClubConfig) resolve pro projeto REAL do Bragantino, nunca pro do Goiás',
+      () {
+        SupabaseConfig.configure(bragantinoClubConfig);
+        expect(SupabaseConfig.url, 'https://yrgyzkaaudyzmsqwzecj.supabase.co');
+        expect(SupabaseConfig.url, isNot(contains('yonozsdgyrhgqrvydbnr')));
+        expect(
+          SupabaseConfig.publishableKey,
+          'sb_publishable_pa2JzbHgClEqRBAajsPjig_uvL5Ntcc',
+        );
+        expect(
+          SupabaseConfig.publishableKey,
+          isNot(goiasClubConfig.integrations.supabasePublishableKey),
+        );
+        expect(SupabaseConfig.isConfigured, isTrue);
+      },
+    );
 
-    test('a chave publishable do Bragantino nunca é a legacy anon key nem um segredo de servidor (formato sb_publishable_, nunca eyJ.../sb_secret_)', () {
-      final key = bragantinoClubConfig.integrations.supabasePublishableKey!;
-      expect(key, startsWith('sb_publishable_'));
-      expect(key, isNot(startsWith('eyJ')));
-      expect(key.toLowerCase(), isNot(contains('service_role')));
-      expect(key.toLowerCase(), isNot(contains('secret')));
-    });
+    test(
+      'a chave publishable do Bragantino nunca é a legacy anon key nem um segredo de servidor (formato sb_publishable_, nunca eyJ.../sb_secret_)',
+      () {
+        final key = bragantinoClubConfig.integrations.supabasePublishableKey!;
+        expect(key, startsWith('sb_publishable_'));
+        expect(key, isNot(startsWith('eyJ')));
+        expect(key.toLowerCase(), isNot(contains('service_role')));
+        expect(key.toLowerCase(), isNot(contains('secret')));
+      },
+    );
 
-    test('redirectUrl do Bragantino aponta pro Worker DELE (deployado em 2026-09-04), nunca herda o do Goiás', () {
-      SupabaseConfig.configure(bragantinoClubConfig);
-      expect(SupabaseConfig.redirectUrl, isNotNull);
-      expect(SupabaseConfig.redirectUrl, isNot(goiasClubConfig.integrations.supabaseRedirectUrl));
-      SupabaseConfig.configure(goiasClubConfig);
-      expect(SupabaseConfig.redirectUrl, isNotNull);
-    });
+    test(
+      'redirectUrl do Bragantino aponta pro Worker DELE (deployado em 2026-09-04), nunca herda o do Goiás',
+      () {
+        SupabaseConfig.configure(bragantinoClubConfig);
+        expect(SupabaseConfig.redirectUrl, isNotNull);
+        expect(
+          SupabaseConfig.redirectUrl,
+          isNot(goiasClubConfig.integrations.supabaseRedirectUrl),
+        );
+        SupabaseConfig.configure(goiasClubConfig);
+        expect(SupabaseConfig.redirectUrl, isNotNull);
+      },
+    );
 
-    test('FABRICADO — um clube sem supabaseUrl/supabasePublishableKey faz configure() lançar StateError', () {
-      expect(
-        () => SupabaseConfig.configure(_bragantinoWithoutSupabase()),
-        throwsStateError,
-      );
-    });
+    test(
+      'FABRICADO — um clube sem supabaseUrl/supabasePublishableKey faz configure() lançar StateError',
+      () {
+        expect(
+          () => SupabaseConfig.configure(_bragantinoWithoutSupabase()),
+          throwsStateError,
+        );
+      },
+    );
   });
 }
