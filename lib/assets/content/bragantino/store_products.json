@@ -159,7 +159,8 @@
     "brand": "UNB",
     "reference": "0990640012",
     "categories": [
-      "training"
+      "training",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -558,7 +559,8 @@
     "brand": "Puma",
     "reference": "0990850017",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -863,7 +865,8 @@
     "brand": "Puma",
     "reference": "1006000734",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "feminine"
     ],
     "collections": [
       "fan"
@@ -1428,7 +1431,8 @@
     "brand": "Puma",
     "reference": "0997890012",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -1727,7 +1731,8 @@
     "brand": "Puma",
     "reference": "0998200019",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [],
     "audience": "kids",
@@ -1788,7 +1793,8 @@
     "brand": "Puma",
     "reference": "0998120021",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [
       "goalkeeper"
@@ -1851,7 +1857,8 @@
     "brand": "Puma",
     "reference": "0998080020",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [
       "goalkeeper"
@@ -1952,7 +1959,8 @@
     "brand": "Puma",
     "reference": "0998110036",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [
       "goalkeeper"
@@ -2015,7 +2023,8 @@
     "brand": "Puma",
     "reference": "0998140042",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "feminine"
     ],
     "collections": [
       "fan"
@@ -2080,7 +2089,8 @@
     "brand": "Puma",
     "reference": "0998210042",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "fan"
@@ -2423,7 +2433,8 @@
     "brand": "Puma",
     "reference": "1006040734",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "fan"
@@ -3862,7 +3873,8 @@
     "brand": "Puma",
     "reference": "0990840018",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -3947,7 +3959,8 @@
     "brand": "Puma",
     "reference": "0991000018",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "goalkeeper"
@@ -4182,7 +4195,8 @@
     "brand": "Puma",
     "reference": "0990880018",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [
       "goalkeeper"
@@ -4615,7 +4629,8 @@
     "brand": "Puma",
     "reference": "1006020017",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -4782,7 +4797,8 @@
     "brand": "Puma",
     "reference": "0998090019",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -4831,7 +4847,8 @@
     "brand": "Puma",
     "reference": "0998200018",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [],
     "audience": "kids",
@@ -4956,7 +4973,8 @@
     "brand": "Puma",
     "reference": "0998160020",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "goalkeeper"
@@ -5089,7 +5107,8 @@
     "brand": "Puma",
     "reference": "0998170036",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "goalkeeper"
@@ -5153,7 +5172,8 @@
     "brand": "Puma",
     "reference": "0998090018",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -5214,7 +5234,8 @@
     "brand": "Puma",
     "reference": "0998180020",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "goalkeeper"
@@ -5313,7 +5334,8 @@
     "brand": "Puma",
     "reference": "0998190036",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "goalkeeper"
@@ -5543,7 +5565,8 @@
     "brand": "Puma",
     "reference": "0997970012",
     "categories": [
-      "training"
+      "training",
+      "feminine"
     ],
     "collections": [],
     "audience": "feminine",
@@ -5680,7 +5703,8 @@
     "brand": "Puma",
     "reference": "0997980012",
     "categories": [
-      "training"
+      "training",
+      "kids"
     ],
     "collections": [],
     "audience": "kids",
@@ -5742,7 +5766,8 @@
     "brand": "Puma",
     "reference": "0997890017",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -5803,7 +5828,8 @@
     "brand": "Puma",
     "reference": "0998000017",
     "categories": [
-      "training"
+      "training",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -5871,7 +5897,8 @@
     "brand": "Puma",
     "reference": "0998020020",
     "categories": [
-      "training"
+      "training",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -6017,7 +6044,9 @@
     "description": "Regata Atlas Red Bull Bragantino Dry Fit Juvenil, ideal para compor o visual esportivo com estilo e identidade.\nUma peça versátil da categoria roupa esportiva, pensada para quem busca praticidade no dia a dia e nos momentos de treino.\nDimensões aproximadas(A x L):\nP: 68 x 50 cm\nM: 70 x 53 cm\nG: 73 x 56 cm\nGG: 76 x 59 cm\nGGG: 78 x 61 cm\n*Imagem do produto meramente ilustrativa.",
     "brand": "Atlas",
     "reference": "0994000012",
-    "categories": [],
+    "categories": [
+      "kids"
+    ],
     "collections": [
       "casual"
     ],
@@ -6212,7 +6241,9 @@
     "description": "Bermuda Atlas Red Bull Bragantino Moletinho Juvenil\nUma opção ideal para compor looks casuais da categoria bermuda, com visual inspirado no Red Bull Bragantino. Perfeita para o dia a dia com estilo jovem e esportivo.\nDimensões aproximadas(A x L):\nP: 42 x 36 cm\nM: 44 x 38 cm\nG: 46 x 40 cm\nGG: 48 x 43 cm\n*Imagem do produto meramente ilustrativa.",
     "brand": "Atlas",
     "reference": "0993970017",
-    "categories": [],
+    "categories": [
+      "kids"
+    ],
     "collections": [
       "casual"
     ],
@@ -6936,7 +6967,8 @@
     "brand": "OCEÂNICA SPORTS",
     "reference": "1004750021",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "fan"
@@ -7010,7 +7042,8 @@
     "brand": "OCEÂNICA SPORTS",
     "reference": "1004740021",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "feminine"
     ],
     "collections": [
       "fan"
@@ -7110,7 +7143,8 @@
     "brand": "Puma",
     "reference": "1000220017",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [
       "fan"
@@ -7187,7 +7221,8 @@
     "brand": "Puma",
     "reference": "1000210017",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "kids"
     ],
     "collections": [],
     "audience": "kids",
@@ -7260,7 +7295,8 @@
     "brand": "Puma",
     "reference": "1000200017",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "masculine"
     ],
     "collections": [],
     "audience": "masculine",
@@ -7345,7 +7381,8 @@
     "brand": "Puma",
     "reference": "1000180017",
     "categories": [
-      "uniforms"
+      "uniforms",
+      "feminine"
     ],
     "collections": [
       "fan"
