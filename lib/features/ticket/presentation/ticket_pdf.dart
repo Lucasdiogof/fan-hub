@@ -96,7 +96,7 @@ Future<Uint8List> buildTicketPdf(
   required bool isDemo,
 }) async {
   final doc = pw.Document(theme: await ticketPdfTheme());
-  final crestSvg = await rootBundle.loadString('lib/assets/branding/logo.svg');
+  final crestSvg = await rootBundle.loadString(sl<ClubConfig>().assets.crest);
   final maskedDocument = ticket.holderDocument.contains(RegExp(r'^\d{11}$'))
       ? maskCpf(ticket.holderDocument)
       : ticket.holderDocument;
