@@ -253,6 +253,15 @@ const bragantinoClubConfig = ClubConfig(
     arenaStadiumIcon: _phVector,
     arenaStadiumPhoto: _phRaster,
     storeBanner: _phRaster,
+    // 3 banners promocionais oficiais do Red Bull Bragantino (arte da
+    // Puma/Red Bull, entregues pelo dono do produto em 2026-09-09) —
+    // StoreBannerCarousel monta o carousel automaticamente por ter >1
+    // item aqui, nunca por um if de clube na UI.
+    storeHomeBanners: [
+      'lib/assets/store/banners/bragantino/banner_1.png',
+      'lib/assets/store/banners/bragantino/banner_2.png',
+      'lib/assets/store/banners/bragantino/banner_3.png',
+    ],
     // Catálogo REAL do Red Bull Bragantino coletado da Red Bull Shop
     // (redbullshop.com.br) em 2026-09-09 — 143 produtos próprios (ver
     // tooling/bragantino_store/). Nunca compartilha arquivo/asset com o

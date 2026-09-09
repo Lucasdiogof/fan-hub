@@ -17,6 +17,7 @@ class ClubAssets {
     required this.arenaStadiumIcon,
     required this.arenaStadiumPhoto,
     required this.storeBanner,
+    this.storeHomeBanners = const [],
     this.storeCatalogAssetPath,
     this.splashVideo,
     this.squadPhotos = const {},
@@ -38,6 +39,15 @@ class ClubAssets {
   final String arenaStadiumIcon;
   final String arenaStadiumPhoto;
   final String storeBanner;
+
+  /// Banners de topo da Home da Loja (`StoreBannerCarousel`) — **por
+  /// clube**, decide sozinho pela quantidade: 0 = seção não aparece; 1 =
+  /// imagem fixa, sem carousel/autoplay/dots (preserva o comportamento
+  /// único de sempre); >1 = carousel com autoplay. Nunca um `if (club ==
+  /// ...)` na UI — o widget só olha `.length`. Vazio por padrão: um clube
+  /// sem banner configurado simplesmente não mostra a seção, nunca herda
+  /// o de outro clube.
+  final List<String> storeHomeBanners;
 
   /// Path do JSON bundled com o catálogo da Loja (`rootBundle.loadString`,
   /// ver `MockStoreRepository`) — **por clube**, nunca um path fixo lido
