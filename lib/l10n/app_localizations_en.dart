@@ -290,6 +290,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get otherCompetitionsSearchEmpty => 'No competitions found.';
 
   @override
+  String get knockoutFirstLeg => '1st leg';
+
+  @override
+  String get knockoutSecondLeg => '2nd leg';
+
+  @override
+  String knockoutPenalties(int home, int away) {
+    return 'Penalties: $home-$away';
+  }
+
+  @override
   String get matchStatusScheduled => 'Scheduled';
 
   @override

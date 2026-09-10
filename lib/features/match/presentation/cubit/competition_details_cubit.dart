@@ -8,7 +8,9 @@ import 'package:goias_app/shared/state/load_status.dart';
 /// global (`CompetitionCatalogPage`), independente de o clube ativo
 /// disputar essa competição ou não (spec multi-competição, item 7/21: uma
 /// competição sem participação do clube abre normalmente, nunca um erro de
-/// "clube não participa").
+/// "clube não participa"). Desde a rearquitetura 2026-09-10 busca a
+/// TEMPORADA inteira (todas as fases), não só uma tabela — `selectStage`
+/// troca a fase mostrada sem nova chamada de rede (todas já vieram juntas).
 class CompetitionDetailsCubit extends Cubit<CompetitionDetailsState> {
   CompetitionDetailsCubit(this._repository, this.competitionId)
     : super(const CompetitionDetailsState());
@@ -18,16 +20,19 @@ class CompetitionDetailsCubit extends Cubit<CompetitionDetailsState> {
 
   Future<void> load() async {
     emit(state.copyWith(status: LoadStatus.loading));
-    final result = await _repository.getStandings(competitionId: competitionId);
+    final result = await _repository.getCompetitionSeason(
+      competitionId: competitionId,
+    );
     switch (result) {
       case Success(:final data):
-        final isEmpty = data.table.isEmpty && data.groups.isEmpty;
+        final stages = data.season.stages;
+        final current = data.season.currentStage;
         emit(
           state.copyWith(
-            status: isEmpty ? LoadStatus.empty : LoadStatus.success,
+            status: stages.isEmpty ? LoadStatus.empty : LoadStatus.success,
             competition: data.competition,
-            standings: data.table,
-            standingGroups: data.groups,
+            stages: stages,
+            selectedStageId: current?.id,
           ),
         );
       case Error(:final failure):
@@ -38,5 +43,11 @@ class CompetitionDetailsCubit extends Cubit<CompetitionDetailsState> {
           ),
         );
     }
+  }
+
+  /// Chamado pelo `CompetitionStageSelector` — nunca refaz a rede, todas as
+  /// fases da temporada já vieram na mesma resposta de `load()`.
+  void selectStage(String stageId) {
+    emit(state.copyWith(selectedStageId: stageId));
   }
 }

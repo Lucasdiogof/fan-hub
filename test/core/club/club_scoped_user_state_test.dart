@@ -24,6 +24,7 @@ import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/crowd_lineup/data/supabase_crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/domain/lineup_vote.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
+import 'package:goias_app/features/match/domain/entities/competition_season.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
@@ -124,6 +125,11 @@ class _FakeFootballRepository implements FootballRepository {
   @override
   Future<Result<List<CompetitionRef>>> getCompetitions() async =>
       const Success([]);
+
+  @override
+  Future<Result<({CompetitionRef competition, CompetitionSeason season})>>
+  getCompetitionSeason({String? competitionId}) =>
+      throw UnimplementedError('não usado por este teste');
 
   @override
   Future<

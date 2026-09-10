@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/features/match/data/dto/competition_dto.dart';
+import 'package:goias_app/features/match/data/dto/competition_season_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_dto.dart';
 import 'package:goias_app/features/match/data/dto/lineup_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_event_dto.dart';
@@ -30,6 +31,7 @@ class FootballRemoteDataSource {
       CompetitionDto competition,
       List<StandingDto> standings,
       List<StandingGroupDto> groups,
+      CompetitionSeasonDto? season,
     })
   >
   getStandings({String? competitionId}) async {
@@ -51,6 +53,14 @@ class FootballRemoteDataSource {
       groups: ((data['groups'] as List?) ?? const [])
           .map((g) => StandingGroupDto.fromJson(g as Map<String, dynamic>))
           .toList(),
+      // `null` só em cache/deploy antigo sem o campo ainda — o repositório
+      // monta uma temporada de 1 fase só a partir de `standings`/`groups`
+      // legados nesse caso (nunca quebra durante o rollout).
+      season: data['season'] != null
+          ? CompetitionSeasonDto.fromJson(
+              data['season'] as Map<String, dynamic>,
+            )
+          : null,
     );
   }
 

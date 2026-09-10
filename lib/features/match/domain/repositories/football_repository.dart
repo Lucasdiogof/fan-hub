@@ -1,5 +1,6 @@
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
+import 'package:goias_app/features/match/domain/entities/competition_season.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
@@ -35,6 +36,15 @@ abstract interface class FootballRepository {
   /// Competições que o clube ativo disputa e pode escolher no seletor de
   /// Classificação — sempre inclui a principal.
   Future<Result<List<CompetitionRef>>> getCompetitions();
+
+  /// Temporada completa (todas as fases) de UMA competição do catálogo —
+  /// usada pela tela de detalhe (`CompetitionDetailsCubit`), nunca pela
+  /// Classificação principal (que só precisa da fase atual, via
+  /// [getStandings]). Rearquitetura multi-competição 2026-09-10, spec item
+  /// 5/12. [competitionId] `null` pega a principal do clube ativo, mesma
+  /// regra de [getStandings].
+  Future<Result<({CompetitionRef competition, CompetitionSeason season})>>
+  getCompetitionSeason({String? competitionId});
 
   /// Todos os jogos de uma rodada do campeonato (não só do Goiás).
   /// [offset] é relativo à rodada atual (0) — negativo pra rodadas

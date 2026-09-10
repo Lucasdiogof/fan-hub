@@ -9,8 +9,19 @@ import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
 import { isRequestedClubServed } from './_lib/club_server_config';
 import { jsonResponse } from './_lib/respond';
-import { fetchCompetitionGroupStandings, fetchCompetitionStandings } from './providers/onefootball_provider';
+import {
+  fetchCompetitionGroupStandings,
+  fetchCompetitionMatchLists,
+  fetchCompetitionStandings,
+} from './providers/onefootball_provider';
 import { normalizeStandingEntry } from './normalize/standing';
+import {
+  buildKnockoutRounds,
+  selectKnockoutSections,
+  tableSectionLabel,
+  tableWindowFrom,
+  type KnockoutRoundOut,
+} from './_lib/knockout';
 
 const CACHE_TTL_SECONDS = 45 * 60;
 
@@ -31,6 +42,36 @@ const CACHE_TTL_SECONDS = 45 * 60;
 // `/api/social/feed` — `?club=` ausente cai no comportamento de sempre
 // (nunca quebra clientes antigos que ainda não mandam o parâmetro).
 export const onRequestGet = handleStandings;
+
+type StageOut = {
+  id: string;
+  name: string;
+  order: number;
+  type: 'LEAGUE_TABLE' | 'GROUP_STAGE' | 'KNOCKOUT';
+  status: 'UPCOMING' | 'ACTIVE' | 'COMPLETED';
+  isCurrent: boolean;
+  standings: ReturnType<typeof normalizeStandingEntry>[];
+  groups: { title: string; standings: ReturnType<typeof normalizeStandingEntry>[] }[];
+  rounds: KnockoutRoundOut[];
+};
+
+function knockoutStage(rounds: KnockoutRoundOut[], order: number): StageOut {
+  return {
+    id: 'knockout',
+    // "Mata-mata" é um rótulo genérico do domínio (nunca aparece como
+    // string literal em nenhum payload do provider) — não é config por
+    // competição, é o mesmo nome pra qualquer competição que tenha essa
+    // fase (spec 2026-09-11, item 6/9).
+    name: 'Mata-mata',
+    order,
+    type: 'KNOCKOUT',
+    status: 'ACTIVE',
+    isCurrent: true,
+    standings: [],
+    groups: [],
+    rounds,
+  };
+}
 
 export async function handleStandings(request: Request, env: Env): Promise<Response> {
   return withErrorHandling(async () => {
@@ -64,30 +105,92 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
 
     return cacheFirst(request, CACHE_TTL_SECONDS, cacheKey, config.cacheVersion, async () => {
       if (format === 'KNOCKOUT') {
-        // Sem renderer ainda (Fase C da rearquitetura multi-competição) —
-        // DATA_GAP explícito, nunca um erro de rede nem uma tabela vazia
-        // sem explicação (spec multi-competição, item 29).
+        // Copa do Brasil: NUNCA existe fase de tabela (`tableWindow` sempre
+        // `null` aqui), então toda seção reconhecida como mata-mata é
+        // aceita — comportamento intacto desde 2026-09-10, só reescrito em
+        // cima da descoberta genérica (`selectKnockoutSections`) em vez de
+        // uma função dedicada por formato.
+        const lists = await fetchCompetitionMatchLists(competitionSlug);
+        const knockoutLists = selectKnockoutSections(lists, null);
+        const rounds = buildKnockoutRounds(knockoutLists);
+        const stages: StageOut[] = rounds.length > 0 ? [knockoutStage(rounds, 0)] : [];
         return {
           competition: { name: competitionName, season: null, format },
           standings: [],
           groups: [],
-          dataGap: true,
+          dataGap: stages.length === 0,
+          season: { id: competitionId, label: competitionName, stages },
         };
       }
+
+      // LEAGUE_TABLE/GROUP_STAGE: busca a tabela normal E, na mesma
+      // resposta, tenta descobrir se a temporada JÁ tem uma fase de
+      // mata-mata real depois dela (spec 2026-09-11, item 1/2) — sem saber
+      // o nome da competição, só pelo formato real do payload de jogos/
+      // resultados (`_lib/knockout.ts`). Uma chamada extra por competição a
+      // cada 45min de cache (`cacheFirst` envolve o handler inteiro),
+      // nunca por usuário/request — não é N+1 (spec item 11).
+      const matchLists = await fetchCompetitionMatchLists(competitionSlug);
+      const tableWindow = tableWindowFrom(matchLists);
+      const knockoutLists = selectKnockoutSections(matchLists, tableWindow);
+      const knockoutRounds = buildKnockoutRounds(knockoutLists);
+      // Fase de tabela COMPLETED quando a temporada já avançou pro
+      // mata-mata (spec item 12) — nunca todas as fases artificialmente
+      // "active"; sem mata-mata descoberto, a fase de tabela é sempre a
+      // atual (comportamento de toda competição LEAGUE_TABLE/GROUP_STAGE
+      // hoje, incluindo Champions e as ligas principais dos dois clubes).
+      const tableIsCurrent = knockoutRounds.length === 0;
+
       if (format === 'GROUP_STAGE') {
         const groups = await fetchCompetitionGroupStandings(competitionSlug);
+        const normalizedGroups = groups.map((group) => ({
+          title: group.title,
+          standings: group.rows.map((row) => normalizeStandingEntry(row)),
+        }));
+        const groupsStage: StageOut = {
+          id: 'main',
+          name: competitionName,
+          order: 0,
+          type: 'GROUP_STAGE',
+          status: tableIsCurrent ? 'ACTIVE' : 'COMPLETED',
+          isCurrent: tableIsCurrent,
+          standings: [],
+          groups: normalizedGroups,
+          rounds: [],
+        };
+        const stages: StageOut[] =
+          knockoutRounds.length > 0 ? [groupsStage, knockoutStage(knockoutRounds, 1)] : [groupsStage];
         return {
           competition: { name: competitionName, season: null, format },
-          groups: groups.map((group) => ({
-            title: group.title,
-            standings: group.rows.map((row) => normalizeStandingEntry(row)),
-          })),
+          groups: normalizedGroups,
+          season: { id: competitionId, label: competitionName, stages },
         };
       }
+
       const rows = await fetchCompetitionStandings(competitionSlug);
+      const standings = rows.map((row) => normalizeStandingEntry(row));
+      // Nome real da fase quando o provider expõe um rótulo distintivo
+      // (ex.: "Fase de liga" na Champions atual) — cai pro nome da
+      // competição quando a seção só usa "Rodada N" (ligas simples de
+      // pontos corridos, ex.: Brasileirão), que não é um nome de fase.
+      const stageName = tableSectionLabel(matchLists) ?? competitionName;
+      const leagueStage: StageOut = {
+        id: 'main',
+        name: stageName,
+        order: 0,
+        type: 'LEAGUE_TABLE',
+        status: tableIsCurrent ? 'ACTIVE' : 'COMPLETED',
+        isCurrent: tableIsCurrent,
+        standings,
+        groups: [],
+        rounds: [],
+      };
+      const stages: StageOut[] =
+        knockoutRounds.length > 0 ? [leagueStage, knockoutStage(knockoutRounds, 1)] : [leagueStage];
       return {
         competition: { name: competitionName, season: null, format },
-        standings: rows.map((row) => normalizeStandingEntry(row)),
+        standings,
+        season: { id: competitionId, label: competitionName, stages },
       };
     });
   });

@@ -646,6 +646,24 @@ abstract class AppLocalizations {
   /// **'Nenhum campeonato encontrado.'**
   String get otherCompetitionsSearchEmpty;
 
+  /// No description provided for @knockoutFirstLeg.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ida'**
+  String get knockoutFirstLeg;
+
+  /// No description provided for @knockoutSecondLeg.
+  ///
+  /// In pt, this message translates to:
+  /// **'Volta'**
+  String get knockoutSecondLeg;
+
+  /// No description provided for @knockoutPenalties.
+  ///
+  /// In pt, this message translates to:
+  /// **'Pênaltis: {home}-{away}'**
+  String knockoutPenalties(int home, int away);
+
   /// No description provided for @matchStatusScheduled.
   ///
   /// In pt, this message translates to:

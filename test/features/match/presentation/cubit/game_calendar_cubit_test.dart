@@ -4,6 +4,7 @@ import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/domain/calendar_competition_filter.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
+import 'package:goias_app/features/match/domain/entities/competition_season.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
@@ -76,6 +77,11 @@ class _FakeFootballRepository implements FootballRepository {
 
   @override
   Future<Result<List<CompetitionRef>>> getCompetitions() async =>
+      throw UnimplementedError();
+
+  @override
+  Future<Result<({CompetitionRef competition, CompetitionSeason season})>>
+  getCompetitionSeason({String? competitionId}) async =>
       throw UnimplementedError();
 
   @override

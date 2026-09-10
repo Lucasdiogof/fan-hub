@@ -108,6 +108,15 @@
   "otherCompetitionsSearchHint": "Search competitions",
   "otherCompetitionsYourCompetitions": "YOUR COMPETITIONS",
   "otherCompetitionsSearchEmpty": "No competitions found.",
+  "knockoutFirstLeg": "1st leg",
+  "knockoutSecondLeg": "2nd leg",
+  "knockoutPenalties": "Penalties: {home}-{away}",
+  "@knockoutPenalties": {
+    "placeholders": {
+      "home": { "type": "int" },
+      "away": { "type": "int" }
+    }
+  },
   "matchStatusScheduled": "Scheduled",
   "matchStatusLive": "Live",
   "matchStatusHalfTime": "Half-time",
