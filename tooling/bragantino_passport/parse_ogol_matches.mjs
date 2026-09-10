@@ -1,46 +1,31 @@
-// Parser reproduzível da tabela "todos os jogos" do oGol
-// (ogol.com.br/equipe/<slug>/todos-os-jogos?compet_id_jogos=<id>&epoca_id=<id>)
-// — extrai cada `<tr data-lj="h2" id="<oGolMatchId>" class="parent">` via
-// regex sobre o HTML bruto (não precisa de DOM/browser: a tabela é
-// HTML estático servido no primeiro load). Uso:
+// Parser reproduzível da tabela "todos os jogos" da rede oGol/ZeroZero.
+// Aceita tanto ogol.com.br/equipe/.../todos-os-jogos quanto o espelho
+// zerozero.pt/equipa/.../jogos. A estrutura das linhas e os IDs de partida
+// são compartilhados entre os domínios. Uso:
 //   node parse_ogol_matches.mjs <arquivo.html>
 //
-// Documentado aqui de propósito pra poder auditar/corrigir no futuro sem
-// re-descobrir a estrutura da fonte:
-//   - a página é UTF-8 de verdade (`curl` sem tratamento especial já lê
-//     certo) — só cuidado se salvar/reabrir o HTML com uma ferramenta que
-//     tente "adivinhar" outro charset, aí vira mojibake (ex.: "GrÃªmio").
-//   - cada linha de partida é uma <tr class="parent"> com, nesta ordem:
-//     forma (V/E/D), data LOCAL exibida (YYYY-MM-DD), hora (HH:MM), marcador
-//     casa/fora "(C)"/"(F)", crest+nome do ADVERSÁRIO, link de resultado
-//     (/jogo/<data-do-slug>-<mandante>-<visitante>/<id>) com o placar como
-//     texto ("2-1"), e o nome da edição da competição.
-//   - IMPORTANTE: a data embutida no href NÃO é autoridade de calendário.
-//     Há jogos noturnos em que o oGol exibe corretamente a data local na
-//     coluna mas o slug do href usa o dia seguinte (ex.: Bragantino 0-2
-//     Santos em 17/10/2022, href 18/10/2022). `date` usa SEMPRE a coluna da
-//     tabela; `source_url` preserva o href original e `source_url_date`
-//     registra a data do slug para auditoria.
-//   - mandante/visitante são derivados da ORDEM dos times no slug da URL
-//     de resultado (sempre <mandante>-<visitante>), não do marcador
-//     "(C)"/"(F)" (mantido só como campo de conferência cruzada).
-//   - o placar do link de resultado ("2-0") está SEMPRE na mesma ordem
-//     <mandante>-<visitante>. Um bug anterior assumia "time da página
-//     primeiro" em jogos fora e invertia o placar; não reintroduzir.
+// Regras críticas:
+//   - cada linha de partida é uma <tr data-lj="h2" id="..." class="parent">;
+//   - a data LOCAL exibida na coluna é a autoridade de calendário;
+//   - a data embutida no href pode estar +1 dia em jogos noturnos e é
+//     preservada só como auditoria (`source_url_date`/`date_href_mismatch`);
+//   - mandante/visitante são derivados da ordem dos times no slug do jogo;
+//   - o placar segue sempre a ordem mandante-visitante;
+//   - links com class="prol" (prorrogação/pênaltis) não podem ser descartados.
 import fs from 'fs';
 
 const ROW_RE = /<tr data-lj="h2" id="(\d+)" class="parent">([\s\S]*?)<\/tr>/g;
 const DATE_RE = /<td class="double"\s*>(\d{4}-\d{2}-\d{2})<\/td>/;
 const TIME_RE = /<td class="double"\s*>\d{4}-\d{2}-\d{2}<\/td><td>(\d{2}:\d{2})<\/td>/;
 const HOME_AWAY_MARK_RE = /<td>\((C|F)\)<\/td>/;
-// Clubes grandes podem ter URL sem id numérico. O ?epoca_id= está presente
-// no link textual do adversário na tabela.
-const OPPONENT_RE = /<a href="\/equipe\/([a-z0-9-]+)(?:\/(\d+))?\?epoca_id=\d+">([^<]+)<\/a>/;
-// Jogos decididos na prorrogação/pênaltis têm atributos extras antes do href
-// (ex.: `<a class="prol" href="...">`) e um span com a disputa depois do
-// placar normal. Sem aceitar esses atributos a partida some silenciosamente.
-const RESULT_RE = /<a\s+(?:\w+="[^"]*"\s+)*href="\/jogo\/(\d{4}-\d{2}-\d{2})-([a-z0-9-]+)\/(\d+)">([^<]*)(?:<span>\(([^)]*)\)<\/span>)?<\/a>/;
-const COMPETITION_RE = /<a href="\/edicao\/([a-z0-9-]+)-(\d{4})\/(\d+)">([^<]+)<\/a>/;
+const ABS = '(?:https?:\\/\\/[^"\\s]+)?';
+// `equipe` no Brasil; `equipa` em Portugal. O id numérico do clube pode ou
+// não aparecer antes de ?epoca_id=.
+const OPPONENT_RE = new RegExp(`<a href="${ABS}\\/(?:equipe|equipa)\\/([a-z0-9-]+)(?:\\/(\\d+))?\\?epoca_id=\\d+">([^<]+)<\\/a>`);
+// Jogos decididos na prorrogação/pênaltis podem ter atributos extras antes
+// do href (ex.: `<a class="prol" href="...">`).
+const RESULT_RE = new RegExp(`<a\\s+(?:\\w+="[^"]*"\\s+)*href="(${ABS})\\/jogo\\/(\\d{4}-\\d{2}-\\d{2})-([a-z0-9-]+)\\/(\\d+)">([^<]*)(?:<span>\\(([^)]*)\\)<\\/span>)?<\\/a>`);
+const COMPETITION_RE = new RegExp(`<a href="${ABS}\\/edicao\\/([a-z0-9-]+)-(\\d{4})\\/(\\d+)">([^<]+)<\\/a>`);
 
 function decodeEntities(str) {
   return str
@@ -69,7 +54,8 @@ export function parseOgolTeamMatches(html, { teamSlug }) {
     if (!dateMatch || !resultMatch) continue;
 
     const displayedDate = dateMatch[1];
-    const [, resultDate, homeAwaySlug, matchId, scoreRaw, penaltyRaw] = resultMatch;
+    const [, sourceOriginRaw, resultDate, homeAwaySlug, matchId, scoreRaw, penaltyRaw] = resultMatch;
+    const sourceOrigin = sourceOriginRaw || '';
     const homeIsClub = homeAwaySlug.startsWith(`${teamSlug}-`) || homeAwaySlug === teamSlug;
     const awayIsClub = homeAwaySlug.endsWith(`-${teamSlug}`) || homeAwaySlug === teamSlug;
 
@@ -82,7 +68,7 @@ export function parseOgolTeamMatches(html, { teamSlug }) {
       : null;
 
     matches.push({
-      source: 'ogol',
+      source: sourceOrigin.includes('zerozero.pt') ? 'zerozero' : 'ogol',
       source_match_id: matchId,
       ogol_internal_id: ogolMatchId,
       date: displayedDate,
@@ -98,7 +84,7 @@ export function parseOgolTeamMatches(html, { teamSlug }) {
       penalty_away_score: penalties?.[1] ?? null,
       competition_edition_slug: competitionMatch ? `${competitionMatch[1]}-${competitionMatch[2]}` : null,
       competition_display: competitionMatch ? decodeEntities(competitionMatch[4]) : null,
-      source_url: `https://www.ogol.com.br/jogo/${resultDate}-${homeAwaySlug}/${matchId}`,
+      source_url: `${sourceOrigin || 'https://www.ogol.com.br'}/jogo/${resultDate}-${homeAwaySlug}/${matchId}`,
       raw_result_text: scoreRaw ? scoreRaw.trim() : null,
     });
   }
