@@ -4,7 +4,6 @@ import { fileURLToPath } from 'url';
 import { parseOgolTeamMatches } from './parse_ogol_matches.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '../..');
 const SOURCE_DIR = path.join(__dirname, 'source');
 
 const EXPECTED = new Map([
@@ -74,7 +73,7 @@ function normalizeMatch(m, year) {
     neutral_site: false,
     stadium: null,
     stadium_status: 'UNKNOWN',
-    source_provider: 'oGol',
+    source_provider: m.source === 'zerozero' ? 'ZeroZero/oGol network' : 'oGol',
     source_match_id: m.source_match_id,
     source_url: m.source_url,
     source_confidence: 'HIGH',
@@ -88,15 +87,40 @@ async function fetchText(url) {
   let last;
   for (let attempt=1; attempt<=4; attempt++) {
     try {
-      const res = await fetch(url, {headers:{'user-agent':'Mozilla/5.0 (compatible; FanHubPassportAudit/1.0)','accept-language':'pt-BR,pt;q=0.9'}});
+      const res = await fetch(url, {headers:{
+        'user-agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/152 Safari/537.36',
+        'accept-language':'pt-BR,pt;q=0.9,en;q=0.7',
+        'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      }});
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       return await res.text();
     } catch (e) {
       last = e;
-      await sleep(1200 * attempt);
+      await sleep(1400 * attempt);
     }
   }
   throw last;
+}
+
+function sourceCandidates(epocaId, page) {
+  const suffix = `epoca_id=${epocaId}&grp=1${page===1?'':`&page=${page}`}`;
+  return [
+    {provider:'oGol', url:`https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?${suffix}`},
+    {provider:'ZeroZero', url:`https://www.zerozero.pt/equipa/red-bull-bragantino/jogos?${suffix}`},
+  ];
+}
+
+async function fetchPage(epocaId, page) {
+  const errors = [];
+  for (const candidate of sourceCandidates(epocaId, page)) {
+    try {
+      const html = await fetchText(candidate.url);
+      return {...candidate, html};
+    } catch (e) {
+      errors.push(`${candidate.provider}: ${e.message}`);
+    }
+  }
+  throw new Error(`fontes indisponíveis para epoca=${epocaId} page=${page}: ${errors.join(' | ')}`);
 }
 
 async function collectYear(year) {
@@ -106,12 +130,11 @@ async function collectYear(year) {
   const dedup = new Map();
   const pages = [];
   for (let page=1; page<=4 && dedup.size < expected; page++) {
-    const url = `https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=${epocaId}&grp=1${page===1?'':`&page=${page}`}`;
-    const html = await fetchText(url);
-    const parsed = parseOgolTeamMatches(html,{teamSlug:'red-bull-bragantino'});
-    pages.push({page,url,parsed:parsed.length});
+    const fetched = await fetchPage(epocaId, page);
+    const parsed = parseOgolTeamMatches(fetched.html,{teamSlug:'red-bull-bragantino'});
+    pages.push({page,url:fetched.url,provider:fetched.provider,parsed:parsed.length});
     for (const m of parsed) dedup.set(m.source_match_id,m);
-    await sleep(900);
+    await sleep(1100);
   }
   const raw = [...dedup.values()].filter((m)=>m.date?.startsWith(`${year}-`));
   if (raw.length !== expected) {
@@ -125,7 +148,7 @@ async function collectYear(year) {
     dataset:'bragantino_passport_matches',
     generated_at:new Date().toISOString(),
     scope:'Partidas oficiais do time profissional masculino principal; amistosos/base/B/U23 excluídos.',
-    source:{provider:'oGol',epoca_id:epocaId,pages},
+    source:{provider:'oGol/ZeroZero network',epoca_id:epocaId,pages},
     reconciliation:{expected_matches:expected,materialized_matches:rows.length,status:'CLOSED'},
     data_quality:{stadium_rule:'UNKNOWN até confirmação match-specific; nunca inferido.',date_rule:'data exibida na tabela é canônica; data do slug preservada apenas para auditoria.',date_href_mismatches:rows.filter((r)=>r.date_href_mismatch).length},
     year_status:'CLOSED',
