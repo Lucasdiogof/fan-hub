@@ -83,3 +83,35 @@ describe('handleStandings — SEMPRE a competição principal do deploy (operaç
     expect(body.competition.name).toBe('Brasileirão Série A');
   });
 });
+
+describe('handleStandings — gate de ?club= (auditoria multi-competição 2026-09-09)', () => {
+  const originalFetch = global.fetch;
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+  });
+
+  it('?club= de OUTRO clube -> 404, nunca a tabela deste deploy', async () => {
+    mockStandingsFetch('brasileirao-serie-b-superbet-119');
+    const request = new Request('https://example.com/api/football/standings?club=bragantino');
+    const response = await handleStandings(request, fakeEnv());
+
+    expect(response.status).toBe(404);
+  });
+
+  it('?club= do PRÓPRIO clube -> 200, comportamento normal', async () => {
+    mockStandingsFetch('brasileirao-serie-b-superbet-119');
+    const request = new Request('https://example.com/api/football/standings?club=goias');
+    const response = await handleStandings(request, fakeEnv());
+
+    expect(response.status).toBe(200);
+  });
+
+  it('sem ?club= nenhum -> 200, nunca quebra cliente antigo que ainda não manda o parâmetro', async () => {
+    mockStandingsFetch('brasileirao-serie-b-superbet-119');
+    const request = new Request('https://example.com/api/football/standings');
+    const response = await handleStandings(request, fakeEnv());
+
+    expect(response.status).toBe(200);
+  });
+});

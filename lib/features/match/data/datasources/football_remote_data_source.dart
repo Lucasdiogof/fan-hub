@@ -23,6 +23,7 @@ class FootballRemoteDataSource {
   getStandings() async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/football/standings',
+      queryParameters: {'club': _clubConfig.identity.code},
     );
     final data = response.data!;
     return (
@@ -47,7 +48,10 @@ class FootballRemoteDataSource {
   getCurrentRound({int offset = 0}) async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/football/current-round',
-      queryParameters: offset == 0 ? null : {'offset': offset},
+      queryParameters: {
+        'club': _clubConfig.identity.code,
+        if (offset != 0) 'offset': offset,
+      },
     );
     final data = response.data!;
     final round = data['round'] as Map<String, dynamic>?;

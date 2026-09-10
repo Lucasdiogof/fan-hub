@@ -155,6 +155,38 @@ describe('handleCurrentRound — SEMPRE a competição principal do deploy (oper
   });
 });
 
+describe('handleCurrentRound — gate de ?club= (auditoria multi-competição 2026-09-09)', () => {
+  const originalFetch = global.fetch;
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+  });
+
+  it('?club= de OUTRO clube -> 404, nunca a rodada deste deploy', async () => {
+    mockCurrentRoundFetch('brasileirao-serie-b-superbet-119');
+    const request = new Request('https://example.com/api/football/current-round?club=bragantino');
+    const response = await handleCurrentRound(request, fakeEnv());
+
+    expect(response.status).toBe(404);
+  });
+
+  it('?club= do PRÓPRIO clube -> 200, comportamento normal', async () => {
+    mockCurrentRoundFetch('brasileirao-serie-b-superbet-119');
+    const request = new Request('https://example.com/api/football/current-round?club=goias');
+    const response = await handleCurrentRound(request, fakeEnv());
+
+    expect(response.status).toBe(200);
+  });
+
+  it('sem ?club= nenhum -> 200, nunca quebra cliente antigo que ainda não manda o parâmetro', async () => {
+    mockCurrentRoundFetch('brasileirao-serie-b-superbet-119');
+    const request = new Request('https://example.com/api/football/current-round');
+    const response = await handleCurrentRound(request, fakeEnv());
+
+    expect(response.status).toBe(200);
+  });
+});
+
 /** Mock com N rodadas reais (não só 1) — precisa pra provar que a
  * navegação cobre a TEMPORADA INTEIRA, não uma janela fixa. Achado
  * histórico do produto: a aba Jogos só deixava ver ~3 rodadas passadas +

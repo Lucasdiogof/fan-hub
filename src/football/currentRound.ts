@@ -6,6 +6,8 @@ import {
 } from './_lib/config';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
+import { isRequestedClubServed } from './_lib/club_server_config';
+import { jsonResponse } from './_lib/respond';
 import { fetchCompetitionMatchLists } from './providers/onefootball_provider';
 import type { OneFootballMatchList } from './providers/onefootball_provider';
 import { normalizeOneFootballMatchCard } from './normalize/match';
@@ -14,8 +16,14 @@ const CACHE_TTL_SECONDS = 20 * 60;
 
 export const onRequestGet = handleCurrentRound;
 
+// Mesmo gate de `?club=` de `standings.ts` — ver o comentário lá pro porquê
+// (evita 200 com a rodada de outro clube quando o app aponta pro Worker
+// errado; `?club=` ausente nunca quebra, cai no comportamento de sempre).
 export async function handleCurrentRound(request: Request, env: Env): Promise<Response> {
   return withErrorHandling(async () => {
+    if (!isRequestedClubServed(request, env)) {
+      return jsonResponse({ error: 'unknown club code' }, { status: 404 });
+    }
     const config = loadConfig(env);
     const competitionSlug = requirePrimaryCompetitionSlug(config);
     const competitionName = requirePrimaryCompetitionDisplayName(config);
