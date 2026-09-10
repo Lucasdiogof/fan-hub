@@ -117,6 +117,13 @@
       "away": { "type": "int" }
     }
   },
+  "knockoutAggregate": "Aggregate {home}-{away}",
+  "@knockoutAggregate": {
+    "placeholders": {
+      "home": { "type": "int" },
+      "away": { "type": "int" }
+    }
+  },
   "matchStatusScheduled": "Scheduled",
   "matchStatusLive": "Live",
   "matchStatusHalfTime": "Half-time",

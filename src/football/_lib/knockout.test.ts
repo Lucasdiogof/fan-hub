@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { buildKnockoutRounds, selectKnockoutSections, tableSectionLabel, tableWindowFrom } from './knockout';
+import {
+  buildKnockoutRounds,
+  hasAnyDecidedMatch,
+  selectKnockoutSections,
+  tableSectionLabel,
+  tableWindowFrom,
+} from './knockout';
 import type { OneFootballMatchCard, OneFootballMatchList } from '../providers/onefootball_provider';
 
 function card(
@@ -212,5 +218,99 @@ describe('tableWindowFrom / selectKnockoutSections — filtro cronológico (spec
     ];
     expect(tableWindowFrom(copaLists)).toBeNull();
     expect(selectKnockoutSections(copaLists, null)).toHaveLength(1);
+  });
+});
+
+// Bugs reais achados testando ao vivo 2026-09-11 (ver relatório): o mesmo
+// confronto aparecendo em `jogos` E `resultados` ao mesmo tempo dobrava o
+// agregado (Sudamericana Santos 2x0 Atlético-MG virava "4x0" na tela); dois
+// confrontos DIFERENTES de uma rodada ainda não decidida (Repescagem da
+// Série B, "Home"/"Guest") tinham o MESMO escudo genérico e se fundiam
+// numa tie só de 4 pernas em vez de 2 ties de 2 pernas cada.
+describe('buildKnockoutRounds — bugs reais 2026-09-11', () => {
+  it('mesmo matchId em jogos+resultados -> dedupe, nunca dobra o agregado', () => {
+    const lists: OneFootballMatchList[] = [
+      {
+        sectionHeader: { subtitle: 'Quartas de final - Jogo de ida' },
+        matchCards: [card('2730019', { name: 'Santos', id: 1 }, { name: 'Atlético-MG', id: 2, score: '0' }, '2026-09-08T22:00:00Z', 'FULL_TIME')],
+      },
+    ];
+    // Duplica a MESMA lista (era exatamente isso que `jogos`+`resultados`
+    // devolviam pro mesmo matchId).
+    const duplicated = [...lists, ...lists].map((l) => ({
+      ...l,
+      matchCards: l.matchCards.map((c) => ({ ...c, homeTeam: { ...c.homeTeam, score: '2' } })),
+    }));
+    const rounds = buildKnockoutRounds(duplicated);
+    expect(rounds).toHaveLength(1);
+    expect(rounds[0].ties).toHaveLength(1);
+    expect(rounds[0].ties[0].legs).toHaveLength(1);
+    expect(rounds[0].ties[0].aggregateHome).toBe(2);
+    expect(rounds[0].ties[0].aggregateAway).toBe(0);
+  });
+
+  it('dois confrontos "Home"/"Guest" (times ainda não decididos) NUNCA se fundem numa tie só', () => {
+    const placeholderCard = (matchId: string, kickoff: string) =>
+      card(matchId, { name: 'Home', id: 57744 }, { name: 'Guest', id: 57745 }, kickoff, 'PRE_MATCH');
+    const lists: OneFootballMatchList[] = [
+      {
+        sectionHeader: { subtitle: 'Repescagem - Ida' },
+        matchCards: [placeholderCard('1', '2026-11-21T12:00:00Z'), placeholderCard('2', '2026-11-21T12:00:00Z')],
+      },
+      {
+        sectionHeader: { subtitle: 'Repescagem - Volta' },
+        matchCards: [placeholderCard('3', '2026-11-28T12:00:00Z'), placeholderCard('4', '2026-11-28T12:00:00Z')],
+      },
+    ];
+    const rounds = buildKnockoutRounds(lists);
+    expect(rounds).toHaveLength(1);
+    // 4 confrontos distintos (matchId 1,2,3,4), nunca mesclados em 2 —
+    // cada um vira sua própria tie de 1 perna só (não dá pra saber qual
+    // "ida" placeholder corresponde a qual "volta" placeholder).
+    expect(rounds[0].ties).toHaveLength(4);
+    for (const tie of rounds[0].ties) {
+      expect(tie.legs).toHaveLength(1);
+    }
+  });
+
+  it('confrontos DECIDIDOS (times reais) continuam se fundindo normalmente em ida+volta', () => {
+    const lists: OneFootballMatchList[] = [
+      {
+        sectionHeader: { subtitle: 'Oitavas de final - Jogo de ida' },
+        matchCards: [card('1', { name: 'A', id: 10, score: '1' }, { name: 'B', id: 20, score: '0' }, '2026-08-01T00:00:00Z', 'FULL_TIME')],
+      },
+      {
+        sectionHeader: { subtitle: 'Oitavas de final - Jogo de volta' },
+        matchCards: [card('2', { name: 'B', id: 20, score: '1' }, { name: 'A', id: 10, score: '1' }, '2026-08-08T00:00:00Z', 'FULL_TIME')],
+      },
+    ];
+    const rounds = buildKnockoutRounds(lists);
+    expect(rounds[0].ties).toHaveLength(1);
+    expect(rounds[0].ties[0].legs).toHaveLength(2);
+  });
+});
+
+describe('hasAnyDecidedMatch — gate "só mostra mata-mata quando começou de verdade" (decisão do usuário 2026-09-11)', () => {
+  it('rounds só com "Home"/"Guest" -> false (Repescagem da Série B antes de decidir os classificados)', () => {
+    const placeholderCard = (matchId: string) =>
+      card(matchId, { name: 'Home', id: 57744 }, { name: 'Guest', id: 57745 }, '2026-11-21T12:00:00Z', 'PRE_MATCH');
+    const rounds = buildKnockoutRounds([
+      { sectionHeader: { subtitle: 'Repescagem - Ida' }, matchCards: [placeholderCard('1')] },
+    ]);
+    expect(hasAnyDecidedMatch(rounds)).toBe(false);
+  });
+
+  it('pelo menos um confronto com os dois times reais -> true', () => {
+    const rounds = buildKnockoutRounds([
+      {
+        sectionHeader: { subtitle: 'Oitavas de final - Jogo de ida' },
+        matchCards: [card('1', { name: 'A', id: 10 }, { name: 'B', id: 20 }, '2026-08-01T00:00:00Z', 'PRE_MATCH')],
+      },
+    ]);
+    expect(hasAnyDecidedMatch(rounds)).toBe(true);
+  });
+
+  it('nenhuma rodada -> false', () => {
+    expect(hasAnyDecidedMatch([])).toBe(false);
   });
 });

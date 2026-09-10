@@ -131,6 +131,13 @@
       "away": { "type": "int" }
     }
   },
+  "knockoutAggregate": "Agregado {home}-{away}",
+  "@knockoutAggregate": {
+    "placeholders": {
+      "home": { "type": "int" },
+      "away": { "type": "int" }
+    }
+  },
   "matchStatusScheduled": "Agendada",
   "matchStatusLive": "Ao vivo",
   "matchStatusHalfTime": "Intervalo",

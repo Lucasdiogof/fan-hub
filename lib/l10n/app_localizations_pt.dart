@@ -301,6 +301,11 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String knockoutAggregate(int home, int away) {
+    return 'Agregado $home-$away';
+  }
+
+  @override
   String get matchStatusScheduled => 'Agendada';
 
   @override
