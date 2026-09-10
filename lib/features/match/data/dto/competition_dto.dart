@@ -24,34 +24,41 @@ class CompetitionDto {
 
 CompetitionFormat _formatFromJson(String? raw) => switch (raw) {
   'GROUP_STAGE' => CompetitionFormat.groupStage,
+  'KNOCKOUT' => CompetitionFormat.knockout,
   _ => CompetitionFormat.leagueTable,
 };
 
+/// Um item do catálogo GLOBAL (`/api/football/competitions`) — nunca só as
+/// competições do clube ativo (spec multi-competição, item 3).
 class CompetitionRefDto {
   const CompetitionRefDto({
     required this.id,
     required this.name,
+    required this.region,
     required this.format,
-    required this.isPrimary,
+    required this.isClubParticipating,
   });
 
   final String id;
   final String name;
+  final String region;
   final CompetitionFormat format;
-  final bool isPrimary;
+  final bool isClubParticipating;
 
   factory CompetitionRefDto.fromJson(Map<String, dynamic> json) =>
       CompetitionRefDto(
         id: json['id'] as String,
         name: json['name'] as String,
+        region: json['region'] as String? ?? '',
         format: _formatFromJson(json['format'] as String?),
-        isPrimary: json['isPrimary'] as bool? ?? false,
+        isClubParticipating: json['isClubParticipating'] as bool? ?? false,
       );
 
   CompetitionRef toEntity() => CompetitionRef(
     id: id,
     name: name,
+    region: region,
     format: format,
-    isPrimary: isPrimary,
+    isClubParticipating: isClubParticipating,
   );
 }

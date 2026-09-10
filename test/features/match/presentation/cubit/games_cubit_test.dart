@@ -21,13 +21,12 @@ const _primary = CompetitionRef(
   id: 'primary',
   name: 'Brasileirão Série A',
   format: CompetitionFormat.leagueTable,
-  isPrimary: true,
+  isClubParticipating: true,
 );
 const _secondary = CompetitionRef(
   id: 'sudamericana',
   name: 'CONMEBOL Sudamericana',
   format: CompetitionFormat.groupStage,
-  isPrimary: false,
 );
 
 Standing _standing(int teamId) => Standing(
@@ -51,6 +50,7 @@ class _FakeFootballRepository implements FootballRepository {
   List<CompetitionRef> competitions = [_primary];
   int getStandingsCallCount = 0;
   String? lastRequestedCompetitionId;
+  Match? nextMatch;
 
   @override
   Future<Result<List<CompetitionRef>>> getCompetitions() async =>
@@ -89,7 +89,7 @@ class _FakeFootballRepository implements FootballRepository {
   @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
   getActiveClubSnapshot() async =>
-      const Success((nextMatch: null, recentResults: []));
+      Success((nextMatch: nextMatch, recentResults: const []));
 
   @override
   Future<
@@ -227,6 +227,81 @@ void main() {
     expect(cubit.state.selectedCompetition, _secondary);
     addTearDown(cubit.close);
   });
+
+  test(
+    'sem preferência salva: abre na competição do PRÓXIMO JOGO, casada por nome (spec item 1)',
+    () async {
+      SharedPreferences.setMockInitialValues({});
+      repository.competitions = [_primary, _secondary];
+      repository.nextMatch = const Match(
+        id: 'next',
+        competition: 'CONMEBOL Sudamericana', // nome cru, sem patrocinador
+        round: 'Quartas de final',
+        homeTeam: Team(
+          id: 1,
+          name: 'RB Bragantino',
+          shortName: 'RBB',
+          color: Color(0xFF000000),
+        ),
+        awayTeam: Team(
+          id: 2,
+          name: 'Adversário',
+          shortName: 'ADV',
+          color: Color(0xFF000000),
+        ),
+        stadium: '',
+        status: MatchStatus.scheduled,
+      );
+      final cubit = GamesCubit(
+        repository,
+        SelectedCompetitionStorage(goiasClubConfig),
+      );
+      await Future<void>.delayed(Duration.zero);
+      await Future<void>.delayed(Duration.zero);
+
+      expect(cubit.state.selectedCompetition, _secondary);
+      expect(repository.lastRequestedCompetitionId, 'sudamericana');
+      addTearDown(cubit.close);
+    },
+  );
+
+  test(
+    'preferência salva tem prioridade sobre a competição do próximo jogo',
+    () async {
+      SharedPreferences.setMockInitialValues({
+        'goias:games_selected_competition_id': 'primary',
+      });
+      repository.competitions = [_primary, _secondary];
+      repository.nextMatch = const Match(
+        id: 'next',
+        competition: 'CONMEBOL Sudamericana',
+        round: 'Quartas de final',
+        homeTeam: Team(
+          id: 1,
+          name: 'RB Bragantino',
+          shortName: 'RBB',
+          color: Color(0xFF000000),
+        ),
+        awayTeam: Team(
+          id: 2,
+          name: 'Adversário',
+          shortName: 'ADV',
+          color: Color(0xFF000000),
+        ),
+        stadium: '',
+        status: MatchStatus.scheduled,
+      );
+      final cubit = GamesCubit(
+        repository,
+        SelectedCompetitionStorage(goiasClubConfig),
+      );
+      await Future<void>.delayed(Duration.zero);
+      await Future<void>.delayed(Duration.zero);
+
+      expect(cubit.state.selectedCompetition, _primary);
+      addTearDown(cubit.close);
+    },
+  );
 
   test(
     'getCompetitions falhando não impede ver a classificação principal',

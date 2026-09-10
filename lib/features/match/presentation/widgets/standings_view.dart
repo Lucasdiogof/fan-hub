@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
-import 'package:goias_app/features/match/domain/entities/standing_group.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
-import 'package:goias_app/features/match/presentation/widgets/standings_header.dart';
-import 'package:goias_app/features/match/presentation/widgets/standings_row.dart';
+import 'package:goias_app/features/match/presentation/widgets/standings_content.dart';
 import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
 
 class StandingsView extends StatelessWidget {
@@ -46,19 +45,14 @@ class StandingsView extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSpacing.lg),
               ],
-              if (state.standingGroups.isNotEmpty)
-                for (var i = 0; i < state.standingGroups.length; i++) ...[
-                  if (i > 0) const SizedBox(height: AppSpacing.xl),
-                  _GroupSection(group: state.standingGroups[i]),
-                ]
-              else ...[
-                const StandingsHeader(),
-                for (final standing in state.standings)
-                  StandingsRow(
-                    standing: standing,
-                    isActiveClub: standing.isActiveClub,
-                  ),
-              ],
+              StandingsContent(
+                standings: state.standings,
+                standingGroups: state.standingGroups,
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              _OtherCompetitionsCta(
+                onTap: () => context.push('/games/competitions'),
+              ),
             ],
           ),
         );
@@ -146,39 +140,41 @@ class _CompetitionChip extends StatelessWidget {
   }
 }
 
-/// Uma seção de grupo (ex.: "GRUPO H") — mesmo `StandingsHeader`/
-/// `StandingsRow` da tabela normal, só com um rótulo do grupo acima.
-class _GroupSection extends StatelessWidget {
-  const _GroupSection({required this.group});
+/// CTA discreto pro catálogo global de competições (spec multi-competição,
+/// item 4/5) — a Classificação continua mostrando só a competição em
+/// contexto, esse link é a porta pra "qualquer outra".
+class _OtherCompetitionsCta extends StatelessWidget {
+  const _OtherCompetitionsCta({required this.onTap});
 
-  final StandingGroup group;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-          child: Text(
-            group.title.toUpperCase(),
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 0.6,
-              color: colors.primary,
-            ),
-          ),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.sm,
         ),
-        const SizedBox(height: AppSpacing.xs),
-        const StandingsHeader(),
-        for (final standing in group.standings)
-          StandingsRow(
-            standing: standing,
-            isActiveClub: standing.isActiveClub,
-          ),
-      ],
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              context.l10n.otherCompetitionsCta,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: colors.primary,
+              ),
+            ),
+            const SizedBox(width: AppSpacing.xs),
+            Icon(Icons.arrow_forward_rounded, size: 16, color: colors.primary),
+          ],
+        ),
+      ),
     );
   }
 }

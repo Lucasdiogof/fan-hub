@@ -616,6 +616,36 @@ abstract class AppLocalizations {
   /// **'Classificação indisponível no momento.'**
   String get standingsUnavailable;
 
+  /// No description provided for @otherCompetitionsCta.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ver outros campeonatos'**
+  String get otherCompetitionsCta;
+
+  /// No description provided for @otherCompetitionsTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Campeonatos'**
+  String get otherCompetitionsTitle;
+
+  /// No description provided for @otherCompetitionsSearchHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Buscar campeonato'**
+  String get otherCompetitionsSearchHint;
+
+  /// No description provided for @otherCompetitionsYourCompetitions.
+  ///
+  /// In pt, this message translates to:
+  /// **'SUAS COMPETIÇÕES'**
+  String get otherCompetitionsYourCompetitions;
+
+  /// No description provided for @otherCompetitionsSearchEmpty.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum campeonato encontrado.'**
+  String get otherCompetitionsSearchEmpty;
+
   /// No description provided for @matchStatusScheduled.
   ///
   /// In pt, this message translates to:

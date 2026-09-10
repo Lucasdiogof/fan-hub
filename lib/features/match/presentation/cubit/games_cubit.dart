@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/data/selected_competition_storage.dart';
+import 'package:goias_app/features/match/domain/competition_alias_matcher.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/match_ordering.dart';
@@ -9,24 +10,22 @@ import 'package:goias_app/features/match/presentation/cubit/games_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 /// Centraliza o fetch de dados esportivos da aba Jogos: rodada atual,
-/// snapshot do Goiás (próximo jogo + últimos resultados) e classificação
-/// vêm de endpoints independentes — cada um com seu próprio estado, pra
-/// uma falha em um não esconder os outros.
+/// snapshot do clube ativo (próximo jogo + últimos resultados) e
+/// classificação vêm de endpoints independentes — cada um com seu próprio
+/// estado, pra uma falha em um não esconder os outros.
 ///
-/// Classificação por competição (Parte 3 da spec de multi-competição,
-/// 2026-09-09): prioridade preferência manual salva pro clube ativo →
-/// competição principal → primeira disponível — "competição do próximo
-/// jogo" (item 2 da spec original) fica de fora por ora: o próximo jogo só
-/// carrega o NOME da competição, não o id que o seletor usa, e casar os
-/// dois por texto seria frágil (nomes com/sem patrocinador, "Betano" vs
-/// "Brasileirão Série A"); não implementado até existir uma correspondência
-/// confiável, nunca um match de string chutado.
+/// Competição inicial da Classificação (spec multi-competição, item 1),
+/// nesta ordem: preferência manual salva pro clube ativo (se ainda existir
+/// no catálogo) → competição do PRÓXIMO JOGO (casada por nome via
+/// [CompetitionAliasMatcher] — nunca um match de string chutado, só quando
+/// há correspondência real com o catálogo) → `null` (o Worker resolve pra
+/// principal do clube). Isso é sempre independente da competição "principal"
+/// configurada no flavor — ver `_resolveInitialCompetitionId`.
 class GamesCubit extends Cubit<GamesState> {
   GamesCubit(this._footballRepository, this._selectedCompetitionStorage)
     : super(const GamesState()) {
     loadCurrentRound();
-    loadSnapshot();
-    _loadCompetitionsThenStandings();
+    _loadSnapshotThenCompetitions();
   }
 
   final FootballRepository _footballRepository;
@@ -97,7 +96,135 @@ class GamesCubit extends Cubit<GamesState> {
     await loadCurrentRound(offset: state.roundOffset + 1);
   }
 
-  Future<void> loadSnapshot() async {
+  /// Busca o snapshot (próximo jogo) e o catálogo de competições em
+  /// paralelo, resolve qual competição mostrar primeiro (ver
+  /// `_resolveInitialCompetitionId`) e só então busca a classificação —
+  /// evita buscar a principal pra, um instante depois, trocar de competição
+  /// (sem "pisca" de tabela errada).
+  Future<void> _loadSnapshotThenCompetitions() async {
+    emit(
+      state.copyWith(
+        snapshotStatus: LoadStatus.loading,
+        standingsStatus: LoadStatus.loading,
+      ),
+    );
+    final snapshotFuture = _footballRepository.getActiveClubSnapshot();
+    final competitionsFuture = _footballRepository.getCompetitions();
+    final snapshotResult = await snapshotFuture;
+    final competitionsResult = await competitionsFuture;
+
+    Match? nextMatch;
+    switch (snapshotResult) {
+      case Success(:final data):
+        nextMatch =
+            data.nextMatch != null && MatchOrdering.isOpen(data.nextMatch!)
+            ? data.nextMatch
+            : null;
+        emit(
+          state.copyWith(
+            snapshotStatus: nextMatch == null
+                ? LoadStatus.empty
+                : LoadStatus.success,
+            nextMatch: nextMatch,
+            clearNextMatch: nextMatch == null,
+          ),
+        );
+      case Error(:final failure):
+        emit(
+          state.copyWith(
+            snapshotStatus: LoadStatus.error,
+            snapshotErrorMessage: failure.message,
+          ),
+        );
+    }
+
+    // `getCompetitions` falhando não impede ver a classificação principal
+    // — só o seletor/catálogo ficam vazios.
+    final competitions = switch (competitionsResult) {
+      Success(:final data) => data,
+      Error() => const <CompetitionRef>[],
+    };
+    if (competitions.isNotEmpty) {
+      emit(state.copyWith(competitions: competitions));
+    }
+
+    final saved = await _selectedCompetitionStorage.read();
+    final initialId = _resolveInitialCompetitionId(
+      saved: saved,
+      nextMatch: nextMatch,
+      competitions: competitions,
+    );
+    await loadStandings(competitionId: initialId);
+  }
+
+  /// Preferência salva (se ainda existir no catálogo) → competição do
+  /// próximo jogo (casada por nome, nunca inventada) → `null` (principal).
+  String? _resolveInitialCompetitionId({
+    required String? saved,
+    required Match? nextMatch,
+    required List<CompetitionRef> competitions,
+  }) {
+    if (saved != null && competitions.any((c) => c.id == saved)) return saved;
+    final nextMatchCompetition = nextMatch?.competition;
+    if (nextMatchCompetition != null && nextMatchCompetition.isNotEmpty) {
+      final matched = CompetitionAliasMatcher.matchId(
+        nextMatchCompetition,
+        competitions,
+      );
+      if (matched != null) return matched;
+    }
+    return null;
+  }
+
+  Future<void> loadStandings({String? competitionId}) async {
+    emit(state.copyWith(standingsStatus: LoadStatus.loading));
+    final result = await _footballRepository.getStandings(
+      competitionId: competitionId,
+    );
+    switch (result) {
+      case Success(:final data):
+        final isEmpty = data.table.isEmpty && data.groups.isEmpty;
+        // O catálogo já carregado (`state.competitions`) tem region/
+        // isClubParticipating reais — a resposta de `/standings` sozinha
+        // não carrega isso. Usa a entrada do catálogo quando existe, cai
+        // pro que veio da resposta só se o catálogo não tiver essa
+        // competição (ex.: `getCompetitions` falhou).
+        var selected = data.competition;
+        for (final c in state.competitions) {
+          if (c.id == data.competition.id) {
+            selected = c;
+            break;
+          }
+        }
+        emit(
+          state.copyWith(
+            standingsStatus: isEmpty ? LoadStatus.empty : LoadStatus.success,
+            standings: data.table,
+            standingGroups: data.groups,
+            selectedCompetition: selected,
+          ),
+        );
+      case Error(:final failure):
+        emit(
+          state.copyWith(
+            standingsStatus: LoadStatus.error,
+            standingsErrorMessage: failure.message,
+          ),
+        );
+    }
+  }
+
+  /// Chamado pelo seletor de competição na aba Classificação — salva a
+  /// escolha (isolada por clube) e recarrega a tabela/grupos pra ela.
+  Future<void> selectCompetition(String competitionId) async {
+    await _selectedCompetitionStorage.save(competitionId);
+    await loadStandings(competitionId: competitionId);
+  }
+
+  /// Só o próximo jogo/últimos resultados — usado pelo pull-to-refresh, que
+  /// já preserva a competição mostrada separadamente (não recalcula
+  /// competição inicial, isso só faz sentido na primeira carga).
+  Future<void> _loadSnapshot() async {
     emit(state.copyWith(snapshotStatus: LoadStatus.loading));
     final result = await _footballRepository.getActiveClubSnapshot();
     switch (result) {
@@ -125,63 +252,6 @@ class GamesCubit extends Cubit<GamesState> {
     }
   }
 
-  /// Busca a lista de competições, resolve qual mostrar primeiro
-  /// (preferência salva → principal) e só então busca a classificação —
-  /// evita buscar a principal pra, um instante depois, trocar pra
-  /// secundária se havia preferência salva (sem "pisca" de tabela errada).
-  Future<void> _loadCompetitionsThenStandings() async {
-    emit(state.copyWith(standingsStatus: LoadStatus.loading));
-    final competitionsResult = await _footballRepository.getCompetitions();
-    final competitions = switch (competitionsResult) {
-      Success(:final data) => data,
-      Error() => const <CompetitionRef>[],
-    };
-    // `getCompetitions` falhando não impede ver a classificação principal
-    // — só o seletor fica vazio (a UI já esconde o seletor com 0/1 opção).
-    final saved = await _selectedCompetitionStorage.read();
-    final initialId =
-        saved != null && competitions.any((c) => c.id == saved)
-        ? saved
-        : null;
-    if (competitions.isNotEmpty) {
-      emit(state.copyWith(competitions: competitions));
-    }
-    await loadStandings(competitionId: initialId);
-  }
-
-  Future<void> loadStandings({String? competitionId}) async {
-    emit(state.copyWith(standingsStatus: LoadStatus.loading));
-    final result = await _footballRepository.getStandings(
-      competitionId: competitionId,
-    );
-    switch (result) {
-      case Success(:final data):
-        final isEmpty = data.table.isEmpty && data.groups.isEmpty;
-        emit(
-          state.copyWith(
-            standingsStatus: isEmpty ? LoadStatus.empty : LoadStatus.success,
-            standings: data.table,
-            standingGroups: data.groups,
-            selectedCompetition: data.competition,
-          ),
-        );
-      case Error(:final failure):
-        emit(
-          state.copyWith(
-            standingsStatus: LoadStatus.error,
-            standingsErrorMessage: failure.message,
-          ),
-        );
-    }
-  }
-
-  /// Chamado pelo seletor de competição na aba Classificação — salva a
-  /// escolha (isolada por clube) e recarrega a tabela/grupos pra ela.
-  Future<void> selectCompetition(String competitionId) async {
-    await _selectedCompetitionStorage.save(competitionId);
-    await loadStandings(competitionId: competitionId);
-  }
-
   /// Pull-to-refresh: refaz as três buscas. Limpa o cache de rodadas
   /// primeiro — é o gesto explícito do usuário pedindo dados novos, então a
   /// rodada atual (e as demais já vistas) volta a ser buscada de verdade. O
@@ -194,7 +264,7 @@ class GamesCubit extends Cubit<GamesState> {
     final competitionId = state.selectedCompetition?.id;
     await Future.wait([
       loadCurrentRound(),
-      loadSnapshot(),
+      _loadSnapshot(),
       loadStandings(competitionId: competitionId),
     ]);
   }

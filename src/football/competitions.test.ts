@@ -14,34 +14,52 @@ function fakeEnv(overrides: Partial<Env> = {}): Env {
   };
 }
 
-describe('handleCompetitions', () => {
-  it('clube só com a principal -> lista de 1 item, isPrimary true', async () => {
-    const request = new Request('https://example.com/api/football/competitions?club=bragantino');
-    const response = await handleCompetitions(request, fakeEnv());
-    const body = (await response.json()) as {
-      competitions: Array<{ id: string; name: string; format: string; isPrimary: boolean }>;
-    };
+type CompetitionEntry = {
+  id: string;
+  name: string;
+  region: string;
+  format: string;
+  isClubParticipating: boolean;
+};
 
-    expect(body.competitions).toEqual([
-      { id: 'primary', name: 'Brasileirão Série A', format: 'LEAGUE_TABLE', isPrimary: true },
-    ]);
+describe('handleCompetitions — catálogo GLOBAL (rearquitetura multi-competição 2026-09-10)', () => {
+  it('devolve o catálogo INTEIRO, não só o que o clube disputa', async () => {
+    const request = new Request('https://example.com/api/football/competitions?club=goias');
+    const response = await handleCompetitions(request, fakeEnv({ CLUB_CODE: 'goias' }));
+    const body = (await response.json()) as { competitions: CompetitionEntry[] };
+
+    // Goiás só disputa a Série B, mas o catálogo continua trazendo TUDO —
+    // Bundesliga/Champions/etc. incluídas, nunca escondidas por
+    // participação (spec multi-competição, item 21).
+    const ids = body.competitions.map((c) => c.id);
+    expect(ids).toContain('bundesliga');
+    expect(ids).toContain('champions-league');
+    expect(ids).toContain('brasileirao-serie-b');
+    expect(ids.length).toBeGreaterThanOrEqual(12);
   });
 
-  it('Bragantino real: Série A + CONMEBOL Sudamericana, nesta ordem', async () => {
-    const bragantinoEnv = fakeEnv({
-      SECONDARY_COMPETITIONS:
-        '[{"id":"sudamericana","name":"CONMEBOL Sudamericana","slug":"conmebol-sudamericana-102","format":"GROUP_STAGE"}]',
-    });
-    const request = new Request('https://example.com/api/football/competitions?club=bragantino');
-    const response = await handleCompetitions(request, bragantinoEnv);
-    const body = (await response.json()) as {
-      competitions: Array<{ id: string; name: string; format: string; isPrimary: boolean }>;
-    };
+  it('Goiás: só Série B marcada isClubParticipating, resto false (Bundesliga inclusive)', async () => {
+    const request = new Request('https://example.com/api/football/competitions?club=goias');
+    const response = await handleCompetitions(request, fakeEnv({ CLUB_CODE: 'goias' }));
+    const body = (await response.json()) as { competitions: CompetitionEntry[] };
 
-    expect(body.competitions).toEqual([
-      { id: 'primary', name: 'Brasileirão Série A', format: 'LEAGUE_TABLE', isPrimary: true },
-      { id: 'sudamericana', name: 'CONMEBOL Sudamericana', format: 'GROUP_STAGE', isPrimary: false },
-    ]);
+    const serieB = body.competitions.find((c) => c.id === 'brasileirao-serie-b');
+    const bundesliga = body.competitions.find((c) => c.id === 'bundesliga');
+    expect(serieB?.isClubParticipating).toBe(true);
+    expect(bundesliga?.isClubParticipating).toBe(false);
+  });
+
+  it('Bragantino: Série A e Sudamericana marcadas, resto false', async () => {
+    const request = new Request('https://example.com/api/football/competitions?club=bragantino');
+    const response = await handleCompetitions(request, fakeEnv());
+    const body = (await response.json()) as { competitions: CompetitionEntry[] };
+
+    const serieA = body.competitions.find((c) => c.id === 'brasileirao-serie-a');
+    const sudamericana = body.competitions.find((c) => c.id === 'sudamericana');
+    const serieB = body.competitions.find((c) => c.id === 'brasileirao-serie-b');
+    expect(serieA?.isClubParticipating).toBe(true);
+    expect(sudamericana?.isClubParticipating).toBe(true);
+    expect(serieB?.isClubParticipating).toBe(false);
   });
 
   it('?club= de outro clube -> 404', async () => {

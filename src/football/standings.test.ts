@@ -116,7 +116,7 @@ describe('handleStandings — gate de ?club= (auditoria multi-competição 2026-
   });
 });
 
-describe('handleStandings — ?competition= (auditoria multi-competição 2026-09-09)', () => {
+describe('handleStandings — ?competition= resolve contra o catálogo GLOBAL (rearquitetura 2026-09-10)', () => {
   const originalFetch = global.fetch;
   afterEach(() => {
     global.fetch = originalFetch;
@@ -129,8 +129,6 @@ describe('handleStandings — ?competition= (auditoria multi-competição 2026-0
       TEAM_ONEFOOTBALL_SLUG: 'rb-bragantino-4734',
       PRIMARY_COMPETITION_SLUG: 'brasileirao-betano-16',
       PRIMARY_COMPETITION_DISPLAY_NAME: 'Brasileirão Série A',
-      SECONDARY_COMPETITIONS:
-        '[{"id":"sudamericana","name":"CONMEBOL Sudamericana","slug":"conmebol-sudamericana-102","format":"GROUP_STAGE"}]',
     });
 
   it('sem ?competition= (ou "primary") -> continua LEAGUE_TABLE da principal, mesma resposta de sempre', async () => {
@@ -200,8 +198,78 @@ describe('handleStandings — ?competition= (auditoria multi-competição 2026-0
   });
 
   it('?competition= com id desconhecido -> 404, nunca inventa/cai pra principal silenciosamente', async () => {
-    const request = new Request('https://example.com/api/football/standings?club=bragantino&competition=libertadores');
+    const request = new Request('https://example.com/api/football/standings?club=bragantino&competition=id-que-nao-existe');
     const response = await handleStandings(request, bragantinoEnv());
+
+    expect(response.status).toBe(404);
+  });
+
+  it('?competition=copa-do-brasil (KNOCKOUT) -> dataGap: true, nunca erro de rede nem tabela vazia sem explicação', async () => {
+    const request = new Request('https://example.com/api/football/standings?club=bragantino&competition=copa-do-brasil');
+    const response = await handleStandings(request, bragantinoEnv());
+    const body = (await response.json()) as { standings: unknown[]; groups: unknown[]; dataGap?: boolean };
+
+    expect(response.status).toBe(200);
+    expect(body.dataGap).toBe(true);
+    expect(body.standings).toEqual([]);
+    expect(body.groups).toEqual([]);
+  });
+});
+
+describe('handleStandings — consultar competição que o clube NÃO disputa é válido, não é cross-club fallback (spec item 21/23)', () => {
+  const originalFetch = global.fetch;
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+  });
+
+  it('Worker do Goiás + club=goias + competition=bundesliga -> 200, tabela normal da Bundesliga', async () => {
+    global.fetch = vi.fn(async (input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input.toString();
+      if (url.endsWith('/competicao/bundesliga-1/tabela')) {
+        return new Response(
+          JSON.stringify({
+            containers: [
+              {
+                component: {
+                  standings: {
+                    rows: [
+                      {
+                        position: 1,
+                        teamName: 'Bayern de Munique',
+                        imageObject: { path: 'https://images.onefootball.com/icons/teams/164/13.png' },
+                        playedMatchesCount: 5,
+                        wonMatchesCount: 5,
+                        drawnMatchesCount: 0,
+                        lostMatchesCount: 0,
+                        goalsDiff: 15,
+                        points: 15,
+                        teamPath: '/pt-br/time/bayern-13',
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          }),
+          { status: 200 },
+        );
+      }
+      throw new Error(`URL não mockada: ${url}`);
+    }) as unknown as typeof fetch;
+
+    const request = new Request('https://example.com/api/football/standings?club=goias&competition=bundesliga');
+    const response = await handleStandings(request, fakeEnv({ CLUB_CODE: 'goias' }));
+    const body = (await response.json()) as { competition: { name: string }; standings: Array<{ team: { name: string } }> };
+
+    expect(response.status).toBe(200);
+    expect(body.competition.name).toBe('Bundesliga');
+    expect(body.standings[0].team.name).toBe('Bayern de Munique');
+  });
+
+  it('Worker do Goiás + club=bragantino (gate de flavor) -> continua 404, isso NÃO muda', async () => {
+    const request = new Request('https://example.com/api/football/standings?club=bragantino&competition=bundesliga');
+    const response = await handleStandings(request, fakeEnv({ CLUB_CODE: 'goias' }));
 
     expect(response.status).toBe(404);
   });
