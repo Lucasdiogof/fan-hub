@@ -60,6 +60,7 @@ flutter:
     - lib/assets/content/
     - lib/assets/content/bragantino/
     - lib/assets/sponsors/
+    - lib/assets/sponsors/bragantino/
     - lib/assets/branding/goias/
     - lib/assets/branding/bragantino/
     - lib/assets/branding/bragantino/idols/

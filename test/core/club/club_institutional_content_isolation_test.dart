@@ -296,8 +296,20 @@ void main() {
         );
         await tester.pumpAndSettle();
 
-        expect(find.text('Puma'), findsOneWidget);
-        expect(find.text('Asaas'), findsOneWidget);
+        // Verifica pelo label de acessibilidade (`Semantics`), não por
+        // `find.text` — desde que os logos do Bragantino passaram a ser
+        // `assetPath` local (2026-09-10, mesmo padrão do Goiás), a imagem
+        // carrega de verdade no teste e o nome nunca aparece como `Text`
+        // (isso só acontecia antes por acidente, quando `Image.network`
+        // falhava no sandbox de teste e caía no fallback de texto).
+        expect(
+          find.bySemanticsLabel(RegExp('Puma')),
+          findsOneWidget,
+        );
+        expect(
+          find.bySemanticsLabel(RegExp('Asaas')),
+          findsOneWidget,
+        );
         // "Unimed" é uma marca nacional com unidades regionais
         // independentes — o Bragantino tem a sua PRÓPRIA (Os
         // Bandeirantes, Bragança Paulista), sem nenhuma relação com a
@@ -306,7 +318,10 @@ void main() {
         // nesta checagem.
         for (final goiasPartner in PartnersData.all) {
           if (goiasPartner.name == 'Unimed') continue;
-          expect(find.text(goiasPartner.name), findsNothing);
+          expect(
+            find.bySemanticsLabel(RegExp(RegExp.escape(goiasPartner.name))),
+            findsNothing,
+          );
         }
         // Regressão 2026-09-07: o subtítulo da página era um l10n global
         // hardcoded ("Brands that walk alongside Goiás."), nunca checado
