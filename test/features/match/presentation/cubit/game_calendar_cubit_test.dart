@@ -3,11 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/domain/calendar_competition_filter.dart';
+import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
+import 'package:goias_app/features/match/domain/entities/standing_group.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/game_calendar_cubit.dart';
@@ -61,7 +63,19 @@ class _FakeFootballRepository implements FootballRepository {
   }
 
   @override
-  Future<Result<List<Standing>>> getStandings() async =>
+  Future<
+    Result<
+      ({
+        CompetitionRef competition,
+        List<Standing> table,
+        List<StandingGroup> groups,
+      })
+    >
+  >
+  getStandings({String? competitionId}) async => throw UnimplementedError();
+
+  @override
+  Future<Result<List<CompetitionRef>>> getCompetitions() async =>
       throw UnimplementedError();
 
   @override

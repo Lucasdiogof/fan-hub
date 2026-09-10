@@ -41,6 +41,18 @@ TEAM_ONEFOOTBALL_SLUG = "rb-bragantino-4734"
 PRIMARY_COMPETITION_SLUG = "brasileirao-betano-16"
 PRIMARY_COMPETITION_DISPLAY_NAME = "Brasileirão Série A"
 
+# Auditoria multi-competição (2026-09-09): RB Bragantino disputa a
+# CONMEBOL Sudamericana AO MESMO TEMPO que o Brasileirão (fase de grupos
+# encerrada em 1º-09 — ficou em 2º no Grupo H, ver
+# docs/bragantino_data — hoje na fase eliminatória contra o Atlético-MG).
+# Slug confirmado navegando onefootball.com/pt-br/competicao/
+# conmebol-sudamericana-102/tabela — a página só tem a classificação dos
+# grupos (`GROUP_STAGE`, 8 grupos reais confirmados na resposta JSON), sem
+# nenhum dado de confronto/chaveamento do mata-mata atual disponível nesta
+# fonte — por isso o app mostra só a fase de grupos aqui, nunca inventa
+# bracket. JSON array, mesmo formato de `SecondaryCompetitionConfig`.
+SECONDARY_COMPETITIONS = "[{\"id\":\"sudamericana\",\"name\":\"CONMEBOL Sudamericana\",\"slug\":\"conmebol-sudamericana-102\",\"format\":\"GROUP_STAGE\"}]"
+
 CACHE_VERSION = "1"
 
 # Instagram — pipeline igual ao do Goiás (Apify -> Cron -> KV ->

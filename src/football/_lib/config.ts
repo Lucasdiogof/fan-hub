@@ -18,6 +18,27 @@ export interface Env {
   CACHE_VERSION: string;
   /** Binding de assets estáticos (build/web do Flutter) — ver `[assets]` no wrangler.toml. */
   ASSETS: Fetcher;
+  /**
+   * Competições ADICIONAIS que o clube disputa além da principal — JSON
+   * array de `{"id","name","slug","format"}` (`format`: `"LEAGUE_TABLE"` ou
+   * `"GROUP_STAGE"`, ver `CompetitionFormat`). Opcional — a maioria dos
+   * clubes só tem a principal. `id` é o que o app manda em
+   * `?competition=<id>` pro `/standings`; `slug` é o path real no
+   * OneFootball (`/competicao/<slug>/tabela`), confirmado navegando o site,
+   * nunca inventado. Auditoria 2026-09-09: RB Bragantino disputa a
+   * CONMEBOL Sudamericana AO MESMO TEMPO que o Brasileirão — a única
+   * competição real hoje que justifica isto (ver wrangler.bragantino.toml).
+   */
+  SECONDARY_COMPETITIONS?: string;
+}
+
+export type CompetitionFormat = 'LEAGUE_TABLE' | 'GROUP_STAGE';
+
+export interface SecondaryCompetitionConfig {
+  id: string;
+  name: string;
+  slug: string;
+  format: CompetitionFormat;
 }
 
 export interface AppConfig {
@@ -26,6 +47,7 @@ export interface AppConfig {
   primaryCompetitionSlug: string | null;
   primaryCompetitionDisplayName: string | null;
   cacheVersion: string;
+  secondaryCompetitions: SecondaryCompetitionConfig[];
 }
 
 /** Erro de configuração ausente/incompleta. */
@@ -38,7 +60,27 @@ export function loadConfig(env: Env): AppConfig {
     primaryCompetitionSlug: env.PRIMARY_COMPETITION_SLUG || null,
     primaryCompetitionDisplayName: env.PRIMARY_COMPETITION_DISPLAY_NAME || null,
     cacheVersion: env.CACHE_VERSION || '1',
+    secondaryCompetitions: parseSecondaryCompetitions(env.SECONDARY_COMPETITIONS),
   };
+}
+
+/** JSON malformado/ausente nunca derruba o Worker — cai em `[]` (só a
+ * competição principal aparece), nunca inventa uma entrada. */
+function parseSecondaryCompetitions(raw: string | undefined): SecondaryCompetitionConfig[] {
+  if (!raw) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (entry): entry is SecondaryCompetitionConfig =>
+        typeof entry?.id === 'string' &&
+        typeof entry?.name === 'string' &&
+        typeof entry?.slug === 'string' &&
+        (entry?.format === 'LEAGUE_TABLE' || entry?.format === 'GROUP_STAGE'),
+    );
+  } catch {
+    return [];
+  }
 }
 
 export function requireTeamOneFootballSlug(config: AppConfig): string {

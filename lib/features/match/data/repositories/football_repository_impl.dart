@@ -5,11 +5,13 @@ import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
+import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
+import 'package:goias_app/features/match/domain/entities/standing_group.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -20,20 +22,68 @@ class FootballRepositoryImpl implements FootballRepository {
   final ClubConfig _clubConfig;
 
   @override
-  Future<Result<List<Standing>>> getStandings() async {
+  Future<
+    Result<
+      ({
+        CompetitionRef competition,
+        List<Standing> table,
+        List<StandingGroup> groups,
+      })
+    >
+  >
+  getStandings({String? competitionId}) async {
     try {
-      final result = await _remote.getStandings();
+      final result = await _remote.getStandings(competitionId: competitionId);
       // M3.3 tirou o cálculo de "é o clube ativo?" do servidor — o cliente
       // marca a linha comparando o id do time com o oneFootballTeamId do
       // clube ativo deste build (flavor). Sem isto a classificação não
-      // destaca mais o time logado.
+      // destaca mais o time logado. Mesma regra pras linhas dentro de cada
+      // grupo (GROUP_STAGE), não só na tabela achatada.
       final activeTeamId = _clubConfig.integrations.oneFootballTeamId;
-      return Success(
-        result.standings
-            .map((dto) => dto.toEntity())
-            .map((s) => s.copyWith(isActiveClub: s.team.id == activeTeamId))
-            .toList(),
+      Standing markActive(Standing s) =>
+          s.copyWith(isActiveClub: s.team.id == activeTeamId);
+
+      final competitionRef = CompetitionRef(
+        id: competitionId ?? 'primary',
+        name: result.competition.name,
+        format: result.competition.format ?? CompetitionFormat.leagueTable,
+        isPrimary: competitionId == null || competitionId == 'primary',
       );
+
+      final groups = result.groups.map((dto) {
+        final group = dto.toEntity();
+        return StandingGroup(
+          title: group.title,
+          standings: group.standings.map(markActive).toList(),
+        );
+      }).toList();
+      // Parte 10 da spec: se o clube ativo disputa a competição, o grupo
+      // DELE abre primeiro — nunca a ordem alfabética/crua da fonte.
+      groups.sort((a, b) {
+        final aHasActive = a.standings.any((s) => s.isActiveClub) ? 0 : 1;
+        final bHasActive = b.standings.any((s) => s.isActiveClub) ? 0 : 1;
+        return aHasActive.compareTo(bHasActive);
+      });
+
+      return Success((
+        competition: competitionRef,
+        table: result.standings.map((dto) => dto.toEntity()).map(markActive).toList(),
+        groups: groups,
+      ));
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return const Error(UnexpectedFailure());
+    }
+  }
+
+  @override
+  Future<Result<List<CompetitionRef>>> getCompetitions() async {
+    try {
+      final dtos = await _remote.getCompetitions();
+      return Success(dtos.map((dto) => dto.toEntity()).toList());
     } on DioException catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
       return Error(_mapDioError(error));

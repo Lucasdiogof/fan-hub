@@ -115,3 +115,94 @@ describe('handleStandings — gate de ?club= (auditoria multi-competição 2026-
     expect(response.status).toBe(200);
   });
 });
+
+describe('handleStandings — ?competition= (auditoria multi-competição 2026-09-09)', () => {
+  const originalFetch = global.fetch;
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+  });
+
+  const bragantinoEnv = () =>
+    fakeEnv({
+      CLUB_CODE: 'bragantino',
+      TEAM_ONEFOOTBALL_SLUG: 'rb-bragantino-4734',
+      PRIMARY_COMPETITION_SLUG: 'brasileirao-betano-16',
+      PRIMARY_COMPETITION_DISPLAY_NAME: 'Brasileirão Série A',
+      SECONDARY_COMPETITIONS:
+        '[{"id":"sudamericana","name":"CONMEBOL Sudamericana","slug":"conmebol-sudamericana-102","format":"GROUP_STAGE"}]',
+    });
+
+  it('sem ?competition= (ou "primary") -> continua LEAGUE_TABLE da principal, mesma resposta de sempre', async () => {
+    mockStandingsFetch('brasileirao-betano-16');
+    const request = new Request('https://example.com/api/football/standings?club=bragantino');
+    const response = await handleStandings(request, bragantinoEnv());
+    const body = (await response.json()) as { competition: { name: string; format: string } };
+
+    expect(body.competition).toEqual({ name: 'Brasileirão Série A', season: null, format: 'LEAGUE_TABLE' });
+  });
+
+  it('?competition=sudamericana -> GROUP_STAGE, vem em "groups" (nunca "standings" achatado)', async () => {
+    global.fetch = vi.fn(async (input: RequestInfo | URL) => {
+      const url = typeof input === 'string' ? input : input.toString();
+      if (url.endsWith('/competicao/conmebol-sudamericana-102/tabela')) {
+        return new Response(
+          JSON.stringify({
+            containers: [
+              {
+                grid: {
+                  items: [
+                    {
+                      components: [
+                        {
+                          standings: {
+                            title: 'Grupo H',
+                            rows: [
+                              {
+                                position: 2,
+                                teamName: 'RB Bragantino',
+                                imageObject: { path: 'https://images.onefootball.com/icons/teams/164/4734.png' },
+                                playedMatchesCount: 6,
+                                wonMatchesCount: 3,
+                                drawnMatchesCount: 1,
+                                lostMatchesCount: 2,
+                                goalsDiff: 7,
+                                points: 10,
+                                teamPath: '/pt-br/time/rb-bragantino-4734',
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                },
+              },
+            ],
+          }),
+          { status: 200 },
+        );
+      }
+      throw new Error(`URL não mockada: ${url}`);
+    }) as unknown as typeof fetch;
+
+    const request = new Request('https://example.com/api/football/standings?club=bragantino&competition=sudamericana');
+    const response = await handleStandings(request, bragantinoEnv());
+    const body = (await response.json()) as {
+      competition: { name: string; format: string };
+      groups: Array<{ title: string; standings: Array<{ team: { name: string } }> }>;
+    };
+
+    expect(body.competition).toEqual({ name: 'CONMEBOL Sudamericana', season: null, format: 'GROUP_STAGE' });
+    expect(body.groups).toHaveLength(1);
+    expect(body.groups[0].title).toBe('Grupo H');
+    expect(body.groups[0].standings[0].team.name).toBe('RB Bragantino');
+  });
+
+  it('?competition= com id desconhecido -> 404, nunca inventa/cai pra principal silenciosamente', async () => {
+    const request = new Request('https://example.com/api/football/standings?club=bragantino&competition=libertadores');
+    const response = await handleStandings(request, bragantinoEnv());
+
+    expect(response.status).toBe(404);
+  });
+});

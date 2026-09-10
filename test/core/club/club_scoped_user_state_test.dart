@@ -23,11 +23,13 @@ import 'package:goias_app/features/arena/ranking/data/supabase_arena_ranking_rep
 import 'package:goias_app/features/arena/ranking/domain/ranking_entities.dart';
 import 'package:goias_app/features/crowd_lineup/data/supabase_crowd_lineup_repository.dart';
 import 'package:goias_app/features/crowd_lineup/domain/lineup_vote.dart';
+import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/match_stat.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
+import 'package:goias_app/features/match/domain/entities/standing_group.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
@@ -100,7 +102,29 @@ class _FakeFootballRepository implements FootballRepository {
       Success((nextMatch: match, recentResults: const []));
 
   @override
-  Future<Result<List<Standing>>> getStandings() async => const Success([]);
+  Future<
+    Result<
+      ({
+        CompetitionRef competition,
+        List<Standing> table,
+        List<StandingGroup> groups,
+      })
+    >
+  >
+  getStandings({String? competitionId}) async => const Success((
+    competition: CompetitionRef(
+      id: 'primary',
+      name: '',
+      format: CompetitionFormat.leagueTable,
+      isPrimary: true,
+    ),
+    table: [],
+    groups: [],
+  ));
+
+  @override
+  Future<Result<List<CompetitionRef>>> getCompetitions() async =>
+      const Success([]);
 
   @override
   Future<

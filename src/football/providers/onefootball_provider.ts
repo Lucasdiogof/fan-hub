@@ -132,6 +132,34 @@ function findNode<T>(root: unknown, key: string): T | null {
   return null;
 }
 
+/**
+ * Igual a `findNode`, mas coleta TODAS as ocorrências da chave (nunca para
+ * na primeira) — não desce pra dentro de um nó já encontrado (o valor de
+ * uma chave-alvo nunca contém outra ocorrência da mesma chave nas páginas
+ * que já vimos, e descer criaria duplicata/nó parcial). Usada só quando a
+ * mesma chave aparece mais de uma vez na árvore por design (um `standings`
+ * por grupo numa competição com fase de grupos, ver
+ * `fetchCompetitionGroupStandings`).
+ */
+function findAllNodes<T>(root: unknown, key: string): T[] {
+  const results: T[] = [];
+  const visit = (node: unknown) => {
+    if (node === null || typeof node !== 'object') return;
+    if (Array.isArray(node)) {
+      for (const item of node) visit(item);
+      return;
+    }
+    const obj = node as Record<string, unknown>;
+    if (key in obj) {
+      results.push(obj[key] as T);
+      return;
+    }
+    for (const value of Object.values(obj)) visit(value);
+  };
+  visit(root);
+  return results;
+}
+
 async function getContainers(path: string): Promise<unknown> {
   let response: Response;
   try {
@@ -341,6 +369,35 @@ export async function fetchCompetitionStandings(competitionSlug: string): Promis
     if (err instanceof ProviderError) throw err;
     throw new ProviderError(
       `Não foi possível consultar a classificação (${err instanceof Error ? err.message : String(err)}).`,
+      502,
+      PROVIDER,
+    );
+  }
+}
+
+export interface OneFootballGroupStanding {
+  title: string;
+  rows: OneFootballStandingRow[];
+}
+
+/**
+ * Competições com fase de grupos (confirmado ao vivo 2026-09-09:
+ * `conmebol-sudamericana-102/tabela`) trazem VÁRIOS nós `standings` na
+ * mesma página, um por grupo (`{title: "Grupo A", rows: [...]}`,
+ * `"Grupo B"`...) — `findNode` (singular) só acharia o primeiro. Usada só
+ * pra competições marcadas `GROUP_STAGE` na config; `LEAGUE_TABLE` continua
+ * em `fetchCompetitionStandings` (um `standings` só, sem grupo).
+ */
+export async function fetchCompetitionGroupStandings(competitionSlug: string): Promise<OneFootballGroupStanding[]> {
+  try {
+    const containers = await getContainers(`competicao/${competitionSlug}/tabela`);
+    return findAllNodes<OneFootballGroupStanding>(containers, 'standings').filter(
+      (group) => Array.isArray(group.rows) && group.rows.length > 0,
+    );
+  } catch (err) {
+    if (err instanceof ProviderError) throw err;
+    throw new ProviderError(
+      `Não foi possível consultar a classificação por grupos (${err instanceof Error ? err.message : String(err)}).`,
       502,
       PROVIDER,
     );
