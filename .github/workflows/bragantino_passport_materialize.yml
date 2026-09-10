@@ -1,0 +1,74 @@
+name: Bragantino Passport Historical Materialization
+
+on:
+  push:
+    branches:
+      - data/bragantino-data-finalize-20260910
+    paths:
+      - 'tooling/bragantino_passport/**'
+      - '.github/workflows/bragantino_passport_materialize.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: ${{ !contains(github.event.head_commit.message, '[passport-generated]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: data/bragantino-data-finalize-20260910
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Parser unit tests
+        run: node --test tooling/bragantino_passport/parse_ogol_matches.test.mjs
+
+      - name: Materialize 2000-2022
+        run: node tooling/bragantino_passport/materialize_historical.mjs 2000 2022
+
+      - name: Generate SQL seeds and validate every year
+        shell: bash
+        run: |
+          set -euo pipefail
+          for year in $(seq 2000 2022); do
+            node tooling/bragantino_passport/generate_seed_sql.mjs "$year"
+            node tooling/bragantino_passport/validate_batch.mjs "$year"
+          done
+
+      - name: Reconcile total
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'fs';
+          let total = 0;
+          const expected = {2000:38,2001:56,2002:41,2003:26,2004:14,2005:36,2006:41,2007:65,2008:61,2009:57,2010:57,2011:57,2012:61,2013:59,2014:62,2015:56,2016:84,2017:42,2018:40,2019:52,2020:44,2021:80,2022:60};
+          for (const [year,count] of Object.entries(expected)) {
+            const p = `tooling/bragantino_passport/source/bragantino_passport_${year}.json`;
+            const rows = JSON.parse(fs.readFileSync(p,'utf8')).matches;
+            if (rows.length !== count) throw new Error(`${year}: ${rows.length} != ${count}`);
+            total += rows.length;
+          }
+          if (total !== 1189) throw new Error(`Total histórico ${total} != 1189`);
+          console.log(`PASS total histórico 2000-2022 = ${total}`);
+          NODE
+
+      - name: Commit generated data back to branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tooling/bragantino_passport/source/bragantino_passport_{2000..2022}.json
+          git add supabase/bragantino_passport_matches_{2000..2022}_seed.sql
+          if git diff --cached --quiet; then
+            echo 'Nothing to commit'
+          else
+            git commit -m 'data(bragantino): materialize passport 2000-2022 [passport-generated]'
+            git push origin HEAD:data/bragantino-data-finalize-20260910
+          fi
