@@ -11,34 +11,34 @@
 //     certo) — só cuidado se salvar/reabrir o HTML com uma ferramenta que
 //     tente "adivinhar" outro charset, aí vira mojibake (ex.: "GrÃªmio").
 //   - cada linha de partida é uma <tr class="parent"> com, nesta ordem:
-//     forma (V/E/D), data (YYYY-MM-DD), hora (HH:MM), marcador casa/fora
-//     "(C)"/"(F)", crest+nome do ADVERSÁRIO, link de resultado
-//     (/jogo/<data>-<slug-mandante>-<slug-visitante>/<id>) com o placar
-//     como texto ("2-1"), e o nome da edição da competição
-//     (/edicao/<slug>-<ano>/<id>) como texto ("Paulista 2025").
+//     forma (V/E/D), data LOCAL exibida (YYYY-MM-DD), hora (HH:MM), marcador
+//     casa/fora "(C)"/"(F)", crest+nome do ADVERSÁRIO, link de resultado
+//     (/jogo/<data-do-slug>-<mandante>-<visitante>/<id>) com o placar como
+//     texto ("2-1"), e o nome da edição da competição.
+//   - IMPORTANTE: a data embutida no href NÃO é autoridade de calendário.
+//     Há jogos noturnos em que o oGol exibe corretamente a data local na
+//     coluna mas o slug do href usa o dia seguinte (ex.: Bragantino 0-2
+//     Santos em 17/10/2022, href 18/10/2022). `date` usa SEMPRE a coluna da
+//     tabela; `source_url` preserva o href original e `source_url_date`
+//     registra a data do slug para auditoria.
 //   - mandante/visitante são derivados da ORDEM dos times no slug da URL
 //     de resultado (sempre <mandante>-<visitante>), não do marcador
 //     "(C)"/"(F)" (mantido só como campo de conferência cruzada).
 //   - o placar do link de resultado ("2-0") está SEMPRE na mesma ordem
-//     <mandante>-<visitante> (confirmado direto no HTML: mandante=Botafogo,
-//     "2-0", Botafogo venceu de fato por 2-0) — nunca "time da página
-//     primeiro". Um bug anterior aqui assumia essa segunda leitura pra
-//     jogos fora de casa e invertia o placar; não reintroduzir.
+//     <mandante>-<visitante>. Um bug anterior assumia "time da página
+//     primeiro" em jogos fora e invertia o placar; não reintroduzir.
 import fs from 'fs';
 
 const ROW_RE = /<tr data-lj="h2" id="(\d+)" class="parent">([\s\S]*?)<\/tr>/g;
 const DATE_RE = /<td class="double"\s*>(\d{4}-\d{2}-\d{2})<\/td>/;
 const TIME_RE = /<td class="double"\s*>\d{4}-\d{2}-\d{2}<\/td><td>(\d{2}:\d{2})<\/td>/;
 const HOME_AWAY_MARK_RE = /<td>\((C|F)\)<\/td>/;
-// Clubes grandes (Corinthians, Santos, São Paulo, Palmeiras...) têm URL
-// SEM id numérico (`/equipe/corinthians`); os demais têm
-// `/equipe/<slug>/<id>`. O `?epoca_id=` está sempre presente no link com
-// texto visível (o primeiro `<a>` da linha só tem o `<img>`, sem texto).
+// Clubes grandes podem ter URL sem id numérico. O ?epoca_id= está presente
+// no link textual do adversário na tabela.
 const OPPONENT_RE = /<a href="\/equipe\/([a-z0-9-]+)(?:\/(\d+))?\?epoca_id=\d+">([^<]+)<\/a>/;
-// Jogos decididos na prorrogação/pênaltis têm atributos extras antes do
-// href (ex.: `<a class="prol" href="...">`) e um `<span>` com o placar da
-// disputa de pênaltis depois do placar normal (ex.: "1-2<span>(5-4
-// Pen.)</span>") — sem esses dois ajustes a partida inteira some do parse.
+// Jogos decididos na prorrogação/pênaltis têm atributos extras antes do href
+// (ex.: `<a class="prol" href="...">`) e um span com a disputa depois do
+// placar normal. Sem aceitar esses atributos a partida some silenciosamente.
 const RESULT_RE = /<a\s+(?:\w+="[^"]*"\s+)*href="\/jogo\/(\d{4}-\d{2}-\d{2})-([a-z0-9-]+)\/(\d+)">([^<]*)(?:<span>\(([^)]*)\)<\/span>)?<\/a>/;
 const COMPETITION_RE = /<a href="\/edicao\/([a-z0-9-]+)-(\d{4})\/(\d+)">([^<]+)<\/a>/;
 
@@ -51,13 +51,6 @@ function decodeEntities(str) {
     .replace(/&Eacute;/g, 'É').replace(/&Oacute;/g, 'Ó').replace(/&Atilde;/g, 'Ã')
     .replace(/&Ccedil;/g, 'Ç').replace(/&amp;/g, '&').replace(/&#39;/g, "'")
     .replace(/&nbsp;/g, ' ');
-}
-
-/** Slug em minúsculas/sem acento (como aparece na URL) -> nome legível. Só
- * usado quando o texto do link do adversário não bate com o slug (raro) —
- * o texto do `<a>` já vem legível na maioria dos casos. */
-function titleFromSlug(slug) {
-  return slug.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
 }
 
 export function parseOgolTeamMatches(html, { teamSlug }) {
@@ -73,20 +66,17 @@ export function parseOgolTeamMatches(html, { teamSlug }) {
     const resultMatch = RESULT_RE.exec(rowHtml);
     const competitionMatch = COMPETITION_RE.exec(rowHtml);
 
-    if (!dateMatch || !resultMatch) continue; // linha não é uma partida de verdade (raro, defensivo)
+    if (!dateMatch || !resultMatch) continue;
 
+    const displayedDate = dateMatch[1];
     const [, resultDate, homeAwaySlug, matchId, scoreRaw, penaltyRaw] = resultMatch;
-    // slug do resultado é sempre "<mandante>-<visitante>" — o time da CASA
-    // vem primeiro. `teamSlug` (ex.: "red-bull-bragantino") aparece nessa
-    // posição quando o clube joga em casa.
     const homeIsClub = homeAwaySlug.startsWith(`${teamSlug}-`) || homeAwaySlug === teamSlug;
     const awayIsClub = homeAwaySlug.endsWith(`-${teamSlug}`) || homeAwaySlug === teamSlug;
 
     const opponentName = opponentMatch ? decodeEntities(opponentMatch[3]) : null;
-    const score = scoreRaw && /^\d+-\d+$/.test(scoreRaw.trim()) ? scoreRaw.trim().split('-').map(Number) : null;
-    // Mesma ordem <mandante>-<visitante> do placar normal (confirmado no
-    // HTML bruto: mandante Corinthians, "5-4 Pen.", Corinthians venceu de
-    // fato a disputa por 5-4 — ver imprensa externa, jogo de 21/08/2024).
+    const score = scoreRaw && /^\d+-\d+$/.test(scoreRaw.trim())
+      ? scoreRaw.trim().split('-').map(Number)
+      : null;
     const penalties = penaltyRaw && /^\d+-\d+\s*Pen\.?$/i.test(penaltyRaw.trim())
       ? penaltyRaw.trim().split(/\s+/)[0].split('-').map(Number)
       : null;
@@ -95,14 +85,11 @@ export function parseOgolTeamMatches(html, { teamSlug }) {
       source: 'ogol',
       source_match_id: matchId,
       ogol_internal_id: ogolMatchId,
-      // A URL de resultado (`resultDate`) é a data real da partida — a
-      // coluna "double" da tabela (`dateMatch`) pode vir 1 dia adiantada
-      // pra jogos que começam perto da meia-noite (visto em 2 casos: este
-      // aqui e um jogo do Bragantino contra o Flamengo em 2025). Usa
-      // sempre `resultDate` pra não depender de redirect 301 do oGol.
-      date: resultDate,
+      date: displayedDate,
+      source_url_date: resultDate,
+      date_href_mismatch: displayedDate !== resultDate,
       time: timeMatch ? timeMatch[1] : null,
-      home_away_marker: markMatch ? markMatch[1] : null, // 'C' ou 'F' — só conferência cruzada
+      home_away_marker: markMatch ? markMatch[1] : null,
       club_is_home: homeIsClub && !awayIsClub ? true : awayIsClub && !homeIsClub ? false : null,
       opponent: opponentName,
       home_score: score?.[0] ?? null,
@@ -131,8 +118,9 @@ if (isMain) {
   const matches = parseOgolTeamMatches(html, { teamSlug });
   console.log(`Encontradas ${matches.length} partidas em ${file}`);
   for (const mt of matches) {
+    const dateAudit = mt.date_href_mismatch ? ` hrefDate=${mt.source_url_date}` : '';
     console.log(
-      `${mt.date} ${mt.time ?? '--:--'} [${mt.competition_display}] ${mt.club_is_home ? teamSlug : mt.opponent} ${mt.home_score ?? '-'}x${mt.away_score ?? '-'} ${mt.club_is_home ? mt.opponent : teamSlug} (id=${mt.source_match_id}, marker=${mt.home_away_marker})`,
+      `${mt.date}${dateAudit} ${mt.time ?? '--:--'} [${mt.competition_display}] ${mt.club_is_home ? teamSlug : mt.opponent} ${mt.home_score ?? '-'}x${mt.away_score ?? '-'} ${mt.club_is_home ? mt.opponent : teamSlug} (id=${mt.source_match_id}, marker=${mt.home_away_marker})`,
     );
   }
 }
