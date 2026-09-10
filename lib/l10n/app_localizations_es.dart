@@ -771,6 +771,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String arenaSpotlightSubtitle(String clubCode, String club) {
     String _temp0 = intl.Intl.selectLogic(clubCode, {
       'goias': 'Juega, participa y gana tu lugar entre los Esmeraldinos.',
+      'bragantino': 'Juega, participa y gana tu lugar entre la Massa Bruta.',
       'other': 'Juega, participa y gana tu lugar entre los hinchas del $club.',
     });
     return '$_temp0';

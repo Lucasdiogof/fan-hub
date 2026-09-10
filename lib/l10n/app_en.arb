@@ -269,7 +269,7 @@
   "arenaHeaderSubtitle": "Play, take part and live {club}.",
   "arenaSpotlightEyebrow": "{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}",
   "arenaSpotlightHeadline": "Your passion takes the field",
-  "arenaSpotlightSubtitle": "{clubCode, select, goias{Play, take part, and earn your place among the Esmeraldinos.} other{Play, take part, and earn your place among {club} fans.}}",
+  "arenaSpotlightSubtitle": "{clubCode, select, goias{Play, take part, and earn your place among the Esmeraldinos.} bragantino{Play, take part, and earn your place among the Massa Bruta.} other{Play, take part, and earn your place among {club} fans.}}",
   "arenaSpotlightCta": "Enter the Arena",
   "arenaLineupHeroEyebrow": "FANS' LINEUP",
   "arenaLineupHeroCta": "Build my lineup",

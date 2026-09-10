@@ -114,6 +114,13 @@ class ArenaSpotlightCard extends StatelessWidget {
                         sl<ClubConfig>().identity.code,
                         sl<ClubConfig>().identity.shortName,
                       ),
+                      // Mesma proteção do StoreEntryCard: sem isso, um
+                      // clube cujo texto (nome mais longo, ou a variante
+                      // genérica "other" do ICU) quebra em 2 linhas onde o
+                      // Goiás fica em 1 deixa o card visivelmente maior
+                      // que o de outro clube — achado real 2026-09-10.
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 12.5,
                         fontWeight: FontWeight.w600,
