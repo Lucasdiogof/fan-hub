@@ -6,7 +6,7 @@ function table(rows) {
   return `<table>${rows.join('\n')}</table>`;
 }
 
-function row({ internalId, displayedDate, time='20:00', marker='C', opponentSlug='santos', opponent='Santos', hrefDate=displayedDate, matchSlug='red-bull-bragantino-santos', matchId='8522365', score='0-2', attrs='', competitionSlug='brasileirao', competitionYear='2022', competitionId='162047', competition='Brasileirão 2022', penalty='' }) {
+function row({ internalId, displayedDate='2022-10-17', time='20:00', marker='C', opponentSlug='santos', opponent='Santos', hrefDate=displayedDate, matchSlug='red-bull-bragantino-santos', matchId='8522365', score='0-2', attrs='', competitionSlug='brasileirao', competitionYear='2022', competitionId='162047', competition='Brasileirão 2022', penalty='' }) {
   return `<tr data-lj="h2" id="${internalId}" class="parent"><td class="double">${displayedDate}</td><td>${time}</td><td>(${marker})</td><td><a href="/equipe/${opponentSlug}?epoca_id=151">${opponent}</a></td><td><a ${attrs}href="/jogo/${hrefDate}-${matchSlug}/${matchId}">${score}${penalty}</a></td><td><a href="/edicao/${competitionSlug}-${competitionYear}/${competitionId}">${competition}</a></td></tr>`;
 }
 
@@ -20,7 +20,7 @@ test('uses displayed local date while preserving an off-by-one href date', () =>
 });
 
 test('keeps home/away score order for away matches', () => {
-  const html = table([row({ internalId: '2', marker: 'F', opponentSlug: 'fortaleza', opponent: 'Fortaleza', matchSlug: 'fortaleza-red-bull-bragantino', matchId: '8522419', score: '6-0' })]);
+  const html = table([row({ internalId: '2', displayedDate: '2022-11-09', marker: 'F', opponentSlug: 'fortaleza', opponent: 'Fortaleza', matchSlug: 'fortaleza-red-bull-bragantino', matchId: '8522419', score: '6-0' })]);
   const [m] = parseOgolTeamMatches(html, { teamSlug: 'red-bull-bragantino' });
   assert.equal(m.club_is_home, false);
   assert.equal(m.home_score, 6);
@@ -28,7 +28,7 @@ test('keeps home/away score order for away matches', () => {
 });
 
 test('does not drop rows whose result link has class=prol and parses penalties', () => {
-  const html = table([row({ internalId: '3', attrs: 'class="prol" ', score: '1-2', penalty: '<span>(5-4 Pen.)</span>' })]);
+  const html = table([row({ internalId: '3', displayedDate: '2024-08-20', hrefDate: '2024-08-20', attrs: 'class="prol" ', score: '1-2', penalty: '<span>(5-4 Pen.)</span>' })]);
   const [m] = parseOgolTeamMatches(html, { teamSlug: 'red-bull-bragantino' });
   assert.equal(m.home_score, 1);
   assert.equal(m.away_score, 2);
