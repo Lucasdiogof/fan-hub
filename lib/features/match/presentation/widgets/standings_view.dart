@@ -32,13 +32,17 @@ class StandingsView extends StatelessWidget {
               AppSpacing.xxxl,
             ),
             children: [
+              // CTA em cima (spec 2026-09-11): a Classificação prioriza a
+              // tabela, mas a porta pra "qualquer outra competição" fica
+              // visível assim que a tela abre, nunca só depois de rolar até
+              // o fim de uma tabela longa.
+              _OtherCompetitionsCta(
+                onTap: () => context.push('/games/competitions'),
+              ),
+              const SizedBox(height: AppSpacing.lg),
               StandingsContent(
                 standings: state.standings,
                 standingGroups: state.standingGroups,
-              ),
-              const SizedBox(height: AppSpacing.lg),
-              _OtherCompetitionsCta(
-                onTap: () => context.push('/games/competitions'),
               ),
             ],
           ),

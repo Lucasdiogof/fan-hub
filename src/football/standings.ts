@@ -17,6 +17,7 @@ import {
 import { normalizeStandingEntry } from './normalize/standing';
 import {
   buildKnockoutRounds,
+  hasAnyDecidedMatch,
   selectKnockoutSections,
   tableSectionLabel,
   tableWindowFrom,
@@ -113,7 +114,7 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
         const lists = await fetchCompetitionMatchLists(competitionSlug);
         const knockoutLists = selectKnockoutSections(lists, null);
         const rounds = buildKnockoutRounds(knockoutLists);
-        const stages: StageOut[] = rounds.length > 0 ? [knockoutStage(rounds, 0)] : [];
+        const stages: StageOut[] = hasAnyDecidedMatch(rounds) ? [knockoutStage(rounds, 0)] : [];
         return {
           competition: { name: competitionName, season: null, format },
           standings: [],
@@ -134,12 +135,18 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
       const tableWindow = tableWindowFrom(matchLists);
       const knockoutLists = selectKnockoutSections(matchLists, tableWindow);
       const knockoutRounds = buildKnockoutRounds(knockoutLists);
-      // Fase de tabela COMPLETED quando a temporada já avançou pro
-      // mata-mata (spec item 12) — nunca todas as fases artificialmente
-      // "active"; sem mata-mata descoberto, a fase de tabela é sempre a
-      // atual (comportamento de toda competição LEAGUE_TABLE/GROUP_STAGE
-      // hoje, incluindo Champions e as ligas principais dos dois clubes).
-      const tableIsCurrent = knockoutRounds.length === 0;
+      // Só conta como "chegou no mata-mata" quando há PELO MENOS um
+      // confronto com os dois times decididos — um calendário de
+      // Repescagem com "Home"/"Guest" (classificados da fase de tabela
+      // ainda não definidos) não conta: decisão do usuário 2026-09-11,
+      // "enquanto a fase não chegar no mata-mata, nem exibe que tem
+      // mata-mata". Fase de tabela COMPLETED quando isso acontece (spec
+      // item 12) — nunca todas as fases artificialmente "active"; sem
+      // mata-mata real descoberto, a fase de tabela é sempre a atual
+      // (comportamento de toda competição LEAGUE_TABLE/GROUP_STAGE hoje,
+      // incluindo Champions e as ligas principais dos dois clubes).
+      const hasRealKnockout = hasAnyDecidedMatch(knockoutRounds);
+      const tableIsCurrent = !hasRealKnockout;
 
       if (format === 'GROUP_STAGE') {
         const groups = await fetchCompetitionGroupStandings(competitionSlug);
@@ -159,7 +166,7 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
           rounds: [],
         };
         const stages: StageOut[] =
-          knockoutRounds.length > 0 ? [groupsStage, knockoutStage(knockoutRounds, 1)] : [groupsStage];
+          hasRealKnockout ? [groupsStage, knockoutStage(knockoutRounds, 1)] : [groupsStage];
         return {
           competition: { name: competitionName, season: null, format },
           groups: normalizedGroups,
@@ -186,7 +193,7 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
         rounds: [],
       };
       const stages: StageOut[] =
-        knockoutRounds.length > 0 ? [leagueStage, knockoutStage(knockoutRounds, 1)] : [leagueStage];
+        hasRealKnockout ? [leagueStage, knockoutStage(knockoutRounds, 1)] : [leagueStage];
       return {
         competition: { name: competitionName, season: null, format },
         standings,

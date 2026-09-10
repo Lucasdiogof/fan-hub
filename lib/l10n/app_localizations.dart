@@ -664,6 +664,12 @@ abstract class AppLocalizations {
   /// **'Pênaltis: {home}-{away}'**
   String knockoutPenalties(int home, int away);
 
+  /// No description provided for @knockoutAggregate.
+  ///
+  /// In pt, this message translates to:
+  /// **'Agregado {home}-{away}'**
+  String knockoutAggregate(int home, int away);
+
   /// No description provided for @matchStatusScheduled.
   ///
   /// In pt, this message translates to:

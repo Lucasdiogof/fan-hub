@@ -186,22 +186,54 @@ function kickoffRange(cards: OneFootballMatchCard[]): { min: number; max: number
  * em fases (rodadas), cada uma com seus confrontos — nunca recebe uma lista
  * de fase de tabela aqui, quem filtra isso é a função de descoberta.
  */
+/** OneFootball usa "Home"/"Guest" como nome literal do time em confrontos
+ * futuros cujos participantes ainda não foram decididos (confirmado ao
+ * vivo 2026-09-11: Repescagem da Série B, ainda sem os classificados do
+ * 3º-6º/4º-5º lugar) — e reaproveita o MESMO escudo genérico pra qualquer
+ * confronto TBD da rodada, então dois confrontos DIFERENTES (ex.: 3ºx6º e
+ * 4ºx5º) vêm com `homeTeam`/`awayTeam` idênticos. Agrupar esses por
+ * time (como faz `buildTie` pra confrontos decididos) fundiria as duas
+ * pernas de UM confronto com as pernas do OUTRO confronto sem querer. */
+function isPlaceholderTeamName(name: string): boolean {
+  return name === 'Home' || name === 'Guest';
+}
+
 export function buildKnockoutRounds(lists: OneFootballMatchList[]): KnockoutRoundOut[] {
   const rounds = new Map<string, { leg: KnockoutLegType; card: OneFootballMatchCard }[]>();
+  const seenMatchIds = new Set<string>();
   for (const list of lists) {
     const parsed = parseSectionSubtitle(list.sectionHeader?.subtitle);
     if (!parsed) continue;
     const bucket = rounds.get(parsed.round) ?? [];
-    for (const card of list.matchCards) bucket.push({ leg: parsed.leg, card });
+    for (const card of list.matchCards) {
+      // A rodada em andamento pode aparecer em `jogos` E `resultados` ao
+      // mesmo tempo (mesmo fenômeno já documentado pra ligas em
+      // `mergeRoundLists`) — sem dedupe aqui, o mesmo confronto vira 2
+      // pernas idênticas e o agregado sai dobrado (confirmado ao vivo
+      // 2026-09-11: Sudamericana Santos 2x0 Atlético-MG virava "4x0" na
+      // tela porque o jogo aparecia em `jogos` e `resultados` ao mesmo
+      // tempo).
+      if (seenMatchIds.has(card.matchId)) continue;
+      seenMatchIds.add(card.matchId);
+      bucket.push({ leg: parsed.leg, card });
+    }
     rounds.set(parsed.round, bucket);
   }
 
   const built = [...rounds.entries()].map(([name, cards]) => {
     const tieMap = new Map<string, { leg: KnockoutLegType; card: OneFootballMatchCard }[]>();
     for (const entry of cards) {
-      const homeId = teamIdFromCrest(entry.card.homeTeam.imageObject.path);
-      const awayId = teamIdFromCrest(entry.card.awayTeam.imageObject.path);
-      const key = [homeId, awayId].sort((a, b) => a - b).join('-');
+      const { homeTeam, awayTeam } = entry.card;
+      // Confronto TBD -> chave única por partida (nunca mesclado com
+      // outro TBD da mesma rodada, ver `isPlaceholderTeamName` acima).
+      // Confronto decidido -> chave por par de times, ida/volta com
+      // mandante trocado ainda caem na mesma chave.
+      const key =
+        isPlaceholderTeamName(homeTeam.name) || isPlaceholderTeamName(awayTeam.name)
+          ? `match-${entry.card.matchId}`
+          : [teamIdFromCrest(homeTeam.imageObject.path), teamIdFromCrest(awayTeam.imageObject.path)]
+              .sort((a, b) => a - b)
+              .join('-');
       const bucket = tieMap.get(key) ?? [];
       bucket.push(entry);
       tieMap.set(key, bucket);
@@ -233,6 +265,21 @@ export function buildKnockoutRounds(lists: OneFootballMatchList[]): KnockoutRoun
     isCurrent: index === currentIndex,
     ties: round.ties,
   }));
+}
+
+/**
+ * `false` quando TODOS os confrontos encontrados ainda são "Home"/"Guest"
+ * (chaveamento existe no calendário, mas os classificados ainda não foram
+ * decididos — ex.: Repescagem da Série B antes do fim da fase de pontos
+ * corridos). Decisão do usuário 2026-09-11: enquanto a fase de mata-mata
+ * não tiver NENHUM confronto real, nem mostra a aba — evita a confusão de
+ * uma "Mata-mata" cheia de times "Home"/"Guest" pra uma competição que,
+ * na prática, ainda está inteira na fase de tabela.
+ */
+export function hasAnyDecidedMatch(rounds: KnockoutRoundOut[]): boolean {
+  return rounds.some((round) =>
+    round.ties.some((tie) => !isPlaceholderTeamName(tie.homeTeam.name) && !isPlaceholderTeamName(tie.awayTeam.name)),
+  );
 }
 
 export interface TableWindow {

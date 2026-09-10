@@ -141,6 +141,11 @@ class _RoundColumn extends StatelessWidget {
   }
 }
 
+/// Confronto de mata-mata — mostra o placar de CADA perna lado a lado
+/// (Ida/Volta), nunca só o agregado somado (decisão do usuário 2026-09-11:
+/// "não ficou boa essa soma, prefiro que mostre jogo de ida/jogo de volta
+/// mesmo"). O agregado ainda aparece, mas como resumo na linha de status,
+/// não como o número principal do placar.
 class _TieCard extends StatelessWidget {
   const _TieCard({required this.tie});
 
@@ -150,6 +155,7 @@ class _TieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final winner = tie.winner;
+    final isTwoLegs = tie.legs.length > 1;
     return Container(
       padding: const EdgeInsets.all(AppSpacing.sm),
       decoration: BoxDecoration(
@@ -160,15 +166,36 @@ class _TieCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (isTwoLegs)
+            Padding(
+              padding: const EdgeInsets.only(
+                left: AppSpacing.lg + AppSpacing.xs,
+              ),
+              child: Row(
+                children: [
+                  const Spacer(),
+                  ..._legLabels(context).map(
+                    (label) => SizedBox(
+                      width: 28,
+                      child: Text(
+                        label,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 9.5, color: colors.textHint),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           _TeamRow(
             team: tie.homeTeam,
-            score: tie.aggregateHome,
+            legScores: tie.legs.map((l) => l.homeScore).toList(),
             isWinner: winner?.id == tie.homeTeam.id,
           ),
           const SizedBox(height: AppSpacing.xs),
           _TeamRow(
             team: tie.awayTeam,
-            score: tie.aggregateAway,
+            legScores: tie.legs.map((l) => l.awayScore).toList(),
             isWinner: winner?.id == tie.awayTeam.id,
           ),
           const SizedBox(height: AppSpacing.xs),
@@ -181,12 +208,27 @@ class _TieCard extends StatelessWidget {
     );
   }
 
+  List<String> _legLabels(BuildContext context) {
+    final l10n = context.l10n;
+    return tie.legs
+        .map(
+          (l) => l.legType == KnockoutLegType.first
+              ? l10n.knockoutFirstLeg
+              : l10n.knockoutSecondLeg,
+        )
+        .toList();
+  }
+
   String _statusLabel(BuildContext context) {
     final l10n = context.l10n;
     if (tie.wentToPenalties) {
       return l10n.knockoutPenalties(tie.penaltyHome!, tie.penaltyAway!);
     }
-    if (tie.isDecided) return l10n.matchStatusFinished;
+    if (tie.isDecided) {
+      return tie.legs.length > 1
+          ? '${l10n.matchStatusFinished} · ${l10n.knockoutAggregate(tie.aggregateHome!, tie.aggregateAway!)}'
+          : l10n.matchStatusFinished;
+    }
     final locale = Localizations.localeOf(context).toString();
     final nextLeg = tie.legs.where((l) => l.kickoff != null).lastOrNull;
     final kickoff = nextLeg?.kickoff;
@@ -204,12 +246,12 @@ class _TieCard extends StatelessWidget {
 class _TeamRow extends StatelessWidget {
   const _TeamRow({
     required this.team,
-    required this.score,
+    required this.legScores,
     required this.isWinner,
   });
 
   final Team team;
-  final int? score;
+  final List<int?> legScores;
   final bool isWinner;
 
   @override
@@ -230,14 +272,19 @@ class _TeamRow extends StatelessWidget {
             ),
           ),
         ),
-        Text(
-          score?.toString() ?? '-',
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w800,
-            color: isWinner ? colors.primary : colors.textPrimary,
+        for (final score in legScores)
+          SizedBox(
+            width: 28,
+            child: Text(
+              score?.toString() ?? '-',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w800,
+                color: isWinner ? colors.primary : colors.textPrimary,
+              ),
+            ),
           ),
-        ),
       ],
     );
   }
