@@ -7,6 +7,7 @@ import 'package:goias_app/features/arena/data/arena_progress_repository.dart';
 import 'package:goias_app/features/arena/ranking/data/supabase_arena_ranking_repository.dart';
 import 'package:goias_app/features/arena/ranking/domain/arena_ranking_repository.dart';
 import 'package:goias_app/features/arena/shared/local_best_score_store.dart';
+import 'package:goias_app/features/match/data/selected_competition_storage.dart';
 import 'package:goias_app/features/arena/games/career_path/data/career_player_repository.dart';
 import 'package:goias_app/features/arena/games/career_path/data/supabase_career_path_storage.dart';
 import 'package:goias_app/features/arena/games/guess_player/data/guess_player_repository.dart';
@@ -200,6 +201,9 @@ void setupDependencies() {
   sl.registerLazySingleton<LocalBestScoreStore>(
     () => LocalBestScoreStore(sl()),
   );
+  sl.registerLazySingleton<SelectedCompetitionStorage>(
+    () => SelectedCompetitionStorage(sl()),
+  );
   sl.registerLazySingleton<SupabaseLineupStorage>(
     () => SupabaseLineupStorage(Supabase.instance.client, sl()),
   );
@@ -272,7 +276,7 @@ void setupDependencies() {
   sl.registerFactory<PassportTrajectoryCubit>(
     () => PassportTrajectoryCubit(sl()),
   );
-  sl.registerFactory<GamesCubit>(() => GamesCubit(sl()));
+  sl.registerFactory<GamesCubit>(() => GamesCubit(sl(), sl()));
   sl.registerFactory<GameCalendarCubit>(() => GameCalendarCubit(sl()));
   sl.registerFactory<SocialFeedCubit>(() => SocialFeedCubit(sl()));
   sl.registerFactory<MembershipCubit>(() => MembershipCubit(sl(), sl(), sl()));

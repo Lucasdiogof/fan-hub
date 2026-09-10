@@ -1,5 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { fetchCompetitionMatchLists, fetchTeamSeasonMatchCards } from './onefootball_provider';
+import {
+  fetchCompetitionGroupStandings,
+  fetchCompetitionMatchLists,
+  fetchTeamSeasonMatchCards,
+} from './onefootball_provider';
 import type { OneFootballMatchList } from './onefootball_provider';
 
 /** Formato pequeno o bastante pra passar pelo `findNode` recursivo do
@@ -183,5 +187,80 @@ describe('fetchTeamSeasonMatchCards (via fetch mockado)', () => {
     global.fetch = vi.fn(async () => new Response('erro', { status: 500 })) as unknown as typeof fetch;
 
     await expect(fetchTeamSeasonMatchCards('goias-1863')).rejects.toThrow();
+  });
+});
+
+describe('fetchCompetitionGroupStandings (formato real confirmado 2026-09-09: conmebol-sudamericana-102/tabela)', () => {
+  const originalFetch = global.fetch;
+
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+  });
+
+  function groupRow(teamName: string) {
+    return {
+      position: 1,
+      teamName,
+      imageObject: { path: 'https://images.onefootball.com/icons/teams/164/1.png' },
+      playedMatchesCount: 6,
+      wonMatchesCount: 2,
+      drawnMatchesCount: 4,
+      lostMatchesCount: 0,
+      goalsDiff: 3,
+      points: 10,
+      teamPath: `/pt-br/time/${teamName}-1`,
+    };
+  }
+
+  it('coleta TODOS os grupos (a página real do Bragantino tem 8, A a H), não só o primeiro', async () => {
+    global.fetch = vi.fn(async () =>
+      new Response(
+        JSON.stringify({
+          containers: [
+            {
+              grid: {
+                items: [
+                  { components: [{ title: 'não é standings, ignora' }] },
+                  { components: [{ standings: { title: 'Grupo A', rows: [groupRow('CSD Macará')] } }] },
+                  {
+                    components: [
+                      { standings: { title: 'Grupo H', rows: [groupRow('RB Bragantino'), groupRow('River Plate')] } },
+                    ],
+                  },
+                ],
+              },
+            },
+          ],
+        }),
+        { status: 200 },
+      ),
+    ) as unknown as typeof fetch;
+
+    const groups = await fetchCompetitionGroupStandings('conmebol-sudamericana-102');
+
+    expect(groups.map((g) => g.title)).toEqual(['Grupo A', 'Grupo H']);
+    expect(groups[1].rows).toHaveLength(2);
+  });
+
+  it('grupo com rows vazio é descartado, nunca vira uma seção sem time nenhum', async () => {
+    global.fetch = vi.fn(async () =>
+      new Response(
+        JSON.stringify({
+          containers: [
+            {
+              grid: {
+                items: [{ components: [{ standings: { title: 'Grupo Vazio', rows: [] } }] }],
+              },
+            },
+          ],
+        }),
+        { status: 200 },
+      ),
+    ) as unknown as typeof fetch;
+
+    const groups = await fetchCompetitionGroupStandings('conmebol-sudamericana-102');
+
+    expect(groups).toEqual([]);
   });
 });

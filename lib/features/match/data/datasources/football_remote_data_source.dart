@@ -6,6 +6,7 @@ import 'package:goias_app/features/match/data/dto/lineup_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_event_dto.dart';
 import 'package:goias_app/features/match/data/dto/match_stat_dto.dart';
 import 'package:goias_app/features/match/data/dto/standing_dto.dart';
+import 'package:goias_app/features/match/data/dto/standing_group_dto.dart';
 
 /// Só sabe conversar com o nosso backend interno (`/api/football/*`) —
 /// nunca com campeonato-brasileiro-api ou TheSportsDB diretamente. As rotas
@@ -19,21 +20,53 @@ class FootballRemoteDataSource {
   final Dio _dio;
   final ClubConfig _clubConfig;
 
-  Future<({CompetitionDto competition, List<StandingDto> standings})>
-  getStandings() async {
+  /// [competitionId] `null` (ou omitido) pega a competição principal do
+  /// clube ativo — comportamento de sempre. Um id de competição secundária
+  /// (ver [getCompetitions]) devolve `groups` em vez de `standings` quando
+  /// o formato dela é `GROUP_STAGE`; exatamente um dos dois vem populado,
+  /// nunca os dois — quem decide qual olhar é `competition.format`.
+  Future<
+    ({
+      CompetitionDto competition,
+      List<StandingDto> standings,
+      List<StandingGroupDto> groups,
+    })
+  >
+  getStandings({String? competitionId}) async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/football/standings',
-      queryParameters: {'club': _clubConfig.identity.code},
+      queryParameters: {
+        'club': _clubConfig.identity.code,
+        if (competitionId != null) 'competition': competitionId,
+      },
     );
     final data = response.data!;
     return (
       competition: CompetitionDto.fromJson(
         data['competition'] as Map<String, dynamic>,
       ),
-      standings: (data['standings'] as List)
+      standings: ((data['standings'] as List?) ?? const [])
           .map((s) => StandingDto.fromJson(s as Map<String, dynamic>))
           .toList(),
+      groups: ((data['groups'] as List?) ?? const [])
+          .map((g) => StandingGroupDto.fromJson(g as Map<String, dynamic>))
+          .toList(),
     );
+  }
+
+  /// Competições que o clube ativo disputa e pode escolher no seletor de
+  /// Classificação — sempre inclui a principal (`isPrimary: true`), mais
+  /// qualquer secundária real configurada no Worker (ver
+  /// `SECONDARY_COMPETITIONS`). Nunca fixo/hardcoded no cliente.
+  Future<List<CompetitionRefDto>> getCompetitions() async {
+    final response = await _dio.get<Map<String, dynamic>>(
+      '/api/football/competitions',
+      queryParameters: {'club': _clubConfig.identity.code},
+    );
+    final data = response.data!;
+    return (data['competitions'] as List)
+        .map((c) => CompetitionRefDto.fromJson(c as Map<String, dynamic>))
+        .toList();
   }
 
   Future<

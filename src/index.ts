@@ -1,6 +1,7 @@
 import type { SocialEnv } from './social/config';
 import { handleStandings } from './football/standings';
 import { handleCurrentRound } from './football/currentRound';
+import { handleCompetitions } from './football/competitions';
 import { handleTeam } from './football/team';
 import { handleTeamSeason } from './football/teamSeason';
 import { handleFixtureDetails } from './football/fixtureDetails';
@@ -56,6 +57,10 @@ export default {
 
     if (pathname === '/api/football/current-round') {
       return handleCurrentRound(request, env);
+    }
+
+    if (pathname === '/api/football/competitions') {
+      return handleCompetitions(request, env);
     }
 
     // `/team/goias`/`/team/goias/season` continuam funcionando pro app já
