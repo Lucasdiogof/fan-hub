@@ -43,10 +43,11 @@ void main() {
       expect(syntheticClubBConfig.assets.squadPhotos, isEmpty);
     });
 
-    test('Bragantino: 46 fotos reais pro Quem Vestiu o Manto (2026-09-08), '
-        'em `guessPlayerPhotos` — nunca em `squadPhotos` (isso quebraria o '
-        'Elenco, que só sabe tratar asset local)', () {
-      expect(bragantinoClubConfig.assets.guessPlayerPhotos, hasLength(46));
+    test('Bragantino: 50 fotos reais pro Quem Vestiu o Manto (2026-09-10, '
+        'completando as 40 históricas), em `guessPlayerPhotos` — nunca em '
+        '`squadPhotos` (isso quebraria o Elenco, que só sabe tratar asset '
+        'local)', () {
+      expect(bragantinoClubConfig.assets.guessPlayerPhotos, hasLength(50));
       final remote = bragantinoClubConfig.assets.guessPlayerPhotos.values.where(
         (v) => v.startsWith('https://img.redbullbragantino.com/'),
       );
@@ -58,7 +59,9 @@ void main() {
       // nunca um asset local separado que divergiria da foto certa dele
       // na aba Elenco).
       expect(remote, hasLength(11));
-      expect(local, hasLength(35));
+      // 39 = 35 históricas de antes + cesar_haydar/ligger/edimar/
+      // gonzalo_fornari (2026-09-10, fechando as 40 históricas pedidas).
+      expect(local, hasLength(39));
       expect(syntheticClubBConfig.assets.guessPlayerPhotos, isEmpty);
     });
 

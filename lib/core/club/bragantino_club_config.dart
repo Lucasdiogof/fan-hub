@@ -159,13 +159,13 @@ const _storeBannerReal = 'lib/assets/store_banner_blue.png';
 /// Fotos pro Quem Vestiu o Manto — as 10 do elenco atual são as MESMAS
 /// URLs do CDN oficial (`img.redbullbragantino.com`) já usadas em
 /// `bragantino_squad_members.sql`, chaveadas pelo mesmo `id` de
-/// `squad_members`; as 36 históricas (entregues em 2026-09-08, de 40
-/// pedidas — faltam `cesar_haydar`/`ligger`/`edimar`/`gonzalo_fornari`)
-/// são assets locais em `lib/assets/games/guess_player/bragantino/`,
-/// chaveadas pelo slug do nome do jogador (mesma convenção de
-/// `goiasGuessPlayerPhotos`, nunca uma chave nova/paralela). Sem entrada
-/// aqui, `GuessPlayerRepository` resolve `imageUrl` como `null`, nunca um
-/// placeholder genérico.
+/// `squad_members`; as 40 históricas (as 4 últimas — `cesar_haydar`/
+/// `ligger`/`edimar`/`gonzalo_fornari` — entregues em 2026-09-10, completando
+/// as 36 de 2026-09-08) são assets locais em
+/// `lib/assets/games/guess_player/bragantino/`, chaveadas pelo slug do nome
+/// do jogador (mesma convenção de `goiasGuessPlayerPhotos`, nunca uma chave
+/// nova/paralela). Sem entrada aqui, `GuessPlayerRepository` resolve
+/// `imageUrl` como `null`, nunca um placeholder genérico.
 const _bragantinoGuessPlayerPhotos = {
   'tiago-volpi':
       'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/jedmn2u3wlf6t5ypatw4/tiago-volpi',
@@ -187,12 +187,13 @@ const _bragantinoGuessPlayerPhotos = {
       'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/zqtva3yctr01nfzobltl/henry-mosquera',
   'vinicinho-pereira':
       'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/okbny04aehkxfeibt2sd/vinicius-pereira',
-  // Históricas (36 de 40, entregues 2026-09-08) — assets locais.
+  // Históricas (40 de 40 — assets locais).
   'aderlan': 'lib/assets/games/guess_player/bragantino/aderlan.png',
   'alerrandro': 'lib/assets/games/guess_player/bragantino/alerrandro.png',
   'artur': 'lib/assets/games/guess_player/bragantino/artur.png',
   'bruninho': 'lib/assets/games/guess_player/bragantino/bruninho.png',
   'bruno_tubarao': 'lib/assets/games/guess_player/bragantino/bruno_tubarao.png',
+  'cesar_haydar': 'lib/assets/games/guess_player/bragantino/cesar_haydar.png',
   'chrigor': 'lib/assets/games/guess_player/bragantino/chrigor.png',
   'claudinho': 'lib/assets/games/guess_player/bragantino/claudinho.png',
   // Cleiton segue no elenco atual — usa a mesma URL real do CDN oficial
@@ -201,11 +202,14 @@ const _bragantinoGuessPlayerPhotos = {
       'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/13/gliozjfvi1mbxq88fibm/goleiro-cleiton',
   'emiliano_martinez':
       'lib/assets/games/guess_player/bragantino/emiliano_martinez.png',
+  'edimar': 'lib/assets/games/guess_player/bragantino/edimar.png',
   'eric_ramires': 'lib/assets/games/guess_player/bragantino/eric_ramires.png',
   'fabricio_bruno':
       'lib/assets/games/guess_player/bragantino/fabricio_bruno.png',
   'gabriel_novaes':
       'lib/assets/games/guess_player/bragantino/gabriel_novaes.png',
+  'gonzalo_fornari':
+      'lib/assets/games/guess_player/bragantino/gonzalo_fornari.png',
   'guilherme_lopes':
       'lib/assets/games/guess_player/bragantino/guilherme_lopes.png',
   'helinho': 'lib/assets/games/guess_player/bragantino/helinho.png',
@@ -215,6 +219,7 @@ const _bragantinoGuessPlayerPhotos = {
   'leandrinho': 'lib/assets/games/guess_player/bragantino/leandrinho.png',
   'leo_ortiz': 'lib/assets/games/guess_player/bragantino/leo_ortiz.png',
   'leo_realpe': 'lib/assets/games/guess_player/bragantino/leo_realpe.png',
+  'ligger': 'lib/assets/games/guess_player/bragantino/ligger.png',
   'luan_candido': 'lib/assets/games/guess_player/bragantino/luan_candido.png',
   'lucas_evangelista':
       'lib/assets/games/guess_player/bragantino/lucas_evangelista.png',
