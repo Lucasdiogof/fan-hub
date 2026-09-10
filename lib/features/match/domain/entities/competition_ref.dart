@@ -1,31 +1,31 @@
 import 'package:equatable/equatable.dart';
 
-/// Só os formatos com dado real confirmado (auditoria multi-competição
-/// 2026-09-09) — nunca um enum "genérico" pra formato sem uma fonte real
-/// por trás. Mata-mata/híbrido ficam de fora de propósito: a única
-/// competição com fase eliminatória hoje (CONMEBOL Sudamericana do
-/// Bragantino) não tem fonte de confronto/chaveamento disponível, então a
-/// tela mostra só a fase de grupos, nunca inventa bracket.
-enum CompetitionFormat { leagueTable, groupStage }
+/// KNOCKOUT: competição só de mata-mata (Copa do Brasil) — sem renderer
+/// próprio ainda no app (Fase C da rearquitetura multi-competição); a tela
+/// mostra o estado de "ainda não disponível" (`dataGap`), nunca inventa
+/// bracket.
+enum CompetitionFormat { leagueTable, groupStage, knockout }
 
-/// Uma competição que o clube ativo disputa e pode ser escolhida no
-/// seletor de Classificação — sempre a principal (`isPrimary: true`) mais
-/// qualquer secundária configurada no Worker (`SECONDARY_COMPETITIONS`).
-/// Nunca inventado no cliente: a lista inteira vem de `/api/football/
-/// competitions`.
+/// Uma competição do catálogo GLOBAL (ver `/api/football/competitions`) —
+/// NUNCA só as que o clube ativo disputa (spec multi-competição, item 3:
+/// "competição do clube ≠ únicas opções disponíveis"). [isClubParticipating]
+/// é a única coisa específica do clube ativo: decide destaque/linha
+/// marcada, nunca se a competição pode ser consultada.
 class CompetitionRef extends Equatable {
   const CompetitionRef({
     required this.id,
     required this.name,
     required this.format,
-    required this.isPrimary,
+    this.region = '',
+    this.isClubParticipating = false,
   });
 
   final String id;
   final String name;
   final CompetitionFormat format;
-  final bool isPrimary;
+  final String region;
+  final bool isClubParticipating;
 
   @override
-  List<Object?> get props => [id, name, format, isPrimary];
+  List<Object?> get props => [id, name, format, region, isClubParticipating];
 }

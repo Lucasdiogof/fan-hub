@@ -54,10 +54,9 @@ class FootballRemoteDataSource {
     );
   }
 
-  /// Competições que o clube ativo disputa e pode escolher no seletor de
-  /// Classificação — sempre inclui a principal (`isPrimary: true`), mais
-  /// qualquer secundária real configurada no Worker (ver
-  /// `SECONDARY_COMPETITIONS`). Nunca fixo/hardcoded no cliente.
+  /// Catálogo GLOBAL de competições (ver `competition_catalog.ts` no
+  /// Worker) — NUNCA só as que o clube ativo disputa. Cada item já vem com
+  /// `isClubParticipating` calculado pro clube deste deploy.
   Future<List<CompetitionRefDto>> getCompetitions() async {
     final response = await _dio.get<Map<String, dynamic>>(
       '/api/football/competitions',

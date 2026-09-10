@@ -81,7 +81,6 @@ class _FakeFootballRepository implements FootballRepository {
       id: 'primary',
       name: '',
       format: CompetitionFormat.leagueTable,
-      isPrimary: true,
     ),
     table: [],
     groups: [],

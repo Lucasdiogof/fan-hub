@@ -275,6 +275,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get standingsUnavailable => 'Standings unavailable right now.';
 
   @override
+  String get otherCompetitionsCta => 'See other competitions';
+
+  @override
+  String get otherCompetitionsTitle => 'Competitions';
+
+  @override
+  String get otherCompetitionsSearchHint => 'Search competitions';
+
+  @override
+  String get otherCompetitionsYourCompetitions => 'YOUR COMPETITIONS';
+
+  @override
+  String get otherCompetitionsSearchEmpty => 'No competitions found.';
+
+  @override
   String get matchStatusScheduled => 'Scheduled';
 
   @override

@@ -43,11 +43,16 @@ class FootballRepositoryImpl implements FootballRepository {
       Standing markActive(Standing s) =>
           s.copyWith(isActiveClub: s.team.id == activeTeamId);
 
+      // `region`/`isClubParticipating` reais vêm do catálogo
+      // (`/api/football/competitions`), não desta resposta — o cubit
+      // completa isso casando pelo `id` com `state.competitions` já
+      // carregado (ver `GamesCubit.loadStandings`). Aqui ficam os
+      // defaults neutros, só pro caso raro do catálogo não estar
+      // disponível ainda.
       final competitionRef = CompetitionRef(
         id: competitionId ?? 'primary',
         name: result.competition.name,
         format: result.competition.format ?? CompetitionFormat.leagueTable,
-        isPrimary: competitionId == null || competitionId == 'primary',
       );
 
       final groups = result.groups.map((dto) {

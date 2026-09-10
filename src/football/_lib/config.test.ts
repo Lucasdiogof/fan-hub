@@ -14,39 +14,17 @@ function fakeEnv(overrides: Partial<Env> = {}): Env {
   };
 }
 
-describe('loadConfig — SECONDARY_COMPETITIONS (auditoria multi-competição 2026-09-09)', () => {
-  it('ausente -> lista vazia, nunca lança (a maioria dos clubes só tem a principal)', () => {
+describe('loadConfig', () => {
+  it('carrega os campos básicos do Env', () => {
     const config = loadConfig(fakeEnv());
-    expect(config.secondaryCompetitions).toEqual([]);
+    expect(config.clubCode).toBe('bragantino');
+    expect(config.teamOneFootballSlug).toBe('rb-bragantino-4734');
+    expect(config.primaryCompetitionSlug).toBe('brasileirao-betano-16');
+    expect(config.primaryCompetitionDisplayName).toBe('Brasileirão Série A');
   });
 
-  it('JSON malformado -> lista vazia, nunca derruba o Worker', () => {
-    const config = loadConfig(fakeEnv({ SECONDARY_COMPETITIONS: '{not valid json' }));
-    expect(config.secondaryCompetitions).toEqual([]);
-  });
-
-  it('entrada sem "format" válido é descartada, o resto da lista sobrevive', () => {
-    const config = loadConfig(
-      fakeEnv({
-        SECONDARY_COMPETITIONS: JSON.stringify([
-          { id: 'sudamericana', name: 'CONMEBOL Sudamericana', slug: 'conmebol-sudamericana-102', format: 'GROUP_STAGE' },
-          { id: 'quebrado', name: 'X', slug: 'x', format: 'BRACKET_INVENTADO' },
-        ]),
-      }),
-    );
-    expect(config.secondaryCompetitions).toEqual([
-      { id: 'sudamericana', name: 'CONMEBOL Sudamericana', slug: 'conmebol-sudamericana-102', format: 'GROUP_STAGE' },
-    ]);
-  });
-
-  it('confirmado real (Bragantino): CONMEBOL Sudamericana parseada certinho', () => {
-    const config = loadConfig(
-      fakeEnv({
-        SECONDARY_COMPETITIONS:
-          '[{"id":"sudamericana","name":"CONMEBOL Sudamericana","slug":"conmebol-sudamericana-102","format":"GROUP_STAGE"}]',
-      }),
-    );
-    expect(config.secondaryCompetitions).toHaveLength(1);
-    expect(config.secondaryCompetitions[0].slug).toBe('conmebol-sudamericana-102');
+  it('CACHE_VERSION ausente cai em "1"', () => {
+    const config = loadConfig(fakeEnv({ CACHE_VERSION: '' }));
+    expect(config.cacheVersion).toBe('1');
   });
 });

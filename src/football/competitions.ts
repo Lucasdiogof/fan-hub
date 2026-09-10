@@ -1,16 +1,16 @@
 import type { Env } from './_lib/config';
-import { loadConfig, requirePrimaryCompetitionDisplayName } from './_lib/config';
+import { loadConfig } from './_lib/config';
 import { isRequestedClubServed } from './_lib/club_server_config';
+import { GLOBAL_COMPETITION_CATALOG, competitionIdsForClub } from './_lib/competition_catalog';
 import { jsonResponse } from './_lib/respond';
 import { withErrorHandling } from './_lib/handleErrors';
 
 /**
- * Lista as competições que o clube ativo pode escolher pra ver
- * classificação — sempre a principal (`id: "primary"`) primeiro, mais
- * qualquer uma configurada em `SECONDARY_COMPETITIONS` (ver `config.ts`).
- * Nunca inventa competição: só o que está configurado explicitamente no
- * deploy, confirmado ter dado real no OneFootball antes de entrar aqui
- * (auditoria 2026-09-09).
+ * Lista o catálogo GLOBAL de competições (ver `competition_catalog.ts`) —
+ * NUNCA só as que o clube ativo disputa. `isClubParticipating` é a única
+ * coisa que muda por clube; a existência/formato/dado de cada competição é
+ * a mesma pra qualquer deploy (spec multi-competição, itens 3/16/21: "não
+ * exigir participação para consultar").
  */
 export const onRequestGet = handleCompetitions;
 
@@ -20,18 +20,19 @@ export async function handleCompetitions(request: Request, env: Env): Promise<Re
       return jsonResponse({ error: 'unknown club code' }, { status: 404 });
     }
     const config = loadConfig(env);
-    const primaryName = requirePrimaryCompetitionDisplayName(config);
+    // `isRequestedClubServed` já garante que `?club=` (quando presente) bate
+    // com `env.CLUB_CODE` deste deploy — o clube realmente servido é sempre
+    // `config.clubCode`, nunca o que veio (ou não) na query string.
+    const participating = new Set(competitionIdsForClub(config.clubCode ?? ''));
 
     return jsonResponse({
-      competitions: [
-        { id: 'primary', name: primaryName, format: 'LEAGUE_TABLE', isPrimary: true },
-        ...config.secondaryCompetitions.map((c) => ({
-          id: c.id,
-          name: c.name,
-          format: c.format,
-          isPrimary: false,
-        })),
-      ],
+      competitions: GLOBAL_COMPETITION_CATALOG.map((c) => ({
+        id: c.id,
+        name: c.name,
+        region: c.region,
+        format: c.format,
+        isClubParticipating: participating.has(c.id),
+      })),
     });
   });
 }

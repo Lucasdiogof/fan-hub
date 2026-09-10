@@ -41,17 +41,15 @@ TEAM_ONEFOOTBALL_SLUG = "rb-bragantino-4734"
 PRIMARY_COMPETITION_SLUG = "brasileirao-betano-16"
 PRIMARY_COMPETITION_DISPLAY_NAME = "Brasileirão Série A"
 
-# Auditoria multi-competição (2026-09-09): RB Bragantino disputa a
-# CONMEBOL Sudamericana AO MESMO TEMPO que o Brasileirão (fase de grupos
-# encerrada em 1º-09 — ficou em 2º no Grupo H, ver
-# docs/bragantino_data — hoje na fase eliminatória contra o Atlético-MG).
-# Slug confirmado navegando onefootball.com/pt-br/competicao/
-# conmebol-sudamericana-102/tabela — a página só tem a classificação dos
-# grupos (`GROUP_STAGE`, 8 grupos reais confirmados na resposta JSON), sem
-# nenhum dado de confronto/chaveamento do mata-mata atual disponível nesta
-# fonte — por isso o app mostra só a fase de grupos aqui, nunca inventa
-# bracket. JSON array, mesmo formato de `SecondaryCompetitionConfig`.
-SECONDARY_COMPETITIONS = "[{\"id\":\"sudamericana\",\"name\":\"CONMEBOL Sudamericana\",\"slug\":\"conmebol-sudamericana-102\",\"format\":\"GROUP_STAGE\"}]"
+# Quais outras competições o Bragantino disputa (CONMEBOL Sudamericana, ao
+# mesmo tempo que o Brasileirão) NÃO mora mais aqui — rearquitetura
+# multi-competição 2026-09-10 moveu isso pro catálogo GLOBAL
+# (`src/football/_lib/competition_catalog.ts`, `CLUB_PARTICIPATION`),
+# compartilhado por todos os deploys em vez de repetido por wrangler.toml.
+# Correção sobre o comentário antigo: a Sudamericana TEM mata-mata
+# derivável via `/jogos` (rodadas rotuladas "Quartas de final - Jogo de
+# ida/volta" etc., placares reais) — não era um DATA_GAP, só faltava
+# checar a aba certa; ver `competition_catalog.ts` pro estado atual.
 
 CACHE_VERSION = "1"
 

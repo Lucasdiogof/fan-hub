@@ -60,6 +60,8 @@ import 'package:goias_app/features/crowd_lineup/presentation/cubit/crowd_lineup_
 import 'package:goias_app/features/crowd_lineup/presentation/pages/crowd_lineup_page.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/cubit/match_details_cubit.dart';
+import 'package:goias_app/features/match/presentation/pages/competition_catalog_page.dart';
+import 'package:goias_app/features/match/presentation/pages/competition_details_page.dart';
 import 'package:goias_app/features/match/presentation/pages/match_details_page.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/presentation/pages/find_zip_code_page.dart';
@@ -272,6 +274,21 @@ GoRouter createAppRouter(
               MatchDetailsPage(
                 fixtureId: state.pathParameters['fixtureId']!,
                 cubit: state.extra as MatchDetailsCubit?,
+              ),
+            ),
+          ),
+          GoRoute(
+            path: '/games/competitions',
+            pageBuilder: (context, state) =>
+                appPage(state, const CompetitionCatalogPage()),
+          ),
+          GoRoute(
+            path: '/games/competitions/:id',
+            pageBuilder: (context, state) => appPage(
+              state,
+              CompetitionDetailsPage(
+                competitionId: state.pathParameters['id']!,
+                competitionName: state.extra as String?,
               ),
             ),
           ),

@@ -276,6 +276,21 @@ class AppLocalizationsEs extends AppLocalizations {
       'Clasificación no disponible en este momento.';
 
   @override
+  String get otherCompetitionsCta => 'Ver otros campeonatos';
+
+  @override
+  String get otherCompetitionsTitle => 'Campeonatos';
+
+  @override
+  String get otherCompetitionsSearchHint => 'Buscar campeonato';
+
+  @override
+  String get otherCompetitionsYourCompetitions => 'TUS COMPETICIONES';
+
+  @override
+  String get otherCompetitionsSearchEmpty => 'No se encontraron campeonatos.';
+
+  @override
   String get matchStatusScheduled => 'Programado';
 
   @override

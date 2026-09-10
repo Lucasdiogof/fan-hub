@@ -4,6 +4,7 @@ import {
   requirePrimaryCompetitionDisplayName,
   requirePrimaryCompetitionSlug,
 } from './_lib/config';
+import { findCatalogCompetition } from './_lib/competition_catalog';
 import { cacheFirst } from './_lib/cache';
 import { withErrorHandling } from './_lib/handleErrors';
 import { isRequestedClubServed } from './_lib/club_server_config';
@@ -40,24 +41,39 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
     const requestedCompetitionId = new URL(request.url).searchParams.get('competition');
 
     // `?competition=` ausente ou igual a "primary" -> comportamento de
-    // sempre (nunca quebra cliente antigo que não manda o parâmetro).
-    // Qualquer outro valor precisa bater com uma entrada de
-    // `SECONDARY_COMPETITIONS` deste deploy — nunca aceita um slug cru do
-    // cliente (só os slugs confirmados na config do próprio Worker).
-    const secondary =
+    // sempre: a competição principal DESTE clube (env do próprio deploy).
+    // Qualquer outro valor resolve contra o catálogo GLOBAL (ver
+    // `competition_catalog.ts`) — independente do clube. `club` continua
+    // sendo só o gate de segurança/flavor (`isRequestedClubServed` acima),
+    // NUNCA restringe quais `competition=` são aceitos: consultar uma
+    // competição que o clube não disputa é uma operação válida (spec
+    // multi-competição, item 21), não é cross-club fallback.
+    const catalogEntry =
       requestedCompetitionId && requestedCompetitionId !== 'primary'
-        ? config.secondaryCompetitions.find((c) => c.id === requestedCompetitionId)
+        ? findCatalogCompetition(requestedCompetitionId)
         : undefined;
-    if (requestedCompetitionId && requestedCompetitionId !== 'primary' && !secondary) {
+    if (requestedCompetitionId && requestedCompetitionId !== 'primary' && !catalogEntry) {
       return jsonResponse({ error: 'unknown competition id' }, { status: 404 });
     }
 
-    const competitionSlug = secondary?.slug ?? requirePrimaryCompetitionSlug(config);
-    const competitionName = secondary?.name ?? requirePrimaryCompetitionDisplayName(config);
-    const format = secondary?.format ?? 'LEAGUE_TABLE';
-    const cacheKey = `football.standings.${secondary?.id ?? 'primary'}`;
+    const competitionId = catalogEntry?.id ?? 'primary';
+    const competitionSlug = catalogEntry?.slug ?? requirePrimaryCompetitionSlug(config);
+    const competitionName = catalogEntry?.name ?? requirePrimaryCompetitionDisplayName(config);
+    const format = catalogEntry?.format ?? 'LEAGUE_TABLE';
+    const cacheKey = `football.standings.${competitionId}`;
 
     return cacheFirst(request, CACHE_TTL_SECONDS, cacheKey, config.cacheVersion, async () => {
+      if (format === 'KNOCKOUT') {
+        // Sem renderer ainda (Fase C da rearquitetura multi-competição) —
+        // DATA_GAP explícito, nunca um erro de rede nem uma tabela vazia
+        // sem explicação (spec multi-competição, item 29).
+        return {
+          competition: { name: competitionName, season: null, format },
+          standings: [],
+          groups: [],
+          dataGap: true,
+        };
+      }
       if (format === 'GROUP_STAGE') {
         const groups = await fetchCompetitionGroupStandings(competitionSlug);
         return {
