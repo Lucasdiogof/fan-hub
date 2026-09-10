@@ -59,7 +59,7 @@ class StoreEntryCard extends StatelessWidget {
               // `sl<ClubConfig>().assets.storeBanner` — era
               // `AppAssets.storeBanner` direto, sempre o banner do Goiás
               // (achado real 2026-09-09). Bragantino tem a própria arte
-              // desde 2026-09-10 (`store_banner_red.png`, foto real da
+              // desde 2026-09-10 (`store_banner_blue.png`, foto real da
               // caixa de camisa do clube, nunca reaproveitando o banner
               // "GOIAS STORE" cravado nos pixels do Goiás).
               Positioned.fill(

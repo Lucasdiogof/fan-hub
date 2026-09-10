@@ -147,8 +147,14 @@ const _arenaStadiumReal = 'lib/assets/branding/bragantino/arena_stadium.png';
 
 // Banner do card da Loja na Home — mesma ideia do `AppAssets.storeBanner`
 // do Goiás (caixa de camisa aberta), foto própria do Bragantino, já no
-// mesmo tamanho (508x491) pra não distorcer no `BoxFit.fitWidth`.
-const _storeBannerReal = 'lib/assets/store_banner_red.png';
+// mesmo tamanho (508x491) pra não distorcer no `BoxFit.fitWidth`. Versão
+// azul (2026-09-10) — sem alpha real no arquivo original (era um render
+// com vinheta escura, não um recorte de estúdio como o green), então a
+// transparência das bordas foi sintetizada aqui com um degradê radial
+// suave; nunca corta o conteúdo, só esmaece pra fora — pensado pra
+// compor sobre `brandDeep` (o fundo real do card), onde a vinheta
+// original já é quase da mesma cor.
+const _storeBannerReal = 'lib/assets/store_banner_blue.png';
 
 /// Fotos pro Quem Vestiu o Manto — as 10 do elenco atual são as MESMAS
 /// URLs do CDN oficial (`img.redbullbragantino.com`) já usadas em
