@@ -5,6 +5,7 @@ import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/data/selected_competition_storage.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
+import 'package:goias_app/features/match/domain/entities/competition_season.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
@@ -85,6 +86,11 @@ class _FakeFootballRepository implements FootballRepository {
       groups: const [],
     ));
   }
+
+  @override
+  Future<Result<({CompetitionRef competition, CompetitionSeason season})>>
+  getCompetitionSeason({String? competitionId}) =>
+      throw UnimplementedError('não usado pelos testes de GamesCubit');
 
   @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
@@ -211,22 +217,25 @@ void main() {
     addTearDown(cubit.close);
   });
 
-  test('refresh() preserva a competição selecionada, nunca volta pra principal', () async {
-    SharedPreferences.setMockInitialValues({});
-    repository.competitions = [_primary, _secondary];
-    final cubit = GamesCubit(
-      repository,
-      SelectedCompetitionStorage(goiasClubConfig),
-    );
-    await Future<void>.delayed(Duration.zero);
-    await Future<void>.delayed(Duration.zero);
-    await cubit.selectCompetition('sudamericana');
+  test(
+    'refresh() preserva a competição selecionada, nunca volta pra principal',
+    () async {
+      SharedPreferences.setMockInitialValues({});
+      repository.competitions = [_primary, _secondary];
+      final cubit = GamesCubit(
+        repository,
+        SelectedCompetitionStorage(goiasClubConfig),
+      );
+      await Future<void>.delayed(Duration.zero);
+      await Future<void>.delayed(Duration.zero);
+      await cubit.selectCompetition('sudamericana');
 
-    await cubit.refresh();
+      await cubit.refresh();
 
-    expect(cubit.state.selectedCompetition, _secondary);
-    addTearDown(cubit.close);
-  });
+      expect(cubit.state.selectedCompetition, _secondary);
+      addTearDown(cubit.close);
+    },
+  );
 
   test(
     'sem preferência salva: abre na competição do PRÓXIMO JOGO, casada por nome (spec item 1)',
@@ -349,6 +358,11 @@ class _FailingCompetitionsRepository implements FootballRepository {
       _delegate.getStandings(competitionId: competitionId);
 
   @override
+  Future<Result<({CompetitionRef competition, CompetitionSeason season})>>
+  getCompetitionSeason({String? competitionId}) =>
+      _delegate.getCompetitionSeason(competitionId: competitionId);
+
+  @override
   Future<Result<({Match? nextMatch, List<Match> recentResults})>>
   getActiveClubSnapshot() => _delegate.getActiveClubSnapshot();
 
@@ -363,7 +377,8 @@ class _FailingCompetitionsRepository implements FootballRepository {
       })
     >
   >
-  getCurrentRound({int offset = 0}) => _delegate.getCurrentRound(offset: offset);
+  getCurrentRound({int offset = 0}) =>
+      _delegate.getCurrentRound(offset: offset);
 
   @override
   Future<Result<List<Match>>> getSeasonFixtures() =>

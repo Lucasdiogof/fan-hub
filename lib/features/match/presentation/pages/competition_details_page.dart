@@ -8,7 +8,8 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/competition_details_cubit.dart';
 import 'package:goias_app/features/match/presentation/cubit/competition_details_state.dart';
-import 'package:goias_app/features/match/presentation/widgets/standings_content.dart';
+import 'package:goias_app/features/match/presentation/widgets/competition_stage_renderer.dart';
+import 'package:goias_app/features/match/presentation/widgets/competition_stage_selector.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
@@ -78,27 +79,43 @@ class _CompetitionDetailsView extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.xxxl),
                   Expanded(
-                    child: BlocBuilder<CompetitionDetailsCubit, CompetitionDetailsState>(
-                      builder: (context, state) {
-                        return RefreshableStateView(
-                          status: state.status,
-                          onRefresh: () =>
-                              context.read<CompetitionDetailsCubit>().load(),
-                          errorMessage: state.errorMessage,
-                          emptyIcon: Icons.leaderboard_outlined,
-                          emptyTitle: context.l10n.standingsUnavailable,
-                          successBuilder: (context) => ListView(
-                            padding: const EdgeInsets.only(bottom: AppSpacing.xxxl),
-                            children: [
-                              StandingsContent(
-                                standings: state.standings,
-                                standingGroups: state.standingGroups,
+                    child:
+                        BlocBuilder<
+                          CompetitionDetailsCubit,
+                          CompetitionDetailsState
+                        >(
+                          builder: (context, state) {
+                            return RefreshableStateView(
+                              status: state.status,
+                              onRefresh: () => context
+                                  .read<CompetitionDetailsCubit>()
+                                  .load(),
+                              errorMessage: state.errorMessage,
+                              emptyIcon: Icons.leaderboard_outlined,
+                              emptyTitle: context.l10n.standingsUnavailable,
+                              successBuilder: (context) => ListView(
+                                padding: const EdgeInsets.only(
+                                  bottom: AppSpacing.xxxl,
+                                ),
+                                children: [
+                                  CompetitionStageSelector(
+                                    stages: state.stages,
+                                    selectedStageId: state.selectedStageId,
+                                    onSelected: (id) => context
+                                        .read<CompetitionDetailsCubit>()
+                                        .selectStage(id),
+                                  ),
+                                  if (state.stages.length > 1)
+                                    const SizedBox(height: AppSpacing.lg),
+                                  CompetitionStageRenderer(
+                                    stages: state.stages,
+                                    selectedStageId: state.selectedStageId,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                            );
+                          },
+                        ),
                   ),
                 ],
               ),

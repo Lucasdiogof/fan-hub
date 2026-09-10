@@ -122,6 +122,15 @@
   "otherCompetitionsSearchHint": "Buscar campeonato",
   "otherCompetitionsYourCompetitions": "SUAS COMPETIÇÕES",
   "otherCompetitionsSearchEmpty": "Nenhum campeonato encontrado.",
+  "knockoutFirstLeg": "Ida",
+  "knockoutSecondLeg": "Volta",
+  "knockoutPenalties": "Pênaltis: {home}-{away}",
+  "@knockoutPenalties": {
+    "placeholders": {
+      "home": { "type": "int" },
+      "away": { "type": "int" }
+    }
+  },
   "matchStatusScheduled": "Agendada",
   "matchStatusLive": "Ao vivo",
   "matchStatusHalfTime": "Intervalo",

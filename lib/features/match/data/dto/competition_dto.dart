@@ -22,7 +22,14 @@ class CompetitionDto {
   Competition toEntity() => Competition(name: name, season: season);
 }
 
-CompetitionFormat _formatFromJson(String? raw) => switch (raw) {
+CompetitionFormat _formatFromJson(String? raw) =>
+    competitionFormatFromJson(raw);
+
+/// Compartilhado com `CompetitionStageDto` — mesma string do Worker
+/// (`LEAGUE_TABLE`/`GROUP_STAGE`/`KNOCKOUT`) marca tanto o formato legado da
+/// competição quanto o `StageType` de uma fase (spec multi-competição item 6:
+/// os dois nascem do mesmo vocabulário, só a autoridade muda de nível).
+CompetitionFormat competitionFormatFromJson(String? raw) => switch (raw) {
   'GROUP_STAGE' => CompetitionFormat.groupStage,
   'KNOCKOUT' => CompetitionFormat.knockout,
   _ => CompetitionFormat.leagueTable,

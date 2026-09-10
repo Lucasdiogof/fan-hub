@@ -6,10 +6,14 @@ import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/match/data/datasources/football_remote_data_source.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
+import 'package:goias_app/features/match/domain/entities/competition_season.dart';
+import 'package:goias_app/features/match/domain/entities/competition_stage.dart';
 import 'package:goias_app/features/match/domain/entities/lineup.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/match_event.dart';
 import 'package:goias_app/features/match/domain/entities/match_stat.dart';
+import 'package:goias_app/features/match/domain/entities/stage_status.dart';
+import 'package:goias_app/features/match/domain/entities/stage_type.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
 import 'package:goias_app/features/match/domain/entities/standing_group.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
@@ -72,8 +76,93 @@ class FootballRepositoryImpl implements FootballRepository {
 
       return Success((
         competition: competitionRef,
-        table: result.standings.map((dto) => dto.toEntity()).map(markActive).toList(),
+        table: result.standings
+            .map((dto) => dto.toEntity())
+            .map(markActive)
+            .toList(),
         groups: groups,
+      ));
+    } on DioException catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return Error(_mapDioError(error));
+    } catch (error, stackTrace) {
+      unawaited(Sentry.captureException(error, stackTrace: stackTrace));
+      return const Error(UnexpectedFailure());
+    }
+  }
+
+  @override
+  Future<Result<({CompetitionRef competition, CompetitionSeason season})>>
+  getCompetitionSeason({String? competitionId}) async {
+    try {
+      final result = await _remote.getStandings(competitionId: competitionId);
+      final activeTeamId = _clubConfig.integrations.oneFootballTeamId;
+      Standing markActive(Standing s) =>
+          s.copyWith(isActiveClub: s.team.id == activeTeamId);
+
+      final competitionRef = CompetitionRef(
+        id: competitionId ?? 'primary',
+        name: result.competition.name,
+        format: result.competition.format ?? CompetitionFormat.leagueTable,
+      );
+
+      List<CompetitionStage> stages;
+      if (result.season != null) {
+        stages = result.season!.toEntity().stages.map((stage) {
+          final groups = stage.groups.map((group) {
+            return StandingGroup(
+              title: group.title,
+              standings: group.standings.map(markActive).toList(),
+            );
+          }).toList();
+          groups.sort((a, b) {
+            final aHasActive = a.standings.any((s) => s.isActiveClub) ? 0 : 1;
+            final bHasActive = b.standings.any((s) => s.isActiveClub) ? 0 : 1;
+            return aHasActive.compareTo(bHasActive);
+          });
+          return CompetitionStage(
+            id: stage.id,
+            name: stage.name,
+            order: stage.order,
+            type: stage.type,
+            status: stage.status,
+            isCurrent: stage.isCurrent,
+            standings: stage.standings.map(markActive).toList(),
+            groups: groups,
+            rounds: stage.rounds,
+          );
+        }).toList();
+      } else {
+        // Fallback pra durante o rollout (cache velho sem `season`) — monta
+        // UMA fase só a partir dos campos legados, nunca quebra a tela.
+        stages = [
+          CompetitionStage(
+            id: 'main',
+            name: competitionRef.name,
+            order: 0,
+            type: switch (competitionRef.format) {
+              CompetitionFormat.groupStage => StageType.groupStage,
+              CompetitionFormat.knockout => StageType.knockout,
+              CompetitionFormat.leagueTable => StageType.leagueTable,
+            },
+            status: StageStatus.active,
+            isCurrent: true,
+            standings: result.standings
+                .map((dto) => dto.toEntity())
+                .map(markActive)
+                .toList(),
+            groups: result.groups.map((dto) => dto.toEntity()).toList(),
+          ),
+        ];
+      }
+
+      return Success((
+        competition: competitionRef,
+        season: CompetitionSeason(
+          id: competitionRef.id,
+          label: competitionRef.name,
+          stages: stages,
+        ),
       ));
     } on DioException catch (error, stackTrace) {
       unawaited(Sentry.captureException(error, stackTrace: stackTrace));
