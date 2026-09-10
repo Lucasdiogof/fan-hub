@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-10",
+  "dataset": "Passaporte Massa Bruta — materialization audit",
+  "status": {
+    "research_2000_2022": "COMPLETE",
+    "materialization_2000_2022": "COMPLETE",
+    "supabase_calendar_2000_2026": "COMPLETE"
+  },
+  "totals": {
+    "historical_2000_2022": 1189,
+    "calendar_2000_2026": 1437,
+    "unique_ids": 1437,
+    "unique_source_match_ids": 1437,
+    "missing_source_url": 0,
+    "missing_date": 0,
+    "missing_opponent": 0,
+    "missing_competition": 0
+  },
+  "modern": {
+    "2023": {"rows": 62, "finished": 62, "venue_match_specific": 62},
+    "2024": {"rows": 70, "finished": 70, "venue_match_specific": 70},
+    "2025": {"rows": 57, "finished": 57, "venue_match_specific": 57},
+    "2026": {"rows": 59, "finished": 46, "postponed": 1, "scheduled": 12, "venue_match_specific": 59}
+  },
+  "historical_venue_policy": {
+    "rows": 1189,
+    "stadium_status": "UNKNOWN",
+    "reason": "No venue is inferred without match-specific evidence."
+  },
+  "known_intentional_exception": {
+    "id": "pb_ogol_11004630",
+    "season": 2006,
+    "date": "2006-08-25",
+    "fixture": "Bragantino x São José",
+    "score_display": "DA",
+    "numeric_score": null,
+    "outcome": "WIN",
+    "reason": "Decisão administrativa; numeric score intentionally not invented."
+  },
+  "integrity": {
+    "date_season_mismatch": 0,
+    "missing_competition_code": 0,
+    "missing_source_provider": 0,
+    "club_identity_side_mismatch": 0,
+    "score_projection_mismatch": 0,
+    "kickoff_without_time": 0,
+    "time_without_kickoff": 0
+  },
+  "valid_club_aliases": ["Bragantino", "Red Bull Bragantino", "RB Bragantino"],
+  "global_snapshot_md5": "48e1dd7c89e6b2ab889d1cd48e3beb86",
+  "years": [
+    {"season":2000,"rows":38,"snapshot_md5":"d9b6796660a2d746df82103c5a5dac86"},
+    {"season":2001,"rows":56,"snapshot_md5":"f7484e95c93a83582a8723c4b455f7ec"},
+    {"season":2002,"rows":41,"snapshot_md5":"0a902d77e6ab436ebaf35a5a1eb7a3d4"},
+    {"season":2003,"rows":26,"snapshot_md5":"828baab0756299ca73e74be70f3a15e6"},
+    {"season":2004,"rows":14,"snapshot_md5":"69c5a216bf7d5f99f3ab12d6926f9285"},
+    {"season":2005,"rows":36,"snapshot_md5":"346af553179812f90df9213cbea21115"},
+    {"season":2006,"rows":41,"snapshot_md5":"d7dbb5f2915bf6576a1f2c0ff4a766e7"},
+    {"season":2007,"rows":65,"snapshot_md5":"754240dbd100350c8c9f5e83f4c3d6b8"},
+    {"season":2008,"rows":61,"snapshot_md5":"93af039f90c87a841d69a36e2c74caa6"},
+    {"season":2009,"rows":57,"snapshot_md5":"fc41a336b0538a45d6f4b0d0235d38d4"},
+    {"season":2010,"rows":57,"snapshot_md5":"95f5dca779d8ac6b123328eb13747d49"},
+    {"season":2011,"rows":57,"snapshot_md5":"7649df357d879a59bcc2b04d4a0e407e"},
+    {"season":2012,"rows":61,"snapshot_md5":"d4e255e3c2cf673a3c77a50402698e4a"},
+    {"season":2013,"rows":59,"snapshot_md5":"b308579af3cc5b44ea5b9b6c064bfe17"},
+    {"season":2014,"rows":62,"snapshot_md5":"d904efa8cfed785bf72e3937e81e2568"},
+    {"season":2015,"rows":56,"snapshot_md5":"a888dad8533eb39c3f984808ea44ae03"},
+    {"season":2016,"rows":84,"snapshot_md5":"188fee9465d522961e57f482ed30fcfd"},
+    {"season":2017,"rows":42,"snapshot_md5":"f0095fd5456f68def07e5fc351d34691"},
+    {"season":2018,"rows":40,"snapshot_md5":"2fb9543119261bc795a3175314341359"},
+    {"season":2019,"rows":52,"snapshot_md5":"a59c7f2cb511f892e02005fa8b7b2cc2"},
+    {"season":2020,"rows":44,"snapshot_md5":"d23a2403dc9bde1cacec4c0e3cf727c6"},
+    {"season":2021,"rows":80,"snapshot_md5":"dd11e5e8f31d1bf3d5c6ee9027d24664"},
+    {"season":2022,"rows":60,"snapshot_md5":"4cc68868bde0064974786276ecd09fad"},
+    {"season":2023,"rows":62,"snapshot_md5":"9ba526f97e6945ee2c4dd4af742afeb8"},
+    {"season":2024,"rows":70,"snapshot_md5":"f707bd36074dbfcc55124698835d97b6"},
+    {"season":2025,"rows":57,"snapshot_md5":"56687502a24e372a17eb3247e3f8b4ef"},
+    {"season":2026,"rows":59,"snapshot_md5":"0c9da54c1bce19d95d24bd751a889d9e"}
+  ]
+}
