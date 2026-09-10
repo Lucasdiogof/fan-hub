@@ -7,6 +7,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/widgets/match_countdown.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -84,8 +85,9 @@ class NextMatchHero extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
+                  // `toBrazilTime`, nunca `.toLocal()` (spec 2026-09-12).
                   match.kickoff != null
-                      ? '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString())} • ${timeLabel(match.kickoff!)} • ${match.stadium.toUpperCase()}'
+                      ? '${shortDateLabel(toBrazilTime(match.kickoff!), Localizations.localeOf(context).toString())} • ${timeLabel(toBrazilTime(match.kickoff!))} • ${match.stadium.toUpperCase()}'
                       : '${context.l10n.homeDateToBeConfirmed} • ${match.stadium.toUpperCase()}',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

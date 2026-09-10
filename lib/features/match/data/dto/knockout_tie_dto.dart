@@ -1,6 +1,7 @@
 import 'package:goias_app/features/match/data/dto/team_dto.dart';
 import 'package:goias_app/features/match/domain/entities/knockout_tie.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 
 class KnockoutLegDto {
   const KnockoutLegDto({
@@ -20,9 +21,11 @@ class KnockoutLegDto {
   factory KnockoutLegDto.fromJson(Map<String, dynamic> json) => KnockoutLegDto(
     legType: json['legType'] as String? ?? 'SINGLE',
     status: json['status'] as String? ?? 'unknown',
-    kickoff: json['kickoff'] != null
-        ? DateTime.tryParse(json['kickoff'] as String)
-        : null,
+    // As pernas de mata-mata já vêm em UTC real com `Z` (confirmado ao
+    // vivo — `OneFootballMatchCard.kickoff` nunca passa por
+    // `utcToNaiveBrazilLocal`) — `parseKickoffInstant` respeita esse
+    // offset sem tocar, mas fica robusto do mesmo jeito se isso mudar.
+    kickoff: parseKickoffInstant(json['kickoff'] as String?),
     homeScore: json['homeScore'] as int?,
     awayScore: json['awayScore'] as int?,
   );

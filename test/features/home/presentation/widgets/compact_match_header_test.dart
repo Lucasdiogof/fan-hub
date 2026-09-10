@@ -8,6 +8,7 @@ import 'package:goias_app/features/home/presentation/widgets/compact_match_heade
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 
 const _goias = Team(
   id: 1863,
@@ -53,6 +54,8 @@ Future<void> _pump(WidgetTester tester, Match match) => tester.pumpWidget(
 );
 
 void main() {
+  setUpAll(initializeBrazilTimeZone);
+
   setUp(() async {
     await sl.reset();
     sl.registerSingleton<ClubConfig>(goiasClubConfig);
@@ -61,7 +64,13 @@ void main() {
   testWidgets('scheduled match shows date and time, no score', (tester) async {
     await _pump(
       tester,
-      _match(status: MatchStatus.scheduled, kickoff: DateTime(2026, 9, 5, 16)),
+      _match(
+        status: MatchStatus.scheduled,
+        // UTC de propósito: o header exibe sempre em horário de Brasília
+        // (`toBrazilTime`, nunca o fuso da máquina rodando o teste) — 19h
+        // UTC é 16h em Brasília (UTC-3 fixo).
+        kickoff: DateTime.utc(2026, 9, 5, 19),
+      ),
     );
 
     expect(find.text('GOIÁS'), findsOneWidget);
@@ -73,12 +82,20 @@ void main() {
   testWidgets('a match kicking off today shows "HOJE" instead of the date', (
     tester,
   ) async {
-    final now = DateTime.now();
+    // "Hoje" é hoje em Brasília (mesma referência que o widget usa) —
+    // 23h UTC cai sempre no MESMO dia em Brasília (20h, UTC-3), nunca
+    // vira o dia seguinte por acidente de fuso.
+    final todayBrazil = toBrazilTime(DateTime.now().toUtc());
     await _pump(
       tester,
       _match(
         status: MatchStatus.scheduled,
-        kickoff: DateTime(now.year, now.month, now.day, 20),
+        kickoff: DateTime.utc(
+          todayBrazil.year,
+          todayBrazil.month,
+          todayBrazil.day,
+          23,
+        ),
       ),
     );
 

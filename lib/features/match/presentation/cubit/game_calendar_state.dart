@@ -3,6 +3,7 @@ import 'package:goias_app/features/match/domain/calendar_competition_filter.dart
 import 'package:goias_app/features/match/domain/calendar_month_grid.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 
 class GameCalendarState extends Equatable {
   GameCalendarState({
@@ -32,8 +33,12 @@ class GameCalendarState extends Equatable {
   Map<int, List<Match>> get matchesByDayInSelectedMonth {
     final map = <int, List<Match>>{};
     for (final match in filteredMatches) {
-      final kickoff = match.kickoff;
-      if (kickoff == null) continue;
+      final kickoffRaw = match.kickoff;
+      if (kickoffRaw == null) continue;
+      // `toBrazilTime`, nunca `.toLocal()`: o calendário é o calendário do
+      // Brasil (spec 2026-09-12) — um jogo às 22h de Brasília nunca pode
+      // cair no dia seguinte só porque o aparelho está em outro fuso.
+      final kickoff = toBrazilTime(kickoffRaw);
       if (kickoff.year != selectedMonth.year ||
           kickoff.month != selectedMonth.month) {
         continue;

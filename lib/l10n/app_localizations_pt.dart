@@ -296,14 +296,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get knockoutSecondLeg => 'Volta';
 
   @override
-  String knockoutPenalties(int home, int away) {
-    return 'Pênaltis: $home-$away';
-  }
-
-  @override
-  String knockoutAggregate(int home, int away) {
-    return 'Agregado $home-$away';
-  }
+  String get knockoutAggregateShort => 'Placar';
 
   @override
   String get matchStatusScheduled => 'Agendada';

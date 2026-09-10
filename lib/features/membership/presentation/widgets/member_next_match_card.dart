@@ -3,6 +3,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -22,6 +23,10 @@ class MemberNextMatchCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    // `toBrazilTime`, nunca `.toLocal()` (spec 2026-09-12).
+    final kickoff = match.kickoff != null
+        ? toBrazilTime(match.kickoff!)
+        : null;
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
@@ -73,8 +78,8 @@ class MemberNextMatchCard extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           Text(
-            match.kickoff != null
-                ? '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString())} • ${timeLabel(match.kickoff!)}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}'
+            kickoff != null
+                ? '${shortDateLabel(kickoff, Localizations.localeOf(context).toString())} • ${timeLabel(kickoff)}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}'
                 : '${context.l10n.matchDateToBeConfirmed}${match.stadium.isNotEmpty ? ' • ${match.stadium}' : ''}',
             style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
           ),

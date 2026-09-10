@@ -110,20 +110,7 @@
   "otherCompetitionsSearchEmpty": "No se encontraron campeonatos.",
   "knockoutFirstLeg": "Ida",
   "knockoutSecondLeg": "Vuelta",
-  "knockoutPenalties": "Penales: {home}-{away}",
-  "@knockoutPenalties": {
-    "placeholders": {
-      "home": { "type": "int" },
-      "away": { "type": "int" }
-    }
-  },
-  "knockoutAggregate": "Agregado {home}-{away}",
-  "@knockoutAggregate": {
-    "placeholders": {
-      "home": { "type": "int" },
-      "away": { "type": "int" }
-    }
-  },
+  "knockoutAggregateShort": "Marcador",
   "matchStatusScheduled": "Programado",
   "matchStatusLive": "En vivo",
   "matchStatusHalfTime": "Descanso",
