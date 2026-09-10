@@ -257,7 +257,7 @@
   "arenaHeaderSubtitle": "Juega, participa y vive el {club}.",
   "arenaSpotlightEyebrow": "{clubCode, select, goias{Arena Esmeraldina} other{Arena {club}}}",
   "arenaSpotlightHeadline": "Tu pasión entra en el campo",
-  "arenaSpotlightSubtitle": "{clubCode, select, goias{Juega, participa y gana tu lugar entre los Esmeraldinos.} other{Juega, participa y gana tu lugar entre los hinchas del {club}.}}",
+  "arenaSpotlightSubtitle": "{clubCode, select, goias{Juega, participa y gana tu lugar entre los Esmeraldinos.} bragantino{Juega, participa y gana tu lugar entre la Massa Bruta.} other{Juega, participa y gana tu lugar entre los hinchas del {club}.}}",
   "arenaSpotlightCta": "Entrar a la Arena",
   "arenaLineupHeroEyebrow": "ALINEACIÓN DE LA HINCHADA",
   "arenaLineupHeroCta": "Armar mi alineación",

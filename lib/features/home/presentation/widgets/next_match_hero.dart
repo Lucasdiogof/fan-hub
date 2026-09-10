@@ -73,6 +73,8 @@ class NextMatchHero extends StatelessWidget {
                 const SizedBox(height: AppSpacing.sm),
                 Text(
                   _shortCompetitionLabel(match.competition),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,

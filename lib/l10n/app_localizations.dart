@@ -1447,7 +1447,7 @@ abstract class AppLocalizations {
   /// No description provided for @arenaSpotlightSubtitle.
   ///
   /// In pt, this message translates to:
-  /// **'{clubCode, select, goias{Jogue, participe e dispute seu lugar entre os Esmeraldinos.} other{Jogue, participe e dispute seu lugar entre os torcedores do {club}.}}'**
+  /// **'{clubCode, select, goias{Jogue, participe e dispute seu lugar entre os Esmeraldinos.} bragantino{Jogue, participe e dispute seu lugar entre a Massa Bruta.} other{Jogue, participe e dispute seu lugar entre os torcedores do {club}.}}'**
   String arenaSpotlightSubtitle(String clubCode, String club);
 
   /// No description provided for @arenaSpotlightCta.

@@ -349,7 +349,7 @@
     }
   },
   "arenaSpotlightHeadline": "A sua paixão entra em campo",
-  "arenaSpotlightSubtitle": "{clubCode, select, goias{Jogue, participe e dispute seu lugar entre os Esmeraldinos.} other{Jogue, participe e dispute seu lugar entre os torcedores do {club}.}}",
+  "arenaSpotlightSubtitle": "{clubCode, select, goias{Jogue, participe e dispute seu lugar entre os Esmeraldinos.} bragantino{Jogue, participe e dispute seu lugar entre a Massa Bruta.} other{Jogue, participe e dispute seu lugar entre os torcedores do {club}.}}",
   "@arenaSpotlightSubtitle": {
     "placeholders": {
       "clubCode": { "type": "String" },
