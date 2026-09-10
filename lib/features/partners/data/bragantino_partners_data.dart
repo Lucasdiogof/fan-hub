@@ -38,9 +38,11 @@ import 'package:goias_app/features/partners/domain/entities/partner.dart';
 /// Unimagem, Bellicasa) seguem DATA_GAP de URL — nome/logo reais
 /// confirmados, só sem destino oficial pra abrir.
 ///
-/// `logoUrl`: nenhum logo baixado/versionado no repo — vem direto do CDN
-/// oficial do clube (img.redbullbragantino.com), mesmo padrão já usado
-/// pra foto de jogador (`squad_members.photo_url`/`SquadAvatar`).
+/// `assetPath`: logos baixados do CDN oficial do clube
+/// (img.redbullbragantino.com) e versionados em
+/// `lib/assets/sponsors/bragantino/` (2026-09-10) — mesmo padrão histórico
+/// do Goiás (`PartnersData`), preferido a `logoUrl` porque não depende do
+/// CDN estar no ar pra o logo aparecer.
 ///
 /// "N&D" (marca) x "Farmina" (fabricante): fora do model por ora (sem
 /// `link` na API) — mesmo assim, nunca cadastrar os dois como parceiros
@@ -57,73 +59,65 @@ class BragantinoPartnersData {
     Partner(
       name: 'Puma',
       url: 'https://br.puma.com/esportes/futebol/red-bull-bragantino',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/2/4/dfcsflqaf3nupklqk7za/puma',
+      assetPath: 'lib/assets/sponsors/bragantino/puma.png',
       category: PartnerCategory.kitSupplier,
     ),
     Partner(
       name: 'Asaas',
       url: 'https://www.asaas.com/parceiros/redbullbragantino',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/4/9/sttqoyvrxewigmndoxxy/asaas',
+      assetPath: 'lib/assets/sponsors/bragantino/asaas.png',
       category: PartnerCategory.shirtSponsor,
     ),
     Partner(
       name: 'Peluso Sperandio',
       url: 'https://pelusosperandio.com.br/',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/2/4/b3blwskeo5ad98lxhiab/peluso-sperandio',
+      assetPath: 'lib/assets/sponsors/bragantino/peluso-sperandio.png',
     ),
     Partner(
       name: 'Convém',
       url: 'https://www.instagram.com/convemsupermercados/',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/7/22/bnmf27esnngescqkmlvd/convem-supermercados',
+      assetPath: 'lib/assets/sponsors/bragantino/convem.png',
     ),
     Partner(
       name: 'Unimed',
       url: 'https://www.unimed.coop.br/site/web/osbandeirantes',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/30/lgzporikoavbq9pbe4vg/unimed',
+      assetPath: 'lib/assets/sponsors/bragantino/unimed.png',
     ),
     Partner(
       name: 'Colégio Populus',
       url: 'https://populusitatiba.com.br/',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/2/4/adcn0uoz3xz3dd3kl3pn/colegio-populus',
+      assetPath: 'lib/assets/sponsors/bragantino/colegio-populus.png',
     ),
     Partner(
       name: 'Ecobier',
       url: 'https://ecobier.com.br/',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/3/19/ibpr9rgycnvofmrzgdta/ecobier-logo',
+      assetPath: 'lib/assets/sponsors/bragantino/ecobier.png',
     ),
     Partner(
       name: 'CPJóia',
       url: 'http://www.cpjoia.com.br/',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/2/4/rssbn35q1kpdfm97t3gb/cpjoia',
+      assetPath: 'lib/assets/sponsors/bragantino/cpjoia.png',
     ),
     Partner(
       name: 'Campus.Live',
       url: 'https://www.campus.live/pt-br/',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/2/4/amwid1dfbyxbqwsj1qix/campus-live',
+      assetPath: 'lib/assets/sponsors/bragantino/campus-live.png',
     ),
     Partner(
       name: 'Meu Inglês Sob Medida',
       url: 'https://meuinglessobmedida.com.br/red-bull/',
-      logoUrl:
-          'https://img.redbullbragantino.com/images/f_auto,q_auto,w_400/2026/2/4/uhguugeltbzukv5vkc8z/meu-ingles-sob-medida',
+      assetPath: 'lib/assets/sponsors/bragantino/meu-ingles-sob-medida.png',
     ),
     Partner(
       name: 'Curaprox',
       url: 'https://www.loja.curaprox.com.br/',
+      assetPath: 'lib/assets/sponsors/bragantino/curaprox.png',
       category: PartnerCategory.academySponsor,
     ),
     Partner(
       name: 'KNN Idiomas',
       url: 'https://www.knnidiomas.com.br/',
+      assetPath: 'lib/assets/sponsors/bragantino/knn-idiomas.png',
       category: PartnerCategory.academySponsor,
     ),
   ];
