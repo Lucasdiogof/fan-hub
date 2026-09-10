@@ -145,6 +145,11 @@ const _crestSealReal = 'lib/assets/branding/bragantino/crest_seal.svg';
 // `AppAssets.storeBanner`), então o arquivo já vem pronto.
 const _arenaStadiumReal = 'lib/assets/branding/bragantino/arena_stadium.png';
 
+// Banner do card da Loja na Home — mesma ideia do `AppAssets.storeBanner`
+// do Goiás (caixa de camisa aberta), foto própria do Bragantino, já no
+// mesmo tamanho (508x491) pra não distorcer no `BoxFit.fitWidth`.
+const _storeBannerReal = 'lib/assets/store_banner_red.png';
+
 /// Fotos pro Quem Vestiu o Manto — as 10 do elenco atual são as MESMAS
 /// URLs do CDN oficial (`img.redbullbragantino.com`) já usadas em
 /// `bragantino_squad_members.sql`, chaveadas pelo mesmo `id` de
@@ -263,7 +268,7 @@ const bragantinoClubConfig = ClubConfig(
     tacticsBoardIllustration: _phRaster,
     arenaStadiumIcon: _phVector,
     arenaStadiumPhoto: _arenaStadiumReal,
-    storeBanner: _phRaster,
+    storeBanner: _storeBannerReal,
     // 3 banners promocionais oficiais do Red Bull Bragantino (arte da
     // Puma/Red Bull, entregues pelo dono do produto em 2026-09-09) —
     // StoreBannerCarousel monta o carousel automaticamente por ter >1
