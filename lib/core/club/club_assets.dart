@@ -34,7 +34,13 @@ class ClubAssets {
   /// procedural (gradiente + holofotes + grão) nesse caso, então `null`
   /// nunca deixa a tela sem fundo.
   final String? stadium;
-  final String matchHero;
+
+  /// `null` quando o clube ainda não tem foto oficial de estádio/torcida
+  /// pro Hero do próximo jogo (Home) — mesmo padrão de [stadium]:
+  /// `StadiumBackdrop` já desenha um fundo procedural (gradiente +
+  /// holofotes + grão) nesse caso, nunca um placeholder genérico
+  /// esticado na tela.
+  final String? matchHero;
   final String tacticsBoardIllustration;
   final String arenaStadiumIcon;
   final String arenaStadiumPhoto;

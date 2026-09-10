@@ -270,7 +270,12 @@ const bragantinoClubConfig = ClubConfig(
     // pelo hero do cadastro) já desenha um fundo procedural com as cores
     // reais do clube nesse caso, bem melhor que o placeholder neutro.
     stadium: null,
-    matchHero: _phRaster,
+    // Mesmo motivo do `stadium` acima — sem foto oficial de estádio/
+    // torcida ainda pro Hero do próximo jogo da Home. Era `_phRaster`
+    // (quadrado azul de "imagem quebrada" esticado com `BoxFit.cover` —
+    // achado real 2026-09-10), trocado por `null` pra cair no mesmo
+    // fundo procedural do cadastro.
+    matchHero: null,
     tacticsBoardIllustration: _phRaster,
     arenaStadiumIcon: _phVector,
     arenaStadiumPhoto: _arenaStadiumReal,
