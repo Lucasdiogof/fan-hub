@@ -15,6 +15,7 @@ import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/domain/repositories/football_repository.dart';
 import 'package:goias_app/features/match/presentation/cubit/game_calendar_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 
 // Fixture de teste, explicitamente Goiás (TEST_FIXTURE_ALLOWED) — mesmo id
 // de `goiasClubConfig.integrations.oneFootballTeamId`, duplicado aqui só
@@ -116,6 +117,8 @@ class _FakeFootballRepository implements FootballRepository {
 }
 
 void main() {
+  setUpAll(initializeBrazilTimeZone);
+
   late _FakeFootballRepository repository;
   late GameCalendarCubit cubit;
 
@@ -194,15 +197,20 @@ void main() {
   test(
     'matchesByDayInSelectedMonth agrupa só as partidas do mês selecionado',
     () async {
+      // UTC de propósito (não `DateTime(...)` local): `matchesByDayInSelectedMonth`
+      // agrupa por dia em horário de Brasília (`toBrazilTime`, nunca o fuso
+      // da máquina rodando o teste) — meio-dia em Brasília nunca vira outro
+      // dia na conversão, então o teste fica determinístico em qualquer
+      // fuso.
       repository.seasonFixtures = [
         _match(
           id: 'in-month',
-          kickoff: DateTime(2026, 8, 20),
+          kickoff: DateTime.utc(2026, 8, 20, 15),
           competition: 'Goiano',
         ),
         _match(
           id: 'other-month',
-          kickoff: DateTime(2026, 9, 1),
+          kickoff: DateTime.utc(2026, 9, 1, 15),
           competition: 'Goiano',
         ),
       ];

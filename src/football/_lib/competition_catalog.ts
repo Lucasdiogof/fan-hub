@@ -39,6 +39,7 @@ export const GLOBAL_COMPETITION_CATALOG: CatalogCompetition[] = [
   { id: 'serie-a-italia', name: 'Serie A', region: 'Itália', slug: 'serie-a-13', format: 'LEAGUE_TABLE' },
   { id: 'bundesliga', name: 'Bundesliga', region: 'Alemanha', slug: 'bundesliga-1', format: 'LEAGUE_TABLE' },
   { id: 'ligue-1', name: 'Ligue 1', region: 'França', slug: 'ligue-1-23', format: 'LEAGUE_TABLE' },
+  { id: 'la-liga', name: 'LaLiga', region: 'Espanha', slug: 'laliga-10', format: 'LEAGUE_TABLE' },
 ];
 
 /**

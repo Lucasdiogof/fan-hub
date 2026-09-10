@@ -4,6 +4,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -128,10 +129,14 @@ class _MetaLine extends StatelessWidget {
       return _plainMeta(l10n.homeCompactMatchFinished.toUpperCase());
     }
 
-    final kickoff = match.kickoff;
-    if (kickoff == null) return _plainMeta(l10n.homeDateToBeConfirmed);
+    final kickoffRaw = match.kickoff;
+    if (kickoffRaw == null) return _plainMeta(l10n.homeDateToBeConfirmed);
 
-    final now = DateTime.now();
+    // `toBrazilTime`, nunca `.toLocal()`: "hoje" é sempre hoje em
+    // Brasília, igual ao horário exibido (spec 2026-09-12) — nunca varia
+    // com o fuso do aparelho.
+    final kickoff = toBrazilTime(kickoffRaw);
+    final now = toBrazilTime(DateTime.now());
     final isToday =
         kickoff.year == now.year &&
         kickoff.month == now.month &&

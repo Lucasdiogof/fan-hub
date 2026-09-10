@@ -296,14 +296,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get knockoutSecondLeg => '2nd leg';
 
   @override
-  String knockoutPenalties(int home, int away) {
-    return 'Penalties: $home-$away';
-  }
-
-  @override
-  String knockoutAggregate(int home, int away) {
-    return 'Aggregate $home-$away';
-  }
+  String get knockoutAggregateShort => 'Score';
 
   @override
   String get matchStatusScheduled => 'Scheduled';

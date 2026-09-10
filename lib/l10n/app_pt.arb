@@ -124,20 +124,7 @@
   "otherCompetitionsSearchEmpty": "Nenhum campeonato encontrado.",
   "knockoutFirstLeg": "Ida",
   "knockoutSecondLeg": "Volta",
-  "knockoutPenalties": "Pênaltis: {home}-{away}",
-  "@knockoutPenalties": {
-    "placeholders": {
-      "home": { "type": "int" },
-      "away": { "type": "int" }
-    }
-  },
-  "knockoutAggregate": "Agregado {home}-{away}",
-  "@knockoutAggregate": {
-    "placeholders": {
-      "home": { "type": "int" },
-      "away": { "type": "int" }
-    }
-  },
+  "knockoutAggregateShort": "Placar",
   "matchStatusScheduled": "Agendada",
   "matchStatusLive": "Ao vivo",
   "matchStatusHalfTime": "Intervalo",

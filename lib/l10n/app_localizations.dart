@@ -658,17 +658,11 @@ abstract class AppLocalizations {
   /// **'Volta'**
   String get knockoutSecondLeg;
 
-  /// No description provided for @knockoutPenalties.
+  /// No description provided for @knockoutAggregateShort.
   ///
   /// In pt, this message translates to:
-  /// **'Pênaltis: {home}-{away}'**
-  String knockoutPenalties(int home, int away);
-
-  /// No description provided for @knockoutAggregate.
-  ///
-  /// In pt, this message translates to:
-  /// **'Agregado {home}-{away}'**
-  String knockoutAggregate(int home, int away);
+  /// **'Placar'**
+  String get knockoutAggregateShort;
 
   /// No description provided for @matchStatusScheduled.
   ///

@@ -110,20 +110,7 @@
   "otherCompetitionsSearchEmpty": "No competitions found.",
   "knockoutFirstLeg": "1st leg",
   "knockoutSecondLeg": "2nd leg",
-  "knockoutPenalties": "Penalties: {home}-{away}",
-  "@knockoutPenalties": {
-    "placeholders": {
-      "home": { "type": "int" },
-      "away": { "type": "int" }
-    }
-  },
-  "knockoutAggregate": "Aggregate {home}-{away}",
-  "@knockoutAggregate": {
-    "placeholders": {
-      "home": { "type": "int" },
-      "away": { "type": "int" }
-    }
-  },
+  "knockoutAggregateShort": "Score",
   "matchStatusScheduled": "Scheduled",
   "matchStatusLive": "Live",
   "matchStatusHalfTime": "Half-time",

@@ -5,6 +5,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -34,8 +35,14 @@ class CrowdLineupHeroCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final locale = Localizations.localeOf(context).toString();
-    final dateTimeLabel = match.kickoff != null
-        ? '${shortDateLabel(match.kickoff!, locale)} • ${timeLabel(match.kickoff!)} • ${match.stadium.toUpperCase()}'
+    // `toBrazilTime`, nunca `.toLocal()`: `kickoff` é o instante absoluto
+    // real (spec 2026-09-12) — exibir horário de partida sempre em
+    // horário de Brasília, independente do fuso do aparelho.
+    final kickoffBrazil = match.kickoff != null
+        ? toBrazilTime(match.kickoff!)
+        : null;
+    final dateTimeLabel = kickoffBrazil != null
+        ? '${shortDateLabel(kickoffBrazil, locale)} • ${timeLabel(kickoffBrazil)} • ${match.stadium.toUpperCase()}'
         : '${l10n.homeDateToBeConfirmed} • ${match.stadium.toUpperCase()}';
 
     return ClipRRect(

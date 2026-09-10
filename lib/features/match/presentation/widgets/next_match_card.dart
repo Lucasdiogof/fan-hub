@@ -6,6 +6,7 @@ import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -34,6 +35,10 @@ class NextMatchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final isLive = _isLive;
+    // `toBrazilTime`, nunca `.toLocal()` (spec 2026-09-12).
+    final kickoff = match.kickoff != null
+        ? toBrazilTime(match.kickoff!)
+        : null;
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
@@ -116,16 +121,16 @@ class NextMatchCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (match.kickoff != null) ...[
+                if (kickoff != null) ...[
                   _InfoItem(
                     icon: Icons.calendar_today_outlined,
                     label:
-                        '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString())} • ${weekdayShortLabel(match.kickoff!, Localizations.localeOf(context).toString())}',
+                        '${shortDateLabel(kickoff, Localizations.localeOf(context).toString())} • ${weekdayShortLabel(kickoff, Localizations.localeOf(context).toString())}',
                   ),
                   _Dot(color: colors.textHint),
                   _InfoItem(
                     icon: Icons.access_time_rounded,
-                    label: timeLabel(match.kickoff!),
+                    label: timeLabel(kickoff),
                   ),
                 ] else
                   _InfoItem(

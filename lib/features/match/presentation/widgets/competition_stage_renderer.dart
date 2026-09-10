@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:goias_app/features/match/domain/entities/competition_stage.dart';
 import 'package:goias_app/features/match/domain/entities/stage_type.dart';
-import 'package:goias_app/features/match/presentation/widgets/knockout_bracket_view.dart';
+import 'package:goias_app/features/match/presentation/widgets/knockout_stage_view.dart';
 import 'package:goias_app/features/match/presentation/widgets/standings_content.dart';
 
 /// Decide o que renderizar pra fase selecionada, orientado por
 /// `stage.type` — nunca um `if (competition.name == ...)` (spec
-/// multi-competição 2026-09-10/11, item 13/22). Uma Stage `knockout` já
-/// carrega todas as suas rodadas ([CompetitionStage.rounds]); o
-/// `KnockoutBracketView` desenha as colunas e usa
-/// `stage.currentRound` só pra decidir o foco inicial do scroll.
+/// multi-competição 2026-09-10/11/12, item 13/17/22). Uma Stage `knockout`
+/// já carrega todas as suas rodadas ([CompetitionStage.rounds]); quem
+/// decide qual rodada mostrar e navega entre elas é o próprio
+/// `KnockoutStageView` (fase → lista vertical, sem bracket/scroll
+/// horizontal).
 class CompetitionStageRenderer extends StatelessWidget {
   const CompetitionStageRenderer({
     required this.stages,
@@ -27,10 +28,7 @@ class CompetitionStageRenderer extends StatelessWidget {
     if (selected == null) return const SizedBox.shrink();
 
     if (selected.type == StageType.knockout) {
-      return KnockoutBracketView(
-        rounds: selected.rounds,
-        focusRoundId: selected.currentRound?.id,
-      );
+      return KnockoutStageView(rounds: selected.rounds);
     }
 
     return StandingsContent(

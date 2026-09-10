@@ -17,6 +17,7 @@ import 'package:goias_app/features/match/presentation/widgets/match_events_timel
 import 'package:goias_app/features/match/presentation/widgets/match_lineups_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_stats_section.dart';
 import 'package:goias_app/features/match/presentation/widgets/match_status_label.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/club_badge.dart';
@@ -178,6 +179,12 @@ class _MatchDetailsContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    // `toBrazilTime`, nunca `.toLocal()`: `kickoff` é o instante absoluto
+    // real (spec 2026-09-12) — horário de partida sempre em Brasília,
+    // independente do fuso do aparelho.
+    final kickoff = match.kickoff != null
+        ? toBrazilTime(match.kickoff!)
+        : null;
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         AppSpacing.lg,
@@ -221,9 +228,9 @@ class _MatchDetailsContent extends StatelessWidget {
         ),
         const SizedBox(height: AppSpacing.xxl),
         Text(
-          match.kickoff != null
+          kickoff != null
               ? longDateLabel(
-                  match.kickoff!,
+                  kickoff,
                   context.l10n,
                   Localizations.localeOf(context).toString(),
                 )
@@ -235,10 +242,10 @@ class _MatchDetailsContent extends StatelessWidget {
             color: colors.textPrimary,
           ),
         ),
-        if (match.kickoff != null) ...[
+        if (kickoff != null) ...[
           const SizedBox(height: 2),
           Text(
-            timeLabel(match.kickoff!),
+            timeLabel(kickoff),
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 13,
@@ -290,9 +297,9 @@ class _MatchDetailsContent extends StatelessWidget {
             children: [
               _InfoRow(
                 label: context.l10n.matchFieldDate,
-                value: match.kickoff != null
+                value: kickoff != null
                     ? longDateLabel(
-                        match.kickoff!,
+                        kickoff,
                         context.l10n,
                         Localizations.localeOf(context).toString(),
                       )
@@ -300,7 +307,7 @@ class _MatchDetailsContent extends StatelessWidget {
               ),
               _InfoRow(
                 label: context.l10n.matchFieldTime,
-                value: match.kickoff != null ? timeLabel(match.kickoff!) : '—',
+                value: kickoff != null ? timeLabel(kickoff) : '—',
               ),
               _InfoRow(
                 label: context.l10n.matchFieldStadium,

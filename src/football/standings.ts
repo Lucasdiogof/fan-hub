@@ -59,11 +59,11 @@ type StageOut = {
 function knockoutStage(rounds: KnockoutRoundOut[], order: number): StageOut {
   return {
     id: 'knockout',
-    // "Mata-mata" é um rótulo genérico do domínio (nunca aparece como
+    // "Eliminatórias" é um rótulo genérico do domínio (nunca aparece como
     // string literal em nenhum payload do provider) — não é config por
     // competição, é o mesmo nome pra qualquer competição que tenha essa
-    // fase (spec 2026-09-11, item 6/9).
-    name: 'Mata-mata',
+    // fase (spec 2026-09-11/12, item 6/9/2).
+    name: 'Eliminatórias',
     order,
     type: 'KNOCKOUT',
     status: 'ACTIVE',
@@ -156,7 +156,11 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
         }));
         const groupsStage: StageOut = {
           id: 'main',
-          name: competitionName,
+          // Nome genérico "Fase de Grupos" só quando existe uma 2ª fase
+          // (eliminatórias) pra distinguir das duas no selector — sem
+          // isso, uma competição SÓ de grupos continua mostrando o nome
+          // completo da competição (spec 2026-09-12, item 2).
+          name: hasRealKnockout ? 'Fase de Grupos' : competitionName,
           order: 0,
           type: 'GROUP_STAGE',
           status: tableIsCurrent ? 'ACTIVE' : 'COMPLETED',

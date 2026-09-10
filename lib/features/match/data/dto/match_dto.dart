@@ -1,5 +1,6 @@
 import 'package:goias_app/features/match/data/dto/team_dto.dart';
 import 'package:goias_app/features/match/domain/entities/match.dart';
+import 'package:goias_app/shared/utils/brazil_time.dart';
 
 class MatchDto {
   const MatchDto({
@@ -30,10 +31,11 @@ class MatchDto {
   /// competição principal como fallback de partida, só `''`).
   final String? competition;
 
-  /// Horário já em hora local do Brasil, sem offset (a fonte não fornece
-  /// UTC) — parseado direto, nunca convertido por fuso. `null` quando a
-  /// fonte ainda não confirmou o horário (visto em jogos futuros do
-  /// TheSportsDB antes da data ser fechada).
+  /// Horário de parede do Brasil, sem offset (a fonte não fornece UTC) —
+  /// `toEntity` interpreta como America/Sao_Paulo via [parseKickoffInstant]
+  /// (correção 2026-09-12: nunca mais parseado como se já fosse hora local
+  /// do APARELHO). `null` quando a fonte ainda não confirmou o horário
+  /// (visto em jogos futuros do TheSportsDB antes da data ser fechada).
   final String? kickoffRaw;
   final String statusName;
   final String? venue;
@@ -65,7 +67,7 @@ class MatchDto {
       homeTeam: homeTeam.toEntity(),
       awayTeam: awayTeam.toEntity(),
       stadium: venue ?? '',
-      kickoff: kickoffRaw != null ? DateTime.parse(kickoffRaw!) : null,
+      kickoff: parseKickoffInstant(kickoffRaw),
       status: MatchStatus.values.asNameMap()[statusName] ?? MatchStatus.unknown,
       homeScore: homeScore,
       awayScore: awayScore,

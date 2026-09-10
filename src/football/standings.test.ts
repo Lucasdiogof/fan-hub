@@ -344,7 +344,7 @@ describe('handleStandings — ?competition= resolve contra o catálogo GLOBAL (r
     expect(body.dataGap).toBe(false);
     expect(body.season.stages).toHaveLength(1);
     const stage = body.season.stages[0];
-    expect(stage.name).toBe('Mata-mata');
+    expect(stage.name).toBe('Eliminatórias');
     expect(stage.isCurrent).toBe(true);
     expect(stage.rounds).toHaveLength(1);
     const round = stage.rounds[0];
@@ -470,7 +470,7 @@ describe('handleStandings — ?competition= resolve contra o catálogo GLOBAL (r
     expect(body.season.stages[0].status).toBe('ACTIVE');
   });
 
-  it('Sudamericana no mata-mata (grupos fora da janela) -> híbrida: Fase de Grupos completed + Mata-mata active (spec 2026-09-11)', async () => {
+  it('Sudamericana no mata-mata (grupos fora da janela) -> híbrida: Fase de Grupos completed + Eliminatórias active (spec 2026-09-11)', async () => {
     global.fetch = vi.fn(async (input: RequestInfo | URL) => {
       const url = typeof input === 'string' ? input : input.toString();
       if (url.includes('loadmore=1')) {
@@ -599,7 +599,7 @@ describe('handleStandings — ?competition= resolve contra o catálogo GLOBAL (r
     expect(groupsStage.status).toBe('COMPLETED');
     expect(groupsStage.isCurrent).toBe(false);
     expect(groupsStage.groups?.[0]?.title).toBe('Grupo H');
-    expect(knockout.name).toBe('Mata-mata');
+    expect(knockout.name).toBe('Eliminatórias');
     expect(knockout.status).toBe('ACTIVE');
     expect(knockout.isCurrent).toBe(true);
     expect(knockout.rounds?.map((r) => r.name)).toEqual(['Oitavas de final', 'Quartas de final']);
