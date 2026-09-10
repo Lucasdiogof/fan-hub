@@ -444,7 +444,7 @@ const bragantinoClubConfig = ClubConfig(
   productNames: ClubProductNaming(
     arenaName: 'Arena',
     passportName: 'Passaporte',
-    storeName: 'Loja',
+    storeName: 'RedBull Shop',
     membershipProgramName: 'Sócio',
   ),
   passportContent: BragantinoPassportContent.content,
