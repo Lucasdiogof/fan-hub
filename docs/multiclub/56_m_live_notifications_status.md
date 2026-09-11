@@ -85,24 +85,14 @@ verdade nos dois projetos Supabase (não só código no repo). Ver seção
   `private.notifications_service_role_key()` usada pelos crons — nunca
   exposta em texto num secret do repo.
 
-## ⚠️ Único bloqueio real restante no backend
+## ✅ Backend Bragantino: sem bloqueio conhecido
 
-- **`FCM_SERVICE_ACCOUNT_JSON` do Bragantino ainda não está configurado**
-  (`supabase secrets list` confirma que só existem os secrets automáticos
-  do Supabase, nenhum FCM). Isso eu não posso fazer sozinho — é a chave
-  privada da service account do Firebase, e por princípio eu não devo gerar
-  nem manusear esse arquivo. Como o Firebase é o **mesmo projeto**
-  (`fan-hub-29e9b`) pros dois flavors Android, o caminho mais rápido é:
-  você já ter o JSON usado pro Goiás salvo em algum lugar seguro — se
-  tiver, é só colar o mesmo conteúdo como secret `FCM_SERVICE_ACCOUNT_JSON`
-  no projeto Bragantino (Supabase Dashboard > Edge Functions > Secrets, ou
-  `supabase secrets set FCM_SERVICE_ACCOUNT_JSON="$(cat caminho.json)"` com
-  o projeto Bragantino linkado). Sem isso, o Bragantino detecta os eventos
-  (poll já funciona) mas nunca consegue enviar o push de verdade.
-  **Confirmado nesta rodada**: procurei localmente (Downloads/Desktop/
-  Projects) por um arquivo de service account e não achei nenhum — não dá
-  pra copiar automaticamente, precisa que você mesmo cole o conteúdo (via
-  Dashboard ou `supabase secrets set`, nunca por chat).
+`FCM_SERVICE_ACCOUNT_JSON` configurado pelo usuário diretamente no
+Dashboard (nunca passou por chat) e `NOTIFICATIONS_TEST_SECRET`
+criado — push real confirmado chegando no device via
+`notifications-test-trigger`, copy correta (nenhum texto/identidade do
+Goiás), sem erro de envio. Goiás e Bragantino testados e **aprovados pelo
+usuário** nesta rodada.
 
 ## 🧪 Ferramenta de teste (sem device físico, sem esperar partida real)
 
@@ -149,18 +139,21 @@ equivalente Bragantino) já assina com o keystore real.
    Notifications aparece (o `.entitlements` já existe, só falta a conta
    Apple Developer ligada). Gerar a APNs Auth Key (`.p8`) no Apple Developer
    e subir no Firebase Console (Cloud Messaging > APNs Authentication Key).
-2. **Teste em device físico — Android/Goiás: APROVADO pelo usuário** (via
-   `notifications-test-trigger`). Notificação chegou normalmente. Ao tocar
-   em "Ver"/na notificação, o app tentou abrir `/match/test-...` e deu erro
-   — **esperado**: o `matchId` do disparo de teste é sempre sintético
+2. **Teste em device físico — Android/Goiás E Bragantino: APROVADO pelo
+   usuário** (via `notifications-test-trigger`, deployada nos 2 projetos).
+   Notificação chegou normalmente nos dois apps, inclusive depois do
+   ajuste final de copy (placar completo, sem emoji de cor, resultado
+   sempre calculado por `activeClubSide`) — confirmado visualmente que o
+   Bragantino nunca mostra texto/identidade do Goiás. Ao tocar em "Ver"/na
+   notificação, o app tenta abrir `/match/test-...` e dá erro —
+   **esperado**: o `matchId` do disparo de teste é sempre sintético
    (`test-...`, de propósito, pra nunca poluir dado real), então a tela de
    partida não acha fixture nenhuma pra mostrar. Isso NÃO é bug — só prova
    que falta testar com um `matchId` real (ou esperar uma partida de
    verdade) pra validar o passo "tap → abre a partida certa" ponta a ponta.
-   Ainda faltam: cobrir os outros 5 eventos explicitamente, os 3 estados
-   do app (aberto/background/encerrado) e as combinações de preferência
-   (ON/OFF/master OFF) — só o smoke inicial foi feito até aqui. Bragantino
-   ainda não testado (falta o secret FCM, ver acima).
+   Ainda faltam: cobrir explicitamente os 3 estados do app (aberto/
+   background/encerrado) por evento e as combinações de preferência
+   (ON/OFF/master OFF) — só o smoke de mensagem foi feito até aqui.
 3. **Google Play**: release do Android ainda assina com a chave de debug
    (gap pré-existente, não desta rodada) — bloqueador real pra publicar na
    Play Store, precisa de keystore de release real.
