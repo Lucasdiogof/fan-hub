@@ -5,7 +5,11 @@ diferente, comece por aqui. Objetivo original: 6 notificações reais de partida
 (início, gol a favor, gol contra, intervalo, início do 2º tempo, fim de jogo),
 com placar, multi-clube (Goiás + Bragantino), publicáveis nas lojas.
 
-Commit desta rodada: `d11fdea` (branch `main`, já em `origin/main`).
+Commits desta rodada: `d11fdea`, `8307a5f` (branch `main`, já em `origin/main`).
+
+**ATUALIZAÇÃO 2026-09-11 (mesmo dia, sessão seguinte)**: infra aplicada de
+verdade nos dois projetos Supabase (não só código no repo). Ver seção
+"✅ Infra aplicada" abaixo — o que resta agora é bem menor que antes.
 
 ## ✅ Feito (código, testado, commitado)
 
@@ -48,36 +52,68 @@ Commit desta rodada: `d11fdea` (branch `main`, já em `origin/main`).
   singular depois que a assinatura virou array de colunas — corrigido pra
   encadear `.eq()` por coluna (AND real).
 
-## ⚠️ Pendente — passos MANUAIS de infra (exigem credenciais que eu não tenho)
+## ✅ Infra aplicada (2026-09-11, via `supabase` CLI logado pelo usuário)
 
-Nenhum destes é código — são ações em dashboards/contas reais.
+**Goiás (`yonozsdgyrhgqrvydbnr`)**:
+- Migration `20260911000000_live_match_notification_events.sql` aplicada.
+  De brinde, achamos e aplicamos 3 migrations do backlog que estavam
+  pendentes havia dias (`20260908000000` squad_members lifecycle,
+  `20260909000000` arena_record_score identity games) — a `20260909120000`
+  (half_price_proof) já tinha sido aplicada manualmente antes, só o
+  histórico do CLI não sabia; usei `supabase migration repair` pra
+  sincronizar (sem tocar em schema/dado, só bookkeeping).
+- As 3 Edge Functions (`notifications-sync-and-check-access`,
+  `notifications-poll-live-match`, `notifications-dispatch`) redeployadas
+  com o código novo via `supabase functions deploy`.
+- **Cron já estava ativo em produção** (achado importante da auditoria
+  original, agora confirmado): `notifications-sync-and-check-access`
+  (*/30min), `notifications-poll-live-match` (1min),
+  `notifications-dispatch-safety-net` (5min) — todos `active: true`.
+- Secret `FCM_SERVICE_ACCOUNT_JSON` **já configurado** nesse projeto.
+- **Conclusão: Goiás está tecnicamente pronto ponta a ponta** (migration +
+  código + cron + secret). Falta só validar em device físico (item 3
+  abaixo).
 
-1. **Aplicar a migration** `20260911000000_live_match_notification_events.sql`
-   no projeto Supabase do **Goiás** (`yonozsdgyrhgqrvydbnr`) — via
-   `supabase db push` ou colando no SQL Editor.
-2. **Confirmar se os 3 crons já rodam de verdade** no projeto do Goiás
-   (`supabase/notifications_cron.sql` é um template com placeholders,
-   nunca vi confirmação de que foi executado em produção — se não foi,
-   nada dispara mesmo com o código certo).
-3. **Deployar o backend de notificações no projeto Bragantino**
-   (`yrgyzkaaudyzmsqwzecj`): aplicar TODAS as migrations canônicas +
-   esta nova, colar as 3 Edge Functions
-   (`notifications-sync-and-check-access`, `notifications-poll-live-match`,
-   `notifications-dispatch`), configurar o secret `FCM_SERVICE_ACCOUNT_JSON`
-   próprio do Bragantino, e rodar `notifications_cron.sql` **nesse projeto**.
-   Sem isso, **o Bragantino não recebe nenhuma notificação de partida**,
-   mesmo com o código 100% pronto — é puramente um passo de deploy que
-   ninguém rodou ainda.
-4. **iOS**: no Xcode, abrir `ios/Runner.xcworkspace`, configurar Team/signing
+**Bragantino (`yrgyzkaaudyzmsqwzecj`)**:
+- Mesmas 4 migrations aplicadas (schema já convergido com Goiás).
+- As 3 Edge Functions deployadas pela primeira vez (não existiam ainda
+  nesse projeto).
+- `pg_cron`/`pg_net` **não estavam habilitados** — habilitei os dois.
+- Os 3 crons criados do zero (mesmo padrão do Goiás) e confirmados
+  `active: true`.
+- Service role key gravada no Vault do próprio projeto pra função
+  `private.notifications_service_role_key()` usada pelos crons — nunca
+  exposta em texto num secret do repo.
+
+## ⚠️ Único bloqueio real restante no backend
+
+- **`FCM_SERVICE_ACCOUNT_JSON` do Bragantino ainda não está configurado**
+  (`supabase secrets list` confirma que só existem os secrets automáticos
+  do Supabase, nenhum FCM). Isso eu não posso fazer sozinho — é a chave
+  privada da service account do Firebase, e por princípio eu não devo gerar
+  nem manusear esse arquivo. Como o Firebase é o **mesmo projeto**
+  (`fan-hub-29e9b`) pros dois flavors Android, o caminho mais rápido é:
+  você já ter o JSON usado pro Goiás salvo em algum lugar seguro — se
+  tiver, é só colar o mesmo conteúdo como secret `FCM_SERVICE_ACCOUNT_JSON`
+  no projeto Bragantino (Supabase Dashboard > Edge Functions > Secrets, ou
+  `supabase secrets set FCM_SERVICE_ACCOUNT_JSON="$(cat caminho.json)"` com
+  o projeto Bragantino linkado). Sem isso, o Bragantino detecta os eventos
+  (poll já funciona) mas nunca consegue enviar o push de verdade.
+
+## ⚠️ Pendente — fora do Supabase (exigem Apple Developer / device físico / keystore)
+
+1. **iOS**: no Xcode, abrir `ios/Runner.xcworkspace`, configurar Team/signing
    (Signing & Capabilities) pros 2 flavors, confirmar que a capability Push
    Notifications aparece (o `.entitlements` já existe, só falta a conta
    Apple Developer ligada). Gerar a APNs Auth Key (`.p8`) no Apple Developer
    e subir no Firebase Console (Cloud Messaging > APNs Authentication Key).
-5. **Teste em device físico** — ainda não feito (não tenho device físico
+2. **Teste em device físico** — ainda não feito (não tenho device físico
    nesta sessão). Checklist mínimo por evento (`kickoff`, `goal`,
    `goal_against`, `half_time`, `second_half_started`, `full_time`) × estado
    do app (aberto/background/encerrado) × preferência (ON/OFF/master OFF).
-6. **Google Play**: release do Android ainda assina com a chave de debug
+   Com o Goiás 100% pronto no backend, isso já pode ser testado numa
+   partida real hoje.
+3. **Google Play**: release do Android ainda assina com a chave de debug
    (gap pré-existente, não desta rodada) — bloqueador real pra publicar na
    Play Store, precisa de keystore de release real.
 
