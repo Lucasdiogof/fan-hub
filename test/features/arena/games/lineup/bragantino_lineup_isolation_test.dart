@@ -1,8 +1,13 @@
 // Adivinhe a Escalação — isolamento multiclube + contrato do pool do
-// Bragantino. Hoje o Bragantino NÃO tem desafio publicável (falta formação
-// e posição por jogador na fonte, ver tooling/bragantino_lineup), então o
-// que estes testes travam é justamente isso: o jogo fica escondido e, se
-// alguém forçar a rota, nada do Goiás aparece no lugar.
+// Bragantino. O pool textual `LINEUP_SHORTLIST_V2`/`eligibility_report.json`
+// abaixo é HISTÓRICO: registrou o estágio em que 0/138 partidas eram
+// publicáveis por falta de formação/posição por jogador. Isso foi superado
+// por uma curadoria manual posterior direto no Supabase — hoje
+// `lineup_matches` tem 31/31 partidas ativas, cada uma com formação
+// reconhecida e exatamente 11 jogadores completos (reauditado 2026-09-11),
+// e `lineup` está habilitado no Arena do Bragantino. Os testes do pool
+// textual continuam aqui só como regressão do artefato de tooling
+// (arquivo não foi tocado), nunca como afirmação do estado atual do jogo.
 import 'dart:convert';
 import 'dart:io';
 
@@ -21,15 +26,13 @@ void main() {
       );
     });
 
-    test(
-      'Bragantino NÃO tem lineup habilitado enquanto não houver desafio',
-      () {
-        expect(
-          bragantinoClubConfig.capabilities.enabledArenaGames,
-          isNot(contains('lineup')),
-        );
-      },
-    );
+    test('Bragantino tem lineup habilitado (31/31 partidas reais, reauditado '
+        '2026-09-11)', () {
+      expect(
+        bragantinoClubConfig.capabilities.enabledArenaGames,
+        contains('lineup'),
+      );
+    });
   });
 
   group('fallback offline nunca cruza de clube', () {
@@ -50,7 +53,8 @@ void main() {
     });
   });
 
-  group('pool do Bragantino (LINEUP_SHORTLIST_V2) — contrato de dados', () {
+  group('HISTÓRICO — pool textual do Bragantino (LINEUP_SHORTLIST_V2), '
+      'superado pela curadoria manual em Supabase', () {
     final pool =
         jsonDecode(
               File(
@@ -195,7 +199,8 @@ void main() {
     });
   });
 
-  group('relatório de elegibilidade — nada é publicado sem formação', () {
+  group('HISTÓRICO — relatório de elegibilidade do pool textual, arquivo não '
+      'tocado (nada a ver com o `lineup` habilitado hoje via Supabase)', () {
     final reportFile = File(
       'tooling/bragantino_lineup/out/eligibility_report.json',
     );

@@ -186,10 +186,9 @@ void main() {
         // `bragantino_tactical_coach_references.dart`) — ligados em
         // 2026-09-08. quiz (44 perguntas READY) e career_path (27
         // carreiras publicáveis) ligados no mesmo dia, depois de auditoria
-        // real. guess_player e lineup seguem de fora: guess_player por
-        // dado insuficiente (só 1/50 cards é `eligibleAsSecret`), lineup
-        // por dado insuficiente (0/123 partidas publicáveis) — nenhum dos
-        // dois é bug de arquitetura.
+        // real. guess_player e lineup ligados em 2026-09-11 após
+        // reauditoria: 50/50 guess_players `verified`+elegíveis, 31/31
+        // lineup_matches com 11 jogadores completos cada.
         expect(
           c.enabledArenaGames,
           equals({
@@ -197,6 +196,8 @@ void main() {
             'tactical_identity',
             'quiz',
             'career_path',
+            'guess_player',
+            'lineup',
           }),
         );
       },
