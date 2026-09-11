@@ -57,29 +57,33 @@ export function buildNotificationMessage(
     case 'kickoff': {
       return {
         type: 'kickoff',
-        title: '⚽ Começou!',
+        title: 'Começou! ⚽',
         body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
       };
     }
     case 'goal_against': {
+      // Sem emoji de propósito (rodada de hardening de copy) — só o gol A
+      // FAVOR e os marcos temporais (kickoff/intervalo/2º tempo/fim) levam
+      // um emoji neutro de contexto esportivo; gol do adversário fica só
+      // com o nome, sem nenhum destaque visual extra.
       const opponentName = p.activeClubSide === 'home' ? p.awayTeamName : p.homeTeamName;
       return {
         type: 'goal_against',
-        title: `⚽ Gol do ${opponentName ?? 'adversário'}`,
+        title: `Gol do ${opponentName ?? 'adversário'}`,
         body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
       };
     }
     case 'half_time': {
       return {
         type: 'half_time',
-        title: '⏸ Intervalo',
+        title: 'Intervalo ⏸️',
         body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
       };
     }
     case 'second_half_started': {
       return {
         type: 'second_half_started',
-        title: '▶️ Começou o segundo tempo',
+        title: 'Começou o segundo tempo ▶️',
         body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
       };
     }
@@ -107,9 +111,13 @@ export function buildNotificationMessage(
       };
     }
     case 'goal': {
+      // Nunca 💚/❤️/🟢/🔴 nem qualquer emoji de cor/identidade — a
+      // identidade do clube vem do NOME (`notificationGoalClubName`), do
+      // ícone do app e do branding do flavor, nunca de um emoji de cor
+      // aqui. Só ⚽, neutro, igual pros 2 clubes.
       return {
         type: 'goal',
-        title: `GOOOOOOL DO ${clubConfig.notificationGoalClubName.toUpperCase()}! ⚽💚`,
+        title: `GOOOOOOL DO ${clubConfig.notificationGoalClubName.toUpperCase()}! ⚽`,
         body: `${p.homeTeamName} ${p.homeScore} x ${p.awayScore} ${p.awayTeamName}`,
       };
     }
@@ -118,10 +126,13 @@ export function buildNotificationMessage(
       const away = p.awayScore ?? 0;
       const activeClubScore = p.activeClubSide === 'home' ? home : away;
       const opponentScore = p.activeClubSide === 'home' ? away : home;
+      // Mesma regra: nunca emoji de cor (era "💚" na vitória) — 🏁 neutro
+      // pro caso comum (empate/derrota), sem emoji na vitória (o texto
+      // "VITÓRIA DO ..." já carrega o destaque, sem precisar de cor).
       const title =
         activeClubScore > opponentScore
-          ? `VITÓRIA DO ${clubConfig.notificationVictoryNickname.toUpperCase()}! 💚`
-          : 'Fim de jogo';
+          ? `VITÓRIA DO ${clubConfig.notificationVictoryNickname.toUpperCase()}!`
+          : 'Fim de jogo 🏁';
       const suffix = activeClubScore > opponentScore ? ' Fim de jogo!' : '.';
       return {
         type: 'full_time',
