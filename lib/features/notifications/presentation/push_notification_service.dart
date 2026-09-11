@@ -140,7 +140,11 @@ class PushNotificationService {
     final type = message.data['type'] as String?;
     final matchId = message.data['matchId'] as String?;
     switch (type) {
+      case 'kickoff':
       case 'goal':
+      case 'goal_against':
+      case 'half_time':
+      case 'second_half_started':
       case 'full_time':
         if (matchId != null) context.push('/match/$matchId');
       case 'checkin':
@@ -151,7 +155,11 @@ class PushNotificationService {
 
   IconData _iconForType(String? type) {
     switch (type) {
+      case 'kickoff':
       case 'goal':
+      case 'goal_against':
+      case 'half_time':
+      case 'second_half_started':
       case 'full_time':
         return Icons.sports_soccer_rounded;
       case 'checkin':

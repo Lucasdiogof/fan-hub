@@ -30,7 +30,19 @@
 //    `fcm_token` continua a única chave de unicidade (nunca (club_id,
 //    fcm_token) — o mesmo token físico nunca duplica).
 
-export type NotificationEventType = 'match_access_open' | 'goal' | 'full_time';
+// M-live: preferências granulares por tipo de evento de partida ao vivo,
+// atrás de um master toggle único ("Jogos ao vivo"). `match_access_open`
+// (Ingressos/Check-in) continua uma categoria totalmente separada, nunca
+// misturada com as 6 de partida (mesmo motivo de sempre: são conceitos
+// diferentes pro usuário).
+export type NotificationEventType =
+  | 'match_access_open'
+  | 'kickoff'
+  | 'goal'
+  | 'goal_against'
+  | 'half_time'
+  | 'second_half_started'
+  | 'full_time';
 
 export interface TokenRow {
   id: string;
@@ -40,15 +52,41 @@ export interface TokenRow {
   club_id: string;
 }
 
-export type PreferenceColumn = 'matches_enabled' | 'tickets_enabled';
+export type PreferenceColumn =
+  | 'tickets_enabled'
+  | 'live_matches_enabled'
+  | 'kickoff_enabled'
+  | 'goal_for_enabled'
+  | 'goal_against_enabled'
+  | 'half_time_enabled'
+  | 'second_half_started_enabled'
+  | 'full_time_enabled';
 
-export function preferenceColumnFor(eventType: NotificationEventType): PreferenceColumn {
-  return eventType === 'match_access_open' ? 'tickets_enabled' : 'matches_enabled';
+const LIVE_MATCH_EVENT_COLUMN: Record<Exclude<NotificationEventType, 'match_access_open'>, PreferenceColumn> = {
+  kickoff: 'kickoff_enabled',
+  goal: 'goal_for_enabled',
+  goal_against: 'goal_against_enabled',
+  half_time: 'half_time_enabled',
+  second_half_started: 'second_half_started_enabled',
+  full_time: 'full_time_enabled',
+};
+
+/**
+ * Colunas que TODAS precisam estar `true` pra um usuário ser elegível a
+ * este `eventType`. `match_access_open` só depende de `tickets_enabled`
+ * (categoria própria). Qualquer um dos 6 eventos de partida depende do
+ * master toggle `live_matches_enabled` E do sub-toggle específico do
+ * evento — se o master estiver OFF, nenhum dos 6 é enviado, mesmo que o
+ * sub-toggle individual esteja ON (regra explícita do produto).
+ */
+export function preferenceColumnsFor(eventType: NotificationEventType): PreferenceColumn[] {
+  if (eventType === 'match_access_open') return ['tickets_enabled'];
+  return ['live_matches_enabled', LIVE_MATCH_EVENT_COLUMN[eventType]];
 }
 
 export interface RecipientEligibilitySource {
-  /** user_ids com uma linha de preferência PARA este club_id, com a coluna do evento habilitada. */
-  explicitlyEligibleUserIds(clubId: string, prefColumn: PreferenceColumn): Promise<string[]>;
+  /** user_ids com uma linha de preferência PARA este club_id, com TODAS as `prefColumns` habilitadas (AND). */
+  explicitlyEligibleUserIds(clubId: string, prefColumns: PreferenceColumn[]): Promise<string[]>;
   /** user_ids com QUALQUER linha de preferência, em qualquer clube. */
   usersWithAnyPreferenceRow(): Promise<string[]>;
   /** tokens ativos JÁ FILTRADOS por club_id — nunca todos os tokens do sistema. */
@@ -62,10 +100,10 @@ export async function fetchRecipientTokens(
   clubId: string,
   eventType: NotificationEventType,
 ): Promise<TokenRow[]> {
-  const prefColumn = preferenceColumnFor(eventType);
+  const prefColumns = preferenceColumnsFor(eventType);
 
   const [explicitlyEligibleIds, anyPreferenceIds, tokens] = await Promise.all([
-    source.explicitlyEligibleUserIds(clubId, prefColumn),
+    source.explicitlyEligibleUserIds(clubId, prefColumns),
     source.usersWithAnyPreferenceRow(),
     source.activeTokensForClub(clubId),
   ]);

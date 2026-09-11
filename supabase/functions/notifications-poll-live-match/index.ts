@@ -1,20 +1,32 @@
-// Push Notifications V1 — monitor de partida ao vivo (gol do Goiás + fim de
-// jogo). Cole no dashboard do Supabase (nome "notifications-poll-live-match")
-// e agende via pg_cron a cada 1 minuto (ver supabase/notifications_cron.sql).
-// Roda em Deno.
+// Push Notifications — monitor de partida ao vivo. Cole no dashboard do
+// Supabase (nome "notifications-poll-live-match") e agende via pg_cron a
+// cada 1 minuto (ver supabase/notifications_cron.sql). Roda em Deno.
+//
+// 6 eventos canônicos de partida, todos com placar (ver
+// `_shared/live_match_events.ts` pra lógica pura/testável):
+//   kickoff | goal | goal_against | half_time | second_half_started | full_time
 //
 // Sai cedo (sem chamar o Worker) sempre que não há nenhuma partida dentro da
 // janela kickoff-5min..ends_at — a imensa maioria das execuções é isso.
 // Cadência de 1 min bate com o cache de 60s do Worker: pedir mais rápido não
 // traria dado mais novo.
 //
-// Fingerprint de gol é HEURÍSTICA, não garantia — a OneFootball não dá
-// event_id. Ver comentário em `buildGoalDedupeKey` pros casos conhecidos que
-// ela não cobre (VAR revertendo o evento, correção de minuto).
+// kickoff/half_time/second_half_started nunca são inferidos por horário ou
+// minuto — só por TRANSIÇÃO REAL do status normalizado do provider
+// (`match_monitor_sessions.last_provider_status`, ver
+// `detectStatusTransitionEvents`). Fingerprint de gol é HEURÍSTICA, não
+// garantia — a OneFootball não dá event_id (ver comentário em
+// `buildGoalDedupeKey` pros casos conhecidos que ela não cobre: VAR
+// revertendo o evento, correção de minuto).
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
-import { resolveClubServerConfigByClubId } from '../_shared/club_server_config.ts';
+import { resolveClubServerConfigByClubId, type ClubServerConfig } from '../_shared/club_server_config.ts';
+import {
+  buildGoalDedupeKey,
+  detectGoals,
+  detectStatusTransitionEvents,
+  type FixtureEvent,
+} from '../_shared/live_match_events.ts';
 
-const WORKER_BASE_URL = 'https://goias-app.lucasdiogo1234.workers.dev';
 const PRE_KICKOFF_BUFFER_MINUTES = 5;
 
 function jsonResponse(body: unknown, status: number): Response {
@@ -22,14 +34,6 @@ function jsonResponse(body: unknown, status: number): Response {
     status,
     headers: { 'Content-Type': 'application/json' },
   });
-}
-
-interface FixtureEvent {
-  minute: string;
-  side: 'home' | 'away';
-  type: 'goal' | 'yellow_card' | 'red_card' | 'substitution' | 'other';
-  player: string | null;
-  detail: string | null;
 }
 
 interface FixtureMatch {
@@ -46,69 +50,34 @@ interface FixtureResponse {
   events: FixtureEvent[];
 }
 
-/** "45+2" -> 4502, "90" -> 9000, "37" -> 3700 — ordenável, nunca muda pro
- * mesmo evento real (não depende de campo mutável como o nome do autor). */
-function normalizedMinute(raw: string): number {
-  const [base, stoppage] = raw.split('+');
-  const baseNum = Number.parseInt(base, 10) || 0;
-  const stoppageNum = stoppage ? Number.parseInt(stoppage, 10) || 0 : 0;
-  return baseNum * 100 + stoppageNum;
-}
+/** Insere o evento (upsert com dedupe por constraint física
+ * `ne_club_event_dedupe_uidx`) — mesmo helper pros 6 tipos, nunca 6 blocos
+ * de I/O repetidos. `ignoreDuplicates: true` faz o segundo poll pro mesmo
+ * evento virar no-op silencioso (o retorno vazio de `.select('id')` é
+ * como sabemos que já existia). */
+async function upsertNotificationEvent(
+  admin: ReturnType<typeof createClient>,
+  params: { matchId: string; clubId: string; eventType: string; dedupeKey: string; payload: Record<string, unknown> },
+): Promise<boolean> {
+  const { data: inserted, error } = await admin
+    .from('notification_events')
+    .upsert(
+      {
+        match_id: params.matchId,
+        club_id: params.clubId,
+        event_type: params.eventType,
+        dedupe_key: params.dedupeKey,
+        payload: params.payload,
+      },
+      { onConflict: 'club_id,event_type,dedupe_key', ignoreDuplicates: true },
+    )
+    .select('id');
 
-/**
- * Reconstrói, a partir do array de eventos ATUAL (nunca incrementalmente),
- * a posição do gol entre os gols do clube ativo e o placar corrido até ali
- * — usando só os eventos de gol de AMBOS os lados, ordenados por minuto
- * normalizado com a posição no array como desempate estável. Enriquecer
- * `player` depois (null -> nome) não muda nenhum desses componentes, então
- * o dedupe_key não muda.
- *
- * `clubCode` entra no dedupe_key (M3.3) — `NOTIFICATION_DEDUPE_KEY_SCOPE_
- * BLOCKED`: `UNIQUE(event_type, dedupe_key)` ainda não inclui `club_id` de
- * verdade (M2.2B resolve isso na chave física), então embutir o código do
- * clube na STRING é a única coisa que evita 2 clubes reais colidindo nessa
- * chave hoje — nunca mais hardcoded `'goias'` pra qualquer clube.
- *
- * Limitações conhecidas e aceitas (não há event_id na fonte pra evitar
- * isso): (1) se a OneFootball reverter um gol por VAR removendo-o do
- * array, esta função nunca vê o evento de novo — a push já enviada não é
- * desfeita; (2) se o provedor corrigir o minuto de um gol já visto, o
- * evento corrigido pode gerar um dedupe_key novo e, em tese, uma push
- * duplicada — risco aceito, não resolvível sem id estável do provedor.
- */
-function buildGoalDedupeKey(
-  matchId: string,
-  events: FixtureEvent[],
-  activeClubSide: 'home' | 'away',
-  targetIndex: number,
-  clubCode: string,
-): string {
-  const goalEvents = events
-    .map((event, index) => ({ event, index }))
-    .filter(({ event }) => event.type === 'goal')
-    .sort((a, b) => {
-      const minuteDiff = normalizedMinute(a.event.minute) - normalizedMinute(b.event.minute);
-      return minuteDiff !== 0 ? minuteDiff : a.index - b.index;
-    });
-
-  let homeGoals = 0;
-  let awayGoals = 0;
-  let activeClubOrdinal = 0;
-  let scoreAfter = '';
-
-  for (const { event, index } of goalEvents) {
-    if (event.side === 'home') homeGoals += 1;
-    else awayGoals += 1;
-    if (event.side === activeClubSide) activeClubOrdinal += 1;
-
-    if (index === targetIndex) {
-      scoreAfter = `${homeGoals}-${awayGoals}`;
-      break;
-    }
+  if (error) {
+    console.error(`poll-live-match: falha ao criar evento ${params.eventType}`, error.message);
+    return false;
   }
-
-  const target = events[targetIndex];
-  return `${matchId}|${clubCode}|${normalizedMinute(target.minute)}|${activeClubOrdinal}|${scoreAfter}`;
+  return (inserted ?? []).length > 0;
 }
 
 Deno.serve(async (_req) => {
@@ -157,7 +126,7 @@ Deno.serve(async (_req) => {
       // club_id nunca é opcional — sessão sem clube resolvível (código
       // desconhecido, nunca visto neste registry) é pulada com log, NUNCA
       // tratada como Goiás por omissão (NO_SERVER_CROSS_CLUB_FALLBACK).
-      const clubConfig = resolveClubServerConfigByClubId(session.club_id);
+      const clubConfig: ClubServerConfig | undefined = resolveClubServerConfigByClubId(session.club_id);
       if (!clubConfig) {
         console.error('poll-live-match: club_id desconhecido, sessão pulada', session.match_id, session.club_id);
         continue;
@@ -175,7 +144,7 @@ Deno.serve(async (_req) => {
       const rawId = session.match_id.startsWith('onef-')
         ? session.match_id.slice('onef-'.length)
         : session.match_id;
-      const fixtureRes = await fetch(`${WORKER_BASE_URL}/api/football/fixtures/onef-${rawId}`);
+      const fixtureRes = await fetch(`${clubConfig.workerBaseUrl}/api/football/fixtures/onef-${rawId}`);
       if (!fixtureRes.ok) {
         console.error('poll-live-match: falha ao consultar fixture', session.match_id, fixtureRes.status);
         continue;
@@ -190,54 +159,61 @@ Deno.serve(async (_req) => {
             ? 'away'
             : null;
 
+      const scorePayload = {
+        homeTeamName: match.homeTeam.name,
+        awayTeamName: match.awayTeam.name,
+        homeScore: match.homeScore,
+        awayScore: match.awayScore,
+        activeClubSide,
+      };
+
+      // 1) Transições de status reais — kickoff / intervalo / 2º tempo.
+      // Nunca por horário (`currentTime >= scheduledKickoff`) nem por
+      // minuto (`minute >= 46`) — só a mudança de status entre este poll
+      // e o anterior, persistida em `last_provider_status`.
+      const previousStatus: string | null = session.last_provider_status ?? null;
+      const statusEvents = detectStatusTransitionEvents(previousStatus, match.status);
+      for (const eventType of statusEvents) {
+        const created = await upsertNotificationEvent(admin, {
+          matchId: session.match_id,
+          clubId: session.club_id,
+          eventType,
+          dedupeKey: `${session.match_id}|${clubConfig.code}`,
+          payload: scorePayload,
+        });
+        if (created) {
+          anyEventCreated = true;
+          console.log(`${eventType} detected`, session.match_id);
+        }
+      }
+
+      // 2) Gols — GOAL_FOR e GOAL_AGAINST, generalizado por
+      // `activeClubSide` (nunca hardcoded pro time da casa).
       if (activeClubSide) {
-        const activeClubGoalIndexes = events
-          .map((event, index) => ({ event, index }))
-          .filter(({ event }) => event.type === 'goal' && event.side === activeClubSide);
-
+        const goals = detectGoals(events, activeClubSide);
         await Promise.all(
-          activeClubGoalIndexes.map(async ({ event, index }) => {
-            const dedupeKey = buildGoalDedupeKey(session.match_id, events, activeClubSide, index, clubConfig.code);
-            const goalPayload = {
-              homeTeamName: match.homeTeam.name,
-              awayTeamName: match.awayTeam.name,
-              homeScore: match.homeScore,
-              awayScore: match.awayScore,
-              scorer: event.player,
-              minute: event.minute,
-              activeClubSide,
-            };
+          goals.map(async ({ event, index, eventType }) => {
+            const dedupeKey = buildGoalDedupeKey({ matchId: session.match_id, events, targetIndex: index, clubCode: clubConfig.code });
+            const goalPayload = { ...scorePayload, scorer: event.player, minute: event.minute };
 
-            const { data: inserted, error } = await admin
-              .from('notification_events')
-              .upsert(
-                {
-                  match_id: session.match_id,
-                  club_id: session.club_id,
-                  event_type: 'goal',
-                  dedupe_key: dedupeKey,
-                  payload: goalPayload,
-                },
-                // M3.4: conflict tenant-aware (bridge ne_club_event_dedupe_uidx).
-                { onConflict: 'club_id,event_type,dedupe_key', ignoreDuplicates: true },
-              )
-              .select('id');
-
-            if (error) {
-              console.error('poll-live-match: falha ao criar evento goal', error.message);
-            } else if (inserted && inserted.length > 0) {
+            const created = await upsertNotificationEvent(admin, {
+              matchId: session.match_id,
+              clubId: session.club_id,
+              eventType,
+              dedupeKey,
+              payload: goalPayload,
+            });
+            if (created) {
               anyEventCreated = true;
-              console.log('goal detected', session.match_id, dedupeKey);
+              console.log(`${eventType} detected`, session.match_id, dedupeKey);
             } else {
               // Já existia (ex.: scorer preenchido depois) — atualiza só o
               // payload, sem tocar em status/detected_at.
-              // M3.4: dedupe lookup também tenant-scoped (club_id + event_type
-              // + dedupe_key = a bridge física ne_club_event_dedupe_uidx).
               await admin
                 .from('notification_events')
                 .update({ payload: goalPayload })
                 .eq('club_id', session.club_id)
-                .eq('event_type', 'goal')
+                .eq('event_type', eventType)
                 .eq('dedupe_key', dedupeKey);
             }
           }),
@@ -246,38 +222,23 @@ Deno.serve(async (_req) => {
         console.warn('poll-live-match: não foi possível identificar o lado do clube ativo', session.match_id);
       }
 
+      // 3) Fim de jogo + encerramento da sessão.
       if (match.status === 'finished') {
-        const { data: inserted, error } = await admin
-          .from('notification_events')
-          .upsert(
-            {
-              match_id: session.match_id,
-              club_id: session.club_id,
-              event_type: 'full_time',
-              dedupe_key: `${session.match_id}|${clubConfig.code}`,
-              payload: {
-                homeTeamName: match.homeTeam.name,
-                awayTeamName: match.awayTeam.name,
-                homeScore: match.homeScore,
-                awayScore: match.awayScore,
-                activeClubSide,
-              },
-            },
-            // M3.4: conflict tenant-aware (bridge ne_club_event_dedupe_uidx).
-            { onConflict: 'club_id,event_type,dedupe_key', ignoreDuplicates: true },
-          )
-          .select('id');
-
-        if (error) {
-          console.error('poll-live-match: falha ao criar evento full_time', error.message);
-        } else if (inserted && inserted.length > 0) {
+        const created = await upsertNotificationEvent(admin, {
+          matchId: session.match_id,
+          clubId: session.club_id,
+          eventType: 'full_time',
+          dedupeKey: `${session.match_id}|${clubConfig.code}`,
+          payload: scorePayload,
+        });
+        if (created) {
           anyEventCreated = true;
           console.log('match finished', session.match_id);
         }
 
         await admin
           .from('match_monitor_sessions')
-          .update({ status: 'finished', last_polled_at: now.toISOString() })
+          .update({ status: 'finished', last_polled_at: now.toISOString(), last_provider_status: match.status })
           .eq('match_id', session.match_id)
           .eq('club_id', session.club_id);
       } else {
@@ -286,6 +247,7 @@ Deno.serve(async (_req) => {
           .update({
             last_polled_at: now.toISOString(),
             last_known_score: { homeScore: match.homeScore, awayScore: match.awayScore },
+            last_provider_status: match.status,
           })
           .eq('match_id', session.match_id)
           .eq('club_id', session.club_id);

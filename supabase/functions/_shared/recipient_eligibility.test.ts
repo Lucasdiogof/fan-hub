@@ -2,7 +2,8 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   fetchRecipientTokens,
   isActiveMember,
-  preferenceColumnFor,
+  preferenceColumnsFor,
+  type PreferenceColumn,
   type RecipientEligibilitySource,
   type TokenRow,
 } from './recipient_eligibility';
@@ -38,17 +39,22 @@ const TOKEN_LEGACY: TokenRow = {
 /** Fake in-memory de `RecipientEligibilitySource` — nunca dispara FCM real,
  * nunca fala com Postgres real. `activeTokensForClub` já filtra por
  * `club_id`, igual a query real faria (M4.1c) — o fake não recebe a lista
- * inteira de tokens do sistema, só o que a fonte real devolveria. */
+ * inteira de tokens do sistema, só o que a fonte real devolveria.
+ * `explicitlyEligibleUserIds` exige TODAS as colunas pedidas = true (AND),
+ * igual a implementação real faria encadeando `.eq(col, true)`. */
 function fakeSource(opts: {
-  preferences: Array<{ userId: string; clubId: string; column: 'matches_enabled' | 'tickets_enabled'; enabled: boolean }>;
+  preferences: Array<{ userId: string; clubId: string; column: PreferenceColumn; enabled: boolean }>;
   tokens: TokenRow[];
   memberships?: Array<{ userId: string; clubId: string }>;
 }): RecipientEligibilitySource {
   return {
-    async explicitlyEligibleUserIds(clubId, prefColumn) {
-      return opts.preferences
-        .filter((p) => p.clubId === clubId && p.column === prefColumn && p.enabled)
-        .map((p) => p.userId);
+    async explicitlyEligibleUserIds(clubId, prefColumns) {
+      const usersInClub = new Set(opts.preferences.filter((p) => p.clubId === clubId).map((p) => p.userId));
+      return [...usersInClub].filter((userId) =>
+        prefColumns.every((column) =>
+          opts.preferences.some((p) => p.userId === userId && p.clubId === clubId && p.column === column && p.enabled),
+        ),
+      );
     },
     async usersWithAnyPreferenceRow() {
       return [...new Set(opts.preferences.map((p) => p.userId))];
@@ -62,18 +68,28 @@ function fakeSource(opts: {
   };
 }
 
-describe('preferenceColumnFor', () => {
-  it('match_access_open -> tickets_enabled, goal/full_time -> matches_enabled', () => {
-    expect(preferenceColumnFor('match_access_open')).toBe('tickets_enabled');
-    expect(preferenceColumnFor('goal')).toBe('matches_enabled');
-    expect(preferenceColumnFor('full_time')).toBe('matches_enabled');
+describe('preferenceColumnsFor', () => {
+  it('match_access_open -> só tickets_enabled', () => {
+    expect(preferenceColumnsFor('match_access_open')).toEqual(['tickets_enabled']);
+  });
+
+  it('cada evento de partida -> master (live_matches_enabled) + sub-coluna específica', () => {
+    expect(preferenceColumnsFor('kickoff')).toEqual(['live_matches_enabled', 'kickoff_enabled']);
+    expect(preferenceColumnsFor('goal')).toEqual(['live_matches_enabled', 'goal_for_enabled']);
+    expect(preferenceColumnsFor('goal_against')).toEqual(['live_matches_enabled', 'goal_against_enabled']);
+    expect(preferenceColumnsFor('half_time')).toEqual(['live_matches_enabled', 'half_time_enabled']);
+    expect(preferenceColumnsFor('second_half_started')).toEqual(['live_matches_enabled', 'second_half_started_enabled']);
+    expect(preferenceColumnsFor('full_time')).toEqual(['live_matches_enabled', 'full_time_enabled']);
   });
 });
 
 describe('fetchRecipientTokens — elegibilidade por usuário (M4.1, camada 1)', () => {
-  it('event clubA + user A subscribed clubA -> recebe', async () => {
+  it('event clubA + user A com live_matches_enabled + goal_for_enabled -> recebe', async () => {
     const source = fakeSource({
-      preferences: [{ userId: 'user-a', clubId: CLUB_A, column: 'matches_enabled', enabled: true }],
+      preferences: [
+        { userId: 'user-a', clubId: CLUB_A, column: 'live_matches_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'goal_for_enabled', enabled: true },
+      ],
       tokens: [TOKEN_A],
     });
     const recipients = await fetchRecipientTokens(source, CLUB_A, 'goal');
@@ -89,7 +105,10 @@ describe('fetchRecipientTokens — elegibilidade por usuário (M4.1, camada 1)',
     // está barrando.
     const tokenBUserInClubA: TokenRow = { ...TOKEN_B, id: 'tok-b-in-a', club_id: CLUB_A };
     const source = fakeSource({
-      preferences: [{ userId: 'user-b', clubId: CLUB_B, column: 'matches_enabled', enabled: true }],
+      preferences: [
+        { userId: 'user-b', clubId: CLUB_B, column: 'live_matches_enabled', enabled: true },
+        { userId: 'user-b', clubId: CLUB_B, column: 'goal_for_enabled', enabled: true },
+      ],
       tokens: [tokenBUserInClubA],
     });
     const recipients = await fetchRecipientTokens(source, CLUB_A, 'goal');
@@ -107,17 +126,22 @@ describe('fetchRecipientTokens — elegibilidade por usuário (M4.1, camada 1)',
 
   it('usuário que opta explicitamente por sair do clubA continua fora (opt-out original preservado, escopado)', async () => {
     const source = fakeSource({
-      preferences: [{ userId: 'user-a', clubId: CLUB_A, column: 'matches_enabled', enabled: false }],
+      preferences: [
+        { userId: 'user-a', clubId: CLUB_A, column: 'live_matches_enabled', enabled: false },
+        { userId: 'user-a', clubId: CLUB_A, column: 'goal_for_enabled', enabled: true },
+      ],
       tokens: [TOKEN_A],
     });
     const recipients = await fetchRecipientTokens(source, CLUB_A, 'goal');
     expect(recipients).toEqual([]);
   });
 
-  it('coluna certa por tipo de evento: tickets_enabled=false não bloqueia goal/full_time (matches_enabled continua true)', async () => {
+  it('coluna certa por tipo de evento: tickets_enabled=false não bloqueia goal/full_time (categorias nunca se misturam)', async () => {
     const source = fakeSource({
       preferences: [
-        { userId: 'user-a', clubId: CLUB_A, column: 'matches_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'live_matches_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'goal_for_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'full_time_enabled', enabled: true },
         { userId: 'user-a', clubId: CLUB_A, column: 'tickets_enabled', enabled: false },
       ],
       tokens: [TOKEN_A],
@@ -127,6 +151,37 @@ describe('fetchRecipientTokens — elegibilidade por usuário (M4.1, camada 1)',
 
     const ticketRecipients = await fetchRecipientTokens(source, CLUB_A, 'match_access_open');
     expect(ticketRecipients).toEqual([]);
+  });
+
+  it('MASTER TOGGLE: live_matches_enabled=false bloqueia TODOS os 6 eventos de partida, mesmo com os sub-toggles individuais em true', async () => {
+    const source = fakeSource({
+      preferences: [
+        { userId: 'user-a', clubId: CLUB_A, column: 'live_matches_enabled', enabled: false },
+        { userId: 'user-a', clubId: CLUB_A, column: 'kickoff_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'goal_for_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'goal_against_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'half_time_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'second_half_started_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'full_time_enabled', enabled: true },
+      ],
+      tokens: [TOKEN_A],
+    });
+    for (const eventType of ['kickoff', 'goal', 'goal_against', 'half_time', 'second_half_started', 'full_time'] as const) {
+      expect(await fetchRecipientTokens(source, CLUB_A, eventType)).toEqual([]);
+    }
+  });
+
+  it('GRANULARIDADE: master ON + goal_for ON + goal_against OFF -> recebe gol do próprio clube, não recebe gol adversário', async () => {
+    const source = fakeSource({
+      preferences: [
+        { userId: 'user-a', clubId: CLUB_A, column: 'live_matches_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'goal_for_enabled', enabled: true },
+        { userId: 'user-a', clubId: CLUB_A, column: 'goal_against_enabled', enabled: false },
+      ],
+      tokens: [TOKEN_A],
+    });
+    expect((await fetchRecipientTokens(source, CLUB_A, 'goal')).map((r) => r.id)).toEqual(['tok-a']);
+    expect(await fetchRecipientTokens(source, CLUB_A, 'goal_against')).toEqual([]);
   });
 });
 
@@ -247,7 +302,7 @@ describe('fetchRecipientTokens — entrega por TOKEN (M4.1c, camada 2 — o gap 
   it('FABRICADO: nenhum FCM real é chamado — o fake source nunca faz fetch/rede', async () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch');
     const source = fakeSource({
-      preferences: [{ userId: 'user-a', clubId: CLUB_A, column: 'matches_enabled', enabled: true }],
+      preferences: [{ userId: 'user-a', clubId: CLUB_A, column: 'live_matches_enabled', enabled: true }],
       tokens: [TOKEN_A],
     });
     await fetchRecipientTokens(source, CLUB_A, 'goal');

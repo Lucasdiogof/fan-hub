@@ -624,13 +624,56 @@ class AppLocalizationsEs extends AppLocalizations {
   String get settingsNotificationsTitle => 'NOTIFICACIONES';
 
   @override
-  String notificationsMatchesTitle(String club) {
-    return 'Partidos del $club';
+  String get notificationsLiveMatchesTitle => 'Partidos en vivo';
+
+  @override
+  String notificationsLiveMatchesDescription(String club) {
+    return 'Activa para recibir los avisos de abajo en tiempo real, con el marcador del $club.';
   }
 
   @override
-  String get notificationsMatchesDescription =>
-      'Goles y resultado final en tiempo real.';
+  String get notificationsKickoffTitle => 'Inicio del partido';
+
+  @override
+  String get notificationsKickoffDescription =>
+      'Aviso apenas comience el partido.';
+
+  @override
+  String notificationsGoalForTitle(String club) {
+    return 'Goles del $club';
+  }
+
+  @override
+  String notificationsGoalForDescription(String club) {
+    return 'Aviso por cada gol marcado por el $club.';
+  }
+
+  @override
+  String get notificationsGoalAgainstTitle => 'Goles del rival';
+
+  @override
+  String get notificationsGoalAgainstDescription =>
+      'Aviso por cada gol recibido.';
+
+  @override
+  String get notificationsHalfTimeTitle => 'Entretiempo';
+
+  @override
+  String get notificationsHalfTimeDescription =>
+      'Aviso en el entretiempo, con el marcador parcial.';
+
+  @override
+  String get notificationsSecondHalfTitle => 'Inicio del segundo tiempo';
+
+  @override
+  String get notificationsSecondHalfDescription =>
+      'Aviso cuando comience el segundo tiempo.';
+
+  @override
+  String get notificationsFullTimeTitle => 'Fin del partido';
+
+  @override
+  String get notificationsFullTimeDescription => 'Aviso con el marcador final.';
 
   @override
   String get notificationsTicketsTitle => 'Entradas y check-in';

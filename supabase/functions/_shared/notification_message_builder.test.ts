@@ -206,6 +206,62 @@ describe('buildNotificationMessage — golden compatibility contra o código rea
   });
 });
 
+describe('buildNotificationMessage — os 6 eventos de partida ao vivo carregam o placar', () => {
+  it('kickoff: título fixo, corpo com placar 0x0', () => {
+    const message = buildNotificationMessage(
+      'kickoff',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 0, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('⚽ Começou!');
+    expect(message.body).toBe('Goiás 0 x 0 Vila Nova');
+  });
+
+  it('goal_against: nome do adversário resolvido por activeClubSide, nunca "Goiás" no título', () => {
+    const message = buildNotificationMessage(
+      'goal_against',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('⚽ Gol do Vila Nova');
+    expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
+  });
+
+  it('goal_against com Goiás visitante: adversário é o mandante', () => {
+    const message = buildNotificationMessage(
+      'goal_against',
+      { homeTeamName: 'Vila Nova', awayTeamName: 'Goiás', homeScore: 1, awayScore: 0, activeClubSide: 'away' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('⚽ Gol do Vila Nova');
+  });
+
+  it('half_time: placar parcial no corpo', () => {
+    const message = buildNotificationMessage(
+      'half_time',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('⏸ Intervalo');
+    expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
+  });
+
+  it('second_half_started: placar parcial no corpo', () => {
+    const message = buildNotificationMessage(
+      'second_half_started',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('▶️ Começou o segundo tempo');
+    expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
+  });
+});
+
 describe('buildNotificationMessage — clube sintético produz sua própria copy, nunca "Goiás"/"Verdão"', () => {
   it('goal title do club-b usa o nome do club-b, nunca "GOIÁS"', () => {
     const message = buildNotificationMessage(

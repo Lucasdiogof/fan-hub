@@ -19,6 +19,7 @@ import {
   type RecipientEligibilitySource,
   type TokenRow,
 } from '../_shared/recipient_eligibility.ts';
+import { isInvalidTokenError } from '../_shared/fcm_dispatch_rules.ts';
 
 const STUCK_PROCESSING_MINUTES = 5;
 const SEND_CONCURRENCY = 30;
@@ -30,12 +31,38 @@ function jsonResponse(body: unknown, status: number): Response {
   });
 }
 
+type LiveMatchEventType = 'kickoff' | 'goal' | 'goal_against' | 'half_time' | 'second_half_started' | 'full_time';
+
 interface NotificationEvent {
   id: string;
   match_id: string;
   club_id: string;
-  event_type: 'match_access_open' | 'goal' | 'full_time';
+  event_type: 'match_access_open' | LiveMatchEventType;
   payload: Record<string, unknown>;
+}
+
+const LIVE_MATCH_EVENT_TYPES: readonly LiveMatchEventType[] = [
+  'kickoff',
+  'goal',
+  'goal_against',
+  'half_time',
+  'second_half_started',
+  'full_time',
+];
+
+/** Canal Android por tipo: os 6 eventos de partida ao vivo (kickoff, gol a
+ * favor/contra, intervalo, 2º tempo, fim) usam um canal PRÓPRIO com
+ * `IMPORTANCE_HIGH`/heads-up (`live_match_alerts_v2` — versionado porque o
+ * Android nunca atualiza a importância de um canal já criado no aparelho
+ * com `IMPORTANCE_DEFAULT`, só um channel_id novo resolve isso). Ingressos/
+ * check-in (`match_access_open`) continua no canal antigo
+ * (`${code}_matches`, `IMPORTANCE_DEFAULT`) — categoria diferente, nunca
+ * precisou de heads-up. Ver `android/app/src/main/kotlin/.../MainActivity.kt`
+ * pro canal correspondente sendo criado no client. */
+function channelIdFor(eventType: NotificationEvent['event_type'], clubConfig: ClubServerConfig): string {
+  return LIVE_MATCH_EVENT_TYPES.includes(eventType as LiveMatchEventType)
+    ? `${clubConfig.code}_live_match_alerts_v2`
+    : `${clubConfig.code}_matches`;
 }
 
 // Adapta o `SupabaseClient` real pra `RecipientEligibilitySource` — a
@@ -44,12 +71,15 @@ interface NotificationEvent {
 // fiozinho de I/O real.
 function supabaseRecipientEligibilitySource(admin: SupabaseClient): RecipientEligibilitySource {
   return {
-    async explicitlyEligibleUserIds(clubId, prefColumn) {
-      const { data, error } = await admin
-        .from('user_notification_preferences')
-        .select('user_id')
-        .eq('club_id', clubId)
-        .eq(prefColumn, true);
+    async explicitlyEligibleUserIds(clubId, prefColumns) {
+      // Todas as colunas pedidas precisam ser `true` (AND) — pros 6 eventos
+      // de partida isso é sempre [master, sub-coluna do evento], nunca só
+      // uma. Cada `.eq()` encadeado é mais uma condição AND na mesma query.
+      let query = admin.from('user_notification_preferences').select('user_id').eq('club_id', clubId);
+      for (const column of prefColumns) {
+        query = query.eq(column, true);
+      }
+      const { data, error } = await query;
       if (error) {
         console.error('dispatch: falha ao ler preferências (clube)', error.message);
         return [];
@@ -109,6 +139,7 @@ async function sendFcm(
   message: { title: string; body: string; type: string },
   matchId: string,
   clubConfig: ClubServerConfig,
+  eventType: NotificationEvent['event_type'],
 ): Promise<{ ok: boolean; invalidToken: boolean; error?: string }> {
   const res = await fetch(`https://fcm.googleapis.com/v1/projects/${projectId}/messages:send`, {
     method: 'POST',
@@ -118,9 +149,11 @@ async function sendFcm(
         token,
         notification: { title: message.title, body: message.body },
         data: { type: message.type, matchId },
-        // Canal por clube (M3.3, era hardcoded `'goias_matches'`) — nunca
-        // 2 clubes reais compartilhando o mesmo canal Android.
-        android: { priority: 'high', notification: { channel_id: `${clubConfig.code}_matches` } },
+        // Canal por clube E por categoria (M-live) — os 6 eventos de
+        // partida ao vivo vão no canal HIGH/heads-up, nunca no mesmo canal
+        // DEFAULT de ingressos/check-in. Nunca 2 clubes reais
+        // compartilhando o mesmo canal Android.
+        android: { priority: 'high', notification: { channel_id: channelIdFor(eventType, clubConfig) } },
         apns: { payload: { aps: { sound: 'default' } } },
       },
     }),
@@ -129,8 +162,7 @@ async function sendFcm(
   if (res.ok) return { ok: true, invalidToken: false };
 
   const errBody = await res.text();
-  const invalidToken = res.status === 404 || errBody.includes('UNREGISTERED') || errBody.includes('NOT_FOUND');
-  return { ok: false, invalidToken, error: errBody.slice(0, 300) };
+  return { ok: false, invalidToken: isInvalidTokenError(res.status, errBody), error: errBody.slice(0, 300) };
 }
 
 async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcmAuth: { token: string; projectId: string }) {
@@ -192,7 +224,7 @@ async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcm
         clubConfig,
         { isActiveMember: isMember },
       );
-      const result = await sendFcm(fcmAuth.projectId, fcmAuth.token, tokenRow.fcm_token, message, event.match_id, clubConfig);
+      const result = await sendFcm(fcmAuth.projectId, fcmAuth.token, tokenRow.fcm_token, message, event.match_id, clubConfig, event.event_type);
 
       if (result.ok) {
         await admin

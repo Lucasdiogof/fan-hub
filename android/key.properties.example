@@ -1,0 +1,17 @@
+# Copie este arquivo pra android/key.properties (NUNCA commitar o real —
+# já está no .gitignore) depois de gerar o keystore de release.
+#
+# Gerar o keystore UMA VEZ (rode você mesmo, num terminal seu — a senha
+# nunca deve passar por chat/IA):
+#
+#   keytool -genkeypair -v -keystore ~/fanhub-release.jks \
+#     -keyalg RSA -keysize 2048 -validity 10000 -alias fanhub
+#
+# Guarde ~/fanhub-release.jks e as senhas num cofre de senhas — se
+# perder, nunca mais consegue atualizar o app já publicado na Play Store
+# (precisa ser o MESMO keystore em toda atualização futura).
+
+storePassword=SUA_SENHA_DO_KEYSTORE
+keyPassword=SUA_SENHA_DA_CHAVE
+keyAlias=fanhub
+storeFile=/caminho/absoluto/pra/fanhub-release.jks
