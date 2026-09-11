@@ -99,6 +99,48 @@ verdade nos dois projetos Supabase (não só código no repo). Ver seção
   `supabase secrets set FCM_SERVICE_ACCOUNT_JSON="$(cat caminho.json)"` com
   o projeto Bragantino linkado). Sem isso, o Bragantino detecta os eventos
   (poll já funciona) mas nunca consegue enviar o push de verdade.
+  **Confirmado nesta rodada**: procurei localmente (Downloads/Desktop/
+  Projects) por um arquivo de service account e não achei nenhum — não dá
+  pra copiar automaticamente, precisa que você mesmo cole o conteúdo (via
+  Dashboard ou `supabase secrets set`, nunca por chat).
+
+## 🧪 Ferramenta de teste (sem device físico, sem esperar partida real)
+
+`supabase/functions/notifications-test-trigger` — deployada no Goiás,
+**fail-closed por padrão** (responde 401/403 até você configurar o secret
+`NOTIFICATIONS_TEST_SECRET` nesse projeto). Depois de configurar, chama
+assim:
+
+```bash
+curl -X POST "https://yonozsdgyrhgqrvydbnr.functions.supabase.co/notifications-test-trigger" \
+  -H "Authorization: Bearer <anon ou service_role key>" \
+  -H "x-test-secret: <o secret que você configurou>" \
+  -H "Content-Type: application/json" \
+  -d '{"clubCode":"goias","eventType":"goal","homeTeamName":"Goiás","awayTeamName":"Vila Nova","homeScore":1,"awayScore":0,"scorer":"Fulano","minute":"23"}'
+```
+
+Testa a cadeia real (preferências → canal → FCM) sem tocar em dado de
+partida real (`match_id` sempre `test-...`). Repita a mesma chamada com o
+mesmo `dedupeSuffix` pra provar que o dedupe não duplica push. Pra usar no
+Bragantino, deploye a mesma função lá e configure o secret nesse projeto
+também.
+
+## 🔐 Assinatura de release Android (preparado, não gerado)
+
+`android/app/build.gradle.kts` já lê `android/key.properties` (nunca
+versionado) e assina o release com ele quando existir — hoje ainda cai em
+debug signing (validado com build debug E release, ambos passando).
+Passo que só você pode fazer (senha nunca deve passar por chat/IA):
+
+```bash
+keytool -genkeypair -v -keystore ~/fanhub-release.jks \
+  -keyalg RSA -keysize 2048 -validity 10000 -alias fanhub
+cp android/key.properties.example android/key.properties
+# edite android/key.properties com o caminho real do .jks e as senhas
+```
+
+Depois disso, `flutter build appbundle --flavor goias --release` (e o
+equivalente Bragantino) já assina com o keystore real.
 
 ## ⚠️ Pendente — fora do Supabase (exigem Apple Developer / device físico / keystore)
 
