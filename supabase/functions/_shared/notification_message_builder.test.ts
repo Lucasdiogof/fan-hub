@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildNotificationMessage } from './notification_message_builder';
+import type { NotificationEventPayload, NotificationEventTypeInput } from './notification_message_builder';
 import type { ClubServerConfig } from './club_server_config';
 
 // Mesma config REAL usada em produção — nunca uma cópia com valores
@@ -37,7 +38,7 @@ describe('buildNotificationMessage — copy do Goiás preservada exatamente', ()
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('GOOOOOOL DO GOIÁS! ⚽💚');
+    expect(message.title).toBe('GOOOOOOL DO GOIÁS! ⚽');
   });
 
   it('victory title == "VITÓRIA DO VERDÃO!" — nunca "ESMERALDINO"', () => {
@@ -47,7 +48,26 @@ describe('buildNotificationMessage — copy do Goiás preservada exatamente', ()
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('VITÓRIA DO VERDÃO! 💚');
+    expect(message.title).toBe('VITÓRIA DO VERDÃO!');
+  });
+
+  it('nenhum título de gol/vitória usa emoji de cor (💚/❤️/🟢/🔴) — identidade vem do nome/ícone/branding, nunca de emoji', () => {
+    const goal = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    const victory = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 2, awayScore: 0, activeClubSide: 'home' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    for (const emoji of ['💚', '❤️', '🟢', '🔴']) {
+      expect(goal.title).not.toContain(emoji);
+      expect(victory.title).not.toContain(emoji);
+    }
   });
 
   it('a copy vem do ClubServerConfig, nunca de um literal dentro do builder — provado trocando os campos e vendo o título mudar junto', () => {
@@ -68,39 +88,40 @@ describe('buildNotificationMessage — copy do Goiás preservada exatamente', ()
       alteredConfig,
       { isActiveMember: false },
     );
-    expect(goal.title).toBe('GOOOOOOL DO OUTRO NOME! ⚽💚');
-    expect(victory.title).toBe('VITÓRIA DO OUTRO APELIDO! 💚');
+    expect(goal.title).toBe('GOOOOOOL DO OUTRO NOME! ⚽');
+    expect(victory.title).toBe('VITÓRIA DO OUTRO APELIDO!');
   });
 
-  it('empate/derrota nunca vira "VITÓRIA" — título cai pra "Fim de jogo"', () => {
+  it('empate/derrota nunca vira "VITÓRIA" — título cai pra "Fim de jogo 🏁"', () => {
     const message = buildNotificationMessage(
       'full_time',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('Fim de jogo');
+    expect(message.title).toBe('Fim de jogo 🏁');
   });
 });
 
 // ============================================================================
-// Golden compatibility — comparado string a string contra a implementação
-// REAL pré-M3.3, lida direto via `git show 7316afc:supabase/functions/
-// notifications-dispatch/index.ts` (HEAD antes de qualquer edição da M3.3),
-// nunca por inferência/memória. Os 5 literais abaixo são cópia exata do que
-// esse comando retornou — se algum divergir aqui, a M3.3 mudou copy real do
-// app publicado, não só renomeou campo interno.
+// Golden compatibility — checkin/tickets nunca mudaram desde pré-M3.3 (git
+// show 7316afc:supabase/functions/notifications-dispatch/index.ts), byte a
+// byte. `goalTitle`/`victoryTitle`/`fullTimeNonVictoryTitle` foram
+// ATUALIZADOS nesta rodada (remoção de emoji de cor — 💚/❤️/🟢/🔴 nunca mais
+// em título de gol/vitória; "Fim de jogo" ganhou o 🏁 neutro) — pedido
+// explícito do usuário, não regressão. Os valores abaixo são o NOVO
+// baseline, não mais o pré-M3.3 literal.
 // ============================================================================
 const GOLDEN_PRE_M33 = {
   checkinTitle: 'Check-in aberto',
   checkinBody: (opponent: string) => `O check-in pra ${opponent} já está disponível.`,
   ticketsTitle: 'Ingressos disponíveis',
   ticketsBody: (opponent: string) => `Os ingressos pra ${opponent} já estão à venda.`,
-  goalTitle: 'GOOOOOOL DO GOIÁS! ⚽💚',
+  goalTitle: 'GOOOOOOL DO GOIÁS! ⚽',
   goalBody: (home: string, homeScore: number, awayScore: number, away: string) =>
     `${home} ${homeScore} x ${awayScore} ${away}`,
-  victoryTitle: 'VITÓRIA DO VERDÃO! 💚',
-  fullTimeNonVictoryTitle: 'Fim de jogo',
+  victoryTitle: 'VITÓRIA DO VERDÃO!',
+  fullTimeNonVictoryTitle: 'Fim de jogo 🏁',
   fullTimeBodyVictorySuffix: ' Fim de jogo!',
   fullTimeBodyNonVictorySuffix: '.',
 };
@@ -214,18 +235,18 @@ describe('buildNotificationMessage — os 6 eventos de partida ao vivo carregam 
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('⚽ Começou!');
+    expect(message.title).toBe('Começou! ⚽');
     expect(message.body).toBe('Goiás 0 x 0 Vila Nova');
   });
 
-  it('goal_against: nome do adversário resolvido por activeClubSide, nunca "Goiás" no título', () => {
+  it('goal_against: nome do adversário resolvido por activeClubSide, nunca "Goiás" no título, e SEM emoji (só o gol a favor e os marcos temporais levam emoji)', () => {
     const message = buildNotificationMessage(
       'goal_against',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('⚽ Gol do Vila Nova');
+    expect(message.title).toBe('Gol do Vila Nova');
     expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
   });
 
@@ -236,7 +257,7 @@ describe('buildNotificationMessage — os 6 eventos de partida ao vivo carregam 
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('⚽ Gol do Vila Nova');
+    expect(message.title).toBe('Gol do Vila Nova');
   });
 
   it('half_time: placar parcial no corpo', () => {
@@ -246,7 +267,7 @@ describe('buildNotificationMessage — os 6 eventos de partida ao vivo carregam 
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('⏸ Intervalo');
+    expect(message.title).toBe('Intervalo ⏸️');
     expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
   });
 
@@ -257,8 +278,25 @@ describe('buildNotificationMessage — os 6 eventos de partida ao vivo carregam 
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('▶️ Começou o segundo tempo');
+    expect(message.title).toBe('Começou o segundo tempo ▶️');
     expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
+  });
+
+  it('nenhum dos 6 títulos de evento de partida usa emoji de cor (💚/❤️/🟢/🔴)', () => {
+    const events: Array<[NotificationEventTypeInput, NotificationEventPayload]> = [
+      ['kickoff', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 0, awayScore: 0 }],
+      ['goal', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 }],
+      ['goal_against', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' }],
+      ['half_time', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 }],
+      ['second_half_started', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 }],
+      ['full_time', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' }],
+    ];
+    for (const [eventType, payload] of events) {
+      const message = buildNotificationMessage(eventType, payload, GOIAS, { isActiveMember: false });
+      for (const emoji of ['💚', '❤️', '🟢', '🔴']) {
+        expect(message.title).not.toContain(emoji);
+      }
+    }
   });
 });
 
@@ -270,7 +308,7 @@ describe('buildNotificationMessage — clube sintético produz sua própria copy
       CLUB_B,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('GOOOOOOL DO CLUBE B! ⚽💚');
+    expect(message.title).toBe('GOOOOOOL DO CLUBE B! ⚽');
     expect(message.title).not.toContain('GOIÁS');
   });
 
@@ -281,8 +319,26 @@ describe('buildNotificationMessage — clube sintético produz sua própria copy
       CLUB_B,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('VITÓRIA DO TIME B! 💚');
+    expect(message.title).toBe('VITÓRIA DO TIME B!');
     expect(message.title).not.toContain('VERDÃO');
+  });
+
+  it('nenhum clube reutiliza emoji/texto de outro — goal e victory do Goiás e do club-b nunca coincidem', () => {
+    const goalGoias = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    const goalClubB = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'Clube B', awayTeamName: 'Adversário', homeScore: 1, awayScore: 0 },
+      CLUB_B,
+      { isActiveMember: false },
+    );
+    expect(goalGoias.title).not.toBe(goalClubB.title);
+    expect(goalClubB.title).not.toContain('Goiás'.toUpperCase());
+    expect(goalGoias.title).not.toContain('CLUBE B');
   });
 
   it('match_access_open: opponent é resolvido comparando contra clubConfig.shortName do PRÓPRIO clube, nunca "Goiás" fixo', () => {
