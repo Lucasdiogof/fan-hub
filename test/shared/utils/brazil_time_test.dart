@@ -7,6 +7,7 @@
 // dispositivo (`.toLocal()` é proibido pra isto, ver comentário no arquivo).
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/shared/utils/brazil_time.dart';
+import 'package:timezone/timezone.dart' as tz;
 
 void main() {
   setUpAll(initializeBrazilTimeZone);
@@ -84,4 +85,71 @@ void main() {
       },
     );
   });
+
+  group(
+    'contagem regressiva com o aparelho em fusos diferentes (spec 2026-09-11)',
+    () {
+      // Jogo às 19:30 de Brasília — mesmo instante real de sempre,
+      // independente de qual fuso o RELÓGIO DO APARELHO usa pra representar
+      // "agora". `TZDateTime.from` projeta o MESMO instante UTC em cada
+      // fuso (nunca cria um instante novo), simulando um aparelho
+      // configurado em Tóquio, Londres etc. no momento exato do kickoff.
+      final kickoff = parseKickoffInstant('2026-09-11T19:30:00')!;
+
+      test(
+        'a duração restante até o kickoff é EXATAMENTE igual não importa em '
+        'qual fuso o aparelho representa o "agora" atual',
+        () {
+          final referenceInstant = DateTime.utc(2026, 9, 11, 12);
+          final expected = kickoff.difference(referenceInstant);
+
+          const deviceTimeZones = [
+            'America/Sao_Paulo',
+            'America/New_York',
+            'Europe/London',
+            'Asia/Tokyo',
+            'Pacific/Auckland',
+          ];
+          for (final zoneName in deviceTimeZones) {
+            final location = tz.getLocation(zoneName);
+            final nowAsSeenByThatDevice = tz.TZDateTime.from(
+              referenceInstant,
+              location,
+            );
+            expect(
+              kickoff.difference(nowAsSeenByThatDevice),
+              expected,
+              reason: 'aparelho configurado em $zoneName',
+            );
+          }
+        },
+      );
+
+      test(
+        'o próprio kickoff, visto por um aparelho em qualquer fuso, ainda '
+        'aponta pro MESMO instante real (nunca um jogo "diferente")',
+        () {
+          const deviceTimeZones = [
+            'America/Sao_Paulo',
+            'America/New_York',
+            'Europe/London',
+            'Asia/Tokyo',
+            'Pacific/Auckland',
+          ];
+          for (final zoneName in deviceTimeZones) {
+            final location = tz.getLocation(zoneName);
+            final kickoffAsSeenByThatDevice = tz.TZDateTime.from(
+              kickoff,
+              location,
+            );
+            expect(
+              kickoffAsSeenByThatDevice.toUtc(),
+              kickoff,
+              reason: 'aparelho configurado em $zoneName',
+            );
+          }
+        },
+      );
+    },
+  );
 }
