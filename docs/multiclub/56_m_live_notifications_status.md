@@ -149,12 +149,18 @@ equivalente Bragantino) já assina com o keystore real.
    Notifications aparece (o `.entitlements` já existe, só falta a conta
    Apple Developer ligada). Gerar a APNs Auth Key (`.p8`) no Apple Developer
    e subir no Firebase Console (Cloud Messaging > APNs Authentication Key).
-2. **Teste em device físico** — ainda não feito (não tenho device físico
-   nesta sessão). Checklist mínimo por evento (`kickoff`, `goal`,
-   `goal_against`, `half_time`, `second_half_started`, `full_time`) × estado
-   do app (aberto/background/encerrado) × preferência (ON/OFF/master OFF).
-   Com o Goiás 100% pronto no backend, isso já pode ser testado numa
-   partida real hoje.
+2. **Teste em device físico — Android/Goiás: APROVADO pelo usuário** (via
+   `notifications-test-trigger`). Notificação chegou normalmente. Ao tocar
+   em "Ver"/na notificação, o app tentou abrir `/match/test-...` e deu erro
+   — **esperado**: o `matchId` do disparo de teste é sempre sintético
+   (`test-...`, de propósito, pra nunca poluir dado real), então a tela de
+   partida não acha fixture nenhuma pra mostrar. Isso NÃO é bug — só prova
+   que falta testar com um `matchId` real (ou esperar uma partida de
+   verdade) pra validar o passo "tap → abre a partida certa" ponta a ponta.
+   Ainda faltam: cobrir os outros 5 eventos explicitamente, os 3 estados
+   do app (aberto/background/encerrado) e as combinações de preferência
+   (ON/OFF/master OFF) — só o smoke inicial foi feito até aqui. Bragantino
+   ainda não testado (falta o secret FCM, ver acima).
 3. **Google Play**: release do Android ainda assina com a chave de debug
    (gap pré-existente, não desta rodada) — bloqueador real pra publicar na
    Play Store, precisa de keystore de release real.
