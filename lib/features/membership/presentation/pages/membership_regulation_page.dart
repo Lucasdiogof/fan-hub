@@ -5,23 +5,23 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/data/regulation_catalog.dart';
-import 'package:goias_app/features/membership/data/regulation_content.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_section.dart';
+import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
-/// Leitura só-consulta do Regulamento do Sócio Esmeralda — não depende do
-/// `MembershipRegistrationCubit`. Quem precisa saber se o usuário aceitou é
-/// a `MembershipReviewPage`, que tem seu próprio checkbox; esta tela só
-/// mostra o texto.
+/// Leitura só-consulta do Regulamento/Termo de Adesão do programa de sócio
+/// deste clube — não depende do `MembershipRegistrationCubit`. Quem
+/// precisa saber se o usuário aceitou é a `MembershipReviewPage`, que tem
+/// seu próprio checkbox; esta tela só mostra o texto.
 ///
-/// Conteúdo vem de `regulation_content.dart` (const Dart gerado a partir do
-/// asset local) — mesmo padrão de Termos de Uso/Política de Privacidade,
-/// sem depender de rede nem de uma tabela do Supabase. Antes dependia de
-/// `membership_regulation_versions`, e uma linha lá com conteúdo
-/// incompleto deixava a tela vazia mesmo com o fallback local certo —
-/// nunca mais essa classe de bug pra um texto que quase não muda.
+/// Conteúdo vem de `ClubConfig.membershipProgram` (const Dart por clube,
+/// gerado a partir de asset local no caso do Goiás) — mesmo padrão de
+/// Termos de Uso/Política de Privacidade, sem depender de rede nem de uma
+/// tabela do Supabase. Antes dependia de `membership_regulation_versions`,
+/// e uma linha lá com conteúdo incompleto deixava a tela vazia mesmo com o
+/// fallback local certo — nunca mais essa classe de bug pra um texto que
+/// quase não muda.
 class MembershipRegulationPage extends StatefulWidget {
   const MembershipRegulationPage({super.key});
 
@@ -31,8 +31,9 @@ class MembershipRegulationPage extends StatefulWidget {
 }
 
 class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
-  final _sectionKeys = {
-    for (final section in membershipRegulationSections)
+  late final _program = sl<ClubConfig>().membershipProgram;
+  late final _sectionKeys = {
+    for (final section in _program.regulationSections)
       section.index: GlobalKey(),
   };
 
@@ -99,7 +100,7 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                       const SizedBox(width: 6),
                       Text(
                         context.l10n.membershipRegulationEffectiveSince(
-                          _formatDate(RegulationCatalog.current.effectiveAt),
+                          _formatDate(_program.regulationVersion.effectiveAt),
                         ),
                         style: TextStyle(
                           fontSize: 12,
@@ -114,12 +115,12 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                     child: ListView(
                       children: [
                         _RegulationIndex(
-                          sections: membershipRegulationSections,
+                          sections: _program.regulationSections,
                           onTapSection: _goToSection,
                         ),
                         const SizedBox(height: AppSpacing.xxxl),
                         Text(
-                          membershipRegulationIntro,
+                          _program.regulationIntro,
                           style: TextStyle(
                             fontSize: 13.5,
                             height: 1.55,
@@ -129,17 +130,33 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                         const SizedBox(height: AppSpacing.xl),
                         Divider(color: colors.border),
                         const SizedBox(height: AppSpacing.xl),
-                        for (final section in membershipRegulationSections) ...[
+                        for (final section
+                            in _program.regulationSections) ...[
                           _RegulationSectionView(
                             key: _sectionKeys[section.index],
                             section: section,
                           ),
                           const SizedBox(height: AppSpacing.xl),
                           if (section.index !=
-                              membershipRegulationSections.last.index) ...[
+                              _program.regulationSections.last.index) ...[
                             Divider(color: colors.border),
                             const SizedBox(height: AppSpacing.xl),
                           ],
+                        ],
+                        if (_program.consentUrl != null) ...[
+                          const SizedBox(height: AppSpacing.xl),
+                          GestureDetector(
+                            onTap: () =>
+                                openExternalUrl(context, _program.consentUrl!),
+                            child: Text(
+                              'Ver termos oficiais do programa',
+                              style: TextStyle(
+                                fontSize: 12.5,
+                                fontWeight: FontWeight.w700,
+                                color: colors.primary,
+                              ),
+                            ),
+                          ),
                         ],
                         const SizedBox(height: AppSpacing.huge),
                       ],

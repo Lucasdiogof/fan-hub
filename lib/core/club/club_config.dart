@@ -5,6 +5,7 @@ import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
+import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/features/passport/domain/club_passport_content.dart';
 
 /// Configuração completa e IMUTÁVEL de um clube — a raiz de tudo que este
@@ -29,6 +30,7 @@ class ClubConfig {
     required this.capabilities,
     required this.productNames,
     required this.passportContent,
+    required this.membershipProgram,
     this.institutionalContent = const ClubInstitutionalContent(),
   });
 
@@ -38,6 +40,13 @@ class ClubConfig {
   final ClubIntegrations integrations;
   final ClubCapabilities capabilities;
   final ClubProductNaming productNames;
+
+  /// Planos/regulamento/pré-preenchimento do Sócio Torcedor — ver
+  /// [MembershipProgramConfig]. Obrigatório mesmo quando
+  /// `capabilities.hasMembership` é `false`, mesmo padrão de
+  /// [passportContent]: identidade de programa não tem valor neutro
+  /// razoável, cada clube escreve o seu ou não compila.
+  final MembershipProgramConfig membershipProgram;
 
   /// História/títulos/hino/parceiros — ver `ClubInstitutionalContent`.
   /// Default vazio: um clube sem `ClubConfig` explícito pra isto (nenhum

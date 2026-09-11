@@ -8,12 +8,16 @@ import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
+import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/club/data/bragantino_history_data.dart';
 import 'package:goias_app/features/club/data/bragantino_idols_data.dart';
 import 'package:goias_app/features/club/data/bragantino_songs_data.dart';
 import 'package:goias_app/features/club/data/bragantino_timeline_data.dart';
 import 'package:goias_app/features/club/data/bragantino_titles_data.dart';
+import 'package:goias_app/features/membership/data/bragantino_membership_plans_catalog.dart';
+import 'package:goias_app/features/membership/data/bragantino_regulation_catalog.dart';
+import 'package:goias_app/features/membership/data/bragantino_regulation_content.dart';
 import 'package:goias_app/features/partners/data/bragantino_partners_data.dart';
 import 'package:goias_app/features/passport/data/bragantino_passport_content.dart';
 
@@ -155,7 +159,8 @@ const _arenaStadiumReal = 'lib/assets/branding/bragantino/arena_stadium.png';
 // suave; nunca corta o conteúdo, só esmaece pra fora — pensado pra
 // compor sobre `brandDeep` (o fundo real do card), onde a vinheta
 // original já é quase da mesma cor.
-const _storeBannerReal = 'lib/assets/store_banner_blue.png';
+const _storeBannerReal =
+    'lib/assets/store/banners/bragantino/store_banner_blue.png';
 
 /// Fotos pro Quem Vestiu o Manto — as 10 do elenco atual são as MESMAS
 /// URLs do CDN oficial (`img.redbullbragantino.com`) já usadas em
@@ -375,7 +380,14 @@ const bragantinoClubConfig = ClubConfig(
   ),
   // Tudo FALSE + Arena vazia até haver dado/conteúdo real do Bragantino.
   capabilities: ClubCapabilities(
-    hasMembership: false,
+    // 2026-09-11: Massa Bruta (programa oficial de sócio-torcedor do Red
+    // Bull Bragantino) ligado — planos reais (Asas Bronze/Prata/Ouro/
+    // Platina) extraídos de massabruta.com.br/Planos, reaproveitando a
+    // MESMA arquitetura/backend do Sócio Esmeralda (ver
+    // `MembershipProgramConfig` abaixo e `BragantinoMembershipPlansCatalog`).
+    // Continua `membershipCommerceMode: demo` — mesma estratégia do Goiás,
+    // nenhuma cobrança real ainda.
+    hasMembership: true,
     // 2026-09-09: catálogo REAL coletado da Red Bull Shop (143 produtos,
     // 497 SKUs, 265 imagens locais — ver tooling/bragantino_store/),
     // isolado por `ClubAssets.storeCatalogAssetPath`, zero produto/asset do
@@ -446,10 +458,10 @@ const bragantinoClubConfig = ClubConfig(
       'guess_player',
       'lineup',
     },
-    // Todas as 3 capabilities de comércio já estão false acima — o modo
-    // não importa funcionalmente ainda, mas precisa de um valor (nenhum
-    // campo de ClubCapabilities é opcional). demo é o valor seguro/real
-    // pros dois clubes hoje, nenhum tem gateway/bilheteria/API oficial.
+    // `demo` nos 3 — nenhuma das 3 áreas (Loja/Ingressos/Sócio) tem
+    // gateway/bilheteria/API oficial de pagamento ainda, mesmo já tendo
+    // dado real (Loja, Sócio) ou estando habilitada (`hasStore`/
+    // `hasMembership`). Mesmo valor pros dois clubes hoje.
     storeCommerceMode: CommerceMode.demo,
     ticketCommerceMode: CommerceMode.demo,
     membershipCommerceMode: CommerceMode.demo,
@@ -458,9 +470,34 @@ const bragantinoClubConfig = ClubConfig(
     arenaName: 'Arena',
     passportName: 'Passaporte',
     storeName: 'RedBull Shop',
-    membershipProgramName: 'Sócio',
+    // Nome oficial do programa de sócio-torcedor do Red Bull Bragantino
+    // (massabruta.com.br) — nunca terminologia do Goiás ("Sócio
+    // Esmeralda").
+    membershipProgramName: 'Massa Bruta',
   ),
   passportContent: BragantinoPassportContent.content,
+  // Mesma arquitetura do Sócio Esmeralda (`MembershipProgramConfig`),
+  // dados próprios do Massa Bruta — ver auditoria completa em
+  // `BragantinoMembershipPlansCatalog`/`bragantino_regulation_content.dart`
+  // pra fonte, data e lacunas conhecidas (Próxima Geração/Asas Diamante
+  // ficam de fora até confirmação oficial).
+  membershipProgram: MembershipProgramConfig(
+    plans: BragantinoMembershipPlansCatalog.plans,
+    regulationVersion: BragantinoRegulationCatalog.current,
+    regulationIntro: bragantinoMembershipRegulationIntro,
+    regulationSections: bragantinoMembershipRegulationSections,
+    sourceLabel:
+        'Planos extraídos manualmente de massabruta.com.br/Planos em '
+        '11/09/2026 — sem API pública nem estado embutido no site pra '
+        'buscar isto ao vivo (ver auditoria).',
+    sourceUpdatedAt: DateTime(2026, 9, 11),
+    // Diferente do Sócio Esmeralda: aqui o titular já chega com o
+    // formulário pré-preenchido a partir do perfil do app (pedido
+    // explícito da spec M4 Massa Bruta §9) — sempre revisável/editável.
+    prefillFromProfile: true,
+    consentUrl: 'https://massabruta.com.br/Home/Regulamento',
+    externalUrl: 'https://massabruta.com.br/Planos',
+  ),
   institutionalContent: ClubInstitutionalContent(
     history: BragantinoHistoryData.sections,
     timeline: BragantinoTimelineData.events,

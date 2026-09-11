@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
@@ -39,6 +40,8 @@ class _MembershipPlansCatalogPageState
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final program = sl<ClubConfig>().membershipProgram;
+    final plans = program.plans;
     return PopScope(
       canPop: !_opening,
       child: Scaffold(
@@ -65,17 +68,33 @@ class _MembershipPlansCatalogPageState
                     const SizedBox(height: AppSpacing.xl),
                     Expanded(
                       child: ListView.separated(
-                        itemCount: MembershipPlansCatalog.plans.length,
+                        itemCount: plans.length,
                         separatorBuilder: (_, _) =>
                             const SizedBox(height: AppSpacing.md),
                         itemBuilder: (context, index) {
-                          final plan = MembershipPlansCatalog.plans[index];
+                          final plan = plans[index];
                           return _PlanRow(
                             name: plan.name,
-                            sector: plan.stadiumSector,
+                            sector: plan.sectorsLabel,
                             onTap: _opening ? null : () => _openPlan(plan.id),
                           );
                         },
+                      ),
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppSpacing.sm,
+                      ),
+                      child: Text(
+                        // Section 5 do pedido M4 Massa Bruta: nunca esconder a
+                        // origem dos dados de plano nem deixar preço
+                        // desatualizado sem ninguém saber há quanto tempo —
+                        // rodapé discreto, por clube via `ClubConfig`, nunca
+                        // hardcoded pra um clube só.
+                        '${program.sourceLabel} Atualizado em '
+                        '${_formatShortDate(program.sourceUpdatedAt)}.',
+                        style: TextStyle(fontSize: 10.5, color: colors.textHint),
                       ),
                     ),
                   ],
@@ -87,6 +106,11 @@ class _MembershipPlansCatalogPageState
       ),
     );
   }
+}
+
+String _formatShortDate(DateTime date) {
+  String two(int n) => n.toString().padLeft(2, '0');
+  return '${two(date.day)}/${two(date.month)}/${date.year}';
 }
 
 class _PlanRow extends StatelessWidget {

@@ -1,8 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
-import 'package:goias_app/features/membership/data/regulation_catalog.dart';
+import 'package:goias_app/features/profile/domain/entities/user_address.dart';
+import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:goias_app/shared/domain/brazilian_states.dart';
 import 'package:goias_app/features/membership/domain/entities/address_lookup_result.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
@@ -23,11 +26,82 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
     this._addressRepository, {
     required MembershipPlan plan,
     required MembershipPlanPrice price,
-  }) : super(MembershipRegistrationState(plan: plan, price: price));
+    MembershipRegistrationData? initialData,
+    ProfileRepository? profileRepository,
+  }) : super(
+         MembershipRegistrationState(
+           plan: plan,
+           price: price,
+           data: initialData ?? const MembershipRegistrationData(),
+         ),
+       ) {
+    // Só busca o endereço residencial quando o clube pediu pré-preenchimento
+    // (`MembershipProgramConfig.prefillFromProfile`) — nome/CPF/e-mail/
+    // telefone/nascimento já chegam prontos via `initialData` (síncrono,
+    // resolvido antes deste cubit existir); o endereço é assíncrono
+    // (`ProfileRepository.getAddress()`, mesma fonte que a Loja usa pro
+    // "endereço residencial") e por isso é buscado aqui.
+    if (profileRepository != null) {
+      unawaited(_prefillResidentialAddress(profileRepository));
+    }
+  }
 
   final MembershipStatusCubit _membershipStatusCubit;
   final AddressRepository _addressRepository;
   Timer? _cepDebounce;
+
+  Future<void> _prefillResidentialAddress(
+    ProfileRepository profileRepository,
+  ) async {
+    final result = await profileRepository.getAddress();
+    if (isClosed) return;
+    final address = switch (result) {
+      Success(:final data) => data,
+      Error() => null,
+    };
+    if (address == null || address.isEmpty) return;
+    // Nunca sobrescreve o que o titular já digitou na Etapa 3 enquanto a
+    // busca assíncrona do endereço residencial corria.
+    const addressFields = {
+      'zipCode',
+      'street',
+      'number',
+      'complement',
+      'neighborhood',
+      'state',
+      'city',
+    };
+    if (state.touchedFields.intersection(addressFields).isNotEmpty) return;
+    _applyUserAddress(address);
+  }
+
+  void _applyUserAddress(UserAddress address) {
+    emit(
+      state.copyWith(
+        data: state.data.copyWith(
+          addressCountry: address.country ?? state.data.addressCountry,
+          zipCode: address.zipCode ?? state.data.zipCode,
+          street: address.street ?? state.data.street,
+          number: address.number ?? state.data.number,
+          complement: address.complement ?? state.data.complement,
+          neighborhood: address.neighborhood ?? state.data.neighborhood,
+          state: address.state ?? state.data.state,
+          city: address.city ?? state.data.city,
+        ),
+        touchedFields: {
+          ...state.touchedFields,
+          'zipCode',
+          'street',
+          'number',
+          'neighborhood',
+          'state',
+          'city',
+        },
+      ),
+    );
+    final stateName = address.state;
+    if (stateName != null && stateName.isNotEmpty) unawaited(_loadCities(stateName));
+  }
 
   void _updateField(
     String fieldKey,
@@ -292,7 +366,10 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
       plan: state.plan,
       price: state.price,
       data: state.data,
-      regulationVersion: RegulationCatalog.current.version,
+      // Nunca fixo no Goiás — cada clube tem o próprio regulamento/termo
+      // (ver `MembershipProgramConfig.regulationVersion`), gravado junto do
+      // aceite de quem está se associando.
+      regulationVersion: sl<ClubConfig>().membershipProgram.regulationVersion.version,
       regulationAcceptedAt: DateTime.now(),
     );
     switch (result) {

@@ -62,7 +62,10 @@ class _MembershipHomeView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const PageTitle('SÓCIO ESMERALDA'),
+                    PageTitle(
+                      sl<ClubConfig>().productNames.membershipProgramName
+                          .toUpperCase(),
+                    ),
                     const SizedBox(height: AppSpacing.xxxl),
                     Expanded(
                       child: BlocBuilder<MembershipCubit, MembershipState>(

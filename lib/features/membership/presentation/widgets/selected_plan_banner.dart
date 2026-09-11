@@ -24,7 +24,7 @@ class SelectedPlanBanner extends StatelessWidget {
     final colors = context.colors;
     final subtitle = [
       plan.name,
-      if (plan.stadiumSector != null) plan.stadiumSector!,
+      if (plan.sectorsLabel != null) plan.sectorsLabel!,
       if (price.label.isNotEmpty) price.label,
     ].join(' · ');
 

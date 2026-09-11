@@ -7,7 +7,9 @@ import 'package:goias_app/core/club/club_identity.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
+import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/membership/domain/entities/regulation_version.dart';
 import 'synthetic_passport_content.dart';
 
 /// Clube sintético/neutro pra testes de tenant-scope e isolamento de
@@ -136,4 +138,20 @@ const syntheticClubBConfig = ClubConfig(
     membershipProgramName: 'Sócio B',
   ),
   passportContent: syntheticPassportContent,
+  // `hasMembership: false` acima — nunca lido por nenhum teste, plans/
+  // regulamento vazios de propósito (mesmo espírito do resto deste
+  // arquivo: sintético, nunca reaproveita dado do Goiás).
+  membershipProgram: MembershipProgramConfig(
+    plans: [],
+    regulationVersion: RegulationVersion(
+      id: 'synthetic-club-b',
+      version: 'synthetic',
+      effectiveAt: DateTime(2000),
+      assetPath: 'test/assets/club_b/membership_regulation.md',
+    ),
+    regulationIntro: '',
+    regulationSections: const [],
+    sourceLabel: 'Clube sintético de teste.',
+    sourceUpdatedAt: DateTime(2000),
+  ),
 );

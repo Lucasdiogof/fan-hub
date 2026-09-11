@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
+import 'package:goias_app/features/membership/domain/entities/membership_registration_data.dart';
 import 'package:goias_app/features/membership/domain/repositories/address_repository.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_registration_state.dart';
@@ -17,7 +19,11 @@ import 'package:goias_app/features/membership/presentation/widgets/selected_plan
 import 'package:goias_app/features/membership/presentation/widgets/steps/access_data_step.dart';
 import 'package:goias_app/features/membership/presentation/widgets/steps/address_step.dart';
 import 'package:goias_app/features/membership/presentation/widgets/steps/personal_data_step.dart';
+import 'package:goias_app/features/profile/domain/entities/profile.dart';
+import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
+import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
+import 'package:goias_app/shared/utils/masks.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 
@@ -44,18 +50,52 @@ class MembershipRegistrationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Sem pré-preenchimento nenhum — o titular preenche os próprios dados
-    // do zero, mesmo os que existem no cadastro do app (nome, e-mail).
+    // Pré-preenchimento é OPT-IN por clube (`MembershipProgramConfig.
+    // prefillFromProfile`). O Sócio Esmeralda (Goiás) decidiu não fazer
+    // isso — o titular preenche os próprios dados do zero, mesmo os que já
+    // existem no cadastro do app — e continua exatamente assim aqui
+    // (`prefillFromProfile: false` faz `initialData` ficar `null`, e o
+    // cubit cai no `MembershipRegistrationData()` padrão de sempre).
+    final clubConfig = sl<ClubConfig>();
+    final shouldPrefill = clubConfig.membershipProgram.prefillFromProfile;
+    final profile = shouldPrefill ? sl<ProfileCubit>().state.profile : null;
     return BlocProvider(
       create: (_) => MembershipRegistrationCubit(
         sl<MembershipStatusCubit>(),
         sl<AddressRepository>(),
         plan: plan,
         price: price,
+        initialData: profile == null ? null : _prefillFromProfile(profile),
+        profileRepository: shouldPrefill ? sl<ProfileRepository>() : null,
       ),
       child: const _MembershipRegistrationView(),
     );
   }
+
+  MembershipRegistrationData _prefillFromProfile(Profile profile) {
+    String maskDigits(TextInputFormatter formatter, String digits) =>
+        formatter
+            .formatEditUpdate(
+              TextEditingValue.empty,
+              TextEditingValue(text: digits),
+            )
+            .text;
+    final birthDate = profile.birthDate;
+    return MembershipRegistrationData(
+      contactEmail: profile.email,
+      fullName: profile.fullName ?? '',
+      cpf: profile.cpf == null ? '' : maskDigits(cpfInputFormatter(), profile.cpf!),
+      phone: profile.phone == null
+          ? ''
+          : maskDigits(phoneInputFormatter(), profile.phone!),
+      birthDate: birthDate == null ? '' : _formatDdMmYyyy(birthDate),
+    );
+  }
+}
+
+String _formatDdMmYyyy(DateTime date) {
+  String two(int n) => n.toString().padLeft(2, '0');
+  return '${two(date.day)}/${two(date.month)}/${date.year}';
 }
 
 class _MembershipRegistrationView extends StatelessWidget {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goias_app/core/club/club_config.dart';
+import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
@@ -19,9 +20,8 @@ class MembershipPlanDetailsPage extends StatefulWidget {
 }
 
 class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
-  late final MembershipPlan plan = MembershipPlansCatalog.plans.firstWhere(
-    (p) => p.id == widget.planId,
-  );
+  late final MembershipPlan plan = sl<ClubConfig>().membershipProgram.plans
+      .firstWhere((p) => p.id == widget.planId);
   late MembershipPlanPrice selectedPrice = plan.defaultPrice;
 
   // Enquanto o registro está em andamento, esta própria tela não pode ser
@@ -147,7 +147,7 @@ class _PlanHeroTitle extends StatelessWidget {
             height: 1.4,
           ),
         ),
-        if (plan.stadiumSector != null) ...[
+        if (plan.sectorsLabel != null) ...[
           const SizedBox(height: AppSpacing.md),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -156,7 +156,7 @@ class _PlanHeroTitle extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppRadius.pill),
             ),
             child: Text(
-              context.l10n.membershipSector(plan.stadiumSector.toString()),
+              context.l10n.membershipSector(plan.sectorsLabel.toString()),
               style: TextStyle(
                 fontSize: 11.5,
                 fontWeight: FontWeight.w800,

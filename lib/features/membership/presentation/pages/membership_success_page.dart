@@ -347,7 +347,7 @@ class _SummaryCard extends StatelessWidget {
               ),
             ),
           ],
-          if (plan.stadiumSector != null) ...[
+          if (plan.sectorsLabel != null) ...[
             const SizedBox(height: AppSpacing.sm),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -356,7 +356,7 @@ class _SummaryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(AppRadius.pill),
               ),
               child: Text(
-                context.l10n.membershipSector(plan.stadiumSector.toString()),
+                context.l10n.membershipSector(plan.sectorsLabel.toString()),
                 style: TextStyle(
                   fontSize: 11.5,
                   fontWeight: FontWeight.w800,
