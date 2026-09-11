@@ -8,8 +8,7 @@ describe('resolveClubServerConfigByClubId', () => {
     const config = resolveClubServerConfigByClubId(GOIAS_CANONICAL_CLUB_ID);
     expect(config?.code).toBe('goias');
     expect(config?.oneFootballTeamId).toBe(1863);
-    expect(config?.notificationGoalClubName).toBe('Goiás');
-    expect(config?.notificationVictoryNickname).toBe('Verdão');
+    expect(config?.shortName).toBe('Goiás');
   });
 
   it('UUID desconhecido — falha controlada (undefined), NUNCA cai pro Goiás', () => {

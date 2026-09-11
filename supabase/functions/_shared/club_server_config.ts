@@ -53,28 +53,18 @@ export interface ClubServerConfig {
    * `notifications-poll-live-match`/`notifications-sync-and-check-access`.
    * Nunca inferido a partir do `code`; sempre o valor real do clube. */
   workerBaseUrl: string;
-  /**
-   * Rodada de hardening (revisão do usuário, 2026-09-02): o título de GOL
-   * é "GOOOOOOL DO <NOME DO CLUBE>!" — pro Goiás, "GOOOOOOL DO GOIÁS!",
-   * NUNCA "...DO ESMERALDINO!" (esse foi um bug real da 1ª rodada,
-   * reutilizando `fanDemonym`/torcedor pra um campo que semanticamente é
-   * "nome do clube na notificação de gol" — 2 conceitos diferentes,
-   * removido daqui). Campo SERVER-ONLY-PRESENTATION — Flutter não precisa
-   * ter o equivalente (nunca consome essa copy), então não faz parte do
-   * drift check de identidade (`SHARED_IDENTITY_FIELDS`, ver
-   * `audit_multiclub_runtime_hardcodes.mjs`).
-   */
-  notificationGoalClubName: string;
-  /**
-   * O título de VITÓRIA é "VITÓRIA DO <APELIDO>!" — pro Goiás, "VITÓRIA DO
-   * VERDÃO!" (apelido do time em si, NUNCA o gentílico do torcedor —
-   * "Verdão" ≠ "Esmeraldino" ≠ "Goiás", 3 conceitos diferentes, cada um só
-   * usado onde semanticamente correto). Mesmo motivo do campo acima: nunca
-   * reusar `fanDemonym` pra isso.
-   */
-  notificationVictoryNickname: string;
 }
 
+/**
+ * Rodada de hardening (revisão do usuário): gol/vitória usam SEMPRE
+ * `shortName` — nunca um apelido separado (o antigo
+ * `notificationVictoryNickname` chegou a valer "Verdão" pro Goiás; foi
+ * removido de propósito nesta rodada, era exatamente o tipo de coisa que
+ * gerou o bug real de reusar `fanDemonym`/apelido de torcida onde devia
+ * ser o nome do clube). Um único campo (`shortName`) pra "GOOOOOOL DO
+ * GOIÁS!" e "VITÓRIA DO GOIÁS!" elimina esse risco de vez — nunca mais um
+ * 2º campo pra manter sincronizado nem apelido hardcoded por clube.
+ */
 const GOIAS_SERVER_CONFIG: ClubServerConfig = {
   code: 'goias',
   canonicalClubId: '4c16340d-300c-5ab2-903f-17519db9b146',
@@ -82,17 +72,11 @@ const GOIAS_SERVER_CONFIG: ClubServerConfig = {
   oneFootballTeamPath: 'goias',
   shortName: 'Goiás',
   workerBaseUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
-  notificationGoalClubName: 'Goiás',
-  notificationVictoryNickname: 'Verdão',
 };
 
 // Mesmos valores reais de `lib/core/club/bragantino_club_config.dart`
 // (canonicalClubId/oneFootballTeamId/workerBaseUrl já confirmados lá,
-// nunca reinventados aqui). `notificationGoalClubName`/
-// `notificationVictoryNickname` usam o `shortName` como fallback seguro —
-// nenhum apelido de torcida/mídia foi confirmado com fonte pra este
-// clube, então evitamos inventar um (nunca reusar `fanDemonym`, mesmo
-// motivo documentado acima pro Goiás).
+// nunca reinventados aqui).
 const BRAGANTINO_SERVER_CONFIG: ClubServerConfig = {
   code: 'bragantino',
   canonicalClubId: '51683d2a-ea1d-57c6-8014-996146f242e7',
@@ -100,8 +84,6 @@ const BRAGANTINO_SERVER_CONFIG: ClubServerConfig = {
   oneFootballTeamPath: 'bragantino',
   shortName: 'Bragantino',
   workerBaseUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
-  notificationGoalClubName: 'Bragantino',
-  notificationVictoryNickname: 'Bragantino',
 };
 
 /** Todo registro real hoje — Goiás e Bragantino. Um 3º clube real precisa
