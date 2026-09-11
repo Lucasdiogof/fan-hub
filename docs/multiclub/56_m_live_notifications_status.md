@@ -41,8 +41,8 @@ verdade nos dois projetos Supabase (não só código no repo). Ver seção
 - **Migration** `supabase/migrations/20260911000000_live_match_notification_events.sql`
   — novos `event_type`, coluna `match_monitor_sessions.last_provider_status`,
   rename `matches_enabled` → `live_matches_enabled` + 6 colunas novas.
-  **Só existe no repo — não foi aplicada em nenhum banco real ainda** (ver
-  pendências abaixo).
+  **Aplicada nos dois projetos Supabase reais** (Goiás e Bragantino) — ver
+  "✅ Infra aplicada" abaixo pro detalhe completo.
 - **Testes**: 308 testes TS (vitest, `npm test` / `npx vitest run`) +
   suíte Dart completa (`flutter test`), incluindo 7 testes novos do cubit
   de preferências (`test/features/notifications/`). Zero regressão.

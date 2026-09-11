@@ -1,9 +1,24 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
+
+// Keystore de release — lido de android/key.properties (nunca commitado,
+// ver android/key.properties.example pro formato). Se o arquivo não
+// existir (dev local, CI sem secret configurado), `releaseSigningProps`
+// fica vazio e o release CONTINUA caindo no signingConfig de debug —
+// zero mudança de comportamento até alguém criar o arquivo de verdade.
+val keystorePropertiesFile = rootProject.file("key.properties")
+val releaseSigningProps = Properties().apply {
+    if (keystorePropertiesFile.exists()) {
+        keystorePropertiesFile.inputStream().use { load(it) }
+    }
+}
+val hasReleaseSigning = releaseSigningProps.containsKey("storeFile")
 
 android {
     // Rebrand Fan Hub — o namespace (package do código: R/BuildConfig) passa
@@ -75,15 +90,25 @@ android {
         }
     }
 
+    signingConfigs {
+        if (hasReleaseSigning) {
+            create("release") {
+                storeFile = file(releaseSigningProps.getProperty("storeFile"))
+                storePassword = releaseSigningProps.getProperty("storePassword")
+                keyAlias = releaseSigningProps.getProperty("keyAlias")
+                keyPassword = releaseSigningProps.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            // Gap pré-existente, não introduzido por multiclube (ver
-            // docs/multiclub/45_m4_3a_flavor_pipeline_audit.md §11) — release
-            // de QUALQUER flavor, inclusive `goias`, ainda assina com a
-            // chave de debug.
-            signingConfig = signingConfigs.getByName("debug")
+            // Usa o keystore de release real assim que `android/key.properties`
+            // existir (ver android/key.properties.example) — até lá, cai no
+            // signingConfig de debug (comportamento pré-existente, nunca
+            // quebra quem ainda não configurou). Nenhuma senha/keystore
+            // aparece aqui — tudo lido do arquivo local, nunca commitado.
+            signingConfig = if (hasReleaseSigning) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
         }
     }
 }
