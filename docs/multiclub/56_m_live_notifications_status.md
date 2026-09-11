@@ -154,9 +154,14 @@ equivalente Bragantino) já assina com o keystore real.
    Ainda faltam: cobrir explicitamente os 3 estados do app (aberto/
    background/encerrado) por evento e as combinações de preferência
    (ON/OFF/master OFF) — só o smoke de mensagem foi feito até aqui.
-3. **Google Play**: release do Android ainda assina com a chave de debug
-   (gap pré-existente, não desta rodada) — bloqueador real pra publicar na
-   Play Store, precisa de keystore de release real.
+3. **Keystore de release Android: RESOLVIDO pelo usuário** — gerado no
+   Windows (nunca passou por esta sessão/chat, por segurança), `key.properties`
+   preenchido localmente lá, AAB/APK de release gerados e validados: instalado
+   em device físico, login funcionando. `android/app/build.gradle.kts` já
+   falha fail-fast se `key.properties` faltar (ver commit `22ef2b2`), então
+   não tem como publicar um release assinado com debug por engano.
+   Google Play em si (Data Safety, screenshots, listing, content rating,
+   testing track) continua MANUAL IN PLAY CONSOLE — não verificável daqui.
 
 ## 🧪 Como retestar rapidamente
 
