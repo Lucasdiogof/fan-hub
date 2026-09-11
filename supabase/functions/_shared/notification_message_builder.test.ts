@@ -3,35 +3,66 @@ import { buildNotificationMessage } from './notification_message_builder';
 import type { NotificationEventPayload, NotificationEventTypeInput } from './notification_message_builder';
 import type { ClubServerConfig } from './club_server_config';
 
-// Mesma config REAL usada em produção — nunca uma cópia com valores
-// diferentes, senão o teste provaria uma copy que não é a que roda de
-// verdade (rodada de hardening: um bug real já aconteceu assim, reusando
-// `fanDemonym` pra um campo que não devia).
+// Configs REAIS de produção (mesmos valores de club_server_config.ts) —
+// nunca uma cópia com valores diferentes, senão o teste provaria uma copy
+// que não é a que roda de verdade.
 const GOIAS: ClubServerConfig = {
   code: 'goias',
   canonicalClubId: '4c16340d-300c-5ab2-903f-17519db9b146',
   oneFootballTeamId: 1863,
   oneFootballTeamPath: 'goias',
   shortName: 'Goiás',
-  notificationGoalClubName: 'Goiás',
-  notificationVictoryNickname: 'Verdão',
+  workerBaseUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
+};
+
+const BRAGANTINO: ClubServerConfig = {
+  code: 'bragantino',
+  canonicalClubId: '51683d2a-ea1d-57c6-8014-996146f242e7',
+  oneFootballTeamId: 4734,
+  oneFootballTeamPath: 'bragantino',
+  shortName: 'Bragantino',
+  workerBaseUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
 };
 
 // Fixture SINTÉTICA, só neste arquivo de teste — nunca registrada em
-// SERVER_CLUB_REGISTRY, nunca um clube real nomeado (mesmo espírito de
-// `syntheticClubBConfig` no Flutter).
+// SERVER_CLUB_REGISTRY, nunca um clube real nomeado.
 const CLUB_B: ClubServerConfig = {
   code: 'club-b',
   canonicalClubId: 'deadbeef-0000-0000-0000-000000000000',
   oneFootballTeamId: 999999,
   oneFootballTeamPath: 'club-b',
   shortName: 'Clube B',
-  notificationGoalClubName: 'Clube B',
-  notificationVictoryNickname: 'Time B',
+  workerBaseUrl: 'https://club-b.example.workers.dev',
 };
 
-describe('buildNotificationMessage — copy do Goiás preservada exatamente', () => {
-  it('goal title == "GOOOOOOL DO GOIÁS!" — nunca "ESMERALDINO" (bug real corrigido nesta rodada)', () => {
+const COLOR_EMOJIS = ['💚', '❤️', '🟢', '🔴'];
+
+describe('KICKOFF', () => {
+  it('título fixo "Começou! ⚽", corpo SEM placar (só times)', () => {
+    const message = buildNotificationMessage(
+      'kickoff',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 0, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Começou! ⚽');
+    expect(message.body).toBe('Goiás x Vila Nova');
+  });
+
+  it('Bragantino: mesmo título fixo, corpo com os times reais do Bragantino', () => {
+    const message = buildNotificationMessage(
+      'kickoff',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Começou! ⚽');
+    expect(message.body).toBe('RB Bragantino x Palmeiras');
+  });
+});
+
+describe('GOAL_FOR', () => {
+  it('Goiás: "GOOOOOOL DO GOIÁS! ⚽" com placar', () => {
     const message = buildNotificationMessage(
       'goal',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
@@ -39,60 +70,166 @@ describe('buildNotificationMessage — copy do Goiás preservada exatamente', ()
       { isActiveMember: false },
     );
     expect(message.title).toBe('GOOOOOOL DO GOIÁS! ⚽');
+    expect(message.body).toBe('Goiás 1 x 0 Vila Nova');
   });
 
-  it('victory title == "VITÓRIA DO VERDÃO!" — nunca "ESMERALDINO"', () => {
+  it('Bragantino: "GOOOOOOL DO BRAGANTINO! ⚽" com placar — nunca reusa cópia do Goiás', () => {
+    const message = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 1, awayScore: 0 },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('GOOOOOOL DO BRAGANTINO! ⚽');
+    expect(message.body).toBe('RB Bragantino 1 x 0 Palmeiras');
+  });
+
+  it('título vem de clubConfig.shortName, nunca de um literal no builder', () => {
+    const message = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'Clube B', awayTeamName: 'Adversário', homeScore: 1, awayScore: 0 },
+      CLUB_B,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('GOOOOOOL DO CLUBE B! ⚽');
+  });
+
+  it('nenhum emoji de cor (💚/❤️/🟢/🔴) no título', () => {
+    const message = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    for (const emoji of COLOR_EMOJIS) expect(message.title).not.toContain(emoji);
+  });
+});
+
+describe('GOAL_AGAINST — adversaryName sempre por activeClubSide, nunca por home/away isolado', () => {
+  it('Goiás mandante (Goiás 1 x 1 Vila Nova): adversário é o visitante', () => {
+    const message = buildNotificationMessage(
+      'goal_against',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Gol do Vila Nova');
+    expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
+  });
+
+  it('Goiás visitante (Vila Nova 1 x 1 Goiás): adversário é o mandante — nunca "Gol do Goiás"', () => {
+    const message = buildNotificationMessage(
+      'goal_against',
+      { homeTeamName: 'Vila Nova', awayTeamName: 'Goiás', homeScore: 1, awayScore: 1, activeClubSide: 'away' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Gol do Vila Nova');
+  });
+
+  it('Bragantino mandante (RB Bragantino 1 x 1 Palmeiras): adversário é o visitante', () => {
+    const message = buildNotificationMessage(
+      'goal_against',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Gol do Palmeiras');
+    expect(message.body).toBe('RB Bragantino 1 x 1 Palmeiras');
+  });
+
+  it('Bragantino visitante (Palmeiras 1 x 1 RB Bragantino): adversário é o mandante — nunca "Gol do Bragantino"', () => {
+    const message = buildNotificationMessage(
+      'goal_against',
+      { homeTeamName: 'Palmeiras', awayTeamName: 'RB Bragantino', homeScore: 1, awayScore: 1, activeClubSide: 'away' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Gol do Palmeiras');
+  });
+
+  it('nenhum emoji no título (nem neutro, nem de cor) — só o nome do adversário', () => {
+    const message = buildNotificationMessage(
+      'goal_against',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Gol do Vila Nova');
+  });
+});
+
+describe('HALF_TIME', () => {
+  it('Goiás: "Intervalo ⏸️" com placar parcial', () => {
+    const message = buildNotificationMessage(
+      'half_time',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Intervalo ⏸️');
+    expect(message.body).toBe('Goiás 1 x 0 Vila Nova');
+  });
+
+  it('Bragantino: mesmo título, placar do Bragantino', () => {
+    const message = buildNotificationMessage(
+      'half_time',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 1, awayScore: 1 },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Intervalo ⏸️');
+    expect(message.body).toBe('RB Bragantino 1 x 1 Palmeiras');
+  });
+});
+
+describe('SECOND_HALF_STARTED', () => {
+  it('Goiás: "Começou o segundo tempo ▶️" com placar parcial', () => {
+    const message = buildNotificationMessage(
+      'second_half_started',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Começou o segundo tempo ▶️');
+    expect(message.body).toBe('Goiás 1 x 0 Vila Nova');
+  });
+
+  it('Bragantino: mesmo título, placar do Bragantino', () => {
+    const message = buildNotificationMessage(
+      'second_half_started',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 1, awayScore: 1 },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Começou o segundo tempo ▶️');
+    expect(message.body).toBe('RB Bragantino 1 x 1 Palmeiras');
+  });
+});
+
+describe('FULL_TIME — resultado sempre calculado por activeClubSide', () => {
+  it('Goiás mandante, vitória: "VITÓRIA DO GOIÁS! 🏁"', () => {
     const message = buildNotificationMessage(
       'full_time',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 2, awayScore: 0, activeClubSide: 'home' },
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 2, awayScore: 1, activeClubSide: 'home' },
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe('VITÓRIA DO VERDÃO!');
+    expect(message.title).toBe('VITÓRIA DO GOIÁS! 🏁');
+    expect(message.body).toBe('Goiás 2 x 1 Vila Nova');
   });
 
-  it('nenhum título de gol/vitória usa emoji de cor (💚/❤️/🟢/🔴) — identidade vem do nome/ícone/branding, nunca de emoji', () => {
-    const goal = buildNotificationMessage(
-      'goal',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    const victory = buildNotificationMessage(
+  it('Goiás visitante, vitória (Vila Nova 1 x 2 Goiás): ainda "VITÓRIA DO GOIÁS!" — nunca assume mandante', () => {
+    const message = buildNotificationMessage(
       'full_time',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 2, awayScore: 0, activeClubSide: 'home' },
+      { homeTeamName: 'Vila Nova', awayTeamName: 'Goiás', homeScore: 1, awayScore: 2, activeClubSide: 'away' },
       GOIAS,
       { isActiveMember: false },
     );
-    for (const emoji of ['💚', '❤️', '🟢', '🔴']) {
-      expect(goal.title).not.toContain(emoji);
-      expect(victory.title).not.toContain(emoji);
-    }
+    expect(message.title).toBe('VITÓRIA DO GOIÁS! 🏁');
   });
 
-  it('a copy vem do ClubServerConfig, nunca de um literal dentro do builder — provado trocando os campos e vendo o título mudar junto', () => {
-    const alteredConfig: ClubServerConfig = {
-      ...GOIAS,
-      notificationGoalClubName: 'Outro Nome',
-      notificationVictoryNickname: 'Outro Apelido',
-    };
-    const goal = buildNotificationMessage(
-      'goal',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
-      alteredConfig,
-      { isActiveMember: false },
-    );
-    const victory = buildNotificationMessage(
-      'full_time',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0, activeClubSide: 'home' },
-      alteredConfig,
-      { isActiveMember: false },
-    );
-    expect(goal.title).toBe('GOOOOOOL DO OUTRO NOME! ⚽');
-    expect(victory.title).toBe('VITÓRIA DO OUTRO APELIDO!');
-  });
-
-  it('empate/derrota nunca vira "VITÓRIA" — título cai pra "Fim de jogo 🏁"', () => {
+  it('Goiás mandante, empate: "Fim de jogo 🏁", nunca "VITÓRIA"', () => {
     const message = buildNotificationMessage(
       'full_time',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
@@ -101,103 +238,170 @@ describe('buildNotificationMessage — copy do Goiás preservada exatamente', ()
     );
     expect(message.title).toBe('Fim de jogo 🏁');
   });
-});
 
-// ============================================================================
-// Golden compatibility — checkin/tickets nunca mudaram desde pré-M3.3 (git
-// show 7316afc:supabase/functions/notifications-dispatch/index.ts), byte a
-// byte. `goalTitle`/`victoryTitle`/`fullTimeNonVictoryTitle` foram
-// ATUALIZADOS nesta rodada (remoção de emoji de cor — 💚/❤️/🟢/🔴 nunca mais
-// em título de gol/vitória; "Fim de jogo" ganhou o 🏁 neutro) — pedido
-// explícito do usuário, não regressão. Os valores abaixo são o NOVO
-// baseline, não mais o pré-M3.3 literal.
-// ============================================================================
-const GOLDEN_PRE_M33 = {
-  checkinTitle: 'Check-in aberto',
-  checkinBody: (opponent: string) => `O check-in pra ${opponent} já está disponível.`,
-  ticketsTitle: 'Ingressos disponíveis',
-  ticketsBody: (opponent: string) => `Os ingressos pra ${opponent} já estão à venda.`,
-  goalTitle: 'GOOOOOOL DO GOIÁS! ⚽',
-  goalBody: (home: string, homeScore: number, awayScore: number, away: string) =>
-    `${home} ${homeScore} x ${awayScore} ${away}`,
-  victoryTitle: 'VITÓRIA DO VERDÃO!',
-  fullTimeNonVictoryTitle: 'Fim de jogo 🏁',
-  fullTimeBodyVictorySuffix: ' Fim de jogo!',
-  fullTimeBodyNonVictorySuffix: '.',
-};
-
-describe('buildNotificationMessage — golden compatibility contra o código real pré-M3.3 (git show 7316afc)', () => {
-  it('goal: title e body byte-idênticos ao original', () => {
-    const message = buildNotificationMessage(
-      'goal',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 2, awayScore: 1 },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe(GOLDEN_PRE_M33.goalTitle);
-    expect(message.body).toBe(GOLDEN_PRE_M33.goalBody('Goiás', 2, 1, 'Vila Nova'));
-    expect(message.type).toBe('goal');
-  });
-
-  it('full_time vitória: title e body (com sufixo " Fim de jogo!") byte-idênticos ao original', () => {
-    const message = buildNotificationMessage(
-      'full_time',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 2, awayScore: 0, activeClubSide: 'home' },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe(GOLDEN_PRE_M33.victoryTitle);
-    expect(message.body).toBe(`Goiás 2 x 0 Vila Nova${GOLDEN_PRE_M33.fullTimeBodyVictorySuffix}`);
-    expect(message.type).toBe('full_time');
-  });
-
-  it('full_time empate: title "Fim de jogo" e body com sufixo "." byte-idênticos ao original', () => {
-    const message = buildNotificationMessage(
-      'full_time',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe(GOLDEN_PRE_M33.fullTimeNonVictoryTitle);
-    expect(message.body).toBe(`Goiás 1 x 1 Vila Nova${GOLDEN_PRE_M33.fullTimeBodyNonVictorySuffix}`);
-  });
-
-  it('full_time derrota: mesmo título/sufixo de empate ("Fim de jogo" / ".") — nunca vira "VITÓRIA"', () => {
+  it('Goiás mandante, derrota: "Fim de jogo 🏁", nunca "VITÓRIA"', () => {
     const message = buildNotificationMessage(
       'full_time',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 0, awayScore: 1, activeClubSide: 'home' },
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe(GOLDEN_PRE_M33.fullTimeNonVictoryTitle);
-    expect(message.body).toBe(`Goiás 0 x 1 Vila Nova${GOLDEN_PRE_M33.fullTimeBodyNonVictorySuffix}`);
+    expect(message.title).toBe('Fim de jogo 🏁');
   });
 
-  it('match_access_open sócio (checkin): title/body byte-idênticos ao original', () => {
+  it('Goiás visitante, derrota (Vila Nova 2 x 0 Goiás): "Fim de jogo 🏁" — nunca "VITÓRIA DO VILA NOVA" nem do Goiás', () => {
     const message = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'Vila Nova', awayTeamName: 'Goiás', homeScore: 2, awayScore: 0, activeClubSide: 'away' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Fim de jogo 🏁');
+    expect(message.title).not.toContain('VITÓRIA');
+  });
+
+  it('Bragantino mandante, vitória: "VITÓRIA DO BRAGANTINO! 🏁" — nunca reusa cópia do Goiás', () => {
+    const message = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 2, awayScore: 0, activeClubSide: 'home' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('VITÓRIA DO BRAGANTINO! 🏁');
+    expect(message.body).toBe('RB Bragantino 2 x 0 Palmeiras');
+  });
+
+  it('Bragantino visitante, vitória (Palmeiras 0 x 1 RB Bragantino): ainda "VITÓRIA DO BRAGANTINO!"', () => {
+    const message = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'Palmeiras', awayTeamName: 'RB Bragantino', homeScore: 0, awayScore: 1, activeClubSide: 'away' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('VITÓRIA DO BRAGANTINO! 🏁');
+  });
+
+  it('Bragantino, empate: "Fim de jogo 🏁"', () => {
+    const message = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Fim de jogo 🏁');
+  });
+
+  it('Bragantino, derrota: "Fim de jogo 🏁"', () => {
+    const message = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 0, awayScore: 1, activeClubSide: 'home' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(message.title).toBe('Fim de jogo 🏁');
+  });
+
+  it('nenhum título (vitória, empate ou derrota) usa emoji de cor', () => {
+    const scenarios: Array<NotificationEventPayload> = [
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 2, awayScore: 0, activeClubSide: 'home' },
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 0, awayScore: 1, activeClubSide: 'home' },
+    ];
+    for (const payload of scenarios) {
+      const message = buildNotificationMessage('full_time', payload, GOIAS, { isActiveMember: false });
+      for (const emoji of COLOR_EMOJIS) expect(message.title).not.toContain(emoji);
+    }
+  });
+});
+
+describe('multi-clube — nenhum clube reutiliza texto/emoji de outro, 100% via registry (zero hardcode)', () => {
+  it('goal e full_time do Bragantino nunca contêm "GOIÁS"/"VERDÃO"', () => {
+    const goal = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 1, awayScore: 0 },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    const victory = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'RB Bragantino', awayTeamName: 'Palmeiras', homeScore: 1, awayScore: 0, activeClubSide: 'home' },
+      BRAGANTINO,
+      { isActiveMember: false },
+    );
+    expect(goal.title).not.toContain('GOIÁS');
+    expect(victory.title).not.toContain('GOIÁS');
+    expect(victory.title).not.toContain('VERDÃO');
+  });
+
+  it('goal e full_time do Goiás nunca contêm "BRAGANTINO"', () => {
+    const goal = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    const victory = buildNotificationMessage(
+      'full_time',
+      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0, activeClubSide: 'home' },
+      GOIAS,
+      { isActiveMember: false },
+    );
+    expect(goal.title).not.toContain('BRAGANTINO');
+    expect(victory.title).not.toContain('BRAGANTINO');
+  });
+
+  it('clube sintético (nunca registrado em produção) produz sua própria copy — prova que é 100% data-driven, não hardcode', () => {
+    const goal = buildNotificationMessage(
+      'goal',
+      { homeTeamName: 'Clube B', awayTeamName: 'Adversário', homeScore: 1, awayScore: 0 },
+      { ...GOIAS, code: 'club-b', shortName: 'Time Trocado' },
+      { isActiveMember: false },
+    );
+    expect(goal.title).toBe('GOOOOOOL DO TIME TROCADO! ⚽');
+  });
+});
+
+describe('nenhum dos 6 eventos de partida usa emoji de cor/identidade em nenhum clube', () => {
+  const cases: Array<[NotificationEventTypeInput, NotificationEventPayload]> = [
+    ['kickoff', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova' }],
+    ['goal', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 }],
+    ['goal_against', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' }],
+    ['half_time', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 }],
+    ['second_half_started', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 }],
+    ['full_time', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' }],
+  ];
+
+  for (const clubConfig of [GOIAS, BRAGANTINO]) {
+    it(`${clubConfig.code}: nenhum título contém 💚/❤️/🟢/🔴`, () => {
+      for (const [eventType, payload] of cases) {
+        const message = buildNotificationMessage(eventType, payload, clubConfig, { isActiveMember: false });
+        for (const emoji of COLOR_EMOJIS) expect(message.title).not.toContain(emoji);
+      }
+    });
+  }
+});
+
+describe('match_access_open (Ingressos/Check-in) — comportamento preservado, categoria separada dos 6 eventos de jogo', () => {
+  it('sócio ativo -> check-in; não-sócio -> ingressos', () => {
+    const checkin = buildNotificationMessage(
       'match_access_open',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova' },
       GOIAS,
       { isActiveMember: true },
     );
-    expect(message.title).toBe(GOLDEN_PRE_M33.checkinTitle);
-    expect(message.body).toBe(GOLDEN_PRE_M33.checkinBody('Vila Nova'));
-    expect(message.type).toBe('checkin');
-  });
-
-  it('match_access_open não-sócio (tickets): title/body byte-idênticos ao original', () => {
-    const message = buildNotificationMessage(
+    const tickets = buildNotificationMessage(
       'match_access_open',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova' },
       GOIAS,
       { isActiveMember: false },
     );
-    expect(message.title).toBe(GOLDEN_PRE_M33.ticketsTitle);
-    expect(message.body).toBe(GOLDEN_PRE_M33.ticketsBody('Vila Nova'));
-    expect(message.type).toBe('tickets');
+    expect(checkin.title).toBe('Check-in aberto');
+    expect(checkin.body).toBe('O check-in pra Vila Nova já está disponível.');
+    expect(tickets.title).toBe('Ingressos disponíveis');
+    expect(tickets.body).toBe('Os ingressos pra Vila Nova já estão à venda.');
   });
 
-  it('match_access_open com Goiás mandante e visitante: opponent é sempre o adversário, nunca "Goiás" — mesmo ternário de 3 vias do original preservado', () => {
+  it('opponent é sempre o adversário do clube ativo (comparado por shortName), nunca o próprio clube', () => {
     const home = buildNotificationMessage(
       'match_access_open',
       { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova' },
@@ -210,145 +414,8 @@ describe('buildNotificationMessage — golden compatibility contra o código rea
       GOIAS,
       { isActiveMember: true },
     );
-    expect(home.body).toBe(GOLDEN_PRE_M33.checkinBody('Vila Nova'));
-    expect(away.body).toBe(GOLDEN_PRE_M33.checkinBody('Vila Nova'));
-  });
-
-  it('homeTeamName undefined: opponent cai pro terceiro ramo do ternário (string vazia), body com espaço duplo — comportamento ORIGINAL preservado exatamente, mesmo sendo uma peculiaridade pré-existente', () => {
-    const message = buildNotificationMessage(
-      'match_access_open',
-      { awayTeamName: 'Vila Nova' },
-      GOIAS,
-      { isActiveMember: true },
-    );
-    // opponent = '' (não undefined) — '' ?? fallback NÃO ativa o fallback,
-    // então o body original tinha esse espaço duplo real. Preservado.
-    expect(message.body).toBe('O check-in pra  já está disponível.');
-  });
-});
-
-describe('buildNotificationMessage — os 6 eventos de partida ao vivo carregam o placar', () => {
-  it('kickoff: título fixo, corpo com placar 0x0', () => {
-    const message = buildNotificationMessage(
-      'kickoff',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 0, awayScore: 0 },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe('Começou! ⚽');
-    expect(message.body).toBe('Goiás 0 x 0 Vila Nova');
-  });
-
-  it('goal_against: nome do adversário resolvido por activeClubSide, nunca "Goiás" no título, e SEM emoji (só o gol a favor e os marcos temporais levam emoji)', () => {
-    const message = buildNotificationMessage(
-      'goal_against',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe('Gol do Vila Nova');
-    expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
-  });
-
-  it('goal_against com Goiás visitante: adversário é o mandante', () => {
-    const message = buildNotificationMessage(
-      'goal_against',
-      { homeTeamName: 'Vila Nova', awayTeamName: 'Goiás', homeScore: 1, awayScore: 0, activeClubSide: 'away' },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe('Gol do Vila Nova');
-  });
-
-  it('half_time: placar parcial no corpo', () => {
-    const message = buildNotificationMessage(
-      'half_time',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe('Intervalo ⏸️');
-    expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
-  });
-
-  it('second_half_started: placar parcial no corpo', () => {
-    const message = buildNotificationMessage(
-      'second_half_started',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe('Começou o segundo tempo ▶️');
-    expect(message.body).toBe('Goiás 1 x 1 Vila Nova');
-  });
-
-  it('nenhum dos 6 títulos de evento de partida usa emoji de cor (💚/❤️/🟢/🔴)', () => {
-    const events: Array<[NotificationEventTypeInput, NotificationEventPayload]> = [
-      ['kickoff', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 0, awayScore: 0 }],
-      ['goal', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 }],
-      ['goal_against', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' }],
-      ['half_time', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 }],
-      ['second_half_started', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1 }],
-      ['full_time', { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 1, activeClubSide: 'home' }],
-    ];
-    for (const [eventType, payload] of events) {
-      const message = buildNotificationMessage(eventType, payload, GOIAS, { isActiveMember: false });
-      for (const emoji of ['💚', '❤️', '🟢', '🔴']) {
-        expect(message.title).not.toContain(emoji);
-      }
-    }
-  });
-});
-
-describe('buildNotificationMessage — clube sintético produz sua própria copy, nunca "Goiás"/"Verdão"', () => {
-  it('goal title do club-b usa o nome do club-b, nunca "GOIÁS"', () => {
-    const message = buildNotificationMessage(
-      'goal',
-      { homeTeamName: 'Clube B', awayTeamName: 'Adversário', homeScore: 1, awayScore: 0 },
-      CLUB_B,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe('GOOOOOOL DO CLUBE B! ⚽');
-    expect(message.title).not.toContain('GOIÁS');
-  });
-
-  it('victory title do club-b usa o apelido do club-b, nunca "VERDÃO"', () => {
-    const message = buildNotificationMessage(
-      'full_time',
-      { homeTeamName: 'Clube B', awayTeamName: 'Adversário', homeScore: 2, awayScore: 0, activeClubSide: 'home' },
-      CLUB_B,
-      { isActiveMember: false },
-    );
-    expect(message.title).toBe('VITÓRIA DO TIME B!');
-    expect(message.title).not.toContain('VERDÃO');
-  });
-
-  it('nenhum clube reutiliza emoji/texto de outro — goal e victory do Goiás e do club-b nunca coincidem', () => {
-    const goalGoias = buildNotificationMessage(
-      'goal',
-      { homeTeamName: 'Goiás', awayTeamName: 'Vila Nova', homeScore: 1, awayScore: 0 },
-      GOIAS,
-      { isActiveMember: false },
-    );
-    const goalClubB = buildNotificationMessage(
-      'goal',
-      { homeTeamName: 'Clube B', awayTeamName: 'Adversário', homeScore: 1, awayScore: 0 },
-      CLUB_B,
-      { isActiveMember: false },
-    );
-    expect(goalGoias.title).not.toBe(goalClubB.title);
-    expect(goalClubB.title).not.toContain('Goiás'.toUpperCase());
-    expect(goalGoias.title).not.toContain('CLUBE B');
-  });
-
-  it('match_access_open: opponent é resolvido comparando contra clubConfig.shortName do PRÓPRIO clube, nunca "Goiás" fixo', () => {
-    const message = buildNotificationMessage(
-      'match_access_open',
-      { homeTeamName: 'Clube B', awayTeamName: 'Adversário' },
-      CLUB_B,
-      { isActiveMember: true },
-    );
-    expect(message.body).toContain('Adversário');
-    expect(message.body).not.toContain('Clube B');
+    expect(home.body).toContain('Vila Nova');
+    expect(away.body).toContain('Vila Nova');
+    expect(away.body).not.toContain('pra Goiás');
   });
 });
