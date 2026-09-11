@@ -42,10 +42,10 @@ class MembershipReviewPage extends StatelessWidget {
           title: context.l10n.membershipPlanLabel.toUpperCase(),
           rows: [
             _ReviewRow(context.l10n.membershipPlanLabel, state.plan.name),
-            if (state.plan.stadiumSector != null)
+            if (state.plan.sectorsLabel != null)
               _ReviewRow(
                 context.l10n.membershipSectorLabel,
-                state.plan.stadiumSector!,
+                state.plan.sectorsLabel!,
               ),
             if (state.price.label.isNotEmpty)
               _ReviewRow(context.l10n.membershipOptionLabel, state.price.label),

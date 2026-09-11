@@ -22,6 +22,7 @@ ClubConfig _configWith(CommerceMode membershipMode) => ClubConfig(
   integrations: goiasClubConfig.integrations,
   productNames: goiasClubConfig.productNames,
   passportContent: goiasClubConfig.passportContent,
+  membershipProgram: goiasClubConfig.membershipProgram,
   capabilities: ClubCapabilities(
     hasMembership: goiasClubConfig.capabilities.hasMembership,
     hasStore: goiasClubConfig.capabilities.hasStore,

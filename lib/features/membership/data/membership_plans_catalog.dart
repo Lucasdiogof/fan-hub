@@ -26,7 +26,7 @@ class MembershipPlansCatalog {
       name: 'NOSSA HISTÓRIA',
       tagline: 'Seu lugar garantido nas Cadeiras, partida após partida.',
       includesStadiumAccess: true,
-      stadiumSector: 'Cadeiras',
+      allowedSectors: ['Cadeiras'],
       benefits: [
         'Acesso livre no setor Cadeiras',
         'Cashback mensal no Zé Delivery',
@@ -48,7 +48,7 @@ class MembershipPlansCatalog {
       name: 'NOSSA GARRA',
       tagline: 'Vibre no Tobogã com o Verdão, sempre por perto.',
       includesStadiumAccess: true,
-      stadiumSector: 'Tobogã',
+      allowedSectors: ['Tobogã'],
       highlight: true,
       benefits: [
         'Acesso livre no setor Tobogã',
@@ -70,7 +70,7 @@ class MembershipPlansCatalog {
       name: 'NOSSA GLÓRIA',
       tagline: 'Conforto e tradição nas Cadeiras, com ainda mais vantagens.',
       includesStadiumAccess: true,
-      stadiumSector: 'Cadeiras',
+      allowedSectors: ['Cadeiras'],
       benefits: [
         'Acesso livre no setor Cadeiras',
         'Cashback mensal no Zé Delivery',
@@ -91,7 +91,7 @@ class MembershipPlansCatalog {
       name: 'NOSSA FAMÍLIA',
       tagline: 'O Goiás em família, no espaço reservado pra vocês.',
       includesStadiumAccess: true,
-      stadiumSector: 'Espaço Família',
+      allowedSectors: ['Espaço Família'],
       benefits: [
         'Acesso livre no setor Espaço Família',
         'Cashback mensal no Zé Delivery',
@@ -118,7 +118,7 @@ class MembershipPlansCatalog {
       name: 'PLANO VIP',
       tagline: 'A experiência mais completa do Sócio Esmeralda.',
       includesStadiumAccess: true,
-      stadiumSector: 'Espaço VIP',
+      allowedSectors: ['Espaço VIP'],
       benefits: [
         'Acesso livre no Espaço VIP',
         'Cashback mensal no Zé Delivery',

@@ -137,7 +137,7 @@ const _plan = MembershipPlan(
   name: 'NOSSA GARRA',
   tagline: 'tagline',
   includesStadiumAccess: true,
-  stadiumSector: 'Tobogã',
+  allowedSectors: ['Tobogã'],
   benefits: ['benefício'],
   prices: [
     MembershipPlanPrice(label: '', monthlyPrice: 59.9, annualPrice: 718.8),

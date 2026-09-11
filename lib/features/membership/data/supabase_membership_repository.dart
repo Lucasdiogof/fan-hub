@@ -2,7 +2,6 @@ import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/error/failures.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/membership/data/membership_error_mapper.dart';
-import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_registration_data.dart';
@@ -11,9 +10,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Substitui `MockMembershipRepository` — a assinatura de Sócio Torcedor é
 /// persistida em `public.supporter_memberships`, vinculada ao usuário
-/// autenticado. Planos continuam vindo do catálogo local
-/// (`MembershipPlansCatalog`, ver spec: só a contratação em si precisava
-/// virar real, não os planos).
+/// autenticado. Planos continuam vindo do catálogo local de cada clube
+/// (`ClubConfig.membershipProgram.plans`, ver spec: só a contratação em si
+/// precisava virar real, não os planos).
 ///
 /// `is_active` nunca é decidido aqui nem em nenhuma camada do app — vem
 /// pronto de `get_my_membership()`, que compara `expires_at` com o `now()`
@@ -32,7 +31,7 @@ class SupabaseMembershipRepository implements MembershipRepository {
 
   @override
   Future<Result<List<MembershipPlan>>> getPlans() async {
-    return const Success(MembershipPlansCatalog.plans);
+    return Success(_clubConfig.membershipProgram.plans);
   }
 
   @override
@@ -109,9 +108,10 @@ class SupabaseMembershipRepository implements MembershipRepository {
 
   Membership _mapRow(Map<String, dynamic> row) {
     final planId = row['plan_id'] as String;
-    final plan = MembershipPlansCatalog.plans.firstWhere(
+    final plans = _clubConfig.membershipProgram.plans;
+    final plan = plans.firstWhere(
       (p) => p.id == planId,
-      orElse: () => MembershipPlansCatalog.plans.first,
+      orElse: () => plans.first,
     );
     return Membership(
       id: row['id'] as String,

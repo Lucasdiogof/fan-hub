@@ -49,6 +49,7 @@ ClubConfig _withIdols(ClubConfig base, List<ClubIdol> idols) => ClubConfig(
   capabilities: base.capabilities,
   productNames: base.productNames,
   passportContent: base.passportContent,
+  membershipProgram: base.membershipProgram,
   institutionalContent: ClubInstitutionalContent(idols: idols),
 );
 

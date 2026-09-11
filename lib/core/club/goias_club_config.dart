@@ -7,6 +7,7 @@ import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
+import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/core/theme/app_assets.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/arena/games/guess_player/domain/guess_player_photos.dart';
@@ -14,6 +15,9 @@ import 'package:goias_app/features/club/data/club_history_data.dart';
 import 'package:goias_app/features/club/data/club_songs_data.dart';
 import 'package:goias_app/features/club/data/club_timeline_data.dart';
 import 'package:goias_app/features/club/data/club_titles_data.dart';
+import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
+import 'package:goias_app/features/membership/data/regulation_catalog.dart';
+import 'package:goias_app/features/membership/data/regulation_content.dart';
 import 'package:goias_app/features/partners/data/partners_data.dart';
 import 'package:goias_app/features/passport/data/goias_passport_content.dart';
 import 'package:goias_app/features/squad/domain/squad_photos.dart';
@@ -52,7 +56,7 @@ const goiasClubConfig = ClubConfig(
     // Mesmo arquivo que já era hardcoded direto em store_home_page.dart —
     // 1 banner só, então StoreBannerCarousel nunca monta PageView/Timer/
     // dots aqui, comportamento visual idêntico ao de sempre.
-    storeHomeBanners: ['lib/assets/goias_store.png'],
+    storeHomeBanners: ['lib/assets/store/banners/goias/goias_store.png'],
     storeCatalogAssetPath: 'lib/assets/content/store_products.json',
     membershipFaqAssetPath: 'lib/assets/content/membership_faq.json',
     splashVideo: 'lib/assets/videos/goias_splash.mp4',
@@ -129,6 +133,24 @@ const goiasClubConfig = ClubConfig(
     membershipProgramName: 'Sócio Esmeralda',
   ),
   passportContent: GoiasPassportContent.content,
+  // Reempacotamento — mesmo catálogo/regulamento hardcoded de sempre
+  // (`MembershipPlansCatalog`/`RegulationCatalog`), só agora exposto via
+  // `ClubConfig` pra `SupabaseMembershipRepository`/telas pararem de
+  // importar esses dois diretamente. Zero mudança visual/funcional pro
+  // Goiás — ver `MembershipProgramConfig` pro porquê de
+  // `prefillFromProfile` continuar `false` (decisão de produto já existente
+  // antes deste trabalho).
+  membershipProgram: MembershipProgramConfig(
+    plans: MembershipPlansCatalog.plans,
+    regulationVersion: RegulationCatalog.current,
+    regulationIntro: membershipRegulationIntro,
+    regulationSections: membershipRegulationSections,
+    sourceLabel:
+        'Regulamento oficial "Esmeralda Sócio Torcedor" (documento legal do '
+        'Goiás Esporte Clube).',
+    sourceUpdatedAt: DateTime(2026, 3, 26),
+    externalUrl: 'https://www.socioesmeralda.com.br/',
+  ),
   // Reempacotamento, igual ao resto do arquivo: as classes estáticas
   // (`ClubHistoryData` etc.) continuam existindo e com o MESMO conteúdo —
   // isto só as conecta ao `ClubConfig` do Goiás, pra que `/clube`/

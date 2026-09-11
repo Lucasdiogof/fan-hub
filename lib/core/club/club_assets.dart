@@ -68,10 +68,10 @@ class ClubAssets {
   /// clube**, nunca um path fixo lido direto pelo datasource. `null` quando
   /// o clube não tem FAQ local próprio coletado: o fallback offline vira 0
   /// categorias (nunca lança, nunca cai pro FAQ de outro clube) — hoje é o
-  /// caso do Bragantino, que também tem `hasMembership=false`, então a tela
-  /// nem chega a abrir enquanto isso for verdade; mesmo assim o path fica
-  /// nullable e não aponta pro JSON do Goiás, pra nunca vazar se
-  /// `hasMembership` for ligado antes de existir FAQ real do Bragantino.
+  /// caso do Bragantino (Massa Bruta, `hasMembership=true` desde
+  /// 2026-09-11): sem conteúdo de FAQ próprio ainda, o path fica `null` e
+  /// a seção de Dúvidas Frequentes só mostra o que o Supabase do
+  /// Bragantino tiver (hoje: nada) — nunca cai pro JSON do Goiás.
   final String? membershipFaqAssetPath;
 
   /// Vídeo da splash (`VideoSplashView`) — `null` quando o clube ainda não

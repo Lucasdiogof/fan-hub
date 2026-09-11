@@ -51,10 +51,10 @@ class MyMembershipPage extends StatelessWidget {
                               context.l10n.membershipPlanLabel,
                               membership.plan.name,
                             ),
-                            if (membership.plan.stadiumSector != null)
+                            if (membership.plan.sectorsLabel != null)
                               _InfoRow(
                                 context.l10n.membershipSectorLabel,
-                                membership.plan.stadiumSector!,
+                                membership.plan.sectorsLabel!,
                               ),
                             _InfoRow(
                               context.l10n.membershipSituation,
