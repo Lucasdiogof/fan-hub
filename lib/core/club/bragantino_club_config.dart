@@ -23,10 +23,11 @@ import 'package:goias_app/features/passport/data/bragantino_passport_content.dar
 // MÍNIMO viável pra COMPILAR/rodar o flavor `bragantino` no Fan Hub. TODAS as
 // capabilities começam FALSE — nenhuma feature do Bragantino tem
 // dado/conteúdo real ainda. NUNCA usa dado/asset do Goiás como fallback.
-// `enabledArenaGames` é a exceção: 'player_identity' e 'tactical_identity'
-// entraram em 2026-09-08 depois de auditoria completa (datasets revisados,
-// simulados e corrigidos — ver `bragantino_player_identity_references.dart`
-// e `bragantino_tactical_coach_references.dart` pro histórico da revisão).
+// `enabledArenaGames` é a exceção: 'player_identity', 'tactical_identity',
+// 'quiz' e 'career_path' entraram em 2026-09-08, 'guess_player' e 'lineup'
+// em 2026-09-11 — cada um só depois de auditoria completa dos dados reais
+// (ver o comentário inline junto de `enabledArenaGames` abaixo pro
+// histórico de cada jogo).
 //
 // Os campos marcados PLACEHOLDER/TODO abaixo são DATA_GAP/ASSET_GAP reais que
 // precisam de dado oficial antes de ligar qualquer capability — ver
@@ -422,21 +423,28 @@ const bragantinoClubConfig = ClubConfig(
     hasMatches: true,
     // 2026-09-08: 'quiz' e 'career_path' habilitados depois de auditoria
     // real (44 perguntas READY no Supabase / 27 carreiras publicáveis,
-    // ambos sem string cruzada, sem colisão de id com o Goiás). 'lineup'
-    // segue de fora — bloqueado por dado (0/123 partidas com formação+
-    // posição resolvíveis), não arquitetura, nunca tocar sem dado novo.
-    // 'guess_player' FICOU DE FORA de propósito: dos 50 cards, só 1 tem
-    // `data_status='verified'` (o único elegível como "segredo" da rodada,
-    // ver `GuessPlayer.eligibleAsSecret`) — o jogo sortearia sempre o
-    // mesmo jogador, o que não é um "Quem Vestiu o Manto" de verdade.
-    // Revisitar quando mais cards do pacote ganharem as 4 dicas completas
-    // (hoje 49/50 ficam `incomplete`, aparecem só no autocomplete/
-    // comparação — nunca como segredo).
+    // ambos sem string cruzada, sem colisão de id com o Goiás).
+    // 2026-09-11: 'guess_player' e 'lineup' habilitados depois de reauditoria
+    // completa contra o Supabase do Bragantino — os dois bloqueios antigos
+    // (guess_player com só 1/50 `verified`; lineup com 0/123 partidas
+    // resolvíveis) já não valem mais:
+    //   * guess_players: 50/50 ativos com `data_status='verified'`, as 4
+    //     dicas completas (`GuessPlayer.hasFullHints`) e `photo_key`
+    //     resolvendo pra uma foto real em `_bragantinoGuessPlayerPhotos` —
+    //     os 50 são elegíveis como segredo da rodada
+    //     (`GuessPlayer.eligibleAsSecret`), não mais 1 só.
+    //   * lineup_matches: 31/31 ativos, cada um com formação reconhecida
+    //     (`FormationLayoutService.positionsFor`) e exatamente 11 jogadores
+    //     completos (pos/nome/resposta) — `LineupMatchRepository._map`
+    //     descartaria silenciosamente qualquer linha incompleta, e nenhuma
+    //     das 31 cai nesse caso.
     enabledArenaGames: {
       'player_identity',
       'tactical_identity',
       'quiz',
       'career_path',
+      'guess_player',
+      'lineup',
     },
     // Todas as 3 capabilities de comércio já estão false acima — o modo
     // não importa funcionalmente ainda, mas precisa de um valor (nenhum
