@@ -8,10 +8,14 @@ plugins {
 }
 
 // Keystore de release — lido de android/key.properties (nunca commitado,
-// ver android/key.properties.example pro formato). Se o arquivo não
-// existir (dev local, CI sem secret configurado), `releaseSigningProps`
-// fica vazio e o release CONTINUA caindo no signingConfig de debug —
-// zero mudança de comportamento até alguém criar o arquivo de verdade.
+// ver android/key.properties.example pro formato). Debug/profile builds
+// nunca dependem disso (o `assemble`/`bundle` de release é que falha,
+// nunca a configuração do projeto — ver `gradle.taskGraph.whenReady`
+// abaixo). Sem `key.properties`, NENHUMA task de release consegue rodar:
+// nunca mais cai silenciosamente pra assinatura de debug (um AAB assinado
+// com debug parece "pronto" mas a Play Store rejeita/nunca deveria
+// aceitar — falha alto e cedo é melhor que descobrir isso na hora do
+// upload).
 val keystorePropertiesFile = rootProject.file("key.properties")
 val releaseSigningProps = Properties().apply {
     if (keystorePropertiesFile.exists()) {
@@ -103,13 +107,31 @@ android {
 
     buildTypes {
         release {
-            // Usa o keystore de release real assim que `android/key.properties`
-            // existir (ver android/key.properties.example) — até lá, cai no
-            // signingConfig de debug (comportamento pré-existente, nunca
-            // quebra quem ainda não configurou). Nenhuma senha/keystore
-            // aparece aqui — tudo lido do arquivo local, nunca commitado.
+            // Placeholder de CONFIGURAÇÃO só pro Gradle não quebrar ao avaliar
+            // o projeto (ex.: abrir no Android Studio, `flutter analyze`) sem
+            // key.properties. Nunca chega a ASSINAR nada de verdade com debug
+            // — o `gradle.taskGraph.whenReady` abaixo barra a execução de
+            // qualquer task de release antes disso importar.
             signingConfig = if (hasReleaseSigning) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
         }
+    }
+}
+
+// Fail-fast real: se alguma task de RELEASE for de fato executada
+// (assembleGoiasRelease, bundleBragantinoRelease, etc. — cobre os 2
+// flavors sem listar nome por nome) sem keystore configurado, a build
+// para aqui, ANTES de gerar qualquer artefato — nunca produz um
+// APK/AAB assinado com debug se passando por release.
+gradle.taskGraph.whenReady {
+    val runningReleaseTask = allTasks.any { it.name.contains("Release") }
+    if (runningReleaseTask && !hasReleaseSigning) {
+        throw GradleException(
+            "Build de RELEASE sem keystore configurado. Crie android/key.properties " +
+                "(copie de android/key.properties.example e gere o keystore com " +
+                "`keytool -genkeypair ...`, ver o próprio arquivo de exemplo) antes de " +
+                "gerar um APK/AAB de release real. Debug/profile builds continuam " +
+                "funcionando normalmente sem isso.",
+        )
     }
 }
 
