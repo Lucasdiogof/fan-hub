@@ -248,13 +248,35 @@
   "deleteAccountConfirmButton": "EXCLUIR MINHA CONTA",
   "deleteAccountDeleting": "EXCLUINDO CONTA...",
   "settingsNotificationsTitle": "NOTIFICAÇÕES",
-  "notificationsMatchesTitle": "Partidas do {club}",
-  "@notificationsMatchesTitle": {
+  "notificationsLiveMatchesTitle": "Jogos ao vivo",
+  "notificationsLiveMatchesDescription": "Ative para receber os avisos abaixo em tempo real, com o placar do {club}.",
+  "@notificationsLiveMatchesDescription": {
     "placeholders": {
       "club": { "type": "String" }
     }
   },
-  "notificationsMatchesDescription": "Gols e resultado final em tempo real.",
+  "notificationsKickoffTitle": "Início da partida",
+  "notificationsKickoffDescription": "Aviso assim que a bola rolar.",
+  "notificationsGoalForTitle": "Gols do {club}",
+  "@notificationsGoalForTitle": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
+  "notificationsGoalForDescription": "Aviso a cada gol marcado pelo {club}.",
+  "@notificationsGoalForDescription": {
+    "placeholders": {
+      "club": { "type": "String" }
+    }
+  },
+  "notificationsGoalAgainstTitle": "Gols do adversário",
+  "notificationsGoalAgainstDescription": "Aviso a cada gol sofrido.",
+  "notificationsHalfTimeTitle": "Intervalo",
+  "notificationsHalfTimeDescription": "Aviso no intervalo, com o placar parcial.",
+  "notificationsSecondHalfTitle": "Início do segundo tempo",
+  "notificationsSecondHalfDescription": "Aviso quando a bola voltar a rolar.",
+  "notificationsFullTimeTitle": "Fim de jogo",
+  "notificationsFullTimeDescription": "Aviso com o placar final.",
   "notificationsTicketsTitle": "Ingressos e check-in",
   "notificationsTicketsDescription": "Avisos quando a venda ou o check-in abrirem.",
   "notificationsOsBlockedMessage": "As notificações estão desativadas nas configurações do sistema — você não vai receber nada até reativar.",

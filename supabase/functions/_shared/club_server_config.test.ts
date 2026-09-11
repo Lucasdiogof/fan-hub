@@ -37,9 +37,30 @@ describe('resolveClubServerConfigByCode', () => {
   });
 });
 
-describe('SERVER_CLUB_REGISTRY — SECOND_CLUB_BLOCKED', () => {
-  it('tem exatamente 1 entrada (goias) — nenhum 2º clube real registrado', () => {
-    expect(SERVER_CLUB_REGISTRY).toHaveLength(1);
-    expect(SERVER_CLUB_REGISTRY[0].code).toBe('goias');
+describe('SERVER_CLUB_REGISTRY — Goiás + Bragantino, nenhum 3º clube sem autorização', () => {
+  it('tem exatamente 2 entradas: goias e bragantino', () => {
+    expect(SERVER_CLUB_REGISTRY).toHaveLength(2);
+    expect(SERVER_CLUB_REGISTRY.map((c) => c.code).sort()).toEqual(['bragantino', 'goias']);
+  });
+
+  it('cada clube tem workerBaseUrl PRÓPRIO — nunca os 2 apontando pro mesmo Worker', () => {
+    const urls = SERVER_CLUB_REGISTRY.map((c) => c.workerBaseUrl);
+    expect(new Set(urls).size).toBe(SERVER_CLUB_REGISTRY.length);
+  });
+});
+
+describe('resolveClubServerConfigByClubId/ByCode — Bragantino', () => {
+  const BRAGANTINO_CANONICAL_CLUB_ID = '51683d2a-ea1d-57c6-8014-996146f242e7';
+
+  it('UUID real do Bragantino resolve pra config do Bragantino, nunca a do Goiás', () => {
+    const config = resolveClubServerConfigByClubId(BRAGANTINO_CANONICAL_CLUB_ID);
+    expect(config?.code).toBe('bragantino');
+    expect(config?.oneFootballTeamId).toBe(4734);
+    expect(config?.workerBaseUrl).toBe('https://bragantino-app.lucasdiogo1234.workers.dev');
+  });
+
+  it("code 'bragantino' resolve pra config do Bragantino", () => {
+    const config = resolveClubServerConfigByCode('bragantino');
+    expect(config?.canonicalClubId).toBe(BRAGANTINO_CANONICAL_CLUB_ID);
   });
 });

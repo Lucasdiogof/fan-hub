@@ -1252,17 +1252,89 @@ abstract class AppLocalizations {
   /// **'NOTIFICAÇÕES'**
   String get settingsNotificationsTitle;
 
-  /// No description provided for @notificationsMatchesTitle.
+  /// No description provided for @notificationsLiveMatchesTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Partidas do {club}'**
-  String notificationsMatchesTitle(String club);
+  /// **'Jogos ao vivo'**
+  String get notificationsLiveMatchesTitle;
 
-  /// No description provided for @notificationsMatchesDescription.
+  /// No description provided for @notificationsLiveMatchesDescription.
   ///
   /// In pt, this message translates to:
-  /// **'Gols e resultado final em tempo real.'**
-  String get notificationsMatchesDescription;
+  /// **'Ative para receber os avisos abaixo em tempo real, com o placar do {club}.'**
+  String notificationsLiveMatchesDescription(String club);
+
+  /// No description provided for @notificationsKickoffTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Início da partida'**
+  String get notificationsKickoffTitle;
+
+  /// No description provided for @notificationsKickoffDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aviso assim que a bola rolar.'**
+  String get notificationsKickoffDescription;
+
+  /// No description provided for @notificationsGoalForTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols do {club}'**
+  String notificationsGoalForTitle(String club);
+
+  /// No description provided for @notificationsGoalForDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aviso a cada gol marcado pelo {club}.'**
+  String notificationsGoalForDescription(String club);
+
+  /// No description provided for @notificationsGoalAgainstTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Gols do adversário'**
+  String get notificationsGoalAgainstTitle;
+
+  /// No description provided for @notificationsGoalAgainstDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aviso a cada gol sofrido.'**
+  String get notificationsGoalAgainstDescription;
+
+  /// No description provided for @notificationsHalfTimeTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Intervalo'**
+  String get notificationsHalfTimeTitle;
+
+  /// No description provided for @notificationsHalfTimeDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aviso no intervalo, com o placar parcial.'**
+  String get notificationsHalfTimeDescription;
+
+  /// No description provided for @notificationsSecondHalfTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Início do segundo tempo'**
+  String get notificationsSecondHalfTitle;
+
+  /// No description provided for @notificationsSecondHalfDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aviso quando a bola voltar a rolar.'**
+  String get notificationsSecondHalfDescription;
+
+  /// No description provided for @notificationsFullTimeTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fim de jogo'**
+  String get notificationsFullTimeTitle;
+
+  /// No description provided for @notificationsFullTimeDescription.
+  ///
+  /// In pt, this message translates to:
+  /// **'Aviso com o placar final.'**
+  String get notificationsFullTimeDescription;
 
   /// No description provided for @notificationsTicketsTitle.
   ///
