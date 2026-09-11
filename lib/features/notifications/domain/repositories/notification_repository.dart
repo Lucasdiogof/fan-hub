@@ -17,7 +17,13 @@ abstract class NotificationRepository {
   Future<Result<NotificationPreferences>> getPreferences();
 
   Future<Result<void>> updatePreferences({
-    bool? matchesEnabled,
+    bool? liveMatchesEnabled,
+    bool? kickoffEnabled,
+    bool? goalForEnabled,
+    bool? goalAgainstEnabled,
+    bool? halfTimeEnabled,
+    bool? secondHalfStartedEnabled,
+    bool? fullTimeEnabled,
     bool? ticketsEnabled,
   });
 }

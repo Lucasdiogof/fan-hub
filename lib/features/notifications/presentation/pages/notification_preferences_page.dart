@@ -72,8 +72,8 @@ class _NotificationPreferencesView extends StatelessWidget {
                     children: const [
                       _OsPermissionBanner(),
                       SizedBox(height: AppSpacing.lg),
-                      _MatchesToggle(),
-                      SizedBox(height: AppSpacing.sm),
+                      _LiveMatchesGroup(),
+                      SizedBox(height: AppSpacing.lg),
                       _TicketsToggle(),
                     ],
                   ),
@@ -138,27 +138,215 @@ class _OsPermissionBanner extends StatelessWidget {
   }
 }
 
-class _MatchesToggle extends StatelessWidget {
-  const _MatchesToggle();
+/// Grupo "Jogos ao vivo" — master toggle + 6 sub-preferências, uma por
+/// evento canônico de partida. Regra explícita do produto: master OFF
+/// desliga (e desabilita visualmente) os 6 sub-toggles, mesmo que o valor
+/// individual salvo continue `true` — reativar o master volta a respeitar
+/// cada sub-preferência como estava.
+class _LiveMatchesGroup extends StatelessWidget {
+  const _LiveMatchesGroup();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<
-      NotificationPreferencesCubit,
-      NotificationPreferencesState
-    >(
-      builder: (context, state) => _ToggleRow(
-        icon: Icons.sports_soccer_rounded,
-        title: context.l10n.notificationsMatchesTitle(
-          sl<ClubConfig>().identity.shortName,
+    final colors = context.colors;
+    final clubName = sl<ClubConfig>().identity.shortName;
+    return BlocBuilder<NotificationPreferencesCubit, NotificationPreferencesState>(
+      builder: (context, state) {
+        final prefs = state.preferences;
+        final loading = state.status == LoadStatus.loading;
+        final subtogglesEnabled = !loading && prefs.liveMatchesEnabled;
+        return Container(
+          decoration: BoxDecoration(
+            color: colors.surface,
+            borderRadius: BorderRadius.circular(AppRadius.card),
+            border: Border.all(color: colors.border),
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(AppSpacing.lg),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: colors.secondary,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        Icons.sports_soccer_rounded,
+                        color: colors.primary,
+                        size: 20,
+                      ),
+                    ),
+                    const SizedBox(width: AppSpacing.md),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            context.l10n.notificationsLiveMatchesTitle,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14.5,
+                              color: colors.textPrimary,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            context.l10n.notificationsLiveMatchesDescription(
+                              clubName,
+                            ),
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: colors.textSecondary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Switch.adaptive(
+                      value: prefs.liveMatchesEnabled,
+                      onChanged: loading
+                          ? null
+                          : (value) => context
+                                .read<NotificationPreferencesCubit>()
+                                .setLiveMatchesEnabled(value),
+                      activeTrackColor: colors.primary,
+                    ),
+                  ],
+                ),
+              ),
+              Divider(height: 1, color: colors.border),
+              _SubToggleRow(
+                title: context.l10n.notificationsKickoffTitle,
+                description: context.l10n.notificationsKickoffDescription,
+                value: prefs.kickoffEnabled,
+                enabled: subtogglesEnabled,
+                onChanged: (value) => context
+                    .read<NotificationPreferencesCubit>()
+                    .setKickoffEnabled(value),
+              ),
+              _SubToggleRow(
+                title: context.l10n.notificationsGoalForTitle(clubName),
+                description: context.l10n.notificationsGoalForDescription(
+                  clubName,
+                ),
+                value: prefs.goalForEnabled,
+                enabled: subtogglesEnabled,
+                onChanged: (value) => context
+                    .read<NotificationPreferencesCubit>()
+                    .setGoalForEnabled(value),
+              ),
+              _SubToggleRow(
+                title: context.l10n.notificationsGoalAgainstTitle,
+                description: context.l10n.notificationsGoalAgainstDescription,
+                value: prefs.goalAgainstEnabled,
+                enabled: subtogglesEnabled,
+                onChanged: (value) => context
+                    .read<NotificationPreferencesCubit>()
+                    .setGoalAgainstEnabled(value),
+              ),
+              _SubToggleRow(
+                title: context.l10n.notificationsHalfTimeTitle,
+                description: context.l10n.notificationsHalfTimeDescription,
+                value: prefs.halfTimeEnabled,
+                enabled: subtogglesEnabled,
+                onChanged: (value) => context
+                    .read<NotificationPreferencesCubit>()
+                    .setHalfTimeEnabled(value),
+              ),
+              _SubToggleRow(
+                title: context.l10n.notificationsSecondHalfTitle,
+                description: context.l10n.notificationsSecondHalfDescription,
+                value: prefs.secondHalfStartedEnabled,
+                enabled: subtogglesEnabled,
+                onChanged: (value) => context
+                    .read<NotificationPreferencesCubit>()
+                    .setSecondHalfStartedEnabled(value),
+              ),
+              _SubToggleRow(
+                title: context.l10n.notificationsFullTimeTitle,
+                description: context.l10n.notificationsFullTimeDescription,
+                value: prefs.fullTimeEnabled,
+                enabled: subtogglesEnabled,
+                isLast: true,
+                onChanged: (value) => context
+                    .read<NotificationPreferencesCubit>()
+                    .setFullTimeEnabled(value),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _SubToggleRow extends StatelessWidget {
+  const _SubToggleRow({
+    required this.title,
+    required this.description,
+    required this.value,
+    required this.enabled,
+    required this.onChanged,
+    this.isLast = false,
+  });
+
+  final String title;
+  final String description;
+  final bool value;
+  final bool enabled;
+  final bool isLast;
+  final ValueChanged<bool> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: AppSpacing.sm,
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13.5,
+                        color: enabled ? colors.textPrimary : colors.textHint,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      description,
+                      style: TextStyle(
+                        fontSize: 11.5,
+                        color: enabled ? colors.textSecondary : colors.textHint,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Switch.adaptive(
+                value: value,
+                onChanged: enabled ? onChanged : null,
+                activeTrackColor: colors.primary,
+              ),
+            ],
+          ),
         ),
-        description: context.l10n.notificationsMatchesDescription,
-        value: state.preferences.matchesEnabled,
-        enabled: state.status != LoadStatus.loading,
-        onChanged: (value) => context
-            .read<NotificationPreferencesCubit>()
-            .setMatchesEnabled(value),
-      ),
+        if (!isLast) Divider(height: 1, color: colors.border, indent: AppSpacing.lg),
+      ],
     );
   }
 }

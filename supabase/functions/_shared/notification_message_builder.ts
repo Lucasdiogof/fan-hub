@@ -11,7 +11,19 @@ export interface NotificationEventPayload {
   homeScore?: number;
   awayScore?: number;
   activeClubSide?: 'home' | 'away';
+  /** Só presente em goal/goal_against, e só quando o provider já informou (M-live). */
+  scorer?: string | null;
+  minute?: string;
 }
+
+export type NotificationEventTypeInput =
+  | 'match_access_open'
+  | 'kickoff'
+  | 'goal'
+  | 'goal_against'
+  | 'half_time'
+  | 'second_half_started'
+  | 'full_time';
 
 export interface NotificationMessage {
   title: string;
@@ -34,7 +46,7 @@ export interface NotificationMessage {
  * gentílico do torcedor, "Esmeraldino" — 3 conceitos diferentes, nunca
  * misturados só pra reduzir a quantidade de campos). */
 export function buildNotificationMessage(
-  eventType: 'match_access_open' | 'goal' | 'full_time',
+  eventType: NotificationEventTypeInput,
   payload: NotificationEventPayload,
   clubConfig: ClubServerConfig,
   opts: { isActiveMember: boolean },
@@ -42,6 +54,35 @@ export function buildNotificationMessage(
   const p = payload;
 
   switch (eventType) {
+    case 'kickoff': {
+      return {
+        type: 'kickoff',
+        title: '⚽ Começou!',
+        body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
+      };
+    }
+    case 'goal_against': {
+      const opponentName = p.activeClubSide === 'home' ? p.awayTeamName : p.homeTeamName;
+      return {
+        type: 'goal_against',
+        title: `⚽ Gol do ${opponentName ?? 'adversário'}`,
+        body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
+      };
+    }
+    case 'half_time': {
+      return {
+        type: 'half_time',
+        title: '⏸ Intervalo',
+        body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
+      };
+    }
+    case 'second_half_started': {
+      return {
+        type: 'second_half_started',
+        title: '▶️ Começou o segundo tempo',
+        body: `${p.homeTeamName} ${p.homeScore ?? 0} x ${p.awayScore ?? 0} ${p.awayTeamName}`,
+      };
+    }
     case 'match_access_open': {
       // Ternário de 3 vias preservado EXATAMENTE como no código pré-M3.3
       // (`git show 7316afc:supabase/functions/notifications-dispatch/

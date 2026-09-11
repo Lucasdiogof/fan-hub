@@ -418,7 +418,7 @@ void main() {
           () async {
             final client = await _authedClient(httpClient);
             final repo = SupabaseNotificationRepository(client, config);
-            await repo.updatePreferences(matchesEnabled: false);
+            await repo.updatePreferences(liveMatchesEnabled: false);
             expect(
               _firstRow(httpClient.lastRequestBodyJson)['club_id'],
               config.identity.canonicalClubId,
@@ -755,7 +755,7 @@ void main() {
         () async {
           final client = await _authedClient(httpClient);
           final repo = SupabaseNotificationRepository(client, config);
-          await repo.updatePreferences(matchesEnabled: false);
+          await repo.updatePreferences(liveMatchesEnabled: false);
           expect(
             Uri.decodeFull(urlWith('on_conflict').toString()),
             contains('on_conflict=user_id,club_id'),

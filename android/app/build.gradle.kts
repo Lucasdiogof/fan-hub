@@ -54,6 +54,14 @@ android {
             manifestPlaceholders["notificationChannelId"] = "goias_matches"
             buildConfigField("String", "NOTIFICATION_CHANNEL_ID", "\"goias_matches\"")
             buildConfigField("String", "NOTIFICATION_CHANNEL_NAME", "\"Partidas do Goiás\"")
+            // M-live — canal PRÓPRIO pros 6 eventos de jogo ao vivo (kickoff,
+            // gol a favor/contra, intervalo, 2º tempo, fim), IMPORTANCE_HIGH
+            // (heads-up). Nunca reaproveita "goias_matches" (IMPORTANCE_DEFAULT,
+            // usado só por ingressos/check-in) — o Android NUNCA promove a
+            // importância de um canal já criado no aparelho, só um channel_id
+            // novo resolve isso (por isso o sufixo `_v2`, versionado).
+            buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_ID", "\"goias_live_match_alerts_v2\"")
+            buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_NAME", "\"Jogos ao vivo — Goiás\"")
         }
         create("bragantino") {
             dimension = "club"
@@ -62,6 +70,8 @@ android {
             manifestPlaceholders["notificationChannelId"] = "bragantino_matches"
             buildConfigField("String", "NOTIFICATION_CHANNEL_ID", "\"bragantino_matches\"")
             buildConfigField("String", "NOTIFICATION_CHANNEL_NAME", "\"Partidas do Bragantino\"")
+            buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_ID", "\"bragantino_live_match_alerts_v2\"")
+            buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_NAME", "\"Jogos ao vivo — Bragantino\"")
         }
     }
 
