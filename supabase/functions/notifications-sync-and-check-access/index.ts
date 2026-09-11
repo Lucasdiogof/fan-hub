@@ -14,7 +14,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 import { SERVER_CLUB_REGISTRY, type ClubServerConfig } from '../_shared/club_server_config.ts';
 
-const WORKER_BASE_URL = 'https://goias-app.lucasdiogo1234.workers.dev';
 const ACCESS_WINDOW_HOURS = 48;
 const MONITOR_HORIZON_DAYS = 10;
 const MONITOR_DURATION_HOURS = 3;
@@ -41,7 +40,7 @@ async function syncClub(
   admin: ReturnType<typeof createClient>,
   clubConfig: ClubServerConfig,
 ): Promise<{ club: string; ok: boolean; matchId?: string; createdEvent: boolean; reason?: string }> {
-  const teamRes = await fetch(`${WORKER_BASE_URL}/api/football/team/${clubConfig.oneFootballTeamPath}`);
+  const teamRes = await fetch(`${clubConfig.workerBaseUrl}/api/football/team/${clubConfig.oneFootballTeamPath}`);
   if (!teamRes.ok) {
     console.error('sync-and-check-access: falha ao consultar /team', clubConfig.code, teamRes.status);
     return { club: clubConfig.code, ok: false, createdEvent: false, reason: 'upstream_error' };

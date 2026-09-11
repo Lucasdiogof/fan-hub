@@ -623,13 +623,56 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsNotificationsTitle => 'NOTIFICATIONS';
 
   @override
-  String notificationsMatchesTitle(String club) {
-    return '$club matches';
+  String get notificationsLiveMatchesTitle => 'Live matches';
+
+  @override
+  String notificationsLiveMatchesDescription(String club) {
+    return 'Turn on to get the alerts below in real time, with $club\'s score.';
   }
 
   @override
-  String get notificationsMatchesDescription =>
-      'Goals and final result in real time.';
+  String get notificationsKickoffTitle => 'Kickoff';
+
+  @override
+  String get notificationsKickoffDescription =>
+      'Alert as soon as the match starts.';
+
+  @override
+  String notificationsGoalForTitle(String club) {
+    return '$club goals';
+  }
+
+  @override
+  String notificationsGoalForDescription(String club) {
+    return 'Alert on every goal scored by $club.';
+  }
+
+  @override
+  String get notificationsGoalAgainstTitle => 'Opponent goals';
+
+  @override
+  String get notificationsGoalAgainstDescription =>
+      'Alert on every goal conceded.';
+
+  @override
+  String get notificationsHalfTimeTitle => 'Half-time';
+
+  @override
+  String get notificationsHalfTimeDescription =>
+      'Alert at half-time, with the partial score.';
+
+  @override
+  String get notificationsSecondHalfTitle => 'Second half kickoff';
+
+  @override
+  String get notificationsSecondHalfDescription =>
+      'Alert when the second half starts.';
+
+  @override
+  String get notificationsFullTimeTitle => 'Full time';
+
+  @override
+  String get notificationsFullTimeDescription => 'Alert with the final score.';
 
   @override
   String get notificationsTicketsTitle => 'Tickets and check-in';

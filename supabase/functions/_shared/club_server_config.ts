@@ -6,11 +6,26 @@
 // Worker. Nunca duplica a config inteira do Flutter, nunca guarda secret
 // (FCM/service role continuam só em Deno.env, nunca aqui).
 //
-// Hoje só `'goias'` está registrado — nenhum 2º clube real
-// (SECOND_CLUB_BLOCKED). Um `club_id`/`clubCode` desconhecido NUNCA cai pro
-// Goiás por omissão — quem chama `resolveClubServerConfigByClubId`/
+// M-live: Bragantino registrado (2ª entrada real), mesmos dados de
+// `lib/core/club/bragantino_club_config.dart` — nunca inventados aqui. Um
+// `club_id`/`clubCode` desconhecido continua NUNCA caindo pro Goiás por
+// omissão — quem chama `resolveClubServerConfigByClubId`/
 // `resolveClubServerConfigByCode` trata `undefined` como fail-closed
 // (loga e pula a sessão/evento, nunca assume Goiás).
+//
+// IMPORTANTE (deploy multi-projeto): Goiás e Bragantino são projetos
+// Supabase SEPARADOS (`yonozsdgyrhgqrvydbnr` vs `yrgyzkaaudyzmsqwzecj` —
+// ver `lib/core/club/*_club_config.dart` e `infra/supabase/clubs/README.md`),
+// cada um com seu próprio `public.clubs` (1 linha só). Ter os 2 clubes
+// neste registry deixa o CÓDIGO pronto pros dois, mas cada Edge Function
+// só enxerga o banco do projeto onde está deployada — pra Bragantino
+// receber notificações de verdade, este mesmo código (supabase/functions/)
+// precisa ser deployado TAMBÉM no projeto Bragantino (com seu próprio
+// cron, sua própria FCM_SERVICE_ACCOUNT_JSON), igual ao Worker já é
+// deployado 2x (`wrangler.toml` vs `wrangler.bragantino.toml`). Rodar o
+// mesmo código nos 2 projetos é seguro (o clube que não pertence ao
+// projeto atual simplesmente falha ao gravar por FK ausente em `clubs`,
+// erro isolado e logado por clube — nunca derruba o outro).
 
 export interface ClubServerConfig {
   code: string;
@@ -33,6 +48,11 @@ export interface ClubServerConfig {
    * "esse homeTeamName é o clube ativo?" no dispatch, nunca pra decisão de
    * fluxo/roteamento. */
   shortName: string;
+  /** Mesmo `ClubIntegrations.workerBaseUrl` do Flutter — substitui o
+   * antigo `WORKER_BASE_URL` hardcoded (sempre o do Goiás) em
+   * `notifications-poll-live-match`/`notifications-sync-and-check-access`.
+   * Nunca inferido a partir do `code`; sempre o valor real do clube. */
+  workerBaseUrl: string;
   /**
    * Rodada de hardening (revisão do usuário, 2026-09-02): o título de GOL
    * é "GOOOOOOL DO <NOME DO CLUBE>!" — pro Goiás, "GOOOOOOL DO GOIÁS!",
@@ -61,14 +81,36 @@ const GOIAS_SERVER_CONFIG: ClubServerConfig = {
   oneFootballTeamId: 1863,
   oneFootballTeamPath: 'goias',
   shortName: 'Goiás',
+  workerBaseUrl: 'https://goias-app.lucasdiogo1234.workers.dev',
   notificationGoalClubName: 'Goiás',
   notificationVictoryNickname: 'Verdão',
 };
 
-/** Todo registro real hoje — SECOND_CLUB_BLOCKED, nunca um 2º clube real
- * sem autorização explícita separada (mesma regra do `clubRegistry` do
- * Flutter e de `SERVER_CLUB_CODES` do Worker). */
-export const SERVER_CLUB_REGISTRY: readonly ClubServerConfig[] = [GOIAS_SERVER_CONFIG];
+// Mesmos valores reais de `lib/core/club/bragantino_club_config.dart`
+// (canonicalClubId/oneFootballTeamId/workerBaseUrl já confirmados lá,
+// nunca reinventados aqui). `notificationGoalClubName`/
+// `notificationVictoryNickname` usam o `shortName` como fallback seguro —
+// nenhum apelido de torcida/mídia foi confirmado com fonte pra este
+// clube, então evitamos inventar um (nunca reusar `fanDemonym`, mesmo
+// motivo documentado acima pro Goiás).
+const BRAGANTINO_SERVER_CONFIG: ClubServerConfig = {
+  code: 'bragantino',
+  canonicalClubId: '51683d2a-ea1d-57c6-8014-996146f242e7',
+  oneFootballTeamId: 4734,
+  oneFootballTeamPath: 'bragantino',
+  shortName: 'Bragantino',
+  workerBaseUrl: 'https://bragantino-app.lucasdiogo1234.workers.dev',
+  notificationGoalClubName: 'Bragantino',
+  notificationVictoryNickname: 'Bragantino',
+};
+
+/** Todo registro real hoje — Goiás e Bragantino. Um 3º clube real precisa
+ * da mesma autorização explícita já dada aqui (mesma regra do
+ * `clubRegistry` do Flutter e de `SERVER_CLUB_CODES` do Worker). */
+export const SERVER_CLUB_REGISTRY: readonly ClubServerConfig[] = [
+  GOIAS_SERVER_CONFIG,
+  BRAGANTINO_SERVER_CONFIG,
+];
 
 export function resolveClubServerConfigByClubId(clubId: string): ClubServerConfig | undefined {
   return SERVER_CLUB_REGISTRY.find((c) => c.canonicalClubId === clubId);

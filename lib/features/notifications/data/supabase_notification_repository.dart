@@ -70,14 +70,24 @@ class SupabaseNotificationRepository implements NotificationRepository {
     try {
       final row = await _client
           .from('user_notification_preferences')
-          .select('matches_enabled, tickets_enabled')
+          .select(
+            'live_matches_enabled, kickoff_enabled, goal_for_enabled, '
+            'goal_against_enabled, half_time_enabled, '
+            'second_half_started_enabled, full_time_enabled, tickets_enabled',
+          )
           .eq('user_id', _uid)
           .eq('club_id', _clubId)
           .maybeSingle();
       if (row == null) return const Success(NotificationPreferences());
       return Success(
         NotificationPreferences(
-          matchesEnabled: row['matches_enabled'] as bool,
+          liveMatchesEnabled: row['live_matches_enabled'] as bool,
+          kickoffEnabled: row['kickoff_enabled'] as bool,
+          goalForEnabled: row['goal_for_enabled'] as bool,
+          goalAgainstEnabled: row['goal_against_enabled'] as bool,
+          halfTimeEnabled: row['half_time_enabled'] as bool,
+          secondHalfStartedEnabled: row['second_half_started_enabled'] as bool,
+          fullTimeEnabled: row['full_time_enabled'] as bool,
           ticketsEnabled: row['tickets_enabled'] as bool,
         ),
       );
@@ -89,7 +99,13 @@ class SupabaseNotificationRepository implements NotificationRepository {
 
   @override
   Future<Result<void>> updatePreferences({
-    bool? matchesEnabled,
+    bool? liveMatchesEnabled,
+    bool? kickoffEnabled,
+    bool? goalForEnabled,
+    bool? goalAgainstEnabled,
+    bool? halfTimeEnabled,
+    bool? secondHalfStartedEnabled,
+    bool? fullTimeEnabled,
     bool? ticketsEnabled,
   }) async {
     try {
@@ -100,7 +116,13 @@ class SupabaseNotificationRepository implements NotificationRepository {
       await _client.from('user_notification_preferences').upsert({
         'user_id': _uid,
         'club_id': _clubId,
-        'matches_enabled': ?matchesEnabled,
+        'live_matches_enabled': ?liveMatchesEnabled,
+        'kickoff_enabled': ?kickoffEnabled,
+        'goal_for_enabled': ?goalForEnabled,
+        'goal_against_enabled': ?goalAgainstEnabled,
+        'half_time_enabled': ?halfTimeEnabled,
+        'second_half_started_enabled': ?secondHalfStartedEnabled,
+        'full_time_enabled': ?fullTimeEnabled,
         'tickets_enabled': ?ticketsEnabled,
         'updated_at': DateTime.now().toUtc().toIso8601String(),
       }, onConflict: 'user_id,club_id');

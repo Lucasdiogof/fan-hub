@@ -44,6 +44,12 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Keystore de release Android — NUNCA versionar o arquivo nem as senhas.
+# Ver android/key.properties.example pro formato esperado.
+/android/key.properties
+*.jks
+*.keystore
+
 # Cloudflare Pages Functions
 /node_modules/
 .dev.vars
