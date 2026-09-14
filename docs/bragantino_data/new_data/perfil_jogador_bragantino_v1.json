@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "game": "perfil_de_jogador",
+  "club": "RB Bragantino",
+  "questions_count": 10,
+  "ranking": false,
+  "scoring_rules": {
+    "method": "weighted_trait_distance",
+    "result_floor": 42,
+    "winner_range": [
+      82,
+      96
+    ],
+    "minimum_gap_winner_to_second": 7,
+    "minimum_gap_between_top3": 4,
+    "tie_break": "highest number of exact trait matches; then deterministic profile id",
+    "important": "Do not normalize all profiles independently to the same narrow band. Stretch scores after raw similarity so top profiles are visibly distinct."
+  },
+  "dimensions": [
+    "visao_criacao",
+    "um_contra_um",
+    "presenca_area",
+    "seguranca_defensiva",
+    "leitura_tatica",
+    "verticalidade",
+    "lideranca",
+    "competitividade"
+  ],
+  "profiles": [
+    {
+      "id": "mauro_silva",
+      "name": "Mauro Silva",
+      "position": "VOL",
+      "traits": [
+        7,
+        3,
+        2,
+        9,
+        10,
+        5,
+        9,
+        9
+      ],
+      "identity": [
+        "proteção defensiva",
+        "leitura tática",
+        "equilíbrio",
+        "liderança silenciosa"
+      ],
+      "evidence": [
+        "Titular da geração campeã de 1990; volante; zero gols no Paulistão 1990, reforçando papel não-goleador."
+      ]
+    },
+    {
+      "id": "gil_baiano",
+      "name": "Gil Baiano",
+      "position": "LD",
+      "traits": [
+        5,
+        7,
+        5,
+        7,
+        7,
+        9,
+        8,
+        9
+      ],
+      "identity": [
+        "lateral agressivo",
+        "apoio constante",
+        "energia",
+        "chegada ofensiva"
+      ],
+      "evidence": [
+        "Lateral-direito titular absoluto do campeão paulista de 1990; marcou três gols na competição."
+      ]
+    },
+    {
+      "id": "lincom",
+      "name": "Lincom",
+      "position": "ATA",
+      "traits": [
+        2,
+        3,
+        10,
+        2,
+        4,
+        5,
+        7,
+        9
+      ],
+      "identity": [
+        "referência de área",
+        "presença física",
+        "finalização",
+        "identificação com torcida"
+      ],
+      "evidence": [
+        "Centroavante usado como referência no comando do ataque; 160 jogos e 72 gols no recorte oficial adotado."
+      ]
+    },
+    {
+      "id": "claudinho",
+      "name": "Claudinho",
+      "position": "MEI",
+      "traits": [
+        10,
+        8,
+        8,
+        3,
+        7,
+        8,
+        7,
+        8
+      ],
+      "identity": [
+        "criador",
+        "último passe",
+        "golaços",
+        "meia que também finaliza"
+      ],
+      "evidence": [
+        "Responsável pela criação; 108 passes para finalizações no Brasileirão 2020 e 18 gols na competição."
+      ]
+    },
+    {
+      "id": "leo_ortiz",
+      "name": "Léo Ortiz",
+      "position": "ZAG",
+      "traits": [
+        8,
+        4,
+        2,
+        9,
+        10,
+        6,
+        10,
+        8
+      ],
+      "identity": [
+        "zagueiro construtor",
+        "cobertura",
+        "lançamento",
+        "capitão"
+      ],
+      "evidence": [
+        "Boa saída de bola, cobertura, lançamentos e personalidade; capitão e peça da criação desde a defesa."
+      ]
+    },
+    {
+      "id": "artur",
+      "name": "Artur",
+      "position": "PD",
+      "traits": [
+        5,
+        10,
+        6,
+        3,
+        5,
+        10,
+        5,
+        7
+      ],
+      "identity": [
+        "drible",
+        "velocidade",
+        "amplitude",
+        "agressividade no 1x1"
+      ],
+      "evidence": [
+        "Dominava o lado direito com velocidade e drible; perfil de ponta aberto buscando jogada de gol."
+      ]
+    },
+    {
+      "id": "ytalo",
+      "name": "Ytalo",
+      "position": "ATA",
+      "traits": [
+        7,
+        5,
+        8,
+        3,
+        8,
+        7,
+        6,
+        9
+      ],
+      "identity": [
+        "movimentação",
+        "associação",
+        "ocupação de espaços",
+        "gols e assistências"
+      ],
+      "evidence": [
+        "Artilheiro do Braga na Série B 2019 e destaque por inteligência de movimentação e criação de espaços."
+      ]
+    },
+    {
+      "id": "biro_biro",
+      "name": "Biro-Biro",
+      "position": "LE",
+      "traits": [
+        4,
+        6,
+        3,
+        8,
+        8,
+        7,
+        7,
+        9
+      ],
+      "identity": [
+        "lateral de sustentação",
+        "regularidade",
+        "combatividade",
+        "disciplina"
+      ],
+      "evidence": [
+        "Lateral-esquerdo da equipe-base campeã paulista de 1990."
+      ]
+    },
+    {
+      "id": "ivair",
+      "name": "Ivair",
+      "position": "VOL",
+      "traits": [
+        8,
+        5,
+        6,
+        7,
+        9,
+        6,
+        9,
+        9
+      ],
+      "identity": [
+        "meio-campista experiente",
+        "equilíbrio",
+        "chegada",
+        "comando do setor"
+      ],
+      "evidence": [
+        "Volante titular absoluto em 1990 e autor de quatro gols no Paulistão."
+      ]
+    },
+    {
+      "id": "marcelo_martelotte",
+      "name": "Marcelo",
+      "position": "GOL",
+      "traits": [
+        2,
+        1,
+        1,
+        10,
+        8,
+        2,
+        9,
+        9
+      ],
+      "identity": [
+        "segurança",
+        "decisão",
+        "frieza",
+        "proteção do resultado"
+      ],
+      "evidence": [
+        "Goleiro titular absoluto da geração histórica e decisivo na final paulista de 1990."
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Quando seu time tem a bola, o que mais combina com você?",
+      "options": [
+        {
+          "text": "Organizar e achar o passe que quebra linhas",
+          "effects": {
+            "visao_criacao": 3,
+            "leitura_tatica": 1
+          }
+        },
+        {
+          "text": "Partir para cima no um contra um",
+          "effects": {
+            "um_contra_um": 3,
+            "verticalidade": 2
+          }
+        },
+        {
+          "text": "Atacar a área e terminar a jogada",
+          "effects": {
+            "presenca_area": 3
+          }
+        },
+        {
+          "text": "Dar segurança atrás e escolher o momento certo",
+          "effects": {
+            "seguranca_defensiva": 3,
+            "leitura_tatica": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Sem a bola, qual seria sua prioridade?",
+      "options": [
+        {
+          "text": "Fechar espaços antes que o perigo apareça",
+          "effects": {
+            "leitura_tatica": 3,
+            "seguranca_defensiva": 2
+          }
+        },
+        {
+          "text": "Pressionar imediatamente",
+          "effects": {
+            "competitividade": 2,
+            "verticalidade": 2
+          }
+        },
+        {
+          "text": "Guardar energia para decidir na frente",
+          "effects": {
+            "presenca_area": 2
+          }
+        },
+        {
+          "text": "Organizar e cobrar posicionamento dos companheiros",
+          "effects": {
+            "lideranca": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Num jogo travado, como você tenta resolver?",
+      "options": [
+        {
+          "text": "Com uma jogada individual",
+          "effects": {
+            "um_contra_um": 3
+          }
+        },
+        {
+          "text": "Com um passe improvável",
+          "effects": {
+            "visao_criacao": 3
+          }
+        },
+        {
+          "text": "Ganhando uma disputa na área",
+          "effects": {
+            "presenca_area": 3,
+            "competitividade": 1
+          }
+        },
+        {
+          "text": "Não dando espaço para o rival crescer",
+          "effects": {
+            "seguranca_defensiva": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Qual elogio você preferiria ouvir?",
+      "options": [
+        {
+          "text": "Enxerga o jogo antes dos outros",
+          "effects": {
+            "leitura_tatica": 3,
+            "visao_criacao": 2
+          }
+        },
+        {
+          "text": "Ninguém consegue segurar no mano a mano",
+          "effects": {
+            "um_contra_um": 3,
+            "verticalidade": 2
+          }
+        },
+        {
+          "text": "Decide quando a bola chega",
+          "effects": {
+            "presenca_area": 3
+          }
+        },
+        {
+          "text": "Faz todo mundo ao redor jogar melhor",
+          "effects": {
+            "lideranca": 2,
+            "visao_criacao": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "Em uma final, qual papel mais te atrai?",
+      "options": [
+        {
+          "text": "Controlar o ritmo",
+          "effects": {
+            "visao_criacao": 2,
+            "leitura_tatica": 2
+          }
+        },
+        {
+          "text": "Ser a válvula de escape",
+          "effects": {
+            "verticalidade": 3,
+            "um_contra_um": 2
+          }
+        },
+        {
+          "text": "Ser o homem do gol",
+          "effects": {
+            "presenca_area": 3,
+            "competitividade": 1
+          }
+        },
+        {
+          "text": "Ser o pilar que não deixa o time desmoronar",
+          "effects": {
+            "seguranca_defensiva": 3,
+            "lideranca": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "Qual risco você aceita mais facilmente?",
+      "options": [
+        {
+          "text": "Tentar um passe vertical difícil",
+          "effects": {
+            "visao_criacao": 3,
+            "verticalidade": 1
+          }
+        },
+        {
+          "text": "Encarar dois marcadores",
+          "effects": {
+            "um_contra_um": 3
+          }
+        },
+        {
+          "text": "Abandonar a posição para aparecer na área",
+          "effects": {
+            "presenca_area": 2,
+            "verticalidade": 2
+          }
+        },
+        {
+          "text": "Quase nenhum: prefiro manter a estrutura",
+          "effects": {
+            "leitura_tatica": 3,
+            "seguranca_defensiva": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "text": "Como você reage depois de um erro?",
+      "options": [
+        {
+          "text": "Peço a bola de novo",
+          "effects": {
+            "competitividade": 2,
+            "lideranca": 1
+          }
+        },
+        {
+          "text": "Corro para recuperar imediatamente",
+          "effects": {
+            "competitividade": 3,
+            "seguranca_defensiva": 1
+          }
+        },
+        {
+          "text": "Leio o que aconteceu e ajusto",
+          "effects": {
+            "leitura_tatica": 3
+          }
+        },
+        {
+          "text": "Tento decidir a próxima jogada",
+          "effects": {
+            "verticalidade": 2,
+            "presenca_area": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "Qual tipo de jogada mais te representa?",
+      "options": [
+        {
+          "text": "Lançamento ou passe entre linhas",
+          "effects": {
+            "visao_criacao": 3
+          }
+        },
+        {
+          "text": "Drible e aceleração pela faixa lateral",
+          "effects": {
+            "um_contra_um": 3,
+            "verticalidade": 3
+          }
+        },
+        {
+          "text": "Movimentação para abrir espaço e aparecer livre",
+          "effects": {
+            "leitura_tatica": 2,
+            "presenca_area": 2
+          }
+        },
+        {
+          "text": "Antecipação ou cobertura perfeita",
+          "effects": {
+            "seguranca_defensiva": 3,
+            "leitura_tatica": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "Que tipo de liderança combina mais com você?",
+      "options": [
+        {
+          "text": "Pelo exemplo e regularidade",
+          "effects": {
+            "lideranca": 2,
+            "leitura_tatica": 1
+          }
+        },
+        {
+          "text": "Pela energia e intensidade",
+          "effects": {
+            "lideranca": 2,
+            "competitividade": 2
+          }
+        },
+        {
+          "text": "Chamando responsabilidade nos momentos decisivos",
+          "effects": {
+            "lideranca": 2,
+            "presenca_area": 1
+          }
+        },
+        {
+          "text": "Organizando todo mundo em campo",
+          "effects": {
+            "lideranca": 3,
+            "seguranca_defensiva": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "O que você menos aceitaria no seu jogo?",
+      "options": [
+        {
+          "text": "Ser previsível com a bola",
+          "effects": {
+            "visao_criacao": 2,
+            "um_contra_um": 1
+          }
+        },
+        {
+          "text": "Faltar intensidade",
+          "effects": {
+            "competitividade": 3
+          }
+        },
+        {
+          "text": "Desperdiçar uma chance clara",
+          "effects": {
+            "presenca_area": 3
+          }
+        },
+        {
+          "text": "Perder a organização do time",
+          "effects": {
+            "leitura_tatica": 3,
+            "seguranca_defensiva": 2
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "ge — Raio-X do Bragantino campeão paulista de 1990",
+    "ge — Claudinho: criação e estatísticas no Brasileirão 2020",
+    "ge — Léo Ortiz: saída de bola, cobertura e liderança",
+    "ge — Artur: velocidade e drible",
+    "ge — Ytalo: movimentação e inteligência"
+  ]
+}

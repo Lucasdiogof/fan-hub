@@ -1,0 +1,52 @@
+{
+  "snapshot": "2026-09-07",
+  "club": "RB Bragantino",
+  "arena_status": {
+    "passaporte": {
+      "progress": 100,
+      "status": "READY",
+      "note": "2000-2026 closed in separate package"
+    },
+    "quiz": {
+      "progress": 100,
+      "status": "READY",
+      "note": "existing v3 seed"
+    },
+    "adivinhe_escalacao": {
+      "progress": 100,
+      "status": "READY",
+      "note": "existing historical lineup dataset"
+    },
+    "adivinhe_jogador": {
+      "progress": 100,
+      "status": "READY",
+      "target": 30,
+      "actual": 30
+    },
+    "perfil_jogador": {
+      "progress": 100,
+      "status": "READY",
+      "questions": 10,
+      "profiles": 10
+    },
+    "perfil_tecnico": {
+      "progress": 100,
+      "status": "READY",
+      "questions": 10,
+      "profiles": 6
+    },
+    "quem_vestiu_o_manto": {
+      "progress": 100,
+      "status": "READY_DATA",
+      "target_cards": 50,
+      "ready_cards": 50,
+      "photo_policy": "current assets reused; historical photos delegated to user and not a data blocker"
+    }
+  },
+  "scoring_quality": {
+    "identity_games": "winner/runner-up gap rules included to prevent near-identical percentages",
+    "ranking": "identity games remain outside competitive ranking"
+  },
+  "overall_arena_data_progress_weighted_equal_games": 100.0,
+  "next_gate": "None for Arena data; implementation/photo asset integration remains in app."
+}

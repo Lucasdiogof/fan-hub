@@ -1,0 +1,506 @@
+{
+  "schema_version": 1,
+  "game": "perfil_de_tecnico",
+  "club": "RB Bragantino",
+  "questions_count": 10,
+  "ranking": false,
+  "scoring_rules": {
+    "method": "weighted_trait_distance",
+    "winner_range": [
+      82,
+      96
+    ],
+    "minimum_gap_winner_to_second": 8,
+    "minimum_gap_between_top3": 4,
+    "score_stretch": "After raw similarity, map winner to 82-96 and enforce deterministic gaps. Never show near-ties like 89/88 unless raw difference is genuinely negligible; if negligible, use tie-break dimensions."
+  },
+  "dimensions": [
+    "posse",
+    "verticalidade",
+    "pressao_alta",
+    "bloco_baixo",
+    "flexibilidade",
+    "gestao",
+    "juventude",
+    "ousadia"
+  ],
+  "profiles": [
+    {
+      "id": "vanderlei_luxemburgo",
+      "name": "Vanderlei Luxemburgo",
+      "era": "1989-1990",
+      "traits": [
+        7,
+        7,
+        5,
+        7,
+        9,
+        9,
+        7,
+        9
+      ],
+      "identity": [
+        "pragmatismo estratégico",
+        "adaptação ao adversário",
+        "gestão forte",
+        "ousadia situacional"
+      ],
+      "evidence": [
+        "No Bragantino variava estratégia conforme adversário; episódio de 1989 mostra plano extremamente específico para controlar o São Paulo."
+      ]
+    },
+    {
+      "id": "carlos_alberto_parreira",
+      "name": "Carlos Alberto Parreira",
+      "era": "1991",
+      "traits": [
+        7,
+        5,
+        4,
+        8,
+        8,
+        10,
+        6,
+        6
+      ],
+      "identity": [
+        "organização",
+        "equilíbrio",
+        "controle",
+        "gestão"
+      ],
+      "evidence": [
+        "Comandou o vice-campeonato brasileiro de 1991, sucedendo a base vencedora de Luxemburgo."
+      ]
+    },
+    {
+      "id": "marcelo_veiga",
+      "name": "Marcelo Veiga",
+      "era": "múltiplas passagens",
+      "traits": [
+        3,
+        7,
+        4,
+        9,
+        6,
+        9,
+        5,
+        7
+      ],
+      "identity": [
+        "competitividade",
+        "transição",
+        "segurança defensiva",
+        "identificação com o clube"
+      ],
+      "evidence": [
+        "Adversários descreviam o Bragantino de 2018 como mais defensivo e perigoso em contra-ataques sob Veiga."
+      ]
+    },
+    {
+      "id": "antonio_carlos_zago",
+      "name": "Antônio Carlos Zago",
+      "era": "2019",
+      "traits": [
+        10,
+        9,
+        9,
+        3,
+        7,
+        7,
+        8,
+        9
+      ],
+      "identity": [
+        "posse alta",
+        "saída rápida",
+        "pressão pós-perda",
+        "liberdade ofensiva"
+      ],
+      "evidence": [
+        "Defendia futebol ofensivo, alta posse, passagem rápida pelo meio e pressão para recuperar a bola."
+      ]
+    },
+    {
+      "id": "mauricio_barbieri",
+      "name": "Maurício Barbieri",
+      "era": "2020-2022",
+      "traits": [
+        8,
+        7,
+        8,
+        4,
+        8,
+        8,
+        10,
+        7
+      ],
+      "identity": [
+        "continuidade do modelo Red Bull",
+        "jovens",
+        "organização posicional",
+        "intensidade"
+      ],
+      "evidence": [
+        "Fez parte da continuidade do modelo ofensivo/pressionante implantado desde 2019 e levou o time à final da Sul-Americana 2021."
+      ]
+    },
+    {
+      "id": "pedro_caixinha",
+      "name": "Pedro Caixinha",
+      "era": "2023-2024",
+      "traits": [
+        8,
+        10,
+        10,
+        2,
+        10,
+        8,
+        9,
+        10
+      ],
+      "identity": [
+        "pressão alta",
+        "linha alta",
+        "mobilidade",
+        "ataque em superioridade",
+        "intensidade"
+      ],
+      "evidence": [
+        "Modelo com construção no campo rival, superioridade numérica no ataque, linha alta e forte pressão; treinos de muita intensidade."
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Sem a bola, qual seria sua identidade?",
+      "options": [
+        {
+          "text": "Pressionar alto e recuperar perto do gol",
+          "effects": {
+            "pressao_alta": 3,
+            "ousadia": 2
+          }
+        },
+        {
+          "text": "Fechar espaços e escolher a hora de sair",
+          "effects": {
+            "bloco_baixo": 3,
+            "gestao": 1
+          }
+        },
+        {
+          "text": "Alternar conforme o adversário",
+          "effects": {
+            "flexibilidade": 3
+          }
+        },
+        {
+          "text": "Pressionar depois da perda, mas preservar estrutura",
+          "effects": {
+            "pressao_alta": 2,
+            "posse": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Como você prefere iniciar os ataques?",
+      "options": [
+        {
+          "text": "Posse paciente desde trás",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Sair rápido e atravessar o meio",
+          "effects": {
+            "verticalidade": 3
+          }
+        },
+        {
+          "text": "Depende do rival e do placar",
+          "effects": {
+            "flexibilidade": 3,
+            "gestao": 1
+          }
+        },
+        {
+          "text": "Recuperar alto e já atacar",
+          "effects": {
+            "pressao_alta": 2,
+            "verticalidade": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Você está vencendo uma final por um gol. O que faz?",
+      "options": [
+        {
+          "text": "Continuo pressionando e buscando outro",
+          "effects": {
+            "ousadia": 3,
+            "pressao_alta": 2
+          }
+        },
+        {
+          "text": "Controlo com posse",
+          "effects": {
+            "posse": 3,
+            "gestao": 1
+          }
+        },
+        {
+          "text": "Baixo o risco e protejo espaços",
+          "effects": {
+            "bloco_baixo": 3,
+            "gestao": 2
+          }
+        },
+        {
+          "text": "Mudo conforme o que o rival apresentar",
+          "effects": {
+            "flexibilidade": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Qual característica você mais valoriza num elenco?",
+      "options": [
+        {
+          "text": "Juventude e energia",
+          "effects": {
+            "juventude": 3,
+            "pressao_alta": 1
+          }
+        },
+        {
+          "text": "Inteligência para interpretar diferentes planos",
+          "effects": {
+            "flexibilidade": 3
+          }
+        },
+        {
+          "text": "Experiência e controle emocional",
+          "effects": {
+            "gestao": 3
+          }
+        },
+        {
+          "text": "Coragem para jogar no campo adversário",
+          "effects": {
+            "ousadia": 3,
+            "verticalidade": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "text": "O que mais te incomoda numa equipe?",
+      "options": [
+        {
+          "text": "Circular a bola sem agredir",
+          "effects": {
+            "verticalidade": 3
+          }
+        },
+        {
+          "text": "Dar espaço para o adversário sair jogando",
+          "effects": {
+            "pressao_alta": 3
+          }
+        },
+        {
+          "text": "Perder a organização",
+          "effects": {
+            "bloco_baixo": 2,
+            "gestao": 2
+          }
+        },
+        {
+          "text": "Não saber mudar durante a partida",
+          "effects": {
+            "flexibilidade": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "text": "Qual treino você repetiria mais?",
+      "options": [
+        {
+          "text": "Rondos e construção sob pressão",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Pressão, transição e definição rápida",
+          "effects": {
+            "pressao_alta": 3,
+            "verticalidade": 2
+          }
+        },
+        {
+          "text": "Organização defensiva e coberturas",
+          "effects": {
+            "bloco_baixo": 3
+          }
+        },
+        {
+          "text": "Cenários diferentes de jogo",
+          "effects": {
+            "flexibilidade": 3,
+            "gestao": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "text": "Seu atacante sai muito da área. Sua reação?",
+      "options": [
+        {
+          "text": "Uso a mobilidade e mando outro ocupar o espaço",
+          "effects": {
+            "flexibilidade": 2,
+            "ousadia": 2
+          }
+        },
+        {
+          "text": "Prefiro uma referência mais fixa",
+          "effects": {
+            "bloco_baixo": 1,
+            "gestao": 1
+          }
+        },
+        {
+          "text": "Depende do adversário",
+          "effects": {
+            "flexibilidade": 3
+          }
+        },
+        {
+          "text": "Aproveito para criar superioridade e atacar com muitos",
+          "effects": {
+            "ousadia": 3,
+            "verticalidade": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "text": "Como você lida com um jogador jovem que erra tentando executar sua ideia?",
+      "options": [
+        {
+          "text": "Mantenho e desenvolvo",
+          "effects": {
+            "juventude": 3,
+            "gestao": 2
+          }
+        },
+        {
+          "text": "Ajusto a função para protegê-lo",
+          "effects": {
+            "gestao": 3,
+            "flexibilidade": 2
+          }
+        },
+        {
+          "text": "Cobro intensidade ainda maior",
+          "effects": {
+            "pressao_alta": 2,
+            "ousadia": 1
+          }
+        },
+        {
+          "text": "Prefiro experiência naquele momento",
+          "effects": {
+            "gestao": 2,
+            "bloco_baixo": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "text": "Qual frase mais combina com seu time?",
+      "options": [
+        {
+          "text": "A bola é nossa ferramenta de controle",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Recuperou, acelerou",
+          "effects": {
+            "verticalidade": 3,
+            "pressao_alta": 2
+          }
+        },
+        {
+          "text": "Primeiro não se desorganizar",
+          "effects": {
+            "bloco_baixo": 3
+          }
+        },
+        {
+          "text": "Cada jogo pede uma resposta diferente",
+          "effects": {
+            "flexibilidade": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "text": "Onde você quer que seu time jogue a maior parte do jogo?",
+      "options": [
+        {
+          "text": "No campo do adversário",
+          "effects": {
+            "pressao_alta": 2,
+            "ousadia": 3
+          }
+        },
+        {
+          "text": "Com a bola, independentemente da altura",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "No espaço que gere o melhor contra-ataque",
+          "effects": {
+            "verticalidade": 2,
+            "bloco_baixo": 2
+          }
+        },
+        {
+          "text": "Onde o plano daquele jogo mandar",
+          "effects": {
+            "flexibilidade": 3,
+            "gestao": 2
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    "ge — Luxemburgo e estratégias no Bragantino",
+    "ge — Zago: futebol ofensivo, posse e pressão",
+    "ge — Marcelo Veiga / Bragantino 2018: perfil defensivo e contra-ataques",
+    "ge — Caixinha: pressão alta, linha alta, mobilidade e intensidade"
+  ]
+}
