@@ -1,0 +1,44 @@
+{
+  "files": [
+    {
+      "file": "adivinhe_jogador_30_carreiras_v1.json",
+      "bytes": 11146,
+      "sha256": "679c8c1455b717937424568fe692758cc6e8449ec8bece453cacf35c3a550d6f"
+    },
+    {
+      "file": "arena_audit_progress_v1.json",
+      "bytes": 1405,
+      "sha256": "e49b2629e6da402495fae8fdcd57a523ec669ed97f8d6798634d9eeac249a803"
+    },
+    {
+      "file": "fotos_historicas_pendentes_40.txt",
+      "bytes": 1279,
+      "sha256": "f0cc3e7ba006311529162f139c0f8dcddb7517885fe802220ba238d9e78d4fb2"
+    },
+    {
+      "file": "manifest.json",
+      "bytes": 693,
+      "sha256": "927ebc6cd257c7be89650d64434fa2d48f6424191263538ebaca7ae79f3450fd"
+    },
+    {
+      "file": "perfil_jogador_bragantino_v1.json",
+      "bytes": 13604,
+      "sha256": "faed36b87b93c73dab0975ad2943bd1534a751005d7864f010a59c8149bf8730"
+    },
+    {
+      "file": "perfil_tecnico_bragantino_v1.json",
+      "bytes": 11629,
+      "sha256": "d2ae0574d6d361fe01dc262939192d6167c5d5d48db030d2b21cc65c248f6d93"
+    },
+    {
+      "file": "quem_vestiu_o_manto_50_FINAL_v3.json",
+      "bytes": 17545,
+      "sha256": "bee54c3a5165188343bc725c038ad1c58c5b42ad74fe97b60236249af7b78faa"
+    },
+    {
+      "file": "quem_vestiu_o_manto_50_candidates_v2.json",
+      "bytes": 17550,
+      "sha256": "ddce38407704154fc9d54cecddb3bda1ca42125655e6648b145b6975f47751fe"
+    }
+  ]
+}

@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "game": "adivinhe_o_jogador",
+  "club": "RB Bragantino",
+  "count": 30,
+  "mechanic": {
+    "reveal": "Revelar a carreira clube a clube até o acerto.",
+    "shuffle": "Embaralhar ordem no início de cada sessão. Itens concluídos ficam fixos; não concluídos podem ser reordenados.",
+    "duplicate_clubs": "Preservar passagens repetidas quando representam retornos reais.",
+    "base_marker": "Entradas explicitamente marcadas '(base)' não contam como estreia profissional, mas podem ser exibidas se o jogo do Goiás já suporta base."
+  },
+  "items": [
+    {
+      "id": "career_01",
+      "name": "Marcelo Martelotte",
+      "position": "GOL",
+      "clubs": [
+        "Taubaté",
+        "Bragantino",
+        "Santos",
+        "Santa Cruz",
+        "Sport"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_02",
+      "name": "Nivaldo",
+      "position": "GOL",
+      "clubs": [
+        "Noroeste",
+        "Bragantino",
+        "Palmeiras",
+        "Independente de Limeira",
+        "São Bento",
+        "Sãocarlense",
+        "Figueirense",
+        "XV de Jaú",
+        "Serra",
+        "Social",
+        "Cascavel"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_03",
+      "name": "Gil Baiano",
+      "position": "LD",
+      "clubs": [
+        "Guarani",
+        "Bragantino",
+        "Internacional",
+        "Palmeiras",
+        "Vitória",
+        "Sporting-POR",
+        "Ituano",
+        "Paraná",
+        "Comercial",
+        "Ceilândia"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_04",
+      "name": "Biro-Biro",
+      "position": "LE",
+      "clubs": [
+        "Santos",
+        "Bragantino",
+        "Corinthians",
+        "Ituano",
+        "Palmeiras",
+        "Santo André",
+        "Paysandu"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_05",
+      "name": "Júnior Paulista",
+      "position": "ZAG",
+      "clubs": [
+        "Guarani",
+        "Internacional",
+        "Bragantino",
+        "Atlético-MG",
+        "América-MG",
+        "Bahia",
+        "Fortaleza"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_06",
+      "name": "Nei",
+      "position": "ZAG",
+      "clubs": [
+        "Guarani",
+        "Santos",
+        "Ponte Preta",
+        "Guarani",
+        "Bragantino"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_07",
+      "name": "Pintado",
+      "position": "ZAG",
+      "clubs": [
+        "Bragantino",
+        "São Paulo",
+        "Santos",
+        "Cruz Azul-MEX",
+        "América-MG",
+        "Atlético-MG",
+        "Cerezo Osaka-JAP",
+        "Portuguesa",
+        "Democrata-MG",
+        "Inter de Limeira",
+        "União São João"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_08",
+      "name": "Carlos Augusto",
+      "position": "ZAG",
+      "clubs": [
+        "Atlético de Três Corações",
+        "Vasco",
+        "Taubaté",
+        "Bragantino"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_09",
+      "name": "Mauro Silva",
+      "position": "VOL",
+      "clubs": [
+        "Guarani",
+        "Bragantino",
+        "Deportivo La Coruña-ESP"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_10",
+      "name": "Ivair",
+      "position": "VOL",
+      "clubs": [
+        "União Bandeirante",
+        "Goytacaz",
+        "Athletico-PR",
+        "XV de Piracicaba",
+        "Mogi Mirim",
+        "Bragantino",
+        "Ponte Preta"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_11",
+      "name": "Luís Müller",
+      "position": "MEI",
+      "clubs": [
+        "São Paulo",
+        "Criciúma",
+        "São José",
+        "Guarani",
+        "São Bento",
+        "Portuguesa",
+        "Portuguesa Santista",
+        "Ponte Preta",
+        "Bragantino",
+        "Gamba Osaka-JAP",
+        "Kyoto Sanga-JAP",
+        "Remo",
+        "Santos",
+        "Juventude",
+        "Sport"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_12",
+      "name": "Valmir",
+      "position": "MEI",
+      "clubs": [
+        "Ponte Preta",
+        "Paysandu",
+        "Bragantino"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_13",
+      "name": "João Santos",
+      "position": "MEI",
+      "clubs": [
+        "Fluminense",
+        "Bragantino",
+        "Remo",
+        "Paraná",
+        "Santos",
+        "Internacional",
+        "Coritiba",
+        "União São João",
+        "Matonense"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_14",
+      "name": "Souza",
+      "position": "MEI",
+      "clubs": [
+        "Santo André",
+        "Paulista",
+        "XV de Jaú",
+        "Ferroviário",
+        "Aliança",
+        "Sergipe",
+        "Bragantino"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_15",
+      "name": "Mazinho",
+      "position": "ATA",
+      "clubs": [
+        "Santos",
+        "São Bento",
+        "Athletico-PR",
+        "Bragantino",
+        "Bayern de Munique-ALE",
+        "Internacional",
+        "Flamengo",
+        "Kashima Antlers-JAP",
+        "Kawasaki Frontale-JAP"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_16",
+      "name": "Mário",
+      "position": "ATA",
+      "clubs": [
+        "Guarani",
+        "Bragantino",
+        "Celta de Vigo-ESP",
+        "Dunakanyar-Vác FC-HUN",
+        "Náutico",
+        "Juventude"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_17",
+      "name": "Sílvio",
+      "position": "ATA",
+      "clubs": [
+        "Fluminense",
+        "Bragantino",
+        "CD Logroñés-ESP",
+        "Paraná",
+        "Grêmio",
+        "Guarani",
+        "Goiás",
+        "América-MG",
+        "Internacional",
+        "Braga-POR",
+        "Bahia",
+        "São Caetano",
+        "São José",
+        "Gama",
+        "CRB",
+        "Tripoli SC-LIB",
+        "Coruripe"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_18",
+      "name": "Tiba",
+      "position": "ATA",
+      "clubs": [
+        "Vasco",
+        "Bragantino",
+        "Guarani",
+        "Paraná",
+        "Portuguesa",
+        "Corinthians",
+        "Ituano",
+        "São José",
+        "Paysandu",
+        "Juventude"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_19",
+      "name": "Franklin",
+      "position": "ATA",
+      "clubs": [
+        "Fluminense",
+        "Bragantino",
+        "Sport",
+        "VfB Leipzig-ALE",
+        "Energie Cottbus-ALE"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_20",
+      "name": "Robert",
+      "position": "ATA",
+      "clubs": [
+        "Fluminense",
+        "Bragantino",
+        "América-RJ",
+        "Operário-MT",
+        "Noroeste",
+        "São José",
+        "União Madeira-POR",
+        "Nacional-POR",
+        "Machico-POR",
+        "Câmara de Lobos-POR"
+      ],
+      "source": "ge — elenco campeão paulista de 1990"
+    },
+    {
+      "id": "career_21",
+      "name": "Léo Ortiz",
+      "position": "ZAG",
+      "clubs": [
+        "Internacional",
+        "Sport",
+        "Red Bull Brasil",
+        "Red Bull Bragantino",
+        "Flamengo"
+      ],
+      "source": "ge — trajetória Léo Ortiz"
+    },
+    {
+      "id": "career_22",
+      "name": "Artur",
+      "position": "PD",
+      "clubs": [
+        "Ceará (base)",
+        "Palmeiras",
+        "Novorizontino",
+        "Londrina",
+        "Palmeiras",
+        "Bahia",
+        "Red Bull Bragantino",
+        "Palmeiras",
+        "Zenit",
+        "Botafogo",
+        "São Paulo"
+      ],
+      "source": "São Paulo FC — perfil oficial Artur"
+    },
+    {
+      "id": "career_23",
+      "name": "Aderlan",
+      "position": "LD",
+      "clubs": [
+        "Campinense",
+        "Treze",
+        "Itapipoca",
+        "Corinthians-AL",
+        "CSA",
+        "Santa Rita",
+        "Coimbra-POR",
+        "Luverdense",
+        "América-MG",
+        "Red Bull Brasil",
+        "Red Bull Bragantino",
+        "Santos",
+        "Sport",
+        "Juventude"
+      ],
+      "source": "ge — Juventude contrata Aderlan"
+    },
+    {
+      "id": "career_24",
+      "name": "Fabrício Bruno",
+      "position": "ZAG",
+      "clubs": [
+        "Cruzeiro",
+        "Chapecoense",
+        "Cruzeiro",
+        "Red Bull Bragantino",
+        "Flamengo",
+        "Cruzeiro"
+      ],
+      "source": "ge — trajetória Fabrício Bruno"
+    },
+    {
+      "id": "career_25",
+      "name": "Helinho",
+      "position": "PD",
+      "clubs": [
+        "São Paulo",
+        "Red Bull Bragantino",
+        "Toluca-MEX"
+      ],
+      "source": "ge — venda de Helinho ao Toluca"
+    },
+    {
+      "id": "career_26",
+      "name": "Luan Cândido",
+      "position": "LE/ZAG",
+      "clubs": [
+        "Palmeiras (base)",
+        "RB Leipzig",
+        "Red Bull Bragantino",
+        "Grêmio",
+        "Sport",
+        "Vitória"
+      ],
+      "source": "ge — trajetória Luan Cândido"
+    },
+    {
+      "id": "career_27",
+      "name": "Lucas Evangelista",
+      "position": "MC",
+      "clubs": [
+        "São Paulo",
+        "Udinese-ITA",
+        "Panathinaikos-GRE",
+        "Estoril-POR",
+        "Nantes-FRA",
+        "Vitória de Guimarães-POR",
+        "Red Bull Bragantino",
+        "Palmeiras"
+      ],
+      "source": "ge — trajetória Lucas Evangelista"
+    },
+    {
+      "id": "career_28",
+      "name": "Juninho Capixaba",
+      "position": "LE",
+      "clubs": [
+        "Bahia",
+        "Corinthians",
+        "Grêmio",
+        "Bahia",
+        "Fortaleza",
+        "Red Bull Bragantino"
+      ],
+      "source": "ge — trajetória Juninho Capixaba"
+    },
+    {
+      "id": "career_29",
+      "name": "Eduardo Sasha",
+      "position": "ATA",
+      "clubs": [
+        "Internacional",
+        "Goiás",
+        "Internacional",
+        "Santos",
+        "Atlético-MG",
+        "Red Bull Bragantino"
+      ],
+      "source": "ge/Premium League — carreira Eduardo Sasha"
+    },
+    {
+      "id": "career_30",
+      "name": "Claudinho",
+      "position": "MEI",
+      "clubs": [
+        "Santos (base)",
+        "Corinthians",
+        "Santo André",
+        "Ponte Preta",
+        "Red Bull Brasil",
+        "Red Bull Bragantino",
+        "Zenit-RUS",
+        "Al-Sadd-QAT"
+      ],
+      "source": "ge — ciclo Claudinho no Bragantino + Al-Sadd oficial"
+    }
+  ],
+  "audit": {
+    "status": "READY",
+    "items": 30,
+    "all_have_bragantino_link": true
+  }
+}
