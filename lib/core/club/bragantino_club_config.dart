@@ -387,13 +387,20 @@ final bragantinoClubConfig = ClubConfig(
     // `MembershipProgramConfig` abaixo e `BragantinoMembershipPlansCatalog`).
     // Continua `membershipCommerceMode: demo` — mesma estratégia do Goiás,
     // nenhuma cobrança real ainda.
-    hasMembership: true,
+    // Escondidos pro envio às lojas (App Store/Play Store) — checkout de
+    // Loja e o fluxo de Sócio continuam mockados (sem gateway real), então
+    // ficam desligados até a integração real existir. Nunca reative isso
+    // "remotamente" depois de aprovado — precisa ser um release novo
+    // (build + review), senão conta de desenvolvedor corre risco de
+    // banimento pelas duas lojas. Ver mesmo comentário em
+    // goias_club_config.dart.
+    hasMembership: false,
     // 2026-09-09: catálogo REAL coletado da Red Bull Shop (143 produtos,
     // 497 SKUs, 265 imagens locais — ver tooling/bragantino_store/),
     // isolado por `ClubAssets.storeCatalogAssetPath`, zero produto/asset do
     // Goiás. "Retirar na loja" fica automaticamente escondida
     // (`pickupAddress: null` acima) — só entrega, sem placeholder.
-    hasStore: true,
+    hasStore: false,
     hasTickets: false,
     hasCrowdLineup: false,
     // 2026-09-07: as 186 partidas e os 49 estádios do Bragantino estão no

@@ -162,17 +162,16 @@ void main() {
     );
 
     test(
-      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social, os 2 jogos de identidade desde 2026-09-08, a Loja desde 2026-09-09 e o Sócio Massa Bruta desde 2026-09-11)',
+      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social e os 2 jogos de identidade desde 2026-09-08; Loja e Sócio Massa Bruta escondidos desde 2026-09-14 pro envio às lojas)',
       () {
         final c = bragantinoClubConfig.capabilities;
-        // Sócio Massa Bruta: planos reais (Bronze/Prata/Ouro/Platina),
-        // regulamento próprio, ligado em 2026-09-11 — ver
-        // MembershipProgramConfig em bragantino_club_config.dart.
-        expect(c.hasMembership, isTrue);
-        // Loja: catálogo REAL coletado da Red Bull Shop (143 produtos, 497
-        // SKUs, isolado por ClubAssets.storeCatalogAssetPath), ligada em
-        // 2026-09-09 — ver tooling/bragantino_store/.
-        expect(c.hasStore, isTrue);
+        // Sócio Massa Bruta (planos reais Bronze/Prata/Ouro/Platina, ver
+        // MembershipProgramConfig) e Loja (catálogo real da Red Bull Shop)
+        // já existem prontos no backend, mas ficam escondidos temporariamente
+        // pro envio às lojas — checkout continua mockado, ver comentário em
+        // bragantino_club_config.dart.
+        expect(c.hasMembership, isFalse);
+        expect(c.hasStore, isFalse);
         expect(c.hasTickets, isFalse);
         expect(c.hasCrowdLineup, isFalse);
         // News tem fonte oficial real no Worker (API JSON própria). Social

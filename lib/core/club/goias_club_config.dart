@@ -100,9 +100,15 @@ final goiasClubConfig = ClubConfig(
     officialSiteUrl: 'https://www.goiasec.com.br/',
   ),
   capabilities: ClubCapabilities(
-    hasMembership: true,
-    hasStore: true,
-    hasTickets: true,
+    // Escondidos pro envio às lojas (App Store/Play Store) — checkout de
+    // Loja/Ingressos e o fluxo de Sócio continuam mockados (sem gateway
+    // real), então ficam desligados até a integração real existir. Nunca
+    // reative isso "remotamente" depois de aprovado — precisa ser um
+    // release novo (build + review), senão conta de desenvolvedor corre
+    // risco de banimento pelas duas lojas.
+    hasMembership: false,
+    hasStore: false,
+    hasTickets: false,
     hasCrowdLineup: true,
     hasPassport: true,
     hasNews: true,
