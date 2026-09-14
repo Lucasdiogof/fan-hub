@@ -18,6 +18,7 @@ class CompetitionRef extends Equatable {
     required this.format,
     this.region = '',
     this.isClubParticipating = false,
+    this.logoUrl,
   });
 
   final String id;
@@ -26,6 +27,18 @@ class CompetitionRef extends Equatable {
   final String region;
   final bool isClubParticipating;
 
+  /// Escudo da própria competição — só vem populado quando esta ref nasceu
+  /// da resposta de `/standings` (que tem o dado real do OneFootball);
+  /// refs do catálogo estático (`getCompetitions`) nunca têm.
+  final String? logoUrl;
+
   @override
-  List<Object?> get props => [id, name, format, region, isClubParticipating];
+  List<Object?> get props => [
+    id,
+    name,
+    format,
+    region,
+    isClubParticipating,
+    logoUrl,
+  ];
 }

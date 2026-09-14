@@ -11,6 +11,7 @@ import { isRequestedClubServed } from './_lib/club_server_config';
 import { jsonResponse } from './_lib/respond';
 import {
   fetchCompetitionGroupStandings,
+  fetchCompetitionLogoUrl,
   fetchCompetitionMatchLists,
   fetchCompetitionStandings,
 } from './providers/onefootball_provider';
@@ -105,6 +106,8 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
     const cacheKey = `football.standings.${competitionId}`;
 
     return cacheFirst(request, CACHE_TTL_SECONDS, cacheKey, config.cacheVersion, async () => {
+      const logoUrl = await fetchCompetitionLogoUrl(competitionSlug);
+
       if (format === 'KNOCKOUT') {
         // Copa do Brasil: NUNCA existe fase de tabela (`tableWindow` sempre
         // `null` aqui), então toda seção reconhecida como mata-mata é
@@ -116,7 +119,7 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
         const rounds = buildKnockoutRounds(knockoutLists);
         const stages: StageOut[] = hasAnyDecidedMatch(rounds) ? [knockoutStage(rounds, 0)] : [];
         return {
-          competition: { name: competitionName, season: null, format },
+          competition: { name: competitionName, season: null, format, logoUrl },
           standings: [],
           groups: [],
           dataGap: stages.length === 0,
@@ -172,7 +175,7 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
         const stages: StageOut[] =
           hasRealKnockout ? [groupsStage, knockoutStage(knockoutRounds, 1)] : [groupsStage];
         return {
-          competition: { name: competitionName, season: null, format },
+          competition: { name: competitionName, season: null, format, logoUrl },
           groups: normalizedGroups,
           season: { id: competitionId, label: competitionName, stages },
         };
@@ -199,7 +202,7 @@ export async function handleStandings(request: Request, env: Env): Promise<Respo
       const stages: StageOut[] =
         hasRealKnockout ? [leagueStage, knockoutStage(knockoutRounds, 1)] : [leagueStage];
       return {
-        competition: { name: competitionName, season: null, format },
+        competition: { name: competitionName, season: null, format, logoUrl },
         standings,
         season: { id: competitionId, label: competitionName, stages },
       };

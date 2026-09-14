@@ -359,6 +359,23 @@ export async function fetchCompetitionMatchLists(competitionSlug: string): Promi
   );
 }
 
+/** Escudo/logo da própria competição — `entityTitle.imageObject.path`, o
+ * mesmo node que dá título à página (`tabela`, mas confirmado presente
+ * também em `jogos`/`resultados`, inclusive competições só de mata-mata
+ * como a Copa do Brasil, que não têm tabela de pontos mas têm a mesma
+ * página). Puramente decorativo — nunca derruba a resposta inteira se
+ * faltar ou a rede falhar aqui, só volta `null` (Flutter cai pro ícone
+ * genérico). */
+export async function fetchCompetitionLogoUrl(competitionSlug: string): Promise<string | null> {
+  try {
+    const containers = await getContainers(`competicao/${competitionSlug}/tabela`);
+    const entityTitle = findNode<{ imageObject?: { path?: string } }>(containers, 'entityTitle');
+    return entityTitle?.imageObject?.path ?? null;
+  } catch {
+    return null;
+  }
+}
+
 /** A tabela só traz saldo de gols, não gols pró/contra separados. */
 export async function fetchCompetitionStandings(competitionSlug: string): Promise<OneFootballStandingRow[]> {
   try {
