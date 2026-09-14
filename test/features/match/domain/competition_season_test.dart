@@ -7,14 +7,9 @@ import 'package:goias_app/features/match/domain/entities/stage_type.dart';
 import 'package:goias_app/features/match/domain/entities/standing.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 
-Standing _standing() => Standing(
+Standing _standing() => const Standing(
   position: 1,
-  team: const Team(
-    id: 1,
-    name: 'Time',
-    shortName: 'TIM',
-    color: Color(0xFF000000),
-  ),
+  team: Team(id: 1, name: 'Time', shortName: 'TIM', color: Color(0xFF000000)),
   isActiveClub: false,
   points: 10,
   played: 5,
@@ -131,7 +126,7 @@ void main() {
     );
 
     test('Sudamericana durante grupos: abre Fase de Grupos', () {
-      final duringGroups = CompetitionSeason(
+      const duringGroups = CompetitionSeason(
         id: 'sudamericana',
         label: 'CONMEBOL Sudamericana',
         stages: [
@@ -142,7 +137,7 @@ void main() {
             type: StageType.groupStage,
             status: StageStatus.active,
             isCurrent: true,
-            groups: const [],
+            groups: [],
           ),
         ],
       );
@@ -152,7 +147,7 @@ void main() {
     test(
       'Sudamericana no mata-mata: abre Mata-mata, mas Fase de Grupos continua acessível pelo StageSelector (a lista de stages não perde a fase anterior)',
       () {
-        final inKnockout = CompetitionSeason(
+        const inKnockout = CompetitionSeason(
           id: 'sudamericana',
           label: 'CONMEBOL Sudamericana',
           stages: [
@@ -163,9 +158,9 @@ void main() {
               type: StageType.groupStage,
               status: StageStatus.completed,
               isCurrent: false,
-              groups: const [],
+              groups: [],
             ),
-            const CompetitionStage(
+            CompetitionStage(
               id: 'knockout',
               name: 'Mata-mata',
               order: 1,

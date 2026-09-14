@@ -138,74 +138,74 @@ class _RegistrationTextFieldState extends State<RegistrationTextField> {
         FieldLabel(widget.label, isRequired: widget.isRequired),
         const SizedBox(height: 6),
         TextFormField(
-            controller: _controller,
-            focusNode: _focusNode,
-            onChanged: widget.onChanged,
-            readOnly: widget.readOnly,
-            onTap: widget.onTap,
-            obscureText: widget.obscureText && _obscured,
-            keyboardType: widget.keyboardType,
-            inputFormatters: widget.inputFormatters,
-            textCapitalization: widget.textCapitalization,
-            autofillHints: widget.autofillHints,
-            style: TextStyle(
+          controller: _controller,
+          focusNode: _focusNode,
+          onChanged: widget.onChanged,
+          readOnly: widget.readOnly,
+          onTap: widget.onTap,
+          obscureText: widget.obscureText && _obscured,
+          keyboardType: widget.keyboardType,
+          inputFormatters: widget.inputFormatters,
+          textCapitalization: widget.textCapitalization,
+          autofillHints: widget.autofillHints,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: colors.textPrimary,
+          ),
+          decoration: InputDecoration(
+            isDense: true,
+            prefixText: widget.prefixText,
+            prefix: widget.prefix,
+            suffixIcon: widget.obscureText
+                ? IconButton(
+                    icon: Icon(
+                      _obscured
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      size: 20,
+                      color: colors.textHint,
+                    ),
+                    onPressed: () => setState(() => _obscured = !_obscured),
+                  )
+                : widget.suffixIcon,
+            hintText: widget.hintText,
+            hintStyle: TextStyle(
               fontSize: 14,
-              fontWeight: FontWeight.w600,
-              color: colors.textPrimary,
+              fontWeight: FontWeight.w500,
+              color: colors.textHint,
             ),
-            decoration: InputDecoration(
-              isDense: true,
-              prefixText: widget.prefixText,
-              prefix: widget.prefix,
-              suffixIcon: widget.obscureText
-                  ? IconButton(
-                      icon: Icon(
-                        _obscured
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined,
-                        size: 20,
-                        color: colors.textHint,
-                      ),
-                      onPressed: () => setState(() => _obscured = !_obscured),
-                    )
-                  : widget.suffixIcon,
-              hintText: widget.hintText,
-              hintStyle: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: colors.textHint,
-              ),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 14,
-                vertical: 14,
-              ),
-              filled: true,
-              fillColor: colors.surface,
-              errorText: widget.errorText,
-              errorMaxLines: 2,
-              errorStyle: TextStyle(color: colors.error),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: colors.border),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: colors.border),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: colors.primary, width: 1.5),
-              ),
-              errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: colors.error),
-              ),
-              focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: colors.error, width: 1.5),
-              ),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 14,
+              vertical: 14,
+            ),
+            filled: true,
+            fillColor: colors.surface,
+            errorText: widget.errorText,
+            errorMaxLines: 2,
+            errorStyle: TextStyle(color: colors.error),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(color: colors.border),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(color: colors.border),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(color: colors.primary, width: 1.5),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(color: colors.error),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(color: colors.error, width: 1.5),
             ),
           ),
+        ),
       ],
     );
   }

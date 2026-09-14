@@ -47,57 +47,57 @@ class _HomeShellPageState extends State<HomeShellPage> {
         value: _shellCubit,
         child: BlocBuilder<HomeShellCubit, HomeShellState>(
           builder: (context, shellState) {
-          // Ordem: Jogos, Sócio, Home (centro), Loja, Mídia — ver
-          // `HomeShellState`/`main_navigation_items.dart`. M4.2A: cada slot
-          // some por trás da nav (ver `isTabEnabled`), mas se ALGUM outro
-          // caminho ainda chamar `navigateToTab` pra um índice desabilitado
-          // (defesa em profundidade — nunca confiar só em "o botão sumiu"),
-          // o próprio slot mostra a tela genérica em vez do conteúdo real.
-          final capabilities = sl<ClubConfig>().capabilities;
-          final pages = [
-            const GamesPage(),
-            isTabEnabled(socioTabIndex, capabilities)
-                ? const MembershipHomePage()
-                : const FeatureUnavailablePage(),
-            const HomePage(),
-            isTabEnabled(lojaTabIndex, capabilities)
-                ? const StoreHomePage(showBackButton: false)
-                : const FeatureUnavailablePage(),
-            isTabEnabled(midiaTabIndex, capabilities)
-                ? const SocialFeedPage()
-                : const FeatureUnavailablePage(),
-          ];
-          final content = IndexedStack(
-            index: shellState.index,
-            children: pages,
-          );
+            // Ordem: Jogos, Sócio, Home (centro), Loja, Mídia — ver
+            // `HomeShellState`/`main_navigation_items.dart`. M4.2A: cada slot
+            // some por trás da nav (ver `isTabEnabled`), mas se ALGUM outro
+            // caminho ainda chamar `navigateToTab` pra um índice desabilitado
+            // (defesa em profundidade — nunca confiar só em "o botão sumiu"),
+            // o próprio slot mostra a tela genérica em vez do conteúdo real.
+            final capabilities = sl<ClubConfig>().capabilities;
+            final pages = [
+              const GamesPage(),
+              isTabEnabled(socioTabIndex, capabilities)
+                  ? const MembershipHomePage()
+                  : const FeatureUnavailablePage(),
+              const HomePage(),
+              isTabEnabled(lojaTabIndex, capabilities)
+                  ? const StoreHomePage(showBackButton: false)
+                  : const FeatureUnavailablePage(),
+              isTabEnabled(midiaTabIndex, capabilities)
+                  ? const SocialFeedPage()
+                  : const FeatureUnavailablePage(),
+            ];
+            final content = IndexedStack(
+              index: shellState.index,
+              children: pages,
+            );
 
-          // Rail lateral fixo em telas expandidas/largas (desktop/tablet
-          // grande) em vez da barra inferior — mesmas 5 abas, mesmo
-          // `HomeShellCubit`, só a apresentação muda. Abaixo do corte, o
-          // shell fica idêntico ao que já era (bottom nav, sem rail).
-          if (context.isAtLeastExpanded) {
+            // Rail lateral fixo em telas expandidas/largas (desktop/tablet
+            // grande) em vez da barra inferior — mesmas 5 abas, mesmo
+            // `HomeShellCubit`, só a apresentação muda. Abaixo do corte, o
+            // shell fica idêntico ao que já era (bottom nav, sem rail).
+            if (context.isAtLeastExpanded) {
+              return Scaffold(
+                body: Row(
+                  children: [
+                    MainNavigationRail(
+                      selectedIndex: shellState.index,
+                      onSelected: _shellCubit.navigateToTab,
+                    ),
+                    Expanded(child: content),
+                  ],
+                ),
+              );
+            }
+
             return Scaffold(
-              body: Row(
-                children: [
-                  MainNavigationRail(
-                    selectedIndex: shellState.index,
-                    onSelected: _shellCubit.navigateToTab,
-                  ),
-                  Expanded(child: content),
-                ],
+              body: content,
+              bottomNavigationBar: GoiasBottomNavigationBar(
+                selectedIndex: shellState.index,
+                onSelected: _shellCubit.navigateToTab,
               ),
             );
-          }
-
-          return Scaffold(
-            body: content,
-            bottomNavigationBar: GoiasBottomNavigationBar(
-              selectedIndex: shellState.index,
-              onSelected: _shellCubit.navigateToTab,
-            ),
-          );
-        },
+          },
         ),
       ),
     );

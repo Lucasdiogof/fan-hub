@@ -54,9 +54,8 @@ class _FakePassportRepository implements PassportRepository {
   }) => throw UnimplementedError();
 
   @override
-  Future<Result<PassportStadiumSummary>> getStadiumSummary({
-    String? userId,
-  }) => throw UnimplementedError();
+  Future<Result<PassportStadiumSummary>> getStadiumSummary({String? userId}) =>
+      throw UnimplementedError();
 
   @override
   Future<Result<List<PassportMatch>>> getAttendedMatches({String? userId}) =>
@@ -113,32 +112,41 @@ void main() {
       expect(cubit.state.status, LoadStatus.empty);
     });
 
-    test('sem posição própria (ainda não marcou nada), myRank fica nulo', () async {
-      repository.rankingResult = const Success([_entry]);
-      repository.myRankResult = const Success(null);
+    test(
+      'sem posição própria (ainda não marcou nada), myRank fica nulo',
+      () async {
+        repository.rankingResult = const Success([_entry]);
+        repository.myRankResult = const Success(null);
 
-      await cubit.load();
+        await cubit.load();
 
-      expect(cubit.state.myRank, isNull);
-      expect(cubit.state.myMatchCount, isNull);
-    });
+        expect(cubit.state.myRank, isNull);
+        expect(cubit.state.myMatchCount, isNull);
+      },
+    );
 
-    test('falha no ranking emite error, mesmo se getMyRank funcionasse', () async {
-      repository.rankingResult = const Error(ServerFailure('indisponível'));
+    test(
+      'falha no ranking emite error, mesmo se getMyRank funcionasse',
+      () async {
+        repository.rankingResult = const Error(ServerFailure('indisponível'));
 
-      await cubit.load();
+        await cubit.load();
 
-      expect(cubit.state.status, LoadStatus.error);
-      expect(cubit.state.errorMessage, 'indisponível');
-    });
+        expect(cubit.state.status, LoadStatus.error);
+        expect(cubit.state.errorMessage, 'indisponível');
+      },
+    );
 
-    test('load(year: X) passa o ano pros dois métodos do repositório', () async {
-      await cubit.load(year: 2024);
+    test(
+      'load(year: X) passa o ano pros dois métodos do repositório',
+      () async {
+        await cubit.load(year: 2024);
 
-      expect(repository.lastRankingYear, 2024);
-      expect(repository.lastMyRankYear, 2024);
-      expect(cubit.state.year, 2024);
-    });
+        expect(repository.lastRankingYear, 2024);
+        expect(repository.lastMyRankYear, 2024);
+        expect(cubit.state.year, 2024);
+      },
+    );
   });
 
   test('selectYear chama load com o ano escolhido', () async {

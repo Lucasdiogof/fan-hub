@@ -247,7 +247,9 @@ class _StoreBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreBannerCarousel(banners: sl<ClubConfig>().assets.storeHomeBanners);
+    return StoreBannerCarousel(
+      banners: sl<ClubConfig>().assets.storeHomeBanners,
+    );
   }
 }
 

@@ -46,7 +46,7 @@ class LegalDocumentsData {
             'As funcionalidades disponíveis podem ser alteradas, '
             'removidas ou ampliadas a qualquer momento.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '3. Cadastro e conta',
         body:
             'Para utilizar determinadas funcionalidades, poderá ser '
@@ -56,7 +56,7 @@ class LegalDocumentsData {
             'e por manter suas credenciais de acesso protegidas. A conta '
             'é pessoal e não deve ser compartilhada com terceiros.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '4. Uso adequado',
         body:
             'O usuário compromete-se a utilizar o aplicativo de maneira '
@@ -70,7 +70,7 @@ class LegalDocumentsData {
             'Caso sejam identificadas atividades abusivas ou '
             'fraudulentas, a conta poderá ser suspensa ou encerrada.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '5. Minigames e rankings',
         body:
             'O aplicativo poderá disponibilizar jogos, desafios, rankings '
@@ -112,7 +112,7 @@ class LegalDocumentsData {
             'Esses serviços são independentes do aplicativo e possuem '
             'seus próprios termos de uso e políticas de privacidade.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '9. Gratuidade',
         body:
             'O aplicativo é disponibilizado gratuitamente. Atualmente não '
@@ -122,7 +122,7 @@ class LegalDocumentsData {
             'Termos poderão ser atualizados antes da entrada em '
             'funcionamento dessas mudanças.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '10. Disponibilidade',
         body:
             'Não é possível garantir que o aplicativo permanecerá '
@@ -132,7 +132,7 @@ class LegalDocumentsData {
             'terceiros ou outras situações fora do controle do '
             'responsável pelo aplicativo.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '11. Informações de terceiros',
         body:
             'Algumas informações apresentadas podem depender de fontes '
@@ -142,7 +142,7 @@ class LegalDocumentsData {
             'atualizadas, não é possível garantir absoluta precisão ou '
             'atualização em tempo real desses dados.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '12. Exclusão da conta',
         body:
             'O usuário poderá solicitar ou realizar a exclusão de sua '
@@ -164,7 +164,7 @@ class LegalDocumentsData {
             'comunicação, atletas, competições, plataformas ou terceiros '
             'permanecem de propriedade de seus respectivos titulares.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '14. Alterações destes Termos',
         body:
             'Estes Termos poderão ser atualizados para refletir novas '
@@ -173,7 +173,7 @@ class LegalDocumentsData {
             'A versão mais recente deverá permanecer disponível dentro '
             'do próprio aplicativo.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '15. Contato',
         body:
             'Em caso de dúvidas, solicitações ou problemas relacionados '
@@ -194,7 +194,7 @@ class LegalDocumentsData {
         'O responsável pelo tratamento dos dados é Lucas Diogo França, '
         'que pode ser contatado pelo e-mail lucasdiogo1234@gmail.com.',
     sections: [
-      LegalSection(
+      const LegalSection(
         title: '1. Dados coletados',
         body:
             'Para criação e utilização da conta, o aplicativo poderá '
@@ -212,7 +212,7 @@ class LegalDocumentsData {
             'respostas, pontuações, posição em rankings, escalações '
             'enviadas, votos e interações com funcionalidades.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '2. Dados técnicos',
         body:
             'O aplicativo poderá processar informações técnicas '
@@ -224,7 +224,7 @@ class LegalDocumentsData {
             'falhas, melhorar desempenho, impedir abuso e manter a '
             'segurança do serviço.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '3. Finalidades do tratamento',
         body:
             'Os dados poderão ser utilizados para criar e administrar '
@@ -235,7 +235,7 @@ class LegalDocumentsData {
             'Os dados não serão utilizados para venda de informações '
             'pessoais ou criação de publicidade direcionada.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '4. CPF e telefone',
         body:
             'Atualmente, esta Política considera o cadastro baseado em '
@@ -247,7 +247,7 @@ class LegalDocumentsData {
             'Nenhum dado pessoal deve ser solicitado sem uma finalidade '
             'legítima e claramente informada ao usuário.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '5. Base legal',
         body:
             'O tratamento de dados pessoais será realizado de acordo com '
@@ -260,7 +260,7 @@ class LegalDocumentsData {
             'contra fraude e segurança ou mediante consentimento, quando '
             'necessário.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '6. Compartilhamento de dados',
         body:
             'Os dados poderão ser processados por fornecedores '
@@ -272,7 +272,7 @@ class LegalDocumentsData {
             'Os dados pessoais dos usuários não são vendidos a '
             'anunciantes ou terceiros.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '7. Conteúdo público',
         body:
             'Caso determinada funcionalidade exiba publicamente nome, '
@@ -294,7 +294,7 @@ class LegalDocumentsData {
             'O mesmo se aplica aos links para Instagram, YouTube, TikTok, '
             'Facebook, X e outras plataformas.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '9. Armazenamento e segurança',
         body:
             'Serão adotadas medidas técnicas e organizacionais razoáveis '
@@ -304,7 +304,7 @@ class LegalDocumentsData {
             'absoluta, mas serão adotadas práticas compatíveis com a '
             'natureza do serviço e dos dados tratados.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '10. Retenção',
         body:
             'Os dados serão mantidos enquanto forem necessários para '
@@ -316,7 +316,7 @@ class LegalDocumentsData {
             'cumprimento de obrigação legal, prevenção a fraude, '
             'segurança ou exercício de direitos.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '11. Exclusão da conta',
         body:
             'O aplicativo disponibilizará uma funcionalidade para que o '
@@ -329,7 +329,7 @@ class LegalDocumentsData {
             'registros poderão ser mantidos de maneira limitada pelo '
             'período necessário.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '12. Direitos do usuário',
         body:
             'Nos termos da LGPD, o usuário poderá solicitar informações '
@@ -341,7 +341,7 @@ class LegalDocumentsData {
             'Solicitações podem ser encaminhadas para '
             'lucasdiogo1234@gmail.com.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '13. Crianças e adolescentes',
         body:
             'O aplicativo não tem como finalidade específica a coleta de '
@@ -351,7 +351,7 @@ class LegalDocumentsData {
             'implementadas medidas adicionais de proteção e '
             'consentimento conforme exigido pela legislação.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '14. Publicidade e comercialização de dados',
         body:
             'Atualmente o aplicativo: não possui publicidade; não possui '
@@ -360,7 +360,7 @@ class LegalDocumentsData {
             'Caso essas condições sejam alteradas futuramente, esta '
             'Política deverá ser atualizada.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '15. Alterações da Política',
         body:
             'Esta Política poderá ser atualizada em razão de novas '
@@ -368,7 +368,7 @@ class LegalDocumentsData {
             'A versão vigente deverá permanecer disponível dentro do '
             'aplicativo.',
       ),
-      LegalSection(
+      const LegalSection(
         title: '16. Contato',
         body:
             'Para dúvidas relacionadas à privacidade ou aos dados '

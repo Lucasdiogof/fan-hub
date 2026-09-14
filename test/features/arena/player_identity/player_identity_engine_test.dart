@@ -110,8 +110,9 @@ void main() {
           var best = 0;
           for (final option in question.options) {
             var contribution = 0;
-            if (option.primary == dimension)
+            if (option.primary == dimension) {
               contribution += option.primaryPoints;
+            }
             if (option.secondary == dimension) {
               contribution += option.secondaryPoints;
             }

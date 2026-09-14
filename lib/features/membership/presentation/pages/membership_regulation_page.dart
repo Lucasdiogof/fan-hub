@@ -130,8 +130,7 @@ class _MembershipRegulationPageState extends State<MembershipRegulationPage> {
                         const SizedBox(height: AppSpacing.xl),
                         Divider(color: colors.border),
                         const SizedBox(height: AppSpacing.xl),
-                        for (final section
-                            in _program.regulationSections) ...[
+                        for (final section in _program.regulationSections) ...[
                           _RegulationSectionView(
                             key: _sectionKeys[section.index],
                             section: section,

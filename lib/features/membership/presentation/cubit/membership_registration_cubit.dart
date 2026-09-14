@@ -100,7 +100,8 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
       ),
     );
     final stateName = address.state;
-    if (stateName != null && stateName.isNotEmpty) unawaited(_loadCities(stateName));
+    if (stateName != null && stateName.isNotEmpty)
+      unawaited(_loadCities(stateName));
   }
 
   void _updateField(
@@ -369,7 +370,8 @@ class MembershipRegistrationCubit extends Cubit<MembershipRegistrationState> {
       // Nunca fixo no Goiás — cada clube tem o próprio regulamento/termo
       // (ver `MembershipProgramConfig.regulationVersion`), gravado junto do
       // aceite de quem está se associando.
-      regulationVersion: sl<ClubConfig>().membershipProgram.regulationVersion.version,
+      regulationVersion:
+          sl<ClubConfig>().membershipProgram.regulationVersion.version,
       regulationAcceptedAt: DateTime.now(),
     );
     switch (result) {

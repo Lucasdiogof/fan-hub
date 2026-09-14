@@ -54,12 +54,12 @@ class _FakeRepository implements FootballRepository {
       })
     >
   >
-  getStandings({String? competitionId}) async => Success((
+  getStandings({String? competitionId}) async => const Success((
     competition: _primary,
     table: [
       Standing(
         position: 1,
-        team: const Team(
+        team: Team(
           id: 1,
           name: 'Goiás',
           shortName: 'GOI',
@@ -74,7 +74,7 @@ class _FakeRepository implements FootballRepository {
         goalDifference: 4,
       ),
     ],
-    groups: const [],
+    groups: [],
   ));
 
   @override

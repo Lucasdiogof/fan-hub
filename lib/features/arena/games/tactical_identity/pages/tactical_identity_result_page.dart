@@ -166,7 +166,7 @@ class _TacticalIdentityResultPageState
                             const Spacer(),
                             Text(
                               l10n.tacticalIdentityGameTitle.toUpperCase(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white70,
                                 fontSize: 11,
                                 fontWeight: FontWeight.w800,
@@ -308,7 +308,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             result.archetype.displayName.toUpperCase(),
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 26,
               fontWeight: FontWeight.w900,
@@ -318,7 +318,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             result.archetype.description,
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFF3A3F3D),
               fontSize: 14,
               height: 1.45,
@@ -417,7 +417,7 @@ class _ReferencesSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             top.coach.coach,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.w900,
@@ -425,7 +425,7 @@ class _ReferencesSection extends StatelessWidget {
           ),
           Text(
             '${sl<ClubConfig>().identity.shortName} • ${top.coach.period}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFF6B6F6D),
               fontSize: 12.5,
               fontWeight: FontWeight.w700,
@@ -473,7 +473,7 @@ class _OtherReferenceRow extends StatelessWidget {
             children: [
               Text(
                 affinity.coach.coach,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 13.5,
                   fontWeight: FontWeight.w800,
@@ -482,7 +482,10 @@ class _OtherReferenceRow extends StatelessWidget {
               Text(
                 '${sl<ClubConfig>().identity.shortName} • '
                 '${affinity.coach.period}',
-                style: TextStyle(color: Color(0xFF6B6F6D), fontSize: 11.5),
+                style: const TextStyle(
+                  color: Color(0xFF6B6F6D),
+                  fontSize: 11.5,
+                ),
               ),
             ],
           ),

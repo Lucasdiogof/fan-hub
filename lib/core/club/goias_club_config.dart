@@ -27,7 +27,7 @@ import 'package:goias_app/features/squad/domain/squad_photos.dart';
 /// novo. Zero mudança visual/funcional: `AppColors.light`/`.dark` e
 /// `AppAssets.*` continuam sendo a fonte real, isto só as referencia.
 final goiasClubConfig = ClubConfig(
-  identity: ClubIdentity(
+  identity: const ClubIdentity(
     code: 'goias',
     slug: 'goias',
     displayName: 'Goiás Esporte Clube',
@@ -41,8 +41,8 @@ final goiasClubConfig = ClubConfig(
     },
     foundingYear: 1943,
   ),
-  branding: ClubBranding(light: AppColors.light, dark: AppColors.dark),
-  assets: ClubAssets(
+  branding: const ClubBranding(light: AppColors.light, dark: AppColors.dark),
+  assets: const ClubAssets(
     crest: AppAssets.goiasCrest,
     crestBadge: AppAssets.goiasCrestBadge,
     crest3d: AppAssets.goiasCrest3d,
@@ -69,7 +69,7 @@ final goiasClubConfig = ClubConfig(
     // foto histórica padronizada ganha, que é a do tratamento visual do jogo.
     guessPlayerPhotos: {...squadPhotoAssets, ...goiasGuessPlayerPhotos},
   ),
-  integrations: ClubIntegrations(
+  integrations: const ClubIntegrations(
     oneFootballTeamId: 1863,
     oneFootballSlug: 'goias-1863',
     oneFootballCompetitionSlug: 'brasileirao-serie-b-superbet-119',
@@ -99,7 +99,7 @@ final goiasClubConfig = ClubConfig(
     socialXUrl: 'https://x.com/goiasoficial',
     officialSiteUrl: 'https://www.goiasec.com.br/',
   ),
-  capabilities: ClubCapabilities(
+  capabilities: const ClubCapabilities(
     // Escondidos pro envio às lojas (App Store/Play Store) — checkout de
     // Loja/Ingressos e o fluxo de Sócio continuam mockados (sem gateway
     // real), então ficam desligados até a integração real existir. Nunca
@@ -132,7 +132,7 @@ final goiasClubConfig = ClubConfig(
     ticketCommerceMode: CommerceMode.demo,
     membershipCommerceMode: CommerceMode.demo,
   ),
-  productNames: ClubProductNaming(
+  productNames: const ClubProductNaming(
     arenaName: 'Arena Esmeraldina',
     passportName: 'Passaporte Esmeraldino',
     storeName: 'Goiás Store',
@@ -162,7 +162,7 @@ final goiasClubConfig = ClubConfig(
   // isto só as conecta ao `ClubConfig` do Goiás, pra que `/clube`/
   // `/partners` deixem de ler a classe global direto e passem a ler do
   // clube ativo (ver `ClubInstitutionalContent`).
-  institutionalContent: ClubInstitutionalContent(
+  institutionalContent: const ClubInstitutionalContent(
     history: ClubHistoryData.sections,
     timeline: ClubTimelineData.events,
     titles: ClubTitlesData.groups,

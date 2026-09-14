@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/di/injection_container.dart';

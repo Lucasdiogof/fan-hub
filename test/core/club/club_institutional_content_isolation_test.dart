@@ -38,7 +38,7 @@ import 'synthetic_passport_content.dart';
 /// pra provar que "sem conteúdo" nunca herda o do Goiás por omissão, sem
 /// depender de nenhum dos clubes reais do registry.
 final _emptyContentConfig = ClubConfig(
-  identity: ClubIdentity(
+  identity: const ClubIdentity(
     code: 'synthetic-empty',
     slug: 'synthetic-empty',
     displayName: 'Clube Sintético Vazio',
@@ -46,8 +46,8 @@ final _emptyContentConfig = ClubConfig(
     fanDemonym: 'Sintético',
     canonicalClubId: '00000000-0000-0000-0000-000000000000',
   ),
-  branding: ClubBranding(light: AppColors.light, dark: AppColors.dark),
-  assets: ClubAssets(
+  branding: const ClubBranding(light: AppColors.light, dark: AppColors.dark),
+  assets: const ClubAssets(
     crest: 'lib/assets/branding/goias_crest.svg',
     crestBadge: 'lib/assets/branding/goias_crest_badge.png',
     crest3d: 'lib/assets/branding/goias_crest_3d.jpg',
@@ -59,7 +59,7 @@ final _emptyContentConfig = ClubConfig(
     arenaStadiumPhoto: 'lib/assets/branding/arena_stadium_photo.jpg',
     storeBanner: 'lib/assets/branding/store_banner.jpg',
   ),
-  integrations: ClubIntegrations(
+  integrations: const ClubIntegrations(
     oneFootballTeamId: 0,
     oneFootballSlug: 'synthetic',
     oneFootballCompetitionSlug: 'synthetic',
@@ -85,7 +85,7 @@ final _emptyContentConfig = ClubConfig(
     socialXUrl: null,
     officialSiteUrl: null,
   ),
-  capabilities: ClubCapabilities(
+  capabilities: const ClubCapabilities(
     hasMembership: false,
     hasStore: false,
     hasTickets: false,
@@ -101,7 +101,7 @@ final _emptyContentConfig = ClubConfig(
     ticketCommerceMode: CommerceMode.demo,
     membershipCommerceMode: CommerceMode.demo,
   ),
-  productNames: ClubProductNaming(
+  productNames: const ClubProductNaming(
     arenaName: 'Arena',
     passportName: 'Passaporte',
     storeName: 'Loja',
@@ -317,14 +317,8 @@ void main() {
         // carrega de verdade no teste e o nome nunca aparece como `Text`
         // (isso só acontecia antes por acidente, quando `Image.network`
         // falhava no sandbox de teste e caía no fallback de texto).
-        expect(
-          find.bySemanticsLabel(RegExp('Puma')),
-          findsOneWidget,
-        );
-        expect(
-          find.bySemanticsLabel(RegExp('Asaas')),
-          findsOneWidget,
-        );
+        expect(find.bySemanticsLabel(RegExp('Puma')), findsOneWidget);
+        expect(find.bySemanticsLabel(RegExp('Asaas')), findsOneWidget);
         // "Unimed" é uma marca nacional com unidades regionais
         // independentes — o Bragantino tem a sua PRÓPRIA (Os
         // Bandeirantes, Bragança Paulista), sem nenhuma relação com a

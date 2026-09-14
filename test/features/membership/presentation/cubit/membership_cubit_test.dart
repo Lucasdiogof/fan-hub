@@ -6,7 +6,6 @@ import 'package:goias_app/features/match/domain/entities/match.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_cubit.dart';
 import 'package:goias_app/features/profile/domain/entities/profile.dart';
-import 'package:goias_app/features/profile/domain/repositories/profile_repository.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 
 import '../../../match/fakes/fake_football_repository.dart';
@@ -98,7 +97,7 @@ void main() {
   });
 
   test('jogo sem kickoff confirmado conta como "ainda por vir"', () async {
-    final matchSemHorario = Match(
+    const matchSemHorario = Match(
       id: 'f2',
       competition: 'Goianão',
       round: '1',
@@ -108,7 +107,7 @@ void main() {
       status: MatchStatus.scheduled,
     );
     footballRepository.getActiveClubSnapshotCall = () =>
-        Success((nextMatch: matchSemHorario, recentResults: const []));
+        const Success((nextMatch: matchSemHorario, recentResults: []));
 
     final cubit = build();
     addTearDown(cubit.close);

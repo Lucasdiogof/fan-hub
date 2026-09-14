@@ -65,56 +65,67 @@ class _CompetitionCatalogView extends StatelessWidget {
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   Expanded(
-                    child: BlocBuilder<CompetitionCatalogCubit, CompetitionCatalogState>(
-                      builder: (context, state) {
-                        return RefreshableStateView(
-                          status: state.status,
-                          onRefresh: () =>
-                              context.read<CompetitionCatalogCubit>().load(),
-                          errorMessage: state.errorMessage,
-                          emptyIcon: Icons.emoji_events_outlined,
-                          emptyTitle: context.l10n.otherCompetitionsSearchEmpty,
-                          successBuilder: (context) {
-                            final yours = state.yours;
-                            final othersByRegion = state.othersByRegion;
-                            if (yours.isEmpty && othersByRegion.isEmpty) {
-                              return Center(
-                                child: Text(
+                    child:
+                        BlocBuilder<
+                          CompetitionCatalogCubit,
+                          CompetitionCatalogState
+                        >(
+                          builder: (context, state) {
+                            return RefreshableStateView(
+                              status: state.status,
+                              onRefresh: () => context
+                                  .read<CompetitionCatalogCubit>()
+                                  .load(),
+                              errorMessage: state.errorMessage,
+                              emptyIcon: Icons.emoji_events_outlined,
+                              emptyTitle:
                                   context.l10n.otherCompetitionsSearchEmpty,
-                                  style: TextStyle(color: colors.textHint),
-                                ),
-                              );
-                            }
-                            return ListView(
-                              padding: const EdgeInsets.only(
-                                bottom: AppSpacing.xxxl,
-                              ),
-                              children: [
-                                if (yours.isNotEmpty) ...[
-                                  _SectionLabel(
-                                    context.l10n.otherCompetitionsYourCompetitions,
-                                  ),
-                                  const SizedBox(height: AppSpacing.sm),
-                                  for (final competition in yours)
-                                    _CompetitionTile(
-                                      competition: competition,
-                                      starred: true,
+                              successBuilder: (context) {
+                                final yours = state.yours;
+                                final othersByRegion = state.othersByRegion;
+                                if (yours.isEmpty && othersByRegion.isEmpty) {
+                                  return Center(
+                                    child: Text(
+                                      context.l10n.otherCompetitionsSearchEmpty,
+                                      style: TextStyle(color: colors.textHint),
                                     ),
-                                  const SizedBox(height: AppSpacing.lg),
-                                ],
-                                for (final entry in othersByRegion.entries) ...[
-                                  _SectionLabel(entry.key.toUpperCase()),
-                                  const SizedBox(height: AppSpacing.sm),
-                                  for (final competition in entry.value)
-                                    _CompetitionTile(competition: competition),
-                                  const SizedBox(height: AppSpacing.lg),
-                                ],
-                              ],
+                                  );
+                                }
+                                return ListView(
+                                  padding: const EdgeInsets.only(
+                                    bottom: AppSpacing.xxxl,
+                                  ),
+                                  children: [
+                                    if (yours.isNotEmpty) ...[
+                                      _SectionLabel(
+                                        context
+                                            .l10n
+                                            .otherCompetitionsYourCompetitions,
+                                      ),
+                                      const SizedBox(height: AppSpacing.sm),
+                                      for (final competition in yours)
+                                        _CompetitionTile(
+                                          competition: competition,
+                                          starred: true,
+                                        ),
+                                      const SizedBox(height: AppSpacing.lg),
+                                    ],
+                                    for (final entry
+                                        in othersByRegion.entries) ...[
+                                      _SectionLabel(entry.key.toUpperCase()),
+                                      const SizedBox(height: AppSpacing.sm),
+                                      for (final competition in entry.value)
+                                        _CompetitionTile(
+                                          competition: competition,
+                                        ),
+                                      const SizedBox(height: AppSpacing.lg),
+                                    ],
+                                  ],
+                                );
+                              },
                             );
                           },
-                        );
-                      },
-                    ),
+                        ),
                   ),
                 ],
               ),

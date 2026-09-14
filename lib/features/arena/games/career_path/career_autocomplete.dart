@@ -110,8 +110,9 @@ typedef _Owner = ({
 });
 
 CareerCollisionType _classifyCollision(String? personIdA, String? personIdB) {
-  if (personIdA == null || personIdB == null)
+  if (personIdA == null || personIdB == null) {
     return CareerCollisionType.unknownIdentity;
+  }
   return personIdA == personIdB
       ? CareerCollisionType.samePerson
       : CareerCollisionType.crossPerson;

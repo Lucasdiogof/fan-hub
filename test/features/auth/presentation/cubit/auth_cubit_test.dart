@@ -108,7 +108,7 @@ void main() {
     repository.user = _user;
     final cubit = AuthCubit(repository);
     addTearDown(cubit.close);
-    expect(cubit.state, AuthAuthenticated(_user));
+    expect(cubit.state, const AuthAuthenticated(_user));
   });
 
   test('evento signedIn emite AuthAuthenticated com o usuário atual', () async {
@@ -119,7 +119,7 @@ void main() {
     repository.emitEvent(AuthSessionEvent.signedIn);
     await Future<void>.delayed(Duration.zero);
 
-    expect(cubit.state, AuthAuthenticated(_user));
+    expect(cubit.state, const AuthAuthenticated(_user));
   });
 
   test('evento signedOut emite AuthUnauthenticated', () async {
