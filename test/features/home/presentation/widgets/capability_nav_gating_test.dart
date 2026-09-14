@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -151,7 +152,40 @@ void main() {
   });
 
   group('Goiás — as 5 abas de sempre, nenhuma regressão', () {
-    setUp(() => sl.registerSingleton<ClubConfig>(goiasClubConfig));
+    // hasMembership/hasStore do Goiás real estão escondidos temporariamente
+    // pro envio às lojas (ver comentário em goias_club_config.dart) — este
+    // teste prova a navegação em si (nunca esconde uma aba com a capability
+    // ligada), então religa as duas só aqui, sem depender do estado atual
+    // de produção.
+    final goiasAllCapabilities = ClubConfig(
+      identity: goiasClubConfig.identity,
+      branding: goiasClubConfig.branding,
+      assets: goiasClubConfig.assets,
+      integrations: goiasClubConfig.integrations,
+      productNames: goiasClubConfig.productNames,
+      passportContent: goiasClubConfig.passportContent,
+      membershipProgram: goiasClubConfig.membershipProgram,
+      institutionalContent: goiasClubConfig.institutionalContent,
+      capabilities: ClubCapabilities(
+        hasMembership: true,
+        hasStore: true,
+        hasTickets: goiasClubConfig.capabilities.hasTickets,
+        hasCrowdLineup: goiasClubConfig.capabilities.hasCrowdLineup,
+        hasPassport: goiasClubConfig.capabilities.hasPassport,
+        hasNews: goiasClubConfig.capabilities.hasNews,
+        hasSocial: goiasClubConfig.capabilities.hasSocial,
+        hasClubContent: goiasClubConfig.capabilities.hasClubContent,
+        hasPartners: goiasClubConfig.capabilities.hasPartners,
+        hasMatches: goiasClubConfig.capabilities.hasMatches,
+        enabledArenaGames: goiasClubConfig.capabilities.enabledArenaGames,
+        storeCommerceMode: goiasClubConfig.capabilities.storeCommerceMode,
+        ticketCommerceMode: goiasClubConfig.capabilities.ticketCommerceMode,
+        membershipCommerceMode:
+            goiasClubConfig.capabilities.membershipCommerceMode,
+      ),
+    );
+
+    setUp(() => sl.registerSingleton<ClubConfig>(goiasAllCapabilities));
 
     testWidgets('bottom nav mostra Jogos/Sócio/Loja/Mídia', (tester) async {
       await _pumpBottomNav(tester);

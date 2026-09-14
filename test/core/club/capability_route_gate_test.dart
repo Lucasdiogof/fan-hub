@@ -13,7 +13,28 @@ import 'synthetic_club_config.dart';
 /// uma esperança de que ninguém esqueceu de esconder um botão.
 void main() {
   group('Goiás (todas as capabilities true) — nunca bloqueado', () {
-    final capabilities = goiasClubConfig.capabilities;
+    // hasMembership/hasStore/hasTickets do Goiás real estão desligados
+    // temporariamente pro envio às lojas (checkout ainda mockado, ver
+    // comentário em goias_club_config.dart) — este teste prova o gate em
+    // si (nunca bloqueia quando a capability está ligada), então usa uma
+    // cópia com as 3 religadas, não a config de produção do momento.
+    final real = goiasClubConfig.capabilities;
+    final capabilities = ClubCapabilities(
+      hasMembership: true,
+      hasStore: true,
+      hasTickets: true,
+      hasCrowdLineup: real.hasCrowdLineup,
+      hasPassport: real.hasPassport,
+      hasNews: real.hasNews,
+      hasSocial: real.hasSocial,
+      hasClubContent: real.hasClubContent,
+      hasPartners: real.hasPartners,
+      hasMatches: real.hasMatches,
+      enabledArenaGames: real.enabledArenaGames,
+      storeCommerceMode: real.storeCommerceMode,
+      ticketCommerceMode: real.ticketCommerceMode,
+      membershipCommerceMode: real.membershipCommerceMode,
+    );
 
     for (final path in [
       '/',
