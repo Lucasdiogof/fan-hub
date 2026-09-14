@@ -150,7 +150,7 @@ class _PlayerIdentityResultPageState extends State<PlayerIdentityResultPage> {
                             const Spacer(),
                             Text(
                               context.playerIdentityGameTitle.toUpperCase(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white70,
                                 fontSize: 11,
                                 fontWeight: FontWeight.w800,
@@ -288,7 +288,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             result.archetype.displayName.toUpperCase(),
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 26,
               fontWeight: FontWeight.w900,
@@ -298,7 +298,7 @@ class _ProfileSection extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           Text(
             result.archetype.description,
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFF3A3F3D),
               fontSize: 14,
               height: 1.45,
@@ -460,7 +460,7 @@ class _ReferenceRow extends StatelessWidget {
                 children: [
                   Text(
                     affinity.reference.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.w800,
@@ -469,7 +469,7 @@ class _ReferenceRow extends StatelessWidget {
                   Text(
                     '${sl<ClubConfig>().identity.shortName} • '
                     '${affinity.reference.period}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xFF6B6F6D),
                       fontSize: 12,
                       fontWeight: FontWeight.w600,

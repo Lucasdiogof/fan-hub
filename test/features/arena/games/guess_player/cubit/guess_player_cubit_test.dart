@@ -144,7 +144,7 @@ void main() {
   test(
     'rodada salva com secreto ainda existente no catálogo é retomada',
     () async {
-      final saved = const GuessPlayerRoundState(
+      const saved = GuessPlayerRoundState(
         secretPlayerId: 'p1',
         guessedPlayerIds: ['p2'],
       );
@@ -199,7 +199,7 @@ void main() {
       'esgotar as 7 tentativas marca lost e registra attempts_exhausted',
       () async {
         final ranking = _SpyArenaRankingRepository();
-        final wrongGuess = GuessPlayer(
+        const wrongGuess = GuessPlayer(
           id: 'errado',
           name: 'Errado',
           displayName: 'Errado',

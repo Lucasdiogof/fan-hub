@@ -13,7 +13,10 @@ import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
 class CompetitionAliasMatcher {
   const CompetitionAliasMatcher._();
 
-  static String? matchId(String rawCompetitionName, List<CompetitionRef> catalog) {
+  static String? matchId(
+    String rawCompetitionName,
+    List<CompetitionRef> catalog,
+  ) {
     final normalizedRaw = _normalize(rawCompetitionName);
     if (normalizedRaw.isEmpty) return null;
     for (final competition in catalog) {

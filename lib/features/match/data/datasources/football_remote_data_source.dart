@@ -39,7 +39,7 @@ class FootballRemoteDataSource {
       '/api/football/standings',
       queryParameters: {
         'club': _clubConfig.identity.code,
-        if (competitionId != null) 'competition': competitionId,
+        'competition': ?competitionId,
       },
     );
     final data = response.data!;

@@ -34,7 +34,7 @@ Future<Map<String, String>> _renderAll(
       supportedLocales: AppLocalizations.supportedLocales,
       home: Builder(
         builder: (context) {
-          final l10n = AppLocalizations.of(context)!;
+          final l10n = AppLocalizations.of(context);
           final code = club.identity.code;
           final name = club.identity.shortName.toUpperCase();
           values['arenaAchievementTitle'] = l10n.arenaAchievementTitle(
@@ -135,8 +135,8 @@ void main() {
       bragantinoClubConfig.productNames.storeName,
       bragantinoClubConfig.productNames.membershipProgramName,
       ...bragantinoClubConfig.assets.storeHomeBanners,
-      if (bragantinoClubConfig.assets.membershipFaqAssetPath case final p?) p,
-      if (bragantinoClubConfig.assets.storeCatalogAssetPath case final p?) p,
+      ?bragantinoClubConfig.assets.membershipFaqAssetPath,
+      ?bragantinoClubConfig.assets.storeCatalogAssetPath,
     ];
     for (final value in riskyBragantinoStrings) {
       for (final term in _goiasLeakTerms) {

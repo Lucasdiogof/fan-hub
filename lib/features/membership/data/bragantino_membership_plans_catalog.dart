@@ -45,7 +45,11 @@ class BragantinoMembershipPlansCatalog {
         'Descontos na rede de parceiros',
       ],
       prices: [
-        MembershipPlanPrice(label: 'Mensal', monthlyPrice: 20, annualPrice: 240),
+        MembershipPlanPrice(
+          label: 'Mensal',
+          monthlyPrice: 20,
+          annualPrice: 240,
+        ),
         MembershipPlanPrice(label: 'Anual', monthlyPrice: 10, annualPrice: 120),
       ],
     ),
@@ -62,7 +66,11 @@ class BragantinoMembershipPlansCatalog {
         'Descontos na rede de parceiros',
       ],
       prices: [
-        MembershipPlanPrice(label: 'Mensal', monthlyPrice: 43, annualPrice: 516),
+        MembershipPlanPrice(
+          label: 'Mensal',
+          monthlyPrice: 43,
+          annualPrice: 516,
+        ),
         MembershipPlanPrice(label: 'Anual', monthlyPrice: 33, annualPrice: 396),
       ],
     ),

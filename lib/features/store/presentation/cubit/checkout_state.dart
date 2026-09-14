@@ -112,8 +112,7 @@ class CheckoutState extends Equatable {
 
   bool get canProceedFromPayment => paymentApproved;
 
-  bool get canConfirmOrder =>
-      acceptedTerms && paymentApproved && !submitting;
+  bool get canConfirmOrder => acceptedTerms && paymentApproved && !submitting;
 
   CheckoutState copyWith({
     Cart? cart,

@@ -250,7 +250,7 @@ const _bragantinoGuessPlayerPhotos = {
 };
 
 final bragantinoClubConfig = ClubConfig(
-  identity: ClubIdentity(
+  identity: const ClubIdentity(
     code: 'bragantino',
     slug: 'bragantino',
     displayName: 'Red Bull Bragantino',
@@ -271,8 +271,8 @@ final bragantinoClubConfig = ClubConfig(
     // /data/club.json + BragantinoHistoryData) — nunca o ano do Goiás (1943).
     foundingYear: 1928,
   ),
-  branding: ClubBranding(light: _bragantinoLight, dark: _bragantinoDark),
-  assets: ClubAssets(
+  branding: const ClubBranding(light: _bragantinoLight, dark: _bragantinoDark),
+  assets: const ClubAssets(
     crest: _crestSealReal,
     crestBadge: _crestBadgeReal,
     crest3d: _phRaster,
@@ -329,7 +329,7 @@ final bragantinoClubConfig = ClubConfig(
           'lib/assets/games/guess_player/bragantino/bruninho.png',
     },
   ),
-  integrations: ClubIntegrations(
+  integrations: const ClubIntegrations(
     // Confirmado navegando onefootball.com/pt-br/time/rb-bragantino-4734
     // (também /en/team/rb-bragantino-4734) — nome oficial exibido "RB
     // Bragantino", id numérico 4734.
@@ -379,7 +379,7 @@ final bragantinoClubConfig = ClubConfig(
     officialSiteUrl: null,
   ),
   // Tudo FALSE + Arena vazia até haver dado/conteúdo real do Bragantino.
-  capabilities: ClubCapabilities(
+  capabilities: const ClubCapabilities(
     // 2026-09-11: Massa Bruta (programa oficial de sócio-torcedor do Red
     // Bull Bragantino) ligado — planos reais (Asas Bronze/Prata/Ouro/
     // Platina) extraídos de massabruta.com.br/Planos, reaproveitando a
@@ -473,7 +473,7 @@ final bragantinoClubConfig = ClubConfig(
     ticketCommerceMode: CommerceMode.demo,
     membershipCommerceMode: CommerceMode.demo,
   ),
-  productNames: ClubProductNaming(
+  productNames: const ClubProductNaming(
     arenaName: 'Arena',
     passportName: 'Passaporte',
     storeName: 'RedBull Shop',
@@ -505,7 +505,7 @@ final bragantinoClubConfig = ClubConfig(
     consentUrl: 'https://massabruta.com.br/Home/Regulamento',
     externalUrl: 'https://massabruta.com.br/Planos',
   ),
-  institutionalContent: ClubInstitutionalContent(
+  institutionalContent: const ClubInstitutionalContent(
     history: BragantinoHistoryData.sections,
     timeline: BragantinoTimelineData.events,
     titles: BragantinoTitlesData.groups,

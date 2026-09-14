@@ -91,10 +91,7 @@ class PurchaseCubit extends Cubit<PurchaseState> {
     String fileExtension,
   ) async {
     emit(state.copyWith(saving: true, clearError: true));
-    final result = await _repository.uploadHalfPriceProof(
-      bytes,
-      fileExtension,
-    );
+    final result = await _repository.uploadHalfPriceProof(bytes, fileExtension);
     switch (result) {
       case Success(:final data):
         final holders = List<TicketHolder>.of(state.holders);

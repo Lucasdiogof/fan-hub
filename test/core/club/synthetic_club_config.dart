@@ -26,7 +26,7 @@ import 'synthetic_passport_content.dart';
 /// Goiás — usado pra provar que uma query nunca vaza `club_id` de outro
 /// clube por acidente.
 final syntheticClubBConfig = ClubConfig(
-  identity: ClubIdentity(
+  identity: const ClubIdentity(
     code: 'club-b',
     slug: 'club-b',
     displayName: 'Clube Sintético B',
@@ -34,7 +34,7 @@ final syntheticClubBConfig = ClubConfig(
     fanDemonym: 'Torcedor B',
     canonicalClubId: '00000000-0000-0000-0000-0000000000b1',
   ),
-  branding: ClubBranding(
+  branding: const ClubBranding(
     light: AppColors(
       background: Color(0xFFF5F7FA),
       surface: Color(0xFFFFFFFF),
@@ -72,7 +72,7 @@ final syntheticClubBConfig = ClubConfig(
       success: Color(0xFF3FA664),
     ),
   ),
-  assets: ClubAssets(
+  assets: const ClubAssets(
     crest: 'test/assets/club_b/crest.svg',
     crestBadge: 'test/assets/club_b/crest_badge.png',
     crest3d: 'test/assets/club_b/crest_3d.jpg',
@@ -84,7 +84,7 @@ final syntheticClubBConfig = ClubConfig(
     arenaStadiumPhoto: 'test/assets/club_b/arena_stadium.png',
     storeBanner: 'test/assets/club_b/store_banner.png',
   ),
-  integrations: ClubIntegrations(
+  integrations: const ClubIntegrations(
     oneFootballTeamId: 999999,
     oneFootballSlug: 'club-b-999999',
     oneFootballCompetitionSlug: 'campeonato-sintetico-b',
@@ -115,7 +115,7 @@ final syntheticClubBConfig = ClubConfig(
   // delas. Passaporte já era `false`. `enabledArenaGames` continua com
   // 'quiz' porque o conteúdo do Arena É genuinamente club_id-scoped
   // (M3.1/M3.2, com `ClubScopedFallback` nunca cross-club).
-  capabilities: ClubCapabilities(
+  capabilities: const ClubCapabilities(
     hasMembership: false,
     hasStore: false,
     hasTickets: false,
@@ -131,7 +131,7 @@ final syntheticClubBConfig = ClubConfig(
     ticketCommerceMode: CommerceMode.demo,
     membershipCommerceMode: CommerceMode.demo,
   ),
-  productNames: ClubProductNaming(
+  productNames: const ClubProductNaming(
     arenaName: 'Arena B',
     passportName: 'Passaporte B',
     storeName: 'Club B Store',

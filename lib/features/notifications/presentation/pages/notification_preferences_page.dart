@@ -150,7 +150,10 @@ class _LiveMatchesGroup extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final clubName = sl<ClubConfig>().identity.shortName;
-    return BlocBuilder<NotificationPreferencesCubit, NotificationPreferencesState>(
+    return BlocBuilder<
+      NotificationPreferencesCubit,
+      NotificationPreferencesState
+    >(
       builder: (context, state) {
         final prefs = state.preferences;
         final loading = state.status == LoadStatus.loading;
@@ -345,7 +348,8 @@ class _SubToggleRow extends StatelessWidget {
             ],
           ),
         ),
-        if (!isLast) Divider(height: 1, color: colors.border, indent: AppSpacing.lg),
+        if (!isLast)
+          Divider(height: 1, color: colors.border, indent: AppSpacing.lg),
       ],
     );
   }
