@@ -36,8 +36,8 @@ class GoiasBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final items = mainNavItems(context);
     final capabilities = sl<ClubConfig>().capabilities;
+    final items = mainNavItems(context, capabilities);
     final bottomInset = MediaQuery.paddingOf(context).bottom;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 

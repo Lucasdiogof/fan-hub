@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_breakpoints.dart';
+import 'package:goias_app/features/arena/presentation/pages/arena_page.dart';
+import 'package:goias_app/features/club/presentation/pages/club_page.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_cubit.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_shell_state.dart';
 import 'package:goias_app/features/home/presentation/pages/home_page.dart';
@@ -56,13 +58,17 @@ class _HomeShellPageState extends State<HomeShellPage> {
             final capabilities = sl<ClubConfig>().capabilities;
             final pages = [
               const GamesPage(),
-              isTabEnabled(socioTabIndex, capabilities)
+              // Enquanto `hasMembership` for false (envio às lojas), o
+              // slot de Sócio vira O Clube em vez de sumir — nunca uma
+              // tela genérica de "indisponível" (ver `main_navigation_items.dart`).
+              capabilities.hasMembership
                   ? const MembershipHomePage()
-                  : const FeatureUnavailablePage(),
+                  : const ClubPage(showBackButton: false),
               const HomePage(),
-              isTabEnabled(lojaTabIndex, capabilities)
+              // Mesma ideia pra Loja/Arena.
+              capabilities.hasStore
                   ? const StoreHomePage(showBackButton: false)
-                  : const FeatureUnavailablePage(),
+                  : const ArenaPage(showBackButton: false),
               isTabEnabled(midiaTabIndex, capabilities)
                   ? const SocialFeedPage()
                   : const FeatureUnavailablePage(),

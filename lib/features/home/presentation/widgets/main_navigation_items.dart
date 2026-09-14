@@ -31,7 +31,10 @@ class MainNavItemData {
   final String label;
 }
 
-List<MainNavItemData> mainNavItems(BuildContext context) {
+List<MainNavItemData> mainNavItems(
+  BuildContext context,
+  ClubCapabilities capabilities,
+) {
   final l10n = context.l10n;
   final items = List<MainNavItemData>.filled(
     5,
@@ -46,21 +49,38 @@ List<MainNavItemData> mainNavItems(BuildContext context) {
     selectedIcon: Icons.calendar_month_rounded,
     label: l10n.navMatches,
   );
-  items[socioTabIndex] = MainNavItemData(
-    icon: Icons.badge_outlined,
-    selectedIcon: Icons.badge_rounded,
-    label: l10n.navMembership,
-  );
+  // Sócio some enquanto `hasMembership` for false (envio às lojas) — o
+  // slot nunca fica vazio, vira O Clube nesse meio-tempo (ver
+  // `isTabEnabled`/`home_shell_page.dart`).
+  items[socioTabIndex] = capabilities.hasMembership
+      ? MainNavItemData(
+          icon: Icons.badge_outlined,
+          selectedIcon: Icons.badge_rounded,
+          label: l10n.navMembership,
+        )
+      : const MainNavItemData(
+          icon: Icons.shield_outlined,
+          selectedIcon: Icons.shield_rounded,
+          label: 'Clube',
+        );
   items[homeTabIndex] = MainNavItemData(
     icon: Icons.home_outlined,
     selectedIcon: Icons.home_rounded,
     label: l10n.navHome,
   );
-  items[lojaTabIndex] = MainNavItemData(
-    icon: Icons.shopping_bag_outlined,
-    selectedIcon: Icons.shopping_bag_rounded,
-    label: l10n.navStore,
-  );
+  // Loja some enquanto `hasStore` for false — vira Arena no mesmo espírito
+  // do Sócio/Clube acima.
+  items[lojaTabIndex] = capabilities.hasStore
+      ? MainNavItemData(
+          icon: Icons.shopping_bag_outlined,
+          selectedIcon: Icons.shopping_bag_rounded,
+          label: l10n.navStore,
+        )
+      : const MainNavItemData(
+          icon: Icons.sports_esports_outlined,
+          selectedIcon: Icons.sports_esports_rounded,
+          label: 'Arena',
+        );
   items[midiaTabIndex] = MainNavItemData(
     icon: Icons.ondemand_video_outlined,
     selectedIcon: Icons.ondemand_video_rounded,
@@ -71,16 +91,15 @@ List<MainNavItemData> mainNavItems(BuildContext context) {
 
 /// M4.2A — se a aba [index] deve aparecer/ser navegável pro clube ativo.
 /// Home nunca é gateada (é o núcleo do produto, sem capability dedicada) —
-/// Jogos/Sócio/Loja/Mídia sim. Mídia (Notícias + Instagram/YouTube/X) fica
-/// visível se QUALQUER uma das duas capabilities dela estiver ligada — a
-/// granularidade de qual filtro aparece DENTRO da aba é decidida por
-/// `SocialFeedPage`, não aqui.
+/// Jogos/Mídia sim. Sócio/Loja SEMPRE aparecem: quando a capability real
+/// está desligada (envio às lojas), o slot mostra O Clube/Arena em vez de
+/// sumir (ver `mainNavItems`/`home_shell_page.dart`) — nunca um buraco na
+/// barra. Mídia (Notícias + Instagram/YouTube/X) fica visível se QUALQUER
+/// uma das duas capabilities dela estiver ligada — a granularidade de qual
+/// filtro aparece DENTRO da aba é decidida por `SocialFeedPage`, não aqui.
 bool isTabEnabled(int index, ClubCapabilities capabilities) {
   return switch (index) {
     jogosTabIndex => capabilities.hasMatches,
-    socioTabIndex => capabilities.hasMembership,
-    homeTabIndex => true,
-    lojaTabIndex => capabilities.hasStore,
     midiaTabIndex => capabilities.hasNews || capabilities.hasSocial,
     _ => true,
   };

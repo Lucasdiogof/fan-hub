@@ -29,6 +29,7 @@ class DetailPageHeader extends StatefulWidget {
     this.actions,
     this.padding,
     this.maxWidth = ContentWidth.wide,
+    this.showBackButton = true,
     super.key,
   });
 
@@ -54,6 +55,11 @@ class DetailPageHeader extends StatefulWidget {
   /// dados pessoais, endereço) devem passar `ContentWidth.form` (680),
   /// senão o formulário esticaria até 1240px em tablet/web/desktop.
   final ContentWidth maxWidth;
+
+  /// `false` quando esta tela é a raiz de uma aba da bottom nav (nunca tem
+  /// pra onde voltar) — esconde o botão, mantendo o espaço reservado pra
+  /// não deslocar o título.
+  final bool showBackButton;
 
   @override
   State<DetailPageHeader> createState() => _DetailPageHeaderState();
@@ -152,6 +158,7 @@ class _DetailPageHeaderState extends State<DetailPageHeader> {
             onBack: widget.onBack ?? () => context.pop(),
             actions: widget.actions,
             showTitle: _titleVisible,
+            showBackButton: widget.showBackButton,
             surfaceT: _scrollT,
             barHeight: _barHeight,
             topInset: topInset,
@@ -170,6 +177,7 @@ class _Bar extends StatelessWidget {
     required this.onBack,
     required this.actions,
     required this.showTitle,
+    required this.showBackButton,
     required this.surfaceT,
     required this.barHeight,
     required this.topInset,
@@ -181,6 +189,7 @@ class _Bar extends StatelessWidget {
   final VoidCallback onBack;
   final List<Widget>? actions;
   final bool showTitle;
+  final bool showBackButton;
   final double surfaceT;
   final double barHeight;
   final double topInset;
@@ -215,7 +224,9 @@ class _Bar extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                 child: Row(
                   children: [
-                    _BackButton(onTap: onBack, colors: colors),
+                    showBackButton
+                        ? _BackButton(onTap: onBack, colors: colors)
+                        : const SizedBox(width: 42),
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
                       child: AnimatedOpacity(
