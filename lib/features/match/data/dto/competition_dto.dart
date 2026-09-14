@@ -2,10 +2,16 @@ import 'package:goias_app/features/match/domain/entities/competition.dart';
 import 'package:goias_app/features/match/domain/entities/competition_ref.dart';
 
 class CompetitionDto {
-  const CompetitionDto({required this.name, required this.season, this.format});
+  const CompetitionDto({
+    required this.name,
+    required this.season,
+    this.format,
+    this.logoUrl,
+  });
 
   final String name;
   final int? season;
+  final String? logoUrl;
 
   /// `null` nos endpoints que nunca tiveram esse campo (`/team/:code`,
   /// `/current-round`, `/fixtures/:id`) — só `/standings` manda desde a
@@ -17,9 +23,11 @@ class CompetitionDto {
     name: json['name'] as String,
     season: json['season'] as int?,
     format: _formatFromJson(json['format'] as String?),
+    logoUrl: json['logoUrl'] as String?,
   );
 
-  Competition toEntity() => Competition(name: name, season: season);
+  Competition toEntity() =>
+      Competition(name: name, season: season, logoUrl: logoUrl);
 }
 
 CompetitionFormat _formatFromJson(String? raw) =>

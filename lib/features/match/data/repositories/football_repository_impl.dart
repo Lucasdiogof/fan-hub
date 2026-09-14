@@ -57,6 +57,7 @@ class FootballRepositoryImpl implements FootballRepository {
         id: competitionId ?? 'primary',
         name: result.competition.name,
         format: result.competition.format ?? CompetitionFormat.leagueTable,
+        logoUrl: result.competition.logoUrl,
       );
 
       final groups = result.groups.map((dto) {
@@ -104,6 +105,7 @@ class FootballRepositoryImpl implements FootballRepository {
         id: competitionId ?? 'primary',
         name: result.competition.name,
         format: result.competition.format ?? CompetitionFormat.leagueTable,
+        logoUrl: result.competition.logoUrl,
       );
 
       List<CompetitionStage> stages;
