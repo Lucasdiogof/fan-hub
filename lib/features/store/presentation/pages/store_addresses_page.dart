@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
@@ -11,8 +10,8 @@ import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/repositories/delivery_address_repository.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_address_form_sheet.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
@@ -85,141 +84,120 @@ class _StoreAddressesPageState extends State<StoreAddressesPage> {
     final colors = context.colors;
     final l10n = context.l10n;
     final addresses = _addresses;
+    final title = l10n.storeAddressesTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    AppSpacing.sm,
+      body: Column(
+        children: [
+          Expanded(
+            child: DetailPageHeader(
+              maxWidth: ContentWidth.detail,
+              title: title,
+              heroTitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w900,
+                      color: colors.textPrimary,
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          BackButtonCircle(onTap: () => context.pop()),
-                          const SizedBox(width: AppSpacing.md),
-                          Text(
-                            l10n.storeAddressesTitle,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 0.4,
-                              color: colors.textPrimary,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: AppSpacing.sm),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 52),
-                        child: Text(
-                          l10n.storeAddressesSubtitle,
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: colors.textSecondary,
-                          ),
-                        ),
-                      ),
-                    ],
+                  const SizedBox(height: 6),
+                  Text(
+                    l10n.storeAddressesSubtitle,
+                    style: TextStyle(fontSize: 13, color: colors.textSecondary),
                   ),
-                ),
-                Expanded(
-                  child: addresses == null
-                      ? const Center(child: GoiasLoadingIndicator())
-                      : addresses.isEmpty
-                      ? Center(
+                ],
+              ),
+              body: Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xl),
+                child: addresses == null
+                    ? const SizedBox(
+                        height: 320,
+                        child: Center(child: GoiasLoadingIndicator()),
+                      )
+                    : addresses.isEmpty
+                    ? SizedBox(
+                        height: 320,
+                        child: Center(
                           child: StateMessage(
                             icon: Icons.location_on_outlined,
                             title: l10n.storeAddressesEmptyTitle,
                             message: l10n.storeAddressesEmptyMessage,
                           ),
-                        )
-                      : ListView(
-                          padding: const EdgeInsets.fromLTRB(
-                            AppSpacing.lg,
-                            0,
-                            AppSpacing.lg,
-                            AppSpacing.md,
-                          ),
-                          children: [
-                            for (final address in addresses)
-                              _AddressTile(
-                                address: address,
-                                onSetDefault: () async {
-                                  await _repository.setDefault(address.id);
-                                  await _load();
-                                },
-                                onEdit: () => showStoreAddressFormSheet(
-                                  context,
-                                  initial: address,
-                                  onSave: _update,
-                                ),
-                                onDelete: () async {
-                                  final confirmed = await AppBottomSheet.show(
-                                    context,
-                                    title: l10n.storeRemoveAddressTitle,
-                                    description: l10n.storeRemoveAddressMessage(
-                                      address.oneLine,
-                                    ),
-                                    confirmLabel: l10n.storeRemove,
-                                    cancelLabel: l10n.commonCancel,
-                                    destructive: true,
-                                  );
-                                  if (confirmed == true) {
-                                    await _repository.delete(address.id);
-                                    await _load();
-                                  }
-                                },
+                        ),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (final address in addresses)
+                            _AddressTile(
+                              address: address,
+                              onSetDefault: () async {
+                                await _repository.setDefault(address.id);
+                                await _load();
+                              },
+                              onEdit: () => showStoreAddressFormSheet(
+                                context,
+                                initial: address,
+                                onSave: _update,
                               ),
-                          ],
-                        ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    0,
-                    AppSpacing.lg,
-                    AppSpacing.lg,
-                  ),
-                  child: Column(
-                    children: [
-                      OutlinedButton.icon(
-                        onPressed: () =>
-                            showStoreAddressFormSheet(context, onSave: _create),
-                        icon: const Icon(Icons.add_rounded, size: 18),
-                        label: Text(l10n.storeAddAddress),
-                        style: OutlinedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(52),
-                          foregroundColor: colors.primary,
-                          side: BorderSide(color: colors.primary),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                              AppRadius.button,
+                              onDelete: () async {
+                                final confirmed = await AppBottomSheet.show(
+                                  context,
+                                  title: l10n.storeRemoveAddressTitle,
+                                  description: l10n.storeRemoveAddressMessage(
+                                    address.oneLine,
+                                  ),
+                                  confirmLabel: l10n.storeRemove,
+                                  cancelLabel: l10n.commonCancel,
+                                  destructive: true,
+                                );
+                                if (confirmed == true) {
+                                  await _repository.delete(address.id);
+                                  await _load();
+                                }
+                              },
                             ),
-                          ),
-                        ),
+                        ],
                       ),
-                      const SizedBox(height: AppSpacing.sm),
-                      TextButton(
-                        onPressed: _useResidential,
-                        child: Text(l10n.storeUseResidentialAddress),
-                      ),
-                    ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg,
+              0,
+              AppSpacing.lg,
+              AppSpacing.lg,
+            ),
+            child: Column(
+              children: [
+                OutlinedButton.icon(
+                  onPressed: () =>
+                      showStoreAddressFormSheet(context, onSave: _create),
+                  icon: const Icon(Icons.add_rounded, size: 18),
+                  label: Text(l10n.storeAddAddress),
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size.fromHeight(52),
+                    foregroundColor: colors.primary,
+                    side: BorderSide(color: colors.primary),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.button),
+                    ),
                   ),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                TextButton(
+                  onPressed: _useResidential,
+                  child: Text(l10n.storeUseResidentialAddress),
                 ),
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }

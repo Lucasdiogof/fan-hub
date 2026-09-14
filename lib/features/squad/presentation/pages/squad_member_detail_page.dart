@@ -9,8 +9,8 @@ import 'package:goias_app/features/squad/domain/club_history_entry.dart';
 import 'package:goias_app/features/squad/domain/squad_member.dart';
 import 'package:goias_app/features/squad/presentation/widgets/squad_avatar.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 /// Perfil do jogador — puramente visual (sem seguir/favoritar/persistência
 /// nenhuma). Instagram é só um link externo já resolvido no `SquadMember`
@@ -26,50 +26,26 @@ class SquadMemberDetailPage extends StatelessWidget {
     final colors = context.colors;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: BackButtonCircle(
-                    onTap: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    children: [
-                      _PlayerProfileHeader(member: member),
-                      const SizedBox(height: AppSpacing.xxl),
-                      _SectionLabel(context.l10n.squadAboutSection),
-                      const SizedBox(height: AppSpacing.sm),
-                      _PlayerInfoGrid(member: member),
-                      if (member.clubHistory.isNotEmpty) ...[
-                        const SizedBox(height: AppSpacing.xxl),
-                        _SectionLabel(context.l10n.squadClubHistory),
-                        const SizedBox(height: AppSpacing.md),
-                        _PlayerCareerSection(history: member.clubHistory),
-                      ],
-                    ],
-                  ),
-                ),
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.detail,
+        title: member.name,
+        onBack: () => context.canPop() ? context.pop() : context.go('/'),
+        heroTitle: _PlayerProfileHeader(member: member),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xxl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _SectionLabel(context.l10n.squadAboutSection),
+              const SizedBox(height: AppSpacing.sm),
+              _PlayerInfoGrid(member: member),
+              if (member.clubHistory.isNotEmpty) ...[
+                const SizedBox(height: AppSpacing.xxl),
+                _SectionLabel(context.l10n.squadClubHistory),
+                const SizedBox(height: AppSpacing.md),
+                _PlayerCareerSection(history: member.clubHistory),
               ],
-            ),
+            ],
           ),
         ),
       ),

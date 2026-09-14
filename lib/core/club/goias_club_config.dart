@@ -26,7 +26,7 @@ import 'package:goias_app/features/squad/domain/squad_photos.dart';
 /// é o mesmo já em produção hoje — isto é reempacotamento, nunca dado
 /// novo. Zero mudança visual/funcional: `AppColors.light`/`.dark` e
 /// `AppAssets.*` continuam sendo a fonte real, isto só as referencia.
-const goiasClubConfig = ClubConfig(
+final goiasClubConfig = ClubConfig(
   identity: ClubIdentity(
     code: 'goias',
     slug: 'goias',

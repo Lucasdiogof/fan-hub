@@ -12,9 +12,9 @@ import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/presentation/cubit/club_song_player_cubit.dart';
 import 'package:goias_app/features/club/presentation/cubit/club_song_player_state.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:just_audio/just_audio.dart';
 
 /// Letra + player de UMA música. O `ClubSongPlayerCubit` é criado aqui via
 /// `BlocProvider` a cada visita — o `AudioPlayer` nativo é compartilhado
@@ -49,59 +49,50 @@ class _ClubSongDetailsView extends StatelessWidget {
     final colors = context.colors;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                AppSpacing.xxxl,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(children: [BackButtonCircle(onTap: () => context.pop())]),
-                  const SizedBox(height: AppSpacing.lg),
-                  Text(
-                    song.title,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w800,
-                      color: colors.primary,
-                      height: 1.2,
-                    ),
-                  ),
-                  if (song.artist != null) ...[
-                    const SizedBox(height: 2),
-                    Text(
-                      song.artist!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: colors.textSecondary,
-                      ),
-                    ),
-                  ],
-                  const SizedBox(height: AppSpacing.xl),
-                  _SongPlayer(song: song),
-                  const SizedBox(height: AppSpacing.xxl),
-                  ClubSectionLabel(context.l10n.clubLyricsLabel),
-                  const SizedBox(height: AppSpacing.md),
-                  Text(
-                    song.lyrics ?? context.l10n.clubLyricsUnavailable,
-                    style: TextStyle(
-                      fontSize: 16,
-                      height: 1.6,
-                      color: song.lyrics != null
-                          ? colors.textPrimary
-                          : colors.textHint,
-                    ),
-                  ),
-                ],
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.detail,
+        title: song.title,
+        heroTitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              song.title,
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w800,
+                color: colors.primary,
+                height: 1.2,
               ),
             ),
+            if (song.artist != null) ...[
+              const SizedBox(height: 2),
+              Text(
+                song.artist!,
+                style: TextStyle(fontSize: 14, color: colors.textSecondary),
+              ),
+            ],
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _SongPlayer(song: song),
+              const SizedBox(height: AppSpacing.xxl),
+              ClubSectionLabel(context.l10n.clubLyricsLabel),
+              const SizedBox(height: AppSpacing.md),
+              Text(
+                song.lyrics ?? context.l10n.clubLyricsUnavailable,
+                style: TextStyle(
+                  fontSize: 16,
+                  height: 1.6,
+                  color: song.lyrics != null
+                      ? colors.textPrimary
+                      : colors.textHint,
+                ),
+              ),
+            ],
           ),
         ),
       ),

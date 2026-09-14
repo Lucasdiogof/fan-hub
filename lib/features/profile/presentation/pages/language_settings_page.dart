@@ -6,9 +6,8 @@ import 'package:goias_app/core/l10n/locale_cubit.dart';
 import 'package:goias_app/core/l10n/supported_locales.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class LanguageSettingsPage extends StatelessWidget {
   const LanguageSettingsPage({super.key});
@@ -17,72 +16,49 @@ class LanguageSettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final l10n = context.l10n;
+    final title = l10n.settingsLanguageTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.detail,
+        title: title,
+        onBack: () => context.canPop() ? context.pop() : context.go('/'),
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: BlocBuilder<LocaleCubit, Locale?>(
+            builder: (context, locale) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _LanguageTile(
+                    title: l10n.languageSystemLabel,
+                    subtitle: l10n.languageSystemDescription,
+                    icon: Icons.smartphone_rounded,
+                    selected: locale == null,
+                    onTap: () => context.read<LocaleCubit>().setLocale(null),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                      ),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(l10n.settingsLanguageTitle),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: BlocBuilder<LocaleCubit, Locale?>(
-                    builder: (context, locale) {
-                      return ListView(
-                        padding: const EdgeInsets.fromLTRB(
-                          AppSpacing.lg,
-                          AppSpacing.xxl,
-                          AppSpacing.lg,
-                          AppSpacing.xxxl,
-                        ),
-                        children: [
-                          _LanguageTile(
-                            title: l10n.languageSystemLabel,
-                            subtitle: l10n.languageSystemDescription,
-                            icon: Icons.smartphone_rounded,
-                            selected: locale == null,
-                            onTap: () =>
-                                context.read<LocaleCubit>().setLocale(null),
-                          ),
-                          const SizedBox(height: AppSpacing.sm),
-                          for (final option in kSupportedLocales) ...[
-                            _LanguageTile(
-                              title: languageEndonym(option.languageCode),
-                              icon: Icons.language_rounded,
-                              selected:
-                                  locale?.languageCode == option.languageCode,
-                              onTap: () =>
-                                  context.read<LocaleCubit>().setLocale(option),
-                            ),
-                            const SizedBox(height: AppSpacing.sm),
-                          ],
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+                  const SizedBox(height: AppSpacing.sm),
+                  for (final option in kSupportedLocales) ...[
+                    _LanguageTile(
+                      title: languageEndonym(option.languageCode),
+                      icon: Icons.language_rounded,
+                      selected: locale?.languageCode == option.languageCode,
+                      onTap: () =>
+                          context.read<LocaleCubit>().setLocale(option),
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                  ],
+                ],
+              );
+            },
           ),
         ),
       ),

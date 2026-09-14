@@ -21,11 +21,10 @@ import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/masks.dart';
 import 'package:goias_app/shared/validation/app_validators.dart';
 import 'package:goias_app/shared/validation/field_touch.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
-import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
+import 'package:goias_app/shared/widgets/state_message.dart';
 
 const _brazilianStates = [
   'Acre',
@@ -85,64 +84,55 @@ class _AddressView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.addressTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.addressTitle),
-                      const SizedBox(height: 6),
-                      Text(
-                        context.l10n.addressResidentialSubtitle,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: colors.textSecondary,
-                        ),
-                      ),
-                      const SizedBox(height: AppSpacing.lg),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: BlocBuilder<AddressCubit, AddressState>(
-                    buildWhen: (previous, current) =>
-                        previous.status != current.status,
-                    builder: (context, state) {
-                      return switch (state.status) {
-                        LoadStatus.initial || LoadStatus.loading =>
-                          const Center(child: GoiasLoadingIndicator()),
-                        LoadStatus.error => Center(
-                          child: StateMessage(
-                            icon: Icons.error_outline_rounded,
-                            title: context.l10n.addressLoadError,
-                            message: state.errorMessage,
-                          ),
-                        ),
-                        _ => _AddressForm(
-                          address: state.address ?? const UserAddress(),
-                        ),
-                      };
-                    },
-                  ),
-                ),
-              ],
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.form,
+        title: title,
+        heroTitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w900,
+                color: colors.textPrimary,
+              ),
             ),
+            const SizedBox(height: 6),
+            Text(
+              context.l10n.addressResidentialSubtitle,
+              style: TextStyle(fontSize: 13, color: colors.textSecondary),
+            ),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: BlocBuilder<AddressCubit, AddressState>(
+            buildWhen: (previous, current) => previous.status != current.status,
+            builder: (context, state) {
+              return switch (state.status) {
+                LoadStatus.initial || LoadStatus.loading => const SizedBox(
+                  height: 320,
+                  child: Center(child: GoiasLoadingIndicator()),
+                ),
+                LoadStatus.error => SizedBox(
+                  height: 320,
+                  child: Center(
+                    child: StateMessage(
+                      icon: Icons.error_outline_rounded,
+                      title: context.l10n.addressLoadError,
+                      message: state.errorMessage,
+                    ),
+                  ),
+                ),
+                _ => _AddressForm(
+                  address: state.address ?? const UserAddress(),
+                ),
+              };
+            },
           ),
         ),
       ),
@@ -334,13 +324,8 @@ class _AddressFormState extends State<_AddressForm> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.lg,
-        AppSpacing.sm,
-        AppSpacing.lg,
-        AppSpacing.xxxl,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         RegistrationTextField(
           label: context.l10n.addressFieldCep,

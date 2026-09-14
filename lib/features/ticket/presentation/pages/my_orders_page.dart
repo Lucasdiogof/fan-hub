@@ -14,12 +14,9 @@ import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
-import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 class MyOrdersPage extends StatelessWidget {
   const MyOrdersPage({super.key});
@@ -39,80 +36,70 @@ class _MyOrdersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.ticketsMyOrdersTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
+      body: BlocBuilder<MyOrdersCubit, MyOrdersState>(
+        builder: (context, state) {
+          return RefreshIndicator(
+            onRefresh: () => context.read<MyOrdersCubit>().load(),
+            color: colors.primary,
+            child: DetailPageHeader(
+              title: title,
+              onBack: () => context.canPop() ? context.pop() : context.go('/'),
+              heroTitle: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(
-                    onTap: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
+              body: Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xl),
+                child: switch (state.status) {
+                  LoadStatus.initial || LoadStatus.loading => const SizedBox(
+                    height: 320,
+                    child: Center(child: GoiasLoadingIndicator()),
                   ),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.ticketsMyOrdersTitle),
-                  const SizedBox(height: AppSpacing.xxxl),
-                  Expanded(
-                    child: BlocBuilder<MyOrdersCubit, MyOrdersState>(
-                      builder: (context, state) {
-                        return RefreshIndicator(
-                          onRefresh: () => context.read<MyOrdersCubit>().load(),
-                          color: colors.primary,
-                          child: switch (state.status) {
-                            LoadStatus.initial || LoadStatus.loading =>
-                              _centered(const GoiasLoadingIndicator()),
-                            LoadStatus.error => _centered(
-                              StateMessage(
-                                icon: Icons.wifi_off_rounded,
-                                title: context.l10n.ticketsMyOrdersLoadError,
-                                message: state.errorMessage,
-                              ),
-                            ),
-                            LoadStatus.empty => _centered(
-                              StateMessage(
-                                icon: Icons.receipt_long_outlined,
-                                title: context.l10n.ticketsMyOrdersEmpty,
-                                message:
-                                    context.l10n.ticketsMyOrdersEmptyMessage,
-                              ),
-                            ),
-                            LoadStatus.success => ListView.separated(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              padding: const EdgeInsets.only(
-                                bottom: AppSpacing.xxxl,
-                              ),
-                              itemCount: state.orders.length,
-                              separatorBuilder: (_, _) =>
-                                  const SizedBox(height: AppSpacing.md),
-                              itemBuilder: (context, index) =>
-                                  _OrderCard(order: state.orders[index]),
-                            ),
-                          },
-                        );
-                      },
+                  LoadStatus.error => SizedBox(
+                    height: 320,
+                    child: Center(
+                      child: StateMessage(
+                        icon: Icons.wifi_off_rounded,
+                        title: context.l10n.ticketsMyOrdersLoadError,
+                        message: state.errorMessage,
+                      ),
                     ),
                   ),
-                ],
+                  LoadStatus.empty => SizedBox(
+                    height: 320,
+                    child: Center(
+                      child: StateMessage(
+                        icon: Icons.receipt_long_outlined,
+                        title: context.l10n.ticketsMyOrdersEmpty,
+                        message: context.l10n.ticketsMyOrdersEmptyMessage,
+                      ),
+                    ),
+                  ),
+                  LoadStatus.success => Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      for (var i = 0; i < state.orders.length; i++) ...[
+                        if (i > 0) const SizedBox(height: AppSpacing.md),
+                        _OrderCard(order: state.orders[i]),
+                      ],
+                    ],
+                  ),
+                },
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 }
-
-Widget _centered(Widget child) => viewportCentered(child);
 
 class _OrderCard extends StatelessWidget {
   const _OrderCard({required this.order});

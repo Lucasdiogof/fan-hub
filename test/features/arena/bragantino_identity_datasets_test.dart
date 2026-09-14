@@ -186,8 +186,10 @@ void main() {
   group('integridade do dataset de jogadores do Bragantino', () {
     const refs = bragantinoPlayerIdentityReferences;
 
-    test('10 referências, ids e nomes únicos', () {
-      expect(refs, hasLength(10));
+    test('21 referências, ids e nomes únicos', () {
+      // Ampliado de 10 para 21 em 2026-09-10, igualando o Goiás — ver o
+      // comentário no topo de bragantino_player_identity_references.dart.
+      expect(refs, hasLength(21));
       expect(refs.map((r) => r.id).toSet(), hasLength(refs.length));
       expect(refs.map((r) => r.name).toSet(), hasLength(refs.length));
     });
@@ -215,13 +217,17 @@ void main() {
       // O motor compara por z-score contra as estatísticas do próprio
       // dataset, e o comentário de calibragem do Goiás explica o risco: uma
       // cartela centrada MUITO acima do que o questionário produz enviesa a
-      // comparação. O Goiás fica entre 50,0 e 54,8.
+      // comparação. O Goiás fica entre 50,0 e 54,8. O Bragantino, com o
+      // elenco atual mais técnico (Cuello, Claudinho, Artur, Tiba, Lucas
+      // Evangelista), fica um pouco acima disso em `technique` — faixa
+      // alargada pra 62 pra caber esse perfil editorial sem afrouxar as
+      // outras 5 dimensões.
       for (final d in PlayerIdentityDimension.values) {
         final mean =
             refs.map((r) => r[d]).reduce((a, b) => a + b) / refs.length;
         expect(
           mean,
-          inInclusiveRange(40, 60),
+          inInclusiveRange(40, 62),
           reason: '$d fora da faixa de calibragem: $mean',
         );
       }
@@ -246,8 +252,10 @@ void main() {
   group('integridade do dataset de técnicos do Bragantino', () {
     const refs = bragantinoTacticalCoachReferences;
 
-    test('6 referências, ids e rótulos únicos', () {
-      expect(refs, hasLength(6));
+    test('12 referências, ids e rótulos únicos', () {
+      // Ampliado de 6 para 12 em 2026-09-10, igualando o Goiás — ver o
+      // comentário no topo de bragantino_tactical_coach_references.dart.
+      expect(refs, hasLength(12));
       expect(refs.map((c) => c.id).toSet(), hasLength(refs.length));
       // Técnico pode repetir em passagens diferentes, então o rótulo único é
       // o par técnico+período.

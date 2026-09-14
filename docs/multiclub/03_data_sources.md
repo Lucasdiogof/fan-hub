@@ -13,7 +13,7 @@
 - **Sem fallback local.**
 
 ## Partidas históricas / Passaporte (`passport`)
-- **Fonte**: Supabase, tabela `passport_matches` — 1.697 linhas, importadas de um **JSON fornecido pelo usuário** (`tooling/passaporte_esmeraldino/source/passaporte_esmeraldino_partidas_2000_2026.json`, SHA-256 documentado), nunca scraping do próprio app. Cada linha carrega proveniência por partida (`source_provider`: RSSSF Brasil ou oGol, `source_url`, `source_confidence`).
+- **Fonte**: Supabase, tabela `passport_matches` — 1.697 linhas, importadas de um **JSON fornecido pelo usuário** (`tooling/esmeraldino_passport/source/esmeraldino_passport_matches_2000_2026.json`, SHA-256 documentado), nunca scraping do próprio app. Cada linha carrega proveniência por partida (`source_provider`: RSSSF Brasil ou oGol, `source_url`, `source_confidence`).
 - Estádios (`venues`, ~160 registros) foram enriquecidos numa migration posterior (31/08) — ver `06_database_audit.md §5` e `07_data_coverage.md` para os números de cobertura exatos.
 - Fluxo de escrita: nunca via INSERT direto do cliente — sempre por RPC (`passport_save_attendances`, validando `FINISHED`+não-futuro server-side).
 

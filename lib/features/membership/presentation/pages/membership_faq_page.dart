@@ -16,10 +16,9 @@ import 'package:goias_app/features/membership/presentation/widgets/faq_category_
 import 'package:goias_app/features/membership/presentation/widgets/faq_search_field.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Área de Sócio > Dúvidas Frequentes — conteúdo estruturado localmente
 /// (ver [MembershipFaqDataSource]), sem WebView e sem depender do site.
@@ -53,123 +52,119 @@ class _MembershipFaqView extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final cubit = context.read<MembershipFaqCubit>();
+    final title = context.l10n.membershipFaqTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(onTap: () => context.pop()),
-                  const SizedBox(height: AppSpacing.lg),
-                  Text(
-                    context.l10n.membershipFaqTitle,
-                    style: TextStyle(
-                      fontSize: 21,
-                      fontWeight: FontWeight.w900,
-                      color: colors.textPrimary,
-                      letterSpacing: 0.2,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    context.l10n.membershipFaqSubtitle,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: colors.textSecondary,
-                      height: 1.4,
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacing.xl),
-                  BlocBuilder<MembershipFaqCubit, MembershipFaqState>(
-                    buildWhen: (prev, curr) => prev.query != curr.query,
-                    builder: (context, state) => FaqSearchField(
-                      initialValue: state.query,
-                      onChanged: cubit.setQuery,
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacing.md),
-                  BlocBuilder<MembershipFaqCubit, MembershipFaqState>(
-                    buildWhen: (prev, curr) =>
-                        prev.categories != curr.categories ||
-                        prev.selectedCategoryId != curr.selectedCategoryId,
-                    builder: (context, state) => FaqCategorySelector(
-                      categories: state.categories,
-                      selectedCategoryId: state.selectedCategoryId,
-                      onSelected: cubit.selectCategory,
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacing.lg),
-                  Expanded(
-                    child: BlocBuilder<MembershipFaqCubit, MembershipFaqState>(
-                      builder: (context, state) {
-                        if (state.status == LoadStatus.initial ||
-                            state.status == LoadStatus.loading) {
-                          return const Center(child: GoiasLoadingIndicator());
-                        }
-                        if (state.status == LoadStatus.error) {
-                          return Center(
-                            child: StateMessage(
-                              icon: Icons.error_outline_rounded,
-                              title: context.l10n.membershipFaqLoadError,
-                              message: state.errorMessage,
-                            ),
-                          );
-                        }
-                        final filtered = filterFaqCategories(
-                          categories: state.categories,
-                          selectedCategoryId: state.selectedCategoryId,
-                          query: state.query,
-                        );
-                        if (filtered.isEmpty) {
-                          return const _FaqEmptyResult();
-                        }
-                        return ListView(
-                          padding: const EdgeInsets.only(
-                            bottom: AppSpacing.xxxl,
-                          ),
-                          children: [
-                            for (final category in filtered) ...[
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  bottom: AppSpacing.sm,
-                                ),
-                                child: Text(
-                                  category.title.toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w800,
-                                    color: colors.textHint,
-                                    letterSpacing: 0.6,
-                                  ),
-                                ),
-                              ),
-                              for (final item in category.items)
-                                FaqAccordionItem(
-                                  item: item,
-                                  expanded: state.expandedItemId == item.id,
-                                  onTap: () => cubit.toggleItem(item.id),
-                                ),
-                              const SizedBox(height: AppSpacing.md),
-                            ],
-                            const _FaqHelpFooter(),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                ],
+      body: DetailPageHeader(
+        title: title,
+        heroTitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w900,
+                color: colors.textPrimary,
               ),
             ),
+            const SizedBox(height: 6),
+            Text(
+              context.l10n.membershipFaqSubtitle,
+              style: TextStyle(
+                fontSize: 13,
+                color: colors.textSecondary,
+                height: 1.4,
+              ),
+            ),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              BlocBuilder<MembershipFaqCubit, MembershipFaqState>(
+                buildWhen: (prev, curr) => prev.query != curr.query,
+                builder: (context, state) => FaqSearchField(
+                  initialValue: state.query,
+                  onChanged: cubit.setQuery,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              BlocBuilder<MembershipFaqCubit, MembershipFaqState>(
+                buildWhen: (prev, curr) =>
+                    prev.categories != curr.categories ||
+                    prev.selectedCategoryId != curr.selectedCategoryId,
+                builder: (context, state) => FaqCategorySelector(
+                  categories: state.categories,
+                  selectedCategoryId: state.selectedCategoryId,
+                  onSelected: cubit.selectCategory,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              BlocBuilder<MembershipFaqCubit, MembershipFaqState>(
+                builder: (context, state) {
+                  if (state.status == LoadStatus.initial ||
+                      state.status == LoadStatus.loading) {
+                    return const SizedBox(
+                      height: 320,
+                      child: Center(child: GoiasLoadingIndicator()),
+                    );
+                  }
+                  if (state.status == LoadStatus.error) {
+                    return SizedBox(
+                      height: 320,
+                      child: Center(
+                        child: StateMessage(
+                          icon: Icons.error_outline_rounded,
+                          title: context.l10n.membershipFaqLoadError,
+                          message: state.errorMessage,
+                        ),
+                      ),
+                    );
+                  }
+                  final filtered = filterFaqCategories(
+                    categories: state.categories,
+                    selectedCategoryId: state.selectedCategoryId,
+                    query: state.query,
+                  );
+                  if (filtered.isEmpty) {
+                    return const _FaqEmptyResult();
+                  }
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      for (final category in filtered) ...[
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              category.title.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w800,
+                                color: colors.textHint,
+                                letterSpacing: 0.6,
+                              ),
+                            ),
+                          ),
+                        ),
+                        for (final item in category.items)
+                          FaqAccordionItem(
+                            item: item,
+                            expanded: state.expandedItemId == item.id,
+                            onTap: () => cubit.toggleItem(item.id),
+                          ),
+                        const SizedBox(height: AppSpacing.md),
+                      ],
+                      const _FaqHelpFooter(),
+                    ],
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

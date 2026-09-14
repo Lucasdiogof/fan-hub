@@ -16,10 +16,8 @@ import 'package:goias_app/features/passport/presentation/v1/widgets/passport_sav
 import 'package:goias_app/features/passport/presentation/v1/widgets/passport_summary_card_v1.dart';
 import 'package:goias_app/features/passport/presentation/v1/widgets/passport_year_selector_v1.dart';
 import 'package:goias_app/shared/state/load_status.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// Tela principal do Passaporte Esmeraldino — inspirada no Futbology, mas
@@ -53,112 +51,87 @@ class _PassportView extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: colors.background,
-        body: SafeArea(
-          child: Center(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.md,
-                      AppSpacing.lg,
-                      0,
-                    ),
-                    child: Row(
-                      children: [
-                        BackButtonCircle(
-                          onTap: () async {
-                            final hasChanges = context
-                                .read<PassportCubit>()
-                                .state
-                                .hasUnsavedChanges;
-                            if (!hasChanges) {
-                              context.pop();
-                              return;
-                            }
-                            if (await confirmDiscardPassportChanges(context) &&
-                                context.mounted) {
-                              context.pop();
-                            }
-                          },
-                        ),
-                        const Spacer(),
-                        Semantics(
-                          button: true,
-                          label: context.l10n.passportRankingCta,
-                          child: InkWell(
-                            onTap: () =>
-                                context.push('/arena/passport/ranking'),
-                            borderRadius: BorderRadius.circular(999),
-                            child: Container(
-                              width: 38,
-                              height: 38,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: colors.secondary,
-                                shape: BoxShape.circle,
-                              ),
-                              child: Icon(
-                                Icons.leaderboard_outlined,
-                                size: 18,
-                                color: colors.textPrimary,
-                              ),
+        body: BlocConsumer<PassportCubit, PassportState>(
+          listenWhen: (previous, current) =>
+              previous.saveStatus != current.saveStatus,
+          listener: (context, state) {
+            if (state.saveStatus == LoadStatus.success) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(context.l10n.passportSaveSuccess)),
+              );
+            } else if (state.saveStatus == LoadStatus.error &&
+                state.saveErrorMessage != null) {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(state.saveErrorMessage!)));
+            }
+          },
+          builder: (context, state) {
+            final title = context.passportCopy.title;
+            return Column(
+              children: [
+                Expanded(
+                  child: DetailPageHeader(
+                    title: title,
+                    onBack: () async {
+                      final hasChanges = context
+                          .read<PassportCubit>()
+                          .state
+                          .hasUnsavedChanges;
+                      if (!hasChanges) {
+                        context.pop();
+                        return;
+                      }
+                      if (await confirmDiscardPassportChanges(context) &&
+                          context.mounted) {
+                        context.pop();
+                      }
+                    },
+                    actions: [
+                      Semantics(
+                        button: true,
+                        label: context.l10n.passportRankingCta,
+                        child: InkWell(
+                          onTap: () => context.push('/arena/passport/ranking'),
+                          borderRadius: BorderRadius.circular(999),
+                          child: Container(
+                            width: 38,
+                            height: 38,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: colors.secondary,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.leaderboard_outlined,
+                              size: 18,
+                              color: colors.textPrimary,
                             ),
                           ),
                         ),
-                      ],
+                      ),
+                    ],
+                    heroTitle: Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w900,
+                        color: colors.textPrimary,
+                      ),
+                    ),
+                    body: Padding(
+                      padding: const EdgeInsets.only(top: AppSpacing.xl),
+                      child: _Body(state: state),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.sm,
-                      AppSpacing.lg,
-                      0,
-                    ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: PageTitle(context.passportCopy.title),
-                    ),
-                  ),
-                  Expanded(
-                    child: BlocConsumer<PassportCubit, PassportState>(
-                      listenWhen: (previous, current) =>
-                          previous.saveStatus != current.saveStatus,
-                      listener: (context, state) {
-                        if (state.saveStatus == LoadStatus.success) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(context.l10n.passportSaveSuccess),
-                            ),
-                          );
-                        } else if (state.saveStatus == LoadStatus.error &&
-                            state.saveErrorMessage != null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(state.saveErrorMessage!)),
-                          );
-                        }
-                      },
-                      builder: (context, state) {
-                        return Column(
-                          children: [
-                            Expanded(child: _Body(state: state)),
-                            PassportSaveBarV1(
-                              state: state,
-                              onSave: () =>
-                                  context.read<PassportCubit>().save(),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+                ),
+                PassportSaveBarV1(
+                  state: state,
+                  onSave: () => context.read<PassportCubit>().save(),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -174,35 +147,39 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     if (state.seasonsStatus == LoadStatus.loading ||
         state.seasonsStatus == LoadStatus.initial) {
-      return const Center(child: GoiasLoadingIndicator());
+      return const SizedBox(
+        height: 320,
+        child: Center(child: GoiasLoadingIndicator()),
+      );
     }
     if (state.seasonsStatus == LoadStatus.error) {
-      return _centered(
-        StateMessage(
-          icon: Icons.wifi_off_rounded,
-          title: context.l10n.passportLoadErrorTitle,
-          message: state.matchesErrorMessage,
-          actionLabel: context.l10n.commonRetry,
-          onAction: () => context.read<PassportCubit>().loadInitial(),
+      return SizedBox(
+        height: 320,
+        child: Center(
+          child: StateMessage(
+            icon: Icons.wifi_off_rounded,
+            title: context.l10n.passportLoadErrorTitle,
+            message: state.matchesErrorMessage,
+            actionLabel: context.l10n.commonRetry,
+            onAction: () => context.read<PassportCubit>().loadInitial(),
+          ),
         ),
       );
     }
     if (state.seasons.isEmpty) {
-      return _centered(
-        StateMessage(
-          icon: Icons.confirmation_number_outlined,
-          title: context.l10n.passportEmptyCatalogTitle,
+      return SizedBox(
+        height: 320,
+        child: Center(
+          child: StateMessage(
+            icon: Icons.confirmation_number_outlined,
+            title: context.l10n.passportEmptyCatalogTitle,
+          ),
         ),
       );
     }
 
-    return ListView(
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.lg,
-        AppSpacing.md,
-        AppSpacing.lg,
-        AppSpacing.lg,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         PassportSummaryCardV1(summary: state.summary),
         const SizedBox(height: AppSpacing.lg),
@@ -313,8 +290,4 @@ class _MatchList extends StatelessWidget {
       ],
     );
   }
-}
-
-Widget _centered(Widget child) {
-  return Center(child: child);
 }

@@ -1,0 +1,109 @@
+{
+  "source_page": "https://www.redbullbragantino.com/br-pt/parceiros",
+  "verified_on": "2026-09-10",
+  "count": 17,
+  "partners": [
+    {
+      "name": "PUMA",
+      "category": "Patrocinador Premium",
+      "slug": "puma",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/dfcsflqaf3nupklqk7za/puma"
+    },
+    {
+      "name": "ASAAS",
+      "category": "Patrocinador Premium",
+      "slug": "asaas",
+      "source_url": "https://img.redbullbragantino.com/images/2026/4/9/sttqoyvrxewigmndoxxy/asaas"
+    },
+    {
+      "name": "N&D",
+      "category": "Patrocinador Premium",
+      "slug": "nd",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/flm5lta2ql7lniqjsxd5/nd"
+    },
+    {
+      "name": "CURAPROX",
+      "category": "Patrocinador Premium",
+      "slug": "curaprox",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/cvawo7k4nqnd6wrajurj/curaprox"
+    },
+    {
+      "name": "KNN IDIOMAS",
+      "category": "Patrocinador Premium",
+      "slug": "knn-idiomas",
+      "source_url": "https://img.redbullbragantino.com/images/2026/8/25/qcxkkbhx3bz2dkfyygaf/knn-idiomas"
+    },
+    {
+      "name": "PELUSO SPERANDIO",
+      "category": "Patrocinador Regional",
+      "slug": "peluso-sperandio",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/b3blwskeo5ad98lxhiab/peluso-sperandio"
+    },
+    {
+      "name": "CONVÉM",
+      "category": "Patrocinador Regional",
+      "slug": "convem",
+      "source_url": "https://img.redbullbragantino.com/images/2026/7/22/bnmf27esnngescqkmlvd/convem-supermercados"
+    },
+    {
+      "name": "UNIMED",
+      "category": "Patrocinador Regional",
+      "slug": "unimed",
+      "source_url": "https://img.redbullbragantino.com/images/2026/3/30/lgzporikoavbq9pbe4vg/unimed"
+    },
+    {
+      "name": "UNIMAGEM",
+      "category": "Patrocinador Regional",
+      "slug": "unimagem",
+      "source_url": "https://img.redbullbragantino.com/images/2026/3/30/ygvizkcuntvlsk59p6t9/unimagem"
+    },
+    {
+      "name": "HUMANITARIAN",
+      "category": "Patrocinador Regional",
+      "slug": "humanitarian",
+      "source_url": "https://img.redbullbragantino.com/images/2026/3/30/spfw4zi4aqppc7cdqdy0/humanitarian"
+    },
+    {
+      "name": "LO SARDO",
+      "category": "Patrocinador Regional",
+      "slug": "lo-sardo",
+      "source_url": "https://img.redbullbragantino.com/images/2026/3/30/lrbcketb3okuz4rn2pli/lo-sardo"
+    },
+    {
+      "name": "COLÉGIO POPULUS",
+      "category": "Fornecedor Oficial",
+      "slug": "colegio-populus",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/adcn0uoz3xz3dd3kl3pn/colegio-populus"
+    },
+    {
+      "name": "ECOBIER",
+      "category": "Fornecedor Oficial",
+      "slug": "ecobier",
+      "source_url": "https://img.redbullbragantino.com/images/2026/3/19/ibpr9rgycnvofmrzgdta/ecobier-logo"
+    },
+    {
+      "name": "CPJÓIA",
+      "category": "Fornecedor Oficial",
+      "slug": "cpjoia",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/rssbn35q1kpdfm97t3gb/cpjoia"
+    },
+    {
+      "name": "CAMPUS.LIVE",
+      "category": "Fornecedor Oficial",
+      "slug": "campus-live",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/amwid1dfbyxbqwsj1qix/campus-live"
+    },
+    {
+      "name": "MEU INGLÊS SOB MEDIDA",
+      "category": "Fornecedor Oficial",
+      "slug": "meu-ingles-sob-medida",
+      "source_url": "https://img.redbullbragantino.com/images/2026/2/4/uhguugeltbzukv5vkc8z/meu-ingles-sob-medida"
+    },
+    {
+      "name": "TRENDX",
+      "category": "Fornecedor Oficial",
+      "slug": "trendx",
+      "source_url": "https://img.redbullbragantino.com/images/2026/7/22/rhtmhvkd2hjtuzdvhzat/logo-trendx"
+    }
+  ]
+}

@@ -11,11 +11,9 @@ import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_state.dart';
 import 'package:goias_app/features/passport/presentation/pages/passport_trajectory_page.dart';
 import 'package:goias_app/shared/state/load_status.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Mesma tela/Cubit/regra de pontuação da V1 — só a apresentação visual
 /// segue a linguagem V2.
@@ -37,124 +35,73 @@ class _PassportRankingViewV2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.passportRankingTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    AppSpacing.sm,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(
-                        context.l10n.passportRankingTitle.toUpperCase(),
+      body: BlocBuilder<PassportRankingCubit, PassportRankingState>(
+        builder: (context, state) {
+          return RefreshIndicator(
+            onRefresh: () => context.read<PassportRankingCubit>().refresh(),
+            color: colors.primary,
+            child: DetailPageHeader(
+              title: title,
+              heroTitle: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
+                ),
+              ),
+              body: Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xl),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _PeriodSelectorV2(state: state),
+                    const SizedBox(height: AppSpacing.lg),
+                    switch (state.status) {
+                      LoadStatus.initial || LoadStatus.loading => const Padding(
+                        padding: EdgeInsets.only(top: 60),
+                        child: Center(child: GoiasLoadingIndicator()),
                       ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: BlocBuilder<PassportRankingCubit, PassportRankingState>(
-                    builder: (context, state) {
-                      // Carregando: fora do ListView — um `Center` dentro de
-                      // um item de lista só centraliza no espaço daquele
-                      // item (o escudo ficava colado embaixo do seletor de
-                      // período, não no meio da tela).
-                      if (state.status == LoadStatus.initial ||
-                          state.status == LoadStatus.loading) {
-                        return Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            AppSpacing.lg,
-                            AppSpacing.sm,
-                            AppSpacing.lg,
-                            0,
+                      LoadStatus.error => Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Center(
+                          child: StateMessage(
+                            icon: Icons.wifi_off_rounded,
+                            title: context.l10n.passportLoadErrorTitle,
+                            message: state.errorMessage,
+                            actionLabel: context.l10n.commonRetry,
+                            onAction: () =>
+                                context.read<PassportRankingCubit>().refresh(),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _PeriodSelectorV2(state: state),
-                              const Expanded(
-                                child: Center(child: GoiasLoadingIndicator()),
-                              ),
-                            ],
-                          ),
-                        );
-                      }
-                      return RefreshIndicator(
-                        onRefresh: () =>
-                            context.read<PassportRankingCubit>().refresh(),
-                        color: colors.primary,
-                        child: ListView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          padding: const EdgeInsets.fromLTRB(
-                            AppSpacing.lg,
-                            AppSpacing.sm,
-                            AppSpacing.lg,
-                            AppSpacing.xxxl,
-                          ),
-                          children: [
-                            _PeriodSelectorV2(state: state),
-                            const SizedBox(height: AppSpacing.lg),
-                            switch (state.status) {
-                              // Inatingível aqui — tratado no `if` acima,
-                              // antes do ListView existir.
-                              LoadStatus.initial ||
-                              LoadStatus.loading => const SizedBox.shrink(),
-                              LoadStatus.error => Padding(
-                                padding: const EdgeInsets.only(top: 60),
-                                child: Center(
-                                  child: StateMessage(
-                                    icon: Icons.wifi_off_rounded,
-                                    title: context.l10n.passportLoadErrorTitle,
-                                    message: state.errorMessage,
-                                    actionLabel: context.l10n.commonRetry,
-                                    onAction: () => context
-                                        .read<PassportRankingCubit>()
-                                        .refresh(),
-                                  ),
-                                ),
-                              ),
-                              LoadStatus.empty => Padding(
-                                padding: const EdgeInsets.only(top: 60),
-                                child: Center(
-                                  child: StateMessage(
-                                    icon: Icons.leaderboard_outlined,
-                                    title:
-                                        context.l10n.passportRankingEmptyTitle,
-                                    message: context
-                                        .l10n
-                                        .passportRankingEmptyMessage,
-                                  ),
-                                ),
-                              ),
-                              LoadStatus.success => Column(
-                                children: [
-                                  for (final entry in state.entries)
-                                    _RankingRowV2(entry: entry),
-                                ],
-                              ),
-                            },
-                          ],
                         ),
-                      );
+                      ),
+                      LoadStatus.empty => Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Center(
+                          child: StateMessage(
+                            icon: Icons.leaderboard_outlined,
+                            title: context.l10n.passportRankingEmptyTitle,
+                            message: context.l10n.passportRankingEmptyMessage,
+                          ),
+                        ),
+                      ),
+                      LoadStatus.success => Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (final entry in state.entries)
+                            _RankingRowV2(entry: entry),
+                        ],
+                      ),
                     },
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

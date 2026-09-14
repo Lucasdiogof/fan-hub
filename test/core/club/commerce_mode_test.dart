@@ -30,15 +30,15 @@ void main() {
 
   group('CommerceMode — Bragantino', () {
     test(
-      'Membership/Tickets continuam false; Loja ligou em 2026-09-09 (catálogo real, ver bragantino_store) — sempre em demo, nenhum gateway real',
+      'Tickets continua false; Loja (2026-09-09) e Sócio Massa Bruta (2026-09-11) ligados — sempre em demo, nenhum gateway real',
       () {
         final capabilities = bragantinoClubConfig.capabilities;
-        expect(capabilities.hasMembership, isFalse);
+        expect(capabilities.hasMembership, isTrue);
         expect(capabilities.hasStore, isTrue);
         expect(capabilities.hasTickets, isFalse);
-        // O valor em si (demo) é só o default seguro — Membership/Tickets
-        // por ainda não terem feature nenhuma ligada, Loja por decisão de
-        // produto explícita (nunca checkout real com redbullshop.com.br).
+        // O valor em si (demo) é só o default seguro — Tickets por ainda
+        // não ter feature nenhuma ligada, Loja/Sócio por decisão de produto
+        // explícita (nunca checkout/gateway real).
         expect(capabilities.storeCommerceMode, CommerceMode.demo);
         expect(capabilities.ticketCommerceMode, CommerceMode.demo);
         expect(capabilities.membershipCommerceMode, CommerceMode.demo);

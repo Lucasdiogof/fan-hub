@@ -6,7 +6,7 @@ import 'package:goias_app/core/club/goias_club_config.dart';
 /// `ClubIdentity.code`. Onboarding M4: além do Goiás, o Red Bull Bragantino
 /// (config mínima, capabilities desligadas até haver dado real — ver
 /// [bragantinoClubConfig]). O clube sintético `club-b`/`clubb` foi removido.
-const clubRegistry = <String, ClubConfig>{
+final clubRegistry = <String, ClubConfig>{
   'goias': goiasClubConfig,
   'bragantino': bragantinoClubConfig,
 };

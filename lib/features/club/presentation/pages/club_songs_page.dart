@@ -7,9 +7,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
 import 'package:goias_app/features/club/presentation/widgets/club_section_label.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 /// Catálogo/listagem — sem áudio nenhum aqui. Tocar num card só navega
 /// pra `ClubSongDetailsPage`, que é quem toca a música (ver
@@ -27,68 +25,48 @@ class ClubSongsPage extends StatelessWidget {
     final songs = allSongs
         .where((s) => s.category == ClubSongCategory.fanChant)
         .toList();
+    final title = context.l10n.clubSectionSongs.toUpperCase();
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.clubSectionSongs.toUpperCase()),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.xl,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    children: [
-                      if (anthems.isNotEmpty) ...[
-                        ClubSectionLabel(context.l10n.clubAnthemSection),
-                        const SizedBox(height: AppSpacing.sm),
-                        for (var i = 0; i < anthems.length; i++) ...[
-                          if (i > 0) const SizedBox(height: AppSpacing.sm),
-                          _SongCard(song: anthems[i]),
-                        ],
-                      ],
-                      if (anthems.isNotEmpty && songs.isNotEmpty)
-                        const SizedBox(height: AppSpacing.xl),
-                      if (songs.isNotEmpty) ...[
-                        ClubSectionLabel(
-                          context.l10n.clubSongsSection(
-                            sl<ClubConfig>().identity.code,
-                            sl<ClubConfig>().identity.shortName.toUpperCase(),
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.sm),
-                        for (var i = 0; i < songs.length; i++) ...[
-                          if (i > 0) const SizedBox(height: AppSpacing.sm),
-                          _SongCard(song: songs[i]),
-                        ],
-                      ],
-                    ],
-                  ),
-                ),
+      body: DetailPageHeader(
+        title: title,
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (anthems.isNotEmpty) ...[
+                ClubSectionLabel(context.l10n.clubAnthemSection),
+                const SizedBox(height: AppSpacing.sm),
+                for (var i = 0; i < anthems.length; i++) ...[
+                  if (i > 0) const SizedBox(height: AppSpacing.sm),
+                  _SongCard(song: anthems[i]),
+                ],
               ],
-            ),
+              if (anthems.isNotEmpty && songs.isNotEmpty)
+                const SizedBox(height: AppSpacing.xl),
+              if (songs.isNotEmpty) ...[
+                ClubSectionLabel(
+                  context.l10n.clubSongsSection(
+                    sl<ClubConfig>().identity.code,
+                    sl<ClubConfig>().identity.shortName.toUpperCase(),
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.sm),
+                for (var i = 0; i < songs.length; i++) ...[
+                  if (i > 0) const SizedBox(height: AppSpacing.sm),
+                  _SongCard(song: songs[i]),
+                ],
+              ],
+            ],
           ),
         ),
       ),

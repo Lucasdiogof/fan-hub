@@ -45,7 +45,11 @@ void main() {
     );
     await tester.pumpWidget(wrap(document));
 
-    expect(find.text('TERMOS DE USO'), findsOneWidget);
+    // DetailPageHeader renderiza o título duas vezes por natureza: uma vez
+    // grande no heroTitle (sempre visível) e outra pequena na barra
+    // colapsada (presente na árvore mesmo com opacidade 0 até rolar) — ver
+    // outras páginas já migradas pro mesmo padrão.
+    expect(find.text('TERMOS DE USO'), findsNWidgets(2));
     for (final section in document.sections) {
       expect(find.text(section.title), findsOneWidget, reason: section.title);
     }
@@ -60,7 +64,7 @@ void main() {
     );
     await tester.pumpWidget(wrap(document));
 
-    expect(find.text('POLÍTICA DE PRIVACIDADE'), findsOneWidget);
+    expect(find.text('POLÍTICA DE PRIVACIDADE'), findsNWidgets(2));
     for (final section in document.sections) {
       expect(find.text(section.title), findsOneWidget, reason: section.title);
     }

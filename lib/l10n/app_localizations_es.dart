@@ -1929,6 +1929,18 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get partnersTierInstitutional => 'Institucional';
+
+  @override
+  String get partnersTierPremium => 'Patrocinadores Premium';
+
+  @override
+  String get partnersTierRegional => 'Patrocinadores Regionales';
+
+  @override
+  String get partnersTierOfficialSupplier => 'Proveedores Oficiales';
+
+  @override
   String get squadTitle => 'PLANTILLA';
 
   @override

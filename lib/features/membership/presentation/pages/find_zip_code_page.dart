@@ -13,9 +13,9 @@ import 'package:goias_app/features/membership/presentation/cubit/find_zip_code_s
 import 'package:goias_app/features/membership/presentation/widgets/registration_field.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_option_picker.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:goias_app/shared/widgets/state_message.dart';
 
 /// Busca reversa pelo ViaCEP (UF + cidade + logradouro) pra quem não sabe
 /// o próprio CEP — devolve o endereço escolhido pra Etapa de Endereço via
@@ -64,131 +64,108 @@ class _FindZipCodeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final cubit = context.read<FindZipCodeCubit>();
+    final title = context.l10n.membershipFindCepTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.form.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                AppSpacing.lg,
-              ),
-              child: BlocBuilder<FindZipCodeCubit, FindZipCodeState>(
-                builder: (context, state) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      Text(
-                        context.l10n.membershipFindCepTitle,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w900,
-                          color: colors.textPrimary,
-                        ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        context.l10n.membershipFindCepSubtitle,
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: colors.textSecondary,
-                          height: 1.4,
-                        ),
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            RegistrationPickerField(
-                              label: context.l10n.addressFieldState,
-                              isRequired: true,
-                              value: state.state,
-                              placeholder: context.l10n.addressSelectState,
-                              onTap: () => _pickState(context, cubit),
-                            ),
-                            const SizedBox(height: AppSpacing.lg),
-                            RegistrationPickerField(
-                              label: context.l10n.addressFieldCity,
-                              isRequired: true,
-                              value: state.city,
-                              placeholder:
-                                  state.citiesLoadStatus == LoadStatus.loading
-                                  ? context.l10n.membershipLoadingCities
-                                  : (state.state.isEmpty
-                                        ? context
-                                              .l10n
-                                              .membershipSelectStateFirst
-                                        : context.l10n.membershipSelectCity),
-                              onTap:
-                                  state.state.isEmpty ||
-                                      state.citiesLoadStatus ==
-                                          LoadStatus.loading
-                                  ? () {}
-                                  : () => _pickCity(
-                                      context,
-                                      cubit,
-                                      state.availableCities,
-                                    ),
-                            ),
-                            const SizedBox(height: AppSpacing.lg),
-                            RegistrationTextField(
-                              label: context.l10n.membershipStreetLabel,
-                              isRequired: true,
-                              value: state.street,
-                              textCapitalization: TextCapitalization.words,
-                              onChanged: cubit.updateStreet,
-                            ),
-                            const SizedBox(height: AppSpacing.xl),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                onPressed:
-                                    state.canSearch &&
-                                        state.status != LoadStatus.loading
-                                    ? cubit.search
-                                    : null,
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                      AppRadius.button,
-                                    ),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 15,
-                                  ),
-                                  textStyle: const TextStyle(
-                                    fontWeight: FontWeight.w800,
-                                    letterSpacing: 0.3,
-                                  ),
-                                ),
-                                child: state.status == LoadStatus.loading
-                                    ? SizedBox(
-                                        width: 18,
-                                        height: 18,
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 2,
-                                          color: colors.onPrimary,
-                                        ),
-                                      )
-                                    : Text(context.l10n.membershipSearchCep),
-                              ),
-                            ),
-                            const SizedBox(height: AppSpacing.xxl),
-                            _ResultsSection(state: state),
-                          ],
-                        ),
-                      ),
-                    ],
-                  );
-                },
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.form,
+        title: title,
+        heroTitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+                color: colors.textPrimary,
               ),
             ),
+            const SizedBox(height: 6),
+            Text(
+              context.l10n.membershipFindCepSubtitle,
+              style: TextStyle(
+                fontSize: 13,
+                color: colors.textSecondary,
+                height: 1.4,
+              ),
+            ),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: BlocBuilder<FindZipCodeCubit, FindZipCodeState>(
+            builder: (context, state) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  RegistrationPickerField(
+                    label: context.l10n.addressFieldState,
+                    isRequired: true,
+                    value: state.state,
+                    placeholder: context.l10n.addressSelectState,
+                    onTap: () => _pickState(context, cubit),
+                  ),
+                  const SizedBox(height: AppSpacing.lg),
+                  RegistrationPickerField(
+                    label: context.l10n.addressFieldCity,
+                    isRequired: true,
+                    value: state.city,
+                    placeholder: state.citiesLoadStatus == LoadStatus.loading
+                        ? context.l10n.membershipLoadingCities
+                        : (state.state.isEmpty
+                              ? context.l10n.membershipSelectStateFirst
+                              : context.l10n.membershipSelectCity),
+                    onTap:
+                        state.state.isEmpty ||
+                            state.citiesLoadStatus == LoadStatus.loading
+                        ? () {}
+                        : () =>
+                              _pickCity(context, cubit, state.availableCities),
+                  ),
+                  const SizedBox(height: AppSpacing.lg),
+                  RegistrationTextField(
+                    label: context.l10n.membershipStreetLabel,
+                    isRequired: true,
+                    value: state.street,
+                    textCapitalization: TextCapitalization.words,
+                    onChanged: cubit.updateStreet,
+                  ),
+                  const SizedBox(height: AppSpacing.xl),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed:
+                          state.canSearch && state.status != LoadStatus.loading
+                          ? cubit.search
+                          : null,
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(AppRadius.button),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        textStyle: const TextStyle(
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.3,
+                        ),
+                      ),
+                      child: state.status == LoadStatus.loading
+                          ? SizedBox(
+                              width: 18,
+                              height: 18,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                color: colors.onPrimary,
+                              ),
+                            )
+                          : Text(context.l10n.membershipSearchCep),
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.xxl),
+                  _ResultsSection(state: state),
+                ],
+              );
+            },
           ),
         ),
       ),
@@ -226,19 +203,25 @@ class _ResultsSection extends StatelessWidget {
           ],
         );
       case LoadStatus.empty:
-        return Center(
-          child: StateMessage(
-            icon: Icons.search_off_rounded,
-            title: context.l10n.membershipNoAddressFound,
-            message: context.l10n.membershipNoAddressHint,
+        return SizedBox(
+          height: 320,
+          child: Center(
+            child: StateMessage(
+              icon: Icons.search_off_rounded,
+              title: context.l10n.membershipNoAddressFound,
+              message: context.l10n.membershipNoAddressHint,
+            ),
           ),
         );
       case LoadStatus.error:
-        return Center(
-          child: StateMessage(
-            icon: Icons.error_outline_rounded,
-            title: context.l10n.membershipAddressSearchError,
-            message: state.errorMessage,
+        return SizedBox(
+          height: 320,
+          child: Center(
+            child: StateMessage(
+              icon: Icons.error_outline_rounded,
+              title: context.l10n.membershipAddressSearchError,
+              message: state.errorMessage,
+            ),
           ),
         );
       case LoadStatus.initial:

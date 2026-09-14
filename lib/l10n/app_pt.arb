@@ -1194,6 +1194,10 @@
       }
     }
   },
+  "partnersTierInstitutional": "Institucional",
+  "partnersTierPremium": "Patrocinadores Premium",
+  "partnersTierRegional": "Patrocinadores Regionais",
+  "partnersTierOfficialSupplier": "Fornecedores Oficiais",
   "squadTitle": "ELENCO",
   "squadLoadError": "Não foi possível carregar o elenco",
   "squadEmpty": "Elenco indisponível no momento",

@@ -249,7 +249,7 @@ const _bragantinoGuessPlayerPhotos = {
   'ytalo': 'lib/assets/games/guess_player/bragantino/ytalo.png',
 };
 
-const bragantinoClubConfig = ClubConfig(
+final bragantinoClubConfig = ClubConfig(
   identity: ClubIdentity(
     code: 'bragantino',
     slug: 'bragantino',

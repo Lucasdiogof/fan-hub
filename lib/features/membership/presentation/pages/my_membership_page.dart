@@ -10,9 +10,8 @@ import 'package:goias_app/features/membership/data/membership_contact_config.dar
 import 'package:goias_app/features/membership/domain/entities/membership.dart';
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/external_link_launcher.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class MyMembershipPage extends StatelessWidget {
   const MyMembershipPage({required this.membership, super.key});
@@ -22,173 +21,157 @@ class MyMembershipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.membershipMyMembership.toUpperCase();
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(onTap: () => context.pop()),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.membershipMyMembership.toUpperCase()),
-                  const SizedBox(height: AppSpacing.xxxl),
-                  Expanded(
-                    child: ListView(
-                      children: [
-                        _InfoCard(
-                          rows: [
-                            _InfoRow(
-                              context.l10n.membershipPlanLabel,
-                              membership.plan.name,
-                            ),
-                            if (membership.plan.sectorsLabel != null)
-                              _InfoRow(
-                                context.l10n.membershipSectorLabel,
-                                membership.plan.sectorsLabel!,
-                              ),
-                            _InfoRow(
-                              context.l10n.membershipSituation,
-                              _statusLabel(context.l10n, membership.status),
-                            ),
-                            if (membership.memberNumber != null)
-                              _InfoRow(
-                                context.l10n.membershipMemberNumber,
-                                membership.memberNumber!,
-                              ),
-                            _InfoRow(
-                              context.l10n.membershipMonthlyFee,
-                              '${formatBrl(membership.planPrice.monthlyPrice)}${context.l10n.membershipPerMonth}',
-                            ),
-                            _InfoRow(
-                              context.l10n.membershipAnnualFee,
-                              formatBrl(membership.planPrice.annualPrice),
-                            ),
-                            if (membership.startedAt != null)
-                              _InfoRow(
-                                context.l10n.membershipMemberSince,
-                                _formatDate(membership.startedAt!),
-                              ),
-                          ],
-                        ),
-                        const SizedBox(height: AppSpacing.xl),
-                        Text(
-                          context.l10n.membershipBenefits,
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w800,
-                            color: colors.textHint,
-                            letterSpacing: 0.6,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.md),
-                        Container(
-                          padding: const EdgeInsets.all(AppSpacing.lg),
-                          decoration: BoxDecoration(
-                            color: colors.surface,
-                            borderRadius: BorderRadius.circular(AppRadius.card),
-                            border: Border.all(color: colors.border),
-                          ),
-                          child: Column(
-                            children: [
-                              for (final benefit in membership.plan.benefits)
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    bottom: AppSpacing.md,
-                                  ),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Icon(
-                                        Icons.check_circle_rounded,
-                                        size: 17,
-                                        color: colors.primary,
-                                      ),
-                                      const SizedBox(width: AppSpacing.sm),
-                                      Expanded(
-                                        child: Text(
-                                          benefit,
-                                          style: TextStyle(
-                                            fontSize: 13,
-                                            height: 1.4,
-                                            color: colors.textPrimary,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.xl),
-                        _OptionRow(
-                          icon: Icons.gavel_rounded,
-                          label: context.l10n.membershipRegulationName(
-                            sl<ClubConfig>().productNames.membershipProgramName,
-                          ),
-                          onTap: () => context.push('/membership/regulation'),
-                        ),
-                        const SizedBox(height: AppSpacing.xxxl),
-                        SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton(
-                            onPressed: () => openExternalUrl(
-                              context,
-                              MembershipContactConfig.whatsappUrlWithMessage(
-                                context.l10n.membershipCancelWhatsapp(
-                                  membership.plan.name,
-                                  sl<ClubConfig>()
-                                      .productNames
-                                      .membershipProgramName,
-                                ),
-                              ),
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              foregroundColor: colors.error,
-                              side: BorderSide(color: colors.error),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  AppRadius.button,
-                                ),
-                              ),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
-                              textStyle: const TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 12.5,
-                                letterSpacing: 0.3,
-                              ),
-                            ),
-                            child: Text(context.l10n.membershipCancel),
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.sm),
-                        Text(
-                          context.l10n.membershipCancelInfo,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: colors.textHint,
-                            height: 1.3,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.xl),
-                      ],
-                    ),
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.detail,
+        title: title,
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _InfoCard(
+                rows: [
+                  _InfoRow(
+                    context.l10n.membershipPlanLabel,
+                    membership.plan.name,
                   ),
+                  if (membership.plan.sectorsLabel != null)
+                    _InfoRow(
+                      context.l10n.membershipSectorLabel,
+                      membership.plan.sectorsLabel!,
+                    ),
+                  _InfoRow(
+                    context.l10n.membershipSituation,
+                    _statusLabel(context.l10n, membership.status),
+                  ),
+                  if (membership.memberNumber != null)
+                    _InfoRow(
+                      context.l10n.membershipMemberNumber,
+                      membership.memberNumber!,
+                    ),
+                  _InfoRow(
+                    context.l10n.membershipMonthlyFee,
+                    '${formatBrl(membership.planPrice.monthlyPrice)}${context.l10n.membershipPerMonth}',
+                  ),
+                  _InfoRow(
+                    context.l10n.membershipAnnualFee,
+                    formatBrl(membership.planPrice.annualPrice),
+                  ),
+                  if (membership.startedAt != null)
+                    _InfoRow(
+                      context.l10n.membershipMemberSince,
+                      _formatDate(membership.startedAt!),
+                    ),
                 ],
               ),
-            ),
+              const SizedBox(height: AppSpacing.xl),
+              Text(
+                context.l10n.membershipBenefits,
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+                  color: colors.textHint,
+                  letterSpacing: 0.6,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+              Container(
+                padding: const EdgeInsets.all(AppSpacing.lg),
+                decoration: BoxDecoration(
+                  color: colors.surface,
+                  borderRadius: BorderRadius.circular(AppRadius.card),
+                  border: Border.all(color: colors.border),
+                ),
+                child: Column(
+                  children: [
+                    for (final benefit in membership.plan.benefits)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: AppSpacing.md),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.check_circle_rounded,
+                              size: 17,
+                              color: colors.primary,
+                            ),
+                            const SizedBox(width: AppSpacing.sm),
+                            Expanded(
+                              child: Text(
+                                benefit,
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  height: 1.4,
+                                  color: colors.textPrimary,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: AppSpacing.xl),
+              _OptionRow(
+                icon: Icons.gavel_rounded,
+                label: context.l10n.membershipRegulationName(
+                  sl<ClubConfig>().productNames.membershipProgramName,
+                ),
+                onTap: () => context.push('/membership/regulation'),
+              ),
+              const SizedBox(height: AppSpacing.xxxl),
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: () => openExternalUrl(
+                    context,
+                    MembershipContactConfig.whatsappUrlWithMessage(
+                      context.l10n.membershipCancelWhatsapp(
+                        membership.plan.name,
+                        sl<ClubConfig>().productNames.membershipProgramName,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: colors.error,
+                    side: BorderSide(color: colors.error),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(AppRadius.button),
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    textStyle: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 12.5,
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                  child: Text(context.l10n.membershipCancel),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              Text(
+                context.l10n.membershipCancelInfo,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 11,
+                  color: colors.textHint,
+                  height: 1.3,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.xl),
+            ],
           ),
         ),
       ),

@@ -3321,6 +3321,30 @@ abstract class AppLocalizations {
   /// **'Abrir site de {name}'**
   String partnersOpenWebsite(String name);
 
+  /// No description provided for @partnersTierInstitutional.
+  ///
+  /// In pt, this message translates to:
+  /// **'Institucional'**
+  String get partnersTierInstitutional;
+
+  /// No description provided for @partnersTierPremium.
+  ///
+  /// In pt, this message translates to:
+  /// **'Patrocinadores Premium'**
+  String get partnersTierPremium;
+
+  /// No description provided for @partnersTierRegional.
+  ///
+  /// In pt, this message translates to:
+  /// **'Patrocinadores Regionais'**
+  String get partnersTierRegional;
+
+  /// No description provided for @partnersTierOfficialSupplier.
+  ///
+  /// In pt, this message translates to:
+  /// **'Fornecedores Oficiais'**
+  String get partnersTierOfficialSupplier;
+
   /// No description provided for @squadTitle.
   ///
   /// In pt, this message translates to:

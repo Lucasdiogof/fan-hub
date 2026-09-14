@@ -20,10 +20,9 @@ import 'package:goias_app/shared/validation/field_touch.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/demo_disclaimer_banner.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/demo_disclaimer_banner.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PurchaseSummaryArgs {
@@ -143,218 +142,196 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
         _syncControllers(state);
         final match = state.event.match;
         final units = state.ticketUnits;
+        final title = context.l10n.ticketsSummaryTitle;
         return Scaffold(
           backgroundColor: colors.background,
-          body: SafeArea(
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: ContentWidth.detail.maxWidth,
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        AppSpacing.lg,
-                        AppSpacing.md,
-                        AppSpacing.lg,
-                        0,
-                      ),
-                      child: Row(
-                        children: [
-                          BackButtonCircle(
-                            onTap: () => context.canPop()
-                                ? context.pop()
-                                : context.go('/'),
-                          ),
-                          const SizedBox(width: AppSpacing.md),
-                          Expanded(
-                            child: PageTitle(context.l10n.ticketsSummaryTitle),
-                          ),
-                        ],
-                      ),
+          body: Column(
+            children: [
+              Expanded(
+                child: DetailPageHeader(
+                  maxWidth: ContentWidth.detail,
+                  title: title,
+                  onBack: () =>
+                      context.canPop() ? context.pop() : context.go('/'),
+                  heroTitle: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w900,
+                      color: colors.textPrimary,
                     ),
-                    Expanded(
-                      child: ListView(
-                        padding: const EdgeInsets.fromLTRB(
-                          AppSpacing.lg,
-                          AppSpacing.lg,
-                          AppSpacing.lg,
-                          AppSpacing.xxxl,
-                        ),
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(AppSpacing.lg),
-                            decoration: BoxDecoration(
-                              color: colors.surface,
-                              borderRadius: BorderRadius.circular(
-                                AppRadius.card,
+                  ),
+                  body: Padding(
+                    padding: const EdgeInsets.only(top: AppSpacing.xl),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(AppSpacing.lg),
+                          decoration: BoxDecoration(
+                            color: colors.surface,
+                            borderRadius: BorderRadius.circular(AppRadius.card),
+                            border: Border.all(color: colors.border),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}',
+                                style: TextStyle(
+                                  fontSize: 15.5,
+                                  fontWeight: FontWeight.w800,
+                                  color: colors.textPrimary,
+                                ),
                               ),
-                              border: Border.all(color: colors.border),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                              const SizedBox(height: 2),
+                              if (match.kickoff != null)
                                 Text(
-                                  '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}',
+                                  '${fullDateLabel(match.kickoff!)} às ${timeLabel(match.kickoff!)}',
                                   style: TextStyle(
-                                    fontSize: 15.5,
-                                    fontWeight: FontWeight.w800,
-                                    color: colors.textPrimary,
+                                    fontSize: 12.5,
+                                    color: colors.textSecondary,
                                   ),
                                 ),
-                                const SizedBox(height: 2),
-                                if (match.kickoff != null)
-                                  Text(
-                                    '${fullDateLabel(match.kickoff!)} às ${timeLabel(match.kickoff!)}',
-                                    style: TextStyle(
-                                      fontSize: 12.5,
-                                      color: colors.textSecondary,
-                                    ),
-                                  ),
-                                const SizedBox(height: AppSpacing.md),
-                                Container(height: 1, color: colors.border),
-                                const SizedBox(height: AppSpacing.md),
-                                for (final item in state.items) ...[
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '${item.sectorName} · ${item.gate}',
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w700,
-                                                color: colors.textPrimary,
-                                              ),
-                                            ),
-                                            Text(
-                                              '${item.categoryLabel} · ${item.quantity}x ${formatBrl(item.unitPrice)}',
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: colors.textSecondary,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Text(
-                                        formatBrl(item.subtotal),
-                                        style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w700,
-                                          color: colors.textPrimary,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: AppSpacing.sm),
-                                ],
-                                Container(height: 1, color: colors.border),
-                                const SizedBox(height: AppSpacing.sm),
+                              const SizedBox(height: AppSpacing.md),
+                              Container(height: 1, color: colors.border),
+                              const SizedBox(height: AppSpacing.md),
+                              for (final item in state.items) ...[
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${item.sectorName} · ${item.gate}',
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w700,
+                                              color: colors.textPrimary,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${item.categoryLabel} · ${item.quantity}x ${formatBrl(item.unitPrice)}',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: colors.textSecondary,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                     Text(
-                                      context.l10n.ticketsTotalLabel,
+                                      formatBrl(item.subtotal),
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 13,
                                         fontWeight: FontWeight.w700,
                                         color: colors.textPrimary,
                                       ),
                                     ),
-                                    Text(
-                                      formatBrl(state.total),
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w900,
-                                        color: colors.primary,
-                                      ),
-                                    ),
                                   ],
                                 ),
+                                const SizedBox(height: AppSpacing.sm),
                               ],
-                            ),
+                              Container(height: 1, color: colors.border),
+                              const SizedBox(height: AppSpacing.sm),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    context.l10n.ticketsTotalLabel,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                      color: colors.textPrimary,
+                                    ),
+                                  ),
+                                  Text(
+                                    formatBrl(state.total),
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w900,
+                                      color: colors.primary,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: AppSpacing.xl),
-                          Text(
-                            context.l10n.ticketsHolderDataTitle(
-                              state.holders.length,
-                            ),
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 1,
-                              color: colors.textHint,
-                            ),
+                        ),
+                        const SizedBox(height: AppSpacing.xl),
+                        Text(
+                          context.l10n.ticketsHolderDataTitle(
+                            state.holders.length,
                           ),
-                          const SizedBox(height: AppSpacing.md),
-                          for (var i = 0; i < units.length; i++) ...[
-                            if (i > 0) const SizedBox(height: AppSpacing.lg),
-                            _HolderSection(
-                              index: i,
-                              unit: units[i],
-                              holder: i < state.holders.length
-                                  ? state.holders[i]
-                                  : const TicketHolder(name: '', document: ''),
-                              nameController: _nameControllers[i],
-                              documentController: _documentControllers[i],
-                              nameTouch: _nameTouches[i],
-                              documentTouch: _documentTouches[i],
-                              profile: widget.profile,
-                            ),
-                          ],
-                          const SizedBox(height: AppSpacing.md),
-                          Text(
-                            context.l10n.ticketsNominalWarning,
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: colors.textHint,
-                            ),
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 1,
+                            color: colors.textHint,
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.md),
+                        for (var i = 0; i < units.length; i++) ...[
+                          if (i > 0) const SizedBox(height: AppSpacing.lg),
+                          _HolderSection(
+                            index: i,
+                            unit: units[i],
+                            holder: i < state.holders.length
+                                ? state.holders[i]
+                                : const TicketHolder(name: '', document: ''),
+                            nameController: _nameControllers[i],
+                            documentController: _documentControllers[i],
+                            nameTouch: _nameTouches[i],
+                            documentTouch: _documentTouches[i],
+                            profile: widget.profile,
                           ),
                         ],
-                      ),
+                        const SizedBox(height: AppSpacing.md),
+                        Text(
+                          context.l10n.ticketsNominalWarning,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: colors.textHint,
+                          ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        AppSpacing.lg,
-                        0,
-                        AppSpacing.lg,
-                        AppSpacing.lg,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg,
+                  0,
+                  AppSpacing.lg,
+                  AppSpacing.lg,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (sl<ClubConfig>().capabilities.ticketCommerceMode ==
+                        CommerceMode.demo) ...[
+                      DemoDisclaimerBanner(
+                        title: context.l10n.commonDemoBannerTitle,
+                        body: context.l10n.ticketsDemoDisclaimerBody,
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          if (sl<ClubConfig>()
-                                  .capabilities
-                                  .ticketCommerceMode ==
-                              CommerceMode.demo) ...[
-                            DemoDisclaimerBanner(
-                              title: context.l10n.commonDemoBannerTitle,
-                              body: context.l10n.ticketsDemoDisclaimerBody,
-                            ),
-                            const SizedBox(height: AppSpacing.md),
-                          ],
-                          AppPrimaryButton(
-                            label: context.l10n.ticketsFinalizePurchaseButton,
-                            loading: state.saving,
-                            onPressed: state.canFinalize
-                                ? () => context
-                                      .read<PurchaseCubit>()
-                                      .finalizePurchase()
-                                : null,
-                          ),
-                        ],
-                      ),
+                      const SizedBox(height: AppSpacing.md),
+                    ],
+                    AppPrimaryButton(
+                      label: context.l10n.ticketsFinalizePurchaseButton,
+                      loading: state.saving,
+                      onPressed: state.canFinalize
+                          ? () =>
+                                context.read<PurchaseCubit>().finalizePurchase()
+                          : null,
                     ),
                   ],
                 ),
               ),
-            ),
+            ],
           ),
         );
       },
