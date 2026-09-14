@@ -18,9 +18,9 @@ import 'package:goias_app/features/ticket/presentation/pages/purchase_summary_pa
 import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:goias_app/shared/widgets/global_loading.dart';
 
 /// Tela de compra — recebe o `PurchaseCubit` já construído (mesmo padrão de
 /// "cubit pronto antes de navegar" já usado na Arena, ver
@@ -79,138 +79,112 @@ class _PurchaseMatchView extends StatelessWidget {
         final goiasSectors = sectors.where((s) => !s.isVisitorSector).toList();
         final visitorSectors = sectors.where((s) => s.isVisitorSector).toList();
 
+        final title =
+            '${shortTeamName(match.homeTeam.name)} x ${shortTeamName(match.awayTeam.name)}';
         return Scaffold(
           backgroundColor: colors.background,
-          body: SafeArea(
-            child: Center(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxWidth: ContentWidth.wide.maxWidth,
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        AppSpacing.lg,
-                        AppSpacing.md,
-                        AppSpacing.lg,
-                        0,
+          body: Column(
+            children: [
+              Expanded(
+                child: DetailPageHeader(
+                  maxWidth: ContentWidth.wide,
+                  title: title,
+                  onBack: () =>
+                      context.canPop() ? context.pop() : context.go('/'),
+                  actions: [
+                    IconButton(
+                      onPressed: () => unawaited(_openMatchInfo(context)),
+                      icon: Icon(
+                        Icons.info_outline_rounded,
+                        color: colors.primary,
                       ),
-                      child: Row(
-                        children: [
-                          BackButtonCircle(
-                            onTap: () => context.canPop()
-                                ? context.pop()
-                                : context.go('/'),
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () => unawaited(_openMatchInfo(context)),
-                            icon: Icon(
-                              Icons.info_outline_rounded,
-                              color: colors.primary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.lg,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            match.competition.toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: 0.6,
-                              color: colors.textHint,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '${shortTeamName(match.homeTeam.name).toUpperCase()} x ${shortTeamName(match.awayTeam.name).toUpperCase()}',
-                            style: TextStyle(
-                              fontSize: 19,
-                              fontWeight: FontWeight.w900,
-                              color: colors.textPrimary,
-                            ),
-                          ),
-                          const SizedBox(height: 4),
-                          if (match.kickoff != null)
-                            Text(
-                              '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString()).toUpperCase()} · ${timeLabel(match.kickoff!)}',
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w700,
-                                color: colors.textSecondary,
-                              ),
-                            ),
-                          const SizedBox(height: 2),
-                          Text(
-                            match.stadium,
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: colors.textSecondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: AppSpacing.lg),
-                    Expanded(
-                      child: ListView(
-                        padding: const EdgeInsets.fromLTRB(
-                          AppSpacing.lg,
-                          0,
-                          AppSpacing.lg,
-                          AppSpacing.xxxl,
-                        ),
-                        children: [
-                          if (goiasSectors.isNotEmpty) ...[
-                            _GroupLabel(
-                              context.l10n.ticketsHomeCrowdLabel(
-                                sl<ClubConfig>().identity.code,
-                                sl<ClubConfig>().identity.shortName
-                                    .toUpperCase(),
-                              ),
-                            ),
-                            for (final sector in goiasSectors) ...[
-                              _SectorCard(sector: sector),
-                              const SizedBox(height: AppSpacing.md),
-                            ],
-                          ],
-                          if (visitorSectors.isNotEmpty) ...[
-                            const SizedBox(height: AppSpacing.sm),
-                            _GroupLabel(context.l10n.ticketsAwayCrowdLabel),
-                            for (final sector in visitorSectors) ...[
-                              _SectorCard(sector: sector),
-                              const SizedBox(height: AppSpacing.md),
-                            ],
-                          ],
-                        ],
-                      ),
-                    ),
-                    _BottomBar(
-                      total: state.total,
-                      quantity: state.totalQuantity,
-                      onContinue: state.canProceedToSummary
-                          ? () => context.push(
-                              '/tickets/purchase/summary',
-                              extra: PurchaseSummaryArgs(
-                                cubit: context.read<PurchaseCubit>(),
-                                profile: profile,
-                              ),
-                            )
-                          : null,
                     ),
                   ],
+                  heroTitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        match.competition.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.6,
+                          color: colors.textHint,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '${shortTeamName(match.homeTeam.name).toUpperCase()} x ${shortTeamName(match.awayTeam.name).toUpperCase()}',
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w900,
+                          color: colors.textPrimary,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      if (match.kickoff != null)
+                        Text(
+                          '${shortDateLabel(match.kickoff!, Localizations.localeOf(context).toString()).toUpperCase()} · ${timeLabel(match.kickoff!)}',
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            color: colors.textSecondary,
+                          ),
+                        ),
+                      const SizedBox(height: 2),
+                      Text(
+                        match.stadium,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: colors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  body: Padding(
+                    padding: const EdgeInsets.only(top: AppSpacing.lg),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (goiasSectors.isNotEmpty) ...[
+                          _GroupLabel(
+                            context.l10n.ticketsHomeCrowdLabel(
+                              sl<ClubConfig>().identity.code,
+                              sl<ClubConfig>().identity.shortName.toUpperCase(),
+                            ),
+                          ),
+                          for (final sector in goiasSectors) ...[
+                            _SectorCard(sector: sector),
+                            const SizedBox(height: AppSpacing.md),
+                          ],
+                        ],
+                        if (visitorSectors.isNotEmpty) ...[
+                          const SizedBox(height: AppSpacing.sm),
+                          _GroupLabel(context.l10n.ticketsAwayCrowdLabel),
+                          for (final sector in visitorSectors) ...[
+                            _SectorCard(sector: sector),
+                            const SizedBox(height: AppSpacing.md),
+                          ],
+                        ],
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
+              _BottomBar(
+                total: state.total,
+                quantity: state.totalQuantity,
+                onContinue: state.canProceedToSummary
+                    ? () => context.push(
+                        '/tickets/purchase/summary',
+                        extra: PurchaseSummaryArgs(
+                          cubit: context.read<PurchaseCubit>(),
+                          profile: profile,
+                        ),
+                      )
+                    : null,
+              ),
+            ],
           ),
         );
       },

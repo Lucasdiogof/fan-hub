@@ -9,12 +9,9 @@ import 'package:goias_app/features/club/domain/entities/club_board_section.dart'
 import 'package:goias_app/features/club/presentation/cubit/club_board_cubit.dart';
 import 'package:goias_app/features/club/presentation/cubit/club_board_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
-import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 /// Diretoria do clube — Supabase é a fonte da verdade (ver `club_board.sql`
 /// e `SupabaseClubBoardRepository`), então nome/cargo/seção atualizados lá
@@ -37,74 +34,61 @@ class _ClubDiretoriaView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.clubSectionBoard.toUpperCase();
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.clubSectionBoard.toUpperCase()),
-                    ],
-                  ),
+      body: BlocBuilder<ClubBoardCubit, ClubBoardState>(
+        builder: (context, state) {
+          return RefreshIndicator(
+            onRefresh: () => context.read<ClubBoardCubit>().refresh(),
+            color: colors.primary,
+            child: DetailPageHeader(
+              title: title,
+              heroTitle: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
                 ),
-                Expanded(
-                  child: BlocBuilder<ClubBoardCubit, ClubBoardState>(
-                    builder: (context, state) {
-                      return RefreshIndicator(
-                        onRefresh: () =>
-                            context.read<ClubBoardCubit>().refresh(),
-                        color: colors.primary,
-                        child: switch (state.status) {
-                          LoadStatus.initial || LoadStatus.loading => _centered(
-                            const GoiasLoadingIndicator(),
-                          ),
-                          LoadStatus.error => _centered(
-                            StateMessage(
-                              icon: Icons.wifi_off_rounded,
-                              title: context.l10n.clubBoardLoadErrorTitle,
-                              message: state.errorMessage,
-                            ),
-                          ),
-                          LoadStatus.empty => _centered(
-                            StateMessage(
-                              icon: Icons.groups_outlined,
-                              title: context.l10n.clubBoardEmptyTitle,
-                              message: context.l10n.clubBoardEmptyMessage,
-                            ),
-                          ),
-                          LoadStatus.success => _BoardList(
-                            sections: state.sections,
-                          ),
-                        },
-                      );
-                    },
+              ),
+              body: Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xl),
+                child: switch (state.status) {
+                  LoadStatus.initial || LoadStatus.loading => const SizedBox(
+                    height: 320,
+                    child: Center(child: GoiasLoadingIndicator()),
                   ),
-                ),
-              ],
+                  LoadStatus.error => SizedBox(
+                    height: 320,
+                    child: Center(
+                      child: StateMessage(
+                        icon: Icons.wifi_off_rounded,
+                        title: context.l10n.clubBoardLoadErrorTitle,
+                        message: state.errorMessage,
+                      ),
+                    ),
+                  ),
+                  LoadStatus.empty => SizedBox(
+                    height: 320,
+                    child: Center(
+                      child: StateMessage(
+                        icon: Icons.groups_outlined,
+                        title: context.l10n.clubBoardEmptyTitle,
+                        message: context.l10n.clubBoardEmptyMessage,
+                      ),
+                    ),
+                  ),
+                  LoadStatus.success => _BoardList(sections: state.sections),
+                },
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 }
-
-Widget _centered(Widget child) => viewportCentered(child);
 
 class _BoardList extends StatelessWidget {
   const _BoardList({required this.sections});
@@ -114,14 +98,8 @@ class _BoardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return ListView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      padding: const EdgeInsets.fromLTRB(
-        AppSpacing.lg,
-        AppSpacing.lg,
-        AppSpacing.lg,
-        AppSpacing.xxxl,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         for (final section in sections) ...[
           Text(
@@ -169,14 +147,14 @@ class _MemberRow extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _InitialsAvatar(name: member.name, photoUrl: member.photoUrl),
+          _InitialsAvatar(name: member.displayLabel, photoUrl: member.photoUrl),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  member.name,
+                  member.displayLabel,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w800,

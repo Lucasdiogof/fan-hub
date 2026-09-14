@@ -1938,6 +1938,18 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String get partnersTierInstitutional => 'Institucional';
+
+  @override
+  String get partnersTierPremium => 'Patrocinadores Premium';
+
+  @override
+  String get partnersTierRegional => 'Patrocinadores Regionais';
+
+  @override
+  String get partnersTierOfficialSupplier => 'Fornecedores Oficiais';
+
+  @override
   String get squadTitle => 'ELENCO';
 
   @override

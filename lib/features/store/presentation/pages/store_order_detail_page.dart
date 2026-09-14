@@ -12,9 +12,9 @@ import 'package:goias_app/features/store/domain/order_status_simulator.dart';
 import 'package:goias_app/features/store/presentation/order_status_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 import 'package:goias_app/shared/utils/masks.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/demo_tag.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class StoreOrderDetailPage extends StatelessWidget {
   const StoreOrderDetailPage({required this.order, super.key});
@@ -27,175 +27,143 @@ class StoreOrderDetailPage extends StatelessWidget {
     final l10n = context.l10n;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    AppSpacing.sm,
-                  ),
-                  child: Row(
-                    children: [
-                      BackButtonCircle(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                      ),
-                      const SizedBox(width: AppSpacing.md),
-                      Expanded(
-                        child: Text(
-                          order.id,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w900,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                      ),
-                      if (sl<ClubConfig>().capabilities.storeCommerceMode ==
-                          CommerceMode.demo) ...[
-                        const SizedBox(width: AppSpacing.sm),
-                        DemoTag(label: l10n.commonDemoTag),
-                      ],
-                    ],
-                  ),
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.detail,
+        title: order.id,
+        heroTitle: Row(
+          children: [
+            Expanded(
+              child: Text(
+                order.id,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
                 ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      0,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    children: [
-                      if (order.status == OrderStatus.cancelled)
-                        const _CancelledNotice()
-                      else
-                        _StatusTimeline(order: order),
-                      const SizedBox(height: AppSpacing.xl),
-                      _SectionCard(
-                        title: order.isPickup
-                            ? l10n.storePickupWord
-                            : l10n.storeStepDelivery,
-                        child: order.isPickup
-                            ? Text(
-                                l10n.storePickupAddressPrefix(
-                                  order.pickupInfo?.fullAddress ??
-                                      PickupInformation.forActiveClub()
-                                          .fullAddress,
-                                ),
-                                style: _valueStyle(context),
-                              )
-                            : Text(
-                                order.address?.oneLine ?? '—',
-                                style: _valueStyle(context),
-                              ),
+              ),
+            ),
+            if (sl<ClubConfig>().capabilities.storeCommerceMode ==
+                CommerceMode.demo) ...[
+              const SizedBox(width: AppSpacing.sm),
+              DemoTag(label: l10n.commonDemoTag),
+            ],
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              if (order.status == OrderStatus.cancelled)
+                const _CancelledNotice()
+              else
+                _StatusTimeline(order: order),
+              const SizedBox(height: AppSpacing.xl),
+              _SectionCard(
+                title: order.isPickup
+                    ? l10n.storePickupWord
+                    : l10n.storeStepDelivery,
+                child: order.isPickup
+                    ? Text(
+                        l10n.storePickupAddressPrefix(
+                          order.pickupInfo?.fullAddress ??
+                              PickupInformation.forActiveClub().fullAddress,
+                        ),
+                        style: _valueStyle(context),
+                      )
+                    : Text(
+                        order.address?.oneLine ?? '—',
+                        style: _valueStyle(context),
                       ),
-                      _SectionCard(
-                        title: l10n.storeCustomerLabel,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              _SectionCard(
+                title: l10n.storeCustomerLabel,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      order.identification.fullName,
+                      style: _valueStyle(context),
+                    ),
+                    Text(
+                      maskCpf(order.identification.cpf),
+                      style: _hintStyle(context),
+                    ),
+                    Text(
+                      maskEmail(order.identification.email),
+                      style: _hintStyle(context),
+                    ),
+                  ],
+                ),
+              ),
+              _SectionCard(
+                title: l10n.storeStepPayment,
+                child: Text(
+                  order.payment.method.name == 'pix'
+                      ? l10n.storePaymentPix
+                      : l10n.storeCardFinalDigits(
+                          order.payment.cardSummary?.lastFourDigits ?? '----',
+                        ),
+                  style: _valueStyle(context),
+                ),
+              ),
+              _SectionCard(
+                title: l10n.storeItemsCountLabel(order.itemCount),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final item in order.items)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                        child: Row(
                           children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                AppRadius.cardSmall,
+                              ),
+                              child: Image.asset(
+                                item.thumbnail,
+                                width: 44,
+                                height: 44,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            const SizedBox(width: AppSpacing.sm),
+                            Expanded(
+                              child: Text(
+                                '${item.quantity}x ${item.productName} (${item.size})',
+                                style: _hintStyle(context),
+                              ),
+                            ),
                             Text(
-                              order.identification.fullName,
+                              formatBrl(item.lineTotal),
                               style: _valueStyle(context),
                             ),
-                            Text(
-                              maskCpf(order.identification.cpf),
-                              style: _hintStyle(context),
-                            ),
-                            Text(
-                              maskEmail(order.identification.email),
-                              style: _hintStyle(context),
-                            ),
                           ],
                         ),
                       ),
-                      _SectionCard(
-                        title: l10n.storeStepPayment,
-                        child: Text(
-                          order.payment.method.name == 'pix'
-                              ? l10n.storePaymentPix
-                              : l10n.storeCardFinalDigits(
-                                  order.payment.cardSummary?.lastFourDigits ??
-                                      '----',
-                                ),
-                          style: _valueStyle(context),
-                        ),
+                    const Divider(height: AppSpacing.lg),
+                    _Row(l10n.storeSubtotal, formatBrl(order.subtotal)),
+                    if (order.discountAmount > 0)
+                      _Row(
+                        l10n.storeDiscountGeneric,
+                        '- ${formatBrl(order.discountAmount)}',
                       ),
-                      _SectionCard(
-                        title: l10n.storeItemsCountLabel(order.itemCount),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            for (final item in order.items)
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  bottom: AppSpacing.sm,
-                                ),
-                                child: Row(
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(
-                                        AppRadius.cardSmall,
-                                      ),
-                                      child: Image.asset(
-                                        item.thumbnail,
-                                        width: 44,
-                                        height: 44,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    const SizedBox(width: AppSpacing.sm),
-                                    Expanded(
-                                      child: Text(
-                                        '${item.quantity}x ${item.productName} (${item.size})',
-                                        style: _hintStyle(context),
-                                      ),
-                                    ),
-                                    Text(
-                                      formatBrl(item.lineTotal),
-                                      style: _valueStyle(context),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            const Divider(height: AppSpacing.lg),
-                            _Row(l10n.storeSubtotal, formatBrl(order.subtotal)),
-                            if (order.discountAmount > 0)
-                              _Row(
-                                l10n.storeDiscountGeneric,
-                                '- ${formatBrl(order.discountAmount)}',
-                              ),
-                            _Row(
-                              order.isPickup
-                                  ? l10n.storePickupWord
-                                  : l10n.storeShippingLabel,
-                              order.shippingCost <= 0
-                                  ? l10n.storeFree
-                                  : formatBrl(order.shippingCost),
-                            ),
-                            const Divider(height: AppSpacing.lg),
-                            _Row(
-                              l10n.storeTotal,
-                              formatBrl(order.total),
-                              bold: true,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    _Row(
+                      order.isPickup
+                          ? l10n.storePickupWord
+                          : l10n.storeShippingLabel,
+                      order.shippingCost <= 0
+                          ? l10n.storeFree
+                          : formatBrl(order.shippingCost),
+                    ),
+                    const Divider(height: AppSpacing.lg),
+                    _Row(l10n.storeTotal, formatBrl(order.total), bold: true),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -28,6 +28,7 @@ class DetailPageHeader extends StatefulWidget {
     this.onBack,
     this.actions,
     this.padding,
+    this.maxWidth = ContentWidth.wide,
     super.key,
   });
 
@@ -47,6 +48,12 @@ class DetailPageHeader extends StatefulWidget {
   /// Padding horizontal/inferior do conteúdo rolável — o espaço reservado
   /// pra barra no topo já é somado por dentro, não precisa incluir aqui.
   final EdgeInsetsGeometry? padding;
+
+  /// Largura máxima do conteúdo (rolável e da barra) — `wide` (1240) por
+  /// padrão, igual às 2 primeiras migrações. Telas de formulário (senha,
+  /// dados pessoais, endereço) devem passar `ContentWidth.form` (680),
+  /// senão o formulário esticaria até 1240px em tablet/web/desktop.
+  final ContentWidth maxWidth;
 
   @override
   State<DetailPageHeader> createState() => _DetailPageHeaderState();
@@ -105,9 +112,14 @@ class _DetailPageHeaderState extends State<DetailPageHeader> {
         Align(
           alignment: Alignment.topCenter,
           child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
+            constraints: BoxConstraints(maxWidth: widget.maxWidth.maxWidth),
             child: SingleChildScrollView(
               controller: _scrollController,
+              // Sempre "arrastável", mesmo com conteúdo mais curto que a
+              // viewport — necessário pra telas que envolvem isto num
+              // `RefreshIndicator` (ver `tickets_page.dart`) conseguirem
+              // detectar o gesto de puxar mesmo com poucos itens.
+              physics: const AlwaysScrollableScrollPhysics(),
               padding:
                   (widget.padding ??
                           const EdgeInsets.fromLTRB(
@@ -144,6 +156,7 @@ class _DetailPageHeaderState extends State<DetailPageHeader> {
             barHeight: _barHeight,
             topInset: topInset,
             colors: colors,
+            maxWidth: widget.maxWidth,
           ),
         ),
       ],
@@ -161,6 +174,7 @@ class _Bar extends StatelessWidget {
     required this.barHeight,
     required this.topInset,
     required this.colors,
+    required this.maxWidth,
   });
 
   final String title;
@@ -171,6 +185,7 @@ class _Bar extends StatelessWidget {
   final double barHeight;
   final double topInset;
   final AppColors colors;
+  final ContentWidth maxWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +210,7 @@ class _Bar extends StatelessWidget {
           child: Align(
             alignment: Alignment.topCenter,
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
+              constraints: BoxConstraints(maxWidth: maxWidth.maxWidth),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
                 child: Row(

@@ -7,7 +7,7 @@ sincronização de partidas recentes (hoje **não ativa**, ver seção
 
 ## 1. Fonte dos dados
 
-`source/passaporte_esmeraldino_partidas_2000_2026.json` — fornecido pelo
+`source/esmeraldino_passport_matches_2000_2026.json` — fornecido pelo
 usuário, nunca gerado por scraping deste app. Schema `1.0.0`, 1.697
 partidas (1.696 `FINISHED` + 1 `SCHEDULED` na data de corte).
 
@@ -51,7 +51,7 @@ seção RESUMO com `passport_matches = 1697`, nenhuma linha de `❌`.
 Se o JSON de origem mudar (nova versão, mais partidas), regenere o SQL:
 
 ```bash
-python tooling/passaporte_esmeraldino/generate_import_sql.py
+python tooling/esmeraldino_passport/generate_import_sql.py
 ```
 
 O script valida, nesta ordem, antes de escrever qualquer arquivo:

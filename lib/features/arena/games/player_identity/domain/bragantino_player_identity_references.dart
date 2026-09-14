@@ -145,17 +145,18 @@ const bragantinoPlayerIdentityReferences = <PlayerIdentityReference>[
     confidence: 'medium',
   ),
 
-  // 2019–2023: apoio constante pelo lado, volume defensivo e cruzamentos.
+  // 2019–2023: apoio constante pelo lado, cruzamentos e projeção ofensiva —
+  // mais avançado no campo que um volante de contenção puro (ver Jadsom).
   PlayerIdentityReference(
     id: 'aderlan',
     name: 'Aderlan',
     period: '2019–2023',
-    creativity: 59,
+    creativity: 64,
     definition: 20,
-    leadership: 59,
-    intensity: 74,
-    technique: 55,
-    tactics: 68,
+    leadership: 52,
+    intensity: 68,
+    technique: 58,
+    tactics: 60,
     confidence: 'high',
   ),
 
@@ -187,17 +188,19 @@ const bragantinoPlayerIdentityReferences = <PlayerIdentityReference>[
     confidence: 'high',
   ),
 
-  // 2021–2025: volante de recuperação, interceptação e proteção de espaço.
+  // 2021–2025: volante de recuperação, interceptação e proteção de espaço —
+  // perfil mais posicional/disciplinado que o de um lateral de apoio (ver
+  // Aderlan).
   PlayerIdentityReference(
     id: 'jadsom',
     name: 'Jadsom',
     period: '2021–2025',
-    creativity: 43,
+    creativity: 38,
     definition: 15,
-    leadership: 55,
-    intensity: 76,
-    technique: 54,
-    tactics: 72,
+    leadership: 62,
+    intensity: 80,
+    technique: 48,
+    tactics: 80,
     confidence: 'high',
   ),
 

@@ -10,11 +10,9 @@ import 'package:goias_app/features/passport/domain/entities/passport_summary.dar
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_cubit.dart';
 import 'package:goias_app/features/passport/presentation/cubit/passport_ranking_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 /// Ranking do Passaporte — totalmente separado do ranking da Arena, própria
 /// tela, próprio Cubit, própria pontuação (1 partida marcada = 1 ponto).
@@ -36,104 +34,73 @@ class _PassportRankingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.passportRankingTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.passportRankingTitle),
-                    ],
-                  ),
+      body: BlocBuilder<PassportRankingCubit, PassportRankingState>(
+        builder: (context, state) {
+          return RefreshIndicator(
+            onRefresh: () => context.read<PassportRankingCubit>().refresh(),
+            color: colors.primary,
+            child: DetailPageHeader(
+              title: title,
+              heroTitle: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
                 ),
-                Expanded(
-                  child:
-                      BlocBuilder<PassportRankingCubit, PassportRankingState>(
-                        builder: (context, state) {
-                          return RefreshIndicator(
-                            onRefresh: () =>
-                                context.read<PassportRankingCubit>().refresh(),
-                            color: colors.primary,
-                            child: ListView(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              padding: const EdgeInsets.fromLTRB(
-                                AppSpacing.lg,
-                                AppSpacing.md,
-                                AppSpacing.lg,
-                                AppSpacing.xxxl,
-                              ),
-                              children: [
-                                _PeriodSelector(state: state),
-                                const SizedBox(height: AppSpacing.lg),
-                                switch (state.status) {
-                                  LoadStatus.initial ||
-                                  LoadStatus.loading => const Padding(
-                                    padding: EdgeInsets.only(top: 60),
-                                    child: Center(
-                                      child: GoiasLoadingIndicator(),
-                                    ),
-                                  ),
-                                  LoadStatus.error => Padding(
-                                    padding: const EdgeInsets.only(top: 60),
-                                    child: Center(
-                                      child: StateMessage(
-                                        icon: Icons.wifi_off_rounded,
-                                        title:
-                                            context.l10n.passportLoadErrorTitle,
-                                        message: state.errorMessage,
-                                        actionLabel: context.l10n.commonRetry,
-                                        onAction: () => context
-                                            .read<PassportRankingCubit>()
-                                            .refresh(),
-                                      ),
-                                    ),
-                                  ),
-                                  LoadStatus.empty => Padding(
-                                    padding: const EdgeInsets.only(top: 60),
-                                    child: Center(
-                                      child: StateMessage(
-                                        icon: Icons.leaderboard_outlined,
-                                        title: context
-                                            .l10n
-                                            .passportRankingEmptyTitle,
-                                        message: context
-                                            .l10n
-                                            .passportRankingEmptyMessage,
-                                      ),
-                                    ),
-                                  ),
-                                  LoadStatus.success => Column(
-                                    children: [
-                                      for (final entry in state.entries)
-                                        _RankingRow(entry: entry),
-                                    ],
-                                  ),
-                                },
-                              ],
-                            ),
-                          );
-                        },
+              ),
+              body: Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xl),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _PeriodSelector(state: state),
+                    const SizedBox(height: AppSpacing.lg),
+                    switch (state.status) {
+                      LoadStatus.initial || LoadStatus.loading => const Padding(
+                        padding: EdgeInsets.only(top: 60),
+                        child: Center(child: GoiasLoadingIndicator()),
                       ),
+                      LoadStatus.error => Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Center(
+                          child: StateMessage(
+                            icon: Icons.wifi_off_rounded,
+                            title: context.l10n.passportLoadErrorTitle,
+                            message: state.errorMessage,
+                            actionLabel: context.l10n.commonRetry,
+                            onAction: () =>
+                                context.read<PassportRankingCubit>().refresh(),
+                          ),
+                        ),
+                      ),
+                      LoadStatus.empty => Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Center(
+                          child: StateMessage(
+                            icon: Icons.leaderboard_outlined,
+                            title: context.l10n.passportRankingEmptyTitle,
+                            message: context.l10n.passportRankingEmptyMessage,
+                          ),
+                        ),
+                      ),
+                      LoadStatus.success => Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          for (final entry in state.entries)
+                            _RankingRow(entry: entry),
+                        ],
+                      ),
+                    },
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

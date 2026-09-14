@@ -10,6 +10,7 @@ import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
@@ -22,6 +23,7 @@ import 'package:goias_app/features/club/data/club_songs_data.dart';
 import 'package:goias_app/features/club/data/club_timeline_data.dart';
 import 'package:goias_app/features/club/data/club_titles_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_song.dart';
+import 'package:goias_app/features/membership/domain/entities/regulation_version.dart';
 import 'package:goias_app/features/club/presentation/pages/club_history_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_songs_page.dart';
 import 'package:goias_app/features/club/presentation/pages/club_titles_page.dart';
@@ -35,7 +37,7 @@ import 'synthetic_passport_content.dart';
 /// `ClubConfig` (`const ClubInstitutionalContent()`, tudo vazio). Existe só
 /// pra provar que "sem conteúdo" nunca herda o do Goiás por omissão, sem
 /// depender de nenhum dos clubes reais do registry.
-const _emptyContentConfig = ClubConfig(
+final _emptyContentConfig = ClubConfig(
   identity: ClubIdentity(
     code: 'synthetic-empty',
     slug: 'synthetic-empty',
@@ -106,6 +108,19 @@ const _emptyContentConfig = ClubConfig(
     membershipProgramName: 'Sócio',
   ),
   passportContent: syntheticPassportContent,
+  membershipProgram: MembershipProgramConfig(
+    plans: const [],
+    regulationVersion: RegulationVersion(
+      id: 'synthetic',
+      version: 'synthetic',
+      effectiveAt: DateTime(2000),
+      assetPath: 'lib/assets/legal/synthetic.md',
+    ),
+    regulationIntro: '',
+    regulationSections: const [],
+    sourceLabel: '',
+    sourceUpdatedAt: DateTime(2000),
+  ),
   // Nenhum `institutionalContent:` passado — usa o default vazio de
   // `ClubConfig`, de propósito.
 );

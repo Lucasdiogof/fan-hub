@@ -162,10 +162,13 @@ void main() {
     );
 
     test(
-      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social, os 2 jogos de identidade desde 2026-09-08, e a Loja desde 2026-09-09)',
+      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social, os 2 jogos de identidade desde 2026-09-08, a Loja desde 2026-09-09 e o Sócio Massa Bruta desde 2026-09-11)',
       () {
         final c = bragantinoClubConfig.capabilities;
-        expect(c.hasMembership, isFalse);
+        // Sócio Massa Bruta: planos reais (Bronze/Prata/Ouro/Platina),
+        // regulamento próprio, ligado em 2026-09-11 — ver
+        // MembershipProgramConfig em bragantino_club_config.dart.
+        expect(c.hasMembership, isTrue);
         // Loja: catálogo REAL coletado da Red Bull Shop (143 produtos, 497
         // SKUs, isolado por ClubAssets.storeCatalogAssetPath), ligada em
         // 2026-09-09 — ver tooling/bragantino_store/.

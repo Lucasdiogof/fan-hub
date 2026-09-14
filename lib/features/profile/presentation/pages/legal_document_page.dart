@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/profile/domain/entities/legal_document.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class LegalDocumentPage extends StatelessWidget {
   const LegalDocumentPage({required this.document, super.key});
@@ -17,66 +15,46 @@ class LegalDocumentPage extends StatelessWidget {
     final colors = context.colors;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(document.title),
-                    ],
+      body: DetailPageHeader(
+        maxWidth: ContentWidth.detail,
+        title: document.title,
+        heroTitle: Text(
+          document.title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                document.lastUpdated,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
+                  color: colors.textHint,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              _Paragraphs(text: document.intro, colors: colors),
+              for (final section in document.sections) ...[
+                const SizedBox(height: AppSpacing.xl),
+                Text(
+                  section.title,
+                  style: TextStyle(
+                    fontSize: 15.5,
+                    fontWeight: FontWeight.w800,
+                    color: colors.textPrimary,
                   ),
                 ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.xl,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    children: [
-                      Text(
-                        document.lastUpdated,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          color: colors.textHint,
-                        ),
-                      ),
-                      const SizedBox(height: AppSpacing.lg),
-                      _Paragraphs(text: document.intro, colors: colors),
-                      for (final section in document.sections) ...[
-                        const SizedBox(height: AppSpacing.xl),
-                        Text(
-                          section.title,
-                          style: TextStyle(
-                            fontSize: 15.5,
-                            fontWeight: FontWeight.w800,
-                            color: colors.textPrimary,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.sm),
-                        _Paragraphs(text: section.body, colors: colors),
-                      ],
-                    ],
-                  ),
-                ),
+                const SizedBox(height: AppSpacing.sm),
+                _Paragraphs(text: section.body, colors: colors),
               ],
-            ),
+            ],
           ),
         ),
       ),

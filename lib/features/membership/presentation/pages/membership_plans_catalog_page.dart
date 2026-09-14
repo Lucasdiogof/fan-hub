@@ -5,9 +5,7 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 /// "Conhecer outros planos" a partir da experiência de quem já é sócio —
 /// lista completa, sem competir com o plano atual.
@@ -42,64 +40,50 @@ class _MembershipPlansCatalogPageState
     final colors = context.colors;
     final program = sl<ClubConfig>().membershipProgram;
     final plans = program.plans;
+    final title = context.l10n.membershipPlansTitle;
     return PopScope(
       canPop: !_opening,
       child: Scaffold(
         backgroundColor: colors.background,
-        body: SafeArea(
-          child: Center(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg,
-                  AppSpacing.md,
-                  AppSpacing.lg,
-                  0,
+        body: DetailPageHeader(
+          title: title,
+          onBack: _opening ? () {} : null,
+          heroTitle: Text(
+            title,
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w900,
+              color: colors.textPrimary,
+            ),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.only(top: AppSpacing.xl),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (var i = 0; i < plans.length; i++) ...[
+                  if (i > 0) const SizedBox(height: AppSpacing.md),
+                  _PlanRow(
+                    name: plans[i].name,
+                    sector: plans[i].sectorsLabel,
+                    onTap: _opening ? null : () => _openPlan(plans[i].id),
+                  ),
+                ],
+                const SizedBox(height: AppSpacing.lg),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
+                  child: Text(
+                    // Section 5 do pedido M4 Massa Bruta: nunca esconder a
+                    // origem dos dados de plano nem deixar preço
+                    // desatualizado sem ninguém saber há quanto tempo —
+                    // rodapé discreto, por clube via `ClubConfig`, nunca
+                    // hardcoded pra um clube só.
+                    '${program.sourceLabel} Atualizado em '
+                    '${_formatShortDate(program.sourceUpdatedAt)}.',
+                    style: TextStyle(fontSize: 10.5, color: colors.textHint),
+                  ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BackButtonCircle(
-                      onTap: _opening ? () {} : () => context.pop(),
-                    ),
-                    const SizedBox(height: AppSpacing.lg),
-                    PageTitle(context.l10n.membershipPlansTitle),
-                    const SizedBox(height: AppSpacing.xl),
-                    Expanded(
-                      child: ListView.separated(
-                        itemCount: plans.length,
-                        separatorBuilder: (_, _) =>
-                            const SizedBox(height: AppSpacing.md),
-                        itemBuilder: (context, index) {
-                          final plan = plans[index];
-                          return _PlanRow(
-                            name: plan.name,
-                            sector: plan.sectorsLabel,
-                            onTap: _opening ? null : () => _openPlan(plan.id),
-                          );
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: AppSpacing.sm),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: AppSpacing.sm,
-                      ),
-                      child: Text(
-                        // Section 5 do pedido M4 Massa Bruta: nunca esconder a
-                        // origem dos dados de plano nem deixar preço
-                        // desatualizado sem ninguém saber há quanto tempo —
-                        // rodapé discreto, por clube via `ClubConfig`, nunca
-                        // hardcoded pra um clube só.
-                        '${program.sourceLabel} Atualizado em '
-                        '${_formatShortDate(program.sourceUpdatedAt)}.',
-                        style: TextStyle(fontSize: 10.5, color: colors.textHint),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              ],
             ),
           ),
         ),

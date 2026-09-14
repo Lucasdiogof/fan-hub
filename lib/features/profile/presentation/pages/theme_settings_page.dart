@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/core/theme/theme_cubit.dart';
 import 'package:goias_app/core/theme/theme_mode_label.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class ThemeSettingsPage extends StatelessWidget {
   const ThemeSettingsPage({super.key});
@@ -16,61 +13,37 @@ class ThemeSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.settingsThemeTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                      ),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.settingsThemeTitle),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: BlocBuilder<ThemeCubit, ThemeMode>(
-                    builder: (context, mode) {
-                      return ListView(
-                        padding: const EdgeInsets.fromLTRB(
-                          AppSpacing.lg,
-                          AppSpacing.xxl,
-                          AppSpacing.lg,
-                          AppSpacing.xxxl,
-                        ),
-                        children: [
-                          for (final option in ThemeMode.values) ...[
-                            _ThemeOptionTile(
-                              mode: option,
-                              selected: mode == option,
-                              onTap: () =>
-                                  context.read<ThemeCubit>().setMode(option),
-                            ),
-                            const SizedBox(height: AppSpacing.sm),
-                          ],
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+      body: DetailPageHeader(
+        title: title,
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, mode) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (final option in ThemeMode.values) ...[
+                    _ThemeOptionTile(
+                      mode: option,
+                      selected: mode == option,
+                      onTap: () => context.read<ThemeCubit>().setMode(option),
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                  ],
+                ],
+              );
+            },
           ),
         ),
       ),

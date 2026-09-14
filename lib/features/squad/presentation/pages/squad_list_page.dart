@@ -11,12 +11,9 @@ import 'package:goias_app/features/squad/domain/squad_member.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_cubit.dart';
 import 'package:goias_app/features/squad/presentation/cubit/squad_state.dart';
 import 'package:goias_app/shared/state/load_status.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
-import 'package:goias_app/shared/widgets/viewport_centered.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` em `profile_page.dart`) — a tela
@@ -49,89 +46,75 @@ class _SquadListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.squadTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
+      body: BlocBuilder<SquadCubit, SquadState>(
+        builder: (context, state) {
+          return RefreshIndicator(
+            onRefresh: () => context.read<SquadCubit>().refresh(),
+            color: colors.primary,
+            child: DetailPageHeader(
+              title: title,
+              onBack: () => context.canPop() ? context.pop() : context.go('/'),
+              heroTitle: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(
-                    onTap: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
+              body: Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xl),
+                child: switch (state.status) {
+                  LoadStatus.initial || LoadStatus.loading => const SizedBox(
+                    height: 320,
+                    child: Center(child: GoiasLoadingIndicator()),
                   ),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.squadTitle),
-                  const SizedBox(height: AppSpacing.xxxl),
-                  Expanded(
-                    child: BlocBuilder<SquadCubit, SquadState>(
-                      builder: (context, state) {
-                        return RefreshIndicator(
-                          onRefresh: () => context.read<SquadCubit>().refresh(),
-                          color: colors.primary,
-                          child: switch (state.status) {
-                            LoadStatus.initial || LoadStatus.loading =>
-                              _centered(const GoiasLoadingIndicator()),
-                            LoadStatus.error => _centered(
-                              StateMessage(
-                                icon: Icons.wifi_off_rounded,
-                                title: context.l10n.squadLoadError,
-                                message: state.errorMessage,
-                              ),
-                            ),
-                            LoadStatus.empty => _centered(
-                              StateMessage(
-                                icon: Icons.groups_outlined,
-                                title: context.l10n.squadEmpty,
-                              ),
-                            ),
-                            LoadStatus.success => ListView(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              padding: const EdgeInsets.only(
-                                bottom: AppSpacing.xxxl,
-                              ),
-                              children: [
-                                for (final group in positionGroupOrder)
-                                  _PositionGroupSection(
-                                    title: positionGroupLabel(
-                                      group,
-                                      context.l10n,
-                                    ),
-                                    members: state.members
-                                        .where(
-                                          (member) =>
-                                              member.positionGroup == group &&
-                                              _hasResolvablePhoto(member),
-                                        )
-                                        .toList(growable: false),
-                                  ),
-                              ],
-                            ),
-                          },
-                        );
-                      },
+                  LoadStatus.error => SizedBox(
+                    height: 320,
+                    child: Center(
+                      child: StateMessage(
+                        icon: Icons.wifi_off_rounded,
+                        title: context.l10n.squadLoadError,
+                        message: state.errorMessage,
+                      ),
                     ),
                   ),
-                ],
+                  LoadStatus.empty => SizedBox(
+                    height: 320,
+                    child: Center(
+                      child: StateMessage(
+                        icon: Icons.groups_outlined,
+                        title: context.l10n.squadEmpty,
+                      ),
+                    ),
+                  ),
+                  LoadStatus.success => Column(
+                    children: [
+                      for (final group in positionGroupOrder)
+                        _PositionGroupSection(
+                          title: positionGroupLabel(group, context.l10n),
+                          members: state.members
+                              .where(
+                                (member) =>
+                                    member.positionGroup == group &&
+                                    _hasResolvablePhoto(member),
+                              )
+                              .toList(growable: false),
+                        ),
+                    ],
+                  ),
+                },
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
 }
-
-Widget _centered(Widget child) => viewportCentered(child);
 
 /// Atleta sem foto (nem local do clube ativo, nem `photoUrl` do banco)
 /// some da lista — decisão do usuário: "como se o cara não fosse

@@ -21,12 +21,11 @@ import 'package:goias_app/features/ticket/presentation/widgets/sector_picker_she
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
+import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
 
 class TicketsPage extends StatelessWidget {
   const TicketsPage({super.key});
@@ -143,10 +142,8 @@ class _TicketsView extends StatelessWidget {
         : currentSector.first.id;
     final sectorId = await AppModalSheet.show<String>(
       context,
-      builder: (_) => SectorPickerSheet(
-        sectors: sectors,
-        initialSectorId: currentSectorId,
-      ),
+      builder: (_) =>
+          SectorPickerSheet(sectors: sectors, initialSectorId: currentSectorId),
     );
     if (sectorId == null || !context.mounted) return;
     final profileResult = await GlobalLoading.run(
@@ -195,109 +192,95 @@ class _TicketsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.homeTickets;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.detail.maxWidth),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
+      body: BlocBuilder<TicketsCubit, TicketsState>(
+        builder: (context, state) {
+          // `RefreshIndicator` precisa envolver o `DetailPageHeader` inteiro
+          // (não só o body) pra enxergar o `SingleChildScrollView` interno
+          // dele como descendente — colocado por dentro do body, o gesto de
+          // puxar nunca chegaria a ser detectado (o Scrollable que importa
+          // fica ACIMA na árvore, não abaixo).
+          return RefreshIndicator(
+            onRefresh: () => context.read<TicketsCubit>().load(),
+            color: colors.primary,
+            child: DetailPageHeader(
+              maxWidth: ContentWidth.detail,
+              title: title,
+              onBack: () => context.canPop() ? context.pop() : context.go('/'),
+              heroTitle: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w900,
+                  color: colors.textPrimary,
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(
-                    onTap: () =>
-                        context.canPop() ? context.pop() : context.go('/'),
+              body: Padding(
+                padding: const EdgeInsets.only(top: AppSpacing.xl),
+                child: switch (state.status) {
+                  LoadStatus.initial || LoadStatus.loading => const SizedBox(
+                    height: 320,
+                    child: Center(child: GoiasLoadingIndicator()),
                   ),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.homeTickets),
-                  const SizedBox(height: AppSpacing.xxxl),
-                  Expanded(
-                    child: BlocBuilder<TicketsCubit, TicketsState>(
-                      builder: (context, state) {
-                        return switch (state.status) {
-                          LoadStatus.initial || LoadStatus.loading =>
-                            const Center(child: GoiasLoadingIndicator()),
-                          LoadStatus.error => Center(
-                            child: StateMessage(
-                              icon: Icons.error_outline_rounded,
-                              title: context.l10n.ticketsLoadError,
-                              message: state.errorMessage,
-                            ),
-                          ),
-                          _ => RefreshIndicator(
-                            onRefresh: () =>
-                                context.read<TicketsCubit>().load(),
-                            color: colors.primary,
-                            child: ListView(
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              padding: const EdgeInsets.only(
-                                bottom: AppSpacing.xxxl,
-                              ),
-                              children: [
-                                _SectionLabel(context.l10n.ticketsNextEvent),
-                                const SizedBox(height: AppSpacing.md),
-                                state.event == null
-                                    ? const _EmptyEventCard()
-                                    : FeaturedEventCard(
-                                        event: state.event!,
-                                        isMember: state.isMember,
-                                        onCheckIn: () =>
-                                            _openCheckIn(context, state.event!),
-                                        onBuyTicket: () => _openPurchase(
-                                          context,
-                                          state.event!,
-                                        ),
-                                        onViewTicket: (ticket) =>
-                                            _viewTicket(context, ticket),
-                                        onViewMyTickets: () =>
-                                            context.push('/tickets/my'),
-                                        onUndoCheckIn: () =>
-                                            _undoCheckIn(context, state.event!),
-                                        onChangeCheckInSector: () =>
-                                            _changeCheckInSector(
-                                              context,
-                                              state.event!,
-                                            ),
-                                      ),
-                                const SizedBox(height: AppSpacing.xxl),
-                                _SectionLabel(context.l10n.ticketsQuickAccess),
-                                const SizedBox(height: AppSpacing.md),
-                                _ShortcutCard(
-                                  icon: Icons.confirmation_number_outlined,
-                                  title: context.l10n.ticketsMyTickets,
-                                  subtitle: context.l10n
-                                      .ticketsMyTicketsSubtitle(
-                                        sl<ClubConfig>().identity.shortName,
-                                      ),
-                                  onTap: () => context.push('/tickets/my'),
-                                ),
-                                const SizedBox(height: AppSpacing.md),
-                                _ShortcutCard(
-                                  icon: Icons.receipt_long_outlined,
-                                  title: context.l10n.ticketsMyOrders,
-                                  subtitle:
-                                      context.l10n.ticketsMyOrdersSubtitle,
-                                  onTap: () => context.push('/tickets/orders'),
-                                ),
-                              ],
-                            ),
-                          ),
-                        };
-                      },
+                  LoadStatus.error => SizedBox(
+                    height: 320,
+                    child: Center(
+                      child: StateMessage(
+                        icon: Icons.error_outline_rounded,
+                        title: context.l10n.ticketsLoadError,
+                        message: state.errorMessage,
+                      ),
                     ),
                   ),
-                ],
+                  _ => Column(
+                    children: [
+                      _SectionLabel(context.l10n.ticketsNextEvent),
+                      const SizedBox(height: AppSpacing.md),
+                      state.event == null
+                          ? const _EmptyEventCard()
+                          : FeaturedEventCard(
+                              event: state.event!,
+                              isMember: state.isMember,
+                              onCheckIn: () =>
+                                  _openCheckIn(context, state.event!),
+                              onBuyTicket: () =>
+                                  _openPurchase(context, state.event!),
+                              onViewTicket: (ticket) =>
+                                  _viewTicket(context, ticket),
+                              onViewMyTickets: () =>
+                                  context.push('/tickets/my'),
+                              onUndoCheckIn: () =>
+                                  _undoCheckIn(context, state.event!),
+                              onChangeCheckInSector: () =>
+                                  _changeCheckInSector(context, state.event!),
+                            ),
+                      const SizedBox(height: AppSpacing.xxl),
+                      _SectionLabel(context.l10n.ticketsQuickAccess),
+                      const SizedBox(height: AppSpacing.md),
+                      _ShortcutCard(
+                        icon: Icons.confirmation_number_outlined,
+                        title: context.l10n.ticketsMyTickets,
+                        subtitle: context.l10n.ticketsMyTicketsSubtitle(
+                          sl<ClubConfig>().identity.shortName,
+                        ),
+                        onTap: () => context.push('/tickets/my'),
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      _ShortcutCard(
+                        icon: Icons.receipt_long_outlined,
+                        title: context.l10n.ticketsMyOrders,
+                        subtitle: context.l10n.ticketsMyOrdersSubtitle,
+                        onTap: () => context.push('/tickets/orders'),
+                      ),
+                    ],
+                  ),
+                },
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

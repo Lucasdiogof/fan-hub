@@ -14,8 +14,9 @@ import 'package:goias_app/features/arena/ranking/presentation/widgets/ranking_us
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
-import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 
 /// [cubit], quando fornecido, já veio construído e carregado por quem
 /// navegou pra cá (ver `GlobalLoading.run` em `arena_page.dart`) — a tela
@@ -66,121 +67,77 @@ class _RankingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final title = context.l10n.arenaRankingTitle;
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.md,
-                    AppSpacing.sm,
-                    AppSpacing.lg,
-                    AppSpacing.sm,
-                  ),
-                  child: Row(
+      body: DetailPageHeader(
+        title: title,
+        onBack: () => context.canPop() ? context.pop() : context.go('/'),
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              BlocBuilder<RankingCubit, RankingState>(
+                buildWhen: (previous, current) =>
+                    previous.period != current.period,
+                builder: (context, state) => _PeriodSegmented(
+                  period: state.period,
+                  onChanged: (period) =>
+                      context.read<RankingCubit>().selectPeriod(period),
+                ),
+              ),
+              const SizedBox(height: AppSpacing.lg),
+              BlocBuilder<RankingCubit, RankingState>(
+                builder: (context, state) {
+                  if (state.status == LoadStatus.loading ||
+                      state.status == LoadStatus.initial) {
+                    return const SizedBox(
+                      height: 320,
+                      child: Center(child: GoiasLoadingIndicator()),
+                    );
+                  }
+                  if (state.status == LoadStatus.error) {
+                    return _ErrorRanking(
+                      onRetry: () => context.read<RankingCubit>().load(),
+                    );
+                  }
+                  if (state.entries.isEmpty) {
+                    return const _EmptyRanking();
+                  }
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      InkWell(
-                        onTap: () =>
-                            context.canPop() ? context.pop() : context.go('/'),
-                        borderRadius: BorderRadius.circular(999),
-                        child: Container(
-                          width: 40,
-                          height: 40,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color: colors.secondary,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.arrow_back_rounded,
-                            size: 20,
-                            color: colors.textPrimary,
+                      for (var i = 0; i < state.entries.length; i++) ...[
+                        if (i > 0) const SizedBox(height: AppSpacing.sm),
+                        _RankRow(
+                          entry: state.entries[i],
+                          onTap: () => _showDetail(
+                            context,
+                            state.entries[i],
+                            state.period,
+                            pointsToNext: i == 0
+                                ? null
+                                : state.entries[i - 1].totalScore -
+                                      state.entries[i].totalScore,
+                            nextRank: i == 0 ? null : state.entries[i - 1].rank,
                           ),
                         ),
-                      ),
-                      const SizedBox(width: AppSpacing.sm),
-                      Text(
-                        context.l10n.arenaRankingTitle,
-                        style: TextStyle(
-                          fontSize: 19,
-                          fontWeight: FontWeight.w900,
-                          color: colors.textPrimary,
-                        ),
-                      ),
+                      ],
+                      if (state.showPinnedPosition) const SizedBox(height: 80),
                     ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.lg,
-                  ),
-                  child: BlocBuilder<RankingCubit, RankingState>(
-                    buildWhen: (previous, current) =>
-                        previous.period != current.period,
-                    builder: (context, state) => _PeriodSegmented(
-                      period: state.period,
-                      onChanged: (period) =>
-                          context.read<RankingCubit>().selectPeriod(period),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: AppSpacing.sm),
-                Expanded(
-                  child: BlocBuilder<RankingCubit, RankingState>(
-                    builder: (context, state) {
-                      if (state.status == LoadStatus.loading ||
-                          state.status == LoadStatus.initial) {
-                        return const Center(child: GoiasLoadingIndicator());
-                      }
-                      if (state.status == LoadStatus.error) {
-                        return _ErrorRanking(
-                          onRetry: () => context.read<RankingCubit>().load(),
-                        );
-                      }
-                      if (state.entries.isEmpty) {
-                        return const _EmptyRanking();
-                      }
-                      return ListView.separated(
-                        padding: EdgeInsets.fromLTRB(
-                          AppSpacing.lg,
-                          AppSpacing.sm,
-                          AppSpacing.lg,
-                          state.showPinnedPosition
-                              ? AppSpacing.xxxl + 80
-                              : AppSpacing.xxxl,
-                        ),
-                        itemCount: state.entries.length,
-                        separatorBuilder: (_, _) =>
-                            const SizedBox(height: AppSpacing.sm),
-                        itemBuilder: (context, index) {
-                          final entry = state.entries[index];
-                          final above = index > 0
-                              ? state.entries[index - 1]
-                              : null;
-                          return _RankRow(
-                            entry: entry,
-                            onTap: () => _showDetail(
-                              context,
-                              entry,
-                              state.period,
-                              pointsToNext: above == null
-                                  ? null
-                                  : above.totalScore - entry.totalScore,
-                              nextRank: above?.rank,
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

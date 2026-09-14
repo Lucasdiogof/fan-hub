@@ -9,7 +9,7 @@ Supabase SQL editor. Never writes the 1.697 records into Dart source, and
 never issues 1.697 separate statements — one batched INSERT.
 
 Usage:
-    python tooling/passaporte_esmeraldino/generate_import_sql.py
+    python tooling/esmeraldino_passport/generate_import_sql.py
 
 Run from the repo root. Exits non-zero (and writes nothing) if any
 validation fails.
@@ -18,7 +18,7 @@ import hashlib
 import json
 import sys
 
-SOURCE_PATH = "tooling/passaporte_esmeraldino/source/passaporte_esmeraldino_partidas_2000_2026.json"
+SOURCE_PATH = "tooling/esmeraldino_passport/source/esmeraldino_passport_matches_2000_2026.json"
 OUTPUT_PATH = "supabase/passport_esmeraldino_import.sql"
 
 EXPECTED_SCHEMA_VERSION = "1.0.0"
@@ -178,7 +178,7 @@ def main():
 -- SHA-256 da fonte: {checksum}
 -- schema_version: {schema_version}
 -- Registros: {len(matches)}
--- Gerado por: tooling/passaporte_esmeraldino/generate_import_sql.py
+-- Gerado por: tooling/esmeraldino_passport/generate_import_sql.py
 --
 -- Rode DEPOIS de passport_esmeraldino.sql (schema) e ANTES de
 -- passport_esmeraldino_functions.sql, ou em qualquer ordem depois do

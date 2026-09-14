@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
@@ -24,8 +25,8 @@ import 'package:goias_app/features/profile/domain/repositories/profile_repositor
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/masks.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 typedef MembershipRegistrationArgs = ({
   MembershipPlan plan,
@@ -73,18 +74,19 @@ class MembershipRegistrationPage extends StatelessWidget {
   }
 
   MembershipRegistrationData _prefillFromProfile(Profile profile) {
-    String maskDigits(TextInputFormatter formatter, String digits) =>
-        formatter
-            .formatEditUpdate(
-              TextEditingValue.empty,
-              TextEditingValue(text: digits),
-            )
-            .text;
+    String maskDigits(TextInputFormatter formatter, String digits) => formatter
+        .formatEditUpdate(
+          TextEditingValue.empty,
+          TextEditingValue(text: digits),
+        )
+        .text;
     final birthDate = profile.birthDate;
     return MembershipRegistrationData(
       contactEmail: profile.email,
       fullName: profile.fullName ?? '',
-      cpf: profile.cpf == null ? '' : maskDigits(cpfInputFormatter(), profile.cpf!),
+      cpf: profile.cpf == null
+          ? ''
+          : maskDigits(cpfInputFormatter(), profile.cpf!),
       phone: profile.phone == null
           ? ''
           : maskDigits(phoneInputFormatter(), profile.phone!),
@@ -133,57 +135,50 @@ class _MembershipRegistrationView extends StatelessWidget {
             )
           : Scaffold(
               backgroundColor: colors.background,
-              body: SafeArea(
-                child: Center(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: ContentWidth.form.maxWidth,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        AppSpacing.lg,
-                        AppSpacing.md,
-                        AppSpacing.lg,
-                        AppSpacing.lg,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              body: Column(
+                children: [
+                  Expanded(
+                    child: DetailPageHeader(
+                      maxWidth: ContentWidth.form,
+                      title: state.plan.name,
+                      heroTitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          BackButtonCircle(onTap: () => context.pop()),
-                          const SizedBox(height: AppSpacing.lg),
                           SelectedPlanBanner(
                             plan: state.plan,
                             price: state.price,
                             onChangePlan: () => context.pop(),
                           ),
-                          const SizedBox(height: AppSpacing.xl),
                           if (!state.showReview) ...[
-                            MembershipRegistrationStepper(step: state.step),
                             const SizedBox(height: AppSpacing.xl),
+                            MembershipRegistrationStepper(step: state.step),
                           ],
-                          Expanded(
-                            child: state.showReview
-                                ? const MembershipReviewPage()
-                                : ListView(
-                                    children: [
-                                      switch (state.step) {
-                                        RegistrationStep.access =>
-                                          const AccessDataStep(),
-                                        RegistrationStep.personal =>
-                                          const PersonalDataStep(),
-                                        RegistrationStep.address =>
-                                          const AddressStep(),
-                                      },
-                                    ],
-                                  ),
-                          ),
-                          const SizedBox(height: AppSpacing.lg),
-                          _NavButtons(state: state),
                         ],
+                      ),
+                      body: Padding(
+                        padding: const EdgeInsets.only(top: AppSpacing.xl),
+                        child: state.showReview
+                            ? const MembershipReviewPage()
+                            : switch (state.step) {
+                                RegistrationStep.access =>
+                                  const AccessDataStep(),
+                                RegistrationStep.personal =>
+                                  const PersonalDataStep(),
+                                RegistrationStep.address => const AddressStep(),
+                              },
                       ),
                     ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      AppSpacing.lg,
+                      0,
+                      AppSpacing.lg,
+                      AppSpacing.lg,
+                    ),
+                    child: _NavButtons(state: state),
+                  ),
+                ],
               ),
             ),
     );

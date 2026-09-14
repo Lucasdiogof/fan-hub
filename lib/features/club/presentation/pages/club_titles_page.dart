@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
@@ -7,9 +6,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/domain/entities/club_title_group.dart';
 import 'package:goias_app/features/club/presentation/widgets/title_image_carousel.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
-import 'package:goias_app/shared/widgets/content_container.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class ClubTitlesPage extends StatelessWidget {
   const ClubTitlesPage({super.key});
@@ -22,99 +19,76 @@ class ClubTitlesPage extends StatelessWidget {
       0,
       (sum, group) => sum + group.count,
     );
+    final title = context.l10n.clubSectionTitles.toUpperCase();
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: ContentWidth.wide.maxWidth),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    AppSpacing.lg,
-                    AppSpacing.md,
-                    AppSpacing.lg,
-                    0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButtonCircle(onTap: () => context.pop()),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.clubSectionTitles.toUpperCase()),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.xl,
-                      AppSpacing.lg,
-                      AppSpacing.xxxl,
-                    ),
-                    children: [
-                      Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              '$totalTitles',
-                              style: TextStyle(
-                                fontSize: 56,
-                                fontWeight: FontWeight.w900,
-                                color: colors.primary,
-                                height: 1,
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              context.l10n.clubMainTitles,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w800,
-                                letterSpacing: 1.4,
-                                color: colors.textSecondary,
-                              ),
-                            ),
-                          ],
-                        ),
+      body: DetailPageHeader(
+        title: title,
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            children: [
+              Center(
+                child: Column(
+                  children: [
+                    Text(
+                      '$totalTitles',
+                      style: TextStyle(
+                        fontSize: 56,
+                        fontWeight: FontWeight.w900,
+                        color: colors.primary,
+                        height: 1,
                       ),
-                      const SizedBox(height: AppSpacing.xxl),
-                      for (final group in content.titles) ...[
-                        _TitleGroupSection(group: group),
-                        const SizedBox(height: AppSpacing.md),
-                      ],
-                      if (content.historicalCampaigns.isNotEmpty) ...[
-                        const SizedBox(height: AppSpacing.lg),
-                        Text(
-                          context.l10n.clubHistoricCampaigns,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w800,
-                            letterSpacing: 1.2,
-                            color: colors.textSecondary,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.md),
-                        for (
-                          var i = 0;
-                          i < content.historicalCampaigns.length;
-                          i++
-                        ) ...[
-                          _CampaignSection(
-                            campaign: content.historicalCampaigns[i],
-                          ),
-                          if (i < content.historicalCampaigns.length - 1)
-                            const SizedBox(height: AppSpacing.md),
-                        ],
-                      ],
-                    ],
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      context.l10n.clubMainTitles,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 1.4,
+                        color: colors.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: AppSpacing.xxl),
+              for (final group in content.titles) ...[
+                _TitleGroupSection(group: group),
+                const SizedBox(height: AppSpacing.md),
+              ],
+              if (content.historicalCampaigns.isNotEmpty) ...[
+                const SizedBox(height: AppSpacing.lg),
+                Text(
+                  context.l10n.clubHistoricCampaigns,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1.2,
+                    color: colors.textSecondary,
                   ),
                 ),
+                const SizedBox(height: AppSpacing.md),
+                for (
+                  var i = 0;
+                  i < content.historicalCampaigns.length;
+                  i++
+                ) ...[
+                  _CampaignSection(campaign: content.historicalCampaigns[i]),
+                  if (i < content.historicalCampaigns.length - 1)
+                    const SizedBox(height: AppSpacing.md),
+                ],
               ],
-            ),
+            ],
           ),
         ),
       ),

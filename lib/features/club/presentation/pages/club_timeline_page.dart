@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/club/domain/entities/club_timeline_event.dart';
-import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
+import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class ClubTimelinePage extends StatelessWidget {
   const ClubTimelinePage({super.key});
@@ -16,44 +14,27 @@ class ClubTimelinePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final events = sl<ClubConfig>().institutionalContent.timeline;
+    final title = context.l10n.clubSectionTimeline.toUpperCase();
     return Scaffold(
       backgroundColor: colors.background,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                AppSpacing.lg,
-                AppSpacing.md,
-                AppSpacing.lg,
-                0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  BackButtonCircle(onTap: () => context.pop()),
-                  const SizedBox(height: AppSpacing.lg),
-                  PageTitle(context.l10n.clubSectionTimeline.toUpperCase()),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg,
-                  AppSpacing.xl,
-                  AppSpacing.lg,
-                  AppSpacing.xxxl,
-                ),
-                itemCount: events.length,
-                itemBuilder: (context, index) => _TimelineRow(
-                  event: events[index],
-                  isLast: index == events.length - 1,
-                ),
-              ),
-            ),
-          ],
+      body: DetailPageHeader(
+        title: title,
+        heroTitle: Text(
+          title,
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w900,
+            color: colors.textPrimary,
+          ),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: AppSpacing.xl),
+          child: Column(
+            children: [
+              for (var i = 0; i < events.length; i++)
+                _TimelineRow(event: events[i], isLast: i == events.length - 1),
+            ],
+          ),
         ),
       ),
     );

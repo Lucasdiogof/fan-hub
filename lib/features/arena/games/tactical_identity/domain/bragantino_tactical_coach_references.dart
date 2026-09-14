@@ -99,19 +99,20 @@ const bragantinoTacticalCoachReferences = <TacticalCoachReference>[
     structuralFluidity: 66,
   ),
 
-  // Início de 2020: time agressivo sem a bola, intenso e com pressão alta,
-  // mas ainda com preferência por circulação/posse objetiva.
+  // Início de 2020: time agressivo sem a bola, muito mais dogmático em
+  // pressão alta/risco que o modelo de transição de Zago (2019) — a
+  // circulação de posse existe, mas nunca abre mão do bloco alto.
   TacticalCoachReference(
     id: 'felipe_conceicao_2020',
     coach: 'Felipe Conceição',
     period: '2020',
     x: -46,
-    y: -54,
+    y: -70,
     confidence: 'high',
     pressing: 88,
     blockHeight: 70,
     risk: 78,
-    structuralFluidity: 49,
+    structuralFluidity: 38,
   ),
 
   // 2024–2025: 4-3-3, pressão alta e jogo híbrido — constrói quando pode,
@@ -159,19 +160,19 @@ const bragantinoTacticalCoachReferences = <TacticalCoachReference>[
     structuralFluidity: 75,
   ),
 
-  // 2013: jogo direto, forte leitura do adversário e preferência por
-  // transição em vez de controlar longos trechos pela posse.
+  // 2013: jogo mais vertical que o de Benazzi — transição rápida e menos
+  // preferência por segurar a posse, forte leitura do momento da partida.
   TacticalCoachReference(
     id: 'mazola_junior_2013',
     coach: 'Mazola Júnior',
     period: '2013',
-    x: 56,
-    y: 83,
+    x: 90,
+    y: 58,
     confidence: 'medium',
-    pressing: 45,
-    blockHeight: 38,
-    risk: 36,
-    structuralFluidity: 71,
+    pressing: 52,
+    blockHeight: 44,
+    risk: 30,
+    structuralFluidity: 65,
   ),
 
   // 2017: referência central/pragmática e altamente flexível — útil para

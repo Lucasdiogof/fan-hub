@@ -25,7 +25,7 @@ import 'synthetic_passport_content.dart';
 /// `canonicalClubId` é um UUID qualquer, deliberadamente DIFERENTE do
 /// Goiás — usado pra provar que uma query nunca vaza `club_id` de outro
 /// clube por acidente.
-const syntheticClubBConfig = ClubConfig(
+final syntheticClubBConfig = ClubConfig(
   identity: ClubIdentity(
     code: 'club-b',
     slug: 'club-b',
