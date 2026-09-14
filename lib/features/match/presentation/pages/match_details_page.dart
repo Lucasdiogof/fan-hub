@@ -182,9 +182,7 @@ class _MatchDetailsContent extends StatelessWidget {
     // `toBrazilTime`, nunca `.toLocal()`: `kickoff` é o instante absoluto
     // real (spec 2026-09-12) — horário de partida sempre em Brasília,
     // independente do fuso do aparelho.
-    final kickoff = match.kickoff != null
-        ? toBrazilTime(match.kickoff!)
-        : null;
+    final kickoff = match.kickoff != null ? toBrazilTime(match.kickoff!) : null;
     return ListView(
       padding: const EdgeInsets.fromLTRB(
         AppSpacing.lg,

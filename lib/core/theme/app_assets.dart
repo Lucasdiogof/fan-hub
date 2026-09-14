@@ -53,5 +53,6 @@ class AppAssets {
   /// Nunca tingir em tempo de execução: toda tentativa via `ColorFiltered`
   /// externo ou `Image.color`/`colorBlendMode` quebrou a transparência do
   /// PNG (retângulo sólido) — bug de composição do Skia/Flutter.
-  static const String storeBanner = 'lib/assets/store_banner_green.png';
+  static const String storeBanner =
+      'lib/assets/store/banners/goias/store_banner_green.png';
 }

@@ -22,12 +22,12 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_01_female_fan/front.jpg",
-      "lib/assets/store/products/uniform_01_female_fan/back.jpg",
-      "lib/assets/store/products/uniform_01_female_fan/detail.jpg",
-      "lib/assets/store/products/uniform_01_female_fan/detail_2.jpg"
+      "lib/assets/store/products/goias/uniform_01_female_fan/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_fan/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_fan/detail.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_fan/detail_2.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_female_fan/thumbnail.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_female_fan/thumbnail.jpg",
     "variations": [
       {
         "sku": "6521002-P",
@@ -104,12 +104,12 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/uniform_03_male/front.jpg",
-      "lib/assets/store/products/uniform_03_male/back.jpg",
-      "lib/assets/store/products/uniform_03_male/detail.jpg",
-      "lib/assets/store/products/uniform_03_male/worn.jpg"
+      "lib/assets/store/products/goias/uniform_03_male/front.jpg",
+      "lib/assets/store/products/goias/uniform_03_male/back.jpg",
+      "lib/assets/store/products/goias/uniform_03_male/detail.jpg",
+      "lib/assets/store/products/goias/uniform_03_male/worn.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_03_male/thumbnail.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_03_male/thumbnail.jpg",
     "variations": [
       {
         "sku": "6511041-P",
@@ -188,12 +188,12 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/uniform_02_youth/front.jpg",
-      "lib/assets/store/products/uniform_02_youth/back.jpg",
-      "lib/assets/store/products/uniform_02_youth/detail.jpg",
-      "lib/assets/store/products/uniform_02_youth/detail2.jpg"
+      "lib/assets/store/products/goias/uniform_02_youth/front.jpg",
+      "lib/assets/store/products/goias/uniform_02_youth/back.jpg",
+      "lib/assets/store/products/goias/uniform_02_youth/detail.jpg",
+      "lib/assets/store/products/goias/uniform_02_youth/detail2.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_02_youth/thumbnail.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_02_youth/thumbnail.jpg",
     "variations": [
       {
         "sku": "6531002-10",
@@ -268,14 +268,14 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/uniform_01_male_player/front.jpg",
-      "lib/assets/store/products/uniform_01_male_player/back.jpg",
-      "lib/assets/store/products/uniform_01_male_player/detail_01.jpg",
-      "lib/assets/store/products/uniform_01_male_player/detail_02.jpg",
-      "lib/assets/store/products/uniform_01_male_player/detail_03.jpg",
-      "lib/assets/store/products/uniform_01_male_player/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_01_male_player/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_player/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_player/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_player/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_player/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_player/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_male_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_male_player/front.jpg",
     "variations": [
       {
         "sku": "u01-masc-jog-P",
@@ -341,13 +341,13 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/uniform_02_male_player/front.jpg",
-      "lib/assets/store/products/uniform_02_male_player/back.jpg",
-      "lib/assets/store/products/uniform_02_male_player/detail_01.jpg",
-      "lib/assets/store/products/uniform_02_male_player/detail_02.jpg",
-      "lib/assets/store/products/uniform_02_male_player/detail_03.jpg"
+      "lib/assets/store/products/goias/uniform_02_male_player/front.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_player/back.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_player/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_player/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_player/detail_03.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_02_male_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_02_male_player/front.jpg",
     "variations": [
       {
         "sku": "u02-masc-jog-P",
@@ -413,13 +413,13 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_02_female_fan/front.jpg",
-      "lib/assets/store/products/uniform_02_female_fan/back.jpg",
-      "lib/assets/store/products/uniform_02_female_fan/detail_01.jpg",
-      "lib/assets/store/products/uniform_02_female_fan/detail_02.jpg",
-      "lib/assets/store/products/uniform_02_female_fan/detail_03.jpg"
+      "lib/assets/store/products/goias/uniform_02_female_fan/front.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_fan/back.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_fan/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_fan/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_fan/detail_03.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_02_female_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_02_female_fan/front.jpg",
     "variations": [
       {
         "sku": "u02-fem-tor-P",
@@ -484,13 +484,13 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_03_kids/front.png",
-      "lib/assets/store/products/uniform_03_kids/back.png",
-      "lib/assets/store/products/uniform_03_kids/detail_01.png",
-      "lib/assets/store/products/uniform_03_kids/detail_02.png",
-      "lib/assets/store/products/uniform_03_kids/detail_03.png"
+      "lib/assets/store/products/goias/uniform_03_kids/front.png",
+      "lib/assets/store/products/goias/uniform_03_kids/back.png",
+      "lib/assets/store/products/goias/uniform_03_kids/detail_01.png",
+      "lib/assets/store/products/goias/uniform_03_kids/detail_02.png",
+      "lib/assets/store/products/goias/uniform_03_kids/detail_03.png"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_03_kids/front.png",
+    "thumbnail": "lib/assets/store/products/goias/uniform_03_kids/front.png",
     "variations": [
       {
         "sku": "u03-inf-2",
@@ -551,11 +551,11 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/goalkeeper_01_male_fan/front.jpg",
-      "lib/assets/store/products/goalkeeper_01_male_fan/back.jpg",
-      "lib/assets/store/products/goalkeeper_01_male_fan/detail_01.jpg"
+      "lib/assets/store/products/goias/goalkeeper_01_male_fan/front.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_male_fan/back.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_male_fan/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_01_male_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_01_male_fan/front.jpg",
     "variations": [
       {
         "sku": "gk01-masc-tor-P",
@@ -617,9 +617,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/shin_guard_kids_black/front.jpg"
+      "lib/assets/store/products/goias/shin_guard_kids_black/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/shin_guard_kids_black/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/shin_guard_kids_black/front.jpg",
     "variations": [
       {
         "sku": "caneleira-inf-unico",
@@ -657,14 +657,14 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_01_male_fan/front.jpg",
-      "lib/assets/store/products/uniform_01_male_fan/back.jpg",
-      "lib/assets/store/products/uniform_01_male_fan/detail_01.jpg",
-      "lib/assets/store/products/uniform_01_male_fan/detail_02.jpg",
-      "lib/assets/store/products/uniform_01_male_fan/detail_03.jpg",
-      "lib/assets/store/products/uniform_01_male_fan/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_01_male_fan/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_fan/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_fan/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_fan/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_fan/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_01_male_fan/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_male_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_male_fan/front.jpg",
     "variations": [
       {
         "sku": "uniform_01_male_fan-P",
@@ -727,13 +727,13 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_02_male_fan/front.jpg",
-      "lib/assets/store/products/uniform_02_male_fan/back.jpg",
-      "lib/assets/store/products/uniform_02_male_fan/detail_01.jpg",
-      "lib/assets/store/products/uniform_02_male_fan/detail_02.jpg",
-      "lib/assets/store/products/uniform_02_male_fan/detail_03.jpg"
+      "lib/assets/store/products/goias/uniform_02_male_fan/front.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_fan/back.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_fan/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_fan/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_02_male_fan/detail_03.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_02_male_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_02_male_fan/front.jpg",
     "variations": [
       {
         "sku": "uniform_02_male_fan-P",
@@ -796,14 +796,14 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/uniform_01_female_player/front.jpg",
-      "lib/assets/store/products/uniform_01_female_player/back.jpg",
-      "lib/assets/store/products/uniform_01_female_player/detail_01.jpg",
-      "lib/assets/store/products/uniform_01_female_player/detail_02.jpg",
-      "lib/assets/store/products/uniform_01_female_player/detail_03.jpg",
-      "lib/assets/store/products/uniform_01_female_player/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_01_female_player/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_player/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_player/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_player/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_player/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_01_female_player/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_female_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_female_player/front.jpg",
     "variations": [
       {
         "sku": "uniform_01_female_player-P",
@@ -866,13 +866,13 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/uniform_02_female_player/front.jpg",
-      "lib/assets/store/products/uniform_02_female_player/back.jpg",
-      "lib/assets/store/products/uniform_02_female_player/detail_01.jpg",
-      "lib/assets/store/products/uniform_02_female_player/detail_02.jpg",
-      "lib/assets/store/products/uniform_02_female_player/detail_03.jpg"
+      "lib/assets/store/products/goias/uniform_02_female_player/front.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_player/back.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_player/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_player/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_02_female_player/detail_03.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_02_female_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_02_female_player/front.jpg",
     "variations": [
       {
         "sku": "uniform_02_female_player-P",
@@ -935,14 +935,14 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/uniform_01_kids_fan/front.jpg",
-      "lib/assets/store/products/uniform_01_kids_fan/back.jpg",
-      "lib/assets/store/products/uniform_01_kids_fan/detail_01.jpg",
-      "lib/assets/store/products/uniform_01_kids_fan/detail_02.jpg",
-      "lib/assets/store/products/uniform_01_kids_fan/detail_03.jpg",
-      "lib/assets/store/products/uniform_01_kids_fan/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_01_kids_fan/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_fan/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_fan/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_fan/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_fan/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_fan/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_kids_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_kids_fan/front.jpg",
     "variations": [
       {
         "sku": "uniform_01_kids_fan-2",
@@ -1005,14 +1005,14 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_01_kids_player/front.jpg",
-      "lib/assets/store/products/uniform_01_kids_player/back.jpg",
-      "lib/assets/store/products/uniform_01_kids_player/detail_01.jpg",
-      "lib/assets/store/products/uniform_01_kids_player/detail_02.jpg",
-      "lib/assets/store/products/uniform_01_kids_player/detail_03.jpg",
-      "lib/assets/store/products/uniform_01_kids_player/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_01_kids_player/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_player/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_player/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_player/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_player/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_01_kids_player/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_kids_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_kids_player/front.jpg",
     "variations": [
       {
         "sku": "uniform_01_kids_player-2",
@@ -1070,14 +1070,14 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_01_youth_fan/front.jpg",
-      "lib/assets/store/products/uniform_01_youth_fan/back.jpg",
-      "lib/assets/store/products/uniform_01_youth_fan/detail_01.jpg",
-      "lib/assets/store/products/uniform_01_youth_fan/detail_02.jpg",
-      "lib/assets/store/products/uniform_01_youth_fan/detail_03.jpg",
-      "lib/assets/store/products/uniform_01_youth_fan/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_01_youth_fan/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_fan/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_fan/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_fan/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_fan/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_fan/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_youth_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_youth_fan/front.jpg",
     "variations": [
       {
         "sku": "uniform_01_youth_fan-10",
@@ -1130,14 +1130,14 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/uniform_01_youth_player/front.jpg",
-      "lib/assets/store/products/uniform_01_youth_player/back.jpg",
-      "lib/assets/store/products/uniform_01_youth_player/detail_01.jpg",
-      "lib/assets/store/products/uniform_01_youth_player/detail_02.jpg",
-      "lib/assets/store/products/uniform_01_youth_player/detail_03.jpg",
-      "lib/assets/store/products/uniform_01_youth_player/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_01_youth_player/front.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_player/back.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_player/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_player/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_player/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_01_youth_player/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_01_youth_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_01_youth_player/front.jpg",
     "variations": [
       {
         "sku": "uniform_01_youth_player-10",
@@ -1190,14 +1190,14 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/uniform_02_kids_player/front.jpg",
-      "lib/assets/store/products/uniform_02_kids_player/back.jpg",
-      "lib/assets/store/products/uniform_02_kids_player/detail_01.jpg",
-      "lib/assets/store/products/uniform_02_kids_player/detail_02.jpg",
-      "lib/assets/store/products/uniform_02_kids_player/detail_03.jpg",
-      "lib/assets/store/products/uniform_02_kids_player/detail_04.jpg"
+      "lib/assets/store/products/goias/uniform_02_kids_player/front.jpg",
+      "lib/assets/store/products/goias/uniform_02_kids_player/back.jpg",
+      "lib/assets/store/products/goias/uniform_02_kids_player/detail_01.jpg",
+      "lib/assets/store/products/goias/uniform_02_kids_player/detail_02.jpg",
+      "lib/assets/store/products/goias/uniform_02_kids_player/detail_03.jpg",
+      "lib/assets/store/products/goias/uniform_02_kids_player/detail_04.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/uniform_02_kids_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/uniform_02_kids_player/front.jpg",
     "variations": [
       {
         "sku": "uniform_02_kids_player-2",
@@ -1256,12 +1256,12 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/goalkeeper_01_male_player/front.jpg",
-      "lib/assets/store/products/goalkeeper_01_male_player/back.jpg",
-      "lib/assets/store/products/goalkeeper_01_male_player/detail_01.jpg",
-      "lib/assets/store/products/goalkeeper_01_male_player/detail_02.jpg"
+      "lib/assets/store/products/goias/goalkeeper_01_male_player/front.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_male_player/back.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_male_player/detail_01.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_male_player/detail_02.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_01_male_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_01_male_player/front.jpg",
     "variations": [
       {
         "sku": "goalkeeper_01_male_player-P",
@@ -1325,12 +1325,12 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/goalkeeper_02_male_player/front.png",
-      "lib/assets/store/products/goalkeeper_02_male_player/back.png",
-      "lib/assets/store/products/goalkeeper_02_male_player/detail_01.png",
-      "lib/assets/store/products/goalkeeper_02_male_player/detail_02.png"
+      "lib/assets/store/products/goias/goalkeeper_02_male_player/front.png",
+      "lib/assets/store/products/goias/goalkeeper_02_male_player/back.png",
+      "lib/assets/store/products/goias/goalkeeper_02_male_player/detail_01.png",
+      "lib/assets/store/products/goias/goalkeeper_02_male_player/detail_02.png"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_02_male_player/front.png",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_02_male_player/front.png",
     "variations": [
       {
         "sku": "goalkeeper_02_male_player-P",
@@ -1394,13 +1394,13 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/goalkeeper_01_female_fan/front.jpg",
-      "lib/assets/store/products/goalkeeper_01_female_fan/back.jpg",
-      "lib/assets/store/products/goalkeeper_01_female_fan/detail_01.jpg",
-      "lib/assets/store/products/goalkeeper_01_female_fan/detail_02.jpg",
-      "lib/assets/store/products/goalkeeper_01_female_fan/detail_03.jpg"
+      "lib/assets/store/products/goias/goalkeeper_01_female_fan/front.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_female_fan/back.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_female_fan/detail_01.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_female_fan/detail_02.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_female_fan/detail_03.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_01_female_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_01_female_fan/front.jpg",
     "variations": [
       {
         "sku": "goalkeeper_01_female_fan-P",
@@ -1464,13 +1464,13 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/goalkeeper_02_female_player/front.png",
-      "lib/assets/store/products/goalkeeper_02_female_player/back.png",
-      "lib/assets/store/products/goalkeeper_02_female_player/detail_01.png",
-      "lib/assets/store/products/goalkeeper_02_female_player/detail_02.png",
-      "lib/assets/store/products/goalkeeper_02_female_player/detail_03.png"
+      "lib/assets/store/products/goias/goalkeeper_02_female_player/front.png",
+      "lib/assets/store/products/goias/goalkeeper_02_female_player/back.png",
+      "lib/assets/store/products/goias/goalkeeper_02_female_player/detail_01.png",
+      "lib/assets/store/products/goias/goalkeeper_02_female_player/detail_02.png",
+      "lib/assets/store/products/goias/goalkeeper_02_female_player/detail_03.png"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_02_female_player/front.png",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_02_female_player/front.png",
     "variations": [
       {
         "sku": "goalkeeper_02_female_player-P",
@@ -1534,13 +1534,13 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/goalkeeper_01_kids_player/front.jpg",
-      "lib/assets/store/products/goalkeeper_01_kids_player/back.jpg",
-      "lib/assets/store/products/goalkeeper_01_kids_player/detail_01.jpg",
-      "lib/assets/store/products/goalkeeper_01_kids_player/detail_02.jpg",
-      "lib/assets/store/products/goalkeeper_01_kids_player/detail_03.jpg"
+      "lib/assets/store/products/goias/goalkeeper_01_kids_player/front.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_kids_player/back.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_kids_player/detail_01.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_kids_player/detail_02.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_kids_player/detail_03.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_01_kids_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_01_kids_player/front.jpg",
     "variations": [
       {
         "sku": "goalkeeper_01_kids_player-2",
@@ -1604,11 +1604,11 @@
     "originalPrice": null,
     "installments": 3,
     "images": [
-      "lib/assets/store/products/goalkeeper_01_youth_fan/front.jpg",
-      "lib/assets/store/products/goalkeeper_01_youth_fan/back.jpg",
-      "lib/assets/store/products/goalkeeper_01_youth_fan/detail_01.jpg"
+      "lib/assets/store/products/goias/goalkeeper_01_youth_fan/front.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_youth_fan/back.jpg",
+      "lib/assets/store/products/goias/goalkeeper_01_youth_fan/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_01_youth_fan/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_01_youth_fan/front.jpg",
     "variations": [
       {
         "sku": "goalkeeper_01_youth_fan-10",
@@ -1662,12 +1662,12 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/goalkeeper_02_youth_player/front.jpg",
-      "lib/assets/store/products/goalkeeper_02_youth_player/back.jpg",
-      "lib/assets/store/products/goalkeeper_02_youth_player/detail_01.jpg",
-      "lib/assets/store/products/goalkeeper_02_youth_player/detail_02.jpg"
+      "lib/assets/store/products/goias/goalkeeper_02_youth_player/front.jpg",
+      "lib/assets/store/products/goias/goalkeeper_02_youth_player/back.jpg",
+      "lib/assets/store/products/goias/goalkeeper_02_youth_player/detail_01.jpg",
+      "lib/assets/store/products/goias/goalkeeper_02_youth_player/detail_02.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/goalkeeper_02_youth_player/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/goalkeeper_02_youth_player/front.jpg",
     "variations": [
       {
         "sku": "goalkeeper_02_youth_player-10",
@@ -1716,9 +1716,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/bag_lateral_goias/front.jpg"
+      "lib/assets/store/products/goias/bag_lateral_goias/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bag_lateral_goias/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bag_lateral_goias/front.jpg",
     "variations": [
       {
         "sku": "bag_lateral_goias-unico",
@@ -1752,9 +1752,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/bag_lateral_goias_alviverde_preta/front.jpg"
+      "lib/assets/store/products/goias/bag_lateral_goias_alviverde_preta/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bag_lateral_goias_alviverde_preta/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bag_lateral_goias_alviverde_preta/front.jpg",
     "variations": [
       {
         "sku": "bag_lateral_goias_alviverde_preta-unico",
@@ -1788,9 +1788,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/bag_lateral_goias_cafe/front.jpg"
+      "lib/assets/store/products/goias/bag_lateral_goias_cafe/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bag_lateral_goias_cafe/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bag_lateral_goias_cafe/front.jpg",
     "variations": [
       {
         "sku": "bag_lateral_goias_cafe-unico",
@@ -1824,11 +1824,11 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/bola_de_futebol_goias_padrao/front.jpg",
-      "lib/assets/store/products/bola_de_futebol_goias_padrao/back.jpg",
-      "lib/assets/store/products/bola_de_futebol_goias_padrao/detail_01.jpg"
+      "lib/assets/store/products/goias/bola_de_futebol_goias_padrao/front.jpg",
+      "lib/assets/store/products/goias/bola_de_futebol_goias_padrao/back.jpg",
+      "lib/assets/store/products/goias/bola_de_futebol_goias_padrao/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bola_de_futebol_goias_padrao/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bola_de_futebol_goias_padrao/front.jpg",
     "variations": [
       {
         "sku": "bola_de_futebol_goias_padrao-unico",
@@ -1862,9 +1862,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/bola_de_futebol_n_05_goias_e_c/front.jpg"
+      "lib/assets/store/products/goias/bola_de_futebol_n_05_goias_e_c/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bola_de_futebol_n_05_goias_e_c/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bola_de_futebol_n_05_goias_e_c/front.jpg",
     "variations": [
       {
         "sku": "bola_de_futebol_n_05_goias_e_c-unico",
@@ -1898,9 +1898,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/bola_de_futebol_protech_goias_e_c/front.jpg"
+      "lib/assets/store/products/goias/bola_de_futebol_protech_goias_e_c/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bola_de_futebol_protech_goias_e_c/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bola_de_futebol_protech_goias_e_c/front.jpg",
     "variations": [
       {
         "sku": "bola_de_futebol_protech_goias_e_c-unico",
@@ -1934,9 +1934,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/bola_de_futevolei_protech_goias_e_c/front.jpg"
+      "lib/assets/store/products/goias/bola_de_futevolei_protech_goias_e_c/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bola_de_futevolei_protech_goias_e_c/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bola_de_futevolei_protech_goias_e_c/front.jpg",
     "variations": [
       {
         "sku": "bola_de_futevolei_protech_goias_e_c-unico",
@@ -1970,11 +1970,11 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/bolsa_esportiva_goias_verde/front.jpg",
-      "lib/assets/store/products/bolsa_esportiva_goias_verde/back.jpg",
-      "lib/assets/store/products/bolsa_esportiva_goias_verde/detail_01.jpg"
+      "lib/assets/store/products/goias/bolsa_esportiva_goias_verde/front.jpg",
+      "lib/assets/store/products/goias/bolsa_esportiva_goias_verde/back.jpg",
+      "lib/assets/store/products/goias/bolsa_esportiva_goias_verde/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/bolsa_esportiva_goias_verde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/bolsa_esportiva_goias_verde/front.jpg",
     "variations": [
       {
         "sku": "bolsa_esportiva_goias_verde-unico",
@@ -2008,11 +2008,11 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/boneco_colecionavel_mascote_goias_periquito/front.png",
-      "lib/assets/store/products/boneco_colecionavel_mascote_goias_periquito/back.png",
-      "lib/assets/store/products/boneco_colecionavel_mascote_goias_periquito/detail_01.png"
+      "lib/assets/store/products/goias/boneco_colecionavel_mascote_goias_periquito/front.png",
+      "lib/assets/store/products/goias/boneco_colecionavel_mascote_goias_periquito/back.png",
+      "lib/assets/store/products/goias/boneco_colecionavel_mascote_goias_periquito/detail_01.png"
     ],
-    "thumbnail": "lib/assets/store/products/boneco_colecionavel_mascote_goias_periquito/front.png",
+    "thumbnail": "lib/assets/store/products/goias/boneco_colecionavel_mascote_goias_periquito/front.png",
     "variations": [
       {
         "sku": "boneco_colecionavel_mascote_goias_periquito-unico",
@@ -2046,9 +2046,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/caneca_estadio_goias_e_c/front.jpg"
+      "lib/assets/store/products/goias/caneca_estadio_goias_e_c/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/caneca_estadio_goias_e_c/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/caneca_estadio_goias_e_c/front.jpg",
     "variations": [
       {
         "sku": "caneca_estadio_goias_e_c-unico",
@@ -2082,10 +2082,10 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/caneca_goias_gel_peca_verde/front.jpg",
-      "lib/assets/store/products/caneca_goias_gel_peca_verde/back.jpg"
+      "lib/assets/store/products/goias/caneca_goias_gel_peca_verde/front.jpg",
+      "lib/assets/store/products/goias/caneca_goias_gel_peca_verde/back.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/caneca_goias_gel_peca_verde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/caneca_goias_gel_peca_verde/front.jpg",
     "variations": [
       {
         "sku": "caneca_goias_gel_peca_verde-unico",
@@ -2119,9 +2119,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/caneca_termica_goias_inox_verde_700ml/front.jpg"
+      "lib/assets/store/products/goias/caneca_termica_goias_inox_verde_700ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/caneca_termica_goias_inox_verde_700ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/caneca_termica_goias_inox_verde_700ml/front.jpg",
     "variations": [
       {
         "sku": "caneca_termica_goias_inox_verde_700ml-unico",
@@ -2155,9 +2155,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/carteira_goias_de_luxo_verde/front.jpg"
+      "lib/assets/store/products/goias/carteira_goias_de_luxo_verde/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/carteira_goias_de_luxo_verde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/carteira_goias_de_luxo_verde/front.jpg",
     "variations": [
       {
         "sku": "carteira_goias_de_luxo_verde-unico",
@@ -2191,9 +2191,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/carteira_goias_de_luxo_vertical_alviverde/front.jpg"
+      "lib/assets/store/products/goias/carteira_goias_de_luxo_vertical_alviverde/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/carteira_goias_de_luxo_vertical_alviverde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/carteira_goias_de_luxo_vertical_alviverde/front.jpg",
     "variations": [
       {
         "sku": "carteira_goias_de_luxo_vertical_alviverde-unico",
@@ -2227,9 +2227,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/carteira_goias_de_luxo_vertical_alviverde_preta/front.jpg"
+      "lib/assets/store/products/goias/carteira_goias_de_luxo_vertical_alviverde_preta/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/carteira_goias_de_luxo_vertical_alviverde_preta/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/carteira_goias_de_luxo_vertical_alviverde_preta/front.jpg",
     "variations": [
       {
         "sku": "carteira_goias_de_luxo_vertical_alviverde_preta-unico",
@@ -2263,9 +2263,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/carteira_goias_tradicional_preta/front.jpg"
+      "lib/assets/store/products/goias/carteira_goias_tradicional_preta/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/carteira_goias_tradicional_preta/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/carteira_goias_tradicional_preta/front.jpg",
     "variations": [
       {
         "sku": "carteira_goias_tradicional_preta-unico",
@@ -2299,9 +2299,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_abridor_goias_retangular/front.jpg"
+      "lib/assets/store/products/goias/chaveiro_abridor_goias_retangular/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_abridor_goias_retangular/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_abridor_goias_retangular/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_abridor_goias_retangular-unico",
@@ -2335,9 +2335,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_goias_camisa/front.jpg"
+      "lib/assets/store/products/goias/chaveiro_goias_camisa/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_goias_camisa/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_goias_camisa/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_goias_camisa-unico",
@@ -2371,9 +2371,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_goias_chuteira/front.jpg"
+      "lib/assets/store/products/goias/chaveiro_goias_chuteira/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_goias_chuteira/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_goias_chuteira/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_goias_chuteira-unico",
@@ -2407,11 +2407,11 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_goias_mosquetao_resinado/front.jpg",
-      "lib/assets/store/products/chaveiro_goias_mosquetao_resinado/back.jpg",
-      "lib/assets/store/products/chaveiro_goias_mosquetao_resinado/detail_01.jpg"
+      "lib/assets/store/products/goias/chaveiro_goias_mosquetao_resinado/front.jpg",
+      "lib/assets/store/products/goias/chaveiro_goias_mosquetao_resinado/back.jpg",
+      "lib/assets/store/products/goias/chaveiro_goias_mosquetao_resinado/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_goias_mosquetao_resinado/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_goias_mosquetao_resinado/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_goias_mosquetao_resinado-unico",
@@ -2445,11 +2445,11 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_goias_redondo_e_giratorio/front.jpg",
-      "lib/assets/store/products/chaveiro_goias_redondo_e_giratorio/back.jpg",
-      "lib/assets/store/products/chaveiro_goias_redondo_e_giratorio/detail_01.jpg"
+      "lib/assets/store/products/goias/chaveiro_goias_redondo_e_giratorio/front.jpg",
+      "lib/assets/store/products/goias/chaveiro_goias_redondo_e_giratorio/back.jpg",
+      "lib/assets/store/products/goias/chaveiro_goias_redondo_e_giratorio/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_goias_redondo_e_giratorio/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_goias_redondo_e_giratorio/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_goias_redondo_e_giratorio-unico",
@@ -2483,11 +2483,11 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/chinelo_slide_goias_branca/front.jpg",
-      "lib/assets/store/products/chinelo_slide_goias_branca/back.jpg",
-      "lib/assets/store/products/chinelo_slide_goias_branca/detail_01.jpg"
+      "lib/assets/store/products/goias/chinelo_slide_goias_branca/front.jpg",
+      "lib/assets/store/products/goias/chinelo_slide_goias_branca/back.jpg",
+      "lib/assets/store/products/goias/chinelo_slide_goias_branca/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chinelo_slide_goias_branca/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chinelo_slide_goias_branca/front.jpg",
     "variations": [
       {
         "sku": "chinelo_slide_goias_branca-unico",
@@ -2521,11 +2521,11 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/chinelo_slide_goias_preta/front.jpg",
-      "lib/assets/store/products/chinelo_slide_goias_preta/back.jpg",
-      "lib/assets/store/products/chinelo_slide_goias_preta/detail_01.jpg"
+      "lib/assets/store/products/goias/chinelo_slide_goias_preta/front.jpg",
+      "lib/assets/store/products/goias/chinelo_slide_goias_preta/back.jpg",
+      "lib/assets/store/products/goias/chinelo_slide_goias_preta/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chinelo_slide_goias_preta/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chinelo_slide_goias_preta/front.jpg",
     "variations": [
       {
         "sku": "chinelo_slide_goias_preta-unico",
@@ -2559,11 +2559,11 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/chinelo_slide_goias_verde/front.jpg",
-      "lib/assets/store/products/chinelo_slide_goias_verde/back.jpg",
-      "lib/assets/store/products/chinelo_slide_goias_verde/detail_01.jpg"
+      "lib/assets/store/products/goias/chinelo_slide_goias_verde/front.jpg",
+      "lib/assets/store/products/goias/chinelo_slide_goias_verde/back.jpg",
+      "lib/assets/store/products/goias/chinelo_slide_goias_verde/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chinelo_slide_goias_verde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chinelo_slide_goias_verde/front.jpg",
     "variations": [
       {
         "sku": "chinelo_slide_goias_verde-unico",
@@ -2597,12 +2597,12 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/cooler_goias_10_latas/front.jpg",
-      "lib/assets/store/products/cooler_goias_10_latas/back.jpg",
-      "lib/assets/store/products/cooler_goias_10_latas/detail_01.jpg",
-      "lib/assets/store/products/cooler_goias_10_latas/detail_02.jpg"
+      "lib/assets/store/products/goias/cooler_goias_10_latas/front.jpg",
+      "lib/assets/store/products/goias/cooler_goias_10_latas/back.jpg",
+      "lib/assets/store/products/goias/cooler_goias_10_latas/detail_01.jpg",
+      "lib/assets/store/products/goias/cooler_goias_10_latas/detail_02.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/cooler_goias_10_latas/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/cooler_goias_10_latas/front.jpg",
     "variations": [
       {
         "sku": "cooler_goias_10_latas-unico",
@@ -2636,9 +2636,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/copo_termico_goias_sleek_473ml/front.jpg"
+      "lib/assets/store/products/goias/copo_termico_goias_sleek_473ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/copo_termico_goias_sleek_473ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/copo_termico_goias_sleek_473ml/front.jpg",
     "variations": [
       {
         "sku": "copo_termico_goias_sleek_473ml-unico",
@@ -2672,9 +2672,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/copo_termico_goias_sleek_off_white_473ml/front.jpg"
+      "lib/assets/store/products/goias/copo_termico_goias_sleek_off_white_473ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/copo_termico_goias_sleek_off_white_473ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/copo_termico_goias_sleek_off_white_473ml/front.jpg",
     "variations": [
       {
         "sku": "copo_termico_goias_sleek_off_white_473ml-unico",
@@ -2708,9 +2708,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/copo_termico_goias_tulipinha_354ml/front.jpg"
+      "lib/assets/store/products/goias/copo_termico_goias_tulipinha_354ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/copo_termico_goias_tulipinha_354ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/copo_termico_goias_tulipinha_354ml/front.jpg",
     "variations": [
       {
         "sku": "copo_termico_goias_tulipinha_354ml-unico",
@@ -2744,9 +2744,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/garrafa_termica_oasis_goias_black_750ml/front.jpg"
+      "lib/assets/store/products/goias/garrafa_termica_oasis_goias_black_750ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/garrafa_termica_oasis_goias_black_750ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/garrafa_termica_oasis_goias_black_750ml/front.jpg",
     "variations": [
       {
         "sku": "garrafa_termica_oasis_goias_black_750ml-unico",
@@ -2780,9 +2780,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/garrafa_termica_oasis_goias_off_white_750ml/front.jpg"
+      "lib/assets/store/products/goias/garrafa_termica_oasis_goias_off_white_750ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/garrafa_termica_oasis_goias_off_white_750ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/garrafa_termica_oasis_goias_off_white_750ml/front.jpg",
     "variations": [
       {
         "sku": "garrafa_termica_oasis_goias_off_white_750ml-unico",
@@ -2816,9 +2816,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/kit_cartao_goias_caixa_havanna/front.jpg"
+      "lib/assets/store/products/goias/kit_cartao_goias_caixa_havanna/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/kit_cartao_goias_caixa_havanna/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/kit_cartao_goias_caixa_havanna/front.jpg",
     "variations": [
       {
         "sku": "kit_cartao_goias_caixa_havanna-unico",
@@ -2852,9 +2852,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/kit_cartao_goias_caixa_verde/front.jpg"
+      "lib/assets/store/products/goias/kit_cartao_goias_caixa_verde/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/kit_cartao_goias_caixa_verde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/kit_cartao_goias_caixa_verde/front.jpg",
     "variations": [
       {
         "sku": "kit_cartao_goias_caixa_verde-unico",
@@ -2888,9 +2888,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/kit_porta_cartao_preto/front.jpg"
+      "lib/assets/store/products/goias/kit_porta_cartao_preto/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/kit_porta_cartao_preto/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/kit_porta_cartao_preto/front.jpg",
     "variations": [
       {
         "sku": "kit_porta_cartao_preto-unico",
@@ -2926,10 +2926,10 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/luvas_de_goleiro_infantil_goias/front.jpg",
-      "lib/assets/store/products/luvas_de_goleiro_infantil_goias/back.jpg"
+      "lib/assets/store/products/goias/luvas_de_goleiro_infantil_goias/front.jpg",
+      "lib/assets/store/products/goias/luvas_de_goleiro_infantil_goias/back.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/luvas_de_goleiro_infantil_goias/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/luvas_de_goleiro_infantil_goias/front.jpg",
     "variations": [
       {
         "sku": "luvas_de_goleiro_infantil_goias-unico",
@@ -2963,9 +2963,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/meiao_goias_branco_adulto/front.jpg"
+      "lib/assets/store/products/goias/meiao_goias_branco_adulto/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/meiao_goias_branco_adulto/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/meiao_goias_branco_adulto/front.jpg",
     "variations": [
       {
         "sku": "meiao_goias_branco_adulto-unico",
@@ -3001,9 +3001,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/meiao_goias_branco_infantil/front.jpg"
+      "lib/assets/store/products/goias/meiao_goias_branco_infantil/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/meiao_goias_branco_infantil/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/meiao_goias_branco_infantil/front.jpg",
     "variations": [
       {
         "sku": "meiao_goias_branco_infantil-unico",
@@ -3037,9 +3037,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/meiao_goias_branco_juvenil/front.jpg"
+      "lib/assets/store/products/goias/meiao_goias_branco_juvenil/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/meiao_goias_branco_juvenil/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/meiao_goias_branco_juvenil/front.jpg",
     "variations": [
       {
         "sku": "meiao_goias_branco_juvenil-unico",
@@ -3073,9 +3073,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/meiao_goias_branco_verde/front.jpg"
+      "lib/assets/store/products/goias/meiao_goias_branco_verde/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/meiao_goias_branco_verde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/meiao_goias_branco_verde/front.jpg",
     "variations": [
       {
         "sku": "meiao_goias_branco_verde-unico",
@@ -3109,9 +3109,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/meiao_goias_verde_juvenil/front.jpg"
+      "lib/assets/store/products/goias/meiao_goias_verde_juvenil/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/meiao_goias_verde_juvenil/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/meiao_goias_verde_juvenil/front.jpg",
     "variations": [
       {
         "sku": "meiao_goias_verde_juvenil-unico",
@@ -3145,9 +3145,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/mini_bola_de_futebol_goias_e_c/front.jpg"
+      "lib/assets/store/products/goias/mini_bola_de_futebol_goias_e_c/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/mini_bola_de_futebol_goias_e_c/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/mini_bola_de_futebol_goias_e_c/front.jpg",
     "variations": [
       {
         "sku": "mini_bola_de_futebol_goias_e_c-unico",
@@ -3181,10 +3181,10 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/mochila_goias_verde/front.jpg",
-      "lib/assets/store/products/mochila_goias_verde/back.jpg"
+      "lib/assets/store/products/goias/mochila_goias_verde/front.jpg",
+      "lib/assets/store/products/goias/mochila_goias_verde/back.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/mochila_goias_verde/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/mochila_goias_verde/front.jpg",
     "variations": [
       {
         "sku": "mochila_goias_verde-unico",
@@ -3218,9 +3218,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/mochila_pequena_preta_goias/front.jpg"
+      "lib/assets/store/products/goias/mochila_pequena_preta_goias/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/mochila_pequena_preta_goias/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/mochila_pequena_preta_goias/front.jpg",
     "variations": [
       {
         "sku": "mochila_pequena_preta_goias-unico",
@@ -3254,10 +3254,10 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/pelucia_goias_periquito_mod_p/front.png",
-      "lib/assets/store/products/pelucia_goias_periquito_mod_p/back.png"
+      "lib/assets/store/products/goias/pelucia_goias_periquito_mod_p/front.png",
+      "lib/assets/store/products/goias/pelucia_goias_periquito_mod_p/back.png"
     ],
-    "thumbnail": "lib/assets/store/products/pelucia_goias_periquito_mod_p/front.png",
+    "thumbnail": "lib/assets/store/products/goias/pelucia_goias_periquito_mod_p/front.png",
     "variations": [
       {
         "sku": "pelucia_goias_periquito_mod_p-unico",
@@ -3291,9 +3291,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/squeeze_garrafa_goias_aluminio_verde_700ml/front.jpg"
+      "lib/assets/store/products/goias/squeeze_garrafa_goias_aluminio_verde_700ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/squeeze_garrafa_goias_aluminio_verde_700ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/squeeze_garrafa_goias_aluminio_verde_700ml/front.jpg",
     "variations": [
       {
         "sku": "squeeze_garrafa_goias_aluminio_verde_700ml-unico",
@@ -3327,9 +3327,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/squeeze_garrafa_goias_plastica_500ml/front.jpg"
+      "lib/assets/store/products/goias/squeeze_garrafa_goias_plastica_500ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/squeeze_garrafa_goias_plastica_500ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/squeeze_garrafa_goias_plastica_500ml/front.jpg",
     "variations": [
       {
         "sku": "squeeze_garrafa_goias_plastica_500ml-unico",
@@ -3363,9 +3363,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/squeeze_goias_aluminio_verde_500ml/front.jpg"
+      "lib/assets/store/products/goias/squeeze_goias_aluminio_verde_500ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/squeeze_goias_aluminio_verde_500ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/squeeze_goias_aluminio_verde_500ml/front.jpg",
     "variations": [
       {
         "sku": "squeeze_goias_aluminio_verde_500ml-unico",
@@ -3399,9 +3399,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_500ml/front.jpg"
+      "lib/assets/store/products/goias/squeeze_plastica_garrafa_goias_verde_500ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_500ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/squeeze_plastica_garrafa_goias_verde_500ml/front.jpg",
     "variations": [
       {
         "sku": "squeeze_plastica_garrafa_goias_verde_500ml-unico",
@@ -3435,9 +3435,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_com_alca_500ml/front.jpg"
+      "lib/assets/store/products/goias/squeeze_plastica_garrafa_goias_verde_com_alca_500ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_com_alca_500ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/squeeze_plastica_garrafa_goias_verde_com_alca_500ml/front.jpg",
     "variations": [
       {
         "sku": "squeeze_plastica_garrafa_goias_verde_com_alca_500ml-unico",
@@ -3471,9 +3471,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml/front.jpg"
+      "lib/assets/store/products/goias/squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml/front.jpg",
     "variations": [
       {
         "sku": "squeeze_plastica_garrafa_goias_verde_rosqueavel_500ml-unico",
@@ -3509,10 +3509,10 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/camisa_reserva_goias_alviverde_branca/front.png",
-      "lib/assets/store/products/camisa_reserva_goias_alviverde_branca/back.png"
+      "lib/assets/store/products/goias/camisa_reserva_goias_alviverde_branca/front.png",
+      "lib/assets/store/products/goias/camisa_reserva_goias_alviverde_branca/back.png"
     ],
-    "thumbnail": "lib/assets/store/products/camisa_reserva_goias_alviverde_branca/front.png",
+    "thumbnail": "lib/assets/store/products/goias/camisa_reserva_goias_alviverde_branca/front.png",
     "variations": [
       {
         "sku": "camisa_reserva_goias_alviverde_branca-P",
@@ -3568,9 +3568,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/camisa_reserva_goias_alviverde/front.png"
+      "lib/assets/store/products/goias/camisa_reserva_goias_alviverde/front.png"
     ],
-    "thumbnail": "lib/assets/store/products/camisa_reserva_goias_alviverde/front.png",
+    "thumbnail": "lib/assets/store/products/goias/camisa_reserva_goias_alviverde/front.png",
     "variations": [
       {
         "sku": "camisa_reserva_goias_alviverde-P",
@@ -3621,10 +3621,10 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/camisa_reserva_goias_escudo/front.png",
-      "lib/assets/store/products/camisa_reserva_goias_escudo/back.png"
+      "lib/assets/store/products/goias/camisa_reserva_goias_escudo/front.png",
+      "lib/assets/store/products/goias/camisa_reserva_goias_escudo/back.png"
     ],
-    "thumbnail": "lib/assets/store/products/camisa_reserva_goias_escudo/front.png",
+    "thumbnail": "lib/assets/store/products/goias/camisa_reserva_goias_escudo/front.png",
     "variations": [
       {
         "sku": "camisa_reserva_goias_escudo-P",
@@ -3680,11 +3680,11 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/camiseta_reserva_goias_coracao_esmeraldino_preta/front.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_coracao_esmeraldino_preta/back.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_coracao_esmeraldino_preta/detail_01.jpg"
+      "lib/assets/store/products/goias/camiseta_reserva_goias_coracao_esmeraldino_preta/front.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_coracao_esmeraldino_preta/back.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_coracao_esmeraldino_preta/detail_01.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/camiseta_reserva_goias_coracao_esmeraldino_preta/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/camiseta_reserva_goias_coracao_esmeraldino_preta/front.jpg",
     "variations": [
       {
         "sku": "camiseta_reserva_goias_coracao_esmeraldino_preta-P",
@@ -3740,12 +3740,12 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/camiseta_reserva_goias_forca_esmeraldino_cinza/front.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_forca_esmeraldino_cinza/back.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_forca_esmeraldino_cinza/detail_01.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_forca_esmeraldino_cinza/detail_02.jpg"
+      "lib/assets/store/products/goias/camiseta_reserva_goias_forca_esmeraldino_cinza/front.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_forca_esmeraldino_cinza/back.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_forca_esmeraldino_cinza/detail_01.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_forca_esmeraldino_cinza/detail_02.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/camiseta_reserva_goias_forca_esmeraldino_cinza/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/camiseta_reserva_goias_forca_esmeraldino_cinza/front.jpg",
     "variations": [
       {
         "sku": "camiseta_reserva_goias_forca_esmeraldino_cinza-P",
@@ -3801,13 +3801,13 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/camiseta_reserva_goias_pica_pau_esmeraldino_branca/front.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_pica_pau_esmeraldino_branca/back.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_pica_pau_esmeraldino_branca/detail_01.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_pica_pau_esmeraldino_branca/detail_02.jpg",
-      "lib/assets/store/products/camiseta_reserva_goias_pica_pau_esmeraldino_branca/detail_03.jpg"
+      "lib/assets/store/products/goias/camiseta_reserva_goias_pica_pau_esmeraldino_branca/front.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_pica_pau_esmeraldino_branca/back.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_pica_pau_esmeraldino_branca/detail_01.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_pica_pau_esmeraldino_branca/detail_02.jpg",
+      "lib/assets/store/products/goias/camiseta_reserva_goias_pica_pau_esmeraldino_branca/detail_03.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/camiseta_reserva_goias_pica_pau_esmeraldino_branca/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/camiseta_reserva_goias_pica_pau_esmeraldino_branca/front.jpg",
     "variations": [
       {
         "sku": "camiseta_reserva_goias_pica_pau_esmeraldino_branca-P",
@@ -3864,13 +3864,13 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/camisa_uniforme_03_goias_feminino/front.png",
-      "lib/assets/store/products/camisa_uniforme_03_goias_feminino/back.png",
-      "lib/assets/store/products/camisa_uniforme_03_goias_feminino/detail_01.png",
-      "lib/assets/store/products/camisa_uniforme_03_goias_feminino/detail_02.png",
-      "lib/assets/store/products/camisa_uniforme_03_goias_feminino/detail_03.png"
+      "lib/assets/store/products/goias/camisa_uniforme_03_goias_feminino/front.png",
+      "lib/assets/store/products/goias/camisa_uniforme_03_goias_feminino/back.png",
+      "lib/assets/store/products/goias/camisa_uniforme_03_goias_feminino/detail_01.png",
+      "lib/assets/store/products/goias/camisa_uniforme_03_goias_feminino/detail_02.png",
+      "lib/assets/store/products/goias/camisa_uniforme_03_goias_feminino/detail_03.png"
     ],
-    "thumbnail": "lib/assets/store/products/camisa_uniforme_03_goias_feminino/front.png",
+    "thumbnail": "lib/assets/store/products/goias/camisa_uniforme_03_goias_feminino/front.png",
     "variations": [
       {
         "sku": "camisa_uniforme_03_goias_feminino-P",
@@ -3929,9 +3929,9 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/camisa_goias_uniforme_03_goleiro_jogador_masculina/front.jpg"
+      "lib/assets/store/products/goias/camisa_goias_uniforme_03_goleiro_jogador_masculina/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/camisa_goias_uniforme_03_goleiro_jogador_masculina/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/camisa_goias_uniforme_03_goleiro_jogador_masculina/front.jpg",
     "variations": [
       {
         "sku": "camisa_goias_uniforme_03_goleiro_jogador_masculina-P",
@@ -3990,9 +3990,9 @@
     "originalPrice": null,
     "installments": 4,
     "images": [
-      "lib/assets/store/products/camisa_goias_uniforme_01_goleiro_juvenil_jogador/front.jpg"
+      "lib/assets/store/products/goias/camisa_goias_uniforme_01_goleiro_juvenil_jogador/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/camisa_goias_uniforme_01_goleiro_juvenil_jogador/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/camisa_goias_uniforme_01_goleiro_juvenil_jogador/front.jpg",
     "variations": [
       {
         "sku": "camisa_goias_uniforme_01_goleiro_juvenil_jogador-10",
@@ -4036,9 +4036,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_goias_cortador_de_unha/front.jpg"
+      "lib/assets/store/products/goias/chaveiro_goias_cortador_de_unha/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_goias_cortador_de_unha/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_goias_cortador_de_unha/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_goias_cortador_de_unha-unico",
@@ -4072,9 +4072,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_goias_garrafa_abridor/front.jpg"
+      "lib/assets/store/products/goias/chaveiro_goias_garrafa_abridor/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_goias_garrafa_abridor/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_goias_garrafa_abridor/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_goias_garrafa_abridor-unico",
@@ -4108,9 +4108,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/chaveiro_goias_luva/front.jpg"
+      "lib/assets/store/products/goias/chaveiro_goias_luva/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/chaveiro_goias_luva/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/chaveiro_goias_luva/front.jpg",
     "variations": [
       {
         "sku": "chaveiro_goias_luva-unico",
@@ -4146,9 +4146,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/meiao_goias_verde_infantil/front.jpg"
+      "lib/assets/store/products/goias/meiao_goias_verde_infantil/front.jpg"
     ],
-    "thumbnail": "lib/assets/store/products/meiao_goias_verde_infantil/front.jpg",
+    "thumbnail": "lib/assets/store/products/goias/meiao_goias_verde_infantil/front.jpg",
     "variations": [
       {
         "sku": "meiao_goias_verde_infantil-unico",
@@ -4182,9 +4182,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/bone_03_goias/front.jpeg"
+      "lib/assets/store/products/goias/bone_03_goias/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/bone_03_goias/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/bone_03_goias/front.jpeg",
     "variations": [
       {
         "sku": "bone_03_goias-unico",
@@ -4218,9 +4218,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/bone_goias/front.jpeg"
+      "lib/assets/store/products/goias/bone_goias/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/bone_goias/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/bone_goias/front.jpeg",
     "variations": [
       {
         "sku": "bone_goias-unico",
@@ -4254,10 +4254,10 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/colar_goias_coracao_foleado_dourado/front.jpeg",
-      "lib/assets/store/products/colar_goias_coracao_foleado_dourado/back.jpeg"
+      "lib/assets/store/products/goias/colar_goias_coracao_foleado_dourado/front.jpeg",
+      "lib/assets/store/products/goias/colar_goias_coracao_foleado_dourado/back.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/colar_goias_coracao_foleado_dourado/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/colar_goias_coracao_foleado_dourado/front.jpeg",
     "variations": [
       {
         "sku": "colar_goias_coracao_foleado_dourado-unico",
@@ -4291,10 +4291,10 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/colar_goias_escudo_foleado_prata/front.jpeg",
-      "lib/assets/store/products/colar_goias_escudo_foleado_prata/back.jpeg"
+      "lib/assets/store/products/goias/colar_goias_escudo_foleado_prata/front.jpeg",
+      "lib/assets/store/products/goias/colar_goias_escudo_foleado_prata/back.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/colar_goias_escudo_foleado_prata/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/colar_goias_escudo_foleado_prata/front.jpeg",
     "variations": [
       {
         "sku": "colar_goias_escudo_foleado_prata-unico",
@@ -4328,9 +4328,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/colar_goias_g_cravejado/front.jpeg"
+      "lib/assets/store/products/goias/colar_goias_g_cravejado/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/colar_goias_g_cravejado/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/colar_goias_g_cravejado/front.jpeg",
     "variations": [
       {
         "sku": "colar_goias_g_cravejado-unico",
@@ -4364,10 +4364,10 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/colar_goias_g_cravejado_dourado/front.jpeg",
-      "lib/assets/store/products/colar_goias_g_cravejado_dourado/back.jpeg"
+      "lib/assets/store/products/goias/colar_goias_g_cravejado_dourado/front.jpeg",
+      "lib/assets/store/products/goias/colar_goias_g_cravejado_dourado/back.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/colar_goias_g_cravejado_dourado/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/colar_goias_g_cravejado_dourado/front.jpeg",
     "variations": [
       {
         "sku": "colar_goias_g_cravejado_dourado-unico",
@@ -4401,10 +4401,10 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/colar_goias_g_foleado_prata/front.jpeg",
-      "lib/assets/store/products/colar_goias_g_foleado_prata/back.jpeg"
+      "lib/assets/store/products/goias/colar_goias_g_foleado_prata/front.jpeg",
+      "lib/assets/store/products/goias/colar_goias_g_foleado_prata/back.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/colar_goias_g_foleado_prata/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/colar_goias_g_foleado_prata/front.jpeg",
     "variations": [
       {
         "sku": "colar_goias_g_foleado_prata-unico",
@@ -4438,10 +4438,10 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/colar_goias_quadro_coracao_foleado_prata/front.jpeg",
-      "lib/assets/store/products/colar_goias_quadro_coracao_foleado_prata/back.jpeg"
+      "lib/assets/store/products/goias/colar_goias_quadro_coracao_foleado_prata/front.jpeg",
+      "lib/assets/store/products/goias/colar_goias_quadro_coracao_foleado_prata/back.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/colar_goias_quadro_coracao_foleado_prata/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/colar_goias_quadro_coracao_foleado_prata/front.jpeg",
     "variations": [
       {
         "sku": "colar_goias_quadro_coracao_foleado_prata-unico",
@@ -4475,9 +4475,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/copo_termico_goias_sleek_salmao_473ml/front.jpeg"
+      "lib/assets/store/products/goias/copo_termico_goias_sleek_salmao_473ml/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/copo_termico_goias_sleek_salmao_473ml/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/copo_termico_goias_sleek_salmao_473ml/front.jpeg",
     "variations": [
       {
         "sku": "copo_termico_goias_sleek_salmao_473ml-unico",
@@ -4511,9 +4511,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/cordao_goias_de_chavei_nada_pode_abalar/front.jpeg"
+      "lib/assets/store/products/goias/cordao_goias_de_chavei_nada_pode_abalar/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/cordao_goias_de_chavei_nada_pode_abalar/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/cordao_goias_de_chavei_nada_pode_abalar/front.jpeg",
     "variations": [
       {
         "sku": "cordao_goias_de_chavei_nada_pode_abalar-unico",
@@ -4547,9 +4547,9 @@
     "originalPrice": null,
     "installments": 1,
     "images": [
-      "lib/assets/store/products/flamula_goias_triangular/front.jpeg"
+      "lib/assets/store/products/goias/flamula_goias_triangular/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/flamula_goias_triangular/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/flamula_goias_triangular/front.jpeg",
     "variations": [
       {
         "sku": "flamula_goias_triangular-unico",
@@ -4583,9 +4583,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/relogio_goias_classic_k_branco/front.jpeg"
+      "lib/assets/store/products/goias/relogio_goias_classic_k_branco/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/relogio_goias_classic_k_branco/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/relogio_goias_classic_k_branco/front.jpeg",
     "variations": [
       {
         "sku": "relogio_goias_classic_k_branco-unico",
@@ -4619,9 +4619,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/relogio_goias_classic_k_verde/front.jpeg"
+      "lib/assets/store/products/goias/relogio_goias_classic_k_verde/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/relogio_goias_classic_k_verde/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/relogio_goias_classic_k_verde/front.jpeg",
     "variations": [
       {
         "sku": "relogio_goias_classic_k_verde-unico",
@@ -4655,9 +4655,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/relogio_goias_esmeraldino_k_branco/front.jpeg"
+      "lib/assets/store/products/goias/relogio_goias_esmeraldino_k_branco/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/relogio_goias_esmeraldino_k_branco/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/relogio_goias_esmeraldino_k_branco/front.jpeg",
     "variations": [
       {
         "sku": "relogio_goias_esmeraldino_k_branco-unico",
@@ -4691,9 +4691,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/relogio_goias_esmeraldino_k_verde/front.jpeg"
+      "lib/assets/store/products/goias/relogio_goias_esmeraldino_k_verde/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/relogio_goias_esmeraldino_k_verde/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/relogio_goias_esmeraldino_k_verde/front.jpeg",
     "variations": [
       {
         "sku": "relogio_goias_esmeraldino_k_verde-unico",
@@ -4727,9 +4727,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_branco/front.jpeg"
+      "lib/assets/store/products/goias/relogio_goias_tempo_de_jogo_green_k_branco/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_branco/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/relogio_goias_tempo_de_jogo_green_k_branco/front.jpeg",
     "variations": [
       {
         "sku": "relogio_goias_tempo_de_jogo_green_k_branco-unico",
@@ -4763,9 +4763,9 @@
     "originalPrice": null,
     "installments": 2,
     "images": [
-      "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_verde/front.jpeg"
+      "lib/assets/store/products/goias/relogio_goias_tempo_de_jogo_green_k_verde/front.jpeg"
     ],
-    "thumbnail": "lib/assets/store/products/relogio_goias_tempo_de_jogo_green_k_verde/front.jpeg",
+    "thumbnail": "lib/assets/store/products/goias/relogio_goias_tempo_de_jogo_green_k_verde/front.jpeg",
     "variations": [
       {
         "sku": "relogio_goias_tempo_de_jogo_green_k_verde-unico",

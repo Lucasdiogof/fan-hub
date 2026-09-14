@@ -36,9 +36,7 @@ class NextMatchCard extends StatelessWidget {
     final colors = context.colors;
     final isLive = _isLive;
     // `toBrazilTime`, nunca `.toLocal()` (spec 2026-09-12).
-    final kickoff = match.kickoff != null
-        ? toBrazilTime(match.kickoff!)
-        : null;
+    final kickoff = match.kickoff != null ? toBrazilTime(match.kickoff!) : null;
     return Container(
       padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(

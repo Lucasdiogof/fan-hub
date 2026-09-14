@@ -8,7 +8,7 @@ import 'package:goias_app/core/club/goias_club_config.dart';
 void main() {
   test('Goiás tem exatamente 1 banner configurado', () {
     expect(goiasClubConfig.assets.storeHomeBanners, [
-      'lib/assets/goias_store.png',
+      'lib/assets/store/banners/goias/goias_store.png',
     ]);
   });
 
