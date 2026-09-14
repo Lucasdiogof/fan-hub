@@ -28,9 +28,7 @@ class MatchListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     // `toBrazilTime`, nunca `.toLocal()` (spec 2026-09-12).
-    final kickoff = match.kickoff != null
-        ? toBrazilTime(match.kickoff!)
-        : null;
+    final kickoff = match.kickoff != null ? toBrazilTime(match.kickoff!) : null;
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(AppRadius.cardSmall),

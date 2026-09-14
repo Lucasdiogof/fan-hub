@@ -56,7 +56,9 @@ void main() {
     ) async {
       await _pump(
         tester,
-        const StoreBannerCarousel(banners: ['lib/assets/goias_store.png']),
+        const StoreBannerCarousel(
+          banners: ['lib/assets/store/banners/goias/goias_store.png'],
+        ),
       );
 
       expect(find.byType(Image), findsOneWidget);
@@ -75,7 +77,7 @@ void main() {
         SizedBox(
           height: 200,
           child: StoreBannerCarousel(
-            banners: const ['lib/assets/goias_store.png'],
+            banners: const ['lib/assets/store/banners/goias/goias_store.png'],
             onTap: () => tapped = true,
           ),
         ),
@@ -90,7 +92,9 @@ void main() {
       (tester) async {
         await _pump(
           tester,
-          const StoreBannerCarousel(banners: ['lib/assets/goias_store.png']),
+          const StoreBannerCarousel(
+            banners: ['lib/assets/store/banners/goias/goias_store.png'],
+          ),
         );
 
         await tester.pump(const Duration(seconds: 6));
@@ -232,7 +236,9 @@ void main() {
     ) async {
       await _pump(
         tester,
-        const StoreBannerCarousel(banners: ['lib/assets/goias_store.png']),
+        const StoreBannerCarousel(
+          banners: ['lib/assets/store/banners/goias/goias_store.png'],
+        ),
       );
       expect(find.byType(PageView), findsNothing);
 
@@ -258,7 +264,9 @@ void main() {
 
       await _pump(
         tester,
-        const StoreBannerCarousel(banners: ['lib/assets/goias_store.png']),
+        const StoreBannerCarousel(
+          banners: ['lib/assets/store/banners/goias/goias_store.png'],
+        ),
       );
 
       expect(find.byType(PageView), findsNothing);

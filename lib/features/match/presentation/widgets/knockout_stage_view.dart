@@ -274,7 +274,10 @@ class _TeamRow extends StatelessWidget {
             // fica neutra numa coluna estreita — quem sinaliza o vencedor
             // é a coluna de agregado.
             legScores.length == 1
-                ? _ScorePill(text: score?.toString() ?? '-', highlighted: isWinner)
+                ? _ScorePill(
+                    text: score?.toString() ?? '-',
+                    highlighted: isWinner,
+                  )
                 : SizedBox(
                     width: _kScoreColumnWidth,
                     child: Text(
@@ -289,7 +292,9 @@ class _TeamRow extends StatelessWidget {
                   ),
           if (aggregate != null)
             _ScorePill(
-              text: penalties != null ? '$aggregate ($penalties)' : '$aggregate',
+              text: penalties != null
+                  ? '$aggregate ($penalties)'
+                  : '$aggregate',
               highlighted: isWinner,
             ),
         ],
