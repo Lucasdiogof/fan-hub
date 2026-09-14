@@ -13,7 +13,12 @@ import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 
 class ClubPage extends StatelessWidget {
-  const ClubPage({super.key});
+  const ClubPage({this.showBackButton = true, super.key});
+
+  /// `false` quando O Clube ocupa o slot de Sócio na bottom nav (Sócio
+  /// desligado pro envio às lojas) — nesse caso é raiz de aba, sem pra
+  /// onde voltar.
+  final bool showBackButton;
 
   /// Mesmo padrão do Perfil: carrega o Elenco ANTES de navegar, pra tela já
   /// abrir pronta em vez de aparecer vazia esperando a busca.
@@ -39,6 +44,7 @@ class ClubPage extends StatelessWidget {
       backgroundColor: colors.background,
       body: DetailPageHeader(
         title: context.l10n.clubEntryTitle,
+        showBackButton: showBackButton,
         heroTitle: const ClubHeader(),
         body: Padding(
           padding: const EdgeInsets.only(top: AppSpacing.xxl),

@@ -48,7 +48,12 @@ import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
 
 class ArenaPage extends StatefulWidget {
-  const ArenaPage({super.key});
+  const ArenaPage({this.showBackButton = true, super.key});
+
+  /// `false` quando a Arena ocupa o slot de Loja na bottom nav (Loja
+  /// desligada pro envio às lojas) — nesse caso é raiz de aba, sem pra
+  /// onde voltar.
+  final bool showBackButton;
 
   @override
   State<ArenaPage> createState() => _ArenaPageState();
@@ -350,6 +355,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                   children: [
                     ArenaHeaderBar(
                       onRankingTap: () => _openRanking(context),
+                      showBackButton: widget.showBackButton,
                       onBack: () =>
                           context.canPop() ? context.pop() : context.go('/'),
                     ),

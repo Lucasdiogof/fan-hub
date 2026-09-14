@@ -24,8 +24,8 @@ class MainNavigationRail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final items = mainNavItems(context);
     final capabilities = sl<ClubConfig>().capabilities;
+    final items = mainNavItems(context, capabilities);
     return DecoratedBox(
       decoration: BoxDecoration(
         color: colors.surface,

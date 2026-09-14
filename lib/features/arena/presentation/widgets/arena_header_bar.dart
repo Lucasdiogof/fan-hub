@@ -16,11 +16,13 @@ class ArenaHeaderBar extends StatelessWidget {
   const ArenaHeaderBar({
     required this.onRankingTap,
     required this.onBack,
+    this.showBackButton = true,
     super.key,
   });
 
   final VoidCallback onRankingTap;
   final VoidCallback onBack;
+  final bool showBackButton;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,8 @@ class ArenaHeaderBar extends StatelessWidget {
       children: [
         Row(
           children: [
-            BackButtonCircle(size: 34, iconSize: 16, onTap: onBack),
+            if (showBackButton)
+              BackButtonCircle(size: 34, iconSize: 16, onTap: onBack),
             const Spacer(),
             _RankingButton(onTap: onRankingTap),
           ],
