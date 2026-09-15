@@ -109,7 +109,7 @@ class _MatchRow extends StatelessWidget {
     final locale = Localizations.localeOf(context).toLanguageTag();
     final home = match.homeTeam;
     final away = match.awayTeam;
-    final hasScore = match.homeScore != null && match.awayScore != null;
+    final score = match.score;
     final round = humanizeRound(l10n, match.round);
     final subtitleParts = [match.competition, ?round, ?match.venueName];
 
@@ -205,10 +205,10 @@ class _MatchRow extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        if (hasScore) ...[
+                        if (score.isKnown) ...[
                           const SizedBox(width: 8),
                           Text(
-                            '${match.homeScore}-${match.awayScore}',
+                            '${score.firstScore}-${score.secondScore}',
                             style: TextStyle(
                               fontSize: 19,
                               fontWeight: FontWeight.w900,

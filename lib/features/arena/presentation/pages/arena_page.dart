@@ -90,7 +90,7 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
   /// natureza (ver spec), então qualquer falha/ausência de próximo jogo
   /// simplesmente esconde essa linha, nunca quebra o hero.
   Future<int?> _loadCrowdParticipants() async {
-    final matchId = sl<HomeCubit>().state.nextMatch?.id;
+    final matchId = sl<HomeCubit>().state.matchForLineupVoting?.id;
     if (matchId == null) return null;
     final result = await sl<CrowdLineupRepository>().getCrowdLineup(matchId);
     return result is Success<CrowdLineup> ? result.data.totalVotes : null;
@@ -369,19 +369,19 @@ class _ArenaPageState extends State<ArenaPage> with RouteAware {
                       BlocBuilder<HomeCubit, HomeState>(
                         bloc: sl<HomeCubit>(),
                         builder: (context, homeState) {
-                          final nextMatch = homeState.nextMatch;
-                          if (nextMatch == null) {
+                          final votingMatch = homeState.matchForLineupVoting;
+                          if (votingMatch == null) {
                             return const CrowdLineupHeroEmptyCard();
                           }
                           return FutureBuilder<int?>(
                             future: _crowdParticipantsFuture,
                             builder: (context, participantsSnapshot) {
                               return CrowdLineupHeroCard(
-                                match: nextMatch,
+                                match: votingMatch,
                                 hasVoted: homeState.hasVotedForNextMatch,
                                 participants: participantsSnapshot.data,
                                 onTap: () =>
-                                    openCrowdLineup(context, nextMatch),
+                                    openCrowdLineup(context, votingMatch),
                               );
                             },
                           );

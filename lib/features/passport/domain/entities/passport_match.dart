@@ -19,6 +19,53 @@ PassportOutcome? _parseOutcome(String? value) => switch (value) {
   _ => null,
 };
 
+/// Como o placar de uma [PassportMatch] deve ser lido — resolvido uma
+/// única vez (ver [PassportMatch.score]), nunca cada tela decidindo por
+/// conta própria se pode inferir mando.
+enum PassportScoreMode {
+  /// `homeScore`/`awayScore` conhecidos — modo padrão, mandante × visitante.
+  homeAway,
+
+  /// Só `clubScore`/`opponentScore` conhecidos (comum em 1943-1999: o
+  /// resultado é confirmado, mas a fonte não distingue mandante de
+  /// visitante). Apresentação NEUTRA pela perspectiva do clube — nunca
+  /// infere quem jogou em casa.
+  clubPerspective,
+
+  /// Nenhum dos dois pares está completo — placar realmente desconhecido
+  /// (hoje só 1 partida em todo o catálogo: Goiás x ABG, 1946).
+  unknown,
+}
+
+/// Placar resolvido pra exibição — [PassportMatch.score]. As 3 telas do
+/// Passaporte (lista, linha v1, ticket v2) leem só isto, nunca
+/// `homeScore`/`awayScore`/`clubScore`/`opponentScore` diretamente, pra
+/// nunca divergir entre si sobre quando/como mostrar o placar.
+class PassportScoreDisplay extends Equatable {
+  const PassportScoreDisplay({
+    required this.mode,
+    this.firstScore,
+    this.secondScore,
+  });
+
+  final PassportScoreMode mode;
+
+  /// Mandante (modo [PassportScoreMode.homeAway]) ou clube (modo
+  /// [PassportScoreMode.clubPerspective]). `null` só no modo
+  /// [PassportScoreMode.unknown].
+  final int? firstScore;
+
+  /// Visitante (modo [PassportScoreMode.homeAway]) ou adversário (modo
+  /// [PassportScoreMode.clubPerspective]). `null` só no modo
+  /// [PassportScoreMode.unknown].
+  final int? secondScore;
+
+  bool get isKnown => mode != PassportScoreMode.unknown;
+
+  @override
+  List<Object?> get props => [mode, firstScore, secondScore];
+}
+
 /// Uma partida do catálogo histórico (ver `passport_matches` no Supabase) —
 /// espelha 1:1 o JSON oficial (`passaporte_esmeraldino_partidas_2000_2026`),
 /// nunca inventa dado ausente (horário/estádio nulos continuam nulos).
@@ -82,6 +129,30 @@ class PassportMatch extends Equatable {
   final bool attended;
 
   bool get isFinished => status == PassportMatchStatus.finished;
+
+  /// Resolução centralizada do placar pra exibição — ver
+  /// [PassportScoreMode]. Regra, nessa ordem:
+  /// 1. `homeScore`+`awayScore` completos -> [PassportScoreMode.homeAway].
+  /// 2. senão, `clubScore`+`opponentScore` completos ->
+  ///    [PassportScoreMode.clubPerspective] (nunca infere mando).
+  /// 3. senão -> [PassportScoreMode.unknown].
+  PassportScoreDisplay get score {
+    if (homeScore != null && awayScore != null) {
+      return PassportScoreDisplay(
+        mode: PassportScoreMode.homeAway,
+        firstScore: homeScore,
+        secondScore: awayScore,
+      );
+    }
+    if (clubScore != null && opponentScore != null) {
+      return PassportScoreDisplay(
+        mode: PassportScoreMode.clubPerspective,
+        firstScore: clubScore,
+        secondScore: opponentScore,
+      );
+    }
+    return const PassportScoreDisplay(mode: PassportScoreMode.unknown);
+  }
 
   /// Nunca partida futura pode ser marcada, mesmo se por algum motivo
   /// viesse marcada como FINISHED — checagem espelha a da RPC de

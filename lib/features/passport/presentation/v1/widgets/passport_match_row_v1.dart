@@ -34,7 +34,7 @@ class PassportMatchRowV1 extends StatelessWidget {
     final matchupLabel = (home != null && away != null)
         ? '$home x $away'
         : '${sl<ClubConfig>().identity.shortName} x ${match.opponent}';
-    final hasScore = match.homeScore != null && match.awayScore != null;
+    final score = match.score;
 
     return Semantics(
       button: canMark,
@@ -105,10 +105,10 @@ class PassportMatchRowV1 extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (hasScore) ...[
+                        if (score.isKnown) ...[
                           const SizedBox(width: 8),
                           Text(
-                            '${match.homeScore}-${match.awayScore}',
+                            '${score.firstScore}-${score.secondScore}',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w800,
