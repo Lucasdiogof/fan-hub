@@ -20,15 +20,17 @@ class HomeState extends Equatable {
   /// decidir se dá pra escalar a Torcida — ver [matchForLineupVoting].
   final Match? nextMatch;
 
-  /// Partida-alvo da "Escalação da Torcida" — SEMPRE o próximo jogo
-  /// realmente agendado (nunca um jogo já encerrado, mesmo que ele ainda
-  /// esteja aparecendo no card da Home dentro da folga de
-  /// [HomeCubit._finishedGracePeriod]). Campo separado de [nextMatch] de
-  /// propósito: são duas perguntas diferentes ("o que eu mostro no card?"
-  /// vs. "pra qual jogo eu deixo escalar?") que só coincidiam por acaso
-  /// até um usuário reportar, 1 dia depois de Botafogo-SP x Goiás, que o
-  /// hero da Arena ainda oferecia escalar o time pro jogo que já tinha
-  /// acabado.
+  /// Partida-alvo da "Escalação da Torcida" — o MESMO jogo que [nextMatch]
+  /// mostra no card da Home, mas só quando ele ainda está aberto
+  /// (agendado/ao vivo/intervalo). `null` sempre que [nextMatch] for um
+  /// resultado já encerrado (dentro da folga de
+  /// [HomeCubit._finishedGracePeriod]) — comportamento pedido
+  /// explicitamente: enquanto a Home ainda mostra o placar do jogo que
+  /// acabou, a Arena esconde o hero de Escalação (não adianta pro próximo
+  /// jogo); assim que a própria Home troca pro próximo jogo, a Arena
+  /// libera junto, pro mesmo jogo. Campo separado de [nextMatch] só pra a
+  /// UI nunca ter que reimplementar essa regra (`MatchOrdering.isOpen`) em
+  /// mais de um lugar.
   final Match? matchForLineupVoting;
 
   /// Só preenchido quando [status] é [LoadStatus.error] — falha de
