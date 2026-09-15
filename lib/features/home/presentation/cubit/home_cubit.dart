@@ -34,17 +34,27 @@ class HomeCubit extends Cubit<HomeState> {
     switch (snapshotResult) {
       case Success(:final data):
         final resolvedMatch = _resolveMatch(data.nextMatch, data.recentResults);
+        // Alvo da votação: SEMPRE o próximo jogo agendado de verdade
+        // (`data.nextMatch` cru, nunca `resolvedMatch` — que pode ser o
+        // último resultado, mostrado só pela folga de exibição). Nunca deixa
+        // escalar pra um jogo que já terminou só porque o card da Home
+        // ainda está mostrando o placar dele.
+        final votingMatch = data.nextMatch != null && MatchOrdering.isOpen(data.nextMatch!)
+            ? data.nextMatch
+            : null;
         // Resolvido por matchId (nunca um booleano global) — se o próximo
         // jogo mudar, essa consulta muda junto, e o card "Escalação da
         // Torcida" volta pra "Escalar agora" pro jogo novo.
-        final hasVoted = resolvedMatch == null
+        final hasVoted = votingMatch == null
             ? false
-            : await _hasVotedFor(resolvedMatch.id);
+            : await _hasVotedFor(votingMatch.id);
         emit(
           state.copyWith(
             status: LoadStatus.success,
             nextMatch: resolvedMatch,
             clearNextMatch: resolvedMatch == null,
+            matchForLineupVoting: votingMatch,
+            clearMatchForLineupVoting: votingMatch == null,
             errorMessage: () => null,
             hasVotedForNextMatch: hasVoted,
           ),

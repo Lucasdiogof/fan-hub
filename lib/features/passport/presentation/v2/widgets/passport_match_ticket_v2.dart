@@ -34,7 +34,7 @@ class PassportMatchTicketV2 extends StatelessWidget {
     final canMark = match.canMarkAttendance;
     final home = match.homeTeam;
     final away = match.awayTeam;
-    final hasScore = match.homeScore != null && match.awayScore != null;
+    final score = match.score;
     final round = humanizeRound(l10n, match.round);
     final time = shortMatchTime(match.matchTime);
 
@@ -102,10 +102,10 @@ class PassportMatchTicketV2 extends StatelessWidget {
                                 opponent: match.opponent,
                               ),
                             ),
-                            if (hasScore) ...[
+                            if (score.isKnown) ...[
                               const SizedBox(width: 8),
                               Text(
-                                '${match.homeScore}-${match.awayScore}',
+                                '${score.firstScore}-${score.secondScore}',
                                 style: TextStyle(
                                   fontSize: 19,
                                   fontWeight: FontWeight.w900,
