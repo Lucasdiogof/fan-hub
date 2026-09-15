@@ -1021,9 +1021,10 @@ class _MemorableMatchDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final date = match.matchDate;
-    final dateLabel =
-        '${date.day.toString().padLeft(2, '0')}/'
-        '${date.month.toString().padLeft(2, '0')}/${date.year}';
+    final dateLabel = date == null
+        ? context.l10n.matchDateToBeConfirmed
+        : '${date.day.toString().padLeft(2, '0')}/'
+              '${date.month.toString().padLeft(2, '0')}/${date.year}';
     final hasScore = match.clubScore != null && match.opponentScore != null;
 
     return Column(

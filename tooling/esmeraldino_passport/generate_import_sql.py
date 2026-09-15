@@ -1,5 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Passaporte Esmeraldino — historical import generator.
+"""Passaporte Esmeraldino — historical import generator (LOTE ORIGINAL, 2000-2026).
+
+SUPERSEDIDO em 2026-09-15 pelo catálogo consolidado 1943-2026 — ver
+tooling/esmeraldino_passport/README.md seção 0 e
+tooling/esmeraldino_passport/generate_historical_import_sql.ps1. Este
+script continua funcional (documenta como o lote original de 1.697
+partidas foi gerado, e ainda é seguro rodar — os ids não mudam, o import
+é idempotente), mas não é mais a fonte de importação de referência: a
+tabela `COLUMNS` abaixo usa os nomes de coluna antigos (`goias_is_home`/
+`goias_score`), renomeados para `club_is_home`/`club_score` na migration
+20260904190000 — rodar este script hoje geraria um SQL que falha contra o
+schema atual. Mantido só como referência histórica.
+
+Passaporte Esmeraldino — historical import generator.
 
 Reads the official source JSON, validates it (schema version, SHA-256
 checksum, exact record count, unique ids), and generates a single

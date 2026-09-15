@@ -104,9 +104,10 @@ class _MatchRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     final date = match.matchDate;
-    final dateLabel =
-        '${date.day.toString().padLeft(2, '0')}/'
-        '${date.month.toString().padLeft(2, '0')}/${date.year}';
+    final dateLabel = date == null
+        ? context.l10n.matchDateToBeConfirmed
+        : '${date.day.toString().padLeft(2, '0')}/'
+              '${date.month.toString().padLeft(2, '0')}/${date.year}';
     final hasScore = match.clubScore != null && match.opponentScore != null;
 
     return Material(

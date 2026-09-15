@@ -63,7 +63,9 @@ class PassportMatchRowV1 extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          fullDateLabel(match.matchDate),
+                          match.matchDate == null
+                              ? l10n.matchDateToBeConfirmed
+                              : fullDateLabel(match.matchDate!),
                           style: TextStyle(
                             fontSize: 11.5,
                             fontWeight: FontWeight.w700,

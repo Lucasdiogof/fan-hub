@@ -25,15 +25,17 @@ class PassportMonthGroup {
 /// trocar o `PassportUiConfig.current`.
 List<PassportMonthGroup> groupMatchesByMonth(
   List<PassportMatch> matches,
-  String locale,
-) {
-  final ordered = [...matches]
-    ..sort((a, b) => b.matchDate.compareTo(a.matchDate));
+  String locale, {
+  String unknownDateLabel = '',
+}) {
+  final ordered = [...matches]..sort(compareMatchDateDesc);
 
   final formatter = DateFormat.yMMMM(locale);
   final groups = <String, List<PassportMatch>>{};
   for (final match in ordered) {
-    (groups[formatter.format(match.matchDate)] ??= []).add(match);
+    final date = match.matchDate;
+    final key = date == null ? unknownDateLabel : formatter.format(date);
+    (groups[key] ??= []).add(match);
   }
 
   return [

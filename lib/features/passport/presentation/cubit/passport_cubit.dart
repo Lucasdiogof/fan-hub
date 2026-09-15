@@ -113,7 +113,7 @@ class PassportCubit extends Cubit<PassportState> {
     );
   }
 
-  /// Nunca envia as 1.697 partidas — só o delta pendente. Em erro, as
+  /// Nunca envia as 3.840 partidas do catálogo — só o delta pendente. Em erro, as
   /// seleções locais continuam intactas pra o usuário tentar de novo sem
   /// perder nada.
   Future<void> save() async {

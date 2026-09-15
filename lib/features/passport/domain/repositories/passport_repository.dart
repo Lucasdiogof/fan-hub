@@ -29,7 +29,7 @@ abstract interface class PassportRepository {
   /// "Eu fui" pelo usuário atual (ver `passport_set_memorable_match`).
   Future<Result<void>> setMemorableMatch(String matchId);
 
-  /// Envia só o delta (nunca as 1.697 partidas) — uma chamada transacional
+  /// Envia só o delta (nunca as 3.840 partidas do catálogo) — uma chamada transacional
   /// pra N marcações/desmarcações. O servidor é quem decide se cada uma foi
   /// aplicada (ver `PassportAttendanceChangeResult`).
   Future<Result<List<PassportAttendanceChangeResult>>> saveAttendances(

@@ -1,11 +1,65 @@
 # Passaporte Esmeraldino
 
 Feature de presença autodeclarada em partidas históricas do Goiás
-(2000–2026) + ranking próprio. Este documento cobre a carga histórica, a
+(1943–2026) + ranking próprio. Este documento cobre a carga histórica, a
 sincronização de partidas recentes (hoje **não ativa**, ver seção
 "Bloqueio real" abaixo) e como validar tudo depois de rodar.
 
-## 1. Fonte dos dados
+## 0. Catálogo consolidado 1943-2026 (atual)
+
+Em 2026-09-15 o catálogo foi estendido de 1.697 partidas (2000-2026) para
+**3.840 partidas elegíveis, 84 temporadas (1943-2026)**. Fontes:
+
+- `source/passaporte_esmeraldino_1943_2026_FINAL.csv` — as 3.840 partidas
+  elegíveis (inclui, sem alterar nenhum id, as 1.697 de
+  `esmeraldino_passport_matches_2000_2026.json` — seções 1-3 abaixo
+  continuam corretas sobre como aquele lote original foi carregado; ele só
+  não é mais a fonte de importação de referência).
+- `source/passaporte_esmeraldino_EXCLUIDOS_ADMIN.csv` — 32 registros
+  administrativos/amistosos/W.O./anulados, preservados só em
+  `public.passport_matches_excluded` (nunca aparecem no Passaporte).
+- `source/passaporte_esmeraldino_AUDITORIA_1943_2026.md` — relatório de
+  auditoria com as decisões históricas documentadas (conflitos de placar,
+  reposições de jogos anulados, torneios excluídos por não-oficialidade
+  etc.) — referência pra não reverter uma correção já decidida.
+
+Pipeline de importação (**PowerShell**, não Python/Node — ver nota no
+topo do script sobre por quê):
+
+1. `supabase/migrations/20260915000000_passport_esmeraldino_historical_schema.sql`
+   — schema: `match_date` vira nullable, `date_precision` ganha
+   `'year_only'`, 4 colunas novas de auditoria
+   (`historical_source_no`/`officiality`/`date_confidence`/`score_confidence`),
+   tabela nova `passport_matches_excluded`.
+2. `tooling/esmeraldino_passport/generate_historical_import_sql.ps1` — lê
+   os dois CSVs da seção acima, valida (contagem exata 3.840/32, sem id
+   duplicado, sem `historical_source_no` duplicado, 84 temporadas
+   1943-2026, sem overlap principal×excluídos) e gera:
+   - `supabase/passport_esmeraldino_historical_import.sql` — upsert das
+     3.840 partidas em `public.passport_matches` (idempotente, nunca
+     apaga uma linha — mesmo padrão de `on conflict (id) do update` da
+     seção 2 abaixo; nunca toca `venue_id`/`venue_audit_status`/`kickoff_at`/
+     `display_timezone`, que este CSV não fornece).
+   - `supabase/passport_esmeraldino_excluded_import.sql` — upsert dos 32
+     registros administrativos em `public.passport_matches_excluded`.
+3. Rode os dois SQLs gerados (nessa ordem) no SQL Editor do Supabase.
+4. `supabase/checkup.sql` — agora valida `passport_matches = 3840`,
+   `passport_matches_excluded = 32`, 84 temporadas, sem duplicata de
+   `historical_source_no`.
+
+**Exceção histórica conhecida** (documentada em detalhe na auditoria):
+`hist-f80-0042` (Goiás x ABG, 1946) tem `match_date = null` e placar
+`null` — existência confirmada, data e resultado nunca recuperados por
+nenhuma fonte. É a única partida do catálogo inteiro nessa condição; o
+schema, as RPCs e o app tratam isso sem fabricar dado.
+
+**Venues**: nenhuma das 2.102 partidas de 1943-1999 recebeu `venue_id`
+nesta importação — o CSV consolidado não traz o pipeline de casamento
+canônico de estádio (`tooling/*/build_venues.mjs` + auditoria manual) que
+as 1.697 partidas de 2000-2026 já passaram. Pendência explícita, não
+esquecimento: enriquecer estádio é um passo separado, futuro.
+
+## 1. Fonte dos dados (lote original 2000-2026)
 
 `source/esmeraldino_passport_matches_2000_2026.json` — fornecido pelo
 usuário, nunca gerado por scraping deste app. Schema `1.0.0`, 1.697
@@ -43,8 +97,14 @@ usuário (`passport_attendances` referencia `passport_matches.id`, que
 nunca muda numa reimportação; o `on conflict` só atualiza colunas que
 vieram diferentes, nunca deleta a linha).
 
-Depois, rode `supabase/checkup.sql` pra confirmar: deve aparecer só a
-seção RESUMO com `passport_matches = 1697`, nenhuma linha de `❌`.
+Depois, rode `supabase/checkup.sql` pra confirmar.
+
+> **Histórico**: isto descreve como o lote original de 1.697 partidas
+> (2000-2026) foi carregado. Num banco novo, hoje, use a seção 0 acima —
+> ela cobre a mesma tabela, já com as 3.840 partidas 1943-2026, e é
+> idempotente com este import antigo (mesmos ids, nunca duplica). Rodar
+> este `passport_esmeraldino_import.sql` velho depois do da seção 0 não
+> quebra nada, mas também não agrega — os 1.697 ids já estarão lá.
 
 ## 3. Regerando o SQL de importação
 
