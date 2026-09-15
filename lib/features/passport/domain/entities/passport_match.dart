@@ -54,7 +54,12 @@ class PassportMatch extends Equatable {
 
   final String id;
   final int season;
-  final DateTime matchDate;
+
+  /// `null` em exatamente 1 partida de todo o catálogo (Goiás x ABG, 1946):
+  /// existência confirmada, mas dia/mês nunca recuperados por nenhuma
+  /// fonte. Nunca fabricar uma data pra preencher — ver
+  /// `date_precision` (`'year_only'` nesse caso).
+  final DateTime? matchDate;
   final String? matchTime;
   final DateTime? kickoffAt;
   final PassportMatchStatus status;
@@ -80,14 +85,17 @@ class PassportMatch extends Equatable {
 
   /// Nunca partida futura pode ser marcada, mesmo se por algum motivo
   /// viesse marcada como FINISHED — checagem espelha a da RPC de
-  /// salvamento, que é quem realmente decide.
+  /// salvamento, que é quem realmente decide. Data desconhecida nunca é
+  /// tratada como futura (mesma leitura que a RPC faz de `null > current_date`).
   bool get canMarkAttendance =>
-      isFinished && !matchDate.isAfter(DateTime.now());
+      isFinished && (matchDate == null || !matchDate!.isAfter(DateTime.now()));
 
   factory PassportMatch.fromMap(Map<String, dynamic> map) => PassportMatch(
     id: map['id'] as String,
     season: map['season'] as int,
-    matchDate: DateTime.parse(map['match_date'] as String),
+    matchDate: map['match_date'] == null
+        ? null
+        : DateTime.parse(map['match_date'] as String),
     matchTime: map['match_time'] as String?,
     kickoffAt: map['kickoff_at'] == null
         ? null
@@ -164,6 +172,18 @@ class PassportMatch extends Equatable {
     venueCity,
     attended,
   ];
+}
+
+/// Comparador "mais recente primeiro" que nunca quebra com `matchDate`
+/// desconhecido — a partida de data desconhecida sempre vai pro final da
+/// lista, do mesmo jeito que as RPCs já fazem com `nulls last` no banco.
+int compareMatchDateDesc(PassportMatch a, PassportMatch b) {
+  final aDate = a.matchDate;
+  final bDate = b.matchDate;
+  if (aDate == null && bDate == null) return 0;
+  if (aDate == null) return 1;
+  if (bDate == null) return -1;
+  return bDate.compareTo(aDate);
 }
 
 /// Uma temporada do seletor de ano — nunca carrega as partidas junto, só a

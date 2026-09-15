@@ -32,8 +32,7 @@ class PassportMatchListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final matches = [...args.matches]
-      ..sort((a, b) => b.matchDate.compareTo(a.matchDate));
+    final matches = [...args.matches]..sort(compareMatchDateDesc);
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -132,22 +131,25 @@ class _MatchRow extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '${match.matchDate.day}'.padLeft(2, '0'),
+                      match.matchDate == null
+                          ? '—'
+                          : '${match.matchDate!.day}'.padLeft(2, '0'),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w900,
                         color: colors.textPrimary,
                       ),
                     ),
-                    Text(
-                      weekdayShortLabel(match.matchDate, locale),
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.3,
-                        color: colors.textHint,
+                    if (match.matchDate != null)
+                      Text(
+                        weekdayShortLabel(match.matchDate!, locale),
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.3,
+                          color: colors.textHint,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

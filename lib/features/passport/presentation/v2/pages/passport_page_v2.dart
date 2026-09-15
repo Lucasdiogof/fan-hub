@@ -363,6 +363,7 @@ class _MatchTimelineV2 extends StatelessWidget {
     final entries = groupMatchesByMonth(
       matches,
       Localizations.localeOf(context).toLanguageTag(),
+      unknownDateLabel: context.l10n.matchDateToBeConfirmed,
     );
     final cubit = context.read<PassportCubit>();
 

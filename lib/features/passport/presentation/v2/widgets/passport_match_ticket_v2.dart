@@ -154,13 +154,14 @@ class PassportMatchTicketV2 extends StatelessWidget {
 class _DateStub extends StatelessWidget {
   const _DateStub({required this.date, this.time});
 
-  final DateTime date;
+  final DateTime? date;
   final String? time;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     final locale = Localizations.localeOf(context).toLanguageTag();
+    final date = this.date;
     return SizedBox(
       width: 52,
       child: Padding(
@@ -169,22 +170,23 @@ class _DateStub extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '${date.day}'.padLeft(2, '0'),
+              date == null ? '—' : '${date.day}'.padLeft(2, '0'),
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w900,
                 color: colors.textPrimary,
               ),
             ),
-            Text(
-              weekdayShortLabel(date, locale),
-              style: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.3,
-                color: colors.textHint,
+            if (date != null)
+              Text(
+                weekdayShortLabel(date, locale),
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 0.3,
+                  color: colors.textHint,
+                ),
               ),
-            ),
             if (time != null) ...[
               const SizedBox(height: 6),
               Text(

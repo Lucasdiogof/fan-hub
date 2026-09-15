@@ -170,9 +170,9 @@ from public.lineup_matches where home_score < 0 or away_score < 0
 
 union all
 
-select '❌ passport_matches: contagem != 1697 (esperado após import inicial)',
+select '❌ passport_matches: contagem != 3840 (esperado após import histórico 1943-2026)',
   (select count(*) from public.passport_matches)::text
-where (select count(*) from public.passport_matches) != 1697
+where (select count(*) from public.passport_matches) != 3840
 
 union all
 
@@ -181,9 +181,28 @@ from public.passport_matches group by id having count(*) > 1
 
 union all
 
-select '❌ passport_matches: FINISHED sem placar', id
+select '❌ passport_matches: historical_source_no duplicado', historical_source_no
 from public.passport_matches
-where status = 'FINISHED' and (goias_score is null or opponent_score is null)
+where historical_source_no is not null
+group by historical_source_no having count(*) > 1
+
+union all
+
+select '❌ passport_matches: temporadas != 84 entre 1943 e 2026',
+  'encontrado ' || count(distinct season)::text || ' temporadas, min=' || min(season)::text || ' max=' || max(season)::text
+from public.passport_matches
+having count(distinct season) != 84 or min(season) != 1943 or max(season) != 2026
+
+union all
+
+-- Só uma exceção documentada em toda a base: hist-f80-0042 (Goiás x ABG,
+-- 1946) — existência confirmada, data e placar não recuperáveis (ver
+-- tooling/esmeraldino_passport/source/passaporte_esmeraldino_AUDITORIA_1943_2026.md).
+select '❌ passport_matches: FINISHED sem placar (fora da exceção conhecida)', id
+from public.passport_matches
+where status = 'FINISHED'
+  and (club_score is null or opponent_score is null)
+  and id != 'hist-f80-0042'
 
 union all
 
@@ -200,10 +219,28 @@ where venue_id is not null
 
 union all
 
+select '❌ passport_matches_excluded: id também presente em passport_matches (deveria ser mutuamente exclusivo)', e.id
+from public.passport_matches_excluded e
+where exists (select 1 from public.passport_matches m where m.id = e.id)
+
+union all
+
+select '❌ passport_matches_excluded: contagem != 32 (esperado após import dos administrativos)',
+  (select count(*) from public.passport_matches_excluded)::text
+where (select count(*) from public.passport_matches_excluded) != 32
+
+union all
+
 select '❌ passport_attendances: presença em partida não FINISHED', pa.id::text
 from public.passport_attendances pa
 join public.passport_matches m on m.id = pa.match_id
 where pa.attended = true and m.status != 'FINISHED'
+
+union all
+
+select '❌ passport_attendances: presença em partida que não existe mais em passport_matches', pa.id::text || ' → ' || pa.match_id
+from public.passport_attendances pa
+where not exists (select 1 from public.passport_matches m where m.id = pa.match_id)
 
 union all
 
@@ -436,6 +473,9 @@ select '📊 RESUMO', ''
 
 union all
 select '   passport_matches', (select count(*) from public.passport_matches)::text
+
+union all
+select '   passport_matches_excluded', (select count(*) from public.passport_matches_excluded)::text
 
 union all
 select '   passport_attendances', (select count(*) from public.passport_attendances)::text
