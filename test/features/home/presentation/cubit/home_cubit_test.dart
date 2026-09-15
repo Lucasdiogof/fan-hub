@@ -269,12 +269,13 @@ void main() {
   });
 
   group(
-    'matchForLineupVoting (REGRESSÃO 2026-09-15: nunca o jogo já '
-    'encerrado só porque ainda está dentro da folga de exibição — ver '
-    'comentário em HomeState.matchForLineupVoting)',
+    'matchForLineupVoting (pedido explícito do usuário: enquanto a Home '
+    'ainda mostra o jogo que acabou — folga de exibição — a Arena esconde '
+    'a Escalação; libera junto com a Home assim que ela troca pro próximo '
+    'jogo — ver comentário em HomeState.matchForLineupVoting)',
     () {
       test(
-        'a recently finished match is shown on the card, but voting still targets the real next match',
+        'a recently finished match is shown on the card AND hides voting entirely (never jumps ahead to the next match)',
         () async {
           football.nextMatch = _match(
             id: 'next',
@@ -294,7 +295,7 @@ void main() {
           await cubit.load();
 
           expect(cubit.state.nextMatch?.id, 'just-finished');
-          expect(cubit.state.matchForLineupVoting?.id, 'next');
+          expect(cubit.state.matchForLineupVoting, isNull);
         },
       );
 
@@ -320,7 +321,32 @@ void main() {
       );
 
       test(
-        'a genuinely upcoming next match is both shown and votable',
+        'once the grace period is over and the Home card shows the next match, voting unlocks for that same match',
+        () async {
+          football.nextMatch = _match(
+            id: 'next',
+            status: MatchStatus.scheduled,
+            kickoff: DateTime.now().add(const Duration(days: 3)),
+          );
+          football.recentResults = [
+            _match(
+              id: 'old-result',
+              status: MatchStatus.finished,
+              kickoff: DateTime.now().subtract(const Duration(days: 2)),
+              homeScore: 2,
+              awayScore: 1,
+            ),
+          ];
+          final cubit = build();
+          await cubit.load();
+
+          expect(cubit.state.nextMatch?.id, 'next');
+          expect(cubit.state.matchForLineupVoting?.id, 'next');
+        },
+      );
+
+      test(
+        'a genuinely upcoming next match (no recent result at all) is both shown and votable',
         () async {
           football.nextMatch = _match(
             id: 'next',
@@ -335,11 +361,12 @@ void main() {
         },
       );
 
-      test('a live match is votable too (still open, per MatchOrdering)', () async {
+      test('a live match is shown and votable (still open, per MatchOrdering)', () async {
         football.nextMatch = _match(id: 'live', status: MatchStatus.live);
         final cubit = build();
         await cubit.load();
 
+        expect(cubit.state.nextMatch?.id, 'live');
         expect(cubit.state.matchForLineupVoting?.id, 'live');
       });
     },

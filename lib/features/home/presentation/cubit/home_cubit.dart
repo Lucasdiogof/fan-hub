@@ -34,13 +34,16 @@ class HomeCubit extends Cubit<HomeState> {
     switch (snapshotResult) {
       case Success(:final data):
         final resolvedMatch = _resolveMatch(data.nextMatch, data.recentResults);
-        // Alvo da votação: SEMPRE o próximo jogo agendado de verdade
-        // (`data.nextMatch` cru, nunca `resolvedMatch` — que pode ser o
-        // último resultado, mostrado só pela folga de exibição). Nunca deixa
-        // escalar pra um jogo que já terminou só porque o card da Home
-        // ainda está mostrando o placar dele.
-        final votingMatch = data.nextMatch != null && MatchOrdering.isOpen(data.nextMatch!)
-            ? data.nextMatch
+        // Alvo da votação: o MESMO jogo que a Home está mostrando, mas só
+        // se ele ainda estiver aberto (agendado/ao vivo/intervalo) — nunca
+        // o próximo jogo adiantado. Pedido explícito do usuário: enquanto a
+        // Home ainda mostra o resultado do jogo que acabou (dentro da
+        // folga), a Arena esconde a Escalação da Torcida (hero some);
+        // só libera pro próximo jogo quando a própria Home também já
+        // trocou pra ele.
+        final votingMatch =
+            resolvedMatch != null && MatchOrdering.isOpen(resolvedMatch)
+            ? resolvedMatch
             : null;
         // Resolvido por matchId (nunca um booleano global) — se o próximo
         // jogo mudar, essa consulta muda junto, e o card "Escalação da
