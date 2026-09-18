@@ -32,11 +32,56 @@ um arquivo `source/bragantino_passport_<ano>.json` + uma SQL de seed
 | 14 | 2013 | CLOSED | 59 | oGol |
 | 15 | 2012 | CLOSED | 61 | oGol |
 | 16 | 2011 | CLOSED | 57 | oGol |
-| 17 | 2010 | ABERTO — próximo da fila, retrocedendo ano a ano | — | oGol |
+| 17 | 2010 | CLOSED | 57 | oGol |
+| 18 | 2009 | CLOSED | 57 | oGol |
+| 19 | 2008 | CLOSED | 61 | oGol |
+| 20 | 2007 | CLOSED | 65 | oGol |
+| 21 | 2006 | CLOSED | 40 | oGol |
+| 22 | 2005 | CLOSED | 36 | oGol |
+| 23 | 2004 | CLOSED | 14 | oGol |
+| 24 | 2003 | CLOSED | 26 | oGol |
+| 25 | 2002 | CLOSED | 41 | oGol |
+| 26 | 2001 | CLOSED | 56 | oGol |
+| 27 | 2000 | CLOSED | 38 | oGol |
 
-2000-2010 (11 lotes, 492 partidas pelo `audit_manifest_v4`) ainda faltam
-materializar. `node tooling/bragantino_passport/validate_import.mjs` já
-confere os 16 lotes fechados (945 partidas) de uma vez.
+**Todos os 27 lotes (2000-2026) estão fechados** — 1.436 partidas,
+validadas de uma vez com `node tooling/bragantino_passport/validate_import.mjs`
+(27/27 lotes, 29/29 testes automatizados). 1 partida a menos que os 1.437
+`calendar_records_2000_2026` do manifest: Bragantino x São José
+(25/08/2006, Copa Paulista) foi decidida administrativamente (W.O./
+desistência do adversário, sem placar, "Int: 0-0" na ficha — ver
+`important_reconciliations` no `audit_manifest_v4.json`) e por isso
+excluída do Passaporte, mesmo critério do Passaporte do Goiás.
+
+### Fetch direto via Node em vez de navegador (2026-09-18)
+
+A partir do lote 2010 (retrocedendo até 2000), a busca de estádio por
+partida passou a usar `fetch()` direto do Node
+(`_fetch_match_venues.mjs`), não mais o navegador — o bloqueio 403 nunca
+reapareceu em nenhuma das ~500 requisições feitas assim, e é
+ordens de magnitude mais rápido (um lote de ~60 partidas fecha em
+segundos, não minutos). Scripts auxiliares (`_build_year_master.mjs`,
+`_build_year_final.mjs`, `_fetch_match_venues.mjs`, prefixo `_` de
+propósito — ferramentas de sessão, não pipeline "oficial" como
+`generate_seed_sql.mjs`/`build_venues.mjs`) ficam no repo pra reuso, mas
+seus artefatos brutos (HTML baixado, JSON intermediário por lote) não são
+commitados — só o `bragantino_passport_<ano>.json` final e a seed SQL,
+mesmo padrão dos lotes 2024-2026.
+
+Descobertas novas ao longo de 2000-2010:
+- Vários anos têm competições com grafia inconsistente na fonte
+  (`Paulistão` vs `Paulista`, `Serie C` sem acento vs `Série C`, `Copa
+  Brasil` vs `Copa do Brasil`) — `_build_year_final.mjs` (`COMP_META`)
+  precisou de aliases pra cada uma; conferir esse mesmo sintoma se
+  aparecer um lote novo no futuro.
+- 2007: Copa Paulista daquele ano era time principal (diferente de
+  2008/2018, onde era equipe B) — incluída no lote, `competition_code:
+  COPA_PAULISTA`.
+- 2000: o Brasileirão daquele ano rodou sob a marca "Copa João
+  Havelange" na fonte — mapeado pro mesmo `BRASILEIRAO_A`.
+- Muitas partidas de 1943-1999 (equivalente aqui a 2000-2010) não têm
+  `location` no JSON-LD — legítimo "estádio desconhecido pela fonte", não
+  bug do parser (confirmado lendo o HTML bruto antes de aceitar).
 
 ### Lote 2023 — reabertura do bloqueio 403 (2026-09-18)
 
@@ -239,30 +284,41 @@ idempotentes e nenhum apaga presença de usuário.
 
 1. `supabase/bragantino_passport_infra.sql`
 2. `supabase/bragantino_passport_venues_seed.sql`
-3. `supabase/bragantino_passport_matches_2011_seed.sql`
-4. `supabase/bragantino_passport_matches_2012_seed.sql`
-5. `supabase/bragantino_passport_matches_2013_seed.sql`
-6. `supabase/bragantino_passport_matches_2014_seed.sql`
-7. `supabase/bragantino_passport_matches_2015_seed.sql`
-8. `supabase/bragantino_passport_matches_2016_seed.sql`
-9. `supabase/bragantino_passport_matches_2017_seed.sql`
-10. `supabase/bragantino_passport_matches_2018_seed.sql`
-11. `supabase/bragantino_passport_matches_2019_seed.sql`
-12. `supabase/bragantino_passport_matches_2020_seed.sql`
-13. `supabase/bragantino_passport_matches_2021_seed.sql`
-14. `supabase/bragantino_passport_matches_2022_seed.sql`
-15. `supabase/bragantino_passport_matches_2023_seed.sql`
-16. `supabase/bragantino_passport_matches_2024_seed.sql`
-17. `supabase/bragantino_passport_matches_2025_seed.sql`
-18. `supabase/bragantino_passport_matches_2026_seed.sql`
+3. `supabase/bragantino_passport_matches_2000_seed.sql`
+4. `supabase/bragantino_passport_matches_2001_seed.sql`
+5. `supabase/bragantino_passport_matches_2002_seed.sql`
+6. `supabase/bragantino_passport_matches_2003_seed.sql`
+7. `supabase/bragantino_passport_matches_2004_seed.sql`
+8. `supabase/bragantino_passport_matches_2005_seed.sql`
+9. `supabase/bragantino_passport_matches_2006_seed.sql`
+10. `supabase/bragantino_passport_matches_2007_seed.sql`
+11. `supabase/bragantino_passport_matches_2008_seed.sql`
+12. `supabase/bragantino_passport_matches_2009_seed.sql`
+13. `supabase/bragantino_passport_matches_2010_seed.sql`
+14. `supabase/bragantino_passport_matches_2011_seed.sql`
+15. `supabase/bragantino_passport_matches_2012_seed.sql`
+16. `supabase/bragantino_passport_matches_2013_seed.sql`
+17. `supabase/bragantino_passport_matches_2014_seed.sql`
+18. `supabase/bragantino_passport_matches_2015_seed.sql`
+19. `supabase/bragantino_passport_matches_2016_seed.sql`
+20. `supabase/bragantino_passport_matches_2017_seed.sql`
+21. `supabase/bragantino_passport_matches_2018_seed.sql`
+22. `supabase/bragantino_passport_matches_2019_seed.sql`
+23. `supabase/bragantino_passport_matches_2020_seed.sql`
+24. `supabase/bragantino_passport_matches_2021_seed.sql`
+25. `supabase/bragantino_passport_matches_2022_seed.sql`
+26. `supabase/bragantino_passport_matches_2023_seed.sql`
+27. `supabase/bragantino_passport_matches_2024_seed.sql`
+28. `supabase/bragantino_passport_matches_2025_seed.sql`
+29. `supabase/bragantino_passport_matches_2026_seed.sql`
 
-A ordem entre os seeds de partidas (3-18) não importa entre si — todos são
+A ordem entre os seeds de partidas (3-29) não importa entre si — todos são
 `ON CONFLICT (id) DO UPDATE` por `id` estável, nenhum apaga presença de
 usuário. Só o `infra.sql` e o `venues_seed.sql` precisam vir antes de
 qualquer seed de partidas.
 
 Antes de rodar qualquer coisa: `node tooling/bragantino_passport/validate_import.mjs`
-(as 945 partidas de uma vez) — se não passar, não aplique nada.
+(as 1.436 partidas de uma vez) — se não passar, não aplique nada.
 
 ### O que já existia no banco (verificado ao vivo, 2026-09-07)
 
@@ -279,8 +335,8 @@ concluir que algo falta ou está quebrado.
 
 ### Estádios
 
-`build_venues.mjs` transforma as 142 grafias da fonte (945 partidas, lotes
-2011-2026; 881 com estádio confirmado) em 128 estádios. Ele só
+`build_venues.mjs` transforma as 163 grafias da fonte (1.436 partidas, lotes
+2000-2026; 1.084 com estádio confirmado) em 149 estádios. Ele só
 agrupa grafias que estão escritas explicitamente em `MERGE_GROUPS` — nunca por
 semelhança de string, porque "Estadio Monumental Banco Pichincha" (Guayaquil) e
 "Estadio Monumental" (Buenos Aires) são casas diferentes. Regenerar:
