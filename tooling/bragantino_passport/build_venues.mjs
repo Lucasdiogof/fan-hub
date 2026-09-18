@@ -111,6 +111,15 @@ const MERGE_GROUPS = [
       'Estádio Governador Magalhães Pinto',
     ],
   },
+  {
+    // "Tahuichi Aguilera" é o apelido do complexo esportivo em Santa Cruz de
+    // la Sierra (Bolívia); "Ramón Aguilera Costas" é o nome oficial da mesma
+    // casa - confirmado por geografia idêntica (Santa Cruz de la Sierra, sem
+    // outro estádio homônimo na cidade), não por semelhança de string.
+    canonical: 'Estadio Ramón Aguilera Costas',
+    display: 'Tahuichi Aguilera',
+    variants: ['Estadio Ramón Aguilera Costas', 'Ramón Tahuichi Aguilera'],
+  },
 ];
 
 /// Estádios que ficam sozinhos mas cujo nome de exibição merece o apelido

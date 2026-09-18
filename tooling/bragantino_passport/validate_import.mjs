@@ -206,7 +206,13 @@ export function validate(batches) {
     }
 
     // --- nenhum dado do Goiás --------------------------------------------
-    const blob = JSON.stringify(m).toLowerCase();
+    // Exclui `stadium`/`venue_city`: quando o Bragantino visita o Goiás, a
+    // ficha da partida real cita o estádio do Goiás (Serrinha/Hailé
+    // Pinheiro) - fato do jogo, não dado institucional vazado do outro
+    // clube. O marcador ainda pega qualquer outro campo (nome de time,
+    // notas, etc.) onde isso seria mesmo um vazamento.
+    const { stadium: _stadium, venue_city: _venueCity, ...rest } = m;
+    const blob = JSON.stringify(rest).toLowerCase();
     for (const marker of GOIAS_MARKERS) {
       if (blob.includes(marker)) {
         fail('SEM_DADO_DO_GOIAS', `"${marker}" aparece em ${where}`);
