@@ -19,7 +19,57 @@ um arquivo `source/bragantino_passport_<ano>.json` + uma SQL de seed
 | 1 | 2026 | CLOSED | 59 | OneFootball (`api.onefootball.com/web-experience`) |
 | 2 | 2025 | CLOSED | 57 | oGol (`ogol.com.br/equipe/red-bull-bragantino`) |
 | 3 | 2024 | CLOSED | 70 | oGol |
-| 4 | 2023 | BLOQUEADO — oGol respondeu 403 na última checagem (2026-09-07), não é mais o 503 de rate-limit original; não ficar reprovando "só pra ver" | — | oGol |
+| 4 | 2023 | CLOSED | 62 | oGol |
+| 5 | 2022 | CLOSED | 60 | oGol |
+| 6 | 2021 | CLOSED | 80 | oGol |
+| 7 | 2020 | CLOSED | 44 | oGol |
+| 8 | 2019 | CLOSED | 52 | oGol |
+| 9 | 2018 | CLOSED | 40 | oGol |
+| 10 | 2017 | CLOSED | 42 | oGol |
+| 11 | 2016 | CLOSED | 84 | oGol |
+| 12 | 2015 | CLOSED | 56 | oGol |
+| 13 | 2014 | CLOSED | 62 | oGol |
+| 14 | 2013 | CLOSED | 59 | oGol |
+| 15 | 2012 | CLOSED | 61 | oGol |
+| 16 | 2011 | CLOSED | 57 | oGol |
+| 17 | 2010 | ABERTO — próximo da fila, retrocedendo ano a ano | — | oGol |
+
+2000-2010 (11 lotes, 492 partidas pelo `audit_manifest_v4`) ainda faltam
+materializar. `node tooling/bragantino_passport/validate_import.mjs` já
+confere os 16 lotes fechados (945 partidas) de uma vez.
+
+### Lote 2023 — reabertura do bloqueio 403 (2026-09-18)
+
+O 403 registrado em 2026-09-07 (linha acima, agora histórica) **não se
+repetiu**: testado direto no navegador (não via fetch cru externo), a
+página da temporada 2023 e as 4 páginas de competição (`compet_id_jogos`)
+responderam 200 normalmente. Não dá pra saber se o bloqueio era por IP, por
+sessão, ou já expirou sozinho — só que, pelo menos nesta tentativa, não
+apareceu de novo. Se voltar a bloquear no lote 2022, espaçar mais as
+requisições antes de assumir que é o mesmo bloqueio permanente.
+
+Duas descobertas novas neste lote:
+
+- A view geral `todos-os-jogos?epoca_id=<id>&grp=1` (sem `compet_id_jogos`)
+  só renderiza uma fatia da tabela no primeiro load (40/62 linhas em 2023,
+  cortando exatamente a parte mais antiga da temporada — Paulistão e Copa
+  do Brasil inteiros). Corrigido buscando cada competição separadamente
+  (`compet_id_jogos=555/51/260/269`), cada uma batendo exatamente com o
+  total oficial do `audit_manifest_v4`. Vale conferir esse mesmo sintoma
+  nos lotes seguintes antes de aceitar a contagem da view geral como
+  fechada.
+- 2 fichas de partida decididas nos pênaltis trazem HTML cru
+  (`<span class="prol">(N-N)g.p.</span>`) dentro do próprio campo `"name"`
+  do JSON-LD, com aspas não escapadas que quebram `JSON.parse` padrão —
+  sintoma diferente do bug de parser da tabela (já corrigido nos lotes
+  2024/2025), mas mesma causa raiz (marcação de pênaltis/prorrogação).
+  Contornado com um regex direto no bloco `"location"` em vez de depender
+  do JSON inteiro parsear.
+
+O estádio de cada partida foi confirmado via `fetch()` da ficha
+individual **dentro da própria página do navegador** (mesma origem
+`ogol.com.br`, evita CORS) em vez de baixar o HTML inteiro — mais rápido e
+não estoura limite de tokens por resposta.
 
 ## Controle de cobertura 2000-2026 (`source/bragantino_passport_audit_manifest_v4.json`)
 
@@ -189,12 +239,30 @@ idempotentes e nenhum apaga presença de usuário.
 
 1. `supabase/bragantino_passport_infra.sql`
 2. `supabase/bragantino_passport_venues_seed.sql`
-3. `supabase/bragantino_passport_matches_2024_seed.sql`
-4. `supabase/bragantino_passport_matches_2025_seed.sql`
-5. `supabase/bragantino_passport_matches_2026_seed.sql`
+3. `supabase/bragantino_passport_matches_2011_seed.sql`
+4. `supabase/bragantino_passport_matches_2012_seed.sql`
+5. `supabase/bragantino_passport_matches_2013_seed.sql`
+6. `supabase/bragantino_passport_matches_2014_seed.sql`
+7. `supabase/bragantino_passport_matches_2015_seed.sql`
+8. `supabase/bragantino_passport_matches_2016_seed.sql`
+9. `supabase/bragantino_passport_matches_2017_seed.sql`
+10. `supabase/bragantino_passport_matches_2018_seed.sql`
+11. `supabase/bragantino_passport_matches_2019_seed.sql`
+12. `supabase/bragantino_passport_matches_2020_seed.sql`
+13. `supabase/bragantino_passport_matches_2021_seed.sql`
+14. `supabase/bragantino_passport_matches_2022_seed.sql`
+15. `supabase/bragantino_passport_matches_2023_seed.sql`
+16. `supabase/bragantino_passport_matches_2024_seed.sql`
+17. `supabase/bragantino_passport_matches_2025_seed.sql`
+18. `supabase/bragantino_passport_matches_2026_seed.sql`
+
+A ordem entre os seeds de partidas (3-18) não importa entre si — todos são
+`ON CONFLICT (id) DO UPDATE` por `id` estável, nenhum apaga presença de
+usuário. Só o `infra.sql` e o `venues_seed.sql` precisam vir antes de
+qualquer seed de partidas.
 
 Antes de rodar qualquer coisa: `node tooling/bragantino_passport/validate_import.mjs`
-(as 186 partidas de uma vez) — se não passar, não aplique nada.
+(as 945 partidas de uma vez) — se não passar, não aplique nada.
 
 ### O que já existia no banco (verificado ao vivo, 2026-09-07)
 
@@ -211,7 +279,8 @@ concluir que algo falta ou está quebrado.
 
 ### Estádios
 
-`build_venues.mjs` transforma as 62 grafias da fonte em 49 estádios. Ele só
+`build_venues.mjs` transforma as 142 grafias da fonte (945 partidas, lotes
+2011-2026; 881 com estádio confirmado) em 128 estádios. Ele só
 agrupa grafias que estão escritas explicitamente em `MERGE_GROUPS` — nunca por
 semelhança de string, porque "Estadio Monumental Banco Pichincha" (Guayaquil) e
 "Estadio Monumental" (Buenos Aires) são casas diferentes. Regenerar:
