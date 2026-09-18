@@ -23,8 +23,9 @@
     "official_finished_2000_2025": 1378,
     "official_finished_2000_2026_through_2026_09_05": 1424,
     "calendar_records_2000_2026": 1437,
-    "source_rows_still_to_materialize_2000_2023": 1251,
-    "already_materialized_2024_2026": 186
+    "source_rows_still_to_materialize_2000_2023": 0,
+    "already_materialized_2024_2026": 1436,
+    "note_2026_09_18": "Todos os 27 lotes (2000-2026, 1.436 partidas) materializados e validados em 2026-09-18. 1 partida a menos que calendar_records_2000_2026 (1.437): Bragantino x São José, 25/08/2006 (Copa Paulista), decidida administrativamente (W.O./desistência do adversário, ver important_reconciliations) e por isso excluída do Passaporte."
   },
   "important_reconciliations": [
     {
@@ -56,6 +57,11 @@
       "year": 2021,
       "final": 80,
       "note": "Ano-calendário inclui 11 jogos remanescentes da edição Brasileirão 2020."
+    },
+    {
+      "year": 2006,
+      "final": 40,
+      "note": "Manifest original registrava 41 (19 Paulista + 22 Copa Paulista); a partida Bragantino x São José (25/08/2006, Copa Paulista) foi decidida administrativamente (\"DA\" na fonte, W.O./desistência do adversário) sem placar nem partida de fato disputada (\"Int: 0-0\" na ficha, jogo interrompido) — excluída do lote, mesmo critério do Passaporte do Goiás (nenhum torcedor pode ter \"estado\" numa partida que não aconteceu)."
     }
   ],
   "years": [
@@ -103,7 +109,7 @@
     },
     {
       "calendar_year": 2006,
-      "official_matches": 41,
+      "official_matches": 40,
       "source_provider": "oGol",
       "source_url": "https://www.ogol.com.br/equipe/red-bull-bragantino/todos-os-jogos?epoca_id=135&grp=1",
       "status": "AUDITED_COMPLETE"
