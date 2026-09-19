@@ -25,7 +25,7 @@ void main() {
         expect(goiasClubConfig.assets.splashVideo, isNull);
         expect(
           goiasClubConfig.assets.splashLogo,
-          'lib/assets/branding/goias/new_logo.png',
+          'lib/assets/branding/goias/new_logo_splash.png',
         );
       },
     );

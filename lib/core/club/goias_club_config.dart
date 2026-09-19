@@ -71,7 +71,15 @@ final goiasClubConfig = ClubConfig(
     // plataforma (não só iOS Web) — ver `splashLogo` logo abaixo pra qual
     // imagem/fundo ela usa agora.
     splashVideo: null,
-    splashLogo: 'lib/assets/branding/goias/new_logo.png',
+    // NÃO é o mesmo arquivo do app icon/authCrest (`new_logo.png`, nunca
+    // tocado) — `new_logo_splash.png` é uma variante gerada por
+    // `scripts/generate_splash_logo.py`: mesmo mascote, com a moldura de
+    // fundo (degradê/vinheta) corrigida pra bater EXATO com
+    // `branding.light.primary` (#004C1B, o fundo da própria splash) na
+    // borda da imagem — sem isso, um quadrado ficava visível (achado real,
+    // 2026-09-19, screenshot Android: os dois verdes eram próximos mas não
+    // idênticos).
+    splashLogo: 'lib/assets/branding/goias/new_logo_splash.png',
     squadPhotos: squadPhotoAssets,
     // Pro Goiás os dois mapas coincidem (mesmos assets locais servem tanto
     // pro Elenco quanto pro Quem Vestiu o Manto) — ver comentário em
