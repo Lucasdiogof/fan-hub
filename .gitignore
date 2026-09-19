@@ -87,3 +87,6 @@ _competitions_pkg/**/.cache/
 # Concatenação de migrations pra leitura. Os 9 arquivos já existem em
 # archive/supabase/goias-legacy-migrations/files/ — é cópia, não fonte.
 migration_dump.txt
+
+# FVM Version Cache
+.fvm/
