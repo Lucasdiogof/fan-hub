@@ -1,5 +1,19 @@
 [
   {
+    "tweet_id": "2100981433342792144",
+    "text": "#NãoNegociamosNossoSuor na preparação para encarar o Flamengo! 😤 https://t.co/Oyevlsd2z2",
+    "timestamp": "2026-09-18T16:13:02+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2100981433342792144",
+    "image_links": [
+      "https://pbs.twimg.com/amplify_video_thumb/2100981047705890816/img/WZxOQGE54kqxZ6Vg.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 12,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
     "tweet_id": "2100925196387401736",
     "text": "🗓️ CBF define data de jogo atrasado do Braga!\n\nA partida contra o Atlético Mineiro, válida pela 21ª rodada, será disputada no dia 03/10, na Arena MRV, às 18h30. 🔜\n\n📸: Ari Ferreira https://t.co/ePtus3E9EN",
     "timestamp": "2026-09-18T12:29:34+00:00",
@@ -9,7 +23,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 1,
+    "likes": 3,
     "retweets": 0,
     "comments": 0
   },
@@ -259,20 +273,6 @@
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
     "likes": 11,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2099165247634284877",
-    "text": "Pelo Paulistão Sub-14, o Red Bull Bragantino superou o Taubaté por 5 a 1, no CPD.\n\n⚽️ Candinho, Heitor Oliveira, Miguel Santos (2) e Nicolas Souza.\n\nNos pênaltis pelo ponto extra, vitória dos visitantes.\n\n#RedBullBragantino https://t.co/jRtFBZzFwI",
-    "timestamp": "2026-09-13T15:56:10+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2099165247634284877",
-    "image_links": [
-      "https://pbs.twimg.com/media/HSG7qeJbAAATEhR.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 5,
     "retweets": 0,
     "comments": 0
   },
