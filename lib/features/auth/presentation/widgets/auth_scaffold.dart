@@ -134,6 +134,22 @@ class _Hero extends StatelessWidget {
 class _CrestSeal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final authCrest = sl<ClubConfig>().assets.authCrest;
+    // `authCrest` definido = marca colorida própria (ex.: mascote do
+    // rebrand Esmeraldino App) — mostrada crua, nunca tingida (tingir de
+    // branco destruiria as cores da arte). `null` = comportamento de
+    // sempre: o escudo vetorial monocromático tingido de branco sólido.
+    if (authCrest != null) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(14),
+        child: Image.asset(
+          authCrest,
+          height: 56,
+          width: 56,
+          fit: BoxFit.cover,
+        ),
+      );
+    }
     return SvgPicture.asset(
       sl<ClubConfig>().assets.crest,
       height: 56,

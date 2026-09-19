@@ -44,6 +44,10 @@ final goiasClubConfig = ClubConfig(
   branding: const ClubBranding(light: AppColors.light, dark: AppColors.dark),
   assets: const ClubAssets(
     crest: AppAssets.goiasCrest,
+    // Rebrand Esmeraldino App: selo do login vira o mascote próprio, não
+    // mais o escudo oficial — `crest` acima continua o mesmo (PDF do
+    // ingresso não muda nesta rodada).
+    authCrest: 'lib/assets/branding/goias/new_logo.png',
     crestBadge: AppAssets.goiasCrestBadge,
     crest3d: AppAssets.goiasCrest3d,
     loginBackground: AppAssets.loginBackground,
