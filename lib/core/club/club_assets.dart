@@ -21,10 +21,16 @@ class ClubAssets {
     this.membershipFaqAssetPath,
     this.splashVideo,
     this.splashLogo,
+    this.authCrest,
     this.squadPhotos = const {},
     this.guessPlayerPhotos = const {},
   });
 
+  /// Traço vetorial (SVG) do escudo, tingível — hoje só o PDF do ingresso
+  /// (`ticket_pdf.dart`) lê isto de verdade. Selo de login usa [authCrest]
+  /// desde o rebrand Esmeraldino App (ver abaixo); deliberadamente um
+  /// campo SEPARADO, pra nunca acoplar "o que aparece no login" a "o que
+  /// vai no PDF do ingresso" de novo.
   final String crest;
   final String crestBadge;
   final String crest3d;
@@ -90,6 +96,15 @@ class ClubAssets {
   /// icon: as duas coisas mudam juntas, nunca logo nova sobre fundo velho
   /// ou vice-versa.
   final String? splashLogo;
+
+  /// Selo mostrado no topo das telas de login/cadastro/recuperação de
+  /// senha (`AuthScaffold._CrestSeal`). `null` cai pro comportamento de
+  /// sempre: [crest] (SVG vetorial) tingido de branco sólido — só funciona
+  /// pra um traço monocromático. Quando definido (ex.: Goiás, desde o
+  /// rebrand Esmeraldino App), mostra a imagem CRUA, sem tingir — pra uma
+  /// marca colorida (mascote, não escudo) que já vem com as próprias cores
+  /// e fundo, tingir de branco destruiria a arte.
+  final String? authCrest;
 
   /// Fotos do elenco embutidas no app, por `SquadMember.id` — **por
   /// clube**, nunca um mapa global. Antes era uma constante única
