@@ -17,6 +17,7 @@
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		B1C2D3E4F5A6071809202122 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B1C2D3E4F5A6071809202123 /* PrivacyInfo.xcprivacy */; };
+		C0FFEE0000000000000000A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C0FFEE0000000000000000A2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B2C3D4E5F6070809101112 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		B1C2D3E4F5A6071809202123 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		C0FFEE0000000000000000A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DC7A78A1077BD8CC398CD0F3 /* Debug-goias.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug-goias.xcconfig"; path = "Flutter/Flavors/Debug-goias.xcconfig"; sourceTree = "<group>"; };
 		9AF6AAB3B3BE90A308D4B86A /* Release-goias.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release-goias.xcconfig"; path = "Flutter/Flavors/Release-goias.xcconfig"; sourceTree = "<group>"; };
 		A439654237B443556F64BE0C /* Profile-goias.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile-goias.xcconfig"; path = "Flutter/Flavors/Profile-goias.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				97C147021CF9000F007C117D /* Info.plist */,
 				A1B2C3D4E5F6070809101112 /* Runner.entitlements */,
 				B1C2D3E4F5A6071809202123 /* PrivacyInfo.xcprivacy */,
+				C0FFEE0000000000000000A2 /* GoogleService-Info.plist */,
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
@@ -256,6 +259,7 @@
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				B1C2D3E4F5A6071809202122 /* PrivacyInfo.xcprivacy in Resources */,
+				C0FFEE0000000000000000A1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
