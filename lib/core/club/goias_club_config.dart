@@ -59,7 +59,15 @@ final goiasClubConfig = ClubConfig(
     storeHomeBanners: ['lib/assets/store/banners/goias/goias_store.png'],
     storeCatalogAssetPath: 'lib/assets/content/store_products.json',
     membershipFaqAssetPath: 'lib/assets/content/membership_faq.json',
-    splashVideo: 'lib/assets/videos/goias_splash.mp4',
+    // Rebrand Esmeraldino App: vídeo de splash removido (mostrava o
+    // brasão oficial animado — mesma categoria de problema do ícone/nome,
+    // ver Guideline 4.1(a)). `lib/assets/videos/goias_splash.mp4` continua
+    // no bundle sem uso, só pra rollback. `splashVideo: null` faz
+    // `SplashVideoPage` cair sempre em `StaticLogoSplash`, em toda
+    // plataforma (não só iOS Web) — ver `splashLogo` logo abaixo pra qual
+    // imagem/fundo ela usa agora.
+    splashVideo: null,
+    splashLogo: 'lib/assets/branding/goias/new_logo.png',
     squadPhotos: squadPhotoAssets,
     // Pro Goiás os dois mapas coincidem (mesmos assets locais servem tanto
     // pro Elenco quanto pro Quem Vestiu o Manto) — ver comentário em
