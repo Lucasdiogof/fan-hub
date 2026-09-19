@@ -85,6 +85,16 @@ class _LoginPageState extends State<LoginPage> {
               alignment: Alignment.topCenter,
             ),
           ),
+          if (sl<ClubConfig>().assets.loginWordmark case final wordmark?)
+            Positioned.fill(
+              child: SafeArea(
+                bottom: false,
+                child: Align(
+                  alignment: const Alignment(0, -0.42),
+                  child: Image.asset(wordmark, height: 96),
+                ),
+              ),
+            ),
           SafeArea(
             child: LayoutBuilder(
               builder: (context, constraints) {
