@@ -1,6 +1,7 @@
 #include "../Debug.xcconfig"
 PRODUCT_BUNDLE_IDENTIFIER = br.com.fanhub.goias
-APP_DISPLAY_NAME = Goiás EC
+// Rebrand Esmeraldino App (Guideline 4.1(a) da Apple) — era "Goiás EC".
+APP_DISPLAY_NAME = Esmeraldino App
 // Só informativo (nada nativo lê isto — ver docs/multiclub/45, item "iOS —
 // APP_CLUB"). O valor que de fato controla o clube em runtime é o
 // --dart-define=APP_CLUB=goias passado pro `flutter build/run`.

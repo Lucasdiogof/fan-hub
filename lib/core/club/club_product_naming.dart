@@ -10,6 +10,7 @@ class ClubProductNaming {
     required this.passportName,
     required this.storeName,
     required this.membershipProgramName,
+    this.appDisplayName,
   });
 
   /// `'Arena Esmeraldina'`.
@@ -23,4 +24,14 @@ class ClubProductNaming {
 
   /// `'Sócio Esmeralda'`.
   final String membershipProgramName;
+
+  /// Nome do PRODUTO (não do clube) mostrado em metadata de nível de app
+  /// — hoje só `MaterialApp.title`. `null` cai pra
+  /// `identity.displayName` (comportamento de sempre, ex.: Bragantino).
+  /// Existe pro Goiás desde a correção Guideline 4.1(a) da Apple: o app
+  /// nunca deve se identificar (nome/metadata) como se fosse o produto
+  /// oficial de um terceiro — `'Esmeraldino App'`, nunca `'Goiás
+  /// Esporte Clube'`. Referências factuais ao clube dentro do conteúdo
+  /// ("Goiás x Avaí") continuam de fora, isto é só o rótulo do app em si.
+  final String? appDisplayName;
 }

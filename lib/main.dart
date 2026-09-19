@@ -187,7 +187,9 @@ class _GoiasAppState extends State<GoiasApp> {
                 authCubit: _authCubit,
                 navigatorKey: rootNavigatorKey,
                 child: MaterialApp.router(
-                  title: _clubConfig.identity.displayName,
+                  title:
+                      _clubConfig.productNames.appDisplayName ??
+                      _clubConfig.identity.displayName,
                   debugShowCheckedModeBanner: false,
                   theme: AppTheme.light(_clubConfig.branding.light),
                   darkTheme: AppTheme.dark(_clubConfig.branding.dark),
