@@ -8,15 +8,27 @@ import '../../../../core/club/synthetic_club_config.dart';
 /// `shouldPlaySplashVideo` é a decisão PURA (sem widget/plugin de vídeo)
 /// entre `VideoSplashView` e `StaticLogoSplash` — testável sozinha, mesmo
 /// padrão do `capabilityGateRedirect`. Cobre a regra absoluta: um clube sem
-/// `splashVideo` (Bragantino hoje) NUNCA cai pro vídeo de outro clube.
+/// `splashVideo` (Bragantino e, desde o rebrand Esmeraldino App, também o
+/// Goiás) NUNCA cai pro vídeo de outro clube.
+///
+/// Nenhum `ClubConfig` real tem `splashVideo` preenchido hoje — os testes
+/// do ramo "toca vídeo" abaixo usam uma string literal só pra exercitar a
+/// lógica pura de `shouldPlaySplashVideo` (que não olha QUAL vídeo, só se
+/// é `null`), não pra afirmar que algum clube real tem vídeo.
+const _fakeVideoAsset = 'test/fixtures/fake_splash.mp4';
+
 void main() {
   group('configuração dos clubes', () {
-    test('Goiás tem splashVideo = goias_splash.mp4', () {
-      expect(
-        goiasClubConfig.assets.splashVideo,
-        'lib/assets/videos/goias_splash.mp4',
-      );
-    });
+    test(
+      'Goiás tem splashVideo = null (removido no rebrand Esmeraldino App) e splashLogo definido',
+      () {
+        expect(goiasClubConfig.assets.splashVideo, isNull);
+        expect(
+          goiasClubConfig.assets.splashLogo,
+          'lib/assets/branding/goias/new_logo.png',
+        );
+      },
+    );
 
     test('Bragantino tem splashVideo = null (sem vídeo oficial ainda)', () {
       expect(bragantinoClubConfig.assets.splashVideo, isNull);
@@ -32,7 +44,7 @@ void main() {
       expect(
         shouldPlaySplashVideo(
           isIosWeb: false,
-          splashVideoAsset: goiasClubConfig.assets.splashVideo,
+          splashVideoAsset: _fakeVideoAsset,
         ),
         isTrue,
       );
@@ -57,7 +69,7 @@ void main() {
         expect(
           shouldPlaySplashVideo(
             isIosWeb: true,
-            splashVideoAsset: goiasClubConfig.assets.splashVideo,
+            splashVideoAsset: _fakeVideoAsset,
           ),
           isFalse,
         );

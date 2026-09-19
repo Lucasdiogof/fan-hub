@@ -20,6 +20,7 @@ class ClubAssets {
     this.storeCatalogAssetPath,
     this.membershipFaqAssetPath,
     this.splashVideo,
+    this.splashLogo,
     this.squadPhotos = const {},
     this.guessPlayerPhotos = const {},
   });
@@ -79,6 +80,16 @@ class ClubAssets {
   /// aqui faz `SplashVideoPage` usar `StaticLogoSplash` (o mesmo fallback
   /// já usado pro iOS Web/PWA) em vez de qualquer vídeo.
   final String? splashVideo;
+
+  /// Imagem da splash ESTÁTICA (`StaticLogoSplash` — usada quando
+  /// [splashVideo] é `null`, e sempre no iOS Web/PWA mesmo com vídeo
+  /// configurado). `null` cai pro comportamento de sempre ([crestBadge]
+  /// sobre o fundo neutro da splash nativa). Quando definido, também troca
+  /// o fundo pra `branding.light.primary` — pensado pra uma marca própria
+  /// (não o escudo) que já vem com o próprio fundo colorido, tipo um app
+  /// icon: as duas coisas mudam juntas, nunca logo nova sobre fundo velho
+  /// ou vice-versa.
+  final String? splashLogo;
 
   /// Fotos do elenco embutidas no app, por `SquadMember.id` — **por
   /// clube**, nunca um mapa global. Antes era uma constante única

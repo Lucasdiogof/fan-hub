@@ -10,13 +10,21 @@ const _splashBackground = Color(0xFFF6F8F7);
 
 const _holdDuration = Duration(milliseconds: 1400);
 
-/// Splash simples pro iOS Web/PWA — só o brasão oficial sobre a cor de
-/// fundo da splash nativa, sem vídeo nem sequência de imagens. Existe
-/// porque tanto o vídeo (autoplay bloqueado pelo Safari) quanto a
-/// sequência de 3 cenas animadas (peso de imagem grande demais pra
-/// terminar de carregar antes do timer de segurança em rede móvel) davam
-/// trabalho justamente na plataforma mais restrita — uma imagem só,
-/// pequena, sem timeline, não tem como falhar do mesmo jeito.
+/// Splash estática — só uma imagem sobre um fundo sólido, sem vídeo nem
+/// sequência de cenas. Dois modos, escolhidos por
+/// `ClubConfig.assets.splashLogo`:
+///   - `null` (comportamento de sempre, ex.: Bragantino): [crestBadge]
+///     sobre [_splashBackground] (a cor neutra da splash nativa).
+///   - definido (ex.: Goiás, desde o rebrand Esmeraldino App):
+///     [ClubAssets.splashLogo] sobre `branding.light.primary` — pensado
+///     pra uma marca própria que já vem com fundo colorido embutido (tipo
+///     app icon), nunca logo nova sobre fundo velho.
+/// Também é o fallback de TODA a splash no iOS Web/PWA (mesmo com vídeo
+/// configurado) — vídeo (autoplay bloqueado pelo Safari) e sequência de
+/// cenas animadas (peso de imagem grande demais pra terminar de carregar
+/// antes do timer de segurança em rede móvel) davam trabalho justamente na
+/// plataforma mais restrita; uma imagem só, pequena, sem timeline, não tem
+/// como falhar do mesmo jeito.
 class StaticLogoSplash extends StatefulWidget {
   const StaticLogoSplash({
     required this.onReady,
@@ -38,6 +46,13 @@ class StaticLogoSplash extends StatefulWidget {
 class _StaticLogoSplashState extends State<StaticLogoSplash> {
   Timer? _holdTimer;
 
+  String get _logoAsset =>
+      sl<ClubConfig>().assets.splashLogo ?? sl<ClubConfig>().assets.crestBadge;
+
+  Color get _backgroundColor => sl<ClubConfig>().assets.splashLogo == null
+      ? _splashBackground
+      : sl<ClubConfig>().branding.light.primary;
+
   @override
   void initState() {
     super.initState();
@@ -46,10 +61,7 @@ class _StaticLogoSplashState extends State<StaticLogoSplash> {
 
   Future<void> _prepare() async {
     try {
-      await precacheImage(
-        AssetImage(sl<ClubConfig>().assets.crestBadge),
-        context,
-      );
+      await precacheImage(AssetImage(_logoAsset), context);
     } catch (_) {
       // Asset local, praticamente nunca falha — mas se falhar, mostra o
       // que der (o `Image.asset` no build já tem seu próprio tratamento de
@@ -71,12 +83,17 @@ class _StaticLogoSplashState extends State<StaticLogoSplash> {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: _splashBackground,
+      color: _backgroundColor,
       child: Center(
         child: Image.asset(
-          sl<ClubConfig>().assets.crestBadge,
-          width: 140,
-          height: 140,
+          _logoAsset,
+          // 200 (era 140, pro brasão vetorial simples) — o mascote novo é
+          // uma ilustração mais detalhada, precisa de mais espaço pra ler
+          // bem. Só afeta quem tem `splashLogo` definido; Bragantino
+          // continua em 140 (nunca mudou o valor, só a origem da
+          // constante deixou de ser fixa).
+          width: sl<ClubConfig>().assets.splashLogo == null ? 140 : 200,
+          height: sl<ClubConfig>().assets.splashLogo == null ? 140 : 200,
           fit: BoxFit.contain,
         ),
       ),

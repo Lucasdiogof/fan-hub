@@ -17,9 +17,10 @@ class RevealGlowPainter extends CustomPainter {
 
   /// Cor do brilho — do clube ATIVO (`ClubConfig.branding`, ver call site
   /// em `splash_video_page.dart`). Era um verde cravado (achado real
-  /// 2026-09-09), sem efeito visual hoje só porque nenhum clube além do
-  /// Goiás tem `splashVideo` real ainda — mas vazaria assim que o
-  /// Bragantino (ou outro clube) ganhasse um.
+  /// 2026-09-09) — parametrizado por clube desde então, pra nunca vazar a
+  /// cor de um clube na splash de outro (nenhum tem `splashVideo` hoje —
+  /// ver `ClubAssets.splashVideo` —, mas o reveal também envolve a
+  /// `StaticLogoSplash`, então este parâmetro continua em uso real).
   final Color tintColor;
 
   static const _white = Color(0xFFFFFFFF);

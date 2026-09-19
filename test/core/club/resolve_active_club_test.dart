@@ -255,12 +255,16 @@ void main() {
 
   group('goiasClubConfig — feature "Clube" e splash continuam ligados', () {
     test(
-      'hasClubContent=true e splashVideo aponta pro vídeo oficial do Goiás',
+      'hasClubContent=true; splashVideo removido (rebrand Esmeraldino App), splashLogo assume',
       () {
         expect(goiasClubConfig.capabilities.hasClubContent, isTrue);
+        // Rebrand Esmeraldino App (Guideline 4.1(a) da Apple) — o vídeo de
+        // splash mostrava o brasão oficial animado; removido, StaticLogoSplash
+        // agora sempre entra em jogo (nunca mais o vídeo pro Goiás).
+        expect(goiasClubConfig.assets.splashVideo, isNull);
         expect(
-          goiasClubConfig.assets.splashVideo,
-          'lib/assets/videos/goias_splash.mp4',
+          goiasClubConfig.assets.splashLogo,
+          'lib/assets/branding/goias/new_logo.png',
         );
       },
     );
