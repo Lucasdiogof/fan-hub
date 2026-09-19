@@ -29,6 +29,15 @@ class NextMatchHero extends StatelessWidget {
   final VoidCallback? onTickets;
   final VoidCallback? onMatchStarted;
 
+  /// Venda de ingresso só existe quando a capability do clube está ligada
+  /// E o jogo é em casa — o visitante não controla a bilheteria.
+  bool get _showsTicketsCta =>
+      onTickets != null && match.homeTeam.matchesClub(sl<ClubConfig>());
+
+  /// Sem ingresso pra vender, o CTA vira "Ver detalhes" (mesmo destino do
+  /// toque no card). Se nem isso existir, o botão simplesmente não aparece.
+  VoidCallback? get _ctaAction => _showsTicketsCta ? onTickets : onTap;
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -115,13 +124,16 @@ class NextMatchHero extends StatelessWidget {
                   ),
                 ],
                 // Fora de casa não tem ingresso pra vender — só o mandante
-                // do jogo controla a bilheteria do próprio estádio.
-                if (match.homeTeam.matchesClub(sl<ClubConfig>())) ...[
+                // do jogo controla a bilheteria do próprio estádio. E com
+                // `hasTickets: false` (venda desligada pro envio às lojas)
+                // o card NUNCA mostra um botão de compra desabilitado: cai
+                // pro mesmo destino do toque no card, "Ver detalhes".
+                if (_ctaAction != null) ...[
                   const SizedBox(height: AppSpacing.lg),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: onTickets,
+                      onPressed: _ctaAction,
                       // `forceDark`: este botão fica sobre o
                       // `StadiumBackdrop`, que é sempre escuro
                       // independente do tema do app.
@@ -135,7 +147,11 @@ class NextMatchHero extends StatelessWidget {
                               ),
                             ),
                           ),
-                      child: Text(context.l10n.homeTickets),
+                      child: Text(
+                        _showsTicketsCta
+                            ? context.l10n.homeTickets
+                            : context.l10n.matchViewDetails,
+                      ),
                     ),
                   ),
                 ],
