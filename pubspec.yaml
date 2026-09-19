@@ -331,17 +331,37 @@ flutter:
     - lib/assets/audio/club/hinos/
     - lib/assets/audio/club/musicas/
 
+# Rebrand Esmeraldino App (Guideline 4.1(a) — metadata/identidade visual
+# independente): ícone passou a vir de lib/assets/branding/goias/new_logo.png
+# (mascote próprio), não mais do escudo oficial do Goiás via
+# scripts/generate_icon_assets.py. Aquele script e os PNGs que ele gera em
+# assets_gen/ ficam intactos no repo só pra rollback — nada os apaga, só
+# paramos de apontar pra eles aqui. Nunca toca no Bragantino: essa é a
+# config default/sem flavor do flutter_launcher_icons, que só alimenta
+# android/app/src/main/res/mipmap-* e ios/.../AppIcon.appiconset — o
+# Bragantino usa mipmap-bragantino/AppIcon-Bragantino.appiconset,
+# gerados/mantidos à parte.
+#
+# ARMADILHA CONFIRMADA (2026-09-19): rodar `dart run flutter_launcher_icons`
+# reescreve ios/Runner.xcodeproj/project.pbxproj INTEIRO e troca
+# ASSETCATALOG_COMPILER_APPICON_NAME de "AppIcon-Bragantino" pra "AppIcon"
+# nos 3 build configs do flavor bragantino (efeito colateral do plugin,
+# não intencional) — sempre conferir `git diff ios/Runner.xcodeproj/
+# project.pbxproj` depois de rodar e reverter esse arquivo se aparecer
+# qualquer menção a "Bragantino" no diff.
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets_gen/app_icon.png"
+  image_path: "lib/assets/branding/goias/new_logo.png"
   adaptive_icon_background: "#004C1B"
-  adaptive_icon_foreground: "assets_gen/app_icon_foreground.png"
+  adaptive_icon_foreground: "lib/assets/branding/goias/new_logo.png"
+  # web.generate desligado nesta rodada de propósito: build web não separa
+  # ícone por flavor (mesmo web/icons/*.png pros dois clubes — ver
+  # tool/cloudflare_build_web_flavor.sh), então gerar aqui vazaria o ícone
+  # novo do Goiás pro PWA do Bragantino também. Fora do escopo desta
+  # correção (Apple só reprovou iOS/Android nativos).
   web:
-    generate: true
-    image_path: "assets_gen/app_icon.png"
-    background_color: "#004C1B"
-    theme_color: "#004C1B"
+    generate: false
 
 flutter_native_splash:
   color: "#F6F8F7"

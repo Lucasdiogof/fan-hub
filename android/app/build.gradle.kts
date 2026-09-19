@@ -69,7 +69,11 @@ android {
         create("goias") {
             dimension = "club"
             applicationId = "br.com.fanhub.goias"
-            resValue("string", "app_name", "Goiás EC")
+            // Rebrand Esmeraldino App (Guideline 4.1(a) da Apple — metadata
+            // não pode referenciar o clube de terceiro como se fosse o
+            // produto oficial). Era "Goiás EC" — nome de exibição
+            // independente agora, nunca o nome do clube.
+            resValue("string", "app_name", "Esmeraldino App")
             manifestPlaceholders["notificationChannelId"] = "goias_matches"
             buildConfigField("String", "NOTIFICATION_CHANNEL_ID", "\"goias_matches\"")
             buildConfigField("String", "NOTIFICATION_CHANNEL_NAME", "\"Partidas do Goiás\"")

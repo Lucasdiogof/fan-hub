@@ -137,6 +137,7 @@ final goiasClubConfig = ClubConfig(
     passportName: 'Passaporte Esmeraldino',
     storeName: 'Goiás Store',
     membershipProgramName: 'Sócio Esmeralda',
+    appDisplayName: 'Esmeraldino App',
   ),
   passportContent: GoiasPassportContent.content,
   // Reempacotamento — mesmo catálogo/regulamento hardcoded de sempre
