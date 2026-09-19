@@ -48,6 +48,10 @@ final goiasClubConfig = ClubConfig(
     // mais o escudo oficial — `crest` acima continua o mesmo (PDF do
     // ingresso não muda nesta rodada).
     authCrest: 'lib/assets/branding/goias/new_logo.png',
+    // Wordmark "Esmeraldino App" sobre o fundo da tela de login — parte do
+    // mesmo rebrand acima, só que pro `LoginPage` (que não usa
+    // `AuthScaffold`/`authCrest`, tem fundo e layout próprios).
+    loginWordmark: 'lib/assets/branding/goias/login_wordmark.png',
     crestBadge: AppAssets.goiasCrestBadge,
     crest3d: AppAssets.goiasCrest3d,
     loginBackground: AppAssets.loginBackground,

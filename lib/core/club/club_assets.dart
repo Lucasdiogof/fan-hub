@@ -22,6 +22,7 @@ class ClubAssets {
     this.splashVideo,
     this.splashLogo,
     this.authCrest,
+    this.loginWordmark,
     this.squadPhotos = const {},
     this.guessPlayerPhotos = const {},
   });
@@ -105,6 +106,13 @@ class ClubAssets {
   /// marca colorida (mascote, não escudo) que já vem com as próprias cores
   /// e fundo, tingir de branco destruiria a arte.
   final String? authCrest;
+
+  /// Wordmark mostrado sobre o fundo da tela de login (`LoginPage`), acima
+  /// dos campos — **separado** de [authCrest] (que é o selo redondo em
+  /// `AuthScaffold`, usado no cadastro/recuperação de senha, não no login).
+  /// `null` = comportamento de sempre: só o fundo ([loginBackground], que já
+  /// traz o escudo/arte embutida), sem wordmark por cima.
+  final String? loginWordmark;
 
   /// Fotos do elenco embutidas no app, por `SquadMember.id` — **por
   /// clube**, nunca um mapa global. Antes era uma constante única
