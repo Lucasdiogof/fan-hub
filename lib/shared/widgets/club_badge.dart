@@ -8,6 +8,16 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/features/match/domain/entities/team.dart';
 import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/utils/inline_svg_css.dart';
+import 'package:goias_app/shared/widgets/team_visuals/styled_team_badge.dart';
+
+/// Liga a aparência de escudo ESTILIZADO (formato de escudo simplificado +
+/// cor do time + sigla, via [StyledTeamBadge]) em vez do escudo oficial
+/// (rede/asset) em todo o app. **Rollback em uma linha**: mude pra `false`
+/// — nenhum outro código muda, nenhum asset/mapping antigo foi tocado ou
+/// removido, o pipeline de escudo oficial abaixo (`_rasterBadge`,
+/// `_svgBadge`, `_ShieldBadge` etc.) continua 100% intacto e volta a
+/// responder por todo `ClubBadge`/`ClubBadge.activeClub` do app.
+const useStyledTeamBadges = true;
 
 /// Safari/iOS no Web (inclusive PWA) tem um bug conhecido do CanvasKit onde
 /// imagens de rede viram retângulo preto sólido depois de um repaint em
@@ -57,6 +67,7 @@ class ClubBadge extends StatelessWidget {
     required Team this.team,
     this.size = 44,
     this.onDark = false,
+    this.round = false,
     super.key,
   });
 
@@ -65,8 +76,12 @@ class ClubBadge extends StatelessWidget {
   /// que só precise "meu escudo" (Home, cabeçalho de "O Clube", carteirinha
   /// de sócio) — nunca escudo de adversário/partida, que continua exigindo
   /// [ClubBadge.new] com um `Team` de verdade.
-  const ClubBadge.activeClub({this.size = 44, this.onDark = false, super.key})
-    : team = null;
+  const ClubBadge.activeClub({
+    this.size = 44,
+    this.onDark = false,
+    this.round = false,
+    super.key,
+  }) : team = null;
 
   final Team? team;
   final double size;
@@ -77,15 +92,39 @@ class ClubBadge extends StatelessWidget {
   /// já vêm coloridos e são exibidos como estão.
   final bool onDark;
 
+  /// `true` só pro slot circular da bottom nav — ver `StyledTeamBadge.round`.
+  /// Sem efeito quando `useStyledTeamBadges` é `false`: o PNG oficial
+  /// (`_rasterBadge`/`Image.asset`) já encaixa certo no container redondo
+  /// sem precisar de nenhum recorte extra.
+  final bool round;
+
   @override
   Widget build(BuildContext context) {
+    final clubConfig = sl<ClubConfig>();
+    final team = this.team;
+
+    if (useStyledTeamBadges) {
+      return team == null
+          ? StyledTeamBadge.forActiveClub(
+              clubConfig: clubConfig,
+              size: size,
+              onDark: onDark,
+              round: round,
+            )
+          : StyledTeamBadge.forTeam(
+              team: team,
+              clubConfig: clubConfig,
+              size: size,
+              onDark: onDark,
+              round: round,
+            );
+    }
+
     // O clube ativo sempre usa o brasão oficial embutido no app, nunca o
     // que a fonte de dado ao vivo devolve — evita depender da rede pra
     // mostrar o escudo do próprio clube, e garante que é sempre a arte
     // oficial. Nunca muda com o tema: é um `Image.asset` puro, sem filtro
     // de cor nenhum.
-    final clubConfig = sl<ClubConfig>();
-    final team = this.team;
     if (team == null || team.matchesClub(clubConfig)) {
       _debugLog(source: 'asset:active-club');
       return Image.asset(

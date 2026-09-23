@@ -6,6 +6,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/home/presentation/widgets/main_navigation_items.dart';
+import 'package:goias_app/shared/widgets/club_badge.dart';
 
 const _barHeight = 78.0;
 const _crestSize = 68.0;
@@ -17,8 +18,8 @@ const _crestGapWidth = _crestSize + 18;
 const _animationDuration = Duration(milliseconds: 220);
 
 /// Bottom nav flutuante do shell principal — 4 abas lineares em volta de um
-/// quinto slot central que não é um ícone, é o escudo oficial do clube ativo
-/// (`ClubConfig.assets.crestBadge`), ligeiramente elevado sobre a barra. Home é
+/// quinto slot central que não é um ícone, é o escudo do clube ativo (via
+/// `ClubBadge.activeClub`), ligeiramente elevado sobre a barra. Home é
 /// esse escudo, não um item normal: não tem label visível (só
 /// `Semantics`), e o toque nele sempre chama [onSelected] com
 /// [homeTabIndex]. Ver `main_navigation_items.dart` pra ordem/índices das
@@ -382,10 +383,15 @@ class _HomeCrestButtonState extends State<_HomeCrestButton> {
                         ),
                     ],
                   ),
-                  child: Image.asset(
-                    sl<ClubConfig>().assets.crestBadge,
-                    width: _crestImageSize,
-                    height: _crestImageSize,
+                  // `ClubBadge.activeClub` (não `StyledTeamBadge` direto) de
+                  // propósito: mantém o rollback de `useStyledTeamBadges`
+                  // (`club_badge.dart`) funcionando pra este ícone também.
+                  // `round: true` só aqui — este é o único slot circular
+                  // ("puck") do app; o shield anguloso sobrava borda
+                  // estranha nos cantos dentro do container redondo.
+                  child: const ClubBadge.activeClub(
+                    size: _crestImageSize,
+                    round: true,
                   ),
                 ),
               ),

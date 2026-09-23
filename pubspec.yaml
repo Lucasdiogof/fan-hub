@@ -367,4 +367,11 @@ flutter_native_splash:
   color: "#F6F8F7"
   android_12:
     color: "#F6F8F7"
+    # Sem isso, o Android 12+ usa o ícone do launcher (a mascote) como
+    # ícone animado da splash screen nativa por padrão — aparecia ANTES do
+    # Flutter carregar, com tamanho/estilo diferentes do `StaticLogoSplash`
+    # do app, lendo como "a mascote aparece duas vezes" (diagnosticado
+    # 2026-09-22). PNG 1x1 transparente: satisfaz a exigência da API de
+    # sempre ter um ícone, sem mostrar nada.
+    image: assets/native_splash/transparent.png
   web: false

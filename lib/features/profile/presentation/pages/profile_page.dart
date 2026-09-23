@@ -24,7 +24,6 @@ import 'package:goias_app/shared/widgets/app_bottom_sheet.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
-import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -71,8 +70,6 @@ class _ProfileView extends StatelessWidget {
                         onTap: () =>
                             context.canPop() ? context.pop() : context.go('/'),
                       ),
-                      const SizedBox(height: AppSpacing.lg),
-                      PageTitle(context.l10n.profileTitle),
                     ],
                   ),
                 ),

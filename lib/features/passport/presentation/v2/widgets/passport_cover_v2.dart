@@ -7,6 +7,7 @@ import 'package:goias_app/features/passport/domain/entities/passport_summary.dar
 import 'package:goias_app/features/passport/domain/passport_level.dart';
 import 'package:goias_app/features/passport/presentation/passport_copy_extension.dart';
 import 'package:goias_app/features/passport/presentation/v2/widgets/passport_level_style.dart';
+import 'package:goias_app/shared/widgets/club_badge.dart';
 
 /// Capa do passaporte — inspirada num cartão de identidade do torcedor, não
 /// num dashboard. `deepGreen` é fixo (não muda entre light/dark, ver
@@ -104,11 +105,10 @@ class PassportCoverV2 extends StatelessWidget {
                         Colors.white,
                         BlendMode.srcIn,
                       ),
-                      child: Image.asset(
-                        sl<ClubConfig>().assets.crestBadge,
-                        width: 150,
-                        height: 150,
-                      ),
+                      // `ClubBadge.activeClub` (não `StyledTeamBadge`
+                      // direto) de propósito: mantém o rollback de
+                      // `useStyledTeamBadges` funcionando aqui também.
+                      child: const ClubBadge.activeClub(size: 150),
                     ),
                   ),
                 ),

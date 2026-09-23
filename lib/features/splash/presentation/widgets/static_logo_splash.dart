@@ -10,15 +10,13 @@ const _splashBackground = Color(0xFFF6F8F7);
 
 const _holdDuration = Duration(milliseconds: 1400);
 
-/// Splash estática — só uma imagem sobre um fundo sólido, sem vídeo nem
-/// sequência de cenas. Dois modos, escolhidos por
-/// `ClubConfig.assets.splashLogo`:
-///   - `null` (comportamento de sempre, ex.: Bragantino): [crestBadge]
-///     sobre [_splashBackground] (a cor neutra da splash nativa).
-///   - definido (ex.: Goiás, desde o rebrand Esmeraldino App):
-///     [ClubAssets.splashLogo] sobre `branding.light.primary` — pensado
-///     pra uma marca própria que já vem com fundo colorido embutido (tipo
-///     app icon), nunca logo nova sobre fundo velho.
+/// Splash estática — só uma imagem sobre [_splashBackground] (sempre a cor
+/// neutra da splash nativa, pedido explícito 2026-09-22 — nunca
+/// `branding.light.primary`, mesmo quando `ClubConfig.assets.splashLogo`
+/// está definido), sem vídeo nem sequência de cenas. A imagem em si ainda
+/// varia por `ClubConfig.assets.splashLogo`: `null` (ex.: Bragantino) usa
+/// [crestBadge]; definido (ex.: Goiás, mascote do rebrand Esmeraldino App)
+/// usa a arte própria — só a imagem muda, o fundo é sempre o mesmo.
 /// Também é o fallback de TODA a splash no iOS Web/PWA (mesmo com vídeo
 /// configurado) — vídeo (autoplay bloqueado pelo Safari) e sequência de
 /// cenas animadas (peso de imagem grande demais pra terminar de carregar
@@ -32,8 +30,11 @@ class StaticLogoSplash extends StatefulWidget {
     super.key,
   });
 
-  /// O brasão já foi pré-carregado — pai usa isso pra disparar a
-  /// revelação em círculo.
+  /// O brasão já foi pré-carregado — hoje sem uso real pelo pai
+  /// (`SplashVideoPage` mostra o conteúdo desde o primeiro frame, sem
+  /// revelação nenhuma pra disparar), mantido pra não mudar a assinatura
+  /// à toa e porque `VideoSplashView` ainda pode querer sinalizar isso no
+  /// futuro.
   final VoidCallback onReady;
 
   /// Tempo de exibição encerrado.
@@ -49,9 +50,10 @@ class _StaticLogoSplashState extends State<StaticLogoSplash> {
   String get _logoAsset =>
       sl<ClubConfig>().assets.splashLogo ?? sl<ClubConfig>().assets.crestBadge;
 
-  Color get _backgroundColor => sl<ClubConfig>().assets.splashLogo == null
-      ? _splashBackground
-      : sl<ClubConfig>().branding.light.primary;
+  // Sempre a cor neutra da splash nativa — nunca `branding.light.primary`,
+  // mesmo com `splashLogo` definido (pedido explícito 2026-09-22: fundo
+  // branco também pro Goiás, que tem mascote própria).
+  Color get _backgroundColor => _splashBackground;
 
   @override
   void initState() {
@@ -82,20 +84,36 @@ class _StaticLogoSplashState extends State<StaticLogoSplash> {
 
   @override
   Widget build(BuildContext context) {
+    final hasSplashLogo = sl<ClubConfig>().assets.splashLogo != null;
+    // 200 (era 140, pro brasão vetorial simples) — o mascote novo é uma
+    // ilustração mais detalhada, precisa de mais espaço pra ler bem. Só
+    // afeta quem tem `splashLogo` definido; Bragantino continua em 140
+    // (nunca mudou o valor, só a origem da constante deixou de ser fixa).
+    final imageSize = hasSplashLogo ? 200.0 : 140.0;
+    final image = Image.asset(
+      _logoAsset,
+      width: imageSize,
+      height: imageSize,
+      fit: BoxFit.contain,
+    );
+
     return ColoredBox(
       color: _backgroundColor,
       child: Center(
-        child: Image.asset(
-          _logoAsset,
-          // 200 (era 140, pro brasão vetorial simples) — o mascote novo é
-          // uma ilustração mais detalhada, precisa de mais espaço pra ler
-          // bem. Só afeta quem tem `splashLogo` definido; Bragantino
-          // continua em 140 (nunca mudou o valor, só a origem da
-          // constante deixou de ser fixa).
-          width: sl<ClubConfig>().assets.splashLogo == null ? 140 : 200,
-          height: sl<ClubConfig>().assets.splashLogo == null ? 140 : 200,
-          fit: BoxFit.contain,
-        ),
+        // `splashLogo` (mascote) vem com fundo quadrado gravado na própria
+        // arte — pedido explícito 2026-09-22: mostrar sempre redonda, nunca
+        // o quadrado cru. `crestBadge` (fallback sem `splashLogo`, ex.:
+        // Bragantino) já é um traço vetorial sem fundo sólido — não precisa
+        // desse recorte.
+        child: hasSplashLogo
+            ? ClipOval(
+                child: SizedBox(
+                  width: imageSize,
+                  height: imageSize,
+                  child: image,
+                ),
+              )
+            : image,
       ),
     );
   }
