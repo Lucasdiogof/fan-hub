@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:goias_app/core/club/club_config.dart';
-import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/shared/widgets/club_badge.dart';
 
-/// Brasão oficial do Goiás pulsando — mostra a arte real (não um traço
-/// tingido), já que o próprio brasão tem contraste suficiente pra qualquer
+/// Escudo do clube ativo pulsando — mostra a identidade visual real (não um
+/// traço tingido), já que o badge tem contraste suficiente pra qualquer
 /// fundo (claro, escuro, ou sempre-escuro do `GlobalLoading`). [color] fica
 /// só por compatibilidade de API com quem já chamava este widget; não tem
-/// mais efeito, o brasão sempre aparece com as cores reais.
+/// mais efeito, o badge sempre aparece com as cores reais. Via
+/// `ClubBadge.activeClub` (não `StyledTeamBadge` direto) de propósito:
+/// mantém o rollback de `useStyledTeamBadges` funcionando aqui também.
 class GoiasLoadingBadge extends StatelessWidget {
   const GoiasLoadingBadge({this.size = 64, this.color, super.key});
 
@@ -16,12 +17,13 @@ class GoiasLoadingBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      sl<ClubConfig>().assets.crestBadge,
-      width: size,
-      height: size,
-      fit: BoxFit.contain,
-    );
+    // Mascote removida temporariamente dos loadings (pedido 2026-09-23) —
+    // ficou ruim nesse contexto pequeno/pulsando. Só o círculo de
+    // progresso (`GoiasLoadingIndicator`) por enquanto. Comentado, não
+    // apagado: reativar trocando a linha abaixo quando tiver uma versão
+    // que funcione bem aqui.
+    // return ClubBadge.activeClub(size: size);
+    return const SizedBox.shrink();
   }
 }
 

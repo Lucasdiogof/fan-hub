@@ -31,8 +31,10 @@ class VideoSplashView extends StatefulWidget {
   /// `null`; nunca há um vídeo default embutido aqui dentro.
   final String videoAsset;
 
-  /// O primeiro frame já foi decodificado — pai usa isso pra disparar a
-  /// revelação em círculo.
+  /// O primeiro frame já foi decodificado — hoje sem uso real pelo pai
+  /// (`SplashVideoPage` mostra o conteúdo desde o primeiro frame, sem
+  /// revelação nenhuma pra disparar), mantido por simetria com
+  /// `StaticLogoSplash.onReady`.
   final VoidCallback onReady;
 
   /// O vídeo chegou ao fim naturalmente.

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +10,6 @@ import 'package:goias_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:goias_app/features/auth/presentation/cubit/auth_state.dart';
 import 'package:goias_app/features/home/presentation/cubit/home_cubit.dart';
 import 'package:goias_app/features/membership/presentation/cubit/membership_status_cubit.dart';
-import 'package:goias_app/features/splash/presentation/widgets/circle_reveal_clipper.dart';
-import 'package:goias_app/features/splash/presentation/widgets/reveal_glow_painter.dart';
 import 'package:goias_app/features/splash/presentation/widgets/static_logo_splash.dart';
 import 'package:goias_app/features/splash/presentation/widgets/video_splash_view.dart';
 import 'package:goias_app/shared/state/load_status.dart';
@@ -21,9 +18,6 @@ import 'package:goias_app/shared/state/load_status.dart';
 /// de propósito, é a continuação exata da splash nativa, que não tem uma
 /// variante dark configurada.
 const _splashBackground = Color(0xFFF6F8F7);
-
-const _startRadius = 14.0;
-const _revealDuration = Duration(milliseconds: 550);
 
 /// O conteúdo (vídeo ou o brasão estático) dura poucos segundos — isto é só
 /// a rede de segurança. Cobre autoplay bloqueado, imagem que falha ao
@@ -64,34 +58,14 @@ class SplashVideoPage extends StatefulWidget {
   State<SplashVideoPage> createState() => _SplashVideoPageState();
 }
 
-class _SplashVideoPageState extends State<SplashVideoPage>
-    with TickerProviderStateMixin {
-  late final AnimationController _revealController;
-  late final Animation<double> _revealAnimation;
+class _SplashVideoPageState extends State<SplashVideoPage> {
   late final Future<void> _homePreload;
   bool _finished = false;
-  bool _revealed = false;
   Timer? _fallbackTimer;
-
-  /// O conteúdo (vídeo/brasão) troca de pai conforme a revelação avança
-  /// (`Opacity` → `ClipPath` dentro de `Stack` → filho direto). Sem uma
-  /// `GlobalKey` estável, essa troca de pai faz o Flutter remontar o
-  /// `VideoSplashView` — o controller reinicia e o vídeo volta ao primeiro
-  /// frame ("pisca" no começo da revelação). A key preserva o mesmo elemento
-  /// nas três posições, então o vídeo toca sem reiniciar.
-  final GlobalKey _contentKey = GlobalKey();
 
   @override
   void initState() {
     super.initState();
-    _revealController = AnimationController(
-      vsync: this,
-      duration: _revealDuration,
-    );
-    _revealAnimation = CurvedAnimation(
-      parent: _revealController,
-      curve: Curves.easeOutCubic,
-    );
     _homePreload = _preloadDestination();
     // Antes de tentar mostrar qualquer conteúdo, de propósito — se o
     // vídeo/precache nunca resolver, a splash ainda sai sozinha.
@@ -119,15 +93,6 @@ class _SplashVideoPageState extends State<SplashVideoPage>
         (state) => state.status == LoadStatus.success,
       );
     }
-  }
-
-  /// Chamado pelo conteúdo (vídeo ou imagens) quando está pronto pra
-  /// aparecer — dispara a revelação em círculo. Idempotente: só a primeira
-  /// chamada conta.
-  void _reveal() {
-    if (_revealed || !mounted) return;
-    _revealed = true;
-    _revealController.forward();
   }
 
   /// Ponto único de conclusão da splash — idempotente por causa do guard
@@ -160,63 +125,22 @@ class _SplashVideoPageState extends State<SplashVideoPage>
   @override
   void dispose() {
     _fallbackTimer?.cancel();
-    _revealController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
-    final reducedMotion = MediaQuery.of(context).disableAnimations;
-
+    // Conteúdo visível desde o primeiro frame — sem período invisível
+    // esperando um "pronto pra revelar" (removido 2026-09-22, junto com a
+    // revelação em círculo antiga). Esse período de espera coincidia
+    // exatamente com o pior trecho do cold start (engine anexando,
+    // primeiros frames pulados/travados — visto no log real: "Davey!
+    // duration=905ms" bem nessa janela), e o usuário via isso como a
+    // splash "piscando"/aparecendo duas vezes. Mostrar direto elimina essa
+    // janela em vez de tentar decorar em cima dela.
     return Scaffold(
       backgroundColor: _splashBackground,
-      body: AnimatedBuilder(
-        animation: _revealAnimation,
-        child: KeyedSubtree(key: _contentKey, child: _buildSplashContent()),
-        builder: (context, child) {
-          // `child` PRECISA continuar na árvore mesmo antes de `_revealed`
-          // virar true — é o próprio `child` (vídeo/logo) que chama
-          // `_reveal()` quando fica pronto; se ele nunca for montado (ex.:
-          // um branch anterior aqui devolvia um `SizedBox.expand()` solto,
-          // sem `child` dentro), nada nunca dispara `onReady()` e a splash
-          // fica presa até o timer de segurança — tela branca até o fim.
-          if (!_revealed) return Opacity(opacity: 0, child: child);
-          if (reducedMotion) {
-            return Opacity(opacity: _revealAnimation.value, child: child);
-          }
-
-          final t = _revealAnimation.value;
-          if (t >= 1) return child!;
-
-          final center = Offset(size.width / 2, size.height / 2);
-          final maxRadius = sqrt(
-            pow(size.width / 2, 2) + pow(size.height / 2, 2),
-          );
-          final radius = Tween<double>(
-            begin: _startRadius,
-            end: maxRadius,
-          ).transform(t);
-
-          return Stack(
-            fit: StackFit.expand,
-            children: [
-              ClipPath(
-                clipper: CircleRevealClipper(center: center, radius: radius),
-                child: child,
-              ),
-              CustomPaint(
-                painter: RevealGlowPainter(
-                  center: center,
-                  radius: radius,
-                  opacity: 1 - t,
-                  tintColor: sl<ClubConfig>().branding.light.primary,
-                ),
-              ),
-            ],
-          );
-        },
-      ),
+      body: _buildSplashContent(),
     );
   }
 
@@ -229,11 +153,11 @@ class _SplashVideoPageState extends State<SplashVideoPage>
       isIosWeb: _isIosWeb,
       splashVideoAsset: splashVideo,
     )) {
-      return StaticLogoSplash(onReady: _reveal, onCompleted: _finishSplash);
+      return StaticLogoSplash(onReady: () {}, onCompleted: _finishSplash);
     }
     return VideoSplashView(
       videoAsset: splashVideo!,
-      onReady: _reveal,
+      onReady: () {},
       onCompleted: _finishSplash,
       onFailure: _finishSplash,
     );

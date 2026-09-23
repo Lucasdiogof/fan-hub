@@ -18,6 +18,7 @@ import 'package:goias_app/features/passport/presentation/v2/widgets/passport_lev
 import 'package:goias_app/features/passport/presentation/widgets/passport_memorable_match_picker.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:goias_app/features/profile/presentation/cubit/profile_state.dart';
+import 'package:goias_app/shared/widgets/club_badge.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/utils/share_field_image.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
@@ -507,22 +508,19 @@ class _TrajectoryCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
-          // Escudo oficial (cores reais, mesmo usado em toda identificação
-          // de time no app) — só textura de marca no espaço vazio acima das
-          // estatísticas, nunca compete com o conteúdo em cima (por isso
-          // fica atrás de tudo e não recebe toque).
+          // Escudo estilizado do clube ativo — só textura de marca no
+          // espaço vazio acima das estatísticas, nunca compete com o
+          // conteúdo em cima (por isso fica atrás de tudo e não recebe
+          // toque). `ClubBadge.activeClub` (não `StyledTeamBadge` direto)
+          // de propósito: mantém o rollback de `useStyledTeamBadges`
+          // funcionando aqui também.
           Positioned(
             top: 4,
             right: AppSpacing.lg,
             child: IgnorePointer(
               child: Opacity(
                 opacity: 0.22,
-                child: Image.asset(
-                  sl<ClubConfig>().assets.crestBadge,
-                  width: 84,
-                  height: 84,
-                  fit: BoxFit.contain,
-                ),
+                child: const ClubBadge.activeClub(size: 84),
               ),
             ),
           ),

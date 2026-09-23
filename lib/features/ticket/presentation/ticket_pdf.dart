@@ -10,6 +10,8 @@ import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/masks.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
+import 'package:goias_app/shared/widgets/club_badge.dart' show useStyledTeamBadges;
+import 'package:goias_app/shared/widgets/team_visuals/team_pdf_badge.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -96,7 +98,15 @@ Future<Uint8List> buildTicketPdf(
   required bool isDemo,
 }) async {
   final doc = pw.Document(theme: await ticketPdfTheme());
-  final crestSvg = await rootBundle.loadString(sl<ClubConfig>().assets.crest);
+  // Mesma flag de `club_badge.dart` — rollback em uma linha cobre o PDF
+  // também. `false`: volta a carregar o SVG oficial cru, igual sempre foi.
+  final crestBadge = useStyledTeamBadges
+      ? teamPdfBadge(clubConfig: sl<ClubConfig>(), size: 44)
+      : pw.SvgImage(
+          svg: await rootBundle.loadString(sl<ClubConfig>().assets.crest),
+          width: 44,
+          height: 44,
+        );
   final maskedDocument = ticket.holderDocument.contains(RegExp(r'^\d{11}$'))
       ? maskCpf(ticket.holderDocument)
       : ticket.holderDocument;
@@ -127,7 +137,7 @@ Future<Uint8List> buildTicketPdf(
               child: pw.Row(
                 crossAxisAlignment: pw.CrossAxisAlignment.center,
                 children: [
-                  pw.SvgImage(svg: crestSvg, width: 44, height: 44),
+                  crestBadge,
                   pw.SizedBox(width: 14),
                   pw.Expanded(
                     child: pw.Column(
