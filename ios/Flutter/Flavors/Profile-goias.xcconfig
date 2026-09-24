@@ -1,5 +1,6 @@
 #include "../Release.xcconfig"
 PRODUCT_BUNDLE_IDENTIFIER = br.com.fanhub.goias
-// Rebrand Esmeraldino App (Guideline 4.1(a) da Apple) — era "Goiás EC".
-APP_DISPLAY_NAME = Esmeraldino App
+// 2026-09-24: revertido pro nome oficial — demo comercial, não mira App
+// Store agora. "Esmeraldino App" (Guideline 4.1(a)) saiu de uso.
+APP_DISPLAY_NAME = Goiás EC
 APP_CLUB = goias

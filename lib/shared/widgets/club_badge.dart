@@ -17,7 +17,14 @@ import 'package:goias_app/shared/widgets/team_visuals/styled_team_badge.dart';
 /// removido, o pipeline de escudo oficial abaixo (`_rasterBadge`,
 /// `_svgBadge`, `_ShieldBadge` etc.) continua 100% intacto e volta a
 /// responder por todo `ClubBadge`/`ClubBadge.activeClub` do app.
-const useStyledTeamBadges = true;
+///
+/// `false` desde 2026-09-24 — mudança de estratégia: este build deixou de
+/// mirar App Store/Play Store (demo comercial pros clubes agora), então
+/// os escudos OFICIAIS (Goiás, Bragantino, adversários, tudo) voltam a
+/// ser a aparência real. `StyledTeamBadge`/`TeamVisualIdentity` continuam
+/// no código, só inativos — reative pra `true` se precisar do modo
+/// genérico de novo (outra tentativa de loja, por exemplo).
+const useStyledTeamBadges = false;
 
 /// Safari/iOS no Web (inclusive PWA) tem um bug conhecido do CanvasKit onde
 /// imagens de rede viram retângulo preto sólido depois de um repaint em

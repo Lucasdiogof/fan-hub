@@ -23,12 +23,13 @@ class AppAssets {
   static const String goiasCrest3d =
       'lib/assets/branding/goias/goias_crest_3d.jpg';
 
-  /// Rebrand Esmeraldino App — identidade independente na tela de login.
-  /// O arquivo anterior (`lib/assets/branding/goias/background_login.png`)
-  /// continua no bundle sem uso, só pra rollback rápido — reapontar aqui
-  /// se precisar reverter.
+  /// 2026-09-24: revertido pro fundo oficial original (escudo embutido na
+  /// própria arte) — build deixou de mirar App Store, então o rebrand
+  /// independente ("Esmeraldino App") saiu de uso aqui. O arquivo novo
+  /// (`login_background.png`) continua no bundle sem referência, pra
+  /// religar rápido se precisar.
   static const String loginBackground =
-      'lib/assets/branding/goias/login_background.png';
+      'lib/assets/branding/goias/background_login.png';
 
   static const String stadium = 'lib/assets/branding/goias/banner.png';
   static const String matchHero = 'lib/assets/branding/goias/banner_match.png';

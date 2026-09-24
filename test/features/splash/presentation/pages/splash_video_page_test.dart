@@ -8,25 +8,26 @@ import '../../../../core/club/synthetic_club_config.dart';
 /// `shouldPlaySplashVideo` é a decisão PURA (sem widget/plugin de vídeo)
 /// entre `VideoSplashView` e `StaticLogoSplash` — testável sozinha, mesmo
 /// padrão do `capabilityGateRedirect`. Cobre a regra absoluta: um clube sem
-/// `splashVideo` (Bragantino e, desde o rebrand Esmeraldino App, também o
-/// Goiás) NUNCA cai pro vídeo de outro clube.
+/// `splashVideo` (Bragantino) NUNCA cai pro vídeo de outro clube.
 ///
-/// Nenhum `ClubConfig` real tem `splashVideo` preenchido hoje — os testes
-/// do ramo "toca vídeo" abaixo usam uma string literal só pra exercitar a
-/// lógica pura de `shouldPlaySplashVideo` (que não olha QUAL vídeo, só se
-/// é `null`), não pra afirmar que algum clube real tem vídeo.
+/// O rebrand Esmeraldino App (Guideline 4.1(a)) zerou `splashVideo` do
+/// Goiás e ligou `splashLogo` (mascote) de 2026-09-14 a 2026-09-24; religado
+/// quando o projeto deixou de mirar App Store — o Goiás volta a ter o vídeo
+/// oficial preenchido. Os testes do ramo "toca vídeo" abaixo usam uma
+/// string literal só pra exercitar a lógica pura de `shouldPlaySplashVideo`
+/// (que não olha QUAL vídeo, só se é `null`).
 const _fakeVideoAsset = 'test/fixtures/fake_splash.mp4';
 
 void main() {
   group('configuração dos clubes', () {
     test(
-      'Goiás tem splashVideo = null (removido no rebrand Esmeraldino App) e splashLogo definido',
+      'Goiás tem splashVideo oficial religado (2026-09-24) e splashLogo do rebrand desativado',
       () {
-        expect(goiasClubConfig.assets.splashVideo, isNull);
         expect(
-          goiasClubConfig.assets.splashLogo,
-          'lib/assets/branding/goias/new_logo_splash.png',
+          goiasClubConfig.assets.splashVideo,
+          'lib/assets/videos/goias_splash.mp4',
         );
+        expect(goiasClubConfig.assets.splashLogo, isNull);
       },
     );
 

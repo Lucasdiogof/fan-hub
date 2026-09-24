@@ -162,17 +162,18 @@ void main() {
     );
 
     test(
-      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social e os 2 jogos de identidade desde 2026-09-08; Loja e Sócio Massa Bruta escondidos desde 2026-09-14 pro envio às lojas)',
+      'capabilities sem dado real nenhum continuam desligadas (exceto News/Social e os 2 jogos de identidade desde 2026-09-08; Loja e Sócio Massa Bruta religados em 2026-09-24)',
       () {
         final c = bragantinoClubConfig.capabilities;
         // Sócio Massa Bruta (planos reais Bronze/Prata/Ouro/Platina, ver
         // MembershipProgramConfig) e Loja (catálogo real da Red Bull Shop)
-        // já existem prontos no backend, mas ficam escondidos temporariamente
-        // pro envio às lojas — checkout continua mockado, ver comentário em
+        // ficaram escondidos temporariamente de 2026-09-14 a 2026-09-24 pro
+        // envio às lojas; religados quando o projeto deixou de mirar App
+        // Store/Play Store — checkout continua mockado, ver comentário em
         // bragantino_club_config.dart.
-        expect(c.hasMembership, isFalse);
-        expect(c.hasStore, isFalse);
-        expect(c.hasTickets, isFalse);
+        expect(c.hasMembership, isTrue);
+        expect(c.hasStore, isTrue);
+        expect(c.hasTickets, isTrue);
         expect(c.hasCrowdLineup, isFalse);
         // News tem fonte oficial real no Worker (API JSON própria). Social
         // (YouTube @MassaBrutaTV) confirmado ao vivo contra a Data API v3
@@ -255,17 +256,18 @@ void main() {
 
   group('goiasClubConfig — feature "Clube" e splash continuam ligados', () {
     test(
-      'hasClubContent=true; splashVideo removido (rebrand Esmeraldino App), splashLogo assume',
+      'hasClubContent=true; splashVideo oficial religado (2026-09-24), splashLogo do rebrand desativado',
       () {
         expect(goiasClubConfig.capabilities.hasClubContent, isTrue);
-        // Rebrand Esmeraldino App (Guideline 4.1(a) da Apple) — o vídeo de
-        // splash mostrava o brasão oficial animado; removido, StaticLogoSplash
-        // agora sempre entra em jogo (nunca mais o vídeo pro Goiás).
-        expect(goiasClubConfig.assets.splashVideo, isNull);
+        // Rebrand Esmeraldino App (Guideline 4.1(a) da Apple) saiu de uso
+        // em 2026-09-24 (projeto deixou de mirar App Store) — o vídeo de
+        // splash oficial (brasão animado) voltou, splashLogo (mascote do
+        // rebrand) foi desativado (assets preservados pra rollback).
         expect(
-          goiasClubConfig.assets.splashLogo,
-          'lib/assets/branding/goias/new_logo_splash.png',
+          goiasClubConfig.assets.splashVideo,
+          'lib/assets/videos/goias_splash.mp4',
         );
+        expect(goiasClubConfig.assets.splashLogo, isNull);
       },
     );
   });

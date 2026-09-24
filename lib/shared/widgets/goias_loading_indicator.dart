@@ -17,13 +17,11 @@ class GoiasLoadingBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Mascote removida temporariamente dos loadings (pedido 2026-09-23) —
-    // ficou ruim nesse contexto pequeno/pulsando. Só o círculo de
-    // progresso (`GoiasLoadingIndicator`) por enquanto. Comentado, não
-    // apagado: reativar trocando a linha abaixo quando tiver uma versão
-    // que funcione bem aqui.
-    // return ClubBadge.activeClub(size: size);
-    return const SizedBox.shrink();
+    // 2026-09-24: religado — com `useStyledTeamBadges=false` isto mostra
+    // o escudo OFICIAL pulsando (não a mascote estilizada que motivou a
+    // remoção de 2026-09-23), que é exatamente a identidade que este
+    // widget sempre existiu pra mostrar.
+    return ClubBadge.activeClub(size: size);
   }
 }
 

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -10,8 +11,8 @@ import 'package:goias_app/features/match/presentation/cubit/competition_details_
 import 'package:goias_app/features/match/presentation/cubit/competition_details_state.dart';
 import 'package:goias_app/features/match/presentation/widgets/competition_stage_renderer.dart';
 import 'package:goias_app/features/match/presentation/widgets/competition_stage_selector.dart';
+import 'package:goias_app/shared/utils/image_proxy.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
-import 'package:goias_app/shared/widgets/competition_badge.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/refreshable_state_view.dart';
 
@@ -72,9 +73,12 @@ class _CompetitionDetailsView extends StatelessWidget {
                   const SizedBox(height: AppSpacing.lg),
                   BlocBuilder<CompetitionDetailsCubit, CompetitionDetailsState>(
                     buildWhen: (previous, current) =>
-                        previous.competition?.name != current.competition?.name,
+                        previous.competition?.name != current.competition?.name ||
+                        previous.competition?.logoUrl !=
+                            current.competition?.logoUrl,
                     builder: (context, state) => _CompetitionTitle(
                       text: state.competition?.name ?? fallbackName ?? '',
+                      logoUrl: state.competition?.logoUrl,
                     ),
                   ),
                   const SizedBox(height: AppSpacing.xxxl),
@@ -127,16 +131,16 @@ class _CompetitionDetailsView extends StatelessWidget {
   }
 }
 
-/// Mesmo layout do `PageTitle` (barrinha + escudo + texto), mas com um
-/// badge genérico de competição (`CompetitionBadge`) em vez do escudo do
-/// clube ativo — só faz sentido aqui, onde a tela é sobre uma competição do
-/// catálogo global, não sobre o clube. NUNCA carrega `competition.logoUrl`
-/// (logo oficial de liga/campeonato) — de propósito, pra não depender de
-/// marca de terceiros (Brasileirão, Copa do Brasil, CONMEBOL...) na UI.
+/// Mesmo layout do `PageTitle` (barrinha + escudo + texto), mas com a logo
+/// da PRÓPRIA competição em vez do escudo do clube ativo — só faz sentido
+/// aqui, onde a tela é sobre uma competição do catálogo global, não sobre o
+/// clube (ver `fetchCompetitionLogoUrl` no Worker). Sem `logoUrl` (ainda
+/// carregando ou o provider não achou), cai num ícone de troféu genérico.
 class _CompetitionTitle extends StatelessWidget {
-  const _CompetitionTitle({required this.text});
+  const _CompetitionTitle({required this.text, required this.logoUrl});
 
   final String text;
+  final String? logoUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +157,7 @@ class _CompetitionTitle extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 10),
-        const CompetitionBadge(size: 22),
+        _CompetitionLogo(url: logoUrl, colors: colors),
         const SizedBox(width: 8),
         Flexible(
           child: Text(
@@ -170,5 +174,31 @@ class _CompetitionTitle extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class _CompetitionLogo extends StatelessWidget {
+  const _CompetitionLogo({required this.url, required this.colors});
+
+  final String? url;
+  final AppColors colors;
+
+  @override
+  Widget build(BuildContext context) {
+    final url = this.url;
+    if (url == null || url.isEmpty) return _fallbackIcon();
+    return CachedNetworkImage(
+      imageUrl: proxiedImageUrl(url),
+      width: 22,
+      height: 22,
+      fit: BoxFit.contain,
+      fadeInDuration: const Duration(milliseconds: 180),
+      placeholder: (context, _) => const SizedBox(width: 22, height: 22),
+      errorWidget: (context, _, _) => _fallbackIcon(),
+    );
+  }
+
+  Widget _fallbackIcon() {
+    return Icon(Icons.emoji_events_rounded, size: 22, color: colors.primary);
   }
 }

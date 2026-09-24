@@ -44,14 +44,16 @@ final goiasClubConfig = ClubConfig(
   branding: const ClubBranding(light: AppColors.light, dark: AppColors.dark),
   assets: const ClubAssets(
     crest: AppAssets.goiasCrest,
-    // Rebrand Esmeraldino App: selo do login vira o mascote próprio, não
-    // mais o escudo oficial — `crest` acima continua o mesmo (PDF do
-    // ingresso não muda nesta rodada).
-    authCrest: 'lib/assets/branding/goias/new_logo.png',
-    // Wordmark "Esmeraldino App" sobre o fundo da tela de login — parte do
-    // mesmo rebrand acima, só que pro `LoginPage` (que não usa
-    // `AuthScaffold`/`authCrest`, tem fundo e layout próprios).
-    loginWordmark: 'lib/assets/branding/goias/login_wordmark.png',
+    // 2026-09-24: mudança de estratégia — este build deixou de mirar
+    // App Store/Play Store (vai ser usado como demo comercial pros
+    // próprios clubes), então a identidade INDEPENDENTE do rebrand
+    // "Esmeraldino App" (Guideline 4.1(a)) foi desativada aqui:
+    // `authCrest`/`loginWordmark` voltam a `null` (comportamento de
+    // sempre: escudo oficial). Os assets (`new_logo.png`,
+    // `login_wordmark.png`) continuam no repo, só sem referência —
+    // reativar é só descomentar as 2 linhas abaixo.
+    // authCrest: 'lib/assets/branding/goias/new_logo.png',
+    // loginWordmark: 'lib/assets/branding/goias/login_wordmark.png',
     crestBadge: AppAssets.goiasCrestBadge,
     crest3d: AppAssets.goiasCrest3d,
     loginBackground: AppAssets.loginBackground,
@@ -67,23 +69,16 @@ final goiasClubConfig = ClubConfig(
     storeHomeBanners: ['lib/assets/store/banners/goias/goias_store.png'],
     storeCatalogAssetPath: 'lib/assets/content/store_products.json',
     membershipFaqAssetPath: 'lib/assets/content/membership_faq.json',
-    // Rebrand Esmeraldino App: vídeo de splash removido (mostrava o
-    // brasão oficial animado — mesma categoria de problema do ícone/nome,
-    // ver Guideline 4.1(a)). `lib/assets/videos/goias_splash.mp4` continua
-    // no bundle sem uso, só pra rollback. `splashVideo: null` faz
-    // `SplashVideoPage` cair sempre em `StaticLogoSplash`, em toda
-    // plataforma (não só iOS Web) — ver `splashLogo` logo abaixo pra qual
-    // imagem/fundo ela usa agora.
-    splashVideo: null,
-    // NÃO é o mesmo arquivo do app icon/authCrest (`new_logo.png`, nunca
-    // tocado) — `new_logo_splash.png` é uma variante gerada por
-    // `scripts/generate_splash_logo.py`: mesmo mascote, com a moldura de
-    // fundo (degradê/vinheta) corrigida pra bater EXATO com
-    // `branding.light.primary` (#004C1B, o fundo da própria splash) na
-    // borda da imagem — sem isso, um quadrado ficava visível (achado real,
-    // 2026-09-19, screenshot Android: os dois verdes eram próximos mas não
-    // idênticos).
-    splashLogo: 'lib/assets/branding/goias/new_logo_splash.png',
+    // 2026-09-24: vídeo de splash oficial (brasão animado) restaurado —
+    // era só desligado pra Guideline 4.1(a) (metadata independente pra
+    // envio às lojas), fora de escopo agora que o build é demo comercial.
+    splashVideo: 'lib/assets/videos/goias_splash.mp4',
+    // `splashLogo` (mascote própria, ex.: `new_logo_splash.png`) fica
+    // `null` de novo — `StaticLogoSplash` (fallback do iOS Web/vídeo com
+    // falha) cai pro `crestBadge` oficial, comportamento de sempre. Os
+    // assets do mascote (`new_logo.png`, `new_logo_splash.png`) e o script
+    // que gera o 2º (`scripts/generate_splash_logo.py`) continuam no repo.
+    // splashLogo: 'lib/assets/branding/goias/new_logo_splash.png',
     squadPhotos: squadPhotoAssets,
     // Pro Goiás os dois mapas coincidem (mesmos assets locais servem tanto
     // pro Elenco quanto pro Quem Vestiu o Manto) — ver comentário em
@@ -124,15 +119,16 @@ final goiasClubConfig = ClubConfig(
     officialSiteUrl: 'https://www.goiasec.com.br/',
   ),
   capabilities: const ClubCapabilities(
-    // Escondidos pro envio às lojas (App Store/Play Store) — checkout de
-    // Loja/Ingressos e o fluxo de Sócio continuam mockados (sem gateway
-    // real), então ficam desligados até a integração real existir. Nunca
-    // reative isso "remotamente" depois de aprovado — precisa ser um
-    // release novo (build + review), senão conta de desenvolvedor corre
-    // risco de banimento pelas duas lojas.
-    hasMembership: false,
-    hasStore: false,
-    hasTickets: false,
+    // 2026-09-24: religadas — mudança de estratégia, este build deixou de
+    // mirar App Store/Play Store (agora é demo comercial pros clubes,
+    // nunca enviado às lojas nesta fase). Checkout de Loja/Ingressos e o
+    // fluxo de Sócio continuam MOCKADOS (sem gateway/bilheteria real),
+    // igual sempre foram — isto só volta a MOSTRAR as telas, não liga
+    // cobrança nenhuma. Se um dia voltar a valer enviar pra loja de
+    // verdade, desligar de novo (`false`) antes do build de submissão.
+    hasMembership: true,
+    hasStore: true,
+    hasTickets: true,
     hasCrowdLineup: true,
     hasPassport: true,
     hasNews: true,
@@ -161,7 +157,9 @@ final goiasClubConfig = ClubConfig(
     passportName: 'Passaporte Esmeraldino',
     storeName: 'Goiás Store',
     membershipProgramName: 'Sócio Esmeralda',
-    appDisplayName: 'Esmeraldino App',
+    // `appDisplayName` volta a `null` (cai pro `identity.displayName`
+    // oficial, "Goiás Esporte Clube") — era 'Esmeraldino App' só pro
+    // rebrand independente de App Store, fora de escopo agora.
   ),
   passportContent: GoiasPassportContent.content,
   // Reempacotamento — mesmo catálogo/regulamento hardcoded de sempre
