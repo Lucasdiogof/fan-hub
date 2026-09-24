@@ -1,0 +1,10 @@
+{
+  "Anacleto Campanella": { "city": "São Caetano do Sul", "state": "SP", "country": "BR" },
+  "Estádio Kleber Andrade": { "city": "Cariacica", "state": "ES", "country": "BR" },
+  "Passo das Emas": { "city": "Lucas do Rio Verde", "state": "MT", "country": "BR" },
+  "George Capwell": { "city": "Guayaquil", "state": null, "country": "EC" },
+  "Mario Alberto Kempes": { "city": "Córdoba", "state": "Córdoba", "country": "AR" },
+  "Pueblo Nuevo de San Cristóbal": { "city": "San Cristóbal", "state": "Táchira", "country": "VE" },
+  "Dr. Lisandro de la Torre (Gigante de Arroyito)": { "city": "Rosario", "state": "Santa Fe", "country": "AR" },
+  "Centenario": { "city": "Montevideo", "state": null, "country": "UY" }
+}
