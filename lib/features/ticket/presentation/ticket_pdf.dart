@@ -10,7 +10,8 @@ import 'package:goias_app/shared/utils/currency.dart';
 import 'package:goias_app/shared/utils/date_labels.dart';
 import 'package:goias_app/shared/utils/masks.dart';
 import 'package:goias_app/shared/utils/team_name.dart';
-import 'package:goias_app/shared/widgets/club_badge.dart' show useStyledTeamBadges;
+import 'package:goias_app/shared/widgets/club_badge.dart'
+    show useStyledTeamBadges;
 import 'package:goias_app/shared/widgets/team_visuals/team_pdf_badge.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;

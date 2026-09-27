@@ -30,7 +30,10 @@ class StyledTeamBadge extends StatelessWidget {
     bool round = false,
     Key? key,
   }) {
-    final identity = resolveTeamVisualIdentity(team: team, clubConfig: clubConfig);
+    final identity = resolveTeamVisualIdentity(
+      team: team,
+      clubConfig: clubConfig,
+    );
     return StyledTeamBadge(
       key: key,
       acronym: identity.acronym,

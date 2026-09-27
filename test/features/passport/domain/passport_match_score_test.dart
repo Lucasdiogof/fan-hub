@@ -72,7 +72,12 @@ void main() {
     });
 
     test('placar 0x0 no modo homeAway também continua "conhecido"', () {
-      final match = _match(homeScore: 0, awayScore: 0, clubScore: 0, opponentScore: 0);
+      final match = _match(
+        homeScore: 0,
+        awayScore: 0,
+        clubScore: 0,
+        opponentScore: 0,
+      );
       final score = match.score;
       expect(score.mode, PassportScoreMode.homeAway);
       expect(score.isKnown, isTrue);
@@ -80,14 +85,17 @@ void main() {
       expect(score.secondScore, 0);
     });
 
-    test('nenhum dos dois pares completo -> modo unknown, nunca inventa placar', () {
-      final match = _match();
-      final score = match.score;
-      expect(score.mode, PassportScoreMode.unknown);
-      expect(score.isKnown, isFalse);
-      expect(score.firstScore, isNull);
-      expect(score.secondScore, isNull);
-    });
+    test(
+      'nenhum dos dois pares completo -> modo unknown, nunca inventa placar',
+      () {
+        final match = _match();
+        final score = match.score;
+        expect(score.mode, PassportScoreMode.unknown);
+        expect(score.isKnown, isFalse);
+        expect(score.firstScore, isNull);
+        expect(score.secondScore, isNull);
+      },
+    );
 
     test(
       'exceção real do catálogo (hist-f80-0042, Goiás x ABG 1946): sem nenhum placar',
@@ -104,9 +112,21 @@ void main() {
     );
 
     test('outcome (vitória/empate/derrota) é independente do modo do placar', () {
-      final win = _match(clubScore: 4, opponentScore: 1, outcome: PassportOutcome.win);
-      final draw = _match(clubScore: 1, opponentScore: 1, outcome: PassportOutcome.draw);
-      final loss = _match(clubScore: 0, opponentScore: 2, outcome: PassportOutcome.loss);
+      final win = _match(
+        clubScore: 4,
+        opponentScore: 1,
+        outcome: PassportOutcome.win,
+      );
+      final draw = _match(
+        clubScore: 1,
+        opponentScore: 1,
+        outcome: PassportOutcome.draw,
+      );
+      final loss = _match(
+        clubScore: 0,
+        opponentScore: 2,
+        outcome: PassportOutcome.loss,
+      );
       expect(win.outcome, PassportOutcome.win);
       expect(draw.outcome, PassportOutcome.draw);
       expect(loss.outcome, PassportOutcome.loss);

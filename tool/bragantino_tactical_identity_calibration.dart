@@ -132,7 +132,9 @@ void main(List<String> args) {
   final top1Entries = top1Counts.entries.toList()
     ..sort((a, b) => b.value.compareTo(a.value));
   for (final entry in top1Entries) {
-    final coach = bragantinoTacticalCoachReferences.firstWhere((c) => c.id == entry.key);
+    final coach = bragantinoTacticalCoachReferences.firstWhere(
+      (c) => c.id == entry.key,
+    );
     final pct = (entry.value / evaluated * 100).toStringAsFixed(2);
     stdout.writeln('   ${coach.coach.padRight(22)} $pct%  (${entry.value})');
   }
@@ -142,7 +144,9 @@ void main(List<String> args) {
   final top3Entries = top3Counts.entries.toList()
     ..sort((a, b) => b.value.compareTo(a.value));
   for (final entry in top3Entries) {
-    final coach = bragantinoTacticalCoachReferences.firstWhere((c) => c.id == entry.key);
+    final coach = bragantinoTacticalCoachReferences.firstWhere(
+      (c) => c.id == entry.key,
+    );
     final pct = (entry.value / evaluated * 100).toStringAsFixed(2);
     stdout.writeln('   ${coach.coach.padRight(22)} $pct%  (${entry.value})');
   }

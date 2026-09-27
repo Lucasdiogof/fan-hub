@@ -73,7 +73,8 @@ class _CompetitionDetailsView extends StatelessWidget {
                   const SizedBox(height: AppSpacing.lg),
                   BlocBuilder<CompetitionDetailsCubit, CompetitionDetailsState>(
                     buildWhen: (previous, current) =>
-                        previous.competition?.name != current.competition?.name ||
+                        previous.competition?.name !=
+                            current.competition?.name ||
                         previous.competition?.logoUrl !=
                             current.competition?.logoUrl,
                     builder: (context, state) => _CompetitionTitle(

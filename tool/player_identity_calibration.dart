@@ -60,7 +60,8 @@ void main(List<String> args) {
     evaluated++;
     archetypeCounts[result.archetype] = archetypeCounts[result.archetype]! + 1;
     final closest = result.closestReferences;
-    top1Counts[closest[0].reference.id] = top1Counts[closest[0].reference.id]! + 1;
+    top1Counts[closest[0].reference.id] =
+        top1Counts[closest[0].reference.id]! + 1;
     for (final a in closest) {
       top3Counts[a.reference.id] = top3Counts[a.reference.id]! + 1;
     }
@@ -97,7 +98,9 @@ void main(List<String> args) {
     ..sort((a, b) => b.value.compareTo(a.value));
   for (final entry in archetypeEntries) {
     final pct = (entry.value / evaluated * 100).toStringAsFixed(2);
-    stdout.writeln('   ${entry.key.displayName.padRight(16)} $pct%  (${entry.value})');
+    stdout.writeln(
+      '   ${entry.key.displayName.padRight(16)} $pct%  (${entry.value})',
+    );
   }
   stdout.writeln();
 
@@ -125,14 +128,24 @@ void main(List<String> args) {
   stdout.writeln('   Top1 médio: ${mean(top1Aff).toStringAsFixed(2)}%');
   stdout.writeln('   Top2 médio: ${mean(top2Aff).toStringAsFixed(2)}%');
   stdout.writeln('   Top3 médio: ${mean(top3Aff).toStringAsFixed(2)}%');
-  stdout.writeln('   Gap médio Top1→Top2: ${(mean(top1Aff) - mean(top2Aff)).toStringAsFixed(2)} pontos');
-  stdout.writeln('   Gap médio Top2→Top3: ${(mean(top2Aff) - mean(top3Aff)).toStringAsFixed(2)} pontos');
+  stdout.writeln(
+    '   Gap médio Top1→Top2: ${(mean(top1Aff) - mean(top2Aff)).toStringAsFixed(2)} pontos',
+  );
+  stdout.writeln(
+    '   Gap médio Top2→Top3: ${(mean(top2Aff) - mean(top3Aff)).toStringAsFixed(2)} pontos',
+  );
   stdout.writeln();
 
   stdout.writeln('5) Empates/compressão:');
-  stdout.writeln('   Empate visual (Top1==Top2==Top3 arredondado): ${(tieVisual / evaluated * 100).toStringAsFixed(2)}%');
-  stdout.writeln('   Top1/Top2 a <=1 ponto: ${(top1Top2Within1 / evaluated * 100).toStringAsFixed(2)}%');
-  stdout.writeln('   Top1/Top2/Top3 todos dentro de 3 pontos: ${(allWithin3 / evaluated * 100).toStringAsFixed(2)}%');
+  stdout.writeln(
+    '   Empate visual (Top1==Top2==Top3 arredondado): ${(tieVisual / evaluated * 100).toStringAsFixed(2)}%',
+  );
+  stdout.writeln(
+    '   Top1/Top2 a <=1 ponto: ${(top1Top2Within1 / evaluated * 100).toStringAsFixed(2)}%',
+  );
+  stdout.writeln(
+    '   Top1/Top2/Top3 todos dentro de 3 pontos: ${(allWithin3 / evaluated * 100).toStringAsFixed(2)}%',
+  );
   stdout.writeln();
 
   final neverTop1 = top1Entries.where((e) => e.value == 0).toList();
@@ -141,12 +154,17 @@ void main(List<String> args) {
     neverTop1.isEmpty
         ? '   (nenhum)'
         : neverTop1
-              .map((e) => '   ${playerIdentityReferences.firstWhere((p) => p.id == e.key).name}')
+              .map(
+                (e) =>
+                    '   ${playerIdentityReferences.firstWhere((p) => p.id == e.key).name}',
+              )
               .join('\n'),
   );
   stdout.writeln();
 
-  final dominant = top1Entries.where((e) => e.value / evaluated > 0.20).toList();
+  final dominant = top1Entries
+      .where((e) => e.value / evaluated > 0.20)
+      .toList();
   stdout.writeln('7) Jogadores excessivamente dominantes como #1 (>20%):');
   stdout.writeln(
     dominant.isEmpty

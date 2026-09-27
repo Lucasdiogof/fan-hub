@@ -142,12 +142,7 @@ class _CrestSeal extends StatelessWidget {
     if (authCrest != null) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(14),
-        child: Image.asset(
-          authCrest,
-          height: 56,
-          width: 56,
-          fit: BoxFit.cover,
-        ),
+        child: Image.asset(authCrest, height: 56, width: 56, fit: BoxFit.cover),
       );
     }
     return SvgPicture.asset(

@@ -80,10 +80,9 @@ TeamVisualIdentity resolveActiveClubVisualIdentity(
   final acronym =
       _activeClubAcronyms[clubConfig.identity.code] ??
       fallbackAcronym ??
-      clubConfig.identity.shortName.substring(
-        0,
-        clubConfig.identity.shortName.length.clamp(0, 3),
-      ).toUpperCase();
+      clubConfig.identity.shortName
+          .substring(0, clubConfig.identity.shortName.length.clamp(0, 3))
+          .toUpperCase();
   return TeamVisualIdentity(
     acronym: acronym,
     primaryColor: clubConfig.branding.light.primary,
@@ -127,12 +126,7 @@ final Map<String, TeamVisualIdentity> _knownTeams = {
 final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
   // --- Clube ativo, também curado (pra quando aparece como ADVERSÁRIO no
   // outro flavor do app, ex.: Goiás no build do Bragantino) ---
-  (
-    ['Goiás', 'Goiás Esporte Clube', 'Goiás EC'],
-    'GOI',
-    _c(0xFF004C1B),
-    null,
-  ),
+  (['Goiás', 'Goiás Esporte Clube', 'Goiás EC'], 'GOI', _c(0xFF004C1B), null),
   (
     ['Red Bull Bragantino', 'Bragantino', 'RB Bragantino'],
     'RBB',
@@ -164,7 +158,12 @@ final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
     _c(0xFF111111),
     _c(0xFF333333),
   ),
-  (['Sport', 'Sport Recife', 'Sport Club do Recife'], 'SPO', _c(0xFFC8102E), _c(0xFF111111)),
+  (
+    ['Sport', 'Sport Recife', 'Sport Club do Recife'],
+    'SPO',
+    _c(0xFFC8102E),
+    _c(0xFF111111),
+  ),
   (['Cuiabá', 'Cuiabá EC'], 'CUI', _c(0xFFF7C800), _c(0xFF178A43)),
   (['São Bernardo', 'São Bernardo FC'], 'SBE', _c(0xFFF4C300), _c(0xFF111111)),
   (
@@ -173,7 +172,12 @@ final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
     _c(0xFF111111),
     _c(0xFF353535),
   ),
-  (['Náutico', 'Clube Náutico Capibaribe'], 'NAU', _c(0xFFD71920), _c(0xFFA50E16)),
+  (
+    ['Náutico', 'Clube Náutico Capibaribe'],
+    'NAU',
+    _c(0xFFD71920),
+    _c(0xFFA50E16),
+  ),
   (['Ceará', 'Ceará SC'], 'CEA', _c(0xFF111111), _c(0xFF303030)),
   (
     ['Botafogo-SP', 'Botafogo Ribeirão Preto'],
@@ -215,7 +219,12 @@ final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
   (['São Paulo', 'São Paulo FC'], 'SAO', _c(0xFFE0261C), Colors.black),
   (['Flamengo', 'CR Flamengo'], 'FLA', _c(0xFFE30613), Colors.black),
   (
-    ['Atlético Mineiro', 'Atlético-MG', 'Atlético MG', 'Clube Atlético Mineiro'],
+    [
+      'Atlético Mineiro',
+      'Atlético-MG',
+      'Atlético MG',
+      'Clube Atlético Mineiro',
+    ],
     'CAM',
     Colors.black,
     null,
