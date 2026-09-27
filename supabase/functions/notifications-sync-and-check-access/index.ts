@@ -13,6 +13,7 @@
 // explícito, nunca depende do DEFAULT Goiás da M2.2A.
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 import { SERVER_CLUB_REGISTRY, type ClubServerConfig } from '../_shared/club_server_config.ts';
+import { rejectUnlessServiceCaller } from '../_shared/service_caller_auth.ts';
 
 const ACCESS_WINDOW_HOURS = 48;
 const MONITOR_HORIZON_DAYS = 10;
@@ -134,10 +135,16 @@ async function syncClub(
   return { club: clubConfig.code, ok: true, matchId: nextMatch.id, createdEvent };
 }
 
-Deno.serve(async (_req) => {
+Deno.serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+
+    // Só cron/outras functions (service_role). A anon key é pública e o
+    // gateway a aceita — ver _shared/service_caller_auth.ts.
+    const denied = await rejectUnlessServiceCaller(req, supabaseUrl, serviceRoleKey);
+    if (denied) return denied;
+
     const admin = createClient(supabaseUrl, serviceRoleKey);
 
     // Itera o registry inteiro — hoje só 1 clube, mas nunca hardcoded qual.

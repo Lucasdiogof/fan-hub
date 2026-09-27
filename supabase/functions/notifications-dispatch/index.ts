@@ -20,6 +20,7 @@ import {
   type TokenRow,
 } from '../_shared/recipient_eligibility.ts';
 import { isInvalidTokenError } from '../_shared/fcm_dispatch_rules.ts';
+import { rejectUnlessServiceCaller } from '../_shared/service_caller_auth.ts';
 
 const STUCK_PROCESSING_MINUTES = 5;
 const SEND_CONCURRENCY = 30;
@@ -264,10 +265,16 @@ async function processEvent(admin: SupabaseClient, event: NotificationEvent, fcm
   }
 }
 
-Deno.serve(async (_req) => {
+Deno.serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+
+    // Só cron/outras functions (service_role). A anon key é pública e o
+    // gateway a aceita — ver _shared/service_caller_auth.ts.
+    const denied = await rejectUnlessServiceCaller(req, supabaseUrl, serviceRoleKey);
+    if (denied) return denied;
+
     const admin = createClient(supabaseUrl, serviceRoleKey);
 
     // Reivindica pending -> processing atomicamente (evita duas execuções

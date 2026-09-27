@@ -26,6 +26,7 @@ import {
   detectStatusTransitionEvents,
   type FixtureEvent,
 } from '../_shared/live_match_events.ts';
+import { rejectUnlessServiceCaller } from '../_shared/service_caller_auth.ts';
 
 const PRE_KICKOFF_BUFFER_MINUTES = 5;
 
@@ -80,10 +81,16 @@ async function upsertNotificationEvent(
   return (inserted ?? []).length > 0;
 }
 
-Deno.serve(async (_req) => {
+Deno.serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+
+    // Só cron/outras functions (service_role). A anon key é pública e o
+    // gateway a aceita — ver _shared/service_caller_auth.ts.
+    const denied = await rejectUnlessServiceCaller(req, supabaseUrl, serviceRoleKey);
+    if (denied) return denied;
+
     const admin = createClient(supabaseUrl, serviceRoleKey);
 
     const now = new Date();

@@ -10,27 +10,25 @@
 // (definida no mesmo SQL do cron), que só o `service_role` tem permissão de
 // chamar — nunca apaga baseado em nada que o cliente tenha mandado.
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
-
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+import { rejectUnlessServiceCaller } from '../_shared/service_caller_auth.ts';
 
 function jsonResponse(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json' },
   });
 }
 
 Deno.serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders });
-  }
-
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+
+    // Destrutiva: só o cron (service_role) pode disparar. A anon key é
+    // pública e o gateway a aceita como JWT válido — ver _shared/service_caller_auth.ts.
+    const denied = await rejectUnlessServiceCaller(req, supabaseUrl, serviceRoleKey);
+    if (denied) return denied;
+
     const adminClient = createClient(supabaseUrl, serviceRoleKey);
 
     const { data: pending, error: listError } = await adminClient.rpc(
