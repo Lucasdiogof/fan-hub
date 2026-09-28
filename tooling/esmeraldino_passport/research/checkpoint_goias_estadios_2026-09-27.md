@@ -401,3 +401,26 @@ CRAC-GO (467, +1), Santa Helena-GO (479, +8), América de Morrinhos-GO (484, +4)
 - 278 pares nome+cidade / 246 nomes brutos resultam em 166 estádios canônicos. 21 pares estão marcados para revisão.
 - Olímpico / Pedro Ludovico / Estádio Olímpico Pedro Ludovico Teixeira viram `go-olimpico`. Exceção por linha: hist-f80-2406 (Grêmio x Goiás 1996) = Olímpico Monumental.
 - Decisões pendentes: Palestra Itália vs Allianz Parque e velha Fonte Nova vs Arena Fonte Nova (mesmo estádio?); Castelão sem cidade; Estádio Paranaíba (Itumbiara); 38 linhas modernas (Copa Centro-Oeste 2000…) com venue_name VAZIO.
+
+## Atualização de pesquisa — 2026-09-28 (15) — Ipiranga de Anápolis-GO + sessão de continuação até 73,41%
+Retomando após interrupção de sessão. Primeiro lote: **Ipiranga de Anápolis-GO (clube 523), +19 confirmações** via confronto direto (aplicado antes da interrupção, não documentado até agora) — 1491 → 1510.
+
+Na retomada, sequência de lotes pequenos contra rivais do "Campeonato Goiano" ainda não esgotados na janela boa (1963-1984), sempre com verificação de data+placar (nunca só data):
+- Botafogo de Buriti Alegre-GO (clube 494, +5)
+- Monte Cristo-GO (clube 487, +3)
+- Anápolis-GO (clube 465, +3) e Anapolina-GO (clube 463, +0 neste lote — datas fornecidas não bateram placar)
+- Rio Verde-GO (+4), Itumbiara-GO (clube 476, +0 neste lote), Vila Nova-GO (clube 472, +1), Ipiranga (+0 neste lote, backlog restante são datas fora da janela fornecida), Mineiros-GO (clube 477, +6)
+- Goiatuba-GO (clube 490, +1), Jataiense-GO (clube 492, +0 neste lote)
+- Goiânia (clube 1, variantes "Goiânia-GO" e "Goiânia", +5 no total), Grêmio Anapolino-GO (clube 521, +4), Campineira-GO (clube 496, +2)
+- Inhumas-GO (clube 486, +0 neste lote)
+
+**Total do dia (15): +52 confirmações (1491 → 1543).**
+
+### Novo estado canônico
+- **Confirmadas: 1.543 / 2.102 = 73,41%**
+- UNKNOWN: 559 · Vazias: 38 · Backlog: 597
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1543.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1543.csv`
+- IDs de clube novos mapeados nesta sessão: Botafogo de Buriti Alegre-GO=494, Monte Cristo-GO=487, Goiatuba-GO=490, Jataiense-GO=492, Ipiranga de Anápolis-GO=523, Mineiros-GO=477, Grêmio Anapolino-GO=521.
+- Tentativas sem sucesso (clube não encontrado ou sem confronto direto): Campinas-GO, Ferroviário-GO (Goiano, não confundir com Ferroviário-CE do Brasileirão), Riachuelo-GO, São Luís/SLMB-GO, São Francisco-GO, União-GO, Independente-GO (testei "Independente de Goiânia-GO"=1207 mas o site indica ZERO jogos contra Goiás — não é o mesmo clube; nome correto ainda não achado). Long-tail do Brasileirão (Central-PE, Brasília-DF, Rabello-DF, Goytacaz-RJ, CEUB-DF, Sergipe-SE, Americano-RJ, Dom Bosco-MT, Joinville-SC, Grêmio Maringá-PR, Operário-MT/MS) pesquisados mas nenhum ID de clube localizado com confiança suficiente para fetch de confronto — restam ~20 pendências espalhadas, cada uma exigindo achar a ficha específica (rendimento muito baixo por causa da fragmentação em ~15 clubes de 1-3 jogos cada).
+- **Diagnóstico de rendimento:** o poço do "Goiano 1963-1984 via confronto direto contra rivais já mapeados" está praticamente seco — de 97 pendências pré-1985 identificadas no início da sessão, ~55 foram confirmadas, o resto tem placar/data que não bateu com o que a IA extraiu da tabela (possível erro de leitura da tabela pelo resumo automático, não necessariamente ausência do dado — plausível re-tentar com fetch mais focado por clube único no futuro). Backlog pré-1985 restante do "Goiano": ~42 linhas, majoritariamente com 1-2 pendências por adversário (cauda longa cara de minerar).
+- **Meta do usuário: 80% (1.682/2.102).** Faltam 139 confirmações. Continuando sem parar.
