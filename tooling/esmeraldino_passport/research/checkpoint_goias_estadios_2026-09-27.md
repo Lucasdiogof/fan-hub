@@ -722,3 +722,33 @@ Handoff pra outra ferramenta: preparei `PROMPT_CONTINUACAO_PESQUISA.md` com o es
 - UNKNOWN: 189 · Vazias: 38 · Backlog: 227
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1913.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1913.csv` + `GOIAS_RELATORIO_LOTE_1894_1913.md` (relatório original do lote, com tabela de confirmações).
 - Nenhuma meta redonda nova batida (90% já tinha sido atingida no checkpoint anterior). Backlog restante concentrado em: 1985 inteiro (sem fonte), Torneio Início de vários anos (sem fonte específica), anos 1970 (sem jornal diário digitalizado), e um resíduo de 1980-99 sem edição de jornal por perto.
+
+## Atualização de pesquisa — 2026-09-28 (30) — tentativa rumo aos 95%: janela ampliada do Diário da Manhã + descoberta da Folha de Goiaz (+3)
+Meta do usuário mudou pra 95% (1.997/2.102). Ataque em duas frentes:
+
+**1) Diário da Manhã, janela ampliada D-7..D+7 (era D-3..D+5):** baixei as ~55 edições que faltavam pra essa janela maior (script `_dm_gen_need.py`, novo, gera `dm_need.json` a partir do checkpoint). Rodei `_dm_extrair_fichas.py` (0 candidatos — fichas já esgotadas), `_dm_extrair_materias.py` com `MAXK=7` (4 candidatos) e `_dm_extrair_prejogo.py` (15 candidatos) e depois `_dm_varredura_ampla.py` sem exigência de placar (59 trechos, 21 jogos) pra revisão manual exaustiva.
+
+**Revisão manual de TODOS os ~40 candidatos únicos, trecho por trecho — só 2 sobreviveram:**
+- hist-f80-1860 (Quirinópolis-GO, 26/02/1989): "Quirinópólis e Goiás... jogam às 15h30 no estádio Bichinho Vieira" — matéria pré-jogo do próprio dia, ligação explícita. Estádio = Bichinho Vieira, Quirinópolis.
+- hist-f80-2591 (América-MG, 26/10/1999): "no jogo do Goiás contra o América na próxima terça-feira, no Mineirão" — edição de 3 dias antes, ligação explícita ao jogo específico. Estádio = Mineirão, Belo Horizonte. (Esse jogo já tinha sido cogitado e descartado no handoff por falta da página certa — achei a página.)
+
+**Todos os outros ~38 candidatos foram REJEITADOS após leitura completa do trecho**, principalmente por um padrão recorrente: o regex acha um nome de estádio perto do adversário certo, mas o trecho na verdade fala de OUTRO jogo da mesma rodada/matéria (ex.: "Goiás venceu a Aparecidense por 2 a 1. No Estádio Olímpico, [...] o Goiânia [...] empatou com o Atlético" — o Olímpico é do jogo Goiânia x Atlético, não do Goiás x Aparecidense). Outros motivos de rejeição: jogo de juniores (regra 5), nome de jogador coincidindo com nome de estádio ("Valdeir", "Nazareno", "Ônesio" às vezes é o treino, não o jogo), trecho que só dá a cidade sem nome do estádio ("O Goiás vai a Morrinhos"), e um caso de tabela de rodada errada (jogo de 20 dias depois, competição de juniores).
+
+**2) Nova fonte descoberta: Folha de Goiaz (IHGG, publicação 71, 1939-1952) TEM texto OCR extraível**, ao contrário do que uma nota anterior desta pesquisa registrou ("só imagem, sem OCR" — informação desatualizada ou baseada em edições específicas sem sorte). Testado com `pymupdf` direto (sem passar pelo resumidor automático, que não está conseguindo achar o link do PDF nesse site por causa de JS): URL = `hemeroteca.ihgg.org/publicacoes/FOLHA_DE_GOIAZ/AAAA/MM/FOLHA_DE_GOIAZ_AAAA_MM_DD.pdf` (atenção: é "GOIAZ" sem Y, diferente do Diário da Manhã).
+- **07/04/1946 (Torneio Início 1946):** achei o trecho exato: "[...] no gramado verde do campo natural onde hoje se processará o Goiás contra [adversário] [no] Estádio Pedro Ludovico, o anunciado torneio-início que [...] título de campeão do 'initium' de 1946 [...]" — é uma matéria DAQUELE dia específico, sobre AQUELA edição específica de 1946, não a regra genérica "até 1974 foi sempre no Olímpico" (que o usuário mandou rejeitar explicitamente e que eu rejeitei de novo quando a Wikipédia trouxe essa mesma frase genérica pro Torneio Início — não apliquei). Aplicado: `hist-f80-0034` = Estádio Pedro Ludovico, Goiânia.
+- **1951 (06/05, 05/05, 08/05) e 1952 (04/05):** testadas, sem sucesso. A cobertura da Folha de Goiaz no IHGG pra 1952 só vai até janeiro (não tem maio); as edições de maio/1951 existem mas são pequenas (4-5 páginas) e não têm seção de esportes nesse recorte de dias.
+
+**Fontes tentadas e sem resultado nesta rodada:**
+- RSSSF (Copa Brasil 1978): confirmei que a tabela NÃO tem estádio, só data/placar/artilheiros — mesmo padrão de sempre.
+- ogol.com.br (temporada 1978 do Goiás): só indica "Home"/"Away", não o nome do estádio — insuficiente pra confirmar `venue_name`.
+- cinturaobrasileiro.com (páginas de 1971-1980 e 1981-1990, a fonte que rendeu 8 confirmações à pesquisa na década de 90): não tem os jogos específicos de Copa Brasil 1975-1987 que eu precisava; essas páginas cobrem só uma competição-satélite específica ("Cinturão"/Taça de Prata), não o Copa Brasil geral.
+- Sport News (IHGG, publicação 117): jornal esportivo semanal de Goiânia, só 8 edições digitalizadas, todas de abril-junho de 1975 — não cobre nenhuma das datas pendentes (mais próxima seria set/1975, fora da janela). Vale lembrar pra quando houver pendência nesse recorte exato.
+- Wikipédia (Torneio Início do Campeonato Goiano): só tem a regra genérica já rejeitada, sem tabela ano a ano.
+- BN (Biblioteca Nacional, Jornal de Notícias bib 843687, cobre exatamente 1953/1955/1957): **bloqueado por CAPTCHA + Cloudflare**, como já documentado; precisa do usuário baixar o PDF manualmente em "Edições em PDF". Não tentei contornar.
+
+### Novo estado canônico
+- **Confirmadas: 1.916 / 2.102 = 91,15%**
+- UNKNOWN: 186 · Vazias: 38 · Backlog: 224
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1916.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1916.csv`
+- Script novo: `_dm_gen_need.py` (gera a lista de edições necessárias pro downloader `_dm_baixar_edicoes.py`, que existia mas não tinha gerador de input documentado).
+- **Diagnóstico honesto:** o rendimento por esforço despencou muito nesta rodada (~40 candidatos revisados a fundo pra só 3 confirmações). As fontes de texto gratuitas e sem CAPTCHA parecem genuinely esgotadas no nível de profundidade que dá pra atingir sem: (a) o usuário resolver o CAPTCHA da Hemeroteca da BN uma vez pra destravar o Jornal de Notícias 1953/55/57 (resolveria até 5-6 pendências do Torneio Início de uma vez), ou (b) investir MUITO mais tempo em leitura visual (não-OCR) de páginas escaneadas de jornais antigos, o que é caro por página e não escala bem. **Meta de 95% (1.997) segue distante — faltam 81.** Vou continuar tentando ângulos ainda não esgotados (outros jornais do interior no IHGG para jogos do Goiás fora de Goiânia, mais datas da Folha de Goiaz 1946-1951 pra Torneio Início, jornais de Anápolis pra jogos em Anápolis), mas o ritmo de confirmação por esforço não deve melhorar muito sem destravar a BN.
