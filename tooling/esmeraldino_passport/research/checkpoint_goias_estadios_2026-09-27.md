@@ -356,6 +356,24 @@ Confirmei que os jogos de 1997 (Goiânia, Vila Nova) NÃO têm estádio na ficha
 - **Descoberta de método:** quando uma competição pequena/regional tiver só um punhado de clubes, vale a pena achar a EDIÇÃO (`campeonatos/<ID>/campeonato` → lista as edições → `campeonatos/<ID_edição>/edicao`) e ler a tabela de classificação — ela costuma trazer os IDs de vários clubes de uma vez, bem mais barato que buscar um por um.
 - **Próxima ação:** Torneio Leonino Caiado (Itumbiara-GO, 4 jogos — achar ID), clubes pequenos do Brasileirão ainda sem ID (Central-PE, Brasília-DF, Rabello-DF, etc.), ou Copa Goiás / Torneio Integração Nacional / Torneio Centro-Oeste (pouco tentados ainda).
 
+## Atualização de pesquisa — 2026-09-28 (12) — DESCOBERTA GRANDE: confronto direto desbloqueia parte do "Goiano"
+### Leonino Caiado: Itumbiara fechou (4 confirmações a mais via confronto direto), só falta Campinas-GO (2, ID não achado).
+
+### Confronto direto TAMBÉM funciona pro "Goiano" — parcialmente
+Descoberta importante: a mesma página de confronto direto (`clubes/469/<id>/confronto`) que resolveu o Brasileirão nacional TAMBÉM tem estádio pros jogos do "Campeonato Goiano" — mas só até ~1983/1984. Depois disso, mesmo nessa tabela curada, o campo vira "(não especificado)". Confirma e reforça o limite de dados já identificado, mas mostra que dá pra recuperar o período 1963-1983 do Goiano por esse caminho, que antes eu tinha marcado como "beco sem saída" usando só a ficha individual.
+
+**Itumbiara-GO (clube 476):** 32 confirmações novas de uma vez, cruzando data+placar da tabela completa de confronto contra a fila de pendências (script com verificação de placar, não só data, pra evitar falso positivo). Rendeu muito mais que catar ficha por ficha.
+
+**Goiânia-GO (clube 1):** só 2 confirmações — a leitura automática da página não trouxe a tabela completa (parece ter cortado nos anos mais antigos, 1953-1964, e nos mais recentes 1993+). Vale re-tentar pedindo a tabela em pedaços menores (ex.: só 1950-1970, depois só 1990-2000) se quiser mais rendimento daqui.
+
+### Novo estado canônico
+- **Confirmadas: 1.452 / 2.102 = 69,08%**
+- UNKNOWN: 650 · Vazias: 38 · Backlog: 688
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1452.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1452.csv`
+- **Resumo do dia inteiro:** 1.259 → 1.452 = **+193 confirmações**.
+- **Maiores oportunidades agora (Goiano, confronto direto, focar em 1963-1983):** Anápolis-GO (48 pendências), Goiatuba-GO (40), Rio Verde-GO (37), Anapolina-GO (34), Santa Helena-GO (27), América de Morrinhos-GO (24), Jataiense-GO (22), Ceres-GO (20), CRAC-GO (20), Ipiranga de Anápolis-GO (19) — a maioria ainda sem ID de clube mapeado, mas o método já provou que funciona.
+- **Script de aplicação:** ao usar o método de confronto direto em lote, sempre verificar data E placar (não só data) antes de confirmar — script em `_apply_batch20.mjs`/`_apply_batch21.mjs` como modelo.
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
