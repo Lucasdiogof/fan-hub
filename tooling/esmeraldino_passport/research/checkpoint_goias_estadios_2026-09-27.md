@@ -187,6 +187,36 @@ Busca web (não ficha) indica que a final da Copa Centro-Oeste 2000 (Goiás x Vi
 - Scripts usados: `_apply_1954.mjs` (aplica as 6 confirmações) e `_gen_pendencias.mjs` (regenera a fila de pendências a partir do checkpoint)
 - Próximo bloco recomendado: 1953 e 1952 pelo mesmo método (Citadino de Goiânia, IDs decrescentes a partir de ~48709); e retomar a pista do Serra Dourada/Copa Centro-Oeste 2000 com outra fonte.
 
+## Atualização de pesquisa — 2026-09-28 (2) — Lote grande 1958-1963, nova estratégia "sem parar"
+Usuário pediu pra assumir o projeto até o fim, sem micro-lotes e sem perguntar o que pesquisar depois. Sessão longa de varredura por fichas do Futebol de Goyaz.
+
+### Fechados nesta sessão
+- **1958** (edição 596): 6/6 Citadino confirmados (IDs 48953-48990), todos Olímpico.
+- **1959**: 8/8 Citadino confirmados — 2 de virada de ano (jan/1959, edição 1958) + 6 da nova edição (mai-out/1959, "Primeira fase"), todos Olímpico.
+- **1960** (edição 598): 5/5 confirmados. Descoberta importante: a página `campeonatos/598/edicao` mostra por padrão a ÚLTIMA rodada com data/placar/estádio — atalho rápido sem precisar sondar ID por ID.
+- **1961** (edição 599): 4/4 Citadino confirmados, todos Olímpico. As 2 partidas do "Torneio Goiânia-Anápolis" (12/02, 18/02) ficaram como pendência — a edição existe no site (`campeonatos/740/edicao`, "Torneio Octogonal Goiânia-Anápolis"), mas não consegui achar os IDs das fichas de fevereiro nesta sessão (ver bloqueio abaixo).
+- **1963** (edição 323, "Campeonato Goiano"): 6/6 confirmados no bloco set-nov/1963 (IDs 49505-49575). O bloco jan/mar/abr/1963 (4 jogos) NÃO foi localizado — o edição 323 parece cobrir só set-dez; os jogos de início de ano devem estar em outra edição/ID ainda não identificada.
+- **1964**: 1 confirmação (20/set, via ficha com 1 dia de diferença de data). Edição 324 identificada, mas o ID de partida está num bloco TOTALMENTE diferente (20000s, não 49000s) — a densidade de rodadas é maior (~4-5 IDs/rodada) e a sondagem ficou mais cara por jogo.
+
+### PEGADINHA CONFIRMADA (nova): IDs do Futebol de Goyaz não são sequenciais entre edições
+Cada ano/edição do Citadino ocupa um bloco de IDs PRÓPRIO, sem relação numérica com o ano civil nem com edições vizinhas: 1954=48709-48728, 1955=48729-48784, 1956=48785-48848, 1957=48849-48941, 1958=48942-48990, 1959=48992-49043, **1960=49050-49057 (só a "Fase final", 6 rodadas) E TAMBÉM 49463-49491 (a temporada principal, jun-dez) — duas faixas diferentes pra mesma edição**, 1961=49058-49087, 1963=49505-49575 (bloco set-dez), 1964=20500s-20580s (bloco totalmente distinto, dezenas de milhares de IDs abaixo). **Não dá pra prever o bloco de um ano novo por extrapolação do anterior — cada um precisa de um ponto de calibração novo**, geralmente pela busca web (`futeboldegoyaz.com.br "Campeonato X" ANO`) ou pela página da edição (que mostra a rodada final por padrão, útil como atalho).
+
+### Bloqueios desta sessão
+- Torneio Goiânia-Anápolis 1961 (2 jogos, edição 740): existe na FdG mas não achei os IDs das fichas de fevereiro.
+- Campeonato Goiano 1963, bloco jan-abr (4 jogos): não localizado, pode estar em outra edição.
+- Campeonato Goiano 1963, 06/10 vs Buriti (1 jogo): sondei ~10 IDs ao redor da rodada 8 sem achar a ficha específica do Goiás.
+
+### Beco sem saída identificado: competições nacionais (Brasileirão) via RSSSF
+Testei RSSSF (rsssf.org/tablesb/braz75.html) pro Brasileiro 1975 — tem data, adversário e placar, mas **nenhum jogo com estádio informado**. Não é fonte útil pra confirmar estádio de jogos nacionais (1970s-90s, ~150 pendências). Provavelmente precisa de jornal/hemeroteca ou site oficial do adversário por jogo — mais caro por confirmação, não é bloco de alto rendimento como o Goiano local.
+
+### Novo estado canônico
+- **Confirmadas: 1.259 / 2.102 = 59,90%** (+30 nesta sessão: 6 de 1954 + 24 de 1958-1964, cumulativo desde 1.223)
+- UNKNOWN: 843 · Vazias (fora do escopo 2102): 38 · Backlog: 881
+- Arquivo: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1259.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1259.csv`
+- Maior bloco pendente por competição: **"Goiano" (562 jogos)**, seguido de Torneio Início-Goiano (34, majoritariamente bloqueado por não existir na FdG), Brasileiro-Copa Brasil (54, sem fonte de estádio identificada ainda), Brasileiro-Taça de Ouro (31).
+- Maior bloco pendente por década: 1980s (254), 1990s (236), 1970s (176).
+- Próxima ação recomendada: continuar o método de calibração por edição (buscar "Campeonato Goiano <ANO>" → achar edição → pegar rodada final como âncora → sondar por interpolação de data) para 1965-1999, focando primeiro em "Goiano" (maior volume). Reservar competições nacionais pra quando houver uma fonte de estádio melhor que RSSSF (talvez Wikipédia de cada edição do Brasileirão, ou o próprio Futebol de Goyaz se tiver os jogos nacionais registrados também).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
