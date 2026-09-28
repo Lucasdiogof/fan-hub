@@ -1,6 +1,8 @@
 import csv, collections, re, unicodedata, os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
-rows = list(csv.DictReader(open('passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1223.csv', encoding='utf-8-sig')))
+import glob
+CK = max(glob.glob('passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_*.csv'), key=lambda f: int(re.search(r'_(\d+)\.csv$', f).group(1)))
+rows = list(csv.DictReader(open(CK, encoding='utf-8-sig')))
 
 def n(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode().lower()
@@ -8,7 +10,7 @@ def n(s):
 
 # canonical_id: (canonical_name, canonical_city, [aliases as they appear raw])
 C = {
- 'go-olimpico': ('Estádio Olímpico Pedro Ludovico Teixeira', 'Goiânia', ['Olímpico', 'Pedro Ludovico', 'Estádio Olímpico Pedro Ludovico Teixeira']),
+ 'go-olimpico': ('Estádio Olímpico Pedro Ludovico Teixeira', 'Goiânia', ['Olímpico', 'Pedro Ludovico', 'Estádio Olímpico Pedro Ludovico Teixeira', 'Estádio da Avenida Paranaíba']),
  'go-accioly': ('Estádio Antônio Accioly', 'Goiânia', ['Antônio Accioly', 'Estádio Antônio Accioly']),
  'go-serra-dourada': ('Estádio Serra Dourada', 'Goiânia', ['Serra Dourada', 'Estádio Serra Dourada']),
  'go-serrinha': ('Estádio Hailé Pinheiro (Serrinha)', 'Goiânia', ['Serrinha', 'Hailé Pinheiro', 'Estádio Hailé Pinheiro (Serrinha)']),

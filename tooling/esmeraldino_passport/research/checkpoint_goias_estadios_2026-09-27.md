@@ -578,3 +578,17 @@ Cruzei por data (±2 dias) e placar exato do lado do Goiás: 6 casaram. Descarte
 - UNKNOWN: 470 · Vazias: 38
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1632.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1632.csv`
 - **Meta: 80% (1.682).** Faltam 50.
+
+## Atualização de pesquisa — 2026-09-28 (20) — Hemeroteca via PDF: Torneio Início de 1956 (+4, 1956 FECHADO)
+O visualizador da Hemeroteca bloqueia a automação com o CAPTCHA e com o desafio do Cloudflare na imagem. Por isso o usuário baixou os PDFs das edições no navegador dele ("Edições em PDF"), e eu li com PyMuPDF (OCR + imagem).
+- **Jornal de Notícias (GO), ed. 00013, 29/03/1956, p. 6.** Manchete: "DOMINGO NO ESTÁDIO DA AVENIDA PARANAÍBA — Abertura do Campeonato da Cidade — os clubes se apresentarão com todos seus principais valores — a renda será em benefício da A.C.E.E.". Na mesma página, a nota "Relâmpagos": "No próximo domingo teremos a abertura do certame futebolístico do corrente ano, com a realização do torneio início", com os 10 clubes (Atlético, Goiânia, Goiás, Goianás, Associação Mariana, Vila Nova, Nova Vila, Sírio Libanês, São Luiz, São Paulo) e a renda para a Associação dos Cronistas Esportivos. O domingo seguinte é 01/04/1956.
+- **Ed. 00014, 05/04/1956, p. 4:** o torneio foi disputado; a final Goiás x Atlético foi suspensa após agressão, e o campeão ainda não estava definido.
+- **RSSSF go1956in:** os 4 jogos do Goiás em 01/04/1956, com placares.
+- **Prova do alias:** a ed. 00015 (08/04/1956, p. 6) anuncia Goiás x Mariana "NO ESTÁDIO DA AV. PARANAIBA", e a ficha FdG 48785 registra esse mesmo jogo como "Olímpico". Na mesma página, São Luiz x Nova Vila vai para o "Estádio da Av. 24 de Outubro", que a ficha FdG 48786 registra como Antônio Accioly. Adicionei "Estádio da Avenida Paranaíba" → go-olimpico no mapa de aliases.
+- Aplicado com o nome bruto da fonte ("Estádio da Avenida Paranaíba", Goiânia) em hist-f80-0248, 0249, 0250 e 0251. **1956 = 16/16, FECHADO.**
+- **1957 (Torneio Início, 05/05/1957, hist-f80-0274):** li as eds. 00154 (05/05), 00155 (10/05) e 00156 (12/05). Nenhuma tem página de esporte (conferido no OCR e na imagem). Continua UNKNOWN.
+
+### Novo estado canônico
+- **Confirmadas: 1.636 / 2.102 = 77,83%** · UNKNOWN: 466 · Vazias: 38
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1636.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1636.csv`
+- **Meta: 80% (1.682).** Faltam 46.
