@@ -1020,4 +1020,10 @@ Usuário pediu pra continuar nas pendências restantes. Priorizei o **Campeonato
 - Tentei achar a edição certa de "Brasileiro-Copa Brasil" 1978/1979 na FdG pra Dom Bosco-MT/Operário-MT (hist-f80-1205/1206/1293/1303) — a FdG não tem um campeonato chamado "Copa Brasil" isolado; a edição de "Campeonato Brasileiro - Série A 1978" (`/campeonatos/30/edicao?aba=es`) não lista esses clubes (são de uma copa/torneio secundário diferente, não a Série A). Não achei o campeonato certo — fica pra tentativa futura descobrir o nome/ID certo na FdG (ou aceitar que pode não estar catalogado lá).
 
 **Total do dia (45): +2 no escopo oficial (1.935→1.937, 92,06%→92,15%).** Backlog oficial: **165**. **13 pendências do Goiano 1976 fechadas definitivamente como sem fonte** (não contam como confirmadas, mas não vale mais tentar por essa via).
-- Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1937.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1937.csv`.
+- Arquivos atuais (nesta seção): `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1937.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1937.csv`.
+
+### +1 no mesmo lote — hist-f80-0895 (Atlético-GO, 06/06/1973) confirmado com tolerância de 1 dia
+- **hist-f80-0895** (CSV: 06/06/1973, Goiás 0x2 Atlético-GO, L) bate com a ficha `futeboldegoyaz.com.br/partidas/21230/partida` (escalações completas, arbitragem, renda) que mostra **Atlético 2 x 0 Goiás em 07/06/1973** (quinta-feira, Primeiro turno, 10ª rodada) — placar idêntico (2x0 pro Atlético), só 1 dia de divergência na data. Aplicado **Olímpico, Goiânia** como estádio, data original do CSV preservada (06/06), divergência documentada no `conflict_note` (tolerância de ±1-2 dias permitida pela regra quando placar+adversário são inequívocos).
+- **Checagem adicional do Goiano 1984 (13 pendências, mesmos adversários já mapeados: Rio Verde, Itumbiara, Goiânia, Anapolina, Jataiense)** — mesmo resultado do 1976: TODOS os campos de estádio vazios na FdG para 1984, mesmo com placar batendo exato em quase todos os casos. **Confirma que o "limite duro" de ~1984-85 é real e já bate no início de 1984** — não vale reprocessar essas 13 linhas também.
+- **Total real do dia (45): +3** (1.935→1.938/2.102 = 92,20%). Backlog oficial: **164**.
+- Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1938.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1938.csv`.
