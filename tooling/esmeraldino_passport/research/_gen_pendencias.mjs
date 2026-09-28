@@ -33,7 +33,7 @@ function csvField(v) {
   return v;
 }
 
-const raw = fs.readFileSync('passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1229.csv', 'utf8').replace(/^﻿/, '');
+const raw = fs.readFileSync(process.argv[2] || 'passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1259.csv', 'utf8').replace(/^﻿/, '');
 const table = parseCSV(raw);
 const header = table[0];
 const idx = Object.fromEntries(header.map((h, i) => [h, i]));
@@ -57,5 +57,6 @@ console.log('pending rows:', out.length - 1, '(unknown=', unknownCount, 'empty='
 console.log('2102-scope confirmed:', confirmed2102, '/', total2102, '=', (confirmed2102/total2102*100).toFixed(2)+'%');
 
 const outLines = out.map(r => r.map(csvField).join(',')).join('\r\n');
-fs.writeFileSync('GOIAS_PENDENCIAS_ESTADIOS_1229.csv', '﻿' + outLines + '\r\n', 'utf8');
-console.log('wrote GOIAS_PENDENCIAS_ESTADIOS_1229.csv');
+const outName = process.argv[3] || 'GOIAS_PENDENCIAS_ESTADIOS_1259.csv';
+fs.writeFileSync(outName, '﻿' + outLines + '\r\n', 'utf8');
+console.log('wrote', outName);
