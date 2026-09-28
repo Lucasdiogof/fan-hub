@@ -1094,3 +1094,12 @@ Usuário pediu pra continuar atrás dos IDs que faltavam. Achei todos via `WebSe
   - ~70 jogos de 1984 (ago–dez), 1985, 1986 (fev–jul), jul/1993 e mai–jul/1995 sem edição do DM no IHGG a ±7 dias. Precisam de outro jornal: BN com PDF baixado pelo usuário (ex.: Correio Braziliense, Jornal do Brasil/Placar para fichas) ou acervo do O Popular (não digitalizado publicamente).
   - Anos 1950–70: Torneios Início 1946/51/52/53/55/57/66, Goiano 1976 (13), conflitos de placar sem ficha rica (0509, 0665, 0758, 0765, 0780, 0802) e jogos sem fonte (0042, 0436, 0439, 0472, 0541, 0744, 1028, 1105).
   - 1766, 2169, 2170, 2246, 2295: edições do DM existem só fora da janela útil ou sem menção ao estádio.
+
+## Atualização de pesquisa — 2026-09-28 (51) — 0758 e 0765 aplicados por decisão do usuário (+2)
+- O usuário autorizou aplicar os dois casos de placar divergente com o mesmo resultado, cujas fichas FdG têm data e rodada mas não escalação:
+  - 0758 (25/10/1970, Jataiense x Goiás): ficha 20951, Jataiense 0 x 2 Goiás, **Jerônimo Fraga, Jataí** (CSV: 1 x 0 para o Goiás).
+  - 0765 (29/11/1970, Goiás x Goiânia): ficha 20980, Goiás 0 x 3 Goiânia, **Olímpico, Goiânia** (CSV: 1 x 2, derrota).
+- Divergência de placar registrada no `conflict_note`; placar do CSV NÃO alterado.
+- Continuam de fora (resultado diferente): 0509, 0665, 0780, 0802.
+
+**Novo estado: 1.985 / 2.102 = 94,43%.** Backlog: 117. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1985.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1985.csv`.
