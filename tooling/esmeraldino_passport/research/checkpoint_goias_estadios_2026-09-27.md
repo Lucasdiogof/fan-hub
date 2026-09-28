@@ -385,6 +385,16 @@ Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1473.csv` + `GOI
 
 **A meta original foi atingida, mas o usuário pediu pra continuar até esgotar fontes razoáveis — não parar aqui.** Próxima ação: continuar minerando o "Goiano" 1963-1984 pelos outros rivais grandes ainda não tentados por completo (Goiatuba parcialmente tentado, Santa Helena-GO 27, América de Morrinhos-GO 24, Jataiense-GO 22, Ceres-GO 20, CRAC-GO 20, Ipiranga de Anápolis-GO 19), sempre com o script de verificação de data+placar (`_apply_batch22.mjs` como modelo genérico, só trocar o clube/dados).
 
+## Atualização de pesquisa — 2026-09-28 (14) — continuando pós-meta
+CRAC-GO (467, +1), Santa Helena-GO (479, +8), América de Morrinhos-GO (484, +4), Ceres-GO (497, +5) = **18 confirmações**, todas via confronto direto no recorte 1963-1978 (mesma janela de dados boa).
+
+### Novo estado canônico
+- **Confirmadas: 1.490 / 2.102 = 70,88%**
+- UNKNOWN: 612 · Vazias: 38 · Backlog: 650
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1491.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1491.csv`
+- IDs novos: CRAC-GO=467, Santa Helena-GO=479, América de Morrinhos-GO=484, Ceres-GO=497.
+- **Rendimento caindo:** Jataiense-GO e CRAC-GO deram só 1 confirmação cada porque a maioria dos jogos pendentes contra eles já é pós-1984 (fora da janela boa) ou tem venue "—" mesmo dentro da janela. Os rivais "grandes" mais fáceis (Rio Verde, Santa Helena, Itumbiara, América Morrinhos, Ceres) já foram bastante explorados. Restam: Jataiense-GO (21), Ipiranga de Anápolis-GO (19), Mineiros-GO (16), Caldas-GO (12), Novo Horizonte-GO (11), Inhumas-GO (10), Nacional de Itumbiara-GO (10), Quirinópolis-GO (10) — todos ainda sem tentativa completa.
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
