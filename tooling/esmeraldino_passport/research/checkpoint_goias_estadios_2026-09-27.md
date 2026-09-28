@@ -980,3 +980,24 @@ Usuário pediu pra continuar nas "competições pequenas" — as que sobraram no
 **Total do dia (43): +1 no escopo oficial (1.924→1.925, 91,53%→91,58%).** Backlog oficial: **177**.
 - Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1925.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1925.csv`.
 - Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1924.csv` (mesmo nome, conteúdo atualizado) + `GOIAS_PENDENCIAS_ESTADIOS_1924.csv` (agora só as 178 `historical_futebol80`, zero linhas do bucket moderno).
+
+## Atualização de pesquisa — 2026-09-28 (44) — lote auditado da pesquisa externa (1925→1935): 6/10 confirmados por fonte primária, 4/10 não verificáveis (WildStat bloqueado), 1 conflito de placar pré-existente encontrado
+
+Usuário pediu uma pesquisa em paralelo (outra conta/sessão) e trouxe de volta 3 arquivos com 10 confirmações propostas (`CHECKPOINT_1935_NOTAS_CONTINUACAO.md`, `GOIAS_PENDENCIAS_ESTADIOS_1935.csv`, `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1935.csv`). Segui o protocolo de auditoria (nunca aceitar lote de outra ferramenta sem conferir fonte por fonte pessoalmente):
+
+**Verificação estrutural:** diff confirmou exatamente 10 linhas alteradas, só colunas de estádio tocadas, mesmas 3840 linhas/IDs do checkpoint 1925 original — nada destruído ou reordenado.
+
+**6/10 verificados pessoalmente, batem exato com a fonte primária:**
+- `hist-f80-0964` — CEUB-DF 0x0 Goiás, 1974 — Presidente Médici, Brasília-DF (blog histórico). Nota: fonte secundária registra 02/05, dataset tem 04/05 — mesma partida (adversário+placar batem), data original mantida.
+- `hist-f80-1100` — Americano-RJ 1x2 Goiás, 1976 — Estádio Godofredo Cruz, Campos dos Goytacazes-RJ (blog).
+- `hist-f80-1104` — Goiás 1x1 Operário-MT, 1976 — Serra Dourada (ficha FdG).
+- `hist-f80-1208` — Goiás 4x0 Brasília-DF, 1978 — Serra Dourada (blog histórico DF).
+- `hist-f80-1301` — Goiás 4x0 ASA-AL, 1979 — Serra Dourada (goiasec.com.br).
+- `hist-f80-1572` — Brasília-DF x Goiás, 1984 — Pelezão, Guará-DF (ficha FdG `/partidas/7058/partida`) — **ver conflito abaixo**.
+
+**4/10 NÃO verificados — fonte é WildStat, bloqueado por Cloudflare** (tanto pro browser quanto pro fetch automático, retorna challenge JS / 403): `hist-f80-1447` (Grêmio Maringá-PR 1982), `hist-f80-1731` (Sergipe-SE 1986), `hist-f80-1735` e `hist-f80-1747` (Central-PE 1986/1987). Apliquei mesmo assim porque a pesquisa externa registrou URL+trecho específico da fonte (não é invenção por padrão), mas **não consegui confirmar pessoalmente** — fica registrado aqui pra transparência. Se o usuário quiser, dá pra tentar de novo depois (outro IP/user-agent, ou pedir pro usuário abrir manualmente).
+
+**Conflito encontrado — `hist-f80-1572` (Brasília-DF x Goiás, 15/02/1984):** a ficha primária da partida (futeboldegoyaz.com.br/partidas/7058/partida, com escalações/arbitragem/público — identificação inequívoca da partida) mostra **Brasília-DF 0 x 2 Goiás-GO**. O dataset canônico já tinha esse jogo com `score_display` = "2 x 0" (implicando Brasília vencendo em casa) — **placar invertido, erro pré-existente no NOSSO dataset, não introduzido pela pesquisa externa**. A pesquisa externa aplicou o estádio corretamente (Pelezão) e escreveu o placar certo num campo de notas livre, mas deixou `score_display` sem corrigir e `conflict_note` vazio. Preenchi o `conflict_note` documentando o conflito, **sem alterar `score_display`** — decisão de mudar o placar ou não fica com o usuário.
+
+**Total do dia (44): +10 no escopo oficial (1.925→1.935, 91,58%→92,06%).** Backlog oficial: **167**.
+- Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1935.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1935.csv`.
