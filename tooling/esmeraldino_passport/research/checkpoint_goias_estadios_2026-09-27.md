@@ -324,6 +324,21 @@ Troquei de ano pra manter o rendimento. Todos os 5 pendentes (fora o Torneio In�
 - **Anos do Citadino pré-1954 ainda pendentes:** 1944 (1), 1945 (1), 1946 (4), 1947 (6), 1949 (4), 1952 (9, difícil). Total ~25 linhas, mesmo método deve funcionar pra 1944-1947 e 1949 (falta achar a edição de cada ano — 1945=567 já conhecido).
 - **Próxima ação:** 1949 (edição próxima de 577/1948, deve ter bloco de IDs vizinho) e 1947/1946/1945/1944 (menores, mais rápidos de fechar). Depois voltar aos clubes pequenos do Brasileirão nacional ou tentar 1952 com fonte alternativa.
 
+## Atualização de pesquisa — 2026-09-28 (10) — Citadino pré-1954 praticamente esgotado
+Fechei 1949 (edição 579, 4/4), 1947 (edição 576, 4/4 — os outros 2 são Torneio Início bloqueado), 1946 (edição 572, 2/3 — falta só 30/jun, não achado na sondagem) e 1945 (edição 567, 1/1). Chave que continua se confirmando: "ABG" e "União Operária" parecem ser nomes alternativos de "União" e "Anápolis" nesta era — mesma dinâmica do alias Botafogo=Sírio Libanês, sempre confiança MÉDIA/ALTA por cruzamento de data+placar único na temporada.
+
+**1944 (1 pendência, Campinas Esporte Clube 9x1, 23/07/1944): não localizei a edição** — não achei o ID via busca nem por tentativa direta de IDs próximos a 1945(567). Fica pendente.
+
+### Citadino pré-1954: praticamente esgotado
+Restam só: 1944 (1, edição não achada), 1946 (1, 30/jun não achado na sondagem), 1950 (2, mesma situação), 1952 (9, bloco de IDs disperso — abandonado). Total ~13 linhas de um bloco que tinha 61 no início do dia. **Esse filão está no fim — hora de trocar de bloco de novo.**
+
+### Novo estado canônico
+- **Confirmadas: 1.400 / 2.102 = 66,60%**
+- UNKNOWN: 702 · Vazias: 38 · Backlog: 740
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1400.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1400.csv`
+- **Resumo do dia inteiro:** 1.259 → 1.400 = **+141 confirmações num único dia**.
+- **Próxima ação:** voltar pros clubes pequenos do Brasileirão nacional (Central-PE, Brasília-DF, Rabello-DF, Goytacaz-RJ, CEUB-DF, Nacional-AM, Sergipe-SE, Americano-RJ, Operário-MT/MS, Dom Bosco-MT, Joinville-SC, Grêmio Maringá-PR e mais ~15 clubes com 1 pendência cada — ~44 linhas), ou explorar outras competições menores ainda intocadas (Torneio Brasil Central 10, Torneio Leonino Caiado 8, Torneio Maguito Vilela 6, Copa Goiás 4, Torneio Integração Nacional 4).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
