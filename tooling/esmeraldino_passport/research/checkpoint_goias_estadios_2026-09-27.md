@@ -844,3 +844,21 @@ Enquanto o usuário decide se continua com a BN, descobri e testei uma fonte que
 ### Estado canônico (sem mudança)
 - **Confirmadas: 1.920 / 2.102 = 91,34%**
 - Fonte nova ativa pra continuar sozinho: "5 de Março" (IHGG, cobre 1959-1980, foco nos alvos de 1963-1966). Próximo passo: tentar mais semanas de fevereiro/1963 (Santa Rita-GO), março/1963 (Goiânia-GO), abril/1966 (Torneio Início, 4 pendências no mesmo dia — maior prioridade por render mais de uma vez).
+
+## Atualização de pesquisa — 2026-09-28 (35) — usuário sugeriu reverificar o Futebol de Goyaz (+1)
+
+O usuário perguntou se o `futeboldegoyaz.com.br` não seria mais fácil — reverifiquei a fundo os alvos atuais (1963-1966) nessa fonte, já extensivamente usada no projeto mas não nas pendências exatas que sobraram.
+
+- **hist-f80-0564 (Botafogo de Buriti Alegre, 19/05/1966, placar 4x1):** o confronto direto (clube 494) só tem um jogo com esse placar exato em todo o histórico: 22/05/1966, Goiás 4x1 Botafogo, **Olímpico**. Diferença de 3 dias da data do CSV, mas placar idêntico e único candidato possível no mês — aplicado usando o mesmo critério já usado antes na pesquisa (placar unicamente distintivo justifica tolerância de data um pouco maior que o padrão de ±2 dias).
+- **hist-f80-0509 (Botafogo de Buriti Alegre, 21/11/1964):** confronto direto TEM um jogo exatamente nessa data, mas o placar não bate (CSV: 2x1: FdG: Goiás 0x0 Botafogo) — **não aplicado**, provavelmente jogos diferentes ou erro de placar numa das fontes; sem confirmação cruzada não dá pra assumir que é o mesmo jogo.
+- **Torneio Início 1966 (4 pendências, 07/04/1966):** reverifiquei os 4 confrontos diretos (Goiânia, Vila Nova, Anápolis, Ipiranga) — **nenhum tem jogo nessa data nem um "Torneio Início" sequer catalogado**. Confirma que essa competição específica não está nas tabelas de confronto direto desse site (mesmo padrão já visto antes).
+- **hist-f80-0436 (Santa Rita-GO, 13/01/1963, placar 2x4):** achei o ID do clube (534, via edição do Campeonato Goiano 1963 — `campeonatos/323/edicao`, que também revelou o ID do Ferroviário-GO=516, ambos nunca encontrados antes). O jogo existe no confronto direto com placar EXATO (Goiás 2x4 Santa Rita), mas **"Estádio: Não informado"** — sem solução, mesmo achando o jogo certo.
+- **hist-f80-0472 (Ferroviário-GO, 26/02/1964):** com o ID novo (516) busquei o confronto direto completo — **esse jogo específico nem aparece na tabela** (o confronto pula de 02/12/1962 pra 17/11/1963 pra 18/03/1964, sem nada em fevereiro/1964).
+
+**Total do dia (35): +1 confirmação (1920 → 1921).** Confirma a resposta pro usuário: essa fonte já foi extensivamente esgotada pras pendências que sobraram — mesmo reverificando com IDs de clube novos (Santa Rita, Ferroviário), o padrão se repete (jogo não catalogado, ou catalogado sem estádio, ou Torneio Início ausente da tabela).
+
+### Novo estado canônico
+- **Confirmadas: 1.921 / 2.102 = 91,39%**
+- UNKNOWN: 181 · Vazias: 38 · Backlog: 219
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1921.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1921.csv`
+- IDs de clube novos: Santa Rita-GO=534, Ferroviário-GO=516 (ambos sem solução de estádio apesar do ID achado).
