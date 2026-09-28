@@ -953,3 +953,17 @@ Ao contrário de 1952, a numeração de 1957 bate certinho: **NUM.00154 = 5 de M
 
 ### Estado das duas pendências da BN, resumo
 Ambos os alvos que motivaram o CAPTCHA (hist-f80-0149 de 1952, hist-f80-0274 de 1957) estão **fechados como sem fonte disponível** — não é falha de busca, é o jornal genuinamente não tendo cobertura de esporte (ou não tendo edição digitalizada, no caso de 1952) pras datas exatas. Backlog oficial continua em **178** (`historical_futebol80`).
+
+## Atualização de pesquisa — 2026-09-28 (42) — Copa Centro-Oeste 2000-2002 100% resolvida: bucket moderno zerado (+24, fora do escopo 2102)
+
+Usuário pediu pra ir atrás dos 7 IDs de clube que faltavam da Copa Centro-Oeste (Comercial-MS, Bandeirante-DF, Serra-ES, Juventude-MT, Dom Pedro II, Palmas-TO, Brasiliense-DF), além de 4 jogos do Vila Nova/2002 que tinham escapado do lote anterior.
+
+**Técnica que resolveu tudo de uma vez:** a aba de **estatísticas da edição do campeonato** (`futeboldegoyaz.com.br/campeonatos/<ID>/edicao?aba=es`) lista TODOS os clubes participantes com o ID de cada um nos links — muito mais eficiente que buscar cada clube isoladamente. Rodei pra `/campeonatos/131/edicao?aba=es` (2001) e achei 5 dos 7 IDs de uma vez: **Comercial-MS=340, Bandeirante-DF=816, Serra-ES=551, Juventude-MT=718, Palmas-TO=732**.
+
+- **Brasiliense-DF=598** (achado via busca por "confronto Brasiliense Anápolis" — CUIDADO: existe também um "Grêmio Brasiliense-DF"=889 na FdG, clube DIFERENTE, zero jogos contra o Goiás — não confundir os dois "Brasiliense" do DF).
+- **Dom Pedro II=611** — hoje chamado "Real Brasília-DF" na FdG (o clube trocou de nome várias vezes: Dom Pedro II → Dom Pedro Bandeirante em 2009 → Real Futebol Clube em 2016 → Real Brasília em 2020; a FdG usa o nome atual como label mas mantém o histórico completo sob o mesmo ID).
+- Todos os 5 IDs da aba `?aba=es` confirmados via confronto direto, TODAS as partidas bateram exato com nossas pendências (data+placar). Estádios novos catalogados: Morenão (Campo Grande-MS), Mané Garrincha e Adonir Guimarães (Brasília-DF), Engenheiro Araripe (Vila Velha-ES) e Robertão (Serra-ES), Cerradão/Asa Delta (MT), Nílton Santos (Palmas-TO), Boca do Jacaré (Brasília-DF, Brasiliense), Serrinha (Goiânia — estádio secundário usado bastante nessa copa, aparece MUITO mais que Serra Dourada nesses jogos específicos).
+- Vila Nova 2002 (4 jogos que faltaram no lote anterior): todos em Serra Dourada, igual o resto do histórico Goiás x Vila Nova.
+
+**Total: +24, bucket `modern_audited_2000_2026` agora ZERADO (era 24, virou 0)** — a Copa Centro-Oeste 2000/2001/2002 está 100% resolvida. Sem mudança na % oficial (1.924/2.102 = 91,53%, esse bucket nunca contou pra meta), mas fecha de vez essa frente.
+- Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1924.csv` (mesmo nome, conteúdo atualizado) + `GOIAS_PENDENCIAS_ESTADIOS_1924.csv` (agora só as 178 `historical_futebol80`, zero linhas do bucket moderno).
