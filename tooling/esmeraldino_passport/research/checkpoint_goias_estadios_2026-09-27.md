@@ -905,4 +905,5 @@ Enquanto o usuário prepara o navegador pra resolver mais CAPTCHA da BN (deixei 
 
 ### Estado canônico (sem mudança)
 - **Confirmadas: 1.921 / 2.102 = 91,39%**
+- **Confirmado: o blog só tem posts de "Torneio Início Goiano" pra 1946, 1959, 1960 (2ª divisão), 1961 e 1974** — nenhum desses anos coincide com as pendências restantes de Torneio Início (1951, 1952, 1953, 1955, 1957, 1966). Interessante notar que o formato do blog INCLUI campo de estádio quando o autor tem essa informação (ex.: 1961 = "Estádio Antônio Acciolly"), só que pros anos que faltam pra nós ele simplesmente não escreveu post ainda.
 - Navegador aberto e pronto pro usuário resolver CAPTCHA da BN quando quiser (aba separada da minha pesquisa).
