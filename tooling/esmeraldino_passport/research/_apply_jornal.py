@@ -8,6 +8,8 @@ confirmacoes.json = lista de objetos com:
   city    (cidade do estádio)
   url     (URL do(s) PDF(s)/edição(ões) usados)
   note    (evidência: jornal, data da edição, página e trecho que liga o jogo ao estádio)
+  state   (opcional: UF do estádio, quando a coluna venue_state existir)
+  conflict (opcional: texto para conflict_note, p.ex. divergência de data documentada)
 
 Só altera linhas historical_futebol80 com venue_name == UNKNOWN.
 """
@@ -28,6 +30,10 @@ for r in rows:
     r['venue_name'] = c['venue'].strip()
     r['venue_city'] = c['city'].strip()
     r['venue_confidence'] = 'HIGH'
+    if c.get('state') and 'venue_state' in r:
+        r['venue_state'] = c['state']
+    if c.get('conflict'):
+        r['conflict_note'] = (r['conflict_note'] + ' | ' if r.get('conflict_note') else '') + c['conflict']
     r['source_secondary'] = (r['source_secondary'] + ' | ' if r['source_secondary'] else '') + c['url']
     r['notes'] = (r['notes'] + ' ' if r['notes'] else '') + c['note'].strip() + ' Confirmado em 2026-09-28.'
     for k in ('venue_probable_name', 'venue_probable_city', 'venue_probable_confidence', 'venue_probable_basis'):
