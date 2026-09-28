@@ -292,6 +292,21 @@ Fortaleza-CE (1/1, clube 690 já mapeado). Depois troquei de bloco: como os club
 - **Resumo do dia inteiro (sessão "assumir o projeto"):** 1.259 → 1.368 = **+109 confirmações**.
 - **Próxima ação recomendada:** terminar 1950 (3 restantes), depois 1951/1952/1944-1949 pelo mesmo método (interpolação por data dentro do bloco de IDs da edição, âncora pela página `campeonatos/<ID>/edicao`). Esse bloco (Citadino pré-1954) continua tendo rendimento melhor que os clubes pequenos do Brasileirão nacional, que estão ficando cada vez mais caros de achar.
 
+## Atualização de pesquisa — 2026-09-28 (8) — Citadino 1950/1951, sessão retomada após limite
+Sessão anterior foi interrompida por limite de uso; retomada com "tentar novamente". Continuei o Citadino pré-1954 pelo mesmo método.
+
+### Fechado nesta sessão
+- **1950 (edição 580): 14/16** — faltam só 04/06 (Goiânia 0x2) e 12/11 (Botafogo 8x0), não localizados na sondagem.
+- **1951 (edição 582): 8/14** — confirmados 30/set, 14/out, 21/out, 28/out, 08/jul, 15/nov, 25/nov, 09/dez. Faltam: 02/set, 05/ago, 22/jul, 17/jun, 10/jun, 20/mai (6 restantes).
+
+Novo padrão de alias confirmado mais uma vez: "Botafogo" = Sírio Libanês (rodada 9/1951, rodada 25/1951) e "União Operária" = Anápolis (rodada 32/1950) — consistente em 1950, 1951 e 1954, cada vez mais forte a hipótese de que são nomes alternativos usados pelo Futebol80 pros mesmos clubes.
+
+### Novo estado canônico
+- **Confirmadas: 1.378 / 2.102 = 65,56%**
+- UNKNOWN: 724 · Vazias: 38 · Backlog: 762
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1378.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1378.csv`
+- **Próxima ação:** terminar os 6 restantes de 1951 (edição 582, mesmo bloco de IDs ~47265-47310), depois 1952 (edição 588, só 1/10 feito), depois 1944-1949 (19 pendências, edições ainda não identificadas) e 1955 (1 pendência).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
