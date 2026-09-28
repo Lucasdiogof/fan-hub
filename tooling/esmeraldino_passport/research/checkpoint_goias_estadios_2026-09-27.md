@@ -275,6 +275,23 @@ Tentativas sem sucesso: Central-PE (3), Americano-RJ (2), Joinville-SC (2) — I
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1354.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1354.csv`
 - Restam ~30 clubes pequenos com 1-3 pendências cada (~48 linhas) — mesmo padrão de dificuldade crescente (times regionais sem presença forte em buscas).
 
+## Atualização de pesquisa — 2026-09-28 (7) — Fortaleza + volta ao Citadino 1950/1952
+Fortaleza-CE (1/1, clube 690 já mapeado). Depois troquei de bloco: como os clubes pequenos do Brasileirão estavam ficando caros, voltei pro "Goiano-Citadino de Goiânia" que ainda tinha 61 pendências não tocadas (1944-1953, 1955) — mesma competição bem documentada de 1954-1963, só que anos ANTERIORES.
+
+### Citadino 1950 (edição 580) e 1952 (edição 588): 13 confirmados
+1950: 12/16 pendências fechadas (IDs 49770-49828, mesmo padrão de interpolação por data). 1952: 1/10 (ID47542, achado direto pela página da edição). Dois aliases novos confirmados pelo mesmo padrão de 1954 (data+placar exatos, só o nome do adversário difere): "Botafogo" = Sírio Libanês (rodada 8/1950) e possivelmente "União Operária" = Anápolis (rodada 16/1950, precisa confirmação futura).
+
+**Restam em 1950:** 04/06 (Goiânia 0x2) — não achei a ficha na sondagem; 12/11 (Botafogo 8x0) e 03/12 (União Operária 2x0) — não sondados ainda por tempo.
+**1952 quase intacto:** faltam 9 dos 10 jogos pendentes (13/01, 20/01, 25/05, 15/06, 13/07, 03/08, 31/08, 12/10, 11/11) — a edição 588 só deu a última rodada (30/11) de graça, precisa sondar o resto.
+**1951 (edição 582) e 1944-1949 ainda intocados nesta sessão** — 14 + 19 pendências restantes, mesmo método deve funcionar (âncora pela edição + interpolação).
+
+### Novo estado canônico
+- **Confirmadas: 1.368 / 2.102 = 65,08%** (passou de 65%!)
+- UNKNOWN: 734 · Vazias: 38 · Backlog: 772
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1368.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1368.csv`
+- **Resumo do dia inteiro (sessão "assumir o projeto"):** 1.259 → 1.368 = **+109 confirmações**.
+- **Próxima ação recomendada:** terminar 1950 (3 restantes), depois 1951/1952/1944-1949 pelo mesmo método (interpolação por data dentro do bloco de IDs da edição, âncora pela página `campeonatos/<ID>/edicao`). Esse bloco (Citadino pré-1954) continua tendo rendimento melhor que os clubes pequenos do Brasileirão nacional, que estão ficando cada vez mais caros de achar.
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
