@@ -929,3 +929,13 @@ Usuário voltou nesta conta e pediu pra seguir rumo aos 100%. Descoberta importa
 **Total do dia (39): +3 no escopo oficial (1.921→1.924, 91,39%→91,53%) + 14 fora do escopo (bucket moderno, ficha de qualidade melhorada mas sem efeito na %).**
 - Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1924.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1924.csv`.
 - Script novo: `_apply_by_id.mjs` (aplica por ID exato de linha, pro bucket `modern_audited_2000_2026` que tem `date_original` em formato ISO — incompatível com o `_apply_confronto_generic.mjs`, que só entende `DD/mon/AAAA`).
+
+## Atualização de pesquisa — 2026-09-28 (40) — hist-f80-0149 (04/05/1952) FECHADO como sem fonte: acervo da BN não cobre antes de julho/1952
+
+Usuário baixou os 24 PDFs disponíveis pra "1952" no acervo da Hemeroteca da BN (bib=843687, NUM.00001 a NUM.00024) e mandou todos. Processei com pymupdf (busca por GOIAS/GOIAZ/TORNEIO/ESTADIO + data do cabeçalho de cada edição).
+
+- **A numeração NÃO começa em janeiro:** NUM.00001 = **12/07/1952**, NUM.00024 = 17/12/1952 — as 24 edições cobrem só julho a dezembro. Usuário confirmou que "1" é de fato a primeira edição disponível do ano no site (não tem nada antes na árvore de pastas).
+- **Conclusão: o acervo digitalizado do Jornal de Notícias (bib=843687) simplesmente não tem nenhuma edição de maio/1952** — não é falha de busca, é ausência real na fonte. hist-f80-0149 (Torneio Início, 04/05/1952) fica **fechado como sem fonte disponível**, mesmo padrão de outros buracos de acervo já documentados neste checkpoint (1985/1986 do Diário da Manhã, datas pontuais de 1980-84 do IHGG).
+- **Nenhuma das 24 edições recebidas tinha relação com nossa única pendência de 1952** (hist-f80-0149 é a única linha da temporada 1952 no escopo `historical_futebol80`) — não apliquei nada, não há outra pendência de jul-dez/1952 pra aproveitar essas fichas.
+- **Lição pro lote de 1957 (94 PDFs a caminho, NUM.00126-00219):** antes de processar tudo, checar a data do PRIMEIRO PDF que chegar — se a numeração de 1957 também "começa atrasada" (ex.: só a partir de junho/julho), o alvo 05/05/1957 (hist-f80-0274) pode ter o mesmo problema. Vale pedir pro usuário simplesmente mandar 1-2 primeiro pra confirmar antes dele gastar CAPTCHA nos outros 92.
+- Sem mudança na % (1.924/2.102 = 91,53%) — essa atualização é só fechamento de investigação, sem confirmação nem rejeição de dado.
