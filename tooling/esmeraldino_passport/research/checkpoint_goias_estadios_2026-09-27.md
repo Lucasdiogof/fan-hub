@@ -217,6 +217,26 @@ Testei RSSSF (rsssf.org/tablesb/braz75.html) pro Brasileiro 1975 — tem data, a
 - Maior bloco pendente por década: 1980s (254), 1990s (236), 1970s (176).
 - Próxima ação recomendada: continuar o método de calibração por edição (buscar "Campeonato Goiano <ANO>" → achar edição → pegar rodada final como âncora → sondar por interpolação de data) para 1965-1999, focando primeiro em "Goiano" (maior volume). Reservar competições nacionais pra quando houver uma fonte de estádio melhor que RSSSF (talvez Wikipédia de cada edição do Brasileirão, ou o próprio Futebol de Goyaz se tiver os jogos nacionais registrados também).
 
+## Atualização de pesquisa — 2026-09-28 (3) — MÉTODO NOVO: confronto direto entre clubes (alto rendimento)
+Usuário mandou continuar sem parar no "Goiano", pulando pra outra edição quando ficasse cara. Testei 1993, 1997 e 1988 (edição via `campeonatos/<ID>/edicao`) e achei um **beco sem saída confirmado**: as fichas de jogo do "Campeonato Goiano" (estadual, não a antiga "Citadino de Goiânia") de 1966+ frequentemente NÃO têm o campo de estádio preenchido (`"Estádio: Não informado na página"`), mesmo pra jogos do Goiás em casa. Não é problema de busca — é lacuna real dos dados da fonte pra essa competição regional a partir de meados dos anos 60. Comprovado em 3 anos diferentes (1988, 1993, 1997), inclusive checando o HTML puro de uma ficha específica.
+
+### Descoberta que destravou o Brasileirão nacional (o beco sem saída anterior era só a RSSSF)
+O Futebol de Goyaz tem uma página de **confronto direto entre dois clubes** — `futeboldegoyaz.com.br/clubes/<id1>/<id2>/confronto` — que lista TODOS os jogos históricos entre os dois clubes, com data, placar, competição **E ESTÁDIO**, numa lista só. Isso é ouro pras ~257 pendências de competições nacionais (Brasileiro-Copa Brasil, Taça de Ouro, Nacional etc.): 1 fetch resolve todas as pendências contra aquele adversário de uma vez.
+
+**Como achar o ID de um clube:** pesquisar `futeboldegoyaz.com.br partidas Goiás <clube> <placar> <ano>` até achar uma ficha (`/partidas/<ID>/partida`) daquele clube contra qualquer adversário, fetchar a ficha e pedir pra IA extrair os links `/clubes/<ID>/clube` da página. Às vezes a busca já retorna direto uma página de confronto de outro par de clubes que também usa o adversário-alvo, revelando o ID sem precisar da ficha.
+
+IDs de clube já descobertos: Goiás=469, Bahia=618, Internacional-RS=289, Coritiba=630, Guarani-SP=174, Atlético-PR=628, Cruzeiro-MG=674, Botafogo-RJ=654, São Paulo-SP=169, Vitória-BA=624, Corinthians-SP=173, Ceará-CE=688, Ponte Preta-SP=183, Vila Nova-GO=472, Fortaleza-CE=690 (não usado ainda).
+
+### Confirmado nesta sessão via confronto direto
+Bahia (6/6), Internacional-RS (2/2), Coritiba-PR (4/4), Guarani-SP (5/5), Atlético-PR (5/5), Cruzeiro-MG (3/3), Botafogo-RJ (5/5), São Paulo-SP (1/1), Vitória-BA (8/8), Corinthians-SP (3/3), Ceará-CE (5/5) = **47 confirmações**, todas cruzando data+adversário+placar exatos (às vezes com 1-4 dias de diferença de data entre Futebol80 e Futebol de Goyaz, sempre documentado em `conflict_note`, nunca usado pra alterar a data original).
+
+### Novo estado canônico
+- **Confirmadas: 1.306 / 2.102 = 62,13%** (+47 desde o checkpoint 1259; +83 desde o início desta sessão de "assumir o projeto")
+- UNKNOWN: 796 · Vazias (fora do escopo 2102): 38 · Backlog: 834
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1306.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1306.csv`
+- Opções ainda não tentadas com clube de ID já conhecido, pra continuar depois: Grêmio-RS (4 pendências, ID ainda não achado), Remo-PA (4), Santa Cruz-PE (6), Portuguesa de Desportos-SP (6), Palmeiras-SP (2), Vasco da Gama-RJ (1), America-RJ (6) — todas com IDs de clube ainda não localizados nesta sessão, mas o método está validado e pronto pra repetir.
+- **Próxima prioridade recomendada:** continuar o método de confronto direto pros adversários nacionais restantes (~200 pendências), é o bloco de maior rendimento por fetch encontrado até agora. Voltar ao "Goiano" estadual só se/quando aparecer uma fonte de estádio melhor que a própria ficha da FdG (que comprovadamente falta pra essa competição).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
