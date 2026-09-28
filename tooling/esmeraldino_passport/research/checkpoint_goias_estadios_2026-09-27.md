@@ -826,3 +826,21 @@ O usuário resolveu manualmente o CAPTCHA da Hemeroteca da BN e baixou 16 ediç�
 ### Estado canônico (sem mudança)
 - **Confirmadas: 1.920 / 2.102 = 91,34%** (sem alteração nesta rodada)
 - **Próxima ação recomendada:** pedir ao usuário edições da BN perto de 04/05/1952 (Torneio Início, hist-f80-0149) e 05/05/1957 (Torneio Início, hist-f80-0274) — mesmo risco de não ter estádio pro jogo em casa, mas ainda vale tentar já que às vezes o jogo é fora ou a matéria eventualmente cita o local mesmo em casa (não é 100% consistente). Se o usuário não quiser gastar mais CAPTCHA, este é um bom ponto de parada — já documentamos tudo que dava pra documentar com o lote atual.
+
+## Atualização de pesquisa — 2026-09-28 (34) — nova fonte pro buraco de 1963-1966: "5 de Março" (IHGG, sem CAPTCHA)
+
+Enquanto o usuário decide se continua com a BN, descobri e testei uma fonte que **cobre exatamente 1963-1966** (o buraco original que o usuário pediu pra continuar procurando) — e está no **IHGG, não na BN**, então dá pra minerar sozinho sem precisar de CAPTCHA nenhum.
+
+**"5 de Março" (IHGG pub. 61):** cobre 1959-1980 quase contínuo (faltam só 1975/78/79). URL: `hemeroteca.ihgg.org/publicacoes/5_DE_MARCO/AAAA/MM/5_DE_MARCO_AAAA_MM_DD.pdf`. É semanário, publicado às **segundas-feiras**. Arquivos GRANDES (8-55MB, 6-20 páginas por edição — muito mais denso que a Folha de Goiaz/Jornal de Notícias). Tem **cobertura esportiva real e detalhada** (confirmado visualmente: manchetes de primeira página tipo "Atlético esmagou o Inhumas e é o virtual Campeão de 64", quadros de jogadores, classificação completa do campeonato, entrevistas com dirigentes) — bem mais parecido com um jornal esportivo de verdade do que as outras duas fontes testadas até agora.
+
+**Confirma que os clubes do nosso dataset existem nessa fonte:** "Goiaz Esporte Clube" aparece na classificação do "III Campeonato Goiano de Profissionais" 1964 (4º lugar após a 9ª rodada), e "Botafogo de Buriti Alegre" também aparece (citado como lanterninha do campeonato).
+
+**Tentei 3 edições (16/11, 23/11, 30/11 de 1964) atrás do jogo Goiás x Botafogo de Buriti Alegre (21/11/1964, nosso alvo) e não achei** — as rodadas reportadas nessas 3 edições cobrem outros confrontos (Atlético x Vila Nova, São Luiz x Botafogo(BA), Anapolina x Anápolis, Ipiranga x Campinas, Atlético x Inhumas), sem o jogo específico do Goiás. Também tentei Inhumas-GO (11/1965, 2 edições) e Botafogo de Buriti (05/1966, 2 edições) sem achar essas partidas específicas.
+
+**IMPORTANTE — mesmo problema de OCR da Folha de Goiaz se repete aqui:** a busca por palavra-chave (`FUTEBOL`, `ESTADIO`, `CAMPEONATO`) deu ZERO na edição de 23/11/1964, mas a página de esportes claramente existe (confirmei renderizando a página como imagem e lendo visualmente) — o texto simplesmente não foi capturado pelo OCR nessa página específica. **Isso significa que buscas automáticas por palavra-chave nessa fonte NÃO são confiáveis — é preciso renderizar e olhar as últimas 1-2 páginas de cada edição visualmente**, já que a seção de esportes sempre fica no final do jornal (págs. 11-12 numa edição de 12 páginas).
+
+**Diagnóstico:** a fonte é boa, mas achar o jogo EXATO exige tentativa e erro de qual edição/semana cobriu aquele jogo específico (nem toda rodada rende manchete — jogos "menores" podem sair como nota pequena ou nem sair). Vou continuar tentando mais semanas quando retomar, sem precisar de CAPTCHA — é só uma questão de tempo de download+leitura visual.
+
+### Estado canônico (sem mudança)
+- **Confirmadas: 1.920 / 2.102 = 91,34%**
+- Fonte nova ativa pra continuar sozinho: "5 de Março" (IHGG, cobre 1959-1980, foco nos alvos de 1963-1966). Próximo passo: tentar mais semanas de fevereiro/1963 (Santa Rita-GO), março/1963 (Goiânia-GO), abril/1966 (Torneio Início, 4 pendências no mesmo dia — maior prioridade por render mais de uma vez).
