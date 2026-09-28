@@ -862,3 +862,17 @@ O usuário perguntou se o `futeboldegoyaz.com.br` não seria mais fácil — rev
 - UNKNOWN: 181 · Vazias: 38 · Backlog: 219
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1921.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1921.csv`
 - IDs de clube novos: Santa Rita-GO=534, Ferroviário-GO=516 (ambos sem solução de estádio apesar do ID achado).
+
+## Atualização de pesquisa — 2026-09-28 (36) — "5 de Março" testado a fundo: mais político que esportivo (+0)
+
+Continuando sozinho (sem CAPTCHA) na fonte "5 de Março" (IHGG), tentando fechar Torneio Início 1966 (4 pendências, maior prioridade) e Santa Rita-GO 1963.
+
+**Visualmente inspecionei 8 páginas de última-página em 5 edições diferentes** (05dm 1963-01-07, 1963-01-14, 1963-01-21, 1966-04-04, 1966-04-11) — **nenhuma tinha conteúdo esportivo**. O padrão que funcionou uma vez (edição 1964-11-16, que tinha a seção de esportes exatamente na última página) **não se repete de forma confiável** — a última página varia entre política, crime, colunismo social. Também tentei busca por padrão de placar (`\d x \d`) combinado com nomes de clube em todo o texto de uma edição — zero resultados.
+
+**Diagnóstico revisado sobre esta fonte:** é um jornal majoritariamente político/policial/de colunismo social (a manchete recorrente é sobre "trucidamento", corrupção, desabamentos, fofoca política) — a cobertura esportiva rica que vi na edição de novembro/1964 parece ter sido specific daquela semana (grande rodada decisiva do campeonato), não o padrão normal. Isso torna a busca "às cegas" por semana MUITO cara (muitas páginas grandes por edição, a maioria sem conteúdo relevante).
+
+**Total do dia (36): +0.** Vou pausar a mineração cega desta fonte — não é mais eficiente sem uma pista melhor de qual semana teve cobertura esportiva relevante (ex.: se o usuário achar uma referência externa mencionando "o jornal 5 de Março noticiou..." pra alguma data específica).
+
+### Estado canônico (sem mudança)
+- **Confirmadas: 1.921 / 2.102 = 91,39%**
+- Backlog: 219. Alavancas ativas restantes: BN via usuário (Jornal de Notícias, mais PDFs se ele quiser mandar) e qualquer nova fonte que aparecer numa busca.
