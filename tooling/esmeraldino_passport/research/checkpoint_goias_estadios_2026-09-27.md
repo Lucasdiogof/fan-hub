@@ -653,3 +653,15 @@ Todos os trechos abaixo foram conferidos na imagem:
 ### Estado
 - **Confirmadas: 1.650 / 2.102 = 78,50%**. Arquivos: `..._CHECKPOINT_1650.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1650.csv`.
 - Em andamento: varredura do Diário da Manhã para as 278 pendências de 1980–1999 que têm edição em D+1/D+2.
+
+## Atualização de pesquisa — 2026-09-28 (25) — Diário da Manhã (IHGG): fichas técnicas 1981–1998 (+73) · META DE 80% ATINGIDA
+- Baixei automaticamente 496 edições do Diário da Manhã (`_dm_baixar_edicoes.py`): a do dia seguinte (D+1) e a de dois dias depois (D+2) de cada pendência de 1980–1999 que tem edição. Guardei só o texto (PyMuPDF), sem os PDFs.
+- `_dm_extrair_fichas.py` procura a ficha técnica do jogo ("Jogo: A n x m B. Local: ...", ou "LOCAL:" com as escalações "GOIÁS:" e "<ADVERSÁRIO>:" por perto), só em D+1/D+2 e só se não houver outro jogo do Goiás no intervalo. Saíram 75 candidatos: 18 com placar exato na linha "Jogo:", 49 pelas escalações e 8 ambíguos.
+- **Revisão humana de TODOS os trechos:** 73 aprovados. Descartes: hist-f80-2216 e 2273 (a ficha capturada era de outro jogo da mesma página: Caldas x Vila Nova e Caldas x América). Dois tiveram o estádio corrigido porque o extrator pegou o "Local:" do jogo vizinho: 2276 = Serrinha e 2434 = Pedro Romualdo Cabral. Os 8 ambíguos foram resolvidos pela linha "Jogo:" certa. 1573 (1984) e 1753 (1987) foram conferidos na imagem.
+- Nomes de estádio limpos do OCR, no padrão já usado no dataset ("Serra Dourada", "Serrinha", "Jonas Duarte", "JK", "Genervino da Fonseca", ...). Cada linha traz edição, página e o trecho da ficha em `notes`. Aplicado com `_apply_jornal.py` + `_confirmacoes_lote_dm1.json`.
+- **Validação da categoria PROVÁVEL:** 27 dos 73 tinham PROVÁVEL: **20 acertos e 7 erros (26%)**. Todos os erros são "Serra Dourada" previsto × **Serrinha** real (Goiás em casa em 1995 e 1997: os jogos grandes iam para o Serra Dourada e os menores para a Serrinha, e a amostra confirmada só tinha os grandes). Depois de recalcular com as novas confirmações, esses anos mistos saem sozinhos pela regra dos 100%, e os prováveis caem de 167 para 122. **Conclusão: PROVÁVEL é útil, mas NÃO é confiável o bastante para contar como confirmado.**
+
+### Novo estado canônico
+- **Confirmadas: 1.723 / 2.102 = 81,97%** · PROVÁVEIS: 122
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1723.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1723.csv`
+- Nova meta do usuário: **85% (1.787)**. Faltam 64.
