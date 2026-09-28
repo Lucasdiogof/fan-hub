@@ -237,6 +237,21 @@ Bahia (6/6), Internacional-RS (2/2), Coritiba-PR (4/4), Guarani-SP (5/5), Atlét
 - Opções ainda não tentadas com clube de ID já conhecido, pra continuar depois: Grêmio-RS (4 pendências, ID ainda não achado), Remo-PA (4), Santa Cruz-PE (6), Portuguesa de Desportos-SP (6), Palmeiras-SP (2), Vasco da Gama-RJ (1), America-RJ (6) — todas com IDs de clube ainda não localizados nesta sessão, mas o método está validado e pronto pra repetir.
 - **Próxima prioridade recomendada:** continuar o método de confronto direto pros adversários nacionais restantes (~200 pendências), é o bloco de maior rendimento por fetch encontrado até agora. Voltar ao "Goiano" estadual só se/quando aparecer uma fonte de estádio melhor que a própria ficha da FdG (que comprovadamente falta pra essa competição).
 
+## Atualização de pesquisa — 2026-09-28 (4) — continuação do confronto direto
+Mais uma rodada do método de confronto direto, cobrindo os adversários nacionais restantes com mais pendências.
+
+### Confirmado nesta sessão
+Palmeiras-SP (2/2, clube 180), Vasco da Gama-RJ (1/1, via site oficial goiasec.com.br — São Januário, gol de Roberto Dinamite), Santa Cruz-PE (6/6, clube 310), Remo-PA (4/4, clube 593), Portuguesa de Desportos-SP (6/6, clube 200), América-RJ (6/6, clube 645), Ponte Preta-SP (2/2, clube 183, já mapeado antes) = **27 confirmações**.
+
+### Tentativas sem sucesso (IDs de clube não localizados via busca)
+Grêmio-RS (4 pendências), Rio Branco-ES (3), América-RN (3), Rio Negro-AM (3), Mixto-MT (3), Brasília-DF (3), Botafogo-PB (3), Central-PE (3), e mais ~25 clubes menores com 1-2 pendências cada (Rabello-DF, Goytacaz-RJ, CEUB-DF, Sport-PE, Nacional-AM, Sergipe-SE, Americano-RJ, Operário de Campo Grande-MT/MS, Dom Bosco-MT, Joinville-SC, Grêmio Maringá-PR, Desportiva-ES, Fortaleza-CE, Tiradentes-PI, ASA-AL, Operário de Várzea Grande-MT, Caldense-MG, Comercial de Campo Grande-MS, Vitória-ES, Uberlândia-MG, Taguatinga-DF, Juventus-SP, Náutico-PE, América/SJRP-SP, Barra do Garças-MT, Mogi Mirim-SP, América-MG). Esses são clubes menores/regionais cujo ID numérico na Futebol de Goyaz não aparece fácil em buscas — o método de "buscar ficha + extrair ID do link" funciona bem pra clubes grandes/tradicionais, mas fica mais caro pra times pequenos com pouca presença online. Total: ~67 pendências nesse grupo.
+
+### Novo estado canônico
+- **Confirmadas: 1.333 / 2.102 = 63,42%** (+27 neste lote; +107 desde o início da sessão "assumir o projeto até o fim")
+- UNKNOWN: 769 · Vazias (fora do escopo 2102): 38 · Backlog: 807
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1333.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1333.csv`
+- **Próxima prioridade recomendada:** para os clubes pequenos restantes do Brasileirão, tentar a página `/campeonatos/<edição>/edicao` de cada ano específico em vez de buscar o clube isolado (a edição às vezes revela o ID do clube pequeno de graça, como aconteceu com São Paulo/Guarani na edição de 1986). Depois, voltar pro bloco "Goiano" estadual mas com um ângulo diferente: tentar achar súmulas oficiais da FGF (Federação Goiana de Futebol) pra anos recentes (1993+), já que a ficha da FdG comprovadamente não tem estádio pra essa competição.
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
