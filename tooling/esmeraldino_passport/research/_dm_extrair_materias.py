@@ -11,6 +11,8 @@ Uso: python _dm_extrair_materias.py <checkpoint.csv> <pasta_txt> <saida.json>
 import csv, json, os, re, sys, datetime, unicodedata
 
 ck, txtdir, out = sys.argv[1:4]
+MIN_SEASON = int(sys.argv[4]) if len(sys.argv) > 4 else 1980   # 5º arg opcional: temporada mínima
+MAXK = int(sys.argv[5]) if len(sys.argv) > 5 else 3              # 6º arg opcional: até D+MAXK
 
 def fold1(c):
     f = unicodedata.normalize('NFKD', c).encode('ascii', 'ignore').decode()
@@ -50,13 +52,13 @@ def opp_names(opp):
 
 res = []
 for r in hist:
-    if r['venue_name'] != 'UNKNOWN' or int(r['season']) < 1980:
+    if r['venue_name'] != 'UNKNOWN' or int(r['season']) < MIN_SEASON:
         continue
     D = datetime.date.fromisoformat(r['effective_date'])
     gs, os_ = int(float(r['goias_score'])), int(float(r['opponent_score']))
     SC = re.compile(r'(?<!\d)(%d\s*(?:A|X)\s*%d|%d\s*(?:A|X)\s*%d)(?!\d)' % (gs, os_, os_, gs))
     OPPS = opp_names(r['opponent'])
-    for k in (1, 2, 3):
+    for k in range(1, MAXK + 1):
         E = D + datetime.timedelta(days=k)
         if any(D < x <= E for x in dates_all):
             break

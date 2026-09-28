@@ -24,7 +24,9 @@ for r in hist:
         continue
     D = datetime.date.fromisoformat(r['effective_date'])
     OPPS = opp_names(r['opponent'])
-    for k, word in ((0, r'HOJE'), (-1, r'AMANHA')):
+    WD = ['SEGUNDA', 'TERCA', 'QUARTA', 'QUINTA', 'SEXTA', 'SABADO', 'DOMINGO'][D.weekday()]
+    # D-2/D-3: exige o dia da semana do jogo no trecho ("domingo, no Serra Dourada")
+    for k, word in ((0, r'HOJE'), (-1, r'AMANHA'), (-2, WD), (-3, WD)):
         E = D + datetime.timedelta(days=k)
         if any(E <= x < D for x in dates_all):
             continue

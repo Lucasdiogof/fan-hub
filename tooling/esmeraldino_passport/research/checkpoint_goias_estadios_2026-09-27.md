@@ -690,3 +690,15 @@ Nova meta do usuário: **90% (1.892)**.
 ### Novo estado canônico
 - **Confirmadas: 1.855 / 2.102 = 88,25%**. Faltam 37 para os 90%.
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1855.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1855.csv`
+
+## Atualização de pesquisa — 2026-09-28 (28) — Diário da Manhã: janelas D-3..D+5 + varredura ampla revisada à mão (+39) · META DE 90% ATINGIDA
+- Baixei mais 135 edições (D-3, D-2, D+4, D+5). `_dm_extrair_prejogo.py` agora aceita D-2/D-3 exigindo o dia da semana do jogo no trecho ("quinta-feira ... Estádio Olímpico"). `_dm_extrair_materias.py` ganhou dois argumentos opcionais (temporada mínima e janela máxima D+N).
+- **Varredura ampla** (script de trabalho, não versionado): em todas as edições de D-3 a D+5 sem outro jogo do Goiás no meio, qualquer trecho com Goiás + adversário + estádio conhecido. Foram 298 trechos em 65 jogos, **todos lidos**. Aprovados só os que ligam explicitamente AQUELE jogo ao estádio: ficha pré-jogo "Jogo: A x Goiás. Local: ...", "o jogo de amanhã ... no Serra Dourada", "ontem à tarde, no Estádio X", "invasão do gramado do Jonas Duarte" etc. Rejeitados: juniores e preliminares, só a cidade ("vai a Ipameri", "em Piracanjuba"), estádio do próximo jogo, tabelas ambíguas.
+- Conferidos na imagem: 1823 (Serra Dourada, 3x1 Itumbiara), 1895 (Serra Dourada, 1x0 Goiatuba), 2485 ("vencer o Bom Jesus, ontem à tarde, no Estádio Gilmar Alves ... 2 a 1"). O 2591 (América-MG, "Mineirão") foi descartado porque a página certa não foi localizada.
+- Casos com cuidado extra: 2547 (o "9 a 1" na Serrinha é de juniores; aprovado pela matéria pré-jogo do profissional, "Goiatuba hoje, às 17 horas, na Serrinha"); 2144 (a edição de 08/04 diz "na noite de ontem" no Odilon Flores e a de 07/04 diz "hoje às 20h40 no Estádio Odilon Flores": o jogo foi em 07/04, 1 dia antes do CSV, dentro da tolerância de ±2); 2565 (mesmo caso: "golear a Anapolina por 5 a 2" na edição do dia do CSV).
+- Aplicado com `_apply_jornal.py` + `_confirmacoes_lote_dm4.json` (39 jogos).
+
+### Novo estado canônico
+- **Confirmadas: 1.894 / 2.102 = 90,10%** ✅ (meta de 90% = 1.892)
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1894.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1894.csv`
+- Sobram 208 pendências: 1985 inteiro (sem Diário da Manhã no IHGG), ~60 jogos de 1980–99 sem edição num raio de ±7 dias, os anos 1970 (sem jornal diário com texto no IHGG) e o Torneio Início de 1946, 1951, 1952, 1953, 1955, 1957, 1966 e 1984.
