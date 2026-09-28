@@ -876,3 +876,16 @@ Continuando sozinho (sem CAPTCHA) na fonte "5 de Março" (IHGG), tentando fechar
 ### Estado canônico (sem mudança)
 - **Confirmadas: 1.921 / 2.102 = 91,39%**
 - Backlog: 219. Alavancas ativas restantes: BN via usuário (Jornal de Notícias, mais PDFs se ele quiser mandar) e qualquer nova fonte que aparecer numa busca.
+
+## Atualização de pesquisa — 2026-09-28 (37) — RSSSF Brasil tem seção dedicada a torneios pequenos de Goiás (+0, mas corroboração forte)
+
+**Achado importante: `rsssfbrasil.com/tablesfq/`** — seção específica do RSSSF Brasil com dezenas de torneios pequenos/regionais de Goiás, nunca explorada antes nesta pesquisa (o RSSSF "genérico" já tinha sido tentado e descartado, mas essa subseção específica é nova). Inclui: Torneio Início por ano (`goXXXXin.htm`), Torneio Ibsen Henrique de Castro (1972-74), Torneio Baltasar de Castro 1973, Torneio Quadrangular Leonino Caiado 1973, Torneio Sizelísio Simões de Lima 1962, Torneio Gilberto Alves (1965, 1976), Torneio Domingos Garcia Filho 1970.
+
+**Achei a página exata do Torneio Início 1966** (`go1966in.htm`) — bate EXATAMENTE com nossas 4 pendências do dia (07/04/1966): Goiás 0-0 Goiânia (pênaltis), Goiás 0-0 Vila Nova (pênaltis), Goiás 0-0 Ipiranga (pênaltis), final Anápolis 1-0 Goiás. **Mas essa página específica NÃO tem campo de "Local"** (outras páginas da mesma seção, como o Torneio Gilberto Alves 1965, têm um campo "Local: Pedro Ludovico - Goiânia - GO" no cabeçalho — confirmei que o formato existe, só que essa edição em particular não foi preenchida com essa informação pelo editor do RSSSF). **Não apliquei — mesmo com corroboração de placar 100% batendo com uma fonte independente, falta o estádio.**
+
+Busquei também: Wikipédia (só repete a regra genérica "antes de 1974 era sempre no Olímpico" — explicitamente rejeitada, não usei), a conta de fã "Anápolis Galo Tricolor" no Threads/Instagram (tem posts detalhados sobre títulos históricos do Anápolis, mas o post sobre 1965/66/67 não menciona estádio pro Torneio Início 1966 especificamente), `historiadofutebol.com` (confirma o título de 1966 mas sem estádio).
+
+**Valor desta rodada:** embora sem confirmação nova, agora tenho uma corroboração cruzada forte e independente (RSSSF Brasil bate exatamente com o Futebol80/nosso dataset) pro Torneio Início 1966 — se uma fonte com estádio aparecer no futuro (BN, outro jornal), a confiança de que é o jogo certo já está bem alta. Também mapeei uma seção do RSSSF nunca explorada que pode render mais em pendências futuras de torneios pequenos (Leonino Caiado, Ibsen Henrique de Castro etc., mesmo que não bater diretamente com o backlog atual).
+
+### Estado canônico (sem mudança)
+- **Confirmadas: 1.921 / 2.102 = 91,39%**
