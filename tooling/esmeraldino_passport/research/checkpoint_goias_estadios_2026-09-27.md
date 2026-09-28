@@ -1087,3 +1087,10 @@ Usuário pediu pra continuar atrás dos IDs que faltavam. Achei todos via `WebSe
 - Revista Brasília Esportiva (IHGG 119) tem só uma edição (25/06/1953), sem pendência na janela.
 
 **Novo estado: 1.983 / 2.102 = 94,34%.** Backlog: 119. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1983.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1983.csv`.
+
+## Atualização de pesquisa — 2026-09-28 (50) — becos sem saída conferidos (+0)
+- **DM Acervo (dmacervo.com.br)**, "arquivo digital do Diário da Manhã": apesar do nome, só tem edições recentes (Goiânia 925 edições, a partir de ~2024; Sudoeste e Entorno 2024–25). Não serve para 1984–86/1993/1995.
+- **Estado inalterado: 1.983 / 2.102 = 94,34%.** O que sobra (119):
+  - ~70 jogos de 1984 (ago–dez), 1985, 1986 (fev–jul), jul/1993 e mai–jul/1995 sem edição do DM no IHGG a ±7 dias. Precisam de outro jornal: BN com PDF baixado pelo usuário (ex.: Correio Braziliense, Jornal do Brasil/Placar para fichas) ou acervo do O Popular (não digitalizado publicamente).
+  - Anos 1950–70: Torneios Início 1946/51/52/53/55/57/66, Goiano 1976 (13), conflitos de placar sem ficha rica (0509, 0665, 0758, 0765, 0780, 0802) e jogos sem fonte (0042, 0436, 0439, 0472, 0541, 0744, 1028, 1105).
+  - 1766, 2169, 2170, 2246, 2295: edições do DM existem só fora da janela útil ou sem menção ao estádio.
