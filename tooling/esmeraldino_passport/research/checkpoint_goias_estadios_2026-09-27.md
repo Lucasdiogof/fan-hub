@@ -702,3 +702,23 @@ Nova meta do usuário: **90% (1.892)**.
 - **Confirmadas: 1.894 / 2.102 = 90,10%** ✅ (meta de 90% = 1.892)
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1894.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1894.csv`
 - Sobram 208 pendências: 1985 inteiro (sem Diário da Manhã no IHGG), ~60 jogos de 1980–99 sem edição num raio de ±7 dias, os anos 1970 (sem jornal diário com texto no IHGG) e o Torneio Início de 1946, 1951, 1952, 1953, 1955, 1957, 1966 e 1984.
+
+## Atualização de pesquisa — 2026-09-28 (29) — lote da pesquisa externa (handoff), checkpoint 1913/2102 (91,01%)
+Handoff pra outra ferramenta: preparei `PROMPT_CONTINUACAO_PESQUISA.md` com o estado canônico do checkpoint 1894 (regras inegociáveis, fontes já esgotadas, backlog por grupo). O usuário colou na ferramenta de pesquisa com os 3 anexos (checkpoint, pendências, log completo) e trouxe de volta os arquivos de resultado, que foram auditados e adotados nesta sessão.
+
+**Auditoria de integridade do arquivo recebido (feita antes de aceitar):**
+- Mesma contagem de linhas (3841, header+3840) e mesmos 3840 IDs do checkpoint 1894 — nenhuma linha duplicada, perdida ou adicionada.
+- Header idêntico byte a byte.
+- Comparação campo a campo: só 19 linhas com `venue_name` alterado (bate exatamente com o relatório do lote) + 27 diferenças em `score_display` que são só normalização de quebra de linha (`\r\n`→`\n`) dentro de placares de pênaltis com "(N-M Pen.)" — sem nenhuma mudança de conteúdo. Nenhum outro campo, de nenhuma linha, foi tocado.
+- `node _gen_pendencias.mjs` no arquivo recebido confirma 1913/2102 = 91,01%, 189 UNKNOWN + 38 vazias = 227 backlog — bate com o relatório entregue pela pesquisa externa.
+
+**Fontes novas usadas pela pesquisa externa (fora do que já estava esgotado no handoff):**
+- Blog `cinturaobrasileiro.com` (retrospectiva "Cinturão do Futebol Brasileiro 1991-2000") — rendeu 8 confirmações (1993-94, Torneio Integração Nacional/Copa Centro-Oeste da época).
+- Reaproveitamento mais fundo do *Diário da Manhã* (Hemeroteca IHGG) — 10 confirmações, várias delas fora da janela D-3..D+5 originalmente varrida (edições de setembro de 1995 trazendo retrospectiva de jogos de 1994-95).
+- 1 confirmação via ficha do próprio Futebol de Goyaz (partida 33633, Mogi Mirim-SP — não tinha sido cruzada antes por ser jogo fora de Goiás).
+
+### Novo estado canônico
+- **Confirmadas: 1.913 / 2.102 = 91,01%**
+- UNKNOWN: 189 · Vazias: 38 · Backlog: 227
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1913.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1913.csv` + `GOIAS_RELATORIO_LOTE_1894_1913.md` (relatório original do lote, com tabela de confirmações).
+- Nenhuma meta redonda nova batida (90% já tinha sido atingida no checkpoint anterior). Backlog restante concentrado em: 1985 inteiro (sem fonte), Torneio Início de vários anos (sem fonte específica), anos 1970 (sem jornal diário digitalizado), e um resíduo de 1980-99 sem edição de jornal por perto.
