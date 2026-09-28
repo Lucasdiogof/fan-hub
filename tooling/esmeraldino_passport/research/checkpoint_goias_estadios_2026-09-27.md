@@ -252,6 +252,16 @@ Grêmio-RS (4 pendências), Rio Branco-ES (3), América-RN (3), Rio Negro-AM (3)
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1333.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1333.csv`
 - **Próxima prioridade recomendada:** para os clubes pequenos restantes do Brasileirão, tentar a página `/campeonatos/<edição>/edicao` de cada ano específico em vez de buscar o clube isolado (a edição às vezes revela o ID do clube pequeno de graça, como aconteceu com São Paulo/Guarani na edição de 1986). Depois, voltar pro bloco "Goiano" estadual mas com um ângulo diferente: tentar achar súmulas oficiais da FGF (Federação Goiana de Futebol) pra anos recentes (1993+), já que a ficha da FdG comprovadamente não tem estádio pra essa competição.
 
+## Atualização de pesquisa — 2026-09-28 (5) — Sport-PE + fechamento de sessão
+Sport-PE (2/2, clube 311) confirmado. Tentativas sem sucesso pra Grêmio-RS e Grêmio Maringá/Joinville nesta rodada (buscas não acharam o ID do clube). Restam ~65 pendências espalhadas por ~35 clubes pequenos/regionais do Brasileirão — cada um exige um fetch de busca dedicado pra achar o ID numérico, rendimento decrescente por causa disso.
+
+### Novo estado canônico
+- **Confirmadas: 1.335 / 2.102 = 63,51%**
+- UNKNOWN: 767 · Vazias: 38 · Backlog: 805
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1335.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1335.csv`
+- **Resumo da sessão "assumir o projeto até o fim" (2026-09-28):** 1.259 → 1.335 = **+76 confirmações**, todas via Futebol de Goyaz (fichas individuais + confronto direto entre clubes), zero invenção de estádio, todas as divergências de data/mando documentadas em `conflict_note`.
+- **Próxima sessão:** continuar o confronto direto pros ~35 clubes pequenos restantes do Brasileirão (rendimento baixo mas ainda positivo); considerar também atacar o bloco "Torneio Brasil Central" (10 pendências) e "Brasileiro-Nacional"/"Taça de Ouro" remanescentes com o mesmo método. O "Goiano" estadual pós-1965 continua sendo beco sem saída (sem estádio na ficha) — não retomar sem uma fonte alternativa (ex.: FGF, jornais).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
