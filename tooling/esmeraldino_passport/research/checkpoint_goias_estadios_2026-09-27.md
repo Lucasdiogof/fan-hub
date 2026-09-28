@@ -939,3 +939,17 @@ Usuário baixou os 24 PDFs disponíveis pra "1952" no acervo da Hemeroteca da BN
 - **Nenhuma das 24 edições recebidas tinha relação com nossa única pendência de 1952** (hist-f80-0149 é a única linha da temporada 1952 no escopo `historical_futebol80`) — não apliquei nada, não há outra pendência de jul-dez/1952 pra aproveitar essas fichas.
 - **Lição pro lote de 1957 (94 PDFs a caminho, NUM.00126-00219):** antes de processar tudo, checar a data do PRIMEIRO PDF que chegar — se a numeração de 1957 também "começa atrasada" (ex.: só a partir de junho/julho), o alvo 05/05/1957 (hist-f80-0274) pode ter o mesmo problema. Vale pedir pro usuário simplesmente mandar 1-2 primeiro pra confirmar antes dele gastar CAPTCHA nos outros 92.
 - Sem mudança na % (1.924/2.102 = 91,53%) — essa atualização é só fechamento de investigação, sem confirmação nem rejeição de dado.
+
+## Atualização de pesquisa — 2026-09-28 (41) — hist-f80-0274 (05/05/1957) FECHADO: edição exata existe, mas sem seção de esportes
+
+Ao contrário de 1952, a numeração de 1957 bate certinho: **NUM.00154 = 5 de Maio de 1957 exato** (cabeçalho confirmado: "Goiânia, Domingo, 5 de Maio de 1957"). Mesmo assim, sem solução:
+
+- **N.154 (8 páginas) lida por completo** (texto pymupdf, todas as páginas) — só política (caso do prefeito de Anápolis, promoção militar) e sociais. Zero menção a futebol/torneio/estádio.
+- **N.155 (10/05/1957, a seguinte)** também checada por completo — mesmo resultado, zero hit de futebol/torneio/estádio/Anápolis.
+- N.160 tinha 1 hit de "futebol" que investiguei a fundo: é uma nota social de coluna de fofoca sobre jornalistas que iam jogar uma pelada amistosa com médicos/advogados em Anápolis — nada a ver com o Torneio Início do Goiás.
+- **Mesmo padrão já visto em 1953** (edição exata do Torneio Início de 22/03/1953 também não tinha seção de esportes): esse jornal não cobre esporte toda semana. **hist-f80-0274 fechado como sem fonte disponível**, mesmo critério do hist-f80-0149.
+- **1957 tinha só essa 1 pendência no escopo `historical_futebol80`** — não há motivo pra continuar processando os ~74 PDFs restantes do lote (NUM.126-219) por enquanto; o usuário decidiu continuar mandando mesmo assim pra ter o arquivo completo salvo (não resolve nada do backlog atual, mas fica disponível se surgir pendência nova de 1957 no futuro).
+- Sem mudança na % (1.924/2.102 = 91,53%).
+
+### Estado das duas pendências da BN, resumo
+Ambos os alvos que motivaram o CAPTCHA (hist-f80-0149 de 1952, hist-f80-0274 de 1957) estão **fechados como sem fonte disponível** — não é falha de busca, é o jornal genuinamente não tendo cobertura de esporte (ou não tendo edição digitalizada, no caso de 1952) pras datas exatas. Backlog oficial continua em **178** (`historical_futebol80`).
