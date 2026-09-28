@@ -339,6 +339,23 @@ Restam só: 1944 (1, edição não achada), 1946 (1, 30/jun não achado na sonda
 - **Resumo do dia inteiro:** 1.259 → 1.400 = **+141 confirmações num único dia**.
 - **Próxima ação:** voltar pros clubes pequenos do Brasileirão nacional (Central-PE, Brasília-DF, Rabello-DF, Goytacaz-RJ, CEUB-DF, Nacional-AM, Sergipe-SE, Americano-RJ, Operário-MT/MS, Dom Bosco-MT, Joinville-SC, Grêmio Maringá-PR e mais ~15 clubes com 1 pendência cada — ~44 linhas), ou explorar outras competições menores ainda intocadas (Torneio Brasil Central 10, Torneio Leonino Caiado 8, Torneio Maguito Vilela 6, Copa Goiás 4, Torneio Integração Nacional 4).
 
+## Atualização de pesquisa — 2026-09-28 (11) — Copa Brasil Central FECHADA + Copa Leonino Caiado iniciada
+### Copa Brasil Central 1969: 10/10 — FECHADA
+Achada via `campeonatos/53/campeonato` → edição 1969 = ID489. A página da edição trouxe de graça os IDs de TODOS os 4 clubes menores que faltavam (Uberaba-MG=685, Araxá-MG=898, América/SJRP-SP=209, XV de Piracicaba-SP=188) só de mostrar a tabela de classificação — atalho novo, melhor que buscar clube por clube. Mais Náutico-PE (306, 1 jogo de 1983) e Uberlândia-MG (682, já tinha 1, fechei os outros 2). Total: 12 confirmações num lote só.
+
+### Copa/Torneio Leonino Caiado: 2/8
+Confirmado via confrontos já conhecidos (Goiânia=clube 1, Vila Nova=clube 472): 07/05/1972 e 25/04/1973 (2 dias de diferença de data). Restam 6 (Campinas-GO ×2, Vila Nova ×1 já coberto acima na verdade eram diferentes datas, Itumbiara-GO ×4) — Campinas-GO não bateu com Campineira-GO (clube 496, só tem jogos até 1964).
+
+### Taça Maguito Vilela 1997: BLOQUEADA (mesma lacuna do "Goiano")
+Confirmei que os jogos de 1997 (Goiânia, Vila Nova) NÃO têm estádio na ficha da FdG — mesmo padrão de lacuna de dados já visto no "Campeonato Goiano" pós-1965. Não vale a pena insistir nessa competição.
+
+### Novo estado canônico
+- **Confirmadas: 1.414 / 2.102 = 67,27%**
+- UNKNOWN: 688 · Vazias: 38 · Backlog: 726
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1414.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1414.csv`
+- **Descoberta de método:** quando uma competição pequena/regional tiver só um punhado de clubes, vale a pena achar a EDIÇÃO (`campeonatos/<ID>/campeonato` → lista as edições → `campeonatos/<ID_edição>/edicao`) e ler a tabela de classificação — ela costuma trazer os IDs de vários clubes de uma vez, bem mais barato que buscar um por um.
+- **Próxima ação:** Torneio Leonino Caiado (Itumbiara-GO, 4 jogos — achar ID), clubes pequenos do Brasileirão ainda sem ID (Central-PE, Brasília-DF, Rabello-DF, etc.), ou Copa Goiás / Torneio Integração Nacional / Torneio Centro-Oeste (pouco tentados ainda).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
