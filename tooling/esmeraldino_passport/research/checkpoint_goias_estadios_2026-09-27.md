@@ -608,3 +608,17 @@ Achei as edições certas pela lista de ocorrências da busca na Hemeroteca, que
 - **Confirmadas: 1.639 / 2.102 = 77,97%** · UNKNOWN: 463 · Vazias: 38
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1639.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1639.csv`
 - **Meta: 80% (1.682).** Faltam 43.
+
+## Atualização de pesquisa — 2026-09-28 (22) — nova categoria PROVÁVEL (decisão do usuário)
+O usuário aprovou a opção 2: uma categoria PROVÁVEL separada das confirmações. **Não altera `venue_name` nem a contagem dos 80%.**
+- 4 colunas novas no fim do CSV: `venue_probable_name`, `venue_probable_city`, `venue_probable_confidence` (sempre MEDIUM) e `venue_probable_basis` (explica a inferência e lista os ids usados como amostra).
+- Regra (`_gen_provaveis.py`): linha pendente fora do Torneio Início; mandante conhecido (`goias_is_home` no CSV, ou ficha do FdG casada por data ±2 dias + placar); na MESMA temporada e MESMA competição, o MESMO mandante tem >= 2 jogos com estádio confirmado (HIGH), TODOS no mesmo estádio canônico (pelo mapa de aliases). Qualquer exceção conhecida anula a inferência.
+- Resultado: **167 jogos PROVÁVEIS**. Descartes: 213 com amostra < 2, 42 com padrão que não é 100% no ano, 14 sem mandante conhecido.
+- Por década: 1950s: 1, 1960s: 3, 1970s: 6, 1980s: 91, 1990s: 66
+- Por estádio: Estádio Serra Dourada: 160, Estádio Olímpico Pedro Ludovico Teixeira: 6, Estádio Jonas Duarte: 1
+- Exemplo: hist-f80-0173 (12/04/1953, Goiás 4x3 São Francisco): mandante Goiás; os 8 jogos do Goiás em casa no Goiano de 1953 com estádio confirmado foram todos no Olímpico, então Olímpico fica como PROVÁVEL.
+- O importador (`generate_historical_import_sql.ps1`) lê colunas por nome, então as colunas novas não o afetam. Se o app for usar os prováveis, precisa mapear essas colunas explicitamente.
+
+### Estado canônico (inalterado)
+- **Confirmadas: 1.639 / 2.102 = 77,97%** · UNKNOWN: 463 (167 delas com PROVÁVEL) · Vazias: 38
+- Meta 80%: faltam 43 confirmações.
