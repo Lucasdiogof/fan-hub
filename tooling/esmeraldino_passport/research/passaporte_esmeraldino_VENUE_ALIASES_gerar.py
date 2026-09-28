@@ -10,7 +10,7 @@ def n(s):
 
 # canonical_id: (canonical_name, canonical_city, [aliases as they appear raw])
 C = {
- 'go-olimpico': ('Estádio Olímpico Pedro Ludovico Teixeira', 'Goiânia', ['Olímpico', 'Pedro Ludovico', 'Estádio Olímpico Pedro Ludovico Teixeira', 'Estádio da Avenida Paranaíba']),
+ 'go-olimpico': ('Estádio Olímpico Pedro Ludovico Teixeira', 'Goiânia', ['Olímpico', 'Pedro Ludovico', 'Estádio Olímpico Pedro Ludovico Teixeira', 'Estádio da Avenida Paranaíba', 'Estádio Dr. Pedro Ludovico']),
  'go-accioly': ('Estádio Antônio Accioly', 'Goiânia', ['Antônio Accioly', 'Estádio Antônio Accioly']),
  'go-serra-dourada': ('Estádio Serra Dourada', 'Goiânia', ['Serra Dourada', 'Estádio Serra Dourada']),
  'go-serrinha': ('Estádio Hailé Pinheiro (Serrinha)', 'Goiânia', ['Serrinha', 'Hailé Pinheiro', 'Estádio Hailé Pinheiro (Serrinha)']),

@@ -592,3 +592,19 @@ O visualizador da Hemeroteca bloqueia a automação com o CAPTCHA e com o desafi
 - **Confirmadas: 1.636 / 2.102 = 77,83%** · UNKNOWN: 466 · Vazias: 38
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1636.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1636.csv`
 - **Meta: 80% (1.682).** Faltam 46.
+
+## Atualização de pesquisa — 2026-09-28 (21) — Hemeroteca via PDF: 1953, 1958 e 1959 (+3)
+Achei as edições certas pela lista de ocorrências da busca na Hemeroteca, que aparece mesmo com o CAPTCHA na frente. O usuário baixou os PDFs.
+- **1953, ed. 00036 (26/04/1953):** cobre a 1ª rodada do Goiano, incluindo Goiás 4x3 São Francisco (hist-f80-0173), com escalações, gols e árbitro, mas só diz que "o Goiás recebeu a visita" (não nomeia o estádio). O Torneio Início de 1953 é só citado, sem local. Nada aplicado. A ficha FdG 50032 confirma a data de 12/04/1953, mas não traz estádio.
+- **1958, eds. 00232, 00236, 00296, 00300:** as ocorrências são do torneio das rádios e do torneio início carioca (Vasco). Nada sobre o Torneio Início Goiano de 25/05/1958.
+- **1959 (+3):** Torneio Início de 17/05/1959 (adiado de 07/05 por falta de energia, ed. 00490).
+  - Ed. 00491, p. 5: nota oficial da FGF: "designar as autoridades abaixo para dirigir as partidas do TORNEIO INÍCIO, a realizarem-se dia 17 de maio de 1.959, no ESTÁDIO DR. PEDRO LUDOVICO, a partir das 14,00 horas" (conferido na imagem).
+  - Ed. 00492, p. 5: convocação do Goiás: atletas "no Estádio da Avenida Paranaíba às 13 horas do dia 17 ... domingo ... Torneio Início".
+  - Ed. 00496, p. 5: comentário pós-torneio (Goianás eliminou o Sírio nos pênaltis), batendo com a RSSSF go1959in.
+  - RSSSF go1959in: Goiás 3-0 Santa Rita, 1-1 Ferroviário (3-2 nos pênaltis), 0-2 Campineira.
+  - Aplicado "Estádio Dr. Pedro Ludovico" (nome da nota oficial; alias do Olímpico) em hist-f80-0342, 0343 e 0344.
+
+### Novo estado canônico
+- **Confirmadas: 1.639 / 2.102 = 77,97%** · UNKNOWN: 463 · Vazias: 38
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1639.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1639.csv`
+- **Meta: 80% (1.682).** Faltam 43.
