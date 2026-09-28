@@ -622,3 +622,22 @@ O usuário aprovou a opção 2: uma categoria PROVÁVEL separada das confirmaç�
 ### Estado canônico (inalterado)
 - **Confirmadas: 1.639 / 2.102 = 77,97%** · UNKNOWN: 463 (167 delas com PROVÁVEL) · Vazias: 38
 - Meta 80%: faltam 43 confirmações.
+
+## Atualização de pesquisa — 2026-09-28 (23) — decisões de alias + hist-f80-0606 esclarecido + RSSSF Torneio Início 1967/1974 (+4)
+**Decisões do usuário sobre aliases** (em `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`):
+- Palestra Itália (Parque Antártica) e Allianz Parque NÃO são o mesmo estádio: separados em `sp-palestra` e `sp-allianz`.
+- A velha Fonte Nova e a Arena Fonte Nova são o mesmo estádio, com o nome canônico **"Fonte Nova"** (`ba-fonte-nova`).
+- "Castelão" sem cidade (2 jogos) foi resolvido linha a linha pelo adversário, no arquivo novo `passaporte_esmeraldino_VENUE_ALIASES_por_linha.csv`: hist-f80-2543 (Moto Club-MA, 1999) = Castelão de São Luís; hist-f80-2593 (Ceará-CE, 1999) = Castelão de Fortaleza. A exceção do Olímpico do Grêmio (hist-f80-2406) foi para esse mesmo arquivo. "Castelão"+Fortaleza = `ce-castelao`; "Estádio Olímpico"+Goiânia = `go-olimpico`.
+- Itens a revisar: 23 → 13. `_gen_provaveis.py` passou a ler as exceções por linha desse arquivo.
+
+**hist-f80-0606 NÃO estava errado.** Em 06/08/1967 o CSV tem DUAS linhas: 0606 = Torneio Início Goiano, Goiás 0x1 Inhumas (N, campo neutro), e 0607 = Taça Brasil, Rio Branco-ES 1x0 Goiás (já confirmado no Governador Bley). O "alerta" das seções 18/19 foi um falso positivo do cruzamento por data+placar (mesmo dia, mesmo 0x1); ainda bem que o adversário divergente tinha barrado a aplicação. Nada foi alterado no adversário.
+
+**RSSSF com local por edição (+4):** as páginas do Torneio Início de 1967 e de 1974 dizem explicitamente "All matches lasted 20 minutes and were played on <data> at Estádio Olímpico - Goiânia" (a de 1974 cita a Placar impressa como fonte). É uma evidência específica da edição (data + todos os jogos + estádio), não a frase genérica da Wikipédia.
+- 1967 (06/08): hist-f80-0606, Inhumas 1-0 Goiás.
+- 1974 (28/07): hist-f80-0980 (3-0 Independente), 0981 (0-0 Goiatuba, pênaltis), 0982 (1-0 Goiânia, final).
+- As outras páginas de Torneio Início pendentes (1946, 1947, 1948, 1951, 1952, 1953, 1955, 1957, 1958, 1966, 1984) só trazem a data, sem local.
+
+### Novo estado canônico
+- **Confirmadas: 1.643 / 2.102 = 78,16%** · UNKNOWN: 459 (167 com PROVÁVEL) · Vazias: 38
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1643.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1643.csv`
+- **Meta 80% (1.682):** faltam 39.

@@ -32,7 +32,8 @@ C = {
  'rj-raulino': ('Estádio General Sylvio Raulino de Oliveira', 'Volta Redonda', ['Estádio Raulino de Oliveira', 'Estádio General Sylvio Raulino de Oliveira (Estádio da Cidadania)']),
  'sp-morumbi': ('Estádio Cícero Pompeu de Toledo (Morumbi)', 'São Paulo', ['Morumbi', 'Estádio Cícero Pompeu de Toledo (Morumbi)']),
  'sp-pacaembu': ('Estádio Municipal Paulo Machado de Carvalho (Pacaembu)', 'São Paulo', ['Pacaembu', 'Estádio Municipal Paulo Machado de Carvalho (Pacaembu)']),
- 'sp-palestra': ('Palestra Itália / Allianz Parque', 'São Paulo', ['Parque Antárctica', 'Parque Antártica', 'Estádio Palestra Itália (Parque Antártica)', 'Allianz Parque']),
+ 'sp-palestra': ('Estádio Palestra Itália (Parque Antártica)', 'São Paulo', ['Parque Antárctica', 'Parque Antártica', 'Estádio Palestra Itália (Parque Antártica)']),
+ 'sp-allianz': ('Allianz Parque', 'São Paulo', ['Allianz Parque']),  # decisão do usuário 2026-09-28: NÃO é o mesmo estádio do Palestra Itália
  'sp-caninde': ('Estádio Doutor Oswaldo Teixeira Duarte (Canindé)', 'São Paulo', ['Canindé', 'Estádio Doutor Oswaldo Teixeira Duarte (Canindé)']),
  'sp-arena-corinthians': ('Neo Química Arena', 'São Paulo', ['Arena Corinthians', 'Neo Química Arena']),
  'sp-vila-belmiro': ('Estádio Urbano Caldeira (Vila Belmiro)', 'Santos', ['Vila Belmiro', 'Estádio Urbano Caldeira (Vila Belmiro)']),
@@ -57,7 +58,8 @@ C = {
  'sc-ressacada': ('Estádio Aderbal Ramos da Silva (Ressacada)', 'Florianópolis', ['Ressacada', 'Estádio Aderbal Ramos da Silva (Ressacada)']),
  'sc-scarpelli': ('Estádio Orlando Scarpelli', 'Florianópolis', ['Orlando Scarpelli', 'Estádio Orlando Scarpelli']),
  'sc-heriberto': ('Estádio Heriberto Hülse', 'Criciúma', ['Heriberto Hülse', 'Estádio Heriberto Hülse']),
- 'ba-fonte-nova': ('Fonte Nova (Octávio Mangabeira / Arena Fonte Nova)', 'Salvador', ['Fonte Nova', 'Arena Fonte Nova', 'Estádio Octávio Mangabeira (Fonte Nova)']),
+ 'ba-fonte-nova': ('Fonte Nova',  # decisão do usuário 2026-09-28: velha Fonte Nova e Arena Fonte Nova = mesmo estádio, nome 'Fonte Nova'
+   'Salvador', ['Fonte Nova', 'Arena Fonte Nova', 'Estádio Octávio Mangabeira (Fonte Nova)']),
  'ba-barradao': ('Estádio Manoel Barradas (Barradão)', 'Salvador', ['Barradão', 'Estádio Manoel Barradas (Barradão)']),
  'pe-arruda': ('Estádio José do Rego Maciel (Arruda)', 'Recife', ['Arruda', 'Estádio José do Rego Maciel (Arruda)']),
  'pe-ilha': ('Estádio Adelmar da Costa Carvalho (Ilha do Retiro)', 'Recife', ['Ilha do Retiro', 'Estádio Adelmar da Costa Carvalho (Ilha do Retiro)']),
@@ -86,22 +88,20 @@ for cid, (_, _, al) in C.items():
     for a in al:
         idx.setdefault(n(a), []).append(cid)
 
-MERGE_DECISION = 'Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.'
 REVIEW = {  # (raw name, raw city) -> (canonical_id or None, note)
  ('Olímpico', 'Porto Alegre'): ('rs-olimpico-monumental', 'Olímpico em Porto Alegre é o Olímpico Monumental (Grêmio), NÃO o de Goiânia.'),
  ('Olímpico', 'UNKNOWN'): ('go-olimpico', 'Todas as 226 linhas são do histórico (1943-1997). 225 = Olímpico de Goiânia. EXCEÇÃO POR LINHA: hist-f80-2406 (24/11/1996, Grêmio 3 x 1 Goiás, Goiás visitante) = rs-olimpico-monumental.'),
  ('Bezerrão', 'Brasília'): ('df-bezerrao', 'Cidade bruta Brasília; o Bezerrão fica no Gama-DF. Conferir.'),
  ('Estádio Paranaíba', 'Itumbiara'): (None, 'NÃO confundir com "Avenida Paranaíba" (apelido do Olímpico de Goiânia). Conferir se é antecessor/alias do JK de Itumbiara.'),
  ('JK', 'UNKNOWN'): ('go-jk-itumbiara', '"JK" sem cidade: provável Itumbiara, conferir linha a linha.'),
- ('Castelão', 'UNKNOWN'): (None, 'AMBÍGUO: Castelão de Fortaleza ou de São Luís; resolver pelo adversário/competição.'),
+ ('Castelão', 'Fortaleza'): ('ce-castelao', ''),
+ ('Estádio Olímpico', 'Goiânia'): ('go-olimpico', ''),  # nome usado pela RSSSF nos Torneios Início de 1967 e 1974
+ ('Castelão', 'UNKNOWN'): ('', 'Sem cidade; resolvido LINHA A LINHA pelo adversário em passaporte_esmeraldino_VENUE_ALIASES_por_linha.csv.'),
  ('Marcelo Stéfani', 'UNKNOWN'): ('sp-nabi', 'Marcelo Stéfani é o nome antigo do Nabi Abi Chedid. Conferir.'),
  ('Marcelo Stéfani', 'Bragança Paulista'): ('sp-nabi', 'Marcelo Stéfani é o nome antigo do Nabi Abi Chedid. Conferir.'),
  ('Arena Nicnet (Santa Cruz)', 'Ribeirão Preto'): ('sp-santa-cruz-rp', 'Arena Nicnet é naming rights do Estádio Santa Cruz.'),
  ('', ''): (None, 'venue_name VAZIO (nem UNKNOWN). Investigar essas linhas.'),
 }
-for raw in C['sp-palestra'][2] + C['ba-fonte-nova'][2]:
-    for city in ('São Paulo', 'Salvador', 'UNKNOWN'):
-        REVIEW.setdefault((raw, city), (None, None))
 for a in C['mg-ipatingao'][2]:
     REVIEW[(a, 'Ipatinga')] = ('mg-ipatingao', 'Dois nomes oficiais diferentes para o Ipatingão. Conferir se é o mesmo estádio.')
 
@@ -111,14 +111,14 @@ for (v, city), cnt in c.items():
     cid, note, rev = None, '', False
     hit = REVIEW.get((v, city))
     if hit and hit[1] is not None:
-        cid, note = hit; rev = True
+        cid, note = hit; rev = cid != '' and note != ''
     else:
         cands = idx.get(n(v), [])
         if len(cands) == 1:
             cid = cands[0]
-            if cid in ('sp-palestra', 'ba-fonte-nova'):
-                rev, note = True, MERGE_DECISION
-    if cid is None and not rev:
+    if cid == '':
+        pass
+    elif cid is None and not rev:
         cid = 'auto-' + n(v).replace(' ', '-')[:50]
         note = 'Sem alias conhecido; canônico = o próprio nome.'
     if cid in C:
@@ -134,6 +134,18 @@ for (v, city), cnt in c.items():
 out.sort(key=lambda d: (d['canonical_id'] or 'zzz', -d['rows']))
 with open('passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv', 'w', encoding='utf-8-sig', newline='') as f:
     w = csv.DictWriter(f, fieldnames=list(out[0].keys()), lineterminator='\r\n'); w.writeheader(); w.writerows(out)
+
+# Exceções por linha: quando o par (nome, cidade) é ambíguo e só o jogo resolve.
+ROW = [
+    ('hist-f80-2406', 'rs-olimpico-monumental', 'Grêmio 3 x 1 Goiás, 24/11/1996, Porto Alegre: "Olímpico" aqui é o do Grêmio.'),
+    ('hist-f80-2543', 'ma-castelao', 'Moto Club-MA 2 x 3 Goiás, Copa do Brasil, 24/02/1999: Castelão de São Luís (decisão do usuário 2026-09-28, pelo adversário).'),
+    ('hist-f80-2593', 'ce-castelao', 'Ceará-CE 3 x 0 Goiás, Série B, 06/11/1999: Castelão de Fortaleza (decisão do usuário 2026-09-28, pelo adversário).'),
+]
+with open('passaporte_esmeraldino_VENUE_ALIASES_por_linha.csv', 'w', encoding='utf-8-sig', newline='') as f:
+    w = csv.writer(f, lineterminator='\r\n')
+    w.writerow(['id', 'canonical_id', 'canonical_name', 'canonical_city', 'note'])
+    for rid, cid, note in ROW:
+        w.writerow([rid, cid, C[cid][0], C[cid][1], note])
 
 g = collections.Counter()
 for d in out: g[d['canonical_id']] += d['rows']

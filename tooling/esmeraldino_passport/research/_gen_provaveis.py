@@ -30,12 +30,15 @@ alias = {}
 for a in csv.DictReader(open(os.path.join(HERE, 'passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv'), encoding='utf-8-sig')):
     alias[(a['raw_venue_name'], a['raw_venue_city'])] = (a['canonical_id'], a['canonical_name'], a['canonical_city'], a['needs_review'])
 
+row_alias = {a['id']: (a['canonical_id'], a['canonical_name'], a['canonical_city'])
+             for a in csv.DictReader(open(os.path.join(HERE, 'passaporte_esmeraldino_VENUE_ALIASES_por_linha.csv'), encoding='utf-8-sig'))}
+
 def canon(r):
+    if r['id'] in row_alias:  # exceções por linha do mapa de aliases
+        return row_alias[r['id']]
     a = alias.get((r['venue_name'], r['venue_city']))
     if not a or not a[0]:
         return None
-    if r['id'] == 'hist-f80-2406':  # exceção por linha registrada no mapa de aliases
-        return ('rs-olimpico-monumental', 'Estádio Olímpico Monumental', 'Porto Alegre')
     return a[:3]
 
 def d(s):

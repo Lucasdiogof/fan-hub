@@ -23,7 +23,6 @@ Batistão,Aracaju,2,auto-batistao,Batistão,Aracaju,,Sem alias conhecido; canôn
 Bichinho Vieira,Quirinópolis,3,auto-bichinho-vieira,Bichinho Vieira,Quirinópolis,,Sem alias conhecido; canônico = o próprio nome.
 Boulanger Pucci,Uberaba,1,auto-boulanger-pucci,Boulanger Pucci,Uberaba,,Sem alias conhecido; canônico = o próprio nome.
 Campo de Pires do Rio,Pires do Rio,1,auto-campo-de-pires-do-rio,Campo de Pires do Rio,Pires do Rio,,Sem alias conhecido; canônico = o próprio nome.
-Castelão,Fortaleza,4,auto-castelao,Castelão,Fortaleza,,Sem alias conhecido; canônico = o próprio nome.
 Centenário,Caxias do Sul,1,auto-centenario,Centenário,Caxias do Sul,,Sem alias conhecido; canônico = o próprio nome.
 Colina,Manaus,1,auto-colina,Colina,Manaus,,Sem alias conhecido; canônico = o próprio nome.
 Do Goiazinho,Itumbiara,2,auto-do-goiazinho,Do Goiazinho,Itumbiara,,Sem alias conhecido; canônico = o próprio nome.
@@ -131,11 +130,12 @@ Verdão,Cuiabá,1,auto-verdao,Verdão,Cuiabá,,Sem alias conhecido; canônico = 
 Zeca Puglise,Anápolis,1,auto-zeca-puglise,Zeca Puglise,Anápolis,,Sem alias conhecido; canônico = o próprio nome.
 Estádio Manoel Barradas (Barradão),Salvador,13,ba-barradao,Estádio Manoel Barradas (Barradão),Salvador,,
 Barradão,UNKNOWN,2,ba-barradao,Estádio Manoel Barradas (Barradão),Salvador,,
-Fonte Nova,Salvador,9,ba-fonte-nova,Fonte Nova (Octávio Mangabeira / Arena Fonte Nova),Salvador,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
-Arena Fonte Nova,Salvador,9,ba-fonte-nova,Fonte Nova (Octávio Mangabeira / Arena Fonte Nova),Salvador,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
-Fonte Nova,UNKNOWN,4,ba-fonte-nova,Fonte Nova (Octávio Mangabeira / Arena Fonte Nova),Salvador,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
-Estádio Octávio Mangabeira (Fonte Nova),Salvador,1,ba-fonte-nova,Fonte Nova (Octávio Mangabeira / Arena Fonte Nova),Salvador,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
+Fonte Nova,Salvador,9,ba-fonte-nova,Fonte Nova,Salvador,,
+Arena Fonte Nova,Salvador,9,ba-fonte-nova,Fonte Nova,Salvador,,
+Fonte Nova,UNKNOWN,4,ba-fonte-nova,Fonte Nova,Salvador,,
+Estádio Octávio Mangabeira (Fonte Nova),Salvador,1,ba-fonte-nova,Fonte Nova,Salvador,,
 Estádio Governador Plácido Aderaldo Castelo (Castelão),Fortaleza,19,ce-castelao,Estádio Governador Plácido Aderaldo Castelo (Castelão),Fortaleza,,
+Castelão,Fortaleza,4,ce-castelao,Estádio Governador Plácido Aderaldo Castelo (Castelão),Fortaleza,,
 Arena Castelão - CE,Fortaleza,2,ce-castelao,Estádio Governador Plácido Aderaldo Castelo (Castelão),Fortaleza,,
 Presidente Vargas,UNKNOWN,1,ce-pv,Estádio Presidente Vargas,Fortaleza,,
 PV - CE,Fortaleza,1,ce-pv,Estádio Presidente Vargas,Fortaleza,,
@@ -177,6 +177,7 @@ Olímpico,Goiânia,274,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Go
 Olímpico,UNKNOWN,226,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,YES,"Todas as 226 linhas são do histórico (1943-1997). 225 = Olímpico de Goiânia. EXCEÇÃO POR LINHA: hist-f80-2406 (24/11/1996, Grêmio 3 x 1 Goiás, Goiás visitante) = rs-olimpico-monumental."
 Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,40,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Estádio da Avenida Paranaíba,Goiânia,4,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
+Estádio Olímpico,Goiânia,4,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Estádio Dr. Pedro Ludovico,Goiânia,3,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Pedro Ludovico,Goiânia,2,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Pedro Ludovico,UNKNOWN,1,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
@@ -277,6 +278,7 @@ Estádio Aderbal Ramos da Silva (Ressacada),Florianópolis,14,sc-ressacada,Está
 Ressacada,UNKNOWN,1,sc-ressacada,Estádio Aderbal Ramos da Silva (Ressacada),Florianópolis,,
 Estádio Orlando Scarpelli,Florianópolis,10,sc-scarpelli,Estádio Orlando Scarpelli,Florianópolis,,
 Orlando Scarpelli,Florianópolis,1,sc-scarpelli,Estádio Orlando Scarpelli,Florianópolis,,
+Allianz Parque,São Paulo,5,sp-allianz,Allianz Parque,São Paulo,,
 Arena Corinthians,São Paulo,3,sp-arena-corinthians,Neo Química Arena,São Paulo,,
 Neo Química Arena,São Paulo,3,sp-arena-corinthians,Neo Química Arena,São Paulo,,
 Estádio Brinco de Ouro da Princesa,Campinas,11,sp-brinco,Estádio Brinco de Ouro da Princesa,Campinas,,
@@ -301,16 +303,15 @@ Estádio Municipal Doutor Novelli Júnior,Itu,1,sp-novelli,Estádio Municipal Do
 Estádio Municipal Paulo Machado de Carvalho (Pacaembu),São Paulo,14,sp-pacaembu,Estádio Municipal Paulo Machado de Carvalho (Pacaembu),São Paulo,,
 Pacaembu,São Paulo,5,sp-pacaembu,Estádio Municipal Paulo Machado de Carvalho (Pacaembu),São Paulo,,
 Pacaembu,UNKNOWN,1,sp-pacaembu,Estádio Municipal Paulo Machado de Carvalho (Pacaembu),São Paulo,,
-Estádio Palestra Itália (Parque Antártica),São Paulo,9,sp-palestra,Palestra Itália / Allianz Parque,São Paulo,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
-Parque Antárctica,UNKNOWN,8,sp-palestra,Palestra Itália / Allianz Parque,São Paulo,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
-Allianz Parque,São Paulo,5,sp-palestra,Palestra Itália / Allianz Parque,São Paulo,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
-Parque Antárctica,São Paulo,1,sp-palestra,Palestra Itália / Allianz Parque,São Paulo,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
-Parque Antártica,UNKNOWN,1,sp-palestra,Palestra Itália / Allianz Parque,São Paulo,YES,Estádio demolido/reconstruído no mesmo lugar: decidir se o passaporte conta como o mesmo estádio.
+Estádio Palestra Itália (Parque Antártica),São Paulo,9,sp-palestra,Estádio Palestra Itália (Parque Antártica),São Paulo,,
+Parque Antárctica,UNKNOWN,8,sp-palestra,Estádio Palestra Itália (Parque Antártica),São Paulo,,
+Parque Antárctica,São Paulo,1,sp-palestra,Estádio Palestra Itália (Parque Antártica),São Paulo,,
+Parque Antártica,UNKNOWN,1,sp-palestra,Estádio Palestra Itália (Parque Antártica),São Paulo,,
 Estádio Santa Cruz,Ribeirão Preto,4,sp-santa-cruz-rp,Estádio Santa Cruz,Ribeirão Preto,,
 Santa Cruz,Ribeirão Preto,1,sp-santa-cruz-rp,Estádio Santa Cruz,Ribeirão Preto,,
 Arena Nicnet (Santa Cruz),Ribeirão Preto,1,sp-santa-cruz-rp,Estádio Santa Cruz,Ribeirão Preto,YES,Arena Nicnet é naming rights do Estádio Santa Cruz.
 Estádio Urbano Caldeira (Vila Belmiro),Santos,16,sp-vila-belmiro,Estádio Urbano Caldeira (Vila Belmiro),Santos,,
 Vila Belmiro,UNKNOWN,8,sp-vila-belmiro,Estádio Urbano Caldeira (Vila Belmiro),Santos,,
 ,,38,,,,YES,venue_name VAZIO (nem UNKNOWN). Investigar essas linhas.
-Castelão,UNKNOWN,2,,,,YES,AMBÍGUO: Castelão de Fortaleza ou de São Luís; resolver pelo adversário/competição.
+Castelão,UNKNOWN,2,,,,,Sem cidade; resolvido LINHA A LINHA pelo adversário em passaporte_esmeraldino_VENUE_ALIASES_por_linha.csv.
 Estádio Paranaíba,Itumbiara,1,,,,YES,"NÃO confundir com ""Avenida Paranaíba"" (apelido do Olímpico de Goiânia). Conferir se é antecessor/alias do JK de Itumbiara."
