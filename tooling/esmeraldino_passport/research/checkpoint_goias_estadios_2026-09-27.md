@@ -1033,4 +1033,20 @@ Usuário pediu pra continuar nas pendências restantes. Priorizei o **Campeonato
 - **Bônus:** a mesma checagem de Sergipe-SE achou também o jogo de **05/10/1986** (`/partidas/7435/partida`), que bate **exatamente** com a confirmação `hist-f80-1731` que já tínhamos aplicado via WildStat no lote anterior (mesma data, mesmo placar 2x0, mesmo estádio Serra Dourada) — isso serve como **confirmação independente** daquela linha que não conseguíamos verificar diretamente (WildStat bloqueado por Cloudflare). Adicionei a URL da FdG como `source_secondary` e uma nota explicando o reforço.
 - Tentei achar Tiradentes-PI (1975) e Joinville-SC (1986, Brasileiro) nas edições da FdG (`?aba=es` de 1975 e 1986) — nenhum dos dois aparece nessas edições específicas (podem ter jogado em outra divisão/módulo não catalogado separadamente). Sem solução ainda.
 - **Total real do dia (45): +4** (1.935→1.939/2.102 = 92,25%). Backlog oficial: **163**.
-- Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1939.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1939.csv`.
+- Arquivos atuais (nesta seção): `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1939.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1939.csv`.
+
+### +4 no mesmo lote — Dom Bosco-MT, Operário-MS e Central-PE mapeados; 3 confirmações do lote WildStat reforçadas com fonte independente da FdG
+Usuário pediu pra continuar atrás dos IDs que faltavam. Achei todos via `WebSearch` (site:futeboldegoyaz.com.br) apontando pra fichas específicas, de onde extraí o ID do clube:
+
+- **Dom Bosco-MT = 716.** Confronto direto bate EXATO com os dois pendentes: `hist-f80-1206` (03/05/1978, Dom Bosco 0x2 Goiás) e `hist-f80-1293` (27/09/1979, Dom Bosco 0x1 Goiás) — ambas as fichas são ricas (escalações completas + arbitragem) e mostram **Verdão, Cuiabá-MT**. Aplicado nas duas.
+- **Operário-MS (Campo Grande) = 345** (já sabíamos do lote 1976 anterior). `hist-f80-1205` (30/04/1978, Operário 1x0 Goiás) bate exato — **Morenão, Campo Grande-MS**. Aplicado.
+- **Central-PE = 305.** `hist-f80-1305` (21/11/1979, Central-PE 1x1 Goiás) bate exato — **Lacerdão, Caruaru-PE**. Aplicado.
+- **Bônus grande — as 3 confirmações do lote WildStat (auditoria da seção 44) que eu não tinha conseguido verificar pessoalmente agora têm confirmação INDEPENDENTE da FdG, batendo exato em data+placar+estádio:**
+  - `hist-f80-1735` (05/11/1986, Goiás 1x1 Central-PE, Serra Dourada) — ficha FdG `partidas/7645/partida` confirma.
+  - `hist-f80-1747` (25/01/1987, Central-PE 2x2 Goiás, Lacerdão) — ficha FdG `partidas/7687/partida` confirma.
+  - `hist-f80-1447` (07/02/1982, Grêmio Maringá-PR 2x2 Goiás, Willie Davids) — ficha FdG `partidas/6318/partida` confirma (achei o clube ID=638 via WebSearch também).
+  - Adicionei a URL da FdG como `source_secondary` e uma nota em cada uma das 3, sem mexer em mais nada.
+- Ainda sem solução: **hist-f80-1731** já tinha sido reforçado na rodada anterior; **Operário de Várzea Grande-MT** (hist-f80-1303) não aparece em nenhuma edição da FdG que testei (nem Série A 1979 nem confronto direto do Operário-MS) — parece ser um clube sem página própria catalogada ali; **Tiradentes-PI** e **Joinville-SC** continuam sem ID achado.
+
+**Total real do dia (45): +7 confirmações novas + 3 reforçadas** (1.935→1.943/2.102 = 92,44%). Backlog oficial: **159**.
+- Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1943.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1943.csv`.
