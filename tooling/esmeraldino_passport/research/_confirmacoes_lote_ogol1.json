@@ -1,0 +1,112 @@
+[
+ {
+  "id": "hist-f80-0605",
+  "csv_date": "1967-07-30",
+  "csv_opp": "Rabello-DF",
+  "url": "https://www.ogol.com.br/jogo/1967-07-30-goias-rabello-df/1133149",
+  "date": "1967-07-30",
+  "game": "Goiás 1-0 Rabello-DF",
+  "comp": "Taça Brasil 1967",
+  "venue": "Olímpico Pedro Ludovico"
+ },
+ {
+  "id": "hist-f80-0608",
+  "csv_date": "1967-08-09",
+  "csv_opp": "Goytacaz-RJ",
+  "url": "https://www.ogol.com.br/jogo/1967-08-09-goytacaz-goias/1133153",
+  "date": "1967-08-09",
+  "game": "Goytacaz 2-2 Goiás",
+  "comp": "Taça Brasil 1967",
+  "venue": "Ary de Oliveira e Souza"
+ },
+ {
+  "id": "hist-f80-0610",
+  "csv_date": "1967-08-20",
+  "csv_opp": "Goytacaz-RJ",
+  "url": "https://www.ogol.com.br/jogo/1967-08-20-goias-goytacaz/1133156",
+  "date": "1967-08-20",
+  "game": "Goiás 0-0 Goytacaz",
+  "comp": "Taça Brasil 1967",
+  "venue": "Olímpico Pedro Ludovico"
+ },
+ {
+  "id": "hist-f80-0611",
+  "csv_date": "1967-08-27",
+  "csv_opp": "Rabello-DF",
+  "url": "https://www.ogol.com.br/jogo/1967-08-27-rabello-df-goias/1133159",
+  "date": "1967-08-27",
+  "game": "Rabello-DF 4-1 Goiás",
+  "comp": "Taça Brasil 1967",
+  "venue": "Rei Pelé (Pelezão)"
+ },
+ {
+  "id": "hist-f80-0937",
+  "csv_date": "1973-11-17",
+  "csv_opp": "Desportiva-ES",
+  "url": "https://www.ogol.com.br/jogo/1973-11-17-desportiva-ferroviaria-goias/501127",
+  "date": "1973-11-17",
+  "game": "Desportiva Ferroviária 0-0 Goiás",
+  "comp": "Campeonato Nacional de Clubes 1973",
+  "venue": "Engenheiro Alencar de Araripe"
+ },
+ {
+  "id": "hist-f80-0939",
+  "csv_date": "1973-11-28",
+  "csv_opp": "CEUB-DF",
+  "url": "https://www.ogol.com.br/jogo/1973-11-28-goias-ceub/501171",
+  "date": "1973-11-28",
+  "game": "Goiás 3-0 CEUB",
+  "comp": "Campeonato Nacional de Clubes 1973",
+  "venue": "Olímpico Pedro Ludovico"
+ },
+ {
+  "id": "hist-f80-1180",
+  "csv_date": "1977-11-23",
+  "csv_opp": "Americano-RJ",
+  "url": "https://www.ogol.com.br/jogo/1977-11-23-goias-americano/632055",
+  "date": "1977-11-23",
+  "game": "Goiás 3-0 Americano",
+  "comp": "Copa Brasil 1977",
+  "venue": "Serra Dourada"
+ },
+ {
+  "id": "hist-f80-1212",
+  "csv_date": "1978-06-07",
+  "csv_opp": "Joinville-SC",
+  "url": "https://www.ogol.com.br/jogo/1978-06-07-joinville-goias/624583",
+  "date": "1978-06-07",
+  "game": "Joinville 0-2 Goiás",
+  "comp": "Copa Brasil 1978",
+  "venue": "Ernesto Schlemm Sobrinho (Ernestão)"
+ },
+ {
+  "id": "hist-f80-1296",
+  "csv_date": "1979-10-11",
+  "csv_opp": "Nacional-AM",
+  "url": "https://www.ogol.com.br/jogo/1979-10-11-goias-nacional-am/621119",
+  "date": "1979-10-11",
+  "game": "Goiás 2-0 Nacional-AM",
+  "comp": "Brasileiro 1979",
+  "venue": "Serra Dourada"
+ },
+ {
+  "id": "hist-f80-1317",
+  "csv_date": "1980-02-24",
+  "csv_opp": "Caldense-MG",
+  "url": "https://www.ogol.com.br/jogo/1980-02-24-caldense-goias/1217376",
+  "date": "1980-02-24",
+  "game": "Caldense 0-0 Goiás",
+  "comp": "Taça de Prata 1980",
+  "venue": "Dr. Ronaldo Junqueira (Ronaldão)"
+ },
+ {
+  "id": "hist-f80-2239",
+  "csv_date": "1994-08-07",
+  "csv_opp": "América/SJRP-SP",
+  "url": "https://www.ogol.com.br/jogo/1994-08-07-america-sp-goias/2182042",
+  "date": "1994-08-07",
+  "game": "América-SP 1-1 Goiás",
+  "comp": "Brasileirão Série B 1994",
+  "venue": "Mário Alves Mendonça"
+ }
+]

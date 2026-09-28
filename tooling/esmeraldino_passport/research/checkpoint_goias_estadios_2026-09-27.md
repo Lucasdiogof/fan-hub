@@ -526,3 +526,36 @@ Script: `_apply_fichas_fdg.py` (aplica a lista `_confirmacoes_lote_fichas1.json`
 - UNKNOWN: 486 · Vazias: 38 · Backlog: 524
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1616.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1616.csv`
 - **Meta: 80% (1.682).** Faltam 66.
+
+## Atualização de pesquisa — 2026-09-28 (18) — ogol.com.br (+11)
+O ogol (id do Goiás = 2244) tem ~600 jogos do Goiás entre 1967 e 1999, quase só competições nacionais (Taça Brasil, Brasileiro, Taça de Prata, Série B). Baixei todas as fichas e li o local no JSON-LD (`location.name`). 124 têm local preenchido; os jogos de 1993, por exemplo, vêm com local vazio.
+Cruzei por data (±2 dias) e placar exato do lado do Goiás: 12 casaram. Descartei hist-f80-0606 (o CSV diz Inhumas-GO 0x1 em 06/08/1967; o ogol diz Rio Branco-ES 1-0 Goiás pela Taça Brasil, adversário diferente). **+11 aplicadas** com `_apply_ogol.py` + `_confirmacoes_lote_ogol1.json`.
+
+| id | data | adversário (CSV) | jogo no ogol | local |
+|---|---|---|---|---|
+| hist-f80-0605 | 1967-07-30 | Rabello-DF | [Goiás 1-0 Rabello-DF](https://www.ogol.com.br/jogo/1967-07-30-goias-rabello-df/1133149) | Olímpico Pedro Ludovico |
+| hist-f80-0608 | 1967-08-09 | Goytacaz-RJ | [Goytacaz 2-2 Goiás](https://www.ogol.com.br/jogo/1967-08-09-goytacaz-goias/1133153) | Ary de Oliveira e Souza |
+| hist-f80-0610 | 1967-08-20 | Goytacaz-RJ | [Goiás 0-0 Goytacaz](https://www.ogol.com.br/jogo/1967-08-20-goias-goytacaz/1133156) | Olímpico Pedro Ludovico |
+| hist-f80-0611 | 1967-08-27 | Rabello-DF | [Rabello-DF 4-1 Goiás](https://www.ogol.com.br/jogo/1967-08-27-rabello-df-goias/1133159) | Rei Pelé (Pelezão) |
+| hist-f80-0937 | 1973-11-17 | Desportiva-ES | [Desportiva Ferroviária 0-0 Goiás](https://www.ogol.com.br/jogo/1973-11-17-desportiva-ferroviaria-goias/501127) | Engenheiro Alencar de Araripe |
+| hist-f80-0939 | 1973-11-28 | CEUB-DF | [Goiás 3-0 CEUB](https://www.ogol.com.br/jogo/1973-11-28-goias-ceub/501171) | Olímpico Pedro Ludovico |
+| hist-f80-1180 | 1977-11-23 | Americano-RJ | [Goiás 3-0 Americano](https://www.ogol.com.br/jogo/1977-11-23-goias-americano/632055) | Serra Dourada |
+| hist-f80-1212 | 1978-06-07 | Joinville-SC | [Joinville 0-2 Goiás](https://www.ogol.com.br/jogo/1978-06-07-joinville-goias/624583) | Ernesto Schlemm Sobrinho (Ernestão) |
+| hist-f80-1296 | 1979-10-11 | Nacional-AM | [Goiás 2-0 Nacional-AM](https://www.ogol.com.br/jogo/1979-10-11-goias-nacional-am/621119) | Serra Dourada |
+| hist-f80-1317 | 1980-02-24 | Caldense-MG | [Caldense 0-0 Goiás](https://www.ogol.com.br/jogo/1980-02-24-caldense-goias/1217376) | Dr. Ronaldo Junqueira (Ronaldão) |
+| hist-f80-2239 | 1994-08-07 | América/SJRP-SP | [América-SP 1-1 Goiás](https://www.ogol.com.br/jogo/1994-08-07-america-sp-goias/2182042) | Mário Alves Mendonça |
+
+Fontes testadas SEM resultado nesta rodada:
+- RSSSF Goiano (go1990 etc.): sem estádio.
+- Wikipédia pt (Campeonato Goiano 1985–1997): sem estádio.
+- Página de estatísticas da edição no FdG (aba=es): só repete o estádio das fichas.
+- Site oficial goiasec.com.br/partidas: só jogos recentes (nada antes de 2003).
+- Futebol80 (goiasjg.htm): só marca C/F (casa/fora), sem estádio.
+- Google Books (Placar): cota da API anônima estourada e busca web com CAPTCHA.
+- Hemeroteca: CAPTCHA continua ativo.
+
+### Novo estado canônico
+- **Confirmadas: 1.627 / 2.102 = 77,40%**
+- UNKNOWN: 475 · Vazias: 38
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1627.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1627.csv`
+- **Meta: 80% (1.682).** Faltam 55.
