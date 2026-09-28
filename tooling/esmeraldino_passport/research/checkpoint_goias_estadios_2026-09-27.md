@@ -307,6 +307,23 @@ Novo padrão de alias confirmado mais uma vez: "Botafogo" = Sírio Libanês (rod
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1378.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1378.csv`
 - **Próxima ação:** terminar os 6 restantes de 1951 (edição 582, mesmo bloco de IDs ~47265-47310), depois 1952 (edição 588, só 1/10 feito), depois 1944-1949 (19 pendências, edições ainda não identificadas) e 1955 (1 pendência).
 
+## Atualização de pesquisa — 2026-09-28 (9) — 1951 FECHADO + 1948 FECHADO
+### 1951 (edição 582): 14/14 — FECHADO
+Últimos 6 confirmados: 20/mai, 10/jun, 17/jun, 22/jul, 05/ago, 02/set. Aliases confirmados de novo: "União Operária"=Anápolis.
+
+### 1952 (edição 588): tentativa frustrada de expandir
+Os IDs vizinhos ao único jogo achado (47542) pertencem a OUTRA competição/época (2014) — o bloco de 1952 está fragmentado/disperso, não dá pra sondar por interpolação como nos outros anos. 13/01 e 20/01/1952 são a "decisão"/final do campeonato de 1951 (achei via busca), mas não localizei os IDs. **1952 fica pra depois, precisa de estratégia diferente (talvez jornal ou fonte externa).**
+
+### 1948 (edição 577): 5/5 — FECHADO
+Troquei de ano pra manter o rendimento. Todos os 5 pendentes (fora o Torneio Início, que continua bloqueado) confirmados: 16/mai, 27/jun, 18/jul, 12/set, 05/dez. Dois novos casos de alias tentativo (confiança MEDIA, não ALTA): "ABG" pode ser um nome alternativo de "União" nesta edição (rodadas 1 e 15) — diferente do alias "ABG" nas pendências que sobraram de 1946/1947, que continuam com nome próprio e podem não ser a mesma coisa. Marcar pra revisão futura do mapa de aliases.
+
+### Novo estado canônico
+- **Confirmadas: 1.389 / 2.102 = 66,08%**
+- UNKNOWN: 713 · Vazias: 38 · Backlog: 751
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1389.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1389.csv`
+- **Anos do Citadino pré-1954 ainda pendentes:** 1944 (1), 1945 (1), 1946 (4), 1947 (6), 1949 (4), 1952 (9, difícil). Total ~25 linhas, mesmo método deve funcionar pra 1944-1947 e 1949 (falta achar a edição de cada ano — 1945=567 já conhecido).
+- **Próxima ação:** 1949 (edição próxima de 577/1948, deve ter bloco de IDs vizinho) e 1947/1946/1945/1944 (menores, mais rápidos de fechar). Depois voltar aos clubes pequenos do Brasileirão nacional ou tentar 1952 com fonte alternativa.
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
