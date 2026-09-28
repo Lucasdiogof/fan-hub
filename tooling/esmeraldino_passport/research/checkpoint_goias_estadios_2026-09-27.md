@@ -1078,3 +1078,12 @@ Usuário pediu pra continuar atrás dos IDs que faltavam. Achei todos via `WebSe
 - Sem achado nesta rodada: 1766 (sem edição D0/D+1), 2255 (Atlético 1994, só D+2), 2295 (Caldas 1995, só D-3/D-2).
 
 **Novo estado: 1.982 / 2.102 = 94,29%.** Backlog: 120. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1982.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1982.csv`.
+
+## Atualização de pesquisa — 2026-09-28 (49) — edições do DM só com imagem (sem OCR) + mapa do acervo (+1)
+- **Descoberta:** parte do acervo do Diário da Manhã no IHGG é PDF só com imagem, sem camada de texto (ex.: outubro/1994). O pipeline de texto nunca "via" essas edições. Fiz o mapa completo das edições disponíveis a partir do menu `publicacao.asp?PUB_IDEN=102` (7.453 edições, 1980–2006; **1985 continua ausente**) e cruzei com as pendências (±7 dias).
+- **2255 (Atlético 4x2 Goiás, 12/10/1994) CONFIRMADO:** edição de 13/10/1994, p. 16, lida na imagem a partir de uma folha de miniaturas (`sheet.py`): "Meninos do Atlético desbancam o Goiás ... derrotou o Goiás por 4 a 2, ontem, no Estádio Serra Dourada" + ficha "Local: Estádio Serra Dourada (Goiânia)". (A ficha FdG põe esse jogo em 12/11; o jornal confirma a data do CSV.)
+- **Sem achado:** 2295 (Caldas 1995: a edição de 05/05 só diz "diante do Caldas domingo, em Caldas Novas", só a cidade) e 1766 (Goiatuba 1987: edições de D+4 a D+6 sem menção ao jogo).
+- **Mapa do que sobra no DM:** nenhuma edição a ±7 dias para 1984 (ago–dez: 1604–1624), 1985 (todo o ano), 1986 (fev–jul), 1993 (jul: 2171/2172) e 1995 (mai–jul: 2297–2311). Esses ~70 jogos precisam de OUTRO jornal.
+- Revista Brasília Esportiva (IHGG 119) tem só uma edição (25/06/1953), sem pendência na janela.
+
+**Novo estado: 1.983 / 2.102 = 94,34%.** Backlog: 119. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1983.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1983.csv`.
