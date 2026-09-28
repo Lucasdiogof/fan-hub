@@ -641,3 +641,15 @@ O usuário aprovou a opção 2: uma categoria PROVÁVEL separada das confirmaç�
 - **Confirmadas: 1.643 / 2.102 = 78,16%** · UNKNOWN: 459 (167 com PROVÁVEL) · Vazias: 38
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1643.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1643.csv`
 - **Meta 80% (1.682):** faltam 39.
+
+## Atualização de pesquisa — 2026-09-28 (24) — Hemeroteca do IHGG: Torneio Início 1947, 1948 e 1958 (+7)
+**Fonte nova:** a Hemeroteca Digital do IHGG (https://hemeroteca.ihgg.org) tem PDFs com texto e SEM CAPTCHA, com caminho direto `publicacoes/<JORNAL>/<AAAA>/<MM>/<JORNAL>_<AAAA>_<MM>_<DD>.pdf`. Acervos úteis: Folha de Goiaz (1939–1952), Diário da Tarde (1958–59) e **Diário da Manhã (1980–2005, quase diário; falta 1985)**. A lista de edições sai de `publicacao.asp?PUB_IDEN=<id>` (71 = Folha de Goiaz, 103 = Diário da Tarde, 102 = Diário da Manhã). Parte das edições de 1951 da Folha não tem texto (só imagem).
+Todos os trechos abaixo foram conferidos na imagem:
+- **1947 (04/05)**, Folha de Goiaz 29/04/1947, p. 3: "O torneio início será efetuado no primeiro domingo do próximo mês de maio, no estádio da Avenida Paranaíba". A edição de 07/05 cobre o torneio disputado. RSSSF: Goiás 1-0 Anápolis e 0-0 Atlético. → hist-f80-0047 e 0048.
+- **1948 (25/04)**, Folha de Goiaz 25/04/1948, p. 3 (matéria do dia): "SERÁ REALIZADO HOJE O TORNEIO INÍCIO DE 1948 ... sete clubes desfilarão diante do grande público presente ao estádio da Av. Paranaíba", com o 1º jogo Goiaz x Botafogo. RSSSF: 1-0 Botafogo e 3-1 Goiânia. → hist-f80-0064 e 0066.
+- **1958 (25/05)**, Diário da Tarde 22/05/1958, p. 7 (pré-jogo: domingo 25 no "Estadio Pedro Ludovico às 12,30") e 27/05/1958, p. 7 (pós-jogo: "Goiás E. Clube: Campeão do Torneio Início de 58 — O Estádio Oficial 'Pedro Ludovico' engalanou-se ..."). RSSSF: 1-0 Atlético, 0-0 Vila Nova e 2-1 Sírio. → hist-f80-0311, 0312 e 0313.
+- Aplicado com `_apply_jornal.py` + `_confirmacoes_lote_ihgg_ti.json`. Alias novo: "Estádio Oficial Pedro Ludovico" → go-olimpico.
+
+### Estado
+- **Confirmadas: 1.650 / 2.102 = 78,50%**. Arquivos: `..._CHECKPOINT_1650.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1650.csv`.
+- Em andamento: varredura do Diário da Manhã para as 278 pendências de 1980–1999 que têm edição em D+1/D+2.
