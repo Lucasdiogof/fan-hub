@@ -424,3 +424,22 @@ Na retomada, sequência de lotes pequenos contra rivais do "Campeonato Goiano" a
 - Tentativas sem sucesso (clube não encontrado ou sem confronto direto): Campinas-GO, Ferroviário-GO (Goiano, não confundir com Ferroviário-CE do Brasileirão), Riachuelo-GO, São Luís/SLMB-GO, São Francisco-GO, União-GO, Independente-GO (testei "Independente de Goiânia-GO"=1207 mas o site indica ZERO jogos contra Goiás — não é o mesmo clube; nome correto ainda não achado). Long-tail do Brasileirão (Central-PE, Brasília-DF, Rabello-DF, Goytacaz-RJ, CEUB-DF, Sergipe-SE, Americano-RJ, Dom Bosco-MT, Joinville-SC, Grêmio Maringá-PR, Operário-MT/MS) pesquisados mas nenhum ID de clube localizado com confiança suficiente para fetch de confronto — restam ~20 pendências espalhadas, cada uma exigindo achar a ficha específica (rendimento muito baixo por causa da fragmentação em ~15 clubes de 1-3 jogos cada).
 - **Diagnóstico de rendimento:** o poço do "Goiano 1963-1984 via confronto direto contra rivais já mapeados" está praticamente seco — de 97 pendências pré-1985 identificadas no início da sessão, ~55 foram confirmadas, o resto tem placar/data que não bateu com o que a IA extraiu da tabela (possível erro de leitura da tabela pelo resumo automático, não necessariamente ausência do dado — plausível re-tentar com fetch mais focado por clube único no futuro). Backlog pré-1985 restante do "Goiano": ~42 linhas, majoritariamente com 1-2 pendências por adversário (cauda longa cara de minerar).
 - **Meta do usuário: 80% (1.682/2.102).** Faltam 139 confirmações. Continuando sem parar.
+
+## Atualização de pesquisa — 2026-09-28 (16) — Citadino de Goiânia pré-1955 (resíduo) + correções
+Reprocessando fetches mal cortados por ano (o resumo automático da tabela às vezes pula linhas quando o range de anos pedido é muito estreito — corrigido pedindo o ano inteiro sem filtro).
+- Itumbiara-GO: achei o jogo que faltava de 1979 (15/abr, JK) que tinha sido cortado num fetch anterior por range de anos — **+1**.
+- Botafogo (pré-1955) via clube Sírio Libanês-GO (509, mesmo clube, mudou de nome em 1955) — **+3**.
+- Pires do Rio (clube 503) — **+2**.
+- Mariana-GO (clube 547): só achei 2 jogos com estádio informado no período pedido, nenhum bateu com pendência restante (a maioria dos jogos de Torneio Início não tem estádio na fonte, e não vale confirmar por padrão genérico — regra explícita do usuário).
+- União-GO (Citadino 1952-53): não achei o clube certo na FdG (há "União Goiana-GO"=976 e "União-TO"=735, nenhum claramente o mesmo clube de Goiânia de 1952) — não confirmado, fica pendente.
+
+**Total do dia (16): +6 confirmações (1543 → 1549).**
+
+### Novo estado canônico
+- **Confirmadas: 1.549 / 2.102 = 73,69%**
+- UNKNOWN: 553 · Vazias: 38 · Backlog: 591
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1549.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1549.csv`
+- IDs novos: Sírio Libanês-GO=509 (= "Botafogo" pré-1955), Pires do Rio-GO=503, Mariana-GO=547 (já conhecido, reconfirmado).
+- **Lição de método:** ao pedir tabela de confronto direto pra um ano específico, pedir "TODOS os jogos daquele ano, sem exceção" em vez de listar meses/dias esperados — reduz risco do resumo automático que resume a página pular uma linha da tabela.
+- **Diagnóstico:** o "Campeonato Goiano" 1963-1984 via confronto direto está praticamente esgotado para os rivais já mapeados. O "Citadino de Goiânia" pré-1955 também está quase esgotado (resta União-GO sem ID confiável, Campinas Esporte Clube-GO 1944 sem ID, ABG-GO 1946 sem data). O "Torneio Início-Goiano" (34 pendências) está estruturalmente bloqueado pela regra do usuário (não confirmar por padrão "sempre foi no Olímpico"). Restam pockets pequenos e caros: Campinas-GO (12, ID não achado), Ferroviário-GO (5, ID não achado — cuidado pra não confundir com Ferroviário-CE/MA/outros estados), Nacional de Itumbiara-GO (8, provavelmente não tem ID próprio na FdG), e ~20 clubes do Brasileirão com 1-3 jogos cada (cauda longa, cara de minerar um por um).
+- **Meta do usuário: 80% (1.682/2.102).** Faltam 133 confirmações. Continuando sem parar.
