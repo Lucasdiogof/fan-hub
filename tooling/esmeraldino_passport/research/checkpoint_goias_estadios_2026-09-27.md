@@ -374,6 +374,17 @@ Descoberta importante: a mesma página de confronto direto (`clubes/469/<id>/con
 - **Maiores oportunidades agora (Goiano, confronto direto, focar em 1963-1983):** Anápolis-GO (48 pendências), Goiatuba-GO (40), Rio Verde-GO (37), Anapolina-GO (34), Santa Helena-GO (27), América de Morrinhos-GO (24), Jataiense-GO (22), Ceres-GO (20), CRAC-GO (20), Ipiranga de Anápolis-GO (19) — a maioria ainda sem ID de clube mapeado, mas o método já provou que funciona.
 - **Script de aplicação:** ao usar o método de confronto direto em lote, sempre verificar data E placar (não só data) antes de confirmar — script em `_apply_batch20.mjs`/`_apply_batch21.mjs` como modelo.
 
+## 🎯 2026-09-28 (13) — META DE 70% ATINGIDA
+Rio Verde-GO (15 confirmações, clube 475), Anápolis-GO (3, clube 465) e Anapolina-GO (2, clube 463) — todas via confronto direto, focando no período 1963-1984 onde a fonte tem estádio.
+
+**Confirmadas: 1.472 / 2.102 = 70,03%** — passou da meta original do usuário (70%). UNKNOWN: 630 · Vazias: 38 · Backlog: 668.
+
+Resumo do dia inteiro: 1.259 → 1.472 = **+213 confirmações num único dia**, através de: Futebol de Goyaz (fichas individuais + confronto direto entre clubes), Citadino de Goiânia pré-1954 quase inteiro, Copa Brasil Central 1969 inteira, Copa/Torneio Leonino Caiado quase inteiro, e agora o início da mineração do "Campeonato Goiano" 1963-1984 via confronto direto.
+
+Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1473.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1473.csv`.
+
+**A meta original foi atingida, mas o usuário pediu pra continuar até esgotar fontes razoáveis — não parar aqui.** Próxima ação: continuar minerando o "Goiano" 1963-1984 pelos outros rivais grandes ainda não tentados por completo (Goiatuba parcialmente tentado, Santa Helena-GO 27, América de Morrinhos-GO 24, Jataiense-GO 22, Ceres-GO 20, CRAC-GO 20, Ipiranga de Anápolis-GO 19), sempre com o script de verificação de data+placar (`_apply_batch22.mjs` como modelo genérico, só trocar o clube/dados).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
