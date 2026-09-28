@@ -262,6 +262,19 @@ Sport-PE (2/2, clube 311) confirmado. Tentativas sem sucesso pra Grêmio-RS e Gr
 - **Resumo da sessão "assumir o projeto até o fim" (2026-09-28):** 1.259 → 1.335 = **+76 confirmações**, todas via Futebol de Goyaz (fichas individuais + confronto direto entre clubes), zero invenção de estádio, todas as divergências de data/mando documentadas em `conflict_note`.
 - **Próxima sessão:** continuar o confronto direto pros ~35 clubes pequenos restantes do Brasileirão (rendimento baixo mas ainda positivo); considerar também atacar o bloco "Torneio Brasil Central" (10 pendências) e "Brasileiro-Nacional"/"Taça de Ouro" remanescentes com o mesmo método. O "Goiano" estadual pós-1965 continua sendo beco sem saída (sem estádio na ficha) — não retomar sem uma fonte alternativa (ex.: FGF, jornais).
 
+## Atualização de pesquisa — 2026-09-28 (6) — mais clubes pequenos via confronto direto
+Rio Negro-AM (3/3, clube 725), América-RN (3/3, clube 322), Mixto-MT (3/3, clube 709), **Grêmio-RS (4/4, clube 288 — finalmente achado)**, Botafogo-PB (3/3, clube 577), Rio Branco-ES (3/3, clube 548) = **19 confirmações**.
+
+**Achado sobre o Grêmio:** o estádio histórico do Grêmio (antes da Arena, inaugurada 2012) também se chamava "Olímpico" (Estádio Olímpico Monumental, Porto Alegre) — nada a ver com o Olímpico de Goiânia. Usei "Olímpico Monumental" como nome canônico pra não confundir com o do Goiás, consistente com a exceção já registrada pro jogo de 1996 (hist-f80-2406).
+
+Tentativas sem sucesso: Central-PE (3), Americano-RJ (2), Joinville-SC (2) — IDs não localizados via busca nesta rodada.
+
+### Novo estado canônico
+- **Confirmadas: 1.354 / 2.102 = 64,41%**
+- UNKNOWN: 748 · Vazias: 38 · Backlog: 786
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1354.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1354.csv`
+- Restam ~30 clubes pequenos com 1-3 pendências cada (~48 linhas) — mesmo padrão de dificuldade crescente (times regionais sem presença forte em buscas).
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
