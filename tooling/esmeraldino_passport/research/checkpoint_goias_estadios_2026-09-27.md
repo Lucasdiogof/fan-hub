@@ -1001,3 +1001,6 @@ Usuário pediu uma pesquisa em paralelo (outra conta/sessão) e trouxe de volta 
 
 **Total do dia (44): +10 no escopo oficial (1.925→1.935, 91,58%→92,06%).** Backlog oficial: **167**.
 - Arquivos atuais: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1935.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1935.csv`.
+
+### Correção — 2026-09-28: `hist-f80-1572` `score_display` corrigido a pedido do usuário
+Usuário pediu pra corrigir o placar. Conferi as colunas numéricas (`home_score`=0.0, `away_score`=2.0, `goias_score`=2.0, `opponent_score`=0.0) — **já estavam corretas**, só o texto de `score_display` estava invertido ("2 x 0"). Corrigido para **"0 x 2"** (Brasília-DF 0 x 2 Goiás), `conflict_note` atualizado pra "RESOLVIDO". Nenhuma outra coluna mexida. Sem mudança na contagem (1.935/2.102 = 92,06%, era só um bug de exibição, não um UNKNOWN).
