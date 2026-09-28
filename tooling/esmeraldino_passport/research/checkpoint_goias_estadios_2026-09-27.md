@@ -443,3 +443,86 @@ Reprocessando fetches mal cortados por ano (o resumo automático da tabela às v
 - **Lição de método:** ao pedir tabela de confronto direto pra um ano específico, pedir "TODOS os jogos daquele ano, sem exceção" em vez de listar meses/dias esperados — reduz risco do resumo automático que resume a página pular uma linha da tabela.
 - **Diagnóstico:** o "Campeonato Goiano" 1963-1984 via confronto direto está praticamente esgotado para os rivais já mapeados. O "Citadino de Goiânia" pré-1955 também está quase esgotado (resta União-GO sem ID confiável, Campinas Esporte Clube-GO 1944 sem ID, ABG-GO 1946 sem data). O "Torneio Início-Goiano" (34 pendências) está estruturalmente bloqueado pela regra do usuário (não confirmar por padrão "sempre foi no Olímpico"). Restam pockets pequenos e caros: Campinas-GO (12, ID não achado), Ferroviário-GO (5, ID não achado — cuidado pra não confundir com Ferroviário-CE/MA/outros estados), Nacional de Itumbiara-GO (8, provavelmente não tem ID próprio na FdG), e ~20 clubes do Brasileirão com 1-3 jogos cada (cauda longa, cara de minerar um por um).
 - **Meta do usuário: 80% (1.682/2.102).** Faltam 133 confirmações. Continuando sem parar.
+
+## Atualização de pesquisa — 2026-09-28 (17) — varredura completa do Futebol de Goyaz por HTML (+67)
+**Método novo (sem resumo automático):** baixei com curl a página de confronto `clubes/469/<X>/confronto` para TODOS os IDs de clube de 1 a 2600. Resultado: 305 adversários com jogos, que somam **4.305 jogos do Goiás** com o ID de cada ficha, lidos direto do atributo `title` do HTML. Isso elimina o problema de linhas puladas pelo fetch automático.
+Cruzei as 553 pendências por data (±2 dias) e placar exato, com o lado do Goiás orientado: 432 casaram, sem nenhuma ambiguidade. Baixei essas 432 fichas e li o campo de estádio: **68 trazem estádio explícito**. Descartei 1 (hist-f80-1104: o CSV diz Operário-MT e a ficha é Goiânia 1x1 Goiás, adversário diferente). **+67 aplicadas.**
+Confirma o limite conhecido: das 364 fichas casadas sem estádio, quase todas são de 1985 em diante. Mas algumas do Goiano de 1990 e 1996 TÊM estádio (15 casos).
+Descobertas: 'Nacional de Itumbiara' existe na FdG como 'Nacional' (jogos de 1968 e 1982 confirmados); 'Campinas FC'/'Campinas', 'Ferroviário', 'Riachuelo', 'São Luís' (SLMB) e 'União' foram resolvidos pela varredura, sem precisar achar o ID manualmente.
+Script: `_apply_fichas_fdg.py` (aplica a lista `_confirmacoes_lote_fichas1.json`, que tem id, ficha, data, jogo, estádio e cidade de cada confirmação).
+
+| id | data | adversário (CSV) | ficha | jogo na ficha | estádio |
+|---|---|---|---|---|---|
+| hist-f80-0005 | 1943-08-22 | Comercial-GO | 46759 | Comercial de Goiânia 5 x 2 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0012 | 1944-07-23 | Campinas Esporte Clube-GO | 46898 | Goiás 9 x 1 Campinas EC | Olímpico (Goiânia-GO) |
+| hist-f80-0038 | 1946-06-30 | Anápolis-GO | 57289 | Goiás 4 x 1 Anápolis SC | Olímpico (Goiânia-GO) |
+| hist-f80-0101 | 1950-06-04 | Goiânia | 47198 | Goiânia 2 x 0 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0145 | 1952-01-13 | Goiânia | 47328 | Goiânia 2 x 3 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0154 | 1952-07-13 | União | 47560 | União 2 x 3 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0159 | 1952-11-11 | União | 47546 | Goiás 1 x 1 União | Olímpico (Goiânia-GO) |
+| hist-f80-0162 | 1952-12-14 | Anapolina | 49893 | Goiás 1 x 1 Anapolina | Olímpico (Goiânia-GO) |
+| hist-f80-0164 | 1952-12-28 | Goiânia | 49897 | Goiás 2 x 7 Goiânia | Olímpico (Goiânia-GO) |
+| hist-f80-0168 | 1953-01-31 | Goiânia-GO | 49907 | Goiânia 2 x 1 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0169 | 1953-02-08 | São Francisco-GO | 49910 | São Francisco 1 x 5 Goiás | Manoel Demóstenes (Anápolis-GO) |
+| hist-f80-0174 | 1953-04-25 | União-GO | 50029 | União 0 x 2 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0181 | 1953-06-27 | Botafogo de Goiânia-GO | 50004 | Botafogo 0 x 5 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0182 | 1953-07-26 | São Francisco-GO | 49996 | São Francisco 1 x 1 Goiás | Manoel Demóstenes (Anápolis-GO) |
+| hist-f80-0183 | 1953-08-01 | União-GO | 49994 | Goiás 3 x 0 União | Olímpico (Goiânia-GO) |
+| hist-f80-0188 | 1953-09-06 | Botafogo de Goiânia-GO | 49983 | Goiás 1 x 0 Botafogo | Olímpico (Goiânia-GO) |
+| hist-f80-0397 | 1961-02-12 | Flamengo de Anápolis-GO | 56379 | Goiás 4 x 0 Flamengo | Olímpico (Goiânia-GO) |
+| hist-f80-0398 | 1961-02-18 | Anatex-GO | 56381 | Goiás 4 x 2 Anatex | Olímpico (Goiânia-GO) |
+| hist-f80-0433 | 1962-12-02 | Ferroviário-GO | 20396 | Goiás 1 x 2 Ferroviário | Olímpico (Goiânia-GO) |
+| hist-f80-0456 | 1963-10-06 | Buriti-GO | 49530 | Buriti 0 x 2 Goiás | Edgar Ferreira (Buriti Alegre-GO) |
+| hist-f80-0480 | 1964-04-09 | Ipiranga de Anápolis-GO | 57145 | Goiás 0 x 1 Ipiranga | Olímpico (Goiânia-GO) |
+| hist-f80-0490 | 1964-06-14 | Campinas-GO | 20472 | Campinas FC 3 x 0 Goiás | Antônio Accioly (Goiânia-GO) |
+| hist-f80-0494 | 1964-07-10 | São Luís/SLMB-GO | 20490 | Goiás 0 x 0 São Luís | Olímpico (Goiânia-GO) |
+| hist-f80-0495 | 1964-07-15 | Ferroviário-GO | 20487 | Goiás 1 x 0 Ferroviário | Olímpico (Goiânia-GO) |
+| hist-f80-0507 | 1964-10-28 | Ferroviário-GO | 20550 | Ferroviário 1 x 2 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0510 | 1964-12-05 | São Luís/SLMB-GO | 20576 | Goiás 4 x 3 São Luís | Olímpico (Goiânia-GO) |
+| hist-f80-0515 | 1965-02-21 | Ferroviário-GO | 45677 | Ferroviário 4 x 2 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0520 | 1965-05-08 | Campinas-GO | 48222 | Goiás 1 x 1 Campinas | Olímpico (Goiânia-GO) |
+| hist-f80-0522 | 1965-05-23 | Riachuelo-GO | 48230 | Goiás 4 x 1 Riachuelo | Olímpico (Goiânia-GO) |
+| hist-f80-0527 | 1965-07-17 | Ferroviário-GO | 48259 | Goiás 3 x 0 Ferroviário | Olímpico (Goiânia-GO) |
+| hist-f80-0540 | 1965-11-06 | Riachuelo-GO | 48296 | Riachuelo 1 x 2 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0546 | 1965-12-12 | Riachuelo-GO | 48320 | Riachuelo 1 x 1 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0547 | 1965-12-14 | Riachuelo-GO | 48321 | Goiás 5 x 1 Riachuelo | Olímpico (Goiânia-GO) |
+| hist-f80-0586 | 1966-11-19 | Ipiranga de Anápolis-GO | 56434 | Ipiranga 7 x 2 Goiás | Jonas Duarte (Anápolis-GO) |
+| hist-f80-0604 | 1967-07-26 | Ipiranga de Anápolis-GO | 45709 | Ipiranga 1 x 2 Goiás | Jonas Duarte (Anápolis-GO) |
+| hist-f80-0648 | 1968-06-27 | Nacional de Itumbiara-GO | 20685 | Goiás 1 x 2 Nacional | Olímpico (Goiânia-GO) |
+| hist-f80-0658 | 1968-09-22 | Nacional de Itumbiara-GO | 20721 | Nacional 1 x 2 Goiás | Paranaíba (Itumbiara-GO) |
+| hist-f80-0751 | 1970-09-06 | São Luís/SLMB-GO | 20903 | São Luís 0 x 0 Goiás | Jutair Neto (São Luís de Montes Belos-GO) |
+| hist-f80-0762 | 1970-11-19 | São Luís/SLMB-GO | 20971 | Goiás 1 x 0 São Luís | Olímpico (Goiânia-GO) |
+| hist-f80-0776 | 1971-02-28 | Grêmio Anapolino-GO | 55948 | Grêmio Anapolino 2 x 1 Goiás | Jonas Duarte (Anápolis-GO) |
+| hist-f80-0779 | 1971-03-17 | Grêmio Anapolino-GO | 55954 | Goiás 2 x 0 Grêmio Anapolino | Olímpico (Goiânia-GO) |
+| hist-f80-0791 | 1971-07-04 | Campinas-GO | 21045 | Goiás 2 x 1 Campinas FC | Olímpico (Goiânia-GO) |
+| hist-f80-0808 | 1971-11-11 | Campinas-GO | 53421 | Goiás 3 x 0 Campinas | Olímpico (Goiânia-GO) |
+| hist-f80-0814 | 1971-12-18 | Campinas-GO | 53435 | Campinas 4 x 2 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0816 | 1972-02-06 | Campinas-GO | 55959 | Goiás 1 x 0 Campinas | Olímpico (Goiânia-GO) |
+| hist-f80-0824 | 1972-03-29 | Campinas-GO | 55973 | Campinas 1 x 1 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-0856 | 1972-10-08 | Campinas-GO | 21190 | Goiás 2 x 0 Campinas FC | Olímpico (Goiânia-GO) |
+| hist-f80-0863 | 1972-11-16 | Campinas-GO | 45693 | Goiás 3 x 0 Campinas | Olímpico (Goiânia-GO) |
+| hist-f80-0868 | 1972-12-13 | Campinas-GO | 45701 | Campinas 1 x 1 Goiás | Olímpico (Goiânia-GO) |
+| hist-f80-1461 | 1982-04-28 | Nacional de Itumbiara-GO | 22540 | Nacional 2 x 1 Goiás | JK (Itumbiara-GO) |
+| hist-f80-1481 | 1982-08-22 | Nacional de Itumbiara-GO | 22642 | Nacional 0 x 3 Goiás | JK (Itumbiara-GO) |
+| hist-f80-1489 | 1982-10-13 | Nacional de Itumbiara-GO | 22671 | Goiás 0 x 0 Nacional | Serra Dourada (Goiânia-GO) |
+| hist-f80-1930 | 1990-01-31 | Mineiros-GO | 23891 | Mineiros 2 x 1 Goiás | Odilon Flores (Mineiros-GO) |
+| hist-f80-1931 | 1990-02-04 | Novo Horizonte-GO | 23896 | Goiás 2 x 0 Novo Horizonte | Serra Dourada (Goiânia-GO) |
+| hist-f80-1934 | 1990-02-14 | Quirinópolis-GO | 23903 | Quirinópolis 2 x 2 Goiás | Bichinho Vieira (Quirinópolis-GO) |
+| hist-f80-1936 | 1990-02-24 | Mineiros-GO | 23914 | Goiás 0 x 1 Mineiros | Serra Dourada (Goiânia-GO) |
+| hist-f80-1937 | 1990-03-04 | Novo Horizonte-GO | 23917 | Novo Horizonte 0 x 1 Goiás | Durval Ferreira Franco (Ipameri-GO) |
+| hist-f80-1940 | 1990-03-14 | Quirinópolis-GO | 23924 | Goiás 5 x 0 Quirinópolis | Serra Dourada (Goiânia-GO) |
+| hist-f80-1942 | 1990-03-21 | América de Morrinhos-GO | 23974 | América 0 x 0 Goiás | João Vilela (Morrinhos-GO) |
+| hist-f80-1943 | 1990-03-25 | América de Morrinhos-GO | 23975 | Goiás 3 x 0 América | Serra Dourada (Goiânia-GO) |
+| hist-f80-1946 | 1990-04-04 | América de Morrinhos-GO | 24010 | Goiás 6 x 1 América | Serra Dourada (Goiânia-GO) |
+| hist-f80-1950 | 1990-04-22 | América de Morrinhos-GO | 24025 | América 1 x 3 Goiás | João Vilela (Morrinhos-GO) |
+| hist-f80-1951 | 1990-04-29 | Santa Helena-GO | 24029 | Santa Helena 0 x 1 Goiás | Pedro Romualdo Cabral (Santa Helena de Goiás-GO) |
+| hist-f80-1952 | 1990-05-02 | Goiatuba-GO | 24035 | Goiás 0 x 1 Goiatuba | Serra Dourada (Goiânia-GO) |
+| hist-f80-1956 | 1990-05-16 | Mineiros-GO | 24044 | Mineiros 1 x 1 Goiás | Odilon Flores (Mineiros-GO) |
+| hist-f80-1957 | 1990-05-20 | Mineiros-GO | 24045 | Goiás 3 x 2 Mineiros | Serra Dourada (Goiânia-GO) |
+| hist-f80-2344 | 1996-02-03 | Caldas-GO | 25527 | Goiás 1 x 2 Caldas | Serrinha (Goiânia-GO) |
+
+### Novo estado canônico
+- **Confirmadas: 1.616 / 2.102 = 76,88%**
+- UNKNOWN: 486 · Vazias: 38 · Backlog: 524
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1616.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1616.csv`
+- **Meta: 80% (1.682).** Faltam 66.
