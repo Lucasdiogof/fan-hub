@@ -1,0 +1,62 @@
+[
+ {
+  "id": "hist-f80-1117",
+  "csv_date": "1976-11-07",
+  "csv_opp": "Operário de Várzea Grande-MT",
+  "url": "https://futebolnacional.com.br/siteapp/page.jsp?module=teammatches&code=FC7366E4E77D6AED56CC37140239DB62&year=1976&lang=pt-br",
+  "date": "07/11/1976",
+  "game": "Operário(VG)/MT 0-1 Goiás/GO",
+  "comp": "Fase Classificatória - 07/11/1976 - Domingo",
+  "venue": "José Fragelli (Verdão)",
+  "venue_raw": "José Fragelli (Verdão), Cuiabá/MT, Brasil",
+  "city": "Cuiabá"
+ },
+ {
+  "id": "hist-f80-1121",
+  "csv_date": "1976-11-28",
+  "csv_opp": "Operário de Campo Grande-MT",
+  "url": "https://futebolnacional.com.br/siteapp/page.jsp?module=teammatches&code=FC7366E4E77D6AED56CC37140239DB62&year=1976&lang=pt-br",
+  "date": "28/11/1976",
+  "game": "Operário/MS 1-1 Goiás/GO",
+  "comp": "Fase Classificatória - 28/11/1976 - Domingo",
+  "venue": "Pedro Pedrossian (Morenão)",
+  "venue_raw": "Pedro Pedrossian (Morenão), Campo Grande/MS, Brasil",
+  "city": "Campo Grande"
+ },
+ {
+  "id": "hist-f80-1443",
+  "csv_date": "1982-01-20",
+  "csv_opp": "Taguatinga-DF",
+  "url": "https://futebolnacional.com.br/siteapp/page.jsp?module=teammatches&code=FC7366E4E77D6AED56CC37140239DB62&year=1982&lang=pt-br",
+  "date": "20/01/1982",
+  "game": "Goiás/GO 3-0 Taguatinga EC/DF",
+  "comp": "1ª Fase - 2ª Rodada - 20/01/1982 - Quarta",
+  "venue": "Serra Dourada",
+  "venue_raw": "Serra Dourada, Goiânia/GO, Brasil",
+  "city": "Goiânia"
+ },
+ {
+  "id": "hist-f80-1444",
+  "csv_date": "1982-01-28",
+  "csv_opp": "Grêmio Maringá-PR",
+  "url": "https://futebolnacional.com.br/siteapp/page.jsp?module=teammatches&code=FC7366E4E77D6AED56CC37140239DB62&year=1982&lang=pt-br",
+  "date": "28/01/1982",
+  "game": "Goiás/GO 1-1 Grêmio Maringá/PR",
+  "comp": "1ª Fase - 4ª Rodada - 28/01/1982 - Quinta",
+  "venue": "Serra Dourada",
+  "venue_raw": "Serra Dourada, Goiânia/GO, Brasil",
+  "city": "Goiânia"
+ },
+ {
+  "id": "hist-f80-2345",
+  "csv_date": "1996-02-06",
+  "csv_opp": "Ferroviário-CE",
+  "url": "https://futebolnacional.com.br/siteapp/page.jsp?module=teammatches&code=FC7366E4E77D6AED56CC37140239DB62&year=1996&lang=pt-br",
+  "date": "06/02/1996",
+  "game": "Ferroviário/CE 0-1 Goiás/GO",
+  "comp": "Fase Preliminar - Ida - 06/02/1996 - Terça",
+  "venue": "Getúlio Vargas (Presidente Vargas)",
+  "venue_raw": "Getúlio Vargas (Presidente Vargas), Fortaleza/CE, Brasil",
+  "city": "Fortaleza"
+ }
+]

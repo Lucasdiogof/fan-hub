@@ -559,3 +559,22 @@ Fontes testadas SEM resultado nesta rodada:
 - UNKNOWN: 475 · Vazias: 38
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1627.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1627.csv`
 - **Meta: 80% (1.682).** Faltam 55.
+
+## Atualização de pesquisa — 2026-09-28 (19) — Futebol Nacional (+5)
+futebolnacional.com.br ('Jogos de uma equipe', código do Goiás FC7366E4E77D6AED56CC37140239DB62) tem 1.858 jogos do Goiás entre 1943 e 1999, inclusive Goiano. Só 123 trazem o local. Os fragmentos vêm de `siteapp/controller.jsp?module=teammatches&code=...&year=AAAA`, que dá para baixar com curl.
+Cruzei por data (±2 dias) e placar exato do lado do Goiás: 6 casaram. Descartei de novo hist-f80-0606. **+5 aplicadas** com `_apply_futebolnacional.py` + `_confirmacoes_lote_futebolnacional1.json`, separando o nome do estádio da cidade.
+**Alerta de dado:** hist-f80-0606 (06/08/1967, CSV 'Inhumas-GO 0 x 1') aparece em DUAS fontes independentes, ogol e Futebol Nacional, como **Rio Branco-ES 1-0 Goiás**, Taça Brasil 1967, no estádio Governador Bley (Vitória-ES). O adversário no CSV parece errado. Não mexi em nada; decisão do usuário.
+
+| id | data | adversário (CSV) | jogo no Futebol Nacional | local |
+|---|---|---|---|---|
+| hist-f80-1117 | 1976-11-07 | Operário de Várzea Grande-MT | Operário(VG)/MT 0-1 Goiás/GO | José Fragelli (Verdão), Cuiabá/MT, Brasil |
+| hist-f80-1121 | 1976-11-28 | Operário de Campo Grande-MT | Operário/MS 1-1 Goiás/GO | Pedro Pedrossian (Morenão), Campo Grande/MS, Brasil |
+| hist-f80-1443 | 1982-01-20 | Taguatinga-DF | Goiás/GO 3-0 Taguatinga EC/DF | Serra Dourada, Goiânia/GO, Brasil |
+| hist-f80-1444 | 1982-01-28 | Grêmio Maringá-PR | Goiás/GO 1-1 Grêmio Maringá/PR | Serra Dourada, Goiânia/GO, Brasil |
+| hist-f80-2345 | 1996-02-06 | Ferroviário-CE | Ferroviário/CE 0-1 Goiás/GO | Getúlio Vargas (Presidente Vargas), Fortaleza/CE, Brasil |
+
+### Novo estado canônico
+- **Confirmadas: 1.632 / 2.102 = 77,64%**
+- UNKNOWN: 470 · Vazias: 38
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1632.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1632.csv`
+- **Meta: 80% (1.682).** Faltam 50.
