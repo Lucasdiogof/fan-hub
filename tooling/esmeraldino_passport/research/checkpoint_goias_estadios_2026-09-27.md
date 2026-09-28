@@ -156,6 +156,37 @@ Cruzamento: os 6 jogos de 1955 que já estavam confirmados batem com as fichas (
 - Pendências do Torneio Início (bloqueadas por falta de fonte específica ou pelo CAPTCHA): 05/05/1957 (1 jogo), 01/04/1956 (4), 24/04/1955 (3).
 - Pista principal: Jornal de Notícias, 1956, edição 00014, única ocorrência da frase "torneio inicio" em 1956. Precisa de CAPTCHA resolvido por humano.
 
+## Atualização de pesquisa — 2026-09-28 — Lote 1954 (nova estratégia paralela)
+Nova estratégia adotada pelo usuário: parar de trabalhar ano-a-ano e atacar o backlog inteiro (917 partidas: 879 UNKNOWN + 38 vazias) priorizando rendimento, sem travar em pendências difíceis.
+
+### 1954: 6/6 CONFIRMADOS (fichas do Futebol de Goyaz, Citadino 1954 = campeonatos/592)
+Edição 1954 tem só 5 clubes: Goiânia, Atlético, Sírio Libanês, Goiás, União (confirmado na página da edição). NÃO existe "Botafogo" nessa edição — as 2 pendências com adversário "Botafogo de Goiânia-GO" batem exatamente em data+placar com fichas do Sírio Libanês, então o estádio foi confirmado por esse cruzamento (o campo `opponent` do dataset NÃO foi alterado, só documentado em `conflict_note` como possível alias a decidir depois).
+
+| Data (CSV) | Adversário (CSV) | Placar | Estádio | Ficha FdG | Observação |
+|---|---|---|---|---|---|
+| 27/06/1954 | Botafogo de Goiânia-GO | 2x2 | Olímpico | [48709](https://www.futeboldegoyaz.com.br/partidas/48709/partida) | Ficha registra "Sírio Libanês 2x2 Goiás", mesma data e placar exatos |
+| 22/08/1954 | União-GO | 1x2 | Olímpico | [48715](https://www.futeboldegoyaz.com.br/partidas/48715/partida) | Data/placar/mando exatos |
+| 08/09/1954 | Goiânia-GO | 0x2 | Olímpico | [48718](https://www.futeboldegoyaz.com.br/partidas/48718/partida) | Ficha data 07/09 (1 dia de diferença), placar e adversário exatos |
+| 17/10/1954 | União-GO | 3x2 | Olímpico | [48720](https://www.futeboldegoyaz.com.br/partidas/48720/partida) | Ficha data 31/10 (2 semanas de diferença); ficha 48721 confirma que 17/10 é outro jogo (Atlético x Sírio, WOx0); placar+adversário únicos na temporada |
+| 21/11/1954 | Goiânia-GO | 1x1 | Olímpico | [48725](https://www.futeboldegoyaz.com.br/partidas/48725/partida) | Data/placar/mando exatos |
+| 05/12/1954 | Botafogo de Goiânia-GO | 0x2 | Olímpico | [48727](https://www.futeboldegoyaz.com.br/partidas/48727/partida) | Ficha registra "Goiás 0x2 Sírio Libanês", mesma data e placar exatos |
+
+Método: varredura por interpolação de data dentro da faixa de IDs do Citadino 1954 (48709–48728, 19 rodadas). Confirmado que os IDs do Futebol de Goyaz NÃO são estritamente monotônicos por data dentro da mesma edição (ex.: ID 48720 = 31/10, ID 48721 = 17/10 — ordem trocada), então a busca binária por data precisa de ajuste fino ao redor do alvo, não é puramente sequencial.
+
+**1954 FECHADO — todos os 6 jogos pendentes confirmados, todos no Estádio Olímpico, Goiânia-GO.**
+
+### Pista aberta (NÃO confirmada) — Copa Centro-Oeste 2000, Vila Nova
+Busca web (não ficha) indica que a final da Copa Centro-Oeste 2000 (Goiás x Vila Nova, ida 3x1 e volta 5x1, agregado 8x2) teve o jogo de volta no **Serra Dourada** — mas a fonte (maisgoias.com.br) devolveu HTTP 403 ao tentar o fetch direto, e o Wayback Machine não está acessível nesta sessão. Só temos o resumo do buscador, não o trecho literal da página. **NÃO promovido a CONFIRMADO** por não bater com a regra de citar trecho literal da fonte. Corresponde à linha `pe_dedd5fdf9e2e6216` (2000-03-01, Vila Nova, 5-1). Próxima sessão: tentar ler a página por outro caminho (cache do Google, outro user-agent, ou buscar a mesma notícia em outro veículo) antes de confirmar.
+
+### Novo estado canônico (escopo 2.102, dataset_origin=historical_futebol80)
+- **Confirmadas: 1.229 / 2.102 = 58,47%** (+6 neste lote)
+- UNKNOWN: 873
+- Vazias (fora do escopo 2102, dataset_origin=modern_audited_2000_2026, Copa Centro-Oeste 2000-2002): 38 (sem alteração neste lote)
+- Backlog operacional total: 911 (873 + 38)
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1229.csv` (dataset completo) e `GOIAS_PENDENCIAS_ESTADIOS_1229.csv` (fila operacional, 911 linhas)
+- Scripts usados: `_apply_1954.mjs` (aplica as 6 confirmações) e `_gen_pendencias.mjs` (regenera a fila de pendências a partir do checkpoint)
+- Próximo bloco recomendado: 1953 e 1952 pelo mesmo método (Citadino de Goiânia, IDs decrescentes a partir de ~48709); e retomar a pista do Serra Dourada/Copa Centro-Oeste 2000 com outra fonte.
+
 ### Aliases de estádio (normalização canônica, rascunho)
 - `passaporte_esmeraldino_VENUE_ALIASES_rascunho.csv` + `passaporte_esmeraldino_VENUE_ALIASES_gerar.py`
 - O nome bruto NÃO é alterado no dataset. O mapa liga (venue_name, venue_city) a canonical_id.
