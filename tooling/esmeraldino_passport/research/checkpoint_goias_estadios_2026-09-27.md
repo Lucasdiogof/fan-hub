@@ -678,3 +678,15 @@ Todos os trechos abaixo foram conferidos na imagem:
 - **Confirmadas: 1.791 / 2.102 = 85,20%** ✅ (meta de 85% = 1.787)
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1791.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1791.csv`
 - Ainda há margem no Diário da Manhã: pendências de 1980–99 sem casamento automático e o ano de 1985 (sem acervo no IHGG).
+
+## Atualização de pesquisa — 2026-09-28 (27) — Diário da Manhã: matérias PRÉ-JOGO + extrator de matérias afinado (+64)
+Nova meta do usuário: **90% (1.892)**.
+- `_dm_extrair_materias.py` afinado para o OCR: aceita nomes e placares GRUDADOS ("ontem à tarde noSerra Dourada", "do0a0"), variantes ("Serra Dourado", "Sena Dourada", "Serrjnha"), sinônimos do Goiás (esmeraldino, alviverde, Verdão, Periquito), janela de ±420 caracteres e D+1..D+3. Saíram 17 candidatos novos, e **8 foram aprovados** (1570, 1861, 2147, 2165, 2166, 2437, 2542, 2554).
+- **Extrator novo `_dm_extrair_prejogo.py`:** matéria/ficha PRÉ-JOGO na edição do próprio dia ("hoje") ou da véspera ("amanhã"), com Goiás + adversário + estádio no mesmo trecho. 94 candidatos revisados um por um; **56 aprovados**. Rejeitados: juniores; só a cidade ("vai a Santa Helena", "em Piracanjuba"); treino na Serrinha; jogos de outros times citados no mesmo trecho; e "Centro Olímpico" no hist-f80-1867 (Ceres também tem um "Centro Olímpico" e o texto não desfaz a dúvida).
+- Estádios novos no dataset, sempre com o nome da fonte: "Pedro Pedrossian (Morenão)", Campo Grande (1571: "contra o Operário, hoje às 17 horas, no estádio Pedro Pedrossian, em Campo Grande"); "Gilmar Alves", Bom Jesus (2417); "Centro Olímpico", Ceres (2162: ficha "Ceres X Goiás. Local: Estádio Centro Olímpico (Ceres, 20h30)").
+- Critério do PRÉ-JOGO: vale como evidência específica (data + times + estádio para AQUELE jogo), no mesmo espírito do Torneio Início de 1956/1959. A nota de cada linha deixa explícito que é pré-jogo.
+- Aplicado com `_apply_jornal.py` + `_confirmacoes_lote_dm3.json`.
+
+### Novo estado canônico
+- **Confirmadas: 1.855 / 2.102 = 88,25%**. Faltam 37 para os 90%.
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1855.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1855.csv`

@@ -24,12 +24,15 @@ STADIUMS = ['SERRA DOURADA', 'SERRINHA', 'OLIMPICO', 'PEDRO LUDOVICO', 'ANTONIO 
             'PEDRO ROMUALDO', 'ZICO BRANDAO', 'JOAO VILELA', 'DURVAL FERREIRA', 'BICHINHO VIEIRA', 'JERONIMO FRAGA', 'ARAPUCAO',
             'SERRA DO LAGO', 'JOSE DE DEUS', 'VALDEIR', 'ONESIO', 'OBA', 'SERRA DE CALDAS', 'EDSON MONTEIRO', 'HAILE PINHEIRO',
             'ANIBAL BATISTA', 'ABRAO MANOEL', 'NAZARENO', 'PLINIO JOSE']
-ST = re.compile(r'\b(' + '|'.join(re.escape(s).replace(r'\ ', r'\s+') for s in STADIUMS) + r')\b')
+# sem \b: o OCR cola palavras ("noSerra Dourada"); variantes comuns de OCR incluídas
+STX = [re.escape(x).replace(r'\ ', r'\s*') for x in STADIUMS if x not in ('JK', 'OBA')]
+STX += [r'SER{1,2}A\s*DOURAD[AO]', r'SENA\s*DOURAD[AO]', r'SER{1,2}[IJ]NHA', r'OL[IL]MPICO', r'\bJK\b']
+ST = re.compile('(' + '|'.join(STX) + ')')
 
 rows = list(csv.DictReader(open(ck, encoding='utf-8-sig')))
 hist = [r for r in rows if r['dataset_origin'] == 'historical_futebol80' and r['effective_date']]
 dates_all = sorted(datetime.date.fromisoformat(r['effective_date']) for r in hist)
-GOI = re.compile(r'GOI\s?-?\s?AS\b')
+GOI = re.compile(r'GO[I1L]\s?-?\s?AS|ESMERALDIN|ALVIVERDE|VERDAO|PERIQUITO')
 
 def opp_names(opp):
     base = fold(re.sub(r'-[A-Z]{2}$', '', opp.strip()))
@@ -43,7 +46,7 @@ def opp_names(opp):
         names.add('DRAGAO')
     if base == 'VILA NOVA':
         names.add('TIGRE')
-    return [re.compile(r'\b' + re.escape(n).replace(r'\ ', r'\s+') + r'\b') for n in names]
+    return [re.compile(re.escape(n).replace(r'\ ', r'\s*')) for n in names]
 
 res = []
 for r in hist:
@@ -51,9 +54,9 @@ for r in hist:
         continue
     D = datetime.date.fromisoformat(r['effective_date'])
     gs, os_ = int(float(r['goias_score'])), int(float(r['opponent_score']))
-    SC = re.compile(r'\b(%d\s*(?:A|X)\s*%d|%d\s*(?:A|X)\s*%d)\b' % (gs, os_, os_, gs))
+    SC = re.compile(r'(?<!\d)(%d\s*(?:A|X)\s*%d|%d\s*(?:A|X)\s*%d)(?!\d)' % (gs, os_, os_, gs))
     OPPS = opp_names(r['opponent'])
-    for k in (1, 2):
+    for k in (1, 2, 3):
         E = D + datetime.timedelta(days=k)
         if any(D < x <= E for x in dates_all):
             break
@@ -64,7 +67,7 @@ for r in hist:
         T = fold(t)
         cands = []
         for m in ST.finditer(T):
-            a, b = max(0, m.start() - 300), m.end() + 300
+            a, b = max(0, m.start() - 420), m.end() + 420
             w = T[a:b]
             if GOI.search(w) and SC.search(w) and any(o.search(w) for o in OPPS):
                 pg = t.rfind('=====PAGE', 0, m.start())
