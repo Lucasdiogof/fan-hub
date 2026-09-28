@@ -889,3 +889,20 @@ Busquei também: Wikipédia (só repete a regra genérica "antes de 1974 era sem
 
 ### Estado canônico (sem mudança)
 - **Confirmadas: 1.921 / 2.102 = 91,39%**
+
+## Atualização de pesquisa — 2026-09-28 (38) — blog "Arquivos de Futebol do Brasil": corrobora placar, ainda sem estádio (+0)
+
+Enquanto o usuário prepara o navegador pra resolver mais CAPTCHA da BN (deixei uma aba aberta em `memoria.bn.gov.br/DocReader/docreader.aspx?bib=843687` pronta pra ele), continuei caçando fontes sozinho.
+
+**Descoberta: `arquivosfutebolbrasil.com.br`** — blog dedicado à pesquisa histórica de futebol brasileiro (pesquisador Julio Bovi Diogo, contato `juliodiogo@litoral.com.br`), com milhares de posts incluindo "Jogos Históricos" (partida única, pesquisa profunda) e resumos de temporada completos ("Campeonato Goiano – 1ª Divisão – 1966" etc.).
+
+- **Achei a página "Campeonato Goiano – 1ª Divisão – 1966"** com a temporada inteira do Goiás: bate EXATO com hist-f80-0564 — "19.05.1966: Goiás 4×1 Botafogo" (data idêntica ao CSV, ao contrário da fonte anterior do Futebol de Goyaz que tinha 22/05). **Isso é uma segunda fonte independente confirmando a mesma partida com a data exata** — reforça bastante a confiança na confirmação já aplicada (mesmo estádio, Olímpico).
+- **Mas essa página, como as demais páginas de "temporada resumida" do blog, não tem coluna de estádio** — só data, adversário e placar. As páginas "Jogo Histórico" (partida única) têm mais texto, mas testei 2 delas (Goiânia x Ferroviário 1959, Sírio Libanês x Ferroviário 1958 — datas fora do nosso alvo) e nenhuma citava estádio também, só "Goiânia – GO" genérico.
+- Busquei especificamente por Ferroviário-GO 26/02/1964, Santa Rita-GO 13/01/1963 e Torneio Início 1966 nesse blog (busca interna do site) — **nenhum post dedicado a essas partidas específicas existe**.
+- Não achei páginas de temporada completa pra 1962-1965 nesse blog (só 1960, 1961, 1966-1968, 1972 existem) — não cobre os anos que mais precisamos de 1962-65.
+
+**Total do dia (38): +0 confirmações, mas reforço de confiança numa já aplicada.**
+
+### Estado canônico (sem mudança)
+- **Confirmadas: 1.921 / 2.102 = 91,39%**
+- Navegador aberto e pronto pro usuário resolver CAPTCHA da BN quando quiser (aba separada da minha pesquisa).
