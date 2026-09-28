@@ -4,7 +4,7 @@ Vivaldão,Manaus,1,am-vivaldao,Estádio Vivaldo Lima (Vivaldão),Manaus,,
 Estádio Municipal Glicério de Souza Marques (Glicerão),Macapá,1,ap-glicerao,Estádio Municipal Glicério de Souza Marques (Glicerão),Macapá,,
 Glicerão,Macapá,1,ap-glicerao,Estádio Municipal Glicério de Souza Marques (Glicerão),Macapá,,
 Albertão,Teresina,1,auto-albertao,Albertão,Teresina,,Sem alias conhecido; canônico = o próprio nome.
-Arapucão,Jataí,1,auto-arapucao,Arapucão,Jataí,,Sem alias conhecido; canônico = o próprio nome.
+Arapucão,Jataí,2,auto-arapucao,Arapucão,Jataí,,Sem alias conhecido; canônico = o próprio nome.
 Arena Barueri,Barueri,7,auto-arena-barueri,Arena Barueri,Barueri,,Sem alias conhecido; canônico = o próprio nome.
 Arena Condá,Chapecó,5,auto-arena-conda,Arena Condá,Chapecó,,Sem alias conhecido; canônico = o próprio nome.
 Arena da Amazônia,Manaus,2,auto-arena-da-amazonia,Arena da Amazônia,Manaus,,Sem alias conhecido; canônico = o próprio nome.
@@ -21,7 +21,7 @@ Avenida Goiás,Ceres,1,auto-avenida-goias,Avenida Goiás,Ceres,,Sem alias conhec
 Barão de Serra Negra,Piracicaba,1,auto-barao-de-serra-negra,Barão de Serra Negra,Piracicaba,,Sem alias conhecido; canônico = o próprio nome.
 Barão de Serra Negra,UNKNOWN,1,auto-barao-de-serra-negra,Barão de Serra Negra,UNKNOWN,,Sem alias conhecido; canônico = o próprio nome.
 Batistão,Aracaju,2,auto-batistao,Batistão,Aracaju,,Sem alias conhecido; canônico = o próprio nome.
-Bichinho Vieira,Quirinópolis,4,auto-bichinho-vieira,Bichinho Vieira,Quirinópolis,,Sem alias conhecido; canônico = o próprio nome.
+Bichinho Vieira,Quirinópolis,5,auto-bichinho-vieira,Bichinho Vieira,Quirinópolis,,Sem alias conhecido; canônico = o próprio nome.
 Boulanger Pucci,Uberaba,1,auto-boulanger-pucci,Boulanger Pucci,Uberaba,,Sem alias conhecido; canônico = o próprio nome.
 Campo de Pires do Rio,Pires do Rio,1,auto-campo-de-pires-do-rio,Campo de Pires do Rio,Pires do Rio,,Sem alias conhecido; canônico = o próprio nome.
 Centenário,Caxias do Sul,1,auto-centenario,Centenário,Caxias do Sul,,Sem alias conhecido; canônico = o próprio nome.
@@ -30,7 +30,7 @@ Do Goiazinho,Itumbiara,2,auto-do-goiazinho,Do Goiazinho,Itumbiara,,Sem alias con
 Dr. Ronaldo Junqueira (Ronaldão),UNKNOWN,1,auto-dr-ronaldo-junqueira-ronaldao,Dr. Ronaldo Junqueira (Ronaldão),UNKNOWN,,Sem alias conhecido; canônico = o próprio nome.
 Durval Ferreira Franco,Ipameri,2,auto-durval-ferreira-franco,Durval Ferreira Franco,Ipameri,,Sem alias conhecido; canônico = o próprio nome.
 Edgar Ferreira,Buriti Alegre,3,auto-edgar-ferreira,Edgar Ferreira,Buriti Alegre,,Sem alias conhecido; canônico = o próprio nome.
-Edson Monteiro de Godói,Pires do Rio,2,auto-edson-monteiro-de-godoi,Edson Monteiro de Godói,Pires do Rio,,Sem alias conhecido; canônico = o próprio nome.
+Edson Monteiro de Godói,Pires do Rio,3,auto-edson-monteiro-de-godoi,Edson Monteiro de Godói,Pires do Rio,,Sem alias conhecido; canônico = o próprio nome.
 Elpídio Brandão,UNKNOWN,1,auto-elpidio-brandao,Elpídio Brandão,UNKNOWN,,Sem alias conhecido; canônico = o próprio nome.
 Engenheiro Alencar de Araripe,UNKNOWN,1,auto-engenheiro-alencar-de-araripe,Engenheiro Alencar de Araripe,UNKNOWN,,Sem alias conhecido; canônico = o próprio nome.
 Ernesto Schlemm Sobrinho (Ernestão),UNKNOWN,1,auto-ernesto-schlemm-sobrinho-ernestao,Ernesto Schlemm Sobrinho (Ernestão),UNKNOWN,,Sem alias conhecido; canônico = o próprio nome.
@@ -154,30 +154,30 @@ Boca do Jacaré,Taguatinga,1,df-serejao,Estádio Elmo Serejo Farias (Serejão),T
 Engenheiro Araripe,Cariacica,3,es-araripe,Estádio Engenheiro Araripe,Cariacica,,
 Engenheiro Araripe,UNKNOWN,2,es-araripe,Estádio Engenheiro Araripe,Cariacica,,
 Antônio Accioly,UNKNOWN,25,go-accioly,Estádio Antônio Accioly,Goiânia,,
-Antônio Accioly,Goiânia,13,go-accioly,Estádio Antônio Accioly,Goiânia,,
+Antônio Accioly,Goiânia,14,go-accioly,Estádio Antônio Accioly,Goiânia,,
 Estádio Antônio Accioly,Goiânia,13,go-accioly,Estádio Antônio Accioly,Goiânia,,
 Divino Garcia Rosa,UNKNOWN,14,go-divino-garcia,Estádio Divino Garcia Rosa,Goiatuba,,
-Divino Garcia Rosa,Goiatuba,6,go-divino-garcia,Estádio Divino Garcia Rosa,Goiatuba,,
+Divino Garcia Rosa,Goiatuba,8,go-divino-garcia,Estádio Divino Garcia Rosa,Goiatuba,,
 Estádio Divino Garcia Rosa,Goiatuba,4,go-divino-garcia,Estádio Divino Garcia Rosa,Goiatuba,,
 Estádio Genervino da Fonseca,Catalão,20,go-genervino,Estádio Genervino da Fonseca,Catalão,,
 Genervino da Fonseca,UNKNOWN,9,go-genervino,Estádio Genervino da Fonseca,Catalão,,
-Genervino da Fonseca,Catalão,4,go-genervino,Estádio Genervino da Fonseca,Catalão,,
+Genervino da Fonseca,Catalão,5,go-genervino,Estádio Genervino da Fonseca,Catalão,,
 Jerônimo Fraga,UNKNOWN,4,go-jeronimo-fraga,Estádio Jerônimo Fraga,Jataí,,
 Jerônimo Fraga,Jataí,1,go-jeronimo-fraga,Estádio Jerônimo Fraga,Jataí,,
-JK,Itumbiara,23,go-jk-itumbiara,Estádio Municipal Juscelino Kubitschek,Itumbiara,,
+JK,Itumbiara,28,go-jk-itumbiara,Estádio Municipal Juscelino Kubitschek,Itumbiara,,
 Estádio Municipal Juscelino Kubitschek,Itumbiara,19,go-jk-itumbiara,Estádio Municipal Juscelino Kubitschek,Itumbiara,,
 JK,UNKNOWN,1,go-jk-itumbiara,Estádio Municipal Juscelino Kubitschek,Itumbiara,YES,"""JK"" sem cidade: provável Itumbiara, conferir linha a linha."
 Estádio João Vilela,Morrinhos,6,go-joao-vilela,Estádio João Vilela,Morrinhos,,
-Centro Esportivo João Vilela,Morrinhos,2,go-joao-vilela,Estádio João Vilela,Morrinhos,,
+Centro Esportivo João Vilela,Morrinhos,3,go-joao-vilela,Estádio João Vilela,Morrinhos,,
 Jonas Duarte,UNKNOWN,45,go-jonas-duarte,Estádio Jonas Duarte,Anápolis,,
 Estádio Jonas Duarte,Anápolis,38,go-jonas-duarte,Estádio Jonas Duarte,Anápolis,,
-Jonas Duarte,Anápolis,25,go-jonas-duarte,Estádio Jonas Duarte,Anápolis,,
+Jonas Duarte,Anápolis,31,go-jonas-duarte,Estádio Jonas Duarte,Anápolis,,
 Mozart Veloso do Carmo,Rio Verde,10,go-mozart-veloso,Estádio Mozart Veloso do Carmo,Rio Verde,,
 Estádio Mozart Veloso do Carmo,Rio Verde,8,go-mozart-veloso,Estádio Mozart Veloso do Carmo,Rio Verde,,
 Mozart Veloso do Carmo,UNKNOWN,1,go-mozart-veloso,Estádio Mozart Veloso do Carmo,Rio Verde,,
 Odilon Flores,Mineiros,7,go-odilon-flores,Estádio Odilon Flores,Mineiros,,
 Estádio Odilon Flores,Mineiros,4,go-odilon-flores,Estádio Odilon Flores,Mineiros,,
-Olímpico,Goiânia,274,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
+Olímpico,Goiânia,279,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Olímpico,UNKNOWN,226,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,YES,"Todas as 226 linhas são do histórico (1943-1997). 225 = Olímpico de Goiânia. EXCEÇÃO POR LINHA: hist-f80-2406 (24/11/1996, Grêmio 3 x 1 Goiás, Goiás visitante) = rs-olimpico-monumental."
 Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,40,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Estádio da Avenida Paranaíba,Goiânia,8,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
@@ -186,15 +186,15 @@ Estádio Oficial Pedro Ludovico,Goiânia,3,go-olimpico,Estádio Olímpico Pedro 
 Estádio Dr. Pedro Ludovico,Goiânia,3,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Pedro Ludovico,Goiânia,2,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
 Pedro Ludovico,UNKNOWN,1,go-olimpico,Estádio Olímpico Pedro Ludovico Teixeira,Goiânia,,
-Pedro Romualdo Cabral,Santa Helena de Goiás,8,go-pedro-romualdo,Estádio Pedro Romualdo Cabral,Santa Helena de Goiás,,
+Pedro Romualdo Cabral,Santa Helena de Goiás,9,go-pedro-romualdo,Estádio Pedro Romualdo Cabral,Santa Helena de Goiás,,
 Estádio Pedro Romualdo Cabral,Santa Helena de Goiás,3,go-pedro-romualdo,Estádio Pedro Romualdo Cabral,Santa Helena de Goiás,,
 Pedro Romualdo Cabral,UNKNOWN,1,go-pedro-romualdo,Estádio Pedro Romualdo Cabral,Santa Helena de Goiás,,
 Pedro Romualdo Cabral,Rio Verde,1,go-pedro-romualdo,Estádio Pedro Romualdo Cabral,Santa Helena de Goiás,YES,"Cidade bruta ""Rio Verde"" difere da canônica ""Santa Helena de Goiás""."
 Estádio Serra Dourada,Goiânia,647,go-serra-dourada,Estádio Serra Dourada,Goiânia,,
 Serra Dourada,UNKNOWN,354,go-serra-dourada,Estádio Serra Dourada,Goiânia,,
-Serra Dourada,Goiânia,269,go-serra-dourada,Estádio Serra Dourada,Goiânia,,
+Serra Dourada,Goiânia,297,go-serra-dourada,Estádio Serra Dourada,Goiânia,,
 Estádio Hailé Pinheiro (Serrinha),Goiânia,231,go-serrinha,Estádio Hailé Pinheiro (Serrinha),Goiânia,,
-Serrinha,Goiânia,21,go-serrinha,Estádio Hailé Pinheiro (Serrinha),Goiânia,,
+Serrinha,Goiânia,36,go-serrinha,Estádio Hailé Pinheiro (Serrinha),Goiânia,,
 Serrinha,UNKNOWN,3,go-serrinha,Estádio Hailé Pinheiro (Serrinha),Goiânia,,
 Hailé Pinheiro,Goiânia,1,go-serrinha,Estádio Hailé Pinheiro (Serrinha),Goiânia,,
 Estádio Valdeir José de Oliveira,Goianésia,13,go-valdeir,Estádio Valdeir José de Oliveira,Goianésia,,

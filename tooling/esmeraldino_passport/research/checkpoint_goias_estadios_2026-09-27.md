@@ -665,3 +665,16 @@ Todos os trechos abaixo foram conferidos na imagem:
 - **Confirmadas: 1.723 / 2.102 = 81,97%** · PROVÁVEIS: 122
 - Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1723.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1723.csv`
 - Nova meta do usuário: **85% (1.787)**. Faltam 64.
+
+## Atualização de pesquisa — 2026-09-28 (26) — Diário da Manhã: matérias pós-jogo e fichas pré-jogo (+68) · META DE 85% ATINGIDA
+- Baixei mais 462 edições do Diário da Manhã (véspera, dia do jogo e D+3). O `_dm_extrair_fichas.py` ganhou dois caminhos novos: a janela D+3 e as **fichas pré-jogo** (edição do dia/véspera: "Jogo: Goiás x Adversário. Local: ... Horário: ...", com os dois times na linha e sem placar).
+- **Extrator novo `_dm_extrair_materias.py`:** para edições SEM ficha técnica, procura na matéria pós-jogo (D+1/D+2) um trecho com Goiás + adversário + placar exato + nome de estádio conhecido (ex.: "O Goiás venceu o Santa Helena por 1 a 0 ... Ontem à noite, no Serra Dourada"). Saíram 80 candidatos.
+- **Revisão manual de todos os trechos** (4 lotes de 20). Descartados: 1599, 1761, 1808, 1868, 1870, 2147, 2223, 2417, 2436, 2485, 2487, 2490, 2495, 2546, 2571 (estádio de OUTRO jogo da rodada ou do próximo jogo, só a cidade, ou "jogos no interior") e 1754 (ficha de JUNIORES) e 2164 pré-jogo (OCR engoliu o local). Conferidos na imagem: 1874 (Olímpico), 2492 (JK), 2494 (Serrinha), 2503 (Jonas Duarte) e 2546 (descartado: "ambos os jogos no interior").
+- hist-f80-2273 (Crac 1x1 Goiás, 1995), descartado na seção 25 porque a ficha era de outro jogo, agora está confirmado pela matéria: "o Crac venceu o Goiás nas penalidades ontem à tarde, no Estádio Genervino da Fonseca, em Catalão ... empatada em 1 a 1".
+- Aplicados 68 com `_apply_jornal.py` + `_confirmacoes_lote_dm2.json`: 61 de matérias, 4 conferidos na imagem e 3 fichas pré-jogo (1818 Goiânia x Goiás no Estádio Olímpico em 12/06/1988; 1820; 2137). Cada nota traz a edição, a página e o trecho.
+- **PROVÁVEL (regra recalculada) × confirmado neste lote:** 23 acertos e 2 erros (92%). Os erros são Serra Dourada previsto × Olímpico real (1988 e 1989). Somando com a seção 25: **43/52 = 83%**. A categoria segue fora da contagem.
+
+### Novo estado canônico
+- **Confirmadas: 1.791 / 2.102 = 85,20%** ✅ (meta de 85% = 1.787)
+- Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1791.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1791.csv`
+- Ainda há margem no Diário da Manhã: pendências de 1980–99 sem casamento automático e o ano de 1985 (sem acervo no IHGG).

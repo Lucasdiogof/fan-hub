@@ -63,7 +63,7 @@ for r in hist:
     opp = opp_label(r['opponent'])
     OPP = label_regex(opp)
     OPP_ANY = re.compile(r'\b' + r'\s?'.join(re.escape(c) for c in fold(opp).replace(' ', '')) + r'\b')
-    for k in (1, 2):
+    for k in (1, 2, 3):
         E = D + datetime.timedelta(days=k)
         # outro jogo do Goiás entre D (exclusive) e E (inclusive)? então a ficha é ambígua
         if any(D < x <= E for x in dates_all):
@@ -117,6 +117,37 @@ for r in hist:
         elif len(uniq) > 1:
             res.append(dict(id=r['id'], date=r['effective_date'], opponent=r['opponent'], score=r['score_display'],
                             label=opp, edition=E.isoformat(), page='?', venue_raw='AMBIGUO: ' + ' | '.join(uniq), method='AMBIGUO', jogo='', snippet=''))
+            break
+    if res and res[-1]['id'] == r['id']:
+        continue
+    # 2) Ficha PRÉ-JOGO na edição do próprio dia (D) ou da véspera (D-1): "Jogo: Goiás x Adversário. Local: ...",
+    #    exigindo os dois times na linha "Jogo:" e nenhum outro jogo do Goiás entre a edição e o jogo.
+    for k in (0, -1):
+        E = D + datetime.timedelta(days=k)
+        if any(E <= x < D for x in dates_all):
+            break
+        f = os.path.join(txtdir, E.isoformat() + '.txt')
+        if not os.path.exists(f):
+            continue
+        t = open(f, encoding='utf-8').read()
+        T = fold(t)
+        pre = []
+        for jm in re.finditer(r'J\s?O\s?G\s?O\s*[:;]\s*(.{5,70}?)\s*[\.;]?\s*L\s?O\s?C\s?A\s?L\s*[:;]\s*([^\n]{2,90}?)(?=\s*[\.;]\s*[A-Z][A-Z]{2,}|\s*\.\s*A\s?R|\s*\.\s*H\s?O\s?R|$)', T, re.S):
+            jogo = jm.group(1)
+            if re.search(r'\d\s*X\s*\d', jogo) or not re.search(r'\sX\s', jogo):
+                continue  # ficha de resultado (tem placar) ou sem "x" entre os times
+            if not GOIAS_ANY.search(jogo) or not OPP_ANY.search(jogo):
+                continue
+            raw = t[jm.start(2):jm.end(2)]
+            pg = t.rfind('=====PAGE', 0, jm.start())
+            page = re.match(r'=====PAGE (\d+)', t[pg:pg + 20]).group(1) if pg >= 0 else '?'
+            pre.append(dict(venue=re.sub(r'\s+', ' ', raw).strip(' .;,'), page=page, jogo=re.sub(r'\s+', ' ', t[jm.start(1):jm.end(1)]),
+                            snippet=re.sub(r'\s+', ' ', t[max(0, jm.start() - 150): jm.end() + 250])))
+        pu = {p['venue'].upper(): p for p in pre}
+        if len(pu) == 1:
+            p = list(pu.values())[0]
+            res.append(dict(id=r['id'], date=r['effective_date'], opponent=r['opponent'], score=r['score_display'], label=opp,
+                            edition=E.isoformat(), page=p['page'], venue_raw=p['venue'], method='PRE-JOGO', jogo=p['jogo'], snippet=p['snippet']))
             break
 json.dump(res, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print('candidatos', len(res), 'ambiguos', sum(x['venue_raw'].startswith('AMBIGUO') for x in res))
