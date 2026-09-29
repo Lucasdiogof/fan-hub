@@ -1681,6 +1681,14 @@ class AppLocalizationsPt extends AppLocalizations {
   String get careerNextPlayer => 'PRÓXIMO JOGADOR';
 
   @override
+  String careerWrongGuessFeedback(String name, int remaining) {
+    return 'Não é $name · Restam $remaining';
+  }
+
+  @override
+  String get careerTriedLabel => 'Já tentou';
+
+  @override
   String careerAttemptsRemaining(int remaining) {
     return 'Tentativas · Restam $remaining';
   }

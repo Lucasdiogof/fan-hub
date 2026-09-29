@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -104,6 +108,24 @@ class _CareerPathViewState extends State<_CareerPathView> {
   late final Map<String, String> _resolveMap;
   bool _canGuess = false;
 
+  /// Nome do último chute errado — aparece na barra de tentativas por
+  /// alguns segundos. [_shakeTick] muda a cada erro e dispara o tremor.
+  String? _wrongName;
+  int _shakeTick = 0;
+  Timer? _wrongTimer;
+
+  void _onWrongGuess(String name) {
+    HapticFeedback.mediumImpact();
+    _wrongTimer?.cancel();
+    setState(() {
+      _wrongName = name;
+      _shakeTick++;
+    });
+    _wrongTimer = Timer(const Duration(seconds: 3), () {
+      if (mounted) setState(() => _wrongName = null);
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -129,6 +151,7 @@ class _CareerPathViewState extends State<_CareerPathView> {
 
   @override
   void dispose() {
+    _wrongTimer?.cancel();
     _controller.removeListener(_onQueryChanged);
     _controller.dispose();
     _focusNode.dispose();
@@ -202,77 +225,95 @@ class _CareerPathViewState extends State<_CareerPathView> {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return BlocConsumer<CareerPathCubit, CareerPathState>(
-      listenWhen: (previous, current) =>
-          current.justFinished && !previous.justFinished,
-      listener: (context, state) async {
-        final cubit = context.read<CareerPathCubit>();
-        await _showResult(context, state);
-        if (context.mounted) cubit.acknowledgeResultShown();
+    return BlocListener<CareerPathCubit, CareerPathState>(
+      // Erro que ainda deixa tentativas: o fim da rodada já tem o seu
+      // próprio aviso (o bottom sheet de resultado).
+      listenWhen: (previous, current) {
+        final before = previous.round?.wrongGuesses.length ?? 0;
+        final after = current.round?.wrongGuesses.length ?? 0;
+        return after > before && !(current.round?.isDone ?? true);
       },
-      builder: (context, state) {
-        if (state.status == LoadStatus.loading ||
-            state.player == null ||
-            state.round == null) {
+      listener: (context, state) =>
+          _onWrongGuess(state.round!.wrongGuesses.last),
+      child: BlocConsumer<CareerPathCubit, CareerPathState>(
+        listenWhen: (previous, current) =>
+            current.justFinished && !previous.justFinished,
+        listener: (context, state) async {
+          final cubit = context.read<CareerPathCubit>();
+          await _showResult(context, state);
+          if (context.mounted) cubit.acknowledgeResultShown();
+        },
+        builder: (context, state) {
+          if (state.status == LoadStatus.loading ||
+              state.player == null ||
+              state.round == null) {
+            return Scaffold(
+              backgroundColor: colors.background,
+              body: const Center(child: GoiasLoadingIndicator()),
+            );
+          }
+
+          final player = state.player!;
           return Scaffold(
             backgroundColor: colors.background,
-            body: const Center(child: GoiasLoadingIndicator()),
-          );
-        }
-
-        final player = state.player!;
-        return Scaffold(
-          backgroundColor: colors.background,
-          body: SafeArea(
-            child: Column(
-              children: [
-                _Header(
-                  index: state.roundNumber == 0 ? 0 : state.roundNumber - 1,
-                  total: state.total,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.fromLTRB(
-                      AppSpacing.lg,
-                      AppSpacing.sm,
-                      AppSpacing.lg,
-                      AppSpacing.md,
-                    ),
-                    child: CareerTable(player: player),
+            body: SafeArea(
+              child: Column(
+                children: [
+                  _Header(
+                    index: state.roundNumber == 0 ? 0 : state.roundNumber - 1,
+                    total: state.total,
                   ),
-                ),
-                _BottomBar(
-                  child: state.isDone
-                      ? _ResolvedBlock(
-                          player: player,
-                          status: state.roundStatus,
-                          onNext: () =>
-                              context.read<CareerPathCubit>().goToNextOrFirst(),
-                        )
-                      : Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            _AttemptsBar(
-                              used: state.attemptsUsed,
-                              max: CareerPathCubit.maxAttempts,
-                            ),
-                            const SizedBox(height: AppSpacing.md),
-                            _GuessBlock(
-                              controller: _controller,
-                              focusNode: _focusNode,
-                              suggestions: _suggestions,
-                              canGuess: _canGuess,
-                              onSubmit: () => _submitGuess(context),
-                              onReveal: () => _confirmReveal(context),
-                            ),
-                          ],
-                        ),
-                ),
-              ],
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(
+                        AppSpacing.lg,
+                        AppSpacing.sm,
+                        AppSpacing.lg,
+                        AppSpacing.md,
+                      ),
+                      child: CareerTable(player: player),
+                    ),
+                  ),
+                  _BottomBar(
+                    child: state.isDone
+                        ? _ResolvedBlock(
+                            player: player,
+                            status: state.roundStatus,
+                            onNext: () => context
+                                .read<CareerPathCubit>()
+                                .goToNextOrFirst(),
+                          )
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              _AttemptsBar(
+                                used: state.attemptsUsed,
+                                max: CareerPathCubit.maxAttempts,
+                                wrongName: _wrongName,
+                                shakeTick: _shakeTick,
+                              ),
+                              if (state.round!.wrongGuesses.isNotEmpty) ...[
+                                const SizedBox(height: AppSpacing.sm),
+                                _TriedNames(names: state.round!.wrongGuesses),
+                              ],
+                              const SizedBox(height: AppSpacing.md),
+                              _GuessBlock(
+                                controller: _controller,
+                                focusNode: _focusNode,
+                                suggestions: _suggestions,
+                                canGuess: _canGuess,
+                                onSubmit: () => _submitGuess(context),
+                                onReveal: () => _confirmReveal(context),
+                              ),
+                            ],
+                          ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
@@ -353,21 +394,41 @@ class _BottomBar extends StatelessWidget {
   }
 }
 
+/// Cor de erro do app — nunca vermelho (mesmo âmbar dos selos da
+/// Escalação).
+const _wrongColor = Color(0xFFC99A36);
+
 class _AttemptsBar extends StatelessWidget {
-  const _AttemptsBar({required this.used, required this.max});
+  const _AttemptsBar({
+    required this.used,
+    required this.max,
+    required this.wrongName,
+    required this.shakeTick,
+  });
 
   final int used;
   final int max;
+
+  /// Último chute errado, enquanto o aviso estiver na tela.
+  final String? wrongName;
+
+  /// Muda a cada erro; reinicia o tremor.
+  final int shakeTick;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
     final remaining = max - used;
-    return Container(
+    final wrong = wrongName != null;
+    final bar = AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       decoration: BoxDecoration(
-        color: colors.surface,
+        color: wrong ? _wrongColor.withValues(alpha: 0.12) : colors.surface,
         borderRadius: BorderRadius.circular(AppRadius.button),
-        border: Border.all(color: colors.border),
+        border: Border.all(
+          color: wrong ? _wrongColor : colors.border,
+          width: wrong ? 1.5 : 1,
+        ),
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.md,
@@ -378,13 +439,15 @@ class _AttemptsBar extends StatelessWidget {
         children: [
           Flexible(
             child: Text(
-              context.l10n.careerAttemptsRemaining(remaining),
+              wrong
+                  ? context.l10n.careerWrongGuessFeedback(wrongName!, remaining)
+                  : context.l10n.careerAttemptsRemaining(remaining),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 13,
-                fontWeight: FontWeight.w700,
-                color: colors.textSecondary,
+                fontWeight: wrong ? FontWeight.w800 : FontWeight.w700,
+                color: wrong ? _wrongColor : colors.textSecondary,
               ),
             ),
           ),
@@ -399,6 +462,17 @@ class _AttemptsBar extends StatelessWidget {
           ),
         ],
       ),
+    );
+    if (shakeTick == 0) return bar;
+    return TweenAnimationBuilder<double>(
+      key: ValueKey(shakeTick),
+      tween: Tween(begin: 0, end: 1),
+      duration: const Duration(milliseconds: 450),
+      builder: (context, t, child) => Transform.translate(
+        offset: Offset(math.sin(t * math.pi * 6) * (1 - t) * 8, 0),
+        child: child,
+      ),
+      child: bar,
     );
   }
 }
@@ -416,14 +490,56 @@ class _AttemptDot extends StatelessWidget {
       height: 14,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: spent ? Colors.transparent : colors.primary,
-        border: Border.all(
-          color: spent
-              ? colors.primary.withValues(alpha: 0.25)
-              : colors.primary,
-          width: 1.5,
-        ),
+        color: spent ? _wrongColor : colors.primary,
       ),
+      child: spent
+          ? const Icon(Icons.close_rounded, size: 10, color: Colors.white)
+          : null,
+    );
+  }
+}
+
+/// Chutes errados da rodada, riscados — pra não repetir nome.
+class _TriedNames extends StatelessWidget {
+  const _TriedNames({required this.names});
+
+  final List<String> names;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Wrap(
+      spacing: AppSpacing.xs,
+      runSpacing: AppSpacing.xs,
+      crossAxisAlignment: WrapCrossAlignment.center,
+      children: [
+        Text(
+          '${context.l10n.careerTriedLabel}:',
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            color: colors.textSecondary,
+          ),
+        ),
+        for (final name in names)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+            decoration: BoxDecoration(
+              color: _wrongColor.withValues(alpha: 0.12),
+              borderRadius: BorderRadius.circular(999),
+            ),
+            child: Text(
+              name,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: _wrongColor,
+                decoration: TextDecoration.lineThrough,
+                decorationColor: _wrongColor,
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

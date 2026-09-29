@@ -595,6 +595,18 @@
   "careerRevealPlayer": "Reveal player",
   "careerGuess": "GUESS",
   "careerNextPlayer": "NEXT PLAYER",
+  "careerWrongGuessFeedback": "Not {name} · {remaining} left",
+  "@careerWrongGuessFeedback": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "int"
+      }
+    }
+  },
+  "careerTriedLabel": "Already tried",
   "careerAttemptsRemaining": "Attempts · {remaining} left",
   "careerCorrectTitle": "You got it!",
   "careerCorrectFirstTry": "Got it on the first try!",

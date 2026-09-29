@@ -939,6 +939,18 @@
   "careerRevealPlayer": "Revelar jogador",
   "careerGuess": "CHUTAR",
   "careerNextPlayer": "PRÓXIMO JOGADOR",
+  "careerWrongGuessFeedback": "Não é {name} · Restam {remaining}",
+  "@careerWrongGuessFeedback": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "int"
+      }
+    }
+  },
+  "careerTriedLabel": "Já tentou",
   "careerAttemptsRemaining": "Tentativas · Restam {remaining}",
   "@careerAttemptsRemaining": {
     "placeholders": {

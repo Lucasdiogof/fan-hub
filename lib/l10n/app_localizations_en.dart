@@ -1670,6 +1670,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get careerNextPlayer => 'NEXT PLAYER';
 
   @override
+  String careerWrongGuessFeedback(String name, int remaining) {
+    return 'Not $name · $remaining left';
+  }
+
+  @override
+  String get careerTriedLabel => 'Already tried';
+
+  @override
   String careerAttemptsRemaining(int remaining) {
     return 'Attempts · $remaining left';
   }

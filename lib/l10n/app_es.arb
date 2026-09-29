@@ -583,6 +583,18 @@
   "careerRevealPlayer": "Revelar jugador",
   "careerGuess": "ADIVINAR",
   "careerNextPlayer": "PRÓXIMO JUGADOR",
+  "careerWrongGuessFeedback": "No es {name} · Quedan {remaining}",
+  "@careerWrongGuessFeedback": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "remaining": {
+        "type": "int"
+      }
+    }
+  },
+  "careerTriedLabel": "Ya intentaste",
   "careerAttemptsRemaining": "Intentos · Quedan {remaining}",
   "careerCorrectTitle": "¡Acertaste!",
   "careerCorrectFirstTry": "¡Acertaste a la primera!",

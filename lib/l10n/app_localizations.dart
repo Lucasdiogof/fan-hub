@@ -2938,6 +2938,18 @@ abstract class AppLocalizations {
   /// **'PRÓXIMO JOGADOR'**
   String get careerNextPlayer;
 
+  /// No description provided for @careerWrongGuessFeedback.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não é {name} · Restam {remaining}'**
+  String careerWrongGuessFeedback(String name, int remaining);
+
+  /// No description provided for @careerTriedLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Já tentou'**
+  String get careerTriedLabel;
+
   /// No description provided for @careerAttemptsRemaining.
   ///
   /// In pt, this message translates to:
