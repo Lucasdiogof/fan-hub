@@ -3,6 +3,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_models.dart';
 import 'package:goias_app/features/arena/shared/arena_colors.dart';
+import 'package:goias_app/features/crowd_lineup/presentation/widgets/lineup_name_label.dart';
 import 'package:goias_app/shared/widgets/jersey_shirt.dart';
 
 /// Uma camisa no campo — número, estrutura da resposta ("...... ....."),
@@ -114,27 +115,9 @@ class _AnswerStructure extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (revealed) {
-      return Container(
-        constraints: const BoxConstraints(maxWidth: 72),
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-        decoration: BoxDecoration(
-          color: Colors.black.withValues(alpha: 0.34),
-          borderRadius: BorderRadius.circular(6),
-        ),
-        child: Text(
-          player.displayName.toUpperCase(),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 9.5,
-            fontWeight: FontWeight.w800,
-            letterSpacing: 0.1,
-            height: 1.1,
-          ),
-        ),
-      );
+      // Mesma regra do Escale seu time: nome na 1ª linha, sobrenome na 2ª,
+      // sem cortar palavra no meio.
+      return LineupNameLabel(text: player.displayName, maxWidth: 72);
     }
     final words = player.puzzleAnswer.split(' ');
     return Wrap(

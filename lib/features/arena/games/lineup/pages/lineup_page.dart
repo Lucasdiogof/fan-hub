@@ -152,20 +152,36 @@ class _LineupViewState extends State<_LineupView> {
                         title: context.l10n.arenaGameLineupTitle.toUpperCase(),
                         onBack: () =>
                             context.canPop() ? context.pop() : context.go('/'),
-                        trailing: _ProgressPill(
-                          solved: state.solvedCount,
-                          total: state.totalPlayers,
-                        ),
                       ),
                     ),
-                    _MatchNav(
-                      index: state.currentIndex ?? 0,
-                      total: state.totalMatches,
-                      hasPrevious: state.hasPrevious,
-                      hasNext: state.hasNext,
-                      onPrevious: () =>
-                          context.read<LineupCubit>().previousMatch(),
-                      onNext: () => context.read<LineupCubit>().nextMatch(),
+                    // O contador de jogadores fica na linha da navegação,
+                    // à direita, para o título do jogo caber inteiro no topo.
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg,
+                      ),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          _MatchNav(
+                            index: state.currentIndex ?? 0,
+                            total: state.totalMatches,
+                            hasPrevious: state.hasPrevious,
+                            hasNext: state.hasNext,
+                            onPrevious: () =>
+                                context.read<LineupCubit>().previousMatch(),
+                            onNext: () =>
+                                context.read<LineupCubit>().nextMatch(),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: _ProgressPill(
+                              solved: state.solvedCount,
+                              total: state.totalPlayers,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: AppSpacing.lg),
                     _MatchHeader(match: match),
@@ -360,7 +376,7 @@ Formation _formationFor(List<LineupPlayer> players) {
 }
 
 /// Navegação entre as partidas do banco — setas + "PARTIDA N DE M",
-/// separado do `_ProgressPill` do topo (que conta jogadores descobertos
+/// separado do `_ProgressPill` à direita na mesma linha (que conta jogadores descobertos
 /// DENTRO da partida atual, não qual partida é essa).
 class _MatchNav extends StatelessWidget {
   const _MatchNav({
