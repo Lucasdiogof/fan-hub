@@ -1,5 +1,36 @@
 [
   {
+    "tweet_id": "2104905347664379981",
+    "text": "🇧🇷 Ryan titular na Seleção!\n\nO #CriaDoBraga começou jogando na vitória do Seleção Sub-20 por 4 a 1 sobre a Dinamarca, pelo primeiro amistoso na Espanha. Boa, Ryan! 💪\n\n📸: Nelson Terme/CBF https://t.co/C5alZMDSLQ",
+    "timestamp": "2026-09-29T12:05:16+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2104905347664379981",
+    "image_links": [
+      "https://pbs.twimg.com/media/HTYgQUFW0AAnnxA.jpg",
+      "https://pbs.twimg.com/media/HTYgQUCXsAAgasY.jpg",
+      "https://pbs.twimg.com/media/HTYgQUFWQAAhC-a.jpg",
+      "https://pbs.twimg.com/media/HTYgQUDWkAAQwmo.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 4,
+    "retweets": 0,
+    "comments": 0
+  },
+  {
+    "tweet_id": "2104696367599743093",
+    "text": "O 𝗕𝗥𝗔𝗕𝗢 VISITOU NOSSA CASA! 🏄‍♂️🏠\n\n📸: Matheus Couto https://t.co/nmQZRPPqaj",
+    "timestamp": "2026-09-28T22:14:52+00:00",
+    "tweet_url": "https://x.com/RedBullBraga/status/2104696367599743093",
+    "image_links": [
+      "https://pbs.twimg.com/media/HTViMCsXEAEmvgU.jpg"
+    ],
+    "user_screen_name": "RedBullBraga",
+    "user_name": "Red Bull Bragantino",
+    "likes": 23,
+    "retweets": 3,
+    "comments": 1
+  },
+  {
     "tweet_id": "2104558232760906233",
     "text": "RUMO À CHINA! 🇨🇳\n\nA delegação sub-16 dos #CriasDoBraga embarcou para Zhangzhou, na província de Fujian, para a disputa da Hooray Cup 2026.\n\nOs confrontos serão definidos por sorteio na quarta-feira (30).\n\nVamos, Crias! 👊 https://t.co/Yt0630pxg7",
     "timestamp": "2026-09-28T13:05:58+00:00",
@@ -9,9 +40,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 11,
+    "likes": 30,
     "retweets": 1,
-    "comments": 0
+    "comments": 2
   },
   {
     "tweet_id": "2104326520357675065",
@@ -23,9 +54,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 18,
-    "retweets": 0,
-    "comments": 1
+    "likes": 39,
+    "retweets": 1,
+    "comments": 6
   },
   {
     "tweet_id": "2104310753079533785",
@@ -37,9 +68,9 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 5,
-    "retweets": 1,
-    "comments": 0
+    "likes": 11,
+    "retweets": 2,
+    "comments": 5
   },
   {
     "tweet_id": "2104302179993677988",
@@ -51,7 +82,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 10,
+    "likes": 13,
     "retweets": 0,
     "comments": 0
   },
@@ -65,7 +96,7 @@
     ],
     "user_screen_name": "RedBullBraga",
     "user_name": "Red Bull Bragantino",
-    "likes": 8,
+    "likes": 9,
     "retweets": 0,
     "comments": 0
   },
@@ -241,34 +272,6 @@
     "user_name": "Red Bull Bragantino",
     "likes": 6,
     "retweets": 1,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2103591602224845019",
-    "text": "Sócio-torcedor Massa Bruta: você é o nosso 12º jogador! ❤️‍🔥⚽\n\nA reta final do @Brasileirao chegou e contamos com o seu apoio nos jogos finais da temporada no 🏟️ Cícero de Souza Marques. \n\n🔜🪽 Fique ligado nos canais oficiais do clube, estamos preparando recompensas únicas para quem jogar junto com o Red Bull Bragantino nos 6 últimos jogos do ano em Bragança Paulista.",
-    "timestamp": "2026-09-25T21:04:55+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2103591602224845019",
-    "image_links": [
-      "https://pbs.twimg.com/amplify_video_thumb/2103591477137846272/img/nx5hYVxFYnQkXsVu.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 11,
-    "retweets": 0,
-    "comments": 0
-  },
-  {
-    "tweet_id": "2103468641391964401",
-    "text": "Sábado, dia 03, voltamos a campo pelo @brasileirao! 🔜\n\n#RedBullBragantino https://t.co/QmygR1Unzz",
-    "timestamp": "2026-09-25T12:56:19+00:00",
-    "tweet_url": "https://x.com/RedBullBraga/status/2103468641391964401",
-    "image_links": [
-      "https://pbs.twimg.com/media/HTEFk8vXsAAiGDE.jpg"
-    ],
-    "user_screen_name": "RedBullBraga",
-    "user_name": "Red Bull Bragantino",
-    "likes": 11,
-    "retweets": 0,
     "comments": 0
   },
   {
