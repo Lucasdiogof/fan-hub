@@ -1,14 +1,17 @@
 {
   "android": {
     "goias": "flutter build apk --flavor goias --dart-define=APP_CLUB=goias",
-    "bragantino": "flutter build apk --flavor bragantino --dart-define=APP_CLUB=bragantino"
+    "bragantino": "flutter build apk --flavor bragantino --dart-define=APP_CLUB=bragantino",
+    "vilanova": "flutter build apk --flavor vilanova --dart-define=APP_CLUB=vilanova"
   },
   "ios": {
     "goias": "flutter build ios --flavor goias --dart-define=APP_CLUB=goias --no-codesign",
-    "bragantino": "flutter build ios --flavor bragantino --dart-define=APP_CLUB=bragantino --no-codesign"
+    "bragantino": "flutter build ios --flavor bragantino --dart-define=APP_CLUB=bragantino --no-codesign",
+    "vilanova": "flutter build ios --flavor vilanova --dart-define=APP_CLUB=vilanova --no-codesign"
   },
   "web": {
     "goias": "node tool/build_web_flavor.mjs goias",
-    "bragantino": "node tool/build_web_flavor.mjs bragantino"
+    "bragantino": "node tool/build_web_flavor.mjs bragantino",
+    "vilanova": "node tool/build_web_flavor.mjs vilanova"
   }
 }

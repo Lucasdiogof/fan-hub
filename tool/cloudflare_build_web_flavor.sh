@@ -17,11 +17,11 @@ set -euo pipefail
 
 CLUB="${1:-}"
 if [ -z "$CLUB" ]; then
-  echo "error: uso: bash tool/cloudflare_build_web_flavor.sh <goias|bragantino>" >&2
+  echo "error: uso: bash tool/cloudflare_build_web_flavor.sh <goias|bragantino|vilanova>" >&2
   exit 1
 fi
-if [ "$CLUB" != "goias" ] && [ "$CLUB" != "bragantino" ]; then
-  echo "error: clube desconhecido \"$CLUB\" -- esperado exatamente \"goias\" ou \"bragantino\", nunca resolvido por fallback." >&2
+if [ "$CLUB" != "goias" ] && [ "$CLUB" != "bragantino" ] && [ "$CLUB" != "vilanova" ]; then
+  echo "error: clube desconhecido \"$CLUB\" -- esperado exatamente \"goias\", \"bragantino\" ou \"vilanova\", nunca resolvido por fallback." >&2
   exit 1
 fi
 

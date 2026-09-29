@@ -1,5 +1,5 @@
 // M4.3B — build web por clube, reproduzível: `node tool/build_web_flavor.mjs
-// <goias|bragantino>`. Sempre injeta --dart-define=APP_CLUB=<code> (nunca conta
+// <goias|bragantino|vilanova>`. Sempre injeta --dart-define=APP_CLUB=<code> (nunca conta
 // com o fallback vazio->Goiás pra um flavor explícito) e, só pro sintético,
 //
 // `web/manifest.json`/`web/index.html`/`web/icons/*`/`web/favicon.png` são
@@ -22,7 +22,7 @@ const WEB = path.join(ROOT, 'web');
 
 const club = process.argv[2];
 if (!club) {
-  console.error('Uso: node tool/build_web_flavor.mjs <goias|bragantino>');
+  console.error('Uso: node tool/build_web_flavor.mjs <goias|bragantino|vilanova>');
   process.exit(1);
 }
 

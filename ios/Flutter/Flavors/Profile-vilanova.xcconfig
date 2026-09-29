@@ -1,0 +1,7 @@
+#include "../Profile.xcconfig"
+// Rebrand Fan Hub — flavor vilanova.
+PRODUCT_BUNDLE_IDENTIFIER = br.com.fanhub.vilanova
+APP_DISPLAY_NAME = Vila Nova FC
+// Só informativo (nada nativo lê isto). O runtime real depende do
+// --dart-define=APP_CLUB=vilanova passado pro flutter build/run.
+APP_CLUB = vilanova

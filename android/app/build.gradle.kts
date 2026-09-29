@@ -59,8 +59,9 @@ android {
         versionName = flutter.versionName
     }
 
-    // Rebrand Fan Hub — dimensão "club", 2 flavors REAIS: `goias`
-    // (`br.com.fanhub.goias`) e `bragantino` (`br.com.fanhub.bragantino`).
+    // Rebrand Fan Hub — dimensão "club", 3 flavors REAIS: `goias`
+    // (`br.com.fanhub.goias`), `bragantino` (`br.com.fanhub.bragantino`) e
+    // `vilanova` (`br.com.fanhub.vilanova`, em onboarding desde 2026-09-29).
     // Cada flavor lê SÓ o seu `src/<flavor>/google-services.json` oficial do
     // projeto Fan Hub; nenhum carrega o do outro. O flavor sintético `clubb`
     // foi removido (supersedido pelo Bragantino real).
@@ -95,6 +96,20 @@ android {
             buildConfigField("String", "NOTIFICATION_CHANNEL_NAME", "\"Partidas do Bragantino\"")
             buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_ID", "\"bragantino_live_match_alerts_v2\"")
             buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_NAME", "\"Jogos ao vivo — Bragantino\"")
+        }
+        // 3º clube (F0 do onboarding): só infraestrutura. Lê o seu
+        // `src/vilanova/google-services.json` do Fan Hub — até o usuário
+        // baixar esse arquivo, as tasks deste flavor falham (os outros dois
+        // não são afetados).
+        create("vilanova") {
+            dimension = "club"
+            applicationId = "br.com.fanhub.vilanova"
+            resValue("string", "app_name", "Vila Nova FC")
+            manifestPlaceholders["notificationChannelId"] = "vilanova_matches"
+            buildConfigField("String", "NOTIFICATION_CHANNEL_ID", "\"vilanova_matches\"")
+            buildConfigField("String", "NOTIFICATION_CHANNEL_NAME", "\"Partidas do Vila Nova\"")
+            buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_ID", "\"vilanova_live_match_alerts_v2\"")
+            buildConfigField("String", "NOTIFICATION_LIVE_CHANNEL_NAME", "\"Jogos ao vivo — Vila Nova\"")
         }
     }
 

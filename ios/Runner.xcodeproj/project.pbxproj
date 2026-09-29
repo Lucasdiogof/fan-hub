@@ -68,8 +68,11 @@
 		9AF6AAB3B3BE90A308D4B86A /* Release-goias.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release-goias.xcconfig"; path = "Flutter/Flavors/Release-goias.xcconfig"; sourceTree = "<group>"; };
 		A439654237B443556F64BE0C /* Profile-goias.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile-goias.xcconfig"; path = "Flutter/Flavors/Profile-goias.xcconfig"; sourceTree = "<group>"; };
 		ECCB23AEB06912738593992D /* Debug-bragantino.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug-bragantino.xcconfig"; path = "Flutter/Flavors/Debug-bragantino.xcconfig"; sourceTree = "<group>"; };
+		1A52CD8E5C0BD28235621BF6 /* Debug-vilanova.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Debug-vilanova.xcconfig"; path = "Flutter/Flavors/Debug-vilanova.xcconfig"; sourceTree = "<group>"; };
 		DC028D01215FD5E1E666CFF1 /* Release-bragantino.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release-bragantino.xcconfig"; path = "Flutter/Flavors/Release-bragantino.xcconfig"; sourceTree = "<group>"; };
+		AA53CA34FFC7D5DA2547F9A4 /* Release-vilanova.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Release-vilanova.xcconfig"; path = "Flutter/Flavors/Release-vilanova.xcconfig"; sourceTree = "<group>"; };
 		59D574DD2A3036E210DC5BE5 /* Profile-bragantino.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile-bragantino.xcconfig"; path = "Flutter/Flavors/Profile-bragantino.xcconfig"; sourceTree = "<group>"; };
+		A88220B3EB61FA21687DE4D3 /* Profile-vilanova.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Profile-vilanova.xcconfig"; path = "Flutter/Flavors/Profile-vilanova.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +115,11 @@
 				9AF6AAB3B3BE90A308D4B86A /* Release-goias.xcconfig */,
 				A439654237B443556F64BE0C /* Profile-goias.xcconfig */,
 				ECCB23AEB06912738593992D /* Debug-bragantino.xcconfig */,
+				1A52CD8E5C0BD28235621BF6 /* Debug-vilanova.xcconfig */,
 				DC028D01215FD5E1E666CFF1 /* Release-bragantino.xcconfig */,
+				AA53CA34FFC7D5DA2547F9A4 /* Release-vilanova.xcconfig */,
 				59D574DD2A3036E210DC5BE5 /* Profile-bragantino.xcconfig */,
+				A88220B3EB61FA21687DE4D3 /* Profile-vilanova.xcconfig */,
 			);
 			name = Flavors;
 			sourceTree = "<group>";
@@ -867,6 +873,63 @@
 			};
 			name = "Debug-bragantino";
 		};
+		9CFCEC26644D6377E53602DE /* Debug-vilanova */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Debug-vilanova";
+		};
 		36E3C40BA82662D6A5856358 /* Release-bragantino */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -921,6 +984,60 @@
 			};
 			name = "Release-bragantino";
 		};
+		5DCBDCEAFC106F2A6C0AE121 /* Release-vilanova */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-vilanova";
+		};
 		A3C76F5D85D91B9FC8083CA3 /* Profile-bragantino */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -972,6 +1089,58 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "Profile-bragantino";
+		};
+		3F33F13065F3692DFEEEA0D8 /* Profile-vilanova */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Profile-vilanova";
 		};
 		D346B44D8D809F7DB2E39EB0 /* Debug-goias */ = {
 			isa = XCBuildConfiguration;
@@ -1067,6 +1236,30 @@
 			};
 			name = "Debug-bragantino";
 		};
+		71ACD60EE3D3626BD7E438CE /* Debug-vilanova */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A52CD8E5C0BD28235621BF6 /* Debug-vilanova.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-VilaNova";
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HALJMW29DC;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Debug-vilanova";
+		};
 		0FF0A04E16F1A5E3B54D956A /* Release-bragantino */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DC028D01215FD5E1E666CFF1 /* Release-bragantino.xcconfig */;
@@ -1089,6 +1282,29 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "Release-bragantino";
+		};
+		F46DEF45FC1887E8EB508765 /* Release-vilanova */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA53CA34FFC7D5DA2547F9A4 /* Release-vilanova.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-VilaNova";
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HALJMW29DC;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-vilanova";
 		};
 		CD8AFF0EB910A7498524C2FC /* Profile-bragantino */ = {
 			isa = XCBuildConfiguration;
@@ -1113,6 +1329,29 @@
 			};
 			name = "Profile-bragantino";
 		};
+		C0665BBFBDC2FAEDC8C99463 /* Profile-vilanova */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A88220B3EB61FA21687DE4D3 /* Profile-vilanova.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-VilaNova";
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
+				ENABLE_BITCODE = NO;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HALJMW29DC;
+				INFOPLIST_FILE = Runner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Profile-vilanova";
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1136,8 +1375,11 @@
 				081666C133374536D52E114B /* Release-goias */,
 				826A1E2251EE54CB12AADAEE /* Profile-goias */,
 				861AFA117E12D4AA00E33A3B /* Debug-bragantino */,
+				9CFCEC26644D6377E53602DE /* Debug-vilanova */,
 				36E3C40BA82662D6A5856358 /* Release-bragantino */,
+				5DCBDCEAFC106F2A6C0AE121 /* Release-vilanova */,
 				A3C76F5D85D91B9FC8083CA3 /* Profile-bragantino */,
+				3F33F13065F3692DFEEEA0D8 /* Profile-vilanova */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1152,8 +1394,11 @@
 				7F408096C73E0BF1C74BB9EC /* Release-goias */,
 				50AC1FE5571EF183ABCB9EBA /* Profile-goias */,
 				D9A454B5C9BA0F2DDB65D60B /* Debug-bragantino */,
+				71ACD60EE3D3626BD7E438CE /* Debug-vilanova */,
 				0FF0A04E16F1A5E3B54D956A /* Release-bragantino */,
+				F46DEF45FC1887E8EB508765 /* Release-vilanova */,
 				CD8AFF0EB910A7498524C2FC /* Profile-bragantino */,
+				C0665BBFBDC2FAEDC8C99463 /* Profile-vilanova */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
