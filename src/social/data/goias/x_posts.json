@@ -9,7 +9,7 @@
     "user_name": "Goiás Esporte Clube",
     "likes": 41,
     "retweets": 5,
-    "comments": 46
+    "comments": 47
   },
   {
     "tweet_id": "2103988365754245223",
@@ -33,7 +33,7 @@
     "user_name": "Goiás Esporte Clube",
     "likes": 2,
     "retweets": 1,
-    "comments": 1
+    "comments": 0
   },
   {
     "tweet_id": "2103986589387141534",
@@ -241,7 +241,7 @@
     "user_screen_name": "goiasoficial",
     "user_name": "Goiás Esporte Clube",
     "likes": 33,
-    "retweets": 1,
+    "retweets": 0,
     "comments": 2
   }
 ]
