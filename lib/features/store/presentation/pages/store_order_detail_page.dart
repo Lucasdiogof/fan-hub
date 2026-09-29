@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/di/injection_container.dart';
@@ -29,6 +30,10 @@ class StoreOrderDetailPage extends StatelessWidget {
       body: DetailPageHeader(
         maxWidth: ContentWidth.detail,
         title: order.id,
+        // Vindo do checkout a página é aberta com `go`, sem nada na pilha.
+        onBack: () => context.canPop()
+            ? context.pop()
+            : context.go('/store/orders'),
         heroTitle: Row(
           children: [
             Expanded(

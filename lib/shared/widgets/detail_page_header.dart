@@ -155,7 +155,8 @@ class _DetailPageHeaderState extends State<DetailPageHeader> {
           right: 0,
           child: _Bar(
             title: widget.title,
-            onBack: widget.onBack ?? () => context.pop(),
+            onBack: widget.onBack ??
+                () => context.canPop() ? context.pop() : context.go('/'),
             actions: widget.actions,
             showTitle: _titleVisible,
             showBackButton: widget.showBackButton,
