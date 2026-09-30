@@ -204,7 +204,12 @@ final vilaNovaClubConfig = ClubConfig(
     matchHero: null,
     tacticsBoardIllustration: _phRaster,
     arenaStadiumIcon: _phVector,
-    arenaStadiumPhoto: _phRaster,
+    // 2026-09-30: usuário notou que o card "Arena Vila Nova" da Home
+    // ficava sem a marca d'água de estádio que Goiás/Bragantino têm.
+    // Mesmo render 3D genérico dos outros dois clubes (não é um estádio
+    // real específico), reconvertido em duotone vermelho/vinho por
+    // `tooling/vilanova_brand/build_arena_stadium.py`.
+    arenaStadiumPhoto: '$_dir/arena_stadium.png',
     storeBanner: _phRaster,
     guessPlayerPhotos: _vilaNovaGuessPlayerPhotos,
   ),
