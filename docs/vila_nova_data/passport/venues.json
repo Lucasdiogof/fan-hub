@@ -210,20 +210,6 @@
       "status": "READY"
     },
     {
-      "id": "vn_venue_arena_nicnet",
-      "canonical_name": "Arena Nicnet",
-      "display_name": "Arena Nicnet",
-      "aliases": [
-        "Estádio Santa Cruz"
-      ],
-      "city": "Ribeirão Preto",
-      "state": "SP",
-      "country": "BR",
-      "latitude": null,
-      "longitude": null,
-      "status": "READY"
-    },
-    {
       "id": "vn_venue_aflitos",
       "canonical_name": "Estádio Eládio de Barros Carvalho",
       "display_name": "Aflitos",
@@ -528,14 +514,15 @@
       "canonical_name": "Estádio Santa Cruz",
       "display_name": "Estádio Santa Cruz",
       "aliases": [
-        "Arena Nicnet (naming rights posterior)"
+        "Arena Nicnet"
       ],
       "city": "Ribeirão Preto",
       "state": "SP",
       "country": "BR",
       "latitude": null,
       "longitude": null,
-      "status": "READY"
+      "status": "READY",
+      "editorial_note": "2026-09-29: vn_venue_arena_nicnet fundido aqui — Arena Nicnet é o nome comercial (naming rights) do próprio Estádio Santa Cruz, como o alias original deste registro já indicava. Dois venues para a mesma casa rachariam \"estádio mais visitado\"."
     },
     {
       "id": "vn_venue_novelli_junior",

@@ -67,7 +67,8 @@ O motor é **único para todos os clubes**, com perguntas fixas. Cada clube só 
 | F1 config do clube | ✅ `vilaNovaClubConfig` no registry, tudo desligado. Ver `docs/multiclub/58_vilanova_f1_f2_config_marca.md` |
 | F2 marca | ✅ cor oficial #C33D41 (manual, pág. 9); escudo/ícones/login a partir do PDF vetorial (`tooling/vilanova_brand/build_brand_assets.py`) |
 | F3 conteúdo institucional | ✅ história, timeline, 31 títulos, 9 ídolos; `hasClubContent` ligado; parceiros desligados (decisão editorial pendente). Ver `docs/multiclub/59_vilanova_f3_conteudo_institucional.md` |
-| F4 → F9 | pendentes (F4 diretoria/elenco e daí em diante precisam do Supabase) |
+| Seeds SQL | ✅ prontos e testados em Postgres real (PGlite): Passaporte 2020–2026 (408 jogos, 67 estádios), diretoria, transparência, elenco, quiz, escalações, carreira, Manto. Runbook em `docs/multiclub/60_vilanova_seeds_runbook.md`. **Novo lote do Passaporte → rodar `node tooling/vilanova_passport/generate_passport_sql.mjs` + simulador** |
+| F4 → F9 | pendentes: dependem do projeto Supabase (aplicar o runbook e ligar as capabilities) |
 
 **Bloqueio do usuário:** criar o projeto Supabase do Vila Nova. Sem ele o flavor compila, mas não sobe (`SupabaseConfig` falha alto com URL null). Depois: baseline + `infra/supabase/clubs/vilanova/bootstrap.sql` + chaves na config.
 
@@ -89,7 +90,7 @@ O motor é **único para todos os clubes**, com perguntas fixas. Cada clube só 
 - fechar 2026 (R35–R38 + 2ª fonte); loja completa; regulamento/preços oficiais do sócio.
 
 **Implementação (depois da aprovação ou em paralelo):**
-- F3 feita; da F4 em diante precisa do Supabase do Vila (dá pra adiantar os seeds SQL e a conversão dos perfis da Arena);
+- F3 e seeds feitos; falta: conversão/calibração dos perfis de jogador/técnico (Dart) e, com o Supabase, aplicar o runbook;
 - converter e calibrar os perfis no motor.
 
 **Usuário:** criar o projeto Supabase e o app no Firebase Fan Hub, baixar credenciais e as imagens listadas em `assets_todo.md`.
