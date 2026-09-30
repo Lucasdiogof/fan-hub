@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/club/vilanova_club_config.dart';
@@ -87,14 +90,51 @@ void main() {
     });
 
     test(
-      'sem regulamento real -> hasRegulationContent é false (nunca inventa regulamento)',
+      'regulamento = Termo de Adesão oficial (9 capítulos), sem nada do Goiás',
       () {
-        expect(
-          vilaNovaClubConfig.membershipProgram.hasRegulationContent,
-          isFalse,
-        );
+        final program = vilaNovaClubConfig.membershipProgram;
+        expect(program.hasRegulationContent, isTrue);
+        expect(program.regulationSections, hasLength(9));
+        expect(program.regulationSections.first.title, 'Das Definições');
+        final all = [
+          program.regulationIntro,
+          for (final s in program.regulationSections) ...[s.title, s.body],
+        ].join(' ');
+        expect(all, contains('SÓCIO-TIGRÃO'));
+        expect(all, isNot(contains('Esmeralda')));
+        expect(all, isNot(contains('GOIÁS')));
       },
     );
+
+    test('FAQ próprio e WhatsApp do atendimento do Sócio Tigrão', () {
+      expect(
+        vilaNovaClubConfig.assets.membershipFaqAssetPath,
+        'lib/assets/content/vilanova_membership_faq.json',
+      );
+      expect(
+        vilaNovaClubConfig.integrations.contactWhatsappUrl,
+        'https://wa.me/5562996441943',
+      );
+      expect(
+        vilaNovaClubConfig.integrations.contactWhatsappUrl,
+        isNot(goiasClubConfig.integrations.contactWhatsappUrl),
+      );
+    });
+
+    test('FAQ do Vila: JSON válido, 9 perguntas, só o WhatsApp atual', () {
+      final raw = File(
+        'lib/assets/content/vilanova_membership_faq.json',
+      ).readAsStringSync();
+      final json = jsonDecode(raw) as Map<String, dynamic>;
+      final categories = json['categories'] as List;
+      final items = [
+        for (final c in categories) ...(c as Map)['items'] as List,
+      ];
+      expect(items, hasLength(9));
+      expect(raw, isNot(contains('98343')));
+      expect(raw, isNot(contains('Esmeralda')));
+      expect(raw, contains('(62) 99644-1943'));
+    });
 
     test('CTA aponta pro checkout oficial externo, não pro fluxo mockado', () {
       expect(

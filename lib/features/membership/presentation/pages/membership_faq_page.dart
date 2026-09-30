@@ -205,24 +205,28 @@ class _FaqEmptyResult extends StatelessWidget {
                 height: 1.4,
               ),
             ),
-            const SizedBox(height: AppSpacing.xl),
-            OutlinedButton(
-              onPressed: () =>
-                  openExternalUrl(context, MembershipContactConfig.whatsappUrl),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: colors.primary,
-                side: BorderSide(color: colors.primary),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppRadius.button),
+            if (MembershipContactConfig.hasWhatsapp) ...[
+              const SizedBox(height: AppSpacing.xl),
+              OutlinedButton(
+                onPressed: () => openExternalUrl(
+                  context,
+                  MembershipContactConfig.whatsappUrl,
                 ),
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 12.5,
-                  letterSpacing: 0.3,
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: colors.primary,
+                  side: BorderSide(color: colors.primary),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppRadius.button),
+                  ),
+                  textStyle: const TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 12.5,
+                    letterSpacing: 0.3,
+                  ),
                 ),
+                child: Text(context.l10n.membershipTalkToSupport),
               ),
-              child: Text(context.l10n.membershipTalkToSupport),
-            ),
+            ],
           ],
         ),
       ),
@@ -263,28 +267,32 @@ class _FaqHelpFooter extends StatelessWidget {
               color: colors.textPrimary,
             ),
           ),
-          const SizedBox(height: AppSpacing.lg),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () =>
-                  openExternalUrl(context, MembershipContactConfig.whatsappUrl),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: colors.primary,
-                foregroundColor: colors.onPrimary,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(AppRadius.button),
+          if (MembershipContactConfig.hasWhatsapp) ...[
+            const SizedBox(height: AppSpacing.lg),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => openExternalUrl(
+                  context,
+                  MembershipContactConfig.whatsappUrl,
                 ),
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 12.5,
-                  letterSpacing: 0.3,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: colors.primary,
+                  foregroundColor: colors.onPrimary,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppRadius.button),
+                  ),
+                  textStyle: const TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 12.5,
+                    letterSpacing: 0.3,
+                  ),
                 ),
+                child: Text(context.l10n.membershipTalkToSupport),
               ),
-              child: Text(context.l10n.membershipTalkToSupport),
             ),
-          ),
+          ],
           const SizedBox(height: AppSpacing.md),
           Text(
             context.l10n.membershipFaqScopeNote(

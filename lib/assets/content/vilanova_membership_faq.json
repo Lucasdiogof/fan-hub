@@ -1,0 +1,172 @@
+{
+  "categories": [
+    {
+      "id": "socio-tigrao-cartao",
+      "title": "Cartão do Sócio",
+      "items": [
+        {
+          "id": "socio-tigrao-cartao-1",
+          "question": "O que faço se perdi meu cartão do Sócio Tigrão?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Comunique imediatamente a central de atendimento pelo WhatsApp (62) 99644-1943 e registre a solicitação de um novo cartão. Para a emissão de um novo cartão será cobrada taxa de R$ 30,00, pago por meio de boleto bancário."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "socio-tigrao-cartao-2",
+          "question": "No dia do jogo consigo retirar meu cartão?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Sim. A central do Sócio Tigrão ficará aberta até 30 minutos antes do início da partida."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "socio-tigrao-cartao-3",
+          "question": "Qual é o prazo de recebimento do cartão?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Os cartões são emitidos na central após a confirmação de pagamento da primeira parcela do seu plano."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "socio-tigrao-cartao-4",
+          "question": "Posso entrar nos jogos do Vila Nova FC com meu cartão do Sócio Tigrão?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Sim. O Cartão possui chip que é automaticamente carregado quando você está adimplente. Dessa forma, você não precisará mais de ticket de papel e poderá entrar no Estádio, apenas passando o Cartão na catraca pra ter acesso ao Estádio em dias de jogos."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "socio-tigrao-planos",
+      "title": "Planos",
+      "items": [
+        {
+          "id": "socio-tigrao-planos-1",
+          "question": "Como faço para migrar de plano?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Para realizar a migração de plano, acesse nosso site: www.sociotigrao.com.br"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Clique no link SUA CONTA, com seus login e senha."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Após ter realizado o acesso em sua conta, clique em RENOVAR para migrar e ter um UPGRADE de plano."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Em caso de dúvidas, entre em contato com nossa central pelo WhatsApp (62) 99644-1943."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "socio-tigrao-pagamento",
+      "title": "Pagamento",
+      "items": [
+        {
+          "id": "socio-tigrao-pagamento-1",
+          "question": "Posso alterar a forma de pagamento?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Sim. Você pode providenciar a troca da forma de pagamento através da nossa central de atendimento ou por WhatsApp (62) 99644-1943."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "socio-tigrao-pagamento-2",
+          "question": "Esqueci de pagar uma parcela e estou com o boleto vencido. O que devo fazer?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Você pode entrar na área restrita ao Sócio Torcedor no Site Oficial, solicitar e imprimir a segunda via do boleto e providenciar o pagamento pela internet ou em qualquer agência bancária até a data do vencimento. Em caso de dúvidas, entre em contato com nossa central pelo WhatsApp (62) 99644-1943."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "socio-tigrao-pagamento-3",
+          "question": "Perdi o boleto de pagamento. O que devo fazer?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "Você pode entrar na área restrita ao Sócio Torcedor no Site Oficial, solicitar e imprimir a segunda via do boleto e providenciar o pagamento pela internet ou em qualquer agência bancária até a data do vencimento. Em caso de dúvidas, entre em contato com nossa central pelo WhatsApp (62) 99644-1943."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "socio-tigrao-pagamento-4",
+          "question": "Ainda não recebi meu boleto de pagamento. O que devo fazer?",
+          "answer": [
+            {
+              "type": "paragraph",
+              "spans": [
+                {
+                  "text": "A qualquer momento você poderá entrar na área restrita ao Sócio Torcedor no Site Oficial, solicitar e imprimir a segunda via do boleto e providenciar o pagamento pela internet, ou em qualquer agência bancária até a data de vencimento. Em caso de dúvidas, entre em contato com nossa central pelo WhatsApp (62) 99644-1943."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

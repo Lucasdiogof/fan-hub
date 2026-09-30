@@ -15,6 +15,7 @@ import 'package:goias_app/features/club/data/vilanova_idols_data.dart';
 import 'package:goias_app/features/club/data/vilanova_timeline_data.dart';
 import 'package:goias_app/features/club/data/vilanova_titles_data.dart';
 import 'package:goias_app/features/membership/data/vilanova_membership_plans_catalog.dart';
+import 'package:goias_app/features/membership/data/vilanova_regulation_content.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_version.dart';
 import 'package:goias_app/features/passport/data/vilanova_passport_content.dart';
 
@@ -210,6 +211,9 @@ final vilaNovaClubConfig = ClubConfig(
     // real específico), reconvertido em duotone vermelho/vinho por
     // `tooling/vilanova_brand/build_arena_stadium.py`.
     arenaStadiumPhoto: '$_dir/arena_stadium.png',
+    // FAQ oficial do Sócio Tigrão (API pública do provedor de adesão),
+    // gerado por `tooling/vilanova_membership/build_membership_content.mjs`.
+    membershipFaqAssetPath: 'lib/assets/content/vilanova_membership_faq.json',
     storeBanner: _phRaster,
     guessPlayerPhotos: _vilaNovaGuessPlayerPhotos,
   ),
@@ -231,6 +235,12 @@ final vilaNovaClubConfig = ClubConfig(
     socialFacebookUrl: 'https://www.facebook.com/vilanovafc/',
     socialXUrl: 'https://twitter.com/VilaNovaFC',
     officialSiteUrl: 'https://www.vilanovafc.com.br/',
+    // "Falar com atendimento" do Sócio Tigrão: o mesmo WhatsApp que o botão
+    // do portal oficial do programa abre (`whatsappLink` em
+    // vilanova.ingressosa.com.br/public/api/v1/socio/general-configuration-portal,
+    // 2026-09-30).
+    contactWhatsappNumber: '(62) 99644-1943',
+    contactWhatsappUrl: 'https://wa.me/5562996441943',
     // F8 (2026-09-30): Worker próprio (`wrangler.vilanova.toml`, deploy
     // pela CLI). Mesmo código-fonte dos outros clubes, `CLUB_CODE =
     // "vilanova"` — rejeita `?club=goias`/`bragantino`.
@@ -325,24 +335,22 @@ final vilaNovaClubConfig = ClubConfig(
   ),
   passportContent: VilaNovaPassportContent.content,
   // F7 (2026-09-30): planos reais (`VilaNovaMembershipPlansCatalog`), fonte
-  // = API pública do próprio provedor de adesão. Regulamento continua
-  // ausente (nenhum documento oficial capturado) — `regulationIntro`/
-  // `regulationSections` vazios fazem `hasRegulationContent` ser `false`,
-  // então a tela de regulamento nunca é oferecida (nunca inventado). O
-  // `assetPath` abaixo não é lido em lugar nenhum do app hoje (confirmado
-  // por auditoria — só a UI usa `regulationIntro`/`regulationSections`),
-  // mas o campo é obrigatório na entidade; mantido como placeholder
-  // explícito enquanto não existir regulamento de verdade pra apontar.
+  // = API pública do próprio provedor de adesão. Regulamento = o "Termo de
+  // Adesão ao Programa Sócio-Tigrão" oficial, da mesma API
+  // (`/socio/terms-of-use`), texto sem reescrita, gerado por
+  // `tooling/vilanova_membership/build_membership_content.mjs`. O
+  // `assetPath` não é lido pelo app (só `regulationIntro`/
+  // `regulationSections`), mas é obrigatório na entidade.
   membershipProgram: MembershipProgramConfig(
     plans: VilaNovaMembershipPlansCatalog.plans,
     regulationVersion: RegulationVersion(
-      id: 'socio-tigrao-sem-regulamento',
-      version: 'inexistente',
-      effectiveAt: DateTime(2026, 9, 30),
+      id: 'socio-tigrao-termo-de-adesao-$vilaNovaRegulationUpdatedAt',
+      version: vilaNovaRegulationUpdatedAt,
+      effectiveAt: DateTime.parse(vilaNovaRegulationUpdatedAt),
       assetPath: 'lib/assets/legal/vilanova_membership_regulation.md',
     ),
-    regulationIntro: '',
-    regulationSections: const [],
+    regulationIntro: vilaNovaMembershipRegulationIntro,
+    regulationSections: vilaNovaMembershipRegulationSections,
     sourceLabel:
         'Sócio Tigrão — API pública do provedor de adesão '
         '(vilanova.ingressosa.com.br), consultada em 2026-09-30.',

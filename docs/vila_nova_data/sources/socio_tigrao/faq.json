@@ -1,0 +1,119 @@
+{
+  "content": [
+    {
+      "id": "5d593e85-ff68-4f4f-99cf-16a697ff7f17",
+      "title": "O que faço se perdi meu cartão do Sócio Tigrão?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Comunique imediatamente a central de atendimento pelo nosso Whatsapp (62) 98343-7324 e registre a solicitação de um novo cartão. Para a emissão de um novo cartão será cobrada taxa de R$ 30,00, pago por meio de boleto bancário.</p>",
+      "createdAt": "2024-11-16T00:26:00.000Z",
+      "updatedAt": "2024-11-16T00:26:00.000Z"
+    },
+    {
+      "id": "7fe8be94-3ec1-4b0f-9b9c-eed68fd9f4cf",
+      "title": "No dia do jogo consigo retirar meu cartão?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Sim. A central do Sócio Tigrão ficará aberta até 30 minutos antes do início da partida.</p>",
+      "createdAt": "2024-11-16T00:24:00.000Z",
+      "updatedAt": "2024-11-16T00:24:00.000Z"
+    },
+    {
+      "id": "2c2a6f95-9de3-460e-b022-02a54bb4309f",
+      "title": "Qual é o prazo de recebimento do cartão?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Os cartões são emitidos na central após a confirmação de pagamento da primeira parcela do seu plano.</p>",
+      "createdAt": "2024-11-16T00:22:00.000Z",
+      "updatedAt": "2024-11-16T00:22:00.000Z"
+    },
+    {
+      "id": "9a3c1c95-3b33-48b9-a5f7-92a37be55bb1",
+      "title": "Posso entrar nos jogos do Vila Nova FC com meu cartão do Sócio Tigrão?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Sim. O Cartão possui chip que é automaticamente carregado quando você está adimplente. Dessa forma, você não precisará mais de ticket de papel e poderá entrar no Estádio, apenas passando o Cartão na catraca pra ter acesso ao Estádio em dias de jogos.</p>",
+      "createdAt": "2024-11-16T00:20:00.000Z",
+      "updatedAt": "2024-11-16T00:20:00.000Z"
+    },
+    {
+      "id": "4a68d96d-22a9-48a6-a46d-3ae30d445c9f",
+      "title": "Como faço para migrar de plano?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Para realizar a migração de plano, acesse nosso site: <a href=\"http://www.sociotigrao.com.br/\">www.sociotigrao.com.br</a><br>Clique no link SUA CONTA, com seus login e senha.<br>Após ter realizado o acesso em sua conta, clique em RENOVAR para migrar e ter um UPGRADE de plano.<br>Em caso de dúvidas, entre em contato com nossa central pelo Whatsapp (62) 98343-7324.</p>",
+      "createdAt": "2024-11-16T00:18:00.000Z",
+      "updatedAt": "2024-11-16T00:18:00.000Z"
+    },
+    {
+      "id": "084c6e7d-31e0-460b-bbe1-e9b02a2097f1",
+      "title": "Preciso renovar meu plano ou a renovação é automática?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Sim. Você pode providenciar a troca da forma de pagamento através da nossa central de atendimento ou por nosso Whatsapp (62) 98343-7323.</p>",
+      "createdAt": "2024-11-16T00:16:00.000Z",
+      "updatedAt": "2024-11-16T00:16:00.000Z"
+    },
+    {
+      "id": "ad29fe22-f574-4f87-8283-bf587dce13b3",
+      "title": "Posso alterar a forma de pagamento?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Sim. Você pode providenciar a troca da forma de pagamento através da nossa central de atendimento ou por nosso Whatsapp (62) 98343-7323.</p>",
+      "createdAt": "2024-11-16T00:14:00.000Z",
+      "updatedAt": "2024-11-16T00:14:00.000Z"
+    },
+    {
+      "id": "6d3c6063-2888-4d1d-9b84-9e3a5c59dbd7",
+      "title": "Esqueci de pagar uma parcela e estou com o boleto vencido. O que devo fazer?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Você pode entrar na área restrita ao Sócio Torcedor no Site Oficial, solicitar e imprimir a segunda via do boleto e providenciar o pagamento pela internet ou em qualquer agência bancária até a data do vencimento. Em caso de dúvidas, entre em contato com nossa central pelo Whatsapp (62) 98343-7324.</p>",
+      "createdAt": "2024-11-16T00:12:00.000Z",
+      "updatedAt": "2024-11-16T00:12:00.000Z"
+    },
+    {
+      "id": "fc347041-e64a-4bb1-b95a-d86fc017535d",
+      "title": "Perdi o boleto de pagamento. O que devo fazer?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>Você pode entrar na área restrita ao Sócio Torcedor no Site Oficial, solicitar e imprimir a segunda via do boleto e providenciar o pagamento pela internet ou em qualquer agência bancária até a data do vencimento. Em caso de dúvidas, entre em contato com nossa central pelo Whatsapp (62) 98343-7324.</p>",
+      "createdAt": "2024-11-16T00:10:00.000Z",
+      "updatedAt": "2024-11-16T00:10:00.000Z"
+    },
+    {
+      "id": "a47f7e6d-ff2f-453d-bd79-4cfd2a1ff8f2",
+      "title": "Ainda não recebi meu boleto de pagamento. O que devo fazer?",
+      "isActive": true,
+      "isDeleted": false,
+      "content": "<p>A qualquer momento você poderá entrar na área restrita ao Sócio Torcedor no Site Oficial, solicitar e imprimir a segunda via do boleto e providenciar o pagamento pela internet, ou em qualquer agência bancária até a data de vencimento. Em caso de dúvidas, entre em contato com nossa central pelo Whatsapp (62) 98343-7324.</p>",
+      "createdAt": "2024-11-16T00:08:00.000Z",
+      "updatedAt": "2024-11-16T00:08:00.000Z"
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "unsorted": false,
+      "sorted": true,
+      "empty": false
+    },
+    "pageNumber": 0,
+    "pageSize": 10,
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 2,
+  "totalElements": 14,
+  "last": false,
+  "numberOfElements": 10,
+  "first": true,
+  "sort": {
+    "unsorted": false,
+    "sorted": true,
+    "empty": false
+  },
+  "size": 10,
+  "number": 0,
+  "empty": false
+}
