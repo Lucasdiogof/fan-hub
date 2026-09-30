@@ -31,28 +31,28 @@ Regras que não mudam:
 | F2 marca | ✅ cor oficial **#C33D41** (manual, pág. 9); escudo, selo, login e ícones gerados do PDF vetorial por `tooling/vilanova_brand/build_brand_assets.py` | `f885cd8` · `58_*` |
 | F3 /clube | ✅ `hasClubContent` ligado: história (7), linha do tempo (30), 31 títulos, 3 vices da Copa Verde, 9 ídolos. História/timeline **geradas** por `tooling/vilanova_content/generate_institutional_dart.mjs` (corrigir no JSON e regenerar + `dart format`) | `7b66b3e` · `59_*` |
 | Seeds SQL | ✅ 17 arquivos `supabase/vilanova_*.sql`, testados em Postgres real (PGlite): Passaporte 2019–2026 (468 jogos, 78 estádios), diretoria, transparência, elenco, quiz, escalações, carreira, Manto | `777fded` + commit do lote 2019 · `60_*` (runbook) |
-| F4 → F9 | ⏳ dependem do **projeto Supabase do Vila** | — |
+| **Supabase do Vila** | ✅ **projeto criado, schema+bootstrap+todos os 17 seeds APLICADOS DE VERDADE** em 2026-09-29 (projeto `vkybbrfvmexevakknlsi`), verificado ao vivo (não só no simulador): 468 partidas, 78 venues, 0 órfão, 0 venue sem uso, RPCs `passport_seasons()`/`passport_matches_for_year()` respondendo certo. `supabaseUrl`/`supabasePublishableKey` preenchidos no config | commit do lote de aplicação |
+| F4 → F9 | ⏳ banco já tem os dados (diretoria/elenco/Arena/Passaporte); falta ligar as capabilities no config, uma fase por vez | — |
 
-Estado atual do app: o flavor **compila** (APK debug e build web ok), mas **não sobe**, porque `supabaseUrl` é null e `SupabaseConfig` falha alto de propósito, pra nunca cair no banco de outro clube.
+Estado atual do app: o flavor **compila** e o Supabase **já teria dado** pra subir (URL/key preenchidos, banco populado) — falta só ligar as capabilities (`hasClubContent` já está; `hasPassport`/`enabledArenaGames`/etc. ainda não) e configurar a Auth Site URL/redirect no dashboard do projeto (adiado pra quando o Worker/F8 existir, pra não apontar pra uma URL que não resolve).
 
-Verificação da última rodada: `flutter test` com 1540 ok; `flutter analyze` sem issue nos arquivos do Vila; `test/core/club/vilanova_identity_isolation_test.dart` com 24 testes de isolamento e conteúdo.
+Verificação da última rodada: `flutter test` com 1540+ ok; `flutter analyze` sem issue nos arquivos do Vila; `test/core/club/vilanova_identity_isolation_test.dart` com 25 testes de isolamento e conteúdo (agora cobrindo supabaseUrl/publishableKey preenchidos, não mais null).
 
 ## 3. Próximos passos, em ordem
 
-1. ✅ **[USUÁRIO] Projeto Supabase do Vila Nova criado** em 2026-09-29 (`vkybbrfvmexevakknlsi`, registrado em `tooling/multiclub/supabase_projects_registry.json`). Falta só o usuário mandar a **connection string** (Settings → botão "Connect" → aba URI → Session pooler, com a senha) e a **publishable key** (Settings → API Keys) — aí o desenvolvimento aplica tudo via `VILANOVA_DB_URL` (mesmo padrão de `GOIAS_DB_URL`/`BRAGANTINO_DB_URL`, nunca precisou do login CLI de org que só enxerga Aura/La Pelve).
-2. **Aplicar o runbook** `docs/multiclub/60_vilanova_seeds_runbook.md`: migrations (`db-push.mjs vilanova --yes`) → `infra/supabase/clubs/vilanova/bootstrap.sql` → seeds na ordem, via `tooling/multiclub/run-sql-file.mjs vilanova <arquivo> --yes` (novo script, roda arquivo inteiro com múltiplos statements). Preencher `supabaseUrl`/`supabasePublishableKey`/`supabaseRedirectUrl` na config. Configurar Auth URL do projeto (redirect).
-3. **F4**: diretoria, transparência e elenco já no banco; conferir as telas.
-4. **F5 Arena**, uma subfase por jogo, ligando em `enabledArenaGames`:
-   - quiz, escalação e Manto estão prontos;
+1. ✅ **[USUÁRIO] Projeto Supabase criado e runbook aplicado** em 2026-09-29 (`vkybbrfvmexevakknlsi`). Usuário criou o projeto, mandou a connection string (session pooler) e a publishable key; aplicado via `VILANOVA_DB_URL` (mesmo padrão de `GOIAS_DB_URL`/`BRAGANTINO_DB_URL` — nunca precisou do login CLI de org que só enxerga Aura/La Pelve): 7 migrations, `bootstrap.sql`, e os 17 seeds (venues + 8 anos de Passaporte + diretoria + transparência + elenco + quiz + escalações + carreira + Manto), tudo verificado ao vivo com `tooling/multiclub/verify-vilanova-live.mjs` (novo — mesmas checagens do simulador, mas contra o banco remoto). `supabaseUrl`/`supabasePublishableKey` preenchidos em `vilanova_club_config.dart`.
+2. **[USUÁRIO, quando for a hora do F8] Configurar Auth Site URL/redirect** no dashboard do projeto — adiado de propósito: sem Worker ainda (F8), não há URL de callback real pra apontar. `supabaseRedirectUrl` continua `null` até lá.
+3. **F4**: diretoria, transparência e elenco já no banco (28 pessoas, 5 documentos, 31 atletas); falta ligar as capabilities correspondentes no config e conferir as telas.
+4. **F5 Arena**, uma subfase por jogo, ligando em `enabledArenaGames` (dado já está todo no banco: 45 quiz, 15 escalações, 30 carreiras, 50 Manto):
+   - quiz, escalação e Manto estão prontos pra ligar;
    - carreira: esperar os nomes históricos da pesquisa externa, ou ligar com os 30 atuais se o usuário aceitar;
-   - **perfis de jogador/técnico**: ✅ convertidos e calibrados (10 jogadores em `vilanova_player_identity_references.dart`, 8%–14% cada; 6 técnicos em `vilanova_tactical_coach_references.dart`, 16,4%–16,9% cada). Falta só ligar `player_identity`/`tactical_identity` em `enabledArenaGames` quando chegar a vez dessas subfases.
-5. **F6 Passaporte**: ligar `hasPassport`. Novos lotes: `node tooling/vilanova_passport/generate_passport_sql.mjs` + simulador.
+   - **perfis de jogador/técnico**: ✅ convertidos e calibrados (10 jogadores em `vilanova_player_identity_references.dart`, 8%–14% cada; 6 técnicos em `vilanova_tactical_coach_references.dart`, 16,4%–16,9% cada) — mas esses dois são referências em Dart, não seed; já estão prontos independente do banco. Falta só ligar `player_identity`/`tactical_identity` em `enabledArenaGames`.
+5. **F6 Passaporte**: ligar `hasPassport` (468 partidas/78 venues já no banco). Novos lotes da pesquisa externa: `node tooling/vilanova_passport/generate_passport_sql.mjs`, revalidar com o simulador E com `verify-vilanova-live.mjs`, reaplicar só o seed do ano novo via `run-sql-file.mjs`.
 6. **F7** Sócio Tigrão / Loja / Ingressos em modo demo. O pacote ainda está em REVIEW (preços do sócio vieram de jornal; a loja tem 12 de ~125 produtos).
-7. **F8** Worker `wrangler.vilanova.toml` (jogos, notícias do site oficial, Instagram), ligando `hasMatches`/`hasNews`/`hasSocial`. O parser de notícias é novo (`src/news/`), no modelo do `bragantino_parser.ts`.
+7. **F8** Worker `wrangler.vilanova.toml` (jogos, notícias do site oficial, Instagram), ligando `hasMatches`/`hasNews`/`hasSocial`. O parser de notícias é novo (`src/news/`), no modelo do `bragantino_parser.ts`. Preencher `supabaseRedirectUrl` e configurar a Auth Site URL (passo 2 acima) junto com essa fase.
 8. **F9** QA de isolamento com os 3 flavors + revisão visual (golden temporário, ver memória "revisão visual sem login").
 
 **Decisões pendentes do usuário:**
-- (b) O projeto Supabase (passo 1).
 - (c) Ligar a carreira só com o elenco atual ou esperar os nomes históricos.
 
 **Decisões já tomadas:**
@@ -115,6 +115,7 @@ Próximo lote do Passaporte: 2018, depois seguindo para trás até 1943.
    CHECKS=tooling/vilanova_seeds/checks.mjs node tooling/vilanova_seeds/simulate_fresh_project.mjs <seeds na ordem do runbook>
    ```
 6. Atualizar este arquivo, fazer o commit e devolver a mensagem de correções.
+7. **Desde 2026-09-29, o projeto Supabase existe e já tem dado real** — depois do simulador OK, aplicar o(s) seed(s) novo(s)/alterado(s) no banco de verdade: `VILANOVA_DB_URL=<connection string> node tooling/multiclub/run-sql-file.mjs vilanova <arquivo> --yes`, depois `node tooling/multiclub/verify-vilanova-live.mjs` pra conferir contagens/RPCs ao vivo.
 
 ## 8. Armadilhas conhecidas
 

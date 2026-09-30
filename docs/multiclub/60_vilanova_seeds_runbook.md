@@ -4,9 +4,17 @@ Data: 2026-09-29. Tudo abaixo foi **testado de ponta a ponta num Postgres real**
 
 **Atualização 2026-09-29 (v1.3):** Passaporte 2019 fechado (60/60, 0 UNKNOWN) e aplicado — 8 anos, 468 partidas, 78 venues. Simulador rodado de novo com o seed novo, tudo OK (ver `git log` deste arquivo).
 
-## Runbook (quando o projeto Supabase do Vila existir)
+**Atualização 2026-09-29 (projeto real criado — RUNBOOK APLICADO DE VERDADE):** o usuário criou o projeto Supabase do Vila (`vkybbrfvmexevakknlsi`) e mandou a connection string (session pooler, IPv4) + a publishable key. Em vez do SQL Editor manual, tudo foi aplicado via CLI/`pg` com `VILANOVA_DB_URL` (registrado em `tooling/multiclub/supabase_projects_registry.json`, mesmo padrão de `GOIAS_DB_URL`/`BRAGANTINO_DB_URL` — decorre de `--db-url`, não do login de organização do Supabase CLI, que aqui só enxerga Aura/La Pelve):
+1. `node tooling/multiclub/db-push.mjs vilanova --dry-run` (limpo) e depois `--yes` — as 7 migrations do schema canônico.
+2. `node tooling/multiclub/run-sql-file.mjs vilanova infra/supabase/clubs/vilanova/bootstrap.sql --yes` (script novo — roda um arquivo `.sql` inteiro com múltiplos statements; `supabase db query --file` só aceita 1 statement).
+3. Os 17 seeds, um `run-sql-file.mjs ... --yes` por arquivo, na ordem da tabela acima.
+4. `node tooling/multiclub/verify-vilanova-live.mjs` (novo — mesmas checagens de `tooling/vilanova_seeds/checks.mjs`, mas contra o banco remoto via `pg`): 468 partidas, 78 venues, 0 órfão, 0 venue sem uso, 0 `club_id` errado, `passport_seasons()`/`passport_matches_for_year(2025)` respondendo certo. Tudo bateu exatamente com o simulador.
 
-Cada arquivo roda inteiro, de uma vez, no **SQL Editor do projeto do Vila Nova**. Todos são idempotentes e começam com uma trava que PARA se o banco não for o do Vila (`public.clubs` precisa ter só a linha `vilanova`).
+`vilanova_club_config.dart` já tem `supabaseUrl`/`supabasePublishableKey` preenchidos. Falta só `supabaseRedirectUrl` (depende do Worker, F8) e configurar a Auth Site URL no dashboard (mesma dependência).
+
+## Runbook original (referência histórica, já executado)
+
+Cada arquivo roda inteiro, de uma vez. Todos são idempotentes e começam com uma trava que PARA se o banco não for o do Vila (`public.clubs` precisa ter só a linha `vilanova`).
 
 | # | Arquivo | O que faz |
 |---|---|---|
