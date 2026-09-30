@@ -106,22 +106,41 @@ void main() {
   });
 
   group('Capabilities — só o que já foi validado está ligado', () {
-    test('F3 ligou só hasClubContent; o resto segue desligado', () {
-      final c = v.capabilities;
-      expect(c.hasClubContent, isTrue);
-      expect([
-        c.hasMembership,
-        c.hasStore,
-        c.hasTickets,
-        c.hasCrowdLineup,
-        c.hasPassport,
-        c.hasNews,
-        c.hasSocial,
-        c.hasPartners,
-        c.hasMatches,
-      ], everyElement(isFalse));
-      expect(c.enabledArenaGames, isEmpty);
-    });
+    test(
+      'F3/F4 ligaram hasClubContent; o resto sem Supabase ainda segue desligado',
+      () {
+        final c = v.capabilities;
+        expect(c.hasClubContent, isTrue);
+        expect([
+          c.hasMembership,
+          c.hasStore,
+          c.hasTickets,
+          c.hasCrowdLineup,
+          c.hasPassport,
+          c.hasNews,
+          c.hasSocial,
+          c.hasPartners,
+          c.hasMatches,
+        ], everyElement(isFalse));
+      },
+    );
+
+    test(
+      'F5: 5 dos 6 jogos da Arena ligados, guess_player fica de fora (0 elegível como segredo)',
+      () {
+        expect(v.capabilities.enabledArenaGames, {
+          'quiz',
+          'lineup',
+          'player_identity',
+          'tactical_identity',
+          'career_path',
+        });
+        expect(
+          v.capabilities.enabledArenaGames,
+          isNot(contains('guess_player')),
+        );
+      },
+    );
 
     test(
       'Supabase do próprio Vila (projeto vkybbrfvmexevakknlsi) — nunca aponta pro de outro clube',

@@ -152,13 +152,38 @@ final vilaNovaClubConfig = ClubConfig(
     hasNews: false,
     hasSocial: false,
     // F3: história, linha do tempo, títulos e ídolos estáticos (pacote
-    // v1.2). Diretoria/transparência (Supabase) entram na F4.
+    // v1.2). F4 (2026-09-29): diretoria (6 seções/28 pessoas) e
+    // transparência (5 documentos) confirmadas ao vivo no Supabase do Vila
+    // (`tooling/multiclub/verify-vilanova-live.mjs`) — a mesma flag já
+    // cobria os dois, só faltava o banco existir.
     hasClubContent: true,
     // Lista de patrocinadores incompleta no pacote (máster não confirmado) —
     // fica desligado até a lista fechar e passar por decisão editorial.
     hasPartners: false,
     hasMatches: false,
-    enabledArenaGames: {},
+    // F5 (2026-09-29), depois de reauditar o Supabase real do Vila:
+    //   * 'quiz': 45/45 ativas, todas com 4 opções.
+    //   * 'lineup': 15/15 ativas, 11 jogadores/1 GOL cada, só formações que
+    //     o FormationLayoutService reconhece (4-4-2/4-3-3/3-5-2/4-2-3-1).
+    //   * 'player_identity'/'tactical_identity': referências convertidas e
+    //     calibradas no motor real (ver `vilanova_player_identity_references.dart`
+    //     e `vilanova_tactical_coach_references.dart`), sem depender do banco.
+    //   * 'career_path': 30/30 ativas, todas do elenco ATUAL (decisão (c) do
+    //     handoff ainda em aberto sobre esperar nomes históricos — ligado
+    //     agora com o que existe; troca sem custo quando o lote histórico
+    //     chegar, os dados só são substituídos).
+    //   * 'guess_player' (Manto) FICA DE FORA: `GuessPlayer.eligibleAsSecret`
+    //     exige `imageUrl != null`, e não existe `guessPlayerPhotos` pro
+    //     Vila ainda (ASSET_GAP, fotos não baixadas) — hoje TODAS as 50
+    //     cartas resolvem `imageUrl=null`, ou seja, 0 elegíveis como
+    //     segredo do sorteio. Ligar assim que o mapa de fotos existir.
+    enabledArenaGames: {
+      'quiz',
+      'lineup',
+      'player_identity',
+      'tactical_identity',
+      'career_path',
+    },
     storeCommerceMode: CommerceMode.demo,
     ticketCommerceMode: CommerceMode.demo,
     membershipCommerceMode: CommerceMode.demo,
