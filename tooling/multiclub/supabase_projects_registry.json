@@ -13,5 +13,12 @@
     "writable": true,
     "envVar": "BRAGANTINO_DB_URL",
     "_note": "workdir=\".\" desde o migration-history cutover de 2026-09-04 — infra/supabase/canonical/ (a antiga cadeia paralela usada só pra provar o baseline) foi removida depois de promovida pra supabase/migrations/ na raiz, a mesma cadeia oficial que o Goiás usa. Staging descartável — vazio de usuário/dado real, só schema+identidade."
+  },
+  "vilanova": {
+    "projectRef": "vkybbrfvmexevakknlsi",
+    "workdir": ".",
+    "writable": true,
+    "envVar": "VILANOVA_DB_URL",
+    "_note": "Projeto criado pelo usuário em 2026-09-29 (dashboard: supabase.com/dashboard/project/vkybbrfvmexevakknlsi). writable=true por ser projeto NOVO/vazio, sem dado de usuário — aplicar o baseline canônico + bootstrap + seeds do runbook (docs/multiclub/60_vilanova_seeds_runbook.md) é a etapa esperada, não uma convergência de produção. Mesmo workdir \".\" dos outros dois clubes (supabase/migrations/ na raiz, schema canônico compartilhado)."
   }
 }
