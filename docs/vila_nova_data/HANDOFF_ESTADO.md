@@ -1,118 +1,122 @@
-# Flavor Vila Nova — handoff de estado (atualizado 2026-09-29, v1.2)
+# Flavor Vila Nova — handoff de estado
 
-> Leia isto primeiro ao retomar em outra conta/sessão. Tudo aqui está **fora do git** (nada commitado ainda).
+> **Leia isto primeiro ao retomar** (outra conta ou outra sessão). Atualizado em 2026-09-29, no commit `777fded`. Tudo está commitado e em `origin/main`.
+> Prompt pronto para começar a nova conversa: `docs/vila_nova_data/PROMPT_RETOMADA.md`.
 
-## Contexto e fluxo combinado
+## 1. O que é e como trabalhamos
 
-Criar o 3º flavor do fan-hub, **`vilanova`** (Vila Nova FC, Goiânia-GO), seguindo o mesmo padrão do Bragantino:
+3º flavor do fan-hub: **`vilanova`** (Vila Nova Futebol Clube, Goiânia-GO), no mesmo padrão do Bragantino (`lib/core/club/bragantino_club_config.dart`, `docs/multiclub/47_*`, `docs/bragantino_data/`).
 
-1. **A pesquisa externa** entrega um pacote de dados em ZIPs incrementais (v0.1, v0.2…), cada um trazendo só os arquivos alterados mais o `manifest.json`.
-2. **A auditoria confere** cada ZIP: extrai no scratchpad, aplica em ordem sobre o pacote, valida a consistência, confere alguns fatos na web e copia para `fan-hub/docs/vila_nova_data/`. Depois devolve ao usuário uma mensagem pronta para colar na ferramenta de pesquisa, com as correções.
-3. Quando o usuário aprovar a Etapa 1, a **pesquisa escreve os prompts F0–F9** (um por fase) e a **implementação segue**, fase a fase. Cada fase termina com commit e PARE.
+Divisão de trabalho:
+1. **Pesquisa externa.** Ele entrega ZIPs incrementais na Área de Trabalho (`C:\Users\lucas\OneDrive\Desktop\vila_nova_*.zip`), cada um só com os arquivos alterados + `manifest.json`. O pedido original está em `docs/vila_nova_data/PROMPT_PESQUISA.md`.
+2. **A auditoria confere** cada ZIP (receita na §7), aplica em `docs/vila_nova_data/` e devolve ao usuário uma **mensagem pronta para colar na ferramenta de pesquisa** com as correções.
+3. **A implementação segue** o app fase a fase, com commit no fim de cada fase. O usuário está em modo automático e não quer aprovar cada passo, mas o push é confirmado no fim de cada entrega.
 
-- Roteiro original da pesquisa: `docs/vila_nova_data/PROMPT_PESQUISA.md` (define estrutura, formatos e as fases F0–F9).
-- Referências de padrão no repo: `lib/core/club/bragantino_club_config.dart`, `docs/multiclub/47_m4_bragantino_onboarding_design.md`, `docs/bragantino_data/`, `tooling/bragantino_passport/`.
+Regras que não mudam:
+- só `status: READY` entra no app;
+- nunca inventar dado;
+- em partida decidida nos pênaltis, `outcome` = resultado do tempo normal (DRAW), com a disputa à parte;
+- estádio só com fonte da própria partida (`MATCH_SPECIFIC`);
+- vice nunca é título;
+- o Vila é rival do Goiás: zero reaproveitamento de texto, asset ou dado;
+- texto de bastidor da pesquisa ("lote", "acervo", "snapshot") nunca vai pro app. Corrigir no pacote, com `editorial_note`.
 
-## Estado atual do pacote: **v1.2** (em `docs/vila_nova_data/`)
+## 2. Implementação no app
 
-Os ZIPs originais estão em `C:\Users\lucas\OneDrive\Desktop\vila_nova_data_etapa1_v0_*.zip` e `vila_nova_data_passport_v0_7_incremental.zip`. O v0.1 é completo; os demais são incrementais, aplicados na ordem 0.2 → 0.3 → 0.4 → 0.5 → 0.6 → 0.7.
+| Fase | Estado | Commit / relatório |
+|---|---|---|
+| F0 infraestrutura | ✅ flavor Android/iOS/web, `br.com.fanhub.vilanova`, `club_id` `3a6b1e27-8441-533d-b6b8-99fdcfdf1c3e`. Feito por outra sessão | `00ec2fe` · `docs/multiclub/57_*` |
+| Firebase | ✅ apps criados via CLI no `fan-hub-29e9b`; configs no repo | `f885cd8` |
+| F1 config | ✅ `lib/core/club/vilanova_club_config.dart` no `clubRegistry`; OneFootball 2865 / `vila-nova-2865` / `brasileirao-serie-b-superbet-119` (confirmado) | `f885cd8` · `58_*` |
+| F2 marca | ✅ cor oficial **#C33D41** (manual, pág. 9); escudo, selo, login e ícones gerados do PDF vetorial por `tooling/vilanova_brand/build_brand_assets.py` | `f885cd8` · `58_*` |
+| F3 /clube | ✅ `hasClubContent` ligado: história (7), linha do tempo (30), 31 títulos, 3 vices da Copa Verde, 9 ídolos. História/timeline **geradas** por `tooling/vilanova_content/generate_institutional_dart.mjs` (corrigir no JSON e regenerar + `dart format`) | `7b66b3e` · `59_*` |
+| Seeds SQL | ✅ 16 arquivos `supabase/vilanova_*.sql`, testados em Postgres real (PGlite): Passaporte 2020–2026 (408 jogos, 67 estádios), diretoria, transparência, elenco, quiz, escalações, carreira, Manto | `777fded` · `60_*` (runbook) |
+| F4 → F9 | ⏳ dependem do **projeto Supabase do Vila** | — |
+
+Estado atual do app: o flavor **compila** (APK debug e build web ok), mas **não sobe**, porque `supabaseUrl` é null e `SupabaseConfig` falha alto de propósito, pra nunca cair no banco de outro clube.
+
+Verificação da última rodada: `flutter test` com 1540 ok; `flutter analyze` sem issue nos arquivos do Vila; `test/core/club/vilanova_identity_isolation_test.dart` com 24 testes de isolamento e conteúdo.
+
+## 3. Próximos passos, em ordem
+
+1. **[USUÁRIO] Criar o projeto Supabase do Vila Nova** na organização do Fan Hub. Passar URL + chave publishable, ou definir o token na janela dele: a CLI daqui só enxerga os projetos da Aura e da La Pelve.
+2. **Aplicar o runbook** `docs/multiclub/60_vilanova_seeds_runbook.md`: migrations → `infra/supabase/clubs/vilanova/bootstrap.sql` → seeds na ordem. Preencher `supabaseUrl`/`supabasePublishableKey`/`supabaseRedirectUrl` na config. Configurar Auth URL do projeto (redirect).
+3. **F4**: diretoria, transparência e elenco já no banco; conferir as telas.
+4. **F5 Arena**, uma subfase por jogo, ligando em `enabledArenaGames`:
+   - quiz, escalação e Manto estão prontos;
+   - carreira: esperar os nomes históricos da pesquisa externa, ou ligar com os 30 atuais se o usuário aceitar;
+   - **perfis de jogador/técnico**: converter as referências para o motor (ver §5) e calibrar como no Bragantino (`tool/bragantino_*_calibration.dart`).
+5. **F6 Passaporte**: ligar `hasPassport`. Novos lotes: `node tooling/vilanova_passport/generate_passport_sql.mjs` + simulador.
+6. **F7** Sócio Tigrão / Loja / Ingressos em modo demo. O pacote ainda está em REVIEW (preços do sócio vieram de jornal; a loja tem 12 de ~125 produtos).
+7. **F8** Worker `wrangler.vilanova.toml` (jogos, notícias do site oficial, Instagram), ligando `hasMatches`/`hasNews`/`hasSocial`. O parser de notícias é novo (`src/news/`), no modelo do `bragantino_parser.ts`.
+8. **F9** QA de isolamento com os 3 flavors + revisão visual (golden temporário, ver memória "revisão visual sem login").
+
+**Decisões pendentes do usuário:**
+- (a) **Parceiros**: a lista está incompleta e a FatalFans é uma plataforma de conteúdo adulto. `hasPartners` segue false até ele decidir.
+- (b) O projeto Supabase (passo 1).
+- (c) Ligar a carreira só com o elenco atual ou esperar os nomes históricos.
+
+## 4. Pacote de pesquisa: v1.2 (`docs/vila_nova_data/`)
 
 | Área | Situação |
 |---|---|
-| Identidade (`club.json`) | ✅ Fundado em 29/07/1943; torcida "Colorado"; apelido Tigrão/Tigre; estádio OBA; CT Vila do Tigre. Nomes sugeridos: Arena do Tigre / Passaporte Colorado / loja Nação Colorada / Sócio Tigrão |
-| Cores (`branding.json`) | ✅ extraído: **#C33D41** (manual oficial, pág. 9); o pacote segue com null de propósito. Fonte: PDF vetorial oficial (`vetor-escudo-vila-nova-fc-oficial-pdf-713650.pdf`, com o manual linkado no json) |
-| Integrações | ✅ OneFootball team id **2865** (slug `vila-nova`). O slug da competição está em REVIEW. Site, notícias (`/noticias/<id>-<slug>`), redes, loja `lojadovila.com.br`, sócio/ingressos em ingressosa, 3 endereços de retirada |
-| História / timeline | ✅ 7 seções / 30 marcos |
-| Títulos (`honors.json`) | ✅ 16 Goianos (1961/62/63, 69, 73, 77/78/79/80, 82, 84, 93, 95, 2001, 2005, 2025), conforme o site oficial; 3 Séries C (1996, 2015, 2020). Torneio Início e Goiânia-Anápolis em REVIEW. ⚠ A Wikipedia conta 17 Goianos (pedido à pesquisa: registrar como conflito) |
-| Ídolos | 11 READY + 4 REVIEW. ⚠ **Túlio**: o pacote diz 104j/92g (Zerozero); Wikipedia/oGol somam 58j/51g → precisa voltar para REVIEW |
-| Diretoria / transparência | ✅ Diretoria e comissão atuais; PDFs catalogados; destaques financeiros não extraídos |
-| Elenco (`squad_current.json`) | ✅ 31 atletas (há 3 conflitos biográficos documentados) |
-| Sócio | REVIEW: preços vieram de jornal; falta o regulamento oficial |
-| Loja | 12 de ~125 produtos |
-| Ingressos | ✅ setores e preços do OBA |
-| Quiz | ✅ 45 READY (v0.2 trocou as perguntas perecíveis). Sobram "estádio atual" e "capacidade atual do OBA": aceitável |
-| Escalações | ✅ 15 READY, estruturalmente ok (Cuiabá 4x2 conferido na web). ⚠ Todas de 2015 para cá |
-| Carreira | 30 READY, estruturalmente ok. ⚠ **As 30 são do elenco atual**: pedido para trocar ≥15 por nomes históricos |
-| Quem Vestiu o Manto | ✅ 50 READY (há campos null, mas o jogo aceita). ⚠ Nenhuma estreia antes de 2013 |
-| Perfil jogador/técnico | ⚠ **Formato errado (culpa do prompt original)** — ver abaixo |
-| Passaporte | **408 jogos em 7 anos, 68 venues** (v1.2). Detalhe na tabela abaixo. **1943–2019: não pesquisado; próximo lote = 2019** |
+| Identidade, história, timeline, títulos | ✅ (16 Goianos pelo site oficial; a Wikipedia diz 17: é conflito documentado, não erro) |
+| Ídolos | 11 READY + 4 REVIEW. **Túlio** em conflito (pacote 104j/92g × Wikipedia/oGol 58j/51g). No app, está retido |
+| Diretoria / transparência / elenco | ✅ (a pasta do Drive não serve como foto) |
+| Quiz 45 · Escalações 15 · Manto 50 | ✅ READY. Tudo recente (escalações de 2015 pra cá; Manto sem estreia antes de 2013) |
+| Carreira 30 | READY, mas **todas do elenco atual** |
+| Perfis jogador (10) / técnico (6) | formato errado (culpa do prompt original). Aproveitam-se nomes e evidências |
+| Sócio / Loja | REVIEW / parcial |
+| Passaporte | 2020–2025 CLOSED, 2026 PARTIAL (faltam R35–R38 + 2ª fonte). **1943–2019 não pesquisado; próximo lote = 2019** |
 
-### Passaporte por ano (conferido com `node docs/vila_nova_data/validate_passport.js docs/vila_nova_data`)
+Correções já feitas **no pacote** (com `editorial_note`):
+- 5 frases de bastidor na história e na timeline;
+- `vn_venue_arena_nicnet` fundido em `vn_venue_santa_cruz_ribeirao` (mesma casa).
 
-| Ano | Jogos | Status | Estádio confirmado | Conferência externa |
-|---|---|---|---|---|
-| 2026 | 55 | PARTIAL | 55/55 | faltam R35–R38 e a 2ª fonte. ⚠ 3 jogos da Copa do Brasil com `calendar_year` em string `"2026"` (tem que ser número) |
-| 2025 | 62 | CLOSED | 62/62 | Série B 11V14E13D ✔ (Wikipedia), finais do Goiano ✔ |
-| 2024 | 62 | CLOSED | 50/62 | Série B 16V7E15D, 55 pts ✔ (FGF) |
-| 2023 | 56 | CLOSED | 45/56 | Série B 17V10E11D, 61 pts ✔ (pt.wikipedia) |
-| 2022 | 62 | CLOSED | 14/62 | Série B 9V20E9D, 47 pts ✔ (pt.wikipedia) |
-| 2021 | 78 | CLOSED | 24/78 | inclui o resto da temporada 2020 jogado em 2021 (pandemia): Série C 2020, Goiano 2020, Copa Verde 2020. O manifest conta por edição (`GOIANO_2020` etc.), é esperado |
-| 2020 | 33 | CLOSED | 23/33 | Série C 2020: 21 jogos aqui + 5 em 2021 = 26 ✔ |
+Erros abertos, a devolver à pesquisa:
+- 2025-03-13 (Copa do Brasil, 6–0): o adversário é **Rio Branco-VN**, não Rio Branco-ES;
+- `calendar_year` em string em 3 jogos de 2026 (o gerador já normaliza);
+- registrar o conflito 16 × 17 Goianos;
+- Túlio em REVIEW.
 
-Nos anos de pandemia, os estádios desconhecidos são UNKNOWN honesto (nunca inferido). Um jogo com pênaltis e placar do tempo normal diferente de empate só aparece quando o confronto foi decidido no agregado (Cuiabá 4x2 em 2024, Brasiliense 1x3 em 2021): está correto.
+## 5. Perfis da Arena: o formato que o app realmente usa
 
-### Perfis de jogador/técnico: como é de verdade no app
+O motor e as perguntas são únicos para todos os clubes; cada clube só fornece referências.
+- **Jogador**: `lib/features/arena/games/player_identity/domain/<clube>_player_identity_references.dart`, com 6 atributos de 0 a 100 (`creativity, definition, leadership, intensity, technique, tactics`). O clube entra em `player_identity_reference_sets.dart`. Meta: **21** referências.
+- **Técnico**: `tactical_identity/domain/<clube>_tactical_coach_references.dart`, com `x` (posse − / vertical +), `y` (dogmático − / pragmático +), `pressing, blockHeight, risk, structuralFluidity`. Entra em `tactical_coach_reference_sets.dart`. Meta: **12**.
+- Calibração: todos precisam aparecer como Top 1, nenhum acima de 20%, gap Top1→Top2 saudável (ver o topo de `bragantino_player_identity_references.dart` e `tool/bragantino_*_calibration.dart`).
 
-O motor é **único para todos os clubes**, com perguntas fixas. Cada clube só fornece **referências**:
-
-- **Jogador** (`lib/features/arena/games/player_identity/domain/*_references.dart`): 6 atributos de 0 a 100 (`creativity, definition, leadership, intensity, technique, tactics`). Goiás e Bragantino têm **21** referências cada.
-- **Técnico** (`tactical_identity/domain/*_coach_references.dart`): `x` (posse −, vertical +), `y` (dogmático −, pragmático +), mais `pressing, blockHeight, risk, structuralFluidity`. Goiás e Bragantino têm **12** cada.
-- A pesquisa externa entregou 8 dimensões de 0 a 10, com perguntas próprias, para 10 jogadores e 6 técnicos. Aproveitam-se **nomes e evidências**. A conversão para a escala do app fica a cargo da implementação, **calibrada no motor**: todos os perfis precisam aparecer como Top 1 e nenhum pode passar de 20% (ver o comentário no topo de `bragantino_player_identity_references.dart`).
-
-## Implementação no app (andamento)
-
-| Fase | Estado |
-|---|---|
-| F0 infraestrutura | ✅ commit `00ec2fe` (outra sessão) + apps Firebase criados. Ver `docs/multiclub/57_vilanova_f0_infra.md` |
-| F1 config do clube | ✅ `vilaNovaClubConfig` no registry, tudo desligado. Ver `docs/multiclub/58_vilanova_f1_f2_config_marca.md` |
-| F2 marca | ✅ cor oficial #C33D41 (manual, pág. 9); escudo/ícones/login a partir do PDF vetorial (`tooling/vilanova_brand/build_brand_assets.py`) |
-| F3 conteúdo institucional | ✅ história, timeline, 31 títulos, 9 ídolos; `hasClubContent` ligado; parceiros desligados (decisão editorial pendente). Ver `docs/multiclub/59_vilanova_f3_conteudo_institucional.md` |
-| Seeds SQL | ✅ prontos e testados em Postgres real (PGlite): Passaporte 2020–2026 (408 jogos, 67 estádios), diretoria, transparência, elenco, quiz, escalações, carreira, Manto. Runbook em `docs/multiclub/60_vilanova_seeds_runbook.md`. **Novo lote do Passaporte → rodar `node tooling/vilanova_passport/generate_passport_sql.mjs` + simulador** |
-| F4 → F9 | pendentes: dependem do projeto Supabase (aplicar o runbook e ligar as capabilities) |
-
-**Bloqueio do usuário:** criar o projeto Supabase do Vila Nova. Sem ele o flavor compila, mas não sobe (`SupabaseConfig` falha alto com URL null). Depois: baseline + `infra/supabase/clubs/vilanova/bootstrap.sql` + chaves na config.
-
-## Erros já achados e ainda NÃO corrigidos no pacote
-
-0. Passaporte 2026: `calendar_year` em string nos 3 jogos `vn_official_cdb_2026_f*` (no import dá pra normalizar sozinho).
-1. Passaporte 2025, jogo de 13/03 (Copa do Brasil, 2ª fase, 6–0): o adversário é **Rio Branco-VN** (Venda Nova do Imigrante), não Rio Branco-ES.
-2. Túlio: números em conflito (ver acima).
-3. Goianos: registrar o conflito 16 × 17.
-
-## Pendências (quem faz o quê)
-
-**Pesquisa externa (mensagem já enviada, ou a enviar; texto abaixo):**
-- corrigir os erros 1–3;
-- perfis: 21 jogadores e 12 técnicos, só com nome, período, função e evidências de estilo;
-- carreira: ≥15 nomes históricos;
-- escalações: ≥5 anteriores a 2000; Manto: ≥10 cartas com estreia antes de 2005;
-- Passaporte: **próximo lote é 2019** (v1.2 cobriu 2024 → 2020), depois retrocedendo ano a ano até 1943;
-- fechar 2026 (R35–R38 + 2ª fonte); loja completa; regulamento/preços oficiais do sócio.
-
-**Implementação (depois da aprovação ou em paralelo):**
-- F3 e seeds feitos; falta: conversão/calibração dos perfis de jogador/técnico (Dart) e, com o Supabase, aplicar o runbook;
-- converter e calibrar os perfis no motor.
-
-**Usuário:** criar o projeto Supabase e o app no Firebase Fan Hub, baixar credenciais e as imagens listadas em `assets_todo.md`.
-
-## Mensagem pendente à pesquisa (se ainda não foi enviada)
+## 6. Mensagem pendente à pesquisa (se o usuário ainda não mandou)
 
 ```
-v0.7 aplicado — 2025 ficou excelente (62/62, estádios todos confirmados, bati com Wikipedia/ge).
+v1.2 aplicado — 2020 a 2025 ficaram excelentes (bati Série B de 2022, 2023, 2024 e 2025 com fontes externas). Ajustes:
 
-1. Correção: vn_…_20250313 (Copa do Brasil 2ª fase, 6–0) o adversário é Rio Branco-VN (Rio Branco de Venda Nova, Venda Nova do Imigrante-ES), não Rio Branco-ES — são clubes diferentes. Corrija o nome e o venue/alias se necessário. Confira também se o "Rio Branco-ES" da Copa Verde 2026 é mesmo o Rio Branco AC.
-2. Honors: registre em conflicts que a Wikipedia conta 17 Goianos contra 16 do site oficial (mantenha o oficial).
-3. Lembrete: as correções da Arena pedidas depois do v0.6 (perfis 21 jogadores/12 técnicos só com evidência de estilo, 15 carreiras históricas, Túlio em REVIEW, escalações pré-2000, Manto pré-2005) ainda não vieram. Pode entregar em um ZIP separado enquanto segue o Passaporte.
+1. 2025-03-13 (Copa do Brasil 2ª fase, 6–0): o adversário é Rio Branco-VN (Venda Nova do Imigrante-ES), não Rio Branco-ES. Corrija. Confira também o "Rio Branco-ES" da Copa Verde 2026.
+2. 2026: calendar_year dos 3 jogos vn_official_cdb_2026_f* está em string ("2026"); deixe número.
+3. Honors: registre em conflicts que a Wikipedia conta 17 Goianos contra 16 do site oficial (mantenha o oficial).
+4. Venues: fundi vn_venue_arena_nicnet em vn_venue_santa_cruz_ribeirao (Arena Nicnet é o naming rights do próprio Estádio Santa Cruz). Use o id vn_venue_santa_cruz_ribeirao daqui pra frente.
+5. Arena (pendente desde o v0.6): perfis com 21 jogadores e 12 técnicos (só nome, período, função e 4–6 evidências de ESTILO — não precisa de perguntas nem notas), 15 carreiras históricas no lugar de atuais, Túlio em REVIEW, ≥5 escalações anteriores a 2000 e ≥10 cartas do Manto com estreia antes de 2005.
 
-Próximo lote do Passaporte: 2024.
+Próximo lote do Passaporte: 2019, depois seguindo para trás até 1943.
 ```
 
-## Como auditar o próximo ZIP (receita)
+## 7. Como auditar um ZIP novo (receita)
 
-1. Extrair no scratchpad; aplicar **em ordem de versão** sobre uma cópia de `docs/vila_nova_data/`.
-2. Validar o Passaporte com `node docs/vila_nova_data/validate_passport.js <pasta_do_pacote>`: ele cobre todos os anos e todas as regras abaixo. Para o resto, validar:
-   - JSONs parseiam;
-   - no Passaporte: `outcome` × placar do tempo normal (**pênaltis = DRAW**, com a disputa em `penalty_*`), `club_score` × lado do Vila, `score_display`, IDs únicos, estádio só com `MATCH_SPECIFIC`, todo estádio presente em `venues.json`, total por competição contra o `passport_audit_manifest.json`;
-   - na Arena: XI = 11 com 1 GOL, posições válidas, `is_club` nas carreiras, IDs e nomes únicos.
-3. Conferir 2–3 fatos na web: campanha do ano, finais, adversários com nomes parecidos.
-4. Copiar para `docs/vila_nova_data/` e devolver a mensagem de correções à pesquisa.
+1. Extrair no scratchpad e aplicar **em ordem de versão** sobre uma cópia de `docs/vila_nova_data/`.
+2. `node docs/vila_nova_data/validate_passport.js <pasta>`: todos os anos, placar × resultado, pênaltis, lado do Vila, estádio × `venues.json`, totais × `passport_audit_manifest.json`.
+3. Arena: XI = 11 com 1 GOL, formações que o `FormationLayoutService` conhece, `is_club` nas carreiras, IDs e nomes únicos.
+4. Conferir 2–3 fatos na web: campanha do ano, finais, adversários com nome parecido. Nomes de estádio ambíguos ("Castelão") são desempatados pela cidade.
+5. Copiar para `docs/vila_nova_data/`, **regenerar os seeds** (`generate_passport_sql.mjs` / `generate_seed_sql.mjs`) e rodar o simulador:
+   ```
+   npm i --no-save @electric-sql/pglite
+   CHECKS=tooling/vilanova_seeds/checks.mjs node tooling/vilanova_seeds/simulate_fresh_project.mjs <seeds na ordem do runbook>
+   ```
+6. Atualizar este arquivo, fazer o commit e devolver a mensagem de correções.
+
+## 8. Armadilhas conhecidas
+
+- `tooling/multiclub/test_*.mjs` **reescreve** artefatos rastreados em `archive/` e `data_export/`: restaurar com `git checkout` antes de commitar. 13 dessas auditorias **já falham no HEAD**. Para saber se algo é regressão, compare com uma worktree limpa; não assuma.
+- No Windows, criar app no Firebase CLI funciona pelo PowerShell (`npx firebase-tools ...`); pelo Git Bash deu erro de `C:\Program`.
+- No pbxproj iOS, clonar entradas linha a linha: regex multi-linha já estragou o arquivo.
+- Golden temporário: a fonte do Flutter no cache é `roboto-*.ttf` (minúsculo); a imagem precisa de `tester.runAsync` pra decodificar. Nunca commitar.
+- A cadeia de migrations quebrava num projeto zerado (trigger duplicado). Foi corrigida em `777fded`: sempre testar projeto novo no simulador.
