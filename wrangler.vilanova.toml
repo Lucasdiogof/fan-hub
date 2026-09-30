@@ -1,0 +1,45 @@
+# Deploy do Vila Nova — MESMO código-fonte de wrangler.toml (main =
+# src/index.ts, nunca duplicado), config/env própria. Mesmo padrão do
+# wrangler.bragantino.toml.
+#
+# Criado em 2026-09-30 (F8) via `npx wrangler deploy --config
+# wrangler.vilanova.toml` (deploy pela CLI, sem gatilho Git — não gasta
+# minuto de build do Workers Builds).
+name = "vilanova-app"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+[assets]
+# Saída de `node tool/build_web_flavor.mjs vilanova` — NUNCA build/web
+# (isso é do Goiás, rival).
+directory = "build/flavors/web/vilanova"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[vars]
+
+# Código do clube que ESTE deploy serve — allowlist de
+# `resolveClubServerConfig`. `?club=goias` / `?club=bragantino` NESTE deploy
+# sempre lança UnknownClubError, por design.
+CLUB_CODE = "vilanova"
+
+# Confirmado em onefootball.com/pt-br/time/vila-nova-2865 (2026-09-29).
+TEAM_ONEFOOTBALL_SLUG = "vila-nova-2865"
+
+# O Vila disputa a mesma Série B do Goiás em 2026 (confirmado no
+# OneFootball). Nome de exibição sem patrocinador, igual ao Goiás.
+PRIMARY_COMPETITION_SLUG = "brasileirao-serie-b-superbet-119"
+PRIMARY_COMPETITION_DISPLAY_NAME = "Brasileirão Série B"
+
+CACHE_VERSION = "1"
+
+# Instagram: SEM cron por enquanto. A conta Cloudflare (plano Free) tem
+# limite de 5 cron triggers e Goiás (3) + Bragantino (2) já usam os 5.
+# `hasSocial` fica false no app até isso ser resolvido (sem Task Apify
+# dedicada nem APIFY_TOKEN neste deploy).
+
+# MESMO namespace físico do Goiás/Bragantino, de propósito — a isolação é
+# pela CHAVE (`instagram:<code>:latest`, ver `instagramKvKey`).
+[[kv_namespaces]]
+binding = "SOCIAL_FEED_KV"
+id = "ef4444f9b6eb46df882659dcb9b41703"

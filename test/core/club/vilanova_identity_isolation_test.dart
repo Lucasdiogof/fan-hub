@@ -128,7 +128,7 @@ void main() {
 
   group('Capabilities — só o que já foi validado está ligado', () {
     test(
-      'F3/F4/F6/F7 ligaram hasClubContent/hasPassport/hasMembership; o resto sem Supabase ainda segue desligado',
+      'F3/F4/F6/F7/F8 ligaram hasClubContent/hasPassport/hasMembership/hasMatches; o resto segue desligado',
       () {
         final c = v.capabilities;
         expect(c.hasClubContent, isTrue);
@@ -137,6 +137,8 @@ void main() {
         // pública do provedor de adesão — ver
         // `vilanova_membership_plans_catalog.dart`.
         expect(c.hasMembership, isTrue);
+        // F8 (2026-09-30): Worker próprio no ar.
+        expect(c.hasMatches, isTrue);
         expect([
           c.hasStore,
           c.hasTickets,
@@ -144,7 +146,6 @@ void main() {
           c.hasNews,
           c.hasSocial,
           c.hasPartners,
-          c.hasMatches,
         ], everyElement(isFalse));
       },
     );
@@ -193,9 +194,18 @@ void main() {
       },
     );
 
-    test('Worker/redirect ainda null — F8 não chegou', () {
-      expect(v.integrations.workerBaseUrl, isNull);
-      expect(v.integrations.supabaseRedirectUrl, isNull);
+    test('Worker/redirect do próprio Vila — nunca o de outro clube', () {
+      const url = 'https://vilanova-app.lucasdiogo1234.workers.dev';
+      expect(v.integrations.workerBaseUrl, url);
+      expect(v.integrations.supabaseRedirectUrl, url);
+      expect(
+        v.integrations.workerBaseUrl,
+        isNot(goiasClubConfig.integrations.workerBaseUrl),
+      );
+      expect(
+        v.integrations.workerBaseUrl,
+        isNot(bragantinoClubConfig.integrations.workerBaseUrl),
+      );
     });
   });
 

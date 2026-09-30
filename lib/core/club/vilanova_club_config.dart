@@ -34,9 +34,9 @@ import 'package:goias_app/features/passport/data/vilanova_passport_content.dart'
 //     vkybbrfvmexevakknlsi, criado pelo usuário). Schema/seeds do runbook
 //     (docs/multiclub/60_vilanova_seeds_runbook.md) ainda não aplicados —
 //     o flavor sobe mas o banco está vazio até isso rodar.
-//   * supabaseRedirectUrl — Worker do Vila é a F8, ainda não existe; fica
-//     null até lá (nunca aponta pra uma URL que não resolve).
-//   * workerBaseUrl — Worker do Vila é a F8.
+//   * workerBaseUrl/supabaseRedirectUrl — Worker do Vila criado em
+//     2026-09-30 (F8, `wrangler.vilanova.toml`). Jogos ligados; notícias e
+//     Instagram ainda não (ver `hasNews`/`hasSocial`).
 // ============================================================================
 
 // Cor oficial única do clube, do manual de identidade visual (pág. 9):
@@ -231,6 +231,14 @@ final vilaNovaClubConfig = ClubConfig(
     socialFacebookUrl: 'https://www.facebook.com/vilanovafc/',
     socialXUrl: 'https://twitter.com/VilaNovaFC',
     officialSiteUrl: 'https://www.vilanovafc.com.br/',
+    // F8 (2026-09-30): Worker próprio (`wrangler.vilanova.toml`, deploy
+    // pela CLI). Mesmo código-fonte dos outros clubes, `CLUB_CODE =
+    // "vilanova"` — rejeita `?club=goias`/`bragantino`.
+    workerBaseUrl: 'https://vilanova-app.lucasdiogo1234.workers.dev',
+    // Mesmo padrão de Goiás/Bragantino: redirectTo dos fluxos de auth
+    // aponta pro Worker do próprio clube. A Auth Site URL/Redirect URLs
+    // do projeto Supabase precisam listar esta URL (dashboard).
+    supabaseRedirectUrl: 'https://vilanova-app.lucasdiogo1234.workers.dev',
   ),
   capabilities: const ClubCapabilities(
     // F7 (2026-09-30): 4 planos reais do Sócio Tigrão (RUBI/OURO/PRATA/TIME
@@ -264,7 +272,10 @@ final vilaNovaClubConfig = ClubConfig(
     // Lista de patrocinadores incompleta no pacote (máster não confirmado) —
     // fica desligado até a lista fechar e passar por decisão editorial.
     hasPartners: false,
-    hasMatches: false,
+    // F8 (2026-09-30): Worker deployado e validado ao vivo (ver
+    // ClubIntegrations.workerBaseUrl) — hasMatches liga junto com
+    // workerBaseUrl, nunca um sem o outro.
+    hasMatches: true,
     // F5 (2026-09-29), depois de reauditar o Supabase real do Vila:
     //   * 'quiz': 45/45 ativas, todas com 4 opções.
     //   * 'lineup': 15/15 ativas, 11 jogadores/1 GOL cada, só formações que

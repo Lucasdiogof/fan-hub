@@ -27,7 +27,11 @@ HIGHLIGHT = (211, 85, 90)
 
 
 def main() -> None:
-    img = Image.open(SRC).convert("L")
+    src = Image.open(SRC).convert("RGBA")
+    # Preserva a transparência da origem: sem o alpha, o fundo vira um
+    # retângulo quase-preto visível sobre o vinho do card.
+    alpha = src.getchannel("A")
+    img = src.convert("L")
     # A imagem de origem nunca usa a faixa 0-255 inteira (o pixel mais claro
     # do render do Bragantino é ~117 de luminância) — sem isso a versão
     # recolorida fica visivelmente mais apagada que Goiás/Bragantino.
@@ -40,7 +44,7 @@ def main() -> None:
     r = img.point(lut_r)
     g = img.point(lut_g)
     b = img.point(lut_b)
-    out = Image.merge("RGB", (r, g, b))
+    out = Image.merge("RGBA", (r, g, b, alpha))
     out.save(OUT)
     print(f"saved {OUT} {out.size}")
 

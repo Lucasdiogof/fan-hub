@@ -51,10 +51,13 @@ export const GLOBAL_COMPETITION_CATALOG: CatalogCompetition[] = [
  * - Goiás: só a Série B.
  * - Bragantino: Série A + Sudamericana (fase de grupos encerrada em
  *   1º-09, hoje na fase eliminatória contra o Atlético-MG).
+ * - Vila Nova: Série B (a mesma do Goiás em 2026; Copa do Brasil é
+ *   KNOCKOUT e Goiano/Copa Verde não estão no catálogo).
  */
 export const CLUB_PARTICIPATION: Record<string, string[]> = {
   goias: ['brasileirao-serie-b'],
   bragantino: ['brasileirao-serie-a', 'sudamericana'],
+  vilanova: ['brasileirao-serie-b'],
 };
 
 export function findCatalogCompetition(id: string): CatalogCompetition | undefined {
