@@ -29,10 +29,12 @@ import 'package:goias_app/features/passport/data/vilanova_passport_content.dart'
 // Sócio/Loja/Ingressos, F8 Jogos/Notícias/Redes.
 //
 // DATA_GAPs reais (null de propósito, nunca inventados):
-//   * supabaseUrl/supabasePublishableKey/supabaseRedirectUrl — o projeto
-//     Supabase do Vila ainda não existe. `SupabaseConfig.configure` falha
-//     alto com isso null, então o flavor COMPILA mas não sobe até o projeto
-//     ser criado (ver docs/multiclub/57_vilanova_f0_infra.md).
+//   * supabaseUrl/supabasePublishableKey preenchidos em 2026-09-29 (projeto
+//     vkybbrfvmexevakknlsi, criado pelo usuário). Schema/seeds do runbook
+//     (docs/multiclub/60_vilanova_seeds_runbook.md) ainda não aplicados —
+//     o flavor sobe mas o banco está vazio até isso rodar.
+//   * supabaseRedirectUrl — Worker do Vila é a F8, ainda não existe; fica
+//     null até lá (nunca aponta pra uma URL que não resolve).
 //   * workerBaseUrl — Worker do Vila é a F8.
 // ============================================================================
 
@@ -123,6 +125,11 @@ final vilaNovaClubConfig = ClubConfig(
     storeBanner: _phRaster,
   ),
   integrations: const ClubIntegrations(
+    // Projeto Supabase do Vila, criado pelo usuário em 2026-09-29. A
+    // publishable key não é segredo (mesmo padrão do Goiás/Bragantino,
+    // já commitados em texto puro); nunca a service_role/senha de banco.
+    supabaseUrl: 'https://vkybbrfvmexevakknlsi.supabase.co',
+    supabasePublishableKey: 'sb_publishable_Jk2mNyr_WXwNw-h1ge9cbA_0pc0T__E',
     // Confirmados em onefootball.com/pt-br/time/vila-nova-2865 (2026-09-29):
     // o Vila disputa a mesma Série B do Goiás em 2026.
     oneFootballTeamId: 2865,

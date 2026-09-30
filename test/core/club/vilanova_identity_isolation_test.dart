@@ -124,13 +124,28 @@ void main() {
     });
 
     test(
-      'Worker/Supabase ainda null — nunca apontam pro projeto de outro clube',
+      'Supabase do próprio Vila (projeto vkybbrfvmexevakknlsi) — nunca aponta pro de outro clube',
       () {
-        expect(v.integrations.workerBaseUrl, isNull);
-        expect(v.integrations.supabaseUrl, isNull);
-        expect(v.integrations.supabasePublishableKey, isNull);
+        expect(
+          v.integrations.supabaseUrl,
+          'https://vkybbrfvmexevakknlsi.supabase.co',
+        );
+        expect(v.integrations.supabasePublishableKey, isNotNull);
+        expect(
+          v.integrations.supabaseUrl,
+          isNot(goiasClubConfig.integrations.supabaseUrl),
+        );
+        expect(
+          v.integrations.supabaseUrl,
+          isNot(bragantinoClubConfig.integrations.supabaseUrl),
+        );
       },
     );
+
+    test('Worker/redirect ainda null — F8 não chegou', () {
+      expect(v.integrations.workerBaseUrl, isNull);
+      expect(v.integrations.supabaseRedirectUrl, isNull);
+    });
   });
 
   group(
