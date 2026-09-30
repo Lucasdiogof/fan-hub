@@ -1,0 +1,38 @@
+# Revista Placar no Google Books — IDs das edições (coletados em 2026-09-30)
+# URL da edição: https://books.google.com.br/books?id=<ID>
+# Busca dentro da edição: https://books.google.com.br/books?id=<ID>&q=<termo>
+# Lista paginada de todas as edições: https://books.google.com.br/books/serial/owHqHo4hPNYC?rview=1&hl=pt-BR&start=<N> (30 por página; start=390 ≈ out/1985, start=600 ≈ jul/1981)
+# ATENÇÃO: entre 28/09/1984 e 04/01/1985 NÃO há edições na lista (out–dez/1984 não digitalizados ou em outra posição). 1986 ainda não coletado (start < 390).
+mirJMZvIf98C 18 out 1985
+4thf_c250msC 11 out 1985
+5bsekkBuF7IC 4 out 1985
+CQ88Rz3gseoC 27 set 1985
+kNGyrrVwNKUC 20 set 1985
+lc4J2QtQ8agC 13 set 1985
+RwPYwyT7au0C 6 set 1985
+UJbTUXxtMSEC 30 ago 1985
+ByMyCAHUkVQC 23 ago 1985
+XYW6U3XIezMC 16 ago 1985
+uhLQR-bb7MEC 9 ago 1985
+Df0T5WlBMFUC 2 ago 1985
+Lg1_AA6kT08C 26 jul 1985
+fUQ7JF-px0oC 19 jul 1985
+XU2LgF3poJoC 12 jul 1985
+5MrioVH7-KoC 5 jul 1985
+KRq4rbWlz_4C 28 jun 1985
+2IqQOR2PEoQC 21 jun 1985
+bOQEi09b72MC 14 jun 1985
+cbGC7hVNzY4C 7 jun 1985
+FdOGzbOPtBMC 31 mai 1985
+pGMQ_1L4WQAC 24 mai 1985
+duYVtn5GAMMC 28 set 1984
+7cVA2LtW8zgC 21 set 1984
+U2JT9PUuzXAC 14 set 1984
+q3I-Sysmhm8C 7 set 1984
+_17UEsMDqGUC 31 ago 1984
+8Z5p57Gl8l8C 24 ago 1984
+8ZrRReqxVugC 17 ago 1984
+owHqHo4hPNYC 10 ago 1984
+kfud6HAwpGIC 3 ago 1984
+8f9m_dGj92MC 27 jul 1984
+iWkXZcwakhkC 20 jul 1984

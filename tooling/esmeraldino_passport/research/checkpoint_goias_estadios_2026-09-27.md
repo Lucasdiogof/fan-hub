@@ -1127,3 +1127,17 @@ Usuário pediu a continuação da pesquisa em outra conta a partir do checkpoint
 - Notas originais da pesquisa externa, com tudo que ele já tentou (O Estado/SC 1976, Estado do Piauí 1976, pistas Placar/Google Books e Diário de Notícias/Curitiba 1986): `GOIAS_RELATORIO_LOTE_1987_1991.md`.
 
 **Novo estado: 1.991 / 2.102 = 94,72%.** Backlog: 111. Faltam 6 para 95%. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1991.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1991.csv`.
+
+## Atualização de pesquisa — 2026-09-30 (54) — FONTE NOVA: Tabelão da revista Placar no Google Books (+1) · CAMINHO PARA 1984–86
+- **Descoberta:** o **Tabelão** semanal da Placar traz, para CADA jogo dos estaduais (inclusive o Goiano), "Local: <estádio> (<cidade>); Juiz; Renda; Público; Gols". Isso pode resolver as ~64 pendências de 1984 (ago–set), 1985 e 1986, período em que o Diário da Manhã não circulou.
+- **1603 CONFIRMADO:** Placar 10/08/1984, p. 72 (Tabelão, Goiás, 1º turno, 6ª rodada, 5/agosto/84): "GOIÁS 1 X GOIANÉSIA 1 — Local: Serra Dourada (Goiânia); Juiz: José Pereira Sobrinho; Renda: Cr$ 4 314 000,00; Público: 2 476; Gols: Sávio 27 do 1º e Célio (Goia) 25 do 2º".
+- **Como acessar (método testado):**
+  1. O Google Books pede CAPTCHA ("tráfego incomum"): o USUÁRIO resolve no painel do navegador embutido; depois tudo funciona na mesma sessão.
+  2. Na edição (`books?id=<ID>`), a busca `&q=Goiás` lista as páginas; a página do Tabelão (no exemplo, p. 72, com "Goiás" entre os estados) é a que interessa. A p. 69 da mesma edição é o palpite da loteria (placares C/F/N, SEM estádio): ignorar.
+  3. Para ler: abrir `books?id=<ID>&pg=PA<n>#v=onepage&q&f=false` no navegador, pegar via JS o `src` da `<img>` com `pg=PA<n>&img=1&zoom=3&sig=...&w=1280` e baixar com `curl` exatamente essa URL (a assinatura só vale com os parâmetros originais; trocar o zoom dá "image not available"). A imagem de 1280 px lê-se bem cortada em 4 quadrantes.
+  4. O Tabelão de uma edição de sexta cobre os jogos até o domingo/quarta anterior (a de 10/08/1984 trouxe jogos de 31/07 a 05/08).
+- IDs das edições de jul/1984 a out/1985 salvos em `PLACAR_EDICOES_GOOGLE_BOOKS_1984_1985.txt`. **Out–dez/1984 não aparecem na lista.** 1986 ainda não coletado (páginas da lista com `start` < 390).
+- Sem achado nesta rodada: série "números finais" de 1987 (DM 04/08/1987 só tabela), 1993 partes 1–5 (Goiânia e Mineiros sem maior público/renda contra o Goiás), 1994 (sem série no texto do DM de dez/1994–fev/1995), 1995 (só a p. 11 de 21/08, já usada); Diário de Notícias/Curitiba 24/07/1986 (só loteria, cita a cidade). O servidor `hemeroteca-pdf.bn.gov.br/<bib>/per<bib>_<ano>_<ed>.pdf` entrega PDFs direto, sem CAPTCHA (Diário de Notícias = bib 325538, tem 1984–86).
+
+**Novo estado: 1.992 / 2.102 = 94,77%.** Backlog: 110. Faltam 5 para 95%. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1992.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1992.csv`.
+**Próximo passo:** para cada pendência de 1984 (ago–set), 1985 e 1986, abrir a Placar da sexta seguinte ao jogo (ou a seguinte, se não sair) e ler o Tabelão de Goiás.
