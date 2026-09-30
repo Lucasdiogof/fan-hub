@@ -7,8 +7,8 @@
   "description": "Vila Nova FC — app do torcedor (em preparação).",
   "appleTitle": "Vila Nova",
   "outDir": "build/flavors/web/vilanova",
-  "themeColor": "#37474F",
-  "themeLight": "#F4F5F7",
-  "themeDark": "#12171B",
+  "themeColor": "#C33D41",
+  "themeLight": "#F7F7F8",
+  "themeDark": "#0F0A0B",
   "iconsSourceDir": "lib/assets/branding/vilanova/web_icons"
 }

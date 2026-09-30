@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_registry.dart';
+import 'package:goias_app/core/club/vilanova_club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/club/resolve_active_club.dart';
 
@@ -55,6 +56,7 @@ void main() {
           expect(e.message, contains('xyz'));
           expect(e.message, contains('goias'));
           expect(e.message, contains('bragantino'));
+          expect(e.message, contains('vilanova'));
         }
       },
     );
@@ -81,11 +83,23 @@ void main() {
     },
   );
 
-  group('clubRegistry — M4: Goiás + Bragantino', () {
-    test('registry tem exatamente 2 entradas: goias e bragantino', () {
-      expect(clubRegistry.length, 2);
-      expect(clubRegistry.keys.toSet(), {'goias', 'bragantino'});
-    });
+  test(
+    'APP_CLUB="vilanova" -> resolve pra vilaNovaClubConfig via registry normal',
+    () {
+      final config = resolveActiveClub('vilanova');
+      expect(config, same(vilaNovaClubConfig));
+      expect(config.identity.code, 'vilanova');
+    },
+  );
+
+  group('clubRegistry — Goiás + Bragantino + Vila Nova', () {
+    test(
+      'registry tem exatamente 3 entradas: goias, bragantino e vilanova',
+      () {
+        expect(clubRegistry.length, 3);
+        expect(clubRegistry.keys.toSet(), {'goias', 'bragantino', 'vilanova'});
+      },
+    );
 
     test(
       'nenhum clube sintético/placeholder cadastrado (club-b/clubb removidos)',

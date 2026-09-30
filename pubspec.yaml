@@ -65,6 +65,7 @@ flutter:
     - lib/assets/branding/goias/
     - lib/assets/branding/bragantino/
     - lib/assets/branding/bragantino/idols/
+    - lib/assets/branding/vilanova/
     - lib/assets/club/titles/goias/campeonato-goiano/
     - lib/assets/club/titles/goias/copa-centro-oeste/
     - lib/assets/club/titles/goias/serie-b/

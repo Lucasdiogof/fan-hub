@@ -94,7 +94,11 @@ TeamVisualIdentity resolveActiveClubVisualIdentity(
 /// mapeamos aqui em vez de inventar um campo novo em `ClubIdentity` só pra
 /// isso. Time ativo futuro sem entrada aqui cai em `team.shortName`
 /// (derivado), nunca quebra o build.
-const _activeClubAcronyms = {'goias': 'GOI', 'bragantino': 'RBB'};
+const _activeClubAcronyms = {
+  'goias': 'GOI',
+  'bragantino': 'RBB',
+  'vilanova': 'VIL',
+};
 
 const _c = Color.new;
 
@@ -135,7 +139,9 @@ final _rawKnownTeams = <(List<String>, String, Color, Color?)>[
   ),
 
   // --- Série B (regra explícita do pedido 2026-09-22) ---
-  (['Vila Nova', 'Vila Nova-GO'], 'VIL', _c(0xFFE30613), _c(0xFF8F0010)),
+  // Vermelho oficial do manual de identidade do clube (#C33D41) — também
+  // clube ativo (flavor `vilanova`).
+  (['Vila Nova', 'Vila Nova-GO'], 'VIL', _c(0xFFC33D41), _c(0xFF7A2226)),
   (['Fortaleza', 'Fortaleza EC'], 'FOR', _c(0xFF005CA9), _c(0xFFE30613)),
   (
     ['Grêmio Novorizontino', 'Novorizontino'],
