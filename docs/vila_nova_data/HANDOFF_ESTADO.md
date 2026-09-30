@@ -52,9 +52,11 @@ Verificação da última rodada: `flutter test` com 1540 ok; `flutter analyze` s
 8. **F9** QA de isolamento com os 3 flavors + revisão visual (golden temporário, ver memória "revisão visual sem login").
 
 **Decisões pendentes do usuário:**
-- (a) **Parceiros**: a lista está incompleta e a FatalFans é uma plataforma de conteúdo adulto. `hasPartners` segue false até ele decidir.
 - (b) O projeto Supabase (passo 1).
 - (c) Ligar a carreira só com o elenco atual ou esperar os nomes históricos.
+
+**Decisões já tomadas:**
+- (a) **Parceiros**: usuário decidiu em 2026-09-29 incluir a FatalFans normalmente — é patrocínio real (estampado no número da camisa), sem restrição editorial. `hasPartners` continua `false` só porque a lista em `data/partners.json` está incompleta (`coverage_status: "PARTIAL"`: falta o patrocinador máster atual e uma auditoria uniforme por uniforme) — não mais por causa da FatalFans. Assim que a auditoria completar, pode ligar `hasPartners: true` com a lista inteira, FatalFans incluída.
 
 ## 4. Pacote de pesquisa: v1.2 (`docs/vila_nova_data/`)
 
