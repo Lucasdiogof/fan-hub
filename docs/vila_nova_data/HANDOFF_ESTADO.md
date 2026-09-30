@@ -1,6 +1,6 @@
 # Flavor Vila Nova — handoff de estado
 
-> **Leia isto primeiro ao retomar** (outra conta ou outra sessão). Atualizado em 2026-09-30, no commit `1554765` (6 commits à frente de `origin/main` desde o último push, `a80e03a`). Tudo está commitado, mas ainda SEM PUSH (avise antes de subir).
+> **Leia isto primeiro ao retomar** (outra conta ou outra sessão). Atualizado em 2026-09-30, no commit `bff9886` (7 commits à frente de `origin/main` desde o último push, `a80e03a`). Tudo está commitado, mas ainda SEM PUSH (avise antes de subir).
 > Prompt pronto para começar a nova conversa: `docs/vila_nova_data/PROMPT_RETOMADA.md`.
 
 ## 1. O que é e como trabalhamos
