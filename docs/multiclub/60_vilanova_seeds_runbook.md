@@ -12,6 +12,8 @@ Data: 2026-09-29. Tudo abaixo foi **testado de ponta a ponta num Postgres real**
 
 `vilanova_club_config.dart` já tem `supabaseUrl`/`supabasePublishableKey` preenchidos. Falta só `supabaseRedirectUrl` (depende do Worker, F8) e configurar a Auth Site URL no dashboard (mesma dependência).
 
+**Atualização 2026-09-30 (v1.4):** Passaporte 2010–2018 aplicado no pacote (+460 partidas, todos CLOSED; 294 estádios MATCH_SPECIFIC, 166 UNKNOWN sem estádio). Agora 17 anos (2010–2026), **928 partidas, 111 venues**. Simulador: todas as SQLs aplicaram (e o bloco do Passaporte 2× seguidas, idempotente), 0 órfão, 0 venue sem uso, `vn_venue_santa_cruz_ribeirao` segue unificado, `passport_seasons()` lista 2010–2026 e `passport_matches_for_year()` bate com a tabela em todos os 17 anos (checagem nova em `tooling/vilanova_seeds/checks.mjs`). Correção no pacote: alias "Presidente Vargas Campina Grande" removido do venue de Fortaleza (`editorial_note`). **No banco real faltam** `vilanova_passport_venues_seed.sql` e `vilanova_passport_matches_2010_seed.sql` … `vilanova_passport_matches_2018_seed.sql` (venues primeiro).
+
 ## Runbook original (referência histórica, já executado)
 
 Cada arquivo roda inteiro, de uma vez. Todos são idempotentes e começam com uma trava que PARA se o banco não for o do Vila (`public.clubs` precisa ter só a linha `vilanova`).
@@ -21,8 +23,8 @@ Cada arquivo roda inteiro, de uma vez. Todos são idempotentes e começam com um
 | 1 | `supabase/migrations/*` (em ordem) | schema (canonical baseline + 6 migrations) |
 | 2 | `infra/supabase/clubs/vilanova/bootstrap.sql` | linha do Vila em `public.clubs` |
 | 3 | `supabase/vilanova_passport_infra.sql` | colunas de enriquecimento do Passaporte (iguais às do Bragantino) |
-| 4 | `supabase/vilanova_passport_venues_seed.sql` | 67 estádios |
-| 5 | `supabase/vilanova_passport_matches_<ano>_seed.sql` (2019 → 2026) | 468 partidas |
+| 4 | `supabase/vilanova_passport_venues_seed.sql` | 111 estádios (v1.4; eram 67 no runbook original) |
+| 5 | `supabase/vilanova_passport_matches_<ano>_seed.sql` (2010 → 2026, um arquivo por ano, em ordem) | 928 partidas (v1.4) |
 | 6 | `supabase/vilanova_club_board.sql` | diretoria: 6 seções, 28 pessoas |
 | 7 | `supabase/vilanova_club_transparency.sql` | 5 documentos oficiais (4 balanços + estatuto) |
 | 8 | `supabase/vilanova_squad_members.sql` | elenco: 31 atletas |

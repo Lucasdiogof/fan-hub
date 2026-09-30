@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_date": "2026-09-29",
+  "snapshot_date": "2026-09-30",
   "venues": [
     {
       "id": "vn_venue_oba",
@@ -1023,6 +1023,472 @@
       "aliases": [],
       "city": "Florianópolis",
       "state": "SC",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_mozart_veloso_do_carmo",
+      "canonical_name": "Estádio Mozart Veloso do Carmo",
+      "display_name": "Estádio Mozart Veloso do Carmo",
+      "aliases": [
+        "Mozart Veloso"
+      ],
+      "city": "Rio Verde",
+      "state": "GO",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_francisco_jose_ferreira",
+      "canonical_name": "Estádio Francisco José Ferreira",
+      "display_name": "Estádio Francisco José Ferreira",
+      "aliases": [
+        "Ferreirão"
+      ],
+      "city": "Iporá",
+      "state": "GO",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_dilzon_luiz_de_melo",
+      "canonical_name": "Estádio Dilzon Luiz de Melo",
+      "display_name": "Estádio Dilzon Luiz de Melo",
+      "aliases": [
+        "Dilzon Luís de Melo",
+        "Dilzon Melo"
+      ],
+      "city": "Varginha",
+      "state": "MG",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_raimundo_ribeiro_de_souza",
+      "canonical_name": "Estádio Raimundo Ribeiro de Souza",
+      "display_name": "Estádio Raimundo Ribeiro de Souza",
+      "aliases": [
+        "Raimundo Ribeiro de Souza",
+        "Ribeirão"
+      ],
+      "city": "Boa Vista",
+      "state": "RR",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_presidente_vargas",
+      "canonical_name": "Estádio Presidente Vargas",
+      "display_name": "Estádio Presidente Vargas",
+      "aliases": [
+        "Presidente Vargas Fortaleza"
+      ],
+      "city": "Fortaleza",
+      "state": "CE",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY",
+      "editorial_note": "2026-09-30: removido o alias \"Presidente Vargas Campina Grande\" deste registro (Fortaleza-CE). Ele pertence a vn_venue_presidente_vargas_campina_grande (Campina Grande-PB); nos dois registros, o mesmo alias apontava para cidades diferentes."
+    },
+    {
+      "id": "vn_venue_jose_pinheiro_borda",
+      "canonical_name": "Estádio José Pinheiro Borda",
+      "display_name": "Estádio José Pinheiro Borda",
+      "aliases": [
+        "José Pinheiro Borda",
+        "Beira-Rio"
+      ],
+      "city": "Porto Alegre",
+      "state": "RS",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_abrao_manoel_da_costa",
+      "canonical_name": "Estádio Abrão Manoel da Costa",
+      "display_name": "Estádio Abrão Manoel da Costa",
+      "aliases": [],
+      "city": "Trindade",
+      "state": "GO",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_nacional_de_brasilia_mane_garrincha",
+      "canonical_name": "Estádio Nacional de Brasília Mané Garrincha",
+      "display_name": "Estádio Nacional de Brasília Mané Garrincha",
+      "aliases": [
+        "Estádio Nacional",
+        "Estádio Nacional Mané Garrincha",
+        "Mané Garrincha"
+      ],
+      "city": "Brasília",
+      "state": "DF",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_passo_das_emas",
+      "canonical_name": "Estádio Passo das Emas",
+      "display_name": "Estádio Passo das Emas",
+      "aliases": [],
+      "city": "Lucas do Rio Verde",
+      "state": "MT",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_valmir_campelo_bezerra",
+      "canonical_name": "Estádio Valmir Campelo Bezerra",
+      "display_name": "Estádio Valmir Campelo Bezerra",
+      "aliases": [
+        "Bezerrão"
+      ],
+      "city": "Gama",
+      "state": "DF",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_octavio_mangabeira",
+      "canonical_name": "Estádio Octávio Mangabeira",
+      "display_name": "Estádio Octávio Mangabeira",
+      "aliases": [
+        "Octávio Mangabeira",
+        "Fonte Nova (antiga)"
+      ],
+      "city": "Salvador",
+      "state": "BA",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_sao_januario",
+      "canonical_name": "Estádio São Januário",
+      "display_name": "Estádio São Januário",
+      "aliases": [
+        "São Januário"
+      ],
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_municipal_radialista_mario_helenio",
+      "canonical_name": "Estádio Municipal Radialista Mário Helênio",
+      "display_name": "Estádio Municipal Radialista Mário Helênio",
+      "aliases": [
+        "Mário Helênio"
+      ],
+      "city": "Juiz de Fora",
+      "state": "MG",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_joinville",
+      "canonical_name": "Arena Joinville",
+      "display_name": "Arena Joinville",
+      "aliases": [],
+      "city": "Joinville",
+      "state": "SC",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_zinho_de_oliveira",
+      "canonical_name": "Estádio Zinho de Oliveira",
+      "display_name": "Estádio Zinho de Oliveira",
+      "aliases": [
+        "Zinho Oliveira"
+      ],
+      "city": "Marabá",
+      "state": "PA",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_estadual_lourival_baptista",
+      "canonical_name": "Estádio Estadual Lourival Baptista",
+      "display_name": "Estádio Estadual Lourival Baptista",
+      "aliases": [
+        "Lourival Baptista"
+      ],
+      "city": "Aracaju",
+      "state": "SE",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_cornelio_de_barros_muniz",
+      "canonical_name": "Estádio Cornélio de Barros Muniz",
+      "display_name": "Estádio Cornélio de Barros Muniz",
+      "aliases": [
+        "Cornélio de Barros"
+      ],
+      "city": "Salgueiro",
+      "state": "PE",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_mauro_sampaio",
+      "canonical_name": "Estádio Mauro Sampaio",
+      "display_name": "Estádio Mauro Sampaio",
+      "aliases": [
+        "Romeirão",
+        "Mauro Castelo Branco Sampaio",
+        "Mauro Sampaio"
+      ],
+      "city": "Juazeiro do Norte",
+      "state": "CE",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_das_dunas",
+      "canonical_name": "Arena das Dunas",
+      "display_name": "Arena das Dunas",
+      "aliases": [],
+      "city": "Natal",
+      "state": "RN",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_coaracy_da_mata_fonseca",
+      "canonical_name": "Estádio Coaracy da Mata Fonseca",
+      "display_name": "Estádio Coaracy da Mata Fonseca",
+      "aliases": [
+        "Coaracy da Mata Fonseca"
+      ],
+      "city": "Arapiraca",
+      "state": "AL",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_doutor_oswaldo_teixeira_duarte",
+      "canonical_name": "Estádio Doutor Oswaldo Teixeira Duarte",
+      "display_name": "Estádio Doutor Oswaldo Teixeira Duarte",
+      "aliases": [
+        "Canindé",
+        "Dr. Oswaldo Teixeira Duarte"
+      ],
+      "city": "São Paulo",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_horacio_domingos_de_sousa",
+      "canonical_name": "Estádio Horácio Domingos de Sousa",
+      "display_name": "Estádio Horácio Domingos de Sousa",
+      "aliases": [
+        "Horácio Domingos de Sousa"
+      ],
+      "city": "Horizonte",
+      "state": "CE",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_municipal_dos_amaros",
+      "canonical_name": "Estádio Municipal dos Amaros",
+      "display_name": "Estádio Municipal dos Amaros",
+      "aliases": [
+        "Municipal dos Amaros"
+      ],
+      "city": "Itápolis",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_romario_de_souza_faria",
+      "canonical_name": "Estádio Romário de Souza Faria",
+      "display_name": "Estádio Romário de Souza Faria",
+      "aliases": [
+        "Romário Souza Faria",
+        "Marrentão"
+      ],
+      "city": "Duque de Caxias",
+      "state": "RJ",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_municipal_romildo_vitor_gomes_ferreira",
+      "canonical_name": "Estádio Municipal Romildo Vitor Gomes Ferreira",
+      "display_name": "Estádio Municipal Romildo Vitor Gomes Ferreira",
+      "aliases": [
+        "Romildo Vitor Gomes Ferreira",
+        "Romildão"
+      ],
+      "city": "Mogi Mirim",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_aniceto_moscoso",
+      "canonical_name": "Estádio Aniceto Moscoso",
+      "display_name": "Estádio Aniceto Moscoso",
+      "aliases": [],
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_senador_zeze_perrella",
+      "canonical_name": "Estádio Senador Zezé Perrella",
+      "display_name": "Estádio Senador Zezé Perrella",
+      "aliases": [
+        "Senador Zezé Perrela",
+        "Arena do Calçado"
+      ],
+      "city": "Nova Serrana",
+      "state": "MG",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_francisco_stedile",
+      "canonical_name": "Estádio Francisco Stédile",
+      "display_name": "Estádio Francisco Stédile",
+      "aliases": [
+        "Francisco Stédille",
+        "Centenário"
+      ],
+      "city": "Caxias do Sul",
+      "state": "RS",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_claudio_moacyr_de_azevedo",
+      "canonical_name": "Estádio Cláudio Moacyr de Azevedo",
+      "display_name": "Estádio Cláudio Moacyr de Azevedo",
+      "aliases": [
+        "Cláudio Moacyr de Azevedo",
+        "Moacyrzão"
+      ],
+      "city": "Macaé",
+      "state": "RJ",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_dario_rodrigues_leite",
+      "canonical_name": "Estádio Dario Rodrigues Leite",
+      "display_name": "Estádio Dario Rodrigues Leite",
+      "aliases": [
+        "Dario Leite",
+        "Dário Rodrigues Leite"
+      ],
+      "city": "Guaratinguetá",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_olimpico_nilton_santos",
+      "canonical_name": "Estádio Olímpico Nilton Santos",
+      "display_name": "Estádio Olímpico Nilton Santos",
+      "aliases": [
+        "Engenhão"
+      ],
+      "city": "Rio de Janeiro",
+      "state": "RJ",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_anacleto_campanella",
+      "canonical_name": "Estádio Anacleto Campanella",
+      "display_name": "Estádio Anacleto Campanella",
+      "aliases": [],
+      "city": "São Caetano do Sul",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_presidente_vargas_campina_grande",
+      "canonical_name": "Estádio Presidente Vargas (Campina Grande)",
+      "display_name": "Estádio Presidente Vargas",
+      "aliases": [
+        "Presidente Vargas Campina Grande"
+      ],
+      "city": "Campina Grande",
+      "state": "PB",
       "country": "BR",
       "latitude": null,
       "longitude": null,

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "snapshot_date": "2026-09-29",
-  "package_version": "1.3",
+  "snapshot_date": "2026-09-30",
+  "package_version": "1.4",
   "stage": "ETAPA_1_RESEARCH_PARTIAL",
   "files": [
     {
@@ -245,6 +245,78 @@
       }
     },
     {
+      "file": "passport/passport_2018.json",
+      "status_counts": {
+        "READY": 58,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2017.json",
+      "status_counts": {
+        "READY": 58,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2016.json",
+      "status_counts": {
+        "READY": 60,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2015.json",
+      "status_counts": {
+        "READY": 38,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2014.json",
+      "status_counts": {
+        "READY": 52,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2013.json",
+      "status_counts": {
+        "READY": 40,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2012.json",
+      "status_counts": {
+        "READY": 38,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2011.json",
+      "status_counts": {
+        "READY": 58,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
+      "file": "passport/passport_2010.json",
+      "status_counts": {
+        "READY": 58,
+        "REVIEW": 0,
+        "GAP": 0
+      }
+    },
+    {
       "file": "passport/passport_audit_manifest.json",
       "status_counts": {
         "READY": 0,
@@ -255,8 +327,8 @@
     {
       "file": "passport/venues.json",
       "status_counts": {
-        "READY": 79,
-        "REVIEW": 0,
+        "READY": 110,
+        "REVIEW": 1,
         "GAP": 0
       }
     },
@@ -271,6 +343,15 @@
   ],
   "passport": {
     "researched_years": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
       2019,
       2020,
       2021,
@@ -281,6 +362,15 @@
       2026
     ],
     "closed_years": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
       2019,
       2020,
       2021,
@@ -359,16 +449,7 @@
       2006,
       2007,
       2008,
-      2009,
-      2010,
-      2011,
-      2012,
-      2013,
-      2014,
-      2015,
-      2016,
-      2017,
-      2018
+      2009
     ]
   },
   "arena_targets": {
@@ -415,22 +496,35 @@
     "Estádios nunca são inferidos pelo mandante: sem evidência específica da partida, stadium permanece null/UNKNOWN.",
     "v1.3: Passaporte 2019 fechado em 60/60 jogos oficiais: 16 Goiano, 6 Copa do Brasil e 38 Série B.",
     "2019: 60/60 estádios confirmados com evidência match-specific; 0 UNKNOWN. Três conflitos de estádio foram registrados e resolvidos.",
-    "2019: pênaltis preservam outcome do placar principal; URT 2–2 Vila Nova (4–5) e Vila Nova 0–0 Juventude (3–4) permanecem DRAW."
+    "2019: pênaltis preservam outcome do placar principal; URT 2–2 Vila Nova (4–5) e Vila Nova 0–0 Juventude (3–4) permanecem DRAW.",
+    "v1.4: Passaporte histórico ampliado com 2010–2018, totalizando 460 novas partidas oficiais reconciliadas.",
+    "2010–2018: cobertura de partidas CLOSED em todos os nove anos; estádios UNKNOWN foram preservados quando não houve evidência match-specific suficiente.",
+    "2016: conflito de data da semifinal Vila Nova 1–1 Goiás resolvido em 17/04/2016 com fonte local match-specific.",
+    "2012: divergência entre placares individualizados (Goiano 31–26; total anual 58–52) e tabelas agregadas (30–25; 57–51) documentada; preservados os placares jogo a jogo confirmados.",
+    "2010: conflito de data de Vila Nova 0–1 Coritiba resolvido em 30/07/2010 por múltiplas fontes contemporâneas."
   ],
   "incremental_delivery": {
-    "base_version": "1.2",
+    "base_version": "1.3",
     "changed_files": [
       "manifest.json",
-      "passport/passport_2019.json",
+      "passport/passport_2018.json",
+      "passport/passport_2017.json",
+      "passport/passport_2016.json",
+      "passport/passport_2015.json",
+      "passport/passport_2014.json",
+      "passport/passport_2013.json",
+      "passport/passport_2012.json",
+      "passport/passport_2011.json",
+      "passport/passport_2010.json",
       "passport/passport_audit_manifest.json",
       "passport/venues.json",
       "sources/source_catalog.json"
     ],
     "changes": [
-      "Passaporte 2019 fechado em 60/60 no ano civil: 16 Goiano, 6 Copa do Brasil e 38 Série B.",
-      "Estádios 2019: 60/60 MATCH_SPECIFIC e 0 UNKNOWN; 11 novos venues adicionados ao catálogo.",
-      "Três divergências de estádio foram registradas como conflitos resolvidos: Vila Nova x Itumbiara (16/03), Atlético-GO x Vila Nova (07/04) e Atlético-GO x Vila Nova (13/07).",
-      "Pênaltis registrados sem alterar outcome do placar principal."
+      "Adicionados passport_2018.json até passport_2010.json, sem alterar 2019–2026.",
+      "460 partidas oficiais adicionadas: todos os anos 2010–2018 fechados em 100% da cobertura de partidas.",
+      "Catálogo de estádios atualizado de 78 para 111 venues; UNKNOWN mantido quando não havia fonte match-specific.",
+      "Auditoria e catálogo de fontes atualizados; conflitos documentados em vez de resolvidos por inferência."
     ]
   },
   "idol_targets": {

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_date": "2026-09-29",
+  "snapshot_date": "2026-09-30",
   "years": [
     {
       "year": 1943,
@@ -808,111 +808,315 @@
     },
     {
       "year": 2010,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
-      "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "expected_total": 58,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2010; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 58,
+      "stadium_confirmed": 22,
+      "stadium_unknown": 36,
+      "by_competition": {
+        "GOIANO": 20,
+        "BRASILEIRO_B": 38
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesae/br2010l2.htm"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/go2010.htm"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2010&grp=1"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "date",
+          "match": "Vila Nova 0–1 Coritiba — R11 Série B 2010",
+          "values": [
+            "2010-07-30 (RSSSF, oGol, Folha, Bola na Área e notícia contemporânea)",
+            "2010-07-27 (registro secundário divergente consultado)"
+          ],
+          "resolution": "2010-07-30",
+          "status": "RESOLVED",
+          "notes": "30/07/2010 foi confirmado por múltiplas fontes independentes e contemporâneas; mantido 21:00 e Serra Dourada."
+        }
+      ],
+      "notes": "Cobertura de partidas fechada em 58/58. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2011,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
-      "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "expected_total": 58,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2011; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 58,
+      "stadium_confirmed": 10,
+      "stadium_unknown": 48,
+      "by_competition": {
+        "GOIANO": 20,
+        "BRASILEIRO_B": 38
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesae/br2011l2.htm"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/go2011.htm"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2011&grp=1"
+        }
+      ],
+      "conflicts": [],
+      "notes": "Cobertura de partidas fechada em 58/58. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2012,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
-      "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "expected_total": 38,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2012; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 38,
+      "stadium_confirmed": 4,
+      "stadium_unknown": 34,
+      "by_competition": {
+        "GOIANO": 20,
+        "BRASILEIRO_C": 18
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesae/br2012l3.htm"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/go2012.htm"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2012&grp=1"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "aggregate_goals",
+          "match": "Campeonato Goiano 2012 — soma dos 20 jogos do Vila Nova",
+          "values": [
+            "31–26 pela soma das 20 partidas listadas jogo a jogo (31–22 na 1ª fase + 0–4 nas semifinais)",
+            "30–25 nas tabelas agregadas de RSSSF e Zerozero/oGol"
+          ],
+          "resolution": "31–26 pela soma das partidas individualizadas; total anual 58–52 incluindo Série C",
+          "status": "RESOLVED",
+          "notes": "As próprias listagens jogo a jogo da RSSSF e de Bola na Área somam 31 gols pró e 26 contra no Goiano. Vários placares potencialmente responsáveis pela diferença foram confirmados por fontes independentes (FGF, ge e Futebol de Goyaz). Não foi alterado placar individual confirmado apenas para forçar a tabela agregada 30–25."
+        }
+      ],
+      "notes": "Cobertura de partidas fechada em 38/38. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2013,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
-      "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "expected_total": 40,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2013; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 40,
+      "stadium_confirmed": 24,
+      "stadium_unknown": 16,
+      "by_competition": {
+        "GOIANO": 18,
+        "BRASILEIRO_C": 22
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/Serie_C_2013_games.json"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/go2013.htm"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2013&grp=1"
+        }
+      ],
+      "conflicts": [],
+      "notes": "Cobertura de partidas fechada em 40/40. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2014,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
-      "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "expected_total": 52,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2014; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 52,
+      "stadium_confirmed": 40,
+      "stadium_unknown": 12,
+      "by_competition": {
+        "GOIANO": 14,
+        "BRASILEIRO_B": 38
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/Serie_B_2014_games.json"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/go2014.htm"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2014&grp=1"
+        }
+      ],
+      "conflicts": [],
+      "notes": "Cobertura de partidas fechada em 52/52. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2015,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
-      "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "expected_total": 38,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2015; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 38,
+      "stadium_confirmed": 24,
+      "stadium_unknown": 14,
+      "by_competition": {
+        "GOIANO_2": 14,
+        "BRASILEIRO_C": 24
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/Serie_C_2015_games.json"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/go2015l2.htm"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2015&grp=1"
+        }
+      ],
+      "conflicts": [],
+      "notes": "Cobertura de partidas fechada em 38/38. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2016,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
-      "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "expected_total": 60,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2016; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 60,
+      "stadium_confirmed": 54,
+      "stadium_unknown": 6,
+      "by_competition": {
+        "GOIANO": 16,
+        "COPA_VERDE": 6,
+        "BRASILEIRO_B": 38
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/Serie_B_2016_games.json"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/cv2016.htm"
+        },
+        {
+          "provider": "RSSSF Brasil",
+          "url": "https://www.rsssfbrasil.com/tablesfq/go2016.htm"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2016&grp=1"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "date",
+          "match": "Vila Nova 1–1 Goiás — semifinal ida do Goiano 2016",
+          "values": [
+            "2016-04-18 (RSSSF Brasil)",
+            "2016-04-17 (Futebol de Goyaz / imprensa local contemporânea)"
+          ],
+          "resolution": "2016-04-17",
+          "status": "RESOLVED",
+          "notes": "Preferida a fonte local match-specific/contemporânea, que identifica domingo 17/04 e o Serra Dourada."
+        }
+      ],
+      "notes": "Cobertura de partidas fechada em 60/60. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2017,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
+      "expected_total": 58,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2017; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 58,
+      "stadium_confirmed": 58,
       "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "by_competition": {
+        "GOIANO": 18,
+        "BRASILEIRO_B": 38,
+        "COPA_DO_BRASIL": 2
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/CdB_2017_games.json"
+        },
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/Serie_B_2017_games.json"
+        },
+        {
+          "provider": "Esporte Goiano",
+          "url": "https://esportegoiano.com.br/campeonato-goiano-de-futebol-2017/"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2017&grp=1"
+        }
+      ],
+      "conflicts": [],
+      "notes": "Cobertura de partidas fechada em 58/58. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2018,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
+      "expected_total": 58,
+      "expected_total_source": "Zerozero/oGol — calendário anual do Vila Nova 2018; total reconciliado por competição com RSSSF/CBF.",
+      "found_total": 58,
+      "stadium_confirmed": 58,
       "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "by_competition": {
+        "GOIANO": 16,
+        "BRASILEIRO_B": 38,
+        "COPA_DO_BRASIL": 4
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/CdB_2018_games.json"
+        },
+        {
+          "provider": "BrazilianFootball/Data (dados CBF)",
+          "url": "https://github.com/BrazilianFootball/Data/blob/main/results/processed/Serie_B_2018_games.json"
+        },
+        {
+          "provider": "Esporte Goiano",
+          "url": "https://esportegoiano.com.br/tag/goianao-2018/"
+        },
+        {
+          "provider": "Zerozero / oGol",
+          "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2018&grp=1"
+        }
+      ],
+      "conflicts": [],
+      "notes": "Cobertura de partidas fechada em 58/58. UNKNOWN de estádio não reduz o status CLOSED; nenhum estádio foi inferido pelo mandante."
     },
     {
       "year": 2019,

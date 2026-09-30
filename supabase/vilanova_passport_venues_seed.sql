@@ -4,7 +4,7 @@
 --
 -- Rode no projeto Supabase do VILA NOVA — NUNCA no do Goiás nem no do Bragantino.
 -- Ordem: vilanova_passport_infra.sql -> ESTE -> vilanova_passport_matches_<ano>_seed.sql.
--- Idempotente. 78 estádios (só os usados por alguma partida do pacote).
+-- Idempotente. 111 estádios (só os usados por alguma partida do pacote).
 
 do $$
 begin
@@ -94,7 +94,40 @@ values
   ('vn_venue_arena_barueri', 'Arena Barueri', 'Arena Barueri', 'Barueri', 'SP', 'BR', null, null, '{}'::text[]),
   ('vn_venue_walter_ribeiro', 'Estádio Municipal Walter Ribeiro', 'Walter Ribeiro', 'Sorocaba', 'SP', 'BR', null, null, array['Estádio Walter Ribeiro', 'Walter Ribeiro', 'CIC']),
   ('vn_venue_nabi_abi_chedid', 'Estádio Nabi Abi Chedid', 'Nabi Abi Chedid', 'Bragança Paulista', 'SP', 'BR', null, null, array['Nabi Abi Chedid']),
-  ('vn_venue_orlando_scarpelli', 'Estádio Orlando Scarpelli', 'Orlando Scarpelli', 'Florianópolis', 'SC', 'BR', null, null, '{}'::text[])
+  ('vn_venue_orlando_scarpelli', 'Estádio Orlando Scarpelli', 'Orlando Scarpelli', 'Florianópolis', 'SC', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_mozart_veloso_do_carmo', 'Estádio Mozart Veloso do Carmo', 'Estádio Mozart Veloso do Carmo', 'Rio Verde', 'GO', 'BR', null, null, array['Mozart Veloso']),
+  ('vn_venue_francisco_jose_ferreira', 'Estádio Francisco José Ferreira', 'Estádio Francisco José Ferreira', 'Iporá', 'GO', 'BR', null, null, array['Ferreirão']),
+  ('vn_venue_dilzon_luiz_de_melo', 'Estádio Dilzon Luiz de Melo', 'Estádio Dilzon Luiz de Melo', 'Varginha', 'MG', 'BR', null, null, array['Dilzon Luís de Melo', 'Dilzon Melo']),
+  ('vn_venue_raimundo_ribeiro_de_souza', 'Estádio Raimundo Ribeiro de Souza', 'Estádio Raimundo Ribeiro de Souza', 'Boa Vista', 'RR', 'BR', null, null, array['Raimundo Ribeiro de Souza', 'Ribeirão']),
+  ('vn_venue_presidente_vargas', 'Estádio Presidente Vargas', 'Estádio Presidente Vargas', 'Fortaleza', 'CE', 'BR', null, null, array['Presidente Vargas Fortaleza']),
+  ('vn_venue_jose_pinheiro_borda', 'Estádio José Pinheiro Borda', 'Estádio José Pinheiro Borda', 'Porto Alegre', 'RS', 'BR', null, null, array['José Pinheiro Borda', 'Beira-Rio']),
+  ('vn_venue_abrao_manoel_da_costa', 'Estádio Abrão Manoel da Costa', 'Estádio Abrão Manoel da Costa', 'Trindade', 'GO', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_nacional_de_brasilia_mane_garrincha', 'Estádio Nacional de Brasília Mané Garrincha', 'Estádio Nacional de Brasília Mané Garrincha', 'Brasília', 'DF', 'BR', null, null, array['Estádio Nacional', 'Estádio Nacional Mané Garrincha', 'Mané Garrincha']),
+  ('vn_venue_passo_das_emas', 'Estádio Passo das Emas', 'Estádio Passo das Emas', 'Lucas do Rio Verde', 'MT', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_valmir_campelo_bezerra', 'Estádio Valmir Campelo Bezerra', 'Estádio Valmir Campelo Bezerra', 'Gama', 'DF', 'BR', null, null, array['Bezerrão']),
+  ('vn_venue_octavio_mangabeira', 'Estádio Octávio Mangabeira', 'Estádio Octávio Mangabeira', 'Salvador', 'BA', 'BR', null, null, array['Octávio Mangabeira', 'Fonte Nova (antiga)']),
+  ('vn_venue_sao_januario', 'Estádio São Januário', 'Estádio São Januário', 'Rio de Janeiro', 'RJ', 'BR', null, null, array['São Januário']),
+  ('vn_venue_municipal_radialista_mario_helenio', 'Estádio Municipal Radialista Mário Helênio', 'Estádio Municipal Radialista Mário Helênio', 'Juiz de Fora', 'MG', 'BR', null, null, array['Mário Helênio']),
+  ('vn_venue_joinville', 'Arena Joinville', 'Arena Joinville', 'Joinville', 'SC', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_zinho_de_oliveira', 'Estádio Zinho de Oliveira', 'Estádio Zinho de Oliveira', 'Marabá', 'PA', 'BR', null, null, array['Zinho Oliveira']),
+  ('vn_venue_estadual_lourival_baptista', 'Estádio Estadual Lourival Baptista', 'Estádio Estadual Lourival Baptista', 'Aracaju', 'SE', 'BR', null, null, array['Lourival Baptista']),
+  ('vn_venue_cornelio_de_barros_muniz', 'Estádio Cornélio de Barros Muniz', 'Estádio Cornélio de Barros Muniz', 'Salgueiro', 'PE', 'BR', null, null, array['Cornélio de Barros']),
+  ('vn_venue_mauro_sampaio', 'Estádio Mauro Sampaio', 'Estádio Mauro Sampaio', 'Juazeiro do Norte', 'CE', 'BR', null, null, array['Romeirão', 'Mauro Castelo Branco Sampaio', 'Mauro Sampaio']),
+  ('vn_venue_das_dunas', 'Arena das Dunas', 'Arena das Dunas', 'Natal', 'RN', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_coaracy_da_mata_fonseca', 'Estádio Coaracy da Mata Fonseca', 'Estádio Coaracy da Mata Fonseca', 'Arapiraca', 'AL', 'BR', null, null, array['Coaracy da Mata Fonseca']),
+  ('vn_venue_doutor_oswaldo_teixeira_duarte', 'Estádio Doutor Oswaldo Teixeira Duarte', 'Estádio Doutor Oswaldo Teixeira Duarte', 'São Paulo', 'SP', 'BR', null, null, array['Canindé', 'Dr. Oswaldo Teixeira Duarte']),
+  ('vn_venue_horacio_domingos_de_sousa', 'Estádio Horácio Domingos de Sousa', 'Estádio Horácio Domingos de Sousa', 'Horizonte', 'CE', 'BR', null, null, array['Horácio Domingos de Sousa']),
+  ('vn_venue_municipal_dos_amaros', 'Estádio Municipal dos Amaros', 'Estádio Municipal dos Amaros', 'Itápolis', 'SP', 'BR', null, null, array['Municipal dos Amaros']),
+  ('vn_venue_romario_de_souza_faria', 'Estádio Romário de Souza Faria', 'Estádio Romário de Souza Faria', 'Duque de Caxias', 'RJ', 'BR', null, null, array['Romário Souza Faria', 'Marrentão']),
+  ('vn_venue_municipal_romildo_vitor_gomes_ferreira', 'Estádio Municipal Romildo Vitor Gomes Ferreira', 'Estádio Municipal Romildo Vitor Gomes Ferreira', 'Mogi Mirim', 'SP', 'BR', null, null, array['Romildo Vitor Gomes Ferreira', 'Romildão']),
+  ('vn_venue_aniceto_moscoso', 'Estádio Aniceto Moscoso', 'Estádio Aniceto Moscoso', 'Rio de Janeiro', 'RJ', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_senador_zeze_perrella', 'Estádio Senador Zezé Perrella', 'Estádio Senador Zezé Perrella', 'Nova Serrana', 'MG', 'BR', null, null, array['Senador Zezé Perrela', 'Arena do Calçado']),
+  ('vn_venue_francisco_stedile', 'Estádio Francisco Stédile', 'Estádio Francisco Stédile', 'Caxias do Sul', 'RS', 'BR', null, null, array['Francisco Stédille', 'Centenário']),
+  ('vn_venue_claudio_moacyr_de_azevedo', 'Estádio Cláudio Moacyr de Azevedo', 'Estádio Cláudio Moacyr de Azevedo', 'Macaé', 'RJ', 'BR', null, null, array['Cláudio Moacyr de Azevedo', 'Moacyrzão']),
+  ('vn_venue_dario_rodrigues_leite', 'Estádio Dario Rodrigues Leite', 'Estádio Dario Rodrigues Leite', 'Guaratinguetá', 'SP', 'BR', null, null, array['Dario Leite', 'Dário Rodrigues Leite']),
+  ('vn_venue_olimpico_nilton_santos', 'Estádio Olímpico Nilton Santos', 'Estádio Olímpico Nilton Santos', 'Rio de Janeiro', 'RJ', 'BR', null, null, array['Engenhão']),
+  ('vn_venue_anacleto_campanella', 'Estádio Anacleto Campanella', 'Estádio Anacleto Campanella', 'São Caetano do Sul', 'SP', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_presidente_vargas_campina_grande', 'Estádio Presidente Vargas (Campina Grande)', 'Estádio Presidente Vargas', 'Campina Grande', 'PB', 'BR', null, null, array['Presidente Vargas Campina Grande'])
 on conflict (id) do update set
   canonical_name = excluded.canonical_name, display_name = excluded.display_name,
   city = excluded.city, state = excluded.state, country = excluded.country,

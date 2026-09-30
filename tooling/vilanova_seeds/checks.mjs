@@ -27,6 +27,17 @@ export default async function (q, db) {
     const rows = await q(`select * from public.passport_matches_for_year(2025)`);
     console.log('passport_matches_for_year(2025):', rows.length, 'linhas; exemplo:', JSON.stringify(rows.find((r) => r.venue_name)));
   } catch (e) { console.log('RPC for_year FAIL:', e.message); }
+  // Cobertura da RPC em todos os anos do pacote (2010–2026 desde a v1.4):
+  // cada ano precisa devolver exatamente o que está na tabela.
+  try {
+    const seasons = await q(`select season, count(*)::int n from public.passport_matches group by 1 order by 1`);
+    const bad = [];
+    for (const { season, n } of seasons) {
+      const got = (await q(`select * from public.passport_matches_for_year(${season})`)).length;
+      if (got !== n) bad.push(`${season}: rpc ${got} ≠ tabela ${n}`);
+    }
+    console.log(`passport_matches_for_year(${seasons[0]?.season}..${seasons.at(-1)?.season}):`, bad.length ? 'DIVERGE ' + bad.join('; ') : `OK em ${seasons.length} anos`);
+  } catch (e) { console.log('RPC for_year (todos) FAIL:', e.message); }
   try {
     console.log('passport_seasons:', JSON.stringify(await q(`select * from public.passport_seasons()`)));
   } catch (e) { console.log('RPC seasons FAIL:', e.message); }

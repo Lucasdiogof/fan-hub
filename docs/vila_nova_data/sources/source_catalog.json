@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_date": "2026-09-29",
+  "snapshot_date": "2026-09-30",
   "sources": [
     {
       "id": "vn_src_official_home",
@@ -2157,6 +2157,73 @@
         "Copa do Brasil 2019 4ª fase",
         "Serra Dourada",
         "pênaltis 3–4"
+      ]
+    },
+    {
+      "id": "vn_src_brazilianfootball_data",
+      "name": "BrazilianFootball/Data — jogos processados a partir de dados/súmulas CBF",
+      "url": "https://github.com/BrazilianFootball/Data/tree/main/results/processed",
+      "type": "DATASET",
+      "authority": "SECONDARY",
+      "covers": [
+        "Série B 2013–2018",
+        "Série C 2013–2015",
+        "Copa do Brasil 2017–2018",
+        "datas",
+        "placares",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_goias",
+      "name": "RSSSF Brasil — Campeonatos Goianos",
+      "url": "https://www.rsssfbrasil.com/tablesfq/",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "Campeonato Goiano 2010–2016",
+        "Goiano 2ª Divisão 2015",
+        "datas",
+        "placares"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_brasileiro",
+      "name": "RSSSF Brasil — Campeonatos Brasileiros",
+      "url": "https://www.rsssfbrasil.com/tablesae/",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "Série B 2010–2011",
+        "Série C 2012",
+        "datas",
+        "placares"
+      ]
+    },
+    {
+      "id": "vn_src_esporte_goiano_2017",
+      "name": "Esporte Goiano — Campeonato Goiano 2017",
+      "url": "https://esportegoiano.com.br/campeonato-goiano-de-futebol-2017/",
+      "type": "SPORTS_MEDIA",
+      "authority": "SECONDARY",
+      "covers": [
+        "Goiano 2017",
+        "datas",
+        "placares",
+        "horários",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_zerozero_history",
+      "name": "Zerozero / oGol — jogos anuais do Vila Nova",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "totais anuais",
+        "reconciliação de partidas",
+        "resultados"
       ]
     }
   ]
