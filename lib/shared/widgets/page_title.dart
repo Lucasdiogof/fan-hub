@@ -33,15 +33,18 @@ class PageTitle extends StatelessWidget {
         const ClubBadge.activeClub(size: 22),
         const SizedBox(width: 8),
         Flexible(
-          child: Text(
-            text,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 21,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 0.2,
-              color: colors.textPrimary,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Text(
+              text,
+              maxLines: 1,
+              style: TextStyle(
+                fontSize: 21,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 0.2,
+                color: colors.textPrimary,
+              ),
             ),
           ),
         ),

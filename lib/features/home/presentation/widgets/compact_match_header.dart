@@ -49,39 +49,58 @@ class CompactMatchHeader extends StatelessWidget {
                 children: [
                   ClubBadge(team: match.homeTeam, size: 26, onDark: true),
                   const SizedBox(width: AppSpacing.sm),
+                  _TeamNameLabel(
+                    name: shortTeamName(match.homeTeam.name),
+                    alignment: Alignment.centerLeft,
+                  ),
                   Expanded(
-                    child: Text(
-                      shortTeamName(match.homeTeam.name).toUpperCase(),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12.5,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 0.2,
-                      ),
+                    child: Center(
+                      child: _CenterMarker(match: match, isLive: _isLive),
                     ),
                   ),
-                  _CenterMarker(match: match, isLive: _isLive),
-                  Expanded(
-                    child: Text(
-                      shortTeamName(match.awayTeam.name).toUpperCase(),
-                      textAlign: TextAlign.right,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12.5,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 0.2,
-                      ),
-                    ),
+                  _TeamNameLabel(
+                    name: shortTeamName(match.awayTeam.name),
+                    alignment: Alignment.centerRight,
                   ),
                   const SizedBox(width: AppSpacing.sm),
                   ClubBadge(team: match.awayTeam, size: 26, onDark: true),
                 ],
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Nome do time com largura NATURAL (não estica pra metade da faixa só
+/// porque o adversário tem nome curto — era o que empurrava "GOIÁS" pro
+/// canto e sobrava espaço vazio do lado dele). Só encolhe a fonte (nunca
+/// corta com "...") quando o nome não cabe nem no teto de [_maxWidth].
+class _TeamNameLabel extends StatelessWidget {
+  const _TeamNameLabel({required this.name, required this.alignment});
+
+  final String name;
+  final Alignment alignment;
+
+  static const _maxWidth = 118.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: _maxWidth),
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: alignment,
+        child: Text(
+          name.toUpperCase(),
+          maxLines: 1,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 12.5,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.2,
           ),
         ),
       ),

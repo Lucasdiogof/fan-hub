@@ -272,17 +272,23 @@ class _MatchupText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    return Text.rich(
-      TextSpan(
-        style: TextStyle(
-          fontSize: 14.5,
-          fontWeight: FontWeight.w700,
-          color: colors.textPrimary,
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        alignment: Alignment.centerLeft,
+        child: Text.rich(
+          TextSpan(
+            style: TextStyle(
+              fontSize: 14.5,
+              fontWeight: FontWeight.w700,
+              color: colors.textPrimary,
+            ),
+            children: spans,
+          ),
+          maxLines: 1,
         ),
-        children: spans,
       ),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
     );
   }
 }
