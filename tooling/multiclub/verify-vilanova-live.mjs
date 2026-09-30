@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Roda as mesmas checagens do simulador (tooling/vilanova_seeds/checks.mjs)
-// contra o banco REMOTO de verdade, via VILANOVA_DB_URL. Só leitura.
+// contra o banco REMOTO de verdade, via VILANOVA_DB_URL. Só leitura: o teste
+// das RPCs (usuário falso) roda numa transação desfeita (ver checks.mjs).
 import { Client } from 'pg';
 import { resolveTarget } from './db_target_resolver.mjs';
 

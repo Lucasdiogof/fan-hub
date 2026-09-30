@@ -18,9 +18,15 @@ export default async function (q, db) {
   console.log('top estadios:', JSON.stringify(await q(`select v.display_name, count(*)::int n from public.passport_matches m join public.venues v on v.id=m.venue_id group by 1 order by 2 desc limit 5`)));
   console.log('santa cruz unificado:', JSON.stringify(await q(`select v.id, count(*)::int n from public.passport_matches m join public.venues v on v.id=m.venue_id where v.city='Ribeirão Preto' group by 1`)));
   console.log('penaltis em notes:', JSON.stringify(await q(`select id, outcome, data_notes from public.passport_matches where data_notes like '%pênaltis%' order by match_date limit 3`)));
-  // RPC que o app chama (usuário autenticado fake).
+  // RPCs que o app chama, com um usuário autenticado FALSO — tudo dentro de
+  // uma transação desfeita no fim (ROLLBACK). Este arquivo também roda contra
+  // o banco REAL (verify-vilanova-live.mjs): até 2026-09-30 o insert abaixo
+  // ficava gravado e criou um usuário "t@t" em produção (removido). Nunca
+  // tirar o begin/rollback.
+  await db.exec('begin');
+  try {
   await db.exec(`insert into auth.users (id, email) values ('00000000-0000-0000-0000-000000000001','t@t') on conflict do nothing`);
-  await db.exec(`select set_config('request.jwt.claim.sub','00000000-0000-0000-0000-000000000001', false)`);
+  await db.exec(`select set_config('request.jwt.claim.sub','00000000-0000-0000-0000-000000000001', true)`);
   const fns = await q(`select p.proname, pg_get_function_identity_arguments(p.oid) args from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname like 'passport%' order by 1`);
   console.log('rpcs:', fns.map((f) => `${f.proname}(${f.args})`).join(' | '));
   try {
@@ -41,4 +47,7 @@ export default async function (q, db) {
   try {
     console.log('passport_seasons:', JSON.stringify(await q(`select * from public.passport_seasons()`)));
   } catch (e) { console.log('RPC seasons FAIL:', e.message); }
+  } finally {
+    await db.exec('rollback');
+  }
 }
