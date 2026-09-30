@@ -46,6 +46,17 @@ CLUBS = {
         "author_name": "Red Bull Bragantino",
         "output": REPO_ROOT / "src" / "social" / "data" / "bragantino" / "x_posts.json",
     },
+    "vilanova": {
+        # Listado no rodapé do site oficial (vilanovafc.com.br, 2026-09-30):
+        # twitter.com/vilanovafc. Diferente dos outros dois, o Vila NÃO
+        # commita o JSON: o workflow envia o arquivo direto pro Worker do
+        # clube (`POST /api/social/x/sync`, guardado em KV) — cada commit
+        # disparava builds do Cloudflare. Por isso a saída fica em build/
+        # (gitignored).
+        "handle": "vilanovafc",
+        "author_name": "Vila Nova F.C.",
+        "output": REPO_ROOT / "build" / "social" / "vilanova_x_posts.json",
+    },
 }
 
 

@@ -18,6 +18,8 @@
 // handler resolve sempre `clubMediaConfig(env.CLUB_CODE)` — a config do
 // PRÓPRIO clube do deploy.
 
+import { xKvKey } from './x_sync';
+
 /** Qual parser de notícias usar — cada site tem sua própria fonte/formato
  * (o Goiás raspa HTML; o Bragantino é uma SPA sem HTML raspável e consome
  * uma API JSON interna pública, ver `news/bragantino_parser.ts`). */
@@ -69,8 +71,15 @@ export interface ClubInstagramConfig {
   authorHandle?: string;
 }
 
+/** Exatamente UMA fonte: `dataFile` (bundle estático commitado — Goiás,
+ * Bragantino) OU `kvKey` (Workers KV alimentado pela rota admin
+ * `POST /api/social/x/sync` — Vila Nova, ver `x_sync.ts`). */
 export interface ClubXConfig {
-  dataFile: XDataFileId;
+  dataFile?: XDataFileId;
+  kvKey?: string;
+  /** Handle oficial (sem @). Com `kvKey`, a rota de sync só aceita posts
+   * desta conta. */
+  handle?: string;
 }
 
 export interface ClubMediaConfig {
@@ -181,6 +190,27 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
       articlePathPrefix: '/noticias',
       parser: 'vilanova',
     },
+    // Contas oficiais listadas no rodapé de vilanovafc.com.br (2026-09-30):
+    // youtube.com/vilanovafcoficial, instagram.com/vilanovafc e
+    // twitter.com/vilanovafc.
+    youtube: {
+      // `youtube.com/vilanovafcoficial` resolve pro canal "TigrãoTV"
+      // (`<link rel="canonical">` + `externalId` da própria página). Só
+      // entra no feed quando o deploy tiver `YOUTUBE_API_KEY` (secret).
+      channelHandle: '@TigrãoTV-u8h',
+      channelId: 'UCyzEjyFAs3vIrqIm_i0RB8g',
+      authorName: 'TigrãoTV',
+      authorHandle: 'vilanovafcoficial',
+    },
+    // Sem cron (a conta Free já usa os 5): o KV é atualizado pelo GitHub
+    // Action chamando `POST /api/social/instagram/sync` (INSTAGRAM_SYNC_KEY).
+    // Enquanto a Task do Apify não existir, o KV fica vazio -> `[]`.
+    instagram: {
+      kvKey: instagramKvKey('vilanova'),
+      authorName: 'Vila Nova F.C.',
+      authorHandle: 'vilanovafc',
+    },
+    x: { kvKey: xKvKey('vilanova'), handle: 'vilanovafc' },
   },
 };
 

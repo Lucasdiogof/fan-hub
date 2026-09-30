@@ -35,8 +35,8 @@ import 'package:goias_app/features/passport/data/vilanova_passport_content.dart'
 //     (docs/multiclub/60_vilanova_seeds_runbook.md) ainda não aplicados —
 //     o flavor sobe mas o banco está vazio até isso rodar.
 //   * workerBaseUrl/supabaseRedirectUrl — Worker do Vila criado em
-//     2026-09-30 (F8, `wrangler.vilanova.toml`). Jogos ligados; notícias e
-//     Instagram ainda não (ver `hasNews`/`hasSocial`).
+//     2026-09-30 (F8, `wrangler.vilanova.toml`). Jogos, notícias e redes
+//     ligados (ver `hasNews`/`hasSocial`).
 // ============================================================================
 
 // Cor oficial única do clube, do manual de identidade visual (pág. 9):
@@ -261,8 +261,14 @@ final vilaNovaClubConfig = ClubConfig(
     // repositório (`SupabasePassportRepository`) é genérico por clube — nada
     // de código precisou mudar, só esta flag.
     hasPassport: true,
-    hasNews: false,
-    hasSocial: false,
+    // F8 (2026-09-30): aba Mídia. Notícias = parser próprio do site oficial
+    // no Worker (`src/news/vilanova_parser.ts`). Redes = X (KV alimentado
+    // pelo GitHub Action), Instagram (Apify -> KV, também agendado pelo
+    // Action) e YouTube "TigrãoTV" (precisa do secret YOUTUBE_API_KEY no
+    // Worker). Rede sem dado ainda aparece vazia, nunca com post de outro
+    // clube.
+    hasNews: true,
+    hasSocial: true,
     // F3: história, linha do tempo, títulos e ídolos estáticos (pacote
     // v1.2). F4 (2026-09-29): diretoria (6 seções/28 pessoas) e
     // transparência (5 documentos) confirmadas ao vivo no Supabase do Vila

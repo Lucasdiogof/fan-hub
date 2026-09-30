@@ -6,6 +6,7 @@ import { InstagramProvider } from './providers/instagram_provider';
 import { XProvider, type RawXPost } from './providers/x_provider';
 import goiasXPosts from './data/goias/x_posts.json';
 import bragantinoXPosts from './data/bragantino/x_posts.json';
+import { readXFromKv } from './x_sync';
 
 export interface SocialEnv extends Env {
   YOUTUBE_API_KEY?: string;
@@ -17,6 +18,8 @@ export interface SocialEnv extends Env {
   APIFY_INSTAGRAM_TASK_ID?: string;
   /** Secret que protege a rota admin de sync manual. */
   INSTAGRAM_SYNC_KEY?: string;
+  /** Secret da rota admin `POST /api/social/x/sync` (clubes com X em KV). */
+  X_SYNC_KEY?: string;
 }
 
 /** Bundle estático dos posts do X por clube — cada deploy só serve o do
@@ -56,8 +59,11 @@ export function loadSocialProviders(env: SocialEnv, media: ClubMediaConfig): Soc
     providers.push(new InstagramProvider(env, media.instagram.kvKey));
   }
 
-  if (media.x) {
+  if (media.x?.dataFile) {
     providers.push(new XProvider(xDataFor(media.x.dataFile)));
+  } else if (media.x?.kvKey && env.SOCIAL_FEED_KV) {
+    const kvKey = media.x.kvKey;
+    providers.push(new XProvider(() => readXFromKv(env.SOCIAL_FEED_KV, kvKey)));
   }
 
   return providers;

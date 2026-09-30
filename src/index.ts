@@ -9,6 +9,8 @@ import { handleSocialFeed } from './social/feed';
 import { handleNewsList } from './news/list';
 import { handleNewsArticle } from './news/article';
 import { syncInstagram } from './social/instagram_sync';
+import { clubMediaConfig } from './social/club_media_config';
+import { MAX_X_POSTS, parseXSyncBody, type XKvValue } from './social/x_sync';
 import { handleImageProxy } from './media/imageProxy';
 
 const FIXTURE_DETAILS_PATTERN = /^\/api\/football\/fixtures\/([^/]+)\/?$/;
@@ -94,6 +96,10 @@ export default {
       return handleInstagramAdminSync(request, env);
     }
 
+    if (pathname === '/api/social/x/sync') {
+      return handleXAdminSync(request, env);
+    }
+
     if (pathname === '/api/news') {
       return handleNewsList(request, env);
     }
@@ -132,6 +138,41 @@ async function handleInstagramAdminSync(request: Request, env: SocialEnv): Promi
   }
   const outcome = await syncInstagram(env);
   return new Response(JSON.stringify(outcome), {
+    headers: { 'content-type': 'application/json' },
+  });
+}
+
+/** POST /api/social/x/sync com header `x-sync-key` = X_SYNC_KEY e corpo =
+ * lista de posts no formato do `scripts/social/sync_x_posts.py`. Só pra
+ * clube com X em KV (`ClubXConfig.kvKey`). Sem a secret, com chave errada
+ * ou clube sem X em KV, responde 404 (não vaza a rota). Corpo inválido ou
+ * sem nenhum post da conta oficial: 422, e o KV anterior é mantido. */
+async function handleXAdminSync(request: Request, env: SocialEnv): Promise<Response> {
+  const notFound = new Response('Not found', { status: 404 });
+  const key = env.X_SYNC_KEY;
+  const x = clubMediaConfig(env.CLUB_CODE)?.x;
+  if (!key || request.method !== 'POST' || request.headers.get('x-sync-key') !== key) {
+    return notFound;
+  }
+  if (!x?.kvKey || !x.handle || !env.SOCIAL_FEED_KV) {
+    return notFound;
+  }
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    body = null;
+  }
+  const posts = parseXSyncBody(body, x.handle);
+  if (!posts) {
+    return new Response(JSON.stringify({ status: 'kept-previous', reason: 'no valid posts' }), {
+      status: 422,
+      headers: { 'content-type': 'application/json' },
+    });
+  }
+  const value: XKvValue = { updatedAt: new Date().toISOString(), posts };
+  await env.SOCIAL_FEED_KV.put(x.kvKey, JSON.stringify(value));
+  return new Response(JSON.stringify({ status: 'updated', persisted: posts.length, max: MAX_X_POSTS }), {
     headers: { 'content-type': 'application/json' },
   });
 }

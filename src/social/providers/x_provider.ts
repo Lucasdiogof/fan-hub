@@ -18,11 +18,14 @@ export class XProvider implements SocialProvider {
 
   /** [rawPosts] é o arquivo de dados do PRÓPRIO clube (selecionado por
    * `ClubMediaConfig.x.dataFile` em `config.ts`) — o provider nunca importa
-   * o arquivo de outro clube nem cai num handle fixo. */
-  constructor(private readonly rawPosts: RawXPost[]) {}
+   * o arquivo de outro clube nem cai num handle fixo. Também aceita uma
+   * função assíncrona — é como o Vila lê os posts do KV do próprio clube
+   * (ver `x_sync.ts`). */
+  constructor(private readonly source: RawXPost[] | (() => Promise<RawXPost[]>)) {}
 
   async fetch(): Promise<SocialPost[]> {
-    return this.rawPosts
+    const rawPosts = typeof this.source === 'function' ? await this.source() : this.source;
+    return rawPosts
       .filter(post => post.tweet_id && post.timestamp)
       .map((post): SocialPost => {
         const image = post.image_links?.[0];
