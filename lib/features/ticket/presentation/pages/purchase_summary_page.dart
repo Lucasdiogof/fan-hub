@@ -23,6 +23,7 @@ import 'package:goias_app/shared/widgets/app_primary_button.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/demo_disclaimer_banner.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
+import 'package:goias_app/features/ticket/domain/gate_label.dart';
 import 'package:image_picker/image_picker.dart';
 
 class PurchaseSummaryArgs {
@@ -205,7 +206,10 @@ class _PurchaseSummaryViewState extends State<_PurchaseSummaryView> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            '${item.sectorName} · ${item.gate}',
+                                            withGate(
+                                              item.sectorName,
+                                              item.gate,
+                                            ),
                                             style: TextStyle(
                                               fontSize: 13,
                                               fontWeight: FontWeight.w700,

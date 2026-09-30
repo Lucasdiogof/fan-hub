@@ -6,6 +6,7 @@ import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_sector.dart';
 import 'package:goias_app/shared/widgets/app_primary_button.dart';
+import 'package:goias_app/features/ticket/domain/gate_label.dart';
 
 /// Bottom sheet de escolha de setor — usada tanto pro primeiro check-in
 /// quanto pra alterar um check-in já confirmado (mesmo componente, o
@@ -141,7 +142,7 @@ class _SectorOption extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${sector.venueLabel} · ${sector.gate}',
+                      withGate(sector.venueLabel, sector.gate),
                       style: TextStyle(
                         fontSize: 12,
                         color: colors.textSecondary,

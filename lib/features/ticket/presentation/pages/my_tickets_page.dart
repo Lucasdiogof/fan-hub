@@ -25,6 +25,7 @@ import 'package:goias_app/shared/widgets/page_title.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/viewport_centered.dart';
+import 'package:goias_app/features/ticket/domain/gate_label.dart';
 
 bool get _ticketsAreDemo =>
     sl<ClubConfig>().capabilities.ticketCommerceMode == CommerceMode.demo;
@@ -117,7 +118,7 @@ class _MyTicketsViewState extends State<_MyTicketsView>
           ),
           _DetailRow(
             label: l10n.ticketsRefundDetailsTicketLabel,
-            value: '${ticket.sectorName} · ${ticket.gate}',
+            value: withGate(ticket.sectorName, ticket.gate),
           ),
           if (requestedAt != null)
             _DetailRow(
@@ -367,7 +368,7 @@ class _TicketCard extends StatelessWidget {
             ),
           _MetaRow(
             icon: Icons.event_seat_outlined,
-            text: '${ticket.sectorName} · ${ticket.gate}',
+            text: withGate(ticket.sectorName, ticket.gate),
           ),
           _MetaRow(icon: Icons.person_outline_rounded, text: ticket.holderName),
           _MetaRow(
@@ -509,7 +510,7 @@ class _MatchSummaryBlock extends StatelessWidget {
               style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
             ),
           Text(
-            '${ticket.sectorName} · ${ticket.gate}',
+            withGate(ticket.sectorName, ticket.gate),
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
           ),

@@ -18,6 +18,8 @@ import 'package:goias_app/features/membership/data/vilanova_membership_plans_cat
 import 'package:goias_app/features/membership/data/vilanova_regulation_content.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_version.dart';
 import 'package:goias_app/features/passport/data/vilanova_passport_content.dart';
+import 'package:goias_app/features/ticket/data/vilanova_ticket_content.dart';
+import 'package:goias_app/features/partners/data/vilanova_partners_data.dart';
 
 // ============================================================================
 // Vila Nova Futebol Clube — 3ª entrada REAL do clubRegistry (F1).
@@ -262,7 +264,10 @@ final vilaNovaClubConfig = ClubConfig(
     // inventado (o anual é real, não `mensal * 12`).
     hasMembership: true,
     hasStore: false,
-    hasTickets: false,
+    // Ingressos (2026-09-30): setores/preços/regras REAIS do OBA, das notícias
+    // oficiais de venda — ver `VilaNovaTicketContent`. Modo demo: a compra
+    // real é na Ingresso SA; aqui é demonstração + check-in do sócio.
+    hasTickets: true,
     hasCrowdLineup: false,
     // F6 (2026-09-30): 468 partidas / 78 estádios (2019-2026) aplicados e
     // verificados ao vivo no Supabase do Vila
@@ -285,9 +290,10 @@ final vilaNovaClubConfig = ClubConfig(
     // (`tooling/multiclub/verify-vilanova-live.mjs`) — a mesma flag já
     // cobria os dois, só faltava o banco existir.
     hasClubContent: true,
-    // Lista de patrocinadores incompleta no pacote (máster não confirmado) —
-    // fica desligado até a lista fechar e passar por decisão editorial.
-    hasPartners: false,
+    // Parceiros (2026-09-30): lista ATIVA do site oficial (34 marcas, logos
+    // e links conferidos) — ver `VilaNovaPartnersData`. Sem hierarquia
+    // inventada: o máster atual não está confirmado.
+    hasPartners: true,
     // F8 (2026-09-30): Worker deployado e validado ao vivo (ver
     // ClubIntegrations.workerBaseUrl) — hasMatches liga junto com
     // workerBaseUrl, nunca um sem o outro.
@@ -361,11 +367,13 @@ final vilaNovaClubConfig = ClubConfig(
     // `MembershipProgramConfig.externalCheckoutUrl`).
     externalCheckoutUrl: 'https://vilanova.ingressosa.com.br/selecionar-plano',
   ),
+  ticketsContent: VilaNovaTicketContent.content,
   institutionalContent: const ClubInstitutionalContent(
     history: VilaNovaHistoryData.sections,
     timeline: VilaNovaTimelineData.events,
     titles: VilaNovaTitlesData.groups,
     historicalCampaigns: VilaNovaTitlesData.historicalCampaigns,
     idols: VilaNovaIdolsData.idols,
+    partners: VilaNovaPartnersData.all,
   ),
 );

@@ -21,6 +21,7 @@ import 'package:goias_app/shared/utils/team_name.dart';
 import 'package:goias_app/shared/widgets/content_container.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/global_loading.dart';
+import 'package:goias_app/features/ticket/domain/gate_label.dart';
 
 /// Tela de compra — recebe o `PurchaseCubit` já construído (mesmo padrão de
 /// "cubit pronto antes de navegar" já usado na Arena, ver
@@ -268,7 +269,7 @@ class _SectorCard extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           Text(
-            '${sector.venueLabel} · ${sector.gate}',
+            withGate(sector.venueLabel, sector.gate),
             style: TextStyle(fontSize: 12, color: colors.textSecondary),
           ),
           const SizedBox(height: AppSpacing.md),

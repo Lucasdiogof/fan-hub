@@ -13,6 +13,10 @@ import 'package:goias_app/features/club/data/vilanova_history_data.dart';
 import 'package:goias_app/features/club/data/vilanova_idols_data.dart';
 import 'package:goias_app/features/club/data/vilanova_timeline_data.dart';
 import 'package:goias_app/features/club/data/vilanova_titles_data.dart';
+import 'package:goias_app/features/partners/data/vilanova_partners_data.dart';
+import 'package:goias_app/features/partners/domain/entities/partner.dart';
+import 'package:goias_app/features/ticket/data/vilanova_ticket_content.dart';
+import 'package:goias_app/features/ticket/domain/gate_label.dart';
 
 void main() {
   final others = <String, ClubConfig>{
@@ -141,12 +145,11 @@ void main() {
         expect(c.hasMatches, isTrue);
         expect(c.hasNews, isTrue);
         expect(c.hasSocial, isTrue);
-        expect([
-          c.hasStore,
-          c.hasTickets,
-          c.hasCrowdLineup,
-          c.hasPartners,
-        ], everyElement(isFalse));
+        // 2026-09-30: ingressos (notícias oficiais de venda) e parceiros
+        // (faixa de patrocinadores do site oficial).
+        expect(c.hasTickets, isTrue);
+        expect(c.hasPartners, isTrue);
+        expect([c.hasStore, c.hasCrowdLineup], everyElement(isFalse));
       },
     );
 
@@ -267,10 +270,13 @@ void main() {
       expect(content.idols, same(VilaNovaIdolsData.idols));
     });
 
-    test('parceiros e músicas vazios (lista incompleta / só metadados)', () {
-      expect(content.partners, isEmpty);
-      expect(content.songs, isEmpty);
-    });
+    test(
+      'parceiros = lista do site oficial; músicas vazias (só metadados)',
+      () {
+        expect(content.partners, same(VilaNovaPartnersData.all));
+        expect(content.songs, isEmpty);
+      },
+    );
 
     test('16 Goianos e 3 Séries C, como no site oficial', () {
       int count(String name) =>
@@ -334,6 +340,100 @@ void main() {
       for (final e in content.timeline) {
         expect(e.sourceUrl, startsWith('https://'), reason: e.title);
       }
+    });
+  });
+
+  group('Ingressos do Vila (notícias oficiais de venda)', () {
+    final t = v.ticketsContent!;
+
+    test('é o conteúdo do Vila, com os 4 setores do OBA', () {
+      expect(t, same(VilaNovaTicketContent.content));
+      expect(t.sectors.map((s) => s.name), [
+        'Setor A',
+        'Setor B',
+        'Camarote',
+        'Setor C',
+      ]);
+    });
+
+    test('preços das notícias: A 120/60, B 60/30, Camarote 120, C 120/60', () {
+      Map<String, double> prices(String name) => {
+        for (final c in t.sectors.firstWhere((s) => s.name == name).categories)
+          c.id: c.price,
+      };
+      expect(prices('Setor A'), {'inteira': 120, 'meia': 60});
+      expect(prices('Setor B'), {'inteira': 60, 'meia': 30});
+      expect(prices('Camarote'), {'inteira': 120});
+      expect(prices('Setor C'), {'inteira': 120, 'meia': 60});
+    });
+
+    test('portão nunca inventado: vazio, e o rótulo sai sem " · "', () {
+      for (final s in t.sectors) {
+        expect(s.gate, isEmpty, reason: s.name);
+        expect(withGate(s.name, s.gate), s.name);
+      }
+      expect(withGate('Cadeiras', 'Portão 6'), 'Cadeiras · Portão 6');
+    });
+
+    test('check-in do sócio só nos Setores A e B; C é o visitante', () {
+      expect(t.sectors.where((s) => s.availableForCheckIn).map((s) => s.name), [
+        'Setor A',
+        'Setor B',
+      ]);
+      expect(t.sectors.where((s) => s.isVisitorSector).map((s) => s.name), [
+        'Setor C',
+      ]);
+    });
+
+    test('nenhum texto de ingresso do Goiás/Bragantino', () {
+      final texts = [
+        for (final s in t.sectors) ...[s.name, s.venueLabel],
+        for (final sec in t.salesInfoSections) ...[sec.title, ...sec.items],
+      ];
+      for (final text in texts) {
+        for (final leaked in [
+          'Serra Dourada',
+          'Serrinha',
+          'Goiás E.C.',
+          'São Bernardo',
+          'Tobogã',
+          'Esmeraldin',
+          'Massa Bruta',
+        ]) {
+          expect(text, isNot(contains(leaked)), reason: text);
+        }
+      }
+    });
+  });
+
+  group('Parceiros do Vila (site oficial)', () {
+    const all = VilaNovaPartnersData.all;
+
+    test('34 marcas, nomes únicos, logo local existente e claro', () {
+      expect(all, hasLength(34));
+      expect(all.map((p) => p.name).toSet(), hasLength(34));
+      for (final p in all) {
+        expect(p.lightLogo, isTrue, reason: p.name);
+        expect(p.assetPath, startsWith('lib/assets/sponsors/vilanova/'));
+        expect(File(p.assetPath!).existsSync(), isTrue, reason: p.name);
+        expect(p.url, startsWith('http'), reason: p.name);
+        expect(p.tier, isNull, reason: 'máster não confirmado: sem tier');
+      }
+    });
+
+    test('categorias só onde há fonte (Volt material, Fatal Fans camisa)', () {
+      final byCategory = {
+        for (final p in all.where((p) => p.category != PartnerCategory.sponsor))
+          p.name: p.category,
+      };
+      expect(byCategory, {
+        'Volt': PartnerCategory.kitSupplier,
+        'Fatal Fans': PartnerCategory.shirtSponsor,
+      });
+    });
+
+    test('fora: V de Vantagens (domínio sem DNS, sem destino seguro)', () {
+      expect(all.map((p) => p.name), isNot(contains('V de Vantagens')));
     });
   });
 }

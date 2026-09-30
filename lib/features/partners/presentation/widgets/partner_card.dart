@@ -36,7 +36,7 @@ class PartnerCard extends StatelessWidget {
       button: true,
       label: _accessibilityLabel(context, partner),
       child: Material(
-        color: Colors.white,
+        color: partner.lightLogo ? colors.brandDeep : Colors.white,
         borderRadius: BorderRadius.circular(AppRadius.card),
         child: InkWell(
           onTap: () => openExternalUrl(context, partner.url),
@@ -79,12 +79,12 @@ class _PartnerLogo extends StatelessWidget {
         logoUrl,
         fit: BoxFit.contain,
         errorBuilder: (context, _, _) =>
-            _PartnerNameFallback(name: partner.name),
+            _PartnerNameFallback(name: partner.name, onDark: partner.lightLogo),
         loadingBuilder: (context, child, progress) =>
             progress == null ? child : const SizedBox.shrink(),
       );
     }
-    return _PartnerNameFallback(name: partner.name);
+    return _PartnerNameFallback(name: partner.name, onDark: partner.lightLogo);
   }
 }
 
@@ -92,9 +92,10 @@ class _PartnerLogo extends StatelessWidget {
 /// nome do parceiro centralizado, sem tentar imitar visualmente uma marca
 /// que a gente não tem a arte oficial.
 class _PartnerNameFallback extends StatelessWidget {
-  const _PartnerNameFallback({required this.name});
+  const _PartnerNameFallback({required this.name, this.onDark = false});
 
   final String name;
+  final bool onDark;
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +105,10 @@ class _PartnerNameFallback extends StatelessWidget {
         textAlign: TextAlign.center,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w700,
-          color: Colors.black87,
+          color: onDark ? Colors.white : Colors.black87,
         ),
       ),
     );

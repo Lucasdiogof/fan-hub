@@ -17,6 +17,7 @@ import 'package:goias_app/shared/widgets/app_modal_sheet.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 import 'package:goias_app/shared/widgets/goias_loading_indicator.dart';
 import 'package:goias_app/shared/widgets/state_message.dart';
+import 'package:goias_app/features/ticket/domain/gate_label.dart';
 
 class MyOrdersPage extends StatelessWidget {
   const MyOrdersPage({super.key});
@@ -217,7 +218,7 @@ class _OrderCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          '${item.sectorName} · ${item.gate} · ${item.categoryLabel} (${item.quantity}x)',
+                          '${withGate(item.sectorName, item.gate)} · ${item.categoryLabel} (${item.quantity}x)',
                           style: TextStyle(
                             fontSize: 13,
                             color: colors.textPrimary,

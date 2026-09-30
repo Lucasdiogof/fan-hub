@@ -228,12 +228,15 @@ Future<Uint8List> buildTicketPdf(
                                 ticket.sectorName,
                               ),
                             ),
-                            pw.Expanded(
-                              child: _field(
-                                l10n.ticketPdfFieldGate,
-                                ticket.gate,
+                            // Portão vazio = clube não publica portão por
+                            // setor (ver `withGate`): omite o campo.
+                            if (ticket.gate.trim().isNotEmpty)
+                              pw.Expanded(
+                                child: _field(
+                                  l10n.ticketPdfFieldGate,
+                                  ticket.gate,
+                                ),
                               ),
-                            ),
                           ],
                         ),
                         if (ticket.categoryLabel != null)

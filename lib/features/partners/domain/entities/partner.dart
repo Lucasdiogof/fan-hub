@@ -32,6 +32,7 @@ class Partner {
     this.logoUrl,
     this.category = PartnerCategory.sponsor,
     this.tier,
+    this.lightLogo = false,
   });
 
   final String name;
@@ -53,4 +54,11 @@ class Partner {
   final String? logoUrl;
   final String url;
   final PartnerCategory category;
+
+  /// Logo claro (branco sobre transparente), feito pelo clube pra fundo
+  /// ESCURO — ex.: o Vila Nova publica todos os logos de patrocinador em
+  /// branco, pro rodapé escuro do site. Sobre o card branco padrão ele
+  /// sumiria; com isto o `PartnerCard` usa o fundo escuro da marca do clube,
+  /// igual ao original, em vez de recolorir o logo de um terceiro.
+  final bool lightLogo;
 }
