@@ -98,6 +98,7 @@ v1.2 aplicado — 2020 a 2025 ficaram excelentes (bati Série B de 2022, 2023, 2
 3. Honors: registre em conflicts que a Wikipedia conta 17 Goianos contra 16 do site oficial (mantenha o oficial).
 4. Venues: fundi vn_venue_arena_nicnet em vn_venue_santa_cruz_ribeirao (Arena Nicnet é o naming rights do próprio Estádio Santa Cruz). Use o id vn_venue_santa_cruz_ribeirao daqui pra frente.
 5. Arena (pendente desde o v0.6): perfis com 21 jogadores e 12 técnicos (só nome, período, função e 4–6 evidências de ESTILO — não precisa de perguntas nem notas), 15 carreiras históricas no lugar de atuais, Túlio em REVIEW, ≥5 escalações anteriores a 2000 e ≥10 cartas do Manto com estreia antes de 2005.
+6. Parceiros (`data/partners.json`): completar a lista de patrocinadores da temporada atual (2026). Hoje só tem FatalFans e Volt Sport. Falta pelo menos: o patrocinador MÁSTER atual (o contrato da GingaBet anunciado em 26/02/2025 era de 12 meses e não foi projetado além do prazo — confirme se ainda é ela ou se trocou), e uma auditoria uniforme por uniforme (manga, calção, patrocinador máster no peito, apoiadores/fornecedores menores) com foto/fonte de cada um. Pra cada patrocinador: `tier` (MASTER/OFFICIAL/SUPPLIER/…), `category`, `url`, `logo_source_url`, `since`, `placement` (onde aparece no uniforme) e fonte. Sem restrição editorial: pode incluir qualquer patrocinador real, incluindo a FatalFans (já aprovada).
 
 Próximo lote do Passaporte: 2019, depois seguindo para trás até 1943.
 ```
