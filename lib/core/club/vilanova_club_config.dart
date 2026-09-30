@@ -14,6 +14,7 @@ import 'package:goias_app/features/club/data/vilanova_history_data.dart';
 import 'package:goias_app/features/club/data/vilanova_idols_data.dart';
 import 'package:goias_app/features/club/data/vilanova_timeline_data.dart';
 import 'package:goias_app/features/club/data/vilanova_titles_data.dart';
+import 'package:goias_app/features/membership/data/vilanova_membership_plans_catalog.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_version.dart';
 import 'package:goias_app/features/passport/data/vilanova_passport_content.dart';
 
@@ -144,7 +145,16 @@ final vilaNovaClubConfig = ClubConfig(
     officialSiteUrl: 'https://www.vilanovafc.com.br/',
   ),
   capabilities: const ClubCapabilities(
-    hasMembership: false,
+    // F7 (2026-09-30): 4 planos reais do Sócio Tigrão (RUBI/OURO/PRATA/TIME
+    // DO POVO), confirmados na API pública do provedor de adesão
+    // (`vilanova.ingressosa.com.br/public/api/v1/socio/benefits-plan`) —
+    // nome, valor "/mês" exibido, valor anual total real e benefícios
+    // batem exatamente com o checkout oficial. `hasMembership` liga só a
+    // listagem/detalhes/CTA (que abre o checkout oficial externo, ver
+    // `membershipProgram.externalCheckoutUrl` abaixo) — não depende de
+    // regulamento (ausente, botão fica escondido) nem de preço anual
+    // inventado (o anual é real, não `mensal * 12`).
+    hasMembership: true,
     hasStore: false,
     hasTickets: false,
     hasCrowdLineup: false,
@@ -203,21 +213,34 @@ final vilaNovaClubConfig = ClubConfig(
     membershipProgramName: 'Sócio Tigrão',
   ),
   passportContent: VilaNovaPassportContent.content,
-  // `hasMembership: false` — programa vazio até a F7 (planos/regulamento do
-  // Sócio Tigrão ainda em REVIEW no pacote). O asset de regulamento abaixo
-  // ainda NÃO existe e nunca é lido enquanto a capability estiver desligada.
+  // F7 (2026-09-30): planos reais (`VilaNovaMembershipPlansCatalog`), fonte
+  // = API pública do próprio provedor de adesão. Regulamento continua
+  // ausente (nenhum documento oficial capturado) — `regulationIntro`/
+  // `regulationSections` vazios fazem `hasRegulationContent` ser `false`,
+  // então a tela de regulamento nunca é oferecida (nunca inventado). O
+  // `assetPath` abaixo não é lido em lugar nenhum do app hoje (confirmado
+  // por auditoria — só a UI usa `regulationIntro`/`regulationSections`),
+  // mas o campo é obrigatório na entidade; mantido como placeholder
+  // explícito enquanto não existir regulamento de verdade pra apontar.
   membershipProgram: MembershipProgramConfig(
-    plans: const [],
+    plans: VilaNovaMembershipPlansCatalog.plans,
     regulationVersion: RegulationVersion(
-      id: 'socio-tigrao-pendente',
-      version: 'pendente',
-      effectiveAt: DateTime(2026, 9, 29),
+      id: 'socio-tigrao-sem-regulamento',
+      version: 'inexistente',
+      effectiveAt: DateTime(2026, 9, 30),
       assetPath: 'lib/assets/legal/vilanova_membership_regulation.md',
     ),
     regulationIntro: '',
     regulationSections: const [],
-    sourceLabel: 'Programa Sócio Tigrão ainda não integrado ao app.',
-    sourceUpdatedAt: DateTime(2026, 9, 29),
+    sourceLabel:
+        'Sócio Tigrão — API pública do provedor de adesão '
+        '(vilanova.ingressosa.com.br), consultada em 2026-09-30.',
+    sourceUpdatedAt: DateTime(2026, 9, 30),
+    // Sem integração própria de pagamento: o CTA "Quero ser sócio" abre o
+    // checkout oficial do provedor real em vez de simular um cadastro que
+    // não gera nenhuma adesão de verdade (ver
+    // `MembershipProgramConfig.externalCheckoutUrl`).
+    externalCheckoutUrl: 'https://vilanova.ingressosa.com.br/selecionar-plano',
   ),
   institutionalContent: const ClubInstitutionalContent(
     history: VilaNovaHistoryData.sections,

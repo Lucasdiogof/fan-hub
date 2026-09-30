@@ -124,14 +124,16 @@ class MyMembershipPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.xl),
-              _OptionRow(
-                icon: Icons.gavel_rounded,
-                label: context.l10n.membershipRegulationName(
-                  sl<ClubConfig>().productNames.membershipProgramName,
+              if (sl<ClubConfig>().membershipProgram.hasRegulationContent) ...[
+                _OptionRow(
+                  icon: Icons.gavel_rounded,
+                  label: context.l10n.membershipRegulationName(
+                    sl<ClubConfig>().productNames.membershipProgramName,
+                  ),
+                  onTap: () => context.push('/membership/regulation'),
                 ),
-                onTap: () => context.push('/membership/regulation'),
-              ),
-              const SizedBox(height: AppSpacing.xxxl),
+                const SizedBox(height: AppSpacing.xxxl),
+              ],
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(

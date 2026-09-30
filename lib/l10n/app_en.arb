@@ -1122,6 +1122,7 @@
   "membershipMostChosen": "MOST CHOSEN",
   "membershipPerMonth": "/mo",
   "membershipOrAnnual": "or {price} on the annual plan",
+  "membershipAnnualContractInfo": "Annual membership of {total} — installments equivalent to this amount per month",
   "membershipBenefits": "BENEFITS",
   "membershipSeeFullRegulation": "See the full regulation →",
   "membershipStillHaveDoubts": "Still have questions about this plan?",

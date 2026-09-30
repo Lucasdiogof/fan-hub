@@ -187,7 +187,11 @@ void main() {
         // bragantino_club_config.dart.
         expect(c.hasMembership, isTrue);
         expect(c.hasStore, isTrue);
-        expect(c.hasTickets, isTrue);
+        // CORREÇÃO 2026-09-30: desligado de novo — não tinha
+        // `ticketsContent` próprio e mostrava o fixture hardcoded do Goiás
+        // (auditoria de isolamento multi-clube). Ver `commerce_mode_test.dart`
+        // e `bragantino_club_config.dart`.
+        expect(c.hasTickets, isFalse);
         expect(c.hasCrowdLineup, isFalse);
         // News tem fonte oficial real no Worker (API JSON própria). Social
         // (YouTube @MassaBrutaTV) confirmado ao vivo contra a Data API v3

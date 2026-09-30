@@ -5133,6 +5133,12 @@ abstract class AppLocalizations {
   /// **'ou {price} no plano anual'**
   String membershipOrAnnual(String price);
 
+  /// No description provided for @membershipAnnualContractInfo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Adesão anual de {total} — parcelamento equivalente a este valor por mês'**
+  String membershipAnnualContractInfo(String total);
+
   /// No description provided for @membershipBenefits.
   ///
   /// In pt, this message translates to:

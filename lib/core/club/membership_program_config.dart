@@ -22,6 +22,7 @@ class MembershipProgramConfig {
     this.prefillFromProfile = false,
     this.consentUrl,
     this.externalUrl,
+    this.externalCheckoutUrl,
   });
 
   /// Catálogo oficial de planos deste clube — mesma fonte única que
@@ -58,4 +59,19 @@ class MembershipProgramConfig {
   /// Site oficial do programa (ex.: `https://massabruta.com.br/`) — nunca o
   /// site institucional geral do clube quando os dois divergem.
   final String? externalUrl;
+
+  /// Quando não-nulo, o CTA "Quero ser sócio" abre esta URL (fluxo oficial
+  /// de um provedor terceiro de verdade, ex. Ingressos SA) em vez de entrar
+  /// no cadastro/checkout MOCKADO deste app. Usado quando o clube não tem
+  /// integração própria e recriar o checkout do provedor real seria
+  /// enganoso (o usuário acharia que está comprando de verdade dentro do
+  /// Fan Hub). Nulo preserva o fluxo interno de demonstração já usado por
+  /// Goiás/Bragantino.
+  final String? externalCheckoutUrl;
+
+  /// Sem `regulationIntro`/`regulationSections` reais, a tela de regulamento
+  /// fica vazia — pior que simplesmente não oferecer o link. Nunca inventar
+  /// conteúdo de regulamento só para preencher a tela.
+  bool get hasRegulationContent =>
+      regulationIntro.trim().isNotEmpty || regulationSections.isNotEmpty;
 }

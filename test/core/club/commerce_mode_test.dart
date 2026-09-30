@@ -31,12 +31,15 @@ void main() {
 
   group('CommerceMode — Bragantino', () {
     test(
-      'hasMembership/hasStore/hasTickets religados (2026-09-24, checkout ainda mockado) — sempre em demo, nenhum gateway real',
+      'hasMembership/hasStore religados (2026-09-24, checkout ainda mockado); hasTickets desligado (2026-09-30, sem ticketsContent próprio) — sempre em demo, nenhum gateway real',
       () {
         final capabilities = bragantinoClubConfig.capabilities;
         expect(capabilities.hasMembership, isTrue);
         expect(capabilities.hasStore, isTrue);
-        expect(capabilities.hasTickets, isTrue);
+        // CORREÇÃO 2026-09-30: estava ligado sem `ticketsContent` próprio —
+        // mostrava o fixture hardcoded do Goiás (Serra Dourada, "Goiás
+        // E.C.") pro torcedor do Bragantino. Ver `bragantino_club_config.dart`.
+        expect(capabilities.hasTickets, isFalse);
         // O valor em si (demo) é só o default seguro — Tickets por ainda
         // não ter feature nenhuma ligada, Loja/Sócio por decisão de produto
         // explícita (nunca checkout/gateway real).

@@ -1110,6 +1110,7 @@
   "membershipMostChosen": "MÁS ELEGIDO",
   "membershipPerMonth": "/mes",
   "membershipOrAnnual": "o {price} en el plan anual",
+  "membershipAnnualContractInfo": "Adhesión anual de {total} — cuotas equivalentes a este valor por mes",
   "membershipBenefits": "BENEFICIOS",
   "membershipSeeFullRegulation": "Consulta el reglamento completo →",
   "membershipStillHaveDoubts": "¿Aún tienes dudas sobre este plan?",

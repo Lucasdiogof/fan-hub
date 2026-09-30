@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:goias_app/features/membership/domain/entities/membership_commitment_period.dart';
 
 class MembershipPlanPrice extends Equatable {
   const MembershipPlanPrice({
@@ -25,12 +26,20 @@ class MembershipPlan extends Equatable {
     required this.prices,
     this.allowedSectors = const [],
     this.highlight = false,
+    this.commitmentPeriod = MembershipCommitmentPeriod.monthlyRecurring,
   });
 
   final String id;
   final String name;
   final String tagline;
   final bool includesStadiumAccess;
+
+  /// Assinatura mensal recorrente (com opção de pré-pagar o ano) ou adesão
+  /// anual só (o "/mês" exibido é a parcela do valor anual, nunca uma
+  /// cobrança recorrente à parte) — ver `MembershipCommitmentPeriod`. Default
+  /// `monthlyRecurring` preserva o comportamento de todo catálogo existente
+  /// antes deste campo (Goiás/Bragantino).
+  final MembershipCommitmentPeriod commitmentPeriod;
 
   /// Setores do estádio liberados pro check-in deste plano — LISTA, não um
   /// setor só (alguns programas, ex. Massa Bruta, liberam vários setores no
@@ -69,5 +78,6 @@ class MembershipPlan extends Equatable {
     benefits,
     prices,
     highlight,
+    commitmentPeriod,
   ];
 }

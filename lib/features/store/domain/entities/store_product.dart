@@ -118,8 +118,8 @@ class StoreProduct extends Equatable {
     required this.price,
     this.originalPrice,
     this.maxInstallments = 1,
-    required this.images,
-    required this.thumbnail,
+    this.images = const [],
+    this.thumbnail,
     required this.variations,
     this.isFeatured = false,
     this.isNew = false,
@@ -154,8 +154,14 @@ class StoreProduct extends Equatable {
 
   final int maxInstallments;
 
+  /// Vazio é um estado LEGÍTIMO (catálogo pesquisado sem foto capturada
+  /// ainda) — nunca inventar uma imagem genérica/de outro produto aqui; a
+  /// UI mostra um placeholder neutro (ver `product_card.dart`/
+  /// `product_detail_page.dart`).
   final List<String> images;
-  final String thumbnail;
+
+  /// `null` = sem foto capturada ainda (mesma regra de [images]).
+  final String? thumbnail;
   final List<ProductVariation> variations;
 
   final bool isFeatured;
@@ -210,8 +216,8 @@ class StoreProduct extends Equatable {
     price: (json['price'] as num).toDouble(),
     originalPrice: (json['originalPrice'] as num?)?.toDouble(),
     maxInstallments: json['installments'] as int? ?? 1,
-    images: (json['images'] as List).cast<String>(),
-    thumbnail: json['thumbnail'] as String,
+    images: (json['images'] as List? ?? const []).cast<String>(),
+    thumbnail: json['thumbnail'] as String?,
     variations: (json['variations'] as List)
         .map((e) => ProductVariation.fromJson(e as Map<String, dynamic>))
         .toList(),

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart' show Colors;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
+import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/error/result.dart';
 import 'package:goias_app/features/arena/games/career_path/career_models.dart';
@@ -41,7 +42,11 @@ import 'package:goias_app/features/store/data/supabase_store_orders_repository.d
 import 'package:goias_app/features/store/domain/entities/customer.dart';
 import 'package:goias_app/features/store/domain/entities/shipping.dart';
 import 'package:goias_app/features/store/domain/repositories/store_orders_repository.dart';
+import 'package:goias_app/features/ticket/data/goias_ticket_content.dart';
 import 'package:goias_app/features/ticket/data/mock_ticket_repository.dart';
+import 'package:goias_app/features/ticket/domain/entities/match_sales_info.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_event.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_order.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -604,6 +609,51 @@ void main() {
         },
       );
     }
+
+    // CORREÇÃO 2026-09-30 (auditoria de isolamento multi-clube): o
+    // Bragantino tinha `hasTickets: true` sem `ticketsContent` próprio e
+    // mostrava o fixture hardcoded do Goiás (setores do Serra Dourada,
+    // "Goiás E.C."). Corrigido: sem `ticketsContent`, a feature fica
+    // indisponível — NUNCA cai pro conteúdo de outro clube.
+    test(
+      'sem ticketsContent (Bragantino hoje) -> Success(null), nunca o fixture do Goiás',
+      () async {
+        final client = await _authedClient(httpClient);
+        final repo = MockTicketRepository(
+          client,
+          _FakeFootballRepository(_fakeMatch),
+          bragantinoClubConfig,
+        );
+        final eventResult = await repo.getFeaturedEvent();
+        expect(eventResult, isA<Success<TicketEvent?>>());
+        expect((eventResult as Success<TicketEvent?>).data, isNull);
+
+        final salesResult = await repo.getMatchSalesInfo('m1');
+        expect(salesResult, isA<Success<MatchSalesInfo?>>());
+        expect((salesResult as Success<MatchSalesInfo?>).data, isNull);
+
+        final checkInResult = await repo.checkIn(
+          matchId: 'm1',
+          sectorId: 'cadeiras',
+          holderName: 'Lucas',
+          holderDocument: '11144477735',
+        );
+        expect(checkInResult, isA<Error<Ticket>>());
+      },
+    );
+
+    test('com ticketsContent (Goiás) -> setores reais do próprio clube', () async {
+      final client = await _authedClient(httpClient);
+      final repo = MockTicketRepository(
+        client,
+        _FakeFootballRepository(_fakeMatch),
+        goiasClubConfig,
+      );
+      final result = await repo.getFeaturedEvent();
+      final event = (result as Success<TicketEvent?>).data;
+      expect(event, isNotNull);
+      expect(event!.info.sectors, GoiasTicketContent.content.sectors);
+    });
   });
 
   group(

@@ -107,13 +107,16 @@ void main() {
 
   group('Capabilities — só o que já foi validado está ligado', () {
     test(
-      'F3/F4/F6 ligaram hasClubContent/hasPassport; o resto sem Supabase ainda segue desligado',
+      'F3/F4/F6/F7 ligaram hasClubContent/hasPassport/hasMembership; o resto sem Supabase ainda segue desligado',
       () {
         final c = v.capabilities;
         expect(c.hasClubContent, isTrue);
         expect(c.hasPassport, isTrue);
+        // F7 (2026-09-30): 4 planos reais do Sócio Tigrão, fonte = API
+        // pública do provedor de adesão — ver
+        // `vilanova_membership_plans_catalog.dart`.
+        expect(c.hasMembership, isTrue);
         expect([
-          c.hasMembership,
           c.hasStore,
           c.hasTickets,
           c.hasCrowdLineup,

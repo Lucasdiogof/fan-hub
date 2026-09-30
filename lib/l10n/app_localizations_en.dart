@@ -2994,6 +2994,11 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String membershipAnnualContractInfo(String total) {
+    return 'Annual membership of $total — installments equivalent to this amount per month';
+  }
+
+  @override
   String get membershipBenefits => 'BENEFITS';
 
   @override

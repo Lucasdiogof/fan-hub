@@ -1761,6 +1761,14 @@
       }
     }
   },
+  "membershipAnnualContractInfo": "Adesão anual de {total} — parcelamento equivalente a este valor por mês",
+  "@membershipAnnualContractInfo": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      }
+    }
+  },
   "membershipBenefits": "BENEFÍCIOS",
   "membershipSeeFullRegulation": "Consulte o regulamento completo →",
   "membershipStillHaveDoubts": "Ainda tem dúvidas sobre este plano?",

@@ -4,6 +4,7 @@ import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
 import 'package:goias_app/features/store/domain/entities/store_product.dart';
+import 'package:goias_app/features/store/presentation/widgets/product_image_placeholder.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 
 class ProductCard extends StatelessWidget {
@@ -42,10 +43,12 @@ class ProductCard extends StatelessWidget {
                         ),
                         child: Opacity(
                           opacity: available ? 1 : 0.45,
-                          child: Image.asset(
-                            product.thumbnail,
-                            fit: BoxFit.cover,
-                          ),
+                          child: product.thumbnail != null
+                              ? Image.asset(
+                                  product.thumbnail!,
+                                  fit: BoxFit.cover,
+                                )
+                              : const ProductImagePlaceholder(),
                         ),
                       ),
                     ),

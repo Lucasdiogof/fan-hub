@@ -21,6 +21,7 @@ import 'package:goias_app/features/membership/data/regulation_content.dart';
 import 'package:goias_app/features/partners/data/partners_data.dart';
 import 'package:goias_app/features/passport/data/goias_passport_content.dart';
 import 'package:goias_app/features/squad/domain/squad_photos.dart';
+import 'package:goias_app/features/ticket/data/goias_ticket_content.dart';
 
 /// A ÚNICA entrada de `clubRegistry` nesta rodada (M1). Todo valor abaixo
 /// é o mesmo já em produção hoje — isto é reempacotamento, nunca dado
@@ -162,6 +163,11 @@ final goiasClubConfig = ClubConfig(
     // rebrand independente de App Store, fora de escopo agora.
   ),
   passportContent: GoiasPassportContent.content,
+  // Movido de `TicketFixture` (código compartilhado) pra cá em 2026-09-30 —
+  // auditoria de isolamento multi-clube achou esse conteúdo (setores do
+  // Serra Dourada, preços, portões) vazando pro Bragantino, que também
+  // tinha `hasTickets: true` sem fixture própria.
+  ticketsContent: GoiasTicketContent.content,
   // Reempacotamento — mesmo catálogo/regulamento hardcoded de sempre
   // (`MembershipPlansCatalog`/`RegulationCatalog`), só agora exposto via
   // `ClubConfig` pra `SupabaseMembershipRepository`/telas pararem de

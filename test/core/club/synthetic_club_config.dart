@@ -10,6 +10,8 @@ import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_version.dart';
+import 'package:goias_app/features/ticket/domain/entities/club_tickets_content.dart';
+import 'package:goias_app/features/ticket/domain/entities/ticket_sector.dart';
 import 'synthetic_passport_content.dart';
 
 /// Clube sintético/neutro pra testes de tenant-scope e isolamento de
@@ -153,5 +155,28 @@ final syntheticClubBConfig = ClubConfig(
     regulationSections: const [],
     sourceLabel: 'Clube sintético de teste.',
     sourceUpdatedAt: DateTime(2000),
+  ),
+  // Sintético/neutro, só pra exercitar o tenant-scope de
+  // `MockTicketRepository.checkIn` (grava club_id, nunca lê o conteúdo de
+  // outro clube) — `hasTickets: false` acima já prova que a capability
+  // gate funciona; isto aqui é dado de baixo nível, não liga a feature.
+  ticketsContent: const ClubTicketsContent(
+    sectors: [
+      TicketSector(
+        // ID igual ao usado nos testes de tenant-scope pra Goiás
+        // (`club_scoped_user_state_test.dart`, `sectorId: 'cadeiras'`) — o
+        // mesmo request precisa achar setor nos dois clubes do loop
+        // parametrizado; nome/portão/venue seguem sintéticos.
+        id: 'cadeiras',
+        name: 'Setor Sintético',
+        venueLabel: 'Clube Sintético B',
+        gate: 'Portão Sintético',
+        availableForCheckIn: true,
+        categories: [
+          TicketPriceCategory(id: 'inteira', label: 'Inteira', price: 1),
+        ],
+      ),
+    ],
+    salesInfoSections: [],
   ),
 );

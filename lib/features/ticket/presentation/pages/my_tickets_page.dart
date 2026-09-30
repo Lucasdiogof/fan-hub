@@ -7,7 +7,6 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
-import 'package:goias_app/features/ticket/data/mock_ticket_fixture.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket.dart';
 import 'package:goias_app/features/ticket/domain/entities/ticket_enums.dart';
 import 'package:goias_app/features/ticket/domain/repositories/ticket_repository.dart';
@@ -313,10 +312,13 @@ class _TicketCard extends StatelessWidget {
   final VoidCallback onRequestRefund;
   final VoidCallback onViewDetails;
 
+  // `TicketFixture.infoFor` sempre monta `canCancelCheckIn: true` (nenhum
+  // clube configura isso diferente hoje) — inline em vez de instanciar um
+  // `MatchTicketInfo` só pra ler uma constante, e em vez de esta Widget
+  // precisar de `ClubTicketsContent` só pra isso.
   bool get _canUndo =>
       ticket.origin == TicketOrigin.membershipCheckIn &&
-      ticket.status == TicketStatus.active &&
-      TicketFixture.infoFor(ticket.matchId, null).canCancelCheckIn;
+      ticket.status == TicketStatus.active;
 
   bool get _isRefunded => ticket.status == TicketStatus.refunded;
 

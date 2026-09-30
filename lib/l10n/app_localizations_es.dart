@@ -3002,6 +3002,11 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String membershipAnnualContractInfo(String total) {
+    return 'Adhesión anual de $total — cuotas equivalentes a este valor por mes';
+  }
+
+  @override
   String get membershipBenefits => 'BENEFICIOS';
 
   @override

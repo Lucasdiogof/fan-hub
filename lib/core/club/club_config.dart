@@ -7,6 +7,7 @@ import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/features/passport/domain/club_passport_content.dart';
+import 'package:goias_app/features/ticket/domain/entities/club_tickets_content.dart';
 
 /// Configuração completa e IMUTÁVEL de um clube — a raiz de tudo que este
 /// build do app sabe sobre "qual clube estamos executando".
@@ -32,6 +33,7 @@ class ClubConfig {
     required this.passportContent,
     required this.membershipProgram,
     this.institutionalContent = const ClubInstitutionalContent(),
+    this.ticketsContent,
   });
 
   final ClubIdentity identity;
@@ -58,4 +60,12 @@ class ClubConfig {
   /// razoável, e cair no texto de outro clube por omissão é exatamente o
   /// que não pode acontecer. Clube novo escreve a sua ou não compila.
   final ClubPassportContent passportContent;
+
+  /// Setores/preços/portões de ingresso e o texto de "Informações da
+  /// partida" — ver [ClubTicketsContent]. `null` (default) é o estado
+  /// correto pra um clube sem esse dado pesquisado ainda: a feature de
+  /// Ingressos trata isso como indisponível, NUNCA cai pro conteúdo de
+  /// outro clube. `capabilities.hasTickets: true` sem isto preenchido é bug
+  /// de configuração — ver `MockTicketRepository`.
+  final ClubTicketsContent? ticketsContent;
 }

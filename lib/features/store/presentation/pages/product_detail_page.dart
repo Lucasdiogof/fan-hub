@@ -18,6 +18,7 @@ import 'package:goias_app/features/store/presentation/cubit/product_detail_cubit
 import 'package:goias_app/features/store/presentation/cubit/product_detail_state.dart';
 import 'package:goias_app/features/store/presentation/store_display_labels.dart';
 import 'package:goias_app/features/store/presentation/widgets/cart_icon_button.dart';
+import 'package:goias_app/features/store/presentation/widgets/product_image_placeholder.dart';
 import 'package:goias_app/features/store/presentation/widgets/store_price_block.dart';
 import 'package:goias_app/shared/state/load_status.dart';
 import 'package:goias_app/shared/widgets/back_button_circle.dart';
@@ -235,28 +236,31 @@ class _GalleryState extends State<_Gallery> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Semantics(
-                  label: l10n.storeProductPhotoLabel(
-                    widget.product.name,
-                    _index + 1,
-                    images.length,
-                  ),
-                  image: true,
-                  onTapHint: l10n.storeZoomImageHint,
-                  child: PageView.builder(
-                    itemCount: images.length,
-                    onPageChanged: (i) => setState(() => _index = i),
-                    itemBuilder: (context, i) => GestureDetector(
-                      onTap: () => _openZoom(context),
-                      child: Container(
-                        color: colors.surface,
-                        child: ExcludeSemantics(
-                          child: Image.asset(images[i], fit: BoxFit.contain),
+                if (images.isEmpty)
+                  const ProductImagePlaceholder(iconSize: 64)
+                else
+                  Semantics(
+                    label: l10n.storeProductPhotoLabel(
+                      widget.product.name,
+                      _index + 1,
+                      images.length,
+                    ),
+                    image: true,
+                    onTapHint: l10n.storeZoomImageHint,
+                    child: PageView.builder(
+                      itemCount: images.length,
+                      onPageChanged: (i) => setState(() => _index = i),
+                      itemBuilder: (context, i) => GestureDetector(
+                        onTap: () => _openZoom(context),
+                        child: Container(
+                          color: colors.surface,
+                          child: ExcludeSemantics(
+                            child: Image.asset(images[i], fit: BoxFit.contain),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
                 Positioned(
                   right: AppSpacing.sm,
                   top: AppSpacing.sm,
@@ -968,7 +972,12 @@ class _ActionBarState extends State<_ActionBar> {
     id: '${product.id}_${size}_${DateTime.now().microsecondsSinceEpoch}',
     productId: product.id,
     productName: product.name,
-    thumbnail: product.thumbnail,
+    // `CartItem.thumbnail` ainda não é opcional (feature só alcançável com
+    // `hasStore: true`, e todo catálogo real hoje tem foto) — `''` é só um
+    // sentinela de "sem foto", nunca dado inventado; a UI de carrinho/
+    // pedido pode passar a tratar vazio como placeholder quando o primeiro
+    // catálogo sem foto precisar ligar a Loja de verdade.
+    thumbnail: product.thumbnail ?? '',
     size: size,
     unitPrice: product.price,
     quantity: state.quantity,

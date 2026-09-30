@@ -44,6 +44,12 @@ class MockTicketRepository implements TicketRepository {
   @override
   Future<Result<TicketEvent?>> getFeaturedEvent() async {
     try {
+      // Sem `ticketsContent` pra este clube, a feature é indisponível — nunca
+      // um fallback silencioso pro conteúdo de outro clube (ver
+      // `ClubConfig.ticketsContent`).
+      final content = _clubConfig.ticketsContent;
+      if (content == null) return const Success(null);
+
       final snapshotResult = await _footballRepository.getActiveClubSnapshot();
       final Match? match;
       switch (snapshotResult) {
@@ -55,7 +61,7 @@ class MockTicketRepository implements TicketRepository {
       if (match == null) return const Success(null);
 
       final matchId = match.id.toString();
-      final info = TicketFixture.infoFor(matchId, match.kickoff);
+      final info = TicketFixture.infoFor(matchId, match.kickoff, content);
       final now = DateTime.now();
       // Fora de casa não tem venda de ingresso nem check-in de sócio pra
       // oferecer — só o mandante do jogo controla a bilheteria e o
@@ -142,7 +148,9 @@ class MockTicketRepository implements TicketRepository {
 
   @override
   Future<Result<MatchSalesInfo?>> getMatchSalesInfo(String matchId) async {
-    return Success(TicketFixture.salesInfoFor(matchId));
+    final content = _clubConfig.ticketsContent;
+    if (content == null) return const Success(null);
+    return Success(TicketFixture.salesInfoFor(matchId, content));
   }
 
   @override
@@ -153,12 +161,16 @@ class MockTicketRepository implements TicketRepository {
     required String holderDocument,
   }) async {
     try {
+      final content = _clubConfig.ticketsContent;
+      if (content == null) {
+        return const Error(ServerFailure('Ingressos indisponíveis.'));
+      }
       final match = await _requireMatch(matchId);
       if (match == null) {
         return const Error(ServerFailure('Partida não encontrada.'));
       }
       final sector = _findSector(
-        TicketFixture.infoFor(matchId, match.kickoff),
+        TicketFixture.infoFor(matchId, match.kickoff, content),
         sectorId,
       );
       if (sector == null) {

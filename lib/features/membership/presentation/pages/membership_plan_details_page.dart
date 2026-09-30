@@ -5,8 +5,10 @@ import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/l10n/l10n_extensions.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
 import 'package:goias_app/core/theme/app_spacing.dart';
+import 'package:goias_app/features/membership/domain/entities/membership_commitment_period.dart';
 import 'package:goias_app/features/membership/domain/entities/membership_plan.dart';
 import 'package:goias_app/shared/utils/currency.dart';
+import 'package:goias_app/shared/utils/external_link_launcher.dart';
 import 'package:goias_app/shared/widgets/detail_page_header.dart';
 
 class MembershipPlanDetailsPage extends StatefulWidget {
@@ -30,6 +32,22 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
   // pop antecipado já completou, e o app quebra com "Future already
   // completed".
   bool _registering = false;
+
+  /// Quando o programa tem `externalCheckoutUrl` (provedor terceiro real,
+  /// ex. Ingressos SA), o CTA abre esse link em vez de simular um cadastro
+  /// que não completa nenhuma adesão de verdade — recriar aquele checkout
+  /// aqui dentro enganaria o torcedor.
+  String? get _externalCheckoutUrl =>
+      sl<ClubConfig>().membershipProgram.externalCheckoutUrl;
+
+  Future<void> _handleCta() async {
+    final externalUrl = _externalCheckoutUrl;
+    if (externalUrl != null) {
+      await openExternalUrl(context, externalUrl);
+      return;
+    }
+    await _startRegistration();
+  }
 
   Future<void> _startRegistration() async {
     if (_registering) return;
@@ -77,7 +95,7 @@ class _MembershipPlanDetailsPageState extends State<MembershipPlanDetailsPage> {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _registering ? null : _startRegistration,
+                    onPressed: _registering ? null : _handleCta,
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(AppRadius.button),
@@ -241,7 +259,13 @@ class _PlanBody extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          context.l10n.membershipOrAnnual(formatBrl(selectedPrice.annualPrice)),
+          plan.commitmentPeriod == MembershipCommitmentPeriod.annualContract
+              ? context.l10n.membershipAnnualContractInfo(
+                  formatBrl(selectedPrice.annualPrice),
+                )
+              : context.l10n.membershipOrAnnual(
+                  formatBrl(selectedPrice.annualPrice),
+                ),
           style: TextStyle(fontSize: 12.5, color: colors.textSecondary),
         ),
         const SizedBox(height: AppSpacing.xxl),
@@ -281,17 +305,18 @@ class _PlanBody extends StatelessWidget {
             ),
           ),
         const SizedBox(height: AppSpacing.lg),
-        GestureDetector(
-          onTap: () => context.push('/membership/regulation'),
-          child: Text(
-            context.l10n.membershipSeeFullRegulation,
-            style: TextStyle(
-              fontSize: 12.5,
-              fontWeight: FontWeight.w700,
-              color: colors.primary,
+        if (sl<ClubConfig>().membershipProgram.hasRegulationContent)
+          GestureDetector(
+            onTap: () => context.push('/membership/regulation'),
+            child: Text(
+              context.l10n.membershipSeeFullRegulation,
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w700,
+                color: colors.primary,
+              ),
             ),
           ),
-        ),
         const SizedBox(height: AppSpacing.xxl),
         Container(
           padding: const EdgeInsets.all(AppSpacing.lg),

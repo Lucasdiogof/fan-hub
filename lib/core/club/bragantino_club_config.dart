@@ -399,7 +399,15 @@ final bragantinoClubConfig = ClubConfig(
     // Goiás. "Retirar na loja" fica automaticamente escondida
     // (`pickupAddress: null` acima) — só entrega, sem placeholder.
     hasStore: true,
-    hasTickets: true,
+    // CORREÇÃO 2026-09-30 (auditoria de isolamento multi-clube): estava
+    // `true` mas sem nenhum `ticketsContent` próprio — a tela de Ingressos
+    // vinha mostrando o fixture HARDCODED do Goiás (setores do Serra
+    // Dourada, "Goiás E.C.", "Portão 6" etc.), porque `TicketFixture` era
+    // código compartilhado com dado de um clube só. Corrigido desligando
+    // até existir pesquisa real de setores/preços/portões do Bragantino
+    // (`ClubConfig.ticketsContent`) — nunca usar o conteúdo de outro clube
+    // como fallback.
+    hasTickets: false,
     hasCrowdLineup: false,
     // 2026-09-07: as 186 partidas e os 49 estádios do Bragantino estão no
     // Supabase dele, a auditoria pós-importação passou, e a identidade da
