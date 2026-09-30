@@ -129,7 +129,7 @@ void main() {
     );
 
     test(
-      'F5: 5 dos 6 jogos da Arena ligados, guess_player fica de fora (0 elegível como segredo)',
+      'F5/F7-fotos: os 6 jogos da Arena ligados (guess_player desde 2026-09-30, ASSET_GAP resolvido)',
       () {
         expect(v.capabilities.enabledArenaGames, {
           'quiz',
@@ -137,11 +137,19 @@ void main() {
           'player_identity',
           'tactical_identity',
           'career_path',
+          'guess_player',
         });
-        expect(
-          v.capabilities.enabledArenaGames,
-          isNot(contains('guess_player')),
-        );
+      },
+    );
+
+    test(
+      'guessPlayerPhotos do Vila: 31 fotos do elenco atual, todas do CDN oficial dele',
+      () {
+        final photos = v.assets.guessPlayerPhotos;
+        expect(photos, hasLength(31));
+        for (final url in photos.values) {
+          expect(url, startsWith('https://www.vilanovafc.com.br/'));
+        }
       },
     );
 

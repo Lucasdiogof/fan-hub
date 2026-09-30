@@ -91,6 +91,81 @@ const _vilaNovaDark = AppColors(
 
 // Assets de marca gerados do vetor oficial por
 // `tooling/vilanova_brand/build_brand_assets.py` (nada redesenhado).
+// Fotos individuais reais do elenco atual, extraídas de
+// vilanovafc.com.br/elenco-profissional em 2026-09-30 (atributo `data-src`
+// de cada `<img>`, formato AVIF) — hotlink direto pro CDN oficial do
+// clube, nunca baixadas/redistribuídas (mesmo padrão do Bragantino,
+// `_bragantinoGuessPlayerPhotos`). Chave = `SquadMember.id`, reaproveitada
+// como `photo_key` das cartas do Manto que são o mesmo atleta do elenco
+// atual (`vilanova_guess_players.sql`) — a MESMA foto nas duas telas.
+//
+// CAVEAT conhecido: o CDN do Vila só serve `.avif`, sem negociação de
+// formato (`f_auto`) como o CDN do Bragantino — `Image.network` decodifica
+// AVIF via Skia no Flutter recente, mas isso não foi testado ainda num
+// device/emulador real neste momento. Se alguma foto não renderizar em
+// produção, é o primeiro suspeito a checar.
+const _vilaNovaGuessPlayerPhotos = {
+  'vn_dalberson':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif',
+  'vn_gabriel_atila':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/gabriel-atila-692.avif',
+  'vn_helton_leite':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/helton-leite-453.avif',
+  'vn_anderson_jesus':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/anderson-jesus-051.avif',
+  'vn_breno_bora':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/breno-bora-580.avif',
+  'vn_douglas_mendes':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/douglas-mendes-285.avif',
+  'vn_jonathan_costa':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/jonathan-costa-809.avif',
+  'vn_samuel':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/samuel-648.avif',
+  'vn_tiago_pagnussat':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/tiago-pagnussat-614.avif',
+  'vn_dudu': 'https://www.vilanovafc.com.br/imgs/270/370/images/dudu-248.avif',
+  'vn_enzo_bizzotto':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/enzo-806.avif',
+  'vn_higor_meritao':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/higor-meritao-627.avif',
+  'vn_joao_vieira':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/joao-vieira-816.avif',
+  'vn_nathan_camargo':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/nathan-camargo-402.avif',
+  'vn_willian_maranhao':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/willian-maranhao-793.avif',
+  'vn_hayner':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/hayner-143.avif',
+  'vn_higor_luiz':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/higor-luiz-583.avif',
+  'vn_igor_carius':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/igor-carius-029.avif',
+  'vn_willian_formiga':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/willian-formiga-896.avif',
+  'vn_dodo': 'https://www.vilanovafc.com.br/imgs/270/370/images/dodo-759.avif',
+  'vn_marquinhos_gabriel':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/marquinhos-gabriel-089.avif',
+  'vn_andre_luis':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/andre-luis-941.avif',
+  'vn_bruno_xavier':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/bruno-xavier-973.avif',
+  'vn_dellatorre':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/dellatorre-534.avif',
+  'vn_emerson_urso':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/emerson-urso-896.avif',
+  'vn_everton_galdino':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/everton-galdino-691.avif',
+  'vn_gustavo_puskas':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/gustavo-puskas-783.avif',
+  'vn_janderson':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/janderson-468.avif',
+  'vn_lincoln':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/lincoln-317.avif',
+  'vn_rafa_silva':
+      'https://www.vilanovafc.com.br/imgs/270/370/images/rafa-silva-051.avif',
+  'vn_ryan': 'https://www.vilanovafc.com.br/imgs/270/370/images/ryan-385.avif',
+};
+
 const _dir = 'lib/assets/branding/vilanova';
 // Placeholders neutros (cinza), nunca os de outro clube — trocar quando
 // houver arte real (estádio, lousa tática, loja).
@@ -124,6 +199,7 @@ final vilaNovaClubConfig = ClubConfig(
     arenaStadiumIcon: _phVector,
     arenaStadiumPhoto: _phRaster,
     storeBanner: _phRaster,
+    guessPlayerPhotos: _vilaNovaGuessPlayerPhotos,
   ),
   integrations: const ClubIntegrations(
     // Projeto Supabase do Vila, criado pelo usuário em 2026-09-29. A
@@ -188,17 +264,23 @@ final vilaNovaClubConfig = ClubConfig(
     //     handoff ainda em aberto sobre esperar nomes históricos — ligado
     //     agora com o que existe; troca sem custo quando o lote histórico
     //     chegar, os dados só são substituídos).
-    //   * 'guess_player' (Manto) FICA DE FORA: `GuessPlayer.eligibleAsSecret`
-    //     exige `imageUrl != null`, e não existe `guessPlayerPhotos` pro
-    //     Vila ainda (ASSET_GAP, fotos não baixadas) — hoje TODAS as 50
-    //     cartas resolvem `imageUrl=null`, ou seja, 0 elegíveis como
-    //     segredo do sorteio. Ligar assim que o mapa de fotos existir.
+    // 'guess_player' (Manto) LIGADO em 2026-09-30 (ASSET_GAP resolvido):
+    // 31 fotos individuais reais extraídas de
+    // vilanovafc.com.br/elenco-profissional (hotlink AVIF, ver
+    // `_vilaNovaGuessPlayerPhotos` acima) preenchem `photo_key` em
+    // `vilanova_guess_players.sql`. Nem toda carta com foto é elegível
+    // como segredo (`GuessPlayer.eligibleAsSecret` também exige
+    // `academy_club`/`shirt_number`/etc. completos) — hoje são **14 de 50**
+    // realmente elegíveis (verificado no simulador: `guess status:
+    // verified=14, incomplete=36`), o resto seguem sem inventar dado que
+    // falta. 14 é o suficiente pra sortear sem repetição óbvia.
     enabledArenaGames: {
       'quiz',
       'lineup',
       'player_identity',
       'tactical_identity',
       'career_path',
+      'guess_player',
     },
     storeCommerceMode: CommerceMode.demo,
     ticketCommerceMode: CommerceMode.demo,

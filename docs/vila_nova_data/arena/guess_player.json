@@ -15,7 +15,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1QKt-rycCXEQhcjk38-n498ExdQDvjA92",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -29,7 +29,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/558006/dalberson"
         }
-      ]
+      ],
+      "photo_key": "vn_dalberson"
     },
     {
       "id": "vn_manto_02",
@@ -44,7 +45,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/18CXQrdHCf6X0GyfJcMDaLDa8UyJFXgGT",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/gabriel-atila-692.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -56,7 +57,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.transfermarkt.com.br/gabriel-atila/profil/spieler/1083089"
         }
-      ]
+      ],
+      "photo_key": "vn_gabriel_atila"
     },
     {
       "id": "vn_manto_03",
@@ -71,7 +73,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1jhoud61dv4N9aQrgpIY-YhNmLEay7grv",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/helton-leite-453.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -85,7 +87,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/449653/helton-leite"
         }
-      ]
+      ],
+      "photo_key": "vn_helton_leite"
     },
     {
       "id": "vn_manto_04",
@@ -100,7 +103,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1DKUoIhs3lzHm57b-Wl7ljeVuUeGH9FAQ",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/anderson-jesus-051.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -114,7 +117,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1130889/anderson-jesus"
         }
-      ]
+      ],
+      "photo_key": "vn_anderson_jesus"
     },
     {
       "id": "vn_manto_05",
@@ -129,7 +133,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1SMPBgh1KtbltPJ_6BFi-Z6TaKpYQJkCU",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/breno-bora-580.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -145,7 +149,8 @@
           "source_name": "oGol — histórico Breno Bora",
           "source_url": "https://www.ogol.com.br/jogador/breno-bora/737293?epoca_id=154"
         }
-      ]
+      ],
+      "photo_key": "vn_breno_bora"
     },
     {
       "id": "vn_manto_06",
@@ -160,7 +165,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1_q_Pr-c6itlRRMuY6mclYLHVKpRRRFp3",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/douglas-mendes-285.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -172,7 +177,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml"
         }
-      ]
+      ],
+      "photo_key": "vn_douglas_mendes"
     },
     {
       "id": "vn_manto_07",
@@ -187,12 +193,11 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/jonathan-costa-809.avif",
       "status": "READY",
       "missing_fields": [
         "shirt_number",
-        "academy_club",
-        "photo_source_url"
+        "academy_club"
       ],
       "sources": [
         {
@@ -203,7 +208,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://ge.globo.com/sp/campinas-e-regiao/futebol/noticia/2026/09/01/guarani-acerta-emprestimo-de-zagueiro-para-o-vila-nova.ghtml"
         }
-      ]
+      ],
+      "photo_key": "vn_jonathan_costa"
     },
     {
       "id": "vn_manto_08",
@@ -218,7 +224,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1NJAWzgB8uxG6Zizo20_lMKhvtdKTkN9y",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/samuel-648.avif",
       "status": "READY",
       "missing_fields": [
         "shirt_number"
@@ -232,7 +238,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.ogol.com.br/jogador/samuel-lucas/1181595"
         }
-      ]
+      ],
+      "photo_key": "vn_samuel"
     },
     {
       "id": "vn_manto_09",
@@ -247,7 +254,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2025,
-      "photo_source_url": "https://drive.google.com/drive/folders/1mJ7r67Fj5dZV0IpuVtwQ_saaBc3fpFQx",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/tiago-pagnussat-614.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -261,7 +268,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/574664"
         }
-      ]
+      ],
+      "photo_key": "vn_tiago_pagnussat"
     },
     {
       "id": "vn_manto_10",
@@ -276,7 +284,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1VoOrdkcuVpCWq7G6bLWydwjFLEwfmqVd",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dudu-248.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -290,7 +298,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1376786/dudu"
         }
-      ]
+      ],
+      "photo_key": "vn_dudu"
     },
     {
       "id": "vn_manto_11",
@@ -305,7 +314,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2025,
-      "photo_source_url": "https://drive.google.com/drive/folders/1Qr43yT9gtuM1t2FvGUN8zgXzG7NL-0jc",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/enzo-806.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -317,7 +326,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.ogol.com.br/jogador/enzo-bizzotto/717250"
         }
-      ]
+      ],
+      "photo_key": "vn_enzo_bizzotto"
     },
     {
       "id": "vn_manto_12",
@@ -332,7 +342,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1fGaeS_yn1KM0VMjoA11GWkm7GSpPkESA",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/higor-meritao-627.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -350,7 +360,8 @@
           "source_name": "Sofascore — Higor Meritão",
           "source_url": "https://www.sofascore.com/pt/football/player/higor-meritao/973845"
         }
-      ]
+      ],
+      "photo_key": "vn_higor_meritao"
     },
     {
       "id": "vn_manto_13",
@@ -365,7 +376,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2025,
-      "photo_source_url": "https://drive.google.com/drive/folders/1e1Mf6Af0KDNr6EBOgje17WheFH8bogtv",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/joao-vieira-816.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -377,7 +388,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1462413/joao-vieira"
         }
-      ]
+      ],
+      "photo_key": "vn_joao_vieira"
     },
     {
       "id": "vn_manto_14",
@@ -392,7 +404,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1DOWb23dxFN7-RIwKFUJaR84hjETj-Uun",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/nathan-camargo-402.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -404,7 +416,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1366063/nathan"
         }
-      ]
+      ],
+      "photo_key": "vn_nathan_camargo"
     },
     {
       "id": "vn_manto_15",
@@ -419,7 +432,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/17cQ1dAva7vz3TfC1Vg8c5PwDTnNmGgH4",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/willian-maranhao-793.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -433,7 +446,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.ogol.com.br/jogador/willian-maranhao/392636"
         }
-      ]
+      ],
+      "photo_key": "vn_willian_maranhao"
     },
     {
       "id": "vn_manto_16",
@@ -448,7 +462,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1EJqT3HlzQr9QLBYBA2ka29VKuH42qOVd",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/hayner-143.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -460,7 +474,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/765156/hayner"
         }
-      ]
+      ],
+      "photo_key": "vn_hayner"
     },
     {
       "id": "vn_manto_17",
@@ -475,7 +490,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2024,
-      "photo_source_url": "https://drive.google.com/drive/folders/11wzMc38L8_MR1lGkp2Bms3LrOhKkhHpt",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/higor-luiz-583.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -487,7 +502,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.ogol.com.br/jogador/higor/892455"
         }
-      ]
+      ],
+      "photo_key": "vn_higor_luiz"
     },
     {
       "id": "vn_manto_18",
@@ -502,7 +518,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1GQdJCYMjLz0nfDDbEsf5ntgQRvtTYKT8",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/igor-carius-029.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -516,7 +532,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/849501/igor-carius"
         }
-      ]
+      ],
+      "photo_key": "vn_igor_carius"
     },
     {
       "id": "vn_manto_19",
@@ -531,7 +548,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2020,
-      "photo_source_url": "https://drive.google.com/drive/folders/1b1z1r4BamdaKB1fWdKU8hWFaOuWHu5Sk",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/willian-formiga-896.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -545,7 +562,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/815946/willian-formiga"
         }
-      ]
+      ],
+      "photo_key": "vn_willian_formiga"
     },
     {
       "id": "vn_manto_20",
@@ -560,7 +578,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1a1ys6E1ARs78fH5r4YzIrzzgnES9LZMI",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dodo-759.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -572,7 +590,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/"
         }
-      ]
+      ],
+      "photo_key": "vn_dodo"
     },
     {
       "id": "vn_manto_21",
@@ -587,7 +606,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1komt1l-3_ioXd__ssSPIezFiN8VvONyP",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/marquinhos-gabriel-089.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -599,7 +618,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/175644/marcos-gabriel-do-nascimento-marquinhos"
         }
-      ]
+      ],
+      "photo_key": "vn_marquinhos_gabriel"
     },
     {
       "id": "vn_manto_22",
@@ -614,7 +634,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2025,
-      "photo_source_url": "https://drive.google.com/drive/folders/1qLpKcre5tXBhLLbts7S-Z5YthB9e86Pn?usp=drive_link",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/andre-luis-941.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -628,7 +648,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/656372/andr-luis"
         }
-      ]
+      ],
+      "photo_key": "vn_andre_luis"
     },
     {
       "id": "vn_manto_23",
@@ -643,7 +664,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2025,
-      "photo_source_url": "https://drive.google.com/drive/folders/1mRNZOIVzXYq9aSuKzdzMUtPgGaBPQ-I1",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/bruno-xavier-973.avif",
       "status": "READY",
       "missing_fields": [
         "shirt_number"
@@ -657,7 +678,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/players/881154/bruno-xavier"
         }
-      ]
+      ],
+      "photo_key": "vn_bruno_xavier"
     },
     {
       "id": "vn_manto_24",
@@ -672,7 +694,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1uPcYQu7jz93NxLdpBAxjlquur50zMVmK",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dellatorre-534.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -686,7 +708,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/278723/dellatorre"
         }
-      ]
+      ],
+      "photo_key": "vn_dellatorre"
     },
     {
       "id": "vn_manto_25",
@@ -701,7 +724,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2024,
-      "photo_source_url": "https://drive.google.com/drive/folders/1aColU7bINv8-9wvhJ4WGEpiucXTXYWNs",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/emerson-urso-896.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -713,7 +736,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1446567/emerson-urso"
         }
-      ]
+      ],
+      "photo_key": "vn_emerson_urso"
     },
     {
       "id": "vn_manto_26",
@@ -728,7 +752,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2014,
-      "photo_source_url": "https://drive.google.com/drive/folders/1xih0oMcEYTLl_Ixg3wUPNkZC0ZYLaejx",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/everton-galdino-691.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -740,7 +764,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1034321/everton"
         }
-      ]
+      ],
+      "photo_key": "vn_everton_galdino"
     },
     {
       "id": "vn_manto_27",
@@ -755,7 +780,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1GnKDSPZ_8b1KO78FmA9KOhwKB-MqWBEj",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/gustavo-puskas-783.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -767,7 +792,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1935530/gustavo-puskas"
         }
-      ]
+      ],
+      "photo_key": "vn_gustavo_puskas"
     },
     {
       "id": "vn_manto_28",
@@ -782,7 +808,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1dKYe1O_Z8eN9pBp9D8bTTJEJq-_0aGi8",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/janderson-468.avif",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -794,7 +820,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/players/1045975/janderson"
         }
-      ]
+      ],
+      "photo_key": "vn_janderson"
     },
     {
       "id": "vn_manto_29",
@@ -809,11 +836,10 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/lincoln-317.avif",
       "status": "READY",
       "missing_fields": [
-        "shirt_number",
-        "photo_source_url"
+        "shirt_number"
       ],
       "sources": [
         {
@@ -828,7 +854,8 @@
           "source_name": "ge — Lincoln regularizado pelo Vila Nova",
           "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/23/novo-reforco-lincoln-e-regularizado-e-ja-pode-estrear-pelo-vila-nova.ghtml"
         }
-      ]
+      ],
+      "photo_key": "vn_lincoln"
     },
     {
       "id": "vn_manto_30",
@@ -843,7 +870,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/19MNQ_c24EsoRe1e9afbfZT_GEFYSSZVG",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/rafa-silva-051.avif",
       "status": "READY",
       "missing_fields": [
         "shirt_number"
@@ -857,7 +884,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/323400/rafael-silva"
         }
-      ]
+      ],
+      "photo_key": "vn_rafa_silva"
     },
     {
       "id": "vn_manto_31",
@@ -872,7 +900,7 @@
       "nationality_code": "BR",
       "nationality_name": "Brasil",
       "club_debut_year": 2026,
-      "photo_source_url": "https://drive.google.com/drive/folders/1Tqo-wDB7a6JwuPaMFaihqhP-NKg8lxDh",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/ryan-385.avif",
       "status": "READY",
       "missing_fields": [
         "academy_club"
@@ -886,7 +914,8 @@
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1346859"
         }
-      ]
+      ],
+      "photo_key": "vn_ryan"
     },
     {
       "id": "vn_manto_32",
@@ -1404,5 +1433,6 @@
     "50 cartas READY: 31 jogadores do elenco do snapshot + 19 nomes históricos/recentes com passagem confirmada pelo Vila Nova.",
     "Campos opcionais não documentados com segurança (especialmente camisa histórica, clube de formação e foto histórica) permanecem null e aparecem em missing_fields; isso não invalida a identidade da carta.",
     "Nenhum número de camisa ou clube de formação foi inferido. Fotos históricas pendentes devem ser tratadas em assets_todo.md em lote posterior."
-  ]
+  ],
+  "editorial_note": "Cartas do elenco ATUAL (2026-09-30): photo_source_url substituído pela foto individual real (mesma fonte/técnica do squad_current.json) e photo_key preenchido com o id do elenco (squad_members), pra reaproveitar a mesma imagem nas duas telas (Elenco e Quem Vestiu o Manto). Cartas históricas (fora do elenco atual) continuam sem foto — ASSET_GAP genuíno, não pesquisado."
 }

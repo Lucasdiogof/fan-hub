@@ -158,15 +158,16 @@ const GROUP_ORDER = ['Goleiros', 'Zagueiros', 'Laterais-direitos', 'Laterais-esq
     .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || (a.shirt_number ?? 999) - (b.shirt_number ?? 999));
   const rows = sorted.map((p, i) => [
     s(p.id), s(CLUB_ID), s(p.name), s(p.full_name), n(p.shirt_number), s(p.position), s(p.group),
-    s(p.birth_date), s(p.nationality), n(p.height_cm), s(p.foot), 'null', s(p.instagram_url),
+    s(p.birth_date), s(p.nationality), n(p.height_cm), s(p.foot), s(p.photo_source_url), s(p.instagram_url),
     `'[]'::jsonb`, n(i), 'true',
   ]);
   outputs['vilanova_squad_members.sql'] =
     header(
       'Elenco profissional atual do Vila Nova (squad_members).',
       'docs/vila_nova_data/data/squad_current.json',
-      `-- ${rows.length} atletas. photo_url null (o pacote aponta pra pasta do Drive,
--- não imagem) e club_history vazio (REVIEW no pacote) — ver cabeçalho do gerador.`,
+      `-- ${rows.length} atletas. photo_url = foto individual real do site oficial (AVIF,
+-- hotlink direto, 2026-09-30 — ver editorial_note do pacote). club_history vazio
+-- (REVIEW no pacote) — ver cabeçalho do gerador.`,
     ) +
     upsert(
       'squad_members',
@@ -265,19 +266,23 @@ ${layout.join('\n')}`,
 // ------------------------------------------------------- quem vestiu o manto
 {
   const cards = read('arena/guess_player.json').cards.filter((c) => c.status === 'READY');
+  const withPhoto = cards.filter((c) => c.photo_key).length;
   const rows = cards.map((c, i) => [
     s(c.id), s(CLUB_ID), s(c.name), s(c.display_name), j(c.aliases ?? []), s(c.position), n(c.shirt_number),
     s(c.academy_club), s(c.nationality_code), s(c.nationality_name), n(c.club_debut_year),
-    // Sem foto local ainda (ASSET_GAP): photo_key null, o jogo cai no placeholder.
-    'null',
+    // `photo_key` (quando presente) é o id do elenco atual (squad_members),
+    // resolvido em `ClubConfig.assets.guessPlayerPhotos` — cartas históricas
+    // (fora do elenco atual) continuam sem foto (ASSET_GAP genuíno).
+    s(c.photo_key),
     s((c.missing_fields ?? []).length ? 'incomplete' : 'verified'), n(i + 1), 'true',
   ]);
   outputs['vilanova_guess_players.sql'] =
     header(
       'Quem Vestiu o Manto do Vila Nova (guess_players).',
       'docs/vila_nova_data/arena/guess_player.json',
-      `-- ${rows.length} cartas READY. data_status = verified só quando o pacote não lista
--- campo faltando; senão incomplete. photo_key null até existirem as fotos.`,
+      `-- ${rows.length} cartas READY, ${withPhoto} com photo_key (elenco atual, foto real
+-- do site oficial, 2026-09-30). data_status = verified só quando o pacote não lista
+-- campo faltando; senão incomplete.`,
     ) + upsert('guess_players', ['id', 'club_id', 'name', 'display_name', 'aliases', 'position', 'shirt_number', 'academy_club', 'nationality_code', 'nationality_name', 'club_debut_year', 'photo_key', 'data_status', 'sort_order', 'is_active'], rows);
 }
 
