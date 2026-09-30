@@ -33,6 +33,19 @@ Map<String, String> _knownRounds(AppLocalizations l10n) => {
 
 final _bareRoundNumber = RegExp(r'^R(\d+)$');
 final _singleGroupLetter = RegExp(r'^[A-Z]$');
+final _serieLetter = RegExp(r'Série [A-D]\b');
+
+/// "Campeonato Brasileiro Série A/B/C/D" já deixa a divisão óbvia sem o
+/// prefixo — o nome completo só sobra espaço no card e força truncamento
+/// (ex.: "Campeonato Brasileiro Série B · Rodada 25" corta o adversário).
+/// Só encurta quando o prefixo E a divisão aparecem juntos; outras
+/// competições (Goiano, Copa do Brasil, Sub-20 etc.) voltam intactas.
+String shortCompetitionLabel(String raw) {
+  final value = raw.trim();
+  if (!value.toLowerCase().contains('campeonato brasileiro')) return value;
+  final match = _serieLetter.firstMatch(value);
+  return match == null ? value : match.group(0)!;
+}
 
 /// `round` já vem por extenso em boa parte do catálogo (ex.: "1ª fase ·
 /// R3", "Quartas") — nesse caso só normaliza o separador. O resto é

@@ -38,7 +38,11 @@ class PassportMatchTicketV2 extends StatelessWidget {
     final round = humanizeRound(l10n, match.round);
     final time = shortMatchTime(match.matchTime);
 
-    final subtitleParts = [match.competition, ?round, ?match.venueName];
+    final subtitleParts = [
+      shortCompetitionLabel(match.competition),
+      ?round,
+      ?match.venueName,
+    ];
 
     return Semantics(
       button: canMark,
@@ -92,29 +96,22 @@ class PassportMatchTicketV2 extends StatelessWidget {
                               },
                             ),
                           ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: _Matchup(
-                                home: home,
-                                away: away,
-                                opponent: match.opponent,
-                              ),
-                            ),
-                            if (score.isKnown) ...[
-                              const SizedBox(width: 8),
-                              Text(
-                                '${score.firstScore}-${score.secondScore}',
-                                style: TextStyle(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w900,
-                                  color: colors.textPrimary,
-                                ),
-                              ),
-                            ],
-                          ],
+                        _Matchup(
+                          home: home,
+                          away: away,
+                          opponent: match.opponent,
                         ),
+                        if (score.isKnown) ...[
+                          const SizedBox(height: 2),
+                          Text(
+                            '${score.firstScore}-${score.secondScore}',
+                            style: TextStyle(
+                              fontSize: 19,
+                              fontWeight: FontWeight.w900,
+                              color: colors.textPrimary,
+                            ),
+                          ),
+                        ],
                         const SizedBox(height: 4),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
