@@ -14,6 +14,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/club/vilanova_club_config.dart';
 import 'package:goias_app/features/arena/games/lineup/data/lineup_match_repository.dart';
 import 'package:goias_app/features/arena/games/lineup/lineup_matches.dart';
 
@@ -30,6 +31,14 @@ void main() {
         '2026-09-11)', () {
       expect(
         bragantinoClubConfig.capabilities.enabledArenaGames,
+        contains('lineup'),
+      );
+    });
+
+    test('Vila Nova tem lineup habilitado (15/15 partidas reais, Supabase, '
+        'reauditado 2026-09-29)', () {
+      expect(
+        vilaNovaClubConfig.capabilities.enabledArenaGames,
         contains('lineup'),
       );
     });
