@@ -61,10 +61,15 @@ const _vilaNovaLight = AppColors(
   textSecondary: Color(0xFF5D636D),
   textHint: Color(0xFF969CA5),
   border: Color(0xFFE1E4E8),
-  // Erro mais escuro que o vermelho de marca pra ser distinguível por
-  // contexto (mesmo problema do Bragantino: marca vermelha).
-  error: Color(0xFFA4161A),
-  success: Color(0xFF198754),
+  // 2026-09-30: usuário reportou o vermelho de erro anterior
+  // (`0xFFA4161A`) "meio apagado" ao lado do vermelho de marca — mais
+  // vívido/saturado agora, pra realmente destacar como alerta.
+  error: Color(0xFFD7263D),
+  // Identidade "vermelho e branco, nada de verde" (usuário, 2026-09-30):
+  // dourado faz o papel de "acerto"/sucesso aqui — o INVERSO do Goiás
+  // (onde dourado = erro e verde = sucesso, ver `app_colors.dart`). Mesmo
+  // valor de `gold` acima, não uma cor nova.
+  success: Color(0xFFE0A526),
 );
 
 const _vilaNovaDark = AppColors(
@@ -86,7 +91,9 @@ const _vilaNovaDark = AppColors(
   textHint: Color(0xFF7D7475),
   border: Color(0xFF3A2E2F),
   error: Color(0xFFFF6B6B),
-  success: Color(0xFF3FBF75),
+  // Ver nota da versão light: dourado = acerto/sucesso no Vila, nunca
+  // verde. Mesmo valor de `gold` acima.
+  success: Color(0xFFF2B84B),
 );
 
 // Assets de marca gerados do vetor oficial por

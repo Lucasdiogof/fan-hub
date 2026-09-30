@@ -87,6 +87,27 @@ void main() {
       }
     });
 
+    test(
+      '2026-09-30 (feedback do usuário): dourado = acerto/sucesso, nunca verde; '
+      'erro é um vermelho vívido, distinguível do vermelho de marca',
+      () {
+        bool isGreenish(double r, double g, double b) => g > r && g > b;
+        for (final palette in [v.branding.light, v.branding.dark]) {
+          final success = palette.success;
+          expect(
+            isGreenish(success.r, success.g, success.b),
+            isFalse,
+            reason: 'success não pode ser esverdeado: $success',
+          );
+          expect(
+            success,
+            palette.gold,
+            reason: 'success deve ser o mesmo tom de gold (acerto = dourado)',
+          );
+        }
+      },
+    );
+
     test('todo asset do Vila mora na pasta do Vila e existe no disco', () {
       final a = v.assets;
       for (final path in [
