@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "current_home": "Estádio Onésio Brasileiro Alvarenga (OBA)",
+  "recent_price_ranges": [
+    {
+      "sector": "Setor B",
+      "full_price_min": 30.0,
+      "full_price_max": 60.0,
+      "half_price_min": 15.0,
+      "half_price_max": 30.0,
+      "status": "READY"
+    },
+    {
+      "sector": "Setor A",
+      "full_price_min": 100.0,
+      "full_price_max": 120.0,
+      "half_price_min": 50.0,
+      "half_price_max": 60.0,
+      "status": "READY"
+    },
+    {
+      "sector": "Setor C — Visitante",
+      "full_price_min": 100.0,
+      "full_price_max": 120.0,
+      "half_price_min": 50.0,
+      "half_price_max": 60.0,
+      "status": "READY"
+    },
+    {
+      "sector": "Camarote",
+      "full_price_min": 120.0,
+      "full_price_max": 120.0,
+      "half_price_min": null,
+      "half_price_max": null,
+      "status": "READY"
+    }
+  ],
+  "half_price_rules_observed": [
+    "Em jogos oficiais recentes, a publicação do clube informou meia-entrada mediante camisa do Vila Nova para a torcida mandante ou Carteira ID Jovem; visitante usa camisa do clube visitante ou ID Jovem conforme o jogo."
+  ],
+  "membership_priority": [
+    "Planos Rubi, Ouro e Prata: acesso gratuito garantido no respectivo setor nas publicações oficiais consultadas."
+  ],
+  "sales_url": "https://www.ingressosa.com/",
+  "status": "READY",
+  "sources": [
+    {
+      "source_name": "Vila Nova x Confiança — ingressos",
+      "source_url": "https://www.vilanovafc.com.br/noticias/527-venda-de-ingressos-vila-nova-x-confianca-copa-do-brasil-2026"
+    },
+    {
+      "source_name": "Vila Nova x Sport — ingressos",
+      "source_url": "https://www.vilanovafc.com.br/noticias/545-venda-de-ingressos-vila-nova-x-sport-recife-serie-b-2026"
+    },
+    {
+      "source_name": "Vila Nova x Aparecidense — ingressos",
+      "source_url": "https://www.vilanovafc.com.br/noticias/519-venda-de-ingressos-vila-nova-x-aparecidense-goianao-2026"
+    }
+  ]
+}

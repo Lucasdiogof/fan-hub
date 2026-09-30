@@ -1,0 +1,868 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "dimensions": [
+    "posse",
+    "pressao",
+    "transicao",
+    "bola_parada",
+    "rotacao_elenco",
+    "gestao_grupo",
+    "agressividade",
+    "controle_risco"
+  ],
+  "trait_methodology": "Traits de 0 a 10 são normalização editorial para o jogo, não medições oficiais. Cada dimensão é sustentada por falas, comportamento tático ou resultados explicitamente descritos nas fontes. Quando não há evidência específica, a nota é mantida no miolo da escala e a limitação é registrada no trait_evidence.",
+  "profiles": [
+    {
+      "id": "vn_coach_profile_marcio_fernandes",
+      "name": "Márcio Fernandes",
+      "position": "Técnico",
+      "traits": [
+        5,
+        6,
+        9,
+        7,
+        6,
+        9,
+        7,
+        9
+      ],
+      "identity": [
+        "pragmático",
+        "mata-mata",
+        "transição",
+        "resultado"
+      ],
+      "evidence": [
+        "No Vila de 2015, o time soube alternar domínio ofensivo com bloco mais baixo e contra-ataques, segundo o capitão Róbston.",
+        "Márcio conquistou as Séries C de 2015 e 2020 pelo Vila e conduziu a reação no quadrangular decisivo de 2020."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "posse",
+          "fact": "A equipe de 2015 conseguia dominar períodos do jogo, mas não tinha a posse como dogma; nota intermediária.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html"
+        },
+        {
+          "dimension": "pressao",
+          "fact": "A fonte disponível descreve mais alternância de postura que pressão contínua; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html"
+        },
+        {
+          "dimension": "transicao",
+          "fact": "No segundo tempo contra o Salgueiro, o time deliberadamente se defendeu mais e passou a contra-atacar.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html"
+        },
+        {
+          "dimension": "bola_parada",
+          "fact": "Sem métrica específica no lote; nota editorial intermediária-alta por contexto de equipes competitivas, com confiança menor.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html"
+        },
+        {
+          "dimension": "rotacao_elenco",
+          "fact": "Não há fonte específica sobre rotação; nota intermediária conservadora.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-saida-do-tecnico-marcio-fernandes.ghtml"
+        },
+        {
+          "dimension": "gestao_grupo",
+          "fact": "Conquistou dois títulos nacionais em passagens diferentes e assumiu o time de 2020 já no quadrangular, obtendo acesso e título.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-saida-do-tecnico-marcio-fernandes.ghtml"
+        },
+        {
+          "dimension": "agressividade",
+          "fact": "O time dominou e criou várias chances no primeiro tempo citado, mas soube reduzir risco depois.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html"
+        },
+        {
+          "dimension": "controle_risco",
+          "fact": "A opção consciente por se defender e contra-atacar com vantagem é evidência direta de controle de risco.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — postura do Vila de Márcio em 2015",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html"
+        },
+        {
+          "source_name": "ge — legado/títulos de Márcio Fernandes",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-saida-do-tecnico-marcio-fernandes.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_coach_profile_higo_magalhaes",
+      "name": "Higo Magalhães",
+      "position": "Técnico",
+      "traits": [
+        6,
+        8,
+        9,
+        6,
+        8,
+        8,
+        9,
+        6
+      ],
+      "identity": [
+        "tático",
+        "agressivo",
+        "vertical",
+        "adaptável"
+      ],
+      "evidence": [
+        "Ao sair do Vila, Higo definiu sua equipe como agressiva, com identidade e variações; afirmou que a organização defensiva começava no ataque e a ofensiva na defesa.",
+        "Em entrevista, disse apreciar partidas com táticas bem definidas e citou como referência a verticalidade do Atlético-MG e as estratégias de Abel Ferreira."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "posse",
+          "fact": "Sua fala prioriza identidade/variações, sem colocar posse como objetivo absoluto; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        },
+        {
+          "dimension": "pressao",
+          "fact": "Afirmou que a organização defensiva deveria começar desde o ataque.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        },
+        {
+          "dimension": "transicao",
+          "fact": "Citava como referência equipes verticais e descreveu um Vila agressivo e com variações.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/03/05/simplicidade-e-dedicacao-o-perfil-de-higo-magalhaes-tecnico-goiano-que-conquistou-espaco-no-vila.ghtml"
+        },
+        {
+          "dimension": "bola_parada",
+          "fact": "Não há evidência específica de bola parada no lote; nota intermediária conservadora.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        },
+        {
+          "dimension": "rotacao_elenco",
+          "fact": "Trabalhou base e profissional e enfatizava potencializar características dos atletas, sustentando adaptabilidade.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        },
+        {
+          "dimension": "gestao_grupo",
+          "fact": "Descreveu elo forte com jogadores/funcionários e trabalho de potencialização individual.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        },
+        {
+          "dimension": "agressividade",
+          "fact": "Ele próprio definiu a ideia como a de um time agressivo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        },
+        {
+          "dimension": "controle_risco",
+          "fact": "A proposta combinava organização defensiva desde o ataque e ofensiva desde a defesa, menos conservadora que perfis de bloco baixo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — despedida e ideia de jogo de Higo",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml"
+        },
+        {
+          "source_name": "ge — perfil tático de Higo",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/03/05/simplicidade-e-dedicacao-o-perfil-de-higo-magalhaes-tecnico-goiano-que-conquistou-espaco-no-vila.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_coach_profile_allan_aal",
+      "name": "Allan Aal",
+      "position": "Técnico",
+      "traits": [
+        7,
+        5,
+        6,
+        5,
+        6,
+        7,
+        5,
+        10
+      ],
+      "identity": [
+        "objetivo",
+        "responsável",
+        "simples",
+        "controle"
+      ],
+      "evidence": [
+        "Na apresentação ao Vila, pregou decisões simples e objetivas e pediu o menor número de erros possível.",
+        "Disse que a equipe deveria tentar ter a bola, mas dentro da responsabilidade e da realidade do momento."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "posse",
+          "fact": "Afirmou que a equipe precisava tentar ao máximo ter a bola.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        },
+        {
+          "dimension": "pressao",
+          "fact": "A entrevista não destaca pressão como princípio central; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        },
+        {
+          "dimension": "transicao",
+          "fact": "Objetividade nas decisões sugere ataque funcional, mas a fonte não descreve transição como eixo central; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        },
+        {
+          "dimension": "bola_parada",
+          "fact": "Sem evidência específica no lote; nota intermediária-baixa.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        },
+        {
+          "dimension": "rotacao_elenco",
+          "fact": "Disse que analisa os atletas disponíveis e não exige características que eles não podem entregar.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        },
+        {
+          "dimension": "gestao_grupo",
+          "fact": "Pregou mudança de mentalidade e confiança em momento de luta contra rebaixamento.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        },
+        {
+          "dimension": "agressividade",
+          "fact": "A prioridade declarada era simplicidade/responsabilidade, não risco ofensivo elevado.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        },
+        {
+          "dimension": "controle_risco",
+          "fact": "Pediu explicitamente o menor número de erros possível e decisões simples e objetivas.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — apresentação de Allan Aal no Vila",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_coach_profile_luizinho_lopes",
+      "name": "Luizinho Lopes",
+      "position": "Técnico",
+      "traits": [
+        8,
+        9,
+        9,
+        6,
+        7,
+        8,
+        10,
+        5
+      ],
+      "identity": [
+        "intenso",
+        "competitivo",
+        "transição rápida",
+        "volume"
+      ],
+      "evidence": [
+        "Após clássico em 2024, definiu o Vila como competitivo, intenso, que corre, marca e joga; destacou transição rápida e intensa.",
+        "Na chegada, falou em equilibrar a equipe para marcar muitos gols e sofrer poucos."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "posse",
+          "fact": "A frase \"corre, marca e joga\" e o volume criado sustentam posse funcional alta, sem tratá-la como dogma.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "dimension": "pressao",
+          "fact": "Destacou intensidade física e marcação como fatores centrais da evolução.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "dimension": "transicao",
+          "fact": "Falou explicitamente em transição rápida e intensa.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "dimension": "bola_parada",
+          "fact": "Não há foco específico de bola parada na fonte; nota intermediária.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "dimension": "rotacao_elenco",
+          "fact": "A integração rápida entre preparação física e fisiologia e o tempo de trabalho sustentam nota moderada-alta de gestão do elenco.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "dimension": "gestao_grupo",
+          "fact": "Falou em \"contratar\" a torcida e elevar confiança/autoestima; na chegada enfatizou ambiente e responsabilidade.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "dimension": "agressividade",
+          "fact": "A identidade declarada é intensa, competitiva, com corrida, marcação e jogo ofensivo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "dimension": "controle_risco",
+          "fact": "Buscava equilíbrio entre marcar muitos gols e sofrer poucos, mas aceitava um jogo de intensidade alta; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/24/luizinho-lopes-assume-o-vila-nova-e-fala-em-olhar-para-frente-apos-vexame-do-clube-na-copa-verde.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — intensidade e transição de Luizinho",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml"
+        },
+        {
+          "source_name": "ge — apresentação de Luizinho",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/24/luizinho-lopes-assume-o-vila-nova-e-fala-em-olhar-para-frente-apos-vexame-do-clube-na-copa-verde.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_coach_profile_rafael_lacerda",
+      "name": "Rafael Lacerda",
+      "position": "Técnico",
+      "traits": [
+        5,
+        8,
+        6,
+        7,
+        7,
+        8,
+        6,
+        10
+      ],
+      "identity": [
+        "organizado",
+        "sólido",
+        "marcação",
+        "controle de risco"
+      ],
+      "evidence": [
+        "Lacerda afirmou priorizar organização defensiva e disse que time que sofre muitos gols não chega longe.",
+        "Em abril de 2025, após vitória com 20 finalizações e mais posse, disse não abrir mão do DNA sólido defensivamente."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "posse",
+          "fact": "Em vitória sobre a Chapecoense, destacou que o Vila teve mais posse e controle quase total, mas sua identidade declarada era defensiva.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/25/lacerda-exalta-vitoria-e-lideranca-provisoria-mas-prega-pes-no-chao.ghtml"
+        },
+        {
+          "dimension": "pressao",
+          "fact": "Cobrou manter a mesma intensidade de marcação durante todo o jogo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml"
+        },
+        {
+          "dimension": "transicao",
+          "fact": "Reconheceu riscos em transições quando a equipe errava; nota moderada de uso e prevenção.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/25/lacerda-exalta-vitoria-e-lideranca-provisoria-mas-prega-pes-no-chao.ghtml"
+        },
+        {
+          "dimension": "bola_parada",
+          "fact": "Sem evidência específica de bola parada no lote; nota intermediária-alta apenas editorial, com confiança menor.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml"
+        },
+        {
+          "dimension": "rotacao_elenco",
+          "fact": "Há registro de poupar titulares por carga em outro jogo do período; o perfil recebe nota moderada-alta de rotação.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml"
+        },
+        {
+          "dimension": "gestao_grupo",
+          "fact": "Conduziu o Vila ao título goiano de 2025 e defendia a identidade do time publicamente.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml"
+        },
+        {
+          "dimension": "agressividade",
+          "fact": "Sua prioridade explícita era organização/solidez; agressividade recebe nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml"
+        },
+        {
+          "dimension": "controle_risco",
+          "fact": "A defesa sólida é explicitamente apresentada por ele como princípio central.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — organização defensiva de Lacerda",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml"
+        },
+        {
+          "source_name": "ge — controle/posse contra Chapecoense",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/25/lacerda-exalta-vitoria-e-lideranca-provisoria-mas-prega-pes-no-chao.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_coach_profile_paulo_turra",
+      "name": "Paulo Turra",
+      "position": "Técnico",
+      "traits": [
+        6,
+        10,
+        9,
+        6,
+        7,
+        7,
+        10,
+        7
+      ],
+      "identity": [
+        "intensidade máxima",
+        "pressão",
+        "ocupação de área",
+        "proteção à transição"
+      ],
+      "evidence": [
+        "Ao assumir o Vila em 2025, cobrou intensidade máxima em todos os momentos.",
+        "Descreveu ataque com quatro jogadores na área, presença no rebote e um cinturão defensivo para evitar transições adversárias."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "posse",
+          "fact": "A apresentação não coloca posse como centro do modelo; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        },
+        {
+          "dimension": "pressao",
+          "fact": "Cobrou explicitamente intensidade máxima e dedicação nos treinos/jogos.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        },
+        {
+          "dimension": "transicao",
+          "fact": "Ao projetar muitos jogadores na área, também descreveu um cinturão defensivo para evitar transições do rival.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        },
+        {
+          "dimension": "bola_parada",
+          "fact": "Não há evidência específica de bola parada na fonte; nota intermediária.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        },
+        {
+          "dimension": "rotacao_elenco",
+          "fact": "A fala é de comportamento coletivo, sem dado específico de rotação; nota moderada-alta conservadora.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        },
+        {
+          "dimension": "gestao_grupo",
+          "fact": "Falou em choque de gestão, intensidade e dedicação; nota alta-moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        },
+        {
+          "dimension": "agressividade",
+          "fact": "A proposta explícita prevê quatro jogadores atacando a área e esforço em intensidade máxima.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        },
+        {
+          "dimension": "controle_risco",
+          "fact": "Mesmo com ocupação agressiva da área, previu proteção organizada contra transições.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — apresentação de Paulo Turra",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "vn_tactical_identity_q01",
+      "text": "Seu time abre o placar fora de casa. Qual é a prioridade?",
+      "options": [
+        {
+          "text": "Continuar pressionando alto e buscar o segundo gol.",
+          "effects": {
+            "pressao": 3,
+            "agressividade": 3
+          }
+        },
+        {
+          "text": "Baixar o risco e atacar principalmente em transições.",
+          "effects": {
+            "controle_risco": 3,
+            "transicao": 3
+          }
+        },
+        {
+          "text": "Controlar a bola para tirar ritmo do rival.",
+          "effects": {
+            "posse": 3,
+            "controle_risco": 1
+          }
+        },
+        {
+          "text": "Trocar peças e adaptar o plano ao momento do jogo.",
+          "effects": {
+            "rotacao_elenco": 2,
+            "gestao_grupo": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q02",
+      "text": "Como você reage a um adversário que pressiona sua saída de bola?",
+      "options": [
+        {
+          "text": "Insisto na construção curta até criar superioridade.",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Ataco rapidamente o espaço deixado atrás da pressão.",
+          "effects": {
+            "transicao": 3,
+            "agressividade": 2
+          }
+        },
+        {
+          "text": "Uso jogo mais direto e priorizo a segunda bola.",
+          "effects": {
+            "controle_risco": 2,
+            "transicao": 2
+          }
+        },
+        {
+          "text": "Mudo a estrutura e as funções dos jogadores durante o jogo.",
+          "effects": {
+            "rotacao_elenco": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q03",
+      "text": "O que você mais cobra sem a bola?",
+      "options": [
+        {
+          "text": "Pressão imediata depois da perda.",
+          "effects": {
+            "pressao": 3,
+            "agressividade": 2
+          }
+        },
+        {
+          "text": "Compactação e proteção do corredor central.",
+          "effects": {
+            "controle_risco": 3
+          }
+        },
+        {
+          "text": "Recuar rapidamente para formar o bloco.",
+          "effects": {
+            "transicao": 2,
+            "controle_risco": 2
+          }
+        },
+        {
+          "text": "Comunicação e responsabilidade coletiva.",
+          "effects": {
+            "gestao_grupo": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q04",
+      "text": "Seu elenco tem características diferentes do modelo que você costuma usar. O que faz?",
+      "options": [
+        {
+          "text": "Adapto o modelo ao que os jogadores conseguem entregar.",
+          "effects": {
+            "rotacao_elenco": 3,
+            "gestao_grupo": 2
+          }
+        },
+        {
+          "text": "Mantenho os princípios e treino até todos assimilarem.",
+          "effects": {
+            "gestao_grupo": 2,
+            "pressao": 1
+          }
+        },
+        {
+          "text": "Simplifico decisões e reduzo riscos.",
+          "effects": {
+            "controle_risco": 3
+          }
+        },
+        {
+          "text": "Acelero o jogo para potencializar quem é mais vertical.",
+          "effects": {
+            "transicao": 3,
+            "agressividade": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q05",
+      "text": "Em casa, com estádio cheio, qual comportamento você quer ver?",
+      "options": [
+        {
+          "text": "Volume, pressão e muita gente atacando a área.",
+          "effects": {
+            "agressividade": 3,
+            "pressao": 2
+          }
+        },
+        {
+          "text": "Domínio territorial pela posse.",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Equilíbrio: atacar sem permitir contra-ataques.",
+          "effects": {
+            "controle_risco": 3,
+            "transicao": 1
+          }
+        },
+        {
+          "text": "Energia coletiva e conexão com a torcida.",
+          "effects": {
+            "gestao_grupo": 3,
+            "agressividade": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q06",
+      "text": "Qual situação de treinamento recebe atenção especial?",
+      "options": [
+        {
+          "text": "Movimentos de pressão e recuperação imediata.",
+          "effects": {
+            "pressao": 3
+          }
+        },
+        {
+          "text": "Saída e circulação de bola.",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Transições nos dois sentidos.",
+          "effects": {
+            "transicao": 3
+          }
+        },
+        {
+          "text": "Bola parada ofensiva e defensiva.",
+          "effects": {
+            "bola_parada": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q07",
+      "text": "Há três jogos em oito dias. Como você administra?",
+      "options": [
+        {
+          "text": "Rodo o elenco e ajusto funções conforme desgaste.",
+          "effects": {
+            "rotacao_elenco": 3
+          }
+        },
+        {
+          "text": "Preservo a espinha dorsal e controlo a carga fora dos jogos.",
+          "effects": {
+            "gestao_grupo": 2,
+            "controle_risco": 1
+          }
+        },
+        {
+          "text": "Mantenho o time mais intenso enquanto os dados físicos permitirem.",
+          "effects": {
+            "pressao": 2,
+            "agressividade": 2
+          }
+        },
+        {
+          "text": "Escolho cada escalação pensando no matchup específico.",
+          "effects": {
+            "rotacao_elenco": 2,
+            "controle_risco": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q08",
+      "text": "A equipe está criando pouco contra um bloco baixo. Sua primeira mudança seria…",
+      "options": [
+        {
+          "text": "Adicionar mais um jogador de criação entre linhas.",
+          "effects": {
+            "posse": 2,
+            "rotacao_elenco": 2
+          }
+        },
+        {
+          "text": "Aumentar cruzamentos e presença na área.",
+          "effects": {
+            "agressividade": 3
+          }
+        },
+        {
+          "text": "Acelerar circulação e pressão pós-perda.",
+          "effects": {
+            "pressao": 2,
+            "posse": 2
+          }
+        },
+        {
+          "text": "Não se expor: manter o equilíbrio e esperar a oportunidade.",
+          "effects": {
+            "controle_risco": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q09",
+      "text": "Qual frase mais parece uma orientação sua no intervalo?",
+      "options": [
+        {
+          "text": "Menos erro. Simples e objetivo.",
+          "effects": {
+            "controle_risco": 3
+          }
+        },
+        {
+          "text": "Mais intensidade: correr, marcar e jogar.",
+          "effects": {
+            "pressao": 2,
+            "agressividade": 3
+          }
+        },
+        {
+          "text": "Entendam os espaços e façam a bola circular.",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Ataquem o espaço assim que recuperarmos.",
+          "effects": {
+            "transicao": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_tactical_identity_q10",
+      "text": "O que mais define sucesso para o seu modelo?",
+      "options": [
+        {
+          "text": "Uma equipe organizada que concede muito pouco.",
+          "effects": {
+            "controle_risco": 3
+          }
+        },
+        {
+          "text": "Uma equipe que impõe intensidade ao adversário.",
+          "effects": {
+            "pressao": 3,
+            "agressividade": 2
+          }
+        },
+        {
+          "text": "Uma equipe que controla o jogo com a bola.",
+          "effects": {
+            "posse": 3
+          }
+        },
+        {
+          "text": "Uma equipe adaptável, comprometida e capaz de mudar o plano.",
+          "effects": {
+            "gestao_grupo": 3,
+            "rotacao_elenco": 2
+          }
+        }
+      ]
+    }
+  ],
+  "scoring_rules": {
+    "method": "weighted_trait_distance",
+    "result_floor": 42,
+    "winner_range": [
+      82,
+      96
+    ],
+    "minimum_gap_winner_to_second": 7,
+    "minimum_gap_between_top3": 4
+  },
+  "status": "READY",
+  "target": {
+    "profiles": 6,
+    "questions": 10
+  },
+  "coverage": {
+    "profiles_ready": 6,
+    "questions_ready": 10
+  }
+}

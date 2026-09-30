@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "stadiums": [
+    {
+      "id": "vn_stadium_oba",
+      "name": "Estádio Onésio Brasileiro Alvarenga",
+      "nickname": "OBA",
+      "city": "Goiânia",
+      "state": "GO",
+      "capacity": 10000,
+      "period_from": null,
+      "period_through": null,
+      "role": "CURRENT_HOME",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Estrutura",
+          "source_url": "https://www.vilanovafc.com.br/estrutura"
+        }
+      ]
+    },
+    {
+      "id": "vn_stadium_olimpico",
+      "name": "Estádio Olímpico Pedro Ludovico Teixeira",
+      "nickname": "Estádio Olímpico",
+      "city": "Goiânia",
+      "state": "GO",
+      "capacity": null,
+      "period_from": null,
+      "period_through": null,
+      "role": "ALTERNATE",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — ingressos Vila x Anápolis 2026",
+          "source_url": "https://www.vilanovafc.com.br/noticias/522-venda-de-ingressos-vila-nova-x-anapolis-goianao-2026"
+        }
+      ]
+    },
+    {
+      "id": "vn_stadium_serra_dourada",
+      "name": "Estádio Serra Dourada",
+      "nickname": "Serra Dourada",
+      "city": "Goiânia",
+      "state": "GO",
+      "capacity": null,
+      "period_from": null,
+      "period_through": null,
+      "role": "ALTERNATE",
+      "status": "REVIEW",
+      "review_reason": "Uso como palco alternativo está documentado; período histórico contínuo de mando ainda não foi auditado.",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — site oficial",
+          "source_url": "https://www.vilanovafc.com.br/"
+        }
+      ]
+    }
+  ],
+  "training_centers": [
+    {
+      "id": "vn_ct_vila_do_tigre",
+      "name": "Vila do Tigre",
+      "address": "Rua da Divisa, nº 0, Rural Via Anápolis, Goiânia-GO, CEP 74670-970",
+      "fields": 5,
+      "professional_full_move_year": 2024,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Estrutura",
+          "source_url": "https://www.vilanovafc.com.br/estrutura"
+        }
+      ]
+    }
+  ]
+}

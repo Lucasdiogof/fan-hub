@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "coverage_status": "PARTIAL",
+  "partners": [
+    {
+      "name": "FatalFans",
+      "tier": "OFFICIAL",
+      "category": "Plataforma digital",
+      "url": null,
+      "logo_source_url": null,
+      "since": "2026-03",
+      "placement": "número da camisa",
+      "contract_through": "2027-03 (aprox.; contrato de um ano a partir do anúncio)",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — patrocínio FatalFans",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/03/19/vila-nova-fecha-patrocinio-com-plataforma-de-venda-de-conteudo-adulto.ghtml"
+        }
+      ]
+    },
+    {
+      "name": "Volt Sport",
+      "tier": "SUPPLIER",
+      "category": "Material esportivo",
+      "url": "https://www.voltsport.com.br/",
+      "logo_source_url": null,
+      "since": null,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Loja do Vila — produtos oficiais Volt",
+          "source_url": "https://www.lojadovila.com.br/"
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    "Lista completa de patrocinadores ativos em 29/09/2026 ainda não auditada por uniforme/anúncios individualmente.",
+    "Patrocinador máster atual não foi confirmado neste lote; o contrato da GingaBet anunciado em 26/02/2025 era de 12 meses e não foi projetado além do prazo."
+  ]
+}

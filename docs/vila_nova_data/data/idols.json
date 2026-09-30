@@ -1,0 +1,481 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "coverage_status": "PARTIAL",
+  "ready_count": 11,
+  "review_count": 4,
+  "gap_count": 0,
+  "editorial_note": "READY exige período no Vila, posição, estatística com escopo explícito e fontes. Foto histórica não bloqueia READY; ausência de asset é registrada separadamente em assets_todo.md. Tier 3 pode representar ícone/destaque, conforme o schema do projeto, sem afirmar que uma fonte o chama literalmente de ídolo.",
+  "idols": [
+    {
+      "id": "vn_idol_guilherme",
+      "name": "Guilherme de Souza",
+      "position": "Atacante",
+      "period": "1968–1969; 1969–1972; 1972–1975; 1977",
+      "tier": 1,
+      "evidence_explicit_idol": true,
+      "description": "Atacante que chegou ao Vila Nova em 1968 e se tornou uma das maiores referências da história colorada. Em 2013, torcedores do clube o escolheram como o maior jogador de todos os tempos; o ge também o trata como um dos maiores ídolos do Vila e registra que conquistou mais de dez títulos pelo clube.",
+      "stats": {
+        "matches": 47,
+        "goals": 13,
+        "scope": "partidas indexadas no acervo do Futebol de Goyaz; não apresentado como total definitivo de toda a passagem",
+        "source_name": "Futebol de Goyaz — Guilherme",
+        "source_url": "https://www.futeboldegoyaz.com.br/jogadores/458/jogador"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Futebol de Goyaz — Guilherme",
+          "source_url": "https://www.futeboldegoyaz.com.br/jogadores/458/jogador"
+        },
+        {
+          "source_name": "ge — Ídolo Guilherme reforça torcida pelo acesso",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/idolo-do-vila-nova-guilherme-reforca-torcida-pelo-acesso-do-tigrao-a-serie-a.ghtml"
+        }
+      ],
+      "data_notes": "47/13 é a cobertura indexada da fonte, não um total histórico absoluto."
+    },
+    {
+      "id": "vn_idol_tulio",
+      "name": "Túlio Maravilha",
+      "position": "Atacante",
+      "period": "1999; 2001; 2007–2008",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Centroavante de enorme produção nas passagens pelo Vila Nova. A base estatística registra 104 jogos e 92 gols pelo clube; em 2008, marcou 24 gols na Série B e 14 no Campeonato Goiano, terminando como artilheiro em ambos os recortes registrados.",
+      "stats": {
+        "matches": 104,
+        "goals": 92,
+        "scope": "Vila Nova — cobertura da base Zerozero/oGol",
+        "source_name": "oGol — Túlio Maravilha",
+        "source_url": "https://www.ogol.com.br/jogador/tulio-maravilha/42587"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "oGol — Túlio Maravilha",
+          "source_url": "https://www.ogol.com.br/jogador/tulio-maravilha/42587"
+        },
+        {
+          "source_name": "oGol — raio-X de Túlio no Vila em 2008",
+          "source_url": "https://www.ogol.com.br/xray.php?ano=0&epoca_id=137&eve=&filter_escalao=all&filter_match=in_with&grp=1&id_comp=0&jogador_id=42587&jogador_na_equipa_id=3532&key=player_in_team&onde=&page=3"
+        }
+      ]
+    },
+    {
+      "id": "vn_idol_wando",
+      "name": "Wando",
+      "position": "Atacante",
+      "period": "2000–2003; 2004–2005; 2007–2008; 2011; 2014",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Atacante revelado no início dos anos 2000 que se tornou ídolo da torcida e participou dos títulos goianos de 2001 e 2005. A base estatística registra 96 jogos e 16 gols pelo Vila, distribuídos por várias passagens.",
+      "stats": {
+        "matches": 96,
+        "goals": 16,
+        "scope": "Vila Nova — cobertura da base oGol",
+        "source_name": "oGol — Wando",
+        "source_url": "https://www.ogol.com.br/jogador/wando/95017?epoca_id=0&op=zoomstats"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "oGol — Wando",
+          "source_url": "https://www.ogol.com.br/jogador/wando/95017?epoca_id=0&op=zoomstats"
+        },
+        {
+          "source_name": "ge — Wando pode voltar ao Vila",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2013/06/atacante-wando-e-oferecido-e-pode-voltar-vestir-camisa-do-vila-nova.html"
+        },
+        {
+          "source_name": "Futebol de Goyaz — Wando",
+          "source_url": "https://www.futeboldegoyaz.com.br/jogadores/112/jogador"
+        }
+      ]
+    },
+    {
+      "id": "vn_idol_alan_mineiro",
+      "name": "Alan Mineiro",
+      "position": "Meia",
+      "period": "2017–2021 (com breve empréstimo ao Fortaleza em 2017)",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Principal referência técnica recente do Vila a partir de 2017, atuando sobretudo como armador. O ge o chama de ídolo e registra 156 jogos e 45 gols pelo clube; ele também fez parte do elenco campeão da Série C de 2020.",
+      "stats": {
+        "matches": 156,
+        "goals": 45,
+        "scope": "Vila Nova — total informado pelo ge",
+        "source_name": "ge — saída de Alan Mineiro",
+        "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — saída de Alan Mineiro",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "source_name": "ge — retorno de Alan Mineiro ao Vila em 2026",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/03/09/vila-nova-contrata-alan-mineiro-como-auxiliar-tecnico-do-sub-20.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_idol_tim",
+      "name": "Tim (Carlos Eduardo Pereira)",
+      "position": "Meia",
+      "period": "1992–2000; 2001–2002; 2004–2005",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Meia formado no Vila Nova e identificado com três ciclos vitoriosos do clube. Foi campeão goiano em 1995 e 2005 e campeão invicto da Série C de 1996; fontes históricas registram mais de 150 partidas e 23 gols pelo Tigre.",
+      "stats": {
+        "matches": 152,
+        "goals": 23,
+        "scope": "partidas indexadas na base Futebol de Goyaz; o Sou Tigrão descreve mais de 150 jogos e 23 gols pelo Vila",
+        "source_name": "Futebol de Goyaz — Tim",
+        "source_url": "https://www.futeboldegoyaz.com.br/jogadores/4117/jogador"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Futebol de Goyaz — Tim",
+          "source_url": "https://www.futeboldegoyaz.com.br/jogadores/4117/jogador"
+        },
+        {
+          "source_name": "ge — Tim e Pedro Júnior relembram título de 2005",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/03/27/tim-e-pedro-junior-relembram-ultimo-titulo-do-vila-nova-no-campeonato-goiano-em-2005.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_idol_roni",
+      "name": "Roni",
+      "position": "Atacante",
+      "period": "1994–1996; 2010–2011",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Atacante revelado pelo Vila Nova, campeão goiano em 1995 e depois protagonista de carreira nacional e internacional. Retornou ao clube em 2010 e permaneceu até 2011; o ge o trata como ídolo alvirrubro e a base Zerozero registra 86 jogos e 41 gols pelo Vila no snapshot atual.",
+      "stats": {
+        "matches": 86,
+        "goals": 41,
+        "scope": "Vila Nova — snapshot Zerozero consultado em 2026-09-29",
+        "source_name": "Zerozero — Roni",
+        "source_url": "https://www.zerozero.pt/jogador/roni/5780?edicao_id=12680&op=zoomstats&tpstats=club"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Zerozero — Roni",
+          "source_url": "https://www.zerozero.pt/jogador/roni/5780?edicao_id=12680&op=zoomstats&tpstats=club"
+        },
+        {
+          "source_name": "ge — Roni anuncia aposentadoria",
+          "source_url": "https://ge.globo.com/go/noticia/2012/03/idolo-em-varios-clubes-atacante-roni-anuncia-aposentadoria-aos-34-anos.html"
+        },
+        {
+          "source_name": "ge — Roni, ídolo alvirrubro, volta ao time",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2011/10/roni-desabafa-ficou-provado-que-eu-nao-era-o-responsavel-por-tudo.html"
+        }
+      ],
+      "data_notes": "Valores 86/41 são os números exibidos na base consultada no snapshot; bases históricas podem ampliar cobertura retroativamente."
+    },
+    {
+      "id": "vn_idol_rafael_donato",
+      "name": "Rafael Donato",
+      "position": "Zagueiro",
+      "period": "2020–2023",
+      "tier": 3,
+      "evidence_explicit_idol": false,
+      "description": "Capitão e um dos líderes do Vila Nova durante quatro temporadas. Disputou 182 jogos, marcou 18 gols e participou do título da Série C de 2020; em 2023 liderou a equipe que chegou à última rodada da Série B com chance de acesso.",
+      "stats": {
+        "matches": 182,
+        "goals": 18,
+        "scope": "Vila Nova — total informado pelo ge na despedida",
+        "source_name": "ge — Rafael Donato anuncia saída",
+        "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — Rafael Donato anuncia saída",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        }
+      ],
+      "data_notes": "Tier 3 usado como ícone/destaque; a fonte sustenta liderança, números e título, mas não é usada aqui para afirmar o rótulo literal de ídolo."
+    },
+    {
+      "id": "vn_idol_frontini",
+      "name": "Carlos Frontini",
+      "position": "Atacante",
+      "period": "2013; 2015–2016; 2021",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Atacante argentino marcado pelos acessos à Série B de 2013 e 2015. O ge o chama explicitamente de ídolo e herói desses acessos; a base Zerozero registra 79 jogos e 28 gols pelo Vila Nova.",
+      "stats": {
+        "matches": 79,
+        "goals": 28,
+        "scope": "Vila Nova — cobertura da base Zerozero",
+        "source_name": "Zerozero — Carlos Frontini",
+        "source_url": "https://www.zerozero.pt/jogador/carlos-frontini/37821"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Zerozero — Carlos Frontini",
+          "source_url": "https://www.zerozero.pt/jogador/carlos-frontini/37821"
+        },
+        {
+          "source_name": "ge — Frontini encerra carreira e vira diretor",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/frontini-encerra-carreira-de-jogador-e-vira-diretor-de-futebol-do-vila-nova.ghtml"
+        },
+        {
+          "source_name": "ge — acesso de 2015",
+          "source_url": "https://ge.globo.com/google/amp/go/futebol/times/vila-nova/noticia/grande-demais-para-a-serie-c-relembre-os-cinco-acessos-do-vila.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_idol_robston",
+      "name": "Róbston",
+      "position": "Volante",
+      "period": "2013–2016",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Volante que chegou ao Vila em 2013 já apresentado como ídolo e participou dos acessos de 2013 e 2015. Foi capitão do time campeão da Série C de 2015; a base histórica do clube no Zerozero registra 79 jogos e 9 gols.",
+      "stats": {
+        "matches": 79,
+        "goals": 9,
+        "scope": "Vila Nova — cobertura da base Zerozero",
+        "source_name": "Zerozero — jogadores do Vila Nova",
+        "source_url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogadores"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Zerozero — jogadores do Vila Nova",
+          "source_url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogadores"
+        },
+        {
+          "source_name": "ge — retrospectiva 2013: Róbston, ídolo",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2013/12/retrospectiva-vila-nova-da-susto-no-goianao-mas-fatura-acesso-serie-b.html"
+        },
+        {
+          "source_name": "ge — Róbston retorna ao Vila como auxiliar",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/robston-retorna-ao-vila-nova-e-inicia-carreira-como-auxiliar-tecnico.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_idol_pedro_junior",
+      "name": "Pedro Júnior",
+      "position": "Atacante",
+      "period": "2005; 2008; 2010; 2012; 2021",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Atacante revelado pelo Vila Nova e com cinco passagens pelo clube. O ge o classifica como ídolo vilanovense e a base histórica registra 85 jogos e 33 gols pelo Tigre; em 2021 retornou para sua quinta passagem.",
+      "stats": {
+        "matches": 85,
+        "goals": 33,
+        "scope": "Vila Nova — cobertura da base Zerozero",
+        "source_name": "Zerozero — jogadores do Vila Nova",
+        "source_url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogadores"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Zerozero — jogadores do Vila Nova",
+          "source_url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogadores"
+        },
+        {
+          "source_name": "ge — Tim e Pedro Júnior relembram título de 2005",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/03/27/tim-e-pedro-junior-relembram-ultimo-titulo-do-vila-nova-no-campeonato-goiano-em-2005.ghtml"
+        },
+        {
+          "source_name": "ge — retorno de Pedro Júnior em 2021",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/apos-titulo-da-serie-c-vila-nova-anuncia-o-retorno-de-pedro-junior.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_idol_willian_formiga",
+      "name": "Willian Formiga",
+      "position": "Lateral-esquerdo",
+      "period": "2020–2022; 2025–2026",
+      "tier": 3,
+      "evidence_explicit_idol": false,
+      "description": "Lateral de longa identificação recente com o Vila, campeão da Série C de 2020 e com retorno ao clube a partir de 2025. No snapshot de 2026, a base histórica coloca Formiga no topo de jogos do Vila entre os atletas cobertos, com 198 partidas e 5 gols.",
+      "stats": {
+        "matches": 198,
+        "goals": 5,
+        "scope": "Vila Nova — cobertura da base Zerozero no snapshot 2026-09-29",
+        "source_name": "Zerozero — jogadores do Vila Nova",
+        "source_url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogadores"
+      },
+      "photo_source_url": null,
+      "asset_status": "READY_IN_SQUAD_ASSETS",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Zerozero — jogadores do Vila Nova",
+          "source_url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogadores"
+        },
+        {
+          "source_name": "ge — retorno de Willian Formiga",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/12/28/vila-nova-oficializa-contratacao-do-lateral-esquerdo-willian-formiga.ghtml"
+        },
+        {
+          "source_name": "ge — renovação de Formiga para 2026",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/11/14/vila-nova-renova-com-willian-formiga-e-encaminha-permanencia-de-tiago-pagnussat.ghtml"
+        }
+      ],
+      "data_notes": "Tier 3 usado como ícone/destaque; não há alegação de que as fontes o chamem literalmente de ídolo."
+    },
+    {
+      "id": "vn_idol_max",
+      "name": "Max (Maxlei dos Santos Luzia)",
+      "position": "Goleiro",
+      "period": null,
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Goleiro lembrado como ídolo pelo desempenho no Vila no fim dos anos 2000. A base oGol registra 90 jogos pelo clube, mas há divergência sobre a delimitação exata das passagens, então o período não é publicado como READY.",
+      "stats": {
+        "matches": 90,
+        "goals": 0,
+        "scope": "Vila Nova — cobertura oGol",
+        "source_name": "oGol — Max",
+        "source_url": "https://www.ogol.com.br/jogador/max/5113?epoca_id=0"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "REVIEW",
+      "sources": [
+        {
+          "source_name": "oGol — Max",
+          "source_url": "https://www.ogol.com.br/jogador/max/5113?epoca_id=0"
+        },
+        {
+          "source_name": "Sou Tigrão — Max",
+          "source_url": "https://soutigrao.com/jogador/max/"
+        }
+      ],
+      "review_reason": "oGol agrupa Vila Nova em 2008–2010, enquanto a página dedicada do Sou Tigrão descreve duas passagens em 2008 e 2009. Período precisa ser fechado em fonte contemporânea/registro de jogos."
+    },
+    {
+      "id": "vn_idol_be",
+      "name": "Bé (Roberto Pacheco dos Santos)",
+      "position": "Atacante",
+      "period": "1992–1994 (presença confirmada; início/fim contratual ainda não fechado)",
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Centroavante decisivo no título goiano de 1993 e artilheiro estadual em duas temporadas seguidas. Marcou 29 gols no Goiano de 1993 e 25 no de 1994, sendo tratado pela imprensa local como um dos grandes ídolos do Vila.",
+      "stats": {
+        "matches": null,
+        "goals": 54,
+        "scope": "somente gols nos Campeonatos Goianos de 1993 (29) e 1994 (25); não é total da passagem",
+        "source_name": "RSSSF Brasil — artilheiros goianos",
+        "source_url": "https://mail.rsssfbrasil.com/tablesfq/gotops.htm"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "REVIEW",
+      "sources": [
+        {
+          "source_name": "Sagres — Ídolo Bé",
+          "source_url": "https://sagresonline.com.br/idolo-do-vila-nova-be-avalia-momento-atual-do-clube-e-ensina-caminho-para-artilharia/"
+        },
+        {
+          "source_name": "RSSSF Brasil — Goiano 1993",
+          "source_url": "https://rsssfbrasil.com.chancedegol.com.br/tablesfq/go1993.htm"
+        },
+        {
+          "source_name": "RSSSF Brasil — Goiano 1994",
+          "source_url": "https://www.rsssfbrasil.com/tablesfq/go1994.htm"
+        }
+      ],
+      "review_reason": "Ainda falta uma fonte que feche o total de jogos/gols da passagem e as datas contratuais exatas; 54 é apenas a soma dos dois Goianos."
+    },
+    {
+      "id": "vn_idol_onesio",
+      "name": "Onésio Brasileiro Alvarenga",
+      "position": null,
+      "period": null,
+      "tier": 2,
+      "evidence_explicit_idol": true,
+      "description": "Figura histórica central na consolidação institucional do Vila Nova e homenageado no nome do estádio. O schema de idols é orientado a jogadores e exige posição/período/estatísticas, que não se aplicam de forma segura a Onésio neste momento.",
+      "stats": {
+        "matches": null,
+        "goals": null,
+        "scope": null,
+        "source_name": "Vila Nova FC — Estrutura",
+        "source_url": "https://www.vilanovafc.com.br/estrutura"
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "REVIEW",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Estrutura",
+          "source_url": "https://www.vilanovafc.com.br/estrutura"
+        }
+      ],
+      "review_reason": "Reavaliar se deve permanecer em idols.json ou apenas em history/timeline/stadiums; não há estatística de jogador auditada."
+    },
+    {
+      "id": "vn_idol_sabino",
+      "name": "Sabino",
+      "position": null,
+      "period": null,
+      "tier": 3,
+      "evidence_explicit_idol": true,
+      "description": "Nome historicamente associado ao Vila e já levantado como candidato no v0.1. Ainda não há identificação biográfica inequívoca + período + estatística fechada suficientes para publicação.",
+      "stats": {
+        "matches": null,
+        "goals": null,
+        "scope": null,
+        "source_name": null,
+        "source_url": null
+      },
+      "photo_source_url": null,
+      "asset_status": "GAP",
+      "status": "REVIEW",
+      "sources": [],
+      "review_reason": "Identidade completa, posição, período e estatísticas continuam pendentes; não publicar até fechar o homônimo correto."
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "vn_conflict_idol_max_period",
+      "subject": "Max — período no Vila Nova",
+      "status": "OPEN",
+      "source_a": {
+        "value": "2008–2010",
+        "source_url": "https://www.ogol.com.br/jogador/max/5113?epoca_id=0"
+      },
+      "source_b": {
+        "value": "duas passagens em 2008 e 2009",
+        "source_url": "https://soutigrao.com/jogador/max/"
+      },
+      "decision": "Não resolver por inferência; manter Max REVIEW."
+    }
+  ]
+}

@@ -1,0 +1,2513 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "source_of_truth": "Vila Nova FC — elenco profissional",
+  "players": [
+    {
+      "id": "vn_dalberson",
+      "name": "Dalberson",
+      "full_name": "Dalberson Ferreira do Amaral",
+      "shirt_number": 29,
+      "position": "Goleiro",
+      "position_group": "Goleiros",
+      "birth_date": "1997-01-13",
+      "nationality": "Brasil",
+      "height_cm": 191,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1QKt-rycCXEQhcjk38-n498ExdQDvjA92",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Boa Esporte",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Joinville",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Brusque",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Famalicão",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "CSA",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "América-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Guarani",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/558006/dalberson"
+        }
+      ]
+    },
+    {
+      "id": "vn_gabriel_atila",
+      "name": "Gabriel Átila",
+      "full_name": "Gabriel Átila Cardoso da Silva",
+      "shirt_number": 30,
+      "position": "Goleiro",
+      "position_group": "Goleiros",
+      "birth_date": "2003-01-22",
+      "nationality": "Brasil",
+      "height_cm": 193,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/18CXQrdHCf6X0GyfJcMDaLDa8UyJFXgGT",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Vila Nova (base)",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.transfermarkt.com.br/gabriel-atila/profil/spieler/1083089"
+        }
+      ]
+    },
+    {
+      "id": "vn_helton_leite",
+      "name": "Helton Leite",
+      "full_name": "Helton Brant Aleixo Leite",
+      "shirt_number": 1,
+      "position": "Goleiro",
+      "position_group": "Goleiros",
+      "birth_date": "1990-11-02",
+      "nationality": "Brasil",
+      "height_cm": 196,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1jhoud61dv4N9aQrgpIY-YhNmLEay7grv",
+      "instagram_url": "https://www.instagram.com/heltonleite77/",
+      "club_history": [
+        {
+          "period": null,
+          "team": "J. Malucelli",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Boa Esporte",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ipatinga",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Criciúma",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Botafogo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "São Caetano",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Boavista",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Benfica",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Antalyaspor",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Deportivo La Coruña",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Fortaleza",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/449653/helton-leite"
+        }
+      ]
+    },
+    {
+      "id": "vn_anderson_jesus",
+      "name": "Anderson Jesus",
+      "full_name": "Anderson de Jesus Santos",
+      "shirt_number": 14,
+      "position": "Zagueiro",
+      "position_group": "Defensores",
+      "birth_date": "1995-03-02",
+      "nationality": "Brasil",
+      "height_cm": 186,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1DKUoIhs3lzHm57b-Wl7ljeVuUeGH9FAQ",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Confiança",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Guarani-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Confiança",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Grêmio",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Guarani",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Confiança",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Bahia",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "América-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vizela",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Bolívar",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "CRB",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Avaí",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1130889/anderson-jesus"
+        }
+      ]
+    },
+    {
+      "id": "vn_breno_bora",
+      "name": "Breno Bora",
+      "full_name": "Breno Augusto de Azevedo Bora",
+      "shirt_number": 23,
+      "position": "Zagueiro",
+      "position_group": "Defensores",
+      "birth_date": "2002-05-22",
+      "nationality": "Brasil",
+      "height_cm": 186,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1SMPBgh1KtbltPJ_6BFi-Z6TaKpYQJkCU",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Tubarão",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-GO",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Foz do Iguaçu",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "CBF — Breno Bora",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/atletas/campeonato-brasileiro/serie-c/2026/583921"
+        },
+        {
+          "source_name": "Transfermarkt — Breno Bora",
+          "source_url": "https://www.transfermarkt.com.br/breno-bora/profil/spieler/999803"
+        }
+      ]
+    },
+    {
+      "id": "vn_douglas_mendes",
+      "name": "Douglas Mendes",
+      "full_name": "Douglas Mendes Moreira",
+      "shirt_number": 4,
+      "position": "Zagueiro",
+      "position_group": "Defensores",
+      "birth_date": "2004-06-13",
+      "nationality": "Brasil",
+      "height_cm": 188,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1_q_Pr-c6itlRRMuY6mclYLHVKpRRRFp3",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Ponte Preta (base)",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Red Bull Bragantino",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "FC Liefering",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Red Bull Salzburg",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_jonathan_costa",
+      "name": "Jonathan Costa",
+      "full_name": "Jonathan Aparecido de Oliveira da Costa",
+      "shirt_number": null,
+      "position": "Zagueiro",
+      "position_group": "Defensores",
+      "birth_date": "1995-04-19",
+      "nationality": "Brasil",
+      "height_cm": 186,
+      "foot": null,
+      "photo_source_url": null,
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Guarani",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://ge.globo.com/sp/campinas-e-regiao/futebol/noticia/2026/09/01/guarani-acerta-emprestimo-de-zagueiro-para-o-vila-nova.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_samuel",
+      "name": "Samuel",
+      "full_name": "Samuel Lucas de Oliveira Souza",
+      "shirt_number": null,
+      "position": "Zagueiro",
+      "position_group": "Defensores",
+      "birth_date": "2007-08-13",
+      "nationality": "Brasil",
+      "height_cm": 189,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1NJAWzgB8uxG6Zizo20_lMKhvtdKTkN9y",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "São Caetano (base)",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "São Paulo (base)",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/samuel-lucas/1181595"
+        }
+      ]
+    },
+    {
+      "id": "vn_tiago_pagnussat",
+      "name": "Tiago Pagnussat",
+      "full_name": "Tiago Pagnussat",
+      "shirt_number": 3,
+      "position": "Zagueiro",
+      "position_group": "Defensores",
+      "birth_date": "1990-06-17",
+      "nationality": "Brasil",
+      "height_cm": 191,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1mJ7r67Fj5dZV0IpuVtwQ_saaBc3fpFQx",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Vila Aurora",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Caxias",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Guarani",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Caxias",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Bahia",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Lanús",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ceará",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cerezo Osaka",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Nagoya Grampus",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ceará",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Avaí",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/574664"
+        }
+      ]
+    },
+    {
+      "id": "vn_dudu",
+      "name": "Dudu",
+      "full_name": "Eduardo dos Santos",
+      "shirt_number": 15,
+      "position": "Volante",
+      "position_group": "Meio-campistas",
+      "birth_date": "2001-12-03",
+      "nationality": "Brasil",
+      "height_cm": 184,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1VoOrdkcuVpCWq7G6bLWydwjFLEwfmqVd",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Floresta",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Iguatu",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Tirol",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Maranhão",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Anapolina",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1376786/dudu"
+        }
+      ]
+    },
+    {
+      "id": "vn_enzo_bizzotto",
+      "name": "Enzo",
+      "full_name": "Enzo Bizzotto Costa",
+      "shirt_number": 18,
+      "position": "Volante",
+      "position_group": "Meio-campistas",
+      "birth_date": "2003-04-30",
+      "nationality": "Brasil",
+      "height_cm": 185,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1Qr43yT9gtuM1t2FvGUN8zgXzG7NL-0jc",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Internacional (base)",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Aparecidense",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/enzo-bizzotto/717250"
+        }
+      ]
+    },
+    {
+      "id": "vn_higor_meritao",
+      "name": "Higor Meritão",
+      "full_name": "Higor Matheus Meritão",
+      "shirt_number": null,
+      "position": "Volante",
+      "position_group": "Meio-campistas",
+      "birth_date": "1994-06-23",
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": "Canhoto",
+      "photo_source_url": "https://drive.google.com/drive/folders/1fGaeS_yn1KM0VMjoA11GWkm7GSpPkESA",
+      "instagram_url": "https://www.instagram.com/higormeritao/",
+      "club_history": [
+        {
+          "period": null,
+          "team": "Velo Clube",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ferroviária",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Botafogo-SP",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Paraná",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Pumas UNAM",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Goiás",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Criciúma",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "CRB",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Chapecoense",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "height_cm"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1033100/higor-meritao"
+        }
+      ]
+    },
+    {
+      "id": "vn_joao_vieira",
+      "name": "João Vieira",
+      "full_name": "João Pedro Vieira",
+      "shirt_number": 5,
+      "position": "Volante",
+      "position_group": "Meio-campistas",
+      "birth_date": "1997-11-08",
+      "nationality": "Brasil",
+      "height_cm": 173,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1e1Mf6Af0KDNr6EBOgje17WheFH8bogtv",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Internacional",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "São José-RS",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Internacional de Madrid",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Esportivo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Pelotas",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Caxias",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "São Luiz",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Paysandu",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1462413/joao-vieira"
+        }
+      ]
+    },
+    {
+      "id": "vn_nathan_camargo",
+      "name": "Nathan Camargo",
+      "full_name": "Nathan Camargo dos Santos",
+      "shirt_number": 20,
+      "position": "Volante",
+      "position_group": "Meio-campistas",
+      "birth_date": "2005-07-25",
+      "nationality": "Brasil",
+      "height_cm": 177,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1DOWb23dxFN7-RIwKFUJaR84hjETj-Uun",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Red Bull Bragantino",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Guarani",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Remo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1366063/nathan"
+        }
+      ]
+    },
+    {
+      "id": "vn_willian_maranhao",
+      "name": "Willian Maranhão",
+      "full_name": "Willian Marlon Ferreira Moraes",
+      "shirt_number": 8,
+      "position": "Volante",
+      "position_group": "Meio-campistas",
+      "birth_date": "1995-12-14",
+      "nationality": "Brasil",
+      "height_cm": 179,
+      "foot": "Canhoto",
+      "photo_source_url": "https://drive.google.com/drive/folders/17cQ1dAva7vz3TfC1Vg8c5PwDTnNmGgH4",
+      "instagram_url": null,
+      "club_history": [],
+      "club_history_status": "GAP",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/willian-maranhao/392636"
+        }
+      ]
+    },
+    {
+      "id": "vn_hayner",
+      "name": "Hayner",
+      "full_name": "Hayner William Monjardim Cordeiro",
+      "shirt_number": 22,
+      "position": "Lateral-direito",
+      "position_group": "Defensores",
+      "birth_date": "1995-10-02",
+      "nationality": "Brasil",
+      "height_cm": 178,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1EJqT3HlzQr9QLBYBA2ka29VKuH42qOVd",
+      "instagram_url": "https://www.instagram.com/hayner_27/",
+      "club_history": [
+        {
+          "period": null,
+          "team": "Bahia",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Náutico",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Paysandu",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Novorizontino",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Louletano",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cuiabá",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Azuriz",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Sport",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-GO",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Dnipro-1",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Coritiba",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Santos",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "CRB",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/765156/hayner"
+        }
+      ]
+    },
+    {
+      "id": "vn_higor_luiz",
+      "name": "Higor Luiz",
+      "full_name": "Higor Luiz de Souza",
+      "shirt_number": 6,
+      "position": "Lateral-esquerdo",
+      "position_group": "Defensores",
+      "birth_date": "2004-12-27",
+      "nationality": "Brasil",
+      "height_cm": 178,
+      "foot": "Canhoto",
+      "photo_source_url": "https://drive.google.com/drive/folders/11wzMc38L8_MR1lGkp2Bms3LrOhKkhHpt",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Paraná (base)",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Desportivo Brasil",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova (base)",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Iporá",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Grêmio Anápolis",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/higor/892455"
+        }
+      ]
+    },
+    {
+      "id": "vn_igor_carius",
+      "name": "Igor Cariús",
+      "full_name": "Igor Aquino da Silva",
+      "shirt_number": 16,
+      "position": "Lateral-esquerdo",
+      "position_group": "Defensores",
+      "birth_date": "1993-05-01",
+      "nationality": "Brasil",
+      "height_cm": 182,
+      "foot": "Canhoto",
+      "photo_source_url": "https://drive.google.com/drive/folders/1GQdJCYMjLz0nfDDbEsf5ntgQRvtTYKT8",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Barbalha",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Quixadá",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Coruripe",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "ASA",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Paraná",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "CRB",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-GO",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cuiabá",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Sport",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Mirassol",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/849501/igor-carius"
+        }
+      ]
+    },
+    {
+      "id": "vn_willian_formiga",
+      "name": "Willian Formiga",
+      "full_name": "Willian Prado Camargo",
+      "shirt_number": 13,
+      "position": "Lateral-esquerdo",
+      "position_group": "Defensores",
+      "birth_date": "1995-01-22",
+      "nationality": "Brasil",
+      "height_cm": 185,
+      "foot": "Canhoto",
+      "photo_source_url": "https://drive.google.com/drive/folders/1b1z1r4BamdaKB1fWdKU8hWFaOuWHu5Sk",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Cianorte",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Brusque",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vitória SC B",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Brasil de Pelotas",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Novorizontino",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ceará",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "CRB",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/815946/willian-formiga"
+        }
+      ]
+    },
+    {
+      "id": "vn_dodo",
+      "name": "Dodô",
+      "full_name": "Raphael Guimarães de Paula",
+      "shirt_number": 31,
+      "position": "Meia",
+      "position_group": "Meio-campistas",
+      "birth_date": "1994-09-05",
+      "nationality": "Brasil",
+      "height_cm": 171,
+      "foot": "Destro",
+      "photo_source_url": "https://drive.google.com/drive/folders/1a1ys6E1ARs78fH5r4YzIrzzgnES9LZMI",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Remo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Transfermarkt — Dodô",
+          "source_url": "https://www.transfermarkt.com/dodo/profil/spieler/281837"
+        },
+        {
+          "source_name": "oGol — Dodô",
+          "source_url": "https://www.ogol.com.br/jogador/dodo/364441"
+        }
+      ]
+    },
+    {
+      "id": "vn_marquinhos_gabriel",
+      "name": "Marquinhos Gabriel",
+      "full_name": "Marcos Gabriel do Nascimento",
+      "shirt_number": 10,
+      "position": "Meia",
+      "position_group": "Meio-campistas",
+      "birth_date": "1990-07-21",
+      "nationality": "Brasil",
+      "height_cm": 174,
+      "foot": "Canhoto",
+      "photo_source_url": "https://drive.google.com/drive/folders/1komt1l-3_ioXd__ssSPIezFiN8VvONyP",
+      "instagram_url": "https://www.instagram.com/marquinhosgabriel20/",
+      "club_history": [
+        {
+          "period": null,
+          "team": "Internacional",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Avaí",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Sport",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Bahia",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Palmeiras",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Al-Nassr",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Santos",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Corinthians",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Al-Nasr",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cruzeiro",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Athletico-PR",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vasco",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Criciúma",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Goiás",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Avaí",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/175644/marcos-gabriel-do-nascimento-marquinhos"
+        }
+      ]
+    },
+    {
+      "id": "vn_andre_luis",
+      "name": "André Luís",
+      "full_name": "André Luís da Costa Alfredo",
+      "shirt_number": 7,
+      "position": "Atacante",
+      "position_group": "Atacantes",
+      "birth_date": null,
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1qLpKcre5tXBhLLbts7S-Z5YthB9e86Pn?usp=drive_link",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Santa Cruz",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cianorte",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ponte Preta",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Corinthians",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Fortaleza",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Daejeon Hana Citizen",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-GO",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cuiabá",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Jeonbuk Hyundai Motors",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "birth_date",
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/656372/andr-luis"
+        }
+      ]
+    },
+    {
+      "id": "vn_bruno_xavier",
+      "name": "Bruno Xavier",
+      "full_name": "Bruno César Xavier Sislo",
+      "shirt_number": null,
+      "position": "Atacante",
+      "position_group": "Atacantes",
+      "birth_date": null,
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1mRNZOIVzXYq9aSuKzdzMUtPgGaBPQ-I1",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Portuguesa",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Nacional-SP",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Sport",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Corinthians",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Guarani",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Aves",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Juventude",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Juventus-SP",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Paraná",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Inter de Limeira",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Mirassol",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Santo André",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ferroviária",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Água Santa",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ituano",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vitória",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "birth_date",
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/players/881154/bruno-xavier"
+        }
+      ]
+    },
+    {
+      "id": "vn_dellatorre",
+      "name": "Dellatorre",
+      "full_name": "Guilherme Augusto Alves Dellatorre",
+      "shirt_number": 49,
+      "position": "Centroavante",
+      "position_group": "Atacantes",
+      "birth_date": null,
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1uPcYQu7jz93NxLdpBAxjlquur50zMVmK",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Rio Preto",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Internacional",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Porto B",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Athletico-PR",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Queens Park Rangers",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Suphanburi",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "APOEL",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Mirassol",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Brasil de Pelotas",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "CSA",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-GO",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Montedio Yamagata",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Mirassol",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Coritiba",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "birth_date",
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/278723/dellatorre"
+        }
+      ]
+    },
+    {
+      "id": "vn_emerson_urso",
+      "name": "Emerson Urso",
+      "full_name": "Emerson Lima Freitas",
+      "shirt_number": 70,
+      "position": "Ponta",
+      "position_group": "Atacantes",
+      "birth_date": "2001-05-13",
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1aColU7bINv8-9wvhJ4WGEpiucXTXYWNs",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "São Caetano",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Santo André",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Audax Rio",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Resende",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ituano",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Botafogo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1446567/emerson-urso"
+        }
+      ]
+    },
+    {
+      "id": "vn_everton_galdino",
+      "name": "Éverton Galdino",
+      "full_name": "Everton Galdino Moreira",
+      "shirt_number": 17,
+      "position": "Atacante",
+      "position_group": "Atacantes",
+      "birth_date": null,
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1xih0oMcEYTLl_Ixg3wUPNkZC0ZYLaejx",
+      "instagram_url": "https://www.instagram.com/evertongaldinoo/",
+      "club_history": [
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Tombense",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ponte Preta",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Figueirense",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Tombense",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Grêmio",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "FC Tokyo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Mirassol",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "birth_date",
+        "height_cm",
+        "foot"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1034321/everton"
+        }
+      ]
+    },
+    {
+      "id": "vn_gustavo_puskas",
+      "name": "Gustavo Puskas",
+      "full_name": "Gustavo Puskas Pinheiro Lemos",
+      "shirt_number": 9,
+      "position": "Centroavante",
+      "position_group": "Atacantes",
+      "birth_date": null,
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1GnKDSPZ_8b1KO78FmA9KOhwKB-MqWBEj",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Aymorés",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "birth_date",
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1935530/gustavo-puskas"
+        }
+      ]
+    },
+    {
+      "id": "vn_janderson",
+      "name": "Janderson",
+      "full_name": "Janderson Santos de Souza",
+      "shirt_number": 99,
+      "position": "Atacante",
+      "position_group": "Atacantes",
+      "birth_date": "1999-02-26",
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1dKYe1O_Z8eN9pBp9D8bTTJEJq-_0aGi8",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Joinville",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Corinthians",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-GO",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Grêmio",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Ceará",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Atlético-GO",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Remo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/players/1045975/janderson"
+        }
+      ]
+    },
+    {
+      "id": "vn_lincoln",
+      "name": "Lincoln",
+      "full_name": "Lincoln Corrêa dos Santos",
+      "shirt_number": null,
+      "position": "Centroavante",
+      "position_group": "Atacantes",
+      "birth_date": null,
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": null,
+      "instagram_url": "https://www.instagram.com/lincoln9/",
+      "club_history": [
+        {
+          "period": null,
+          "team": "Flamengo",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vissel Kobe",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cruzeiro",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "SCR Altach",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Athletic-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Spartak Subotica",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "birth_date",
+        "height_cm",
+        "foot"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/lincoln/547764"
+        }
+      ]
+    },
+    {
+      "id": "vn_rafa_silva",
+      "name": "Rafa Silva",
+      "full_name": "Rafael da Silva",
+      "shirt_number": null,
+      "position": "Centroavante",
+      "position_group": "Atacantes",
+      "birth_date": null,
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/19MNQ_c24EsoRe1e9afbfZT_GEFYSSZVG",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "Coritiba",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Lugano",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Albirex Niigata",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Urawa Reds",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Wuhan",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cruzeiro",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Jeonbuk Hyundai Motors",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Cruzeiro",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Mirassol",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "América-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "birth_date",
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/323400/rafael-silva"
+        }
+      ]
+    },
+    {
+      "id": "vn_ryan",
+      "name": "Ryan",
+      "full_name": "Ryan Aparecido Lima Cassiano",
+      "shirt_number": 11,
+      "position": "Ponta",
+      "position_group": "Atacantes",
+      "birth_date": "2001-06-18",
+      "nationality": "Brasil",
+      "height_cm": null,
+      "foot": null,
+      "photo_source_url": "https://drive.google.com/drive/folders/1Tqo-wDB7a6JwuPaMFaihqhP-NKg8lxDh",
+      "instagram_url": null,
+      "club_history": [
+        {
+          "period": null,
+          "team": "New England Revolution II",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "IAPE",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Moto Club",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Athletic-MG",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Maranhão",
+          "loan": null
+        },
+        {
+          "period": null,
+          "team": "Vila Nova",
+          "loan": null
+        }
+      ],
+      "club_history_status": "REVIEW",
+      "status": "READY",
+      "missing_fields": [
+        "height_cm",
+        "foot",
+        "instagram_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1346859"
+        }
+      ]
+    }
+  ],
+  "technical_staff": [
+    {
+      "name": "Alarcon Pacheco",
+      "role": "Diretor de Futebol",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Wagner Bueno",
+      "role": "Gerente de Futebol",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Guto Ferreira",
+      "role": "Técnico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Juca Antonello",
+      "role": "Auxiliar Técnico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Weligton Robson",
+      "role": "Auxiliar Técnico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "André Luís Ferreira",
+      "role": "Auxiliar Técnico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Ariel Mamede",
+      "role": "Auxiliar Técnico Permanente",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Jorge Soter",
+      "role": "Preparador Físico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Danny Sérgio",
+      "role": "Preparador Físico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Lauro Araújo",
+      "role": "Preparador de Goleiros",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Felipe Augusto",
+      "role": "Auxiliar de Preparação de Goleiros",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "José Carlos Júnior (Junão)",
+      "role": "Fisiologista",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Romildo Colherinhas",
+      "role": "Fisioterapeuta",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Pedro Novaes",
+      "role": "Fisioterapeuta",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Paulo César Ventura",
+      "role": "Fisioterapeuta",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Almir Carlos",
+      "role": "Massagista",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Leonardo Mello",
+      "role": "Médico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Divino Júnior",
+      "role": "Médico",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Núbia Melo",
+      "role": "Nutricionista",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "João Pedro Sartori",
+      "role": "Analista de Desempenho",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Josias Nilson",
+      "role": "Analista de Desempenho",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Iury Aguiar",
+      "role": "Analista de Mercado",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Waysser Loos",
+      "role": "Analista de Dados",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Marcelo Tilico",
+      "role": "Roupeiro",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    },
+    {
+      "name": "Odenir Boliviano",
+      "role": "Roupeiro",
+      "photo_url": null,
+      "status": "READY",
+      "source_name": "Vila Nova FC — Comissão Técnica",
+      "source_url": "https://www.vilanovafc.com.br/comissao-tecnica"
+    }
+  ],
+  "arrivals_recent": [
+    {
+      "name": "Douglas Mendes",
+      "date": "2026-06-30",
+      "from": "Red Bull Bragantino / exterior",
+      "type": null,
+      "status": "READY",
+      "source_name": "ge",
+      "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml"
+    },
+    {
+      "name": "Jonathan Costa",
+      "date": "2026-09-01",
+      "from": "Guarani",
+      "type": "empréstimo",
+      "status": "READY",
+      "source_name": "ge",
+      "source_url": "https://ge.globo.com/sp/campinas-e-regiao/futebol/noticia/2026/09/01/guarani-acerta-emprestimo-de-zagueiro-para-o-vila-nova.ghtml"
+    }
+  ],
+  "departures_recent": [],
+  "departures_recent_status": "GAP",
+  "notes": [
+    "O status READY de cada jogador confirma pertencimento ao elenco e identidade/posição conforme o site oficial. Campos biográficos ausentes permanecem null e listados em missing_fields; isso não é preenchido por inferência.",
+    "club_history é uma trilha de clubes para pesquisa/editoria; os períodos não foram auditados individualmente neste lote e por isso cada histórico está REVIEW."
+  ],
+  "conflicts": [
+    {
+      "player_id": "vn_breno_bora",
+      "field": "birth_date",
+      "values": [
+        {
+          "value": "2002-05-22",
+          "source": "corpo de perfil/Transfermarkt"
+        },
+        {
+          "value": "2006-02-07",
+          "source": "tabela de página secundária"
+        }
+      ],
+      "resolution": "Manter 2002-05-22; registrar conflito até conferência documental/CBF.",
+      "status": "REVIEW"
+    },
+    {
+      "player_id": "vn_willian_formiga",
+      "field": "birth_date",
+      "values": [
+        {
+          "value": "1995-01-22",
+          "source": "Transfermarkt/FotMob"
+        },
+        {
+          "value": "1995-01-21",
+          "source": "Premium League"
+        }
+      ],
+      "resolution": "Usar 1995-01-22 provisoriamente; conflito permanece documentado.",
+      "status": "REVIEW"
+    },
+    {
+      "player_id": "vn_higor_meritao",
+      "field": "height_cm",
+      "values": [
+        {
+          "value": 186,
+          "source": "Transfermarkt"
+        },
+        {
+          "value": 184,
+          "source": "perfil de agente"
+        }
+      ],
+      "resolution": "height_cm=null até fonte mais forte.",
+      "status": "REVIEW"
+    }
+  ],
+  "photo_coverage": {
+    "official_photo_folder": 29,
+    "no_official_photo_folder": [
+      "Jonathan Costa",
+      "Lincoln"
+    ],
+    "status": "READY"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "onefootball_team_id": 2865,
+  "onefootball_team_slug": "vila-nova",
+  "onefootball_team_url": "https://onefootball.com.br/pt-br/time/vila-nova-2865",
+  "onefootball_primary_competition_name": "Brasileirão Série B Superbet",
+  "onefootball_primary_competition_slug": null,
+  "onefootball_competition_status": "REVIEW",
+  "official_site_url": "https://www.vilanovafc.com.br/",
+  "news_page_url": "https://www.vilanovafc.com.br/noticias",
+  "news_structure": {
+    "item_pattern": "/noticias/<id>-<slug>",
+    "exposes_title": true,
+    "exposes_posted_at": true,
+    "exposes_image": true,
+    "pagination": null,
+    "rss": null,
+    "status": "REVIEW"
+  },
+  "instagram_url": "https://www.instagram.com/vilanovafc/",
+  "youtube_url": null,
+  "tiktok_url": "https://www.tiktok.com/@vilanovafc",
+  "facebook_url": "https://www.facebook.com/vilanovafc/",
+  "x_url": "https://twitter.com/VilaNovaFC",
+  "contact_whatsapp": null,
+  "store_url": "https://www.lojadovila.com.br/",
+  "membership_url": "https://vilanova.ingressosa.com.br/",
+  "membership_legacy_url": "https://sociotigrao.com.br/",
+  "tickets_url": "https://www.ingressosa.com/",
+  "store_pickup_addresses": [
+    {
+      "name": "Nação Colorada — OBA",
+      "address": "Rua 256, nº 120, Setor Universitário, Goiânia-GO",
+      "status": "READY"
+    },
+    {
+      "name": "Nação Colorada — Buriti Shopping",
+      "address": "Av. Rio Verde, Qd. 102/104, Piso 2, Vila São Tomaz, Aparecida de Goiânia-GO",
+      "status": "READY"
+    },
+    {
+      "name": "Nação Colorada — CT",
+      "address": "Avenida Ubirajara Berocan Leite, s/n, Setor Rasmussem, Goiânia-GO, CEP 74674-025",
+      "status": "READY"
+    }
+  ],
+  "external_ids": {
+    "ogol_team_id": null,
+    "zerozero_team_id": null
+  },
+  "status": "REVIEW",
+  "sources": [
+    {
+      "source_name": "Vila Nova FC — site oficial",
+      "source_url": "https://www.vilanovafc.com.br/"
+    },
+    {
+      "source_name": "Vila Nova FC — ingressos 2026",
+      "source_url": "https://www.vilanovafc.com.br/noticias/545-venda-de-ingressos-vila-nova-x-sport-recife-serie-b-2026"
+    },
+    {
+      "source_name": "OneFootball — Vila Nova",
+      "source_url": "https://onefootball.com.br/pt-br/time/vila-nova-2865"
+    }
+  ]
+}

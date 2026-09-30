@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "titles": [
+    {
+      "competition": "Campeonato Brasileiro — Série C / Terceira Divisão",
+      "years": [
+        1996,
+        2015,
+        2020
+      ],
+      "count": 3,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Campeonato Goiano",
+      "years": [
+        1961,
+        1962,
+        1963,
+        1969,
+        1973,
+        1977,
+        1978,
+        1979,
+        1980,
+        1982,
+        1984,
+        1993,
+        1995,
+        2001,
+        2005,
+        2025
+      ],
+      "count": 16,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Copa Goiás",
+      "years": [
+        1969,
+        1971,
+        1976
+      ],
+      "count": 3,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Copa Leonino Caiado",
+      "years": [
+        1977,
+        1979,
+        1981
+      ],
+      "count": 3,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Taça Cidade de Goiânia",
+      "years": [
+        1961,
+        1962,
+        1972
+      ],
+      "count": 3,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Taça Goiás",
+      "years": [
+        1966
+      ],
+      "count": 1,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Torneio Goiânia-Anápolis",
+      "years": [
+        1963,
+        1964
+      ],
+      "count": 2,
+      "status": "REVIEW",
+      "review_reason": "Classificação oficial/amistosa ainda não auditada fora do acervo do clube.",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Torneio Início Goiano",
+      "years": [
+        1961,
+        1963,
+        1965,
+        1967,
+        1969,
+        1972,
+        1973
+      ],
+      "count": 7,
+      "status": "REVIEW",
+      "review_reason": "Confirmado no acervo oficial; falta classificar natureza oficial em fonte federativa.",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    },
+    {
+      "competition": "Segunda Divisão Goiana",
+      "years": [
+        2000,
+        2015
+      ],
+      "count": 2,
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — Títulos",
+          "source_url": "https://www.vilanovafc.com.br/titulos"
+        }
+      ]
+    }
+  ],
+  "historical_campaigns": [
+    {
+      "competition": "Copa Verde",
+      "year": 2021,
+      "result": "RUNNER_UP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "CBF — Copa Verde",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/noticias/copa-verde"
+        }
+      ]
+    },
+    {
+      "competition": "Copa Verde",
+      "year": 2022,
+      "result": "RUNNER_UP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "CBF — Copa Verde",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/noticias/copa-verde"
+        }
+      ]
+    },
+    {
+      "competition": "Copa Verde",
+      "year": 2024,
+      "result": "RUNNER_UP",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "CBF — Copa Verde",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/noticias/copa-verde"
+        }
+      ]
+    },
+    {
+      "competition": "Copa Centro-Oeste",
+      "year": 1999,
+      "result": "RUNNER_UP",
+      "status": "REVIEW",
+      "sources": [
+        {
+          "source_name": "Arquivos de futebol — compilação histórica",
+          "source_url": "https://arquivosfutebolbrasil.com.br/"
+        }
+      ]
+    },
+    {
+      "competition": "Copa Centro-Oeste",
+      "year": 2000,
+      "result": "RUNNER_UP",
+      "status": "REVIEW",
+      "sources": [
+        {
+          "source_name": "Arquivos de futebol — compilação histórica",
+          "source_url": "https://arquivosfutebolbrasil.com.br/"
+        }
+      ]
+    },
+    {
+      "competition": "Copa Centro-Oeste",
+      "year": 2001,
+      "result": "RUNNER_UP",
+      "status": "REVIEW",
+      "sources": [
+        {
+          "source_name": "Arquivos de futebol — compilação histórica",
+          "source_url": "https://arquivosfutebolbrasil.com.br/"
+        }
+      ]
+    }
+  ],
+  "friendly_tournaments": [],
+  "review_candidates": [
+    {
+      "competition": "Taça João Paulo II",
+      "years": [
+        1980
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    },
+    {
+      "competition": "Torneio Diário Associados",
+      "years": [
+        1961,
+        1962
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    },
+    {
+      "competition": "Troféu Independência",
+      "years": [
+        1972
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    },
+    {
+      "competition": "Torneio Otávio Lage",
+      "years": [
+        1967
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    },
+    {
+      "competition": "Quadrangular Internacional Joaquim Coelho",
+      "years": [
+        1970
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    },
+    {
+      "competition": "Quadrangular João de Brito Guimarães",
+      "years": [
+        1967
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    },
+    {
+      "competition": "Torneio Escola Técnica Federal Goiás",
+      "years": [
+        1976
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    },
+    {
+      "competition": "Torneio Seletivo Brasileiro 1ª Divisão",
+      "years": [
+        1977
+      ],
+      "reason": "Acervo oficial confirma título; natureza oficial/amistosa não auditada."
+    }
+  ]
+}

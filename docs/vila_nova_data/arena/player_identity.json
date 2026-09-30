@@ -1,0 +1,1203 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "dimensions": [
+    "visao_criacao",
+    "um_contra_um",
+    "presenca_area",
+    "seguranca_defensiva",
+    "leitura_tatica",
+    "verticalidade",
+    "lideranca",
+    "intensidade"
+  ],
+  "trait_methodology": "Traits de 0 a 10 são normalização editorial para o jogo, não métricas oficiais. Cada nota deriva apenas dos fatos citados em trait_evidence; notas baixas representam menor ênfase documentada naquela dimensão, não uma afirmação de incapacidade técnica.",
+  "profiles": [
+    {
+      "id": "vn_player_profile_alan_mineiro",
+      "name": "Alan Mineiro",
+      "position": "Meia",
+      "traits": [
+        10,
+        8,
+        7,
+        2,
+        8,
+        6,
+        8,
+        6
+      ],
+      "identity": [
+        "armador",
+        "decisivo",
+        "técnico",
+        "protagonista"
+      ],
+      "evidence": [
+        "Foi descrito pelo ge como principal armador das jogadas de ataque e marcou 45 gols em 156 jogos pelo Vila.",
+        "Na reta final da Série C de 2020, voltou a ser peça fundamental e marcou em jogos decisivos rumo ao título."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "O ge o descreve explicitamente como principal armador das jogadas de ataque.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "A nota editorial parte da função de meia ofensivo/armador documentada pela fonte; não representa estatística de dribles.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "Além de armar, marcou 45 gols em 156 jogos pelo Vila, produção incomum para um meia.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "A função documentada é de meia/armador; não há evidência de que a proteção defensiva fosse sua função primária.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "Virou peça fundamental do time após a chegada de Márcio Fernandes na campanha do título de 2020.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/protagonista-novamente-alan-mineiro-escreve-historia-de-idolo-no-vila-mas-tem-futuro-indefinido.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "A produção de gols e protagonismo ofensivo sustentam nota intermediária de progressão/agressão ao gol.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "É tratado pela fonte como maior ídolo do clube desde 2017 e principal jogador do período.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Não há métrica física específica; nota intermediária é conservadora e baseada apenas na participação recorrente em jogos decisivos.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/protagonista-novamente-alan-mineiro-escreve-historia-de-idolo-no-vila-mas-tem-futuro-indefinido.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — saída e legado de Alan Mineiro",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml"
+        },
+        {
+          "source_name": "ge — protagonista na Série C 2020",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/protagonista-novamente-alan-mineiro-escreve-historia-de-idolo-no-vila-mas-tem-futuro-indefinido.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_rafael_donato",
+      "name": "Rafael Donato",
+      "position": "Zagueiro",
+      "traits": [
+        3,
+        2,
+        9,
+        10,
+        8,
+        3,
+        10,
+        8
+      ],
+      "identity": [
+        "capitão",
+        "jogo aéreo",
+        "solidez",
+        "liderança"
+      ],
+      "evidence": [
+        "Foi capitão e um dos líderes do Vila, com 182 jogos e 18 gols entre 2020 e 2023.",
+        "Em 2021 fez 51 jogos e cinco gols, reforçando a presença ofensiva em bolas aéreas apesar da função de zagueiro."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "Zagueiro de função primariamente defensiva; não há fonte apontando criação como característica central.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "A fonte o identifica como zagueiro e líder; a nota baixa evita atribuir drible como característica sem evidência.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "Marcou 18 gols em 182 jogos pelo Vila e cinco gols só em 2021, forte evidência de presença ofensiva para um zagueiro.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "Foi capitão e pilar defensivo durante quatro temporadas, incluindo o título da Série C de 2020.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "A longevidade como titular/capitão em quatro temporadas sustenta nota alta de leitura e posicionamento.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Como zagueiro, a progressão ofensiva não aparece como função central nas fontes; nota baixa é conservadora.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "O ge o chama explicitamente de capitão e um dos líderes do Vila.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Disputou 51 partidas em 2021 e 46 em 2023, evidência de alta disponibilidade competitiva.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/rafael-donato-e-bruno-collaco-renovam-e-ficam-no-vila-nova-ate-o-fim-de-2022.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — despedida de Rafael Donato",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml"
+        },
+        {
+          "source_name": "ge — renovação 2022",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/rafael-donato-e-bruno-collaco-renovam-e-ficam-no-vila-nova-ate-o-fim-de-2022.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_alesson",
+      "name": "Alesson",
+      "position": "Atacante",
+      "traits": [
+        6,
+        8,
+        9,
+        3,
+        6,
+        8,
+        6,
+        8
+      ],
+      "identity": [
+        "agressivo",
+        "produtivo",
+        "versátil",
+        "participativo"
+      ],
+      "evidence": [
+        "Em 2024 registrou 20 gols e 10 assistências; o próprio jogador citou evolução física, técnica, tática e mental.",
+        "Foi eleito um dos melhores atacantes do Campeonato Goiano de 2024."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "Deu 10 assistências em 2024, evidência objetiva de contribuição criativa.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "Atuava como atacante e foi eleito entre os melhores da posição no Goiano; nota alta é editorial e não equivale a métrica de dribles.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "Marcou 20 gols na temporada de 2024.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "A função documentada é ofensiva; não há evidência para atribuir papel defensivo central.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "O atleta destacou evolução tática e produção de 30 participações em gols durante a temporada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "A combinação de 20 gols e 10 assistências como atacante sustenta perfil ofensivo direto.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "O protagonismo estatístico foi alto, mas não há fonte que o identifique como capitão; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "O próprio jogador destacou evolução física e atuação em alta performance em 2024.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — balanço de Alesson em 2024",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_ralf",
+      "name": "Ralf",
+      "position": "Volante",
+      "traits": [
+        3,
+        2,
+        2,
+        10,
+        10,
+        4,
+        10,
+        9
+      ],
+      "identity": [
+        "marcação",
+        "experiência",
+        "regularidade",
+        "proteção"
+      ],
+      "evidence": [
+        "Chegou a 84 jogos pelo Vila ao fim de 2023 e foi descrito como peça importante e regular mesmo aos 39 anos.",
+        "Atuou como volante e renovou para uma terceira temporada no clube."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "A função documentada é de volante de proteção; não há fonte no lote atribuindo criação como característica principal.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "Sem evidência de drible como função central; nota baixa é conservadora.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "A fonte destaca regularidade e função de volante, não produção ofensiva; nota baixa evita inferência.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "Volante veterano e peça importante, com 84 jogos pelo Vila até 2023.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "A regularidade aos 39 anos em posição de proteção sustenta forte componente de leitura/posicionamento.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Não há evidência de progressão ofensiva como traço central; nota moderada-baixa.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "A experiência e o papel de referência no elenco são documentados pela permanência como peça importante por três temporadas.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "A fonte ressalta regularidade ao longo de 2023 apesar da idade avançada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — renovação de Ralf",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_henrique_almeida",
+      "name": "Henrique Almeida",
+      "position": "Atacante",
+      "traits": [
+        3,
+        3,
+        10,
+        2,
+        8,
+        5,
+        6,
+        6
+      ],
+      "identity": [
+        "faro de gol",
+        "posicionamento",
+        "área",
+        "decisivo"
+      ],
+      "evidence": [
+        "Márcio Fernandes destacou explicitamente o excelente posicionamento de Henrique Almeida dentro da área.",
+        "Marcou gols decisivos nos acréscimos contra Operário-PR e Novorizontino em 2024."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "As fontes o tratam como atacante de conclusão; criação não aparece como responsabilidade central.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "A evidência disponível enfatiza posicionamento, não drible; nota baixa é conservadora.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "O técnico destacou explicitamente seu excelente posicionamento dentro da área e faro para estar no lugar certo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "Atacante de referência; não há evidência de papel defensivo primário.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "O elogio específico ao posicionamento sustenta nota alta de leitura espacial ofensiva.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Dois gols decisivos saindo do banco mostram capacidade de atacar a área, mas não sustentam nota máxima de progressão.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "Não há fonte neste lote que o trate como capitão; nota intermediária-baixa.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Entrou no fim de partidas e conseguiu decidir; há evidência de impacto, não de volume físico contínuo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — posicionamento e gols decisivos de Henrique Almeida",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_willian_formiga",
+      "name": "Willian Formiga",
+      "position": "Lateral-esquerdo",
+      "traits": [
+        4,
+        5,
+        4,
+        9,
+        8,
+        7,
+        6,
+        9
+      ],
+      "identity": [
+        "equilíbrio",
+        "regularidade",
+        "defesa",
+        "apoio"
+      ],
+      "evidence": [
+        "O próprio jogador afirmou ter 'muito potencial defensivo' e se cobrar para contribuir mais no ataque.",
+        "Disputou os 11 primeiros jogos da Série B de 2021 e foi descrito como bastante regular."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "Como lateral, a fonte fala em ajudar no ataque e no último passe, mas não em ser organizador central.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "A função lateral permite duelos de corredor; nota intermediária sem extrapolar para métrica de dribles.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "A participação ofensiva aparece mais em apoio e chegada do que presença de área; nota baixa-moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "O próprio atleta declara ter muito potencial defensivo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "Regularidade e sequência como titular sustentam nota alta de posicionamento/decisão no corredor.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Ele próprio afirmou que poderia subir com mais frequência e ajudar o setor ofensivo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "Não há evidência explícita de capitania no lote; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Foi descrito como bastante regular e afirmou trabalhar para estar 100% para ajudar a equipe.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — Formiga sobre equilíbrio defesa/ataque",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_joao_vieira",
+      "name": "João Vieira",
+      "position": "Meio-campista",
+      "traits": [
+        9,
+        6,
+        7,
+        8,
+        9,
+        8,
+        8,
+        9
+      ],
+      "identity": [
+        "completo",
+        "criador",
+        "intenso",
+        "equilibrado"
+      ],
+      "evidence": [
+        "Em agosto de 2026 liderava o Vila em participações diretas em gols, com 8 gols e 8 assistências em 34 partidas.",
+        "No clássico de setembro deu duas assistências, completou 28/32 passes, recuperou sete bolas e não sofreu dribles."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "Liderava participações em gols e somava oito assistências em 34 jogos; no clássico deu duas assistências.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/08/06/lider-de-participacoes-em-gols-joao-vieira-mira-acesso-com-o-vila-nova.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "A evidência disponível é mais de passe e recuperação do que de drible; nota intermediária.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/12/destaque-no-classico-joao-vieira-mira-sequencia-positiva-pelo-vila-nova.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "Oito gols em 34 partidas até agosto de 2026 mostram chegada ofensiva relevante para um meio-campista.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/08/06/lider-de-participacoes-em-gols-joao-vieira-mira-acesso-com-o-vila-nova.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "Contra o Goiás recuperou sete bolas e não sofreu nenhum drible.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/12/destaque-no-classico-joao-vieira-mira-sequencia-positiva-pelo-vila-nova.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "Combina criação e recuperação, com alta participação em gols e bom volume de passes.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/12/destaque-no-classico-joao-vieira-mira-sequencia-positiva-pelo-vila-nova.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Gols + assistências em volume alto sustentam perfil que acelera a produção ofensiva.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/08/06/lider-de-participacoes-em-gols-joao-vieira-mira-acesso-com-o-vila-nova.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "Era o jogador que mais atuou pelo Vila em 2026 no recorte de agosto e assumia responsabilidade na campanha.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/08/06/lider-de-participacoes-em-gols-joao-vieira-mira-acesso-com-o-vila-nova.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Maior número de partidas da equipe no recorte e sete recuperações em clássico sustentam nota alta.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/08/06/lider-de-participacoes-em-gols-joao-vieira-mira-acesso-com-o-vila-nova.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — João Vieira líder de participações em gols",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/08/06/lider-de-participacoes-em-gols-joao-vieira-mira-acesso-com-o-vila-nova.ghtml"
+        },
+        {
+          "source_name": "ge — atuação no clássico",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/12/destaque-no-classico-joao-vieira-mira-sequencia-positiva-pelo-vila-nova.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_marquinhos_gabriel",
+      "name": "Marquinhos Gabriel",
+      "position": "Meia",
+      "traits": [
+        10,
+        6,
+        5,
+        3,
+        9,
+        6,
+        10,
+        6
+      ],
+      "identity": [
+        "criador",
+        "experiente",
+        "líder",
+        "passe"
+      ],
+      "evidence": [
+        "Na apresentação, declarou querer contribuir com assistências, passes, experiência e liderança dentro e fora de campo.",
+        "Chegou após temporada de 2025 com 47 jogos, quatro gols e sete assistências pelo Avaí."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "O próprio jogador cita assistências e passes como formas centrais de contribuição.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "A fonte enfatiza passe e experiência, não drible; nota intermediária.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "Fez quatro gols em 47 jogos em 2025; produção existe, mas o perfil principal é criação.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "Meia de criação; não há evidência de que proteção defensiva seja a função primária.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "Experiência em grandes clubes e intenção de orientar jovens sustentam forte leitura/entendimento do jogo.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Assistências e passes sustentam progressão, porém a fonte não o descreve como jogador de transição máxima.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "O próprio jogador afirma que pretende exercer liderança e ajudar os jovens, assumindo papel que fora de Ralf.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Não há métrica física específica na fonte; nota intermediária é conservadora.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — apresentação de Marquinhos Gabriel",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_andre_luis",
+      "name": "André Luís",
+      "position": "Atacante",
+      "traits": [
+        5,
+        7,
+        10,
+        3,
+        7,
+        9,
+        6,
+        8
+      ],
+      "identity": [
+        "referência móvel",
+        "pivô",
+        "decisivo",
+        "versátil"
+      ],
+      "evidence": [
+        "Atacante originalmente de lado, passou a atuar como centroavante e marcou três gols em quatro rodadas em junho de 2026.",
+        "Contra o América-MG decidiu fazendo pivô na área, girando e finalizando; chegou a oito gols na Série B em setembro."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "Atacante versátil, mas as fontes destacam mais conclusão do que organização; nota média.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/25/andre-luis-aproveita-chance-como-centroavante-e-vive-melhor-fase-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "Veio de função pelos lados e demonstrou giro/pivô em jogada decisiva; nota alta sem tratá-la como métrica de drible.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/19/andre-luis-celebra-mais-um-gol-decisivo-pelo-vila-e-diz-viver-melhor-momento-da-carreira.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "Foi convertido em centroavante e virou referência, com oito gols na Série B até 19/09.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/19/andre-luis-celebra-mais-um-gol-decisivo-pelo-vila-e-diz-viver-melhor-momento-da-carreira.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "Atacante de referência; sem evidência de papel defensivo central.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/25/andre-luis-aproveita-chance-como-centroavante-e-vive-melhor-fase-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "Adaptou-se de atacante de lado a centroavante e executou pivô/ataque à área com eficiência.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/19/andre-luis-celebra-mais-um-gol-decisivo-pelo-vila-e-diz-viver-melhor-momento-da-carreira.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Produção decisiva de gols e origem como atacante de lado sustentam nota alta.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/25/andre-luis-aproveita-chance-como-centroavante-e-vive-melhor-fase-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "Protagonismo ofensivo alto, mas sem evidência explícita de capitania; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/19/andre-luis-celebra-mais-um-gol-decisivo-pelo-vila-e-diz-viver-melhor-momento-da-carreira.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Sequência de três gols em quatro rodadas e adaptação de função em meio a lesões do elenco sustentam nota alta.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/25/andre-luis-aproveita-chance-como-centroavante-e-vive-melhor-fase-no-vila-nova.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — André Luís como centroavante",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/25/andre-luis-aproveita-chance-como-centroavante-e-vive-melhor-fase-no-vila-nova.ghtml"
+        },
+        {
+          "source_name": "ge — gol decisivo contra América-MG",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/19/andre-luis-celebra-mais-um-gol-decisivo-pelo-vila-e-diz-viver-melhor-momento-da-carreira.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_player_profile_janderson",
+      "name": "Janderson",
+      "position": "Atacante",
+      "traits": [
+        8,
+        9,
+        5,
+        4,
+        7,
+        10,
+        6,
+        9
+      ],
+      "identity": [
+        "vertical",
+        "assistente",
+        "agressivo",
+        "móvel"
+      ],
+      "evidence": [
+        "Na 14ª rodada da Série B 2026 tinha quatro gols e quatro assistências e liderava o elenco em assistências.",
+        "Marcou dois gols no 4 a 3 sobre o Náutico e somava oito participações diretas em gols no campeonato."
+      ],
+      "trait_evidence": [
+        {
+          "dimension": "visao_criacao",
+          "fact": "Liderava o elenco em assistências na Série B com quatro no recorte da 14ª rodada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "um_contra_um",
+          "fact": "Atacante de lado/móvel e produtor de gols e assistências; nota alta é normalização editorial, não métrica de dribles.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "presenca_area",
+          "fact": "Marcou quatro gols até a 14ª rodada, mas seu perfil estatístico divide produção com assistências.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "seguranca_defensiva",
+          "fact": "Não há evidência de papel defensivo central; nota baixa-moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "leitura_tatica",
+          "fact": "Produção equilibrada entre gols e assistências mostra capacidade de escolher entre finalizar e servir.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "verticalidade",
+          "fact": "Dois gols em jogo de sete gols e oito participações diretas até a 14ª rodada sustentam perfil de agressão ofensiva.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "lideranca",
+          "fact": "Protagonismo ofensivo, mas sem evidência de capitania; nota moderada.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        },
+        {
+          "dimension": "intensidade",
+          "fact": "Sequência decisiva e alto volume de participações ofensivas sustentam nota alta.",
+          "source_name": "ge",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — Janderson gols e assistências na Série B 2026",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "vn_player_identity_q01",
+      "text": "Seu time recupera a bola no meio. Qual é sua primeira reação?",
+      "options": [
+        {
+          "text": "Levanto a cabeça e procuro o passe que quebra a linha.",
+          "effects": {
+            "visao_criacao": 3,
+            "leitura_tatica": 2
+          }
+        },
+        {
+          "text": "Acelero no corredor e ataco o espaço.",
+          "effects": {
+            "verticalidade": 3,
+            "intensidade": 2
+          }
+        },
+        {
+          "text": "Garanto a cobertura antes de qualquer coisa.",
+          "effects": {
+            "seguranca_defensiva": 3,
+            "leitura_tatica": 2
+          }
+        },
+        {
+          "text": "Corro para ocupar a área e terminar a jogada.",
+          "effects": {
+            "presenca_area": 3,
+            "verticalidade": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q02",
+      "text": "Em um jogo travado, onde você acredita que faz mais diferença?",
+      "options": [
+        {
+          "text": "Encontrando um passe que ninguém viu.",
+          "effects": {
+            "visao_criacao": 3
+          }
+        },
+        {
+          "text": "Vencendo meu marcador no duelo individual.",
+          "effects": {
+            "um_contra_um": 3,
+            "verticalidade": 1
+          }
+        },
+        {
+          "text": "Antecipando a jogada do adversário.",
+          "effects": {
+            "leitura_tatica": 3,
+            "seguranca_defensiva": 2
+          }
+        },
+        {
+          "text": "Estando no lugar certo quando a bola sobra.",
+          "effects": {
+            "presenca_area": 3,
+            "leitura_tatica": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q03",
+      "text": "Seu time está vencendo por um gol nos minutos finais. O que mais combina com você?",
+      "options": [
+        {
+          "text": "Controlar a posse e escolher o passe seguro.",
+          "effects": {
+            "visao_criacao": 2,
+            "leitura_tatica": 3
+          }
+        },
+        {
+          "text": "Pressionar alto para não deixar o rival respirar.",
+          "effects": {
+            "intensidade": 3,
+            "verticalidade": 1
+          }
+        },
+        {
+          "text": "Proteger a entrada da área e ganhar os duelos.",
+          "effects": {
+            "seguranca_defensiva": 3,
+            "lideranca": 1
+          }
+        },
+        {
+          "text": "Ficar pronto para matar o jogo no contra-ataque.",
+          "effects": {
+            "verticalidade": 3,
+            "um_contra_um": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q04",
+      "text": "Qual jogada te dá mais satisfação?",
+      "options": [
+        {
+          "text": "Uma assistência que deixa o companheiro na cara do gol.",
+          "effects": {
+            "visao_criacao": 3
+          }
+        },
+        {
+          "text": "Um desarme limpo que encerra um ataque perigoso.",
+          "effects": {
+            "seguranca_defensiva": 3
+          }
+        },
+        {
+          "text": "Um drible que desmonta a marcação.",
+          "effects": {
+            "um_contra_um": 3
+          }
+        },
+        {
+          "text": "Um gol de primeira dentro da área.",
+          "effects": {
+            "presenca_area": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q05",
+      "text": "Quando o jogo fica emocional, você tende a…",
+      "options": [
+        {
+          "text": "Chamar a responsabilidade e orientar os companheiros.",
+          "effects": {
+            "lideranca": 3,
+            "leitura_tatica": 1
+          }
+        },
+        {
+          "text": "Aumentar o ritmo e disputar cada bola.",
+          "effects": {
+            "intensidade": 3
+          }
+        },
+        {
+          "text": "Diminuir a velocidade para organizar a equipe.",
+          "effects": {
+            "visao_criacao": 2,
+            "leitura_tatica": 2
+          }
+        },
+        {
+          "text": "Atacar ainda mais o espaço nas costas da defesa.",
+          "effects": {
+            "verticalidade": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q06",
+      "text": "Qual seria sua principal contribuição sem a bola?",
+      "options": [
+        {
+          "text": "Cobrir espaços e proteger a defesa.",
+          "effects": {
+            "seguranca_defensiva": 3,
+            "leitura_tatica": 2
+          }
+        },
+        {
+          "text": "Pressionar imediatamente quem recebeu.",
+          "effects": {
+            "intensidade": 3,
+            "verticalidade": 1
+          }
+        },
+        {
+          "text": "Orientar posicionamento e compactação.",
+          "effects": {
+            "lideranca": 2,
+            "leitura_tatica": 3
+          }
+        },
+        {
+          "text": "Me posicionar para receber a próxima transição.",
+          "effects": {
+            "verticalidade": 2,
+            "presenca_area": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q07",
+      "text": "Você recebe a bola perto da área com pouco espaço. O que prefere?",
+      "options": [
+        {
+          "text": "Tabela curta e passe final.",
+          "effects": {
+            "visao_criacao": 3,
+            "leitura_tatica": 1
+          }
+        },
+        {
+          "text": "Partir para cima do marcador.",
+          "effects": {
+            "um_contra_um": 3
+          }
+        },
+        {
+          "text": "Proteger, girar e finalizar.",
+          "effects": {
+            "presenca_area": 3,
+            "um_contra_um": 1
+          }
+        },
+        {
+          "text": "Reciclar a jogada e manter o time equilibrado.",
+          "effects": {
+            "leitura_tatica": 3,
+            "seguranca_defensiva": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q08",
+      "text": "Em uma temporada longa, qual característica você mais valoriza em si mesmo?",
+      "options": [
+        {
+          "text": "Regularidade e disciplina tática.",
+          "effects": {
+            "leitura_tatica": 3,
+            "seguranca_defensiva": 1
+          }
+        },
+        {
+          "text": "Capacidade de decidir partidas.",
+          "effects": {
+            "presenca_area": 2,
+            "verticalidade": 2
+          }
+        },
+        {
+          "text": "Energia para manter o ritmo alto.",
+          "effects": {
+            "intensidade": 3
+          }
+        },
+        {
+          "text": "Ser referência para o grupo.",
+          "effects": {
+            "lideranca": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q09",
+      "text": "Qual tipo de jogo mais combina com você?",
+      "options": [
+        {
+          "text": "Posse paciente até aparecer o passe certo.",
+          "effects": {
+            "visao_criacao": 3,
+            "leitura_tatica": 2
+          }
+        },
+        {
+          "text": "Transições rápidas e campo aberto.",
+          "effects": {
+            "verticalidade": 3,
+            "intensidade": 2
+          }
+        },
+        {
+          "text": "Jogo físico, compacto e de poucos espaços.",
+          "effects": {
+            "seguranca_defensiva": 3,
+            "intensidade": 1
+          }
+        },
+        {
+          "text": "Pressão constante perto da área adversária.",
+          "effects": {
+            "presenca_area": 2,
+            "intensidade": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "vn_player_identity_q10",
+      "text": "Se o time precisar de você fora da sua função habitual, como reage?",
+      "options": [
+        {
+          "text": "Adapto meu posicionamento e faço o que o jogo pede.",
+          "effects": {
+            "leitura_tatica": 3,
+            "lideranca": 1
+          }
+        },
+        {
+          "text": "Mantenho meu estilo e tento decidir individualmente.",
+          "effects": {
+            "um_contra_um": 3,
+            "verticalidade": 1
+          }
+        },
+        {
+          "text": "Priorizo a segurança para não expor o time.",
+          "effects": {
+            "seguranca_defensiva": 3
+          }
+        },
+        {
+          "text": "Assumo a responsabilidade e puxo os demais.",
+          "effects": {
+            "lideranca": 3,
+            "intensidade": 1
+          }
+        }
+      ]
+    }
+  ],
+  "scoring_rules": {
+    "method": "weighted_trait_distance",
+    "result_floor": 42,
+    "winner_range": [
+      82,
+      96
+    ],
+    "minimum_gap_winner_to_second": 7,
+    "minimum_gap_between_top3": 4
+  },
+  "status": "READY",
+  "target": {
+    "profiles": 10,
+    "questions": 10
+  },
+  "coverage": {
+    "profiles_ready": 10,
+    "questions_ready": 10
+  }
+}

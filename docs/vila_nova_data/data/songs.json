@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "songs": [
+    {
+      "id": "vn_song_anthem_01",
+      "title": "Hino do Vila Nova Futebol Clube",
+      "category": "ANTHEM",
+      "authors": [
+        "Aiton Ávila"
+      ],
+      "year": 1968,
+      "performer_original": "Ivanildo Banda e coro",
+      "official_url": "https://www.vilanovafc.com.br/hino",
+      "status": "REVIEW",
+      "review_reason": "Autoria/ano confirmados em fontes secundárias; falta página institucional que publique os metadados completos. Letra deliberadamente não incluída.",
+      "sources": [
+        {
+          "source_name": "Referência histórica secundária",
+          "source_url": "https://pt.wikipedia.org/wiki/Vila_Nova_Futebol_Clube"
+        },
+        {
+          "source_name": "Vila Nova FC — Hino Oficial",
+          "source_url": "https://www.vilanovafc.com.br/hino"
+        }
+      ],
+      "official_audio_url": "https://www.youtube.com/watch?v=Qoi7leQ89qQ"
+    }
+  ],
+  "chants": [],
+  "chants_status": "GAP"
+}

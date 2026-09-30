@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "program_name": "Sócio Tigrão",
+  "url": "https://vilanova.ingressosa.com.br/",
+  "plans": [
+    {
+      "id": "vn_socio_time_do_povo",
+      "name": "Time do Povo",
+      "tagline": null,
+      "prices": [
+        {
+          "label": "Mensal",
+          "value": 20.0
+        },
+        {
+          "label": "Anual",
+          "value": null
+        }
+      ],
+      "includes_stadium_access": false,
+      "allowed_sectors": [],
+      "benefits": [],
+      "highlight": false,
+      "status": "REVIEW"
+    },
+    {
+      "id": "vn_socio_prata",
+      "name": "Prata",
+      "tagline": null,
+      "prices": [
+        {
+          "label": "Mensal",
+          "value": 55.0
+        },
+        {
+          "label": "Anual",
+          "value": null
+        }
+      ],
+      "includes_stadium_access": true,
+      "allowed_sectors": [],
+      "benefits": [
+        "Acesso gratuito garantido no setor correspondente ao plano em jogos com regra publicada pelo clube."
+      ],
+      "highlight": false,
+      "status": "REVIEW"
+    },
+    {
+      "id": "vn_socio_ouro",
+      "name": "Ouro",
+      "tagline": null,
+      "prices": [
+        {
+          "label": "Mensal",
+          "value": 115.0
+        },
+        {
+          "label": "Anual",
+          "value": null
+        }
+      ],
+      "includes_stadium_access": true,
+      "allowed_sectors": [],
+      "benefits": [
+        "Acesso gratuito garantido no setor correspondente ao plano em jogos com regra publicada pelo clube."
+      ],
+      "highlight": true,
+      "status": "REVIEW"
+    },
+    {
+      "id": "vn_socio_rubi",
+      "name": "Rubi",
+      "tagline": null,
+      "prices": [
+        {
+          "label": "Mensal",
+          "value": 250.0
+        },
+        {
+          "label": "Anual",
+          "value": null
+        }
+      ],
+      "includes_stadium_access": true,
+      "allowed_sectors": [],
+      "benefits": [
+        "Acesso gratuito garantido no setor correspondente ao plano em jogos com regra publicada pelo clube."
+      ],
+      "highlight": false,
+      "status": "REVIEW"
+    }
+  ],
+  "regulation": {
+    "sections": [],
+    "official_document_url": null,
+    "status": "GAP"
+  },
+  "consulted_at": "2026-09-29",
+  "sources": [
+    {
+      "source_name": "Vila Nova FC — site oficial",
+      "source_url": "https://www.vilanovafc.com.br/"
+    },
+    {
+      "source_name": "Vila Nova FC — ingressos Série B 2026",
+      "source_url": "https://www.vilanovafc.com.br/noticias/545-venda-de-ingressos-vila-nova-x-sport-recife-serie-b-2026"
+    },
+    {
+      "source_name": "Mais Futebol Goiano — planos 2026",
+      "source_url": "https://www.maisfutebolgoiano.com.br/2026/04/programa-socio-torcedor-do-vila-nova.html"
+    }
+  ],
+  "notes": [
+    "Preços dos planos vieram de fonte jornalística contemporânea e permanecem REVIEW até captura da página/regulamento oficial do Sócio Tigrão. O acesso gratuito de Prata/Ouro/Rubi aparece em publicação oficial de ingressos."
+  ]
+}

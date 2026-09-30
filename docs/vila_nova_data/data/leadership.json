@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "mandate_from": null,
+  "mandate_through": null,
+  "mandate_status": "GAP",
+  "sections": [
+    {
+      "name": "Diretoria Executiva",
+      "members": [
+        {
+          "name": "Fábio Brasil de Castro",
+          "role": "Presidente Executivo",
+          "photo_url": null
+        },
+        {
+          "name": "Vinícius Clementino Cirqueira",
+          "role": "Vice-Presidente",
+          "photo_url": null
+        },
+        {
+          "name": "Romário Barbosa Policarpo",
+          "role": "2º Vice-Presidente",
+          "photo_url": null
+        },
+        {
+          "name": "Hugo Jorge Bravo de Carvalho",
+          "role": "Vice-Presidente Financeiro e Futebol",
+          "photo_url": null
+        },
+        {
+          "name": "Allan Máximo de Holanda",
+          "role": "Diretoria Administrativa",
+          "photo_url": null
+        },
+        {
+          "name": "Paulo Henrique Pinheiro",
+          "role": "Diretoria Jurídica",
+          "photo_url": null
+        },
+        {
+          "name": "Rodrigo Menezes",
+          "role": "Diretoria Jurídica",
+          "photo_url": null
+        },
+        {
+          "name": "Murilo Oliviere Reis Sobrinho",
+          "role": "Diretoria de Marketing",
+          "photo_url": null
+        },
+        {
+          "name": "Romário Barbosa Policarpo",
+          "role": "Diretoria de Comunicação",
+          "photo_url": null
+        }
+      ]
+    },
+    {
+      "name": "Conselho Deliberativo",
+      "members": [
+        {
+          "name": "Leandro Bittar Froes",
+          "role": "Presidente",
+          "photo_url": null
+        },
+        {
+          "name": "Décio Caetano Vieira Filho",
+          "role": "Vice-Presidente",
+          "photo_url": null
+        },
+        {
+          "name": "Marco Aurélio Tavares Caetano",
+          "role": "Secretário",
+          "photo_url": null
+        },
+        {
+          "name": "Allan",
+          "role": "Suplente",
+          "photo_url": null
+        }
+      ]
+    },
+    {
+      "name": "Conselho Fiscal",
+      "members": [
+        {
+          "name": "Rodrigo Silva Menezes",
+          "role": "Presidente",
+          "photo_url": null
+        },
+        {
+          "name": "João Gonzaga de Siqueira Júnior",
+          "role": "Vice-Presidente",
+          "photo_url": null
+        },
+        {
+          "name": "Henrique César Nery da Veiga Jardim",
+          "role": "Secretário",
+          "photo_url": null
+        },
+        {
+          "name": "Nilson Soares Moreira",
+          "role": "Suplente",
+          "photo_url": null
+        },
+        {
+          "name": "Fernando Henrique Mussi",
+          "role": "Suplente",
+          "photo_url": null
+        },
+        {
+          "name": "Rafael Lucas Loreto Ribeiro",
+          "role": "Suplente",
+          "photo_url": null
+        }
+      ]
+    },
+    {
+      "name": "Conselho de Patrimônio",
+      "members": [
+        {
+          "name": "Vinícius de Oliveira Marinari",
+          "role": "Membro",
+          "photo_url": null
+        },
+        {
+          "name": "Fernando Henrique Mussi",
+          "role": "Membro",
+          "photo_url": null
+        },
+        {
+          "name": "Leonardo Cairo Rizzo",
+          "role": "Membro",
+          "photo_url": null
+        },
+        {
+          "name": "José Carlos Barbosa",
+          "role": "Membro",
+          "photo_url": null
+        }
+      ]
+    },
+    {
+      "name": "Diretoria de Categorias de Base",
+      "members": [
+        {
+          "name": "Olímpio Jayme Neto",
+          "role": "Diretor",
+          "photo_url": null
+        },
+        {
+          "name": "João Pedro Ferro",
+          "role": "Diretor",
+          "photo_url": null
+        }
+      ]
+    },
+    {
+      "name": "Diretoria Social",
+      "members": [
+        {
+          "name": "Janilson Emerick Martins",
+          "role": "Diretor",
+          "photo_url": null
+        },
+        {
+          "name": "Alexandre Moura Dantas",
+          "role": "Diretor",
+          "photo_url": null
+        },
+        {
+          "name": "Marcus Antônio de Pinho Lorenzzo",
+          "role": "Diretor",
+          "photo_url": null
+        }
+      ]
+    }
+  ],
+  "status": "READY",
+  "sources": [
+    {
+      "source_name": "Vila Nova FC — Diretoria",
+      "source_url": "https://www.vilanovafc.com.br/diretoria"
+    }
+  ],
+  "conflicts": [
+    {
+      "field": "presidente",
+      "official_current": "Fábio Brasil de Castro",
+      "other_source_value": "Hugo Bravo",
+      "other_source": "FGF — página cadastral do clube",
+      "resolution": "Usar site oficial do clube no snapshot; página da FGF aparenta defasagem.",
+      "status": "REVIEW"
+    }
+  ]
+}

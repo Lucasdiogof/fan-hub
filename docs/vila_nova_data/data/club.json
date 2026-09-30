@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "app_code": "vilanova",
+  "display_name": "Vila Nova Futebol Clube",
+  "short_name": "Vila Nova",
+  "fan_demonym": "Colorado",
+  "fan_demonym_notes": "O site oficial usa 'torcedores colorados'; 'vilanovense' também aparece em comunicações institucionais.",
+  "nicknames": [
+    {
+      "name": "Tigrão",
+      "origin": "Uso institucional contemporâneo e referência ao mascote/tigre.",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — site oficial",
+          "source_url": "https://www.vilanovafc.com.br/"
+        }
+      ]
+    },
+    {
+      "name": "Tigre",
+      "origin": "Forma abreviada recorrente do apelido Tigrão.",
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — site oficial",
+          "source_url": "https://www.vilanovafc.com.br/"
+        }
+      ]
+    }
+  ],
+  "founded_on": "1943-07-29",
+  "city": "Goiânia",
+  "state": "GO",
+  "country": "Brasil",
+  "header_tagline": null,
+  "header_tagline_status": "GAP",
+  "name_history": [
+    {
+      "name": "Vila Nova Futebol Clube",
+      "from": "1943",
+      "through": "1945",
+      "status": "READY"
+    },
+    {
+      "name": "Operário",
+      "from": "1946",
+      "through": null,
+      "status": "READY"
+    },
+    {
+      "name": "Araguaia",
+      "from": null,
+      "through": null,
+      "status": "READY"
+    },
+    {
+      "name": "Fênix Futebol Clube",
+      "from": null,
+      "through": "1955",
+      "status": "READY"
+    },
+    {
+      "name": "Vila Nova Futebol Clube",
+      "from": "1955",
+      "through": null,
+      "status": "READY"
+    }
+  ],
+  "name_history_note": "As fontes confirmam a sequência e os marcos 1946 e 1955, mas não fixam neste lote as datas exatas das mudanças intermediárias para Araguaia e Fênix.",
+  "identity_policy_note": "No Passaporte, preservar o nome histórico exibido pela fonte da partida quando houver evidência. Não retroagir 'Vila Nova' automaticamente a jogos disputados sob Operário, Araguaia ou Fênix.",
+  "current_home_stadium": "Estádio Onésio Brasileiro Alvarenga (OBA)",
+  "product_names_suggestion": {
+    "arena_name": "Arena do Tigre",
+    "passport_name": "Passaporte Colorado",
+    "store_name": "Nação Colorada",
+    "membership_program_name": "Sócio Tigrão"
+  },
+  "status": "READY",
+  "sources": [
+    {
+      "source_name": "Vila Nova FC — Histórico",
+      "source_url": "https://www.vilanovafc.com.br/historico"
+    },
+    {
+      "source_name": "Portal da Alego — história dos clubes de Goiânia",
+      "source_url": "https://portal.al.go.leg.br/noticias/124777/campanha-nas-redes-sociais-lembra-a-contribuicao-da-alego-com-os-primeiros-times-de-futebol-da-capital-goiana"
+    }
+  ]
+}

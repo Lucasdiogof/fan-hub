@@ -1,0 +1,1509 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "editorial_note": "Os XI titulares, técnico, placar, data e local estão confirmados pelas fontes listadas. Quando a fonte não declara explicitamente o desenho tático, formation_confidence=estimated. Em partidas históricas, o campo name preserva a forma canônica publicada na ficha quando o nome civil completo não pôde ser confirmado sem ambiguidade; answer/aliases são os valores de jogo.",
+  "lineups": [
+    {
+      "id": "vn_lineup_01",
+      "date": "2015-10-07",
+      "competition": "Campeonato Brasileiro - Série C",
+      "season": "2015",
+      "phase": "Quartas de final - ida",
+      "venue": "Estádio Serra Dourada",
+      "home_team": "Vila Nova",
+      "away_team": "Portuguesa",
+      "home_score": 1,
+      "away_score": 0,
+      "coach": "Márcio Fernandes",
+      "formation": "3-5-2",
+      "formation_confidence": "confirmed",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Edson",
+          "answer": "EDSON",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Gustavo Bastos",
+          "answer": "GUSTAVO BASTOS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Vítor Pio",
+          "answer": "VÍTOR PIO",
+          "aliases": [
+            "Vítor"
+          ]
+        },
+        {
+          "pos": "ZAG",
+          "name": "Vinícius Simon",
+          "answer": "VINÍCIUS SIMON",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Marcelo",
+          "answer": "MARCELO",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Marinho Donizete",
+          "answer": "MARINHO DONIZETE",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Francesco Alvarenga da Silva",
+          "answer": "FRANCESCO",
+          "aliases": [
+            "Francesco"
+          ]
+        },
+        {
+          "pos": "MC",
+          "name": "Ramires",
+          "answer": "RAMIRES",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Robston",
+          "answer": "ROBSTON",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Moisés Brito",
+          "answer": "MOISÉS",
+          "aliases": [
+            "Moisés"
+          ]
+        },
+        {
+          "pos": "ATA",
+          "name": "Carlos Frontini",
+          "answer": "FRONTINI",
+          "aliases": [
+            "Frontini"
+          ]
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Futebol de Goyaz — Vila Nova 1 x 0 Portuguesa",
+          "source_url": "https://www.futeboldegoyaz.com.br/partidas/51483/partida"
+        },
+        {
+          "source_name": "oGol — Vila Nova 1 x 0 Portuguesa",
+          "source_url": "https://www.ogol.com.br/jogo/2015-10-08-vila-nova-portuguesa/4705706"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_02",
+      "date": "2015-10-17",
+      "competition": "Campeonato Brasileiro - Série C",
+      "season": "2015",
+      "phase": "Quartas de final - volta (acesso à Série B)",
+      "venue": "Estádio do Canindé",
+      "home_team": "Portuguesa",
+      "away_team": "Vila Nova",
+      "home_score": 1,
+      "away_score": 2,
+      "coach": "Márcio Fernandes",
+      "formation": "3-5-2",
+      "formation_confidence": "confirmed",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Edson",
+          "answer": "EDSON",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Gustavo Bastos",
+          "answer": "GUSTAVO BASTOS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Vítor Pio",
+          "answer": "VÍTOR PIO",
+          "aliases": [
+            "Vítor"
+          ]
+        },
+        {
+          "pos": "ZAG",
+          "name": "Vinícius Simon",
+          "answer": "VINÍCIUS SIMON",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Marcelo",
+          "answer": "MARCELO",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Marinho Donizete",
+          "answer": "MARINHO DONIZETE",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Francesco Alvarenga da Silva",
+          "answer": "FRANCESCO",
+          "aliases": [
+            "Francesco"
+          ]
+        },
+        {
+          "pos": "MC",
+          "name": "Ramires",
+          "answer": "RAMIRES",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Robston",
+          "answer": "ROBSTON",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Moisés Brito",
+          "answer": "MOISÉS",
+          "aliases": [
+            "Moisés"
+          ]
+        },
+        {
+          "pos": "ATA",
+          "name": "Carlos Frontini",
+          "answer": "FRONTINI",
+          "aliases": [
+            "Frontini"
+          ]
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Futebol de Goyaz — Portuguesa 1 x 2 Vila Nova",
+          "source_url": "https://www.futeboldegoyaz.com.br/partidas/51501/partida"
+        },
+        {
+          "source_name": "oGol — Portuguesa 1 x 2 Vila Nova",
+          "source_url": "https://www.ogol.com.br/jogo/2015-10-17-portuguesa-vila-nova/4705702"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_03",
+      "date": "2015-11-21",
+      "competition": "Campeonato Brasileiro - Série C",
+      "season": "2015",
+      "phase": "Final - jogo de volta (título)",
+      "venue": "Estádio Serra Dourada",
+      "home_team": "Vila Nova",
+      "away_team": "Londrina",
+      "home_score": 4,
+      "away_score": 1,
+      "coach": "Márcio Fernandes",
+      "formation": "4-4-2",
+      "formation_confidence": "confirmed",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Edson",
+          "answer": "EDSON",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Marcelo",
+          "answer": "MARCELO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Vítor Pio",
+          "answer": "VÍTOR PIO",
+          "aliases": [
+            "Vítor"
+          ]
+        },
+        {
+          "pos": "ZAG",
+          "name": "Vinícius Simon",
+          "answer": "VINÍCIUS SIMON",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Marinho Donizete",
+          "answer": "MARINHO DONIZETE",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Francesco Alvarenga da Silva",
+          "answer": "FRANCESCO",
+          "aliases": [
+            "Francesco"
+          ]
+        },
+        {
+          "pos": "MC",
+          "name": "Ramires",
+          "answer": "RAMIRES",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Robston",
+          "answer": "ROBSTON",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Zotti",
+          "answer": "ZOTTI",
+          "aliases": [
+            "Zotte"
+          ]
+        },
+        {
+          "pos": "ATA",
+          "name": "Carlos Frontini",
+          "answer": "FRONTINI",
+          "aliases": [
+            "Frontini"
+          ]
+        },
+        {
+          "pos": "ATA",
+          "name": "Moisés Brito",
+          "answer": "MOISÉS",
+          "aliases": [
+            "Moisés"
+          ]
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Futebol de Goyaz — Vila Nova 4 x 1 Londrina",
+          "source_url": "https://futeboldegoyaz.com.br/partidas/51615/partida"
+        },
+        {
+          "source_name": "zerozero — Vila Nova 4 x 1 Londrina",
+          "source_url": "https://www.zerozero.pt/jogo/2015-11-21-vila-nova-londrina/4795930"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_04",
+      "date": "2021-01-23",
+      "competition": "Campeonato Brasileiro - Série C",
+      "season": "2020",
+      "phase": "Final - jogo de ida",
+      "venue": "Estádio Onésio Brasileiro Alvarenga",
+      "home_team": "Vila Nova",
+      "away_team": "Remo",
+      "home_score": 5,
+      "away_score": 1,
+      "coach": "Márcio Fernandes",
+      "formation": "4-4-2",
+      "formation_confidence": "confirmed",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Fabrício",
+          "answer": "FABRÍCIO",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Celsinho",
+          "answer": "CELSINHO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Rafael Donato",
+          "answer": "RAFAEL DONATO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Adalberto",
+          "answer": "ADALBERTO",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Willian Formiga",
+          "answer": "WILLIAN FORMIGA",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Yuri",
+          "answer": "YURI",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Pablo Roberto",
+          "answer": "PABLO",
+          "aliases": [
+            "Pablo"
+          ]
+        },
+        {
+          "pos": "MC",
+          "name": "Dudu",
+          "answer": "DUDU",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Alan Mineiro",
+          "answer": "ALAN MINEIRO",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Talles",
+          "answer": "TALLES",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Henan",
+          "answer": "HENAN",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Futebol de Goyaz — Vila Nova 5 x 1 Remo",
+          "source_url": "https://futeboldegoyaz.com.br/partidas/63577/partida"
+        },
+        {
+          "source_name": "Ficha do Jogo — final Série C, jogo 1",
+          "source_url": "https://fichadojogo.wordpress.com/2021/01/25/final-da-serie-d-vila-nova-5-x-1-remo/"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_05",
+      "date": "2021-01-30",
+      "competition": "Campeonato Brasileiro - Série C",
+      "season": "2020",
+      "phase": "Final - jogo de volta (título)",
+      "venue": "Estádio Olímpico do Pará (Mangueirão)",
+      "home_team": "Remo",
+      "away_team": "Vila Nova",
+      "home_score": 2,
+      "away_score": 3,
+      "coach": "Márcio Fernandes",
+      "formation": "4-4-2",
+      "formation_confidence": "confirmed",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Fabrício",
+          "answer": "FABRÍCIO",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Celsinho",
+          "answer": "CELSINHO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Rafael Donato",
+          "answer": "RAFAEL DONATO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Adalberto",
+          "answer": "ADALBERTO",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Willian Formiga",
+          "answer": "WILLIAN FORMIGA",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Yuri",
+          "answer": "YURI",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Pablo Roberto",
+          "answer": "PABLO",
+          "aliases": [
+            "Pablo"
+          ]
+        },
+        {
+          "pos": "MC",
+          "name": "Dudu",
+          "answer": "DUDU",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Alan Mineiro",
+          "answer": "ALAN MINEIRO",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Gilsinho",
+          "answer": "GILSINHO",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Henan",
+          "answer": "HENAN",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "CBF — Remo 2 x 3 Vila Nova",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/jogos/campeonato-brasileiro/aspirantes/2020/remo-x-vila-nova/817221?view=escalacao"
+        },
+        {
+          "source_name": "Esporte Goiano — Vila Nova tricampeão da Série C",
+          "source_url": "https://esportegoiano.com.br/vila-nova-volta-bater-remo-conquista-tricampeonato-da-serie-c/"
+        },
+        {
+          "source_name": "Ficha do Jogo — final Série C, jogo 2",
+          "source_url": "https://fichadojogo.wordpress.com/category/finais-serie-c/"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_06",
+      "date": "2021-12-08",
+      "competition": "Copa Verde",
+      "season": "2021",
+      "phase": "Final - jogo de ida",
+      "venue": "Estádio Onésio Brasileiro Alvarenga",
+      "home_team": "Vila Nova",
+      "away_team": "Remo",
+      "home_score": 0,
+      "away_score": 0,
+      "coach": "Higo Magalhães",
+      "formation": "4-3-3",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Georgemy",
+          "answer": "GEORGEMY",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "André Krobel",
+          "answer": "ANDRÉ KROBEL",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Rafael Donato",
+          "answer": "RAFAEL DONATO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Renato",
+          "answer": "RENATO",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Bruno Collaço",
+          "answer": "BRUNO COLLAÇO",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Pedro Bambu",
+          "answer": "PEDRO BAMBU",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Moacir",
+          "answer": "MOACIR",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Tiago Real",
+          "answer": "TIAGO REAL",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Diego Tavares",
+          "answer": "DIEGO TAVARES",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Clayton",
+          "answer": "CLAYTON",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Alesson",
+          "answer": "ALESSON",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Bola na Área — Copa Verde 2021",
+          "source_url": "https://www.bolanaarea.com/reg_copa_verde_2021.htm"
+        },
+        {
+          "source_name": "Enciclopédia do Leão — Remo x Vila Nova",
+          "source_url": "https://enciclopediadoleao.blogspot.com/2025/05/retrospecto-remo-x-vila-nova-go.html"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_07",
+      "date": "2021-12-11",
+      "competition": "Copa Verde",
+      "season": "2021",
+      "phase": "Final - jogo de volta",
+      "venue": "Estádio Evandro Almeida (Baenão)",
+      "home_team": "Remo",
+      "away_team": "Vila Nova",
+      "home_score": 0,
+      "away_score": 0,
+      "coach": "Higo Magalhães",
+      "formation": "4-3-3",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Georgemy",
+          "answer": "GEORGEMY",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "André Krobel",
+          "answer": "ANDRÉ KROBEL",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Renato",
+          "answer": "RENATO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Rafael Donato",
+          "answer": "RAFAEL DONATO",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Bruno Collaço",
+          "answer": "BRUNO COLLAÇO",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Moacir",
+          "answer": "MOACIR",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Éder Monteiro",
+          "answer": "ÉDER MONTEIRO",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Pedro Bambu",
+          "answer": "PEDRO BAMBU",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Diego Tavares",
+          "answer": "DIEGO TAVARES",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Rafael Silva",
+          "answer": "RAFAEL SILVA",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Clayton",
+          "answer": "CLAYTON",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Enciclopédia do Leão — Remo x Vila Nova",
+          "source_url": "https://enciclopediadoleao.blogspot.com/2025/05/retrospecto-remo-x-vila-nova-go.html"
+        },
+        {
+          "source_name": "Bola na Área — Copa Verde 2021",
+          "source_url": "https://www.bolanaarea.com/reg_copa_verde_2021.htm"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_08",
+      "date": "2022-11-15",
+      "competition": "Copa Verde",
+      "season": "2022",
+      "phase": "Final - jogo de ida",
+      "venue": "Estádio da Curuzu",
+      "home_team": "Paysandu",
+      "away_team": "Vila Nova",
+      "home_score": 0,
+      "away_score": 0,
+      "coach": "Allan Aal",
+      "formation": "4-3-3",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Tony",
+          "answer": "TONY",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Alex Silva",
+          "answer": "ALEX SILVA",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Rafael Donato",
+          "answer": "RAFAEL DONATO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Jordan",
+          "answer": "JORDAN",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Willian Formiga",
+          "answer": "WILLIAN FORMIGA",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Ralf",
+          "answer": "RALF",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Sousa",
+          "answer": "SOUSA",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Wagner",
+          "answer": "WAGNER",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Diego Tavares",
+          "answer": "DIEGO TAVARES",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Neto Pessoa",
+          "answer": "NETO PESSOA",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Kaio Nunes",
+          "answer": "KAIO NUNES",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Bola na Área — Copa Verde 2022",
+          "source_url": "https://www.bolanaarea.com/reg_copa_verde_2022.htm"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_09",
+      "date": "2022-11-19",
+      "competition": "Copa Verde",
+      "season": "2022",
+      "phase": "Final - jogo de volta",
+      "venue": "Estádio Serra Dourada",
+      "home_team": "Vila Nova",
+      "away_team": "Paysandu",
+      "home_score": 1,
+      "away_score": 1,
+      "coach": "Allan Aal",
+      "formation": "4-2-3-1",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Tony",
+          "answer": "TONY",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Alex Silva",
+          "answer": "ALEX SILVA",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Rafael Donato",
+          "answer": "RAFAEL DONATO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Jordan",
+          "answer": "JORDAN",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Willian Formiga",
+          "answer": "WILLIAN FORMIGA",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Ralf",
+          "answer": "RALF",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Sousa",
+          "answer": "SOUSA",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Matheuzinho",
+          "answer": "MATHEUZINHO",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Diego Tavares",
+          "answer": "DIEGO TAVARES",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Kaio Nunes",
+          "answer": "KAIO NUNES",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Neto Pessoa",
+          "answer": "NETO PESSOA",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "CBF — Vila Nova x Paysandu, final Copa Verde 2022",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/masculino/2022/vila-nova-x-paysandu/823530?view=escalacao"
+        },
+        {
+          "source_name": "Sagres — Vila Nova 1 x 1 Paysandu",
+          "source_url": "https://sagresonline.com.br/nos-penaltis-vila-nova-perde-a-copa-verde-para-o-paysandu/"
+        },
+        {
+          "source_name": "O Popular — final Copa Verde 2022",
+          "source_url": "https://opopular.com.br/esporte/vila-nova-perde-para-o-paysandu-nos-p%C3%AAnaltis-e-%C3%A9-vice-da-copa-verde-1.2563884"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_10",
+      "date": "2024-03-20",
+      "competition": "Copa Verde",
+      "season": "2024",
+      "phase": "Quartas de final - ida",
+      "venue": "Estádio Onésio Brasileiro Alvarenga",
+      "home_team": "Vila Nova",
+      "away_team": "Goiás",
+      "home_score": 1,
+      "away_score": 0,
+      "coach": "Márcio Fernandes",
+      "formation": "4-3-3",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Dênis Júnior",
+          "answer": "DÊNIS JÚNIOR",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Ruan Santos",
+          "answer": "RUAN SANTOS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Juan Quintero",
+          "answer": "JUAN QUINTERO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Anderson Conceição",
+          "answer": "ANDERSON CONCEIÇÃO",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Roberto",
+          "answer": "ROBERTO",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Ralf",
+          "answer": "RALF",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Bruno Matias",
+          "answer": "BRUNO MATIAS",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "João Vitor",
+          "answer": "JOÃO VITOR",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Igor Bolt",
+          "answer": "IGOR BOLT",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Fernandão",
+          "answer": "FERNANDÃO",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Alesson",
+          "answer": "ALESSON",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Futebol Interior — Vila Nova 1 x 0 Goiás",
+          "source_url": "https://www.futebolinterior.com.br/vila-nova-1-x-0-goias-alesson-deixa-vila-perto-das-semifinais/"
+        },
+        {
+          "source_name": "Esporte Goiano — Vila Nova 1 x 0 Goiás",
+          "source_url": "https://esportegoiano.com.br/alesson-lei-do-ex-vila-nova-bate-goias-primeiro-classico-copa-verde/"
+        },
+        {
+          "source_name": "zerozero — Vila Nova 1 x 0 Goiás",
+          "source_url": "https://www.zerozero.pt/jogo/2024-03-20-vila-nova-goias/10005406"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_11",
+      "date": "2024-05-11",
+      "competition": "Copa Verde",
+      "season": "2024",
+      "phase": "Semifinal - jogo de volta (classificação nos pênaltis)",
+      "venue": "Arena Pantanal",
+      "home_team": "Cuiabá",
+      "away_team": "Vila Nova",
+      "home_score": 4,
+      "away_score": 2,
+      "coach": "Márcio Fernandes",
+      "formation": "4-4-2",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Dênis Júnior",
+          "answer": "DÊNIS JÚNIOR",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Ruan Santos",
+          "answer": "RUAN SANTOS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Anderson Conceição",
+          "answer": "ANDERSON CONCEIÇÃO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Eric",
+          "answer": "ERIC",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Roberto",
+          "answer": "ROBERTO",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Ralf",
+          "answer": "RALF",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "João Vitor",
+          "answer": "JOÃO VITOR",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Bruno Matias",
+          "answer": "BRUNO MATIAS",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Luciano Naninho",
+          "answer": "LUCIANO NANINHO",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Henrique Almeida",
+          "answer": "HENRIQUE ALMEIDA",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Alesson",
+          "answer": "ALESSON",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "zerozero — Cuiabá 4 x 2 Vila Nova",
+          "source_url": "https://www.zerozero.pt/jogo/2024-05-11-cuiaba-vila-nova/10016972"
+        },
+        {
+          "source_name": "365Scores — Cuiabá x Vila Nova",
+          "source_url": "https://www.365scores.com/pt-br/football/match/copa-verde-6208/cuiaba-vila-nova-1782-9188-6208"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_12",
+      "date": "2024-10-13",
+      "competition": "Campeonato Brasileiro - Série B",
+      "season": "2024",
+      "phase": "Fase única - rodada 31",
+      "venue": "Estádio Hailé Pinheiro (Serrinha)",
+      "home_team": "Goiás",
+      "away_team": "Vila Nova",
+      "home_score": 0,
+      "away_score": 1,
+      "coach": "Luizinho Lopes",
+      "formation": "4-3-3",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Halls",
+          "answer": "HALLS",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Elias",
+          "answer": "ELIAS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Dankler",
+          "answer": "DANKLER",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Jemmes",
+          "answer": "JEMMES",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Rhuan",
+          "answer": "RHUAN",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "Ralf",
+          "answer": "RALF",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Igor Henrique",
+          "answer": "IGOR HENRIQUE",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "João Lucas",
+          "answer": "JOÃO LUCAS",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Júnior Todinho",
+          "answer": "JÚNIOR TODINHO",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Alesson",
+          "answer": "ALESSON",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Emerson Urso",
+          "answer": "EMERSON URSO",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Itatiaia — Goiás 0 x 1 Vila Nova",
+          "source_url": "https://www.itatiaia.com.br/esportes/futebol/futebol-nacional/brasileirao-serie-b/vila-nova-bate-goias-na-serrinha-e-cola-no-g4-da-serie-b/"
+        },
+        {
+          "source_name": "UOL — Goiás 0 x 1 Vila Nova",
+          "source_url": "https://www.uol.com.br/esporte/ultimas-noticias/agencia/2024/10/13/vila-nova-vence-classico-com-o-goias-e-fica-a-um-ponto-do-g-4-da-serie-b.htm"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_13",
+      "date": "2025-03-09",
+      "competition": "Campeonato Goiano",
+      "season": "2025",
+      "phase": "Semifinal - jogo de ida",
+      "venue": "Estádio Hailé Pinheiro (Serrinha)",
+      "home_team": "Goiás",
+      "away_team": "Vila Nova",
+      "home_score": 0,
+      "away_score": 1,
+      "coach": "Rafael Lacerda",
+      "formation": "4-3-3",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Halls",
+          "answer": "HALLS",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Elias",
+          "answer": "ELIAS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Bernardo Schappo",
+          "answer": "BERNARDO SCHAPPO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Tiago Pagnussat",
+          "answer": "TIAGO PAGNUSSAT",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Willian Formiga",
+          "answer": "WILLIAN FORMIGA",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "João Vieira",
+          "answer": "JOÃO VIEIRA",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Arilson",
+          "answer": "ARILSON",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Diego Torres",
+          "answer": "DIEGO TORRES",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Júnior Todinho",
+          "answer": "JÚNIOR TODINHO",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Vinícius Paiva",
+          "answer": "VINÍCIUS PAIVA",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Gabriel Poveda",
+          "answer": "GABRIEL POVEDA",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Esporte Goiano — Goiás 0 x 1 Vila Nova",
+          "source_url": "https://esportegoiano.com.br/tadeu-perde-penalti-vila-nova-vence-goias-ida-semifinal-estadual/"
+        },
+        {
+          "source_name": "Diário de Goiás — Goiás 0 x 1 Vila Nova",
+          "source_url": "https://diariodegoias.com.br/goianao-todinho-marca-tadeu-perde-penalti-e-o-vila-nova-vence-o-goias-em-primeira-semifinal/480486/"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_14",
+      "date": "2025-03-30",
+      "competition": "Campeonato Goiano",
+      "season": "2025",
+      "phase": "Final - jogo de volta (título)",
+      "venue": "Estádio Serra Dourada",
+      "home_team": "Vila Nova",
+      "away_team": "Anápolis",
+      "home_score": 3,
+      "away_score": 0,
+      "coach": "Rafael Lacerda",
+      "formation": "4-4-2",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Halls",
+          "answer": "HALLS",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Elias",
+          "answer": "ELIAS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Bernardo Schappo",
+          "answer": "BERNARDO SCHAPPO",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Tiago Pagnussat",
+          "answer": "TIAGO PAGNUSSAT",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Willian Formiga",
+          "answer": "WILLIAN FORMIGA",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "João Vieira",
+          "answer": "JOÃO VIEIRA",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Jean Mota",
+          "answer": "JEAN MOTA",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Igor Henrique",
+          "answer": "IGOR HENRIQUE",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Diego Torres",
+          "answer": "DIEGO TORRES",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Júnior Todinho",
+          "answer": "JÚNIOR TODINHO",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "Bruno Mendes",
+          "answer": "BRUNO MENDES",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Diário da Redação — Vila Nova campeão goiano 2025",
+          "source_url": "https://diariodaredacao.com.br/vila-nova-e-campeao-goiano-em-cima-do-anapolis/"
+        },
+        {
+          "source_name": "oGol — Vila Nova 3 x 0 Anápolis",
+          "source_url": "https://www.ogol.com.br/jogo/2025-03-30-vila-nova-anapolis/10813472/resumo"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_15",
+      "date": "2025-08-16",
+      "competition": "Campeonato Brasileiro - Série B",
+      "season": "2025",
+      "phase": "Fase única - rodada 22",
+      "venue": "Estádio Onésio Brasileiro Alvarenga",
+      "home_team": "Vila Nova",
+      "away_team": "Goiás",
+      "home_score": 2,
+      "away_score": 0,
+      "coach": "Paulo Turra",
+      "formation": "4-3-3",
+      "formation_confidence": "estimated",
+      "xi": [
+        {
+          "pos": "GOL",
+          "name": "Halls",
+          "answer": "HALLS",
+          "aliases": []
+        },
+        {
+          "pos": "LD",
+          "name": "Elias",
+          "answer": "ELIAS",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Tiago Pagnussat",
+          "answer": "TIAGO PAGNUSSAT",
+          "aliases": []
+        },
+        {
+          "pos": "ZAG",
+          "name": "Weverton",
+          "answer": "WEVERTON",
+          "aliases": []
+        },
+        {
+          "pos": "LE",
+          "name": "Willian Formiga",
+          "answer": "WILLIAN FORMIGA",
+          "aliases": []
+        },
+        {
+          "pos": "VOL",
+          "name": "João Vieira",
+          "answer": "JOÃO VIEIRA",
+          "aliases": []
+        },
+        {
+          "pos": "MC",
+          "name": "Ralf",
+          "answer": "RALF",
+          "aliases": []
+        },
+        {
+          "pos": "MEI",
+          "name": "Dodô",
+          "answer": "DODÔ",
+          "aliases": []
+        },
+        {
+          "pos": "PD",
+          "name": "Júnior Todinho",
+          "answer": "JÚNIOR TODINHO",
+          "aliases": []
+        },
+        {
+          "pos": "PE",
+          "name": "Guilherme Parede",
+          "answer": "GUILHERME PAREDE",
+          "aliases": []
+        },
+        {
+          "pos": "ATA",
+          "name": "André Luís",
+          "answer": "ANDRÉ LUÍS",
+          "aliases": []
+        }
+      ],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "CBF — Vila Nova 2 x 0 Goiás",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/jogos/campeonato-brasileiro/serie-b/2025/20028/61590/64052/64052/31514/vila-nova-x-goias/829903?view=escalacao"
+        },
+        {
+          "source_name": "oGol — Vila Nova 2 x 0 Goiás",
+          "source_url": "https://www.ogol.com.br/jogo/2025-08-16-vila-nova-goias/10790332"
+        }
+      ]
+    }
+  ],
+  "review_candidates": [
+    {
+      "id": "vn_lineup_review_20260408",
+      "date": "2026-04-08",
+      "competition": "Copa Centro-Oeste / Copa Verde",
+      "season": "2026",
+      "phase": "1ª fase — R3",
+      "venue": "Estádio Antônio Santo Renosto (Cerradão)",
+      "home_team": "Primavera",
+      "away_team": "Vila Nova",
+      "home_score": 2,
+      "away_score": 2,
+      "coach": null,
+      "formation": null,
+      "formation_confidence": null,
+      "xi": [],
+      "status": "REVIEW",
+      "review_reason": "A CBF expõe a escalação, mas a renderização textual do lote não foi separada com segurança em titulares/reservas e posições.",
+      "sources": [
+        {
+          "source_name": "CBF — escalação",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/profissional/2026/primavera-atletico-clube-x-vila-nova/833630?view=escalacao"
+        }
+      ]
+    },
+    {
+      "id": "vn_lineup_review_20260513",
+      "date": "2026-05-13",
+      "competition": "Copa Centro-Oeste / Copa Verde",
+      "season": "2026",
+      "phase": "Quartas de final",
+      "venue": "Estádio Onésio Brasileiro Alvarenga",
+      "home_team": "Vila Nova",
+      "away_team": "Anápolis",
+      "home_score": 1,
+      "away_score": 1,
+      "coach": null,
+      "formation": null,
+      "formation_confidence": null,
+      "xi": [],
+      "status": "REVIEW",
+      "review_reason": "A CBF expõe a escalação, mas a renderização textual do lote não foi separada com segurança em titulares/reservas e posições.",
+      "sources": [
+        {
+          "source_name": "CBF — escalação",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/masculino/2026/vila-nova-x-anapolis/834357?view=escalacao"
+        }
+      ]
+    }
+  ],
+  "ready_count": 15,
+  "review_count": 2,
+  "target_ready_minimum": 15,
+  "coverage_status": "READY"
+}

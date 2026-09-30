@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "catalog_total_reported": 125,
+  "captured_count": 12,
+  "coverage_status": "PARTIAL",
+  "products": [
+    {
+      "id": "vn_store_garrafa_aluminio_500",
+      "slug": "garrafa-aluminio-500ml-vila-nova",
+      "name": "Garrafa Alumínio 500ml Vila Nova",
+      "shortDescription": null,
+      "description": null,
+      "brand": null,
+      "reference": "PR.19001.71768",
+      "categories": [
+        "Acessórios"
+      ],
+      "collections": [],
+      "audience": null,
+      "productType": "Garrafa",
+      "price": 84.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_aquece_2025_fem",
+      "slug": "camisa-aquece-2025-feminina-branca",
+      "name": "Camisa Aquece 2025 Feminina Branca",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0120",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "2025"
+      ],
+      "audience": "Feminino",
+      "productType": "Camisa",
+      "price": 219.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "PP",
+            "P",
+            "M",
+            "G",
+            "GG",
+            "3G"
+          ]
+        }
+      ],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_consciencia_2025_masc",
+      "slug": "camisa-consciencia-negra-2025-masculina-preta",
+      "name": "Camisa Consciência Negra 2025 Masculina Preta",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0190",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "2025"
+      ],
+      "audience": "Masculino",
+      "productType": "Camisa",
+      "price": 229.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "P",
+            "M",
+            "G",
+            "GG",
+            "3G"
+          ]
+        },
+        {
+          "name": "Cor",
+          "values": [
+            "Preto"
+          ]
+        }
+      ],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_anos_90_masc",
+      "slug": "camisa-anos-90-masculino-vermelho",
+      "name": "Camisa Anos 90 Masculino Vermelho",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0181",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "Anos 90"
+      ],
+      "audience": "Masculino",
+      "productType": "Camisa",
+      "price": 229.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "P",
+            "M",
+            "G",
+            "GG",
+            "3G"
+          ]
+        }
+      ],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_plus_aquece_2025",
+      "slug": "camisa-plus-aquece-2025-branca-masculina",
+      "name": "Camisa Plus Aquece 2025 Branca Masculina",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0119",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "2025",
+        "Plus Size"
+      ],
+      "audience": "Masculino",
+      "productType": "Camisa",
+      "price": 239.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "4G",
+            "5G",
+            "6G",
+            "7G",
+            "8G"
+          ]
+        }
+      ],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_outubro_rosa_2025",
+      "slug": "camisa-outubro-rosa-2025-masculina",
+      "name": "Camisa Outubro Rosa 2025 Masculina",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0194",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "2025"
+      ],
+      "audience": "Masculino",
+      "productType": "Camisa",
+      "price": 229.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "P",
+            "M",
+            "G",
+            "GG",
+            "3G"
+          ]
+        },
+        {
+          "name": "Cor",
+          "values": [
+            "Rosa"
+          ]
+        }
+      ],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_bucket",
+      "slug": "bucket-vila-nova",
+      "name": "Bucket Vila Nova",
+      "shortDescription": null,
+      "description": null,
+      "brand": null,
+      "reference": ".71781",
+      "categories": [
+        "Acessórios"
+      ],
+      "collections": [],
+      "audience": null,
+      "productType": "Bucket",
+      "price": 109.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_jogo_1_2025",
+      "slug": "camisa-jogo-1-2025-vermelho-tomate-masculina",
+      "name": "Camisa Jogo 1 2025 Vermelho Tomate Masculina",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0125",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "Jogo 2025"
+      ],
+      "audience": "Masculino",
+      "productType": "Camisa",
+      "price": 299.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "P",
+            "M",
+            "G",
+            "GG",
+            "3G"
+          ]
+        }
+      ],
+      "isFeatured": true,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_reveillon_2025_fem",
+      "slug": "camisa-reveillon-2025-feminina-branca",
+      "name": "Camisa Réveillon 2025 Feminina Branca",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0116",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "Réveillon"
+      ],
+      "audience": "Feminino",
+      "productType": "Camisa",
+      "price": 219.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "PP",
+            "P",
+            "M",
+            "G",
+            "GG",
+            "3G"
+          ]
+        }
+      ],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_bone_vila",
+      "slug": "bone-vila-nova",
+      "name": "Boné Vila Nova",
+      "shortDescription": null,
+      "description": null,
+      "brand": null,
+      "reference": ".71790",
+      "categories": [
+        "Acessórios"
+      ],
+      "collections": [],
+      "audience": null,
+      "productType": "Boné",
+      "price": 89.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_bone_branco",
+      "slug": "bone-vila-nova-branco",
+      "name": "Boné Vila Nova Branco",
+      "shortDescription": null,
+      "description": null,
+      "brand": null,
+      "reference": ".71776",
+      "categories": [
+        "Acessórios"
+      ],
+      "collections": [],
+      "audience": null,
+      "productType": "Boné",
+      "price": 89.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [],
+      "isFeatured": false,
+      "isNew": false,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    },
+    {
+      "id": "vn_store_camisa_reveillon_2026_masc",
+      "slug": "camisa-reveillon-2026-branca-masculina",
+      "name": "Camisa Réveillon 2026 Branca Masculina",
+      "shortDescription": null,
+      "description": null,
+      "brand": "Volt",
+      "reference": "N0234",
+      "categories": [
+        "Camisas"
+      ],
+      "collections": [
+        "Réveillon 2026"
+      ],
+      "audience": "Masculino",
+      "productType": "Camisa",
+      "price": 229.99,
+      "originalPrice": null,
+      "installments": null,
+      "images": [],
+      "thumbnail": null,
+      "variations": [
+        {
+          "name": "Tamanho",
+          "values": [
+            "P",
+            "M",
+            "G",
+            "GG",
+            "3G"
+          ]
+        }
+      ],
+      "isFeatured": false,
+      "isNew": true,
+      "specifications": {},
+      "sourceUrl": "https://www.lojadovila.com.br/",
+      "status": "READY",
+      "missing_fields": [
+        "images",
+        "thumbnail"
+      ]
+    }
+  ],
+  "notes": [
+    "A loja reportava 125 produtos na consulta. Este lote captura apenas itens com campos suficientes obtidos da listagem/páginas indexadas; não é um espelho integral do catálogo. Preços são snapshot e podem mudar."
+  ],
+  "source_name": "Loja do Vila",
+  "source_url": "https://www.lojadovila.com.br/"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "topics": [
+    {
+      "title": "Demonstrações contábeis",
+      "documents": [
+        {
+          "title": "Demonstrações Contábeis 2025",
+          "document_date": "2025",
+          "pdf_url": "https://www.vilanovafc.com.br/files/demonstracoes-contabeis-2025-912670.pdf",
+          "status": "READY"
+        },
+        {
+          "title": "Demonstrações Contábeis 2024",
+          "document_date": "2024",
+          "pdf_url": "https://www.vilanovafc.com.br/files/demonstracoes-contabeis-2024-716240.pdf",
+          "status": "READY"
+        },
+        {
+          "title": "Demonstrações Contábeis 2023",
+          "document_date": "2023",
+          "pdf_url": "https://www.vilanovafc.com.br/files/demonstracoes-contabeis-2023-045380.pdf",
+          "status": "READY"
+        },
+        {
+          "title": "Demonstrações Contábeis 2022",
+          "document_date": "2022",
+          "pdf_url": "https://www.vilanovafc.com.br/files/demonstracoes-contabeis-2022-457690.pdf",
+          "status": "READY"
+        }
+      ]
+    },
+    {
+      "title": "Estatuto",
+      "documents": [
+        {
+          "title": "Estatuto Social Vila Nova Futebol Clube 2025",
+          "document_date": "2025",
+          "pdf_url": "https://www.vilanovafc.com.br/files/estatuto-social-vila-nova-futebol-clube-2025-297680.pdf",
+          "status": "READY"
+        }
+      ]
+    }
+  ],
+  "highlights": [],
+  "highlights_status": "GAP",
+  "highlights_note": "Os PDFs oficiais foram catalogados, mas os valores de receita, resultado e dívida não foram extraídos neste lote; não foi usada cifra de fonte secundária para preencher o campo.",
+  "status": "REVIEW",
+  "sources": [
+    {
+      "source_name": "Vila Nova FC — Transparência",
+      "source_url": "https://www.vilanovafc.com.br/transparencia"
+    }
+  ]
+}

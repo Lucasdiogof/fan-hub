@@ -1,0 +1,1408 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "cards": [
+    {
+      "id": "vn_manto_01",
+      "name": "Dalberson Ferreira do Amaral",
+      "display_name": "Dalberson",
+      "aliases": [
+        "Dalberson"
+      ],
+      "position": "gol",
+      "shirt_number": 29,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1QKt-rycCXEQhcjk38-n498ExdQDvjA92",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/558006/dalberson"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_02",
+      "name": "Gabriel Átila Cardoso da Silva",
+      "display_name": "Gabriel Átila",
+      "aliases": [
+        "Gabriel Átila"
+      ],
+      "position": "gol",
+      "shirt_number": 30,
+      "academy_club": "Vila Nova",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/18CXQrdHCf6X0GyfJcMDaLDa8UyJFXgGT",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.transfermarkt.com.br/gabriel-atila/profil/spieler/1083089"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_03",
+      "name": "Helton Brant Aleixo Leite",
+      "display_name": "Helton Leite",
+      "aliases": [
+        "Helton Leite"
+      ],
+      "position": "gol",
+      "shirt_number": 1,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1jhoud61dv4N9aQrgpIY-YhNmLEay7grv",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/449653/helton-leite"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_04",
+      "name": "Anderson de Jesus Santos",
+      "display_name": "Anderson Jesus",
+      "aliases": [
+        "Anderson Jesus"
+      ],
+      "position": "zag",
+      "shirt_number": 14,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1DKUoIhs3lzHm57b-Wl7ljeVuUeGH9FAQ",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1130889/anderson-jesus"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_05",
+      "name": "Breno Augusto de Azevedo Bora",
+      "display_name": "Breno Bora",
+      "aliases": [
+        "Breno Bora"
+      ],
+      "position": "zag",
+      "shirt_number": 23,
+      "academy_club": "Joinville / Atlético Tubarão / Coritiba / Atlético-GO",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1SMPBgh1KtbltPJ_6BFi-Z6TaKpYQJkCU",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.transfermarkt.com.br/breno-bora/profil/spieler/"
+        },
+        {
+          "source_name": "oGol — histórico Breno Bora",
+          "source_url": "https://www.ogol.com.br/jogador/breno-bora/737293?epoca_id=154"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_06",
+      "name": "Douglas Mendes Moreira",
+      "display_name": "Douglas Mendes",
+      "aliases": [
+        "Douglas Mendes"
+      ],
+      "position": "zag",
+      "shirt_number": 4,
+      "academy_club": "Ponte Preta",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1_q_Pr-c6itlRRMuY6mclYLHVKpRRRFp3",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_07",
+      "name": "Jonathan Aparecido de Oliveira da Costa",
+      "display_name": "Jonathan Costa",
+      "aliases": [
+        "Jonathan Costa"
+      ],
+      "position": "zag",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://ge.globo.com/sp/campinas-e-regiao/futebol/noticia/2026/09/01/guarani-acerta-emprestimo-de-zagueiro-para-o-vila-nova.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_08",
+      "name": "Samuel Lucas de Oliveira Souza",
+      "display_name": "Samuel",
+      "aliases": [
+        "Samuel"
+      ],
+      "position": "zag",
+      "shirt_number": null,
+      "academy_club": "São Caetano",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1NJAWzgB8uxG6Zizo20_lMKhvtdKTkN9y",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/samuel-lucas/1181595"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_09",
+      "name": "Tiago Pagnussat",
+      "display_name": "Tiago Pagnussat",
+      "aliases": [
+        "Tiago Pagnussat"
+      ],
+      "position": "zag",
+      "shirt_number": 3,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": "https://drive.google.com/drive/folders/1mJ7r67Fj5dZV0IpuVtwQ_saaBc3fpFQx",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/574664"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_10",
+      "name": "Eduardo dos Santos",
+      "display_name": "Dudu",
+      "aliases": [
+        "Dudu"
+      ],
+      "position": "vol",
+      "shirt_number": 15,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1VoOrdkcuVpCWq7G6bLWydwjFLEwfmqVd",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1376786/dudu"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_11",
+      "name": "Enzo Bizzotto Costa",
+      "display_name": "Enzo",
+      "aliases": [
+        "Enzo"
+      ],
+      "position": "vol",
+      "shirt_number": 18,
+      "academy_club": "Internacional",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": "https://drive.google.com/drive/folders/1Qr43yT9gtuM1t2FvGUN8zgXzG7NL-0jc",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/enzo-bizzotto/717250"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_12",
+      "name": "Higor Matheus Meritão",
+      "display_name": "Higor Meritão",
+      "aliases": [
+        "Higor Meritão"
+      ],
+      "position": "vol",
+      "shirt_number": 21,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1fGaeS_yn1KM0VMjoA11GWkm7GSpPkESA",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1033100/higor-meritao"
+        },
+        {
+          "source_name": "Sofascore — Higor Meritão",
+          "source_url": "https://www.sofascore.com/pt/football/player/higor-meritao/973845"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_13",
+      "name": "João Pedro Vieira",
+      "display_name": "João Vieira",
+      "aliases": [
+        "João Vieira"
+      ],
+      "position": "vol",
+      "shirt_number": 5,
+      "academy_club": "Internacional",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": "https://drive.google.com/drive/folders/1e1Mf6Af0KDNr6EBOgje17WheFH8bogtv",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1462413/joao-vieira"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_14",
+      "name": "Nathan Camargo dos Santos",
+      "display_name": "Nathan Camargo",
+      "aliases": [
+        "Nathan Camargo"
+      ],
+      "position": "vol",
+      "shirt_number": 20,
+      "academy_club": "RB Bragantino",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1DOWb23dxFN7-RIwKFUJaR84hjETj-Uun",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1366063/nathan"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_15",
+      "name": "Willian Marlon Ferreira Moraes",
+      "display_name": "Willian Maranhão",
+      "aliases": [
+        "Willian Maranhão"
+      ],
+      "position": "vol",
+      "shirt_number": 8,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/17cQ1dAva7vz3TfC1Vg8c5PwDTnNmGgH4",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/willian-maranhao/392636"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_16",
+      "name": "Hayner William Monjardim Cordeiro",
+      "display_name": "Hayner",
+      "aliases": [
+        "Hayner"
+      ],
+      "position": "ld",
+      "shirt_number": 22,
+      "academy_club": "Bahia",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1EJqT3HlzQr9QLBYBA2ka29VKuH42qOVd",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/765156/hayner"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_17",
+      "name": "Higor Luiz de Souza",
+      "display_name": "Higor Luiz",
+      "aliases": [
+        "Higor Luiz"
+      ],
+      "position": "le",
+      "shirt_number": 6,
+      "academy_club": "Paraná / Desportivo Brasil",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2024,
+      "photo_source_url": "https://drive.google.com/drive/folders/11wzMc38L8_MR1lGkp2Bms3LrOhKkhHpt",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/higor/892455"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_18",
+      "name": "Igor Aquino da Silva",
+      "display_name": "Igor Cariús",
+      "aliases": [
+        "Igor Cariús"
+      ],
+      "position": "le",
+      "shirt_number": 16,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1GQdJCYMjLz0nfDDbEsf5ntgQRvtTYKT8",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/849501/igor-carius"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_19",
+      "name": "Willian Prado Camargo",
+      "display_name": "Willian Formiga",
+      "aliases": [
+        "Willian Formiga"
+      ],
+      "position": "le",
+      "shirt_number": 13,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2020,
+      "photo_source_url": "https://drive.google.com/drive/folders/1b1z1r4BamdaKB1fWdKU8hWFaOuWHu5Sk",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/815946/willian-formiga"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_20",
+      "name": "Raphael Guimarães de Paula",
+      "display_name": "Dodô",
+      "aliases": [
+        "Dodô"
+      ],
+      "position": "mei",
+      "shirt_number": 31,
+      "academy_club": "Atlético-MG",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1a1ys6E1ARs78fH5r4YzIrzzgnES9LZMI",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_21",
+      "name": "Marcos Gabriel do Nascimento",
+      "display_name": "Marquinhos Gabriel",
+      "aliases": [
+        "Marquinhos Gabriel"
+      ],
+      "position": "mei",
+      "shirt_number": 10,
+      "academy_club": "América-RS / Juventude / Passo Fundo / Internacional",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1komt1l-3_ioXd__ssSPIezFiN8VvONyP",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/175644/marcos-gabriel-do-nascimento-marquinhos"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_22",
+      "name": "André Luís da Costa Alfredo",
+      "display_name": "André Luís",
+      "aliases": [
+        "André Luís"
+      ],
+      "position": "ata",
+      "shirt_number": 7,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": "https://drive.google.com/drive/folders/1qLpKcre5tXBhLLbts7S-Z5YthB9e86Pn?usp=drive_link",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/656372/andr-luis"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_23",
+      "name": "Bruno César Xavier Sislo",
+      "display_name": "Bruno Xavier",
+      "aliases": [
+        "Bruno Xavier"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": "Juventus-SP / Portuguesa",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": "https://drive.google.com/drive/folders/1mRNZOIVzXYq9aSuKzdzMUtPgGaBPQ-I1",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/players/881154/bruno-xavier"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_24",
+      "name": "Guilherme Augusto Alves Dellatorre",
+      "display_name": "Dellatorre",
+      "aliases": [
+        "Dellatorre"
+      ],
+      "position": "ata",
+      "shirt_number": 49,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1uPcYQu7jz93NxLdpBAxjlquur50zMVmK",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/278723/dellatorre"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_25",
+      "name": "Emerson Lima Freitas",
+      "display_name": "Emerson Urso",
+      "aliases": [
+        "Emerson Urso"
+      ],
+      "position": "pe",
+      "shirt_number": 70,
+      "academy_club": "São Caetano",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2024,
+      "photo_source_url": "https://drive.google.com/drive/folders/1aColU7bINv8-9wvhJ4WGEpiucXTXYWNs",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1446567/emerson-urso"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_26",
+      "name": "Everton Galdino Moreira",
+      "display_name": "Éverton Galdino",
+      "aliases": [
+        "Éverton Galdino"
+      ],
+      "position": "ata",
+      "shirt_number": 17,
+      "academy_club": "Vila Nova",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2014,
+      "photo_source_url": "https://drive.google.com/drive/folders/1xih0oMcEYTLl_Ixg3wUPNkZC0ZYLaejx",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1034321/everton"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_27",
+      "name": "Gustavo Puskas Pinheiro Lemos",
+      "display_name": "Gustavo Puskas",
+      "aliases": [
+        "Gustavo Puskas"
+      ],
+      "position": "ata",
+      "shirt_number": 9,
+      "academy_club": "Flamengo / Athletico-PR",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1GnKDSPZ_8b1KO78FmA9KOhwKB-MqWBEj",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1935530/gustavo-puskas"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_28",
+      "name": "Janderson Santos de Souza",
+      "display_name": "Janderson",
+      "aliases": [
+        "Janderson"
+      ],
+      "position": "ata",
+      "shirt_number": 99,
+      "academy_club": "Joinville",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1dKYe1O_Z8eN9pBp9D8bTTJEJq-_0aGi8",
+      "status": "READY",
+      "missing_fields": [],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/players/1045975/janderson"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_29",
+      "name": "Lincoln Corrêa dos Santos",
+      "display_name": "Lincoln",
+      "aliases": [
+        "Lincoln"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": "Flamengo",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.ogol.com.br/jogador/lincoln/547764"
+        },
+        {
+          "source_name": "ge — Lincoln regularizado pelo Vila Nova",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/23/novo-reforco-lincoln-e-regularizado-e-ja-pode-estrear-pelo-vila-nova.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_30",
+      "name": "Rafael da Silva",
+      "display_name": "Rafa Silva",
+      "aliases": [
+        "Rafa Silva"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": "Corinthians / Coritiba",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/19MNQ_c24EsoRe1e9afbfZT_GEFYSSZVG",
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/323400/rafael-silva"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_31",
+      "name": "Ryan Aparecido Lima Cassiano",
+      "display_name": "Ryan",
+      "aliases": [
+        "Ryan"
+      ],
+      "position": "pe",
+      "shirt_number": 11,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2026,
+      "photo_source_url": "https://drive.google.com/drive/folders/1Tqo-wDB7a6JwuPaMFaihqhP-NKg8lxDh",
+      "status": "READY",
+      "missing_fields": [
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Vila Nova FC — elenco profissional",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        },
+        {
+          "source_name": "Base biográfica complementar",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1346859"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_32",
+      "name": "Rafael Ferreira Donato",
+      "display_name": "Rafael Donato",
+      "aliases": [
+        "Rafael Donato",
+        "Donato"
+      ],
+      "position": "zag",
+      "shirt_number": 5,
+      "academy_club": "Botafogo",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2020,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-contratacao-de-rafael-donato-ex-brasiliense.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_33",
+      "name": "Alan Cássio da Cruz",
+      "display_name": "Alan Mineiro",
+      "aliases": [
+        "Alan Mineiro"
+      ],
+      "position": "mei",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2017,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/03/09/vila-nova-contrata-alan-mineiro-como-auxiliar-tecnico-do-sub-20.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_34",
+      "name": "Carlos Frontini",
+      "display_name": "Frontini",
+      "aliases": [
+        "Frontini",
+        "Carlos Frontini"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "AR",
+      "nationality_name": "Argentina",
+      "club_debut_year": 2013,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/frontini/37821?epoca_id=148"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_35",
+      "name": "Carlos Robston Ludgero Júnior",
+      "display_name": "Róbston",
+      "aliases": [
+        "Róbston",
+        "Robston"
+      ],
+      "position": "vol",
+      "shirt_number": null,
+      "academy_club": "Gama",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2013,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.futeboldomundo.com.br/jogadores/30/jogador"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_36",
+      "name": "Ramires dos Anjos Alves",
+      "display_name": "Ramires",
+      "aliases": [
+        "Ramires"
+      ],
+      "position": "vol",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2015,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/ramires/391810"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_37",
+      "name": "Georgemy Gonçalves",
+      "display_name": "Georgemy",
+      "aliases": [
+        "Georgemy"
+      ],
+      "position": "gol",
+      "shirt_number": 1,
+      "academy_club": "Cruzeiro",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2021,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-a-contratacao-do-goleiro-georgemy-de-198m.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_38",
+      "name": "Alesson dos Santos Batista",
+      "display_name": "Alesson",
+      "aliases": [
+        "Alesson"
+      ],
+      "position": "pe",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2021,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/alesson/542322?epoca_id=155"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_39",
+      "name": "Diego Barbosa de Oliveira Tavares",
+      "display_name": "Diego Tavares",
+      "aliases": [
+        "Diego Tavares"
+      ],
+      "position": "pd",
+      "shirt_number": 22,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2021,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/atacantes-novatos-comemoram-inicio-de-trabalho-no-vila-e-reacao-na-tabela.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_40",
+      "name": "Clayton Fernandes Silva",
+      "display_name": "Clayton",
+      "aliases": [
+        "Clayton",
+        "Clayton Silva"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2021,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-contrata-atacante-clayton-que-fez-10-gols-e-foi-campeao-potiguar.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_41",
+      "name": "Altemir Cordeiro Pessôa Neto",
+      "display_name": "Neto Pessoa",
+      "aliases": [
+        "Neto Pessoa"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2022,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/neto-pessoa/321222"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_42",
+      "name": "Ralf de Souza Teles",
+      "display_name": "Ralf",
+      "aliases": [
+        "Ralf"
+      ],
+      "position": "vol",
+      "shirt_number": 18,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2022,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/04/09/vila-nova-acerta-contratacao-do-experiente-volante-ralf-ex-corinthians.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_43",
+      "name": "Geremias Ribeiro Júnior",
+      "display_name": "Júnior Todinho",
+      "aliases": [
+        "Júnior Todinho",
+        "Junior Todinho"
+      ],
+      "position": "pe",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2024,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/junior-todinho/448391"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_44",
+      "name": "Guilherme Parede Pinheiro",
+      "display_name": "Guilherme Parede",
+      "aliases": [
+        "Guilherme Parede",
+        "Parede"
+      ],
+      "position": "pd",
+      "shirt_number": 77,
+      "academy_club": "Operário Ferroviário / Coritiba",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2023,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/guilherme-parede/474291/historia"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_45",
+      "name": "Hedhe Halls Rocha da Silva",
+      "display_name": "Halls",
+      "aliases": [
+        "Halls"
+      ],
+      "position": "gol",
+      "shirt_number": null,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2024,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "photo_source_url",
+        "academy_club"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/halls/552474"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_46",
+      "name": "Elias Lira Nogueira Júnior",
+      "display_name": "Elias",
+      "aliases": [
+        "Elias"
+      ],
+      "position": "ld",
+      "shirt_number": 2,
+      "academy_club": null,
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2024,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "academy_club",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/elias/544005?epoca_id=155"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_47",
+      "name": "Bernardo Schappo",
+      "display_name": "Bernardo Schappo",
+      "aliases": [
+        "Bernardo Schappo",
+        "Schappo"
+      ],
+      "position": "zag",
+      "shirt_number": null,
+      "academy_club": "Ituano",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/01/09/vila-nova-oficializa-a-contratacao-do-zagueiro-bernardo-schappo.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_48",
+      "name": "Gabriel Buscariol Poveda",
+      "display_name": "Gabriel Poveda",
+      "aliases": [
+        "Gabriel Poveda",
+        "Poveda"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": "Rio Preto / Guarani",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/11/18/gabriel-poveda-se-despede-e-nao-joga-mais-pelo-vila-nova.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_49",
+      "name": "Bruno Pereira Mendes",
+      "display_name": "Bruno Mendes",
+      "aliases": [
+        "Bruno Mendes"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": "Guarani",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2025,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/01/07/vila-nova-oficializa-contratacao-do-atacante-bruno-mendes.ghtml"
+        }
+      ]
+    },
+    {
+      "id": "vn_manto_50",
+      "name": "Henrique Almeida Caixeta Nascentes",
+      "display_name": "Henrique Almeida",
+      "aliases": [
+        "Henrique Almeida"
+      ],
+      "position": "ata",
+      "shirt_number": null,
+      "academy_club": "São Paulo",
+      "nationality_code": "BR",
+      "nationality_name": "Brasil",
+      "club_debut_year": 2023,
+      "photo_source_url": null,
+      "status": "READY",
+      "missing_fields": [
+        "shirt_number",
+        "photo_source_url"
+      ],
+      "sources": [
+        {
+          "source_name": "Fonte biográfica/histórica da carta",
+          "source_url": "https://www.ogol.com.br/jogador/henrique-almeida/89450?epoca_id=152"
+        }
+      ]
+    }
+  ],
+  "ready_count": 50,
+  "review_count": 0,
+  "target_ready_minimum": 50,
+  "coverage_status": "READY",
+  "notes": [
+    "50 cartas READY: 31 jogadores do elenco do snapshot + 19 nomes históricos/recentes com passagem confirmada pelo Vila Nova.",
+    "Campos opcionais não documentados com segurança (especialmente camisa histórica, clube de formação e foto histórica) permanecem null e aparecem em missing_fields; isso não invalida a identidade da carta.",
+    "Nenhum número de camisa ou clube de formação foi inferido. Fotos históricas pendentes devem ser tratadas em assets_todo.md em lote posterior."
+  ]
+}

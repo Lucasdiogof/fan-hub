@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "events": [
+    {
+      "year": 1938,
+      "title": "Criação da Associação Mariana",
+      "description": "A associação comunitária que daria origem ao clube foi criada sob liderança do padre José Balestiere.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/historico",
+      "status": "READY"
+    },
+    {
+      "year": 1943,
+      "title": "Fundação do Vila Nova",
+      "description": "O Vila Nova Futebol Clube foi formalizado em Goiânia.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/historico",
+      "status": "READY"
+    },
+    {
+      "year": 1946,
+      "title": "Mudança para Operário",
+      "description": "O clube passou a usar o nome Operário.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://portal.al.go.leg.br/noticias/124777/campanha-nas-redes-sociais-lembra-a-contribuicao-da-alego-com-os-primeiros-times-de-futebol-da-capital-goiana",
+      "status": "READY"
+    },
+    {
+      "year": 1955,
+      "title": "Retorno ao nome Vila Nova",
+      "description": "Depois de também usar Araguaia e Fênix, o clube retomou o nome Vila Nova.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://portal.al.go.leg.br/noticias/124777/campanha-nas-redes-sociais-lembra-a-contribuicao-da-alego-com-os-primeiros-times-de-futebol-da-capital-goiana",
+      "status": "READY"
+    },
+    {
+      "year": 1958,
+      "title": "Terceiro lugar no Goiano",
+      "description": "O clube terminou o estadual na terceira colocação.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/historico",
+      "status": "READY"
+    },
+    {
+      "year": 1961,
+      "title": "Primeiro grande ciclo de títulos",
+      "description": "O Vila conquistou seu primeiro Campeonato Goiano e outras taças listadas no acervo oficial.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1962,
+      "title": "Bicampeonato goiano",
+      "description": "O Vila conquistou o Campeonato Goiano pelo segundo ano consecutivo.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1963,
+      "title": "Tricampeonato goiano",
+      "description": "O Vila completou três títulos estaduais consecutivos.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1969,
+      "title": "Quarto Campeonato Goiano",
+      "description": "O clube voltou a ser campeão estadual.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1970,
+      "title": "Quadrangular Internacional Joaquim Coelho",
+      "description": "O acervo oficial lista o Vila como vencedor do torneio.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1973,
+      "title": "Campeão goiano",
+      "description": "O Vila conquistou o estadual de 1973.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1977,
+      "title": "Campeão goiano e presença nacional",
+      "description": "O Vila venceu novamente o Goiano e iniciou uma sequência de participações na elite nacional.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1978,
+      "title": "Bicampeonato goiano",
+      "description": "O Vila manteve o título estadual.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1979,
+      "title": "Tricampeonato goiano",
+      "description": "Terceiro título consecutivo da sequência 1977–1979.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1980,
+      "title": "Tetracampeonato goiano",
+      "description": "O Vila alcançou quatro estaduais seguidos.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1982,
+      "title": "Novo título goiano",
+      "description": "O clube voltou a conquistar o Campeonato Goiano.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1984,
+      "title": "Campeão goiano",
+      "description": "O Vila conquistou o estadual de 1984.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1993,
+      "title": "Campeão goiano",
+      "description": "O clube encerrou um intervalo de títulos estaduais.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1995,
+      "title": "Campeão goiano",
+      "description": "Novo título estadual.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 1996,
+      "title": "Campeão brasileiro invicto da Série C",
+      "description": "O Vila conquistou a terceira divisão nacional sem derrota.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 2000,
+      "title": "Campeão da Segunda Divisão Goiana",
+      "description": "O acervo oficial registra o título de 2000.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 2001,
+      "title": "Campeão goiano",
+      "description": "O Vila conquistou o estadual de 2001.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 2005,
+      "title": "Campeão goiano",
+      "description": "O Vila chegou ao título estadual de 2005.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 2015,
+      "title": "Segundo título da Série C",
+      "description": "O clube voltou a vencer a terceira divisão nacional.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 2020,
+      "title": "Terceiro título da Série C",
+      "description": "O Vila conquistou seu terceiro título nacional da competição.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    },
+    {
+      "year": 2021,
+      "title": "Vice da Copa Verde",
+      "description": "Primeira das três finais recentes de Copa Verde em que o Vila terminou como vice.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.cbf.com.br/futebol-brasileiro/noticias/copa-verde",
+      "status": "READY"
+    },
+    {
+      "year": 2022,
+      "title": "Novo vice da Copa Verde",
+      "description": "O Vila voltou à final e terminou na segunda colocação.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.cbf.com.br/futebol-brasileiro/noticias/copa-verde",
+      "status": "READY"
+    },
+    {
+      "year": 2024,
+      "title": "CT passa a concentrar o profissional",
+      "description": "O elenco profissional passou a treinar integralmente no CT Vila do Tigre.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/estrutura",
+      "status": "READY"
+    },
+    {
+      "year": 2024,
+      "title": "Terceiro vice recente da Copa Verde",
+      "description": "O Vila voltou a terminar a Copa Verde como vice-campeão.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.cbf.com.br/futebol-brasileiro/noticias/copa-verde",
+      "status": "READY"
+    },
+    {
+      "year": 2025,
+      "title": "16º Campeonato Goiano",
+      "description": "O Vila conquistou seu 16º título estadual.",
+      "source_name": "Vila Nova FC / fonte indicada",
+      "source_url": "https://www.vilanovafc.com.br/titulos",
+      "status": "READY"
+    }
+  ]
+}

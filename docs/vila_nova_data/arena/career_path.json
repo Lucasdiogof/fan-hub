@@ -1,0 +1,3225 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "players": [
+    {
+      "id": "vn_career_01",
+      "answer": "Dalberson",
+      "accepted_answers": [
+        "Dalberson",
+        "Dalberson Ferreira do Amaral"
+      ],
+      "position": "Goleiro",
+      "club_career": [
+        {
+          "period": "2016–2017",
+          "team": "Boa Esporte",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017–2020",
+          "team": "Joinville",
+          "appearances": 18,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Brusque",
+          "appearances": 10,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021–2022",
+          "team": "Famalicão",
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "CSA",
+          "appearances": 36,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "América-MG",
+          "appearances": 29,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Guarani",
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": 9,
+          "goals": 0,
+          "loan": true,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/558006/dalberson"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_02",
+      "answer": "Gabriel Átila",
+      "accepted_answers": [
+        "Gabriel Átila",
+        "Gabriel Átila Cardoso da Silva"
+      ],
+      "position": "Goleiro",
+      "club_career": [
+        {
+          "period": "2018–2019",
+          "team": "Vila Nova (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": true
+        },
+        {
+          "period": "2020",
+          "team": "Atlético-MG (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021–2025",
+          "team": "Atlético-MG",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.transfermarkt.com.br/gabriel-atila/profil/spieler/1083089"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_03",
+      "answer": "Helton Leite",
+      "accepted_answers": [
+        "Helton Leite",
+        "Helton Brant Aleixo Leite"
+      ],
+      "position": "Goleiro",
+      "club_career": [
+        {
+          "period": "2011",
+          "team": "J. Malucelli",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "Boa Esporte",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2012",
+          "team": "Ipatinga",
+          "appearances": 23,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2013",
+          "team": "Criciúma",
+          "appearances": 11,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2014–2017",
+          "team": "Botafogo",
+          "appearances": 32,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "São Caetano",
+          "appearances": 11,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2018–2020",
+          "team": "Boavista",
+          "appearances": 45,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2023",
+          "team": "Benfica",
+          "appearances": 34,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Antalyaspor",
+          "appearances": 52,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Deportivo La Coruña",
+          "appearances": 37,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Fortaleza",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 30,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/449653/helton-leite"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_04",
+      "answer": "Anderson Jesus",
+      "accepted_answers": [
+        "Anderson Jesus",
+        "Anderson de Jesus Santos"
+      ],
+      "position": "Zagueiro",
+      "club_career": [
+        {
+          "period": "2014–2016",
+          "team": "Confiança",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016–2017",
+          "team": "Guarani-MG",
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Confiança",
+          "appearances": 39,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017–2018",
+          "team": "Grêmio",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Guarani",
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Confiança",
+          "appearances": 34,
+          "goals": 3,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Bahia",
+          "appearances": 6,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2022",
+          "team": "América-MG",
+          "appearances": 73,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022–2024",
+          "team": "Vizela",
+          "appearances": 82,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Bolívar",
+          "appearances": 15,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "CRB",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Avaí",
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 19,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1130889/anderson-jesus"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_05",
+      "answer": "Breno Bora",
+      "accepted_answers": [
+        "Breno Bora",
+        "Breno Augusto de Azevedo Bora"
+      ],
+      "position": "Zagueiro",
+      "club_career": [
+        {
+          "period": "2017–2021",
+          "team": "Joinville / Atlético Tubarão / Coritiba / Atlético-GO (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Água Santa",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "São Joseense",
+          "appearances": 18,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Foz do Iguaçu",
+          "appearances": 9,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "América-PE",
+          "appearances": 7,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Foz do Iguaçu",
+          "appearances": 14,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Cianorte",
+          "appearances": 10,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Foz do Iguaçu",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Taubaté",
+          "appearances": 5,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Paranavaí",
+          "appearances": 10,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": 9,
+          "goals": 1,
+          "loan": true,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "oGol — histórico Breno Bora",
+          "source_url": "https://www.ogol.com.br/jogador/breno-bora/737293?epoca_id=154"
+        },
+        {
+          "source_name": "CBF — Breno Bora 2026",
+          "source_url": "https://www.cbf.com.br/futebol-brasileiro/atletas/campeonato-brasileiro/serie-c/2026/583921"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_06",
+      "answer": "Douglas Mendes",
+      "accepted_answers": [
+        "Douglas Mendes",
+        "Douglas Mendes Moreira"
+      ],
+      "position": "Zagueiro",
+      "club_career": [
+        {
+          "period": "2021–2022",
+          "team": "Ponte Preta",
+          "appearances": 9,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "RB Bragantino",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "FC Liefering",
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023–2026",
+          "team": "RB Salzburg",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "RB Bragantino",
+          "appearances": 31,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "FC Liefering",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — contratação de Douglas Mendes pelo Vila Nova",
+          "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_07",
+      "answer": "Jonathan Costa",
+      "accepted_answers": [
+        "Jonathan Costa",
+        "Jonathan Aparecido de Oliveira da Costa"
+      ],
+      "position": "Zagueiro",
+      "club_career": [
+        {
+          "period": "2013",
+          "team": "SEV Hortolândia",
+          "appearances": 13,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Penapolense",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2014–2016",
+          "team": "Portimonense",
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Linense",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Bragantino",
+          "appearances": 14,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Desportivo Brasil",
+          "appearances": 17,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "XV de Piracicaba",
+          "appearances": 21,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Bragantino",
+          "appearances": 22,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Grêmio Osasco",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2022",
+          "team": "Caldense",
+          "appearances": 41,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Paraná",
+          "appearances": 12,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Botafogo-PB",
+          "appearances": 10,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Operário-PR",
+          "appearances": 20,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2025",
+          "team": "Avaí",
+          "appearances": 80,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Guarani",
+          "appearances": 21,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": 5,
+          "goals": 1,
+          "loan": true,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "ge — empréstimo de Jonathan Costa ao Vila Nova",
+          "source_url": "https://ge.globo.com/sp/campinas-e-regiao/futebol/noticia/2026/09/01/guarani-acerta-emprestimo-de-zagueiro-para-o-vila-nova.ghtml"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_08",
+      "answer": "Samuel",
+      "accepted_answers": [
+        "Samuel",
+        "Samuel Lucas de Oliveira Souza"
+      ],
+      "position": "Zagueiro",
+      "club_career": [
+        {
+          "period": "2022–2023",
+          "team": "São Caetano (base)",
+          "appearances": 12,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "São Paulo (base)",
+          "appearances": 17,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova Sub-20",
+          "appearances": 6,
+          "goals": 1,
+          "loan": false,
+          "is_club": true
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.ogol.com.br/jogador/samuel-lucas/1181595"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_09",
+      "answer": "Tiago Pagnussat",
+      "accepted_answers": [
+        "Tiago Pagnussat",
+        "Tiago Pagnussat"
+      ],
+      "position": "Zagueiro",
+      "club_career": [
+        {
+          "period": "2011",
+          "team": "Vila Aurora",
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2012–2013",
+          "team": "Caxias",
+          "appearances": 14,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2013",
+          "team": "Guarani",
+          "appearances": 12,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2013–2014",
+          "team": "Caxias",
+          "appearances": 45,
+          "goals": 6,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2014–2016",
+          "team": "Atlético-MG",
+          "appearances": 27,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016–2017",
+          "team": "Bahia",
+          "appearances": 75,
+          "goals": 4,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2017–2019",
+          "team": "Bahia",
+          "appearances": 48,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Lanús",
+          "appearances": 10,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Ceará",
+          "appearances": 46,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Cerezo Osaka",
+          "appearances": 27,
+          "goals": 8,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Nagoya Grampus",
+          "appearances": 22,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Ceará",
+          "appearances": 39,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Avaí",
+          "appearances": 41,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–",
+          "team": "Vila Nova",
+          "appearances": 90,
+          "goals": 3,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/574664/tiago-pagnussat"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_10",
+      "answer": "Dudu",
+      "accepted_answers": [
+        "Dudu",
+        "Eduardo dos Santos"
+      ],
+      "position": "Volante",
+      "club_career": [
+        {
+          "period": "2020–2024",
+          "team": "Floresta",
+          "appearances": 37,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Iguatu",
+          "appearances": 14,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Tirol",
+          "appearances": 3,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Maranhão",
+          "appearances": 32,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Anapolina",
+          "appearances": 12,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": 25,
+          "goals": 3,
+          "loan": true,
+          "is_club": true
+        },
+        {
+          "period": "2026",
+          "team": "Anapolina",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1376786/dudu"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_11",
+      "answer": "Enzo",
+      "accepted_answers": [
+        "Enzo",
+        "Enzo Bizzotto Costa"
+      ],
+      "position": "Volante",
+      "club_career": [
+        {
+          "period": "2019–2024",
+          "team": "Internacional (base)",
+          "appearances": 46,
+          "goals": 10,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Aparecidense",
+          "appearances": 15,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Aparecidense",
+          "appearances": 32,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Vila Nova",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 15,
+          "goals": 3,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.ogol.com.br/jogador/enzo-bizzotto/717250"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_12",
+      "answer": "Higor Meritão",
+      "accepted_answers": [
+        "Higor Meritão",
+        "Higor Matheus Meritão"
+      ],
+      "position": "Volante",
+      "club_career": [
+        {
+          "period": "2018",
+          "team": "Velo Clube",
+          "appearances": 20,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Ferroviária",
+          "appearances": 30,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Botafogo-SP",
+          "appearances": 28,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019–2020",
+          "team": "Ferroviária",
+          "appearances": 8,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Paraná",
+          "appearances": 33,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Ferroviária",
+          "appearances": 12,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021–2022",
+          "team": "Pumas",
+          "appearances": 45,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2022–2023",
+          "team": "Pumas",
+          "appearances": 24,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Goiás",
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Criciúma",
+          "appearances": 31,
+          "goals": 3,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "CRB",
+          "appearances": 50,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Chapecoense",
+          "appearances": 21,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1033100/higor-meritao"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_13",
+      "answer": "João Vieira",
+      "accepted_answers": [
+        "João Vieira",
+        "João Pedro Vieira"
+      ],
+      "position": "Volante",
+      "club_career": [
+        {
+          "period": "2017",
+          "team": "Internacional",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "São José-RS",
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Serra Macaense",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019–2020",
+          "team": "DUX Internacional de Madrid",
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Esportivo",
+          "appearances": 6,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Pelotas",
+          "appearances": 9,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Caxias",
+          "appearances": 16,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021–2022",
+          "team": "São Luiz",
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Paysandu",
+          "appearances": 26,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Paysandu",
+          "appearances": 73,
+          "goals": 7,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–",
+          "team": "Vila Nova",
+          "appearances": 97,
+          "goals": 15,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1462413/joao-vieira"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_14",
+      "answer": "Nathan Camargo",
+      "accepted_answers": [
+        "Nathan Camargo",
+        "Nathan Camargo dos Santos"
+      ],
+      "position": "Volante",
+      "club_career": [
+        {
+          "period": "2022–2024",
+          "team": "RB Bragantino",
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Guarani",
+          "appearances": 17,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Remo",
+          "appearances": 13,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1366063/nathan-camargo"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_15",
+      "answer": "Hayner",
+      "accepted_answers": [
+        "Hayner",
+        "Hayner William Monjardim Cordeiro"
+      ],
+      "position": "Lateral-direito",
+      "club_career": [
+        {
+          "period": "2015–2016",
+          "team": "Bahia",
+          "appearances": 26,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016–2017",
+          "team": "Náutico",
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Paysandu",
+          "appearances": 14,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Novorizontino",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Louletano",
+          "appearances": 29,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Cuiabá",
+          "appearances": 23,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Azuriz",
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Sport",
+          "appearances": 24,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Atlético-GO",
+          "appearances": 40,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Dnipro-1",
+          "appearances": 17,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Coritiba",
+          "appearances": 8,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Santos",
+          "appearances": 38,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "CRB",
+          "appearances": 20,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": 37,
+          "goals": 1,
+          "loan": true,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/765156/hayner"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_16",
+      "answer": "Higor Luiz",
+      "accepted_answers": [
+        "Higor Luiz",
+        "Higor Luiz de Souza"
+      ],
+      "position": "Lateral-esquerdo",
+      "club_career": [
+        {
+          "period": "2019",
+          "team": "Paraná (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021–2023",
+          "team": "Desportivo Brasil (base)",
+          "appearances": 34,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2025",
+          "team": "Vila Nova (base)",
+          "appearances": 32,
+          "goals": 1,
+          "loan": false,
+          "is_club": true
+        },
+        {
+          "period": "2024",
+          "team": "Iporá",
+          "appearances": 6,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Grêmio Anápolis",
+          "appearances": 2,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2024–",
+          "team": "Vila Nova",
+          "appearances": 63,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.ogol.com.br/jogador/higor/892455"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_17",
+      "answer": "Igor Cariús",
+      "accepted_answers": [
+        "Igor Cariús",
+        "Igor Aquino da Silva"
+      ],
+      "position": "Lateral-esquerdo",
+      "club_career": [
+        {
+          "period": "2014–2015",
+          "team": "Barbalha",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Quixadá",
+          "appearances": 12,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2015–2016",
+          "team": "Coruripe",
+          "appearances": 33,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016–2017",
+          "team": "ASA",
+          "appearances": 18,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017–2018",
+          "team": "Paraná",
+          "appearances": 69,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019–2021",
+          "team": "CRB",
+          "appearances": 97,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Atlético-GO",
+          "appearances": 45,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Cuiabá",
+          "appearances": 25,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2025",
+          "team": "Sport",
+          "appearances": 103,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Mirassol",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/849501/igor-carius"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_18",
+      "answer": "Willian Formiga",
+      "accepted_answers": [
+        "Willian Formiga",
+        "Willian Prado Camargo"
+      ],
+      "position": "Lateral-esquerdo",
+      "club_career": [
+        {
+          "period": "2015–2016",
+          "team": "Cianorte",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Brusque",
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Vitória SC B",
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Cianorte",
+          "appearances": 21,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Brasil de Pelotas",
+          "appearances": 18,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019–2020",
+          "team": "Novorizontino",
+          "appearances": 2,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Vila Nova",
+          "appearances": 64,
+          "goals": 2,
+          "loan": true,
+          "is_club": true
+        },
+        {
+          "period": "2022",
+          "team": "Vila Nova",
+          "appearances": 50,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        },
+        {
+          "period": "2023",
+          "team": "Ceará",
+          "appearances": 29,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "CRB",
+          "appearances": 44,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–",
+          "team": "Vila Nova",
+          "appearances": 82,
+          "goals": 3,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/815946/willian-formiga"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_19",
+      "answer": "Dodô",
+      "accepted_answers": [
+        "Dodô",
+        "Raphael Guimarães de Paula"
+      ],
+      "position": "Meia",
+      "club_career": [
+        {
+          "period": "2010–2013",
+          "team": "Atlético-MG (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2013–2015",
+          "team": "Atlético-MG",
+          "appearances": 11,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Figueirense",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Chapecoense",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Botafogo-SP",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Fortaleza",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019–2021",
+          "team": "Khorfakkan",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021–2022",
+          "team": "Khorfakkan",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Atlético-GO",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Ajman",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Kazma SC",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Remo",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.ogol.com.br/jogador/dodo/364441"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_20",
+      "answer": "Marquinhos Gabriel",
+      "accepted_answers": [
+        "Marquinhos Gabriel",
+        "Marcos Gabriel do Nascimento"
+      ],
+      "position": "Meia",
+      "club_career": [
+        {
+          "period": "2009–2013",
+          "team": "Internacional",
+          "appearances": 36,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "Avaí",
+          "appearances": 13,
+          "goals": 3,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2012",
+          "team": "Sport",
+          "appearances": 39,
+          "goals": 5,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2013",
+          "team": "Bahia",
+          "appearances": 44,
+          "goals": 4,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Palmeiras",
+          "appearances": 19,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2014–2016",
+          "team": "Al Nassr",
+          "appearances": 18,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Santos",
+          "appearances": 44,
+          "goals": 9,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2016–2018",
+          "team": "Corinthians",
+          "appearances": 94,
+          "goals": 10,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Al-Nasr",
+          "appearances": 18,
+          "goals": 5,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019–2020",
+          "team": "Cruzeiro",
+          "appearances": 56,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Athletico-PR",
+          "appearances": 16,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Vasco",
+          "appearances": 42,
+          "goals": 7,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Criciúma",
+          "appearances": 20,
+          "goals": 6,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022–2023",
+          "team": "Goiás",
+          "appearances": 18,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Criciúma",
+          "appearances": 60,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Avaí",
+          "appearances": 47,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 40,
+          "goals": 4,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/175644/marcos-gabriel-do-nascimento-marquinhos"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_21",
+      "answer": "André Luís",
+      "accepted_answers": [
+        "André Luís",
+        "André Luís da Costa Alfredo"
+      ],
+      "position": "Atacante",
+      "club_career": [
+        {
+          "period": "2015",
+          "team": "Athletico-PR",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2015–2016",
+          "team": "Guaratinguetá",
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Brasília",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Santa Cruz",
+          "appearances": 57,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Cianorte",
+          "appearances": 14,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Ponte Preta",
+          "appearances": 35,
+          "goals": 11,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Corinthians",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Fortaleza",
+          "appearances": 25,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Daejeon Hana Citizen",
+          "appearances": 27,
+          "goals": 13,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Atlético-GO",
+          "appearances": 46,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Cuiabá",
+          "appearances": 39,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Jeonbuk Hyundai",
+          "appearances": 15,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Cuiabá",
+          "appearances": 34,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–",
+          "team": "Vila Nova",
+          "appearances": 58,
+          "goals": 10,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/656372/andre-luis"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_22",
+      "answer": "Bruno Xavier",
+      "accepted_answers": [
+        "Bruno Xavier",
+        "Bruno César Xavier Sislo"
+      ],
+      "position": "Atacante",
+      "club_career": [
+        {
+          "period": "2015–2017",
+          "team": "Portuguesa",
+          "appearances": 27,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Nacional-SP",
+          "appearances": 6,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Sport",
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Nacional-SP",
+          "appearances": 15,
+          "goals": 10,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Corinthians",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Guarani",
+          "appearances": 10,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Oeste",
+          "appearances": 13,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2019–2020",
+          "team": "Aves",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Juventude",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Juventus-SP",
+          "appearances": 4,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Paraná",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Inter de Limeira",
+          "appearances": 13,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Mirassol",
+          "appearances": 12,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Grêmio Esportivo Juventus",
+          "appearances": 8,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Santo André",
+          "appearances": 10,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Ferroviária",
+          "appearances": 12,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022–2023",
+          "team": "Água Santa",
+          "appearances": 25,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Ituano",
+          "appearances": 7,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Água Santa",
+          "appearances": 13,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Ituano",
+          "appearances": 27,
+          "goals": 8,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Vitória",
+          "appearances": 13,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025–",
+          "team": "Vila Nova",
+          "appearances": 28,
+          "goals": 3,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/881154/bruno-xavier"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_23",
+      "answer": "Dellatorre",
+      "accepted_answers": [
+        "Dellatorre",
+        "Guilherme Augusto Alves Dellatorre"
+      ],
+      "position": "Centroavante",
+      "club_career": [
+        {
+          "period": "2010–2011",
+          "team": "Rio Preto",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2011–2012",
+          "team": "Internacional",
+          "appearances": 13,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2012–2013",
+          "team": "Porto B",
+          "appearances": 36,
+          "goals": 11,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2013–2014",
+          "team": "Athletico-PR",
+          "appearances": 31,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "QPR",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2014–2015",
+          "team": "Athletico-PR",
+          "appearances": 39,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Suphanburi",
+          "appearances": 26,
+          "goals": 10,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Suphanburi",
+          "appearances": 22,
+          "goals": 14,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "APOEL",
+          "appearances": 35,
+          "goals": 12,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Suphanburi",
+          "appearances": 9,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Mirassol",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Brasil de Pelotas",
+          "appearances": 26,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "CSA",
+          "appearances": 52,
+          "goals": 24,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Atlético-GO",
+          "appearances": 9,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022–2023",
+          "team": "Montedio Yamagata",
+          "appearances": 57,
+          "goals": 14,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Mirassol",
+          "appearances": 45,
+          "goals": 17,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Coritiba",
+          "appearances": 35,
+          "goals": 10,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 31,
+          "goals": 10,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/278723/dellatorre"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_24",
+      "answer": "Emerson Urso",
+      "accepted_answers": [
+        "Emerson Urso",
+        "Emerson Lima Freitas"
+      ],
+      "position": "Ponta",
+      "club_career": [
+        {
+          "period": "2020–2021",
+          "team": "São Caetano",
+          "appearances": 19,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Santo André",
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "São Caetano",
+          "appearances": 14,
+          "goals": 2,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022–2023",
+          "team": "Audax Rio",
+          "appearances": 14,
+          "goals": 3,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Resende",
+          "appearances": 11,
+          "goals": 2,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Ituano",
+          "appearances": 12,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Botafogo",
+          "appearances": 5,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Vila Nova",
+          "appearances": 23,
+          "goals": 3,
+          "loan": true,
+          "is_club": true
+        },
+        {
+          "period": "2025–",
+          "team": "Vila Nova",
+          "appearances": 38,
+          "goals": 5,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1446567/emerson-urso"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_25",
+      "answer": "Éverton Galdino",
+      "accepted_answers": [
+        "Éverton Galdino",
+        "Everton Galdino Moreira"
+      ],
+      "position": "Atacante",
+      "club_career": [
+        {
+          "period": "2014–2017",
+          "team": "Vila Nova",
+          "appearances": 18,
+          "goals": 1,
+          "loan": false,
+          "is_club": true
+        },
+        {
+          "period": "2017",
+          "team": "Tombense",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2018–2023",
+          "team": "Tombense",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Ponte Preta",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Figueirense",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Grêmio",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Grêmio",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "FC Tokyo",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025–",
+          "team": "FC Tokyo",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Mirassol",
+          "appearances": 17,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": 9,
+          "goals": 1,
+          "loan": true,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1034321/everton"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_26",
+      "answer": "Gustavo Puskas",
+      "accepted_answers": [
+        "Gustavo Puskas",
+        "Gustavo Puskas Pinheiro Lemos"
+      ],
+      "position": "Centroavante",
+      "club_career": [
+        {
+          "period": "2021–2024",
+          "team": "Flamengo/Athletico-PR (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Aymorés",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Vila Nova (base)",
+          "appearances": 28,
+          "goals": 8,
+          "loan": false,
+          "is_club": true
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 13,
+          "goals": 2,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "zerozero — histórico Gustavo Puskas",
+          "source_url": "https://www.zerozero.pt/jogador/gustavo-puskas/1047740?op=zoomstats"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_27",
+      "answer": "Janderson",
+      "accepted_answers": [
+        "Janderson",
+        "Janderson Santos de Souza"
+      ],
+      "position": "Atacante",
+      "club_career": [
+        {
+          "period": "2016–2018",
+          "team": "Joinville",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2019–2020",
+          "team": "Corinthians",
+          "appearances": 34,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Atlético-GO",
+          "appearances": 92,
+          "goals": 9,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Grêmio",
+          "appearances": 39,
+          "goals": 4,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Ceará",
+          "appearances": 73,
+          "goals": 8,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Atlético-GO",
+          "appearances": 32,
+          "goals": 4,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Remo",
+          "appearances": 28,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 37,
+          "goals": 7,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/players/1045975/janderson"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_28",
+      "answer": "Lincoln",
+      "accepted_answers": [
+        "Lincoln",
+        "Lincoln Corrêa dos Santos"
+      ],
+      "position": "Centroavante",
+      "club_career": [
+        {
+          "period": "2017–2021",
+          "team": "Flamengo",
+          "appearances": 46,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2021–2024",
+          "team": "Vissel Kobe",
+          "appearances": 26,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Cruzeiro",
+          "appearances": 9,
+          "goals": 1,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "SCR Altach",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Athletic-MG",
+          "appearances": 16,
+          "goals": 5,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Spartak Subotica",
+          "appearances": 16,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.ogol.com.br/jogador/lincoln/547764?epoca_id=155"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_29",
+      "answer": "Rafa Silva",
+      "accepted_answers": [
+        "Rafa Silva",
+        "Rafael da Silva"
+      ],
+      "position": "Centroavante",
+      "club_career": [
+        {
+          "period": "2012–2013",
+          "team": "Coritiba",
+          "appearances": 20,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2013–2014",
+          "team": "Lugano",
+          "appearances": 30,
+          "goals": 12,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2014–2016",
+          "team": "Albirex Niigata",
+          "appearances": 58,
+          "goals": 21,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Urawa Red Diamonds",
+          "appearances": 41,
+          "goals": 21,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2018–2022",
+          "team": "Wuhan",
+          "appearances": 43,
+          "goals": 31,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Cruzeiro",
+          "appearances": 18,
+          "goals": 6,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Jeonbuk Hyundai",
+          "appearances": 25,
+          "goals": 3,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Cruzeiro",
+          "appearances": 17,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Mirassol",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "América-MG",
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 19,
+          "goals": 5,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/323400/rafael-silva"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    },
+    {
+      "id": "vn_career_30",
+      "answer": "Ryan",
+      "accepted_answers": [
+        "Ryan",
+        "Ryan Aparecido Lima Cassiano"
+      ],
+      "position": "Ponta",
+      "club_career": [
+        {
+          "period": "2022",
+          "team": "New England Revolution II",
+          "appearances": 22,
+          "goals": 4,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "IAPE",
+          "appearances": null,
+          "goals": 1,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "Moto Club",
+          "appearances": 30,
+          "goals": 5,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Athletic-MG",
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Maranhão",
+          "appearances": 38,
+          "goals": 10,
+          "loan": false,
+          "is_club": false
+        },
+        {
+          "period": "2026–",
+          "team": "Vila Nova",
+          "appearances": 31,
+          "goals": 4,
+          "loan": false,
+          "is_club": true
+        }
+      ],
+      "national_teams": [],
+      "status": "READY",
+      "sources": [
+        {
+          "source_name": "Base biográfica/estatística auditada",
+          "source_url": "https://www.fotmob.com/pt-BR/players/1346859"
+        },
+        {
+          "source_name": "Vila Nova FC — elenco atual",
+          "source_url": "https://www.vilanovafc.com.br/elenco-profissional"
+        }
+      ],
+      "data_notes": "Jogos e gols reproduzem a cobertura da fonte indicada quando disponíveis; campos null permanecem quando a fonte não individualiza a passagem sem ambiguidade."
+    }
+  ],
+  "ready_count": 30,
+  "review_count": 0,
+  "coverage_status": "READY",
+  "notes": [
+    "30 carreiras auditadas e publicáveis. Períodos e empréstimos foram preenchidos somente quando sustentados pela fonte indicada.",
+    "Jogos/gols podem ficar null quando a fonte não separa com segurança a passagem; nenhum número foi inferido."
+  ]
+}

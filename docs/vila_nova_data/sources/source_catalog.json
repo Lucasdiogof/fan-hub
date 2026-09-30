@@ -1,0 +1,2014 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-29",
+  "sources": [
+    {
+      "id": "vn_src_official_home",
+      "name": "Vila Nova Futebol Clube — Site Oficial",
+      "url": "https://www.vilanovafc.com.br/",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "identidade",
+        "integrações",
+        "sócio",
+        "notícias"
+      ]
+    },
+    {
+      "id": "vn_src_history",
+      "name": "Vila Nova FC — Histórico",
+      "url": "https://www.vilanovafc.com.br/historico",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "origens",
+        "história",
+        "marcos"
+      ]
+    },
+    {
+      "id": "vn_src_titles",
+      "name": "Vila Nova FC — Títulos",
+      "url": "https://www.vilanovafc.com.br/titulos",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "títulos",
+        "anos",
+        "basquete"
+      ]
+    },
+    {
+      "id": "vn_src_brand",
+      "name": "Vila Nova FC — Manual da Marca",
+      "url": "https://www.vilanovafc.com.br/manual-da-marca",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "escudo",
+        "manual",
+        "cores"
+      ]
+    },
+    {
+      "id": "vn_src_structure",
+      "name": "Vila Nova FC — Estrutura",
+      "url": "https://www.vilanovafc.com.br/estrutura",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "OBA",
+        "capacidade",
+        "CT",
+        "endereço CT"
+      ]
+    },
+    {
+      "id": "vn_src_roster",
+      "name": "Vila Nova FC — Elenco Profissional",
+      "url": "https://www.vilanovafc.com.br/elenco-profissional",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "elenco atual",
+        "posições",
+        "fotos"
+      ]
+    },
+    {
+      "id": "vn_src_staff",
+      "name": "Vila Nova FC — Comissão Técnica",
+      "url": "https://www.vilanovafc.com.br/comissao-tecnica",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "comissão técnica",
+        "departamento de futebol"
+      ]
+    },
+    {
+      "id": "vn_src_directors",
+      "name": "Vila Nova FC — Diretoria",
+      "url": "https://www.vilanovafc.com.br/diretoria",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "diretoria",
+        "conselhos"
+      ]
+    },
+    {
+      "id": "vn_src_transparency",
+      "name": "Vila Nova FC — Transparência",
+      "url": "https://www.vilanovafc.com.br/transparencia",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "balanços",
+        "estatuto",
+        "documentos"
+      ]
+    },
+    {
+      "id": "vn_src_news",
+      "name": "Vila Nova FC — Notícias",
+      "url": "https://www.vilanovafc.com.br/noticias",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "notícias",
+        "datas",
+        "imagens",
+        "padrão de URLs"
+      ]
+    },
+    {
+      "id": "vn_src_matches",
+      "name": "Vila Nova FC — Tabelas de Jogos",
+      "url": "https://www.vilanovafc.com.br/tabelas-de-jogos",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "Goiano 2026",
+        "Copa do Brasil 2026",
+        "Série B 2026",
+        "estádios",
+        "horários"
+      ]
+    },
+    {
+      "id": "vn_src_store",
+      "name": "Loja do Vila",
+      "url": "https://www.lojadovila.com.br/",
+      "type": "OFFICIAL_STORE",
+      "authority": "PRIMARY",
+      "covers": [
+        "produtos",
+        "preços",
+        "variações",
+        "marca Volt"
+      ]
+    },
+    {
+      "id": "vn_src_membership",
+      "name": "Sócio Tigrão / Ingressos A",
+      "url": "https://vilanova.ingressosa.com.br/",
+      "type": "OFFICIAL_MEMBERSHIP",
+      "authority": "PRIMARY",
+      "covers": [
+        "programa de sócio",
+        "acesso"
+      ]
+    },
+    {
+      "id": "vn_src_ticket_sport",
+      "name": "Vila Nova FC — Ingressos Vila x Sport 2026",
+      "url": "https://www.vilanovafc.com.br/noticias/545-venda-de-ingressos-vila-nova-x-sport-recife-serie-b-2026",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "preços",
+        "setores",
+        "lojas físicas",
+        "benefício sócio"
+      ]
+    },
+    {
+      "id": "vn_src_ticket_confianca",
+      "name": "Vila Nova FC — Ingressos Vila x Confiança 2026",
+      "url": "https://www.vilanovafc.com.br/noticias/527-venda-de-ingressos-vila-nova-x-confianca-copa-do-brasil-2026",
+      "type": "OFFICIAL_CLUB",
+      "authority": "PRIMARY",
+      "covers": [
+        "preços",
+        "meia-entrada"
+      ]
+    },
+    {
+      "id": "vn_src_alego_names",
+      "name": "Portal da Alego — história dos clubes de Goiânia",
+      "url": "https://portal.al.go.leg.br/noticias/124777/campanha-nas-redes-sociais-lembra-a-contribuicao-da-alego-com-os-primeiros-times-de-futebol-da-capital-goiana",
+      "type": "PUBLIC_INSTITUTION",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "mudanças de nome",
+        "retorno em 1955"
+      ]
+    },
+    {
+      "id": "vn_src_onefootball",
+      "name": "OneFootball — Vila Nova",
+      "url": "https://onefootball.com.br/pt-br/time/vila-nova-2865",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "onefootball_team_id",
+        "competição exibida"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_cv_table",
+      "name": "CBF — Copa Verde 2026",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/tabelas/copa-verde/profissional/2026/2022",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Copa Verde/Centro-Oeste 2026"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_833618",
+      "name": "CBF — Rio Branco x Vila Nova",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/masculino/2026/rio-branco-a-c-saf-x-vila-nova/833618",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2026"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_833624",
+      "name": "CBF — Vila Nova x Operário-MS",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/profissional/2026/vila-nova-x-operario/833624",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2026"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_833630",
+      "name": "CBF — Primavera x Vila Nova",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/profissional/2026/primavera-atletico-clube-x-vila-nova/833630",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2026",
+        "escalação"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_833638",
+      "name": "CBF — Vila Nova x Capital",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/masculino/2026/vila-nova-x-capital/833638",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2026"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_833645",
+      "name": "CBF — Araguaína x Vila Nova",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/profissional/2026/araguaina-futebol-e-regatas-x-vila-nova/833645",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2026",
+        "escalação"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_834357",
+      "name": "CBF — Vila Nova x Anápolis",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/masculino/2026/vila-nova-x-anapolis/834357",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2026",
+        "escalação"
+      ]
+    },
+    {
+      "id": "vn_src_ge_fatalfans",
+      "name": "ge — FatalFans e Vila Nova",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/03/19/vila-nova-fecha-patrocinio-com-plataforma-de-venda-de-conteudo-adulto.ghtml",
+      "type": "NEWS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "patrocínio 2026"
+      ]
+    },
+    {
+      "id": "vn_src_ge_douglas",
+      "name": "ge — chegada de Douglas Mendes",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml",
+      "type": "NEWS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "elenco",
+        "chegadas 2026"
+      ]
+    },
+    {
+      "id": "vn_src_ge_jonathan",
+      "name": "ge — Jonathan Costa ao Vila Nova",
+      "url": "https://ge.globo.com/sp/campinas-e-regiao/futebol/noticia/2026/09/01/guarani-acerta-emprestimo-de-zagueiro-para-o-vila-nova.ghtml",
+      "type": "NEWS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "elenco",
+        "chegadas 2026"
+      ]
+    },
+    {
+      "id": "vn_src_more_membership",
+      "name": "Mais Futebol Goiano — Sócio Tigrão 2026",
+      "url": "https://www.maisfutebolgoiano.com.br/2026/04/programa-socio-torcedor-do-vila-nova.html",
+      "type": "NEWS",
+      "authority": "SECONDARY",
+      "covers": [
+        "preços de planos 2026"
+      ]
+    },
+    {
+      "id": "vn_src_ge_rio_branco",
+      "name": "ge — Rio Branco-ES x Vila Nova",
+      "url": "https://ge.globo.com/es/futebol/copa-verde/noticia/2026/03/24/copa-verde-2026-rio-branco-es-derrota-o-vila-nova-na-estreia.ghtml",
+      "type": "NEWS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "auditoria de data Copa Verde 2026"
+      ]
+    },
+    {
+      "id": "vn_src_fgf_primavera",
+      "name": "FGF — rodada Copa Centro-Oeste",
+      "url": "https://fgf.esp.br/pt/noticias/view.php?q=25234",
+      "type": "FEDERATION",
+      "authority": "PRIMARY_REGIONAL",
+      "covers": [
+        "Primavera x Vila Nova 2026"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_team_2026",
+      "name": "CBF — Vila Nova Série B 2026",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2026/20079",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "nomes completos",
+        "vínculo cadastral em 2026"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_breno",
+      "name": "CBF — Breno Bora",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/atletas/campeonato-brasileiro/serie-c/2026/583921",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "nome completo",
+        "nascimento",
+        "partidas",
+        "gols"
+      ]
+    },
+    {
+      "id": "vn_src_fdg_vil_port_20151007",
+      "name": "Futebol de Goyaz — Vila Nova 1 x 0 Portuguesa",
+      "url": "https://www.futeboldegoyaz.com.br/partidas/51483/partida",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_fdg_port_vil_20151017",
+      "name": "Futebol de Goyaz — Portuguesa 1 x 2 Vila Nova",
+      "url": "https://www.futeboldegoyaz.com.br/partidas/51501/partida",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_fdg_vil_lon_20151121",
+      "name": "Futebol de Goyaz — Vila Nova 4 x 1 Londrina",
+      "url": "https://futeboldegoyaz.com.br/partidas/51615/partida",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_fdg_vil_rem_20210123",
+      "name": "Futebol de Goyaz — Vila Nova 5 x 1 Remo",
+      "url": "https://futeboldegoyaz.com.br/partidas/63577/partida",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_rem_vil_20210130",
+      "name": "CBF — Remo x Vila Nova 2020/2021",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/campeonato-brasileiro/aspirantes/2020/remo-x-vila-nova/817221?view=escalacao",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_enciclopedia_remo_vila",
+      "name": "Enciclopédia do Leão — Remo x Vila Nova",
+      "url": "https://enciclopediadoleao.blogspot.com/2025/05/retrospecto-remo-x-vila-nova-go.html",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_bolanaarea_cv2021",
+      "name": "Bola na Área — Copa Verde 2021",
+      "url": "https://www.bolanaarea.com/reg_copa_verde_2021.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_bolanaarea_cv2022",
+      "name": "Bola na Área — Copa Verde 2022",
+      "url": "https://www.bolanaarea.com/reg_copa_verde_2022.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_vil_pay_20221119",
+      "name": "CBF — Vila Nova x Paysandu 2022",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/masculino/2022/vila-nova-x-paysandu/823530?view=escalacao",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_futebolinterior_vil_goi_20240320",
+      "name": "Futebol Interior — Vila Nova 1 x 0 Goiás",
+      "url": "https://www.futebolinterior.com.br/vila-nova-1-x-0-goias-alesson-deixa-vila-perto-das-semifinais/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_zerozero_cui_vil_20240511",
+      "name": "zerozero — Cuiabá 4 x 2 Vila Nova",
+      "url": "https://www.zerozero.pt/jogo/2024-05-11-cuiaba-vila-nova/10016972",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_itatiaia_goi_vil_20241013",
+      "name": "Itatiaia — Goiás 0 x 1 Vila Nova",
+      "url": "https://www.itatiaia.com.br/esportes/futebol/futebol-nacional/brasileirao-serie-b/vila-nova-bate-goias-na-serrinha-e-cola-no-g4-da-serie-b/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_eg_goi_vil_20250309",
+      "name": "Esporte Goiano — Goiás 0 x 1 Vila Nova",
+      "url": "https://esportegoiano.com.br/tadeu-perde-penalti-vila-nova-vence-goias-ida-semifinal-estadual/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_diarioredacao_vil_ana_20250330",
+      "name": "Diário da Redação — Vila Nova 3 x 0 Anápolis",
+      "url": "https://diariodaredacao.com.br/vila-nova-e-campeao-goiano-em-cima-do-anapolis/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_vil_goi_20250816",
+      "name": "CBF — Vila Nova x Goiás 2025",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/campeonato-brasileiro/serie-b/2025/20028/61590/64052/64052/31514/vila-nova-x-goias/829903?view=escalacao",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "arena/lineups"
+      ]
+    },
+    {
+      "id": "vn_src_v04_01",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/558006/dalberson",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_02",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.transfermarkt.com.br/gabriel-atila/profil/spieler/1083089",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_03",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/449653/helton-leite",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_04",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1130889/anderson-jesus",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_05",
+      "name": "oGol — histórico Breno Bora",
+      "url": "https://www.ogol.com.br/jogador/breno-bora/737293?epoca_id=154",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_06",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.ogol.com.br/jogador/samuel-lucas/1181595",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_07",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/574664/tiago-pagnussat",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_08",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1376786/dudu",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_09",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.ogol.com.br/jogador/enzo-bizzotto/717250",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_10",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1033100/higor-meritao",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_11",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1462413/joao-vieira",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_12",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1366063/nathan-camargo",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_13",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/765156/hayner",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_14",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.ogol.com.br/jogador/higor/892455",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_15",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/849501/igor-carius",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_16",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/815946/willian-formiga",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_17",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.ogol.com.br/jogador/dodo/364441",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_18",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/175644/marcos-gabriel-do-nascimento-marquinhos",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_19",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/656372/andre-luis",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_20",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/881154/bruno-xavier",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_21",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/278723/dellatorre",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_22",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1446567/emerson-urso",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_23",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1034321/everton",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_24",
+      "name": "zerozero — histórico Gustavo Puskas",
+      "url": "https://www.zerozero.pt/jogador/gustavo-puskas/1047740?op=zoomstats",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_25",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/players/1045975/janderson",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_26",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.ogol.com.br/jogador/lincoln/547764?epoca_id=155",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_27",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/323400/rafael-silva",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_28",
+      "name": "Base biográfica/estatística auditada",
+      "url": "https://www.fotmob.com/pt-BR/players/1346859",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_29",
+      "name": "Base biográfica complementar",
+      "url": "https://www.transfermarkt.com.br/breno-bora/profil/spieler/",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_30",
+      "name": "Base biográfica complementar",
+      "url": "https://www.fotmob.com/pt-BR/players/574664",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_31",
+      "name": "Sofascore — Higor Meritão",
+      "url": "https://www.sofascore.com/pt/football/player/higor-meritao/973845",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_32",
+      "name": "Base biográfica complementar",
+      "url": "https://www.fotmob.com/pt-BR/players/1366063/nathan",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_33",
+      "name": "Base biográfica complementar",
+      "url": "https://www.ogol.com.br/jogador/willian-maranhao/392636",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_34",
+      "name": "Base biográfica complementar",
+      "url": "https://www.fotmob.com/pt-BR/players/",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_35",
+      "name": "Base biográfica complementar",
+      "url": "https://www.fotmob.com/pt-BR/players/656372/andr-luis",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_36",
+      "name": "Base biográfica complementar",
+      "url": "https://www.fotmob.com/players/881154/bruno-xavier",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_37",
+      "name": "Base biográfica complementar",
+      "url": "https://www.fotmob.com/pt-BR/players/1935530/gustavo-puskas",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_38",
+      "name": "Base biográfica complementar",
+      "url": "https://www.ogol.com.br/jogador/lincoln/547764",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_39",
+      "name": "ge — Lincoln regularizado pelo Vila Nova",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/23/novo-reforco-lincoln-e-regularizado-e-ja-pode-estrear-pelo-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_40",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-contratacao-de-rafael-donato-ex-brasiliense.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_41",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/03/09/vila-nova-contrata-alan-mineiro-como-auxiliar-tecnico-do-sub-20.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_42",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/frontini/37821?epoca_id=148",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_43",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.futeboldomundo.com.br/jogadores/30/jogador",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_44",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/ramires/391810",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_45",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-a-contratacao-do-goleiro-georgemy-de-198m.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_46",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/alesson/542322?epoca_id=155",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_47",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/atacantes-novatos-comemoram-inicio-de-trabalho-no-vila-e-reacao-na-tabela.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_48",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-contrata-atacante-clayton-que-fez-10-gols-e-foi-campeao-potiguar.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_49",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/neto-pessoa/321222",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_50",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/04/09/vila-nova-acerta-contratacao-do-experiente-volante-ralf-ex-corinthians.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_51",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/junior-todinho/448391",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_52",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/guilherme-parede/474291/historia",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_53",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/halls/552474",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_54",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/elias/544005?epoca_id=155",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_55",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/01/09/vila-nova-oficializa-a-contratacao-do-zagueiro-bernardo-schappo.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_56",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/11/18/gabriel-poveda-se-despede-e-nao-joga-mais-pelo-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_57",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/01/07/vila-nova-oficializa-contratacao-do-atacante-bruno-mendes.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v04_58",
+      "name": "Fonte biográfica/histórica da carta",
+      "url": "https://www.ogol.com.br/jogador/henrique-almeida/89450?epoca_id=152",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/career_path",
+        "arena/guess_player"
+      ]
+    },
+    {
+      "id": "vn_src_v05_01",
+      "name": "ge — saída e legado de Alan Mineiro",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_02",
+      "name": "ge — protagonista na Série C 2020",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/protagonista-novamente-alan-mineiro-escreve-historia-de-idolo-no-vila-mas-tem-futuro-indefinido.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_03",
+      "name": "ge — despedida de Rafael Donato",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_04",
+      "name": "ge — renovação 2022",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/rafael-donato-e-bruno-collaco-renovam-e-ficam-no-vila-nova-ate-o-fim-de-2022.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_05",
+      "name": "ge — balanço de Alesson em 2024",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/11/21/alesson-passa-temporada-a-limpo-e-diz-que-2024-foi-o-melhor-ano-da-carreira.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_06",
+      "name": "ge — renovação de Ralf",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/05/vila-nova-renova-com-volante-ralf.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_07",
+      "name": "ge — posicionamento e gols decisivos de Henrique Almeida",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/15/henrique-almeida-repete-feito-e-ganha-elogios-apos-mais-uma-vitoria-do-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_08",
+      "name": "ge — Formiga sobre equilíbrio defesa/ataque",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/willian-formiga-diz-que-se-cobra-para-ajudar-mais-o-setor-ofensivo.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_09",
+      "name": "ge — João Vieira líder de participações em gols",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/08/06/lider-de-participacoes-em-gols-joao-vieira-mira-acesso-com-o-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_10",
+      "name": "ge — atuação no clássico",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/12/destaque-no-classico-joao-vieira-mira-sequencia-positiva-pelo-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_11",
+      "name": "ge — apresentação de Marquinhos Gabriel",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/01/05/marquinhos-gabriel-promete-agregar-qualidade-e-lideranca-ao-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_12",
+      "name": "ge — André Luís como centroavante",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/25/andre-luis-aproveita-chance-como-centroavante-e-vive-melhor-fase-no-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_13",
+      "name": "ge — gol decisivo contra América-MG",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/09/19/andre-luis-celebra-mais-um-gol-decisivo-pelo-vila-e-diz-viver-melhor-momento-da-carreira.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_14",
+      "name": "ge — Janderson gols e assistências na Série B 2026",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/23/artilheiro-e-lider-de-assistencias-janderson-vive-melhor-momento-no-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/player_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_15",
+      "name": "ge — postura do Vila de Márcio em 2015",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2015/07/robston-enaltece-atuacao-do-vila-nosso-primeiro-tempo-foi-perfeito.html",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_16",
+      "name": "ge — legado/títulos de Márcio Fernandes",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-anuncia-saida-do-tecnico-marcio-fernandes.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_17",
+      "name": "ge — despedida e ideia de jogo de Higo",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/05/16/higo-magalhaes-se-despede-do-vila-nova-vou-em-busca-de-novos-desafios.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_18",
+      "name": "ge — perfil tático de Higo",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/03/05/simplicidade-e-dedicacao-o-perfil-de-higo-magalhaes-tecnico-goiano-que-conquistou-espaco-no-vila.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_19",
+      "name": "ge — apresentação de Allan Aal no Vila",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2022/07/04/allan-aal-prega-mudanca-de-mentalidade-no-vila-e-fala-em-jogar-de-forma-simples-e-objetiva.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_20",
+      "name": "ge — intensidade e transição de Luizinho",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/06/23/luizinho-lopes-destaca-intensidade-e-diz-que-vila-conseguiu-contratar-a-torcida-no-classico.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_21",
+      "name": "ge — apresentação de Luizinho",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/05/24/luizinho-lopes-assume-o-vila-nova-e-fala-em-olhar-para-frente-apos-vexame-do-clube-na-copa-verde.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_22",
+      "name": "ge — organização defensiva de Lacerda",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/12/lacerda-exalta-atuacao-do-vila-e-nega-ser-retranqueiro-de-onde-eu-venho-se-chama-organizado.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_23",
+      "name": "ge — controle/posse contra Chapecoense",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/04/25/lacerda-exalta-vitoria-e-lideranca-provisoria-mas-prega-pes-no-chao.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v05_24",
+      "name": "ge — apresentação de Paulo Turra",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/08/05/paulo-turra-assume-o-vila-nova-prometendo-intensidade-caminhar-e-no-shopping.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "arena/tactical_identity"
+      ]
+    },
+    {
+      "id": "vn_src_v06_01",
+      "name": "Futebol de Goyaz — Guilherme",
+      "url": "https://www.futeboldegoyaz.com.br/jogadores/458/jogador",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_02",
+      "name": "ge — Guilherme ídolo",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/idolo-do-vila-nova-guilherme-reforca-torcida-pelo-acesso-do-tigrao-a-serie-a.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_03",
+      "name": "oGol — Túlio Maravilha",
+      "url": "https://www.ogol.com.br/jogador/tulio-maravilha/42587",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_04",
+      "name": "oGol — Wando",
+      "url": "https://www.ogol.com.br/jogador/wando/95017?epoca_id=0&op=zoomstats",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_05",
+      "name": "ge — Wando ídolo",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2013/06/atacante-wando-e-oferecido-e-pode-voltar-vestir-camisa-do-vila-nova.html",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_06",
+      "name": "ge — Alan Mineiro",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/vila-nova-surpreende-e-anuncia-saida-do-meia-alan-mineiro.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_07",
+      "name": "Futebol de Goyaz — Tim",
+      "url": "https://www.futeboldegoyaz.com.br/jogadores/4117/jogador",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_08",
+      "name": "ge — Tim e Pedro Júnior",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2025/03/27/tim-e-pedro-junior-relembram-ultimo-titulo-do-vila-nova-no-campeonato-goiano-em-2005.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_09",
+      "name": "Zerozero — Roni",
+      "url": "https://www.zerozero.pt/jogador/roni/5780?edicao_id=12680&op=zoomstats&tpstats=club",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_10",
+      "name": "ge — Roni ídolo",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2011/10/roni-desabafa-ficou-provado-que-eu-nao-era-o-responsavel-por-tudo.html",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_11",
+      "name": "ge — Rafael Donato saída",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2023/12/12/rafael-donato-anuncia-saida-do-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_12",
+      "name": "Zerozero — jogadores do Vila Nova",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogadores",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_13",
+      "name": "ge — Frontini ídolo",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/frontini-encerra-carreira-de-jogador-e-vira-diretor-de-futebol-do-vila-nova.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_14",
+      "name": "ge — Róbston ídolo",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2013/12/retrospectiva-vila-nova-da-susto-no-goianao-mas-fatura-acesso-serie-b.html",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_15",
+      "name": "ge — Pedro Júnior retorno",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/apos-titulo-da-serie-c-vila-nova-anuncia-o-retorno-de-pedro-junior.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_16",
+      "name": "ge — Willian Formiga retorno",
+      "url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2024/12/28/vila-nova-oficializa-contratacao-do-lateral-esquerdo-willian-formiga.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_17",
+      "name": "oGol — Max",
+      "url": "https://www.ogol.com.br/jogador/max/5113?epoca_id=0",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_18",
+      "name": "Sou Tigrão — Max",
+      "url": "https://soutigrao.com/jogador/max/",
+      "type": "FAN_HISTORICAL",
+      "authority": "SECONDARY_LOW",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_19",
+      "name": "Sagres — Bé ídolo",
+      "url": "https://sagresonline.com.br/idolo-do-vila-nova-be-avalia-momento-atual-do-clube-e-ensina-caminho-para-artilharia/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_20",
+      "name": "RSSSF Brasil — Goiano 1993",
+      "url": "https://rsssfbrasil.com.chancedegol.com.br/tablesfq/go1993.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v06_21",
+      "name": "RSSSF Brasil — Goiano 1994",
+      "url": "https://www.rsssfbrasil.com/tablesfq/go1994.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "data/idols"
+      ]
+    },
+    {
+      "id": "vn_src_v07_relatorio_2025",
+      "name": "Vila Nova FC — Relatório/Prestação 2025 (62 jogos oficiais)",
+      "url": "https://www.fgf.esp.br/assets/uploads/177742039986.pdf?v=17777573246",
+      "type": "OFFICIAL_CLUB_DOCUMENT",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "total oficial 62 jogos",
+        "resumo temporada 2025"
+      ]
+    },
+    {
+      "id": "vn_src_v07_zerozero_2025",
+      "name": "Zerozero — Vila Nova 2025",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532?epoca_id=154",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_MEDIUM",
+      "covers": [
+        "passaporte 2025",
+        "auditoria total 62",
+        "totais por competição"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_serieb_history",
+      "name": "CBF — Vila Nova Série B 2025 — Histórico de partidas",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2025/20079/20052/61590/31514?tab=historico-de-partidas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "Série B 2025",
+        "datas",
+        "horários",
+        "placares",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_serieb_stats",
+      "name": "CBF — Vila Nova Série B 2025 — Estatísticas",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2025/20079/20052/20019/20106/20052?tab=estatisticas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "auditoria Série B 38 jogos"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cdb_stats",
+      "name": "CBF — Vila Nova Copa do Brasil 2025 — Estatísticas",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/copa-do-brasil/profissional/2025/20079/20079?tab=estatisticas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "auditoria Copa do Brasil 4 jogos"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cv_stats",
+      "name": "CBF — Vila Nova Copa Verde 2025 — Estatísticas",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/copa-verde/profissional/2025/20079?tab=estatisticas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "auditoria Copa Verde 3 jogos"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cv_luverdense",
+      "name": "CBF — Vila Nova x Luverdense — Copa Verde 2025",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-verde/masculino/2025/723226/vila-nova-x-luverdense/828927",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "Copa Verde",
+        "pênaltis",
+        "estádio"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cv_vila_playerlog",
+      "name": "CBF — registro de partidas Copa Verde 2025 (atleta Vila Nova)",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/atletas/copa-verde/masculino/2025/694148",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "Brasiliense x Vila Nova",
+        "Vila Nova x Brasiliense",
+        "placares",
+        "locais"
+      ]
+    },
+    {
+      "id": "vn_src_v07_ge_cv_quartas",
+      "name": "ge — tabela detalhada quartas Copa Verde 2025",
+      "url": "https://ge.globo.com/am/futebol/copa-verde/noticia/2025/02/10/copa-verde-2025-veja-tabela-detalhada-das-quartas-de-final.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "passaporte 2025",
+        "Copa Verde",
+        "datas",
+        "horários",
+        "locais",
+        "conflito de horário"
+      ]
+    },
+    {
+      "id": "vn_src_v07_ge_cv_bra_vila",
+      "name": "ge — Brasiliense 1 x 1 Vila Nova — Copa Verde 2025",
+      "url": "https://ge.globo.com/go/futebol/copa-verde/noticia/2025/02/13/vila-sai-na-frente-mas-cede-empate-ao-brasiliense-pela-copa-verde.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "passaporte 2025",
+        "Copa Verde",
+        "placar",
+        "estádio"
+      ]
+    },
+    {
+      "id": "vn_src_v07_fgf_goiano_final",
+      "name": "FGF — Vila Nova campeão Goiano 2025 / resumo da campanha",
+      "url": "https://www.fgf.esp.br/pt/noticias/view.php?q=24793",
+      "type": "FEDERATION",
+      "authority": "PRIMARY_REGIONAL",
+      "covers": [
+        "passaporte 2025",
+        "Goiano 2025",
+        "17 jogos",
+        "placares",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_v07_fgf_goiano_r1",
+      "name": "FGF — tabela atualizada 1ª rodada Goiano 2025",
+      "url": "https://www.fgf.esp.br/pt/noticias/view.php?q=24693",
+      "type": "FEDERATION",
+      "authority": "PRIMARY_REGIONAL",
+      "covers": [
+        "passaporte 2025",
+        "Vila Nova x Aparecidense",
+        "estádio",
+        "horário"
+      ]
+    },
+    {
+      "id": "vn_src_v07_fgf_goiano_r2_plan",
+      "name": "FGF — plano de ação Anápolis x Vila Nova 19/01/2025",
+      "url": "https://www.fgf.esp.br/assets/uploads/planosdeacoes/173737730690.pdf",
+      "type": "FEDERATION_DOCUMENT",
+      "authority": "PRIMARY_REGIONAL",
+      "covers": [
+        "passaporte 2025",
+        "Anápolis x Vila Nova",
+        "estádio",
+        "horário"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cdb_828967",
+      "name": "CBF — Inter de Limeira x Vila Nova — Copa do Brasil 2025",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-do-brasil/masculino/2025/inter-de-limeira-x-vila-nova/828967?view=escalacao",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "Copa do Brasil",
+        "pênaltis",
+        "estádio"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cdb_829106",
+      "name": "CBF — Vila Nova x Rio Branco-ES — Copa do Brasil 2025",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-do-brasil/masculino/2025/543481/vila-nova-x-rio-branco-f-c/829106",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "Copa do Brasil",
+        "estádio"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cdb_830995",
+      "name": "CBF — Cruzeiro x Vila Nova — Copa do Brasil 2025",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-do-brasil/masculino/2025/461723/cruzeiro-saf-x-vila-nova/830995",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "Copa do Brasil",
+        "estádio"
+      ]
+    },
+    {
+      "id": "vn_src_v07_cbf_cdb_831011",
+      "name": "CBF — Vila Nova x Cruzeiro — Copa do Brasil 2025",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-do-brasil/masculino/2025/vila-nova-x-cruzeiro-saf/831011",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "passaporte 2025",
+        "Copa do Brasil",
+        "estádio"
+      ]
+    },
+    {
+      "id": "vn_src_zerozero_2024",
+      "name": "Zerozero — jogos Vila Nova 2024",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2024&grp=1",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "passaporte 2024",
+        "total por competição"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_go2024",
+      "name": "RSSSF Brasil — Goiás 2024",
+      "url": "https://www.rsssfbrasil.com/tablesfq/go2024.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2024"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_sb2024",
+      "name": "CBF — Vila Nova Série B 2024",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2024/20079/31514/20032/20010/56654?tab=historico-de-partidas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Série B 2024",
+        "datas",
+        "horários",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_cv2024",
+      "name": "CBF — Copa Verde 2024 / Vila Nova",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/copa-verde/profissional/2024/20079",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Copa Verde 2024"
+      ]
+    },
+    {
+      "id": "vn_src_zerozero_2023",
+      "name": "Zerozero — jogos Vila Nova 2023",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2023&grp=1",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "passaporte 2023",
+        "total por competição"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_go2023",
+      "name": "RSSSF Brasil — Goiás 2023",
+      "url": "https://www.rsssfbrasil.com/tablesfq/go2023.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2023"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_sb2023",
+      "name": "CBF — Vila Nova Série B 2023",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-b/2023/20079/20058/20019/20024/20093/20086?tab=historico-de-partidas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Série B 2023",
+        "datas",
+        "horários",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_zerozero_2022",
+      "name": "Zerozero — jogos Vila Nova 2022",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2022&grp=1",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "passaporte 2022",
+        "total por competição"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_go2022",
+      "name": "RSSSF Brasil — Goiás 2022",
+      "url": "https://mail.rsssfbrasil.com/tablesfq/go2022.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2022"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_sb2022",
+      "name": "CBF — Série B 2022",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/tabelas/campeonato-brasileiro/serie-b/2022",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Série B 2022",
+        "total de 38 jogos"
+      ]
+    },
+    {
+      "id": "vn_src_zerozero_2021",
+      "name": "Zerozero — jogos Vila Nova 2021",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2021&grp=1",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "passaporte 2021",
+        "total calendário anual",
+        "edições 2020 concluídas em 2021"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_go2021",
+      "name": "RSSSF Brasil — Goiás 2021",
+      "url": "https://www.rsssfbrasil.com/tablesfq/go2021.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2021"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_go2020",
+      "name": "RSSSF Brasil — Goiás 2020",
+      "url": "https://www.rsssfbrasil.com/tablesfq/go2020.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2020",
+        "jogos em 2020 e 2021"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_cdb2021",
+      "name": "CBF — Vila Nova Copa do Brasil 2021",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/copa-do-brasil/masculino/2021/20079?tab=historico-de-partidas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Copa do Brasil 2021",
+        "estádios",
+        "pênaltis"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_sc2020",
+      "name": "CBF — Vila Nova Série C 2020",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro/serie-c/2020/20079?tab=historico-de-partidas",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Série C 2020",
+        "jogos em 2020 e 2021",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_zerozero_2020",
+      "name": "Zerozero — jogos Vila Nova 2020",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2020&grp=1",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "passaporte 2020",
+        "total por competição"
+      ]
+    },
+    {
+      "id": "vn_src_cbf_cdb2020_ponte",
+      "name": "CBF — Ponte Preta x Vila Nova, Copa do Brasil 2020",
+      "url": "https://www.cbf.com.br/futebol-brasileiro/jogos/copa-do-brasil/masculino/2020/433582/ponte-preta-x-vila-nova/814951?view=escala-de-arbitros",
+      "type": "FEDERATION",
+      "authority": "PRIMARY",
+      "covers": [
+        "Copa do Brasil 2020",
+        "pênaltis",
+        "estádio"
+      ]
+    }
+  ]
+}
