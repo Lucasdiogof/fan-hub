@@ -1,0 +1,72 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	38	0	1
+	2025
+	Vila Nova	52	3	1
+	2024
+	Avaí	41	4	2
+	2023
+	Ceará	39	2	1
+	2022
+	Nagoya Grampus(E)
+[Cerezo Osaka]
+	22	0	0
+	2021
+	Cerezo Osaka	27	8	0
+	2020
+	Ceará(E)
+[Bahia]
+	46	4	0
+
+	Lanús(E)
+[Bahia]
+	-	-	-
+	2019
+	Lanús(E)
+[Bahia]
+	10	0	0
+
+	Bahia	1	0	0
+	2018
+	Bahia	47	4	0
+	2017
+	Bahia(E)
+[Atlético Mineiro]
+	54	3	0
+	2016
+	Bahia(E)
+[Atlético Mineiro]
+	21	1	2
+
+	Atlético Mineiro	18	2	0
+	2015
+	Atlético Mineiro	4	0	1
+	2014
+	Atlético Mineiro	5	2	0
+
+	Caxias	26	2	0
+	2013
+	Caxias	19	4	0
+
+	Guarani(E)
+[Caxias]
+	12	3	0
+	2012
+	Caxias	14	2	0
+	2011
+	Vila Aurora(E)
+[Caxias]
+	3	0	0
+
+	Caxias	-	-	-
+	2010
+	Criciúma	6	0	0
+
+	Criciúma
+[S20]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

@@ -1,0 +1,32 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	5	0	1
+
+	Vila Nova
+[S20]
+	7	1	0
+	2025
+	São Paulo
+[S20]
+	1	0	0
+	2024
+	São Paulo
+[S17]
+	16	0	0
+	2023
+	São Caetano
+[S20]
+	-	-	-
+
+	São Caetano
+[S17]
+	12	2	0
+	2022
+	São Caetano
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

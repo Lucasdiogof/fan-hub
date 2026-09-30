@@ -1,0 +1,38 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova(E)
+[Guarani]
+	9	0	0
+	2025
+	Guarani	8	0	0
+
+	América Mineiro	3	0	0
+	2024
+	América Mineiro	26	0	0
+	2023
+	CSA	38	0	0
+
+	FC Famalicão	-	-	-
+	2021/22
+	FC Famalicão	3	0	0
+	2021
+	Brusque	10	0	1
+	2020
+	Joinville	15	0	0
+	2019
+	Joinville	16	0	0
+	2018
+	Joinville	-	-	-
+	2017
+	Joinville	1	0	0
+	2016
+	Boa Esporte	-	-	-
+	2015
+	Cruzeiro
+[S20]
+	2	0	0
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

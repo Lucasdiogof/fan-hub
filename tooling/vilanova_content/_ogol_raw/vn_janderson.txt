@@ -1,0 +1,81 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	37	7	8
+	2025
+	Remo(E)
+[Ceará]
+	33	2	6
+
+	Atlético Goianiense(E)
+[Ceará]
+	12	1	1
+	2024
+	Atlético Goianiense(E)
+[Ceará]
+	20	3	0
+
+	Ceará	18	1	0
+	2023
+	Ceará(E)
+[Corinthians]
+	55	7	5
+	2022
+	Grêmio(E)
+[Corinthians]
+	40	5	1
+	2021
+	Atlético Goianiense(E)
+[Corinthians]
+	51	5	4
+	2020
+	Atlético Goianiense(E)
+[Corinthians]
+	41	4	5
+
+	Corinthians	13	1	2
+	2019
+	Corinthians	21	2	1
+
+	Corinthians
+[S20]
+	15	4	0
+
+	Corinthians
+[S19]
+	8	0	0
+	2018
+	Corinthians(E)
+[S20]
+[Joinville]
+	21	4	0
+
+	Ação-RJ(E)
+[Joinville]
+	7	1	0
+
+	Joinville	5	0	0
+
+	Joinville
+[S19]
+	2	2	0
+	2017
+	Joinville	1	0	0
+
+	Joinville
+[S19]
+	1	1	0
+	2016
+	Joinville	-	-	-
+
+	Joinville
+[S20]
+	1	0	0
+
+	Joinville
+[S17]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

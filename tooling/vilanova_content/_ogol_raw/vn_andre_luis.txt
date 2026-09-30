@@ -1,0 +1,74 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	36	9	5
+	2025
+	Vila Nova	22	1	1
+
+	Cuiabá	8	1	0
+	2024
+	Cuiabá	40	3	1
+	2023
+	Jeonbuk Motors	14	0	0
+	2022
+	Cuiabá	48	6	0
+	2021
+	Atlético Goianiense(E)
+[Corinthians]
+	46	2	4
+	2020
+	Daejeon Hana Citizen(E)
+[Corinthians]
+	28	14	2
+	2019
+	Fortaleza(E)
+[Corinthians]
+	25	2	0
+
+	Corinthians	5	0	0
+	2018
+	Ponte Preta(E)
+[Cianorte]
+	35	11	2
+
+	Cianorte	14	3	0
+	2017
+	Santa Cruz(E)
+[Atlético Paranaense]
+	57	5	2
+
+	Santa Cruz(E)
+[S19]
+[Athletico Paranaense]
+	-	-	-
+	2016
+	Santa Cruz(E)
+[S20]
+[Athletico Paranaense]
+	3	1	0
+
+	Brasília(E)
+[Atlético Paranaense]
+	3	1	0
+	2015
+	Guaratinguetá(E)
+[Atlético Paranaense]
+	5	0	0
+
+	Atlético Paranaense	0	0	0
+
+	Atlético Paranaense
+[S20]
+	9	0	0
+
+	Atlético Paranaense
+[S19]
+	-	-	-
+	2008
+	Santos
+[S11]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

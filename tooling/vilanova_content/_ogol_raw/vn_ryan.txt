@@ -1,0 +1,44 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	31	4	4
+	2025
+	Maranhão	38	10	1
+	2024
+	Athletic-MG	3	0	0
+
+	Moto Club	30	5	0
+	2023
+	IAPE	4	1	0
+	2022
+	New England Revolution
+[B]
+	-	-	-
+	2021
+	Botafogo
+[S20]
+	32	4	0
+	2020
+	Botafogo
+[S20]
+	10	1	0
+
+	Nacional-SP
+[S19]
+	3	1	0
+	2019
+	Nacional-SP
+[S20]
+	5	1	0
+
+	Nacional-SP
+[S19]
+	4	0	0
+	2018
+	Elosport Capão Bonito
+[S17]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

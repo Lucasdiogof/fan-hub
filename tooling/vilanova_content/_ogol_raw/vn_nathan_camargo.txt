@@ -1,0 +1,66 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova(E)
+[Red Bull Bragantino]
+	29	1	0
+	2025
+	Remo(E)
+[Red Bull Bragantino]
+	13	0	0
+
+	Guarani(E)
+[Red Bull Bragantino]
+	17	1	0
+	2024
+	Red Bull Bragantino
+[S23]
+	7	0	0
+	2023
+	Red Bull Bragantino	4	0	0
+
+	Red Bull Bragantino
+[S23]
+	-	-	-
+
+	Red Bull Bragantino
+[S20]
+	1	0	0
+	2022
+	Red Bull Bragantino	4	0	0
+
+	Red Bull Bragantino
+[S23]
+	-	-	-
+
+	Red Bull Bragantino
+[S20]
+	12	1	0
+
+	Red Bull Bragantino
+[S17]
+	2	0	0
+	2021
+	Red Bull Bragantino
+[S20]
+	10	1	0
+
+	Red Bull Bragantino
+[S17]
+	9	0	0
+	2019
+	Red Bull Brasil
+[S15]
+	-	-	-
+	2018
+	Inter de Limeira
+[S13]
+	-	-	-
+	2016
+	Rio Branco-SP
+[S11]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

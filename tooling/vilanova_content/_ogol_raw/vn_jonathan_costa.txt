@@ -1,0 +1,74 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova(E)
+[Guarani]
+	5	1	0
+
+	Guarani	21	3	1
+	2025
+	Avaí	43	2	1
+	2024
+	Avaí	24	2	1
+	2023
+	Avaí	13	1	0
+
+	Operário Ferroviário	20	3	0
+	2022
+	Botafogo-PB	10	0	0
+
+	Caldense	15	0	0
+	2021
+	Caldense	14	2	0
+
+	Paraná(E)
+[Caldense]
+	12	1	0
+	2020
+	Mirassol(E)
+[Caldense]
+	4	0	0
+
+	Caldense	12	0	1
+	2019
+	Grêmio Osasco	4	0	0
+
+	Bragantino	4	1	0
+	2018
+	Bragantino	12	1	0
+
+	Bragantino
+[B]
+	6	0	0
+
+	XV de Piracicaba	21	1	0
+	2017
+	Desportivo Brasil	17	0	0
+
+	Linense	-	-	-
+	2016
+	Bragantino(E)
+[Linense]
+	14	1	0
+
+	Linense	2	0	0
+
+	Portimonense	1	0	0
+	2014/15
+	Portimonense(E)
+[Penapolense]
+	4	0	0
+	2014
+	Penapolense	4	0	0
+	2013
+	SEV Hortolândia	13	3	0
+
+	Atlético Sorocaba	-	-	-
+	2011
+	Paulínia FC
+[S17]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

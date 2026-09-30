@@ -1,0 +1,75 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	27	3	2
+	2025
+	Vila Nova	12	2	0
+	2024
+	Vila Nova(E)
+[Botafogo]
+	23	3	0
+
+	Botafogo	5	1	0
+	2023
+	Ituano(E)
+[Botafogo]
+	12	0	0
+
+	Resende(E)
+[Botafogo]
+	18	2	1
+
+	Botafogo	-	-	-
+
+	Audax Rio(E)
+[São Caetano]
+	14	3	0
+	2022
+	São Caetano	14	2	0
+
+	Santo André(E)
+[São Caetano]
+	5	0	0
+
+	Corinthians(E)
+[S20]
+[São Caetano]
+	1	0	0
+	2021
+	Corinthians(E)
+[S20]
+[São Caetano]
+	2	0	0
+
+	Vasco(E)
+[S20]
+[São Caetano]
+	14	2	0
+
+	São Caetano	8	0	0
+	2020
+	São Caetano	12	0	0
+
+	São Caetano
+[S19]
+	4	0	0
+	2019
+	São Caetano
+[S20]
+	24	1	0
+
+	São Caetano
+[S19]
+	3	1	0
+	2018
+	São Caetano
+[S20]
+	-	-	-
+
+	São Caetano
+[S17]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

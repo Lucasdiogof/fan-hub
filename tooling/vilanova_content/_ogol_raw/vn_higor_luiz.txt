@@ -1,0 +1,59 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	37	0	2
+	2025
+	Vila Nova	26	0	1
+
+	Vila Nova
+[S20]
+	5	0	0
+	2024
+	Vila Nova	1	0	1
+
+	Vila Nova
+[S23]
+	7	0	0
+
+	Vila Nova
+[S20]
+	12	1	1
+
+	Grêmio Anápolis(E)
+[Vila Nova]
+	2	0	0
+
+	Grêmio Anápolis(E)
+[S20]
+[Vila Nova]
+	-	-	-
+
+	Iporá(E)
+[Vila Nova]
+	6	0	0
+	2023
+	Vila Nova
+[S20]
+	15	0	0
+
+	Desportivo Brasil
+[S20]
+	7	0	0
+	2022
+	Desportivo Brasil	-	-	-
+
+	Desportivo Brasil
+[S20]
+	9	0	0
+	2021
+	Desportivo Brasil
+[S17]
+	18	0	0
+	2019
+	Paraná
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

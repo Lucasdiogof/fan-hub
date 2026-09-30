@@ -1,0 +1,113 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	40	4	9
+	2025
+	Avaí	47	4	7
+	2024
+	Criciúma	43	3	5
+	2023
+	Criciúma	24	2	4
+
+	Goiás	6	0	0
+	2022
+	Goiás	12	1	2
+
+	Criciúma	20	6	1
+	2021
+	Vasco	42	7	6
+	2020
+	Cruzeiro	4	0	0
+
+	Athletico Paranaense(E)
+[Cruzeiro]
+	16	2	3
+	2019
+	Cruzeiro	52	4	7
+
+	Al-Nasr(E)
+[Corinthians]
+	18	5	4
+	2018
+	Corinthians	21	1	0
+	2017
+	Corinthians	34	3	4
+	2016
+	Corinthians(E)
+[Al Nassr]
+	39	6	2
+
+	Al-Nassr	9	2	0
+	2015
+	Santos(E)
+[Al Nassr]
+	44	9	3
+
+	Al-Nassr	12	1	3
+	2014
+	Palmeiras(E)
+[Coimbra-MG]
+	19	2	0
+	2013
+	Bahia(E)
+[Internacional]
+	45	4	3
+	2012
+	Sport(E)
+[Internacional]
+	39	5	1
+	2011
+	Internacional	6	0	0
+
+	Avaí(E)
+[Internacional]
+	19	4	0
+
+	Internacional
+[B]
+	-	-	-
+	2010
+	Internacional	14	0	0
+
+	Internacional
+[B]
+	-	-	-
+
+	Internacional
+[S23]
+	-	-	-
+
+	Internacional
+[S20]
+	-	-	-
+	2009
+	Internacional	17	3	1
+
+	Internacional
+[B]
+	-	-	-
+
+	Internacional
+[S20]
+	-	-	-
+	2008
+	Internacional
+[S20]
+	-	-	-
+	2007
+	Internacional(E)
+[S17]
+[Juventude]
+	-	-	-
+	2006
+	Juventude
+[S17]
+	-	-	-
+	2005
+	Juventude
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

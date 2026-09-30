@@ -1,0 +1,76 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	36	3	0
+	2025
+	Vila Nova	47	0	0
+	2024
+	CRB	44	1	0
+	2023
+	Ceará	29	1	0
+	2022
+	Vila Nova	51	0	0
+	2021
+	Vila Nova(E)
+[Cianorte]
+	52	2	3
+	2020
+	Vila Nova(E)
+[Cianorte]
+	12	0	0
+
+	Grêmio Novorizontino(E)
+[Cianorte]
+	2	0	0
+	2019
+	GE Brasil(E)
+[Cianorte]
+	18	0	0
+
+	Cianorte	17	0	0
+	2018
+	Cianorte	4	0	0
+
+	Vitória SC(E)
+[B]
+[Cianorte]
+	-	-	-
+	2016/17
+	Vitória SC(E)
+[B]
+[Cianorte]
+	1	0	0
+	2016
+	Brusque(E)
+[Cianorte]
+	3	0	0
+
+	Cianorte	7	0	0
+	2015
+	Cianorte	-	-	-
+
+	Apucarana Sports	-	-	-
+
+	Apucarana Sports
+[S19]
+	-	-	-
+	2014
+	Apucarana Sports
+[S20]
+	-	-	-
+
+	Tubarão FC	-	-	-
+	2013
+	FC Cascavel	-	-	-
+
+	Cascavel
+[S20]
+	-	-	-
+
+	Roma Apucarana
+[S20]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

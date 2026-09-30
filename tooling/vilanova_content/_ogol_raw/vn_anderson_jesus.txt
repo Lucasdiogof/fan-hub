@@ -1,0 +1,61 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	19	0	0
+	2025
+	Avaí	5	0	0
+
+	CRB	1	0	0
+	2024
+	Bolívar	13	0	0
+
+	FC Vizela	33	0	0
+	2022/23
+	FC Vizela	32	3	0
+	2021/22
+	FC Vizela	17	0	0
+	2021
+	América Mineiro	40	1	3
+	2020
+	América Mineiro	33	3	0
+
+	Bahia	7	1	0
+	2019
+	Confiança	34	3	0
+	2018
+	Guarani(E)
+[Grêmio]
+	3	0	0
+
+	Grêmio	1	0	0
+	2017
+	Grêmio
+[S23]
+	1	0	0
+
+	Confiança	38	1	0
+	2016
+	Guarani-MG(E)
+[Confiança]
+	3	0	0
+	2015
+	Atlético Mineiro(E)
+[S20]
+[Confiança]
+	3	0	0
+
+	Confiança	-	-	-
+
+	Confiança
+[S19]
+	-	-	-
+	2014
+	Confiança	2	0	0
+
+	Confiança
+[S19]
+	1	0	0
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

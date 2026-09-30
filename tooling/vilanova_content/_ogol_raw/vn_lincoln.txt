@@ -1,0 +1,52 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	1	0	0
+
+	Spartak Subotica	16	4	1
+	2025
+	Athletic-MG(E)
+[SCR Altach]
+	16	5	3
+
+	SCR Altach	2	0	0
+	2023/24
+	SCR Altach	-	-	-
+	2023
+	Vissel Kobe	10	4	0
+	2022
+	Cruzeiro(E)
+[Vissel Kobe]
+	9	1	2
+	2022
+	Vissel Kobe	13	3	0
+	2021
+	Vissel Kobe	18	1	0
+	2020
+	Flamengo	20	3	1
+	2019
+	Flamengo	17	3	2
+	2018
+	Flamengo	22	2	0
+	2017
+	Flamengo	4	0	0
+
+	Flamengo
+[S20]
+	3	4	0
+
+	Flamengo
+[S19]
+	7	1	0
+	2016
+	Flamengo
+[S17]
+	-	-	-
+	2015
+	Flamengo
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

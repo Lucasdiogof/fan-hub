@@ -1,0 +1,56 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	7	0	0
+
+	Chapecoense	21	2	0
+	2025
+	CRB	50	2	3
+	2024
+	Criciúma(E)
+[Pumas]
+	31	3	0
+	2023
+	Goiás(E)
+[Pumas]
+	10	0	0
+
+	Pumas	24	0	2
+	2021/22
+	Pumas	45	2	1
+	2021
+	Ferroviária	12	2	0
+	2020
+	Paraná(E)
+[Ferroviária]
+	33	2	1
+
+	Ferroviária	8	1	0
+	2019
+	Botafogo-SP(E)
+[Ferroviária]
+	28	1	3
+
+	Ferroviária	9	1	0
+	2018
+	Ferroviária	21	1	0
+
+	Velo Clube	20	4	0
+	2017
+	XV de Jaú	17	1	0
+
+	Botafogo-PB	-	-	-
+	2016
+	Santacruzense	14	1	0
+	2015
+	Monte Azul	-	-	-
+	2014
+	Olímpia(E)
+[Monte Azul]
+	11	0	0
+	2013
+	Monte Azul	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

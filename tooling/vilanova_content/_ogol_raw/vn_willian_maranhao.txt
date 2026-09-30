@@ -1,0 +1,67 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	30	0	0
+
+	Hà Nôi	9	0	0
+	2025
+	Atlético Goianiense	28	1	1
+	2024
+	Avaí	46	2	0
+	2023
+	Ceará(E)
+[Santos]
+	21	1	0
+	2022
+	Atlético Goianiense(E)
+[Santos]
+	18	0	0
+
+	Santos	9	0	0
+
+	Bahia	9	0	0
+	2021
+	Atlético Goianiense	55	0	0
+	2020
+	Atlético Goianiense	28	0	0
+	2019
+	América Mineiro(E)
+[Vasco]
+	27	0	0
+
+	Vasco	4	0	0
+	2018
+	Vasco(E)
+[Boavista-RJ]
+	14	0	2
+
+	Santa Cruz(E)
+[Boavista-RJ]
+	9	0	0
+
+	Santa Cruz(E)
+[S23]
+[Boavista-RJ]
+	1	0	0
+
+	Boavista-RJ	12	0	0
+	2017
+	Boavista-RJ	25	1	0
+	2016
+	Boavista-RJ	16	0	0
+	2015
+	Boavista-RJ	17	0	0
+
+	Boavista-RJ
+[S20]
+	12	1	0
+	2014
+	Boavista-RJ	32	1	0
+
+	Boavista-RJ
+[S20]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

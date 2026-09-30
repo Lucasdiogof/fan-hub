@@ -1,0 +1,100 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	31	10	1
+	2025
+	Coritiba	35	10	2
+	2024
+	Mirassol	45	17	2
+	2023
+	Montedio Yamagata	25	4	1
+	2022
+	Montedio Yamagata	32	10	3
+
+	Atlético Goianiense	9	2	2
+	2021
+	CSA	52	24	3
+	2020
+	GE Brasil	26	3	1
+
+	Mirassol	2	0	0
+	2018/19
+	Suphanburi	9	3	0
+
+	APOEL	15	2	0
+	2017/18
+	APOEL	20	10	0
+	2016/17
+	Suphanburi(E)
+[Athletico Paranaense]
+	22	14	0
+	2015/16
+	Suphanburi(E)
+[Atlético Paranaense]
+	26	10	0
+	2015
+	Atlético Paranaense	20	2	0
+	2014
+	Atlético Paranaense	19	3	1
+
+	QPR(E)
+[Atlético Paranaense]
+	-	-	-
+	2013
+	Atlético Paranaense	31	5	5
+
+	FC Porto(E)
+[Desportivo Brasil]
+	0	0	-
+
+	FC Porto(E)
+[B]
+[Desportivo Brasil]
+	36	11	0
+	2012
+	Internacional(E)
+[Desportivo Brasil]
+	1	0	0
+	2011
+	Internacional(E)
+[Desportivo Brasil]
+	12	0	1
+
+	Internacional(E)
+[S20]
+[Desportivo Brasil]
+	-	-	-
+
+	Desportivo Brasil
+[S20]
+	-	-	-
+
+	Desportivo Brasil
+[S18]
+	7	7	0
+	2010
+	Desportivo Brasil	8	6	0
+
+	Rio Preto	4	0	0
+
+	Rio Preto
+[S20]
+	-	-	-
+
+	Rio Preto
+[S18]
+	2	0	0
+	2009
+	Rio Preto	4	2	0
+
+	Rio Preto
+[S20]
+	-	-	-
+	2008
+	Rio Preto
+[S17]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

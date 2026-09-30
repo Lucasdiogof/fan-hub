@@ -1,0 +1,50 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	7	1	0
+
+	Red Bull Salzburg	1	0	0
+
+	Liefering(E)
+[Red Bull Salzburg]
+	7	0	0
+	2025
+	Red Bull Bragantino(E)
+[Red Bull Salzburg]
+	-	-	-
+	2024
+	Red Bull Bragantino(E)
+[Red Bull Salzburg]
+	31	2	0
+
+	Liefering(E)
+[Red Bull Salzburg]
+	7	0	0
+
+	Red Bull Salzburg	-	-	-
+	2022/23
+	Liefering(E)
+[Red Bull Bragantino]
+	3	0	0
+	2022
+	Red Bull Bragantino	1	0	0
+
+	Ponte Preta	8	0	0
+
+	Ponte Preta
+[S20]
+	6	1	0
+	2021
+	Ponte Preta	1	0	0
+
+	Ponte Preta
+[S23]
+	5	0	0
+	2019
+	Ponte Preta
+[S17]
+	1	0	0
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

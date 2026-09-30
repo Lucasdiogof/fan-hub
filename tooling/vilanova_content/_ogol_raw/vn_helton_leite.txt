@@ -1,0 +1,72 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	30	0	0
+	2025
+	Fortaleza	6	0	0
+
+	Deportivo	37	0	0
+	2023/24
+	Antalyaspor	35	0	0
+	2022/23
+	Antalyaspor	17	0	0
+
+	Benfica	1	0	0
+	2021/22
+	Benfica	7	0	0
+	2020/21
+	Benfica	26	0	0
+	2019/20
+	Boavista FC	22	0	0
+	2018/19
+	Boavista FC	24	0	0
+	2018
+	São Caetano(E)
+[Botafogo]
+	11	0	0
+	2017
+	Botafogo	6	0	0
+	2016
+	Botafogo	11	0	0
+	2015
+	Botafogo	7	0	0
+	2014
+	Botafogo(E)
+[Criciúma]
+	8	0	0
+	2013
+	Criciúma	11	0	0
+	2012
+	Ipatinga	24	0	0
+	2011
+	Ituiutaba	-	-	-
+
+	JMalucelli	1	0	0
+	2010
+	Grêmio
+[S20]
+	-	-	-
+	2009
+	Grêmio
+[S20]
+	-	-	-
+	2008
+	Grêmio
+[S20]
+	-	-	-
+
+	América Mineiro
+[S18]
+	-	-	-
+	2007
+	Goiás
+[S20]
+	-	-	-
+	2006
+	América Mineiro
+[S17]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

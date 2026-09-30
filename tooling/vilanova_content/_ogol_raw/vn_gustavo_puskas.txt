@@ -1,0 +1,46 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	13	2	1
+
+	Vila Nova
+[S20]
+	8	4	0
+	2025
+	Vila Nova
+[S20]
+	17	5	0
+
+	Vila Nova
+[S17]
+	11	3	0
+
+	Aymorés	1	0	0
+	2024
+	Athletico Paranaense
+[S17]
+	6	2	0
+
+	Athletico Paranaense
+[S16]
+	-	-	-
+	2023
+	Athletico Paranaense
+[S17]
+	3	0	0
+
+	Athletico Paranaense
+[S15]
+	-	-	-
+
+	Flamengo
+[S15]
+	-	-	-
+	2021
+	Flamengo
+[S13]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

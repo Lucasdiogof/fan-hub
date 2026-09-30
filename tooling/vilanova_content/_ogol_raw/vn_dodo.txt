@@ -1,0 +1,84 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova(E)
+[Remo]
+	28	1	2
+
+	Remo	2	0	0
+	2025
+	Remo	19	3	3
+
+	Kazma SC	-	-	-
+	2023/24
+	Ajman	15	3	1
+	2023
+	Atlético Goianiense	14	2	3
+
+	Khorfakkan	15	3	1
+	2021/22
+	Khorfakkan	31	9	9
+	2020/21
+	Khorfakkan(E)
+[Atlético Mineiro]
+	30	8	4
+	2019/20
+	Khorfakkan(E)
+[Atlético Mineiro]
+	25	8	3
+	2019
+	Fortaleza(E)
+[Atlético Mineiro]
+	21	1	1
+	2018
+	Fortaleza(E)
+[Atlético Mineiro]
+	35	4	5
+
+	Botafogo-SP(E)
+[Atlético Mineiro]
+	14	1	1
+	2017
+	Chapecoense(E)
+[Atlético Mineiro]
+	13	2	0
+	2016
+	Figueirense(E)
+[Atlético Mineiro]
+	30	4	1
+
+	Atlético Mineiro	7	1	0
+	2015
+	Atlético Mineiro	26	0	0
+	2014
+	Atlético Mineiro	11	4	2
+
+	Atlético Mineiro
+[S19]
+	2	2	0
+	2013
+	Atlético Mineiro	2	0	0
+
+	Atlético Mineiro
+[S20]
+	-	-	-
+	2012
+	Atlético Mineiro
+[S17]
+	-	-	-
+	2011
+	Atlético Mineiro
+[S17]
+	-	-	-
+	2010
+	Atlético Mineiro
+[S17]
+	-	-	-
+
+	Atlético Mineiro
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

@@ -1,0 +1,64 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	19	5	1
+	2025
+	América Mineiro(E)
+[Mirassol]
+	10	0	2
+
+	Mirassol	1	0	0
+	2024
+	Cruzeiro	17	4	0
+	2023
+	Jeonbuk Motors	25	3	2
+	2022
+	Cruzeiro	18	6	3
+	2021
+	Wuhan FC	5	1	0
+	2020
+	Wuhan Zall	-	-	-
+	2019
+	Wuhan Zall	15	8	3
+	2018
+	Wuhan Zall	23	23	0
+	2017
+	Urawa Reds	42	21	2
+	2016
+	Albirex Niigata	27	15	0
+	2015
+	Albirex Niigata	28	10	0
+	2014
+	Albirex Niigata	7	1	0
+	2014/15
+	FC Lugano	3	3	0
+	2013/14
+	FC Lugano	26	10	0
+	2013
+	Coritiba	8	0	0
+	2012
+	Coritiba	12	1	0
+
+	Coritiba
+[S20]
+	-	-	-
+	2011
+	Coritiba
+[S20]
+	-	-	-
+
+	Coritiba
+[S18]
+	5	3	0
+	2010
+	Corinthians
+[S20]
+	-	-	-
+	2009
+	Corinthians
+[S17]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

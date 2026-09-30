@@ -1,0 +1,46 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	3	0	0
+	2025
+	Atlético Mineiro	-	-	-
+	2024
+	Atlético Mineiro	-	-	-
+	2023
+	Atlético Mineiro
+[S20]
+	23	0	0
+	2022
+	Atlético Mineiro
+[S20]
+	8	0	0
+	2021
+	Atlético Mineiro
+[S20]
+	2	0	0
+	2020
+	Atlético Mineiro(E)
+[S20]
+[Vila Nova]
+	-	-	-
+
+	Atlético Mineiro(E)
+[S17]
+[Vila Nova]
+	13	0	0
+	2019
+	Vila Nova
+[S16]
+	-	-	-
+	2018
+	Vila Nova
+[S17]
+	-	-	-
+
+	Vila Nova
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

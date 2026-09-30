@@ -1,0 +1,44 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	30	4	0
+
+	Anapolina	12	0	0
+	2025
+	Maranhão	32	2	0
+
+	Tirol	3	1	0
+	2024
+	Tirol	1	0	0
+
+	Iguatu	14	0	0
+
+	Floresta-CE	5	0	0
+	2023
+	Floresta-CE	23	1	0
+	2022
+	Floresta-CE	20	0	0
+
+	Floresta-CE
+[S20]
+	3	0	0
+	2021
+	Floresta-CE	12	0	0
+
+	Floresta-CE
+[S20]
+	11	3	0
+	2020
+	Floresta-CE	8	0	0
+	2019
+	Floresta-CE
+[S20]
+	10	1	0
+
+	Floresta-CE
+[S19]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

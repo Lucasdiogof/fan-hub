@@ -18,47 +18,97 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2015",
+          "team": "Cruzeiro (base)",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2016",
           "team": "Boa Esporte",
-          "loan": null
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017–2020",
           "team": "Joinville",
-          "loan": null
+          "appearances": 32,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
           "team": "Brusque",
-          "loan": null
+          "appearances": 10,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Famalicão",
-          "loan": null
+          "period": "2021/22–2023",
+          "team": "FC Famalicão",
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
           "team": "CSA",
-          "loan": null
+          "appearances": 38,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "América-MG",
-          "loan": null
+          "period": "2024–2025",
+          "team": "América Mineiro",
+          "appearances": 29,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Guarani",
-          "loan": null
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 9,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Guarani.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -71,6 +121,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/558006/dalberson"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/dalberson/503130"
         }
       ]
     },
@@ -89,22 +143,47 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2018–2019",
           "team": "Vila Nova (base)",
-          "loan": null
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-MG",
-          "loan": null
+          "period": "2020–2023",
+          "team": "Atlético Mineiro (base)",
+          "appearances": 46,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Vila Nova.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024–2025",
+          "team": "Atlético Mineiro",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -117,6 +196,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.transfermarkt.com.br/gabriel-atila/profil/spieler/1083089"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/gabriel-atila/755478"
         }
       ]
     },
@@ -135,67 +218,167 @@
       "instagram_url": "https://www.instagram.com/heltonleite77/",
       "club_history": [
         {
-          "period": null,
-          "team": "J. Malucelli",
-          "loan": null
+          "period": "2006",
+          "team": "América Mineiro (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Boa Esporte",
-          "loan": null
+          "period": "2007",
+          "team": "Goiás (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2008",
+          "team": "América Mineiro (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2008–2010",
+          "team": "Grêmio (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "JMalucelli",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "Ituiutaba",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2012",
           "team": "Ipatinga",
-          "loan": null
+          "appearances": 24,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2013",
           "team": "Criciúma",
-          "loan": null
+          "appearances": 11,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2014–2017",
           "team": "Botafogo",
-          "loan": null
+          "appearances": 32,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Criciúma.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
           "team": "São Caetano",
-          "loan": null
+          "appearances": 11,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Botafogo.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Boavista",
-          "loan": null
+          "period": "2018/19–2019/20",
+          "team": "Boavista FC",
+          "appearances": 46,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020/21–2022/23",
           "team": "Benfica",
-          "loan": null
+          "appearances": 34,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022/23–2023/24",
           "team": "Antalyaspor",
-          "loan": null
+          "appearances": 52,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Deportivo La Coruña",
-          "loan": null
+          "period": "2025",
+          "team": "Deportivo",
+          "appearances": 37,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Fortaleza",
-          "loan": null
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 30,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -206,6 +389,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/449653/helton-leite"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/helton-leite/168622"
         }
       ]
     },
@@ -224,72 +411,187 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
-          "team": "Confiança",
-          "loan": null
+          "period": "2014",
+          "team": "Confiança (base)",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2014",
+          "team": "Confiança",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Confiança (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Confiança",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Atlético Mineiro (base)",
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Confiança.",
+          "is_club": false
+        },
+        {
+          "period": "2016",
           "team": "Guarani-MG",
-          "loan": null
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Confiança.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017",
           "team": "Confiança",
-          "loan": null
+          "appearances": 38,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017",
+          "team": "Grêmio (base)",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
           "team": "Grêmio",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
           "team": "Guarani",
-          "loan": null
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Grêmio.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
           "team": "Confiança",
-          "loan": null
+          "appearances": 34,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Bahia",
-          "loan": null
+          "appearances": 7,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "América-MG",
-          "loan": null
+          "period": "2020–2021",
+          "team": "América Mineiro",
+          "appearances": 73,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Vizela",
-          "loan": null
+          "period": "2021/22–2024",
+          "team": "FC Vizela",
+          "appearances": 82,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Bolívar",
-          "loan": null
+          "appearances": 13,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "CRB",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Avaí",
-          "loan": null
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 19,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -302,6 +604,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1130889/anderson-jesus"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/anderson-jesus/448159"
         }
       ]
     },
@@ -320,27 +626,177 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
-          "team": "Tubarão",
-          "loan": null
+          "period": "2016",
+          "team": "CB Sports (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-GO",
-          "loan": null
+          "period": "2017–2018",
+          "team": "Joinville (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
+          "team": "Atlético Tubarão (base)",
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Atlético Tubarão",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Coritiba (base)",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Atlético Goianiense (base)",
+          "appearances": 14,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "EC Água Santa (base)",
+          "appearances": 11,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "EC Água Santa",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "EC Água Santa (base)",
+          "appearances": 5,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023–2024",
+          "team": "São Joseense",
+          "appearances": 18,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2024",
           "team": "Foz do Iguaçu",
-          "loan": null
+          "appearances": 9,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
+          "team": "América-PE",
+          "appearances": 7,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Foz do Iguaçu.",
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Cianorte",
+          "appearances": 10,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Foz do Iguaçu.",
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Foz do Iguaçu",
+          "appearances": 20,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Taubaté",
+          "appearances": 5,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Foz do Iguaçu.",
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Paranavaí",
+          "appearances": 10,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Foz do Iguaçu.",
+          "is_club": false
+        },
+        {
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 8,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Foz do Iguaçu.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -357,6 +813,10 @@
         {
           "source_name": "Transfermarkt — Breno Bora",
           "source_url": "https://www.transfermarkt.com.br/breno-bora/profil/spieler/999803"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/breno-bora/737293"
         }
       ]
     },
@@ -375,32 +835,127 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2019–2021",
           "team": "Ponte Preta (base)",
-          "loan": null
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
+          "team": "Ponte Preta",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Ponte Preta (base)",
+          "appearances": 6,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Ponte Preta",
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
           "team": "Red Bull Bragantino",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "FC Liefering",
-          "loan": null
+          "period": "2022/23",
+          "team": "Liefering",
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Red Bull Bragantino.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Red Bull Salzburg",
-          "loan": null
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
+          "team": "Liefering",
+          "appearances": 7,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Red Bull Salzburg.",
+          "is_club": false
+        },
+        {
+          "period": "2024–2025",
+          "team": "Red Bull Bragantino",
+          "appearances": 31,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Red Bull Salzburg.",
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Liefering",
+          "appearances": 7,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Red Bull Salzburg.",
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Red Bull Salzburg",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 7,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "foot",
@@ -414,6 +969,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/douglas-mendes/728007"
         }
       ]
     },
@@ -432,17 +991,227 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
-          "team": "Guarani",
-          "loan": null
+          "period": "2011",
+          "team": "Paulínia FC (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2013",
+          "team": "Atlético Sorocaba",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2013",
+          "team": "SEV Hortolândia",
+          "appearances": 13,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Penapolense",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2014/15–2016",
+          "team": "Portimonense",
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Penapolense.",
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Linense",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Bragantino",
+          "appearances": 14,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Linense.",
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Linense",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Desportivo Brasil",
+          "appearances": 17,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "XV de Piracicaba",
+          "appearances": 21,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Bragantino (base)",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Bragantino",
+          "appearances": 16,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Grêmio Osasco",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Caldense",
+          "appearances": 12,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
+          "team": "Mirassol",
+          "appearances": 4,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Caldense.",
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Paraná",
+          "appearances": 12,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Caldense.",
+          "is_club": false
+        },
+        {
+          "period": "2021–2022",
+          "team": "Caldense",
+          "appearances": 29,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Botafogo-PB",
+          "appearances": 10,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Operário Ferroviário",
+          "appearances": 20,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023–2025",
+          "team": "Avaí",
+          "appearances": 80,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Guarani",
+          "appearances": 21,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 5,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Guarani.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "shirt_number",
@@ -457,6 +1226,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://ge.globo.com/sp/campinas-e-regiao/futebol/noticia/2026/09/01/guarani-acerta-emprestimo-de-zagueiro-para-o-vila-nova.ghtml"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/jonathan-costa/401758"
         }
       ]
     },
@@ -475,22 +1248,47 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2022–2023",
           "team": "São Caetano (base)",
-          "loan": null
+          "appearances": 12,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024–2025",
           "team": "São Paulo (base)",
-          "loan": null
+          "appearances": 17,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
+          "team": "Vila Nova (base)",
+          "appearances": 7,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "shirt_number",
@@ -522,72 +1320,167 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2010",
+          "team": "Criciúma (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2010",
+          "team": "Criciúma",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "Caxias",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2011",
           "team": "Vila Aurora",
-          "loan": null
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Caxias.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2012",
           "team": "Caxias",
-          "loan": null
+          "appearances": 14,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2013",
           "team": "Guarani",
-          "loan": null
+          "appearances": 12,
+          "goals": 3,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Caxias.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2013–2014",
           "team": "Caxias",
-          "loan": null
+          "appearances": 45,
+          "goals": 6,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-MG",
-          "loan": null
+          "period": "2014–2016",
+          "team": "Atlético Mineiro",
+          "appearances": 27,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2016–2019",
           "team": "Bahia",
-          "loan": null
+          "appearances": 123,
+          "goals": 8,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019–2020",
           "team": "Lanús",
-          "loan": null
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Bahia.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Ceará",
-          "loan": null
+          "appearances": 46,
+          "goals": 4,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Bahia.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
           "team": "Cerezo Osaka",
-          "loan": null
+          "appearances": 27,
+          "goals": 8,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "Nagoya Grampus",
-          "loan": null
+          "appearances": 22,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Cerezo Osaka.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
           "team": "Ceará",
-          "loan": null
+          "appearances": 39,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Avaí",
-          "loan": null
+          "appearances": 41,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025–2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 90,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -600,6 +1493,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/574664"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/tiago-pagnussat/172302"
         }
       ]
     },
@@ -618,37 +1515,117 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
-          "team": "Floresta",
-          "loan": null
+          "period": "2019",
+          "team": "Floresta-CE (base)",
+          "appearances": 10,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
+          "team": "Floresta-CE",
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Floresta-CE (base)",
+          "appearances": 11,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2021",
+          "team": "Floresta-CE",
+          "appearances": 12,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Floresta-CE (base)",
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022–2024",
+          "team": "Floresta-CE",
+          "appearances": 48,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2024",
           "team": "Iguatu",
-          "loan": null
+          "appearances": 14,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024–2025",
           "team": "Tirol",
-          "loan": null
+          "appearances": 4,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Maranhão",
-          "loan": null
+          "appearances": 32,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Anapolina",
-          "loan": null
+          "appearances": 12,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 30,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -661,6 +1638,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1376786/dudu"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/dudu/724532"
         }
       ]
     },
@@ -679,22 +1660,37 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2019–2024",
           "team": "Internacional (base)",
-          "loan": null
+          "appearances": 50,
+          "goals": 10,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024–2025",
           "team": "Aparecidense",
-          "loan": null
+          "appearances": 47,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Internacional.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025–2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 19,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -725,57 +1721,187 @@
       "instagram_url": "https://www.instagram.com/higormeritao/",
       "club_history": [
         {
-          "period": null,
+          "period": "2013",
+          "team": "Monte Azul",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Olímpia",
+          "appearances": 11,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Monte Azul.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Monte Azul",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Santacruzense",
+          "appearances": 14,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Botafogo-PB",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "XV de Jaú",
+          "appearances": 17,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
           "team": "Velo Clube",
-          "loan": null
+          "appearances": 20,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018–2019",
           "team": "Ferroviária",
-          "loan": null
+          "appearances": 30,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
           "team": "Botafogo-SP",
-          "loan": null
+          "appearances": 28,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Ferroviária.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
+          "team": "Ferroviária",
+          "appearances": 8,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
           "team": "Paraná",
-          "loan": null
+          "appearances": 33,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Ferroviária.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Pumas UNAM",
-          "loan": null
+          "period": "2021",
+          "team": "Ferroviária",
+          "appearances": 12,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021/22–2023",
+          "team": "Pumas",
+          "appearances": 69,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023",
           "team": "Goiás",
-          "loan": null
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Pumas.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Criciúma",
-          "loan": null
+          "appearances": 31,
+          "goals": 3,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Pumas.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "CRB",
-          "loan": null
+          "appearances": 50,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Chapecoense",
-          "loan": null
+          "appearances": 21,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "shirt_number",
@@ -789,6 +1915,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1033100/higor-meritao"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/higor-meritao/564958"
         }
       ]
     },
@@ -807,52 +1937,127 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2016–2017",
+          "team": "Internacional (base)",
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2017",
           "team": "Internacional",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
           "team": "São José-RS",
-          "loan": null
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
+          "team": "Serra Macaense",
+          "appearances": 12,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
           "team": "Internacional de Madrid",
-          "loan": null
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Esportivo",
-          "loan": null
+          "appearances": 6,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
+          "team": "Juventude (base)",
+          "appearances": 9,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Esportivo.",
+          "is_club": false
+        },
+        {
+          "period": "2021",
           "team": "Pelotas",
-          "loan": null
+          "appearances": 9,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Esportivo.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
           "team": "Caxias",
-          "loan": null
+          "appearances": 16,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Esportivo.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "São Luiz",
-          "loan": null
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Esportivo.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022–2024",
           "team": "Paysandu",
-          "loan": null
+          "appearances": 124,
+          "goals": 10,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Esportivo.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025–2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 99,
+          "goals": 15,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -865,6 +2070,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1462413/joao-vieira"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/joao-vieira/555397"
         }
       ]
     },
@@ -883,27 +2092,117 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2016",
+          "team": "Rio Branco-SP (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Inter de Limeira (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "Red Bull Brasil (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2021–2022",
+          "team": "Red Bull Bragantino (base)",
+          "appearances": 33,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2022",
           "team": "Red Bull Bragantino",
-          "loan": null
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
+          "team": "Red Bull Bragantino (base)",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Red Bull Bragantino",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Red Bull Bragantino (base)",
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025",
           "team": "Guarani",
-          "loan": null
+          "appearances": 17,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Red Bull Bragantino.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Remo",
-          "loan": null
+          "appearances": 13,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Red Bull Bragantino.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 29,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Red Bull Bragantino.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -916,6 +2215,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1366063/nathan"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/nathan-camargo/884515"
         }
       ]
     },
@@ -932,8 +2235,179 @@
       "foot": "Canhoto",
       "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/willian-maranhao-793.avif",
       "instagram_url": null,
-      "club_history": [],
-      "club_history_status": "GAP",
+      "club_history": [
+        {
+          "period": "2014",
+          "team": "Boavista-RJ (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Boavista-RJ",
+          "appearances": 32,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Boavista-RJ (base)",
+          "appearances": 12,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2015–2018",
+          "team": "Boavista-RJ",
+          "appearances": 70,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Santa Cruz (base)",
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Boavista-RJ.",
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Santa Cruz",
+          "appearances": 9,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Boavista-RJ.",
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Vasco",
+          "appearances": 18,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Boavista-RJ.",
+          "is_club": false
+        },
+        {
+          "period": "2019",
+          "team": "América Mineiro",
+          "appearances": 27,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Vasco.",
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Atlético Goianiense",
+          "appearances": 83,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Bahia",
+          "appearances": 9,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Santos",
+          "appearances": 9,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "Atlético Goianiense",
+          "appearances": 18,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Santos.",
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Ceará",
+          "appearances": 21,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Santos.",
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Avaí",
+          "appearances": 46,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Atlético Goianiense",
+          "appearances": 28,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Hà Nôi",
+          "appearances": 9,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
+          "team": "Vila Nova",
+          "appearances": 30,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
+        }
+      ],
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -964,77 +2438,177 @@
       "instagram_url": "https://www.instagram.com/hayner_27/",
       "club_history": [
         {
-          "period": null,
+          "period": "2014",
+          "team": "Rio Branco-ES (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Rio Branco-ES",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Bahia (base)",
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2015–2016",
           "team": "Bahia",
-          "loan": null
+          "appearances": 26,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2016",
           "team": "Náutico",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Bahia.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017",
           "team": "Paysandu",
-          "loan": null
+          "appearances": 22,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Bahia.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Novorizontino",
-          "loan": null
+          "period": "2018",
+          "team": "Grêmio Novorizontino",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018/19",
           "team": "Louletano",
-          "loan": null
+          "appearances": 32,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Cuiabá",
-          "loan": null
+          "appearances": 30,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Azuriz",
-          "loan": null
+          "period": "2021",
+          "team": "Azuriz Futebol",
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
           "team": "Sport",
-          "loan": null
+          "appearances": 24,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Azuriz Futebol.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-GO",
-          "loan": null
+          "period": "2022",
+          "team": "Atlético Goianiense",
+          "appearances": 40,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Azuriz Futebol.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
           "team": "Dnipro-1",
-          "loan": null
+          "appearances": 17,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Azuriz Futebol.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
           "team": "Coritiba",
-          "loan": null
+          "appearances": 8,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Azuriz Futebol.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024–2025",
           "team": "Santos",
-          "loan": null
+          "appearances": 38,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Azuriz Futebol.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "CRB",
-          "loan": null
+          "appearances": 20,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Santos.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 38,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Santos.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -1045,6 +2619,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/765156/hayner"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/hayner/473696"
         }
       ]
     },
@@ -1063,37 +2641,127 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2019",
           "team": "Paraná (base)",
-          "loan": null
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021–2022",
+          "team": "Desportivo Brasil (base)",
+          "appearances": 27,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
           "team": "Desportivo Brasil",
-          "loan": null
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
+          "team": "Desportivo Brasil (base)",
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023",
           "team": "Vila Nova (base)",
-          "loan": null
+          "appearances": 15,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Iporá",
-          "loan": null
+          "appearances": 6,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Vila Nova.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
+          "team": "Grêmio Anápolis (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Vila Nova.",
+          "is_club": false
+        },
+        {
+          "period": "2024",
           "team": "Grêmio Anápolis",
-          "loan": null
+          "appearances": 2,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Vila Nova.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
+          "team": "Vila Nova (base)",
+          "appearances": 19,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2024",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
+        },
+        {
+          "period": "2025",
+          "team": "Vila Nova (base)",
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Vila Nova",
+          "appearances": 63,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -1124,62 +2792,157 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2012–2013",
+          "team": "Iguatu",
+          "appearances": 1,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2014",
           "team": "Barbalha",
-          "loan": null
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2014",
+          "team": "Iguatu",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
           "team": "Quixadá",
-          "loan": null
+          "appearances": 12,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2015",
           "team": "Coruripe",
-          "loan": null
+          "appearances": 10,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2015",
+          "team": "Iguatu",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Coruripe",
+          "appearances": 22,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2016",
           "team": "ASA",
-          "loan": null
+          "appearances": 18,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017–2018",
           "team": "Paraná",
-          "loan": null
+          "appearances": 69,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019–2020",
           "team": "CRB",
-          "loan": null
+          "appearances": 97,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-GO",
-          "loan": null
+          "period": "2020–2021",
+          "team": "Atlético Goianiense",
+          "appearances": 45,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "Cuiabá",
-          "loan": null
+          "appearances": 32,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023–2025",
           "team": "Sport",
-          "loan": null
+          "appearances": 103,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Mirassol",
-          "loan": null
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 6,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Mirassol.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -1192,6 +2955,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/849501/igor-carius"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/igor-carius/405863"
         }
       ]
     },
@@ -1210,52 +2977,167 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2013",
+          "team": "Roma Apucarana (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2013",
+          "team": "Cascavel (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2013",
+          "team": "FC Cascavel",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Tubarão FC",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2014–2015",
+          "team": "Apucarana Sports (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Apucarana Sports",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015–2016",
           "team": "Cianorte",
-          "loan": null
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2016",
           "team": "Brusque",
-          "loan": null
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Cianorte.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Vitória SC B",
-          "loan": null
+          "period": "2016/17–2018",
+          "team": "Vitória SC (base)",
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Cianorte.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Brasil de Pelotas",
-          "loan": null
+          "period": "2018–2019",
+          "team": "Cianorte",
+          "appearances": 21,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Novorizontino",
-          "loan": null
+          "period": "2019",
+          "team": "GE Brasil",
+          "appearances": 18,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Cianorte.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
+          "team": "Grêmio Novorizontino",
+          "appearances": 2,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Cianorte.",
+          "is_club": false
+        },
+        {
+          "period": "2020–2022",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 115,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Cianorte.",
+          "is_club": true
         },
         {
-          "period": null,
+          "period": "2023",
           "team": "Ceará",
-          "loan": null
+          "appearances": 29,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "CRB",
-          "loan": null
+          "appearances": 44,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025–2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 83,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -1268,6 +3150,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/815946/willian-formiga"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/willian-formiga/492039"
         }
       ]
     },
@@ -1286,17 +3172,147 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
-          "team": "Remo",
-          "loan": null
+          "period": "2010–2013",
+          "team": "Atlético Mineiro (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2013",
+          "team": "Atlético Mineiro",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2014",
+          "team": "Atlético Mineiro (base)",
+          "appearances": 2,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2014–2016",
+          "team": "Atlético Mineiro",
+          "appearances": 44,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Figueirense",
+          "appearances": 30,
+          "goals": 4,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro.",
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Chapecoense",
+          "appearances": 13,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro.",
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Botafogo-SP",
+          "appearances": 14,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro.",
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Fortaleza",
+          "appearances": 56,
+          "goals": 5,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro.",
+          "is_club": false
+        },
+        {
+          "period": "2019/20–2023",
+          "team": "Khorfakkan",
+          "appearances": 101,
+          "goals": 28,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro.",
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Atlético Goianiense",
+          "appearances": 14,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023/24",
+          "team": "Ajman",
+          "appearances": 15,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Kazma SC",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Remo",
+          "appearances": 21,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 28,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Remo.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "instagram_url"
@@ -1331,87 +3347,257 @@
       "instagram_url": "https://www.instagram.com/marquinhosgabriel20/",
       "club_history": [
         {
-          "period": null,
+          "period": "2005–2006",
+          "team": "Juventude (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2007–2009",
+          "team": "Internacional (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Juventude.",
+          "is_club": false
+        },
+        {
+          "period": "2009",
           "team": "Internacional",
-          "loan": null
+          "appearances": 17,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2010",
+          "team": "Internacional (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2010",
+          "team": "Internacional",
+          "appearances": 14,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "Internacional (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2011",
           "team": "Avaí",
-          "loan": null
+          "appearances": 19,
+          "goals": 4,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Internacional.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2011",
+          "team": "Internacional",
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2012",
           "team": "Sport",
-          "loan": null
+          "appearances": 39,
+          "goals": 5,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Internacional.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2013",
           "team": "Bahia",
-          "loan": null
+          "appearances": 45,
+          "goals": 4,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Internacional.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2014",
           "team": "Palmeiras",
-          "loan": null
+          "appearances": 19,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Coimbra-MG.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2015",
           "team": "Al-Nassr",
-          "loan": null
+          "appearances": 12,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2015",
           "team": "Santos",
-          "loan": null
+          "appearances": 44,
+          "goals": 9,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Al Nassr.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2016",
+          "team": "Al-Nassr",
+          "appearances": 9,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2016–2018",
           "team": "Corinthians",
-          "loan": null
+          "appearances": 94,
+          "goals": 10,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Al Nassr.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
           "team": "Al-Nasr",
-          "loan": null
+          "appearances": 18,
+          "goals": 5,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Corinthians.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
           "team": "Cruzeiro",
-          "loan": null
+          "appearances": 52,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Athletico-PR",
-          "loan": null
+          "period": "2020",
+          "team": "Athletico Paranaense",
+          "appearances": 16,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Cruzeiro.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
+          "team": "Cruzeiro",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2021",
           "team": "Vasco",
-          "loan": null
+          "appearances": 42,
+          "goals": 7,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "Criciúma",
-          "loan": null
+          "appearances": 20,
+          "goals": 6,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022–2023",
           "team": "Goiás",
-          "loan": null
+          "appearances": 18,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023–2024",
+          "team": "Criciúma",
+          "appearances": 67,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025",
           "team": "Avaí",
-          "loan": null
+          "appearances": 47,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 40,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [],
       "sources": [
@@ -1422,6 +3608,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/175644/marcos-gabriel-do-nascimento-marquinhos"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206"
         }
       ]
     },
@@ -1440,57 +3630,177 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2008",
+          "team": "Santos (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Atlético Paranaense (base)",
+          "appearances": 9,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Atlético Paranaense",
+          "appearances": 0,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2015",
+          "team": "Guaratinguetá",
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Paranaense.",
+          "is_club": false
+        },
+        {
+          "period": "2016",
+          "team": "Brasília",
+          "appearances": 3,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Paranaense.",
+          "is_club": false
+        },
+        {
+          "period": "2016–2017",
+          "team": "Santa Cruz (base)",
+          "appearances": 3,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Athletico Paranaense.",
+          "is_club": false
+        },
+        {
+          "period": "2017",
           "team": "Santa Cruz",
-          "loan": null
+          "appearances": 57,
+          "goals": 5,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Paranaense.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
           "team": "Cianorte",
-          "loan": null
+          "appearances": 14,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
           "team": "Ponte Preta",
-          "loan": null
+          "appearances": 35,
+          "goals": 11,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Cianorte.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
           "team": "Corinthians",
-          "loan": null
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
           "team": "Fortaleza",
-          "loan": null
+          "appearances": 25,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Corinthians.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Daejeon Hana Citizen",
-          "loan": null
+          "appearances": 28,
+          "goals": 14,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Corinthians.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-GO",
-          "loan": null
+          "period": "2021",
+          "team": "Atlético Goianiense",
+          "appearances": 46,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Corinthians.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "Cuiabá",
-          "loan": null
+          "appearances": 48,
+          "goals": 6,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Jeonbuk Hyundai Motors",
-          "loan": null
+          "period": "2023",
+          "team": "Jeonbuk Motors",
+          "appearances": 14,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024–2025",
+          "team": "Cuiabá",
+          "appearances": 48,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 58,
+          "goals": 10,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "birth_date",
@@ -1506,6 +3816,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/656372/andr-luis"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/andre-luis/468502"
         }
       ]
     },
@@ -1524,92 +3838,247 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2011",
+          "team": "Juventus-SP (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2012–2015",
+          "team": "Portuguesa (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2015–2017",
           "team": "Portuguesa",
-          "loan": null
+          "appearances": 29,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017",
           "team": "Nacional-SP",
-          "loan": null
+          "appearances": 6,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017",
           "team": "Sport",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Nacional-SP.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
+          "team": "Nacional-SP",
+          "appearances": 15,
+          "goals": 10,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
           "team": "Corinthians",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Nacional-SP.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018",
           "team": "Guarani",
-          "loan": null
+          "appearances": 10,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Nacional-SP.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Aves",
-          "loan": null
+          "period": "2019",
+          "team": "Oeste",
+          "appearances": 16,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Nacional-SP.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
+          "team": "CD Aves",
+          "appearances": 7,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
           "team": "Juventude",
-          "loan": null
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Juventus-SP",
-          "loan": null
+          "appearances": 4,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Paraná",
-          "loan": null
+          "appearances": 6,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
           "team": "Inter de Limeira",
-          "loan": null
+          "appearances": 13,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
           "team": "Mirassol",
-          "loan": null
+          "appearances": 12,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
+          "team": "Juventus Jaraguá",
+          "appearances": 8,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
           "team": "Santo André",
-          "loan": null
+          "appearances": 10,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "Ferroviária",
-          "loan": null
+          "appearances": 12,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Água Santa",
-          "loan": null
+          "period": "2022–2023",
+          "team": "EC Água Santa",
+          "appearances": 25,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
           "team": "Ituano",
-          "loan": null
+          "appearances": 7,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por EC Água Santa.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
+          "team": "EC Água Santa",
+          "appearances": 13,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Ituano",
+          "appearances": 27,
+          "goals": 8,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025",
           "team": "Vitória",
-          "loan": null
+          "appearances": 13,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025–2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 28,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "shirt_number",
@@ -1626,6 +4095,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/players/881154/bruno-xavier"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/bruno-xavier/464667"
         }
       ]
     },
@@ -1644,82 +4117,247 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2008–2009",
+          "team": "Rio Preto (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2009",
           "team": "Rio Preto",
-          "loan": null
+          "appearances": 4,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2010",
+          "team": "Rio Preto (base)",
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2010",
+          "team": "Rio Preto",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2010",
+          "team": "Desportivo Brasil",
+          "appearances": 8,
+          "goals": 6,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "Desportivo Brasil (base)",
+          "appearances": 7,
+          "goals": 7,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2011",
+          "team": "Internacional (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Desportivo Brasil.",
+          "is_club": false
+        },
+        {
+          "period": "2011–2012",
           "team": "Internacional",
-          "loan": null
+          "appearances": 13,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Desportivo Brasil.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Porto B",
-          "loan": null
+          "period": "2013",
+          "team": "FC Porto (base)",
+          "appearances": 36,
+          "goals": 11,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Desportivo Brasil.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Athletico-PR",
-          "loan": null
+          "period": "2013",
+          "team": "FC Porto",
+          "appearances": 0,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Desportivo Brasil.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Queens Park Rangers",
-          "loan": null
+          "period": "2013",
+          "team": "Atlético Paranaense",
+          "appearances": 31,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2014",
+          "team": "QPR",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Atlético Paranaense.",
+          "is_club": false
+        },
+        {
+          "period": "2014–2015",
+          "team": "Atlético Paranaense",
+          "appearances": 39,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2015/16–2016/17",
           "team": "Suphanburi",
-          "loan": null
+          "appearances": 48,
+          "goals": 24,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Athletico Paranaense.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017/18–2018/19",
           "team": "APOEL",
-          "loan": null
+          "appearances": 35,
+          "goals": 12,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2018/19",
+          "team": "Suphanburi",
+          "appearances": 9,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020",
           "team": "Mirassol",
-          "loan": null
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Brasil de Pelotas",
-          "loan": null
+          "period": "2020",
+          "team": "GE Brasil",
+          "appearances": 26,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
           "team": "CSA",
-          "loan": null
+          "appearances": 52,
+          "goals": 24,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-GO",
-          "loan": null
+          "period": "2022",
+          "team": "Atlético Goianiense",
+          "appearances": 9,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022–2023",
           "team": "Montedio Yamagata",
-          "loan": null
+          "appearances": 57,
+          "goals": 14,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Mirassol",
-          "loan": null
+          "appearances": 45,
+          "goals": 17,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Coritiba",
-          "loan": null
+          "appearances": 35,
+          "goals": 10,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 31,
+          "goals": 10,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "birth_date",
@@ -1735,6 +4373,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/278723/dellatorre"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/dellatorre/196999"
         }
       ]
     },
@@ -1753,42 +4395,127 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2018–2020",
+          "team": "São Caetano (base)",
+          "appearances": 31,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
           "team": "São Caetano",
-          "loan": null
+          "appearances": 20,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
+          "team": "Vasco (base)",
+          "appearances": 14,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por São Caetano.",
+          "is_club": false
+        },
+        {
+          "period": "2021–2022",
+          "team": "Corinthians (base)",
+          "appearances": 3,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por São Caetano.",
+          "is_club": false
+        },
+        {
+          "period": "2022",
           "team": "Santo André",
-          "loan": null
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por São Caetano.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
+          "team": "São Caetano",
+          "appearances": 14,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023",
           "team": "Audax Rio",
-          "loan": null
+          "appearances": 14,
+          "goals": 3,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por São Caetano.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Resende",
-          "loan": null
-        },
-        {
-          "period": null,
-          "team": "Ituano",
-          "loan": null
-        },
-        {
-          "period": null,
+          "period": "2023",
           "team": "Botafogo",
-          "loan": null
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
+          "team": "Resende",
+          "appearances": 18,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Botafogo.",
+          "is_club": false
+        },
+        {
+          "period": "2023",
+          "team": "Ituano",
+          "appearances": 12,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Botafogo.",
+          "is_club": false
+        },
+        {
+          "period": "2024",
+          "team": "Botafogo",
+          "appearances": 5,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2024–2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 62,
+          "goals": 8,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Botafogo.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "height_cm",
@@ -1803,6 +4530,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1446567/emerson-urso"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/emerson-urso/693635"
         }
       ]
     },
@@ -1821,52 +4552,127 @@
       "instagram_url": "https://www.instagram.com/evertongaldinoo/",
       "club_history": [
         {
-          "period": null,
+          "period": "2014",
+          "team": "Vila Nova (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2014–2015",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         },
         {
-          "period": null,
+          "period": "2015",
+          "team": "São Paulo (base)",
+          "appearances": 19,
+          "goals": 10,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Vila Nova.",
+          "is_club": false
+        },
+        {
+          "period": "2016–2017",
+          "team": "Vila Nova",
+          "appearances": 17,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
+        },
+        {
+          "period": "2017–2019",
           "team": "Tombense",
-          "loan": null
+          "appearances": 64,
+          "goals": 7,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Vila Nova.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019",
           "team": "Ponte Preta",
-          "loan": null
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Tombense.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020",
           "team": "Figueirense",
-          "loan": null
+          "appearances": 14,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Tombense.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2020–2022",
           "team": "Tombense",
-          "loan": null
+          "appearances": 87,
+          "goals": 17,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023–2024",
           "team": "Grêmio",
-          "loan": null
+          "appearances": 72,
+          "goals": 12,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Tombense.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024–2025",
           "team": "FC Tokyo",
-          "loan": null
+          "appearances": 13,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Grêmio.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Mirassol",
-          "loan": null
+          "appearances": 17,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por FC Tokyo.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 11,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por FC Tokyo.",
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "birth_date",
@@ -1881,6 +4687,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1034321/everton"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/everton-galdino/437268"
         }
       ]
     },
@@ -1899,17 +4709,57 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
-          "team": "Aymorés",
-          "loan": null
+          "period": "2021–2023",
+          "team": "Flamengo (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023–2024",
+          "team": "Athletico Paranaense (base)",
+          "appearances": 9,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2025",
+          "team": "Aymorés",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2025–2026",
+          "team": "Vila Nova (base)",
+          "appearances": 36,
+          "goals": 12,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 13,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "birth_date",
@@ -1925,6 +4775,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1935530/gustavo-puskas"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/gustavo-puskas/1047740"
         }
       ]
     },
@@ -1943,47 +4797,157 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2016",
+          "team": "Joinville (base)",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2016",
           "team": "Joinville",
-          "loan": null
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017",
+          "team": "Joinville (base)",
+          "appearances": 1,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2017",
+          "team": "Joinville",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Joinville (base)",
+          "appearances": 2,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Joinville",
+          "appearances": 5,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2018",
+          "team": "Ação-RJ",
+          "appearances": 7,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Joinville.",
+          "is_club": false
+        },
+        {
+          "period": "2018–2019",
+          "team": "Corinthians (base)",
+          "appearances": 44,
+          "goals": 8,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Joinville.",
+          "is_club": false
+        },
+        {
+          "period": "2019–2020",
           "team": "Corinthians",
-          "loan": null
+          "appearances": 34,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-GO",
-          "loan": null
+          "period": "2020–2021",
+          "team": "Atlético Goianiense",
+          "appearances": 92,
+          "goals": 9,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Corinthians.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "Grêmio",
-          "loan": null
+          "appearances": 40,
+          "goals": 5,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Corinthians.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023–2024",
           "team": "Ceará",
-          "loan": null
+          "appearances": 73,
+          "goals": 8,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Corinthians.",
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Atlético-GO",
-          "loan": null
+          "period": "2024–2025",
+          "team": "Atlético Goianiense",
+          "appearances": 32,
+          "goals": 4,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Ceará.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Remo",
-          "loan": null
+          "appearances": 33,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Ceará.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 37,
+          "goals": 7,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "height_cm",
@@ -1998,6 +4962,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/players/1045975/janderson"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/janderson/540179"
         }
       ]
     },
@@ -2016,42 +4984,97 @@
       "instagram_url": "https://www.instagram.com/lincoln9/",
       "club_history": [
         {
-          "period": null,
+          "period": "2015–2017",
+          "team": "Flamengo (base)",
+          "appearances": 10,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2017–2020",
           "team": "Flamengo",
-          "loan": null
+          "appearances": 63,
+          "goals": 8,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021–2022",
           "team": "Vissel Kobe",
-          "loan": null
+          "appearances": 31,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2022",
           "team": "Cruzeiro",
-          "loan": null
+          "appearances": 9,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Vissel Kobe.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2023",
+          "team": "Vissel Kobe",
+          "appearances": 10,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2023/24–2025",
           "team": "SCR Altach",
-          "loan": null
+          "appearances": 2,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Athletic-MG",
-          "loan": null
+          "appearances": 16,
+          "goals": 5,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por SCR Altach.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Spartak Subotica",
-          "loan": null
+          "appearances": 16,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "shirt_number",
@@ -2085,62 +5108,147 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
+          "period": "2009–2010",
+          "team": "Corinthians (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2011–2012",
+          "team": "Coritiba (base)",
+          "appearances": 5,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2012–2013",
           "team": "Coritiba",
-          "loan": null
+          "appearances": 20,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Lugano",
-          "loan": null
+          "period": "2013/14–2014/15",
+          "team": "FC Lugano",
+          "appearances": 29,
+          "goals": 13,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2014–2016",
           "team": "Albirex Niigata",
-          "loan": null
+          "appearances": 62,
+          "goals": 26,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2017",
           "team": "Urawa Reds",
-          "loan": null
+          "appearances": 42,
+          "goals": 21,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Wuhan",
-          "loan": null
+          "period": "2018–2020",
+          "team": "Wuhan Zall",
+          "appearances": 38,
+          "goals": 31,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2021",
+          "team": "Wuhan FC",
+          "appearances": 5,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
           "team": "Cruzeiro",
-          "loan": null
+          "appearances": 18,
+          "goals": 6,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "Jeonbuk Hyundai Motors",
-          "loan": null
+          "period": "2023",
+          "team": "Jeonbuk Motors",
+          "appearances": 25,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Cruzeiro",
-          "loan": null
+          "appearances": 17,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Mirassol",
-          "loan": null
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
-          "team": "América-MG",
-          "loan": null
+          "period": "2025",
+          "team": "América Mineiro",
+          "appearances": 10,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Mirassol.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 19,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "shirt_number",
@@ -2157,6 +5265,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/323400/rafael-silva"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/rafa-silva/137934"
         }
       ]
     },
@@ -2175,37 +5287,97 @@
       "instagram_url": null,
       "club_history": [
         {
-          "period": null,
-          "team": "New England Revolution II",
-          "loan": null
+          "period": "2018",
+          "team": "Elosport Capão Bonito (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2019–2020",
+          "team": "Nacional-SP (base)",
+          "appearances": 12,
+          "goals": 2,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2020–2021",
+          "team": "Botafogo (base)",
+          "appearances": 42,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
+        },
+        {
+          "period": "2022",
+          "team": "New England Revolution (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada.",
+          "is_club": false
+        },
+        {
+          "period": "2023",
           "team": "IAPE",
-          "loan": null
+          "appearances": 4,
+          "goals": 1,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Moto Club",
-          "loan": null
+          "appearances": 30,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2024",
           "team": "Athletic-MG",
-          "loan": null
+          "appearances": 3,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2025",
           "team": "Maranhão",
-          "loan": null
+          "appearances": 38,
+          "goals": 10,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": false
         },
         {
-          "period": null,
+          "period": "2026",
           "team": "Vila Nova",
-          "loan": null
+          "appearances": 31,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
+          "is_club": true
         }
       ],
-      "club_history_status": "REVIEW",
+      "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
         "height_cm",
@@ -2220,6 +5392,10 @@
         {
           "source_name": "Base biográfica complementar",
           "source_url": "https://www.fotmob.com/pt-BR/players/1346859"
+        },
+        {
+          "source_name": "Histórico de clubes — ogol.com.br",
+          "source_url": "https://www.ogol.com.br/jogador/ryan/691948"
         }
       ]
     }
@@ -2450,7 +5626,8 @@
   "departures_recent_status": "GAP",
   "notes": [
     "O status READY de cada jogador confirma pertencimento ao elenco e identidade/posição conforme o site oficial. Campos biográficos ausentes permanecem null e listados em missing_fields; isso não é preenchido por inferência.",
-    "club_history é uma trilha de clubes para pesquisa/editoria; os períodos não foram auditados individualmente neste lote e por isso cada histórico está REVIEW."
+    "club_history é uma trilha de clubes para pesquisa/editoria; os períodos não foram auditados individualmente neste lote e por isso cada histórico está REVIEW.",
+    "2026-09-30: club_history recalculado a partir do histórico temporada-a-temporada do ogol.com.br (tabela HISTÓRICO/TRANSFERÊNCIAS de cada jogador) — período (ano, precisão do próprio ogol), jogos e gols por passagem, sempre que a fonte trouxe o dado; quando a tabela não trouxe totais, o item fica com data_quality=\"partial\" e uma nota explícita, nunca preenchido por estimativa. Categorias de base/reserva ([S15]..[S23], [B]) são mantidas como entradas separadas \"Clube (base)\", nunca mescladas com a passagem sênior do mesmo clube. club_history_status passou de REVIEW para READY."
   ],
   "conflicts": [
     {

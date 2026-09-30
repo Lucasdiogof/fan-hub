@@ -1,0 +1,61 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	43	9	11
+	2025
+	Vila Nova	56	6	1
+	2024
+	Paysandu	57	6	2
+	2023
+	Paysandu	41	3	0
+	2022
+	Paysandu(E)
+[Esportivo]
+	26	1	1
+
+	São Luiz(E)
+[Esportivo]
+	10	0	0
+	2021
+	Caxias(E)
+[Esportivo]
+	16	0	0
+
+	Pelotas(E)
+[Esportivo]
+	9	1	0
+	2020
+	Juventude(E)
+[S23]
+[Esportivo]
+	9	1	0
+
+	Esportivo	6	1	1
+
+	Internacional de Madrid	5	0	0
+	2018
+	Serra Macaense	12	0	0
+
+	São José-RS	8	0	0
+	2017
+	Internacional	1	0	0
+
+	Internacional
+[S23]
+	-	-	-
+
+	Internacional
+[S20]
+	4	0	0
+
+	Internacional
+[S19]
+	-	-	-
+	2016
+	Internacional
+[S20]
+	1	0	0
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

@@ -1,0 +1,88 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	11	1	1
+	2025
+	Vila Nova	17	2	0
+
+	Vitória	13	2	0
+	2024
+	Ituano	27	8	2
+
+	EC Água Santa	13	1	2
+	2023
+	Ituano(E)
+[EC Água Santa]
+	7	2	0
+
+	EC Água Santa	15	0	2
+	2022
+	EC Água Santa	10	2	0
+
+	Ferroviária	12	2	0
+
+	Santo André	10	0	2
+	2021
+	Juventus Jaraguá	8	4	0
+
+	Mirassol	12	0	0
+
+	Inter de Limeira	13	2	0
+	2020
+	Paraná	6	0	0
+
+	Juventus-SP	4	3	0
+
+	Juventude	2	0	0
+
+	CD Aves	7	0	1
+	2019
+	Oeste(E)
+[Nacional-SP]
+	16	1	1
+	2018
+	Guarani(E)
+[Nacional-SP]
+	10	1	0
+
+	Corinthians(E)
+[Nacional-SP]
+	1	0	0
+
+	Nacional-SP	15	10	0
+	2017
+	Sport(E)
+[Nacional-SP]
+	1	0	0
+
+	Nacional-SP	6	5	0
+
+	Portuguesa	16	1	0
+	2016
+	Portuguesa	11	3	0
+	2015
+	Portuguesa	2	0	0
+
+	Portuguesa
+[S20]
+	-	-	-
+	2014
+	Portuguesa
+[S20]
+	-	-	-
+	2013
+	Portuguesa
+[S17]
+	-	-	-
+	2012
+	Portuguesa
+[S17]
+	-	-	-
+	2011
+	Juventus-SP
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

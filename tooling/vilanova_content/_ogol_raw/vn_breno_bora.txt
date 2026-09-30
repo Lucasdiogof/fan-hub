@@ -1,0 +1,76 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova(E)
+[Foz do Iguaçu]
+	8	1	0
+
+	Paranavaí(E)
+[Foz do Iguaçu]
+	10	2	0
+
+	Taubaté(E)
+[Foz do Iguaçu]
+	5	1	0
+
+	Foz do Iguaçu	6	0	0
+	2025
+	Foz do Iguaçu	14	0	0
+
+	Cianorte(E)
+[Foz do Iguaçu]
+	10	1	0
+	2024
+	América-PE(E)
+[Foz do Iguaçu]
+	7	2	0
+
+	Foz do Iguaçu	9	0	0
+
+	São Joseense	11	0	1
+	2023
+	São Joseense	7	0	0
+
+	EC Água Santa
+[S20]
+	5	1	0
+	2022
+	EC Água Santa	-	-	-
+
+	EC Água Santa
+[S20]
+	11	1	0
+	2021
+	Atlético Goianiense
+[S20]
+	14	0	0
+	2020
+	Coritiba
+[S23]
+	1	0	0
+
+	Coritiba
+[S20]
+	-	-	-
+
+	Atlético Tubarão	4	0	0
+	2019
+	Atlético Tubarão
+[S17]
+	5	0	0
+	2018
+	Joinville
+[S17]
+	-	-	-
+	2017
+	Joinville
+[S15]
+	-	-	-
+	2016
+	CB Sports
+[S15]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

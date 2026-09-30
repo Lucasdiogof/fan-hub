@@ -1,0 +1,50 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova(E)
+[Mirassol]
+	6	0	0
+
+	Mirassol	6	0	0
+	2025
+	Sport	42	1	0
+	2024
+	Sport	20	1	2
+	2023
+	Sport	41	1	8
+	2022
+	Cuiabá	32	0	1
+	2021
+	Atlético Goianiense	44	2	1
+	2020
+	Atlético Goianiense	1	0	0
+
+	CRB	46	2	3
+	2019
+	CRB	51	2	2
+	2018
+	Paraná	27	0	0
+	2017
+	Paraná	42	1	1
+	2016
+	ASA	18	0	0
+
+	Coruripe	22	2	0
+	2015
+	Iguatu	-	-	-
+
+	Coruripe	10	1	0
+
+	Quixadá	12	1	0
+	2014
+	Iguatu	-	-	-
+
+	Barbalha	2	0	0
+	2013
+	Iguatu	1	1	0
+	2012
+	Iguatu	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

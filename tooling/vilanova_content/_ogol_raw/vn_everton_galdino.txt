@@ -1,0 +1,65 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova(E)
+[FC Tokyo]
+	11	2	0
+
+	Mirassol(E)
+[FC Tokyo]
+	17	1	1
+	2025
+	FC Tokyo	8	0	0
+	2024
+	FC Tokyo(E)
+[Grêmio]
+	5	0	0
+
+	Grêmio	30	3	0
+	2023
+	Grêmio(E)
+[Tombense]
+	42	9	2
+	2022
+	Tombense	51	9	3
+	2021
+	Tombense	32	8	1
+	2020
+	Tombense	4	0	0
+
+	Figueirense(E)
+[Tombense]
+	14	0	0
+	2019
+	Ponte Preta(E)
+[Tombense]
+	5	0	0
+
+	Tombense	27	4	2
+	2018
+	Tombense	18	1	0
+	2017
+	Tombense(E)
+[Vila Nova]
+	19	2	0
+
+	Vila Nova	15	1	0
+	2016
+	Vila Nova	2	0	0
+	2015
+	São Paulo(E)
+[S20]
+[Vila Nova]
+	19	10	0
+
+	Vila Nova	4	0	0
+	2014
+	Vila Nova	1	0	0
+
+	Vila Nova
+[S20]
+	-	-	-
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR

@@ -14,8 +14,9 @@
 //     `positionGroupOrder` (Zagueiros/Laterais-direitos/...);
 //   * `photo_url` do elenco fica null: o pacote aponta pra uma PASTA do
 //     Google Drive, não pra uma imagem;
-//   * `club_history` do elenco fica vazio: está REVIEW no pacote (sem
-//     períodos);
+//   * `club_history` do elenco vem do ogol.com.br (período/jogos/gols por
+//     passagem, 2026-09-30) — mesma adaptação is_club->is_goias de
+//     career_players, aplicada aqui também;
 //   * quiz: EASY/MEDIUM/HARD -> códigos internos torcedor/esmeraldino/
 //     fanatico (check do schema; o texto mostrado usa o gentílico do clube);
 //   * escalação: o XI é REORDENADO por linha (goleiro -> ataque) e, dentro da
@@ -156,18 +157,25 @@ const GROUP_ORDER = ['Goleiros', 'Zagueiros', 'Laterais-direitos', 'Laterais-esq
       return { ...p, group };
     })
     .sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || (a.shirt_number ?? 999) - (b.shirt_number ?? 999));
+  const toClubHistory = (e) => ({
+    period: e.period, team: e.team, appearances: e.appearances ?? null, goals: e.goals ?? null,
+    loan: e.loan ?? false, is_goias: e.is_club === true, data_quality: e.data_quality ?? 'verified',
+    notes: e.notes ?? null,
+  });
   const rows = sorted.map((p, i) => [
     s(p.id), s(CLUB_ID), s(p.name), s(p.full_name), n(p.shirt_number), s(p.position), s(p.group),
     s(p.birth_date), s(p.nationality), n(p.height_cm), s(p.foot), s(p.photo_source_url), s(p.instagram_url),
-    `'[]'::jsonb`, n(i), 'true',
+    j((p.club_history ?? []).map(toClubHistory)), n(i), 'true',
   ]);
   outputs['vilanova_squad_members.sql'] =
     header(
       'Elenco profissional atual do Vila Nova (squad_members).',
       'docs/vila_nova_data/data/squad_current.json',
       `-- ${rows.length} atletas. photo_url = foto individual real do site oficial (AVIF,
--- hotlink direto, 2026-09-30 — ver editorial_note do pacote). club_history vazio
--- (REVIEW no pacote) — ver cabeçalho do gerador.`,
+-- hotlink direto, 2026-09-30). club_history = histórico de clubes (ogol.com.br,
+-- 2026-09-30) com período/jogos/gols por passagem; \`is_goias\` é a chave LEGADA
+-- que o app lê como "passagem pelo clube ativo" (aqui: Vila Nova), vinda de
+-- \`is_club\` no pacote — mesmo padrão de career_players.sql.`,
     ) +
     upsert(
       'squad_members',

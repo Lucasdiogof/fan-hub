@@ -1,0 +1,40 @@
+HISTÓRICO
+D
+Futebol
+	TEMPORADA	EQUIPE	J	G	ASS
+	2026
+	Vila Nova	15	3	3
+	2025
+	Vila Nova	4	0	0
+
+	Aparecidense	32	2	1
+	2024
+	Aparecidense(E)
+[Internacional]
+	15	0	0
+
+	Internacional
+[S20]
+	4	1	1
+	2023
+	Internacional
+[S20]
+	19	3	0
+	2022
+	Internacional
+[S20]
+	22	6	0
+	2021
+	Internacional
+[S20]
+	1	0	0
+	2020
+	Internacional
+[S17]
+	-	-	-
+	2019
+	Internacional
+[S17]
+	4	0	0
+TRANSFERÊNCIAS
+TEMPORADA	EQUIPE	VALOR
