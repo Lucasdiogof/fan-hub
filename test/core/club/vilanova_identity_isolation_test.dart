@@ -107,16 +107,16 @@ void main() {
 
   group('Capabilities — só o que já foi validado está ligado', () {
     test(
-      'F3/F4 ligaram hasClubContent; o resto sem Supabase ainda segue desligado',
+      'F3/F4/F6 ligaram hasClubContent/hasPassport; o resto sem Supabase ainda segue desligado',
       () {
         final c = v.capabilities;
         expect(c.hasClubContent, isTrue);
+        expect(c.hasPassport, isTrue);
         expect([
           c.hasMembership,
           c.hasStore,
           c.hasTickets,
           c.hasCrowdLineup,
-          c.hasPassport,
           c.hasNews,
           c.hasSocial,
           c.hasPartners,

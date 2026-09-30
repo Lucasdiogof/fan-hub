@@ -1,6 +1,6 @@
 # Flavor Vila Nova — handoff de estado
 
-> **Leia isto primeiro ao retomar** (outra conta ou outra sessão). Atualizado em 2026-09-30, no commit `af46c4e` (12 commits à frente de `origin/main`). Tudo está commitado, mas ainda SEM PUSH (avise antes de subir).
+> **Leia isto primeiro ao retomar** (outra conta ou outra sessão). Atualizado em 2026-09-30, depois do commit do F6 (14 commits à frente de `origin/main`). Tudo está commitado, mas ainda SEM PUSH (avise antes de subir).
 > Prompt pronto para começar a nova conversa: `docs/vila_nova_data/PROMPT_RETOMADA.md`.
 
 ## 1. O que é e como trabalhamos
@@ -34,11 +34,12 @@ Regras que não mudam:
 | **Supabase do Vila** | ✅ **projeto criado, schema+bootstrap+todos os 17 seeds APLICADOS DE VERDADE** em 2026-09-29 (projeto `vkybbrfvmexevakknlsi`), verificado ao vivo (não só no simulador): 468 partidas, 78 venues, 0 órfão, 0 venue sem uso, RPCs `passport_seasons()`/`passport_matches_for_year()` respondendo certo. `supabaseUrl`/`supabasePublishableKey` preenchidos no config | commit do lote de aplicação |
 | F4 diretoria/transparência/elenco | ✅ nenhuma mudança de código precisou — `hasClubContent` (F3) já cobria diretoria/transparência (Supabase), e elenco nunca teve gate de capability (sempre `club_id`-scoped). Só precisava do banco existir, que já existe. Confirmado ao vivo: 6 seções/28 pessoas, 5 documentos, 31 atletas | — |
 | F5 Arena | ✅ **5 dos 6 jogos ligados** em `enabledArenaGames`: `quiz` (45/45), `lineup` (15/15, 11 jogadores + formação reconhecida cada), `player_identity`/`tactical_identity` (referências Dart, calibradas), `career_path` (30/30, mas **todas do elenco atual** — decisão (c) ainda em aberto, o app já roda com o que existe). `guess_player` (Manto) **fica de fora**: `GuessPlayer.eligibleAsSecret` exige foto, e não existe `guessPlayerPhotos` pro Vila ainda — as 50 cartas resolveriam `imageUrl=null`, 0 elegíveis pro sorteio | commit da F4/F5 |
-| F6 → F9 | ⏳ dado já pronto (Passaporte 468/78), só falta ligar `hasPassport` e o resto seguir a ordem | — |
+| F6 Passaporte | ✅ `hasPassport: true` ligado em 2026-09-30 — nenhuma mudança de código precisou: `passportContent` já apontava pro `VilaNovaPassportContent` ("Passaporte Colorado") desde o F3, e `SupabasePassportRepository` é genérico por clube (lê o `supabaseUrl`/`Key` do config ativo). Dado (468 partidas / 78 venues) já tinha sido verificado ao vivo quando o runbook foi aplicado | commit do F6 |
+| F7 → F9 | ⏳ seguir a ordem | — |
 
-Estado atual do app: o flavor **compila**, o Supabase está **no ar com dado real** (URL/key preenchidos, banco populado, F4/F5 ligadas) — falta ligar `hasPassport` (F6) e configurar a Auth Site URL/redirect no dashboard do projeto (adiado pra quando o Worker/F8 existir, pra não apontar pra uma URL que não resolve).
+Estado atual do app: o flavor **compila**, o Supabase está **no ar com dado real** (URL/key preenchidos, banco populado, F4/F5/F6 ligadas) — falta F7 (Sócio/Loja/Ingressos), F8 (Worker + Auth Site URL/redirect, adiado de propósito) e F9 (QA + revisão visual).
 
-Verificação da última rodada: `flutter test` (test/core/club/ + test/features/arena/, 555 casos) e `flutter analyze` sem issue; `test/core/club/vilanova_identity_isolation_test.dart` com 27 testes de isolamento/conteúdo/capabilities.
+Verificação da última rodada: `flutter test test/core/club/ test/features/passport/` (332 casos) e `flutter analyze` sem issue novo (12 infos/warnings pré-existentes, nenhum nos arquivos tocados); `test/core/club/vilanova_identity_isolation_test.dart` com 27 testes de isolamento/conteúdo/capabilities, atualizado pra refletir `hasPassport: true`.
 
 ## 3. Próximos passos, em ordem
 
@@ -46,7 +47,7 @@ Verificação da última rodada: `flutter test` (test/core/club/ + test/features
 2. **[USUÁRIO, quando for a hora do F8] Configurar Auth Site URL/redirect** no dashboard do projeto — adiado de propósito: sem Worker ainda (F8), não há URL de callback real pra apontar. `supabaseRedirectUrl` continua `null` até lá.
 3. ✅ **F4** — sem mudança de código; `hasClubContent` já cobria diretoria/transparência, elenco nunca teve gate. Confirmado ao vivo (28 pessoas, 5 documentos, 31 atletas).
 4. ✅ **F5 Arena** — 5/6 jogos ligados (`quiz`, `lineup`, `player_identity`, `tactical_identity`, `career_path`). `guess_player` fica de fora até existir `guessPlayerPhotos` pro Vila (ver §2).
-5. **F6 Passaporte**: ligar `hasPassport` (468 partidas/78 venues já no banco, verificado ao vivo). Novos lotes da pesquisa externa: `node tooling/vilanova_passport/generate_passport_sql.mjs`, revalidar com o simulador E com `verify-vilanova-live.mjs`, reaplicar só o seed do ano novo via `run-sql-file.mjs`.
+5. ✅ **F6 Passaporte** — `hasPassport: true` ligado em 2026-09-30. Novos lotes da pesquisa externa continuam o fluxo normal: `node tooling/vilanova_passport/generate_passport_sql.mjs`, revalidar com o simulador E com `verify-vilanova-live.mjs`, reaplicar só o seed do ano novo via `run-sql-file.mjs` (a flag já está ligada, não precisa mexer nela de novo).
 6. **F7** Sócio Tigrão / Loja / Ingressos em modo demo. O pacote ainda está em REVIEW (preços do sócio vieram de jornal; a loja tem 12 de ~125 produtos).
 7. **F8** Worker `wrangler.vilanova.toml` (jogos, notícias do site oficial, Instagram), ligando `hasMatches`/`hasNews`/`hasSocial`. O parser de notícias é novo (`src/news/`), no modelo do `bragantino_parser.ts`. Preencher `supabaseRedirectUrl` e configurar a Auth Site URL (passo 2 acima) junto com essa fase.
 8. **F9** QA de isolamento com os 3 flavors + revisão visual (golden temporário, ver memória "revisão visual sem login").

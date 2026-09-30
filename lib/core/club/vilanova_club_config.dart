@@ -148,7 +148,13 @@ final vilaNovaClubConfig = ClubConfig(
     hasStore: false,
     hasTickets: false,
     hasCrowdLineup: false,
-    hasPassport: false,
+    // F6 (2026-09-30): 468 partidas / 78 estádios (2019-2026) aplicados e
+    // verificados ao vivo no Supabase do Vila
+    // (`tooling/multiclub/verify-vilanova-live.mjs`), `passportContent` já
+    // aponta pro `VilaNovaPassportContent` ("Passaporte Colorado") e o
+    // repositório (`SupabasePassportRepository`) é genérico por clube — nada
+    // de código precisou mudar, só esta flag.
+    hasPassport: true,
     hasNews: false,
     hasSocial: false,
     // F3: história, linha do tempo, títulos e ídolos estáticos (pacote
