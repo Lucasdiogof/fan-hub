@@ -1117,3 +1117,13 @@ Usuário pediu a continuação da pesquisa em outra conta a partir do checkpoint
 - **Conflito revisitado sem alteração (correto):** hist-f80-0802 (Fast-AM, 26/09/1971) — a pesquisa externa confirmou o mesmo achado de sessões anteriores (FdG mostra Goiás 0x1 Fast, mas o CSV tem o resultado administrativo do TJD, 1x0 Goiás) e corretamente **não promoveu** por mudar o resultado. Nada a fazer aqui, só reforça que o diagnóstico anterior estava certo.
 
 **Novo estado: 1.987 / 2.102 = 94,53%.** Backlog: 115. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1987.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1987.csv`.
+
+## Atualização de pesquisa — 2026-09-30 (53) — lote da pesquisa externa 1987 → 1991 auditado e aceito (+4)
+- Arquivo recebido: `GOIAS_CHECKPOINT_1991_2026-09-30.zip`. Diff contra o CHECKPOINT_1987 do repo: mesmas 3.840 linhas, colunas e ordem de IDs; só 4 linhas mudaram, e só em campos de estádio, notas e `venue_probable_*`. `_gen_pendencias.mjs` confirma 1.991.
+- **Conferido por mim na imagem das páginas originais (PDFs no pacote):**
+  - Diário da Manhã, 06/09/1993, Esportes p. 3 ("Números finais do Campeonato Goiano de 93"): "no jogo Goiatuba 0 x 0 Goiás no Estádio Divino Garcia Rosa em Goiatuba, válido pela 2ª fase" → **2170**; "no jogo Goiás 3 x 1 Quirinópolis no Estádio Serra Dourada, válido pela 2ª fase" → **2171**. Sem data no texto, mas os dois placares são únicos no Goiano de 1993 (no CSV só existe um Goiatuba 0x0 Goiás e um Goiás 3x1 Quirinópolis), e o RSSSF (`tablesfq/go1993.htm`) dá 07/07 e 11/07, as datas do CSV.
+  - Diário da Manhã, 21/08/1995, p. 11 ("números finais do Goiano de 1995"): "Vila Nova 1x1 Goiás realizado no dia 27 de junho no Estádio Serra Dourada" → **2308**; "Goiás 3x3 Vila Nova realizado no dia 09 de julho no Estádio Serra Dourada" → **2311**.
+- Lição: as matérias de **números finais do campeonato** (maiores rendas/públicos, com data, placar e estádio) publicadas semanas depois do fim do Goiano são uma fonte que a varredura D-3..D+5 não pegava.
+- Notas originais da pesquisa externa, com tudo que ele já tentou (O Estado/SC 1976, Estado do Piauí 1976, pistas Placar/Google Books e Diário de Notícias/Curitiba 1986): `GOIAS_RELATORIO_LOTE_1987_1991.md`.
+
+**Novo estado: 1.991 / 2.102 = 94,72%.** Backlog: 111. Faltam 6 para 95%. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1991.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1991.csv`.
