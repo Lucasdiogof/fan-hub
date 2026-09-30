@@ -4,6 +4,7 @@ import 'package:goias_app/features/arena/games/player_identity/domain/bragantino
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_engine.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_models.dart';
 import 'package:goias_app/features/arena/games/player_identity/domain/player_identity_references.dart';
+import 'package:goias_app/features/arena/games/player_identity/domain/vilanova_player_identity_references.dart';
 
 /// Dataset de referências do "Que craque é você?" por clube (mesmo
 /// mecanismo de `ClubScopedFallback` usado pelos repositories) —
@@ -20,6 +21,7 @@ const playerIdentityReferenceSets =
     ClubScopedFallback<List<PlayerIdentityReference>>({
       'goias': playerIdentityReferences,
       'bragantino': bragantinoPlayerIdentityReferences,
+      'vilanova': vilanovaPlayerIdentityReferences,
     });
 
 /// Monta o `PlayerIdentityEngine` com o dataset do clube ativo. Lança

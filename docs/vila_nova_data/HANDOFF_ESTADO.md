@@ -45,7 +45,7 @@ Verificação da última rodada: `flutter test` com 1540 ok; `flutter analyze` s
 4. **F5 Arena**, uma subfase por jogo, ligando em `enabledArenaGames`:
    - quiz, escalação e Manto estão prontos;
    - carreira: esperar os nomes históricos da pesquisa externa, ou ligar com os 30 atuais se o usuário aceitar;
-   - **perfis de jogador/técnico**: converter as referências para o motor (ver §5) e calibrar como no Bragantino (`tool/bragantino_*_calibration.dart`).
+   - **perfis de jogador/técnico**: ✅ convertidos e calibrados (10 jogadores em `vilanova_player_identity_references.dart`, 8%–14% cada; 6 técnicos em `vilanova_tactical_coach_references.dart`, 16,4%–16,9% cada). Falta só ligar `player_identity`/`tactical_identity` em `enabledArenaGames` quando chegar a vez dessas subfases.
 5. **F6 Passaporte**: ligar `hasPassport`. Novos lotes: `node tooling/vilanova_passport/generate_passport_sql.mjs` + simulador.
 6. **F7** Sócio Tigrão / Loja / Ingressos em modo demo. O pacote ainda está em REVIEW (preços do sócio vieram de jornal; a loja tem 12 de ~125 produtos).
 7. **F8** Worker `wrangler.vilanova.toml` (jogos, notícias do site oficial, Instagram), ligando `hasMatches`/`hasNews`/`hasSocial`. O parser de notícias é novo (`src/news/`), no modelo do `bragantino_parser.ts`.
@@ -65,7 +65,7 @@ Verificação da última rodada: `flutter test` com 1540 ok; `flutter analyze` s
 | Diretoria / transparência / elenco | ✅ (a pasta do Drive não serve como foto) |
 | Quiz 45 · Escalações 15 · Manto 50 | ✅ READY. Tudo recente (escalações de 2015 pra cá; Manto sem estreia antes de 2013) |
 | Carreira 30 | READY, mas **todas do elenco atual** |
-| Perfis jogador (10) / técnico (6) | formato errado (culpa do prompt original). Aproveitam-se nomes e evidências |
+| Perfis jogador (10) / técnico (6) | ✅ convertidos pro motor real e calibrados (ver §2, linha "perfis de jogador/técnico"). O pacote de origem (`docs/vila_nova_data/arena/player_identity.json` / `tactical_identity.json`) continua com o schema de 8 dimensões em português — serve só de evidência, não é mais usado pelo app |
 | Sócio / Loja | REVIEW / parcial |
 | Passaporte | 2020–2025 CLOSED, 2026 PARTIAL (faltam R35–R38 + 2ª fonte). **1943–2019 não pesquisado; próximo lote = 2019** |
 

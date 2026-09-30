@@ -4,6 +4,7 @@ import 'package:goias_app/features/arena/games/tactical_identity/domain/braganti
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_coach_references.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_engine.dart';
 import 'package:goias_app/features/arena/games/tactical_identity/domain/tactical_identity_models.dart';
+import 'package:goias_app/features/arena/games/tactical_identity/domain/vilanova_tactical_coach_references.dart';
 
 /// Dataset de referências da "Identidade Futebolística" por clube (mesmo
 /// mecanismo de `ClubScopedFallback` usado pelos repositories) —
@@ -20,6 +21,7 @@ const tacticalCoachReferenceSets =
     ClubScopedFallback<List<TacticalCoachReference>>({
       'goias': tacticalCoachReferences,
       'bragantino': bragantinoTacticalCoachReferences,
+      'vilanova': vilanovaTacticalCoachReferences,
     });
 
 /// Monta o `TacticalIdentityEngine` com o dataset do clube ativo. Lança
