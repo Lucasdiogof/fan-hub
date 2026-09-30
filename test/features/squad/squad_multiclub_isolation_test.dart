@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
+import 'package:goias_app/core/club/vilanova_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/squad/domain/position_groups.dart';
@@ -73,6 +74,56 @@ void main() {
           reason: '$id não pode resolver foto fora do Goiás',
         );
         expect(syntheticClubBConfig.assets.squadPhotos[id], isNull);
+      }
+    });
+
+    test('Vila Nova: sem squadPhotos local — o Elenco depende 100% da '
+        'photo_url do próprio banco (2026-09-30, hotlink AVIF do CDN '
+        'oficial, nunca um asset local que poderia colidir por id curto)', () {
+      expect(vilaNovaClubConfig.assets.squadPhotos, isEmpty);
+    });
+
+    test('Vila Nova: 31 fotos reais pro Quem Vestiu o Manto (2026-09-30), '
+        'todas hotlink AVIF do CDN oficial vilanovafc.com.br — nunca URL de '
+        'outro clube nem asset local que quebraria (o app só sabe tratar '
+        'asset local em squadPhotos, não em guessPlayerPhotos)', () {
+      expect(vilaNovaClubConfig.assets.guessPlayerPhotos, hasLength(31));
+      for (final entry in vilaNovaClubConfig.assets.guessPlayerPhotos.entries) {
+        expect(
+          entry.value,
+          startsWith('https://www.vilanovafc.com.br/'),
+          reason: '${entry.key} precisa apontar pro CDN oficial do Vila',
+        );
+        expect(
+          entry.value,
+          endsWith('.avif'),
+          reason:
+              '${entry.key} precisa ser o hotlink AVIF, nunca outro formato inventado',
+        );
+      }
+      expect(syntheticClubBConfig.assets.guessPlayerPhotos, isEmpty);
+    });
+
+    test('nenhum id do Vila resolve foto de guess_player no Goiás nem no '
+        'Bragantino, e vice-versa', () {
+      for (final id in vilaNovaClubConfig.assets.guessPlayerPhotos.keys) {
+        expect(
+          goiasClubConfig.assets.guessPlayerPhotos[id],
+          isNull,
+          reason: '$id (Vila) não pode resolver foto no Goiás',
+        );
+        expect(
+          bragantinoClubConfig.assets.guessPlayerPhotos[id],
+          isNull,
+          reason: '$id (Vila) não pode resolver foto no Bragantino',
+        );
+      }
+      for (final id in bragantinoClubConfig.assets.guessPlayerPhotos.keys) {
+        expect(
+          vilaNovaClubConfig.assets.guessPlayerPhotos[id],
+          isNull,
+          reason: '$id (Bragantino) não pode resolver foto no Vila',
+        );
       }
     });
   });
@@ -162,18 +213,68 @@ void main() {
         'https://img.redbullbragantino.com/foto.jpg',
       );
     });
+
+    testWidgets(
+      'Vila Nova: MESMO id do Goiás não pega a foto do Goiás, cai no número '
+      '(sem squadPhotos local, o Elenco do Vila só sabe usar photo_url)',
+      (tester) async {
+        await useClub(vilaNovaClubConfig);
+        await tester.pumpWidget(
+          wrap(
+            const SquadAvatar(
+              memberId: 'tadeu',
+              photoUrl: null,
+              shirtNumber: 9,
+              size: 48,
+            ),
+          ),
+        );
+
+        expect(tester.takeException(), isNull);
+        expect(find.byType(Image), findsNothing);
+        expect(find.text('9'), findsOneWidget);
+      },
+    );
+
+    testWidgets('Vila Nova: elenco usa a photo_url AVIF do próprio banco', (
+      tester,
+    ) async {
+      await useClub(vilaNovaClubConfig);
+      await tester.pumpWidget(
+        wrap(
+          const SquadAvatar(
+            memberId: 'dalberson',
+            photoUrl:
+                'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif',
+            shirtNumber: 1,
+            size: 48,
+          ),
+        ),
+      );
+
+      expect(tester.takeException(), isNull);
+      final image = tester.widget<Image>(find.byType(Image));
+      expect(
+        (image.image as NetworkImage).url,
+        'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif',
+      );
+    });
   });
 
   group('config do clube ativo', () {
-    test('Bragantino e Goiás têm club_id distintos e não vazios', () {
+    test('os 3 clubes têm club_id distintos e não vazios', () {
       final goias = goiasClubConfig.identity.canonicalClubId;
       final bragantino = bragantinoClubConfig.identity.canonicalClubId;
+      final vilanova = vilaNovaClubConfig.identity.canonicalClubId;
       expect(goias, isNotEmpty);
       expect(bragantino, isNotEmpty);
+      expect(vilanova, isNotEmpty);
       expect(bragantino, isNot(goias));
+      expect(vilanova, isNot(goias));
+      expect(vilanova, isNot(bragantino));
     });
 
-    test('grupos de posição do catálogo canônico são os mesmos pros dois', () {
+    test('grupos de posição do catálogo canônico são os mesmos pros 3', () {
       // O catálogo é único no projeto — nenhum clube pode ter nomenclatura
       // paralela. Se alguém criar um grupo só pro Bragantino, este teste
       // não pega sozinho, mas o seed SQL é validado contra esta lista.
