@@ -33,7 +33,7 @@ Vamos continuar o **flavor Vila Nova** do app **fan-hub** (`C:\Users\lucas\Andro
 
 **Como eu gosto de trabalhar:**
 - modo automático, sem pedir aprovação a cada passo;
-- commit no fim de cada fase, e me diga o que falta antes do push;
+- commit no fim de cada fase, mas **push só em última instância**: acumule os commits e suba uma vez só, no fim, com o meu aval (cada push gasta minutos de build do Cloudflare nos Workers do Goiás e do Bragantino). O Worker do Vila é publicado pela CLI e não gasta build;
 - nunca invente dado: só `READY` entra no app;
 - o Vila é rival do Goiás, então zero reaproveitamento de dado, asset ou texto dele;
 - antes de ligar qualquer jogo da Arena, reauditar o dado real (contagens, elegibilidade), sem confiar só no `status: READY`;
