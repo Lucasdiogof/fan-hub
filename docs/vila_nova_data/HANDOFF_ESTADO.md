@@ -30,7 +30,7 @@ Regras que não mudam:
 | F1 config | ✅ `lib/core/club/vilanova_club_config.dart` no `clubRegistry`; OneFootball 2865 / `vila-nova-2865` / `brasileirao-serie-b-superbet-119` (confirmado) | `f885cd8` · `58_*` |
 | F2 marca | ✅ cor oficial **#C33D41** (manual, pág. 9); escudo, selo, login e ícones gerados do PDF vetorial por `tooling/vilanova_brand/build_brand_assets.py` | `f885cd8` · `58_*` |
 | F3 /clube | ✅ `hasClubContent` ligado: história (7), linha do tempo (30), 31 títulos, 3 vices da Copa Verde, 9 ídolos. História/timeline **geradas** por `tooling/vilanova_content/generate_institutional_dart.mjs` (corrigir no JSON e regenerar + `dart format`) | `7b66b3e` · `59_*` |
-| Seeds SQL | ✅ 16 arquivos `supabase/vilanova_*.sql`, testados em Postgres real (PGlite): Passaporte 2020–2026 (408 jogos, 67 estádios), diretoria, transparência, elenco, quiz, escalações, carreira, Manto | `777fded` · `60_*` (runbook) |
+| Seeds SQL | ✅ 17 arquivos `supabase/vilanova_*.sql`, testados em Postgres real (PGlite): Passaporte 2019–2026 (468 jogos, 78 estádios), diretoria, transparência, elenco, quiz, escalações, carreira, Manto | `777fded` + commit do lote 2019 · `60_*` (runbook) |
 | F4 → F9 | ⏳ dependem do **projeto Supabase do Vila** | — |
 
 Estado atual do app: o flavor **compila** (APK debug e build web ok), mas **não sobe**, porque `supabaseUrl` é null e `SupabaseConfig` falha alto de propósito, pra nunca cair no banco de outro clube.
@@ -39,8 +39,8 @@ Verificação da última rodada: `flutter test` com 1540 ok; `flutter analyze` s
 
 ## 3. Próximos passos, em ordem
 
-1. **[USUÁRIO] Criar o projeto Supabase do Vila Nova** na organização do Fan Hub. Passar URL + chave publishable, ou definir o token na janela dele: a CLI daqui só enxerga os projetos da Aura e da La Pelve.
-2. **Aplicar o runbook** `docs/multiclub/60_vilanova_seeds_runbook.md`: migrations → `infra/supabase/clubs/vilanova/bootstrap.sql` → seeds na ordem. Preencher `supabaseUrl`/`supabasePublishableKey`/`supabaseRedirectUrl` na config. Configurar Auth URL do projeto (redirect).
+1. ✅ **[USUÁRIO] Projeto Supabase do Vila Nova criado** em 2026-09-29 (`vkybbrfvmexevakknlsi`, registrado em `tooling/multiclub/supabase_projects_registry.json`). Falta só o usuário mandar a **connection string** (Settings → botão "Connect" → aba URI → Session pooler, com a senha) e a **publishable key** (Settings → API Keys) — aí o desenvolvimento aplica tudo via `VILANOVA_DB_URL` (mesmo padrão de `GOIAS_DB_URL`/`BRAGANTINO_DB_URL`, nunca precisou do login CLI de org que só enxerga Aura/La Pelve).
+2. **Aplicar o runbook** `docs/multiclub/60_vilanova_seeds_runbook.md`: migrations (`db-push.mjs vilanova --yes`) → `infra/supabase/clubs/vilanova/bootstrap.sql` → seeds na ordem, via `tooling/multiclub/run-sql-file.mjs vilanova <arquivo> --yes` (novo script, roda arquivo inteiro com múltiplos statements). Preencher `supabaseUrl`/`supabasePublishableKey`/`supabaseRedirectUrl` na config. Configurar Auth URL do projeto (redirect).
 3. **F4**: diretoria, transparência e elenco já no banco; conferir as telas.
 4. **F5 Arena**, uma subfase por jogo, ligando em `enabledArenaGames`:
    - quiz, escalação e Manto estão prontos;
@@ -69,7 +69,7 @@ Verificação da última rodada: `flutter test` com 1540 ok; `flutter analyze` s
 | Carreira 30 | READY, mas **todas do elenco atual** |
 | Perfis jogador (10) / técnico (6) | ✅ convertidos pro motor real e calibrados (ver §2, linha "perfis de jogador/técnico"). O pacote de origem (`docs/vila_nova_data/arena/player_identity.json` / `tactical_identity.json`) continua com o schema de 8 dimensões em português — serve só de evidência, não é mais usado pelo app |
 | Sócio / Loja | REVIEW / parcial |
-| Passaporte | 2020–2025 CLOSED, 2026 PARTIAL (faltam R35–R38 + 2ª fonte). **1943–2019 não pesquisado; próximo lote = 2019** |
+| Passaporte | 2019–2025 CLOSED, 2026 PARTIAL (faltam R35–R38 + 2ª fonte). 2019 fechado em 2026-09-29 (v1.3: 60/60, 0 estádio UNKNOWN, 3 conflitos resolvidos). **1943–2018 não pesquisado; próximo lote = 2018** |
 
 Correções já feitas **no pacote** (com `editorial_note`):
 - 5 frases de bastidor na história e na timeline;
@@ -91,16 +91,16 @@ O motor e as perguntas são únicos para todos os clubes; cada clube só fornece
 ## 6. Mensagem pendente à pesquisa (se o usuário ainda não mandou)
 
 ```
-v1.2 aplicado — 2020 a 2025 ficaram excelentes (bati Série B de 2022, 2023, 2024 e 2025 com fontes externas). Ajustes:
+v1.2 e v1.3 aplicados — 2019 a 2025 ficaram excelentes (2019 fechado 60/60, 0 estádio UNKNOWN, 3 conflitos de estádio resolvidos com fonte forte — bom trabalho). Ajustes:
 
 1. 2025-03-13 (Copa do Brasil 2ª fase, 6–0): o adversário é Rio Branco-VN (Venda Nova do Imigrante-ES), não Rio Branco-ES. Corrija. Confira também o "Rio Branco-ES" da Copa Verde 2026.
 2. 2026: calendar_year dos 3 jogos vn_official_cdb_2026_f* está em string ("2026"); deixe número.
 3. Honors: registre em conflicts que a Wikipedia conta 17 Goianos contra 16 do site oficial (mantenha o oficial).
-4. Venues: fundi vn_venue_arena_nicnet em vn_venue_santa_cruz_ribeirao (Arena Nicnet é o naming rights do próprio Estádio Santa Cruz). Use o id vn_venue_santa_cruz_ribeirao daqui pra frente.
-5. Arena (pendente desde o v0.6): perfis com 21 jogadores e 12 técnicos (só nome, período, função e 4–6 evidências de ESTILO — não precisa de perguntas nem notas), 15 carreiras históricas no lugar de atuais, Túlio em REVIEW, ≥5 escalações anteriores a 2000 e ≥10 cartas do Manto com estreia antes de 2005.
+4. Venues: o venues.json do v1.3 trouxe de volta vn_venue_arena_nicnet como entrada separada. Ela já tinha sido fundida em vn_venue_santa_cruz_ribeirao (Arena Nicnet é o naming rights do próprio Estádio Santa Cruz) — removi de novo na aplicação, mas por favor pare de incluir vn_venue_arena_nicnet nas próximas entregas: use vn_venue_santa_cruz_ribeirao (com "Arena Nicnet" como alias) desde a origem.
+5. Arena (pendente desde o v0.6): perfis com 21 jogadores e 12 técnicos (só nome, período, função e 4–6 evidências de ESTILO — não precisa de perguntas nem notas), 15 carreiras históricas no lugar de atuais, Túlio em REVIEW, ≥5 escalações anteriores a 2000 e ≥10 cartas do Manto com estreia antes de 2005. (Os 10/6 perfis atuais já foram convertidos e calibrados no motor do app — a expansão pra 21/12 continua valendo, não é bloqueante.)
 6. Parceiros (`data/partners.json`): completar a lista de patrocinadores da temporada atual (2026). Hoje só tem FatalFans e Volt Sport. Falta pelo menos: o patrocinador MÁSTER atual (o contrato da GingaBet anunciado em 26/02/2025 era de 12 meses e não foi projetado além do prazo — confirme se ainda é ela ou se trocou), e uma auditoria uniforme por uniforme (manga, calção, patrocinador máster no peito, apoiadores/fornecedores menores) com foto/fonte de cada um. Pra cada patrocinador: `tier` (MASTER/OFFICIAL/SUPPLIER/…), `category`, `url`, `logo_source_url`, `since`, `placement` (onde aparece no uniforme) e fonte. Sem restrição editorial: pode incluir qualquer patrocinador real, incluindo a FatalFans (já aprovada).
 
-Próximo lote do Passaporte: 2019, depois seguindo para trás até 1943.
+Próximo lote do Passaporte: 2018, depois seguindo para trás até 1943.
 ```
 
 ## 7. Como auditar um ZIP novo (receita)

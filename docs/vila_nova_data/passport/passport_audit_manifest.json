@@ -916,15 +916,80 @@
     },
     {
       "year": 2019,
-      "expected_total": null,
-      "expected_total_source": null,
-      "found_total": 0,
-      "stadium_confirmed": 0,
+      "expected_total": 60,
+      "expected_total_source": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2019&grp=1",
+      "found_total": 60,
+      "stadium_confirmed": 60,
       "stadium_unknown": 0,
-      "by_competition": {},
-      "coverage_status": "NO_SOURCE",
-      "sources": [],
-      "notes": "Ainda não pesquisado nesta primeira entrega. NO_SOURCE significa 'sem fonte auditada neste lote', não ausência histórica de fontes."
+      "by_competition": {
+        "GOIANO": 16,
+        "COPA_DO_BRASIL": 6,
+        "BRASILEIRO_B": 38
+      },
+      "coverage_status": "CLOSED",
+      "sources": [
+        "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2019&grp=1",
+        "https://rsssfbrasil.com.chancedegol.com.br/tablesfq/go2019.htm",
+        "https://www.rsssfbrasil.com.chancedegol.com.br/tablesae/cbr2019.htm",
+        "https://esportegoiano.com.br/tabela-do-campeonato-goiano-de-futebol-2019/",
+        "https://app.globoesporte.globo.com/futebol/publico-no-brasil/2019/campeonato-goiano/",
+        "https://app.globoesporte.globo.com/futebol/publico-no-brasil/2019/copa-do-brasil/",
+        "https://www.superesportes.com.br/campeonatos/2019/brasileirao/serie-b/",
+        "https://ge.globo.com/go/futebol/brasileirao-serie-b/noticia/atletico-go-x-vila-nova-tudo-o-que-voce-precisa-saber-sobre-o-classico-da-rodada-9-da-serie-b.ghtml",
+        "https://www.tjdgo.com.br/wp-content/uploads/2019/04/ATLETICO-C.-G.-X-VILA-NOVA-F.-C.-07.04.2019.pdf",
+        "https://www.sofascore.com/pt/football/match/itumbiara-ec-vila-nova-fc/wPszOi"
+      ],
+      "conflicts": [
+        {
+          "match_id": "vn_ge_go2019_r11",
+          "field": "stadium",
+          "values": [
+            {
+              "value": "Estádio Onésio Brasileiro Alvarenga",
+              "source": "ge / Esporte Goiano"
+            },
+            {
+              "value": "Estádio Serra Dourada",
+              "source": "Sofascore"
+            }
+          ],
+          "resolution": "Usado Estádio Onésio Brasileiro Alvarenga (OBA), confirmado nas bases match-specific de ge e Esporte Goiano; divergência do Sofascore registrada.",
+          "status": "RESOLVED"
+        },
+        {
+          "match_id": "vn_fgf_go2019_sf2",
+          "field": "stadium",
+          "values": [
+            {
+              "value": "Estádio Olímpico Pedro Ludovico Teixeira",
+              "source": "Esporte Goiano — tabela 2019"
+            },
+            {
+              "value": "Estádio Antônio Accioly",
+              "source": "súmula FGF / ge"
+            }
+          ],
+          "resolution": "Usado Estádio Antônio Accioly, confirmado pela súmula da FGF e por cobertura específica do ge.",
+          "status": "RESOLVED"
+        },
+        {
+          "match_id": "vn_ge_sb2019_r09",
+          "field": "stadium",
+          "values": [
+            {
+              "value": "Estádio Serra Dourada",
+              "source": "Superesportes — tabela Série B 2019"
+            },
+            {
+              "value": "Estádio Antônio Accioly",
+              "source": "ge / Futebol de Goyaz"
+            }
+          ],
+          "resolution": "Usado Estádio Antônio Accioly, confirmado por cobertura específica do ge e base histórica de confronto; divergência da tabela do Superesportes registrada.",
+          "status": "RESOLVED"
+        }
+      ],
+      "notes": "Cobertura fechada em 60/60 no ano civil. Zerozero reconcilia 16 Goiano + 6 Copa do Brasil + 38 Série B. Estádios: 60/60 MATCH_SPECIFIC. Três divergências de estádio foram registradas e resolvidas com fonte match-specific mais forte; nenhuma partida ficou UNKNOWN."
     },
     {
       "year": 2020,

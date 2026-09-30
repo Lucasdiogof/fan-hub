@@ -2009,6 +2009,155 @@
         "pênaltis",
         "estádio"
       ]
+    },
+    {
+      "id": "vn_src_zerozero_2019",
+      "name": "Zerozero — jogos Vila Nova 2019",
+      "url": "https://www.zerozero.pt/equipa/vila-nova/3532/jogos?ano=2019&grp=1",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "passaporte 2019",
+        "total por competição",
+        "reconciliação 60 jogos"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_go2019",
+      "name": "RSSSF Brasil — Goiás 2019",
+      "url": "https://rsssfbrasil.com.chancedegol.com.br/tablesfq/go2019.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2019",
+        "resultados",
+        "mata-mata"
+      ]
+    },
+    {
+      "id": "vn_src_rsssf_cdb2019",
+      "name": "RSSSF Brasil — Copa do Brasil 2019",
+      "url": "https://www.rsssfbrasil.com.chancedegol.com.br/tablesae/cbr2019.htm",
+      "type": "HISTORICAL_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Copa do Brasil 2019",
+        "resultados",
+        "pênaltis"
+      ]
+    },
+    {
+      "id": "vn_src_esporte_goiano_go2019",
+      "name": "Esporte Goiano — tabela do Campeonato Goiano 2019",
+      "url": "https://esportegoiano.com.br/tabela-do-campeonato-goiano-de-futebol-2019/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2019",
+        "datas",
+        "horários",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_ge_publico_go2019",
+      "name": "ge — público do Campeonato Goiano 2019",
+      "url": "https://app.globoesporte.globo.com/futebol/publico-no-brasil/2019/campeonato-goiano/",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Campeonato Goiano 2019",
+        "partidas",
+        "horários",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_ge_publico_cdb2019",
+      "name": "ge — público da Copa do Brasil 2019",
+      "url": "https://app.globoesporte.globo.com/futebol/publico-no-brasil/2019/copa-do-brasil/",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Copa do Brasil 2019",
+        "partidas",
+        "horários",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_superesportes_sb2019",
+      "name": "Superesportes — Série B 2019",
+      "url": "https://www.superesportes.com.br/campeonatos/2019/brasileirao/serie-b/",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Série B 2019",
+        "38 rodadas",
+        "datas",
+        "horários",
+        "estádios"
+      ]
+    },
+    {
+      "id": "vn_src_ge_atletico_vila_sb2019_r9",
+      "name": "ge — Atlético-GO x Vila Nova, Série B 2019 R9",
+      "url": "https://ge.globo.com/go/futebol/brasileirao-serie-b/noticia/atletico-go-x-vila-nova-tudo-o-que-voce-precisa-saber-sobre-o-classico-da-rodada-9-da-serie-b.ghtml",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Série B 2019 R9",
+        "Antônio Accioly",
+        "conflito de estádio"
+      ]
+    },
+    {
+      "id": "vn_src_fgf_sumula_atletico_vila_go2019_sf2",
+      "name": "FGF — súmula Atlético x Vila Nova, semifinal Goiano 2019",
+      "url": "https://www.tjdgo.com.br/wp-content/uploads/2019/04/ATLETICO-C.-G.-X-VILA-NOVA-F.-C.-07.04.2019.pdf",
+      "type": "FEDERATION_DOCUMENT",
+      "authority": "PRIMARY_REGIONAL",
+      "covers": [
+        "Campeonato Goiano 2019 semifinal volta",
+        "Antônio Accioly",
+        "placar",
+        "horário"
+      ]
+    },
+    {
+      "id": "vn_src_sofascore_vila_itumbiara_go2019",
+      "name": "Sofascore — Vila Nova x Itumbiara 16/03/2019",
+      "url": "https://www.sofascore.com/pt/football/match/itumbiara-ec-vila-nova-fc/wPszOi",
+      "type": "SPORTS_DATABASE",
+      "authority": "SECONDARY",
+      "covers": [
+        "Campeonato Goiano 2019 R11",
+        "conflito de estádio"
+      ]
+    },
+    {
+      "id": "vn_src_esporte_goiano_urt_vila_cdb2019",
+      "name": "Esporte Goiano — URT x Vila Nova, Copa do Brasil 2019",
+      "url": "https://esportegoiano.com.br/27-02-19-urt-vila/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Copa do Brasil 2019 2ª fase",
+        "Zama Maciel",
+        "pênaltis 4–5"
+      ]
+    },
+    {
+      "id": "vn_src_esporte_goiano_vila_juventude_2019",
+      "name": "Esporte Goiano — histórico Vila Nova x Juventude com Copa do Brasil 2019",
+      "url": "https://esportegoiano.com.br/vila-nova-tenta-romper-historico-empates-juventude/",
+      "type": "SPORTS_PRESS",
+      "authority": "SECONDARY_HIGH",
+      "covers": [
+        "Copa do Brasil 2019 4ª fase",
+        "Serra Dourada",
+        "pênaltis 3–4"
+      ]
     }
   ]
 }

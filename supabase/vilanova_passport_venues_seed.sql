@@ -4,7 +4,7 @@
 --
 -- Rode no projeto Supabase do VILA NOVA — NUNCA no do Goiás nem no do Bragantino.
 -- Ordem: vilanova_passport_infra.sql -> ESTE -> vilanova_passport_matches_<ano>_seed.sql.
--- Idempotente. 67 estádios (só os usados por alguma partida do pacote).
+-- Idempotente. 78 estádios (só os usados por alguma partida do pacote).
 
 do $$
 begin
@@ -83,7 +83,18 @@ values
   ('vn_venue_arruda', 'Estádio José do Rego Maciel', 'Arruda', 'Recife', 'PE', 'BR', null, null, array['Estádio do Arruda']),
   ('vn_venue_frei_epifanio', 'Estádio Frei Epifânio d''Abadia', 'Frei Epifânio', 'Imperatriz', 'MA', 'BR', null, null, '{}'::text[]),
   ('vn_venue_amigao', 'Estádio Governador Ernani Sátyro', 'Amigão', 'Campina Grande', 'PB', 'BR', null, null, array['Amigão']),
-  ('vn_venue_augusto_bauer', 'Estádio Augusto Bauer', 'Augusto Bauer', 'Brusque', 'SC', 'BR', null, null, '{}'::text[])
+  ('vn_venue_augusto_bauer', 'Estádio Augusto Bauer', 'Augusto Bauer', 'Brusque', 'SC', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_genervino_fonseca', 'Estádio Genervino da Fonseca', 'Genervino da Fonseca', 'Catalão', 'GO', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_jk_itumbiara', 'Estádio Municipal Juscelino Kubitschek de Oliveira', 'Estádio JK', 'Itumbiara', 'GO', 'BR', null, null, array['Juscelino Kubitschek', 'JK (Itumbiara)', 'Estádio JK']),
+  ('vn_venue_anibal_toledo', 'Estádio Aníbal Batista de Toledo', 'Aníbal Batista de Toledo', 'Aparecida de Goiânia', 'GO', 'BR', null, null, array['Aníbal Toledo', 'Annibal Batista de Toledo']),
+  ('vn_venue_ismael_benigno', 'Estádio Ismael Benigno', 'Colina', 'Manaus', 'AM', 'BR', null, null, array['Estádio da Colina', 'Colina']),
+  ('vn_venue_zama_maciel', 'Estádio Zama Maciel', 'Zama Maciel', 'Patos de Minas', 'MG', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_bento_mendes_freitas', 'Estádio Bento Mendes de Freitas', 'Bento Freitas', 'Pelotas', 'RS', 'BR', null, null, array['Estádio Bento Freitas', 'Bento de Freitas', 'Bento Freitas']),
+  ('vn_venue_durival_britto', 'Estádio Durival Britto e Silva', 'Vila Capanema', 'Curitiba', 'PR', 'BR', null, null, array['Durival de Britto', 'Durival Britto', 'Estádio Vila Capanema']),
+  ('vn_venue_arena_barueri', 'Arena Barueri', 'Arena Barueri', 'Barueri', 'SP', 'BR', null, null, '{}'::text[]),
+  ('vn_venue_walter_ribeiro', 'Estádio Municipal Walter Ribeiro', 'Walter Ribeiro', 'Sorocaba', 'SP', 'BR', null, null, array['Estádio Walter Ribeiro', 'Walter Ribeiro', 'CIC']),
+  ('vn_venue_nabi_abi_chedid', 'Estádio Nabi Abi Chedid', 'Nabi Abi Chedid', 'Bragança Paulista', 'SP', 'BR', null, null, array['Nabi Abi Chedid']),
+  ('vn_venue_orlando_scarpelli', 'Estádio Orlando Scarpelli', 'Orlando Scarpelli', 'Florianópolis', 'SC', 'BR', null, null, '{}'::text[])
 on conflict (id) do update set
   canonical_name = excluded.canonical_name, display_name = excluded.display_name,
   city = excluded.city, state = excluded.state, country = excluded.country,

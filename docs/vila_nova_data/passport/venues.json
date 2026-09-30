@@ -871,6 +871,162 @@
       "latitude": null,
       "longitude": null,
       "status": "READY"
+    },
+    {
+      "id": "vn_venue_genervino_fonseca",
+      "canonical_name": "Estádio Genervino da Fonseca",
+      "display_name": "Genervino da Fonseca",
+      "aliases": [],
+      "city": "Catalão",
+      "state": "GO",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_jk_itumbiara",
+      "canonical_name": "Estádio Municipal Juscelino Kubitschek de Oliveira",
+      "display_name": "Estádio JK",
+      "aliases": [
+        "Juscelino Kubitschek",
+        "JK (Itumbiara)",
+        "Estádio JK"
+      ],
+      "city": "Itumbiara",
+      "state": "GO",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_anibal_toledo",
+      "canonical_name": "Estádio Aníbal Batista de Toledo",
+      "display_name": "Aníbal Batista de Toledo",
+      "aliases": [
+        "Aníbal Toledo",
+        "Annibal Batista de Toledo"
+      ],
+      "city": "Aparecida de Goiânia",
+      "state": "GO",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_ismael_benigno",
+      "canonical_name": "Estádio Ismael Benigno",
+      "display_name": "Colina",
+      "aliases": [
+        "Estádio da Colina",
+        "Colina"
+      ],
+      "city": "Manaus",
+      "state": "AM",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_zama_maciel",
+      "canonical_name": "Estádio Zama Maciel",
+      "display_name": "Zama Maciel",
+      "aliases": [],
+      "city": "Patos de Minas",
+      "state": "MG",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_bento_mendes_freitas",
+      "canonical_name": "Estádio Bento Mendes de Freitas",
+      "display_name": "Bento Freitas",
+      "aliases": [
+        "Estádio Bento Freitas",
+        "Bento de Freitas",
+        "Bento Freitas"
+      ],
+      "city": "Pelotas",
+      "state": "RS",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_durival_britto",
+      "canonical_name": "Estádio Durival Britto e Silva",
+      "display_name": "Vila Capanema",
+      "aliases": [
+        "Durival de Britto",
+        "Durival Britto",
+        "Estádio Vila Capanema"
+      ],
+      "city": "Curitiba",
+      "state": "PR",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_arena_barueri",
+      "canonical_name": "Arena Barueri",
+      "display_name": "Arena Barueri",
+      "aliases": [],
+      "city": "Barueri",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_walter_ribeiro",
+      "canonical_name": "Estádio Municipal Walter Ribeiro",
+      "display_name": "Walter Ribeiro",
+      "aliases": [
+        "Estádio Walter Ribeiro",
+        "Walter Ribeiro",
+        "CIC"
+      ],
+      "city": "Sorocaba",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_nabi_abi_chedid",
+      "canonical_name": "Estádio Nabi Abi Chedid",
+      "display_name": "Nabi Abi Chedid",
+      "aliases": [
+        "Nabi Abi Chedid"
+      ],
+      "city": "Bragança Paulista",
+      "state": "SP",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
+    },
+    {
+      "id": "vn_venue_orlando_scarpelli",
+      "canonical_name": "Estádio Orlando Scarpelli",
+      "display_name": "Orlando Scarpelli",
+      "aliases": [],
+      "city": "Florianópolis",
+      "state": "SC",
+      "country": "BR",
+      "latitude": null,
+      "longitude": null,
+      "status": "READY"
     }
   ]
 }
