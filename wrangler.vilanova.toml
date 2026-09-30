@@ -33,10 +33,18 @@ PRIMARY_COMPETITION_DISPLAY_NAME = "Brasileirão Série B"
 
 CACHE_VERSION = "1"
 
-# Instagram: SEM cron por enquanto. A conta Cloudflare (plano Free) tem
-# limite de 5 cron triggers e Goiás (3) + Bragantino (2) já usam os 5.
-# `hasSocial` fica false no app até isso ser resolvido (sem Task Apify
-# dedicada nem APIFY_TOKEN neste deploy).
+# Instagram — Apify -> KV, mesmo pipeline de Goiás/Bragantino, SEM cron: a
+# conta Cloudflare (plano Free) tem limite de 5 cron triggers e Goiás (3) +
+# Bragantino (2) já usam os 5. Quem agenda é o GitHub Action
+# `sync_x_posts.yml`, chamando `POST /api/social/instagram/sync`
+# (secret INSTAGRAM_SYNC_KEY) 1x/dia.
+#
+# Task DEDICADA do Vila "Vila Instagram Latest" (Actor Instagram Post
+# Scraper, perfil `vilanovafc`), criada pelo usuário em 2026-09-30 e
+# conferida: 5 posts do @vilanovafc (1 colaborativo, coberto pelo override
+# de autor em `club_media_config.ts`). Task ID não é secret. APIFY_TOKEN é
+# secret (`wrangler secret put APIFY_TOKEN --config wrangler.vilanova.toml`).
+APIFY_INSTAGRAM_TASK_ID = "pVI62hHh4XoPwmgJl"
 
 # MESMO namespace físico do Goiás/Bragantino, de propósito — a isolação é
 # pela CHAVE (`instagram:<code>:latest`, ver `instagramKvKey`).
