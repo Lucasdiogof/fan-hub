@@ -4,11 +4,16 @@ import 'package:goias_app/core/club/club_branding.dart';
 import 'package:goias_app/core/club/club_capabilities.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/club_identity.dart';
+import 'package:goias_app/core/club/club_institutional_content.dart';
 import 'package:goias_app/core/club/club_integrations.dart';
 import 'package:goias_app/core/club/club_product_naming.dart';
 import 'package:goias_app/core/club/commerce_mode.dart';
 import 'package:goias_app/core/club/membership_program_config.dart';
 import 'package:goias_app/core/theme/app_colors.dart';
+import 'package:goias_app/features/club/data/vilanova_history_data.dart';
+import 'package:goias_app/features/club/data/vilanova_idols_data.dart';
+import 'package:goias_app/features/club/data/vilanova_timeline_data.dart';
+import 'package:goias_app/features/club/data/vilanova_titles_data.dart';
 import 'package:goias_app/features/membership/domain/entities/regulation_version.dart';
 import 'package:goias_app/features/passport/data/vilanova_passport_content.dart';
 
@@ -19,9 +24,9 @@ import 'package:goias_app/features/passport/data/vilanova_passport_content.dart'
 // estado em `HANDOFF_ESTADO.md`). NUNCA usa dado/asset do Goiás (rival local)
 // nem do Bragantino como fallback.
 //
-// TODAS as capabilities começam FALSE e `enabledArenaGames` vazio: cada área
-// só liga na sua fase, depois do dado validado (F3 conteúdo, F5 Arena, F6
-// Passaporte, F7 Sócio/Loja/Ingressos, F8 Jogos/Notícias/Redes).
+// Capabilities ligam fase a fase, só depois do dado validado: F3 ligou
+// `hasClubContent`; faltam F4 diretoria/elenco, F5 Arena, F6 Passaporte, F7
+// Sócio/Loja/Ingressos, F8 Jogos/Notícias/Redes.
 //
 // DATA_GAPs reais (null de propósito, nunca inventados):
 //   * supabaseUrl/supabasePublishableKey/supabaseRedirectUrl — o projeto
@@ -139,7 +144,11 @@ final vilaNovaClubConfig = ClubConfig(
     hasPassport: false,
     hasNews: false,
     hasSocial: false,
-    hasClubContent: false,
+    // F3: história, linha do tempo, títulos e ídolos estáticos (pacote
+    // v1.2). Diretoria/transparência (Supabase) entram na F4.
+    hasClubContent: true,
+    // Lista de patrocinadores incompleta no pacote (máster não confirmado) —
+    // fica desligado até a lista fechar e passar por decisão editorial.
     hasPartners: false,
     hasMatches: false,
     enabledArenaGames: {},
@@ -171,5 +180,12 @@ final vilaNovaClubConfig = ClubConfig(
     regulationSections: const [],
     sourceLabel: 'Programa Sócio Tigrão ainda não integrado ao app.',
     sourceUpdatedAt: DateTime(2026, 9, 29),
+  ),
+  institutionalContent: const ClubInstitutionalContent(
+    history: VilaNovaHistoryData.sections,
+    timeline: VilaNovaTimelineData.events,
+    titles: VilaNovaTitlesData.groups,
+    historicalCampaigns: VilaNovaTitlesData.historicalCampaigns,
+    idols: VilaNovaIdolsData.idols,
   ),
 );

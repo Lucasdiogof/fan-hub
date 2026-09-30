@@ -45,10 +45,11 @@
     {
       "year": 1961,
       "title": "Primeiro grande ciclo de títulos",
-      "description": "O Vila conquistou seu primeiro Campeonato Goiano e outras taças listadas no acervo oficial.",
+      "description": "O Vila conquistou seu primeiro Campeonato Goiano e a Taça Cidade de Goiânia.",
       "source_name": "Vila Nova FC / fonte indicada",
       "source_url": "https://www.vilanovafc.com.br/titulos",
-      "status": "READY"
+      "status": "READY",
+      "editorial_note": "2026-09-29 (F3): redação ajustada sem mudar o fato."
     },
     {
       "year": 1962,
@@ -77,10 +78,11 @@
     {
       "year": 1970,
       "title": "Quadrangular Internacional Joaquim Coelho",
-      "description": "O acervo oficial lista o Vila como vencedor do torneio.",
+      "description": "O Vila venceu o Quadrangular Internacional Joaquim Coelho.",
       "source_name": "Vila Nova FC / fonte indicada",
       "source_url": "https://www.vilanovafc.com.br/titulos",
-      "status": "READY"
+      "status": "READY",
+      "editorial_note": "2026-09-29 (F3): redação ajustada sem mudar o fato."
     },
     {
       "year": 1973,
@@ -165,10 +167,11 @@
     {
       "year": 2000,
       "title": "Campeão da Segunda Divisão Goiana",
-      "description": "O acervo oficial registra o título de 2000.",
+      "description": "O Vila venceu a Segunda Divisão Goiana.",
       "source_name": "Vila Nova FC / fonte indicada",
       "source_url": "https://www.vilanovafc.com.br/titulos",
-      "status": "READY"
+      "status": "READY",
+      "editorial_note": "2026-09-29 (F3): redação ajustada sem mudar o fato."
     },
     {
       "year": 2001,

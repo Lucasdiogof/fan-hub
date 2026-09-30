@@ -1,7 +1,7 @@
-// F1/F2 do flavor Vila Nova. Trava que nome/escudo/cores/ícones/integrações
-// do Vila nunca coincidem com os do Goiás (rival local) nem com os do
-// Bragantino, e que o Vila entra com TODAS as capabilities desligadas até
-// cada fase validar o próprio dado.
+// Flavor Vila Nova (F1–F3). Trava que nome/escudo/cores/ícones/integrações e
+// o conteúdo institucional do Vila nunca coincidem com os do Goiás (rival
+// local) nem com os do Bragantino, e que só as capabilities já validadas
+// estão ligadas.
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -9,6 +9,10 @@ import 'package:goias_app/core/club/bragantino_club_config.dart';
 import 'package:goias_app/core/club/club_config.dart';
 import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/club/vilanova_club_config.dart';
+import 'package:goias_app/features/club/data/vilanova_history_data.dart';
+import 'package:goias_app/features/club/data/vilanova_idols_data.dart';
+import 'package:goias_app/features/club/data/vilanova_timeline_data.dart';
+import 'package:goias_app/features/club/data/vilanova_titles_data.dart';
 
 void main() {
   final others = <String, ClubConfig>{
@@ -101,9 +105,10 @@ void main() {
     });
   });
 
-  group('F1 — Vila Nova entra com tudo desligado', () {
-    test('todas as capabilities false e nenhum jogo da Arena', () {
+  group('Capabilities — só o que já foi validado está ligado', () {
+    test('F3 ligou só hasClubContent; o resto segue desligado', () {
       final c = v.capabilities;
+      expect(c.hasClubContent, isTrue);
       expect([
         c.hasMembership,
         c.hasStore,
@@ -112,7 +117,6 @@ void main() {
         c.hasPassport,
         c.hasNews,
         c.hasSocial,
-        c.hasClubContent,
         c.hasPartners,
         c.hasMatches,
       ], everyElement(isFalse));
@@ -172,4 +176,88 @@ void main() {
       });
     },
   );
+
+  group('F3 — conteúdo institucional do Vila', () {
+    final content = v.institutionalContent;
+
+    test('aponta pras classes estáticas do próprio Vila', () {
+      expect(content.history, same(VilaNovaHistoryData.sections));
+      expect(content.timeline, same(VilaNovaTimelineData.events));
+      expect(content.titles, same(VilaNovaTitlesData.groups));
+      expect(
+        content.historicalCampaigns,
+        same(VilaNovaTitlesData.historicalCampaigns),
+      );
+      expect(content.idols, same(VilaNovaIdolsData.idols));
+    });
+
+    test('parceiros e músicas vazios (lista incompleta / só metadados)', () {
+      expect(content.partners, isEmpty);
+      expect(content.songs, isEmpty);
+    });
+
+    test('16 Goianos e 3 Séries C, como no site oficial', () {
+      int count(String name) =>
+          content.titles.firstWhere((g) => g.competitionName == name).count;
+      expect(count('Campeonato Goiano'), 16);
+      expect(count('Campeonato Brasileiro Série C'), 3);
+    });
+
+    test('vice nunca é título: Copa Verde só em historicalCampaigns', () {
+      expect(
+        content.titles.map((g) => g.competitionName),
+        isNot(contains(contains('Copa Verde'))),
+      );
+      expect(content.historicalCampaigns.map((c) => c.year), [
+        2021,
+        2022,
+        2024,
+      ]);
+    });
+
+    test('Túlio (números em conflito) nunca é publicado', () {
+      expect(
+        content.publishedIdols.map((i) => i.name),
+        isNot(contains('Túlio Maravilha')),
+      );
+      expect(content.publishedIdols, hasLength(9));
+    });
+
+    test('nenhum texto institucional carrega identidade de outro clube nem '
+        'nota interna de pesquisa', () {
+      final texts = [
+        for (final s in content.history) ...[s.title, ...s.paragraphs],
+        for (final e in content.timeline) ...[e.title, e.description ?? ''],
+        for (final i in content.publishedIdols) i.description,
+      ];
+      for (final text in texts) {
+        for (final leaked in [
+          'Esmeraldin',
+          'Verdão',
+          'Serrinha',
+          'Bragantino',
+          'Massa Bruta',
+          'acervo',
+          'snapshot',
+          'lote',
+          'REVIEW',
+          'listad',
+        ]) {
+          expect(
+            text.toLowerCase(),
+            isNot(contains(leaked.toLowerCase())),
+            reason: '"$text" contém "$leaked"',
+          );
+        }
+      }
+    });
+
+    test('linha do tempo em ordem cronológica e sempre com fonte', () {
+      final years = content.timeline.map((e) => e.year).toList();
+      expect(years, [...years]..sort());
+      for (final e in content.timeline) {
+        expect(e.sourceUrl, startsWith('https://'), reason: e.title);
+      }
+    });
+  });
 }
