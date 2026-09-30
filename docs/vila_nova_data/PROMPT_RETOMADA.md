@@ -9,18 +9,18 @@ Vamos continuar o **flavor Vila Nova** do app **fan-hub** (`C:\Users\lucas\Andro
 **Antes de qualquer coisa, leia na íntegra:**
 1. `fan-hub/docs/vila_nova_data/HANDOFF_ESTADO.md`: estado completo, o que foi feito, próximos passos em ordem, decisões pendentes, receita de auditoria e armadilhas.
 2. `fan-hub/docs/multiclub/60_vilanova_seeds_runbook.md`: como o banco do Vila foi aplicado (e como aplicar seeds novos).
-3. `git log --oneline -10` no fan-hub, pra confirmar que o local está em `bff9886` ou depois. **O local está 7+ commits à frente de `origin/main` (`a80e03a`), sem push.** Confirme com o usuário antes de subir.
+3. `git log --oneline -10` no fan-hub, pra confirmar que o local está em `804e3eb` ou depois. **Tudo foi pushado em 2026-09-30**; para os próximos pushes, confirme com o usuário antes de subir.
 
 **Resumo do ponto em que paramos (2026-09-30):**
 - **No ar em `origin/main`:** F0–F7. Infraestrutura, config, marca (#C33D41), `/clube`, Supabase real (`vkybbrfvmexevakknlsi`, 468 partidas / 78 venues), F4 (diretoria/transparência/elenco), F5 (Arena com os 6 jogos), F6 (Passaporte) e F7 (Sócio Tigrão, 4 planos reais anuais, checkout externo). A correção do vazamento de Ingressos/Loja do Goiás também já subiu: o Bragantino voltou para `hasTickets: false`.
-- **Commitado localmente, SEM PUSH:**
+- **Pushado em 2026-09-30 (antes era local):**
   - 31 fotos reais do elenco/Manto (hotlink AVIF do site oficial). O seed já está aplicado no banco real e `guess_player` está ligado;
   - cores: sucesso = dourado (o Vila nunca usa verde), erro mais vivo (`0xFFD7263D`), com teste de regressão;
   - marca d'água de estádio vermelha no card "Arena Vila Nova" da Home (`tooling/vilanova_brand/build_arena_stadium.py`);
   - handoff atualizado com o teste ao vivo no emulador e o achado do template de e-mail.
 - **Testado ao vivo pelo usuário no emulador Android:** login, Home, Arena e Sócio funcionando. "Sem conexão" na Home é esperado: `hasMatches: false` até o F8.
 - **O que falta, em ordem:**
-  1. push dos commits locais (com o aval do usuário);
+  1. conferir se o deploy Cloudflare do push de 2026-09-30 subiu (o gatilho Git→Cloudflare já falhou antes);
   2. confirmar num device que as fotos AVIF do Elenco/Manto renderizam (ainda ninguém viu);
   3. F8: Worker `wrangler.vilanova.toml` (jogos, notícias, Instagram), `supabaseRedirectUrl` e Auth Site URL no dashboard;
   4. template de e-mail "Confirm signup" do Supabase do Vila: copiar o de Goiás/Bragantino (`{{ .Token }}`, código de 6 dígitos) antes de reativar a confirmação de e-mail. Hoje "Confirm email" está desligado;
@@ -41,7 +41,6 @@ Vamos continuar o **flavor Vila Nova** do app **fan-hub** (`C:\Users\lucas\Andro
 - mantenha `HANDOFF_ESTADO.md` atualizado a cada entrega, e atualize o hash do commit no topo depois de cada commit.
 
 **O que eu quero agora:** [escolha e apague as outras]
-- (a) dar push dos commits locais
 - (b) auditar o ZIP novo da pesquisa externa: `C:\Users\lucas\OneDrive\Desktop\<nome>.zip`
 - (c) começar o F8 (Worker + Auth redirect)
 - (d) F9: QA de isolamento e revisão visual
