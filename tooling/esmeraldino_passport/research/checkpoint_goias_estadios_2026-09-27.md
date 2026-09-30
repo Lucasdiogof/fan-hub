@@ -1172,3 +1172,26 @@ Usuário pediu pra continuar tentando as 2 últimas pra 95%. Tentei 4 avenidas d
 6. **Diário da Manhã, edições de outubro/novembro de 1986 (reabertura)**: só 3 edições existem no acervo do IHGG nesse período (10/10, 11/10, 20/11) — nenhuma tem cobertura do Campeonato Goiano (nem retrospectiva). A ideia de uma matéria de "números finais do Goiano 86" publicada após a reabertura não se confirmou, pelo menos nessas 3 datas.
 
 **Estado inalterado: 1.995 / 2.102 = 94,91%.** Faltam 2 pra 95%. Os 107 pendentes que restam já passaram, ao todo, por uma quantidade muito grande de fontes tentadas (Placar, FdG, BN, IHGG em 3 jornais diferentes, Hemeroteca Catarinense, RSSSF, blogs) — a maioria dos casos individuais específicos (1604, 1605, 1609, 1610, 1717, 1766, 2169, 2246, boa parte do Goiano 1976 e 1985/86 inteiros) está genuinamente sem fonte gratuita acessível encontrada até agora, não por falta de tentativa.
+
+## Mudança de política — 2026-09-30 (57) — fechamento a 100% via inferência histórica (nova decisão do usuário)
+
+Usuário decidiu oficialmente encerrar a busca por confirmação documental individual das 107 pendências restantes (rendimento já esgotado, ver seção 56) e fechar o dataset a 100% usando o melhor palpite histórico/contextual disponível para cada uma — **mantendo separadas as duas métricas** (confirmado por fonte vs. inferido).
+
+O usuário já tinha em mãos `GOIAS_PENDENCIAS_ESTADIOS_1995_COM_PALPITES_V2.csv` (produzido por outra sessão de pesquisa), com um palpite por linha nas colunas `venue_probable_name/_city/_confidence/_basis` para as 107 pendências: 105 HIGH, 2 MEDIUM.
+
+**Sanity check rodado (`_sanity_check_v2.mjs`)** antes de promover, conforme pedido:
+- 56/107 palpites geraram alerta de "possível anacronismo" (estádio com nome longo/formal só confirmado no dataset a partir de 2000+), mas **todos são falsos-positivos de variante de nome, não anacronismo real** — ex.: "Estádio Olímpico Pedro Ludovico Teixeira" (nome formal, só aparece nas linhas `pe_*` pós-2000) é o MESMO estádio já confirmado desde 1943 sob nomes curtos ("Olímpico", "Pedro Ludovico", "Estádio Pedro Ludovico" etc.); mesmo padrão para Serra Dourada, Jonas Duarte, Divino Garcia Rosa, Mozart Veloso do Carmo, Zico Brandão, João Vilela, Odilon Flores, Genervino da Fonseca, Serra de Caldas e **Antônio Accioly** (um dos 2 MEDIUM — na verdade REFORÇA a confiança do palpite, pois o estádio já existia confirmado desde 1947, bem antes de 1955).
+- As 4 cidades fora da lista hardcoded do checker (Santa Helena de Goiás, Inhumas, Mineiros, Caldas Novas) são municípios reais de Goiás — não são incompatibilidade.
+- **Nenhuma inconsistência real encontrada** (nenhum estádio ainda não inaugurado na data do palpite, nenhuma cidade genuinamente incompatível). Os 2 MEDIUM (hist-f80-0231 Antônio Accioly / hist-f80-1087 Serra Dourada) foram aceitos como melhor estimativa, conforme instrução do usuário.
+
+**Promoção executada (`_promote_v2.mjs`)**: as 107 linhas tiveram `venue_probable_name/_city` copiados para `venue_name/_city` (mantendo `venue_state=GO`, `venue_country=Brasil`), preservando os campos `venue_probable_*` originais e adicionando em `notes`: `"ESTÁDIO PREENCHIDO POR INFERÊNCIA HISTÓRICA/CONTEXTUAL; NÃO CONFIRMADO POR FONTE ESPECÍFICA DA PARTIDA."`. Nenhum outro dado da partida foi alterado.
+
+**Achado incidental durante a promoção**: 7 linhas já confirmadas por fonte real (Serra Dourada, hist-f80-1048/2149/2158/2173/2233/2251/2259) carregavam um campo `venue_probable_name` residual de uma etapa anterior da pesquisa (não faziam parte do CSV V2). Isso as faria contar erroneamente como "inferidas" nas métricas. Limpo automaticamente pelo script (`staleCleared`), sem tocar em `venue_name`/`notes` dessas linhas.
+
+**Resultado final, arquivo canônico `passaporte_esmeraldino_1943_2026_ESTADIOS_CANONICO_100.csv`** (escopo `dataset_origin=historical_futebol80`, 2.102 linhas):
+
+- **1.995 / 2.102 = 94,91% documentalmente confirmados** (sem `venue_probable_name`)
+- **107 / 2.102 = 5,09% inferidos** por raciocínio histórico/contextual (com `venue_probable_name` preenchido e nota de auditoria)
+- **2.102 / 2.102 = 100% com `venue_name` preenchido** — zero `UNKNOWN` no escopo Futebol80
+
+Scripts criados: `_sanity_check_v2.mjs` (checagem), `_promote_v2.mjs` (promoção + geração do CSV canônico). Nenhum commit/push feito ainda — arquivos ainda não versionados (`git status` mostra os 3 como untracked). Pendente decidir com o usuário se este CSV entra no pipeline de seed do Passaporte Esmeraldino (schema/geração de SQL) ou fica só como artefato de pesquisa.
