@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Confirme sua conta</title>
+</head>
+
+<!--
+  Template "Confirm signup" do projeto Supabase do Vila Nova
+  (Authentication → Emails → Templates → Confirm signup → Source).
+  Assunto: Seu código de confirmação — Vila Nova
+  Mesma estrutura do template do app (código OTP de 6 dígitos via
+  {{ .Token }}, nunca link), com a identidade do Vila: vermelho oficial
+  #C33D41 (manual, pág. 9) e vinhos derivados. Escudo servido pelo Worker
+  do próprio Vila (nunca asset de outro clube).
+-->
+
+<body style="
+  margin:0;
+  padding:0;
+  background-color:#f7f3f3;
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  color:#1f1415;
+">
+
+<table
+  role="presentation"
+  width="100%"
+  cellspacing="0"
+  cellpadding="0"
+  border="0"
+  style="background-color:#f7f3f3;"
+>
+  <tr>
+    <td align="center" style="padding:40px 16px;">
+
+      <table
+        role="presentation"
+        width="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+        style="
+          max-width:560px;
+          background:#ffffff;
+          border-radius:20px;
+          overflow:hidden;
+          box-shadow:0 10px 35px rgba(0,0,0,0.08);
+        "
+      >
+
+        <!-- HEADER -->
+        <tr>
+          <td
+            align="center"
+            style="
+              background:#7a2226;
+              padding:34px 32px 32px;
+            "
+          >
+
+            <img
+              src="https://vilanova-app.lucasdiogo1234.workers.dev/assets/lib/assets/branding/vilanova/crest_badge.png"
+              alt="Vila Nova Futebol Clube"
+              width="92"
+              style="
+                display:block;
+                width:92px;
+                max-width:92px;
+                height:auto;
+                margin:0 auto 20px;
+                border:0;
+              "
+            />
+
+            <div style="
+              font-size:12px;
+              line-height:18px;
+              font-weight:700;
+              letter-spacing:2.2px;
+              color:#ffffff;
+              text-transform:uppercase;
+              opacity:.82;
+            ">
+              VILA NOVA FUTEBOL CLUBE
+            </div>
+
+            <div style="
+              margin-top:9px;
+              font-size:28px;
+              line-height:36px;
+              font-weight:800;
+              color:#ffffff;
+            ">
+              Confirme sua conta
+            </div>
+
+          </td>
+        </tr>
+
+        <!-- CONTEÚDO -->
+        <tr>
+          <td style="padding:38px 38px 14px;">
+
+            <p style="
+              margin:0 0 10px;
+              font-size:18px;
+              line-height:28px;
+              font-weight:700;
+              color:#1f1415;
+            ">
+              Falta pouco para entrar, Colorado. ❤️🤍
+            </p>
+
+            <p style="
+              margin:0;
+              font-size:15px;
+              line-height:24px;
+              color:#665a5b;
+            ">
+              Use o código abaixo no aplicativo do Vila Nova para confirmar
+              seu endereço de e-mail e concluir a criação da sua conta.
+            </p>
+
+          </td>
+        </tr>
+
+        <!-- CÓDIGO OTP -->
+        <tr>
+          <td align="center" style="padding:20px 38px 24px;">
+
+            <table
+              role="presentation"
+              width="100%"
+              cellspacing="0"
+              cellpadding="0"
+              border="0"
+            >
+              <tr>
+                <td
+                  align="center"
+                  style="
+                    background:#f8ecec;
+                    border:1px solid #efd3d4;
+                    border-radius:16px;
+                    padding:27px 20px 25px;
+                  "
+                >
+
+                  <div style="
+                    font-size:11px;
+                    line-height:16px;
+                    font-weight:700;
+                    letter-spacing:1.7px;
+                    text-transform:uppercase;
+                    color:#7d6668;
+                    margin-bottom:12px;
+                  ">
+                    SEU CÓDIGO DE CONFIRMAÇÃO
+                  </div>
+
+                  <div style="
+                    font-family:'Courier New',Courier,monospace;
+                    font-size:38px;
+                    line-height:48px;
+                    font-weight:800;
+                    letter-spacing:8px;
+                    color:#c33d41;
+                    white-space:nowrap;
+                  ">
+                    {{ .Token }}
+                  </div>
+
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+        <!-- SEGURANÇA -->
+        <tr>
+          <td style="padding:0 38px 36px;">
+
+            <table
+              role="presentation"
+              width="100%"
+              cellspacing="0"
+              cellpadding="0"
+              border="0"
+            >
+              <tr>
+                <td
+                  style="
+                    border-top:1px solid #f0eaea;
+                    padding-top:22px;
+                  "
+                >
+
+                  <p style="
+                    margin:0;
+                    text-align:center;
+                    font-size:13px;
+                    line-height:21px;
+                    color:#857a7b;
+                  ">
+                    Não compartilhe este código com ninguém.
+                    Se você não solicitou a criação desta conta,
+                    pode ignorar este e-mail.
+                  </p>
+
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+        <!-- FOOTER -->
+        <tr>
+          <td
+            align="center"
+            style="
+              background:#fbf9f9;
+              border-top:1px solid #f0eaea;
+              padding:25px 30px 28px;
+            "
+          >
+
+            <div style="
+              font-size:12px;
+              line-height:19px;
+              color:#9e9496;
+            ">
+              Este é um e-mail automático.<br>
+              Não é necessário responder.
+            </div>
+
+            <div style="
+              margin-top:11px;
+              font-size:11px;
+              line-height:17px;
+              font-weight:700;
+              letter-spacing:1px;
+              color:#c33d41;
+            ">
+              VILA NOVA FUTEBOL CLUBE
+            </div>
+
+          </td>
+        </tr>
+
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
