@@ -1141,3 +1141,21 @@ Usuário pediu a continuação da pesquisa em outra conta a partir do checkpoint
 
 **Novo estado: 1.992 / 2.102 = 94,77%.** Backlog: 110. Faltam 5 para 95%. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1992.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1992.csv`.
 **Próximo passo:** para cada pendência de 1984 (ago–set), 1985 e 1986, abrir a Placar da sexta seguinte ao jogo (ou a seguinte, se não sair) e ler o Tabelão de Goiás.
+
+## Atualização de pesquisa — 2026-09-30 (55) — mais 3 confirmações via Placar/Google Books (+3) · 1985 mapeado como SEM detalhe
+
+Usuário resolveu o CAPTCHA do Google Books de novo (mesma sessão do navegador embutido, uma vez só). Varri sistematicamente as edições de ago–set/1984 já mapeadas (17, 24 e 31/ago; 07, 14, 21 e 28/set) atrás das ~15 pendências desse período.
+
+**+3 confirmadas, todas Serra Dourada (Goiânia), Campeonato Goiano 1984:**
+- **hist-f80-1606** (19/08/1984, Goiás 0x1 Goiânia): Placar 24/08/1984, p. 74. `GOIÁS 0 X GOIÂNIA 1 — Local: Serra Dourada (Goiânia); Juiz: José Muniz Brandão; ... Gol: Rondinelli 30 do 1º`.
+- **hist-f80-1608** (02/09/1984, Goiás 0x2 Itumbiara): Placar 07/09/1984, p. 71. `GOIÁS 0 X ITUMBIARA 2 — Local: Serra Dourada (Goiânia); ... Gols: Joãozinho 41 do 1º e Tostão 12 do 2º`.
+- **hist-f80-1611** (23/09/1984, Goiás 3x0 Ceres): Placar 28/09/1984, p. 71. `GOIÁS 3 X CERES 0 — Local: Serra Dourada (Goiânia); ... Gols: Gilson Jáder 18 do 1º, Marcelo 15 e Marco Aurélio 36 do 2º`.
+
+**Achado sem uso direto:** a mesma varredura achou `ATLÉTICO 0 X GOIÁS 1` (26/08/1984, Antônio Accioli) e `JATAIENSE 0 X GOIÁS 0` (16/09/1984, Jerônimo Fraga) com `Local:` completo — nenhum dos dois bate com um ID pendente no CSV atual (já devem estar confirmados por outra fonte). Não aplicado, só registrado.
+
+**Formato inconsistente mesmo dentro de 1984:** várias pendências continuam SEM `Local:` apesar de aparecerem no Tabelão — a seção de Goiás às vezes lista só o placar corrido, sem o detalhe "Local:/Juiz:/Renda:" que outras partidas da MESMA rodada recebem. Confirmado (bare, sem venue) em 3 edições diferentes: **hist-f80-1604** (12/ago, Itumbiara 2x1 Goiás — aparece em 17/ago e 24/ago), **hist-f80-1605** (15/ago, Goiás 3x1 Anapolina — aparece em 17/ago e 31/ago) e **hist-f80-1609** (09/set, Goianésia 0x1 Goiás — aparece em 14/set). Não é falha de busca: busquei "Goiás" E "Serra Dourada" (aspas exatas) nas 3 edições e o texto realmente não existe nessas páginas. **hist-f80-1610** (12/set, Goiás 3x0 Anápolis) não apareceu em NENHUMA edição verificada (nem bare nem detalhado) — a rodada do Tabelão pula de "2º turno 1ª rodada" (2/set) direto pra "2º turno 3ª rodada" (14–16/set); pode ter sido antecipado/adiado pra outra data, vale conferir se existe com outra data.
+
+**1985 mapeado como estruturalmente SEM o formato detalhado — não vale minerar mais às cegas:** testei 3 edições de meses diferentes (07/jun, 20/set, 18/out de 1985) com busca exata por `"Serra Dourada"` — **zero resultados nas três**, contra 1 resultado imediato quando rodei a MESMA busca numa edição boa de 1984 (confirma que o método de busca funciona, a ausência é real). A cobertura do Goiano em 1985 que existe (ex.: p. 75 do Sete de Junho) é um resumo geral multi-esporte com placar corrido, sem `Local:`. **Conclusão: a Placar não é fonte viável para 1985 (nem provavelmente 1986) nesse formato — só valeria a pena se alguém tiver uma pista de edição específica com cobertura mais rica (o mesmo padrão problemático já visto no "5 de Março" do IHGG).**
+
+**Novo estado: 1.995 / 2.102 = 94,91%.** Backlog: 107. Faltam 2 para 95%. Arquivos: `passaporte_esmeraldino_1943_2026_ESTADIOS_CHECKPOINT_1995.csv` + `GOIAS_PENDENCIAS_ESTADIOS_1995.csv`.
+**Próximo passo:** revisitar hist-f80-1610 com data alternativa; tentar Diário de Notícias (bib 325538, `hemeroteca-pdf.bn.gov.br`, sem CAPTCHA, cobre 1984–86) pra 1985/86 em vez da Placar; ou aceitar 1985/86 como limite de fonte gratuita por ora.
