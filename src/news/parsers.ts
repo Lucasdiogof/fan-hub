@@ -7,6 +7,7 @@
 // nenhum parser fica sem implementação.
 import { scrapeNewsList, scrapeNewsArticle } from './scraper';
 import { bragantinoArticleMetadataUrl, parseBragantinoArticle, parseBragantinoNewsList } from './bragantino_parser';
+import { parseVilaNovaArticle, parseVilaNovaNewsList } from './vilanova_parser';
 import type { ClubNewsConfig, NewsParserId } from '../social/club_media_config';
 import type { NewsArticle, NewsItem } from './types';
 
@@ -23,6 +24,8 @@ export function parseNewsList(
       // raspável) — `news.sourceUrl` já é a URL completa da listagem, ver
       // `club_media_config.ts` e `bragantino_parser.ts`.
       return Promise.resolve(parseBragantinoNewsList(raw));
+    case 'vilanova':
+      return Promise.resolve(parseVilaNovaNewsList(raw, siteOrigin));
   }
 }
 
@@ -39,6 +42,8 @@ export function newsArticlePrimaryUrl(news: ClubNewsConfig, slug: string): strin
       return `${news.siteOrigin}${news.articlePathPrefix}/${slug}`;
     case 'bragantino':
       return bragantinoArticleMetadataUrl(slug);
+    case 'vilanova':
+      return `${news.siteOrigin}${news.articlePathPrefix}/${slug}`;
   }
 }
 
@@ -54,5 +59,7 @@ export function parseNewsArticle(
       return Promise.resolve(scrapeNewsArticle(raw, pageUrl, siteOrigin));
     case 'bragantino':
       return parseBragantinoArticle(raw, slug);
+    case 'vilanova':
+      return Promise.resolve(parseVilaNovaArticle(raw, pageUrl, siteOrigin));
   }
 }

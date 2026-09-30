@@ -21,7 +21,7 @@
 /** Qual parser de notícias usar — cada site tem sua própria fonte/formato
  * (o Goiás raspa HTML; o Bragantino é uma SPA sem HTML raspável e consome
  * uma API JSON interna pública, ver `news/bragantino_parser.ts`). */
-export type NewsParserId = 'goias' | 'bragantino';
+export type NewsParserId = 'goias' | 'bragantino' | 'vilanova';
 
 /** Qual arquivo de dados do X carregar (bundle estático por clube). */
 export type XDataFileId = 'goias' | 'bragantino';
@@ -166,6 +166,21 @@ export const CLUB_MEDIA_CONFIG: Record<string, ClubMediaConfig> = {
       authorHandle: 'redbullbragantino',
     },
     x: { dataFile: 'bragantino' },
+  },
+
+  // Vila Nova: notícias confirmadas em 2026-09-30 (HTML renderizado no
+  // servidor pelo CMS do site oficial, ver `news/vilanova_parser.ts`).
+  // YouTube, Instagram e X ainda não: sem fonte configurada neste deploy
+  // (Instagram depende de cron, e a conta Cloudflare já usa os 5 do plano
+  // Free) — cada fonte ausente fica indisponível, nunca cai pra outro clube.
+  vilanova: {
+    code: 'vilanova',
+    news: {
+      sourceUrl: 'https://www.vilanovafc.com.br/noticias',
+      siteOrigin: 'https://www.vilanovafc.com.br',
+      articlePathPrefix: '/noticias',
+      parser: 'vilanova',
+    },
   },
 };
 
