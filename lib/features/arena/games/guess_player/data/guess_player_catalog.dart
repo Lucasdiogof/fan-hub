@@ -1953,7 +1953,7 @@ final guessPlayerCatalog = <GuessPlayer>[
     academyClub: 'Criciúma',
     nationalityCode: 'BR',
     nationalityName: 'Brasil',
-    clubDebutYear: 1998,
+    clubDebutYear: 1996,
     dataStatus: GuessPlayerDataStatus.incomplete,
   ),
   const GuessPlayer(

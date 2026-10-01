@@ -88,7 +88,7 @@ const playerIdentityReferences = <PlayerIdentityReference>[
   PlayerIdentityReference(
     id: 'uidemar',
     name: 'Uidemar',
-    period: 'anos 2000',
+    period: '1986–1989 / 1995',
     creativity: 42,
     definition: 21,
     leadership: 49,
@@ -124,7 +124,7 @@ const playerIdentityReferences = <PlayerIdentityReference>[
   PlayerIdentityReference(
     id: 'paulo_baier',
     name: 'Paulo Baier',
-    period: '2007–2008',
+    period: '2004–2005 / 2007–2008',
     creativity: 87,
     definition: 66,
     leadership: 69,
@@ -148,7 +148,7 @@ const playerIdentityReferences = <PlayerIdentityReference>[
   PlayerIdentityReference(
     id: 'fernandao',
     name: 'Fernandão',
-    period: '1995–2001 / 2009',
+    period: '1995–2001 / 2009–2010',
     creativity: 67,
     definition: 71,
     leadership: 84,
@@ -184,7 +184,7 @@ const playerIdentityReferences = <PlayerIdentityReference>[
   PlayerIdentityReference(
     id: 'dimba',
     name: 'Dimba',
-    period: '2002–2004',
+    period: '2003',
     creativity: 25,
     definition: 84,
     leadership: 32,
@@ -208,7 +208,7 @@ const playerIdentityReferences = <PlayerIdentityReference>[
   PlayerIdentityReference(
     id: 'walter',
     name: 'Walter',
-    period: '2012–2013 / 2019',
+    period: '2012–2013 / 2016–2017',
     creativity: 80,
     definition: 68,
     leadership: 34,
@@ -220,7 +220,7 @@ const playerIdentityReferences = <PlayerIdentityReference>[
   PlayerIdentityReference(
     id: 'erik',
     name: 'Erik',
-    period: 'anos 2020',
+    period: '2013–2015',
     creativity: 37,
     definition: 66,
     leadership: 24,
