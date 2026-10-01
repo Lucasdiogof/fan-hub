@@ -1,5 +1,5 @@
 {
-  "_doc": "Correções sobre o parse do ogol (tooling/vilanova_content/_ogol_parsed.json), aplicadas por _apply_career_to_squad.mjs DEPOIS do parser. Auditoria de 2026-10-01: (1) temporada europeia/asiática herdando o rótulo do ano civil da linha de cima (o texto colado do ogol perde a célula de temporada mesclada; o rótulo certo foi relido no HTML de cada perfil); (2) passagem com empréstimo só em parte das temporadas, dividida em empréstimo + definitivo quando confirmado fora do ogol. Cada item tem a fonte. Rodada de 2026-10-01 (pendências): empréstimo/compra resolvidos com as conclusões confirmadas; pendentes ficam sem tag de empréstimo, com data_quality \"review\" e nota.",
+  "_doc": "Correções sobre o parse do ogol (tooling/vilanova_content/_ogol_parsed.json), aplicadas por _apply_career_to_squad.mjs DEPOIS do parser. Auditoria de 2026-10-01: (1) temporada europeia/asiática herdando o rótulo do ano civil da linha de cima (o texto colado do ogol perde a célula de temporada mesclada; o rótulo certo foi relido no HTML de cada perfil); (2) passagem com empréstimo só em parte das temporadas, dividida em empréstimo + definitivo quando confirmado fora do ogol. Cada item tem a fonte. Rodada de 2026-10-01 (pendências): empréstimo/compra resolvidos com as conclusões confirmadas; pendentes ficam sem tag de empréstimo, com data_quality \"review\" e nota. Rodada 2 (2026-10-01): Douglas Mendes revertido (Salzburg dono desde 07/2023 — comunicados oficiais), Janderson/Ceará definitivo, Jonathan Costa/Portimonense contrato direto.",
   "corrections": [
     {
       "player_id": "vn_dalberson",
@@ -56,6 +56,19 @@
     {
       "player_id": "vn_douglas_mendes",
       "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2026"
+      },
+      "field": "period",
+      "from": "2026",
+      "to": "2025/26",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2025/26\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
         "team": "Liefering",
         "period": "2024"
       },
@@ -70,19 +83,6 @@
       "player_id": "vn_douglas_mendes",
       "match": {
         "team": "Liefering",
-        "period": "2026"
-      },
-      "field": "period",
-      "from": "2026",
-      "to": "2025/26",
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": null,
-      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2025/26\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
-    },
-    {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Red Bull Salzburg",
         "period": "2026"
       },
       "field": "period",
@@ -758,97 +758,6 @@
       "reason": "Ver correção de loan acima."
     },
     {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Red Bull Salzburg",
-        "period": "2023/24"
-      },
-      "field": "loan",
-      "from": false,
-      "to": true,
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Confirmado: o clube detentor era o RB Bragantino; a passagem pela Áustria foi por empréstimo."
-    },
-    {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Red Bull Salzburg",
-        "period": "2023/24"
-      },
-      "field": "notes",
-      "from": "Passagem identificada; totais não exibidos na tabela consultada.",
-      "to": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Red Bull Bragantino.",
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Ver correção de loan acima."
-    },
-    {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Red Bull Bragantino",
-        "period": "2024–2025"
-      },
-      "field": "loan",
-      "from": true,
-      "to": false,
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Confirmado: o RB Bragantino era o dono do jogador — não estava emprestado pelo Salzburg."
-    },
-    {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Red Bull Bragantino",
-        "period": "2024–2025"
-      },
-      "field": "notes",
-      "from": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Red Bull Salzburg.",
-      "to": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Ver correção de loan acima."
-    },
-    {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Red Bull Salzburg",
-        "period": "2025/26"
-      },
-      "field": "loan",
-      "from": false,
-      "to": true,
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Confirmado: o clube detentor era o RB Bragantino; a passagem pela Áustria foi por empréstimo."
-    },
-    {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Red Bull Salzburg",
-        "period": "2025/26"
-      },
-      "field": "notes",
-      "from": null,
-      "to": "Emprestado por Red Bull Bragantino.",
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Ver correção de loan acima."
-    },
-    {
-      "player_id": "vn_douglas_mendes",
-      "match": {
-        "team": "Vila Nova",
-        "period": "2026"
-      },
-      "field": "notes",
-      "from": null,
-      "to": "Contratado em definitivo junto ao Red Bull Bragantino em 30/06/2026 (contrato até dezembro de 2028).",
-      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Confirmado: transferência RB Bragantino → Vila Nova, definitiva, 30/06/2026, contrato até dez/2028."
-    },
-    {
       "player_id": "vn_gabriel_atila",
       "match": {
         "team": "Atlético Mineiro (base)",
@@ -880,11 +789,11 @@
           "goals": 0,
           "loan": false,
           "data_quality": "review",
-          "notes": "Vínculo a partir de 2021 não confirmado: as bases deixam de marcar empréstimo, mas não há anúncio da compra."
+          "notes": "Vínculo a partir de 2021 não confirmado: em 12/02/2021 ainda estava emprestado pelo Vila (90% Vila, 10% Atlético, com opção de compra); depois passou ao Atlético, sem data confirmada da compra."
         }
       ],
       "source": "https://www.ogol.com.br/jogador/gabriel-atila/755478",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
       "reason": "Empréstimo confirmado só em 2020; 2021+ fica pendente (sem tag de empréstimo e sem afirmar compra). Ogol: 2020 S17 13/0 (S20 sem J/G), 2021 2/0, 2022 8/0, 2023 23/0."
     },
     {
@@ -908,9 +817,9 @@
           "team": "Portimonense",
           "appearances": 4,
           "goals": 0,
-          "loan": true,
-          "data_quality": "verified",
-          "notes": "Emprestado por Penapolense."
+          "loan": false,
+          "data_quality": "review",
+          "notes": "Fontes divergem: o ogol marca empréstimo do Penapolense, mas o Portimonense anunciou contrato direto de 18 meses em 01/02/2015."
         },
         {
           "period": "2015/16",
@@ -918,13 +827,13 @@
           "appearances": 1,
           "goals": 0,
           "loan": false,
-          "data_quality": "review",
-          "notes": "Vínculo em 2015/16 não confirmado: algumas bases deixam de marcar empréstimo, mas não há anúncio da compra."
+          "data_quality": "verified",
+          "notes": "Contrato direto de 18 meses com o Portimonense (anunciado pelo clube em 01/02/2015)."
         }
       ],
-      "source": "https://www.ogol.com.br/jogador/jonathan-costa/401758",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Empréstimo confirmado só em 2014/15; 2015/16 pendente. Ogol: 2014/15 4/0, 2015/16 1/0."
+      "source": "https://www.portimonensesad.pt/portimonense-apresenta-reforcos-de-inverno_6072",
+      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
+      "reason": "Portimonense SAD (01/02/2015): Jonathan Costa assina contrato de 18 meses; o clube marca \"cedido\" quem chega emprestado e ele não aparece assim. 2015/16 = vínculo direto; 2014/15 em revisão."
     },
     {
       "player_id": "vn_marquinhos_gabriel",
@@ -974,9 +883,9 @@
       "field": "loan",
       "from": true,
       "to": false,
-      "source": "https://www.ogol.com.br/jogador/janderson/540179",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "CONFLITO: notícia de jan/2023 diz que rescindiu com o Corinthians e assinou direto com o Ceará (três temporadas); outras bases registram empréstimo. Sem tag de empréstimo e marcado para revisão — nada consolidado."
+      "source": "https://www.cearasc.com/noticia/contratacao-janderson-e-o-novo-atacante-do-ceara",
+      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
+      "reason": "Ceará SC (04/01/2023): contratação em definitivo — não é empréstimo."
     },
     {
       "player_id": "vn_janderson",
@@ -986,10 +895,10 @@
       },
       "field": "data_quality",
       "from": "verified",
-      "to": "review",
-      "source": "https://www.ogol.com.br/jogador/janderson/540179",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
-      "reason": "Ver correção de loan acima."
+      "to": "verified",
+      "source": "https://www.cearasc.com/noticia/contratacao-janderson-e-o-novo-atacante-do-ceara",
+      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
+      "reason": "Ceará SC (04/01/2023): contratação em definitivo, vínculo até o fim de 2025."
     },
     {
       "player_id": "vn_janderson",
@@ -999,10 +908,36 @@
       },
       "field": "notes",
       "from": "Emprestado por Corinthians.",
-      "to": "Fontes divergem: empréstimo do Corinthians ou contratação direta pelo Ceará (contrato de três temporadas, jan/2023).",
-      "source": "https://www.ogol.com.br/jogador/janderson/540179",
-      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "to": "Contratado em definitivo pelo Ceará (anúncio de 04/01/2023), vínculo até o fim de 2025.",
+      "source": "https://www.cearasc.com/noticia/contratacao-janderson-e-o-novo-atacante-do-ceara",
+      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
       "reason": "Ver correção de loan acima."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2023/24"
+      },
+      "field": "notes",
+      "from": "Passagem identificada; totais não exibidos na tabela consultada.",
+      "to": "Passagem identificada; totais não exibidos na tabela consultada. Contratado em definitivo pelo Salzburg em 01/07/2023 (contrato até 30/06/2028); jogou pelo Liefering como jogador de cooperação.",
+      "source": "https://www.redbullsalzburg.at/getmedia/6ff3f1da-4506-4c8c-b6e5-bccd8f3f031b/202324_09_Wechsel-Douglas-Mendes.pdf",
+      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
+      "reason": "Comunicado oficial do Salzburg (01/07/2023): \"unterschreibt beim FC Red Bull Salzburg ... Vertrag bis 30. Juni 2028\". Corrige a rodada 1, que tratava o Bragantino como dono."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Vila Nova",
+        "period": "2026"
+      },
+      "field": "notes",
+      "from": null,
+      "to": "Contratado em definitivo em 30/06/2026 (contrato até dezembro de 2028). Clube cedente em revisão: o Salzburg detinha os direitos desde 07/2023.",
+      "source": "https://www.redbullsalzburg.at/getmedia/82ff107e-7415-4020-a99f-0b420cd9f44d/202324_105_Douglas-Mendes-Leihe-Bragantino.pdf",
+      "corroboration": "Rodada 2 de pendências (2026-10-01; fonte oficial conferida)",
+      "reason": "Comunicado oficial do Salzburg (09/01/2024): empréstimo (\"Leihvertrag\") ao Bragantino. Quem cedeu o atleta ao Vila em 2026 não foi confirmado."
     }
   ]
 }

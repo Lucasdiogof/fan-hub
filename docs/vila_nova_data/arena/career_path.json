@@ -544,7 +544,7 @@
           "team": "RB Salzburg",
           "appearances": null,
           "goals": null,
-          "loan": true,
+          "loan": false,
           "is_club": false
         },
         {
@@ -552,7 +552,7 @@
           "team": "RB Bragantino",
           "appearances": 31,
           "goals": 2,
-          "loan": false,
+          "loan": true,
           "is_club": false
         },
         {
@@ -3222,5 +3222,5 @@
     "30 carreiras auditadas e publicáveis. Períodos e empréstimos foram preenchidos somente quando sustentados pela fonte indicada.",
     "Jogos/gols podem ficar null quando a fonte não separa com segurança a passagem; nenhum número foi inferido."
   ],
-  "editorial_note_2026_10_01": "Pendências de 2026-10-01 (conclusões da pesquisa externa): Dodô empréstimo só em 2019/20 (rescindiu com o Atlético-MG em jul/2020); Pagnussat definitivo no Bahia a partir de 2018; Formiga emprestado pelo Cianorte também em 2022; Enzo seguiu vinculado ao Internacional em 2025 (sem compra pelo Aparecidense); Douglas Mendes pertencia ao RB Bragantino e jogou na Áustria por empréstimo. Pendentes (Átila 2021+, Jonathan Costa 2015/16, Marquinhos/Internacional 2008+, Janderson/Ceará) ficaram como estavam aqui: o jogo de carreira não tem marcador de revisão."
+  "editorial_note_2026_10_01": "Pendências de 2026-10-01 (conclusões da pesquisa externa): Dodô empréstimo só em 2019/20 (rescindiu com o Atlético-MG em jul/2020); Pagnussat definitivo no Bahia a partir de 2018; Formiga emprestado pelo Cianorte também em 2022; Enzo seguiu vinculado ao Internacional em 2025 (sem compra pelo Aparecidense); Douglas Mendes: a rodada 1 (dono = RB Bragantino) foi DESMENTIDA pelos comunicados oficiais do Salzburg na rodada 2 — contratado em definitivo pelo Salzburg em 01/07/2023 e emprestado ao Bragantino em 2024; o dado original voltou. Pendentes (Átila 2021+, Jonathan Costa 2015/16, Marquinhos/Internacional 2008+, Janderson/Ceará) ficaram como estavam aqui: o jogo de carreira não tem marcador de revisão."
 }

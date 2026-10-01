@@ -167,7 +167,7 @@
           "goals": 0,
           "loan": false,
           "data_quality": "review",
-          "notes": "Vínculo a partir de 2021 não confirmado: as bases deixam de marcar empréstimo, mas não há anúncio da compra.",
+          "notes": "Vínculo a partir de 2021 não confirmado: em 12/02/2021 ainda estava emprestado pelo Vila (90% Vila, 10% Atlético, com opção de compra); depois passou ao Atlético, sem data confirmada da compra.",
           "is_club": false
         },
         {
@@ -911,9 +911,9 @@
           "team": "Red Bull Salzburg",
           "appearances": null,
           "goals": null,
-          "loan": true,
+          "loan": false,
           "data_quality": "partial",
-          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Red Bull Bragantino.",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Contratado em definitivo pelo Salzburg em 01/07/2023 (contrato até 30/06/2028); jogou pelo Liefering como jogador de cooperação.",
           "is_club": false
         },
         {
@@ -931,9 +931,9 @@
           "team": "Red Bull Bragantino",
           "appearances": 31,
           "goals": 2,
-          "loan": false,
+          "loan": true,
           "data_quality": "partial",
-          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Red Bull Salzburg.",
           "is_club": false
         },
         {
@@ -951,9 +951,9 @@
           "team": "Red Bull Salzburg",
           "appearances": 1,
           "goals": 0,
-          "loan": true,
+          "loan": false,
           "data_quality": "verified",
-          "notes": "Emprestado por Red Bull Bragantino.",
+          "notes": null,
           "is_club": false
         },
         {
@@ -963,7 +963,7 @@
           "goals": 1,
           "loan": false,
           "data_quality": "verified",
-          "notes": "Contratado em definitivo junto ao Red Bull Bragantino em 30/06/2026 (contrato até dezembro de 2028).",
+          "notes": "Contratado em definitivo em 30/06/2026 (contrato até dezembro de 2028). Clube cedente em revisão: o Salzburg detinha os direitos desde 07/2023.",
           "is_club": true
         }
       ],
@@ -1046,9 +1046,9 @@
           "team": "Portimonense",
           "appearances": 4,
           "goals": 0,
-          "loan": true,
-          "data_quality": "verified",
-          "notes": "Emprestado por Penapolense.",
+          "loan": false,
+          "data_quality": "review",
+          "notes": "Fontes divergem: o ogol marca empréstimo do Penapolense, mas o Portimonense anunciou contrato direto de 18 meses em 01/02/2015.",
           "is_club": false
         },
         {
@@ -1057,8 +1057,8 @@
           "appearances": 1,
           "goals": 0,
           "loan": false,
-          "data_quality": "review",
-          "notes": "Vínculo em 2015/16 não confirmado: algumas bases deixam de marcar empréstimo, mas não há anúncio da compra.",
+          "data_quality": "verified",
+          "notes": "Contrato direto de 18 meses com o Portimonense (anunciado pelo clube em 01/02/2015).",
           "is_club": false
         },
         {
@@ -3201,7 +3201,7 @@
       "position_group": "Meio-campistas",
       "birth_date": "1994-09-05",
       "nationality": "Brasil",
-      "height_cm": 171,
+      "height_cm": 176,
       "foot": "Destro",
       "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dodo-759.png",
       "instagram_url": null,
@@ -4159,7 +4159,7 @@
       "position_group": "Atacantes",
       "birth_date": "1992-05-01",
       "nationality": "Brasil",
-      "height_cm": null,
+      "height_cm": 181,
       "foot": "Destro",
       "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dellatorre-534.png",
       "instagram_url": "https://www.instagram.com/guilherme.dellatorre/",
@@ -4998,8 +4998,8 @@
           "appearances": 73,
           "goals": 8,
           "loan": false,
-          "data_quality": "review",
-          "notes": "Fontes divergem: empréstimo do Corinthians ou contratação direta pelo Ceará (contrato de três temporadas, jan/2023).",
+          "data_quality": "verified",
+          "notes": "Contratado em definitivo pelo Ceará (anúncio de 04/01/2023), vínculo até o fim de 2025.",
           "is_club": false
         },
         {
@@ -5677,12 +5677,12 @@
     {
       "name": "Douglas Mendes",
       "date": "2026-06-30",
-      "from": "Red Bull Bragantino",
+      "from": null,
       "type": "definitivo",
-      "status": "READY",
+      "status": "REVIEW",
       "source_name": "ge",
       "source_url": "https://ge.globo.com/go/futebol/times/vila-nova/noticia/2026/06/30/vila-nova-contrata-zagueiro-douglas-mendes-ex-bragantino.ghtml",
-      "notes": "Contrato com o Vila até dezembro de 2028. O clube detentor era o RB Bragantino (não o Red Bull Salzburg); na Áustria ele jogou por empréstimo. Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas)."
+      "notes": "Definitivo, 30/06/2026, contrato até dezembro de 2028. Clube cedente em revisão: comunicados oficiais do Salzburg mostram que ele foi contratado em definitivo pelo Salzburg em 01/07/2023 (contrato até 30/06/2028) e emprestado ao Bragantino em 2024 — a rodada 1 (que dizia RB Bragantino) estava errada. Rodada 2 de pendências (2026-10-01; fonte oficial conferida)."
     },
     {
       "name": "Jonathan Costa",
@@ -5764,7 +5764,7 @@
       "type": null,
       "date": null,
       "status": "REVIEW",
-      "notes": "Por volta de 29/07/2026; sem anúncio oficial forte.",
+      "notes": "Destino confirmado (ogol e CBF já o listam no Retrô); data do anúncio oficial sem fonte.",
       "source": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas)"
     },
     {
@@ -5773,7 +5773,7 @@
       "type": null,
       "date": null,
       "status": "REVIEW",
-      "notes": "Destino confirmado; data diverge entre 18/08 e 29/08/2026.",
+      "notes": "Transferência registrada em 18/08/2026 por fontes secundárias (BeSoccer, 365Scores); data do anúncio oficial não localizada. 29/08 é a estreia, não a transferência.",
       "source": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas)"
     },
     {
@@ -5782,7 +5782,7 @@
       "type": null,
       "date": null,
       "status": "REVIEW",
-      "notes": "Uma base indica 15/09/2026, sem anúncio oficial que valide o dia.",
+      "notes": "Destino confirmado (CBF lista o clube atual como Campo Grande); 15/09/2026 não validado por anúncio oficial.",
       "source": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas)"
     }
   ],
@@ -5854,8 +5854,8 @@
           "source": "ogol"
         }
       ],
-      "resolution": "Sem fonte oficial pra desempatar: valor atual (171) mantido, sem trocar pelo outro. Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas).",
-      "status": "REVIEW"
+      "resolution": "176 cm pela ficha oficial do Clube do Remo na contratação (Raphael Guimarães de Paula, nasc. 05/09/1994, 1,76 m — clubedoremo.com.br/ler-noticia.php?id=3193). Rodada 2 de pendências (2026-10-01; fonte oficial conferida).",
+      "status": "RESOLVED"
     },
     {
       "player_id": "vn_dellatorre",
@@ -5874,31 +5874,39 @@
           "source": "ogol"
         }
       ],
-      "resolution": "Sem fonte forte pra desempatar: altura fica vazia. Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas).",
-      "status": "REVIEW"
+      "resolution": "181 cm: press kit oficial do Coritiba de 2025 citado pela pesquisa (o link hoje não serve mais o PDF) e Wikipédia com o mesmo valor e a mesma data de nascimento. Rodada 2 de pendências (2026-10-01; fonte oficial conferida).",
+      "status": "RESOLVED"
     },
     {
       "player_id": null,
       "field": "shirt_number",
       "values": [
         {
-          "value": "Jonathan Costa: 23 nos jogos de setembro/2026",
-          "source": "súmulas"
+          "value": "Breno Bora: 23 em Vila Nova 2×0 Ceará (30/08/2026)",
+          "source": "CBF (súmula/escalação)"
         },
         {
-          "value": "Lincoln: 9 em jogo recente",
-          "source": "súmulas"
+          "value": "Jonathan Costa: 23 em Vila Nova 2×0 Londrina (25/09/2026)",
+          "source": "CBF + ogol"
         },
         {
-          "value": "Breno Bora já usou 23; Gustavo Puskas e Rafa Silva já usaram 9",
-          "source": "súmulas"
+          "value": "Gustavo Puskas: 9 em Athletic 5×0 Vila Nova (04/09/2026)",
+          "source": "CBF"
         },
         {
-          "value": "Samuel usou 3, 4, 14 e 23",
-          "source": "súmulas"
+          "value": "Lincoln: 9 em Vila Nova 2×0 Londrina (25/09/2026), estreia",
+          "source": "CBF + ogol"
+        },
+        {
+          "value": "Rafa Silva: 9 em Vila Nova 1×1 Athletic (04/05/2026)",
+          "source": "CBF"
+        },
+        {
+          "value": "Samuel: 4 em Criciúma 2×0 Vila Nova (18/07/2026); antes 23, 14 e 4",
+          "source": "CBF"
         }
       ],
-      "resolution": "Não há numeração fixa confirmada na Série B 2026. shirt_number é só o selo visual do elenco; mantidos os números da página oficial do elenco (Breno 23, Puskas 9) e vazios os sem número fixo (Jonathan Costa, Lincoln, Samuel). Nenhum número \"oficial\" inventado. Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas).",
+      "resolution": "Confirmado que NÃO há numeração fixa na Série B 2026 (CBF não atribui número permanente; súmulas variam). Os valores acima são o ÚLTIMO número de súmula. shirt_number do app segue com a página oficial do elenco (Breno 23, Puskas 9) até decisão do usuário sobre exibir \"último número usado\". Rodada 2 de pendências (2026-10-01; fonte oficial conferida).",
       "status": "REVIEW"
     },
     {
