@@ -8,6 +8,7 @@ import 'package:goias_app/core/club/goias_club_config.dart';
 import 'package:goias_app/core/di/injection_container.dart';
 import 'package:goias_app/core/theme/app_theme.dart';
 import 'package:goias_app/features/club/data/bragantino_idols_data.dart';
+import 'package:goias_app/features/club/data/goias_idols_data.dart';
 import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 import 'package:goias_app/features/club/presentation/pages/club_idols_page.dart';
 import 'package:goias_app/l10n/app_localizations.dart';
@@ -75,7 +76,7 @@ void main() {
 
   tearDown(sl.reset);
 
-  Widget wrap() {
+  Widget wrap({bool dark = false, double textScale = 1}) {
     final router = GoRouter(
       initialLocation: '/',
       routes: [
@@ -83,8 +84,14 @@ void main() {
       ],
     );
     return MaterialApp.router(
-      theme: AppTheme.light(),
+      theme: dark ? AppTheme.dark() : AppTheme.light(),
       locale: const Locale('pt'),
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(
+          context,
+        ).copyWith(textScaler: TextScaler.linear(textScale)),
+        child: child!,
+      ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       routerConfig: router,
@@ -121,7 +128,6 @@ void main() {
     test('clube sem ídolo nenhum devolve lista vazia, nunca a de outro', () {
       const empty = ClubInstitutionalContent();
       expect(empty.publishedIdols, isEmpty);
-      expect(goiasClubConfig.institutionalContent.publishedIdols, isEmpty);
       // 3º clube (sintético) prova que o vazio não é um caso especial do
       // Goiás — nenhum clube herda a lista de outro por omissão.
       expect(syntheticClubBConfig.institutionalContent.publishedIdols, isEmpty);
@@ -202,7 +208,7 @@ void main() {
     }
   });
 
-  testWidgets('Goiás sem dataset não recebe os ídolos do Bragantino', (
+  testWidgets('Goiás (dataset próprio) não recebe os ídolos do Bragantino', (
     tester,
   ) async {
     useTallSurface(tester);
@@ -336,5 +342,74 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(find.text('Só Candidato', skipOffstage: false), findsNothing);
     expect(find.text('Ídolos'), findsWidgets);
+  });
+
+  group('Goiás — 37 ídolos', () {
+    for (final dark in [false, true]) {
+      testWidgets('lista todos os 37 no tema ${dark ? 'escuro' : 'claro'}', (
+        tester,
+      ) async {
+        addTearDown(tester.view.reset);
+        tester.view.physicalSize = const Size(800, 9000);
+        tester.view.devicePixelRatio = 1.0;
+        await register(goiasClubConfig);
+        await tester.pumpWidget(wrap(dark: dark));
+        await tester.pumpAndSettle();
+
+        expect(tester.takeException(), isNull);
+        for (final idol in GoiasIdolsData.idols) {
+          expect(
+            find.text(idol.name, skipOffstage: false),
+            findsOneWidget,
+            reason: idol.name,
+          );
+        }
+        expect(find.text('37 ÍDOLOS', skipOffstage: false), findsOneWidget);
+      });
+    }
+
+    testWidgets('tela estreita + texto grande: nenhum overflow em nenhum card', (
+      tester,
+    ) async {
+      addTearDown(tester.view.reset);
+      tester.view.physicalSize = const Size(320, 30000);
+      tester.view.devicePixelRatio = 1.0;
+      await register(goiasClubConfig);
+      await tester.pumpWidget(wrap(textScale: 1.6));
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+      expect(find.text('Harlei', skipOffstage: false), findsOneWidget);
+    });
+
+    testWidgets('rola até o fim da lista (Tadeu é o último, cronológico)', (
+      tester,
+    ) async {
+      await register(goiasClubConfig);
+      await tester.pumpWidget(wrap());
+      await tester.pumpAndSettle();
+
+      await tester.scrollUntilVisible(
+        find.text('Tadeu'),
+        500,
+        scrollable: find.byType(Scrollable).first,
+      );
+      expect(find.text('Tadeu'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    test('dados opcionais: quem não tem fonte fica sem o campo, nunca com '
+        'palpite', () {
+      final byName = {for (final i in GoiasIdolsData.idols) i.name: i};
+      // Identidade ainda não definida — só o nome.
+      expect(byName['Marquinhos']!.description, isEmpty);
+      expect(byName['Marquinhos']!.position, isNull);
+      expect(byName['Marquinhos']!.period, isNull);
+      // Período divergente entre fontes — fica de fora.
+      expect(byName['Amauri']!.period, isNull);
+      expect(byName['Edson Mug']!.period, isNull);
+      // Estatística de quem segue em atividade sempre com data.
+      expect(byName['Tadeu']!.description, contains('28/08/2026'));
+    });
   });
 }

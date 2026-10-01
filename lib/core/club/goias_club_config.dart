@@ -15,6 +15,7 @@ import 'package:goias_app/features/club/data/club_history_data.dart';
 import 'package:goias_app/features/club/data/club_songs_data.dart';
 import 'package:goias_app/features/club/data/club_timeline_data.dart';
 import 'package:goias_app/features/club/data/club_titles_data.dart';
+import 'package:goias_app/features/club/data/goias_idols_data.dart';
 import 'package:goias_app/features/membership/data/membership_plans_catalog.dart';
 import 'package:goias_app/features/membership/data/regulation_catalog.dart';
 import 'package:goias_app/features/membership/data/regulation_content.dart';
@@ -198,5 +199,6 @@ final goiasClubConfig = ClubConfig(
     historicalCampaigns: ClubTitlesData.historicalCampaigns,
     songs: ClubSongsData.songs,
     partners: PartnersData.all,
+    idols: GoiasIdolsData.idols,
   ),
 );

@@ -66,7 +66,7 @@ void main() {
   // "tela" pra tudo renderizar de uma vez, sem precisar rolar.
   void useTallSurface(WidgetTester tester) {
     addTearDown(tester.view.reset);
-    tester.view.physicalSize = const Size(800, 1600);
+    tester.view.physicalSize = const Size(800, 1900);
     tester.view.devicePixelRatio = 1.0;
   }
 
@@ -88,8 +88,9 @@ void main() {
     expect(find.text('Parceiros'), findsOneWidget);
     expect(find.text('Hino & Músicas'), findsOneWidget);
     expect(find.text('Linha do Tempo'), findsNothing);
+    // Ídolos do Goiás ativados em 2026-10-01 (37 nomes aprovados).
+    expect(find.text('Ídolos'), findsOneWidget);
     // Sem conteúdo real ainda — não devem ter entrada nenhuma na tela.
-    expect(find.text('Ídolos'), findsNothing);
     expect(find.text('Símbolos'), findsNothing);
     expect(find.text('Uniformes'), findsNothing);
     expect(find.text('Nossa Casa'), findsNothing);

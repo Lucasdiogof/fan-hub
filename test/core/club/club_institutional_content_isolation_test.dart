@@ -379,12 +379,17 @@ void main() {
   });
 
   group('Ídolos do Bragantino — semântica de evidência preservada', () {
-    test(
-      'Goiás não tem ídolos (feature nunca existiu pra ele — sem regressão)',
-      () {
-        expect(goiasClubConfig.institutionalContent.idols, isEmpty);
-      },
-    );
+    test('Goiás tem os próprios 37 ídolos aprovados (2026-10-01), todos '
+        'publicáveis e nenhum herdado do Bragantino', () {
+      final goias = goiasClubConfig.institutionalContent;
+      expect(goias.idols, hasLength(37));
+      expect(goias.publishedIdols, hasLength(37));
+      final names = goias.idols.map((i) => i.name).toSet();
+      expect(names, hasLength(37), reason: 'nenhum nome repetido');
+      for (final vetado in ['Romerito', 'Rodrigo Tabata', 'Ricardo Goulart']) {
+        expect(names, isNot(contains(vetado)));
+      }
+    });
 
     test('Lincom: estatística RESOLVIDA em 2026-09-07 — 160 jogos/72 gols como '
         'contador principal, 73 preservado só como nota de auditoria', () {
