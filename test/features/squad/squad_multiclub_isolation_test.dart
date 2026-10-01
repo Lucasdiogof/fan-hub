@@ -96,9 +96,9 @@ void main() {
         );
         expect(
           entry.value,
-          endsWith('.avif'),
+          endsWith('.png'),
           reason:
-              '${entry.key} precisa ser o hotlink AVIF, nunca outro formato inventado',
+              '${entry.key} precisa ser o hotlink PNG oficial, nunca outro formato inventado',
         );
       }
       expect(syntheticClubBConfig.assets.guessPlayerPhotos, isEmpty);
@@ -245,7 +245,7 @@ void main() {
           const SquadAvatar(
             memberId: 'dalberson',
             photoUrl:
-                'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif',
+                'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.png',
             shirtNumber: 1,
             size: 48,
           ),
@@ -256,7 +256,7 @@ void main() {
       final image = tester.widget<Image>(find.byType(Image));
       expect(
         (image.image as NetworkImage).url,
-        'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif',
+        'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.png',
       );
     });
   });

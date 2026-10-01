@@ -171,9 +171,10 @@ const GROUP_ORDER = ['Goleiros', 'Zagueiros', 'Laterais-direitos', 'Laterais-esq
     header(
       'Elenco profissional atual do Vila Nova (squad_members).',
       'docs/vila_nova_data/data/squad_current.json',
-      `-- ${rows.length} atletas. photo_url = foto individual real do site oficial (AVIF,
--- hotlink direto, 2026-09-30). club_history = histórico de clubes (ogol.com.br,
--- 2026-09-30) com período/jogos/gols por passagem; \`is_goias\` é a chave LEGADA
+      `-- ${rows.length} atletas. photo_url = foto individual real do site oficial (PNG,
+-- hotlink direto, 2026-09-30; PNG desde 2026-10-01). club_history = histórico de
+-- clubes (ogol.com.br, 2026-09-30, auditado em 2026-10-01) com período/jogos/gols
+-- por passagem; \`is_goias\` é a chave LEGADA
 -- que o app lê como "passagem pelo clube ativo" (aqui: Vila Nova), vinda de
 -- \`is_club\` no pacote — mesmo padrão de career_players.sql.`,
     ) +

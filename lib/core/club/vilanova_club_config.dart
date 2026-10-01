@@ -103,77 +103,77 @@ const _vilaNovaDark = AppColors(
 // `tooling/vilanova_brand/build_brand_assets.py` (nada redesenhado).
 // Fotos individuais reais do elenco atual, extraídas de
 // vilanovafc.com.br/elenco-profissional em 2026-09-30 (atributo `data-src`
-// de cada `<img>`, formato AVIF) — hotlink direto pro CDN oficial do
+// de cada `<img>`) — hotlink direto pro CDN oficial do
 // clube, nunca baixadas/redistribuídas (mesmo padrão do Bragantino,
 // `_bragantinoGuessPlayerPhotos`). Chave = `SquadMember.id`, reaproveitada
 // como `photo_key` das cartas do Manto que são o mesmo atleta do elenco
 // atual (`vilanova_guess_players.sql`) — a MESMA foto nas duas telas.
 //
-// CAVEAT conhecido: o CDN do Vila só serve `.avif`, sem negociação de
-// formato (`f_auto`) como o CDN do Bragantino — `Image.network` decodifica
-// AVIF via Skia no Flutter recente, mas isso não foi testado ainda num
-// device/emulador real neste momento. Se alguma foto não renderizar em
-// produção, é o primeiro suspeito a checar.
+// Formato PNG (2026-10-01): o CDN do Vila serve a mesma foto em `.avif` e
+// `.png` (o próprio site usa `.png` no `data-src`; as 31 URLs `.png`
+// conferidas, todas 200 `image/png`). A 1ª versão usava `.avif`, que nunca
+// foi visto renderizando num device — PNG decodifica em qualquer
+// plataforma do Flutter.
 const _vilaNovaGuessPlayerPhotos = {
   'vn_dalberson':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.png',
   'vn_gabriel_atila':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/gabriel-atila-692.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/gabriel-atila-692.png',
   'vn_helton_leite':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/helton-leite-453.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/helton-leite-453.png',
   'vn_anderson_jesus':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/anderson-jesus-051.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/anderson-jesus-051.png',
   'vn_breno_bora':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/breno-bora-580.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/breno-bora-580.png',
   'vn_douglas_mendes':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/douglas-mendes-285.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/douglas-mendes-285.png',
   'vn_jonathan_costa':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/jonathan-costa-809.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/jonathan-costa-809.png',
   'vn_samuel':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/samuel-648.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/samuel-648.png',
   'vn_tiago_pagnussat':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/tiago-pagnussat-614.avif',
-  'vn_dudu': 'https://www.vilanovafc.com.br/imgs/270/370/images/dudu-248.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/tiago-pagnussat-614.png',
+  'vn_dudu': 'https://www.vilanovafc.com.br/imgs/270/370/images/dudu-248.png',
   'vn_enzo_bizzotto':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/enzo-806.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/enzo-806.png',
   'vn_higor_meritao':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/higor-meritao-627.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/higor-meritao-627.png',
   'vn_joao_vieira':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/joao-vieira-816.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/joao-vieira-816.png',
   'vn_nathan_camargo':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/nathan-camargo-402.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/nathan-camargo-402.png',
   'vn_willian_maranhao':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/willian-maranhao-793.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/willian-maranhao-793.png',
   'vn_hayner':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/hayner-143.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/hayner-143.png',
   'vn_higor_luiz':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/higor-luiz-583.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/higor-luiz-583.png',
   'vn_igor_carius':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/igor-carius-029.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/igor-carius-029.png',
   'vn_willian_formiga':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/willian-formiga-896.avif',
-  'vn_dodo': 'https://www.vilanovafc.com.br/imgs/270/370/images/dodo-759.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/willian-formiga-896.png',
+  'vn_dodo': 'https://www.vilanovafc.com.br/imgs/270/370/images/dodo-759.png',
   'vn_marquinhos_gabriel':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/marquinhos-gabriel-089.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/marquinhos-gabriel-089.png',
   'vn_andre_luis':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/andre-luis-941.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/andre-luis-941.png',
   'vn_bruno_xavier':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/bruno-xavier-973.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/bruno-xavier-973.png',
   'vn_dellatorre':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/dellatorre-534.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/dellatorre-534.png',
   'vn_emerson_urso':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/emerson-urso-896.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/emerson-urso-896.png',
   'vn_everton_galdino':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/everton-galdino-691.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/everton-galdino-691.png',
   'vn_gustavo_puskas':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/gustavo-puskas-783.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/gustavo-puskas-783.png',
   'vn_janderson':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/janderson-468.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/janderson-468.png',
   'vn_lincoln':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/lincoln-317.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/lincoln-317.png',
   'vn_rafa_silva':
-      'https://www.vilanovafc.com.br/imgs/270/370/images/rafa-silva-051.avif',
-  'vn_ryan': 'https://www.vilanovafc.com.br/imgs/270/370/images/ryan-385.avif',
+      'https://www.vilanovafc.com.br/imgs/270/370/images/rafa-silva-051.png',
+  'vn_ryan': 'https://www.vilanovafc.com.br/imgs/270/370/images/ryan-385.png',
 };
 
 const _dir = 'lib/assets/branding/vilanova';

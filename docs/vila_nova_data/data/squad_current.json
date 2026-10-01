@@ -13,9 +13,9 @@
       "birth_date": "1997-01-13",
       "nationality": "Brasil",
       "height_cm": 191,
-      "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.avif",
-      "instagram_url": null,
+      "foot": "Canhoto",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dalberson-810.png",
+      "instagram_url": "https://www.instagram.com/dalberson_ferreira/",
       "club_history": [
         {
           "period": "2015",
@@ -110,9 +110,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -139,8 +137,8 @@
       "nationality": "Brasil",
       "height_cm": 193,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/gabriel-atila-692.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/gabriel-atila-692.png",
+      "instagram_url": "https://www.instagram.com/g.atila03/",
       "club_history": [
         {
           "period": "2018–2019",
@@ -185,9 +183,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -214,7 +210,7 @@
       "nationality": "Brasil",
       "height_cm": 196,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/helton-leite-453.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/helton-leite-453.png",
       "instagram_url": "https://www.instagram.com/heltonleite77/",
       "club_history": [
         {
@@ -417,8 +413,8 @@
       "nationality": "Brasil",
       "height_cm": 186,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/anderson-jesus-051.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/anderson-jesus-051.png",
+      "instagram_url": "https://www.instagram.com/andersonjs_05/",
       "club_history": [
         {
           "period": "2014",
@@ -603,9 +599,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -632,8 +626,8 @@
       "nationality": "Brasil",
       "height_cm": 186,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/breno-bora-580.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/breno-bora-580.png",
+      "instagram_url": "https://www.instagram.com/brenobora/",
       "club_history": [
         {
           "period": "2016",
@@ -808,9 +802,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -839,9 +831,9 @@
       "position_group": "Defensores",
       "birth_date": "2004-06-13",
       "nationality": "Brasil",
-      "height_cm": 188,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/douglas-mendes-285.avif",
+      "height_cm": 189,
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/douglas-mendes-285.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -968,7 +960,6 @@
       "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
-        "foot",
         "instagram_url"
       ],
       "sources": [
@@ -996,8 +987,8 @@
       "birth_date": "1995-04-19",
       "nationality": "Brasil",
       "height_cm": 186,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/jonathan-costa-809.avif",
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/jonathan-costa-809.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -1225,7 +1216,6 @@
       "status": "READY",
       "missing_fields": [
         "shirt_number",
-        "foot",
         "instagram_url"
       ],
       "sources": [
@@ -1254,7 +1244,7 @@
       "nationality": "Brasil",
       "height_cm": 189,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/samuel-648.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/samuel-648.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -1326,7 +1316,7 @@
       "nationality": "Brasil",
       "height_cm": 191,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/tiago-pagnussat-614.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/tiago-pagnussat-614.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -1521,8 +1511,8 @@
       "nationality": "Brasil",
       "height_cm": 184,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dudu-248.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dudu-248.png",
+      "instagram_url": "https://www.instagram.com/dudu_0.0.1/",
       "club_history": [
         {
           "period": "2019",
@@ -1637,9 +1627,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -1666,8 +1654,8 @@
       "nationality": "Brasil",
       "height_cm": 185,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/enzo-806.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/enzo-806.png",
+      "instagram_url": "https://www.instagram.com/enzob_9/",
       "club_history": [
         {
           "period": "2019–2024",
@@ -1702,9 +1690,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -1720,14 +1706,14 @@
       "id": "vn_higor_meritao",
       "name": "Higor Meritão",
       "full_name": "Higor Matheus Meritão",
-      "shirt_number": null,
+      "shirt_number": 21,
       "position": "Volante",
       "position_group": "Meio-campistas",
       "birth_date": "1994-06-23",
       "nationality": "Brasil",
-      "height_cm": null,
+      "height_cm": 186,
       "foot": "Canhoto",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/higor-meritao-627.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/higor-meritao-627.png",
       "instagram_url": "https://www.instagram.com/higormeritao/",
       "club_history": [
         {
@@ -1913,10 +1899,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "shirt_number",
-        "height_cm"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -1929,6 +1912,10 @@
         {
           "source_name": "Histórico de clubes — ogol.com.br",
           "source_url": "https://www.ogol.com.br/jogador/higor-meritao/564958"
+        },
+        {
+          "source_name": "ogol.com.br (auditoria 2026-10-01: shirt_number)",
+          "source_url": "https://www.ogol.com.br/jogo/2026-09-26-vila-nova-londrina/12043513"
         }
       ]
     },
@@ -1941,9 +1928,9 @@
       "position_group": "Meio-campistas",
       "birth_date": "1997-11-08",
       "nationality": "Brasil",
-      "height_cm": 173,
+      "height_cm": 171,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/joao-vieira-816.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/joao-vieira-816.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -2098,8 +2085,8 @@
       "nationality": "Brasil",
       "height_cm": 177,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/nathan-camargo-402.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/nathan-camargo-402.png",
+      "instagram_url": "https://www.instagram.com/ntcamargo_/",
       "club_history": [
         {
           "period": "2016",
@@ -2214,9 +2201,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -2243,8 +2228,8 @@
       "nationality": "Brasil",
       "height_cm": 179,
       "foot": "Canhoto",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/willian-maranhao-793.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/willian-maranhao-793.png",
+      "instagram_url": "https://www.instagram.com/willianmara21/",
       "club_history": [
         {
           "period": "2014",
@@ -2419,9 +2404,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -2444,7 +2427,7 @@
       "nationality": "Brasil",
       "height_cm": 178,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/hayner-143.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/hayner-143.png",
       "instagram_url": "https://www.instagram.com/hayner_27/",
       "club_history": [
         {
@@ -2647,8 +2630,8 @@
       "nationality": "Brasil",
       "height_cm": 178,
       "foot": "Canhoto",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/higor-luiz-583.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/higor-luiz-583.png",
+      "instagram_url": "https://www.instagram.com/higorluiizz/",
       "club_history": [
         {
           "period": "2019",
@@ -2773,9 +2756,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -2797,9 +2778,9 @@
       "birth_date": "1993-05-01",
       "nationality": "Brasil",
       "height_cm": 182,
-      "foot": "Canhoto",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/igor-carius-029.avif",
-      "instagram_url": null,
+      "foot": "Ambidestro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/igor-carius-029.png",
+      "instagram_url": "https://www.instagram.com/igorcariusoficial/",
       "club_history": [
         {
           "period": "2012–2013",
@@ -2954,9 +2935,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -2983,8 +2962,8 @@
       "nationality": "Brasil",
       "height_cm": 185,
       "foot": "Canhoto",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/willian-formiga-896.avif",
-      "instagram_url": null,
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/willian-formiga-896.png",
+      "instagram_url": "https://www.instagram.com/formigaa95/",
       "club_history": [
         {
           "period": "2013",
@@ -3149,9 +3128,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -3178,7 +3155,7 @@
       "nationality": "Brasil",
       "height_cm": 171,
       "foot": "Destro",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dodo-759.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dodo-759.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -3353,7 +3330,7 @@
       "nationality": "Brasil",
       "height_cm": 174,
       "foot": "Canhoto",
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/marquinhos-gabriel-089.avif",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/marquinhos-gabriel-089.png",
       "instagram_url": "https://www.instagram.com/marquinhosgabriel20/",
       "club_history": [
         {
@@ -3632,12 +3609,12 @@
       "shirt_number": 7,
       "position": "Atacante",
       "position_group": "Atacantes",
-      "birth_date": null,
+      "birth_date": "1997-04-21",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/andre-luis-941.avif",
-      "instagram_url": null,
+      "height_cm": 179,
+      "foot": "Canhoto",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/andre-luis-941.png",
+      "instagram_url": "https://www.instagram.com/andreluis97oficial/",
       "club_history": [
         {
           "period": "2008",
@@ -3812,12 +3789,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "birth_date",
-        "height_cm",
-        "foot",
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -3837,15 +3809,15 @@
       "id": "vn_bruno_xavier",
       "name": "Bruno Xavier",
       "full_name": "Bruno César Xavier Sislo",
-      "shirt_number": null,
+      "shirt_number": 33,
       "position": "Atacante",
       "position_group": "Atacantes",
-      "birth_date": null,
+      "birth_date": "1996-11-27",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/bruno-xavier-973.avif",
-      "instagram_url": null,
+      "height_cm": 177,
+      "foot": "Canhoto",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/bruno-xavier-973.png",
+      "instagram_url": "https://www.instagram.com/_brunoxavier96/",
       "club_history": [
         {
           "period": "2011",
@@ -4090,13 +4062,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "shirt_number",
-        "birth_date",
-        "height_cm",
-        "foot",
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -4109,6 +4075,10 @@
         {
           "source_name": "Histórico de clubes — ogol.com.br",
           "source_url": "https://www.ogol.com.br/jogador/bruno-xavier/464667"
+        },
+        {
+          "source_name": "ogol.com.br (auditoria 2026-10-01: shirt_number)",
+          "source_url": "https://www.ogol.com.br/jogo/2026-09-26-vila-nova-londrina/12043513"
         }
       ]
     },
@@ -4119,12 +4089,12 @@
       "shirt_number": 49,
       "position": "Centroavante",
       "position_group": "Atacantes",
-      "birth_date": null,
+      "birth_date": "1992-05-01",
       "nationality": "Brasil",
       "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dellatorre-534.avif",
-      "instagram_url": null,
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/dellatorre-534.png",
+      "instagram_url": "https://www.instagram.com/guilherme.dellatorre/",
       "club_history": [
         {
           "period": "2008–2009",
@@ -4370,10 +4340,7 @@
       "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
-        "birth_date",
-        "height_cm",
-        "foot",
-        "instagram_url"
+        "height_cm"
       ],
       "sources": [
         {
@@ -4399,9 +4366,9 @@
       "position_group": "Atacantes",
       "birth_date": "2001-05-13",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/emerson-urso-896.avif",
+      "height_cm": 169,
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/emerson-urso-896.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -4538,8 +4505,6 @@
       "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
-        "height_cm",
-        "foot",
         "instagram_url"
       ],
       "sources": [
@@ -4564,11 +4529,11 @@
       "shirt_number": 17,
       "position": "Atacante",
       "position_group": "Atacantes",
-      "birth_date": null,
+      "birth_date": "1997-03-17",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/everton-galdino-691.avif",
+      "height_cm": 177,
+      "foot": "Canhoto",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/everton-galdino-691.png",
       "instagram_url": "https://www.instagram.com/evertongaldinoo/",
       "club_history": [
         {
@@ -4694,11 +4659,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "birth_date",
-        "height_cm",
-        "foot"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -4721,11 +4682,11 @@
       "shirt_number": 9,
       "position": "Centroavante",
       "position_group": "Atacantes",
-      "birth_date": null,
+      "birth_date": "2008-02-26",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/gustavo-puskas-783.avif",
+      "height_cm": 185,
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/gustavo-puskas-783.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -4782,9 +4743,6 @@
       "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
-        "birth_date",
-        "height_cm",
-        "foot",
         "instagram_url"
       ],
       "sources": [
@@ -4811,10 +4769,10 @@
       "position_group": "Atacantes",
       "birth_date": "1999-02-26",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/janderson-468.avif",
-      "instagram_url": null,
+      "height_cm": 169,
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/janderson-468.png",
+      "instagram_url": "https://www.instagram.com/janderson99/",
       "club_history": [
         {
           "period": "2016",
@@ -4969,11 +4927,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "height_cm",
-        "foot",
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -4996,11 +4950,11 @@
       "shirt_number": null,
       "position": "Centroavante",
       "position_group": "Atacantes",
-      "birth_date": null,
+      "birth_date": "2000-12-16",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/lincoln-317.avif",
+      "height_cm": 180,
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/lincoln-317.png",
       "instagram_url": "https://www.instagram.com/lincoln9/",
       "club_history": [
         {
@@ -5097,10 +5051,7 @@
       "club_history_status": "READY",
       "status": "READY",
       "missing_fields": [
-        "shirt_number",
-        "birth_date",
-        "height_cm",
-        "foot"
+        "shirt_number"
       ],
       "sources": [
         {
@@ -5120,11 +5071,11 @@
       "shirt_number": null,
       "position": "Centroavante",
       "position_group": "Atacantes",
-      "birth_date": null,
+      "birth_date": "1992-04-04",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/rafa-silva-051.avif",
+      "height_cm": 179,
+      "foot": "Destro",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/rafa-silva-051.png",
       "instagram_url": null,
       "club_history": [
         {
@@ -5272,9 +5223,6 @@
       "status": "READY",
       "missing_fields": [
         "shirt_number",
-        "birth_date",
-        "height_cm",
-        "foot",
         "instagram_url"
       ],
       "sources": [
@@ -5301,10 +5249,10 @@
       "position_group": "Atacantes",
       "birth_date": "2001-06-18",
       "nationality": "Brasil",
-      "height_cm": null,
-      "foot": null,
-      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/ryan-385.avif",
-      "instagram_url": null,
+      "height_cm": 171,
+      "foot": "Canhoto",
+      "photo_source_url": "https://www.vilanovafc.com.br/imgs/270/370/images/ryan-385.png",
+      "instagram_url": "https://www.instagram.com/ryann_limma/",
       "club_history": [
         {
           "period": "2018",
@@ -5399,11 +5347,7 @@
       ],
       "club_history_status": "READY",
       "status": "READY",
-      "missing_fields": [
-        "height_cm",
-        "foot",
-        "instagram_url"
-      ],
+      "missing_fields": [],
       "sources": [
         {
           "source_name": "Vila Nova FC — elenco profissional",
@@ -5679,8 +5623,8 @@
           "source": "Premium League"
         }
       ],
-      "resolution": "Usar 1995-01-22 provisoriamente; conflito permanece documentado.",
-      "status": "REVIEW"
+      "resolution": "1995-01-22 confirmado também pelo ogol (auditoria 2026-10-01).",
+      "status": "RESOLVED"
     },
     {
       "player_id": "vn_higor_meritao",
@@ -5695,8 +5639,8 @@
           "source": "perfil de agente"
         }
       ],
-      "resolution": "height_cm=null até fonte mais forte.",
-      "status": "REVIEW"
+      "resolution": "186 confirmado por ogol, FotMob e Transfermarkt (auditoria 2026-10-01).",
+      "status": "RESOLVED"
     }
   ],
   "photo_coverage": {
