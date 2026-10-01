@@ -12,6 +12,13 @@
 //  - Linhas consecutivas do MESMO clube (adjacentes na lista, sem outro
 //    clube sênior no meio) viram um único período; soma J/G quando todas
 //    as temporadas mescladas têm número, senão marca 'partial'.
+//  - LIMITAÇÃO CONHECIDA (auditoria 2026-10-01): quando duas temporadas
+//    dividem a célula mesclada da tabela, o innerText perde o rótulo da
+//    segunda, e ela herda o da linha de cima (ex.: clube europeu "2024/25"
+//    sai como "2025"). Também marca empréstimo na passagem inteira se
+//    qualquer temporada for (E). As correções ficam em
+//    `_career_corrections.json`, aplicadas por `_apply_career_to_squad.mjs`;
+//    numa próxima coleta, prefira ler o HTML do perfil.
 //  - ogol só dá precisão de ANO (ou "2021/22" pra temporadas européias) —
 //    nunca mês; period fica só em anos, diferente do formato mês/ano usado
 //    nos dados antigos do Goiás.

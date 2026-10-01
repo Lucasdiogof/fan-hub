@@ -58,7 +58,7 @@
           "is_club": false
         },
         {
-          "period": "2021/22–2023",
+          "period": "2021/22–2022/23",
           "team": "FC Famalicão",
           "appearances": 3,
           "goals": 0,
@@ -298,13 +298,23 @@
           "is_club": false
         },
         {
-          "period": "2014–2017",
+          "period": "2014",
           "team": "Botafogo",
-          "appearances": 32,
+          "appearances": 8,
           "goals": 0,
           "loan": true,
           "data_quality": "verified",
           "notes": "Emprestado por Criciúma.",
+          "is_club": false
+        },
+        {
+          "period": "2015–2017",
+          "team": "Botafogo",
+          "appearances": 24,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null,
           "is_club": false
         },
         {
@@ -348,7 +358,7 @@
           "is_club": false
         },
         {
-          "period": "2025",
+          "period": "2024/25",
           "team": "Deportivo",
           "appearances": 37,
           "goals": 0,
@@ -541,7 +551,7 @@
           "is_club": false
         },
         {
-          "period": "2021/22–2024",
+          "period": "2021/22–2023/24",
           "team": "FC Vizela",
           "appearances": 82,
           "goals": 3,
@@ -895,7 +905,7 @@
           "is_club": false
         },
         {
-          "period": "2024",
+          "period": "2023/24",
           "team": "Red Bull Salzburg",
           "appearances": null,
           "goals": null,
@@ -905,7 +915,7 @@
           "is_club": false
         },
         {
-          "period": "2024",
+          "period": "2023/24",
           "team": "Liefering",
           "appearances": 7,
           "goals": 0,
@@ -925,7 +935,7 @@
           "is_club": false
         },
         {
-          "period": "2026",
+          "period": "2025/26",
           "team": "Liefering",
           "appearances": 7,
           "goals": 0,
@@ -935,7 +945,7 @@
           "is_club": false
         },
         {
-          "period": "2026",
+          "period": "2025/26",
           "team": "Red Bull Salzburg",
           "appearances": 1,
           "goals": 0,
@@ -1031,7 +1041,7 @@
           "is_club": false
         },
         {
-          "period": "2014/15–2016",
+          "period": "2014/15–2015/16",
           "team": "Portimonense",
           "appearances": 5,
           "goals": 0,
@@ -1841,7 +1851,7 @@
           "is_club": false
         },
         {
-          "period": "2021/22–2023",
+          "period": "2021/22–2022/23",
           "team": "Pumas",
           "appearances": 69,
           "goals": 2,
@@ -1977,7 +1987,7 @@
           "is_club": false
         },
         {
-          "period": "2020",
+          "period": "2019/20",
           "team": "Internacional de Madrid",
           "appearances": 5,
           "goals": 0,
@@ -2387,7 +2397,7 @@
           "is_club": false
         },
         {
-          "period": "2026",
+          "period": "2025/26",
           "team": "Hà Nôi",
           "appearances": 9,
           "goals": 0,
@@ -2558,7 +2568,7 @@
           "is_club": false
         },
         {
-          "period": "2023",
+          "period": "2022/23",
           "team": "Dnipro-1",
           "appearances": 17,
           "goals": 0,
@@ -3057,7 +3067,7 @@
           "is_club": false
         },
         {
-          "period": "2016/17–2018",
+          "period": "2016/17–2017/18",
           "team": "Vitória SC (base)",
           "appearances": 1,
           "goals": 0,
@@ -3252,7 +3262,7 @@
           "is_club": false
         },
         {
-          "period": "2019/20–2023",
+          "period": "2019/20–2022/23",
           "team": "Khorfakkan",
           "appearances": 101,
           "goals": 28,
@@ -3282,7 +3292,7 @@
           "is_club": false
         },
         {
-          "period": "2025",
+          "period": "2024/25",
           "team": "Kazma SC",
           "appearances": null,
           "goals": null,
@@ -3457,7 +3467,7 @@
           "is_club": false
         },
         {
-          "period": "2015",
+          "period": "2014/15",
           "team": "Al-Nassr",
           "appearances": 12,
           "goals": 1,
@@ -3477,7 +3487,7 @@
           "is_club": false
         },
         {
-          "period": "2016",
+          "period": "2015/16",
           "team": "Al-Nassr",
           "appearances": 9,
           "goals": 2,
@@ -3497,7 +3507,7 @@
           "is_club": false
         },
         {
-          "period": "2019",
+          "period": "2018/19",
           "team": "Al-Nasr",
           "appearances": 18,
           "goals": 5,
@@ -3928,7 +3938,7 @@
           "is_club": false
         },
         {
-          "period": "2020",
+          "period": "2019/20",
           "team": "CD Aves",
           "appearances": 7,
           "goals": 0,
@@ -4197,7 +4207,7 @@
           "is_club": false
         },
         {
-          "period": "2013",
+          "period": "2012/13",
           "team": "FC Porto (base)",
           "appearances": 36,
           "goals": 11,
@@ -4207,7 +4217,7 @@
           "is_club": false
         },
         {
-          "period": "2013",
+          "period": "2012/13",
           "team": "FC Porto",
           "appearances": 0,
           "goals": 0,
@@ -4227,7 +4237,7 @@
           "is_club": false
         },
         {
-          "period": "2014",
+          "period": "2013/14",
           "team": "QPR",
           "appearances": null,
           "goals": null,
@@ -4505,14 +4515,24 @@
           "is_club": false
         },
         {
-          "period": "2024–2026",
+          "period": "2024",
           "team": "Vila Nova",
-          "appearances": 62,
-          "goals": 8,
+          "appearances": 23,
+          "goals": 3,
           "loan": true,
+          "is_club": true,
           "data_quality": "verified",
-          "notes": "Emprestado por Botafogo.",
-          "is_club": true
+          "notes": "Emprestado por Botafogo."
+        },
+        {
+          "period": "2025–2026",
+          "team": "Vila Nova",
+          "appearances": 39,
+          "goals": 5,
+          "loan": false,
+          "is_club": true,
+          "data_quality": "verified",
+          "notes": null
         }
       ],
       "club_history_status": "READY",
@@ -5034,7 +5054,7 @@
           "is_club": false
         },
         {
-          "period": "2023/24–2025",
+          "period": "2023/24–2024/25",
           "team": "SCR Altach",
           "appearances": 2,
           "goals": 0,
@@ -5054,7 +5074,7 @@
           "is_club": false
         },
         {
-          "period": "2026",
+          "period": "2025/26",
           "team": "Spartak Subotica",
           "appearances": 16,
           "goals": 4,

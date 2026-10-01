@@ -1,0 +1,397 @@
+{
+  "_doc": "Correções sobre o parse do ogol (tooling/vilanova_content/_ogol_parsed.json), aplicadas por _apply_career_to_squad.mjs DEPOIS do parser. Auditoria de 2026-10-01: (1) temporada europeia/asiática herdando o rótulo do ano civil da linha de cima (o texto colado do ogol perde a célula de temporada mesclada; o rótulo certo foi relido no HTML de cada perfil); (2) passagem com empréstimo só em parte das temporadas, dividida em empréstimo + definitivo quando confirmado fora do ogol. Cada item tem a fonte.",
+  "corrections": [
+    {
+      "player_id": "vn_dalberson",
+      "match": {
+        "team": "FC Famalicão",
+        "period": "2021/22–2023"
+      },
+      "field": "period",
+      "from": "2021/22–2023",
+      "to": "2021/22–2022/23",
+      "source": "https://www.ogol.com.br/jogador/dalberson/503130",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2021/22–2022/23\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_helton_leite",
+      "match": {
+        "team": "Deportivo",
+        "period": "2025"
+      },
+      "field": "period",
+      "from": "2025",
+      "to": "2024/25",
+      "source": "https://www.ogol.com.br/jogador/helton-leite/168622",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2024/25\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_anderson_jesus",
+      "match": {
+        "team": "FC Vizela",
+        "period": "2021/22–2024"
+      },
+      "field": "period",
+      "from": "2021/22–2024",
+      "to": "2021/22–2023/24",
+      "source": "https://www.ogol.com.br/jogador/anderson-jesus/448159",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2021/22–2023/24\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2024"
+      },
+      "field": "period",
+      "from": "2024",
+      "to": "2023/24",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2023/24\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Liefering",
+        "period": "2024"
+      },
+      "field": "period",
+      "from": "2024",
+      "to": "2023/24",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2023/24\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Liefering",
+        "period": "2026"
+      },
+      "field": "period",
+      "from": "2026",
+      "to": "2025/26",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2025/26\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2026"
+      },
+      "field": "period",
+      "from": "2026",
+      "to": "2025/26",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2025/26\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_jonathan_costa",
+      "match": {
+        "team": "Portimonense",
+        "period": "2014/15–2016"
+      },
+      "field": "period",
+      "from": "2014/15–2016",
+      "to": "2014/15–2015/16",
+      "source": "https://www.ogol.com.br/jogador/jonathan-costa/401758",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2014/15–2015/16\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_higor_meritao",
+      "match": {
+        "team": "Pumas",
+        "period": "2021/22–2023"
+      },
+      "field": "period",
+      "from": "2021/22–2023",
+      "to": "2021/22–2022/23",
+      "source": "https://www.ogol.com.br/jogador/higor-meritao/564958",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2021/22–2022/23\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_joao_vieira",
+      "match": {
+        "team": "Internacional de Madrid",
+        "period": "2020"
+      },
+      "field": "period",
+      "from": "2020",
+      "to": "2019/20",
+      "source": "https://www.ogol.com.br/jogador/joao-vieira/555397",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2019/20\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_willian_maranhao",
+      "match": {
+        "team": "Hà Nôi",
+        "period": "2026"
+      },
+      "field": "period",
+      "from": "2026",
+      "to": "2025/26",
+      "source": "https://www.ogol.com.br/jogador/willian-maranhao/392636",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2025/26\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_hayner",
+      "match": {
+        "team": "Dnipro-1",
+        "period": "2023"
+      },
+      "field": "period",
+      "from": "2023",
+      "to": "2022/23",
+      "source": "https://www.ogol.com.br/jogador/hayner/473696",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2022/23\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_willian_formiga",
+      "match": {
+        "team": "Vitória SC (base)",
+        "period": "2016/17–2018"
+      },
+      "field": "period",
+      "from": "2016/17–2018",
+      "to": "2016/17–2017/18",
+      "source": "https://www.ogol.com.br/jogador/willian-formiga/492039",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2016/17–2017/18\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_dodo",
+      "match": {
+        "team": "Khorfakkan",
+        "period": "2019/20–2023"
+      },
+      "field": "period",
+      "from": "2019/20–2023",
+      "to": "2019/20–2022/23",
+      "source": "https://www.ogol.com.br/jogador/dodo/364441",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2019/20–2022/23\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_dodo",
+      "match": {
+        "team": "Kazma SC",
+        "period": "2025"
+      },
+      "field": "period",
+      "from": "2025",
+      "to": "2024/25",
+      "source": "https://www.ogol.com.br/jogador/dodo/364441",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2024/25\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Al-Nassr",
+        "period": "2015"
+      },
+      "field": "period",
+      "from": "2015",
+      "to": "2014/15",
+      "source": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2014/15\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Al-Nassr",
+        "period": "2016"
+      },
+      "field": "period",
+      "from": "2016",
+      "to": "2015/16",
+      "source": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2015/16\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Al-Nasr",
+        "period": "2019"
+      },
+      "field": "period",
+      "from": "2019",
+      "to": "2018/19",
+      "source": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2018/19\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_bruno_xavier",
+      "match": {
+        "team": "CD Aves",
+        "period": "2020"
+      },
+      "field": "period",
+      "from": "2020",
+      "to": "2019/20",
+      "source": "https://www.ogol.com.br/jogador/bruno-xavier/464667",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2019/20\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_dellatorre",
+      "match": {
+        "team": "FC Porto (base)",
+        "period": "2013"
+      },
+      "field": "period",
+      "from": "2013",
+      "to": "2012/13",
+      "source": "https://www.ogol.com.br/jogador/dellatorre/196999",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2012/13\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_dellatorre",
+      "match": {
+        "team": "FC Porto",
+        "period": "2013"
+      },
+      "field": "period",
+      "from": "2013",
+      "to": "2012/13",
+      "source": "https://www.ogol.com.br/jogador/dellatorre/196999",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2012/13\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_dellatorre",
+      "match": {
+        "team": "QPR",
+        "period": "2014"
+      },
+      "field": "period",
+      "from": "2014",
+      "to": "2013/14",
+      "source": "https://www.ogol.com.br/jogador/dellatorre/196999",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2013/14\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_lincoln",
+      "match": {
+        "team": "SCR Altach",
+        "period": "2023/24–2025"
+      },
+      "field": "period",
+      "from": "2023/24–2025",
+      "to": "2023/24–2024/25",
+      "source": "https://www.ogol.com.br/jogador/lincoln/547764",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2023/24–2024/25\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_lincoln",
+      "match": {
+        "team": "Spartak Subotica",
+        "period": "2026"
+      },
+      "field": "period",
+      "from": "2026",
+      "to": "2025/26",
+      "source": "https://www.ogol.com.br/jogador/lincoln/547764",
+      "corroboration": null,
+      "reason": "Temporada de liga europeia/asiática de calendário cruzado: o ogol exibe esta temporada como \"2025/26\" (card da temporada / epoca_id); o parser herdou o rótulo do ano civil da linha anterior porque a célula de temporada vinha em branco."
+    },
+    {
+      "player_id": "vn_helton_leite",
+      "match": {
+        "team": "Botafogo",
+        "period": "2014–2017"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2014–2017",
+        "team": "Botafogo",
+        "appearances": 32,
+        "goals": 0,
+        "loan": true,
+        "notes": "Emprestado por Criciúma."
+      },
+      "to": [
+        {
+          "period": "2014",
+          "team": "Botafogo",
+          "appearances": 8,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Criciúma."
+        },
+        {
+          "period": "2015–2017",
+          "team": "Botafogo",
+          "appearances": 24,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/helton-leite/168622",
+      "corroboration": "https://en.wikipedia.org/wiki/Helton_Leite (compra pelo Botafogo junto ao Criciúma em 07/01/2015)",
+      "reason": "Só 2014 é (E) no ogol; a partir de 2015 vínculo definitivo. Hoje a passagem inteira aparece com a tag de empréstimo."
+    },
+    {
+      "player_id": "vn_emerson_urso",
+      "match": {
+        "team": "Vila Nova",
+        "period": "2024–2026"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2024–2026",
+        "team": "Vila Nova",
+        "appearances": 62,
+        "goals": 8,
+        "loan": true,
+        "notes": "Emprestado por Botafogo."
+      },
+      "to": [
+        {
+          "period": "2024",
+          "team": "Vila Nova",
+          "appearances": 23,
+          "goals": 3,
+          "loan": true,
+          "is_club": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Botafogo."
+        },
+        {
+          "period": "2025–2026",
+          "team": "Vila Nova",
+          "appearances": 39,
+          "goals": 5,
+          "loan": false,
+          "is_club": true,
+          "data_quality": "verified",
+          "notes": null
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/emerson-urso/693635",
+      "corroboration": "https://www.ogol.com.br/noticias/emerson-urso-assina-com-o-vila-nova-em-definitivo/714540 ; https://www.fogaonet.com/noticias-do-botafogo/botafogo-libera-emerson-urso-vila-nova-definitivo-mantem-percentual/",
+      "reason": "Empréstimo só em 2024; definitivo no Vila desde 2025. A passagem ATUAL dele aparece no app como empréstimo — errado."
+    }
+  ]
+}
