@@ -302,7 +302,10 @@ void main() {
         content.publishedIdols.map((i) => i.name),
         isNot(contains('Túlio Maravilha')),
       );
-      expect(content.publishedIdols, hasLength(9));
+      // 9 + 10 novos confirmados na auditoria de 2026-09-30 (Gibrair,
+      // Fernandinho, Roberto Oliveira, Zé Luís, Zé Henrique, Timoura,
+      // Paulinho Benga, Sabino, Moisés, Michel Alves).
+      expect(content.publishedIdols, hasLength(19));
     });
 
     test('nenhum texto institucional carrega identidade de outro clube nem '

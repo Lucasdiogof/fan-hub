@@ -417,9 +417,11 @@ void main() {
       }
     });
 
-    test('tier 1 tem exatamente os 14 nomes fortes do levantamento '
+    test('tier 1 tem exatamente os 19 nomes fortes do levantamento '
         '(8 originais + 7 promovidos em 2026-09-07 - "Marcelo" removido em '
-        '2026-09-09, nunca substituídos)', () {
+        '2026-09-09 + 5 em 2026-09-30: Marcelo Martelotte, com a identidade '
+        'resolvida, e Alberto Félix, Wilsinho Acedo, Hélio Burini e Nivaldo '
+        '"Queixo-de-mula")', () {
       final tier1Names = bragantinoClubConfig.institutionalContent.idols
           .where((i) => i.tier == 1)
           .map((i) => i.name)
@@ -434,6 +436,11 @@ void main() {
         'Luís Müller',
         'Biro-Biro',
         'Ivair',
+        'Marcelo Martelotte',
+        'Alberto Félix',
+        'Wilsinho Acedo',
+        'Hélio Burini',
+        'Nivaldo "Queixo-de-mula"',
         'Ytalo',
         'Claudinho',
         'Artur',
@@ -442,11 +449,12 @@ void main() {
       });
     });
 
-    test('25 nomes ao todo (14 tier 1 + 5 tier 2 + 6 tier 3)', () {
+    test('31 nomes ao todo (19 tier 1 + 6 tier 2 + 6 tier 3; Nardinho '
+        'entrou no tier 2 em 2026-09-30)', () {
       final idols = bragantinoClubConfig.institutionalContent.idols;
-      expect(idols.length, 25);
-      expect(idols.where((i) => i.tier == 1).length, 14);
-      expect(idols.where((i) => i.tier == 2).length, 5);
+      expect(idols.length, 31);
+      expect(idols.where((i) => i.tier == 1).length, 19);
+      expect(idols.where((i) => i.tier == 2).length, 6);
       expect(idols.where((i) => i.tier == 3).length, 6);
     });
   });

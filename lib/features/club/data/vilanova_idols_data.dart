@@ -14,6 +14,20 @@ import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 /// Números de jogos/gols só aparecem quando a fonte cobre a passagem
 /// inteira; quando a base é parcial (Guilherme), o texto não cita número.
 /// FOTOS: nenhuma ainda (ASSET_GAP, ver `docs/vila_nova_data/assets_todo.md`).
+///
+/// Lote 2026-09-30 (pendências da rodada de auditoria de elenco):
+/// adicionados Gibrair Caetano, Fernandinho, Roberto Oliveira, Zé Luís,
+/// Zé Henrique, Timoura, Paulinho Benga, Sabino, Moisés e Michel Alves —
+/// todos com identidade e período confirmados por pesquisa dedicada.
+/// Correção de Alan Mineiro (artilheiro 2020) MANTIDA sem alteração: a
+/// reauditoria (ogol.com.br, quebra temporada a temporada) fechou
+/// exatamente em 45 gols/156 jogos, confirmando o valor já publicado —
+/// a fonte alternativa (49/175) não bateu com o detalhamento por
+/// temporada e foi descartada.
+/// "Luciano" NÃO foi adicionado: candidato mais provável é Luciano
+/// Santos Gonçalves ("Luciano Goiano", anos 1990), mas a fonte histórica
+/// cita só "Luciano" sem desambiguação suficiente — pendência aberta,
+/// não transformar em certeza sem evidência adicional.
 class VilaNovaIdolsData {
   const VilaNovaIdolsData._();
 
@@ -127,6 +141,112 @@ class VilaNovaIdolsData {
       position: 'Lateral-esquerdo',
       description:
           'Campeão da Série C de 2020. Retido: segue em atividade no elenco.',
+    ),
+    ClubIdol(
+      name: 'Gibrair Caetano',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Meio-campista',
+      period: '1958–1963',
+      description:
+          'Conhecido como "Pérola Negra", artilheiro do Campeonato '
+          'Goiano de 1961 e integrante da geração do primeiro título '
+          'estadual do Vila Nova.',
+    ),
+    ClubIdol(
+      name: 'Fernandinho',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Ponta-direita',
+      period: '1972–1973; 1976–1979',
+      description:
+          'Hugo Fernando Bonfim Queiroz. Campeão goiano pelo Vila em '
+          '1973, 1977, 1978 e 1979; também teve passagem pelo Santos.',
+    ),
+    ClubIdol(
+      name: 'Roberto Oliveira',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Volante',
+      period: '1977–1985',
+      description:
+          'Oswaldo Roberto Oliveira. Campeão goiano pelo Vila em 1977, '
+          '1978, 1979, 1980, 1982 e 1984; depois virou treinador.',
+    ),
+    ClubIdol(
+      name: 'Zé Luís',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Lateral-direito',
+      period: '1969–1985',
+      description:
+          'José Luis dos Santos. Ligado ao clube desde as categorias de '
+          'base em 1969; integrante das gerações campeãs goianas de '
+          '1977, 1978, 1979, 1980 e 1982.',
+    ),
+    ClubIdol(
+      name: 'Zé Henrique',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Ponta-direita',
+      period: '1978–1985',
+      description:
+          'Artilheiro do Campeonato Goiano em 1980 e 1984 (há '
+          'divergência entre fontes sobre o número exato de gols em uma '
+          'dessas artilharias). Nome completo não confirmado.',
+    ),
+    ClubIdol(
+      name: 'Timoura',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Zagueiro',
+      period: '1977–1982',
+      description:
+          'Integrante da geração tetracampeã goiana (1977, 1978, 1979 '
+          'e 1980). Nome completo não confirmado.',
+    ),
+    ClubIdol(
+      name: 'Paulinho Benga',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Ponta-esquerda',
+      period: '1978–1983',
+      description:
+          'Paulo César de Souza. Integrante do tetracampeonato goiano e '
+          'campeão em 1982; depois seguiu ligado ao clube em funções '
+          'técnicas e de categorias de base.',
+    ),
+    ClubIdol(
+      name: 'Sabino',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Meia',
+      period: '1996–1998',
+      description:
+          'Bartolomeu Moreira Neves. Campeão brasileiro da Série C de '
+          '1996, destaque ofensivo daquela campanha, com retorno '
+          'posterior ao clube.',
+    ),
+    ClubIdol(
+      name: 'Moisés',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Atacante',
+      period: '2015–',
+      description:
+          'Moisés Oliveira Brito. Um dos artilheiros do título da Série '
+          'C de 2015 (8 gols, atrás apenas de Carlos Frontini, autor de '
+          '9), com bom desempenho de gols também na Série B.',
+    ),
+    ClubIdol(
+      name: 'Michel Alves',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Goleiro',
+      period: '2004–2005; 2011',
+      description:
+          'Michel Aluízio da Cruz Alves. Goleiro do time campeão goiano '
+          'de 2005, ao lado de Tim e Pedro Júnior.',
     ),
     ClubIdol(
       name: 'Bé',

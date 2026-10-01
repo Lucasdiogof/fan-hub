@@ -32,13 +32,27 @@ const _tier1Names = [
   // concretas encontradas, não mais "revisão pendente".
   'Biro-Biro',
   'Ivair',
+  // Adicionados na auditoria de elenco de 2026-09-30 (pesquisa dedicada,
+  // fonte + período confirmados — ver bragantino_idols_data.dart).
+  'Marcelo Martelotte',
+  'Alberto Félix',
+  'Wilsinho Acedo',
+  'Hélio Burini',
+  'Nivaldo "Queixo-de-mula"',
   'Ytalo',
   'Claudinho',
   'Artur',
   'Léo Ortiz',
   'Aderlan',
 ];
-const _tier2Names = ['Tiba', 'Júnior', 'Nei', 'Jadsom', 'Lucas Evangelista'];
+const _tier2Names = [
+  'Tiba',
+  'Júnior',
+  'Nei',
+  'Jadsom',
+  'Lucas Evangelista',
+  'Nardinho',
+];
 const _tier3Names = ['Adãozinho', 'Somália', 'Davi', 'Matheus Peixoto'];
 
 ClubConfig _withIdols(ClubConfig base, List<ClubIdol> idols) => ClubConfig(
@@ -79,7 +93,9 @@ void main() {
 
   void useTallSurface(WidgetTester tester) {
     addTearDown(tester.view.reset);
-    tester.view.physicalSize = const Size(800, 2400);
+    // Altura generosa o bastante pra caber todo o pool tier-1 do Bragantino
+    // sem scroll (cresceu de 13 pra 20 nomes na auditoria de 2026-09-30).
+    tester.view.physicalSize = const Size(800, 4200);
     tester.view.devicePixelRatio = 1.0;
   }
 

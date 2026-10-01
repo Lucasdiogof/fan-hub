@@ -6,11 +6,12 @@ import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 /// ainda em revisão (`REVIEW`, menor confiança). NUNCA promover 2/3 pro
 /// mesmo peso do Tier 1 sem checagem adicional.
 ///
-/// Lincom: RESOLVIDO em 2026-09-07 (pacote `docs/bragantino_data`) — fonte
-/// contemporânea de dezembro/2016 registra explicitamente 160 jogos / 72
-/// gols (passagens pelo Bragantino, todas as competições oficiais). Fontes
-/// retrospectivas posteriores citam 73 gols — mantido como nota de
-/// auditoria, nunca como contador principal.
+/// Lincom: ATUALIZADO em 2026-09-30 — reauditoria (3ª/4ª fonte) encontrou
+/// confirmação direta pela conta oficial do clube (@RedBullBraga, X/Twitter:
+/// "autor de 73 gols com o manto do Massa Bruta") somada a 3 veículos
+/// esportivos distintos, todos convergindo em 73 gols (2011-2016), sem
+/// nenhuma fonte atual sustentando 72. O "72" (fonte contemporânea de
+/// dezembro/2016) foi substituído; 73 passa a ser o contador principal.
 ///
 /// Atualização 2026-09-07 (mesmo pacote): Biro-Biro, Ivair, Claudinho, Léo
 /// Ortiz, Artur, Ytalo e Aderlan promovidos de tier 2 pra tier 1 — a nova
@@ -34,15 +35,23 @@ import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 /// Léo Jaime/Gil Baiano/Mazinho/Luís Müller/Biro-Biro/Ivair usam fotos
 /// novas em `lib/assets/branding/bragantino/idols/`.
 ///
-/// `Marcelo` REMOVIDO em 2026-09-09: a foto entregue (`marcelo_veiga.jpg`)
-/// é do TÉCNICO Marcelo Veiga (2018, ver
-/// `bragantino_tactical_coach_references.dart`) — confirmado pelo usuário
-/// que é a MESMA pessoa, o que contradiz a descrição do ídolo ("geração
-/// histórica 1990-91", época de jogador). Usuário optou por remover o
-/// ídolo (nunca publicar fato errado) em vez de corrigir a descrição —
-/// entrada e foto (`marcelo_veiga.jpg`) apagadas. Se "Marcelo" jogador da
-/// geração 1990-91 for uma pessoa real e distinta, precisa de pesquisa
-/// nova (nome completo + foto certa) antes de voltar ao dataset.
+/// `Marcelo` REMOVIDO em 2026-09-09 (ver histórico), RESTAURADO em
+/// 2026-09-30: pesquisa dedicada (pesquisa externa + checagem cruzada) identificou
+/// o jogador da geração 1989-91 como MARCELO MARTELOTTE, goleiro —
+/// pessoa DISTINTA do técnico Marcelo Veiga (2018,
+/// `bragantino_tactical_coach_references.dart`). Reentrada como "Marcelo
+/// Martelotte", sem foto ainda (ASSET_GAP — nunca reaproveitar
+/// `marcelo_veiga.jpg`, que é de outra pessoa).
+///
+/// Lote 2026-09-30 (pendências da rodada de auditoria de elenco):
+/// adicionados Alberto Félix, Wilsinho Acedo, Hélio Burini, Nardinho,
+/// Nivaldo "Queixo-de-mula" (1965, DISTINTO de Nivaldo Penafiel — goleiro
+/// de 1990, já presente em `career_players` com id `nivaldo_penafiel`,
+/// sem relação) e Marcelo Martelotte, todos com fonte e período
+/// confirmados. "Carlos Alberto Seixas" foi PESQUISADO e EXCLUÍDO
+/// deliberadamente: fontes mais detalhadas de carreira não confirmam
+/// passagem consistente pelo Bragantino (risco de confusão com outro
+/// "Carlos Alberto Seixas/Cacá") — não promover sem evidência nova.
 class BragantinoIdolsData {
   const BragantinoIdolsData._();
 
@@ -101,8 +110,13 @@ class BragantinoIdolsData {
       tier: 1,
       evidenceExplicitIdol: false,
       description:
-          'Destaque da geração histórica de 1990-91, com premiações '
-          'Bola de Prata/Ouro citadas como referência.',
+          'Destaque da geração histórica de 1990-91; venceu a Bola de '
+          'Prata em 1990 e 1991 e foi convocado à Seleção Brasileira em '
+          '1990 (6 amistosos).',
+      // Correção 2026-09-30: lista oficial de vencedores da Bola de Prata
+      // (imortaisdofutebol.com) confirma Gil Baiano em 1990 e 1991; ele
+      // NUNCA venceu a Bola de Ouro (1990 foi de César Sampaio, 1991 foi
+      // do próprio Mauro Silva, também ídolo deste dataset).
       photoAsset: 'lib/assets/branding/bragantino/idols/gil_baiano.png',
     ),
     ClubIdol(
@@ -126,7 +140,11 @@ class BragantinoIdolsData {
       description:
           'Integrante das equipes campeãs de 1989 e 1990 e vice-campeã '
           'em 1991 — geração histórica do clube.',
-      period: '1989-1991',
+      // Correção 2026-09-30: vínculo completo com o clube é 1985-1992
+      // (pt.wikipedia.org/wiki/Biro-Biro_Ribeiro + ogol.com.br, batendo
+      // com o valor já usado em career_players); 1989-1991 cobria só o
+      // núcleo do período de título, não a passagem inteira.
+      period: '1985-1992',
       photoAsset: 'lib/assets/branding/bragantino/idols/biro_biro.jpg',
     ),
     ClubIdol(
@@ -138,6 +156,70 @@ class BragantinoIdolsData {
           'títulos de Série B 1989 e Paulista 1990.',
       period: '1989-1991',
       photoAsset: 'lib/assets/branding/bragantino/idols/ivair.png',
+    ),
+    ClubIdol(
+      name: 'Marcelo Martelotte',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Goleiro',
+      description:
+          'Goleiro da geração histórica, campeão brasileiro da Série B '
+          'de 1989 e campeão paulista de 1990.',
+      period: '1989-1992',
+    ),
+    ClubIdol(
+      name: 'Alberto Félix',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Meia',
+      description:
+          'Meia de criação, integrante da geração vice-campeã brasileira '
+          'de 1991; convocado à Seleção Brasileira em 1993.',
+      period: '1991-1995',
+    ),
+    ClubIdol(
+      name: 'Wilsinho Acedo',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Ponta-esquerda',
+      description:
+          'Integrante do time campeão da divisão de acesso de 1965; '
+          'destaque na elite paulista em 1966.',
+      period: '1959-1966',
+    ),
+    ClubIdol(
+      name: 'Hélio Burini',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Meia',
+      description:
+          'Marcou o gol do 1x0 contra o Barretos no primeiro jogo da '
+          'final de 1965, decisiva para o acesso à elite paulista.',
+      period: '1964-1969',
+    ),
+    ClubIdol(
+      name: 'Nardinho',
+      tier: 2,
+      evidenceExplicitIdol: false,
+      position: 'Atacante',
+      description:
+          'Integrante da equipe campeã do acesso em 1965. Fontes '
+          'históricas registram participação na partida de volta da '
+          'decisão contra o Barretos, mas há divergência entre elas '
+          'sobre os detalhes — nome completo não confirmado.',
+      period: '1965-1966',
+    ),
+    ClubIdol(
+      name: 'Nivaldo "Queixo-de-mula"',
+      tier: 1,
+      evidenceExplicitIdol: false,
+      position: 'Centroavante',
+      description:
+          'Integrante do elenco campeão do acesso em 1965, com gol '
+          'registrado na decisão contra o Barretos. Pessoa DISTINTA de '
+          'Nivaldo Penafiel (goleiro da geração de 1990); nome completo '
+          'não confirmado.',
+      period: '1965-1966',
     ),
     ClubIdol(
       name: 'Tiba',

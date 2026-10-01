@@ -177,6 +177,13 @@ const bragantinoTacticalCoachReferences = <TacticalCoachReference>[
 
   // 2017: referência central/pragmática e altamente flexível — útil para
   // separar resultados que não pertencem aos extremos posse/vertical.
+  // NOTA 2026-09-30: auditoria de elenco confirmou um JOGADOR "Alberto
+  // Félix" (meia, 1991-1995, geração vice-campeã brasileira de 1991,
+  // ver `bragantino_idols_data.dart`). Não confirmamos se é a MESMA
+  // pessoa que comandou o time em 2017 (plausível — ex-jogador virando
+  // treinador no próprio clube é comum — mas não encontramos fonte que
+  // afirme isso explicitamente). Não fundir os dois registros sem essa
+  // confirmação.
   TacticalCoachReference(
     id: 'alberto_felix_2017',
     coach: 'Alberto Félix',
