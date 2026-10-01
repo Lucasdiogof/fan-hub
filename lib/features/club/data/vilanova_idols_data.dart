@@ -170,26 +170,27 @@ class VilaNovaIdolsData {
       position: 'Volante',
       period: '1977–1985',
       description:
-          'Oswaldo Roberto Oliveira. Campeão goiano pelo Vila em 1977, '
-          '1978, 1979, 1980, 1982 e 1984; depois virou treinador.',
+          'Oswaldo Roberto Oliveira, volante que também atuou na defesa. '
+          'Campeão goiano pelo Vila em 1977, 1978, 1979, 1980, 1982 e '
+          '1984; depois virou treinador.',
     ),
     ClubIdol(
       name: 'Zé Luís',
       tier: 1,
       evidenceExplicitIdol: false,
       position: 'Lateral-direito',
-      period: '1969–1985',
+      period: '1969–início dos anos 1980',
       description:
           'José Luis dos Santos. Ligado ao clube desde as categorias de '
-          'base em 1969; integrante das gerações campeãs goianas de '
-          '1977, 1978, 1979, 1980 e 1982.',
+          'base em 1969, também atuou como zagueiro; integrante das '
+          'gerações campeãs goianas de 1977, 1978, 1979, 1980 e 1982.',
     ),
     ClubIdol(
       name: 'Zé Henrique',
       tier: 1,
       evidenceExplicitIdol: false,
       position: 'Ponta-direita',
-      period: '1978–1985',
+      period: 'fim dos anos 1970–1984, com retorno posterior',
       description:
           'Artilheiro do Campeonato Goiano em 1980 e 1984 (há '
           'divergência entre fontes sobre o número exato de gols em uma '
@@ -235,7 +236,7 @@ class VilaNovaIdolsData {
       period: '2015–',
       description:
           'Moisés Oliveira Brito. Um dos artilheiros do título da Série '
-          'C de 2015 (8 gols, atrás apenas de Carlos Frontini, autor de '
+          'C de 2015 (8 gols, atrás apenas de Frontini, autor de '
           '9), com bom desempenho de gols também na Série B.',
     ),
     ClubIdol(

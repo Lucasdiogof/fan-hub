@@ -173,8 +173,9 @@ class BragantinoIdolsData {
       evidenceExplicitIdol: false,
       position: 'Meia',
       description:
-          'Meia de criação, integrante da geração vice-campeã brasileira '
-          'de 1991; convocado à Seleção Brasileira em 1993.',
+          'Alberto Carlos Félix da Silva. Meia de criação, integrante da '
+          'geração vice-campeã brasileira de 1991; convocado à Seleção '
+          'Brasileira em 1993.',
       period: '1991-1995',
     ),
     ClubIdol(
@@ -183,8 +184,8 @@ class BragantinoIdolsData {
       evidenceExplicitIdol: false,
       position: 'Ponta-esquerda',
       description:
-          'Integrante do time campeão da divisão de acesso de 1965; '
-          'destaque na elite paulista em 1966.',
+          'Wilson Aparecido Acedo. Integrante do time campeão da divisão '
+          'de acesso de 1965; destaque na elite paulista em 1966.',
       period: '1959-1966',
     ),
     ClubIdol(
