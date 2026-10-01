@@ -1,5 +1,5 @@
 {
-  "_doc": "Correções sobre o parse do ogol (tooling/vilanova_content/_ogol_parsed.json), aplicadas por _apply_career_to_squad.mjs DEPOIS do parser. Auditoria de 2026-10-01: (1) temporada europeia/asiática herdando o rótulo do ano civil da linha de cima (o texto colado do ogol perde a célula de temporada mesclada; o rótulo certo foi relido no HTML de cada perfil); (2) passagem com empréstimo só em parte das temporadas, dividida em empréstimo + definitivo quando confirmado fora do ogol. Cada item tem a fonte.",
+  "_doc": "Correções sobre o parse do ogol (tooling/vilanova_content/_ogol_parsed.json), aplicadas por _apply_career_to_squad.mjs DEPOIS do parser. Auditoria de 2026-10-01: (1) temporada europeia/asiática herdando o rótulo do ano civil da linha de cima (o texto colado do ogol perde a célula de temporada mesclada; o rótulo certo foi relido no HTML de cada perfil); (2) passagem com empréstimo só em parte das temporadas, dividida em empréstimo + definitivo quando confirmado fora do ogol. Cada item tem a fonte. Rodada de 2026-10-01 (pendências): empréstimo/compra resolvidos com as conclusões confirmadas; pendentes ficam sem tag de empréstimo, com data_quality \"review\" e nota.",
   "corrections": [
     {
       "player_id": "vn_dalberson",
@@ -392,6 +392,617 @@
       "source": "https://www.ogol.com.br/jogador/emerson-urso/693635",
       "corroboration": "https://www.ogol.com.br/noticias/emerson-urso-assina-com-o-vila-nova-em-definitivo/714540 ; https://www.fogaonet.com/noticias-do-botafogo/botafogo-libera-emerson-urso-vila-nova-definitivo-mantem-percentual/",
       "reason": "Empréstimo só em 2024; definitivo no Vila desde 2025. A passagem ATUAL dele aparece no app como empréstimo — errado."
+    },
+    {
+      "player_id": "vn_tiago_pagnussat",
+      "match": {
+        "team": "Bahia",
+        "period": "2016–2019"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2016–2019",
+        "team": "Bahia",
+        "appearances": 123,
+        "goals": 8,
+        "loan": true,
+        "notes": "Emprestado por Atlético Mineiro."
+      },
+      "to": [
+        {
+          "period": "2016–2017",
+          "team": "Bahia",
+          "appearances": 75,
+          "goals": 4,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro."
+        },
+        {
+          "period": "2018–2019",
+          "team": "Bahia",
+          "appearances": 48,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": "Comprado em definitivo pelo Bahia no fim de 2017."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/tiago-pagnussat/172302",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: empréstimo em 2016 e 2017, compra definitiva pelo Bahia no fim de 2017. Jogos por temporada do ogol: 2016 21/1, 2017 54/3, 2018 47/4, 2019 1/0."
+    },
+    {
+      "player_id": "vn_joao_vieira",
+      "match": {
+        "team": "Paysandu",
+        "period": "2022–2024"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2022–2024",
+        "team": "Paysandu",
+        "appearances": 124,
+        "goals": 10,
+        "loan": true,
+        "notes": "Emprestado por Esportivo."
+      },
+      "to": [
+        {
+          "period": "2022",
+          "team": "Paysandu",
+          "appearances": 26,
+          "goals": 1,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Esportivo."
+        },
+        {
+          "period": "2023–2024",
+          "team": "Paysandu",
+          "appearances": 98,
+          "goals": 9,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": "O Paysandu comprou 70% dos direitos em dezembro de 2022."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/joao-vieira/555397",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: empréstimo em 2022; compra de 70% em dez/2022. Ogol: 2022 26/1, 2023 41/3, 2024 57/6."
+    },
+    {
+      "player_id": "vn_willian_maranhao",
+      "match": {
+        "team": "Vasco",
+        "period": "2018–2019"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2018–2019",
+        "team": "Vasco",
+        "appearances": 18,
+        "goals": 0,
+        "loan": true,
+        "notes": "Emprestado por Boavista-RJ."
+      },
+      "to": [
+        {
+          "period": "2018",
+          "team": "Vasco",
+          "appearances": 14,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Boavista-RJ."
+        },
+        {
+          "period": "2019",
+          "team": "Vasco",
+          "appearances": 4,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": "Já pertencia ao Vasco em 2019 (data exata da compra não confirmada)."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/willian-maranhao/392636",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: empréstimo em 2018; em 2019 já pertencia ao Vasco. Sem dia/mês da compra. Ogol: 2018 14/0, 2019 4/0."
+    },
+    {
+      "player_id": "vn_dodo",
+      "match": {
+        "team": "Khorfakkan",
+        "period": "2019/20–2022/23"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2019/20–2022/23",
+        "team": "Khorfakkan",
+        "appearances": 101,
+        "goals": 28,
+        "loan": true,
+        "notes": "Emprestado por Atlético Mineiro."
+      },
+      "to": [
+        {
+          "period": "2019/20",
+          "team": "Khorfakkan",
+          "appearances": 25,
+          "goals": 8,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Atlético Mineiro."
+        },
+        {
+          "period": "2020/21–2022/23",
+          "team": "Khorfakkan",
+          "appearances": 76,
+          "goals": 20,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": "Rescindiu com o Atlético Mineiro em julho de 2020 e assinou direto com o Khorfakkan."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/dodo/364441",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: empréstimo em 2019/20; rescisão com o Atlético-MG em jul/2020 e contrato direto com o Khorfakkan (o ogol ainda marca 2020/21 como E). Ogol: 2019/20 25/8, 2020/21 30/8, 2021/22 31/9, 2022/23 15/3."
+    },
+    {
+      "player_id": "vn_everton_galdino",
+      "match": {
+        "team": "Tombense",
+        "period": "2017–2019"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2017–2019",
+        "team": "Tombense",
+        "appearances": 64,
+        "goals": 7,
+        "loan": true,
+        "notes": "Emprestado por Vila Nova."
+      },
+      "to": [
+        {
+          "period": "2017",
+          "team": "Tombense",
+          "appearances": 19,
+          "goals": 2,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Vila Nova."
+        },
+        {
+          "period": "2018–2019",
+          "team": "Tombense",
+          "appearances": 45,
+          "goals": 5,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": null
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/everton-galdino/437268",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: empréstimo em 2017; vínculo definitivo com a Tombense a partir de 2018. Ogol: 2017 19/2, 2018 18/1, 2019 27/4."
+    },
+    {
+      "player_id": "vn_everton_galdino",
+      "match": {
+        "team": "Grêmio",
+        "period": "2023–2024"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2023–2024",
+        "team": "Grêmio",
+        "appearances": 72,
+        "goals": 12,
+        "loan": true,
+        "notes": "Emprestado por Tombense."
+      },
+      "to": [
+        {
+          "period": "2023",
+          "team": "Grêmio",
+          "appearances": 42,
+          "goals": 9,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Tombense."
+        },
+        {
+          "period": "2024",
+          "team": "Grêmio",
+          "appearances": 30,
+          "goals": 3,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": "O Grêmio comprou 70% dos direitos em 07/12/2023."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/everton-galdino/437268",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: empréstimo em 2023; compra de 70% em 07/12/2023. Ogol: 2023 42/9, 2024 30/3."
+    },
+    {
+      "player_id": "vn_everton_galdino",
+      "match": {
+        "team": "FC Tokyo",
+        "period": "2024–2025"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2024–2025",
+        "team": "FC Tokyo",
+        "appearances": 13,
+        "goals": 0,
+        "loan": true,
+        "notes": "Emprestado por Grêmio."
+      },
+      "to": [
+        {
+          "period": "2024",
+          "team": "FC Tokyo",
+          "appearances": 5,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Grêmio."
+        },
+        {
+          "period": "2025",
+          "team": "FC Tokyo",
+          "appearances": 8,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": "Transferência definitiva ao FC Tokyo em janeiro de 2025."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/everton-galdino/437268",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: empréstimo em 2024; transferência definitiva em jan/2025. Ogol: 2024 5/0, 2025 8/0."
+    },
+    {
+      "player_id": "vn_janderson",
+      "match": {
+        "team": "Corinthians (base)",
+        "period": "2018–2019"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2018–2019",
+        "team": "Corinthians (base)",
+        "appearances": 44,
+        "goals": 8,
+        "loan": true,
+        "notes": "Emprestado por Joinville."
+      },
+      "to": [
+        {
+          "period": "2018",
+          "team": "Corinthians (base)",
+          "appearances": 21,
+          "goals": 4,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Joinville."
+        },
+        {
+          "period": "2019",
+          "team": "Corinthians (base)",
+          "appearances": 23,
+          "goals": 4,
+          "loan": false,
+          "data_quality": "verified",
+          "notes": "O Corinthians comprou parte dos direitos em 2019."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/janderson/540179",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: chegada por empréstimo à base em 2018; compra de parte dos direitos em 2019. Ogol: 2018 S20 21/4, 2019 S20 15/4 + S19 8/0."
+    },
+    {
+      "player_id": "vn_hayner",
+      "match": {
+        "team": "Santos",
+        "period": "2024–2025"
+      },
+      "field": "loan",
+      "from": true,
+      "to": false,
+      "source": "https://www.ogol.com.br/jogador/hayner/473696",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: chegou emprestado pelo Azuriz no início de 2024 e o Santos comprou 60% dos direitos em abril de 2024; 2025 é vínculo definitivo. A passagem não fica como empréstimo inteira."
+    },
+    {
+      "player_id": "vn_hayner",
+      "match": {
+        "team": "Santos",
+        "period": "2024–2025"
+      },
+      "field": "notes",
+      "from": "Emprestado por Azuriz Futebol.",
+      "to": "Chegou emprestado pelo Azuriz no início de 2024; o Santos comprou 60% dos direitos em abril de 2024.",
+      "source": "https://www.ogol.com.br/jogador/hayner/473696",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Ver correção de loan acima."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Corinthians",
+        "period": "2016–2018"
+      },
+      "field": "loan",
+      "from": true,
+      "to": false,
+      "source": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: contratação definitiva pelo Corinthians em abril de 2016 (contrato de quatro anos) — a passagem não é empréstimo."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Corinthians",
+        "period": "2016–2018"
+      },
+      "field": "notes",
+      "from": "Emprestado por Al Nassr.",
+      "to": "Chegou por empréstimo do Al Nassr; contratado em definitivo em abril de 2016 (contrato de quatro anos).",
+      "source": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Ver correção de loan acima."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2023/24"
+      },
+      "field": "loan",
+      "from": false,
+      "to": true,
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: o clube detentor era o RB Bragantino; a passagem pela Áustria foi por empréstimo."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2023/24"
+      },
+      "field": "notes",
+      "from": "Passagem identificada; totais não exibidos na tabela consultada.",
+      "to": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Red Bull Bragantino.",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Ver correção de loan acima."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Bragantino",
+        "period": "2024–2025"
+      },
+      "field": "loan",
+      "from": true,
+      "to": false,
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: o RB Bragantino era o dono do jogador — não estava emprestado pelo Salzburg."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Bragantino",
+        "period": "2024–2025"
+      },
+      "field": "notes",
+      "from": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Red Bull Salzburg.",
+      "to": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada.",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Ver correção de loan acima."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2025/26"
+      },
+      "field": "loan",
+      "from": false,
+      "to": true,
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: o clube detentor era o RB Bragantino; a passagem pela Áustria foi por empréstimo."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Red Bull Salzburg",
+        "period": "2025/26"
+      },
+      "field": "notes",
+      "from": null,
+      "to": "Emprestado por Red Bull Bragantino.",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Ver correção de loan acima."
+    },
+    {
+      "player_id": "vn_douglas_mendes",
+      "match": {
+        "team": "Vila Nova",
+        "period": "2026"
+      },
+      "field": "notes",
+      "from": null,
+      "to": "Contratado em definitivo junto ao Red Bull Bragantino em 30/06/2026 (contrato até dezembro de 2028).",
+      "source": "https://www.ogol.com.br/jogador/douglas-mendes/728007",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Confirmado: transferência RB Bragantino → Vila Nova, definitiva, 30/06/2026, contrato até dez/2028."
+    },
+    {
+      "player_id": "vn_gabriel_atila",
+      "match": {
+        "team": "Atlético Mineiro (base)",
+        "period": "2020–2023"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2020–2023",
+        "team": "Atlético Mineiro (base)",
+        "appearances": 46,
+        "goals": 0,
+        "loan": true,
+        "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Vila Nova."
+      },
+      "to": [
+        {
+          "period": "2020",
+          "team": "Atlético Mineiro (base)",
+          "appearances": 13,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Totais incompletos: alguma(s) temporada(s) sem J/G na tabela consultada. Emprestado por Vila Nova."
+        },
+        {
+          "period": "2021–2023",
+          "team": "Atlético Mineiro (base)",
+          "appearances": 33,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "review",
+          "notes": "Vínculo a partir de 2021 não confirmado: as bases deixam de marcar empréstimo, mas não há anúncio da compra."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/gabriel-atila/755478",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Empréstimo confirmado só em 2020; 2021+ fica pendente (sem tag de empréstimo e sem afirmar compra). Ogol: 2020 S17 13/0 (S20 sem J/G), 2021 2/0, 2022 8/0, 2023 23/0."
+    },
+    {
+      "player_id": "vn_jonathan_costa",
+      "match": {
+        "team": "Portimonense",
+        "period": "2014/15–2015/16"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2014/15–2015/16",
+        "team": "Portimonense",
+        "appearances": 5,
+        "goals": 0,
+        "loan": true,
+        "notes": "Emprestado por Penapolense."
+      },
+      "to": [
+        {
+          "period": "2014/15",
+          "team": "Portimonense",
+          "appearances": 4,
+          "goals": 0,
+          "loan": true,
+          "data_quality": "verified",
+          "notes": "Emprestado por Penapolense."
+        },
+        {
+          "period": "2015/16",
+          "team": "Portimonense",
+          "appearances": 1,
+          "goals": 0,
+          "loan": false,
+          "data_quality": "review",
+          "notes": "Vínculo em 2015/16 não confirmado: algumas bases deixam de marcar empréstimo, mas não há anúncio da compra."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/jonathan-costa/401758",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Empréstimo confirmado só em 2014/15; 2015/16 pendente. Ogol: 2014/15 4/0, 2015/16 1/0."
+    },
+    {
+      "player_id": "vn_marquinhos_gabriel",
+      "match": {
+        "team": "Internacional (base)",
+        "period": "2007–2009"
+      },
+      "field": "__split__",
+      "from": {
+        "period": "2007–2009",
+        "team": "Internacional (base)",
+        "appearances": null,
+        "goals": null,
+        "loan": true,
+        "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Juventude."
+      },
+      "to": [
+        {
+          "period": "2007",
+          "team": "Internacional (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": true,
+          "data_quality": "partial",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Emprestado por Juventude."
+        },
+        {
+          "period": "2008–2009",
+          "team": "Internacional (base)",
+          "appearances": null,
+          "goals": null,
+          "loan": false,
+          "data_quality": "review",
+          "notes": "Passagem identificada; totais não exibidos na tabela consultada. Vínculo a partir de 2008 não confirmado: não há anúncio da aquisição."
+        }
+      ],
+      "source": "https://www.ogol.com.br/jogador/marquinhos-gabriel/102206",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Empréstimo confirmado só em 2007; 2008+ pendente."
+    },
+    {
+      "player_id": "vn_janderson",
+      "match": {
+        "team": "Ceará",
+        "period": "2023–2024"
+      },
+      "field": "loan",
+      "from": true,
+      "to": false,
+      "source": "https://www.ogol.com.br/jogador/janderson/540179",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "CONFLITO: notícia de jan/2023 diz que rescindiu com o Corinthians e assinou direto com o Ceará (três temporadas); outras bases registram empréstimo. Sem tag de empréstimo e marcado para revisão — nada consolidado."
+    },
+    {
+      "player_id": "vn_janderson",
+      "match": {
+        "team": "Ceará",
+        "period": "2023–2024"
+      },
+      "field": "data_quality",
+      "from": "verified",
+      "to": "review",
+      "source": "https://www.ogol.com.br/jogador/janderson/540179",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Ver correção de loan acima."
+    },
+    {
+      "player_id": "vn_janderson",
+      "match": {
+        "team": "Ceará",
+        "period": "2023–2024"
+      },
+      "field": "notes",
+      "from": "Emprestado por Corinthians.",
+      "to": "Fontes divergem: empréstimo do Corinthians ou contratação direta pelo Ceará (contrato de três temporadas, jan/2023).",
+      "source": "https://www.ogol.com.br/jogador/janderson/540179",
+      "corroboration": "Pesquisa de pendências de 2026-10-01 (pesquisa externa, conclusões revisadas) — ver docs/multiclub/PROMPT_PESQUISA_PENDENCIAS_VALIDACAO_2026-10-01.md",
+      "reason": "Ver correção de loan acima."
     }
   ]
 }

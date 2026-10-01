@@ -27,7 +27,10 @@ import 'package:goias_app/features/club/domain/entities/club_idol.dart';
 /// "Luciano" NÃO foi adicionado: candidato mais provável é Luciano
 /// Santos Gonçalves ("Luciano Goiano", anos 1990), mas a fonte histórica
 /// cita só "Luciano" sem desambiguação suficiente — pendência aberta,
-/// não transformar em certeza sem evidência adicional.
+/// não transformar em certeza sem evidência adicional. Pesquisa de
+/// 2026-10-01 reforçou a dúvida: na mesma época o Vila teve também um
+/// "Luciano Mineiro", e há escalações com "Luciano Goiano" e "Luciano
+/// Mineiro" como pessoas distintas. Identidade segue não verificada.
 class VilaNovaIdolsData {
   const VilaNovaIdolsData._();
 

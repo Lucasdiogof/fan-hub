@@ -9,6 +9,9 @@
 -- Rodriguinho, Lucas Barbosa, Gustavo Neves e Agustín Sant'Anna; a de Cauê
 -- não tem fonte. Nascimento do Eric Ramires mantido como o oficial
 -- (2000-10-10; ogol/Wikipédia EN dizem 2000-08-10).
+-- ATUALIZAÇÃO (mesmo dia): a pesquisa de pendências confirmou 2000-08-10 pela
+-- CBF e 4 das alturas acima — ver bragantino_squad_members_2026_10_pendencias.sql,
+-- que roda DEPOIS deste.
 -- Ryan Augusto e Bruninho NÃO constam no elenco oficial hoje (decisão do
 -- usuário se seguem ativos); os dados biográficos deles são da pessoa e
 -- entram mesmo assim.

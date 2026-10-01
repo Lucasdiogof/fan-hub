@@ -544,7 +544,7 @@
           "team": "RB Salzburg",
           "appearances": null,
           "goals": null,
-          "loan": false,
+          "loan": true,
           "is_club": false
         },
         {
@@ -552,7 +552,7 @@
           "team": "RB Bragantino",
           "appearances": 31,
           "goals": 2,
-          "loan": true,
+          "loan": false,
           "is_club": false
         },
         {
@@ -852,7 +852,7 @@
           "is_club": false
         },
         {
-          "period": "2017–2019",
+          "period": "2018–2019",
           "team": "Bahia",
           "appearances": 48,
           "goals": 4,
@@ -1048,7 +1048,7 @@
           "team": "Aparecidense",
           "appearances": 32,
           "goals": 2,
-          "loan": false,
+          "loan": true,
           "is_club": false
         },
         {
@@ -1768,7 +1768,7 @@
           "team": "Vila Nova",
           "appearances": 50,
           "goals": 0,
-          "loan": false,
+          "loan": true,
           "is_club": true
         },
         {
@@ -1868,7 +1868,7 @@
           "is_club": false
         },
         {
-          "period": "2019–2021",
+          "period": "2019–2020",
           "team": "Khorfakkan",
           "appearances": null,
           "goals": null,
@@ -1876,7 +1876,7 @@
           "is_club": false
         },
         {
-          "period": "2021–2022",
+          "period": "2020–2023",
           "team": "Khorfakkan",
           "appearances": null,
           "goals": null,
@@ -3221,5 +3221,6 @@
   "notes": [
     "30 carreiras auditadas e publicáveis. Períodos e empréstimos foram preenchidos somente quando sustentados pela fonte indicada.",
     "Jogos/gols podem ficar null quando a fonte não separa com segurança a passagem; nenhum número foi inferido."
-  ]
+  ],
+  "editorial_note_2026_10_01": "Pendências de 2026-10-01 (conclusões da pesquisa externa): Dodô empréstimo só em 2019/20 (rescindiu com o Atlético-MG em jul/2020); Pagnussat definitivo no Bahia a partir de 2018; Formiga emprestado pelo Cianorte também em 2022; Enzo seguiu vinculado ao Internacional em 2025 (sem compra pelo Aparecidense); Douglas Mendes pertencia ao RB Bragantino e jogou na Áustria por empréstimo. Pendentes (Átila 2021+, Jonathan Costa 2015/16, Marquinhos/Internacional 2008+, Janderson/Ceará) ficaram como estavam aqui: o jogo de carreira não tem marcador de revisão."
 }
