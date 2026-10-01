@@ -56,6 +56,10 @@ Verificação da última rodada (2026-09-30, durante o F9): `flutter test` compl
 
 O histórico do que já foi feito está na tabela do §2 e no `git log`.
 
+0. **[precisa das connection strings] Validação de elencos de 2026-10-01 — aplicar no banco:**
+   - Vila (`VILANOVA_DB_URL`): `supabase/vilanova_squad_members.sql` regenerado (`be4a19d`: carreira com 24 rótulos de temporada corrigidos + 2 empréstimos divididos; `ed95110`: bio/números/Instagram + fotos em PNG, que o CDN do Vila também serve). Reaplicar o arquivo inteiro (upsert idempotente) com `run-sql-file.mjs vilanova`.
+   - Bragantino (`BRAGANTINO_DB_URL`): `supabase/bragantino_squad_members_2026_10_validation.sql` (`51b4c8f`: 51 updates só onde o campo era NULL + insert do Patrick #28), testado 2x em PGlite. `run-sql-file.mjs bragantino`.
+   - Decisão do usuário pendente: Ryan Augusto e Bruninho estão `active` no banco, mas não aparecem no elenco oficial do site do Bragantino.
 1. ✅ **Passaporte 2010–2018 APLICADO no banco real (2026-09-30)**: venues + 9 anos via `run-sql-file.mjs`, simulados antes no PGlite. Verificado ao vivo: 928 partidas / 111 venues / 0 órfão, e `passport_matches_for_year` bate com a tabela em todos os 17 anos (2010–2026). Próximos lotes (2009 para trás): mesmo caminho — gerar, simular, aplicar, verificar.
 2. **[USUÁRIO] Secrets das redes sociais do Vila** (sem eles, X, Instagram e YouTube ficam vazios):
    - GitHub → Settings → Secrets and variables → Actions → **`VILANOVA_SYNC_KEY`** = conteúdo de `fan-hub/build/social/VILANOVA_SYNC_KEY.txt`. A chave foi gerada e o mesmo valor já está no Worker como `X_SYNC_KEY` e `INSTAGRAM_SYNC_KEY`. O arquivo é local e gitignored; se ele sumir, gere uma chave nova e rode `npx wrangler secret put X_SYNC_KEY` e `npx wrangler secret put INSTAGRAM_SYNC_KEY` com `--config wrangler.vilanova.toml`.
